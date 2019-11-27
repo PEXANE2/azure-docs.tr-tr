@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842663"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546281"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
 
 Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmesi için bir gereksinim olabilir. Active Directory Domain Services (AD DS), bu kullanım örneğini sağlayan *Kerberos temsili* adlı bir mekanizmayı destekler. Kerberos *kısıtlı* temsilcisi (KCD), bu mekanizmaya, kullanıcı bağlamında erişilebilen belirli kaynakları tanımlamak için oluşturulur. Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarında daha güvenli bir şekilde kilitlidir, bu nedenle daha güvenli *kaynak tabanlı* bir KCD kullanın.
 
-Bu makalede, Azure AD DS yönetilen bir etki alanında Kaynak-Savunma Kerberos kısıtlı temsilcisini yapılandırma açıklanmaktadır.
+Bu makalede, Azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlanmış temsilcinin nasıl yapılandırılacağı gösterilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +42,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardı
 
 Kerberos temsili, bir hesabın kaynaklara erişmek için başka bir hesabın kimliğine bürünmesini sağlar. Örneğin, arka uç Web bileşenine erişen bir Web uygulaması, arka uç bağlantısı yaptığında kendisini farklı bir kullanıcı hesabı olarak taklit edebilir. Kimliğe bürünme hesabının erişebileceği kaynakları sınırmadığı için Kerberos temsili güvenli değildir.
 
-Kerberos kısıtlanmış temsili (KCD), belirli bir sunucunun veya uygulamanın başka bir kimlik kimliğine bürünerek bağlanabileceği Hizmetleri veya kaynakları kısıtlar. Geleneksel KCD, bir hizmet için etki alanı hesabı yapılandırmak için etki alanı yöneticisi ayrıcalıklarına gerek duyar ve hesabı tek bir etki alanında çalışacak şekilde kısıtlar. Geleneksel KCD 'de de bazı sorunlar vardır. Örneğin, önceki işletim sistemlerinde, hizmet yöneticisinin sahip oldukları kaynak hizmetleri için hangi ön uç hizmetlerin temsilci olarak olduğunu bilmemiz için kullanışlı bir yolu yoktur. Kaynak hizmetine temsilci olabilecek herhangi bir ön uç hizmeti potansiyel bir saldırı noktasıdır. Kaynak hizmetleri için temsilci olarak yapılandırılmış bir ön uç hizmeti barındıran bir sunucunun güvenliği tehlikeye girerse, kaynak hizmetleri de tehlikeye girebilir.
+Kerberos kısıtlanmış temsili (KCD), belirli bir sunucunun veya uygulamanın başka bir kimlik kimliğine bürünerek bağlanabileceği Hizmetleri veya kaynakları kısıtlar. Geleneksel KCD, bir hizmet için etki alanı hesabı yapılandırmak için etki alanı yöneticisi ayrıcalıklarına gerek duyar ve hesabı tek bir etki alanında çalışacak şekilde kısıtlar.
+
+Geleneksel KCD 'de de bazı sorunlar vardır. Örneğin, önceki işletim sistemlerinde, hizmet yöneticisinin sahip oldukları kaynak hizmetleri için hangi ön uç hizmetlerin temsilci olarak olduğunu bilmemiz için kullanışlı bir yolu yoktur. Kaynak hizmetine temsilci olabilecek herhangi bir ön uç hizmeti potansiyel bir saldırı noktasıdır. Kaynak hizmetleri için temsilci olarak yapılandırılmış bir ön uç hizmeti barındıran bir sunucunun güvenliği tehlikeye girerse, kaynak hizmetleri de tehlikeye girebilir.
 
 Azure AD DS yönetilen bir etki alanında etki alanı yöneticisi ayrıcalıklarına sahip değilsiniz. Sonuç olarak, yönetilen bir etki alanında AD DS Azure 'da geleneksel hesap tabanlı KCD yapılandırılamaz. Kaynak tabanlı KCD, bunun yerine daha da güvenli bir şekilde kullanılabilir.
 

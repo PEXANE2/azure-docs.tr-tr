@@ -21,11 +21,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482498"
 ---
-Before reading this article, you should be familiar with the following concepts:
+Bu makaleyi okumadan önce aşağıdaki kavramları tanımanız gerekir:
 
-- [Microsoft identity platform overview](../articles/active-directory/develop/v2-overview.md)
+- [Microsoft Identity platformuna genel bakış](../articles/active-directory/develop/v2-overview.md)
 - [Kimlik doğrulaması temel bilgileri](../articles/active-directory/develop/authentication-scenarios.md)
-- [Audiences](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Application and service principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Permissions and consent](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [ID tokens](../articles/active-directory/develop/id-tokens.md) and [access tokens](../articles/active-directory/develop/access-tokens.md)
+- [Kitle](../articles/active-directory/develop/v2-supported-account-types.md)
+- [Uygulama ve hizmet sorumluları](../articles/active-directory/develop/app-objects-and-service-principals.md)
+- [İzinler ve onay](../articles/active-directory/develop/v2-permissions-and-consent.md)
+- [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md) ve [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md)

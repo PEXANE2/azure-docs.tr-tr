@@ -1,6 +1,6 @@
 ---
-title: Tutorial - use parameter file to deploy template
-description: Use parameter files that contain the values to use for deploying your Azure Resource Manager template.
+title: Öğretici-şablon dağıtmak için parametre dosyası kullanma
+description: Azure Resource Manager şablonunuzu dağıtmak için kullanılacak değerleri içeren parametre dosyalarını kullanın.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,47 +12,47 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405981"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Use parameter files to deploy your Resource Manager template
+# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
-In this tutorial, you learn how to use [parameter files](resource-manager-parameter-files.md) to store the values you pass in during deployment. In the previous tutorials, you used inline parameters with your deployment command. This approach worked for testing your template, but when automating deployments it can be easier to pass a set of values for your environment. Parameter files make it easier to package parameter values for a specific environment. In this tutorial, you'll create parameter files for development and production environments. It takes about **12 minutes** to complete.
+Bu öğreticide, dağıtım sırasında geçirdiğiniz değerleri depolamak için [parametre dosyalarını](resource-manager-parameter-files.md) nasıl kullanacağınızı öğreneceksiniz. Önceki öğreticilerde, dağıtım komutunuz ile satır içi parametreleri kullandınız. Bu yaklaşım şablonunuzun test edilmesine çalıştı, ancak dağıtımları otomatikleştirmede ortamınız için bir değer kümesini geçirmek daha kolay olabilir. Parametre dosyaları belirli bir ortam için parametre değerlerini paketlemeyi kolaylaştırır. Bu öğreticide geliştirme ve üretim ortamları için parametre dosyaları oluşturacaksınız. Yaklaşık **12 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-We recommend that you complete the [tutorial about tags](template-tutorial-add-tags.md), but it's not required.
+[Etiketler hakkında öğreticiyi](template-tutorial-add-tags.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Şablonu gözden geçir
 
-Your template has many parameters you can provide during deployment. At the end of the previous tutorial, your template looked like:
+Şablonunuzda dağıtım sırasında sağlayabilmeniz için birçok parametre vardır. Önceki öğreticinin sonunda şablonunuz şöyle aranır:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
 
-This template works well, but now you want to easily manage the parameters that you pass in for the template.
+Bu şablon iyi sonuç verir, ancak artık şablon için geçirdiğiniz parametreleri kolayca yönetmek istiyorsunuz.
 
-## <a name="add-parameter-files"></a>Add parameter files
+## <a name="add-parameter-files"></a>Parametre dosyaları Ekle
 
-Parameter files are JSON files with a structure that is similar to your template. In the file, you provide the parameter values you want to pass in during deployment.
+Parametre dosyaları, şablonunuza benzer bir yapıya sahip JSON dosyalarıdır. Dosyasında, dağıtım sırasında geçirmek istediğiniz parametre değerlerini sağlarsınız.
 
-In VS Code, create a new file with following content. Save the file with the name **azuredeploy.parameters.dev.json**.
+VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. dev. JSON**adıyla kaydedin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-This file is your parameter file for the development environment. Notice that it uses Standard_LRS for the storage account, names resources with a **dev** prefix, and sets the **Environment** tag to **Dev**.
+Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için Standard_LRS kullandığına, kaynakları **dev** ön ekine göre isimettiğini ve **ortam** etiketini **dev**olarak ayarladığına dikkat edin.
 
-Again, create a new file with the following content. Save the file with the name **azuredeploy.parameters.prod.json**.
+Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. prod. JSON**adıyla kaydedin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-This file is your parameter file for the production environment. Notice that it uses Standard_GRS for the storage account, names resources with a **contoso** prefix, and sets the **Environment** tag to **Production**. In a real production environment, you would also want to use an app service with a SKU other than free, but we'll continue to use that SKU for this tutorial.
+Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için Standard_GRS kullandığına, kaynakları **contoso** ön ekine göre isimettiğini ve **ortam** etiketini **Üretim**olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Use either Azure CLI or Azure PowerShell to deploy the template.
+Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın.
 
-As a final test of your template, let's create two new resource groups. One for the dev environment and one for the production environment.
+Şablonunuzun son testi olarak iki yeni kaynak grubu oluşturalım. Bir geliştirici ortamı ve bir üretim ortamı için bir tane.
 
-First, we'll deploy to the dev environment.
+İlk olarak geliştirme ortamına dağıtırsınız.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,7 +85,7 @@ az group deployment create \
 
 ---
 
-Now, we'll deploy to the production environment.
+Şimdi üretim ortamına dağıtacağız.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -118,25 +118,25 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-You can verify the deployment by exploring the resource groups from the Azure portal.
+Kaynak gruplarını Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. From the left menu, select **Resource groups**.
-1. You see the two new resource groups you deployed in this tutorial.
-1. Select either resource group and view the deployed resources. Notice that they match the values you specified in your parameter file for that environment.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol menüden **kaynak grupları**' nı seçin.
+1. Bu öğreticide dağıttığınız iki yeni kaynak grubunu görürsünüz.
+1. Kaynak grubu ' nu seçin ve dağıtılan kaynakları görüntüleyin. Bu ortam için parametre dosyanızda belirttiğiniz değerlerle eşleştiğine dikkat edin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
-2. **Ada göre filtrele** alanına kaynak grubu adını girin. If you've completed this series, you have three resource groups to delete - myResourceGroup, myResourceGroupDev, and myResourceGroupProd.
+2. **Ada göre filtrele** alanına kaynak grubu adını girin. Bu seriyi tamamladıysanız, silinecek üç kaynak grubunuz vardır-myResourceGroup, myResourceGroupDev ve myResourceGroupProd.
 3. Kaynak grubu adını seçin.
 4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Congratulations, you've finished this introduction to deploying templates to Azure. Let us know if you have any comments and suggestions in the feedback section. Teşekkürler!
+Tebrikler, Azure 'a şablon dağıtmaya yönelik bu girişi tamamladınız. Geri bildirim bölümünde herhangi bir yorum ve öneri varsa bize bilgi verin. Teşekkür ederiz!
 
-You're ready to jump into more advanced concepts about templates. The next tutorial goes into more detail about using template reference documentation to help with defining resources to deploy.
+Şablonlar hakkında daha gelişmiş kavramlara geçmek için hazırsınız. Sonraki öğreticide, dağıtılacak kaynakları tanımlamaya yardımcı olması için şablon başvuru belgelerinin kullanılmasıyla ilgili daha fazla ayrıntıya gidersiniz.
 
 > [!div class="nextstepaction"]
 > [Şablon başvurusunda yararlanma](resource-manager-tutorial-create-encrypted-storage-accounts.md)

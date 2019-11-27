@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Set up dev platform'
+title: 'Hızlı başlangıç: geliştirme platformunu ayarlama'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, you'll learn how to install the Speech SDK for your preferred platform and programming language combination.
+description: Bu hızlı başlangıçta, tercih ettiğiniz platform ve programlama dili birleşimi için konuşma SDK 'sını yüklemeyi öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -18,15 +18,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221965"
 ---
-# <a name="quickstart-setup-development-environment"></a>Quickstart: Setup development environment
+# <a name="quickstart-setup-development-environment"></a>Hızlı başlangıç: geliştirme ortamını kurulum
 
 ::: zone pivot="programming-language-csharp"
-**Choose your target environment**
+**Hedef ortamınızı seçin**
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](../includes/quickstarts/platform/csharp-dotnet-windows.md)]
 #### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](../includes/quickstarts/platform/csharp-dotnetcore-windows.md)]
-#### <a name="unitytabunity"></a>[Unity](#tab/unity)
+#### <a name="unitytabunity"></a>['Yi](#tab/unity)
 [!INCLUDE [unity](../includes/quickstarts/platform/csharp-unity.md)]
 #### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [uwp](../includes/quickstarts/platform/csharp-uwp.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "74221965"
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-**Choose your target environment**
+**Hedef ortamınızı seçin**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](../includes/quickstarts/platform/cpp-linux.md)]
 #### <a name="macostabmacos"></a>[macOS](#tab/macos)
@@ -48,8 +48,8 @@ ms.locfileid: "74221965"
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-**Choose your target environment**
-#### <a name="java-runtimetabjre"></a>[Java Runtime](#tab/jre)
+**Hedef ortamınızı seçin**
+#### <a name="java-runtimetabjre"></a>[Java çalışma zamanı](#tab/jre)
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 #### <a name="androidtabandroid"></a>[Android](#tab/android)
 [!INCLUDE [android](../includes/quickstarts/platform/java-android.md)]

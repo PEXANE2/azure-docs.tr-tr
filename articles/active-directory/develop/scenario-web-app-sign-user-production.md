@@ -1,6 +1,6 @@
 ---
-title: Web app that signs in users (move to production) - Microsoft identity platform
-description: Learn how to build a web app that signs in users (move to production)
+title: Kullanıcılara oturum açan Web uygulaması (üretime geçme)-Microsoft Identity platform
+description: Kullanıcılara oturum açan bir Web uygulaması oluşturmayı öğrenin (üretime geçin)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -22,39 +22,39 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481879"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>Web app that signs in users: Move to production
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Kullanıcılara oturum açan Web uygulaması: üretime taşı
 
-Now that you know how to get a token to call web APIs, learn how to move it to production.
+Artık, Web API 'Lerini çağırmaya yönelik bir belirteç almayı öğrenmiş olduğunuza göre, bunu üretime taşımayı öğrenin.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="scenario-for-calling-web-apis"></a>Scenario for calling web APIs
+### <a name="scenario-for-calling-web-apis"></a>Web API 'Leri çağırma senaryosu
 
-After your web app signs in users, it can call web APIs on behalf of the signed-in users. Calling web APIs from the web app is the object of the following scenario:
+Web uygulamanız kullanıcılara kaydolduktan sonra, oturum açmış kullanıcılar adına Web API 'Leri çağırabilir. Web API 'Lerinden Web API 'Leri çağırmak aşağıdaki senaryonun nesnesidir:
 
 > [!div class="nextstepaction"]
 > [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep dive: ASP.NET Core web app tutorial
+### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Derin bakış: ASP.NET Core Web uygulaması öğreticisi
 
-Learn about other ways to sign in users with this ASP.NET Core tutorial: 
+Bu ASP.NET Core öğreticisiyle kullanıcıların oturum açma yolları hakkında bilgi edinin: 
 
 > [!div class="nextstepaction"]
-> [Enable your web apps to sign in users and call APIs with the Microsoft identity platform for developers](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [Web uygulamalarınızın kullanıcılara oturum açmasını ve geliştiriciler için Microsoft Identity platformu ile API 'Leri çağırmasını sağlama](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-This progressive tutorial has production-ready code for a web app, including how to add sign-in with accounts in:
+Bu aşamalı öğreticide, bir Web uygulaması için, ' deki hesaplara oturum açma ekleme dahil olmak üzere üretime hazırlı kod vardır:
 
-- Your organization
-- Multiple organizations
-- Work or school accounts, or personal Microsoft accounts
+- Kuruluşunuz
+- Birden çok kuruluş
+- İş veya okul hesapları ya da kişisel Microsoft hesapları
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- National clouds
+- Ulusal bulutlar
 
-### <a name="sample-code-java-web-app"></a>Sample code: Java web app
+### <a name="sample-code-java-web-app"></a>Örnek kod: Java Web uygulaması
 
-Learn more about the Java web app from this sample on GitHub: 
+GitHub 'da bu örnekten Java Web uygulaması hakkında daha fazla bilgi edinin: 
 
 > [!div class="nextstepaction"]
-> [A Java Web application that signs in users with the Microsoft identity platform and calls Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [Kullanıcılara Microsoft Identity platformu ve çağrıları ile oturum açan bir Java Web uygulaması Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

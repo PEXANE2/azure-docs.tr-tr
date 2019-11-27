@@ -1,6 +1,6 @@
 ---
-title: Azure Functions reliable event processing
-description: Avoid missing Event Hub messages in Azure Functions
+title: Azure Işlevleri güvenilir olay işleme
+description: Azure Işlevlerinde eksik olay hub 'ı iletilerinden kaçının
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
@@ -12,123 +12,123 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230364"
 ---
-# <a name="azure-functions-reliable-event-processing"></a>Azure Functions reliable event processing
+# <a name="azure-functions-reliable-event-processing"></a>Azure Işlevleri güvenilir olay işleme
 
-Event processing is one of the most common scenarios associated with serverless architecture. This article describes how to create a reliable message processor with Azure Functions to avoid losing messages.
+Olay işleme, sunucusuz mimariyle ilişkili en yaygın senaryolardan biridir. Bu makalede, iletilerin kaybedilmesini önlemek için Azure Işlevleri ile güvenilir bir ileti işlemcisinin nasıl oluşturulacağı açıklanır.
 
-## <a name="challenges-of-event-streams-in-distributed-systems"></a>Challenges of event streams in distributed systems
+## <a name="challenges-of-event-streams-in-distributed-systems"></a>Dağıtılmış sistemlerdeki olay akışlarıyla ilgili sorunlar
 
-Consider a system that sends events at a constant rate  of 100 events per second. At this rate, within minutes multiple parallel Functions instances can consume the incoming 100 events every second.
+Saniyede 100 olaydan oluşan sabit bir hızda olay gönderen bir sistemi düşünün. Bu hızda, dakikalar içinde birden çok paralel Işlev örneğinin her saniye gelen 100 olayını tüketebileceği.
 
-However, any of the following less-optimal conditions are possible:
+Ancak, aşağıdaki daha az en iyi koşullar mümkün değildir:
 
-- What if the event publisher sends a corrupt event?
-- What if your Functions instance encounters unhandled exceptions?
-- What if a downstream system goes offline?
+- Olay Yayımcısı bozuk bir olay gönderiyorsa ne olacak?
+- Işlevleriniz işlenmemiş özel durumlarla karşılaştığında ne olacak?
+- Bir aşağı akış sistemi çevrimdışı kalırsa ne olacak?
 
-How do you handle these situations while preserving the throughput of your application?
+Uygulamanızın verimini korurken bu durumları nasıl işleyirsiniz?
 
-With queues, reliable messaging comes naturally. When paired with a Functions trigger, the function creates a lock on the queue message. If processing fails, the lock is released to allow another instance to retry processing. Processing then continues until either the message is evaluated successfully, or it is added to a poison queue.
+Kuyruklar sayesinde, güvenilir mesajlaşma doğal olarak gelir. Bir Işlevler tetikleyicisi ile eşlendiğinde, işlev kuyruk iletisinde bir kilit oluşturur. İşlem başarısız olursa, başka bir örneğin işlemeyi yeniden denemesini sağlamak için kilit serbest bırakılır. İşlem tamamlandıktan sonra ileti başarıyla değerlendirilene veya bir Poison kuyruğuna eklenene kadar devam eder.
 
-Even while a single queue message may remain in a retry cycle, other parallel executions continue to keep to dequeueing remaining messages. The result is that the overall throughput remains largely unaffected by one bad message. However, storage queues don’t guarantee ordering and aren’t optimized for the high throughput demands required by Event Hubs.
+Tek bir kuyruk iletisi yeniden deneme çevriminde kalabilse de, diğer paralel yürütmeler kalan iletilerin sırasını kaldırma işlemine devam eder. Sonuç, genel üretilen işin büyük ölçüde bir hatalı iletiyle etkilenmemesinin sonucudur. Ancak, depolama kuyrukları sıralamayı garanti etmez ve Event Hubs için gereken yüksek verimlilik talepleri için en iyi duruma getirilmemektedir.
 
-By contrast, Azure Event Hubs doesn't include a locking concept. To allow for features like high-throughput, multiple consumer groups, and replay-ability, Event Hubs events behave more like a video player. Events are read from a single point in the stream per partition. From the pointer you can read forwards or backwards from that location, but you have to choose to move the pointer for events to process.
+Buna karşılık, Azure Event Hubs bir kilitleme kavramı içermez. Yüksek aktarım hızı, birden çok tüketici grubu ve yeniden yürütme özelliği gibi özelliklere izin vermek için Event Hubs olaylar video oynatıcı gibi davranır. Olaylar, her bölüm için akıştaki tek bir noktadan okunurdur. İşaretçinizi bu konumdan ileri veya geri okuyabilirsiniz, ancak olayları işlemek için işaretçiyi taşımayı seçmeniz gerekir.
 
-When errors occur in a stream, if you decide to keep the pointer in the same spot, event processing is blocked until the pointer is advanced. In other words, if the pointer is stopped to deal with problems processing a single event, the unprocessed events begin piling up.
+Bir akışta hata oluştuğunda, işaretçiyi aynı nokta içinde tutmaya karar verirseniz, işaretçi gelişmiş olana kadar olay işleme engellenir. Diğer bir deyişle, işaretçi tek bir olayı işlerken sorunlarla başa çıkmak üzere durdurulmuşsa, işlenmemiş olaylar çalışmaya başlar.
 
-Azure Functions avoids deadlocks by advancing the stream's pointer regardless of success or failure. Since the pointer keeps advancing, your functions need to deal with failures appropriately.
+Azure Işlevleri, başarılı veya başarısız olursa olsun akışın işaretçisini ilerleerek kilitlenmeleri önler. İşaretçi ilerleme yaptığından, işlevlerinizin hatalarla uygun şekilde uğraşmanız gerekir.
 
-## <a name="how-azure-functions-consumes-event-hubs-events"></a>How Azure Functions consumes Event Hubs events
+## <a name="how-azure-functions-consumes-event-hubs-events"></a>Azure Işlevleri Event Hubs olaylarını nasıl kullanır?
 
-Azure Functions consumes Event Hub events while cycling through the following steps:
+Azure Işlevleri aşağıdaki adımlarla geçiş yaparken Olay Hub olaylarını kullanır:
 
-1. A pointer is created and persisted in Azure Storage for each partition of the event hub.
-2. When new messages are received (in a batch by default), the host attempts to trigger the function with the batch of messages.
-3. If the function completes execution (with or without exception) the pointer advances and a checkpoint is saved to the storage account.
-4. If conditions prevent the function execution from completing, the host fails to progress the pointer. If the pointer isn't advanced, then later checks end up processing the same messages.
-5. Repeat steps 2–4
+1. Olay Hub 'ının her bölümü için Azure depolama 'da bir işaretçi oluşturulur ve kalıcı hale getirilir.
+2. Yeni iletiler alındığında (varsayılan olarak bir toplu işte), ana bilgisayar işlevi ileti toplu işi ile tetiklemeye çalışır.
+3. İşlev yürütmeyi (özel durum olmadan veya hariç) tamamlarsa, işaretçi ilerler ve bir denetim noktası depolama hesabına kaydedilir.
+4. Koşullar işlev yürütmenin tamamlanmasını engelliyorsa, ana bilgisayar işaretçiyi ilerleyemez. İşaretçi gelişmiş değilse, daha sonra aynı iletileri işlemeye son bir denetim gerçekleştirir.
+5. 2 – 4 arasındaki adımları yineleyin
 
-This behavior reveals a few important points:
+Bu davranış birkaç önemli noktayı ortaya çıkarır:
 
-- *Unhandled exceptions may cause you to lose messages.* Executions that result in an exception will continue to progress the pointer.
-- *Functions guarantees at-least-once delivery.* Your code and dependent systems may need to [account for the fact that the same message could be received twice](./functions-idempotent.md).
+- *İşlenmemiş özel durumlar iletileri kaybetmenize neden olabilir.* Bir özel durumla sonuçlanan yürütmeler, işaretçinin devam etmesine devam edecektir.
+- *İşlevler, en az bir kez teslim garantisi verir.* Kodunuz ve bağımlı sistemleriniz [, aynı iletinin iki kez alınabilmesi için hesaba](./functions-idempotent.md)sahip olabilir.
 
 ## <a name="handling-exceptions"></a>Özel durum işleme
 
-As a general rule, every function should include a [try/catch block](./functions-bindings-error-pages.md) at the highest level of code. Specifically, all functions that consume Event Hubs events should have a `catch` block. That way, when an exception is raised, the catch block handles the error before the pointer progresses.
+Genel bir kural olarak, her işlev en yüksek kod düzeyinde bir [try/catch bloğu](./functions-bindings-error-pages.md) içermelidir. Özellikle, Event Hubs olaylarını kullanan tüm işlevlerin bir `catch` bloğu olmalıdır. Bu şekilde, bir özel durum ortaya çıktığında, catch bloğu bu hatayı işaretçi ilerlene kadar işler.
 
-### <a name="retry-mechanisms-and-policies"></a>Retry mechanisms and policies
+### <a name="retry-mechanisms-and-policies"></a>Yeniden deneme mekanizmaları ve ilkeleri
 
-Some exceptions are transient in nature and don't reappear when an operation is attempted again moments later. This is why the first step is always to retry the operation. You could write retry processing rules yourself, but they are so commonplace that a number of tools available. Using these libraries allow you to define robust retry-policies, which can also help preserve processing order.
+Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur. Yeniden deneme oluşturma kurallarını kendiniz yazabilirsiniz, ancak bu çok sayıda araç kullanılabilir. Bu kitaplıkların kullanılması, işlem sırasının korunmasına yardımcı olabilecek güçlü yeniden deneme ilkeleri tanımlamanızı sağlar.
 
-Introducing fault-handling libraries to your functions allow you to define both basic and advanced retry policies. For instance, you could implement a policy that follows a workflow illustrated by the following rules:
+İşlevleriniz için hata işleme kitaplıklarını tanıtma hem temel hem de gelişmiş yeniden deneme ilkelerini tanımlamanızı sağlar. Örneğin, aşağıdaki kurallara göre gösterilen bir iş akışını izleyen bir ilke uygulayabilirsiniz:
 
-- Try to insert a message three times (potentially with a delay between retries).
-- If the eventual outcome of all retries is a failure, then add a message to a queue so processing can continue on the stream.
-- Corrupt or unprocessed messages are then handled later.
+- Üç kez bir ileti eklemeyi deneyin (büyük olasılıkla denemeler arasındaki gecikme süresi ile).
+- Tüm yeniden denemeler için nihai sonuç bir hata ise, işleme akışta devam edebilmesi için bir kuyruğa ileti ekleyin.
+- Daha sonra bozuk veya işlenmemiş iletiler daha sonra işlenir.
 
 > [!NOTE]
-> [Polly](https://github.com/App-vNext/Polly) is an example of a resilience and transient-fault-handling library for C# applications.
+> [Polly](https://github.com/App-vNext/Polly) , uygulamalar için C# esnekliği ve geçici hata işleme kitaplığı örneğidir.
 
-When working with pre-complied C# class libraries, [exception filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) allow you to run code whenever an unhandled exception occurs.
+Önceden karmaşıklu C# sınıf kitaplıklarıyla çalışırken, [özel durum filtreleri](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) işlenmeyen bir özel durum oluştuğunda kodu çalıştırmanızı sağlar.
 
-Samples that demonstrate how to use exception filters are available in the [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) repo.
+Özel durum filtrelerinin nasıl kullanılacağını gösteren örnekler, [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) deposunda bulunabilir.
 
-## <a name="non-exception-errors"></a>Non-exception errors
+## <a name="non-exception-errors"></a>Özel durum olmayan hatalar
 
-Some issues arise even when an error is not present. For example, consider a failure that occurs in the middle of an execution. In this case, if a function doesn’t complete execution, the offset pointer is never progressed. If the pointer doesn't advance, then any instance that runs after a failed execution continues to read the same messages. This situation provides an "at-least-once" guarantee.
+Bir hata mevcut olmadığında bile bazı sorunlar oluşur. Örneğin, yürütmenin ortasında oluşan bir hata düşünün. Bu durumda, bir işlev yürütmeyi tamammazsa, fark işaretçisi hiçbir şekilde ilerlemedi. İşaretçi ilermezse, başarısız bir yürütme sonrasında çalışan tüm örnekleri aynı iletileri okumaya devam eder. Bu durum "en az bir kez" garantisi sağlar.
 
-The assurance that every message is processed at least one time implies that some messages may be processed more than once. Your function apps need to be aware of this possibility and must be built around the [principles of idempotency](./functions-idempotent.md).
+Her iletinin en az bir kez işlendiği güvencesi, bazı iletilerin birden çok kez işlenebilir olabileceğini belirtir. İşlevinizin uygulamalarınızın bu olasılığa karşı farkında olması gerekir ve bu durumun üstesinden [gelmelidir.](./functions-idempotent.md)
 
-## <a name="stop-and-restart-execution"></a>Stop and restart execution
+## <a name="stop-and-restart-execution"></a>Yürütmeyi Durdur ve yeniden Başlat
 
-While a few errors may be acceptable, what if your app experiences significant failures? You may want to stop triggering on events until the system reaches a healthy state. Having the opportunity pause processing is often achieved with a circuit breaker pattern. The circuit breaker pattern allows your app to "break the circuit" of the event process and resume at a later time.
+Birkaç hata kabul edilebilir olsa da, uygulamanız önemli hatalardan karşılaşırsa ne olur? Sistem sağlıklı bir duruma ulaşıncaya kadar olaylar üzerinde tetiklenmenizi durdurmak isteyebilirsiniz. Fırsatın duraklamasını duraklatma, genellikle devre kesici düzeniyle elde edilir. Devre kesici stili, uygulamanızın olay işleminin "devresini kesmesine" ve daha sonra sürdürülmesine izin verir.
 
-There are two pieces required to implement a circuit breaker in an event process:
+Bir olay işleminde devre kesici uygulamak için iki parça gereklidir:
 
-- Shared state across all instances to track and monitor health of the circuit
-- Master process that can manage the circuit state (open or closed)
+- Devrenin durumunu izlemek ve izlemek için tüm örnekler genelinde paylaşılan durum
+- Devre durumunu yönetebilen ana işlem (açık veya kapalı)
 
-Implementation details may vary, but to share state among instances you need a storage mechanism. You may choose to store state in Azure Storage, a Redis cache, or any other account that is accessible by a collection of functions.
+Uygulama ayrıntıları farklılık gösterebilir, ancak örnekler arasında durum paylaşmak için bir depolama mekanizmanız gerekir. Durumu Azure Storage 'da, Redsıs önbelleğinde veya bir işlevler koleksiyonu tarafından erişilebilen başka bir hesaba depolamayı seçebilirsiniz.
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) or [durable entities](./durable/durable-functions-overview.md) are a natural fit to manage the workflow and circuit state. Other services may work just as well, but logic apps are used for this example. Using logic apps, you can pause and restart a function's execution giving you the control required to implement the circuit breaker pattern.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) veya [dayanıklı varlıklar](./durable/durable-functions-overview.md) , iş akışını ve devre durumunu yönetmek için doğal bir uyum sağlar. Diğer hizmetler de yalnızca çalışabilir, ancak bu örnek için Logic Apps kullanılır. Logic Apps 'i kullanarak, bir işlevin yürütmesini duraklatabilir ve yeniden başlatarak devre kesici düzeninin uygulanması için gerekli denetimi yapabilirsiniz.
 
-### <a name="define-a-failure-threshold-across-instances"></a>Define a failure threshold across instances
+### <a name="define-a-failure-threshold-across-instances"></a>Örnekler arasında bir hata eşiği tanımlayın
 
-To account for multiple instances processing events simultaneously, persisting shared external state is needed to monitor the health of the circuit.
+Aynı anda birden çok örnek işleme olayını hesaba eklemek için, devrenin durumunu izlemek üzere kalıcı paylaşılan dış durum gereklidir.
 
-A rule you may choose to implement might enforce that:
+Uygulamayı seçebileceğiniz bir kural şunları uygulayabilir:
 
-- If there are more than 100 eventual failures within 30 seconds across all instances, then break the circuit and stop triggering on new messages.
+- Tüm örneklerde 30 saniye içinde 100 ' den fazla sorun oluşursa, devreyi bölün ve yeni iletilerde tetiklemeyi durdurun.
 
-The implementation details will vary given your needs, but in general you can create a system that:
+Uygulama ayrıntıları gereksinimlerinize göre farklılık gösterir, ancak genel olarak şu şekilde bir sistem oluşturabilirsiniz:
 
-1. Log failures to a storage account (Azure Storage, Redis, etc.)
-1. When new failure is logged, inspect the rolling count to see if the threshold is met (for example, more than 100 in last 30 seconds).
-1. If the threshold is met, emit an event to Azure Event Grid telling the system to break the circuit.
+1. Bir depolama hesabına (Azure depolama, Redsıs, vb.) yönelik hataların günlüğünü tut
+1. Yeni hata günlüğe kaydedildiğinde, eşiğin karşılanıp karşılanmadığını görmek için toplama sayısını inceleyin (örneğin, son 30 saniye içinde 100 ' den fazla).
+1. Eşik karşılanıyorsa, sisteme devreyi bozmasını söyleyen Azure Event Grid bir olay gösterin.
 
-### <a name="managing-circuit-state-with-azure-logic-apps"></a>Managing circuit state with Azure Logic Apps
+### <a name="managing-circuit-state-with-azure-logic-apps"></a>Azure Logic Apps ile devre durumunu yönetme
 
-The following description highlights one way you could create an Azure Logic App to halt a Functions app from processing.
+Aşağıdaki açıklamada bir Işlevler uygulamasının işlemesini durdurmak için bir Azure mantıksal uygulaması oluşturabileceğiniz bir yol vurgulanmıştır.
 
-Azure Logic Apps comes with built-in connectors to different services, features stateful orchestrations, and is a natural choice to manage circuit state. After detecting the circuit needs to break, you can build a logic app to implement the following workflow:
+Azure Logic Apps, farklı hizmetlere yönelik yerleşik bağlayıcılarla, durum bilgisi bulunan özelliklerle birlikte gelir ve devre durumunu yönetmek için doğal bir seçimdir. Devre 'nın kesintiye uğraması gerektiğini algıladıktan sonra, aşağıdaki iş akışını uygulamak için bir mantıksal uygulama oluşturabilirsiniz:
 
-1. Trigger an Event Grid workflow and stop the Azure Function (with the Azure Resource connector)
-1. Send a notification email that includes an option to restart the workflow
+1. Bir Event Grid iş akışı tetikleyin ve Azure Işlevini (Azure Kaynak Bağlayıcısı ile) durdurun
+1. İş akışını yeniden başlatma seçeneği içeren bir bildirim e-postası gönderin
 
-The email recipient can investigate the health of the circuit and, when appropriate, restart the circuit via a link in the notification email. As the workflow restarts the function, messages are processed from the last Event Hub checkpoint.
+E-posta alıcısı, devrenin durumunu araştırabilir ve uygunsa, bildirim e-postasında bir bağlantı aracılığıyla devre dışı yeniden başlatılır. İş akışı işlevi yeniden başlattığı için iletiler son olay hub 'ı denetim noktasından işlenir.
 
-Using this approach, no messages are lost, all messages are processed in order, and you can break the circuit as long as necessary.
+Bu yaklaşımı kullanarak hiçbir ileti kaybedilmez, tüm iletiler sırayla işlenir ve gerekli olduğu sürece devreyi kesebilirsiniz.
 
 ## <a name="resources"></a>Kaynaklar
 
-- [Reliable event processing samples](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions Circuit Breaker](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Güvenilir olay işleme örnekleri](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
+- [Azure Dayanıklı İşlevler devre kesici](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Azure Functions error handling](./functions-bindings-error-pages.md)
+- [Azure Işlevleri hata işleme](./functions-bindings-error-pages.md)
 - [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Azure Logic Apps ile tümleşen bir işlev oluşturma](./functions-twitter-email.md)

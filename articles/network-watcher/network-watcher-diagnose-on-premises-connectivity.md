@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275949"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531821"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
@@ -42,7 +42,7 @@ Azure ağ Izleyicisi sorun giderme özelliği sayesinde, ağ geçidiniz ve bağl
 
 Siteden siteye yapılandırma yapılandırmaya yönelik ayrıntılı adım adım yönergeler, ziyaret ederek bulunabilir: [Azure Portal kullanarak siteden siteye bağlantı Ile VNET oluşturma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Kritik yapılandırma adımlarından biri IPSec iletişim parametrelerini yapılandırıyor, herhangi bir yanlış yapılandırma, şirket içi ağ ile Azure arasında bağlantı kaybına neden olur. Şu anda Azure VPN ağ geçitleri, 1. aşama için aşağıdaki IPSec parametrelerini destekleyecek şekilde yapılandırılmıştır. Daha önce belirtildiği gibi, bu ayarlar değiştirilemez.  Aşağıdaki tabloda görebileceğiniz gibi, Azure VPN Gateway tarafından desteklenen şifreleme algoritmaları AES256, AES128 ve 3DES ' dir.
+Kritik yapılandırma adımlarından biri IPSec iletişim parametrelerini yapılandırıyor, herhangi bir yanlış yapılandırma, şirket içi ağ ile Azure arasında bağlantı kaybına neden olur. Şu anda Azure VPN ağ geçitleri, 1. aşama için aşağıdaki IPSec parametrelerini destekleyecek şekilde yapılandırılmıştır. Aşağıdaki tabloda görebileceğiniz gibi, Azure VPN Gateway tarafından desteklenen şifreleme algoritmaları AES256, AES128 ve 3DES ' dir.
 
 ### <a name="ike-phase-1-setup"></a>IKE Aşama 1 kurulumu
 
@@ -53,7 +53,7 @@ Kritik yapılandırma adımlarından biri IPSec iletişim parametrelerini yapıl
 | Kimlik Doğrulama Yöntemi |Önceden Paylaşılan Anahtar |Önceden Paylaşılan Anahtar |
 | Şifreleme Algoritmaları |AES256 AES128 3DES |AES256 3DES |
 | Karma Algoritma |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Aşama 1 Güvenlik İlişkisi (SA) Yaşam Süresi (Zaman) |28.800 saniye |10.800 saniye |
+| Aşama 1 Güvenlik İlişkisi (SA) Yaşam Süresi (Zaman) |28.800 saniye |28.800 saniye |
 
 Bir kullanıcı olarak, bir örnek yapılandırmanın [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt)'da bulunması Için FortiGate 'i yapılandırmanız gerekir. FortiGate 'i karma algoritma olarak SHA-512 kullanacak şekilde yapılandırdınız. Bu algoritma, ilke tabanlı bağlantılar için desteklenen bir algoritma olmadığından, VPN bağlantınız çalışır.
 
@@ -65,7 +65,7 @@ Bağlantınızı tanılamak için Azure PowerShell bağlanın ve `Start-AzNetwor
 
 Cmdlet tamamlandıktan sonra, sorun ve Günlükler hakkında ayrıntılı bilgi almak için cmdlet 'inde belirtilen depolama konumuna gidebilirsiniz. Azure ağ Izleyicisi, aşağıdaki günlük dosyalarını içeren bir zip klasörü oluşturur:
 
-![1][1]
+![1\.][1]
 
 Ikeerrors. txt adlı dosyayı açın ve şirket içi ıKE ayarı yanlış yapılandırmayla ilgili bir sorun olduğunu belirten aşağıdaki hatayı görüntüler.
 
@@ -80,7 +80,7 @@ Diğer bir yaygın yanlış yapılandırma yanlış paylaşılan anahtarlar beli
 
 Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı basit bir PowerShell cmdlet 'i ile tanılamanıza ve gidermenize olanak sağlar. Şu anda aşağıdaki koşulları tanılamayı destekliyoruz ve daha fazla koşul eklemeye yönelik çalışıyor.
 
-### <a name="gateway"></a>Ağ Geçidi
+### <a name="gateway"></a>Ağ geçidi
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
@@ -108,7 +108,7 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
+| Kimlik doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
 | Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
 | Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
 | WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|

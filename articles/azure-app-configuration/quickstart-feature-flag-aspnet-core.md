@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 6. Aşağıdaki özellik bayraklarını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin:
 
-    | Anahtar | Durum |
+    | Anahtar | State |
     |---|---|
     | Beta | Kapalı |
 
@@ -286,7 +286,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | Durum |
+    | Anahtar | State |
     |---|---|
     | Beta | Açık |
 

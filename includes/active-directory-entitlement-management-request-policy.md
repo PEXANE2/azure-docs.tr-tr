@@ -15,187 +15,187 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260899"
 ---
-## <a name="for-users-in-your-directory"></a>For users in your directory
+## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
-Follow these steps if you want to allow users in your directory to be able to request this access package. When defining the request policy, you can specify individual users, or more commonly groups of users. For example, your organization may already have a group such as **All employees**.  If that group is added in the policy for users who can request access, then any member of that group can then request access.
+Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak istiyorsanız bu adımları izleyin. İstek ilkesini tanımlarken, bireysel kullanıcıları veya daha yaygın kullanıcı gruplarını belirtebilirsiniz. Örneğin, kuruluşunuz **tüm çalışanlar**gibi bir gruba zaten sahip olabilir.  Bu grup, erişim isteyebilen kullanıcılar için ilkeye eklenirse, o grubun herhangi bir üyesi daha sonra erişim isteğinde bulunabilir.
 
-1. In the **Users who can request access** section, click **For users in your directory**.
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizdeki kullanıcılar için**öğesine tıklayın.
 
-    When you select this option, new options appear to further refine who in your directory can request this access package.
+    Bu seçeneği belirlediğinizde, dizininizdeki kim tarafından bu erişim paketini isteyebileceğiniz konusunda daha fazla belirginleştirmek için yeni seçenekler görünür.
 
-    ![Access package - Requests - For users in your directory](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Erişim paketi Istekleri-dizininizdeki kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Select one of the following options:
+1. Aşağıdaki seçeneklerden birini seçin:
 
     |  |  |
     | --- | --- |
-    | **Specific users and groups** | Choose this option if you want only the users and groups in your directory that you specify to be able to request this access package. |
-    | **All members (excluding guests)** | Choose this option if you want all member users in your directory to be able to request this access package. This option doesn't include any guest users you might have invited into your directory. |
-    | **All users (including guests)** | Choose this option if you want all member users and guest users in your directory to be able to request this access package. |
+    | **Belirli kullanıcılar ve gruplar** | Yalnızca dizininizdeki Kullanıcı ve grupların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
+    | **Tüm Üyeler (konuklar hariç)** | Dizininizdeki tüm üye kullanıcılarının bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. Bu seçenek, dizininize davet ettiğiniz tüm konuk kullanıcılarını içermez. |
+    | **Tüm kullanıcılar (konuklar dahil)** | Dizininizdeki tüm üye kullanıcılarının ve konuk kullanıcıların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
 
-    Guest users refer to external users that have been invited into your directory with [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). For more information about the differences between member users and guest users, see [What are the default user permissions in Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Konuk kullanıcılar, [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md)ile dizininize davet edilen dış kullanıcılara başvurur. Üye kullanıcılar ve Konuk kullanıcılar arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
-1. If you selected **Specific users and groups**, click **Add users and groups**.
+1. **Belirli kullanıcılar ve gruplar**' ı seçtiyseniz, **Kullanıcı ve Grup Ekle**' ye tıklayın.
 
-1. In the Select users and groups pane, select the users and groups you want to add.
+1. Kullanıcıları ve grupları seç bölmesinde, eklemek istediğiniz kullanıcıları ve grupları seçin.
 
-    ![Access package - Requests - Select users and groups](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Erişim paketi Istekleri-kullanıcıları ve grupları seçin](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. Click **Select** to add the users and groups.
+1. Kullanıcıları ve grupları eklemek için **Seç** ' e tıklayın.
 
-1. Skip down to the [Approval](#approval) section.
+1. [Onay](#approval) bölümüne atlayın.
 
-## <a name="for-users-not-in-your-directory"></a>For users not in your directory
+## <a name="for-users-not-in-your-directory"></a>Dizininizde bulunmayan kullanıcılar için
 
- **Users not in your directory** refers to users who are in another Azure AD directory or domain. These users may not have yet been invited into your directory. Azure AD directories must be configured to be allow invitations in **Collaboration restrictions**. For more information, see [Enable B2B external collaboration and manage who can invite guests](../articles/active-directory/b2b/delegate-invitations.md).
+ **Dizininizde olmayan kullanıcılar** , başka BIR Azure ad dizini veya etki alanındaki kullanıcılara başvurur. Bu kullanıcılar henüz dizininize davet edilmemiş olabilir. Azure AD dizinleri **işbirliği kısıtlamalarında**davetlere izin verecek şekilde yapılandırılmalıdır. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../articles/active-directory/b2b/delegate-invitations.md).
 
 > [!NOTE]
-> A guest user account will be created for a user not yet in your directory whose request is approved or auto-approved. The guest will be invited, but will not receive an invite email. Instead, they will receive an email when their access package assignment is delivered. By default, later when that guest user no longer has any access package assignments, because their last assignment has expired or been cancelled, that guest user account will be blocked from sign in and subsequently deleted. If you want to have guest users remain in your directory indefinitely, even if they have no access package assignments, you can change the settings for your entitlement management configuration. For more information about the guest user object, see [Properties of an Azure Active Directory B2B collaboration user](../articles/active-directory/b2b/user-properties.md).
+> Henüz, isteğiniz onaylanmış veya otomatik olarak onaylanan dizininizde olmayan bir kullanıcı için bir Konuk Kullanıcı hesabı oluşturulur. Konuk davet edilecek, ancak davet e-postası almacaktır. Bunun yerine, bunlara erişim paketi ataması teslim edildiğinde bir e-posta gönderilir. Varsayılan olarak, Konuk kullanıcının artık herhangi bir erişim paketi ataması olmadığında, son atamasının süresi dolduğunda veya iptal edildiğinden, bu Konuk Kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcılarınızın, hiçbir erişim paketi ataması olmasa bile dizininizden sonsuza kadar kalmasını istiyorsanız, Yetkilendirme Yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz. Konuk Kullanıcı nesnesi hakkında daha fazla bilgi için, [Azure ACTIVE DIRECTORY B2B işbirliği kullanıcısının özelliklerine](../articles/active-directory/b2b/user-properties.md)bakın.
 
-Follow these steps if you want to allow users not in your directory to request this access package:
+Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek istiyorsanız aşağıdaki adımları izleyin:
 
-1. In the **Users who can request access** section, click **For users not in your directory**.
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizde olmayan kullanıcılar için**öğesine tıklayın.
 
-    When you select this option, new options appear.
+    Bu seçeneği belirlediğinizde yeni seçenekler görüntülenir.
 
-    ![Access package - Requests - For users not in your directory](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    ![Erişim paketi Istekleri-dizininizde olmayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Select one of the following options:
+1. Aşağıdaki seçeneklerden birini seçin:
 
     |  |  |
     | --- | --- |
-    | **Specific connected organizations** | Choose this option if you want to select from a list of organizations that your administrator previously added. All users from the selected organizations can request this access package. |
-    | **All connected organizations** | Choose this option if all users from all your connected organizations can request this access package. |
+    | **Belirli bağlı kuruluşlar** | Yöneticinizin daha önce eklediği kuruluşların listesinden seçim yapmak istiyorsanız bu seçeneği belirleyin. Seçili kuruluşların tüm kullanıcıları bu erişim paketini isteyebilir. |
+    | **Tüm bağlı kuruluşlar** | Bağlı Kuruluşlarınızın tüm kullanıcıları bu erişim paketini talep edebilir ise bu seçeneği belirleyin. |
 
-    A connected organization is an external Azure AD directory or domain that you have a relationship with.
+    Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
 
-1. If you selected **Specific connected organizations**, click **Add directories** to select from a list of connected organizations that your administrator previously added.
+1. **Belirli bağlı kuruluşları**seçtiyseniz, yöneticinizin daha önce eklediği bağlı kuruluşların listesinden seçmek Için **Dizin Ekle** ' ye tıklayın.
 
-1. Type the name or domain name to search for a previously connected organization.
+1. Daha önce bağlı bir kuruluşun aranacağı adı veya etki alanı adını yazın.
 
-    ![Access package - Requests - Select directories](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Erişim paketi-Istekler-Dizin Seçme](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    If the organization you want to collaborate with isn't in the list, you can ask your administrator to add it as a connected organization. For more information, see [Add a connected organization](../articles/active-directory/governance/entitlement-management-organization.md).
+    İşbirliği yapmak istediğiniz kuruluş listede yoksa, yöneticinizden onu bağlı bir kuruluş olarak eklemesini isteyebilirsiniz. Daha fazla bilgi için bkz. [bağlı kuruluş ekleme](../articles/active-directory/governance/entitlement-management-organization.md).
 
-1. Once you've selected all your connected organizations, click **Select**.
+1. Bağlı Kuruluşlarınızın tümünü seçtikten sonra **Seç**' e tıklayın.
 
     > [!NOTE]
-    > All users from the selected connected organizations will be able to request this access package. This includes users in Azure AD from all subdomains associated with the organization, unless those domains are blocked by the Azure B2B allow or deny list. For more information, see [Allow or block invitations to B2B users from specific organizations](../articles/active-directory/b2b/allow-deny-list.md).
+    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../articles/active-directory/b2b/allow-deny-list.md).
 
-1. Skip down to the [Approval](#approval) section.
+1. [Onay](#approval) bölümüne atlayın.
 
-## <a name="none-administrator-direct-assignments-only"></a>None (administrator direct assignments only)
+## <a name="none-administrator-direct-assignments-only"></a>Hiçbiri (yalnızca yönetici doğrudan atamaları)
 
-Follow these steps if you want to bypass access requests and allow administrators to directly assign specific users to this access package. Users won't have to request the access package. You can still set lifecycle settings, but there are no request settings.
+Erişim isteklerini atlamak ve yöneticilerin bu erişim paketine belirli kullanıcıları doğrudan atamasını sağlamak istiyorsanız bu adımları izleyin. Kullanıcıların erişim paketini istemesi gerekmez. Yaşam döngüsü ayarlarını ayarlamaya devam edebilirsiniz, ancak hiçbir istek ayarı yoktur.
 
-1. In the **Users who can request access** section, click **None (administrator direct assignments only**.
+1. **Erişim Isteyebilen kullanıcılar** bölümünde Hiçbiri ' ne tıklayın **(yalnızca yönetici doğrudan atamaları**).
 
-    ![Access package - Requests - None administrator direct assignments only](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Erişim paketi-Istekler-hiçbiri yönetici yalnızca doğrudan atamalar](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    After you create the access package, you can directly assign specific internal and external users to the access package. If you specify an external user, a guest user account will be created in your directory. For information about directly assigning a user, see [View, add, and remove assignments for an access package](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
+    Erişim paketini oluşturduktan sonra, erişim paketine belirli iç ve dış kullanıcıları doğrudan atayabilirsiniz. Bir dış Kullanıcı belirtirseniz, dizininizde bir Konuk Kullanıcı hesabı oluşturulur. Bir kullanıcıyı doğrudan atama hakkında daha fazla bilgi için bkz. [bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
-1. Skip down to the [Enable requests](#enable-requests) section.
+1. [Istekleri etkinleştir](#enable-requests) bölümüne atlayın.
 
 ## <a name="approval"></a>Onay
 
-In the Approval section, you specify whether an approval is required when users request this access package. The approval settings work in the following way:
+Onay bölümünde, kullanıcılar bu erişim paketini istemesi durumunda bir onayın gerekli olup olmadığını belirtirsiniz. Onay ayarları aşağıdaki şekilde çalışır:
 
-- Only one of the selected approvers or fallback approvers needs to approve a request for single-stage approval. 
-- Only one of the selected approvers from each stage needs to approve a request for 2-stage approval.
-- The approver can be a Manager, Internal sponsor, or External sponsor depending on who the policy is governing access.
-- Approval from every selected approver isn't required for single or 2-stage approval.
-- The approval decision is based on whichever approver reviews the request first.
+- Seçili onaylayanlardan veya geri dönüş onaylayanlardan yalnızca birinin tek aşamalı onay için bir isteği onaylaması gerekir. 
+- Her bir aşamanın seçili onaylayanlardan yalnızca birinin, 2 aşamalı onay için bir isteği onaylaması gerekir.
+- Onaylayan, ilkenin erişimi hangi kişiye göre yapılandırdığına bağlı olarak bir yönetici, dahili sponsor veya harici sponsor olabilir.
+- Tek veya 2 aşamalı onay için seçili her Onaylayandan onay gerekli değildir.
+- Onay kararı, onaylayan kullanıcının isteği gözden geçirmelerine göre belirlenir.
 
-Follow these steps to specify the approval settings for requests for the access package:
+Erişim paketine yönelik isteklerin onay ayarlarını belirtmek için şu adımları izleyin:
 
-1. To require approval for requests from the selected users, set the **Require approval** toggle to **Yes**. Or, to have requests automatically approved, set the toggle to **No**.
+1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet**olarak ayarlayın. Ya da isteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır**olarak ayarlayın.
 
-1. To require users to provide a justification to request the access package, set the **Require requestor justification** toggle to **Yes**.
+1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **istek sahibine iste** modunu **Evet**olarak ayarlayın.
     
-1. Now determine if requests will require single or 2-stage approval. Set the **How many stages** toggle to **1** for single stage approval or set the toggle to **2** for 2-stage approval.
+1. Şimdi isteklerin tek veya 2 aşamalı onay gerektirmesine göre belirlenir. Tek aşamalı onay için **1** ' e geçiş yapma veya 2 aşamalı onay için **2** ' **ye geçişi ayarlama** .
 
-    ![Access package - Requests - Approval settings](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Erişim paketi Istekleri-onay ayarları](./media/active-directory-entitlement-management-request-policy/approval.png)
 
 
-Use the following steps to add approvers after selecting how many stages you require: 
+Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için aşağıdaki adımları kullanın: 
 
-### <a name="single-stage-approval"></a>Single-stage approval
+### <a name="single-stage-approval"></a>Tek aşamalı onay
 
-1. Add the **First Approver**:
+1. **Ilk onaylayanı**ekleyin:
     
-    If the policy is set to govern access for users in your directory, you can select **Manager as approver**. Or, add a specific user by clicking **Add approvers** after selecting Choose specific approvers from the dropdown menu.
+    İlke, dizininizdeki kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, yönetici ' yi **onaylayan olarak**seçebilirsiniz. Ya da, belirli bir **kullanıcıyı ekleme ' yi seçtikten sonra,** açılan menüden belirli onaylayanları Seç ' i tıklatarak ekleyebilirsiniz.
     
-    ![Access package - Requests - For users in directory - First Approver](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
+    ![Erişim paketi-Istekler-Dizin-Ilk onaylayanın kullanıcıları Için](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    If this policy is set to govern access for users not in your directory, you can select **External sponsor** or **Internal sponsor**. Or, add a specific user by clicking **Add approvers** or groups under Choose specific approvers.
+    Bu ilke, dizininizde olmayan kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, **Harici sponsor** veya **dahili sponsor**seçeneğini belirleyebilirsiniz. Ya da belirli onaylayanlara seç altında **Onaylayanlar Ekle** veya gruplar ' a tıklayarak belirli bir kullanıcıyı ekleyin.
     
-    ![Access package - Requests - For users out of directory - First Approver](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    ![Erişim paketi-Istekler-Dizin Ilk onaylayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
     
-1. If you selected **Manager** as the first approver, click **Add fallback** to select one or more users or groups in your directory to be a fallback approver. Fallback approvers receive the request if entitlement management can't find the manager for the user requesting access.
+1. **Yöneticiyi** ilk onaylayan olarak seçtiyseniz, geri dönüş **Ekle** ' ye tıklayarak dizininizdeki bir veya daha fazla kullanıcıyı veya grubu geri dönüş onaylayıcısı olacak şekilde seçin. Yetkilendirme Yönetimi, erişim isteyen kullanıcı için yönetici bulamazsa, geri dönüş onaylayanları isteği alır.
 
-    The manager is found by entitlement management using the **Manager** attribute. The attribute is in the user's profile in Azure AD. For more information, see [Add or update a user's profile information using Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    Yönetici, **yönetici** özniteliği kullanılarak Yetkilendirme Yönetimi tarafından bulunur. Öznitelik, kullanıcının Azure AD 'deki profilidir. Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. If you selected **Choose specific approvers**, click **Add approvers** to select one or more users or groups in your directory to be approvers.
+1. **Belirli onaylayanları Seç**' i seçtiyseniz, dizininizdeki bir veya daha fazla Kullanıcı ya da grubun onaylayanlarını seçmek Için **onaylayan Ekle** ' ye tıklayın.
 
-1. In the box under **Decision must be made in how many days?** , specify the number of days that an approver has to review a request for this access package.
+1. Kararın altındaki kutuda **kaç gün içinde yapılmalıdır?** , bir onaylayanın bu erişim paketi için bir isteği gözden geçirmesi gereken gün sayısını belirtin.
 
-    If a request isn't approved within this time period, it will be automatically denied. The user will have to submit another request for the access package.
+    Bu süre içinde bir istek onaylanmamışsa, otomatik olarak reddedilir. Kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
 
-1. To require approvers to provide a justification for their decision, set Require approver justification to **Yes**.
+1. Onaylayanlara kararların bir gerekçe vermesini gerektirmek için, onaylayan gerekçe ıste seçeneğini **Evet**olarak ayarlayın.
 
-    The justification is visible to other approvers and the requestor.
+    Gerekçe diğer onaylayanlara ve istek sahibine görünür.
 
-### <a name="2-stage-approval-preview"></a>2-stage approval (Preview)
+### <a name="2-stage-approval-preview"></a>2 aşamalı onay (Önizleme)
 
-If you selected a 2-stage approval, you'll need to add a second approver.
+2 aşamalı onay seçtiyseniz ikinci bir onaylayan eklemeniz gerekir.
 
-1. Add the **Second Approver**: 
+1. **Ikinci onaylayanı**ekleyin: 
     
-    If the users are in your directory, add a specific user as the second approver by clicking **Add approvers** under Choose specific approvers.
+    Kullanıcılar dizininizdeki ise, belirli onaylayanları seçin altında **onaylayan Ekle** ' ye tıklayarak ikinci onaylayan olarak belirli bir kullanıcıyı ekleyin.
 
-    ![Access package - Requests - For users in directory - Second Approver](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
+    ![Erişim paketi Istekleri-Dizin-Ikinci onaylayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-    If the users aren't in your directory, select **Internal sponsor** or **External sponsor** as the second approver. After selecting the approver, add the fallback approvers.
+    Kullanıcılar dizininizden değilse, ikinci onaylayan olarak **dahili sponsor** veya **External sponsoru** seçin. Onaylayanı seçtikten sonra geri dönüş onaylayanları ekleyin.
 
-    ![Access package - Requests - For users out of directory - Second Approver](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
+    ![Erişim paketi Istekleri-Ikinci Dizin Için olan kullanıcılar Için-Ikinci onaylayan](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Specify the number of days the second approver has to approve the request in the box under **Decision must be made in how many days?** . 
+1. İkinci onaylayanın onay kutusundaki isteği onaylaması gereken gün sayısını **kaç gün içinde yapmanız gerektiğini**belirtin. 
 
-1. Set the Require approver justification toggle to **Yes** or **No**.
+1. Onaylayan ıste gerekçe **Evet** veya **Hayır**olarak ayarlanmalıdır.
 
-### <a name="alternate-approvers"></a>Alternate approvers
+### <a name="alternate-approvers"></a>Alternatif onaylayanlar
 
-You can specify alternate approvers, similar to specifying the first and second approvers who can approve requests. Having alternate approvers will help ensure that the requests are approved or denied before they expire (timeout). You can list alternate approvers the first approver and second approver for 2-stage approval. 
+İstekleri onaylayabilecek birinci ve ikinci onaylayanları belirtmeye benzer şekilde alternatif onaylayanlar belirtebilirsiniz. Alternatif onaylayanlar olması, isteklerin süresi dolmadan önce onaylanmış veya reddedildiğinden emin olmaya yardımcı olur (zaman aşımı). İlk onaylayanın ve ikinci onaylayanın 2 aşamalı onay için alternatif onaylayanlar listeleyebilirsiniz. 
 
-By specifying alternate approvers, in the event that the first or second approvers were unable to approve or deny the request, the pending request gets forwarded to the alternate approvers, per the forwarding schedule you specified during policy setup. They receive an email to approve or deny the pending request.
+Alternatif onaylayanlar belirterek, ilk veya ikinci onaylayanlardan isteği onaylayamayan veya reddetmeyen olayda, ilke kurulumu sırasında belirttiğiniz iletme zamanlaması başına bekleyen istek alternatif onaylayanlara iletilir. Bekleyen isteği onaylamak veya reddetmek için bir e-posta alırlar.
 
-After the request is forwarded to the alternate approvers, the first or second approvers can still approve or deny the request. Alternate approvers use the same My Access site to approve or deny the pending request.
+İstek alternatif onaylayanlara iletildikten sonra, ilk veya ikinci onaylayanlar isteği yine de onaylayabilir veya reddedebilir. Alternatif onaylayanlar, bekleyen isteği onaylamak veya reddetmek için aynı erişim sitemi kullanır.
 
-We can list people or groups of people to be approvers and alternate approvers. Please ensure that you list different sets of people to be the first, second, and alternate approvers.
-For example, if you listed Alice and Bob as the First Approver(s), list Carol and Dave as the alternate approvers. Use the following steps to add alternate approvers to an access package:
+Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şekilde listeliyoruz. Lütfen birinci, ikinci ve alternatif onaylayanlar olacak farklı kişi kümelerini listediğinizden emin olun.
+Örneğin, Gamze ve emre 'yi Ilk onaylayan olarak listeleniyorsa, alternatif onaylayanlar olarak Carol ve Davde listesini listeleyin. Bir erişim paketine alternatif onaylayanlar eklemek için aşağıdaki adımları kullanın:
 
-1. Under the First Approver, Second Approver, or both, click **Show advanced request settings**.
+1. Ilk onaylayanın, Ikinci onaylayan veya her ikisinde de **Gelişmiş istek ayarlarını göster**' e tıklayın.
 
-    ![Access package - Policy - Show advanced request settings](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Erişim paketi-Ilke-Gelişmiş istek ayarlarını göster](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-1. Set **If no action taken, forward to alternate approvers?** toggle to **Yes**.
+1. **Herhangi bir eylem yapılmadı, alternatif onaylayanlara ilet mi?** **Evet**olarak değiştirin.
 
-1. Click **Add alternate approvers** and select the alternate approver(s) from the list.
+1. **Alternatif onaylayanlar Ekle** ' ye tıklayın ve listeden alternatif onaylayanı seçin.
 
-    ![Access package - Policy - Add Alternate Approvers](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+    ![Erişim paketi-Ilke-alternatif onaylayanlar ekleme](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
-1. In the **Forward to alternate approver(s) after how many days** box, put in the number of days the approvers have to approve or deny a request. If no approvers have approved or denied the request before the request duration, the request expires (timeout), and the user will have to submit another request for the access package. 
+1. **Kaç gün sonra diğer onaylayanlara ilet** kutusunda, onaylayanın bir isteği onaylaması veya reddetmesi için sahip olduğu gün sayısına koyun. Onaylayan, istek süresinden önce isteği onaylamadıysa veya reddetmezse, isteğin süresi dolar (zaman aşımı) ve kullanıcının erişim paketi için başka bir istek göndermesi gerekecektir. 
 
-    Requests can only be forwarded to alternate approvers a day after the request duration reaches half-life. In this example, the duration of the request is 14 days. So, the request duration reaches half-life at day 7. So the request can't be forwarded earlier than day 8. Also, requests can't be forwarded on the last day of the request duration. So in the example, the latest the request can be forwarded is day 13.
+    İstekler yalnızca, istek süresi yarı hayata geçtikten sonra bir gün daha farklı onaylayanlara iletilebilir. Bu örnekte, istek süresi 14 gündür. Bu nedenle, istek süresi 7. günde yarı yaşam süresine ulaşır. Bu nedenle, istek 8. günden daha önce iletilemez. Ayrıca, istekler istek süresinin son gününde iletilemez. Bu nedenle, isteğin iletilebilmesi için en son, gün 13 ' dir.
 
-## <a name="enable-requests"></a>Enable requests
+## <a name="enable-requests"></a>İstekleri etkinleştir
 
-1. If you want the access package to be made immediately available for users in the request policy to request, click **Yes** to enable.
+1. Erişim paketinin istek ilkesindeki kullanıcılar için hemen kullanılabilir olmasını istiyorsanız, etkinleştirmek için **Evet** ' i tıklatın.
 
-    You can always enable it in the future after you have finished creating the access package.
+    Erişim paketini oluşturma işlemi bittikten sonra bunu gelecekte etkinleştirebilirsiniz.
 
-    If you selected **None (administrator direct assignments only)** and you set enable to **No**, then administrators can't directly assign this access package.
+    Hiçbiri ' ni seçtiyseniz **(yalnızca yönetici doğrudan atamaları)** ve Etkinleştir **' i ayarlarsanız, Yöneticiler**bu erişim paketini doğrudan atayamaz.
 
-    ![Access package - Policy- Enable policy setting](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. **İleri**’ye tıklayın.

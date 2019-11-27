@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Blockchain Service member - Azure portal
-description: Create an Azure Blockchain Service member for a blockchain consortium using the Azure portal.
+title: Azure blok zinciri hizmeti üyesi oluşturma-Azure portal
+description: Azure portal kullanarak bir blok zinciri Konsorsiyumu için Azure blok zinciri hizmeti üyesi oluşturun.
 ms.date: 11/18/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,55 +11,55 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455788"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Quickstart: Create an Azure Blockchain Service blockchain member using the Azure portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi oluşturma
 
-In this quickstart, you deploy a new blockchain member and consortium in Azure Blockchain Service using the Azure portal.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti 'nde Azure portal kullanarak yeni bir blok zinciri üyesi ve konsorsiyu dağıtırsınız.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-blockchain-member"></a>Blok zinciri üyesi oluşturma
 
-Create a blockchain member that runs the Quorum ledger protocol in a new or existing consortium.
+Yeni veya mevcut bir konsorsiyda çekirdek defter protokolünü çalıştıran bir blok zinciri üyesi oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-1. Select **Blockchain** > **Azure Blockchain Service (preview)** .
+1. **Azure blok zinciri hizmeti (Önizleme)**  > **blok zinciri** seçin.
 
-    ![Create Service](./media/create-member/create-member.png)
+    ![Hizmet oluştur](./media/create-member/create-member.png)
 
     Ayar | Açıklama
     --------|------------
-    Abonelik | Select the Azure subscription that you want to use for your service. Birden fazla aboneliğiniz varsa kaynağın faturalandığı aboneliği seçin.
-    Kaynak grubu | Create a new resource group name or choose an existing one from your subscription.
-    Bölge | Choose a region to create the member. All members of the consortium must be in the same location.
-    Protokol | Currently, Azure Blockchain Service Preview supports the Quorum protocol.
-    Konsorsiyum | For a new consortium, enter a unique name. If joining a consortium through an invite, choose the consortium you are joining.
-    Adı | Choose a unique name for the Azure Blockchain Service member. The blockchain member name can only contain lowercase letters and numbers. İlk karakter bir harf olmalıdır. The value must be between 2 and 20 characters long.
-    Member account password | The member account password is used to encrypt the private key for the Ethereum account that is created for your member. You use the member account and member account password for consortium management.
-    Açıklama | Description of the consortium.
-    Fiyatlandırma | The node configuration and cost for your new service. Select the **Change** link to choose between **Standard** and **Basic** tiers.
-    Node password | The password for the member's default transaction node. Use the password for basic authentication when connecting to blockchain member's default transaction node public endpoint.
+    Abonelik | Hizmetiniz için kullanmak istediğiniz Azure aboneliğini seçin. Birden fazla aboneliğiniz varsa kaynağın faturalandığı aboneliği seçin.
+    Kaynak grubu | Yeni bir kaynak grubu adı oluşturun veya aboneliğinizden mevcut bir tane seçin.
+    Bölge | Üyeyi oluşturmak için bir bölge seçin. Konsorsiyumun tüm üyeleri aynı konumda olmalıdır.
+    Protokol | Şu anda Azure blok zinciri hizmeti önizlemesi çekirdek protokolünü destekliyor.
+    Konsorsiyum | Yeni bir konsorsiyum için benzersiz bir ad girin. Bir toplantıya bir davet aracılığıyla katılırken katıldığınız Konsorsiyumu seçin.
+    Name | Azure blok zinciri hizmeti üyesi için benzersiz bir ad seçin. Blok zinciri üye adı yalnızca küçük harf ve sayı içerebilir. İlk karakter bir harf olmalıdır. Değer 2 ila 20 karakter uzunluğunda olmalıdır.
+    Üye hesabı parolası | Üye hesabı parolası, üyelik için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
+    Açıklama | Konsorsiyumun açıklaması.
+    Fiyatlandırma | Yeni hizmetinizin düğüm yapılandırması ve maliyeti. **Standart** ve **temel** katmanlar arasında seçim yapmak için **değişiklik** bağlantısını seçin.
+    Düğüm parolası | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 
-1. Select **Review + create** to validate your settings. Select **Create** to provision the service. Provisioning takes about 10 minutes.
-1. Select **Notifications** on the toolbar to monitor the deployment process.
-1. After deployment, navigate to your blockchain member.
+1. Ayarlarınızı doğrulamak için **gözden geçir + oluştur** ' u seçin. Hizmeti sağlamak için **Oluştur** ' u seçin. Sağlama yaklaşık 10 dakika sürer.
+1. Dağıtım işlemini izlemek için araç çubuğunda **Bildirimler** ' i seçin.
+1. Dağıtımdan sonra, blok zinciri üyesine gidin.
 
-Select **Overview**, you can view the basic information about your service including the RootContract address and member account.
+**Genel bakış**' ı seçtiğinizde, hizmetinize ilişkin temel bilgileri rootcontract adresi ve üye hesabı da dahil olmak üzere görüntüleyebilirsiniz.
 
-![Blockchain member overview](./media/create-member/overview.png)
+![Blok zinciri üyesine genel bakış](./media/create-member/overview.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-You can use the member you created for the next quickstart or tutorial. When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created for the quickstart.
+Sonraki hızlı başlangıç veya öğretici için oluşturduğunuz üyeyi kullanabilirsiniz. Artık gerekli değilse, hızlı başlangıç için oluşturduğunuz `myResourceGroup` kaynak grubunu silerek kaynakları silebilirsiniz.
 
-To delete the resource group:
+Kaynak grubunu silmek için:
 
-1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
-2. **Kaynak grubunu sil**'i seçin. Verify deletion by entering the resource group name and select **Delete**.
+1. Azure portal sol gezinti bölmesindeki **kaynak grubu** ' na gidin ve silmek istediğiniz kaynak grubunu seçin.
+2. **Kaynak grubunu sil**'i seçin. Kaynak grubu adını girip **Sil**' i seçerek silmeyi doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you deployed an Azure Blockchain Service member and a new consortium. Try the next quickstart to use Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+Bu hızlı başlangıçta, bir Azure blok zinciri hizmeti üyesi ve yeni bir konsorsiyu dağıttınız. Azure blok zinciri hizmeti 'nde bir konsorsiyume eklemek için, Ethereum için Azure blok zinciri geliştirme seti 'ni kullanmak üzere bir sonraki hızlı başlangıcı deneyin.
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [Azure blok zinciri hizmetine bağlanmak için Visual Studio Code kullanma](connect-vscode.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service ledger versions, patching, & upgrade
-description: Overview of the supported ledgers versions in Azure Blockchain Service, including policies regarding systems patching and system-managed and user-managed upgrades.
+title: Azure blok zinciri hizmeti muhasebe sürümleri, düzeltme eki uygulama & yükseltme
+description: Systems düzeltme eki uygulama ve sistem tarafından yönetilen ve Kullanıcı tarafından yönetilen yükseltmelerle ilgili ilkeler de dahil olmak üzere Azure blok zinciri hizmeti 'ndeki desteklenen bağış cihazları sürümlerine genel bakış.
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,26 +11,26 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325180"
 ---
-# <a name="supported-azure-blockchain-service-ledger-versions"></a>Supported Azure Blockchain Service ledger versions
+# <a name="supported-azure-blockchain-service-ledger-versions"></a>Desteklenen Azure blok zinciri hizmeti muhasebe sürümleri
 
-Azure Blockchain Service uses the Ethereum-based [Quorum](https://www.goquorum.com/developers) ledger designed for the processing of private transactions within a group of known participants, identified as a consortium in Azure Blockchain Service.
+Azure blok zinciri hizmeti, Azure blok zinciri hizmeti 'nde bir konsorsiyum olarak tanımlanan, bilinen katılımcılar grubu içindeki özel işlemlerin işlenmesi için tasarlanan Ethereum tabanlı [çekirdek](https://www.goquorum.com/developers) muhasebeyi kullanır.
 
-Currently, Azure Blockchain Service supports [Quorum version 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) and [Tessera transaction manager](https://github.com/jpmorganchase/tessera).
+Şu anda Azure blok zinciri hizmeti, [çekirdek sürümü 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) ve [Tessera işlem yöneticisini](https://github.com/jpmorganchase/tessera)destekler.
 
-## <a name="managing-updates-and-upgrades"></a>Managing updates and upgrades
+## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
 
-Versioning in Quorum is done through a major, minor, and patch releases. For example, if the Quorum version is 2.0.1, release type would be categorized as follows:
+Çekirdekte sürüm oluşturma, ana, ikincil ve düzeltme eki yayınlar aracılığıyla yapılır. Örneğin, çekirdek sürümü 2.0.1 ise, yayın türü şu şekilde kategorilere ayrılır:
 
-|Major | Minor  | Patch  |
+|Büyük | Küçük  | Düzeltmesi  |
 | :--- | :----- | :----- |
-| 2 | 0 | 1 | 
+| 2 | 0 | 1\. | 
 
-Azure Blockchain Service automatically updates patch releases of Quorum to existing running members within 30 days of being made available from Quorum.
+Azure blok zinciri hizmeti, çekirdeğin düzeltme eki sürümlerini, çekirdekte kullanılabilir hale getirilmekte olan 30 gün içinde var olan çalışan üyelere otomatik olarak güncelleştirir.
 
-## <a name="availability-of-new-ledger-versions"></a>Availability of new ledger versions
+## <a name="availability-of-new-ledger-versions"></a>Yeni muhasebe sürümlerinin kullanılabilirliği
 
-Azure Blockchain Service provides the latest major and minor versions of the Quorum ledger within 60 days of being available from the Quorum manufacturer. A maximum of four minor releases are provided for consortia to choose from when provisioning a new member and consortium. Upgrading from to a major or minor release is currently not supported. For example, if you are running version 2.x, an upgrade to version 3.x is currently not supported. Similarly, if you are running version 2.2, an upgrade to version 2.3 is currently not supported.
+Azure blok zinciri hizmeti, çekirdek üreticisinin 60 gün içinde kullanılabilir olması için çekirdek muhasebeyi en son büyük ve küçük sürümlerini sağlar. Yeni bir üye ve konsorsiyumun sağlanmasından sonra aralarından seçim yapmak için en fazla dört alt sürüm verilmiştir. Sürümünden büyük veya küçük bir sürüme yükseltme şu anda desteklenmiyor. Örneğin, sürüm 2. x çalıştırıyorsanız, sürüm 3. x ' e yükseltme şu anda desteklenmemektedir. Benzer şekilde, 2,2 sürümünü çalıştırıyorsanız, sürüm 2,3 ' ye yükseltme şu anda desteklenmemektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Limits in Azure Blockchain Service](limits.md)
+[Azure blok zinciri hizmeti sınırları](limits.md)

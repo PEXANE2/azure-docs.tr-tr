@@ -1,6 +1,6 @@
 ---
-title: Upload a vhd to Azure using Azure CLI
-description: Learn how to upload a vhd to an Azure managed disk and copy a managed disk across regions, using the Azure CLI, via direct upload.
+title: Azure CLı kullanarak bir VHD 'yi Azure 'a yükleme
+description: Azure yönetilen diskine bir VHD yüklemeyi ve doğrudan karşıya yükleme yoluyla Azure CLı kullanarak bölgeler arasında yönetilen bir disk kopyalamayı öğrenin.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -16,52 +16,52 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457598"
 ---
-# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Upload a vhd to Azure using Azure CLI
+# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Azure CLı kullanarak bir VHD 'yi Azure 'a yükleme
 
-This article explains how to upload a vhd from your local machine to an Azure managed disk. Previously, you had to follow a more involved process that included staging your data in a storage account, and managing that storage account. Now, you no longer need to manage a storage account, or stage data in it to upload a vhd. Instead, you create an empty managed disk, and upload a vhd directly to it. This simplifies uploading on-premises VMs to Azure and enables you to upload a vhd up to 32 TiB directly into a large managed disk.
+Bu makalede, yerel makinenizden bir Azure yönetilen diskine bir VHD yükleme işleminin nasıl yapılacağı açıklanır. Daha önce, verilerinizi bir depolama hesabına hazırlama ve bu depolama hesabını yönetme dahil olmak üzere daha fazla ilgili bir işlemi izlemeniz gerekiyordu. Artık bir depolama hesabını yönetmeniz veya bir VHD 'yi karşıya yüklemek için içindeki verileri aşamalandırmanız gerekmez. Bunun yerine, boş bir yönetilen disk oluşturur ve doğrudan buna bir VHD yüklersiniz. Bu, şirket içi VM 'Leri Azure 'a yüklemeyi basitleştirir ve bir VHD 'yi 32 TiB 'ye kadar doğrudan büyük bir yönetilen diske yüklemenizi sağlar.
 
-If you are providing a backup solution for IaaS VMs in Azure, we recommend you use direct upload to restore customer backups to managed disks. If you are uploading a VHD from a machine external to Azure, speeds will depend on your local bandwidth. If you are using an Azure VM, then your bandwidth will be the same as standard HDDs.
+Azure 'da IaaS sanal makineleri için bir yedekleme çözümü sağlıyorsanız, müşteri yedeklemelerini yönetilen disklere geri yüklemek için doğrudan karşıya yükleme kullanmanızı öneririz. Bir VHD 'yi Azure 'a harici bir makineden yüklüyorsanız, hızlarınızın yerel bant genişliğinizin olması gerekir. Azure VM kullanıyorsanız, bant genişliğiniz standart HDD 'Ler ile aynı olacaktır.
 
-Currently, direct upload is supported for standard HDD, standard SSD, and premium SSD managed disks. It is not yet supported for ultra SSDs.
+Şu anda, standart HDD, standart SSD ve Premium SSD tarafından yönetilen diskler için doğrudan karşıya yükleme desteklenir. Henüz Ultra SSD 'Ler için desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Download the latest [version of AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
-- [Install the Azure CLI](/cli/azure/install-azure-cli).
-- A vhd file, stored locally
-- If you intend to upload a vhd from on-premises: A vhd that [has been prepared for Azure](../windows/prepare-for-upload-vhd-image.md), stored locally.
-- Or, a managed disk in Azure, if you intend to perform a copy action.
+- [AzCopy ile v10 arasındaki 'ın](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)en son sürümünü indirin.
+- [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
+- Yerel olarak depolanan bir VHD dosyası
+- Şirket içinden bir VHD yüklemeyi planlıyorsanız: [Azure için hazırlanan](../windows/prepare-for-upload-vhd-image.md)bir VHD, yerel olarak depolanır.
+- Ya da bir kopyalama eylemi gerçekleştirmek istiyorsanız Azure 'da yönetilen bir disk.
 
-## <a name="create-an-empty-managed-disk"></a>Create an empty managed disk
+## <a name="create-an-empty-managed-disk"></a>Boş bir yönetilen disk oluşturma
 
-To upload your vhd to Azure, you'll need to create an empty managed disk that is configured for this upload process. Before you create one, there's some additional information you should know about these disks.
+VHD 'nizi Azure 'a yüklemek için, bu karşıya yükleme işlemi için yapılandırılmış boş bir yönetilen disk oluşturmanız gerekir. Bir tane oluşturmadan önce, bu diskler hakkında bilmeniz gereken bazı ek bilgiler vardır.
 
-This kind of managed disk has two unique states:
+Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 
-- ReadToUpload, which means the disk is ready to receive an upload but, no [secure access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) has been generated.
-- ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
+- ReadToUpload, diskin karşıya yüklemeyi almaya çalıştığı ancak [güvenli erişim imzası](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) üretilmediği anlamına gelir.
+- ActiveUpload, bu, diskin karşıya yükleme almaya ve SAS üretilmeye hazırlanmasıdır.
 
-While in either of these states, the managed disk will be billed at [standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
+Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, diskin bir VM 'ye eklenmesi için gerekli olan yönetilen diskte `revoke-access` çağrılana kadar doğru olacaktır.
 
-Before you can create an empty standard HDD for uploading, you'll need to have the file size of the vhd you want to upload, in bytes. To get that, you can use either `wc -c <yourFileName>.vhd` or `ls -al <yourFileName>.vhd`. This value is used when specifying the **--upload-size-bytes** parameter.
+Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, karşıya yüklemek istediğiniz VHD 'nin dosya boyutunu bayt cinsinden yapmanız gerekir. Bunu sağlamak için `wc -c <yourFileName>.vhd` veya `ls -al <yourFileName>.vhd`kullanabilirsiniz. Bu değer, **--karşıya yükleme-boyut-bayt** parametresi belirtildiğinde kullanılır.
 
-Create an empty standard HDD for uploading by specifying both the **-–for-upload** parameter and the **--upload-size-bytes** parameter in a [disk create](/cli/azure/disk#az-disk-create) cmdlet:
+Bir [disk oluşturma](/cli/azure/disk#az-disk-create) cmdlet 'inde-- **for-upload** parametresini ve **--upload-size-bytes** parametresini belirterek KARŞıYA yüklemek için boş bir standart HDD oluşturun:
 
 ```bash
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-If you would like to upload either a premium SSD or a standard SSD, replace **standard_lrs** with either **premium_LRS** or **standardssd_lrs**. Ultra SSD is not yet supported.
+Premium SSD veya standart SSD yüklemek isterseniz, **standard_lrs** **premium_LRS** veya **standardssd_lrs**ile değiştirin. Ultra SSD henüz desteklenmiyor.
 
-You have now created an empty managed disk that is configured for the upload process. To upload a vhd to the disk, you'll need a writeable SAS, so that you can reference it as the destination for your upload.
+Şimdi karşıya yükleme işlemi için yapılandırılmış boş bir yönetilen disk oluşturdunuz. Bir VHD 'yi diske yüklemek için, bir yazılabilir SAS gerekir, bu sayede karşıya yüklemenizin hedefi olarak başvurabilirsiniz.
 
-To generate a writable SAS of your empty managed disk, use the following command:
+Boş yönetilen diskinizin yazılabilir bir SAS oluşturmak için aşağıdaki komutu kullanın:
 
 ```bash
 az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
 ```
 
-Sample returned value:
+Örnek döndürülen değer:
 
 ```
 {
@@ -69,21 +69,21 @@ Sample returned value:
 }
 ```
 
-## <a name="upload-vhd"></a>Upload vhd
+## <a name="upload-vhd"></a>VHD 'yi karşıya yükle
 
-Now that you have a SAS for your empty managed disk, you can use it to set your managed disk as the destination for your upload command.
+Boş yönetilen diskiniz için bir SAS olduğuna göre, bunu kullanarak, yükleme Komutunuz için yönetilen diskinizi hedef olarak ayarlayabilirsiniz.
 
-Use AzCopy v10 to upload your local VHD file to a managed disk by specifying the SAS URI you generated.
+Yerel VHD dosyanızı oluşturduğunuz SAS URI 'sini belirterek yönetilen bir diske yüklemek için AzCopy ile v10 arasındaki kullanın.
 
-This upload has the same throughput as the equivalent [standard HDD](disks-types.md#standard-hdd). For example, if you have a size that equates to S4, you will have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you will have a throughput of up to 500 MiB/s.
+Bu karşıya yükleme, eşdeğer [Standart HDD](disks-types.md#standard-hdd)ile aynı aktarım hızına sahiptir. Örneğin, S4 'e karşılık gelen bir boyutunuz varsa, 60 MIB/sn 'ye kadar bir aktarım hızına sahip olursunuz. Ancak, S70 'e karşılık gelen bir boyutunuz varsa, 500 MIB/sn 'ye kadar bir aktarım hızına sahip olursunuz.
 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-If your SAS expires during upload, and you haven't called `revoke-access` yet, you can get a new SAS to continue the upload using `grant-access`, again.
+Yükleme sırasında SAS süresi dolarsa ve `revoke-access` henüz çağırmadıysanız, `grant-access`kullanarak karşıya yüklemeye devam etmek için yeni bir SAS alabilirsiniz.
 
-After the upload is complete, and you no longer need to write any more data to the disk, revoke the SAS. Revoking the SAS will change the state of the managed disk and allow you to attach the disk to a VM.
+Karşıya yükleme tamamlandıktan sonra ve diske daha fazla veri yazmanıza gerek kalmadığında, SAS 'yi iptal edin. SAS iptal edildiğinde, yönetilen diskin durumu değişir ve diski bir VM 'ye eklemenize olanak tanır.
 
 ```bash
 az disk revoke-access -n mydiskname -g resourcegroupname
@@ -91,14 +91,14 @@ az disk revoke-access -n mydiskname -g resourcegroupname
 
 ## <a name="copy-a-managed-disk"></a>Yönetilen diski çoğaltma
 
-Direct upload also simplifies the process of copying a managed disk. You can either copy within the same region or cross-region (to another region).
+Doğrudan karşıya yükleme, yönetilen bir disk kopyalama işlemini de basitleştirir. Aynı bölge veya çapraz bölge içinde (başka bir bölgeye) kopyalayabilirsiniz.
 
-The follow script will do this for you, the process is similar to the steps described earlier, with some differences since you're working with an existing disk.
+İzleme betiği bunu sizin için işler, mevcut bir diskle çalıştığınızdan daha önce açıklanan adımlara benzer.
 
 > [!IMPORTANT]
-> You need to add an offset of 512 when you're providing the disk size in bytes of a managed disk from Azure. This is because Azure omits the footer when returning the disk size. The copy will fail if you do not do this. The following script already does this for you.
+> Azure 'dan yönetilen bir diskin bayt cinsinden disk boyutunu sağlarken 512 sapmasını eklemeniz gerekir. Bunun nedeni, Azure 'un disk boyutunu döndürürken alt bilgiyi atatmesinden kaynaklanır. Bunu yapmazsanız kopya başarısız olur. Aşağıdaki komut dosyası sizin için zaten bunu yapar.
 
-Replace the `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, and `<yourTargetLocationHere>` (an example of a location value would be uswest2) with your values, then run the following script in order to copy a managed disk.
+`<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`ve `<yourTargetLocationHere>` (bir konum değerinin bir örneği uswest2) değerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
 
 ```bash
 sourceDiskName = <sourceDiskNameHere>
@@ -124,5 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've successfully uploaded a vhd to a managed disk, you can attach the disk as a [data disk to an existing VM](add-disk.md) or [attach the disk to a VM as an OS disk](upload-vhd.md#create-the-vm), to create a new VM. 
+Bir VHD 'yi yönetilen diske başarıyla yüklediğinize göre, diski mevcut bir sanal makineye bir [veri diski](add-disk.md) olarak ekleyebilir veya [diski bir VM 'ye bir sanal makineye iliştirebilirsiniz](upload-vhd.md#create-the-vm), yeni bir VM oluşturabilirsiniz. 
 

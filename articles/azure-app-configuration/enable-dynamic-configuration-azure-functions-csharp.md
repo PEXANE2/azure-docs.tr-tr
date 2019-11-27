@@ -114,7 +114,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 6. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarın değerlerini güncelleştirin:
 
-    | Anahtar | Değer |
+    | Anahtar | Value |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-güncelleştirildi |
 

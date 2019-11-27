@@ -1,6 +1,6 @@
 ---
-title: Create, build, & deploy smart contracts tutorial - Azure Blockchain Service
-description: Tutorial on how to use the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code to create, build, and deploy a smart contract on Azure Blockchain Service.
+title: Akıllı sözleşmeleri oluşturma, derleme, & dağıtma öğreticisi-Azure blok zinciri hizmeti
+description: Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme seti 'ni kullanma hakkında öğretici.
 ms.date: 11/20/2019
 ms.topic: tutorial
 ms.reviewer: chrisseg
@@ -11,83 +11,83 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325160"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Tutorial: Create, build, and deploy smart contracts on Azure Blockchain Service
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
 
-In this tutorial, use the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code to create, build, and deploy a smart contract on Azure Blockchain Service. You also use Truffle to execute a smart contract function via a transaction.
+Bu öğreticide, Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanın. Ayrıca bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Truffle kullanırsınız.
 
-You use Azure Blockchain Development Kit for Ethereum to:
+Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsiniz:
 
 > [!div class="checklist"]
-> * Create a smart contract
-> * Deploy a smart contract
-> * Execute a smart contract function via a transaction
-> * Query contract state
+> * Akıllı sözleşme oluşturma
+> * Akıllı sözleşme dağıtma
+> * Bir işlem aracılığıyla akıllı sözleşme işlevini yürütme
+> * Sözleşme durumunu sorgula
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Complete [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md)
+* [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x or higher](https://nodejs.org/download)
-* [Git 2.10.x or higher](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Add python.exe to your path. Python version 2.7.15 in your path is required for Azure Blockchain Development Kit.
+* [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x veya üzeri](https://nodejs.org/download)
+* [Git 2.10. x veya üzeri](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza Python. exe ' yi ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürüm 2.7.15 gereklidir.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+* [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-On Windows, an installed C++ compiler is required for the node-gyp module. You can use the MSBuild tools:
+Windows 'da, Node- C++ JP modülü için yüklü bir derleyici gerekir. MSBuild araçlarını kullanabilirsiniz:
 
-* If Visual Studio 2017 is installed, configure npm to use the MSBuild tools with the command `npm config set msvs_version 2017 -g`
-* If Visual Studio 2019 is installed, set the MS build tools path for npm. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* Otherwise, install the stand-alone VS Build tools using `npm install --global windows-build-tools` in an elevated *Run as administrator* command shell.
+* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın `npm config set msvs_version 2017 -g`
+* Visual Studio 2019 yüklüyse, NPM için MS derleme araçları yolunu ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Aksi takdirde, yükseltilmiş bir *yönetici olarak çalıştır* komut kabuğu `npm install --global windows-build-tools` kullanarak tek başına vs Build araçlarını yükleyemezsiniz.
 
-For more information about node-gyp, see the [node-gyp repository on GitHub](https://github.com/node-gyp).
+Node-cayp hakkında daha fazla bilgi için [GitHub 'daki node-cayp deposuna](https://github.com/node-gyp)bakın.
 
-## <a name="create-a-smart-contract"></a>Create a smart contract
+## <a name="create-a-smart-contract"></a>Akıllı sözleşme oluşturma
 
-The Azure Blockchain Development Kit for Ethereum uses project templates and Truffle tools to help scaffold, build, and deploy contracts. Before you begin, complete the prerequisite [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md). The quickstart guides you through the installation and configuration of the Azure Blockchain Development Kit for Ethereum.
+Ethereum için Azure blok zinciri geliştirme seti, sözleşmeleri dolandırmaya, oluşturmaya ve dağıtmanıza yardımcı olmak için proje şablonları ve truffle araçlarını kullanır. Başlamadan önce önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, Ethereum için Azure blok zinciri geliştirme setini yükleme ve yapılandırma sürecinde size rehberlik eder.
 
-1. From the VS Code command palette, choose **Azure Blockchain: New Solidity Project**.
-1. Choose **Create basic project**.
-1. Create a new folder named `HelloBlockchain` and **Select new project path**.
+1. VS Code komut paletinden **Azure blok Zinciri: New Solidity Project**' i seçin.
+1. **Temel proje oluştur**seçeneğini belirleyin.
+1. `HelloBlockchain` adlı yeni bir klasör oluşturun ve **Yeni proje yolu**' nu seçin.
 
-The Azure Blockchain Development Kit creates and initializes a new Solidity project for you. The basic project includes a sample **HelloBlockchain** smart contract and all the necessary files to build and deploy to your consortium member in Azure Blockchain Service. It may take several minutes for the project to be created. You can monitor the progress in VS Code's terminal panel by selecting the output for Azure Blockchain.
+Azure blok zinciri geliştirme seti sizin için yeni bir Solidity projesi oluşturur ve başlatır. Temel proje, örnek bir **Helloblockzincirine** akıllı sözleşme ve Azure blok zinciri hizmeti 'nde Consortium üyelemenize dağıtmak için gereken tüm dosyaları içerir. Projenin oluşturulması birkaç dakika sürebilir. Azure blok zinciri için çıktıyı seçerek VS Code 'ın Terminal panelinde ilerleme durumunu izleyebilirsiniz.
 
-The project structure looks like the following example:
+Proje yapısı aşağıdaki örneğe benzer şekilde görünür:
 
-   ![Solidity project](./media/send-transaction/solidity-project.png)
+   ![Solidity projesi](./media/send-transaction/solidity-project.png)
 
-## <a name="build-a-smart-contract"></a>Build a smart contract
+## <a name="build-a-smart-contract"></a>Akıllı sözleşme oluşturma
 
-Smart contracts are located in the project's **contracts** directory. You compile smart contracts before you deploy them to a blockchain. Use the **Build Contracts** command to compile all the smart contracts in your project.
+Akıllı sözleşmeler, projenin **sözleşmeler** dizininde bulunur. Akıllı sözleşmeleri bir blok zincirine dağıtmadan önce derleyebilirsiniz. Projenizdeki tüm akıllı sözleşmeleri derlemek için, **Yapı sözleşmeleri** komutunu kullanın.
 
-1. In the VS Code explorer sidebar, expand the **contracts** folder in your project.
-1. Right-click **HelloBlockchain.sol** and choose **Build Contracts** from the menu.
+1. VS Code Gezgini kenar çubuğunda, projenizdeki **sözleşmeler** klasörünü genişletin.
+1. **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri oluştur** ' u seçin.
 
-    ![Build contracts](./media/send-transaction/build-contracts.png)
+    ![Yapı sözleşmeleri](./media/send-transaction/build-contracts.png)
 
-Azure Blockchain Development Kit uses Truffle to compile the smart contracts.
+Azure blok zinciri geliştirme seti, akıllı sözleşmeleri derlemek için Truffle kullanır.
 
-![Compile output](./media/send-transaction/compile-output.png)
+![Derleme çıkışı](./media/send-transaction/compile-output.png)
 
-## <a name="deploy-a-smart-contract"></a>Deploy a smart contract
+## <a name="deploy-a-smart-contract"></a>Akıllı sözleşme dağıtma
 
-Truffle uses migration scripts to deploy your contracts to an Ethereum network. Migrations are JavaScript files located in the project's **migrations** directory.
+Truffle, sözleşmelerinizi bir Ethereum ağına dağıtmak için geçiş betikleri kullanır. Geçişler, projenin **geçiş** dizininde bulunan JavaScript dosyalarıdır.
 
-1. To deploy your smart contract, right-click **HelloBlockchain.sol** and choose **Deploy Contracts** from the menu.
-1. Choose your Azure Blockchain consortium network in the command palette. The consortium blockchain network was added to the project's Truffle configuration file when you created the project.
-1. Choose **Generate mnemonic**. Choose a filename and save the mnemonic file in the project folder. Örneğin, `myblockchainmember.env`. The mnemonic file is used to generate an Ethereum private key for your blockchain member.
+1. Akıllı sözleşmenizi dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin.
+1. Komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin. Projeyi oluştururken, konsorsiyum blok zinciri ağı projenin Truffle yapılandırma dosyasına eklendi.
+1. **Anımsatıcı üret**' i seçin. Bir dosya adı seçin ve anımsatıcı dosyasını proje klasörüne kaydedin. Örneğin, `myblockchainmember.env`. Anımsatıcı dosyası, blok zinciri üyesiyseniz bir Ethereum özel anahtarı oluşturmak için kullanılır.
 
-Azure Blockchain Development Kit uses Truffle to execute the migration script to deploy the contracts to the blockchain.
+Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak üzere geçiş betiğini yürütmek için Truffle kullanır.
 
-![Successfully deployed contract](./media/send-transaction/deploy-contract.png)
+![Sözleşme başarıyla dağıtıldı](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>Call a contract function
+## <a name="call-a-contract-function"></a>Sözleşme işlevini çağırma
 
-The **HelloBlockchain** contract's **SendRequest** function changes the **RequestMessage** state variable. Changing the state of a blockchain network is done via a transaction. You can create a script to execute the **SendRequest** function via a transaction.
+**Helloblockzincirleri** sözleşmesinin **SendRequest** işlevi **RequestMessage** durum değişkenini değiştirir. Bir blok zinciri ağının durumunun değiştirilmesi bir işlem aracılığıyla yapılır. **SendRequest** işlevini bir işlem aracılığıyla yürütmek için bir komut dosyası oluşturabilirsiniz.
 
-1. Create a new file in the root of your Truffle project and name it `sendrequest.js`. Add the following Web3 JavaScript code to the file.
+1. Truffle projenizin kökünde yeni bir dosya oluşturun ve `sendrequest.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -108,26 +108,26 @@ The **HelloBlockchain** contract's **SendRequest** function changes the **Reques
     };
     ```
 
-1. When Azure Blockchain Development Kit creates a project, the Truffle configuration file is generated with your consortium blockchain network endpoint details. Open **truffle-config.js** in your project. The configuration file lists two networks: one named development and one with the same name as the consortium.
-1. In VS Code's terminal pane, use Truffle to execute the script on your consortium blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
+1. Azure blok zinciri geliştirme seti bir proje oluşturduğunda, Truffle yapılandırma dosyası, Consortium blok zinciri ağ uç noktası ayrıntılarınız ile oluşturulur. **Truffle-config. js** ' i projenizde açın. Yapılandırma dosyasında iki ağ listelenir: bir tane geliştirme ve bir tane, konsorsiyum ile aynı ada sahip.
+1. VS Code Terminal bölmesinde, komut dosyasını Konsorsiyumu blok zinciri ağınızda yürütmek için Truffle ' yi kullanın. Terminal bölmesi menü çubuğunda açılan menüde **Terminal** sekmesini ve **PowerShell** ' i seçin.
 
     ```PowerShell
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
+    \<blok zinciri ağı\>, **Truffle-config. js**içinde tanımlanan blok zinciri ağının adıyla değiştirin.
 
-Truffle executes the script on your blockchain network.
+Truffle, betiği blok zinciri ağınızda yürütür.
 
-![Script output](./media/send-transaction/execute-transaction.png)
+![Betik çıkışı](./media/send-transaction/execute-transaction.png)
 
-When you execute a contract's function via a transaction, the transaction isn't processed until a block is created. Functions meant to be executed via a transaction return a transaction ID instead of a return value.
+Bir sözleşmenin işlevini bir işlem aracılığıyla yürüttüğünüzde, bir blok oluşturuluncaya kadar işlem işlenmez. Bir işlem yoluyla yürütülmesi amaçlanan işlevler, dönüş değeri yerine bir işlem KIMLIĞI döndürür.
 
-## <a name="query-contract-state"></a>Query contract state
+## <a name="query-contract-state"></a>Sözleşme durumunu sorgula
 
-Smart contract functions can return the current value of state variables. Let's add a function to return the value of a state variable.
+Akıllı sözleşme işlevleri, durum değişkenlerinin geçerli değerini döndürebilir. Bir durum değişkeninin değerini döndürecek bir işlev ekleyelim.
 
-1. In **HelloBlockchain.sol**, add a **getMessage** function to the **HelloBlockchain** smart contract.
+1. **Helloblockzincirine. Nuevo**Içinde, **helloblockzincirine** akıllı sözleşmeye bir **GetMessage** işlevi ekleyin.
 
     ``` solidity
     function getMessage() public view returns (string memory)
@@ -139,11 +139,11 @@ Smart contract functions can return the current value of state variables. Let's 
     }
     ```
 
-    The function returns the message stored in a state variable based on the current state of the contract.
+    İşlevi, sözleşmenin geçerli durumuna bağlı olarak bir durum değişkeninde depolanan iletiyi döndürür.
 
-1. Right-click **HelloBlockchain.sol** and choose **Build Contracts** from the menu to compile the changes to the smart contract.
-1. To deploy, right-click **HelloBlockchain.sol** and choose **Deploy Contracts** from the menu. When prompted, choose your Azure Blockchain consortium network in the command palette.
-1. Next, create a script using to call the **getMessage** function. Create a new file in the root of your Truffle project and name it `getmessage.js`. Add the following Web3 JavaScript code to the file.
+1. Akıllı sözleşmede değişiklikleri derlemek için **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri derle** ' yi seçin.
+1. Dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin. İstendiğinde, komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin.
+1. Sonra, **GetMessage** işlevini çağırmak için kullanarak bir betik oluşturun. Truffle projenizin kökünde yeni bir dosya oluşturun ve `getmessage.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -164,38 +164,38 @@ Smart contract functions can return the current value of state variables. Let's 
     };
     ```
 
-1. In VS Code's terminal pane, use Truffle to execute the script on your blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
+1. VS Code, Terminal bölmesinde, blok zinciri ağınızda betiği yürütmek için Truffle kullanın. Terminal bölmesi menü çubuğunda açılan menüde **Terminal** sekmesini ve **PowerShell** ' i seçin.
 
     ```bash
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
+    \<blok zinciri ağı\>, **Truffle-config. js**içinde tanımlanan blok zinciri ağının adıyla değiştirin.
 
-The script queries the smart contract by calling the getMessage function. The current value of the **RequestMessage** state variable is returned.
+Betik, getMessage işlevini çağırarak akıllı sözleşmeyi sorgular. **RequestMessage** durum değişkeninin geçerli değeri döndürüldü.
 
-![Script output](./media/send-transaction/execute-get.png)
+![Betik çıkışı](./media/send-transaction/execute-get.png)
 
-Notice the value is not **Hello, blockchain!** . Instead, the returned value is a placeholder. When you change and deploy the contract, the changed contract is deployed at a new address and the state variables are assigned values in the smart contract constructor. The Truffle sample **2_deploy_contracts.js** migration script deploys the smart contract and passes a placeholder value as an argument. The constructor sets the **RequestMessage** state variable to the placeholder value and that's what is returned.
+Değerin **Merhaba, blok zinciri!** olmadığına dikkat edin. Bunun yerine, döndürülen değer bir yer tutucudur. Sözleşmeyi değiştirdiğinizde ve dağıttığınızda, değiştirilen sözleşme yeni bir adreste dağıtılır ve durum değişkenlerine akıllı sözleşme oluşturucusunda değerler atanır. Truffle örnek **2_deploy_contracts. js** geçiş betiği, akıllı sözleşmeyi dağıtır ve bir yer tutucu değerini bağımsız değişken olarak geçirir. Oluşturucu **RequestMessage** durum değişkenini yer tutucu değerine ayarlar ve döndürülen değer.
 
-1. To set the **RequestMessage** state variable and query the value, run the **sendrequest.js** and **getmessage.js** scripts again.
+1. **RequestMessage** durum değişkenini ayarlamak ve değeri sorgulamak için **SendRequest. js** ve **GetMessage. js** betiklerini yeniden çalıştırın.
 
-    ![Script output](./media/send-transaction/execute-set-get.png)
+    ![Betik çıkışı](./media/send-transaction/execute-set-get.png)
 
-    **sendrequest.js** sets the **RequestMessage** state variable to **Hello, blockchain!** and **getmessage.js** queries the contract for value of **RequestMessage** state variable and returns **Hello, blockchain!** .
+    **SendRequest. js** , **RequestMessage** durum değişkenini **Merhaba, blok zinciri!** olarak ayarlar ve **GetMessage. js** , **isteği RequestMessage** durum değişkeninin değeri için sorgular ve **Hello, blok zinciri!** döndürür.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created in the *Create a blockchain member* prerequisite quickstart.
+Artık gerekli değilse, *blok zinciri üye* önkoşul hızlı başlangıcı ' nda oluşturduğunuz `myResourceGroup` kaynak grubunu silerek kaynakları silebilirsiniz.
 
-To delete the resource group:
+Kaynak grubunu silmek için:
 
-1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
-1. **Kaynak grubunu sil**'i seçin. Verify deletion by entering the resource group name and select **Delete**.
+1. Azure portal sol gezinti bölmesindeki **kaynak grubu** ' na gidin ve silmek istediğiniz kaynak grubunu seçin.
+1. **Kaynak grubunu sil**'i seçin. Kaynak grubu adını girip **Sil**' i seçerek silmeyi doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you created a sample Solidity project using Azure Blockchain Development Kit. You built and deployed a smart contract then called a function via a transaction on a blockchain consortium network hosted on Azure Blockchain Service.
+Bu öğreticide, Azure blok zinciri geliştirme seti 'ni kullanarak örnek bir Solidity projesi oluşturdunuz. Azure blok zinciri hizmeti 'nde barındırılan bir blok zinciri konsorsiyum ağı üzerinde bir işlem aracılığıyla işlev olarak adlandırılan akıllı bir sözleşmeyi oluşturup dağıttığınız.
 
 > [!div class="nextstepaction"]
-> [Developing blockchain applications using Azure Blockchain Service](develop.md)
+> [Azure blok zinciri hizmetini kullanarak blok zinciri uygulamaları geliştirme](develop.md)

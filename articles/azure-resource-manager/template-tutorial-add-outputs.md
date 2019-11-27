@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add outputs to template
-description: Add outputs to your Azure Resource Manager template to simplify the syntax.
+title: Öğretici-şablona çıktılar ekleme
+description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza çıktılar ekleyin.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,45 +12,45 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405994"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Tutorial: Add outputs to your Resource Manager template
+# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza çıktılar ekleme
 
-In this tutorial, you learn how to return a value from your template. You use outputs when you need a value from a deployed resource. This tutorial takes **7 minutes** to complete.
+Bu öğreticide, şablonunuzda bir değer döndürmeyi öğrenirsiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-We recommend that you complete the [tutorial about variables](template-tutorial-add-variables.md), but it's not required.
+[Değişkenler hakkında öğreticiyi](template-tutorial-add-variables.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Şablonu gözden geçir
 
-At the end of the previous tutorial, your template had the following JSON:
+Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
 
-It deploys a storage account, but it doesn't return any information about the storage account. You might need to capture properties from a new resource so they're available later for reference.
+Bir depolama hesabı dağıtır, ancak depolama hesabı hakkında herhangi bir bilgi döndürmez. Daha sonra başvuru için kullanılabilir olmaları için yeni bir kaynaktaki özellikleri yakalamanız gerekebilir.
 
-## <a name="add-outputs"></a>Add outputs
+## <a name="add-outputs"></a>Çıkış Ekle
 
-You can use outputs to return values from the template. For example, it might be helpful to get the endpoints for your new storage account.
+Şablondan değer döndürmek için çıktıları kullanabilirsiniz. Örneğin, yeni depolama hesabınız için uç noktaları almak faydalı olabilir.
 
-The following example highlights the change to your template to add an output value. Copy the whole file and replace your template with its contents.
+Aşağıdaki örnek, bir çıkış değeri eklemek için şablonunuzda yapılan değişikliği vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
 
-There are some important items to note about the output value you added.
+Eklediğiniz çıktı değeri hakkında dikkat etmeniz için bazı önemli öğeler vardır.
 
-The type of returned value is set to **object**, which means it returns a JSON object.
+Döndürülen değerin türü **Object**olarak ayarlanır, yanı bir JSON nesnesi döndürür.
 
-It uses the [reference](resource-group-template-functions-resource.md#reference) function to get the runtime state of the storage account. To get the runtime state of a resource, you pass in the name or ID of a resource. In this case, you use the same variable you used to create the name of the storage account.
+Depolama hesabının çalışma zamanı durumunu almak için [başvuru](resource-group-template-functions-resource.md#reference) işlevini kullanır. Bir kaynağın çalışma zamanı durumunu almak için bir kaynağın adını veya KIMLIĞINI geçirin. Bu durumda, depolama hesabının adını oluşturmak için kullandığınız değişkeni kullanırsınız.
 
-Finally, it returns the **primaryEndpoints** property from the storage account
+Son olarak, depolama hesabından en son eden **yenyenler** özelliğini döndürür
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-You're ready to deploy the template and look at the returned value.
+Şablonu dağıtmaya ve döndürülen değere bakmaya hazırsınız.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -75,7 +75,7 @@ az group deployment create \
 
 ---
 
-In the output for the deployment command, you'll see an object similar to:
+Dağıtım komutunun çıktısında şuna benzer bir nesne görürsünüz:
 
 ```json
 {
@@ -88,41 +88,41 @@ In the output for the deployment command, you'll see an object similar to:
 }
 ```
 
-## <a name="review-your-work"></a>Review your work
+## <a name="review-your-work"></a>Çalışmanızı gözden geçirin
 
-You've done a lot in the last six tutorials. Let's take a moment to review what you have done. You created a template with parameters that are easy to provide. The template is reusable in different environments because it allows for customization and dynamically creates needed values. It also returns information about the storage account that you could use in your script.
+Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden geçirmeniz biraz zaman atalım. Kolayca sağlanması gereken parametrelere sahip bir şablon oluşturdunuz. Şablon, özelleştirmeye izin verdiğinden ve gerekli değerleri dinamik olarak oluşturduğundan farklı ortamlarda yeniden kullanılabilir. Ayrıca, betiğinizdeki kullanabileceğiniz depolama hesabı hakkındaki bilgileri de döndürür.
 
-Now, let's look at the resource group and deployment history.
+Şimdi, kaynak grubuna ve dağıtım geçmişine bakalım.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. Depending on the steps you did, you should have at least one and perhaps several storage accounts in the resource group.
-1. You should also have several successful deployments listed in the history. Select that link.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol menüden **kaynak grupları**' nı seçin.
+1. Dağıttığınız kaynak grubunu seçin.
+1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki birkaç depolama hesabınız olmalıdır.
+1. Ayrıca, geçmişte listelenen birkaç başarılı dağıtıma da sahip olmanız gerekir. Bağlantıyı seçin.
 
-   ![Select deployments](./media/template-tutorial-add-outputs/select-deployments.png)
+   ![Dağıtımları seçin](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. You see all of your deployments in the history. Select the deployment called **addoutputs**.
+1. Tüm dağıtımlarınızın geçmişini görürsünüz. **Addoutputs**adlı dağıtımı seçin.
 
-   ![Show deployment history](./media/template-tutorial-add-outputs/show-history.png)
+   ![Dağıtım geçmişini göster](./media/template-tutorial-add-outputs/show-history.png)
 
-1. You can review the inputs.
+1. Girişleri gözden geçirebilirsiniz.
 
-   ![Show inputs](./media/template-tutorial-add-outputs/show-inputs.png)
+   ![Girişleri göster](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. You can review the outputs.
+1. Çıkışları gözden geçirebilirsiniz.
 
-   ![Show outputs](./media/template-tutorial-add-outputs/show-outputs.png)
+   ![Çıkışları göster](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. You can review the template.
+1. Şablonu gözden geçirebilirsiniz.
 
-   ![Show template](./media/template-tutorial-add-outputs/show-template.png)
+   ![Şablonu göster](./media/template-tutorial-add-outputs/show-template.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -131,7 +131,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you added a return value to the template. In the next tutorial, you'll learn how to export a template and use parts of that exported template in your template.
+Bu öğreticide, şablona bir dönüş değeri eklediniz. Sonraki öğreticide, bir şablonu dışarı aktarmayı ve şablonunuzda bu dışarı aktarılmış şablonun parçalarını kullanmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Use exported template](template-tutorial-export-template.md)
+> [Aktarılmış şablonu kullan](template-tutorial-export-template.md)

@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach database management for relational databases | Microsoft Docs
-description: Learn how to set up a lab to teach the management of relational databases.
+title: İlişkisel veritabanları için veritabanı yönetimine öğretmek üzere laboratuvar ayarlama | Microsoft Docs
+description: İlişkisel veritabanlarının yönetimini öğretmek için laboratuvar ayarlamayı öğrenin.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,59 +20,59 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233772"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Set up a lab to teach database management for relational databases
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>İlişkisel veritabanları için veritabanı yönetimine öğretmek üzere laboratuvar ayarlama
 
-This article describes how to set up a lab for a basic databases management class in Azure Lab Services. Databases concepts are one of the introductory courses taught in most of the Computer Science departments in college. Structured Query Language (SQL) is an international standard. SQL is the standard language for relation database management including adding, accessing, and managing content in a database.  It is most noted for its quick processing, proven reliability, ease, and flexibility of use.
+Bu makalede, Azure Lab Services ' de temel veritabanları yönetim sınıfı için bir laboratuvarın nasıl ayarlanacağı açıklanır. Veritabanları kavramlarından biri, üniversitenin çoğu bilgisayar bilimi departmanlarından biridir. Yapılandırılmış Sorgu Dili (SQL) uluslararası bir standarttır. SQL, bir veritabanında içerik ekleme, erişme ve yönetme dahil olmak üzere, ilişki veritabanı yönetimine yönelik standart dildir.  Bu en çok, hızlı işleme, kanıtlanmış güvenilirlik, kolaylıklar ve kullanım esnekliği için belirtilmiştir.
 
-In this article, we'll show how to set up a virtual machine template in a lab with both MySQL Database Server and SQL Server 2019 server.  [MySQL](https://www.mysql.com/) is a freely available open source Relational Database Management System (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) is the latest version of Microsoft’s RDBMS.
+Bu makalede, hem MySQL veritabanı sunucusu hem de SQL Server 2019 sunucusuyla bir laboratuvarda sanal makine şablonu ayarlamayı göstereceğiz.  [MySQL](https://www.mysql.com/) , ücretsiz olarak kullanılabilen bir açık kaynaklı Ilişkisel veritabanı yönetim SISTEMIDIR (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) , MICROSOFT 'un RDBMS 'nin en son sürümüdür.
 
-## <a name="lab-configuration"></a>Lab configuration
+## <a name="lab-configuration"></a>Laboratuvar yapılandırması
 
-To set up this lab, you need an Azure subscription and lab account to get started. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [Tutorial to Setup a Lab Account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve laboratuvar hesabına sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni laboratuvar hesabı oluşturma hakkında daha fazla bilgi için bkz. [Laboratuvar hesabı kurmak Için öğretici](tutorial-setup-lab-account.md).  Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
 
-### <a name="lab-account-settings"></a>Lab account settings
+### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [Specify Marketplace images available to lab creators](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
 
-| Lab account setting | Yönergeler |
+| Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
-|Marketplace image| Enable the ‘SQL Server 2019 Standard on Windows Server 2019’ image for use within your lab account.|
+|Market görüntüsü| Laboratuvar hesabınızda kullanmak için ' SQL Server 2019 standardını Windows Server 2019 üzerinde etkinleştirin '.|
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>Laboratuvar ayarları
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.  Sınıf Laboratuvarı oluşturma hakkında daha fazla bilgi için bkz. [bir derslik Laboratuvarı ayarlama öğreticisi](tutorial-setup-classroom-lab.md).
 
-| Lab settings | Value/instructions |
+| Laboratuvar ayarları | Değer/yönergeler |
 | ------------ | ------------------ |
-|Virtual Machine Size| Orta. This size is best suited for relational databases, in-memory caching, and analytics.|
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|Sanal makine boyutu| Orta. Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.|
+|Sanal makine görüntüsü| Windows Server 2019 üzerinde SQL Server 2019 standart|
 
-## <a name="template-machine-configuration"></a>Template machine configuration
+## <a name="template-machine-configuration"></a>Şablon makine yapılandırması
 
-To install MySQL on Windows Server 2019, you can follow the steps mentioned in [Install and Run MySQL Community Server on a Virtual Machine](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
+Windows Server 2019 ' ye MySQL yüklemek için, [bir sanal makinede MySQL Community Server 'ı yüklemek ve çalıştırmak](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)bölümünde bahsedilen adımları izleyebilirsiniz.
 
-SQL Server 2019 is pre-installed in the virtual machine image we chose when creating the new lab.
+SQL Server 2019, yeni Laboratuvarı oluştururken seçtiğimiz sanal makine görüntüsüne önceden yüklenmiştir.
 
 ## <a name="cost-estimate"></a>Maliyet tahmini
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was medium, which is 42 lab units.
+Bu sınıf için olası bir maliyet tahminini ele alalım.  25 öğrencilerden oluşan bir sınıf kullanacağız.  20 saatlik zamanlanan sınıf zamanı vardır.  Ayrıca, her öğrenci, zamanlanan sınıf zamanı dışında ev ödevleri veya atamalar için 10 saatlik kota alır.  Seçtiğiniz sanal makine boyutu, 42 laboratuvar birimi olan orta idi.
 
-Here is an example of a possible cost estimate for this class:
+Bu sınıf için olası bir maliyet tahmini örneği aşağıda verilmiştir:
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 0.42 USD per hour  = 315.00 USD
+25 öğrenci \* (20 zamanlanan saat + 10 kota saati) \* 0,42 ABD Doları = 315,00 ABD Doları
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
 
-This article walked you through the steps necessary to create a lab for basic database management concepts using both MySQL and SQL Server. You can use a similar setup for other databases classes.
+Bu makale, hem MySQL hem de SQL Server kullanarak temel veritabanı yönetim kavramları için laboratuvar oluşturmak için gereken adımlarda size kılavuzluk sağlar. Diğer veritabanı sınıfları için benzer bir kurulum kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Next steps are common to setting up any lab.
+Sonraki adımlar, herhangi bir laboratuvarı ayarlamak için ortaktır.
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [Şablon oluşturma ve yönetme](how-to-create-manage-template.md)
 - [Kullanıcı ekleme](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [Öğrenciler için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users)

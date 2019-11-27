@@ -1,7 +1,7 @@
 ---
-title: Convert configurations to composite resources for state configuration - Azure Automation
-description: Learn how to convert configurations to composite resources for state configuration in Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Durum yapılandırması için yapılandırmaları bileşik kaynaklara dönüştürme-Azure Otomasyonu
+description: Azure Automation 'da durum yapılandırması için yapılandırmaları bileşik kaynaklara dönüştürmeyi öğrenin.
+keywords: DSC, PowerShell, yapılandırma, kurulum
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -19,44 +19,44 @@ ms.locfileid: "74231644"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Yapılandırmaları bileşik kaynaklara dönüştürme
 
-> Applies To: Windows PowerShell 5.1
+> Uygulama hedefi: Windows PowerShell 5,1
 
-Once you get started authoring configurations, you can quickly create "scenarios" that manage groups of settings.
-Examples would be:
+Yazma yapılandırmasına başladıktan sonra, ayar gruplarını yönetmek için hızlı bir şekilde "senaryolar" oluşturabilirsiniz.
+Örnekler şöyle olabilir:
 
-- create a web server
-- create a DNS server
-- create a SharePoint server
-- configure a SQL cluster
-- manage firewall settings
-- manage password settings
+- Web sunucusu oluşturma
+- DNS sunucusu oluşturma
+- SharePoint sunucusu oluşturma
+- SQL kümesi yapılandırma
+- Güvenlik Duvarı ayarlarını yönetme
+- parola ayarlarını yönetme
 
-If you are interested in sharing this work with others, the best option is to package the configuration as a [Composite Resource](/powershell/scripting/dsc/resources/authoringresourcecomposite).
-Creating composite resources for the first time can be overwhelming.
+Bu çalışmayı başkalarıyla paylaşmak istiyorsanız en iyi seçenek, yapılandırmayı bir [bileşik kaynak](/powershell/scripting/dsc/resources/authoringresourcecomposite)olarak paketlemenize olanak sağlar.
+İlk kez bileşik kaynakların oluşturulması çok zor olabilir.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> Bu makale, açık kaynak topluluğu tarafından tutulan bir çözüme başvurur.
+> Destek, Microsoft 'tan değil yalnızca GitHub işbirliği biçiminde kullanılabilir.
 
-## <a name="community-project-compositeresource"></a>Community project: CompositeResource
+## <a name="community-project-compositeresource"></a>Topluluk projesi: Kompozisyonteresource
 
-A community maintained solution named [CompositeResource](https://github.com/microsoft/compositeresource) has been created to resolve this challenge.
+Bu sorunu çözmek için, [Oluşturucu](https://github.com/microsoft/compositeresource) tarafından tutulan bir çözüm oluşturulmuştur.
 
-CompositeResource automates the process of creating a new module from your configuration.
-You start by [dot sourcing](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) the configuration script on your workstation (or build server) so it is loaded in memory.
-Next, rather than running the configuration to generate a MOF file, use the function provided by the CompositeResource module to automate a conversion.
-The cmdlet will load the contents of your configuration, get the list of parameters, and generate a new module with everything you need.
+Kompozisyonun, yapılandırmadan yeni bir modül oluşturma sürecini otomatikleştirir.
+İş istasyonunuzda (veya yapı sunucusunda) yapılandırma betiğini kaynak olarak yüklendiği için [noktayla](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) ayırarak başlatın.
+Sonra, bir MOF dosyası oluşturmak için yapılandırmayı çalıştırmak yerine, bir dönüştürmeyi otomatik hale getirmek için, Oluşturucu tarafından sunulan işlevini kullanın.
+Cmdlet 'i yapılandırmanızın içeriğini yükleyecek, parametrelerin listesini alacak ve ihtiyacınız olan her şeyi içeren yeni bir modül oluşturacak.
 
-Once you have generated a module, you can increment the version and add release notes each time you make changes and publish it to your own [PowerShellGet repository](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
+Bir modül oluşturduktan sonra, her değişiklik yaptığınızda sürümü arttırın ve sürüm notları ekleyebilir ve bunu kendi [PowerShellGet deponuzda](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)yayımlayabilirsiniz.
 
-Once you have create a composite resource module containing your configuration (or multiple configurations), you can use them in the [Composable Authoring Experience](/azure/automation/compose-configurationwithcompositeresources) in Azure, or add them to [DSC Configuration scripts](/powershell/scripting/dsc/configurations/configurations) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
-The latest update to the project has also published [runbooks](https://www.powershellgallery.com/packages?q=DscGallerySamples) for Azure Automation to automate the process of importing configurations from the PowerShell Gallery.
+Yapılandırmanızı (veya birden çok yapılandırmayı) içeren bir bileşik kaynak modülü oluşturduktan sonra bunları Azure 'da [birleştirilebilir yazma deneyiminde](/azure/automation/compose-configurationwithcompositeresources) KULLANABILIR veya MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)için bunları [DSC yapılandırma betiklerine](/powershell/scripting/dsc/configurations/configurations) ekleyebilirsiniz.
+Daha sonra, yapılandırma çekmek için [Şirket](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) Içinden veya [Azure 'da](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) sunucularınızı kaydettirin.
+Projenin en son güncelleştirmesi, Azure Otomasyonu için [runbook 'ları](https://www.powershellgallery.com/packages?q=DscGallerySamples) , PowerShell Galerisi yapılandırmaların içeri aktarma işlemini otomatik hale getirmek için de yayımladı.
 
-To try out automating creation of composite resources for DSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/compositeresource/) and download the solution or click "Project Site" to view the [documentation](https://github.com/microsoft/compositeresource).
+DSC için bileşik kaynakların oluşturulmasını otomatik hale getirmek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/compositeresource/) ziyaret edin ve çözümü indirin veya "proje sitesi" ' ne tıklayarak [belgeleri](https://github.com/microsoft/compositeresource)görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview)
+- [DSC kaynakları](/powershell/scripting/dsc/resources/resources)
+- [Yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig)

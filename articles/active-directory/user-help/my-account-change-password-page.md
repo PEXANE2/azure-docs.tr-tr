@@ -1,6 +1,6 @@
 ---
-title: Change your work or school account password - Azure AD
-description: Learn to change your work or school account password from the Change Password page of the My Account portal.
+title: İş veya okul hesabınızın parolasını değiştirme-Azure AD
+description: İş veya okul hesabınızın parolasını, Hesabım portalının parola değiştirme sayfasında değiştirmeyi öğrenin.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,41 +19,41 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231864"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Change your work or school account password from the My Account portal
+# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Hesabım portalından iş veya okul hesabı parolanızı değiştirme
 
-From the **Change password** page of the **My Account** portal, you can update your work or school account password. This will only work if you know your existing password and if you aren't locked out of your account.
+**Hesabım** portalının **parola değiştirme** sayfasında iş veya okul hesabınızın parolasını güncelleştirebilirsiniz. Bu, yalnızca var olan parolanızı biliyorsanız ve hesabınızı kilitlediyseniz çalışır.
 
-If you don't remember your password, if you've been locked out of your account, or if you never got a password from your company support team, you can use your security info and your mobile device to reset your password. For more information, see [Reset your work or school password](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+Parolanızı anımsamıyorsanız, hesabınızı kilitlediyseniz veya Şirket destek ekibinizden hiç parola yoksa, parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
 
 >[!Note]
->If you're trying to get back into a personal account like for Xbox, hotmail.com, or outlook.com, try the suggestions in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+>Xbox, hotmail.com veya outlook.com gibi bir kişisel hesaba geri dönmek istiyorsanız, [Microsoft hesabı makalesinde oturum](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) açarken önerilerini deneyin.
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>To change your password from the My Account portal
+## <a name="to-change-your-password-from-the-my-account-portal"></a>Hesabım portalından parolanızı değiştirmek için
 
-1. Sign in to your work or school account, using your existing password, and then go to your https://myprofile.microsoft.com/ page.
+1. Mevcut parolanızı kullanarak iş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
 
-2. Select **Password** from the left navigation pane or select the **Change password** link from the **Password** block.
+2. Sol gezinti bölmesinden **parolayı** seçin veya **parola bloğundan parolayı** **Değiştir** bağlantısını seçin.
 
-    ![My Account page, showing highlighted Change password link](media/my-account-portal/my-account-portal-change-password.png)
+    ![Vurgulanan parola değiştirme bağlantısını gösteren Hesabım sayfası](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Type your old password, and then create and confirm your new password.
+3. Eski parolanızı yazın ve ardından yeni parolanızı oluşturup onaylayın.
 
-    ![Change password page, showing password fields](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Parola değiştirme sayfası, parola alanları gösteriliyor](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Select **Submit**.
+4. **Gönder**' i seçin.
 
-    Your password will be changed and you'll be asked to sign in to your work or school account again.
+    Parolanız değiştirilir ve iş veya okul hesabınızda yeniden oturum açmanız istenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-After changing your password, you can:
+Parolanızı değiştirdikten sonra şunları yapabilirsiniz:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
 
-- View or manage your [organizations](my-account-portal-organizations-page.md).
+- [Kuruluşları](my-account-portal-organizations-page.md)görüntüleyin veya yönetin.
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
 
-- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).
+- Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md)görüntüleyin.

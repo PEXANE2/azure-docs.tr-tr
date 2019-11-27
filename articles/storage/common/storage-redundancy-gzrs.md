@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186606"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534302"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -85,6 +85,11 @@ Kurtarma süresi hedefi (RTO), yük devretmeyi gerçekleştirmek ve depolama hes
 ## <a name="migrate-a-storage-account-to-gzrs-or-ra-gzrs"></a>Depolama hesabını GZRS veya RA-GZRS 'e geçirme
 
 Var olan bir depolama hesabını GZRS veya RA-GZRS ' e geçirebilirsiniz. Bir LRS, GRS veya RA-GRS hesabından geçiş yaparken, mevcut bir ZRS hesabından GZRS veya RA-GZRS ' e geçiş basittir. Aşağıdaki bölümlerde her iki durumda da nasıl geçiş yapılacağı açıklanır.
+
+**Bilinen sınırlamalar**
+
+- Arşiv katmanı Şu anda (RA-) GZRS hesaplarında desteklenmemektedir. Daha fazla ayrıntı için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+- Yönetilen diskler (RA-) GZRS desteklemez. Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS ve ZRS seçenekleri arasında seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz.
 
 ### <a name="migrating-from-a-zrs-account"></a>ZRS hesabından geçiş yapma
 

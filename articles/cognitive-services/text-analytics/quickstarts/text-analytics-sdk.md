@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Text Analytics client library | Microsoft Docs'
+title: 'Hızlı başlangıç: Metin Analizi istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, detect language by using the Text Analytics API from Azure Cognitive Services.
+description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'deki Metin Analizi API'si kullanarak dili algılayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,13 +18,13 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220774"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: Use the Text Analytics client library
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
-Get started with the Text Analytics client library. Follow these steps to install the package and try out the example code for basic tasks.
+Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
-Use the Text Analytics client library to perform:
+Şunları yapmak için Metin Analizi istemci kitaplığını kullanın:
 
-* Duygu analizi
+* Yaklaşım analizi
 * Dil algılama
 * Varlık tanıma
 * Anahtar tümcecik ayıklama
@@ -61,7 +61,7 @@ Use the Text Analytics client library to perform:
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with it.
+Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -73,7 +73,7 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Sentiment analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entity recognition](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Detect language](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Language recognition](../how-tos/text-analytics-how-to-language-detection.md)
+* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Dili algıla](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)

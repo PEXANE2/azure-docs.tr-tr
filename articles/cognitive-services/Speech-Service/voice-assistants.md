@@ -58,9 +58,9 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Göz atma](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Ata](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Ata](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 

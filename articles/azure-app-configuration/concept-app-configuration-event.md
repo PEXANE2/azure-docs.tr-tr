@@ -37,13 +37,13 @@ Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikler
 ## <a name="event-schema"></a>Olay şeması
 Azure uygulama yapılandırma olayları, verilerdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft. AppConfiguration" ile başladığı için bir uygulama yapılandırma olayını tanımlayabilirsiniz. Event Grid olay özelliklerinin kullanımı hakkında ek bilgiler [Event Grid olay şeması](../event-grid/event-schema.md)'nda belgelenmiştir.  
 
-> |Özellik|Tür|Açıklama|
+> |Özellik|Type|Açıklama|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |konu başlığı|string|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
+> |topic|string|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
 > |subject|string|Olayın konusu olan anahtar-değer URI 'SI.|
 > |eventTime|string|Olayın oluşturulduğu tarih/saat, ISO 8601 biçiminde.|
 > |eventType|string|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
-> |Kimlik|string|Bu olayın benzersiz tanımlayıcısı.|
+> |Kimliği|string|Bu olayın benzersiz tanımlayıcısı.|
 > |dataVersion|string|Veri nesnesinin şema sürümü.|
 > |metadataVersion|string|Üst düzey özelliklerin şema sürümü.|
 > |data|object|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|

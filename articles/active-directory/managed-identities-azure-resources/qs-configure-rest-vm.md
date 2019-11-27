@@ -1,6 +1,6 @@
 ---
-title: Configure managed identities on Azure VM using REST - Azure AD
-description: Step by step instructions for configuring a system and user-assigned managed identities on an Azure VM using CURL to make REST API calls.
+title: REST kullanarak Azure VM 'de yönetilen kimlikleri Yapılandırma-Azure AD
+description: REST API çağrısı yapmak için KıVRıMLı kullanarak bir Azure VM 'de sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,61 +15,61 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eadbad5332147add9a1b30a25b9ad2403f1a108
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d78ddaaae886a33b4d22e8724ade04ab63508f1
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224584"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547331"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Configure Managed identities for Azure resources on an Azure VM using REST API calls
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API çağrılarını kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Managed identities for Azure resources provides Azure services with an automatically managed system identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir sistem kimliğiyle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
 
-In this article, using CURL to make calls to the Azure Resource Manager REST endpoint, you learn how to perform the following managed identities for Azure resources operations on an Azure VM:
+Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için KıVRıMLı kullanarak, Azure VM 'de Azure kaynakları işlemleri için aşağıdaki yönetilen kimlikleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
-- Enable and disable the system-assigned managed identity on an Azure VM
-- Add and remove a user-assigned managed identity on an Azure VM
+- Azure VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
+- Azure VM 'ye Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- If you are using Windows, install the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal.
-- [Install the Azure CLI local console](/cli/azure/install-azure-cli), if you use the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or a [Linux distribution OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-- If you are using Azure CLI local console, sign in to Azure using `az login` with an account that is associated with the Azure subscription you would like to manage system or user-assigned managed identities.
+- Windows kullanıyorsanız, [Linux Için Windows alt sistemini](https://msdn.microsoft.com/commandline/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
+- [Linux Için Windows alt sistemi](https://msdn.microsoft.com/commandline/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
+- Azure CLı yerel Konsolu kullanıyorsanız, sistem veya Kullanıcı tarafından atanan yönetilen kimlikleri yönetmek istediğiniz Azure aboneliğiyle ilişkili bir hesapla `az login` kullanarak Azure 'da oturum açın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
+## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
-In this section, you learn how to enable and disable system-assigned managed identity on an Azure VM using CURL to make calls to the Azure Resource Manager REST endpoint.
+Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için KıVRıMLı kullanarak bir Azure VM 'de sistem tarafından atanan yönetilen kimliğin nasıl etkinleştirileceğini ve devre dışı bırakılacağını öğreneceksiniz.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Enable system-assigned managed identity during creation of an Azure VM
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştirme
 
-To create an Azure VM with the system-assigned managed identity enabled,your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](/cli/azure/group/#az-group-create) komutunu kullanarak bir [kaynak grubu](../../azure-resource-manager/resource-group-overview.md#terminology) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
+1. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](../../azure-resource-manager/resource-group-overview.md#terminology) komutunu kullanarak bir [kaynak grubu](/cli/azure/group/#az-group-create) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Create a [network interface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) for your VM:
+2. SANAL ağınız için bir [ağ arabirimi](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) oluşturun:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+3. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Create a VM using CURL to call the Azure Resource Manager REST endpoint. The following example creates a VM named *myVM* with a system-assigned managed identity, as identified in the request body by the value `"identity":{"type":"SystemAssigned"}`. Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+4. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir VM oluşturun. Aşağıdaki örnek, `"identity":{"type":"SystemAssigned"}`değere göre istek gövdesinde tanımlandığı şekilde, sistem tarafından atanan yönetilen kimlik ile *Myvm* ADLı bir VM oluşturur. `<ACCESS TOKEN>`, bir taşıyıcı erişim belirteci istediğinizde ve ortamınız için uygun olan `<SUBSCRIPTION ID>` değerini, önceki adımda aldığınız değerle değiştirin.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -79,14 +79,14 @@ To create an Azure VM with the system-assigned managed identity enabled,your acc
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Request headers**
+   **İstek üst bilgileri**
    
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
    
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
      {
@@ -146,20 +146,20 @@ To create an Azure VM with the system-assigned managed identity enabled,your acc
     }  
    ```
 
-### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Enable system-assigned identity on an existing Azure VM
+### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Mevcut bir Azure VM 'de sistem tarafından atanan kimliği etkinleştirme
 
-To enable system-assigned managed identity on a VM that was originally provisioned without it, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Use the following CURL command to call the Azure Resource Manager REST endpoint to enable system-assigned managed identity on your VM as identified in the request body by the value `{"identity":{"type":"SystemAssigned"}` for a VM named *myVM*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+2. SANAL makinenizde sistem tarafından atanan yönetilen kimliği, *myvm*ADLı bir VM için `{"identity":{"type":"SystemAssigned"}` değer ile belirtilen şekilde, istek gövdesinde tanımlandığı şekilde etkinleştirmek üzere Azure Resource Manager REST uç noktasını çağırmak IÇIN aşağıdaki kıvrımlı komutunu kullanın.  `<ACCESS TOKEN>`, bir taşıyıcı erişim belirteci istediğinizde ve ortamınız için uygun olan `<SUBSCRIPTION ID>` değerini, önceki adımda aldığınız değerle değiştirin.
    
    > [!IMPORTANT]
-   > To ensure you don't delete any existing user-assigned managed identities that are assigned to the VM, you need to list the user-assigned managed identities by using this CURL command: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. If you have any user-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 3 that shows you how to retain user-assigned managed identities while enabling system-assigned managed identity on your VM.
+   > VM 'ye atanmış olan, Kullanıcı tarafından atanan yönetilen kimliklerin hiçbirini silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Yanıtta `identity` değerinde tanımlandığı şekilde VM 'ye atanan kullanıcı tarafından atanan yönetilen kimlikleriniz varsa, VM 'niz üzerinde sistem tarafından atanan yönetilen kimliği etkinleştirirken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -168,14 +168,14 @@ To enable system-assigned managed identity on a VM that was originally provision
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
    
-   **Request body**
+   **İstek gövdesi**
     
    ```JSON
     {  
@@ -185,13 +185,13 @@ To enable system-assigned managed identity on a VM that was originally provision
     }
    ```
 
-3. To enable system-assigned managed identity on a VM with existing user-assigned managed identities, you need to add `SystemAssigned` to the `type` value.  
+3. Kullanıcı tarafından atanan yönetilen kimlikleri olan bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için, `type` değerine `SystemAssigned` eklemeniz gerekir.  
    
-   For example, if your VM has the user-assigned managed identities `ID1` and `ID2` assigned to it, and you would like to add system-assigned managed identity to the VM, use the following CURL call. Replace `<ACCESS TOKEN>` and `<SUBSCRIPTION ID>` with values appropriate to your environment.
+   Örneğin, sanal makinenizde Kullanıcı tarafından atanan Yönetilen kimlikler varsa `ID1` ve buna atanmış `ID2` ve sanal makineye sistem tarafından atanan yönetilen kimlik eklemek istiyorsanız aşağıdaki KıVRıMLı çağrıyı kullanın. `<ACCESS TOKEN>` ve `<SUBSCRIPTION ID>`, ortamınız için uygun değerlerle değiştirin.
 
-   API version `2018-06-01` stores user-assigned managed identities in the `userAssignedIdentities` value in a dictionary format as opposed to the `identityIds` value in an array format used in API version `2017-12-01`.
+   API sürümü `2018-06-01`, Kullanıcı tarafından atanan yönetilen kimlikleri, API `2017-12-01`sürümünde kullanılan bir dizi biçimindeki `identityIds` değerine karşılık gelen `userAssignedIdentities` değerindeki bir sözlük biçiminde depolar.
    
-   **API VERSION 2018-06-01**
+   **APı SÜRÜMÜ 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -200,14 +200,14 @@ To enable system-assigned managed identity on a VM that was originally provision
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {  
@@ -225,7 +225,7 @@ To enable system-assigned managed identity on a VM that was originally provision
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **APı SÜRÜMÜ 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -235,14 +235,14 @@ To enable system-assigned managed identity on a VM that was originally provision
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
     
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {  
@@ -256,20 +256,20 @@ To enable system-assigned managed identity on a VM that was originally provision
     }
    ```   
 
-### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Disable system-assigned managed identity from an Azure VM
+### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Azure VM 'den sistem tarafından atanan yönetilen kimliği devre dışı bırakma
 
-To disable system-assigned managed identity on a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Bir VM 'de sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Update the VM using CURL to call the Azure Resource Manager REST endpoint to disable system-assigned managed identity.  The following example disables system-assigned managed identity as identified in the request body by the value `{"identity":{"type":"None"}}` from a VM named *myVM*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+2. Sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için Azure Resource Manager REST uç noktasını çağırmak üzere sanal makineyi KıVRıMLı kullanarak güncelleştirin.  Aşağıdaki örnek, *myvm*ADLı bir VM 'den `{"identity":{"type":"None"}}` değere göre istek gövdesinde tanımlanan sistem tarafından atanan yönetilen kimliği devre dışı bırakır.  `<ACCESS TOKEN>`, bir taşıyıcı erişim belirteci istediğinizde ve ortamınız için uygun olan `<SUBSCRIPTION ID>` değerini, önceki adımda aldığınız değerle değiştirin.
 
    > [!IMPORTANT]
-   > To ensure you don't delete any existing user-assigned managed identities that are assigned to the VM, you need to list the user-assigned managed identities by using this CURL command: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. If you have any user-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 3 that shows you how to retain user-assigned managed identities while disabling system-assigned managed identity on your VM.
+   > VM 'ye atanmış olan, Kullanıcı tarafından atanan yönetilen kimliklerin hiçbirini silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Yanıtta `identity` değerinde tanımlandığı şekilde VM 'ye atanan kullanıcı tarafından atanan yönetilen kimlikleriniz varsa, VM 'niz üzerinde sistem tarafından atanan yönetilen kimliği devre dışı bırakırken, Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -278,14 +278,14 @@ To disable system-assigned managed identity on a VM, your account needs the [Vir
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {  
@@ -295,39 +295,39 @@ To disable system-assigned managed identity on a VM, your account needs the [Vir
     }
    ```
 
-   To remove system-assigned managed identity from a virtual machine that has user-assigned managed identities, remove `SystemAssigned` from the `{"identity":{"type:" "}}` value while keeping the `UserAssigned` value and the `userAssignedIdentities` dictionary values if you are using **API version 2018-06-01**. If you are using **API version 2017-12-01** or earlier, keep the `identityIds` array.
+   Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makineden sistem tarafından atanan yönetilen kimliği kaldırmak için, **apı 2018-06-01**kullanıyorsanız `UserAssigned` değerini ve `userAssignedIdentities` sözlük değerlerini tutarken `{"identity":{"type:" "}}` değerden `SystemAssigned` kaldırın. **API sürüm 2017-12-01** veya önceki bir sürümünü kullanıyorsanız `identityIds` diziyi saklayın.
 
-## <a name="user-assigned-managed-identity"></a>User-assigned managed identity
+## <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
-In this section, you learn how to add and remove user-assigned managed identity on an Azure VM using CURL to make calls to the Azure Resource Manager REST endpoint.
+Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için bir Azure VM üzerinde kullanıcı tarafından atanan yönetilen kimliğin nasıl ekleneceğini ve kaldırılacağını öğrenirsiniz.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Assign a user-assigned managed identity during the creation of an Azure VM
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında Kullanıcı tarafından atanan yönetilen kimlik atama
 
-To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Create a [network interface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) for your VM:
+2. SANAL ağınız için bir [ağ arabirimi](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) oluşturun:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+3. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Create a user-assigned managed identity using the instructions found here: [Create a user-assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Burada bulunan yönergeleri kullanarak Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun: [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Create a VM using CURL to call the Azure Resource Manager REST endpoint. The following example creates a VM named *myVM* in the resource group *myResourceGroup* with a user-assigned managed identity `ID1`, as identified in the request body by the value `"identity":{"type":"UserAssigned"}`. Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+5. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir VM oluşturun. Aşağıdaki örnek, bir kullanıcı tarafından atanan yönetilen kimlik `ID1`kaynak grubunda *myvm* *adlı bir* VM oluşturur `"identity":{"type":"UserAssigned"}`değer tarafından tanımlanan istek gövdesinde tanımlanmıştır. `<ACCESS TOKEN>`, bir taşıyıcı erişim belirteci istediğinizde ve ortamınız için uygun olan `<SUBSCRIPTION ID>` değerini, önceki adımda aldığınız değerle değiştirin.
  
-   **API VERSION 2018-06-01**
+   **APı SÜRÜMÜ 2018-06-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -337,14 +337,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {  
@@ -408,7 +408,7 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
 
    ```
   
-   **API VERSION 2017-12-01**
+   **APı SÜRÜMÜ 2017-12-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -418,14 +418,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -488,19 +488,19 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Assign a user-assigned managed identity to an existing Azure VM
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Mevcut bir Azure VM 'sine Kullanıcı tarafından atanan bir yönetilen kimlik atama
 
-To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2.  Create a user-assigned managed identity using the instructions found here, [Create a user-assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+2.  Burada bulunan yönergeleri kullanarak Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun, [Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. To ensure you don't delete existing user or system-assigned managed identities that are assigned to the VM, you need to list the identity types assigned to the VM by using the following CURL command. If you have managed identities assigned to the virtual machine scale set, they are listed under in the `identity` value.
+3. VM 'ye atanan mevcut kullanıcı veya sistem tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için aşağıdaki KıVRıMLı komutunu kullanarak VM 'ye atanan kimlik türlerini listeetmeniz gerekir. Sanal makine ölçek kümesine atanmış Yönetilen kimlikler varsa, bunlar `identity` değerinde listelenir.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -509,19 +509,19 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    ```HTTP
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.
 
-    If you have any user or system-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 5 that shows you how to retain the system-assigned managed identity while adding a user-assigned managed identity on your VM.
+    Yanıttaki `identity` değerde tanımlandığı şekilde VM 'ye atanan kullanıcı veya sistem tarafından atanan yönetilen kimlikleriniz varsa, VM 'nize Kullanıcı tarafından atanan yönetilen kimlik eklerken, sistem tarafından atanan yönetilen kimliğin nasıl tutulacağını gösteren 5. adıma atlayın.
 
-4. If you don't have any user-assigned managed identities assigned to your VM, use the following CURL command to call the Azure Resource Manager REST endpoint to assign the first user-assigned managed identity to the VM.
+4. Sanal makinenize atanan kullanıcı tarafından atanan yönetilen kimliğiniz yoksa, VM 'ye ilk Kullanıcı tarafından atanan yönetilen kimliği atamak için Azure Resource Manager REST uç noktasını çağırmak üzere aşağıdaki KıVRıMLı komutunu kullanın.
 
-   The following examples assigns a user-assigned managed identity, `ID1` to a VM named *myVM* in the resource group *myResourceGroup*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+   Aşağıdaki örneklerde, *Myresourcegroup*kaynak grubundaki *MYVM* adlı bir VM 'ye `ID1` Kullanıcı tarafından atanan yönetilen bir kimlik atanır.  `<ACCESS TOKEN>`, bir taşıyıcı erişim belirteci istediğinizde ve ortamınız için uygun olan `<SUBSCRIPTION ID>` değerini, önceki adımda aldığınız değerle değiştirin.
 
-   **API VERSION 2018-06-01**
+   **APı SÜRÜMÜ 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -530,14 +530,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        |
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
  
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -552,7 +552,7 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **APı SÜRÜMÜ 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -562,14 +562,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
    
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -582,13 +582,13 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-5. If you have an existing user-assigned or system-assigned managed identity assigned to your VM:
+5. VM 'nize atanan, Kullanıcı tarafından atanan veya sistem tarafından atanan bir yönetilen Kimliğiniz varsa:
    
-   **API VERSION 2018-06-01**
+   **APı SÜRÜMÜ 2018-06-01**
 
-   Add the user-assigned managed identity to the `userAssignedIdentities` dictionary value.
+   Kullanıcı tarafından atanan yönetilen kimliği `userAssignedIdentities` sözlük değerine ekleyin.
     
-   For example, if you have system-assigned managed identity and the user-assigned managed identity `ID1` currently assigned to your VM and would like to add the user-assigned managed identity `ID2` to it:
+   Örneğin, sistem tarafından atanan yönetilen kimlik ve Kullanıcı tarafından atanan yönetilen kimlik `ID1` sanal makinenizde Şu anda atanmış olan ve Kullanıcı tarafından atanan yönetilen kimlik `ID2` eklemek istiyorsanız:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -598,14 +598,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -623,11 +623,11 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **APı SÜRÜMÜ 2017-12-01**
 
-   Retain the user-assigned managed identities you would like to keep in the `identityIds` array value while adding the new user-assigned managed identity.
+   Kullanıcı tarafından atanan yeni yönetilen kimliği eklerken `identityIds` dizi değerinde tutmak istediğiniz kullanıcı tarafından atanan yönetilen kimlikleri koruyun.
 
-   For example, if you have system-assigned managed identity and the user-assigned managed identity `ID1` currently assigned to your VM and would like to add the user-assigned managed identity `ID2` to it: 
+   Örneğin, sistem tarafından atanan yönetilen kimlik ve Kullanıcı tarafından atanan yönetilen kimlik `ID1` sanal makinenizde Şu anda atanmış olan ve Kullanıcı tarafından atanan yönetilen kimlik `ID2` eklemek istiyorsanız: 
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -637,14 +637,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -658,17 +658,17 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```   
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Remove a user-assigned managed identity from an Azure VM
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Kullanıcı tarafından atanan yönetilen kimliği bir Azure VM 'den kaldırma
 
-To remove a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.
+Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. To ensure you don't delete any existing user-assigned managed identities that you would like to keep assigned to the VM or remove the system-assigned managed identity, you need to list the managed identities by using the following CURL command: 
+2. VM 'ye atanmasını veya sistem tarafından atanan yönetilen kimliği kaldırmayı istediğiniz var olan kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için aşağıdaki KıVRıMLı komutunu kullanarak yönetilen kimlikleri listeetmeniz gerekir: 
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -678,20 +678,20 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.
  
-   If you have managed identities assigned to the VM, they are listed in the response in the `identity` value.
+   VM 'ye atanmış Yönetilen kimlikler varsa, bu değerler `identity` değerindeki yanıtta listelenir.
 
-   For example, if you have user-assigned managed identities `ID1` and `ID2` assigned to your VM, and you only want to keep `ID1` assigned and retain the system-assigned identity:
+   Örneğin, Kullanıcı tarafından atanan yönetilen kimliklere `ID1` ve `ID2` sanal makinenize atandı ve yalnızca `ID1` atanmasını ve sistem tarafından atanan kimliği tutmayı istiyorsanız:
    
-   **API VERSION 2018-06-01**
+   **APı SÜRÜMÜ 2018-06-01**
 
-   Add `null` to the user-assigned managed identity you would like to remove:
+   Kaldırmak istediğiniz kullanıcı tarafından atanan yönetilen kimliğe `null` ekleyin:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -701,14 +701,14 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -721,9 +721,9 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **APı SÜRÜMÜ 2017-12-01**
 
-   Retain only the user-assigned managed identity(s) you would like to keep in the `identityIds` array:
+   `identityIds` dizide tutmak istediğiniz yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri koru:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -733,14 +733,14 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **İstek üst bilgileri**
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
-   **Request body**
+   **İstek gövdesi**
 
    ```JSON
     {
@@ -753,7 +753,7 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-If your VM has both system-assigned and user-assigned managed identities, you can remove all the user-assigned managed identities by switching to use only system-assigned managed identity using the following command:
+SANAL makinenizde hem sistem tarafından atanan hem de Kullanıcı tarafından atanan Yönetilen kimlikler varsa, aşağıdaki komutu kullanarak yalnızca sistem tarafından atanan yönetilen kimliği kullan ' a geçerek Kullanıcı tarafından atanan tüm yönetilen kimlikleri kaldırabilirsiniz:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -763,14 +763,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Request headers**
+**İstek üst bilgileri**
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token. | 
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
-**Request body**
+**İstek gövdesi**
 
 ```JSON
 {
@@ -780,7 +780,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
     
-If your VM has only user-assigned managed identities and you would like to remove them all, use the following command:
+SANAL makinenizin yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri varsa ve bunların tümünü kaldırmak istiyorsanız aşağıdaki komutu kullanın:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -790,14 +790,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Request headers**
+**İstek üst bilgileri**
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.| 
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.| 
 
-**Request body**
+**İstek gövdesi**
 
 ```JSON
 {
@@ -809,6 +809,6 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For information on how to create, list, or delete user-assigned managed identities using REST see:
+REST kullanarak Kullanıcı tarafından atanan Yönetilen kimlikler oluşturma, listeleme veya silme hakkında bilgi için bkz.:
 
-- [Create, list or delete a user-assigned managed identities using REST API calls](how-to-manage-ua-identity-rest.md)
+- [REST API çağrılarını kullanarak Kullanıcı tarafından atanan Yönetilen kimlikler oluşturma, listeleme veya silme](how-to-manage-ua-identity-rest.md)

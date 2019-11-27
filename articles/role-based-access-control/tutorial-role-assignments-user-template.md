@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and Resource Manager template
-description: Learn how to grant a user access to Azure resources using role-based access control (RBAC) by using Azure Resource Manager template in this tutorial.
+title: Öğretici-RBAC ve Kaynak Yöneticisi şablonu kullanarak Azure kaynaklarına Kullanıcı erişimi verme
+description: Bu öğreticide Azure Resource Manager şablonu kullanarak rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -20,15 +20,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74418497"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Tutorial: Grant a user access to Azure resources using RBAC and Resource Manager template
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Öğretici: RBAC ve Kaynak Yöneticisi şablonu kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
-[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. In this tutorial, you create a resource group and grant a user access to create and manage virtual machines in the resource group. This tutorial focuses on the process of deploying a Resource Manager template to grant the access. For more information on developing Resource Manager templates, see [Resource Manager documentation](/azure/azure-resource-manager/) and the [template reference](/azure/templates/microsoft.authorization/allversions
+[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide, bir kaynak grubu oluşturur ve kaynak grubundaki sanal makineleri oluşturmak ve yönetmek için bir kullanıcı erişimi verirsiniz. Bu öğretici, erişim izni vermek için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi belgeleri](/azure/azure-resource-manager/) ve [şablon başvurusu](/azure/templates/microsoft.authorization/allversions
 ).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Grant access for a user at a resource group scope
+> * Bir kaynak grubu kapsamındaki bir kullanıcı için erişim izni verme
 > * Dağıtımı doğrulama
 > * Temizleme
 
@@ -36,15 +36,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To add and remove role assignments, you must have:
+Rol atamaları eklemek ve kaldırmak için şunları yapmanız gerekir:
 
-* `Microsoft.Authorization/roleAssignments/write` and `Microsoft.Authorization/roleAssignments/delete` permissions, such as [User Access Administrator](built-in-roles.md#user-access-administrator) or [Owner](built-in-roles.md#owner)
+* `Microsoft.Authorization/roleAssignments/write` ve `Microsoft.Authorization/roleAssignments/delete` izinleri ( [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi)
 
 ## <a name="grant-access"></a>Erişim verme
 
-The template used in this quickstart is from [Azure quickstart templates](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). More Azure authorization related templates can be found [here](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization).
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Daha fazla Azure yetkilendirmesi ile ilgili şablon [burada](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization)bulunabilir.
 
-To deploy the template, select **Try it** to open the Azure Cloud shell, and then paste the following PowerShell script into the shell window. To paste the code, right-click the shell window and then select **Paste**.
+Şablonu dağıtmak için **dene** ' yi seçerek Azure Cloud Shell 'i açın ve sonra aşağıdaki PowerShell betiğini kabuk penceresine yapıştırın. Kodu yapıştırmak için kabuk penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -63,15 +63,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Open the resource group created in the last procedure. The default name is the project name with **rg** appended.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Son yordamda oluşturulan kaynak grubunu açın. Varsayılan ad, **RG** eklenmiş proje adıdır.
 1. Soldaki menüden **Erişim denetimi (IAM)** öğesini seçin.
 1. **Rol atamaları**’nı seçin. 
-1. In **Name**, enter the email address you typed in the last procedure. You shall see the user with the email address has the **Virtual Machine Contributor** role.
+1. **Ad**alanına, son yordamda yazdığınız e-posta adresini girin. Kullanıcının e-posta adresi ile **sanal makine katılımcısı** rolü olduğunu görürsünüz.
 
 ## <a name="clean-up"></a>Temizleme
 
-To remove the resource group created in the last procedure, select **Try it** to open the Azure Cloud shell, and then paste the following PowerShell script into the shell window.
+Son yordamda oluşturulan kaynak grubunu kaldırmak için, **deneyin** ' i seçerek Azure Cloud Shell 'i açın ve sonra aşağıdaki PowerShell betiğini kabuk penceresine yapıştırın.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a same project name you used in the last procedure"
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme](tutorial-role-assignments-user-powershell.md)

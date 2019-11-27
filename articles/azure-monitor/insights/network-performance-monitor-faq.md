@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832010"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538197"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -184,6 +184,8 @@ Bir atlama aşağıdaki senaryolardan birinde veya daha fazla bir izleme Oute 'e
 * Ağ cihazları ICMP_TTL_EXCEEDED trafiğe izin vermiyor.
 * Bir güvenlik duvarı, ağ cihazından gelen ICMP_TTL_EXCEEDED yanıtını engelliyor.
 
+Uç noktalardan biri Azure 'da olduğunda, izleme yolu, Azure ndrastructure, izleme yolu 'na yönelik kimlik açığa çıkarmadığından tanımlanamayan atlamaları gösterir. 
+
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Sağlıksız testler için uyarı alıyorum, ancak NPM 'nin kayıp ve gecikme grafiğinde yüksek değerleri görmüyorum. Sağlıksız olup olmadığını kontrol Nasıl yaparım? mı?
 Kaynak ve hedef arasındaki uçtan uca gecikme süresi, aralarında herhangi bir yol için eşikten kesişirse NPM bir uyarı oluşturur. Bazı ağların aynı kaynak ve hedefi bağlayan birden çok yolu vardır. NPM bir uyarı harekete geçirirse herhangi bir yol sağlıksız olur. Grafiklerde görülen kayıp ve gecikme, tüm yolların ortalama değeridir, bu nedenle tek bir yolun tam değerini gösteremeyebilir. Eşiğin ihlal edildiği yeri anlamak için, uyarıdaki "alt tür" sütununu arayın. Sorun bir yol nedeniyle gerçekleşirse, alt tür değeri NetworkPath olacaktır (performans Izleme testleri için), EndpointPath (hizmet bağlantısı Izleyicisi testleri için) ve ExpressRoutePath (ExpressRotue Izleyici testleri için). 
 
@@ -227,7 +229,7 @@ NPM artık kullanıcının erişimi olan tüm aboneliklerde ExpressRoute devrele
 
 Şirket içi ve Azure düğümleri arasında sağlıklı bir bağlantının olduğu, ancak trafiğin NPM tarafından izlenmesi için yapılandırılmış ExpressRoute bağlantı hattı üzerinden gitmediği bir senaryo olabilir. 
 
-Bu durum şu durumlarda oluşabilir:
+Bu hata şu durumlarda oluşabilir:
 
 * ER devresi devre dışı.
 * Yol filtreleri, istenen ExpressRoute bağlantı hattı üzerinden diğer yollara (bir VPN bağlantısı veya başka bir ExpressRoute bağlantı hattı gibi) öncelik vertikleri şekilde yapılandırılır. 
@@ -256,7 +258,7 @@ Bir veya daha fazla doğruysa bu durum oluşabilir:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>Hizmet bağlantısı Izleyicisi özelliği ' nde, hizmet yanıt süresi yok ancak ağ kaybı ve gecikme süresi geçerli
 Hedef hizmet bir Web uygulaması değilse ancak test bir Web testi olarak yapılandırıldığında bu durum oluşabilir. Test yapılandırmasını düzenleyin ve test türünü web yerine ağ olarak seçin.
 
-## <a name="miscellaneous"></a>Muhtelif Hükümler
+## <a name="miscellaneous"></a>Çeşitli
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>İzleme için kullanılan düğüm üzerinde bir performans etkisi var mı?
 NPM işlemi, ana bilgisayar CPU kaynaklarının %5 ' inden fazlasını kullanıyorsa durdurulacak şekilde yapılandırıldı. Bu, performansı etkilemeden olağan iş yükleri için düğümleri kullanmaya devam etmek zorunda kalmasından emin olmak içindir.

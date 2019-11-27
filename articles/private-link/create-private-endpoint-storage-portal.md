@@ -34,9 +34,9 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
 1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
-    | Ad | *MyVirtualNetwork*girin. |
+    | Name | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
@@ -53,7 +53,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
@@ -66,7 +66,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETICI HESABı** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
-    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | istemcisiyle yönetilen bir cihaz için) | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
     | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
@@ -80,11 +80,11 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | Sanal ağ | Varsayılan **MyVirtualNetwork**bırakın.  |
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
-    | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
+    | Subnet | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
     | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
@@ -101,7 +101,7 @@ Bu bölümde, için özel bir uç nokta kullanarak özel bir depolama hesabı ol
 
 1. **Depolama hesabı oluşturma-temel**bilgiler bölümünde, bu bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
@@ -119,17 +119,17 @@ Bu bölümde, için özel bir uç nokta kullanarak özel bir depolama hesabı ol
 5. **Depolama hesabı oluştur-ağ**' da, **Özel uç nokta Ekle**' yi seçin. 
 6. **Özel uç nokta oluştur**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     |Konum|**WestCentralUS**öğesini seçin.|
-    |Ad| *Myprivateendpoint*girin.  |
+    |Name| *Myprivateendpoint*girin.  |
     |Depolama alt kaynağı|Varsayılan **blobu**bırakın. |
     | **IŞLEMLERI** |  |
     | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
-    | Alt ağ |  *Mysubnet*öğesini seçin. |
+    | Subnet |  *Mysubnet*öğesini seçin. |
     | **ÖZEL DNS TÜMLEŞTIRMESI**|  |
     | Özel DNS bölgesiyle tümleştirin  | Varsayılan **Evet**' i bırakın. |
     | Özel DNS bölgesi  | Varsayılan * * (yeni) privatelink.blob.core.windows.net * * ' i bırakın. |
@@ -149,7 +149,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. İndirilen. rdp * dosyasını açın.
 

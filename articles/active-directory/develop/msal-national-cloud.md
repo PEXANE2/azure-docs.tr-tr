@@ -1,6 +1,6 @@
 ---
-title: Use Microsoft Authentication Library (MSAL) in national clouds - Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) enables application developers to acquire tokens in order to call secured web APIs. These web APIs can be Microsoft Graph, other Microsoft APIs, partner web APIs, or your own web API. MSAL supports multiple application architectures and platforms.
+title: Ulusal bulutlarda Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanma-Microsoft Identity platform
+description: Microsoft kimlik doğrulama kitaplığı (MSAL), uygulama geliştiricilerinin güvenli Web API 'Lerini çağırmak için belirteçleri almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'leri, iş ortağı Web API 'Leri veya kendi Web API 'niz olabilir. MSAL birden çok uygulama mimarilerini ve platformunu destekler.
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -24,88 +24,88 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481873"
 ---
-# <a name="use-msal-in-a-national-cloud-environment"></a>Use MSAL in a national cloud environment
+# <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
-[National clouds](authentication-national-cloud.md), also known as Sovereign clouds, are physically isolated instances of Azure. These regions of Azure help make sure that data residency, sovereignty, and compliance requirements are honored within geographical boundaries.
+Sovereign bulutu olarak da bilinen [Ulusal bulutlar](authentication-national-cloud.md), fiziksel olarak yalıtılmış Azure örnekleridir. Azure yardım 'ın bu bölgeleri, verilerin yer aldığı, egemenlik ve uyumluluk gereksinimlerinin coğrafi sınırlar içinde kabul edilen şekilde sağlandığından emin olmanızı sağlamak.
 
-In addition to the Microsoft worldwide cloud, the Microsoft Authentication Library (MSAL) enables application developers in national clouds to acquire tokens in order to authenticate and call secured web APIs. These web APIs can be Microsoft Graph or other Microsoft APIs.
+Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Dünya çapındaki buluta ek olarak, Ulusal bulutlar 'daki uygulama geliştiricilerinin, güvenli Web API 'Lerini doğrulamak ve çağırmak için belirteçleri almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph veya diğer Microsoft API 'Leri olabilir.
 
-Including the global cloud, Azure Active Directory (Azure AD) is deployed in the following national clouds:  
+Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutlara dağıtılır:  
 
 - Azure Devlet Kurumları
 - Azure Çin 21Vianet
 - Azure Almanya
 
-This guide demonstrates how to sign in to work and school accounts, get an access token, and call the Microsoft Graph API in the [Azure Government cloud](https://azure.microsoft.com/global-infrastructure/government/) environment.
+Bu kılavuzda, iş ve okul hesaplarında oturum açma, erişim belirteci alma ve [Azure Kamu bulut](https://azure.microsoft.com/global-infrastructure/government/) ORTAMıNDA Microsoft Graph API 'sini çağırma işlemlerinin nasıl yapılacağı gösterilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Before you start, make sure that you meet these prerequisites.
+Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
-### <a name="choose-the-appropriate-identities"></a>Choose the appropriate identities
+### <a name="choose-the-appropriate-identities"></a>Uygun kimlikleri seçin
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/) applications can use Azure AD Government identities and Azure AD Public identities to authenticate users. Because you can use any of these identities, you need to decide which authority endpoint you should choose for your scenario:
+[Azure Kamu](https://docs.microsoft.com/azure/azure-government/) uygulamaları, kullanıcıların kimliğini doğrulamak IÇIN Azure AD kamu kimliklerini ve Azure AD ortak kimliklerini kullanabilir. Bu kimliklerden herhangi birini kullanabilmeniz için senaryonuz için hangi yetkili uç noktasını seçmeniz gerektiğine karar vermeniz gerekir:
 
-- Azure AD Public: Commonly used if your organization already has an Azure AD Public tenant to support Office 365 (Public or GCC) or another application.
-- Azure AD Government: Commonly used if your organization already has an Azure AD Government tenant to support Office 365 (GCC High or DoD) or is creating a new tenant in Azure AD Government.
+- Azure AD Genel: genellikle Kuruluşunuzda Office 365 (genel veya GCC) veya başka bir uygulamayı desteklemek için bir Azure AD Genel kiracısı zaten varsa kullanılır.
+- Azure AD kamu: genellikle Kuruluşunuzda Office 365 (GCC High veya DoD) desteği için bir Azure AD kamu kiracısı zaten varsa veya Azure AD kamu 'da yeni bir kiracı oluşturmak için kullanılır.
 
-After you decide, a special consideration is where you perform your app registration. If you choose Azure AD Public identities for your Azure Government application, you must register the application in your Azure AD Public tenant.
+Karar verdikten sonra, uygulama kaydınızı gerçekleştirdiğiniz özel bir noktadır. Azure Kamu uygulamanız için Azure AD ortak kimlikleri ' ni seçerseniz, uygulamayı Azure AD Genel kiracınıza kaydetmeniz gerekir.
 
-### <a name="get-an-azure-government-subscription"></a>Get an Azure Government subscription
+### <a name="get-an-azure-government-subscription"></a>Azure Kamu aboneliği edinme
 
-To get an Azure Government subscription, see [Managing and connecting to your subscription in Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
+Azure Kamu aboneliği almak için bkz. [Azure Kamu 'da aboneliğinizi yönetme ve ile bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
 
-If you don't have an Azure Government subscription, create a [free account](https://azure.microsoft.com/global-infrastructure/government/request/) before you begin.
+Azure Kamu aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/global-infrastructure/government/request/) oluşturun.
 
-For details about using a national cloud with a particular programming language, choose the tab matching your language:
+Belirli bir programlama diliyle ulusal bir bulut kullanma hakkında ayrıntılı bilgi için, diliniz ile eşleşen sekmeyi seçin:
 
 ## <a name="nettabdonet"></a>[.NET](#tab/donet)
 
-You can use MSAL.NET to sign in users, acquire tokens, and call the Microsoft Graph API in national clouds.
+Kullanıcıları oturum açmak, belirteçleri almak ve Microsoft Graph API 'sini Ulusal bulutlarda çağırmak için MSAL.NET kullanabilirsiniz.
 
-The following tutorials demonstrate how to build a .NET Core 2.2 MVC Web app. The app uses OpenID Connect to sign in users with a work and school account in an organization that belongs to a national cloud.
+Aşağıdaki öğreticilerde .NET Core 2,2 MVC web uygulamasının nasıl oluşturulacağı gösterilmektedir. Uygulama, ulusal bir buluta ait bir kuruluştaki iş ve okul hesabıyla kullanıcıları oturum açmak için OpenID Connect kullanır.
 
-- To sign in users and acquire tokens, follow this tutorial: [Build an ASP.NET Core Web app signing-in users in sovereign clouds with the Microsoft identity platform](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
-- To call the Microsoft Graph API, follow this tutorial: [Using the Microsoft identity platform to call the Microsoft Graph API from an An ASP.NET Core 2.x Web App, on behalf of a user signing-in using their work and school account in Microsoft National Cloud](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
+- Kullanıcıların oturum açması ve belirteçleri elde etmek için şu öğreticiyi izleyin: [Microsoft Identity platformu ile yvereign bulutlarında ASP.NET Core Web uygulaması oturumu açma](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
+- Microsoft Graph API 'sini çağırmak için bu öğreticiyi izleyin: Microsoft [Identity platformunu kullanarak, bir Kullanıcı oturum açma adına bir ASP.NET Core 2. x Web uygulamasından MICROSOFT Graph API 'sini çağırmak için Microsoft Ulusal bulutta iş ve okul hesabını kullanma](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-To enable your MSAL.js application for sovereign clouds:
+MSAL. js uygulamanızı bağımsız bulutları için etkinleştirmek için:
 
 ### <a name="step-1-register-your-application"></a>1\. Adım: Uygulamanızı kaydetme
 
-1. [Azure Portal](https://portal.azure.us/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.us/) oturum açın.
     
-   To find Azure portal endpoints for other national clouds, see [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints).
+   Diğer ulusal bulutlar için Azure portal uç noktaları bulmak için bkz. [uygulama kayıt uç noktaları](authentication-national-cloud.md#app-registration-endpoints).
 
-1. If your account gives you access to more than one tenant, select your account in the upper-right corner, and set your portal session to the desired Azure AD tenant.
-1. Go to the [App registrations](https://aka.ms/ra/ff) page on the Microsoft identity platform for developers.
-1. When the **Register an application** page appears, enter a name for your application.
-1. Under **Supported account types**, select **Accounts in any organizational directory**.
-1. In the **Redirect URI** section, select the **Web** platform and set the value to the application's URL based on your web server. See the next sections for instructions on how to set and obtain the redirect URL in Visual Studio and Node.
+1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
+1. Geliştiriciler için Microsoft Identity platformunda [uygulama kayıtları](https://aka.ms/ra/ff) sayfasına gidin.
+1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin.
+1. **Desteklenen hesap türleri**altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
+1. **Yeniden yönlendirme URI 'si** bölümünde **Web** platformu ' nu seçin ve değeri Web sunucunuza göre uygulamanın URL 'si olarak ayarlayın. Visual Studio ve Node 'da yeniden yönlendirme URL 'sini ayarlama ve alma hakkında yönergeler için sonraki bölümlere bakın.
 1. **Kaydol**’u seçin.
-1. On the app **Overview** page, note down the **Application (client) ID** value.
-1. This tutorial requires you to enable the [implicit grant flow](v2-oauth2-implicit-grant-flow.md). In the left pane of the registered application, select **Authentication**.
-1. In **Advanced settings**, under **Implicit grant**, select the **ID tokens** and **Access tokens** check boxes. ID tokens and access tokens are required because this app needs to sign in users and call an API.
+1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini aklınızda edin.
+1. Bu öğretici, [örtük izin akışını](v2-oauth2-implicit-grant-flow.md)etkinleştirmenizi gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
+1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
 1. **Kaydet**’i seçin.
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>Step 2:  Set up your web server or project
+### <a name="step-2--set-up-your-web-server-or-project"></a>2\. Adım: Web sunucunuzu veya projenizi ayarlama
 
-- [Download the project files](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) for a local web server, such as Node.
+- Düğüm gibi yerel bir Web sunucusu için [Proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) .
 
-  or
+  veya
 
-- [Download the Visual Studio project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+- [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 
-Then skip to [Configure your JavaScript SPA](#step-4-configure-your-javascript-spa) to configure the code sample before running it.
+Ardından, kod örneğini çalıştırmadan önce yapılandırmak için [JAVASCRIPT Spa 'Nizi yapılandırma](#step-4-configure-your-javascript-spa) bölümüne atlayın.
 
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Step 3: Use the Microsoft Authentication Library to sign in the user
+### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>3\. Adım: Kullanıcı oturumu açmak için Microsoft kimlik doğrulama kitaplığını kullanma
 
-Follow steps in the [JavaScript tutorial](tutorial-v2-javascript-spa.md#create-your-project) to create your project and integrate with MSAL to sign in the user.
+Projenizi oluşturmak için [JavaScript öğreticisindeki](tutorial-v2-javascript-spa.md#create-your-project) adımları izleyin ve Kullanıcı oturumu açmak için msal ile tümleştirin.
 
-### <a name="step-4-configure-your-javascript-spa"></a>Step 4: Configure your JavaScript SPA
+### <a name="step-4-configure-your-javascript-spa"></a>4\. Adım: JavaScript SPA 'nizi yapılandırma
 
-In the `index.html` file created during project setup, add the application registration information. Add the following code at the top within the `<script></script>` tags in the body of your `index.html` file:
+Proje kurulumu sırasında oluşturulan `index.html` dosyasında, uygulama kayıt bilgilerini ekleyin. Aşağıdaki kodu, `index.html` dosyanızın gövdesinde `<script></script>` etiketleri içinde ekleyin:
 
 ```javascript
 const msalConfig = {
@@ -124,39 +124,39 @@ const graphConfig = {
 const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
-In that code:
+Bu kodda:
 
-- `Enter_the_Application_Id_here` is the **Application (client) ID** value for the application that you registered.
-- `Enter_the_Tenant_Info_Here` is set to one of the following options:
-    - If your application supports **Accounts in this organizational directory**, replace this value with the tenant ID or tenant name (for example, contoso.microsoft.com).
-    - If your application supports **Accounts in any organizational directory**, replace this value with `organizations`.
+- `Enter_the_Application_Id_here`, kaydettiğiniz uygulamanın **uygulama (istemci) kimlik** değeridir.
+- `Enter_the_Tenant_Info_Here` aşağıdaki seçeneklerden birine ayarlanır:
+    - Uygulamanız **bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI Kiracı kimliği veya kiracı adı (örneğin, contoso.Microsoft.com) ile değiştirin.
+    - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri `organizations`değiştirin.
     
-    To find authentication endpoints for all the national clouds, see [Azure AD authentication endpoints](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    Tüm ulusal bulutların kimlik doğrulama uç noktalarını bulmak için bkz. [Azure AD kimlik doğrulama uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
     > [!NOTE]
-    > Personal Microsoft accounts are not supported in national clouds.
+    > Kişisel Microsoft hesapları Ulusal bulutlarda desteklenmez.
   
-- `graphEndpoint` is the Microsoft Graph endpoint for the Microsoft cloud for US government.
+- `graphEndpoint`, ABD kamu sektörü için Microsoft bulutu 'nın Microsoft Graph uç noktasıdır.
 
-   To find Microsoft Graph endpoints for all the national clouds, see [Microsoft Graph endpoints in national clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   Tüm ulusal bulutlar için Microsoft Graph uç noktaları bulmak için bkz. [National bulutlar içindeki Microsoft Graph uç noktaları](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
 
-To enable your MSAL Python application for sovereign clouds:
+MSAL Python uygulamanızı bağımsız bulutlara yönelik olarak etkinleştirmek için:
 
-- Register your application in a specific portal, depending on the cloud. For more information on how to choose the portal refer [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints)
-- Use any of the [samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) from the repo with a few changes to the configuration, depending on the cloud, which is mentioned next.
-- Use a specific authority, depending on the cloud you registered the application in. For more information on authorities for different clouds, refer [Azure AD Authentication endpoints](authentication-national-cloud.md#azure-ad-authentication-endpoints).
+- Uygulamanızı buluta bağlı olarak belirli bir portala kaydedin. Portalı seçme hakkında daha fazla bilgi için [uygulama kayıt uç noktalarına](authentication-national-cloud.md#app-registration-endpoints) başvurun
+- Sonraki bir adımda belirtilen buluta bağlı olarak, yapılandırma üzerinde birkaç değişiklik ile depodaki [örneklerden](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) herhangi birini kullanın.
+- Uygulamayı kaydettiğiniz buluta bağlı olarak belirli bir yetkili kullanın. Farklı bulutlara yönelik yetkililer hakkında daha fazla bilgi için [Azure AD kimlik doğrulama uç noktalarına](authentication-national-cloud.md#azure-ad-authentication-endpoints)bakın.
 
-    Here's an example authority:
+    Örnek bir yetkili aşağıda verilmiştir:
 
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
     
-- To call Microsoft graph requires a specific Graph endpoint URL that depends on which cloud you are using. To find Microsoft Graph endpoints for all the national clouds, refer to [Microsoft Graph and Graph Explorer service root endpoints](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
 
-    Here's an example of a graph endpoint, with scope:
+    Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
     
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -165,21 +165,21 @@ To enable your MSAL Python application for sovereign clouds:
     
 ## <a name="javatabjava"></a>[Java](#tab/java)
 
-To enable your MSAL for Java application for sovereign clouds:
+Bağımsız bulutları için MSAL Java uygulamanızı etkinleştirmek için:
 
-- Register your application in a specific portal, depending on the cloud. For more information on how to choose the portal refer [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints)
-- Use any of the [samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) from the repo with a few changes to the configuration, depending on the cloud, which are mentioned next.
-- Use a specific authority, depending on the cloud you registered the application in. For more information on authorities for different clouds, refer [Azure AD Authentication endpoints](authentication-national-cloud.md#azure-ad-authentication-endpoints).
+- Uygulamanızı buluta bağlı olarak belirli bir portala kaydedin. Portalı seçme hakkında daha fazla bilgi için [uygulama kayıt uç noktalarına](authentication-national-cloud.md#app-registration-endpoints) başvurun
+- Daha sonra bahsedilen buluta bağlı olarak, yapılandırma üzerinde yapılan birkaç değişiklik ile depodaki [örneklerden](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) herhangi birini kullanın.
+- Uygulamayı kaydettiğiniz buluta bağlı olarak belirli bir yetkili kullanın. Farklı bulutlara yönelik yetkililer hakkında daha fazla bilgi için [Azure AD kimlik doğrulama uç noktalarına](authentication-national-cloud.md#azure-ad-authentication-endpoints)bakın.
 
-Here's an example authority:
+Örnek bir yetkili aşağıda verilmiştir:
 
 ```json
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- To call Microsoft graph requires a specific Graph endpoint URL that depends on which cloud you are using. To find Microsoft Graph endpoints for all the national clouds, refer to [Microsoft Graph and Graph Explorer service root endpoints](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
 
-Here's an example of a graph endpoint, with scope:
+Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
 
 ```json
 "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -188,9 +188,9 @@ Here's an example of a graph endpoint, with scope:
 
 ## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
-MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
+İOS ve macOS için MSAL, Ulusal bulutlarda belirteçleri almak için kullanılabilir, ancak `MSALPublicClientApplication`oluştururken ek yapılandırma gerektirir.
 
-For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
+Örneğin, uygulamanızın ulusal bir bulutta (burada ABD devlet) çok kiracılı bir uygulama olmasını istiyorsanız şunu yazabilirsiniz:
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -211,9 +211,9 @@ MSALPublicClientApplication *application =
 
 ## <a name="swifttabswift"></a>[Swift](#tab/swift)
 
-MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
+İOS ve macOS için MSAL, Ulusal bulutlarda belirteçleri almak için kullanılabilir, ancak `MSALPublicClientApplication`oluştururken ek yapılandırma gerektirir.
 
-For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
+Örneğin, uygulamanızın ulusal bir bulutta (burada ABD devlet) çok kiracılı bir uygulama olmasını istiyorsanız şunu yazabilirsiniz:
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -228,7 +228,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-- [Authentication in National Clouds](authentication-national-cloud.md)
+- [Ulusal bulutlarda kimlik doğrulama](authentication-national-cloud.md)
 - [Azure Devlet Kurumları](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Germany](https://docs.microsoft.com/azure/germany/)
+- [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure Almanya](https://docs.microsoft.com/azure/germany/)

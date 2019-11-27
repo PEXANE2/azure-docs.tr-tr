@@ -98,8 +98,8 @@ Arka uç uygulamasının Yük Dengeleme gereksinimlerini anlamak için Yazılım
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulama Ara sunucusunu etkinleştirme](application-proxy-add-on-premises-application.md)
+- [Uygulama proxy 'Sini etkinleştir](application-proxy-add-on-premises-application.md)
 - [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Koşullu erişimi etkinleştir](application-proxy-integrate-with-sharepoint-server.md)
-- [Uygulama Ara sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
+- [Uygulama proxy 'Si ile karşılaştığınız sorunları giderme](application-proxy-troubleshoot.md)
 - [Azure AD mimarisinin yüksek kullanılabilirliği nasıl desteklediğini öğrenin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

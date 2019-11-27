@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281278"
 ---
-# <a name="create-an-azure-application-offer"></a>Azure Uygulama teklifi oluşturma
+# <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
 Ticari Market 'te bir Azure uygulaması teklifi yayımlama adımları burada özetlenmiştir.
 
@@ -62,7 +62,7 @@ Hızlı başlangıçler, öğreticiler ve örnekler sağlayan aşağıdaki Azure
     * [Uygulama tanımını Yayımla](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
     * [Hizmet kataloğu uygulaması dağıtma](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
-* Öğreticiler:
+* Öğretici:
 
     * [Tanım dosyaları oluştur](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Market uygulaması yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
@@ -102,7 +102,7 @@ Geliştirme ortamınıza aşağıdaki araçları eklemeniz önerilir:
 
 Mevcut araçları [Azure Geliştirici Araçları](https://azure.microsoft.com/tools/) sayfasında inceleyebilirsiniz.  Ayrıca, Visual Studio kullanıyorsanız [Visual Studio Market](https://marketplace.visualstudio.com/).
 
-## <a name="create-an-azure-application-offer"></a>Azure Uygulama teklifi oluşturma
+## <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
 Bir Azure uygulaması teklifi oluşturabilmeniz için önce [bir Iş Ortağı Merkezi hesabı oluşturmanız](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ve **genel bakış** sekmesi seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açmanız gerekir.
 
@@ -179,7 +179,7 @@ Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görünt�
 > [!NOTE]
 > Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -319,7 +319,7 @@ Azure Kamu Hizmetleri, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 v
 
 **Plan listeleme** sekmesi, aynı teklifin farklı planları arasında farklı olabilecek plana özgü liste bilgilerini görüntüler.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Adınızı temel alarak, sizin oluşturduğunuz zaman planınızı atadığınız şekilde önceden doldurulmuş olursunuz.  Bu ad, Market 'te görüntülenen bu "yazılım planı" başlığı olarak görünür.  En fazla 100 karakter içerebilir.
 

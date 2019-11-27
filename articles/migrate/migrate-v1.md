@@ -76,7 +76,7 @@ Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, 
 
 Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin hazır olma durumunu gösterir.
 
-**Hazırlığı** | **State** | **Ayrıntılar**
+**Hazırlığı** | **Durumunda** | **Ayrıntılar**
 --- | --- | ---
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.

@@ -1,20 +1,15 @@
 ---
-title: Azure Container Instances nedir?
+title: Azure 'da sunucusuz kapsayıcılar
 description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi gerekmeden ve daha üst düzey bir Orchestrator 'ı benimsemek zorunda kalmadan, yalıtılmış kapsayıcıları Azure 'da çalıştırmanın en hızlı ve en kolay yolunu sunar.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325754"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533539"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
@@ -53,8 +48,8 @@ Bazı özellikler Şu anda Linux kapsayıcılarıyla kısıtlıdır:
 * Kapsayıcı grubu başına birden çok kapsayıcı
 * Birim bağlama ([Azure dosyaları](container-instances-volume-azure-files.md), [emptydir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [gizli](container-instances-volume-secret.md))
 * Azure Izleyici ile [kaynak kullanımı ölçümleri](container-instances-monitor.md)
-* [Sanal ağ dağıtımı](container-instances-vnet.md) Önizle
-* [GPU kaynakları](container-instances-gpu.md) Önizle
+* [Sanal ağ dağıtımı](container-instances-vnet.md) (Önizleme)
+* [GPU kaynakları](container-instances-gpu.md) (Önizleme)
 
 Windows kapsayıcı dağıtımları için, yaygın [Windows temel görüntülerine](container-instances-faq.md#what-windows-base-os-images-are-supported)göre görüntüleri kullanın.
 

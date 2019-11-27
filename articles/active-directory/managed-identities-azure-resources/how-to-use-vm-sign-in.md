@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d6d128677d2e82f4750a7771885474bf284fb1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184226"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547380"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 'de oturum açmak üzere Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -29,7 +29,7 @@ Bu makalede, Azure kaynakları hizmet sorumlusu için yönetilen kimlikleri kull
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -41,7 +41,7 @@ Bu makaledeki Azure PowerShell veya Azure CLı örneklerini kullanmayı planlıy
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için Yönetilen kimlikler etkinleştirildikten sonra oluşturulan](overview.md#how-does-it-work) bir [hizmet sorumlusu nesnesi](../develop/developer-glossary.md#service-principal-object) sağlar. Hizmet sorumlusuna Azure kaynaklarına erişim verilebilir ve oturum açma ve kaynak erişimi için betik/komut satırı istemcilerinin kimlik olarak kullanılması verilebilir. Geleneksel olarak, kendi kimliği altında güvenli kaynaklara erişmek için bir komut dosyası istemcisinin şunları yapması gerekir:  
+Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için Yönetilen kimlikler etkinleştirildikten sonra oluşturulan](overview.md#how-does-the-managed-identities-for-azure-resources-work) bir [hizmet sorumlusu nesnesi](../develop/developer-glossary.md#service-principal-object) sağlar. Hizmet sorumlusuna Azure kaynaklarına erişim verilebilir ve oturum açma ve kaynak erişimi için betik/komut satırı istemcilerinin kimlik olarak kullanılması verilebilir. Geleneksel olarak, kendi kimliği altında güvenli kaynaklara erişmek için bir komut dosyası istemcisinin şunları yapması gerekir:  
 
    - Azure AD 'ye bir gizli/Web istemci uygulaması olarak kaydolmuş ve bunlarla yarışmalıdır
    - uygulamanın kimlik bilgilerini (büyük olasılıkla betiğe gömülü) kullanarak hizmet sorumlusu altında oturum açın

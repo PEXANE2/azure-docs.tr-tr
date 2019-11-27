@@ -1,14 +1,14 @@
 ---
-title: CAF geçiş giriş bölgesi şeması örnek-dağıtma adımları
+title: CAF geçiş giriş bölgesi şeması dağıtma örnek
 description: CAF geçiş giriş bölgesi şeması, şema yapıt parametresi ayrıntıları dahil olmak üzere adımları dağıtın.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 67dabde6afe2dbc17a5ca2bd32534108b8008a8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: da17083e8e1b27739288a9d9ac087d071ff4861c
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038454"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545460"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Azure geçişi giriş bölgesi şeması örneği için Microsoft Bulut benimseme çerçevesini dağıtma
 

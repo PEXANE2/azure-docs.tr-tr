@@ -123,7 +123,7 @@ class Program
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 
-    | Anahtar | Değer |
+    | Anahtar | Value |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-güncelleştirildi |
 

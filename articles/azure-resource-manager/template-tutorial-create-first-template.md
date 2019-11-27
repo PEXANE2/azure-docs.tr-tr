@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create & deploy template
-description: Create your first Azure Resource Manager template. In the tutorial, you learn about the template file syntax and how to deploy a storage account.
+title: Öğretici-& dağıtım şablonu oluşturma
+description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,44 +12,44 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406030"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Tutorial: Create and deploy your first Azure Resource Manager template
+# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma
 
-This tutorial introduces you to Azure Resource Manager templates. It shows you how to create a starter template and deploy it to Azure. You'll learn about the structure of the template and the tools you'll need for working with templates. It takes about **12 minutes** to complete this tutorial, but the actual time will vary based on how many tools you need to install.
+Bu öğreticide, Azure Resource Manager şablonlar sunulmaktadır. Bu, bir başlangıç şablonu oluşturma ve Azure 'a dağıtma işlemlerinin nasıl yapılacağını gösterir. Şablon ve şablonlar ile çalışmak için gereken araçların yapısı hakkında bilgi edineceksiniz. Bu öğreticiyi tamamlamaya yönelik **12 dakika** sürer, ancak gerçek süre, yüklemeniz gereken araç sayısına göre değişir.
 
-This tutorial is the first of a series. As you progress through the series, you modify the starting template step-by-step until you've explored all of the core parts of a Resource Manager template. These elements are the building blocks for much more complex templates. We hope by the end of the series you're confident creating your own templates and ready to automate your deployments with templates.
+Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bir Kaynak Yöneticisi şablonunun tüm temel parçalarını araştırana kadar başlangıç şablonunu adım adım değiştirirsiniz. Bu öğeler çok daha karmaşık şablonlar için yapı taşlarıdır. Kendi şablonlarınızı oluşturduğunuz ve dağıtımlarınızı şablonlarla otomatik hale getirmeye hazırlamış olduğunuz serinin sonunu umuyoruz.
 
-If you want to learn about the benefits of using templates and why you should automate deployment with templates, see [Azure Resource Manager templates](template-deployment-overview.md).
+Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları](template-deployment-overview.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="get-tools"></a>Get tools
+## <a name="get-tools"></a>Araçları al
 
-Let's start by making sure you have the tools you need to create and deploy templates.
+Şablonlar oluşturmanız ve dağıtmanız için ihtiyacınız olan araçlara sahip olduğunuzdan emin olalım.
 
 ### <a name="editor"></a>Düzenleyici
 
-Templates are JSON files. To create templates, you need a good JSON editor. We recommend Visual Studio Code with the Resource Manager Tools extension. If you need to install these tools, see [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+Şablonlar JSON dosyalarıdır. Şablon oluşturmak için, iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](./resource-manager-tools-vs-code.md).
 
-### <a name="command-line-deployment"></a>Command-line deployment
+### <a name="command-line-deployment"></a>Komut satırı dağıtımı
 
-You also need either Azure PowerShell or Azure CLI to deploy the template. For the installation instructions, see:
+Ayrıca, şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Yükleme yönergeleri için bkz.:
 
 - [Azure PowerShell’i yükleme](/powershell/azure/install-az-ps)
-- [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows)
-- [Install Azure CLI on Linux](/cli/azure/install-azure-cli-linux)
+- [Windows 'da Azure CLı 'yı yükler](/cli/azure/install-azure-cli-windows)
+- [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 
-After installing either Azure PowerShell or Azure CLI, make sure you sign in for the first time. For help, see [Sign in - PowerShell](/powershell/azure/install-az-ps#sign-in) or [Sign in - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin olun. Yardım için bkz. [oturum açma-PowerShell](/powershell/azure/install-az-ps#sign-in) veya [Oturum Açma-Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
-Okay, you're ready to start learning about templates.
+Tamam, şablonlar hakkında öğrenmeye başlamaya hazırsınız.
 
-## <a name="create-your-first-template"></a>Create your first template
+## <a name="create-your-first-template"></a>İlk şablonunuzu oluşturma
 
-1. Open Visual Studio Code with the Resource Manager Tools extension installed.
-1. From the **File** menu, select **New File** to create a new file.
-1. From the **File** menu, select **Save as**.
-1. Name the file **azuredeploy** and select the **JSON** file extension. The complete name of the file **azuredeploy.json**.
-1. Save the file to your workstation. Select a path that is easy to remember because you'll provide that path later when deploying the template.
-1. Copy and paste the following JSON into the file:
+1. Kaynak Yöneticisi Araçları uzantısı yüklü Visual Studio Code açın.
+1. **Dosya** menüsünde **yeni dosya** ' yı seçerek yeni bir dosya oluşturun.
+1. **Dosya** menüsünde **farklı kaydet**' i seçin.
+1. Dosyayı **azuredeploy** olarak adlandırın ve **JSON** dosya uzantısını seçin. **Azuredeploy. JSON**dosyasının tüm adı.
+1. Dosyayı iş istasyonunuza kaydedin. Daha sonra şablonu dağıttığınızda bu yolu sağlayacağından, anımsanması kolay bir yol seçin.
+1. Aşağıdaki JSON dosyasını kopyalayıp dosyaya yapıştırın:
 
     ```json
     {
@@ -59,25 +59,25 @@ Okay, you're ready to start learning about templates.
     }
     ```
 
-    Here's what your VS Code environment looks like:
+    VS Code ortamınız şöyle görünür:
 
-    ![Resource Manager template visual studio code first template](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Kaynak Yöneticisi Template Visual Studio Code ilk şablonu](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
-    This template doesn't deploy any resources. We're starting with a blank template so you can get familiar with the steps to deploy a template while minimizing the chance of something going wrong.
+    Bu şablon herhangi bir kaynak dağıtmaz. Bir şeyin yanlış olma olasılığını en aza indirirken, bir şablon dağıtma adımlarını tanımanız için boş bir şablonla başlıyoruz.
 
-    The JSON file has these elements:
+    JSON dosyası şu öğelere sahiptir:
 
-    - **$schema**: Specifies the location of the JSON schema file. The schema file describes the properties that are available within a template. For example, the schema defines **resources** as one of the valid properties for a template. Don't worry that the date for the schema is 2015-01-01. This schema version is up-to-date and includes all of the latest features. The schema date hasn't been changed because there have been no breaking changes since its introduction.
-    - **contentVersion**: Specifies the version of the template (such as 1.0.0.0). You can provide any value for this element. Use this value to document significant changes in your template. When deploying resources using the template, this value can be used to make sure that the right template is being used.
-    - **resources**: Contains the resources you want to deploy or update. Currently, it's empty, but you'll add resources later.
+    - **$Schema**: JSON Şema dosyasının konumunu belirtir. Şema dosyası, bir şablon içinde kullanılabilen özellikleri açıklar. Örneğin, şema **kaynakları** bir şablon için geçerli özelliklerden biri olarak tanımlar. Şemanın tarihinin 2015-01-01 olduğunu merak etmeyin. Bu şema sürümü güncel ve en son özelliklerin tümünü içerir. Şema tarihi değiştirilmedi çünkü giriş sonrasında hiç bir değişiklik yok.
+    - **contentversion**: şablonun (1.0.0.0 gibi) sürümünü belirtir. Bu öğe için herhangi bir değer sağlayabilirsiniz. Şablonunuzda önemli değişiklikleri belgelemek için bu değeri kullanın. Şablonu kullanarak kaynakları dağıttığınızda, bu değer doğru şablonun kullanıldığından emin olmak için kullanılabilir.
+    - **kaynaklar**: dağıtmak veya güncelleştirmek istediğiniz kaynakları içerir. Şu anda boştur, ancak kaynakları daha sonra ekleyeceğiz.
 
 1. Dosyayı kaydedin.
 
-Congratulations, you've created your first template.
+Tebrikler, ilk şablonunuzu oluşturdunuz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-To start working with Azure PowerShell/Azure CLI, sign in with your Azure credentials.
+Azure PowerShell/Azure CLı ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ az login
 ---
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-When you deploy a template, you specify a resource group that will contain the resources. Before running the deployment command, create the resource group with either Azure CLI or Azure PowerShell. Select the tabs in the following code section to choose between Azure PowerShell and Azure CLI. The CLI examples in this article are written for the Bash shell.
+Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, kaynak grubunu Azure CLı veya Azure PowerShell ile oluşturun. Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-To deploy the template, use either Azure CLI or Azure PowerShell. Use the resource group you created. Give a name to the deployment so you can easily identify it in the deployment history. For convenience, also create a variable that stores the path to the template file. This variable makes it easier for you to run the deployment commands because you don't have to retype the path every time you deploy.
+Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlaması için, şablon dosyasının yolunu depolayan bir değişken de oluşturun. Bu değişken, dağıtım komutlarını çalıştırmanızı kolaylaştırır, çünkü her dağıttığınız zaman yolu yeniden yazmanız gerekmez.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -140,45 +140,45 @@ az group deployment create \
 
 ---
 
-The deployment command returns results. Look for `ProvisioningState` to see whether the deployment succeeded.
+Dağıtım komutu sonuçları döndürür. Dağıtımın başarılı olup olmadığını görmek için `ProvisioningState` bakın.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-![PowerShell deployment provisioning state](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
+![PowerShell dağıtımı sağlama durumu](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-![Azure CLI deployment provisioning state](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
+![Azure CLı dağıtımı sağlama durumu](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. From the left menu, select **Resource groups**.
+1. Sol menüden **kaynak grupları**' nı seçin.
 
-1. Select the resource group deploy in the last procedure. The default name is **myResourceGroup**. You shall see no resource deployed within the resource group.
+1. Son yordamda kaynak grubu dağıtımını seçin. Varsayılan ad **Myresourcegroup**' dir. Kaynak grubu içinde dağıtılan bir kaynak görmezsiniz.
 
-1. Notice in the upper right of the overview, the status of the deployment is displayed. Select **1 Succeeded**.
+1. Genel bakışın sağ üst köşesinde, dağıtımın durumunun görüntülendiğini görebilirsiniz. **1 başarılı**' i seçin.
 
-   ![View deployment status](./media/template-tutorial-create-first-template/deployment-status.png)
+   ![Dağıtım durumunu görüntüle](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. You see a history of deployment for the resource group. Select **blanktemplate**.
+1. Kaynak grubu için bir dağıtım geçmişi görürsünüz. **Blanktemplate**' i seçin.
 
-   ![Select deployment](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
+   ![Dağıtım seçin](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
-1. You see a summary of the deployment. In this case, there's not a lot to see because no resources were deployed. Later in this series you might find it helpful to review the summary in the deployment history. Notice on the left you can view inputs, outputs, and the template used during deployment.
+1. Dağıtımın bir özetini görürsünüz. Bu durumda, hiçbir kaynak dağıtılmadığından görmeniz çok fazla olmaz. Bu serinin ilerleyen kısımlarında, dağıtım geçmişindeki Özeti gözden geçirmeyi yararlı bulabilirsiniz. Sol tarafta, girdileri, çıkışları ve dağıtım sırasında kullanılan şablonu görüntüleyebilirsiniz.
 
-   ![View deployment summary](./media/template-tutorial-create-first-template/view-deployment-summary.png)
+   ![Dağıtım özetini görüntüle](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
-If you're stopping now, you might want to delete the resource group.
+Şimdi duruyorsa, kaynak grubunu silmek isteyebilirsiniz.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -187,7 +187,7 @@ If you're stopping now, you might want to delete the resource group.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You created a simple template to deploy to Azure. In the next tutorial, you'll add a storage account to the template and deploy it to your resource group.
+Azure 'a dağıtmak için basit bir şablon oluşturdunuz. Sonraki öğreticide, şablona bir depolama hesabı ekleyecek ve bunu kaynak grubunuza dağıtacaksınız.
 
 > [!div class="nextstepaction"]
-> [Add resource](template-tutorial-add-resource.md)
+> [Kaynak Ekle](template-tutorial-add-resource.md)

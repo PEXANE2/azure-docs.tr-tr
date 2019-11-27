@@ -1,6 +1,6 @@
 ---
-title: Azure Migrate appliance architecture
-description: Provides an overview of the Azure Migrate appliance used in server assessment and migration.
+title: Azure geçişi gereç mimarisi
+description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
@@ -15,205 +15,205 @@ ms.locfileid: "74232563"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
-This article describes the Azure Migrate appliance. You deploy the appliance when you use Azure Migrate Assessment and Migration tools to discover, assess and migrate apps, infrastructure, and workloads to Microsoft Azure. 
+Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmek, değerlendirmek ve geçirmek üzere Azure geçişi değerlendirmesi ve geçiş araçlarını kullandığınızda gereci dağıtırsınız. 
 
-[Azure Migrate](migrate-services-overview.md) provides a central hub to track discovery, assessment and migration of your on-premises apps and workloads, and private/public cloud VMs, to Azure. The hub provides Azure Migrate tools for assessment and migration, as well as third-party independent software vendor (ISV) offerings.
+[Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
 
 
-## <a name="appliance-overview"></a>Appliance overview
+## <a name="appliance-overview"></a>Gereç genel bakışı
 
-The Azure Migrate appliance types and usage are as follows.
+Azure geçiş gereç türleri ve kullanımı aşağıdaki gibidir.
 
-**Deployed as** | **Used for** | **Ayrıntılar**
+**Farklı dağıtıldı** | **Kullanıldığı yer** | **Ayrıntılar**
 --- | --- |  ---
-VMware VM | VMware VM assessment with the Azure Migrate Assessment tool.<br/><br/> VMware VM agentless migration with the Azure Migrate Server Migration tool | Download OVA template and import to vCenter Server to create the appliance VM.
-Hyper-V VM | Hyper-V VM assessment with the Azure Migrate Assessment tool. | Download zipped VHD and import to Hyper-V to create the appliance VM.
+VMware VM | Azure geçişi değerlendirme aracı ile VMware VM değerlendirmesi.<br/><br/> Azure geçişi sunucu geçiş aracı ile VMware VM aracısız geçişi | OVA şablonunu indirin ve gereç sanal makinesini oluşturmak için vCenter Server alın.
+Hyper-V VM | Azure geçişi değerlendirme aracı ile Hyper-V VM değerlendirmesi. | Sıkıştırılmış VHD 'yi indirin ve gereç sanal makinesini oluşturmak için Hyper-V ' d e aktarın.
 
-## <a name="appliance-access"></a>Appliance access
+## <a name="appliance-access"></a>Gereç erişimi
 
-After you have configured the appliance, you can remotely access the appliance VM through TCP port 3389. You can also remotely access the web management app for the appliance, on port 44368 with URL: `https://<appliance-ip-or-name>:44368`.
+Gereci yapılandırdıktan sonra, Gereç VM 'sine TCP bağlantı noktası 3389 üzerinden uzaktan erişebilirsiniz. Ayrıca, 44368 numaralı bağlantı noktası üzerinden gereç için Web yönetimi uygulamasına uzaktan erişim sağlayabilirsiniz: `https://<appliance-ip-or-name>:44368`.
 
-## <a name="appliance-license"></a>Appliance license
-The appliance comes with a Windows Server 2016 evaluation license, which is valid for 180 days. If the evaluation period is close to expiry, we recommend that you download and deploy a new appliance, or that you activate the operating system license of the appliance VM.
+## <a name="appliance-license"></a>Gereç lisansı
+Gereç, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 
-## <a name="appliance-agents"></a>Appliance agents
-The appliance has these agents installed.
+## <a name="appliance-agents"></a>Gereç aracıları
+Gereç bu aracıların yüklü olduğunu.
 
 **Aracı** | **Ayrıntılar**
 --- | ---
-Discovery agent | Gathers configuration data of on-premises virtual machines
-Değerlendirme aracısı | Profiles the on-premises environment to collect VM performance data.
-Migration adapter | Orchestrates VM replication, and coordinates communication between VMs and Azure.
-Migration gateway | Sends replicated VM data to Azure.
+Keşif Aracısı | Şirket içi sanal makinelerin yapılandırma verilerini toplar
+Değerlendirme aracısı | VM performans verilerini toplamak için şirket içi ortamı profiller.
+Geçiş bağdaştırıcısı | VM çoğaltmasını düzenleyin ve VM 'Ler ile Azure arasındaki iletişimi koordine edin.
+Geçiş ağ geçidi | Çoğaltılan VM verilerini Azure 'a gönderir.
 
 
-## <a name="appliance-deployment-requirements"></a>Appliance deployment requirements
+## <a name="appliance-deployment-requirements"></a>Gereç dağıtım gereksinimleri
 
-- [Review](migrate-support-matrix-vmware.md#assessment-appliance-requirements) the deployment requirements for a VMware appliance, and the URLs that the appliance needs to access.
-- [Review](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) the deployment requirements for a Hyper-V appliance, and the URLs that the appliance  needs to access.
+- Bir VMware gereci ve gerecin erişmesi gereken URL 'Lerin dağıtım gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#assessment-appliance-requirements) .
+- Hyper-V gereci ve gerecin erişmesi gereken URL 'Lerin dağıtım gereksinimlerini [gözden geçirin](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
 
 
-## <a name="collected-performance-data-vmware"></a>Collected performance data-VMware
+## <a name="collected-performance-data-vmware"></a>Toplanan performans verileri-VMware
 
-Here's the VMware VM performance data that the appliance collects and sends to Azure.
+Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 
-**Veriler** | **Counter** | **Assessment impact**
+**Veriler** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
-CPU utilization | cpu.usage.average | Recommended VM size/cost
-Memory utilization | mem.usage.average | Recommended VM size/cost
-Disk read throughput (MB per second) | virtualDisk.read.average | Calculation for disk size, storage cost, VM size
-Disk write throughput (MB per second) | virtualDisk.write.average | Calculation for disk size, storage cost, VM size
-Disk read operations per second | virtualDisk.numberReadAveraged.average | Calculation for disk size, storage cost, VM size
-Disk write operations per second | virtualDisk.numberWriteAveraged.average  | Calculation for disk size, storage cost, VM size
-NIC read throughput (MB per second) | net.received.average | Calculation for VM size
-NIC write throughput (MB per second) | net.transmitted.average  |Calculation for VM size
+CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
+Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
+Disk okuma üretilen işi (MB/saniye) | virtualDisk. Read. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Disk yazma işleme (MB/saniye) | virtualDisk. Write. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Saniye başına disk okuma işlemi | virtualDisk. Numberreadaveryaşlandırılmış. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Saniye başına disk yazma işlemi | virtualDisk. Numberwriteortalama. Ortalama  | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+NIC okuma üretilen işi (MB/saniye) | net. alınan. Ortalama | VM boyutu için hesaplama
+NIC yazma üretimi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesaplama
 
 
-## <a name="collected-metadata-vmware"></a>Collected metadata-VMware
+## <a name="collected-metadata-vmware"></a>Toplanan meta veriler-VMware
 
 > [!NOTE]
-> Metadata discovered by the Azure Migrate appliance is used to help you right-size your applications as you migrate them to Azure, perform Azure suitability analysis, application dependency analysis, and cost planning. Microsoft does not use this data in relation to any license compliance audit.
+> Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
-Here's the full list of VMware VM metadata that the appliance collects and sends to Azure.
+Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
 
-**Veriler** | **Counter**
+**Veriler** | **Sayaç**
 --- | --- 
-**Machine details** | 
-VM ID | vm.Config.InstanceUuid 
-VM adı | vm.Config.Name
-vCenter Server ID | VMwareClient.Instance.Uuid
-VM description | vm.Summary.Config.Annotation
-License product name | vm.Client.ServiceContent.About.LicenseProductName
-Operating system type | vm.SummaryConfig.GuestFullName
-Boot type | vm.Config.Firmware
-Çekirdek sayısı | vm.Config.Hardware.NumCPU
-Memory (MB) | vm.Config.Hardware.MemoryMB
-Disk sayısı | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
-Disk size list | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
-Network adapters list | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
-CPU utilization | cpu.usage.average
-Memory utilization |mem.usage.average
-**Per disk details** | 
-Disk key value | disk.Key
-Dikunit number | disk.UnitNumber
-Disk controller key value | disk.ControllerKey.Value
-Gigabytes provisioned | virtualDisk.DeviceInfo.Summary
-Disk name | Value generated using disk.UnitNumber, disk.Key, disk.ControllerKey.VAlue
-Read operations per second | virtualDisk.numberReadAveraged.average
-Write operations per second | virtualDisk.numberWriteAveraged.average
-Read throughput (MB per second) | virtualDisk.read.average
-Write throughput (MB per second) | virtualDisk.write.average
-**Per NIC details** | 
-Network adapter name | nic.Key
-MAC address | ((VirtualEthernetCard)nic).MacAddress
-IPv4 addresses | vm.Guest.Net
-IPv6 addresses | vm.Guest.Net
-Read throughput (MB per second) | net.received.average
-Write throughput (MB per second) | net.transmitted.average
-**Inventory path details** | 
-Adı | container.GetType().Name
-Type of child object | container.ChildType
-Reference details | container.MoRef
-Parent details | Container.Parent
-Folder details per VM | ((Folder)container).ChildEntity.Type
-Datacenter details per VM | ((Datacenter)container).VmFolder
-Datacenter details per host folder | ((Datacenter)container).HostFolder
-Cluster details per host | ((ClusterComputeResource)container).Host
-Host details per VM | ((HostSystem)container).VM
+**Makine ayrıntıları** | 
+VM Kimliği | 'nin. Config. ınstanceuuıd 
+VM adı | 'nin. Config.Name
+vCenter Server KIMLIĞI | VMwareClient. Instance. UUID
+VM açıklaması | 'nin. Summary. config. Annotation
+Lisans ürün adı | 'nin. Client. ServiceContent. about. LicenseProductName
+İşletim sistemi türü | 'nin. SummaryConfig. GuestFullName
+Önyükleme türü | 'nin. Config. bellenim
+Çekirdek sayısı | 'nin. Config. Hardware. NumCPU
+Bellek (MB) | 'nin. Config. Hardware. MemoryMB
+Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
+Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
+Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
+CPU utilization | CPU. Usage. Average
+Bellek kullanımı |mem. kullanım. Ortalama
+**Disk başına Ayrıntılar** | 
+Disk anahtarı değeri | dis. Anahtar
+Dikunit numarası | dis. UnitNumber
+Disk denetleyicisi anahtar değeri | dis. ControllerKey. Value
+Gigabayt sağlandı | virtualDisk. DeviceInfo. Summary
+Disk adı | Disk kullanılarak oluşturulan değer. UnitNumber, disk. Anahtar, disk. ControllerKey. VAlue
+Saniye başına okuma işlemi | virtualDisk. Numberreadaveryaşlandırılmış. Average
+Saniye başına yazma işlemi | virtualDisk. Numberwriteortalama. Ortalama
+Aktarım hızını oku (MB/saniye) | virtualDisk. Read. Average
+Yazma üretilen işi (MB/saniye) | virtualDisk. Write. Average
+**NIC başına Ayrıntılar** | 
+Ağ bağdaştırıcısı adı | 'i. Anahtar
+MAC adresi | ((Virtualalether, NIC) NIC). MacAddress
+IPv4 adresleri | 'nin. Guest.Net
+IPv6 adresleri | 'nin. Guest.Net
+Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
+Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
+**Envanter yolu ayrıntıları** | 
+Name | kapsayıcı. GetType (). Ada
+Alt nesnenin türü | kapsayıcı. ChildType
+Başvuru ayrıntıları | kapsayıcı. MoRef
+Üst Ayrıntılar | Container. Parent
+VM başına klasör ayrıntıları | ((Klasör) kapsayıcısı). ChildEntity. Type
+VM başına veri merkezi ayrıntıları | (Datacenter) kapsayıcısı). VmFolder
+Konak klasörü başına veri merkezi ayrıntıları | (Datacenter) kapsayıcısı). HostFolder
+Konak başına küme ayrıntıları | ((ClusterComputeResource) kapsayıcısı). Konağının
+VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 
 
 
-## <a name="collected-performance-data-hyper-v"></a>Collected performance data-Hyper-V
+## <a name="collected-performance-data-hyper-v"></a>Toplanan performans verileri-Hyper-V
 
 > [!NOTE]
-> Metadata discovered by the Azure Migrate appliance is used to help you right-size your applications as you migrate them to Azure, perform Azure suitability analysis, application dependency analysis, and cost planning. Microsoft does not use this data in relation to any license compliance audit.
+> Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
-Here's the Hyper VM performance data that the appliance collects and sends to Azure.
+Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper VM performans verileri aşağıda verilmiştir.
 
-**Performance counter class** | **Counter** | **Assessment impact**
+**Performans sayacı sınıfı** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
-Hyper-V Hypervisor Virtual Processor | % Guest Run Time | Recommended VM size/cost
-Hyper-V Dynamic Memory VM | Current Pressure (%)<br/> Guest Visible Physical Memory (MB) | Recommended VM size/cost
-Hyper-V Virtual Storage Device | Read Bytes/Second | Calculation for disk size, storage cost, VM size
-Hyper-V Virtual Storage Device | Write Bytes/Second | Calculation for disk size, storage cost, VM size
-Hyper-V Virtual Network Adapter | Bytes Received/Second | Calculation for VM size
-Hyper-V Virtual Network Adapter | Bytes Sent/Second | Calculation for VM size
+Hyper-V hiper yönetici sanal Işlemcisi | % Konuk çalışma zamanı | Önerilen VM boyutu/maliyet
+Hyper-V Dinamik Bellek VM | Geçerli basınç (%)<br/> Konuk görünür fiziksel bellek (MB) | Önerilen VM boyutu/maliyet
+Hyper-V sanal depolama cihazı | Okunan bayt/saniye | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Hyper-V sanal depolama cihazı | Yazılan bayt/saniye | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Hyper-V sanal ağ bağdaştırıcısı | Alınan bayt/saniye | VM boyutu için hesaplama
+Hyper-V sanal ağ bağdaştırıcısı | Gönderilen bayt/saniye | VM boyutu için hesaplama
 
-- CPU utilization is the sum of all usage, for all virtual processors attached to a VM.
-- Memory utilization is (Current Pressure * Guest Visible Physical Memory) / 100.
-- Disk and network utilization values are collected from the listed Hyper-V performance counters.
+- CPU kullanımı, bir VM 'ye bağlı tüm sanal işlemcilerin toplam kullanım toplamıdır.
+- Bellek kullanımı (geçerli basınç * Konuk görünür fiziksel bellek)/100.
+- Disk ve ağ kullanım değerleri, listelenen Hyper-V performans sayaçlarından toplanır.
 
-## <a name="collected-metadata-hyper-v"></a>Collected metadata-Hyper-V
+## <a name="collected-metadata-hyper-v"></a>Toplanan meta veriler-Hyper-V
 
-Here's the full list of Hyper-V VM metadata that the appliance collects and sends to Azure.
+Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
 
-**Veriler** | **WMI class** | **WMI class property**
+**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
-**Machine details** | 
-Serial number of BIOS _ Msvm_BIOSElement | BIOSSerialNumber
-VM type (Gen 1 or 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
-VM display name | Msvm_VirtualSystemSettingData | ElementName
-VM version | Msvm_ProcessorSettingData | VirtualQuantity
-Memory (bytes) | Msvm_MemorySettingData | VirtualQuantity
-Maximum memory that can be consumed by VM | Msvm_MemorySettingData | Sınır
-Dynamic memory enabled | Msvm_MemorySettingData | DynamicMemoryEnabled
-Operating system name/version/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems Name Data
-VM power status | Msvm_ComputerSystem | EnabledState
-**Per disk details** | 
-Disk identifier | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-Virtual hard disk type | Msvm_VirtualHardDiskSettingData | Tür
-Virtual hard disk size | Msvm_VirtualHardDiskSettingData | MaxInternalSize
-Virtual hard disk parent | Msvm_VirtualHardDiskSettingData | ParentPath
-**Per NIC details** | 
-IP addresses (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
-DHCP enabled (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC ID (synthetic NICs) | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC address (synthetic NICs) | Msvm_SyntheticEthernetPortSettingData | Adres
-NIC ID (legacy NICs) | MsvmEmulatedEthernetPortSetting Data | InstanceID
-NIC MAC ID (legacy NICs) | MsvmEmulatedEthernetPortSetting Data | Adres
+**Makine ayrıntıları** | 
+BIOS _ Msvm_BIOSElement seri numarası | Bıino SerialNumber
+VM türü (Gen 1 veya 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+VM görünen adı | Msvm_VirtualSystemSettingData | ElementName
+VM sürümü | Msvm_ProcessorSettingData | VirtualQuantity
+Bellek (bayt) | Msvm_MemorySettingData | VirtualQuantity
+VM tarafından tüketilen maksimum bellek | Msvm_MemorySettingData | Sınır
+Dinamik bellek etkin | Msvm_MemorySettingData | DynamicMemoryEnabled
+İşletim sistemi adı/sürümü/FQDN | Msvm_KvpExchangeComponent | Guestıntrinsicexchangeıtems adı verileri
+VM güç durumu | Msvm_ComputerSystem | EnabledState
+**Disk başına Ayrıntılar** | 
+Disk tanımlayıcısı | Msvm_VirtualHardDiskSettingData | Virtualdiskıd
+Sanal sabit disk türü | Msvm_VirtualHardDiskSettingData | Type
+Sanal sabit disk boyutu | Msvm_VirtualHardDiskSettingData | Maxınternalsize
+Sanal sabit disk üst öğesi | Msvm_VirtualHardDiskSettingData | ParentPath
+**NIC başına Ayrıntılar** | 
+IP adresleri (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | IpAdresleri
+DHCP etkin (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+NIC KIMLIĞI (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | InstanceId
+NIC MAC adresi (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | Adres
+NIC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | InstanceId
+NIC MAC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | Adres
 
 
 
 
-## <a name="discovery-and-collection-process"></a>Discovery and collection process
+## <a name="discovery-and-collection-process"></a>Bulma ve toplama işlemi
 
-The appliance communicates with vCenter Servers and Hyper-V hosts/cluster using the following process.
+Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konaklarıyla/kümesiyle iletişim kurar.
 
 
-1. **Start discovery**:
-    - When you start the discovery on the Hyper-V appliance, it communicates with the Hyper-V hosts on WinRM ports 5985 (HTTP) and 5986 (HTTPS).
-    - When you start discovery on the VMware appliance, it communicates with the vCenter server on TCP port 443 by default. IF the vCenter server listens on a different port, you can configure it in the appliance web app.
-2. **Gather metadata and performance data**:
-    - The appliance uses a Common Information Model (CIM) session to gather Hyper-V VM data from the Hyper-V host on ports 5985 and 5986.
-    - The appliance communicates with port 443 by default, to gather VMware VM data from the vCenter Server.
-3. **Send data**: The appliance sends the collected data to Azure Migrate Server Assessment and Azure Migrate Server Migration over SSL port 443.
-    - For performance data, the appliance collects real-time utilization data.
-        - Performance data is collected every 20 seconds for VMware, and every 30 seconds for Hyper-V, for each performance metric.
-        - The collected data is rolled up to create a single data point for ten minutes.
-        - The peak utilization value is selected from all of the 20/30 second data points, and sent to Azure for assessment calculation.
-        - Based on the percentile value specified in the assessment properties (50th/90th/95th/99th), the ten-minute points are sorted in ascending order, and the appropriate percentile value is used to compute the assessment
-    - For Server Migration, the appliance starts collecting VM data, and replicates it to Azure.
-4. **Assess and migrate**: You can now create assessments from the metadata collected by the appliance using Azure Migrate Server Assessment. In addition, you can also start migrating VMware VMs using Azure Migrate Server Migration to orchestrate agentless VM replication.
+1. **Bulmayı Başlat**:
+    - Hyper-V gereci üzerinde bulmayı başlattığınızda, WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerindeki Hyper-V konaklarıyla iletişim kurar.
+    - VMware gereci üzerinde bulmayı başlattığınızda, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Web uygulamasında yapılandırabilirsiniz.
+2. **Meta verileri ve performans verilerini toplayın**:
+    - Gereç, 5985 ve 5986 bağlantı noktalarında Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
+    - Gereç, vCenter Server VMware VM verilerini toplamak için varsayılan olarak bağlantı noktası 443 ile iletişim kurar.
+3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir.
+    - Performans verileri için, Gereç gerçek zamanlı kullanım verilerini toplar.
+        - Performans verileri her bir performans ölçümü için VMware için 20 saniyede bir ve Hyper-V için her 30 saniyede bir toplanır.
+        - Toplanan veriler on dakika boyunca tek bir veri noktası oluşturmak için toplanır.
+        - En yüksek kullanım değeri, 20/30 saniyelik tüm veri noktalarından seçilir ve değerlendirme hesaplaması için Azure 'a gönderilir.
+        - Değerlendirme özelliklerinde belirtilen yüzdebirlik değerine (50./90./yüzde/sn) göre, on dakikalık noktaları artan düzende sıralanır ve değerlendirmeyi hesaplamak için uygun yüzdebirlik değeri kullanılır
+    - Sunucu geçişi için, Gereç VM verilerini toplamaya başlar ve bunu Azure 'a çoğaltır.
+4. **Değerlendirin ve geçirin**: artık Azure geçişi sunucu değerlendirmesini kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. Ayrıca, Azure geçişi sunucu geçişini kullanarak VMware VM 'Leri geçirmeyi daha az VM çoğaltmasını düzenlemek için de başlatabilirsiniz.
 
 
 ![Mimari](./media/migrate-appliance/architecture.png)
 
 
-## <a name="appliance-upgrades"></a>Appliance upgrades
+## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 
-The appliance is upgraded as the Azure Migrate agents running on the appliance are updated.
+Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden, Gereç yükseltilir.
 
-- This happens automatically because the auto-update is enabled on the appliance by default.
-- You can change this default setting to update the agents manually.
-- To disable the auto-update, go to the Registry Editor>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance and set the registry key- "AutoUpdate" to 0 (DWORD).
+- Otomatik güncelleştirme gereç üzerinde varsayılan olarak etkin olduğundan bu otomatik olarak gerçekleşir.
+- Aracıları el ile güncelleştirmek için bu varsayılan ayarı değiştirebilirsiniz.
+- Otomatik güncelleştirmeyi devre dışı bırakmak için, HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance kayıt defteri Düzenleyicisi > gidin ve kayıt defteri anahtarını-"otomatik güncelleştirme", 0 (DWORD) olarak ayarlayın.
  
-### <a name="set-agent-updates-to-manual"></a>Set agent updates to manual
+### <a name="set-agent-updates-to-manual"></a>Aracı güncelleştirmelerini el ile olarak ayarla
 
-For manual updates, make sure that you update all the agents on the appliance at the same time, using the **Update** button for each outdated agent on the appliance. You can switch the update setting back to automatic updates at any time.
+El ile güncelleştirmeler için, Gereç üzerindeki tüm olmayan aracıların **Güncelleştir** düğmesini kullanarak, aracıdaki tüm aracıları aynı anda güncelleştirdiğinizden emin olun. Güncelleştirme ayarını dilediğiniz zaman yeniden otomatik güncelleştirmelere geçirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Learn how](tutorial-assess-vmware.md#set-up-the-appliance-vm) to set up the appliance for VMware.
-[Learn how](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) to set up the appliance for Hyper-V.
+VMware için gereci ayarlamayı [öğrenin](tutorial-assess-vmware.md#set-up-the-appliance-vm) .
+Hyper-V için gereci ayarlamayı [öğrenin](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) .
 

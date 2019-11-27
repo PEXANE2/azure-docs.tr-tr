@@ -14,7 +14,7 @@ ms.locfileid: "74230869"
 
 Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındırma planı vardır: her plan kendi fiyatlandırma modeline sahiptir: 
 
-| Planlama | Açıklama |
+| Plan | Açıklama |
 | ---- | ----------- |
 | [**Mine**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
 | [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |

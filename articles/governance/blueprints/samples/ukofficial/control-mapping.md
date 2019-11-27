@@ -1,168 +1,168 @@
 ---
-title: UK OFFICIAL & UK NHS blueprint samples - Control mapping
-description: Control mapping of the UK OFFICIAL and UK NHS blueprint samples. Each control is mapped to one or more Azure Policies that assist with assessment.
+title: UK resmi & UK NHS şema örnek denetimleri
+description: UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 06/26/2019
 ms.topic: sample
-ms.openlocfilehash: be4ac8fd5251929f2e6717aed18af7afd3262025
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 79c39ee058a74bc740e72b75fe85882a89f9cd85
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406661"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546441"
 ---
-# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Control mapping of the UK OFFICIAL and UK NHS blueprint samples
+# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
-The following article details how the UK OFFICIAL and UK NHS blueprint samples map to the UK OFFICIAL and UK NHS controls. For more information about the controls, see [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications).
+Aşağıdaki makalede, UK RESMI ve UK NHS şeması örneklerinin UK RESMI ve UK NHS denetimleriyle nasıl eşlendiğini ayrıntılarıyla anlatılmaktadır. Denetimler hakkında daha fazla bilgi için bkz. [UK resmi](https://www.gov.uk/government/publications/government-security-classifications).
 
-The following mappings are to the **UK OFFICIAL** and **UK NHS** controls. Use the navigation on the right to jump directly to a specific control mapping. Many of the mapped controls are implemented with an [Azure Policy](../../../policy/overview.md) initiative. To review the complete initiative, open **Policy** in the Azure portal and select the **Definitions** page. Then, find and select the **\[Preview\] Audit UK OFFICIAL and UK NHS controls and deploy specific VM Extensions to support audit requirements** built-in policy initiative.
+Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **UK resmi ve UK NHS denetimlerini kontrol\] ve belırlı VM uzantılarını, denetim gereksinimleri** yerleşik ilke girişimi ' ni destekleyecek şekilde bulun ve\[seçin.
 
 > [!IMPORTANT]
-> Each control below is associated with one or more [Azure Policy](../../../policy/overview.md) definitions. These policies may help you [assess compliance](../../../policy/how-to/get-compliance-data.md) with the control; however, there often is not a 1:1 or complete match between a control and one or more policies. As such, **Compliant** in Azure Policy refers only to the policies themselves; this doesn't ensure you're fully compliant with all requirements of a control. In addition, the compliance standard includes controls that aren't addressed by any Azure Policy definitions at this time. Therefore, compliance in Azure Policy is only a partial view of your overall compliance status. The associations between controls and Azure Policy definitions for this compliance blueprint sample may change over time. To view the change history, see the [GitHub Commit History](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
+> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)bakın.
 
-## <a name="1-data-in-transit-protection"></a>1 Data in transit protection
+## <a name="1-data-in-transit-protection"></a>geçiş koruması 1 veri
 
-The blueprint helps you ensure information transfer with Azure services is secure by assigning [Azure Policy](../../../policy/overview.md) definitions that audit insecure connections to storage accounts and Redis Cache.
+Şema, depolama hesaplarına Güvenli olmayan bağlantıları denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve Redis Cache Azure hizmetleri ile bilgi aktarımını güvence altına almanıza yardımcı olur.
 
-- Only secure connections to your Redis Cache should be enabled
-- Secure transfer to storage accounts should be enabled
+- Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
+- Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 
-## <a name="23-data-at-rest-protection"></a>2.3 Data at rest protection
+## <a name="23-data-at-rest-protection"></a>2,3 veri bekleyen koruma
 
-This blueprint helps you enforce your policy on the use of cryptograph controls by assigning [Azure Policy](../../../policy/overview.md) definitions that enforce specific cryptograph controls and audit use of weak cryptographic settings.
-Understanding where your Azure resources may have non-optimal cryptographic configurations can help you take corrective actions to ensure resources are configured in accordance with your information security policy. Specifically, the policies assigned by this blueprint require encryption for data lake storage accounts; require transparent data encryption on SQL databases; audit missing encryption on storage accounts, SQL databases, virtual machine disks, and automation account variables; audit insecure connections to storage accounts and Redis Cache; audit weak virtual machine password encryption; and audit unencrypted Service Fabric communication.
+Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, ilkenizi cryptograph denetimleri kullanarak zorlamanıza yardımcı olur.
+Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; depolama hesaplarında, SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin; depolama hesaplarına Güvenli olmayan bağlantıları denetleme ve Redis Cache; zayıf sanal makine parola şifrelemesini denetleme; ve şifrelenmemiş Service Fabric iletişimini denetleyin.
 
-- Transparent Data Encryption on SQL databases should be enabled
-- Disk encryption should be applied on virtual machines
-- Automation account variables should be encrypted
-- Secure transfer to storage accounts should be enabled
-- Service Fabric clusters should have the ClusterProtectionLevel property set to EncryptAndSign
-- Transparent Data Encryption on SQL databases should be enabled
-- Deploy SQL DB transparent data encryption
-- Require encryption on Data Lake Store accounts
-- Allowed locations (has been hard coded to "UK SOUTH" and "UK WEST")
-- Allowed locations for resource groups (has been hard coded to "UK SOUTH" and "UK WEST")
+- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
+- Disk şifrelemesi sanal makinelere uygulanmalıdır
+- Otomasyon hesabı değişkenleri şifrelenmelidir
+- Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
+- Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
+- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
+- SQL DB saydam veri şifrelemesini dağıtma
+- Data Lake Store hesaplarında şifreleme gerektir
+- İzin verilen konumlar ("UK Güney" ve "UK Batı" için sabit olarak kodlanmış)
+- Kaynak grupları için izin verilen konumlar ("UK Güney" ve "UK Batı" olarak kodlanmıştır)
 
-## <a name="52-vulnerability-management"></a>5.2 Vulnerability Management
+## <a name="52-vulnerability-management"></a>5,2 güvenlik açığı yönetimi
 
-This blueprint helps you manage information system vulnerabilities by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor missing endpoint protection, missing system updates, operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities. These insights provide real-time information about the security state of your deployed resources and can help you prioritize remediation actions.
+Bu şema, eksik Endpoint Protection, eksik sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları, SQL güvenlik açıkları ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Bu Öngörüler, dağıtılan kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerinin önceliklerini belirlemenize yardımcı olabilir.
 
-- Monitor missing Endpoint Protection in Azure Security Center
-- System updates should be installed on your machines
-- Vulnerabilities in security configuration on your machines should be remediated
-- Vulnerabilities on your SQL databases should be remediated
-- Vulnerabilities should be remediated by a Vulnerability Assessment solution
+- Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
+- Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir
+- Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
+- SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
+- Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
 
-## <a name="53-protective-monitoring"></a>5.3 Protective Monitoring
+## <a name="53-protective-monitoring"></a>5,3 koruyucu Izleme
 
-This blueprint helps you protect information system assets by assigning [Azure Policy](../../../policy/overview.md) definitions that provide protective monitoring on unrestricted access, whitelist activity, and threats.
+Bu şema, Kısıtlanmamış erişim, beyaz liste etkinliği ve tehditler üzerinde koruyucu izleme sağlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi varlıklarını korumanıza yardımcı olur.
 
-- Audit unrestricted network access to storage accounts
-- Adaptive Application Controls should be enabled on virtual machines
-- Deploy Threat Detection on SQL servers
-- Deploy default Microsoft IaaS Anti-malware extension for Windows Server
+- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
+- SQL Server 'lar üzerinde tehdit algılamayı dağıtma
+- Windows Server için varsayılan Microsoft IaaS kötü amaçlı yazılımdan koruma uzantısını dağıt
 
-## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 Secure User Management / 10 Identity and Authentication
+## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 güvenli Kullanıcı Yönetimi/10 kimliği ve kimlik doğrulaması
 
-Azure implements role-based access control (RBAC) to helps you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint helps you restrict and control access rights by assigning [Azure Policy](../../../policy/overview.md) definitions to audit external accounts with owner and/or read/write permissions and accounts with owner, read and/or write permissions that do not have multi-factor authentication enabled.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
 
-- MFA should be enabled on accounts with owner permissions on your subscription
-- MFA should be enabled accounts with write permissions on your subscription
-- MFA should be enabled on accounts with read permissions on your subscription
-- External accounts with owner permissions should be removed from your subscription
+- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
+- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
+- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
-- External accounts with read permissions should be removed from your subscription
+- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
-This blueprint assigns Azure Policy definitions to audit use of Azure Active Directory authentication for SQL servers and Service Fabric. Using Azure Active Directory authentication enables simplified permission management and centralized identity management of database users and other Microsoft services.
+Bu şema, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere Azure ilke tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.
 
-- An Azure Active Directory administrator should be provisioned for SQL servers
-- Service Fabric clusters should only use Azure Active Directory for client authentication
+- SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
+- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
 
-This blueprint also assigns Azure Policy definitions to audit accounts that should be prioritized for review, including depreciated accounts and external accounts. When needed, accounts can be blocked from signing in (or removed), which immediately removes access rights to Azure resources. This blueprint assigns two Azure Policy definitions to audit depreciated account that should be considered for removal.
+Bu şema Ayrıca, amortisman hesapları ve dış hesaplar dahil olmak üzere incelenmesi gereken denetim hesaplarına Azure Ilke tanımları atar. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurmanız gereken amorti edilmiş hesabı denetlemek için iki Azure Ilke tanımı atar.
 
-- Deprecated accounts should be removed from your subscription
-- Deprecated accounts with owner permissions should be removed from your subscription
-- External accounts with owner permissions should be removed from your subscription
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
-
-This blueprint also assigns an Azure Policy definition that audits Linux VM password file permissions to alert if they're set incorrectly. This design enables you to take corrective action to ensure authenticators aren't compromised.
-
-- \[Preview\]: Audit Linux VM /etc/passwd file permissions are set to 0644
-
-This blueprint helps you enforce strong passwords by assigning Azure Policy definitions that audit Windows VMs that don't enforce minimum strength and other password requirements. Awareness of VMs in violation of the password strength policy helps you take corrective actions to ensure passwords for all VM user accounts are compliant with policy.
-
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
-- \[Preview\]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- \[Preview\]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
-- \[Preview\]: Audit Windows VMs that do not have the password complexity setting enabled
-- \[Preview\]: Audit Windows VMs that do not have a maximum password age of 70 days
-- \[Preview\]: Audit Windows VMs that do not have a minimum password age of 1 day
-- \[Preview\]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- \[Preview\]: Audit Windows VMs that allow re-use of the previous 24 passwords
-
-This blueprint also helps you control access to Azure resources by assigning Azure Policy definitions. These policies audit use of resource types and configurations that may allow more permissive access to resources. Understanding resources that are in violation of these policies can help you take corrective actions to ensure access Azure resources is restricted to authorized users.
-
-- \[Preview\]: Deploy requirements to audit Linux VMs that have accounts without passwords
-- \[Preview\]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
-- \[Preview\]: Audit Linux VMs that have accounts without passwords
-- \[Preview\]: Audit Linux VMs that allow remote connections from accounts without passwords
-- Storage accounts should be migrated to new Azure Resource Manager resources
-- Virtual machines should be migrated to new Azure Resource Manager resources
-- Audit VMs that do not use managed disks
-
-## <a name="11-external-interface-protection"></a>11 External Interface Protection
-
-Other than using more than 25 policies for appropriate secure user management, this blueprint helps you protect service interfaces from unauthorized access by assigning an [Azure Policy](../../../policy/overview.md) definition that monitors unrestricted storage accounts. Storage accounts with unrestricted access can allow unintended access to information contained within the information system. This blueprint also assigns a policy that enables adaptive application controls on virtual machines.
-
-- Audit unrestricted network access to storage accounts
-- Adaptive Application Controls should be enabled on virtual machines
-
-## <a name="12-secure-service-administration"></a>12 Secure Service Administration
-
-Azure implements role-based access control (RBAC) to helps you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint helps you restrict and control privileged access rights by assigning five [Azure Policy](../../../policy/overview.md) definitions to audit external accounts with owner and/or write permissions and accounts with owner, and/or write permissions that do not have multi-factor authentication enabled.
-
-Systems used for administration of a cloud service will have highly privileged access to that service. Their compromise would have significant impact, including the means to bypass security controls and steal or manipulate large volumes of data. The methods used by the service provider's administrators to manage the operational service should be designed to mitigate any risk of exploitation that could undermine the security of the service. If this principle isn't implemented, an attacker may have the means to bypass security controls and steal or manipulate large volumes of data.
-
-- MFA should be enabled on accounts with owner permissions on your subscription
-- MFA should be enabled accounts with write permissions on your subscription
-- External accounts with owner permissions should be removed from your subscription
+- Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
-This blueprint assigns Azure Policy definitions to audit use of Azure Active Directory authentication for SQL servers and Service Fabric. Using Azure Active Directory authentication enables simplified permission management and centralized identity management of database users and other Microsoft services.
+Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
 
-- An Azure Active Directory administrator should be provisioned for SQL servers
-- Service Fabric clusters should only use Azure Active Directory for client authentication
+- \[Preview\]: denetim Linux VM/etc/passwd dosyası izinleri 0644 olarak ayarlanmıştır
 
-This blueprint also assigns Azure Policy definitions to audit accounts that should be prioritized for review, including depreciated accounts and external accounts with elevated permissions. When needed, accounts can be blocked from signing in (or removed), which immediately removes access rights to Azure resources. This blueprint assigns two Azure Policy definitions to audit depreciated account that should be considered for removal.
+Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows VM 'Leri denetleyen Azure Ilke tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden VM 'lerin farkında, tüm VM Kullanıcı hesaplarının parolalarının ilkeyle uyumlu olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olur.
 
-- Deprecated accounts should be removed from your subscription
-- Deprecated accounts with owner permissions should be removed from your subscription
-- External accounts with owner permissions should be removed from your subscription
+- \[Preview\]: parola karmaşıklığı ayarı etkinleştirilmemiş Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: en fazla 70 gün parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- \[Preview\]: en az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetleme
+- \[Preview\]: en fazla 70 gün parola yaşı olmayan Windows VM 'Leri denetleyin
+- \[Preview\]: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetleyin
+- \[Preview\]: en az parola uzunluğu 14 karakter olan Windows VM 'lerini denetleyin
+- \[Preview\]: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
+
+Bu şema ayrıca Azure ilke tanımlarını atayarak Azure kaynaklarına erişimi denetlemenize yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin vermeyi sağlayan kaynak türlerinin ve yapılandırmaların kullanımını denetler. Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullanıcılarla sınırlı olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olabilir.
+
+- \[Preview\]: parola olmayan hesaplara sahip Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- \[önizleme\]: parolaları olmayan hesaplara sahip Linux VM 'lerini denetleme
+- \[Preview\]: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
+- Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
+- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
+- Yönetilen diskleri kullanmayan VM 'Leri denetleme
+
+## <a name="11-external-interface-protection"></a>11 harici arabirim koruması
+
+Uygun güvenli Kullanıcı yönetimi için 25 ' ten fazla ilke kullanmaktan başka, bu şema, kısıtlanmamış depolama hesaplarını izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak hizmet arabirimlerini yetkisiz erişimden korumanıza yardımcı olur. Sınırsız erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir. Bu şema ayrıca sanal makinelerde Uyarlamalı uygulama denetimleri sağlayan bir ilke atar.
+
+- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
+
+## <a name="12-secure-service-administration"></a>12 güvenli hizmet yönetimi
+
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya yazma izinlerine sahip olan dış hesapları ve/veya Multi-Factor Authentication etkinleştirilmemiş yazma izinlerini denetlemek için beş [Azure ilke](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
+
+Bulut hizmetini yönetmek için kullanılan sistemler bu hizmete yüksek ayrıcalıklı erişime sahip olur. Güvenlik denetimlerini atlama ve büyük hacimlere yönelik verileri çalmaya veya düzenlemeye yönelik araçlar da dahil olmak üzere bunun tehlikeye düşmesi önemli ölçüde etkiler. Hizmet sağlayıcısının yöneticileri tarafından işletimsel hizmeti yönetmek için kullanılan yöntemler, hizmetin güvenliğine daha fazla yararlanabilecek herhangi bir risk düzeyini azaltmak için tasarlanmalıdır. Bu ilke uygulanmadıysa, bir saldırgan güvenlik denetimlerini atlama ve büyük hacimlere veri çalmak veya işlemek için bir yol açabilir.
+
+- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
+- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
-This blueprint also assigns an Azure Policy definition that audits Linux VM password file permissions to alert if they're set incorrectly. This design enables you to take corrective action to ensure authenticators aren't compromised.
+Bu şema, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere Azure ilke tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.
 
-- \[Preview\]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
+- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
 
-## <a name="13-audit-information-for-users"></a>13 Audit Information for Users
+Bu şema Ayrıca, hesap tanımlarını, ve yükseltilmiş izinlere sahip olan amortisman hesapları ve dış hesaplar dahil olmak üzere, incelenmek üzere önceliklendirilebilecek denetim hesaplarına atar. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurmanız gereken amorti edilmiş hesabı denetlemek için iki Azure Ilke tanımı atar.
 
-This blueprint helps you ensure system events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit log settings on Azure resources. An assigned policy also audits if virtual machines aren't sending logs to a specified log analytics workspace.
+- Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
+- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
-- Auditing should be enabled on advanced data security settings on SQL Server
+Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
+
+- \[Preview\]: denetim Linux VM/etc/passwd dosyası izinleri 0644 olarak ayarlanmıştır
+
+## <a name="13-audit-information-for-users"></a>Kullanıcılar için 13 denetim bilgileri
+
+Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Atanan bir ilke, sanal makinelerin belirli bir Log Analytics çalışma alanına günlük gönderip göndermemişse de denetler.
+
+- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
-- Audit SQL server level Auditing settings
-- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
-- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
-- Deploy network watcher when virtual networks are created
+- SQL Server Level denetim ayarlarını denetleme
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've reviewed the control mapping of the UK OFFICIAL and UK NHS blueprints, visit the following articles to learn about the overview and how to deploy this sample:
+UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre, genel bakış ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [UK OFFICIAL and UK NHS blueprints - Overview](./index.md)
-> [UK OFFICIAL and UK NHS blueprints - Deploy steps](./deploy.md)
+> [UK resmi ve UK NHS şemaları-genel bakış](./index.md)
+> [UK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

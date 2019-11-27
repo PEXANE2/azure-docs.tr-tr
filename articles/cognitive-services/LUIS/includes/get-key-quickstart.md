@@ -1,5 +1,5 @@
 ---
-title: Get key for quickstart
+title: Hızlı başlangıç için anahtar al
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -15,11 +15,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74414496"
 ---
-Keys and endpoints are provided in the LUIS portal in the **Manage Section** on the **Azure Resources** page. 
+Anahtarlar ve uç noktalar, **Azure kaynakları** sayfasındaki **Yönet bölümünde** yer alan Lua portalında verilmiştir. 
  
-1. Sign in to the [LUIS portal](https://preview.luis.ai/). 
-1. Create a new app, or select an existing app from the apps list.
-1. Select **Manage** then select **Azure Resources**. 
-1. Copy the values for the key and endpoint for the Starter resource. You'll need these to run the sample below.
+1. [Lui portalında](https://preview.luis.ai/)oturum açın. 
+1. Yeni bir uygulama oluşturun veya uygulamalar listesinden mevcut bir uygulamayı seçin.
+1. **Yönet** ' i ve ardından **Azure kaynakları**' nı seçin. 
+1. Başlangıç kaynağı için anahtar ve uç nokta değerlerini kopyalayın. Aşağıdaki örneği çalıştırmak için bunlara ihtiyacınız olacaktır.
    > [!NOTE]
-   > The **Starter** key allows free requests to the authoring API and up to 1000 queries to the prediction endpoint API per month for all your LUIS apps. 
+   > **Başlangıç** anahtarı, yazma API 'sine yönelik ücretsiz isteklere ve tüm lusıs uygulamalarınız için aylık tahmin uç nokta API 'sine kadar 1000 sorguya izin verir. 

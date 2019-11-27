@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74285896"
 ---
-# <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
+# <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
 SAP HANA veritabanları, düşük kurtarma noktası hedefi (RPO) ve uzun süreli saklama gerektiren kritik iş yükleridir. [Azure Backup](backup-overview.md)kullanarak Azure sanal makinelerinde (VM) çalışan SAP HANA veritabanlarını yedekleyebilirsiniz.
 

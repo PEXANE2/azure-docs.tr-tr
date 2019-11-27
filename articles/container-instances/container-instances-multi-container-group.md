@@ -1,20 +1,15 @@
 ---
-title: Öğretici-Azure Container Instances-şablonda çok kapsayıcılı bir grup dağıtma
+title: Öğretici-çok Kapsayıcılı grup dağıtma-şablon
 description: Bu öğreticide, Azure CLı ile Azure Resource Manager şablonu kullanarak Azure Container Instances birden çok kapsayıcılı bir kapsayıcı grubunu dağıtmayı öğreneceksiniz.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7438b5a91d3bf0ce8330e33bc1c849a8b0329c6f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325908"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533635"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtma
 
@@ -42,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="configure-a-template"></a>Şablon yapılandırma
 
-Aşağıdaki JSON öğesini adlı `azuredeploy.json`yeni bir dosyaya kopyalayarak başlayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
+Aşağıdaki JSON 'ı `azuredeploy.json`adlı yeni bir dosyaya kopyalayarak başlayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
 
 ```
 code azuredeploy.json
@@ -172,7 +167,7 @@ Dağıtımın durumunu görüntülemek için, aşağıdaki [az Container Show][a
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Çalışan uygulamayı görüntülemek isterseniz, tarayıcınızda IP adresine gidin. Örneğin, IP Bu örnek çıktıdır `52.168.26.124` :
+Çalışan uygulamayı görüntülemek isterseniz, tarayıcınızda IP adresine gidin. Örneğin, bu örnek çıktıda IP `52.168.26.124`:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -182,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Kapsayıcı günlüklerini görüntüleme
 
-[Az Container logs][az-container-logs] komutunu kullanarak bir kapsayıcının günlük çıktısını görüntüleyin. `--container-name` Bağımsız değişkeni, günlüklerin alınacağı kapsayıcıyı belirtir. Bu örnekte, `aci-tutorial-app` kapsayıcı belirtilir.
+[Az Container logs][az-container-logs] komutunu kullanarak bir kapsayıcının günlük çıktısını görüntüleyin. `--container-name` bağımsız değişkeni, günlüklerin alınacağı kapsayıcıyı belirtir. Bu örnekte `aci-tutorial-app` kapsayıcı belirtilir.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -197,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Sepet kapsayıcısının günlüklerini görmek için `aci-tutorial-sidecar` kapsayıcıyı belirten benzer bir komut çalıştırın.
+Sepet kapsayıcısının günlüklerini görmek için `aci-tutorial-sidecar` kapsayıcısını belirten benzer bir komut çalıştırın.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -223,7 +218,7 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Gördüğünüz gibi, sepet, çalıştığından emin olmak için grubun yerel ağı aracılığıyla ana Web uygulamasına bir HTTP isteği düzenli olarak yapar. Bu sepet örneği, dışında bir http yanıt kodu `200 OK`aldıysa bir uyarı tetiklemek için genişletilebilir.
+Gördüğünüz gibi, sepet, çalıştığından emin olmak için grubun yerel ağı aracılığıyla ana Web uygulamasına bir HTTP isteği düzenli olarak yapar. Bu sepet örneği, `200 OK`dışında bir HTTP yanıt kodu aldıysa bir uyarının tetiklenmesi için genişletilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

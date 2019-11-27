@@ -85,7 +85,7 @@ Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yaln
 
 | İşlev | Durum |
 | -- | -- |
-| Table. PromoteHeaders | Desteklenmiyor. Aynı sonuç, veri kümesindeki "Ilk satır üstbilgi olarak" ayarlanarak elde edilebilir. |
+| Table. PromoteHeaders | Desteklenmez. Aynı sonuç, veri kümesindeki "Ilk satır üstbilgi olarak" ayarlanarak elde edilebilir. |
 | Table. CombineColumns | Bu, doğrudan desteklenmeyen ancak verilen iki sütunu birleştiren yeni bir sütun eklenerek elde edilen yaygın bir senaryodur.  Örneğin, Table. AddColumn (RemoveEmailColumn, "ad", her [FirstName] & "" & [LastName]) |
 | Table. TransformColumnTypes | Çoğu durumda bu desteklenir. Aşağıdaki senaryolar desteklenmez: dizeyi para birimi türüne dönüştürme, dizeyi zaman türüne dönüştürme, dizeyi yüzde türüne dönüştürme. |
 | Table. Nestedjoın | Yalnızca bir birleşimi yapmanız doğrulama hatasına neden olur. Çalışması için sütunların genişletilmesi gerekir. |
@@ -93,8 +93,8 @@ Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yaln
 | Table. RemoveLastN | Alt satırları kaldır desteklenmiyor. |
 | Table. RowCount | Desteklenmez, ancak tüm hücreler boş olan bir Ekle sütunuyla elde edilebilir (koşul sütunu kullanılabilir) ve ardından bu sütunda Group By kullanılıyor. Table. Group desteklenir. | 
 | Satır düzeyi hata işleme | Satır düzeyi hata işleme Şu anda desteklenmiyor. Örneğin, bir sütundan sayısal olmayan değerleri filtrelemek için, bir yaklaşım metin sütununu bir sayıya dönüştürmelidir. Dönüştürülemezse her hücre bir hata durumunda olur ve filtrelenebilir. Bu senaryo, denetimi veri akışında mümkün değildir. |
-| Table. devrik | Desteklenmiyor |
-| Table. Pivot | Desteklenmiyor |
+| Table. devrik | Desteklenmez |
+| Table. Pivot | Desteklenmez |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

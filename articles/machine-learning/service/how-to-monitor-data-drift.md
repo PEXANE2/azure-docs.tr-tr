@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276770"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539234"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Machine Learning bağlamında, veri dolu modeli, performans düşüşünü model
 Azure Machine Learning, AKS üzerinde dağıtılan bir modelin girişlerini izleyebilir ve bu verileri modelin eğitim veri kümesiyle karşılaştırabilirsiniz. Düzenli aralıklarla, çıkarım verileri [anlık görüntü ve profillendirilir ve](how-to-explore-prepare-data.md)ardından temel veri kümesine göre hesaplanır. 
 
 + , DRFT katsayısı olarak adlandırılan veri kayması miktarını ölçer.
-+ Veri DRIP katkısını özelliklerine göre ölçer ve hangi özelliklerin veri üzerinde olduğunu bilgilendirin.
++ Veri DRIP katkısını özelliklerine göre ölçer ve hangi özelliklerin veri üzerinde olduğunu gösterir.
 + Mesafe ölçümlerini ölçer. Şu anda Wasserstein ve enerji mesafesi hesaplanır.
 + Özelliklerin dağıtımlarını ölçer. Şu anda Çekirdek yoğunluğu tahmini ve histogramları.
 + Uyarıları e-posta ile veri kayması ile gönderin.
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ Aşağıdaki Python örneği, ilgili veri kayması ölçümlerinin nasıl çizec
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```

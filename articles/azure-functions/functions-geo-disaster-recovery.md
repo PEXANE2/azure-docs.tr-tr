@@ -1,6 +1,6 @@
 ---
-title: Azure Functions geo-disaster recovery and high availability
-description: How to use geographical regions for redundancy and to fail over in Azure Functions.
+title: Azure Işlevleri coğrafi olağanüstü durum kurtarma ve yüksek kullanılabilirlik
+description: Azure Işlevlerinde artıklık ve yük devretme için coğrafi bölgeleri kullanma.
 author: wesmc7777
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
@@ -13,48 +13,48 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226968"
 ---
-# <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-disaster recovery
+# <a name="azure-functions-geo-disaster-recovery"></a>Azure Işlevleri coğrafi olağanüstü durum kurtarma
 
-When entire Azure regions or datacenters experience downtime, it is critical for compute to continue processing in a different region.  This article will explain some of the strategies that you can use to deploy functions to allow for disaster recovery.
+Tüm Azure bölgeleri veya veri merkezleri kapalı kalma süresi geldiğinde, işlem, farklı bir bölgede işlemeye devam etmek için kritik öneme sahiptir.  Bu makalede, olağanüstü durum kurtarmaya izin vermek için işlevleri dağıtmak üzere kullanabileceğiniz stratejilerin bazıları açıklanmaktadır.
 
 ## <a name="basic-concepts"></a>Temel kavramlar
 
-Azure Functions run in a specific region.  To get higher availability, you can deploy the same functions to multiple regions.  When in multiple regions you can have your functions running in the *active/active* pattern or *active/passive* pattern.  
+Azure Işlevleri belirli bir bölgede çalışır.  Daha yüksek kullanılabilirlik sağlamak için aynı işlevleri birden çok bölgeye dağıtabilirsiniz.  Birden çok bölgede, işlevleriniz *etkin/etkin* düzende veya *etkin/Pasif* düzende çalışıyor olabilir.  
 
-* Etkin/etkin. Both regions are active and receiving events (duplicate or rotationally). Active/active is recommended for HTTPS functions in combination with Azure Front Door.
-* Active/passive. One region is active and receiving events, while a secondary is idle.  When failover is required, the secondary region is activated and takes over processing.  This is recommended for non-HTTP functions like Service Bus and Event Hubs.
+* Etkin/etkin. Her iki bölge de etkin ve olayları alıyor (yinelenen veya rotalıo). Etkin/etkin, HTTPS işlevleri için Azure ön kapısının birleşimiyle önerilir.
+* Etkin/Pasif. Bir bölge etkin ve olayları alıyor, ancak ikincil boşta kalır.  Yük devretme gerekli olduğunda, ikincil bölge etkinleştirilir ve işleme alır.  Bu, Service Bus ve Event Hubs gibi HTTP olmayan işlevler için önerilir.
 
-Read how to [run apps in multiple regions](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) for more information on multi-region deployments.
+Çok bölgeli dağıtımlar hakkında daha fazla bilgi için [birden çok bölgede uygulama çalıştırmayı](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) okuyun.
 
-## <a name="activeactive-for-https-functions"></a>Active/active for HTTPS functions
+## <a name="activeactive-for-https-functions"></a>HTTPS işlevleri için etkin/etkin
 
-To achieve active/active deployments of functions, it requires some component that can coordinate the events between both regions.  For HTTPS functions, this coordination is accomplished using [Azure Front Door](../frontdoor/front-door-overview.md).  Azure Front Door can route and round-robin HTTPS requests between multiple regional functions.  It also periodically checks the health of each endpoint.  If a regional function stops responding to health checks, Azure Front Door will take it out of rotation and only forward traffic to healthy functions.  
+İşlevlerin etkin/etkin dağıtımına ulaşmak için, her iki bölge arasındaki olayları koordine eden bir bileşen gerektirir.  HTTPS işlevleri için bu koordinasyon, [Azure ön kapısı](../frontdoor/front-door-overview.md)kullanılarak gerçekleştirilir.  Azure ön kapısı, birden çok bölgesel işlev arasında HTTPS isteklerini yönlendirebilir ve hepsini bir kez deneme olabilir.  Ayrıca, her uç noktanın sistem durumunu düzenli olarak denetler.  Bölgesel bir işlev sistem durumu denetimlerine yanıt vermezse, Azure ön kapısının dönüşü kalmaz ve yalnızca trafiği sağlıklı işlevlere iletir.  
 
-![Architecture for Azure Front Door and Function](media/functions-geo-dr/front-door.png)  
+![Azure ön kapısının ve Işlevin mimarisi](media/functions-geo-dr/front-door.png)  
 
-## <a name="activeactive-for-non-https-functions"></a>Active/active for non-HTTPS functions
+## <a name="activeactive-for-non-https-functions"></a>HTTPS olmayan işlevler için etkin/etkin
 
-You can still achieve active/active deployments for non-HTTPS functions.  However, you need to consider how the two regions will interact or coordinate with one another.  If you deployed the same function app into two regions, each triggering on the same Service Bus queue, they would act as competing consumers on de-queueing that queue.  While this means each message is only being processed by one of the instances, it also means there is still a single point of failure on the single service bus.  If you deploy two service bus queues (one in a primary region, one in a secondary region), and the two function apps pointed to their region queue, the challenge now comes in how the queue messages are distributed between the two regions.  Often this means that each publisher attempts to publish a message to *both* regions, and each message is processed by both active function apps.  While this creates an active/active pattern, it creates other challenges around duplication of compute and when or how data is consolidated.  For these reasons, it is recommended for non-HTTPS triggers to use the active/passive pattern.
+HTTPS olmayan işlevler için hala etkin/etkin dağıtımlar elde edebilirsiniz.  Bununla birlikte, iki bölgenin birbirleriyle nasıl etkileşime gireceğini veya nasıl koordine olacağını dikkate almanız gerekir.  Aynı işlev uygulamasını, her biri aynı Service Bus kuyruğu üzerinde tetiklenirken iki bölgeye dağıttıysanız, bu kuyruğu sıraya alma sırasında rekabet eden tüketiciler olarak hareket ederler.  Bu, her iletinin yalnızca örneklerden biri tarafından işlendiği anlamına geliyor olsa da, tek hizmet veri yolu üzerinde hala tek bir hata noktası olduğu anlamına gelir.  İki hizmet veri yolu kuyruğu (bir birincil bölgede, biri ikincil bölgede olmak üzere) ve kendi bölge kuyruğuna işaret eden iki işlev uygulaması dağıtırsanız, sınama artık sıra iletilerinin iki bölge arasında nasıl dağıtıldığına gelir.  Genellikle bu, her yayımcının her *iki* bölgeye bir ileti yayımlamayı denediği ve her ileti hem etkin işlev uygulamaları tarafından işlendiği anlamına gelir.  Bu bir etkin/etkin model oluştururken, işlem yinelemesi ve verilerin ne zaman ya da nasıl birleştirilecektir konularında daha fazla zorluk oluşturur.  Bu nedenlerden dolayı, HTTPS olmayan tetikleyicilerinin etkin/Pasif model kullanması önerilir.
 
-## <a name="activepassive-for-non-https-functions"></a>Active/passive for non-HTTPS functions
+## <a name="activepassive-for-non-https-functions"></a>HTTPS olmayan işlevler için etkin/Pasif
 
-Active/passive provides a way for only a single function to process each message, but provides a mechanism to fail over to a secondary region in case of a disaster.  Azure Functions works alongside [Azure Service Bus geo-recovery](../service-bus-messaging/service-bus-geo-dr.md) and [Azure Event Hubs geo-recovery](../event-hubs/event-hubs-geo-dr.md).
+Etkin/Pasif, her iletiyi yalnızca tek bir işlevin işlemesi için bir yol sağlar, ancak bir olağanüstü durum durumunda ikincil bir bölgeye yük devretmek için bir mekanizma sağlar.  Azure Işlevleri, [coğrafi kurtarma](../service-bus-messaging/service-bus-geo-dr.md) ve [Azure Event Hubs coğrafi kurtarma](../event-hubs/event-hubs-geo-dr.md)Azure Service Bus birlikte çalışır.
 
-Using Azure Event Hubs triggers as an example, the active/passive pattern would involve the following:
+Azure Event Hubs tetiklerini örnek olarak kullanarak, etkin/Pasif düzende aşağıdakiler yer alabilir:
 
-* Azure Event Hub deployed to both a primary and secondary region.
-* Geo-disaster enabled to pair the primary and secondary Event Hub.  This also creates an "alias" you can use to connect to event hubs and switch from primary to secondary without changing the connection info.
-* Function apps deployed to both a primary and secondary region.
-* The function apps are triggering on the *direct* (non-alias) connection string for its respective event hub. 
-* Publishers to the event hub should publish to the alias connection string. 
+* Hem birincil hem de ikincil bölgeye dağıtılan Azure Olay Hub 'ı.
+* Birincil ve ikincil Olay Hub 'ını eşleştirmek için coğrafi olağanüstü durum etkindir.  Bu Ayrıca, bağlantı bilgilerini değiştirmeden, Olay Hub 'larına bağlanmak ve birincili ikinciye geçiş yapmak için kullanabileceğiniz bir "diğer ad" oluşturur.
+* Hem birincil hem de ikincil bölgeye dağıtılan işlev uygulamaları.
+* İşlev uygulamaları, kendi olay hub 'ı için *doğrudan* (diğer ad olmayan) bağlantı dizesinde tetikleniyor. 
+* Olay Hub 'ının yayımcıları, diğer ad bağlantı dizesine yayımlamanız gerekir. 
 
-![Active-passive example architecture](media/functions-geo-dr/active-passive.png)
+![Aktif-pasif örnek mimarisi](media/functions-geo-dr/active-passive.png)
 
-Before failover, publishers sending to the shared alias will route to the primary event hub.  The primary function app is listening exclusively to the primary event hub.  The secondary function app will be passive and idle.  As soon as failover is initiated, publishers sending to the shared alias will now route to the secondary event hub.  The secondary function app will now become active and start triggering automatically.  Effective failover to a secondary region can be driven entirely from the event hub, with the functions becoming active only when the respective event hub is active.
+Yük devretmeden önce, paylaşılan diğer ada gönderen yayımcılar birincil olay hub 'ına yol edecektir.  Birincil işlev uygulaması yalnızca birincil olay hub 'ına dinliyor.  İkincil işlev uygulaması pasif ve boşta olacaktır.  Yük devretme işlemi başlatıldıktan hemen sonra, paylaşılan diğer ada gönderilen yayımcılar artık ikincil Olay Hub 'ına yol açmaz.  İkincil işlev uygulaması artık etkin hale gelecek ve otomatik olarak tetikleniyor.  Bir ikincil bölgeye yönelik etkin yük devretme, yalnızca ilgili olay hub 'ı etkin olduğunda işlevler etkin hale gelmeyle, tamamen Olay Hub 'ından çalıştırılabilir.
 
-Read more on information and considerations for failover with [service bus](../service-bus-messaging/service-bus-geo-dr.md) and [event hubs](../event-hubs/event-hubs-geo-dr.md).
+[Service Bus](../service-bus-messaging/service-bus-geo-dr.md) ve [Event hub 'ları](../event-hubs/event-hubs-geo-dr.md)ile yük devretme hakkında daha fazla bilgi ve dikkat edilecek noktalar okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Create Azure Front Door](../frontdoor/quickstart-create-front-door.md)
-* [Event Hubs failover considerations](../event-hubs/event-hubs-geo-dr.md#considerations)
+* [Azure ön kapısı oluşturma](../frontdoor/quickstart-create-front-door.md)
+* [Event Hubs yük devretme konuları](../event-hubs/event-hubs-geo-dr.md#considerations)

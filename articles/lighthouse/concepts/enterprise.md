@@ -1,6 +1,6 @@
 ---
 title: Kurumsal senaryolarda Azure Lighthouse
-description: The capabilities of Azure Lighthouse can be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
+description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için kullanılabilir.
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
@@ -12,51 +12,51 @@ ms.locfileid: "74463906"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
-The most common scenario for [Azure Lighthouse](../overview.md) is a service provider managing resources in its customers’ Azure  Active Directory (Azure AD) tenants. However, the capabilities of Azure Lighthouse can also be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
+[Azure ışıklı kullanım](../overview.md) için en yaygın senaryo, müşterilerinin ' Azure Active Directory (Azure AD) kiracılarındaki kaynakları yöneten bir hizmet sağlayıcıdır. Ancak, Azure ışıklı kullanım özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için de kullanılabilir.
 
-## <a name="single-vs-multiple-tenants"></a>Single vs. multiple tenants
+## <a name="single-vs-multiple-tenants"></a>Tek ve birden çok kiracı
 
-For most organizations, management is easier with a single Azure AD tenant. Having all resources within one tenant allows centralization of management tasks by designated users, user groups, or service principals within that tenant. We recommend using one tenant for your organization whenever possible.
+Çoğu kuruluş için, yönetim tek bir Azure AD kiracısıyla daha kolay olur. Tek bir kiracının içindeki tüm kaynakların olması, bu Kiracıdaki kullanıcılara, Kullanıcı gruplarına veya hizmet sorumlularına göre yönetim görevlerinin merkezileşmeyi sağlar. Mümkün olduğunda kuruluşunuz için bir kiracı kullanmanızı öneririz.
 
-At the same time, there are situations that may require an organization to maintain multiple Azure AD tenants. In some cases, this may be a temporary situation, as when acquisitions have taken place and a long-term tenant consolidation strategy will take some time to define. An organization may also need to maintain multiple tenants on an ongoing basis (due to wholly independent subsidiaries, geographical or legal requirements, and so on). In cases where a multi-tenant architecture is required, Azure delegated resource management can be used to centralize and streamline management operations. Subscriptions from multiple tenants can be onboarded for [Azure delegated resource management](azure-delegated-resource-management.md), allowing designated users in a managing tenant to perform [cross-tenant management functions](cross-tenant-management-experience.md) in a centralized and scalable manner.
+Aynı zamanda, bir kuruluşun birden çok Azure AD kiracının bakımını gerektirebileceği durumlar vardır. Bazı durumlarda bu geçici bir durum olabilir. Bu durumda, alımlar gerçekleştiği sırada ve uzun süreli bir kiracı birleştirme stratejisinin tanımlanması zaman alabilir. Kuruluşun aynı zamanda birden fazla kiracının devam edebilmesi için (tamamen bağımsız bağlı kuruluşlar, coğrafi veya yasal gereksinimler vb.). Çok kiracılı bir mimarinin gerekli olduğu durumlarda, yönetim işlemlerini merkezileştirmek ve kolaylaştırmak için Azure tarafından atanan kaynak yönetimi kullanılabilir. Birden çok kiracıdan abonelikler, Azure tarafından atanan [kaynak yönetimi](azure-delegated-resource-management.md)için eklendi olabilir. Bu, bir yönetim kiracısındaki belirlenen kullanıcıların, merkezi ve ölçeklenebilir bir şekilde [platformlar arası yönetim işlevleri](cross-tenant-management-experience.md) gerçekleştirmesini sağlar.
 
-## <a name="tenant-management-architecture"></a>Tenant management architecture
+## <a name="tenant-management-architecture"></a>Kiracı Yönetimi mimarisi
 
-When centralizing management operations across multiple tenants, you’ll need to determine which tenant will include the users performing management operations for the other tenants. In other words, you will need to determine which tenant will be the managing tenant for other tenants.
+Birden çok kiracının yönetim işlemlerini merkezileştirirken, diğer kiracılara yönelik yönetim işlemlerini gerçekleştiren kullanıcıların hangi kiracının dahil edileceğini belirlemeniz gerekir. Diğer bir deyişle, diğer kiracılar için hangi kiracının yönetim kiracısı olacağını belirlemeniz gerekir.
 
-For example, say your organization has a single tenant that we’ll call *Tenant A*. Your organization then acquires two additional tenants, *Tenant B* and *Tenant C*, and you have business reasons that require you to maintain them as separate tenants.
+Örneğin, kuruluşunuzun *kiracı a*'yı çağıracağımız tek bir kiracıya sahip olduğunu varsayalım. Daha sonra kuruluşunuz iki ek kiracı, *kiracı B* ve *kiracı C*alır ve bunları ayrı kiracılar olarak tutmanızı gerektiren iş nedenleriniz vardır.
 
-Your organization wants to use the same policy definitions, backup practices, and security processes across all tenants. Since you already have users (including user groups and service principals) that are responsible for performing these tasks within Tenant A, you can onboard all of the subscriptions within Tenant B and Tenant C so that those same users in Tenant A can perform those tasks.
+Kuruluşunuz, tüm kiracıların tamamında aynı ilke tanımlarını, yedekleme uygulamalarını ve güvenlik süreçlerini kullanmak istiyor. Kiracı A içinde bu görevleri gerçekleştirmekten sorumlu olan kullanıcılarınız (Kullanıcı grupları ve hizmet sorumluları dahil) zaten mevcut olduğundan, Kiracıdaki aynı kullanıcıların bu işlemleri gerçekleştirmesini sağlamak için kiracı B ve kiracı C içindeki tüm abonelikleri ekleyebilirsiniz. görevlerinize.
 
-![Users in Tenant A managing resources in Tenant B and Tenant C](../media/enterprise-azure-lighthouse.jpg)
+![Kiracıdaki kullanıcılar kiracı B ve kiracı C 'de kaynakları yönetme](../media/enterprise-azure-lighthouse.jpg)
 
-## <a name="security-and-access-considerations"></a>Security and access considerations
+## <a name="security-and-access-considerations"></a>Güvenlik ve erişim konuları
 
-In most enterprise scenarios, you’ll want to delegate a full subscription for Azure delegated resource management, although you can also delegate only specific resource groups within a subscription.
+Çoğu kurumsal senaryoda, bir abonelik içinde yalnızca belirli kaynak gruplarını temsil edebilir, ancak Azure tarafından atanan kaynak yönetimi için tam bir abonelik atamak isteyeceksiniz.
 
-Either way, be sure to [follow the principle of least privilege when defining which users will have access to resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Doing so helps to ensure that users only have the permissions needed to perform the required tasks and reduces the chance of inadvertent errors.
+Her iki durumda da, [kaynaklara hangi kullanıcıların erişebileceğini tanımlarken en az ayrıcalık ilkesini izlediğinizden](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)emin olun. Bunun yapılması, kullanıcıların yalnızca gerekli görevleri gerçekleştirmek için gerekli izinlere sahip olmasını sağlamaya yardımcı olur ve yanlışlıkla hata olasılığını azaltır.
 
-Azure Lighthouse and Azure delegated resource management only provide logical links between a managing tenant and managed tenants, rather than physically moving data or resources. Furthermore, the access always goes in only one direction, from the managing tenant to the managed tenants.  Users and groups in the managing tenant should continue to use multi-factor authentication when performing management operations on managed tenant resources.
+Azure Mathouse ve Azure Temsilcili kaynak yönetimi, verileri veya kaynakları fiziksel olarak taşımak yerine yalnızca bir kiracı ve yönetilen kiracılar arasında mantıksal bağlantılar sağlar. Ayrıca erişim, yönetim kiracısından yönetilen kiracılar 'a her zaman tek bir yönde gider.  Yönetim kiracısındaki kullanıcılar ve gruplar, yönetilen kiracı kaynaklarında yönetim işlemlerini gerçekleştirirken Multi-Factor Authentication kullanmaya devam etmelidir.
 
-Enterprises with internal or external governance and compliance guardrails can use [Azure Activity logs](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) to meet their transparency requirements. When enterprise tenants have established managing and managed tenant relationships, users in each tenant can monitor and gain visibility to actions taken by the users in the other tenant by viewing logged activity.
+İç veya dış idare ve uyumluluk guardları olan kuruluşlar, saydamlık gereksinimlerini karşılamak için [Azure etkinlik günlüklerini](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) kullanabilir. Kurumsal kiracılar yönetim ve yönetilen kiracı ilişkileri oluştururken, her Kiracıdaki kullanıcılar günlüğe kaydedilen etkinliği görüntüleyerek diğer Kiracıdaki kullanıcılar tarafından gerçekleştirilen eylemleri izleyebilir ve görünürlük elde edebilir.
 
-## <a name="onboarding-process-considerations"></a>Onboarding process considerations
+## <a name="onboarding-process-considerations"></a>Ekleme süreci konuları
 
-Subscriptions (or resource groups within a subscription) can be onboarded to Azure delegated resource management either by deploying Azure Resource Manager templates or through Managed Services offers published to Azure Marketplace, either privately or publicly.
+Abonelikler (veya bir abonelik içindeki kaynak grupları), Azure Resource Manager şablonları dağıtarak veya Azure Marketi 'nde yayınlanan yönetilen hizmet teklifleri aracılığıyla veya özel olarak ya da Hazırlayan.
 
-Since enterprise users will normally be able to gain direct access to the enterprise’s tenants, and there’s no need to market or promote a management offering, it’s generally faster and more straightforward to deploy directly with Azure Resource Manager templates. While we refer to service providers and customers in the [onboarding guidance](../how-to/onboard-customer.md), enterprises can use the same processes.
+Kurumsal kullanıcılar normalde kuruluşun kiracılarına doğrudan erişim elde edebilecekler ve bir yönetim teklifini pazarlamaya veya yükseltmeye gerek duymadığından, genellikle Azure Resource Manager şablonlarıyla doğrudan daha hızlı ve daha basit hale gelir. [Ekleme](../how-to/onboard-customer.md)kılavuzundaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz sürece kuruluşlar aynı işlemlerin aynısını kullanabilir.
 
-If you prefer, tenants within an enterprise can be onboarded by [publishing a Managed Services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md). To ensure that the offer is only available to the appropriate tenants, be sure that your plans are marked as private. With a private plan, you can provide the subscription IDs for each tenant that you plan to onboard, and no one else will be able to get your offer.
+İsterseniz, bir kuruluştaki kiracılar [Azure Market 'e yönetilen bir hizmet teklifi yayımlayarak](../how-to/publish-managed-services-offers.md)eklendi olabilir. Teklifin yalnızca uygun kiracılar için kullanılabilir olduğundan emin olmak için, planlarınızın özel olarak işaretlendiğinden emin olun. Özel bir plan sayesinde, sunmayı planladığınız her kiracı için abonelik kimliklerini sağlayabilir ve teklifinizi başka hiç kimse sağlayamayacak.
 
-## <a name="terminology-notes"></a>Terminology notes
+## <a name="terminology-notes"></a>Terminoloji notları
 
-For cross-tenant management within the enterprise, references to service providers in the Azure Lighthouse documentation can be understood to apply to the managing tenant within an enterprise—that is, the tenant that includes the users who will manage resources in other tenants through Azure delegated resource management. Similarly, references to customers can be understood to apply to the tenants that are delegating resources to be managed through users in the managing tenant.
+Kuruluştaki çapraz Kiracı Yönetimi için, Azure açık belgeleri belgelerindeki hizmet sağlayıcılarına yapılan başvurular, bir kuruluşta yönetim kiracısına (yani, kaynakları yönetecek kullanıcıları içeren kiracı) uygulanabilir. Azure tarafından atanan kaynak yönetimi aracılığıyla diğer kiracılarda. Benzer şekilde, müşterilere yapılan başvurular, yönetim kiracısındaki kullanıcılar aracılığıyla yönetilecek kaynak temsilcisi olan kiracılar için de kullanılabilir.
 
-For instance, in the example described above, Tenant A can be thought of as the service provider tenant (the managing tenant) and Tenant B and Tenant C can be thought of as the customer tenants.
+Örneğin, yukarıda açıklanan örnekte, kiracı A, hizmet sağlayıcı kiracısı (yöneten kiracı) ve B kiracısı ile kiracı C 'nin müşteri kiracıları olarak düşünülebilir.
 
-In that example, Tenant A users with the appropriate permissions can [view and manage delegated resources](../how-to/view-manage-customers.md) in the **My customers** page of the Azure portal. Likewise, Tenant B and Tenant C users with the appropriate permissions can [view and manage the resources that have been delegated](../how-to/view-manage-service-providers.md) to Tenant A in the **Service providers** page of the Azure portal.
+Bu örnekte, uygun izinlere sahip bir Kullanıcı kiracıya, Azure portal **müşteriler** sayfasında, [temsilci kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-customers.md) . Benzer şekilde, B ve uygun izinlere sahip kiracı C kullanıcıları, Azure portal **hizmet sağlayıcıları** sayfasında kiracıya [atanmış kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-service-providers.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
+- [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
 - [Azure tarafından atanan temsilcinin kaynak yönetimi](azure-delegated-resource-management.md) hakkında bilgi edinin.

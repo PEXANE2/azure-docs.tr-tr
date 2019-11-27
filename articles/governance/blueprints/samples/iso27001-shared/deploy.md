@@ -1,14 +1,14 @@
 ---
-title: ISO 27001 paylaşılan hizmetleri şema örnek-dağıt adımları
+title: ISO 27001 paylaşılan hizmetleri dağıtma şema örneği
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere ISO 27001 paylaşılan hizmetleri şeması örneği için adımları dağıtın.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 3f6928666dc098de81e20555cc1164338331fa90
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184386"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546701"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğini dağıtma
 
@@ -104,9 +104,9 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |\[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Seçim Varsayılan değer _["none"]_ değeridir.|
-|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Seçim Varsayılan değer _["none"]_ değeridir.|
+|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Seçim Varsayılan değer _["none"]_ değeridir.|
 |\[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Seçim Varsayılan değer _["none"]_ değeridir.|
-|\[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Seçim Varsayılan değer _["none"]_ değeridir.|
+|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Seçim Varsayılan değer _["none"]_ değeridir.|
 |İzin verilen kaynak türleri|İlke ataması|İzin verilen kaynak türleri|Dağıtılmasına izin verilen kaynak türleri listesi. Bu liste, paylaşılan hizmetlerde dağıtılan tüm kaynak türlerinden oluşur.|
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Ları|İzin verilen tanılama günlüğü depolama hesabı SKU 'Larının listesi. Varsayılan değer _["Standard_LRS"]_ değeridir.|
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Dağıtılmasına izin verilen sanal makine SKU 'Larının listesi. Varsayılan değer _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|

@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens composability
-description: Azure Blockchain Tokens composability provides flexibility to create tokens for advanced scenarios.
+title: Azure blok zinciri belirteçleri bileşim
+description: Azure blok zinciri belirteçleri bileşim, gelişmiş senaryolar için belirteçler oluşturma esnekliği sağlar.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,74 +11,74 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325114"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens composability
+# <a name="azure-blockchain-tokens-composability"></a>Azure blok zinciri belirteçleri bileşim
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Token composability provides flexibility to create tokens for advanced scenarios. You may have a complex scenario that cannot be implemented using the [four pre-built token templates](templates.md#base-token-types). Token composability allows you to design your own token templates by adding or removing defined behaviors to build your own token template. When creating a new token template, Azure Blockchain Tokens verifies all token grammar rules. Composed templates are saved in Azure Blockchain Tokens service for issuing on connected blockchain networks.
+Belirteç bileşim, gelişmiş senaryolar için belirteçler oluşturma esnekliği sağlar. [Önceden oluşturulmuş dört belirteç şablonu](templates.md#base-token-types)kullanılarak uygulanamaz karmaşık bir senaryonuz olabilir. Belirteç bileşim, kendi belirteç şablonunuzu oluşturmak için tanımlı davranışları ekleyerek veya kaldırarak kendi belirteç şablonlarınızı tasarlamanıza olanak sağlar. Yeni bir belirteç şablonu oluştururken, Azure blok zinciri belirteçleri tüm belirteç dilbilgisi kurallarını doğrular. Oluşturulan şablonlar, bağlantılı blok zinciri ağlarında yayımlamak için Azure blok zinciri belirteçleri hizmetine kaydedilir.
 
-You can use the [token behaviors](templates.md#token-behaviors) in the following sections to design your token template.
+Belirteç şablonunuzu tasarlamak için aşağıdaki bölümlerdeki [belirteç davranışlarını](templates.md#token-behaviors) kullanabilirsiniz.
 
-## <a name="burnable-b"></a>Burnable (b)
+## <a name="burnable-b"></a>Burleştir (b)
 
-Ability to remove the tokens from supply.
+Belirteçleri tedariğin kaldırabilme özelliği.
 
-For example, when you redeem online credit card points for a gift card, the credit card points are burned.
+Örneğin, bir hediye kartı için çevrimiçi kredi kartı noktaları kullandığınızda, kredi kartı noktaları yazılır.
 
-## <a name="delegable-g"></a>Delegable (g)
+## <a name="delegable-g"></a>Temsilci seçilebilen (g)
 
-Ability to delegate the actions taken on the token that you own.
+Sahip olduğunuz belirteç üzerinde gerçekleştirilen eylemleri temsil etme yeteneği.
 
-The delegate can perform actions as the owner of the token. For example, you could use a delegable token to implement a vote. A delegable token allows the vote token owner to have someone else vote on their behalf.
+Temsilci, belirteç sahibi olarak eylemleri gerçekleştirebilir. Örneğin, bir oyu uygulamak için bir temsilci seçilebilen belirteci kullanabilirsiniz. Bir temsilci seçilebilen belirteci, oy belirteci sahibinin adına başka birinin oymasına izin verir.
 
-## <a name="logable-l"></a>Logable (l)
+## <a name="logable-l"></a>Günlüklenebilir (l)
 
-Ability to log.
+Günlüğe kaydetme özelliği.
 
-For example, you can issue a logable token for a movie distribution to each theater showing a specific movie. For the movie to be played, the showing must log a transaction for each showing because royalty payouts are per showing during the movie's release run. The actors build can use the movie tokens to validate payouts per movie showing per theater in the distribution.
+Örneğin, belirli bir filmi gösteren her bir sineması için bir film dağıtımı için günlüğe kaydedebilir bir belirteç verebilirsiniz. Filmin yürütülmesi için, bir işlemin her biri için bir işlem çalıştırması gerekir, çünkü bu, telif ücreti ödemeler, filmin yayın çalıştırması sırasında gösterilmelidir. Aktör derlemesi, dağıtım sırasında her bir sineması gösteren film başına ödeme sayısını doğrulamak için film belirteçlerini kullanabilir.
 
-## <a name="mint-able-m"></a>Mint-able (m)
+## <a name="mint-able-m"></a>Mint-Able (d)
 
-Ability to mint additional tokens for the token class. The minter role includes the mintable behavior.
+Belirteç sınıfı için ek belirteçleri mini gösterme özelliği. Minter rolü mintable davranışını içerir.
 
-For example, a retail company, which wants to implement a loyalty program can use mintable tokens for their loyalty program. They can mint additional loyalty points for their customers as their customer base grows.  
+Örneğin, bir bağlılık programı programını uygulamak isteyen bir perakende şirketi, bağlılık programı programları için mintable belirteçlerini kullanabilir. Müşteri tabanı büyüdükçe müşterileri için ek bağlılık programı noktalarından daha fazla programlama yapabilir.  
 
-## <a name="non-subdividable-or-whole-d"></a>Non-subdividable or whole (~d)
+## <a name="non-subdividable-or-whole-d"></a>Alt veya tam olmayan (~ d)
 
-Restriction to prevent a token from being divided into smaller parts.
+Belirtecin daha küçük parçalara bölünmesine engel olan kısıtlama.
 
-For example, a single art painting cannot be subdivided into multiple smaller parts. 
+Örneğin, tek bir resim boyama, birden çok küçük parçaya ayrılabilir. 
 
-## <a name="non-transferable-t"></a>Non-transferable (~t)
+## <a name="non-transferable-t"></a>Aktarılamayan (~ t)
 
-Restriction to prevent a change of ownership from the initial token owner.
+İlk belirteç sahibinden sahiplik değişikliğini önleme kısıtlaması.
 
-For example, a university diploma is a non-transferable token. Once a diploma is given to a graduate, it cannot be transferred from the graduate to another person.
+Örneğin, bir üniversite DISA, aktarılamayan bir belirteçtir. Bir gönderdikten sonra, bir sevenma verildiğinde, mezun 'den başka bir kişiye aktarılamaz.
 
-## <a name="roles-r"></a>Roles (r)
+## <a name="roles-r"></a>Roller (r)
 
-Ability to define roles within the token template class for specific behaviors.
+Belirli davranışlar için belirteç şablonu sınıfında Roller tanımlama yeteneği.
 
-You can provide a list of role names that a token supports at the token creation time. When roles are specified, the user can assign roles to these behaviors. Currently, only the minter role is supported.
+Belirtecin, belirteç oluşturma sırasında desteklediği rol adlarının listesini sağlayabilirsiniz. Roller belirtildiğinde, Kullanıcı bu davranışlara roller atayabilir. Şu anda yalnızca Minter rolü destekleniyor.
 
-## <a name="singleton-s"></a>Singleton (s)
+## <a name="singleton-s"></a>Tekli (lar)
 
-Restriction to allow a supply of one token.
+Bir belirteç sağlamak için kısıtlama.
 
-For example, a museum artifact is a singleton token. Museum artifacts are unique. A token representing an artifact only has a single item in the supply.
+Örneğin, bir Museum yapıtı tek bir belirteçtir. Museum yapıtları benzersizdir. Yapıtı temsil eden belirtecin yalnızca TEDARİKTEKİ tek bir öğesi vardır.
 
-## <a name="subdividable-d"></a>Subdividable (d)
+## <a name="subdividable-d"></a>Alt (d)
 
-Ability to divide a token into smaller parts.
+Bir belirteci daha küçük parçalara bölebilme.
 
-For example, a dollar can be subdivided into cents.
+Örneğin, bir dolar, ilal 'ye ayrılabilir.
 
-## <a name="transferable-t"></a>Transferable (t)
+## <a name="transferable-t"></a>Transfer edilebilir (t)
 
-Ability to transfer ownership of the token.
+Belirtecin sahipliğini aktarma özelliği.
 
-For example, a property title is a transferable token, which can be transferred from one person to another when the property is sold.
+Örneğin, bir özellik başlığı, özellik satıldığında bir kişiden diğerine aktarılabilen bir aktarılabilir belirteç olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn about [Azure Blockchain Tokens account management](account-management.md).
+[Azure blok zinciri belirteçleri hesap yönetimi](account-management.md)hakkında bilgi edinin.

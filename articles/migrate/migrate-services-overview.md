@@ -42,7 +42,7 @@ Azure geçişi, kuruluşunuzda Şirket içinden Azure 'a geçiş yapmanıza yard
 
 Azure geçişi, yerel Azure araçlarına ek olarak çeşitli ISV teklifleri ile tümleşir. 
 
-**'Ye** | **Özelliği**
+**'Ye** | **Özellik**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Sunucuları geçirme
 [Cloudamize](https://www.cloudamize.com/platform) | Sunucuları değerlendir

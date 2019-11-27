@@ -1,14 +1,14 @@
 ---
-title: CIS Microsoft Azure temel geçişleri kıyaslama şeması örnek dağıtım adımları
+title: CIS Microsoft Azure temel kıyaslanmaları kıyaslama şeması örneği
 description: CI 'ler, şema yapıt parametresi ayrıntıları dahil olmak üzere kıyaslama şeması örneği olan CIS Microsoft Azure için adımları dağıtın.
 ms.date: 10/14/2019
 ms.topic: sample
-ms.openlocfilehash: e33a7788d9d7a13cb7f8df3f6663bf009b685169
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038383"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544517"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneğini dağıtma
 

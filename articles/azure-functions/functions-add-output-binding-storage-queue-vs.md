@@ -1,6 +1,6 @@
 ---
-title: Connect functions to Azure Storage using Visual Studio
-description: Learn how to add an output binding to connect your C# class library functions to an Azure Storage queue using Visual Studio.
+title: Visual Studio kullanarak işlevleri Azure depolama 'ya bağlama
+description: Sınıf kitaplığı işlevlerinizi C# Visual Studio 'yu kullanarak bir Azure depolama kuyruğuna bağlamak için çıkış bağlamayı nasıl ekleyeceğinizi öğrenin.
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
@@ -11,49 +11,49 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227435"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Connect functions to Azure Storage using Visual Studio
+# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio kullanarak işlevleri Azure depolama 'ya bağlama
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-This article shows you how to use Visual Studio to connect the function you created in the [previous quickstart article] to Azure Storage. The output binding that you add to this function writes data from the HTTP request to a message in an Azure Queue storage queue. 
+Bu makalede, Visual Studio 'Yu kullanarak [önceki hızlı başlangıç makalesinde] oluşturduğunuz Işlevi Azure depolama 'ya nasıl bağlayabilmeniz gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, HTTP isteğinden verileri bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
 
-Most bindings require a stored connection string that Functions uses to access the bound service. To make it easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
+Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage`adlı bir uygulama ayarında depolanıyor.  
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Before you start this article, you must: 
+Bu makaleye başlamadan önce şunları yapmanız gerekir: 
 
- - Complete [part 1 of the Visual Studio quickstart][./functions-create-first-function-vs-code.md]. 
+ - Tamamlandı [Visual Studio hızlı başlangıçın 1. bölümü] [./Functions-Create-First-Function-vs-Code.exe]. 
 
-- Sign in to your Azure subscription from Visual Studio.
+- Visual Studio 'dan Azure aboneliğinizde oturum açın.
 
-## <a name="download-the-function-app-settings"></a>Download the function app settings
+## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 
-In the [previous quickstart article](functions-create-first-function-vs-code.md), you created a function app in Azure along with the required Storage account. The connection string for this account is stored securely in app settings in Azure. In this article, you write messages to a Storage queue in the same account. To connect to your Storage account when running the function locally, you must download app settings to the *local.settings.json* file. 
+[Önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md), Azure 'Da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını *yerel. Settings. JSON* dosyasına indirmeniz gerekir. 
 
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. 
 
-1. Under **Actions**, select **Edit Azure App Service Settings**. 
+1. **Eylemler**' in altında **Azure App Service Ayarları Düzenle**' yi seçin. 
 
-    ![Edit the application settings](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
+    ![Uygulama ayarlarını düzenleme](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. Under **AzureWebJobsStorage**, copy the **Remote** string value to **Local**, and then select **OK**. 
+1. **AzureWebJobsStorage**altında, **uzak** dize değerini **Yerel**olarak kopyalayın ve ardından **Tamam**' ı seçin. 
 
-The storage binding, which uses the `AzureWebJobsStorage` setting for the connection, can now connect to your Queue storage when running locally.
+Bağlantı için `AzureWebJobsStorage` ayarını kullanan depolama bağlaması artık yerel olarak çalışırken kuyruk depolamaya bağlanabilir.
 
 ## <a name="register-binding-extensions"></a>Bağlama uzantılarını kaydetme
 
-Because you're using a Queue storage output binding, you need the Storage bindings extension installed before you run the project. Except for HTTP and timer triggers, bindings are implemented as extension packages. 
+Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştırmadan önce depolama bağlamaları uzantısının yüklü olması gerekir. HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. 
 
-1. From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**. 
+1. **Araçlar** menüsünde **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. 
 
-1. In the console, run the following [Install-Package](/nuget/tools/ps-ref-install-package) command to install the Storage extensions:
+1. Konsolunda, depolama uzantılarını yüklemek için aşağıdaki [Install-Package](/nuget/tools/ps-ref-install-package) komutunu çalıştırın:
 
     ```Command
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
     ````
 
-Now, you can add the storage output binding to your project.
+Şimdi, depolama çıkış bağlamasını projenize ekleyebilirsiniz.
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
@@ -61,7 +61,7 @@ Now, you can add the storage output binding to your project.
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-After the binding is defined, you can use the `name` of the binding to access it as an attribute in the function signature. By using an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
+Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -69,31 +69,31 @@ After the binding is defined, you can use the `name` of the binding to access it
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-A new queue named `outqueue` is created in your storage account by the Functions runtime when the output binding is first used. You'll use Cloud Explorer to verify that the queue was created along with the new message.
+Çıktı bağlama ilk kullanıldığında, Işlevler çalışma zamanı tarafından depolama hesabınızda `outqueue` adlı yeni bir kuyruk oluşturulur. Kuyruğun yeni iletiyle birlikte oluşturulduğunu doğrulamak için Cloud Explorer 'ı kullanacaksınız.
 
 ## <a name="examine-the-output-queue"></a>Çıkış kuyruğunu inceleme
 
-1. In Visual Studio from the **View** menu, select **Cloud Explorer**.
+1. **Görünüm** menüsünde, Visual Studio ' da **bulut Gezgini**' ni seçin.
 
-1. In **Cloud Explorer**, expand your Azure subscription and **Storage Accounts**, then expand the storage account used by your function. If you can't remember the storage account name, check the `AzureWebJobsStorage` connection string setting in the *local.settings.json* file.  
+1. **Cloud Explorer**'da Azure aboneliğinizi ve **depolama hesaplarınızı**genişletin, sonra işleviniz tarafından kullanılan depolama hesabını genişletin. Depolama hesabı adını hatırlayamıyorsanız, *Local. Settings. JSON* dosyasındaki `AzureWebJobsStorage` bağlantı dizesi ayarını kontrol edin.  
 
-1. Expand the **Queues** node, and then double-click the queue named **outqueue** to view the contents of the queue in Visual Studio. 
+1. **Kuyruklar** düğümünü genişletin ve ardından Visual Studio 'da sıranın içeriğini görüntülemek için **outqueue** adlı kuyruğa çift tıklayın. 
 
    Kuyruk, HTTP ile tetiklenen işlevi çalıştırdığınızda kuyruk çıkış bağlamasının oluşturduğu iletiyi içerir. İşlevi varsayılan `name` *Azure* değeri ile çağırdıysanız, kuyruk iletisi *İşleve geçirilen ad: Azure* şeklinde olur.
 
-    ![Queue message shown in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
+    ![Azure Depolama Gezgini gösterilen kuyruk iletisi](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
-1. Run the function again, send another request, and you'll see a new message appear in the queue.  
+1. İşlevi yeniden çalıştırın, başka bir istek gönderin ve kuyrukta yeni bir ileti göründüğünü görürsünüz.  
 
-Now, it's time to republish the updated function app to Azure.
+Şimdi, güncelleştirilmiş işlev uygulamasını Azure 'da yeniden yayımlamanız zaman atalım.
 
-## <a name="redeploy-and-verify-the-updated-app"></a>Redeploy and verify the updated app
+## <a name="redeploy-and-verify-the-updated-app"></a>Güncelleştirilmiş uygulamayı yeniden dağıtın ve doğrulayın
 
-1. In **Solution Explorer**, right-click the project and select **Publish**, then choose **Publish** to republish the project to Azure.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yayımla**' yı seçin ve ardından projeyi Azure 'Da yeniden yayımlamak için **Yayımla** ' yı seçin.
 
-1. After deployment completes, you can again use the browser to test the redeployed function. As before, append the query string `&name=<yourname>` to the URL.
+1. Dağıtım tamamlandıktan sonra yeniden dağıtılan işlevi test etmek için tarayıcıyı kullanabilirsiniz. Daha önce olduğu gibi, URL 'ye `&name=<yourname>` sorgu dizesi ekleyin.
 
-1. Again [view the message in the storage queue](#examine-the-output-queue) to verify that the output binding again generates a new message in the queue.
+1. Çıktı bağlamasının sırada yeni bir ileti oluşturmadığını doğrulamak için, [depolama sırasındaki iletiyi yeniden görüntüleyin](#examine-the-output-queue) .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -101,12 +101,12 @@ Now, it's time to republish the updated function app to Azure.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You've updated your HTTP triggered function to write data to a Storage queue. To learn more about developing Functions, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md).
+HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Visual Studio kullanarak Azure Işlevleri geliştirme](functions-develop-vs.md).
 
-Next, you should enable Application Insights monitoring for your function app:
+Sonra, işlev uygulamanız için Application Insights izlemeyi etkinleştirmelisiniz:
 
 > [!div class="nextstepaction"]
 > [Application Insights tümleştirmesini etkinleştirme](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
-[previous quickstart article]: functions-create-your-first-function-visual-studio.md
+[önceki hızlı başlangıç makalesinde]: functions-create-your-first-function-visual-studio.md

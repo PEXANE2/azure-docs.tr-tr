@@ -1,6 +1,6 @@
 ---
-title: Continuously deliver function code updates by using Azure DevOps - Azure Functions
-description: Learn how to set up an Azure DevOps pipeline that targets Azure Functions.
+title: Azure DevOps kullanarak işlev kodu güncelleştirmelerini sürekli sunma-Azure Işlevleri
+description: Azure Işlevleri 'ni hedefleyen bir Azure DevOps işlem hattı ayarlamayı öğrenin.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 04/18/2019
@@ -12,26 +12,26 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230532"
 ---
-# <a name="continuous-delivery-by-using-azure-devops"></a>Continuous delivery by using Azure DevOps
+# <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps kullanarak sürekli teslim
 
-You can automatically deploy your function to an Azure Functions app by using [Azure Pipelines](/azure/devops/pipelines/).
+[Azure Pipelines](/azure/devops/pipelines/)kullanarak işlevinizi bir Azure işlevleri uygulamasına otomatik olarak dağıtabilirsiniz.
 
-You have two options for defining your pipeline:
+İşlem hattınızı tanımlamaya yönelik iki seçeneğiniz vardır:
 
-- **YAML file**: A YAML file describes the pipeline. The file might have a build steps section and a release section. The YAML file must be in the same repo as the app.
-- **Template**: Templates are ready-made tasks that build or deploy your app.
+- **YAML dosyası**: BIR YAML dosyası ardışık düzeni tanımlar. Dosya bir yapı adımları bölümüne ve bir sürüm bölümüne sahip olabilir. YAML dosyası uygulamayla aynı depoda olmalıdır.
+- **Şablon**: Şablonlar, uygulamanızı oluşturan veya dağıtan, kullanıma hazırlanmış görevlerdir.
 
-## <a name="yaml-based-pipeline"></a>YAML-based pipeline
+## <a name="yaml-based-pipeline"></a>YAML tabanlı işlem hattı
 
-To create a YAML-based pipeline, first build your app, and then deploy the app.
+YAML tabanlı bir işlem hattı oluşturmak için, önce uygulamanızı derleyin ve ardından uygulamayı dağıtın.
 
 ### <a name="build-your-app"></a>Uygulamanızı oluşturun
 
-How you build your app in Azure Pipelines depends on your app's programming language. Each language has specific build steps that create a deployment artifact. A deployment artifact is used to deploy your function app in Azure.
+Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Bir dağıtım yapıtı, işlev uygulamanızı Azure 'da dağıtmak için kullanılır.
 
 #### <a name="net"></a>.NET
 
-You can use the following sample to create a YAML file to build a .NET app:
+.NET uygulaması derlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
 ```yaml
 pool:
@@ -62,7 +62,7 @@ steps:
 
 #### <a name="javascript"></a>JavaScript
 
-You can use the following sample to create a YAML file to build a JavaScript app:
+Bir JavaScript uygulaması derlemek için bir YAML dosyası oluşturmak üzere aşağıdaki örneği kullanabilirsiniz:
 
 ```yaml
 pool:
@@ -90,7 +90,7 @@ steps:
 
 #### <a name="python"></a>Python
 
-You can use the following sample to create a YAML file to build a Python app. Python is supported only for Linux Azure Functions. The YAML for Python 3.7 can be built by replacing all the instances of 3.6 with 3.7 in this YAML.
+Bir Python uygulaması oluşturmak için bir YAML dosyası oluşturmak üzere aşağıdaki örneği kullanabilirsiniz. Python yalnızca Linux Azure Işlevleri için desteklenir. Python 3,7 için YAML, bu YAML içindeki 3,7 ile tüm 3,6 örnekleri değiştirilerek oluşturulabilir.
 
 ```yaml
 pool:
@@ -123,7 +123,7 @@ steps:
 ```
 #### <a name="powershell"></a>PowerShell
 
-You can use the following sample to create a YAML file to package a PowerShell app. PowerShell is supported only for Windows Azure Functions.
+Bir PowerShell uygulamasını paketlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz. PowerShell yalnızca Windows Azure Işlevleri için desteklenir.
 
 ```yaml
 pool:
@@ -141,13 +141,13 @@ steps:
     name: 'drop'
 ```
 
-### <a name="deploy-your-app"></a>Deploy your app
+### <a name="deploy-your-app"></a>Uygulamanızı dağıtın
 
-You must include one of the following YAML samples in your YAML file, depending on the hosting OS.
+Barındırma işletim sistemine bağlı olarak, YAML dosyanıza aşağıdaki YAML örneklerinden birini eklemeniz gerekir.
 
-#### <a name="windows-function-app"></a>Windows function app
+#### <a name="windows-function-app"></a>Windows işlev uygulaması
 
-You can use the following snippet to deploy a Windows function app:
+Bir Windows işlev uygulamasını dağıtmak için aşağıdaki kod parçacığını kullanabilirsiniz:
 
 ```yaml
 steps:
@@ -162,9 +162,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux function app
+#### <a name="linux-function-app"></a>Linux işlev uygulaması
 
-You can use the following snippet to deploy a Linux function app:
+Bir Linux işlev uygulamasını dağıtmak için aşağıdaki kod parçacığını kullanabilirsiniz:
 
 ```yaml
 steps:
@@ -180,61 +180,61 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-## <a name="template-based-pipeline"></a>Template-based pipeline
+## <a name="template-based-pipeline"></a>Şablon tabanlı işlem hattı
 
-Templates in Azure DevOps are predefined groups of tasks that build or deploy an app.
+Azure DevOps 'daki şablonlar, bir uygulamayı oluşturan veya dağıtan önceden tanımlanmış görev gruplarıdır.
 
 ### <a name="build-your-app"></a>Uygulamanızı oluşturun
 
-How you build your app in Azure Pipelines depends on your app's programming language. Each language has specific build steps that create a deployment artifact. A deployment artifact is used to update your function app in Azure.
+Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Azure 'da işlev uygulamanızı güncelleştirmek için bir dağıtım yapıtı kullanılır.
 
-To use built-in build templates, when you create a new build pipeline, select **Use the classic editor** to create a pipeline by using designer templates.
+Yerleşik yapı şablonlarını kullanmak için yeni bir derleme işlem hattı oluşturduğunuzda, tasarımcı şablonlarını kullanarak bir işlem hattı oluşturmak için **Klasik düzenleyiciyi kullan** ' ı seçin.
 
-![Select the Azure Pipelines classic editor](media/functions-how-to-azure-devops/classic-editor.png)
+![Azure Pipelines klasik düzenleyiciyi seçin](media/functions-how-to-azure-devops/classic-editor.png)
 
-After you configure the source of your code, search for Azure Functions build templates. Select the template that matches your app language.
+Kodunuzun kaynağını yapılandırdıktan sonra, Azure Işlevleri derleme şablonları ' nı arayın. Uygulama dilinizle eşleşen şablonu seçin.
 
-![Select an Azure Functions build template](media/functions-how-to-azure-devops/build-templates.png)
+![Azure Işlevleri derleme şablonu seçin](media/functions-how-to-azure-devops/build-templates.png)
 
-In some cases, build artifacts have a specific folder structure. You might need to select the **Prepend root folder name to archive paths** check box.
+Bazı durumlarda, yapı yapıtları belirli bir klasör yapısına sahiptir. **Yolları arşivlemek için kök klasör adını** seçin onay kutusunu seçmeniz gerekebilir.
 
-![The option to prepend the root folder name](media/functions-how-to-azure-devops/prepend-root-folder.png)
+![Kök klasör adını sonuna eklenecek seçenek](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
-#### <a name="javascript-apps"></a>JavaScript apps
+#### <a name="javascript-apps"></a>JavaScript uygulamaları
 
-If your JavaScript app has a dependency on Windows native modules, you must update the agent pool version to **Hosted VS2017**.
+JavaScript uygulamanızın Windows yerel modüllerine bağımlılığı varsa, aracı havuzu sürümünü **BARıNDıRıLAN VS2017**olarak güncelleştirmeniz gerekir.
 
-![Update the agent pool version](media/functions-how-to-azure-devops/change-agent.png)
+![Aracı havuzu sürümünü Güncelleştir](media/functions-how-to-azure-devops/change-agent.png)
 
-### <a name="deploy-your-app"></a>Deploy your app
+### <a name="deploy-your-app"></a>Uygulamanızı dağıtın
 
-When you create a new release pipeline, search for the Azure Functions release template.
+Yeni bir yayın işlem hattı oluşturduğunuzda, Azure Işlevleri yayın şablonu ' nu arayın.
 
-![Search for the Azure Functions release template](media/functions-how-to-azure-devops/release-template.png)
+![Azure Işlevleri sürüm şablonunu arayın](media/functions-how-to-azure-devops/release-template.png)
 
-Deploying to a deployment slot is not supported in the release template.
+Dağıtım yuvasına dağıtım, yayın şablonunda desteklenmez.
 
-## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Create a build pipeline by using the Azure CLI
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLı kullanarak derleme işlem hattı oluşturma
 
-To create a build pipeline in Azure, use the `az functionapp devops-pipeline create` [command](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create). The build pipeline is created to build and release any code changes that are made in your repo. The command generates a new YAML file that defines the build and release pipeline and then commits it to your repo. The prerequisites for this command depend on the location of your code.
+Azure 'da bir derleme işlem hattı oluşturmak için `az functionapp devops-pipeline create` [komutunu](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)kullanın. Derleme işlem hattı, deponuzda yapılan tüm kod değişikliklerini derlemek ve serbest bırakmak için oluşturulur. Bu komut, derleme ve yayın işlem hattını tanımlayan yeni bir YAML dosyası oluşturur ve sonra deponuzda kaydeder. Bu komutun önkoşulları, kodunuzun konumuna bağlıdır.
 
-- If your code is in GitHub:
+- Kodunuz GitHub 'da ise:
 
-    - You must have **write** permissions for your subscription.
+    - Aboneliğiniz için **yazma** izinleriniz olmalıdır.
 
-    - You must be the project administrator in Azure DevOps.
+    - Azure DevOps 'da proje yöneticisi olmanız gerekir.
 
-    - You must have permissions to create a GitHub personal access token (PAT) that has sufficient permissions. For more information, see [GitHub PAT permission requirements.](https://aka.ms/azure-devops-source-repos)
+    - Yeterli izinlere sahip bir GitHub kişisel erişim belirteci (PAT) oluşturmak için izinleriniz olmalıdır. Daha fazla bilgi için bkz [. GITHUB Pat izin gereksinimleri.](https://aka.ms/azure-devops-source-repos)
 
-    - You must have permissions to commit to the master branch in your GitHub repository so you can commit the autogenerated YAML file.
+    - Otomatik olarak oluşturulan YAML dosyasını yürütmek için GitHub deponuzdaki Ana dala yürütmek için izinleriniz olmalıdır.
 
-- If your code is in Azure Repos:
+- Kodunuz Azure Repos:
 
-    - You must have **write** permissions for your subscription.
+    - Aboneliğiniz için **yazma** izinleriniz olmalıdır.
 
-    - You must be the project administrator in Azure DevOps.
+    - Azure DevOps 'da proje yöneticisi olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Review the [Azure Functions overview](functions-overview.md).
-- Review the [Azure DevOps overview](/azure/devops/pipelines/).
+- [Azure işlevlerine genel bakış](functions-overview.md)konusunu gözden geçirin.
+- [Azure DevOps 'a genel bakış](/azure/devops/pipelines/)konusunu inceleyin.

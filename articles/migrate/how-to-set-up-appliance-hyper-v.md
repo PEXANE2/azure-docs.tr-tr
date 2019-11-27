@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185928"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534498"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM 'Leri için gereç ayarlama
 
@@ -50,7 +50,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. VHD için karma oluşturmak üzere aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
 3.  Gereç sürümü 2.19.11.12 için, oluşturulan karma bu ayarlarla eşleşmelidir.
 
   **Algoritma** | **Karma değeri**

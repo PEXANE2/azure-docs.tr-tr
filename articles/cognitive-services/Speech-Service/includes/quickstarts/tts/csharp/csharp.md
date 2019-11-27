@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Synthesize speech, C# - Speech Service'
+title: 'Hızlı başlangıç: Sentezleştirme C# , konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
+description: Henüz belirlenmedi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,13 +17,13 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260903"
 ---
-**Choose your target environment**
+**Hedef ortamınızı seçin**
 
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
 #### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
-#### <a name="unitytabunity"></a>[Unity](#tab/unity)
+#### <a name="unitytabunity"></a>['Yi](#tab/unity)
 [!INCLUDE [unity](./unity.md)]
 #### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]

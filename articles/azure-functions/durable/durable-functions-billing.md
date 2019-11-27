@@ -1,6 +1,6 @@
 ---
-title: Durable functions billing - Azure Functions
-description: Learn about the internal behaviors of Durable Functions and how they affect billing for Azure Functions.
+title: Dayanıklı işlevler faturalandırma-Azure Işlevleri
+description: Dayanıklı İşlevler iç davranışları ve bunların Azure Işlevleri için faturalandırmayı nasıl etkilediği hakkında bilgi edinin.
 author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
@@ -12,45 +12,45 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233006"
 ---
-# <a name="durable-functions-billing"></a>Durable Functions billing
+# <a name="durable-functions-billing"></a>Dayanıklı İşlevler faturalandırma
 
-[Durable Functions](durable-functions-overview.md) is billed the same way as Azure Functions. For more information, see [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
+[Dayanıklı işlevler](durable-functions-overview.md) Azure işlevleriyle aynı şekilde faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/).
 
-When executing orchestrator functions in Azure Functions [Consumption plan](../functions-scale.md#consumption-plan), you need to be aware of some billing behaviors. The following sections describe these behaviors and their effect in more detail.
+Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevlerini yürütürken bazı faturalandırma davranışlarından haberdar olmanız gerekir. Aşağıdaki bölümlerde bu davranışlar ve bunların etkileri daha ayrıntılı olarak açıklanır.
 
-## <a name="orchestrator-function-replay-billing"></a>Orchestrator function replay billing
+## <a name="orchestrator-function-replay-billing"></a>Orchestrator işlevi yeniden yürütme faturalandırma
 
-[Orchestrator functions](durable-functions-orchestrations.md) might replay several times throughout the lifetime of an orchestration. Each replay is viewed by the Azure Functions runtime as a distinct function invocation. For this reason, in the Azure Functions Consumption plan you're billed for each replay of an orchestrator function. Other plan types don't charge for orchestrator function replay.
+[Orchestrator işlevleri](durable-functions-orchestrations.md) , bir Orchestration 'un ömrü boyunca birkaç kez tekrar çalışabilir. Her yeniden yürütme işlemi, Azure Işlevleri çalışma zamanı tarafından ayrı bir işlev çağrısı olarak görüntülenir. Bu nedenle, Azure Işlevleri tüketim planında bir Orchestrator işlevinin her yeniden oynaması için faturalandırılırsınız. Diğer plan türleri Orchestrator işlevi yeniden yürütmeyi ücretlendirilmez.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Awaiting and yielding in orchestrator functions
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Orchestrator işlevleri bekleniyor ve sürüyor
 
-When an orchestrator function waits for an asynchronous action to finish by using **await** in C# or **yield** in JavaScript, the runtime considers that particular execution to be finished. The billing for the orchestrator function stops at that point. It doesn't resume until the next orchestrator function replay. You aren't billed for any time spent awaiting or yielding in an orchestrator function.
+Bir Orchestrator işlevi bir zaman uyumsuz eylemin, C# JavaScript 'te **await** veya **yield** kullanarak tamamlanmasını bekliyorsa, çalışma zamanı belirli yürütmenin bitmesini kabul eder. Orchestrator işlevinin faturalandırması bu noktada sona erer. Sonraki Orchestrator işlevi yeniden yürütmeden önce bu işlemi sürdürmez. Orchestrator işlevinde bekleyen veya olmayan herhangi bir zaman faturalandırılmaz.
 
 > [!NOTE]
-> Functions calling other functions is considered by some to be an antipattern. This is because of a problem known as _double billing_. When a function calls another function directly, both run at the same time. The called function is actively running code while the calling function is waiting for a response. In this case, you must pay for the time the calling function spends waiting for the called function to run.
+> Diğer işlevleri çağıran işlevler bazıları bir kötü model olarak değerlendirilir. Bunun nedeni, _Double faturalandırma_olarak bilinen bir sorundur. Bir işlev doğrudan başka bir işlevi çağırdığında, her ikisi de aynı anda çalışır. Çağrılan işlev, çağırma işlevi bir yanıt beklerken kodu etkin bir şekilde çalıştırır. Bu durumda, çağırma işlevinin çağrılan işlevin çalışmasını beklerken geçen süre için ödeme yapmanız gerekir.
 >
-> There is no double billing in orchestrator functions. An orchestrator function's billing stops while it waits for the result of an activity function or sub-orchestration.
+> Orchestrator işlevlerinde bir Double faturalandırma yoktur. Bir Orchestrator işlevinin faturalandırması, bir etkinlik işlevi veya alt düzenleme sonucunu beklerken duraklar.
 
-## <a name="durable-http-polling"></a>Durable HTTP polling
+## <a name="durable-http-polling"></a>Kalıcı HTTP yoklaması
 
-Orchestrator functions can make long-running HTTP calls to external endpoints as described in the [HTTP features article](durable-functions-http-features.md). The **CallHttpAsync** method in C# and the **callHttp** method in JavaScript might internally poll an HTTP endpoint while following the [asynchronous 202 pattern](durable-functions-http-features.md#http-202-handling).
+Orchestrator işlevleri, [http özellikleri makalesinde](durable-functions-http-features.md)açıklandığı gibi dış uç noktalara uzun süre çalışan http çağrıları yapabilir. C# İçindeki **CallHttpAsync** yöntemi ve JavaScript 'teki **callhttp** yöntemi, [zaman uyumsuz 202 modelini](durable-functions-http-features.md#http-202-handling)takip ederken bir HTTP uç noktasını dahili olarak yoklayabilirler.
 
-There currently isn't direct billing for internal HTTP polling operations. However, internal polling might cause the orchestrator function to periodically replay. You'll be billed standard charges for these internal function replays.
+Şu anda iç HTTP yoklama işlemleri için doğrudan faturalandırma yoktur. Ancak iç yoklama, Orchestrator işlevinin düzenli olarak yeniden oynamasına neden olabilir. Bu iç işlev yeniden yürütüldüğünde standart ücretler faturalandırılırsınız.
 
-## <a name="azure-storage-transactions"></a>Azure Storage transactions
+## <a name="azure-storage-transactions"></a>Azure depolama işlemleri
 
-Durable Functions uses Azure Storage by default to keep state persistent, process messages, and manage partitions via blob leases. Because you own this storage account, any transaction costs are billed to your Azure subscription. For more information about the Azure Storage artifacts used by Durable Functions, see the [Task hubs article](durable-functions-task-hubs.md).
+Dayanıklı İşlevler, durumu kalıcı tutmak, iletileri işlemek ve BLOB kiraları aracılığıyla bölümleri yönetmek için varsayılan olarak Azure Storage 'ı kullanır. Bu depolama hesabına sahip olduğunuzdan, tüm işlem maliyetleri Azure aboneliğinize faturalandırılır. Dayanıklı İşlevler tarafından kullanılan Azure depolama yapıtları hakkında daha fazla bilgi için bkz. [görev hub 'ları makalesi](durable-functions-task-hubs.md).
 
-Several factors contribute to the actual Azure Storage costs incurred by your Durable Functions app:
+Dayanıklı İşlevler uygulamanız tarafından tahakkuk eden gerçek Azure depolama maliyetlerine birçok etken katkıda bulunur:
 
-* A single function app is associated with a single task hub, which shares a set of Azure Storage resources. These resources are used by all durable functions in a function app. The actual number of functions in the function app has no effect on Azure Storage transaction costs.
-* Each function app instance internally polls multiple queues in the storage account by using an exponential-backoff polling algorithm. An idle app instance polls the queues less often than does an active app, which results in fewer transaction costs. For more information about Durable Functions queue-polling behavior, see the [queue-polling section of the Performance and Scale article](durable-functions-perf-and-scale.md#queue-polling).
-* When running in the Azure Functions Consumption or Premium plans, the [Azure Functions scale controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regularly polls all task-hub queues in the background. If a function app is under light to moderate scale, only a single scale controller instance will poll these queues. If the function app scales out to a large number of instances, more scale controller instances might be added. These additional scale controller instances can increase the total queue-transaction costs.
-* Each function app instance competes for a set of blob leases. These instances will periodically make calls to the Azure Blob service either to renew held leases or to attempt to acquire new leases. The task hub's configured partition count determines the number of blob leases. Scaling out to a larger number of function app instances likely increases the Azure Storage transaction costs associated with these lease operations.
+* Tek bir işlev uygulaması, bir dizi Azure depolama kaynağını paylaşan tek bir görev hub 'ı ile ilişkilendirilir. Bu kaynaklar, bir işlev uygulamasındaki tüm dayanıklı işlevler tarafından kullanılır. İşlev uygulamasındaki gerçek işlev sayısı, Azure depolama işlem maliyetlerine hiçbir etkiye sahip değildir.
+* Her işlev uygulaması örneği, bir üstel geri alma yoklama algoritması kullanarak depolama hesabındaki birden çok kuyruğu dahili olarak yoklar. Boş bir uygulama örneği, kuyrukları etkin bir uygulama uygulamaktan daha az bir şekilde yoklar, bu da daha az işlem maliyeti elde etmez. Dayanıklı İşlevler kuyruğu-yoklama davranışı hakkında daha fazla bilgi için [performans ve ölçek makalesinin sıra yoklaması bölümüne](durable-functions-perf-and-scale.md#queue-polling)bakın.
+* Azure işlevleri tüketimine veya Premium planlarında çalışırken, [Azure işlevleri ölçek denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) arka plandaki tüm görev hub kuyruklarını düzenli aralıklarla yoklar. Bir işlev uygulaması hafif ve orta ölçekli ölçeğe sahip ise, yalnızca tek bir ölçek denetleyicisi örneği bu kuyrukları yoklayacaktır. İşlev uygulaması çok sayıda örneğe ölçeklenirken, daha fazla ölçek denetleyicisi örneği eklenebilir. Bu ek ölçek denetleyicisi örnekleri toplam kuyruk işlem maliyetlerini artırabilir.
+* Her işlev uygulama örneği bir blob kiraları kümesi için. Bu örnekler, tutulan kiraları yenilemek veya yeni kiralamalar edinmeyi denemek için düzenli aralıklarla Azure Blob hizmetine çağrı yapar. Görev merkezinin yapılandırılan bölüm sayısı, blob kiralamaları sayısını belirler. Çok sayıda işlev uygulaması örneğine genişleme, büyük olasılıkla bu kira işlemleriyle ilişkili Azure depolama işlem maliyetlerini artırır.
 
-You can find more information on Azure Storage pricing in the [Azure Storage pricing](https://azure.microsoft.com/pricing/details/storage/) documentation. 
+Azure [depolama fiyatlandırma belgelerindeki Azure](https://azure.microsoft.com/pricing/details/storage/) Depolama fiyatlandırması hakkında daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/)
+> [Azure Işlevleri fiyatlandırması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/functions/)

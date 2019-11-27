@@ -1,6 +1,6 @@
 ---
-title: Connectivity architecture in Azure Database for MySQL
-description: Describes the connectivity architecture for your Azure Database for MySQL server.
+title: MySQL için Azure veritabanı 'nda bağlantı mimarisi
+description: MySQL için Azure veritabanı sunucunuza yönelik bağlantı mimarisini açıklar.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
@@ -13,69 +13,69 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213146"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Connectivity architecture in Azure Database for MySQL
-This article explains the Azure Database for MySQL connectivity architecture as well as how the traffic is directed to your Azure Database for MySQL instance from clients both within and outside Azure.
+# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
+Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
 
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
-Connection to your Azure Database for MySQL is established through a gateway that is responsible for routing incoming connections to the physical location of your server in our clusters. The following diagram illustrates the traffic flow.
+MySQL için Azure veritabanı 'na bağlantı, gelen bağlantıları kümelerimize ait fiziksel konuma yönlendirmekten sorumlu bir ağ geçidiyle oluşturulur. Aşağıdaki diyagramda trafik akışı gösterilmektedir.
 
-![Overview of the connectivity architecture](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![Bağlantı mimarisine genel bakış](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-As client connect to the database, they get a connection string which connects to the gateway. This gateway has a public IP address that listens to port 3306. Inside the database cluster, traffic is forwarded to appropriate Azure Database for MySQL. Therefore, in order to connect to your server, such as from corporate networks, it is necessary to open up the client side firewall to allow outbound traffic to be able to reach our gateways. Below you can find a complete list of the IP addresses used by our gateways per region.
+İstemci veritabanına bağlandığında, ağ geçidine bağlanan bir bağlantı dizesi alırlar. Bu ağ geçidinin 3306 numaralı bağlantı noktasını dinleyen bir genel IP adresi vardır. Veritabanı kümesi içinde trafik, MySQL için uygun Azure veritabanına iletilir. Bu nedenle, şirket ağları gibi sunucunuza bağlanmak için, giden trafiğin ağ geçitlerimize ulaşmasını sağlamak üzere istemci tarafı güvenlik duvarını açmanız gerekir. Aşağıda, bölge başına ağ geçitlerimiz tarafından kullanılan IP adreslerinin tamamen bir listesini bulabilirsiniz.
 
-## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>Azure Database for MySQL gateway IP addresses
-The following table lists the primary and secondary IPs of the Azure Database for MySQL gateway for all data regions. The primary IP address is the current IP address of the gateway and the second IP address is a failover IP address in case of failure of the primary. As mentioned, customers should allow outbound to both the IP addresses. The second IP address does not listen in on any services until it is activated by Azure Database for MySQL to accept connections.
+## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>MySQL için Azure veritabanı ağ geçidi IP adresleri
+Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı Gateway 'in birincil ve ikincil IP 'Leri listelenmektedir. Birincil IP adresi, ağ geçidinin geçerli IP adresidir ve ikinci IP adresi birincil hata durumunda bir yük devretme IP adresidir. Belirtildiği gibi, müşteriler her iki IP adresine de giden trafiği izin vermelidir. İkinci IP adresi, MySQL için Azure veritabanı tarafından bağlantıları kabul etmek üzere etkinleştirilinceye kadar hiçbir hizmet üzerinde dinleme yapmaz.
 
-| **Region Name** | **Primary IP Address** | **Secondary IP Address** |
+| **Bölge adı** | **Birincil IP adresi** | **İkincil IP adresi** |
 |:----------------|:-------------|:------------------------|
-| Doğu Avustralya | 13.75.149.87 | 40.79.161.1 |
+| Avustralya Doğu | 13.75.149.87 | 40.79.161.1 |
 | Avustralya Güneydoğu | 191.239.192.109 | 13.73.109.251 |
-| Brezilya Güney | 104.41.11.5 | |
-| Kanada Orta | 40.85.224.249 | |
-| Kanada Doğu | 40.86.226.166 | |
+| Güney Brezilya | 104.41.11.5 | |
+| Orta Kanada | 40.85.224.249 | |
+| Doğu Kanada | 40.86.226.166 | |
 | Orta ABD | 23.99.160.139 | 13.67.215.62 |
-| China East 1 | 139.219.130.35 | |
+| Çin Doğu 1 | 139.219.130.35 | |
 | Çin Doğu 2 | 40.73.82.1 | |
-| China North 1 | 139.219.15.17 | |
+| Çin Kuzey 1 | 139.219.15.17 | |
 | Çin Kuzey 2 | 40.73.50.0 | |
 | Doğu Asya | 191.234.2.139 | 52.175.33.150 |
-| East US 1 | 191.238.6.43 | 40.121.158.30 |
+| Doğu ABD 1 | 191.238.6.43 | 40.121.158.30 |
 | Doğu ABD 2 | 191.239.224.107 | 40.79.84.180 * |
 | Fransa Orta | 40.79.137.0 | 40.79.129.1 |
 | Almanya Orta | 51.4.144.100 | |
 | Hindistan Orta | 104.211.96.159 | |
 | Hindistan Güney | 104.211.224.146 | |
 | Hindistan Batı | 104.211.160.80 | |
-| Doğu Japonya | 191.237.240.43 | 13.78.61.196 |
-| Batı Japonya | 191.238.68.11 | 104.214.148.156 |
+| Japonya Doğu | 191.237.240.43 | 13.78.61.196 |
+| Japonya Batı | 191.238.68.11 | 104.214.148.156 |
 | Kore Orta | 52.231.32.42 | |
 | Kore Güney | 52.231.200.86 |  |
 | Orta Kuzey ABD | 23.98.55.75 | 23.96.178.199 |
 | Kuzey Avrupa | 191.235.193.75 | 40.113.93.91 |
-| Güney Orta ABD | 23.98.162.75 | 13.66.62.124 |
+| Orta Güney ABD | 23.98.162.75 | 13.66.62.124 |
 | Güneydoğu Asya | 23.100.117.95 | 104.43.15.0 |
 | Güney Afrika Kuzey | 102.133.152.0 | |
 | Güney Afrika Batı | 102.133.24.0 | |
 | BAE Kuzey | 65.52.248.0 | |
-| Birleşik Krallık, Güney | 51.140.184.11 | |
-| Birleşik Krallık, Batı | 51.141.8.11| |
+| Birleşik Krallık Güney | 51.140.184.11 | |
+| Birleşik Krallık Batı | 51.141.8.11| |
 | Batı Avrupa | 191.237.232.75 | 40.68.37.158 |
-| West US 1 | 23.99.34.75 | 104.42.238.205 |
+| Batı ABD 1 | 23.99.34.75 | 104.42.238.205 |
 | Batı ABD 2 | 13.66.226.202 | |
 ||||
 
 > [!NOTE]
-> *East US 2* has also a tertiary IP address of `52.167.104.0`.
+> *Doğu ABD 2* Ayrıca `52.167.104.0`BIR üçüncül IP adresine sahiptir.
 
-## <a name="connection-redirection"></a>Connection redirection
+## <a name="connection-redirection"></a>Bağlantı yeniden yönlendirme
 
-Azure Database for MySQL supports an additional connection policy, **redirection**, that helps to reduce network latency between client applications and MySQL servers. With this feature, after the initial TCP session is established to the Azure Database for MySQL server, the server returns the backend address of the node hosting the MySQL server to the client. Thereafter, all subsequent packets flow directly to the server, bypassing the gateway. As packets flow directly to the server, latency and throughput have improved performance.
+MySQL için Azure veritabanı, istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmaya yardımcı olan ek bir bağlantı ilkesini, **yeniden yönlendirmeyi**destekler. Bu özellik ile, ilk TCP oturumu MySQL sunucusu için Azure veritabanı 'na kurulduktan sonra sunucu, MySQL sunucusunu istemciye barındıran düğümün arka uç adresini döndürür. Bundan sonra, sonraki tüm paketler doğrudan sunucuya akar ve ağ geçidini atlar. Paketler doğrudan sunucuya akar, gecikme süresi ve aktarım hızı performansı artırılmıştır.
 
-This feature is supported in Azure Database for MySQL servers with engine versions 5.6, 5.7, and 8.0.
+Bu özellik, 5,6, 5,7 ve 8,0 Altyapı sürümleriyle MySQL sunucuları için Azure veritabanı 'nda desteklenir.
 
-Preview support for redirection is available in the [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) extension, developed by Microsoft, and is available on [PECL](https://pecl.php.net/package/mysqlnd_azure). See the [configuring redirection](./howto-redirection.md) article for more information on how to use redirection in your applications. 
+Yeniden yönlendirme için Önizleme desteği, Microsoft tarafından geliştirilen [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısında mevcuttur ve [](https://pecl.php.net/package/mysqlnd_azure) Uygulamalarınızda yeniden yönlendirmeyi kullanma hakkında daha fazla bilgi için [yeniden yönlendirmeyi yapılandırma](./howto-redirection.md) makalesine bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Create and manage Azure Database for MySQL firewall rules using the Azure portal](./howto-manage-firewall-using-portal.md)
-* [Create and manage Azure Database for MySQL firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)
+* [Azure portal kullanarak MySQL için Azure Güvenlik duvarı kuralları oluşturma ve yönetme](./howto-manage-firewall-using-portal.md)
+* [Azure CLı kullanarak MySQL için Azure Güvenlik duvarı kuralları oluşturma ve yönetme](./howto-manage-firewall-using-cli.md)

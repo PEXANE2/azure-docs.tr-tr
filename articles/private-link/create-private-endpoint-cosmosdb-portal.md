@@ -33,9 +33,9 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
-    | Ad | *MyVirtualNetwork*girin. |
+    | Name | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
@@ -52,7 +52,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
@@ -65,7 +65,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETICI HESABı** |  |
     | Kullanıcı adı | Tercih ettiğiniz bir Kullanıcı adı girin. |
-    | Parola | Tercih ettiğiniz parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | istemcisiyle yönetilen bir cihaz için) | Tercih ettiğiniz parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
     | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
@@ -79,11 +79,11 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | Sanal ağ | Varsayılan **MyVirtualNetwork**bırakın.  |
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
-    | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
+    | Subnet | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
     | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
@@ -109,7 +109,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. İndirilen *. rdp* dosyasını açın.
 

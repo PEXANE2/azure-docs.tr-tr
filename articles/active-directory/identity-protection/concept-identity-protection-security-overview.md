@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection security overview
-description: Learn how the Security overview gives you an insight into your organization’s security posture.
+title: Azure Active Directory Kimlik Koruması güvenliğe genel bakış
+description: Güvenlik genel bakışın size kuruluşunuzun güvenlik duruşuna ilişkin bir Öngörüler nasıl sağladığını öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,52 +18,52 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382192"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - Security overview
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Kimlik Koruması-güvenliğe genel bakış
 
-The [Security overview](https://aka.ms/IdentityProtectionRefresh) in the Azure portal gives you an insight into your organization’s security posture. It helps identify potential attacks and understand the effectiveness of your policies.
+Azure portal [güvenlik genel bakışı](https://aka.ms/IdentityProtectionRefresh) , kuruluşunuzun güvenlik duruşuna ilişkin bir fikir verir. Olası saldırıları belirlemenize ve ilkelerinizin verimliliğini anlamanıza yardımcı olur.
 
-The ‘Security overview’ is broadly divided into two sections:
+' Güvenlik genel bakışı ' iki bölüme büyük ölçüde ayrılmıştır:
 
-- Trends, on the left, provide a timeline of risk in your organization.
-- Tiles, on the right, highlight the key ongoing issues in your organization and suggest how to quickly take action.
+- Eğilimler, solda, kuruluşunuzda risk zaman çizelgesi sağlar.
+- Kutucuklar, sağda, kuruluşunuzda devam eden sorunları vurgulayabilir ve hızlı bir şekilde nasıl işlem yapılacağını önerir.
 
-![Güvenlik genel bilgileri](./media/concept-identity-protection-security-overview/01.png)
+![Güvenliğe genel bakış](./media/concept-identity-protection-security-overview/01.png)
   
 ## <a name="trends"></a>Eğilimler
 
-### <a name="new-risky-users-detected"></a>New risky users detected
+### <a name="new-risky-users-detected"></a>Yeni riskli kullanıcılar algılandı
 
-This chart shows the number of new risky users that were detected over the chosen time period. You can filter the view of this chart by user risk level (low, medium, high). Hover over the UTC date increments to see the number of risky users detected for that day. A click on this chart will bring you to the ‘Risky users’ report. To remediate users that are at risk, consider changing their password.
+Bu grafik, seçilen dönemde algılanan yeni riskli Kullanıcı sayısını gösterir. Bu grafiğin görünümünü Kullanıcı risk düzeyine göre filtreleyebilirsiniz (düşük, orta, yüksek). Söz konusu gün için algılanan riskli Kullanıcı sayısını görmek için UTC Tarih artışlarının üzerine gelin. Bu grafiğe tıklama sizi ' riskli kullanıcılar ' raporuna getirecek. Risk altında olan kullanıcıları düzeltmek için parolalarını değiştirmeyi göz önünde bulundurun.
 
-### <a name="new-risky-sign-ins-detected"></a>New risky sign-ins detected
+### <a name="new-risky-sign-ins-detected"></a>Yeni riskli oturum açma işlemleri algılandı
 
-This chart shows the number of risky sign-ins detected over the chosen time period. You can filter the view of this chart by the sign-in risk type (real-time or aggregate) and the sign-in risk level (low, medium, high). Unprotected sign-ins are successful real-time risk sign-ins that were not MFA challenged. (Note: Sign-ins that are risky because of offline detections cannot be protected in real-time by sign-in risk policies). Hover over the UTC date increments to see the number of sign-ins detected at risk for that day. A click on this chart will bring you to the ‘Risky sign-ins’ report.
+Bu grafik, seçilen dönemde algılanan riskli oturum açma işlemlerinin sayısını gösterir. Bu grafiğin görünümünü oturum açma risk türüne (gerçek zamanlı veya toplu) ve oturum açma riski düzeyine (düşük, orta, yüksek) göre filtreleyebilirsiniz. Korumasız oturum açma işlemleri, MFA 'dan doğan başarılı gerçek zamanlı risk oturum açma bileşenlerlidir. (Unutmayın: çevrimdışı algılamalar nedeniyle riskli olan oturum açma işlemleri, oturum açma riski ilkelerine göre gerçek zamanlı olarak korunamaz). Bu güne yönelik risk altında algılanan oturum açma işlemlerinin sayısını görmek için UTC Tarih artışlarının üzerine gelin. Bu grafiğe tıklama, sizi ' riskli oturum açma ' raporuna getirecek.
 
-## <a name="tiles"></a>Tiles
+## <a name="tiles"></a>Parça
  
-### <a name="high-risk-users"></a>High risk users
+### <a name="high-risk-users"></a>Yüksek riskli kullanıcılar
 
-The ‘High risk users’ tile shows the latest count of users with high probability of identity compromise. These should be a top priority for investigation. A click on the ‘High risk users’ tile will redirect to a filtered view of the ‘Risky users’ report showing only users with a risk level of high. Using this report, you can learn more and remediate these users with a password reset.
+' Yüksek riskli kullanıcılar ' kutucuğunda, kimlik güvenliğinin en son olasılığı yüksek olan kullanıcı sayısı gösterilir. Bunlar, araştırma için bir üst öncelik olmalıdır. ' Yüksek riskli kullanıcılar ' kutucuğuna tıkladığınızda ' riskli kullanıcılar ' raporunun yalnızca risk düzeyine sahip kullanıcıları gösteren filtrelenmiş bir görünümüne yeniden yönlendirilir. Bu raporu kullanarak daha fazla bilgi alabilir ve parolayı sıfırlama ile bu kullanıcıları düzeltebilirsiniz.
 
-![Güvenlik genel bilgileri](./media/concept-identity-protection-security-overview/02.png)
+![Güvenliğe genel bakış](./media/concept-identity-protection-security-overview/02.png)
 
-### <a name="medium-risk-users"></a>Medium risk users
-The ‘Medium risk users’ tile shows the latest count of users with medium probability of identity compromise. A click on ‘Medium risk users’ tile will redirect to a filtered view of the ‘Risky users’ report showing only users with a risk level of medium. Using this report, you can further investigate and remediate these users.
+### <a name="medium-risk-users"></a>Orta riskli kullanıcılar
+' Orta riskli kullanıcılar ' kutucuğu, en son kullanıcı sayısını orta düzeyde kimlik güvenliğinin aşılmasına neden gösterir. ' Orta riskli kullanıcılar ' kutucuğuna tıklama, yalnızca risk düzeyine sahip kullanıcıları gösteren ' riskli kullanıcılar ' raporunun filtrelenmiş görünümüne yönlendirilir. Bu raporu kullanarak bu kullanıcıları daha fazla araştırıp düzeltebilirsiniz.
 
-### <a name="unprotected-risky-sign-ins"></a>Unprotected risky sign-ins
+### <a name="unprotected-risky-sign-ins"></a>Korumasız riskli oturum açma işlemleri
 
-The ‘Unprotected risky sign-ins' tile shows the last week’s count of successful, real-time risky sign-ins that were not blocked or MFA challenged by a Conditional Access policy, Identity Protection risk policy, or per-user MFA. These are potentially compromised logins that were successful and not MFA challenged. To protect such sign-ins in future, apply a sign-in risk policy. A click on ‘Unprotected risky sign-ins' tile will redirect to the sign-in risk policy configuration blade where you can configure the sign-in risk policy to require MFA on a sign-in with a specified risk level.
+' Korumasız riskli oturum açma ' kutucuğunda, Engellenen veya bir koşullu erişim ilkesi, kimlik koruması risk ilkesi veya Kullanıcı başına MFA tarafından doğan başarılı, gerçek zamanlı riskli oturum açma işlemlerinin sayısı gösterilir. Bunlar, başarılı olan ve MFA 'nın başarıya düşmesine yol açmayan oturumlardır. Gelecekte bu tür oturum açma işlemlerini korumak için bir oturum açma risk ilkesi uygulayın. ' Korumasız riskli oturum açma ' kutucuğunda bir tıklama, oturum açma risk ilkesini, belirtilen risk düzeyiyle bir oturum açma üzerinde MFA 'yı gerektirecek şekilde yapılandırabileceğiniz oturum açma risk ilkesi yapılandırma dikey penceresine yönlendirilir.
 
-### <a name="legacy-authentication"></a>Legacy authentication
+### <a name="legacy-authentication"></a>Eski kimlik doğrulaması
 
-The ‘Legacy authentication’ tile shows the last week’s count of legacy authentications in your organization. Legacy authentication protocols do not support modern security methods such as an MFA. To prevent legacy authentication, you can apply a Conditional Access policy. A click on ‘Legacy authentication’ tile will redirect you to the ‘Identity Secure Score’.
+' Eski kimlik doğrulama ' kutucuğu, son haftanın kuruluşunuzdaki eski kimlik doğrulama sayısını gösterir. Eski kimlik doğrulama protokolleri MFA gibi modern güvenlik yöntemlerini desteklemez. Eski kimlik doğrulamasını engellemek için, koşullu erişim ilkesi uygulayabilirsiniz. ' Eski kimlik doğrulaması ' kutucuğuna tıklama sizi ' kimlik güvenli puanı ' öğesine yönlendirir.
 
-### <a name="identity-secure-score"></a>Identity Secure Score
+### <a name="identity-secure-score"></a>Kimlik güvenli puanı
 
-The Identity Secure Score measures and compares your security posture to industry patterns. If you click on ‘Identity Secure Score (Preview)’ tile, it will redirect to the ‘Identity Secure Score’ blade where you can learn more about improving your security posture.
+Kimlik güvenli puanı ölçer ve güvenlik duruşunuzu sektör desenleriyle karşılaştırır. ' Kimlik güvenli puanı (Önizleme) ' kutucuğuna tıklarsanız, güvenlik duruşunuzu geliştirme hakkında daha fazla bilgi edinmek için ' kimlik güvenli puanı ' dikey penceresine yönlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [What is risk](concept-identity-protection-risks.md)
+- [Risk nedir?](concept-identity-protection-risks.md)
 
-- [Policies available to mitigate risks](concept-identity-protection-policies.md)
+- [Riskleri azaltmak için kullanılabilir ilkeler](concept-identity-protection-policies.md)

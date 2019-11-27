@@ -1,7 +1,7 @@
 ---
-title: Sync data from Azure SQL Database Edge by using SQL Data Sync | Microsoft Docs
-description: Learn about syncing data from Azure SQL Database Edge by using Azure SQL Data Sync
-keywords: sql database edge,sync data from sql database edge, sql database edge data sync
+title: SQL Data Sync kullanarak Azure SQL veritabanı kenarından verileri eşitleyin | Microsoft Docs
+description: Azure SQL Data Sync kullanarak Azure SQL veritabanı kenarından veri eşitleme hakkında bilgi edinin
+keywords: SQL veritabanı Edge, SQL veritabanı kenarından veri eşitleme, SQL veritabanı Edge veri eşitleme
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: tutorial
@@ -16,48 +16,48 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384176"
 ---
-# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Tutorial: Sync data from SQL Database Edge to Azure SQL Database by using SQL Data Sync
+# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Öğretici: SQL Data Sync kullanarak SQL veritabanı kenarından Azure SQL veritabanı 'na veri eşitleme
 
-In this tutorial, you'll learn how to use an Azure SQL Data Sync *sync group* to incrementally sync data from Azure SQL Database Edge to Azure SQL Database. SQL Data Sync is a service built on Azure SQL Database that lets you synchronize the data you select bi-directionally across multiple SQL databases and SQL Server instances. For more information on SQL Data Sync, see [Azure SQL Data Sync](../sql-database/sql-database-sync-data.md).
+Bu öğreticide, Azure SQL veritabanı kenarından Azure SQL veritabanı 'na artımlı olarak veri eşitlemek için bir Azure SQL Data Sync *eşitleme grubu* kullanmayı öğreneceksiniz. SQL Data Sync, birden çok SQL veritabanları ve SQL Server örnekleri arasında çift seçin verileri eşitleyin olanak sağlayan Azure SQL veritabanı üzerinde oluşturulmuş bir hizmettir. SQL Data Sync hakkında daha fazla bilgi için bkz. [Azure SQL Data Sync](../sql-database/sql-database-sync-data.md).
 
-Because SQL Database Edge is built on the latest versions of the [SQL Server Database Engine](/sql/sql-server/sql-server-technical-documentation/), any data synchronization mechanism that's applicable to an on-premises SQL Server instance can also be used to sync data to or from a SQL Database Edge instance running on an edge device.
+SQL veritabanı Edge, [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation/)en son sürümlerinde oluşturulduğundan, bir şirket içi SQL Server örneği için geçerli olan herhangi bir veri eşitleme mekanizması, bir kenar cihazında çalışan bir SQL veritabanı Edge örneğinden veya bu veri ile verileri eşitlemek için de kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-This tutorial requires a Windows computer configured with the [Data Sync Agent for Azure SQL Data Sync](../sql-database/sql-database-data-sync-agent.md).
+Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../sql-database/sql-database-data-sync-agent.md)yapılandırılmış bir Windows bilgisayarı gerektirir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Bir Azure SQL veritabanı oluşturun. For information on how to create an Azure SQL database by using the Azure portal, see [Create a single database in Azure SQL Database](../sql-database/sql-database-single-database-get-started.md?tabs=azure-portal).
+* Bir Azure SQL veritabanı oluşturun. Azure portal kullanarak Azure SQL veritabanı oluşturma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda tek bir veritabanı oluşturma](../sql-database/sql-database-single-database-get-started.md?tabs=azure-portal).
 
-* Create the tables and other necessary objects in your Azure SQL Database deployment.
+* Azure SQL veritabanı dağıtımınızda tabloları ve diğer gerekli nesneleri oluşturun.
 
-* Create the necessary tables and objects in your Azure SQL Database Edge deployment. For more information, see [Using SQL Database DAC packages with SQL Database Edge](stream-analytics.md).
+* Azure SQL veritabanı Edge dağıtımınızda gerekli tabloları ve nesneleri oluşturun. Daha fazla bilgi için bkz. SQL veritabanı [Edge Ile SQL VERITABANı dac paketlerini kullanma](stream-analytics.md).
 
-* Register the Azure SQL Database Edge instance with the Data Sync Agent for Azure SQL Data Sync. For more information, see [Add an on-premises SQL Server database](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
+* Azure SQL veritabanı Edge örneğini Azure SQL Data Sync için veri eşitleme aracısına kaydedin. Daha fazla bilgi için bkz. Şirket [içi SQL Server veritabanı ekleme](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-database-edge"></a>Sync data between an Azure SQL database and SQL Database Edge
+## <a name="sync-data-between-an-azure-sql-database-and-sql-database-edge"></a>Verileri bir Azure SQL veritabanı ve SQL veritabanı kenarı arasında eşitleme
 
-Setting up synchronization between an Azure SQL database and a SQL Database Edge instance by using SQL Data Sync involves three key steps:  
+SQL Data Sync kullanarak bir Azure SQL veritabanı ile SQL veritabanı Edge örneği arasında eşitlemeyi ayarlamak, üç temel adımı içerir:  
 
-1. Use the Azure portal to create a sync group. For more information, see [Create a sync group](../sql-database/sql-database-get-started-sql-data-sync.md#create-sync-group). You can use a single *hub* database to create multiple sync groups to synchronize data from various SQL Database Edge instances to one or more SQL databases in Azure.
+1. Bir eşitleme grubu oluşturmak için Azure portal kullanın. Daha fazla bilgi için bkz. [eşitleme grubu oluşturma](../sql-database/sql-database-get-started-sql-data-sync.md#create-sync-group). Çeşitli SQL veritabanı Edge örneklerinden verileri Azure 'daki bir veya daha fazla SQL veritabanı ile eşitlemek için birden çok eşitleme grubu oluşturmak üzere tek bir *hub* veritabanı kullanabilirsiniz.
 
-2. Add sync members to the sync group. For more information, see [Add sync members](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
+2. Eşitleme grubuna eşitleme üyeleri ekleyin. Daha fazla bilgi için bkz. [eşitleme üyeleri ekleme](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
 
-3. Set up the sync group to select the tables that will be part of the synchronization. For more information, see [Configure a sync group](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
+3. Eşitlemenin parçası olacak tabloları seçmek için eşitleme grubunu ayarlayın. Daha fazla bilgi için bkz. [eşitleme grubunu yapılandırma](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
 
-After you complete the preceding steps, you'll have a sync group that includes an Azure SQL database and a SQL Database Edge instance.
+Yukarıdaki adımları tamamladıktan sonra, Azure SQL veritabanı ve SQL veritabanı Edge örneği içeren bir eşitleme grubunuz olacaktır.
 
-For more info about SQL Data Sync, see these articles:
+SQL Data Sync hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Data Sync Agent for Azure SQL Data Sync](../sql-database/sql-database-data-sync-agent.md)
+* [Azure SQL Data Sync için veri eşitleme Aracısı](../sql-database/sql-database-data-sync-agent.md)
 
-* [Best practices](../sql-database/sql-database-best-practices-data-sync.md) and [How to troubleshoot issues with Azure SQL Data Sync](../sql-database/sql-database-troubleshoot-data-sync.md)
+* [En iyi uygulamalar](../sql-database/sql-database-best-practices-data-sync.md) ve [Azure SQL Data Sync sorunları nasıl giderilir](../sql-database/sql-database-troubleshoot-data-sync.md)
 
-* [Monitor SQL Data Sync with Azure Monitor logs](../sql-database/sql-database-sync-monitor-oms.md)
+* [Azure Izleyici günlükleriyle SQL Data Sync izleme](../sql-database/sql-database-sync-monitor-oms.md)
 
-* [Update the sync schema with Transact-SQL](../sql-database/sql-database-update-sync-schema.md) or [PowerShell](../sql-database/scripts/sql-database-sync-update-schema.md)
+* [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](../sql-database/sql-database-update-sync-schema.md) [](../sql-database/scripts/sql-database-sync-update-schema.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Use PowerShell to sync between Azure SQL Database and Azure SQL Database Edge](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md). In this tutorial, replace the `OnPremiseServer` database details with the Azure SQL Database Edge details.
+* [Azure SQL veritabanı ve Azure SQL veritabanı kenarı arasında eşitleme yapmak Için PowerShell 'ı kullanın](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md). Bu öğreticide, `OnPremiseServer` veritabanı ayrıntılarını Azure SQL veritabanı Edge ayrıntıları ile değiştirin.

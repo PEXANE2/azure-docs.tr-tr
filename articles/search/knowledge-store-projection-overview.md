@@ -1,7 +1,7 @@
 ---
-title: Working with projections in a knowledge store (preview)
+title: Bir bilgi deposunda projeksiyonlarla çalışma (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Save and shape your enriched data from the AI enrichment indexing pipeline into a knowledge store for use in scenarios other than full text search. Knowledge store is currently in public preview.
+description: Zenginleştirme veri dizini oluşturma işlem hattından zenginleştirilmiş verilerinizi tam metin arama dışındaki senaryolarda kullanmak üzere bir bilgi deposuna kaydedin ve şekillendirin. bilgi deposu Şu anda genel önizleme aşamasındadır.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
@@ -15,71 +15,71 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326606"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Working with projections in a knowledge store in Azure Cognitive Search
+# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir bilgi deposunda projeksiyonlarla çalışma
 
 > [!IMPORTANT] 
-> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
+> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
-Azure Cognitive Search enables content enrichment through built-in cognitive skills and custom skills as part of indexing. Enrichments add structure to your documents and make searching more effective. In many instances, the enriched documents are useful for scenarios other than search, such as for knowledge mining.
+Azure Bilişsel Arama, dizin oluşturmanın bir parçası olarak yerleşik bilişsel yetenekler ve özel yetenekler aracılığıyla içerik zenginleştirme imkanı sunar. Zenginleştirme belgelerinize yapı ekler ve daha etkili bir şekilde arama yapın. Birçok örnekte, zenginleştirilmiş belgeler, bilgi madenciliği gibi arama dışındaki senaryolar için yararlıdır.
 
-Projections, a component of [knowledge store](knowledge-store-concept-intro.md), are views of enriched documents that can be saved to physical storage for knowledge mining purposes. A projection lets you "project" your data into a shape that aligns with your needs, preserving relationships so that tools like Power BI can read the data with no additional effort.
+[Bilgi deposunun](knowledge-store-concept-intro.md)bir bileşeni olan tahminler, bilgi madenciliği için fiziksel depolamaya kaydedilebilen zenginleştirilmiş belgelerin görünümleridir. Bir projeksiyon, verilerinizi, Power BI gibi araçların ek bir çaba olmadan okuyabilmesi için, ilişkilerini koruyarak, verilerinizi gereksinimlerinize göre hizalayan bir şekle "proje" sağlar.
 
-Projections can be tabular, with data stored in rows and columns in Azure Table storage, or JSON objects stored in Azure Blob storage. You can define multiple projections of your data as it is being enriched. Multiple projections are useful when you want the same data shaped differently for individual use cases.
+Tahminler, Azure Tablo depolamada veya Azure Blob depolama alanında depolanan JSON nesnelerinde bulunan satırlar ve sütunlarda depolanan verilerle tablosal olabilir. Verilerinizin zenginleştirmekte olduğu haliyle birden fazla projeksiyoni tanımlayabilirsiniz. Birden çok projeksiyonlar ayrı kullanım durumları için aynı verinin farklı şekilde olmasını istediğinizde faydalıdır.
 
-The knowledge store supports three types of projections:
+Bilgi deposu üç tür projeksiyonları destekler:
 
-+ **Tables**: For data that's best represented as rows and columns, table projections allow you to define a schematized shape or projection in Table storage.
++ **Tablolar**: satır ve sütun olarak en iyi şekilde temsil edilen veriler için tablo projeksiyonları tablo depolamada şema veya projeksiyon tanımlamanızı sağlar.
 
-+ **Objects**: When you need a JSON representation of your data and enrichments, object projections are saved as blobs.
++ **Nesneler**: verileriniz ve zenginleştirme IÇIN bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir.
 
-+ **Files**: When you need to save the images extracted from the documents, file projections allow you to save the normalized images.
++ **Dosyalar**: belgelerden ayıklanan görüntüleri kaydetmeniz gerektiğinde, dosya projeksiyonları, normalleştirilmiş görüntüleri kaydetmenizi sağlar.
 
-To see projections defined in context, step through [How to get started with knowledge store](knowledge-store-howto.md).
+Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya](knowledge-store-howto.md)başlayın.
 
-## <a name="projection-groups"></a>Projection groups
+## <a name="projection-groups"></a>Projeksiyon grupları
 
-In some cases, you will need to project your enriched data in different shapes to meet different objectives. The knowledge store allows you to define multiple groups of projections. Projection groups have the following key characteristics of mutual exclusivity and relatedness.
+Bazı durumlarda, farklı hedefleri karşılamak için zenginleştirilmiş verilerinizi farklı şekillerde proje yapmanız gerekir. Bilgi deposu, birden çok projeksiyonun grubunu tanımlamanızı sağlar. Projeksiyon grupları, karşılıklı denetim ve related'ın aşağıdaki temel özelliklerine sahiptir.
 
-### <a name="mutual-exclusivity"></a>Mutual exclusivity
+### <a name="mutual-exclusivity"></a>Karşılıklı denetim
 
-All content projected into a single group is independent of data projected into other projection groups.
-This independence implies that you can have the same data shaped differently, yet repeated in each projection group.
+Tek bir grupta yansıtılan tüm içerikler, diğer projeksiyon gruplarında yansıtılan verilerden bağımsızdır.
+Bu bağımsızlık, aynı verilerin şekillendirilmiş bir şekilde farklı, ancak her projeksiyon grubunda tekrarlanabileceği anlamına gelir.
 
-### <a name="relatedness"></a>Relatedness
+### <a name="relatedness"></a>Relatedlik
 
-Projection groups now allow you to project your documents across projection types while preserving the relationships across projection types. All content projected within a single projection group preserves relationships within the data across projection types. Within tables, relationships are based on a generated key and each child node retains a reference to the parent node. Across types (tables, objects, and files), relationships are preserved when a single node is projected across different types. For example, consider a scenario where you have a document containing images and text. You could project the text to tables or objects and the images to files where the tables or objects have a property containing the file URL.
+Projeksiyon grupları artık, yansıtma türlerinde ilişkileri korurken belgelerinizi İzdüşüm türleri arasında projenize eklemenize olanak tanır. Tek bir projeksiyon grubu içinde yansıtılan tüm içerik, yansıtma türlerinde verilerin içindeki ilişkileri korur. Tablolar içinde, ilişkiler oluşturulan bir anahtarı temel alır ve her alt düğüm üst düğüme bir başvuru tutar. Türler arasında (tablolar, nesneler ve dosyalar), tek bir düğüm farklı türler arasında yansıtıldığınızda ilişkiler korunur. Örneğin, resim ve metin içeren bir belge olduğu bir senaryo düşünün. Metni tablolar veya nesneler ile resimlerin ya da nesnelerin dosya URL 'sini içeren bir özelliğe sahip olduğu dosyalara yansıt edebilirsiniz.
 
-## <a name="input-shaping"></a>Input shaping
+## <a name="input-shaping"></a>Giriş şekillendirme
 
-Getting your data in the right shape or structure is key to effective use, be it tables or objects. The ability to shape or structure your data based on how you plan to access and use it is a key capability exposed as the **Shaper** skill within the skillset.  
+Verilerinizin doğru şekilde veya yapıda alınması, etkin kullanım için anahtar, BT tabloları veya nesneleri olmalıdır. Verilerinizi nasıl kullanabileceğinizi ve kullanabileceğinizi temel alarak verilerinizi şekillendirebilir veya yapısal hale getirme özelliği, Beceri içinde her yetenek için **mil** olarak kullanıma sunulan bir temel yetenektir.  
 
-Projections are easier to define when you have an object in the enrichment tree that matches the schema of the projection. The updated [Shaper skill](cognitive-search-skill-shaper.md) allows you to compose an object from different nodes of the enrichment tree and parent them under a new node. The **Shaper** skill allows you to define complex types with nested objects.
+Projeksiyon şeması ile eşleşen zenginleştirme ağacında bir nesneniz olduğunda, projeksiyonu daha kolay tanımlanır. [Her yetenek](cognitive-search-skill-shaper.md) Için güncelleştirilmiş mil, zenginleştirme ağacının farklı düğümlerinden bir nesne oluşturmanıza ve bunların üstünü yeni bir düğüm altında oluşturmanıza olanak sağlar. **Mil başına** , iç içe geçmiş nesnelerle karmaşık türler tanımlamanıza olanak sağlar.
 
-When you have a new shape defined that contains all the elements you need to project out, you can now use this shape as the source for your projections or as an input to another skill.
+Projeniz için gereken tüm öğeleri içeren yeni bir şekil tanımladığınız zaman, artık bu şekli projeksiyonlarınızın kaynağı olarak veya başka bir beceriye giriş olarak kullanabilirsiniz.
 
-## <a name="projection-slicing"></a>Projection slicing
+## <a name="projection-slicing"></a>Projeksiyon Dilimleme
 
-When defining a projection group, a single node in the enrichment tree can be sliced into multiple related tables or objects. Adding a projection with a source path that is a child of an existing projection will result in the child node being sliced out of the parent node and projected into the new yet related table or object. This technique allows you to define a single node in a shaper skill that can be the source for all of your projections.
+Yansıtma grubu tanımlarken, zenginleştirme ağacındaki tek bir düğüm birden çok ilişkili tabloya veya nesneye dilimlenebilir. Mevcut projeksiyonun alt düğümü olan bir kaynak yolu olan bir projeksiyon eklemek, alt düğümün üst düğümden dilimlendirime ve yeni, bununla ilgili yeni tablo ya da nesne ile yansıtılmakta olacaktır. Bu teknik, tüm projeksiyonlarınızın kaynağı olabilecek beceri başına bir mil içinde tek bir düğüm tanımlamanızı sağlar.
 
-## <a name="table-projections"></a>Table projections
+## <a name="table-projections"></a>Tablo projeksiyonlarını
 
-Because it makes importing easier, we recommend table projections for data exploration with Power BI. Additionally, table projections allow for changing the cardinality between table relationships. 
+İçeri aktarma işlemi daha da kolaylaştırdığı için Power BI ile veri araştırması için tablo projeksiyonlarını öneririz. Ayrıca, tablo tahminleri tablo ilişkileri arasındaki kardinalite değiştirilmesini sağlar. 
 
-You can project a single document in your index into multiple tables, preserving the relationships. When projecting to multiple tables, the complete shape will be projected into each table, unless a child node is the source of another table within the same group.
+Dizininizdeki tek bir belgeyi birden çok tabloya proje ekleyebilirsiniz ve ilişkileri korur. Birden çok tabloya yansıtıldığınızda, bir alt düğüm aynı grup içindeki başka bir tablonun kaynağı değilse, tüm şekil her tabloya yansıtılır.
 
-### <a name="defining-a-table-projection"></a>Defining a table projection
+### <a name="defining-a-table-projection"></a>Tablo projeksiyonu tanımlama
 
-When defining a table projection within the `knowledgeStore` element of your skillset, start by mapping a node on the enrichment tree to the table source. Typically this node is the output of a **Shaper** skill that you added to the list of skills to produce a specific shape that you need to project into tables. The node you choose to project can be sliced to project into multiple tables. The tables definition is a list of tables that you want to project.
+Beceri `knowledgeStore` öğesi içinde tablo projeksiyonu tanımlarken, zenginleştirme ağacındaki bir düğümü tablo kaynağına eşleyerek başlayın. Genellikle bu düğüm, tablolarda proje yapmanız gereken belirli bir şekli oluşturmak için yetenekler listesine eklediğiniz **her** bir beceriye ait çıktıdır. Projeyi seçtiğiniz düğüm birden çok tablo halinde projeye dilimlenebilir. Tablolar tanımı, proje yapmak istediğiniz tabloların bir listesidir.
 
-Each table requires three properties:
+Her tablo üç özellik gerektirir:
 
-+ tableName: The name of the table in Azure Storage.
++ tableName: Azure Storage 'daki tablonun adı.
 
-+ generatedKeyName: The column name for the key that uniquely identifies this row.
++ generatedKeyName: Bu satırı benzersiz bir şekilde tanımlayan anahtarın sütun adı.
 
-+ source: The node from the enrichment tree you are sourcing your enrichments from. This node is usually the output of a shaper, but could be the output of any of the skills.
++ Kaynak: zenginleştirme ağacınızdaki düğüm, kendi zenginleştirmelerinin kaynağını oluşturur. Bu düğüm genellikle biçimlendiricilerin çıktıdır, ancak yeteneklerin herhangi birinin çıktısı olabilir.
 
-Here is an example of table projections.
+Aşağıda tablo projeksiyonlarını örnek verilmiştir.
 
 ```json
 {
@@ -112,7 +112,7 @@ Here is an example of table projections.
 }
 ```
 
-As demonstrated in this example, the key phrases and entities are modeled into different tables and will contain a reference back to the parent (MainTable) for each row.
+Bu örnekte gösterildiği gibi, anahtar tümcecikler ve varlıklar farklı tablolara modellenir ve her satır için üst (MainTable) öğesine geri bir başvuru içerir.
 
 <!---
 The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
@@ -120,9 +120,9 @@ The following illustration is a reference to the Case-law exercise in [How to ge
 ![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
 --->
 
-## <a name="object-projections"></a>Object projections
+## <a name="object-projections"></a>Nesne projeksiyonları
 
-Object projections are JSON representations of the enrichment tree that can be sourced from any node. In many cases, the same **Shaper** skill that creates a table projection can be used to generate an object projection. 
+Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginleştirme ağacının JSON temsilleridir. Çoğu durumda, bir tablo projeksiyonu oluşturan her yetenek için aynı **mil** , nesne projeksiyonu oluşturmak için kullanılabilir. 
 
 ```json
 {
@@ -158,15 +158,15 @@ Object projections are JSON representations of the enrichment tree that can be s
 }
 ```
 
-Generating an object projection requires a few object-specific attributes:
+Nesne projeksiyonu oluşturmak, nesneye özgü birkaç özniteliği gerektirir:
 
-+ storageContainer: The container where the objects will be saved
-+ source: The path to the node of the enrichment tree that is the root of the projection
-+ key: A path that represents a unique key for the object to be stored. It will be used to create the name of the blob in the container.
++ storageContainer: nesnelerin kaydedileceği kapsayıcı
++ Kaynak: projeksiyon kökü olan zenginleştirme ağacının düğümünün yolu
++ anahtar: depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
 
-## <a name="file-projection"></a>File projection
+## <a name="file-projection"></a>Dosya projeksiyonu
 
-File projections are similar to object projections and only act on the `normalized_images` collection. Similar to object projections, file projections are saved in the blob container with folder prefix of the base64 encoded value of the document ID. File projections cannot share the same container as object projections and need to be projected into a different container.
+Dosya projeksiyonlar nesne projeksiybunlara benzerdir ve yalnızca `normalized_images` koleksiyonu üzerinde işlem görür. Nesne projeksiybunlara benzer şekilde dosya projeksiyonları, blob kapsayıcısına belge KIMLIĞININ Base64 kodlamalı değerinin klasör öneki ile kaydedilir. Dosya projeksiyonlar, nesne projeksiyonları ile aynı kapsayıcıyı paylaşamaz ve farklı bir kapsayıcıya yansıtılmalıdır.
 
 ```json
 {
@@ -200,23 +200,23 @@ File projections are similar to object projections and only act on the `normaliz
 }
 ```
 
-## <a name="projection-lifecycle"></a>Projection lifecycle
+## <a name="projection-lifecycle"></a>Projeksiyon yaşam döngüsü
 
-Your projections have a lifecycle that is tied to the source data in your data source. As your data is updated and reindexed, your projections are updated with the results of the enrichments ensuring your projections are eventually consistent with the data in your data source. The projections inherit the delete policy you've configured for your index. Projections are not deleted when the indexer or the search service itself is deleted.
+Projeksiyonlarınızın veri kaynağınızdaki kaynak verilere bağlı bir yaşam döngüsü vardır. Verileriniz güncelleştirildiğinden ve yeniden dizinleniyorsa, tahminleriniz, projeksiyonlarınızın veri kaynağınızdaki verilerle tutarlı olmasını sağlayan zenginlerin sonuçlarıyla güncelleştirilir. Tahminler, dizininiz için yapılandırdığınız silme ilkesini alırlar. Dizin Oluşturucu veya arama hizmeti silindiğinde, projeksiyonlar silinmez.
 
-## <a name="using-projections"></a>Using projections
+## <a name="using-projections"></a>Projeksiyonları kullanma
 
-After the indexer is run, you can read the projected data in the containers or tables you specified through projections.
+Dizin Oluşturucu çalıştırıldıktan sonra, tahminler aracılığıyla belirttiğiniz kapsayıcılardaki veya tablolardaki yansıtılan verileri okuyabilirsiniz.
 
-For analytics, exploration in Power BI is as simple as setting Azure Table storage as the data source. You can easily create a set of visualizations on your data using the relationships within.
+Analiz için Power BI araştırma, Azure Tablo depolama alanını veri kaynağı olarak ayarlamak kadar basittir. İçindeki ilişkileri kullanarak verilerinize kolayca bir görselleştirme kümesi oluşturabilirsiniz.
 
-Alternatively, if you need to use the enriched data in a data science pipeline, you could [load the data from blobs into a Pandas DataFrame](../machine-learning/team-data-science-process/explore-data-blob.md).
+Alternatif olarak, bir veri bilimi ardışık düzeninde zenginleştirilmiş verileri kullanmanız gerekiyorsa, [verileri bloblardan bir Pandas DataFrame 'e yükleyebilirsiniz](../machine-learning/team-data-science-process/explore-data-blob.md).
 
-Finally, if you need to export your data from the knowledge store, Azure Data Factory has connectors to export the data and land it in the database of your choice. 
+Son olarak, verilerinizi bilgi deposundan dışarı aktarmanız gerekiyorsa Azure Data Factory, verileri dışarı aktarmak ve seçtiğiniz veritabanına eklemek için bağlayıcılar içerir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-As a next step, create your first knowledge store using sample data and instructions.
+Bir sonraki adım olarak, örnek verileri ve yönergeleri kullanarak ilk bilgi deponuzu oluşturun.
 
 > [!div class="nextstepaction"]
-> [How to create a knowlege store](knowledge-store-howto.md).
+> [Bilgi deposu oluşturma](knowledge-store-howto.md).

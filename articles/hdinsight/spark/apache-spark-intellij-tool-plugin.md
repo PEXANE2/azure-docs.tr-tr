@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494247"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533908"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Öğretici: HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Apache Spark uygulamaları geliştirme
 > * Uygulamayı Azure HDInsight kümesine gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -336,8 +336,6 @@ WINUTILS ' i karşılatığınızdan emin olun. EXE önkoşulu.
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy etkileşimli oturum Konsolu (Scala)
 
-Yalnızca IntelliJ 2018,2 ve 2018,3 ' de desteklenir.
-
 1. Menü çubuğundan **çalıştır** > **yapılandırmayı Düzenle...** seçeneğine gidin.
 
 2. **Çalıştır/hata ayıkla yapılandırma** penceresinde, sol bölmedeki **HDInsight 'ta Apache Spark** ' a gidin >  **[Spark on HDInsight] MyApp**.
@@ -366,6 +364,25 @@ Yalnızca IntelliJ 2018,2 ve 2018,3 ' de desteklenir.
 Yerel konsola veya Livy etkileşimli oturum konsoluna (Scala) bazı kodlar göndererek betik sonucunu öngörülebilir bir şekilde görmeniz uygun bir yoldur. Scala dosyasındaki bazı kodları vurgulayabilir, ardından **seçme konsolu 'na sağ tıklayarak seçim gönderebilirsiniz**. Seçilen kod konsola gönderilir ve gerçekleştirilir. Sonuç, konsolundaki koddan sonra görüntülenecektir. Varsa, konsol hataları kontrol eder.  
 
    ![Seçimi Spark konsoluna gönder](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity broker (HIB) ile tümleştirme 
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP kümenize kimlik broker (HIB) ile bağlanma
+Kimlik broker (HIB) ile HDInsight ESP kümenize bağlanmak için, Azure aboneliğinde oturum açmak üzere normal adımları izleyebilirsiniz. Oturum açtıktan sonra, küme listesini Azure Explorer 'da görürsünüz. Daha fazla yönerge için bkz. [HDInsight kümenize bağlanma](#connect-to-your-hdinsight-cluster).
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Kimlik broker (HIB) ile bir HDInsight ESP kümesinde Spark Scala uygulaması çalıştırma
+Kimlik broker (HIB) ile HDInsight ESP kümesine iş göndermek için normal adımları izleyebilirsiniz. Daha fazla yönerge için bir [HDInsight Spark kümesinde Spark Scala uygulaması çalıştırma](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster) bölümüne bakın.
+
+Gerekli dosyaları, oturum açma hesabınızla adlı bir klasöre karşıya yüklememiz ve yükleme yolunu yapılandırma dosyasında görebiliriz.
+
+   ![yapılandırmada yolu karşıya yükle](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Kimlik broker (HIB) ile HDInsight ESP kümesinde Spark konsolu
+Spark yerel konsolu 'Nu (Scala) çalıştırabilir ya da kimlik broker (HIB) ile HDInsight ESP kümesinde Spark Livy etkileşimli oturum konsolunu (Scala) çalıştırabilirsiniz. Daha fazla yönerge için [Spark konsoluna](#spark-console) bakın.
+
+   > [!NOTE]  
+   > Kimlik broker (HIB) ile HDInsight ESP kümesi için, [bir küme bağlayın](#link-a-cluster) ve [uygulamaları uzaktan Apache Spark ayıklayın](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster) .
+
 
 ## <a name="reader-only-role"></a>Yalnızca okuyucu rolü
 
@@ -438,7 +455,7 @@ IntelliJ fıkır içinde oluşturduğunuz mevcut Spark Scala uygulamalarını Az
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 
@@ -446,7 +463,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**' i seçin.
+1. **Sil**’i seçin. **Evet**’i seçin.
 
 ![HDInsight kümesini silme Azure portal](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 

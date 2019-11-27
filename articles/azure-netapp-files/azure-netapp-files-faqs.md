@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/26/2019
 ms.author: b-juche
-ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173600"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546951"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -142,6 +142,10 @@ Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız,
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Windows Server Active Directory sürümleri destekleniyor mu?
 
 Azure NetApp Files, Active Directory Domain Services Windows Server 2008r2SP1-2019 sürümlerini destekler.
+
+### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>SMB istemcimde kullanılabilir alan, sağlanan boyutu neden göstermiyor?
+
+SMB istemcisi tarafından bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceği en büyük boyutum boyutudur. SMB istemcisinde gösterildiği gibi Azure NetApp Files birimin boyutu, birimin kotasının veya boyutunun yansıtımsıdır. Azure NetApp Files birim boyutunu veya kotasını Azure portal veya API aracılığıyla edinebilirsiniz.
 
 ## <a name="capacity-management-faqs"></a>Kapasite Yönetimi SSS
 

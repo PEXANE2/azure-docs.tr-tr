@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470130"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546187"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, MOBIL arka uçlar ve API uygulamaları için yerleşik izleme işlevleri sağlar.
 
-Azure portal, bir uygulama için *kotaları* ve *ölçümleri* gözden geçirebilir, App Service planını inceleyebilir ve ölçümleri temel alan *uyarıları* ve *ölçeklendirmeyi* otomatik olarak ayarlayabilirsiniz.
+Azure portal, bir uygulama ve App Service planı için *kotaları* ve *ölçümleri* gözden geçirebilir ve temel ölçümler olan *uyarıları* ve *Otomatik ölçeklendirmeyi* ayarlayabilirsiniz.
 
 ## <a name="understand-quotas"></a>Kotaları anlama
 
@@ -46,7 +46,7 @@ Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kull
 | **Bant Genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
 | **Biçimlendiri** | İzin verilen toplam depolama miktarı. |
 
-*Temel*, *Standart*ve *Premium* planlarında barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
+*Temel*, *Standart*ve *Premium* 'da barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
 
 Çeşitli App Service SKU 'Larının kullanabildiği belirli kotalar, sınırlar ve özellikler hakkında daha fazla bilgi için bkz. [Azure abonelik hizmeti sınırları](../azure-subscription-service-limits.md#app-service-limits).
 
@@ -64,6 +64,10 @@ App Service planınızı yükselterek, kotalarınızı uygulamanızı artırabil
 
 ## <a name="understand-metrics"></a>Ölçümleri anlama
 
+> [!NOTE]
+> **Dosya sistemi kullanımı** , genel olarak alınan yeni bir ölçümdür, özel önizleme için beyaz listeye alınmadığınız takdirde hiçbir veri beklenmez.
+> 
+
 Ölçümler, uygulama veya App Service planının davranışı hakkında bilgi sağlar.
 
 Bir uygulama için kullanılabilir ölçümler şunlardır:
@@ -77,6 +81,7 @@ Bir uygulama için kullanılabilir ölçümler şunlardır:
 | **Geçerli derlemeler** | Bu uygulamadaki tüm AppDomain 'ler genelinde yüklenen derlemelerin geçerli sayısı. |
 | **Içindeki veriler** | MIB içinde uygulama tarafından tüketilen gelen bant genişliği miktarı. |
 | **Giden veriler** | MIB içinde uygulama tarafından tüketilen giden bant genişliği miktarı. |
+| **Dosya sistemi kullanımı** | Uygulama tarafından tüketilen dosya sistemi kotasının yüzdesi. |
 | **Gen 0 çöp koleksiyonları** | Uygulama işleminin başlangıcından bu yana nesil 0 nesnelerinin atık olarak toplandığı sayı. Daha yüksek nesil GCs, tüm düşük nesil GCs 'leri içerir.|
 | **Gen 1 çöp koleksiyonları** | Uygulama işleminin başlangıcından bu yana 1. nesil nesnelerin atık olarak toplandığı sayı. Daha yüksek nesil GCs, tüm düşük nesil GCs 'leri içerir.|
 | **Gen 2 çöp koleksiyonları** | Oluşturma 2 nesnelerinin, uygulama işleminin başlangıcından bu yana atık olarak toplandığı sayı.|

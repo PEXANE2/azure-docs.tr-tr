@@ -1,7 +1,7 @@
 ---
-title: Logging in Microsoft Authentication Library (MSAL) applications
+title: Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamalarında oturum açma
 titleSuffix: Microsoft identity platform
-description: Learn about logging in Microsoft Authentication Library (MSAL) applications.
+description: Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamalarında günlüğe kaydetme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -25,38 +25,38 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452468"
 ---
-# <a name="logging-in-msal-applications"></a>Logging in MSAL applications
+# <a name="logging-in-msal-applications"></a>MSAL uygulamalarında oturum açma
 
-Microsoft Authentication Library (MSAL) apps generate log messages that can help diagnose issues. An app can configure logging with a few lines of code, and have custom control over the level of detail and whether or not personal and organizational data is logged. We recommend you create an MSAL logging callback and provide a way for users to submit logs when they have authentication issues.
+Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamaları, sorunların tanılanmasına yardımcı olabilecek günlük iletileri oluşturur. Bir uygulama, birkaç satırlık kodla günlüğe kaydetmeyi yapılandırabilir ve ayrıntı düzeyi üzerinde özel denetime sahip olabilir ve kişisel ve kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Bir MSAL günlüğü geri araması oluşturmanızı ve kullanıcıların, kimlik doğrulama sorunları olduğunda günlükleri göndermesi için bir yol sağlamanızı öneririz.
 
-## <a name="logging-levels"></a>Logging levels
+## <a name="logging-levels"></a>Günlüğe kaydetme düzeyleri
 
-MSAL provides several levels of logging detail:
+MSAL çeşitli düzeylerde günlük ayrıntısı sağlar:
 
-- Error: Indicates something has gone wrong and an error was generated. Use for debugging and identifying problems.
-- Warning: There hasn't necessarily been an error or failure, but are intended for diagnostics and pinpointing problems.
-- Info: MSAL will log events intended for informational purposes not necessarily intended for debugging.
-- Verbose: Default. MSAL logs the full details of library behavior.
+- Hata: bir şeyin yanlış geçmiş olduğunu ve bir hatanın oluşturulduğunu gösterir. Hata ayıklama ve sorunları tanımlama için kullanın.
+- Uyarı: bir hata veya hata olması gerekmez, ancak tanılama ve işaret noktası sorunlarına yöneliktir.
+- Bilgi: MSAL, hata ayıklama amaçlı olarak değil bilgilendirici amaçlar için tasarlanan olayları günlüğe kaydeder.
+- Verbose: varsayılan. MSAL, kitaplık davranışının tüm ayrıntılarını günlüğe kaydeder.
 
-## <a name="personal-and-organizational-data"></a>Personal and organizational data
+## <a name="personal-and-organizational-data"></a>Kişisel ve Kurumsal veriler
 
-By default, the MSAL logger doesn't capture any highly sensitive personal or organizational data. The library provides the option to enable logging personal and organizational data if you decide to do so.
+Varsayılan olarak, MSAL günlükçüsü son derece hassas kişisel veya kurumsal verileri yakalamaz. Kitaplığı, bunu yapmayı seçerseniz kişisel ve kurumsal verileri günlüğe kaydetmeyi etkinleştirme seçeneğini sağlar.
 
-For details about MSAL logging in a particular language, choose the tab matching your language:
+Belirli bir dilde MSAL günlük kaydı hakkında daha fazla bilgi için, diliniz ile eşleşen sekmeyi seçin:
 
 ## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-## <a name="logging-in-msalnet"></a>Logging in MSAL.NET
+## <a name="logging-in-msalnet"></a>MSAL.NET içinde oturum açma
 
  > [!NOTE]
- > See the [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) for samples of MSAL.NET logging and more.
+ > MSAL.NET Logging örnekleri ve daha fazlası için bkz. [msal.net wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) .
 
-In MSAL 3.x, logging is set per application at app creation using the `.WithLogging` builder modifier. This method takes optional parameters:
+MSAL 3. x içinde, günlük kaydı `.WithLogging` Oluşturucu değiştiricisi kullanılarak uygulama oluşturma sırasında ayarlanır. Bu yöntem isteğe bağlı parametreleri alır:
 
-- `Level` enables you to decide which level of logging you want. Setting it to Errors will only get errors
-- `PiiLoggingEnabled` enables you to log personal and organizational data if set to true. By default this is set to false, so that your application does not log personal data.
-- `LogCallback` is set to a delegate that does the logging. If `PiiLoggingEnabled` is true, this method will receive the messages twice: once with the `containsPii` parameter equals false and the message without personal data, and a second time with the `containsPii` parameter equals to true and the message might contain personal data. In some cases (when the message does not contain personal data), the message will be the same.
-- `DefaultLoggingEnabled` enables the default logging for the platform. By default it's false. If you set it to true it uses Event Tracing in Desktop/UWP applications, NSLog on iOS and logcat on Android.
+- `Level`, hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Hatalara ayarlandığında yalnızca hatalar alınır
+- `PiiLoggingEnabled`, doğru olarak ayarlandıysa kişisel ve kurumsal verileri günlüğe almanıza olanak sağlar. Bu, varsayılan olarak false değerine ayarlanır, böylece uygulamanız kişisel verileri günlüğe eklemez.
+- `LogCallback`, günlüğü yapan bir temsilciye ayarlanır. `PiiLoggingEnabled` true ise, bu yöntem iki kez iletileri alır: `containsPii` parametresine sahip bir kez false ve kişisel veriler olmadan ileti ve `containsPii` parametresine sahip ikinci bir kez doğru ve ileti kişisel veriler içeriyor olabilir. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
+- `DefaultLoggingEnabled` platform için varsayılan günlüğe kaydetmeyi mümkün. Varsayılan olarak false 'tur. Bunu true olarak ayarlarsanız, masaüstü/UWP uygulamalarında olay Izlemeyi kullanır, iOS üzerinde NSLog ve Android üzerinde Logcat.
 
 ```csharp
 class Program
@@ -87,14 +87,14 @@ class Program
 
 ## <a name="androidtabandroid"></a>[Android](#tab/android)
 
-## <a name="logging-in-msal-for-android-using-java"></a>Logging in MSAL for Android using Java
+## <a name="logging-in-msal-for-android-using-java"></a>Java kullanarak Android için MSAL 'de oturum açma
 
-Turn logging on at app creation by creating a logging callback. The callback takes these parameters:
+Günlüğe kaydetme geri araması oluşturarak uygulama oluşturma sırasında oturum açmayı açın. Geri çağırma bu parametreleri alır:
 
-- `tag` is a string passed to the callback by the library. It is associated with the log entry and can be used to sort logging messages.
-- `logLevel` enables you to decide which level of logging you want. The supported log levels are: `Error`, `Warning`, `Info`, and `Verbose`.
-- `message` is the content of the log entry.
-- `containsPII` specifies whether messages containing personal data, or organizational data are logged. By default, this is set to false, so that your application doesn't log personal data. If `containsPII` is `true`, this method will receive the messages twice: once with the `containsPII` parameter set to `false` and the `message` without personal data, and a second time with the `containsPii` parameter set to `true` and the message might contain personal data. In some cases (when the message does not contain personal data), the message will be the same.
+- `tag`, kitaplık tarafından geri çağırmaya geçirilen bir dizedir. Günlük girdisiyle ilişkilendirilir ve günlük iletilerini sıralamak için kullanılabilir.
+- `logLevel`, hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Desteklenen günlük düzeyleri şunlardır: `Error`, `Warning`, `Info`ve `Verbose`.
+- `message` günlük girdisinin içeridir.
+- `containsPII` kişisel verileri içeren iletilerin veya kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için bu false olarak ayarlanır. `containsPII` `true`ise, bu yöntem iletileri iki kez alır: `containsPII` parametresi bir kez `false` ve kişisel veriler olmadan `message` ve `containsPii` parametresi `true` olarak ayarlanmış ve ileti kişisel verileri içerebilir. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
 
 ```java
 private StringBuilder mLogs;
@@ -110,20 +110,20 @@ Logger.getInstance().setExternalLogger(new ILoggerCallback()
 });
 ```
 
-By default, the MSAL logger will not capture any personal identifiable information or organizational identifiable information.
-To enable the logging of personal identifiable information or organizational identifiable information:
+Varsayılan olarak, MSAL günlükçüsü herhangi bir kişisel bilgi veya kuruluş tarafından tanımlanabilen bilgileri yakalamaz.
+Kişisel olarak tanımlanabilen bilgilerin veya kurumsal olarak tanımlanabilen bilgilerin günlüğe kaydedilmesini etkinleştirmek için:
 
 ```java
 Logger.getInstance().setEnablePII(true);
 ```
 
-To disable logging personal data and organization data:
+Kişisel verileri ve kuruluş verilerini günlüğe kaydetmeyi devre dışı bırakmak için:
 
 ```java
 Logger.getInstance().setEnablePII(false);
 ```
 
-By default logging to logcat is disabled. To enable:
+Günlüğe kaydetme varsayılan olarak Logcat devre dışıdır. Şunları etkinleştirmek için:
 
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
@@ -131,12 +131,12 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
- Enable logging in MSAL.js (JavaScript) by passing a logger object during the configuration for creating a `UserAgentApplication` instance. This logger object has the following properties:
+ Bir `UserAgentApplication` örneği oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL. js ' de (JavaScript) günlük kaydını etkinleştirin. Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
-- `localCallback`: a Callback instance that can be provided by the developer to consume and publish logs in a custom manner. Implement the localCallback method depending on how you want to redirect logs.
-- `level` (optional): the configurable log level. The supported log levels are: `Error`, `Warning`, `Info`, and `Verbose`. Varsayılan değer: `Info`.
-- `piiLoggingEnabled` (optional): if set to true, logs personal and organizational data. By default this is false so that your application doesn't log personal data. Personal data logs are never written to default outputs like Console, Logcat, or NSLog.
-- `correlationId` (optional): a unique identifier, used to map the request with the response for debugging purposes. Defaults to RFC4122 version 4 guid (128 bits).
+- `localCallback`: geliştirici tarafından günlükleri özel bir biçimde tüketmek ve yayımlamak için kullanılabilecek bir geri çağırma örneği. Günlükleri yeniden yönlendirmek istediğiniz yönteme bağlı olarak localCallback yöntemini uygulayın.
+- `level` (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error`, `Warning`, `Info`ve `Verbose`. Varsayılan değer: `Info`.
+- `piiLoggingEnabled` (isteğe bağlı): true olarak ayarlanırsa, kişisel ve kurumsal verileri günlüğe kaydeder. Bu, varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için false 'tur. Kişisel veri günlükleri hiçbir şekilde konsol, Logcat veya NSLog gibi varsayılan çıkışlara yazılmaz.
+- `correlationId` (isteğe bağlı): isteği hata ayıklama amacıyla Yanıtla eşlemek için kullanılan benzersiz bir tanımlayıcı. Varsayılan olarak RFC4122 sürüm 4 GUID (128 bit) olur.
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -163,9 +163,9 @@ var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 
 ## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
-## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL for iOS and macOS logging-ObjC
+## <a name="msal-for-ios-and-macos-logging-objc"></a>İOS ve macOS günlüğü için MSAL-ObjC
 
-Set a callback to capture MSAL logging and incorporate it in your own application's logging. The signature for the callback looks like this:
+MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek için bir geri çağırma ayarlayın. Geri arama imzası şöyle görünür:
 
 ```objc
 /*!
@@ -182,7 +182,7 @@ Set a callback to capture MSAL logging and incorporate it in your own applicatio
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -197,9 +197,9 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
     }];
 ```
 
-### <a name="personal-data"></a>Personal data
+### <a name="personal-data"></a>Kişisel veriler
 
-By default, MSAL doesn't capture or log any personal data (PII). The library allows app developers to turn this on through a property in the MSALLogger class. By turning on `pii.Enabled`, the app takes responsibility for safely handling highly sensitive data and following regulatory requirements.
+Varsayılan olarak, MSAL kişisel verileri (PII) yakalamaz veya günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerinin Msalgünlükçü sınıfındaki bir özellik aracılığıyla bunu açmasına olanak sağlar. `pii.Enabled`etkinleştirerek uygulama, yüksek düzeyde hassas verileri güvenli bir şekilde işlemek ve yasal gereksinimleri takip etmek için sorumluluk kazanır.
 
 ```objc
 // By default, the `MSALLogger` doesn't capture any PII
@@ -211,39 +211,39 @@ MSALGlobalConfig.loggerConfig.piiEnabled = YES;
 MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 ```
 
-### <a name="logging-levels"></a>Logging levels
+### <a name="logging-levels"></a>Günlüğe kaydetme düzeyleri
 
-To set the logging level when you log using MSAL for iOS and macOS, use one of the following values:
+İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
 
 |Düzey  |Açıklama |
 |---------|---------|
-| `MSALLogLevelNothing`| Disable all logging |
-| `MSALLogLevelError` | Default level, prints out information only when errors occur |
-| `MSALLogLevelWarning` | Warnings |
-| `MSALLogLevelInfo` |  Library entry points, with parameters and various keychain operations |
+| `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
+| `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
+| `MSALLogLevelWarning` | Uyarılarına |
+| `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
  ```
 
- ### <a name="log-message-format"></a>Log message format
+ ### <a name="log-message-format"></a>Günlük iletisi biçimi
 
-The message portion of MSAL log messages is in the format of `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` biçimindedir
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
-Providing correlation IDs and timestamps are helpful for tracking down issues. Timestamp and correlation ID information is available in the log message. The only reliable place to retrieve them is from MSAL logging messages.
+Bağıntı kimlikleri ve zaman damgaları sağlamak, sorunları izlemek için yararlıdır. Zaman damgası ve bağıntı KIMLIĞI bilgileri günlük iletisinde bulunabilir. Bu dosyaları almak için tek güvenilir yer MSAL Logging iletilerinden alınır.
 
 ## <a name="swifttabswift"></a>[Swift](#tab/swift)
 
-## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL for iOS and macOS logging-Swift
+## <a name="msal-for-ios-and-macos-logging-swift"></a>İOS ve macOS günlüğü için MSAL-Swift
 
-Set a callback to capture MSAL logging and incorporate it in your own application's logging. The signature (represented in Objective-C) for the callback looks like this:
+MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek için bir geri çağırma ayarlayın. Geri arama için imza (hedef-C olarak gösterilir) şuna benzer:
 
 ```objc
 /*!
@@ -260,7 +260,7 @@ Set a callback to capture MSAL logging and incorporate it in your own applicatio
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -274,9 +274,9 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-data"></a>Personal data
+### <a name="personal-data"></a>Kişisel veriler
 
-By default, MSAL doesn't capture or log any personal data (PII). The library allows app developers to turn this on through a property in the MSALLogger class. By turning on `pii.Enabled`, the app takes responsibility for safely handling highly sensitive data and following regulatory requirements.
+Varsayılan olarak, MSAL kişisel verileri (PII) yakalamaz veya günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerinin Msalgünlükçü sınıfındaki bir özellik aracılığıyla bunu açmasına olanak sağlar. `pii.Enabled`etkinleştirerek uygulama, yüksek düzeyde hassas verileri güvenli bir şekilde işlemek ve yasal gereksinimleri takip etmek için sorumluluk kazanır.
 
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
@@ -288,41 +288,41 @@ MSALGlobalConfig.loggerConfig.piiEnabled = true
 MSALGlobalConfig.loggerConfig.piiEnabled = false
 ```
 
-### <a name="logging-levels"></a>Logging levels
+### <a name="logging-levels"></a>Günlüğe kaydetme düzeyleri
 
-To set the logging level when you log using MSAL for iOS and macOS, use one of the following values:
+İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
 
 |Düzey  |Açıklama |
 |---------|---------|
-| `MSALLogLevelNothing`| Disable all logging |
-| `MSALLogLevelError` | Default level, prints out information only when errors occur |
-| `MSALLogLevelWarning` | Warnings |
-| `MSALLogLevelInfo` |  Library entry points, with parameters and various keychain operations |
+| `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
+| `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
+| `MSALLogLevelWarning` | Uyarılarına |
+| `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
 
-### <a name="log-message-format"></a>Log message format
+### <a name="log-message-format"></a>Günlük iletisi biçimi
 
-The message portion of MSAL log messages is in the format of `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` biçimindedir
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
-Providing correlation IDs and timestamps are helpful for tracking down issues. Timestamp and correlation ID information is available in the log message. The only reliable place to retrieve them is from MSAL logging messages.
+Bağıntı kimlikleri ve zaman damgaları sağlamak, sorunları izlemek için yararlıdır. Zaman damgası ve bağıntı KIMLIĞI bilgileri günlük iletisinde bulunabilir. Bu dosyaları almak için tek güvenilir yer MSAL Logging iletilerinden alınır.
 
 ## <a name="javatabjava"></a>[Java](#tab/java)
 
-## <a name="msal-for-java-logging"></a>MSAL for Java logging
+## <a name="msal-for-java-logging"></a>Java günlüğü için MSAL
 
-MSAL for Java allows you to use the logging library that you are already using with your app, as long as it is compatible with SLF4J. MSAL for Java uses the [Simple Logging Facade for Java](http://www.slf4j.org/) (SLF4J) as a simple facade or abstraction for various logging frameworks, such as [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) and [Log4j](https://logging.apache.org/log4j/2.x/). SLF4J allows the user to plug in the desired logging framework at deployment time.
+Java için MSAL, DOLAYıSıYLA SLF4J ile uyumlu olduğu sürece, zaten uygulamanızla kullanmakta olduğunuz günlük kitaplığını kullanmanıza olanak sağlar. Java için MSAL, Java [. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) ve [Log4J](https://logging.apache.org/log4j/2.x/)gibi çeşitli günlük çerçeveleri için basit bir façlade veya soyutlama olarak Java (dolayısıyla slf4j) [için basit günlük kaydı](http://www.slf4j.org/) kullanır. DOLAYıSıYLA SLF4J, kullanıcının istenen günlük çerçevesini dağıtım zamanında eklemesine izin verir.
 
-For example, to use Logback as the logging framework in your application, add the Logback dependency to the Maven pom file for your application:
+Örneğin, uygulamanızdaki günlüğe kaydetme çerçevesi olarak Logback kullanmak için, uygulamanız için Maven Pod dosyasına Logback bağımlılığını ekleyin:
 
 ```xml
 <dependency>
@@ -332,7 +332,7 @@ For example, to use Logback as the logging framework in your application, add th
 </dependency>
 ```
 
-Then add the Logback configuration file:
+Sonra Logback yapılandırma dosyasını ekleyin:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -341,13 +341,13 @@ Then add the Logback configuration file:
 </configuration>
 ```
 
-SLF4J automatically binds to Logback at deployment time. MSAL logs will be written to the console.
+DOLAYıSıYLA SLF4J, dağıtım zamanında otomatik olarak Logback 'a bağlanır. MSAL Günlükler konsola yazılacak.
 
-For instructions on how to bind to other logging frameworks, see the [SLF4J manual](http://www.slf4j.org/manual.html).
+Diğer günlük çerçevelerine nasıl bağlayacağınız hakkında yönergeler için bkz. [dolayısıyla slf4j Manual](http://www.slf4j.org/manual.html).
 
-### <a name="personal-and-organization-information"></a>Personal and organization information
+### <a name="personal-and-organization-information"></a>Kişisel ve kuruluş bilgileri
 
-By default, MSAL logging does not capture or log any personal or organizational data. In the following example, logging personal or organizational data is off by default:
+Varsayılan olarak, MSAL Logging kişisel veya kurumsal verileri yakalamaz veya günlüğe eklemez. Aşağıdaki örnekte, kişisel veya kurumsal verilerin günlüğe kaydedilmesi varsayılan olarak kapalıdır:
 
 ```java
     PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
@@ -355,9 +355,9 @@ By default, MSAL logging does not capture or log any personal or organizational 
             .build();
 ```
 
-Turn on personal and organizational data logging by setting `logPii()` on the client application builder. If you turn on personal or organizational data logging, your app must take responsibility for safely handling highly-sensitive data and complying with any regulatory requirements.
+İstemci uygulama tasarımcısında `logPii()` ayarlayarak kişisel ve kurumsal veri günlüğünü açın. Kişisel veya kurumsal veri günlüğü 'nü açarsanız, uygulamanızın yüksek oranda duyarlı verileri güvenli bir şekilde işlemek ve tüm düzenleme gereksinimleriyle uyumlu olması için sorumluluk olması gerekir.
 
-In the following example, logging personal or organizational data is enabled:
+Aşağıdaki örnekte, kişisel veya kurumsal verilerin günlüğe kaydedilmesi etkindir:
 
 ```java
 PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
@@ -368,32 +368,32 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
 
-## <a name="msal-for-python-logging"></a>MSAL for Python logging
+## <a name="msal-for-python-logging"></a>Python günlüğü için MSAL
 
-Logging in MSAL Python uses the standard Python logging mechanism, for example `logging.info("msg")` You can configure MSAL logging as follows (and see it in action in the [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
+MSAL Python 'da oturum açmak standart Python günlüğü mekanizmasını kullanır. Örneğin `logging.info("msg")`, aşağıdaki gibi MSAL günlüğünü yapılandırabilir (ve [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)bir işlem halinde görebilirsiniz):
 
-### <a name="enable-debug-logging-for-all-modules"></a>Enable debug logging for all modules
+### <a name="enable-debug-logging-for-all-modules"></a>Tüm modüller için hata ayıklama günlüğünü etkinleştir
 
-By default, the logging in any Python script is turned off. If you want to enable debug logging for all of the modules in your entire Python script, use:
+Varsayılan olarak, herhangi bir Python betiğinde günlüğe kaydetme kapalıdır. Tüm Python betikinizdeki tüm modüller için hata ayıklama günlüğünü etkinleştirmek istiyorsanız şunu kullanın:
 
 ```python
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-### <a name="silence-only-msal-logging"></a>Silence only MSAL logging
+### <a name="silence-only-msal-logging"></a>Yalnızca sessizlik MSAL günlüğü
 
-To silence only MSAL library logging, while enabling debug logging in all of the other modules in your Python script, turn off the logger used by MSAL Python:
+Yalnızca MSAL kitaplık günlüğünü sessizlik için, Python betiğinizdeki diğer tüm modüllerde hata ayıklama günlüğünü etkinleştirerek, MSAL Python tarafından kullanılan günlükçü 'yi kapatın:
 
 ```Python
 logging.getLogger("msal").setLevel(logging.WARN)
 ```
 
-### <a name="personal-and-organizational-data-in-python"></a>Personal and organizational data in Python
+### <a name="personal-and-organizational-data-in-python"></a>Python 'da kişisel ve Kurumsal veriler
 
-MSAL for Python does not log personal data or organizational data. There is no property to turn personal or organization data logging on or off.
+Python için MSAL kişisel verileri veya kurumsal verileri günlüğe eklemez. Kişisel veya kuruluş verilerinin oturum açmasını açma veya kapatma özelliği yoktur.
 
-You can use standard Python logging to log whatever you want, but you are responsible for safely handling sensitive data and following regulatory requirements.
+İstediğiniz her şeyi günlüğe kaydetmek için standart Python günlüğünü kullanabilirsiniz, ancak hassas verileri güvenle ve yasal gereksinimleri izleyerek siz de sorumlusunuz.
 
-For more information about logging in Python, please refer to Python's  [Logging HOWTO](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial).
+Python 'da günlüğe kaydetme hakkında daha fazla bilgi için lütfen Python 'un [günlüğüne](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)bakın.
 
 ---

@@ -17,4 +17,4 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451486"
 ---
-For this article, you can use the free [LUIS](../luis-concept-keys.md#starter-key) account and its starter key in order to author your LUIS application.
+Bu makalede, LUSıS uygulamanızı yazmak için Free [Luo](../luis-concept-keys.md#starter-key) hesabı ve onun başlangıç anahtarını kullanabilirsiniz.

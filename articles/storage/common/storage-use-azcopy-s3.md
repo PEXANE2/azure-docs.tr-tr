@@ -1,6 +1,6 @@
 ---
-title: Copy data from Amazon S3 to Azure Storage by using AzCopy | Microsoft Docs
-description: Transfer data with AzCopy and Amazon S3 buckets
+title: AzCopy kullanarak Amazon S3 'ten Azure depolama 'ya veri kopyalama | Microsoft Docs
+description: AzCopy ve Amazon S3 demetleri ile veri aktarma
 services: storage
 author: normesta
 ms.service: storage
@@ -15,30 +15,30 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327854"
 ---
-# <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Copy data from Amazon S3 to Azure Storage by using AzCopy
+# <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy kullanarak Amazon S3 'ten Azure depolama 'ya veri kopyalama
 
-AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account. This article helps you copy objects, directories, and buckets from Amazon Web Services (AWS) S3 to Azure blob storage by using AzCopy.
+AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, AzCopy kullanarak Amazon Web Services (AWS) S3 ' den Azure Blob depolama alanına nesneleri, dizinleri ve demetleri kopyalamanıza yardımcı olur.
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Choose how you'll provide authorization credentials
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Yetkilendirme kimlik bilgilerini nasıl sağlayabileceklerini seçin
 
-* To authorize with the Azure Storage, use Azure Active Directory (AD) or a Shared Access Signature (SAS) token.
+* Azure depolama ile yetkilendirmek için Azure Active Directory (AD) veya paylaşılan erişim Imzası (SAS) belirteci kullanın.
 
-* To authorize with AWS S3, use an AWS access key and a secret access key.
+* AWS S3 ile yetkilendirmek için bir AWS erişim anahtarı ve gizli bir erişim anahtarı kullanın.
 
-### <a name="authorize-with-azure-storage"></a>Authorize with Azure Storage
+### <a name="authorize-with-azure-storage"></a>Azure depolama ile yetkilendirme
 
-See the [Get started with AzCopy](storage-use-azcopy-v10.md) article to download AzCopy, and choose how you'll provide authorization credentials to the storage service.
+AzCopy 'i indirmek için [AzCopy kullanmaya başlama](storage-use-azcopy-v10.md) makalesine bakın ve depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayacağınız seçin.
 
 > [!NOTE]
-> The examples in this article assume that you've authenticated your identity by using the `AzCopy login` command. AzCopy then uses your Azure AD account to authorize access to data in Blob storage.
+> Bu makaledeki örneklerde, kimlik doğrulamasının `AzCopy login` komutunu kullanarak doğruladığınızı varsayalım. AzCopy daha sonra blob depolamadaki verilere erişim yetkisi vermek için Azure AD hesabınızı kullanır.
 >
-> If you'd rather use a SAS token to authorize access to blob data, then you can append that token to the resource URL in each AzCopy command.
+> Blob verilerine erişim yetkisi vermek için bir SAS belirteci kullanıyorsanız, bu belirteci her AzCopy komutunda kaynak URL 'sine ekleyebilirsiniz.
 >
 > Örneğin: `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`.
 
-### <a name="authorize-with-aws-s3"></a>Authorize with AWS S3
+### <a name="authorize-with-aws-s3"></a>AWS S3 ile yetkilendirme
 
-Gather your AWS access key and secret access key, and then set the these environment variables:
+AWS erişim anahtarınızı ve gizli erişim anahtarınızı toplayın ve ardından bu ortam değişkenlerini ayarlayın:
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
@@ -46,102 +46,102 @@ Gather your AWS access key and secret access key, and then set the these environ
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-directories-and-buckets"></a>Copy objects, directories, and buckets
+## <a name="copy-objects-directories-and-buckets"></a>Nesneleri, dizinleri ve demetleri kopyalama
 
-AzCopy uses the [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API, so data is copied directly between AWS S3 and storage servers. These copy operations don't use the network bandwidth of your computer.
+AzCopy, [URL API 'Den put bloğunu](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) kullanır, bu nedenle veriler doğrudan AWS S3 ve depolama sunucuları arasında kopyalanır. Bu kopyalama işlemleri bilgisayarınızın ağ bant genişliğini kullanmaz.
 
 > [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. If you decide to remove data from your S3 buckets after a copy operation, make sure to verify that the data was properly copied to your storage account before you remove the data.
+> Bu özellik şu anda önizleme sürümündedir. Kopyalama işleminden sonra S3 demetlerinden verileri kaldırmaya karar verirseniz, verileri kaldırmadan önce verilerin depolama hesabınıza düzgün şekilde kopyalandığından emin olun.
 
 > [!TIP]
-> The examples in this section enclose path arguments with single quotes (''). Use single quotes in all command shells except for the Windows Command Shell (cmd.exe). If you're using a Windows Command Shell (cmd.exe), enclose path arguments with double quotes ("") instead of single quotes ('').
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
-### <a name="copy-an-object"></a>Copy an object
+### <a name="copy-an-object"></a>Nesne kopyalama
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
+| **Sözdizimi** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Örnek** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
-> Examples in this article use path-style URLs for AWS S3 buckets (For example: `http://s3.amazonaws.com/<bucket-name>`). 
+> Bu makaledeki örnekler AWS S3 demetleri için yol stili URL 'Leri kullanır (örneğin: `http://s3.amazonaws.com/<bucket-name>`). 
 >
-> You can also use virtual hosted-style URLs as well (For example: `http://bucket.s3.amazonaws.com`). 
+> Ayrıca, sanal barındırılan stil URL 'Leri de kullanabilirsiniz (örneğin: `http://bucket.s3.amazonaws.com`). 
 >
-> To learn more about virtual hosting of buckets, see [Virtual Hosting of Buckets]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
+> Demetlerin sanal barındırılması hakkında daha fazla bilgi edinmek için bkz. [demetlerin sanal barındırılması]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-directory"></a>Copy a directory
+### <a name="copy-a-directory"></a>Bir dizini Kopyala
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **Sözdizimi** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Örnek** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
-### <a name="copy-a-bucket"></a>Copy a bucket
+### <a name="copy-a-bucket"></a>Demeti kopyalama
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
+| **Sözdizimi** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Örnek** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
-### <a name="copy-all-buckets-in-all-regions"></a>Copy all buckets in all regions
+### <a name="copy-all-buckets-in-all-regions"></a>Tüm bölgelerdeki tüm demetleri Kopyala
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Sözdizimi** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Örnek** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
-### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Copy all buckets in a specific S3 region
+### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Belirli bir S3 bölgesindeki tüm demetleri Kopyala
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Sözdizimi** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Örnek** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
-## <a name="handle-differences-in-object-naming-rules"></a>Handle differences in object naming rules
+## <a name="handle-differences-in-object-naming-rules"></a>Nesne adlandırma kurallarındaki farkları işleme
 
-AWS S3 has a different set of naming conventions for bucket names as compared to Azure blob containers. You can read about them [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules). If you choose to copy a group of buckets to an Azure storage account, the copy operation might fail because of naming differences.
+AWS S3, demet adları için Azure Blob kapsayıcılarıyla karşılaştırıldığında farklı bir adlandırma kuralları kümesine sahiptir. [Buradan](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)hakkında bilgi edinebilirsiniz. Bir demet grubunu bir Azure depolama hesabına kopyalamayı seçerseniz, adlandırma farklılıkları nedeniyle kopyalama işlemi başarısız olabilir.
 
-AzCopy handles two of the most common issues that can arise; buckets that contain periods and buckets that contain consecutive hyphens. AWS S3 bucket names can contain periods and consecutive hyphens, but a container in Azure can't. AzCopy replaces periods with hyphens and consecutive hyphens with a number that represents the number of consecutive hyphens (For example: a bucket named `my----bucket` becomes `my-4-bucket`. 
+AzCopy, ortaya çıkabilecek en yaygın sorunların ikisini de gerçekleştirir; ardışık kısa çizgi içeren noktalar ve demetleri içeren demetler. AWS S3 demet adları nokta ve ardışık tireler içerebilir, ancak Azure 'da bir kapsayıcı olamaz. AzCopy, ardışık çizgilerden oluşan sayıları temsil eden bir sayı ile kısa çizgilerden ve ardışık çizgilerden oluşan noktaları değiştirir (örneğin: `my----bucket` adlı bir demet `my-4-bucket`olur. 
 
-Also, as AzCopy copies over files, it checks for naming collisions and attempts to resolve them. For example, if there are buckets with the name `bucket-name` and `bucket.name`, AzCopy resolves a bucket named `bucket.name` first to `bucket-name` and then to `bucket-name-2`.
+Ayrıca, dosya üzerinde AzCopy kopyaları olarak, adlandırma çakışmalarını denetler ve bunları çözmeye çalışır. Örneğin, adı `bucket-name` ve `bucket.name`olan demetler varsa AzCopy, önce `bucket.name` adlı bir demeti `bucket-name` ve sonra `bucket-name-2`olarak çözer.
 
-## <a name="handle-differences-in-object-metadata"></a>Handle differences in object metadata
+## <a name="handle-differences-in-object-metadata"></a>Nesne meta verilerinde farkları işleme
 
-AWS S3 and Azure allow different sets of characters in the names of object keys. You can read about the characters that AWS S3 uses [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys). On the Azure side, blob object keys adhere to the naming rules for [C# identifiers](https://docs.microsoft.com/dotnet/csharp/language-reference/).
+AWS S3 ve Azure, nesne anahtarlarının adlarındaki farklı karakter kümelerine izin veriyor. AWS S3 tarafından [burada](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)kullanılan karakterler hakkında bilgi edinebilirsiniz. Azure tarafında, blob nesne anahtarları [ C# tanımlayıcılar](https://docs.microsoft.com/dotnet/csharp/language-reference/)için adlandırma kurallarına uyar.
 
-As part of an AzCopy `copy` command, you can provide a value for optional the `s2s-invalid-metadata-handle` flag that specifies how you would like to handle files where the metadata of the file contains incompatible key names. The following table describes each flag value.
+AzCopy `copy` komutunun bir parçası olarak, dosyanın meta verilerinin uyumsuz anahtar adlarını içerdiği dosyaları nasıl işlemek istediğinizi belirten isteğe bağlı bir `s2s-invalid-metadata-handle` bayrağı değeri sağlayabilirsiniz. Aşağıdaki tabloda her bayrak değeri açıklanmaktadır.
 
-| Flag value | Açıklama  |
+| Bayrak değeri | Açıklama  |
 |--------|-----------|
-| **ExcludeIfInvalid** | (Default option) The metadata isn't included in the transferred object. AzCopy logs a warning. |
-| **FailIfInvalid** | Objects aren't copied. AzCopy logs an error and includes that error in the failed count that appears in the transfer summary.  |
-| **RenameIfInvalid**  | AzCopy resolves the invalid metadata key, and copies the object to Azure using the resolved metadata key value pair. To learn exactly what steps AzCopy takes to rename object keys, see the [How AzCopy renames object keys](#rename-logic) section below. If AzCopy is unable to rename the key, then the object won't be copied. |
+| **Excludeifgeçersiz** | (Varsayılan seçenek) Meta veriler aktarılan nesneye dahil değildir. AzCopy bir uyarı kaydeder. |
+| **Failifgeçersiz** | Nesneler kopyalanmaz. AzCopy bir hatayı günlüğe kaydeder ve aktarım özetinde görüntülenen başarısız olan sayıma bu hatayı ekler.  |
+| **Renameifgeçersiz**  | AzCopy geçersiz meta veri anahtarını çözer ve çözümlenen meta veri anahtar değer çiftini kullanarak nesneyi Azure 'a kopyalar. AzCopy 'ın nesne anahtarlarını yeniden adlandırma hakkında tam olarak hangi adımların alınacağını öğrenmek için aşağıdaki aşağıdaki [nesne anahtarlarını](#rename-logic) yeniden adlandırma bölümüne bakın. AzCopy anahtarı yeniden adlandıramaz, nesne kopyalanmaz. |
 
 <a id="rename-logic" />
 
-### <a name="how-azcopy-renames-object-keys"></a>How AzCopy renames object keys
+### <a name="how-azcopy-renames-object-keys"></a>AzCopy nesne anahtarlarını yeniden adlandırmalar
 
-AzCopy performs these steps:
+AzCopy şu adımları gerçekleştirir:
 
-1. Replaces invalid characters with '_'.
+1. Geçersiz karakterleri ' _ ' ile değiştirir.
 
-2. Adds the string `rename_` to the beginning of a new valid key.
+2. Yeni bir geçerli anahtarın başlangıcına `rename_` dize ekler.
 
-   This key will be used to save the original metadata **value**.
+   Bu anahtar, özgün meta veri **değerini**kaydetmek için kullanılacaktır.
 
-3. Adds the string `rename_key_` to the beginning of a new valid key.
-   This key will be used to save original metadata invalid **key**.
-   You can use this key to try and recover the metadata in Azure side since metadata key is preserved as a value on the Blob storage service.
+3. Yeni bir geçerli anahtarın başlangıcına `rename_key_` dize ekler.
+   Bu anahtar, özgün meta veriler geçersiz **anahtarını**kaydetmek için kullanılacaktır.
+   Meta veri anahtarı BLOB depolama hizmetindeki bir değer olarak korunduğu için Azure tarafında meta verileri denemek ve kurtarmak üzere bu anahtarı kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Find more examples in any of these articles:
+Bu makalelerden herhangi birinde daha fazla örnek bulabilirsiniz:
 
-- [Get started with AzCopy](storage-use-azcopy-v10.md)
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
 
-- [Transfer data with AzCopy and blob storage](storage-use-azcopy-blobs.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 
-- [Transfer data with AzCopy and file storage](storage-use-azcopy-files.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 
-- [Configure, optimize, and troubleshoot AzCopy](storage-use-azcopy-configure.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)

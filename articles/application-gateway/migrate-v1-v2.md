@@ -1,6 +1,6 @@
 ---
-title: Migrate from v1 to v2 - Azure Application Gateway
-description: This article shows you how to migrate Azure Application Gateway and Web Application Firewall from v1 to v2
+title: V1 'den v2 'ye geçiş-Azure Application Gateway
+description: Bu makalede, Azure Application Gateway ve Web uygulaması güvenlik duvarı 'Nı v1 'den v2 'ye nasıl geçirebileceğiniz gösterilmektedir
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -14,67 +14,67 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231738"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrate Azure Application Gateway and Web Application Firewall from v1 to v2
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
 
-[Azure Application Gateway and Web Application Firewall (WAF) v2](application-gateway-autoscaling-zone-redundant.md) is now available, offering additional features such as autoscaling and availability-zone redundancy. Bununla birlikte mevcut v1 ağ geçitleri v2'ye otomatik olarak yükseltilmez. If you want to migrate from v1 to v2, follow the steps in this article.
+[Azure Application Gateway ve Web uygulaması güvenlik duvarı (WAF) v2](application-gateway-autoscaling-zone-redundant.md) artık kullanılabilir, otomatik ölçeklendirme ve kullanılabilirlik bölgesi artıklığı gibi ek özellikler sunar. Bununla birlikte mevcut v1 ağ geçitleri v2'ye otomatik olarak yükseltilmez. V1 'den v2 'ye geçiş yapmak istiyorsanız, bu makaledeki adımları izleyin.
 
-There are two stages in a migration:
+Bir geçişte iki aşama vardır:
 
-1. Migrate the configuration
-2. Migrate the client traffic
+1. Yapılandırmayı geçirme
+2. İstemci trafiğini geçirme
 
-This article covers configuration migration. Client traffic migration varies depending on your specific environment. However, some high-level, general recommendations [are provided](#migrate-client-traffic).
+Bu makalede yapılandırma geçişi ele alınmaktadır. İstemci trafiği geçişi, özel ortamınıza bağlı olarak farklılık gösterir. Ancak, bazı üst düzey genel öneriler [sağlanır](#migrate-client-traffic).
 
 ## <a name="migration-overview"></a>Geçişe genel bakış
 
-An Azure PowerShell script is available that does the following:
+Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
-* Creates a new Standard_v2 or WAF_v2 gateway in a virtual network subnet that you specify.
-* Seamlessly copies the configuration associated with the v1 Standard or WAF gateway to the newly created Standard_V2 or WAF_V2 gateway.
+* Belirttiğiniz bir sanal ağ alt ağında yeni bir Standard_v2 veya WAF_v2 ağ geçidi oluşturur.
+* V1 standardı veya WAF ağ geçidi ile ilişkili yapılandırmayı, yeni oluşturulan Standard_V2 veya WAF_V2 ağ geçidine sorunsuzca kopyalar.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* The new v2 gateway has new public and private IP addresses. It isn't possible to move the IP addresses associated with the existing v1 gateway seamlessly to v2. However, you can allocate an existing (unallocated) public or private IP address to the new v2 gateway.
-* You must provide an IP address space for another subnet within your virtual network where your v1 gateway is located. The script can't create the v2 gateway in any existing subnets that already have a v1 gateway. However, if the existing subnet already has a v2 gateway, that may still work provided there's enough IP address space.
-* To  migrate an SSL configuration, you must specify all the SSL certs used in your v1 gateway.
-* If you have FIPS mode enabled for your V1 gateway, it won’t be migrated to your new v2 gateway. FIPS mode isn't supported in v2.
-* v2 doesn't support IPv6, so IPv6 enabled v1 gateways aren't migrated. If you run the script, it may not complete.
-* If the v1 gateway has only a private IP address, the script creates a public IP address and a private IP address for the new v2 gateway. v2 gateways currently don't support only private IP addresses.
+* Yeni v2 ağ geçidinde yeni ortak ve özel IP adresleri vardır. Mevcut v1 ağ geçidiyle ilişkili IP adreslerini sorunsuz bir şekilde v2 'ye taşımak mümkün değildir. Ancak, yeni V2 ağ geçidine var olan (ayrılmamış) ortak veya özel IP adresi ayırabilirsiniz.
+* V1 ağ geçidinizin bulunduğu sanal ağınız içindeki başka bir alt ağ için bir IP adresi alanı sağlamanız gerekir. Betik, zaten v1 ağ geçidine sahip olan mevcut alt ağlarda V2 ağ geçidini oluşturamaz. Ancak, var olan alt ağda zaten bir V2 ağ geçidi varsa, bu, yeterli IP adresi alanı sağlanabileceği için hala çalışabilir.
+* Bir SSL yapılandırmasını geçirmek için v1 ağ geçidinizdeki kullanılan tüm SSL sertifikalarını belirtmeniz gerekir.
+* V1 ağ geçidiniz için FIPS modunu etkinleştirdiyseniz, bu, yeni V2 ağ geçidize geçirilmez. FIPS modu v2 'de desteklenmez.
+* v2 IPv6 desteklemez, bu nedenle IPv6 etkin v1 ağ geçitleri geçirilmez. Betiği çalıştırırsanız, bu tamamlanmamış olabilir.
+* V1 ağ geçidinde yalnızca bir özel IP adresi varsa, betik bir genel IP adresi ve yeni V2 ağ geçidi için özel bir IP adresi oluşturur. V2 ağ geçitleri Şu anda yalnızca özel IP adreslerini desteklemez.
 
-## <a name="download-the-script"></a>Download the script
+## <a name="download-the-script"></a>Betiği indir
 
-Download the migration script from the  [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureAppGWMigration)geçiş betiğini indirin.
 
-## <a name="use-the-script"></a>Use the script
+## <a name="use-the-script"></a>Betiği kullan
 
-There are two options for you depending on your local PowerShell environment setup and preferences:
+Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
 
-* If you don’t have the Azure Az modules installed, or don’t mind uninstalling the Azure Az modules, the best option is to use the `Install-Script` option to run the script.
-* If you need to keep the Azure Az modules, your best bet is to download the script and run it directly.
+* Azure az modüller yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız en iyi seçenek, komut dosyasını çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
+* Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
 
-To determine if you have the Azure Az modules installed, run `Get-InstalledModule -Name az`. If you don't see any installed Az modules, then you can use the `Install-Script` method.
+Azure az modules yüklü olup olmadığınızı öğrenmek için `Get-InstalledModule -Name az`çalıştırın. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
-### <a name="install-using-the-install-script-method"></a>Install using the Install-Script method
+### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
 
-To use this option, you must not have the Azure Az modules installed on your computer. If they're installed, the following command displays an error. You can either uninstall the Azure Az modules, or use the other option to download the script manually and run it.
+Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
   
-Run the script with the following command:
+Betiği aşağıdaki komutla çalıştırın:
 
 `Install-Script -Name AzureAppGWMigration`
 
-This command also installs the required Az modules.  
+Bu komut ayrıca gerekli az modülleri de yüklüyor.  
 
-### <a name="install-using-the-script-directly"></a>Install using the script directly
+### <a name="install-using-the-script-directly"></a>Betiği kullanarak doğrudan yüklemeyi
 
-If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), betik indirme bağlantısındaki **El Ile indir** sekmesini kullanarak betiği el ile indirebilirsiniz. Betik, ham nupkg dosyası olarak indirilir. Betiği bu nupkg dosyasından yüklemek için bkz. [El Ile paket indirme](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 Betiği çalıştırmak için:
 
-1. Use `Connect-AzAccount` to connect to Azure.
+1. Azure 'a bağlanmak için `Connect-AzAccount` kullanın.
 
-1. Use `Import-Module Az` to import the Az modules.
+1. Az modülleri içeri aktarmak için `Import-Module Az` kullanın.
 
-1. Run `Get-Help AzureAppGWMigration.ps1` to examine the required parameters:
+1. Gerekli parametreleri incelemek için `Get-Help AzureAppGWMigration.ps1` çalıştırın:
 
    ```
    AzureAppGwMigration.ps1
@@ -88,21 +88,21 @@ Betiği çalıştırmak için:
     -validateMigration -enableAutoScale
    ```
 
-   Parameters for the script:
-   * **resourceId: [String]: Required** - This is the Azure Resource ID for your existing Standard v1 or WAF v1 gateway. To find this string value,  navigate to the Azure portal, select your application gateway or WAF resource, and click the **Properties** link for the gateway. The Resource ID is located on that page.
+   Betik için Parametreler:
+   * **RESOURCEID: [dize]: gerekli** -bu, mevcut standart v1 veya WAF v1 ağ geçidiniz Için Azure kaynak kimliğidir. Bu dize değerini bulmak için Azure portal gidin, Application Gateway veya WAF kaynağını seçin ve ağ geçidinin **Özellikler** bağlantısına tıklayın. Kaynak KIMLIĞI bu sayfada bulunur.
 
-     You can also run the following Azure PowerShell commands to get the Resource ID:
+     Kaynak KIMLIĞINI almak için aşağıdaki Azure PowerShell komutlarını da çalıştırabilirsiniz:
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Required** - This is the IP address space that you've allocated (or want to allocate) for a new subnet that contains your new v2 gateway. This must be specified in the CIDR notation. For example: 10.0.0.0/24. You don't need to create this subnet in advance. The script creates it for you if it doesn't exist.
-   * **appgwName: [String]: Optional**. This is a string you specify to use as the name for the new Standard_v2 or WAF_v2 gateway. If this parameter isn't supplied, the name of your existing v1 gateway will be used with the suffix *_v2* appended.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  A comma-separated list of PSApplicationGatewaySslCertificate objects that you create to represent the SSL certs from your v1 gateway must be uploaded to the new v2 gateway. For each of your SSL certs configured for your Standard v1 or WAF v1 gateway, you can create a new PSApplicationGatewaySslCertificate object via the `New-AzApplicationGatewaySslCertificate` command shown here. You need the path to your SSL Cert file and the password.
+   * **Subnetaddressrange: [dize]: gereklidir** -bu, yeni V2 ağ geçidinizi içeren yeni bir alt ağ için ayrılan (veya ayırmak ISTEDIĞINIZ) IP adres alanıdır. Bu, CıDR gösteriminde belirtilmelidir. Örneğin: 10.0.0.0/24. Bu alt ağı önceden oluşturmanız gerekmez. Bu komut dosyası, yoksa sizin için oluşturur.
+   * **Appgwname: [dize]: Isteğe bağlı**. Bu, yeni Standard_v2 veya ağ geçidi WAF_v2 için ad olarak kullanmak üzere belirttiğiniz bir dizedir. Bu parametre sağlanmazsa, mevcut v1 ağ geçidinizin adı, sonek *_v2* eklenmiş olarak kullanılır.
+   * **Sslcertificates: [PSApplicationGatewaySslCertificate]: Isteğe bağlı**.  V1 ağ Geçidinizden SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülle ayrılmış bir listesi, yeni V2 ağ geçidine yüklenmelidir. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılmış SSL sertifikalarınızın her biri için burada gösterilen `New-AzApplicationGatewaySslCertificate` komutu aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. SSL sertifika dosyanızın ve parolanın yolu gereklidir.
 
-       This parameter is only optional if you don’t have HTTPS listeners configured for your v1 gateway or WAF. If you have at least one HTTPS listener setup, you must specify this parameter.
+       Bu parametre yalnızca v1 Gateway veya WAF için HTTPS dinleyicilerinin yapılandırılmış olması durumunda isteğe bağlıdır. En az bir HTTPS dinleyicisi kurulumuna sahipseniz, bu parametreyi belirtmeniz gerekir.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,16 +114,16 @@ Betiği çalıştırmak için:
         -Password $password
       ```
 
-      You can pass in `$mySslCert1, $mySslCert2` (comma-separated) in the previous example as values for this parameter in the script.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Optional**. A comma-separated list of PSApplicationGatewayTrustedRootCertificate objects that you create to represent the [Trusted Root certificates](ssl-overview.md) for authentication of your backend instances from your v2 gateway.  
+      Önceki örnekte, betikteki Bu parametre için değerler olarak `$mySslCert1, $mySslCert2` (virgülle ayrılmış) geçirebilirsiniz.
+   * **Trustedrootcertificates: [PSApplicationGatewayTrustedRootCertificate]: Isteğe bağlı**. V2 ağ Geçidinizden arka uç örneklerinizin kimlik doğrulaması için [güvenilir kök sertifikaları](ssl-overview.md) temsil etmek üzere oluşturduğunuz PSApplicationGatewayTrustedRootCertificate nesnelerinin virgülle ayrılmış bir listesi.  
 
-      To create a list of PSApplicationGatewayTrustedRootCertificate objects, see [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
-   * **privateIpAddress: [String]: Optional**. A specific private IP address that you want to associate to your new v2 gateway.  This must be from the same VNet that you allocate for your new v2 gateway. If this isn't specified, the script allocates a private IP address for your v2 gateway.
-    * **publicIpResourceId: [String]: Optional**. The resourceId of a public IP address (standard SKU) resource in your subscription that you want to allocate to the new v2 gateway. If this isn't specified, the script allocates a new public IP in the same resource group. The name is the v2 gateway’s name with *-IP* appended.
-   * **validateMigration: [switch]: Optional**. Use this parameter if you want the script to do some basic configuration comparison validations after the v2 gateway creation and the configuration copy. By default, no validation is done.
-   * **enableAutoScale: [switch]: Optional**. Use this parameter if you want the script to enable AutoScaling on the new v2 gateway after it's created. By default, AutoScaling is disabled. You can always manually enable it later on the newly created v2 gateway.
+      PSApplicationGatewayTrustedRootCertificate nesnelerinin bir listesini oluşturmak için, bkz. [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+   * **Privateıpaddress: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidiniz ile ilişkilendirmek istediğiniz belirli bir özel IP adresi.  Bu, yeni V2 ağ geçidiniz için ayırdığınız VNet 'ten olmalıdır. Bu belirtilmemişse, betik V2 ağ geçidiniz için özel bir IP adresi ayırır.
+    * **Publicıpresourceıd: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidine ayırmak istediğiniz aboneliğinizdeki genel IP adresi (Standart SKU) kaynağının RESOURCEID değeri. Bu belirtilmemişse, komut dosyası aynı kaynak grubunda yeni bir genel IP ayırır. Ad, V2 ağ geçidinin adı *-IP* olarak eklenir.
+   * **Validatemigration: [anahtar]: Isteğe bağlı**. Betiğin V2 ağ geçidi oluşturulduktan ve yapılandırma kopyasından sonra bazı temel yapılandırma karşılaştırma doğrulamaları kullanmasını istiyorsanız bu parametreyi kullanın. Varsayılan olarak, doğrulama yapılmaz.
+   * **Enableotomatik ölçeklendirme: [anahtar]: Isteğe bağlı**. Betiğin oluşturulduktan sonra yeni V2 ağ geçidinde otomatik ölçeklendirmeyi etkinleştirmesini istiyorsanız bu parametreyi kullanın. Varsayılan olarak otomatik ölçeklendirme devre dışıdır. Daha sonra yeni oluşturulan V2 ağ geçidinde el ile etkinleştirebilirsiniz.
 
-1. Run the script using the appropriate parameters. It may take five to seven minutes to finish.
+1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
     **Örnek**
 
@@ -139,59 +139,59 @@ Betiği çalıştırmak için:
       -validateMigration -enableAutoScale
    ```
 
-## <a name="migrate-client-traffic"></a>Migrate client traffic
+## <a name="migrate-client-traffic"></a>İstemci trafiğini geçirme
 
-First, double check that the script successfully created a new v2 gateway with the exact configuration migrated over from your v1 gateway. You can verify this from the Azure portal.
+İlk olarak, betiğin v1 ağ Geçidinizden başarıyla geçirilen tam yapılandırmayla yeni bir V2 ağ geçidini başarıyla oluşturduğunu kontrol edin. Bunu Azure portal doğrulayabilirsiniz.
 
-Also, send a small amount of traffic through the v2 gateway as a manual test.
+Ayrıca, V2 ağ geçidinden el ile test olarak küçük miktarda trafik gönderebilirsiniz.
   
-Here are a few scenarios where your current application gateway (Standard) may receive client traffic, and our recommendations for each one:
+Burada, geçerli uygulama ağ geçidinizin (Standart) istemci trafiği alabileceği ve her biri için önerdiğimiz birkaç senaryo verilmiştir:
 
-* **A custom DNS zone (for example, contoso.com) that points to the frontend IP address (using an A record) associated with your Standard v1 or WAF v1 gateway**.
+* **Standart v1 veya WAF v1 ağ geçidiniz ile ilişkili ön uç IP adresini (örneğin, bir kayıt kullanarak) gösteren özel BIR DNS bölgesi (örneğin, contoso.com)** .
 
-    You can update your DNS record to point to the frontend IP or DNS label associated with your Standard_v2 application gateway. Depending on the TTL configured on your DNS record, it may take a while for all your client traffic to migrate to your new v2 gateway.
-* **A custom DNS zone (for example, contoso.com) that points to the DNS label (for example: *myappgw.eastus.cloudapp.azure.com* using a CNAME record) associated with your v1 gateway**.
+    DNS kaydınızı, Standard_v2 Application Gateway ile ilişkili olan ön uç IP 'sini veya DNS etiketini işaret etmek üzere güncelleştirebilirsiniz. DNS kaydınıza yapılandırılan TTL 'ye bağlı olarak, tüm istemci trafiğiniz yeni V2 ağ geçidinize geçirilmesi biraz zaman alabilir.
+* **V1 ağ geçidiniz ile ILIŞKILI DNS etiketine işaret eden (örneğin: CNAME kaydı kullanarak *myappgw.eastus.cloudapp.Azure.com* ) özel bir DNS bölgesi**.
 
-   You have two choices:
+   İki seçeneğiniz vardır:
 
-  * If you use public IP addresses on your application gateway, you can do a controlled, granular migration using a Traffic Manager profile to incrementally route traffic (weighted traffic routing method) to the new v2 gateway.
+  * Uygulama ağ geçidiniz üzerinde genel IP adresleri kullanıyorsanız, trafiği (ağırlıklı trafik yönlendirme yöntemi) yeni V2 ağ geçidine artımlı yönlendirmek için bir Traffic Manager profili kullanarak denetimli, ayrıntılı bir geçiş yapabilirsiniz.
 
-    You can do this by adding the DNS labels of both the v1 and v2 application gateways to the [Traffic Manager profile](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), and CNAMEing your custom DNS record (for example, `www.contoso.com`) to the Traffic Manager domain (for example, contoso.trafficmanager.net).
-  * Or, you can update your custom domain DNS record to point to the DNS label of the new v2 application gateway. Depending on the TTL configured on your DNS record, it may take a while for all your client traffic to migrate to your new v2 gateway.
-* **Your clients connect to the frontend IP address of your application gateway**.
+    Bu, hem v1 hem de v2 uygulama ağ geçitlerinin DNS etiketlerini [Traffic Manager profiline](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)ekleyerek ve özel DNS kaydınızı (örneğin, `www.contoso.com`) Traffic Manager etki alanına (örneğin, contoso.trafficmanager.net) ekleyerek yapabilirsiniz.
+  * Ya da, özel etki alanı DNS kaydınızı, yeni v2 Application Gateway 'in DNS etiketini işaret etmek üzere güncelleştirebilirsiniz. DNS kaydınıza yapılandırılan TTL 'ye bağlı olarak, tüm istemci trafiğiniz yeni V2 ağ geçidinize geçirilmesi biraz zaman alabilir.
+* **İstemcileriniz, uygulama ağ geçidinizin ön uç IP adresine bağlanır**.
 
-   Update your clients to use the IP address(es) associated with the newly created v2 application gateway. We recommend that you don't use IP addresses directly. Consider using the DNS name label (for example, yourgateway.eastus.cloudapp.azure.com) associated with your application gateway that you can CNAME to your own custom DNS zone (for example, contoso.com).
+   İstemcilerinizi, yeni oluşturulan v2 uygulama ağ geçidiyle ilişkili IP adreslerini kullanacak şekilde güncelleştirin. IP adreslerini doğrudan kullanmanızı öneririz. Kendi özel DNS bölgeniz için CNAME olarak kullanabileceğiniz (örneğin, contoso.com), uygulama ağ geçidiniz ile ilişkili DNS adı etiketini (örneğin, yourgateway.eastus.cloudapp.azure.com) kullanmayı göz önünde bulundurun.
 
 ## <a name="common-questions"></a>Sık sorulan sorular
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Are there any limitations with the Azure PowerShell script to migrate the configuration from v1 to v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Yapılandırmayı v1 'den v2 'ye geçirmek için Azure PowerShell betiğiyle ilgili herhangi bir sınırlama var mı?
 
-Evet. See [Caveats/Limitations](#caveatslimitations).
+Evet. Bkz. [Uyarılar/sınırlamalar](#caveatslimitations).
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Is this article and the Azure PowerShell script applicable for Application Gateway WAF product as well? 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Bu makale ve Azure PowerShell betiği Application Gateway WAF ürünü için de geçerlidir mi? 
 
 Evet.
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Does the Azure PowerShell script also switch over the traffic from my v1 gateway to the newly created v2 gateway?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell betiği, v1 ağ geçidden yeni oluşturulan V2 ağ geçidine trafik üzerinde de geçiş yapar mi?
 
-Hayır. The Azure PowerShell script only migrates the configuration. Actual traffic migration is your responsibility and in your control.
+Hayır. Azure PowerShell betiği yalnızca yapılandırmayı geçirir. Gerçek trafik geçişi, sizin ve denetiminizin sorumluluğundadır.
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Is the new v2 gateway created by the Azure PowerShell script sized appropriately to handle all of the traffic that is currently served by my v1 gateway?
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>, Azure PowerShell betiği tarafından oluşturulan yeni V2 ağ geçidi, şu anda v1 ağ geçidim tarafından sunulan tüm trafiği işleyecek şekilde boyutlandırılabilir mı?
 
-The Azure PowerShell script creates a new v2 gateway with an appropriate size to handle the traffic on your existing v1 gateway. Autoscaling is disabled by default, but you can enable AutoScaling when you run the script.
+Azure PowerShell betiği, mevcut v1 ağ geçidinizdeki trafiği işlemek için uygun boyutta yeni bir V2 ağ geçidi oluşturur. Otomatik ölçeklendirme varsayılan olarak devre dışıdır, ancak betiği çalıştırdığınızda otomatik ölçeklendirmeyi etkinleştirebilirsiniz.
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>I configured my v1 gateway  to send logs to Azure storage. Does the script replicate this configuration for v2 as well?
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Azure depolama 'ya Günlükler göndermek için v1 ağ Geçidimi yapılandırdım. Komut dosyası bu yapılandırmayı v2 için de çoğaltsın mı?
 
-Hayır. The script doesn't  replicate this configuration for v2. You must add the log configuration separately to the migrated v2 gateway.
+Hayır. Betik, v2 için bu yapılandırmayı çoğaltmaz. Günlük yapılandırmasını geçirilen V2 ağ geçidine ayrı olarak eklemeniz gerekir.
 
-### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Does this script support certificates uploaded to Azure KeyVault ?
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Bu betik, Azure Anahtar Kasası 'na yüklenen sertifikaları destekliyor mu?
 
-Hayır. Currently the script does not support certificates in KeyVault. However, this is being considered for a future version.
+Hayır. Şu anda betik, anahtar kasasındaki sertifikaları desteklemez. Bununla birlikte, gelecekteki bir sürüm için bu kabul edilir.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>I ran into some issues with using this script. How can I get help?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
   
-You can send an email to appgwmigrationsup@microsoft.com, open a support case with Azure Support, or do both.
+appgwmigrationsup@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Learn about Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)
+[Application Gateway v2 hakkında bilgi edinin](application-gateway-autoscaling-zone-redundant.md)

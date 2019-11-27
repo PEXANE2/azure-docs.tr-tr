@@ -15,9 +15,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485542"
 ---
-Azure Compute, belirli bir donanım türüyle sınırlanmış ve tek bir müşteriye ayrılmış olan sanal makine boyutları sunar.  Bu sanal makine boyutları, uyumluluk ve düzenleme gereksinimleri gibi öğeler içeren iş yükleri nedeniyle diğer müşterilerden yüksek ölçüde yalıtıma ihtiyaç duyan iş yükleri için idealdir.  Customers can also choose to further subdivide the resources of these Isolated virtual machines by using [Azure support for nested virtual machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
+Azure Compute, belirli bir donanım türüyle sınırlanmış ve tek bir müşteriye ayrılmış olan sanal makine boyutları sunar.  Bu sanal makine boyutları, uyumluluk ve düzenleme gereksinimleri gibi öğeler içeren iş yükleri nedeniyle diğer müşterilerden yüksek ölçüde yalıtıma ihtiyaç duyan iş yükleri için idealdir.  Müşteriler Ayrıca, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölümlere ayırmak da tercih edebilir.
 
-Utilizing an isolated size guarantees that your virtual machine will be the only one running on that specific server instance.  The current Isolated virtual machine offerings include:
+Yalıtılmış bir boyut kullanılması, sanal makinenizin o belirli sunucu örneğinde çalışan tek bir tane olmasını garanti eder.  Geçerli yalıtılmış sanal makine teklifleri şunları içerir:
 * Standard_E64is_v3
 * Standard_E64i_v3
 * Standard_M128ms
@@ -27,80 +27,80 @@ Utilizing an isolated size guarantees that your virtual machine will be the only
 * Standard_D15_v2
 * Standard_F72s_v2
 
-You can learn more about each available isolated size [here](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
+Her kullanılabilir yalıtılmış boyut hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)bulabilirsiniz.
 
-## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Retiring D15_v2/DS15_v2 isolation on February 15, 2020
-We recently announced the Preview of Azure Dedicated Host, which allows you to run your organization’s Linux and Windows virtual machines on single-tenant physical servers. We plan to fully replace isolated Azure VMs with Azure Dedicated Host. After **February 15, 2020** the D15_v2/DS15_v2 Azure VMs may no longer be hardware isolated.
+## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>15 Şubat 2020 ' de D15_v2/DS15_v2 yalıtımını devre dışı bırakma
+Kısa süre önce Azure ayrılmış ana bilgisayarının önizlemesini duyurduk. Bu, kuruluşunuzun Linux ve Windows sanal makinelerini tek kiracılı fiziksel sunucularda çalıştırmanıza olanak sağlar. Yalıtılmış Azure VM 'lerini Azure ayrılmış ana bilgisayarıyla tamamen değiştirmeyi planlıyoruz. **15 şubat 2020 '** den sonra, D15_v2/DS15_v2 Azure VM 'leri artık donanım yalıtılamayabilir.
 
-## <a name="how-does-this-affect-me"></a>How does this affect me?
-After February 15, 2020, we will no longer provide an isolation guarantee for your D15_v2/DS15_v2 Azure virtual machines. 
+## <a name="how-does-this-affect-me"></a>Bu değişiklik beni nasıl etkileyecek?
+15 Şubat 2020 ' den sonra, artık D15_v2/DS15_v2 Azure sanal makineleriniz için bir yalıtım garantisi sağlamayız. 
 
-## <a name="what-actions-should-i-take"></a>What actions should I take?
-If hardware isolation is not required for you, there is no action you need to take. 
+## <a name="what-actions-should-i-take"></a>Hangi eylemleri gerçekleştirmeniz gerekir?
+Sizin için donanım yalıtımı gerekmiyorsa uygulamanız gereken bir eylem yoktur. 
 
-If isolation is required to you, before February 15, 2020, you would need to either:
+15 Şubat 2020 tarihinden önce, yalıtım yapmanız gerekiyorsa, şunlardan birini yapmanız gerekir:
 
-•   [Migrate](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) your workload to Azure Dedicated Host Preview
+• İş yükünüzü Azure adanmış ana bilgisayar önizlemesine [geçirin](https://azure.microsoft.com/blog/introducing-azure-dedicated-host)
 
-•   [Request access](https://aka.ms/D15iRequestAccess) to a D15i_v2 and DS15i_v2 Azure VM, to get the same price performance. This option is only available for pay-as-you-go and one-year reserved instance scenarios.    
+• Aynı fiyat performansını almak için bir D15i_v2 ve Azure VM DS15i_v2 [erişim isteyin](https://aka.ms/D15iRequestAccess) . Bu seçenek yalnızca Kullandıkça öde ve bir yıllık ayrılmış örnek senaryolarında kullanılabilir.    
 
-•   [Migrate](https://azure.microsoft.com/blog/resize-virtual-machines/) your workload to another Azure isolated virtual machine. 
+• İş yükünüzü başka bir Azure yalıtılmış sanal makinesine [geçirin](https://azure.microsoft.com/blog/resize-virtual-machines/) . 
 
-For details see below:
+Ayrıntılar için aşağıya bakın:
 
 ## <a name="timeline"></a>Zaman çizelgesi
-| Tarih | Eylem | 
+| Date | Eylem | 
 | --- | --- |
-| Nov 18, 2019  | Availability of D/DS15i_v2 (PAYG, 1-year RI) |
-| Feb 14, 2020  | Last day to buy D/DS15i_v2 1-year RI | 
-| Feb 15, 2020   | D/DS15_v2 isolation guarantee removed | 
-| May 15, 2021  | Retire D/DS15i_v2 (all customers except who bought 3-year RI of D/DS15_v2 before November 18, 2019)| 
-| Nov 17, 2022   | Retire D/DS15i_v2 when 3-year RIs done (for customers who bought 3-year RI of D/DS15_v2 before November 18, 2019) | 
+| 18 Kasım 2019  | D/DS15i_v2 (PAYG, 1 yıllık RI) kullanılabilirliği |
+| 14 Şubat 2020  | DS15i_v2 1-yıl RI satın almak için geçen gün | 
+| 15 Şubat 2020   | D/DS15_v2 yalıtım garantisi kaldırıldı | 
+| 15 Mayıs 2021  | Devre dışı bırakma D/DS15i_v2 (18 Kasım 2019 tarihinden önce 3 yıllık D/DS15_v2 dışında tüm müşteriler)| 
+| 17 Kasım 2022   | 3 yıllık RIS tamamlandığında D/DS15i_v2 devre dışı bırak (18 Kasım 2019 tarihinden önce 3 yıllık bir D/DS15_v2 satın alan müşteriler için) | 
 
 ## <a name="faq"></a>SSS
-### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>Q: Why am I not seeing the new D/DS15i_v2 sizes in the portal?
-**A**: If you are a current D/DS15_v2 customer and want to use the new D/DS15i_v2 sizes, please fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
+### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>S: portalda yeni D/DS15i_v2 boyutlarını görmüyorum?
+Y **: geçerli bir d**/DS15_v2 müşterisiyseniz ve yeni d/DS15i_v2 boyutlarını kullanmak istiyorsanız lütfen bu [formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u) doldurmanız gerekir
 
-### <a name="q-why-i-am-not-seeing-any-quota-for-the-new-dds15i_v2-sizes"></a>Q: Why I am not seeing any quota for the new D/DS15i_v2 sizes?
-**A**: If you are a current D/DS15_v2 customer and want to use the new D/DS15i_v2 sizes, please fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUNU1XUkhZWkNXQUFMNEJWUk9VWkRRVUJPMy4u)
+### <a name="q-why-i-am-not-seeing-any-quota-for-the-new-dds15i_v2-sizes"></a>S: yeni D/DS15i_v2 boyutları için neden bir kota görmedim?
+Y **: geçerli bir d**/DS15_v2 müşterisiyseniz ve yeni d/DS15i_v2 boyutlarını kullanmak istiyorsanız lütfen bu [formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUNU1XUkhZWkNXQUFMNEJWUk9VWkRRVUJPMy4u) doldurmanız gerekir
 
-### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>Q: When are the other isolated sizes going to retire?
-**A**: We will provide reminders 12 months in advance of the official decommissioning of the sizes.
+### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>S: diğer yalıtılmış boyutlar ne zaman devre dışı bırakılacak?
+Y **: boyutların**resmi yetkisini alma öncesinde 12 ay boyunca anımsatıcılar sağlıyoruz.
 
-### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>Q: Is there a downtime when my vm lands on a non-isolated hardware?
-**A**: If you do not need isolation you do not need to take any action and you would not see any downtime.
+### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>S: sanal makine, yalıtılmış olmayan bir donanımda yer aldığı zaman kapalı kalma süresi var mı?
+Y **: yalıtım**gerekmiyorsa herhangi bir işlem yapmanız gerekmez ve kapalı kalma süresi görmezsiniz.
 
-### <a name="q-are-there-any-cost-changes-for-moving-to-a-non-isolated-virtual-machine"></a>Q: Are there any cost changes for moving to a non-isolated virtual machine?
-**A**: No 
+### <a name="q-are-there-any-cost-changes-for-moving-to-a-non-isolated-virtual-machine"></a>S: yalıtılmış olmayan bir sanal makineye geçmek için herhangi bir maliyet değişikliği var mı?
+Y **: Hayır** 
 
-### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>Q: I already purchased 1- or 3-year Reserved Instance for D15_v2 or Ds15_v2. How will the discount be applied to my VM usage?
-**A**: RIs purchased before November 18, 2019 will automatically extend coverage to the new isolated VM series. 
+### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>S: D15_v2 veya Ds15_v2 için zaten 1 veya 3 yıllık ayrılmış örnek satın aldım. İndirim, VM kullanımma nasıl uygulanır?
+**A**: 18 Kasım 2019 tarihinden önce satın alınan RIS, kapsamı otomatik olarak yenı yalıtılmış VM serisine genişletecektir. 
 
-| RI |  Instance Size Flexibility | Benefit eligibility |   
+| Uzaktan |  Örnek boyutu esnekliği | Avantaj uygunluk |   
 | --- | --- | --- |
-|   D15_v2  |   Kapalı     |   D15_v2 and D15i_v2 |    
-|   D15_v2  |   Açık  |   D15_v2 series and D15i_v2 will all receive the RI benefit. |    
-|   D14_v2  |   Açık  |   D15_v2 series and D15i_v2 will all receive the RI benefit. |    
+|   D15_v2  |   Kapalı     |   D15_v2 ve D15i_v2 |    
+|   D15_v2  |   Açık  |   D15_v2 serisi ve D15i_v2 tüm RI avantajını alacaktır. |    
+|   D14_v2  |   Açık  |   D15_v2 serisi ve D15i_v2 tüm RI avantajını alacaktır. |    
  
-Likewise for Dsv2 series.
+Benzer şekilde Dsv2 serisi için.
  
-### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>Q: I want to purchase additional Reserved Instances for Dv2. Which one should I choose?
-**A**: All RIs purchased after Nov 18, 2019, have the following behavior. 
+### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>S: dv2 için ek ayrılmış örnekler satın almak istiyorum. Hangisini seçmem gerekir?
+Y **: 18**Kasım 2019 ' den sonra satın alınan tüm RIS aşağıdaki davranışa sahiptir. 
 
-| RI |  Instance Size Flexibility | Benefit eligibility |   
+| Uzaktan |  Örnek boyutu esnekliği | Avantaj uygunluk |   
 | --- | --- | --- |
-| D15_v2 |  Kapalı |   D15_v2 only  
-| D15_v2 |  Açık |    D15_v2 series will receive the RI benefit. The new D15i_v2 will not be eligible for RI benefit from this RI type. | 
-| D15i_v2 |     Kapalı | D15i_v2 only |  
-| D15i_v2 |     Açık  | D15i_v2 only | 
+| D15_v2 |  Kapalı |   Yalnızca D15_v2  
+| D15_v2 |  Açık |    D15_v2 serisi, RI avantajını alacaktır. Yeni D15i_v2 bu RI türünden RI avantajına uygun olmayacaktır. | 
+| D15i_v2 |     Kapalı | Yalnızca D15i_v2 |  
+| D15i_v2 |     Açık  | Yalnızca D15i_v2 | 
  
-Instance Size Flexibility cannot be used to apply to any other sizes such as D2_v2, D4_v2, or D15_v2. Likewise, for Dsv2 series.  
+Örnek boyutu esnekliği, D2_v2, D4_v2 veya D15_v2 gibi diğer boyutlara uygulamak için kullanılamaz. Benzer şekilde, Dsv2 serisi için.  
  
-### <a name="q-can-i-buy-a-new-3-year-ri-for-d15i_v2-and-ds15i_v2"></a>Q: Can I buy a new 3-year RI for D15i_v2 and DS15i_v2?
-**A**: Unfortunately no, only 1-year RI is available for new purchase.
+### <a name="q-can-i-buy-a-new-3-year-ri-for-d15i_v2-and-ds15i_v2"></a>S: D15i_v2 ve DS15i_v2 için yeni 3 yıllık RI satın alabilir miyim?
+Y **: Hayır**, yeni satın alma için yalnızca 1 yıllık RI kullanılabilir.
  
-### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>Q: Can I move my existing D15_v2/DS15_v2 Reserve Instance to an isolated size Reserved Instance?
-**A**: This is not necessary since the benefit will apply to both isolated and non-isolated sizes. But Azure will support changing existing D15_v2/DS15_v2 Reserved Instances to D15i_v2/DS15i_v2. For all other Dv2/Dsv2 Reserved Instances, use the existing Reserved Instance or buy new Reserved Instances for the isolated sizes.
+### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>S: mevcut D15_v2/DS15_v2 Reserve örneğinden yalıtılmış bir ayrılmış örneğe taşıyabilir miyim?
+Y **: Bu**, avantajı hem yalıtılmış hem de yalıtılamayan boyutlara uygulanacak olduğundan gerekli değildir. Ancak Azure, mevcut D15_v2/DS15_v2 ayrılmış örneklerin D15i_v2/DS15i_v2 değiştirilmesini destekler. Diğer tüm dv2/Dsv2 ayrılmış örnekleri için, mevcut ayrılmış örneği kullanın veya yalıtılmış boyutlar için yeni ayrılmış örnekler satın alın.
 
-### <a name="q-im-a-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Q: I'm a Azure Service Fabric Customer relying on the Silver or Gold Durability Tiers. Does this change impact me?
-**A**: No. The guarantees provided by Service Fabric's [Durability Tiers](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) will continue to function even after this change. If you require physical hardware isolation for other reasons, you may still need to take one of the actions described above. 
+### <a name="q-im-a-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>S: gümüş veya altın dayanıklılık katmanlarına bağlı bir Azure Service Fabric müşteriyim. Bu değişiklik beni etkiler mi?
+Y **: Hayır**. Service Fabric [dayanıklılık katmanları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) tarafından belirtilen garantiler, bu değişiklikten sonra bile çalışmaya devam edecektir. Diğer nedenlerle fiziksel donanım yalıtımına ihtiyacınız varsa yukarıda açıklanan eylemlerden birini yapmanız gerekebilir. 

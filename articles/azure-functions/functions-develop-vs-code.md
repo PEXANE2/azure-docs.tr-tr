@@ -1,6 +1,6 @@
 ---
-title: Develop Azure Functions by using Visual Studio Code
-description: Learn how to develop and test Azure Functions by using the Azure Functions extension for Visual Studio Code.
+title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
+description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: f9ad40cd50863990b9af629c77321195dce5e97c
@@ -10,89 +10,89 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227046"
 ---
-# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Develop Azure Functions by using Visual Studio Code
+# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
-The [Visual Studio Code için Azure İşlevleri uzantısı] lets you locally develop functions and deploy them to Azure. If this experience is your first with Azure Functions, you can learn more at [An introduction to Azure Functions](functions-overview.md).
+[Visual Studio Code Için Azure işlevleri uzantısı] , işlevleri yerel olarak geliştirmenize ve bunları Azure 'a dağıtmanıza imkan tanır. Azure Işlevleri ile ilk kez bu deneyim varsa, [Azure işlevleri 'ne giriş](functions-overview.md)konusunda daha fazla bilgi edinebilirsiniz.
 
-The Azure Functions extension provides these benefits:
+Azure Işlevleri uzantısı şu avantajları sağlar:
 
-* Edit, build, and run functions on your local development computer.
-* Publish your Azure Functions project directly to Azure.
-* Write your functions in various languages while taking advantage of the benefits of Visual Studio Code.
+* Yerel geliştirme bilgisayarınızda işlevleri düzenleyin, derleyin ve çalıştırın.
+* Azure Işlevleri projenizi doğrudan Azure 'da yayımlayın.
+* Visual Studio Code avantajlarından yararlanarak işlevlerinizi çeşitli dillerde yazın.
 
-The extension can be used with the following languages, which are supported by the Azure Functions version 2.x runtime:
+Uzantı, Azure Işlevleri sürüm 2. x çalışma zamanı tarafından desteklenen aşağıdaki dillerle kullanılabilir:
 
-* [C# compiled](functions-dotnet-class-library.md)
-* [C# script](functions-reference-csharp.md)<sup>*</sup>
+* [C#Medi](functions-dotnet-class-library.md)
+* <sup></sup> [ C# betik](functions-reference-csharp.md)*
 * [JavaScript](functions-reference-node.md)
 * [Java](functions-reference-java.md)
 * [PowerShell](functions-reference-powershell.md)
 * [Python](functions-reference-python.md)
 
-<sup>*</sup>Requires that you [set C# script as your default project language](#c-script-projects).
+<sup>*</sup> [Komut dosyasını varsayılan proje C# diliniz olarak ayarlamanızı](#c-script-projects)gerektirir.
 
-In this article, examples are currently available only for JavaScript (Node.js) and C# class library functions.  
+Bu makalede, örnekler şu anda yalnızca JavaScript (node. js) ve C# sınıf kitaplığı işlevleri için kullanılabilir.  
 
-This article provides details about how to use the Azure Functions extension to develop functions and publish them to Azure. Before you read this article, you should [create your first function by using Visual Studio Code](functions-create-first-function-vs-code.md).
+Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlevleri uzantısının nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır. Bu makaleyi okuduktan sonra, [Visual Studio Code kullanarak ilk işlevinizi oluşturmanız](functions-create-first-function-vs-code.md)gerekir.
 
 > [!IMPORTANT]
-> Don't mix local development and portal development for a single function app. When you publish from a local project to a function app, the deployment process overwrites any functions that you developed in the portal.
+> Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Before you install and run the [Azure Functions extension][visual studio code için azure işlevleri uzantısı], you must meet these requirements:
+Visual Studio Code için [Azure işlevleri uzantısı][visual studio code için azure işlevleri uzantısı]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
-* [Visual Studio Code](https://code.visualstudio.com/) installed on one of the [supported platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
+* [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .
 
 * Etkin bir Azure aboneliği.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Other resources that you need, like an Azure storage account, are created in your subscription when you [publish by using Visual Studio Code](#publish-to-azure).
+Azure depolama hesabı gibi ihtiyacınız olan diğer kaynaklar, [Visual Studio Code kullanarak yayımladığınızda](#publish-to-azure)aboneliğinizde oluşturulur.
 
 > [!IMPORTANT]
-> You can develop functions locally and publish them to Azure without having to start and run them locally. To run your functions locally, you'll need to meet some additional requirements, including an automatic download of Azure Functions Core Tools. To learn more, see [Additional requirements for running a project locally](#additional-requirements-for-running-a-project-locally).
+> Yerel olarak başlatıp çalıştırmak zorunda kalmadan, işlevleri yerel olarak geliştirebilir ve Azure 'da yayımlayabilirsiniz. İşlevlerinizi yerel olarak çalıştırmak için Azure Functions Core Tools otomatik olarak indirilmesi dahil bazı ek gereksinimleri karşılamanız gerekir. Daha fazla bilgi edinmek için bkz. [projeyi yerel olarak çalıştırmaya yönelik ek gereksinimler](#additional-requirements-for-running-a-project-locally).
 
 [!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
 
 ## <a name="create-an-azure-functions-project"></a>Azure İşlevleri projesi oluşturma
 
-The Functions extension lets you create a function app project, along with your first function. The following steps show how to create an HTTP-triggered function in a new Functions project. [HTTP trigger](functions-bindings-http-webhook.md) is the simplest function trigger template to demonstrate.
+Işlevler uzantısı, ilk işlevinizle birlikte bir işlev uygulaması projesi oluşturmanızı sağlar. Aşağıdaki adımlarda, yeni Işlevler projesinde HTTP ile tetiklenen bir işlevin nasıl oluşturulacağı gösterilmektedir. [Http tetikleyicisi](functions-bindings-http-webhook.md) , göstermek için en basit işlev tetikleyici şablonudur.
 
-1. From **Azure: Functions**, select the **Create Function** icon:
+1. **Azure: işlevler**' de **işlev oluştur** simgesini seçin:
 
     ![İşlev oluşturma](./media/functions-develop-vs-code/create-function.png)
 
-1. Select the folder for your function app project, and then **Select a language for your function project**.
+1. İşlev uygulaması projeniz için klasörü seçin ve ardından **işlev projeniz için bir dil seçin**.
 
-1. Select the **HTTP trigger** function template, or you can select **Skip for now** to create a project without a function. You can always [add a function to your project](#add-a-function-to-your-project) later.
+1. **Http tetikleyici** işlev şablonunu seçin veya artık işlev olmadan bir proje oluşturmak için **Atla** seçeneğini belirleyebilirsiniz. Projenize daha sonra dilediğiniz zaman [bir işlev ekleyebilirsiniz](#add-a-function-to-your-project) .
 
     ![HTTP tetikleyicisi şablonunu seçin](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Type **HTTPTrigger** for the function name and select Enter, and then select **Function** authorization. This authorization level requires you to provide a [function key](functions-bindings-http-webhook.md#authorization-keys) when you call the function endpoint.
+1. İşlev adı için **Httptrigger** yazın ve ENTER ' ı seçin ve ardından **işlev** yetkilendirmesi ' ni seçin. Bu yetkilendirme düzeyi, işlev uç noktasını çağırdığınızda bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) sağlamanızı gerektirir.
 
-    ![Select Function authorization](./media/functions-develop-vs-code/create-function-auth.png)
+    ![Işlev yetkilendirmesi seçin](./media/functions-develop-vs-code/create-function-auth.png)
 
-    A function is created in your chosen language and in the template for an HTTP-triggered function.
+    Seçtiğiniz dilde ve HTTP ile tetiklenen bir işlev için şablonda bir işlev oluşturulur.
 
-    ![HTTP-triggered function template in Visual Studio Code](./media/functions-develop-vs-code/new-function-full.png)
+    ![Visual Studio Code 'de HTTP ile tetiklenen işlev şablonu](./media/functions-develop-vs-code/new-function-full.png)
 
-The project template creates a project in your chosen language and installs required dependencies. For any language, the new project has these files:
+Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılıkları kurar. Her dil için, yeni proje bu dosyalara sahiptir:
 
-* **host.json**: Lets you configure the Functions host. These settings apply when you're running functions locally and when you're running them in Azure. For more information, see [host.json reference](functions-host-json.md).
+* **Host. JSON**: işlevler konağını yapılandırmanızı sağlar. Bu ayarlar, işlevleri yerel olarak çalıştırırken ve bunları Azure 'da çalıştırırken geçerlidir. Daha fazla bilgi için bkz. [Host. JSON başvurusu](functions-host-json.md).
 
-* **local.settings.json**: Maintains settings used when you're running functions locally. These settings are used only when you're running functions locally. For more information, see [Local settings file](#local-settings-file).
+* **Local. Settings. JSON**: işlevleri yerel olarak çalıştırırken kullanılan ayarları korur. Bu ayarlar yalnızca işlevleri yerel olarak çalıştırdığınızda kullanılır. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](#local-settings-file).
 
     >[!IMPORTANT]
-    >Because the local.settings.json file can contain secrets, you need to exclude it from your project source control.
+    >Local. Settings. JSON dosyası gizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden çıkarmanız gerekir.
 
-At this point, you can add input and output bindings to your function by [modifying the function.json file](#add-a-function-to-your-project) or by [adding a parameter to a C# class library function](#add-a-function-to-your-project).
+Bu noktada, [function. json dosyasını değiştirerek](#add-a-function-to-your-project) veya [bir C# sınıf kitaplığı işlevine parametre ekleyerek](#add-a-function-to-your-project)işlevlerinize giriş ve çıkış bağlamaları ekleyebilirsiniz.
 
-You can also [add a new function to your project](#add-a-function-to-your-project).
+[Projenize de yeni bir işlev ekleyebilirsiniz](#add-a-function-to-your-project).
 
 ## <a name="install-binding-extensions"></a>Bağlama uzantılarını yükleme
 
-Except for HTTP and timer triggers, bindings are implemented in extension packages. You must install the extension packages for the triggers and bindings that need them. The process for installing binding extensions depends on your project's language.
+HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketlerinde uygulanır. Gereken Tetikleyiciler ve bağlamalar için uzantı paketlerini yüklemeniz gerekir. Bağlama Uzantıları yükleme işlemi projenizin diline bağlıdır.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -100,7 +100,7 @@ Except for HTTP and timer triggers, bindings are implemented in extension packag
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-Run the [dotnet add package](/dotnet/core/tools/dotnet-add-package) command in the Terminal window to install the extension packages that you need in your project. The following command installs the Azure Storage extension, which implements bindings for Blob, Queue, and Table storage.
+Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal penceresinde [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın. Aşağıdaki komut blob, kuyruk ve tablo depolaması için bağlamaları uygulayan Azure Storage uzantısını yüklüyor.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
@@ -108,45 +108,45 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ---
 
-## <a name="add-a-function-to-your-project"></a>Add a function to your project
+## <a name="add-a-function-to-your-project"></a>Projenize bir işlev ekleyin
 
-You can add a new function to an existing project by using one of the predefined Functions trigger templates. To add a new function trigger, select F1 to open the command palette, and then search for and run the command **Azure Functions: Create Function**. Follow the prompts to choose your trigger type and define the required attributes of the trigger. If your trigger requires an access key or connection string to connect to a service, get it ready before you create the function trigger.
+Önceden tanımlanmış Işlevler tetikleyici şablonlarından birini kullanarak var olan bir projeye yeni bir işlev ekleyebilirsiniz. Yeni bir işlev tetikleyicisi eklemek için F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: oluşturma işlevi**komutunu arayıp çalıştırın. Tetikleyici türünü seçmek ve tetikleyicinin gerekli özniteliklerini tanımlamak için istemleri izleyin. Tetikleyiciniz bir hizmete bağlanmak için bir erişim anahtarı veya bağlantı dizesi gerektiriyorsa, işlev tetikleyicisi oluşturmadan önce bu uygulamayı hazırlayın.
 
-The results of this action depend on your project's language:
+Bu eylemin sonuçları projenizin diline bağlıdır:
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-A new folder is created in the project. The folder contains a new function.json file and the new JavaScript code file.
+Projede yeni bir klasör oluşturulur. Klasör yeni bir Function. JSON dosyası ve yeni JavaScript kod dosyası içeriyor.
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-A new C# class library (.cs) file is added to your project.
+Projenize yeni C# bir sınıf kitaplığı (. cs) dosyası eklenir.
 
 ---
 
-## <a name="add-input-and-output-bindings"></a>Add input and output bindings
+## <a name="add-input-and-output-bindings"></a>Giriş ve çıkış bağlamaları ekleme
 
-You can expand your function by adding input and output bindings. The process for adding bindings depends on your project's language. To learn more about bindings, see [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).
+Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Bağlama ekleme işlemi projenizin diline bağlıdır. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
-The following examples connect to a storage queue named `outqueue`, where the connection string for the storage account is set in the `MyStorageConnection` application setting in local.settings.json.
+Aşağıdaki örnekler, depolama hesabının bağlantı dizesinin yerel. Settings. JSON içindeki `MyStorageConnection` uygulama ayarında ayarlandığı `outqueue`adlı bir depolama kuyruğuna bağlanır.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Visual Studio Code lets you add bindings to your function.json file by following a convenient set of prompts. To create a binding, right-click (Ctrl+click on macOS) the **function.json** file in your function folder and select **Add binding**:
+Visual Studio Code, uygun bir istem kümesini izleyerek function. JSON dosyanıza bağlama eklemenizi sağlar. Bir bağlama oluşturmak için, işlev klasörünüzdeki **function. JSON** dosyasını sağ tıklatın (MacOS üzerinde CTRL + tıklama) ve **bağlama Ekle**' yi seçin:
 
-![Add a binding to an existing JavaScript function ](media/functions-develop-vs-code/function-add-binding.png)
+![Varolan bir JavaScript işlevine bağlama ekleme ](media/functions-develop-vs-code/function-add-binding.png)
 
-Following are example prompts to define a new storage output binding:
+Aşağıda yeni bir depolama çıkış bağlaması tanımlamak için örnek istemler verilmiştir:
 
-| İstem | Değer | Açıklama |
+| İstem | Value | Açıklama |
 | -------- | ----- | ----------- |
-| **Select binding direction** | `out` | The binding is an output binding. |
-| **Select binding with direction** | `Azure Queue Storage` | The binding is an Azure Storage queue binding. |
-| **The name used to identify this binding in your code** | `msg` | Name that identifies the binding parameter referenced in your code. |
-| **The queue to which the message will be sent** | `outqueue` | The name of the queue that the binding writes to. When the *queueName* doesn't exist, the binding creates it on first use. |
-| **Select setting from "local.setting.json"** | `MyStorageConnection` | The name of an application setting that contains the connection string for the storage account. The `AzureWebJobsStorage` setting contains the connection string for the storage account you created with the function app. |
+| **Bağlama yönünü seçin** | `out` | Bağlama bir çıkış bağlamadır. |
+| **Yön içeren bağlamayı seçin** | `Azure Queue Storage` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
+| **Kodunuzda bu bağlamayı tanımlamak için kullanılan ad** | `msg` | Kodunuzda başvurulan bağlama parametresini tanımlayan ad. |
+| **İletinin gönderileceği kuyruk** | `outqueue` | Bağlamanın yazdığı kuyruğun adı. *SıraAdı* mevcut olmadığında, bağlama ilk kullanımda oluşturulur. |
+| **"Yerel. Setting. JSON" ayarını seçin** | `MyStorageConnection` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. `AzureWebJobsStorage` ayarı, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
 
-In this example, the following binding is added to the `bindings` array in your function.json file:
+Bu örnekte, function. JSON dosyanızdaki `bindings` dizisine aşağıdaki bağlama eklenir:
 
 ```javascript
 {
@@ -158,25 +158,25 @@ In this example, the following binding is added to the `bindings` array in your 
 }
 ```
 
-You can also add the same binding definition directly to your function.json.
+Aynı bağlama tanımını doğrudan işleviniz. json ' a de ekleyebilirsiniz.
 
-In your function code, the `msg` binding is accessed from the `context`, as in this example:
+İşlev kodunuzda `msg` bağlamaya, bu örnekte olduğu gibi `context`erişilir:
 
 ```javascript
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-To learn more, see the [Queue storage output binding](functions-bindings-storage-queue.md#output---javascript-example) reference.
+Daha fazla bilgi edinmek için [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output---javascript-example) başvurusuna bakın.
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-Update the function method to add the following parameter to the `Run` method definition:
+Aşağıdaki parametreyi `Run` yöntemi tanımına eklemek için işlev yöntemini güncelleştirin:
 
 ```cs
 [Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
 ```
 
-This code requires you to add the following `using` statement:
+Bu kod aşağıdaki `using` ifadesini eklemenizi gerektirir:
 
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
@@ -184,243 +184,243 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 ---
 
-The `msg` parameter is an `ICollector<T>` type, which represents a collection of messages that are written to an output binding when the function completes. You add one or more messages to the collection. These messages are sent to the queue when the function completes.
+`msg` parametresi, işlev tamamlandığında çıkış bağlamaya yazılan bir ileti koleksiyonunu temsil eden bir `ICollector<T>` türüdür. Koleksiyona bir veya daha fazla ileti eklersiniz. Bu iletiler, işlev tamamlandığında kuyruğa gönderilir.
 
-To learn more, see the [Queue storage output binding](functions-bindings-storage-queue.md#output---c-example) documentation.
+Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output---c-example) belgeleri.
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="publish-to-azure"></a>Azure’da Yayımlama
+## <a name="publish-to-azure"></a>Azure'a Yayımlama
 
-Visual Studio Code lets you publish your Functions project directly to Azure. Süreç kapsamında, Azure abonelik bir işlev uygulaması ve ilgili kaynakları oluşturursunuz. İşlev uygulaması, işlevlerinize ilişkin bir yürütme bağlamı sağlar. Proje, Azure aboneliğinizdeki yeni işlev uygulamasında paketlenir ve dağıtılır.
+Visual Studio Code, Işlevler projenizi doğrudan Azure 'da yayımlamanıza olanak sağlar. Süreç kapsamında, Azure abonelik bir işlev uygulaması ve ilgili kaynakları oluşturursunuz. İşlev uygulaması, işlevlerinize ilişkin bir yürütme bağlamı sağlar. Proje, Azure aboneliğinizdeki yeni işlev uygulamasında paketlenir ve dağıtılır.
 
-When you publish from Visual Studio Code to a new function app in Azure, you are offered both a quick function app create path and an advanced path. 
+Visual Studio Code 'den Azure 'da yeni bir işlev uygulamasına yayımladığınızda, hem hızlı işlev uygulaması oluşturma yolu hem de gelişmiş yol sunulur. 
 
-When you publish from Visual Studio Code, you take advantage of the [Zip deploy](functions-deployment-technologies.md#zip-deploy) technology. 
+Visual Studio Code yayımladığınızda, [ZIP dağıtım](functions-deployment-technologies.md#zip-deploy) teknolojisinin avantajlarından yararlanabilirsiniz. 
 
-### <a name="quick-function-app-create"></a>Quick function app create
+### <a name="quick-function-app-create"></a>Hızlı işlev uygulaması oluşturma
 
-When you choose **+ Create new function app in Azure...** , the extension automatically generates values for the Azure resources needed by your function app. These values are based on the function app name that you choose. For an example of using defaults to publish your project to a new function app in Azure, see the [Visual Studio Code quickstart article](functions-create-first-function-vs-code.md#publish-the-project-to-azure).
+**Azure 'da yeni işlev uygulaması oluştur**' u seçtiğinizde, uzantı, işlev uygulamanız tarafından gerek duyulan Azure kaynakları için otomatik olarak değerler üretir. Bu değerler, seçtiğiniz işlev uygulaması adına göre yapılır. Projenizi Azure 'da yeni bir işlev uygulamasına yayımlamak için varsayılanlar kullanmanın bir örneği için [Visual Studio Code hızlı başlangıç makalesi](functions-create-first-function-vs-code.md#publish-the-project-to-azure)' ne bakın.
 
-If you want to provide explicit names for the created resources, you must choose the advanced create path.
+Oluşturulan kaynaklar için açık adlar sağlamak istiyorsanız, gelişmiş oluşturma yolunu seçmeniz gerekir.
 
-### <a name="enable-publishing-with-advanced-create-options"></a>Publish a project to a new function app in Azure by using advanced options
+### <a name="enable-publishing-with-advanced-create-options"></a>Gelişmiş seçenekleri kullanarak bir projeyi Azure 'da yeni bir işlev uygulamasına yayımlama
 
-The following steps publish your project to a new function app created with advanced create options:
+Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturulan yeni bir işlev uygulamasına yayımlar:
 
-1. In the **Azure: Functions** area, select the **Deploy to Function App** icon.
+1. **Azure: Functions** alanında **işlev uygulaması dağıt** simgesini seçin.
 
     ![İşlev uygulaması ayarları](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. If you're not signed in, you're prompted to **Sign in to Azure**. You can also **Create a free Azure account**. After signing in from the browser, go back to Visual Studio Code.
+1. Oturum açmadıysanız **Azure 'Da oturum açmanız**istenir. Ayrıca, **ücretsiz bir Azure hesabı da oluşturabilirsiniz**. Tarayıcıdan oturum açtıktan sonra Visual Studio Code bölümüne geri dönün.
 
-1. If you have multiple subscriptions, **Select a subscription** for the function app, and then select **+ Create New Function App in Azure... _Advanced_** . This _Advanced_ option gives you more control over the resources you create in Azure. 
+1. Birden çok aboneliğiniz varsa, işlev uygulaması için **bir abonelik seçin** ve sonra da **Azure 'Da yeni işlev uygulaması oluştur ' u seçin... _Gelişmiş_** . Bu _Gelişmiş_ seçenek, Azure 'da oluşturduğunuz kaynaklar üzerinde daha fazla denetim sağlar. 
 
-1. Following the prompts, provide this information:
+1. İstemlerin ardından, şu bilgileri sağlayın:
 
-    | İstem | Değer | Açıklama |
+    | İstem | Value | Açıklama |
     | ------ | ----- | ----------- |
-    | Select function app in Azure | Create New Function App in Azure | At the next prompt, type a globally unique name that identifies your new function app and then select Enter. İşlev uygulaması adına ilişkin geçerli karakterler `a-z`, `0-9` ve `-` işaretidir. |
-    | Select an OS | Windows | The function app runs on Windows. |
-    | Select a hosting plan | Tüketim planı | A serverless [Consumption plan hosting](functions-scale.md#consumption-plan) is used. |
-    | Select a runtime for your new app | Your project language | The runtime must match the project that you're publishing. |
-    | Select a resource group for new resources | Create New Resource Group | At the next prompt, type a resource group name, like `myResourceGroup`, and then select enter. You can also select an existing resource group. |
-    | Select a storage account | Yeni depolama hesabı oluşturma | At the next prompt, type a globally unique name for the new storage account used by your function app and then select Enter. Storage account names must be between 3 and 24 characters long and can contain only numbers and lowercase letters. You can also select an existing account. |
-    | Select a location for new resources | bölgesinde kullanılamıyor | Select a location in a [region](https://azure.microsoft.com/regions/) near you or near other services that your functions access. |
+    | Azure 'da işlev uygulaması seçin | Azure 'da yeni İşlev Uygulaması oluşturma | Sonraki istem sırasında, yeni işlev uygulamanızı tanımlayan bir genel benzersiz ad yazın ve ardından ENTER ' u seçin. İşlev uygulaması adına ilişkin geçerli karakterler `a-z`, `0-9` ve `-` işaretidir. |
+    | Bir işletim sistemi seçin | Windows | İşlev uygulaması Windows üzerinde çalışır. |
+    | Barındırma planı seçin | Tüketim planı | Sunucusuz [Tüketim planı barındırma](functions-scale.md#consumption-plan) kullanılır. |
+    | Yeni uygulamanız için bir çalışma zamanı seçin | Proje diliniz | Çalışma zamanının yayımlamakta olduğunuz projeyle eşleşmesi gerekir. |
+    | Yeni kaynaklar için bir kaynak grubu seçin | Yeni kaynak grubu oluştur | Sonraki istem sırasında, `myResourceGroup`gibi bir kaynak grubu adı yazın ve ardından ENTER ' u seçin. Ayrıca, var olan bir kaynak grubunu seçebilirsiniz. |
+    | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma | Sonraki istem sırasında, işlev uygulamanız tarafından kullanılan yeni depolama hesabı için genel olarak benzersiz bir ad yazın ve ENTER ' u seçin. Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir. Ayrıca var olan bir hesabı da seçebilirsiniz. |
+    | Yeni kaynaklar için bir konum seçin | bölge | Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir konum seçin. |
 
-    A notification appears after your function app is created and the deployment package is applied. Select **View Output** in this notification to view the creation and deployment results, including the Azure resources that you created.
+    İşlev uygulamanız oluşturulduktan ve dağıtım paketi uygulandıktan sonra bir bildirim görüntülenir. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin.
 
-## <a name="republish-project-files"></a>Republish project files
+## <a name="republish-project-files"></a>Proje dosyalarını yeniden Yayımla
 
-When you set up [continuous deployment](functions-continuous-deployment.md), your function app in Azure is updated whenever source files are updated in the connected source location. We recommend continuous deployment, but you can also republish your project file updates from Visual Studio Code.
+[Sürekli dağıtım](functions-continuous-deployment.md)ayarladığınızda, Azure 'daki işlev uygulamanız, kaynak dosyalar bağlı kaynak konumunda güncelleştirildiğinde güncelleştirilir. Sürekli dağıtım yapmanızı öneririz, ancak Visual Studio Code ' den proje dosya güncelleştirmelerinizi yeniden yayımlayabilirsiniz.
 
 > [!IMPORTANT]
 > Varolan bir işlev uygulamasına yayımladığınızda Azure’daki uygulamanın içeriğinin üzerine yazılır.
 
-1. In Visual Studio Code, select F1 to open the command palette. In the command palette, search for and select **Azure Functions: Deploy to function app**.
+1. Visual Studio Code ' de, F1 ' i seçerek komut paleti ' ni açın. Komut paletinde, **Azure işlevleri: işlev uygulamasına dağıt**' ı arayın ve seçin.
 
-1. If you're not signed in, you're prompted to **Sign in to Azure**. After you sign in from the browser, go back to Visual Studio Code. If you have multiple subscriptions, **Select a subscription** that contains your function app.
+1. Oturum açmadıysanız **Azure 'Da oturum açmanız**istenir. Tarayıcıdan oturum açtıktan sonra Visual Studio Code ' e geri dönün. Birden çok aboneliğiniz varsa, işlev uygulamanızı içeren **bir abonelik seçin** .
 
-1. Select your existing function app in Azure. When you're warned about overwriting all files in the function app, select **Deploy** to acknowledge the warning and continue.
+1. Azure 'da mevcut işlev uygulamanızı seçin. İşlev uygulamasındaki tüm dosyaların üzerine yazma konusunda uyarı aldığınızda, uyarıyı onaylamak ve devam etmek için **Dağıt** ' ı seçin.
 
-The project is rebuilt, repackaged, and uploaded to Azure. The existing project is replaced by the new package, and the function app restarts.
+Proje yeniden oluşturulur, yeniden paketlenmiştir ve Azure 'a yüklenir. Mevcut proje yeni paket ile değiştirilmiştir ve işlev uygulaması yeniden başlatılır.
 
-## <a name="get-the-url-of-the-deployed-function"></a>Get the URL of the deployed function
+## <a name="get-the-url-of-the-deployed-function"></a>Dağıtılan işlevin URL 'sini al
 
-To call an HTTP-triggered function, you need the URL of the function when it's deployed to your function app. This URL includes any required [function keys](functions-bindings-http-webhook.md#authorization-keys). You can use the extension to get these URLs for your deployed functions.
+HTTP ile tetiklenen bir işlevi çağırmak için işlev uygulamanıza dağıtıldığında işlevin URL 'sine ihtiyacınız vardır. Bu URL, gerekli [işlev anahtarlarını](functions-bindings-http-webhook.md#authorization-keys)içerir. Bu URL 'Leri dağıtılan işlevleriniz için almak üzere uzantısını kullanabilirsiniz.
 
-1. Select F1 to open the command palette, and then search for and run the command **Azure Functions: Copy Function URL**.
+1. F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: kopyalama işlev URL 'si**komutunu arayıp çalıştırın.
 
-1. Follow the prompts to select your function app in Azure and then the specific HTTP trigger that you want to invoke.
+1. Azure 'da işlev uygulamanızı ve ardından çağırmak istediğiniz belirli HTTP tetikleyicisini seçmek için istemleri izleyin.
 
-The function URL is copied to the clipboard, along with any required keys passed by the `code` query parameter. Use an HTTP tool to submit POST requests, or a browser for GET requests to the remote function.  
+İşlev URL 'SI panoya kopyalanır ve `code` sorgu parametresi tarafından geçirilen gerekli anahtarlarla birlikte. POST istekleri göndermek için bir HTTP aracı veya uzak işleve GET istekleri için bir tarayıcı kullanın.  
 
-## <a name="run-functions-locally"></a>Run functions locally
+## <a name="run-functions-locally"></a>İşlevleri yerel olarak çalıştır
 
-The Azure Functions extension lets you run a Functions project on your local development computer. The local runtime is the same runtime that hosts your function app in Azure. Local settings are read from the [local.settings.json file](#local-settings-file).
+Azure Işlevleri uzantısı, yerel geliştirme bilgisayarınızda bir Işlevler projesi çalıştırmanızı sağlar. Yerel çalışma zamanı, Azure 'da işlev uygulamanızı barındıran çalışma zamanının aynısıdır. Yerel ayarlar [yerel. Settings. json dosyasından](#local-settings-file)okunmalıdır.
 
-### <a name="additional-requirements-for-running-a-project-locally"></a>Additional requirements for running a project locally
+### <a name="additional-requirements-for-running-a-project-locally"></a>Projeyi yerel olarak çalıştırmaya yönelik ek gereksinimler
 
-To run your Functions project locally, you must meet these additional requirements:
+Işlevler projenizi yerel olarak çalıştırmak için aşağıdaki ek gereksinimleri karşılamanız gerekir:
 
-* Install version 2.x of [Azure Functions Core Tools](functions-run-local.md#v2). The Core Tools package is downloaded and installed automatically when you start the project locally. Core Tools includes the entire Azure Functions runtime, so download and installation might take some time.
+* Sürüm 2. x ' i yükler [Azure Functions Core Tools](functions-run-local.md#v2). Temel Araçlar paketi, projeyi yerel olarak başlattığınızda otomatik olarak indirilir ve yüklenir. Temel araçlar tüm Azure Işlevleri çalışma zamanını içerir, bu nedenle indirme ve yükleme biraz zaman alabilir.
 
 * Seçtiğiniz dile özgü gereksinimleri yükleyin:
 
     | Dil | Gereksinim |
     | -------- | --------- |
-    | **C#** | [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI tools](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Debugger for Java extension](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 or later](https://maven.apache.org/) |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
-    | **Python** | [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) recommended|
+    | **C#** | [C#uzantının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI araçları](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **Java** | [Java uzantısı için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 veya üzeri](https://maven.apache.org/) |
+    | **JavaScript** | [Node. js](https://nodejs.org/) <sup>*</sup> |  
+    | **Python** | [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) önerilir|
 
-    <sup>*</sup>Active LTS and Maintenance LTS versions (8.11.1 and 10.14.1 recommended).
+    <sup>*</sup> Etkin LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
 
-### <a name="configure-the-project-to-run-locally"></a>Configure the project to run locally
+### <a name="configure-the-project-to-run-locally"></a>Projeyi yerel olarak çalışacak şekilde yapılandırma
 
-The Functions runtime uses an Azure Storage account internally for all trigger types other than HTTP and webhooks. So you need to set the **Values.AzureWebJobsStorage** key to a valid Azure Storage account connection string.
+Işlevler çalışma zamanı, HTTP ve Web kancaları dışındaki tüm tetikleyici türleri için dahili olarak bir Azure depolama hesabı kullanır. Bu nedenle, **values. AzureWebJobsStorage** anahtarını geçerli bir Azure depolama hesabı bağlantı dizesine ayarlamanız gerekir.
 
-This section uses the [Azure Storage extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) with [Azure Storage Explorer](https://storageexplorer.com/) to connect to and retrieve the storage connection string.
+Bu bölümde, depolama bağlantı dizesine bağlanmak ve bu dizeyi almak için [Azure Depolama Gezgini](https://storageexplorer.com/) olan [Visual Studio Code için Azure Storage uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) kullanılmaktadır.
 
-To set the storage account connection string:
+Depolama hesabı bağlantı dizesini ayarlamak için:
 
-1. In Visual Studio, open **Cloud Explorer**, expand **Storage Account** > **Your Storage Account**, and then select **Properties** and copy the **Primary Connection String** value.
+1. Visual Studio 'da **Cloud Explorer**'ı açın, depolama hesabınızı > **depolama hesabı** **' nı**genişletin ve ardından **Özellikler** ' i seçin ve **birincil bağlantı dizesi** değerini kopyalayın.
 
-2. In your project, open the local.settings.json file and set the value of the **AzureWebJobsStorage** key to the connection string you copied.
+2. Projenizde, Local. Settings. json dosyasını açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesine ayarlayın.
 
-3. Repeat the previous step to add unique keys to the **Values** array for any other connections required by your functions.
+3. İşlevlerinizin gerektirdiği diğer tüm bağlantılar için **Values** dizisine benzersiz anahtarlar eklemek için önceki adımı tekrarlayın.
 
-For more information, see [Local settings file](#local-settings-file).
+Daha fazla bilgi için bkz. [yerel ayarlar dosyası](#local-settings-file).
 
-### <a name="debugging-functions-locally"></a>Debugging functions locally  
+### <a name="debugging-functions-locally"></a>İşlevleri yerel olarak hata ayıklama  
 
-To debug your functions, select F5. If you haven't already downloaded [Core Tools][Azure Functions Core Tools], you're prompted to do so. When Core Tools is installed and running, output is shown in the Terminal. This is the same as running the `func host start` Core Tools command from the Terminal, but with additional build tasks and an attached debugger.  
+İşlevlerinizi hata ayıklamak için F5 ' i seçin. [Azure Functions Core Tools] [temel araçları]henüz indirmediyseniz bunu yapmanız istenir. Temel araçlar yüklenip çalıştırıldığında, çıkış terminalde görüntülenir. Bu, terminalden `func host start` çekirdek araçları komutunu çalıştırmayla aynıdır, ancak ek derleme görevleri ve ekli bir hata ayıklayıcı ile aynıdır.  
 
-When the project is running, you can trigger your functions as you would when the project is deployed to Azure. When the project is running in debug mode, breakpoints are hit in Visual Studio Code, as expected.
+Proje çalışırken işlevlerinizi proje Azure 'a dağıtıldığında yaptığınız gibi tetikleyebilirsiniz. Proje hata ayıklama modunda çalışırken, beklenildiği gibi Visual Studio Code kesme noktaları isabet edilir.
 
-The request URL for HTTP triggers is displayed in the output in the Terminal. Function keys for HTTP triggers aren't used when a project is running locally. For more information, see [Strategies for testing your code in Azure Functions](functions-test-a-function.md).  
+HTTP Tetikleyicileri için istek URL 'SI terminaldeki çıktıda görüntülenir. HTTP Tetikleyicileri için işlev anahtarları, bir proje yerel olarak çalışırken kullanılmaz. Daha fazla bilgi için bkz. [Azure işlevlerinde kodunuzu test etme stratejileri](functions-test-a-function.md).  
 
-To learn more, see [Work with Azure Functions Core Tools][Azure Functions Core Tools].
+Daha fazla bilgi için bkz. Azure Functions Core Tools[Azure Functions Core Tools] [ile çalışma].
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-By default, these settings aren't migrated automatically when the project is published to Azure. After publishing finishes, you're given the option of publishing settings from local.settings.json to your function app in Azure. To learn more, see  [Publish application settings](#publish-application-settings).
+Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olarak geçirilmez. Yayımlama bittikten sonra, Azure 'daki işlev uygulamanıza yerel. Settings. JSON konumundan ayarları yayımlama seçeneği sunulur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings).
 
-Values in **ConnectionStrings** are never published.
+**ConnectionString** içindeki değerler hiçbir şekilde yayımlanmaz.
 
-The function application settings values can also be read in your code as environment variables. For more information, see the Environment variables sections of these language-specific reference articles:
+İşlev uygulama ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru makalelerinin ortam değişkenleri bölümlerine bakın:
 
-* [C# precompiled](functions-dotnet-class-library.md#environment-variables)
-* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
+* [C#betik (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-## <a name="application-settings-in-azure"></a>Application settings in Azure
+## <a name="application-settings-in-azure"></a>Azure 'da uygulama ayarları
 
-The settings in the local.settings.json file in your project should be the same as the application settings in the function app in Azure. Any settings you add to local.settings.json must also be added to the function app in Azure. These settings aren't uploaded automatically when you publish the project. Likewise, any settings that you create in your function app [in the portal](functions-how-to-use-azure-function-app-settings.md#settings) must be downloaded to your local project.
+Projenizdeki Local. Settings. JSON dosyasındaki ayarlar, Azure 'daki işlev uygulamasındaki uygulama ayarlarıyla aynı olmalıdır. Yerel. Settings. JSON öğesine eklediğiniz tüm ayarlar ayrıca Azure 'daki işlev uygulamasına eklenmelidir. Projeyi yayımladığınızda bu ayarlar otomatik olarak karşıya yüklenemez. Benzer şekilde, [portalda](functions-how-to-use-azure-function-app-settings.md#settings) işlev uygulamanızda oluşturduğunuz tüm ayarlar yerel projenize indirilmelidir.
 
-### <a name="publish-application-settings"></a>Publish application settings
+### <a name="publish-application-settings"></a>Uygulama ayarlarını Yayımla
 
-The easiest way to publish the required settings to your function app in Azure is to use the **Upload settings** link that appears after you publish your project:
+Azure 'daki işlev uygulamanıza gereken ayarları yayımlamanın en kolay yolu, projenizi yayımladıktan sonra görüntülenen **karşıya yükleme ayarları** bağlantısını kullanmaktır:
 
-![Upload application settings](./media/functions-develop-vs-code/upload-app-settings.png)
+![Uygulama ayarlarını karşıya yükle](./media/functions-develop-vs-code/upload-app-settings.png)
 
-You can also publish settings by using the **Azure Functions: Upload Local Setting** command in the command palette. You can add individual settings to application settings in Azure by using the **Azure Functions: Add New Setting** command.
+Ayrıca, komut paletindeki **Azure işlevleri: yerel ayarı yükle** komutunu kullanarak ayarları yayımlayabilirsiniz. Azure **işlevleri: yeni ayar Ekle** komutunu kullanarak Azure 'daki uygulama ayarlarına ayrı ayarlar ekleyebilirsiniz.
 
 > [!TIP]
-> Be sure to save your local.settings.json file before you publish it.
+> Yayımlamadan önce Local. Settings. JSON dosyanızı kaydettiğinizden emin olun.
 
-If the local file is encrypted, it's decrypted, published, and encrypted again. If there are settings that have conflicting values in the two locations, you're prompted to choose how to proceed.
+Yerel dosya şifrelendiyse, şifresi çözülür, yayımlanır ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir.
 
-View existing app settings in the **Azure: Functions** area by expanding your subscription, your function app, and **Application Settings**.
+Aboneliğinizi, işlev uygulamanızı ve **uygulama ayarlarınızı**genişleterek **Azure: Functions** alanındaki mevcut uygulama ayarlarını görüntüleyin.
 
-![View function app settings in Visual Studio Code](./media/functions-develop-vs-code/view-app-settings.png)
+![İşlev uygulaması ayarlarını Visual Studio Code görüntüle](./media/functions-develop-vs-code/view-app-settings.png)
 
-### <a name="download-settings-from-azure"></a>Download settings from Azure
+### <a name="download-settings-from-azure"></a>Azure 'dan ayarları indirin
 
-If you've created application settings in Azure, you can download them into your local.settings.json file by using the **Azure Functions: Download Remote Settings** command.
+Azure 'da uygulama ayarları oluşturduysanız, **Azure işlevleri: uzak ayarları indir** komutunu kullanarak bunları yerel. Settings. JSON dosyanıza indirebilirsiniz.
 
-As with uploading, if the local file is encrypted, it's decrypted, updated, and encrypted again. If there are settings that have conflicting values in the two locations, you're prompted to choose how to proceed.
+Karşıya yüklenirken olduğu gibi, yerel dosya şifrelenirse, yeniden çözülür, güncelleştirilir ve şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir.
 
-## <a name="monitoring-functions"></a>Monitoring functions
+## <a name="monitoring-functions"></a>İzleme işlevleri
 
-When you [run functions locally](#run-functions-locally), log data is streamed to the Terminal console. You can also get log data when your Functions project is running in a function app in Azure. You can either connect to streaming logs in Azure to see near-real-time log data, or you can enable Application Insights for a more complete understanding of how your function app is behaving.
+[İşlevleri yerel olarak çalıştırdığınızda](#run-functions-locally), günlük verileri Terminal konsoluna akışla kaydedilir. Ayrıca, Işlevler projeniz Azure 'daki bir işlev uygulamasında çalışırken günlük verilerini de alabilirsiniz. Neredeyse gerçek zamanlı günlük verilerini görmek için Azure 'daki akış günlüklerine bağlanabilir ya da işlev uygulamanızın nasıl davrandığının daha ayrıntılı bir şekilde anlayabilmesi için Application Insights etkinleştirebilirsiniz.
 
-### <a name="streaming-logs"></a>Streaming logs
+### <a name="streaming-logs"></a>Akış günlükleri
 
-When you're developing an application, it's often useful to see logging information in near-real time. You can view a stream of log files being generated by your functions. This output is an example of streaming logs for a request to an HTTP-triggered function:
+Bir uygulama geliştirirken genellikle günlüğe kaydetme bilgilerini neredeyse gerçek zamanlı olarak görmeniz yararlı olur. İşlevleriniz tarafından oluşturulan günlük dosyalarının akışını görüntüleyebilirsiniz. Bu çıktı, HTTP ile tetiklenen bir işleve yönelik bir istek için akış günlüğü örneği örneğidir:
 
-![Streaming logs output for HTTP trigger](media/functions-develop-vs-code/streaming-logs-vscode-console.png)
+![HTTP tetikleyicisi için akış günlüğü çıkışı](media/functions-develop-vs-code/streaming-logs-vscode-console.png)
 
-To learn more, see [Streaming logs](functions-monitoring.md#streaming-logs).
+Daha fazla bilgi için bkz. [akış günlükleri](functions-monitoring.md#streaming-logs).
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> Streaming logs support only a single instance of the Functions host. When your function is scaled to multiple instances, data from other instances isn't shown in the log stream. [Live Metrics Stream](../azure-monitor/app/live-stream.md) in Application Insights does support multiple instances. While also in near-real time, streaming analytics is based on [sampled data](functions-monitoring.md#configure-sampling).
+> Akış günlükleri, Işlevlerin yalnızca tek bir örneğini destekler. İşleviniz birden çok örneğe ölçeklenirse, diğer örneklerden alınan veriler günlük akışında gösterilmez. Application Insights [canlı ölçüm akışı](../azure-monitor/app/live-stream.md) birden fazla örneği destekler. Ayrıca, neredeyse gerçek zamanlı olarak, Akış Analizi [örneklenmiş verileri](functions-monitoring.md#configure-sampling)temel alır.
 
 ### <a name="application-insights"></a>Application Insights
 
-We recommend that you monitor the execution of your functions by integrating your function app with Application Insights. When you create a function app in the Azure portal, this integration occurs by default. When you create your function app during Visual Studio publishing, you need to integrate Application Insights yourself.
+İşlev uygulamanızı Application Insights ile tümleştirerek işlevlerinizin yürütülmesini izlemenizi öneririz. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak oluşur. Visual Studio yayımlama sırasında işlev uygulamanızı oluşturduğunuzda Application Insights kendiniz tümleştirmeniz gerekir.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-To learn more, see [Monitor Azure Functions](functions-monitoring.md).
+Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
-## <a name="c-script-projects"></a>C\# script projects
+## <a name="c-script-projects"></a>C\# betik projeleri
 
-By default, all C# projects are created as [C# compiled class library projects](functions-dotnet-class-library.md). If you prefer to work with C# script projects instead, you must select C# script as the default language in the Azure Functions extension settings:
+Varsayılan olarak, tüm C# projeler [ C# derlenmiş sınıf kitaplığı projeleri](functions-dotnet-class-library.md)olarak oluşturulur. Bunun yerine C# betik projeleriyle çalışmayı tercih ediyorsanız, komut dosyasını Azure işlevleri uzantısı C# ayarlarında varsayılan dil olarak seçmeniz gerekir:
 
-1. Select **File** > **Preferences** > **Settings**.
+1. **Dosya** > **tercihleri** > **ayarları**' nı seçin.
 
-1. Go to **User Settings** > **Extensions** > **Azure Functions**.
+1. **Azure işlevleri** > **Kullanıcı ayarları** > **uzantılarına** gidin.
 
-1. Select **C#Script** from **Azure Function: Project Language**.
+1. Azure Işlevinden **C # betiği** seçin **: proje dili**.
 
-After you complete these steps, calls made to the underlying Core Tools include the `--csx` option, which generates and publishes C# script (.csx) project files. When you have this default language specified, all projects that you create default to C# script projects. You're not prompted to choose a project language when a default is set. To create projects in other languages, you must change this setting or remove it from the user settings.json file. After you remove this setting, you're again prompted to choose your language when you create a project.
+Bu adımları tamamladıktan sonra, temel alınan temel araçlara yapılan çağrılar, betik (. CSX) proje dosyalarını üreten ve C# yayımlayan `--csx` seçeneğini içerir. Bu varsayılan dili belirttiğinizde, varsayılan olarak oluşturduğunuz tüm projeler C# komut dosyası projelerine yapılır. Varsayılan değer ayarlandığında bir proje dili seçmeniz istenmez. Diğer dillerde proje oluşturmak için bu ayarı değiştirmeniz veya Kullanıcı ayarları. json dosyasından kaldırmanız gerekir. Bu ayarı kaldırdıktan sonra bir proje oluşturduğunuzda dilinizi seçmeniz istenir.
 
-## <a name="command-palette-reference"></a>Command palette reference
+## <a name="command-palette-reference"></a>Komut paleti başvurusu
 
-The Azure Functions extension provides a useful graphical interface in the area for interacting with your function apps in Azure. The same functionality is also available as commands in the command palette (F1). These Azure Functions commands are available:
+Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim kurmak için alanında yararlı bir grafik arabirimi sağlar. Aynı işlevsellik, komut paletinde (F1) komutlar olarak da kullanılabilir. Bu Azure Işlevleri komutları kullanılabilir:
 
-|Azure Functions command  | Açıklama  |
+|Azure Işlevleri komutu  | Açıklama  |
 |---------|---------|
-|**Add New Settings**  |  Creates a new application setting in Azure. To learn more, see [Publish application settings](#publish-application-settings). You might also need to [download this setting to your local settings](#download-settings-from-azure). |
-| **Configure Deployment Source** | Connects your function app in Azure to a local Git repository. To learn more, see [Continuous deployment for Azure Functions](functions-continuous-deployment.md). |
-| **Connect to GitHub Repository** | Connects your function app to a GitHub repository. |
-| **Copy Function URL** | Gets the remote URL of an HTTP-triggered function that's running in Azure. To learn more, see [Get the URL of the deployed function](#get-the-url-of-the-deployed-function). |
-| **Create function app in Azure** | Creates a new function app in your subscription in Azure. To learn more, see the section on how to [publish to a new function app in Azure](#publish-to-azure).        |
-| **Decrypt Settings** | Decrypts [local settings](#local-settings-file) that have been encrypted by **Azure Functions: Encrypt Settings**.  |
-| **Delete Function App** | Removes a function app from your subscription in Azure. When there are no other apps in the App Service plan, you're given the option to delete that too. Other resources, like storage accounts and resource groups, aren't deleted. To remove all resources, you should instead [delete the resource group](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). Your local project isn't affected. |
-|**Delete Function**  | Removes an existing function from a function app in Azure. Because this deletion doesn't affect your local project, instead consider removing the function locally and then [republishing your project](#republish-project-files). |
-| **Delete Proxy** | Removes an Azure Functions proxy from your function app in Azure. To learn more about proxies, see [Work with Azure Functions Proxies](functions-proxies.md). |
-| **Delete Setting** | Deletes a function app setting in Azure. This deletion doesn't affect settings in your local.settings.json file. |
-| **Disconnect from Repo**  | Removes the [continuous deployment](functions-continuous-deployment.md) connection between a function app in Azure and a source control repository. |
-| **Download Remote Settings** | Downloads settings from the chosen function app in Azure into your local.settings.json file. If the local file is encrypted, it's decrypted, updated, and encrypted again. If there are settings that have conflicting values in the two locations, you're prompted to choose how to proceed. Be sure to save changes to your local.settings.json file before you run this command. |
-| **Edit settings** | Changes the value of an existing function app setting in Azure. This command doesn't affect settings in your local.settings.json file.  |
-| **Encrypt settings** | Encrypts individual items in the `Values` array in the [local settings](#local-settings-file). In this file, `IsEncrypted` is also set to `true`, which specifies that the local runtime will decrypt settings before using them. Encrypt local settings to reduce the risk of leaking valuable information. In Azure, application settings are always stored encrypted. |
-| **Execute Function Now** | Manually starts a [timer-triggered function](functions-bindings-timer.md) in Azure. This command is used for testing. To learn more about triggering non-HTTP functions in Azure, see [Manually run a non HTTP-triggered function](functions-manually-run-non-http.md). |
-| **Initialize Project for Use with VS Code** | Adds the required Visual Studio Code project files to an existing Functions project. Use this command to work with a project that you created by using Core Tools. |
-| **Install or Update Azure Functions Core Tools** | Installs or updates [Azure Functions Core Tools], which is used to run functions locally. |
-| **Redeploy**  | Lets you redeploy project files from a connected Git repository to a specific deployment in Azure. To republish local updates from Visual Studio Code, [republish your project](#republish-project-files). |
-| **Rename Settings** | Changes the key name of an existing function app setting in Azure. This command doesn't affect settings in your local.settings.json file. After you rename settings in Azure, you should [download those changes to the local project](#download-settings-from-azure). |
-| **Restart** | Restarts the function app in Azure. Deploying updates also restarts the function app. |
-| **Set AzureWebJobsStorage**| Sets the value of the `AzureWebJobsStorage` application setting. This setting is required by Azure Functions. It's set when a function app is created in Azure. |
-| **Start** | Starts a stopped function app in Azure. |
-| **Start Streaming Logs** | Starts the streaming logs for the function app in Azure. Use streaming logs during remote troubleshooting in Azure if you need to see logging information in near-real time. To learn more, see [Streaming logs](#streaming-logs). |
-| **Stop** | Stops a function app that's running in Azure. |
-| **Stop Streaming Logs** | Stops the streaming logs for the function app in Azure. |
-| **Toggle as Slot Setting** | When enabled, ensures that an application setting persists for a given deployment slot. |
-| **Uninstall Azure Functions Core Tools** | Removes Azure Functions Core Tools, which is required by the extension. |
-| **Upload Local Settings** | Uploads settings from your local.settings.json file to the chosen function app in Azure. If the local file is encrypted, it's decrypted, uploaded, and encrypted again. If there are settings that have conflicting values in the two locations, you're prompted to choose how to proceed. Be sure to save changes to your local.settings.json file before you run this command. |
-| **View Commit in GitHub** | Shows you the latest commit in a specific deployment when your function app is connected to a repository. |
-| **View Deployment Logs** | Shows you the logs for a specific deployment to the function app in Azure. |
+|**Yeni ayarlar Ekle**  |  Azure 'da yeni bir uygulama ayarı oluşturur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings). Ayrıca, [Bu ayarı yerel ayarlarınıza indirmeniz](#download-settings-from-azure)gerekebilir. |
+| **Dağıtım kaynağını Yapılandır** | İşlev uygulamanızı Azure 'da yerel bir git deposuna bağlar. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md). |
+| **GitHub deposuna Bağlan** | İşlev uygulamanızı bir GitHub deposuna bağlar. |
+| **Işlev URL 'sini Kopyala** | Azure 'da çalışan HTTP ile tetiklenen bir işlevin uzak URL 'sini alır. Daha fazla bilgi için bkz. [dağıtılan IŞLEVIN URL 'Sini alma](#get-the-url-of-the-deployed-function). |
+| **Azure 'da işlev uygulaması oluşturma** | Azure 'da aboneliğinizde yeni bir işlev uygulaması oluşturur. Daha fazla bilgi edinmek için bkz. [Azure 'da yeni bir işlev uygulamasına yayımlama](#publish-to-azure)hakkında bölümüne bakın.        |
+| **Ayarları çöz** | Azure Işlevleri tarafından şifrelenmiş [yerel ayarların](#local-settings-file) şifrelerini çözer **: şifreleme ayarları**.  |
+| **İşlev Uygulaması Sil** | Azure 'daki aboneliğinizden bir işlev uygulamasını kaldırır. App Service planında başka uygulama yoksa, bunu silme seçeneği sunulur. Depolama hesapları ve kaynak grupları gibi diğer kaynaklar silinmez. Tüm kaynakları kaldırmak için, bunun yerine [kaynak grubunu silmelisiniz](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). Yerel projeniz etkilenmez. |
+|**Delete Işlevi**  | Azure 'daki bir işlev uygulamasından mevcut bir işlevi kaldırır. Bu silme işlemi yerel projenizi etkilemediğinden, bunun yerine işlevi yerel olarak kaldırıp [projenizi yeniden yayımönünde](#republish-project-files)bulundurun. |
+| **Ara sunucuyu Sil** | Azure Işlevleri proxy 'sini Azure 'daki işlev uygulamanızdan kaldırır. Proxy 'ler hakkında daha fazla bilgi için bkz. [Azure işlev proxy'leri Ile çalışma](functions-proxies.md). |
+| **Ayarı Sil** | Azure 'da bir işlev uygulaması ayarını siler. Bu silme işlemi, Local. Settings. JSON dosyanızdaki ayarları etkilemez. |
+| **Deponun bağlantısını kes**  | Azure 'daki bir işlev uygulaması ve bir kaynak denetimi deposu arasındaki [sürekli dağıtım](functions-continuous-deployment.md) bağlantısını kaldırır. |
+| **Uzak ayarları indir** | Azure 'daki seçili işlev uygulamasındaki ayarları yerel. Settings. JSON dosyanıza indirir. Yerel dosya şifrelendiyse, şifresi çözülür, güncelleştirilir ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir. Bu komutu çalıştırmadan önce yerel. Settings. JSON dosyanızdaki değişiklikleri kaydettiğinizden emin olun. |
+| **Ayarları Düzenle** | Azure 'da var olan bir işlev uygulaması ayarının değerini değiştirir. Bu komut yerel. Settings. JSON dosyanızdaki ayarları etkilemez.  |
+| **Şifreleme ayarları** | [Yerel ayarlarda](#local-settings-file)`Values` dizisindeki ayrı öğeleri şifreler. Bu dosyada, `IsEncrypted` Ayrıca, yerel çalışma zamanının onları kullanmadan önce ayarların şifresini çözmesini belirten `true`olarak ayarlanır. Değerli bilgilerin sızması riskini azaltmak için yerel ayarları şifreleyin. Azure 'da uygulama ayarları her zaman şifreli olarak depolanır. |
+| **Işlevi Şimdi Çalıştır** | Azure 'da [Zamanlayıcı tarafından tetiklenen bir işlevi](functions-bindings-timer.md) el ile başlatır. Bu komut test için kullanılır. HTTP olmayan işlevleri Azure 'da tetikleme hakkında daha fazla bilgi edinmek için bkz. [http ile tetiklenen bir Işlevi el ile çalıştırma](functions-manually-run-non-http.md). |
+| **Projeyi VS Code ile kullanım için Başlat** | Gerekli Visual Studio Code proje dosyalarını var olan Işlevler projesine ekler. Temel araçları kullanarak oluşturduğunuz bir projeyle çalışmak için bu komutu kullanın. |
+| **Azure Functions Core Tools yüklemeyi veya güncelleştirmeyi** | İşlevleri yerel olarak çalıştırmak için kullanılan [Azure Functions Core Tools]yüklenir veya güncelleştirir. |
+| **Neden**  | Bağlı bir git deposundan proje dosyalarını Azure 'daki belirli bir dağıtıma yeniden dağıtmanıza olanak tanır. Visual Studio Code yerel güncelleştirmeleri yeniden yayımlamak için [projenizi yeniden yayımlayın](#republish-project-files). |
+| **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut yerel. Settings. JSON dosyanızdaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
+| **Uygulamasını** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
+| **AzureWebJobsStorage ayarla**| `AzureWebJobsStorage` uygulama ayarının değerini ayarlar. Bu ayar, Azure Işlevleri için gereklidir. Azure 'da bir işlev uygulaması oluşturulduğunda ayarlanır. |
+| **Start** | Azure 'da durdurulmuş bir işlev uygulaması başlatır. |
+| **Akış günlüklerini başlatma** | Azure 'da işlev uygulaması için akış günlüklerini başlatır. Günlük bilgilerini neredeyse gerçek zamanlı olarak görmeniz gerekiyorsa Azure 'da uzaktan sorun giderme sırasında akış günlüklerini kullanın. Daha fazla bilgi için bkz. [akış günlükleri](#streaming-logs). |
+| **Durdurulması** | Azure 'da çalışan bir işlev uygulamasını sonlandırır. |
+| **Akış günlüklerini durdur** | Azure 'da işlev uygulaması için akış günlüklerini sonlandırır. |
+| **Yuva ayarı olarak değiştirme** | Etkinleştirildiğinde, belirli bir dağıtım yuvası için bir uygulama ayarının devam ettiğinden emin olur. |
+| **Azure Functions Core Tools kaldır** | Uzantısının gerektirdiği Azure Functions Core Tools kaldırır. |
+| **Yerel ayarları karşıya yükle** | Yerel. Settings. JSON dosyanızdaki ayarları Azure 'da seçilen işlev uygulamasına yükler. Yerel dosya şifrelendiyse, dosyanın şifresi çözülür, karşıya yüklenir ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir. Bu komutu çalıştırmadan önce yerel. Settings. JSON dosyanızdaki değişiklikleri kaydettiğinizden emin olun. |
+| **GitHub 'da yürütmeyi görüntüle** | İşlev uygulamanız depoya bağlıyken belirli bir dağıtımda en son yürütmeyi gösterir. |
+| **Dağıtım günlüklerini görüntüle** | Azure 'daki işlev uygulamasına belirli bir dağıtımın günlüklerini gösterir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more about Azure Functions Core Tools, see [Work with Azure Functions Core Tools](functions-run-local.md).
+Azure Functions Core Tools hakkında daha fazla bilgi için bkz. [Azure Functions Core Tools Ile çalışma](functions-run-local.md).
 
-To learn more about developing functions as .NET class libraries, see [Azure Functions C# developer reference](functions-dotnet-class-library.md). This article also provides links to examples of how to use attributes to declare the various types of bindings supported by Azure Functions.
+.NET sınıf kitaplıkları olarak işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure C# işlevleri geliştirici başvurusu](functions-dotnet-class-library.md). Bu makalede ayrıca, Azure Işlevleri tarafından desteklenen çeşitli tür bağlamaları bildirmek üzere özniteliklerin nasıl kullanılacağına dair örneklere bağlantılar sağlanır.
 
 [Visual Studio Code için Azure İşlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 [Azure Functions Core Tools]: functions-run-local.md

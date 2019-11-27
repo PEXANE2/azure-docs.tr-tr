@@ -1,6 +1,6 @@
 ---
-title: Overview of Azure Active Directory Domain Services | Microsoft Docs
-description: In this overview, learn what Azure Active Directory Domain Services provides and how to use it in your organization to provide identity services to applications and services in the cloud.
+title: Azure Active Directory Domain Services genel bakış | Microsoft Docs
+description: Bu genel bakışta, bulutta uygulamalara ve hizmetlere kimlik hizmetleri sağlamak için Azure Active Directory Domain Services neler sağladığını ve kuruluşunuzda nasıl kullanacağınızı öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,107 +17,107 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481362"
 ---
-# <a name="what-is-azure-active-directory-domain-services"></a>What is Azure Active Directory Domain Services?
+# <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services nedir?
 
-Azure Active Directory Domain Services (Azure AD DS) provides managed domain services such as domain join, group policy, lightweight directory access protocol (LDAP), and Kerberos / NTLM authentication that is fully compatible with Windows Server Active Directory. You use these domain services without the need to deploy, manage, and patch domain controllers in the cloud. Azure AD DS integrates with your existing Azure AD tenant, which makes it possible for users to sign in using their existing credentials. You can also use existing groups and user accounts to secure access to resources, which provides a smoother lift-and-shift of on-premises resources to Azure.
+Azure Active Directory Domain Services (Azure AD DS), etki alanına katılması, Grup ilkesi, Hafif Dizin Erişim Protokolü (LDAP) ve Windows Server etkin ile tam olarak uyumlu Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar Dizinden. Bulutta etki alanı denetleyicileri dağıtma, yönetme ve düzeltme eki uygulama gerekmeden bu etki alanı hizmetlerini kullanırsınız. Azure AD DS, mevcut Azure AD kiracınızla tümleştirilir, bu da kullanıcıların mevcut kimlik bilgilerini kullanarak oturum açmasını olanaklı kılar. Ayrıca, mevcut grupları ve Kullanıcı hesaplarını, kaynaklara erişimi güvenli hale getirmek için de kullanabilirsiniz. Bu, şirket içi kaynakların daha yumuşak bir şekilde daha iyi bir şekilde daha iyi bir şekilde daha iyi bir şekilde
 
-Azure AD DS replicates identity information from Azure AD, so works with Azure AD tenants that are cloud-only, or synchronized with an on-premises Active Directory Domain Services (AD DS) environment. The same set of Azure AD DS features exist for both environments.
+Azure AD DS, Azure AD 'den kimlik bilgilerini çoğalttığından, bu nedenle yalnızca bulutta bulunan veya şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenen Azure AD kiracılarıyla birlikte çalışmaktadır. Her iki ortam için de aynı Azure AD DS özellikleri kümesi vardır.
 
-* If you have an existing on-premises AD DS environment, you can synchronize user account information to provide a consistent identity for users.
-* For cloud-only environments, you don't need a traditional on-premises AD DS environment to use the centralized identity services of Azure AD DS.
+* Mevcut bir şirket içi AD DS ortamınız varsa, kullanıcılar için tutarlı bir kimlik sağlamak üzere Kullanıcı hesabı bilgilerini eşzamanlı hale getirebilirsiniz.
+* Yalnızca bulut ortamlarında, Azure AD DS merkezi kimlik hizmetlerini kullanmak için geleneksel bir şirket içi AD DS ortamına ihtiyacınız yoktur.
 
-The following video provides an overview of how Azure AD DS integrates with your applications and workloads to provide identity services in the cloud:
+Aşağıdaki videoda, Bulutta kimlik hizmetleri sağlamak için Azure AD DS uygulamalarınızın ve iş yüklerinizde nasıl tümleştirildiğini gösteren bir genel bakış sunulmaktadır:
 
 <br />
 
 >[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
-## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Common ways to provide identity solutions in the cloud
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Bulutta kimlik çözümleri sağlamanın yaygın yolları
 
-When you migrate existing workloads to the cloud, directory-aware applications may use LDAP for read or write access to an on-premises AD DS directory. Applications that run on Windows Server are typically deployed on domain-joined virtual machines (VMs) so they can be managed securely using Group Policy. To authenticate end users, the applications may also rely on Windows-integrated authentication, such as Kerberos or NTLM authentication.
+Mevcut iş yüklerini buluta geçirdiğinizde, dizin durumunu algılayan uygulamalar, bir şirket içi AD DS dizinine okuma veya yazma erişimi için LDAP kullanabilir. Windows Server 'da çalışan uygulamalar genellikle etki alanına katılmış sanal makinelere (VM 'Ler) dağıtılır ve bu sayede grup ilkesi kullanarak güvenli bir şekilde yönetilebilir. Uygulamalar, son kullanıcıların kimliğini doğrulamak için Kerberos veya NTLM kimlik doğrulaması gibi Windows tümleşik kimlik doğrulamasına de bağlı olabilir.
 
-IT administrators often use one of the following solutions to provide an identity service to applications that run in Azure:
+BT yöneticileri, Azure 'da çalışan uygulamalara bir kimlik hizmeti sağlamak için genellikle aşağıdaki çözümlerden birini kullanır:
 
-* Configure a site-to-site VPN connection between workloads that run in Azure and the on-premises AD DS environment.
-* Create replica domain controllers using Azure virtual machines (VMs) to extend the AD DS domain / forest.
-* Deploy a standalone AD DS environment in Azure using domain controllers that run on Azure VMs.
+* Azure 'da ve şirket içi AD DS ortamında çalışan iş yükleri arasında siteden siteye VPN bağlantısı yapılandırın.
+* AD DS etki alanı/ormanı genişletmek için Azure sanal makinelerini (VM 'Ler) kullanarak çoğaltma etki alanı denetleyicileri oluşturun.
+* Azure VM 'lerde çalışan etki alanı denetleyicilerini kullanarak Azure 'da tek başına AD DS ortamı dağıtın.
 
-With these approaches, VPN connections to the on-premises directory make applications vulnerable to transient network glitches or outages. If you deploy domain controllers using VMs in Azure, the IT team VMs must manage, secure, patch, monitor, backup, and troubleshoot them.
+Bu yaklaşımlar sayesinde, şirket içi dizine yönelik VPN bağlantıları, uygulamaları geçici ağ kesintileri veya kesintiler için savunmasız hale getirir. Azure 'da VM 'Leri kullanarak etki alanı denetleyicileri dağıtırsanız, BT ekibi VM 'Leri bunları yönetmeli, güvenli, düzeltme eki, izleme, yedekleme ve sorunlarını gidermelidir.
 
-Azure AD DS offers alternatives to the need to create VPN connections back to an on-premises AD DS environment or run and manage VMs in Azure to provide identity services. As a managed service, Azure AD DS reduces the complexity to create an integrated identity solution for both hybrid and cloud-only environments.
+Azure AD DS, kimlik hizmetleri sağlamak için şirket içi AD DS ortamına VPN bağlantıları oluşturma veya Azure 'da VM 'Leri çalıştırma ve yönetme gereksinimlerine yönelik alternatifler sunmaktadır. Yönetilen bir hizmet olarak Azure AD DS, hem karma hem de yalnızca bulut ortamları için tümleşik bir kimlik çözümü oluşturma karmaşıklığını azaltır.
 
-## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS features and benefits
+## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS özellikleri ve avantajları
 
-To provide identity services to applications and VMs in the cloud, Azure AD DS is fully compatible with a traditional AD DS environment for operations such as domain-join, secure LDAP (LDAPS), Group Policy and DNS management, and LDAP bind and read support. LDAP write support is available for objects created in the Azure AD DS managed domain, but not resources synchronized from Azure AD. The following features of Azure AD DS simplify deployment and management operations:
+Bulutta uygulamalara ve sanal makinelere kimlik hizmetleri sağlamak için Azure AD DS, etki alanına katılması, Güvenli LDAP (LDAPS), grup ilkesi ve DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel bir AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD 'den eşitlenen kaynaklar için kullanılabilir. Azure AD DS dağıtım ve yönetim işlemlerini basitleştirecek aşağıdaki özellikler:
 
-* **Simplified deployment experience:** Azure AD DS is enabled for your Azure AD tenant using a single wizard in the Azure portal.
-* **Integrated with Azure AD:** User accounts, group memberships, and credentials are automatically available from your Azure AD tenant. New users, groups, or changes to attributes from your Azure AD tenant or your on-premises AD DS environment are automatically synchronized to Azure AD DS.
-    * Accounts in external directories linked to your Azure AD aren't available in Azure AD DS. Credentials aren't available for those external directories, so can't be synchronized into an Azure AD DS managed domain.
-* **Use your corporate credentials/passwords:** Passwords for users in your Azure AD tenant are the same in Azure AD DS. Users can use their corporate credentials to domain-join machines, sign in interactively or over remote desktop, and authenticate against the Azure AD DS managed domain.
-* **NTLM and Kerberos authentication:** With support for NTLM and Kerberos authentication, you can deploy applications that rely on Windows-integrated authentication.
-* **High availability:** Azure AD DS includes multiple domain controllers, which provide high availability for your managed domain. This high availability guarantees service uptime and resilience to failures.
-    * In regions that support [Azure Availability Zones][availability-zones], these domain controllers are also distributed across zones for additional resiliency. 
+* **Basitleştirilmiş dağıtım deneyimi:** Azure AD DS, Azure portal tek bir sihirbaz kullanılarak Azure AD kiracınız için etkinleştirilmiştir.
+* **Azure AD Ile tümleşik:** Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri Azure AD kiracınızdan otomatik olarak kullanılabilir. Azure AD kiracınızdan veya şirket içi AD DS ortamınızda bulunan yeni kullanıcılar, gruplar veya özniteliklerde yapılan değişiklikler otomatik olarak Azure AD DS eşitlenir.
+    * Azure AD 'nize bağlı dış dizinlerdeki hesaplar Azure AD DS kullanılamıyor. Bu dış dizinler için kimlik bilgileri kullanılamaz, bu nedenle Azure AD DS yönetilen bir etki alanına eşitlenemez.
+* **Şirket kimlik bilgilerinizi/parolalarınızı kullanın:** Azure AD kiracınızdaki kullanıcılar için parolalar Azure AD DS ile aynıdır. Kullanıcılar, Şirket kimlik bilgilerini etki alanına katmak, etkileşimli olarak veya uzak masaüstü üzerinden oturum açmak ve Azure AD DS yönetilen etki alanında kimlik doğrulaması yapmak için kullanabilir.
+* **NTLM ve Kerberos kimlik doğrulaması:** NTLM ve Kerberos kimlik doğrulaması desteğiyle, Windows ile tümleşik kimlik doğrulamasına dayanan uygulamalar dağıtabilirsiniz.
+* **Yüksek kullanılabilirlik:** Azure AD DS, yönetilen etki alanınız için yüksek kullanılabilirlik sağlayan birden çok etki alanı denetleyicisi içerir. Bu yüksek kullanılabilirlik, hizmet çalışma süresini ve esnekliği hatalara karşı garanti eder.
+    * [Azure kullanılabilirlik alanları][availability-zones]destekleyen bölgelerde, bu etki alanı denetleyicileri ek dayanıklılık için bölgelere da dağıtılır. 
 
-Some key aspects of an Azure AD DS managed domain include the following:
+Azure AD DS yönetilen bir etki alanının bazı önemli yönleri şunları içerir:
 
-* The Azure AD DS managed domain is a stand-alone domain. It isn't an extension of an on-premises domain.
-* Your IT team doesn't need to manage, patch, or monitor domain controllers for this Azure AD DS managed domain.
+* Azure AD DS yönetilen etki alanı tek başına bir etki alanıdır. Şirket içi bir etki alanının uzantısı değildir.
+* BT takımınızın bu Azure AD DS yönetilen etki alanı için etki alanı denetleyicilerini yönetmesi, düzeltme eki uygulama veya izleme yapması gerekmez.
 
-For hybrid environments that run AD DS on-premises, you don't need to manage AD replication to the Azure AD DS managed domain. User accounts, group memberships, and credentials from your on-premises directory are synchronized to Azure AD via [Azure AD Connect][azure-ad-connect]. These user accounts, group memberships, and credentials are automatically available within the Azure AD DS managed domain.
+Şirket içinde AD DS çalıştıran hibrit ortamlarda, AD çoğaltmasını Azure AD DS yönetilen etki alanına yönetmeniz gerekmez. Şirket içi dizininizdeki Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri [Azure AD Connect][azure-ad-connect]aracılığıyla Azure AD ile eşitlenir. Bu Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri, Azure AD DS yönetilen etki alanı içinde otomatik olarak kullanılabilir.
 
-## <a name="how-does-azure-ad-ds-work"></a>How does Azure AD DS work?
+## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS nasıl çalışır?
 
-To provide identity services, Azure creates an AD DS instance on a virtual network of your choice. Behind the scenes, and without the need for you to manage, secure, or update, redundancy is provided through a pair of Windows Server domain controllers.
+Azure, kimlik hizmetleri sağlamak için seçtiğiniz bir sanal ağ üzerinde bir AD DS örneği oluşturur. Arka planda ve yönetmeniz, güvenli hale getirmeniz veya güncelleştirmeniz gerekmeden yedekliliğe sahip bir Windows Server etki alanı denetleyicileri çifti sağlanır.
 
-The Azure AD DS managed domain is configured to perform a one-way synchronization from Azure AD to provide access to a central set of users, groups, and credentials. You can create resources directly in the Azure AD DS managed domain, but they're not synchronized back to Azure AD. Applications, services, and VMs in Azure that connect to this virtual network can then use common AD DS features such as domain join, group policy, LDAP, and Kerberos / NTLM authentication.
+Azure AD DS yönetilen etki alanı, merkezi bir grup kullanıcıya, gruba ve kimlik bilgilerine erişim sağlamak için Azure AD 'den tek yönlü bir eşitleme gerçekleştirecek şekilde yapılandırılmıştır. Kaynakları doğrudan Azure AD DS yönetilen etki alanında oluşturabilirsiniz, ancak Azure AD 'ye geri eşitlenmez. Azure 'daki bu sanal ağa bağlanan uygulamalar, hizmetler ve VM 'Ler, etki alanına katılması, Grup ilkesi, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi ortak AD DS özellikleri kullanabilir.
 
-In a hybrid environment with an on-premises AD DS environment, [Azure AD Connect][azure-ad-connect] synchronizes identity information with Azure AD.
+Şirket içi AD DS ortamı olan bir karma ortamda, [Azure AD Connect][azure-ad-connect] kimlik BILGILERINI Azure AD ile eşitler.
 
-![Synchronization in Azure AD Domain Services with Azure AD and on-premises Active Directory Domain Services using AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![AD Connect kullanarak Azure AD ve şirket içi Active Directory Domain Services Azure AD Domain Services eşitleme](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-To see Azure AD DS in action, let's look at a couple of examples:
+Azure AD DS 'yi eylemde görmek için birkaç örneğe göz atalım:
 
-* [Azure AD DS for hybrid organizations](#azure-ad-ds-for-hybrid-organizations)
-* [Azure AD DS for cloud-only organizations](#azure-ad-ds-for-cloud-only-organizations)
+* [Hibrit kuruluşlar için Azure AD DS](#azure-ad-ds-for-hybrid-organizations)
+* [Yalnızca bulutta kuruluşlar için Azure AD DS](#azure-ad-ds-for-cloud-only-organizations)
 
-### <a name="azure-ad-ds-for-hybrid-organizations"></a>Azure AD DS for hybrid organizations
+### <a name="azure-ad-ds-for-hybrid-organizations"></a>Hibrit kuruluşlar için Azure AD DS
 
-Many organizations run a hybrid infrastructure that includes both cloud and on-premises application workloads. Legacy applications migrated to Azure as part of a lift and shift strategy may use traditional LDAP connections to provide identity information. To support this hybrid infrastructure, identity information from an on-premises AD DS environment can be synchronized to an Azure AD tenant. Azure AD DS then provides these legacy applications in Azure with an identity source, without the need to configure and manage application connectivity back to on-premises directory services.
+Birçok kuruluş, hem bulut hem de şirket içi uygulama iş yüklerini içeren karma bir altyapı çalıştırır. Yükseltme ve kaydırma stratejisinin bir parçası olarak Azure 'a geçirilen eski uygulamalar, kimlik bilgilerini sağlamak için geleneksel LDAP bağlantıları kullanabilir. Bu karma altyapıyı desteklemek için, şirket içi AD DS ortamından kimlik bilgileri bir Azure AD kiracısıyla eşitlenebilir. Daha sonra Azure AD DS, Azure 'da bu eski uygulamaları bir kimlik kaynağıyla, şirket içi dizin hizmetlerine geri uygulama bağlantısını yapılandırmaya ve yönetmeye gerek kalmadan sağlar.
 
-Let's look at an example for Litware Corporation, a hybrid organization that runs both on-premises and Azure resources:
+Hem şirket içinde hem de Azure kaynaklarını çalıştıran bir karma kuruluş olan Litwa Corporation için bir örneğe bakalım:
 
-![Azure Active Directory Domain Services for a hybrid organization that includes on-premises synchronization](./media/overview/synced-tenant.png)
+![Şirket içi eşitleme içeren karma kuruluş için Azure Active Directory Domain Services](./media/overview/synced-tenant.png)
 
-* Applications and server workloads that require domain services are deployed in a virtual network in Azure.
-    * This may include legacy applications migrated to Azure as part of a lift and shift strategy.
-* To synchronize identity information from their on-premises directory to their Azure AD tenant, Litware Corporation deploys [Azure AD Connect][azure-ad-connect].
-    * Identity information that is synchronized includes user accounts and group memberships.
-* Litware's IT team enables Azure AD DS for their Azure AD tenant in this, or a peered, virtual network.
-* Applications and VMs deployed in the Azure virtual network can then use Azure AD DS features like domain join, LDAP read, LDAP bind, NTLM and Kerberos authentication, and Group Policy.
+* Etki alanı Hizmetleri gerektiren uygulamalar ve sunucu iş yükleri, Azure 'daki bir sanal ağa dağıtılır.
+    * Bu, yükseltme ve kaydırma stratejisinin bir parçası olarak Azure 'a geçirilen eski uygulamaları içerebilir.
+* Şirket içi dizinlerinden kimlik bilgilerini Azure AD kiracısıyla eşleştirmek için, Litwa şirketi [Azure AD Connect][azure-ad-connect]dağıtır.
+    * Eşitlenen kimlik bilgileri, Kullanıcı hesaplarını ve grup üyeliklerini içerir.
+* Litwonların BT ekibi, bu veya eşlenmiş bir sanal ağ üzerinden Azure AD kiracısı için Azure AD DS sunar.
+* Azure sanal ağında dağıtılan uygulamalar ve VM 'Ler, etki alanına katılması, LDAP okuma, LDAP bağlama, NTLM ve Kerberos kimlik doğrulaması ve grup ilkesi gibi Azure AD DS özelliklerini kullanabilir.
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
 
-### <a name="azure-ad-ds-for-cloud-only-organizations"></a>Azure AD DS for cloud-only organizations
+### <a name="azure-ad-ds-for-cloud-only-organizations"></a>Yalnızca bulutta kuruluşlar için Azure AD DS
 
-A cloud-only Azure AD tenant doesn't have an on-premises identity source. User accounts and group memberships, for example, are created and managed directly in in Azure AD.
+Yalnızca bulutta yer alan bir Azure AD kiracısı, şirket içi kimlik kaynağına sahip değildir. Örneğin, Kullanıcı hesapları ve grup üyelikleri doğrudan Azure AD 'de oluşturulur ve yönetilir.
 
-Now let's look at an example for Contoso, a cloud-only organization that only uses Azure AD for identity. All user identities, their credentials, and group memberships are created and managed in Azure AD. There is no additional configuration of Azure AD Connect to synchronize any identity information from an on-premises directory.
+Şimdi yalnızca, kimlik için Azure AD kullanan bir yalnızca bulut organizasyonu olan contoso örneğine göz atalım. Tüm Kullanıcı kimlikleri, kimlik bilgileri ve grup üyelikleri, Azure AD 'de oluşturulur ve yönetilir. Şirket içi bir dizinden herhangi bir kimlik bilgisini eşitlemeye yönelik Azure AD Connect ek bir yapılandırması yoktur.
 
-![Azure Active Directory Domain Services for a cloud-only organization with no on-premises synchronization](./media/overview/cloud-only-tenant.png)
+![Şirket içi eşitleme olmadan yalnızca bulutta yer alan bir kuruluş için Azure Active Directory Domain Services](./media/overview/cloud-only-tenant.png)
 
-* Applications and server workloads that require domain services are deployed in a virtual network in Azure.
-* Contoso's IT team enables Azure AD DS for their Azure AD tenant in this, or a peered, virtual network.
-* Applications and VMs deployed in the Azure virtual network can then use Azure AD DS features like domain join, LDAP read, LDAP bind, NTLM and Kerberos authentication, and Group Policy.
+* Etki alanı Hizmetleri gerektiren uygulamalar ve sunucu iş yükleri, Azure 'daki bir sanal ağa dağıtılır.
+* Contoso BT ekibi, Azure AD kiracısının bu veya eşlenmiş bir sanal ağ için Azure AD DS sunar.
+* Azure sanal ağında dağıtılan uygulamalar ve VM 'Ler, etki alanına katılması, LDAP okuma, LDAP bağlama, NTLM ve Kerberos kimlik doğrulaması ve grup ilkesi gibi Azure AD DS özelliklerini kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more about Azure AD DS compares with other identity solutions and how synchronization works, see the following articles:
+Azure AD DS diğer kimlik çözümleriyle ve eşitlemenin nasıl çalıştığı hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Compare Azure AD DS with Azure AD, Active Directory Domain Services on Azure VMs, and Active Directory Domain Services on-premises][compare]
-* [Learn how Azure AD Domain Services synchronizes with your Azure AD directory][synchronization]
+* [Azure AD DS Azure AD ile karşılaştırın, Azure VM 'lerinde Active Directory Domain Services ve şirket içi Active Directory Domain Services][compare]
+* [Azure AD Domain Services Azure AD dizininizle nasıl eşitleneceğini öğrenin][synchronization]
 
-To get started, [create an Azure AD DS managed domain using the Azure portal][tutorial-create].
+Başlamak için [Azure Portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturun][tutorial-create].
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md

@@ -46,7 +46,7 @@ Reporting Services için KCD 'yi ayarlamak için aşağıdaki adımlarla devam e
 ### <a name="configure-the-service-principal-name-spn"></a>Hizmet asıl adını (SPN) yapılandırma
 
 SPN, Kerberos kimlik doğrulaması kullanan bir hizmetin benzersiz tanımlayıcısıdır. Rapor sunucunuz için uygun bir HTTP SPN 'si olduğundan emin olmanız gerekir. Rapor sunucunuz için uygun hizmet asıl adı 'nı (SPN) yapılandırma hakkında bilgi için bkz. [bir rapor sunucusu Için hizmet asıl adını (SPN) kaydetme](https://msdn.microsoft.com/library/cc281382.aspx).
-Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi için bkz. [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
+Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate kimlik doğrulamasını etkinleştir
 
@@ -70,7 +70,7 @@ KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adı
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından **Active Directory Kullanıcıları ve bilgisayarları**' nı açın.
 2. Bağlayıcıyı çalıştıran bilgisayarı bulmak.  
 3. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
-4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından, **herhangi bir kimlik doğrulama protokolünü kullan**.
+4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
 6. Raporlama Hizmetleri için kullandığınız hizmet hesabını girin. Bu, SPN 'yi Raporlama Hizmetleri Yapılandırması içinde eklediğiniz hesaptır.
 7. **OK (Tamam)** düğmesine tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
@@ -91,15 +91,15 @@ Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
 2. Uygulamanızı yayımladıktan sonra aşağıdaki adımlarla çoklu oturum açma ayarları yapılandırın:
 
-   a. Uygulama sayfasında portalında seçin **çoklu oturum açma**.
+   a. Portaldaki uygulama sayfasında, **Çoklu oturum açma**' yı seçin.
 
    b. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
 
    c. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın.  
 
-   d. Seçin **temsilci oturum açma kimliği** Bağlayıcısı kullanıcılarınız adına kullanın. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Bağlayıcının Kullanıcı adına kullanması için **yetkilendirilmiş oturum açma kimliğini** seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
+   e. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
 
 Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
 

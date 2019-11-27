@@ -1,6 +1,6 @@
 ---
-title: Offboard Azure Sentinel| Microsoft Docs
-description: How to delete your Azure Sentinel instance.
+title: Azure Sentinel | Microsoft Docs
+description: Azure Sentinel örneğinizi silme.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -21,67 +21,67 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464131"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Remove Azure Sentinel from your tenant
+# <a name="remove-azure-sentinel-from-your-tenant"></a>Azure Sentinel 'i kiracınızdan kaldırma
 
-If you no longer want to use the Azure Sentinel, this article explains how to remove it from your tenant.
+Artık Azure Sentinel 'i kullanmak istemiyorsanız, bu makalede onu kiracınızdan nasıl kaldırabileceğiniz açıklanır.
 
-## <a name="how-to-delete-azure-sentinel"></a>How to delete Azure Sentinel
+## <a name="how-to-delete-azure-sentinel"></a>Azure Sentinel 'i silme
 
-In the background, when you install Azure Sentinel, the **SecurityInsights** solution is installed on your selected workspace. So the first thing you need to do is remove the **SecurityInsights** solution.
+Arka planda, Azure Sentinel 'i yüklediğinizde, **Securityınsights** çözümü seçili çalışma alanınıza yüklenir. Yani yapmanız gereken ilk şey **Securityınsights** çözümünü kaldırmın.
 
-1.  Go to **Azure Sentinel**, followed by **Configuration**, followed by **Workspace settings**, and then **Solutions**.
+1.  **Azure Sentinel**'e, ardından **yapılandırma**' ya, **çalışma alanı ayarları**' na ve ardından **çözümler**' e gidin.
 
-2.  Select `SecurityInsights` and click on it.
+2.  `SecurityInsights` seçin ve üzerine tıklayın.
 
-    ![Find the SecurityInsights solution](media/offboard/find-solution.png)
+    ![Securityınsights çözümünü bulun](media/offboard/find-solution.png)
 
-3.  At the top of the page select **Delete**.
+3.  Sayfanın üst kısmında **Sil**' i seçin.
 
     > [!IMPORTANT]
-    > If you remove the workspace, it may affect other solutions and data sources that are using this workspace, including Azure Monitor. To check which solutions are using this workspace, see [List installed monitoring solutions](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). To check which solutions' data is being ingested into the workspace, see [Understanding ingested data volume](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
+    > Çalışma alanını kaldırırsanız, Azure Izleyici dahil olmak üzere bu çalışma alanını kullanan diğer çözümleri ve veri kaynaklarını etkileyebilir. Bu çalışma alanını hangi çözümlerin kullandığını denetlemek için bkz. [yüklü izleme çözümlerini listeleme](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). Çalışma alanına hangi çözümlerin verilerinin kullanıldığını denetlemek için bkz. alınan [veri birimini anlama](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
 
-    ![Delete the SecurityInsights solution](media/offboard/delete-solution.png)
+    ![Securityınsights çözümünü silme](media/offboard/delete-solution.png)
 
-## <a name="what-happens-behind-the-scenes"></a>What happens behind the scenes?
+## <a name="what-happens-behind-the-scenes"></a>Arka planda ne olur?
 
-When you delete the solution, Azure Sentinel takes up to 48 hours to complete the first phase of the deletion process.
+Çözümü sildiğinizde, Azure Sentinel, silme işleminin ilk aşamasını tamamlayacak 48 saate kadar sürer.
 
-After the disconnection is identified, the offboarding process begins.
+Bağlantı kesilmesi tanımlandıktan sonra, çıkarma işlemi başlar.
 
-**The configuration of these connectors is deleted:**
+**Bu bağlayıcıların yapılandırması silinir:**
 -   Office 365
 
 -   AWS
 
--   Microsoft services security alerts (Azure ATP, Microsoft Cloud App Security including Cloud Discovery Shadow IT reporting, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
+-   Microsoft Hizmetleri güvenlik uyarıları (Azure ATP, Cloud Discovery gölge BT raporlama, Azure AD Kimlik Koruması, Microsoft Defender ATP, Azure Güvenlik Merkezi) dahil Microsoft Cloud App Security
 
 -   Tehdit Bilgisi
 
--   Common security logs (including CEF-based logs, Barracuda, and Syslog) (If you have Azure Security Center, these logs will continue to be collected.)
+-   Ortak Güvenlik günlükleri (CEF tabanlı Günlükler, Barkcuda ve syslog dahil) (Azure Güvenlik Merkezi 'Ne sahipseniz, bu Günlükler toplanmaya devam eder.)
 
--   Windows Security Events (If you have Azure Security Center, these logs will continue to be collected.)
+-   Windows güvenlik olayları (Azure Güvenlik Merkezi 'Ne sahipseniz, bu Günlükler toplanmaya devam eder.)
 
-Within the first 48 hours, the data and alert rules (including real-time automation configuration) will no longer be accessible or queryable in Azure Sentinel.
+İlk 48 saat içinde, veri ve uyarı kuralları (gerçek zamanlı Otomasyon yapılandırması dahil) artık Azure Sentinel 'de erişilebilir veya sorgulanabilir olmayacaktır.
 
-**After 30 days these resources are deleted:**
+**Bu kaynaklar 30 gün sonra silinir:**
 
--   Incidents (including investigation metadata)
+-   Olaylar (araştırma meta verileri dahil)
 
 -   Uyarı kuralları
 
--   Bookmarks
+-   Yer işaretleri
 
-Your playbooks, saved workbooks, saved hunting queries, and notebooks are not deleted. **Some may break due to the removed data. You can remove those manually.**
+Playbooks, kaydettiğiniz çalışma kitapları, kaydetme sorguları ve Not defterleri silinmez. **Kaldırılan veriler nedeniyle bazıları kesilebilir. Bunları el ile kaldırabilirsiniz.**
 
-After you remove the service, there is a grace period of 30 days during which you can re-enable the solution and your data and alert rules will be restored but the configured connectors that were disconnected must be reconnected.
+Hizmeti kaldırdıktan sonra, çözümü yeniden etkinleştirebilmeniz için 30 günlük bir yetkisiz kullanım süresi vardır ve veri ve uyarı kuralları geri yüklenir, ancak bağlantısı kesilen yapılandırılmış bağlayıcıların yeniden bağlanması gerekir.
 
 > [!NOTE]
-> If you remove the solution, your subscription will continue to be registered with the Azure Sentinel resource provider. **You can remove it manually.**
+> Çözümü kaldırırsanız aboneliğiniz Azure Sentinel kaynak sağlayıcısı ile kaydettirilmeye devam edecektir. **El ile kaldırabilirsiniz.**
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-In this document, you learned how to remove the Azure Sentinel service. If you change your mind and want to install it again:
-- Get started [on-boarding Azure Sentinel](quickstart-onboard.md).
+Bu belgede, Azure Sentinel hizmetini kaldırmayı öğrendiniz. Fikrinizi değiştirirseniz ve yeniden yüklemek istiyorsanız:
+- [Azure Sentinel 'i oluşturma ile](quickstart-onboard.md)çalışmaya başlayın.
 

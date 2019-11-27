@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798700"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538136"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Azure Farmtts 'ye Genel Bakış
 
@@ -19,7 +19,7 @@ Azure Farmzts, Azure hizmetleri ve özellikleri koleksiyonudur ve akıllı veri 
 > [!NOTE]
 > Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtempts forumunu](https://aka.ms/FarmBeatsMSDN ) kullanın.
 
-Azure Farmusing 'leri kullanarak, sensörler, uydu, Drones gibi çeşitli kaynaklardan verileri bir grup bağlamında (ilgilendiğiniz coğrafi alan) alabilirsiniz.
+Azure Farmusing 'leri kullanarak, algılayıcı, uydu, Drones gibi çeşitli kaynaklardan verileri bir grup bağlamında (ilgilendiğiniz coğrafi alan) alabilirsiniz.
 
 Şunları yapabileceksiniz:
 
@@ -36,11 +36,11 @@ Azure Farm, aşağıdakileri yapmak için sağlam ve kolay bir yol sağlar:
 - Toplu veri kümelerinin üstünde AI/ML modelleri oluşturarak eyleme dönüştürülebilir Öngörüler elde edin.
 - Grup durumu Danışma belgeleri sunarak dijital tarım çözümünüzü oluşturun veya geliştirin.
 
-Azure Farmcomponents bileşenleri, bu makalenin aşağıdaki bölümlerinde ele alınmıştır.
+Azure Farmtempts bileşenleri, bu makalenin aşağıdaki bölümlerinde ele alınmıştır.
 
 ## <a name="data-hub"></a>Veri Merkezi
 
-Sağlayıcılar arasında çeşitli agriclaral veri kümelerinin toplama, normalleştirme ve kümeleştirme özelliğini sağlayan bir API katmanı. Bu önizlemeden itibaren, iki algılayıcı sağlayıcısı [Davis aletlerinin](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), One uydu canlandırın sağlayıcısı [Sentinel-2](https://sentinel.esa.int/web/sentinel/home)ve iki adet drone Imagery sağlayıcısı [senseuçarak](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/)' den yararlanabilirsiniz. Veri merkezi bir API platformu olarak tasarlanmıştır ve Azure Farmpts ile tümleştirilebilen birçok sağlayıcı ile çalışıyoruz, bu nedenle Çözümünüzü oluştururken daha fazla seçeneğiniz vardır.
+Azure Farmders veri merkezi, sağlayıcılar arasında çeşitli agriclaral veri kümelerinin toplanmasının, normalleştirilmesi ve kümeleştirilmesi sağlayan bir API katmanıdır. Bu önizlemeden itibaren, iki algılayıcı sağlayıcısı [Davis aletlerinin](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), One uydu canlandırın sağlayıcısı [Sentinel-2](https://sentinel.esa.int/web/sentinel/home)ve üç adet drone Imagery sağlayıcısı [senseuçarak](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [dji](https://dji.com/)özelliğinden yararlanabilirsiniz. Veri merkezi bir API platformu olarak tasarlanmıştır ve Azure Farmpts ile tümleştirilebilen birçok sağlayıcı ile çalışıyoruz, bu nedenle Çözümünüzü oluştururken daha fazla seçeneğiniz vardır.
 
 ## <a name="accelerator"></a>Hızlandır
 
@@ -48,8 +48,8 @@ Veri hub 'ında oluşturulan, Kullanıcı arabiriminizi ve model geliştirmeyi b
 
 ## <a name="resources"></a>Kaynaklar
 
-Farmtts [blogunu](https://aka.ms/AzureFarmBeats) ve [forumları](https://aka.ms/FarmBeatsMSDN)ziyaret edin.
+Daha fazla bilgi için bkz. Azure Farmtts [blogu](https://aka.ms/AzureFarmBeats) ve [forumları](https://aka.ms/FarmBeatsMSDN) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Farmtts 'yi kullanmaya başlamak için, dağıtmak üzere [Azure Marketi](https://aka.ms/FarmBeatsMarketplace) ' ni ziyaret edin.
+Azure Farmtts 'yi kullanmaya başlamak için, dağıtım işlemini başlatmak üzere [Azure Marketi](https://aka.ms/FarmBeatsMarketplace) ' ni ziyaret edin.

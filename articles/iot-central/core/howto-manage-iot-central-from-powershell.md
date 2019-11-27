@@ -1,6 +1,6 @@
 ---
-title: Manage IoT Central from Azure PowerShell | Microsoft Docs
-description: This article describes how to create and manage your IoT Central applications from Azure PowerShell.
+title: Azure PowerShell IoT Central Yönet | Microsoft Docs
+description: Bu makalede, Azure PowerShell IoT Central uygulamalarınızın nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -19,7 +19,7 @@ ms.locfileid: "74480280"
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) to manage your applications.
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) web sitesinde IoT Central uygulamaları oluşturup yönetmek yerine uygulamalarınızı yönetmek için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -27,17 +27,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you prefer to run Azure PowerShell on your local machine, see [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). When you run Azure PowerShell locally, use the **Connect-AzAccount** cmdlet to sign in to Azure before you try the cmdlets in this article.
+Yerel makinenizde Azure PowerShell çalıştırmayı tercih ediyorsanız, bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps). Azure PowerShell yerel olarak çalıştırdığınızda, bu makaledeki cmdlet 'leri denemeden önce Azure 'da oturum açmak için **Connect-AzAccount** cmdlet 'ini kullanın.
 
-## <a name="install-the-iot-central-module"></a>Install the IoT Central module
+## <a name="install-the-iot-central-module"></a>IoT Central modülünü yükler
 
-Run the following command to check the [IoT Central module](https://docs.microsoft.com/powershell/module/az.iotcentral/) is installed in your PowerShell environment:
+[IoT Central modülünün](https://docs.microsoft.com/powershell/module/az.iotcentral/) PowerShell ortamınızda yüklü olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Get-InstalledModule -name Az.I*
 ```
 
-If the list of installed modules doesn't include **Az.IotCentral**, run the following command:
+Yüklü modüller listesi **az. ıotcentral**içermiyorsa, aşağıdaki komutu çalıştırın:
 
 ```powershell
 Install-Module Az.IotCentral
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Use the [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet to create an IoT Central application in your Azure subscription. Örnek:
+Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -61,54 +61,54 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-The script first creates a resource group in the east US location for the application. The following table describes the parameters used with the **New-AzIotCentralApp** command:
+Betik ilk olarak uygulama için Doğu ABD konumunda bir kaynak grubu oluşturur. Aşağıdaki tabloda **New-AzIotCentralApp** komutuyla kullanılan parametreler açıklanmaktadır:
 
 |Parametre         |Açıklama |
 |------------------|------------|
-|ResourceGroupName |The resource group that contains the application. This resource group must already exist in your subscription. |
-|Konum |By default, this cmdlet uses the location from the resource group. Currently, you can create an IoT Central application in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations.  |
-|Adı              |The name of the application in the Azure portal. |
-|Subdomain         |The subdomain in the URL of the application. In the example, the application URL is https://mysubdomain.azureiotcentral.com. |
-|Sku               |Currently, the only value is **S1** (standard tier). See [Azure IoT Central pricing](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Şablon          | The application template to use. For more information, see the following table: |
-|DisplayName       |The name of the application as displayed in the UI. |
+|ResourceGroupName |Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
+|Konum |Varsayılan olarak, bu cmdlet kaynak grubundaki konumu kullanır. Şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında IoT Central bir uygulama oluşturabilirsiniz.  |
+|Name              |Azure portal uygulamanın adı. |
+|alanınızın         |Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
+|Sku               |Şu anda tek değer **S1** 'dir (Standart katman). Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın: |
+|displayName       |Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
 
-**Application templates with generally available features**
+**Genel olarak kullanılabilen özelliklerle uygulama şablonları**
 
 | Şablon adı            | Açıklama |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
 | iotc-demo@1.0.0          | Bir Soğutmalı Otomat için önceden oluşturulmuş cihaz şablonunu içeren bir uygulama oluşturur. Azure IoT Central'ı incelemeye başlamak için bu şablonu kullanın. |
-| iotc-devkit-sample@1.0.0 | MXChip veya Raspberry Pi cihazını bağlamak amacıyla sizin için hazırlanmış cihaz şablonlarıyla bir uygulama oluşturur. Use this template if you're a device developer experimenting with any of these devices. |
+| iotc-devkit-sample@1.0.0 | MXChip veya Raspberry Pi cihazını bağlamak amacıyla sizin için hazırlanmış cihaz şablonlarıyla bir uygulama oluşturur. Bu cihazlardan herhangi birini denemek için bir cihaz geliştiricisi iseniz bu şablonu kullanın. |
 
 
-**Application templates with public preview features**
+**Genel Önizleme özelliklerine sahip uygulama şablonları**
 
 | Şablon adı            | Açıklama |
 | ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Creates an empty plug and play preview application for you to populate with your own device templates and devices. |
-| iotc-condition@1.0.0     | Creates an application with a in-store analytics – condition monitoring template. Use this template to connect and monitor store environment. |
-| iotc-consumption@1.0.0   | Creates an application with water consumption monitoring template. Use this template to monitor and control water flow. |
-| iotc-distribution@1.0.0  | Creates an application with a Digital distribution template. Use this template to improve warehouse output efficiency by digitalizing key assets and actions. |
-| iotc-inventory@1.0.0     | Creates an application with a smart inventory management template. Use this template to automate receiving, product movement, cycle counting, and tracking of sensors. |
-| iotc-logistics@1.0.0     | Creates an application with a Connected logistics template. Use this template to track your shipment in real-time across air, water and land with location and condition monitoring. |
-| iotc-meter@1.0.0         | Creates an application with smart meter monitoring template. Use this template to monitor energy consumption, network status, and identify trends to improve customer support and smart meter management.  |
-| iotc-patient@1.0.0       | Creates an application with continuous patient monitoring template. Use this template to extend patient care, re-admissions, and manage diseases. |
-| iotc-power@1.0.0         | Creates an application with solar panel monitoring template. Use this template to monitor solar panel status, energy generation trends. |
-| iotc-quality@1.0.0       | Creates an application with water quality monitoring template. Use this template to digitally monitor water quality.|
-| iotc-store@1.0.0         | Creates an application with a in-store analytics – checkout template. Use this template to monitor and manage the checkout flow inside your store. |
-| iotc-waste@1.0.0         | Creates an application with a Connected waste management template. Use this template to monitor waste bins and dispatch field operators. |
+| iotc-pnp-preview@1.0.0   | Kendi cihaz şablonlarınızla ve cihazlarınızla doldurmanız için boş bir Tak ve kullan önizleme uygulaması oluşturur. |
+| iotc-condition@1.0.0     | Store Analytics – Condition izleme şablonuyla bir uygulama oluşturur. Mağaza ortamına bağlanmak ve bunları izlemek için bu şablonu kullanın. |
+| iotc-consumption@1.0.0   | Su tüketim izleme şablonuyla bir uygulama oluşturur. Su akışını izlemek ve denetlemek için bu şablonu kullanın. |
+| iotc-distribution@1.0.0  | Dijital dağıtım şablonu olan bir uygulama oluşturur. Ana varlıkları ve eylemleri artırarak ambar çıkış verimliliğini artırmak için bu şablonu kullanın. |
+| iotc-inventory@1.0.0     | Akıllı envanter yönetimi şablonu ile bir uygulama oluşturur. Bu şablonu, almayı, ürün hareketini, dönem döngüsünü ve sensörlerin izlenmesini otomatik hale getirmek için kullanın. |
+| iotc-logistics@1.0.0     | Bağlı bir lojistik şablonuyla bir uygulama oluşturur. Bu şablonu, Sevkiyat, su ve konum izlemeye sahip uçak genelinde gerçek zamanlı olarak sevk irsaliyesini izlemek için kullanın. |
+| iotc-meter@1.0.0         | Akıllı ölçüm izleme şablonuyla bir uygulama oluşturur. Enerji tüketimini, ağ durumunu izlemek ve müşteri desteğini ve akıllı ölçüm yönetimini geliştirmenin eğilimlerini belirlemek için bu şablonu kullanın.  |
+| iotc-patient@1.0.0       | Sürekli hasta izleme şablonuyla bir uygulama oluşturur. Hasta bakımı, yeniden Admissions ve daha fazla bilgi için bu şablonu kullanın. |
+| iotc-power@1.0.0         | Solar paneli izleme şablonuyla bir uygulama oluşturur. Bu şablonu, güneş paneli durumunu ve enerji oluşturma eğilimlerini izlemek için kullanın. |
+| iotc-quality@1.0.0       | Su kalitesi izleme şablonuyla bir uygulama oluşturur. Su kalitesini dijital olarak izlemek için bu şablonu kullanın.|
+| iotc-store@1.0.0         | Mağaza Analizi – kullanıma alma şablonu olan bir uygulama oluşturur. Mağazalarınızın içindeki kullanıma alma akışını izlemek ve yönetmek için bu şablonu kullanın. |
+| iotc-waste@1.0.0         | Bağlı bir çöp yönetimi şablonuna sahip bir uygulama oluşturur. Atık bölmeleri ve dağıtım alanı işleçlerini izlemek için bu şablonu kullanın. |
 
 > [!NOTE]
-> The preview application templates are currently only available in the **Europe** and **United States** locations.
+> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
 
-## <a name="view-your-iot-central-applications"></a>View your IoT Central applications
+## <a name="view-your-iot-central-applications"></a>IoT Central uygulamalarınızı görüntüleme
 
-Use the [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) cmdlet to list your IoT Central applications and view metadata.
+IoT Central uygulamalarınızı listelemek ve meta verileri görüntülemek için [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) cmdlet 'ini kullanın.
 
-## <a name="modify-an-application"></a>Modify an application
+## <a name="modify-an-application"></a>Bir uygulamayı değiştirme
 
-Use the [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) cmdlet to update the metadata of an IoT Central application. For example, to change the display name of your application:
+Bir IoT Central uygulamasının meta verilerini güncelleştirmek için [set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) cmdlet 'ini kullanın. Örneğin, uygulamanızın görünen adını değiştirmek için:
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -118,7 +118,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Uygulamayı kaldırma
 
-Use the [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet to delete an IoT Central application. Örnek:
+IoT Central uygulamasını silmek için [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet 'ini kullanın. Örneğin:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
@@ -127,7 +127,7 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've learned how to manage Azure IoT Central applications from Azure PowerShell, here is the suggested next step:
+Azure IoT Central uygulamalarını Azure PowerShell nasıl yönetebileceğinizi öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [Administer your application](howto-administer.md)
+> [Uygulamanızı yönetme](howto-administer.md)

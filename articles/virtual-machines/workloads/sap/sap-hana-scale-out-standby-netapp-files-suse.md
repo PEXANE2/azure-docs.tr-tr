@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/21/2019
 ms.author: radeltch
-ms.openlocfilehash: 7fb7294cc6f7918b4c6a3afa9e3c9dc7f44504e1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014947"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531406"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -99,17 +99,17 @@ HANA yüksek kullanılabilirliği elde etmek için bir yöntem, konak otomatik y
 ![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
 Önceki diyagramda SAP HANA ağ önerilerini izleyen bir Azure sanal ağı içinde üç alt ağ temsil edilir: 
+* İstemci iletişimi için
 * Depolama sistemiyle iletişim için
 * Dahili HANA düğümler arası iletişim için
-* İstemci iletişimi için
 
 Azure NetApp birimleri, [Azure NetApp Files atanan](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)ayrı alt ağdadır.  
 
 Bu örnek yapılandırma için alt ağlar şunlardır:  
 
+  - `client` 10.23.0.0/24  
   - `storage` 10.23.2.0/24  
   - `hana` 10.23.3.0/24  
-  - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını ayarlama 
@@ -140,7 +140,7 @@ Aşağıdaki yönergelerde, [Azure Sanal ağınızı](https://docs.microsoft.com
 
    Birimleri dağıtmakta olduğunuz gibi, **Nfsv 4.1** sürümünü seçtiğinizden emin olun. Şu anda, NFSv 4.1 'e erişim ek beyaz listeleme gerektirir. Birimleri belirlenen Azure NetApp Files [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. 
    
-   Azure NetApp Files kaynaklarının ve Azure VM 'lerinin aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında olması gerektiğini unutmayın. Örneğin, **HN1**-Data-Mnt00001, **HN1**-log-mnt00001, vb. birim adları ve NFS://10.23.1.5/**HN1**-Data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001, vb. Azure NetApp Files birimleri için dosya yollarıdır.  
+   Azure NetApp Files kaynaklarının ve Azure VM 'lerinin aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında olması gerektiğini unutmayın. Örneğin, **HN1**-Data-Mnt00001, **HN1**-log-mnt00001 ve benzeri, birim adları ve NFS://10.23.1.5/**HN1**-Data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001, vb., Azure NetApp Files birimlerinin dosya yollarıdır.  
 
    * Volume **HN1**-Data-mnt00001 (NFS://10.23.1.5/**HN1**-Data-mnt00001)
    * Volume **HN1**-Data-mnt00002 (NFS://10.23.1.6/**HN1**-Data-mnt00002)
@@ -165,9 +165,6 @@ SUSE yüksek kullanılabilirlik mimarisinde SAP NetWeaver için Azure NetApp Fil
 
 > [!IMPORTANT]
 > SAP HANA iş yükleri için düşük gecikme süresi kritik öneme sahiptir. Sanal makinelerin ve Azure NetApp Files birimlerinin yakın bir yerde dağıtıldığından emin olmak için Microsoft temsilcinizle birlikte çalışın.  
-
-> [!IMPORTANT]
-> **SID**adm Kullanıcı kimliği ve vm 'Lerdeki `sapsys` grup kimliği, Azure NetApp Files yapılandırmasıyla eşleşmelidir. VM kimlikleri ve Azure NetApp yapılandırması arasında uyuşmazlık varsa, VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri `nobody`olarak görüntülenir. Azure NetApp Files [Yeni bir sistem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) eklerken doğru kimlikleri belirttiğinizden emin olun.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files HANA veritabanı için boyutlandırma
 
@@ -209,40 +206,40 @@ Bu makalede sunulan düzen SAP HANA yapılandırması, Azure NetApp Files Ultra 
 
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Linux sanal makinelerini Azure portal aracılığıyla dağıtma
 
-Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. Şunları yapın:
+Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. Ardından aşağıdaki adımları uygulayın:
 1. Azure sanal ağınızda [Azure sanal ağ alt ağları](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) [oluşturun.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 
 1. VM 'Leri dağıtın. 
 1. Ek ağ arabirimlerini oluşturun ve ağ arabirimlerini ilgili VM 'lere ekleyin.  
 
-   Her sanal makine üç Azure sanal ağ alt ağına (`storage`, `hana`ve `client`) karşılık gelen üç ağ arabirimine sahiptir. 
+   Her sanal makine üç Azure sanal ağ alt ağına (`client`, `storage` ve `hana`) karşılık gelen üç ağ arabirimine sahiptir. 
 
    Daha fazla bilgi için bkz. [Azure 'da birden çok ağ arabirimi kartı Ile Linux sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
 
 > [!IMPORTANT]
 > SAP HANA iş yükleri için düşük gecikme süresi kritik öneme sahiptir. Düşük gecikme süresi elde etmek için, sanal makinelerin ve Azure NetApp Files birimlerinin yakın bir yerde dağıtıldığından emin olmak için Microsoft temsilcinizle birlikte çalışın. SAP HANA Azure NetApp Files kullanan [yeni SAP HANA sistemi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) eklediğinizde gerekli bilgileri iletin. 
  
-Sonraki yönergelerde, kaynak grubu, Azure sanal ağı ve üç Azure sanal ağ alt ağı oluşturmuş olduğunuz varsayılır: `storage`, `hana`ve `client`. VM 'Leri dağıtırken depolama alt ağını seçin, böylece depolama ağı arabirimi VM 'lerde birincil arabirim olur. Bu mümkün değilse, depolama alt ağı ağ geçidi aracılığıyla Azure NetApp Files atanmış alt ağa açık bir yol yapılandırın. 
+Sonraki yönergelerde, kaynak grubu, Azure sanal ağı ve üç Azure sanal ağ alt ağı oluşturmuş olduğunuz varsayılır: `client`, `storage` ve `hana`. VM 'Leri dağıtırken, istemci ağ arabiriminin VM 'lerde birincil arabirim olması için istemci alt ağını seçin. Ayrıca, depolama alt ağı ağ geçidi aracılığıyla Azure NetApp Files atanmış alt ağa açık bir yol yapılandırmanız gerekecektir. 
 
 > [!IMPORTANT]
 > Seçtiğiniz işletim sisteminin, kullanmakta olduğunuz belirli VM türlerinde SAP HANA için SAP sertifikalı olduğundan emin olun. Bu türlere yönelik SAP HANA sertifikalı VM türlerinin ve işletim sistemi sürümlerinin listesi için, [SAP HANA sertifikalı IaaS platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) sitesine gidin. Söz konusu türe yönelik SAP HANA tarafından desteklenen işletim sistemi sürümlerinin tam listesini almak için listelenen VM türünün ayrıntılarına tıklayın.  
 
 1. SAP HANA için bir kullanılabilirlik kümesi oluşturun. En fazla güncelleştirme etki alanını ayarladığınızdan emin olun.  
 
-2. Aşağıdakileri yaparak üç sanal makine (**hanadb1**, **hanadb2**, **hanadb3**) oluşturun:  
+2. Aşağıdaki adımları uygulayarak üç sanal makine (**hanadb1**, **hanadb2**, **hanadb3**) oluşturun:  
 
    a. Azure galerisinde SAP HANA için desteklenen bir SLES4SAP görüntüsü kullanın. Bu örnekte SLES4SAP 12 SP4 görüntüsü kullandık.  
 
    b. Daha önce SAP HANA için oluşturduğunuz kullanılabilirlik kümesini seçin.  
 
-   c. Depolama Azure sanal ağ alt ağını seçin. [Hızlandırılmış ağ](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)' ı seçin.  
+   c. İstemci Azure sanal ağ alt ağını seçin. [Hızlandırılmış ağ](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)' ı seçin.  
 
-   Sanal makineleri dağıtırken, ağ arabirimi adı otomatik olarak oluşturulur. Depolama Azure sanal ağ alt ağına bağlı olan ağ arabirimlerine **hanadb1-Storage**, **hanadb2-Storage**ve **hanadb3-Storage**olarak değineceğiz. 
+   Sanal makineleri dağıtırken, ağ arabirimi adı otomatik olarak oluşturulur. Kolaylık sağlaması için Bu yönergelerde, **hanadb1-Client**, **hanadb2-Client**ve **Hanadb3-Client**şeklinde istemci Azure sanal ağ alt ağına eklenen otomatik olarak oluşturulan ağ arabirimlerine başvuracağız. 
 
-3. Her bir sanal makine için bir tane olmak üzere, `hana` sanal ağ alt ağı için üç ağ arabirimi oluşturun (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
+3. `storage` sanal ağ alt ağı (Bu örnekte, **hanadb1-Storage**, **hanadb2-** Storage ve **hanadb3-Storage**) için her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun.  
 
-4. `client` sanal ağ alt ağı (Bu örnekte, **hanadb1-Client**, **hanadb2-** Client ve **hanadb3-Client**) için her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun.  
+4. Her bir sanal makine için bir tane olmak üzere, `hana` sanal ağ alt ağı için üç ağ arabirimi oluşturun (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
 
-5. Aşağıdaki işlemleri gerçekleştirerek, yeni oluşturulan sanal ağ arabirimlerini karşılık gelen sanal makinelere ekleyin:  
+5. Aşağıdaki adımları uygulayarak, yeni oluşturulan sanal ağ arabirimlerini karşılık gelen sanal makinelere ekleyin:  
 
     a. [Azure Portal](https://portal.azure.com/#home)sanal makineye gidin.  
 
@@ -250,7 +247,7 @@ Sonraki yönergelerde, kaynak grubu, Azure sanal ağı ve üç Azure sanal ağ a
 
     c. **Genel bakış** bölmesinde, sanal makineyi serbest bırakmak için **Durdur** ' u seçin.  
 
-    d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `hana` ve `client` alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin.  
+    d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve `hana` alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin.  
     
     e. **Kaydet**’i seçin. 
  
@@ -258,23 +255,24 @@ Sonraki yönergelerde, kaynak grubu, Azure sanal ağı ve üç Azure sanal ağ a
  
     g. Sanal makineleri şimdilik durdurulmuş durumda bırakın. Daha sonra, yeni eklenen tüm ağ arabirimleri için [hızlandırılmış ağı](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) etkinleştireceğiz.  
 
-6. Aşağıdaki işlemleri gerçekleştirerek `hana` `client` ve alt ağları için ek ağ arabirimleri için hızlandırılmış ağı etkinleştirin:  
+6. Aşağıdaki adımları uygulayarak `storage` ve `hana` alt ağları için ek ağ arabirimleri için hızlandırılmış ağı etkinleştirin:  
 
     a. Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) açın. [](https://portal.azure.com/#home)  
 
-    b. `hana` ve `client` alt ağlarına eklenen ek ağ arabirimleri için hızlandırılmış ağı etkinleştirmek üzere aşağıdaki komutları yürütün.  
+    b. `storage` ve `hana` alt ağlarına eklenen ek ağ arabirimleri için hızlandırılmış ağı etkinleştirmek üzere aşağıdaki komutları yürütün.  
 
     <pre><code>
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-storage</b> --accelerated-networking true
+    
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-hana</b> --accelerated-networking true
-    
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-client</b> --accelerated-networking true
+
     </code></pre>
 
-7. Aşağıdakileri yaparak sanal makineleri başlatın:  
+7. Aşağıdaki adımları uygulayarak sanal makineleri başlatın:  
 
     a. Sol bölmede **sanal makineler**' i seçin. Sanal makine adını (örneğin, **hanadb1**) filtreleyin ve ardından seçin.  
 
@@ -288,36 +286,53 @@ Sonraki bölümlerdeki yönergelere aşağıdakilerden biri eklenir:
 * **[2]** : yalnızca düğüm 2 ' de geçerlidir
 * **[3]** : yalnızca düğüm 3 ' e uygulanabilir
 
-Aşağıdaki işlemleri gerçekleştirerek işletim sistemini yapılandırın ve hazırlayın:
+Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazırlayın:
 
 1. **[A]** sanal makinelerdeki konak dosyalarını koruyun. Tüm alt ağların girdilerini dahil edin. Bu örnek için `/etc/hosts` aşağıdaki girişler eklenmiştir.  
 
     <pre><code>
     # Storage
-    10.23.2.4   hanadb1
-    10.23.2.5   hanadb2
-    10.23.2.6   hanadb3
+    10.23.2.4   hanadb1-storage
+    10.23.2.5   hanadb2-storage
+    10.23.2.6   hanadb3-storage
     # Client
-    10.23.0.5   hanadb1-client
-    10.23.0.6   hanadb2-client
-    10.23.0.7   hanadb3-client
+    10.23.0.5   hanadb1
+    10.23.0.6   hanadb2
+    10.23.0.7   hanadb3
     # Hana
     10.23.3.4   hanadb1-hana
     10.23.3.5   hanadb2-hana
     10.23.3.6   hanadb3-hana
     </code></pre>
 
-2. **[A]** istenmeyen konak adı değişikliklerini önlemek için DHCP ve bulut yapılandırması ayarlarını değiştirin.  
+2. **[A]** istenmeyen ana bilgisayar adından kaçınmak üzere depolama için ağ ARABIRIMI için DHCP ve bulut yapılandırması ayarlarını değiştirin.  
+
+    Aşağıdaki yönergelerde, depolama ağı arabiriminin `eth1`olduğu varsayılır. 
 
     <pre><code>
     vi /etc/sysconfig/network/dhcp
-    #Change the following DHCP setting to "no"
+    # Change the following DHCP setting to "no"
     DHCLIENT_SET_HOSTNAME="no"
-    vi /etc/sysconfig/network/ifcfg-eth0
-    # Edit ifcfg-eth0 
+    vi /etc/sysconfig/network/ifcfg-<b>eth1</b>
+    # Edit ifcfg-eth1 
     #Change CLOUD_NETCONFIG_MANAGE='yes' to "no"
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
+
+2. **[A]** bir ağ yolu ekleyin, böylece Azure NetApp Files iletişim, depolama ağı arabiriminden geçer.  
+
+    Aşağıdaki yönergelerde, depolama ağı arabiriminin `eth1`olduğu varsayılır.  
+
+    <pre><code>
+    vi /etc/sysconfig/network/ifroute-<b>eth1</b>
+    # Add the following routes 
+    # RouterIPforStorageNetwork - - -
+    # ANFNetwork/cidr RouterIPforStorageNetwork - -
+    <b>10.23.2.1</b> - - -
+    <b>10.23.1.0/26</b> <b>10.23.2.1</b> - -
+    </code></pre>
+
+    Değişiklikleri etkinleştirmek için VM 'yi yeniden başlatın.  
 
 3. **[A]** işletim sistemini NFS ile netapp sistemlerinde SAP HANA çalıştırmak IÇIN, [NFS yapılandırma kılavuzu ile NetApp aff sistemlerinde SAP HANA](https://www.netapp.com/us/media/tr-4435.pdf)açıklandığı şekilde hazırlayın. NetApp yapılandırma ayarları için */etc/sysctl.exe d/NetApp-Hana-conf* yapılandırma dosyası oluşturun.  
 
@@ -387,28 +402,33 @@ Aşağıdaki işlemleri gerçekleştirerek işletim sistemini yapılandırın ve
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının **`localdomain`** olarak yapılandırıldığından ve eşlemenin hiçbir **bir şekilde ayarlandığından emin olun.**  
+3. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
+
+    > [!IMPORTANT]
+    > VM üzerinde `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri `nobody`olarak görüntülenir.  
 
     <pre><code>
-    sudo cat  /etc/idmapd.conf
+    sudo cat /etc/idmapd.conf
     # Example
     [General]
     Verbosity = 0
     Pipefs-Directory = /var/lib/nfs/rpc_pipefs
-    Domain = <b>localdomain</b>
+    Domain = <b>defaultv4iddomain.com</b>
     [Mapping]
     Nobody-User = <b>nobody</b>
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** NFSv4 ID eşlemesini devre dışı bırakın. `nfs4_disable_idmapping` bulunduğu dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+4. **[A]** `nfs4_disable_idmapping`doğrulayın. **Y**olarak ayarlanmalıdır. `nfs4_disable_idmapping` bulunduğu dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
     mkdir /mnt/tmp
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
-    # Disable NFSv4 idmapping. 
-    echo "N" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
     </code></pre>`
 
 5. **[A]** SAP HANA grubunu ve kullanıcıyı el ile oluşturun. Bu grup sapsys ve Kullanıcı **hn1**adm kimlikleri, ekleme sırasında belirtilen kimliklere ayarlanmalıdır. (Bu örnekte, kimlikler **1001**olarak ayarlanır.) Kimlikler doğru şekilde ayarlanmamışsa birimlere erişemezsiniz. Grup sapsys ve Kullanıcı hesapları **hn1**adm ve Sapadm kimlikleri tüm sanal makinelerde aynı olmalıdır.  

@@ -75,9 +75,9 @@ Mobility hizmeti, çoğaltma gereci ve çoğaltılan makinelerle iletişim kurar
 
 ## <a name="ports"></a>Bağlantı Noktaları
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | --- 
-VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna gönderir (varsayılan olarak çoğaltma gereci üzerinde çalışır), HTTPS 9443 gelen bağlantı noktası üzerinden. Bu bağlantı noktası değiştirilebilir.
+VM’ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna gönderir (varsayılan olarak çoğaltma gereci üzerinde çalışır), HTTPS 9443 gelen bağlantı noktası üzerinden. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
 İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bunları iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.
 
@@ -97,7 +97,7 @@ Bu tablodaki değerler, dağıtımınızda ek bir işlem sunucusu gerekip gerekm
 - Günlük değişiklik tarifeniz (karmaşıklık oranı) 2 TB 'den fazla ise, ek bir işlem sunucusu dağıtın.
 - 200 'den fazla makine çoğaltıyorsanız, ek bir çoğaltma gereci dağıtın.
 
-**CPU** | **Bellek** | **Veri önbelleğe alma için boş alan** | **Karmaşıklık oranı** | **Çoğaltma sınırları**
+**'SUNA** | **Bellek** | **Veri önbelleğe alma için boş alan** | **Karmaşıklık oranı** | **Çoğaltma sınırları**
 --- | --- | --- | --- | ---
 8 vCPU (2 yuva * 4 çekirdek \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB veya daha az | < 100 makine 
 12 vCPU (2 yuva * 6 çekirdek \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB ila 1 TB | 100-150 makine.

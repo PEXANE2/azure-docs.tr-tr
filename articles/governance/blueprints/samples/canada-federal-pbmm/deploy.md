@@ -1,119 +1,119 @@
 ---
-title: Canada Federal PBMM blueprint sample - Deploy steps
-description: Deploy steps for the Canada Federal PBMM blueprint sample including blueprint artifact parameter details.
+title: Kanada Federal pbmm şema örneğini dağıtma
+description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Kanada Federal pbmm şema örneği için adımları dağıtın.
 ms.date: 09/05/2019
 ms.topic: sample
-ms.openlocfilehash: 3b140e99e2715e90515759a1720c594817c48147
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 087112df7ab18cd71bde80f22b13c9c7800c05e9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404709"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544592"
 ---
-# <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Deploy the Canada Federal PBMM blueprint samples
+# <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Kanada Federal pbmm şema örneklerini dağıtma
 
-To deploy the Canada Federal PBMM blueprint samples, the following steps must be taken:
+Kanada Federal pbmm şema örneklerini dağıtmak için aşağıdaki adımlar gerçekleştirilmelidir:
 
 > [!div class="checklist"]
-> - Create a new blueprint from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
+> - Örnekten yeni bir şema oluştur
+> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
+> - Şema kopyanızı mevcut bir aboneliğe atama
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
-## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
+## <a name="create-blueprint-from-sample"></a>Örnekten şema oluştur
 
-First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
+İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
 
-1. Find the **Canada Federal PBMM** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. _Diğer örnekler_ altında **Kanada Federal pbmm** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Şema örneği _hakkında temel bilgileri_ girin:
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample.
-   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
+   - **Şema adı**: şema örneğinin kopyasına bir ad verin.
+   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
 
-1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from the standard.
+Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği standart dışında taşıyabilir.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
-1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the Canada Federal PBMM blueprint sample." Then select **Publish** at the bottom of the page.
+1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağ taraftaki yeni sayfada, şema örneğinin kopyası için bir **Sürüm** belirtin. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "Kanada Federal pbmm şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
 
-1. Provide the parameter values for the blueprint assignment:
+1. Şema atamasının parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
-       Change as needed or leave as is.
-     - **Location**: Select a region for the managed identity to be created in. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
+       Gerektiğinde değiştirin veya olduğu gibi bırakın.
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
-   - Lock Assignment
+   - Kilit ataması
 
-     Select the blueprint lock setting for your environment. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
+     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
-     Leave the default _system assigned_ managed identity option.
+     Varsayılan sistem tarafından _atanmış_ yönetilen kimlik seçeneğini bırakın.
 
-   - Artifact parameters
+   - Yapıt parametreleri
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
+     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
+1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için, BLUEPRINT atamasını açın.
 
 > [!WARNING]
-> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
+> Azure şemaları hizmeti ve yerleşik şema örnekleri **ücretsiz olarak ücretsizdir**. Azure kaynakları [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan çalışan kaynakların maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
-## <a name="artifact-parameters-table"></a>Artifact parameters table
+## <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
 
-The following table provides a list of the blueprint artifact parameters:
+Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-Artifact name|Artifact type|Parametre adı|Açıklama|
+Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |İlke ataması |Log Analytics workspace for Linux VMs |For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |İlke ataması |Optional: List of VM images that have supported Linux OS to add to scope |An empty array may be used to indicate no optional parameters: `[]` |
-|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |İlke ataması |Optional: List of VM images that have supported Windows OS to add to scope |An empty array may be used to indicate no optional parameters: `[]` |
-|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |İlke ataması |Log Analytics workspace for Windows VMs |For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |İlke ataması |Log Analytics workspace ID that VMs should be configured for |This is the ID (GUID) of the Log Analytics workspace that the VMs should be configured for. |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |İlke ataması |List of resource types that should have diagnostic logs enabled |List of resource types to audit if diagnostic log setting isn't enabled. Acceptable values can be found at [Azure Monitor diagnostic logs schemas](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |İlke ataması |Administrators group |Group. Örnek: `Administrator; myUser1; myUser2` |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |İlke ataması |List of users that should be included in Windows VM Administrators group |A semicolon-separated list of members that should be included in the Administrators local group. Örnek: `Administrator; myUser1; myUser2` |
-|Deploy Advanced Threat Protection on Storage Accounts |İlke ataması |Etki |Information about policy effects can be found at [Understand Azure Policy Effects](../../../policy/concepts/effects.md). |
-|Deploy Auditing on SQL servers |İlke ataması |The value in days of the retention period (0 indicates unlimited retention) |Retention days (optional, _180_ days if unspecified) |
-|Deploy Auditing on SQL servers |İlke ataması |Resource group name for storage account for SQL server auditing |Auditing writes database events to an audit log in your Azure Storage account (a storage account is created in each region where a SQL Server is created that is shared by all servers in that region). Important - for proper operation of Auditing don't delete or rename the resource group or the storage accounts. |
-|Deploy diagnostic settings for Network Security Groups |İlke ataması |Storage account prefix for network security group diagnostics |This prefix is combined with the network security group location to form the created storage account name. |
-|Deploy diagnostic settings for Network Security Groups |İlke ataması |Resource group name for storage account for network security group diagnostics (must exist) |The resource group that the storage account is created in. This resource group must already exist. |
+|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma |İlke ataması |Linux VM 'Ler için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: `[]` |
+|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi |Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: `[]` |
+|\[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma |İlke ataması |Windows VM 'Leri için Log Analytics çalışma alanı |Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI |Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID). |
+|\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi |Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir. |
+|\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Yöneticiler grubu |Grubu. Örnek: `Administrator; myUser1; myUser2` |
+|\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma |İlke ataması |Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi |Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Örnek: `Administrator; myUser1; myUser2` |
+|Depolama hesaplarında Gelişmiş tehdit koruması dağıtma |İlke ataması |Etki |İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md). |
+|SQL Server 'lar üzerinde denetim dağıtma |İlke ataması |Bekletme döneminin gün cinsinden değer (0 sınırsız saklama anlamına gelir) |Bekletme günleri (belirtilmemişse, _180_ gün) |
+|SQL Server 'lar üzerinde denetim dağıtma |İlke ataması |SQL Server denetimi için depolama hesabının kaynak grubu adı |Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılan bir SQL Server oluşturulduğu her bölgede oluşturulur). Önemli-denetimin düzgün çalışması için kaynak grubunu veya depolama hesaplarını silmeyin veya yeniden adlandırmayın. |
+|Ağ güvenlik grupları için tanılama ayarlarını dağıtma |İlke ataması |Ağ güvenlik grubu Tanılama için depolama hesabı öneki |Bu ön ek, oluşturulan depolama hesabı adını biçimlendirmek için ağ güvenlik grubu konumuyla birleştirilir. |
+|Ağ güvenlik grupları için tanılama ayarlarını dağıtma |İlke ataması |Ağ güvenlik grubu Tanılama için depolama hesabının kaynak grubu adı (var olmalıdır) |Depolama hesabının oluşturulduğu kaynak grubu. Bu kaynak grubu zaten var olmalıdır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've reviewed the steps to deploy the Canada Federal PBMM sample, visit the following articles to learn about the overview and control mapping:
+Kanada Federal PBMM örneğini dağıtma adımlarını gözden geçirdiğinize göre, genel bakış ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Canada Federal PBMM blueprints - Overview](./index.md)
-> [Canada Federal PBMM blueprints - Control mapping](./control-mapping.md)
+> [Kanada Federal PBMM şemaları-genel bakış](./index.md)
+> [Kanada Federal Pbmm şemaları-denetim eşleme](./control-mapping.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

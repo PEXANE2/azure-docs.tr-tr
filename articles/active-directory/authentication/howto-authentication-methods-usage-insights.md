@@ -1,6 +1,6 @@
 ---
-title: Authentication methods usage & insights - Azure Active Directory
-description: Reporting on Azure AD self-service password reset and Multi-Factor Authentication authentication method usage
+title: Kimlik doğrulama yöntemleri kullanım & Öngörüler-Azure Active Directory
+description: Azure AD self servis parola sıfırlama ve Multi-Factor Authentication kimlik doğrulama yöntemi kullanımı hakkında raporlama
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,84 +18,84 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381909"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Authentication methods usage & insights (preview)
+# <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
 
-Usage & insights enables you to understand how authentication methods for features like Azure Multi-Factor Authentication and self-service password reset are working in your organization. This reporting capability provides your organization with the means to understand what methods are being registered and how they are being used.
+Kullanım & öngörüleri, Azure Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak sağlar. Bu raporlama özelliği, kuruluşunuzda hangi yöntemlerin kaydedildiğini ve bunların nasıl kullanıldığını anlamak için gerekenleri sağlar.
 
-## <a name="permissions-and-licenses"></a>Permissions and licenses
+## <a name="permissions-and-licenses"></a>İzinler ve lisanslar
 
-The following roles can access usage and insights:
+Aşağıdaki roller kullanım ve öngörülere erişebilir:
 
 - Genel Yönetici
-- Security Reader
-- Security Administrator
-- Reports Reader
+- Güvenlik okuyucusu
+- Güvenlik Yöneticisi
+- Rapor okuyucu
 
-No additional licensing is required to access usage and insights. Azure Multi-Factor Authentication and self-service password reset (SSPR) licensing information can be found on the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+Kullanım ve Öngörüler 'e erişmek için ek lisans gerekmez. Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) lisanslama bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
-To access authentication method usage and insights:
+Kimlik doğrulama yöntemi kullanımı ve öngörülerine erişmek için:
 
 1. [Azure portala](https://portal.azure.com) gidin.
-1. Browse to **Azure Active Directory** > **Password reset** > **Usage & insights**.
-1. From the **Registration** or **Usage** overviews, you can choose to open the pre-filtered reports to filter based on your needs.
+1. **Azure Active Directory** > **parola sıfırlama** > **kullanımı & öngörülere**gidin.
+1. **Kayıt** veya **kullanım** genel bakışlarından, gereksinimlerinize göre filtrelemek için önceden filtrelenmiş raporları açmayı seçebilirsiniz.
 
-![Usage & insights overview](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Kullanım & öngörülerine genel bakış](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-To access usage & insights directly, go to [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). This link will bring you to the registration overview.
+Kullanım & öngörülerini doğrudan erişmek için [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)gidin. Bu bağlantı sizi kayda genel bakış alanına getirir.
 
-The Users registered, Users enabled, and Users capable tiles show the following registration data for your users:
+Kayıtlı kullanıcılar, kullanıcılar etkin ve kullanıcılara uygun Kutucuklar, kullanıcılarınız için aşağıdaki kayıt verilerini gösterir:
 
-- Registered: A user is considered registered if they (or an admin) have registered enough authentication methods to meet your organization's SSPR or Multi-Factor Authentication policy.
-- Enabled: A user is considered enabled if they are in scope for the SSPR policy. If SSPR is enabled for a group, then the user is considered enabled if they are in that group. If SSPR is enabled for all users, then all users in the tenant (excluding guests) are considered enabled.
-- Capable: A user is considered capable if they are both registered and enabled. This status means that they can perform SSPR at any time if needed.
+- Kayıtlı: bir Kullanıcı, kuruluşunuzun SSPR veya Multi-Factor Authentication ilkesini karşılamak için yeterli kimlik doğrulama yöntemine kaydolduklarında (veya bir yönetici), kayıtlı kabul edilir.
+- Etkin: SSPR ilkesi kapsamınlarsa Kullanıcı etkin kabul edilir. Bir grup için SSPR etkinse, bu grupta olmaları durumunda Kullanıcı etkin kabul edilir. SSPR tüm kullanıcılar için etkinleştirilirse, Kiracıdaki tüm kullanıcılar (konukları hariç) etkin kabul edilir.
+- Uyumlu: bir Kullanıcı, hem kaydolduklarında hem de etkinse yetenekli olarak değerlendirilir. Bu durum, gerekirse SSPR 'yi dilediğiniz zaman gerçekleştirebilecekleri anlamına gelir.
 
-Clicking on any of these tiles or the insights shown in them will bring you to a pre-filtered list of registration details.
+Bu kutucukların herhangi birine veya bunlarda gösterilen öngörülere tıkladığınızda, kayıt ayrıntılarının önceden filtrelenmiş bir listesi görüntülenir.
 
-The **Registrations** chart on the **Registration** tab shows the number of successful and failed authentication method registrations by authentication method. The **Resets** chart on the **Usage** tab shows the number of successful and failed authentications during the password reset flow by authentication method.
+**Kayıt** sekmesindeki **kayıtlar** grafiği, kimlik doğrulama yöntemine göre başarılı ve başarısız kimlik doğrulama yöntemi kaydı sayısını gösterir. **Kullanım** sekmesindeki grafiği **sıfırlar** , kimlik doğrulama yöntemine göre parola sıfırlama akışı sırasında başarılı ve başarısız kimlik doğrulama sayısını gösterir.
 
-Clicking on either of the charts will bring you to a pre-filtered list of registration or reset events.
+Grafiklerden birine tıkladığınızda, sizi önceden filtrelenmiş bir kayıt listesi veya sıfırlama olayları görüntülenir.
 
-Using the control in the upper, right-hand corner, you can change the date range for the audit data shown in the Registrations and Resets charts to 24 hours, 7 days, or 30 days.
+Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verilerinin tarih aralığını değiştirebilir ve grafikleri 24 saat, 7 gün veya 30 gün olarak sıfırlar.
 
-### <a name="registration-details"></a>Registration details
+### <a name="registration-details"></a>Kayıt ayrıntıları
 
-Clicking on the **Users registered**, **Users enabled**, or **Users capable** tiles or insights will bring you to the registration details.
+**Kayıtlı kullanıcılar**, **etkin**kullanıcılar veya **kullanıcılara** uygun kutucuk ya da Öngörüler ' e tıkladığınızda kayıt ayrıntılarına bu bilgiler gönderilir.
 
-The registration details report shows the following information for each user:
+Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
 
-- Adı
+- Name
 - Kullanıcı adı
-- Registration status (All, Registered, Not registered)
-- Enabled status (All, Enabled, Not enabled)
-- Capable status (All, Capable, Not capable)
-- Methods (App notification, App code, Phone call, SMS, Email, Security questions)
+- Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
+- Etkin durum (tümü, etkin, etkin değil)
+- Özellikli durum (tümü, uyumlu değil)
+- Yöntemler (uygulama bildirimi, uygulama kodu, telefon araması, SMS, e-posta, güvenlik soruları)
 
-Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
+Listenin en üstündeki denetimleri kullanarak bir Kullanıcı arayabilir ve gösterilen sütunlara göre Kullanıcı listesini filtreleyebilirsiniz.
 
-### <a name="reset-details"></a>Reset details
+### <a name="reset-details"></a>Ayrıntıları Sıfırla
 
-Clicking on the Registrations or Resets charts will bring you to the reset details.
+Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntılarına getirir.
 
-The reset details report shows registration and reset events from the last 30 days including:
+Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
 
-- Adı
+- Name
 - Kullanıcı adı
-- Feature (All, Registration, Reset)
-- Authentication method (App notification, App code, Phone call, Office call, SMS, Email, Security questions)
-- Status (All, Success, Failure)
+- Özellik (tümü, kayıt, sıfırlama)
+- Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)
+- Durum (tümü, başarı, hata)
 
-Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
+Listenin en üstündeki denetimleri kullanarak bir Kullanıcı arayabilir ve gösterilen sütunlara göre Kullanıcı listesini filtreleyebilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-The data shown in these reports will be delayed by up to 60 minutes. A “Last refreshed" field exists in the Azure portal to identify how recent your data is.
+Bu raporlarda gösterilen veriler 60 dakikaya kadar ertelenecek. Verilerinizin en son ne olduğunu belirlemek için Azure portal bir "Son yenilenme" alanı bulunur.
 
-Usage and insights data is not a replacement for the Azure Multi-Factor Authentication activity reports or information contained in the Azure AD sign-ins report.
+Kullanım ve Öngörüler verileri Azure Multi-Factor Authentication etkinlik raporlarının veya Azure AD oturum açma raporu 'nda bulunan bilgilerin yerini almaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Working with the authentication methods usage report API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [Choosing authentication methods for your organization](concept-authentication-methods.md)
-- [Combined registration experience](concept-registration-mfa-sspr-combined.md)
+- [Kimlik doğrulama yöntemleri kullanım raporu API 'SI ile çalışma](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Kuruluşunuz için kimlik doğrulama yöntemlerini seçme](concept-authentication-methods.md)
+- [Birleşik kayıt deneyimi](concept-registration-mfa-sspr-combined.md)

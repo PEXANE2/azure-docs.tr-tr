@@ -11,31 +11,31 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483024"
 ---
-Start using the Anomaly Detector service by creating one of the Azure resources below.
+Aşağıdaki Azure kaynaklarından birini oluşturarak anomali algılayıcı hizmetini kullanmaya başlayın.
 
-* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">Create a trial resource (opens in a new tab)</a>
-    * No Azure subscription needed: 
-    * Valid for seven days, for free. After signing up, a trial key and endpoint will be available on the [Azure website](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
-    * This is a great option if you want to try Anomaly Detector, but don’t have an Azure subscription.
+* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">Deneme kaynağı oluşturma (yeni bir sekmede açılır)</a>
+    * Azure aboneliği gerekli değil: 
+    * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir olacaktır. 
+    * Anomali algılayıcısı denemek istiyorsanız, Azure aboneliğiniz yoksa bu harika bir seçenektir.
 
-* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">Create an Anomaly Detector resource (opens in a new tab)</a>:
-    * Available through the Azure portal until you delete the resource.
-    * Use the free pricing tier to try the service, and upgrade later to a paid tier for production.
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">Anomali algılayıcı kaynağı oluşturma (yeni bir sekmede açılır)</a>:
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.
+    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyin ve daha sonra üretime yönelik ücretli bir katmana yükseltin.
 
 
 
-### <a name="create-an-environment-variable"></a>Create an environment variable
+### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
 
 >[!NOTE]
-> The endpoints for non-trial resources created after July 1, 2019 use the custom subdomain format shown below. For more information and a complete list of regional endpoints, see [Custom subdomain names for Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> 1 Temmuz 2019 ' den sonra oluşturulan deneme olmayan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
-Using your key and endpoint from the resource you created, create two environment variables for authentication:
+Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
 
-* `ANOMALY_DETECTOR_KEY` - The resource key for authenticating your requests.
-* `ANOMALY_DETECTOR_ENDPOINT` - The resource endpoint for sending API requests. It will look like this: 
+* `ANOMALY_DETECTOR_KEY`-isteklerinizin kimliğini doğrulamak için kaynak anahtarı.
+* `ANOMALY_DETECTOR_ENDPOINT`-API isteklerinin gönderilmesi için kaynak uç noktası. Şöyle görünür: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-Use the instructions for your operating system.
+İşletim sisteminiz için yönergeleri kullanın.
 
 #### <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -44,7 +44,7 @@ setx ANOMALY_DETECTOR_KEY <replace-with-your-anomaly-detector-key>
 setx ANOMALY_DETECTOR_ENDPOINT <replace-with-your-anomaly-detector-endpoint>
 ```
 
-After you add the environment variable, restart the console window.
+Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
 
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -57,7 +57,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 #### <a name="macostabunix"></a>[macOS](#tab/unix)
 
-Edit your `.bash_profile`, and add the environment variable:
+`.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
 
 ```bash
 export ANOMALY_DETECTOR_KEY=<replace-with-your-anomaly-detector-key>

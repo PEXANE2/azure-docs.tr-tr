@@ -1,21 +1,16 @@
 ---
-title: Azure Container Instances için hazırlık araştırmalarını yapılandırma
+title: Kapsayıcı örneği üzerinde hazırlık araştırması ayarlama
 description: Azure Container Instances içindeki kapsayıcıların istekleri yalnızca hazırlandıklarında almasını sağlamak için bir araştırma yapılandırmayı öğrenin
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905582"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533555"
 ---
-# <a name="configure-readiness-probes"></a>Hazırlık araştırmalarını yapılandırma
+# <a name="configure-readiness-probes"></a>Hazır olma yoklamalarını yapılandırma
 
 Trafiğe sunan Kapsayıcılı uygulamalar için, kapsayıcının gelen istekleri işlemeye hazırlanmaya yönelik olduğunu doğrulamak isteyebilirsiniz. Azure Container Instances, kapsayıcınıza belirli koşullar altında erişilebilmesi için yapılandırma eklemek üzere hazırlık araştırmalarını destekler. Hazırlık araştırması bir [Kubernetes hazırlık araştırması](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)gibi davranır. Örneğin, bir kapsayıcı uygulamasının başlangıç sırasında büyük bir veri kümesi yüklemesi ve bu süre içinde istek almasını istemediğiniz bir işlem olması gerekebilir.
 

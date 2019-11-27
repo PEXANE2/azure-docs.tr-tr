@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Configure Infor CloudSuite for automatic user provisioning with Azure Active Directory | Microsoft Docs'
-description: Learn how to configure Azure Active Directory to automatically provision and de-provision user accounts to Infor CloudSuite.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Infor CloudSuite 'i yapılandırın | Microsoft Docs"
+description: Kullanıcı hesaplarını Infor CloudSuite 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -22,163 +22,163 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74408722"
 ---
-# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Tutorial: Configure Infor CloudSuite for automatic user provisioning
+# <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Infor CloudSuite 'i yapılandırma
 
-The objective of this tutorial is to demonstrate the steps to be performed in Infor CloudSuite and Azure Active Directory (Azure AD) to configure Azure AD to automatically provision and de-provision users and/or groups to Infor CloudSuite.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Infor CloudSuite 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Infor CloudSuite ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> This tutorial describes a connector built on top of the Azure AD User Provisioning Service. For important details on what this service does, how it works, and frequently asked questions, see [Automate user provisioning and deprovisioning to SaaS applications with Azure Active Directory](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 >
-> This connector is currently in Public Preview. For more information on the general Microsoft Azure terms of use for Preview features, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-The scenario outlined in this tutorial assumes that you already have the following prerequisites:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* An Azure AD tenant
-* [A Infor CloudSuite tenant](https://www.infor.com/products/infor-os)
-* A user account in Infor CloudSuite with Admin permissions.
+* Bir Azure AD kiracısı
+* [Bir Infor CloudSuite kiracısı](https://www.infor.com/products/infor-os)
+* Yönetici izinleriyle CloudSuite 'e ait bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-infor-cloudsuite"></a>Assigning users to Infor CloudSuite
+## <a name="assigning-users-to-infor-cloudsuite"></a>Kullanıcılar Infor CloudSuite 'e atanıyor
 
-Azure Active Directory uses a concept called *assignments* to determine which users should receive access to selected apps. In the context of automatic user provisioning, only the users and/or groups that have been assigned to an application in Azure AD are synchronized.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Before configuring and enabling automatic user provisioning, you should decide which users and/or groups in Azure AD need access to Infor CloudSuite. Once decided, you can assign these users and/or groups to Infor CloudSuite by following the instructions here:
-* [Assign a user or group to an enterprise app](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların CloudSuite 'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Into CloudSuite 'e atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Important tips for assigning users to Infor CloudSuite
+## <a name="important-tips-for-assigning-users-to-infor-cloudsuite"></a>Kullanıcıları CloudSuite 'e atamaya yönelik önemli ipuçları
 
-* It is recommended that a single Azure AD user is assigned to Infor CloudSuite to test the automatic user provisioning configuration. Additional users and/or groups may be assigned later.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek üzere CloudSuite 'e tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* When assigning a user to Infor CloudSuite, you must select any valid application-specific role (if available) in the assignment dialog. Users with the **Default Access** role are excluded from provisioning.
+* Bir kullanıcıyı Infor CloudSuite 'e atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Set up Infor CloudSuite for provisioning
+## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Sağlama için Infor CloudSuite 'i ayarlama
 
-1. Sign in to your [Infor CloudSuite Admin Console](https://www.infor.com/customer-center). Click on the user icon and then navigate to **user management**.
+1. [Infor CloudSuite yönetici konsolunda](https://www.infor.com/customer-center)oturum açın. Kullanıcı simgesine tıklayın ve ardından **Kullanıcı yönetimi**' ne gidin.
 
-    ![Infor CloudSuite Admin Console](media/infor-cloudsuite-provisioning-tutorial/admin.png)
+    ![Infor CloudSuite Yönetici Konsolu](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  Click on the menu icon on the left top corner of the screen. Click on **Manage**.
+2.  Ekranın sol üst köşesindeki menü simgesine tıklayın. **Yönet**' e tıklayın.
 
-    ![Infor CloudSuite Add SCIM](media/infor-cloudsuite-provisioning-tutorial/manage.png)
+    ![Infor CloudSuite SCıM Ekle](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
-3.  Navigate to **SCIM Accounts**.
+3.  **SCIM hesaplarına**gidin.
 
-    ![Infor CloudSuite SCIM Account](media/infor-cloudsuite-provisioning-tutorial/scim.png)
+    ![Cloudsuite Scim hesabı için ın](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Add an admin user by clicking on the plus icon. Provide a **SCIM Password** and type the same password under **Confirm Password**. Click on the folder icon to save the password. You will then see an **User Identifier** generated for the admin user.
+4.  Artı simgesine tıklayarak bir yönetici kullanıcı ekleyin. Bir **SCIM parolası** sağlayın ve **Parolayı Onayla**' nın altında aynı parolayı yazın. Parolayı kaydetmek için klasör simgesine tıklayın. Daha sonra yönetici kullanıcı için oluşturulan bir **Kullanıcı tanımlayıcısı** görürsünüz.
 
-    ![Infor CloudSuite Admin user](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
+    ![Cloudsuite Yönetici kullanıcısı için in](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
-    ![Infor CloudSuite password](media/infor-cloudsuite-provisioning-tutorial/password.png)
+    ![CloudSuite parolası eksik](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite identifier](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    ![Cloudsuite tanımlayıcısı için in](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
 
-5. To generate the bearer token, copy the **User Identifier** and **SCIM Password**. Paste them in notepad++ separated by a colon. Encode the string value by navigating to **Plugins > MIME Tools > Basic64 Encode**. 
+5. Taşıyıcı belirtecini oluşturmak için **Kullanıcı tanımlayıcısı** ve **SCIM parolasını**kopyalayın. Bunları, iki nokta üst üste ile ayırarak Not defteri + + içine yapıştırın. **Eklenti > MIME araçları > Basic64 kodlama**' ya giderek dize değerini kodlayın. 
 
-    ![Infor CloudSuite identifier](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    ![Cloudsuite tanımlayıcısı için in](media/infor-cloudsuite-provisioning-tutorial/token.png)
 
-3.  Copy the bearer token. This value will be entered in the Secret Token field in the Provisioning tab of your Infor CloudSuite application in the Azure portal.
+3.  Taşıyıcı belirtecini kopyalayın. Bu değer, Azure portal Infor CloudSuite uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-## <a name="add-infor-cloudsuite-from-the-gallery"></a>Add Infor CloudSuite from the gallery
+## <a name="add-infor-cloudsuite-from-the-gallery"></a>Galeriden CloudSuite 'i ekleme
 
-Before configuring Infor CloudSuite for automatic user provisioning with Azure AD, you need to add Infor CloudSuite from the Azure AD application gallery to your list of managed SaaS applications.
+Azure AD ile otomatik Kullanıcı sağlama için Infor CloudSuite 'i yapılandırmadan önce, Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize CloudSuite 'i eklemeniz gerekir.
 
-**To add Infor CloudSuite from the Azure AD application gallery, perform the following steps:**
+**Azure AD Uygulama Galerisi 'nden CloudSuite Için Infor CloudSuite eklemek için aşağıdaki adımları uygulayın:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , in the left navigation panel, select **Azure Active Directory**.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Go to **Enterprise applications**, and then select **All applications**.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. To add a new application, select the **New application** button at the top of the pane.
+3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![The New application button](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. In the search box, enter **Infor CloudSuite**, select **Infor CloudSuite** in the results panel, and then click the **Add** button to add the application.
+4. Ara kutusuna **Cloudsuite Için Infor**cloudsuite yazın, sonuçlar panelinde **cloudsuite** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Infor CloudSuite in the results list](common/search-new-app.png)
+    ![Sonuçlar listesinde CloudSuite Infor CloudSuite](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Configuring automatic user provisioning to Infor CloudSuite 
+## <a name="configuring-automatic-user-provisioning-to-infor-cloudsuite"></a>Otomatik Kullanıcı sağlamasını Infor CloudSuite 'e yapılandırma 
 
-This section guides you through the steps to configure the Azure AD provisioning service to create, update, and disable users and/or groups in Infor CloudSuite based on user and/or group assignments in Azure AD.
+Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan CloudSuite içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> You may also choose to enable SAML-based single sign-on for Infor CloudSuite , following the instructions provided in the [Infor CloudSuite Single sign-on tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Single sign-on can be configured independently of automatic user provisioning, though these two features compliment each other.
+> Infor [Cloudsuite çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)belirtilen yönergeleri Izleyerek, Infor CLOUDSUITE için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 > [!NOTE]
-> To learn more about Infor CloudSuite's SCIM endpoint, refer [this](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#).
+> CloudSuite 'in SCıM uç noktası hakkında daha fazla bilgi edinmek için [buna](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)bakın.
 
-### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>To configure automatic user provisioning for Infor CloudSuite in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Azure AD 'de Infor CloudSuite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Select **Enterprise Applications**, then select **All applications**.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. In the applications list, select **Infor CloudSuite**.
+2. Uygulamalar listesinde, **CloudSuite Için ıntıl**öğesini seçin.
 
-    ![The Infor CloudSuite link in the Applications list](common/all-applications.png)
+    ![Uygulamalar listesindeki CloudSuite Için Infor CloudSuite bağlantısı](common/all-applications.png)
 
-3. Select the **Provisioning** tab.
+3. **Sağlama** sekmesini seçin.
 
-    ![Provisioning tab](common/provisioning.png)
+    ![Sağlama sekmesi](common/provisioning.png)
 
-4. Set the **Provisioning Mode** to **Automatic**.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Provisioning tab](common/provisioning-automatic.png)
+    ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Under the **Admin Credentials** section, input `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` in **Tenant URL**. Input the bearer token value retrieved earlier in **Secret Token**. Click **Test Connection** to ensure Azure AD can connect to Infor CloudSuite. If the connection fails, ensure your Infor CloudSuite account has Admin permissions and try again.
+5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` girin. Daha önce **gizli bir belirteçte**alınan taşıyıcı belirteç değerini girin. Azure AD 'nin Infor CloudSuite 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, CloudSuite hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. In the **Notification Email** field, enter the email address of a person or group who should receive the provisioning error notifications and check the checkbox - **Send an email notification when a failure occurs**.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Notification Email](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Save (Kaydet)** düğmesine tıklayın.
 
-8. Under the **Mappings** section, select **Synchronize Azure Active Directory Users to Infor CloudSuite**.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları cloudsuite ' e eşitler**' ı seçin.
 
-    ![Infor CloudSuite User Mappings](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
+    ![Cloudsuite Kullanıcı eşlemeleri için ın](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Review the user attributes that are synchronized from Azure AD to Infor CloudSuite in the **Attribute Mapping** section. The attributes selected as **Matching** properties are used to match the user accounts in Infor CloudSuite for update operations. Select the **Save** button to commit any changes.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Infor cloudsuite 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Infor cloudsuite içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Infor CloudSuite User Attributes](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
+    ![CloudSuite Kullanıcı öznitelikleri için Infor](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. Under the **Mappings** section, select **Synchronize Azure Active Directory Groups to Infor CloudSuite**.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Cloudsuite için ınsınıgt**' yi seçin.
 
-    ![Infor CloudSuite Group Mappings](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
+    ![CloudSuite Grup eşlemelerini geçersiz](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Review the group attributes that are synchronized from Azure AD to Infor CloudSuite in the **Attribute Mapping** section. The attributes selected as **Matching** properties are used to match the groups in Infor CloudSuite for update operations. Select the **Save** button to commit any changes.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Infor cloudsuite 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Infor cloudsuite içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Infor CloudSuite Group Attributes](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
+    ![CloudSuite grubu öznitelikleri için Infor](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 
-12. To configure scoping filters, refer to the following instructions provided in the [Scoping filter tutorial](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. To enable the Azure AD provisioning service for Infor CloudSuite, change the **Provisioning Status** to **On** in the **Settings** section.
+13. Infor CloudSuite için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Provisioning Status Toggled On](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. Define the users and/or groups that you would like to provision to Infor CloudSuite by choosing the desired values in **Scope** in the **Settings** section.
+14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek cloudsuite 'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Provisioning Scope](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. When you are ready to provision, click **Save**.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Saving Provisioning Configuration](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-This operation starts the initial synchronization of all users and/or groups defined in **Scope** in the **Settings** section. The initial sync takes longer to perform than subsequent syncs, which occur approximately every 40 minutes as long as the Azure AD provisioning service is running. You can use the **Synchronization Details** section to monitor progress and follow links to provisioning activity report, which describes all actions performed by the Azure AD provisioning service on Infor CloudSuite.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü kullanarak ilerlemeyi izleyebilir ve sağlama etkinlik raporuna ilişkin bağlantıları izleyebilirsiniz. Bu, Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri cloudsuite üzerinde açıklar.
 
-For more information on how to read the Azure AD provisioning logs, see [Reporting on automatic user account provisioning](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Managing user account provisioning for Enterprise Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Learn how to review logs and get reports on provisioning activity](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Files performance troubleshooting guide
-description: Known performance issues with Azure file shares and associated workarounds.
+title: Azure dosyaları performans sorunlarını giderme kılavuzu
+description: Azure dosya paylaşımları ve ilişkili geçici çözümler ile ilgili bilinen performans sorunları.
 author: gunjanj
 ms.service: storage
 ms.topic: conceptual
@@ -14,157 +14,157 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227818"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshoot Azure Files performance issues
+# <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
-This article lists some common problems related to Azure file shares. It provides potential causes and workarounds when these problems are encountered.
+Bu makalede, Azure dosya paylaşımlarıyla ilgili bazı yaygın sorunlar listelenmektedir. Bu sorunlarla karşılaşıldığında olası nedenleri ve geçici çözümleri sağlar.
 
-## <a name="high-latency-low-throughput-and-general-performance-issues"></a>High latency, low throughput, and general performance issues
+## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Yüksek gecikme süresi, düşük aktarım hızı ve genel performans sorunları
 
-### <a name="cause-1-share-experiencing-throttling"></a>Cause 1: Share experiencing throttling
+### <a name="cause-1-share-experiencing-throttling"></a>Neden 1: daraltma ile paylaşma
 
-The default quota on a premium share is 100 GiB, which provides 100 baseline IOPS (with a potential to burst up to 300 for an hour). For more information about provisioning and its relationship to IOPS, see the [Provisioned shares](storage-files-planning.md#provisioned-shares) section of the planning guide.
+Premium paylaşımdaki varsayılan kota 100 GiB 'dir ve bu da 100 temel ıOPS (bir saat için en fazla ' 300 e kadar veri bloğu) sağlar. Sağlama ve ıOPS ile ilişkisi hakkında daha fazla bilgi için, planlama kılavuzunun [sağlanan paylaşımlar](storage-files-planning.md#provisioned-shares) bölümüne bakın.
 
-To confirm if your share is being throttled, you can leverage Azure Metrics in the portal.
+Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölçümlerinden yararlanabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Select **All services** and then search for **Metrics**.
+1. **Tüm hizmetler** ' i seçin ve ardından **ölçümler**' i arayın.
 
 1. **Ölçümler**’i seçin.
 
-1. Select your storage account as the resource.
+1. Kaynak olarak depolama hesabınızı seçin.
 
-1. Select **File** as the metric namespace.
+1. Ölçüm ad alanı olarak **Dosya** ' yı seçin.
 
-1. Select **Transactions** as the metric.
+1. Ölçüm olarak **işlemler** ' i seçin.
 
-1. Add a filter for **ResponseType** and check to see if any requests have a response code of **SuccessWithThrottling** (for SMB) or **ClientThrottlingError** (for REST).
+1. **ResponseType** için bir filtre ekleyin ve herhangi bir isteğin bir yanıt **kodu (SMB** için) veya **CLIENTKıSıTıNGERROR** (REST için) yanıt koduna sahip olup olmadığını denetleyin.
 
-![Metrics options for premium fileshares](media/storage-troubleshooting-premium-fileshares/metrics.png)
-
-### <a name="solution"></a>Çözüm
-
-- Increase share provisioned capacity by specifying a higher quota on your share.
-
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>Cause 2: Metadata/namespace heavy workload
-
-If the majority of your requests are metadata centric, (such as createfile/openfile/closefile/queryinfo/querydirectory) then the latency will be worse when compared to read/write operations.
-
-To confirm if most of your requests are metadata centric, you can use the same steps as above. Except instead of adding a filter for **ResponseType**, add a filter for **API Name**.
-
-![Filter for API Name in your metrics](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
-
-### <a name="workaround"></a>Geçici çözüm
-
-- Check if the application can be modified to reduce the number of metadata operations.
-- Add a VHD on the file share and mount VHD over SMB from the client to perform files operations against the data. This approach works for single writer and multiple readers scenarios and allows metadata operations to be local, offering performance similar to a local direct-attached storage.
-
-### <a name="cause-3-single-threaded-application"></a>Cause 3: Single-threaded application
-
-If the application being used by the customer is single-threaded, this can result in significantly lower IOPS/throughput than the maximum possible based on your provisioned share size.
+![Premium dosya paylaşımları için ölçüm seçenekleri](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
 ### <a name="solution"></a>Çözüm
 
-- Increase application parallelism by increasing the number of threads.
-- Switch to applications where parallelism is possible. For example, for copy operations, customers could use AzCopy or RoboCopy from Windows clients or the **parallel** command on Linux clients.
+- Paylaşımınızda daha yüksek bir kota belirterek sağlanan kapasiteyi yükseltin.
 
-## <a name="very-high-latency-for-requests"></a>Very high latency for requests
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>Neden 2: meta veri/ad alanı ağır iş yükü
 
-### <a name="cause"></a>Nedeni
+İsteklerinizin çoğunluğu meta veri merkezli ise (CreateFile/OpenFile/CloseFile/QueryInfo/querydirectory gibi), okuma/yazma işlemlerine kıyasla gecikme daha kötüleşmeyecektir.
 
-The client VM could be located in a different region than the file share.
+İsteklerinizin çoğunun meta veri merkezli olup olmadığını doğrulamak için yukarıdaki adımlardan aynı adımları kullanabilirsiniz. **ResponseType**için bir filtre eklemek yerine, **API adı**için bir filtre ekleyin.
+
+![Ölçümlerinizin API adı için filtre](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+
+### <a name="workaround"></a>Geçici Çözüm
+
+- Meta veri işlemlerinin sayısını azaltmak için uygulamanın değiştirilip değiştirilemeyeceğini denetleyin.
+- Dosya paylaşımında bir VHD ekleyin ve veri üzerinde dosya işlemleri gerçekleştirmek için VHD 'YI istemciden SMB 'ye bağlayın. Bu yaklaşım tek yazıcı ve birden çok okuyucu senaryosu için geçerlidir ve meta veri işlemlerinin yerel olmasına olanak sağlar ve yerel olarak doğrudan bağlanmış bir depolamaya benzer bir performans sunar.
+
+### <a name="cause-3-single-threaded-application"></a>Neden 3: tek iş parçacıklı uygulama
+
+Müşteri tarafından kullanılan uygulama tek iş parçacıklı ise, bu, sağlanan paylaşma boyutunuzu temel alarak mümkün olan en yüksek sayıdan/aktarım hızına göre önemli ölçüde daha düşük bir değer oluşmasına neden olabilir.
 
 ### <a name="solution"></a>Çözüm
 
-- Run the application from a VM that is located in the same region as the file share.
+- İş parçacığı sayısını artırarak uygulama paralelliğini artırın.
+- Paralellik mümkün olduğunda uygulamalara geçiş yapın. Örneğin, kopyalama işlemleri için müşteriler Windows istemcilerinden AzCopy veya RoboCopy veya Linux istemcilerindeki **Parallel** komutunu kullanabilir.
 
-## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Client unable to achieve maximum throughput supported by the network
-
-One potential cause of this is a lack fo SMB multi-channel support. Currently, Azure file shares only support single channel, so there is only one connection from the client VM to the server. This single connection is pegged to a single core on the client VM, so the maximum throughput achievable from a VM is bound by a single core.
-
-### <a name="workaround"></a>Geçici çözüm
-
-- Obtaining a VM with a bigger core may help improve throughput.
-- Running the client application from multiple VMs will increase throughput.
-
-- Use REST APIs where possible.
-
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Throughput on Linux clients is significantly lower when compared to Windows clients.
+## <a name="very-high-latency-for-requests"></a>İstekler için çok yüksek gecikme süresi
 
 ### <a name="cause"></a>Nedeni
 
-This is a known issue with the implementation of SMB client on Linux.
+İstemci VM dosyası, dosya paylaşımından farklı bir bölgede bulunabilir.
 
-### <a name="workaround"></a>Geçici çözüm
+### <a name="solution"></a>Çözüm
 
-- Spread the load across multiple VMs.
-- On the same VM, use multiple mount points with **nosharesock** option, and spread the load across these mount points.
-- On Linux, try mounting with **nostrictsync** option to avoid forcing SMB flush on every fsync call. For Azure Files, this option does not interfere with data consistentcy, but may result in stale file metadata on directory listing (**ls -l** command). Directly querying metadata of file (**stat** command) will return the most up-to date file metadata.
+- Uygulamayı dosya paylaşımıyla aynı bölgede bulunan bir VM 'den çalıştırın.
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>High latencies for metadata heavy workloads involving extensive open/close operations.
+## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>İstemci ağ tarafından desteklenen maksimum üretilen iş elde edemedi
 
-### <a name="cause"></a>Nedeni
+Bunun olası nedenlerinden biri, SMB çoklu kanal desteğinin olmamasıdır. Şu anda Azure dosya paylaşımları yalnızca tek kanalı destekler, bu nedenle istemci sanal makineden sunucuya yalnızca bir bağlantı vardır. Bu tek bağlantı, istemci sanal makinesinde tek bir çekirdeğe gereğinden, bu nedenle bir VM 'den en fazla üretilen iş ulaşılabilir, tek bir çekirdekle bağlanır.
 
-Lack of support for directory leases.
+### <a name="workaround"></a>Geçici Çözüm
 
-### <a name="workaround"></a>Geçici çözüm
+- Daha büyük bir çekirdekli VM 'nin alınması, aktarım hızını artırmaya yardımcı olabilir.
+- İstemci uygulamasını birden çok VM 'den çalıştırmak, aktarım hızını artırır.
 
-- If possible, avoid excessive opening/closing handle on the same directory within a short period of time.
-- For Linux VMs, increase the directory entry cache timeout by specifying **actimeo=\<sec>** as a mount option. By default, it is one second, so a larger value like three or five might help.
-- For Linux VMs, upgrade the kernel to 4.20 or higher.
+- Mümkün olduğunda REST API 'Leri kullanın.
 
-## <a name="low-iops-on-centosrhel"></a>Low IOPS on CentOS/RHEL
+## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Linux istemcilerinde üretilen iş, Windows istemcileri ile karşılaştırıldığında önemli ölçüde düşüktür.
 
 ### <a name="cause"></a>Nedeni
 
-IO depth greater than one is not supported on CentOS/RHEL.
+Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur.
 
-### <a name="workaround"></a>Geçici çözüm
+### <a name="workaround"></a>Geçici Çözüm
 
-- Upgrade to CentOS 8 / RHEL 8.
-- Change to Ubuntu.
+- Yükü birden çok VM arasında yayın.
+- Aynı VM 'de, **nosharesock** seçeneğiyle birden çok bağlama noktası kullanın ve yükü bu bağlama noktalarına yayın.
+- Linux 'ta, her fsync çağrısında SMB temizlemeyi zormaktan kaçınmak için **nostrictsync** seçeneğiyle bağlamayı deneyin. Azure dosyaları için bu seçenek, veri ayrıntılarını etkilemez, ancak dizin listelemesi (**ls-l** komutu) üzerinde eski dosya meta verileri oluşmasına neden olabilir. Dosya meta verilerinin (**stat** komutu) doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
 
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Slow file copying to and from Azure Files in Linux
-
-If you are experiencing slow file copying to and from Azure Files, take a look at the [Slow file copying to and from Azure Files in Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) section in the Linux troubleshooting guide.
-
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>Jittery/saw-tooth pattern for IOPS
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Kapsamlı açık/kapalı işlemleri içeren meta veriler ağır iş yükleri için yüksek gecikme süreleri.
 
 ### <a name="cause"></a>Nedeni
 
-Client application consistently exceeds baseline IOPS. Currently, there is no service side smoothing of the request load, so if the client exceeds baseline IOPS, it will get throttled by the service. That throttling can result in the client experiencing a jittery/saw-tooth IOPS pattern. In this case, average IOPS achieved by the client might be lower than the baseline IOPS.
+Dizin kiraları için destek eksikliği yok.
 
-### <a name="workaround"></a>Geçici çözüm
+### <a name="workaround"></a>Geçici Çözüm
 
-- Reduce the request load from the client application, so that the share does not get throttled.
-- Increase the quota of the share so that the share does not get throttled.
+- Mümkünse, kısa bir süre içinde aynı dizinde aşırı açma/kapatma tanıtıcısından kaçının.
+- Linux VM 'Ler için, bağlama seçeneği olarak **actimeo =\<sec >** belirterek Dizin giriş önbelleği zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
+- Linux sanal makineleri için, çekirdeği 4,20 veya daha yüksek bir sürüme yükseltin.
 
-## <a name="excessive-directoryopendirectoryclose-calls"></a>Excessive DirectoryOpen/DirectoryClose calls
-
-### <a name="cause"></a>Nedeni
-
-If the number of DirectoryOpen/DirectoryClose calls is among the top API calls and you don't expect the client to be making that many calls, it may be an issue with the antivirus installed on the Azure client VM.
-
-### <a name="workaround"></a>Geçici çözüm
-
-- A fix for this issue is available in the [April Platform Update for Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform).
-
-## <a name="file-creation-is-slower-than-expected"></a>File creation is slower than expected
+## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL üzerinde düşük ıOPS
 
 ### <a name="cause"></a>Nedeni
 
-Workloads that rely on creating a large number of files will not see a substantial difference between the performance of premium file shares and standard file shares.
+Büyük GÇ derinliği, CentOS/RHEL üzerinde desteklenmez.
 
-### <a name="workaround"></a>Geçici çözüm
+### <a name="workaround"></a>Geçici Çözüm
 
-- Hiçbiri.
+- CentOS 8/RHEL 8 ' e yükseltin.
+- Ubuntu olarak değiştirin.
 
-## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Slow performance from Windows 8.1 or Server 2012 R2
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux 'ta Azure dosyalarından yavaş dosya kopyalama
+
+Azure dosyaları 'na ve Azure dosyalarına yavaş dosya kopyalama ile karşılaşıyorsanız, Linux sorun giderme kılavuzu 'ndaki [Linux 'ta bulunan ve Azure dosyalarına yavaş dosya](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) kopyalama bölümüne göz atın.
+
+## <a name="jitterysaw-tooth-pattern-for-iops"></a>IOPS için jtery/testere-tooth deseninin
 
 ### <a name="cause"></a>Nedeni
 
-Higher than expected latency accessing Azure Files for IO intensive workloads.
+İstemci uygulaması, temel ıOPS 'yi sürekli olarak aşıyor. Şu anda, istek yükünün hizmet tarafı yumuşatması yoktur, bu nedenle istemci temel ıOPS 'yi aşarsa hizmet tarafından kısıtlanacaktır. Bu kısıtlama, istemcinin bir jtery/testere-tooth ıOPS düzeniyle karşılaşmasına neden olabilir. Bu durumda, istemci tarafından elde edilen ortalama ıOPS, taban ıOPS değerinden daha düşük olabilir.
 
-### <a name="workaround"></a>Geçici çözüm
+### <a name="workaround"></a>Geçici Çözüm
 
-- Install the available [hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+- Paylaşımın kısıtlanmaması için istemci uygulamasından gelen istek yükünü azaltın.
+- Paylaşımın kısıtlanmaması için paylaşımın kotasını artırın.
+
+## <a name="excessive-directoryopendirectoryclose-calls"></a>Aşırı sayıda DirectoryOpen/DirectoryClose çağrısı
+
+### <a name="cause"></a>Nedeni
+
+DirectoryOpen/DirectoryClose çağrılarının sayısı en üst API çağrılarından ise ve istemcinin bu çok sayıda çağrı yapmasına gerek duymuyorsanız, Azure istemci VM 'de yüklü virüsten koruma sorunu olabilir.
+
+### <a name="workaround"></a>Geçici Çözüm
+
+- Bu sorunla ilgili bir düzelme, [Windows Için Nisan platformu güncelleştirmesinde](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform)sunulmaktadır.
+
+## <a name="file-creation-is-slower-than-expected"></a>Dosya oluşturma beklenenden yavaş
+
+### <a name="cause"></a>Nedeni
+
+Çok sayıda dosya oluşturmaya bağlı olan iş yükleri, Premium dosya paylaşımlarının ve standart dosya paylaşımlarının performansı arasında önemli bir farklılık görmeyecektir.
+
+### <a name="workaround"></a>Geçici Çözüm
+
+- Yok.
+
+## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Windows 8.1 veya Server 2012 R2 'den yavaş performans
+
+### <a name="cause"></a>Nedeni
+
+GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme süresinden daha yüksek.
+
+### <a name="workaround"></a>Geçici Çözüm
+
+- Kullanılabilir [düzeltmeyi](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)yükler.

@@ -1,6 +1,6 @@
 ---
-title: Investigate risk Azure Active Directory Identity Protection
-description: Learn how to investigate risky users, detections, and sign-ins in Azure Active Directory Identity Protection
+title: Risk araştırın Azure Active Directory Kimlik Koruması
+description: Azure Active Directory Kimlik Koruması ' de riskli kullanıcıları, algılamaları ve oturum açma işlemlerini nasıl araştırılacağını öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,78 +18,78 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382131"
 ---
-# <a name="how-to-investigate-risk"></a>How To: Investigate risk
+# <a name="how-to-investigate-risk"></a>Nasıl yapılır: riski araştırma
 
-Identity Protection provides organizations with three reports they can use to investigate identity risks in their environment. These reports are the **risky users**, **risky sign-ins**, and **risk detections**. Investigation of events is key to better understanding and identifying any weak points in your security strategy.
+Kimlik koruması, kuruluşların ortamlarında kimlik risklerini araştırmak için kullanabilecekleri üç rapor sağlar. Bu raporlar **riskli kullanıcılar**, **riskli oturum**açmalar ve **risk algılamaları**. Olayların araştırılması, güvenlik stratejinizde zayıf noktaları daha iyi anlamak ve tanımlamak için önemli bir anahtardır.
 
-All three reports allow for downloading of events in .CSV format for further analysis outside of the Azure portal. The risky users and risky sign-ins reports allow for downloading the most recent 2500 entries, while the risk detections report allows for downloading the most recent 5000 records.
+Tüm üç rapor, içindeki olayların indirilemelerine izin verir. Azure portal dışında daha fazla analiz için CSV biçimi. Riskli kullanıcılar ve riskli oturum açma işlemleri raporları, en son 2500 girişin indirilemelerine izin verir, ancak risk algılamaları raporu en son 5000 kayıtları indirmeye izin verir.
 
-Organizations can take advantage of the Microsoft Graph API integrations to aggregate data with other sources they may have access to as an organization.
+Kuruluşlar, verileri bir kuruluş olarak erişimi olabilecek diğer kaynaklarla toplamak için Microsoft Graph API tümleştirmelerinden yararlanabilir.
 
-The three reports are found in the **Azure portal** > **Azure Active Directory** > **Security**.
+**Azure portal** > **Azure Active Directory** > **güvenlik**bölümünde üç rapor bulunur.
 
-## <a name="navigating-the-reports"></a>Navigating the reports
+## <a name="navigating-the-reports"></a>Raporlarda gezinme
 
-Each report launches with a list of all detections for the period shown at the top of the report. Each report allows for the addition or removal of columns based on administrator preference. Administrators can choose to download the data in .CSV format. Reports can be filtered using the filters across the top of the report.
+Her rapor, raporun en üstünde gösterilen süre için tüm algılamalardan oluşan bir liste ile başlatılır. Her rapor, sütunları yönetici tercihine göre ekleme veya kaldırma için izin verir. Yöneticiler içindeki verileri indirmeyi seçebilir. CSV biçimi. Raporlar, raporun üst kısmında filtreler kullanılarak filtrelenebilir.
 
-Selecting individual entries may enable additional entries at the top of the report such as the ability to confirm a sign-in as compromised or safe, confirm a user as compromised, or dismiss user risk.
+Tek tek girişlerin seçilmesi, raporun üst kısmında, tehlikede veya güvende olan bir oturum açmayı onaylama, bir kullanıcıyı tehlikede onaylama veya Kullanıcı riskini kapatma gibi ek girişler sağlayabilir.
 
-Selecting individual entries expands a details window below the detections. The details view allows administrators to investigate and perform actions on each detection. 
+Tek tek girişlerin seçilmesi, algılamaların altına bir ayrıntılar penceresi genişletir. Ayrıntılar görünümü, yöneticilerin her bir algılama üzerinde eylemleri araştırmasını ve gerçekleştirmesini sağlar. 
 
-![Example Identity Protection report showing risky sign-ins and details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
+![Riskli oturum açma işlemlerini ve ayrıntılarını gösteren örnek kimlik koruması raporu](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Risky users
+## <a name="risky-users"></a>Riskli kullanıcılar
 
-With the information provided by the risky users report, administrators can find:
+Riskli kullanıcılar raporu tarafından sağlanacak bilgiler ile yöneticiler şunları bulabilir:
 
-- Which users are at risk, have had risk remediated, or have had risk dismissed?
-- Details about detections
-- History of risky sign-ins
-- Risk history
+- Risk altında olan kullanıcılar risk düzeltildi mi, ne de risk kapatıldı mi?
+- Algılamalar hakkındaki ayrıntılar
+- Riskli oturum açma işlemlerinin geçmişi
+- Risk geçmişi
  
-Administrators can then choose to take action on these events. Administrators can choose to:
+Yöneticiler daha sonra bu olaylar üzerinde işlem yapmak için seçim yapabilir. Yöneticiler şunları yapabilir:
 
-- Reset the user password
-- Confirm user compromise
-- Dismiss user risk
-- Block user from signing in
-- Investigate further using Azure ATP
+- Kullanıcı parolasını sıfırlayın
+- Kullanıcının güvenliğini onaylama
+- Kullanıcı riskini kapat
+- Kullanıcının oturum açmasını engelle
+- Azure ATP 'yi kullanarak daha fazla araştırma yapın
 
 ## <a name="risky-sign-ins"></a>Riskli oturum açma işlemleri
 
-The risky sign-ins report contains filterable data for up to the past 30 days (1 month).
+Riskli oturum açma işlemleri raporu, son 30 güne kadar (1 ay) filtrelenebilir verileri içerir.
 
-With the information provided by the risky sign-ins report, administrators can find:
+Riskli oturum açma işlemleri raporu tarafından belirtilen bilgiler ile yöneticiler şunları bulabilir:
 
-- Which sign-ins are classified as at risk, confirmed compromised, confirmed safe, dismissed, or remediated.
-- Real-time and aggregate risk levels associated with sign-in attempts.
-- Detection types triggered
-- Conditional Access policies applied
-- MFA details
-- Device information
+- Hangi oturum açma riskleri risk altında sınıflandırıldı, tehlikeye atıldığı, güvenli, kapatıldı veya düzeltildi.
+- Oturum açma girişimleri ile ilişkili gerçek zamanlı ve toplu risk düzeyleri.
+- Tetiklenmiş algılama türleri
+- Koşullu erişim ilkeleri uygulandı
+- MFA ayrıntıları
+- Cihaz bilgileri
 - Uygulama bilgileri
-- Location information
+- Konum bilgileri
 
-Administrators can then choose to take action on these events. Administrators can choose to:
+Yöneticiler daha sonra bu olaylar üzerinde işlem yapmak için seçim yapabilir. Yöneticiler şunları yapabilir:
 
-- Confirm sign-in compromise
-- Confirm sign-in safe
+- Oturum açma güvenliğini Onayla
+- Oturum açmayı güvenli Onayla
 
 ## <a name="risk-detections"></a>Risk algılamaları
 
-The risk detections report contains filterable data for up to the past 90 days (3 months).
+Risk algılama raporu, son 90 güne kadar (3 ay) filtrelenebilir verileri içerir.
 
-With the information provided by the risk detections report, administrators can find:
+Risk algılamaları raporu tarafından sağlanabilecek bilgiler ile yöneticiler şunları bulabilir:
 
-- Information about each risk detection including type.
-- Other risks triggered at the same time
-- Sign-in attempt location
-- Link out to more detail from Microsoft Cloud App Security (MCAS).
+- Türü de dahil olmak üzere her risk algılaması hakkında bilgi.
+- Aynı anda tetiklenen diğer riskler
+- Oturum açma denemesi konumu
+- Microsoft Cloud App Security (MCAS) ' den daha fazla ayrıntı için bağlantı.
 
-Administrators can then choose to return to the user's risk or sign-ins report to take actions based on information gathered.
+Yöneticiler daha sonra toplanan bilgilere göre eylemler gerçekleştirmek için kullanıcının risk veya oturum açma raporuna geri dönerek seçim yapabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Policies available to mitigate risks](concept-identity-protection-policies.md)
+- [Riskleri azaltmak için kullanılabilir ilkeler](concept-identity-protection-policies.md)
 
-- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)
+- [Oturum açma ve Kullanıcı risk ilkelerini etkinleştir](howto-identity-protection-configure-risk-policies.md)

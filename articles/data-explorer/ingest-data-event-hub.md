@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028482"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539281"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub 'ından Azure Veri Gezgini veri alma
 
@@ -21,9 +21,9 @@ ms.locfileid: "72028482"
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
@@ -35,7 +35,7 @@ Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyd
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure Portal](https://portal.azure.com/)’da oturum açın.
 
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
@@ -47,7 +47,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
 
     **Azure'a dağıtma** düğmesi Azure portalda doldurmanız gereken bir form sayfasını açar.
 
-    ![Azure'a Dağıt](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Azure’a Dağıt](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Olay hub'ının oluşturulmasını istediğiniz aboneliği seçin ve *test-hub-rg* adlı bir kaynak grubu oluşturun.
 
@@ -137,6 +137,8 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
     > [!NOTE]
     > * Verilerim ' i seçin, verilerin [örnek uygulama](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) açıklamalarında görüldüğü gibi gerekli yönlendirme bilgilerini içerdiği dinamik yönlendirmeyi kullanmak için **yönlendirme bilgilerini içerir** . Hem statik hem de dinamik özellikler ayarlandıysa, dinamik özellikler statik olanları geçersiz kılar. 
     > * Yalnızca veri bağlantısını oluşturduktan sonra sıraya alınan olaylar alınır.
+    > * [Azure Portal bir destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)açarak statik yönlendirme için gzip sıkıştırmasını etkinleştirin. [Örnek uygulamada](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)görüldüğü gibi dinamik yönlendirme için gzip sıkıştırmasını etkinleştirin. 
+    > * Avro biçimi ve olay sistemi özellikleri, sıkıştırma yükünde desteklenmez.
 
 ## <a name="copy-the-connection-string"></a>Bağlantı dizesini kopyalayın
 

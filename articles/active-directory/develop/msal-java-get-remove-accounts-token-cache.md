@@ -1,7 +1,7 @@
 ---
-title: Get and remove accounts from the token cache using MSAL for Java (MSAL4j)
+title: Java için MSAL kullanarak belirteç önbelleğinden hesap alma ve kaldırma (MSAL4j)
 titleSuffix: Microsoft identity platform
-description: Learn how to view and remove accounts from the token cache using the Microsoft Authentication Library for Java.
+description: Java için Microsoft kimlik doğrulama kitaplığı 'nı kullanarak, belirteç önbelleğinde hesapları görüntülemeyi ve kaldırmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,13 +25,13 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452490"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Get and remove accounts from the token cache using MSAL for Java
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Java için MSAL kullanarak belirteç önbelleğinden hesap alma ve kaldırma
 
-MSAL for Java provides an in-memory token cache by default. The in-memory token cache lasts the duration of the application instance.
+Java için MSAL, varsayılan olarak bellek içi belirteç önbelleği sağlar. Bellek içi belirteç önbelleği, uygulama örneğinin süresini sürer.
 
-## <a name="see-which-accounts-are-in-the-cache"></a>See which accounts are in the cache
+## <a name="see-which-accounts-are-in-the-cache"></a>Hangi hesapların önbellekte olduğunu görün
 
-You can check what accounts are in the cache by calling `PublicClientApplication.getAccounts()` as shown in the following example:
+Aşağıdaki örnekte gösterildiği gibi `PublicClientApplication.getAccounts()` çağırarak hangi hesapların önbellekte olduğunu kontrol edebilirsiniz:
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -42,9 +42,9 @@ PublicClientApplication pca = new PublicClientApplication.Builder(
 Set<IAccount> accounts = pca.getAccounts().join();
 ```
 
-## <a name="remove-accounts-from-the-cache"></a>Remove accounts from the cache
+## <a name="remove-accounts-from-the-cache"></a>Hesapları önbellekten kaldır
 
-To remove an account from the cache, find the account that needs to be removed and then call `PublicClientApplicatoin.removeAccount()` as shown in the following example:
+Bir hesabı önbellekten kaldırmak için, kaldırılması gereken hesabı bulun ve aşağıdaki örnekte gösterildiği gibi `PublicClientApplicatoin.removeAccount()` çağırın:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
@@ -56,6 +56,6 @@ IAccount accountToBeRemoved = accounts.stream().filter(
 pca.removeAccount(accountToBeRemoved).join();
 ```
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-If you are using MSAL for Java, learn about [Custom token cache serialization in MSAL for Java](msal-java-token-cache-serialization.md).
+Java için MSAL kullanıyorsanız, [Java IÇIN msal Içindeki özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)hakkında bilgi edinin.

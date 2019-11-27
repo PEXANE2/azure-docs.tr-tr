@@ -1,5 +1,5 @@
 ---
-title: Dizin Oluşturucu hataları ve uyarıları
+title: Dizin oluşturucu hataları ve uyarıları
 titleSuffix: Azure Cognitive Search
 description: Bu makalede, Azure Bilişsel Arama 'de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
 manager: nitinme

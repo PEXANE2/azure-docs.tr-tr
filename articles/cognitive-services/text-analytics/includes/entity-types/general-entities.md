@@ -75,7 +75,7 @@ Diller:
 |----------|----------------------------------------------|
 | Yok         | E-posta adresi, örneğin `support@contoso.com` |
 
-### <a name="url"></a>URL'si
+### <a name="url"></a>URL
 
 Internet URL 'Leri.
 

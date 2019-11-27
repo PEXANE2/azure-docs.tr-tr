@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central’da kural ve eylem yapılandırma | Microsoft Docs
-description: This how-to article shows you, as a builder, how to configure telemetry-based rules and actions in your Azure IoT Central application.
+description: Bu nasıl yapılır makalesi, Azure IoT Central uygulamanızda telemetri tabanlı kuralları ve eylemleri nasıl yapılandıracağınızı bir Oluşturucu olarak gösterir.
 author: vavilla
 ms.author: vavilla
 ms.date: 11/11/2019
@@ -15,41 +15,41 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484918"
 ---
-# <a name="configure-rules-preview-features"></a>Configure rules (preview features)
+# <a name="configure-rules-preview-features"></a>Kuralları yapılandırma (Önizleme özellikleri)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Rules in IoT Central serve as a customizable response tool that trigger on actively monitored events from connected devices. The following sections describe how rules are evaluated.
+IoT Central kurallar, bağlı cihazlardan etkin olarak izlenen olaylar üzerinde tetiklenen bir özelleştirilebilir yanıt aracı olarak görev yapar. Aşağıdaki bölümlerde kuralların nasıl değerlendirildiği açıklanır.
 
-## <a name="select-target-devices"></a>Select target devices
+## <a name="select-target-devices"></a>Hedef cihazları seçin
 
-Use the target devices section to select on what kind of devices this rule will be applied. Filters allow you to further refine what devices should be included. The filters use properties on the device template to filter down the set of devices. Filters themselves don't trigger an action. In the following screenshot, the devices that are being targeted are of device template type **Refrigerator**. The filter states that the rule should only include **Refrigerators** where the **Manufactured State** property equals **Washington**.
+Bu kuralın ne tür cihazlarda uygulanacağını seçmek için hedef cihazlar bölümünü kullanın. Filtreler, hangi cihazların dahil edileceğini daha da iyileştirmenize olanak tanır. Filtreler cihaz kümesini filtrelemek için cihaz şablonundaki özellikleri kullanır. Filtreler bir eylem tetiklemez. Aşağıdaki ekran görüntüsünde, hedeflenen cihazların cihaz şablonu türü **soğutma**' dir. Filtre, kuralın yalnızca **üretilen durum** özelliği **Washington**'a eşit olan **soğutma** 'yi içermesi gerektiğini belirtir.
 
 ![Koşullar](media/howto-configure-rules/filters.png)
 
-## <a name="use-multiple-conditions"></a>Use multiple conditions
+## <a name="use-multiple-conditions"></a>Birden çok koşul kullanma
 
-Conditions are what rules trigger on. Currently, when you add multiple conditions to a rule, they're logically AND'd together. In other words, all conditions must be met for the rule to evaluate as true.  
+Koşullar, üzerinde hangi kuralların tetikleyeceğini de tetikler. Şu anda, bir kurala birden çok koşul eklediğinizde bunlar mantıksal olarak ve Ile birlikte yapılır. Diğer bir deyişle kuralın doğru olarak değerlendirilmesi için tüm koşulların karşılanması gerekir.  
 
-In the following screenshot, the conditions check when the temperature is greater than 90 and the humidity is less than 10. When both of these statements are true, the rule evaluates to true and triggers an action.
+Aşağıdaki ekran görüntüsünde, sıcaklık 90 ' den büyük olduğunda ve nem 10 ' dan küçük olduğunda koşullar denetlenir. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
 
 ![Koşullar](media/howto-configure-rules/conditions.png)
 
-## <a name="use-aggregate-windowing"></a>Use aggregate windowing
+## <a name="use-aggregate-windowing"></a>Birleşik Pencereleme kullan
 
-Rules evaluate aggregate time windows as tumbling windows. In the screenshot below, the time window is five minutes. Every five minutes, the rule evaluates on the last five minutes of data. The data is only evaluated once in the window to which it corresponds.
+Kurallar, Windows 'un aldığı Birleşik zaman pencerelerini değerlendirir. Aşağıdaki ekran görüntüsünde, zaman penceresi beş dakikadır. Her beş dakikada bir kural, son beş dakikalık verileri değerlendirir. Veriler yalnızca bir kez karşılık geldiği pencerede değerlendirilir.
 
-![Tumbling Windows](media/howto-configure-rules/tumbling-window.png)
+![Atlayan pencereler](media/howto-configure-rules/tumbling-window.png)
 
-## <a name="use-rules-with-iot-edge-modules"></a>Use rules with IoT Edge modules
+## <a name="use-rules-with-iot-edge-modules"></a>IoT Edge modüllerle kuralları kullanma
 
-A restriction applies to rules that are applied to IoT Edge modules. Rules on telemetry from different modules aren't evaluated as valid rules. Take the following as an example. The first condition of the rule is on a temperature telemetry from Module A. The second condition of the rule is on a humidity telemetry on Module B. Since the two conditions are from different modules, this is an invalid set of conditions. The rule isn't valid and will throw an error on trying to save the rule.
+Bir kısıtlama IoT Edge modüllerine uygulanan kurallar için geçerlidir. Farklı modüllerden gelen telemetri kuralları geçerli kurallar olarak değerlendirilmez. Örnek olarak aşağıdakileri yapın. Kuralın ilk koşulu, A modülünden bir sıcaklık telemetrisine sahiptir. Kuralın ikinci koşulu, B modülündeki bir nem telemetrisi üzerinde. İki koşul farklı modüllerden olduğundan, bu geçersiz bir koşullar kümesidir. Kural geçerli değil ve kuralı kaydetmeye çalışırken bir hata oluşturacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've learned how to configure a rule in your Azure IoT Central application, you can:
+Artık Azure IoT Central uygulamanızda bir kural yapılandırmayı öğrendiğinize göre şunları yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Analyze your data on the fly](howto-create-analytics.md)
+> [Verilerinizi anında çözümleyin](howto-create-analytics.md)

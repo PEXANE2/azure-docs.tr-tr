@@ -1,6 +1,6 @@
 ---
-title: Deploy the Azure Blob Storage module to devices - Azure IoT Edge | Microsoft Docs
-description: Deploy an Azure Blob Storage module to your IoT Edge device to store data at the edge.
+title: Azure Blob Storage modülünü cihazlara dağıtma-Azure IoT Edge | Microsoft Docs
+description: IOT Edge cihazınıza uçta veri depolamak için bir Azure Blob Depolama modülü dağıtın.
 author: arduppal
 ms.author: arduppal
 ms.date: 08/07/2019
@@ -15,46 +15,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456872"
 ---
-# <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Deploy the Azure Blob Storage on IoT Edge module to your device
+# <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge modülünde Azure Blob Storage 'ı cihazınıza dağıtma
 
-There are several ways to deploy modules to an IoT Edge device and all of them work for Azure Blob Storage on IoT Edge modules. The two simplest methods are to use the Azure portal or Visual Studio Code templates.
+IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi IoT Edge modüllerde Azure Blob depolama için çalışır. Visual Studio kod şablonları ve Azure Portalı'nı kullanmak için iki basit yöntemler şunlardır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- An [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription.
-- An [IoT Edge device](how-to-register-device.md) with the IoT Edge runtime installed.
-- [Visual Studio Code](https://code.visualstudio.com/) and the [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) if deploying from Visual Studio Code.
+- Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
+- IoT Edge çalışma zamanı yüklü [IoT Edge bir cihaz](how-to-register-device.md) .
+- [Visual Studio Code](https://code.visualstudio.com/) ve Visual Studio Code dağıtım yapıyorsanız [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) .
 
-## <a name="deploy-from-the-azure-portal"></a>Deploy from the Azure portal
+## <a name="deploy-from-the-azure-portal"></a>Azure portal dağıtma
 
-The Azure portal guides you through creating a deployment manifest and pushing the deployment to an IoT Edge device.
+Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihazına gönderme işlemlerinde size rehberlik eder.
 
-### <a name="select-your-device"></a>Select your device
+### <a name="select-your-device"></a>Cihazınızı seçin
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub.
-1. Select **IoT Edge** from the menu.
-1. Click on the ID of the target device from the list of devices.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
+1. Menüden **IoT Edge** seçin.
+1. Hedef cihazın cihazlar listesinden numarasını tıklayın.
 1. **Modülleri Ayarlama**'yı seçin.
 
-### <a name="configure-a-deployment-manifest"></a>Configure a deployment manifest
+### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-A deployment manifest is a JSON document that describes which modules to deploy, how data flows between the modules, and desired properties of the module twins. The Azure portal has a wizard that walks you through creating a deployment manifest, instead of building the JSON document manually. It has three steps: **Add modules**, **Specify routes**, and **Review deployment**.
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
 
-#### <a name="add-modules"></a>Add modules
+#### <a name="add-modules"></a>Modül Ekle
 
-1. In the **Deployment modules** section of the page, select **Add**.
+1. Sayfanın **dağıtım modülleri** bölümünde **Ekle**' yi seçin.
 
-1. From the types of modules in the drop-down list, select **IoT Edge Module**.
+1. Açılan listedeki modül türlerinden **IoT Edge modül**' ı seçin.
 
-1. Provide a name for the module and then specify the container image:
+1. Modül için bir ad girin ve ardından kapsayıcı görüntüsünü belirtin:
 
-   - **Name** - azureblobstorageoniotedge
-   - **Image URI** - mcr.microsoft.com/azure-blob-storage:latest
+   - **Ad** -azureblobstorageoniotedge
+   - **Görüntü URI 'si** -MCR.Microsoft.com/Azure-Blob-Storage:latest
 
    > [!IMPORTANT]
-   > Azure IoT Edge is case-sensitive when you make calls to modules, and the Storage SDK also defaults to lowercase. Although the name of the module in the [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) is **AzureBlobStorageonIoTEdge**, changing the name to lowercase helps to ensure that your connections to the Azure Blob Storage on IoT Edge module aren't interrupted.
+   > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlı Azure IoT Edge ve depolama SDK 'Sı varsayılan olarak küçük harfe duyarlıdır. [Azure Marketi](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) 'ndeki modülün adı **AzureBlobStorageonIoTEdge**olsa da, adın küçük harfe değiştirilmesi IoT Edge modüldeki Azure Blob depolama ile olan bağlantılarınızın kesilmemesini sağlamaya yardımcı olur.
 
-1. The default **Container Create Options** values define the port bindings that your container needs, but you also need to add your storage account information and a mount for the storage on your device. Replace the default JSON in the portal with the JSON below:
+1. Varsayılan **kapsayıcı oluşturma seçenekleri** değerleri, kapsayıcınıza ait bağlantı noktası bağlamalarını tanımlar, ancak depolama hesabı bilgilerinizi ve cihazınızda depolama için bir bağlama eklemeniz gerekir. Portalda varsayılan JSON değerini aşağıdaki JSON ile değiştirin:
 
    ```json
    {
@@ -73,26 +73,26 @@ A deployment manifest is a JSON document that describes which modules to deploy,
    }
    ```
 
-1. Update the JSON that you copied with the following information:
+1. Aşağıdaki bilgilerle kopyaladığınız JSON 'yi güncelleştirin:
 
-   - Replace `<your storage account name>` with a name that you can remember. Account names should be 3 to 24 characters long, with lowercase letters and numbers. No spaces.
+   - `<your storage account name>`, anımsayabileceğiniz bir adla değiştirin. Hesap adları, küçük harf ve sayılarla 3 ile 24 karakter uzunluğunda olmalıdır. Boşluk yok.
 
-   - Replace `<your storage account key>` with a 64-byte base64 key. You can generate a key with tools like [GeneratePlus](https://generate.plus/en/base64). You'll use these credentials to access the blob storage from other modules.
+   - `<your storage account key>`, 64 baytlık bir Base64 anahtarıyla değiştirin. [Generateplus](https://generate.plus/en/base64)gibi araçlarla bir anahtar oluşturabilirsiniz. Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
-   - Replace `<storage mount>` according to your container operating system. Provide the name of a [volume](https://docs.docker.com/storage/volumes/) or the absolute path to a directory on your IoT Edge device where you want the blob module to store its data. The storage mount maps a location on your device that you provide to a set location in the module.
+   - `<storage mount>`, kapsayıcı işletim sisteminize göre değiştirin. Blob modülünün verilerini depolamasını istediğiniz IoT Edge cihazınızda bir [birimin](https://docs.docker.com/storage/volumes/) veya mutlak yolun adını belirtin. Depolama alanı, cihazınızdaki bir konumu modüldeki bir konum kümesine eşler.
 
-     - For Linux containers, the format is *\<storage path or volume>:/blobroot*. Örneğin:
-         - use [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot** 
-         - use [bind mount](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Make sure to follow the steps to [grant directory access to the container user](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - For Windows containers, the format is *\<storage path or volume>:C:/BlobRoot*. Örneğin:
-         - use [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**. 
-         - use [bind mount](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
-         - Instead of using your local drive, you can map your SMB network location, for more information see [using SMB share as your local storage](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+     - Linux kapsayıcıları için, biçim *\<depolama yolu veya birim >:/blobroot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/)kullan: **My-Volume:/blobroot** 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/): **/SRV/containerdata:/blobroot**kullanın. [Kapsayıcı kullanıcısına dizin erişimi sağlamak](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) için adımları izlediğinizden emin olun
+     - Windows kapsayıcıları için, biçim *\<depolama yolu veya birim >: C:/BlobRoot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/): **My-Volume: C:/blobroot**kullanın. 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/): **c:/Containerdata: c:/blobroot**kullanın.
+         - Yerel sürücünüzü kullanmak yerine, SMB ağ konumunuzu eşleyebilirsiniz, daha fazla bilgi için bkz. [yerel depolama alanı olarak SMB paylaşımının kullanımı](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Do not change the second half of the storage mount value, which points to a specific location in the module. The storage mount should always end with **:/blobroot** for Linux containers and **:C:/BlobRoot** for Windows containers.
+     > Depolama bağlama değerinin, modüldeki belirli bir konuma işaret eden ikinci yarısını değiştirmeyin. Depolama alanı, Linux kapsayıcıları için: **/blobroot** ve Windows kapsayıcıları için **C:/blobroot** ile her zaman bitmelidir.
 
-1. Set [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) and [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) properties for your module by copying the following JSON and pasting it into the **Set module twin's desired properties** box. Configure each property with an appropriate value, save it, and continue with the deployment. If you are using the IoT Edge simulator, set the values to the related environment variables for these properties, which you can find in the explanation section of [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) and [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties).
+1. Modülünüzün [Devicetoclouduploadproperties](how-to-store-data-blob.md#devicetoclouduploadproperties) ve [deviceoto deleteproperties](how-to-store-data-blob.md#deviceautodeleteproperties) özelliklerini ayarlayarak aşağıdaki JSON 'yi kopyalayıp, **set Module ikizi 'in istenen özellikler** kutusuna yapıştırın. Her bir özelliği uygun bir değerle yapılandırın, kaydedin ve dağıtıma devam edin. IoT Edge simülatörü kullanıyorsanız, bu özellikler için değerleri, [Devicetoclouduploadproperties](how-to-store-data-blob.md#devicetoclouduploadproperties) ve [deviceoto deleteproperties](how-to-store-data-blob.md#deviceautodeleteproperties)'in Açıklama bölümünde bulabileceğiniz bu özellikler için ilgili ortam değişkenlerine ayarlayın.
 
    ```json
    {
@@ -118,60 +118,60 @@ A deployment manifest is a JSON document that describes which modules to deploy,
 
       ```
 
-   ![set container create options, deviceAutoDeleteProperties and deviceToCloudUploadProperties properties](./media/how-to-deploy-blob/iotedge-custom-module.png)
+   ![kapsayıcı oluşturma seçeneklerini ayarlama, Deviceoto Deleteproperties ve deviceToCloudUploadProperties özellikleri](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   For information on configuring deviceToCloudUploadProperties and deviceAutoDeleteProperties after your module has been deployed, see [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). For more information about desired properties, see [Define or update desired properties](module-composition.md#define-or-update-desired-properties).
+   Modülünüzün dağıtılmasından sonra deviceToCloudUploadProperties ve Deviceoto Deleteproperties yapılandırma hakkında bilgi için bkz. [Ikizi Module düzenleme](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). İstenen özellikler hakkında daha fazla bilgi için bkz. [istenen özellikleri tanımlama veya güncelleştirme](module-composition.md#define-or-update-desired-properties).
 
 1. **Kaydet**’i seçin.
 
-1. Select **Next** to continue to the routes section.
+1. Rotalar bölümüne devam etmek için **İleri ' yi** seçin.
 
-#### <a name="specify-routes"></a>Specify routes
+#### <a name="specify-routes"></a>Rota belirtme
 
-Keep the default routes, and select **Next** to continue to the review section.
+Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
 
-#### <a name="review-deployment"></a>Review deployment
+#### <a name="review-deployment"></a>Dağıtım gözden geçirin
 
-The review section shows you the JSON deployment manifest that was created based on your selections in the previous two sections. There are also two modules declared that you didn't add: **$edgeAgent** and **$edgeHub**. These two modules make up the [IoT Edge runtime](iot-edge-runtime.md) and are required defaults in every deployment.
+Oluşturulan gözden geçirme bölümü gösterir, JSON dağıtım bildirimi önceki iki bölümlerde seçimlerinize göre. Ayrıca, eklemediğiniz iki modül de vardır: **$edgeAgent** ve **$edgeHub**. Bu iki modül [IoT Edge çalışma zamanını](iot-edge-runtime.md) yapar ve her dağıtımda gerekli varsayılanlar olur.
 
-Review your deployment information, then select **Submit**.
+Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
 
-### <a name="verify-your-deployment"></a>Verify your deployment
+### <a name="verify-your-deployment"></a>Dağıtımınızı doğrulama
 
-After you submit the deployment, you return to the **IoT Edge** page of your IoT hub.
+Dağıtımı gönderdikten sonra IoT Hub 'ınızın **IoT Edge** sayfasına dönersiniz.
 
-1. Select the IoT Edge device that you targeted with the deployment to open its details.
-1. In the device details, verify that the blob storage module is listed as both **Specified in deployment** and **Reported by device**.
+1. Bilgilerini açmak için dağıtıma hedeflenmiş IoT Edge cihazı seçin.
+1. Cihaz ayrıntılarında, BLOB depolama modülünün hem **dağıtım** hem de **cihaz tarafından bildirilen**olarak listelendiğini doğrulayın.
 
-It may take a few moments for the module to be started on the device and then reported back to IoT Hub. Refresh the page to see an updated status.
+Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
 
-## <a name="deploy-from-visual-studio-code"></a>Deploy from Visual Studio Code
+## <a name="deploy-from-visual-studio-code"></a>Visual Studio Code dağıtma
 
-Azure IoT Edge provides templates in Visual Studio Code to help you develop edge solutions. Use the following steps to create a new IoT Edge solution with a blob storage module and to configure the deployment manifest.
+Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual Studio code'da şablonları sağlar. Blob Storage modülü ile yeni bir IoT Edge çözümü oluşturmak ve dağıtım bildirimini yapılandırmak için aşağıdaki adımları kullanın.
 
-1. Select **View** > **Command Palette**.
+1.  > **komut paletini** **görüntüle** ' yi seçin.
 
 1. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın.
 
-   ![Run New IoT Edge Solution](./media/how-to-develop-csharp-module/new-solution.png)
+   ![Yeni IoT Edge çözüm Çalıştır](./media/how-to-develop-csharp-module/new-solution.png)
 
    Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
 
-   | Alan | Değer |
+   | Alan | Value |
    | ----- | ----- |
-   | Klasör seçin | Choose the location on your development machine for Visual Studio Code to create the solution files. |
-   | Çözüm adı sağlayın | Enter a descriptive name for your solution or accept the default **EdgeSolution**. |
-   | Modül şablonunu seçin | Choose **Existing Module (Enter full image URL)** . |
-   | Modül adı sağlayın | Enter an all-lowercase name for your module, like **azureblobstorageoniotedge**.<br /><br />It's important to use a lowercase name for the Azure Blob Storage on IoT Edge module. IoT Edge is case-sensitive when referring to modules, and the Storage SDK defaults to lowercase. |
-   | Provide Docker image for the module | Provide the image URI: **mcr.microsoft.com/azure-blob-storage:latest** |
+   | Klasör seçin | Çözüm dosyalarını oluşturmak için Visual Studio Code geliştirme makinenizdeki konumunu seçin. |
+   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
+   | Modül şablonunu seçin | **Var olan modülü seçin (tam görüntü URL 'Si girin)** . |
+   | Modül adı sağlayın | Modülünüzün **azureblobstorageoniotedge**gibi bir tam küçük harf adı girin.<br /><br />IoT Edge modülünde Azure Blob depolama için küçük harfli bir ad kullanılması önemlidir. IoT Edge modüllerle ilgili olarak büyük/küçük harfe duyarlıdır ve depolama SDK varsayılan olarak küçük harfe duyarlıdır. |
+   | Modül için Docker görüntüsü sağlama | Görüntü URI 'sini sağlayın: **MCR.Microsoft.com/Azure-Blob-Storage:latest** |
 
-   Visual Studio Code takes the information you provided, creates an IoT Edge solution, and then loads it in a new window. The solution template creates a deployment manifest template that includes your blob storage module image, but you need to configure the module's create options.
+   Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluşturur ve sonra yeni bir pencerede yükler. Çözüm şablonu, blob depolama modülü görüntüsünü içeren bir dağıtım bildirimi şablonu oluşturur, ancak yapılandırmanız gerekir modülün oluşturma seçenekleri.
 
-1. Open *deployment.template.json* in your new solution workspace and find the **modules** section. Make the following configuration changes:
+1. Yeni çözüm çalışma alanınızda *Deployment. Template. JSON* ' i açın ve **modüller** bölümünü bulun. Aşağıdaki yapılandırma değişikliklerini yapın:
 
-   1. Delete the **SimulatedTemperatureSensor** module, as it's not necessary for this deployment.
+   1. Bu dağıtım için gerekli olmadığından **SimulatedTemperatureSensor** modülünü silin.
 
-   1. Copy and paste the following code into the `createOptions` field:
+   1. Aşağıdaki kodu kopyalayıp `createOptions` alanına yapıştırın:
 
       ```json
       "Env":[
@@ -186,27 +186,27 @@ Azure IoT Edge provides templates in Visual Studio Code to help you develop edge
       }
       ```
 
-      ![Update module createOptions - Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
+      ![Güncelleştirme modülü createOptions-Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
 
-1. Replace `<your storage account name>` with a name that you can remember. Account names should be 3 to 24 characters long, with lowercase letters and numbers. No spaces.
+1. `<your storage account name>`, anımsayabileceğiniz bir adla değiştirin. Hesap adları, küçük harf ve sayılarla 3 ile 24 karakter uzunluğunda olmalıdır. Boşluk yok.
 
-1. Replace `<your storage account key>` with a 64-byte base64 key. You can generate a key with tools like [GeneratePlus](https://generate.plus/en/base64). You'll use these credentials to access the blob storage from other modules.
+1. `<your storage account key>`, 64 baytlık bir Base64 anahtarıyla değiştirin. [Generateplus](https://generate.plus/en/base64)gibi araçlarla bir anahtar oluşturabilirsiniz. Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
-1. Replace `<storage mount>` according to your container operating system. Provide the name of a [volume](https://docs.docker.com/storage/volumes/) or the absolute path to a directory on your IoT Edge device where you want the blob module to store its data. The storage mount maps a location on your device that you provide to a set location in the module.  
+1. `<storage mount>`, kapsayıcı işletim sisteminize göre değiştirin. Blob modülünün verilerini depolamasını istediğiniz IoT Edge cihazınızda bir [birimin](https://docs.docker.com/storage/volumes/) veya mutlak yolun adını belirtin. Depolama alanı, cihazınızdaki bir konumu modüldeki bir konum kümesine eşler.  
 
       
-     - For Linux containers, the format is *\<storage path or volume>:/blobroot*. Örneğin:
-         - use [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot** 
-         - use [bind mount](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Make sure to follow the steps to [grant directory access to the container user](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - For Windows containers, the format is *\<storage path or volume>:C:/BlobRoot*. Örneğin:
-         - use [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**. 
-         - use [bind mount](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
-         - Instead of using your local drive, you can map your SMB network location, for more information see [using SMB share as your local storage](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+     - Linux kapsayıcıları için, biçim *\<depolama yolu veya birim >:/blobroot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/)kullan: **My-Volume:/blobroot** 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/): **/SRV/containerdata:/blobroot**kullanın. [Kapsayıcı kullanıcısına dizin erişimi sağlamak](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) için adımları izlediğinizden emin olun
+     - Windows kapsayıcıları için, biçim *\<depolama yolu veya birim >: C:/BlobRoot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/): **My-Volume: C:/blobroot**kullanın. 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/): **c:/Containerdata: c:/blobroot**kullanın.
+         - Yerel sürücünüzü kullanmak yerine, SMB ağ konumunuzu eşleyebilirsiniz, daha fazla bilgi için bkz. [yerel depolama alanı olarak SMB paylaşımının kullanımı](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Do not change the second half of the storage mount value, which points to a specific location in the module. The storage mount should always end with **:/blobroot** for Linux containers and **:C:/BlobRoot** for Windows containers.
+     > Depolama bağlama değerinin, modüldeki belirli bir konuma işaret eden ikinci yarısını değiştirmeyin. Depolama alanı, Linux kapsayıcıları için: **/blobroot** ve Windows kapsayıcıları için **C:/blobroot** ile her zaman bitmelidir.
 
-1. Configure [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) and [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) for your module by adding the following JSON to the *deployment.template.json* file. Configure each property with an appropriate value and save the file. If you are using the IoT Edge simulator, set the values to the related environment variables for these properties, which you can find in the explanation section of [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) and [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)
+1. Aşağıdaki JSON 'ı *Deployment. Template. JSON* dosyasına ekleyerek modülünüzün [Devicetoclouduploadproperties](how-to-store-data-blob.md#devicetoclouduploadproperties) ve [deviceoto deleteproperties özelliklerini](how-to-store-data-blob.md#deviceautodeleteproperties) yapılandırın. Her bir özelliği uygun bir değerle yapılandırın ve dosyayı kaydedin. IoT Edge simülatörü kullanıyorsanız, bu özellikler için değerleri, [Devicetoclouduploadproperties](how-to-store-data-blob.md#devicetoclouduploadproperties) ve [deviceoto deleteproperties](how-to-store-data-blob.md#deviceautodeleteproperties) 'in Açıklama bölümünde bulabileceğiniz bu özellikler için ilgili ortam değişkenlerine ayarlayın.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
@@ -231,21 +231,21 @@ Azure IoT Edge provides templates in Visual Studio Code to help you develop edge
    }
    ```
 
-   ![set desired properties for azureblobstorageoniotedge - Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
+   ![azureblobstorageoniotedge-Visual Studio Code için istenen özellikleri ayarlama](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   For information on configuring deviceToCloudUploadProperties and deviceAutoDeleteProperties after your module has been deployed, see [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). For more information about container create options, restart policy, and desired status, see [EdgeAgent desired properties](module-edgeagent-edgehub.md#edgeagent-desired-properties).
+   Modülünüzün dağıtılmasından sonra deviceToCloudUploadProperties ve Deviceoto Deleteproperties yapılandırma hakkında bilgi için bkz. [Ikizi Module düzenleme](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Kapsayıcı oluşturma seçenekleri, yeniden başlatma ilkesi ve istenen durum hakkında daha fazla bilgi için bkz. [Edgeagent istenen özellikleri](module-edgeagent-edgehub.md#edgeagent-desired-properties).
 
 1. *deployment.template.json* dosyasını kaydedin.
 
-1. Right-click **deployment.template.json** and select **Generate IoT Edge deployment manifest**.
+1. **Deployment. Template. JSON** öğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' u seçin.
 
-1. Visual Studio Code takes the information that you provided in *deployment.template.json* and uses it to create a new deployment manifest file. The deployment manifest is created in a new **config** folder in your solution workspace. Once you have that file, you can follow the steps in [Deploy Azure IoT Edge modules from Visual Studio Code](how-to-deploy-modules-vscode.md) or [Deploy Azure IoT Edge modules with Azure CLI 2.0](how-to-deploy-modules-cli.md).
+1. Visual Studio Code, *Deployment. Template. JSON* içinde verdiğiniz bilgileri alır ve yeni bir dağıtım bildirim dosyası oluşturmak için kullanır. Dağıtım bildirimi, çözüm çalışma alanınızdaki yeni bir **yapılandırma** klasöründe oluşturulur. Bu dosyayı aldıktan sonra, [Azure clı 2,0 ile](how-to-deploy-modules-cli.md) [Visual Studio Code Azure IoT Edge modülleri dağıtma](how-to-deploy-modules-vscode.md) veya Azure IoT Edge modülleri Dağıtma bölümündeki adımları izleyebilirsiniz.
 
-## <a name="deploy-multiple-module-instances"></a>Deploy multiple module instances
+## <a name="deploy-multiple-module-instances"></a>Birden çok modül örneği dağıtma
 
-If you want to deploy multiple instances of the Azure Blob Storage on IoT Edge module, you need to provide a different storage path and change the `HostPort` value that the module binds to. The blob storage modules always expose port 11002 in the container, but you can declare which port it's bound to on the host.
+IoT Edge modülünde Azure Blob Storage 'ın birden fazla örneğini dağıtmak istiyorsanız, farklı bir depolama yolu sağlamanız ve modülün bağlandığı `HostPort` değerini değiştirmeniz gerekir. Blob depolama modülleri, bağlantı noktasını 11002 kapsayıcıdaki her zaman kullanıma sunma, ancak konakta bağlı hangi bağlantı noktası bildirebilirsiniz.
 
-Edit **Container Create Options** (in the Azure portal) or the **createOptions** field (in the *deployment.template.json* file in Visual Studio Code) to change the `HostPort` value:
+`HostPort` değerini değiştirmek için **kapsayıcı oluşturma seçeneklerini** (Azure Portal) veya **createoptions** alanını (Visual Studio Code içindeki *Deployment. Template. JSON* dosyasında) düzenleyin:
 
 ```json
 "PortBindings":{
@@ -253,9 +253,9 @@ Edit **Container Create Options** (in the Azure portal) or the **createOptions**
 }
 ```
 
-When you connect to additional blob storage modules, change the endpoint to point to the updated host port.
+Ek blob depolama modüllerini bağladığınızda, uç nokta güncel ana bilgisayar bağlantı noktasına işaret edecek şekilde değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Learn more about [Azure Blob Storage on IoT Edge](how-to-store-data-blob.md)
+[IoT Edge Azure Blob depolama](how-to-store-data-blob.md) hakkında daha fazla bilgi edinin
 
-For more information about how deployment manifests work and how to create them, see [Understand how IoT Edge modules can be used, configured, and reused](module-composition.md).
+Dağıtım bildirimlerinin nasıl çalıştığı ve nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [IoT Edge modüllerinin nasıl kullanılabileceğini, yapılandırılacağını ve yeniden kullanıldığını anlayın](module-composition.md).

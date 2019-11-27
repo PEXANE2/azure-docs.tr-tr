@@ -40,7 +40,7 @@ Tablo, fiziksel sunucular için desteklenen senaryoları özetler.
 
   **Coğrafya** | **Meta veri depolama konumu**
   --- | ---
-  Azure Kamu | ABD Devleti Virginia
+  Azure Devlet Kurumları | ABD Devleti Virginia
   Asya Pasifik | Doğu Asya veya Güneydoğu Asya
   Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
   Brezilya | Güney Brezilya
@@ -94,7 +94,7 @@ VM 'Leri değerlendirmek için, Azure geçişi gereci internet bağlantısı ger
 *.portal.azure.com | Azure portal gezinti
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-management.azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
+Management.Azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
 dc.services.visualstudio.com | Günlüğe kaydetme ve izleme
 *.vault.azure.net | Gereç ve hizmet arasında iletişim kurarken Azure Key Vault gizli dizileri yönetin.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
@@ -106,7 +106,7 @@ https://download.microsoft.com/download/* | Microsoft Download sitesinden indirm
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 bağlantı noktalarında giden bağlantılar.
 **Fiziksel sunucular** | **Windows:** Windows sunucularından yapılandırma ve performans meta verilerini çekmek için 443, 5989 bağlantı noktalarında gelen bağlantılar. <br/> **Linux:**  22 (UDP) bağlantı noktasındaki, Linux sunucularından yapılandırma ve performans meta verileri çekmek için gelen bağlantılar. |

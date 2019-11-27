@@ -1,6 +1,6 @@
 ---
-title: Conditional Access baseline policies - Azure Active Directory
-description: Baseline Conditional Access policies to protect organizations from common attacks
+title: Koşullu erişim temel ilkeleri-Azure Active Directory
+description: Kuruluşların ortak saldırılara karşı korunması için temel koşullu erişim ilkeleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,75 +18,75 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420572"
 ---
-# <a name="what-are-baseline-policies"></a>What are baseline policies?
+# <a name="what-are-baseline-policies"></a>Temel ilkeler nelerdir?
 
-Baseline policies are a set of predefined policies that help protect organizations against many common attacks. These common attacks can include password spray, replay, and phishing. Baseline policies are available in all editions of Azure AD. Microsoft is making these baseline protection policies available to everyone because identity-based attacks have been on the rise over the last few years. The goal of these four policies is to ensure that all organizations have a baseline level of security enabled at no extra cost.  
+Temel ilkeler, kuruluşların pek çok yaygın saldırılara karşı korunmasına yardımcı olan önceden tanımlanmış bir ilke kümesidir. Bu yaygın saldırılar, parola ilaç, yeniden yürütme ve kimlik avı içerebilir. Temel ilkeler Azure AD 'nin tüm sürümlerinde kullanılabilir. Microsoft bu temel koruma ilkelerini herkes tarafından kullanılabilir hale getirtiğinden, kimlik tabanlı saldırılar son birkaç yılda arttığında. Bu dört ilkenin hedefi, tüm kuruluşların ek bir ücret ödemeden etkin bir temel güvenlik düzeyine sahip olmasını sağlamaktır.  
 
-Managing customized Conditional Access policies requires an Azure AD Premium license.
+Özelleştirilmiş koşullu erişim ilkelerinin yönetilmesi için Azure AD Premium lisansı gerekir.
 
 ## <a name="baseline-policies"></a>Ana hat ilkeleri
 
-![Conditional Access baseline policies in the Azure portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![Azure portal koşullu erişim temel ilkeleri](./media/concept-baseline-protection/conditional-access-policies.png)
 
-There are four baseline policies:
+Dört temel ilke vardır:
 
-* Require MFA for admins (preview)
-* End user protection (preview)
-* Block legacy authentication (preview)
-* Require MFA for service management (preview)
+* Yöneticiler için MFA gerektir (Önizleme)
+* Son Kullanıcı koruması (Önizleme)
+* Eski kimlik doğrulamasını engelle (Önizleme)
+* Hizmet yönetimi için MFA gerektir (Önizleme)
 
-All four of these policies will impact legacy authentication flows like POP, IMAP, and older Office desktop clients.
+Bu ilkelerin dördü, POP, IMAP ve eski Office Masaüstü istemcileri gibi eski kimlik doğrulama akışlarını etkiler.
 
-### <a name="require-mfa-for-admins-preview"></a>Require MFA for admins (preview)
+### <a name="require-mfa-for-admins-preview"></a>Yöneticiler için MFA gerektir (Önizleme)
 
-Due to the power and access that administrator accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification when they are used to sign in. In Azure Active Directory, you can get a stronger account verification by requiring administrators to register for and use Azure Multi-Factor Authentication.
+Yönetici hesaplarının sahip olduğu güç ve erişim nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açmak için kullanıldıkları zaman daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure Active Directory, yöneticilerin Azure Multi-Factor Authentication kaydolmasına ve kullanmasına gerek duymadan daha güçlü bir hesap doğrulaması sağlayabilirsiniz.
 
-Require MFA for admins (preview) is a baseline policy that requires multi-factor authentication (MFA) for the following directory roles, considered to be the most privileged Azure AD roles:
+Yöneticiler için MFA gerektir (Önizleme), aşağıdaki dizin rolleri için çok faktörlü kimlik doğrulaması (MFA) gerektiren bir temel ilkedir ve en ayrıcalıklı Azure AD rolleri olarak kabul edilir:
 
 * Genel yönetici
 * SharePoint yöneticisi
-* Exchange administrator
-* Conditional Access administrator
+* Exchange Yöneticisi
+* Koşullu Erişim Yöneticisi
 * Güvenlik yöneticisi
-* Helpdesk administrator / Password administrator
+* Yardım Masası Yönetici/Parola Yöneticisi
 * Faturalama yöneticisi
-* User administrator
+* Kullanıcı Yöneticisi
 
-If your organization has these accounts in use in scripts or code, consider replacing them with [managed identities](../managed-identities-azure-resources/overview.md).
+Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun.
 
-### <a name="end-user-protection-preview"></a>End user protection (preview)
+### <a name="end-user-protection-preview"></a>Son Kullanıcı koruması (Önizleme)
 
-High privileged administrators aren’t the only ones targeted in attacks. Bad actors tend to target normal users. After gaining access, these bad actors can request access to privileged information on behalf of the original account holder or download the entire directory and perform a phishing attack on your whole organization. One common method to improve the protection for all users is to require a stronger form of account verification when a risky sign-in is detected.
+Yüksek ayrıcalıklı Yöneticiler yalnızca saldırılara yönelik olan tek alanlardır. Kötü aktörler, normal kullanıcıları hedefleyecek şekilde eğilimlidir. Erişim kazandıktan sonra, bu kötü aktör, özgün hesap sahibi adına ayrıcalıklı bilgilere erişim isteğinde bulunabilir veya tüm kuruluşunuzda bir kimlik avı saldırısı gerçekleştirebilir. Tüm kullanıcıların korumasını geliştirmenin yaygın bir yöntemi, riskli oturum açma algılandığında daha güçlü bir hesap doğrulama biçimi gerektirmaktır.
 
-**End user protection (preview)** is a baseline policy that protects all users in a directory. Enabling this policy requires all users to register for Azure Multi-Factor Authentication within 14 days. Once registered, users will be prompted for MFA only during risky sign-in attempts. Compromised user accounts are blocked until password reset and risk dismissal. 
+**Son Kullanıcı koruması (Önizleme)** , bir dizindeki tüm kullanıcıları koruyan bir temel ilkedir. Bu ilkenin etkinleştirilmesi, tüm kullanıcıların Azure Multi-Factor Authentication için 14 gün içinde kaydolmanızı gerektirir. Kaydolduktan sonra kullanıcılardan yalnızca riskli oturum açma girişimleri sırasında MFA sorulur. Parola sıfırlama ve risk ortadan kalana kadar güvenliği aşılmış Kullanıcı hesapları engellenir. 
 
 [!NOTE]
-Any users previously flagged for risk are blocked until password reset and risk dismissal upon policy activation.
+Daha önce risk işaretli olan tüm kullanıcılar, ilke etkinleştirilmesinde parola sıfırlamasına ve risk ortadan kaldırılana kadar engellenir.
 
-### <a name="block-legacy-authentication-preview"></a>Block legacy authentication (preview)
+### <a name="block-legacy-authentication-preview"></a>Eski kimlik doğrulamasını engelle (Önizleme)
 
-Legacy authentication protocols (ex: IMAP, SMTP, POP3) are protocols normally used by older mail clients to authenticate. Legacy protocols do not support multi-factor authentication. Even if you have a policy requiring multi-factor authentication for your directory, a bad actor can authenticate using one of these legacy protocols and bypass multi-factor authentication.
+Eski kimlik doğrulama protokolleri (örn: IMAP, SMTP, POP3), daha eski posta istemcileri tarafından kimlik doğrulaması için normalde kullanılan protokollerdir. Eski protokoller Multi-Factor Authentication 'ı desteklemez. Dizininiz için çok faktörlü kimlik doğrulaması gerektiren bir ilkeniz olsa da, hatalı aktör bu eski protokollerden birini kullanarak kimlik doğrulaması yapabilir ve Multi-Factor Authentication 'ı atlayabilir.
 
-The best way to protect your account from malicious authentication requests made by legacy protocols is to block them.
+Eski protokoller tarafından yapılan kötü amaçlı kimlik doğrulama isteklerinden hesabınızı korumanın en iyi yolu, bunları engellenemez.
 
-The **Block legacy authentication (preview)** baseline policy blocks authentication requests that are made using legacy protocols. Modern authentication must be used to successfully sign in for all users. Used in conjunction with the other baseline policies, requests coming from legacy protocols will be blocked. In addition, all users will be required to MFA whenever required. This policy does not block Exchange ActiveSync.
+**Eski kimlik doğrulaması engelleme (Önizleme)** temel ilkesi, eski protokoller kullanılarak yapılan kimlik doğrulama isteklerini engeller. Tüm kullanıcılar için başarıyla oturum açmak üzere modern kimlik doğrulaması kullanılmalıdır. Diğer ana hat ilkeleriyle birlikte kullanıldığında, eski protokollerden gelen istekler engellenir. Ayrıca, tüm kullanıcıların her gerektiğinde MFA yapması gerekecektir. Bu ilke Exchange ActiveSync 'ı engellemez.
 
-### <a name="require-mfa-for-service-management-preview"></a>Require MFA for service management (preview)
+### <a name="require-mfa-for-service-management-preview"></a>Hizmet yönetimi için MFA gerektir (Önizleme)
 
-Organizations use a variety of Azure services and manage them from Azure Resource Manager based tools like:
+Kuruluşlar çeşitli Azure hizmetlerini kullanır ve bunları şu şekilde Azure Resource Manager tabanlı araçlarla yönetebilir:
 
-* Azure portalı
+* Azure portal
 * Azure PowerShell
 * Azure CLI
 
-Using any of these tools to perform resource management is a highly privileged action. These tools can alter subscription-wide configurations, such as service settings and subscription billing.
+Kaynak yönetimini gerçekleştirmek için bu araçlardan herhangi birini kullanmak, yüksek ayrıcalıklı bir işlemdir. Bu araçlar, hizmet ayarları ve abonelik faturalaması gibi abonelik genelinde yapılandırmaların tümünü değiştirebilir.
 
-To protect privileged actions, this **Require MFA for service management (preview)** policy will require multi-factor authentication for any user accessing Azure portal, Azure PowerShell, or Azure CLI.
+Ayrıcalıklı eylemleri korumak için, bu **hizmet yönetimi IÇIN MFA gerektir (Önizleme)** ilkesi, Azure portal, Azure PowerShell veya Azure CLI 'ye erişen herhangi bir kullanıcı için çok faktörlü kimlik doğrulaması gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz.:
 
-* [Common Conditional Access policies](concept-conditional-access-policy-common.md)
-* [Five steps to securing your identity infrastructure](../../security/fundamentals/steps-secure-identity.md)
-* [What is Conditional Access in Azure Active Directory?](overview.md)
+* [Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
+* [Beş adımda kimlik altyapınızın güvenliğini sağlama](../../security/fundamentals/steps-secure-identity.md)
+* [Azure Active Directory Koşullu erişim nedir?](overview.md)

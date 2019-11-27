@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances bir emptyDir birimi bağlama
+title: EmptyDir birimini kapsayıcı grubuna bağla
 description: Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için emptyDir birimini nasıl bağlayacağınızı öğrenin
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
-ms.author: danlep
-ms.openlocfilehash: 0dbe26ff1e00e1912cfd63e8383695ca794dd037
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325456"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533242"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances bir emptyDir birimi bağlama
 
@@ -38,7 +33,7 @@ Bir *Emptydir* birimi için bazı örnekler kullanılmıştır:
 
 Bir boş dizin birimini bir kapsayıcı örneğine bağlamak için bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups)kullanarak dağıtmanız gerekir.
 
-Önce, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. Ardından, `volumeMounts` *Dizin birimini bağlamak* istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
+İlk olarak, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. Ardından, bir kapsayıcı grubundaki *Emptydir* birimini bağlamak istediğiniz her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümündeki `volumeMounts` dizisini doldurun.
 
 Örneğin, aşağıdaki Kaynak Yöneticisi şablonu, her biri *Emptydir* birimini bağlayan iki kapsayıcıyı içeren bir kapsayıcı grubu oluşturur:
 
@@ -51,6 +46,6 @@ Azure Resource Manager şablonuyla kapsayıcı örneği dağıtımına bir örne
 
 Azure Container Instances diğer birim türlerini nasıl bağlayacağınızı öğrenin:
 
-* [Azure kapsayıcı durumlarda bir Azure dosya paylaşımını bağlama](container-instances-volume-azure-files.md)
+* [Azure Container Instances'ta Azure dosya paylaşımı bağlama](container-instances-volume-azure-files.md)
 * [Azure Container Instances bir gitRepo birimi bağlama](container-instances-volume-gitrepo.md)
 * [Azure Container Instances bir gizli birimi bağlama](container-instances-volume-secret.md)

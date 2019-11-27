@@ -1,14 +1,14 @@
 ---
-title: IRS 1075 şema örnek denetimi eşlemesi
+title: IRS 1075 şema örnek denetimleri
 description: IRS 1075 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 13a9396e515c3c0f5c36f56bf8c1f586844e8f65
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 86570012000e660b53b2c3c7291b9ca98576a004
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267835"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546819"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 şema örneğinin denetim eşlemesi
 
@@ -89,11 +89,11 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -110,11 +110,11 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve anal
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 denetim oluşturma
 
@@ -122,11 +122,11 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
@@ -297,11 +297,11 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma

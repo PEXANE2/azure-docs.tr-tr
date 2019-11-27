@@ -48,7 +48,7 @@ Visual Studio 'da `Xamarin/SampleXamarin.sln` açın.
 
 Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
 
-Açık `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
+`Xamarin/SampleXamarin.Common/AccountDetails.cs`açın.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 

@@ -1,6 +1,6 @@
 ---
-title: Manage IoT Central from Azure CLI | Microsoft Docs
-description: This article describes how to create and manage your IoT Central application using CLI. You can view, modify and remove the application using CLI.
+title: Azure CLı 'dan IoT Central yönetme | Microsoft Docs
+description: Bu makalede, CLı kullanarak IoT Central uygulamanızın nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. CLı kullanarak uygulamayı görüntüleyebilir, değiştirebilir ve kaldırabilirsiniz.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -15,11 +15,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480396"
 ---
-# <a name="manage-iot-central-from-azure-cli"></a>Manage IoT Central from Azure CLI
+# <a name="manage-iot-central-from-azure-cli"></a>Azure CLı 'dan IoT Central yönetme
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use [Azure CLI](/cli/azure/) to manage your applications.
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) web sitesinde IoT Central uygulamaları oluşturup yönetmek yerine uygulamalarınızı yönetmek IÇIN [Azure CLI](/cli/azure/) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -27,11 +27,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you prefer to run Azure CLI on your local machine, see [Install the Azure CLI](/cli/azure/install-azure-cli). When you run Azure CLI locally, use the **az login** command to sign in to Azure before you try the commands in this article.
+Azure CLı 'yi yerel makinenizde çalıştırmayı tercih ediyorsanız bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırdığınızda, bu makaledeki komutları denemeden önce Azure 'da oturum açmak için **az Login** komutunu kullanın.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Use the [az iotcentral app create](/cli/azure/iotcentral/app#az-iotcentral-app-create) command to create an IoT Central application in your Azure subscription. Örnek:
+Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [az ıotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -48,54 +48,54 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-These commands first create a resource group in the east US location for the application. The following table describes the parameters used with the **az iotcentral app create** command:
+Bu komutlar öncelikle uygulamanın Doğu ABD konumunda bir kaynak grubu oluşturur. Aşağıdaki tabloda **az iotcentral App Create** komutuyla kullanılan parametreler açıklanmaktadır:
 
 | Parametre         | Açıklama |
 | ----------------- | ----------- |
-| resource-group    | The resource group that contains the application. This resource group must already exist in your subscription. |
-| location          | By default, this command uses the location from the resource group. Currently, you can create an IoT Central application in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations. |
-| ad              | The name of the application in the Azure portal. |
-| subdomain         | The subdomain in the URL of the application. In the example, the application URL is https://mysubdomain.azureiotcentral.com. |
-| sku               | Currently, the only value is **S1** (standard tier). See [Azure IoT Central pricing](https://azure.microsoft.com/pricing/details/iot-central/). |
-| şablon          | The application template to use. For more information, see the following table: |
-| display-name      | The name of the application as displayed in the UI. |
+| resource-group    | Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
+| location          | Varsayılan olarak, bu komut kaynak grubundaki konumu kullanır. Şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında IoT Central bir uygulama oluşturabilirsiniz. |
+| ad              | Azure portal uygulamanın adı. |
+| alanınızın         | Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
+| isteyin               | Şu anda tek değer **S1** 'dir (Standart katman). Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
+| şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın: |
+| görünen ad      | Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
 
-**Application templates with generally available features**
+**Genel olarak kullanılabilen özelliklerle uygulama şablonları**
 
 | Şablon adı            | Açıklama |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
 | iotc-demo@1.0.0          | Bir Soğutmalı Otomat için önceden oluşturulmuş cihaz şablonunu içeren bir uygulama oluşturur. Azure IoT Central'ı incelemeye başlamak için bu şablonu kullanın. |
-| iotc-devkit-sample@1.0.0 | MXChip veya Raspberry Pi cihazını bağlamak amacıyla sizin için hazırlanmış cihaz şablonlarıyla bir uygulama oluşturur. Use this template if you're a device developer experimenting with any of these devices. |
+| iotc-devkit-sample@1.0.0 | MXChip veya Raspberry Pi cihazını bağlamak amacıyla sizin için hazırlanmış cihaz şablonlarıyla bir uygulama oluşturur. Bu cihazlardan herhangi birini denemek için bir cihaz geliştiricisi iseniz bu şablonu kullanın. |
 
 
-**Application templates with public preview features**
+**Genel Önizleme özelliklerine sahip uygulama şablonları**
 
 | Şablon adı            | Açıklama |
 | ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Creates an empty plug and play preview application for you to populate with your own device templates and devices. |
-| iotc-condition@1.0.0     | Creates an application with a in-store analytics – condition monitoring template. Use this template to connect and monitor store environment. |
-| iotc-consumption@1.0.0   | Creates an application with water consumption monitoring template. Use this template to monitor and control water flow. |
-| iotc-distribution@1.0.0  | Creates an application with a Digital distribution template. Use this template to improve warehouse output efficiency by digitalizing key assets and actions. |
-| iotc-inventory@1.0.0     | Creates an application with a smart inventory management template. Use this template to automate receiving, product movement, cycle counting, and tracking of sensors. |
-| iotc-logistics@1.0.0     | Creates an application with a Connected logistics template. Use this template to track your shipment in real-time across air, water and land with location and condition monitoring. |
-| iotc-meter@1.0.0         | Creates an application with smart meter monitoring template. Use this template to monitor energy consumption, network status, and identify trends to improve customer support and smart meter management.  |
-| iotc-patient@1.0.0       | Creates an application with continuous patient monitoring template. Use this template to extend patient care, re-admissions, and manage diseases. |
-| iotc-power@1.0.0         | Creates an application with solar panel monitoring template. Use this template to monitor solar panel status, energy generation trends. |
-| iotc-quality@1.0.0       | Creates an application with water quality monitoring template. Use this template to digitally monitor water quality.|
-| iotc-store@1.0.0         | Creates an application with a in-store analytics – checkout template. Use this template to monitor and manage the checkout flow inside your store. |
-| iotc-waste@1.0.0         | Creates an application with a Connected waste management template. Use this template to monitor waste bins and dispatch field operators. |
+| iotc-pnp-preview@1.0.0   | Kendi cihaz şablonlarınızla ve cihazlarınızla doldurmanız için boş bir Tak ve kullan önizleme uygulaması oluşturur. |
+| iotc-condition@1.0.0     | Store Analytics – Condition izleme şablonuyla bir uygulama oluşturur. Mağaza ortamına bağlanmak ve bunları izlemek için bu şablonu kullanın. |
+| iotc-consumption@1.0.0   | Su tüketim izleme şablonuyla bir uygulama oluşturur. Su akışını izlemek ve denetlemek için bu şablonu kullanın. |
+| iotc-distribution@1.0.0  | Dijital dağıtım şablonu olan bir uygulama oluşturur. Ana varlıkları ve eylemleri artırarak ambar çıkış verimliliğini artırmak için bu şablonu kullanın. |
+| iotc-inventory@1.0.0     | Akıllı envanter yönetimi şablonu ile bir uygulama oluşturur. Bu şablonu, almayı, ürün hareketini, dönem döngüsünü ve sensörlerin izlenmesini otomatik hale getirmek için kullanın. |
+| iotc-logistics@1.0.0     | Bağlı bir lojistik şablonuyla bir uygulama oluşturur. Bu şablonu, Sevkiyat, su ve konum izlemeye sahip uçak genelinde gerçek zamanlı olarak sevk irsaliyesini izlemek için kullanın. |
+| iotc-meter@1.0.0         | Akıllı ölçüm izleme şablonuyla bir uygulama oluşturur. Enerji tüketimini, ağ durumunu izlemek ve müşteri desteğini ve akıllı ölçüm yönetimini geliştirmenin eğilimlerini belirlemek için bu şablonu kullanın.  |
+| iotc-patient@1.0.0       | Sürekli hasta izleme şablonuyla bir uygulama oluşturur. Hasta bakımı, yeniden Admissions ve daha fazla bilgi için bu şablonu kullanın. |
+| iotc-power@1.0.0         | Solar paneli izleme şablonuyla bir uygulama oluşturur. Bu şablonu, güneş paneli durumunu ve enerji oluşturma eğilimlerini izlemek için kullanın. |
+| iotc-quality@1.0.0       | Su kalitesi izleme şablonuyla bir uygulama oluşturur. Su kalitesini dijital olarak izlemek için bu şablonu kullanın.|
+| iotc-store@1.0.0         | Mağaza Analizi – kullanıma alma şablonu olan bir uygulama oluşturur. Mağazalarınızın içindeki kullanıma alma akışını izlemek ve yönetmek için bu şablonu kullanın. |
+| iotc-waste@1.0.0         | Bağlı bir çöp yönetimi şablonuna sahip bir uygulama oluşturur. Atık bölmeleri ve dağıtım alanı işleçlerini izlemek için bu şablonu kullanın. |
 
 > [!NOTE]
-> The preview application templates are currently only available in the **Europe** and **United States** locations.
+> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
 
 ## <a name="view-your-applications"></a>Uygulamalarınızı görüntüleyin
 
-Use the [az iotcentral app list](/cli/azure/iotcentral/app#az-iotcentral-app-list) command to list your IoT Central applications and view metadata.
+IoT Central uygulamalarınızı listelemek ve meta verileri görüntülemek için [az ıotcentral App List](/cli/azure/iotcentral/app#az-iotcentral-app-list) komutunu kullanın.
 
-## <a name="modify-an-application"></a>Modify an application
+## <a name="modify-an-application"></a>Bir uygulamayı değiştirme
 
-Use the [az iotcentral app update](/cli/azure/iotcentral/app#az-iotcentral-app-update) command to update the metadata of an IoT Central application. For example, to change the display name of your application:
+Bir IoT Central uygulamasının meta verilerini güncelleştirmek için [az ıotcentral App Update](/cli/azure/iotcentral/app#az-iotcentral-app-update) komutunu kullanın. Örneğin, uygulamanızın görünen adını değiştirmek için:
 
 ```azurecli-interactive
 az iotcentral app update --name myiotcentralapp \
@@ -105,7 +105,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Uygulamayı kaldırma
 
-Use the [az iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) command to delete an IoT Central application. Örnek:
+Bir IoT Central uygulamasını silmek için [az ıotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \
@@ -114,7 +114,7 @@ az iotcentral app delete --name myiotcentralapp \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've learned how to manage Azure IoT Central applications from Azure CLI, here is the suggested next step:
+Azure IoT Central uygulamalarını Azure CLı 'dan nasıl yönetebileceğinizi öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [Administer your application](howto-administer.md)
+> [Uygulamanızı yönetme](howto-administer.md)

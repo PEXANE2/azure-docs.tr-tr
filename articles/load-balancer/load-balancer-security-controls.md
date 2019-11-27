@@ -1,6 +1,6 @@
 ---
-title: Security controls for Azure Load Balancer
-description: A checklist of security controls for evaluating Load Balancer
+title: Azure Load Balancer için güvenlik denetimleri
+description: Load Balancer değerlendirmek için güvenlik denetimlerinin denetim listesi
 services: load-balancer
 author: asudbring
 manager: KumudD
@@ -15,52 +15,52 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214894"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
+# <a name="security-controls-for-azure-load-balancer"></a>Azure Load Balancer için güvenlik denetimleri
 
-This article documents the security controls built into Azure Load Balancer.
+Bu makalede, Azure Load Balancer yerleşik olarak bulunan güvenlik denetimleri Belgelenebilir.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Security control | Evet/Hayır | Notlar |
+| Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Service endpoint support| Yok | |
-| VNet injection support| Yok | |
-| Network Isolation and Firewalling support| Yok |  |
-| Forced tunneling support| Yok | |
+| Hizmet uç noktası desteği| Yok | |
+| VNet ekleme desteği| Yok | |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Yok |  |
+| Zorlamalı tünel desteği| Yok | |
 
-## <a name="monitoring--logging"></a>Monitoring & logging
+## <a name="monitoring--logging"></a>& Günlüğü izleme
 
-| Security control | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure monitoring support (Log analytics, App insights, etc.)| Yes | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Control and management plane logging and audit| Yes | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Data plane logging and audit | Yok |  |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Bkz. [Genel temel Load Balancer Için Azure izleyici günlükleri](load-balancer-monitor-log.md). |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Bkz. [Genel temel Load Balancer Için Azure izleyici günlükleri](load-balancer-monitor-log.md). |
+| Veri düzlemi günlüğü ve denetimi | Yok |  |
 
 ## <a name="identity"></a>Kimlik
 
-| Security control | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Yok |  |
+| Kimlik doğrulaması| Yok |  |
 | Yetkilendirme| Yok |  |
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
-| Security control | Evet/Hayır | Notlar |
+| Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Server-side encryption at rest: Microsoft-managed keys | Yok | |
-| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| Yok | |
-| Server-side encryption at rest: customer-managed keys (BYOK) | Yok | |
-| Column level encryption (Azure Data Services)| Yok | |
-| API calls encrypted| Yes | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yok | |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yok | |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok | |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
+| Şifrelenmiş API çağrıları| Evet | [Azure Resource Manager](../azure-resource-manager/index.yml)üzerinden. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Security control | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Configuration management support (versioning of configuration, etc.)| Yok |  | 
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yok |  | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).
+- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

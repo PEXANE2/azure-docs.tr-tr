@@ -1,6 +1,6 @@
 ---
-title: Use Azure .NET for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use the Azure Storage client library to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: Azure Data Lake Storage 2. & ACL 'Ler için Azure .NET kullanma (Önizleme)
+description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için Azure Storage istemci kitaplığı 'nı kullanın.
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -8,35 +8,35 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9e20445768334eb3272fb9534e5cc04e30c6f41f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484983"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534269"
 ---
-# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use .NET for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. & ACL 'Leri için .NET kullanma (Önizleme)
 
-This article shows you how to use .NET to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+Bu makalede, .NET kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesaplarında Dizin, dosya ve izinleri oluşturma ve bunları yönetme işlemi gösterilmektedir. 
 
 > [!IMPORTANT]
-> The [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet package that is featured in this article is currently in public preview.
+> Bu makalede tanıtılan [Azure. Storage. Files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet paketi şu anda genel önizleme aşamasındadır.
 
-[Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+[Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) | [örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [geri bildirim verme](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 
-## <a name="set-up-your-project"></a>Set up your project
+## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-To get started, install the [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet package.
+Başlamak için [Azure. Storage. Files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet paketini yükledikten sonra.
 
-For more information about how to install NuGet packages, see [Install and manage packages in Visual Studio using the NuGet Package Manager](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
+NuGet paketlerinin nasıl yükleneceğine ilişkin daha fazla bilgi için bkz. [NuGet Paket Yöneticisi 'ni kullanarak Visual Studio 'da paketleri yüklemek ve yönetmek](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
 
-Then, add these using statements to the top of your code file.
+Ardından, bu using deyimlerini kod dosyanızın en üstüne ekleyin.
 
 ```csharp
 using Azure.Storage.Files.DataLake;
@@ -45,11 +45,11 @@ using System.IO;
 using Azure;
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>Hesaba Bağlan
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+Bu makaledeki kod parçacıklarını kullanmak için depolama hesabını temsil eden bir **DataLakeServiceClient** örneği oluşturmanız gerekir. Bir tane almanın en kolay yolu, hesap anahtarı kullanmaktır. 
 
-This example creates an instance of the **DataLakeServiceClient** by using an account key.
+Bu örnek, bir hesap anahtarı kullanarak **DataLakeServiceClient** örneği oluşturur.
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient,
@@ -65,11 +65,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 }
 ```
 
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
 
-A file system acts as a container for your files. You can create one by calling the **FileSystemClient.CreateFileSystemAsync** method.
+Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. **Filesystemclient. Createfilesystemmasync** yöntemini çağırarak bir tane oluşturabilirsiniz.
 
-This example creates a file system named `my-file-system`. 
+Bu örnek `my-file-system`adlı bir dosya sistemi oluşturur. 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -81,9 +81,9 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-Create a directory reference by calling the **FileSystemClient.CreateDirectoryAsync** method.
+**Filesystemclient. CreateDirectoryAsync** yöntemini çağırarak bir dizin başvurusu oluşturun.
 
-This example adds a directory named `my-directory` to a file system, and then adds a sub-directory named `my-subdirectory`. 
+Bu örnek, bir dosya sistemine `my-directory` adlı bir dizin ekler ve sonra `my-subdirectory`adlı bir alt dizin ekler. 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -99,11 +99,11 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
 
-Rename or move a directory by calling the **DirectoryClient.RenameAsync** method. Pass the path of the desired directory a parameter. 
+**Directoryclient. RenameAsync** yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+Bu örnek, `my-subdirectory-renamed`adı için bir alt dizini yeniden adlandırır.
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -116,7 +116,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-This example moves a directory named `my-subdirectory-renamed` to a sub-directory of a directory named `my-directory-2`. 
+Bu örnek, `my-subdirectory-renamed` adlı bir dizini `my-directory-2`adlı bir dizinin alt dizinine taşır. 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -131,9 +131,9 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 ## <a name="delete-a-directory"></a>Bir dizini silme
 
-Delete a directory by calling the **DirectoryClient.Delete** method.
+**Directoryclient. Delete** yöntemini çağırarak bir dizini silin.
 
-This example deletes a directory named `my-directory`.  
+Bu örnek, `my-directory`adlı bir dizini siler.  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -145,11 +145,11 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Manage a directory ACL
+## <a name="manage-a-directory-acl"></a>Dizin ACL 'sini yönetme
 
-Get the access control list (ACL) of a directory by calling the **directoryClient.GetAccessControlAsync** method and set the ACL by calling the **DirectoryClient.SetAccessControl** method.
+**Directoryclient. GetAccessControlAsync** yöntemini çağırarak bir dizinin erişim denetim LISTESINI (ACL) alın ve **Directoryclient. SETACCESSCONTROL** metodunu çağırarak ACL 'yi ayarlayın.
 
-This example gets and sets the ACL of a directory named `my-directory`. The string `user::rwx,group::r-x,other::rw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+Bu örnek `my-directory`adlı bir dizinin ACL 'sini alır ve ayarlar. `user::rwx,group::r-x,other::rw-` dize, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -168,11 +168,11 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.AppendAsync** method. Make sure to complete the upload by calling the **DataLakeFileClient.FlushAsync** method.
+İlk olarak, **Datalakefileclient** sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. **Datalakefileclient. Appendadsync** yöntemini çağırarak bir dosyayı karşıya yükleyin. **Datalakefileclient. FlushAsync** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-This example uploads a text file to a directory named `my-directory`.    
+Bu örnek, `my-directory`adlı bir dizine bir metin dosyası yükler.    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -194,11 +194,11 @@ public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Manage a file ACL
+## <a name="manage-a-file-acl"></a>Dosya ACL 'sini yönetme
 
-Get the access control list (ACL) of a file by calling the **DataLakeFileClient.GetAccessControlAsync** method and set the ACL by calling the **FileClient.SetAccessControl** method.
+**Datalakefileclient. GetAccessControlAsync** yöntemini çağırarak bir dosyanın erişim denetim LISTESINI (ACL) alın ve **Fileclient. SetAccessControl** metodunu çağırarak ACL 'yi ayarlayın.
 
-This example gets and sets the ACL of a file named `my-file.txt`. The string `user::rwx,group::r-x,other::rw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+Bu örnek `my-file.txt`adlı bir dosyanın ACL 'sini alır ve ayarlar. `user::rwx,group::r-x,other::rw-` dize, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -218,11 +218,11 @@ public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory 
+## <a name="download-from-a-directory"></a>Bir dizinden indir 
 
-First, create a **DataLakeFileClient** instance that represents the file that you want to download. Use the **FileClient.ReadAsync** method, and parse the return value to obtain a [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) object. Use any .NET file processing API to save bytes from the stream to a file. 
+İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **Datalakefileclient** örneği oluşturun. **Fileclient. ReadAsync** yöntemini kullanın ve bir [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) nesnesi elde etmek için dönüş değerini ayrıştırın. Akıştan bir dosyaya bayt kaydetmek için herhangi bir .NET dosya işleme API 'sini kullanın. 
 
-This example uses a [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) and a [FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream) to save bytes to a file. 
+Bu örnek, bir dosyaya bayt kaydetmek için bir [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) ve [FILESTREAM](https://docs.microsoft.com/dotnet/api/system.io.filestream) kullanır. 
 
 ```cs
 public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -259,9 +259,9 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-List directory contents by calling the **FileSystemClient.ListPathsAsync** method, and then enumerating through the results.
+**Filesystemclient. ListPathsAsync** yöntemini çağırarak ve sonra sonuçlar arasında sıralama yaparak dizin içeriğini listeleyin.
 
-This example, prints the names of each file that is located in a directory named `my-directory`.
+Bu örnek, `my-directory`adlı bir dizinde bulunan her bir dosyanın adını yazdırır.
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -290,10 +290,10 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html)
-* [Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6)
+* [API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html)
+* [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6)
 * [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+* [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
+* [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-net/issues)
 

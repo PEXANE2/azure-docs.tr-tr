@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances bir gizli birimi bağlama
+title: Gizli birimi kapsayıcı grubuna bağla
 description: Gizli bilgileri kapsayıcı örneklerinizin erişimine yönelik olarak depolamak üzere nasıl bağlayacağınızı öğrenin
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: danlep
-ms.openlocfilehash: 2e96ef73c3ff89fd7941fa14a8a1e53e6d4d8593
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7f212a5090923a7d7bf00fc8ac78299f2edcc9c1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68325421"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533182"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances bir gizli birimi bağlama
 
@@ -26,7 +21,7 @@ Tüm *gizli* BIRIMLER, RAM ile desteklenen bir dosya sistemi olan [tmpfs][tmpfs]
 
 ## <a name="mount-secret-volume---azure-cli"></a>Bağlama gizli birimi-Azure CLı
 
-Azure CLI kullanarak bir veya daha fazla gizli dizi ile bir kapsayıcı dağıtmak için `--secrets` [az Container Create][az-container-create] komutuna `--secrets-mount-path` ve parametrelerini dahil edin. Bu örnek, " mysecret1" ve "mysecret2 `/mnt/secrets`" gibi iki gizli dizi içeren gizli bir birimi bağlar:
+Azure CLı kullanarak bir veya daha fazla gizli dizi ile bir kapsayıcı dağıtmak için, [az Container Create][az-container-create] komutuna `--secrets` ve `--secrets-mount-path` parametrelerini dahil edin. Bu örnek, `/mnt/secrets`konumundaki "mysecret1" ve "mysecret2" olmak üzere iki gizli dizi içeren *gizli* bir birimi bağlar:
 
 ```azurecli-interactive
 az container create \
@@ -58,7 +53,7 @@ Ayrıca, Azure CLı ve bir [YAML şablonuyla](container-instances-multi-containe
 
 Bir YAML şablonuyla dağıtırken, gizli değerlerin şablonda **Base64 kodlamalı** olması gerekir. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
 
-Aşağıdaki YAML şablonu, üzerinde `/mnt/secrets` *gizli* bir birim bağlayan bir kapsayıcı grubunu tanımlar. Gizli birimin iki parolası vardır, "mysecret1" ve "mysecret2."
+Aşağıdaki YAML şablonu, `/mnt/secrets`bir *gizli* birimi bağlayan bir kapsayıcı grubunu tanımlar. Gizli birimin iki parolası vardır, "mysecret1" ve "mysecret2."
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -89,7 +84,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-YAML şablonuyla dağıtmak için, önceki YAML 'yi adlı `deploy-aci.yaml`bir dosyaya kaydedin ve ardından `--file` parametresiyle [az Container Create][az-container-create] komutunu yürütün:
+YAML şablonuyla dağıtmak için, önceki YAML 'yi `deploy-aci.yaml`adlı bir dosyaya kaydedin ve ardından `--file` parametresiyle [az Container Create][az-container-create] komutunu yürütün:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -100,16 +95,16 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 CLı ve YAML dağıtımına ek olarak, bir Azure [Kaynak Yöneticisi şablonu](/azure/templates/microsoft.containerinstance/containergroups)kullanarak bir kapsayıcı grubu dağıtabilirsiniz.
 
-Önce, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. Bir Kaynak Yöneticisi şablonuyla dağıtırken, gizli değerler şablonda **Base64 kodlamalı** olmalıdır. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
+İlk olarak, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. Bir Kaynak Yöneticisi şablonuyla dağıtırken, gizli değerler şablonda **Base64 kodlamalı** olmalıdır. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
 
-Ardından, kapsayıcı grubundaki, *gizli* birimi bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
+Ardından, kapsayıcı grubundaki, *gizli* birimi bağlamak istediğiniz her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümünde `volumeMounts` diziyi doldurun.
 
-Aşağıdaki Kaynak Yöneticisi şablonu, üzerinde `/mnt/secrets` *gizli* bir birim bağlayan bir kapsayıcı grubunu tanımlar. Gizli birimin iki parolası vardır, "mysecret1" ve "mysecret2."
+Aşağıdaki Kaynak Yöneticisi şablonu, `/mnt/secrets`bir *gizli* birimi bağlayan bir kapsayıcı grubunu tanımlar. Gizli birimin iki parolası vardır, "mysecret1" ve "mysecret2."
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Kaynak Yöneticisi şablonuyla dağıtmak için, önceki JSON 'ı adlı `deploy-aci.json`bir dosyaya kaydedin, sonra [az Group Deployment Create][az-group-deployment-create] komutunu `--template-file` parametresiyle yürütün:
+Kaynak Yöneticisi şablonuyla dağıtmak için önceki JSON 'ı `deploy-aci.json`adlı bir dosyaya kaydedin, sonra [az Group Deployment Create][az-group-deployment-create] komutunu `--template-file` parametresiyle yürütün:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
@@ -122,8 +117,8 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 Azure Container Instances diğer birim türlerini nasıl bağlayacağınızı öğrenin:
 
-* [Azure kapsayıcı durumlarda bir Azure dosya paylaşımını bağlama](container-instances-volume-azure-files.md)
-* [Azure kapsayıcı durumlarda emptyDir birim](container-instances-volume-emptydir.md)
+* [Azure Container Instances'ta Azure dosya paylaşımı bağlama](container-instances-volume-azure-files.md)
+* [Azure Container Instances bir emptyDir birimi bağlama](container-instances-volume-emptydir.md)
 * [Azure Container Instances bir gitRepo birimi bağlama](container-instances-volume-gitrepo.md)
 
 ### <a name="secure-environment-variables"></a>Güvenli ortam değişkenleri

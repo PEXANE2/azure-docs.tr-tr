@@ -1,7 +1,7 @@
 ---
-title: Language Detection Kubernetes config and deploy steps
+title: Kubernetes config ve Deploy adımları Dil Algılama
 titleSuffix: Azure Cognitive Services
-description: Language Detection Kubernetes config and deploy steps
+description: Kubernetes config ve Deploy adımları Dil Algılama
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,39 +16,39 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383503"
 ---
-### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Deploy the Language Detection container to an AKS cluster
+### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Dil Algılama kapsayıcısını bir AKS kümesine dağıtma
 
-1. Open the Azure CLI, and sign in to Azure.
+1. Azure CLı 'yi açın ve Azure 'da oturum açın.
 
     ```azurecli
     az login
     ```
 
-1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
+1. AKS kümesinde oturum açın. `your-cluster-name` ve `your-resource-group` uygun değerlerle değiştirin.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    After this command runs, it reports a message similar to the following:
+    Bu komut çalıştıktan sonra şuna benzer bir ileti bildirir:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
+    > Azure hesabınızda kullanabileceğiniz birden fazla aboneliğiniz varsa ve `az aks get-credentials` komutu bir hatayla döndürülürse, yaygın bir sorun, yanlış aboneliği kullanmaktır. Azure CLı oturumunuzun bağlamını, kaynaklarını oluşturduğunuz aboneliğin aynısını kullanacak şekilde ayarlayın ve yeniden deneyin.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Open the text editor of choice. This example uses Visual Studio Code.
+1. İstediğiniz metin düzenleyicisini açın. Bu örnek Visual Studio Code kullanır.
 
     ```azurecli
     code .
     ```
 
-1. Within the text editor, create a new file named *language.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
+1. Metin Düzenleyicisi içinde *Language. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value` ve `apikey/value` kendi bilgileriniz ile değiştirdiğinizden emin olun.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,39 +94,39 @@ ms.locfileid: "74383503"
         app: language-app
     ```
 
-1. Save the file, and close the text editor.
-1. Run the Kubernetes `apply` command with the *language.yaml* file as its target:
+1. Dosyayı kaydedin ve metin düzenleyicisini kapatın.
+1. Kubernetes `apply` komutunu *Language. YAML* dosyası ile hedef olarak çalıştırın:
 
     ```console
     kubectl apply -f language.yaml
     ```
 
-    After the command successfully applies the deployment configuration, a message appears similar to the following output:
+    Komut, dağıtım yapılandırmasını başarılı bir şekilde uyguladıktan sonra aşağıdaki çıktıya benzer bir ileti görünür:
 
     ```console
     deployment.apps "language" created
     service "language" created
     ```
-1. Verify that the pod was deployed:
+1. Pod 'ın dağıtıldığını doğrulayın:
 
     ```console
     kubectl get pods
     ```
 
-    The output for the running status of the pod:
+    Pod 'un çalışma durumunun çıkışı:
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Verify that the service is available, and get the IP address.
+1. Hizmetin kullanılabilir olduğunu doğrulayın ve IP adresini alın.
 
     ```console
     kubectl get services
     ```
 
-    The output for the running status of the *language* service in the pod:
+    Pod 'daki *dil* hizmetinin çalışma durumunun çıkışı:
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

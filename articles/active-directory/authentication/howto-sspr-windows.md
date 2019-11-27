@@ -1,6 +1,6 @@
 ---
-title: Self-service password reset for Windows - Azure Active Directory
-description: How to enable self-service password reset using forgot password at the Windows login screen
+title: Windows için self servis parola sıfırlama-Azure Active Directory
+description: Windows oturum açma ekranında parolayı unuttum kullanarak Self servis parola sıfırlama özelliğini etkinleştirme
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,46 +18,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381240"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Enable password reset from the Windows login screen
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
-For machines running Windows 7, 8, 8.1, and 10 you can enable users to reset their password at the Windows login screen. Users no longer have to find a device with a web browser to access the [SSPR portal](https://aka.ms/sspr).
+Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekranında kullanıcıların parolalarını sıfırlamalarını sağlayabilirsiniz. Kullanıcıların artık [SSPR portalına](https://aka.ms/sspr)erişmek için bir Web tarayıcısına sahip bir cihaz bulması gerekmez.
 
-![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
+![Örnek Windows 7 ve SSPR bağlantısı ile 10 oturum açma ekranı gösteriliyor](./media/howto-sspr-windows/windows-reset-password.png)
 
 ## <a name="general-limitations"></a>Genel sınırlamalar
 
-- Password reset is not currently supported from a Remote Desktop or from Hyper-V enhanced sessions.
-- This feature does not work for networks with 802.1x network authentication deployed and the option “Perform immediately before user logon”. For networks with 802.1x network authentication deployed it is recommended to use machine authentication to enable this feature.
-- Hybrid Azure AD joined machines must have network connectivity line of sight to a domain controller to use the new password and update cached credentials.
-- If using an image, prior to running sysprep ensure that the web cache is cleared for the built-in Administrator prior to performing the CopyProfile step. More information about this step can be found in the support article [Performance poor when using custom default user profile](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
-- The following settings are known to interfere with the ability to use and reset passwords on Windows 10 devices
-    - If Ctrl+Alt+Del is required by policy in versions of Windows 10 before v1809, **Reset password** will not work.
-    - If lock screen notifications are turned off, **Reset password** will not work.
-    - HideFastUserSwitching is set to enabled or 1
-    - DontDisplayLastUserName is set to enabled or 1
-    - NoLockScreen is set to enabled or 1
-    - EnableLostMode is set on the device
-    - Explorer.exe is replaced with a custom shell
-- The combination of the following specific three settings can cause this feature to not work.
-    - Interactive logon: Do not require CTRL+ALT+DEL = Disabled
-    - DisableLockScreenAppNotifications = 1 or Enabled
-    - IsContentDeliveryPolicyEnforced = 1 or True
+- Parola sıfırlama, uzak bir masaüstünden veya Hyper-V gelişmiş oturumlarından Şu anda desteklenmiyor.
+- Bu özellik, 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda ve "Kullanıcı oturum açmadan hemen önce gerçekleştir" seçeneği için çalışmaz. 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda, bu özelliği etkinleştirmek için makine kimlik doğrulamasının kullanılması önerilir.
+- Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır.
+- Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
+- Aşağıdaki ayarların Windows 10 cihazlarında parola kullanma ve sıfırlama yeteneğinin kesintiye uğratabileceği bilinmektedir
+    - V1809 öncesi Windows 10 sürümlerindeki ilke için Ctrl + Alt + Del gerekliyse, **parola sıfırlama** işlemi çalışmaz.
+    - Kilit ekranı bildirimleri kapalıysa, **parola sıfırlama** çalışmaz.
+    - Hidefastuseranahtarlama etkin veya 1 olarak ayarlandı
+    - DontDisplayLastUserName, etkin veya 1 olarak ayarlandı
+    - NoLockScreen, etkin veya 1 olarak ayarlandı
+    - EnableLostMode, cihazda ayarlandı
+    - Explorer. exe, özel bir kabuğa göre değiştirilmiştir
+- Aşağıdaki belirli üç ayarların birleşimi bu özelliğin çalışmamasına neden olabilir.
+    - Etkileşimli oturum açma: CTRL + ALT + DEL = devre dışı isteme
+    - DisableLockScreenAppNotifications = 1 veya etkin
+    - Icontentdeliverypolicyenzorlanmış = 1 veya doğru
 
-## <a name="windows-10-password-reset"></a>Windows 10 password reset
+## <a name="windows-10-password-reset"></a>Windows 10 parola sıfırlama
 
-### <a name="windows-10-prerequisites"></a>Windows 10 prerequisites
+### <a name="windows-10-prerequisites"></a>Windows 10 önkoşulları
 
-- An administrator must enable Azure AD self-service password reset from the Azure portal.
-- **Users must register for SSPR before using this feature**
-- Network proxy requirements
-   - Windows 10 devices 
-       - Port 443 to `passwordreset.microsoftonline.com` and `ajax.aspnetcdn.com`
-       - Windows 10 devices only support machine-level proxy configuration
-- Run at least Windows 10, version April 2018 Update (v1803), and the devices must be either:
-    - Azure AD joined
-    - Hybrid Azure AD joined
+- Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
+- **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
+- Ağ proxy 'si gereksinimleri
+   - Windows 10 cihazları 
+       - `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com` bağlantı noktası 443
+       - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
+- En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:
+    - Azure AD 'ye katılmış
+    - Karma Azure AD 'ye katılmış
 
-### <a name="enable-for-windows-10-using-intune"></a>Enable for Windows 10 using Intune
+### <a name="enable-for-windows-10-using-intune"></a>Intune kullanarak Windows 10 için etkinleştirme
 
 Oturum açma ekranından parola sıfırlama yapılmasını sağlayan yapılandırma değişikliğinin Intune'dan dağıtılması en esnek yöntemdir. Intune, yapılandırma değişikliğini tanımladığınız belirli bir makine grubuna dağıtmanızı sağlar. Bu yöntem, cihazın Intune kaydını gerektirir.
 
@@ -79,81 +79,81 @@ Oturum açma ekranından parola sıfırlama yapılmasını sağlayan yapılandı
       - **Tamam**’a tıklayın.
    - **Tamam**’a tıklayın.
 1. **Oluştur**'a tıklayın
-1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
 
-### <a name="enable-for-windows-10-using-the-registry"></a>Enable for Windows 10 using the Registry
+### <a name="enable-for-windows-10-using-the-registry"></a>Kayıt defterini kullanarak Windows 10 için etkinleştirme
 
-1. Sign in to the Windows PC using administrative credentials
+1. Yönetici kimlik bilgilerini kullanarak Windows BILGISAYARıNDA oturum açın
 1. Yönetici olarak **regedit** komutunu çalıştırın
 1. Aşağıdaki kayıt defteri anahtarını ayarlayın
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-#### <a name="troubleshooting-windows-10-password-reset"></a>Troubleshooting Windows 10 password reset
+#### <a name="troubleshooting-windows-10-password-reset"></a>Windows 10 parola sıfırlama sorunlarını giderme
 
 Azure AD denetim günlüğü parola sıfırlamanın oluştuğu yerin IP adresi ve ClientType'ı hakkında bilgi içerir.
 
-![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Örnek Windows 7 parola sıfırlama Azure AD denetim günlüğünde](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-When users reset their password from the login screen of a Windows 10 device, a low-privilege temporary account called `defaultuser1` is created. This account is used to keep the password reset process secure. The account itself has a randomly generated password, doesn’t show up for device sign-in, and will automatically be removed after the user resets their password. Multiple `defaultuser` profiles may exist but can be safely ignored.
+Kullanıcılar, Windows 10 cihazının oturum açma ekranından parolalarını sıfırlarında `defaultuser1` adlı düşük ayrıcalıklı geçici bir hesap oluşturulur. Bu hesap, parola sıfırlama işleminin güvenli kalmasını sağlamak için kullanılır. Hesabın kendisi rastgele oluşturulmuş bir parolaya sahiptir, cihaz oturum açma için gösterilmez ve Kullanıcı parolasını sıfırladıktan sonra otomatik olarak kaldırılacaktır. Birden çok `defaultuser` profili var olabilir, ancak güvenle yoksayılabilir.
 
-## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8, and 8.1 password reset
+## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 ve 8,1 parola sıfırlama
 
-### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8, and 8.1 prerequisites
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 ve 8,1 önkoşulları
 
-- An administrator must enable Azure AD self-service password reset from the Azure portal.
-- **Users must register for SSPR before using this feature**
-- Network proxy requirements
-   - Windows 7, 8, and 8.1 devices
-       - Port 443 to `passwordreset.microsoftonline.com`
-- Patched Windows 7 or Windows 8.1 Operating System.
-- TLS 1.2 enabled using the guidance found in [Transport Layer Security (TLS) registry settings](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
-- If more than one 3rd party credential provider is enabled on your machine, users will see more than one user profile on the login screen.
+- Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
+- **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
+- Ağ proxy 'si gereksinimleri
+   - Windows 7, 8 ve 8,1 cihazları
+       - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com`
+- Düzeltme eki uygulanan Windows 7 veya Windows 8.1 Işletim sistemi.
+- TLS 1,2, [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)'nda bulunan kılavuzluk kullanılarak etkinleştirildi.
+- Makinenizde birden fazla 3. taraf kimlik bilgisi sağlayıcısı etkinse, kullanıcılar oturum açma ekranında birden fazla Kullanıcı profili görür.
 
 > [!WARNING]
-> TLS 1.2 must be enabled, not just set to auto negotiate
+> TLS 1,2 etkinleştirilmeli, yalnızca otomatik anlaşma olarak ayarlanmamalıdır
 
 ### <a name="install"></a>Yükleme
 
-1. Download the appropriate installer for the version of Windows you would like to enable.
-   - Software is available on the Microsoft download center at [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
-1. Sign in to the machine where you would like to install, and run the installer.
-1. After installation, a reboot is highly recommended.
-1. After the reboot, at the login screen choose a user and click "Forgot password?" to initiate the password reset workflow.
-1. Complete the workflow following the onscreen steps to reset your password.
+1. Etkinleştirmek istediğiniz Windows sürümü için uygun yükleyiciyi indirin.
+   - Yazılım, Microsoft İndirme Merkezi 'nde [https://aka.ms/sspraddin](https://aka.ms/sspraddin) adresinden edinilebilir
+1. Yüklemek istediğiniz makinede oturum açın ve yükleyiciyi çalıştırın.
+1. Yükleme sonrasında, bir yeniden başlatma önemle önerilir.
+1. Yeniden başlatmanın ardından, oturum açma ekranında bir kullanıcı seçin ve "parolayı unuttum mı?" düğmesine tıklayın. parola sıfırlama iş akışını başlatmak için.
+1. Parolanızı sıfırlamak için ekrandaki adımları izleyerek iş akışını doldurun.
 
-![Example Windows 7 clicked "Forgot password?" SSPR flow](media/howto-sspr-windows/windows-7-sspr.png)
+![Örnek Windows 7 "parolayı unuttum mı?" tıklandı SSPR akışı](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Silent installation
+#### <a name="silent-installation"></a>Sessiz yükleme
 
-- For silent install, use the command “msiexec /i SsprWindowsLogon.PROD.msi /qn”
-- For silent uninstall, use the command “msiexec /x SsprWindowsLogon.PROD.msi /qn”
+- Sessiz yüklemesi için "msiexec/i SsprWindowsLogon. PROD. msi/QN" komutunu kullanın
+- Sessiz kaldırma için, "msiexec/x SsprWindowsLogon. PROD. msi/QN" komutunu kullanın
 
-#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Troubleshooting Windows 7, 8, and 8.1 password reset
+#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Windows 7, 8 ve 8,1 parola sıfırlama sorunlarını giderme
 
-Events will be logged both on the machine and in Azure AD. Azure AD Events will include information about the IP address and ClientType where the password reset occurred.
+Olaylar hem makinede hem de Azure AD 'de günlüğe kaydedilir. Azure AD olayları, parola sıfırlamasının gerçekleştiği IP adresi ve ClientType hakkında bilgi içerir.
 
-![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Örnek Windows 7 parola sıfırlama Azure AD denetim günlüğünde](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-If additional logging is required, a registry key on the machine can be changed to enable verbose logging. Enable verbose logging for troubleshooting purposes only.
+Ek günlüğe kaydetme gerekliyse, ayrıntılı günlük kaydını etkinleştirmek için makinedeki bir kayıt defteri anahtarı değiştirilebilir. Yalnızca sorun giderme amacıyla ayrıntılı günlüğe yazmayı etkinleştirin.
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- To enable verbose logging, create a `REG_DWORD: “EnableLogging”`, and set it to 1.
-- To disable verbose logging, change the `REG_DWORD: “EnableLogging”` to 0.
+- Ayrıntılı günlüğü etkinleştirmek için bir `REG_DWORD: “EnableLogging”`oluşturun ve bunu 1 olarak ayarlayın.
+- Ayrıntılı günlük kaydını devre dışı bırakmak için `REG_DWORD: “EnableLogging”` 0 olarak değiştirin.
 
 ## <a name="what-do-users-see"></a>Kullanıcıların ne görecek
 
-Now that you have configured password reset for your Windows devices, what changes for the user? Oturum açma ekranında parolalarını sıfırlayabileceklerini nasıl anlayacaklar?
+Windows cihazlarınız için parola sıfırlamayı yapılandırdığınıza göre, Kullanıcı için ne değişiklikler var? Oturum açma ekranında parolalarını sıfırlayabileceklerini nasıl anlayacaklar?
 
-![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
+![Örnek Windows 7 ve SSPR bağlantısı ile 10 oturum açma ekranı gösteriliyor](./media/howto-sspr-windows/windows-reset-password.png)
 
-When users attempt to sign in, they now see a **Reset password** or **Forgot password** link that opens the self-service password reset experience at the login screen. Bu işlev kullanıcıların web tarayıcısına erişmek için başka bir cihaz kullanmalarına gerek kalmadan parolalarını sıfırlamalarına olanak tanır.
+Kullanıcılar oturum açmaya çalıştığında, oturum açma ekranında self servis parola sıfırlama deneyimini açan parolayı **Sıfırla** veya **parolayı unutma** bağlantısını görür. Bu işlev kullanıcıların web tarayıcısına erişmek için başka bir cihaz kullanmalarına gerek kalmadan parolalarını sıfırlamalarına olanak tanır.
 
 Kullanıcılarınız bu özelliği kullanma yönergelerini [İş veya okul parolanızı sıfırlama](../user-help/active-directory-passwords-update-your-own-password.md) konusunda bulabilirler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Plan authentication methods to allow](concept-authentication-methods.md)
+[İzin vermek için kimlik doğrulama yöntemlerini planlayın](concept-authentication-methods.md)
 
-[Configure Windows 10](https://docs.microsoft.com/windows/configuration/)
+[Windows 10 yapılandırma](https://docs.microsoft.com/windows/configuration/)

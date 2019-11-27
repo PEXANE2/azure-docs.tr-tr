@@ -1,7 +1,7 @@
 ---
-title: Connect to a knowledge store (preview) with Power BI
+title: Power BI ile bir bilgi deposuna (Önizleme) bağlanma
 titleSuffix: Azure Cognitive Search
-description: Connect an Azure Cognitive Search knowledge store (preview) with Power BI for analysis and exploration.
+description: Analiz ve araştırma için Power BI bir Azure Bilişsel Arama bilgi deposu (Önizleme) bağlayın.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
@@ -15,73 +15,73 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406600"
 ---
-# <a name="connect-a-knowledge-store-with-power-bi"></a>Connect a knowledge store with Power BI
+# <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
 
 > [!IMPORTANT] 
-> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
+> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
-In this article, learn how to connect to and explore a knowledge store using Power Query in the Power BI Desktop app. You can get started faster with templates, or build a custom dashboard from scratch.
+Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğrenin. Şablonlarla daha hızlı çalışmaya başlayabilir veya sıfırdan özel bir pano oluşturabilirsiniz.
 
-+ Follow the steps in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md) or [Create an Azure Cognitive Search knowledge store by using REST](knowledge-store-create-rest.md) to create the sample knowledge store used in this walkthrough. You will also need the name of the Azure storage account that you used to create the knowledge store, along with its access key from the Azure portal.
++ Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için, [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md) ' daki adımları IZLEYIN veya [rest kullanarak bir Azure bilişsel arama bilgi deposu oluşturun](knowledge-store-create-rest.md) . Ayrıca, bilgi deposunu oluşturmak için kullandığınız Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
 
-+ [Install Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Power BI Desktop yüklensin](https://powerbi.microsoft.com/downloads/)
 
-## <a name="sample-power-bi-template---azure-portal-only"></a>Sample Power BI template - Azure portal only
+## <a name="sample-power-bi-template---azure-portal-only"></a>Örnek Power BI şablonu-yalnızca Azure portal
 
-If you [created your knowledge store using the Azure portal](knowledge-store-create-portal.md), you can use the [Azure Cognitive Search Power BI template sample](https://github.com/Azure-Samples/cognitive-search-templates) to view and experiment with Power BI visualizations. This template is also available for download when you step through the **Import data** wizard.
+[Bilgi deponuzu Azure Portal kullanarak oluşturduysanız](knowledge-store-create-portal.md), Power BI görselleştirmeleri görüntülemek ve denemek için [Azure bilişsel arama Power BI şablon örneğini](https://github.com/Azure-Samples/cognitive-search-templates) kullanabilirsiniz. Bu şablon, **verileri Içeri aktarma** Sihirbazı ' nı adım adım yaptığınızda da indirilebilir.
 
-The sample template will automatically perform the setup steps outlined in the remainder of this article. However, if you used the REST API to create your knowledge store, skip the template and use the remaining sections in this article to connect your knowledge store to Power BI. Start with [Connect with Power BI](#connect-with-power-bi).
+Örnek şablon, bu makalenin geri kalanında belirtilen kurulum adımlarını otomatik olarak gerçekleştirir. Bununla birlikte, bilgi deponuzu oluşturmak için REST API kullandıysanız, şablonu atlayın ve bilgi deponuzu Power BI bağlamak için bu makaledeki geri kalan bölümleri kullanın. [Power BI Connect](#connect-with-power-bi)ile başlayın.
 
-The sample template includes several visualizations, such as WordCloud and Network Navigator. Some visualizations in the template, such as the Locations map and the Entity-Graph Viewer, will not show data for the sample knowledge store created in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md). This is because only a subset of the AI enrichments available in the **Import data** wizard were used.
+Örnek şablon, WordCloud ve Network Navigator gibi çeşitli görselleştirmeler içerir. Şablondaki bazı görselleştirmeler, örneğin konumlar Haritası ve varlık-grafik Görüntüleyici, [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md)bölümünde oluşturulan örnek bilgi deposu için verileri göstermez. Bunun nedeni, **verileri Içeri aktarma** Sihirbazı 'nda yalnızca bir AI zenginleştirme 'nin kullanılabilir olduğu bir alt kümesidir.
 
-![Sample Azure Cognitive Search Power BI Template](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Sample Power BI template")
+![Örnek Azure Bilişsel Arama Power BI şablonu](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Örnek Power BI şablonu")
 
 ## <a name="connect-with-power-bi"></a>Power BI ile bağlanma
 
-1. Start Power BI Desktop and click **Get data**.
+1. Power BI Desktop başlatın ve **veri al**' a tıklayın.
 
-1. In the **Get Data** window, select **Azure**, and then select **Azure Table Storage**.
+1. **Veri al** penceresinde **Azure**' ı seçin ve ardından **Azure Tablo depolama**' yı seçin.
 
 1. **Bağlan**'a tıklayın.
 
-1. For **Account Name or URL**, enter in your Azure Storage account name (the full URL will be created for you).
+1. **Hesap adı veya URL 'si**Için Azure depolama hesabınızın adını girin (sizin IÇIN tam URL oluşturulur).
 
-1. If prompted, enter the storage account key.
+1. İstenirse, depolama hesabı anahtarını girin.
 
-1. Select the *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*, and *hotelReviewsSsPages* tables. These tables are Azure table projections of the hotel reviews sample data and include the AI enrichments that were selected when the knowledge store was created.
+1. *Hotelbelge\sdocument*, *HotelReviewsSsKeyPhrases*ve *Hotelbelge\spages* tablolarını seçin. Bu tablolar, otel 'in Azure Tablo projeksiyonları, örnek verileri inceler ve bilgi deposu oluşturulduğunda seçilen AI zenginlerini içerir.
 
-1. Click **Load**.
+1. **Yükle**' ye tıklayın.
 
-1. On the top ribbon, click **Edit Queries** to open the **Power Query Editor**.
+1. **Power Query düzenleyicisini**açmak için üst şeritte **sorguları Düzenle** ' ye tıklayın.
 
-   ![Open Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Open Power Query")
+   ![Power Query açın](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query açın")
 
-1. Select *hotelReviewsSsDocument*, and then remove the *PartitionKey*, *RowKey*, and *Timestamp* columns. 
+1. *Hotelcode Ssındocument*' ı seçin ve ardından *partitionkey*, *rowkey*ve *timestamp* sütunlarını kaldırın. 
 
-   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Edit tables")
+   ![Tabloları Düzenle](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabloları Düzenle")
 
-1. Click the icon with opposing arrows at the upper right side of the table to expand the *Content*. When the list of columns appears, select all columns, and then deselect columns that start with 'metadata'. Click **OK** to show the selected columns.
+1. *İçeriği*genişletmek için tablonun sağ üst tarafındaki karşıt oklu simgeye tıklayın. Sütun listesi göründüğünde, tüm sütunlar ' ı seçin ve ardından ' Metadata ' ile başlayan sütunların seçimini kaldırın. Seçilen sütunları göstermek için **Tamam** ' ı tıklatın.
 
-   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Expand content")
+   ![Tabloları Düzenle](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "İçeriği Genişlet")
 
-1. Change the data type for the following columns by clicking the  ABC-123 icon at the top left of the column.
+1. Sütunun sol üst kısmındaki ABC-123 simgesine tıklayarak aşağıdaki sütunlar için veri türünü değiştirin.
 
-   + For *content.latitude* and *Content.longitude*, select **Decimal Number**.
-   + For *Content.reviews_date* and *Content.reviews_dateAdded*,  select **Date/Time**.
+   + *Content. Enlem* ve *Content. Boylam*için **ondalık sayı**' yı seçin.
+   + *İçerik. reviews_date* ve *içerik. reviews_dateAdded*için **Tarih/saat**' i seçin.
 
-   ![Change data types](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Change data types")
+   ![Veri türlerini değiştirme](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Veri türlerini değiştirme")
 
-1. Select *hotelReviewsSsPages*, and then repeat steps 9 and 10 to delete the columns and expand the *Content*.
-1. Change the data type for *Content.SentimentScore* to **Decimal Number**.
-1. Select *hotelReviewsSsKeyPhrases* and repeat steps 9 and 10 to delete the columns and expand the *Content*. There are no data type modifications for this table.
+1. *Hotelcode Ssspages*öğesini seçin ve ardından 9 ve 10. adımları yineleyerek sütunları silip *içeriği*genişletin.
+1. *Content. Sentımentscore* için veri türünü **ondalık sayı**olarak değiştirin.
+1. *HotelReviewsSsKeyPhrases* ' ı seçin ve sütunları silip *içeriği*genişletmek için 9. ve 10. adımları yineleyin. Bu tablo için veri türü değişikliği yok.
 
-1. On the command bar, click **Close and Apply**.
+1. Komut çubuğunda **Kapat ve Uygula**' ya tıklayın.
 
-1. Click on the Model tile on the left navigation pane and validate that Power BI shows relationships between all three tables.
+1. Sol gezinti bölmesindeki model kutucuğuna tıklayın ve Power BI üç tablo arasındaki ilişkileri gösterir.
 
-   ![Validate relationships](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Validate relationships")
+   ![İlişkileri doğrula](media/knowledge-store-connect-power-bi/powerbi-relationships.png "İlişkileri doğrula")
 
-1. Double-click each relationship and make sure that the **Cross-filter direction** is set to **Both**.  This enables your visuals to refresh when a filter is applied.
+1. Her bir ilişkiye çift tıklayın ve **çapraz filtre yönünün** **her ikisine de**ayarlandığından emin olun.  Bu, bir filtre uygulandığında görsellerinizin yenilenmesini sağlar.
 
 <!-- ## Try with larger data sets
 
@@ -102,20 +102,20 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Temizleme
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit.
+Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn how to explore this knowledge store using Storage Explorer, see the following article.
+Bu bilgi deposunu Depolama Gezgini kullanarak nasıl keşfedeceğinizi öğrenmek için aşağıdaki makaleye bakın.
 
 > [!div class="nextstepaction"]
-> [View with Storage Explorer](knowledge-store-view-storage-explorer.md)
+> [Depolama Gezgini ile görüntüle](knowledge-store-view-storage-explorer.md)
 
-To learn how to create a knowledge store using the REST APIs and Postman, see the following article.  
+REST API 'Leri ve Postman kullanarak bilgi deposu oluşturmayı öğrenmek için aşağıdaki makaleye bakın.  
 
 > [!div class="nextstepaction"]
-> [Create a knowledge store in REST](knowledge-store-howto.md)
+> [REST 'te bilgi deposu oluşturma](knowledge-store-howto.md)

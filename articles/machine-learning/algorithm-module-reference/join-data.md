@@ -1,7 +1,7 @@
 ---
-title: 'Join Data: Module Reference'
+title: 'Veri birleştirin: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the join Join Data module in Azure Machine Learning to merge datasets.
+description: Veri kümelerini birleştirmek için Azure Machine Learning ' de birleştirme verilerini birleştirme modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,54 +18,54 @@ ms.locfileid: "74232617"
 ---
 # <a name="join-data"></a>Verileri birleştirme
 
-This article describes how to use the **Join Data** module in Azure Machine Learning designer (preview) to merge two datasets using a database-style join operation.  
+Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri kümesini birleştirmek için Azure Machine Learning Tasarımcısı 'nda (Önizleme) **veri birleştirme** modülünün nasıl kullanılacağı açıklanır.  
 
-## <a name="how-to-configure-join-data"></a>How to configure Join Data
+## <a name="how-to-configure-join-data"></a>JOIN verileri nasıl yapılandırılır
 
-To perform a join on two datasets, they should be related by a key column. Composite keys using multiple columns are also supported. 
+İki veri kümesi üzerinde bir JOIN gerçekleştirmek için, anahtar sütunuyla ilişkili olmaları gerekir. Birden çok sütun kullanan bileşik anahtarlar da desteklenir. 
 
-1. Add the datasets you want to combine, and then drag the **Join Data** module into your pipeline. 
+1. Birleştirmek istediğiniz veri kümelerini ekleyin ve sonra **birleştirme verileri** modülünü işlem hattınızla sürükleyin. 
 
-    You can find the module in the **Data Transformation** category, under **Manipulation**.
+    Modülü, **veri dönüştürme** kategorisinde, **düzenleme**altında bulabilirsiniz.
 
-1. Connect the datasets to the **Join Data** module. 
+1. **Veri kümelerini veri JOIN** modülüne bağlayın. 
  
-1. Select **Launch column selector** to choose key column(s). Remember to choose columns for both the left and right inputs.
+1. Anahtar sütun (ler) i seçmek için **sütun seçiciyi Başlat** ' ı seçin. Sol ve sağ girdilerin her ikisi için de sütun seçeceğini unutmayın.
 
-    For a single key:
+    Tek bir anahtar için:
 
-    Select a single key column for both inputs.
+    Her iki giriş için tek bir anahtar sütun seçin.
     
-    For a composite key:
+    Bileşik anahtar için:
 
-    Select all the key columns from left input and right input in the same order. The **Join Data** module will join the tables when all key columns match. Check the option **Allow duplicates and preserve column order in selection** if the column order isn't the same as the original table. 
+    Sol girişte bulunan tüm anahtar sütunlarını ve sağ girişi aynı sırayla seçin. Tüm anahtar sütunları eşleşiyorsa, **verileri Birleştir** modülü tabloları birleştirir. Sütun sırası orijinal tabloyla aynı değilse, **seçimdeki yinelemelere Izin ver ve sütun sırasını koru** seçeneğini işaretleyin. 
 
-    ![column-selector](media/module/join-data-column-selector.png)
+    ![Sütun seçici](media/module/join-data-column-selector.png)
 
 
-1. Select the **Match case** option if you want to preserve case sensitivity on a text column join. 
+1. Metin sütunu **birleştirmesinden** büyük/küçük harf duyarlılığı korumak istiyorsanız, büyük/küçük harf seçeneğini belirleyin. 
    
-1. Use the **Join type** dropdown list to specify how the datasets should be combined.  
+1. Veri kümelerinin nasıl birleştirildiğini belirtmek için **JOIN türü** açılan listesini kullanın.  
   
-    * **Inner Join**: An *inner join* is the most common join operation. It returns the combined rows only when the values of the key columns match.  
+    * **Iç birleşim**: bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
   
-    * **Left Outer Join**: A *left outer join* returns joined rows for all rows from the left table. When a row in the left table has no matching rows in the right table, the returned row contains missing values for all columns that come from the right table. You can also specify a replacement value for missing values.  
+    * **Sol dış birleşim**: sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
   
-    * **Full Outer Join**: A *full outer join* returns all rows from the left table (**table1**) and from the right table (**table2**).  
+    * **Tam dış birleşim**: *tam dış birleşim* , sol tablodaki (**Table1**) ve sağ tablodaki (**Table2**) tüm satırları döndürür.  
   
-         For each of the rows in either table that have no matching rows in the other, the result includes a row containing missing values.  
+         Herhangi bir tabloda, birbirleriyle eşleşen satırları olmayan her bir satır için, sonuç eksik değerler içeren bir satır içerir.  
   
-    * **Left Semi-Join**: A *left semi-join* returns only the values from the left table when the values of the key columns match.  
+    * **Sol yarı ekleme**: *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
 
-1. For the option **Keep right key columns in joined table**:
+1. **Birleşik tablodaki doğru anahtar sütunları tut**seçeneği için:
 
-    * Select this option to view the keys from both input tables.
-    * Deselect to only return the key columns from the left input.
+    * Her iki giriş tablolarından anahtarları görüntülemek için bu seçeneği belirleyin.
+    * Yalnızca sol girdiden anahtar sütunları döndürmek için seçimi kaldırın.
 
-1. Run the pipeline, or select the Join Data module and selected **Run Selected** to perform the join.
+1. İşlem hattını çalıştırın veya veri Birleştir modülünü seçin ve birleşimi gerçekleştirmek için seçili **Çalıştır** ' ı seçin.
 
-1. To view the results, right-click the **Join Data** > **Results dataset** > **Visualize**.
+1. Sonuçları görüntülemek için **verileri birleştir** > **sonuçları veri kümesine** sağ tıklayıp **görselleştirip** > .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

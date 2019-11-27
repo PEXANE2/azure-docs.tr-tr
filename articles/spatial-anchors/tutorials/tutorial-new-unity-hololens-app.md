@@ -34,7 +34,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 2. **Yeni**'yi seçin.
 4. **3B** 'in seçili olduğundan emin olun.
 5. Projenizi adlandırın ve bir kaydetme **konumu**girin.
-6. Tıklayın **proje oluştur**.
+6. **Proje oluştur**' a tıklayın.
 7. Boş varsayılan sahneyi kullanarak yeni bir dosyaya kaydedin: **dosya** > **farklı kaydet**.
 8. Yeni sahneyi **Main** olarak adlandırın ve **Kaydet** düğmesine basın.
 
@@ -117,7 +117,7 @@ Artık betiğinizdeki ön **küm** kümesine sahip olmanız gerekir. **Unity** '
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
-Şimdi Sphere öğesini oluşturuyoruz. Sphere başlangıçta beyaz olur, ancak bu değer daha sonra üzerinde ayarlanır. Aşağıdaki `CreateAndSaveSphere()` yöntemi:
+Şimdi Sphere öğesini oluşturuyoruz. Sphere başlangıçta beyaz olur, ancak bu değer daha sonra üzerinde ayarlanır. Aşağıdaki `CreateAndSaveSphere()` yöntemi ekleyin:
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 

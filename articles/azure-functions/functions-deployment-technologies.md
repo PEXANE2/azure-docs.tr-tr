@@ -1,6 +1,6 @@
 ---
-title: Deployment technologies in Azure Functions
-description: Learn the different ways you can deploy code to Azure Functions.
+title: Azure Işlevlerinde dağıtım teknolojileri
+description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin.
 author: ColbyTresness
 ms.custom: vs-azure
 ms.topic: conceptual
@@ -13,195 +13,195 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227004"
 ---
-# <a name="deployment-technologies-in-azure-functions"></a>Deployment technologies in Azure Functions
+# <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
-You can use a few different technologies to deploy your Azure Functions project code to Azure. This article provides an exhaustive list of those technologies, describes which technologies are available for which flavors of Functions, explains what happens when you use each method, and provides recommendations for the best method to use in various scenarios. The various tools that support deploying to Azure Functions are tuned to the right technology based on their context. In general, zip deployment is the recommended deployment technology for Azure Functions.
+Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makale, bu teknolojilerin kapsamlı bir listesini sağlar, Işlevlerin hangi özellikler için kullanılabilir olduğunu açıklar, her yöntemi kullanırken ne olduğunu açıklar ve çeşitli senaryolarda kullanılacak en iyi yöntem için öneriler sağlar . Azure Işlevlerine dağıtımı destekleyen çeşitli araçlar, bağlamlarına göre doğru teknoloji olarak ayarlanmıştır. Genel olarak, ZIP dağıtımı Azure Işlevleri için önerilen dağıtım teknolojisidir.
 
-## <a name="deployment-technology-availability"></a>Deployment technology availability
+## <a name="deployment-technology-availability"></a>Dağıtım teknolojisinin kullanılabilirliği
 
-Azure Functions supports cross-platform local development and hosting on Windows and Linux. Currently, three hosting plans are available:
+Azure Işlevleri, platformlar arası yerel geliştirme ve Windows ve Linux üzerinde barındırma desteği sunmaktadır. Şu anda üç barındırma planı kullanılabilir:
 
-+ [Consumption](functions-scale.md#consumption-plan)
++ [Mine](functions-scale.md#consumption-plan)
 + [Premium](functions-scale.md#premium-plan)
-+ [Dedicated (App Service)](functions-scale.md#app-service-plan)
++ [Adanmış (App Service)](functions-scale.md#app-service-plan)
 
-Each plan has different behaviors. Not all deployment technologies are available for each flavor of Azure Functions. The following chart shows which deployment technologies are supported for each combination of operating system and hosting plan:
+Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği için tüm dağıtım teknolojileri bulunmaz. Aşağıdaki grafikte, her bir işletim sistemi ve barındırma planı birleşimi için hangi dağıtım teknolojilerinin desteklendiği gösterilmektedir:
 
-| Deployment technology | Windows Consumption | Windows Premium | Windows Dedicated  | Linux Consumption | Linux Premium | Linux Dedicated |
+| Dağıtım teknolojisi | Windows tüketimi | Windows Premium | Windows ayrılmış  | Linux tüketimi | Linux Premium | Linux adanmış |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
-| External package URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
-| Zip deploy |✔|✔|✔|✔|✔|✔|
-| Docker container | | | | |✔|✔|
-| Web Deploy |✔|✔|✔| | | |
+| Dış paket URL 'SI<sup>1</sup> |✔|✔|✔|✔|✔|✔|
+| ZIP dağıtımı |✔|✔|✔|✔|✔|✔|
+| Docker kapsayıcısı | | | | |✔|✔|
+| Web Dağıtımı |✔|✔|✔| | | |
 | Kaynak denetimi |✔|✔|✔| |✔|✔|
-| Local Git<sup>1</sup> |✔|✔|✔| |✔|✔|
-| Cloud sync<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Yerel git<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Bulut eşitleme<sup>1</sup> |✔|✔|✔| |✔|✔|
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
-| Portal editing |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
+| Portal düzenlemesi |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup> Deployment technology that requires [manual trigger syncing](#trigger-syncing).  
-<sup>2</sup> Portal editing is enabled only for HTTP and Timer triggers for Functions on Linux using Premium and dedicated plans.
+[el ile tetikleyici eşitlemesi](#trigger-syncing)gerektiren <sup>1</sup> dağıtım teknolojisi.  
+<sup>2</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik http ve Zamanlayıcı Tetikleyicileri için etkindir.
 
 ## <a name="key-concepts"></a>Temel kavramlar
 
-Some key concepts are critical to understanding how deployments work in Azure Functions.
+Bazı temel kavramlar, dağıtımların Azure Işlevlerinde nasıl çalıştığını anlamak için önemlidir.
 
-### <a name="trigger-syncing"></a>Trigger syncing
+### <a name="trigger-syncing"></a>Eşitlemeyi Tetikle
 
-When you change any of your triggers, the Functions infrastructure must be aware of the changes. Synchronization happens automatically for many deployment technologies. However, in some cases, you must manually sync your triggers. When you deploy your updates by referencing an external package URL, local Git, cloud sync, or FTP, you must manually sync your triggers. You can sync triggers in one of three ways:
+Tetikleyicilerden herhangi birini değiştirdiğinizde, Işlevler altyapısının değişiklikler farkında olmalıdır. Eşitleme, birçok dağıtım teknolojisi için otomatik olarak gerçekleşir. Ancak, bazı durumlarda tetikleyiclerinizi el ile eşitlemeniz gerekir. Güncelleştirmelerinizi bir dış paket URL 'sine, yerel git 'e, bulut eşitlemesine veya FTP 'ye başvurarak dağıttığınızda, tetikleyiclerinizi el ile eşitlemeniz gerekir. Tetikleyicileri üç yönden biriyle eşitleyebilirsiniz:
 
-* Restart your function app in the Azure portal
-* Send an HTTP POST request to `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` using the [master key](functions-bindings-http-webhook.md#authorization-keys).
-* Send an HTTP POST request to `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Replace the placeholders with your subscription ID, resource group name, and the name of your function app.
+* İşlev uygulamanızı Azure portal yeniden başlatın
+* [Ana anahtarı](functions-bindings-http-webhook.md#authorization-keys)kullanarak `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` BIR http post isteği gönderin.
+* `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`için bir HTTP POST isteği gönderin. Yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve işlev uygulamanızın adıyla değiştirin.
 
-### <a name="remote-build"></a>Remote build
+### <a name="remote-build"></a>Uzak derleme
 
-Azure Functions can automatically perform builds on the code it receives after zip deployments. These builds behave slightly differently depending on whether your app is running on Windows or Linux. Remote builds are not performed when an app has previously been set to run in [Run From Package](run-functions-from-deployment-package.md) mode. To learn how to use remote build, navigate to [zip deploy](#zip-deploy).
+Azure Işlevleri, ZIP dağıtımlarından sonra aldığı kodda derlemeleri otomatik olarak gerçekleştirebilir. Bu derlemeler, uygulamanızın Windows veya Linux üzerinde çalışıyor olmasına bağlı olarak biraz farklı davranır. Bir uygulama daha önce [paket modundan Çalıştır](run-functions-from-deployment-package.md) modunda çalışmak üzere ayarlandığında uzak derlemeler gerçekleştirilmez. Uzak derlemeyi kullanmayı öğrenmek için, [ZIP dağıtımı](#zip-deploy)' na gidin.
 
 > [!NOTE]
-> If you're having issues with remote build, it might be because your app was created before the feature was made available (August 1, 2019). Try creating a new function app, or running `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` to update your function app. This command might take two tries to succeed.
+> Uzak derleme ile ilgili sorun yaşıyorsanız, bu durum uygulamanızın özellik kullanıma alınmadan önce oluşturulması olabilir (1 Ağustos 2019). İşlev uygulamanızı güncelleştirmek için yeni bir işlev uygulaması oluşturmayı veya `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` çalıştırmayı deneyin. Bu komutun başarılı olması iki denemeden kaynaklanabilir.
 
-#### <a name="remote-build-on-windows"></a>Remote build on Windows
+#### <a name="remote-build-on-windows"></a>Windows üzerinde uzak derleme
 
-All function apps running on Windows have a small management app, the SCM (or [Kudu](https://github.com/projectkudu/kudu)) site. This site handles much of the deployment and build logic for Azure Functions.
+Windows üzerinde çalışan tüm işlev uygulamalarının SCM (veya [kudu](https://github.com/projectkudu/kudu)) sitesi küçük bir yönetim uygulamasına sahiptir. Bu site, Azure Işlevleri için dağıtım ve derleme mantığının çoğunu işler.
 
-When an app is deployed to Windows, language-specific commands, like `dotnet restore` (C#) or `npm install` (JavaScript) are run.
+Bir uygulama Windows 'a dağıtıldığında, `dotnet restore` (C#) veya `npm install` (JavaScript) gibi dile özgü komutlar çalıştırılır.
 
-#### <a name="remote-build-on-linux"></a>Remote build on Linux
+#### <a name="remote-build-on-linux"></a>Linux üzerinde uzak derleme
 
-To enable remote build on Linux, the following [application settings](functions-how-to-use-azure-function-app-settings.md#settings) must be set:
+Linux üzerinde uzak derlemeyi etkinleştirmek için aşağıdaki [uygulama ayarlarının](functions-how-to-use-azure-function-app-settings.md#settings) ayarlanmış olması gerekir:
 
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-By default, both [Azure Functions Core Tools](functions-run-local.md) and the [Azure Functions Extension for Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) perform remote builds when deploying to Linux. Because of this, both tools automatically create these settings for you in Azure. 
+Varsayılan olarak, Visual Studio Code için hem [Azure Functions Core Tools](functions-run-local.md) hem de [Azure Işlevleri uzantısı](functions-create-first-function-vs-code.md#publish-the-project-to-azure) , Linux 'a dağıtım yaparken uzak derlemeler gerçekleştirir. Bu nedenle, her iki araç da Azure 'da sizin için otomatik olarak bu ayarları oluşturur. 
 
-When apps are built remotely on Linux, they [run from the deployment package](run-functions-from-deployment-package.md). 
+Uygulamalar Linux üzerinde uzaktan oluşturulduğunda, [dağıtım paketinden çalıştırılırlar](run-functions-from-deployment-package.md). 
 
 ##### <a name="consumption-plan"></a>Tüketim planı
 
-Linux function apps running in the Consumption plan don't have an SCM/Kudu site, which limits the deployment options. However, function apps on Linux running in the Consumption plan do support remote builds.
+Tüketim planında çalışan Linux işlev uygulamalarının, dağıtım seçeneklerini sınırlayan bir SCM/kudu sitesi yok. Ancak, tüketim planında çalışan Linux 'ta işlev uygulamaları uzak yapıları destekler.
 
-##### <a name="dedicated-and-premium-plans"></a>Dedicated and Premium plans
+##### <a name="dedicated-and-premium-plans"></a>Adanmış ve Premium planlar
 
-Function apps running on Linux in the [Dedicated (App Service) plan](functions-scale.md#app-service-plan) and the [Premium plan](functions-scale.md#premium-plan) also have a limited SCM/Kudu site.
+Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](functions-scale.md#app-service-plan) ve [Premium planda](functions-scale.md#premium-plan) Ayrıca sınırlı bir SCM/kudu sitesi de vardır.
 
-## <a name="deployment-technology-details"></a>Deployment technology details
+## <a name="deployment-technology-details"></a>Dağıtım teknolojisi ayrıntıları
 
-The following deployment methods are available in Azure Functions.
+Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
-### <a name="external-package-url"></a>External package URL
+### <a name="external-package-url"></a>Dış paket URL 'SI
 
-You can use an external package URL to reference a remote package (.zip) file that contains your function app. The file is downloaded from the provided URL, and the app runs in [Run From Package](run-functions-from-deployment-package.md) mode.
+İşlev uygulamanızı içeren bir uzak paket (. zip) dosyasına başvurmak için bir dış paket URL 'SI kullanabilirsiniz. Dosya, girilen URL 'den indirilir ve uygulama [paket modundan Çalıştır](run-functions-from-deployment-package.md) bölümünde çalışır.
 
->__How to use it:__ Add `WEBSITE_RUN_FROM_PACKAGE` to your application settings. The value of this setting should be a URL (the location of the specific package file you want to run). You can add settings either [in the portal](functions-how-to-use-azure-function-app-settings.md#settings) or [by using the Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__Nasıl kullanılır:__ Uygulama ayarlarınıza `WEBSITE_RUN_FROM_PACKAGE` ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz. 
 >
->If you use Azure Blob storage, use a private container with a [shared access signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) to give Functions access to the package. Any time the application restarts, it fetches a copy of the content. Your reference must be valid for the lifetime of the application.
+>Azure Blob depolama kullanırsanız, IŞLEVLERE pakete erişim sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanın. Uygulamanın her yeniden başlatıldığı zaman içeriğin bir kopyasını getirir. Başvurunuz, uygulamanın ömrü için geçerli olmalıdır.
 
->__When to use it:__ External package URL is the only supported deployment method for Azure Functions running on Linux in the Consumption plan, if the user doesn't want a [remote build](#remote-build) to occur. When you update the package file that a function app references, you must [manually sync triggers](#trigger-syncing) to tell Azure that your application has changed.
+>__Ne zaman kullanılır:__ Dış paket URL 'SI, Kullanıcı [uzak bir derlemeyi](#remote-build) istememesi durumunda, tüketim planında Linux üzerinde çalışan Azure işlevleri için desteklenen tek dağıtım yöntemidir. Bir işlev uygulamasının başvurduğu paket dosyasını güncelleştirdiğinizde, Azure 'u uygulamanızın değiştiğini bildirmek için [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing) gerekir.
 
-### <a name="zip-deploy"></a>Zip deploy
+### <a name="zip-deploy"></a>ZIP dağıtımı
 
-Use zip deploy to push a .zip file that contains your function app to Azure. Optionally, you can set your app to start [running from package](run-functions-from-deployment-package.md), or specify that a [remote build](#remote-build) occurs.
+İşlev uygulamanızı içeren bir. zip dosyasını Azure 'a göndermek için ZIP Deploy kullanın. İsteğe bağlı olarak, uygulamanızı [paketten çalışmaya](run-functions-from-deployment-package.md)başlayacak şekilde ayarlayabilir veya [uzak bir derleme](#remote-build) gerçekleşmektir.
 
->__How to use it:__ Deploy by using your favorite client tool: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), the [Azure Functions Core Tools](functions-run-local.md), or the [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). By default, these tools use zip deployment and [run from package](run-functions-from-deployment-package.md). Core Tools and the Visual Studio Code extension both enable [remote build](#remote-build) when deploying to Linux. To manually deploy a .zip file to your function app, follow the instructions in [Deploy from a .zip file or URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md)veya [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Varsayılan olarak, bu araçlar ZIP dağıtımını kullanır ve [paketinden çalıştırılır](run-functions-from-deployment-package.md). Temel araçlar ve Visual Studio Code uzantısı, Linux 'a dağıtım yaparken [uzak derlemeyi](#remote-build) etkinleştirir. Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
 
->When you deploy by using zip deploy, you can set your app to [run from package](run-functions-from-deployment-package.md). To run from package, set the `WEBSITE_RUN_FROM_PACKAGE` application setting value to `1`. We recommend zip deployment. It yields faster loading times for your applications, and it's the default for VS Code, Visual Studio, and the Azure CLI. 
+>ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini `1`olarak ayarlayın. ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır. 
 
->__When to use it:__ Zip deploy is the recommended deployment technology for Azure Functions.
+>__Ne zaman kullanılır:__ ZIP dağıtımı, Azure Işlevleri için önerilen dağıtım teknolojisidir.
 
-### <a name="docker-container"></a>Docker container
+### <a name="docker-container"></a>Docker kapsayıcısı
 
-You can deploy a Linux container image that contains your function app.
+İşlev uygulamanızı içeren bir Linux kapsayıcı görüntüsü dağıtabilirsiniz.
 
->__How to use it:__ Create a Linux function app in the Premium or Dedicated plan and specify which container image to run from. You can do this in two ways:
+>__Nasıl kullanılır:__ Premium veya adanmış planda bir Linux işlev uygulaması oluşturun ve hangi kapsayıcı görüntüsünün çalıştırılacağını belirtin. Bunu iki şekilde yapabilirsiniz:
 >
->* Create a Linux function app on an Azure App Service plan in the Azure portal. For **Publish**, select **Docker Image**, and then configure the container. Enter the location where the image is hosted.
->* Create a Linux function app on an App Service plan by using the Azure CLI. To learn how, see [Create a function on Linux by using a custom image](functions-create-function-linux-custom-image.md#create-a-premium-plan).
+>* Azure portal bir Azure App Service planında bir Linux işlev uygulaması oluşturun. **Yayımla**Için **Docker görüntüsü**' nü seçin ve kapsayıcıyı yapılandırın. Resmin barındırıldığı konumu girin.
+>* Azure CLı kullanarak App Service planında bir Linux işlev uygulaması oluşturun. Nasıl yapılacağını öğrenmek için bkz. [özel bir görüntü kullanarak Linux üzerinde Işlev oluşturma](functions-create-function-linux-custom-image.md#create-a-premium-plan).
 >
->To deploy to an existing app by using a custom container, in [Azure Functions Core Tools](functions-run-local.md), use the [`func deploy`](functions-run-local.md#publish) command.
+>Özel bir kapsayıcı kullanarak mevcut bir uygulamaya dağıtmak için, [Azure Functions Core Tools](functions-run-local.md) [`func deploy`](functions-run-local.md#publish) komutunu kullanın.
 
->__When to use it:__ Use the Docker container option when you need more control over the Linux environment where your function app runs. This deployment mechanism is available only for Functions running on Linux.
+>__Ne zaman kullanılır:__ İşlev uygulamanızın çalıştırıldığı Linux ortamı üzerinde daha fazla denetime ihtiyacınız olduğunda Docker kapsayıcı seçeneğini kullanın. Bu dağıtım mekanizması yalnızca Linux üzerinde çalışan Işlevler için kullanılabilir.
 
-### <a name="web-deploy-msdeploy"></a>Web Deploy (MSDeploy)
+### <a name="web-deploy-msdeploy"></a>Web Dağıtımı (MSDeploy)
 
-Web Deploy packages and deploys your Windows applications to any IIS server, including your function apps running on Windows in Azure.
+Web Dağıtımı paketler ve Windows uygulamalarınızı Azure 'da Windows üzerinde çalışan işlev uygulamalarınız da dahil olmak üzere herhangi bir IIS sunucusuna dağıtır.
 
->__How to use it:__ Use [Visual Studio tools for Azure Functions](functions-create-your-first-function-visual-studio.md). Clear the **Run from package file (recommended)** check box.
+>__Nasıl kullanılır:__ [Azure işlevleri Için Visual Studio Araçları](functions-create-your-first-function-visual-studio.md)'nı kullanın. Paket dosyasından **Çalıştır (önerilir)** onay kutusunu temizleyin.
 >
->You can also download [Web Deploy 3.6](https://www.iis.net/downloads/microsoft/web-deploy) and call `MSDeploy.exe` directly.
+>Ayrıca, [Web Dağıtımı 3,6](https://www.iis.net/downloads/microsoft/web-deploy) indirebilir ve doğrudan `MSDeploy.exe` çağırabilirsiniz.
 
->__When to use it:__ Web Deploy is supported and has no issues, but the preferred mechanism is [zip deploy with Run From Package enabled](#zip-deploy). To learn more, see the [Visual Studio development guide](functions-develop-vs.md#publish-to-azure).
+>__Ne zaman kullanılır:__ Web Dağıtımı desteklenir ve sorun yoktur, ancak tercih edilen mekanizma, [paketten Çalıştır özelliği etkinken ZIP dağıtmaktır](#zip-deploy). Daha fazla bilgi için bkz. [Visual Studio geliştirme Kılavuzu](functions-develop-vs.md#publish-to-azure).
 
 ### <a name="source-control"></a>Kaynak denetimi
 
-Use source control to connect your function app to a Git repository. An update to code in that repository triggers deployment. For more information, see the [Kudu Wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
+İşlev uygulamanızı bir git deposuna bağlamak için kaynak denetimi kullanın. Bu depodaki koda yönelik bir güncelleştirme dağıtımı tetikler. Daha fazla bilgi için bkz. [kudu wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 
->__How to use it:__ Use Deployment Center in the Functions area of the portal to set up publishing from source control. For more information, see [Continuous deployment for Azure Functions](functions-continuous-deployment.md).
+>__Nasıl kullanılır:__ Kaynak denetiminden yayımlamayı ayarlamak için portalın Işlevler alanında Dağıtım Merkezi ' ni kullanın. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md).
 
->__When to use it:__ Using source control is the best practice for teams that collaborate on their function apps. Source control is a good deployment option that enables more sophisticated deployment pipelines.
+>__Ne zaman kullanılır:__ Kaynak denetimini kullanmak, işlev uygulamalarında işbirliği yapan takımlar için en iyi uygulamadır. Kaynak denetimi, daha karmaşık dağıtım işlem hatlarını sağlayan iyi bir dağıtım seçeneğidir.
 
 ### <a name="local-git"></a>Yerel Git
 
-You can use local Git to push code from your local machine to Azure Functions by using Git.
+Yerel bir git 'i kullanarak yerel makinenizden Azure Işlevlerine kod göndererek git 'i kullanabilirsiniz.
 
->__How to use it:__ Follow the instructions in [Local Git deployment to Azure App Service](../app-service/deploy-local-git.md).
+>__Nasıl kullanılır:__ [Azure App Service Için yerel git dağıtımı](../app-service/deploy-local-git.md)'ndaki yönergeleri izleyin.
 
->__When to use it:__ In general, we recommend that you use a different deployment method. When you publish from local Git, you must [manually sync triggers](#trigger-syncing).
+>__Ne zaman kullanılır:__ Genel olarak, farklı bir dağıtım yöntemi kullanmanızı öneririz. Yerel git 'ten yayımladığınızda, [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing)gerekir.
 
-### <a name="cloud-sync"></a>Cloud sync
+### <a name="cloud-sync"></a>Bulut eşitleme
 
-Use cloud sync to sync your content from Dropbox and OneDrive to Azure Functions.
+İçeriğinizi Dropbox ve OneDrive 'dan Azure Işlevlerine eşitlemek için bulut eşitlemesi kullanın.
 
->__How to use it:__ Follow the instructions in [Sync content from a cloud folder](../app-service/deploy-content-sync.md).
+>__Nasıl kullanılır:__ [Bir bulut klasöründen Içerik eşitleme](../app-service/deploy-content-sync.md)bölümündeki yönergeleri izleyin.
 
->__When to use it:__ In general, we recommend other deployment methods. When you publish by using cloud sync, you must [manually sync triggers](#trigger-syncing).
+>__Ne zaman kullanılır:__ Genel olarak, diğer dağıtım yöntemlerini öneririz. Bulut eşitlemesini kullanarak yayımladığınızda, [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing)gerekir.
 
 ### <a name="ftp"></a>FTP
 
-You can use FTP to directly transfer files to Azure Functions.
+FTP 'yi kullanarak doğrudan Azure Işlevlerine dosya aktarabilirsiniz.
 
->__How to use it:__ Follow the instructions in [Deploy content by using FTP/s](../app-service/deploy-ftp.md).
+>__Nasıl kullanılır:__ [FTP/s kullanarak Içerik dağıtma](../app-service/deploy-ftp.md)' daki yönergeleri izleyin.
 
->__When to use it:__ In general, we recommend other deployment methods. When you publish by using FTP, you must [manually sync triggers](#trigger-syncing).
+>__Ne zaman kullanılır:__ Genel olarak, diğer dağıtım yöntemlerini öneririz. FTP kullanarak yayımladığınızda, [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing)gerekir.
 
-### <a name="portal-editing"></a>Portal editing
+### <a name="portal-editing"></a>Portal düzenlemesi
 
-In the portal-based editor, you can directly edit the files that are in your function app (essentially deploying every time you save your changes).
+Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan düzenleyebilirsiniz (aslında yaptığınız değişiklikleri her kaydedişinizde dağıtım yapabilirsiniz).
 
->__How to use it:__ To be able to edit your functions in the Azure portal, you must have [created your functions in the portal](functions-create-first-azure-function.md). To preserve a single source of truth, using any other deployment method makes your function read-only and prevents continued portal editing. To return to a state in which you can edit your files in the Azure portal, you can manually turn the edit mode back to `Read/Write` and remove any deployment-related application settings (like `WEBSITE_RUN_FROM_PACKAGE`). 
+>__Nasıl kullanılır:__ Azure portal işlevlerinizi düzenleyebilmek için, [işlevlerinizi portalda oluşturmuş](functions-create-first-azure-function.md)olmanız gerekir. Tek bir gerçeği kaynağını korumak için, başka bir dağıtım yöntemi kullanmak, işlevinizi salt okunurdur ve Portal düzenlemesini devam ettirmesini önler. Azure portal dosyalarınızı düzenleyebileceğiniz bir duruma geri dönmek için, düzenleme modunu el ile `Read/Write` olarak döndürebilir ve dağıtıma ilişkin tüm uygulama ayarlarını (`WEBSITE_RUN_FROM_PACKAGE`gibi) kaldırabilirsiniz. 
 
->__When to use it:__ The portal is a good way to get started with Azure Functions. For more intense development work, we recommend that you use one of the following client tools:
+>__Ne zaman kullanılır:__ Portal, Azure Işlevleri 'ni kullanmaya başlamak için iyi bir yoldur. Daha yoğun bir geliştirme çalışması için aşağıdaki istemci araçlarından birini kullanmanızı öneririz:
 >
 >* [Visual Studio Code](functions-create-first-function-vs-code.md)
->* [Azure Functions Core Tools (command line)](functions-run-local.md)
+>* [Azure Functions Core Tools (komut satırı)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
-The following table shows the operating systems and languages that support portal editing:
+Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve diller gösterilmektedir:
 
-| | Windows Consumption | Windows Premium | Windows Dedicated | Linux Consumption | Linux Premium | Linux Dedicated |
+| | Windows tüketimi | Windows Premium | Windows ayrılmış | Linux tüketimi | Linux Premium | Linux adanmış |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
-| C# Script |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| C#SCRIPT |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
 | JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Önizleme) | | | | | | |
-| PowerShell (Preview) |✔|✔|✔| | | |
-| TypeScript (Node.js) | | | | | | |
+| PowerShell (Önizleme) |✔|✔|✔| | | |
+| TypeScript (node. js) | | | | | | |
 
-<sup>*</sup> Portal editing is enabled only for HTTP and Timer triggers for Functions on Linux using Premium and dedicated plans.
+<sup>*</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik HTTP ve Zamanlayıcı Tetikleyicileri için etkindir.
 
 ## <a name="deployment-slots"></a>Dağıtım yuvaları
 
-When you deploy your function app to Azure, you can deploy to a separate deployment slot instead of directly to production. For more information on deployment slots, see the [Azure Functions Deployment Slots](../app-service/deploy-staging-slots.md) documentation for details.
+İşlev uygulamanızı Azure 'a dağıttığınızda, doğrudan üretime eklemek yerine ayrı bir dağıtım yuvasına dağıtım yapabilirsiniz. Dağıtım yuvaları hakkında daha fazla bilgi için bkz. Ayrıntılar için [Azure Işlevleri dağıtım yuvaları](../app-service/deploy-staging-slots.md) belgeleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Read these articles to learn more about deploying your function apps: 
+İşlev uygulamalarınızı dağıtma hakkında daha fazla bilgi edinmek için şu makaleleri okuyun: 
 
 + [Azure İşlevleri için sürekli dağıtım](functions-continuous-deployment.md)
-+ [Continuous delivery by using Azure DevOps](functions-how-to-azure-devops.md)
-+ [Zip deployments for Azure Functions](deployment-zip-push.md)
-+ [Run your Azure Functions from a package file](run-functions-from-deployment-package.md)
-+ [Automate resource deployment for your function app in Azure Functions](functions-infrastructure-as-code.md)
++ [Azure DevOps kullanarak sürekli teslim](functions-how-to-azure-devops.md)
++ [Azure Işlevleri için ZIP dağıtımları](deployment-zip-push.md)
++ [Azure Işlevlerinizi bir paket dosyasından çalıştırın](run-functions-from-deployment-package.md)
++ [Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme](functions-infrastructure-as-code.md)

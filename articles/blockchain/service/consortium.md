@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service consortium
-description: Overview of how Azure Blockchain service implements consortium blockchain networks.
+title: Azure blok zinciri hizmeti Consortium
+description: Azure blok zinciri hizmeti 'nin konsorsiyum blok zinciri ağlarını nasıl uyguladığı hakkında genel bakış.
 ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
@@ -11,72 +11,72 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455749"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service consortium
+# <a name="azure-blockchain-service-consortium"></a>Azure blok zinciri hizmeti Consortium
 
-Using Azure Blockchain Service, you can create private consortium blockchain networks where each blockchain network can be limited to specific participants in the network. Only participants in the private consortium blockchain network can view and interact with the blockchain. Consortium networks in Azure Blockchain Service can contain two types of member participant roles:
+Azure blok zinciri hizmeti 'ni kullanarak, her bir blok zinciri ağının ağdaki belirli katılımcılarla sınırlı olabilecek özel konsorsiyum blok ağları oluşturabilirsiniz. Yalnızca özel konsorsiyum blok zinciri ağındaki katılımcılar, blok zincirini görüntüleyebilir ve bunlarla etkileşime geçebilir. Azure blok zinciri hizmeti 'nde bulunan konsorsiyum ağları, iki tür üye katılımcı rolü içerebilir:
 
-* **Administrator** - Privileged participants who can take consortium management actions and can participate in blockchain transactions.
+* Konsorsiyumun yönetim eylemlerini gerçekleştirebileceği ve blok zinciri işlemlerine katılabilen, **yönetici** ayrıcalıklı katılımcılar.
 
-* **User** -  Participants who cannot take any consortium management action but can participate in blockchain transactions.
+* **Kullanıcı** katılımcıları, herhangi bir konsorsiyum yönetim eylemi alamaz ancak blok zinciri işlemlerine katılabilir.
 
-Consortium networks can be a mix of participant roles and can have an arbitrary number of each role type. There must be at least one administrator.
+Konsorsiyum ağları katılımcı rollerinin bir karışımı olabilir ve rastgele sayıda rol türüne sahip olabilir. En az bir yönetici olması gerekir.
 
-The following diagram shows a consortium network with multiple participants:
+Aşağıdaki diyagramda birden çok katılımcı içeren bir konsorsiyum ağı gösterilmektedir:
 
-![Private consortium network diagram](./media/consortium/network-diagram.png)
+![Özel konsorsiyum ağ diyagramı](./media/consortium/network-diagram.png)
 
-With consortium management in Azure Blockchain Service, you can manage participants in the consortium network. Management of the consortium is based on the consensus model of the network. In the current preview release, Azure Blockchain Service provides a centralized consensus model for consortium management. Any privileged participant with an administer role can take consortium management actions, such as adding or removing participants from a network.
+Azure blok zinciri hizmeti 'nde konsorsiyum yönetimi ile, konsorsiyum ağı 'ndaki katılımcıları yönetebilirsiniz. Konsorsiyumun yönetimi, ağın konsensus modelini temel alır. Geçerli önizleme sürümünde Azure blok zinciri hizmeti, konsorsiyum yönetimi için merkezi bir konsensus modeli sağlar. Bir yönetim rolü olan tüm ayrıcalıklı katılımcılar, bir ağdan katılımcı ekleme veya kaldırma gibi bir konsorsiyum yönetim eylemi gerçekleştirebilir.
 
 ## <a name="roles"></a>Roller
 
-Participants in a consortium can be individuals or organizations and can be assigned a user role or an administrator role. The following table lists the high-level differences between the two roles:
+Bir konsorsiyumun katılımcıları bireyler veya kuruluşlar olabilir ve bir kullanıcı rolü ya da yönetici rolü atanabilir. Aşağıdaki tabloda, iki rol arasındaki üst düzey farklılıklar listelenmektedir:
 
-| Eylem | User role | Administrator role
+| Eylem | Kullanıcı rolü | Yönetici rolü
 |--------|:----:|:------------:|
-| Create new member | Yes | Yes |
-| Invite new members | Hayır | Yes |
-| Set or change member participant role | Hayır | Yes |
-| Change member display name | Only for own member | Only for own member |
-| Remove members | Only for own member | Yes |
-| Participate in blockchain transactions | Yes | Yes |
+| Yeni üye Oluştur | Evet | Evet |
+| Yeni üyeler davet et | Hayır | Evet |
+| Üye katılımcı rolünü ayarlama veya değiştirme | Hayır | Evet |
+| Üye görünen adını değiştir | Yalnızca kendi üyesi için | Yalnızca kendi üyesi için |
+| Üyeleri kaldır | Yalnızca kendi üyesi için | Evet |
+| Blok zinciri işlemlerine katılın | Evet | Evet |
 
-### <a name="user-role"></a>User role
+### <a name="user-role"></a>Kullanıcı rolü
 
-Users are consortium participants with no administrator capabilities. They cannot participate in managing members related to the consortium. Users can change their member display name and can remove themselves from a consortium.
+Kullanıcılar, yönetici özelliği olmayan konsorsiyum katılımcıları. Bu kişiler, konsorsiyumyla ilgili üyelerin yönetilmesine katılamaz. Kullanıcılar, üye görünen adlarını değiştirebilir ve kendilerini bir konsorsiyumdan kaldırabilir.
 
 ### <a name="administrator"></a>Yönetici
 
-An administrator can manage members within the consortium. An administrator can invite members, remove members, or update members roles within the consortium.
-There must always be at least one administrator within a consortium. The last administrator must specify another participant as an administrator role before leaving a consortium.
+Bir yönetici, konsorsiyumun içindeki üyeleri yönetebilir. Bir yönetici, konsorsiyumun içinde üye davet edebilir, üye kaldırabilir veya üye rollerini güncelleştirebilir.
+Bir konsorsiyumun içinde her zaman en az bir yönetici olması gerekir. Son yöneticinin bir konsorsiyumdan çıkmadan önce yönetici rolü olarak başka bir katılımcı belirtmesi gerekir.
 
-## <a name="managing-members"></a>Managing members
+## <a name="managing-members"></a>Üyeleri yönetme
 
-Only administrators can invite other participants to the consortium. Administrators invite participants using their Azure subscription ID.
+Yalnızca yöneticiler diğer katılımcıları konsorsiya davet edebilir. Yöneticiler Azure abonelik KIMLIKLERINI kullanarak katılımcıları davet edebilir.
 
-Once invited, participants can join the blockchain consortium by deploying a new member in Azure Blockchain Service. To view and join the invited consortium, you must specify the same Azure subscription ID used in the invite by the network administrator.
+Davet edildikten sonra katılımcılar, Azure blok zinciri hizmeti 'nde yeni bir üye dağıtarak blok zinciri konsorsiyumunun katılılabilmesi için kullanılabilir. Davet eden Konsorsiyumu görüntülemek ve katmak için, ağ yöneticisi tarafından yapılan davette kullanılan Azure abonelik KIMLIĞINI belirtmeniz gerekir.
 
-Administrators can remove any participant from the consortium, including other administrators. Members can only remove themselves from a consortium.
+Yöneticiler, diğer yöneticiler dahil olmak üzere konsorsiyumdan herhangi bir katılımcıyı kaldırabilir. Üyeler kendilerini bir konsorsiyumun içinden kaldırabilir.
 
-## <a name="consortium-management-smart-contract"></a>Consortium management smart contract
+## <a name="consortium-management-smart-contract"></a>Konsorsiyum yönetimi akıllı sözleşmesi
 
-Consortium management in Azure Blockchain Service is done via consortium management smart contracts. The smart contracts are automatically deployed to your nodes when you deploy a new blockchain member.
+Azure blok zinciri hizmeti 'nde konsorsiyum yönetimi, konsorsiyum yönetimi akıllı sözleşmeleri aracılığıyla yapılır. Yeni bir blok zinciri üyesi dağıttığınızda akıllı sözleşmeler düğümlere otomatik olarak dağıtılır.
 
-The address of the root consortium management smart contract can be viewed in the Azure portal. The **RootContract address** is in blockchain member's overview section.
+Kök Consortium yönetimi akıllı sözleşmesinin adresi Azure portal görüntülenebilir. **Rootcontract adresi** blok zinciri üyesinin genel bakış bölümünde bulunur.
 
-![RootContract address](./media/consortium/rootcontract-address.png)
+![RootContract adresi](./media/consortium/rootcontract-address.png)
 
-You can interact with the consortium management smart contract using the consortium management [PowerShell module](manage-consortium-powershell.md), Azure portal, or directly through the smart contract using the Azure Blockchain Service generated Ethereum account.
+Consortium Management [PowerShell modülünü](manage-consortium-powershell.md), Azure Portal veya doğrudan akıllı sözleşme aracılığıyla Azure blok zinciri hizmeti tarafından oluşturulan Ethereum hesabını kullanarak, konsorsiyum yönetimi akıllı anlaşmayla etkileşime geçebilirsiniz.
 
-## <a name="ethereum-account"></a>Ethereum account
+## <a name="ethereum-account"></a>Ethereum hesabı
 
-When a member is created, an Ethereum account key is created. Azure Blockchain Service uses the key to create transactions related to consortium management. The Ethereum account key is managed by Azure Blockchain Service automatically.
+Bir üye oluşturulduğunda, bir Ethereum hesap anahtarı oluşturulur. Azure blok zinciri hizmeti, konsorsiyum yönetimiyle ilgili işlemler oluşturmak için anahtarı kullanır. Ethereum hesap anahtarı, Azure blok zinciri hizmeti tarafından otomatik olarak yönetilir.
 
-The member account can be viewed in the Azure portal. The member account is in blockchain member's overview section.
+Üye hesabı Azure portal görüntülenebilir. Üye hesabı blok zinciri üyesinin genel bakış bölümünde bulunur.
 
-![Member account](./media/consortium/member-account.png)
+![Üye hesabı](./media/consortium/member-account.png)
 
-You can reset your Ethereum account by clicking on your member account and entering a new password. Both the Ethereum account address and the password will be reset.  
+Üye hesabınıza tıklayıp yeni bir parola girerek, Ethereum hesabınızı sıfırlayabilirsiniz. Ethereum hesap adresi ve parola sıfırlanır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Consortium management actions can be accessed through PowerShell. For more information, see [Manage consortium members in Azure Blockchain Service using PowerShell](manage-consortium-powershell.md).
+Konsorsiyum yönetim eylemlerine PowerShell aracılığıyla erişilebilir. Daha fazla bilgi için bkz. [PowerShell kullanarak Azure blok zinciri hizmeti 'nde konsorsiyum üyelerini yönetme](manage-consortium-powershell.md).

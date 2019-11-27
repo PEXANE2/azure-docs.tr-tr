@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 11/26/2019
 ms.locfileid: "74171625"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısındaki eylemler
@@ -61,7 +61,7 @@ Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirm
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Eylem | HTTP üst bilgi adı | Değer
+Eylem | HTTP üst bilgi adı | Value
 -------|------------------|------
 Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
@@ -73,7 +73,7 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Eylem | HTTP üst bilgi adı | Değer
+Eylem | HTTP üst bilgi adı | Value
 -------|------------------|------
 Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
@@ -87,7 +87,7 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 Alan | Açıklama 
 ------|------------
-Tür | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
+Type | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
 Protokol | Match Isteği, HTTP, HTTPS.
 Ana Bilgisayar Adı | İsteğin yeniden yönlendirilmesini istediğiniz ana bilgisayar adını seçin. Gelen ana bilgisayarı korumak için boş bırakın.
 Yol | Yeniden Yönlendirmede kullanılacak yolu tanımlayın. Gelen yolu korumak için boş bırakın.  

@@ -1,6 +1,6 @@
 ---
-title: Use Python for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use Python manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: Azure Data Lake Storage 2. & ACL 'Leri için Python kullanma (Önizleme)
+description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizin ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için Python kullanın.
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -8,48 +8,48 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a4aebd27e5f71680610ff8cc9ba211dedfe41219
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a65e8b2c5fbcdd4f6df0f8f39b24fa97b8deeca3
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485113"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534425"
 ---
-# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Python for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. & ACL 'Leri için Python kullanma (Önizleme)
 
-This article shows you how to use Python to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+Bu makalede hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için Python 'un nasıl kullanılacağı gösterilmektedir. 
 
 > [!IMPORTANT]
-> The Azure Data Lake Storage client library for Python is currently in public preview.
+> Python için Azure Data Lake Storage istemci kitaplığı şu anda genel önizlemededir.
 
-[Package (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/) | [Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)
+[Paket (Python paket dizini)](https://pypi.org/project/azure-storage-file-datalake/) | [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [geri bildirim verme](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 
-## <a name="set-up-your-project"></a>Set up your project
+## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-Install the Azure Data Lake Storage client library for Python by using [pip](https://pypi.org/project/pip/).
+[PIP](https://pypi.org/project/pip/)'Yi kullanarak Python için Azure Data Lake Storage istemci kitaplığı 'nı kullanın.
 
 ```
 pip install azure-storage-file-datalake --pre
 ```
 
-Add these import statements to the top of your code file.
+Bu import deyimlerini, kod dosyanızın en üstüne ekleyin.
 
 ```python
 import os, uuid, sys
 from azure.storage.filedatalake import DataLakeServiceClient
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>Hesaba Bağlan
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+Bu makaledeki kod parçacıklarını kullanmak için depolama hesabını temsil eden bir **DataLakeServiceClient** örneği oluşturmanız gerekir. Bir tane almanın en kolay yolu, hesap anahtarı kullanmaktır. 
 
-This example uses an account key to create a **DataLakeServiceClient** instance that represents the storage account. 
+Bu örnek, depolama hesabını temsil eden bir **DataLakeServiceClient** örneği oluşturmak için bir hesap anahtarı kullanır. 
 
 ```python
 try:  
@@ -62,15 +62,15 @@ except Exception as e:
     print(e)
 ```
  
-- Replace the `storage_account_name` placeholder value with the name of your storage account.
+- `storage_account_name` yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-- Replace the `storage-account-key` placeholder value with your storage account access key.
+- `storage-account-key` yer tutucu değerini depolama hesabı erişim anahtarınızla değiştirin.
 
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
 
-A file system acts as a container for your files. You can create one by calling the **FileSystemDataLakeServiceClient.create_file_system** method.
+Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. **FileSystemDataLakeServiceClient. create_file_system** yöntemini çağırarak bir tane oluşturabilirsiniz.
 
-This example creates a file system named `my-file-system`.
+Bu örnek `my-file-system`adlı bir dosya sistemi oluşturur.
 
 ```python
 def create_file_system():
@@ -86,9 +86,9 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-Create a directory reference by calling the **FileSystemClient.create_directory** method.
+**Filesystemclient. create_directory** yöntemini çağırarak bir dizin başvurusu oluşturun.
 
-This example adds a directory named `my-directory` to a file system. 
+Bu örnek, `my-directory` adlı bir dizini bir dosya sistemine ekler. 
 
 ```python
 def create_directory():
@@ -99,11 +99,11 @@ def create_directory():
      print(e) 
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
 
-Rename or move a directory by calling the **DataLakeDirectoryClient.rename_directory** method. Pass the path of the desired directory a parameter. 
+**Datalakedirectoryclient. rename_directory** yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+Bu örnek, `my-subdirectory-renamed`adı için bir alt dizini yeniden adlandırır.
 
 ```python
 def rename_directory():
@@ -121,9 +121,9 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Bir dizini silme
 
-Delete a directory by calling the **DataLakeDirectoryClient.delete_directory** method.
+**Datalakedirectoryclient. delete_directory** yöntemini çağırarak bir dizini silin.
 
-This example deletes a directory named `my-directory`.  
+Bu örnek, `my-directory`adlı bir dizini siler.  
 
 ```python
 def delete_directory():
@@ -136,11 +136,11 @@ def delete_directory():
      print(e) 
 ```
 
-## <a name="manage-directory-permissions"></a>Manage directory permissions
+## <a name="manage-directory-permissions"></a>Dizin izinlerini yönetme
 
-Get the access control list (ACL) of a directory by calling the **DataLakeDirectoryClient.get_access_control** method and set the ACL by calling the **DataLakeDirectoryClient.set_access_control** method.
+**Datalakedirectoryclient. get_access_control** yöntemini çağırarak ve **datalakedirectoryclient. SET_ACCESS_CONTROL** metodunu çağırarak ACL 'yi ayarlayarak bir dizinin ERIŞIM denetim listesini (ACL) alın.
 
-This example gets and sets the ACL of a directory named `my-directory`. The string `rwxr-xrw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+Bu örnek `my-directory`adlı bir dizinin ACL 'sini alır ve ayarlar. `rwxr-xrw-` dize, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```python
 def manage_directory_permissions():
@@ -165,11 +165,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory 
+## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme 
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.append_data** method. Make sure to complete the upload by calling the **DataLakeFileClient.flush_data** method.
+İlk olarak, **Datalakefileclient** sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. **Datalakefileclient. append_data** yöntemini çağırarak bir dosyayı karşıya yükleyin. **Datalakefileclient. flush_data** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-This example uploads a text file to a directory named `my-directory`.   
+Bu örnek, `my-directory`adlı bir dizine bir metin dosyası yükler.   
 
 ```python
 def upload_file_to_directory():
@@ -192,11 +192,11 @@ def upload_file_to_directory():
       print(e) 
 ```
 
-## <a name="manage-file-permissions"></a>Manage file permissions
+## <a name="manage-file-permissions"></a>Dosya izinlerini yönetme
 
-Get the access control list (ACL) of a file by calling the **DataLakeFileClient.get_access_control** method and set the ACL by calling the **DataLakeFileClient.set_access_control** method.
+**Datalakefileclient. get_access_control** yöntemini çağırarak ve **datalakefileclient. SET_ACCESS_CONTROL** metodunu çağırarak ACL 'yi ayarlayarak bir dosyanın ERIŞIM denetim listesini (ACL) alın.
 
-This example gets and sets the ACL of a file named `my-file.txt`. The string `rwxr-xrw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+Bu örnek `my-file.txt`adlı bir dosyanın ACL 'sini alır ve ayarlar. `rwxr-xrw-` dize, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```python
 def manage_file_permissions():
@@ -223,9 +223,9 @@ def manage_file_permissions():
      print(e) 
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory 
+## <a name="download-from-a-directory"></a>Bir dizinden indir 
 
-Open a local file for writing. Then, create a **DataLakeFileClient** instance that represents the file that you want to download. Call the **DataLakeFileClient.read_file** to read bytes from the file and then write those bytes to the local file. 
+Yazmak için yerel bir dosya açın. Ardından, indirmek istediğiniz dosyayı temsil eden bir **Datalakefileclient** örneği oluşturun. Dosyadaki baytları okumak için **Datalakefileclient. read_file** çağırın ve ardından bu baytları yerel dosyaya yazın. 
 
 ```python
 def download_file_from_directory():
@@ -249,9 +249,9 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-List directory contents by calling the **FileSystemClient.get_paths** method, and then enumerating through the results.
+**Filesystemclient. get_paths** yöntemini çağırarak ve sonra sonuçlar arasında sıralama yaparak dizin içeriğini listeleyin.
 
-This example, prints the path of each subdirectory and file that is located in a directory named `my-directory`.
+Bu örnek, `my-directory`adlı bir dizinde bulunan her bir alt dizinin ve dosyanın yolunu yazdırır.
 
 ```python
 def list_directory_contents():
@@ -270,9 +270,9 @@ def list_directory_contents():
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
-* [Package (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/)
+* [API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
+* [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-file-datalake/)
 * [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)
+* [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-python/issues)

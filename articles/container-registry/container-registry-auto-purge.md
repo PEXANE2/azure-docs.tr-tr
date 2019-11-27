@@ -1,6 +1,6 @@
 ---
-title: Purge tags and manifests
-description: Use a purge command to delete multiple tags and manifests from an Azure container registry based on age and a tag filter, and optionally schedule purge operations.
+title: Etiketleri ve bildirimleri temizleme
+description: Bir Azure Container Registry 'den yaş ve etiket filtresine göre birden çok etiketi ve bildirimi silmek için bir temizleme komutu kullanın ve isteğe bağlı olarak temizleme işlemlerini zamanlayın.
 ms.topic: article
 ms.date: 08/14/2019
 ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
@@ -10,51 +10,51 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456473"
 ---
-# <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatically purge images from an Azure container registry
+# <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
 
-When you use an Azure container registry as part of a development workflow, the registry can quickly fill up with images or other artifacts that aren't needed after a short period. You might want to delete all tags that are older than a certain duration or match a specified name filter. To delete multiple artifacts quickly, this article introduces the `acr purge` command you can run as an on-demand or [scheduled](container-registry-tasks-scheduled.md) ACR Task. 
+Bir Azure Container Registry 'yi bir geliştirme iş akışının parçası olarak kullandığınızda, kayıt defteri kısa bir süre sonra gerek duyulmayan görüntülerle veya diğer yapıtlarla hızlıca doldurabilir. Belirli bir süreden eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek isteyebilirsiniz. Birden çok yapıyı hızlıca silmek için bu makalede, isteğe bağlı veya [Zamanlanmış](container-registry-tasks-scheduled.md) bir ACR görevi olarak çalıştırabileceğiniz `acr purge` komutu tanıtılmaktadır. 
 
-The `acr purge` command is currently distributed in a public container image (`mcr.microsoft.com/acr/acr-cli:0.1`), built from source code in the [acr-cli](https://github.com/Azure/acr-cli) repo in GitHub.
+`acr purge` komutu şu anda, GitHub 'daki [ACR-CLI](https://github.com/Azure/acr-cli) deposunda bulunan kaynak kodundan oluşturulan ortak bir kapsayıcı görüntüsünde (`mcr.microsoft.com/acr/acr-cli:0.1`) dağıtılır.
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the ACR task examples in this article. If you'd like to use it locally, version 2.0.69 or later is required. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install]. 
+Bu makalede ACR görev örneklerini çalıştırmak için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.69 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install]. 
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 > [!WARNING]
-> Use the `acr purge` command with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not purge untagged images. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
+> `acr purge` komutunu dikkatli bir şekilde kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa etiketlenmemiş görüntüleri temizleyemezsiniz. Etiketlenmemiş görüntüleri silmek, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün.
 
-If you want to delete single image tags or manifests using Azure CLI commands, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+Azure CLı komutlarını kullanarak tek resim etiketlerini veya bildirimleri silmek istiyorsanız, bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
 
-## <a name="use-the-purge-command"></a>Use the purge command
+## <a name="use-the-purge-command"></a>Temizle komutunu kullanma
 
-The `acr purge` container command deletes images by tag in a repository that match a name filter and that are older than a specified duration. By default, only tag references are deleted, not the underlying [manifests](container-registry-concepts.md#manifest) and layer data. The command has an option to also delete manifests. 
+`acr purge` Container komutu, bir ad filtresiyle eşleşen ve belirtilen süreden eski olan bir depodaki resimleri etikete göre siler. Varsayılan olarak, temel alınan [Bildirimler](container-registry-concepts.md#manifest) ve katman verileri değil yalnızca etiket başvuruları silinir. Komutun Ayrıca bildirimleri silme seçeneği vardır. 
 
 > [!NOTE]
-> `acr purge` does not delete an image tag or repository where the `write-enabled` attribute is set to `false`. For information, see [Lock a container image in an Azure container registry](container-registry-image-lock.md).
+> `acr purge`, `write-enabled` özniteliğinin `false`olarak ayarlandığı bir resim etiketini veya depoyu silmez. Bilgi için bkz. [Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme](container-registry-image-lock.md).
 
-`acr purge` is designed to run as a container command in an [ACR Task](container-registry-tasks-overview.md), so that it authenticates automatically with the registry where the task runs. 
+`acr purge`, bir [ACR görevinde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır, böylece görevin çalıştığı kayıt defteriyle otomatik olarak kimlik doğrulaması yapılır. 
 
-At a minimum, specify the following when you run `acr purge`:
+`acr purge`çalıştırdığınızda, en azından aşağıdakileri belirtin:
 
-* `--registry` - The Azure container registry where you run the command. 
-* `--filter` - A repository and a *regular expression* to filter tags in the repository. Examples: `--filter "hello-world:.*"` matches all tags in the `hello-world` repository, and `--filter "hello-world:^1.*"` matches tags beginning with `1`. Pass multiple `--filter` parameters to purge multiple repositories.
-* `--ago` - A Go-style [duration string](https://golang.org/pkg/time/) to indicate a duration beyond which images are deleted. The duration consists of a sequence of one or more decimal numbers, each with a unit suffix. Valid time units include "d" for days, "h" for hours, and "m" for minutes. For example, `--ago 2d3h6m` selects all filtered images last modified more than 2 days, 3 hours, and 6 minutes ago, and `--ago 1.5h` selects images last modified more than 1.5 hours ago.
+* `--registry`-komutu çalıştırdığınız Azure Container kayıt defteri. 
+* `--filter`-depodaki etiketleri filtrelemek için bir depo ve *normal bir ifade* . Örnekler: `--filter "hello-world:.*"` `hello-world` deposundaki tüm etiketlerle eşleşir ve `1`ile başlayan etiketlerle eşleşir `--filter "hello-world:^1.*"`. Birden çok depo temizlemek için birden çok `--filter` parametresi geçirin.
+* `--ago`, resimlerin silindiği süreyi belirtmek için bir go stili [Duration dizesi](https://golang.org/pkg/time/) . Süre, her biri birim sonekine sahip bir veya daha fazla ondalık sayı dizisinden oluşur. Geçerli zaman birimleri günler için "d", saat için "h", dakika için "m" içerir. Örneğin, `--ago 2d3h6m` en son 2 gün, 3 saat ve 6 dakika önce değiştirilen tüm filtrelenmiş resimleri seçer ve `--ago 1.5h` en son 1,5 saat önce değiştirilmiş resimleri seçer.
 
-`acr purge` supports several optional parameters. The following two are used in examples in this article:
+`acr purge`, isteğe bağlı çeşitli parametreleri destekler. Aşağıdaki ikisi bu makaledeki örneklerde kullanılmıştır:
 
-* `--untagged` - Specifies that manifests that don't have associated tags (*untagged manifests*) are deleted.
-* `--dry-run` - Specifies that no data is deleted, but the output is the same as if the command is run without this flag. This parameter is useful for testing a purge command to make sure it does not inadvertently delete data you intend to preserve.
+* `--untagged`-ilişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan bildirimlerin silineceğini belirtir.
+* `--dry-run`, hiçbir veri silinmediğini belirtir, ancak çıktı komutun bu bayrak olmadan çalıştırıldığı ile aynı olur. Bu parametre, korumak istediğiniz verileri yanlışlıkla silmediğinden emin olmak için bir temizleme komutunun test edilmesi için yararlıdır.
 
-For additional parameters, run `acr purge --help`. 
+Ek parametreler için `acr purge --help`çalıştırın. 
 
-`acr purge` supports other features of ACR Tasks commands including [run variables](container-registry-tasks-reference-yaml.md#run-variables) and [task run logs](container-registry-tasks-overview.md#view-task-logs) that are streamed and also saved for later retrieval.
+`acr purge`, akan [çalıştırma](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-overview.md#view-task-logs) de dahil olmak üzere ACR görevleri komutlarının diğer özelliklerini destekler ve daha sonra alımı için de kaydedilir.
 
-### <a name="run-in-an-on-demand-task"></a>Run in an on-demand task
+### <a name="run-in-an-on-demand-task"></a>İsteğe bağlı bir görevde Çalıştır
 
-The following example uses the [az acr run][az-acr-run] command to run the `acr purge` command on-demand. This example deletes all image tags and manifests in the `hello-world` repository in *myregistry* that were modified more than 1 day ago. The container command is passed using an environment variable. The task runs without a source context.
+Aşağıdaki örnek, `acr purge` komutunu talep üzerine çalıştırmak için [az ACR Run][az-acr-run] komutunu kullanır. Bu örnek, 1 günden daha önce değiştirilmiş olan *myregistry* içindeki `hello-world` deposundaki tüm resim etiketlerini ve bildirimlerini siler. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev, kaynak bağlamı olmadan çalışır.
 
-In this and the following examples, the registry where the `acr purge` command runs is specified using the `$Registry` alias, which indicates the registry that runs the task.
+Bu ve aşağıdaki örneklerde, `acr purge` komutunun çalıştırıldığı kayıt defteri, görevi çalıştıran kayıt defterini gösteren `$Registry` diğer adı kullanılarak belirtilir.
 
 ```azurecli
 # Environment variable for container command line
@@ -67,9 +67,9 @@ az acr run \
   /dev/null
 ```
 
-### <a name="run-in-a-scheduled-task"></a>Run in a scheduled task
+### <a name="run-in-a-scheduled-task"></a>Zamanlanmış bir görevde Çalıştır
 
-The following example uses the [az acr task create][az-acr-task-create] command to create a daily [scheduled ACR task](container-registry-tasks-scheduled.md). The task purges tags modified more than 7 days ago in the `hello-world` repository. The container command is passed using an environment variable. The task runs without a source context.
+Aşağıdaki örnek, günlük [Zamanlanmış ACR görevi](container-registry-tasks-scheduled.md)oluşturmak için [az ACR Task Create][az-acr-task-create] komutunu kullanır. Görev, `hello-world` deposunda 7 günden daha önce olan etiketleri temizler. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev, kaynak bağlamı olmadan çalışır.
 
 ```azurecli
 # Environment variable for container command line
@@ -83,13 +83,13 @@ az acr task create --name purgeTask \
   --context /dev/null
 ```
 
-Run the [az acr task show][az-acr-task-show] command to see that the timer trigger is configured.
+Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Task Show][az-acr-task-show] komutunu çalıştırın.
 
-### <a name="purge-large-numbers-of-tags-and-manifests"></a>Purge large numbers of tags and manifests
+### <a name="purge-large-numbers-of-tags-and-manifests"></a>Büyük sayıda etiketi ve bildirimi Temizleme
 
-Purging a large number of tags and manifests could take several minutes or longer. To purge thousands of tags and manifests, the command might need to run longer than the default timeout time of 600 seconds for an on-demand task, or 3600 seconds for a scheduled task. If the timeout time is exceeded, only a subset of tags and manifests are deleted. To ensure that a large-scale purge is complete, pass the `--timeout` parameter to increase the value. 
+Çok sayıda etiket ve bildirim temizleme birkaç dakika veya daha uzun sürebilir. Binlerce etiket ve bildirimi temizlemek için, komutun isteğe bağlı bir görev için varsayılan zaman aşımı süresi olan 600 saniye veya zamanlanan bir görevde 3600 saniye daha uzun süre çalışması gerekebilir. Zaman aşımı süresi aşılırsa, etiketlerin ve bildirimlerin yalnızca bir alt kümesi silinir. Büyük ölçekli bir temizleme işleminin tamamlandığından emin olmak için, değeri artırmak için `--timeout` parametresini geçirin. 
 
-For example, the following on-demand task sets a timeout time of 3600 seconds (1 hour):
+Örneğin, aşağıdaki isteğe bağlı görev, 3600 saniyelik bir zaman aşımı süresi (1 saat) ayarlar:
 
 ```azurecli
 # Environment variable for container command line
@@ -103,15 +103,15 @@ az acr run \
   /dev/null
 ```
 
-## <a name="example-scheduled-purge-of-multiple-repositories-in-a-registry"></a>Example: Scheduled purge of multiple repositories in a registry
+## <a name="example-scheduled-purge-of-multiple-repositories-in-a-registry"></a>Örnek: bir kayıt defterinde birden çok depo için zamanlanmış temizleme
 
-This example walks through using `acr purge` to periodically clean up multiple repositories in a registry. For example, you might have a development pipeline that pushes images to the `samples/devimage1` and `samples/devimage2` repositories. You periodically import development images into a production repository for your deployments, so you no longer need the development images. On a weekly basis, you purge the `samples/devimage1` and `samples/devimage2` repositories, in preparation for the coming week's work.
+Bu örnekte, bir kayıt defterinde düzenli olarak birden çok depo temizlemek için `acr purge` kullanımı gösterilmektedir. Örneğin, görüntüleri `samples/devimage1` ve depoları `samples/devimage2` veren bir geliştirme işlem hattına sahip olabilirsiniz. Geliştirme görüntülerini düzenli aralıklarla dağıtımlarınız için bir üretim deposuna aktarırsınız, böylece artık geliştirme görüntülerine gerek kalmaz. Haftalık olarak, `samples/devimage1` ve `samples/devimage2` depoları, gelecek haftaki iş için hazırlık aşamasında temizleyemezsiniz.
 
-### <a name="preview-the-purge"></a>Preview the purge
+### <a name="preview-the-purge"></a>Temizlemeyi önizleyin
 
-Before deleting data, we recommend running an on-demand purge task using the `--dry-run` parameter. This option allows you to see the tags and manifests that the command will purge, without removing any data. 
+Verileri silmeden önce, `--dry-run` parametresini kullanarak isteğe bağlı bir temizleme görevi çalıştırmayı öneririz. Bu seçenek, herhangi bir veriyi kaldırmadan komutun temizlendirilecektir etiketleri ve bildirimleri görmenizi sağlar. 
 
-In the following example, the filter in each repository selects all tags. The `--ago 0d` parameter matches images of all ages in the repositories that match the filters. Modify the selection criteria as needed for your scenario. The `--untagged` parameter indicates to delete manifests in addition to tags. The container command is passed to the [az acr run][az-acr-run] command using an environment variable.
+Aşağıdaki örnekte, her bir depodaki filtre tüm etiketleri seçer. `--ago 0d` parametresi, filtrelerle eşleşen depolardaki tüm yaştaki görüntülerle eşleşir. Seçim ölçütlerini senaryonuz için gereken şekilde değiştirin. `--untagged` parametresi, etiketlerin yanı sıra bildirimlerin silineceğini gösterir. Kapsayıcı komutu, bir ortam değişkeni kullanılarak [az ACR Run][az-acr-run] komutuna geçirilir.
 
 ```azurecli
 # Environment variable for container command line
@@ -126,7 +126,7 @@ az acr run \
   /dev/null
 ```
 
-Review the command output to see the tags and manifests that match the selection parameters. Because the command is run with `--dry-run`, no data is deleted.
+Seçim parametreleriyle eşleşen etiketleri ve bildirimleri görmek için komut çıkışını gözden geçirin. Komut `--dry-run`ile çalıştırıldığı için hiçbir veri silinmez.
 
 Örnek çıktı:
 
@@ -150,9 +150,9 @@ Number of deleted manifests: 4
 [...]
 ```
 
-### <a name="schedule-the-purge"></a>Schedule the purge
+### <a name="schedule-the-purge"></a>Temizlemeyi zamanla
 
-After you've verified the dry run, create a scheduled task to automate the purge. The following example schedules a weekly task on Sunday at 1:00 UTC to run the previous purge command:
+Kuru çalıştırmayı doğruladıktan sonra, temizleme işlemini otomatikleştirmek için zamanlanmış bir görev oluşturun. Aşağıdaki örnek, önceki temizleme komutunu çalıştırmak için 1:00 UTC 'de Pazar günü bir haftalık görevi zamanlar:
 
 ```azurecli
 # Environment variable for container command line
@@ -168,13 +168,13 @@ az acr task create --name weeklyPurgeTask \
   --context /dev/null
 ```
 
-Run the [az acr task show][az-acr-task-show] command to see that the timer trigger is configured.
+Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Task Show][az-acr-task-show] komutunu çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn about other options to [delete image data](container-registry-delete.md) in Azure Container Registry.
+Azure Container Registry [resim verilerini silmeye](container-registry-delete.md) yönelik diğer seçenekler hakkında bilgi edinin.
 
-For more information about image storage, see [Container image storage in Azure Container Registry](container-registry-storage.md).
+Görüntü depolama hakkında daha fazla bilgi için bkz. [Azure Container Registry Container Image Storage](container-registry-storage.md).
 
 <!-- LINKS - External -->
 

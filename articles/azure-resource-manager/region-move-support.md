@@ -146,7 +146,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights)
 > - [Microsoft. Token](#microsofttoken)
 > - [Microsoft. Virtualmachineımages](#microsoftvirtualmachineimages)
-> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [Microsoft. VisualStudio](#microsoftvisualstudio)
 > - [Microsoft. Vmwarechoparlör basit](#microsoftvmwarecloudsimple)
 > - [Microsoft. Web](#microsoftweb)
 > - [Microsoft. Windowsıot](#microsoftwindowsiot)
@@ -346,7 +346,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | storageaccounts | Yes |  
+> | storageaccounts | Evet |  
 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
@@ -375,7 +375,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sharedvmımages | Hayır | 
 > | sharedvmımages/sürümler | Hayır | 
 > | anlık görüntüler | Hayır | 
-> | virtualmachines | Yes | 
+> | virtualmachines | Evet | 
 > | virtualmachines/uzantıları | Hayır | 
 > | virtualmachinescalesets | Hayır | 
 
@@ -418,7 +418,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | uygulamalar | Hayır | 
+> | uygulama | Hayır | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. Cortanaanalizi
 
@@ -579,7 +579,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | elaun havuzları | Hayır | 
 > | elaun havuzları/ıothubkiracılar | Hayır | 
-> | ıothubs | Yes | 
+> | ıothubs | Evet | 
 > | provisioningservices | Hayır | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
@@ -705,7 +705,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | notificationrules | Hayır | 
 > | scheduledqueryrules |  Hayır | 
 > | Web testleri |  Hayır | 
-> | kitabı |  Hayır |  
+> | Kitabı |  Hayır |  
 
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
@@ -901,9 +901,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | localnetworkgateway 'ler |  Hayır | 
 > | natgateway 'ler |  Hayır | 
 > | networkıntpolicies ilkeleri |  Hayır | 
-> | NetworkInterfaces | Yes | 
+> | NetworkInterfaces | Evet | 
 > | networkprofiles | Hayır | 
-> | networksecuritygroups | Yes | 
+> | networksecuritygroups | Evet | 
 > | networkwatchers |  Hayır |  
 > | networkwatchers/connectionmonitörleri |  Hayır | 
 > | networkwatchers/uzunluler |  Hayır | 
@@ -1023,7 +1023,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | uygulamalar |  Hayır | 
+> | uygulama |  Hayır | 
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
@@ -1069,7 +1069,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | uygulamalar | Hayır | 
+> | uygulama | Hayır | 
 > | leriniz |  Hayır | 
 > | kümeler/uygulamalar | Hayır | 
 > | kapsayıcı grupları | Hayır | 
@@ -1084,7 +1084,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | uygulamalar |  Hayır | 
+> | uygulama |  Hayır | 
 > | kapsayıcı grupları | Hayır | 
 > | geçidinin |  Hayır | 
 > | Mamak |  Hayır | 
@@ -1106,7 +1106,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | appliancedefinitions | Hayır | 
 > | yaptı | Hayır | 
 > | applicationdefinitions | Hayır | 
-> | uygulamalar | Hayır | 
+> | uygulama | Hayır | 
 > | jistekleri | Hayır | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -1115,12 +1115,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | ınstancepools | Hayır | 
-> | ManagedInstances | Yes | 
-> | ManagedInstances/veritabanları | Yes | 
-> | sunucular | Yes | 
-> | sunucular/veritabanları | Yes | 
-> | sunucular/elaun havuzları | Yes | 
-> | virtualkümeler | Yes | 
+> | ManagedInstances | Evet | 
+> | ManagedInstances/veritabanları | Evet | 
+> | sunucular | Evet | 
+> | sunucular/veritabanları | Evet | 
+> | sunucular/elaun havuzları | Evet | 
+> | virtualkümeler | Evet | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 

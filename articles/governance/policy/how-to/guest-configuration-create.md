@@ -1,6 +1,6 @@
 ---
-title: How to create Guest Configuration policies
-description: Learn how to create an Azure Policy Guest Configuration policy for Windows or Linux VMs with Azure PowerShell.
+title: Konuk yapılandırma ilkeleri oluşturma
+description: Azure PowerShell ile Windows veya Linux VM 'Leri için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 11/21/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2e653d07e783425afdcd71f9d58e3569692faaf9
@@ -10,70 +10,70 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407049"
 ---
-# <a name="how-to-create-guest-configuration-policies"></a>How to create Guest Configuration policies
+# <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
-Guest Configuration uses a [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) resource module to create the configuration for auditing of the Azure machines. The DSC configuration defines the condition that the machine should be in. If the evaluation of the configuration fails, the Policy effect **auditIfNotExists** is triggered and the machine is considered **non-compliant**.
+Konuk yapılandırması, Azure makinelerini denetlemeye yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması, makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
 
-[Azure Policy Guest Configuration](../concepts/guest-configuration.md) can only be used to audit settings inside machines. Remediation of settings inside machines isn't yet available.
+[Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md) , yalnızca makineler içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz kullanılamamaktadır.
 
-Use the following actions to create your own configuration for validating the state of an Azure machine.
+Bir Azure makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 
 > [!IMPORTANT]
-> Custom policies with Guest Configuration is a Preview feature.
+> Konuk yapılandırması olan özel ilkeler bir önizleme özelliğidir.
 
-## <a name="add-the-guestconfiguration-resource-module"></a>Add the GuestConfiguration resource module
+## <a name="add-the-guestconfiguration-resource-module"></a>GuestConfiguration kaynak modülünü ekleme
 
-To create a Guest Configuration policy, the resource module must be added. This resource module can be used with locally installed PowerShell, with [Azure Cloud Shell](https://shell.azure.com), or with the [Azure PowerShell Core Docker image](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+Konuk yapılandırma ilkesi oluşturmak için kaynak modülünün eklenmesi gerekir. Bu kaynak modülü, [Azure Cloud Shell](https://shell.azure.com)ile veya [Azure PowerShell Core Docker görüntüsüyle](https://hub.docker.com/r/azuresdk/azure-powershell-core)yerel olarak yüklü PowerShell ile kullanılabilir.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
-The Guest Configuration resource module requires the following software:
+Konuk yapılandırması kaynak modülü için aşağıdaki yazılımlar gereklidir:
 
 - PowerShell. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/scripting/install/installing-powershell) izleyin.
-- Azure PowerShell 1.5.0 or higher. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
+- Azure PowerShell 1.5.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
 
-### <a name="install-the-module"></a>Install the module
+### <a name="install-the-module"></a>Modülü yükler
 
-Guest Configuration uses the **GuestConfiguration** resource module for creating DSC configurations and publishing them to Azure Policy:
+Konuk yapılandırması, DSC yapılandırmaları oluşturmak ve bunları Azure Ilkesine yayımlamak için **guestconfiguration** kaynak modülünü kullanır:
 
-1. From a PowerShell prompt, run the following command:
+1. Bir PowerShell isteminden aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    # Install the Guest Configuration DSC resource module from PowerShell Gallery
    Install-Module -Name GuestConfiguration
    ```
 
-1. Validate that the module has been imported:
+1. Modülün içeri aktarıldığını doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported GuestConfiguration module
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Create custom Guest Configuration configuration and resources
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Özel Konuk yapılandırma yapılandırması ve kaynakları oluşturma
 
-The first step to creating a custom policy for Guest Configuration is to create the DSC configuration. For an overview of DSC concepts and terminology, see [PowerShell DSC Overview](/powershell/scripting/dsc/overview/overview).
+Konuk yapılandırması için özel bir ilke oluşturmanın ilk adımı DSC yapılandırmasını oluşturmaktır. DSC kavramlarına ve terimlere genel bakış için bkz. [POWERSHELL DSC 'ye genel bakış](/powershell/scripting/dsc/overview/overview).
 
-If your configuration only requires resources that are builtin with the Guest Configuration agent install, then you only need to author a configuration MOF file. If you need to run additional script, then you'll need to author a custom resource module.
+Yapılandırmanızda yalnızca Konuk yapılandırma Aracısı yüklemesine sahip olan kaynaklar gerekiyorsa, yalnızca bir yapılandırma MOF dosyası yazmanız gerekir. Ek betik çalıştırmanız gerekiyorsa, özel bir kaynak modülü yazmanız gerekir.
 
-### <a name="requirements-for-guest-configuration-custom-resources"></a>Requirements for Guest Configuration custom resources
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Konuk yapılandırması özel kaynakları için gereksinimler
 
-When Guest Configuration audits a machine, it first runs `Test-TargetResource` to determine if it is in the correct state. The boolean value returned by the function determines if the Azure Resource Manager status for the Guest Assignment should be Compliant/Not-Compliant. If the boolean is `$false` for any resource in the configuration, then the provider will run `Get-TargetResource`. If the boolean is `$true` then `Get-TargetResource` isn't called.
+Konuk yapılandırması bir makineyi denetleyemiyorsa, önce doğru durumda olup olmadığını anlamak için `Test-TargetResource` çalışır. İşlevin döndürdüğü Boole değeri, Konuk atamasının Azure Resource Manager durumunun uyumlu olup olmadığını belirler. Boolean, yapılandırmadaki herhangi bir kaynak için `$false`, sağlayıcı `Get-TargetResource`çalışacaktır. Boolean `$true`, `Get-TargetResource` çağrılmaz.
 
-The function `Get-TargetResource` has special requirements for Guest Configuration that haven't been needed for Windows Desired State Configuration.
+İşlev `Get-TargetResource`, Windows Istenen durum yapılandırması için gerekli olmayan konuk yapılandırması için özel gereksinimlere sahiptir.
 
-- The hashtable that is returned must include a property named **Reasons**.
-- The Reasons property must be an array.
-- Each item in the array should be a hashtable with keys named **Code** and **Phrase**.
+- Döndürülen Hashtable, **nedenler**adlı bir özellik içermelidir.
+- Nedenler özelliği bir dizi olmalıdır.
+- Dizideki her öğe, **kod** ve **tümcecik**adlı anahtarlar içeren bir Hashtable olmalıdır.
 
-The Reasons property is used by the service to standardize how information is presented when a machine is out of compliance. You can think of each item in Reasons as a "reason" that the resource isn't compliant. The property is an array because a resource could be out of compliance for more than one reason.
+Nedenler özelliği, bir makine uyumsuz olduğunda bilgilerin nasıl sunulduğunu standartlaştırmak üzere hizmet tarafından kullanılır. Kaynağın uyumlu olmadığı bir "Neden" gibi nedenlerle her bir öğeyi düşünebilirsiniz. Bir kaynak bir nedenle uyumsuz olabileceğinden, bu özellik bir dizidir.
 
-The properties **Code** and **Phrase** are expected by the service. When authoring a custom resource, set the text (typically stdout) you would like to show as the reason the resource isn't compliant as the value for **Phrase**. **Code** has specific formatting requirements so reporting can clearly display information about the resource that was used to perform the audit. This solution makes Guest Configuration extensible. Any command could be run to audit a machine as long as the output can be captured and returned as a string value for the **Phrase** property.
+Hizmet tarafından Özellikler **kodu** ve **tümceciği** bekleniyor. Özel bir kaynak yazarken, **ifadenin**değeri olarak kaynağın uyumlu olmadığı bir nedenden dolayı göstermek istediğiniz metni (genellikle stdout) ayarlayın. **Kodun** belirli biçimlendirme gereksinimleri vardır, böylece raporlama, denetimi gerçekleştirmek için kullanılan kaynakla ilgili bilgileri açıkça görüntüleyebilir. Bu çözüm, Konuk yapılandırmasını Genişletilebilir hale getirir. Çıkış yakalanıp **tümcecik** özelliği için bir dize değeri olarak döndürülemedikçe, bir makineyi denetlemek için herhangi bir komut çalıştırılabilir.
 
-- **Code** (string): The name of the resource, repeated, and then a short name with no spaces as an identifier for the reason. These three values should be colon-delimited with no spaces.
-  - An example would be `registry:registry:keynotpresent`
-- **Phrase** (string): Human-readable text to explain why the setting isn't compliant.
-  - An example would be `The registry key $key is not present on the machine.`
+- **Kod** (dize): kaynağın adı, tekrarlanması ve bir tanımlayıcı olarak boşluk olmayan kısa bir ad. Bu üç değer, boşluk olmadan iki nokta ile sınırlandırılmalıdır.
+  - Bir örnek `registry:registry:keynotpresent`
+- **Tümcecik** (dize): ayarın neden uyumlu olmadığını açıklamak için okunabilir metin.
+  - Bir örnek `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -86,15 +86,15 @@ return @{
 }
 ```
 
-#### <a name="scaffolding-a-guest-configuration-project"></a>Scaffolding a Guest Configuration project
+#### <a name="scaffolding-a-guest-configuration-project"></a>Konuk yapılandırma projesi yapı iskelesi
 
-For developers who would like to accelerate the process of getting started and working from sample code, a community project named **Guest Configuration Project** exists as a template for the [Plaster](https://github.com/powershell/plaster) PowerShell module. This tool can be used to scaffold a project including a working configuration and sample resource, and a set of [Pester](https://github.com/pester/pester) tests to validate the project. The template also includes task runners for Visual Studio Code to automate building and validating the Guest Configuration package. For more information, see the GitHub project [Guest Configuration Project](https://github.com/microsoft/guestconfigurationproject).
+Örnek koddan çalışmaya başlama ve çalışma sürecini hızlandırmak isteyen geliştiriciler için, **Konuk yapılandırma projesi** adlı bir topluluk projesi [plaster](https://github.com/powershell/plaster) PowerShell modülü için şablon olarak mevcuttur. Bu araç, çalışan bir yapılandırma ve örnek kaynak dahil olmak üzere bir projeyi ve projeyi doğrulamak için bir dizi [pester](https://github.com/pester/pester) testini de kapsayan bir projeyi dolandırarak kullanılabilir. Şablon, Konuk yapılandırma paketini oluşturma ve doğrulamaya otomatik hale getirmek için Visual Studio Code görev çalıştıranlar de içerir. Daha fazla bilgi için bkz. GitHub proje [Konuk yapılandırma projesi](https://github.com/microsoft/guestconfigurationproject).
 
-### <a name="custom-guest-configuration-configuration-on-linux"></a>Custom Guest Configuration configuration on Linux
+### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux üzerinde özel konuk yapılandırma yapılandırması
 
-The DSC configuration for Guest Configuration on Linux uses the `ChefInSpecResource` resource to provide the engine the name of the [Chef InSpec](https://www.chef.io/inspec/) definition. **Name** is the only required resource property.
+Linux üzerinde Konuk yapılandırması için DSC yapılandırması, altyapıyı [Chef InSpec](https://www.chef.io/inspec/) tanımının adını sağlamak için `ChefInSpecResource` kaynağını kullanır. **Ad** , tek gerekli kaynak özelliğidir.
 
-The following example creates a configuration named **baseline**, imports the **GuestConfiguration** resource module, and uses the `ChefInSpecResource` resource set the name of the InSpec definition to **linux-patch-baseline**:
+Aşağıdaki örnek **temel**olarak adlandırılan bir yapılandırma oluşturur, **guestconfiguration** kaynak modülünü içeri aktarır ve InSpec tanımının adını **Linux-patch-Baseline**olarak ayarla `ChefInSpecResource` kaynağını kullanır:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -112,13 +112,13 @@ Configuration baseline
 baseline
 ```
 
-For more information, see [Write, Compile, and Apply a Configuration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
-### <a name="custom-guest-configuration-configuration-on-windows"></a>Custom Guest Configuration configuration on Windows
+### <a name="custom-guest-configuration-configuration-on-windows"></a>Windows 'da özel konuk yapılandırma yapılandırması
 
-The DSC configuration for Azure Policy Guest Configuration is used by the Guest Configuration agent only, it doesn't conflict with Windows PowerShell Desired State Configuration.
+Azure Ilke Konuk yapılandırması için DSC yapılandırması yalnızca Konuk yapılandırma Aracısı tarafından kullanılır; Windows PowerShell Istenen durum yapılandırması ile çakışmaz.
 
-The following example creates a configuration named **AuditBitLocker**, imports the **GuestConfiguration** resource module, and uses the `Service` resource to audit for a running service:
+Aşağıdaki örnek, **Denetimbitlocker**adlı bir yapılandırma oluşturur, **guestconfiguration** kaynak modülünü içeri aktarır ve çalışan bir hizmeti denetlemek için `Service` kaynağını kullanır:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -138,59 +138,59 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-For more information, see [Write, Compile, and Apply a Configuration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
-## <a name="create-guest-configuration-custom-policy-package"></a>Create Guest Configuration custom policy package
+## <a name="create-guest-configuration-custom-policy-package"></a>Konuk yapılandırması özel ilke paketi oluştur
 
-Once the MOF is compiled, the supporting files must be packaged together. The completed package is used by Guest Configuration to create the Azure Policy definitions. The package consists of:
+MOF derlendikten sonra destekleyici dosyaların birlikte paketlenmesi gerekir. Tamamlanmış paket, Azure Ilke tanımlarını oluşturmak için konuk yapılandırması tarafından kullanılır. Paket aşağıdakilerden oluşur:
 
-- The compiled DSC configuration as a MOF
-- Modules folder
-  - GuestConfiguration module
-  - DscNativeResources module
-  - (Linux) A folder with the Chef InSpec definition and additional content
-  - (Windows) DSC resource modules that aren't built in
+- MOF olarak derlenen DSC yapılandırması
+- Modüller klasörü
+  - GuestConfiguration modülü
+  - Dscnativeresonakl modülü
+  - 'Un Chef InSpec tanımına ve ek içeriğe sahip bir klasör
+  - Pencerelerin Yerleşik olmayan DSC kaynak modülleri
 
-The `New-GuestConfigurationPackage` cmdlet creates the package. The following format is used for creating a custom package:
+`New-GuestConfigurationPackage` cmdlet 'i paketi oluşturur. Özel bir paket oluşturmak için aşağıdaki biçim kullanılır:
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}' `
     -Path '{OutputFolder}' -Verbose
 ```
 
-Parameters of the `New-GuestConfigurationPackage` cmdlet:
+`New-GuestConfigurationPackage` cmdlet 'inin parametreleri:
 
-- **Name**: Guest Configuration package name.
-- **Configuration**: Compiled DSC configuration document full path.
-- **Path**: Output folder path. This parameter is optional. If not specified, the package is created in current directory.
-- **ChefProfilePath**: Full path to InSpec profile. This parameter is supported only when creating content to audit Linux.
+- **Ad**: Konuk yapılandırma paketi adı.
+- **Yapılandırma**: derlenen DSC yapılandırma belgesi tam yolu.
+- **Yol**: çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
+- **Chefprofilepath**: InSpec profile tam yolu. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
 
-The completed package must be stored in a location that is accessible by the managed virtual machines. Examples include GitHub repositories, an Azure Repo, or Azure storage. If you prefer to not make the package public, you can include a [SAS token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in the URL.
-You could also implement [service endpoint](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) for machines in a private network, although this configuration applies only to accessing the package and not communicating with the service.
+Tamamlanmış paketin, yönetilen sanal makineler tarafından erişilebilen bir konumda depolanması gerekir. GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ekleyebilirsiniz.
+Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
 
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>Working with secrets in Guest Configuration packages
+### <a name="working-with-secrets-in-guest-configuration-packages"></a>Konuk yapılandırma paketlerinde gizli dosyalarla çalışma
 
-In Azure Policy Guest Configuration, the optimal way to manage secrets used at run time is to store them in Azure Key Vault. This design is implemented within custom DSC resources.
+Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizli dizileri yönetmenin en iyi yolu Azure Key Vault ' de depoındır. Bu tasarım özel DSC kaynakları içinde uygulanır.
 
-1. First, create a user-assigned managed identity in Azure.
+1. İlk olarak, Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
-   The identity is used by machines to access secrets stored in Key Vault. For detailed steps, see [Create, list or delete a user-assigned managed identity using Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+   Kimlik, Key Vault ' de depolanan gizli dizileri erişmek için makineler tarafından kullanılır. Ayrıntılı adımlar için, bkz. [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-1. Create a Key Vault instance.
+1. Key Vault bir örnek oluşturun.
 
-   For detailed steps, see [Set and retrieve a secret - PowerShell](../../../key-vault/quick-create-powershell.md).
-   Assign permissions to the instance to give the user-assigned identity access to secrets stored in Key Vault. For detailed steps, see [Set and retrieve a secret - .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+   Ayrıntılı adımlar için bkz. [gizli anahtar PowerShell 'ı ayarlama ve alma](../../../key-vault/quick-create-powershell.md).
+   Kullanıcı tarafından atanan kimlik erişimine Key Vault ' de depolanan gizli dizileri sağlamak için örneğe izinler atayın. Ayrıntılı adımlar için bkz. [gizli dizi ayarlama ve alma](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-1. Assign the user-assigned identity to your machine.
+1. Kullanıcı tarafından atanan kimliği makinenize atayın.
 
-   For detailed steps, see [Configure managed identities for Azure resources on an Azure VM using PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-   At scale, assign this identity using Azure Resource Manager via Azure Policy. For detailed steps, see [Configure managed identities for Azure resources on an Azure VM using a template](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+   Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+   Ölçek ' te, Azure Ilkesi aracılığıyla Azure Resource Manager kullanarak bu kimliği atayın. Ayrıntılı adımlar için bkz. [bir şablon kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
-1. Finally, within your custom resource use the client ID generated above to access Key Vault using the token available from the machine.
+1. Son olarak, özel kaynağınız içinde, makinede bulunan belirteci kullanarak Key Vault erişmek için yukarıda oluşturulan istemci KIMLIĞINI kullanın.
 
-   The `client_id` and url to the Key Vault instance can be passed to the resource as [properties](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) so the resource won't need to be updated for multiple environments or if the values need to be changed.
+   Key Vault örneğinin `client_id` ve URL 'si kaynağa [Özellikler](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) olarak geçirilebilir, böylece kaynağın birden çok ortamda güncellenmesi gerekmez veya değerler değiştirilmeleri gerekir.
 
-The following code sample can be used in a custom resource to retrieve secrets from Key Vault using a user-assigned identity. The value returned from the request to Key Vault is plain text. As a best practice, store it within a credential object.
+Aşağıdaki kod örneği, Kullanıcı tarafından atanan bir kimlik kullanılarak Key Vault parolaları almak için özel bir kaynakta kullanılabilir. İstekten Key Vault döndürülen değer düz bir metindir. En iyi uygulama olarak, bir kimlik bilgisi nesnesi içinde saklayın.
 
 ```azurepowershell-interactive
 # the following values should be input as properties
@@ -204,33 +204,33 @@ $value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Me
 $credential = New-Object System.Management.Automation.PSCredential('secret',$value)
 ```
 
-## <a name="test-a-guest-configuration-package"></a>Test a Guest Configuration package
+## <a name="test-a-guest-configuration-package"></a>Konuk yapılandırma paketini test etme
 
-After creating the Configuration package but before publishing it to Azure, you can test the functionality of the package from your workstation or CI/CD environment. The GuestConfiguration module includes a cmdlet `Test-GuestConfigurationPackage` that loads the same agent in your development environment as is used inside Azure machines. Using this solution, you can perform integration testing locally before releasing to billed test/QA/production environments.
+Yapılandırma paketini oluşturduktan ve Azure 'a yayımlamadan önce, iş istasyonunuzdan veya CI/CD ortamınızdan paketin işlevlerini test edebilirsiniz. GuestConfiguration modülü, Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı yükleyen bir cmdlet `Test-GuestConfigurationPackage` içerir. Bu çözümü kullanarak, faturalandırılan test/QA/üretim ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
 ```
 
-Parameters of the `Test-GuestConfigurationPackage` cmdlet:
+`Test-GuestConfigurationPackage` cmdlet 'inin parametreleri:
 
-- **Name**: Guest Configuration Policy name.
-- **Parameter**: Policy parameters provided in hashtable format.
-- **Path**: Full path of the Guest Configuration package.
+- **Ad**: Konuk yapılandırma ilkesi adı.
+- **Parametre**: Hashtable biçiminde belirtilen ilke parametreleri.
+- **Yol**: Konuk yapılandırma paketinin tam yolu.
 
-The cmdlet also supports input from the PowerShell pipeline. Pipe the output of `New-GuestConfigurationPackage` cmdlet to the `Test-GuestConfigurationPackage` cmdlet.
+Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. `New-GuestConfigurationPackage` cmdlet 'inin çıkışını `Test-GuestConfigurationPackage` cmdlet 'ine boru.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-For more information about how to test with parameters, see the section below [Using parameters in custom Guest Configuration policies](#using-parameters-in-custom-guest-configuration-policies).
+Parametrelerle test etme hakkında daha fazla bilgi için, [özel konuk yapılandırma ilkelerindeki parametreleri kullanarak](#using-parameters-in-custom-guest-configuration-policies)aşağıdaki bölüme bakın.
 
-## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Create the Azure Policy definition and initiative deployment files
+## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Ilke tanımı ve girişim dağıtım dosyalarını oluşturma
 
-Once a Guest Configuration custom policy package has been created and uploaded to a location accessible by the machines, create the Guest Configuration policy definition for Azure Policy. The `New-GuestConfigurationPolicy` cmdlet takes a publicly accessible Guest Configuration custom policy package and creates an **auditIfNotExists** and **deployIfNotExists** policy definition. A policy initiative definition that includes both policy definitions is also created.
+Konuk yapılandırması özel ilke paketi oluşturulduktan ve makineler tarafından erişilebilen bir konuma yüklendikten sonra, Azure Ilkesi için konuk yapılandırma ilkesi tanımını oluşturun. `New-GuestConfigurationPolicy` cmdlet 'i, genel olarak erişilebilen bir konuk yapılandırması özel ilke paketini alır ve bir **Auditınotexists** ve **deployifnotexists** ilke tanımı oluşturur. İlke tanımlarının her ikisini de içeren bir ilke girişim tanımı da oluşturulur.
 
-The following example creates the policy and initiative definitions in a specified path from a Guest Configuration custom policy package for Windows and provides a name, description, and version:
+Aşağıdaki örnek, Windows için bir konuk yapılandırması özel ilke paketinden belirtilen yolda ilke ve girişim tanımlarını oluşturur ve bir ad, açıklama ve sürüm sağlar:
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy
@@ -243,33 +243,33 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Parameters of the `New-GuestConfigurationPolicy` cmdlet:
+`New-GuestConfigurationPolicy` cmdlet 'inin parametreleri:
 
-- **ContentUri**: Public http(s) uri of Guest Configuration content package.
-- **DisplayName**: Policy display name.
-- **Description**: Policy description.
-- **Parameter**: Policy parameters provided in hashtable format.
-- **Version**: Policy version.
-- **Path**: Destination path where policy definitions are created.
-- **Platform**: Target platform (Windows/Linux) for Guest Configuration policy and content package.
+- **ContentUri**: Konuk yapılandırması içerik paketinin genel HTTP URI 'si.
+- **DisplayName**: ilke görünen adı.
+- **Açıklama**: ilke açıklaması.
+- **Parametre**: Hashtable biçiminde belirtilen ilke parametreleri.
+- **Sürüm**: ilke sürümü.
+- **Yol**: ilke tanımlarının oluşturulduğu hedef yol.
+- **Platform**: Konuk yapılandırma ilkesi ve içerik paketi için hedef platform (Windows/Linux).
 
-The following files are created by `New-GuestConfigurationPolicy`:
+Aşağıdaki dosyalar `New-GuestConfigurationPolicy`tarafından oluşturulmuştur:
 
-- **auditIfNotExists.json**
-- **deployIfNotExists.json**
-- **Initiative.json**
+- **Auditınotexists. JSON**
+- **deployIfNotExists. JSON**
+- **Girişim. JSON**
 
-The cmdlet output returns an object containing the initiative display name and path of the policy files.
+Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
 
-If you would like to use this command to scaffold a custom policy project, you can make changes to these files. An example would be modifying the 'If' section to evaluate whether a specific Tag is present for machines. For details on creating policies, see [Programmatically create policies](./programmatically-create.md).
+Özel bir ilke projesi için bu komutu kullanmak istiyorsanız, bu dosyalarda değişiklik yapabilirsiniz. Bir örnek, makineler için belirli bir etiketin mevcut olup olmadığını değerlendirmek için ' If ' bölümünü değiştiriyor. İlke oluşturma hakkında ayrıntılı bilgi için bkz. [Program aracılığıyla ilke oluşturma](./programmatically-create.md).
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Using parameters in custom Guest Configuration policies
+### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Özel Konuk yapılandırma ilkelerinde parametreleri kullanma
 
-Guest Configuration supports overriding properties of a Configuration at run time. This feature means that the values in the MOF file in the package don't have to be considered static. The override values are provided through Azure Policy and don't impact how the Configurations are authored or compiled.
+Konuk yapılandırması, çalışma zamanında bir yapılandırmanın özelliklerini geçersiz kılmayı destekler. Bu özellik, paketteki MOF dosyasındaki değerlerin statik olarak değerlendirilmesi gerekmediği anlamına gelir. Geçersiz kılma değerleri Azure Ilkesi aracılığıyla sağlanır ve yapılandırmaların nasıl yazıldığı veya derlendiğini etkilemez.
 
-The cmdlets `New-GuestConfigurationPolicy` and `Test-GuestConfigurationPolicyPackage` include a parameter named **Parameters**. This parameter takes a hashtable definition including all details about each parameter and automatically creates all the required sections of the files used to create each Azure Policy definition.
+Cmdlet 'ler `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **Parametreler**adlı bir parametre içerir. Bu parametre, her bir parametre hakkında tüm ayrıntıları içeren bir Hashtable tanımı alır ve her bir Azure Ilke tanımını oluşturmak için kullanılan dosyaların tüm gerekli bölümlerini otomatik olarak oluşturur.
 
-The following example would create an Azure Policy to audit a service, where the user selects from a list of services at the time of Policy assignment.
+Aşağıdaki örnek, kullanıcının Ilke ataması sırasında bir hizmetler listesinden seçtiği bir hizmeti denetlemek için bir Azure Ilkesi oluşturur.
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -296,7 +296,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-For Linux policies, include the property **AttributesYmlContent** in your configuration and overwrite the values accordingly. The Guest Configuration agent automatically creates the YaML file used by InSpec to store attributes. Aşağıdaki örneğe bakın.
+Linux ilkeleri için, yapılandırmanızda **Attributesymlcontent** özelliğini ekleyin ve değerlerin üzerine yazın. Konuk yapılandırma Aracısı, öznitelikleri depolamak için InSpec tarafından kullanılan YaML dosyasını otomatik olarak oluşturur. Aşağıdaki örneğe bakın.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -313,7 +313,7 @@ Configuration FirewalldEnabled {
 }
 ```
 
-For each additional parameter, add a hashtable to the array. In the policy files, you'll see properties added to the Guest Configuration configurationName that identify the resource type, name, property, and value.
+Her ek parametre için diziye bir Hashtable ekleyin. İlke dosyalarında, Konuk yapılandırması configurationName öğesine eklenen ve kaynak türünü, adı, özelliği ve değeri tanımlayan Özellikler görürsünüz.
 
 ```json
 {
@@ -334,83 +334,83 @@ For each additional parameter, add a hashtable to the array. In the policy files
 }
 ```
 
-## <a name="publish-to-azure-policy"></a>Publish to Azure Policy
+## <a name="publish-to-azure-policy"></a>Azure Ilkesinde Yayımla
 
-The **GuestConfiguration** resource module offers a way to create both policy definitions and the initiative definition in Azure with one step through the `Publish-GuestConfigurationPolicy` cmdlet.
-The cmdlet only has the **Path** parameter that points to the location of the three JSON files created by `New-GuestConfigurationPolicy`.
+**Guestconfiguration** kaynak modülü, Azure 'da `Publish-GuestConfigurationPolicy` cmdlet 'i aracılığıyla tek bir adımla hem ilke tanımlarını hem de girişim tanımını oluşturmak için bir yol sunar.
+Cmdlet 'i yalnızca `New-GuestConfigurationPolicy`tarafından oluşturulan üç JSON dosyasının konumunu işaret eden **Path** parametresine sahiptir.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
 ```
 
-The `Publish-GuestConfigurationPolicy` cmdlet accepts the path from the PowerShell pipeline. This feature means you can create the policy files and publish them in a single set of piped commands.
+`Publish-GuestConfigurationPolicy` cmdlet 'i PowerShell işlem hattının yolunu kabul eder. Bu özellik, ilke dosyalarını oluşturabileceğiniz ve bunları tek bir dizi komut dosyası içinde yayımlayabileceği anlamına gelir.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
 ```
 
-With the policy and initiative definitions created in Azure, the last step is to assign the initiative. See how to assign the initiative with [Portal](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md), and [Azure PowerShell](../assign-policy-powershell.md).
+Azure 'da oluşturulan ilke ve girişim tanımlarıyla, son adım girişimi atayacaktır. Bkz. girişim, [Portal](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md)ve [Azure PowerShell](../assign-policy-powershell.md)nasıl atanır.
 
 > [!IMPORTANT]
-> Guest Configuration policies must **always** be assigned using the initiative that combines the _AuditIfNotExists_ and _DeployIfNotExists_ policies. If only the _AuditIfNotExists_ policy is assigned, the prerequisites aren't deployed and the policy always shows that '0' servers are compliant.
+> Konuk yapılandırma ilkelerine **her zaman** _Auditınotexists_ ve _deployifnotexists_ ilkelerini birleştiren girişim kullanılarak atanmalıdır. Yalnızca _Auditınotexists_ ilkesi atanırsa, Önkoşullar dağıtılır ve ilke her zaman ' 0 ' sunucularının uyumlu olduğunu gösterir.
 
-## <a name="policy-lifecycle"></a>Policy lifecycle
+## <a name="policy-lifecycle"></a>İlke yaşam döngüsü
 
-After you've published a custom Azure Policy using your custom content package, there are two fields that must be updated if you would like to publish a new release.
+Özel içerik paketinizi kullanarak özel bir Azure Ilkesi yayımladıktan sonra, yeni bir sürüm yayınlamak istiyorsanız, güncelleştirilmeleri gereken iki alan vardır.
 
-- **Version**: When you run the `New-GuestConfigurationPolicy` cmdlet, you must specify a version number greater than what is currently published. The property updates the version of the Guest Configuration assignment in the new policy file so the extension will recognize that the package has been updated.
-- **contentHash**: This property is updated automatically by the `New-GuestConfigurationPolicy` cmdlet. It's a hash value of the package created by `New-GuestConfigurationPackage`. The property must be correct for the `.zip` file you publish. If only the **contentUri** property is updated, such as in the case where someone could make a manual change to the Policy definition from the portal, the Extension won't accept the content package.
+- **Sürüm**: `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir. Özelliği, uzantının paketin güncelleştirildiğini tanıması için, yeni ilke dosyasındaki Konuk yapılandırma atamasının sürümünü güncelleştirir.
+- **contentHash**: bu özellik `New-GuestConfigurationPolicy` cmdlet 'i tarafından otomatik olarak güncelleştirilir. Bu, `New-GuestConfigurationPackage`tarafından oluşturulan paketin karma değeridir. Özelliği, yayımladığınız `.zip` dosyası için doğru olmalıdır. Yalnızca **contentUri** özelliği güncelleştirilirse (örneğin, birisi portalın ilke tanımında el ile değişiklik yapabildiği durumlarda), uzantı içerik paketini kabul etmez.
 
-The easiest way to release an updated package is to repeat the process described in this article and provide an updated version number. That process guarantees all properties have been correctly updated.
+Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.
 
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Converting Windows Group Policy content to Azure Policy Guest Configuration
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows grup ilkesi içeriğini Azure Ilke Konuk yapılandırması 'na dönüştürme
 
-Guest Configuration, when auditing Windows machines, is an implementation of the PowerShell Desired State Configuration syntax. The DSC community has published tooling to convert exported Group Policy templates to DSC format. By using this tool together with the Guest Configuration cmdlets described above, you can convert Windows Group Policy content and package/publish it for Azure Policy to audit. For details about using the tool, see the article [Quickstart: Convert Group Policy into DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Once the content has been converted, the steps above to create a package and publish it as Azure Policy will be the same as for any DSC content.
+Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen durum yapılandırması sözdiziminin bir uygulamasıdır. DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı. Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için [hızlı başlangıç: Grup ILKESI DSC 'ye dönüştürme](/powershell/scripting/dsc/quickstarts/gpo-quickstart)makalesine bakın.
+İçerik dönüştürüldükten sonra, bir paket oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olacaktır.
 
-## <a name="optional-signing-guest-configuration-packages"></a>OPTIONAL: Signing Guest Configuration packages
+## <a name="optional-signing-guest-configuration-packages"></a>Isteğe bağlı: Konuk yapılandırma paketleri Imzalanıyor
 
-Guest Configuration custom policies by default use SHA256 hash to validate the policy package hasn't changed from when it was published to when it's read by the server that is being audited.
-Optionally, customers may also use a certificate to sign packages and force the Guest Configuration extension to only allow signed content.
+Konuk yapılandırması özel ilkeleri varsayılan olarak SHA256 karmasını kullanarak ilke paketinin, denetlenen sunucu tarafından okunarak ' de yayınlanma sırasında değiştirildiğini doğrular.
+İsteğe bağlı olarak, müşteriler paketleri imzalamak ve konuk yapılandırma uzantısını yalnızca imzalı içeriğe izin verecek şekilde zorlamak için bir sertifika da kullanabilir.
 
-To enable this scenario, there are two steps you need to complete. Run the cmdlet to sign the content package, and append a tag to the machines that should require code to be signed.
+Bu senaryoyu etkinleştirmek için, gerçekleştirmeniz gereken iki adım vardır. İçerik paketini imzalamak için cmdlet 'ini çalıştırın ve kodun imzalanmasını gerektirecek makinelere bir etiket ekleyin.
 
-To use the Signature Validation feature, run the `Protect-GuestConfigurationPackage` cmdlet to sign the package before it's published. This cmdlet requires a 'Code Signing' certificate.
+Imza doğrulama özelliğini kullanmak için, paketi yayımlanmadan önce imzalamak üzere `Protect-GuestConfigurationPackage` cmdlet 'ini çalıştırın. Bu cmdlet ' kod Imzalama ' sertifikası gerektirir.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert") }
 Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Certificate $Cert -Verbose
 ```
 
-Parameters of the `Protect-GuestConfigurationPackage` cmdlet:
+`Protect-GuestConfigurationPackage` cmdlet 'inin parametreleri:
 
-- **Path**: Full path of the Guest Configuration package.
-- **Certificate**: Code signing certificate to sign the package. This parameter is only supported when signing content for Windows.
-- **PrivateGpgKeyPath**: Private GPG key path. This parameter is only supported when signing content for Linux.
-- **PublicGpgKeyPath**: Public GPG key path. This parameter is only supported when signing content for Linux.
+- **Yol**: Konuk yapılandırma paketinin tam yolu.
+- **Sertifika**: paketi imzalamak için kod imzalama sertifikası. Bu parametre yalnızca Windows için içerik imzalanırken desteklenir.
+- **Privategpgkeypath**: özel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
+- **Publicgpgkeypath**: genel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
 
-GuestConfiguration agent expects the certificate public key to be present in "Trusted Root Certificate Authorities" on Windows machines and in the path `/usr/local/share/ca-certificates/extra` on Linux machines. For the node to verify signed content, install the certificate public key on the machine before applying the custom policy. This process can be done using any technique inside the VM, or by using Azure Policy. An example template is [provided here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
-The Key Vault access policy must allow the Compute resource provider to access certificates during deployments. For detailed steps, see [Set up Key Vault for virtual machines in Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
+GuestConfiguration Aracısı, sertifika ortak anahtarının Windows makinelerde "güvenilen kök sertifika yetkilileri" içinde ve Linux makinelerdeki `/usr/local/share/ca-certificates/extra` yolunda bulunmasını bekler. İmzalanan içeriğin doğrulanması için düğüm için, özel ilkeyi uygulamadan önce makineye ortak anahtarı yükler. Bu işlem, VM içindeki herhangi bir teknik veya Azure Ilkesi kullanılarak gerçekleştirilebilir. Burada örnek bir şablon [verilmiştir](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+Key Vault erişim ilkesi, dağıtım sırasında Işlem Kaynak sağlayıcısının sertifikalara erişmesine izin vermelidir. Ayrıntılı adımlar için bkz. [Azure Resource Manager sanal makineler için Key Vault ayarlama](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
-Following is an example to export the public key from a signing certificate, to import to the machine.
+Aşağıda, bir imzalama sertifikasından ortak anahtarı dışarı aktarmak için makineye aktarmak üzere bir örnek verilmiştir.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-A good reference for creating GPG keys to use with Linux machines is provided by an article on GitHub, [Generating a new GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key).
+Linux makinelerle kullanılmak üzere GPG anahtarları oluşturmaya yönelik iyi bir başvuru, GitHub 'daki bir makale tarafından sağlanır ve [Yeni BIR gpg anahtarı](https://help.github.com/en/articles/generating-a-new-gpg-key)oluşturur.
 
-After your content is published, append a tag with name `GuestConfigPolicyCertificateValidation` and value `enabled` to all virtual machines where code signing should be required. This tag can be delivered at scale using Azure Policy. See the [Apply tag and its default value](../samples/apply-tag-default-value.md) sample. Once this tag is in place, the policy definition generated using the `New-GuestConfigurationPolicy` cmdlet enables the requirement through the Guest Configuration extension.
+İçeriğiniz yayımlandıktan sonra, kod imzasının gerekli olması gereken tüm sanal makinelere ad `GuestConfigPolicyCertificateValidation` ve değer `enabled` içeren bir etiket ekleyin. Bu etiket, Azure Ilkesi kullanılarak ölçeklendirerek teslim edilebilir. [Uygula etiketine ve varsayılan değer](../samples/apply-tag-default-value.md) örneğine bakın. Bu etiket oluşturulduktan sonra, `New-GuestConfigurationPolicy` cmdlet 'i kullanılarak oluşturulan ilke tanımı, Konuk yapılandırma uzantısı aracılığıyla gereksinimi mümkün bir şekilde sunar.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[PREVIEW] Troubleshooting Guest Configuration policy assignments
+## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>ÖNIZLE Konuk yapılandırma ilkesi atamaları sorunlarını giderme
 
-A tool is available in preview to assist in troubleshooting Azure Policy Guest Configuration assignments. The tool is in preview and has been published to the PowerShell Gallery as module name [Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+Azure Ilke Konuk yapılandırması atamaları sorunlarını gidermeye yardımcı olmak için Önizleme sürümünde bir araç sunulmaktadır. Araç önizlemededir ve modül adı [Konuk yapılandırması sorun giderici](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)olarak PowerShell Galerisi yayımlandı.
 
-For more information about the cmdlets in this tool, use the Get-Help command in PowerShell to show the built-in guidance. As the tool is getting frequent updates, that is the best way to get most recent information.
+Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için yerleşik Kılavuzu göstermek üzere PowerShell 'deki Get-Help komutunu kullanın. Araç sık sık güncelleştirmeler alırken bu, en son bilgileri almanın en iyi yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about auditing VMs with [Guest Configuration](../concepts/guest-configuration.md).
-- Understand how to [programmatically create policies](programmatically-create.md).
-- Learn how to [get compliance data](get-compliance-data.md).
+- [Konuk yapılandırması](../concepts/guest-configuration.md)olan VM 'leri denetleme hakkında bilgi edinin.
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](get-compliance-data.md)öğrenin.

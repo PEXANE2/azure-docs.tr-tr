@@ -1,14 +1,14 @@
 ---
-title: Kanada Federal pbmm şema örnek denetimi eşleme
+title: Kanada Federal pbmm şema örnek denetimleri
 description: Kanada Federal pbmm şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 09/04/2019
 ms.topic: sample
-ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039702"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545246"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
@@ -98,9 +98,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -117,9 +117,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve anal
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-12-audit-generation"></a>AU-12 denetim oluşturma
 
@@ -127,9 +127,9 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
@@ -291,9 +291,9 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma

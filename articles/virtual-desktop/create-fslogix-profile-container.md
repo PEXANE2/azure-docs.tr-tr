@@ -1,6 +1,6 @@
 ---
-title: FSLogix profile containers NetApp Windows Virtual Desktop - Azure
-description: How to create an FSLogix profile container using Azure NetApp Files in Windows Virtual Desktop.
+title: FSLogix profil kapsayıcıları NetApp Windows sanal masaüstü-Azure
+description: Windows sanal masaüstündeki Azure NetApp Files kullanarak FSLogix profil kapsayıcısı oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,47 +14,47 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483645"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Create an FSLogix profile container for a host pool using Azure NetApp Files
+# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
-We recommend using FSLogix profile containers as a user profile solution for the [Windows Virtual Desktop service](overview.md). FSLogix profile containers store a complete user profile in a single container and are designed to roam profiles in non-persistent remote computing environments like Windows Virtual Desktop. When you sign in, the container dynamically attaches to the computing environment using a locally supported virtual hard disk (VHD) and Hyper-V virtual hard disk (VHDX). These advanced filter-driver technologies allow the user profile to be immediately available and appear in the system exactly like a local user profile. To learn more about FSLogix profile containers, see [FSLogix profile containers and Azure files](fslogix-containers-azure-files.md).
+FSLogix profil kapsayıcılarını [Windows sanal masaüstü hizmeti](overview.md)için bir kullanıcı profili çözümü olarak kullanmanızı öneririz. FSLogix profil kapsayıcıları, tam bir kullanıcı profilini tek bir kapsayıcıda depolar ve profilleri Windows sanal masaüstü gibi kalıcı olmayan uzak bilgi işlem ortamlarında dolaşımda kullanılmak üzere tasarlanmıştır. Oturum açtığınızda kapsayıcı, yerel olarak desteklenen bir sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanarak bilgi işlem ortamına dinamik olarak eklenir. Bu gelişmiş filtre sürücü teknolojileri, Kullanıcı profilinin hemen kullanılabilir olmasını ve sistemde tam olarak yerel bir kullanıcı profili gibi gösterilmesini sağlar. FSLogix profil kapsayıcıları hakkında daha fazla bilgi edinmek için bkz. [Fslogix profil kapsayıcıları ve Azure dosyaları](fslogix-containers-azure-files.md).
 
-You can create FSLogix profile containers using [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), an easy-to-use Azure native platform service that helps customers quickly and reliably provision enterprise-grade SMB volumes for their Windows Virtual Desktop environments. To learn more about Azure NetApp Files, see [What is Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
+Müşterilerin Windows sanal masaüstü ortamları için kurumsal düzeyde SMB birimleri hızla ve güvenilir bir şekilde sağlamasına yardımcı olan, kullanımı kolay bir Azure yerel platform hizmeti olan [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)kullanarak FSLogix profil kapsayıcıları oluşturabilirsiniz. Azure NetApp Files hakkında daha fazla bilgi edinmek için bkz. [Azure NetApp Files nedir?](../azure-netapp-files/azure-netapp-files-introduction.md)
 
-This guide will show you how to set up an Azure NetApp Files account and create FSLogix profile containers in Windows Virtual Desktop.
+Bu kılavuzda, Windows sanal masaüstü 'nde bir Azure NetApp Files hesabı ayarlama ve FSLogix profil kapsayıcıları oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
-This article assumes you already have [host pools](create-host-pools-azure-marketplace.md) set up and grouped into one or more tenants in your Windows Virtual Desktop environment. To learn how to set up tenants, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) and [our Tech Community blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+Bu makalede, [konak havuzlarınızın](create-host-pools-azure-marketplace.md) zaten Windows sanal masaüstü ortamınızda bir veya daha fazla kiracıda gruplandırıldığı varsayılır. Kiracılar ayarlama hakkında bilgi edinmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md) ve [Tech Community blog gönderimiz](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-The instructions in this guide are specifically for Windows Virtual Desktop users. If you're looking for more general guidance for how to set up Azure NetApp Files and create FSLogix profile containers outside of Windows Virtual Desktop, see the [Set up Azure NetApp Files and create an NFS volume quickstart](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
-
->[!NOTE]
->This article doesn't cover best practices for securing access to the Azure NetApp Files share.
+Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları içindir. Azure NetApp Files ayarlama ve Windows sanal masaüstü dışında FSLogix profil kapsayıcıları oluşturma hakkında daha genel rehberlik arıyorsanız, bkz. Kurulum [Azure NetApp Files ve NFS birimi oluşturma hızlı başlangıç](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
 
 >[!NOTE]
->If you're looking for comparison material about the different FSLogix Profile Container storage options on Azure, see [Storage options for FSLogix profile containers](store-fslogix-profile.md).
+>Bu makale Azure NetApp Files paylaşıma erişimin güvenliğini sağlamaya yönelik en iyi yöntemleri kapsamamaktadır.
+
+>[!NOTE]
+>Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Before you can create an FSLogix profile container for a host pool, you must:
+Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için öncelikle şunları yapmanız gerekir:
 
-- Set up and configure Windows Virtual Desktop
-- Provision a Windows Virtual Desktop host pool
-- [Enable your Azure NetApp Files subscription](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- Windows sanal masaüstü 'Nü ayarlama ve yapılandırma
+- Windows sanal masaüstü konak havuzu sağlama
+- [Azure NetApp Files aboneliğinizi etkinleştirme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
 
-## <a name="set-up-your-azure-netapp-files-account"></a>Set up your Azure NetApp Files account
+## <a name="set-up-your-azure-netapp-files-account"></a>Azure NetApp Files hesabınızı ayarlama
 
-To get started, you need to set up an Azure NetApp Files account.
+Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Make sure your account has contributor or administrator permissions.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
 
-2. Select the **Azure Cloud Shell icon** to the right of the search bar to open Azure Cloud Shell.
+2. Azure Cloud Shell açmak için arama çubuğunun sağ tarafındaki **Azure Cloud Shell simgesini** seçin.
 
-3. Once Azure Cloud Shell is open, select **PowerShell**.
+3. Azure Cloud Shell açıldıktan sonra **PowerShell**' i seçin.
 
-4. If this is your first time using Azure Cloud Shell, create a storage account in the same subscription you keep your Azure NetApp Files and Windows Virtual Desktop.
+4. İlk kez Azure Cloud Shell kullanıyorsanız, aynı abonelikte bir depolama hesabı oluşturun Azure NetApp Files ve Windows sanal masaüstünüzü koruyabilirsiniz.
 
-   ![The storage account window with the create storage button at the bottom of the window highlighted in red.](media/create-storage-button.png)
+   ![Pencerenin alt kısmındaki depolama Oluştur düğmesine sahip depolama hesabı penceresi kırmızı renkle vurgulanır.](media/create-storage-button.png)
 
-5. Once Azure Cloud Shell loads, run the following two cmdlets.
+5. Azure Cloud Shell yüklediğinde, aşağıdaki iki cmdlet 'i çalıştırın.
 
    ```powershell
    az account set --subscription <subscriptionID>
@@ -64,132 +64,132 @@ To get started, you need to set up an Azure NetApp Files account.
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. In the left side of the window, select **All services**. Enter **Azure NetApp Files** into the search box that appears at the top of the menu.
+6. Pencerenin sol tarafında **tüm hizmetler**' i seçin. Menünün üst kısmında görüntülenen arama kutusuna **Azure NetApp Files** girin.
 
-   ![A screenshot of a user entering "Azure NetApp Files" into the All services search box. The search results show the Azure NetApp Files resource.](media/azure-netapp-files-search-box.png)
+   ![Tüm hizmetler arama kutusuna "Azure NetApp Files" girerek kullanıcının ekran görüntüsü. Arama sonuçları Azure NetApp Files kaynağını gösterir.](media/azure-netapp-files-search-box.png)
 
 
-7. Select **Azure NetApp Files** in the search results, then select **Create**.
+7. Arama sonuçlarında **Azure NetApp Files** ' yi seçin ve ardından **Oluştur**' u seçin.
 
-8. Select the **Add** button.
-9. When the **New NetApp account** blade opens, enter the following values:
+8. **Ekle** düğmesini seçin.
+9. **Yeni NetApp hesabı** dikey penceresi açıldığında, aşağıdaki değerleri girin:
 
-    - For **Name**, enter your NetApp account name.
-    - For **Subscription**, select the subscription for the storage account you set up in step 4 from the drop-down menu.
-    - For **Resource group**, either select an existing resource group from the drop-down menu or create a new one by selecting **Create new**.
-    - For **Location**, select the region for your NetApp account from the drop-down menu. This region must be the same region as your session host VMs.
+    - **Ad**Için NetApp hesap adınızı girin.
+    - **Abonelik**için, açılan menüden 4. adımda ayarladığınız depolama hesabı için aboneliği seçin.
+    - **Kaynak grubu**için, açılan menüden var olan bir kaynak grubunu seçin ya da **Yeni oluştur**' u seçerek yeni bir tane oluşturun.
+    - **Konum**için, açılan menüden NetApp hesabınız için bölge seçin. Bu bölge, oturum ana bilgisayar VM 'leriniz ile aynı bölgede olmalıdır.
 
    >[!NOTE]
-   >Azure NetApp Files currently doesn't support mounting of a volume across regions.
+   >Azure NetApp Files Şu anda bölgeler arasında bir birimin bağlanmasını desteklememektedir.
 
-10. When you're finished, select **Create** to create your NetApp account.
+10. İşiniz bittiğinde, Newtapp hesabınızı oluşturmak için **Oluştur** ' u seçin.
 
-## <a name="create-a-capacity-pool"></a>Create a capacity pool
+## <a name="create-a-capacity-pool"></a>Kapasite havuzu oluşturma
 
-Next, create a new capacity pool: 
+Sonra yeni bir kapasite havuzu oluşturun: 
 
-1. Go to the Azure NetApp Files menu and select your new account.
-2. In your account menu, select **Capacity pools** under Storage service.
-3. Select **Add pool**.
-4. When the **New capacity pool** blade opens, enter the following values:
+1. Azure NetApp Files menüsüne gidin ve yeni hesabınızı seçin.
+2. Hesap menünüzde depolama hizmeti altında **Kapasite havuzları** ' nı seçin.
+3. **Havuz Ekle**' yi seçin.
+4. **Yeni kapasite havuzu** dikey penceresi açıldığında, aşağıdaki değerleri girin:
 
-    - For **Name**, enter a name for the new capacity pool.
-    - For **Service level**, select your desired value from the drop-down menu. We recommend **Premium** for most environments.
+    - **Ad**için yeni kapasite havuzu için bir ad girin.
+    - **Hizmet düzeyi**için, açılan menüden istediğiniz değeri seçin. Çoğu ortam için **Premium** önerilir.
        >[!NOTE]
-       >The Premium setting provides the minimum throughput available for a Premium Service level, which is 256 MBps. You may need to adjust this throughput for a production environment. Final throughput is based on the relationship described in [Throughput limits](../azure-netapp-files/azure-netapp-files-service-levels.md).
-    - For **Size (TiB)** , enter the capacity pool size that best fits your needs. The minimum size is 4 TiB.
+       >Premium ayarı, 256 MBps olan Premium hizmet düzeyi için kullanılabilir en düşük aktarım hızını sağlar. Üretim ortamı için bu aktarım hızını ayarlamanız gerekebilir. Son verimlilik, [üretilen iş sınırları](../azure-netapp-files/azure-netapp-files-service-levels.md)' nda açıklanan ilişkiye dayanır.
+    - **Boyut (TiB)** için, gereksinimlerinize en uygun kapasite havuzu boyutunu girin. En küçük boyut 4 TiB 'dir.
 
-5. When you're finished, select **OK**.
+5. İşiniz bittiğinde **Tamam**' ı seçin.
 
-## <a name="join-an-active-directory-connection"></a>Join an Active Directory connection
+## <a name="join-an-active-directory-connection"></a>Active Directory bağlantısına katılarak
 
-After that, you need to join an Active Directory connection.
+Bundan sonra bir Active Directory bağlantısına katılmanız gerekir.
 
-1. Select **Active Directory connections** in the menu on the left side of the page, then select the **Join** button to open the **Join Active Directory** page.
+1. Sayfanın sol tarafındaki menüden **Active Directory bağlantıları** ' nı **seçin, sonra birleştir düğmesini seçerek** **Active Directory ekleyin** sayfasını açın.
 
-   ![A screenshot of the Join Active Directory connections menu.](media/active-directory-connections-menu.png)
+   ![Active Directory bağlantıları menüsünü Birleştir menüsünün ekran görüntüsü.](media/active-directory-connections-menu.png)
 
-2. Enter the following values in the **Join Active Directory** page to join a connection:
+2. Bir bağlantıya katmak için **joın Active Directory** sayfasına aşağıdaki değerleri girin:
 
-    - For **Primary DNS**, enter the IP address of the DNS server in your environment that can resolve the domain name.
-    - For **Domain**, enter your fully qualified domain name (FQDN).
-    - For **SMB Server (Computer Account) Prefix**, enter the string you want to append to the computer account name.
-    - For **Username**, enter the name of the account with permissions to perform domain join.
-    - For **Password**, enter the account's password.
+    - **BIRINCIL DNS**için, ortamınızda etki alanı adını ÇÖZEBILECEK DNS sunucusunun IP adresini girin.
+    - **Etki alanı**için tam etki alanı adını (FQDN) girin.
+    - **SMB sunucusu (bilgisayar hesabı) ön eki**için, bilgisayar hesap adına eklemek istediğiniz dizeyi girin.
+    - **Kullanıcı adı**için, etki alanına katılmayı gerçekleştirme izinlerine sahip hesabın adını girin.
+    - **Parola**için hesabın parolasını girin.
 
   >[!NOTE]
-  >It's best practice to confirm that the computer account you created in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection) has appeared in your domain controller under **Computers** or **your enterprise's relevant OU**.
+  >[Active Directory bir bağlantıya katılarak](create-fslogix-profile-container.md#join-an-active-directory-connection) oluşturduğunuz bilgisayar hesabının, **bilgisayarlar** veya kuruluşunuzun **ilgili OU**altında etki alanı denetleyicinizde görüntülendiğini doğrulamak en iyi uygulamadır.
 
-## <a name="create-a-new-volume"></a>Create a new volume
+## <a name="create-a-new-volume"></a>Yeni birim oluştur
 
-Next, you'll need to create a new volume.
+Ardından, yeni bir birim oluşturmanız gerekir.
 
-1. Select **Volumes**, then select **Add volume**.
+1. **Birimler**' i seçin ve ardından **Birim Ekle**' yi seçin.
 
-2. When the **Create a volume** blade opens, enter the following values:
+2. **Birim oluştur** dikey penceresi açıldığında, aşağıdaki değerleri girin:
 
-    - For **Volume name**, enter a name for the new volume.
-    - For **Capacity pool**, select the capacity pool you just created from the drop-down menu.
-    - For **Quota (GiB)** , enter the volume size appropriate for your environment.
-    - For **Virtual network**, select an existing virtual network that has connectivity to the domain controller from the drop-down menu.
-    - Under **Subnet**, select **Create new**. Keep in mind that this subnet will be delegated to Azure NetApp Files.
+    - **Birim adı**için yeni birim için bir ad girin.
+    - **Kapasite havuzu**için, açılan menüden yeni oluşturduğunuz kapasite havuzunu seçin.
+    - **Kota (GiB)** için ortamınıza uygun birim boyutunu girin.
+    - **Sanal ağ**için, açılan menüden etki alanı denetleyicisiyle bağlantısı olan var olan bir sanal ağı seçin.
+    - **Alt ağ**altında **Yeni oluştur**' u seçin. Bu alt ağın Azure NetApp Files için temsilci olarak olacağını aklınızda bulundurun.
 
-3.  Select **Next: Protocol \>\>** to open the Protocol tab and configure your volume access parameters.
+3.  **İleri ' yi seçin: protokol \>\>** protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
 
-## <a name="configure-volume-access-parameters"></a>Configure volume access parameters
+## <a name="configure-volume-access-parameters"></a>Birim erişim parametrelerini yapılandırma
 
-After you create the volume, configure the volume access parameters.
+Birimi oluşturduktan sonra, birim erişim parametrelerini yapılandırın.
 
-1.  Select **SMB** as the protocol type.
-2.  Under Configuration in the **Active Directory** drop-down menu, select the same directory that you originally connected in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection). Keep in mind that there's a limit of one Active Directory per subscription.
-3.  In the **Share name** text box, enter the name of the share used by the session host pool and its users.
+1.  Protokol türü olarak **SMB** ' yi seçin.
+2.  **Active Directory** açılır menüsündeki yapılandırma altında, ilk olarak [bir Active Directory bağlantısına katılarak](create-fslogix-profile-container.md#join-an-active-directory-connection)bağladığınız dizini seçin. Her abonelik için bir Active Directory sınırı olduğunu aklınızda bulundurun.
+3.  **Ad paylaşma** metin kutusuna, oturum ana bilgisayar havuzu ve kullanıcıları tarafından kullanılan paylaşımın adını girin.
 
-4.  Select **Review + create** at the bottom of the page. This opens the validation page. After your volume is validated successfully, select **Create**.
+4.  Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin. Bu, doğrulama sayfasını açar. Biriminiz başarıyla doğrulandıktan sonra **Oluştur**' u seçin.
 
-5.  At this point, the new volume will start to deploy. Once deployment is complete, you can use the Azure NetApp Files share.
+5.  Bu noktada, yeni birim dağıtmaya başlayacaktır. Dağıtım tamamlandıktan sonra Azure NetApp Files paylaşma kullanabilirsiniz.
 
-6.  To see the mount path, select **Go to resource** and look for it in the Overview tab.
+6.  Bağlama yolunu görmek için **Kaynağa Git** ' i seçin ve Genel Bakış sekmesinde arama yapın.
 
-    ![A screenshot of the Overview screen with a red arrow pointing at the mount path.](media/overview-mount-path.png)
+    ![Bağlama yolunu işaret eden kırmızı bir ok ile genel bakış ekranının ekran görüntüsü.](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Configure FSLogix on session host virtual machines (VMs)
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Oturum ana bilgisayarında FSLogix yapılandırma sanal makineleri (VM 'Ler)
 
-This section is based on [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
+Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md)tabanlıdır.
 
-1. [Download the FSLogix agent .zip file](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) while you're still remoted in the session host VM.
+1. Hala oturum ana bilgisayar VM 'sinde uzak durumdayken [FSLogix Agent. zip dosyasını indirin](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) .
 
-2. Unzip the downloaded file.
+2. İndirilen dosyayı sıkıştırmayı açın.
 
-3. In the file, go to **x64** > **Releases** and run **FSLogixAppsSetup.exe**. The installation menu will open.
+3. Dosyasında **x64** > **sürümleri** ' ne gidin ve **Fslogixappssetup. exe**' yi çalıştırın. Yükleme menüsü açılır.
 
-4.  If you have a product key, enter it in the Product Key text box.
+4.  Ürün anahtarınız varsa, ürün anahtarı metin kutusuna girin.
 
-5. Select the check box next to **I agree to the license terms and conditions**.
+5. **Lisans hüküm ve koşullarını kabul**ediyorum seçeneğinin yanındaki onay kutusunu işaretleyin.
 
 6. **Yükle**’yi seçin.
 
-7. Navigate to **C:\\Program Files\\FSLogix\\Apps** to confirm the agent installed.
+7. Aracının yüklü olduğunu onaylamak için, **C:\\Program Files\\FSLogix\\uygulamaları ' na** gidin.
 
-8. From the Start menu, run **RegEdit** as administrator.
+8. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın.
 
-9. Navigate to **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+9. **Bilgisayar\\HKEY_LOCAL_MACHINE\\yazılım\\FSLogix**' e gidin.
 
-10. Create a key named **Profiles**.
+10. **Profiller**adlı bir anahtar oluşturun.
 
-11.  Create a value named **Enabled** with a **REG_DWORD** type set to a data value of **1**.
+11.  **1**veri değerine ayarlanmış **REG_DWORD** türü ile **etkin** adlı bir değer oluşturun.
 
-12. Create a value named **VHDLocations** with a **Multi-String** type and set its data value to the URI for the Azure NetApp Files share.
+12. **Vhdlocations** adlı bir değeri **çok** dizeli bir türle oluşturun ve veri değerini Azure NetApp Files paylaşımının URI 'si olarak ayarlayın.
 
-13. Create a value named **DeleteLocalProfileWhenVHDShouldApply** with a DWORD value of 1 to avoid problems with existing local profiles before you sign in.
+13. Oturum açmadan önce mevcut yerel profillerle ilgili sorunları önlemek için DWORD değeri 1 olan **DeleteLocalProfileWhenVHDShouldApply** adlı bir değer oluşturun.
 
      >[!WARNING]
-     >Be careful when creating the DeleteLocalProfileWhenVHDShouldApply value. When the FSLogix Profiles system determines a user should have an FSLogix profile, but a local profile already exists, Profile Container will permanently delete the local profile. The user will then be signed in with the new FSLogix profile.
+     >DeleteLocalProfileWhenVHDShouldApply değerini oluştururken dikkatli olun. FSLogix profiller sistemi bir kullanıcının FSLogix profili olması gerektiğini belirlerse, ancak yerel bir profil zaten varsa, profil kapsayıcısı yerel profili kalıcı olarak siler. Daha sonra Kullanıcı yeni FSLogix profiliyle oturum açacaktır.
 
-## <a name="assign-users-to-session-host"></a>Assign users to session host
+## <a name="assign-users-to-session-host"></a>Kullanıcıları oturum konağına atama
 
-1. Open **PowerShell ISE** as administrator and sign in to Windows Virtual Desktop.
+1. **PowerShell ISE** 'yi yönetici olarak açın ve Windows sanal masaüstü 'nde oturum açın.
 
-2. Run the following cmdlets:
+2. Aşağıdaki cmdlet 'leri çalıştırın:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -198,9 +198,9 @@ This section is based on [Create a profile container for a host pool using a fil
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. When prompted for credentials, enter the credentials for the user with the Tenant Creator or RDS Owner/RDS Contributor roles on the Windows Virtual Desktop tenant.
+3. Kimlik bilgileri istendiğinde, Windows sanal masaüstü kiracısında kiracı Oluşturucu veya RDS sahip/RDS katılımcısı rollerine sahip kullanıcı için kimlik bilgilerini girin.
 
-4. Run the following cmdlets to assign a user to a Remote Desktop group:
+4. Bir kullanıcıyı uzak masaüstü grubuna atamak için aşağıdaki cmdlet 'leri çalıştırın:
 
    ```powershell
    $wvdTenant = "<your-wvd-tenant>"
@@ -210,26 +210,26 @@ This section is based on [Create a profile container for a host pool using a fil
    Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
-## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Make sure users can access the Azure NetApp File share
+## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Kullanıcıların Azure NetApp dosya paylaşımında erişebildiğinizden emin olun
 
-1. Open your internet browser and go to <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Internet tarayıcınızı açın ve <https://rdweb.wvd.microsoft.com/webclient/index.html>gidin.
 
-2. Sign in with the credentials of a user assigned to the Remote Desktop group.
+2. Uzak Masaüstü grubuna atanan bir kullanıcının kimlik bilgileriyle oturum açın.
 
-3. Once you've established the user session, sign in to the Azure portal with an administrative account.
+3. Kullanıcı oturumunu kurduktan sonra, Azure portal bir yönetici hesabıyla oturum açın.
 
-4. Open **Azure NetApp Files**, select your Azure NetApp Files account, and then select **Volumes**. Once the Volumes menu opens, select the corresponding volume.
+4. **Azure NetApp Files**açın, Azure NetApp Files hesabınızı seçin ve ardından **birimler**' i seçin. Birimler menüsü açıldıktan sonra karşılık gelen birimi seçin.
 
-   ![A screenshot of the NetApp account you set up earlier in the Azure portal with the Volumes button selected.](media/netapp-account.png)
+   ![Daha önce birimler düğmesi seçili Azure portal daha önce ayarladığınız NetApp hesabının ekran görüntüsü.](media/netapp-account.png)
 
-5. Go to the **Overview** tab and confirm that the FSLogix profile container is using space.
+5. **Genel bakış** sekmesine gidin ve FSLogix profil kapsayıcısının boşluk kullandığını doğrulayın.
 
-6. Connect directly to any VM part of the host pool using Remote Desktop and open the **File Explorer.** Then navigate to the **Mount path** (in the following example, the mount path is \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL).
+6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-Vol).
 
-   Within this folder, there should be a profile VHD (or VHDX) like the one in the following example.
+   Bu klasör içinde, aşağıdaki örnekte olduğu gibi bir profil VHD (veya VHDX) olmalıdır.
 
-   ![A screenshot of the contents of the folder in the mount path. Inside is a single VHD file named "Profile_ssbb."](media/mount-path-folder.png)
+   ![Bağlama yolundaki klasörün içindekilerin ekran görüntüsü. İçinde, "Profile_ssbb" adlı tek bir VHD dosyası.](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You can use FSLogix profile containers to set up a user profile share. To learn how to create user profile shares with your new containers, see [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
+FSLogix profil kapsayıcılarını kullanarak bir kullanıcı profili oluşturabilirsiniz. Yeni kapsayıcılarınız ile Kullanıcı profili paylaşımları oluşturmayı öğrenmek için bkz. bir [dosya paylaşımı kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md).

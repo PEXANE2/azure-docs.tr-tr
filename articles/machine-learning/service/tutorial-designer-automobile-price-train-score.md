@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Predict automobile price with the designer'
+title: 'Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme'
 titleSuffix: Azure Machine Learning
-description: Learn how to train, score, and deploy a machine learning model by using a drag-and-drop interface. This tutorial is part one of a two-part series on predicting automobile prices by using linear regression.
+description: Bir sürükle ve bırak arabirimi kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma hakkında bilgi edinin. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin etmeye yönelik iki bölümlü bir serinin bir parçasıdır.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -16,207 +16,207 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228491"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Predict automobile price with the designer (preview)
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-In this two-part tutorial, you learn how to use the Azure Machine Learning designer to develop and deploy a predictive analytics solution that predicts the price of any car. 
+Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden tahmine dayalı bir analiz çözümü geliştirmek ve dağıtmak için Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğreneceksiniz. 
 
-In part one, you set up your environment, drag modules onto an interactive canvas, and connect them together to create an Azure Machine Learning pipeline.
+Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale sürükleyin ve bir Azure Machine Learning işlem hattı oluşturmak için bunları birbirine bağlayın.
 
-In part one of the tutorial, you'll learn how to:
+Öğreticinin birinci bölümünde şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Create a new pipeline.
-> * Import data.
-> * Prepare data.
-> * Train a machine learning model.
-> * Evaluate a machine learning model.
+> * Yeni bir işlem hattı oluşturun.
+> * Verileri içeri aktarın.
+> * Verileri hazırlayın.
+> * Makine öğrenimi modelini eğitme.
+> * Machine Learning modelini değerlendirin.
 
-In [part two](tutorial-designer-automobile-price-deploy.md) of the tutorial, you'll learn how to deploy your predictive model as a real-time inferencing endpoint to predict the price of any car based on technical specifications you send it. 
+Öğreticinin [ikinci bölümünde](tutorial-designer-automobile-price-deploy.md) , size gönderilen teknik belirtimlere göre herhangi bir arabasının fiyatını tahmin etmek için tahmine dayalı modelinizi gerçek zamanlı bir zaman aşımı noktası olarak dağıtmayı öğreneceksiniz. 
 
 > [!NOTE]
->A completed version of this tutorial is available as a sample pipeline.
+>Bu öğreticinin tamamlanmış sürümü örnek bir işlem hattı olarak sunulmaktadır.
 >
->To find it, go to the designer in your workspace. In the **New pipeline** section, select **Sample 1 - Regression: Automobile Price Prediction(Basic)** .
+>Bulmak için çalışma alanınızdaki tasarımcıya gidin. Yeni işlem **hattı** bölümünde **Örnek 1-gerileme: otomobil fiyat tahmini (temel)** öğesini seçin.
 
-## <a name="create-a-new-pipeline"></a>Create a new pipeline
+## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
 
-Azure Machine Learning pipelines organize multiple, dependent machine learning and data processing steps into a single resource. Pipelines help you organize, manage, and reuse complex machine learning workflows across projects and users. To create an Azure Machine Learning pipeline, you need an Azure Machine Learning workspace. In this section, you learn how to create both these resources.
+Azure Machine Learning işlem hatları, birden çok, bağımlı makine öğrenimi ve veri işleme adımlarını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza yardımcı olur. Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
 
-### <a name="create-a-new-workspace"></a>Create a new workspace
+### <a name="create-a-new-workspace"></a>Yeni bir çalışma alanı oluşturma
 
-If you have an Azure Machine Learning workspace with an Enterprise edition, [skip to the next section](#create-the-pipeline).
+Enterprise sürümü olan bir Azure Machine Learning çalışma alanınız varsa, [sonraki bölüme atlayın](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>İşlem hattını oluşturma
 
-1. Sign in to [ml.azure.com](https://ml.azure.com), and select the workspace you want to work with.
+1. [Ml.Azure.com](https://ml.azure.com)'de oturum açın ve birlikte çalışmak istediğiniz çalışma alanını seçin.
 
-1. Select **Designer**.
+1. **Tasarımcı**' yı seçin.
 
-    ![Screenshot of the visual workspace showing how to access the designer](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![Tasarımcıya nasıl erişediğinin gösterildiği görsel çalışma alanının ekran görüntüsü](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
-1. Select **Easy-to-use prebuilt modules**.
+1. Kullanımı **kolay önceden oluşturulmuş modüller**' i seçin.
 
-1. Select the default pipeline name **Pipeline-Created-on** at the top of the canvas. Rename it to something meaningful. An example is *Automobile price prediction*. Adın benzersiz olması gerekmez.
+1. Tuvalin en üstünde **oluşturulan** varsayılan işlem hattı adı işlem hattını seçin. Bunu anlamlı bir şekilde yeniden adlandırın. Bir örnek, *otomobil fiyat tahminiyle*bir örnektir. Adın benzersiz olması gerekmez.
 
 ## <a name="import-data"></a>Veri içeri aktarma
 
-There are several sample datasets included in the designer for you to experiment with. For this tutorial, use **Automobile price data (Raw)** . 
+Üzerinde denemeler yapmanız için tasarımcıya dahil edilen birkaç örnek veri kümesi vardır. Bu öğretici için, **otomobil fiyat verileri (ham)** kullanın. 
 
-1. To the left of the pipeline canvas is a palette of datasets and modules. Select **Datasets**, and then view the **Samples** section to view the available sample datasets.
+1. Ardışık düzen tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. **Veri kümelerini**seçin ve ardından kullanılabilir örnek veri kümelerini görüntülemek için **örnekler** bölümünü görüntüleyin.
 
-1. Select the dataset **Automobile price data (Raw)** , and drag it onto the canvas.
+1. Veri kümesi **otomobil fiyat verileri (ham)** öğesini seçin ve tuvale sürükleyin.
 
-   ![Drag data to canvas](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
+   ![Verileri tuvale sürükleyin](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>Verileri görselleştirme
 
-You can visualize the data to understand the dataset that you'll use.
+Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsiniz.
 
-1. Select the **Automobile price data (Raw)** module.
+1. **Otomobil fiyat verileri (ham)** modülünü seçin.
 
-1. In the properties pane to the right of the canvas, select **Outputs**.
+1. Tuvalin sağındaki Özellikler bölmesinde, **çıktılar**' i seçin.
 
-1. Select the graph icon to visualize the data.
+1. Verileri görselleştirmek için grafik simgesini seçin.
 
     ![Verileri görselleştirme](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
-1. Select the different columns in the data window to view information about each one.
+1. Her biri hakkındaki bilgileri görüntülemek için veri penceresinde farklı sütunları seçin.
 
-    Each row represents an automobile, and the variables associated with each automobile appear as columns. There are 205 rows and 26 columns in this dataset.
+    Her satır bir otomobil ve her bir otomobil ile ilişkili değişkenler sütun olarak görünür. Bu veri kümesinde 205 satır ve 26 sütun vardır.
 
 ## <a name="prepare-data"></a>Verileri hazırlama
 
-Datasets typically require some preprocessing before analysis. You might have noticed some missing values when you inspected the dataset. These missing values must be cleaned so that the model can analyze the data correctly.
+Veri kümeleri, analiz etmeden önce genellikle bazı ön işleme gerektirir. Veri kümesini denetlediğinizde bazı eksik değerleri fark etmiş olabilirsiniz. Bu eksik değerler, modelin verileri doğru çözümleyebilmesi için temizlenmelidir.
 
 ### <a name="remove-a-column"></a>Sütun kaldırma
 
-When you train a model, you have to do something about the data that's missing. In this dataset, the **normalized-losses** column is missing many values, so you exclude that column from the model altogether.
+Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız gerekir. Bu veri kümesinde, **normalleştirilmiş kayıplar** sütununda çok sayıda değer yok, bu nedenle söz konusu sütunu modelden hariç tutabilmeniz gerekir.
 
-1. Enter **Select** in the search box at the top of the palette to find the **Select Columns in Dataset** module.
+1. **Veri kümesindeki sütunları seç** modülünde bulmak için paletin en üstündeki arama kutusuna **seçin** yazın.
 
-1. Drag the **Select Columns in Dataset** module onto the canvas. Drop the module below the dataset module.
+1. **Veri kümesindeki sütunları seçme** modülüne tuval üzerine sürükleyin. Modülün veri kümesi modülünün altına bırakın.
 
-1. Connect the **Automobile price data (Raw)** dataset to the **Select Columns in Dataset** module. Drag from the dataset's output port, which is the small circle at the bottom of the dataset on the canvas, to the input port of **Select Columns in Dataset**, which is the small circle at the top of the module.
+1. **Otomobil fiyat verileri (ham)** veri kümesini **veri kümesindeki sütunları seçme** modülüne bağlayın. Veri kümesinin çıkış bağlantı noktasından, tuvaldeki veri kümesinin en altında bulunan küçük daire, modülün en üstünde bulunan küçük bir daire olan **veri kümesindeki sütun seçme**giriş bağlantı noktasına sürükleyin.
 
     > [!TIP]
-    > You create a flow of data through your pipeline when you connect the output port of one module to an input port of another.
+    > Bir modülün çıkış bağlantı noktasını başka bir giriş bağlantı noktasına bağladığınızda işlem hattınızla veri akışı oluşturursunuz.
     >
 
-    ![Connect modules](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
+    ![Modülleri bağlama](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. Select the **Select Columns in Dataset** module.
+1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
-1. In the properties pane to the right of the canvas, select **Parameters** > **Edit column**.
+1. Tuvalin sağ tarafındaki Özellikler bölmesinde **parametreler** > **sütunu Düzenle**' yi seçin.
 
-1. Select the **+** to add a new rule.
+1. Yeni bir kural eklemek için **+** seçin.
 
-1. From the drop-down menu, select **Exclude** and **Column names**.
+1. Açılan menüden **Dışla** ve **sütun adlarını**seçin.
     
-1. Enter *normalized-losses* in the text box.
+1. Metin kutusuna *normalleştirilmiş zararlar* girin.
 
-1. In the lower right, select **Save** to close the column selector.
+1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
 
-    ![Exclude a column](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
+    ![Sütun dışlama](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
-    The properties pane shows that the **normalized-losses** column is excluded.
+    Özellikler bölmesi, **normalleştirilmiş kayıplar** sütununun dışlanacağını gösterir.
 
-1. Select the **Select Columns in Dataset** module. 
+1. **Veri kümesi modülünde sütunları seç '** i seçin. 
 
-1. In the properties pane, select **Parameters** > **Comment** and enter *Exclude normalized losses*.
+1. Özellikler bölmesinde **parametreler** > **Açıklama** ' yı seçin ve *normalleştirilmiş zararları hariç tut*' u girin.
 
-### <a name="clean-missing-data"></a>Clean missing data
+### <a name="clean-missing-data"></a>Eksik verileri temizleme
 
-Your dataset still has missing values after you remove the **normalized-losses** column. You can remove the remaining missing data by using the **Clean Missing Data** module.
+**Normalleştirilmiş zararlar** sütununu kaldırdıktan sonra Veri kümeniz hala eksik değerler içeriyor. **Eksik verileri temizle** modülünü kullanarak kalan eksik verileri kaldırabilirsiniz.
 
 > [!TIP]
-> Cleaning the missing values from input data is a prerequisite for using most of the modules in the designer.
+> Giriş verilerinden eksik değerleri Temizleme, tasarımcıda birçok modülün kullanılmasına yönelik bir önkoşuldur.
 
-1. Enter **Clean** in the search box to find the **Clean Missing Data** module.
+1. **Eksik verileri temizle** modülünü bulmak için arama kutusuna **temiz** yazın.
 
-1. Drag the **Clean Missing Data** module to the pipeline canvas. Connect it to the **Select Columns in Dataset** module. 
+1. **Eksik verileri temizle** modülünü ardışık düzen tuvaline sürükleyin. **Veri kümesi modülündeki sütunları seçme** modülüne bağlayın. 
 
-1. In the properties pane, select **Remove entire row** under **Cleaning mode**.
+1. Özellikler bölmesinde, **temizleme modu**' nun altındaki **tüm satırı Kaldır** ' ı seçin.
 
-1. In the properties pane **Comment** box, enter *Remove missing value rows*. 
+1. Özellikler bölmesi **Açıklama** kutusunda *eksik değer satırlarını kaldır*' ı girin. 
 
-    Your pipeline should now look something like this:
+    İşlem hatlarınız şuna benzer şekilde görünmelidir:
     
-    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+    ![Select-Column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
-## <a name="train-a-machine-learning-model"></a>Train a machine learning model
+## <a name="train-a-machine-learning-model"></a>Makine öğrenimi modelini eğitme
 
-Now that the data is processed, you can train a predictive model.
+Artık veriler işlense de, tahmine dayalı bir model eğitebilirsiniz.
 
 ### <a name="select-an-algorithm"></a>Algoritmayı seçme
 
-*Sınıflandırma* ve *regresyon*, denetimli makine öğrenimi algoritmasının iki türüdür. Classification predicts an answer from a defined set of categories, such as a color like red, blue, or green. Bir sayıyı tahmin etmek için regresyon kullanılır.
+*Sınıflandırma* ve *regresyon*, denetimli makine öğrenimi algoritmasının iki türüdür. Sınıflandırma, kırmızı, mavi veya yeşil gibi bir renk gibi tanımlı kategori kümesinden bir yanıtı tahmin eder. Bir sayıyı tahmin etmek için regresyon kullanılır.
 
-Because you want to predict price, which is a number, you can use a regression algorithm. For this example, you use a linear regression model.
+Bir sayı olan fiyatı tahmin etmek istediğiniz için, regresyon algoritmasını kullanabilirsiniz. Bu örnekte, doğrusal regresyon modeli kullanırsınız.
 
-### <a name="split-the-data"></a>Split the data
+### <a name="split-the-data"></a>Verileri bölme
 
-Split your data into two separate datasets for training the model and testing it.
+Modeli eğitmek ve test etmek için verilerinizi iki ayrı veri kümesine ayırın.
 
-1. Enter **split data** in the search box to find the **Split Data** module. Connect it to the left port of the **Clean Missing Data** module.
+1. **Bölünmüş veri** modülünü bulmak için arama kutusuna **bölünmüş verileri** girin. **Temizleme eksik veri** modülünün sol bağlantı noktasına bağlayın.
 
-1. Select the **Split Data** module.
+1. **Bölünmüş veri** modülünü seçin.
 
-1. In the properties pane, set the **Fraction of rows in the first output dataset** to 0.7.
+1. Özellikler bölmesinde, **ilk çıktı veri kümesindeki satır kesirini** 0,7 olarak ayarlayın.
 
-    This option splits 70 percent of the data to train the model and 30 percent for testing it.
+    Bu seçenek, modeli eğitmek için verilerin yüzde 70 ' unu ve test için yüzde 30 ' unu böler.
 
-1. In the properties pane **Comment** box, enter *Split the dataset into training set (0.7) and test set (0.3)* .
+1. Özellikler bölmesi **Açıklama** kutusunda, *veri kümesini eğitim kümesi (0,7) ve test kümesi (0,3) olarak Böl*yazın.
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
-Train the model by giving it a set of data that includes the price. The model scans through the data and looks for correlations between a car's features and its price to construct a model.
+Fiyatı içeren bir veri kümesi vererek modeli eğitme. Model, verileri tarar ve bir araba oluşturmak için bir otomobil özellikleri ile fiyatı arasında bağıntıları arar.
 
-1. To select the learning algorithm, clear your module palette search box.
+1. Öğrenme algoritmasını seçmek için modül paleti arama kutusunu temizleyin.
 
-1. Expand **Machine Learning Algorithms**.
+1. **Machine Learning algoritmaları**genişletin.
     
-    This option displays several categories of modules that you can use to initialize learning algorithms.
+    Bu seçenek, öğrenme algoritmalarını başlatmak için kullanabileceğiniz birkaç modül kategorisini görüntüler.
 
-1. Select **Regression** > **Linear Regression**, and drag it to the pipeline canvas.
+1. **Doğrusal regresyon** > **gerileme** ' yı seçin ve bunu işlem hattı tuvaline sürükleyin.
 
-1. Find and drag the **Train Model** module to the pipeline canvas. 
+1. **Eğitim modeli** modülünü bulup ardışık düzen tuvaline sürükleyin. 
 
-1. Connect the output of the **Linear Regression** module to the left input of the **Train Model** module.
+1. **Doğrusal regresyon** modülünün çıkışını **eğitme modeli** modülünün sol girişine bağlayın.
 
-1. Connect the training data output (left port) of the **Split Data** module to the right input of the **Train Model** module.
+1. **Veri ayırma** modülünün eğitim verileri çıkışını (sol bağlantı noktası), **eğitme modeli** modülünün sağ girişine bağlayın.
 
-    ![Screenshot showing the correct configuration of the Train Model module. The Linear Regression module connects to left port of Train Model module and the Split Data module connects to right port of Train Model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    ![Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Select the **Train Model** module.
+1. **Model eğitme** modülünü seçin.
 
-1. In the properties pane, select **Edit column** selector.
+1. Özellikler bölmesinde, **sütun seçiciyi Düzenle** ' yi seçin.
 
-1. In the **Label column** dialog box, expand the drop-down menu and select **Column names**. 
+1. **Etiket sütunu** iletişim kutusunda, açılan menüyü genişletin ve **sütun adları**' nı seçin. 
 
-1. In the text box, enter *price*. Price is the value that your model is going to predict.
+1. Metin kutusuna *Price*yazın. Fiyat, modelinizin tahmin edilecek değerdir.
 
-    Your pipeline should look like this:
+    İşlem hatlarınız şöyle görünmelidir:
 
-    ![Screenshot showing the correct configuration of the pipeline after adding the Train Model module.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    ![Eğitim modeli modülü eklendikten sonra işlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Evaluate a machine learning model
+## <a name="evaluate-a-machine-learning-model"></a>Machine Learning modelini değerlendirme
 
-After you train your model by using 70 percent of the data, you can use it to score the other 30 percent to see how well your model functions.
+Modelinize verilerin yüzde 70 'ini kullanarak eğdikten sonra, modelinizin ne kadar iyi olduğunu görmek için bu değeri, diğer 30 ' a puan almak üzere kullanabilirsiniz.
 
-1. Enter *score model* in the search box to find the **Score Model** module. Drag the module to the pipeline canvas. 
+1. **Puan modeli** modülünü bulmak için arama kutusuna *puan modeli* girin. Modülü işlem hattı tuvaline sürükleyin. 
 
-1. Connect the output of the **Train Model** module to the left input port of **Score Model**. Connect the test data output (right port) of the **Split Data** module to the right input port of **Score Model**.
+1. **Eğitim modeli** modülünün çıkışını, **puan modelinin**sol giriş bağlantı noktasına bağlayın. **Veri ayırma** modülünün test verileri çıkışını (sağ bağlantı noktası), **puan modelinin**sağ giriş bağlantı noktasına bağlayın.
 
-1. Enter *evaluate* in the search box to find the **Evaluate Model** module. Drag the module to the pipeline canvas. 
+1. **Modeli değerlendir** modülünü bulmak için arama kutusuna *değerlendir* yazın. Modülü işlem hattı tuvaline sürükleyin. 
 
-1. Connect the output of the **Score Model** module to the left input of **Evaluate Model**. 
+1. **Puan modeli** modülünün çıkışını **modeli değerlendir**modülünün sol girişine bağlayın. 
 
-    The final pipeline should look something like this:
+    Son işlem hattı şuna benzer görünmelidir:
 
-    ![Screenshot showing the correct configuration of the pipeline.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    ![İşlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
@@ -224,29 +224,29 @@ After you train your model by using 70 percent of the data, you can use it to sc
 
 ### <a name="view-results"></a>Sonuçları görüntüleme
 
-After the run completes, you can view the results of the pipeline run. 
+Çalıştırma tamamlandıktan sonra, işlem hattı çalıştırmasının sonuçlarını görüntüleyebilirsiniz. 
 
-1. Select the **Score Model** module to view its output.
+1. Çıktısını görüntülemek için **puan modeli** modülünü seçin.
 
-1. In the properties pane, select **Outputs** > **Visualize**.
+1. Özellikler bölmesinde, **çıktılar** > **görselleştirin**' ı seçin.
 
-    Here you can see the predicted prices and the actual prices from the testing data.
+    Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
-    ![Screenshot of the output visualization highlighting the Scored Label column](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    ![Puanlanmış etiket sütununu vurgulayan çıkış görselleştirmesinin ekran görüntüsü](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
-1. Select the **Evaluate Model** module to view its output.
+1. Çıktısını görüntülemek için **modeli değerlendir** modülünü seçin.
 
-1. In the properties pane, select **Output** > **Visualize**.
+1. Özellikler bölmesinde **çıkış** > **Görselleştir**' i seçin.
 
-The following statistics are shown for your model:
+Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 
-* **Mean Absolute Error (MAE)** : The average of absolute errors. An error is the difference between the predicted value and the actual value.
-* **Root Mean Squared Error (RMSE)** : The square root of the average of squared errors of predictions made on the test dataset.
+* Ortalama **mutlak hata (MAE)** : mutlak hataların ortalaması. Bir hata, tahmin edilen değer ve gerçek değer arasındaki farktır.
+* **Kök ortalama kare hatası (rmo)** : test veri kümesinde yapılan tahmine dayalı ortalama kare şeklindeki hata sayısının kare kökü.
 * **Relative Absolute Error (Göreli Mutlak Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
 * **Relative Squared Error (Göreli Karesi Alınmış Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
-* **Coefficient of Determination**: Also known as the R squared value, this statistical metric indicates how well a model fits the data.
+* **Belirleme katsayısı**: R kare değeri olarak da bilinen bu istatistiksel ölçüm, modelin verilere ne kadar iyi uyduğunu gösterir.
 
-Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. A smaller value indicates that the predictions are closer to the actual values. For the coefficient of determination, the closer its value is to one (1.0), the better the predictions.
+Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük bir değer, tahminlerinin gerçek değerlere yakın olduğunu gösterir. Belirleme katsayısı için, değeri bir (1,0), daha iyi tahmine dayalı olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -254,14 +254,14 @@ Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. A smaller val
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In part one of this tutorial, you completed the following tasks:
+Bu öğreticinin bir parçası olarak, aşağıdaki görevleri tamamladınız:
 
 * İşlem hattı oluşturma
 * Verileri hazırlama
 * Modeli eğitme
-* Score and evaluate the model
+* Modeli Puanlama ve değerlendirme
 
-In part two, you'll learn how to deploy your model as a real-time endpoint.
+İkinci bölümde, modelinizi gerçek zamanlı bir uç nokta olarak dağıtmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Continue to deploying models](tutorial-designer-automobile-price-deploy.md)
+> [Modelleri dağıtmaya devam et](tutorial-designer-automobile-price-deploy.md)

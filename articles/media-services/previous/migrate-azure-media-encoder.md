@@ -1,6 +1,6 @@
 ---
-title: Migrate from Azure Media Encoder to Media Encoder Standard | Microsoft Docs
-description: This topic discusses how to migrate from Azure Media Encoder to the Media Encoder Standard media processor.
+title: Azure Media Encoder 'dan Media Encoder Standard 'e geçiş | Microsoft Docs
+description: Bu konuda, Azure Medya Kodlayıcısı 'ndan Media Encoder Standard medya işlemcisine nasıl geçiş yapılacağı anlatılmaktadır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -20,15 +20,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74424029"
 ---
-# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrate from Azure Media Encoder to Media Encoder Standard
+# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş
 
-This article discusses the steps for migrating from the legacy Azure Media Encoder (AME) media processor, which is being retired on March 1, 2020, to the Media Encoder Standard media processor.  
+Bu makalede, 1 Mart 2020 ' de devre dışı bırakılmakta olan eski Azure Medya Kodlayıcısı (AME) medya işlemcisinden, Media Encoder Standard medya işlemcisine geçiş adımları ele alınmaktadır.  
 
-When encoding files with AME, customers typically used a named preset string such as `H264 Adaptive Bitrate MP4 Set 1080p`. In order to migrate, your code needs to be updated to use the **Media Encoder Standard** media processor instead of AME, and one of the equivalent [system presets](media-services-mes-presets-overview.md) like `H264 Multiple Bitrate 1080p`. 
+Dosyaları AME ile kodlarken, müşteriler genellikle `H264 Adaptive Bitrate MP4 Set 1080p`gibi adlandırılmış bir ön ayar dizesi kullanıyordu. Geçiş yapmak için kodunuzun adı yerine **Media Encoder Standard** medya işlemcisini kullanacak şekilde güncelleştirilmesi gerekir ve `H264 Multiple Bitrate 1080p`gibi eşdeğer [sistem önayarlarından](media-services-mes-presets-overview.md) biridir. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Migrating to Media Encoder Standard
+## <a name="migrating-to-media-encoder-standard"></a>Media Encoder Standard geçiriliyor
 
-Here is a typical C# code sample that uses the legacy media processor. 
+Eski medya işlemcisini kullanan C# tipik bir kod örneği aşağıda verilmiştir. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Here is the updated version that uses Media Encoder Standard.
+Media Encoder Standard kullanan güncelleştirilmiş sürüm aşağıda verilmiştir.
 
 ```csharp
 // Declare a new job. 
@@ -64,15 +64,15 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Gelişmiş senaryolar 
 
-If you had created your own encoding preset for AME using its schema, there is an [equivalent schema for Media Encoder Standard](media-services-mes-schema.md). If you have questions on how to map the older settings to the new encoder, please reach out to us via mailto:amshelp@microsoft.com  
-## <a name="known-differences"></a>Known differences 
+Onun şemasını kullanarak AME için kendi kodlama ön ayarını oluşturduysanız, [Media Encoder Standard için eşdeğer bir şema](media-services-mes-schema.md)vardır. Eski ayarların yeni kodlayıcıyla eşlenme hakkında sorularınız varsa, lütfen mailto:amshelp@microsoft.com aracılığıyla bize ulaşın  
+## <a name="known-differences"></a>Bilinen farklar 
 
-Media Encoder Standard is more robust, reliable, has better performance, and produces better quality output than the legacy AME encoder. Ek olarak: 
+Media Encoder Standard daha sağlam, güvenilir, daha iyi bir performansa sahiptir ve eski AME kodlayıcısından daha iyi kaliteli çıkış üretir. Buna ek olarak: 
 
-* Media Encoder Standard produces output files with a different naming convention than AME.
-* Media Encoder Standard produces artifacts such as files containing the [input file metadata](media-services-input-metadata-schema.md) and the [output file(s) metadata](media-services-output-metadata-schema.md).
+* Media Encoder Standard, dosya adı farklı bir adlandırma kuralına sahip çıktı dosyaları üretir.
+* Media Encoder Standard, [giriş dosyası meta verilerini](media-services-input-metadata-schema.md) ve [Çıkış dosyası meta verilerini](media-services-output-metadata-schema.md)içeren dosyalar gibi yapıtlar üretir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Legacy components](legacy-components.md)
-* [Pricing page](https://azure.microsoft.com/pricing/details/media-services/#encoding)
+* [Eski bileşenler](legacy-components.md)
+* [Fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/media-services/#encoding)

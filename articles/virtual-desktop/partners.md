@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop partner integrations - Azure
-description: Learn about Windows Virtual Desktop's partners and access documentation about how to integrate with them.
+title: Windows sanal masaüstü iş ortağı tümleştirmeleri-Azure
+description: Windows sanal masaüstü iş ortakları ve bunlarla tümleştirme hakkında daha fazla bilgi edinin.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,218 +14,218 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384322"
 ---
-# <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop partner integrations
+# <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
-This article lists partners of Windows Virtual Desktop.
+Bu makalede, Windows sanal masaüstü iş ortakları listelenmektedir.
 
 ## <a name="citrix"></a>Citrix
 
-![Citrix logo](./media/partners/citrix.png)
+![Citrix logosu](./media/partners/citrix.png)
 
-Citrix is an approved provider that offers enterprises centralized hybrid management of virtual apps and desktops workloads in Azure, side by side with on-premises deployments. Citrix Workspace with the Virtual Apps and Desktops service allows users to access apps and desktops from any device, leveraging the advanced Citrix HDX protocol to deliver a high definition experience from anywhere.
+Citrix, Azure 'daki sanal uygulamalar ve masaüstü iş yükleri için şirket içi dağıtımlarla yan yana merkezi bir karma yönetim sunan, onaylanan bir sağlayıcıdır. Sanal uygulamalar ve masaüstleri hizmeti olan Citrix çalışma alanı, kullanıcıların her yerden yüksek tanımlı bir deneyim sunmak için gelişmiş Citrix HDX protokolünü kullanarak herhangi bir cihazdan uygulamalara ve masaüstlerine erişmelerini sağlar.
 
-Citrix extends the value of Windows Virtual Desktop with robust enterprise tools to improve user density and performance, provision workloads on demand, and simplify image and application management. IT can optimize costs with intelligent scaling tools, while delivering an incredible user experience that's field-tested against the toughest applications across industries. Additionally, Citrix Managed Desktops is a Windows Virtual Desktop-enabled desktops-as-a-service program that provides a simple, cloud-based management solution for delivering virtual apps and desktops to any device.
+Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı iş yüklerini sağlamak ve görüntü ve uygulama yönetimini basitleştirmek için Windows sanal masaüstü 'nün değerini sağlam kurumsal araçlarla genişletir. Sektörler genelinde en zorlu uygulamalara karşı test edilen inanılmaz bir kullanıcı deneyimi sunarken, maliyetleri akıllı ölçeklendirme araçlarıyla iyileştirebilirler. Ayrıca, Citrix tarafından yönetilen masaüstleri, her cihaza sanal uygulamalar ve masaüstleri sunmaya yönelik basit, bulut tabanlı bir yönetim çözümü sağlayan bir Windows sanal masaüstü özellikli masaüstü programdır.
 
-- [Go to the partner website](https://more.citrix.com/wvd).
+- [İş ortağı Web sitesine gidin](https://more.citrix.com/wvd).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
-![Cloudhouse logo](./media/partners/cloudhouse.png)
+![Cloudhouse logosu](./media/partners/cloudhouse.png)
 
-Cloudhouse is a Windows Virtual Desktop value-added services provider that offers customers a turnkey application migration service that can move all applications, including ones that are incompatible with modern Windows operating systems, to the Windows Virtual Desktop environment, allowing customers to truly leverage multi-session Windows 10. 
+Cloudhouse, kullanıcılara modern Windows işletim sistemleriyle uyumsuz olanlar dahil olmak üzere tüm uygulamaları Windows 'a taşıyaabilen bir Windows sanal masaüstü katma hizmet sağlayıcısıdır. Sanal masaüstü ortamı, müşterilerin çok oturum Windows 10 ' u gerçekten kullanmasına izin verir. 
 
-By leveraging proven Cloudhouse containerization technology, the Cloudhouse service takes all applications, including ones designed for Windows XP, Windows 7, or Windows 8, and deploys them to a modern Windows Virtual Desktop without needing to change code or impact user experience. Cloudhouse further adds to the value of Windows Virtual Desktop by isolating applications from the underlying operating system, allowing Windows Servicing updates to be rolled out without affecting the containerized application. 
+, Kanıtlanmış Cloudhouse kapsayıcı teknolojisini kullanarak, Cloudhouse hizmeti, Windows XP, Windows 7 veya Windows 8 için tasarlanmış olanlar da dahil olmak üzere tüm uygulamaları alır ve bunları kod değiştirmeye gerek kalmadan modern bir Windows sanal masaüstüne dağıtır. etki Kullanıcı deneyimi. Cloudhouse, uygulamaları temel alınan işletim sisteminden ayırarak Windows sanal masaüstü 'nün değerine daha fazla ekler ve Windows bakım güncelleştirmelerinin Kapsayıcılı uygulamayı etkilemeden alınmasına izin verir. 
 
-- [Go to the partner website](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
+- [İş ortağı Web sitesine gidin](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="vmware"></a>VMware
 
-![VMware Logo](./media/partners/vmware.png)
+![VMware logosu](./media/partners/vmware.png)
 
-VMware Horizon Cloud on Microsoft Azure gives organizations the ability to connect their own instance of Microsoft Azure to the simple, intuitive Horizon Cloud control plane, creating a secure, comprehensive, cloud-hosted solution for delivering virtualized Windows applications and desktops. With the release of Windows Virtual Desktop, VMware has partnered with Microsoft to extend the functionality of Windows Virtual Desktop to customers using Horizon Cloud on Microsoft Azure. This functionality will be available in Tech Preview by the end of 2019.
+Microsoft Azure üzerinde VMware ufuk bulutu, kuruluşların kendi Microsoft Azure örneğini basit, sezgisel ufuk bulutu denetim düzlemine bağlama olanağı sunarak, sanallaştırılmış hale getirmeye yönelik güvenli, kapsamlı ve bulutta barındırılan bir çözüm oluşturuyor Windows Uygulamaları ve masaüstleri. Windows sanal masaüstü 'Nü kullanarak, VMware, Windows sanal masaüstü 'nin işlevlerini Microsoft Azure ' de ufuk bulutu 'nı kullanan müşterilere genişleten Microsoft ile işbirliği yaptı. Bu işlevsellik, 2019 sonuna kadar teknik önizlemede kullanıma sunulacaktır.
  
-As an approved provider, the benefits of Windows Virtual Desktop will be extended to VMware Horizon Cloud on Microsoft Azure customers, including Windows 10 Enterprise for multi-session, Windows 7 with free Extended Security Updates for up to three years, and FSLogix. Additionally, customers will receive the enterprise-class features of Horizon Cloud, such as broad endpoint support; global, cloud-optimized brokering; flexible desktop options and configurations; user-environment management; and support for hybrid environments.
+Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları Microsoft Azure müşteriler üzerinde VMware ufuk bulutu 'na genişletilir. çok oturum için Windows 10 Enterprise, üç yıla kadar ücretsiz genişletilmiş güvenlik güncelleştirmeleri içeren Windows 7 ve FSLogix. Ayrıca, müşteriler geniş uç nokta desteği gibi, ufku bulutu 'nın kurumsal sınıf özelliklerini de alır; küresel, buluta iyileştirilmiş aracılı; Esnek masaüstü seçenekleri ve yapılandırması; Kullanıcı ortamı yönetimi; ve karma ortamlar için destek.
 
-- [Register for the Tech Preview of Horizon Cloud on Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
-- [Go to the partner website](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
-## <a name="cloudjumper"></a>CloudJumper
+## <a name="cloudjumper"></a>Cloudatlatıcı
 
-![CloudJumper Logo](./media/partners/cloudjumper.png)
+![Cloudatlatıcı logosu](./media/partners/cloudjumper.png)
 
-CloudJumper is a Windows Virtual Desktop value-added services provider that equips solution providers and enterprise IT with software to  provision and manage Windows Virtual Desktop environments holistically. With CloudJumper software, IT can manage every layer of a Windows Virtual Desktop deployment. Delivery of workloads and applications is automated, ensuring that users can quickly access their desktop anywhere on any device.
+Cloudatlatıcı, çözüm sağlayıcılarını ve Windows sanal masaüstü ortamlarını barındırmaya sağlamak ve yönetmek için yazılım ile kurumsal olan Windows sanal masaüstü katma bir hizmet sağlayıcıdır. Cloudatlatıcı yazılımıyla, Windows sanal masaüstü dağıtımının her katmanını yönetebilir. İş yüklerinin ve uygulamaların teslimi, kullanıcıların her cihazda masaüstüne hızlı bir şekilde erişebilmesini sağlamak için otomatikleştirilmiştir.
 
-CloudJumper’s software, Cloud Workspace Management Suite extends the value of Windows Virtual Desktop by simplifying deployment and ongoing administration tasks in Azure. From a single pane of glass, IT can provision, manage, and optimize infrastructure for user workspaces. CloudJumper’s Simple Script Triggering Engine integrates with IT service platforms to automate tasks involved in provisioning Windows Virtual Desktop. Additionally, CloudJumper APIs allow further extensibility and integration with other enterprise systems like ServiceNow and BMC Ready.
+Cloudatlatıcı yazılımı, bulut çalışma alanı yönetim paketi, Azure 'daki dağıtımı ve devam eden yönetim görevlerini basitleştirerek Windows sanal masaüstü 'nün değerini genişletir. Tek bir cam bölmeden, Kullanıcı çalışma alanları için altyapıyı sağlayabilir, yönetebilir ve iyileştirebilir. Cloudatlatıcı 'un basit betik tetikleme altyapısı, Windows sanal masaüstü sağlama ile ilgili görevleri otomatikleştirmek için BT hizmeti platformlarıyla tümleştirilir. Ayrıca, Cloudatlatıcı API 'Leri, ServiceNow ve BMC 'ye hazırlanma gibi diğer kurumsal sistemlerle daha fazla genişletilebilirlik ve tümleştirme sağlar.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
-- [Go to the partner website](https://cloudjumper.com/wvd/).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [İş ortağı Web sitesine gidin](https://cloudjumper.com/wvd/).
 
 ## <a name="controlup"></a>ControlUp
 
-![ControlUp Logo](./media/partners/controlup.png)
+![ControlUp logosu](./media/partners/controlup.png)
 
-ControlUp is a Windows Virtual Desktop value-added services provider that enables IT teams to monitor, troubleshoot, analyze, and directly remediate problems in their on-premises, hybrid cloud, and cloud infrastructure in real time from a single console. ControlUp’s analytics and management platform also allows IT to proactively automate fixes for a rapidly growing set of use cases.
+ControlUp, BT ekiplerinin tek bir konsoldan gerçek zamanlı olarak şirket içi, hibrit bulut ve bulut altyapılarındaki sorunları izlemelerine, sorunlarını gidermenize, çözümlemesine ve doğrudan düzeltmesine olanak tanıyan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. ControlUp 'nin analiz ve yönetim platformu, hızlı bir şekılde büyüyen kullanım örnekleri kümesi için düzeltmeleri proaktif hale getirmeyi de sağlar.
 
-When used with Windows Virtual Desktop, ControlUp provides additional capabilities to optimize Windows Virtual Desktop environments and the end-user experience. From the ControlUp console, IT gets end-user environment visibility to effectively monitor and troubleshoot performance issues. An intuitive dashboard provides insights and analytics for virtual desktop deployments, as well as options for automated reporting enriched with community benchmarks. ControlUp can manage multiple data sources and types, organizing them in high-performance data sets aggregated across compute, storage, and Windows Virtual Desktop infrastructure, allowing granular visibility from a single pane of glass.
+Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaüstü ortamlarını ve son kullanıcı deneyimini iyileştirmek için ek yetenekler sağlar. Denetim konsolundan, performans sorunlarını etkili bir şekilde izlemek ve sorunlarını gidermek için Son Kullanıcı ortamı görünürlüğünü alır. Sezgisel bir Pano, sanal masaüstü dağıtımları için Öngörüler ve analizler ve topluluk kıyaslamalarıyla otomatik raporlama zenginleştirilmesi için seçenekler sağlar. Denetim, birden fazla veri kaynağını ve türünü yönetebilir ve işlem, depolama ve Windows sanal masaüstü altyapısı genelinde toplanan yüksek performanslı veri kümelerinde organize edilebilir ve tek bir cam bölmeden ayrıntılı görünürlük sağlar.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
-- [Go to the partner website](https://www.controlup.com/solutions/ms_wvd/).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [İş ortağı Web sitesine gidin](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST
 
-![deviceTRUST Logo](./media/partners/devicetrust.png)
+![deviceTRUST logosu](./media/partners/devicetrust.png)
 
-deviceTRUST is a Windows Virtual Desktop value-added services provider that contextualizes the corporate enterprise. It allows users the freedom to access their Windows Virtual Desktop from any location, on any device, over any network, while giving IT departments the information and control they need to meet their governance requirements. 
+deviceTRUST, kurumsal kuruluşun bulunduğu Windows sanal masaüstü katma değer eklenmiş bir hizmet sağlayıcıdır. Kullanıcılar, herhangi bir cihazdaki herhangi bir yerden, herhangi bir ağ üzerinden Windows sanal masaüstüne erişim özgürlüğü sunarak BT departmanlarına, idare gereksinimlerini karşılamak için ihtiyaç duydukları bilgileri ve denetimi sağlar. 
 
-deviceTRUST extends the value of Windows Virtual Desktop with their contextual security technology. deviceTRUST enables conditional access for a secure Windows Virtual Desktop access, conditional application access within Windows Virtual Desktop and to apply conditional Windows Virtual Desktop policies without any additional infrastructure. Using deviceTRUST enables a mobile, flexible workspace that meets all security, compliance, and regulatory requirements. 
+deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik teknolojisi ile genişletir. deviceTRUST, güvenli bir Windows sanal masaüstü erişimi, Windows sanal masaüstü 'nde koşullu uygulama erişimi ve ek bir altyapı olmadan koşullu Windows sanal masaüstü ilkeleri uygulamak için koşullu erişim sağlar. DeviceTRUST kullanmak, tüm güvenlik, uyumluluk ve mevzuat gereksinimlerini karşılayan bir mobil, esnek çalışma alanı sunar. 
 
-- [Go to the partner website](https://devicetrust.com/wvd).
+- [İş ortağı Web sitesine gidin](https://devicetrust.com/wvd).
 
-## <a name="igel"></a>IGEL
+## <a name="igel"></a>ILEK dili
 
-![IGEL logo](./media/partners/igel.png)
+![IGEL logosu](./media/partners/igel.png)
 
-IGEL is an approved and verified partner of Microsoft Azure and Windows Virtual Desktop services. IGEL offers IGEL OS, the next-gen edge OS for cloud workspaces designed to access virtual apps, desktops, and cloud workspaces from one or more user devices with a lightweight, simple, and secure Linux-based endpoint. A platform-independent software solution, IGEL OS and its server-based management and control software, IGEL Universal Management Suite (UMS), comprise an endpoint management and control solution that frees enterprises to take full advantage of Azure-based cloud instances and Windows Virtual Desktop desktops, including economical multi-session Windows Virtual Desktop, while reducing endpoint hardware and endpoint device management and operations costs.
+ILEK, Microsoft Azure ve Windows Sanal Masaüstü Hizmetleri 'nin onaylı ve onaylanmış bir ortağıdır. ILEK, hafif, basit ve güvenli Linux tabanlı bir uç nokta ile bir veya daha fazla Kullanıcı cihazından sanal uygulamalara, masaüstü bilgisayarlara ve bulut çalışma alanlarına erişmek üzere tasarlanan bulut çalışma alanları için bir sonraki-gen Edge işletim sistemi olan ıLEK IŞLETIM sistemi sağlar. Platformdan bağımsız bir yazılım çözümü, ıLEK işletim sistemi ve sunucu tabanlı yönetim ve denetim yazılımı, ıLEK Universal yönetim paketi (UMS), kuruluşların Azure tabanlı avantajlarından tam olarak yararlanabilmeleri için bir uç nokta yönetimi ve denetim çözümü oluşturur uç nokta donanım ve uç nokta cihaz yönetimi ve işlem maliyetlerini azaltırken ekonomik çoklu oturum Windows sanal masaüstü de dahil olmak üzere bulut örnekleri ve Windows Sanal Masaüstü Masaüstleri.
  
-IGEL OS supports all popular virtual apps, desktops, and cloud workspace client protocols from Citrix, Microsoft, and VMware. It includes integrated technologies from 85 peripheral, interface, and protocol partners to help organizations quickly adopt Windows Virtual Desktop services into their own unique user environments. IGEL OS is a read-only, modular endpoint OS, which helps protect it from tampering. It now also includes a complete “chain of trust” that verifies the integrity of all key major processes running on the endpoint, from the endpoint hardware (some selected models) or UEFI process all the way to the Azure cloud and Windows Virtual Desktop services. With IGEL OS, enterprises can subscribe to Windows Virtual Desktop from the Azure cloud with full confidence in the integrity, security, and manageability of their users’ endpoint devices.
+ILEK OS, Citrix, Microsoft ve VMware 'den tüm popüler sanal uygulamaları, masaüstü bilgisayarları ve bulut çalışma alanı istemci protokollerini destekler. Kuruluşların Windows Sanal Masaüstü Hizmetleri 'ni kendi benzersiz kullanıcı ortamlarına hızla benimsemesine yardımcı olmak için 85 çevresel, arabirim ve protokol iş ortaklarının tümleşik teknolojilerini içerir. ILEK OS, bir salt okunurdur, modüler bir uç nokta işletim sistemi ve bu da izinsiz koruma sağlar. Artık, uç nokta donanımında çalışan tüm önemli ana işlemlerin (bazı seçili modellerden) veya UEFı işleminin Azure bulutuna ve Windows sanal masaüstü hizmetlerine kadar her şekilde bütünlüğünü doğrulayan "güven zinciri" de içerir. IGEL işletim sistemi sayesinde kuruluşlar, kullanıcıların uç nokta cihazlarının bütünlüğü, güvenliği ve yönetilebilirliği açısından tam güvenle Azure bulutunda Windows sanal masaüstüne abone olabilir.
 
-- [Go to the partner website.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [İş ortağı Web sitesine gidin.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
-![Ivanti Logo](./media/partners/ivanti.png)
+![Ivanti logosu](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager is a Windows Virtual Desktop value-added service that eases desktop deployment and management by separating user data from the desktop for seamless portability. With Ivanti, users can deliver complex projects like migrating to Windows 10, adopting Office 365, or moving services to the cloud faster. 
+Ivantı Kullanıcı çalışma alanı yöneticisi, sorunsuz taşınabilirlik için Kullanıcı verilerini masaüstünden ayırarak masaüstü dağıtımı ve yönetimini kolaylaştırır. Ivanti sayesinde, kullanıcılar Windows 10 ' a geçiş, Office 365 ' i benimseme veya hizmetleri buluta daha hızlı taşıma gibi karmaşık projeler sunabiliyor. 
 
-When used with Windows Virtual Desktop, Ivanti User Workspace Manager provides simple contextual management of the user desktop experience, eliminating long sign-in times and eradicating group policy nightmares. Ivanti User Workspace Manager out-of-the-box templates simplify installation for users through agents and the existing console. Ivanti User Workspace Manager delivers responsive, secure desktops that users love, saving money on servers, managing users more effectively, and reducing endpoint security risk. 
+Ivantı Kullanıcı çalışma alanı yöneticisi, Windows sanal masaüstü ile kullanıldığında, Kullanıcı masaüstü deneyiminin basit bağlamsal yönetimini sağlayarak, uzun oturum açma sürelerini ortadan kaldırır ve Grup İlkesi nieli Mares 'yi kaldırır. Ivantı Kullanıcı çalışma alanı yöneticisi kullanıma hazır şablonlar, aracılar ve var olan konsol aracılığıyla kullanıcılara yönelik yüklemeyi basitleştirir. Ivantı Kullanıcı çalışma alanı yöneticisi, kullanıcıların sevdiği, sunuculara para tasarrufu, kullanıcıları daha verimli bir şekilde yönetme ve uç nokta güvenlik riskini azaltma konusunda yanıt veren, güvenli masaüstleri sunar. 
 
-- [Go to the partner website](https://www.ivanti.com/products/user-workspace-manager).
+- [İş ortağı Web sitesine gidin](https://www.ivanti.com/products/user-workspace-manager).
 
-## <a name="lakeside-software"></a>Lakeside Software
+## <a name="lakeside-software"></a>Lakeside yazılımı
 
-![Lakeside Software Logo](./media/partners/lakeside.png)
+![Lakeside yazılım logosu](./media/partners/lakeside.png)
 
-Lakeside Software is a Windows Virtual Desktop value-added services provider that equips IT teams with software for monitoring performance and assessing Azure migration readiness of user workloads. With this software, IT gains clearer visibility into application usage and resource consumption to streamline the migration process. Lakeside Software collects data at every workspace to create a comprehensive report on user environments, enabling quick troubleshooting and optimization of assets.
+Lakeside yazılımı, BT ekiplerini, performansı izlemek ve Kullanıcı iş yüklerinin Azure geçişi hazırlığını değerlendirmek için yazılımla donkatan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Bu yazılımla, geçiş sürecini kolaylaştırmak için uygulama kullanımı ve kaynak tüketimine daha net görünürlük elde edin. Lakeside yazılımı, Kullanıcı ortamlarında kapsamlı bir rapor oluşturmak, varlıkların hızlı sorun giderme ve iyileştirmeyi etkinleştirmek için her çalışma alanındaki verileri toplar.
 
-Lakeside Software’s digital experience monitoring solution, SysTrack, can help provide a great user experience by tracking performance and identifying ideal workloads for migration. SysTrack works to extend the value of Windows Virtual Desktop through right-sizing assessments and continuous monitoring of user environments.
+Lakeside yazılımının dijital deneyim izleme çözümü olan SysTrack, performansı izleyerek ve geçiş için ideal iş yüklerini tanımlayarak harika bir kullanıcı deneyimi sağlamaya yardımcı olabilir. SysTrack, doğru boyutlandırma değerlendirmeleri ve Kullanıcı ortamlarının sürekli izlenmesi yoluyla Windows sanal masaüstü 'nün değerini genişletecek şekilde çalışmaktadır.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
-- [Go to the partner website](https://www.lakesidesoftware.com/assessments/wvd).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [İş ortağı Web sitesine gidin](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Liquidware
 
-![Liquidware Logo](./media/partners/liquidware.png)
+![Liquidware logosu](./media/partners/liquidware.png)
 
-Liquidware is a Windows Virtual Desktop value-added services provider that delivers software that manages and optimizes Windows Virtual Desktop deployment. The Liquidware Essentials suite provides application delivery through layering, user environment management, and key user experience visibility and diagnostics. With solutions for assessing migration readiness and analyzing usage metrics, Liquidware provides a seamless virtual desktop experience for end users.
+Liquidware, Windows sanal masaüstü dağıtımı 'nı yöneten ve optimize eden yazılımları sunan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Liquidware Essentials Suite, katman, Kullanıcı ortamı yönetimi ve anahtar kullanıcı deneyimi görünürlüğü ve tanılama aracılığıyla uygulama teslimi sağlar. Geçiş hazırlığını değerlendirmek ve kullanım ölçümlerini çözümlemek için çözümler sayesinde Liquidware, son kullanıcılar için sorunsuz bir sanal masaüstü deneyimi sağlar.
 
-Liquidware Essentials extends the value of Windows Virtual Desktop by efficiently harvesting user profiles and gathering key user data to streamline migration of user environments to Azure. Additionally, Liquidware Essentials simplifies image management by unifying user profiles and layering apps based on configurable rights management settings.
+Liquidware Essentials, Kullanıcı profillerini etkin bir şekilde ayırarak ve Kullanıcı ortamlarının Azure 'a geçişini kolaylaştırmak için anahtar kullanıcı verilerini toplarken Windows sanal masaüstü 'nün değerini genişletir. Ayrıca, Liquidware Essentials, yapılandırılabilir hak yönetimi ayarlarına bağlı olarak Kullanıcı profillerini ve katman uygulamalarını kaldırarak görüntü yönetimini basitleştirir.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
-- [Go to the partner website](https://www.liquidware.com/solutions/solutions-platform/microsoft).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [İş ortağı Web sitesine gidin](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
-## <a name="login-vsi"></a>Login VSI
+## <a name="login-vsi"></a>Oturum açma VSI
 
-![Login VSI Logo](./media/partners/loginvsi.png)
+![Oturum açma VSI logosu](./media/partners/loginvsi.png)
 
-Login VSI is a Windows Virtual Desktop value-added services provider and Microsoft partner delivering software for application performance testing in Windows Virtual Desktop environments. Customers moving their on-premises business services to Windows Virtual Desktop use Login VSI Enterprise Edition to evaluate and maintain optimal performance, scalability, and availability of Windows 10  Enterprise multi-session, Windows 10 Enterprise, and Windows 7 enabled with their business critical applications.
+Oturum açma sunucusu, Windows sanal masaüstü ortamlarında uygulama performansı testi için yazılım sunmaya yönelik bir Windows sanal masaüstü katma bir hizmet sağlayıcıdır ve Microsoft iş ortağıdır. Şirket içi iş hizmetlerini Windows sanal masaüstüne taşıyan müşteriler, Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise ve için en iyi performansı, ölçeklenebilirliği ve kullanılabilirliği değerlendirmek ve bakımını yapmak üzere Login VSI Enterprise Edition 'ı kullanır. Windows 7, iş açısından kritik uygulamalarıyla etkinleştirildi.
 
-- [Go to the partner website](https://www.loginvsi.com).
+- [İş ortağı Web sitesine gidin](https://www.loginvsi.com).
 
 ## <a name="nerdio"></a>Nerdio
 
-![Nerdio Logo](./media/partners/nerdio.png)
+![Nerdio logosu](./media/partners/nerdio.png)
 
-Nerdio is an Azure IT automation platform that makes it easy to deploy and manage Windows Virtual Desktop. Nerdio provides the knowledge and technology to deploy, price, package, manage, and optimize customers’ Azure deployments—with Windows Virtual Desktop front-and-center.
+Nerdio, Windows sanal masaüstü 'Nün dağıtılmasını ve yönetilmesini kolaylaştıran bir Azure BT Otomasyonu platformudur. Nerdio, Windows sanal masaüstü ön ve merkezi ile müşterilerin Azure dağıtımlarını dağıtmak, Fiyat, paketlemek, yönetmek ve iyileştirmek için bilgi ve teknoloji sağlar.
 
-Nerdio extends the value of Windows Virtual Desktop by making it easy to provision Azure resources and streamline deployment. With Nerdio for Azure, IT can automatically deploy and manage a complete Azure environment, including Windows Virtual Desktop, in under two hours.
+Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kolaylaştırarak Windows sanal masaüstü 'nün değerini genişletir. Azure için Nerdio sayesinde, Windows sanal masaüstü de dahil olmak üzere tüm Azure ortamlarını iki saat içinde otomatik olarak dağıtabilir ve yönetebilir.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Go to the partner website](https://getnerdio.com/windows-virtual-desktop/).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [İş ortağı Web sitesine gidin](https://getnerdio.com/windows-virtual-desktop/).
 
-## <a name="numecent"></a>Numecent
+## <a name="numecent"></a>Numesan
 
-![Numecent Logo](./media/partners/numecent.png)
+![Numesent logosu](./media/partners/numecent.png)
 
-Numecent is a Windows Virtual Desktop value-added services provider that significantly reduces the total operating costs through rapid onboarding and migration of complicated or incompatible Windows apps in Windows Virtual Desktop environments. Numecent also minimizes the amount of configuration that users need to do, reduces application updates, and simplifies complex processes. Because Numecent Cloudpaging supports more applications seamlessly than any other application delivery tool, it reduces time and IT workloads in environments with a diverse set of applications. 
+Numesent, Windows sanal masaüstü ortamlarında karmaşık veya uyumsuz Windows uygulamalarının hızlı bir şekilde eklenmesi ve geçirilmesi ile toplam işletim maliyetlerini önemli ölçüde azaltan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Numesent, kullanıcıların yapması gereken yapılandırma miktarını da en aza indirir, uygulama güncelleştirmelerini azaltır ve karmaşık işlemleri basitleştirir. Numesent Cloudsayfalama, diğer uygulama teslim araçlarından daha sorunsuz uygulamalar desteklediğinden, farklı uygulamalar kümesine sahip ortamlarda zaman ve BT iş yüklerini azaltır. 
 
-When used with Windows Virtual Desktop, Cloudpaging further reduces costs by completing software asset lifecycle from deployment to upgrading, metering, and removing applications. Cloudpaging simplifies image management by dynamically provisioning apps as needed in real time to the Windows Virtual Desktop deployments. Cloudpaging helps applications run without administration or intervention through the periodic Windows 10 updates. Cloudpaging also reduces the licensing cost of expensive applications by enabling more efficient deployment and usage of these applications. 
+Windows sanal masaüstü ile kullanıldığında Cloudpaging, dağıtım, ölçüm ve uygulamaları kaldırma için dağıtımdan yazılım varlık yaşam döngüsünü tamamlayarak maliyetleri azaltır. Cloudsayfalama, Windows sanal masaüstü dağıtımlarına gerçek zamanlı olarak uygulamaları gerektiği şekilde dinamik olarak sağlayarak görüntü yönetimini basitleştirir. Cloudsayfalama, uygulamaların düzenli Windows 10 güncelleştirmeleri aracılığıyla yönetimi veya müdahalesi olmadan çalışmasına yardımcı olur. Cloudsayfalama Ayrıca, bu uygulamaların daha verimli bir şekilde dağıtılmasını ve kullanımını etkinleştirerek pahalı uygulamaların lisanslama maliyetini azaltır. 
 
-- [Go to the partner website](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [İş ortağı Web sitesine gidin](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
 ## <a name="policypak"></a>PolicyPak
 
-![PolicyPak Logo](./media/partners/policypak.png)
+![PolicyPak logosu](./media/partners/policypak.png)
 
-PolicyPak Software is a Windows Virtual Desktop partner that performs total settings management for applications, desktop, browsers, Java, and security settings. PolicyPak keeps your desktop, system, and security settings in compliance. PolicyPak enhances the value of Windows Virtual Desktop by adding a suite of components to enhance Windows’ built-in administration. Use your existing Active Directory Group Policy and/or Windows Intune to deliver PolicyPak’s settings and increase administrators’ ability to manage their Windows 10 machines. 
+PolicyPak yazılımı, uygulamalar, Masaüstü, tarayıcılar, Java ve güvenlik ayarları için toplam ayar yönetimi gerçekleştiren bir Windows sanal masaüstü ortağıdır. PolicyPak, Masaüstü, sistem ve güvenlik ayarlarınızı uyumlu halde tutar. PolicyPak, Windows 'un yerleşik yönetimini iyileştirmek üzere bir bileşen paketi ekleyerek Windows sanal masaüstü 'nün değerini geliştirir. PolicyPak 'nin ayarlarını sunmak ve yöneticilerin Windows 10 makinelerini yönetme yeteneğini artırmak için mevcut Active Directory grup ilkesi ve/veya Windows Intune 'U kullanın. 
 
-The top use cases for PolicyPak are to remove local admin rights and overcome UAC prompts, block Ransomware, manage multiple browsers, manage Internet Explorer’s Enterprise and Compatibility modes, reduce the number of GPOs, manage Windows 10 File Associations, manage Windows 10 Start Menu and Taskbar, and manage Windows 10 Features and Optional features.  
+PolicyPak için en iyi kullanım örnekleri, yerel yönetici haklarını kaldırmak ve UAC istemlerini aşmak, fidye 'u engellemek, birden çok tarayıcıyı yönetmek, Internet Explorer 'ın kurumsal ve uyumluluk modlarını yönetmek, GPO sayısını azaltmak, Windows 10 dosya Ilişkilendirmelerini yönetmek, Windows 10 Başlat menüsünü ve görev çubuğunu yönetin ve Windows 10 özelliklerini ve Isteğe bağlı özellikleri yönetin.  
 
-- [Go to partner website](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+- [İş ortağı Web sitesine gidin](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
 
-![PrinterLogic Logo](./media/partners/printerlogic.png)
+![PrinterLogic logosu](./media/partners/printerlogic.png)
 
-PrinterLogic is a Windows Virtual Desktop value-added service provider platform that empowers IT professionals to eliminate all print servers and deliver a highly available serverless printing infrastructure. PrinterLogic extends the value of Windows Virtual Desktop and Azure by making it easy to manage centrally and deploy printer objects to any printer or endpoint OS. 
+PrinterLogic, BT uzmanlarına tüm yazdırma sunucularını ortadan kaldırmaya ve yüksek oranda kullanılabilir bir sunucusuz yazdırma Altyapısı sunmaya yönelik bir Windows sanal masaüstü katma değeri olan hizmet sağlayıcı platformudur. PrinterLogic, merkezi olarak yönetmeyi ve yazıcı nesnelerini herhangi bir yazıcıya veya uç nokta işletim sistemine dağıtmayı kolaylaştırarak Windows sanal masaüstü ve Azure 'un değerini genişletir. 
 
-Available as SaaS or as a web stack in your own private cloud, the PrinterLogic platform ensures users always have the right printers they need in their virtual sessions based on user ID, device name, or location. This functionality is complemented by a full suite of enterprise print management features such as print tracking and reporting, mobile printing, and secure badge release printing. 
+Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, PrinterLogic platform, kullanıcıların Kullanıcı KIMLIĞINE, cihaz adına veya konuma göre sanal oturumlarında gerek duydukları doğru yazıcılara her zaman sahip olmasını sağlar. Bu işlevsellik, yazdırma izleme ve raporlama, mobil yazdırma ve güvenli rozet yayını yazdırma gibi Kurumsal Yazdırma Yönetimi özelliklerinin eksiksiz bir paketi tarafından tamamlanmakta. 
 
-- [Go to partner website](https://www.printerlogic.com).
+- [İş ortağı Web sitesine gidin](https://www.printerlogic.com).
 
 ## <a name="printix"></a>Printix
 
-![Printix Logo](./media/partners/printix.png)
+![Printix logosu](./media/partners/printix.png)
 
-Printix is a Windows Virtual Desktop value-added service provider that automates user connection to office printing resources. As the missing piece in your customer Azure migration, Printix is the most cost-effective service available to remove infrastructure and IT tasks associated with supporting and optimizing print workflow for every user, regardless of location.
+Printix, Office yazdırma kaynaklarına Kullanıcı bağlantısını otomatikleştiren bir Windows sanal masaüstü katma değer hizmeti sağlayıcıdır. Müşteri Azure geçişinizdeki kayıp parça olarak, Printix, konumdan bağımsız olarak her kullanıcı için yazdırma iş akışını destekleme ve iyileştirme ile ilişkili altyapı ve BT görevlerini kaldırmak için kullanılabilen en düşük maliyetli hizmettir.
 
-Printing is a fundamental task in just about every office and small business environment. In order to take full advantage of Windows Virtual Desktop and provide a great user experience, it's essential to ensure your users can connect to printers with minimum effort and maximum reliability. With Printix, you can get the most out of Windows Virtual Desktop through single sign-on (SSO), silent configuration, regular updates, and continuous monitoring of your print environment.
+Yazdırma işlemi, yalnızca her ofis ve küçük işletme ortamıyla ilgili temel bir görevdir. Windows sanal masaüstü 'nden tam olarak yararlanabilmek ve harika bir kullanıcı deneyimi sunabilmeniz için, kullanıcılarınızın en düşük çabaya ve en yüksek güvenilirliğe sahip yazıcılara bağlanabilmelerini sağlamak gereklidir. Printix ile, tek oturum açma (SSO), sessiz yapılandırma, düzenli güncelleştirmeler ve yazdırma ortamınızın sürekli izlenmesini kullanarak Windows sanal masaüstünden en iyi şekilde yararlanın.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Go to the partner website](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Birleşik çözüme bakın kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [İş ortağı Web sitesine gidin](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 
-![RDPSoft logo](./media/partners/rdpsoft.png)
+![RDPSoft logosu](./media/partners/rdpsoft.png)
 
-RDPSoft is a Windows Virtual Desktop partner that provides powerful and inexpensive monitoring, management, and reporting solutions. Their Remote Desktop Commander offerings allow IT professionals to gain insight into the health, performance, user activity, licensing, and security of their Windows Virtual Desktop deployments. 
+RDPSoft, güçlü ve pahalı izleme, yönetim ve raporlama çözümleri sağlayan bir Windows sanal masaüstü iş ortağıdır. Kendi uzak masaüstü Commander teklifleri, BT uzmanlarının Windows sanal masaüstü dağıtımlarının sistem durumu, performans, Kullanıcı etkinliği, lisanslama ve güvenlikle ilgili Öngörüler sağlamasına imkan tanır. 
  
-RDPSoft's Remote Desktop Commander solutions enhance Windows Virtual Desktop administration. Premium Management features simplify delegation of Windows Virtual Desktop management tasks to support desk staff by providing remote assistance, user session, and process management. At the same time, the Remote Desktop Commander Suite collects rich metrics about per-user performance and load, user activity and auditing, Windows Virtual Desktop connection quality (latency and bandwidth), licensing, and security into a central Azure SQL database instance for review. With RDPSoft, rich historic reporting and comprehensive dashboards are just a click away.
+RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yönetimi 'ni geliştirir. Premium yönetim özellikleri, uzaktan yardım, Kullanıcı oturumu ve işlem yönetimi sağlayarak masaüstü personelini desteklemek için Windows sanal masaüstü yönetim görevlerinin temsilciliğini basitleştirir. Aynı zamanda, uzak masaüstü Commander Suite, Kullanıcı başına performans ve yükleme, Kullanıcı etkinlikleri ve denetim, Windows sanal masaüstü bağlantısı kalitesi (gecikme süresi ve bant genişliği), lisanslama ve güvenlik ile merkezi bir Azure SQL arasında zengin ölçümler toplar İnceleme için veritabanı örneği. RDPSoft ile, zengin geçmişe yönelik raporlama ve kapsamlı panolar yalnızca bir tıklama.
 
-- [Go to the partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [İş ortağı Web sitesine gidin](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
 
-## <a name="thinprint"></a>ThinPrint
+## <a name="thinprint"></a>Ölçülü yazdırma
 
-![ThinPrint Logo](./media/partners/thinprint.png)
+![Ölçülü yazdırma logosu](./media/partners/thinprint.png)
 
-ThinPrint is a Windows Virtual Desktop value-added services provider that delivers simple and secure cloud printing from Windows Virtual Desktop. With its services and software, existing print infrastructure can be utilized to print documents from the cloud. ThinPrint enables connection to both local and network printers, making it easy for users to print while at the office or working remotely.
+Ölçülü yazdırma, Windows sanal masaüstünden basit ve güvenli bulut yazdırma olanağı sunan bir Windows sanal masaüstü katma değer hizmeti sağlayıcıdır. Hizmet ve yazılımlarla, mevcut yazdırma Altyapısı, belgeleri buluttan yazdıracak şekilde kullanılabilir. Ölçülü baskı, hem yerel hem de ağ yazıcılarına bağlantı sağlar. böylece kullanıcılar ofis sırasında veya uzaktan çalışırken yazdırma yapmalarını kolaylaştırır.
 
-ThinPrint’s ezeep solution extends the value of Windows Virtual Desktop by enabling the connection to existing enterprise print infrastructure. ezeep gives users control over printing in the enterprise no matter where they are. Using ezeep, users can bridge the gap between Windows Virtual Desktop and printing hardware.
+Ölçülü yazdırma 'nın ezeep çözümü, mevcut kurumsal yazdırma altyapısına bağlantıyı etkinleştirerek Windows sanal masaüstü 'nün değerini genişletir. ezeep kullanıcılara nerede olurlarsa olsunlar üzerinde yazdırma üzerinde denetim sağlar. Ezeep kullanarak, kullanıcılar Windows sanal masaüstü ve yazdırma donanımı arasındaki boşluğu köprülemek için kullanılabilir.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
-- [Go to partner website](https://www.ezeep.com/wvd-printing).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [İş ortağı Web sitesine gidin](https://www.ezeep.com/wvd-printing).
 
-## <a name="tricerat"></a>Tricerat
+## <a name="tricerat"></a>İnceerat
 
-![Tricerat Logo](./media/partners/tricerat.png)
+![Karmaşık bir logo](./media/partners/tricerat.png)
 
-Tricerat offers a superior print management solution for Windows Virtual Desktop and other desktop platforms. Tricerat software has robust functionality, offering a better experience for both users and administrators. Administrators gain efficiencies through complete driver management, simplified deployment of print queues, and consistent management across hybrid platforms. User experience improves with shorter sign-in times, intelligent print queues based on user, device, and network location, and self-service options for quick printer selection. 
+Karmaşık bir şekilde, Windows sanal masaüstü ve diğer masaüstü platformları için üstün bir yazdırma yönetimi çözümü sunar. Karmaşık işlevselliğe sahip yazılım, güçlü işlevlere sahiptir ve hem kullanıcılar hem de Yöneticiler için daha iyi bir deneyim sunar. Yöneticiler, tüm sürücü yönetimi, yazdırma sıralarının Basitleştirilmiş dağıtımı ve hibrit platformlar arasında tutarlı yönetim aracılığıyla verimlilik elde edebilir. Kullanıcı deneyimi, daha kısa oturum açma süreleriyle, Kullanıcı, cihaz ve ağ konumuna dayalı akıllı yazdırma kuyrukları ve hızlı yazıcı seçimine yönelik self servis seçeneklerini geliştirir. 
 
-With Tricerat, printing is seamless in Windows Virtual Desktop and beyond. Tricerat software allows administrators to easily connect on-premises printers to the cloud, extending enterprise print management from traditional environments to new, modern workspaces.
+Karmaşık bir şekilde, Windows sanal masaüstü ve ötesinde yazdırma sorunsuz bir şekilde gerçekleştirilir. Karmaşık yazılım yazılımları, yöneticilerin şirket içi yazıcılara kolayca buluta bağlanmasını sağlar ve bu sayede geleneksel ortamlardan yeni, modern çalışma alanlarına kurumsal yazdırma yönetimini genişleterek.
 
-- [Go to the partner website](https://www.tricerat.com/solutions/wvd-microsoft/).
+- [İş ortağı Web sitesine gidin](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 
-![Workspot Logo](./media/partners/workspot.png)
+![Çalışma noktası logosu](./media/partners/workspot.png)
 
-Workspot is a Windows Virtual Desktop value-added services provider that equips enterprises with high-performance desktops and workstations in Azure. With Workspot, infrastructure provisioning is automated, which means users can access their Windows Virtual Desktop environment from anywhere around the world with high availability.
+Çalışma noktası, kuruluşların Azure 'da yüksek performanslı masaüstleri ve iş istasyonları sunan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Çalışma noktası sayesinde, altyapı sağlama otomatik hale gelir. Bu, kullanıcıların Windows sanal masaüstü ortamlarına dünyanın her yerinden yüksek kullanılabilirliğe erişmesini sağlayabilir.
 
-Workspot extends the value of Windows Virtual Desktop by simplifying the provisioning process of cloud desktop infrastructure. With Workspot, resources can be easily scaled up and down to meet the needs of different users and uses cases. Workspot can optimize deployments for high-performance GPU workstations necessary for CAD and engineering users, as well as Windows applications and Windows 10 desktops for all business users.
+İş noktası, bulut masaüstü altyapısının sağlama sürecini basitleştirerek Windows sanal masaüstü 'nün değerini genişletir. Çalışma noktası ile, farklı kullanıcıların ihtiyaçlarını karşılamak ve servis taleplerini kullanması için kaynakların ölçeği kolayca ölçeklendirilebilir ve azaltılabilir. Çalışma noktası, tüm iş kullanıcıları için Windows Uygulamaları ve Windows 10 masaüstü bilgisayarların yanı sıra CAD ve mühendislik kullanıcıları için gerekli olan yüksek performanslı GPU iş istasyonları için dağıtımları en iyi hale getirebilir.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
-- [Go to partner website](https://www.workspot.com/wvd).
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [İş ortağı Web sitesine gidin](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Learn more about Windows Virtual Desktop](overview.md).
-- [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- [Windows sanal masaüstü hakkında daha fazla bilgi edinin](overview.md).
+- [Windows sanal masaüstü 'nde kiracı oluşturun](tenant-setup-azure-active-directory.md).

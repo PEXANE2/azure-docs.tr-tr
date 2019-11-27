@@ -1,6 +1,6 @@
 ---
-title: Disable network policies for private endpoints in Azure
-description: Learn how to disable network policies for private endpoints.
+title: Azure 'da özel uç noktalar için ağ ilkelerini devre dışı bırakma
+description: Özel uç noktalar için ağ ilkelerini devre dışı bırakmayı öğrenin.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,16 +14,16 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224818"
 ---
-# <a name="disable-network-policies-for-private-endpoints"></a>Disable network policies for private endpoints
+# <a name="disable-network-policies-for-private-endpoints"></a>Özel uç noktalar için ağ ilkelerini devre dışı bırak
 
-Network policies like network security groups (NSG) are not supported for private endpoints. In order to deploy a Private Endpoint on a given subnet, an explicit disable setting is required on that subnet. This setting is only applicable for the Private Endpoint. For other resources in the subnet, access is controlled based on Network Security Groups (NSG) security rules definition. 
+Ağ güvenlik grupları (NSG) gibi ağ ilkeleri özel uç noktalar için desteklenmez. Belirli bir alt ağda özel bir uç nokta dağıtmak için bu alt ağda açık devre dışı bırakma ayarı gereklidir. Bu ayar yalnızca özel uç nokta için geçerlidir. Alt ağdaki diğer kaynaklar için, erişim ağ güvenlik grupları (NSG) güvenlik kuralları tanımına göre denetlenir. 
  
-When using the portal to create a private endpoint, this setting is automatically disabled as part of the create process. Deployment using other clients requires an additional step to change this setting. You can disable the setting using cloud shell from the Azure portal, or local installations of Azure PowerShell, Azure CLI, or use Azure Resource Manager templates.  
+Özel bir uç nokta oluşturmak için Portal kullanıldığında, bu ayar oluşturma sürecinin bir parçası olarak otomatik olarak devre dışıdır. Diğer istemcileri kullanarak dağıtım, bu ayarı değiştirmek için ek bir adım gerektirir. Cloud Shell 'i Azure portal veya Azure PowerShell, Azure CLı 'nin yerel yüklemelerinden veya Azure Resource Manager şablonları kullanarak ayarı devre dışı bırakabilirsiniz.  
  
-The following examples describe how to disable `PrivateEndpointNetworkPolicies` for a virtual network named *myVirtualNetwork* with a *default* subnet hosted in a resource group named *myResourceGroup*.
+Aşağıdaki örneklerde, *myVirtualNetwork* adlı bir sanal ağ için `PrivateEndpointNetworkPolicies`, *myresourcegroup*adlı bir kaynak grubunda barındırılan bir *varsayılan* alt ağ ile nasıl devre dışı bırakılacağı açıklanır.
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
-This section describes how to disable subnet private endpoint policies using Azure PowerShell.
+Bu bölüm, Azure PowerShell kullanarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağını açıklar.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-This section describes how to disable subnet private endpoint policies using Azure CLI.
+Bu bölümde, Azure CLı kullanılarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağı açıklanır.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -43,8 +43,8 @@ az network vnet subnet update \
   --vnet-name myVirtualNetwork \ 
   --disable-private-endpoint-network-policies true
 ```
-## <a name="using-a-template"></a>Using a template
-This section describes how to disable subnet private endpoint policies using Azure Resource Manager Template.
+## <a name="using-a-template"></a>Şablon kullanma
+Bu bölümde, Azure Resource Manager şablonu kullanılarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağı açıklanmaktadır.
 ```json
 { 
           "name": "myVirtualNetwork", 
@@ -70,5 +70,5 @@ This section describes how to disable subnet private endpoint policies using Azu
 } 
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-- Learn more about [Azure private endpoint](private-endpoint-overview.md)
+- [Azure özel uç noktası](private-endpoint-overview.md) hakkında daha fazla bilgi edinin
  

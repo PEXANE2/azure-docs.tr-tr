@@ -1,6 +1,6 @@
 ---
-title: Call an ASP.NET Web API protected by Azure AD- Microsoft identity platform
-description: In this quickstart, learn how to call an ASP.NET web API protected by Azure Active Directory from a Windows Desktop (WPF) application. The WPF client authenticates a user, requests an access token, and calls the web API.
+title: Azure AD ile korunan bir ASP.NET Web API 'SI çağırma-Microsoft Identity platform
+description: Bu hızlı başlangıçta, Windows Masaüstü (WPF) uygulamasından Azure Active Directory tarafından korunan bir ASP.NET Web API 'sinin nasıl çağrılacağını öğrenin. WPF istemcisi bir kullanıcının kimliğini doğrular, bir erişim belirteci ister ve Web API 'sini çağırır.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -24,219 +24,219 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328419"
 ---
-# <a name="build-a-multi-tenant-daemon-with-the-microsoft-identity-platform-endpoint"></a>Build a multi-tenant daemon with the Microsoft identity platform endpoint
+# <a name="build-a-multi-tenant-daemon-with-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktası ile çok kiracılı bir Daemon oluşturma
 
-In this tutorial, you learn how to use the Microsoft identity platform to access the data of Microsoft business customers in a long-running, non-interactive process. The sample daemon uses the [OAuth2 client credentials grant](v2-oauth2-client-creds-grant-flow.md) to acquire an access token, which it then uses to call the [Microsoft Graph](https://graph.microsoft.io) and access organizational data.
+Bu öğreticide Microsoft Identity platformunu kullanarak, uzun süreli ve etkileşimli olmayan bir işlemle Microsoft iş müşterilerinin verilerine nasıl erişebileceğinizi öğreneceksiniz. Örnek arka plan programı, daha sonra [Microsoft Graph](https://graph.microsoft.io) çağırmak ve kuruluş verilerine erişmek için kullanılan bir erişim belirteci almak için [OAuth2 istemci kimlik bilgilerini](v2-oauth2-client-creds-grant-flow.md) kullanır.
 
-The app is built as an ASP.NET MVC application, and uses the OWIN OpenID Connect middleware to sign in users.  Its "daemon" component in this sample is an API controller, which, when called, pulls in a list of users in the customer's Azure AD tenant from Microsoft Graph.  This `SyncController.cs` is triggered by an AJAX call in the web application, and uses the [Microsoft Authentication Library (MSAL) for .NET](msal-overview.md) to acquire an access token for Microsoft Graph.
+Uygulama bir ASP.NET MVC uygulaması olarak oluşturulmuştur ve Kullanıcı oturumu açmak için OWIN OpenID Connect ara yazılımını kullanır.  Bu örnekteki "Daemon" bileşeni, çağrıldığında müşterinin Azure AD kiracısındaki Kullanıcı listesini Microsoft Graph bir API denetleyicisidir.  Bu `SyncController.cs`, Web uygulamasındaki bir AJAX çağrısıyla tetiklenir ve Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
 
-For a simpler console daemon application, check out the [.NET Core daemon quickstart](quickstart-v2-netcore-daemon.md).
+Daha basit bir konsol Daemon uygulaması için [.NET Core Daemon hızlı başlangıç](quickstart-v2-netcore-daemon.md)' a göz atın.
 
 ## <a name="scenario"></a>Senaryo
 
-Because the app is a multi-tenant app intended for use by any Microsoft business customer, it must provide a way for customers to "sign up" or "connect" the application to their company data.  During the connect flow, a company administrator first grants **application permissions** directly to the app so that it can access company data in a non-interactive fashion, without the presence of a signed-in user.  The majority of the logic in this sample shows how to achieve this connect flow using the identity platform [admin consent](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) endpoint.
+Uygulama, herhangi bir Microsoft iş müşterisi tarafından kullanılmak üzere tasarlanan çok kiracılı bir uygulama olduğundan, müşterilerin uygulamayı şirket verilerine "kaydolmalarına" veya "bağlanmasına" olanak sağlaması gerekir.  Bağlantı akışı sırasında, şirket yöneticisi öncelikle uygulamaya doğrudan uygulama **izinleri** verir, böylece oturum açmış bir Kullanıcı mevcut olmadan şirket verilerine etkileşimli olmayan bir biçimde erişebilir.  Bu örnekteki mantığın çoğunluğunda, kimlik Platform [Yöneticisi onay](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) uç noktası kullanılarak bu bağlantı akışının nasıl elde edilebileceği gösterilmektedir.
 
 ![Topoloji](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-For more information on the concepts used in this sample, be sure to read the [identity platform endpoint client credentials protocol documentation](v2-oauth2-client-creds-grant-flow.md).
+Bu örnekte kullanılan kavramlar hakkında daha fazla bilgi için [kimlik platformu uç noktası istemci kimlik bilgileri Protokolü belgelerini](v2-oauth2-client-creds-grant-flow.md)okuduğunuzdan emin olun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To run the sample in this quickstart, you'll need:
+Bu hızlı başlangıçta örnek çalıştırmak için şunlar gerekir:
 
-- [Visual Studio 2017 or 2019](https://visualstudio.microsoft.com/downloads/)
-- An Azure Active Directory (Azure AD) tenant. For more information on how to get an Azure AD tenant, see [How to get an Azure AD tenant](quickstart-create-new-tenant.md)
-- One or more user accounts in your Azure AD tenant. This sample will not work with a Microsoft account (formerly Windows Live account). Therefore, if you signed in to the [Azure portal](https://portal.azure.com) with a Microsoft account and have never created a user account in your directory before, you need to do that now.
+- [Visual Studio 2017 veya 2019](https://visualstudio.microsoft.com/downloads/)
+- Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz. [Azure AD kiracısı alma](quickstart-create-new-tenant.md)
+- Azure AD kiracınızdaki bir veya daha fazla kullanıcı hesabı. Bu örnek, bir Microsoft hesabı (eski adıyla Windows Live hesabı) çalışmaz. Bu nedenle, bir Microsoft hesabı [Azure Portal](https://portal.azure.com) oturum açtıysanız ve daha önce dizininizde hiç bir kullanıcı hesabı oluşturmadıysanız, bunu şimdi yapmanız gerekir.
 
-## <a name="clone-or-download-this-repository"></a>Clone or download this repository
+## <a name="clone-or-download-this-repository"></a>Bu depoyu Kopyala veya indir
 
-From your shell or command line:
+Kabuk veya komut satırınızdan:
 
 ```Shell
 git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 ```
 
-Or [download the sample in a ZIP file](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
+Ya da [örneği BIR ZIP dosyasına indirin](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>Register the sample application with your Azure AD tenant
+## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>Örnek uygulamayı Azure AD kiracınızla kaydetme
 
-There is one project in this sample. To register it, you can:
+Bu örnekte bir proje var. Kaydolmak için şunları yapabilirsiniz:
 
-- Either follow the steps [Register the sample with your Azure Active Directory tenant](#register-the-sample-application-with-your-azure-ad-tenant) and [Configure the sample to use your Azure AD tenant](#choose-the-azure-ad-tenant-for-the-applications)
-- Or use PowerShell scripts that:
-  - **Automatically** creates the Azure AD applications and related objects (passwords, permissions, dependencies) for you
-  - Modify the Visual Studio projects' configuration files.
+- Adımları izleyerek [örneği Azure Active Directory kiracınızla kaydedin](#register-the-sample-application-with-your-azure-ad-tenant) ve [örneği Azure AD kiracınızı kullanacak şekilde yapılandırın](#choose-the-azure-ad-tenant-for-the-applications)
+- Veya PowerShell betiklerini kullanarak şunları yapın:
+  - , Azure AD uygulamalarını ve ilgili nesneleri (parolalar, izinler, bağımlılıklar) sizin için **otomatik olarak** oluşturur
+  - Visual Studio projelerinin yapılandırma dosyalarını değiştirin.
 
-If you want to use this automation:
+Bu Otomasyonu kullanmak istiyorsanız:
 
-1. On Windows, run PowerShell and navigate to the root of the cloned directory
-1. In PowerShell run:
+1. Windows üzerinde PowerShell 'i çalıştırın ve kopyalanan dizinin köküne gidin
+1. PowerShell çalıştırmasında:
 
    ```PowerShell
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
    ```
 
-1. Run the script to create your Azure AD application and configure the code of the sample application accordingly.
-1. In PowerShell run:
+1. Azure AD uygulamanızı oluşturmak ve örnek uygulamanın kodunu uygun şekilde yapılandırmak için betiği çalıştırın.
+1. PowerShell çalıştırmasında:
 
    ```PowerShell
    .\AppCreationScripts\Configure.ps1
    ```
 
-   > Other ways of running the scripts are described in [App Creation Scripts](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/blob/master/AppCreationScripts/AppCreationScripts.md)
+   > Betikleri çalıştırmanın diğer yolları [uygulama oluşturma betiklerine](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/blob/master/AppCreationScripts/AppCreationScripts.md) göre açıklanmıştır
 
-1. Open the Visual Studio solution and click start to run the code.
+1. Visual Studio çözümünü açın ve kodu çalıştırmak için Başlat ' a tıklayın.
 
-If you don't want to use this automation, follow the steps below.
+Bu Otomasyonu kullanmak istemiyorsanız, aşağıdaki adımları izleyin.
 
-### <a name="choose-the-azure-ad-tenant-for-the-applications"></a>Choose the Azure AD tenant for the applications
+### <a name="choose-the-azure-ad-tenant-for-the-applications"></a>Uygulamalar için Azure AD kiracısını seçin
 
-As a first step you'll need to:
+İlk adım olarak şunları yapmanız gerekir:
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. If your account is present in more than one Azure AD tenant, select your profile at the top-right corner in the menu on top of the page, and then **switch directory**.
-   Change your portal session to the desired Azure AD tenant.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Hesabınız birden fazla Azure AD kiracısında mevcutsa, sayfanın üstündeki menüdeki sağ üst köşedeki profilinizi seçin ve ardından dizin ' i **değiştirin**.
+   Portal oturumunuzu istenen Azure AD kiracısına değiştirin.
 
-### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>Register the client app (dotnet-web-daemon-v2)
+### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>İstemci uygulamasını kaydetme (DotNet-Web-Daemon-v2)
 
-1. Navigate to the Microsoft identity platform for developers [App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
-1. Select **New registration**.
+1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
+1. **Yeni kayıt**seçeneğini belirleyin.
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
    - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `dotnet-web-daemon-v2`.
-   - In the **Supported account types** section, select **Accounts in any organizational directory**.
-   - In the Redirect URI (optional) section, select **Web** in the combo-box and enter the following redirect URIs:
+   - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
+   - Yeniden yönlendirme URI 'SI (isteğe bağlı) bölümünde, açılan kutudan **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'lerini girin:
        - `https://localhost:44316/`
-       - `https://localhost:44316/Account/GrantPermissions` If there are more than one redirect URIs, you'd need to add them from the **Authentication** tab later after the app has been created successfully.
+       - `https://localhost:44316/Account/GrantPermissions` birden fazla yeniden yönlendirme URI 'si varsa, uygulama başarıyla oluşturulduktan sonra bunları **kimlik doğrulama** sekmesinden eklemeniz gerekir.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
-1. On the app **Overview** page, find the **Application (client) ID** value and record it for later. You'll need it to configure the Visual Studio configuration file for this project.
+1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-   - In the **Advanced settings** section set **Logout URL** to `https://localhost:44316/Account/EndSession`
-   - In the **Advanced settings** | **Implicit grant** section, check **Access tokens** and **ID tokens** as this sample requires the [Implicit grant flow](v2-oauth2-implicit-grant-flow.md) to be enabled to sign in the user, and call an API.
+   - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** `https://localhost:44316/Account/EndSession` olarak ayarlayın
+   - **Gelişmiş ayarlar** | **örtük verme** bölümünde, bu örnek, kullanıcının oturum açması için [örtük verme AKıŞıNıN](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirdiğinden ve bir API çağırdıkça, **erişim belirteçlerini** ve **kimlik belirteçlerini** denetleyin.
 1. **Kaydet**’i seçin.
-1. From the **Certificates & secrets** page, in the **Client secrets** section, choose **New client secret**:
+1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin:
 
-   - Type a key description (of instance `app secret`),
-   - Select a key duration of either **In 1 year**, **In 2 years**, or **Never Expires**.
-   - When you press the **Add** button, the key value will be displayed, copy, and save the value in a safe location.
-   - You'll need this key later to configure the project in Visual Studio. This key value will not be displayed again, nor retrievable by any other means, so record it as soon as it is visible from the Azure portal.
-1. In the list of pages for the app, select **API permissions**
-   - Click the **Add a permission** button and then,
-   - Ensure that the **Microsoft APIs** tab is selected
-   - In the *Commonly used Microsoft APIs* section, click on **Microsoft Graph**
-   - In the **Application permissions** section, ensure that the right permissions are checked: **User.Read.All**
-   - Select the **Add permissions** button
+   - Bir anahtar açıklaması yazın (örneğin `app secret`),
+   - **1 yılda**, **2 yıl içinde**bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
+   - **Ekle** düğmesine bastığınızda, anahtar değeri görüntülenir, kopyalayın ve değeri güvenli bir konumda kaydeder.
+   - Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir. Bu anahtar değeri bir daha görüntülenmez veya başka yollarla alınabilir, bu nedenle Azure portal görünür hale geldiğinde onu kaydedin.
+1. Uygulama için sayfa listesinde, **API izinleri** ' ni seçin.
+   - **Izin Ekle** düğmesine tıklayın ve ardından
+   - **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun
+   - *Yaygın olarak kullanılan Microsoft API 'leri* bölümünde, **Microsoft Graph** ' ye tıklayın.
+   - **Uygulama izinleri** bölümünde, doğru izinlerin işaretli olduğundan emin olun: **User. Read. All**
+   - **Izin Ekle** düğmesini seçin
 
-## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Configure the sample to use your Azure AD tenant
+## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Örneği Azure AD kiracınızı kullanacak şekilde yapılandırın
 
-In the steps below, "ClientID" is the same as "Application ID" or "AppId".
+Aşağıdaki adımlarda, "ClientID", "uygulama KIMLIĞI" veya "AppID" ile aynıdır.
 
-Open the solution in Visual Studio to configure the projects
+Projeleri yapılandırmak için Visual Studio 'da çözümü açın
 
-### <a name="configure-the-client-project"></a>Configure the client project
+### <a name="configure-the-client-project"></a>İstemci projesini yapılandırma
 
-If you used the setup scripts, the following changes will have been applied for you.
+Kurulum betiklerini kullandıysanız, sizin için aşağıdaki değişiklikler uygulanmış olur.
 
-1. Open the `UserSync\Web.Config` file
-1. Find the app key `ida:ClientId` and replace the existing value with the application ID (clientId) of the `dotnet-web-daemon-v2` application copied from the Azure portal.
-1. Find the app key `ida:ClientSecret` and replace the existing value with the key you saved during the creation of the `dotnet-web-daemon-v2` app, in the Azure portal.
+1. `UserSync\Web.Config` dosyasını açın
+1. Uygulama anahtarı `ida:ClientId` bulun ve mevcut değeri, Azure portal kopyaladığınız `dotnet-web-daemon-v2` uygulamanın uygulama KIMLIĞI (ClientID) ile değiştirin.
+1. Uygulama anahtarı `ida:ClientSecret` bulun ve mevcut değeri, Azure portal `dotnet-web-daemon-v2` uygulamasının oluşturulması sırasında kaydettiğiniz anahtarla değiştirin.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-Clean the solution, rebuild the solution, and run  UserSync application, and begin by signing in as an administrator in your Azure AD tenant.  If you don't have an Azure AD tenant for testing, you can [follow these instructions](quickstart-create-new-tenant.md) to get one.
+Çözümü temizleyin, çözümü yeniden derleyin ve UserSync uygulamasını çalıştırın ve Azure AD kiracınızda yönetici olarak oturum açarak başlayın.  Test için bir Azure AD kiracınız yoksa, bir tane almak için [Bu yönergeleri izleyebilirsiniz](quickstart-create-new-tenant.md) .
 
-When you sign in, the app will first ask you for permission to sign you in & read your user profile.  This consent allows the application to ensure that you are a business user.
+Oturum açtığınızda, uygulama öncelikle Kullanıcı profilinizi okumak & oturumunuzu açmanız için sizden izin ister.  Bu izin, uygulamanın bir iş kullanıcısı olduğunuzdan emin olmanızı sağlar.
 
-![User Consent](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
+![Kullanıcı onayı](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
 
-The application will then try to sync a list of users from your Azure AD tenant, via the Microsoft Graph.  If it is unable to do so, it will ask you (the tenant administrator) to connect your tenant to the application.
+Uygulama daha sonra Microsoft Graph aracılığıyla Azure AD kiracınızdan bir kullanıcı listesini eşitlemeye çalışır.  Bunu yapamaması durumunda, kiracınızı uygulamaya bağlamak için sizden (kiracı yöneticisi) sorun olacaktır.
 
-The application will then ask for permission to read the list of users in your tenant.
+Daha sonra uygulama, kiracınızdaki kullanıcıların listesini okumak için izin ister.
 
-![Admin Consent](./media/tutorial-v2-aspnet-daemon-webapp/adminconsent.PNG)
+![Yönetici onayı](./media/tutorial-v2-aspnet-daemon-webapp/adminconsent.PNG)
 
-**You will be signed out from the app after granting permission**. This is done to ensure that any existing access tokens for Graph is removed from the token cache. Once you sign in again, the  fresh token obtained will have the necessary permissions to make calls to MS Graph.
-When you grant the permission, the application will then be able to query for users at any point.  You can verify this by clicking the **Sync Users** button on the users page, refreshing the list of users.  Try adding or removing a user and resyncing the list (but note that it only syncs the first page of users!).
+**İzin verdikten sonra uygulamadan oturumunuz açılır**. Bu işlem, Graph için var olan erişim belirteçlerinin belirteç önbelleğinden kaldırıldığından emin olmak için yapılır. Yeniden oturum açtıktan sonra, elde edilen yeni belirteç MS grafiğine çağrı yapmak için gerekli izinlere sahip olur.
+İzin verdiğinizde, uygulama herhangi bir noktada kullanıcıları sorgulayabilir.  Kullanıcılar sayfasında kullanıcıları **Eşitle** düğmesine tıklayıp Kullanıcı listesini yenileyerek bunu doğrulayabilirsiniz.  Bir Kullanıcı eklemeyi veya kaldırmayı deneyin (ancak yalnızca kullanıcıların ilk sayfasını eşitletdiğine unutmayın!).
 
-## <a name="about-the-code"></a>About the code
+## <a name="about-the-code"></a>Kod hakkında
 
-The relevant code for this sample is in the following files:
+Bu örnek için ilgili kod aşağıdaki dosyalardır:
 
-- Initial sign-in: `App_Start\Startup.Auth.cs`, `Controllers\AccountController.cs`.  In particular, the actions on the controller have an Authorize attribute, which forces the user to sign in. The application uses the [authorization code flow](v2-oauth2-auth-code-flow.md) to sign in the user.
-- Syncing the list of users to the local in-memory store: `Controllers\SyncController.cs`
-- Displaying the list of users from the local in-memory store: `Controllers\UserController.cs`
-- Acquiring permissions from the tenant admin using the admin consent endpoint: `Controllers\AccountController.cs`
+- İlk oturum açma: `App_Start\Startup.Auth.cs`, `Controllers\AccountController.cs`.  Özellikle, denetleyicideki eylemlerin bir Yetkilendir özniteliği vardır ve bu, kullanıcıyı oturum açmaya zorlar. Uygulama, kullanıcının oturum açması için [yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md) kullanır.
+- Kullanıcı listesini yerel bellek içi depoda eşitleme: `Controllers\SyncController.cs`
+- Yerel bellek içi depodaki kullanıcıların listesini görüntüleme: `Controllers\UserController.cs`
+- Yönetici onay uç noktasını kullanarak kiracı yöneticisinden izinler alınıyor: `Controllers\AccountController.cs`
 
-## <a name="recreate-this-sample-app"></a>Recreate this sample app
+## <a name="recreate-this-sample-app"></a>Bu örnek uygulamayı yeniden oluştur
 
-1. In Visual Studio, create a new `Visual C#` `ASP.NET Web Application (.NET Framework)` project. In the next screen, choose the `MVC` project template. Also add folder and core references for `Web API` as you would be adding a Web API controller later.  Leave the project's chosen authentication mode as the default, that is, `No Authentication`".
-2. Select the project in the **Solution Explorer** window and press the **F4** key to bring project properties. In the project properties, set **SSL Enabled** to be `True`. Note the **SSL URL**. You will need it when configuring this application's registration in the Azure portal.
-3. Add the following ASP.Net OWIN middleware NuGets: `Microsoft.Owin.Security.ActiveDirectory`, `Microsoft.Owin.Security.Cookies` and `Microsoft.Owin.Host.SystemWeb`, `Microsoft.IdentityModel.Protocol.Extensions`, `Microsoft.Owin.Security.OpenIdConnect` and `Microsoft.Identity.Client`. 
-4. In the `App_Start` folder, create a class `Startup.Auth.cs`. Remove `.App_Start` from the namespace name.  Replace the code for the `Startup` class with the code from the same file of the sample app.  Be sure to take the whole class definition!  The definition changes from `public class Startup` to `public partial class Startup`
-5. In `Startup.Auth.cs` resolve missing references by adding `using` statements as suggested by Visual Studio intellisense.
-6. Right-click on the project, select Add, select "Class", and in the search box enter "OWIN".  "OWIN Startup class" will appear as a selection; select it, and name the class `Startup.cs`.
-7. In `Startup.cs`, replace the code for the `Startup` class with the code from the same file of the sample app.  Again, note the definition changes from `public class Startup` to `public partial class Startup`.
-8. In the  folder, add a new class called `MsGraphUser.cs`.  Replace the implementation with the contents of the file of the same name from the sample.
-9. Add a new **MVC 5 Controller - Empty** called `AccountController`. Replace the implementation with the contents of the file of the same name from the sample.
-10. Add a new **MVC 5 Controller - Empty** called `UserController`. Replace the implementation with the contents of the file of the same name from the sample.
-11. Add a new **Web API 2 Controller - Empty** called `SyncController`. Replace the implementation with the contents of the file of the same name from the sample.
-12. For the user interface, in the `Views\Account` folder, add three **Empty (without model) Views** named `GrantPermissions`, `Index` and `UserMismatch` and one named `Index` in the `Views\User` folder. Replace the implementation with the contents of the file of the same name from the sample.
-13. Update the `Shared\_Layout.cshtml` and `Home\Index.cshtml` to correctly link the various views together.
+1. Visual Studio 'da yeni bir `Visual C#` `ASP.NET Web Application (.NET Framework)` projesi oluşturun. Sonraki ekranda `MVC` proje şablonunu seçin. Ayrıca, daha sonra bir Web API denetleyicisi eklerken `Web API` için klasör ve çekirdek başvurular ekleyin.  Projenin seçili kimlik doğrulama modu ' nu varsayılan, yani `No Authentication`olarak bırakın.
+2. **Çözüm Gezgini** penceresinde projeyi seçin ve proje özelliklerini getirmek için **F4** tuşuna basın. Proje özellikleri 'nde **SSL** 'yi `True`olarak ayarlayın. **SSL URL 'sini**aklınızda edin. Azure portal bu uygulamanın kaydını yapılandırırken ihtiyacınız olacak.
+3. Aşağıdaki ASP.Net OWIN ara yazılımını ekleyin Nual: `Microsoft.Owin.Security.ActiveDirectory`, `Microsoft.Owin.Security.Cookies` ve `Microsoft.Owin.Host.SystemWeb`, `Microsoft.IdentityModel.Protocol.Extensions`, `Microsoft.Owin.Security.OpenIdConnect` ve `Microsoft.Identity.Client`. 
+4. `App_Start` klasöründe bir sınıf `Startup.Auth.cs`oluşturun. Ad alanı adından `.App_Start` kaldırın.  `Startup` sınıfı için kodu, örnek uygulamanın aynı dosyasındaki kodla değiştirin.  Tüm sınıf tanımını aldığınızdan emin olun!  Tanım `public class Startup` `public partial class Startup` olarak değişir
+5. `Startup.Auth.cs` içinde, Visual Studio IntelliSense tarafından önerildiği şekilde `using` deyimleri ekleyerek eksik başvuruları çözün.
+6. Projeye sağ tıklayın, Ekle ' yi seçin, "sınıf" ' i seçin ve arama kutusuna "OWIN" yazın.  "OWıN Startup Class" seçim olarak görünür; seçin ve `Startup.cs`sınıfı adlandırın.
+7. `Startup.cs`, `Startup` sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin.  Tanımı, `public class Startup` `public partial class Startup`olarak değiştirir.
+8. Klasöründe `MsGraphUser.cs`adlı yeni bir sınıf ekleyin.  Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+9. Yeni bir **MVC 5 denetleyicisi ekleme-** `AccountController`adlı boş. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+10. Yeni bir **MVC 5 denetleyicisi ekleme-** `UserController`adlı boş. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+11. Yeni bir **Web API 2 denetleyicisi ekleyin-** `SyncController`adlı bir boş. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+12. Kullanıcı arabirimi için, `Views\Account` klasöründe, `GrantPermissions`, `Index` ve `UserMismatch` adlı üç **boş (model olmadan) görünümleri** ve `Index` klasöründe bir adlandırılmış `Views\User` ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+13. `Shared\_Layout.cshtml` ve `Home\Index.cshtml` çeşitli görünümleri birbirine doğru şekilde bağlamak için güncelleştirin.
 
-## <a name="deploy-this-sample-to-azure"></a>Deploy this sample to Azure
+## <a name="deploy-this-sample-to-azure"></a>Bu örneği Azure 'a dağıtın
 
-This project has WebApp / Web API projects. To deploy them to Azure Web Sites, you'll need, for each one, to:
+Bu projede WebApp/Web API projeleri vardır. Bunları Azure Web sitelerine dağıtmak için, her biri için şunları yapmanız gerekir:
 
-- create an Azure Web Site
-- publish the Web App / Web APIs to the web site, and
-- update its client(s) to call the web site instead of IIS Express.
+- Azure Web sitesi oluşturma
+- Web uygulaması/Web API 'Lerini Web sitesinde yayımlayın ve
+- istemci (ler) i IIS Express yerine Web sitesini çağırmak için güncelleştirin.
 
-### <a name="create-and-publish-the-dotnet-web-daemon-v2-to-an-azure-web-site"></a>Create and publish the `dotnet-web-daemon-v2` to an Azure Web Site
+### <a name="create-and-publish-the-dotnet-web-daemon-v2-to-an-azure-web-site"></a>`dotnet-web-daemon-v2` Azure Web sitesinde oluşturma ve yayımlama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Click `Create a resource` in the top left-hand corner, select **Web** --> **Web App**, and give your web site a name, for example, `dotnet-web-daemon-v2-contoso.azurewebsites.net`.
-1. Thereafter select the `Subscription`, `Resource Group`, `App service plan and Location`. `OS` will be **Windows** and `Publish` will be **Code**.
-1. Click `Create` and wait for the App Service to be created.
-1. Once you get the `Deployment succeeded` notification, then click on `Go to resource` to navigate to the newly created App service.
-1. Once the web site is created, locate it in the **Dashboard** and click it to open **App Services** **Overview** screen.
-1. From the **Overview** tab of the App Service, download the publish profile by clicking the **Get publish profile** link and save it.  Other deployment mechanisms, such as from source control, can also be used.
-1. Switch to Visual Studio and go to the dotnet-web-daemon-v2 project.  Right click on the project in the Solution Explorer and select **Publish**.  Click **Import Profile** on the bottom bar, and import the publish profile that you downloaded earlier.
-1. Click on **Configure** and in the `Connection tab`, update the Destination URL so that it is a `https` in the home page url, for example [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). **İleri**’ye tıklayın.
-1. On the Settings tab, make sure `Enable Organizational Authentication` is NOT selected.  **Kaydet** düğmesine tıklayın. Click on **Publish** on the main screen.
-1. Visual Studio will publish the project and automatically open a browser to the URL of the project.  If you see the default web page of the project, the publication was successful.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol üst köşedeki `Create a resource` ' a tıklayın, **web** --> **Web uygulaması**' nı seçin ve Web sitenize bir ad verin, örneğin `dotnet-web-daemon-v2-contoso.azurewebsites.net`.
+1. Bundan sonra `Subscription`, `Resource Group``App service plan and Location`seçin. `OS`, **Windows** ve `Publish` **kod**olacaktır.
+1. `Create` ' a tıklayın ve App Service oluşturulmasını bekleyin.
+1. `Deployment succeeded` bildirimi aldıktan sonra, yeni oluşturulan App Service ' e gitmek için `Go to resource` ' a tıklayın.
+1. Web sitesi oluşturulduktan sonra **panoyu panoda** bulun ve **App Services** **genel bakış** ekranını açmak için tıklayın.
+1. App Service **genel bakış** sekmesinden yayımlama profilini **Al** bağlantısına tıklayarak yayımlama profilini indirin ve kaydedin.  Kaynak denetimindeki gibi diğer dağıtım mekanizmaları de kullanılabilir.
+1. Visual Studio 'ya geçin ve DotNet-Web-Daemon-v2 projesine gidin.  Çözüm Gezgini projeye sağ tıklayın ve **Yayımla**' yı seçin.  Alt çubukta **profili Içeri aktar** ' a tıklayın ve daha önce indirdiğiniz yayımlama profilini içeri aktarın.
+1. **Yapılandır** ' a tıklayın ve `Connection tab`, hedef URL 'yi giriş sayfası URL 'sindeki bir `https` olacak şekilde güncelleştirin, örneğin [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). **İleri**’ye tıklayın.
+1. Ayarlar sekmesinde `Enable Organizational Authentication` seçili olmadığından emin olun.  **Save (Kaydet)** düğmesine tıklayın. Ana ekranda **Yayımla** ' ya tıklayın.
+1. Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir tarayıcı açacak.  Projenin varsayılan Web sayfasını görürseniz, yayın başarılı olmuştur.
 
-### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Update the Azure AD tenant application registration for `dotnet-web-daemon-v2`
+### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>`dotnet-web-daemon-v2` için Azure AD kiracı uygulaması kaydını güncelleştirme
 
-1. Navigate back to the [Azure portal](https://portal.azure.com).
-In the left-hand navigation pane, select the **Azure Active Directory** service, and then select **App registrations**.
-1. In the resultant screen, select the `dotnet-web-daemon-v2` application.
-1. In the **Authentication** | page for your application, update the Logout URL fields with the address of your service, for example [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)
-1. From the *Branding* menu, update the **Home page URL**, to the address of your service, for example [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Yapılandırmayı kaydedin.
-1. Add the same URL in the list of values of the *Authentication -> Redirect URIs* menu. If you have multiple redirect urls, make sure that there a new entry using the App service's Uri for each redirect url.
+1. [Azure Portal](https://portal.azure.com)geri gidin.
+Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin.
+1. Sonuç ekranında `dotnet-web-daemon-v2` uygulamasını seçin.
+1. **Kimlik doğrulamasında** | sayfasında, oturum kapatma URL 'SI alanlarını hizmetinizin adresiyle güncelleştirin, örneğin [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)
+1. *Marka* menüsünde, **giriş sayfası URL 'sini**hizmetinizin adresine güncelleştirin, örneğin [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Yapılandırmayı kaydedin.
+1. *Kimlik doğrulama-> yeniden yönlendirme URI 'leri* menüsündeki değerler listesinde aynı URL 'yi ekleyin. Birden çok yeniden yönlendirme URL 'Si varsa, her yönlendirme URL 'si için App Service 'in URI 'sini kullanarak yeni bir giriş olduğundan emin olun.
 
-## <a name="community-help-and-support"></a>Community help and support
+## <a name="community-help-and-support"></a>Topluluk yardım ve destek
 
-Use [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) to get support from the community.
-Ask your questions on Stack Overflow first and browse existing issues to see if someone has asked your question before.
-Make sure that your questions or comments are tagged with [`adal` `msal` `dotnet`].
+Topluluktan destek almak için [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) kullanın.
+Önce Stack Overflow sorularınızı sorun ve daha önce sorunuzu isteyip istemediğini görmek için mevcut sorunları inceleyin.
+Sorularınıza veya yorumlarınızın [`adal` `msal` `dotnet`] ile etiketlendiğinden emin olun.
 
-If you find and bug in the sample, please raise the issue on [GitHub Issues](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues).
+Örnekte hata bulursanız ve hata varsa, lütfen [GitHub sorunları](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues)üzerinde sorunu yükseltin.
 
-If you find a bug in MSAL.NET, please raise the issue on [MSAL.NET GitHub Issues](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues).
+MSAL.NET içinde bir hata bulursanız, lütfen sorunu [msal.net GitHub sorunları](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues)üzerinde yükseltin.
 
-To provide a recommendation, visit the following [User Voice page](https://feedback.azure.com/forums/169401-azure-active-directory).
+Öneri sağlamak için aşağıdaki [Kullanıcı sesi sayfasını](https://feedback.azure.com/forums/169401-azure-active-directory)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Learn more about the different [Authentication flows and application scenarios](authentication-flows-app-scenarios.md) that the Microsoft identity platform supports.
+Microsoft Identity platformunun desteklediği farklı [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin.
 
-For more information, see the following conceptual documentation:
+Daha fazla bilgi için aşağıdaki kavramsal belgelere bakın:
 
-- [Tenancy in Azure Active Directory](single-and-multi-tenant-apps.md)
+- [Azure Active Directory kiracı](single-and-multi-tenant-apps.md)
 - [Azure AD uygulaması onay deneyimlerini anlama](application-consent-experience.md)
-- [How to: Sign in any Azure Active Directory user using the multi-tenant application pattern](howto-convert-app-to-be-multi-tenant.md)
-- [Understand user and admin consent](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Application and service principal objects in Azure Active Directory](app-objects-and-service-principals.md)
-- [Quickstart: Register an application with the Microsoft identity platform](quickstart-register-app.md)
-- [Quickstart: Configure a client application to access web APIs](quickstart-configure-app-access-web-apis.md)
-- [Acquiring a token for an application with client credential flows](msal-client-applications.md)
+- [Nasıl yapılır: çok kiracılı uygulama modelini kullanarak tüm Azure Active Directory kullanıcıları oturum açma](howto-convert-app-to-be-multi-tenant.md)
+- [Kullanıcı ve yönetici onayını anlama](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
+- [Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md)
+- [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
+- [Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma](quickstart-configure-app-access-web-apis.md)
+- [İstemci kimlik bilgisi akışlarıyla bir uygulama için belirteç alma](msal-client-applications.md)
 
-For a simpler multi-tenant console daemon application, check out the [.NET Core daemon quickstart](quickstart-v2-netcore-daemon.md).
+Daha basit bir çok kiracılı konsol Daemon uygulaması için [.NET Core Daemon hızlı başlangıç](quickstart-v2-netcore-daemon.md)' a göz atın.

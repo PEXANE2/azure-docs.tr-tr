@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Red Hat OpenShift clusters with Azure Monitor for containers | Microsoft Docs
-description: This article describes how you can configure Azure Monitor for containers to monitor Kubernetes clusters hosted on Azure Red Hat OpenShift.
+title: Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma | Microsoft Docs
+description: Bu makalede, Azure Red Hat OpenShift 'te barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -14,194 +14,194 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382252"
 ---
-# <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Configure Azure Red Hat OpenShift clusters with Azure Monitor for containers
+# <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma
 
-Azure Monitor for containers provides rich monitoring experience for the Azure Kubernetes Service (AKS) and AKS Engine clusters. This article describes how to enable monitoring of Kubernetes clusters hosted on [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) to achieve a similar monitoring experience.
+Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, benzer bir izleme deneyimi elde etmek için [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) üzerinde barındırılan Kubernetes kümelerinin izlenmesini nasıl etkinleştireceğinizi açıklar.
 
 >[!NOTE]
->Support for Red Hat OpenShift is a feature in public preview at this time.
+>Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
 >
 
-Azure Monitor for containers can be enabled for new, or one or more existing deployments of Azure Red Hat OpenShift using the following supported methods:
+Kapsayıcılar için Azure Izleyici, yeni bir veya daha fazla Azure Red Hat OpenShift dağıtımı için aşağıdaki desteklenen yöntemleri kullanarak etkinleştirilebilir:
 
-- For an existing cluster from the Azure portal or using Azure Resource Manager template
-- For a new cluster using Azure Resource Manager template 
+- Azure portal veya Azure Resource Manager şablonu kullanarak var olan bir küme için
+- Azure Resource Manager şablonu kullanan yeni bir küme için 
 
-## <a name="supported-and-unsupported-features"></a>Supported and unsupported features
+## <a name="supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen özellikler
 
-Azure Monitor for containers supports monitoring Azure Red Hat OpenShift as described in the [Overview](container-insights-overview.md) article, except for the following features:
+Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview.md) makalesinde açıklandığı şekilde Azure Red Hat OpenShift 'i izlemeyi destekler, ancak aşağıdaki özellikler hariç:
 
-- Live data
-- Prometheus metrics scraping
-- [Collect metrics](container-insights-update-metrics.md) from cluster nodes and pods and storing them in the Azure Monitor metrics database
-- Health feature
+- Canlı veriler
+- Prometheus ölçümleri scraping
+- Küme düğümlerinden ve yığınlardan [ölçümler toplayın](container-insights-update-metrics.md) ve bunları Azure izleyici ölçümleri veritabanında depolarsınız
+- Sistem durumu özelliği
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- To enable and access the features in Azure Monitor for containers, at a minimum you need to be a member of the Azure *Contributor* role in the Azure subscription, and a member of the [*Log Analytics Contributor*](../platform/manage-access.md#manage-access-using-azure-permissions) role of the Log Analytics workspace configured with Azure Monitor for containers.
+- Kapsayıcılar için Azure Izleyici 'deki özellikleri etkinleştirmek ve bu özelliklere erişmek için, en azından Azure aboneliğindeki Azure *katkıda* bulunan rolünün bir üyesi olmanız ve kapsayıcılar Için Azure izleyici ile yapılandırılmış Log Analytics çalışma alanının [*Log Analytics katkıda*](../platform/manage-access.md#manage-access-using-azure-permissions) bulunan rolünün bir üyesi olmanız gerekir.
 
-- To view the monitoring data, you are a member of the [*Log Analytics reader*](../platform/manage-access.md#manage-access-using-azure-permissions) role permission with the Log Analytics workspace configured with Azure Monitor for containers.
+- İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanına [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolü izninin bir üyesi olursunuz.
 
-## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Enable for a new cluster using an Azure Resource Manager template
+## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak yeni küme için etkinleştirme
 
-Perform the following steps to deploy an Azure Red Hat OpenShift cluster with monitoring enabled. Before proceeding, review the tutorial [Create an Azure Red Hat OpenShift cluster](../../openshift/tutorial-create-cluster.md#prerequisites) to understand the dependencies that you need to configure so your environment is set up correctly.
+İzleme özelliği etkinken bir Azure Red Hat OpenShift kümesi dağıtmak için aşağıdaki adımları gerçekleştirin. Devam etmeden önce, ortamınızın doğru şekilde ayarlanabilmesi için yapılandırmanız gereken bağımlılıkları anlamak üzere [Azure Red Hat OpenShift kümesi oluşturma](../../openshift/tutorial-create-cluster.md#prerequisites) öğreticisini gözden geçirin.
 
-This method includes two JSON templates. One template specifies the configuration to deploy the cluster with monitoring enabled, and the other contains parameter values that you configure to specify the following:
+Bu yöntem, iki JSON şablonları içerir. Bir şablon, izleme etkin olan kümeyi dağıtmaya yönelik yapılandırmayı belirtir ve diğeri aşağıdakileri belirtmek için yapılandırdığınız parametre değerlerini içerir:
 
-- The Azure Red Hat OpenShift cluster resource ID. 
+- Azure Red Hat OpenShift kümesi kaynak KIMLIĞI. 
 
-- The resource group the cluster is deployed in.
+- Kümenin dağıtıldığı kaynak grubu.
 
-- [Azure Active Directory tenant ID](../../openshift/howto-create-tenant.md#create-a-new-azure-ad-tenant) noted after performing the steps to create one or one already created.
+- Azure Active Directory bir veya zaten oluşturulmuş bir oluşturma adımları gerçekleştirildikten sonra belirtilen [KIRACı kimliği](../../openshift/howto-create-tenant.md#create-a-new-azure-ad-tenant) .
 
-- [Azure Active Directory client application ID](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-app-registration) noted after performing the steps to create one or one already created.
+- Azure Active Directory bir veya zaten oluşturulmuş bir oluşturma adımları gerçekleştirildikten sonra belirtilen [istemci uygulama kimliği](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-app-registration) .
 
-- [Azure Active Directory Client secret](../../openshift/howto-aad-app-configuration.md#create-a-client-secret) noted after performing the steps to create one or one already created.
+- Bir veya zaten oluşturulmuş bir oluşturma adımları gerçekleştirildikten sonra belirtilen [istemci parolası Azure Active Directory](../../openshift/howto-aad-app-configuration.md#create-a-client-secret) .
 
-- [Azure AD security group](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group) noted after performing the steps to create one or one already created.
+- [Azure AD güvenlik grubu](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group) , bir veya zaten oluşturulmuş bir oluşturma adımları gerçekleştirildikten sonra belirtilmiştir.
 
-- Resource ID of an existing Log Analytics workspace.
+- Mevcut bir Log Analytics çalışma alanının kaynak KIMLIĞI.
 
-- The number of master nodes to create in the cluster.
+- Kümede oluşturulacak ana düğüm sayısı.
 
-- The number of compute nodes in the agent pool profile.
+- Aracı havuzu profilindeki işlem düğümlerinin sayısı.
 
-- The number of infrastructure nodes in the agent pool profile. 
+- Aracı havuzu profilindeki altyapı düğümlerinin sayısı. 
 
-If you are unfamiliar with the concept of deploying resources by using a template, see:
+Bir şablon kullanarak kaynakları dağıtma kavramıyla alışkın değilseniz, bkz:
 
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
 
-- [Deploy resources with Resource Manager templates and the Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-If you choose to use the Azure CLI, you first need to install and use the CLI locally. You must be running the Azure CLI version 2.0.65 or later. To identify your version, run `az --version`. If you need to install or upgrade the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-The Log Analytics workspace has to be created before you enable monitoring using Azure PowerShell or CLI. To create the workspace, you can set it up through [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), through [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), or in the [Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
 
-1. Download and save to a local folder, the Azure Resource Manager template and parameter file, to create a cluster with the monitoring add-on using the following commands:
+1. Aşağıdaki komutları kullanarak izleme eklentisi ile bir küme oluşturmak için bir yerel klasöre, Azure Resource Manager şablonu ve parametre dosyasına indirip kaydedin:
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json` 
 
-2. Azure'da oturum açın 
+2. Azure'da oturum açma 
 
     ```azurecli
     az login    
     ```
     
-    If you have access to multiple subscriptions, run `az account set -s {subscription ID}` replacing `{subscription ID}` with the subscription you want to use.
+    Birden çok aboneliğe erişiminiz varsa, `{subscription ID}` yerine kullanmak istediğiniz abonelikle değiştirin `az account set -s {subscription ID}` çalıştırın.
  
-3. Create a resource group for your cluster if you don't already have one. For a list of Azure regions that supports OpenShift on Azure, see [Supported Regions](../../openshift/supported-resources.md#azure-regions). 
+3. Henüz bir tane yoksa kümeniz için bir kaynak grubu oluşturun. Azure üzerinde OpenShift 'i destekleyen Azure bölgelerinin listesi için bkz. [Desteklenen bölgeler](../../openshift/supported-resources.md#azure-regions). 
 
     ```azurecli
     az group create -g <clusterResourceGroup> -l <location> 
     ```
 
-4. Edit the JSON parameter file **newClusterWithMonitoringParam.json** and update the following values:
+4. **Newclusterwithmonitoringparam. JSON** JSON parametre dosyasını düzenleyin ve aşağıdaki değerleri güncelleştirin:
 
     - *konum*
-    - *clusterName*
-    - *aadTenantId*
-    - *aadClientId*
+    - *:/*
+    - *Aadtenantıd*
+    - *Aadclientıd*
     - *aadClientSecret* 
-    - *aadCustomerAdminGroupId* 
+    - *Aadcustomeradmingroupıd* 
     - *workspaceResourceId*
     - *masterNodeCount*
     - *computeNodeCount*
-    - *infraNodeCount*
+    - *Deniz Ranodecount*
 
-5. The following step deploys the cluster with monitoring enabled by using the Azure CLI. 
+5. Aşağıdaki adım, Azure CLı 'yı kullanarak kümeyi etkin izleme ile dağıtır. 
 
     ```azurecli
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json 
     ```
  
-    The output resembles the following:
+    Çıktı aşağıdakine benzer:
 
     ```azurecli
     provisioningState       : Succeeded
     ```
 
-## <a name="enable-for-an-existing-cluster"></a>Enable for an existing cluster
+## <a name="enable-for-an-existing-cluster"></a>Var olan bir küme için etkinleştir
 
-Perform the following steps to enable monitoring of an Azure Red Hat OpenShift cluster deployed in Azure. You can accomplish this from the Azure portal or using the provided templates.
+Azure 'da dağıtılan bir Azure Red Hat OpenShift kümesinin izlenmesini etkinleştirmek için aşağıdaki adımları gerçekleştirin. Bunu Azure portal veya belirtilen şablonları kullanarak gerçekleştirebilirsiniz.
 
-### <a name="from-the-azure-portal"></a>From the Azure portal
+### <a name="from-the-azure-portal"></a>Azure portal
  
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. On the Azure portal menu or from the Home page, select **Azure Monitor**. Under the **Insights** section, select **Containers**. 
+2. Azure portal menüsünde veya giriş sayfasından **Azure izleyici**' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin. 
 
-3. On the **Monitor - containers** page, select **Non-monitored clusters**.
+3. **İzleyici-kapsayıcılar** sayfasında, **izlenmeyen kümeler**' ı seçin.
 
-4. From the list of non-monitored clusters, find the cluster in the list and click **Enable**. You can identify the results in the list by looking for the value **ARO** under the column **CLUSTER TYPE**.
+4. İzlenmeyen kümeler listesinden, listeden kümeyi bulun ve **Etkinleştir**' e tıklayın. Sütun **KÜMESI türü**altında, **Aro** değerini arayarak listedeki sonuçları belirleyebilirsiniz.
 
-5. On the **Onboarding to Azure Monitor for containers** page, if you have an existing Log Analytics workspace in the same subscription as the cluster, select it from the drop-down list.  
-    The list preselects the default workspace and location that the cluster is deployed to in the subscription. 
+5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.  
+    Liste, varsayılan çalışma alanını ve kümenin abonelikte dağıtıldığı konumu önceden seçer. 
 
-    ![Enable monitoring for non-monitored clusters](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
+    ![İzlenmeyen kümeler için izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >If you want to create a new Log Analytics workspace for storing the monitoring data from the cluster, follow the instructions in [Create a Log Analytics workspace](../../azure-monitor/learn/quick-create-workspace.md). Be sure to create the workspace in the same subscription that the RedHat OpenShift cluster is deployed to. 
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın. 
  
-After you've enabled monitoring, it might take about 15 minutes before you can view health metrics for the cluster. 
+İzleme etkinleştirdikten sonra küme için sistem durumu ölçümleri görmeden önce yaklaşık 15 dakika sürebilir. 
 
-### <a name="enable-using-an-azure-resource-manager-template"></a>Enable using an Azure Resource Manager template
+### <a name="enable-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak etkinleştir
 
-This method includes two JSON templates. One template specifies the configuration to enable monitoring, and the other contains parameter values that you configure to specify the following:
+Bu yöntem, iki JSON şablonları içerir. Yapılandırmayı, izlemeyi etkinleştirmek için bir şablon belirtir ve diğer aşağıdaki belirtmek için yapılandırdığınız parametre değerlerini içerir:
 
-- The Azure RedHat OpenShift cluster resource ID. 
+- Azure RedHat OpenShift kümesi kaynak KIMLIĞI. 
 
-- The resource group the cluster is deployed in.
+- Kümenin dağıtıldığı kaynak grubu.
 
 - Log Analytics çalışma alanı.
 
-If you are unfamiliar with the concept of deploying resources by using a template, see:
+Bir şablon kullanarak kaynakları dağıtma kavramıyla alışkın değilseniz, bkz:
 
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
 
-- [Deploy resources with Resource Manager templates and the Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-If you choose to use the Azure CLI, you first need to install and use the CLI locally. You must be running the Azure CLI version 2.0.65 or later. To identify your version, run `az --version`. If you need to install or upgrade the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-The Log Analytics workspace has to be created before you enable monitoring using Azure PowerShell or CLI. To create the workspace, you can set it up through [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), through [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), or in the [Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
 
-1. Download the template and parameter file to update your cluster with the monitoring add-on using the following commands:
+1. Aşağıdaki komutları kullanarak kümenizi izleme eklentisi ile güncelleştirmek için şablon ve parametre dosyasını indirin:
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json` 
 
-2. Azure'da oturum açın 
+2. Azure'da oturum açma 
 
     ```azurecli
     az login    
     ```
 
-    If you have access to multiple subscriptions, run `az account set -s {subscription ID}` replacing `{subscription ID}` with the subscription you want to use.
+    Birden çok aboneliğe erişiminiz varsa, `{subscription ID}` yerine kullanmak istediğiniz abonelikle değiştirin `az account set -s {subscription ID}` çalıştırın.
 
-3. Specify the subscription of the Azure RedHat OpenShift cluster.
+3. Azure RedHat OpenShift kümesi aboneliğini belirtin.
 
     ```azurecli
     az account set --subscription "Subscription Name"  
     ```
 
-4. Run the following command to identify the cluster location and resource ID:
+4. Küme konumunu ve kaynak KIMLIĞINI belirlemek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
     az openshift show -g <clusterResourceGroup> -n <clusterName> 
     ```
 
-5. Edit the JSON parameter file **existingClusterParam.json** and update the values *araResourceId* and *araResoruceLocation*. The value for **workspaceResourceId** is the full resource ID of your Log Analytics workspace, which includes the workspace name. 
+5. **Existingclusterparam. JSON** JSON parametre dosyasını düzenleyin ve *Araresourceıd* ve *Araresorucelocation*değerlerini güncelleştirin. **WorkspaceResourceId** değeri, çalışma alanının adı da dahil olmak üzere Log Analytics çalışma alanınızın tam kaynak kimliğidir. 
 
-6. To deploy with Azure CLI, run the following commands: 
+6. Azure CLı ile dağıtmak için aşağıdaki komutları çalıştırın: 
 
     ```azurecli
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json 
     ```
 
-    The output resembles the following:
+    Çıktı aşağıdakine benzer:
 
     ```azurecli
     provisioningState       : Succeeded
@@ -209,6 +209,6 @@ The Log Analytics workspace has to be created before you enable monitoring using
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- With monitoring enabled to collect health and resource utilization of your RedHat OpenShift cluster and workloads running on them, learn [how to use](container-insights-analyze.md) Azure Monitor for containers.
+- RedHat OpenShift kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplamaya yönelik izleme özelliği, kapsayıcılar için Azure Izleyicisini [nasıl](container-insights-analyze.md) kullanacağınızı öğrenin.
 
-- To learn how to stop monitoring your cluster with Azure Monitor for containers, see [How to Stop Monitoring Your Azure Red Hat OpenShift cluster](container-insights-optout-openshift.md).
+- Azure Izleyici kapsayıcılar ile kümenizi izlemeyi durdurmayı öğrenmek için bkz. [Azure Red Hat OpenShift kümenizi Izlemeyi durdurma](container-insights-optout-openshift.md).

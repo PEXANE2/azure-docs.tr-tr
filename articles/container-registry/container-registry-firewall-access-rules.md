@@ -1,6 +1,6 @@
 ---
-title: Firewall access rules
-description: Configure rules to access an Azure container registry from behind a firewall.
+title: Güvenlik Duvarı erişim kuralları
+description: Bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
 ms.date: 07/17/2019
 ms.openlocfilehash: 6a0a169f7e5a7e07771cb9fee474b7f4a9391a4e
@@ -10,39 +10,39 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455193"
 ---
-# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Configure rules to access an Azure container registry behind a firewall
+# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
-This article explains how to configure rules on your firewall to allow access to an Azure container registry. For example, an Azure IoT Edge device behind a firewall or proxy server might need to access a container registry to pull a container image. Or, a locked-down server in an on-premises network might need access to push an image.
+Bu makalede, Azure Container Registry 'ye erişime izin vermek için güvenlik duvarınızdaki kuralların nasıl yapılandırılacağı açıklanır. Örneğin, bir güvenlik duvarı veya proxy sunucusu arkasındaki bir Azure IoT Edge cihazın bir kapsayıcı görüntüsünü çekmek için bir kapsayıcı kayıt defterine erişmesi gerekebilir. Ya da, bir şirket içi ağdaki kilitlenmiş bir sunucunun bir görüntüyü göndermek için erişmesi gerekebilir.
 
-If instead you want to configure inbound network access rules on a container registry to allow access only within an Azure virtual network or a public IP address range, see [Restrict access to an Azure container registry from a virtual network](container-registry-vnet.md).
+Bir kapsayıcı kayıt defterinde yalnızca bir Azure sanal ağı veya genel IP adresi aralığı içinde erişime izin vermek için gelen ağ erişim kurallarını yapılandırmak istiyorsanız bkz. [bir sanal ağ üzerinden Azure Container Registry 'ye erişimi kısıtlama](container-registry-vnet.md).
 
-## <a name="about-registry-endpoints"></a>About registry endpoints
+## <a name="about-registry-endpoints"></a>Kayıt defteri uç noktaları hakkında
 
-To pull or push images or other artifacts to an Azure container registry, a client such as a Docker daemon needs to interact over HTTPS with two distinct endpoints.
+Bir Azure Container Registry 'ye görüntü veya diğer yapıtları çekmek veya göndermek için, Docker Daemon gibi bir istemcinin iki ayrı uç nokta ile HTTPS üzerinden etkileşimde bulunması gerekir.
 
-* **Registry REST API endpoint** - Authentication and registry management operations are handled through the registry's public REST API endpoint. This endpoint is the login server URL of the registry, or an associated IP address range. 
+* **Kayıt defteri REST API uç noktası** -kimlik doğrulama ve kayıt defteri yönetim işlemleri kayıt defterinin ortak REST API uç noktası aracılığıyla işlenir. Bu uç nokta, kayıt defterinin veya ilişkili bir IP adresi aralığının oturum açma sunucusu URL 'sidir. 
 
-* **Storage endpoint** - Azure [allocates blob storage](container-registry-storage.md) in Azure storage accounts on behalf of each registry to manage container images and other artifacts. When a client accesses image layers in an Azure container registry, it makes requests using a storage account endpoint provided by the registry.
+* **Depolama uç noktası** -Azure, kapsayıcı görüntülerini ve diğer yapıtları yönetmek için her kayıt defteri adına Azure Storage hesaplarında [BLOB depolamayı ayırır](container-registry-storage.md) . Bir istemci bir Azure Container Registry içindeki görüntü katmanlarına eriştiğinde, kayıt defteri tarafından sağlanmış bir depolama hesabı uç noktası kullanarak istek yapar.
 
-If your registry is [geo-replicated](container-registry-geo-replication.md), a client might need to interact with REST and storage endpoints in a specific region or in multiple replicated regions.
+Kayıt defteriniz coğrafi olarak [çoğaltılırsa](container-registry-geo-replication.md), bir istemcinin belirli bir bölgedeki veya birden çok ÇOĞALTıLAN bölgedeki REST ve depolama uç noktalarıyla etkileşimde olması gerekebilir.
 
-## <a name="allow-access-to-rest-and-storage-urls"></a>Allow access to REST and storage URLs
+## <a name="allow-access-to-rest-and-storage-urls"></a>REST ve depolama URL 'Lerine erişime izin ver
 
-* **REST endpoint** - Allow access to the registry server URL, such as  `myregistry.azurecr.io`
-* **Storage endpoint** - Allow access to all Azure blob storage accounts using the wildcard `*.blob.core.windows.net`
+* **REST uç noktası** -`myregistry.azurecr.io` gibi kayıt DEFTERI sunucusu URL 'sine erişime izin ver
+* **Depolama uç noktası** -joker karakter `*.blob.core.windows.net` kullanarak tüm Azure Blob depolama hesaplarına erişime izin ver
 
 
-## <a name="allow-access-by-ip-address-range"></a>Allow access by IP address range
+## <a name="allow-access-by-ip-address-range"></a>IP adresi aralığına göre erişime izin ver
 
-If you need to allow access to specific IP addresses, download [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
+Belirli IP adreslerine erişime izin vermeniz gerekiyorsa [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519)' u indirin.
 
-To find the ACR REST endpoint IP ranges, search for **AzureContainerRegistry** in the JSON file.
+ACR REST uç nokta IP aralıklarını bulmak için JSON dosyasında **AzureContainerRegistry** araması yapın.
 
 > [!IMPORTANT]
-> IP address ranges for Azure services can change, and updates are published weekly. Download the JSON file regularly, and make necessary updates in your access rules. If your scenario involves configuring network security group rules in an Azure virtual network to access Azure Container Registry, use the **AzureContainerRegistry** [service tag](#allow-access-by-service-tag) instead.
+> Azure hizmetleri için IP adresi aralıkları değişebilir ve güncelleştirmeler haftalık olarak yayımlanır. JSON dosyasını düzenli olarak indirin ve erişim kurallarınızın gerekli güncelleştirmelerini yapın. Senaryonuz Azure Container Registry erişmek için bir Azure sanal ağındaki ağ güvenlik grubu kurallarını yapılandırmayı içeriyorsa, bunun yerine **AzureContainerRegistry** [Service etiketini](#allow-access-by-service-tag) kullanın.
 >
 
-### <a name="rest-ip-addresses-for-all-regions"></a>REST IP addresses for all regions
+### <a name="rest-ip-addresses-for-all-regions"></a>Tüm bölgeler için REST IP adresleri
 
 ```json
 {
@@ -58,9 +58,9 @@ To find the ACR REST endpoint IP ranges, search for **AzureContainerRegistry** i
     [...]
 ```
 
-### <a name="rest-ip-addresses-for-a-specific-region"></a>REST IP addresses for a specific region
+### <a name="rest-ip-addresses-for-a-specific-region"></a>Belirli bir bölge için REST IP adresleri
 
-Search for the specific region, such as **AzureContainerRegistry.AustraliaEast**.
+**AzureContainerRegistry. AustraliaEast**gibi belirli bir bölgeyi arayın.
 
 ```json
 {
@@ -76,7 +76,7 @@ Search for the specific region, such as **AzureContainerRegistry.AustraliaEast**
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-all-regions"></a>Storage IP addresses for all regions
+### <a name="storage-ip-addresses-for-all-regions"></a>Tüm bölgeler için depolama IP adresleri
 
 ```json
 {
@@ -92,9 +92,9 @@ Search for the specific region, such as **AzureContainerRegistry.AustraliaEast**
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-specific-regions"></a>Storage IP addresses for specific regions
+### <a name="storage-ip-addresses-for-specific-regions"></a>Belirli bölgeler için depolama IP adresleri
 
-Search for the specific region, such as **Storage.AustraliaCentral**.
+**Storage. AustraliaCentral**gibi belirli bir bölgeyi arayın.
 
 ```json
 {
@@ -110,17 +110,17 @@ Search for the specific region, such as **Storage.AustraliaCentral**.
     [...]
 ```
 
-## <a name="allow-access-by-service-tag"></a>Allow access by service tag
+## <a name="allow-access-by-service-tag"></a>Hizmet etiketine göre erişime izin ver
 
-In an Azure virtual network, use network security rules to filter traffic from a resource such as a virtual machine to a container registry. To simplify the creation of the Azure network rules, use the **AzureContainerRegistry** [service tag](../virtual-network/security-overview.md#service-tags). A service tag represents a group of IP address prefixes to access an Azure service globally or per Azure region. The tag is automatically updated when addresses change. 
+Bir Azure sanal ağında, sanal makine gibi bir kaynaktan bir kapsayıcı kayıt defterine giden trafiği filtrelemek için ağ güvenlik kurallarını kullanın. Azure ağ kurallarının oluşturulmasını basitleştirmek için **AzureContainerRegistry** [Service etiketini](../virtual-network/security-overview.md#service-tags)kullanın. Hizmet etiketi, bir Azure hizmetine küresel olarak veya Azure bölgesine erişmek için bir IP adresi ön eki grubunu temsil eder. Adresler değiştiğinde etiket otomatik olarak güncelleştirilir. 
 
-For example, create an outbound network security group rule with destination **AzureContainerRegistry** to allow traffic to an Azure container registry. To allow access to the service tag only in a specific region, specify the region in the following format: **AzureContainerRegistry**.[*region name*].
+Örneğin, Azure Container Registry 'ye giden trafiğe izin vermek için hedef **AzureContainerRegistry** ile giden ağ güvenlik grubu kuralı oluşturun. Yalnızca belirli bir bölgedeki hizmet etiketine erişime izin vermek için, bölgeyi şu biçimde belirtin: **AzureContainerRegistry**. [*bölge adı*].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Learn about [Azure best practices for network security](../security/fundamentals/network-best-practices.md)
+* [Ağ güvenliği için En Iyi Azure uygulamaları](../security/fundamentals/network-best-practices.md) hakkında bilgi edinin
 
-* Learn more about [security groups](/azure/virtual-network/security-overview) in an Azure virtual network
+* Azure sanal ağındaki [güvenlik grupları](/azure/virtual-network/security-overview) hakkında daha fazla bilgi edinin
 
 
 

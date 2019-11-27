@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection Glossary
-description: Azure Active Directory Identity Protection Glossary
+title: Azure Active Directory Kimlik Koruması sözlüğü
+description: Azure Active Directory Kimlik Koruması sözlüğü
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,146 +18,146 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232352"
 ---
-# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
+# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Kimlik Koruması sözlüğü
 
-### <a name="at-risk-user"></a>At risk (User)
-A user with one or more active risk detections. 
+### <a name="at-risk-user"></a>Risk altında (Kullanıcı)
+Bir veya daha fazla etkin risk algılamaları olan bir kullanıcı. 
 
-### <a name="atypical-sign-in-location"></a>Atypical sign-in location
-A sign-in from a geographic location that is not typical for the specific user, similar users, or the tenant.
+### <a name="atypical-sign-in-location"></a>Atipik oturum açma konumu
+Belirli bir Kullanıcı, benzer kullanıcılar veya kiracı için tipik olmayan coğrafi bir konumdan oturum açma.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Kimlik Koruması
-A security module of Azure Active Directory that provides a consolidated view into risk detections and potential vulnerabilities affecting an organization’s identities.
+Risk algılamaları ve kuruluşun kimliklerini etkileyen olası güvenlik açıklarına birleştirilmiş bir görünüm sağlayan Azure Active Directory güvenlik modülü.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
-A policy for securing access to resources. Conditional Access rules are stored in the Azure Active Directory and are evaluated by Azure AD before granting access to the resource.  Example rules include restricting access based on user location, device health, or user authentication method.
+Kaynaklara erişimi güvenli hale getirmek için bir ilke. Koşullu erişim kuralları Azure Active Directory depolanır ve kaynağa erişim izni vermeden önce Azure AD tarafından değerlendirilir.  Örnek kurallar, Kullanıcı konumuna, cihaz durumuna veya Kullanıcı kimlik doğrulama yöntemine göre erişimi kısıtlamayı içerir.
 
-### <a name="credentials"></a>Kimlik bilgileri
-Information that includes identification and proof of identification that is used to gain access to local and network resources. Examples of credentials are user names and passwords, smart cards, and certificates.
+### <a name="credentials"></a>Kimlik Bilgileri
+Yerel ve ağ kaynaklarına erişim kazanmak için kullanılan tanımlama ve kimlik kanıtı bilgilerini içeren bilgiler. Kimlik bilgileri örnekleri Kullanıcı adları ve parolalar, akıllı kartlar ve sertifikalardır.
 
 ### <a name="event"></a>Olay
-A record of an activity in Azure Active Directory.
+Azure Active Directory bir etkinliğin kaydı.
 
-### <a name="false-positive-risk-detection"></a>False-positive (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection was investigated and was incorrectly flagged as a risk detection.
+### <a name="false-positive-risk-detection"></a>False-pozitif (risk algılama)
+Risk algılamada bir kimlik koruması kullanıcısı tarafından el ile ayarlanan ve risk algılamanın araştırıldığına ve yanlış bir risk algılaması olarak işaretlenmediğini belirten risk algılama durumu.
 
 ### <a name="identity"></a>Kimlik
-A person or entity that must be verified by means of authentication, based on criteria such as password or a certificate.
+Parola veya sertifika gibi ölçütlere bağlı olarak, kimlik doğrulama yoluyla doğrulanması gereken bir kişi veya varlık.
 
-### <a name="identity-risk-detection"></a>Identity risk detection
-Azure AD event that was flagged as anomalous by Identity Protection, and may indicate that an identity has been compromised.
+### <a name="identity-risk-detection"></a>Kimlik riski algılama
+Kimlik koruması tarafından anormal olarak işaretlenen Azure AD olayı ve bir kimliğin tehlikeye girdiği anlamına gelebilir.
 
-### <a name="ignored-risk-detection"></a>Ignored (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection is closed without taking a remediation action.
+### <a name="ignored-risk-detection"></a>Yoksayıldı (risk algılama)
+Bir kimlik koruma kullanıcısı tarafından el ile ayarlanan bir risk algılama durumu, risk algılamanın bir düzeltme eylemi yapılmadan kapatıldığını gösterir.
 
-### <a name="impossible-travel-from-atypical-locations"></a>Impossible travel from atypical locations
-A risk detection triggered when two sign-ins for the same user are detected, where at least one of them is from an atypical sign-in location, and where the time between the sign-ins is shorter than the minimum time it would take to physically travel between these locations.  
+### <a name="impossible-travel-from-atypical-locations"></a>Atipik konumlardan mümkün olmayan seyahat
+Aynı kullanıcı için iki oturum açma algılandığında tetiklenen bir risk algılama, en az bir tane bir adet bir oturum açma konumundan olduğu ve oturum açma işlemleri arasındaki sürenin, bunlar arasında fiziksel olarak seyahat altına alabileceği en kısa süreden kısa olduğu durumlarda tetiklenir. yerlerini.  
 
 ### <a name="investigation"></a>Araştırma
-The process of reviewing the activities, logs, and other relevant information related to a risk detection to decide whether remediation or mitigation steps are necessary, understand if and how the identity was compromised, and understand how the compromised identity was used.
+Düzeltme veya azaltma adımlarının gerekli olup olmadığına karar vermek için risk algılamasıyla ilgili etkinlikleri, günlükleri ve diğer ilgili bilgileri gözden geçirme işlemi, kimliğin nasıl ve nasıl tehlikede olduğunu anlayın ve tehlikede nasıl riskli olduğunu anlayın kimlik kullanıldı.
 
-### <a name="leaked-credentials"></a>Leaked credentials
-A risk detection triggered when current user credentials (user name and password) are found posted publicly in the Dark   web by our researchers.
+### <a name="leaked-credentials"></a>Sızdırılan kimlik bilgileri
+Geçerli Kullanıcı kimlik bilgileri (Kullanıcı adı ve parola), araştırmacılarımız tarafından koyu Web 'de herkese açık olarak bulunduğunda tetiklenen bir risk algılama.
 
 ### <a name="mitigation"></a>Risk azaltma
-An action to limit or eliminate the ability of an attacker to exploit a compromised identity or device without restoring the identity or device to a safe state. A mitigation does not resolve previous risk detections associated with the identity or device.
+Bir saldırganın kimliği veya cihazı güvenli bir duruma geri yüklemeden güvenliği aşılmış bir kimlik veya cihazdan yararlanma yeteneğini sınırlamak veya ortadan kaldırmak için bir eylem. Risk azaltma, kimlik veya cihazla ilişkili önceki risk algılamalarını çözmez.
 
-### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama
-An authentication method that requires two or more authentication methods, which may include something the user has, such a certificate; something the user knows, such as user names, passwords, or pass phrases; physical attributes, such as a thumbprint; and personal attributes, such as a personal signature.
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+İki veya daha fazla kimlik doğrulama yöntemi gerektiren bir kimlik doğrulama yöntemi, örneğin bir sertifika, kullanıcının sahip olduğu bir şeyi içerebilir; Kullanıcı adları, parolalar veya geçiş ifadeleri gibi kullanıcıların bildiği bir şey; parmak izi gibi fiziksel öznitelikler; Kişisel imza gibi kişisel öznitelikleri.
 
-### <a name="offline-detection"></a>Offline detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt after the fact, for an event that has already happened.
+### <a name="offline-detection"></a>Çevrimdışı algılama
+Daha önce gerçekleşmiş bir olay için, olgudan sonra oturum açma girişimi gibi bir olay riskini algılama ve değerlendirmesi.
 
-### <a name="policy-condition"></a>Policy condition
-A part of a security policy, which defines the entities (groups, users, apps, device platforms, Device states, IP ranges, client types) included in the policy or excluded from it.
+### <a name="policy-condition"></a>İlke koşulu
+İlke içinde yer alan veya gruptan çıkarılan varlıkları (gruplar, kullanıcılar, uygulamalar, cihaz platformları, cihaz durumları, IP aralıkları, istemci türleri) tanımlayan bir güvenlik ilkesinin parçası.
 
-### <a name="policy-rule"></a>Policy rule
-The part of a security policy that describes the circumstances that would trigger the policy, and the actions taken when the policy is triggered.
+### <a name="policy-rule"></a>İlke kuralı
+Bir güvenlik ilkesinin ilkeyi tetikleyen koşulları ve ilke tetiklendiğinde gerçekleştirilecek eylemleri açıklayan bölümü.
 
 ### <a name="prevention"></a>Önleme
-An action to prevent damage to the organization through abuse of an identity or device suspected or know to be compromised. A prevention action does not secure the device or identity, and does not resolve previous risk detections.
+Bir kimlik veya cihazın kötüye kullanımı aracılığıyla kuruluşa zarar verme veya tehlikeye geçme durumunu önleme eylemi. Bir önleme eylemi, cihazın veya kimliğin güvenliğini sağlamaz ve önceki risk algılamalarını çözmez.
 
-### <a name="privileged-user"></a>Privileged (user)
-A user that at the time of a risk detection, had permanent or temporary admin permissions to one or more resources in Azure Active Directory, such as a Global Administrator, Billing Administrator, Service Administrator, User administrator, and Password Administrator. 
+### <a name="privileged-user"></a>Ayrıcalıklı (Kullanıcı)
+Risk algılaması sırasında bir Kullanıcı, bir veya daha fazla Azure Active Directory, genel yönetici, faturalandırma Yöneticisi, hizmet yöneticisi, Kullanıcı Yöneticisi ve parola gibi bir veya daha fazla kaynak için kalıcı veya geçici yönetici izinlerine sahiptir Danışın. 
 
-### <a name="real-time"></a>Real-time
-See Real-time detection.
+### <a name="real-time"></a>Gerçek zamanlı
+Bkz. gerçek zamanlı algılama.
 
-### <a name="real-time-detection"></a>Real-time detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt before the event is allowed to proceed.
+### <a name="real-time-detection"></a>Gerçek zamanlı algılama
+Olayın devam etmesini izin vermeden önce oturum açma denemesi gibi bir olay riskini algılama ve değerlendirme.
 
-### <a name="remediated-risk-detection"></a>Remediated (risk detection)
-A risk detection status set automatically by Identity Protection, indicating that the risk detection was remediated using the standard remediation action for this type of risk detection. For example, when the user password is reset, many risk detections that indicate that the previous password was compromised are automatically remediated.
+### <a name="remediated-risk-detection"></a>Düzeltilen (risk algılama)
+Risk algılama durumu, kimlik koruması tarafından otomatik olarak ayarlanan, risk algılamanın bu tür risk algılama için standart Düzeltme eylemi kullanılarak düzeltildiğini gösterir. Örneğin, Kullanıcı parolası sıfırlandığında, önceki parolanın güvenliğinin aşıldığını belirten birçok risk algılamaları otomatik olarak düzeltilebilir.
 
-### <a name="remediation"></a>Remediation
-An action to secure an identity or a device that were previously suspected or known to be compromised. A remediation action restores the identity or device to a safe state, and resolves previous risk detections associated with the identity or device.
+### <a name="remediation"></a>Düzeltme
+Daha önce şüpheli veya tehlikede bilinen bir kimlik veya cihazın güvenliğini sağlamaya yönelik bir eylem. Düzeltme eylemi, kimlik veya cihazı güvenli bir duruma geri yükler ve kimlik veya cihazla ilişkili önceki risk algılamalarını çözer.
 
-### <a name="resolved-risk-detection"></a>Resolved (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the user took an appropriate remediation action outside Identity Protection, and that the risk detection should be considered closed.
+### <a name="resolved-risk-detection"></a>Çözümlendi (risk algılama)
+Bir kimlik koruması kullanıcısı tarafından el ile ayarlanan bir risk algılama durumu, kullanıcının kimlik koruması dışında uygun bir düzeltme eylemi gerçekleşmekte olduğunu ve risk algılamanın kapalı kabul edilmesi gerektiğini gösterir.
 
-### <a name="risk-detection-status"></a>Risk detection status
-A property of a risk detection, indicating whether the event is active, and if closed, the reason for closing it.
+### <a name="risk-detection-status"></a>Risk algılama durumu
+Etkinliğin etkin olup olmadığını ve kapatıldıysa kapatma nedeninizi belirten bir risk algılama özelliği.
 
-### <a name="risk-detection-type"></a>Risk detection type
-A category for the risk detection, indicating the type of anomaly that caused the event to be considered risky.
+### <a name="risk-detection-type"></a>Risk algılama türü
+Etkinliğin riskli olarak kabul edilmesine neden olan anomali türünü gösteren risk algılama için bir kategori.
 
-### <a name="risk-level-risk-detection"></a>Risk level (risk detection)
-An indication (High, Medium, or Low) of the severity of the risk detection to help Identity Protection users prioritize the actions they take to reduce the risk to their organization. 
+### <a name="risk-level-risk-detection"></a>Risk düzeyi (risk algılama)
+Kimlik koruma kullanıcılarının kuruluşlarındaki riski azaltmak için gerçekleştirdikleri eylemlere öncelik vermelerine yardımcı olmak için risk algılamasında önem derecesi (yüksek, orta veya düşük). 
 
-### <a name="risk-level-sign-in"></a>Risk level (sign-in)
-An indication (High, Medium, or Low) of the likelihood that for a specific sign-in, someone else is attempting to use the user’s identity.
+### <a name="risk-level-sign-in"></a>Risk düzeyi (oturum açma)
+Belirli bir oturum açma ihtimalinin bir göstergesi (yüksek, orta veya düşük), başka biri de kullanıcının kimliğini kullanmaya çalışıyor.
 
-### <a name="risk-level-user-compromise"></a>Risk level (user compromise)
-An indication (High, Medium, or Low) of the likelihood that an identity has been compromised.
+### <a name="risk-level-user-compromise"></a>Risk düzeyi (Kullanıcı güvenliğinin aşılmasına neden)
+Bir kimliğin tehlikeye düşmesi olasılığının bir göstergesi (yüksek, orta veya düşük).
 
-### <a name="risk-level-vulnerability"></a>Risk level (vulnerability)
-An indication (High, Medium, or Low) of the severity of the vulnerability to help Identity Protection users prioritize the actions they take to reduce the risk to their organization.
+### <a name="risk-level-vulnerability"></a>Risk düzeyi (güvenlik açığı)
+Kimlik koruması kullanıcılarının kuruluşlarındaki riski azaltmak için gerçekleştirdikleri eylemlere öncelik vermelerine yardımcı olmak üzere güvenlik açığının önem derecesi (yüksek, orta veya düşük).
 
-### <a name="secure-identity"></a>Secure (identity)
-Take remediation action such as a password change or machine reimaging to restore a potentially compromised identity to an uncompromised state.
+### <a name="secure-identity"></a>Güvenli (kimlik)
+Bir parola değişikliği veya makine yeniden görüntüsü oluşturma gibi bir düzeltme eylemi gerçekleştirmek için, riskli olabilecek bir kimliği tehlikeye ayrılmamış bir duruma geri yükleyin.
 
 ### <a name="security-policy"></a>Güvenlik ilkesi
-A collection of policy rules and condition. A policy can be applied to entities such as users, groups, apps, devices, device platforms, device states, IP ranges, and Auth2.0 client types. When a policy is enabled, it is evaluated whenever an entity included in the policy is issued a token for a resource.
+İlke kuralları ve koşul koleksiyonu. Kullanıcılar, gruplar, uygulamalar, cihazlar, cihaz platformları, cihaz durumları, IP aralıkları ve Auth 2.0 istemci türleri gibi varlıklara bir ilke uygulanabilir. Bir ilke etkinleştirildiğinde, ilkeye dahil edilen bir varlık bir kaynak için belirteç verildiğinde değerlendirilir.
 
-### <a name="sign-in-v"></a>Sign in (v)
-To authenticate to an identity in Azure Active Directory.
+### <a name="sign-in-v"></a>Oturum aç (v)
+Azure Active Directory bir kimliğin kimliğini doğrulamak için.
 
-### <a name="sign-in-n"></a>Sign-in (n)
-The process or action of authenticating an identity in Azure Active Directory, and the event that captures this operation.
+### <a name="sign-in-n"></a>Oturum açma (n)
+Azure Active Directory bir kimliğin kimliğini doğrulayan işlem veya eylem ve bu işlemi yakalayan olay.
 
-### <a name="sign-in-from-anonymous-ip-address"></a>Sign in from anonymous IP address
-A risk detection triggered after a successful sign-in from IP address that has been identified as an anonymous proxy IP address.
+### <a name="sign-in-from-anonymous-ip-address"></a>Anonim IP adresinden oturum açın
+Bir anonim proxy IP adresi olarak tanımlanan IP adresinden başarılı bir oturum açma işleminden sonra tetiklenen bir risk algılama işlemi.
 
-### <a name="sign-in-from-infected-device"></a>Sign in from infected device
-A risk detection triggered when a sign-in originates from an IP address, which is known to be used by one or more compromised devices, which are actively attempting to communicate with a bot server.
+### <a name="sign-in-from-infected-device"></a>Virüslü cihazdan oturum aç
+Bir oturum açma işlemi bir IP adresinden kaynaklanıyorsa, bir veya daha fazla güvenliği aşılmış bir cihaz tarafından kullanılmak üzere bilinen ve bir bot sunucusuyla iletişim kurmaya çalışan bir risk algılamasında tetiklenir.
 
-### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Sign in from IP address with suspicious activity
-A risk detection triggered after a successful sign-in from an IP address with a high number of failed login attempts across multiple user accounts over a short period of time.
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Şüpheli etkinlikle IP adresinden oturum açın
+Kısa bir süre içinde birden çok kullanıcı hesabında yüksek sayıda başarısız oturum açma girişimi olan bir IP adresinden başarılı bir oturum açma denemesi sonrasında tetiklenen bir risk algılama işlemi.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Sign in from unfamiliar location
-A risk detection triggered when a user successfully signs in from a new location (IP, Latitude/Longitude, and ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>Bilmediğiniz konumdan oturum aç
+Bir Kullanıcı yeni bir konumdan (IP, Enlem/Boylam ve ASN) başarıyla oturum açtığında tetiklenen bir risk algılama.
 
-### <a name="sign-in-risk"></a>Sign-in risk
-See Risk level (sign-in)
+### <a name="sign-in-risk"></a>Oturum açma riski
+Risk düzeyine bakın (oturum açma)
 
-### <a name="sign-in-risk-policy"></a>Sign-in risk policy
-A Conditional Access policy that evaluates the risk to a specific sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="sign-in-risk-policy"></a>Oturum açma risk ilkesi
+Belirli bir oturum açma riskini değerlendiren ve önceden tanımlanmış koşullara ve kurallara göre azaltmaları uygulayan koşullu erişim ilkesi.
 
-### <a name="user-compromise-risk"></a>User compromise risk
-See Risk level (user compromise)
+### <a name="user-compromise-risk"></a>Kullanıcı güvenliğinin aşılmasına karşı risk
+Risk düzeyine (Kullanıcı güvenliğinin aşılmasına) bakın
 
-### <a name="user-risk"></a>User risk
-See Risk level (user compromise).
+### <a name="user-risk"></a>Kullanıcı riski
+Risk düzeyine (Kullanıcı güvenliğinin aşılmasına) bakın.
 
-### <a name="user-risk-policy"></a>User risk policy
-A Conditional Access policy that considers the sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="user-risk-policy"></a>Kullanıcı risk ilkesi
+Oturum açmayı göz önünde bulundurur ve önceden tanımlanmış koşullara ve kurallara göre azaltmaları uygulayan koşullu erişim ilkesi.
 
 ### <a name="users-flagged-for-risk"></a>Riskli oldukları belirlenen kullanıcılar
-Users that have risk detections, which are either active or remediated
+Etkin veya düzeltilmiş olan risk algılamaları olan kullanıcılar
 
-### <a name="vulnerability"></a>Vulnerability
-A configuration or condition in Azure Active Directory, which makes the directory susceptible to exploits or threats.
+### <a name="vulnerability"></a>Güvenlik Açığı
+Azure Active Directory ' deki bir yapılandırma veya koşul, bu dizin, güvenlik açıklarından veya tehditlere karşı savunmasız hale gelir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)

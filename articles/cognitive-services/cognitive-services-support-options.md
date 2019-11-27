@@ -1,7 +1,7 @@
 ---
-title: Support and help options
+title: Destek ve yardım seçenekleri
 titleSuffix: Azure Cognitive Services
-description: How to obtain help and support for questions and problems when you create applications that integrate with Azure Cognitive Services.
+description: Azure bilişsel hizmetler ile tümleşen uygulamalar oluştururken sorular ve sorunlar için yardım ve destek alma.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,53 +9,53 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: ca5274113c0c0fd6cb0e81748fbe59320a7c83c8
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405553"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533688"
 ---
-# <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services support and help options
+# <a name="azure-cognitive-services-support-and-help-options"></a>Azure bilişsel Hizmetler desteği ve yardım seçenekleri
 
-Are you just starting to explore the functionality of Azure Cognitive Services? Are you implementing a new feature in your application? Here are suggestions for where you can get help as a developer.
+Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Uygulamanızda yeni bir özellik mi uygulıyorsunuz? Geliştirici olarak yardım alabileceğiniz öneriler aşağıda verilmiştir.
 
 > [!div class="checklist"]
-> * Stay informed about new developments in *Azure Cognitive Services*.
-> * Release notes contain information for all releases.
-> * Search to see if your issue was discussed by the community, or if existing documentation already exists.
-> * If you can't find a satisfactory answer, ask a question on *Stack Overflow*.
-> * If you find an issue with one of the samples on GitHub, raise a *GitHub* issue.
-> * Search for a solution in the *UserVoice forum*.
+> * Azure bilişsel *Hizmetler*'deki yeni geliştirmelerden haberdar olun.
+> * Sürüm notları tüm yayınlar için bilgi içerir.
+> * Sorununuzun topluluk tarafından açıklandığı veya mevcut belgelerde zaten var olup olmadığını görmek için arama yapın.
+> * Tatmin edici bir yanıt bulamazsanız *Stack Overflow*bir soru sorun.
+> * GitHub 'daki örneklerden biriyle ilgili bir sorun bulursanız, bir *GitHub* sorunu yükseltin.
+> * *UserVoice forumundaki*bir çözüm arayın.
 
-## <a name="create-an-azure-support-request"></a>Create an Azure support request
+## <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
 </div>
 
-Explore the range of [Azure support options and choose the plan](https://azure.microsoft.com/support/plans) that best fits, whether you're a developer just starting your cloud journey or a large organization deploying business-critical, strategic applications. Azure customers can create and manage support requests in the Azure portal.
+[Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalda](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [Azure portal for the United States government](https://portal.azure.us)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
-## <a name="post-a-question-on-stack-overflow"></a>Post a question on Stack Overflow
+## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow soru gönderin
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-For immediate answers from the community, look to Stack Overflow. Stack Overflow is the preferred channel for development-related questions. It's where members of the community and Microsoft team members are directly involved in helping you solve your problems.
+Topluluktaki anında yanıt almak için Stack Overflow bakın. Stack Overflow, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, sorunlarınızı çözmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
 
-If you can't find an answer to your problem via search, submit a new question to Stack Overflow. Use one of the following tags when you formulate the question:
+Arama yoluyla sorununuz için bir yanıt bulamazsanız, Stack Overflow için yeni bir soru gönderin. Soruyu seçerken aşağıdaki etiketlerden birini kullanın:
 
- - [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ - [Microsoft bilişsel](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
  - [Azure Bilişsel Hizmetler](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
 
 > [!TIP]
-> The following posts from Stack Overflow contain tips on how to form questions and add source code. Following these guidelines might help increase the chances that community members assess and respond to your question quickly:
-> * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)
-> * [How to create a minimal, reproducible example?](https://stackoverflow.com/help/minimal-reproducible-example)
+> Stack Overflow 'den aşağıdaki gönderiler, soruların nasıl ayarlanacağını ve kaynak kodu nasıl ekleneceğini gösteren ipuçları içerir. Bu yönergelerin ardından, topluluk üyelerinin sorunuzu hızla değerlendirmesi ve yanıtlaması ihtimalini artırmaya yardımcı olabilirsiniz:
+> * [Nasıl yaparım? iyi bir soru soruyor musunuz?](https://stackoverflow.com/help/how-to-ask)
+> * [En az, tekrarlanabilir bir örnek nasıl oluşturulur?](https://stackoverflow.com/help/minimal-reproducible-example)
 
 ## <a name="uservoice-forum"></a>UserVoice forumu
 
@@ -63,24 +63,24 @@ If you can't find an answer to your problem via search, submit a new question to
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
 </div>
 
-To request new features, post them on UserVoice. Share your ideas for making Cognitive Services and the accompanying APIs work better for the applications you develop. Use our [growing Knowledge Base](https://cognitive.uservoice.com/knowledgebase) to find answers to common questions:
+Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler sağlamak için fikirlerinizi paylaşın ve birlikte çalışan API 'Ler geliştirdiğiniz uygulamalar için daha iyi çalışır:
 
-| Hizmet                       | Cognitive Services UserVoice URL |
+| Hizmet                       | Bilişsel hizmetler UserVoice URL 'SI |
 |-------------------------------|---------------|
 | Anomali Algılayıcısı              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Bing services                 | https://cognitive.uservoice.com/forums/555907-bing-search |
+| Bing hizmetleri                 | https://cognitive.uservoice.com/forums/555907-bing-search |
 | Görüntü İşleme               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Özel Görüntü İşleme                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Yüz Tanıma                          | https://cognitive.uservoice.com/forums/430315-face |
-| Form                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| Immersive                     | https://feedback.azure.com/forums/34192--general-feedback |
+| Yüz                          | https://cognitive.uservoice.com/forums/430315-face |
+| Biçim                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Kapsamlı                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Kişiselleştirme                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | Soru-Cevap Oluşturma                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Konuşma Hizmetleri               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Metin Analizi                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator Metni               | https://cognitive.uservoice.com/forums/558796-translator |
+| Translator Metin Çevirisi               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Dizinleyici                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="release-notes"></a>Sürüm notları
@@ -89,13 +89,13 @@ To request new features, post them on UserVoice. Share your ideas for making Cog
     <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
 </div>
 
-The release notes are updated as new releases are made available. The notes contain information about new features, improvements, and bug fixes.
+Sürüm notları, yeni sürümler kullanılabilir hale getirildiğinden güncelleştirilir. Notlar yeni özellikler, geliştirmeler ve hata düzeltmeleri hakkında bilgiler içerir.
 
  - [Özel Görüntü İşleme Hizmeti](custom-vision-service/release-notes.md)
  - [Yüz Tanıma API’si](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Konuşma Hizmetleri](speech-service/releasenotes.md)
- - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
+ - [Konuşma Hizmetleri SDK 'Sı](speech-service/devices-sdk-release-notes.md)
  - [Metin Analizi](text-analytics/whats-new.md)
 
 ## <a name="stay-informed"></a>Bildirim alın
@@ -104,73 +104,73 @@ The release notes are updated as new releases are made available. The notes cont
     <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
 </div>
 
-News about Cognitive Services is shared in the [Azure blog](https://azure.microsoft.com/blog/topics/cognitive-services/).
+Bilişsel hizmetler hakkında haberler, [Azure bloguna](https://azure.microsoft.com/blog/topics/cognitive-services/)göre paylaşılır.
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Ara
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
 </div>
 
-You might find the answer you need in the documentation, the samples, or answers to [Stack Overflow](https://www.stackoverflow.com) questions or in the samples.
+Belgelerinize, örneklere veya [Stack Overflow](https://www.stackoverflow.com) soruların veya örneklerde cevapdaki cevapları bulabilirsiniz.
 
  - https://stackoverflow.com/questions/tagged/azure-cognitive-services
 
-### <a name="scoped-search"></a>Scoped search
+### <a name="scoped-search"></a>Kapsamlı arama
 
-For faster results, scope your search to relevant sites such as Stack Overflow, Microsoft docs, or GitHub code samples. Use the `site:` query notation in your [favorite search engine](https://bing.com):
+Daha hızlı sonuçlar için aramanızı Stack Overflow, Microsoft docs veya GitHub kod örnekleri gibi ilgili sitelere kapsama. En [sevdiğiniz arama motorinizdeki](https://bing.com)`site:` sorgu gösterimini kullanın:
 
 ```
 {search keywords} site:stackoverflow.com
 ```
 
-Where `{search keywords}` is the context of your search. This search will scope the results to Stack Overflow. Consider using these scoped searches appropriately:
+Burada `{search keywords}` aramanızın bağlamıdır. Bu arama sonuçları Stack Overflow için kapsam oluşturacak. Bu kapsamlı aramaları uygun şekilde kullanmayı göz önünde bulundurun:
 
  - Stack Overflow: `site:stackoverflow.com`
  - Microsoft Docs: `site:docs.microsoft.com`
- - GitHub Samples: `site:github.com/azure-samples`
+ - GitHub örnekleri: `site:github.com/azure-samples`
 
-## <a name="create-a-github-issue"></a>Create a GitHub issue
+## <a name="create-a-github-issue"></a>GitHub sorunu oluştur
 
 <div class='icon is-large'>
     <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
 </div>
 
-Samples are often posted as open source. For questions and issues, create an *issue* in the respective GitHub repository. You can submit a pull request too! Looking for **Azure Samples** source code, below is a listing of Cognitive Services sample source code:
+Örnekler genellikle açık kaynak olarak gönderilir. Sorular ve sorunlar için ilgili GitHub deposunda bir *sorun* oluşturun. Çekme isteğini de gönderebilirsiniz! **Azure örnekleri** kaynak kodu aranıyor, aşağıdaki bilişsel hizmetler örnek kaynak kodu listesidir:
 
-* [Azure Samples - Cognitive Services](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
+* [Azure örnekleri-bilişsel hizmetler](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
 
-You can create a bug report, feature request, or ask a general question and share best practices. For bug reports, please follow the provided template:
+Bir hata raporu, özellik isteği oluşturabilir veya genel bir soru sorabilir ve en iyi uygulamaları paylaşabilirsiniz. Hata raporları için lütfen belirtilen şablonu izleyin:
 
-**Describe the bug**
+**Hatayı açıkla**
 
-A clear and concise description of what the bug is.
+Hatanın ne olduğuna ilişkin açık ve kısa bir açıklama.
 
-**To reproduce**
+**Yeniden oluşturmak için**
 
-Steps to reproduce the behavior:
+Davranışı yeniden oluşturma adımları:
 1. ...
 2. ...
 
-**Expected behavior**
+**Beklenen davranış**
 
-A clear and concise description of what you expected to happen.
+Ne olması beklendiğinizi açık ve kısa bir açıklama.
 
-**Which Cognitive Services offerings are you using**
+**Hangi bilişsel hizmet tekliflerini kullanıyorsunuz?**
 
-Detail the Cognitive Services offering that you're attempting to use, and provide details as to what you're trying to achieve.
+Kullanmaya çalıştığınız bilişsel hizmetler teklifini ayrıntılandırın ve elde etmek istediğiniz gibi ayrıntıları sağlayın.
 
-**Platform, Operating System, and Programming Language**
+**Platform, Işletim sistemi ve programlama dili**
 
- - OS: [e.g.,  Windows, Linux, Android, iOS, ...] - please be specific
- - Hardware - x64, x86, ARM, ...
- - Browser, e.g.,  Chrome, Safari] (if applicable)- please be specific
+ - İşletim sistemi: [örn., Windows, Linux, Android, iOS,...]-Lütfen özel
+ - Donanım-x64, x86, ARM,...
+ - Tarayıcı, örneğin, Chrome, Safari] (varsa)-lütfen özel
 
 **Bağlam**
 
- - Error messages, log information, stack trace, ...
- - If you report an error for a specific service interaction, report the SessionId and time (incl. timezone) of the reported incidents. The SessionId is reported in all call-backs/events you receive.
- - Any other additional information
+ - Hata iletileri, günlük bilgileri, yığın izleme,...
+ - Belirli bir hizmet etkileşimi için bir hata raporlayabilir, bildirilen olayların SessionID ve saatini (saat dilimi dahil) bildirin. SessionID, aldığınız tüm geri göndermeler/etkinliklerde raporlanır.
+ - Diğer ek bilgiler
 
 ## <a name="reddit"></a>Reddit
 
@@ -178,9 +178,9 @@ Detail the Cognitive Services offering that you're attempting to use, and provid
     <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
 </div>
 
-Reddit is community driven web content rating and discussion website, offering the latest details of [Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1). Registered members can submit content and others can vote on it - organically enabling the most relevant content will rise to the top.
+Reddıt, Azure bilişsel [Hizmetler](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)'in en son ayrıntılarını sunan topluluk odaklı web içeriği derecelendirmesi ve tartışma web sitesidir. Kayıtlı üyeler içerik gönderebilir ve diğerleri, en ilgili içeriklerin en üste yükselecek şekilde, BT tarafından daha fazla oy verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [What are Azure Cognitive Services?](welcome.md)
+> [Azure bilişsel hizmetler nedir?](welcome.md)

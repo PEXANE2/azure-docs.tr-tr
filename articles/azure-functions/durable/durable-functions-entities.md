@@ -1,6 +1,6 @@
 ---
-title: Durable entities - Azure Functions
-description: Learn what durable entities are and how to use them in the Durable Functions extension for Azure Functions.
+title: Dayanıklı varlıklar-Azure Işlevleri
+description: Dayanıklı varlıkların ne olduğunu ve Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda nasıl kullanılacağını öğrenin.
 author: cgillum
 ms.topic: overview
 ms.date: 11/02/2019
@@ -12,51 +12,51 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232921"
 ---
-# <a name="entity-functions"></a>Entity functions
+# <a name="entity-functions"></a>Varlık işlevleri
 
-Entity functions define operations for reading and updating small pieces of state, known as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, the *entity trigger*. Unlike orchestrator functions, entity functions manage the state of an entity explicitly, rather than implicitly representing state via control flow.
-Entities provide a means for scaling out applications by distributing the work across many entities, each with a modestly sized state.
+Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü olan işlevlerdir, *varlık tetikleyicisi*. Orchestrator işlevlerinin aksine, varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine bir varlığın durumunu açıkça yönetir.
+Varlıklar, her biri modestly boyutlu bir duruma sahip birçok varlık genelinde iş dağıtarak uygulamaları ölçeklendirmek için bir yol sağlar.
 
 > [!NOTE]
-> Entity functions and related functionality is only available in Durable Functions 2.0 and above.
+> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
 
-## <a name="general-concepts"></a>General concepts
+## <a name="general-concepts"></a>Genel kavramlar
 
-Entities behave a bit like tiny services that communicate via messages. Each entity has a unique identity and an internal state (if it exists). Like services or objects, entities perform operations when prompted to do so. When an operation executes, it might update the internal state of the entity. It might also call external services and wait for a response. Entities communicate with other entities, orchestrations, and clients by using messages that are implicitly sent via reliable queues. 
+Varlıklar, iletiler üzerinden iletişim kuran çok küçük hizmetler gibi davranır. Her varlığın benzersiz bir kimliği ve bir iç durumu vardır (varsa). Hizmetler veya nesneler gibi varlıklar, istendiğinde işlemler gerçekleştirir. Bir işlem yürütüldüğünde, varlığın iç durumunu güncelleştirebilir. Ayrıca, dış Hizmetleri çağırıp bir yanıt bekler. Varlıklar, güvenilir kuyruklar aracılığıyla örtük olarak gönderilen iletileri kullanarak diğer varlıklar, düzenlemeler ve istemcilerle iletişim kurar. 
 
-To prevent conflicts, all operations on a single entity are guaranteed to execute serially, that is, one after another. 
+Çakışmaları engellemek için, tek bir varlıktaki tüm işlemlerin, diğer bir deyişle, diğer bir deyişle, bir diğeri de yürütülmesi garanti edilir. 
 
-### <a name="entity-id"></a>Entity ID
-Entities are accessed via a unique identifier, the *entity ID*. An entity ID is simply a pair of strings that uniquely identifies an entity instance. It consists of an:
+### <a name="entity-id"></a>Varlık KIMLIĞI
+Varlıklara benzersiz bir tanımlayıcı, *VARLıK kimliği*üzerinden erişilir. Bir varlık KIMLIĞI, bir varlık örneğini benzersiz bir şekilde tanımlayan dizelerin bir çiftidir. Aşağıdakilerden oluşur:
 
-* **Entity name**, which is a name that identifies the type of the entity. An example is "Counter." This name must match the name of the entity function that implements the entity. It isn't sensitive to case.
-* **Entity key**, which is a string that uniquely identifies the entity among all other entities of the same name. An example is a GUID.
+* Varlığın türünü tanımlayan bir ad olan **varlık adı**. Örnek olarak "Counter" bir örnektir. Bu ad, varlığı uygulayan varlık işlevinin adı ile aynı olmalıdır. Büyük/küçük harfe duyarlı değildir.
+* Aynı ada sahip diğer tüm varlıklar arasında varlığı benzersiz bir şekilde tanımlayan bir dize olan **varlık anahtarı**. Bir GUID örneğidir.
 
-For example, a `Counter` entity function might be used for keeping score in an online game. Each instance of the game has a unique entity ID, such as `@Counter@Game1` and `@Counter@Game2`. All operations that target a particular entity require specifying an entity ID as a parameter.
+Örneğin, bir `Counter` varlık işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her örneğinin, `@Counter@Game1` ve `@Counter@Game2`gibi benzersiz bir varlık KIMLIĞI vardır. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
 
-### <a name="entity-operations"></a>Entity operations ###
+### <a name="entity-operations"></a>Varlık işlemleri ###
 
-To invoke an operation on an entity, specify the:
+Bir varlıkta bir işlem çağırmak için şunu belirtin:
 
-* **Entity ID** of the target entity.
-* **Operation name**, which is a string that specifies the operation to perform. For example, the `Counter` entity could support `add`, `get`, or `reset` operations.
-* **Operation input**, which is an optional input parameter for the operation. For example, the add operation can take an integer amount as the input.
+* Hedef varlığın **VARLıK kimliği** .
+* **İşlem adı**, gerçekleştirilecek işlemi belirten bir dizedir. Örneğin, `Counter` varlık `add`, `get`veya `reset` işlemlerini destekleyebilir.
+* İşlem için isteğe bağlı bir giriş parametresi olan **işlem girişi**. Örneğin, ekleme işlemi girdi olarak bir tamsayı miktarı alabilir.
 
-Operations can return a result value or an error result, such as a JavaScript error or a .NET exception. This result or error can be observed by orchestrations that called the operation.
+İşlemler bir sonuç değeri veya bir JavaScript hatası ya da .NET özel durumu gibi bir hata sonucu döndürebilir. Bu sonuç veya hata, işlemi çağıran uyarlamalar tarafından gözlemlenebilir.
 
-An entity operation can also create, read, update, and delete the state of the entity. The state of the entity is always durably persisted in storage.
+Bir varlık işlemi varlık durumunu da oluşturabilir, okuyabilir, güncelleştirebilir ve silebilir. Varlığın durumu her zaman depolamada kalıcı olarak kalıcı hale getirilir.
 
-## <a name="define-entities"></a>Define entities
+## <a name="define-entities"></a>Varlıkları tanımlama
 
-Currently, the two distinct APIs for defining entities are a:
+Şu anda varlıkları tanımlamaya yönelik iki ayrı API şunlardır:
 
-**Function-based syntax**, where entities are represented as functions and operations are explicitly dispatched by the application. This syntax works well for entities with simple state, few operations, or a dynamic set of operations like in application frameworks. This syntax can be tedious to maintain because it doesn't catch type errors at compile time.
+**İşlev tabanlı sözdizimi**, varlıkların işlevler olarak temsil edildiği ve uygulamalar tarafından açıkça dağıtılan işlev. Bu söz dizimi basit durum, birkaç işlem veya uygulama çerçeveleri gibi dinamik bir işlem kümesi olan varlıklar için iyi sonuç verir. Bu söz dizimi, derleme zamanında tür hatalarını yakalayamadığından sürdürmek sıkıcı olabilir.
 
-**Class-based syntax**, where entities and operations are represented by classes and methods. This syntax produces more easily readable code and allows operations to be invoked in a type-safe way. The class-based syntax is a thin layer on top of the function-based syntax, so both variants can be used interchangeably in the same application.
+Varlıkların ve işlemlerin sınıflar ve yöntemlerle temsil edildiği **sınıf tabanlı sözdizimi**. Bu sözdizimi daha kolay okunabilir kod üretir ve işlemlerin tür açısından güvenli bir şekilde çağrılmasına izin verir. Sınıf tabanlı sözdizimi, işlev tabanlı sözdiziminin üzerinde ince bir katmandır, bu nedenle her iki çeşit de aynı uygulamadaki birbirlerinin yerine kullanılabilir.
 
-### <a name="example-function-based-syntax---c"></a>Example: Function-based syntax - C#
+### <a name="example-function-based-syntax---c"></a>Örnek: Işlev tabanlı sözdizimi-C#
 
-The following code is an example of a simple `Counter` entity implemented as a durable function. This function defines three operations, `add`, `reset`, and `get`, each of which operates on an integer state.
+Aşağıdaki kod, dayanıklı bir işlev olarak uygulanan basit bir `Counter` varlığına bir örnektir. Bu işlev, her biri bir tamsayı durumu üzerinde çalışan üç işlem, `add`, `reset`ve `get`tanımlar.
 
 ```csharp
 [FunctionName("Counter")]
@@ -77,11 +77,11 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-For more information on the function-based syntax and how to use it, see [Function-based syntax](durable-functions-dotnet-entities.md#function-based-syntax).
+İşlev tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [işlev tabanlı sözdizimi](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax---c"></a>Example: Class-based syntax - C#
+### <a name="example-class-based-syntax---c"></a>Örnek: sınıf tabanlı sözdizimi-C#
 
-The following example is an equivalent implementation of the `Counter` entity using classes and methods.
+Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığın eşdeğer bir uygulamasıdır.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -102,15 +102,15 @@ public class Counter
 }
 ```
 
-The state of this entity is an object of type `Counter`, which contains a field that stores the current value of the counter. To persist this object in storage, it's serialized and deserialized by the [Json.NET](https://www.newtonsoft.com/json) library. 
+Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan içeren `Counter`türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
 
-For more information on the class-based syntax and how to use it, see [Defining entity classes](durable-functions-dotnet-entities.md#defining-entity-classes).
+Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [varlık sınıfları tanımlama](durable-functions-dotnet-entities.md#defining-entity-classes).
 
-### <a name="example-javascript-entity"></a>Example: JavaScript entity
+### <a name="example-javascript-entity"></a>Örnek: JavaScript varlığı
 
-Durable entities are available in JavaScript starting with version **1.3.0** of the `durable-functions` npm package. The following code is the `Counter` entity implemented as a durable function written in JavaScript.
+Dayanıklı varlıklar, `durable-functions` NPM paketinin sürüm **1.3.0** Ile başlayan JavaScript 'te kullanılabilir. Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan `Counter` varlıktır.
 
-**function.json**
+**function. JSON**
 ```json
 {
   "bindings": [
@@ -124,7 +124,7 @@ Durable entities are available in JavaScript starting with version **1.3.0** of 
 }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -145,27 +145,27 @@ module.exports = df.entity(function(context) {
 });
 ```
 
-## <a name="access-entities"></a>Access entities
+## <a name="access-entities"></a>Erişim varlıkları
 
-Entities can be accessed using one-way or two-way communication. The following terminology distinguishes the two forms of communication: 
+Varlıklara, tek yönlü veya çift yönlü iletişim kullanılarak erişilebilir. Aşağıdaki terminoloji iki iletişim formunu ayırır: 
 
-* **Calling** an entity uses two-way (round-trip) communication. You send an operation message to the entity, and then wait for the response message before you continue. The response message can provide a result value or an error result, such as a JavaScript error or a .NET exception. This result or error is then observed by the caller.
-* **Signaling** an entity uses one-way (fire and forget) communication. You send an operation message but don't wait for a response. While the message is guaranteed to be delivered eventually, the sender doesn't know when and can't observe any result value or errors.
+* Bir varlığı **çağırmak** iki yönlü (gidiş dönüş) iletişimini kullanır. Varlığa bir işlem iletisi gönderir ve devam etmeden önce yanıt iletisini bekleyin. Yanıt iletisi bir sonuç değeri veya bir JavaScript hatası ya da bir .NET özel durumu gibi bir hata sonucu sağlayabilir. Bu sonuç veya hata, çağıran tarafından izlenir.
+* Bir varlığın **sinyal sinyali** , tek yönlü (ateş ve unutma) iletişimi kullanır. İşlem iletisi gönderir ancak yanıt bekleyemez. İletinin sonunda teslim edilmesi garanti edilirken gönderici, hiçbir sonuç değerini veya hatayı ne zaman gözlemlemediğini bilmez.
 
-Entities can be accessed from within client functions, from within orchestrator functions, or from within entity functions. Not all forms of communication are supported by all contexts:
+Varlıklar, Orchestrator işlevleri içinden veya varlık işlevleri içinden istemci işlevleri içinden erişilebilir. Tüm iletişim biçimleri tüm bağlamlar tarafından desteklenmez:
 
-* From within clients, you can signal entities and you can read the entity state.
-* From within orchestrations, you can signal entities and you can call entities.
-* From within entities, you can signal entities.
+* İstemcilerin içinden varlıklara sinyal verebilir ve varlık durumunu okuyabilirsiniz.
+* Düzenleyicmeler içinden varlıkları işaret edebilir ve varlıkları çağırabilirsiniz.
+* Varlıkların içinden varlıklara sinyal getirebilirsiniz.
 
-The following examples illustrate these various ways of accessing entities.
+Aşağıdaki örneklerde varlıklara erişmenin çeşitli yolları gösterilmektedir.
 
 > [!NOTE]
-> For simplicity, the following examples show the loosely typed syntax for accessing entities. In general, we recommend that you [access entities through interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) because it provides more type checking.
+> Basitlik için aşağıdaki örneklerde varlıklara erişim için gevşek yazılmış sözdizimi gösterilmektedir. Genel olarak, varlıklara daha fazla tür denetimi sağladığından, [arabirimlere erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz.
 
-### <a name="example-client-signals-an-entity"></a>Example: Client signals an entity
+### <a name="example-client-signals-an-entity"></a>Örnek: Istemci bir varlığa işaret eder
 
-To access entities from an ordinary Azure Function, which is also known as a client function, use the [entity client output binding](durable-functions-bindings.md#entity-client). The following example shows a queue-triggered function signaling an entity using this binding.
+İstemci işlevi olarak da bilinen sıradan bir Azure Işlevinden varlıklara erişmek için, [varlık istemci çıkış bağlamayı](durable-functions-bindings.md#entity-client)kullanın. Aşağıdaki örnek, bu bağlamayı kullanarak bir varlığı işaret eden kuyruk tarafından tetiklenen bir işlev gösterir.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -190,11 +190,11 @@ module.exports = async function (context) {
 };
 ```
 
-The term *signal* means that the entity API invocation is one-way and asynchronous. It's not possible for a client function to know when the entity has processed the operation. Also, the client function can't observe any result values or exceptions. 
+*Sinyal* terimi, varlık API çağrısı tek yönlü ve zaman uyumsuz olduğu anlamına gelir. Bir istemci işlevinin, varlığın işlemi ne zaman işlediğini bilmesi mümkün değildir. Ayrıca, istemci işlevi sonuç değerlerini veya özel durumları gözlemleyemiyorum. 
 
-### <a name="example-client-reads-an-entity-state"></a>Example: Client reads an entity state
+### <a name="example-client-reads-an-entity-state"></a>Örnek: Istemci bir varlık durumunu okur
 
-Client functions can also query the state of an entity, as shown in the following example:
+İstemci işlevleri, aşağıdaki örnekte gösterildiği gibi bir varlığın durumunu da sorgulayabilir:
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -218,11 +218,11 @@ module.exports = async function (context) {
 };
 ```
 
-Entity state queries are sent to the Durable tracking store and return the entity's most recently persisted state. This state is always a "committed" state, that is, it's never a temporary intermediate state assumed in the middle of executing an operation. However, it's possible that this state is stale compared to the entity's in-memory state. Only orchestrations can read an entity's in-memory state, as described in the following section.
+Varlık durumu sorguları, dayanıklı izleme deposuna gönderilir ve varlığın en son kalıcı durumunu döndürür. Bu durum her zaman bir "taahhüt" durumudur, yani bir işlemin yürütüldüğü ortasında hiçbir zaman geçici bir ara durum kabul edilir. Bununla birlikte, bu durum varlığın bellek içi durumuna kıyasla eski olabilir. Aşağıdaki bölümde açıklandığı gibi, yalnızca düzenlemeler bir varlığın bellek içi durumunu okuyabilir.
 
-### <a name="example-orchestration-signals-and-calls-an-entity"></a>Example: Orchestration signals and calls an entity
+### <a name="example-orchestration-signals-and-calls-an-entity"></a>Örnek: Orchestration sinyalleri ve bir varlığı çağırır
 
-Orchestrator functions can access entities by using APIs on the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger). The following example code shows an orchestrator function calling and signaling a `Counter` entity.
+Orchestrator işlevleri, [düzenleme tetikleyicisi bağlamasında](durable-functions-bindings.md#orchestration-trigger)API 'leri kullanarak varlıklara erişebilir. Aşağıdaki örnek kod, bir `Counter` varlığı çağıran ve sinyal eden bir Orchestrator işlevi gösterir.
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -256,15 +256,15 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Only orchestrations are capable of calling entities and getting a response, which could be either a return value or an exception. Client functions that use the [client binding](durable-functions-bindings.md#entity-client) can only signal entities.
+Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel durum olabilen bir yanıt alma yeteneğine sahiptir. [İstemci bağlamasını](durable-functions-bindings.md#entity-client) kullanan istemci işlevleri yalnızca varlıkları işaret edebilir.
 
 > [!NOTE]
-> Calling an entity from an orchestrator function is similar to calling an [activity function](durable-functions-types-features-overview.md#activity-functions) from an orchestrator function. The main difference is that entity functions are durable objects with an address, which is the entity ID. Entity functions support specifying an operation name. Activity functions, on the other hand, are stateless and don't have the concept of operations.
+> Bir Orchestrator işlevinden varlık çağırmak, bir Orchestrator işlevinden [etkinlik işlevi](durable-functions-types-features-overview.md#activity-functions) çağırmaya benzerdir. Temel fark, varlık işlevlerinin varlık KIMLIĞI olan bir adrese sahip dayanıklı nesneler olması anlamına gelir. Varlık işlevleri bir işlem adı belirtmeyi destekler. Diğer yandan etkinlik işlevleri durum bilgisiz değildir ve işlem kavramına sahip değildir.
 
-### <a name="example-entity-signals-an-entity"></a>Example: Entity signals an entity
+### <a name="example-entity-signals-an-entity"></a>Örnek: varlık bir varlığa işaret eder
 
-An entity function can send signals to other entities, or even itself, while it executes an operation.
-For example, we can modify the previous `Counter` entity example so that it sends a "milestone-reached" signal to some monitor entity when the counter reaches the value 100.
+Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara veya hatta kendisine sinyal gönderebilir.
+Örneğin, önceki `Counter` varlık örneğini, sayaç 100 değerine ulaştığında, bazı izleyici varlığına "kilometre taşı" sinyali gönderecek şekilde değiştirebiliriz.
 
 ```csharp
    case "add":
@@ -290,16 +290,16 @@ For example, we can modify the previous `Counter` entity example so that it send
         break;
 ```
 
-## <a name="entity-coordination"></a>Entity coordination
+## <a name="entity-coordination"></a>Varlık düzenlemesi
 
-There might be times when you need to coordinate operations across multiple entities. For example, in a banking application, you might have entities that represent individual bank accounts. When you transfer funds from one account to another, you must ensure that the source account has sufficient funds. You also must ensure that updates to both the source and destination accounts are done in a transactionally consistent way.
+Birden çok varlık arasında işlem koordine etmeniz gerektiğinde zaman alabilir. Örneğin, bir bankacılık uygulamasında, tek tek banka hesaplarını temsil eden varlıklara sahip olabilirsiniz. Fonları bir hesaptan diğerine aktardığınızda, kaynak hesapta yeterli fon bulunduğundan emin olmanız gerekir. Ayrıca, kaynak ve hedef hesaplara yönelik güncelleştirmelerin işlem temelli olarak tutarlı bir şekilde yapıldığından emin olmanız gerekir.
 
-### <a name="example-transfer-funds-c"></a>Example: Transfer funds (C#)
+### <a name="example-transfer-funds-c"></a>Örnek: transfer fonlarıC#()
 
-The following example code transfers funds between two account entities by using an orchestrator function. Coordinating entity updates requires using the `LockAsync` method to create a _critical section_ in the orchestration.
+Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki hesap varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine etmek için, düzenleme içinde _kritik bir bölüm_ oluşturmak üzere `LockAsync` yöntemi kullanılması gerekir.
 
 > [!NOTE]
-> For simplicity, this example reuses the `Counter` entity defined previously. In a real application, it would be better to define a more detailed `BankAccount` entity.
+> Kolaylık olması için bu örnek daha önce tanımlanan `Counter` varlığını yeniden kullanır. Gerçek bir uygulamada, daha ayrıntılı bir `BankAccount` varlığı tanımlanması daha iyidir.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -341,61 +341,61 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-In .NET, `LockAsync` returns `IDisposable`, which ends the critical section when disposed. This `IDisposable` result can be used together with a `using` block to get a syntactic representation of the critical section.
+.NET sürümünde `LockAsync`, bırakıldığında kritik bölümü sonlandıran `IDisposable`döndürür. Bu `IDisposable` sonucu, kritik bölümün sözdizimsel bir gösterimini almak için bir `using` bloğuyla birlikte kullanılabilir.
 
-In the preceding example, an orchestrator function transferred funds from a source entity to a destination entity. The `LockAsync` method locked both the source and destination account entities. This locking ensured that no other client could query or modify the state of either account until the orchestration logic exited the critical section at the end of the `using` statement. This behavior prevents the possibility of overdrafting from the source account.
-
-> [!NOTE] 
-> When an orchestration terminates, either normally or with an error, any critical sections in progress are implicitly ended and all locks are released.
-
-### <a name="critical-section-behavior"></a>Critical section behavior
-
-The `LockAsync` method creates a critical section in an orchestration. These critical sections prevent other orchestrations from making overlapping changes to a specified set of entities. Internally, the `LockAsync` API sends "lock" operations to the entities and returns when it receives a "lock acquired" response message from each of these same entities. Both lock and unlock are built-in operations supported by all entities.
-
-No operations from other clients are allowed on an entity while it's in a locked state. This behavior ensures that only one orchestration instance can lock an entity at a time. If a caller tries to invoke an operation on an entity while it's locked by an orchestration, that operation is placed in a pending operation queue. No pending operations are processed until after the holding orchestration releases its lock.
+Önceki örnekte, bir Orchestrator işlevi bir kaynak varlıktan bir hedef varlığa fon aktardı. `LockAsync` yöntemi hem kaynak hem de hedef hesap varlıklarını kilitlediği. Bu, düzenleme mantığı `using` deyimin sonundaki önemli bölümden çıkana kadar başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamayarak veya değiştirememesi için bu kilidi kilitler. Bu davranış, kaynak hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmaya engel olur.
 
 > [!NOTE] 
-> This behavior is slightly different from synchronization primitives used in most programming languages, such as the `lock` statement in C#. For example, in C#, the `lock` statement must be used by all threads to ensure proper synchronization across multiple threads. Entities, however, don't require all callers to explicitly lock an entity. If any caller locks an entity, all other operations on that entity are blocked and queued behind that lock.
+> Bir düzenleme, normalde veya bir hata ile sonlandırıldığında, devam eden tüm kritik bölümler örtük olarak sonlandırılır ve tüm kilitler serbest bırakılır.
 
-Locks on entities are durable, so they persist even if the executing process is recycled. Locks are internally persisted as part of an entity's durable state.
+### <a name="critical-section-behavior"></a>Kritik bölüm davranışı
 
-Unlike transactions, critical sections don't automatically roll back changes in the case of errors. Instead, any error handling, such as roll-back or retry, must be explicitly coded, for example by catching errors or exceptions. This design choice is intentional. Automatically rolling back all the effects of an orchestration is difficult or impossible in general, because orchestrations might run activities and make calls to external services that can't be rolled back. Also, attempts to roll back might themselves fail and require further error handling.
+`LockAsync` yöntemi bir düzenleme içinde kritik bir bölüm oluşturur. Bu kritik bölümler, diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API 'SI varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında bunu döndürür. Hem kilit hem de kilit açma, tüm varlıkların desteklediği yerleşik işlemlerdir.
 
-### <a name="critical-section-rules"></a>Critical section rules
+Kilitli durumda olduğu sürece, bir varlıkta diğer istemcilerden işlem yapılmasına izin verilmez. Bu davranış, tek seferde yalnızca bir düzenleme örneğinin bir varlığı kilitleyebilmesini sağlar. Bir çağıran bir düzenleme tarafından kilitliyken bir varlık üzerinde bir işlem çağırmaya çalışırsa, bu işlem bekleyen bir işlem kuyruğuna yerleştirilir. Bekleyen bir işlem, saklama düzenleme kilidini serbest bırakana kadar işlenmeyecektir.
 
-Unlike low-level locking primitives in most programming languages, critical sections are *guaranteed not to deadlock*. To prevent deadlocks, we enforce the following restrictions: 
+> [!NOTE] 
+> Bu davranış, içindeki C#`lock` yöntemi gibi çoğu programlama dilinde kullanılan eşitleme temel larından biraz farklıdır. Örneğin, ' de C#, birden çok iş parçacığı genelinde doğru eşitlemeyi sağlamak için `lock` deyimin tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açık bir şekilde kilitlemesine gerek kalmaz. Herhangi bir çağıran bir varlığı kilitlerse, söz konusu varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
 
-* Critical sections can't be nested.
-* Critical sections can't create suborchestrations.
-* Critical sections can call only entities they have locked.
-* Critical sections can't call the same entity using multiple parallel calls.
-* Critical sections can signal only entities they haven't locked.
+Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem geri dönüştürülüp bile kalıcı hale getiriyordur. Kilitler, bir varlığın dayanıklı durumunun bir parçası olarak dahili olarak kalıcı hale getirilir.
 
-Any violations of these rules cause a runtime error, such as `LockingRulesViolationException` in .NET, which includes a message that explains what rule was broken.
+İşlemlerden farklı olarak, kritik bölümler hata durumunda değişiklikleri otomatik olarak geri almaz. Bunun yerine, geri alma veya yeniden deneme gibi herhangi bir hata işleme, örneğin hatalar veya özel durumlar yakalanarak açıkça kodlanmalıdır. Bu tasarım seçeneği bilerek yapılır. Düzenleme işlemleri, genel olarak daha zor veya imkansız hale getirilir, çünkü düzenlemeler etkinlikleri çalıştırabilir ve geri alınamaz harici hizmetlere çağrı yapabilirler. Ayrıca, geri alma girişimleri de başarısız olabilir ve daha fazla hata işleme gerektirebilir.
 
-## <a name="comparison-with-virtual-actors"></a>Comparison with virtual actors
+### <a name="critical-section-rules"></a>Kritik bölüm kuralları
 
-Many of the durable entities features are inspired by the [actor model](https://en.wikipedia.org/wiki/Actor_model). If you're already familiar with actors, you might recognize many of the concepts described in this article. Durable entities are particularly similar to [virtual actors](https://research.microsoft.com/projects/orleans/), or grains, as popularized by the [Orleans project](http://dotnet.github.io/orleans/). Örnek:
+Çoğu programlama dilinde alt düzey kilitleme temel elemanlarından farklı olarak, kritik bölümler *kilitlenmeyen garanti*edilir. Kilitlenmeleri engellemek için aşağıdaki kısıtlamaları uyguladık: 
 
-* Durable entities are addressable via an entity ID.
-* Durable entity operations execute serially, one at a time, to prevent race conditions.
-* Durable entities are created implicitly when they're called or signaled.
-* When not executing operations, durable entities are silently unloaded from memory.
+* Kritik bölümler iç içe olamaz.
+* Kritik bölümler, alt düzenlemeler oluşturamaz.
+* Kritik bölümler, yalnızca kilitlediği varlıkları çağırabilir.
+* Kritik bölümler birden çok paralel çağrı kullanarak aynı varlığı çağıramaz.
+* Kritik bölümler yalnızca kilitlediği varlıkları işaret edebilir.
 
-There are some important differences that are worth noting:
+Bu kuralların herhangi bir ihlali, .NET 'teki `LockingRulesViolationException` gibi bir çalışma zamanı hatasına neden olur. Bu, hangi kuralın bozuk olduğunu açıklayan bir ileti içerir.
 
-* Durable entities prioritize durability over latency, and so might not be appropriate for applications with strict latency requirements.
-* Durable entities don't have built-in timeouts for messages. In Orleans, all messages time out after a configurable time. The default is 30 seconds.
-* Messages sent between entities are delivered reliably and in order. In Orleans, reliable or ordered delivery is supported for content sent through streams, but isn't guaranteed for all messages between grains.
-* Request-response patterns in entities are limited to orchestrations. From within entities, only one-way messaging (also known as signaling) is permitted, as in the original actor model, and unlike grains in Orleans. 
-* Durable entities don't deadlock. In Orleans, deadlocks can occur and don't resolve until messages time out.
-* Durable entities can be used in conjunction with durable orchestrations and support distributed locking mechanisms. 
+## <a name="comparison-with-virtual-actors"></a>Sanal aktörler ile karşılaştırma
+
+Birçok dayanıklı varlık özelliği [aktör modeli](https://en.wikipedia.org/wiki/Actor_model)tarafından ilham olarak sağlanır. Aktörlerle zaten bilgi sahibiyseniz, bu makalede açıklanan kavramların birçoğunu de tanıyabilirsiniz. Dayanıklı varlıklar özellikle, [Orleans projesi](http://dotnet.github.io/orleans/)tarafından popularas olarak [sanal aktörlerin](https://research.microsoft.com/projects/orleans/)veya grasındalara benzer. Örneğin:
+
+* Dayanıklı varlıklar bir varlık KIMLIĞI aracılığıyla adreslidir.
+* Yarış durumlarını engellemek için, sürekli varlık işlemleri tek seferde bir kez yürütülür.
+* Dayanıklı varlıklar, çağrıldığında veya sinyal edildiğinde örtük olarak oluşturulur.
+* İşlemler yürütümemekte, kalıcı varlıkların belleği sessizce kaldırılır.
+
+Dikkat edilmesi gereken bazı önemli farklılıklar vardır:
+
+* Dayanıklı varlıklar dayanıklılığı gecikme süresine göre önceliklendirmez ve bu nedenle, katı gecikme süresi gereksinimleri olan uygulamalar için uygun olmayabilir.
+* Dayanıklı varlıklarda iletiler için yerleşik zaman aşımları yoktur. Orleans 'da, yapılandırılabilir bir süreden sonra tüm iletiler zaman aşımına uğrar. Varsayılan değer 30 saniyedir.
+* Varlıklar arasında gönderilen iletiler güvenilir bir şekilde ve sırayla dağıtılır. Orleans 'da, güvenilir veya sıralı teslim akışlar aracılığıyla gönderilen içerikler için desteklenir, ancak grasınlar arasındaki tüm iletiler için garanti edilmez.
+* Varlıklarda istek-yanıt desenleri, düzenleme ile sınırlıdır. Varlıkların içinden, özgün aktör modelinde olduğu gibi yalnızca tek yönlü mesajlaşmaya (sinyal olarak da bilinir) izin verilir. 
+* Dayanıklı varlıklar kilitlenmeyin. Orleans 'da, kilitlenmeler meydana gelebilir ve iletiler zaman aşımına gelene kadar çözümlenmeyebilir.
+* Dayanıklı varlıklar, dayanıklı düzenlemeler ile birlikte kullanılabilir ve dağıtılmış kilitleme mekanizmalarını destekler. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Read the Developer's guide to durable entities in .NET](durable-functions-dotnet-entities.md)
+> [.NET 'teki dayanıklı varlıklara yönelik geliştirici kılavuzunu okuyun](durable-functions-dotnet-entities.md)
 
 > [!div class="nextstepaction"]
-> [Learn about task hubs](durable-functions-task-hubs.md)
+> [Görev hub 'ları hakkında bilgi edinin](durable-functions-task-hubs.md)

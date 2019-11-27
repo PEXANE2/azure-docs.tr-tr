@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027123"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538785"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -32,7 +32,7 @@ Bir kullanıcının veya cihazın herhangi bir özniteliği değiştiğinde, sis
 
 > [!NOTE]
 > Bu özellik bir veya daha fazla dinamik grubun üyesi olan her benzersiz kullanıcı için Azure AD Premium P1 lisansı gerektirir. Kullanıcılara, dinamik grupların üyesi olmaları için lisans atamanız gerekmez, ancak bu gibi tüm kullanıcıları kapsayacak şekilde Kiracıdaki en az sayıda lisansa sahip olmanız gerekir. Örneğin, kiracınızdaki tüm dinamik gruplarda toplam 1.000 benzersiz kullanıcınız varsa, lisans gereksinimini karşılamak için Azure AD Premium P1 için en az 1.000 lisansa sahip olmanız gerekir.
->
+> Dinamik bir cihaz grubunun üyesi olan cihazlar için lisans gerekmez.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
 

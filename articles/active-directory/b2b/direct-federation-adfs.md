@@ -35,7 +35,7 @@ Azure AD B2B, SAML protokolünü kullanan kimlik sağlayıcılarıyla federasyon
 
 Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından SAML 2,0 yanıtında aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir. Adım 12 ' de [bir test AD FS örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) AD FS uç noktaların nasıl bulunacağını veya meta veri URL 'nizin nasıl oluşturulacağını açıklar. Örneğin `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
@@ -44,7 +44,7 @@ Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından SAML 2,0 yanı
 Aşağıdaki taleplerin kimlik sağlayıcısı tarafından verilen SAML 2,0 belirtecinde yapılandırılması gerekir:
 
 
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |NameID biçimi     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -108,7 +108,7 @@ Azure AD B2B, aşağıda listelenen belirli gereksinimlere sahip WS-Besme protok
 
 Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından gelen WS-Besme iletisinde aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir. Adım 12 ' de [bir test AD FS örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) AD FS uç noktaların nasıl bulunacağını veya meta veri URL 'nizin nasıl oluşturulacağını açıklar. Örneğin `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |Passıverequestorendpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
@@ -116,7 +116,7 @@ Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından gelen WS-Besme
 
 IDP tarafından verilen WS-Besme belirteci için gerekli talepler:
 
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

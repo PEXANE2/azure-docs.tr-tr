@@ -1,6 +1,6 @@
 ---
-title: Push and pull OCI artifact
-description: Push and pull Open Container Initiative (OCI) artifacts using a private container registry in Azure
+title: Gönderim ve çekme OCı yapıtı
+description: Azure 'da özel bir kapsayıcı kayıt defteri kullanarak açık kapsayıcı girişimi (OCı) yapılarını gönderme ve çekme
 author: SteveLasker
 manager: gwallace
 ms.topic: article
@@ -13,40 +13,40 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456262"
 ---
-# <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Push and pull an OCI artifact using an Azure container registry
+# <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure Container Registry kullanarak bir OCı yapıtı gönderme ve çekme
 
-You can use an Azure container registry to store and manage [Open Container Initiative (OCI) artifacts](container-registry-image-formats.md#oci-artifacts) as well as Docker and Docker-compatible container images.
+[Açık kapsayıcı girişimi (OCI) yapıtlarını](container-registry-image-formats.md#oci-artifacts) ve Docker Ile Docker uyumlu kapsayıcı görüntülerini depolamak ve yönetmek Için bir Azure Container Registry kullanabilirsiniz.
 
-To demonstrate this capability, this article shows how to use the [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) tool to push a sample artifact -  a text file - to an Azure container registry. Then, pull the artifact from the registry. You can manage a variety of OCI artifacts in an Azure container registry using different command-line tools appropriate to each artifact.
+Bu özelliği göstermek için, bu makalede bir örnek yapıtı (bir metin dosyası) Azure Container Registry 'ye göndermek için [OCI kayıt defteri (ORAS)](https://github.com/deislabs/oras) aracının nasıl kullanılacağı gösterilmektedir. Ardından, yapıtı kayıt defterinden çekin. Her yapıya uygun farklı komut satırı araçlarını kullanarak bir Azure Container Registry 'de çeşitli OCı yapılarını yönetebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure kapsayıcısı kayıt defteri** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md).
-* **ORAS tool** - Download and install a current ORAS release for your operating system from the [GitHub repo](https://github.com/deislabs/oras/releases). The tool is released as a compressed tarball (`.tar.gz` file). Extract and install the file using standard procedures for your operating system.
-* **Azure Active Directory service principal (optional)** - To authenticate directly with ORAS, create a [service principal](container-registry-auth-service-principal.md) to access your registry. Ensure that the service principal is assigned a role such as AcrPush so that it has permissions to push and pull artifacts.
-* **Azure CLI (optional)** - To use an individual identity, you need a local installation of the Azure CLI. Version 2.0.71 or later is recommended. Run `az --version `to find the version. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
-* **Docker (optional)** - To use an individual identity, you must also have Docker installed locally, to authenticate with the registry. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
+* **Azure kapsayıcısı kayıt defteri** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
+* **Oras aracı** - [GitHub deposundan](https://github.com/deislabs/oras/releases)işletim sisteminiz için geçerli bir oras sürümü indirin ve yükleyin. Araç, sıkıştırılmış bir tarbol (`.tar.gz` dosyası) olarak serbest bırakılır. İşletim sisteminiz için standart yordamları kullanarak dosyayı ayıklayın ve yükledikten sonra.
+* **Azure Active Directory hizmet sorumlusu (isteğe bağlı)** -doğrudan kimlik doğrulaması yapmak için, Kayıt defterinize erişmek üzere bir [hizmet sorumlusu](container-registry-auth-service-principal.md) oluşturun. Hizmet sorumlusu ' nın AcrPush gibi bir rol atandığından emin olun ve böylece yapıtlar gönderme ve çekme yapılarına izinleri vardır.
+* **Azure CLI (isteğe bağlı)** -tek bir kimlik kullanmak IÇIN Azure CLI 'nin yerel yüklemesi gerekir. Sürüm 2.0.71 veya üzeri önerilir. Sürümü bulmak için `az --version `çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+* **Docker (isteğe bağlı)** -tek bir kimlik kullanmak için, kayıt defteriyle kimlik doğrulaması yapmak Için Docker 'ın yerel olarak yüklü olması gerekir. Docker, tüm [MacOS][docker-mac], [Windows][docker-windows]veya [Linux][docker-linux] sistemlerinde Docker 'ı kolayca yapılandıran paketler sağlar.
 
 
-## <a name="sign-in-to-a-registry"></a>Sign in to a registry
+## <a name="sign-in-to-a-registry"></a>Kayıt defterinde oturum açma
 
-This section shows two suggested workflows to sign into the registry, depending on the identity used. Choose the method appropriate for your environment.
+Bu bölümde, kullanılan kimliğe bağlı olarak kayıt defterinde oturum açmak için önerilen iki iş akışı gösterilmektedir. Ortamınız için uygun yöntemi seçin.
 
-### <a name="sign-in-with-oras"></a>Sign in with ORAS
+### <a name="sign-in-with-oras"></a>ORAS ile oturum açın
 
-Using a [service principal](container-registry-auth-service-principal.md) with push rights, run the `oras login` command to sign in to the registry using the service principal application ID and password. Specify the fully qualified registry name (all lowercase), in this case *myregistry.azurecr.io*. The service principal application ID is passed in the environment variable `$SP_APP_ID`, and the password in the variable `$SP_PASSWD`.
+Hizmet sorumlusu ['nı](container-registry-auth-service-principal.md) gönderim haklarıyla kullanarak, hizmet sorumlusu uygulama kimliği ve parolasını kullanarak kayıt defterinde oturum açmak için `oras login` komutunu çalıştırın. Tam kayıt defteri adını (tümü küçük harf), bu örnekte *myregistry.azurecr.io*olarak belirtin. Hizmet sorumlusu uygulama KIMLIĞI, ortam değişkenine `$SP_APP_ID`geçirilir ve `$SP_PASSWD`değişkende parola.
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-To read the password from Stdin, use `--password-stdin`.
+STDIN 'den parolayı okumak için `--password-stdin`kullanın.
 
 ### <a name="sign-in-with-azure-cli"></a>Azure CLI'de oturum açma
 
-[Sign in](/cli/azure/authenticate-azure-cli) to the Azure CLI with your identity to push and pull artifacts from the container registry.
+Kapsayıcı kayıt defterinden yapıtları göndermek ve çekmek için kimliğinizi kullanarak Azure CLı ['Da oturum açın](/cli/azure/authenticate-azure-cli) .
 
-Then, use the Azure CLI command [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) to access the registry. For example, to authenticate to a registry named *myregistry*:
+Ardından, kayıt defterine erişmek için [az ACR oturum açma](/cli/azure/acr?view=azure-cli-latest#az-acr-login) Azure CLI komutunu kullanın. Örneğin, *myregistry*adlı bir kayıt defterine kimlik doğrulaması yapmak için:
 
 ```azurecli
 az login
@@ -54,17 +54,17 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login` uses the Docker client to set an Azure Active Directory token in the `docker.config` file. The Docker client must be installed and running to complete the individual authentication flow.
+> `az acr login`, `docker.config` dosyasında bir Azure Active Directory belirteci ayarlamak için Docker istemcisini kullanır. Tek tek kimlik doğrulama akışının tamamlanabilmesi için Docker istemcisinin yüklü ve çalışıyor olması gerekir.
 
-## <a name="push-an-artifact"></a>Push an artifact
+## <a name="push-an-artifact"></a>Yapıtı gönder
 
-Create a text file in a local working working directory with some sample text. For example, in a bash shell:
+Yerel çalışma çalışma dizininde bazı örnek metinle bir metin dosyası oluşturun. Örneğin, bir bash kabuğu 'nda:
 
 ```bash
 echo "Here is an artifact!" > artifact.txt
 ```
 
-Use the `oras push` command to push this text file to your registry. The following example pushes the sample text file to the `samples/artifact` repo. The registry is identified with the fully qualified registry name *myregistry.azurecr.io* (all lowercase). The artifact is tagged `1.0`. The artifact has an undefined type, by default, identified by the *media type* string following the filename `artifact.txt`. See [OCI Artifacts](https://github.com/opencontainers/artifacts) for additional types. 
+Bu metin dosyasını kayıt defterinize göndermek için `oras push` komutunu kullanın. Aşağıdaki örnekte örnek metin dosyası `samples/artifact` depoya iter. Kayıt defteri, tam olarak nitelenmiş kayıt defteri adı *myregistry.azurecr.io* (tümü küçük harf) ile tanımlanır. Yapıt `1.0`etiketlendi. Yapıtın, varsayılan olarak, dosya adı `artifact.txt`izleyen *medya türü* dizesi tarafından tanımlanan tanımlanmamış bir türü vardır. Ek türler için bkz. [OCI yapıtları](https://github.com/opencontainers/artifacts) . 
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -72,7 +72,7 @@ oras push myregistry.azurecr.io/samples/artifact:1.0 \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
-Output for a successful push is similar to the following:
+Başarılı bir gönderme için çıkış aşağıdakine benzer:
 
 ```console
 Uploading 33998889555f artifact.txt
@@ -80,7 +80,7 @@ Pushed myregistry.azurecr.io/samples/artifact:1.0
 Digest: sha256:xxxxxxbc912ef63e69136f05f1078dbf8d00960a79ee73c210eb2a5f65xxxxxx
 ```
 
-To manage artifacts in your registry, if you are using the Azure CLI, run standard `az acr` commands for managing images. For example, get the attributes of the artifact using the [az acr repository show][az-acr-repository-show] command:
+Kayıt defterinizde yapıtları yönetmek için Azure CLı kullanıyorsanız, görüntüleri yönetmek için standart `az acr` komutlarını çalıştırın. Örneğin, [az ACR Repository Show][az-acr-repository-show] komutunu kullanarak yapıtın özniteliklerini alın:
 
 ```azurecli
 az acr repository show \
@@ -106,33 +106,33 @@ az acr repository show \
 }
 ```
 
-## <a name="pull-an-artifact"></a>Pull an artifact
+## <a name="pull-an-artifact"></a>Yapıt çekme
 
-Run the `oras pull` command to pull the artifact from your registry.
+Yapıtı kayıt defterinden çekmek için `oras pull` komutunu çalıştırın.
 
-First remove the text file from your local working directory:
+Önce metin dosyasını yerel çalışma dizininden kaldırın:
 
 ```bash
 rm artifact.txt
 ```
 
-Run `oras pull` to pull the artifact, and specify the media type used to push the artifact:
+Yapıtı çekmek için `oras pull` çalıştırın ve yapıtı göndermek için kullanılan medya türünü belirtin:
 
 ```bash
 oras pull myregistry.azurecr.io/samples/artifact:1.0 \
     --media-type application/vnd.unknown.layer.v1+txt
 ```
 
-Verify that the pull was successful:
+Çekin başarılı olduğunu doğrulayın:
 
 ```bash
 $ cat artifact.txt
 Here is an artifact!
 ```
 
-## <a name="remove-the-artifact-optional"></a>Remove the artifact (optional)
+## <a name="remove-the-artifact-optional"></a>Yapıtı Kaldır (isteğe bağlı)
 
-To remove the artifact from your Azure container registry, use the [az acr repository delete][az-acr-repository-delete] command. The following example removes the artifact you stored there:
+Yapıtı Azure Container Registry 'nizden kaldırmak için [az ACR Repository Delete][az-acr-repository-delete] komutunu kullanın. Aşağıdaki örnek, orada depoladığınız yapıtı kaldırır:
 
 ```azurecli
 az acr repository delete \
@@ -142,8 +142,8 @@ az acr repository delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Learn more about [the ORAS Library](https://github.com/deislabs/oras/tree/master/docs), including how to configure a manifest for an artifact
-* Visit the [OCI Artifacts](https://github.com/opencontainers/artifacts) repo for reference information about new artifact types
+* Yapıt için bildirim yapılandırma dahil olmak üzere [ORAS kitaplığı](https://github.com/deislabs/oras/tree/master/docs)hakkında daha fazla bilgi edinin
+* Yeni yapıt türleri hakkında başvuru bilgileri için [OCI yapay yapılarını](https://github.com/opencontainers/artifacts) ziyaret edin
 
 
 

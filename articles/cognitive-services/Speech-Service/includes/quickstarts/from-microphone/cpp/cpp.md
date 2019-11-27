@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Recognize speech from a microphone, C++ - Speech Service'
+title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C++ , konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
+description: Henüz belirlenmedi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,7 +17,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260904"
 ---
-**Choose your target environment**
+**Hedef ortamınızı seçin**
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 

@@ -1,6 +1,6 @@
 ---
-title: Use Azure CLI for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use the Azure CLI to manage directories and file and directory access control lists (ACL) in storage accounts that have a hierarchical namespace.
+title: Azure Data Lake Storage 2. & ACL 'Leri için Azure CLı kullanma (Önizleme)
+description: Hiyerarşik bir ad alanına sahip depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için Azure CLı 'yi kullanın.
 services: storage
 author: normesta
 ms.service: storage
@@ -9,72 +9,72 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 95bb43f1531b6234ccb90eb7d66404ccc66f60f3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485152"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534291"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Azure CLI for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. & ACL 'Leri için Azure CLı kullanma (Önizleme)
 
-This article shows you how to use the [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) to create and manage directories, files, and permissions in storage accounts that have a hierarchical namespace. 
+Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için nasıl kullanacağınız gösterilmektedir. 
 
 > [!IMPORTANT]
-> The `storage-preview` extension that is featured in this article is currently in public preview.
+> Bu makalede tanıtılan `storage-preview` uzantısı Şu anda genel önizleme aşamasındadır.
 
-[Sample](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [Give feedback](https://github.com/Azure/azure-cli-extensions/issues)
+[Örnek](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
-> * Azure CLI version `2.0.67` or higher.
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
+> * Azure CLı sürüm `2.0.67` veya üzeri.
 
-## <a name="install-the-storage-cli-extension"></a>Install the storage CLI extension
+## <a name="install-the-storage-cli-extension"></a>Storage CLı uzantısını yükler
 
-1. Open the [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), or if you've [installed](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) the Azure CLI locally, open a command console application such as Windows PowerShell.
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , Windows PowerShell gibi bir komut konsol uygulaması açın.
 
-2. Verify that the version of Azure CLI that have installed is `2.0.67` or higher by using the following command.
+2. Yüklü olan Azure CLı sürümünün aşağıdaki komutu kullanarak `2.0.67` veya daha yüksek olduğunu doğrulayın.
 
    ```azurecli
     az --version
    ```
-   If your version of Azure CLI is lower than `2.0.67`, then install a later version. See [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Azure CLı sürümünüz `2.0.67`daha düşükse, daha sonra bir sürümü yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Install the `storage-preview` extension.
+3. `storage-preview` uzantısını yükler.
 
    ```azurecli
    az extension add -n storage-preview
    ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>Hesaba Bağlan
 
-1. If you're using Azure CLI locally, run the login command.
+1. Azure CLı 'yi yerel olarak kullanıyorsanız Login komutunu çalıştırın.
 
    ```azurecli
    az login
    ```
 
-   If the CLI can open your default browser, it will do so and load an Azure sign-in page.
+   CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler.
 
-   Otherwise, open a browser page at [https://aka.ms/devicelogin](https://aka.ms/devicelogin) and enter the authorization code displayed in your terminal. Then, sign in with your account credentials in the browser.
+   Aksi takdirde, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) bir tarayıcı sayfası açın ve terminalinizde görünen yetkilendirme kodunu girin. Ardından, tarayıcıda hesap kimlik bilgilerinizle oturum açın.
 
-   To learn more about different authentication methods, see Sign in with Azure CLI.
+   Farklı kimlik doğrulama yöntemleri hakkında daha fazla bilgi edinmek için bkz. Azure CLı ile oturum açma.
 
-2. If your identity is associated with more than one subscription, then set your active subscription to subscription of the storage account that will host your static website.
+2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi statik Web sitenizi barındıracak depolama hesabının aboneliğine ayarlayın.
 
    ```azurecli
    az account set --subscription <subscription-id>
    ```
 
-   Replace the `<subscription-id>` placeholder value with the ID of your subscription.
+   `<subscription-id>` yer tutucu değerini aboneliğinizin KIMLIĞIYLE değiştirin.
 
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
 
-A file system acts as a container for your files. You can create one by using the `az storage container create` command. 
+Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. `az storage container create` komutunu kullanarak bir tane oluşturabilirsiniz. 
 
-This example creates a file system named `my-file-system`.
+Bu örnek `my-file-system`adlı bir dosya sistemi oluşturur.
 
 ```azurecli
 az storage container create --name my-file-system
@@ -82,27 +82,27 @@ az storage container create --name my-file-system
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-Create a directory reference by using the `az storage blob directory create` command. 
+`az storage blob directory create` komutunu kullanarak bir dizin başvurusu oluşturun. 
 
-This example adds a directory named `my-directory` to a file system named `my-file-system` that is located in an account named `mystorageaccount`.
+Bu örnek, `mystorageaccount`adlı bir hesapta bulunan `my-file-system` adlı bir dosya sistemine `my-directory` adlı bir dizin ekler.
 
 ```azurecli
 az storage blob directory create -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="show-directory-properties"></a>Show directory properties
+## <a name="show-directory-properties"></a>Dizin özelliklerini göster
 
-You can print the properties of a directory to the console by using the `az storage blob show` command.
+`az storage blob show` komutunu kullanarak bir dizinin özelliklerini konsola yazdırabilirsiniz.
 
 ```azurecli
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
 
-Rename or move a directory by using the `az storage blob directory move` command.
+`az storage blob directory move` komutunu kullanarak bir dizini yeniden adlandırın veya taşıyın.
 
-This example renames a directory from the name `my-directory` to the name `my-new-directory`.
+Bu örnek `my-directory` adı bir dizini ad `my-new-directory`olarak adlandırır.
 
 ```azurecli
 az storage blob directory move -c my-file-system -d my-new-directory -s my-directory --account-name mystorageaccount
@@ -110,35 +110,35 @@ az storage blob directory move -c my-file-system -d my-new-directory -s my-direc
 
 ## <a name="delete-a-directory"></a>Bir dizini silme
 
-Delete a directory by using the `az storage blob directory delete` command.
+`az storage blob directory delete` komutunu kullanarak bir dizini silin.
 
-This example deletes a directory named `my-directory`. 
+Bu örnek, `my-directory`adlı bir dizini siler. 
 
 ```azurecli
 az storage blob directory delete -c my-file-system -d my-directory --account-name mystorageaccount 
 ```
 
-## <a name="check-if-a-directory-exists"></a>Check if a directory exists
+## <a name="check-if-a-directory-exists"></a>Bir dizinin mevcut olup olmadığını denetle
 
-Determine if a specific directory exists in the file system by using the `az storage blob directory exist` command.
+`az storage blob directory exist` komutunu kullanarak dosya sisteminde belirli bir dizinin mevcut olup olmadığını saptayın.
 
-This example reveals whether a directory named `my-directory` exists in the `my-file-system` file system. 
+Bu örnek, `my-file-system` dosya sisteminde `my-directory` adlı bir dizinin mevcut olup olmadığını gösterir. 
 
 ```azurecli
 az storage blob directory exists -c my-file-system -d my-directory --account-name mystorageaccount 
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory
+## <a name="download-from-a-directory"></a>Bir dizinden indir
 
-Download a file from a directory by using the `az storage blob directory download` command.
+`az storage blob directory download` komutunu kullanarak bir dizinden dosya indirin.
 
-This example downloads a file named `upload.txt` from a directory named `my-directory`. 
+Bu örnek, `my-directory`adlı bir dizinden `upload.txt` adlı bir dosyayı indirir. 
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/upload.txt" -d "C:\mylocalfolder\download.txt"
 ```
 
-This example downloads an entire directory.
+Bu örnek, tüm bir dizini indirir.
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/" -d "C:\mylocalfolder" --recursive
@@ -146,43 +146,43 @@ az storage blob directory download -c my-file-system --account-name mystorageacc
 
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-List the contents of a directory by using the `az storage blob directory list` command.
+`az storage blob directory list` komutunu kullanarak bir dizinin içeriğini listeleyin.
 
-This example lists the contents of a directory named `my-directory` that is located in the `my-file-system` file system of a storage account named `mystorageaccount`. 
+Bu örnek, `mystorageaccount`adlı bir depolama hesabının `my-file-system` dosya sisteminde bulunan `my-directory` adlı bir dizinin içeriğini listeler. 
 
 ```azurecli
 az storage blob directory list -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
-Upload a file to a directory by using the `az storage blob directory upload` command.
+`az storage blob directory upload` komutunu kullanarak bir dosyayı dizine yükleyin.
 
-This example uploads a file named `upload.txt` to a directory named `my-directory`. 
+Bu örnek, `upload.txt` adlı bir dosyayı `my-directory`adlı dizine yükler. 
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\upload.txt" -d my-directory
 ```
 
-This example uploads an entire directory.
+Bu örnek, tüm bir dizini yükler.
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\" -d my-directory --recursive 
 ```
 
-## <a name="show-file-properties"></a>Show file properties
+## <a name="show-file-properties"></a>Dosya özelliklerini göster
 
-You can print the properties of a file to the console by using the `az storage blob show` command.
+`az storage blob show` komutunu kullanarak, bir dosyanın özelliklerini konsola yazdırabilirsiniz.
 
 ```azurecli
 az storage blob show -c my-file-system -b my-file.txt --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-file"></a>Rename or move a file
+## <a name="rename-or-move-a-file"></a>Bir dosyayı yeniden adlandırma veya taşıma
 
-Rename or move a file by using the `az storage blob move` command.
+`az storage blob move` komutunu kullanarak bir dosyayı yeniden adlandırın veya taşıyın.
 
-This example renames a file from the name `my-file.txt` to the name `my-file-renamed.txt`.
+Bu örnek `my-file.txt` adı bir dosyayı ad `my-file-renamed.txt`olarak adlandırır.
 
 ```azurecli
 az storage blob move -c my-file-system -d my-file-renamed.txt -s my-file.txt --account-name mystorageaccount
@@ -190,107 +190,107 @@ az storage blob move -c my-file-system -d my-file-renamed.txt -s my-file.txt --a
 
 ## <a name="delete-a-file"></a>Dosyayı silme
 
-Delete a file by using the `az storage blob delete` command.
+`az storage blob delete` komutunu kullanarak bir dosyayı silin.
 
-This example deletes a file named `my-file.txt`
+Bu örnek `my-file.txt` adlı bir dosyayı siler
 
 ```azurecli
 az storage blob delete -c my-file-system -b my-file.txt --account-name mystorageaccount 
 ```
 
-## <a name="manage-permissions"></a>Manage permissions
+## <a name="manage-permissions"></a>İzinleri Yönet
 
-You can get, set, and update access permissions of directories and files.
+Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz.
 
-### <a name="get-directory-and-file-permissions"></a>Get directory and file permissions
+### <a name="get-directory-and-file-permissions"></a>Dizin ve dosya izinlerini alın
 
-Get the ACL of a **directory** by using the `az storage blob directory access show` command.
+`az storage blob directory access show` komutunu kullanarak bir **DIZININ** ACL 'sini alın.
 
-This example gets the ACL of a directory, and then prints the ACL to the console.
+Bu örnek, bir dizinin ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
 
 ```azurecli
 az storage blob directory access show -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-Get the access permissions of a **file** by using the `az storage blob access show` command. 
+`az storage blob access show` komutunu kullanarak bir **dosyanın** erişim izinlerini alın. 
 
-This example gets the ACL of a file and then prints the ACL to the console.
+Bu örnek, bir dosyanın ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
 
 ```azurecli
 az storage blob access show -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-The following image shows the output after getting the ACL of a directory.
+Aşağıdaki görüntüde bir dizinin ACL 'SI alındıktan sonra çıkış gösterilmektedir.
 
-![Get ACL output](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
+![ACL çıkışı al](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
 
-In this example, the owning user has read, write, and execute permissions. The owning group has only read and execute permissions. For more information about access control lists, see [Access control in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+Bu örnekte, sahip olan kullanıcının okuma, yazma ve yürütme izinleri vardır. Sahip olan grubun yalnızca okuma ve yürütme izinleri vardır. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
 
-### <a name="set-directory-and-file-permissions"></a>Set directory and file permissions
+### <a name="set-directory-and-file-permissions"></a>Dizin ve dosya izinlerini ayarlama
 
-Use the `az storage blob directory access set` command to set the ACL of a **directory**. 
+Bir **DIZININ**ACL 'sini ayarlamak için `az storage blob directory access set` komutunu kullanın. 
 
-This example sets the ACL on a directory for the owning user, owning group, or other users, and then prints the ACL to the console.
+Bu örnek, ACL 'yi sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dizinde ayarlar ve ardından ACL 'yi konsola yazdırır.
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-Use the `az storage blob access set` command to set the acl of a **file**. 
+Bir **dosyanın**ACL 'sini ayarlamak için `az storage blob access set` komutunu kullanın. 
 
-This example sets the ACL on a file for the owning user, owning group, or other users, and then prints the ACL to the console.
+Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dosyadaki ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
 
 ```azurecli
 az storage blob access set -a "user::rw-,group::rw-,other::-wx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-The following image shows the output after setting the ACL of a file.
+Aşağıdaki görüntüde, bir dosyanın ACL 'sini ayarlamadıktan sonra çıkış gösterilmektedir.
 
-![Get ACL output](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![ACL çıkışı al](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
-In this example, the owning user and owning group have only read and write permissions. All other users have write and execute permissions. For more information about access control lists, see [Access control in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+Bu örnekte, sahip olan Kullanıcı ve sahip olan Grup yalnızca okuma ve yazma izinlerine sahiptir. Diğer tüm kullanıcılar yazma ve yürütme izinlerine sahiptir. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
 
-### <a name="update-directory-and-file-permissions"></a>Update directory and file permissions
+### <a name="update-directory-and-file-permissions"></a>Dizin ve dosya izinlerini güncelleştirme
 
-Another way to set this permission is to use the `az storage blob directory access update` or `az storage blob access update` command. 
+Bu izni ayarlamaya yönelik başka bir yol da `az storage blob directory access update` veya `az storage blob access update` komutunu kullanmaktır. 
 
-Update the ACL of a directory or file by setting the `-permissions` parameter to the short form of an ACL.
+`-permissions` parametresini bir ACL 'nin kısa biçimine ayarlayarak bir dizin veya dosyanın ACL 'sini güncelleştirin.
 
-This example updates the ACL of a **directory**.
+Bu örnek, bir **DIZININ**ACL 'sini günceller.
 
 ```azurecli
 az storage blob directory access update --permissions "rwxrwxrwx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-This example updates the ACL of a **file**.
+Bu örnek, bir **DOSYANıN**ACL 'sini günceller.
 
 ```azurecli
 az storage blob access update --permissions "rwxrwxrwx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-You can also update the owning user and group of a directory or file by setting the `--owner` or `group` parameters to the entity ID or User Principal Name (UPN) of a user. 
+Ayrıca, `--owner` veya `group` parametrelerini bir kullanıcının varlık KIMLIĞINE veya Kullanıcı asıl adına (UPN) ayarlayarak bir dizin veya dosyanın sahip olduğu Kullanıcı ve grubu güncelleştirebilirsiniz. 
 
-This example changes the owner of a directory. 
+Bu örnek, bir dizinin sahibini değiştirir. 
 
 ```azurecli
 az storage blob directory access update --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-This example changes the owner of a file. 
+Bu örnek, bir dosyanın sahibini değiştirir. 
 
 ```azurecli
 az storage blob access update --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-## <a name="manage-user-defined-metadata"></a>Manage user-defined metadata
+## <a name="manage-user-defined-metadata"></a>Kullanıcı tanımlı meta verileri yönetme
 
-You can add user-defined metadata to a file or directory by using the `az storage blob directory metadata update` command with one or more name-value pairs.
+Bir veya daha fazla ad-değer çiftiyle `az storage blob directory metadata update` komutunu kullanarak bir dosyaya veya dizine kullanıcı tanımlı meta veriler ekleyebilirsiniz.
 
-This example adds user-defined metadata for a directory named `my-directory` directory.
+Bu örnek, `my-directory` Directory adlı bir dizin için Kullanıcı tanımlı meta veri ekler.
 
 ```azurecli
 az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-This example shows all user-defined metadata for directory named `my-directory`.
+Bu örnek, `my-directory`adlı dizin için Kullanıcı tanımlı tüm meta verileri gösterir.
 
 ```azurecli
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
@@ -299,8 +299,8 @@ az storage blob directory metadata show -c my-file-system -d my-directory --acco
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Örnek](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
 * [Geri bildirim gönderin](https://github.com/Azure/azure-cli-extensions/issues)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Kaynak kod](https://github.com/Azure/azure-cli-extensions/tree/master/src)
 

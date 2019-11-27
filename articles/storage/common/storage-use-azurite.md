@@ -57,11 +57,11 @@ Aşağıdaki ayarlar desteklenir:
 
    * **Azurite: blob Konağı** -blob hizmeti dinleme uç noktası. Varsayılan ayar 127.0.0.1 ' dir.
    * **Azurite: blob bağlantı** noktası-blob hizmeti dinleme bağlantı noktası. Varsayılan bağlantı noktası 10000 ' dir.
-   * **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false**.
+   * **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false**'dur.
    * **Azurite: konum** -çalışma alanı konum yolu. Varsayılan değer Visual Studio Code çalışma klasörüdür.
    * **Azurite: kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
    * **Azurite: kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
-   * **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false**.
+   * **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false**'dur.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM kullanarak Azurite 'i yükleyip çalıştırma
 

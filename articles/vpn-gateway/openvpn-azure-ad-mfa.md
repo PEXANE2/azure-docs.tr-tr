@@ -1,6 +1,6 @@
 ---
-title: 'Enable MFA for VPN users: Azure AD authentication'
-description: Enable multi-factor authentication for VPN users
+title: "VPN kullanıcıları için MFA 'yı etkinleştirme: Azure AD kimlik doğrulaması"
+description: VPN kullanıcıları için Multi-Factor Authentication 'ı etkinleştirme
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -14,46 +14,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382204"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Enable Azure Multi-Factor Authentication (MFA) for VPN users
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN kullanıcıları için Azure Multi-Factor Authentication (MFA) etkinleştirme
 
-If you want users to be prompted for a second factor of authentication before granting access, you can configure Azure Multi-Factor Authentication (MFA) for your Azure AD tenant. The steps in this article help you enable a requirement for two-step verification.
+Erişim vermeden önce kullanıcılardan ikinci bir kimlik doğrulama faktörü istenmesini istiyorsanız, Azure AD kiracınız için Azure Multi-Factor Authentication (MFA) yapılandırabilirsiniz. Bu makaledeki adımlar, iki adımlı doğrulama gereksinimini etkinleştirmenize yardımcı olur.
 
-## <a name="prereq"></a>Prerequisite
+## <a name="prereq"></a>Koşul
 
-The prerequisite for this configuration is a configured Azure AD tenant using the steps in [Configure a tenant](openvpn-azure-ad-tenant.md).
+Bu yapılandırma için önkoşul, [Kiracı yapılandırma](openvpn-azure-ad-tenant.md)içindeki adımları kullanarak yapılandırılmış BIR Azure AD kiracısıdır.
 
-## <a name="mfa"></a>Open the MFA page
+## <a name="mfa"></a>MFA sayfasını açın
 
 1. Azure Portal’da oturum açın.
-2. Navigate to **Azure Active Directory -> All users**.
-3. Select **Multi-Factor Authentication** to open the multi-factor authentication page.
+2. **Azure Active Directory > tüm kullanıcılara**gidin.
+3. Multi-Factor Authentication sayfasını açmak için **Multi-Factor Authentication** ' ı seçin.
 
    ![Oturum aç](./media/openvpn-azure-ad-mfa/mfa1.jpg)
 
-## <a name="users"></a> Select users
+## <a name="users"></a>Kullanıcıları seçin
 
-1. On the **multi-factor authentication** page, select the user(s) for which you want to enable MFA.
+1. **Multi-Factor Authentication** SAYFASıNDA, MFA 'yı etkinleştirmek istediğiniz kullanıcıları seçin.
 2. **Etkinleştir**’i seçin.
 
-   ![Seçin](./media/openvpn-azure-ad-mfa/mfa2.jpg)
+   ![Seçim](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
-## <a name="enableauth"></a>Enable authentication
+## <a name="enableauth"></a>Kimlik doğrulamasını etkinleştir
 
-1. Navigate to **Azure Active Directory  -> Enterprise applications -> All applications**.
-2. On the **Enterprise applications - All applications** page, select **Azure VPN**.
+1. **Azure Active Directory > kurumsal uygulamalar-tüm uygulamalar >** ' ne gidin.
+2. **Kurumsal uygulamalar-tüm uygulamalar** SAYFASıNDA **Azure VPN**' yi seçin.
 
-   ![Directory ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+   ![Dizin KIMLIĞI](./media/openvpn-azure-ad-mfa/user1.jpg)
 
-## <a name="enablesign"></a> Configure sign-in settings
+## <a name="enablesign"></a>Oturum açma ayarlarını yapılandırma
 
-On the **Azure VPN - Properties** page, configure sign-in settings.
+**Azure VPN-Özellikler** sayfasında, oturum açma ayarlarını yapılandırın.
 
-1. Set **Enabled for users to sign-in?** to **Yes**. This allows all users in the AD tenant to connect to the VPN successfully.
-2. Set **User assignment required?** to **Yes** if you want to limit sign-in to only users that have permissions to the Azure VPN.
+1. **Kullanıcıların oturum açması Için etkinleştirildi mi?** **Evet**olarak ayarlandı. Bu, AD kiracısındaki tüm kullanıcıların VPN 'e başarıyla bağlanmasını sağlar.
+2. Oturum açma iznini yalnızca Azure VPN izinleri olan kullanıcılarla sınırlandırmak istiyorsanız, **Kullanıcı atamasını gerekli midir?** **Evet** olarak ayarlayın.
 3. Yaptığınız değişiklikleri kaydedin.
 
    ![İzinler](./media/openvpn-azure-ad-mfa/user2.jpg)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To connect to your virtual network, you must create and configure a VPN client profile. See [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).
+Sanal ağınıza bağlanmak için bir VPN istemci profili oluşturmanız ve yapılandırmanız gerekir. Bkz. [P2S VPN bağlantıları IÇIN VPN Istemcisi yapılandırma](openvpn-azure-ad-client.md).

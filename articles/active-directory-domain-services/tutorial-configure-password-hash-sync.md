@@ -1,6 +1,6 @@
 ---
-title: Enable password hash sync for Azure AD Domain Services | Microsoft Docs
-description: In this tutorial, learn how to enable password hash synchronization using Azure AD Connect to an Azure Active Directory Domain Services managed domain.
+title: Azure AD Domain Services için parola karma eşitlemesini etkinleştir | Microsoft Docs
+description: Bu öğreticide, Azure Active Directory Domain Services yönetilen bir etki alanına Azure AD Connect kullanarak parola karması eşitlemesini nasıl etkinleştireceğinizi öğrenin.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -16,64 +16,64 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481179"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Tutorial: Enable password synchronization in Azure Active Directory Domain Services for hybrid environments
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: karma ortamlarda Azure Active Directory Domain Services parola eşitlemeyi etkinleştirme
 
-For hybrid environments, an Azure Active Directory (Azure AD) tenant can be configured to synchronize with an on-premises Active Directory Domain Services (AD DS) environment using Azure AD Connect. By default, Azure AD Connect doesn't synchronize legacy NT LAN Manager (NTLM) and Kerberos password hashes that are needed for Azure Active Directory Domain Services (Azure AD DS).
+Karma ortamlarda, bir Azure Active Directory (Azure AD) kiracısı, Azure AD Connect kullanılarak şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenmek üzere yapılandırılabilir. Varsayılan olarak Azure AD Connect, eski NT LAN Manager (NTLM) ve Azure Active Directory Domain Services için gereken Kerberos parola karmalarını (Azure AD DS) eşitlemez.
 
-To use Azure AD DS with accounts synchronized from an on-premises AD DS environment, you need to configure Azure AD Connect to synchronize those password hashes required for NTLM and Kerberos authentication. After Azure AD Connect is configured, an on-premises account creation or password change event also then synchronizes the legacy password hashes to Azure AD.
+Azure AD DS 'yi şirket içi AD DS ortamından eşitlenen hesaplarla kullanmak için, NTLM ve Kerberos kimlik doğrulaması için gereken parola karmalarını eşitlemek üzere Azure AD Connect yapılandırmanız gerekir. Azure AD Connect yapılandırıldıktan sonra, şirket içi hesap oluşturma veya parola değiştirme olayı da eski parola karmalarını Azure AD ile eşitler.
 
-You don't need to perform these steps if you use cloud-only accounts with no on-premises AD DS environment.
+Şirket içi AD DS ortamı olmayan salt bulut hesapları kullanıyorsanız, bu adımları gerçekleştirmeniz gerekmez.
 
-In this tutorial, you learn:
+Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Why legacy NTLM and Kerberos password hashes are needed
-> * How to configure legacy password hash synchronization for Azure AD Connect
+> * Eski NTLM ve Kerberos parola karmalarının neden olması gerekir
+> * Azure AD Connect için eski parola karması eşitlemesini yapılandırma
 
-If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To complete this tutorial, you need the following resources:
+Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
 * Etkin bir Azure aboneliği.
-    * If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* An Azure Active Directory tenant associated with your subscription that's synchronized with an on-premises directory using Azure AD Connect.
-    * If needed, [create an Azure Active Directory tenant][create-azure-ad-tenant] or [associate an Azure subscription with your account][associate-azure-ad-tenant].
-    * If needed, [enable Azure AD Connect for password hash synchronization][enable-azure-ad-connect].
-* An Azure Active Directory Domain Services managed domain enabled and configured in your Azure AD tenant.
-    * If needed, [create and configure an Azure Active Directory Domain Services instance][create-azure-ad-ds-instance].
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure AD Connect kullanılarak şirket içi dizin ile eşitlenen aboneliğinizle ilişkili bir Azure Active Directory kiracısı.
+    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+    * Gerekirse [Parola karması eşitlemesi için Azure AD Connect etkinleştirin][enable-azure-ad-connect].
+* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 
-## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Password hash synchronization using Azure AD Connect
+## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Azure AD Connect kullanarak parola karması eşitlemesi
 
-Azure AD Connect is used to synchronize objects like user accounts and groups from an on-premises AD DS environment into an Azure AD tenant. As part of the process, password hash synchronization enables accounts to use the same password in the on-prem AD DS environment and Azure AD.
+Azure AD Connect, Kullanıcı hesapları ve gruplar gibi nesneleri şirket içi AD DS ortamından bir Azure AD kiracısına eşleştirmek için kullanılır. İşlem kapsamında, Parola karması eşitlemesi hesapların şirket içi AD DS ortamında ve Azure AD 'de aynı parolayı kullanmasını sağlar.
 
-To authenticate users on the managed domain, Azure AD DS needs password hashes in a format that's suitable for NTLM and Kerberos authentication. Azure AD doesn't store password hashes in the format that's required for NTLM or Kerberos authentication until you enable Azure AD DS for your tenant. For security reasons, Azure AD also doesn't store any password credentials in clear-text form. Therefore, Azure AD can't automatically generate these NTLM or Kerberos password hashes based on users' existing credentials.
+Yönetilen etki alanındaki kullanıcıların kimliğini doğrulamak için Azure AD DS, NTLM ve Kerberos kimlik doğrulaması için uygun bir biçimde parola karmaları gerektirir. Azure AD, kiracınız için Azure AD DS etkinleştirene kadar parola karmalarını NTLM veya Kerberos kimlik doğrulaması için gereken biçimde depolamaz. Azure AD, güvenlik nedenleriyle şifresiz metin biçiminde hiçbir parola kimlik bilgisi depolamaz. Bu nedenle, Azure AD kullanıcıların mevcut kimlik bilgilerini temel alarak bu NTLM veya Kerberos parola karmalarını otomatik olarak üretemiyor.
 
-Azure AD Connect can be configured to synchronize the required NTLM or Kerberos password hashes for Azure AD DS. Make sure that you have completed the steps to [enable Azure AD Connect for password hash synchronization][enable-azure-ad-connect]. If you had an existing instance of Azure AD Connect, [download and update to the latest version][azure-ad-connect-download] to make sure you can synchronize the legacy password hashes for NTLM and Kerberos. This functionality isn't available in early releases of Azure AD Connect or with the legacy DirSync tool. Azure AD Connect version *1.1.614.0* or later is required.
+Azure AD Connect, Azure AD DS için gerekli NTLM veya Kerberos parola karmalarını eşitleyecek şekilde yapılandırılabilir. [Parola karması eşitlemesi için Azure AD Connect etkinleştirme][enable-azure-ad-connect]adımlarını tamamladığınızdan emin olun. Azure AD Connect var olan bir örneğiniz varsa, NTLM ve Kerberos için eski parola karmalarını eşitlediğinizden emin olmak için [en son sürüme indirin ve güncelleştirin][azure-ad-connect-download] . Bu işlevsellik Azure AD Connect erken sürümlerinde veya eski DirSync aracıyla kullanılamaz. Azure AD Connect Version *1.1.614.0* veya üzeri gereklidir.
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
 
-## <a name="enable-synchronization-of-password-hashes"></a>Enable synchronization of password hashes
+## <a name="enable-synchronization-of-password-hashes"></a>Parola karmalarının eşitlenmesini etkinleştir
 
-With Azure AD Connect installed and configured to synchronize with Azure AD, now configure the legacy password hash sync for NTLM and Kerberos. A PowerShell script is used to configure the required settings and then start a full password synchronization to Azure AD. When that Azure AD Connect password hash synchronization process is complete, users can sign in to applications through Azure AD DS that use legacy NTLM or Kerberos password hashes.
+Azure AD Connect yüklendi ve Azure AD ile eşitlenecek şekilde yapılandırıldıysa, artık NTLM ve Kerberos için eski parola karması eşitlemesini yapılandırın. Gerekli ayarları yapılandırmak ve ardından Azure AD 'ye tam parola eşitlemeyi başlatmak için bir PowerShell betiği kullanılır. Azure AD Connect Parola karması eşitleme işlemi tamamlandığında, kullanıcılar, eski NTLM veya Kerberos parola karmaları kullanan Azure AD DS aracılığıyla uygulamalarda oturum açabilirler.
 
-1. On the computer with Azure AD Connect installed, from the Start menu, open the **Azure AD Connect > Synchronization Service**.
-1. Select the **Connectors** tab. The connection information used to establish the synchronization between the on-premises AD DS environment and Azure AD are listed.
+1. Azure AD Connect yüklü bilgisayarda, Başlat menüsünden, **Azure AD Connect > eşitleme hizmetini**açın.
+1. **Bağlayıcılar** sekmesini seçin. Şirket içi AD DS ortamı ile Azure AD arasında eşitleme oluşturmak için kullanılan bağlantı bilgileri listelenir.
 
-    The **Type** indicates either *Windows Azure Active Directory (Microsoft)* for the Azure AD connector or *Active Directory Domain Services* for the on-premises AD DS connector. Make a note of the connector names to use in the PowerShell script in the next step.
+    **Tür** , Azure AD Bağlayıcısı için *Windows Azure Active Directory (Microsoft)* veya şirket içi AD DS Bağlayıcısı için *Active Directory Domain Services* gösterir. Bir sonraki adımda PowerShell betiğindeki kullanılacak bağlayıcı adlarını bir yere göz önünde alın.
 
-    ![List the connector names in Sync Service Manager](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
+    ![Bağlayıcı adlarını eşitlenmiş Service Manager listeleyin](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
-    In this example screenshot, the following connectors are used:
+    Bu örnek ekran görüntüsünde aşağıdaki bağlayıcılar kullanılır:
 
-    * The Azure AD connector is named *contoso.onmicrosoft.com - AAD*
-    * The on-premises AD DS connector is named *onprem.contoso.com*
+    * Azure AD Bağlayıcısı adı *contoso.onmicrosoft.com-AAD*
+    * Şirket içi AD DS Bağlayıcısı *OnPrem.contoso.com* olarak adlandırılmıştır
 
-1. Copy and paste the following PowerShell script to the computer with Azure AD Connect installed. The script triggers a full password sync that includes legacy password hashes. Update the `$azureadConnector` and `$adConnector` variables with the connector names from the previous step.
+1. Aşağıdaki PowerShell betiğini kopyalayıp Azure AD Connect yüklü bilgisayara yapıştırın. Betik, eski parola karmalarını içeren tam bir parola eşitlemesini tetikler. `$azureadConnector` ve `$adConnector` değişkenlerini önceki adımdaki bağlayıcı adlarıyla güncelleştirin.
 
-    Run this script on each AD forest to synchronize on-premises account NTLM and Kerberos password hashes to Azure AD.
+    Şirket içi hesap NTLM ve Kerberos parola karmalarını Azure AD ile eşleştirmek için bu betiği her bir AD ormanında çalıştırın.
 
     ```powershell
     # Define the Azure AD Connect connector names and import the required PowerShell module
@@ -95,18 +95,18 @@ With Azure AD Connect installed and configured to synchronize with Azure AD, now
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    Depending on the size of your directory in terms of number of accounts and groups, synchronization of the legacy password hashes to Azure AD may take some time. The passwords are then synchronized to the Azure AD DS managed domain after they've synchronized to Azure AD.
+    Hesap ve grup sayısı bakımından dizininizin boyutuna bağlı olarak, eski parola karmalarının Azure AD 'ye eşitlenmesi biraz zaman alabilir. Daha sonra, parolalar Azure AD ile eşitlendikten sonra Azure AD DS yönetilen etki alanı ile eşitlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you learned:
+Bu öğreticide şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Why legacy NTLM and Kerberos password hashes are needed
-> * How to configure legacy password hash synchronization for Azure AD Connect
+> * Eski NTLM ve Kerberos parola karmalarının neden olması gerekir
+> * Azure AD Connect için eski parola karması eşitlemesini yapılandırma
 
 > [!div class="nextstepaction"]
-> [Learn how synchronization works in an Azure AD Domain Services managed domain](synchronization.md)
+> [Azure AD Domain Services yönetilen bir etki alanında eşitlemenin nasıl çalıştığını öğrenin](synchronization.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

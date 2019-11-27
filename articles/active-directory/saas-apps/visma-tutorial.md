@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Visma | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Visma.
+title: 'Öğretici: Visma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ile Visma arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,131 +23,131 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485588"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visma"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Visma
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visma"></a>Öğretici: Visma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-In this tutorial, you'll learn how to integrate Visma with Azure Active Directory (Azure AD). When you integrate Visma with Azure AD, you can:
+Bu öğreticide, Visma 'yı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Visma 'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Control in Azure AD who has access to Visma.
-* Enable your users to be automatically signed-in to Visma with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Azure AD 'de Visma erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Visma 'ya otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To get started, you need the following items:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* Visma single sign-on (SSO) enabled subscription.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Vizma çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Visma supports **SP and IDP** initiated SSO
-* Visma supports **Just In Time** user provisioning
+* Visma **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Visma **, tam zamanında** Kullanıcı sağlamayı destekliyor
 
-## <a name="adding-visma-from-the-gallery"></a>Adding Visma from the gallery
+## <a name="adding-visma-from-the-gallery"></a>Galeriden Vizma ekleme
 
-To configure the integration of Visma into Azure AD, you need to add Visma from the gallery to your list of managed SaaS apps.
+Visma 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki yönetim SaaS uygulamaları listenize Visma eklemeniz gerekir.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **Visma** in the search box.
-1. Select **Visma** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Visma** yazın.
+1. Sonuçlar panelinden **Visma** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-visma"></a>Configure and test Azure AD single sign-on for Visma
+## <a name="configure-and-test-azure-ad-single-sign-on-for-visma"></a>Visma için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Configure and test Azure AD SSO with Visma using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Visma.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Visma ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Visma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-To configure and test Azure AD SSO with Visma, complete the following building blocks:
+Azure AD SSO 'yu Vizma ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    * **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    * **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-1. **[Configure Visma SSO](#configure-visma-sso)** - to configure the single sign-on settings on application side.
-    * **[Create Visma test user](#create-visma-test-user)** - to have a counterpart of B.Simon in Visma that is linked to the Azure AD representation of user.
-1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Visma SSO 'Yu yapılandırın](#configure-visma-sso)** .
+    * Visma **[test kullanıcısı oluşturun](#create-visma-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Vizma 'da B. Simon 'a karşılık gelen bir karşılığı vardır.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Visma** application integration page, find the **Manage** section and select **single sign-on**.
-1. On the **Select a single sign-on method** page, select **SAML**.
-1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. [Azure Portal](https://portal.azure.com/), **Visma** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, if you wish to configure the application in **IDP** initiated mode, enter the values for the following fields:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. In the **Identifier** text box, type a URL using the following pattern: `https://<SUBDOMAIN>.my.connect.visma.com`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.my.connect.visma.com`
 
-    b. In the **Reply URL** text box, type a URL using the following pattern: `https://<SUBDOMAIN>.my.connect.visma.com/saml/acs`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.my.connect.visma.com/saml/acs`
 
-1. Click **Set additional URLs** and perform the following step if you wish to configure the application in **SP** initiated mode:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<SUBDOMAIN>.my.connect.visma.com`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.my.connect.visma.com`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Identifier, Reply URL and Sign-on URL. Contact [Visma Client support team](https://www.visma.com/contact) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Visma istemci destek ekibine](https://www.visma.com/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. On the **Set up single sign-on with SAML** page, In the **SAML Signing Certificate** section, click copy button to copy **App Federation Metadata Url** and save it on your computer.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
-    ![The Certificate download link](common/copy-metadataurl.png)
+    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. In the **User name** field, enter the username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
-   1. **Oluştur**’a tıklayın.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’ tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Visma.
+Bu bölümde, Visma 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **Visma**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Visma**' yı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-visma-sso"></a>Configure Visma SSO
+## <a name="configure-visma-sso"></a>Visma SSO 'yu yapılandırma
 
-To configure single sign-on on **Visma** side, you need to send the **App Federation Metadata Url** to [Visma support team](https://www.visma.com/contact). They set this setting to have the SAML SSO connection set properly on both sides.
+**Vizma** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'sini** [Visma destek ekibine](https://www.visma.com/contact)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
-### <a name="create-visma-test-user"></a>Create Visma test user
+### <a name="create-visma-test-user"></a>Visma test kullanıcısı oluşturma
 
-In this section, a user called B.Simon is created in Visma. Visma supports just-in-time user provisioning, which is enabled by default. There is no action item for you in this section. If a user doesn't already exist in Visma, a new one is created after authentication.
+Bu bölümde, Visma 'da B. Simon adlı bir Kullanıcı oluşturulur. Visma, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Visma 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 'SU
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-When you click the Visma tile in the Access Panel, you should be automatically signed in to the Visma for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Visma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Visma 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try Visma with Azure AD](https://aad.portal.azure.com/)
+- [Azure AD ile Visma 'yı deneyin](https://aad.portal.azure.com/)

@@ -39,7 +39,7 @@ Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özelli
 
 6. Aşağıdaki özellik bayraklarını eklemek için **özellik yöneticisi** >  **+ Oluştur** ' u seçin:
 
-    | Anahtar | Durum |
+    | Anahtar | State |
     |---|---|
     | Beta | Kapalı |
 
@@ -232,7 +232,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
 3. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | Durum |
+    | Anahtar | State |
     |---|---|
     | Beta | Açık |
 

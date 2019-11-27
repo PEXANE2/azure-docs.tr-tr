@@ -1,6 +1,6 @@
 ---
-title: Monitoring Azure Functions with Azure Monitor Logs
-description: Learn how to use Azure Monitor Logs with Azure Functions to monitor function executions.
+title: Azure Izleme günlükleri ile Azure Işlevlerini izleme
+description: İşlev yürütmelerini izlemek için Azure Işlevleri ile Azure Izleme günlüklerini nasıl kullanacağınızı öğrenin.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
@@ -12,30 +12,30 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226844"
 ---
-# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitoring Azure Functions with Azure Monitor Logs
+# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Izleme günlükleri ile Azure Işlevlerini izleme
 
-Azure Functions offers an integration with [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md) to monitor functions. This article shows you how to configure Azure Functions to send system-generated and user-generated logs to Azure Monitor Logs.
+Azure Işlevleri, işlevleri izlemek için [Azure Izleyici günlükleriyle](../azure-monitor/platform/data-platform-logs.md) bir tümleştirme sunar. Bu makalede, Azure Işlevleri 'nin Azure Izleyici günlüklerine sistem tarafından oluşturulan ve Kullanıcı tarafından oluşturulan Günlükler göndermek için nasıl yapılandırılacağı gösterilmektedir.
 
-Azure Monitor Logs gives you the ability to consolidate logs from different resources in the same workspace, where it can be analyzed with [queries](../azure-monitor/log-query/log-query-overview.md) to quickly retrieve, consolidate, and analyze collected data.  You can create and test queries using [Log Analytics](../azure-monitor/log-query/portals.md) in the Azure portal and then either directly analyze the data using these tools or save queries for use with [visualizations](../azure-monitor/visualizations.md) or [alert rules](../azure-monitor/platform/alerts-overview.md).
+Azure Izleyici günlükleri, toplanan verileri hızlı bir şekilde almak, birleştirmek ve analiz etmek için [sorgularla](../azure-monitor/log-query/log-query-overview.md) çözümlenebileceği aynı çalışma alanındaki farklı kaynaklardan günlükleri birleştirme olanağı sağlar.  Azure portal [Log Analytics](../azure-monitor/log-query/portals.md) kullanarak sorgular oluşturup test edebilir ve ardından bu araçları kullanarak verileri doğrudan çözümleyebilir ya da [görselleştirmeler](../azure-monitor/visualizations.md) veya [Uyarı kurallarıyla](../azure-monitor/platform/alerts-overview.md)kullanılacak sorguları kaydedebilirsiniz.
 
-Azure Monitor uses a version of the [Kusto query language](/azure/kusto/query/) used by Azure Data Explorer that is suitable for simple log queries but also includes advanced functionality such as aggregations, joins, and smart analytics. You can quickly learn the query language using [multiple lessons](../azure-monitor/log-query/get-started-queries.md).
+Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sorguları için uygun olan, ayrıca toplamalar, birleşimler ve akıllı analiz gibi gelişmiş işlevleri de içeren [kusto sorgu dilinin](/azure/kusto/query/) bir sürümünü kullanır. [Birden çok ders](../azure-monitor/log-query/get-started-queries.md)kullanarak sorgu dilini hızlıca öğrenebilirsiniz.
 
 > [!NOTE]
-> Integration with Azure Monitor Logs is currently in public preview for function apps running on Windows Consumption, Premium, and Dedicated hosting plans.
+> Azure Izleyici günlükleri ile tümleştirme Şu anda Windows tüketim, Premium ve adanmış barındırma planlarında çalışan işlev uygulamaları için genel önizlemededir.
 
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Ayarlanıyor
 
-From the Monitoring section, select **Diagnostic settings** and then click **Add**.
+Izleme bölümünde **Tanılama ayarları** ' nı seçin ve ardından **Ekle**' ye tıklayın.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+![Tanılama ayarı ekleme](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-In the setting page, choose **Send to Log Analytics**, and under **LOG** choose **FunctionAppLogs**, this table contains the desired logs.
+Ayar sayfasında **Log Analytics gönder**' i seçin ve **log** **' ın altında, bu**tablo istenen günlükleri içerir.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/choose-table.png)
+![Tanılama ayarı ekleme](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>User generated logs
+## <a name="user-generated-logs"></a>Kullanıcı tarafından oluşturulan Günlükler
 
-To generate custom logs, you can use the specific logging statement depending on your language, here are sample code snippets:
+Özel Günlükler oluşturmak için, dilinize bağlı olarak belirli günlük ifadesini kullanabilirsiniz, örnek kod parçacıkları aşağıda verilmiştir:
 
 **JavaScript**
 
@@ -67,15 +67,15 @@ To generate custom logs, you can use the specific logging statement depending on
     Write-Host "My app logs here."
 ```
 
-## <a name="querying-the-logs"></a>Querying the logs
+## <a name="querying-the-logs"></a>Günlükleri sorgulama
 
-To query the generated logs, go to the log analytics workspace and click **Logs**.
+Oluşturulan günlükleri sorgulamak için Log Analytics çalışma alanına gidin ve **Günlükler**' e tıklayın.
 
-![Query window in LA workspace](media/functions-monitor-log-analytics/querying.png)
+![LA çalışma alanındaki sorgu penceresi](media/functions-monitor-log-analytics/querying.png)
 
-Azure Functions writes all logs to **FunctionAppLogs** table, here are some sample queries.
+Azure Işlevleri tüm günlükleri **Functionapplogs** tablosuna yazar, bazı örnek sorgular aşağıda verilmiştir.
 
-### <a name="all-logs"></a>All logs
+### <a name="all-logs"></a>Tüm Günlükler
 
 ```
 
@@ -84,7 +84,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>A specific function logs
+### <a name="a-specific-function-logs"></a>Belirli bir işlev günlükleri
 
 ```
 
@@ -93,7 +93,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 ```
 
@@ -105,6 +105,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Review the [Azure Functions overview](functions-overview.md)
-- Learn more about [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md)
-- Learn more about the [query language](../azure-monitor/log-query/get-started-queries.md).
+- [Azure işlevlerine genel bakış](functions-overview.md) konusunu inceleyin
+- [Azure Izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md) hakkında daha fazla bilgi edinin
+- [Sorgu dili](../azure-monitor/log-query/get-started-queries.md)hakkında daha fazla bilgi edinin.

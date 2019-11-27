@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add template functions
-description: Add template functions to your Azure Resource Manager template to construct values.
+title: Öğretici-şablon işlevleri ekleme
+description: Değerler oluşturmak için Azure Resource Manager şablonunuza şablon işlevleri ekleyin.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,41 +12,41 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405970"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Add template functions to your Resource Manager template
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza şablon işlevleri ekleme
 
-In this tutorial, you learn how to add [template functions](resource-group-template-functions.md) to your template. You use functions to dynamically construct values. In addition to these system-provided template functions, you can also create [user-defined functions](./template-user-defined-functions.md). This tutorial takes **7 minutes** to complete.
+Bu öğreticide, şablonunuza [Şablon işlevleri](resource-group-template-functions.md) eklemeyi öğreneceksiniz. Değerleri dinamik olarak oluşturmak için işlevlerini kullanırsınız. Sistem tarafından sağlanmış bu şablon işlevlerine ek olarak, [Kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-We recommend that you complete the [tutorial about parameters](template-tutorial-add-parameters.md), but it's not required.
+[Parametreler hakkında öğreticiyi](template-tutorial-add-parameters.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Şablonu gözden geçir
 
-At the end of the previous tutorial, your template had the following JSON:
+Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
 
-The location of the storage account is hard-coded to **East US**. However, you may need to deploy the storage account to other regions. You're again facing an issue of your template lacking flexibility. You could add a parameter for location, but it would be great if its default value made more sense than just a hard-coded value.
+Depolama hesabının konumu **Doğu ABD**için sabit olarak kodlanmıştır. Ancak, depolama hesabını diğer bölgelere dağıtmanız gerekebilir. Daha fazla esneklik olmayan şablonunuzda bir sorunla karşılaşıyoruz. Konum için bir parametre ekleyebilirsiniz, ancak varsayılan değeri yalnızca sabit kodlanmış bir değerden daha anlamlı olursa harika olur.
 
-## <a name="use-function"></a>Use function
+## <a name="use-function"></a>Use işlevi
 
-If you've completed the previous tutorial in this series, you've already used a function. When you added **"[parameters('storageName')]"** , you used the [parameters](resource-group-template-functions-deployment.md#parameters) function. The brackets indicate that the syntax inside the brackets is a [template expression](template-expressions.md). Resource Manager resolves the syntax rather than treating it as a literal value.
+Bu serinin önceki öğreticisini tamamladıysanız, zaten bir işlev kullandınız. **"[Parameters (' storageName ')]"** eklediğinizde [Parameters](resource-group-template-functions-deployment.md#parameters) işlevini kullandınız. Köşeli ayraçlar, köşeli ayracın içindeki sözdiziminin bir [şablon ifadesi](template-expressions.md)olduğunu gösterir. Kaynak Yöneticisi, sözdizimini değişmez değer olarak kabul etmek yerine, sözdizimini çözer.
 
-Functions add flexibility to your template by dynamically getting values during deployment. In this tutorial, you use a function to get the location of the resource group you're using for deployment.
+İşlevler, dağıtım sırasında değerleri dinamik olarak alarak şablonunuz için esneklik ekler. Bu öğreticide, dağıtım için kullanmakta olduğunuz kaynak grubunun konumunu almak üzere bir işlev kullanırsınız.
 
-The following example highlights the changes to add a parameter called **location**.  The parameter default value calls the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. This function returns an object with information about the resource group being used for deployment. One of the properties on the object is a location property. When you use the default value, the storage account location has the same location as the resource group. The resources inside a resource group don't have to share the same location. You can also provide a different location when needed.
+Aşağıdaki örnek, **konum**adlı bir parametre ekleme değişikliklerini vurgular.  Parametre varsayılan değeri [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubuyla ilgili bilgileri içeren bir nesne döndürür. Nesnedeki özelliklerden biri bir konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubu içindeki kaynakların aynı konumu paylaşması gerekmez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
 
-Copy the whole file and replace your template with its contents.
+Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-In the previous tutorials, you created a storage account in East US, but your resource group was created in Central US. For this tutorial, your storage account is created in the same region as the resource group. Use the default value for location, so you don't need to provide that parameter value. You must provide a new name for the storage account because you're creating a storage account in a different location. For example, use **store2** as the prefix instead of **store1**.
+Önceki öğreticilerde, Doğu ABD bir depolama hesabı oluşturdunuz, ancak kaynak grubunuz Orta ABD oluşturulmuş. Bu öğreticide, depolama hesabınız kaynak grubuyla aynı bölgede oluşturulur. Konum için varsayılan değeri kullanın, bu nedenle bu parametre değerini belirtmeniz gerekmez. Farklı bir konumda depolama hesabı oluşturmakta olduğunuz için depolama hesabı için yeni bir ad sağlamalısınız. Örneğin, **store1**yerine ön ek olarak **store2** kullanın.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,18 +72,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. You see that a storage account resource has been deployed and has the same location as the resource group.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol menüden **kaynak grupları**' nı seçin.
+1. Dağıttığınız kaynak grubunu seçin.
+1. Bir depolama hesabı kaynağının dağıtıldığını ve kaynak grubuyla aynı konuma sahip olduğunu görürsünüz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -92,7 +92,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you used a function when defining the default value for a parameter. In this tutorial series, you'll continue using functions. By the end of the series, you'll add functions to every section of the template.
+Bu öğreticide, bir parametre için varsayılan değeri tanımlarken bir işlev kullandınız. Bu öğretici serisinde, işlevleri kullanmaya devam edersiniz. Serinin sonuna kadar, şablonun her bölümüne işlevler ekleyeceksiniz.
 
 > [!div class="nextstepaction"]
-> [Add variables](template-tutorial-add-variables.md)
+> [Değişken Ekle](template-tutorial-add-variables.md)

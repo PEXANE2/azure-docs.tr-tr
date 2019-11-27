@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811279"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539330"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanan tek veritabanları için kaynak sınırları
 
@@ -43,6 +43,12 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | Maks. eş zamanlı oturum | 300 |
 |||
 
+> [!IMPORTANT]
+> Temel hizmet katmanı, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
+>
+>Veri depolama hakkında temel hizmet katmanı standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
+>
+
 ### <a name="standard-service-tier"></a>Standart hizmet katmanı
 
 | **İşlem boyutu** | **S0** | **S1** | **S2** | **S3** |
@@ -54,6 +60,12 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | Maksimum eş zamanlı çalışan (istek)| 60 | 90 | 120 | 200 |
 | Maks. eş zamanlı oturum |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> Standart S0, S1 ve S2 katmanları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
+>
+>Veri depolama ile ilgili Standart S0 ve S1 hizmet katmanları standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
+>
 
 ### <a name="standard-service-tier-continued"></a>Standart hizmet katmanı (devamı)
 

@@ -1,5 +1,5 @@
 ---
-title: Get prediction with REST call in C#
+title: REST çağrısı ile tahmin alC#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -17,9 +17,9 @@ ms.locfileid: "74414499"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
+* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS anahtarını alma
 
@@ -27,22 +27,22 @@ ms.locfileid: "74414499"
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+C# [Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için (.NET Core) kullanın.
 
-1. Create a new console application targeting the C# language, with a project and folder name of `predict-with-rest`. 
+1. `predict-with-rest`bir proje ve klasör adı ile C# dili hedefleyen yeni bir konsol uygulaması oluşturun. 
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Change to the `predict-with-rest` directory you just created, and install required dependencies with these commands:  
+1. Yeni oluşturduğunuz `predict-with-rest` dizinine geçin ve gerekli bağımlılıkları şu komutlarla birlikte yüklemelisiniz:  
 
     ```console
     cd predict-with-rest
     dotnet add package System.Net.Http
     ```
 
-1. Open `Program.cs` in your favorite IDE or editor. Then overwrite `Program.cs` with the following code:
+1. En sevdiğiniz IDE veya düzenleyicide `Program.cs` açın. Ardından aşağıdaki kodla `Program.cs` üzerine yazın:
     
    ```csharp
     using System;
@@ -102,31 +102,31 @@ Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v
 
    ```
 
-1. Replace the following values:
+1. Aşağıdaki değerleri değiştirin:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Örneğin, `westus2.api.cognitive.microsoft.com`.
+    * başlangıç anahtarınızla `YOUR-KEY`.
+    * uç noktanızla `YOUR-ENDPOINT`. Örneğin, `westus2.api.cognitive.microsoft.com`.
 
-1. Build the console application with this command: 
+1. Aşağıdaki komutla konsol uygulaması oluşturun: 
 
     ```console
     dotnet build
     ```
 
-1. Konsol uygulamasını çalıştırın. The console output displays the same JSON that you saw earlier in the browser window.
+1. Konsol uygulamasını çalıştırın. Konsol çıktısı, daha önce tarayıcı penceresinde gördüğünüz JSON 'ı görüntüler.
 
     ```console
     dotnet run
     ```
 
-1. Review the prediction response, which is returned as JSON:
+1. JSON olarak döndürülen tahmin yanıtını gözden geçirin:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Okunabilirlik için biçimlendirilen JSON yanıtı: 
 
     ```JSON
     {
@@ -175,9 +175,9 @@ Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you are finished with this quickstart, delete the file from the file system. 
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Utterslar ve tren ekleme](../get-started-get-model-rest-apis.md)

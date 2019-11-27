@@ -1,6 +1,6 @@
 ---
-title: We're moving virtual machine (VM) images to managed disk storage in the Azure Marketplace
-description: To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+title: Sanal makine (VM) görüntülerini Azure Marketi 'nde yönetilen disk depolama alanına taşııyoruz
+description: Yeni Market özellikleri ve özellikleri için daha hızlı, daha güvenilir depolama ve destek sağlamak üzere Market VM görüntülerini yönetilen disk depolama alanına taşıyoruz.
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
@@ -15,48 +15,48 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456685"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>We’re moving virtual machine (VM) images on Azure Marketplace to managed disk storage
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketi 'ndeki sanal makine (VM) görüntülerini yönetilen disk depolama alanına taşııyoruz
 
-To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+Yeni Market özellikleri ve özellikleri için daha hızlı, daha güvenilir depolama ve destek sağlamak üzere Market VM görüntülerini yönetilen disk depolama alanına taşıyoruz.
 
-Starting on January 2, 2020, we’ll move VM images to managed disk storage in phases. In the first phase, we’ll only move images with no new deployments or running VMs in the previous 90 days. Before we move any of the images, we’ll send an email to let the publisher know which images will move and when they’ll be moved.
+2 Ocak 2020 tarihinden itibaren, VM görüntülerini aşamalar halinde yönetilen disk depolama alanına taşıyacağız. İlk aşamada, yalnızca Yeni dağıtımlar olmadan veya önceki 90 gün içinde VM 'Leri çalıştıran resimleri taşıyacağız. Görüntüleri taşımadan önce, yayımcının hangi görüntülerin taşınacağını ve ne zaman taşınacağını bilmesini sağlamak için bir e-posta göndereceğiz.
 
-Publishers or consumers don’t need to take any action, and users won’t be affected. The marketplace offers will remain available and customers will still be able to deploy managed VMs from these images, during and after the move.
+Yayımcılar veya tüketiciler hiçbir işlem yapması gerekmez ve kullanıcılar etkilenmez. Market teklifleri kullanılabilir olmaya devam eder ve müşteriler, taşıma sırasında ve sonrasında bu görüntülerden yönetilen VM 'Leri dağıtabilecektir.
 
-If you have any questions, please [contact us](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+Sorularınız varsa lütfen [bizimle iletişime geçin](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
 
 ## <a name="faqs"></a>SSS
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Would the users of my VM images experience an outage?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>VM görüntülerimin kullanıcıları kesinti yaşar mı?
 
-Users of the VM images will not experience an outage. 
+VM görüntülerinin kullanıcıları kesinti yaşamacaktır. 
 
-In the first phase, we will only move VM images that have no running VMs. As there are no users for these images, there will not be any impact. For the subsequent phases too, there will be no impact on the users.
+İlk aşamada yalnızca çalışan VM 'Leri olmayan VM görüntülerini taşıyacağız. Bu görüntüler için Kullanıcı olmadığı için herhangi bir etki olmayacaktır. Sonraki aşamalar için de kullanıcılar üzerinde hiçbir etkisi olmaz.
 
-### <a name="how-long-does-it-take-for-the-process-to-complete"></a>How long does it take for the process to complete?
+### <a name="how-long-does-it-take-for-the-process-to-complete"></a>İşlemin tamamlanması ne kadar sürer?
 
-It may take up to 24 hours to complete the migration.
+Geçişin tamamlanması 24 saate kadar sürebilir.
 
-### <a name="do-i-need-to-take-any-action"></a>Do I need to take any action?
+### <a name="do-i-need-to-take-any-action"></a>Herhangi bir eylemde olması gerekiyor mu?
 
-Hayır. Publishers or consumers don’t need to take any action.
+Hayır. Yayımcılar veya tüketiciler için herhangi bir işlem yapması gerekmez.
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Do I have to update my system to call the Cloud Portal APIs in a different way after they are moved to Managed Disk storage?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Bulut portalı API 'Lerini, yönetilen disk depolama alanına taşındıktan sonra farklı bir şekilde çağırmak için sistemmi güncelleştirmem gerekir mi?
 
-Hayır. Your existing API calls will continue to work.
+Hayır. Mevcut API çağrılarınız çalışmaya devam edecektir.
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Would all my VM images be moved to Managed Disk at the same time?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Tüm sanal makine görüntülerimin aynı anda yönetilen diske taşınmasını ister misiniz?
 
-We will be moving all your VM images on the same day. We will notify you once they have been moved.
+Tüm VM görüntülerinizi aynı güne taşıcağız. Taşındıktan sonra sizi bilgilendireceğiz.
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Can I request to schedule the move of my VM images to a later time?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>VM görüntülerimin daha sonraki bir zamanda taşınmasını isteyebilir miyim?
 
-We recommend moving the images on the scheduled date. However, if you have concerns, please reach out to us to reschedule the move.
+Görüntülerin zamanlanan tarihte taşınmasını öneririz. Ancak endişeleriniz varsa, lütfen taşımayı yeniden zamanlamak için bize ulaşın.
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Can I publish updates to my VM Images during the move?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Taşıma sırasında VM görüntülerimin güncelleştirmelerini yayımlayabilir miyim?
 
-Updates to the VM images cannot be made during the move.
+Taşıma sırasında VM görüntülerine yönelik güncelleştirmeler yapılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Visit the [virtual machine offer publisher guide](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) page.
+[Sanal Makine teklifi yayımcı Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) sayfasını ziyaret edin.

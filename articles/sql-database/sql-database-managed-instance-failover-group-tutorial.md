@@ -420,7 +420,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
    Aşağıdaki tabloda, ikincil sanal ağ için gereken değerler gösterilmektedir:
 
-    | **Alan** | Değer |
+    | **Alan** | Value |
     | --- | --- |
     | **Adı** |  `vnet-sql-mi-secondary`gibi, ikincil yönetilen örnek tarafından kullanılacak sanal ağın adı. |
     | **Adres alanı** | Sanal ağınızın `10.128.0.0/16`gibi adres alanı. | 
@@ -459,7 +459,7 @@ Azure portal kullanarak ikincil yönetilen örnek oluşturun.
 
    Aşağıdaki tabloda, ikincil yönetilen örnek için gereken değerler gösterilmektedir:
  
-    | **Alan** | Değer |
+    | **Alan** | Value |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Kaynak grubu**| Birincil yönetilen örneğinizin bulunduğu kaynak grubu. |
@@ -749,7 +749,7 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
 
    Aşağıdaki tabloda, birincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
  
-    | **Alan** | Değer |
+    | **Alan** | Value |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Adı** | `primary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
@@ -831,7 +831,7 @@ Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını 
 
    Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
 
-   | **Alan** | Değer |
+   | **Alan** | Value |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
    | **Adı** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 

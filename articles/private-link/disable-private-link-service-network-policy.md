@@ -1,6 +1,6 @@
 ---
-title: 'Disable network policies for Azure Private Link service source IP address '
-description: Learn how to disable network policies for Azure private Link
+title: 'Azure özel bağlantı hizmeti kaynak IP adresi için ağ ilkelerini devre dışı bırak '
+description: Azure özel bağlantısı için ağ ilkelerini devre dışı bırakmayı öğrenin
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,16 +14,16 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228114"
 ---
-# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Disable network policies for Private Link service source IP
+# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Özel bağlantı hizmeti kaynak IP 'si için ağ ilkelerini devre dışı bırak
 
-In order to choose a source IP address for your Private Link service, an explicit disable setting `privateLinkServiceNetworkPolicies` is required on the subnet. This setting is only applicable for the specific private IP address you chose as the source IP of the Private Link service. For other resources in the subnet, access is controlled based on Network Security Groups (NSG) security rules definition. 
+Özel bağlantı hizmetiniz için bir kaynak IP adresi seçmek üzere alt ağda `privateLinkServiceNetworkPolicies` bir açık devre dışı bırakma ayarı gereklidir. Bu ayar yalnızca özel bağlantı hizmetinin kaynak IP 'si olarak seçtiğiniz özel IP adresi için geçerlidir. Alt ağdaki diğer kaynaklar için, erişim ağ güvenlik grupları (NSG) güvenlik kuralları tanımına göre denetlenir. 
  
-When using any Azure client (PowerShell, CLI or templates), an additional step is required to change this property. You can disable the policy using the cloud shell from the Azure portal, or local installations of Azure PowerShell, Azure CLI, or use Azure Resource Manager templates.  
+Herhangi bir Azure istemcisi (PowerShell, CLı veya şablon) kullanırken, bu özelliği değiştirmek için ek bir adım gerekir. Azure portal, Cloud Shell 'i kullanarak veya Azure PowerShell, Azure CLı 'nin yerel yüklemelerinden veya Azure Resource Manager şablonları kullanarak ilkeyi devre dışı bırakabilirsiniz.  
  
-Follow the steps below to disable private link service network policies for a virtual network named *myVirtualNetwork* with a *default* subnet hosted in a resource group named *myResourceGroup*. 
+*MyVirtualNetwork* adlı bir sanal ağ için özel bağlantı hizmeti ağ Ilkelerini, *myresourcegroup*adlı bir kaynak grubunda barındırılan bir *varsayılan* alt ağ ile devre dışı bırakmak için aşağıdaki adımları izleyin. 
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
-This section describes how to disable subnet private endpoint policies using Azure PowerShell.
+Bu bölüm, Azure PowerShell kullanarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağını açıklar.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-This section describes how to disable subnet private endpoint policies using Azure CLI.
+Bu bölümde, Azure CLı kullanılarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağı açıklanır.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -43,8 +43,8 @@ az network vnet subnet update \
   --vnet-name myVirtualNetwork \ 
   --disable-private-link-service-network-policies true 
 ```
-## <a name="using-a-template"></a>Using a template
-This section describes how to disable subnet private endpoint policies using Azure Resource Manager Template.
+## <a name="using-a-template"></a>Şablon kullanma
+Bu bölümde, Azure Resource Manager şablonu kullanılarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağı açıklanmaktadır.
 ```json
 { 
     "name": "myVirtualNetwork", 
@@ -71,5 +71,5 @@ This section describes how to disable subnet private endpoint policies using Azu
  
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-- Learn more about [Azure Private Endpoint](private-endpoint-overview.md)
+- [Azure özel uç noktası](private-endpoint-overview.md) hakkında daha fazla bilgi edinin
  

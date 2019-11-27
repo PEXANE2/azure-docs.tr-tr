@@ -1,6 +1,6 @@
 ---
-title: Azure Functions diagnostics Overview
-description: Learn how you can troubleshoot issues with your function app with Azure Functions diagnostics.
+title: Azure Işlevleri tanılamaları genel bakış
+description: Azure Işlevleri Tanılama ile işlev uygulamanızla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 author: yunjchoi
 ms.topic: article
 ms.date: 11/01/2019
@@ -13,46 +13,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227014"
 ---
-# <a name="azure-functions-diagnostics-overview"></a>Azure Functions diagnostics overview
+# <a name="azure-functions-diagnostics-overview"></a>Azure Işlevleri tanılamaları genel bakış
 
-When you’re running a function app, you want to be prepared for any issues that may arise, from 4xx errors to trigger failures. Azure Functions diagnostics is an intelligent and interactive experience to help you troubleshoot your function app with no configuration or extra cost. When you do run into issues with your function app, Azure Functions diagnostics points out what’s wrong to guide you to the right information to more easily and quickly troubleshoot and resolve the issue. This article shows you the basics of how to use Azure Functions diagnostics to more quickly diagnose and solve common function app issues.
+Bir işlev uygulaması çalıştırırken, hataları tetikleyebilmesi için 4xx hatasından kaynaklanan tüm sorunlar için hazırlıklı olmak istersiniz. Azure Işlevleri tanılama, işlev uygulamanızda yapılandırma veya ek maliyet olmadan sorun gidermenize yardımcı olacak akıllı ve etkileşimli bir deneyimdir. İşlev uygulamanızla ilgili sorunlar yaşıyorsanız, Azure Işlevleri Tanılaması, sorunu daha kolay ve hızlı bir şekilde gidermeye ve çözmeye yönelik doğru bilgilere kılavuzluk etmek için neyin yanlış olduğunu gösterir. Bu makalede, yaygın işlev uygulaması sorunlarını daha hızlı tanılamak ve çözmek için Azure Işlevleri tanılamayı kullanma hakkında temel bilgiler verilmektedir.
 
-## <a name="start-azure-functions-diagnostics"></a>Start Azure Functions diagnostics
+## <a name="start-azure-functions-diagnostics"></a>Azure Işlevleri tanılamayı başlatma
 
-To access Azure Functions diagnostics:
+Azure Işlevleri tanılamaları 'na erişmek için:
 
-1. Navigate to your function app in the [Azure portal](https://portal.azure.com).
-2. Select the **Platform features** tab.
-3. Select **Diagnose and solve problems** under **Resource Management**, which opens Azure Functions diagnostics.
-4. Choose a category that best describes the issue of your function app by using the keywords in the homepage tile. You can also type a keyword that best describes your issue in the search bar. For example, you could type `execution` to see a list of diagnostic reports related to your function app execution and open them directly from the homepage.
+1. [Azure Portal](https://portal.azure.com)işlev uygulamanıza gidin.
+2. **Platform özellikleri** sekmesini seçin.
+3. Azure Işlevleri tanılamayı açan **kaynak yönetimi**altındaki **sorunları Tanıla ve çöz** ' ü seçin.
+4. Giriş sayfası kutucuğunda anahtar sözcükleri kullanarak işlev uygulamanızın sorununu en iyi şekilde açıklayan bir kategori seçin. Ayrıca, arama çubuğunda sorununuzu en iyi açıklayan bir anahtar sözcük yazabilirsiniz. Örneğin, işlev uygulaması yürütmeyle ilgili tanılama raporlarının listesini görmek ve bunları doğrudan giriş sayfasından açmak için `execution` yazabilirsiniz.
 
-![Homepage](./media/functions-diagnostics/homepage.png)
+![Değiştirir](./media/functions-diagnostics/homepage.png)
 
-## <a name="use-the-interactive-interface"></a>Use the Interactive interface
+## <a name="use-the-interactive-interface"></a>Etkileşimli arabirimi kullanma
 
-Once you select a homepage category that best aligns with your function app's problem, Azure Functions diagnostics' interactive interface, Genie, can guide you through diagnosing and solving problem of your app. You can use the tile shortcuts provided by Genie to view the full diagnostic report of the problem category that you are interested. The tile shortcuts provide you a direct way of accessing your diagnostic metrics.
+İşlev uygulamanızın sorunuyla en iyi şekilde hizalanan bir giriş sayfası kategorisi seçtiğinizde, Azure Işlevleri Tanılama ' etkileşimli arabirimi, Genie, uygulamanızın sorununu tanılamak ve çözmek için size yol gösterebilir. İlgilendiğiniz sorun kategorisinin tam Tanılama raporunu görüntülemek için Genie tarafından sunulan kutucuk kısayollarını kullanabilirsiniz. Kutucuk kısayolları, tanılama ölçümlerinize erişmenin doğrudan bir yolunu sağlar.
 
 ![Genie](./media/functions-diagnostics/genie.png)
 
-After selecting a tile, you can see a list of topics related to the issue described in the tile. These topics provide snippets of notable information from the full report. You can select any of these topics to investigate the issues further. Also, you can select **View Full Report** to explore all the topics on a single page.
+Bir kutucuk seçtikten sonra kutucukta açıklanan sorunla ilgili konuların bir listesini görebilirsiniz. Bu konular, tüm rapordaki önemli bilgi parçacıklarını sağlar. Sorunları daha fazla araştırmak için bu konulardan herhangi birini seçebilirsiniz. Ayrıca, tek bir sayfadaki tüm konuları araştırmak için **tam raporu görüntüle** seçeneğini belirleyebilirsiniz.
 
-![Preview of diagnostic report](./media/functions-diagnostics/preview-of-diagnostic-report.png)
+![Tanılama raporunun önizlemesi](./media/functions-diagnostics/preview-of-diagnostic-report.png)
 
-## <a name="view-a-diagnostic-report"></a>View a diagnostic report
+## <a name="view-a-diagnostic-report"></a>Tanılama raporunu görüntüle
 
-After you choose a topic, you can view a diagnostic report specific to your function app. Diagnostic reports use status icons to indicate if any specific issues with your app. You see detailed description of the issue, recommended actions, related-metrics, and helpful docs. Customized diagnostic reports are generated from a series of checks run on your function app. Diagnostic reports can be a useful tool for pinpointing problems in your function app and guiding you towards resolving the issue.
+Bir konu seçtikten sonra, işlev uygulamanıza özgü bir tanılama raporu görüntüleyebilirsiniz. Tanılama raporları, uygulamanız ile ilgili herhangi bir sorun olup olmadığını göstermek için durum simgeleri kullanır. Sorunun ayrıntılı açıklaması, Önerilen Eylemler, ilgili ölçümler ve yararlı belgeler görürsünüz. Özelleştirilmiş tanılama raporları, işlev uygulamanızda çalıştırılan bir denetim serisinden oluşturulur. Tanılama raporları, işlev uygulamanızda sorun giderme için yararlı bir araç olabilir ve sorunu çözmeye yönelik size rehberlik eder.
 
-## <a name="find-the-problem-code"></a>Find the problem code 
+## <a name="find-the-problem-code"></a>Sorun kodunu bulun 
 
-For script-based functions, you can use **Function Execution** and **Errors under Function App Down or Reporting Errors** to narrow down on the line of code causing exceptions or errors. This feature can be a useful tool for getting to the root cause and fixing issues from a specific line of code. This option isn't available for precompiled C# and Java functions.
+Betik tabanlı işlevler için, özel durumlara veya hatalara neden olan kod satırında daraltmak üzere **işlev uygulaması azaltma veya raporlama hataları altında** **Işlev yürütme** ve hataları kullanabilirsiniz. Bu özellik, temel nedeni almak ve belirli bir kod satırından sorunları düzeltmek için yararlı bir araç olabilir. Bu seçenek, önceden derlenmiş C# ve Java işlevleri için kullanılamaz.
 
-![Diagnostic report on function execution errors](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
+![İşlev yürütme hatalarında tanılama raporu](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 
-![Function exception](./media/functions-diagnostics/function-exception.png)
+![İşlev özel durumu](./media/functions-diagnostics/function-exception.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You can ask questions or provide feedback on Azure Functions diagnostics at [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Please include `[Diag]` in the title of your feedback.
+[UserVoice](https://feedback.azure.com/forums/355860-azure-functions)'Ta Azure işlevleri tanılamaları hakkında sorular sorabilir veya geri bildirim sağlayabilirsiniz. Lütfen geri bildirimlerinizin başlığına `[Diag]` ekleyin.
 
 > [!div class="nextstepaction"]
-> [Monitor your function apps](functions-monitoring.md)
+> [İşlev uygulamalarınızı izleyin](functions-monitoring.md)

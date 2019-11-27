@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Database for PostgreSQL - Single Server
-description: An overview of the security features in Azure Database for PostgreSQL - Single Server.
+title: PostgreSQL için Azure veritabanı 'nda güvenlik-tek sunucu
+description: PostgreSQL için Azure veritabanı 'nın güvenlik özelliklerine genel bakış-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -13,45 +13,45 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485087"
 ---
-# <a name="security-in-azure-database-for-postgresql---single-server"></a>Security in Azure Database for PostgreSQL - Single Server
+# <a name="security-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik-tek sunucu
 
-There are multiple layers of security that are available to protect the data on your Azure Database for PostgreSQL server. This article outlines those security options.
+PostgreSQL için Azure veritabanı sunucunuzdaki verileri korumak için kullanılabilen birden çok güvenlik katmanı vardır. Bu makalede bu güvenlik seçenekleri özetlenmektedir.
 
-## <a name="information-protection-and-encryption"></a>Information protection and encryption
+## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
 
-### <a name="in-transit"></a>In-transit
-Azure Database for PostgreSQL secures your data by encrypting data in-transit with Transport Layer Security. Encryption (SSL/TLS) is enforced by default.
+### <a name="in-transit"></a>Aktarım yerinde
+PostgreSQL için Azure veritabanı, Aktarım Katmanı Güvenliği ile verileri aktarım sırasında şifreleyerek veri güvenliğini sağlar. Şifreleme (SSL/TLS) varsayılan olarak zorlanır.
 
-### <a name="at-rest"></a>At-rest
-The Azure Database for PostgreSQL service uses the FIPS 140-2 validated cryptographic module for storage encryption of data at-rest. Data, including backups, are encrypted on disk, with the exception of temporary files created while running queries. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys are system managed. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
+### <a name="at-rest"></a>REST
+PostgreSQL için Azure veritabanı hizmeti, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 tarafından doğrulanan şifreleme modülünü kullanır. Yedeklemeler de dahil olmak üzere veriler, sorgular çalıştırılırken oluşturulan geçici dosyalar hariç olmak üzere diskte şifrelenir. Hizmet, Azure depolama şifrelemesi 'ne dahil olan AES 256 bitlik şifrelemeyi kullanır ve anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
 
 
 ## <a name="network-security"></a>Ağ güvenliği
-Connections to an Azure Database for PostgreSQL server are first routed through a regional gateway. The gateway has a publicly accessible IP, while the server IP addresses are protected. For more information about the gateway, visit the [connectivity architecture article](concepts-connectivity-architecture.md).  
+PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar ilk olarak bölgesel ağ geçidiyle yönlendirilir. Ağ geçidinin genel olarak erişilebilir bir IP 'si vardır, ancak sunucu IP adresleri korunur. Ağ Geçidi hakkında daha fazla bilgi için, [bağlantı mimarisi makalesini](concepts-connectivity-architecture.md)ziyaret edin.  
 
-A newly created Azure Database for PostgreSQL server has a firewall that blocks all external connections. Though they reach the gateway, they are not allowed to connect to the server. 
+PostgreSQL için yeni oluşturulan Azure veritabanı sunucusuna tüm dış bağlantıları engelleyen bir güvenlik duvarı vardır. Ağ geçidine ulaştıkları halde sunucuya bağlanmasına izin verilmez. 
 
-### <a name="ip-firewall-rules"></a>IP firewall rules
-IP firewall rules grant access to servers based on the originating IP address of each request. See the [firewall rules overview](concepts-firewall-rules.md) for more information.
+### <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
+IP güvenlik duvarı kuralları, her isteğin kaynak IP adresini temel alarak sunuculara erişim izni verir. Daha fazla bilgi için [güvenlik duvarı kurallarına genel bakış](concepts-firewall-rules.md) bölümüne bakın.
 
 ### <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
-Virtual network service endpoints extend your virtual network connectivity over the Azure backbone. Using virtual network rules you can enable your Azure Database for PostgreSQL server to allow connections from selected subnets in a virtual network. For more information, see the [virtual network service endpoint overview](concepts-data-access-and-security-vnet.md).
+Sanal ağ hizmeti uç noktaları, sanal ağ bağlantınızı Azure omurgası üzerinden genişletmelidir. Sanal ağ kurallarını kullanarak, PostgreSQL için Azure veritabanınızı, bir sanal ağdaki seçili alt ağlardan gelen bağlantılara izin verecek şekilde etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktasına genel bakış](concepts-data-access-and-security-vnet.md).
 
 
 ## <a name="access-management"></a>Erişim yönetimi
 
-While creating the Azure Database for PostgreSQL server, you provide credentials for an administrator role. This administrator role can be used to create additional [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
+PostgreSQL için Azure veritabanı sunucusu oluştururken, bir yönetici rolü için kimlik bilgileri sağlarsınız. Bu yönetici rolü, ek [PostgreSQL rolleri](https://www.postgresql.org/docs/current/user-manag.html)oluşturmak için kullanılabilir.
 
-You can also connect to the server using [Azure Active Directory (AAD) authentication](concepts-aad-authentication.md).
+Sunucuya [Azure Active Directory (AAD) kimlik doğrulaması](concepts-aad-authentication.md)kullanarak da bağlanabilirsiniz.
 
 
 ## <a name="threat-protection"></a>Tehdit koruması
 
-You can opt in to [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) which detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit servers.
+Sunucu erişimine yönelik olağan dışı ve zararlı olabilecek girişimleri belirten anormal etkinlikleri algılayan [Gelişmiş tehdit koruması](concepts-data-access-and-security-threat-protection.md) 'nı tercih edebilirsiniz.
 
-[Audit logging](concepts-audit.md) is available to track activity in your databases. 
+Veritabanında etkinlik izlemek için [Denetim günlüğü](concepts-audit.md) kullanılabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Enable firewall rules for [IPs](concepts-firewall-rules.md) or [virtual networks](concepts-data-access-and-security-vnet.md)
-- Learn about [Azure Active Directory authentication](concepts-aad-authentication.md) in Azure Database for PostgreSQL
+- [IP](concepts-firewall-rules.md) veya [sanal ağlar](concepts-data-access-and-security-vnet.md) için güvenlik duvarı kurallarını etkinleştirme
+- PostgreSQL için Azure veritabanı 'nda [Azure Active Directory kimlik doğrulaması](concepts-aad-authentication.md) hakkında bilgi edinin

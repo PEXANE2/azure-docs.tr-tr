@@ -1,20 +1,15 @@
 ---
-title: Öğretici-Azure Container Instances için bir kapsayıcı kayıt defteri hazırlama
+title: Öğretici-kapsayıcı kayıt defterini görüntü dağıtmak için hazırlama
 description: Azure Container Instances öğreticisi Bölüm 2/3-bir Azure Container Registry hazırlama ve görüntü gönderme
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d8a14acb196b257d96792444fe41e7e9f6b73592
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325618"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533314"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Öğretici: Azure Container Registry dağıtımı yapın ve kapsayıcı görüntüsünü gönderin
 
@@ -95,7 +90,7 @@ Login Succeeded
 
 Azure Container Registry gibi bir özel kayıt defterine kapsayıcı görüntüsü göndermek için önce görüntüyü kayıt defterinin oturum açma sunucusunun tam adıyla etiketlemeniz gerekir.
 
-İlk olarak Azure kapsayıcı kayıt defteriniz için tam oturum açma sunucu adını alın. Aşağıdaki [az ACR Show][az-acr-show] komutunu çalıştırın ve yeni oluşturduğunuz kayıt `<acrName>` defterinin adıyla değiştirin:
+İlk olarak Azure kapsayıcı kayıt defteriniz için tam oturum açma sunucu adını alın. Aşağıdaki [az ACR Show][az-acr-show] komutunu çalıştırın ve `<acrName>` yeni oluşturduğunuz kayıt defterinin adıyla değiştirin:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -116,7 +111,7 @@ mycontainerregistry082.azurecr.io
 docker images
 ```
 
-Makinenizdeki diğer görüntülerle birlikte, [önceki öğreticide](container-instances-tutorial-prepare-app.md) derlediğiniz *aci-tutorial-app* görüntüsünü görmeniz gerekir:
+Makinenizdeki diğer görüntülerle birlikte, *önceki öğreticide* derlediğiniz [aci-tutorial-app](container-instances-tutorial-prepare-app.md) görüntüsünü görmeniz gerekir:
 
 ```console
 $ docker images
@@ -124,7 +119,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Kapsayıcı kayıt defterinizin loginServer’ı için *aci-tutorial-app* görüntüsünü etiketleyin. Ayrıca görüntü sürüm numarasını belirtmek için görüntü adının sonuna `:v1` etiketini ekleyin. Daha `<acrLoginServer>` önce yürüttüğünüz [az ACR Show][az-acr-show] komutunun sonucuyla değiştirin.
+Kapsayıcı kayıt defterinizin loginServer’ı için *aci-tutorial-app* görüntüsünü etiketleyin. Ayrıca görüntü sürüm numarasını belirtmek için görüntü adının sonuna `:v1` etiketini ekleyin. `<acrLoginServer>`, daha önce yürüttüğünüz [az ACR Show][az-acr-show] komutunun sonucuyla değiştirin.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1

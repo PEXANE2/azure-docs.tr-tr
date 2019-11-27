@@ -1,6 +1,6 @@
 ---
-title: Publish a managed services offer to Azure Marketplace
-description: Learn how to publish a managed service offer that onboards customers to Azure delegated resource management.
+title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
+description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak yönetimine yönelik bir yönetilen hizmet teklifini yayımlamayı öğrenin.
 ms.date: 11/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
@@ -10,148 +10,148 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483172"
 ---
-# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publish a managed services offer to Azure Marketplace
+# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
-In this article, you'll learn how to publish a public or private managed services offer to [Azure Marketplace](https://azuremarketplace.microsoft.com) using the [Cloud Partner Portal](https://cloudpartner.azure.com/), enabling a customer who purchases the offer to onboard resources for Azure delegated resource management.
+Bu makalede, Azure Market 'e kaynak eklemek için teklifi satın alan bir müşteriyi etkinleştirmek üzere [bulut iş ortağı portalı](https://cloudpartner.azure.com/)kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'ne genel veya özel yönetilen bir hizmet teklifini yayımlamayı öğreneceksiniz. yönetme.
 
 > [!NOTE]
-> You need to have a valid [account in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) to create and publish these offers. If you don’t have an account already, the [sign-up process](https://aka.ms/joinmarketplace) will lead you through the steps of creating an account in Partner Center and enrolling in the Commercial Marketplace program. Your Microsoft Partner Network (MPN) ID will be [automatically associated](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) with the offers you publish to track your impact across customer engagements.
+> Bu teklifleri oluşturmak ve yayımlamak için [Iş Ortağı Merkezi 'nde](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) geçerli bir hesabınız olması gerekir. Zaten bir hesabınız yoksa [kaydolma işlemi](https://aka.ms/joinmarketplace) , Iş Ortağı Merkezi 'nde hesap oluşturma ve ticari Market programına kaydolma adımlarında size yol açacaktır. Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) .
 >
-> If you don't want to publish an offer to Azure Marketplace, you can onboard customers manually by using Azure Resource Manager templates. For more info, see [Onboard a customer to Azure delegated resource management](onboard-customer.md).
+> Bir teklifi Azure Marketi 'ne yayımlamak istemiyorsanız, Azure Resource Manager şablonları kullanarak müşterileri el ile ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure tarafından atanan kaynak yönetimine müşteri ekleme](onboard-customer.md).
 
-Publishing a Managed Services offer is similar to publishing any other type of offer to Azure Marketplace. To learn about that process, see [Azure Marketplace and AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) and [Manage Azure and AppSource Marketplace offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). You should also review the [commercial marketplace certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies), particularly the [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) section.
+Yönetilen bir hizmet teklifini yayımlamak, Azure Marketi 'ne başka bir teklif türü yayımlamaya benzer. Bu işlem hakkında bilgi edinmek için bkz. [Azure Marketi ve Appsource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) ve [Azure ve appsource Market tekliflerini yönetme](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Ayrıca, özellikle [yönetilen hizmetler](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
 
-Once a customer adds your offer, they will be able to delegate one or more specific subscriptions or resource groups which will then be [onboarded for Azure delegated resource management](#the-customer-onboarding-process). Note that before a subscription (or resource groups within a subscription) can be onboarded, the subscription must be authorized for onboarding by manually registering the **Microsoft.ManagedServices** resource provider.
+Müşteri teklifinizi eklediğinde bir veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini alacak ve daha sonra [Azure tarafından yetkilendirilen kaynak yönetimi için eklendi](#the-customer-onboarding-process)olacaktır. Aboneliğin (veya abonelik içindeki kaynak gruplarının) eklendi olabileceğini, **Microsoft. ManagedServices** kaynak sağlayıcısı 'nı el ile kaydederek aboneliğin ekleme için yetkilendirilmiş olması gerektiğini unutmayın.
 
 > [!IMPORTANT]
-> Each plan in a managed services offer includes a **Manifest Details** section, where you define the Azure Active Directory (Azure AD) entities in your tenant that will have access to the delegated resource groups and/or subscriptions for customers who purchase that plan. It’s important to be aware that any group (or user or service principal) that you include here will have the same permissions for every customer who purchases the plan. To assign different groups to work with each customer, you’ll need to publish a separate private plan that is exclusive to each customer.
+> Yönetilen bir hizmet teklifinin her bir planı, kiracınızdaki Azure Active Directory (Azure AD) varlıklarını tanımladığınız bir **bildirim ayrıntıları** bölümü içerir. bu noktada, kiralarınızda atanan kaynak gruplarına ve/veya aboneliklerine erişen müşteriler için Bu planı satın alın. Buraya eklediğiniz herhangi bir grup (veya Kullanıcı veya hizmet sorumlusu), planı satın alan her müşteri için aynı izinlere sahip olacağını unutmamak önemlidir. Her müşteriyle çalışacak farklı gruplar atamak için, her müşteri için özel olarak özel bir plan yayımlamanız gerekir.
 
-## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Create your offer in the Cloud Partner Portal
+## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı teklifinizi oluşturun
 
-1. Sign in to the [Cloud Partner Portal](https://cloudpartner.azure.com/).
-2. From the left navigation menu, select **New offer**, then select **Managed services**.
-3. You'll see an **Editor** section for your offer with four parts to fill in: **Offer Settings**, **Plans**, **Marketplace**, and **Support**. Read on for guidance on how to complete these sections.
+1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+2. Sol gezinti menüsünden **yeni teklif**' i seçin ve ardından **yönetilen hizmetler**' i seçin.
+3. Doldurmanız gereken dört bölümden oluşan bir **Düzenleyici** bölümü görürsünüz: **teklif ayarları**, **planlar**, **Market**ve **destek**. Bu bölümleri tamamlamaya ilişkin yönergeler için okumaya devam edin.
 
-## <a name="enter-offer-settings"></a>Enter offer settings
+## <a name="enter-offer-settings"></a>Teklif ayarlarını girin
 
-In the **Offer settings** section, provide the following:
-
-|Alan  |Açıklama  |
-|---------|---------|
-|**Offer ID**     | A unique identifier for your offer (within your publisher profile). This ID can only contain lowercase alphanumeric characters, dashes, and underscores, with a maximum of 50 characters. Keep in mind that the Offer ID may be visible to customers in places like in product URLs and billing reports. Once you publish the offer, you can't change this value.        |
-|**Publisher ID**     | The publisher ID that will be associated with the offer. If you have more than one publisher ID, you can select the one you wish to use for this offer.       |
-|**Adı**     | The name (up to 50 characters) that customers will see for your offer in Azure Marketplace and in the Azure portal. Use a recognizable brand name that customers will understand—if you're promoting this offer through your own website, be sure to use the exact same name here.        |
-
-When you've finished, select **Save**. Now you're ready to move on to the **Plans** section.
-
-## <a name="create-plans"></a>Create plans
-
-Each offer must have one or more plans (sometimes referred to as SKUs). You might add multiple plans to support different feature sets at different prices or to customize a specific plan for a limited audience of specific customers. Customers can view the plans that are available to them under the parent offer.
-
-In the Plans section, select **New Plan**. Then enter a **Plan ID**. This ID can only contain lowercase alphanumeric characters, dashes, and underscores, with a maximum of 50 characters. The plan ID may be visible to customers in places like in product URLs and billing reports. Once you publish the offer, you can't change this value.
-
-### <a name="plan-details"></a>Plan details
-
-Complete the following sections in the **Plan Details** section:
+**Teklif ayarları** bölümünde aşağıdakileri sağlayın:
 
 |Alan  |Açıklama  |
 |---------|---------|
-|**Başlık**     | Friendly name for the plan for display. Maximum length of 50 characters.        |
-|**Özet**     | Succinct description of the plan for display under the title. Maximum length of 100 characters.        |
-|**Açıklama**     | Description text that provides a more detailed explanation of the plan.         |
-|**Billing model**     | There are 2 billing models shown here, but you must choose **Bring your own license** for managed services offers. This means that you will bill your customers directly for costs related to this offer, and Microsoft does not charge any fees to you.   |
-|**Is this a private Plan?**     | Indicates whether the SKU is private or public. The default is **No** (public). If you leave this selection, your plan will not be restricted to specific customers (or to a certain number of customers); after you publish a public plan, you can't later change it to private. To make this plan available only to specific customers, select **Yes**. When you do so, you'll need to identify the customers by providing their subscription IDs. These can be entered one by one (for up to 10 subscriptions) or by uploading a .csv file (for up to 20,000 subscriptions). Be sure to include your own subscriptions here so you can test and validate the offer. For more information, see [Private SKUs and Plans](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+|**Teklif KIMLIĞI**     | Teklifiniz için benzersiz bir tanımlayıcı (yayımcı profiliniz dahilinde). Bu KIMLIK yalnızca küçük harfli alfasayısal karakterler, tireler ve alt çizgiler içerebilir. en fazla 50 karakter olabilir. Teklif KIMLIĞININ, ürün URL 'Leri ve faturalandırma raporlarında olduğu yerlerde müşterilere görünür olabileceğini aklınızda bulundurun. Teklifi yayımladıktan sonra bu değeri değiştiremezsiniz.        |
+|**Yayımcı KIMLIĞI**     | Teklifle ilişkilendirilecek Yayımcı Kımlığı. Birden fazla yayımcı KIMLIĞINIZ varsa, bu teklif için kullanmak istediğiniz birini seçebilirsiniz.       |
+|**Adı**     | Müşterilerin Azure Marketi 'nde ve Azure portal Teklifinizle ilgili olarak göreceği ad (en fazla 50 karakter). Müşterilerin anlayabileceği tanınabilir bir marka adı kullanın — bu teklifi kendi web siteniz aracılığıyla yükseltiyorsanız, burada tam olarak aynı adı kullandığınızdan emin olun.        |
 
-### <a name="manifest-details"></a>Manifest details
+İşiniz bittiğinde **Kaydet**' i seçin. Artık **planlar** bölümüne taşımaya hazırsınız.
 
-Complete the **Manifest Details** section for your plan. This creates a manifest with authorization information for managing customer resources. This information is required in order to enable Azure delegated resource management.
+## <a name="create-plans"></a>Plan oluşturma
+
+Her teklifin bir veya daha fazla planı olmalıdır (bazen SKU 'Lar olarak adlandırılır). Farklı fiyatlarla farklı özellik kümelerini desteklemek için veya belirli bir müşterinin sınırlı bir kitlesi için belirli bir planı özelleştirmek üzere birden çok plan ekleyebilirsiniz. Müşteriler, kendileri için kullanılabilir olan planları üst teklif altında görüntüleyebilir.
+
+Planlar bölümünde **Yeni plan**' ı seçin. Sonra bir **plan kimliği**girin. Bu KIMLIK yalnızca küçük harfli alfasayısal karakterler, tireler ve alt çizgiler içerebilir. en fazla 50 karakter olabilir. Plan KIMLIĞI, müşterilerin ürün URL 'Leri ve faturalandırma raporlarında olduğu yerlerde görülebilir. Teklifi yayımladıktan sonra bu değeri değiştiremezsiniz.
+
+### <a name="plan-details"></a>Plan ayrıntıları
+
+**Plan ayrıntıları** bölümünde aşağıdaki bölümleri doldurun:
+
+|Alan  |Açıklama  |
+|---------|---------|
+|**Başlık**     | Görüntüleme planının kolay adı. En fazla 50 karakter uzunluğunda.        |
+|**Özet**     | Başlık altında görüntülenecek planın kısa açıklaması. En fazla 100 karakter uzunluğunda.        |
+|**Açıklama**     | Planın daha ayrıntılı bir açıklamasını sağlayan açıklama metni.         |
+|**Faturalandırma modeli**     | Burada gösterilen 2 faturalandırma modeli vardır, ancak yönetilen hizmet teklifleri için **kendi lisansınızı getir** ' i seçmeniz gerekir. Bu, müşterilerinize bu teklifle ilgili maliyetleri doğrudan faturalayeceğiniz ve Microsoft 'un size herhangi bir ücret ödemeyeceği anlamına gelir.   |
+|**Bu özel bir plan mi?**     | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan **değer (genel) değildir.** Bu seçimi bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır; ortak bir plan yayımladıktan sonra, daha sonra özel olarak değiştiremezsiniz. Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası (20.000 ' e kadar abonelik için) karşıya yüklenebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun. Daha fazla bilgi için bkz. [özel SKU 'lar ve planlar](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+
+### <a name="manifest-details"></a>Bildirim ayrıntıları
+
+Planınız için **bildirim ayrıntıları** bölümünü doldurun. Bu, müşteri kaynaklarını yönetmeye yönelik yetkilendirme bilgilerini içeren bir bildirim oluşturur. Azure tarafından atanan kaynak yönetimini etkinleştirmek için bu bilgiler gereklidir.
 
 > [!NOTE]
-> As noted above, the users and roles in your **Authorization** entries will apply to every customer who purchases the plan. If you want to limit access to a specific customer, you'll need to publish a private plan for their exclusive use.
+> Yukarıda belirtildiği gibi, **Yetkilendirme** girdinizdeki kullanıcılar ve roller planı satın alan her müşteri için de geçerlidir. Belirli bir müşteriye erişimi sınırlandırmak istiyorsanız, özel kullanım için özel bir plan yayımlamanız gerekir.
 
-First, provide a **Version** for the manifest. Use the format *n.n.n* (for example, 1.2.5).
+İlk olarak, bildirim için bir **Sürüm** belirtin. *N. n. n* biçimini kullanın (örneğin, 1.2.5).
 
-Next, enter your **Tenant ID**. This is a GUID associated with the Azure Active Directory tenant ID of your organization (i.e., the tenant which you will be working in to manage your customers' resources). If you don't have this handy, you can find it by hovering over your account name on the upper right-hand side of the Azure portal, or by selecting **Switch directory**.
+Ardından, **KIRACı kimliğinizi**girin. Bu, kuruluşunuzun Azure Active Directory kiracı KIMLIĞIYLE ilişkili bir GUID 'dir (yani, müşterilerinizin kaynaklarını yönetmek için üzerinde çalıştığınız kiracı). Bu kullanışlı bir sahip değilseniz, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek bulabilirsiniz.
 
-Finally, add one or more **Authorization** entries to your plan. Authorizations define the entities who can access resources and subscriptions for customers who purchase the plan, and assign roles that grant specific levels of access. For details about supported roles, see [Tenants, roles, and users in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
+Son olarak, planınıza bir veya daha fazla **Yetkilendirme** girişi ekleyin. Yetkilendirmeler, planı satın alan müşteriler için kaynaklara ve aboneliklere erişebilen varlıkları tanımlar ve belirli düzeylerde erişim izinleri veren roller atayabilir. Desteklenen roller hakkında daha fazla bilgi için bkz. [Azure 'Da kiracılar, roller ve kullanıcılar ile ilgili senaryolar](../concepts/tenants-users-roles.md).
 
-For each **Authorization**, you'll need to provide the following. You can then select **New authorization** as many times as needed to add more users and role definitions.
+Her **Yetkilendirme**için aşağıdakileri sağlamanız gerekir. Daha sonra, daha fazla Kullanıcı ve rol tanımı eklemek için gerektiği kadar **Yeni yetkilendirme** seçebilirsiniz.
 
-- **Azure AD Object ID**: The Azure AD identifier of a user, user group, or application which will be granted certain permissions (as described by the Role Definition) to your customers' resources.
-- **Azure AD Object Display Name**: A friendly name to help the customer understand the purpose of this authorization. The customer will see this name when delegating resources.
-- **Role Definition**: Select one of the available Azure AD built-in roles from the list. This role will determine the permissions that the user in the **Azure AD Object ID** field will have on your customers' resources. For descriptions of these roles, see [Built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) and [Role support for Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-- **Assignable Roles**: This is required only if you have selected User Access Administrator in the **Role Definition** for this authorization. If so, you must add one or more assignable roles here. The user in the **Azure AD Object ID** field will be able to assign these **Assignable Roles** to [managed identities](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), which is required in order to [deploy policies that can be remediated](deploy-policy-remediation.md). Note that no other permissions normally associated with the User Access Administrator role will apply to this user. If you do not select one or more roles here, your submission will not pass certification. (If you did not select User Access Administrator for this user’s Role Definition, this field has no effect.)
+- **Azure AD nesne kimliği**: bir kullanıcının, Kullanıcı grubunun veya UYGULAMANıN Azure AD tanımlayıcısı (rol tanımında açıklandığı gibi) müşterilerinizin kaynaklarına verilecektir.
+- **Azure AD nesne görünen adı**: müşterinin bu yetkilendirmenin amacını anlamasına yardımcı olacak kolay bir ad. Müşteri, kaynakları yetkilendirirken bu adı görür.
+- **Rol tanımı**: listeden mevcut Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD nesne kimliği** alanındaki kullanıcının kaynaklarınızın kaynaklarına sahip olacağı izinleri tespit eder. Bu rollerin açıklamaları için bkz. [Azure için yetkilendirilmiş kaynak yönetimi Için](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) [yerleşik roller](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) ve rol desteği
+- **Atanabilir roller**: Bu, yalnızca bu yetkilendirme Için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz gereklidir. Bu durumda, buraya bir veya daha fazla atanabilir rol eklemeniz gerekir. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu **atanabilir rolleri** , [düzeltilebilir ilkeleri dağıtmak](deploy-policy-remediation.md)için gereken [yönetilen kimliklere](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın. Burada bir veya daha fazla rol seçmezseniz gönderiminiz sertifikayı geçirmez. (Bu kullanıcının rol tanımı için Kullanıcı erişimi Yöneticisi ' ni seçmediyseniz, bu alanın bir etkisi yoktur.)
 
 > [!TIP]
-> In most cases, you'll want to assign permissions to an Azure AD user group or service principal, rather than to a series of individual user accounts. This lets you add or remove access for individual users without having to update and republish the plan when your access requirements change. For additional recommendations, see [Tenants, roles, and users in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
+> Çoğu durumda, tek bir kullanıcı hesabı serisi yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar. Ek öneriler için bkz. [Azure 'Da kiracılar, roller ve kullanıcılar ile Ilgili kullanım senaryoları](../concepts/tenants-users-roles.md).
 
-Once you've completed the info, you can select **New plan** as many times as you need to create additional plans. When you're done, select **Save**, and then continue to the **Marketplace** section.
+Bilgileri tamamladıktan sonra, ek planlar oluşturmak için ihtiyaç duyduğunuz kadar **Yeni plan** seçeneğini belirleyebilirsiniz. İşiniz bittiğinde **Kaydet**' i seçin ve ardından **Market** bölümüne devam edin.
 
-## <a name="provide-marketplace-text-and-images"></a>Provide Marketplace text and images
+## <a name="provide-marketplace-text-and-images"></a>Market metin ve görüntüleri sağlama
 
-The **Marketplace** section is where you provide the text and images which customers will see in Azure Marketplace and the Azure portal.
+**Market** bölümü, müşterilerin Azure Marketi 'nde göreceği metin ve görüntüleri ve Azure Portal sağlayacaksınız.
 
-Complete the following fields in the **Overview** section:
+**Genel bakış** bölümünde aşağıdaki alanları doldurun:
 
 |Alan  |Açıklama  |
 |---------|---------|
-|**Başlık**     |  Title of the offer, often the long, formal name. This title will be displayed prominently in the marketplace. Maximum length of 50 characters. In most cases, this should be the same as the **Name** you entered in the **Offer Settings** section.       |
-|**Özet**     | Brief purpose or function of your offer. This is usually displayed under the title. Maximum length of 100 characters.        |
-|**Long Summary**     | A longer summary of the purpose or function of your offer. Maximum length of 256 characters.        |
-|**Açıklama**     | More information about your offer. This field has a maximum length of 3000 characters and supports simple HTML formatting. You must include the words "managed service" or "managed services" somewhere in your description.       |
-|**Marketing Identifier**     | A unique URL-friendly identifier. This identifier can only contain lowercase alphanumeric characters and dashes. It will be used in Marketplace URLs for this offer. For example, if your publisher ID is *contoso* and your marketing identifier is *sampleApp*, the URL for your offer in Azure Marketplace will be *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* .        |
-|**Preview Subscription IDs**     | Add one to 100 subscription identifiers. The customers associated with these subscriptions will be able to view the offer in Azure Marketplace before it goes live. We suggest including your own subscriptions here so you can preview how your offer appears in the Azure Marketplace before making it available to customers.  (Microsoft support and engineering teams will also be able to view your offer during this preview period.)   |
-|**Useful Links**     | URLs related to your offer, such as documentation, release notes, FAQs, etc.        |
-|**Suggested Categories (Max 5)**     | One or more categories (up to five) which apply to your offer. These categories help customers discover your offer in Azure Marketplace and the Azure portal.        |
+|**Başlık**     |  Teklifin başlığı, genellikle uzun, resmi adı. Bu başlık Market 'te göze çarpacak olarak görüntülenecektir. En fazla 50 karakter uzunluğunda. Çoğu durumda bu, **teklif ayarları** bölümüne girdiğiniz **adla** aynı olmalıdır.       |
+|**Özet**     | Teklifinizin kısa bir amacı veya işlevi. Bu genellikle başlık altında görüntülenir. En fazla 100 karakter uzunluğunda.        |
+|**Uzun Özet**     | Teklifinizin amacının veya işlevinin uzun bir özeti. En fazla 256 karakter uzunluğunda.        |
+|**Açıklama**     | Teklifiniz hakkında daha fazla bilgi. Bu alan en fazla 3000 karakter uzunluğunda ve basit HTML biçimlendirmesini destekler. Açıklamasında "yönetilen hizmet" veya "yönetilen hizmetler" sözcüklerini dahil etmeniz gerekir.       |
+|**Pazarlama tanımlayıcısı**     | Benzersiz bir URL kullanımı kolay tanımlayıcı. Bu tanımlayıcı yalnızca küçük harf alfasayısal karakter ve tire içerebilir. Bu teklif için Market URL 'Lerinde kullanılacaktır. Örneğin, yayımcı KIMLIĞINIZ *contoso* ise ve pazarlama tanımınız *SampleApp*ise Azure Marketi 'nde teklifinizin URL 'si *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* olacaktır.        |
+|**Abonelik kimliklerini Önizle**     | 100 abonelik tanımlayıcılarına bir tane ekleyin. Bu aboneliklerle ilişkili müşteriler, teklifi canlı olmadan önce Azure Marketi 'nde görüntüleyebilecektir. Müşterilerinizin müşterilere hazır hale getirmeden önce Azure Marketi 'nde teklifinizin önizlemesini yapabilmeniz için kendi aboneliklerinizi burada da dahil etmeyi öneririz.  (Microsoft destek ve mühendislik ekipleri bu önizleme döneminde teklifinizi da görüntüleyebilecektir.)   |
+|**Faydalı bağlantılar**     | Teklifinizle ilgili belgeler, sürüm notları, SSS vb. gibi URL 'Ler.        |
+|**Önerilen Kategoriler (en fazla 5)**     | Teklifiniz için uygulanan bir veya daha fazla kategori (en fazla beş). Bu kategoriler, müşterilerin teklifinizi Azure Marketi 'nde ve Azure portal bulmasına yardımcı olur.        |
 
-In the **Marketing Artifacts** section, you can upload logos and other assets to be shown with your offer. You can optionally upload screenshots or links to videos that can help customers understand your offer.
+**Pazarlama yapıtları** bölümünde, teklifinizle birlikte gösterilecek logoları ve diğer varlıkları karşıya yükleyebilirsiniz. İsteğe bağlı olarak, müşterilerinizin teklifinizi anlamalarına yardımcı olabilecek videoların ekran görüntülerini veya bağlantılarını yükleyebilirsiniz.
 
-Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (115x115)** , and **Wide (255x115)** . Follow these guidelines for your logos:
+Dört logo boyutu gereklidir: **küçük (40x40)** , **Orta (90x90)** , **büyük (115x115)** ve **geniş (255x115)** . Logolarınız için şu yönergeleri izleyin:
 
 - Azure tasarımının basit bir renk paleti vardır. Logonuzdaki birincil ve ikincil renklerinin sayısını sınırlandırın.
 - Portalın tema renkleri siyah ve beyazdır. Bu renkleri logonuzun arka plan rengi olarak kullanmayın. Logonuzun portalda öne çıkmasını sağlayan bir renk kullanın. Basit birincil renkleri öneririz.
-- If you use a transparent background, make sure that the logo and text aren't white, black, or blue.
+- Saydam bir arka plan kullanıyorsanız, amblem ve metnin beyaz, siyah veya mavi olmadığından emin olun.
 - Logonuzun genel görünümü düz olmalı ve gradyanlardan kaçınmalıdır. Logoda gradyan arka plan kullanmayın.
 - Şirket veya marka adınız dahil olmak üzere logoya metin yerleştirmeyin.
 - Logonuzun esnetilmediğinden emin olun.
 
-The **Hero (815x290)** logo is optional but recommended. If you include a hero logo, follow these guidelines:
+**Hero (815x290)** logosu isteğe bağlıdır, ancak önerilir. Bir Hero logosu eklerseniz, aşağıdaki yönergeleri izleyin:
 
-- Don't include any text in the hero logo, and be sure to leave 415 pixels of empty space on the right side of the logo. This is required to leave room for text elements that will be embedded programmatically: your publisher display name, plan title, offer long summary.
-- Your hero logo's background may not be black, white, or transparent. Make sure your background color isn't too light, because the embedded text will be displayed in white.
-- Once you publish your offer with a hero icon, you can't remove it (although you can update it with a different version if desired).
+- Hero logouna herhangi bir metin eklemeyin ve logonun sağ tarafında 415 piksel boş alana ayrıldığınızdan emin olun. Bu, programlı olarak eklenecek metin öğelerinin odasını bırakmak için gereklidir: Publisher görünen adı, plan başlığı, uzun Özet teklif.
+- Hero logosunun arka planı siyah, beyaz veya saydam olmayabilir. Gömülü metin beyaz olarak görüntülenebildiğinden arka plan rengin çok açık olmadığından emin olun.
+- Teklifinizi bir Hero simgesiyle yayımladığınızda, onu kaldıramazsınız (ancak isterseniz farklı bir sürümle güncelleştirebilirsiniz).
 
-In the **Lead Management** section, you can select the CRM system where your leads will be stored. Note that per the [Managed Services certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services), a **Lead Destination** is required.
+**Müşteri adayı yönetimi** bölümünde, müşteri ADAYLARıNıZıN depolanacağı CRM sistemini seçebilirsiniz. [Yönetilen hizmetler sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)göre, bir **müşteri adayı hedefinin** gerekli olduğunu unutmayın.
 
-Finally, provide your **Privacy Policy URL** and **Terms of use** in the **Legal** section. You can also specify here whether or not to use the [Standard Contract](https://docs.microsoft.com/azure/marketplace/standard-contract) for this offer.
+Son olarak, **Gizlilik ILKESI URL** 'Nizi ve **yasal** bölümde **kullanım koşulları** sağlayın. Ayrıca, bu teklif için [Standart sözleşmenin](https://docs.microsoft.com/azure/marketplace/standard-contract) kullanılıp kullanılmayacağını da belirtebilirsiniz.
 
-Be sure to save your changes before moving on to the **Support** section.
+**Destek** bölümüne geçmeden önce değişikliklerinizi kaydettiğinizden emin olun.
 
-## <a name="add-support-info"></a>Add support info
+## <a name="add-support-info"></a>Destek bilgisi ekle
 
-In the **Support** section, provide the name, email, and phone number for an engineering contact and a customer support contact. You'll also need to provide support URLs. Microsoft may use this information when we need to contact you about business and support issues.
+**Destek** bölümünde, bir mühendislik kişisi ve müşteri desteği ile ilgili kişi için ad, e-posta ve telefon numarası belirtin. Ayrıca destek URL 'Leri sağlamanız gerekir. Microsoft bu bilgileri iş ve destek sorunları hakkında sizinle iletişim kurabilmesi gerektiğinde kullanabilir.
 
-Once you've added this info, select **Save.**
+Bu bilgileri ekledikten sonra Kaydet ' i seçin **.**
 
 ## <a name="publish-your-offer"></a>Teklifinizi yayımlayın
 
-Once you've completed all of the sections, your next step is to publish the offer to Azure Marketplace. Select the **Publish** button to initiate the process of making your offer live. For more about this process, see [Publish Azure Marketplace and AppSource offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu süreç hakkında daha fazla bilgi için bkz. [Azure Marketi ve AppSource tekliflerini yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
-You can [publish an updated version of your offer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) at any time. For example, you may want to add a new role definition to a previously-published offer. When you do so, customers who have already added the offer will see an icon in the [**Service providers**](view-manage-service-providers.md) page in the Azure portal that lets them know an update is available. Each customer will be able to [review the changes](view-manage-service-providers.md#update-service-provider-offers) and decide whether they want to update to the new version. 
+[Teklifinizin güncelleştirilmiş bir sürümünü](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) dilediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklifine yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler, bir güncelleştirmenin kullanılabildiğini bilmesini sağlayan Azure portal [**hizmet sağlayıcıları**](view-manage-service-providers.md) sayfasında bir simge görür. Her müşteri [, değişiklikleri gözden](view-manage-service-providers.md#update-service-provider-offers) geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğinize karar verecek. 
 
-## <a name="the-customer-onboarding-process"></a>The customer onboarding process
+## <a name="the-customer-onboarding-process"></a>Müşteri ekleme işlemi
 
-After a customer adds your offer, they'll be able to [delegate one or more specific subscriptions or resource groups](view-manage-service-providers.md#delegate-resources), which will then be onboarded for Azure delegated resource management. If a customer has accepted an offer but has not yet delegated any resources, they'll see a note at the top of the **Provider offers** section of the [**Service providers**](view-manage-service-providers.md) page in the Azure portal.
+Müşteri teklifinizi ekledikten sonra, [bir veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini](view-manage-service-providers.md#delegate-resources)sağlar ve bu, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olacaktır. Bir müşteri bir teklifi kabul etmiş, ancak henüz hiç kaynak temsilcisi yoksa, Azure portal [**hizmet sağlayıcılar**](view-manage-service-providers.md) sayfasının en üstünde **sağlayıcı teklifleri** bölümünün üst kısmında bir not görür.
 
 > [!IMPORTANT]
-> Delegation must be done by a non-guest account in the customer’s tenant which has the [Owner built-in role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) for the subscription being onboarded (or which contains the resource groups that are being onboarded). To see all users who can delegate the subscription, a user in the customer's tenant can select the subscription in the Azure portal, open **Access control (IAM)** , and [view all users with the Owner role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+> Temsilciyi, müşterinin kiracısında, eklendi olan abonelik (veya eklendi olan kaynak gruplarını içeren) için [sahip yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip konuk olmayan bir hesap tarafından yapılmalıdır. Aboneliği temsil edebilen tüm kullanıcıları görmek için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-After the customer delegates a subscription (or one or more resource groups within a subscription), the **Microsoft.ManagedServices** resource provider will be registered for that subscription, and users in your tenant will be able to access the delegated resources according to the authorizations in your offer.
+Müşteri bir aboneliği (veya bir abonelik içinde bir veya daha fazla kaynak grubu) temsilcduktan sonra, bu abonelik için **Microsoft. ManagedServices** kaynak sağlayıcısı kaydedilir ve kiracınızdaki kullanıcılar, teklifinizdeki Yetkilendirmelere göre Temsilcili kaynaklara erişebilir.
 
 > [!NOTE]
-> At this time, subscriptions (or resource groups within a subscription) can't be delegated if the subscription uses Azure Databricks. Similarly, if a subscription (or resource groups within a subscription) has already been delegated, it currently isn't possible to create Databricks workspaces in that subscription.
+> Şu anda, abonelik Azure Databricks kullanıyorsa abonelikler (veya bir abonelik içindeki kaynak grupları) devredilemez. Benzer şekilde, bir abonelik (veya abonelik içindeki kaynak grupları) zaten Temsilcili ise, o abonelikte Databricks çalışma alanları oluşturmak mümkün değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
-- [View and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.
+- [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
+- Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](view-manage-customers.md) .

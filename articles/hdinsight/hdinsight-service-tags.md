@@ -44,7 +44,7 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 
 İki hizmet etiketi seçeneğini tercih ediyorsanız ve kümeniz bu tabloda listelenen bölgelerden birinde bulunuyorsa, ağ güvenlik grubunuza yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
 
-| Ülke | Bölge | Hizmet etiketi |
+| Country | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
 | &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
@@ -53,7 +53,7 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
 | Amerika Birleşik Devletleri | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
 | &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
-| &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
+| &nbsp; | Batı Orta ABD | HDInsight. WestCentralUS |
 | Kanada | Doğu Kanada | HDInsight. Canadadoğu |
 | Brezilya | Güney Brezilya | HDInsight. BrazilSouth |
 | Güney Kore | Kore Orta | HDInsight. KoreaCentral |
@@ -83,7 +83,7 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Ülke | Bölge | Hizmet etiketi |
+| Country | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Amerika Birleşik Devletleri | Doğu ABD 2 | HDInsight. EastUS2 |
 | &nbsp; | Orta ABD | HDInsight. merkezde ABD |

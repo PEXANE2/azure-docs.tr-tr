@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Active Directory access - Azure Blockchain Service
-description: How to configure Azure Blockchain Service with Azure Active Directory access
+title: Azure Active Directory erişimini Yapılandırma-Azure blok zinciri hizmeti
+description: Azure blok zinciri hizmetini Azure Active Directory erişimi ile yapılandırma
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
@@ -11,77 +11,77 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455854"
 ---
-# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>How to configure Azure Active Directory access for Azure Blockchain Service
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure blok zinciri hizmeti için Azure Active Directory erişimi yapılandırma
 
-In this article, you learn how to grant access and connect to Azure Blockchain Service nodes using Azure Active Directory (Azure AD) user, group, or application IDs.
+Bu makalede, Azure Active Directory (Azure AD) Kullanıcı, Grup veya uygulama kimliklerini kullanarak Azure blok zinciri hizmeti düğümlerine nasıl erişim ve bağlantı sağlayacağınızı öğreneceksiniz.
 
-Azure AD provides cloud-based identity management and allows you to use a single identity across an entire enterprise and access applications in Azure. Azure Blockchain Service is integrated with Azure AD and offers benefits such as ID federation, single sign-on and multi-factor authentication.
+Azure AD, bulut tabanlı kimlik yönetimi sağlar ve Azure 'daki tüm kurumsal ve erişim uygulamaları genelinde tek bir kimlik kullanmanıza olanak sağlar. Azure blok zinciri hizmeti, Azure AD ile tümleşiktir ve KIMLIK Federasyonu, çoklu oturum açma ve çok faktörlü kimlik doğrulaması gibi avantajlar sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Create a blockchain member using the Azure portal](create-member.md)
+* [Azure portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md)
 
 ## <a name="grant-access"></a>Erişim verme
 
-You can grant access at both the member level and the node level. Granting access rights at the member level will in turn grant access to all nodes under the member.
+Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düzeyinde erişim hakları verilmesi, üyenin altındaki tüm düğümlere erişim hakkı verir.
 
-### <a name="grant-member-level-access"></a>Grant member level access
+### <a name="grant-member-level-access"></a>Üye düzeyinde erişim verme
 
-To grant access permission at the member level.
+Üye düzeyinde erişim izni vermek için.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Navigate to **Access control (IAM) > Add > Add role assignment**.
-1. Select the **Blockchain Member Node Access (Preview)** role and add the Azure AD ID object you wish to grant access to. Azure AD ID object can be:
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Erişim denetimi (IAM) > > rol ataması Ekle**' ye gidin.
+1. **Blok zinciri üye düğümü erişimi (Önizleme)** rolünü seçin ve erişim vermek ISTEDIĞINIZ Azure AD kimlik nesnesini ekleyin. Azure AD KIMLIK nesnesi şu olabilir:
 
-    | Azure AD object | Örnek |
+    | Azure AD nesnesi | Örnek |
     |-----------------|---------|
-    | Azure AD user   | `kim@contoso.onmicrosoft.com` |
-    | Azure AD group  | `sales@contoso.onmicrosoft.com` |
+    | Azure AD kullanıcısı   | `kim@contoso.onmicrosoft.com` |
+    | Azure AD grubu  | `sales@contoso.onmicrosoft.com` |
     | Uygulama Kimliği  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
-    ![Add role assignment](./media/configure-aad/add-role-assignment.png)
+    ![Rol ataması Ekle](./media/configure-aad/add-role-assignment.png)
 
 1. **Kaydet**’i seçin.
 
-### <a name="grant-node-level-access"></a>Grant node level access
+### <a name="grant-node-level-access"></a>Düğüm düzeyinde erişim verme
 
-You can grant access at the node level by navigating to node security and click on the node name that you wish to grant access.
+Düğüm güvenliği ' ne giderek, erişim vermek istediğiniz düğüm adına tıklayarak düğüm düzeyinde erişim izni verebilirsiniz.
 
-Select the Blockchain Member Node Access (Preview) role and add the Azure AD ID object you wish to grant access to.
+Blok zinciri üye düğümü erişimi (Önizleme) rolünü seçin ve erişim vermek istediğiniz Azure AD KIMLIK nesnesini ekleyin.
 
-For more information, see [Configure Azure Blockchain Service transaction nodes](configure-transaction-nodes.md#azure-active-directory-access-control).
+Daha fazla bilgi için bkz. [Azure blok zinciri hizmeti işlem düğümlerini yapılandırma](configure-transaction-nodes.md#azure-active-directory-access-control).
 
-## <a name="connect-using-azure-blockchain-connector"></a>Connect using Azure Blockchain Connector
+## <a name="connect-using-azure-blockchain-connector"></a>Azure blok zinciri bağlayıcısını kullanarak bağlanma
 
-Download or clone the [Azure Blockchain Connector from GitHub](https://github.com/Microsoft/azure-blockchain-connector/).
+[Azure blok zinciri bağlayıcısını GitHub 'dan](https://github.com/Microsoft/azure-blockchain-connector/)indirin veya kopyalayın.
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-The follow the quickstart section in the **readme** to build the connector from the source code.
+Kaynak kodundan bağlayıcıyı derlemek için **Benioku** dosyasındaki hızlı başlangıç bölümünü izleyin.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>Connect using an Azure AD user account
+### <a name="connect-using-an-azure-ad-user-account"></a>Azure AD Kullanıcı hesabı kullanarak bağlanma
 
-1. Run the following command to authenticate using an Azure AD user account. Replace \<myAADDirectory\> with an Azure AD domain. Örneğin, `yourdomain.onmicrosoft.com`.
+1. Azure AD Kullanıcı hesabı kullanarak kimlik doğrulamak için aşağıdaki komutu çalıştırın. \<myAADDirectory\> bir Azure AD etki alanı ile değiştirin. Örneğin, `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD prompts for credentials.
-1. Sign in with your user name and password.
-1. Upon successful authentication, your local proxy connects to your blockchain node. You can now attach your Geth client with the local endpoint.
+1. Azure AD kimlik bilgileri ister.
+1. Kullanıcı adınız ve parolanızla oturum açın.
+1. Kimlik doğrulaması başarılı olduğunda, yerel ara sunucunuz blok zinciri düğümünüz ile bağlantı kurar. Şimdi geth istemcinizi Yerel uç noktaya ekleyebilirsiniz.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>Connect using an application ID
+### <a name="connect-using-an-application-id"></a>Uygulama KIMLIĞI kullanarak bağlan
 
-Many applications authenticate with Azure AD using an application ID instead of an Azure AD user account.
+Birçok uygulama, Azure AD Kullanıcı hesabı yerine bir uygulama KIMLIĞI kullanarak Azure AD ile kimlik doğrular.
 
-To connect to your node using an application ID, replace **aadauthcode** with **aadclient**.
+Bir uygulama KIMLIĞI kullanarak düğümünüz ile bağlantı kurmak için **aadauthcode** 'u **aadclient**ile değiştirin.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -89,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| tenant-id | Azure AD domain, For example, `yourdomain.onmicrosoft.com`
-| client-id | Client ID of the registered application in Azure AD
-| client-secret | Client secret of the registered application in Azure AD
+| Kiracı kimliği | Azure AD etki alanı, örneğin `yourdomain.onmicrosoft.com`
+| istemci kimliği | Azure AD 'de kayıtlı uygulamanın istemci KIMLIĞI
+| istemci parolası | Azure AD 'de kayıtlı uygulamanın istemci gizli anahtarı
 
-For more information on how to register an application in Azure AD, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](../../active-directory/develop/howto-create-service-principal-portal.md)
+Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz [. nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>Connect a mobile device or text browser
+### <a name="connect-a-mobile-device-or-text-browser"></a>Mobil cihaz veya metin tarayıcısını bağlama
 
-For a mobile device or text-based browser where the Azure AD authentication pop-up display is not possible, Azure AD generates a one-time passcode. You can copy the passcode and proceed with Azure AD authentication in another environment.
+Azure AD kimlik doğrulaması açılır ekran 'nin mümkün olmadığı bir mobil cihaz veya metin tabanlı tarayıcı için, Azure AD bir kerelik geçiş kodu oluşturur. Geçiş kodunu kopyalayabilir ve başka bir ortamda Azure AD kimlik doğrulaması ile devam edebilirsiniz.
 
-To generate the passcode, replace **aadauthcode** with **aaddevice**. Replace \<myAADDirectory\> with an Azure AD domain. Örneğin, `yourdomain.onmicrosoft.com`.
+Geçiş kodunu oluşturmak için **aadauthcode** değerini **aaddevice**ile değiştirin. \<myAADDirectory\> bir Azure AD etki alanı ile değiştirin. Örneğin, `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -107,4 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For more information about data security in Azure Blockchain Service, see [Azure Blockchain Service security](data-security.md).
+Azure blok zinciri hizmeti 'nde veri güvenliği hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti güvenliği](data-security.md).

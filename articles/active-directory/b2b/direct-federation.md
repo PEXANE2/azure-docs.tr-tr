@@ -90,7 +90,7 @@ Aşağıdaki tablolarda, üçüncü taraf kimlik sağlayıcısında yapılandır
 
 IDP 'den SAML 2,0 yanıtı için gerekli öznitelikler:
 
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
@@ -99,7 +99,7 @@ IDP 'den SAML 2,0 yanıtı için gerekli öznitelikler:
 
 IDP tarafından verilen SAML 2,0 belirteci için gerekli talepler:
 
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |NameID biçimi     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -116,7 +116,7 @@ Aşağıdaki tablolarda, üçüncü taraf WS-beslik kimlik sağlayıcısında ya
 
 IDP 'den WS-BESM iletisinde gerekli öznitelikler:
  
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |Passıverequestorendpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
@@ -124,7 +124,7 @@ IDP 'den WS-BESM iletisinde gerekli öznitelikler:
 
 IDP tarafından verilen WS-Besme belirteci için gerekli talepler:
 
-|Öznitelik  |Değer  |
+|Öznitelik  |Value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -137,7 +137,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Azure AD portalında doğrudan Federasyonu yapılandırmak için
 
-1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcıları**' nı seçin ve ardından **yenı SAML/WS-besıop**' ı seçin.
 
@@ -185,7 +185,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Doğrudan bir Federasyon ilişkisini Nasıl yaparım? mi düzenleyin?
 
-1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcılarını** seçin
 4. **SAML/WS-beslik kimlik sağlayıcıları**altında sağlayıcıyı seçin.
@@ -196,7 +196,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 ## <a name="how-do-i-remove-direct-federation"></a>Doğrudan Federasyonu kaldırmak Nasıl yaparım? mı?
 Doğrudan Federasyon kurulumunuzu kaldırabilirsiniz. Bunu yaparsanız, doğrudan davetlerini daha önce kullanan Federasyon Konuk kullanıcıları oturum açamaz. Ancak onları dizinden silerek ve yeniden davet ederek kaynaklarınıza erişim izni verebilirsiniz. Azure AD portalındaki bir kimlik sağlayıcısıyla doğrudan Federasyonu kaldırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcıları**' nı seçin.
 4. Kimlik sağlayıcısını seçin ve **Sil**' i seçin. 

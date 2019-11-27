@@ -1,6 +1,6 @@
 ---
-title: What are application templates in Azure IoT Central | Microsoft Docs
-description: Azure IoT Central application templates allow you to jump in to IoT solution development.
+title: Azure IoT Central uygulama şablonları nelerdir | Microsoft Docs
+description: Azure IoT Central uygulama şablonları, IoT çözüm geliştirmeye atlamanızı sağlar.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
@@ -16,64 +16,64 @@ ms.locfileid: "74480324"
 ---
 # <a name="what-are-application-templates"></a>Uygulama şablonları nedir?
 
-Application templates in Azure IoT Central are a tool to help solution builders kickstart their IoT solution development. You can use app templates for everything from getting a feel for what is possible, to fully customizing and your application for resale to your customers.
+Azure IoT Central 'daki uygulama şablonları, çözüm oluşturucularının IoT çözüm geliştirmesini başlatmasını sağlamaya yardımcı olan bir araçtır. Uygulama şablonlarını, ne kadar uygun olduğunu hissetmekten, tam olarak özelleştirmeye ve uygulamanızı müşterilerinize yeniden satımak üzere kullanabilirsiniz.
 
-Application templates consist of:
+Uygulama şablonları şunlardan oluşur:
 
-- Sample operator dashboards
-- Sample device templates
-- Simulated devices producing real-time data
-- Pre-configured rules and jobs
-- Rich documentation including tutorials and how-tos
+- Örnek işleç panoları
+- Örnek cihaz şablonları
+- Gerçek zamanlı veriler üreten sanal cihazlar
+- Önceden yapılandırılmış kurallar ve işler
+- Öğreticiler ve nasıl yapılır-TOS dahil zengin belgeler
 
-## <a name="preview-templates"></a>Preview templates
+## <a name="preview-templates"></a>Önizleme şablonları
 
-Your choice of application template determines whether your application uses IoT Central preview features such as Plug and Play for devices.
+Uygulama şablonu seçiminiz, uygulamanızın cihazlar için Tak ve Kullan gibi Önizleme özelliklerini IoT Central kullanıp kullanmadığını belirler.
 
-Currently, the application templates that use _generally available_ features are:
+Şu anda, _genel olarak kullanılabilen_ özellikleri kullanan uygulama şablonları şunlardır:
 
-- Custom app > Custom application
-- Custom app > Sample Contoso
-- Custom app > Sample Devkits
+- Özel uygulama > özel uygulama
+- Özel uygulama > örnek contoso
+- Özel uygulama > örnek Devkits
 
-Currently, the application templates that use _public preview_ features are:
+Şu anda _genel önizleme_ özelliklerini kullanan uygulama şablonları şunlardır:
 
-- Custom app > Preview application
-- Retail > Connected logistics
-- Retail > Digital distribution center
-- Retail > In-store analytics – condition monitoring
-- Retail > In-store analytics – checkout
-- Retail > Smart inventory management
-- Energy > Smart meter monitoring
-- Energy > Solar panel monitoring
-- Government > Connected waste management
-- Government > Water consumption monitoring
-- Government > Water quality monitoring
-- Healthcare > Continuous patient monitoring
+- Özel uygulama > Önizleme uygulaması
+- Perakende > bağlı lojistik
+- Perakende > Dijital dağıtım merkezi
+- Mağaza Içi analiz-koşul izleme > perakende
+- Mağaza Içi > Retail Analytics – kullanıma alma
+- Perakende > Akıllı envanter yönetimi
+- Enerji > Akıllı ölçüm izleme
+- Enerji > güneş paneli izleme
+- Kamu > bağlı çöp yönetimi
+- Kamu > su kullanımı izleme
+- Kamu > su kalitesi izleme
+- Sağlık > sürekli hasta izleme
 
 > [!NOTE]
-> The **Custom application, Sample Contoso, Sample Devkits** templates are currently  available in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations, while other templates are currently available only in **Europe** and **US** locations.
+> **Özel uygulama, örnek contoso, örnek Devkits** şablonları şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında mevcuttur, ancak diğer şablonlar şu anda yalnızca **Avrupa** ve **ABD** konumlarında kullanılabilir.
 
-## <a name="industry-focused-templates"></a>Industry focused templates
+## <a name="industry-focused-templates"></a>Sektör odaklı Şablonlar
 
-Azure IoT Central is an industry agnostic application platform. Application templates are industry focused examples available for these industries today, with more to come in the future:
+Azure IoT Central, sektörde bağımsız bir uygulama platformudur. Uygulama şablonları, bu sektörlerde daha fazla sunulacak sektörde bulunan sektör odaklı örneklerdir:
 
-- [Retail](../retail/overview-iot-central-retail-pnp.md)
+- [Maliyeti](../retail/overview-iot-central-retail-pnp.md)
   - Bağlı lojistik
   - Dijital dağıtım merkezi
-  - In-store analytics - condition monitoring
-  - In-store analytics - checkout
-  - Smart Inventory Management
-- [Energy](../energy/overview-iot-central-energy.md)
-  - Smart meter monitoring
-  - Solar panel monitoring
-- [Government](../government/overview-iot-central-government.md)
+  - Mağaza içi analiz-koşul izleme
+  - Mağaza içi analiz-kullanıma alma
+  - Akıllı envanter yönetimi
+- [Enerji](../energy/overview-iot-central-energy.md)
+  - Akıllı ölçüm izleme
+  - Güneş paneli izleme
+- [Devlet](../government/overview-iot-central-government.md)
   - Bağlı atık yönetimi
   - Su tüketimi izleme
   - Su kalitesi izleme
-- [Healthcare](../healthcare/overview-iot-central-healthcare.md).
+- [Sağlık](../healthcare/overview-iot-central-healthcare.md).
   - Sürekli hasta izleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you know what IoT Central application templates are, get started by [creating an IoT Central Application](quick-deploy-iot-central.md).
+Uygulama şablonlarının ne IoT Central olduğunu öğrenolduğunuza göre, [bir IoT Central uygulaması oluşturarak](quick-deploy-iot-central.md)başlayın.

@@ -13,7 +13,7 @@ ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462134"
 ---
 > [!IMPORTANT]
-> Azure SQL Database Machine Learning Services is currently in preview. Sign up for the preview is currently closed.
+> Azure SQL veritabanı Machine Learning Services Şu anda önizleme aşamasındadır. Önizleme için kaydolma Şu anda kapalı.
 > 
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

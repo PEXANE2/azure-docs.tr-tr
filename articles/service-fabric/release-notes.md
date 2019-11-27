@@ -55,7 +55,7 @@ Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler i
 
 Ayrıca, bu sürüm diğer yeni özellikler, hata düzeltmeleri ve desteklenebilirlik, güvenilirlik ve performans iyileştirmeleri içerir. Değişikliklerin tam listesi için lütfen [sürüm notlarına](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)bakın.
 
-| Sürüm tarihi | Yayınla | Daha fazla bilgi |
+| Sürüm tarihi | Sürüm | Daha fazla bilgi |
 |---|---|---|
 | 18 Kasım 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
 
@@ -91,7 +91,7 @@ Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://githu
 
 ### <a name="service-fabric-65-releases"></a>Service Fabric 6,5 yayınları
 
-| Sürüm tarihi | Yayınla | Daha fazla bilgi |
+| Sürüm tarihi | Sürüm | Daha fazla bilgi |
 |---|---|---|
 | 11 Haziran 2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2 Temmuz 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
@@ -104,7 +104,7 @@ Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://githu
 
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6,4 yayınları
 
-| Sürüm tarihi | Yayınla | Daha fazla bilgi |
+| Sürüm tarihi | Sürüm | Daha fazla bilgi |
 |---|---|---|
 | 30 Kasım 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Sürüm notları](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 12 Aralık 2018 | [Windows kümeleri için Azure Service Fabric 6,4 yenileme sürümü](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [Sürüm notları](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |

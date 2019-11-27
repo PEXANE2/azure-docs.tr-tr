@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Use URL tool to get answer from knowledge base - QnA Maker'
+title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt almak için URL aracını kullanın-Soru-Cevap Oluşturma"
 titleSuffix: Azure Cognitive Services
-description: This quickstart walks you through getting an answer from your knowledge base using a URL test tool such as cURL or Postman.
+description: Bu hızlı başlangıçta, kıvrımlı veya Postman gibi bir URL test aracı kullanarak bilgi tabanınızdan yanıt alma işlemi adım adım gösterilmektedir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,7 +18,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74424429"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Quickstart: Get an answer from knowledge base
+# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'ndan bir yanıt alın
 
 ::: zone pivot="url-test-tool-curl"
 
@@ -35,4 +35,4 @@ ms.locfileid: "74424429"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Use metadata while generating an answer](create-new-kb-csharp.md)
+> [Yanıt oluştururken meta verileri kullanma](create-new-kb-csharp.md)

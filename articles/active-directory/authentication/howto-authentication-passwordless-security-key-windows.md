@@ -1,6 +1,6 @@
 ---
-title: Passwordless security key sign-in Windows - Azure Active Directory
-description: Enable passwordless security key sign-in to Azure AD using FIDO2 security keys (preview)
+title: Passwordless güvenlik anahtarı oturum açma pencereleri-Azure Active Directory
+description: FIDO2 güvenlik anahtarlarını (Önizleme) kullanarak Azure AD 'de passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,145 +18,145 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452934"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Enable passwordless security key sign in to Windows 10 devices (preview)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 cihazlarında passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
 
-This document focuses on enabling FIDO2 security key based passwordless authentication with Windows 10 devices. At the end of this article, you will be able to sign in to both web-based applications and your Azure AD joined Windows 10 devices with your Azure AD account using a FIDO2 security key.
+Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkinleştirmeye odaklanır. Bu makalenin sonunda, bir FIDO2 güvenlik anahtarı kullanarak hem Web tabanlı uygulamalarda hem de Azure AD 'ye katılmış Windows 10 cihazlarında Azure AD hesabınızla oturum açabilirsiniz.
 
 |     |
 | --- |
-| FIDO2 security keys are a public preview feature of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="requirements"></a>Gereksinimler
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Combined security information registration preview](concept-registration-mfa-sspr-combined.md)
-- Compatible [FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN requires Windows 10 version 1809 or higher
-- [Azure AD joined devices](../devices/concept-azure-ad-join.md) require Windows 10 version 1809 or higher
-- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (Optional)
-- Provisioning package (Optional)
+- [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
+- Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
+- WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir
+- [Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join.md) için Windows 10 sürüm 1809 veya üzeri gerekir
+- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (isteğe bağlı)
+- Sağlama paketi (Isteğe bağlı)
 
-### <a name="unsupported-scenarios"></a>Unsupported scenarios
+### <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
-- Windows Server Active Directory Domain Services (AD DS) domain-joined (on-premises only devices) deployment **not supported**.
-- RDP, VDI, and Citrix scenarios are **not supported** using security key.
-- S/MIME is **not supported** using security key.
-- “Run as“ is **not supported** using security key.
-- Log in to a server using security key is **not supported**.
-- If you have not used your security key to sign in to your device while online, you will not be able to use it to sign in or unlock offline.
-- Signing in or unlocking a Windows 10 device with a security key containing multiple Azure AD accounts. This scenario will utilize the last account added to the security key. WebAuthN will allow users to choose the account they wish to use.
+- Windows Server Active Directory Domain Services (AD DS) etki alanına katılmış (Şirket içi cihazlar) dağıtımı **desteklenmez**.
+- RDP, VDı ve Citrix senaryoları güvenlik anahtarı kullanılarak **desteklenmez** .
+- Güvenlik anahtarı kullanılarak S/MIME **desteklenmez** .
+- "Farklı çalıştır" güvenlik anahtarı kullanılarak **desteklenmez** .
+- Güvenlik anahtarı kullanılarak bir sunucuda oturum açma **desteklenmez**.
+- Çevrimiçi ortamda cihazınızda oturum açmak için güvenlik anahtarınızı kullanmadıysanız, çevrimdışı oturum açmak veya oturumu açmak için kullanamazsınız.
+- Birden çok Azure AD hesabı içeren bir güvenlik anahtarıyla Windows 10 cihazının oturum açması veya kilidini açma. Bu senaryo, güvenlik anahtarına eklenen son hesabı kullanır. WebAuthN, kullanıcıların kullanmak istedikleri hesabı seçmesine izin verir.
 
-## <a name="prepare-devices-for-preview"></a>Prepare devices for preview
+## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
 
-Azure AD joined devices that you will be piloting with must be running Windows 10 version 1809 or higher. The best experience is on Windows 10 version 1903 or higher.
+İle pillendirilebilecek Azure AD 'ye katılmış cihazların Windows 10 sürüm 1809 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
 
-## <a name="enable-security-keys-for-windows-sign-in"></a>Enable security keys for Windows sign-in
+## <a name="enable-security-keys-for-windows-sign-in"></a>Windows oturum açma için güvenlik anahtarlarını etkinleştir
 
-Organizations may choose to use one or more of the following methods to enable the use of security keys for Windows sign-in based on their organization's requirements.
+Kuruluşlar, kuruluşunuzun gereksinimlerine bağlı olarak Windows oturum açma için güvenlik anahtarlarının kullanımını etkinleştirmek üzere aşağıdaki yöntemlerden birini veya daha fazlasını kullanmayı seçebilir.
 
-- [Enable with Intune](#enable-with-intune)
-   - [Targeted Intune deployment](#targeted-intune-deployment)
-- [Enable with a provisioning package](#enable-with-a-provisioning-package)
+- [Intune ile etkinleştirme](#enable-with-intune)
+   - [Hedeflenen Intune dağıtımı](#targeted-intune-deployment)
+- [Sağlama paketiyle etkinleştir](#enable-with-a-provisioning-package)
 
-### <a name="enable-with-intune"></a>Enable with Intune
+### <a name="enable-with-intune"></a>Intune ile etkinleştirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Browse to **Microsoft Intune** > **Device enrollment** > **Windows enrollment** > **Windows Hello for Business** > **Properties**.
-1. Under **Settings** set **Use security keys for sign-in** to **Enabled**.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Microsoft Intune** > **cihaz kaydına** gidin > **Windows kaydı** > **iş için Windows Hello** > **özellikleri**.
+1. **Ayarlar** ' ın altında **, oturum açma Için güvenlik anahtarlarını kullan '** ın altında **etkinleştirilmesi**.
 
-Configuration of security keys for sign-in, is not dependent on configuring Windows Hello for Business.
+Oturum açma için güvenlik anahtarlarının yapılandırılması, Iş için Windows Hello 'Yu yapılandırmaya bağlı değildir.
 
-#### <a name="targeted-intune-deployment"></a>Targeted Intune deployment
+#### <a name="targeted-intune-deployment"></a>Hedeflenen Intune dağıtımı
 
-To target specific device groups to enable the credential provider, use the following custom settings via Intune.
+Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz gruplarını hedeflemek için, Intune aracılığıyla aşağıdaki özel ayarları kullanın.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Browse to **Microsoft Intune** > **Device configuration** > **Profiles** > **Create profile**.
-1. Configure the new profile with the following settings
-   1. Name: Security Keys for Windows Sign-In
-   1. Description: Enables FIDO Security Keys to be used during Windows Sign In
-   1. Platform: Windows 10 and later
-   1. Profile type: Custom
-   1. Custom OMA-URI Settings:
-      1. Name: Turn on FIDO Security Keys for Windows Sign-In
-      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      1. Data Type: Integer
-      1. Value: 1
-1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Profil oluşturmak** >  > **cihaz yapılandırması** > **profillerine** gidin **Microsoft Intune** .
+1. Yeni profili aşağıdaki ayarlarla yapılandırın
+   1. Ad: Windows oturum açma için güvenlik anahtarları
+   1. Açıklama: Windows oturum açma sırasında FIDO güvenlik anahtarlarının kullanılmasını sağlar
+   1. Platform: Windows 10 ve üzeri
+   1. Profil türü: özel
+   1. Özel OMA-URI ayarları:
+      1. Ad: Windows oturum açma için FIDO güvenlik anahtarlarını açın
+      1. OMA-URI:./Device/Vendor/MSFT/passportforwork/SecurityKey/usesecuritykeyforsignın
+      1. Veri türü: tamsayı
+      1. Değer: 1
+1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
 
-![Intune custom device configuration policy creation](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
+![Intune özel cihaz yapılandırma ilkesi oluşturma](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
-### <a name="enable-with-a-provisioning-package"></a>Enable with a provisioning package
+### <a name="enable-with-a-provisioning-package"></a>Sağlama paketiyle etkinleştir
 
-For devices not managed by Intune, a provisioning package can be installed to enable the functionality. The Windows Configuration Designer app can be installed from the [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
+Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)yüklenebilir.
 
-1. Launch the Windows Configuration Designer.
-1. Select **File** > **New project**.
-1. Give your project a name and take note of the path where your project is created.
+1. Windows yapılandırma Tasarımcısı 'nı başlatın.
+1. **Dosya** > **Yeni proje**' yi seçin.
+1. Projenize bir ad verin ve projenizin oluşturulduğu yolu bir yere göz atın.
 1. **İleri**’yi seçin.
-1. Leave **Provisioning package** selected as the **Selected project workflow** and select **Next**.
-1. Select **All Windows desktop editions** under **Choose which settings to view and configure** and select **Next**.
+1. **Seçili proje iş akışı** olarak **sağlama paketini** seçili bırakın ve **İleri ' yi**seçin.
+1. Görüntülenecek **ve yapılandırılacak ayarları seçin** altında **tüm Windows masaüstü sürümlerini** seçin ve **İleri ' yi**seçin.
 1. **Son**’u seçin.
-1. In your newly created project, browse to **Runtime settings** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
-1. Set **UseSecurityKeyForSignIn** to **Enabled**.
-1. Select **Export** > **Provisioning package**
-1. Leave the defaults in the **Build** window under **Describe the provisioning package** and select **Next**.
-1. Leave the defaults in the **Build** window under **Select security details for the provisioning package** and select **Next**.
-1. Take note of or change the path in the **Build** windows under **Select where to save the provisioning package** and select **Next**.
-1. Select **Build** on the **Build the provisioning package** page.
-1. Save the two files created (ppkg and cat) to a location where you can apply them to machines later.
-1. Follow the guidance in the article [Apply a provisioning package](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package), to apply the provisioning package you created.
+1. Yeni oluşturduğunuz projenizde, **Windowshelloforbusiness** > **SecurityKeys** > **Usesecuritykeyforsign > ** **çalışma zamanı ayarları** ' na gidin.
+1. **Usesecuritykeyforsignın** öğesini **etkin**olarak ayarlayın.
+1.  > **sağlama paketini** **dışarı aktar** 'ı seçin
+1. **Sağlama paketini açıkla** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi**seçin.
+1. **Sağlama paketinin güvenlik ayrıntılarını Seç** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi**seçin.
+1. **Sağlama paketinin kaydedileceği yeri seçin** ' ın altında **derleme** pencereleri ' ne göz atın veya yolu değiştirin ve **İleri ' yi**seçin.
+1. **Sağlama paketini oluşturma** sayfasında **Oluştur** ' u seçin.
+1. Oluşturulan iki dosyayı (ppkg ve Cat), daha sonra makinelere uygulayabileceğiniz bir konuma kaydedin.
+1. Oluşturduğunuz sağlama paketini uygulamak için [bir sağlama paketi uygulama](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package)makalesindeki yönergeleri izleyin.
 
 > [!NOTE]
-> Devices running Windows 10 Version 1809 must also enable shared PC mode (EnableSharedPCMode). Information about enabling this funtionality can be found in the article, [Set up a shared or guest PC with Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
+> Windows 10 sürüm 1809 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (EnableSharedPCMode) etkinleştirmesi gerekir. Bu özellikleri etkinleştirme hakkında bilgi için, [Windows 10 ile paylaşılan veya Konuk BIR bilgisayar ayarlama](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc)makalesinde bulabilirsiniz.
 
-## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Sign in to Windows with a FIDO2 security key
+## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>FIDO2 güvenlik anahtarıyla Windows 'da oturum açın
 
-In the example below a user Bala Sandhu has already provisioned their FIDO2 security key using the steps in the previous article, [Enable passwordless security key sign in](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala can choose the security key credential provider from the Windows 10 lock screen and insert the security key to sign into Windows.
+Aşağıdaki örnekte, Bala Sandhu bir Kullanıcı önceki makaledeki adımları kullanarak FIDO2 güvenlik anahtarını sağladı, [passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala, Windows 10 kilit ekranından güvenlik anahtarı kimlik bilgileri sağlayıcısını seçebilir ve Windows 'da oturum açmak için güvenlik anahtarını ekleyebilir.
 
-![Security key sign in at the Windows 10 lock screen](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
+![Windows 10 kilit ekranında güvenlik anahtarı oturum açma](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
 
-### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Manage security key biometric, PIN, or reset security key
+### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Güvenlik anahtarını biyometrik, PIN veya sıfırlama güvenlik anahtarını yönetme
 
-* Windows 10 version 1903 or higher
-   * Users can open **Windows Settings** on their device > **Accounts** > **Security Key**
-   * Users can change their PIN, update biometrics, or reset their security key
+* Windows 10 sürüm 1903 veya üzeri
+   * Kullanıcılar, **Windows ayarlarını** cihaz > **hesaplarında** açabilir > **güvenlik anahtarı**
+   * Kullanıcılar PIN kodlarını değiştirebilir, Biyometri güncelleştirebilir veya güvenlik anahtarını sıfırlayabilir
 
-## <a name="troubleshooting-and-feedback"></a>Troubleshooting and feedback
+## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
 
-If you would like to share feedback or encounter issues while previewing this feature, please share via the Windows Feedback Hub app.
+Bu özelliğin önizlemesini yaparken geri bildirimde bulunmak veya sorun yaşarsanız, lütfen Windows Geri Bildirim Hub 'ı uygulaması aracılığıyla paylaşabilirsiniz.
 
-1. Launch **Feedback Hub** and make sure you're signed in.
-1. Submit feedback under the following categorization:
-   1. Category: Security and Privacy
-   1. Subcategory: FIDO
-1. To capture logs, use the option: **Recreate my Problem**
+1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
+1. Aşağıdaki kategoriye göre geri bildirim gönderin:
+   1. Kategori: güvenlik ve Gizlilik
+   1. Alt Kategori: FıDO
+1. Günlükleri yakalamak için, şu seçeneği kullanın: **sorunum yeniden oluştur**
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="does-this-work-in-my-on-premises-environment"></a>Does this work in my on-premises environment?
+### <a name="does-this-work-in-my-on-premises-environment"></a>Bu, şirket içi ortammda mi çalışıyor?
 
-This feature does not work for a pure on-premises Active Directory Domain Services (AD DS) environment.
+Bu özellik, saf şirket içi Active Directory Domain Services (AD DS) ortamları için çalışmaz.
 
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>My organization requires two factor authentication to access resources, what can I do to support this requirement?
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Kuruluşumun kaynaklara erişmesi için iki öğeli kimlik doğrulaması gerekiyor, bu gereksinimi desteklemek için ne yapabilirim?
 
-Security keys come in a variety of form factors. Please contact the device manufacturer of interest to discuss how their devices can be enabled with a PIN or biometric as a second factor.
+Güvenlik anahtarları çeşitli form faktörleri halinde gelir. Cihazların bir PIN veya biyometri ile ikinci bir faktör ile nasıl etkinleştirilenebileceği hakkında tartışmak için lütfen cihaz üreticisine başvurun.
 
-### <a name="can-admins-set-up-security-keys"></a>Can admins set up security keys?
+### <a name="can-admins-set-up-security-keys"></a>Yöneticiler güvenlik anahtarlarını ayarlayabilir mi?
 
-We are working on this capability for general availability (GA) of this feature.
+Bu özelliğin genel kullanılabilirliği (GA) için bu özellik üzerinde çalışıyoruz.
 
-### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Where can I go to find compliant security keys?
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Uyumlu güvenlik anahtarlarını bulmak için nereye gidebilirim?
 
-[FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
+[FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>What do I do if I lose my security key?
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Güvenlik Anahtarımı kaybedersem ne yapmam gerekiyor?
 
-You can remove keys from the Azure portal, by navigating to the security info page and removing the security key.
+Güvenlik bilgileri sayfasına giderek ve güvenlik anahtarını kaldırarak Azure portal anahtarları kaldırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Learn more about device registration](../devices/overview.md)
+[Cihaz kaydı hakkında daha fazla bilgi edinin](../devices/overview.md)
 
-[Learn more about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication hakkında daha fazla bilgi](../authentication/howto-mfa-getstarted.md)

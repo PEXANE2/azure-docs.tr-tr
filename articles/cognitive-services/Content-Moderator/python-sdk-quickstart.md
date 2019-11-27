@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ee3f59bc9e9f8c7950d005b16433cde9267fea9a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744397"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538994"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Hızlı başlangıç: Python için Content Moderator istemci kitaplığı
 
@@ -31,7 +31,7 @@ Python için Content Moderator istemci kitaplığını şu şekilde kullanın:
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 Aşağıdaki sınıflar, Content Moderator Python SDK 'sının bazı önemli özelliklerini işler.
 
-|Ad|Açıklama|
+|Name|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagemoderationoperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
@@ -104,8 +104,8 @@ Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızl
 Aşağıdaki kod, bir metin gövdesini çözümlemek ve sonuçları konsola yazdırmak için bir Content Moderator istemcisi kullanır. İlk olarak, projenizin kökünde bir **text_files/** klasör oluşturun ve bir *content_moderator_text_moderation. txt* dosyası ekleyin. Bu dosyaya kendi metninizi ekleyin veya aşağıdaki örnek metni kullanın:
 
 ```
-Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-Crap is the profanity here. Is this information PII? phone 3144444444
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 2065550111
 ```
 
 Yeni klasöre bir başvuru ekleyin.
@@ -132,7 +132,7 @@ Henüz bir tane tanımınızda klasöre bir başvuru ekleyin.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>Liste Oluştur
+### <a name="create-a-list"></a>Liste oluştur
 
 Özel bir hüküm listesi oluşturmak ve KIMLIK değerini kaydetmek için aşağıdaki kodu Python betiğe ekleyin.
 

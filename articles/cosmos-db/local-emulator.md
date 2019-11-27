@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075653"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539093"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -27,7 +27,7 @@ Azure Cosmos DB hizmetinin öykünmesi aslına sadık olsa da, öykünücünün 
 
 [Azure Cosmos DB veri geçiş aracını](https://github.com/azure/azure-documentdb-datamigrationtool)kullanarak Azure Cosmos öykünücüsü ile Azure Cosmos DB hizmeti arasında veri geçirebilirsiniz.
 
-Azure Cosmos öykünücüsü 'nü Windows Docker kapsayıcısında çalıştırabilirsiniz. docker pull komutu için [Docker Hub 'ına](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) ve öykünücü kaynak kodu için [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) ' a bakın.
+Azure Cosmos öykünücüsü 'nü Windows Docker kapsayıcısında çalıştırabilirsiniz. docker pull komutu için [Docker Hub 'ına](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) ve `Dockerfile` ve daha fazla bilgi Için [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) 'a bakın.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Öykünücü ile hizmet arasındaki farklar
 
@@ -310,7 +310,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Söz dizimi**
+**Sözdizimi**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -320,7 +320,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Start-CosmosDbEmulator`
 
-**Söz dizimi**
+**Sözdizimi**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -330,7 +330,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Stop-CosmosDbEmulator`
 
-**Söz dizimi**
+**Sözdizimi**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -340,7 +340,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Söz dizimi**
+**Sözdizimi**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

@@ -1,7 +1,7 @@
 ---
-title: Create configurations from existing servers - Azure Automation
-description: Learn how to create configurations from existing servers for Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Mevcut sunuculardan yapılandırma oluşturma-Azure Otomasyonu
+description: Azure Otomasyonu için mevcut sunuculardan yapılandırmaların nasıl oluşturulacağını öğrenin.
+keywords: DSC, PowerShell, yapılandırma, kurulum
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -17,34 +17,34 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231679"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Create configurations from existing servers
+# <a name="create-configurations-from-existing-servers"></a>Mevcut sunuculardan yapılandırma oluşturma
 
-> Applies To: Windows PowerShell 5.1
+> Uygulama hedefi: Windows PowerShell 5,1
 
-Creating configurations from existing servers can be a challenging task.
-You might not want *all* settings, just those that you care about.
-Even then you need to know in what order the settings must be applied in order for the configuration to apply successfully.
+Mevcut sunuculardan yapılandırmaların oluşturulması zorlu bir görev olabilir.
+Yalnızca ilgilendiğiniz kişiler için *Tüm* ayarları istemezsiniz.
+Hatta, yapılandırmanın başarıyla uygulanabilmesi için ayarların ne sırada uygulanması gerektiğini bilmeniz gerekir.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> Bu makale, açık kaynak topluluğu tarafından tutulan bir çözüme başvurur.
+> Destek, Microsoft 'tan değil yalnızca GitHub işbirliği biçiminde kullanılabilir.
 
-## <a name="community-project-reversedsc"></a>Community project: ReverseDSC
+## <a name="community-project-reversedsc"></a>Topluluk projesi: Smardsc
 
-A community maintained solution named [ReverseDSC](https://github.com/microsoft/reversedsc) has been created to work in this area starting SharePoint.
+[Smardsc](https://github.com/microsoft/reversedsc) adlı bir topluluk tarafından korunan çözüm, SharePoint 'i başlatan bu alanda çalışacak şekilde oluşturulmuştur.
 
-The solution builds on the [SharePointDSC resource](https://github.com/powershell/sharepointdsc) and extends it to orchestrate [gathering information](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) from existing SharePoint servers.
-The latest version has multiple [extraction modes](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) to determine what level of information to include.
+Çözüm, [Sharepointdsc kaynağında](https://github.com/powershell/sharepointdsc) oluşturulur ve mevcut SharePoint sunucularından [bilgi toplamak](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) için onu genişletir.
+En son sürümde hangi bilgi düzeyinin ekleneceğini belirlemek için birden çok [ayıklama modu](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) vardır.
 
-The result of using the solution is generating [Configuration Data](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) to be used with SharePointDSC configuration scripts.
+Çözümü kullanmanın sonucu, SharePointDSC yapılandırma betiklerine göre kullanılacak [yapılandırma verilerini](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) oluşturuyor.
 
-Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/overview/overview) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)Için bunları [DSC yapılandırma betikleri](/powershell/scripting/dsc/overview/overview) ile birlikte kullanabilirsiniz.
+Daha sonra, yapılandırma çekmek için [Şirket](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) Içinden veya [Azure 'da](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) sunucularınızı kaydettirin.
 
-To try out ReverseDSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/ReverseDSC/) and download the solution or click "Project Site" to view the [documentation](https://github.com/Microsoft/sharepointDSC.reverse).
+Smardsc 'yi denemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/ReverseDSC/) ziyaret edin ve çözümü indirin veya "proje sitesi" ' ne tıklayarak [belgeleri](https://github.com/Microsoft/sharepointDSC.reverse)görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview)
+- [DSC kaynakları](/powershell/scripting/dsc/resources/resources)
+- [Yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig)

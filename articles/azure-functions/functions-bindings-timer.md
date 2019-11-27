@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57eec1293867a6596eb93f20ba27d468498e4e61
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278692"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545723"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -215,9 +215,9 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `TimerTrigger` özniteliğ
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction** | Yok | "İçin" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | Yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
+|**type** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | yok | "İçin" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**schedule**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`, yalnızca bir App Service planı üzerinde çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği şu örnekte gösterildiği gibi **%** işaretlere Sarmalanan uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|`true`, çalışma zamanı başlatıldığında işlev çağrılır. Örneğin, çalışma zamanı, işlev uygulaması eylemsizlik nedeniyle boşta kaldıktan sonra uyandığında başlatılır. işlev değişiklikleri nedeniyle uygulama yeniden başlatıldığında ve işlev uygulaması ölçeklenirken. Bu nedenle **runOnStartup** , özellikle üretimde `true`olarak ayarlandıysa nadiren gerekir. |
 |**useMonitor**|**UseMonitor**|Zamanlamanın izlenmesi gerekip gerekmediğini belirtmek için `true` veya `false` olarak ayarlayın. Zamanlamayı zamanla, işlev uygulama örnekleri yeniden başlatıldığında bile zamanlamanın doğru bir şekilde tutulmasını sağlamaya yardımcı olmak için zamanlama oluşumları devam ettirir. Açıkça ayarlanmamışsa varsayılan değer 1 dakikadan büyük veya eşit bir yinelenme aralığına sahip zamanlamalar için `true`. Dakikada birden çok kez tetikleyen zamanlamalar için varsayılan değer `false`.
@@ -254,7 +254,7 @@ Azure Işlevleri, NCRONTAB ifadelerini yorumlamak için [ncrontab](https://githu
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
-|Tür  |Örnek  |Tetiklendiğinde  |
+|Type  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
 |Tüm değerler (`*`)|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (günde 60 kez)|
@@ -283,7 +283,10 @@ Azure Işlevlerinde süreölçer tetikleyicisi için kullanabileceğiniz bazı N
 
 Bir CRON ifadesindeki sayılar, zaman aralığı değil, bir saat ve tarihe başvurur. Örneğin, `hour` alanındaki 5 saat, 5 saatte bir değil 5:00 ' e başvurur.
 
-CRON ifadeleriyle kullanılan varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) ' dir. CRON ifadenizi başka bir saat dilimine göre oluşturmak için, `WEBSITE_TIME_ZONE`adlı işlev uygulamanız için bir uygulama ayarı oluşturun. Değeri, [Microsoft saat dilimi dizininde](https://technet.microsoft.com/library/cc749073)gösterildiği gibi istenen saat diliminin adı olarak ayarlayın. 
+CRON ifadeleriyle kullanılan varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) ' dir. CRON ifadenizi başka bir saat dilimine göre oluşturmak için, `WEBSITE_TIME_ZONE`adlı işlev uygulamanız için bir uygulama ayarı oluşturun. Değeri, [Microsoft saat dilimi dizininde](https://technet.microsoft.com/library/cc749073)gösterildiği gibi istenen saat diliminin adı olarak ayarlayın.
+
+  > [!NOTE]
+  > `WEBSITE_TIME_ZONE`, Linux tüketim planında Şu anda desteklenmiyor.
 
 Örneğin, *Doğu Standart saatı* UTC-05:00 ' dir. Zamanlayıcı tetikleyicinizin her gün 10:00 ' de tetiklenmesi için, UTC saat dilimi hesaplarının aşağıdaki NCRONTAB ifadesini kullanın:
 

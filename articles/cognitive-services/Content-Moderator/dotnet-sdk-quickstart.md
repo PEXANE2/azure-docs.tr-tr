@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b287253e471ced244db3169be9f7d8f14e5862e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: cb812a0432e5fdb2828054751ef35f3de82226e7
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045268"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539025"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Hızlı başlangıç: .NET için Content Moderator istemci kitaplığı
 
@@ -27,7 +27,7 @@ ms.locfileid: "73045268"
 * [Orta görüntüler](#moderate-images)
 * [İnceleme oluştur](#create-a-review)
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  | [örnekleri](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [örnekleri](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -96,7 +96,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar, Content Moderator .NET SDK 'nın bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Name|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagedenetlemesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
@@ -128,8 +128,8 @@ Aşağıdaki kod, bir metin gövdesini çözümlemek ve sonuçları konsola yazd
 Sonra projenizin kökünde bir *textfile. txt* dosyası ekleyin. Bu dosyaya kendi metninizi ekleyin veya aşağıdaki örnek metni kullanın:
 
 ```
-Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-Crap is the profanity here. Is this information PII? phone 3144444444
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
 Aşağıdaki yöntem çağrısını `Main` yöntemine ekleyin:

@@ -39,14 +39,14 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Aruba                                    | ✓ |   |  ✓| 
 | Bahamalar                                  | ✓ |   |  ✓| 
 | Barbados                                 | ✓ |   |  ✓| 
-| Beliz                                   | ✓ |   |  ✓| 
+| Belize                                   | ✓ |   |  ✓| 
 | Bermuda                                  | ✓ |   |  ✓| 
 | Bolivya                                  | ✓ |   |  ✓| 
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brezilya                                   | ✓ |   |  ✓| 
 | Britanya Virjin Adaları                   | ✓ |   |  ✓| 
 | Kanada                                   | ✓ | ✓ |  ✓| 
-| Kayman Adaları                           | ✓ |   |  ✓| 
+| Cayman Adaları                           | ✓ |   |  ✓| 
 | Şili                                    | ✓ |   |  ✓| 
 | Kolombiya                                 | ✓ |   |  ✓| 
 | Kosta Rika                               | ✓ |   |  ✓| 
@@ -250,7 +250,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Avusturya                | ✓ | ✓ |  ✓| 
 | Belarus                | ✓ |   |  ✓| 
 | Belçika                | ✓ | ✓ |  ✓| 
-| Bosna Hersek | ✓ | ✓ |  ✓| 
+| Bosna - Hersek | ✓ | ✓ |  ✓| 
 | Bulgaristan               | ✓ |   |  ✓| 
 | Hırvatistan                | ✓ | ✓ |  ✓| 
 | Kıbrıs                 | ✓ |   |  ✓| 

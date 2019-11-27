@@ -1,7 +1,7 @@
 ---
-title: AD FS support in Microsoft Authentication Library for .NET
+title: .NET için Microsoft kimlik doğrulama kitaplığı 'nda AD FS desteği
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for .NET (MSAL.NET).
+description: .NET için Microsoft kimlik doğrulama kitaplığı 'nda (MSAL.NET) Active Directory Federasyon Hizmetleri (AD FS) (AD FS) desteği hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -25,42 +25,42 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483082"
 ---
-# <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory Federation Services support in MSAL.NET
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to applications you are developing. Those applications can, then, authenticate users directly against AD FS. For more information, read [AD FS Scenarios for Developers](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
+# <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET içinde destek Active Directory Federasyon Hizmetleri (AD FS)
+Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), geliştirmekte olduğunuz uygulamalara OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. Bu uygulamalar daha sonra kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Daha fazla bilgi için, [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)makalesini okuyun.
 
-Microsoft Authentication Library for .NET (MSAL.NET) supports two scenarios for authenticating against AD FS:
+.NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET), AD FS kimlik doğrulama için iki senaryoyu destekler:
 
-- MSAL.NET talks to Azure Active Directory, which itself is *federated* with AD FS.
-- MSAL.NET talks **directly** to an ADFS authority. This is only supported from AD FS 2019 and above. One of the scenarios this highlights is [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) support
+- MSAL.NET, kendisini AD FS *Federal* olan Azure Active Directory konuşur.
+- MSAL.NET **doğrudan** bir ADFS yetkilisine konuşur. Bu yalnızca AD FS 2019 ve üzeri sürümlerde desteklenir. Bu önemli senaryolardan biri [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) desteklenir
 
 
-## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL connects to Azure AD, which is federated with AD FS
-MSAL.NET supports connecting to Azure AD, which signs in managed-users (users managed in Azure AD) or federated users (users managed by another identity provider such as AD FS). MSAL.NET does not know about the fact that users are federated. As far as it’s concerned, it talks to Azure AD.
+## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL, AD FS Federal olan Azure AD 'ye bağlanır
+MSAL.NET, yönetilen kullanıcılar (Azure AD 'de yönetilen kullanıcılar) veya Federasyon kullanıcıları (AD FS gibi başka bir kimlik sağlayıcısı tarafından yönetilen kullanıcılar) üzerinde oturum açan Azure AD 'ye bağlanmayı destekler. MSAL.NET, kullanıcıların federe olduğu gerçeğini bilmez. Söz konusu olduğu kadar, Azure AD ile iletişim kuran bir.
 
-The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
+Bu durumda kullandığınız [yetkili](msal-client-application-configuration.md#authority) , her zamanki yetkilinin (yetkili ana bilgisayar adı + kiracı, ortak veya kuruluşlar).
 
-### <a name="acquiring-a-token-interactively"></a>Acquiring a token interactively
-When you call the `AcquireTokenInteractive` method, the user experience is typically:
+### <a name="acquiring-a-token-interactively"></a>Bir belirteci etkileşimli olarak alma
+`AcquireTokenInteractive` yöntemini çağırdığınızda, Kullanıcı deneyimi genellikle şu şekilde olur:
 
-1. The user enters their account ID.
-2. Azure AD displays briefly the message "Taking you to your organization's page".
-3. The user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. Kullanıcı hesap KIMLIĞINI girer.
+2. Azure AD, "kuruluşunuzun sayfasına yönlendirilme" iletisini kısaca görüntüler.
+3. Kullanıcı, kimlik sağlayıcısının oturum açma sayfasına yönlendirilir. Oturum açma sayfası genellikle kuruluşun logosu ile özelleştirilir.
 
-Supported AD FS versions in this federated scenario are AD FS v2, AD FS v3 (Windows Server 2012 R2), and AD FS v4 (AD FS 2016).
+Bu Federasyon senaryosunda desteklenen AD FS sürümleri AD FS v2, AD FS v3 (Windows Server 2012 R2) ve AD FS v4 (AD FS 2016).
 
-### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Acquiring a token using AcquireTokenByIntegratedAuthentication or AcquireTokenByUsernamePassword
-When acquiring a token using the `AcquireTokenByIntegratedAuthentication` or `AcquireTokenByUsernamePassword` methods, MSAL.NET gets the identity provider to contact based on the username.  MSAL.NET receives a [SAML 1.1 token](reference-saml-tokens.md) after contacting the identity provider.  MSAL.NET then provides the SAML token to Azure AD as a user assertion (similar to the [on-behalf-of flow](msal-authentication-flows.md#on-behalf-of)) to get back a JWT.
+### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Acquiretokenbyıntegratedaduthentication veya AcquireTokenByUsernamePassword kullanarak bir belirteç alınıyor
+`AcquireTokenByIntegratedAuthentication` veya `AcquireTokenByUsernamePassword` yöntemlerini kullanarak bir belirteç edinilirken, MSAL.NET Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır.  MSAL.NET, kimlik sağlayıcısıyla iletişim kurduktan sonra bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır.  MSAL.NET ardından, SAML belirtecini bir JWT geri almak için Kullanıcı Onayı (örneğin, [akışa](msal-authentication-flows.md#on-behalf-of)benzer) olarak Azure AD 'ye sağlar.
 
-## <a name="msal-connects-directly-to-ad-fs"></a>MSAL connects directly to AD FS
-MSAL.NET supports connecting to AD FS 2019, which is Open ID Connect compliant and understands PKCE and scopes. This support requires that a service pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) is applied to Windows Server. When connecting directly to AD FS, the authority you'll want to use to build your application is similar to `https://mysite.contoso.com/adfs/`.
+## <a name="msal-connects-directly-to-ad-fs"></a>MSAL AD FS doğrudan bağlanır
+MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekler ve PKI ve kapsamları anlamıştır. Bu destek, Windows Server 'a bir hizmet paketi [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) uygulanmasını gerektirir. AD FS doğrudan bağlanırken, uygulamanızı oluşturmak için kullanmak istediğiniz yetkili `https://mysite.contoso.com/adfs/`benzerdir.
 
-Currently, there are no plans to support a direct connection to:
+Şu anda, ile doğrudan bağlantıyı desteklemeye yönelik bir plan yoktur:
 
-- AD FS 16, as it doesn't support PKCE and still uses resources, not scope
-- AD FS v2, which is not OIDC-compliant.
+- AD FS, PCE 'yi desteklemediğinden ve yine de kaynakları kullandığından (kapsam değil) 16.
+- OıDC uyumlu olmayan AD FS v2.
 
- If you need to support scenarios requiring a direct connection to AD FS 2016, use the latest version of [Azure Active Directory Authentication Library](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). When you have upgraded your on-premises system to AD FS 2019, you'll be able to use MSAL.NET.
+ AD FS 2016 'e doğrudan bağlantı gerektiren senaryoları desteklemeniz gerekiyorsa [Azure Active Directory kimlik doğrulama kitaplığının](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)en son sürümünü kullanın. Şirket içi sisteminizi AD FS 2019 ' e yükseltmişseniz, MSAL.NET kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Federasyon durumu için bkz. [ana bölge bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışını yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)

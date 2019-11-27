@@ -1,6 +1,6 @@
 ---
-title: Resource forest concepts for Azure AD Domain Services | Microsoft Docs
-description: Learn what a resource forest is in Azure Active Directory Domain Services and how they benefit your organization in hybrid environment with limited user authentication options or security concerns.
+title: Azure AD Domain Services için kaynak ormanı kavramları | Microsoft Docs
+description: Kaynak ormanın ne Azure Active Directory Domain Services olduğunu ve kuruluşunuzun Karma ortamda, sınırlı Kullanıcı kimlik doğrulama seçenekleriyle veya güvenlik kaygılarıyla nasıl yararlandıkları hakkında bilgi edinin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,106 +17,106 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233616"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Resource forest concepts and features for Azure Active Directory Domain Services
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için kaynak ormanı kavramları ve özellikleri
 
-Azure Active Directory Domain Services (AD DS) provides a sign-in experience for legacy, on-premises, line-of-business applications. Users, groups, and password hashes of on-premises and cloud users are synchronized to the Azure AD DS managed domain. These synchronized password hashes are what gives users a single set of credentials they can use for the on-premises AD DS, Office 365, and Azure Active Directory.
+Azure Active Directory Domain Services (AD DS), eski, şirket içi ve iş kolu uygulamaları için bir oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola karmaları Azure AD DS yönetilen etki alanıyla eşitlenir. Bu eşitlenmiş parola karmaları, kullanıcılara şirket içi AD DS, Office 365 ve Azure Active Directory için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
 
-Although secure and provides additional security benefits, some organizations can't synchronize those user passwords hashes to Azure AD or Azure AD DS. Users in an organization may not know their password because they only use smart card authentication. These limitations prevent some organizations from using Azure AD DS to lift and shift on-premises classic applications to Azure.
+Güvenli ve ek güvenlik avantajları sunmakla birlikte, bazı kuruluşlar bu kullanıcı parolası karmalarını Azure AD veya Azure AD DS ile eşitleyemez. Kuruluştaki kullanıcılar, yalnızca akıllı kart kimlik doğrulamasını kullandıkları için parolasını bilmiyor olabilir. Bu sınırlamalar, bazı kuruluşların şirket içi klasik uygulamaları Azure 'a taşımak ve bunlara geçiş yapmak için Azure AD DS kullanmasını engeller.
 
-To address these needs and restrictions, you can create an Azure AD DS managed domain that uses a resource forest. This conceptual article explains what forests are, and how they trust other resources to provide a secure authentication method. Azure AD DS resource forests are currently in preview.
+Bu ihtiyaçları ve kısıtlamaları gidermek için, kaynak ormanı kullanan bir Azure AD DS yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak üzere diğer kaynaklara nasıl güvendikleri açıklanmaktadır. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
 
 > [!IMPORTANT]
-> Azure AD DS resource forests don't currently support Azure HDInsight or Azure Files. The default Azure AD DS user forests do support both of these additional services.
+> Azure AD DS kaynak ormanları Şu anda Azure HDInsight veya Azure dosyalarını desteklememektedir. Varsayılan Azure AD DS kullanıcı ormanları bu ek hizmetlerden her ikisini de destekler.
 
-## <a name="what-are-forests"></a>What are forests?
+## <a name="what-are-forests"></a>Ormanlar nelerdir?
 
-A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+*Orman* , bir veya daha fazla *etki alanını*gruplamak için Active Directory Domain Services (AD DS) tarafından kullanılan mantıksal bir yapıdır. Etki alanları daha sonra Kullanıcı veya grup için nesneleri depolar ve kimlik doğrulama hizmetleri sağlar.
 
-In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+Azure AD DS, orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle Birleşmeler ve alımlar sonrasında, her biri birden çok etki alanı içeren birden çok şirket içi ormana sahip olabilirsiniz.
 
-By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi Azure AD DS yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
 
-In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
 
-Resource forests also provide the capability to lift-and-shift your applications one component at a time. Many legacy on-premises applications are multi-tiered, often using a web server or front end and many database-related components. These tiers make it hard to lift-and-shift the entire application to the cloud in one step. With resource forests, you can lift your application to the cloud in phased approach, which makes it easier to move your application to Azure.
+Kaynak ormanları Ayrıca uygulamalarınızı tek seferde bir bileşen üzerinde kaldırma ve kaydırma özelliği de sağlar. Birçok eski şirket içi uygulama, genellikle bir Web sunucusu veya ön uç ve veritabanı ile ilgili birçok bileşeni kullanan çok katmanlı. Bu katmanlar, tek bir adımda uygulamanın tamamını buluta taşımak ve kaydırmak için çok daha fazlasını yapar. Kaynak ormanlarıyla uygulamanızı aşamalı yaklaşımda kaldırabilirsiniz. Bu, uygulamanızı Azure 'a taşımayı kolaylaştırır.
 
-## <a name="what-are-trusts"></a>What are trusts?
+## <a name="what-are-trusts"></a>Güvenler nelerdir?
 
-Organizations that have more than one domain often need users to access shared resources in a different domain. Access to these shared resources requires that users in one domain authenticate to another domain. To provide these authentication and authorization capabilities between clients and servers in different domains, there must be a *trust* between the two domains.
+Birden fazla etki alanı olan kuruluşların genellikle kullanıcıların farklı bir etki alanında paylaşılan kaynaklara erişmesi gerekir. Bu paylaşılan kaynaklara erişim, bir etki alanındaki kullanıcıların başka bir etki alanında kimlik doğrulamasını gerektirir. Farklı etki alanlarındaki istemciler ve sunucular arasında bu kimlik doğrulama ve yetkilendirme özellikleri sağlamak için iki etki alanı arasında bir *güven* olmalıdır.
 
-With domain trusts, the authentication mechanisms for each domain trust the authentications coming from the other domain. Trusts help provide controlled access to shared resources in a resource domain (the *trusting* domain) by verifying that incoming authentication requests come from a trusted authority (the *trusted* domain). Trusts act as bridges that only allow validated authentication requests to travel between domains.
+Etki alanı güvenleri ile, her etki alanı için kimlik doğrulama mekanizmaları, diğer etki alanından gelen kimlik doğrulamaları için güvenir. Güvenler, gelen kimlik doğrulama isteklerinin güvenilen bir yetkilinizden ( *Güvenilen* etki alanı) geldiği doğrulayarak, kaynak etki alanındaki ( *güvenen* etki alanındaki) paylaşılan kaynaklara denetimli erişim sağlamaya yardımcı olur. Güvenler yalnızca, kimlik alanları arasında dolaşmak için doğrulanan kimlik doğrulama isteklerinin izin veren köprü olarak davranır.
 
-How a trust passes authentication requests depends on how it's configured. Trusts can be configured in one of the following ways:
+Güven, kimlik doğrulama isteklerini nasıl geçireceğini nasıl yapılandırdığına bağlıdır. Güvenler aşağıdaki yollarla yapılandırılabilir:
 
-* **One-way** - provides access from the trusted domain to resources in the trusting domain.
-* **Two-way** - provides access from each domain to resources in the other domain.
+* **Tek yönlü** -güvenen etki alanındaki kaynaklara güvenilir etki alanından erişim sağlar.
+* **İki yönlü** -diğer etki alanındaki kaynaklara her etki alanından erişim sağlar.
 
-Trusts are also be configured to handle additional trust relationships in one of the following ways:
+Güvenler Ayrıca aşağıdaki yollarla ek güven ilişkilerini işleyecek şekilde yapılandırılır:
 
-* **Nontransitive** - The trust exists only between the two trust partner domains.
-* **Transitive** - Trust automatically extends to any other domains that either of the partners trusts.
+* **Geçişsiz** -güven yalnızca iki güven ortağı etki alanı arasında bulunur.
+* **Geçişli** güven, iş ortaklarının güvendiği diğer etki alanlarına otomatik olarak genişletilir.
 
-In some cases, trust relationships are automatically established when domains are created. Other times, you must choose a type of trust and explicitly establish the appropriate relationships. The specific types of trusts used and the structure of those trust relationships depend on how the Active Directory directory service is organized, and whether different versions of Windows coexist on the network.
+Bazı durumlarda, etki alanları oluşturulduğunda güven ilişkileri otomatik olarak oluşturulur. Diğer zamanlarda, bir güven türü seçmeniz ve uygun ilişkileri açıkça oluşturmanız gerekir. Kullanılan belirli güven türleri ve bu güven ilişkilerinin yapısı, Active Directory Directory hizmetinin nasıl düzenlendiğini ve ağda farklı Windows sürümlerinin aynı olup olmadığını gösterir.
 
-## <a name="trusts-between-two-forests"></a>Trusts between two forests
+## <a name="trusts-between-two-forests"></a>İki orman arasındaki güvenler
 
-You can extend domain trusts within a single forest to another forest by manually creating a one-way or two-way forest trust. A forest trust is a transitive trust that exists only between a forest root domain and a second forest root domain.
+Tek yönlü veya iki yönlü bir orman güveni el ile oluşturarak, tek bir ormandaki etki alanı güvenlerini başka bir ormana genişletebilirsiniz. Orman güveni, yalnızca bir orman kök etki alanı ile ikinci bir orman kök etki alanı arasında bulunan geçişli bir güvendir.
 
-* A one-way forest trust allows all users in one forest to trust all domains in the other forest.
-* A two-way forest trust forms a transitive trust relationship between every domain in both forests.
+* Tek yönlü bir orman güveni, bir ormandaki tüm kullanıcıların diğer ormandaki tüm etki alanlarına güvenmesini sağlar.
+* İki yönlü bir orman güveni, her iki ormandaki her etki alanı arasında geçişli bir güven ilişkisi oluşturur.
 
-The transitivity of forest trusts is limited to the two forest partners. The forest trust doesn't extend to additional forests trusted by either of the partners.
+Orman güvenlerini geçişliliği, iki orman iş ortaklarıyla sınırlıdır. Orman güveni, iş ortaklarının her biri tarafından güvenilen ek ormana genişlemez.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Azure AD DS şirket içi AD DS orman güveninin diyagramı](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-You can create different domain and forest trust configurations depending on the Active Directory structure of the organization. Azure AD DS only supports a one-way forest trust. In this configuration, resources in Azure AD DS can trust all domains in an on-premises forest.
+Kuruluşun Active Directory yapısına bağlı olarak, farklı etki alanı ve orman güveni yapılandırması oluşturabilirsiniz. Azure AD DS yalnızca tek yönlü bir orman güvenini destekler. Bu yapılandırmada, Azure AD DS 'daki kaynaklar şirket içi bir ormandaki tüm etki alanlarına güvenebilir.
 
-## <a name="supporting-technology-for-trusts"></a>Supporting technology for trusts
+## <a name="supporting-technology-for-trusts"></a>Güvenler için destekleme teknolojisi
 
-Trusts use various services and features, such as DNS to locate domain controllers in partnering forests. Trusts also depend on NTLM and Kerberos authentication protocols and on Windows-based authorization and access control mechanisms to help provide a secured communications infrastructure across Active Directory domains and forests. The following services and features help support successful trust relationships.
+Güvenler, ortaklık ormanlarda etki alanı denetleyicilerini bulmak için DNS gibi çeşitli hizmetler ve Özellikler kullanır. Güvenler Ayrıca, Active Directory etki alanları ve ormanlar arasında güvenli bir iletişim altyapısı sağlamaya yardımcı olmak için NTLM ve Kerberos kimlik doğrulama protokollerine ve Windows tabanlı yetkilendirme ve erişim denetimi mekanizmalarına de bağlıdır. Aşağıdaki hizmetler ve Özellikler başarılı güven ilişkilerini desteklemeye yardımcı olur.
 
 ### <a name="dns"></a>DNS
 
-AD DS needs DNS for domain controller (DC) location and naming. The following support from DNS is provided for AD DS to work successfully:
+AD DS, etki alanı denetleyicisi (DC) konumu ve adlandırması için DNS gerektirir. AD DS başarıyla çalışması için DNS 'den aşağıdaki destek sağlanır:
 
-* A name resolution service that lets network hosts and services to locate DCs.
-* A naming structure that enables an enterprise to reflect its organizational structure in the names of its directory service domains.
+* Ağ konaklarının ve hizmetlerinin DC 'leri bulmasını sağlayan bir ad çözümleme hizmeti.
+* Bir kuruluşun, kendi dizin hizmeti etki alanlarının adlarında kuruluş yapısını yansıtmasını sağlayan bir adlandırma yapısı.
 
-A DNS domain namespace is usually deployed that mirrors the AD DS domain namespace. If there's an existing DNS namespace before the AD DS deployment, the DNS namespace is typically partitioned for Active Directory, and a DNS subdomain and delegation for the Active Directory forest root is created. Additional DNS domain names are then added for each Active Directory child domain.
+Genellikle AD DS etki alanı ad alanını yansıtan bir DNS etki alanı ad alanı dağıtılır. AD DS dağıtımından önce mevcut bir DNS ad alanı varsa, DNS ad alanı genellikle Active Directory için bölümlenir ve Active Directory orman köküne yönelik bir DNS alt etki alanı ve temsili oluşturulur. Daha sonra her bir Active Directory alt etki alanı için ek DNS etki alanı adları eklenir.
 
-DNS is also used to support the location of Active Directory DCs. The DNS zones are populated with DNS resource records that enable network hosts and services to locate Active Directory DCs.
+DNS, Active Directory DC 'lerin konumunu desteklemek için de kullanılır. DNS bölgeleri, ağ ana bilgisayarlarının ve hizmetlerinin Active Directory DC 'leri bulmasını sağlayan DNS kaynak kayıtlarıyla doldurulur.
 
-### <a name="applications-and-net-logon"></a>Applications and Net Logon
+### <a name="applications-and-net-logon"></a>Uygulamalar ve net oturum açma
 
-Both applications and the Net Logon service are components of the Windows distributed security channel model. Applications integrated with Windows Server and Active Directory use authentication protocols to communicate with the Net Logon service so that a secured path can be established over which authentication can occur.
+Hem uygulamalar hem de net oturum açma hizmeti, Windows dağıtılmış güvenlik kanal modelinin bileşenleridir. Windows Server ve Active Directory ile tümleştirilmiş uygulamalar, ağ oturum açma hizmetiyle iletişim kurmak için kimlik doğrulama protokollerini kullanır. böylece, kimlik doğrulamanın gerçekleşebileceği güvenli bir yol oluşturulabilir.
 
 ### <a name="authentication-protocols"></a>Kimlik Doğrulama Protokolleri
 
-Active Directory DCs authenticate users and applications using one of the following protocols:
+Active Directory DC 'Ler, aşağıdaki protokollerden birini kullanarak kullanıcıların ve uygulamaların kimliğini doğrular:
 
-* **Kerberos version 5 authentication protocol**
-    * The Kerberos version 5 protocol is the default authentication protocol used by on-premises computers running Windows and supporting third-party operating systems. This protocol is specified in RFC 1510 and is fully integrated with Active Directory, server message block (SMB), HTTP, and remote procedure call (RPC), as well as the client and server applications that use these protocols.
-    * When the Kerberos protocol is used, the server doesn't have to contact the DC. Instead, the client gets a ticket for a server by requesting one from a DC in the server account domain. The server then validates the ticket without consulting any other authority.
-    * If any computer involved in a transaction doesn't support the Kerberos version 5 protocol, the NTLM protocol is used.
+* **Kerberos sürüm 5 kimlik doğrulama protokolü**
+    * Kerberos sürüm 5 Protokolü, Windows çalıştıran ve üçüncü taraf işletim sistemlerini destekleyen şirket içi bilgisayarlar tarafından kullanılan varsayılan kimlik doğrulama protokolüdür. Bu protokol, RFC 1510 ' de belirtilmiştir ve Active Directory, sunucu ileti bloğu (SMB), HTTP ve uzak yordam çağrısı (RPC) ile ve bu protokolleri kullanan istemci ve sunucu uygulamaları ile tamamen tümleşiktir.
+    * Kerberos protokolü kullanıldığında, sunucunun DC ile iletişim kurmak zorunda değildir. Bunun yerine, istemci sunucu hesabı etki alanındaki DC 'den bir sunucu isteyerek bir bilet alır. Sunucu daha sonra başka bir yetkiliye danışmadan bileti doğrular.
+    * Bir işlemde yer alan herhangi bir bilgisayar Kerberos sürüm 5 protokolünü desteklemiyorsa, NTLM protokolü kullanılır.
 
-* **NTLM authentication protocol**
-    * The NTLM protocol is a classic network authentication protocol used by older operating systems. For compatibility reasons, it's used by Active Directory domains to process network authentication requests that come from applications designed for earlier Windows-based clients and servers, and third-party operating systems.
-    * When the NTLM protocol is used between a client and a server, the server must contact a domain authentication service on a DC to verify the client credentials. The server authenticates the client by forwarding the client credentials to a DC in the client account domain.
-    * When two Active Directory domains or forests are connected by a trust, authentication requests made using these protocols can be routed to provide access to resources in both forests.
+* **NTLM kimlik doğrulama protokolü**
+    * NTLM protokolü, eski işletim sistemleri tarafından kullanılan klasik bir ağ kimlik doğrulama protokolüdür. Uyumluluk nedenleriyle, daha önceki Windows tabanlı istemciler ve sunucular ve üçüncü taraf işletim sistemleri için tasarlanan uygulamalardan gelen ağ kimlik doğrulama isteklerini işlemek için Active Directory etki alanları tarafından kullanılır.
+    * Bir istemci ve sunucu arasında NTLM protokolü kullanıldığında, sunucunun istemci kimlik bilgilerini doğrulamak için bir DC 'de bir etki alanı kimlik doğrulama hizmetiyle iletişim kurabilmesi gerekir. Sunucu istemci kimlik bilgilerini istemci hesabı etki alanındaki bir DC 'ye ileterek istemcinin kimliğini doğrular.
+    * İki Active Directory etki alanı veya orman bir güven ile bağlandığında, bu protokolleri kullanarak yapılan kimlik doğrulama istekleri her iki ormandaki kaynaklara erişim sağlamak için yönlendirilebilir.
 
-## <a name="authorization-and-access-control"></a>Authorization and access control
+## <a name="authorization-and-access-control"></a>Yetkilendirme ve erişim denetimi
 
-Authorization and trust technologies work together to provide a secured communications infrastructure across Active Directory domains or forests. Authorization determines what level of access a user has to resources in a domain. Trusts facilitate cross-domain authorization of users by providing a path for authenticating users in other domains so their requests to shared resources in those domains can be authorized.
+Yetkilendirme ve güven teknolojileri, Active Directory etki alanları veya ormanlar arasında güvenli bir iletişim altyapısı sağlamak için birlikte çalışır. Yetkilendirme, bir kullanıcının bir etki alanındaki kaynaklara hangi erişim düzeyinin olduğunu belirler. Güvenler, diğer etki alanlarındaki kullanıcıların kimliğini doğrulamak için bir yol sağlayarak kullanıcıların etki alanları arası yetkilendirmesini kolaylaştırır ve bu sayede bu etki alanındaki paylaşılan kaynaklara yönelik isteklere yetki verebilir.
 
-When an authentication request made in a trusting domain is validated by the trusted domain, it's passed to the target resource. The target resource then determines whether to authorize the specific request made by the user, service, or computer in the trusted domain based on its access control configuration.
+Güvenen bir etki alanında yapılan bir kimlik doğrulama isteği, güvenilen etki alanı tarafından doğrulandığında, hedef kaynağa geçirilir. Hedef kaynak daha sonra, erişim denetimi yapılandırmasına göre güvenilen etki alanındaki Kullanıcı, hizmet veya bilgisayar tarafından yapılan belirli bir isteğin yetkilendirilip yetkilendirilmeyeceğini belirler.
 
-Trusts provide this mechanism to validate authentication requests that are passed to a trusting domain. Access control mechanisms on the resource computer determine the final level of access granted to the requestor in the trusted domain.
+Güvenler, güvenen bir etki alanına geçirilen kimlik doğrulama isteklerini doğrulamak için bu mekanizmayı sağlar. Kaynak bilgisayardaki erişim denetimi mekanizmaları, güvenilen etki alanında istek sahibine verilen son erişim düzeyini tespit ediyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more about trusts, see [How do forest trusts work in Azure AD DS?][concepts-trust]
+Güvenler hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS orman güvenleri nasıl çalışır?][concepts-trust]
 
-To get started with creating an Azure AD DS managed domain with a resource forest, see [Create and configure an Azure AD DS managed domain][tutorial-create-advanced]. You can then [Create an outbound forest trust to an on-premises domain (preview)][create-forest-trust].
+Kaynak ormanı ile Azure AD DS yönetilen etki alanı oluşturmaya başlamak için bkz. [azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

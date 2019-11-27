@@ -1,6 +1,6 @@
 ---
-title: Add an extrusion polygon layer to Azure Maps | Microsoft Docs
-description: How to add an extrusion polygon layer to the Azure Maps Web SDK.
+title: Azure haritalar 'a kalıp çokgen katmanı ekleme | Microsoft Docs
+description: Azure Maps web SDK 'sına bir extabaya çokgen katmanı ekleme.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -16,37 +16,37 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484345"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>Add an extrusion polygon layer to the map
+# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>Haritaya kalıp çokgen katmanı Ekle
 
-This article shows you how to use the polygon extrusion layer to render areas of `Polygon` and `MultiPolygon` feature geometries as extruded shapes on the map. The Azure Maps Web SDK also supports the creation of Circle geometries as defined in the [extended GeoJSON schema](extend-geojson.md#circle). These circles are transformed into polygons when rendered on the map. All feature geometries can also be easily updated if wrapped with the [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) class.
+Bu makalede, `Polygon` ve `MultiPolygon` Özellik geometrileri, haritada yükseltilmiş şekiller olarak oluşturmak için Çokgen kalıp katmanını nasıl kullanabileceğiniz gösterilmektedir. Azure Haritalar Web SDK 'Sı Ayrıca, [genişletilmiş GeoJSON şemasında](extend-geojson.md#circle)tanımlandığı şekilde daire geometrileri oluşturulmasını destekler. Bu daireler haritada işlendiğinde çokgenler halinde dönüştürülür. Tüm özellik geometrileri, Atlas ile sarmalandıktan sonra da kolayca güncelleştirilebilen olabilir [. Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı.
 
 
-## <a name="use-a-polygon-extrusion-layer"></a>Use a polygon extrusion layer
+## <a name="use-a-polygon-extrusion-layer"></a>Çokgen katman kullan
 
-When a [polygon extrusion layer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) is connected to the data source and loaded on the map, it renders the areas of a `Polygon` and `MultiPolygon` features as extruded shapes. The  `height` and `base` properties of the polygon extrusion layer define the base distance from the ground and height of the extruded shape in **meters**. The following code shows how to create a polygon, add it to a data source and render it using the Polygon extrusion layer class.
+Bir [Çokgen kalıp katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) veri kaynağına bağlıyken ve haritada yüklendiğinde, bir `Polygon` ve `MultiPolygon` özelliklerinin özelliklerini yükseltilmiş şekiller olarak işler. Çokgen katman katmanının `height` ve `base` özellikleri, temel mesafeyi **Ölçü**cinsinden yükseltilmiş şeklin taban ve yüksekliğinden tanımlar. Aşağıdaki kod, bir çokgen oluşturmayı, bir veri kaynağına eklemeyi ve Çokgen katman sınıfını kullanarak nasıl işleneceğini gösterir.
 
 > [!Note]
-> The `base` value defined in the polygon extrusion layer should be less than or equal to that of the `height`.
+> Çokgen katman katmanında tanımlanan `base` değeri `height`eşit veya ondan küçük olmalıdır.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Extruded polygon" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>Extruded polygon</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Yükseltilmiş Çokgen" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>yükseltilmiş Çokgen</a> 'e bakın.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Add data driven multipolygons
+## <a name="add-data-driven-multipolygons"></a>Veri temelli MultiPolygon ekleme
 
-A choropleth map can be rendered using the polygon extrusion layer, by setting its `height` and `fillColor` properties in proportion to the measurement of the statistical variable in the `Polygon` and `MultiPolygon` feature geometries. The following code sample shows an extruded choropleth Map of the U.S based on the measurement of the population density by state.
+Bir choroptath eşlemesi, `height` ve `fillColor` özelliklerinin `Polygon` ve `MultiPolygon` Özellik geometrileri tarafından istatistiksel değişken ölçüyle orantılı olarak ayarlanarak Çokgen katman katmanı kullanılarak oluşturulabilir. Aşağıdaki kod örneğinde, durum ile popülasyon yoğunluğu ölçüsünün temelinde U. S ' nin yükseltilmiş bir choroptath Haritası gösterilmektedir.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Extruded choropleth map" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/eYYYNox'>Extruded choropleth map</a> by Azure Maps(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Yükseltilmiş choroptath Haritası" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından gösterilen kalem ile <a href='https://codepen.io/azuremaps/pen/eYYYNox'>Haritayı Yükselt</a> sayfasına bakın.
 </iframe>
 
-## <a name="add-a-circle-to-the-map"></a>Add a circle to the map
+## <a name="add-a-circle-to-the-map"></a>Haritaya daire ekleme
 
-Azure Maps uses an extended version of the GeoJSON schema that provides a definition for circles as noted [here](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). An extruded circle can be rendered on the map by creating a `point` feature with a `subType` property of `Circle` and a numbered `Radius` property representing the radius in **meters**. Örnek:
+Azure Maps, coğrafi [olarak gösterildiği gibi](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Yükseltilmiş bir daire, bir `Circle` `subType` özelliği ile `point` özelliği ve bu yarıçapı **Ölçü**cinsinden temsil eden numaralandırılmış bir `Radius` özelliği oluşturarak haritada oluşturulabilir. Örneğin:
 
 ```Javascript
 {
@@ -62,34 +62,34 @@ Azure Maps uses an extended version of the GeoJSON schema that provides a defini
 } 
 ```
 
-The Azure Maps Web SDK converts these `Point` features into `Polygon` features under the hood and can be rendered on the map using polygon extrusion layer as shown in the following code sample.
+Azure Haritalar Web SDK 'Sı bu `Point` özelliklerini, aşağıdaki kod örneğinde gösterildiği gibi, çokgen tarafından kullanılan `Polygon` özelliklere dönüştürür ve haritada oluşturulabilir.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Drone airspace polygon" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>Drone airspace polygon</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Drone hava sahası Çokgen" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) için kalem <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>kuruta hava sahası poligonu</a> görüntüleyin.
 </iframe>
 
-## <a name="customize-a-polygon-extrusion-layer"></a>Customize a polygon extrusion layer
+## <a name="customize-a-polygon-extrusion-layer"></a>Çokgen kalıp katmanını özelleştirme
 
-The Polygon Extrusion layer several styling options. Here is a tool to try them out.
+Çokgen katman birçok stil seçeneğini katmana kat. İşte deneyebileceğiniz bir araç.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>poogbrj</a> kalemine bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about the classes and methods used in this article:
+Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Poligon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [polygon extrusion layer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
+> [Çokgen kalıp katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
 
 Ek kaynaklar:
 
 > [!div class="nextstepaction"]
-> [Azure Maps GeoJSON specification extension](extend-geojson.md#circle)
+> [Azure haritalar GeoJSON belirtim uzantısı](extend-geojson.md#circle)

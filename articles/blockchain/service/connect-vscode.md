@@ -1,6 +1,6 @@
 ---
-title: Use Visual Studio Code to connect to Azure Blockchain Service
-description: Connect to an Azure Blockchain Service consortium network using the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code
+title: Azure blok zinciri hizmetine bağlanmak için Visual Studio Code kullanma
+description: Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanarak bir Azure blok zinciri hizmeti Konsorsiyumu ağı 'na bağlanma
 ms.date: 11/19/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
@@ -11,70 +11,70 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455991"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Quickstart: Use Visual Studio Code to connect to an Azure Blockchain Service consortium network
+# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma
 
-In this quickstart, you install and use the Azure Blockchain Development Kit for Ethereum Visual Studio Code (VS Code) extension to attach to a consortium on Azure Blockchain Service. The Azure Blockchain Development Kit simplifies how you create, connect, build, and deploy smart contracts on Ethereum blockchain ledgers.
+Bu hızlı başlangıçta, Azure blok zinciri hizmetinde bir konsorsiyunuza eklemek üzere Ethereum Visual Studio Code (VS Code) uzantısı için Azure blok zinciri geliştirme setini yüklersiniz ve kullanıyorsunuz. Azure blok zinciri geliştirme seti, Ethereum blok zinciri defterlerindeki akıllı sözleşmeleri oluşturma, bağlama, derleme ve dağıtma işlemlerini basitleştirir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
 * [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x or higher](https://nodejs.org/download)
-* [Git 2.10.x or higher](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Add python.exe to your path. Python version 2.7.15 in your path is required for Azure Blockchain Development Kit.
+* [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x veya üzeri](https://nodejs.org/download)
+* [Git 2.10. x veya üzeri](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza Python. exe ' yi ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürüm 2.7.15 gereklidir.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+* [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-On Windows, an installed C++ compiler is required for the node-gyp module. You can use the MSBuild tools:
+Windows 'da, Node- C++ JP modülü için yüklü bir derleyici gerekir. MSBuild araçlarını kullanabilirsiniz:
 
-* If Visual Studio 2017 is installed, configure npm to use the MSBuild tools with the command `npm config set msvs_version 2017 -g`
-* If Visual Studio 2019 is installed, set the MS build tools path for npm. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* Otherwise, install the stand-alone VS Build tools using `npm install --global windows-build-tools` in an elevated *Run as administrator* command shell.
+* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın `npm config set msvs_version 2017 -g`
+* Visual Studio 2019 yüklüyse, NPM için MS derleme araçları yolunu ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Aksi takdirde, yükseltilmiş bir *yönetici olarak çalıştır* komut kabuğu `npm install --global windows-build-tools` kullanarak tek başına vs Build araçlarını yükleyemezsiniz.
 
-For more information about node-gyp, see the [node-gyp repository on GitHub](https://github.com/node-gyp).
+Node-cayp hakkında daha fazla bilgi için [GitHub 'daki node-cayp deposuna](https://github.com/node-gyp)bakın.
 
-### <a name="verify-azure-blockchain-development-kit-environment"></a>Verify Azure Blockchain Development Kit environment
+### <a name="verify-azure-blockchain-development-kit-environment"></a>Azure blok zinciri geliştirme seti ortamını doğrulama
 
-Azure Blockchain Development Kit verifies your development environment prerequisites have been met. To verify your development environment:
+Azure blok zinciri geliştirme seti, geliştirme ortamı önkoşullarının karşılandığını doğrular. Geliştirme ortamınızı doğrulamak için:
 
-From the VS Code command palette, choose **Azure Blockchain: Show Welcome Page**.
+VS Code komut paletinde **Azure blok Zinciri: karşılama sayfasını göster**' i seçin.
 
-Azure Blockchain Development Kit runs a validation script that takes about a minute to complete. You can view the output by selecting **Terminal > New Terminal**. In the terminal menu bar, select the **Output** tab and **Azure Blockchain** in the dropdown. Successful validation looks like the following image:
+Azure blok zinciri geliştirme seti, tamamlanmasının yaklaşık bir dakika süren bir doğrulama betiği çalıştırır. Bu çıktıyı, **terminal > yeni Terminal**' i seçerek görüntüleyebilirsiniz. Terminal menü çubuğunda, açılan menüde **Çıkış** sekmesini ve **Azure blok zincirini** seçin. Başarılı doğrulama aşağıdaki görüntüde olduğu gibi görünür:
 
-![Valid development environment](./media/connect-vscode/valid-environment.png)
+![Geçerli geliştirme ortamı](./media/connect-vscode/valid-environment.png)
 
- If you are missing a required tool, a new tab named **Azure Blockchain Development Kit - Preview** lists the required tools with download links.
+ Gerekli bir aracı eksik ise, **Azure blok zinciri geliştirme seti-önizleme** adlı yeni bir sekme, indirme bağlantılarıyla gerekli araçları listeler.
 
-![Dev kit required apps](./media/connect-vscode/required-apps.png)
+![Geliştirme Seti gerekli uygulamalar](./media/connect-vscode/required-apps.png)
 
-Install any missing prerequisites before continuing with the quickstart.
+Hızlı başlangıç ile devam etmeden önce eksik önkoşulları yükler.
 
-## <a name="connect-to-consortium-member"></a>Connect to consortium member
+## <a name="connect-to-consortium-member"></a>Consortium üyesine Bağlan
 
-You can connect to consortium members using the Azure Blockchain Development Kit VS Code extension. Once connected to a consortium, you can compile, build, and deploy smart contracts to an Azure Blockchain Service consortium member.
+Azure blok zinciri geliştirme seti VS Code uzantısını kullanarak, konsorsiyum üyelerine bağlanabilirsiniz. Bir konsorsiyumun bağlantısı kurulduktan sonra, akıllı sözleşmeleri bir Azure blok zinciri hizmeti Consortium üyesine derleyebilir, oluşturabilir ve dağıtabilirsiniz.
 
-If you don't have access to an Azure Blockchain Service consortium member, complete the prerequisite [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md).
+Azure blok zinciri hizmeti Consortium üyesine erişiminiz yoksa, önkoşul hızlı başlangıcını doldurun: Azure portal veya hızlı başlangıç: Azure CLI kullanarak [bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md)oluşturma.
 
-1. In the VS Code explorer pane, expand the **Azure Blockchain** extension.
-1. Select **Connect to Consortium**.
+1. VS Code gezgin bölmesinde, **Azure blok zinciri** uzantısını genişletin.
+1. **Konsorsiya Bağlan**' ı seçin.
 
-   ![Connect to consortium](./media/connect-vscode/connect-consortium.png)
+   ![Konsorsiyumun bağlantısını yapın](./media/connect-vscode/connect-consortium.png)
 
-    If prompted for Azure authentication, follow the prompts to authenticate using a browser.
-1. Choose **Connect to Azure Blockchain Service consortium** in the command palette dropdown.
-1. Choose the subscription and resource group associated with your Azure Blockchain Service consortium member.
-1. Choose your consortium from the list.
+    Azure kimlik doğrulaması istenirse, bir tarayıcı kullanarak kimlik doğrulaması yapmak için istemleri izleyin.
+1. Komut paleti açılan menüsünde **Azure blok zinciri hizmeti Consortium 'A Bağlan** ' ı seçin.
+1. Azure blok zinciri hizmeti Consortium üyele ilişkili aboneliği ve kaynak grubunu seçin.
+1. Listeden Consortium ' ı seçin.
 
-The consortium and blockchain members are listed in the VS Code explorer side bar.
+Konsorsiyum ve blok zinciri üyeleri VS Code gezgin kenar çubuğunda listelenir.
 
-![Consortium displayed in explorer](./media/connect-vscode/consortium-node.png)
+![Gezgin 'de görünen konsorsiyum](./media/connect-vscode/consortium-node.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you used Azure Blockchain Development Kit for Ethereum VS Code extension to attach to a consortium on Azure Blockchain Service. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti 'nde bir konsorsiyunuza eklemek üzere Ethereum VS Code uzantısı için Azure blok zinciri geliştirme setini kullandınız. Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
 
 > [!div class="nextstepaction"]
-> [Create, build, and deploy smart contracts on Azure Blockchain Service](send-transaction.md)
+> [Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma](send-transaction.md)

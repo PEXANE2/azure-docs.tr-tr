@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a forest trust in Azure AD Domain Services | Microsoft Docs
-description: Learn how to create a one-way outbound forest to an on-premises AD DS domain in the Azure portal for Azure AD Domain Services
+title: Öğretici-Azure AD Domain Services bir orman güveni oluşturun | Microsoft Docs
+description: Azure portal Azure AD Domain Services için bir şirket içi AD DS etki alanına tek yönlü bir giden orman oluşturmayı öğrenin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,195 +17,195 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233603"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Create an outbound forest trust to an on-premises domain in Azure Active Directory Domain Services (preview)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services (Önizleme) içinde şirket içi etki alanına giden bir orman güveni oluşturma
 
-In environments where you can't synchronize password hashes, or you have users that exclusively sign in using smart cards so they don't know their password, you can use a resource forest in Azure Active Directory Domain Services (AD DS). A resource forest uses a one-way outbound trust from Azure AD DS to one or more on-premises AD DS environments. This trust relationship lets users, applications, and computers authenticate against an on-premises domain from the Azure AD DS managed domain. Azure AD DS resource forests are currently in preview.
+Parola karmalarını eşitleyemeyen ortamlarda veya parolasını bilmiyor olmaları için akıllı kartlar kullanarak özel olarak oturum açma kullanıcılarına sahip olduğunuz ortamlarda, Azure Active Directory Domain Services (AD DS) bir kaynak ormanı kullanabilirsiniz. Kaynak ormanı, Azure AD DS bir veya daha fazla şirket içi AD DS ortamına tek yönlü bir giden güven kullanır. Bu güven ilişkisi, kullanıcıların, uygulamaların ve bilgisayarların Azure AD DS yönetilen etki alanındaki şirket içi bir etki alanında kimlik doğrulaması yapmasını sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Azure AD DS şirket içi AD DS orman güveninin diyagramı](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Configure DNS in an on-premises AD DS environment to support Azure AD DS connectivity
-> * Create a one-way inbound forest trust in an on-premises AD DS environment
-> * Create a one-way outbound forest trust in Azure AD DS
-> * Test and validate the trust relationship for authentication and resource access
+> * Azure AD DS bağlantısını desteklemek için bir şirket içi AD DS ortamında DNS yapılandırma
+> * Şirket içi AD DS ortamında tek yönlü bir gelen orman güveni oluşturma
+> * Azure AD DS tek yönlü bir giden orman güveni oluşturun
+> * Kimlik doğrulama ve kaynak erişimi için güven ilişkisini test edin ve doğrulayın
 
-If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To complete this tutorial, you need the following resources and privileges:
+Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
 * Etkin bir Azure aboneliği.
-    * If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* An Azure Active Directory tenant associated with your subscription, either synchronized with an on-premises directory or a cloud-only directory.
-    * If needed, [create an Azure Active Directory tenant][create-azure-ad-tenant] or [associate an Azure subscription with your account][associate-azure-ad-tenant].
-* An Azure Active Directory Domain Services managed domain created using a resource forest and configured in your Azure AD tenant.
-    * If needed, [create and configure an Azure Active Directory Domain Services instance][create-azure-ad-ds-instance-advanced].
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
+    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+* Kaynak ormanı kullanılarak oluşturulan ve Azure AD kiracınızda yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance-advanced].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-In this tutorial, you create and configure the outbound forest trust from Azure AD DS using the Azure portal. To get started, first sign in to the [Azure portal](https://portal.azure.com).
+Bu öğreticide, Azure portal kullanarak giden orman güvenini Azure AD DS oluşturup yapılandırırsınız. Başlamak için öncelikle [Azure Portal](https://portal.azure.com)oturum açın.
 
 ## <a name="networking-considerations"></a>Ağ konusunda dikkat edilmesi gerekenler
 
-The virtual network that hosts the Azure AD DS resource forest needs network connectivity to your on-premises Active Directory. Applications and services also need network connectivity to the virtual network hosting the Azure AD DS resource forest. Network connectivity to the Azure AD DS resource forest must be always on and stable otherwise users may fail to authenticate or access resources.
+Azure AD DS kaynak ormanı 'nı barındıran sanal ağın şirket içi Active Directory ağ bağlantısı olması gerekir. Ayrıca, uygulama ve hizmetlerin Azure AD DS kaynak ormanı 'nı barındıran sanal ağa ağ bağlantısı olması gerekir. Azure AD DS kaynak ormanına ağ bağlantısı her zaman açık ve kararlı olmalıdır, aksi takdirde kullanıcılar kimlik doğrulaması yapamaz veya kaynaklara erişemez.
 
-Before you configure a forest trust in Azure AD DS, make sure your networking between Azure and on-premises environment meets the following requirements:
+Azure AD DS 'de bir orman güveni yapılandırmadan önce, Azure ile şirket içi ortam arasındaki ağ ağınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
-* Use private IP addresses. Don't rely on DHCP with dynamic IP address assignment.
-* Avoid overlapping IP address spaces to allow virtual network peering and routing to successfully communicate between Azure and on-premises.
-* An Azure virtual network needs a gateway subnet to configure a site-to-site (S2S) VPN or ExpressRoute connection
-* Create subnets with enough IP addresses to support your scenario.
-* Make sure Azure AD DS has its own subnet, don't share this virtual network subnet with application VMs and services.
-* Peered virtual networks are NOT transitive.
-    * Azure virtual network peerings must be created between all virtual networks you want to use the Azure AD DS resource forest trust to the on-premises AD DS environment.
-* Provide continuous network connectivity to your on-premises Active Directory forest. Don't use on-demand connections.
-* Make sure there's continuous name resolution (DNS) between your Azure AD DS resource forest name and your on-premises Active Directory forest name.
+* Özel IP adresleri kullanın. Dinamik IP adresi atamasıyla DHCP 'yi kullanmayın.
+* Sanal ağ eşlemesi ve yönlendirmenin Azure ile şirket içi arasında başarıyla iletişim kurmasına izin vermek için çakışan IP adresi alanları kullanmaktan kaçının.
+* Azure sanal ağı, siteden siteye (S2S) VPN veya ExpressRoute bağlantısı yapılandırmak için bir ağ geçidi alt ağına ihtiyaç duyuyor
+* Senaryonuzu desteklemek için yeterli IP adresi olan alt ağlar oluşturun.
+* Azure AD DS 'nin kendi alt ağına sahip olduğundan emin olun, bu sanal ağ alt ağını uygulama VM 'Leri ve hizmetleriyle paylaşmayın.
+* Eşlenen sanal ağlar geçişli DEĞILDIR.
+    * Azure sanal ağ eşayarları, Azure AD DS kaynak ormanı güvenini şirket içi AD DS ortamında kullanmak istediğiniz tüm sanal ağlar arasında oluşturulmalıdır.
+* Şirket içi Active Directory ormanınızla sürekli ağ bağlantısı sağlayın. İsteğe bağlı bağlantılar kullanmayın.
+* Azure AD DS kaynak ormanınızın adı ve şirket içi Active Directory ormanınızın adı arasında sürekli ad çözümlemesi (DNS) olduğundan emin olun.
 
-## <a name="configure-dns-in-the-on-premises-domain"></a>Configure DNS in the on-premises domain
+## <a name="configure-dns-in-the-on-premises-domain"></a>Şirket içi etki alanında DNS 'yi yapılandırma
 
-To correctly resolve the Azure AD DS managed domain from the on-premises environment, you may need to add forwarders to the existing DNS servers. If you haven't configure the on-premises environment to communicate with the Azure AD DS managed domain, complete the following steps from a management workstation for the on-premises AD DS domain:
+Azure AD DS yönetilen etki alanını şirket içi ortamdan doğru bir şekilde çözümlemek için, mevcut DNS sunucularına ileticiler eklemeniz gerekebilir. Şirket içi ortamı Azure AD DS yönetilen etki alanıyla iletişim kuracak şekilde yapılandırmadıysanız, şirket içi AD DS etki alanı için bir yönetim iş istasyonundan aşağıdaki adımları uygulayın:
 
-1. Select **Start | Administrative Tools | DNS**
-1. Right-select DNS server, such as *myAD01*, select **Properties**
-1. Choose **Forwarders**, then **Edit** to add additional forwarders.
-1. Add the IP addresses of the Azure AD DS managed domain, such as *10.0.1.4* and *10.0.1.5*.
+1. Başlat 'ı seçin **| Yönetim Araçları | DNS**
+1. *MyAD01*gibi DNS sunucusunu sağ seçin, **Özellikler** ' i seçin
+1. **İleticiler**' i seçin ve ardından başka ileticiler eklemek için **düzenleyin** .
+1. *10.0.1.4* ve *10.0.1.5*gibi Azure AD DS yönetilen etki alanının IP adreslerini ekleyin.
 
-## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Create inbound forest trust in the on-premises domain
+## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Şirket içi etki alanında gelen orman güveni oluşturma
 
-The on-premises AD DS domain needs an incoming forest trust for the Azure AD DS managed domain. This trust must be manually created in the on-premises AD DS domain, it can't be created from the Azure portal.
+Şirket içi AD DS etki alanı, Azure AD DS yönetilen etki alanı için gelen bir orman güveni gerektirir. Bu güvenin şirket içi AD DS etki alanında el ile oluşturulması gerekir, bu, Azure portal oluşturulamıyor.
 
-To configure inbound trust on the on-premises AD DS domain, complete the following steps from a management workstation for the on-premises AD DS domain:
+Şirket içi AD DS etki alanında gelen güveni yapılandırmak için, şirket içi AD DS etki alanı için bir yönetim iş istasyonundan aşağıdaki adımları uygulayın:
 
-1. Select **Start | Administrative Tools | Active Directory Domains and Trusts**
-1. Right-select domain, such as *onprem.contoso.com*, select **Properties**
-1. Choose **Trusts** tab, then **New Trust**
-1. Enter name on Azure AD DS domain name, such as *aadds.contoso.com*, then select **Next**
-1. Select the option to create a **Forest trust**, then to create a **One way: incoming** trust.
-1. Choose to create the trust for **This domain only**. In the next step, you create the trust in the Azure portal for the Azure AD DS managed domain.
-1. Choose to use **Forest-wide authentication**, then enter and confirm a trust password. This same password is also entered in the Azure portal in the next section.
-1. Step through the next few windows with default options, then choose the option for **No, do not confirm the outgoing trust**.
+1. Başlat 'ı seçin **| Yönetim Araçları | Active Directory etki alanları ve Güvenleri**
+1. *OnPrem.contoso.com*gibi etki alanını sağ seçin, **Özellikler** ' i seçin
+1. **Güvenler** sekmesini ve ardından **yeni güven** ' i seçin
+1. Azure AD DS etki alanı adı 'nda, *aadds.contoso.com*gibi bir ad girin ve ardından **İleri** ' yi seçin.
+1. Bir **orman güveni**oluşturma, sonra bir **yol oluşturma: gelen** güven seçeneğini belirleyin.
+1. **Yalnızca bu etki alanı**için güven oluşturmayı seçin. Sonraki adımda, Azure AD DS yönetilen etki alanı için Azure portal güveni oluşturursunuz.
+1. **Orman genelinde kimlik doğrulaması**kullanmayı seçin, ardından bir güven parolasını girip onaylayın. Aynı parola, sonraki bölümde Azure portal de girilir.
+1. Varsayılan seçeneklerde bir sonraki birkaç pencere arasında ilerleyin, ardından **Hayır, giden güveni onaylama**seçeneğini belirleyin.
 1. **Son**’u seçin
 
-## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Create outbound forest trust in Azure AD DS
+## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Azure AD DS giden orman güveni oluşturma
 
-With the on-premises AD DS domain configured to resolve the Azure AD DS managed domain and an inbound forest trust created, now created the outbound forest trust. This outbound forest trust completes the trust relationship between the on-premises AD DS domain and the Azure AD DS managed domain.
+Azure AD DS yönetilen etki alanını ve oluşturulan bir gelen orman güvenini çözümlemek üzere yapılandırılmış şirket içi AD DS etki alanı ile, artık giden orman güvenini oluşturdunuz. Bu giden orman güveni, şirket içi AD DS etki alanı ile Azure AD DS yönetilen etki alanı arasındaki güven ilişkisini tamamlar.
 
-To create the outbound trust for the Azure AD DS managed domain in the Azure portal, complete the following steps:
+Azure portal Azure AD DS yönetilen etki alanı için giden güveni oluşturmak için aşağıdaki adımları izleyin:
 
-1. In the Azure portal, search for and select **Azure AD Domain Services**, then select your managed domain, such as *aadds.contoso.com*
-1. From the menu on the left-hand side of the Azure AD DS managed domain, select **Trusts**, then choose to **+ Add** a trust.
-1. Enter a display name that identifies your trust, then the on-premises trusted forest DNS name, such as *onprem.contoso.com*
-1. Provide the same trust password that was used when configuring the inbound forest trust for the on-premises AD DS domain in the previous section.
-1. Provide at least two DNS servers for the on-premises AD DS domain, such as *10.0.2.4* and *10.0.2.5*
-1. When ready, **Save** the outbound forest trust
+1. Azure portal, **Azure AD Domain Services**arayıp seçin, sonra yönetilen etki alanınızı seçin (örneğin, *aadds.contoso.com* ).
+1. Azure AD DS yönetilen etki alanının sol tarafındaki menüden **Güvenler**' i seçin, sonra da **+ güven Ekle** ' yi seçin.
+1. Güveninizi tanımlayan bir görünen ad girin, ardından *OnPrem.contoso.com* gibi şirket içi GÜVENILEN orman DNS adı.
+1. Önceki bölümde yer alan şirket içi AD DS etki alanı için gelen orman güvenini yapılandırırken kullanılan güven parolasını sağlayın.
+1. *10.0.2.4* ve *10.0.2.5* gibi şirket içi AD DS etki alanı IÇIN en az iki DNS sunucusu sağlayın
+1. Hazırsanız, giden orman güvenini **kaydedin**
 
-    [Create outbound forest trust in the Azure portal](./media/create-forest-trust/portal-create-outbound-trust.png)
+    [Azure portal giden orman güveni oluşturma](./media/create-forest-trust/portal-create-outbound-trust.png)
 
-## <a name="validate-resource-authentication"></a>Validate resource authentication
+## <a name="validate-resource-authentication"></a>Kaynak kimlik doğrulamasını doğrulama
 
-The following common scenarios let you validate that forest trust correctly authenticates users and access to resources:
+Aşağıdaki yaygın senaryolar, orman güveninin kullanıcıları ve kaynaklara erişimi doğru şekilde doğruladığını doğrulamanızı sağlar:
 
-* [On-premises user authentication from the Azure AD DS resource forest](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
-* [Access resources in the Azure AD DS resource forest using on-premises user](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
-    * [Enable file and printer sharing](#enable-file-and-printer-sharing)
-    * [Create a security group and add members](#create-a-security-group-and-add-members)
-    * [Create a file share for cross-forest access](#create-a-file-share-for-cross-forest-access)
-    * [Validate cross-forest authentication to a resource](#validate-cross-forest-authentication-to-a-resource)
+* [Azure AD DS kaynak ormanında şirket içi kullanıcı kimlik doğrulaması](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
+* [Şirket içi kullanıcı kullanarak Azure AD DS kaynak ormanındaki kaynaklara erişme](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
+    * [Dosya ve yazıcı paylaşımını etkinleştir](#enable-file-and-printer-sharing)
+    * [Güvenlik grubu oluşturma ve üye ekleme](#create-a-security-group-and-add-members)
+    * [Ormanlar arası erişim için bir dosya paylaşma oluşturma](#create-a-file-share-for-cross-forest-access)
+    * [Ormanlar arası kimlik doğrulamasını bir kaynağa doğrulama](#validate-cross-forest-authentication-to-a-resource)
 
-### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>On-premises user authentication from the Azure AD DS resource forest
+### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Azure AD DS kaynak ormanında şirket içi kullanıcı kimlik doğrulaması
 
-You should have Windows Server virtual machine joined to the Azure AD DS resource domain. Use this virtual machine to test your on-premises user can authenticate on a virtual machine.
+Azure AD DS kaynak etki alanına katılmış Windows Server sanal makinenizin olması gerekir. Şirket içi kullanıcılarınızın bir sanal makinede kimlik doğrulaması yapabilmeleri için bu sanal makineyi kullanın.
 
-1. Connect to the Windows Server VM joined to the Azure AD DS resource forest using Remote Desktop and your Azure AD DS administrator credentials. If you get a Network Level Authentication (NLA) error, check the user account you used is not a domain user account.
+1. Uzak Masaüstü ve Azure AD DS yönetici kimlik bilgilerinizi kullanarak Azure AD DS kaynak ormanına katılmış Windows Server VM 'sine bağlanın. Ağ Düzeyinde Kimlik Doğrulama (NLA) hatası alırsanız, kullandığınız kullanıcı hesabının bir etki alanı kullanıcı hesabı olmadığını kontrol edin.
 
     > [!NOTE]
-    > To securely connect to your VMs joined to Azure AD Domain Services, you can use the [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) in supported Azure regions.
+    > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](https://docs.microsoft.com/azure/bastion/bastion-overview) kullanabilirsiniz.
 
-1. Open a command prompt and use the `whoami` command to show the distinguished name of the currently authenticated user:
+1. Bir komut istemi açın ve şu anda kimliği doğrulanmış kullanıcının ayırt edici adını göstermek için `whoami` komutunu kullanın:
 
     ```console
     whoami /fqdn
     ```
 
-1. Use the `runas` command to authenticate as a user from the on-premises domain. In the following command, replace `userUpn@trusteddomain.com` with the UPN of a user from the trusted on-premises domain. The command prompts you for the user’s password:
+1. Şirket içi etki alanından bir kullanıcı olarak kimlik doğrulaması yapmak için `runas` komutunu kullanın. Aşağıdaki komutta, `userUpn@trusteddomain.com`, güvenilen şirket içi etki alanındaki bir kullanıcının UPN 'si ile değiştirin. Komut sizden kullanıcının parolasını ister:
 
     ```console
     Runas /u:userUpn@trusteddomain.com cmd.exe
     ```
 
-1. If the authentication is a successful, a new command prompt opens. The title of the new command prompt includes `running as userUpn@trusteddomain.com`.
-1. Use `whoami /fqdn` in the new command prompt to view the distinguished name of the authenticated user from the on-premises Active Directory.
+1. Kimlik doğrulaması başarılı olursa yeni bir komut istemi açılır. Yeni komut isteminin başlığı `running as userUpn@trusteddomain.com`içerir.
+1. Şirket içi Active Directory kimliği doğrulanmış kullanıcının ayırt edici adını görüntülemek için yeni komut isteminde `whoami /fqdn` kullanın.
 
-### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Access resources in the Azure AD DS resource forest using on-premises user
+### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Şirket içi kullanıcı kullanarak Azure AD DS kaynak ormanındaki kaynaklara erişme
 
-Using the Windows Server VM joined to the Azure AD DS resource forest, you can test the scenario where users can access resources hosted in the resource forest when they authenticate from computers in the on-premises domain with users from the on-premises domain. The following examples show you how to create and test various common scenarios.
+Azure AD DS kaynak ormanına katılmış Windows Server VM 'sini kullanarak, kullanıcıların şirket içi etki alanındaki kullanıcılarla şirket içi etki alanındaki bilgisayarlardan kimlik doğrulaması yaparken, kaynak ormanında barındırılan kaynaklara erişim izni olan senaryoyu test edebilirsiniz. Aşağıdaki örneklerde çeşitli yaygın senaryolar oluşturma ve test etme işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-#### <a name="enable-file-and-printer-sharing"></a>Enable file and printer sharing
+#### <a name="enable-file-and-printer-sharing"></a>Dosya ve yazıcı paylaşımını etkinleştir
 
-1. Connect to the Windows Server VM joined to the Azure AD DS resource forest using Remote Desktop and your Azure AD DS administrator credentials. If you get a Network Level Authentication (NLA) error, check the user account you used is not a domain user account.
-
-    > [!NOTE]
-    > To securely connect to your VMs joined to Azure AD Domain Services, you can use the [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) in supported Azure regions.
-
-1. Open **Windows Settings**, then search for and select **Network and Sharing Center**.
-1. Choose the option for **Change advanced sharing** settings.
-1. Under the **Domain Profile**, select **Turn on file and printer sharing** and then **Save changes**.
-1. Close **Network and Sharing Center**.
-
-#### <a name="create-a-security-group-and-add-members"></a>Create a security group and add members
-
-1. Open **Active Directory Users and Computers**.
-1. Right-select the domain name, choose **New**, and then select **Organizational Unit**.
-1. In the name box, type *LocalObjects*, then select **OK**.
-1. Select and right-click **LocalObjects** in the navigation pane. Select **New** and then **Group**.
-1. Type *FileServerAccess* in the **Group name** box. For the **Group Scope**, select **Domain local**, then choose **OK**.
-1. In the content pane, double-click **FileServerAccess**. Select **Members**, choose to **Add**, then select **Locations**.
-1. Select your on-premises Active Directory from the **Location** view, then choose **OK**.
-1. Type *Domain Users* in the **Enter the object names to select** box. Select **Check Names**, provide credentials for the on-premises Active Directory, then select **OK**.
+1. Uzak Masaüstü ve Azure AD DS yönetici kimlik bilgilerinizi kullanarak Azure AD DS kaynak ormanına katılmış Windows Server VM 'sine bağlanın. Ağ Düzeyinde Kimlik Doğrulama (NLA) hatası alırsanız, kullandığınız kullanıcı hesabının bir etki alanı kullanıcı hesabı olmadığını kontrol edin.
 
     > [!NOTE]
-    > You must provide credentials because the trust relationship is only one way. This means users from the Azure AD DS can't access resources or search for users or groups in the trusted (on-premises) domain.
+    > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](https://docs.microsoft.com/azure/bastion/bastion-overview) kullanabilirsiniz.
 
-1. The **Domain Users** group from your on-premises Active Directory should be a member of the **FileServerAccess** group. Select **OK** to save the group and close the window.
+1. **Windows ayarları**' nı açın ve **Ağ ve Paylaşım Merkezi**' ni arayıp seçin.
+1. **Gelişmiş paylaşım ayarlarını değiştir** seçeneğini belirleyin.
+1. **Etki alanı profili**altında **dosya ve yazıcı paylaşımını aç** ' ı seçin ve **değişiklikleri kaydedin**.
+1. **Ağ ve Paylaşım Merkezi 'ni**kapatın.
 
-#### <a name="create-a-file-share-for-cross-forest-access"></a>Create a file share for cross-forest access
+#### <a name="create-a-security-group-and-add-members"></a>Güvenlik grubu oluşturma ve üye ekleme
 
-1. On the Windows Server VM joined to the Azure AD DS resource forest, create a folder and provide name such as *CrossForestShare*.
-1. Right-select the folder and choose **Properties**.
-1. Select the **Security** tab, then choose **Edit**.
-1. In the *Permissions for CrossForestShare* dialog box, select **Add**.
-1. Type *FileServerAccess* in **Enter the object names to select**, then select **OK**.
-1. Select *FileServerAccess* from the **Groups or user names** list. In the **Permissions for FileServerAccess** list, choose *Allow* for the **Modify** and **Write** permissions, then select **OK**.
-1. Select the **Sharing** tab, then choose **Advanced Sharing…**
-1. Choose **Share this folder**, then enter a memorable name for the file share in **Share name** such as *CrossForestShare*.
-1. Select **Permissions**. In the **Permissions for Everyone** list, choose **Allow** for the **Change** permission.
-1. Select **OK** two times and then **Close**.
+1. **Active Directory Kullanıcıları ve bilgisayarları**açın.
+1. Etki alanı adını sağ seçin, **Yeni**' yi seçin ve ardından **kuruluş birimi**' ni seçin.
+1. Ad kutusuna *Localobjects*yazın ve ardından **Tamam**' ı seçin.
+1. Gezinti bölmesinde **Localobjects** ' i seçin ve sağ tıklayın. **Yeni** ' yi ve ardından **Grup**' u seçin.
+1. **Grup adı** kutusuna *fileserveraccess* yazın. **Grup kapsamı**Için **etki alanı yerel**' i seçin ve ardından **Tamam**' ı seçin.
+1. İçerik bölmesinde, **Fileserveraccess**' e çift tıklayın. **Üyeler**' i seçin, **eklemeyi**seçin ve ardından **konumlar**' ı seçin.
+1. **Konum** görünümünden şirket içi Active Directory seçin ve ardından **Tamam**' ı seçin.
+1. **Seçilecek nesne adlarını girin** kutusunda *etki alanı kullanıcıları* yazın. **Adları denetle**' yi seçin, şirket içi Active Directory kimlik bilgilerini sağlayın ve ardından **Tamam**' ı seçin.
 
-#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Validate cross-forest authentication to a resource
+    > [!NOTE]
+    > Güven ilişkisi yalnızca tek bir yol olduğundan kimlik bilgilerini sağlamanız gerekir. Bu, Azure AD DS kullanıcıların güvenilir (Şirket içi) etki alanındaki kaynaklara erişemeyeceği veya kullanıcıları veya grupları araymayacağı anlamına gelir.
 
-1. Sign in a Windows computer joined to your on-premises Active Directory using a user account from your on-premises Active Directory.
-1. Using **Windows Explorer**, connect to the share you created using the fully qualified host name and the share such as `\\fs1.aadds.contoso.com\CrossforestShare`.
-1. To validate the write permission, right-select in the folder, choose **New**, then select **Text Document**. Use the default name **New Text Document**.
+1. Şirket içi Active Directory **etki alanı kullanıcıları** grubu, **fileserveraccess** grubunun bir üyesi olmalıdır. Grubu kaydetmek ve pencereyi kapatmak için **Tamam** ' ı seçin.
 
-    If the write permissions are set correctly, a new text document is created. The following steps will then open, edit, and delete the file as appropriate.
-1. To validate the read permission, open **New Text Document**.
-1. To validate the modify permission, add text to the file and close **Notepad**. When prompted to save changes, choose **Save**.
-1. To validate the delete permission, right-select **New Text Document** and choose **Delete**. Choose **Yes** to confirm file deletion.
+#### <a name="create-a-file-share-for-cross-forest-access"></a>Ormanlar arası erişim için bir dosya paylaşma oluşturma
+
+1. Azure AD DS kaynak ormanına katılmış Windows Server VM 'de, bir klasör oluşturun ve *Crossforestshare*gibi bir ad sağlayın.
+1. Klasörü sağ seçin ve **Özellikler**' i seçin.
+1. **Güvenlik** sekmesini seçin ve ardından **Düzenle**' yi seçin.
+1. *Çapraz Forestshare izinleri* Iletişim kutusunda **Ekle**' yi seçin.
+1. **Seçilecek nesne adlarını girin**alanına *fileserveraccess* yazın ve ardından **Tamam**' ı seçin.
+1. **Gruplar veya Kullanıcı adları** listesinden *fileserveraccess* ' i seçin. **FileServerAccess izinleri** listesinde, **değiştirme** ve **yazma** izinleri için *Izin ver* ' i seçin ve ardından **Tamam**' ı seçin.
+1. **Paylaşım** sekmesini seçin ve **Gelişmiş paylaşım...** seçeneğini belirleyin.
+1. **Bu klasörü paylaşma**' yı seçin, sonra da *çapraz Forestshare*gibi **Share adında** dosya paylaşımının hatırlayabileceğiniz bir adını girin.
+1. **İzinler**' i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
+1. **Tamam** ' ı iki kez seçin ve ardından **kapatın**.
+
+#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ormanlar arası kimlik doğrulamasını bir kaynağa doğrulama
+
+1. Şirket içi Active Directory bir kullanıcı hesabı kullanarak şirket içi Active Directory katılmış bir Windows bilgisayarda oturum açın.
+1. **Windows Explorer**'ı kullanarak, tam ana bilgisayar adı ve `\\fs1.aadds.contoso.com\CrossforestShare`gibi paylaşma kullanarak oluşturduğunuz paylaşıma bağlanın.
+1. Yazma iznini doğrulamak için, klasörde sağ seçin, **Yeni**' yi seçin ve ardından **metin belgesi**' ni seçin. Varsayılan ad **Yeni metin belgesi ' ni**kullanın.
+
+    Yazma izinleri doğru ayarlandıysa yeni bir metin belgesi oluşturulur. Aşağıdaki adımlar, dosyayı uygun şekilde açar, düzenleyebilir ve siler.
+1. Oku iznini doğrulamak için **Yeni metin belgesi**açın.
+1. Değiştirme iznini doğrulamak için, dosyaya metin ekleyin ve **Not defteri 'ni**kapatın. Değişiklikleri kaydetmeniz istendiğinde **Kaydet**' i seçin.
+1. Silme iznini doğrulamak için **Yeni metin belgesi** ' ni sağ seçin ve **Sil**' i seçin. Dosya silmeyi onaylamak için **Evet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Configure DNS in an on-premises AD DS environment to support Azure AD DS connectivity
-> * Create a one-way inbound forest trust in an on-premises AD DS environment
-> * Create a one-way outbound forest trust in Azure AD DS
-> * Test and validate the trust relationship for authentication and resource access
+> * Azure AD DS bağlantısını desteklemek için bir şirket içi AD DS ortamında DNS yapılandırma
+> * Şirket içi AD DS ortamında tek yönlü bir gelen orman güveni oluşturma
+> * Azure AD DS tek yönlü bir giden orman güveni oluşturun
+> * Kimlik doğrulama ve kaynak erişimi için güven ilişkisini test edin ve doğrulayın
 
-For more conceptual information about forest types in Azure AD DS, see [What are resource forests?][concepts-forest] and [How do forest trusts work in Azure AD DS?][concepts-trust]
+Azure AD DS orman türleri hakkında daha fazla kavramsal bilgi için bkz. [kaynak ormanları nelerdir?][concepts-forest] ve [orman güvenleri Azure AD DS nasıl çalışır?][concepts-trust]
 
 <!-- INTERNAL LINKS -->
 [concepts-forest]: concepts-resource-forest.md

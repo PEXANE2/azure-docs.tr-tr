@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: c62a7de1f16a3d7d286f48500117c256804c0f24
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280657"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546922"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
@@ -32,7 +32,7 @@ Aşağıdaki işlev Denetim akışında mevcuttur:
 - Doğrulama gerçekleştirmek için koşullu ifadelerde meta verileri al etkinliğinden çıktıyı kullanabilirsiniz.
 - Döngüye göre do aracılığıyla bir koşul karşılandığında bir işlem hattı tetikleyebilirsiniz.
 
-## <a name="capabilities"></a>Yetenekler
+## <a name="capabilities"></a>Özellikler
 
 Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgilerini çıkış olarak döndürür. Şu anda, aşağıdaki bağlayıcılar ve karşılık gelen alınabilir meta veriler desteklenir. Döndürülen meta verilerin en büyük boyutu 1 MB 'tır.
 
@@ -53,10 +53,11 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 | [Azure Dosyalar](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Dosya sistemi](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - Amazon S3 ve Google Cloud Storage için, `lastModified` demet ve anahtar için geçerlidir, ancak sanal klasöre uygulanmaz ve `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
 - Azure Blob depolama için `lastModified` kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
+- `lastModified` filtresi şu anda alt öğeleri filtrelemek için geçerlidir ancak belirtilen klasör/dosyanın kendisi için geçerli değildir.
 - Klasörler/dosyalar üzerinde joker karakter filtresi, meta veri Al etkinliği için desteklenmiyor.
 
 **İlişkisel veritabanı**
@@ -135,7 +136,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 Şu anda meta verileri Al etkinliği şu tür meta veri bilgilerini döndürebilir:
 
-Özellik | Açıklama | Gereklidir
+Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
 fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
 veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet

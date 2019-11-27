@@ -11,12 +11,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: conceptual
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: a73fad3097be73e01a7a2a6652129cd7c9db9555
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ac6ae1a3b00a4e7568bd7967105f202fbf2e4f9b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050970"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547483"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak FTP dosyaları oluşturun, izleyin ve yönetin
 
@@ -45,15 +45,15 @@ FTP sunucusundan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer 
 
 FTP Tetikleyicileri, FTP dosya sistemini yoklayarak ve Son yoklamadan bu yana değiştirilen herhangi bir dosyayı arayarak çalışır. Bazı araçlar, dosyalar değiştiğinde zaman damgasını korumanıza olanak sağlar. Bu durumlarda, tetikleyicinizin çalışabilmesi için bu özelliği devre dışı bırakmanız gerekir. Yaygın olarak kullanılan bazı ayarlar şunlardır:
 
-| SFTP istemcisi | Action |
+| SFTP istemcisi | Eylem |
 |-------------|--------|
-| WinSCP | **Seçenekler** Tercihler aktarım düzenleme zaman damgasıdevredışıbırak'agidin >  >  >  >  >  |
-| FileZilla |  > Aktarım > ' a git**aktarılan dosyaların zaman damgalarını koru** **devre dışı bırak** |
+| WinSCP | **Seçenekler** > **tercihleri** ' ne gidin > **Aktar** > **Düzenle** > **zaman damgasını koru** > **devre dışı bırak** |
+| FileZilla | **Aktarım** > git > **aktarılan dosyaların zaman damgalarını koru ve** **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -73,7 +73,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. Boş Logic Apps için, arama kutusuna filtreniz olarak "FTP" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
 
-   -veya-
+   veya
 
    Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin ve ardından **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak "FTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
@@ -87,17 +87,17 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP tetikleyicisi: Bir dosya eklendiğinde veya değiştirildiğinde
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP tetikleyicisi: bir dosya eklendiğinde veya değiştirildiğinde
 
 Bu tetikleyici, bir FTP sunucusunda bir dosya eklendiğinde veya değiştirildiğinde tetikleyici algıladığında bir mantıksal uygulama iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen bir koşul ekleyebilir ve bu içeriğin belirli bir koşulu karşılayıp karşılamadığını temel alarak bu içeriği almak isteyip istemediğinizi karar verebilirsiniz. Son olarak, dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki bir klasöre koyabileceğiniz bir eylem ekleyebilirsiniz.
 
 **Kurumsal örnek**: Bu tetikleyiciyi, müşteri siparişlerini tanımlayan yeni dosyalar için FTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra **Dosya Içeriğini al**gıbı bir FTP eylemi kullanabilirsiniz, böylece siparişin içeriğini daha fazla işleme için alabilir ve bu siparişi bir Siparişler veritabanında depoaktarabilirsiniz.
 
-Bu tetikleyiciyi gösteren bir örnek aşağıda verilmiştir: **Bir dosya eklendiğinde veya değiştirildiğinde**
+Bu tetikleyiciyi gösteren bir örnek aşağıda verilmiştir: **bir dosya eklendiğinde veya değiştirildiğinde**
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak "FTP" yazın. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **Bir dosyalanmış eklendiğinde veya değiştirildiğinde-FTP**
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak "FTP" yazın. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosyalanmış eklendiğinde veya değiştirildiğinde-FTP**
 
    ![FTP tetikleyicisini bul ve Seç](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
@@ -107,7 +107,7 @@ Bu tetikleyiciyi gösteren bir örnek aşağıda verilmiştir: **Bir dosya eklen
 
    ![FTP sunucusu bağlantısı oluştur](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
-1. **Klasör** kutusu ' nun yanında, bir liste görünecek şekilde klasör simgesini seçin. Yeni veya düzenlenmiş dosyalar için izlemek istediğiniz klasörü bulmak için, doğru açılı oku ( **>** ) seçin, bu klasöre gidin ve sonra klasörü seçin.
+1. **Klasör** kutusu ' nun yanında, bir liste görünecek şekilde klasör simgesini seçin. Yeni veya düzenlenmiş dosyalar için izlemek istediğiniz klasörü bulmak için, sağ açılı oku ( **>** ) seçin, bu klasöre gidin ve klasörü seçin.
 
    ![İzlenecek klasörü bul ve Seç](./media/connectors-create-api-ftp/select-folder.png)  
 
@@ -119,15 +119,15 @@ Artık mantıksal uygulamanızın bir tetikleyicisi olduğuna göre, mantıksal 
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>FTP eylemi: İçerik al
+### <a name="ftp-action-get-content"></a>FTP eylemi: içerik al
 
 Bu eylem, bu dosya eklendiğinde veya güncelleştirilirken FTP sunucusundaki bir dosyanın içeriğini alır. Örneğin, bir önceki örnekteki tetikleyiciyi ve dosya eklendikten veya düzenlendikten sonra dosyanın içeriğini alan bir eylemden ekleme yapabilirsiniz.
 
-Bu eylemi gösteren bir örnek aşağıda verilmiştir: **İçerik al**
+Bu eylemi gösteren bir örnek aşağıda verilmiştir: **Içerik al**
 
 1. Tetikleyici veya başka herhangi bir eylem altında **yeni adım**' ı seçin.
 
-1. Arama kutusuna filtreniz olarak "FTP" yazın. Eylemler listesi altında şu eylemi seçin: **Dosya içeriğini al-FTP**
+1. Arama kutusuna filtreniz olarak "FTP" yazın. Eylemler listesi altında şu eylemi seçin: **Dosya Içeriğini al-FTP**
 
    ![FTP eylemini seçin](./media/connectors-create-api-ftp/select-ftp-action.png)  
 

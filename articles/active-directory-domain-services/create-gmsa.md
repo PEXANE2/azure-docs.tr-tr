@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898222"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546305"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services içinde bir grup yönetilen hizmet hesabı (gMSA) oluşturun
 
-Uygulamalar ve hizmetler genellikle diğer kaynaklarla kimlik doğrulaması yapmak için bir kimliğe sahip olmalıdır. Örneğin, bir Web hizmetinin bir veritabanı hizmeti ile kimlik doğrulaması yapması gerekebilir. Bir uygulama veya hizmette, Web sunucusu grubu gibi birden çok örnek varsa, bu kaynakların kimliklerini el ile oluşturma ve yapılandırma zaman alıcı alır. Bunun yerine, Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanında bir grup yönetilen hizmet hesabı (gMSA) oluşturulabilir. Windows işletim sistemi, büyük kaynak gruplarının yönetimini kolaylaştıran bir gMSA 'nın kimlik bilgilerini otomatik olarak yönetir.
+Uygulamalar ve hizmetler genellikle diğer kaynaklarla kimlik doğrulaması yapmak için bir kimliğe sahip olmalıdır. Örneğin, bir Web hizmetinin bir veritabanı hizmeti ile kimlik doğrulaması yapması gerekebilir. Bir uygulama veya hizmette, Web sunucusu grubu gibi birden çok örnek varsa, bu kaynakların kimliklerini el ile oluşturma ve yapılandırma zaman alıcı alır.
 
-Bu makalede, Azure AD DS yönetilen bir etki alanında gMSA 'Nın nasıl oluşturulacağı gösterilmektedir.
+Bunun yerine, Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanında bir grup yönetilen hizmet hesabı (gMSA) oluşturulabilir. Windows işletim sistemi, büyük kaynak gruplarının yönetimini kolaylaştıran bir gMSA 'nın kimlik bilgilerini otomatik olarak yönetir.
+
+Bu makalede, Azure PowerShell kullanarak Azure AD DS yönetilen bir etki alanında gMSA oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -59,6 +61,9 @@ Azure AD DS yönetilen etki alanları Microsoft tarafından kilitlendiğinden ve
 ## <a name="create-a-gmsa"></a>GMSA oluşturma
 
 İlk olarak, [New-ADOrganizationalUnit][New-AdOrganizationalUnit] cmdlet 'ini kullanarak özel bir OU oluşturun. Özel OU 'Lar oluşturma ve yönetme hakkında daha fazla bilgi için bkz. [Azure AD DS 'Daki özel OU 'lar][create-custom-ou].
+
+> [!TIP]
+> Bir gMSA oluşturmak için bu adımları gerçekleştirmek üzere [YÖNETIM sanal bilgisayarınızı kullanın][tutorial-create-management-vm]. Bu yönetim VM 'sinin gerekli AD PowerShell cmdlet 'leri ve yönetilen etki alanına bağlantısı olması gerekir.
 
 Aşağıdaki örnekte, *contoso.com*adlı Azure AD DS yönetilen etki alanında *Mynewou* adlı özel bir OU oluşturulur. Kendi OU ve yönetilen etki alanı adınızı kullanın:
 

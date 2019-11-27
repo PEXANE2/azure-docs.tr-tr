@@ -1,14 +1,14 @@
 ---
-title: ISO 27001 Ao/SQL iş yükü şeması örnek-dağıtım adımları
+title: ISO 27001 ATıCı/SQL iş yükü şeması örneği dağıtma
 description: ISO 27001 App Service ortamı/SQL veritabanı iş yükü şeması 'nın, şema yapıt parametresi ayrıntıları dahil olmak üzere adımlarını dağıtın.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 6d01de8788a7fdd37edf10d13651d846cb8af0ca
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3cf3c062b1e8b69a6a0b9eb585b30ce2d5c4acfb
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184446"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546758"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması örneğini dağıtma
 

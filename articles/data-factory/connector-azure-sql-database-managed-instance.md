@@ -1,6 +1,6 @@
 ---
-title: Copy data to and from Azure SQL Database Managed Instance
-description: Learn how to move data to and from Azure SQL Database Managed Instance by using Azure Data Factory.
+title: Verileri Azure SQL veritabanı yönetilen örneğine veya Azure 'dan kopyalama
+description: Azure Data Factory kullanarak Azure SQL veritabanı yönetilen örneği 'ne ve veri taşımayı öğrenin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -19,66 +19,66 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74218787"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Copy data to and from Azure SQL Database Managed Instance by using Azure Data Factory
+# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanı yönetilen örneğine veri kopyalama
 
-This article outlines how to use the copy activity in Azure Data Factory to copy data to and from Azure SQL Database Managed Instance. It builds on the [Copy activity overview](copy-activity-overview.md) article that presents a general overview of the copy activity.
+Bu makalede, verileri Azure SQL veritabanı yönetilen örneğine ve bu sunucudan kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Supported capabilities
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-This Azure SQL Database Managed Instance connector is supported for the following activities:
+Bu Azure SQL veritabanı yönetilen örnek Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-- [GetMetadata activity](control-flow-get-metadata-activity.md)
+- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
 
-You can copy data from Azure SQL Database Managed Instance to any supported sink data store. You also can copy data from any supported source data store to the managed instance. For a list of data stores that are supported as sources and sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
+Azure SQL veritabanı yönetilen örneği 'nden, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan yönetilen örneğe veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Specifically, this Azure SQL Database Managed Instance connector supports:
+Özellikle, bu Azure SQL veritabanı yönetilen örneği Bağlayıcısı şunları destekler:
 
-- Copying data by using SQL authentication and Azure Active Directory (Azure AD) Application token authentication with a service principal or managed identities for Azure resources.
-- As a source, retrieving data by using a SQL query or a stored procedure.
-- As a sink, appending data to a destination table or invoking a stored procedure with custom logic during copy.
-
->[!NOTE]
->Azure SQL Database Managed Instance [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) isn't supported by this connector now. To work around, you can use a [generic ODBC connector](connector-odbc.md) and a SQL Server ODBC driver via a self-hosted integration runtime. Follow [this guidance](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) with ODBC driver download and connection string configurations.
+- Azure kaynakları için hizmet sorumlusu veya yönetilen kimlikler ile SQL kimlik doğrulaması ve Azure Active Directory (Azure AD) uygulama belirteci kimlik doğrulaması kullanarak veri kopyalama.
+- Kaynak olarak, bir SQL sorgusu veya saklı yordam kullanarak verileri alma.
+- Havuz olarak, bir hedef tabloya veri ekleme veya kopyalama sırasında özel mantık ile saklı yordam çağırma.
 
 >[!NOTE]
->Service principal and managed identity authentications currently aren't supported by this connector. To work around, choose an Azure SQL Database connector and manually specify the server of your managed instance.
+>Azure SQL veritabanı yönetilen örneği [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) Şu anda bu bağlayıcı tarafından desteklenmiyor. Geçici bir çözüm için, şirket içinde barındırılan bir tümleştirme çalışma zamanı aracılığıyla [Genel BIR ODBC Bağlayıcısı](connector-odbc.md) ve SQL Server ODBC sürücüsü kullanabilirsiniz. ODBC sürücü indirme ve bağlantı dizesi yapılandırmalarına sahip [Bu kılavuzu](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) izleyin.
+
+>[!NOTE]
+>Hizmet sorumlusu ve yönetilen kimlik doğrulamaları Şu anda bu bağlayıcı tarafından desteklenmiyor. Geçici çözüm için bir Azure SQL Veritabanı Bağlayıcısı seçin ve yönetilen örneğinizin sunucusunu el ile belirtin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To access the Azure SQL Database Managed Instance [public endpoint](../sql-database/sql-database-managed-instance-public-endpoint-securely.md), you can use an Azure Data Factory managed Azure integration runtime. Make sure that you enable the public endpoint and also allow public endpoint traffic on the network security group so that Azure Data Factory can connect to your database. For more information, see [this guidance](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
+Azure SQL veritabanı yönetilen örnek [genel uç noktasına](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)erişmek için Azure Data Factory yönetilen bir Azure tümleştirme çalışma zamanı kullanabilirsiniz. Azure Data Factory veritabanınıza bağlanabilmesi için, genel uç noktasını etkinleştirdiğinizden ve ağ güvenlik grubunda ortak uç nokta trafiğine izin verdiğinizden emin olun. Daha fazla bilgi için [bu kılavuza](../sql-database/sql-database-managed-instance-public-endpoint-configure.md)bakın.
 
-To access the Azure SQL Database Managed Instance private endpoint, set up a [self-hosted integration runtime](create-self-hosted-integration-runtime.md) that can access the database. If you provision the self-hosted integration runtime in the same virtual network as your managed instance, make sure that your integration runtime machine is in a different subnet than your managed instance. If you provision your self-hosted integration runtime in a different virtual network than your managed instance, you can use either a virtual network peering or a virtual network to virtual network connection. For more information, see [Connect your application to Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-connect-app.md).
+Azure SQL veritabanı yönetilen örnek özel uç noktasına erişmek için, veritabanına erişebilen, [Şirket içinde barındırılan bir tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) ayarlayın. Şirket içinde barındırılan tümleştirme çalışma zamanını yönetilen örneğiniz ile aynı sanal ağda temin ediyorsanız, tümleştirme çalışma zamanı makinenizin yönetilen örnekten farklı bir alt ağda olduğundan emin olun. Şirket içinde barındırılan tümleştirme çalışma zamanını yönetilen örneğinizle farklı bir sanal ağda temin ediyorsanız, sanal ağ eşlemesi veya sanal ağ bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama](../sql-database/sql-database-managed-instance-connect-app.md).
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-The following sections provide details about properties that are used to define Azure Data Factory entities specific to the Azure SQL Database Managed Instance connector.
+Aşağıdaki bölümlerde, Azure SQL veritabanı yönetilen örneği bağlayıcısına özgü Azure Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Linked service properties
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-The following properties are supported for the Azure SQL Database Managed Instance linked service:
+Azure SQL veritabanı yönetilen örnek bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | The type property must be set to **AzureSqlMI**. | Yes |
-| connectionString |This property specifies the **connectionString** information that's needed to connect to the managed instance by using SQL authentication. For more information, see the following examples. <br/>The default port is 1433. If you're using Azure SQL Database Managed Instance with a public endpoint, explicitly specify port 3342.<br>Mark this field as **SecureString** to store it securely in Azure Data Factory. You also can put a password in Azure Key Vault. If it's SQL authentication, pull the `password` configuration out of the connection string. For more information, see the JSON example following the table and [Store credentials in Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| servicePrincipalId | Specify the application's client ID. | Yes, when you use Azure AD authentication with a service principal |
-| servicePrincipalKey | Specify the application's key. Mark this field as **SecureString** to store it securely in Azure Data Factory or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes, when you use Azure AD authentication with a service principal |
-| tenant | Specify the tenant information, like the domain name or tenant ID, under which your application resides. Retrieve it by hovering the mouse in the upper-right corner of the Azure portal. | Yes, when you use Azure AD authentication with a service principal |
-| connectVia | This [integration runtime](concepts-integration-runtime.md) is used to connect to the data store. You can use a self-hosted integration runtime or an Azure integration runtime if your managed instance has a public endpoint and allows Azure Data Factory to access it. If not specified, the default Azure integration runtime is used. |Yes |
+| type | Type özelliği **Azuressqlmı**olarak ayarlanmalıdır. | Evet |
+| connectionString |Bu özellik, SQL kimlik doğrulaması kullanarak yönetilen örneğe bağlanmak için gerekli olan **ConnectionString** bilgilerini belirtir. Daha fazla bilgi için aşağıdaki örneklere bakın. <br/>Varsayılan bağlantı noktası 1433'tür. Azure SQL veritabanı yönetilen örneğini ortak bir uç noktayla kullanıyorsanız, açıkça 3342 bağlantı noktasını belirtin.<br>Azure Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin. Ayrıca, Azure Key Vault bir parola koyabilirsiniz. SQL kimlik doğrulaması ise, `password` yapılandırmasını bağlantı dizesinden dışarı çekin. Daha fazla bilgi için, Azure Key Vault tablo ve [Mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)izleyen JSON örneğine bakın. |Evet |
+| servicePrincipalId | Uygulamanın istemci kimliği belirtin. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
+| servicePrincipalKey | Uygulama anahtarını belirtin. Azure Data Factory güvenli bir şekilde depolamak veya [Azure Key Vault depolanan bir gizli dizi başvurusunda bulunmak](store-credentials-in-key-vault.md)için bu alanı **SecureString** olarak işaretleyin. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
+| tenant | Uygulamanızın bulunduğu etki alanı adı veya kiracı KIMLIĞI gibi kiracı bilgilerini belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
+| connectVia | Bu [tümleştirme çalışma zamanı](concepts-integration-runtime.md) , veri deposuna bağlanmak için kullanılır. Yönetilen örneğinizin ortak bir uç noktası varsa ve Azure Data Factory erişmesine izin veriyorsa şirket içinde barındırılan tümleştirme çalışma zamanını veya bir Azure tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Evet |
 
-For different authentication types, refer to the following sections on prerequisites and JSON samples, respectively:
+Farklı kimlik doğrulama türleri için sırasıyla önkoşulları ve JSON örnekleri aşağıdaki bölümlere bakın:
 
-- [SQL authentication](#sql-authentication)
-- [Azure AD application token authentication: Service principal](#service-principal-authentication)
-- [Azure AD application token authentication: Managed identities for Azure resources](#managed-identity)
+- [SQL kimlik doğrulaması](#sql-authentication)
+- [Azure AD uygulama belirteci kimlik doğrulaması: hizmet sorumlusu](#service-principal-authentication)
+- [Azure AD uygulama belirteci kimlik doğrulaması: Azure kaynakları için Yönetilen kimlikler](#managed-identity)
 
 ### <a name="sql-authentication"></a>SQL kimlik doğrulaması
 
-**Example 1: use SQL authentication**
+**Örnek 1: SQL kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -99,7 +99,7 @@ For different authentication types, refer to the following sections on prerequis
 }
 ```
 
-**Example 2: use SQL authentication with a password in Azure Key Vault**
+**Örnek 2: Azure Key Vault bir parolayla SQL kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -130,37 +130,37 @@ For different authentication types, refer to the following sections on prerequis
 
 ### <a name="service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması
 
-To use a service principal-based Azure AD application token authentication, follow these steps:
+Hizmet sorumlusu tabanlı Azure AD uygulama belirteci kimlik doğrulamasını kullanmak için şu adımları izleyin:
 
-1. Follow the steps to [Provision an Azure Active Directory administrator for your Managed Instance](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+1. [Yönetilen örneğiniz için Azure Active Directory Yöneticisi sağlamak](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)için adımları izleyin.
 
-2. [Create an Azure Active Directory application](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) from the Azure portal. Make note of the application name and the following values that define the linked service:
+2. Azure portal [bir Azure Active Directory uygulaması oluşturun](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) . Uygulama adı ve bağlı hizmetini tanımlamak aşağıdaki değerleri not edin:
 
     - Uygulama Kimliği
-    - Application key
+    - Uygulama anahtarı
     - Kiracı Kimliği
 
-3. [Create logins](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) for the Azure Data Factory managed identity. In SQL Server Management Studio (SSMS), connect to your Managed Instance using a SQL Server account that is a **sysadmin**. In **master** database, run the following T-SQL:
+3. Azure Data Factory yönetilen kimlik için [oturum açma bilgileri oluşturun](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) . SQL Server Management Studio (SSMS) ' de, bir **sysadmin**olan SQL Server bir hesabı kullanarak yönetilen örneğe bağlanın. **Ana** veritabanında aşağıdaki T-SQL ' i çalıştırın:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-4. [Create contained database users](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) for the Azure Data Factory managed identity. Connect to the database from or to which you want to copy data, run the following T-SQL: 
+4. Azure Data Factory yönetilen kimlik için [Kapsanan Veritabanı kullanıcıları oluşturun](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) . Veri kopyalamak istediğiniz veya ' dan veritabanına bağlanın, aşağıdaki T-SQL ' i çalıştırın: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. Grant the Data Factory managed identity needed permissions as you normally do for SQL users and others. Run the following code. For more options, see [this document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi Data Factory yönetilen kimliğe gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [Bu belgeye](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)bakın.
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
     ```
 
-6. Configure an Azure SQL Database Managed Instance linked service in Azure Data Factory.
+6. Azure Data Factory 'de Azure SQL veritabanı yönetilen örnek bağlı hizmetini yapılandırın.
 
-**Example: use service principal authentication**
+**Örnek: hizmet sorumlusu kimlik doğrulamasını kullanma**
 
 ```json
 {
@@ -187,35 +187,35 @@ To use a service principal-based Azure AD application token authentication, foll
 }
 ```
 
-### <a name="managed-identity"></a> Managed identities for Azure resources authentication
+### <a name="managed-identity"></a>Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler
 
-A data factory can be associated with a [managed identity for Azure resources](data-factory-service-identity.md) that represents the specific data factory. You can use this managed identity for Azure SQL Database Managed Instance authentication. The designated factory can access and copy data from or to your database by using this identity.
+Veri Fabrikası, belirli veri fabrikasını temsil eden [Azure kaynakları için yönetilen bir kimlikle](data-factory-service-identity.md) ilişkilendirilebilir. Bu yönetilen kimliği Azure SQL veritabanı yönetilen örnek kimlik doğrulaması için kullanabilirsiniz. Belirlenen fabrika, bu kimliği kullanarak, veritabanınıza veya veritabanına erişebilir ve veri kopyalayabilir.
 
-To use managed identity authentication, follow these steps.
+Yönetilen kimlik kimlik doğrulamasını kullanmak için aşağıdaki adımları izleyin.
 
-1. Follow the steps to [Provision an Azure Active Directory administrator for your Managed Instance](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+1. [Yönetilen örneğiniz için Azure Active Directory Yöneticisi sağlamak](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)için adımları izleyin.
 
-2. [Create logins](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) for the Azure Data Factory managed identity. In SQL Server Management Studio (SSMS), connect to your Managed Instance using a SQL Server account that is a **sysadmin**. In **master** database, run the following T-SQL:
+2. Azure Data Factory yönetilen kimlik için [oturum açma bilgileri oluşturun](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) . SQL Server Management Studio (SSMS) ' de, bir **sysadmin**olan SQL Server bir hesabı kullanarak yönetilen örneğe bağlanın. **Ana** veritabanında aşağıdaki T-SQL ' i çalıştırın:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. [Create contained database users](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) for the Azure Data Factory managed identity. Connect to the database from or to which you want to copy data, run the following T-SQL: 
+3. Azure Data Factory yönetilen kimlik için [Kapsanan Veritabanı kullanıcıları oluşturun](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) . Veri kopyalamak istediğiniz veya ' dan veritabanına bağlanın, aşağıdaki T-SQL ' i çalıştırın: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. Grant the Data Factory managed identity needed permissions as you normally do for SQL users and others. Run the following code. For more options, see [this document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi Data Factory yönetilen kimliğe gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [Bu belgeye](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)bakın.
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
     ```
 
-5. Configure an Azure SQL Database Managed Instance linked service in Azure Data Factory.
+5. Azure Data Factory 'de Azure SQL veritabanı yönetilen örnek bağlı hizmetini yapılandırın.
 
-**Example: uses managed identity authentication**
+**Örnek: yönetilen kimlik kimlik doğrulamasını kullanır**
 
 ```json
 {
@@ -236,18 +236,18 @@ To use managed identity authentication, follow these steps.
 }
 ```
 
-## <a name="dataset-properties"></a>Dataset properties
+## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-For a full list of sections and properties available for use to define datasets, see the datasets article. This section provides a list of properties supported by the Azure SQL Database Managed Instance dataset.
+Veri kümelerini tanımlamak için kullanılabilecek bölümlerin ve özelliklerin tam listesi için bkz. veri kümeleri makalesi. Bu bölüm, Azure SQL veritabanı yönetilen örnek veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-To copy data to and from Azure SQL Database Managed Instance, the following properties are supported:
+Azure SQL veritabanı yönetilen örneğine veri kopyalamak için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | The type property of the dataset must be set to **AzureSqlMITable**. | Yes |
-| schema | Name of the schema. |No for source, Yes for sink  |
-| table | Name of the table/view. |No for source, Yes for sink  |
-| tableName | Name of the table/view with schema. This property is supported for backward compatibility. For new workload, use `schema` and `table`. | No for source, Yes for sink |
+| type | Veri kümesinin Type özelliği **Azuressqlmıtable**olarak ayarlanmalıdır. | Evet |
+| schema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
+| table | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
+| tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve `table`kullanın. | Kaynak, havuz için Evet Hayır |
 
 **Örnek**
 
@@ -272,25 +272,25 @@ To copy data to and from Azure SQL Database Managed Instance, the following prop
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-For a full list of sections and properties available for use to define activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by the Azure SQL Database Managed Instance source and sink.
+Etkinlikleri tanımlamak için kullanılabilecek bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Azure SQL veritabanı yönetilen örnek kaynağı ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="azure-sql-database-managed-instance-as-a-source"></a>Azure SQL Database Managed Instance as a source
+### <a name="azure-sql-database-managed-instance-as-a-source"></a>Azure SQL veritabanı yönetilen örneği kaynak olarak
 
-To copy data from Azure SQL Database Managed Instance, the following properties are supported in the copy activity source section:
+Verileri Azure SQL veritabanı yönetilen örneğinden kopyalamak için, etkinlik kaynağını kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | The type property of the copy activity source must be set to **SqlMISource**. | Yes |
-| sqlReaderQuery |This property uses the custom SQL query to read data. `select * from MyTable` bunun bir örneğidir. |Hayır |
-| sqlReaderStoredProcedureName |This property is the name of the stored procedure that reads data from the source table. The last SQL statement must be a SELECT statement in the stored procedure. |Hayır |
-| storedProcedureParameters |These parameters are for the stored procedure.<br/>Allowed values are name or value pairs. The names and casing of the parameters must match the names and casing of the stored procedure parameters. |Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği **Sqlmisource**olarak ayarlanmalıdır. | Evet |
+| sqlReaderQuery |Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. |Hayır |
+| sqlReaderStoredProcedureName |Bu özellik, kaynak tablodaki verileri okuyan saklı yordamın adıdır. Son SQL deyim bir SELECT deyimi saklı yordam içinde olmalıdır. |Hayır |
+| storedProcedureParameters |Bu parametreler, saklı yordama yöneliktir.<br/>İzin verilen değerler, ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük harfleriyle aynı olmalıdır. |Hayır |
 
 **Aşağıdaki noktalara dikkat edin:**
 
-- If **sqlReaderQuery** is specified for **SqlMISource**, the copy activity runs this query against the managed instance source to get the data. You also can specify a stored procedure by specifying **sqlReaderStoredProcedureName** and **storedProcedureParameters** if the stored procedure takes parameters.
-- If you don't specify either the **sqlReaderQuery** or **sqlReaderStoredProcedureName** property, the columns defined in the "structure" section of the dataset JSON are used to construct a query. The query `select column1, column2 from mytable` runs against the managed instance. If the dataset definition doesn't have "structure," all columns are selected from the table.
+- **Sqlmisource**Için **sqlreaderquery** belirtilmişse, kopyalama etkinliği verileri almak için bu sorguyu yönetilen örnek kaynağında çalıştırır. Saklı yordam parametreleri alırsa, **sqlReaderStoredProcedureName** ve **storedProcedureParameters** belirterek bir saklı yordam de belirtebilirsiniz.
+- **Sqlreaderquery** veya **sqlReaderStoredProcedureName** özelliğini belirtmezseniz, JSON veri kümesinin "Structure" bölümünde tanımlanan sütunlar bir sorgu oluşturmak için kullanılır. Sorgu `select column1, column2 from mytable` yönetilen örneğe göre çalışır. Veri kümesi tanımında "Structure" yoksa, tablodan tüm sütunlar seçilir.
 
-**Example: Use a SQL query**
+**Örnek: bir SQL sorgusu kullanın**
 
 ```json
 "activities":[
@@ -322,7 +322,7 @@ To copy data from Azure SQL Database Managed Instance, the following properties 
 ]
 ```
 
-**Example: Use a stored procedure**
+**Örnek: saklı yordam kullanma**
 
 ```json
 "activities":[
@@ -358,7 +358,7 @@ To copy data from Azure SQL Database Managed Instance, the following properties 
 ]
 ```
 
-**The stored procedure definition**
+**Saklı yordam tanımı**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -377,26 +377,26 @@ END
 GO
 ```
 
-### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Azure SQL Database Managed Instance as a sink
+### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Havuz olarak Azure SQL veritabanı yönetilen örneği
 
 > [!TIP]
-> Learn more about the supported write behaviors, configurations, and best practices from [Best practice for loading data into Azure SQL Database Managed Instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
+> [Azure SQL veritabanı yönetilen örneği 'ne veri yüklemeye yönelik en iyi](#best-practice-for-loading-data-into-azure-sql-database-managed-instance)uygulamalardan desteklenen yazma davranışları, konfigürasyonlar ve en iyi uygulamalar hakkında daha fazla bilgi edinin.
 
-To copy data to Azure SQL Database Managed Instance, the following properties are supported in the copy activity sink section:
+Verileri Azure SQL veritabanı yönetilen örneği 'ne kopyalamak için, kopyalama etkinlik havuzu bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | The type property of the copy activity sink must be set to **SqlMISink**. | Yes |
-| writeBatchSize |Number of rows to insert into the SQL table *per batch*.<br/>Allowed values are integers for the number of rows. By default, Azure Data Factory dynamically determines the appropriate batch size based on the row size.  |Hayır |
-| writeBatchTimeout |This property specifies the wait time for the batch insert operation to complete before it times out.<br/>Allowed values are for the timespan. An example is “00:30:00,” which is 30 minutes. |Hayır |
-| preCopyScript |This property specifies a SQL query for the copy activity to run before writing data into the managed instance. It's invoked only once per copy run. You can use this property to clean up preloaded data. |Hayır |
-| sqlWriterStoredProcedureName | The name of the stored procedure that defines how to apply source data into a target table. <br/>This stored procedure is *invoked per batch*. For operations that run only once and have nothing to do with source data, for example, delete or truncate, use the `preCopyScript` property. | Hayır |
-| storedProcedureTableTypeParameterName |The parameter name of the table type specified in the stored procedure.  |Hayır |
-| sqlWriterTableType |The table type name to be used in the stored procedure. The copy activity makes the data being moved available in a temp table with this table type. Stored procedure code can then merge the data that's being copied with existing data. |Hayır |
-| storedProcedureParameters |Parameters for the stored procedure.<br/>Allowed values are name and value pairs. Names and casing of parameters must match the names and casing of the stored procedure parameters. | Hayır |
-| tableOption | Specifies whether to automatically create the sink table if not exists based on the source schema. Auto table creation is not supported when sink specifies stored procedure or staged copy is configured in copy activity. Allowed values are: `none` (default), `autoCreate`. |Hayır |
+| type | Kopyalama etkinliği havuzunun Type özelliği **Sqlmisink**olarak ayarlanmalıdır. | Evet |
+| writeBatchSize |*Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/>İzin verilen değerler, satır sayısı için tamsayılardır. Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler.  |Hayır |
+| writeBatchTimeout |Bu özellik, toplu ekleme işleminin zaman aşımına uğramadan önce tamamlaması için bekleme süresini belirtir.<br/>İzin verilen değerler TimeSpan içindir. Örneğin, 30 dakika olan "00:30:00" bir örnektir. |Hayır |
+| preCopyScript |Bu özellik, yönetilen örneğe veri yazmadan önce, kopyalama etkinliğinin çalıştırılacağı bir SQL sorgusu belirtir. Her kopya çalıştırması için yalnızca bir kez çağrılır. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
+| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın. | Hayır |
+| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
+| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
+| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Adları ve parametreleri büyük küçük harfleri, adları ve saklı yordam parametreleri büyük küçük harfleri eşleşmelidir. | Hayır |
+| tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Havuz saklı yordamı belirttiğinde veya hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
 
-**Example 1: Append data**
+**Örnek 1: veri ekleme**
 
 ```json
 "activities":[
@@ -429,9 +429,9 @@ To copy data to Azure SQL Database Managed Instance, the following properties ar
 ]
 ```
 
-**Example 2: Invoke a stored procedure during copy**
+**Örnek 2: kopyalama sırasında saklı yordam çağırma**
 
-Learn more details from [Invoke a stored procedure from a SQL MI sink](#invoke-a-stored-procedure-from-a-sql-sink).
+[BIR SQL mı havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)hakkında daha fazla bilgi edinin.
 
 ```json
 "activities":[
@@ -469,33 +469,33 @@ Learn more details from [Invoke a stored procedure from a SQL MI sink](#invoke-a
 ]
 ```
 
-## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Best practice for loading data into Azure SQL Database Managed Instance
+## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'ne veri yüklemek için en iyi uygulama
 
-When you copy data into Azure SQL Database Managed Instance, you might require different write behavior:
+Verileri Azure SQL veritabanı yönetilen örneği 'ne kopyaladığınızda, farklı yazma davranışı gerekebilir:
 
-- [Append](#append-data): My source data has only new records.
-- [Upsert](#upsert-data): My source data has both inserts and updates.
-- [Overwrite](#overwrite-the-entire-table): I want to reload the entire dimension table each time.
-- [Write with custom logic](#write-data-with-custom-logic): I need extra processing before the final insertion into the destination table. 
+- [Append](#append-data): Kaynak verilerinizde yalnızca yeni kayıtlar vardır.
+- [Upsert](#upsert-data): Kaynak verilerinizde hem ekler hem de güncelleştirmeler vardır.
+- [Üzerine yaz](#overwrite-the-entire-table): her seferinde boyut tablosunun tamamını yeniden yüklemek istiyorum.
+- [Özel mantık Ile yaz](#write-data-with-custom-logic): hedef tabloya son ekleme yapmadan önce fazladan işleme ihtiyacım var. 
 
-See the respective sections for how to configure in Azure Data Factory and best practices.
+Azure Data Factory ve en iyi yöntemleri yapılandırmak için ilgili bölümlere bakın.
 
-### <a name="append-data"></a>Append data
+### <a name="append-data"></a>Veri Ekle
 
-Appending data is the default behavior of this Azure SQL Database Managed Instance sink connector. Azure Data Factory does a bulk insert to write to your table efficiently. You can configure the source and sink accordingly in the copy activity.
+Verilerin eklenmesi, bu Azure SQL veritabanı yönetilen örneği havuz bağlayıcısının varsayılan davranışıdır. Azure Data Factory tablonuza verimli bir şekilde yazmak için toplu bir ekleme yapar. Kopyalama etkinliğinde kaynağı ve havuzu uygun şekilde yapılandırabilirsiniz.
 
 ### <a name="upsert-data"></a>Verileri upsert etme
 
-**Option 1:** When you have a large amount of data to copy, use the following approach to do an upsert: 
+**Seçenek 1:** Kopyalamak için büyük miktarda veriniz varsa, aşağıdaki yaklaşımı kullanarak bir yukarı kullanın: 
 
-- First, use a [temporary table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) to bulk load all records by using the copy activity. Because operations against temporary tables aren't logged, you can load millions of records in seconds.
-- Run a stored procedure activity in Azure Data Factory to apply a [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) or INSERT/UPDATE statement. Use the temp table as the source to perform all updates or inserts as a single transaction. In this way, the number of round trips and log operations is reduced. At the end of the stored procedure activity, the temp table can be truncated to be ready for the next upsert cycle.
+- İlk olarak, kopyalama etkinliğini kullanarak tüm kayıtları toplu olarak yüklemek için [geçici bir tablo](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) kullanın. Geçici tablolara karşı işlemler günlüğe kaydedilmez, ancak milyonlarca kaydı Saniyeler içinde yükleyebilirsiniz.
+- [Birleştirme](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) veya ekleme/güncelleştirme ifadesini uygulamak için Azure Data Factory saklı yordam etkinliğini çalıştırın. Tüm güncelleştirmeleri gerçekleştirmek veya tek bir işlem olarak eklemek için geçici tabloyu kaynak olarak kullanın. Bu şekilde, gidiş dönüş sayısı ve günlük işlemleri azalır. Saklı yordam etkinliğinin sonunda, geçici tablo bir sonraki büyük bir döngüye hazırlanabilecek şekilde kesilebilir.
 
-As an example, in Azure Data Factory, you can create a pipeline with a **Copy activity** chained with a **Stored Procedure activity**. The former copies data from your source store into a temporary table, for example, **##UpsertTempTable**, as the table name in the dataset. Then the latter invokes a stored procedure to merge source data from the temp table into the target table and clean up the temp table.
+Örnek olarak, Azure Data Factory, **saklı yordam etkinliği**ile **kopyalama etkinliği** zincirli bir işlem hattı oluşturabilirsiniz. Eski, kaynak deponuzdaki verileri geçici bir tabloya kopyalar, örneğin, veri kümesindeki tablo adı olarak **# #UpsertTempTable**. İkinci olarak, kaynak verileri Temp tablosundan hedef tabloya birleştirmek ve geçici tabloyu temizlemek için bir saklı yordamı çağırır.
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-In your database, define a stored procedure with MERGE logic, like the following example, which is pointed to from the previous stored procedure activity. Assume that the target is the **Marketing** table with three columns: **ProfileID**, **State**, and **Category**. Do the upsert based on the **ProfileID** column.
+Veritabanınızda, önceki saklı yordam etkinliğinden işaret edilen aşağıdaki örnekte olduğu gibi, BIRLEŞTIRME mantığı ile bir saklı yordam tanımlayın. Hedefin üç sütunlu **Pazarlama** tablosu olduğunu varsayın: **ProfileId**, **State**ve **category**. **ProfileId** sütununu temel alarak büyük ölçüde yapın.
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -514,31 +514,31 @@ BEGIN
 END
 ```
 
-**Option 2:** You also can choose to [invoke a stored procedure within a copy activity](#invoke-a-stored-procedure-from-a-sql-sink). This approach runs each row in the source table instead of using bulk insert as the default approach in the copy activity, which isn't appropriate for large-scale upsert.
+**Seçenek 2:** Ayrıca, [bir kopyalama etkinliği içinde bir saklı yordamı çağırmayı](#invoke-a-stored-procedure-from-a-sql-sink)seçebilirsiniz. Bu yaklaşım, kopyalama etkinliğinde varsayılan yaklaşım olarak toplu ekleme kullanmak yerine kaynak tablodaki her satırı çalıştırır ve bu da büyük ölçekli yukarı doğru değildir.
 
-### <a name="overwrite-the-entire-table"></a>Overwrite the entire table
+### <a name="overwrite-the-entire-table"></a>Tüm tablonun üzerine yaz
 
-You can configure the **preCopyScript** property in a copy activity sink. In this case, for each copy activity that runs, Azure Data Factory runs the script first. Then it runs the copy to insert the data. For example, to overwrite the entire table with the latest data, specify a script to first delete all the records before you bulk load the new data from the source.
+Bir kopyalama etkinliği havuzunda **Precopyscript** özelliğini yapılandırabilirsiniz. Bu durumda, çalıştıran her kopyalama etkinliği için önce betiği çalıştırır Azure Data Factory. Ardından, verileri eklemek için kopyayı çalıştırır. Örneğin, en son verilerle tüm tablonun üzerine yazmak için, kaynaktan yeni verileri toplu yüklemeden önce tüm kayıtları silmek üzere bir komut dosyası belirtin.
 
-### <a name="write-data-with-custom-logic"></a>Write data with custom logic
+### <a name="write-data-with-custom-logic"></a>Özel mantık ile veri yazma
 
-The steps to write data with custom logic are similar to those described in the [Upsert data](#upsert-data) section. When you need to apply extra processing before the final insertion of source data into the destination table, for large scale, you can do one of two things: 
+Özel mantık ile veri yazma adımları, [upsert veri](#upsert-data) bölümünde açıklananlara benzerdir. Hedef tabloya son kaynak verileri eklemeden önce fazladan işlem uygulamanız gerektiğinde, büyük ölçekli bir şekilde iki işlemden birini yapabilirsiniz: 
 
-- Load to a temporary table and then invoke a stored procedure.
-- Invoke a stored procedure during copy.
+- Geçici bir tabloya yükleyin ve sonra saklı yordamı çağırın.
+- Kopyalama sırasında saklı yordam çağırma.
 
-## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Invoke a stored procedure from a SQL sink
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Bir SQL havuzundan saklı yordam çağırma
 
-When you copy data into Azure SQL Database Managed Instance, you also can configure and invoke a user-specified stored procedure with additional parameters. The stored procedure feature takes advantage of [table-valued parameters](https://msdn.microsoft.com/library/bb675163.aspx).
+Verileri Azure SQL veritabanı yönetilen örneği 'ne kopyaladığınızda, ek parametrelerle Kullanıcı tarafından belirtilen bir saklı yordamı da yapılandırabilir ve çağırabilirsiniz. Saklı yordam özelliği [tablo değerli parametrelerin](https://msdn.microsoft.com/library/bb675163.aspx)avantajlarından yararlanır.
 
 > [!TIP]
-> Invoking a stored procedure processes the data row by row instead of by using a bulk operation, which we don't recommend for large-scale copy. Learn more from [Best practice for loading data into Azure SQL Database Managed Instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
+> Saklı yordamı çağırmak, büyük ölçekli kopya için önermediğimiz bir toplu işlem kullanarak veri satırını satıra göre işler. [Azure SQL veritabanı yönetilen örneği 'ne veri yüklemeye yönelik en iyi uygulamalardan](#best-practice-for-loading-data-into-azure-sql-database-managed-instance)daha fazla bilgi edinin.
 
-You can use a stored procedure when built-in copy mechanisms don't serve the purpose. An example is when you want to apply extra processing before the final insertion of source data into the destination table. Some extra processing examples are when you want to merge columns, look up additional values, and insert data into more than one table.
+Yerleşik kopyalama mekanizmaları amaca uygun olmadığında, saklı bir yordam kullanabilirsiniz. Kaynak verilerin son olarak hedef tabloya eklenmesinin önüne daha fazla işlem uygulamak istediğinizde örnek bir örnektir. Bazı ek işleme örnekleri, sütunları birleştirmek, ek değerleri aramak ve birden fazla tabloya veri eklemek istebilmenizdir.
 
-The following sample shows how to use a stored procedure to do an upsert into a table in the SQL Server database. Assume that the input data and the sink **Marketing** table each have three columns: **ProfileID**, **State**, and **Category**. Do the upsert based on the **ProfileID** column, and only apply it for a specific category called "ProductA".
+Aşağıdaki örnek, SQL Server veritabanındaki bir tabloya bir üsert yapmak için saklı yordamın nasıl kullanılacağını göstermektedir. Giriş verilerinin ve havuz **Pazarlama** tablosunun her birinin üç sütunu olduğunu varsayalım: **ProfileId**, **State**ve **category**. **ProfileId** sütununu temel alarak ve yalnızca "Producta" adlı belirli bir kategori için uygulayın.
 
-1. In your database, define the table type with the same name as **sqlWriterTableType**. The schema of the table type is the same as the schema returned by your input data.
+1. Veritabanınızda, **Sqlwritertabletype**ile aynı ada sahip tablo türünü tanımlayın. Tablo türünün şeması, giriş verileriniz tarafından döndürülen şemayla aynıdır.
 
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -548,7 +548,7 @@ The following sample shows how to use a stored procedure to do an upsert into a 
     )
     ```
 
-2. In your database, define the stored procedure with the same name as **sqlWriterStoredProcedureName**. It handles input data from your specified source and merges into the output table. The parameter name of the table type in the stored procedure is the same as **tableName** defined in the dataset.
+2. Veritabanınızda, **sqlWriterStoredProcedureName**ile aynı ada sahip saklı yordamı tanımlayın. Belirtilen kaynağınızdan gelen giriş verilerini işler ve çıkış tablosu ile birleştirir. Saklı yordamdaki tablo türünün parametre adı, veri kümesinde tanımlanan **TableName** ile aynıdır.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -565,7 +565,7 @@ The following sample shows how to use a stored procedure to do an upsert into a 
     END
     ```
 
-3. In Azure Data Factory, define the **SQL MI sink** section in the copy activity as follows:
+3. Azure Data Factory, kopyalama etkinliğinde **SQL mı havuzu** bölümünü aşağıdaki gibi tanımlayın:
 
     ```json
     "sink": {
@@ -581,35 +581,35 @@ The following sample shows how to use a stored procedure to do an upsert into a 
     }
     ```
 
-## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Data type mapping for Azure SQL Database Managed Instance
+## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği için veri türü eşlemesi
 
-When data is copied to and from Azure SQL Database Managed Instance, the following mappings are used from Azure SQL Database Managed Instance data types to Azure Data Factory interim data types. To learn how the copy activity maps from the source schema and data type to the sink, see [Schema and data type mappings](copy-activity-schema-and-type-mapping.md).
+Veriler Azure SQL veritabanı yönetilen örneği 'ne ve öğesinden kopyalandığında, Azure SQL veritabanı yönetilen örnek veri türleri arasında, geçici veri türlerini Azure Data Factory için aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemadan ve veri türünden havuza nasıl eşlendiğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
-| Azure SQL Database Managed Instance data type | Azure Data Factory interim data type |
+| Azure SQL veritabanı yönetilen örnek veri türü | Azure Data Factory geçici veri türü |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boole |
+| bit |Boole değeri |
 | char |String, Char[] |
-| date |Tarih Saat |
-| Datetime |Tarih Saat |
-| datetime2 |Tarih Saat |
+| date |DateTime |
+| Tarih saat |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Ondalık |Ondalık |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double |
+| Float |çift |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |Ondalık |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Ondalık |
 | nvarchar |String, Char[] |
 | real |Tek |
 | rowversion |Byte[] |
-| smalldatetime |Tarih Saat |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Ondalık |
 | sql_variant |Nesne |
 | metin |String, Char[] |
 | time |TimeSpan |
@@ -621,15 +621,15 @@ When data is copied to and from Azure SQL Database Managed Instance, the followi
 | xml |Xml |
 
 >[!NOTE]
-> For data types that map to the Decimal interim type, currently Azure Data Factory supports precision up to 28. If you have data that requires precision larger than 28, consider converting to a string in a SQL query.
+> Ondalık geçici türle eşlenen veri türleri için şu anda Azure Data Factory en fazla 28 ' ye kadar duyarlık destekler. 28 ' den daha büyük bir duyarlık gerektiren verileriniz varsa, bir SQL sorgusunda bir dizeye dönüştürmeyi düşünün.
 
-## <a name="lookup-activity-properties"></a>Lookup activity properties
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
-## <a name="getmetadata-activity-properties"></a>GetMetadata activity properties
+## <a name="getmetadata-activity-properties"></a>GetMetadata etkinlik özellikleri
 
-To learn details about the properties, check [GetMetadata activity](control-flow-get-metadata-activity.md) 
+Özelliklerle ilgili ayrıntıları öğrenmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) denetleyin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [Supported data stores](copy-activity-overview.md##supported-data-stores-and-formats).
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md##supported-data-stores-and-formats).

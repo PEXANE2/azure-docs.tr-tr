@@ -1,5 +1,5 @@
 ---
-title: SAP HANA yedekleme destek matrisi
+title: SAP HANA Backup destek matrisi
 description: Bu makalede, Azure VM 'lerde SAP HANA veritabanlarını yedeklemek için Azure yedekleme 'yi kullandığınızda desteklenen senaryolar ve sınırlamalar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/7/2019

@@ -17,10 +17,10 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451453"
 ---
-Management of contributions from collaborators depends on the current status of the app.
+Ortak çalışanların katkılarının yönetimi, uygulamanın geçerli durumuna bağlıdır.
 
-**For [authoring resource migrated](../luis-migration-authoring.md) apps**: _contributors_ are managed in the Azure portal for the authoring resource, using the **Access control (IAM)** page. Add a user, using the collaborator's email address and the _contributor_ role. 
+**[Kaynak geçişi](../luis-migration-authoring.md) yapılan uygulamalar yazmak için**: _katkıda bulunanlar_ , **Access Control (IAM)** sayfasını kullanarak yazma kaynağı için Azure Portal yönetilir. Ortak çalışan e-posta adresini ve _katkıda_ bulunan rolünü kullanarak bir kullanıcı ekleyin. 
 
-**For apps that have not migrated yet**: all _collaborators_ are managed in the LUIS portal from each app's **Manage -> Collaborators** page. On this page, [add a user's email address](../luis-how-to-collaborate.md). This provides authoring access to this app only. 
+**Henüz geçirilmeyen uygulamalar için**: tüm _ortak çalışanlar_ , her uygulamanın **Manage-> ortak çalışanlar** sayfasından Luo portalında yönetilir. Bu sayfada, [bir kullanıcının e-posta adresini ekleyin](../luis-how-to-collaborate.md). Bu, yalnızca bu uygulamaya yazma erişimi sağlar. 
 
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090623"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548331"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
@@ -73,8 +73,7 @@ Desteklenen iki akış alma türü vardır:
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Artan VM ve küme boyutları ile akış alma performansı ve kapasitesi ölçeklenir. Tek bir D14 düğümü için, önerilen yük saniyede 150 ' e kadar istek olur.
-* Şu anda destek yalnızca 8 ve 16 çekirdek SKU 'Larına yöneliktir (D13, D14, L8 ve L16).
+* Artan VM ve küme boyutları ile akış alma performansı ve kapasitesi ölçeklenir. Eş zamanlı alma, çekirdek başına 6 alma ile sınırlıdır. Örneğin, D14 ve L16 gibi 16 çekirdekli SKU 'Lar için, desteklenen en fazla 96 yükü eşzamanlı Alım olur. D11 gibi 2 çekirdekli SKU 'Lar için, en fazla desteklenen yük 12 eşzamanlı Alım olur.
 * Alma isteği başına veri boyutu sınırlaması 4 MB 'tır.
 * Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için 5 dakikaya kadar sürebilir.
 * Veri akışı aracılığıyla yapılmasa bile, küme üzerinde akış alımı etkinleştirme, verileri akışa alma için küme makinelerinin yerel SSD disk bir kısmını kullanır ve etkin önbellek için kullanılabilir depolama alanını azaltır.

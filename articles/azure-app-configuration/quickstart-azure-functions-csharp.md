@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma gezgini** >  **+ Oluştur** ' u seçin:
 
-    | Anahtar | Değer |
+    | Anahtar | Value |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından veriler |
 

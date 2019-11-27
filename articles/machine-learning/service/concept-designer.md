@@ -88,14 +88,14 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili baz
 
 İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
-| İşlem hedefi | Eğitim | Dağıtım |
+| Hedef işlem | Eğitim | Dağıtım |
 | ---- |:----:|:----:|
 | Azure Machine Learning işlem | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 İşlem hedefleri Machine Learning [çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda yönetirsiniz.
 
-## <a name="deploy"></a>Dağıtma
+## <a name="deploy"></a>Dağıt
 
 Gerçek zamanlı bir işlem hattı gerçekleştirmek için, bir işlem hattını **gerçek zamanlı uç nokta**olarak dağıtmanız gerekir. Gerçek zamanlı uç nokta, bir dış uygulama ve Puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bir uç noktaya yapılan çağrı, uygulamaya gerçek zamanlı olarak tahmin sonuçları döndürür. Gerçek zamanlı bir uç noktaya çağrı yapmak için, uç noktasını dağıtırken oluşturulan API anahtarını geçirirsiniz. Uç nokta, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 

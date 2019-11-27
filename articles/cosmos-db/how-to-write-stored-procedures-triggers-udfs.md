@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606270"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533162"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma
 
@@ -75,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Saklı yordamlar için giriş parametreleri olarak diziler 
 
-Azure portal ' de bir saklı yordam tanımlarken, giriş parametreleri her zaman saklı yordama bir dize olarak gönderilir. Bir dizi dizeyi girdi olarak iletseniz bile, dizi dizeye dönüştürülür ve saklı yordama gönderilir. Bu sorunu geçici olarak çözmek için, saklı yordamınız içinde dizeyi bir dizi olarak ayrıştırarak bir işlev tanımlayabilirsiniz. Aşağıdaki kod, bir dize giriş parametresinin dizi olarak nasıl ayrıştıralınacağını gösterir:
+Azure portal ' de bir saklı yordam tanımlarken, giriş parametreleri her zaman saklı yordama bir dize olarak gönderilir. Dizelerden oluşan bir dizi girdi olarak geçirdiğiniz olsa bile, dizi dizeye dönüştürülür ve saklı yordamı gönderilir. Bu sorunu geçici olarak çözmek için, saklı yordamınız içinde dizeyi bir dizi olarak ayrıştırarak bir işlev tanımlayabilirsiniz. Aşağıdaki kod, bir dize giriş parametresinin dizi olarak nasıl ayrıştıralınacağını gösterir:
 
 ```javascript
 function sample(arr) {
@@ -238,7 +238,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Ön tetikleyicilerinin herhangi bir giriş parametresi olamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
+Öncesi tetikleyici, giriş parametreleri bulunamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
 
 Tetikleyiciler kaydedildikten sonra, birlikte çalışacağı işlemleri belirtebilirsiniz. Bu tetikleyici, aşağıdaki kodda gösterildiği gibi bir değiştirme işleminde tetikleyicinin kullanılmasına izin verilmeyen bir `TriggerOperation` `TriggerOperation.Create`ile oluşturulmalıdır.
 
@@ -316,6 +316,17 @@ function tax(income) {
 ```
 
 Kullanıcı tanımlı bir işlevi kaydetme ve kullanma örnekleri için, bkz. [Azure Cosmos DB makalesinde Kullanıcı tanımlı işlevleri kullanma](how-to-use-stored-procedures-triggers-udfs.md#udfs) .
+
+## <a name="logging"></a>Günlüğe kaydetme 
+
+Saklı yordam, Tetikleyiciler veya Kullanıcı tanımlı işlevleri kullanırken, `console.log()` komutunu kullanarak adımları günlüğe kaydedebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, `EnableScriptLogging` true olarak ayarlandığında, bu komut hata ayıklama için bir dize odaklanacaktır:
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

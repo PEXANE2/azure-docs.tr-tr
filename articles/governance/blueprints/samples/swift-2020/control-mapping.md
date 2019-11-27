@@ -1,14 +1,14 @@
 ---
-title: Örnek-SWIFT CSP-cscf V2020 şema-Control eşleme
+title: SWIFT CSP-cscf V2020 şema örnek denetimleri
 description: SWIFT CSP-cscf V2020 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 09/24/2019
 ms.topic: sample
-ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1826e4820f06fc3a858ce6cd5f8906baaa9808cc
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037835"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546522"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-cscf V2020 şema örneğinin denetim eşlemesi
 
@@ -85,9 +85,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>Işleme başarısızlıklarını denetlemek için 2,2, 2,7 ve 6,4 yanıtı
 
@@ -103,9 +103,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve anal
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 ve 6,5 bir denetim oluşturma
 
@@ -113,9 +113,9 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
@@ -272,9 +272,9 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
 - SQL Server için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir
 - Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir

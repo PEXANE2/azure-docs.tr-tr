@@ -1,6 +1,6 @@
 ---
-title: Get started with Azure Cost Management for partners
-description: This article explains how partners use Azure Cost Management features and how they enable Cost Management access for their customers.
+title: İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
+description: Bu makalede, iş ortaklarının Azure maliyet yönetimi özelliklerini nasıl kullandıkları ve müşterileri için maliyet yönetimi erişimini nasıl etkinleşdikleri açıklanmaktadır.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,271 +17,271 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219215"
 ---
-# <a name="get-started-with-azure-cost-management-for-partners"></a>Get started with Azure Cost Management for partners
+# <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
-Azure Cost Management is natively available for partners who have onboarded their customers to a Microsoft Customer Agreement and have [purchased an Azure Plan](/partner-center/purchase-azure-plan). This article explains how partners use [Azure Cost Management](index.yml) features to view costs for subscriptions in the Azure Plan. It also describes how partners enable Cost Management access for their customers. Customers can use Cost Management features when enabled by their CSP partner.
+Azure maliyet yönetimi, müşterileri Microsoft Müşteri anlaşmasıyla eklendi ve [bir Azure planı satın](/partner-center/purchase-azure-plan)almış olan iş ortakları için yerel olarak kullanılabilir. Bu makalede, Azure planındaki aboneliklerin maliyetlerini görüntülemek için iş ortaklarının [Azure maliyet yönetimi](index.yml) özelliklerini nasıl kullanacağı açıklanır. Ayrıca, iş ortaklarının müşterileri için maliyet yönetimi erişimini nasıl etkinleştireceğinizi açıklar. Müşteriler, CSP iş ortakları tarafından etkinleştirildiğinde maliyet yönetimi özelliklerini kullanabilir.
 
-CSP partners use Cost Management to:
+CSP iş ortakları maliyet yönetimini şu şekilde kullanır:
 
-- Understand invoiced costs and associate the costs to the customer, subscriptions, resource groups, and services.
-- Get an intuitive view of Azure costs in [cost analysis](quick-acm-cost-analysis.md) with capabilities to analyze costs by customer, subscription, resource group, resource, meter, service, and many other dimensions.
-- View resource costs that have Partner Earned Credit (PEC) applied in Cost Analysis.
-- Set up notifications and automation using programmatic [budgets](tutorial-acm-create-budgets.md) and alerts when costs exceed budgets.
-- Enable the Azure Resource Manager policy that provides customer access to Cost Management data. Customers can then view consumption cost data for their subscriptions using [pay-as-you-go rates](https://azure.microsoft.com/pricing/calculator/).
+- Faturalanmış maliyetleri anlayın ve maliyetleri müşteri, abonelikler, kaynak grupları ve hizmetlerle ilişkilendirin.
+- Maliyetleri müşteri, abonelik, kaynak grubu, kaynak, ölçüm, hizmet ve diğer birçok boyuta göre analiz etme becerilerinin yanı sıra [Maliyet analizinde](quick-acm-cost-analysis.md) Azure maliyetlerinin sezgisel bir görünümünü alın.
+- Maliyet analizine uygulanan Iş ortağı kazanılmış kredisi (PEC) olan kaynak maliyetlerini görüntüleyin.
+- Maliyetler bütçeleri aştığında programlı [bütçeleri](tutorial-acm-create-budgets.md) ve uyarıları kullanarak bildirimleri ve Otomasyonu ayarlayın.
+- Maliyet yönetimi verilerine müşteri erişimi sağlayan Azure Resource Manager ilkesini etkinleştirin. Müşteriler daha sonra [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/calculator/)sahip aboneliklerine ait tüketim maliyeti verilerini görüntüleyebilir.
 
-Here's an example showing costs for all customers.
-![Example showing costs for all customers](./media/get-started-partners/customer-costs1.png)
+Tüm müşterilerin maliyetlerini gösteren bir örnek aşağıda verilmiştir.
+tüm müşterilerin maliyetlerini gösteren örnek ![](./media/get-started-partners/customer-costs1.png)
 
-Here's an example showing costs for a single customer.
-![Example showing costs for a single customer](./media/get-started-partners/customer-costs2.png)
+Tek bir müşterinin maliyetlerini gösteren bir örnek aşağıda verilmiştir.
+tek bir müşterinin maliyetlerini gösteren örnek ![](./media/get-started-partners/customer-costs2.png)
 
-All functionality available in Azure Cost Management is also available with REST APIs. Use the APIs to automate cost management tasks.
+Azure maliyet yönetimi 'nde kullanılabilen tüm işlevler REST API 'Leri ile de kullanılabilir. Maliyet yönetimi görevlerini otomatikleştirmek için API 'Leri kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure Cost Management requires read access to your billing account or subscription. Access can be granted at any level above your resources, from the billing account or a management group down to individual resource groups where you manage your apps. For more information about enabling and assigning access to Azure Cost Management for a billing account, see [Assign users roles and permissions](/partner-center/permissions-overview). The **Global admin** and **Admin agent** roles can manage costs for a billing account.
+Azure maliyet yönetimi, faturalandırma hesabınıza veya aboneliğine yönelik okuma erişimi gerektirir. Verileriniz üzerinde, faturalama hesabından veya bir yönetim grubundan, uygulamalarınızı yönettiğiniz tek tek kaynak gruplarına kadar erişim verilebilir. Bir faturalandırma hesabı için Azure maliyet yönetimine erişimi etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview). **Genel yönetici** ve **yönetici Aracısı** rolleri bir faturalandırma hesabının maliyetlerini yönetebilir.
 
-To view a full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md).
+Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md).
 
 
-## <a name="how-cost-management-uses-scopes"></a>How Cost Management uses scopes
+## <a name="how-cost-management-uses-scopes"></a>Maliyet yönetimi kapsamları nasıl kullanır
 
-Scopes are where you manage billing data, have roles specific to payments, view invoices, and conduct general account management. Billing and account roles are managed separately from scopes used for resource management, which use RBAC. To clearly distinguish the intent of the separate scopes, including the access control differences, they are referred to as billing scopes and RBAC scopes, respectively.
+Kapsam, faturalandırma verilerini yönettiğiniz, ödemelere özgü rollere sahip olan roller, faturaları görüntüleme ve genel hesap yönetimi yürütme yerdir. Faturalandırma ve hesap rolleri, RBAC kullanan kaynak yönetimi için kullanılan kapsamlardan ayrı olarak yönetilir. Erişim denetimi farklılıkları da dahil olmak üzere ayrı kapsamların amacını açıkça ayırt etmek için sırasıyla faturalandırma kapsamları ve RBAC kapsamları olarak adlandırılır.
 
-To understand billing scopes and RBAC scopes and how cost management works with scopes, see [Understand and work with scopes](understand-work-scopes.md).
+Faturalama kapsamlarını ve RBAC kapsamlarını ve maliyet yönetiminin kapsamlar ile nasıl çalıştığını anlamak için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
 
-## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Manage costs with partner tenant billing scopes
+## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>İş ortağı kiracı faturalama kapsamları ile maliyetleri yönetme
 
-After you've onboarded your customers to a Microsoft Customer Agreement, the following _billing scopes_ are available in your tenant. Use the scopes to manage costs in Cost Management.
+Müşterilerinizi bir Microsoft Müşteri sözleşmesine eklendi ettikten sonra, kiracınızda aşağıdaki _Faturalama kapsamları_ kullanılabilir. Maliyet yönetimi 'nde maliyetleri yönetmek için kapsamları kullanın.
 
-### <a name="billing-account-scope"></a>Billing account scope
+### <a name="billing-account-scope"></a>Faturalandırma hesabı kapsamı
 
-Use the billing account scope to view pre-tax costs across all your customers and billing profiles. Invoice costs are only shown for customer's consumption-based products on the Microsoft Customer Agreement. However, invoice costs are shown for purchased-based products for customers on both the Microsoft Customer Agreement and the CSP offer. Currently, the default currency to view costs in the scope is US dollars. Budgets set for the scope are also in USD.
+Tüm müşterileriniz ve faturalandırma profilleriniz genelinde vergi öncesi maliyetleri görüntülemek için faturalandırma hesabı kapsamını kullanın. Fatura ücretleri yalnızca Microsoft Müşteri anlaşmasındaki müşterinin tüketim tabanlı ürünleri için gösterilir. Ancak, Microsoft Müşteri anlaşmasındaki ve CSP teklifinde müşterilere yönelik satın alınan tabanlı ürünler için fatura maliyetleri gösterilir. Şu anda, kapsamdaki maliyetleri görüntülemek için varsayılan para birimi ABD doları cinsindendir. Kapsam için ayarlanan bütçeler de USD olarak gösterilir.
 
-Regardless of different customer-billed currencies, partners use Billing account scope to set budgets and manage costs in USD across their customers, subscriptions, resources, and resource groups.
+Müşteri tarafından faturalandırılan farklı para birimlerinden bağımsız olarak, iş ortakları bütçe hesabı kapsamını kullanarak, müşteriler, abonelikler, kaynaklar ve kaynak gruplarında ABD Doları cinsinden maliyetleri ayarlar ve maliyetleri yönetir.
 
-Partners also filter costs in a specific billing currency across customers in the cost analysis view. Select the **Actual cost** list to view costs in supported customer billing currencies.
+İş ortakları, maliyet analizi görünümündeki müşteriler arasında belirli bir faturalandırma para birimindeki maliyetleri de filtreleyebilir. Desteklenen müşteri faturalandırma para birimlerindeki maliyetleri görüntülemek için **gerçek maliyet** listesini seçin.
 
-![Example showing Actual cost selection for currencies](./media/get-started-partners/actual-cost-selector.png)
+![Para birimleri için gerçek maliyet seçimini gösteren örnek](./media/get-started-partners/actual-cost-selector.png)
 
-Use the [amortized cost view](quick-acm-cost-analysis.md#customize-cost-views) in billing scopes to view reserved instance amortized costs across a reservation term.
+Bir rezervasyon dönemi genelinde ayrılmış örnek itfası maliyetlerini görüntülemek için faturalandırma kapsamlarında [itfası maliyeti görünümünü](quick-acm-cost-analysis.md#customize-cost-views) kullanın.
 
-### <a name="billing-profile-scope"></a>Billing profile scope
+### <a name="billing-profile-scope"></a>Faturalandırma profili kapsamı
 
-Use the billing profile scope to view pre-tax costs in the billing currency across all your customers for all products and subscriptions included in an invoice. You can filter costs in a billing profile for a specific invoice using the **InvoiceID** filter. The filter shows the consumption and product purchase costs for a specific invoice. You can also filter the costs for a specific customer on the invoice to see pre-tax costs.
+Bir faturaya dahil edilen tüm ürünler ve abonelikler için tüm müşterileriniz genelinde faturalandırma para birimindeki ön vergi maliyetlerini görüntülemek için Faturalandırma profili kapsamını kullanın. **InvoiceId** filtresini kullanarak, belirli bir fatura için faturalandırma profilindeki maliyetleri filtreleyebilirsiniz. Filtre, belirli bir faturaya ait tüketim ve ürün satın alma maliyetlerini gösterir. Ayrıca, ön vergi maliyetlerini görmek için faturada belirli bir müşterinin maliyetlerini filtreleyebilirsiniz.
 
-After you onboard customers to a Microsoft Customer Agreement, you receive an invoice that includes all charges for all products (consumption, purchases, and entitlements) for these customers on the Microsoft Customer Agreement. When billed in the same currency, these invoices also include the charges for entitlement and purchased products such as SaaS, Azure Marketplace, and reservations for customers who are still in the CSP offer.
+Müşterileri bir Microsoft Müşteri sözleşmesine ekledikten sonra, Microsoft Müşteri anlaşmasındaki bu müşterilere yönelik tüm ürünlerin (tüketim, satın almalar ve yetkilendirmeler) tüm ücretlerini içeren bir fatura alırsınız. Aynı para biriminde faturalandırılırken, bu faturalar aynı zamanda, CSP teklifinde bulunan müşterilere yönelik destek ve satın alma, Azure Marketi ve rezervasyonlar gibi ücretli ürünlerin ücretini de kapsar.
 
-To help reconcile charges against the customer invoice, the billing profile scope enables you to see all costs that accrue for an invoice for your customers. Like the invoice, the scope shows costs for every customer in the new Microsoft Customer Agreement. The scope also shows every charge for customer entitlement products still in the current CSP offer.
+Fatura profili kapsamı, müşteri faturasına karşı ücretleri mutabık kılmak için müşterileriniz için bir fatura için tahakkuk eden tüm maliyetleri görmenizi sağlar. Faturada olduğu gibi, kapsam, yeni Microsoft Müşteri anlaşmasındaki her müşteri için maliyetleri gösterir. Kapsam aynı zamanda geçerli CSP teklifinde müşteri yetkilendirme ürünleri için her ücreti de gösterir.
 
-The billing profile and billing account scopes are the only applicable scopes that show charges for entitlement and purchase-based products like Azure Marketplace and reservation purchases.
+Faturalandırma profili ve faturalandırma hesabı kapsamları, Azure Marketi ve rezervasyon satın alımları gibi yetkilendirme ve satın alma tabanlı ürünlerin ücretlerini gösteren tek geçerli kapsamlardır.
 
-Billing profiles define the subscriptions that are included in an invoice. Billing profiles are the functional equivalent of an enterprise agreement enrollment. A billing profile is the scope where invoices are generated.
+Faturalandırma profilleri, bir faturaya dahil edilen abonelikleri tanımlar. Faturalandırma profilleri, bir kurumsal anlaşma kaydının işlevsel eşdeğeridir. Faturalandırma profili, faturaların oluşturulduğu kapsamdır.
 
-Currently, the customer's billing currency is the default currency when viewing costs in the billing profile scope. Budgets set at the billing profile scope are in the billing currency.
+Şu anda, Faturalandırma profili kapsamındaki maliyetler görüntülenirken müşterinin faturalandırma para birimi varsayılan para birimidir. Faturalama profili kapsamında ayarlanan bütçeler faturalandırma para birimindedir.
 
-Partners can use the scope to reconcile to invoices. And, they use the scope to set budgets in the billing currency for the following items:
+İş ortakları, faturalara mutabık kılmak için kapsamı kullanabilir. Ayrıca, aşağıdaki öğeler için faturalandırma para birimindeki bütçeleri ayarlamak için kapsamı kullanırlar:
 
-- Specific filtered invoice
+- Belirli filtrelenmiş fatura
 - Müşteri
 - Abonelik
 - Kaynak grubu
 - Kaynak
 - Azure hizmeti
 - Ölçüm
-- ResellerMPNID
+- Resellermpnıd
 
-### <a name="customer-scope"></a>Customer scope
+### <a name="customer-scope"></a>Müşteri kapsamı
 
-Partners use the scope to manage costs associated to customers that are onboarded to the Microsoft Customer Agreement. The scope allows partners to view pre-tax costs for a specific customer. You can also filter the pre-tax costs for a specific subscription, resource group, or resource.
+İş ortakları, Microsoft Müşteri anlaşmasıyla ilgili eklendi müşterilerin maliyetlerini yönetmek için kapsamı kullanır. Kapsam, iş ortaklarının belirli bir müşteri için vergi öncesi maliyetlerini görüntülemesine olanak tanır. Ayrıca, belirli bir abonelik, kaynak grubu veya kaynak için vergi öncesi maliyetlerine filtre uygulayabilirsiniz.
 
-The customer scope doesn't include customers who are on the current CSP offer. The scope only includes customers who have a Microsoft Customer Agreement. Entitlement costs, not Azure usage, for current CSP offer customers are available at the billing account and billing profile scopes when you apply the customer filter.
+Müşteri kapsamı, geçerli CSP teklifinde bulunan müşterileri içermez. Kapsam yalnızca Microsoft Müşteri Sözleşmesi olan müşterileri içerir. Azure kullanımı değil, geçerli CSP teklifi için yetkilendirme maliyetleri, müşteri filtresini uyguladığınızda faturalandırma hesabı ve faturalandırma profili kapsamlarında kullanılabilir.
 
-## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partner access to billing scopes in Cost Management
+## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Maliyet yönetimi 'nde faturalandırma kapsamlarına iş ortağı erişimi
 
-Only the users with **Global admin** and **Admin agent** roles can manage and view costs for billing accounts, billing profiles, and customers directly in the partner's Azure tenant. For more information about partner center roles, see [Assign users roles and permissions](/partner-center/permissions-overview).
+Yalnızca **genel yönetici** ve yönetici Aracısı rollerine sahip olan kullanıcılar, doğrudan ortağın Azure **kiracısında** faturalandırma hesapları, faturalandırma profilleri ve müşteriler için maliyetleri yönetebilir ve görüntüleyebilir. İş Ortağı Merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview).
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Enable cost management in the customer tenant
+## <a name="enable-cost-management-in-the-customer-tenant"></a>Müşteri kiracısında maliyet yönetimini etkinleştirme
 
-Partners may enable access to Cost Management after customers are onboarded to a Microsoft Customer Agreement. Then partners can then enable a policy allowing customers to view their costs computed at pay-as-you-go retail rates. Costs are shown in the customer's billing currency for their consumed usage at RBAC subscription and resource groups scopes.
+İş ortakları, müşterilerin bir Microsoft Müşteri sözleşmesine eklendi sonra maliyet yönetimine erişmesini sağlayabilir. Daha sonra, iş ortakları, müşterilerin maliyetlerini Kullandıkça Öde perakende tarifelerine göre görüntülemesini sağlayan bir ilkeyi etkinleştirebilir. Maliyetler, RBAC aboneliği ve kaynak grupları kapsamlarında tüketilen kullanımlar için müşterinin faturalandırma para biriminde gösterilir.
 
-When the policy for cost visibility is enabled by the partner, any user with Azure Resource Manager access to the subscription can manage and analyze costs at pay-as-you-go rates. Effectively, resellers and customers that have the appropriate RBAC access to the Azure subscriptions can view cost.
+Maliyet görünürlüğü ilkesi iş ortağı tarafından etkinleştirildiğinde, aboneliğe Azure Resource Manager erişimi olan herhangi bir Kullanıcı, Kullandıkça Öde tarifelerine göre maliyetleri yönetebilir ve analiz edebilir. Etkin, Azure aboneliklerine uygun RBAC erişimine sahip satıcılar ve müşteriler maliyeti görüntüleyebilir.
 
-Regardless of the policy, partners can also view the costs if they have access to the subscription and resource group.
+İlke ne olursa olsun, iş ortakları, abonelik ve kaynak grubuna erişimleri varsa maliyetleri de görüntüleyebilirler.
 
-### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Enable the policy to view Azure usage charges
+### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Azure kullanım ücretlerini görüntülemek için ilkeyi etkinleştirin
 
-Partners use the following information to enable to the policy to view Azure usage charges for their customers.
+İş ortakları, bu bilgileri kullanarak müşterilerine yönelik Azure kullanım ücretlerini görüntüleme ilkesini etkinleştirir.
 
-In the Azure portal, sign in to the partner tenant and click **Cost Management + Billing**. Select a billing account and then click **Customers**. The list of customers is associated with the billing account.
+Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' e tıklayın. Bir faturalandırma hesabı seçin ve ardından **müşteriler**' e tıklayın. Müşterilerin listesi faturalandırma hesabıyla ilişkilendirilir.
 
-In the list of customers, select the customer that you want to allow to view costs.
+Müşteriler listesinde, maliyetleri görüntülemek için izin vermek istediğiniz müşteriyi seçin.
 
-![Select customers in Cost Management](./media/get-started-partners/customer-list.png)
+![Maliyet yönetimi 'nde müşterileri seçin](./media/get-started-partners/customer-list.png)
 
-Under **Settings**, click **Policies**.
+**Ayarlar**altında **ilkeler**' e tıklayın.
 
-The current cost visibility policy is shown for **Azure Usage** charges associated to the subscriptions for the selected customer.
-![Policy to allow customers to view pay-as-you-go charges](./media/get-started-partners/cost-management-billing-policies.png)
+Geçerli maliyet görünürlüğü ilkesi, Seçili müşteriyle ilgili aboneliklerle ilişkili **Azure kullanım** ücretleri için gösterilir.
+müşterilerin Kullandıkça Öde ücretlerini görüntülemesine izin vermek için ![](./media/get-started-partners/cost-management-billing-policies.png)
 
-When the policy is set to **No**, Azure Cost Management isn't available for subscription users associated to the customer. Unless enabled by a partner, the cost visibility policy is disabled by default for all subscription users.
+İlke **Hayır**olarak ayarlandığında, müşteriyle ilişkili abonelik kullanıcıları Için Azure maliyet yönetimi kullanılamaz. Bir iş ortağı tarafından etkinleştirilmediği müddetçe, tüm abonelik kullanıcıları için maliyet görünürlük ilkesi varsayılan olarak devre dışıdır.
 
-When the cost policy is set to **Yes**, subscription users associated to the customer tenant can see usage charges at pay-as-you go rates.
+Maliyet ilkesi **Evet**olarak ayarlandığında, müşteri kiracısıyla ilişkili abonelik kullanıcıları Kullandıkça Öde tarifelerine göre kullanım ücretlerini görebilirler.
 
-When the cost visibility policy is enabled, all services that have subscription usage show costs at pay-as-you-go rates. Reservation usage appears with zero charges for actual and amortized costs. Purchases and entitlements are not associated to a specific subscription. So, purchases aren't displayed at the subscription scope.
+Maliyet görünürlüğü ilkesi etkinleştirildiğinde, abonelik kullanımı olan tüm hizmetler Kullandıkça Öde tarifelerine göre maliyetleri gösterir. Rezervasyon kullanımı, gerçek ve ortaya çıkan maliyetler için sıfır ücret ile görünür. Satın alımlar ve yetkilendirmeler belirli bir abonelikle ilişkili değildir. Bu nedenle, satın alma işlemleri abonelik kapsamında gösterilmez.
 
-To view costs for the customer tenant, open Cost Management + Billing and then click Billing accounts. In the list of billing accounts, click a billing account.
+Müşteri kiracının maliyetlerini görüntülemek için maliyet yönetimi + Faturalandırma ' i açın ve faturalama hesapları ' na tıklayın. Faturalandırma hesapları listesinde, bir faturalandırma hesabına tıklayın.
 
-![Select a billing account](./media/get-started-partners/select-billing-account.png)
+![Bir faturalandırma hesabı seçin](./media/get-started-partners/select-billing-account.png)
 
-Under **Billing**, click **Azure subscriptions**, and then click a customer.
+**Faturalama**altında **Azure abonelikleri**' ne ve ardından bir müşteriye tıklayın.
 
-![Select an Azure subscription customer](./media/get-started-partners/subscriptions-select-customer.png)
+![Bir Azure aboneliği müşterisi seçin](./media/get-started-partners/subscriptions-select-customer.png)
 
-Click **Cost analysis** and start reviewing costs.
-Cost analysis, budgets, and alerts are available for the subscription and resource group RBAC scopes at pay-as-you-go rate-based costs.
+**Maliyet Analizi** ' ne tıklayın ve maliyetleri gözden geçirmeye başlayın.
+Maliyet analizi, bütçeler ve uyarılar, Kullandıkça Öde tarifesine göre abonelik ve kaynak grubu RBAC kapsamları için kullanılabilir.
 
-![View cost analysis as a customer ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
-Amortized views and actual costs for reserved instances in the RBAC scopes show zero charges. Reserved instance costs are only showing in billing scopes where the purchases were made.
+RBAC kapsamlarındaki ayrılmış örnekler için itfası görünümleri ve gerçek maliyetler sıfır ücret gösterir. Ayrılmış örnek maliyetleri yalnızca satınalmaların yapıldığı faturalandırma kapsamlarında gösterilir.
 
-## <a name="analyze-costs-in-cost-analysis"></a>Analyze costs in cost analysis
+## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizinde maliyetleri analiz etme
 
-Partners can explore and analyze costs in cost analysis across customers for a specific customer or for an invoice. In the [cost analysis](quick-acm-cost-analysis.md) view, you can also [save views](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) and export data to [CSV and PNG files](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+İş ortakları, belirli bir müşteri ya da bir fatura için müşteriler genelinde maliyet analizinde maliyetleri araştırabilir ve analiz edebilir. [Maliyet Analizi](quick-acm-cost-analysis.md) görünümünde, [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyalarına](quick-acm-cost-analysis.md#automation-and-offline-analysis)dışarı aktarabilirsiniz.
 
-You can use filter and group by features in cost analysis to analyze costs by multiple fields. Partner-specific fields are shown in the next section.
+Maliyetleri birden çok alana göre analiz etmek için, maliyet analizinde filtre ve gruplandırma özelliklerini kullanabilirsiniz. İş ortaklarına özgü alanlar, sonraki bölümde gösterilmiştir.
 
-## <a name="data-fields"></a>Data fields
+## <a name="data-fields"></a>Veri alanları
 
-The following data fields are found in usage detail files and Cost Management APIs. Where available, Partner Center equivalent information is shown. For the following bold fields, partners can use filter and group by features in cost analysis to analyze costs by multiple fields. Bold fields apply only to Microsoft Customer Agreements supported by partners.
+Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki veri alanları bulunur. Kullanılabilir olduğunda, Iş Ortağı Merkezi 'nin eşdeğer bilgileri gösterilir. Aşağıdaki kalın alanlarda iş ortakları, maliyetleri birden çok alana göre çözümlemek için maliyet analizindeki özelliklere göre filtreleme ve gruplama özelliklerini kullanabilir. Kalın alanlar yalnızca iş ortakları tarafından desteklenen Microsoft Müşteri anlaşmaları için geçerlidir.
 
-| **Field name** | **Açıklama** | **Partner Center equivalent** |
+| **Alan adı** | **Açıklama** | **İş Ortağı Merkezi eşdeğeri** |
 | --- | --- | --- |
-| invoiceId | Invoice ID shown on the invoice for the specific transaction. | Invoice number where the transaction is shown. |
-| previousInvoiceID | Reference to an original invoice there is a refund (negative cost). Populated only when there is a refund. | Yok |
-| billingAccountName | Name of the billing account representing the partner. It accrues all costs across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | Yok |
-| billingAccountID | Identifier for the billing account representing the partner. | MCAPI Partner Commerce Root ID. Used in a request, but not included in a response.|
-| billingProfileID | Identifier for the billing profile that groups costs across invoices in a single billing currency across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | MCAPI Partner Billing Group ID. Used in a request, but not included in a response. |
-| billingProfileName | Name of the billing profile that groups costs across invoices in a single billing currency across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | Yok |
-| invoiceSectionName | Name of the project that is being charged in the invoice. Not applicable for Microsoft Customer Agreements onboarded by partners. | Yok |
-| invoiceSectionID | Identifier of the project that is being charged in the invoice. Not applicable for Microsoft Customer Agreements onboarded by partners. | Yok |
-| **CustomerTenantID** | Identifier of the Azure Active Directory tenant of the customer's subscription. | Customer's organizational ID - the customer's Azure Active Directory TenantID. |
-| **CustomerName** | Name of the Azure Active Directory tenant for the customer's subscription. | Customer's organization name, as shown in the Partner Center. Important for reconciling the invoice with your system information. |
-| **CustomerTenantDomainName** | Domain name for the Azure Active Directory tenant of the customer's subscription. | Customer Azure Active Directory tenant domain. |
-| **PartnerTenantID** | Identifier for the partner's Azure Active Directory tenant. | Partner Azure Active Directory Tenant ID called as Partner ID, in GUID format. |
-| **PartnerName** | Name of the partner Azure Active Directory tenant. | Partner name. |
-| **ResellerMPNID** | MPNID for the reseller associated with the subscription. | MPN ID of the reseller on record for the subscription. Not available for current activity. |
-| costCenter | Cost center associated to the subscription. | Yok |
-| billingPeriodStartDate | Billing period start date, as shown on the invoice. | Yok |
-| billingPeriodEndDate | Billing period end date, as shown on the invoice. | Yok |
-| servicePeriodStartDate | Start date for the rating period when the service usage was rated for charges. The prices for Azure services are determined for the rating period. | ChargeStartDate in Partner Center. Billing cycle start date, except when presenting dates of previously uncharged latent usage data from a previous billing cycle. The time is always the beginning of the day, 0:00. |
-| servicePeriodEndDate | End date for the period when the service usage was rated for charges. The prices for Azure services are determined based on the rating period. | Yok |
-| date | For Azure consumption data, it shows date of usage as rated. For reserved instance, it shows the purchased date. For recurring charges and one-time charges such as Marketplace and support, it shows the purchase date. | Yok |
-| productID | Identifier for the product that has accrued charges by consumption or purchase. It is the concatenated key of productID and SKuID, as shown in the Partner Center. | The ID of the product. |
-| ürün | Name of the product that has accrued charges by consumption or purchase, as shown on the invoice. | The product name in the catalog. |
-| serviceFamily | Shows the service family for the product purchased or charged. For example, Storage or Compute. | Yok |
-| productOrderID | The identifier of the asset or Azure plan name that the subscription belongs to. For example, Azure Plan. | Yok |
-| productOrderName | The name of the Azure plan that the subscription belongs to. For example, Azure Plan. | Yok|
-| consumedService | Consumed service (legacy taxonomy) as used in legacy EA usage details. | Service shown in the Partner Center. For example, Microsoft.Storage, Microsoft.Compute, and microsoft.operationalinsights. |
-| meterID | Metered identifier for measured consumption. | The ID of the used meter. |
-| meterName | Identifies the name of the meter for measured consumption. | The name of the consumed meter. |
-| meterCategory | Identifies the top-level service for usage. | The top-level service for the usage. |
-| meterSubCategory | Defines the type or subcategory of Azure service that can affect the rate. | The type of Azure service that can affect the rate.|
-| meterRegion | Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir. | The regional location of a data center for services, where applicable and populated. |
-| abonelik kimliği | Unique Microsoft generated identifier for the Azure subscription. | Yok |
+| invoiceId | Faturada belirli bir işlem için gösterilen fatura KIMLIĞI. | Hareketin gösterildiği fatura numarası. |
+| Previousıniceıd | Orijinal faturaya başvuru bir para iadesi (negatif maliyet). Yalnızca bir para iadesi olduğunda doldurulur. | Yok |
+| billingAccountName | İş ortağını temsil eden faturalandırma hesabının adı. Microsoft Müşteri sözleşmesine eklendi sahip olan ve SaaS, Azure Marketi ve rezervasyonlar gibi yetkilendirme satın almalarından oluşan CSP müşterilerinin tüm maliyetlerini tahakkuk ettirmiştir. | Yok |
+| Billingaccountıd | İş ortağını temsil eden faturalandırma hesabı için tanımlayıcı. | MCAPı Iş ortağı ticaret kök KIMLIĞI. Bir istekte kullanılır, ancak bir yanıta dahil edilmez.|
+| Billingprofileıd | Bir Microsoft Müşteri sözleşmesine eklendi sahip olan ve SaaS, Azure Marketi ve gibi yetkilendirme satın alma işlemleri yapmış olan CSP müşterileri üzerinde bulunan müşteriler genelinde tek bir faturalandırma para biriminde bulunan fatura profili için tanımlayıcı. oluşturamaz. | MCAPı Iş ortağı faturalama grubu KIMLIĞI. Bir istekte kullanılır, ancak bir yanıta dahil edilmez. |
+| billingProfileName | Bir Microsoft Müşteri sözleşmesine eklendi sahip olan ve SaaS, Azure Marketi ve gibi yetkilendirme satın alma işlemleri yapmış olan CSP müşterileri ile faturalar arasında maliyetleri gruplandıran faturalandırma profilinin adı. oluşturamaz. | Yok |
+| invoiceSectionName | Faturada ücretlendirilmekte olan projenin adı. İş ortakları tarafından eklendi Microsoft Müşteri anlaşmaları için geçerli değildir. | Yok |
+| ınvoicesectionıd | Faturada ücretlendirilmekte olan projenin tanımlayıcısı. İş ortakları tarafından eklendi Microsoft Müşteri anlaşmaları için geçerli değildir. | Yok |
+| **Customertenantıd** | Müşterinin aboneliğine ait Azure Active Directory kiracının tanıtıcısı. | Müşterinin kurumsal kimliği-müşterinin Azure Active Directory Tenantıd 'si. |
+| **CustomerName** | Müşterinin aboneliğine ait Azure Active Directory kiracının adı. | Iş ortağı merkezinde gösterildiği gibi müşterinin kuruluş adı. Sistem bilgileriniz ile faturayı mutabık kılma için önemli. |
+| **CustomerTenantDomainName** | Müşterinin aboneliğine ait Azure Active Directory kiracının etki alanı adı. | Müşteri Azure Active Directory kiracı etki alanı. |
+| **Partnertenantıd** | Ortağın Azure Active Directory kiracısı için tanımlayıcı. | İş ortağı KIMLIĞI olarak çağrılan Azure Active Directory kiracı KIMLIĞI, GUID biçiminde. |
+| **PartnerName** | Kiracının kiracı Azure Active Directory adı. | İş ortağı adı. |
+| **Resellermpnıd** | Abonelikle ilişkili Bayi için MPNıD. | MPN abonelik kaydı için satıcı KIMLIĞI. Geçerli etkinlik için kullanılamaz. |
+| costCenter | Abonelikle ilişkili maliyet merkezi. | Yok |
+| billingPeriodStartDate | Fatura dönemi başlangıç tarihi, faturada gösterildiği gibi. | Yok |
+| billingPeriodEndDate | Fatura dönemi bitiş tarihi, faturada gösterildiği gibi. | Yok |
+| servicePeriodStartDate | Hizmet kullanımının ücretler için derecelendirmesi olan derecelendirme döneminin başlangıç tarihi. Azure hizmetleri için fiyatlar, derecelendirme dönemi için belirlenir. | Iş Ortağı Merkezi 'nde ChargeStartDate. Fatura döngüsünün başlangıç tarihi, önceki bir fatura döngüsünden daha önce ücretlendirilmeyen kullanım verilerinin tarihlerini sunmasının dışında. Saat her zaman günün başlangıcıdır, 0:00. |
+| servicePeriodEndDate | Hizmet kullanımının ücretler için derecelendirilme süresinin bitiş tarihi. Azure hizmetleri için fiyatlar, derecelendirme dönemine göre belirlenir. | Yok |
+| date | Azure tüketim verileri için, kullanım tarihini derecelendirildi olarak gösterir. Ayrılmış örnek için, satın alınan tarihi gösterir. Market ve destek gibi yinelenen ücretler ve tek seferlik ücretler için, satın alma tarihini gösterir. | Yok |
+| ProductID | Tüketim veya satın alma ile tahakkuk etmiş ücretler içeren ürün için tanımlayıcı. Bu, Iş ortağı merkezinde gösterildiği gibi ProductID ve SKuID öğesinin birleştirilmiş anahtarıdır. | Ürünün KIMLIĞI. |
+| product | Faturada gösterildiği gibi, tüketim veya satın alma ücreti verilen ürünün adı. | Katalogdaki ürün adı. |
+| serviceFamily | Satın alınan veya ücretlendirilen ürün için hizmet ailesini gösterir. Örneğin, depolama veya hesaplama. | Yok |
+| productOrderID | Aboneliğin ait olduğu varlık veya Azure planı adının tanıtıcısı. Örneğin, Azure planı. | Yok |
+| productOrderName | Aboneliğin ait olduğu Azure planının adı. Örneğin, Azure planı. | Yok|
+| consumedService | Eski EA Kullanım ayrıntılarında kullanılan hizmet (eski taksonomi). | Hizmet Iş ortağı merkezinde gösteriliyor. Örneğin, Microsoft. Storage, Microsoft. COMPUTE ve Microsoft. operationalınsights. |
+| meterID | Ölçülen tüketim için ölçülen tanımlayıcı. | Kullanılan ölçerin KIMLIĞI. |
+| meterName | Ölçülen tüketim için ölçüm adını tanımlar. | Tüketilen ölçerin adı. |
+| meterCategory | Kullanım için en üst düzey hizmeti tanımlar. | Kullanım için en üst düzey hizmet. |
+| meterSubCategory | Azure hizmetinin hızını etkileyebilecek tür veya alt kategorisini tanımlar. | Hızı etkileyebilecek Azure hizmeti türü.|
+| meterRegion | Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir. | Uygulanabilir ve doldurulmuş yerlerde, hizmetler için bir veri merkezinin bölgesel konumu. |
+| abonelik kimliği | Azure aboneliği için Microsoft tarafından oluşturulan benzersiz tanımlayıcı. | Yok |
 | subscriptionName | Azure aboneliğinin adı. | Yok |
-| Sözleşme Dönemi | Teklifin geçerlilik süresini görüntüler. For example, reserved instances show 12 months of a yearly term of the reserved instance. For one-time purchases or recurring purchases, the term displays one month for SaaS, Azure Marketplace, and support. Not applicable for Azure consumption. | Yok |
-| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Type of publisher that identifies the publisher as first party, third-party reseller, or third-party agency. | Yok |
-| partNumber | Part number for the unused reserved instance and Azure Marketplace services. | Yok |
-| publisherName | Name of the publisher of the service including Microsoft or third-party publishers. | The name of the product's publisher.|
-| reservationId | Identifier for the reserved instance purchase. | Yok |
-| reservationName | Name of the reserved instance. | Yok |
-| reservationOrderId | OrderID for the reserved instance. | Yok |
-| frequency | Payment frequency for a reserved instance. | Yok |
-| resourceGroup | Name of the Azure resource group used for lifecycle resource management. | Name of the resource group. |
-| instanceID (or) ResourceID | Identifier of the resource instance. | Shown as a ResourceURI that includes complete resource properties. |
-| resourceLocation | Name of the resource location. | The location of the resource. |
-| Konum | Normalized location of the resource. | Yok |
-| effectivePrice | The effective unit price of the service, in pricing currency. Unique for a product, service family, meter, and offer. Used with pricing in the price sheet for the billing account. When there is tiered pricing or an included quantity, it shows the blended price for consumption. | The unit price after adjustments are made. |
-| Miktar | Measured quantity purchased or consumed. The amount of the meter used during the billing period. | Number of units. Ensure it matches the information in your billing system during reconciliation. |
-| unitOfMeasure | Identifies the unit that the service is charged in. For example, GB and hours. | Identifies the unit that the service is charged in. For example, GB, hours, and 10,000s. |
-| pricingCurrency | The currency defining the unit price. | The currency in the pricelist.|
-| billingCurrency | The currency defining the billed cost. | The currency of the customer's geographic region. |
-| chargeType | Defines the type of charge that the cost represents in Azure Cost Management like purchase and refund. | The type of charge or adjustment. Not available for current activity. |
-| costinBillingCurrency | ExtendedCost or blended cost before tax in the billed currency. | Yok |
-| costinPricingCurrency | ExtendedCost or blended cost before tax in pricing currency to correlate with prices. | Yok |
-| **costinUSD** | Estimated ExtendedCost or blended cost before tax in USD. | Yok |
-| **paygCostInBillingCurrency** | Shows costs if pricing is in retail prices. Shows pay-as-you-go prices in the billing currency. Available only at RBAC scopes. | Yok |
-| **paygCostInUSD** | Shows costs if pricing is in retail prices. Shows pay-as-you-go prices in USD. Available only at RBAC scopes. | Yok |
-| exchangeRate | Exchange rate used to convert from the pricing currency to the billing currency. | Referred to as PCToBCExchangeRate in the Partner Center. The pricing currency to billing currency exchange rate.|
-| exchangeRateDate | The date for the exchange rate that's used to convert from the pricing currency to the billing currency. | Referred to as PCToBCExchangeRateDat in the Partner Center. The pricing currency to billing currency exchange rate date.|
-| isAzureCreditEligible | Indicates whether the cost is eligible for payment by Azure credits. | Yok |
-| serviceInfo1 | Legacy field that captures optional service-specific metadata. | Internal Azure service metadata. |
-| serviceInfo2 | Legacy field that captures optional service-specific metadata. | Service information. For example, an image type for a virtual machine and ISP name for ExpressRoute.|
-| additionalInfo | Hizmete özgü meta veriler. Örneğin, sanal makinenin görüntü türü. | Any additional information not covered in other columns. The service-specific metadata. Örneğin, sanal makinenin görüntü türü.|
-| etiketler | Tag that you assign to the meter. Use tags to group billing records. For example, you can use tags to distribute costs by the department that uses the meter. | Tags added by the customer.|
-| **partnerEarnedCreditRate** | Rate of discount applied if there is a partner earned credit (PEC) based on partner admin link access. | The rate of partner earned credit (PEC). For example, 0% or 15%. |
-| **partnerEarnedCreditApplied** | Indicates whether the partner earned credit has been applied. | Yok |
+| Terim | Teklifin geçerlilik süresini görüntüler. Örneğin, ayrılmış örnekler, ayrılmış örnek için yıllık bir dönem olan 12 ay gösterir. Tek seferlik satın alımlarda veya yinelenen satın alımlarda, terim SaaS, Azure Marketi ve destek için bir ay görüntüler. Azure tüketimi için geçerli değildir. | Yok |
+| publisherType (Firstparti, üçüncü taraf satıcı, thirdPartyAgency) | Yayımcıyı birinci taraf, üçüncü taraf satıcı veya üçüncü taraf kurumu olarak tanımlayan Yayımcı türü. | Yok |
+| partNumber | Kullanılmayan ayrılmış örnek ve Azure Market Hizmetleri için parça numarası. | Yok |
+| publisherName | Microsoft veya üçüncü taraf yayımcılar dahil olmak üzere hizmet yayımcısının adı. | Ürünün yayımcısının adı.|
+| reservationId | Ayrılmış örnek satın alma için tanımlayıcı. | Yok |
+| reservationName | Ayrılmış örnek adı. | Yok |
+| Rezervno | Ayrılmış örnek için OrderID. | Yok |
+| frequency | Ayrılmış bir örnek için ödeme sıklığı. | Yok |
+| Kaynak grubu | Yaşam döngüsü kaynak yönetimi için kullanılan Azure Kaynak grubunun adı. | Kaynak grubunun adı. |
+| InstanceId (veya) RESOURCEID | Kaynak örneğinin tanımlayıcısı. | Kaynak özelliklerinin tamamını içeren bir ResourceURI olarak gösterilir. |
+| resourceLocation | Kaynak konumunun adı. | Kaynağın konumu. |
+| Konum | Kaynağın normalleştirilmiş konumu. | Yok |
+| effectivePrice | Hizmetin fiyatlandırma para birimi cinsinden geçerli birim fiyatı. Ürün, hizmet ailesi, ölçüm ve teklif için benzersiz. Faturalandırma hesabı için fiyat listesi 'nde fiyatlandırma ile kullanılır. Katmanlı fiyatlandırma veya dahil edilen bir miktar olduğunda, tüketim için karıştırılan fiyatı gösterir. | Ayarlamaların ardından birim fiyatı. |
+| Miktar | Satın alınan veya tüketilen ölçülen miktar. Faturalandırma döneminde kullanılan ölçüm miktarı. | Birim sayısı. Mutabakat sırasında faturalandırma sisteminizdeki bilgilerle eşleştiğinden emin olun. |
+| unitOfMeasure | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB ve saat. | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB, saat ve 10, 000s. |
+| pricingCurrency | Birim fiyatını tanımlayan para birimi. | Pricelist içindeki para birimi.|
+| billingCurrency | Faturalandırılan maliyeti tanımlayan para birimi. | Müşterinin coğrafi bölgesinin para birimi. |
+| chargeType | Maliyetin, satın alma ve geri ödeme gibi Azure maliyet yönetiminde gösterdiği ücret türünü tanımlar. | Ücret veya ayarlamanın türü. Geçerli etkinlik için kullanılamaz. |
+| Maliyetsiz para birimi | Faturalanan para biriminde vergi öncesi, ExtendedCost veya karıştırılan maliyet. | Yok |
+| Costınpricingcurrency | Fiyatlarla ilişki kurmak için fiyatlandırma para birimi cinsinden vergi öncesi vergi veya karma maliyet. | Yok |
+| **Maliyetinusd** | ABD Doları cinsinden vergi öncesi tahmini ExtendedCost veya karıştırılan maliyet. | Yok |
+| **Paygcostınbillingcurrency** | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. Faturalandırma para birimiyle Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. | Yok |
+| **Paygcostınusd** | Fiyatlandırma perakende fiyatlarında ise maliyetleri gösterir. ABD Doları cinsinden Kullandıkça Öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. | Yok |
+| exchangeRate | Fiyatlandırma para biriminden faturalandırma para birimine dönüştürmek için kullanılan döviz kuru. | Iş Ortağı Merkezi 'nde PCToBCExchangeRate olarak adlandırılır. Para birimi döviz kuru faturalandırmaya yönelik fiyatlandırma para birimi.|
+| exchangeRateDate | Fiyatlandırma para biriminden faturalandırma para birimine dönüştürmek için kullanılan değişim oranının tarihi. | Iş Ortağı Merkezi 'nde PCToBCExchangeRateDat olarak adlandırılır. Faturalandırma para birimi döviz kuru tarihine kadar fiyatlandırma para birimi.|
+| isAzureCreditEligible | Maliyetin Azure kredileri tarafından ödeme için uygun olup olmadığını gösterir. | Yok |
+| serviceInfo1 | İsteğe bağlı hizmete özgü meta verileri yakalayan eski alan. | İç Azure hizmeti meta verileri. |
+| serviceInfo2 | İsteğe bağlı hizmete özgü meta verileri yakalayan eski alan. | Hizmet bilgileri. Örneğin, ExpressRoute için bir sanal makine ve ISS adı için bir görüntü türü.|
+| additionalInfo | Hizmete özgü meta veriler. Örneğin, sanal makinenin görüntü türü. | Diğer sütunlarda kapsanmayan ek bilgiler. Hizmete özgü meta veriler. Örneğin, sanal makinenin görüntü türü.|
+| etiketler | Ölçüm 'e atadığınız etikettir. Fatura kayıtlarını gruplamak için etiketleri kullanın. Örneğin, ölçümü kullanan departmana göre maliyetleri dağıtmak için Etiketler kullanabilirsiniz. | Müşteri tarafından eklenen Etiketler.|
+| **Partnerearnedtrate** | İş ortağı yönetici bağlantısı erişimine dayalı bir iş ortağı kazanılmış kredisi (PEC) varsa, uygulanan indirim oranı. | İş ortağı kazanılmış kredi (PEC) oranı. Örneğin, %0 veya %15. |
+| **Ortaklıklıya Tattatmi** | Ortağın kazanılmış kredisi uygulanıp uygulanmadığı gösterir. | Yok |
 
-## <a name="view-partner-earned-credit-pec-resource-costs"></a>View Partner Earned Credit (PEC) resource costs
+## <a name="view-partner-earned-credit-pec-resource-costs"></a>Iş ortağı kazanılmış kredi (PEC) kaynak maliyetlerini görüntüle
 
-In Azure Cost Management, partners can use cost analysis to view costs that received the PEC benefits.
+Azure maliyet yönetimi 'nde iş ortakları, PEC avantajlarının alındığı maliyetleri görüntülemek için maliyet analizini kullanabilir.
 
-In the Azure portal, sign in to the partner tenant and select **Cost Management + Billing**. Under **Cost Management**, click **Cost analysis**.
+Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. **Maliyet yönetimi**altında **Maliyet Analizi**' ne tıklayın.
 
-The Cost analysis view shows costs of the billing account for the partner. Select the **Scope** as needed for the partner, a specific customer, or a billing profile to reconcile invoices.
+Maliyet analizi görünümü iş ortağı için faturalandırma hesabının maliyetlerini gösterir. Faturaları mutabık kılmak için iş ortağı, belirli bir müşteri veya faturalandırma profili için gereken **kapsamı** seçin.
 
-In a donut chart, click the drop-down list and select **PartnerEarnedCreditApplied** to drill into PEC costs.
+Halka grafiğinde, açılan listeye tıklayın ve sonra da PEC 'in maliyetlerine gitmek için **Partnertatnedalacaktappnda** ' i seçin.
 
-![Example showing how to view partner-earned credit](./media/get-started-partners/cost-analysis-pec1.png)
+![İş ortağının kazanılan krediyi görüntülemeyi gösteren örnek](./media/get-started-partners/cost-analysis-pec1.png)
 
-When the **PartnerEarnedCreditApplied** property is _True_, the associated cost has the benefit of the partner earned admin access.
+**Partnerearnedtappekonomi** özelliği _true_olduğunda, ilişkili maliyet ortağın kazanılan yönetici erişiminin avantajına sahiptir.
 
-When the **PartnerEarnedCreditApplied** property is _False_, the associated cost hasn't met the required eligibility for the credit. Or, the service purchased isn't eligible for partner earned credit.
+**Partnerearnedtappekonomi** özelliği _false_olduğunda, ilişkili maliyet kredi için gereken uygunluğu karşılıyordu. Ya da satın alınan hizmet, iş ortağının kazanılmış kredisi için uygun değildir.
 
-Service usage data normally takes 8-24 hours to appear in Cost Management. For more information, see [Usage data update frequency varies](understand-cost-mgt-data.md#usage-data-update-frequency-varies). PEC credits appear within 48 hours from time of access in Azure Cost Management.
-
-
-You can also group and filter by the **PartnerEarnedCreditApplied** property using the **Group by** options. Use the options to examine costs that do and don't have PEC.
-
-![Group or filter by partner-earned credit](./media/get-started-partners/cost-analysis-pec2.png)
-
-## <a name="cost-management-rest-apis"></a>Cost Management REST APIs
-
-Partners and customers can use Cost Management APIs described in the following sections for common tasks.
-
-### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management APIs - Direct and indirect providers
-
-Partners with access to billing scopes in a partner tenant can use the following APIs to view invoiced costs.
-
-APIs at the subscription scope can be called by a partner regardless of the cost policy if they have access to the subscription. Other users with access to the subscription, like the customer or reseller, can call the APIs only after the partner enables the cost policy for the customer tenant.
+Hizmet kullanım verilerinin normalde maliyet yönetimi 'nde görüntülenmesi 8-24 saat sürer. Daha fazla bilgi için bkz. [kullanım verileri güncelleştirme sıklığı değişir](understand-cost-mgt-data.md#usage-data-update-frequency-varies). PEC kredileri, Azure maliyet yönetimi 'nde erişim zamanından 48 saat içinde görünür.
 
 
-#### <a name="to-get-a-list-of-billing-accounts"></a>To get a list of billing accounts
+Ayrıca, **Grup ölçütü** seçeneklerini kullanarak **Partnertatnedalacaklı tapptatmi** özelliğine göre gruplandırabilirsiniz ve filtre uygulayabilirsiniz. PEC 'e sahip olmayan ve desteklemeyen maliyetleri incelemek için seçenekleri kullanın.
+
+![İş ortağı tarafından grup veya filtreleme-kazanılan kredi](./media/get-started-partners/cost-analysis-pec2.png)
+
+## <a name="cost-management-rest-apis"></a>Maliyet yönetimi REST API 'Leri
+
+İş ortakları ve müşteriler ortak görevler için aşağıdaki bölümlerde açıklanan maliyet yönetimi API 'Lerini kullanabilir.
+
+### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure maliyet yönetimi API 'Leri-doğrudan ve dolaylı sağlayıcılar
+
+Bir iş ortağı kiracısındaki faturalandırma kapsamlarına erişimi olan iş ortakları, faturalanmış maliyetleri görüntülemek için aşağıdaki API 'Leri kullanabilir.
+
+Aboneliğe erişimleri varsa, abonelik kapsamındaki API 'Ler, maliyet ilkesinden bağımsız olarak bir iş ortağı tarafından çağrılabilir. Abonelik erişimi olan diğer kullanıcılar, müşteri veya satıcı gibi, yalnızca iş ortağı müşteri kiracının maliyet ilkesini etkinleştirdikten sonra API 'Leri çağırabilir.
+
+
+#### <a name="to-get-a-list-of-billing-accounts"></a>Faturalama hesaplarının bir listesini almak için
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-customers"></a>To get a list of customers
+#### <a name="to-get-a-list-of-customers"></a>Müşterilerin bir listesini almak için
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-subscriptions"></a>To get a list of subscriptions
+#### <a name="to-get-a-list-of-subscriptions"></a>Aboneliklerin listesini almak için
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>To get a list of invoices for a period of time
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>Bir süre için faturaların listesini almak için
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
 ```
 
-The API call returns an array of invoices that has elements similar to the following JSON code.
+API çağrısı, aşağıdaki JSON koduna benzer öğeler içeren bir fatura dizisi döndürür.
 
 ```
     {
@@ -296,79 +296,79 @@ The API call returns an array of invoices that has elements similar to the follo
     }
 ```
 
-Use the preceding returned ID field value and replace it in the following example as the scope to query for usage details.
+Önceki döndürülen KIMLIK alanı değerini kullanın ve aşağıdaki örnekte, kullanım ayrıntılarını sorgulayan kapsam olarak değiştirin.
 
 ```
 GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
 ```
 
-The example returns the usage records associated with the specific invoice.
+Örnek, belirli faturayla ilişkili kullanım kayıtlarını döndürür.
 
 
-#### <a name="to-get-the-policy-for-customers-to-view-costs"></a>To get the policy for customers to view costs
+#### <a name="to-get-the-policy-for-customers-to-view-costs"></a>Müşterilerin maliyetleri görüntüleme ilkesini almak için
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-set-the-policy-for-customers-to-view-costs"></a>To set the policy for customers to view costs
+#### <a name="to-set-the-policy-for-customers-to-view-costs"></a>Müşterilerin maliyetleri görüntülemesi için ilkeyi ayarlamak için
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>To get Azure service usage for a billing account
+#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Bir faturalandırma hesabı için Azure hizmet kullanımını almak için
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-download-a-customers-azure-service-usage"></a>To download a customer's Azure service usage
+#### <a name="to-download-a-customers-azure-service-usage"></a>Müşterinin Azure hizmet kullanımını indirmek için
 
-The following get call is an asynchronous operation.
+Aşağıdaki Get çağrısı zaman uyumsuz bir işlemdir.
 
 ```
 GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-Call the `Location` URI returned in the response to check the operation status. When the status is *Completed*, the `downloadUrl` property contains a link that you can use to download the generated report.
+İşlemin durumunu denetlemek için yanıtta döndürülen `Location` URI 'sini çağırın. Durum *tamamlandığında*, `downloadUrl` özelliği oluşturulan raporu indirmek için kullanabileceğiniz bir bağlantı içerir.
 
 
-#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>To get or download the price sheet for consumed Azure services
+#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>Tüketilen Azure hizmetleri için fiyat listesi almak veya indirmek için
 
-First, use the following post.
+İlk olarak, aşağıdaki gönderiyi kullanın.
 
 ```
 POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-Then, call the asynchronous operation property value. Örnek:
+Ardından, zaman uyumsuz işlem özelliği değerini çağırın. Örneğin:
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
-The preceding get call returns the download link containing the price sheet.
+Önceki Get çağrısı, Fiyat listesini içeren indirme bağlantısını döndürür.
 
 
-#### <a name="to-get-aggregated-costs"></a>To get aggregated costs
+#### <a name="to-get-aggregated-costs"></a>Toplu maliyetleri almak için
 
 ```
 POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
-#### <a name="create-a-budget-for-a-partner"></a>Create a budget for a partner
+#### <a name="create-a-budget-for-a-partner"></a>İş ortağı için bütçe oluşturma
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
 
-#### <a name="create-a-budget-for-a-customer"></a>Create a budget for a customer
+#### <a name="create-a-budget-for-a-customer"></a>Müşteri için bütçe oluşturma
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
 
-#### <a name="delete-a-budget"></a>Delete a budget
+#### <a name="delete-a-budget"></a>Bir bütçeyi silme
 
 ```
 PUT
@@ -377,5 +377,5 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billin
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Start analyzing costs](quick-acm-cost-analysis.md) in Cost Management
-- [Create and manage budgets](tutorial-acm-create-budgets.md) in Cost Management
+- Maliyet yönetimi 'nde [maliyetleri çözümlemeye başlayın](quick-acm-cost-analysis.md)
+- Maliyet yönetimi 'nde [bütçeler oluşturma ve yönetme](tutorial-acm-create-budgets.md)

@@ -1,5 +1,5 @@
 ---
-title: Use an Azure file share with Azure Storage | Microsoft Docs
+title: Azure depolama ile Azure dosya paylaşımının kullanımı | Microsoft Docs
 description: Azure dosya paylaşımını Windows ve Windows Server ile kullanmayı öğrenin.
 author: todmccoy
 manager: dcscontentpm
@@ -17,29 +17,29 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233798"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>How to recover a deleted storage account
+# <a name="how-to-recover-a-deleted-storage-account"></a>Silinen bir depolama hesabını kurtarma
 
-Azure Storage provides data resiliency through automated replicas, but doesn't prevent users or application code from corrupting data, whether accidentally or maliciously. Maintaining data fidelity during instances of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log.
+Azure depolama, otomatik çoğaltmalar aracılığıyla veri dayanıklılığı sağlar ancak kullanıcıların veya uygulama kodunun yanlışlıkla veya kötü amaçlı olarak verileri bozmasını engellemez. Uygulama veya Kullanıcı hatası örnekleri sırasında verilerin aslına uygunluğunu korumak, verileri bir denetim günlüğü ile ikincil bir depolama konumuna kopyalama gibi daha gelişmiş teknikler gerektirir.
 
-The following table provides overview of the scope of Storage Account Recovery depending on the replication strategy.
+Aşağıdaki tabloda, çoğaltma stratejisine bağlı olarak depolama hesabı kurtarma kapsamına genel bakış sunulmaktadır.
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Storage Account Azure Resource Manager|Yes|Yes|Yes|Yes|
-|Storage Account Classic|Yes|Yes|Yes|Yes|
+|Depolama hesabı Azure Resource Manager|Evet|Evet|Evet|Evet|
+|Depolama hesabı klasik|Evet|Evet|Evet|Evet|
 
-Gather the following information and file a support request with Microsoft Support:
+Aşağıdaki bilgileri toplayın ve Microsoft Desteği bir destek isteği dosyasına koyun:
 
 * Depolama hesabı adı
-* Date of deletion
-* Storage account region
-* How was the storage account deleted?
-* What method deleted the storage account? (Portal, PowerShell, etc.)
+* Silme tarihi
+* Depolama hesabı bölgesi
+* Depolama hesabı nasıl silindi?
+* Depolama hesabı hangi yöntemi sildi? (Portal, PowerShell, vb.)
 
-Important Points
+Önemli nokta
 
-* It can generally take up to 15 days from the time of deletion for the storage service to perform garbage collection, so storage accounts recovery may not be recovered with an SLA.
-* Microsoft Support will try to recover the Container/Account on a best-effort basis and cannot guarantee the recovery.
+* Depolama hizmetinin çöp toplama işlemini gerçekleştirmesi için silinme zamanından genellikle 15 güne kadar sürebilir ve depolama hesapları kurtarması bir SLA ile kurtarılamaz.
+* Microsoft Desteği, kapsayıcıyı/hesabı en iyi çaba temelinde kurtarmaya çalışacaktır ve kurtarmayı garanti edemez.
 
 > [!NOTE]
-> The recovery may not be successful if the account has been re-created. If you have already re-created the account, you must delete it first before recovery can be attempted.
+> Hesap yeniden oluşturulduysa kurtarma başarılı olmayabilir. Hesabı zaten yeniden oluşturduysanız, kurtarmaya başlamadan önce onu silmeniz gerekir.

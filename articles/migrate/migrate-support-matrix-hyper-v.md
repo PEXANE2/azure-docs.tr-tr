@@ -87,7 +87,7 @@ VM 'Leri değerlendirmek için, Azure geçişi gereci internet bağlantısı ger
 *.portal.azure.com | Azure portal gezinti
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-management.azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
+Management.Azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
 dc.services.visualstudio.com | Günlüğe kaydetme ve izleme
 *.vault.azure.net | Gereç ve hizmet arasında iletişim kurarken Azure Key Vault gizli dizileri yönetin.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | Microsoft Download sitesinden indirm
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 bağlantı noktalarında giden bağlantılar.
 **Hyper-V konağı/kümesi** | Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V VM 'lerinin yapılandırma ve performans meta verilerini çekmek için WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar.
@@ -134,8 +134,8 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 | **ALACAĞıNı**                        | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz. |
 | **ISCSı**                      | Iscsı hedefleri olan VM 'Ler geçiş için desteklenmez.
 | **Hedef disk**                | Azure VM 'lerine yalnızca yönetilen disklerle geçiş yapabilirsiniz. |
-| **IPv6** | Desteklenmiyor.
-| **NIC ekibi oluşturma** | Desteklenmiyor.
+| **IPv6** | Desteklenmez.
+| **NIC ekibi oluşturma** | Desteklenmez.
 | **Azure Site Recovery** | VM, Azure Site Recovery ile çoğaltma için etkinleştirilmişse Azure geçişi geçiş sunucusu geçişini çoğaltamaz.
 
 
@@ -159,7 +159,7 @@ time.windows.com | Sistem ve genel saat arasındaki saat eşitlemesini doğrular
 
 Aşağıdaki tabloda, VM geçişi için Hyper-V konaklarında ve VM 'lerde bağlantı noktası gereksinimleri özetlenmektedir.
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 Hyper-V konakları/VM 'Ler | HTTPS bağlantı noktası 443 ' deki giden bağlantılar, VM çoğaltma verilerini Azure geçişi 'ne gönderir.
 

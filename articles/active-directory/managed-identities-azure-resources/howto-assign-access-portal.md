@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184131"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547280"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portalını kullanarak bir kaynağa bir yönetilen kimlik erişim atama
 
@@ -28,27 +28,27 @@ ms.locfileid: "74184131"
 
 Yönetilen bir kimlik ile bir Azure kaynağı yapılandırdıktan sonra herhangi bir güvenlik sorumlusu gibi başka bir kaynak yönetilen kimlik erişim izni verebilirsiniz. Bu makalede Azure portalını kullanarak bir Azure depolama hesabı için bir Azure sanal makine veya sanal makine ölçek kümesi'nin yönetilen kimlik erişim vermek gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md). **Gözden geçirmeyi unutmayın [sistem tarafından atanan ve kullanıcı tarafından atanan bir yönetilen kimlik arasındaki farkı](overview.md#how-does-it-work)** .
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Başka bir kaynak için bir yönetilen kimlik erişimi atamak için RBAC kullanma
 
-Etkinleştirdikten sonra bir Azure kaynak kimliği gibi yönetilen bir [Azure VM](qs-configure-portal-windows-vm.md) veya [Azure VMSS](qs-configure-portal-windows-vmss.md):
+Azure [VM](qs-configure-portal-windows-vm.md) veya [Azure VMSS](qs-configure-portal-windows-vmss.md)gibi bir Azure kaynağında yönetilen kimlik etkinleştirildikten sonra:
 
-1. Oturum [Azure portalında](https://portal.azure.com) yönetilen kimlik altında yapılandırdığınız Azure aboneliği ile ilişkili bir hesap kullanarak.
+1. Yönetilen kimliği yapılandırdığınız Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Erişim denetimi değiştirmek istediğiniz istenen kaynağa gidin. Biz depolama hesabına gidin. Bu nedenle bu örnekte biz bir Azure sanal makine erişimini bir depolama hesabına vermiş olursunuz.
 
-3. Seçin **erişim denetimi (IAM)** seçin ve kaynak sayfasında **+ rol ataması Ekle**. Ardından belirtin **rol**, **erişim Ata**, karşılık gelen belirtin **abonelik**. Arama ölçütleri alanında kaynak görmeniz gerekir. Kaynak seçip **Kaydet**. 
+3. Kaynağın **erişim denetimi (IAM)** sayfasını seçin ve **+ rol ataması Ekle**' yi seçin. Ardından, **rolü**belirtin, **erişimi atayın**ve ilgili **aboneliği**belirtin. Arama ölçütleri alanında kaynak görmeniz gerekir. Kaynağı seçin ve **Kaydet**' i seçin. 
 
    ![Erişim denetimi (IAM) ekran görüntüsü](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yönetilen kimlik Azure kaynaklarına genel bakış](overview.md)
-- Bir Azure sanal makinesinde yönetilen kimlik etkinleştirmek için bkz: [yapılandırma kimlikleri Azure portalını kullanarak bir VM üzerindeki Azure kaynakları için yönetilen](qs-configure-portal-windows-vm.md).
-- Bir Azure sanal makine ölçek kümesinde yönetilen kimlik etkinleştirmek için bkz: [yapılandırma yönetilen bir sanal makine ölçek kümesi Azure portalını kullanarak Azure kaynakları için kimlikleri](qs-configure-portal-windows-vmss.md).
+- [Azure kaynaklarına genel bakış için yönetilen kimlik](overview.md)
+- Azure sanal makinesinde yönetilen kimliği etkinleştirmek için, bkz. [Azure Portal kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md).
+- Azure sanal makine ölçek kümesinde yönetilen kimliği etkinleştirmek için, bkz. [Azure Portal kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vmss.md).
 
 

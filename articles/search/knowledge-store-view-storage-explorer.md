@@ -1,7 +1,7 @@
 ---
-title: View a knowledge store (preview) with Storage Explorer
+title: Depolama Gezgini ile bilgi deposunu (Önizleme) görüntüleme
 titleSuffix: Azure Cognitive Search
-description: View and analyze an Azure Cognitive Search knowledge store with the Azure portal's Storage Explorer. knowledge store is currently in public preview.
+description: Azure portal Depolama Gezgini bir Azure Bilişsel Arama bilgi deposu görüntüleyin ve çözümleyin. bilgi deposu Şu anda genel önizleme aşamasındadır.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -15,51 +15,51 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406562"
 ---
-# <a name="view-a-knowledge-store-with-storage-explorer"></a>View a knowledge store with Storage Explorer
+# <a name="view-a-knowledge-store-with-storage-explorer"></a>Depolama Gezgini bir bilgi deposu görüntüleme
 
 > [!IMPORTANT] 
-> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
+> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
-In this article, you'll learn by example how to connect to and explore a knowledge store using Storage Explorer in the Azure portal.
+Bu makalede, Azure portal Depolama Gezgini kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-+ Follow the steps in [Create a knowledge store in Azure portal](knowledge-store-create-portal.md) or [Create an Azure Cognitive Search knowledge store by using REST](knowledge-store-create-rest.md) to create the sample knowledge store used in this walkthrough.
++ Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için, [Azure Portal 'de bilgi deposu oluşturma](knowledge-store-create-portal.md) veya [rest kullanarak bir Azure bilişsel arama bilgi deposu oluşturma](knowledge-store-create-rest.md) bölümündeki adımları izleyin.
 
-+ You will also need the name of the Azure storage account that you used to create the knowledge store, along with its access key from the Azure portal.
++ Ayrıca, bilgi deposunu oluşturmak için kullandığınız Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
 
-## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>View, edit, and query a knowledge store in Storage Explorer
+## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Depolama Gezgini bir bilgi deposunu görüntüleyin, düzenleyin ve sorgulayın
 
-1. In the Azure portal, [open the Storage account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) that you used to create the knowledge store.
+1. Azure portal, bilgi deposunu oluşturmak için kullandığınız [Depolama hesabını açın](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) .
 
-1. In the storage account's left navigation pane, click **Storage Explorer**.
+1. Depolama hesabının sol gezinti bölmesinde **Depolama Gezgini**' ye tıklayın.
 
-1. Expand the **TABLES** list to show a list of Azure table projections that were created when you ran the **Import Data** wizard on your hotel reviews sample data.
+1. Otelinizde **veri alma** Sihirbazı 'nı çalıştırdığınızda oluşturulan Azure Tablo projeksiyonlarını bir liste olarak görmek için **Tablolar** listesini genişletin, örnek verileri gözden geçirir.
 
-Select any table to view the enriched data, including key phrases sentiment scores, latitude and longitude location data and more.
+Anahtar tümceleri yaklaşım puanları, enlem ve Boylam konum verileri ve daha fazlası dahil olmak üzere zenginleştirilmiş verileri görüntülemek için herhangi bir tablo seçin.
 
-   ![View tables in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "View tables in Storage Explorer")
+   ![Depolama Gezgini tabloları görüntüleme](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Depolama Gezgini tabloları görüntüleme")
 
-To change the data type for any table value or to change individual values in your table, click **Edit**. When you change the data type for any column in one table row, it will be applied to all rows.
+Herhangi bir tablo değeri için veri türünü değiştirmek veya tablonuzdaki tek tek değerleri değiştirmek için, **Düzenle**' ye tıklayın. Bir tablo satırındaki herhangi bir sütunun veri türünü değiştirdiğinizde, tüm satırlara uygulanır.
 
-   ![Edit table in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Edit table in Storage Explorer")
+   ![Depolama Gezgini tabloyu Düzenle](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Depolama Gezgini tabloyu Düzenle")
 
-To run queries, click **Query** on the command bar and enter your conditions.  
+Sorguları çalıştırmak için Komut çubuğundaki **sorgu** ' ya tıklayın ve koşullarınızı girin.  
 
-   ![Query table in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Query table in Storage Explorer")
+   ![Depolama Gezgini sorgu tablosu](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Depolama Gezgini sorgu tablosu")
 
 ## <a name="clean-up"></a>Temizleme
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit.
+Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Connect this knowledge store to Power BI for deeper analysis, or move forward with code, using the REST API and Postman to create a different knowledge store.
+Daha derin analizler için bu bilgi deposunu Power BI bağlayın veya farklı bir bilgi deposu oluşturmak için REST API ve Postman kullanarak kodla ilerle ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Connect with Power BI](knowledge-store-connect-power-bi.md)
-> [Create a knowledge store in REST](knowledge-store-howto.md)
+> [Power BI Ile bağlanma](knowledge-store-connect-power-bi.md)
+> [rest 'Te bilgi deposu oluşturma](knowledge-store-howto.md)

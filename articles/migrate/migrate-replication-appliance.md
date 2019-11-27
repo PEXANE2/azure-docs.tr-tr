@@ -30,7 +30,7 @@ Araç [Azure geçiş](migrate-overview.md) Merkezi ' nde kullanılabilir. Hub, d
 
 ## <a name="appliance-deployment"></a>Gereç dağıtımı
 
-**Farklı dağıt** | **İçin kullanılan** | **Ayrıntılar**
+**Farklı dağıt** | **Kullanıldığı yer** | **Ayrıntılar**
 --- | --- |  ---
 VMware VM | Genellikle, aracı tabanlı geçişle Azure geçişi geçiş aracı kullanılarak VMware VM 'Leri geçirilirken kullanılır. | OVA şablonunu Azure geçiş hub 'ından indirir ve gereç sanal makinesini oluşturmak için vCenter Server içeri aktarabilirsiniz.
 Fiziksel makine | Bir VMware altyapınız yoksa veya bir OVA şablonu kullanarak bir VMware VM 'si oluşturmıyorsanız şirket içi fiziksel sunucuları geçirirken kullanılır. | Bir yazılım yükleyicisini Azure geçiş hub 'ından indirir ve gereci makinesini kurmak için çalıştırın.

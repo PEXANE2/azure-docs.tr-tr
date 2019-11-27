@@ -63,7 +63,7 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki gibi yapılandırılmış bir 
 
 ### <a name="unit-monitors"></a>Birim izleyicileri
 
-|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametre** | **Değer** |
+|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametresinin** | **Değer** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Düğüm bellek kullanımı |Birim izleyicisi |Bu izleyici, cadvizörü raporlanan verileri kullanarak bir düğümün bellek kullanımını dakikada bir değerlendirir. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Düğüm CPU kullanımı |Birim Izleyicisi |Bu izleyici, cadvizörü tarafından bildirilen verileri kullanarak her dakikada düğümün CPU kullanımını denetler. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

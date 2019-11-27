@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Launch an application using Maven - Azure Spring Cloud'
-description: Launch a sample application using Maven
+title: "Hızlı başlangıç: Maven-Azure yay bulutu 'nı kullanarak bir uygulama başlatma"
+description: Maven kullanarak örnek uygulama başlatma
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
@@ -13,103 +13,103 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384070"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Quickstart: Launch an Azure Spring Cloud app using the Maven plug-in
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
-Using the Azure Spring Cloud Maven plug-in, you can easily create and update your Azure Spring Cloud applications. By predefining a configuration, you can deploy applications to your existing Azure Spring Cloud service. In this article, you use a sample application called PiggyMetrics to demonstrate this feature.
+Azure Spring Cloud Maven eklentisini kullanarak Azure Spring Cloud uygulamalarınızı kolayca oluşturabilir ve güncelleştirebilirsiniz. Bir yapılandırmayı önceden tanımlayarak, mevcut Azure yay bulut hizmetinize uygulama dağıtabilirsiniz. Bu makalede, bu özelliği göstermek için POF ölçümleri adlı örnek bir uygulama kullanırsınız.
 
-Following this quickstart, you will learn how to:
+Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Provision a service instance
-> * Set up a configuration server for an instance
-> * Clone and build microservices application locally
-> * Deploy each microservice
-> * Assign a public endpoint for your application
+> * Hizmet örneği sağlama
+> * Bir örnek için yapılandırma sunucusu ayarlama
+> * Mikro hizmetler uygulamasını yerel olarak kopyalama ve derleme
+> * Her mikro hizmeti dağıtma
+> * Uygulamanız için genel bir uç nokta atama
 
 >[!Note]
-> Azure Spring Cloud is currently offered as a public preview. Public preview offerings allow customers to experiment with new features prior to their official release.  Public preview features and services are not meant for production use.  For more information about support during previews, please review our [FAQ](https://azure.microsoft.com/support/faq/) or file a [Support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) to learn more.
+> Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
 
 
 >[!TIP]
-> Azure Cloud Shell is a free interactive shell that you can use to run the commands in this article. It has common Azure tools preinstalled, including the latest versions of Git, the Java Development Kit (JDK), Maven, and the Azure CLI. If you're signed in to your Azure subscription, launch [Azure Cloud Shell](https://shell.azure.com). For more information, see [Overview of Azure Cloud Shell](../cloud-shell/overview.md).
+> Azure Cloud Shell, bu makaledeki komutları çalıştırmak için kullanabileceğiniz, ücretsiz bir etkileşimli kabuktur. Git 'in en son sürümleri, Java Geliştirme Seti (JDK), Maven ve Azure CLı dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız [Azure Cloud Shell](https://shell.azure.com)başlatın. Daha fazla bilgi için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md).
 
 Bu hızlı başlangıcı tamamlamak için:
 
 1. [Git’i yükleyin](https://git-scm.com/).
-2. [Install JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
-3. [Install Maven 3.0 or later](https://maven.apache.org/download.cgi).
-4. [Sign up for a free Azure subscription](https://azure.microsoft.com/free/).
+2. [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)' i yükler.
+3. [Maven 3,0 veya üstünü yükler](https://maven.apache.org/download.cgi).
+4. [Ücretsiz bir Azure aboneliğine kaydolun](https://azure.microsoft.com/free/).
 
-## <a name="provision-a-service-instance-on-the-azure-portal"></a>Provision a service instance on the Azure portal
+## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portal bir hizmet örneği sağlayın
 
-1. In a web browser, open [this link to Azure Spring Cloud in the Azure portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform), and sign in to your account.
+1. Bir Web tarayıcısında, [Bu bağlantıyı Azure Portal Azure Spring Cloud 'a](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)açın ve hesabınızda oturum açın.
 
-1. Provide the **Project Details** for the sample application as follows:
+1. Örnek uygulama için **proje ayrıntılarını** aşağıdaki gibi sağlayın:
 
-    1. Select the **Subscription** with which the application will be associated.
-    1. Select or create a resource group for the application. We recommend creating a new resource group.  The example below shows a new resource group called `myspringservice`.
-    1. Provide a name for the new Azure Spring Cloud service.  The name must be between 4 and 32 characters long and can contain only lowercase letters, numbers, and hyphens. The first character of the service name must be a letter and the last character must be either a letter or a number.  The service in the example below has the name `contosospringcloud`.
-    1. Select a location for your application from the options provided.  In this example, we select `East US`.
-    1. Select **Review + create** to review a summary of your new service.  If everything looks correct, select **Create**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Select Review + create](media/maven-qs-review-create.jpg)
-
-It takes about 5 minutes for the service to be deployed. After the service is deployed, select **Go to resource** and the **Overview** page for the service instance appears.
-
-## <a name="set-up-your-configuration-server"></a>Set up your configuration server
-
-1. On the service **Overview** page, select **Config Server**.
-1. In the **Default repository** section, set **URI** to **https://github.com/Azure-Samples/piggymetrics** , set **Label** to **config**, and then select **Apply** to save your changes.
+    1. Uygulamanın ilişkilendirileceği **aboneliği** seçin.
+    1. Uygulama için bir kaynak grubu seçin veya oluşturun. Yeni bir kaynak grubu oluşturmanızı öneririz.  Aşağıdaki örnekte `myspringservice`adlı yeni bir kaynak grubu gösterilmektedir.
+    1. Yeni Azure yay bulut hizmeti için bir ad sağlayın.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir. Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.  Aşağıdaki örnekteki hizmetin adı `contosospringcloud`vardır.
+    1. Belirtilen seçeneklerden uygulamanız için bir konum seçin.  Bu örnekte `East US`seçeceğiz.
+    1. Yeni hizmetinizin özetini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.  Her şey doğru görünüyorsa **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Define and apply config settings](media/maven-qs-apply-config.jpg)
+    > Gözden geçir + oluştur ![seçin](media/maven-qs-review-create.jpg)
 
-## <a name="clone-and-build-the-sample-application-repository"></a>Clone and build the sample application repository
+Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan sonra **Kaynağa Git** ' i seçin ve hizmet örneği Için **genel bakış** sayfası görüntülenir.
 
-1. Launch the [Azure Cloud Shell](https://shell.azure.com).
+## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
 
-1. Clone the Git repository by running the following command:
+1. Hizmete **genel bakış** sayfasında, **yapılandırma sunucusu**' nu seçin.
+1. **Varsayılan depo** bölümünde, **URI** 'yi **https://github.com/Azure-Samples/piggymetrics** olarak ayarlayın, **etiketi** **config**olarak ayarlayın ve ardından değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![yapılandırma ayarlarını tanımlama ve uygulama](media/maven-qs-apply-config.jpg)
+
+## <a name="clone-and-build-the-sample-application-repository"></a>Örnek uygulama deposunu kopyalama ve derleme
+
+1. [Azure Cloud Shell](https://shell.azure.com)başlatın.
+
+1. Aşağıdaki komutu çalıştırarak Git deposunu kopyalayın:
 
     ```azurecli
     git clone https://github.com/Azure-Samples/PiggyMetrics
     ```
   
-1. Change directory and build the project by running the following command:
+1. Dizini değiştirin ve aşağıdaki komutu çalıştırarak projeyi derleyin:
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Generate configurations and deploy to the Azure Spring Cloud
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Azure yay bulutuna yapılandırma ve dağıtım oluşturma
 
-1. Generate configurations by running the following command in the root folder of PiggyMetrics containing the parent POM:
+1. Üst POB 'yi içeren Pumetrik ölçümleri kök klasöründe aşağıdaki komutu çalıştırarak yapılandırma oluşturun:
 
     ```azurecli
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Select the modules `gateway`,`auth-service`, and `account-service`.
+    a. `gateway`,`auth-service`ve `account-service`modüllerini seçin.
 
-    b. Select your subscription and Azure Spring Cloud service cluster.
+    b. Aboneliğinizi ve Azure yay bulut hizmeti kümenizi seçin.
 
-    c. In the list of provided projects, enter the number that corresponds with `gateway` to give it public access.
+    c. Belirtilen projeler listesinde, ortak erişim sağlamak için `gateway` karşılık gelen sayıyı girin.
     
-    d. Confirm the configuration.
+    d. Yapılandırmayı onaylayın.
 
-1. The POM now contains the plugin dependencies and configurations. Deploy the apps using the following command:
+1. Pod artık eklenti bağımlılıklarını ve yapılandırmasını içerir. Aşağıdaki komutu kullanarak uygulamaları dağıtın:
 
    ```azurecli
    mvn azure-spring-cloud:deploy
    ```
 
-1. After the deployment has finished, you can access PiggyMetrics by using the URL provided in the output from the preceding command.
+1. Dağıtım tamamlandıktan sonra, önceki komutun çıktısında belirtilen URL 'YI kullanarak Pudmetriye erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you've deployed a Spring Cloud application from a Maven repository. To learn more about Azure Spring Cloud, continue to the tutorial about preparing your app for deployment.
+Bu hızlı başlangıçta, Maven deposundan bir yay bulutu uygulaması dağıttınız. Azure Spring Cloud hakkında daha fazla bilgi edinmek için uygulamanızı dağıtıma hazırlama hakkında öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Prepare your Azure Spring Cloud application for deployment](spring-cloud-tutorial-prepare-app-deployment.md)
-> [Learn more about Maven plug-ins for Azure](https://github.com/microsoft/azure-maven-plugin)
+> [Azure Spring Cloud uygulamanızı dağıtıma hazırlayın](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugin)

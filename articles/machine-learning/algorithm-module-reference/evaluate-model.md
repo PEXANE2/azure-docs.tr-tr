@@ -1,7 +1,7 @@
 ---
-title: 'Evaluate Model: Module Reference'
+title: 'Modeli değerlendir: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Evaluate Model module in Azure Machine Learning to measure the accuracy of a trained model.
+description: Eğitilen bir modelin doğruluğunu ölçmek için Azure Machine Learning modeli değerlendir modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,113 +16,113 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214579"
 ---
-# <a name="evaluate-model-module"></a>Evaluate Model module
+# <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
-This article describes a module in Azure Machine Learning designer (preview).
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
-Use this module to measure the accuracy of a trained model. You provide a dataset containing scores generated from a model, and the **Evaluate Model** module computes a set of industry-standard evaluation metrics.
+Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir modelden oluşturulan puanları içeren bir veri kümesi sağlarsınız ve **modeli değerlendir** modülü bir sektör standardı değerlendirme ölçümleri kümesini hesaplar.
   
- The metrics returned by **Evaluate Model** depend on the type of model that you are evaluating:  
+ **Değerlendirme modeli** tarafından döndürülen ölçümler, değerlendirdiğiniz modelin türüne bağlıdır:  
   
--   **Classification Models**    
--   **Regression Models**    
+-   **Sınıflandırma modelleri**    
+-   **Regresyon modelleri**    
 
 
 > [!TIP]
-> If you are new to model evaluation, we recommend the video series by Dr. Stephen Elston, as part of the [machine learning course](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) from EdX. 
+> Model değerlendirmesine yeni çalışıyorsanız, EdX 'in [makine öğrenimi kursu](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) kapsamında Dr. Stephen Elston tarafından video serisini öneririz. 
 
 
-There are three ways to use the **Evaluate Model** module:
+**Modeli değerlendir** modülünü kullanmanın üç yolu vardır:
 
-+ Generate scores over your training data, and evaluate the model based on these scores
-+ Generate scores on the model, but compare those scores to scores on a reserved testing set
-+ Compare scores for two different but related models, using the same set of data
++ Eğitim verileriniz üzerinde puanlar oluşturun ve bu puanları temel alarak modeli değerlendirin
++ Modelde puanlar oluşturun, ancak bu puanları ayrılmış bir test kümesinde puanlar ile karşılaştırın
++ Aynı veri kümesini kullanarak iki farklı ancak ilgili modellerin puanlarını karşılaştırın
 
-## <a name="use-the-training-data"></a>Use the training data
+## <a name="use-the-training-data"></a>Eğitim verilerini kullanma
 
-To evaluate a model, you must connect a dataset that contains a set of input columns and scores.  If no other data is available, you can use your original dataset.
+Bir modeli değerlendirmek için bir giriş sütunları ve puanları kümesi içeren bir veri kümesini bağlamanız gerekir.  Başka veri yoksa, özgün veri kümenizi kullanabilirsiniz.
 
-1. Connect the **Scored dataset** output of the [Score Model](./score-model.md) to the input of **Evaluate Model**. 
-2. Click **Evaluate Model** module, and run the pipeline to generate the evaluation scores.
+1. [Puan modelinin puın](./score-model.md) **veri kümesi** çıkışını, **değerlendirme modeli**girişine bağlayın. 
+2. **Modelleme modülünü değerlendir** ' e tıklayın ve değerlendirme puanlarını oluşturmak için işlem hattını çalıştırın.
 
-## <a name="use-testing-data"></a>Use testing data
+## <a name="use-testing-data"></a>Test verilerini kullan
 
-A common scenario in machine learning is to separate your original data set into training and testing datasets, using the [Split](./split-data.md) module, or the [Partition and Sample](./partition-and-sample.md) module. 
+Machine Learning 'deki yaygın bir senaryo, özgün veri kümelerinizi eğitim ve test veri kümelerini, [bölünmüş](./split-data.md) modül veya [bölüm ve örnek](./partition-and-sample.md) modülünü kullanarak ayıramaktır. 
 
-1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
-2. Connect the output of the Split Data module that contains the testing data to the right-hand input of **Evaluate Model**.
-2. Click **Evaluate Model** module, and select **Run selected** to generate the evaluation scores.
+1. [Puan modelinin puın](score-model.md) **veri kümesi** çıkışını, **değerlendirme modeli**girişine bağlayın. 
+2. Test verilerini içeren bölünmüş veri modülünün çıkışını, **modeli değerlendir**'in sağ girişine bağlayın.
+2. **Modelleme modülünü değerlendir** ' e tıklayın ve değerlendirme puanlarını oluşturmak Için **Seçileni Çalıştır** ' ı seçin.
 
-## <a name="compare-scores-from-two-models"></a>Compare scores from two models
+## <a name="compare-scores-from-two-models"></a>İki modelden puanları karşılaştırın
 
-You can also connect a second set of scores to **Evaluate Model**.  The scores might be a shared evaluation set that has known results, or a set of results from a different model for the same data.
+Ayrıca, **modeli değerlendirmek**için ikinci bir puan kümesini bağlayabilirsiniz.  Puanlar, bilinen sonuçlara sahip bir paylaşılan değerlendirme kümesi veya aynı veriler için farklı bir modelden bir sonuç kümesi olabilir.
 
-This feature is useful because you can easily compare results from two different models on the same data. Or, you might compare scores from two different runs over the same data with different parameters.
+Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilmeniz için bu özellik yararlıdır. Ya da, farklı parametrelerle aynı veriler üzerinde bulunan iki farklı çalıştırmaların puanlarını karşılaştırabilirsiniz.
 
-1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
-2. Connect the output of the Score Model module for the second model to the right-hand input of **Evaluate Model**.
-3. Right-click **Evaluate Model**, and select **Run selected** to generate the evaluation scores.
+1. [Puan modelinin puın](score-model.md) **veri kümesi** çıkışını, **değerlendirme modeli**girişine bağlayın. 
+2. İkinci modelin puan modeli modülünün çıkışını, **modeli değerlendir**' in sağ girişine bağlayın.
+3. **Modeli değerlendir**' e sağ tıklayın ve değerlendirme puanlarını oluşturmak Için **Seçileni Çalıştır** ' ı seçin.
 
 ## <a name="results"></a>Sonuçlar
 
-After you run **Evaluate Model**, right-click the module and select **Evaluation results** to see the results. Yapabilecekleriniz:
+**Modeli değerlendir**' i çalıştırdıktan sonra, modüle sağ tıklayın ve sonuçları görmek için **değerlendirme sonuçları** ' nı seçin. Şunları yapabilirsiniz:
 
-+ Save the results as a dataset, for easier analysis with other tools
-+ Generate a visualization in the designer
++ Diğer araçlarla daha kolay analize yönelik olarak sonuçları bir veri kümesi olarak kaydedin
++ Tasarımcıda görselleştirme oluşturma
 
-If you connect datasets to both inputs of **Evaluate Model**, the results will contain metrics for both set of data, or both models.
-The model or data attached to the left port is presented first in the report, followed by the metrics for the dataset, or model attached on the right port.  
+Veri kümelerini her iki **değerlendirme modeli**girişi için bağladığınızda, sonuçlar hem veri kümesinin hem de her iki modelin ölçümlerini içerir.
+Sol bağlantı noktasına eklenen model veya veriler, önce raporda, ardından veri kümesi için ölçümler veya sağ bağlantı noktasında eklenmiş model tarafından sunulur.  
 
-For example, the following image represents a comparison of results from two clustering models that were built on the same data, but with different parameters.  
+Örneğin, aşağıdaki görüntü, aynı veriler üzerinde oluşturulmuş, ancak farklı parametrelerle oluşturulan iki kümeleme modelinden sonuçların karşılaştırmasını temsil eder.  
 
 ![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
 
-Because this is a clustering model, the evaluation results are different than if you compared scores from two regression models, or compared two classification models. However, the overall presentation is the same. 
+Bu bir kümeleme modeli olduğundan, değerlendirme sonuçları, puanları iki gerileme modelinden karşılaştırmakla veya iki sınıflandırma modelinin karşılaştırılmasından farklı olur. Ancak, genel sunum aynıdır. 
 
 ## <a name="metrics"></a>Ölçümler
 
-This section describes the metrics returned for the specific types of models supported for use with **Evaluate Model**:
+Bu bölümde, **modeli değerlendir**ile kullanılmak üzere desteklenen belirli model türleri için döndürülen ölçümler açıklanmaktadır:
 
-+ [classification models](#bkmk_classification)
-+ [regression models](#bkmk_regression)
++ [sınıflandırma modelleri](#bkmk_classification)
++ [regresyon modelleri](#bkmk_regression)
 
-###  <a name="bkmk_classification"></a> Metrics for classification models
+###  <a name="bkmk_classification"></a>Sınıflandırma modelleriyle ilgili ölçümler
 
-The following metrics are reported when evaluating classification models. If you compare models, they are ranked by the metric you select for evaluation.  
+Sınıflandırma modelleri değerlendirilirken aşağıdaki ölçümler raporlanır. Modelleri karşılaştırırsanız, bunlar değerlendirme için seçtiğiniz ölçüm tarafından derecelendirilir.  
   
--   **Accuracy** measures the goodness of a classification model as the proportion of true results to total cases.  
+-   **Doğruluk** , toplam durum sonuçlarının gerçek sonuçlarının oranı olarak bir sınıflandırma modelinin iyiyliğini ölçer.  
   
--   **Precision** is the proportion of true results over all positive results.  
+-   **Duyarlık** , tüm pozitif sonuçlar üzerinde doğru sonuçların oranındaki orandır.  
   
--   **Recall** is the fraction of all correct results returned by the model.  
+-   **Geri çağırma** , modelin döndürdüğü tüm doğru sonuçların kesiri.  
   
--   **F-score** is computed as the weighted average of precision and recall between 0 and 1, where the ideal F-score value is 1.  
+-   **F puanı** ağırlıklı duyarlık ortalaması olarak hesaplanır ve ideal F puanı değerinin 1 olduğu 0 ile 1 arasında geri çağırır.  
   
--   **AUC** measures the area under the curve plotted with true positives on the y axis and false positives on the x axis. This metric is useful because it provides a single number that lets you compare models of different types.  
+-   **AUC** , y ekseninde gerçek pozitifler ve x ekseninde hatalı pozitif sonuçlar ile çizilen eğrinin altındaki alanı ölçer. Bu ölçüm, farklı türlerin modellerini karşılaştırmanızı sağlayan tek bir sayı sağladığından yararlıdır.  
   
-- **Average log loss** is a single score used to express the penalty for wrong results. It is calculated as the difference between two probability distributions – the true one, and the one in the model.  
+- **Ortalama günlük kaybı** , yanlış sonuçlar için ceza Puanını ifade etmek için kullanılan tek bir puandır. Bu, iki olasılık dağıtımı arasındaki fark olarak hesaplanır; gerçek bir değer ve modeldeki bir tane.  
   
-- **Training log loss** is a single score that represents the advantage of the classifier over a random prediction. The log loss measures the uncertainty of your model by comparing the probabilities it outputs to the known values (ground truth) in the labels. You want to minimize log loss for the model as a whole.
+- **Eğitim günlük kaybı** , sınıflandırıcının rastgele bir tahmine göre faydalanmasını temsil eden tek bir puandır. Günlük kayıp, çıktılarının çıkış yaptığı olasılıkların, etiketlerde bilinen değerler (zemin dışı) ile karşılaştırılmasıyla, modelinizin unkliğini ölçer. Modelin günlük kaybını bir bütün olarak en aza indirmek istiyorsunuz.
 
-##  <a name="bkmk_regression"></a> Metrics for regression models
+##  <a name="bkmk_regression"></a>Regresyon modelleriyle ilgili ölçümler
  
-The metrics returned for regression models are designed to estimate the amount of error.  A model is considered to fit the data well if the difference between observed and predicted values is small. However, looking at the pattern of the residuals (the difference between any one predicted point and its corresponding actual value) can tell you a lot about potential bias in the model.  
+Regresyon modelleri için döndürülen ölçümler, hata miktarını tahmin etmek için tasarlanmıştır.  Gözlemlenen ve tahmin edilen değerler arasındaki fark küçük olduğunda, bir model veriye uyacak şekilde değerlendirilir. Ancak, fazlalıklar (tahmin edilen herhangi bir nokta ve ilgili gerçek değer arasındaki fark), modelde potansiyel sapma hakkında çok daha fazla bilgi verebilir.  
   
- The following metrics are reported for evaluating regression models. When you compare models, they are ranked by the metric you select for evaluation.  
+ Gerileme modellerini değerlendirmek için aşağıdaki ölçümler raporlanır. Modelleri karşılaştırdığınızda, değerlendirme için seçtiğiniz ölçüm tarafından derecelendirilir.  
   
-- **Mean absolute error (MAE)** measures how close the predictions are to the actual outcomes; thus, a lower score is better.  
+- **Ortalama mutlak hata (MAE)** , tahminleri gerçek sonuçlar için nasıl kapamaları gerektiğini ölçer; Bu nedenle, daha düşük bir puan daha iyidir.  
   
-- **Root mean squared error (RMSE)** creates a single value that summarizes the error in the model. By squaring the difference, the metric disregards the difference between over-prediction and under-prediction.  
+- **Kök ortalama kare hatası (rmo)** modeldeki hatayı özetleyen tek bir değer oluşturur. Fark karelerini alıp, ölçüm, daha fazla tahmin ve tahmin düzeyi arasındaki farkı dikkate vermez.  
   
-- **Relative absolute error (RAE)** is the relative absolute difference between expected and actual values; relative because the mean difference is divided by the arithmetic mean.  
+- **Göreli mutlak hata (rampası)** , beklenen ve gerçek değerler arasındaki göreli mutlak farktır; göreli olarak, ortalama farkı aritmetik ortalama tarafından bölünür.  
   
-- **Relative squared error (RSE)** similarly normalizes the total squared error of the predicted values by dividing by the total squared error of the actual values.  
+- **Göreli kare hatası (RSE)** , gerçek değerlerin toplam kare şeklinde hataya göre öngörülen değerlerin toplam kare halinde hata sayısını normalleştirir.  
   
-- **Mean Zero One Error (MZOE)** indicates whether the prediction was correct or not.  In other words: `ZeroOneLoss(x,y) = 1` when `x!=y`; otherwise `0`.
+- **Ortalama sıfır bir hata (MZOE)** , tahmine uygun olup olmadığını gösterir.  Diğer bir deyişle: `x!=y``ZeroOneLoss(x,y) = 1`; Aksi takdirde `0`.
   
-- **Coefficient of determination**, often referred to as R<sup>2</sup>, represents the predictive power of the model as a value between 0 and 1. Zero means the model is random (explains nothing); 1 means there is a perfect fit. However, caution should be used in interpreting  R<sup>2</sup> values, as low values can be entirely normal and high values can be suspect.
+- Genellikle R<sup>2</sup>olarak anılan **belirleme katsayısı**, modelin tahmine dayalı gücünü 0 ile 1 arasında bir değer olarak temsil eder. Sıfır, modelin rastgele olduğu anlamına gelir (hiçbir şey açıklar); 1, mükemmel bir uyum olduğu anlamına gelir. Ancak, düşük değerler tamamen normal olabilir ve yüksek değerler şüpheli olduğundan, R<sup>2</sup> değerlerini yorumlamak için dikkatli bir değer kullanılmalıdır.
   
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

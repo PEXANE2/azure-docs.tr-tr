@@ -1,6 +1,6 @@
 ---
-title: Use dependency injection in .NET Azure Functions
-description: Learn how to use dependency injection for registering and using services in .NET functions
+title: .NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
+description: .NET işlevlerinde Hizmetleri kaydetmek ve kullanmak için bağımlılık ekleme eklemeyi nasıl kullanacağınızı öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/05/2019
@@ -13,27 +13,27 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226983"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>Use dependency injection in .NET Azure Functions
+# <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
 
-Azure Functions supports the dependency injection (DI) software design pattern, which is a technique to achieve [Inversion of Control (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) between classes and their dependencies.
+Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetimin (IOC) bir Iç sürümünü](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elde etmek için bir tekniktir olan bağımlılık ekleme (dı) yazılım tasarım modelini destekler.
 
-- Dependency injection in Azure Functions is built on the .NET Core Dependency Injection features. Familiarity with the [.NET Core dependency injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) is recommended. There are differences, however, in how you override dependencies and how configuration values are read with Azure Functions on the Consumption plan.
+- Azure Işlevlerine bağımlılık ekleme, .NET Core bağımlılığı ekleme özellikleri üzerine kurulmuştur. [.NET Core bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) konusunda benzerlik yapmanız önerilir. Ancak, bağımlılıkları geçersiz kılma ve yapılandırma değerlerinin tüketim planında Azure Işlevleri ile nasıl okunduğu ile ilgili farklılıklar vardır.
 
-- Support for dependency injection begins with Azure Functions 2.x.
+- Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Before you can use dependency injection, you must install the following NuGet packages:
+Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. uzantıları](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions package](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) version 1.0.28 or later
+- [Microsoft. net. SDK. Functions paket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) sürümü 1.0.28 veya üzeri
 
-## <a name="register-services"></a>Register services
+## <a name="register-services"></a>Hizmetleri Kaydet
 
-To register services, create a method to configure and add components to an `IFunctionsHostBuilder` instance.  The Azure Functions host creates an instance of `IFunctionsHostBuilder` and passes it directly into your method.
+Hizmetleri kaydetmek için bir `IFunctionsHostBuilder` örneğine bileşen yapılandırmak ve bunları eklemek üzere bir yöntem oluşturun.  Azure Işlevleri ana makinesi bir `IFunctionsHostBuilder` örneğini oluşturur ve doğrudan yönteğinize geçirir.
 
-To register the method, add the `FunctionsStartup` assembly attribute that specifies the type name used during startup.
+Yöntemi kaydetmek için, başlangıç sırasında kullanılan tür adını belirten `FunctionsStartup` assembly özniteliğini ekleyin.
 
 ```csharp
 using System;
@@ -62,19 +62,19 @@ namespace MyNamespace
 }
 ```
 
-### <a name="caveats"></a>Caveats
+### <a name="caveats"></a>Uyarılar
 
-A series of registration steps run before and after the runtime processes the startup class. Therefore, the keep in mind the following items:
+Çalışma zamanı başlangıç sınıfını işleyerek önce ve sonra çalıştırılan bir dizi kayıt adımı. Bu nedenle, aşağıdaki öğeleri aklınızda bulundurun:
 
-- *The startup class is meant for only setup and registration.* Avoid using services registered at startup during the startup process. For instance, don't try to log a message in a logger that is being registered during startup. This point of the registration process is too early for your services to be available for use. After the `Configure` method is run, the Functions runtime continues to register additional dependencies, which can affect how your services operate.
+- *Başlangıç sınıfı yalnızca kurulum ve kayıt için tasarlanmıştır.* Başlangıç işlemi sırasında başlangıçta kayıtlı hizmetleri kullanmaktan kaçının. Örneğin, başlatma sırasında kaydedilen bir günlükçüde bir iletiyi günlüğe almaya çalışmayın. Kayıt sürecinin bu noktası, hizmetlerinizin kullanıma hazır olması için çok erken bir işlemdir. `Configure` yöntemi çalıştıktan sonra, Işlevler çalışma zamanı, hizmetlerinizin nasıl çalışacağını etkileyebilecek ek bağımlılıklar kaydetmeye devam eder.
 
-- *The dependency injection container only holds explicitly registered types*. The only services available as injectable types are what are setup in the `Configure` method. As a result, Functions-specific types like `BindingContext` and `ExecutionContext` aren't available during setup or as injectable types.
+- *Bağımlılık ekleme kapsayıcısı yalnızca açık olarak kayıtlı türleri barındırır*. Injectable türleri olarak sunulan tek hizmetler, `Configure` yönteminde kurulum olan şeydir. Sonuç olarak, `BindingContext` ve `ExecutionContext` gibi IŞLEVLERE özgü türler kurulum sırasında veya Injectable türleri olarak kullanılamaz.
 
-## <a name="use-injected-dependencies"></a>Use injected dependencies
+## <a name="use-injected-dependencies"></a>Eklenen bağımlılıkları kullan
 
-Constructor injection is used to make your dependencies available in a function. The use of constructor injection requires that you do not use static classes.
+Oluşturucu Ekleme, bağımlılıklarınızı bir işlevde kullanılabilir hale getirmek için kullanılır. Oluşturucu Ekleme kullanımı statik sınıflar kullanmanıza gerek duyar.
 
-The following sample demonstrates how the `IMyService` and `HttpClient` dependencies are injected into an HTTP-triggered function. This example uses the [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) package required to register an `HttpClient` at startup.
+Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının HTTP ile tetiklenen bir işleve nasıl eklendiğini gösterir. Bu örnek, başlangıçta bir `HttpClient` kaydetmek için gereken [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) paketini kullanır.
 
 ```csharp
 using System;
@@ -114,46 +114,46 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>Service lifetimes
+## <a name="service-lifetimes"></a>Hizmet yaşam süreleri
 
-Azure Functions apps provide the same service lifetimes as [ASP.NET Dependency Injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). For a Functions app, the different service lifetimes behave as follows:
+Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)ile aynı hizmet yaşam sürelerini sağlar. Işlevler uygulaması için farklı hizmet yaşam süreleri aşağıdaki gibi davranır:
 
-- **Transient**: Transient services are created upon each request of the service.
-- **Scoped**: The scoped service lifetime matches a function execution lifetime. Scoped services are created once per execution. Later requests for that service during the execution reuse the existing service instance.
-- **Singleton**: The singleton service lifetime matches the host lifetime and is reused across function executions on that instance. Singleton lifetime services are recommended for connections and clients, for example `SqlConnection` or `HttpClient` instances.
+- **Geçici**: hizmet istekleri üzerine geçici hizmetler oluşturulur.
+- **Kapsam**: kapsamlı hizmet ömrü bir işlev yürütme ömrü ile eşleşir. Kapsamlı hizmetler, her yürütme için bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır.
+- Tekil **: tek**hizmet ömrü, ana bilgisayar ömrü ile eşleşir ve bu örnekteki işlev Yürütmelerinde yeniden kullanılır. Tek ömür Hizmetleri, bağlantılar ve istemciler için, örneğin `SqlConnection` veya `HttpClient` örnekleri için önerilir.
 
-View or download a [sample of different service lifetimes](https://aka.ms/functions/di-sample) on GitHub.
+GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://aka.ms/functions/di-sample) görüntüleyin veya indirin.
 
-## <a name="logging-services"></a>Logging services
+## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
 
-If you need your own logging provider, register a custom type as an `ILoggerProvider` instance. Application Insights is added by Azure Functions automatically.
+Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel bir türü `ILoggerProvider` örneği olarak kaydedin. Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
 
 > [!WARNING]
-> - Do not add `AddApplicationInsightsTelemetry()` to the services collection as it registers services that conflict with services provided by the environment.
-> - Do not register your own `TelemetryConfiguration` or `TelemetryClient` if you are using the built-in Application Insights functionality.
+> - , Ortam tarafından sunulan hizmetlerle çakışan Hizmetleri kaydederken, hizmetler koleksiyonuna `AddApplicationInsightsTelemetry()` eklemeyin.
+> - Yerleşik Application Insights işlevselliğini kullanıyorsanız kendi `TelemetryConfiguration` veya `TelemetryClient` kaydetme.
 
-## <a name="function-app-provided-services"></a>Function app provided services
+## <a name="function-app-provided-services"></a>İşlev uygulaması tarafından sunulan hizmetler
 
-The function host registers many services. The following services are safe to take as a dependency in your application:
+İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Lifetime|Açıklama|
+|Hizmet Türü|Süre|Açıklama|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuration|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Responsible for providing the ID of the host instance|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|
 
-If there are other services you want to take a dependency on, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
+Bağımlılığı almak istediğiniz başka hizmetler varsa, [bir sorun oluşturun ve bunları GitHub 'da önerin](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Overriding host services
+### <a name="overriding-host-services"></a>Konak hizmetlerini geçersiz kılma
 
-Overriding services provided by the host is currently not supported.  If there are services you want to override, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
+Konak tarafından belirtilen geçersiz kılma Hizmetleri şu anda desteklenmiyor.  Geçersiz kılmak istediğiniz hizmetler varsa, [bir sorun oluşturun ve bunları GitHub 'da önerin](https://github.com/azure/azure-functions-host).
 
-## <a name="working-with-options-and-settings"></a>Working with options and settings
+## <a name="working-with-options-and-settings"></a>Seçeneklerle ve ayarlarla çalışma
 
-Values defined in [app settings](./functions-how-to-use-azure-function-app-settings.md#settings) are available in an `IConfiguration` instance, which allows you to read app settings values in the startup class.
+[Uygulama ayarlarında](./functions-how-to-use-azure-function-app-settings.md#settings) tanımlanan değerler, başlangıç sınıfındaki uygulama ayarları değerlerini okumanızı sağlayan bir `IConfiguration` örneğinde mevcuttur.
 
-You can extract values from the `IConfiguration` instance into a custom type. Copying the app settings values to a custom type makes it easy test your services by making these values injectable. Settings read into the configuration instance must be simple key/value pairs.
+`IConfiguration` örneğinden özel bir türe değerleri ayıklayabilirsiniz. Uygulama ayarları değerlerini özel bir türe kopyalamak, bu değerleri tablo haline getirerek, hizmetlerinizi test etmelerini kolaylaştırır. Yapılandırma örneğine okunan ayarların basit anahtar/değer çiftleri olması gerekir.
 
-Consider the following class that includes a property named consistent with an app setting.
+Uygulama ayarıyla tutarlı adlı bir özellik içeren aşağıdaki sınıfı göz önünde bulundurun.
 
 ```csharp
 public class MyOptions
@@ -162,7 +162,7 @@ public class MyOptions
 }
 ```
 
-From inside the `Startup.Configure` method, you can extract values from the `IConfiguration` instance into your custom type using the following code:
+`Startup.Configure` yönteminin içinde, aşağıdaki kodu kullanarak `IConfiguration` örneğinden özel bir türe değerleri ayıklayabilirsiniz:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -172,9 +172,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-Calling `Bind` copies values that have matching property names from the configuration into the custom instance. The options instance is now available in the IoC container to inject into a function.
+Çağırma `Bind`, yapılandırmadan eşleşen özellik adlarına sahip değerleri özel örneğe kopyalar. Options örneği artık bir işleve eklemek için IoC kapsayıcısında kullanılabilir.
 
-The options object is injected into the function as an instance of the generic `IOptions` interface. Use the `Value` property to access the values found in your configuration.
+Options nesnesi, genel `IOptions` arabiriminin bir örneği olarak işleve eklenir. Yapılandırmanızda bulunan değerlere erişmek için `Value` özelliğini kullanın.
 
 ```csharp
 using System;
@@ -191,14 +191,14 @@ public class HttpTrigger
 }
 ```
 
-Refer to [Options pattern in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) for more details regarding working with options.
+Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) bakın.
 
 > [!WARNING]
-> Avoid attempting to read values from files like *local.settings.json* or *appsettings.{environment}.json* on the Consumption plan. Values read from these files related to trigger connections aren't available as the app scales because the hosting infrastructure has no access to the configuration information.
+> *Yerel. Settings. JSON* veya appSettings gibi dosyalardaki değerleri okumaya çalışmadan kaçının *. { Tüketim planında Environment}. JSON* . Barındırma altyapısının yapılandırma bilgilerine erişimi olmadığından, tetikleyici bağlantılarıyla ilgili bu dosyalardan okunan değerler uygulama ölçeklenirken kullanılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [How to monitor your function app](functions-monitoring.md)
-- [Best practices for functions](functions-best-practices.md)
+- [İşlev uygulamanızı izleme](functions-monitoring.md)
+- [İşlevler için en iyi uygulamalar](functions-best-practices.md)

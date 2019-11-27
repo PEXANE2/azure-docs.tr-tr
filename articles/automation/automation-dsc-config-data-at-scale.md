@@ -1,7 +1,7 @@
 ---
-title: Configuration data at scale - Azure Automation
-description: Learn how to configure data at scale for state configuration in Azure Automation.
-keywords: dsc,powershell,configuration,setup
+title: Ölçekli yapılandırma verileri-Azure Otomasyonu
+description: Azure Automation 'da durum yapılandırması için ölçeklendirmeden verileri yapılandırmayı öğrenin.
+keywords: DSC, PowerShell, yapılandırma, kurulum
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -19,38 +19,38 @@ ms.locfileid: "74231702"
 ---
 # <a name="configuration-data-at-scale"></a>Uygun ölçekte yapılandırma verileri
 
-> Applies To: Windows PowerShell 5.1
+> Uygulama hedefi: Windows PowerShell 5,1
 
-Managing hundreds or thousands of servers can be a challenge.
-Customers have provided feedback that the most difficult aspect is actually managing [configuration data](/powershell/scripting/dsc/configurations/configdata).
-Organizing information across logical constructs like location, type, and environment.
+Yüzlerce veya binlerce sunucuyu yönetmek zor olabilir.
+Müşteriler, en zor en iyi [yapılandırma verilerini](/powershell/scripting/dsc/configurations/configdata)yönetmekte olan geri bildirimde bulunmaları sağladı.
+Konum, tür ve ortam gibi mantıksal yapılar arasında bilgi düzenleme.
 
 > [!NOTE]
-> This article refers to a solution that is maintained by the Open Source community.
-> Support is only available in the form of GitHub collaboration, not from Microsoft.
+> Bu makale, açık kaynak topluluğu tarafından tutulan bir çözüme başvurur.
+> Destek, Microsoft 'tan değil yalnızca GitHub işbirliği biçiminde kullanılabilir.
 
-## <a name="community-project-datum"></a>Community project: Datum
+## <a name="community-project-datum"></a>Topluluk projesi: veri
 
-A community maintained solution named [Datum](https://github.com/gaelcolas/Datum) has been created to resolve this challenge.
-Datum builds on great ideas from other configuration management platforms and implements the same type of solution for PowerShell DSC.
-Information is [organized in to text files](https://github.com/gaelcolas/Datum#3-intended-usage) based on logical ideas.
-Examples would be:
+Bu sorunu çözmek için [Datum](https://github.com/gaelcolas/Datum) adlı bir topluluk tarafından tutulan çözüm oluşturulmuştur.
+Veri, diğer yapılandırma yönetimi platformlarından harika fikirler oluşturur ve PowerShell DSC için aynı tür çözümü uygular.
+Bilgiler, mantıksal fikirlere göre [metin dosyalarında düzenlenir](https://github.com/gaelcolas/Datum#3-intended-usage) .
+Örnekler şöyle olabilir:
 
-- Settings that should apply globally
-- Settings that should apply to all servers in a location
-- Settings that should apply to all database servers
-- Individual server settings
+- Genel olarak uygulanması gereken ayarlar
+- Bir konumdaki tüm sunucular için uygulanması gereken ayarlar
+- Tüm veritabanı sunucularına uygulanması gereken ayarlar
+- Bireysel sunucu ayarları
 
-This information is organized in the file format you prefer (JSON, Yaml, or PSD1).
-Then cmdlets are provided to generate configuration data files by [consolidating the information](https://github.com/gaelcolas/Datum#datum-tree) from each file in to single view of a server or server role.
+Bu bilgiler, tercih ettiğiniz dosya biçiminde düzenlenmiştir (JSON, YAML veya PSD1).
+Ardından cmdlet 'ler, içindeki her bir dosyadaki bilgileri bir sunucu veya sunucu rolünün tek bir görünümünde [birleştirerek](https://github.com/gaelcolas/Datum#datum-tree) yapılandırma verileri dosyaları oluşturmak için sağlanır.
 
-Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)Için bunları [DSC yapılandırma betikleri](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) ile birlikte kullanabilirsiniz.
+Daha sonra, yapılandırma çekmek için [Şirket](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) Içinden veya [Azure 'da](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) sunucularınızı kaydettirin.
 
-To try out Datum, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/datum/) and download the solution or click "Project Site" to view the [documentation](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
+Datum denemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/datum/) ziyaret edin ve çözümü indirin veya "proje sitesi" ne tıklayarak [belgeleri](https://github.com/gaelcolas/Datum#2-getting-started--concepts)görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
-- [DSC Resources](/powershell/scripting/dsc/resources/resources)
-- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview)
+- [DSC kaynakları](/powershell/scripting/dsc/resources/resources)
+- [Yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaconfig)

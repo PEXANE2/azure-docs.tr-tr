@@ -17,56 +17,56 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74424422"
 ---
-This Postman-based quickstart walks you through getting an answer from your knowledge base.
+Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Latest [**Postman**](https://www.getpostman.com/).
-* You must have a [QnA Maker service](../How-To/set-up-qnamaker-service-azure.md) and have a [knowledge base with questions and answers](../Tutorials/create-publish-query-in-portal.md). 
+* En son [**Postman**](https://www.getpostman.com/).
+* Bir [soru-cevap oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız ve [sorular ve yanıtlar ile Bilgi Bankası](../Tutorials/create-publish-query-in-portal.md)etmeniz gerekir. 
 
-## <a name="publish-to-get-endpoint"></a>Publish to get endpoint
+## <a name="publish-to-get-endpoint"></a>Uç nokta almak için Yayımla
 
-When you are ready to generate an answer to a question from your knowledge base, [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) your knowledge base.
+Bilgi tabanınızdan bir soruya yanıt oluşturmaya hazırsanız, bilgi bankaınızı [yayımlayın](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) .
 
-## <a name="use-production-endpoint-with-postman"></a>Use production endpoint with Postman
+## <a name="use-production-endpoint-with-postman"></a>Üretim uç noktasını Postman ile kullanma
 
-When your knowledge base is published, the **Publish** page displays the HTTP request settings to generate an answer. The default view shows the settings required to generate an answer from [Postman](https://www.getpostman.com).
+Bilgi Bankası 'niz yayımlandığında **Yayımla** sayfası, yanıt oluşturmak için http isteği ayarlarını görüntüler. Varsayılan Görünüm [Postman](https://www.getpostman.com)'dan bir yanıt oluşturmak için gereken ayarları gösterir.
 
-The yellow numbers in the following image indicate which name/value pairs to use in the following steps.
+Aşağıdaki resimdeki sarı sayılar, aşağıdaki adımlarda kullanılacak ad/değer çiftlerini gösterir.
 
-[![Publish results](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
+[![sonuçları Yayımla](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
-To generate an answer with Postman, complete the following steps:
+Postman ile yanıt oluşturmak için aşağıdaki adımları izleyin:
 
-1. Open Postman. If you're asked to choose a building block, select the **Basic Request** building block. Set the **Request name** as `Generate QnA Maker answer`and the **collection** as `Generate QnA Maker answers`. If you don't want to save to a collection, select the **Cancel** button.
-1. In the workspace, select the HTTP method of **POST**.
+1. Postman 'yi açın. Bir yapı taşı seçmeniz istenirse, **temel istek** yapı taşını seçin. **İstek adını** `Generate QnA Maker answer`ve **koleksiyonu** `Generate QnA Maker answers`olarak ayarlayın. Bir koleksiyona kaydetmek istemiyorsanız **iptal** düğmesini seçin.
+1. Çalışma alanında, **Post**'un http yöntemini seçin.
 
-    [![In Postman, set POST Method](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+    [Postman 'Da ![, POST yöntemini ayarla](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
 
-1. For the URL, concatenate the HOST value (#2 from image) and the Post value (#1 from image) to create the complete URL. A complete example URL looks like: 
+1. URL için, tüm URL 'YI oluşturmak için ana bilgisayar değerini (görüntüden #2) ve gönderi değerini (görüntüden #1) birleştirin. Tüm örnek URL şöyle görünür: 
 
     `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
 
-    [![In Postman, set the complete URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [Postman 'Da ![, URL 'YI tamamen ayarlayın](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
-1. Select the **Headers** tab under the URL, then select **Bulk Edit**. 
+1. URL 'nin altındaki **üstbilgiler** sekmesini seçin ve **Toplu Düzenle**' yi seçin. 
 
-1. Copy the headers (#3 and #4 from image) into the text area.
+1. Üstbilgileri (#3 ve #4 görüntüden) metin alanına kopyalayın.
 
-    [![In Postman, set the headers](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    [Postman 'Da ![üst bilgileri ayarlayın](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
-1. Select the **Body** tab.
-1. Select the **raw** format and enter the JSON (#5 from image) that represents the question.
+1. **Gövde** sekmesini seçin.
+1. **Ham** biçimi seçin ve soruyu temsıl eden JSON (#5 görüntüden) girin.
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
 
-    [![In Postman, set the body JSON value](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+    [Postman 'Da ![Body JSON değerini ayarlayın](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
-1. Select the **Send** button.
-1. The response contains the answer along with other information that may be important to the client application. 
+1. **Gönder** düğmesini seçin.
+1. Yanıt, istemci uygulaması için önemli olabilecek diğer bilgilerle birlikte yanıtı içerir. 
 
-    [![In Postman, set the body JSON value](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    [Postman 'Da ![Body JSON değerini ayarlayın](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
-## <a name="use-staging-endpoint"></a>Use staging endpoint
+## <a name="use-staging-endpoint"></a>Hazırlama uç noktası kullan
 
-If you want to get an answer from the staging endpoint, append the URL with the `isTest` body property.
+Hazırlama uç noktasından bir yanıt almak istiyorsanız URL 'YI `isTest` Body özelliğine ekleyin.

@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Java
+title: Java 'da REST çağrısıyla amacı alın
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -18,8 +18,8 @@ ms.locfileid: "74414504"
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
-* [Visual Studio Code](https://code.visualstudio.com/) or your favorite IDE
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [Visual Studio Code](https://code.visualstudio.com/) veya en sevdiğiniz IDE
+* Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS anahtarını alma
 
@@ -27,13 +27,13 @@ ms.locfileid: "74414504"
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+[Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için Java kullanın.
 
-1. Make a subdirectory named `lib` and copy in the following java libs:
+1. `lib` adlı bir alt dizin oluşturun ve aşağıdaki Java LIBS ' de kopyalayın:
 
-    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [Commons-logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [HttpClient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. `Predict.java` adlı bir dosyada bir sınıf oluşturmak için aşağıdaki kodu kopyalayın:
 
@@ -104,31 +104,31 @@ Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predicti
     }    
     ```
 
-1. Replace the following values:
+1. Aşağıdaki değerleri değiştirin:
 
-    * `YOUR-KEY` with your starter key
-    * `YOUR-ENDPOINT` with your endpoint. Örneğin, `westus2.api.cognitive.microsoft.com`.
+    * başlangıç anahtarınızla `YOUR-KEY`
+    * uç noktanızla `YOUR-ENDPOINT`. Örneğin, `westus2.api.cognitive.microsoft.com`.
 
 
-1. Compile the java program from the command line: 
+1. Komut satırından Java programını derleyin: 
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Run the java program from the command line:
+1. Komut satırından Java programını çalıştırın:
 
     ```console
     java -cp ":lib/*" Predict
     ```
 
-1. Review the prediction response, which is returned as JSON:
+1. JSON olarak döndürülen tahmin yanıtını gözden geçirin:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Okunabilirlik için biçimlendirilen JSON yanıtı: 
 
     ```JSON
     {
@@ -177,9 +177,9 @@ Use Java to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predicti
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you are finished with this quickstart, delete the file from the file system. 
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Add utterances and train with Java](../get-started-get-model-rest-apis.md)
+> [Java ile utterer ve tren ekleme](../get-started-get-model-rest-apis.md)

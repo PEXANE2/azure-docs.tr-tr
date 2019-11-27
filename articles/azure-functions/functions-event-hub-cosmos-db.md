@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Use Java functions with Azure Cosmos DB and Event Hubs'
-description: This tutorial shows you how to consume events from Event Hubs to make updates in Azure Cosmos DB using a function written in Java.
+title: 'Öğretici: Azure Cosmos DB ve Event Hubs Java işlevlerini kullanma'
+description: Bu öğreticide, Java 'da yazılmış bir işlevi kullanarak Azure Cosmos DB güncelleştirme yapmak için Event Hubs olaylarının nasıl kullanılacağı gösterilmektedir.
 author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
@@ -12,53 +12,53 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230620"
 ---
-# <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Tutorial: Create a function in Java with an Event Hub trigger and an Azure Cosmos DB output binding
+# <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Öğretici: bir olay hub 'ı tetikleyicisi ve bir Azure Cosmos DB çıktı bağlaması ile Java 'da işlev oluşturma
 
-This tutorial shows you how to use Azure Functions to create a Java function that analyzes a continuous stream of temperature and pressure data. Event hub events that represent sensor readings trigger the function. The function processes the event data, then adds status entries to an Azure Cosmos DB.
+Bu öğreticide, sürekli sıcaklık ve basınç verilerini analiz eden bir Java işlevi oluşturmak için Azure Işlevlerinin nasıl kullanılacağı gösterilmektedir. Algılayıcı okumaları temsil eden olay hub 'ı olayları işlevi tetikler. İşlevi, olay verilerini işler ve sonra durum girdilerini bir Azure Cosmos DB ekler.
 
-In this tutorial, you'll:
+Bu öğreticide şunları yapmanız gerekir:
 
 > [!div class="checklist"]
-> * Create and configure Azure resources using the Azure CLI.
-> * Create and test Java functions that interact with these resources.
-> * Deploy your functions to Azure and monitor them with Application Insights.
+> * Azure CLı kullanarak Azure kaynakları oluşturun ve yapılandırın.
+> * Bu kaynaklarla etkileşime geçen Java işlevlerini oluşturun ve test edin.
+> * İşlevlerinizi Azure 'a dağıtın ve Application Insights ile izleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To complete this tutorial, you must have the following installed:
+Bu öğreticiyi tamamlayabilmeniz için aşağıdakilerin yüklü olması gerekir:
 
-* [Java Developer Kit](https://aka.ms/azure-jdks), version 8
-* [Apache Maven](https://maven.apache.org), version 3.0 or above
-* [Azure CLI](/cli/azure/install-azure-cli) if you prefer not to use Cloud Shell
-* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) version 2.6.666 or above
+* [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8
+* [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri
+* Kullanmayı tercih ederseniz [Azure clı](/cli/azure/install-azure-cli) Cloud Shell
+* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) sürüm 2.6.666 veya üzeri
 
 > [!IMPORTANT]
-> The `JAVA_HOME` environment variable must be set to the install location of the JDK to complete this tutorial.
+> Bu öğreticiyi tamamlayabilmeniz için `JAVA_HOME` ortam değişkeni JDK 'nin Install konumuna ayarlanmalıdır.
 
-If you prefer to use the code for this tutorial directly, see the [java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) sample repo.
+Bu öğreticide doğrudan kodu kullanmayı tercih ediyorsanız, bkz. [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) örnek deposu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Azure kaynakları oluşturma
 
-In this tutorial, you'll need these resources:
+Bu öğreticide, şu kaynaklara ihtiyacınız olacaktır:
 
-* A resource group to contain the other resources
-* An Event Hubs namespace, event hub, and authorization rule
-* A Cosmos DB account, database, and collection
-* A function app and a storage account to host it
+* Diğer kaynakları içeren bir kaynak grubu
+* Bir Event Hubs ad alanı, Olay Hub 'ı ve yetkilendirme kuralı
+* Bir Cosmos DB hesabı, veritabanı ve koleksiyonu
+* Bir işlev uygulaması ve barındırmak için bir depolama hesabı
 
-The following sections show you how to create these resources using the Azure CLI.
+Aşağıdaki bölümlerde, Azure CLı kullanarak bu kaynakları nasıl oluşturacağınız gösterilmektedir.
 
 ### <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-If you're not using Cloud Shell, you'll need to use the Azure CLI locally to access your account. Use the `az login` command from the Bash prompt to launch the browser-based login experience. If you have access to more than one Azure subscription, set the default with `az account set --subscription` followed by the subscription ID.
+Cloud Shell kullanmıyorsanız, hesabınıza erişmek için Azure CLı 'yi yerel olarak kullanmanız gerekir. Tarayıcı tabanlı oturum açma deneyimini başlatmak için bash isteminde `az login` komutunu kullanın. Birden fazla Azure aboneliğine erişiminiz varsa, varsayılan değer olarak `az account set --subscription` ve ardından abonelik KIMLIĞI ' ni ayarlayın.
 
 ### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
-Next, create some environment variables for the names and location of the resources you'll create. Use the following commands, replacing the `<value>` placeholders with values of your choosing. Values should conform to the [naming rules and restrictions for Azure resources](/azure/architecture/best-practices/resource-naming). For the `LOCATION` variable, use one of the values produced by the `az functionapp list-consumption-locations` command.
+Sonra, oluşturacağınız kaynakların adları ve konumu için bazı ortam değişkenleri oluşturun. `<value>` yer tutucuları seçtiğiniz değerlerle değiştirerek aşağıdaki komutları kullanın. Değerler, [Azure kaynakları için adlandırma kurallarına ve kısıtlamalarına](/azure/architecture/best-practices/resource-naming)uymalıdır. `LOCATION` değişkeni için, `az functionapp list-consumption-locations` komutu tarafından oluşturulan değerlerden birini kullanın.
 
 ```azurecli-interactive
 RESOURCE_GROUP=<value>
@@ -71,13 +71,13 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
-The rest of this tutorial uses these variables. Be aware that these variables persist only for the duration of your current Azure CLI or Cloud Shell session. You will need to run these commands again if you use a different local terminal window or your Cloud Shell session times out.
+Bu öğreticinin geri kalanı bu değişkenleri kullanır. Bu değişkenlerin yalnızca geçerli Azure CLı veya Cloud Shell oturumunuz süresince kalıcı olduğunu unutmayın. Farklı bir yerel Terminal penceresi kullanıyorsanız veya Cloud Shell oturumunuz zaman aşımına uğrarsa bu komutları yeniden çalıştırmanız gerekir.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure uses resource groups to collect all related resources in your account. That way, you can view them as a unit and delete them with a single command when you're done with them.
+Azure, hesabınızdaki tüm ilgili kaynakları toplamak için kaynak gruplarını kullanır. Bu şekilde, bunları bir birim olarak görüntüleyebilir ve bunlarla işiniz bittiğinde tek bir komutla silebilirsiniz.
 
-Use the following command to create a resource group:
+Bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az group create \
@@ -87,7 +87,7 @@ az group create \
 
 ### <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-Next, create an Azure Event Hubs namespace, event hub, and authorization rule using the following commands:
+Ardından, aşağıdaki komutları kullanarak bir Azure Event Hubs ad alanı, Olay Hub 'ı ve yetkilendirme kuralı oluşturun:
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -106,11 +106,11 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
-The Event Hubs namespace contains the actual event hub and its authorization rule. The authorization rule enables your functions to send messages to the hub and listen for the corresponding events. One function sends messages that represent telemetry data. Another function listens for events, analyzes the event data, and stores the results in Azure Cosmos DB.
+Event Hubs ad alanı gerçek olay hub 'ını ve yetkilendirme kuralını içerir. Yetkilendirme kuralı, işlevlerinizin hub 'a ileti göndermesini ve ilgili olayları dinlemesini sağlar. Bir işlev telemetri verilerini temsil eden iletiler gönderir. Başka bir işlev olayları dinler, olay verilerini analiz eder ve sonuçları Azure Cosmos DB depolar.
 
 ### <a name="create-an-azure-cosmos-db"></a>Bir Azure Cosmos DB oluşturun
 
-Next, create an Azure Cosmos DB account, database, and collection using the following commands:
+Ardından, aşağıdaki komutları kullanarak bir Azure Cosmos DB hesabı, veritabanı ve koleksiyonu oluşturun:
 
 ```azurecli-interactive
 az cosmosdb create \
@@ -128,11 +128,11 @@ az cosmosdb collection create \
     --partition-key-path '/temperatureStatus'
 ```
 
-The `partition-key-path` value partitions your data based on the `temperatureStatus` value of each item. The partition key enables Cosmos DB to increase performance by dividing your data into distinct subsets that it can access independently.
+`partition-key-path` değeri, her öğenin `temperatureStatus` değerine göre verilerinizi bölümlendirir. Bölüm anahtarı, verilerinizi bağımsız olarak erişebileceği farklı alt kümelere ayırarak performansı artırmaya Cosmos DB olanak sağlar.
 
-### <a name="create-a-storage-account-and-function-app"></a>Create a storage account and function app
+### <a name="create-a-storage-account-and-function-app"></a>Depolama hesabı ve işlev uygulaması oluşturma
 
-Next, create an Azure Storage account, which is required by Azure Functions, then create the function app. Use the following commands:
+Ardından, Azure Işlevleri için gerekli olan bir Azure depolama hesabı oluşturun ve ardından işlev uygulamasını oluşturun. Aşağıdaki komutları kullanın:
 
 ```azurecli-interactive
 az storage account create \
@@ -147,15 +147,15 @@ az functionapp create \
     --runtime java
 ```
 
-When the `az functionapp create` command creates your function app, it also creates an Application Insights resource with the same name. The function app is automatically configured with a setting named `APPINSIGHTS_INSTRUMENTATIONKEY` that connects it to Application Insights. You can view app telemetry after you deploy your functions to Azure, as described later in this tutorial.
+`az functionapp create` komutu işlev uygulamanızı oluşturduğunda aynı ada sahip bir Application Insights kaynağı da oluşturur. İşlev uygulaması, Application Insights bağlayan `APPINSIGHTS_INSTRUMENTATIONKEY` adlı bir ayarla otomatik olarak yapılandırılır. Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi, işlevlerinizi Azure 'a dağıttıktan sonra uygulama telemetrisini görüntüleyebilirsiniz.
 
-## <a name="configure-your-function-app"></a>Configure your function app
+## <a name="configure-your-function-app"></a>İşlev uygulamanızı yapılandırma
 
-Your function app will need to access the other resources to work correctly. The following sections show you how to configure your function app so that it can run on your local machine.
+İşlev uygulamanızın doğru şekilde çalışması için diğer kaynaklara erişmesi gerekir. Aşağıdaki bölümlerde, işlev uygulamanızı yerel makinenizde çalışacak şekilde nasıl yapılandırabileceğiniz gösterilmektedir.
 
-### <a name="retrieve-resource-connection-strings"></a>Retrieve resource connection strings
+### <a name="retrieve-resource-connection-strings"></a>Kaynak bağlantı dizelerini alma
 
-Use the following commands to retrieve the storage, event hub, and Cosmos DB connection strings and save them in environment variables:
+Depolama, Olay Hub 'ı ve Cosmos DB bağlantı dizelerini almak ve bunları ortam değişkenlerine kaydetmek için aşağıdaki komutları kullanın:
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -183,11 +183,11 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
-These variables are set to values retrieved from Azure CLI commands. Each command uses a JMESPath query to extract the connection string from the JSON payload returned. The connection strings are also displayed using `echo` so you can confirm that they've been retrieved successfully.
+Bu değişkenler, Azure CLı komutlarından alınan değerlere ayarlanır. Her komut, döndürülen JSON yükünün bağlantı dizesini ayıklamak için bir JMESPath sorgusu kullanır. Bağlantı dizeleri de `echo` kullanılarak görüntülenir, böylece başarıyla alındığını doğrulayabilirsiniz.
 
-### <a name="update-your-function-app-settings"></a>Update your function app settings
+### <a name="update-your-function-app-settings"></a>İşlev uygulaması ayarlarınızı güncelleştirme
 
-Next, use the following command to transfer the connection string values to app settings in your Azure Functions account:
+Sonra, bağlantı dizesi değerlerini Azure Işlevleri hesabınızdaki uygulama ayarlarına aktarmak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -199,22 +199,22 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
-Your Azure resources have now been created and configured to work properly together.
+Azure kaynaklarınız artık oluşturulmuştur ve birlikte düzgün çalışacak şekilde yapılandırılmıştır.
 
-## <a name="create-and-test-your-functions"></a>Create and test your functions
+## <a name="create-and-test-your-functions"></a>İşlevlerinizi oluşturma ve test etme
 
-Next, you'll create a project on your local machine, add Java code, and test it. You'll use commands that work with the Maven Plugin for Azure Functions and the Azure Functions Core Tools. Your functions will run locally, but will use the cloud-based resources you've created. After you get the functions working locally, you can use Maven to deploy them to the cloud and watch your data and analytics accumulate.
+Ardından, yerel makinenizde bir proje oluşturacak, Java kodunu ekleyecek ve test edersiniz. Azure Işlevleri ve Azure Functions Core Tools Maven eklentisi ile çalışan komutları kullanacaksınız. İşlevleriniz yerel olarak çalışır, ancak oluşturduğunuz bulut tabanlı kaynakları kullanacaktır. Yerel olarak çalışan işlevleri aldıktan sonra, Maven kullanarak bunları buluta dağıtabilir ve veri ve analiz birikmesini izleyebilirsiniz.
 
-If you used Cloud Shell to create your resources, then you won't be connected to Azure locally. In this case, use the `az login` command to launch the browser-based login process. Then if necessary, set the default subscription with `az account set --subscription` followed by the subscription ID. Finally, run the following commands to recreate some environment variables on your local machine. Replace the `<value>` placeholders with the same values you used previously.
+Kaynaklarınızın oluşturulması için Cloud Shell kullandıysanız, Azure 'a yerel olarak Bağlanmayacağız. Bu durumda, tarayıcı tabanlı oturum açma işlemini başlatmak için `az login` komutunu kullanın. Gerekirse, varsayılan aboneliği `az account set --subscription` ve ardından abonelik KIMLIĞI ile ayarlayın. Son olarak, yerel makinenizde bazı ortam değişkenlerini yeniden oluşturmak için aşağıdaki komutları çalıştırın. `<value>` yer tutucuları, daha önce kullandığınız değerlerle değiştirin.
 
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
-### <a name="create-a-local-functions-project"></a>Create a local functions project
+### <a name="create-a-local-functions-project"></a>Yerel işlevler projesi oluşturma
 
-Use the following Maven command to create a functions project and add the required dependencies.
+Bir işlevler projesi oluşturmak ve gerekli bağımlılıkları eklemek için aşağıdaki Maven komutunu kullanın.
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -226,32 +226,32 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
-This command generates several files inside a `telemetry-functions` folder:
+Bu komut `telemetry-functions` bir klasör içinde birkaç dosya oluşturur:
 
-* A `pom.xml` file for use with Maven
-* A `local.settings.json` file to hold app settings for local testing
-* A `host.json` file that enables the Azure Functions Extension Bundle, required for Cosmos DB output binding in your data analysis function
-* A `Function.java` file that includes a default function implementation
-* A few test files that this tutorial doesn't need
+* Maven ile kullanım için bir `pom.xml` dosyası
+* Yerel test için uygulama ayarlarını tutacak bir `local.settings.json` dosyası
+* Veri çözümleme işlevinizdeki Cosmos DB çıkış bağlaması için gerekli olan Azure Işlevleri uzantısı paketini sağlayan bir `host.json` dosyası
+* Varsayılan işlev uygulamasını içeren bir `Function.java` dosyası
+* Bu öğreticiye gereken birkaç test dosyası
 
-To avoid compilation errors, you'll need to delete the test files. Run the following commands to navigate to the new project folder and delete the test folder:
+Derleme hatalarını önlemek için, test dosyalarını silmeniz gerekir. Yeni proje klasörüne gitmek ve test klasörünü silmek için aşağıdaki komutları çalıştırın:
 
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
-### <a name="retrieve-your-function-app-settings-for-local-use"></a>Retrieve your function app settings for local use
+### <a name="retrieve-your-function-app-settings-for-local-use"></a>Yerel kullanım için işlev uygulaması ayarlarınızı alma
 
-For local testing, your function project will need the connection strings that you added to your function app in Azure earlier in this tutorial. Use the following Azure Functions Core Tools command, which retrieves all the function app settings stored in the cloud and adds them to your `local.settings.json` file:
+Yerel test için, işlev projenizin Bu öğreticide daha önce Azure 'daki işlev uygulamanıza eklediğiniz bağlantı dizeleri gerekir. Bulutta depolanan tüm işlev uygulaması ayarlarını alan ve `local.settings.json` dosyanıza ekleyen aşağıdaki Azure Functions Core Tools komutunu kullanın:
 
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
 
-### <a name="add-java-code"></a>Add Java code
+### <a name="add-java-code"></a>Java kodu ekle
 
-Next, open the `Function.java` file and replace the contents with the following code.
+Sonra, `Function.java` dosyasını açın ve içeriğini aşağıdaki kodla değiştirin.
 
 ```java
 package com.example;
@@ -324,11 +324,11 @@ public class Function {
 }
 ```
 
-As you can see, this file contains two functions, `generateSensorData` and `processSensorData`. The `generateSensorData` function simulates a sensor that sends temperature and pressure readings to the event hub. A timer trigger runs the function every 10 seconds, and an event hub output binding sends the return value to the event hub.
+Görebileceğiniz gibi, bu dosya `generateSensorData` ve `processSensorData`iki işlev içerir. `generateSensorData` işlevi, Olay Hub 'ına sıcaklık ve basınç okumaları gönderen bir algılayıcının benzetimini yapar. Bir Zamanlayıcı tetikleyicisi, işlevi 10 saniyede bir çalıştırır ve bir olay hub 'ı çıkış bağlaması, dönüş değerini Olay Hub 'ına gönderir.
 
-When the event hub receives the message, it generates an event. The `processSensorData` function runs when it receives the event. It then processes the event data and uses an Azure Cosmos DB output binding to send the results to Azure Cosmos DB.
+Olay Hub 'ı iletiyi aldığında bir olay oluşturur. `processSensorData` işlevi olayı aldığında çalışır. Daha sonra olay verilerini işler ve sonuçları Azure Cosmos DB göndermek için bir Azure Cosmos DB çıkış bağlaması kullanır.
 
-The data used by these functions is stored using a class called `TelemetryItem`, which you'll need to implement. Create a new file called `TelemetryItem.java` in the same location as `Function.java` and add the following code:
+Bu işlevler tarafından kullanılan veriler, uygulamanız gereken `TelemetryItem`adlı bir sınıf kullanılarak saklanır. `Function.java` ile aynı konumda `TelemetryItem.java` adlı yeni bir dosya oluşturun ve aşağıdaki kodu ekleyin:
 
 ```java
 package com.example;
@@ -389,16 +389,16 @@ public class TelemetryItem {
 
 ### <a name="run-locally"></a>Yerel olarak çalıştırma
 
-You can now build and run the functions locally and see data appear in your Azure Cosmos DB.
+Artık işlevleri yerel olarak oluşturup çalıştırabilir ve Azure Cosmos DB verileri görebilirsiniz.
 
-Use the following Maven commands to build and run the functions:
+İşlevleri derlemek ve çalıştırmak için aşağıdaki Maven komutlarını kullanın:
 
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
 
-After some build and startup messages, you'll see output similar to the following example for each time the functions run:
+Bazı derleme ve başlangıç iletilerinden sonra, işlevlerin her çalıştırılışında aşağıdaki örneğe benzer bir çıktı görürsünüz:
 
 ```output
 [10/22/19 4:01:30 AM] Executing 'Functions.generateSensorData' (Reason='Timer fired at 2019-10-21T21:01:30.0016769-07:00', Id=c1927c7f-4f70-4a78-83eb-bc077d838410)
@@ -411,33 +411,33 @@ After some build and startup messages, you'll see output similar to the followin
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-You can then go to the [Azure portal](https://portal.azure.com) and navigate to your Azure Cosmos DB account. Select **Data Explorer**, expand **TelemetryInfo**, then select **Items** to view your data when it arrives.
+Daha sonra [Azure Portal](https://portal.azure.com) gidebilir ve Azure Cosmos DB hesabınıza gidebilirsiniz. **Veri Gezgini**seçin, **TelemetryInfo**' ı genişletin ve ardından verileri geldiğinde görüntülemek için **öğeleri** seçin.
 
-![Cosmos DB Data Explorer](media/functions-event-hub-cosmos-db/data-explorer.png)
+![Cosmos DB Veri Gezgini](media/functions-event-hub-cosmos-db/data-explorer.png)
 
-## <a name="deploy-to-azure-and-view-app-telemetry"></a>Deploy to Azure and view app telemetry
+## <a name="deploy-to-azure-and-view-app-telemetry"></a>Azure 'a dağıtma ve uygulama telemetrisini görüntüleme
 
-Finally, you can deploy your app to Azure and verify that it continues to work the same way it did locally.
+Son olarak, uygulamanızı Azure 'a dağıtabilir ve yerel olarak olduğu şekilde çalışmaya devam ettiğini doğrulayabilirsiniz.
 
-Deploy your project to Azure using the following command:
+Aşağıdaki komutu kullanarak projenizi Azure 'a dağıtın:
 
 ```bash
 mvn azure-functions:deploy
 ```
 
-Your functions now run in Azure, and continue to accumulate data in your Azure Cosmos DB. You can view your deployed function app in the Azure portal, and view app telemetry through the connected Application Insights resource, as shown in the following screenshots:
+İşlevleriniz artık Azure 'da çalışır ve Azure Cosmos DB verileri birikmeye devam eder. Dağıtılmış işlev uygulamanızı Azure portal görüntüleyebilir ve aşağıdaki ekran görüntülerinde gösterildiği gibi bağlı Application Insights kaynağı aracılığıyla uygulama telemetrisini görüntüleyebilirsiniz:
 
-**Live Metrics Stream:**
+**Canlı Ölçüm Akışı:**
 
-![Application Insights Live Metrics Stream](media/functions-event-hub-cosmos-db/application-insights-live-metrics-stream.png)
+![Application Insights Canlı Ölçüm Akışı](media/functions-event-hub-cosmos-db/application-insights-live-metrics-stream.png)
 
 **Performans:**
 
-![Application Insights Performance blade](media/functions-event-hub-cosmos-db/application-insights-performance.png)
+![Application Insights performans dikey penceresi](media/functions-event-hub-cosmos-db/application-insights-performance.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you're finished with the Azure resources you created in this tutorial, you can delete them using the following command:
+Bu öğreticide oluşturduğunuz Azure kaynaklarıyla işiniz bittiğinde, aşağıdaki komutu kullanarak bunları silebilirsiniz:
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP
@@ -445,11 +445,11 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you learned how to create an Azure Function that handles Event Hub events and updates a Cosmos DB. For more information, see the [Azure Functions Java developer guide](/azure/azure-functions/functions-reference-java). For information on the annotations used, see the [com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) reference.
+Bu öğreticide, Olay Hub 'ı olaylarını işleyen ve bir Cosmos DB güncelleştiren bir Azure Işlevi oluşturmayı öğrendiniz. Daha fazla bilgi için bkz. [Azure Işlevleri Java geliştirici kılavuzu](/azure/azure-functions/functions-reference-java). Kullanılan ek açıklamalar hakkında daha fazla bilgi için bkz. [com. Microsoft. Azure. Functions. Annotation](/java/api/com.microsoft.azure.functions.annotation) başvurusu.
 
-This tutorial used environment variables and application settings to store secrets such as connection strings. For information on storing these secrets in Azure Key Vault, see [Use Key Vault references for App Service and Azure Functions](/azure/app-service/app-service-key-vault-references).
+Bu öğretici, bağlantı dizeleri gibi gizli dizileri depolamak için ortam değişkenlerini ve uygulama ayarlarını kullandı. Bu gizli dizileri Azure Key Vault depolama hakkında bilgi için bkz. [App Service ve Azure işlevleri için Key Vault başvurularını kullanma](/azure/app-service/app-service-key-vault-references).
 
-Next, learn how to use Azure Pipelines CI/CD for automated deployment:
+Sonra, otomatik dağıtım için Azure Pipelines CI/CD 'yi nasıl kullanacağınızı öğrenin:
 
 > [!div class="nextstepaction"]
-> [Build and deploy Java to Azure Functions](/azure/devops/pipelines/ecosystems/java-function)
+> [Java oluşturma ve Azure 'a dağıtma Işlevleri](/azure/devops/pipelines/ecosystems/java-function)

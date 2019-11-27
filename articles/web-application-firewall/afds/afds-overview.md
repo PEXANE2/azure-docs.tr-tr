@@ -1,6 +1,6 @@
 ---
-title: What is Azure web application firewall on Azure Front Door?
-description: Learn how Azure web application firewall on Azure Front Door service protects your web applications from malicious attacks.
+title: Azure ön kapıda Azure Web uygulaması güvenlik duvarı nedir?
+description: Azure ön kapılarındaki Azure Web uygulaması güvenlik duvarı 'nın Web uygulamalarınızı kötü amaçlı saldırılardan nasıl koruduğunu öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -14,103 +14,103 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406220"
 ---
-# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall on Azure Front Door
+# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure ön kapıda Azure Web uygulaması güvenlik duvarı
 
-Azure Web Application Firewall (WAF) on Azure Front Door provides centralized protection for your web applications that are globally delivered using Azure Front Door. Bu çözüm, web hizmetlerinizi yaygın açıklardan yararlanma yazılımlarına ve güvenlik açıklarına karşı koruyup hizmetinizi kullanıcılarınız için yüksek oranda kullanılabilir tutmanın yanı sıra uyumluluk gereksinimlerini karşılamanıza yardımcı olmak üzere tasarlanmıştır ve bu amaçlara uygun şekilde işletilmektedir.
+Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF), Azure ön kapısı kullanılarak küresel olarak sunulan Web uygulamalarınız için merkezi koruma sağlar. Bu çözüm, web hizmetlerinizi yaygın açıklardan yararlanma yazılımlarına ve güvenlik açıklarına karşı koruyup hizmetinizi kullanıcılarınız için yüksek oranda kullanılabilir tutmanın yanı sıra uyumluluk gereksinimlerini karşılamanıza yardımcı olmak üzere tasarlanmıştır ve bu amaçlara uygun şekilde işletilmektedir.
 
-WAF on Front Door is a global and centralized solution. It is deployed on Azure network edge locations around the globe and every incoming request for a WAF enabled web application delivered by Front Door is inspected at the network edge. This allows WAF to prevent malicious attacks close to the attack sources, before they enter your virtual network and offers global protection at scale without sacrificing performance. A WAF policy can be easily linked to any Front Door profile in your subscription and new rules can be deployed within minutes, allowing you to respond quickly to changing threat patterns.
+Ön kapıda WAF genel ve merkezi bir çözümdür. Bu, dünyanın her yerindeki Azure ağ Edge konumlarına ve ön kapıya göre dağıtılan bir WAF özellikli Web uygulamasına yönelik her gelen isteğe bağlı olarak ağ ucunda denetlenir. Bu, WAF 'nin, Sanal ağınızı girmeden önce, saldırı kaynaklarına yakın kötü amaçlı saldırıları engellemesine ve performanstan ödün vermeden genel koruma sağlamasına olanak tanır. Bir WAF ilkesi, aboneliğinizdeki herhangi bir ön kapı profiline kolayca bağlanabilir ve yeni kurallar dakikalar içinde dağıtılabilir ve bu da, tehdit desenlerine hızla yanıt vermenize olanak tanır.
 
-![Azure web application firewall](../media/overview/wafoverview.png)
+![Azure Web uygulaması güvenlik duvarı](../media/overview/wafoverview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF policy and rules
+## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 
-You can configure a WAF policy and associate that policy to one or more Front Door front-ends for protection. A WAF policy consists of two types of security rules:
+Bir WAF ilkesi yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla ön kapı ön uçları ile ilişkilendirebilirsiniz. Bir WAF ilkesi, iki tür güvenlik kuralından oluşur:
 
-- custom rules that are authored by the customer.
+- Müşteri tarafından yazılan özel kurallar.
 
-- managed rule sets that are a collection of Azure-managed pre-configured set of rules.
+- Azure tarafından yönetilen önceden yapılandırılmış bir kural kümesi koleksiyonu olan yönetilen kural kümeleri.
 
-When both are present, custom rules are processed before processing the rules in a managed rule set. A rule is made of a match condition, a priority, and an action. Action types supported are: ALLOW, BLOCK, LOG, and REDIRECT. You can create a fully customized policy that meets your specific application protection requirements by combining managed and custom rules.
+Her ikisi de varsa, yönetilen bir kural kümesindeki kuralları işlemeden önce özel kurallar işlenir. Bir kural eşleştirme koşulu, öncelik ve bir eylemden oluşur. Desteklenen eylem türleri şunlardır: ızın ver, engelle, LOG ve REDIRECT. Yönetilen ve özel kuralları birleştirerek, belirli uygulama koruma gereksinimlerinizi karşılayan tam olarak özelleştirilmiş bir ilke oluşturabilirsiniz.
 
-Rules within a policy are processed in a prioritized order where priority is a unique integer that defines the order of rules being processed. Smaller integer value denotes a higher priority and those are evaluated before rules with a higher integer value. Once a rule is matched, the corresponding action that was defined in the rule is applied to the request. Once such a match is processed, rules with lower priorities are not processed further.
+Bir ilke içindeki kurallar, önceliğinin, işlenen kuralların sırasını tanımlayan benzersiz bir tamsayı olduğu öncelikli bir sırada işlenir. Daha küçük tamsayı değeri daha yüksek bir öncelik gösterir ve bunlar daha yüksek bir tamsayı değerine sahip kurallardan önce değerlendirilir. Bir kural eşleştiğinde, kuralda tanımlanan ilgili eylem isteğe uygulanır. Bu tür bir eşleşme işlendiğinde, daha düşük öncelikler olan kurallar daha fazla işlenmez.
 
-A web application delivered by Front Door can have only one WAF policy associated with it at a time. However, you can have a Front Door configuration without any WAF policies associated with it. If a WAF policy is present, it is replicated to all of our edge locations to ensure consistency in security policies across the world.
+Ön kapıya göre sunulan bir Web uygulamasının aynı anda kendisiyle ilişkili yalnızca bir WAF ilkesi olabilir. Ancak, kendisiyle ilişkilendirilmiş bir WAF ilkesi olmadan bir ön kapı yapılandırmasına sahip olabilirsiniz. Bir WAF ilkesi varsa, dünyanın dört bir yanındaki güvenlik ilkelerinde tutarlılık sağlamak için tüm kenar konumlarımızla çoğaltılır.
 
-## <a name="waf-modes"></a>WAF modes
+## <a name="waf-modes"></a>WAF modları
 
-WAF policy can be configured to run in the following two modes:
+WAF ilkesi aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
 
-- **Detection mode:** When run in detection mode, WAF does not take any other actions other than monitors and logs the request and its matched WAF rule to WAF logs. You can turn on logging diagnostics for Front Door (when using portal, this can be achieved by going to the **Diagnostics** section in the Azure portal).
+- **Algılama modu:** Algılama modunda çalıştırıldığında WAF, izleyicileri dışında başka bir eylem almaz ve isteği ve eşleşen WAF kuralını WAF günlüklerine kaydeder. Ön kapı için günlük tanılamayı açabilirsiniz (portal kullanırken, bu, Azure portal) **Tanılama** bölümüne giderek elde edilebilir.
 
-- **Prevention mode:** When configured to run in prevention mode, WAF takes the specified action if a request matches a rule and if a match is found, no further rules with lower priority are evaluated. Any matched requests are also logged in the WAF logs.
+- **Önleme modu:** Önleme modunda çalışacak şekilde yapılandırıldığında, bir istek bir kuralla eşleşiyorsa ve bir eşleşme bulunursa, daha düşük önceliğe sahip başka hiçbir kural hesaplanmazsa, WAF belirtilen eylemi alır. Tüm eşleşen istekler de WAF günlüklerine kaydedilir.
 
-## <a name="waf-actions"></a>WAF actions
+## <a name="waf-actions"></a>WAF eylemleri
 
-WAF customers can choose to run from one of the actions when a request matches a rule’s conditions:
+WAF müşterileri, bir isteğin bir kuralla eşleştiğinde bir eylemden birini çalıştırmayı seçebilir:
 
-- **Allow:**  Request passes through the WAF and is forwarded to back-end. No further lower priority rules can block this request.
-- **Block:** The request is blocked and WAF sends a response to the client without forwarding the request to the back-end.
-- **Log:**  Request is logged in the WAF logs and WAF continues evaluating lower priority rules.
-- **Redirect:** WAF redirects the request to the specified URI. The URI specified is a policy level setting. Once configured, all requests that match the **Redirect** action will be sent to that URI.
+- **Izin ver:**  İstek WAF üzerinden geçer ve arka uca iletilir. Daha düşük öncelikli kurallar, bu isteği engelleyebilir.
+- **Engelle:** İstek engellendi ve WAF, isteği arka uca iletmeksizin istemciye bir yanıt gönderiyor.
+- **Günlüğe kaydet:**  İstek WAF günlüklerinde günlüğe kaydedilir ve WAF, düşük öncelikli kuralları değerlendirmeye devam eder.
+- **Yeniden yönlendir:** WAF, isteği belirtilen URI 'ye yeniden yönlendirir. Belirtilen URI bir ilke düzeyi ayarıdır. Yapılandırıldıktan sonra, **yeniden yönlendirme** eylemiyle eşleşen tüm ISTEKLER bu URI 'ye gönderilir.
 
-## <a name="waf-rules"></a>WAF rules
+## <a name="waf-rules"></a>WAF kuralları
 
-A WAF policy can consist of two types of security rules - custom rules, authored by the customer and managed rulesets, Azure-managed pre-configured set of rules.
+Bir WAF ilkesi, müşteri tarafından yazılan ve yönetilen RuleSets, Azure tarafından yönetilen önceden yapılandırılmış kural kümesi olan özel kuralların bulunduğu iki tür güvenlik kuralı içerebilir.
 
-### <a name="custom-authored-rules"></a>Custom authored rules
+### <a name="custom-authored-rules"></a>Özel yazılan kurallar
 
-You can configure custom rules WAF as follows:
+WAF özel kurallarını aşağıdaki gibi yapılandırabilirsiniz:
 
-- **IP allow list and block list:** You can configure custom rules to control access to your web applications based on a list of client IP addresses or IP address ranges. Both IPv4 and IPv6 address types are supported. This list can be configured to either block or allow those requests where the source IP matches an IP in the list.
+- **IP izin verilenler listesi ve Engellenenler listesi:** İstemci IP adresleri veya IP adresi aralıkları listesine göre Web uygulamalarınıza erişimi denetlemek için özel kurallar yapılandırabilirsiniz. Hem IPv4 hem de IPv6 adres türleri desteklenir. Bu liste, kaynak IP 'nin listedeki bir IP ile eşleştiği istekleri engelleyecek ya da bu isteklere izin verecek şekilde yapılandırılabilir.
 
-- **Geographic based access control:** You can configure custom rules to control access to your web applications based on the country code associated with a client’s IP address.
+- **Coğrafi tabanlı erişim denetimi:** Web uygulamalarınıza erişimi, bir istemcinin IP adresiyle ilişkili ülke koduna göre denetlemek için özel kurallar yapılandırabilirsiniz.
 
-- **HTTP parameters-based access control:** You can configure custom rules based on string matching HTTP/HTTPS request parameters such as query strings, POST args, Request URI, Request Header, and Request Body.
+- **Http parametreleri tabanlı erişim denetimi:** Sorgu dizeleri, POST args, Istek URI 'SI, istek üstbilgisi ve Istek gövdesi gibi HTTP/HTTPS istek parametreleri ile eşleşen dize tabanlı özel kurallar yapılandırabilirsiniz.
 
-- **Request method-based access control:** You may configure custom rules based on the HTTP request method of the request such as GET, PUT, or HEAD.
+- **Yöntem tabanlı erişim denetimi iste:** İstek al, koy veya HEAD gibi HTTP isteği yöntemine göre özel kurallar yapılandırabilirsiniz.
 
-- **Size constraint:** You can configure custom rules based on the lengths of specific parts of a request such as query string, Uri, or request body.
+- **Boyut kısıtlaması:** Sorgu dizesi, URI veya istek gövdesi gibi bir isteğin belirli bölümlerinin uzunluklarına göre özel kurallar yapılandırabilirsiniz.
 
-- **Rate limiting rules:** A rate control rule is to limit abnormal high traffic from any client IP. You may configure a threshold on the number of web requests allowed from a client IP during a one-minute duration. This is distinct from an IP list-based allow/block custom rule that either allows all or blocks all request from a client IP. Rate limiting can be combined with additional match conditions such as HTTP(S) parameters matching for granular rate control.
+- **Hız sınırlandırma kuralları:** Bir hız denetim kuralı, anormal yüksek trafiği herhangi bir istemci IP 'sinden sınırlayabilmektir. Bir dakikalık süre boyunca istemci IP 'sinden izin verilen Web isteği sayısında bir eşik yapılandırabilirsiniz. Bu, tümüne izin veren veya bir istemci IP 'sinden tüm istekleri engelleyen bir IP listesi tabanlı izin verme/engelleme özel kuralından farklıdır. Hız sınırlaması, ayrıntılı hız denetimi için HTTP (S) parametreleri ile eşleşen ek eşleşme koşullarıyla birleştirilebilir.
 
-### <a name="azure-managed-rule-sets"></a>Azure-managed rule sets
+### <a name="azure-managed-rule-sets"></a>Azure tarafından yönetilen kural kümeleri
 
-Azure-managed rule sets provide an easy way to deploy protection against a common set of security threats. Since such rulesets are managed by Azure, the rules are updated as needed to protect against new attack signatures. At public preview, the Azure-managed Default Rule Set includes rules against the following threat categories:
+Azure tarafından yönetilen kural kümeleri, yaygın bir güvenlik tehditleri kümesine karşı koruma dağıtmanın kolay bir yolunu sağlar. Bu tür RuleSets 'ler Azure tarafından yönetildiğinden, yeni saldırı imzalarından korunmak için kurallar gerektiği şekilde güncelleştirilir. Genel önizlemede, Azure tarafından yönetilen varsayılan kural kümesi, aşağıdaki tehdit kategorilerine karşı kuralları içerir:
 
-- Cross-site scripting
-- Java attacks
-- Local file inclusion
-- PHP injection attacks
-- Remote command execution
-- Remote file inclusion
-- Session fixation
+- Siteler arası betik oluşturma
+- Java saldırıları
+- Yerel dosya ekleme
+- PHP ekleme saldırıları
+- Uzak komut yürütme
+- Uzaktan dosya ekleme
+- Oturum armatürü
 - SQL ekleme koruması
-- Protocol attackers
+- Protokol saldırganlar
 
-The version number of the Default Rule Set will increment when new attack signatures are added to the rule set.
-Default Rule Set is enabled by default in Detection mode in your WAF policies. You can disable or enable individual rules within the Default Rule Set to meet your application requirements. You can also set specific actions (ALLOW/BLOCK/REDIRECT/LOG) per rule. Default action is to BLOCK. In addition, custom rules can be configured in the same WAF policy if you wish to bypass any of the pre-configured rules in the Default Rule Set.
-Custom rules are always applied before rules in the Default Rule Set are evaluated. If a request matches a custom rule, corresponding rule action is applied, and the request is either blocked or passed through to back-end, without invocation of any further custom rules or the rules in the Default Rule Set. Furthermore, you have the option to remove Default Rule Set from your WAF policies.
+Kural kümesine yeni saldırı imzaları eklendiğinde varsayılan kural kümesinin sürüm numarası artacaktır.
+Varsayılan kural kümesi, WAF ilkelerinizin algılama modunda varsayılan olarak etkindir. Varsayılan kural kümesindeki kuralları uygulama gereksinimlerinizi karşılayacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz. Kural başına belirli eylemleri (ızın verme/engelleme/yeniden yönlendirme/günlük) da ayarlayabilirsiniz. Varsayılan eylem ENGELLENECEK. Ayrıca, varsayılan kural kümesindeki önceden yapılandırılmış kuralların herhangi birini atlamak istiyorsanız, özel kurallar aynı WAF ilkesinde yapılandırılabilir.
+Varsayılan kural kümesindeki kuralların değerlendirilmesinden önce özel kurallar her zaman uygulanır. Bir istek özel bir kuralla eşleşiyorsa, buna karşılık gelen kural eylemi uygulanır ve daha fazla özel kural veya varsayılan kural kümesindeki kuralların çağrılması gerekmeden istek engellenir veya arka uca geçirilir. Ayrıca, WAF ilkelerinizin varsayılan kural kümesini kaldırma seçeneğiniz de vardır.
 
 
-### <a name="bot-protection-rule-set-preview"></a>Bot protection rule set (preview)
+### <a name="bot-protection-rule-set-preview"></a>Bot koruma kuralı kümesi (Önizleme)
 
-A managed bot protection rule set can be enabled for your WAF to take custom actions on requests from known bot categories. There are three bot categories supported: Bad Bots, Good Bots, and Unknown Bots. Bot signatures are managed and dynamically updated by the WAF platform. Malicious IP addresses for Bad Bots are sourced from the Microsoft Threat Intelligence feed. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) powers Microsoft Threat Intelligence and is used by multiple services including Azure Security Center. Good Bots include validated search engines. Unknown categories include additional bot groups. You may set custom actions to block, allow, log, or redirect for different types of bots.
+WAF 'nizin bilinen bot kategorilerinin istekleri üzerinde özel eylemler kazanması için yönetilen bir bot koruma kuralı kümesi etkinleştirilebilir. Desteklenen üç bot kategorisi vardır: kötü botlar, botlar ve bilinmeyen botlar. Bot imzaları, WAF platformu tarafından yönetilir ve dinamik olarak güncelleştirilir. Bozuk botlar için kötü amaçlı IP adresleri, Microsoft Threat Intelligence akışından kaynaklıdır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır. İyi botlar, doğrulanan arama altyapılarını içerir. Bilinmeyen Kategoriler ek bot gruplarını içerir. Farklı botların türlerini engellemek, izin vermek, günlüğe kaydetmek veya yeniden yönlendirmek için özel eylemler ayarlayabilirsiniz.
 
-![Bot Protection Rule Set](../media/afds-overview/botprotect2.png)
+![Bot koruma kuralı kümesi](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> The Bot protection rule set is currently in public preview and is provided with a preview service level agreement. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bot koruma kuralı kümesi şu anda genel önizleme aşamasındadır ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-If bot protection is enabled, incoming requests that match bot rules are logged at the FrontdoorWebApplicationFirewallLog log. You may access WAF logs from a storage account, event hub, or log analytics.
+Bot koruması etkinleştirilirse, bot kurallarıyla eşleşen gelen istekler FrontdoorWebApplicationFirewallLog günlüğüne kaydedilir. WAF günlüklerine bir depolama hesabından, Olay Hub 'ından veya Log Analytics 'e erişebilirsiniz.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Configuring and deploying all WAF rule types is fully supported using Azure portal, REST APIs, Azure Resource Manager templates, and Azure PowerShell.
+Tüm WAF kural türlerini yapılandırmak ve dağıtmak Azure portal, REST API 'Leri, Azure Resource Manager şablonları ve Azure PowerShell kullanarak tam olarak desteklenmektedir.
 
 ## <a name="monitoring"></a>İzleme
 
-Monitoring for WAF at Front Door is integrated with Azure Monitor to track alerts and easily monitor traffic trends.
+Ön kapıda WAF için izleme, uyarıları izlemek ve trafik eğilimlerini kolayca izlemek için Azure Izleyici ile tümleşiktir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about [Web Application Firewall on Azure Application Gateway](../ag/ag-overview.md)
+- [Azure Application Gateway Web uygulaması güvenlik duvarı](../ag/ag-overview.md) hakkında bilgi edinin

@@ -1,6 +1,6 @@
 ---
-title: Choose the right authentication method for your Azure AD hybrid identity solution | Microsoft Docs
-description: This guide helps CEOs, CIOs, CISOs, Chief Identity Architects, Enterprise Architects, and Security and IT decision makers responsible for choosing an authentication method for their Azure AD hybrid identity solution in medium to large organizations.
+title: Azure AD karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin | Microsoft Docs
+description: Bu kılavuz, orta ve büyük ölçekli kuruluşlarda Azure AD karma kimlik çözümü için bir kimlik doğrulama yöntemi seçmekten sorumlu CEOs, Cıos, Cıos, kimlik mimarları, kuruluş mimarları ve güvenlik ve BT karar mekanizmalarına yardımcı olur.
 keywords: ''
 author: martincoetzer
 ms.author: martinco
@@ -16,207 +16,207 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483944"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Choose the right authentication method for your Azure Active Directory hybrid identity solution
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin
 
-Choosing the correct authentication method is the first concern for organizations wanting to move their apps to the cloud. Don't take this decision lightly, for the following reasons:
+Doğru kimlik doğrulama yöntemini seçmek, kuruluşların uygulamalarını buluta taşıması için ilk konudur. Bu kararı aşağıdaki nedenlerden dolayı aydınlamayın:
 
-1. It's the first decision for an organization that wants to move to the cloud.
+1. Bu, buluta taşımak isteyen bir kuruluşa yönelik ilk karardır.
 
-2. The authentication method is a critical component of an organization’s presence in the cloud. It controls access to all cloud data and resources.
+2. Kimlik doğrulama yöntemi, kuruluşun buluttaki varlığına ait kritik bir bileşendir. Tüm bulut verilerine ve kaynaklarına erişimi denetler.
 
-3. It's the foundation of all the other advanced security and user experience features in Azure AD.
+3. Bu, Azure AD 'deki diğer tüm gelişmiş güvenlik ve Kullanıcı deneyimi özelliklerinin temelidir.
 
-4. The authentication method is difficult to change after it's implemented.
+4. Kimlik doğrulama yöntemi uygulandıktan sonra değiştirilebilir.
 
-Identity is the new control plane of IT security. So authentication is an organization’s access guard to the new cloud world. Organizations need an identity control plane that strengthens their security and keeps their cloud apps safe from intruders.
+Kimlik, BT güvenliğinin yeni denetim düzledir. Bu nedenle, kimlik doğrulaması, kuruluşun yeni bulut dünyasına erişim koruyucusu olur. Kuruluşların, güvenliğini güçlendirir ve bulut uygulamalarını yetkisiz kişilerden güvende tutan bir kimlik denetim düzlemi gerekir.
 
-### <a name="out-of-scope"></a>Out of scope
-Organizations that don't have an existing on-premises directory footprint aren't the focus of this article. Typically, those businesses create identities only in the cloud, which doesn’t require a hybrid identity solution. Cloud-only identities exist solely in the cloud and aren't associated with corresponding on-premises identities.
+### <a name="out-of-scope"></a>Kapsam dışı
+Mevcut bir şirket içi dizin ayak izine sahip olmayan kuruluşlar, bu makalenin konusu değildir. Genellikle, bu işletmeler yalnızca Bulutta kimlik oluşturur ve bu da karma kimlik çözümü gerektirmez. Yalnızca bulutta bulunan kimlikler yalnızca bulutta bulunur ve ilgili şirket içi kimliklerle ilişkili değildir.
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
-When the Azure AD hybrid identity solution is your new control plane, authentication is the foundation of cloud access. Choosing the correct authentication method is a crucial first decision in setting up an Azure AD hybrid identity solution. Implement the authentication method that is configured by using Azure AD Connect, which also provisions users in the cloud.
+Azure AD karma kimlik çözümü yeni denetim düzletim olduğunda, kimlik doğrulaması bulut erişiminin temelidir. Doğru kimlik doğrulama yönteminin seçilmesi, bir Azure AD karma kimlik çözümü ayarlamaya yönelik önemli bir ilk karardır. Bulut içindeki kullanıcıları da sağlayan Azure AD Connect kullanılarak yapılandırılan kimlik doğrulama yöntemini uygulayın.
 
-To choose an authentication method, you need to consider the time, existing infrastructure, complexity, and cost of implementing your choice. These factors are different for every organization and might change over time.
+Bir kimlik doğrulama yöntemi seçmek için, seçiminizi uygulayan süreyi, var olan altyapıyı, karmaşıklığı ve maliyeti göz önünde bulundurmanız gerekir. Bu faktörler her kuruluş için farklılık gösterebilir ve zaman içinde değişebilir.
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
-Azure AD supports the following authentication methods for hybrid identity solutions.
+Azure AD, karma kimlik çözümleri için aşağıdaki kimlik doğrulama yöntemlerini destekler.
 
-### <a name="cloud-authentication"></a>Cloud authentication
-When you choose this authentication method, Azure AD handles users' sign-in process. Coupled with seamless single sign-on (SSO), users can sign in to cloud apps without having to reenter their credentials. With cloud authentication, you can choose from two options:
+### <a name="cloud-authentication"></a>Bulut kimlik doğrulaması
+Bu kimlik doğrulama yöntemini seçtiğinizde, Azure AD kullanıcıların oturum açma işlemini işler. Sorunsuz çoklu oturum açma (SSO) ile bağlanmış kullanıcılar, kimlik bilgilerini yeniden girmeye gerek kalmadan bulut uygulamalarında oturum açabilirler. Bulut kimlik doğrulaması ile iki seçenekten birini seçebilirsiniz:
 
-**Azure AD password hash synchronization**. The simplest way to enable authentication for on-premises directory objects in Azure AD. Users can use the same username and password that they use on-premises without having to deploy any additional infrastructure. Some premium features of Azure AD, like Identity Protection and [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), require password hash synchronization, no matter which authentication method you choose.
+**Azure AD Parola karması eşitleme**. Azure AD 'de şirket içi dizin nesneleri için kimlik doğrulamasını etkinleştirmenin en kolay yolu. Kullanıcılar, ek altyapı dağıtmak zorunda kalmadan şirket içinde kullandıkları aynı kullanıcı adını ve parolayı kullanabilir. Azure AD 'nin kimlik koruması ve [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)gibi bazı Premium özellikleri, seçtiğiniz kimlik doğrulama yöntemi ne olduğuna bakılmaksızın Parola karması eşitlemesi gerektirir.
 
 > [!NOTE]
-> Passwords are never stored in clear text or encrypted with a reversible algorithm in Azure AD. For more information on the actual process of password hash synchronization, see [Implement password hash synchronization with Azure AD Connect sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+> Parolalar hiçbir şekilde şifresiz metin halinde depolanmaz veya Azure AD 'de ters çevrilebilir algoritmayla şifrelenir. Parola karması eşitleme işleminin gerçek süreci hakkında daha fazla bilgi için bkz. [Azure AD Connect Sync ile parola karması eşitlemeyi uygulama](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
-**Azure AD Pass-through Authentication**. Provides a simple password validation for Azure AD authentication services by using a software agent that runs on one or more on-premises servers. The servers validate the users directly with your on-premises Active Directory, which ensures that the password validation doesn't happen in the cloud.
+**Azure AD geçişli kimlik doğrulaması**. , Bir veya daha fazla şirket içi sunucuda çalışan bir yazılım Aracısı kullanarak Azure AD kimlik doğrulaması Hizmetleri için basit bir parola doğrulaması sağlar. Sunucular, kullanıcıları doğrudan şirket içi Active Directory doğrular ve bu da parola doğrulamasının bulutta gerçekleşmemesini sağlar.
 
-Companies with a security requirement to immediately enforce on-premises user account states, password policies, and sign-in hours might use this authentication method. For more information on the actual pass-through authentication process, see [User sign-in with Azure AD pass-through authentication](../../active-directory/hybrid/how-to-connect-pta.md).
+Şirket içi kullanıcı hesap durumlarını, parola ilkelerini ve oturum açma saatlerini hemen zorlamak için güvenlik gereksinimi olan şirketlerin bu kimlik doğrulama yöntemini kullanması gerekebilir. Gerçek geçişli kimlik doğrulama işlemi hakkında daha fazla bilgi için bkz. [Azure AD geçişli kimlik doğrulaması Ile Kullanıcı oturum açma](../../active-directory/hybrid/how-to-connect-pta.md).
 
-### <a name="federated-authentication"></a>Federated authentication
-When you choose this authentication method, Azure AD hands off the authentication process to a separate trusted authentication system, such as on-premises Active Directory Federation Services (AD FS), to validate the user’s password.
+### <a name="federated-authentication"></a>Federal kimlik doğrulaması
+Bu kimlik doğrulama yöntemini seçtiğinizde, Azure AD, kullanıcının parolasını doğrulamak için şirket içi Active Directory Federasyon Hizmetleri (AD FS) (AD FS) gibi ayrı bir güvenilir kimlik doğrulama sistemine kimlik doğrulama işlemini devre dışı bırakır.
 
-The authentication system can provide additional advanced authentication requirements. Examples are smartcard-based authentication or third-party multifactor authentication. For more information, see [Deploying Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
+Kimlik doğrulama sistemi, ek Gelişmiş kimlik doğrulama gereksinimleri sağlayabilir. Örnek olarak, akıllı kart tabanlı kimlik doğrulaması veya üçüncü taraf çok faktörlü kimlik doğrulamalardır. Daha fazla bilgi için bkz. [dağıtma Active Directory Federasyon Hizmetleri (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
 
-The following section helps you decide which authentication method is right for you by using a decision tree. It helps you determine whether to deploy cloud or federated authentication for your Azure AD hybrid identity solution.
+Aşağıdaki bölüm, karar ağacı kullanarak sizin için hangi kimlik doğrulama yönteminin doğru olduğuna karar vermenize yardımcı olur. Azure AD hibrit kimlik çözümünüz için bulut veya federal kimlik doğrulama dağıtımı yapılıp yapılmayacağını belirlemenize yardımcı olur.
 
 ## <a name="decision-tree"></a>Karar ağacı
 
-![Azure AD authentication decision tree](./media/choose-ad-authn/azure-ad-authn-image1.png)
+![Azure AD kimlik doğrulaması karar ağacı](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
-Details on decision questions:
+Karar sorularına ilişkin ayrıntılar:
 
-1. Azure AD can handle sign-in for users without relying on on-premises components to verify passwords.
-2. Azure AD can hand off user sign-in to a trusted authentication provider such as Microsoft’s AD FS.
-3. If you need to apply, user-level Active Directory security policies such as account expired, disabled account, password expired, account locked out, and sign-in hours on each user sign-in, Azure AD requires some on-premises components.
-4. Sign-in features not natively supported by Azure AD:
-   * Sign-in using smartcards or certificates.
-   * Sign-in using on-premises MFA Server.
-   * Sign-in using third party authentication solution.
-   * Multi-site on-premises authentication solution.
-5. Azure AD Identity Protection requires Password Hash Sync regardless of which sign-in method you choose, to provide the *Users with leaked credentials* report. Organizations can fail over to Password Hash Sync if their primary sign-in method fails and it was configured before the failure event.
-
-> [!NOTE]
-> Azure AD Identity Protection require [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
-
-## <a name="detailed-considerations"></a>Detailed considerations
-
-### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authentication: Password hash synchronization
-
-* **Effort**. Password hash synchronization requires the least effort regarding deployment, maintenance, and infrastructure.  This level of effort typically applies to organizations that only need their users to sign in to Office 365, SaaS apps, and other Azure AD-based resources. When turned on, password hash synchronization is part of the Azure AD Connect sync process and runs every two minutes.
-
-* **User experience**. To improve users' sign-in experience, deploy seamless SSO with password hash synchronization. Seamless SSO eliminates unnecessary prompts when users are signed in.
-
-* **Advanced scenarios**. If organizations choose to, it's possible to use insights from identities with Azure AD Identity Protection reports with Azure AD Premium P2. An example is the leaked credentials report. Windows Hello for Business has [specific requirements when you use password hash synchronization](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) requires password hash synchronization to provision users with their corporate credentials in the managed domain.
-
-    Organizations that require multifactor authentication with password hash synchronization must use Azure AD multifactor authentication or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use third-party or on-premises multifactor authentication methods that rely on federation.
+1. Azure AD, parolaları doğrulamak için şirket içi bileşenlere bağlı olmayan kullanıcılar için oturum açma işleyebilir.
+2. Azure AD, Microsoft 'un AD FS gibi güvenilir bir kimlik doğrulama sağlayıcısında Kullanıcı oturumunu kapatabilir.
+3. Uygulamanız gerekiyorsa, hesap süresi doldu, devre dışı hesap, parola süresi doldu, hesap kilitli ve her kullanıcı oturum açma için oturum açma saatleri gibi Kullanıcı düzeyinde Active Directory güvenlik ilkeleri, Azure AD 'nin bazı şirket içi bileşenleri olması gerekir.
+4. Azure AD tarafından yerel olarak desteklenmeyen oturum açma özellikleri:
+   * Akıllı kartlar veya sertifikalar kullanarak oturum açın.
+   * Şirket içi MFA sunucusu kullanarak oturum açın.
+   * Üçüncü taraf kimlik doğrulama çözümünü kullanarak oturum açın.
+   * Çok siteli şirket içi kimlik doğrulama çözümü.
+5. Azure AD Kimlik Koruması, *kullanıcılara sızdırılan kimlik bilgileri* raporunu sağlamak için hangi oturum açma yönteminden bağımsız olarak parola karması eşitlemesi gerektirir. Birincil oturum açma yöntemi başarısız olursa ve hata olayından önce yapılandırıldıysa, kuruluşlar parola karması eşitlemesine yük devredebilirler.
 
 > [!NOTE]
-> Azure AD Conditional Access require [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
+> Azure AD Kimlik Koruması [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) lisansları gerekir.
 
-* **Business continuity**. Using password hash synchronization with cloud authentication is highly available as a cloud service that scales to all Microsoft datacenters. To make sure password hash synchronization does not go down for extended periods, deploy a second Azure AD Connect server in staging mode in a standby configuration.
+## <a name="detailed-considerations"></a>Ayrıntılı konular
 
-* **Considerations**. Currently, password hash synchronization doesn't immediately enforce changes in on-premises account states. In this situation, a user has access to cloud apps until the user account state is synchronized to Azure AD. Organizations might want to overcome this limitation by running a new synchronization cycle after administrators do bulk updates to on-premises user account states. An example is disabling accounts.
+### <a name="cloud-authentication-password-hash-synchronization"></a>Bulut kimlik doğrulaması: Parola karması eşitleme
 
-> [!NOTE]
-> The password expired and account locked-out states aren't currently synced to Azure AD with Azure AD Connect. When you change a user's password and set the *user must change password at next logon* flag, the password hash will not be synced to Azure AD with Azure AD Connect, until the user change their password.
+* **Çaba**. Parola karması eşitleme, dağıtım, bakım ve altyapıyla ilgili en az çaba gerektirir.  Bu çaba düzeyi genellikle yalnızca kullanıcılarına Office 365, SaaS uygulamalarında ve diğer Azure AD tabanlı kaynaklarda oturum açmasını gerektiren kuruluşlar için geçerlidir. Oturum açıldığında, Parola karması eşitleme Azure AD Connect eşitleme işleminin bir parçasıdır ve iki dakikada bir çalışır.
 
-Refer to [implementing password hash synchronization](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) for deployment steps.
+* **Kullanıcı deneyimi**. Kullanıcıların oturum açma deneyimini geliştirmek için Parola karması eşitlemeyle sorunsuz SSO dağıtın. Kullanıcılar oturum açıldığında sorunsuz SSO gereksiz istemleri ortadan kaldırır.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authentication: Pass-through Authentication  
+* **Gelişmiş senaryolar**. Kuruluşlar tercih ederseniz, Azure AD Premium P2 ile Azure AD Kimlik Koruması raporları olan kimliklerden Öngörüler kullanmak mümkündür. Sızdırılan kimlik bilgileri raporu bir örnektir. Windows Hello for Business, [Parola karması eşitlemesini kullandığınızda belirli gereksinimlere](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)sahiptir. [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) , kullanıcılara yönetilen etki alanında kurumsal kimlik bilgilerini sağlamak için Parola karması eşitlemesi gerektirir.
 
-* **Effort**. For pass-through authentication, you need one or more (we recommend three) lightweight agents installed on existing servers. These agents must have access to your on-premises Active Directory Domain Services, including your on-premises AD domain controllers. They need outbound access to the Internet and access to your domain controllers. For this reason, it's not supported to deploy the agents in a perimeter network.
-
-    Pass-through Authentication requires unconstrained network access to domain controllers. All network traffic is encrypted and limited to authentication requests. For more information on this process, see the [security deep dive](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) on pass-through authentication.
-
-* **User experience**. To improve users' sign-in experience, deploy seamless SSO with Pass-through Authentication. Seamless SSO eliminates unnecessary prompts after users sign in.
-
-* **Advanced scenarios**. Pass-through Authentication enforces the on-premises account policy at the time of sign-in. For example, access is denied when an on-premises user’s account state is disabled, locked out, or [password expired](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) or falls outside the hours when the user is allowed to sign in.
-
-    Organizations that require multifactor authentication with pass-through authentication must use Azure Multi-Factor Authentication (MFA) or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use a third-party or on-premises multifactor authentication method that relies on federation. Advanced features require that password hash synchronization is deployed whether or not you choose pass-through authentication. An example is the leaked credentials report of Identity Protection.
-
-* **Business continuity**. We recommend that you deploy two extra pass-through authentication agents. These extras are in addition to the first agent on the Azure AD Connect server. This additional deployment ensures high availability of authentication requests. When you have three agents deployed, one agent can still fail when another agent is down for maintenance.
-
-    There's another benefit to deploying password hash synchronization in addition to pass-through authentication. It acts as a backup authentication method when the primary authentication method is no longer available.
-
-* **Considerations**. You can use password hash synchronization as a backup authentication method for pass-through authentication, when the agents can't validate a user's credentials due to a significant on-premises failure. Fail over to password hash synchronization doesn't happen automatically and you must use Azure AD Connect to switch the sign-on method manually.
-
-    For other considerations on Pass-through Authentication, including Alternate ID support, see [frequently asked questions](../../active-directory/hybrid/how-to-connect-pta-faq.md).
-
-Refer to [implementing pass-through authentication](../../active-directory/hybrid/how-to-connect-pta.md) for deployment steps.
-
-### <a name="federated-authentication"></a>Federated authentication
-
-* **Effort**. A federated authentication system relies on an external trusted system to authenticate users. Some companies want to reuse their existing federated system investment with their Azure AD hybrid identity solution. The maintenance and management of the federated system falls outside the control of Azure AD. It's up to the organization by using the federated system to make sure it's deployed securely and can handle the authentication load.
-
-* **User experience**. The user experience of federated authentication depends on the implementation of the features, topology, and configuration of the federation farm. Some organizations need this flexibility to adapt and configure the access to the federation farm to suit their security requirements. For example, it's possible to configure internally connected users and devices to sign in users automatically, without prompting them for credentials. This configuration works because they already signed in to their devices. If necessary, some advanced security features make users' sign-in process more difficult.
-
-* **Advanced scenarios**. A federated authentication solution is usually required when customers have an authentication requirement that Azure AD doesn't support natively. See detailed information to help you [choose the right sign-in option](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Consider the following common requirements:
-
-  * Authentication that requires smartcards or certificates.
-  * On-premises MFA servers or third-party multifactor providers requiring a federated identity provider.
-  * Authentication by using third-party authentication solutions. See the [Azure AD federation compatibility list](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Sign in that requires an sAMAccountName, for example, DOMAIN\username, instead of a User Principal Name (UPN), for example, user@domain.com.
-
-* **Business continuity**. Federated systems typically require a load-balanced array of servers, known as a farm. This farm is configured in an internal network and perimeter network topology to ensure high availability for authentication requests.
-
-    Deploy password hash synchronization along with federated authentication as a backup authentication method when the primary authentication method is no longer available. An example is when the on-premises servers aren't available. Some large enterprise organizations require a federation solution to support multiple Internet ingress points configured with geo-DNS for low-latency authentication requests.
-
-* **Considerations**. Federated systems typically require a more significant investment in on-premises infrastructure. Most organizations choose this option if they already have an on-premises federation investment. And  if it's a strong business requirement to use a single-identity provider. Federation is more complex to operate and troubleshoot compared to cloud authentication solutions.
-
-For a nonroutable domain that can't be verified in Azure AD, you need extra configuration to implement user ID sign in. This requirement is known as Alternate login ID support. See [Configuring Alternate Login ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) for limitations and requirements. If you choose to use a third-party multi-factor authentication provider with federation, ensure the provider supports WS-Trust to allow devices to join Azure AD.
-
-Refer to [Deploying Federation Servers](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) for deployment steps.
+    Parola karması eşitlemeyle çok faktörlü kimlik doğrulaması gerektiren kuruluşların Azure AD çok faktörlü kimlik doğrulaması veya [koşullu erişim özel denetimlerini](../../active-directory/conditional-access/controls.md#custom-controls-preview)kullanması gerekir. Bu kuruluşlar, Federasyonu kullanan üçüncü taraf veya şirket içi çok faktörlü kimlik doğrulama yöntemlerini kullanamaz.
 
 > [!NOTE]
-> When you deploy your Azure AD hybrid identity solution, you must implement one of the supported topologies of Azure AD Connect. Learn more about supported and unsupported configurations at [Topologies for Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
+> Azure AD koşullu erişim [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) lisansı gerektirir.
 
-## <a name="architecture-diagrams"></a>Architecture diagrams
+* **İş sürekliliği**. Bulut kimlik doğrulamasıyla Parola karması eşitlemesini kullanmak, tüm Microsoft veri merkezlerine ölçeklenebilen bir bulut hizmeti olarak yüksek oranda kullanılabilir. Parola karması eşitlemesinin genişletilmiş dönemler için geri gitmediğinden emin olmak için, bir bekleme yapılandırmasında ikinci bir Azure AD Connect sunucusunu hazırlama modunda dağıtın.
 
-The following diagrams outline the high-level architecture components required for each authentication method you can use with your Azure AD hybrid identity solution. They provide an overview to help you compare the differences between the solutions.
+* **Dikkat edilecek noktalar**. Şu anda, Parola karması eşitlemesi şirket içi hesap durumlarındaki değişiklikleri hemen zorlamaz. Bu durumda, Kullanıcı hesabı durumu Azure AD 'ye eşitlenene kadar bir kullanıcının bulut uygulamalarına erişimi vardır. Kuruluşlar, şirket içi kullanıcı hesabı durumlarında toplu güncelleştirmeler yaptıktan sonra yeni bir eşitleme döngüsünü çalıştırarak bu kısıtlamayı aşmak isteyebilir. Hesapların devre dışı bırakılması örnek bir örnektir.
 
-* Simplicity of a password hash synchronization solution:
+> [!NOTE]
+> Parola zaman aşımına uğradı ve hesap kilitli olmayan durumlar şu anda Azure AD Connect ile Azure AD ile eşitlenmemiş. Bir kullanıcının parolasını değiştirdiğinizde ve *Kullanıcı bir sonraki oturum açma bayrağıyla parolayı değiştirmeli* seçeneğini belirlediğinizde, Parola karması, Kullanıcı parolasını değiştirene kadar Azure AD Connect Azure AD ile eşitlenmez.
 
-    ![Azure AD hybrid identity with Password hash synchronization](./media/choose-ad-authn/azure-ad-authn-image2.png)
+Dağıtım adımları için [Parola karması eşitlemesini uygulama](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) bölümüne bakın.
 
-* Agent requirements of pass-through authentication, using two agents for redundancy:
+### <a name="cloud-authentication-pass-through-authentication"></a>Bulut kimlik doğrulaması: geçişli kimlik doğrulaması  
 
-    ![Azure AD hybrid identity with Pass-through Authentication](./media/choose-ad-authn/azure-ad-authn-image3.png)
+* **Çaba**. Geçişli kimlik doğrulaması için, var olan sunucularda bir veya daha fazla basit aracı yüklü olmalıdır (üç). Bu aracıların şirket içi AD etki alanı denetleyicileriniz dahil olmak üzere şirket içi Active Directory Domain Services erişimi olmalıdır. Internet 'e giden erişim ve etki alanı denetleyicilerinize erişim gerekir. Bu nedenle, aracıların bir çevre ağında dağıtılması desteklenmez.
 
-* Components required for federation in your perimeter and internal network of your organization:
+    Geçişli kimlik doğrulaması, etki alanı denetleyicilerine kısıtlı olmayan ağ erişimi gerektirir. Tüm ağ trafiği şifrelenir ve kimlik doğrulama istekleriyle sınırlıdır. Bu işlemle ilgili daha fazla bilgi için bkz. doğrudan kimlik doğrulama üzerinde [güvenlik derinlemesine](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) bakış.
 
-    ![Azure AD hybrid identity with federated authentication](./media/choose-ad-authn/azure-ad-authn-image4.png)
+* **Kullanıcı deneyimi**. Kullanıcıların oturum açma deneyimini geliştirmek için doğrudan kimlik doğrulamasıyla sorunsuz SSO dağıtın. Kullanıcı oturum açtıktan sonra sorunsuz SSO gereksiz istemleri ortadan kaldırır.
 
-## <a name="comparing-methods"></a>Comparing methods
+* **Gelişmiş senaryolar**. Doğrudan kimlik doğrulaması, oturum açma sırasında şirket içi hesap ilkesini uygular. Örneğin, şirket içi bir kullanıcının hesap durumu devre dışı bırakıldığında, kilitlendiğinde veya [parolanın süresi dolduğunda](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) veya kullanıcının oturum açmasına izin verilen saatlerin dışında kaldığında erişim reddedilir.
 
-|Consideration|Password hash synchronization + Seamless SSO|Pass-through Authentication + Seamless SSO|AD FS ile Federasyon|
+    Doğrudan kimlik doğrulaması ile çok faktörlü kimlik doğrulaması gerektiren kuruluşların Azure Multi-Factor Authentication (MFA) veya [koşullu erişim özel denetimlerini](../../active-directory/conditional-access/controls.md#custom-controls-preview)kullanması gerekir. Bu kuruluşlar, Federasyona dayanan bir üçüncü taraf veya şirket içi çok faktörlü kimlik doğrulama yöntemi kullanamaz. Gelişmiş özellikler, Parola karması eşitlemesinin doğrudan geçiş kimlik doğrulaması seçmenize bakılmaksızın dağıtılmasını gerektirir. Kimlik koruması kimlik bilgilerinin sızdırılan kimlik bilgileri rapor örneğidir.
+
+* **İş sürekliliği**. İki ek geçişli kimlik doğrulama Aracısı dağıtmanızı öneririz. Bu ek özellikler Azure AD Connect sunucusundaki ilk aracıya ek niteliğindedir. Bu ek dağıtım, kimlik doğrulama isteklerinin yüksek kullanılabilirliğini sağlar. Dağıtılan üç aracınız varsa, başka bir aracı bakım için kapalıysa bir aracı yine de başarısız olabilir.
+
+    Doğrudan kimlik doğrulamasına ek olarak parola karması eşitlemesini dağıtmaya yönelik başka bir avantaj de vardır. Birincil kimlik doğrulama yöntemi artık kullanılabilir olmadığında bir yedekleme kimlik doğrulama yöntemi işlevi görür.
+
+* **Dikkat edilecek noktalar**. Geçiş kimlik doğrulaması için yedekleme kimlik doğrulama yöntemi olarak parola karması eşitlemesini kullanabilirsiniz, çünkü aracılar, önemli bir şirket içi arıza nedeniyle kullanıcının kimlik bilgilerini doğrulayamaz. Parola karması eşitlemesine yük devretmek otomatik olarak gerçekleşmez ve oturum açma yöntemini el ile değiştirmek için Azure AD Connect kullanmanız gerekir.
+
+    Diğer kimlik desteği de dahil olmak üzere geçişli kimlik doğrulaması hakkında diğer konular için bkz. [sık sorulan sorular](../../active-directory/hybrid/how-to-connect-pta-faq.md).
+
+Dağıtım adımları için [doğrudan kimlik doğrulamasını uygulama](../../active-directory/hybrid/how-to-connect-pta.md) bölümüne bakın.
+
+### <a name="federated-authentication"></a>Federal kimlik doğrulaması
+
+* **Çaba**. Federasyon kimlik doğrulama sistemi, kullanıcıların kimliğini doğrulamak için bir dış güvenilen sisteme bağımlıdır. Bazı şirketler mevcut Federasyon sistem yatırımlarını Azure AD karma kimlik çözümüyle birlikte yeniden kullanmak ister. Federasyon sisteminin bakımı ve yönetimi, Azure AD 'nin denetimini dışındadır. Bu, kuruluşun güvenli bir şekilde dağıtıldığından ve kimlik doğrulama yükünü işleyebildiği için federe sistem kullanılarak kuruluşa kadar olur.
+
+* **Kullanıcı deneyimi**. Federal kimlik doğrulamasının Kullanıcı deneyimi, Federasyon grubunun özellikleri, topolojisi ve yapılandırması uygulamasına bağlıdır. Bazı kuruluşların, güvenlik gereksinimlerine uyacak şekilde Federasyon grubuna erişimi uyarlamak ve yapılandırmak için bu esnekliğe ihtiyacı vardır. Örneğin, dahili olarak bağlı kullanıcıları ve cihazları kullanıcıların kimlik bilgileri için sormadan otomatik olarak oturum açmasını yapılandırmak mümkündür. Bu yapılandırma cihazlarında zaten oturum açtıkları için işe yarar. Gerekirse, bazı gelişmiş güvenlik özellikleri kullanıcıların oturum açma işlemini daha zor hale getirir.
+
+* **Gelişmiş senaryolar**. Müşteriler Azure AD 'nin yerel olarak desteklemediği bir kimlik doğrulama gereksinimine sahip olduğunda, genellikle bir Federasyon kimlik doğrulama çözümü gereklidir. [Sağ oturum açma seçeneğini seçmenize](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)yardımcı olacak ayrıntılı bilgilere bakın. Aşağıdaki ortak gereksinimleri göz önünde bulundurun:
+
+  * Akıllı kartlar veya sertifikalar gerektiren kimlik doğrulaması.
+  * Şirket içi MFA sunucuları veya federal kimlik sağlayıcısı gerektiren üçüncü taraf çok faktörlü sağlayıcıları.
+  * Üçüncü taraf kimlik doğrulama çözümlerini kullanarak kimlik doğrulaması. Bkz. [Azure AD Federasyon uyumluluğu listesi](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
+  * Örneğin, bir Kullanıcı asıl adı (UPN) yerine bir sAMAccountName (örneğin, etkialanı \ KullanıcıAdı) gerektiren oturum açma, örneğin, user@domain.com.
+
+* **İş sürekliliği**. Federasyon sistemleri genellikle grup olarak bilinen, yük dengeli bir sunucu dizisi gerektirir. Bu grup, kimlik doğrulama istekleri için yüksek kullanılabilirlik sağlamak amacıyla bir iç ağ ve çevre ağ topolojisinde yapılandırılır.
+
+    Birincil kimlik doğrulama yöntemi artık kullanılabilir olmadığında, bir yedekleme kimlik doğrulama yöntemi olarak, Federasyon kimlik doğrulaması ile birlikte Parola karması eşitlemesini dağıtın. Şirket içi sunucuların kullanılamadığı bir örnek vardır. Bazı büyük kurumsal kuruluşlar, düşük Gecikmeli kimlik doğrulama istekleri için coğrafi DNS ile yapılandırılmış birden çok Internet giriş noktasını desteklemek için bir Federasyon çözümü gerektirir.
+
+* **Dikkat edilecek noktalar**. Federasyon sistemleri, genellikle şirket içi altyapıda daha önemli bir yatırım gerektirir. Çoğu kuruluş, zaten şirket içi bir Federasyon yatırımı varsa bu seçeneği seçer. Ve bu, tek kimlik sağlayıcısını kullanmak için güçlü bir iş gereksinimidir. Federasyon, bulut kimlik doğrulaması çözümleriyle karşılaştırıldığında çalıştırmak ve sorunlarını gidermek için daha karmaşıktır.
+
+Azure AD 'de doğrulanamayan yönlendirilebilir olmayan bir etki alanı için Kullanıcı KIMLIĞI oturum açma 'yı uygulamak üzere ek yapılandırma gerekir. Bu gereksinim alternatif oturum açma KIMLIĞI desteği olarak bilinir. Sınırlamalar ve gereksinimler için [Alternatif oturum açma kimliğini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) konusuna bakın. Federasyon ile bir üçüncü taraf Multi-Factor Authentication sağlayıcısı kullanmayı seçerseniz, sağlayıcının cihazların Azure AD 'ye katılmasına izin vermek için WS-Trust ' ı desteklediğinden emin olun.
+
+Dağıtım adımları için [Federasyon Sunucularını Dağıtma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) konusuna bakın.
+
+> [!NOTE]
+> Azure AD hibrit kimlik çözümünüzü dağıttığınızda desteklenen Azure AD Connect topolojilerden birini uygulamanız gerekir. [Azure AD Connect Için topolojilerde](../../active-directory/hybrid/plan-connect-topologies.md)desteklenen ve desteklenmeyen yapılandırmalar hakkında daha fazla bilgi edinin.
+
+## <a name="architecture-diagrams"></a>Mimari diyagramları
+
+Aşağıdaki diyagramlarda, Azure AD hibrit kimlik çözümünüz ile kullanabileceğiniz her bir kimlik doğrulama yöntemi için gereken üst düzey mimari bileşenleri ana hatlarıyla verilmiştir. Çözümler arasındaki farkları karşılaştırmanıza yardımcı olmak için bir genel bakış sağlar.
+
+* Parola karması eşitleme çözümünün basitliği:
+
+    ![Parola karması eşitleme ile Azure AD karma kimliği](./media/choose-ad-authn/azure-ad-authn-image2.png)
+
+* Artıklığı için iki aracı kullanarak doğrudan geçiş kimlik doğrulamasının Aracı gereksinimleri:
+
+    ![Geçişli kimlik doğrulaması ile Azure AD karma kimliği](./media/choose-ad-authn/azure-ad-authn-image3.png)
+
+* Ortamınızdaki Federasyon ve kuruluşunuzun iç ağınızdaki Federasyon için gereken bileşenler:
+
+    ![Federal kimlik doğrulaması ile Azure AD karma kimliği](./media/choose-ad-authn/azure-ad-authn-image4.png)
+
+## <a name="comparing-methods"></a>Yöntemleri karşılaştırma
+
+|US|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS ile Federasyon|
 |:-----|:-----|:-----|:-----|
-|Where does authentication happen?|Bulutta|In the cloud after a secure password verification exchange with the on-premises authentication agent|Şirket içi|
-|What are the on-premises server requirements beyond the provisioning system: Azure AD Connect?|Hiçbiri|One server for each additional authentication agent|Two or more AD FS servers<br><br>Two or more WAP servers in the perimeter/DMZ network|
-|What are the requirements for on-premises Internet and networking beyond the provisioning system?|Hiçbiri|[Outbound Internet access](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) from the servers running authentication agents|[Inbound Internet access](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) to WAP servers in the perimeter<br><br>Inbound network access to AD FS servers from WAP servers in the perimeter<br><br>Ağ yük dengeleme|
-|Is there an SSL certificate requirement?|Hayır|Hayır|Yes|
-|Is there a health monitoring solution?|Gerekli değil|Agent status provided by [Azure Active Directory admin center](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|Do users get single sign-on to cloud resources from domain-joined devices within the company network?|Yes with [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Yes with [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Yes|
-|What sign-in types are supported?|UserPrincipalName + password<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternate login ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + password<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternate login ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + password<br><br>sAMAccountName + password<br><br>Windows-Integrated Authentication<br><br>[Certificate and smart card authentication](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternate login ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
-|Is Windows Hello for Business supported?|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Requires Windows Server 2016 Domain functional level*|[Key trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Certificate trust model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|What are the multifactor authentication options?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Third-party MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|
-|What user account states are supported?|Disabled accounts<br>(up to 30-minute delay)|Disabled accounts<br><br>Account locked out<br><br>Account expired<br><br>Password expired<br><br>Sign-in hours|Disabled accounts<br><br>Account locked out<br><br>Account expired<br><br>Password expired<br><br>Sign-in hours|
-|What are the Conditional Access options?|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS claim rules](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Is blocking legacy protocols supported?|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
-|Can you customize the logo, image, and description on the sign-in pages?|[Yes, with Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Yes, with Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Evet](../../active-directory/hybrid/how-to-connect-fed-management.md)|
-|What advanced scenarios are supported?|[Smart password lockout](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Leaked credentials reports, with Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart password lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|Multisite low-latency authentication system<br><br>[AD FS extranet lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration with third-party identity systems](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
+|Kimlik doğrulaması nerede gerçekleşir?|Bulutta|Şirket içi kimlik doğrulama Aracısı ile güvenli bir parola doğrulaması alışverişi sonrasında bulutta|Şirket içi|
+|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Yok.|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
+|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Yok.|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
+|Bir SSL sertifikası gereksinimi var mı?|Hayır|Hayır|Evet|
+|Bir sistem durumu izleme çözümü var mı?|Gerekli değil|[Azure Active Directory Yönetim Merkezi](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) tarafından sunulan Aracı durumu|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|Kullanıcılar şirket ağı içindeki etki alanına katılmış cihazlardan bulut kaynaklarına çoklu oturum açma izni veriyor mu?|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|Evet|
+|Hangi oturum açma türleri desteklenir?|UserPrincipalName + parola<br><br>[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) kullanarak Windows Ile tümleşik kimlik doğrulaması<br><br>[Alternatif oturum açma KIMLIĞI](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + parola<br><br>[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) kullanarak Windows Ile tümleşik kimlik doğrulaması<br><br>[Alternatif oturum açma KIMLIĞI](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + parola<br><br>sAMAccountName + Password<br><br>Windows-tümleşik kimlik doğrulaması<br><br>[Sertifika ve akıllı kart kimlik doğrulaması](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatif oturum açma KIMLIĞI](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Iş için Windows Hello destekleniyor mu?|[Anahtar güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Anahtar güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Windows Server 2016 etki alanı işlev düzeyi gerektirir*|[Anahtar güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Sertifika güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
+|Çok faktörlü kimlik doğrulama seçenekleri nelerdir?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA sunucusu](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Üçüncü taraf MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|
+|Hangi kullanıcı hesabı durumları destekleniyor?|Devre dışı hesaplar<br>(en fazla 30 dakikalık gecikme)|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesap zaman aşımına uğradı<br><br>Parolanın geçerliliği geçildi<br><br>Oturum açma saatleri|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesap zaman aşımına uğradı<br><br>Parolanın geçerliliği geçildi<br><br>Oturum açma saatleri|
+|Koşullu erişim seçenekleri nelerdir?|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)<br><br>[AD FS talep kuralları](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
+|Eski protokollerin engellenmesi destekleniyor mu?|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Oturum açma sayfalarında logoyu, resmi ve açıklamayı özelleştirebilir miyim?|[Evet, Azure AD Premium ile](../../active-directory/fundamentals/customize-branding.md)|[Evet, Azure AD Premium ile](../../active-directory/fundamentals/customize-branding.md)|[Evet](../../active-directory/hybrid/how-to-connect-fed-management.md)|
+|Hangi gelişmiş senaryolar destekleniyor?|[Akıllı parola kilitleme](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Azure AD Premium P2 ile sızdırılan kimlik bilgileri raporları](../../active-directory/reports-monitoring/concept-risk-events.md)|[Akıllı parola kilitleme](../../active-directory/authentication/howto-password-smart-lockout.md)|Çok siteli düşük Gecikmeli kimlik doğrulama sistemi<br><br>[Extranet kilitlemeyi AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Üçüncü taraf kimlik sistemleriyle tümleştirme](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
-> Custom controls in Azure AD Conditional Access does not currently support device registration.
+> Azure AD koşullu erişim 'deki özel denetimler Şu anda cihaz kaydını desteklememektedir.
 
 ## <a name="recommendations"></a>Öneriler
-Your identity system ensures your users' access to cloud apps and the line-of-business apps that you migrate and make available in the cloud. To keep authorized users productive and bad actors out of your organization’s sensitive data, authentication controls access to apps.
+Kimlik sisteminiz, kullanıcılarınızın bulut uygulamalarına ve bu iş kolu uygulamalarına erişmesini ve bulutta kullanıma hazır olmasını sağlar. Yetkili kullanıcıların, kuruluşunuzun hassas verilerinden üretken ve kötü aktörlere sahip olmalarını sağlamak için, kimlik doğrulaması uygulamalara erişimi denetler.
 
-Use or enable password hash synchronization for whichever authentication method you choose, for the following reasons:
+Aşağıdaki nedenlerden dolayı seçtiğiniz kimlik doğrulama yöntemi için Parola karması eşitlemesini kullanın veya etkinleştirin:
 
-1. **High availability and disaster recovery**. Pass-through Authentication and federation rely on on-premises infrastructure. For pass-through authentication, the on-premises footprint includes the server hardware and networking the Pass-through Authentication agents require. For federation, the on-premises footprint is even larger. It requires servers in your perimeter network to proxy authentication requests and the internal federation servers.
+1. **Yüksek kullanılabilirlik ve olağanüstü durum kurtarma**. Doğrudan kimlik doğrulama ve Federasyon, şirket içi altyapıyı kullanır. Geçişli kimlik doğrulaması için şirket içi parmak izi, doğrudan kimlik doğrulama aracılarının gerektirdiği sunucu donanımını ve ağını içerir. Federasyon için şirket içi parmak izi de daha büyük olur. Çevre ağınızdaki sunucuların proxy kimlik doğrulama isteklerine ve iç federasyon sunucularına sahip olmasını gerektirir.
 
-    To avoid single points of failures, deploy redundant servers. Then authentication requests will always be serviced if any component fails. Both pass-through authentication and federation also rely on domain controllers to respond to authentication requests, which can also fail. Many of these components need maintenance to stay healthy. Outages are more likely when maintenance isn't planned and implemented correctly. Avoid outages by using password hash synchronization because the Microsoft Azure AD cloud authentication service scales globally and is always available.
+    Tek başarısızlık noktalarından kaçınmak için, yedekli sunucular dağıtın. Ardından, herhangi bir bileşen başarısız olursa kimlik doğrulama istekleri her zaman hizmet olarak gönderilir. Hem geçişli kimlik doğrulaması hem de Federasyon, kimlik doğrulama isteklerine yanıt vermek için etki alanı denetleyicilerine de dayanır, bu da başarısız olabilir. Bu bileşenlerin çoğunun sağlıklı kalması için bakım gerekir. Bakım planlanmadığı ve doğru şekilde uygulanmadıklarında kesintiler daha yüksektir. Microsoft Azure AD bulut kimlik doğrulama hizmeti küresel olarak ölçeklendirilirken ve her zaman kullanılabilir olduğundan, Parola karması eşitlemesini kullanarak kesintilerden kaçının.
 
-2. **On-premises outage survival**.  The consequences of an on-premises outage due to a cyber-attack or disaster can be substantial, ranging from reputational brand damage to a paralyzed organization unable to deal with the attack. Recently, many organizations were victims of malware attacks, including targeted ransomware, that caused their on-premises servers to go down. When Microsoft helps customers deal with these kinds of attacks, it sees two categories of organizations:
+2. **Şirket içi kesinti acil değer**.  Bir siber saldırı veya olağanüstü durum nedeniyle Şirket içi kesintiden kaynaklanan sonuçlar önemli olabilir. reputational marka zararlarından Paralyzed bir kuruluşa kadar olan saldırılara karşı kesintiye uğrammakla uğraşmayı başaramadı. Yakın zamanda, çoğu kuruluş, hedeflenen fidye yazılımı dahil olmak üzere şirket içi sunucuların açık kalmasına neden olan kötü amaçlı yazılım saldırılarına sahiptir. Microsoft, müşterilerin bu tür saldırılara uğramasına yardımcı olduğunda iki kuruluş kategorisi görür:
 
-   * Organizations that previously turned on password hash synchronization changed their authentication method to use password hash synchronization. They were back online in a matter of hours. By using access to email via Office 365, they worked to resolve issues and access other cloud-based workloads.
+   * Daha önce parola karması eşitlemesine açık olan kuruluşlar, kimlik doğrulama yöntemini Parola karması eşitlemesini kullanacak şekilde değiştirdi. Bunlar birkaç saat içinde çevrimiçi olarak geri getirilir. Office 365 aracılığıyla e-postaya erişim kullanarak, sorunları çözmeye ve diğer bulut tabanlı iş yüklerine erişmeye çalışmış olurlar.
 
-   * Organizations that didn’t previously enable password hash synchronization had to resort to untrusted external consumer email systems for communications to resolve issues. In those cases, it took them weeks to restore their on-premises identity infrastructure, before users were able to sign in to cloud-based apps again.
+   * Daha önce parola karması eşitlemesini etkinleştirmediğiniz kuruluşların, iletişim için sorunları çözmek üzere güvenilmeyen dış tüketici e-posta sistemlerine çare olması gerekiyordu. Bu gibi durumlarda, kullanıcılar bulut tabanlı uygulamalarda yeniden oturum açabilmeniz için, bu kullanıcıların kendi şirket içi kimlik altyapısını geri yüklemesi için haftalar sürmesidir.
 
-3. **Identity protection**. One of the best ways to protect users in the cloud is Azure AD Identity Protection with Azure AD Premium P2. Microsoft continually scans the Internet for user and password lists that bad actors sell and make available on the dark web. Azure AD can use this information to verify if any of the usernames and passwords in your organization are compromised. So it's critical to enable password hash synchronization no matter what authentication method you use, whether that's federated or pass-through authentication. Leaked credentials are presented as a report. Use this information to block or force users to change their passwords when they try to sign in with leaked passwords.
+3. **Kimlik koruması**. Buluttaki kullanıcıları korumanın en iyi yöntemlerinden biri Azure AD Premium P2 Azure AD Kimlik Koruması. Microsoft, kötü aktörlerin sat ve koyu Web üzerinde kullanılabilir olmasını sağlayan Kullanıcı ve parola listelerine sürekli olarak Interneti tarar. Azure AD, kuruluşunuzdaki herhangi bir Kullanıcı adı ve parolanın güvenliğinin aşıldığını doğrulamak için bu bilgileri kullanabilir. Bu nedenle, hangi kimlik doğrulama yöntemini kullanırsanız kullanın, bu, Federasyon veya geçişli kimlik doğrulaması olsun, Parola karması eşitlemesini etkinleştirmek önemlidir. Sızdırılan kimlik bilgileri rapor olarak sunulur. Kullanıcıların, sızdırılan parolalarla oturum açmaya çalıştıklarında parolalarını değiştirmesine izin vermek veya bunları engellemek için bu bilgileri kullanın.
 
 ## <a name="conclusion"></a>Sonuç
 
-This article outlines various authentication options that organizations can configure and deploy to support access to cloud apps. To meet various business, security, and technical requirements, organizations can choose between password hash synchronization, Pass-through Authentication, and federation.
+Bu makalede, kuruluşların bulut uygulamalarına erişimi desteklemek için yapılandırabileceği ve dağıtabileceği çeşitli kimlik doğrulama seçenekleri özetlenmektedir. Kuruluşlar, çeşitli iş, güvenlik ve teknik gereksinimleri karşılamak için Parola karması eşitlemesi, geçişli kimlik doğrulaması ve Federasyon arasında seçim yapabilir.
 
-Consider each authentication method. Does the effort to deploy the solution, and the user's experience of the sign-in process, address your business requirements? Evaluate whether your organization needs the advanced scenarios and business continuity features of each authentication method. Finally, evaluate the considerations of each authentication method. Do any of them prevent you from implementing your choice?
+Her kimlik doğrulama yöntemini göz önünde bulundurun. Çözümü dağıtmaya yönelik efor ve kullanıcının oturum açma işlemi deneyimi, iş gereksinimlerinizi karşılasın mı? Kuruluşunuzun her bir kimlik doğrulama yönteminin gelişmiş senaryolarına ve iş sürekliliği özelliklerine ihtiyacı olup olmadığını değerlendirin. Son olarak, her kimlik doğrulama yönteminin dikkate alınmasını değerlendirin. Bunlardan herhangi birini, seçiminizi uygulamanızı engelliyor mu?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In today’s world, threats are present 24 hours a day and come from everywhere. Implement the correct authentication method, and it will mitigate your security risks and protect your identities.
+Günümüzde dünya dünyasında tehditler günde 24 saat ve her yerden gelir. Doğru kimlik doğrulama yöntemini uygulayın ve güvenlik risklerinizi azaltmalı ve kimliklerinizi koruacaktır.
 
-[Get started](../../active-directory/fundamentals/get-started-azure-ad.md) with Azure AD and deploy the right authentication solution for your organization.
+Azure AD 'yi [kullanmaya](../../active-directory/fundamentals/get-started-azure-ad.md) başlayın ve kuruluşunuz için doğru kimlik doğrulama çözümünü dağıtın.
 
-If you're thinking about migrating from federated to cloud authentication, learn more about [changing the sign-in method](../../active-directory/hybrid/plan-connect-user-signin.md). To help you plan and implement the migration, use [these project deployment plans](https://aka.ms/deploymentplans) or consider using the new [Staged Rollout](../../active-directory/hybrid/how-to-connect-staged-rollout.md) feature to migrate federated users to using cloud authentication in a staged approach.
+Federe 'dan bulut kimlik doğrulamasına geçiş yapmayı düşünüyorsanız, [oturum açma yöntemini değiştirme](../../active-directory/hybrid/plan-connect-user-signin.md)hakkında daha fazla bilgi edinin. Geçişi planlayıp uygulamanıza yardımcı olması için [Bu proje dağıtım planlarını](https://aka.ms/deploymentplans) kullanın veya yeni [hazırlanmış piyasaya çıkma](../../active-directory/hybrid/how-to-connect-staged-rollout.md) özelliğini kullanarak Federasyon kullanıcılarını, hazırlanmış bir yaklaşımda bulut kimlik doğrulamasını kullanmaya geçirin.

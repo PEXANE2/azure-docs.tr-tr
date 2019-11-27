@@ -21,7 +21,7 @@ ms.locfileid: "74451623"
 
     ![Train (Eğitim) düğmesi](../media/train-button-preview.png)
 
-2. Training is complete when you see the status confirming success.
+2. Başarıyı onaylayan durumu gördüğünüzde eğitim tamamlanmıştır.
 
     > [!Tip]
-    > **Notifications** is available in the top-right navigation and includes a history.
+    > **Bildirimler** sağ üst gezinti bölmesinde bulunur ve bir geçmişi içerir.

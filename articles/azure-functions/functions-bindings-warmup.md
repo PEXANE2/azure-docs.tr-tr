@@ -1,10 +1,10 @@
 ---
-title: Azure Functions warmup trigger
-description: Understand how to use the warmup trigger in Azure Functions.
+title: Azure işlevleri ısınma tetikleyicisi
+description: Azure işlevlerinde ısınma tetikleyicisinin nasıl kullanılacağını anlayın.
 documentationcenter: na
 author: alexkarcher-msft
 manager: gwallace
-keywords: azure functions, functions, event processing, warmup, cold start, premium, dynamic compute, serverless architecture
+keywords: Azure işlevleri, işlevler, olay işleme, Warmup, soğuk başlangıç, Premium, dinamik işlem, sunucusuz mimari
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
@@ -16,40 +16,40 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328501"
 ---
-# <a name="azure-functions-warm-up-trigger"></a>Azure Functions warm-up trigger
+# <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
-This article explains how to work with the warmup trigger in Azure Functions. The warmup trigger is supported only for function apps running in a [Premium plan](functions-premium-plan.md). A warmup trigger  is invoked when an instance is added to scale a running function app. You can use a warmup trigger to pre-load custom dependencies during the [pre-warming process](./functions-premium-plan.md#pre-warmed-instances) so that your functions are ready to start processing requests immediately. 
+Bu makalede, Azure işlevlerinde ısınma tetikleyicisiyle nasıl çalışılacağı açıklanmaktadır. Isınma tetikleyicisi yalnızca [Premium planda](functions-premium-plan.md)çalışan işlev uygulamaları için desteklenir. Çalışan bir işlev uygulamasını ölçeklendirmek için bir örnek eklendiğinde, ısınma tetikleyicisi çağrılır. İşlevlerinizin istekleri anında işlemeye hazırlanabilmesi için, [önceden Isıtma sürecinde](./functions-premium-plan.md#pre-warmed-instances) özel bağımlılıkları önceden yüklemek üzere ısınma tetikleyicisi kullanabilirsiniz. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
-The [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet package, version **3.0.5 or higher** is required. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub repository. 
+[Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm **3.0.5 veya üzeri** gereklidir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub deposunda bulunur. 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Tetikleyici
 
-The warmup trigger lets you define a function that will be run on an instance when it is added to your running app. You can use a warmup function to open connections, load dependencies, or run any other custom logic before your app will begin receiving traffic. 
+Isınma tetikleyicisi, çalışan uygulamanıza eklendiğinde bir örnek üzerinde çalıştırılacak bir işlev tanımlamanızı sağlar. Uygulamanız trafiği almaya başlamadan önce bağlantıları açmak, bağımlılıkları yüklemek veya başka bir özel mantığı çalıştırmak için ısınma işlevini kullanabilirsiniz. 
 
-The warmup trigger is intended to create shared dependencies that will be used by the other functions in your app. [See examples of shared dependencies here](./manage-connections.md#client-code-examples).
+Isınma tetikleyicisi, uygulamanızdaki diğer işlevler tarafından kullanılacak paylaşılan bağımlılıklar oluşturmak için tasarlanmıştır. [Burada paylaşılan bağımlılıkların örneklerine bakın](./manage-connections.md#client-code-examples).
 
-Note that the warmup trigger is only called during scale-up operations, not during restarts or other non-scale startups. You must ensure your logic can load all necessary dependencies without using the warmup trigger. Lazy loading is a good pattern to achieve this.
+Isınma tetikleyicisinin yalnızca ölçeklendirme işlemleri sırasında değil, yeniden başlatmalar sırasında veya diğer ölçek olmayan başlangıçlar olarak çağrıldığını unutmayın. Mantığınızın ısınma tetikleyicisini kullanmadan tüm gerekli bağımlılıkları yükleyebilmesi gerekir. Yavaş yükleme bunu elde etmek için iyi bir modeldir.
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Tetikleyici - örnek
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that will run on each new instance when it is added to your app. A return value attribute isn't required.
+Aşağıdaki örnek, uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [ C# işlev](functions-dotnet-class-library.md) gösterir. Dönüş değeri özniteliği gerekli değildir.
 
 
-* Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
-* To use warmup as a .NET class library function, please make sure you have a package reference to **Microsoft.Azure.WebJobs.Extensions >= 3.0.5**
+* İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
+* Bir .NET sınıf kitaplığı işlevi olarak ısınma kullanmak için lütfen **Microsoft. Azure. WebJobs. Extensions** için bir paket başvurunuz olduğundan emin olun > = 3.0.5
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
 
-Placeholder comments show where in the application to declare and initialize shared dependencies. 
-[Learn more about shared dependencies here](./manage-connections.md#client-code-examples).
+Yer tutucu açıklamaları, uygulamanın paylaşılan bağımlılıkları bildirme ve Başlatma yeri gösterir. 
+[Burada paylaşılan bağımlılıklar hakkında daha fazla bilgi edinin](./manage-connections.md#client-code-examples).
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -73,14 +73,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 
-The following example shows a warmup trigger in a *function.json* file and a [C# script function](functions-reference-csharp.md) that will run on each new instance when it is added to your app.
+Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnekte çalışacak bir [ C# betik işlevi](functions-reference-csharp.md) gösterir.
 
-Your function must be named ```warmup``` (case-insensitive), and there may only be one warmup function per app.
+İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -94,9 +94,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's C# script code that binds to `HttpRequest`:
+`HttpRequest`bağlanan C# betik kodu aşağıda verilmiştir:
 
 ```cs
 public static void Run(ILogger log)
@@ -107,11 +107,11 @@ public static void Run(ILogger log)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-The following example shows a warmup trigger in a *function.json* file and a [JavaScript function](functions-reference-node.md)  that will run on each new instance when it is added to your app.
+Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [JavaScript işlevi](functions-reference-node.md) gösterir.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -125,9 +125,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, warmupContext) {
@@ -138,11 +138,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-The following example shows a warmup trigger in a *function.json* file and a [Python function](functions-reference-python.md) that will run on each new instance when it is added to your app.
+Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklendiğinde her yeni örnek üzerinde çalışacak bir [Python işlevi](functions-reference-python.md) gösterir.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -156,9 +156,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the Python code:
+Python kodu aşağıda verilmiştir:
 
 ```python
 import logging
@@ -171,11 +171,11 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The following example shows a warmup trigger in a *function.json* file and a [Java functions](functions-reference-java.md)  that will run on each new instance when it is added to your app.
+Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi ve uygulamanıza eklenen her yeni örnek üzerinde çalıştırılacak [Java işlevleri](functions-reference-java.md) gösterir.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -189,7 +189,7 @@ Here's the *function.json* file:
 }
 ```
 
-Here's the Java code:
+Java kod aşağıdaki gibidir:
 
 ```java
 @FunctionName("Warmup")
@@ -200,15 +200,15 @@ public void run( ExecutionContext context) {
 
 ---
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Tetikleyici - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), the `WarmupTrigger` attribute is available to configure the function.
+Sınıf kitaplıklarında `WarmupTrigger` özniteliği işlevini yapılandırmak için kullanılabilir. [ C# ](functions-dotnet-class-library.md)
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-This example demonstrates how to use the [warmup](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribute.
+Bu örnek, [Isınma](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) özniteliğinin nasıl kullanılacağını gösterir.
 
-Note that your function must be called ```Warmup``` and there can only be one warmup function per app.
+İşlevinizin ```Warmup``` çağrılması gerektiğini ve uygulama başına yalnızca bir ısınma işlevi olabileceğini unutmayın.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -219,47 +219,47 @@ Note that your function must be called ```Warmup``` and there can only be one wa
         }
 ```
 
-For a complete example, see the [trigger example](#trigger---example).
+Tüm bir örnek için bkz. [tetikleyici örneği](#trigger---example).
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
-Attributes are not supported by C# Script.
+Öznitelikler komut dosyası tarafından C# desteklenmiyor.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Attributes are not supported by JavaScript.
+Öznitelikler JavaScript tarafından desteklenmez.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Attributes are not supported by Python.
+Öznitelikler Python tarafından desteklenmez.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The warmup trigger is not supported in Java as an attribute.
+Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 ---
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `WarmupTrigger` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `WarmupTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type** | Yok| Required - must be set to `warmupTrigger`. |
-| **direction** | Yok| Required - must be set to `in`. |
-| **name** | Yok| Required - the variable name used in function code.|
+| **type** | yok| Gerekli-`warmupTrigger`olarak ayarlanmalıdır. |
+| **direction** | yok| Gerekli-`in`olarak ayarlanmalıdır. |
+| **ada** | yok| Required-işlev kodunda kullanılan değişken adı.|
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Tetikleyici - kullanım
 
-No additional information is provided to a warmup triggered function when it is invoked.
+Çağrıldığında ısınma tarafından tetiklenen bir işleve ek bilgi sağlanmaz.
 
-## <a name="trigger---limits"></a>Trigger - limits
+## <a name="trigger---limits"></a>Tetikleme-sınırlar
 
-* The warmup trigger is only available to apps running on the [Premium plan](./functions-premium-plan.md).
-* The warmup trigger is only called during scale up operations, not during restarts or other non-scale startups. You must ensure your logic can load all necessary dependencies without using the warmup trigger. Lazy loading is a good pattern to achieve this.
-* The warmup trigger cannot be invoked once an instance is already running.
-* There can only be one warmup trigger function per function app.
+* Isınma tetikleyicisi yalnızca [Premium planda](./functions-premium-plan.md)çalışan uygulamalar tarafından kullanılabilir.
+* Isınma tetikleyicisi yalnızca ölçek artırma işlemleri sırasında, yeniden başlatmalar sırasında veya diğer ölçek olmayan başlatmalar sırasında çağrılır. Mantığınızın ısınma tetikleyicisini kullanmadan tüm gerekli bağımlılıkları yükleyebilmesi gerekir. Yavaş yükleme bunu elde etmek için iyi bir modeldir.
+* Bir örnek zaten çalışıyor olduktan sonra ısınma tetikleyicisi çağrılamaz.
+* İşlev uygulaması başına yalnızca bir ısınma tetikleyici işlevi olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+[Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

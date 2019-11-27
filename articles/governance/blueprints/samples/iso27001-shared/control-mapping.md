@@ -1,14 +1,14 @@
 ---
-title: ISO 27001 paylaşılan hizmetleri şema örnek denetimi eşlemesi
+title: ISO 27001 paylaşılan hizmetleri şema örnek denetimleri
 description: ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 9227b94ce4133d44f73e27c5008aa59d8ed2ea10
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b484bdc2fdaa346e5137b31e3225dc913f43ed0c
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184421"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546723"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi
 

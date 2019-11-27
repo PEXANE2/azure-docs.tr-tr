@@ -46,7 +46,7 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 > [!IMPORTANT]  
 > Kullandığınız Azure bölgesi listelenmiyorsa ağ güvenlik grupları için [hizmet etiketi](hdinsight-service-tags.md) özelliğini kullanın.
 
-| Ülke | Bölge | İzin verilen kaynak IP adresleri | İzin verilen hedef | Yön |
+| Country | Bölge | İzin verilen kaynak IP adresleri | İzin verilen hedef | Yön |
 | ---- | ---- | ---- | ---- | ----- |
 | Asya | Doğu Asya | 23.102.235.122</br>52.175.38.134 | \*: 443 | Gelen |
 | &nbsp; | Güneydoğu Asya | 13.76.245.160</br>13.76.136.249 | \*: 443 | Gelen |
@@ -54,7 +54,7 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 | &nbsp; | Avustralya Güneydoğu | 13.77.2.56</br>13.77.2.94 | \*: 443 | Gelen |
 | Brezilya | Güney Brezilya | 191.235.84.104</br>191.235.87.113 | \*: 443 | Gelen |
 | Kanada | Doğu Kanada | 52.229.127.96</br>52.229.123.172 | \*: 443 | Gelen |
-| &nbsp; | Kanada Orta | 52.228.37.66</br>52.228.45.222 |\*: 443 | Gelen |
+| &nbsp; | Orta Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Gelen |
 | Çin | Çin Kuzey | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*: 443 | Gelen |
 | &nbsp; | Çin Doğu | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*: 443 | Gelen |
 | &nbsp; | Çin Kuzey 2 | 40.73.37.141</br>40.73.38.172 | \*: 443 | Gelen |
@@ -75,7 +75,7 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 | Amerika Birleşik Devletleri | Orta ABD | 13.89.171.122</br>13.89.171.124 | \*: 443 | Gelen |
 | &nbsp; | Doğu ABD | 13.82.225.233</br>40.71.175.99 | \*: 443 | Gelen |
 | &nbsp; | Orta Kuzey ABD | 157.56.8.38</br>157.55.213.99 | \*: 443 | Gelen |
-| &nbsp; | Orta Batı ABD | 52.161.23.15</br>52.161.10.167 | \*: 443 | Gelen |
+| &nbsp; | Batı Orta ABD | 52.161.23.15</br>52.161.10.167 | \*: 443 | Gelen |
 | &nbsp; | Batı ABD | 13.64.254.98</br>23.101.196.19 | \*: 443 | Gelen |
 | &nbsp; | Batı ABD 2 | 52.175.211.210</br>52.175.222.222 | \*: 443 | Gelen |
 

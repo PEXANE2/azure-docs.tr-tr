@@ -1,6 +1,6 @@
 ---
 title: Azure Özel Bağlantı nedir?
-description: Learn how to use Azure Private Link to access Azure PaaS Services (for example, Azure Storage and SQL Database) and Azure hosted customer/partner services over a Private Endpoint in your virtual network.
+description: Azure özel bağlantı kullanarak Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişin.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -15,65 +15,65 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228066"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
-Azure Private Link enables you to access Azure PaaS Services (for example, Azure Storage, Azure Cosmos DB, and SQL Database) and Azure hosted customer/partner services over a [Private Endpoint](private-endpoint-overview.md) in your virtual network. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. You can also create your own [Private Link Service](private-link-service-overview.md) in your virtual network (VNet) and deliver it privately to your customers. The setup and consumption experience using Azure Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
+Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
 
 > [!IMPORTANT]
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). For known limitations, see [Private Endpoint](private-endpoint-overview.md#limitations) and [Private Link Service](private-link-service-overview.md#limitations).
+> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bilinen sınırlamalar için bkz. [Özel uç nokta](private-endpoint-overview.md#limitations) ve [özel bağlantı hizmeti](private-link-service-overview.md#limitations).
 
 
-![Private endpoint overview](media/private-link-overview/private-endpoint.png)
+![Özel uç noktaya genel bakış](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>Önemli avantajlar
-Azure Private Link provides the following benefits:  
-- **Privately access services on the Azure platform**: Connect your virtual network to services running in Azure privately without needing a public IP address at the source or destination. Service providers can render their services privately in their own virtual network and consumers can access those services privately in their local virtual network. The Private Link platform will handle the connectivity between the consumer and services over the Azure backbone network. 
+Azure özel bağlantısı aşağıdaki avantajları sağlar:  
+- **Azure platformunda özel olarak erişim Hizmetleri**: Sanal ağınızı Azure 'da çalışan hizmetlere, kaynak veya hedef üzerinde genel bir IP adresi gerekmeden özel olarak bağlayın. Hizmet sağlayıcıları kendi sanal ağında hizmetlerini özel olarak işleyebilir ve tüketiciler bu hizmetlere kendi yerel sanal ağında özel olarak erişebilir. Özel bağlantı platformu, Azure omurga ağı üzerinden tüketici ve hizmetler arasındaki bağlantıyı işleymeyecektir. 
  
-- **On-premises and peered networks**: Access services running in Azure from on-premises over ExpressRoute private peering/VPN tunnels (from on-premises) and peered virtual networks using private endpoints. There is no need to set up public peering or traverse the internet to reach the service. This ability provides a secure way to migrate workloads to Azure.
+- Şirket **içi ve eşlenmiş ağlar**: Azure 'Da, ExpressRoute özel EŞLEMESI/VPN tünelleri (Şirket içi) ve eşlenmiş sanal ağlardan özel uç noktalar aracılığıyla Şirket içinden çalışan hizmetlere erişin. Hizmete ulaşmak için genel eşlemeyi ayarlamaya veya internet 'e geçiş yapmanıza gerek yoktur. Bu özellik, iş yüklerini Azure 'a geçirmek için güvenli bir yol sağlar.
  
-- **Protection against data exfiltration**:  With Azure Private Link, the private endpoint in the VNet is mapped to a specific instance of the customer's PaaS resource as opposed to the entire service. Using the private endpoint consumers can only connect to the specific resource and not to any other resource in the service. This in built mechanism provides protection against data exfiltration risks. 
+- **Veri taşmasıyla Ilgili koruma**: Azure özel bağlantısı ile VNET 'teki özel uç nokta, hizmetin tamamına karşılık olarak müşterinin PaaS kaynağının belirli bir örneğine eşlenir. Özel uç nokta tüketicilerinin kullanılması, hizmette herhangi bir kaynağa değil yalnızca belirli bir kaynağa bağlanabilir. Bu, oluşturulan mekanizmaya yönelik veri kaybı risklerine karşı koruma sağlar. 
  
-- **Global reach**: Connect privately to services running in other regions. This means that the consumer's virtual network could be in region A and it can connect to services behind Private Link in region B.  
+- **Küresel erişim**: diğer bölgelerde çalışan hizmetlere özel olarak bağlanın. Bu, tüketicinin sanal ağının A bölgesinde olabileceği ve B bölgesinde özel bağlantı arkasındaki hizmetlere bağlanabileceği anlamına gelir.  
  
-- **Extend to your own services**: Leverage the same experience and functionality to render your own service privately to your consumers in Azure. By placing your service behind a Standard Load Balancer you can enable it for Private Link. The consumer can then connect directly to your service using a Private Endpoint in their own VNet. You can manage these connection requests using a simple approval call flow. Azure Private Link works for consumers and services belonging to different Active Directory tenants as well. 
+- **Kendi hizmetlerinizi genişletin**: Azure 'daki tüketicilerinize özel olarak kendi hizmetinizi işlemek için aynı deneyim ve işlevlerden yararlanın. Hizmetinizi bir Standart Load Balancer arkasına yerleştirerek, özel bağlantı için etkinleştirebilirsiniz. Tüketici daha sonra kendi VNet 'inde özel bir uç nokta kullanarak doğrudan hizmetinize bağlanabilir. Bu bağlantı isteklerini, basit bir onay çağrı akışı kullanarak yönetebilirsiniz. Azure özel bağlantısı, farklı Active Directory kiracılarına ait tüketiciler ve hizmetler için de geçerlidir. 
 
-## <a name="availability"></a>Erişilebilirlik 
- The following table lists the Private Link services and the regions where they are available. 
+## <a name="availability"></a>Kullanılabilirlik 
+ Aşağıdaki tabloda özel bağlantı Hizmetleri ve bunların kullanılabildiği bölgeler listelenmektedir. 
 
-|Senaryo  |Supported services   |Kullanılabilen bölgeler | Durum   |
+|Senaryo  |Desteklenen hizmetler   |Kullanılabilen bölgeler | Durum   |
 |---------|---------|---------|---------|
-|Private Link for customer-owned services|Private Link services behind Standard Load Balancer | All public regions  |  Önizleme  |
-|Private Link for Azure PaaS services   | Azure Depolama        |  All public regions      | Önizleme         |
-|  | Azure Data Lake Storage Gen2        |  All public regions      | Önizleme         |
-|  |  Azure SQL Veritabanı         | All public regions      |   Önizleme      |
-||Azure SQL Veri Ambarı| All public regions |Önizleme|
-||Azure Cosmos DB| West Central US, WestUS, North Central US |Önizleme|
+|Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler  |  Önizleme  |
+|Azure PaaS hizmetleri için özel bağlantı   | Azure Storage        |  Tüm ortak bölgeler      | Önizleme         |
+|  | Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      | Önizleme         |
+|  |  Azure SQL Database         | Tüm ortak bölgeler      |   Önizleme      |
+||Azure SQL Veri Ambarı| Tüm ortak bölgeler |Önizleme|
+||Azure Cosmos DB| Orta Batı ABD, WestUS, Orta Kuzey ABD |Önizleme|
 
-For the most up-to-date notifications, check the [Azure Virtual Network updates page](https://azure.microsoft.com/updates/?product=virtual-network).
+En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin.
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
-Azure Private Link is integrated with Azure Monitor which allows you to archive logs to a storage account, stream events to your Event Hub, or send them to Azure Monitor logs. You can access the following information on Azure Monitor: 
-- **Private endpoint**: Data processed by the Private Endpoint  (IN/OUT)
+Azure özel bağlantısı, günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olay akışına veya Azure Izleyici günlüklerine göndermenize olanak sağlayan Azure Izleyici ile tümleşiktir. Azure Izleyici 'de aşağıdaki bilgilere erişebilirsiniz: 
+- **Özel uç nokta**: özel uç nokta tarafından işlenen VERILER (ın/out)
  
-- **Private Link service**:
-    - Data processed by the Private Link service (IN/OUT)
-    - NAT port availability  
+- **Özel bağlantı hizmeti**:
+    - Özel bağlantı hizmeti tarafından işlenen veriler (ın/OUT)
+    - NAT bağlantı noktası kullanılabilirliği  
  
 ## <a name="pricing"></a>Fiyatlandırma   
-For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
+Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
  
 ## <a name="faqs"></a>SSS  
-For FAQs, see [Azure Private Link FAQs](private-link-faq.md).
+SSS için bkz. [Azure özel bağlantı SSS](private-link-faq.md).
  
 ## <a name="limits"></a>Sınırlar  
-For limits, see [Azure Private Link limits](../azure-subscription-service-limits.md#private-link-limits).
+Sınırlar için bkz. [Azure özel bağlantı limitleri](../azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Create a Private Endpoint for SQL Database Server using Portal ](create-private-endpoint-portal.md)
-- [Create a Private Endpoint for SQL Database Server using PowerShell ](create-private-endpoint-powershell.md)
-- [Create a Private Endpoint for SQL Database Server using CLI ](create-private-endpoint-cli.md)
-- [Create a Private Endpoint for Storage account using Portal ](create-private-endpoint-storage-portal.md)
-- [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Create your own Private Link service using Azure PowerShell](create-private-link-service-powershell.md)
+- [Portal kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-portal.md)
+- [PowerShell kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-powershell.md)
+- [CLı kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-cli.md)
+- [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](create-private-endpoint-storage-portal.md)
+- [Portal kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Azure PowerShell kullanarak kendi özel bağlantı hizmetinizi oluşturun](create-private-link-service-powershell.md)
 
 
  

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 7dd0000d6797411d56143f8a977e4c478d551858
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 951cd7ae8962d71f41899eca848ce0740d6395ad
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694731"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538748"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları ölçeklendirme
 
@@ -73,18 +73,18 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 Kubernetes, bir dağıtımdaki pod’ların sayısını CPU kullanımı ve diğer seçili ölçümleri temel alarak ayarlamak için [yatay pod otomatik ölçeklendirmeyi][kubernetes-hpa] destekler. [Ölçüm sunucusu][metrics-server] , Kubernetes 'e kaynak kullanımını sağlamak için kullanılır ve aks kümeleri 1,10 ve üzeri sürümlerde otomatik olarak dağıtılır. AKS kümenizin sürümünü görmek için, aşağıdaki örnekte gösterildiği gibi [az aks Show][az-aks-show] komutunu kullanın:
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
 > [!NOTE]
-> AKS kümeniz *1,10*'den küçükse, ölçüm sunucusu otomatik olarak yüklenmez. Yüklemek için, `metrics-server` GitHub deposunu kopyalayın ve örnek kaynak tanımlarını yükler. Bu YAML tanımlarının içeriğini görüntülemek için bkz. [Kuberenetes 1.8 + Için ölçüm sunucusu][metrics-server-github].
+> AKS kümeniz *1,10*'den küçükse, ölçüm sunucusu otomatik olarak yüklenmez. Yüklemek için, `metrics-server` GitHub deposunu kopyalayın ve örnek kaynak tanımlarını yüklemek için. Bu YAML tanımlarının içeriğini görüntülemek için bkz. [Kuberenetes 1.8 + Için ölçüm sunucusu][metrics-server-github].
 > 
 > ```console
 > git clone https://github.com/kubernetes-incubator/metrics-server.git
 > kubectl create -f metrics-server/deploy/1.8+/
 > ```
 
-Otomatik Scaler 'yi kullanmak için, yığınlarınızdaki tüm kapsayıcılar ve yığınlarınızın CPU istekleri ve sınırları tanımlı olmalıdır. @No__t-0 dağıtımında, ön uç kapsayıcısı zaten 0,5 CPU sınırlaması ile 0,25 CPU talep ediyor. Bu kaynak istekleri ve limitleri aşağıdaki örnek kod parçacığında gösterildiği gibi tanımlanmıştır:
+Otomatik Scaler 'yi kullanmak için, yığınlarınızdaki tüm kapsayıcılar ve yığınlarınızın CPU istekleri ve sınırları tanımlı olmalıdır. `azure-vote-front` dağıtımında ön uç kapsayıcısı, 0,5 CPU sınırlaması olan 0,25 CPU 'yu zaten istiyor. Bu kaynak istekleri ve limitleri aşağıdaki örnek kod parçacığında gösterildiği gibi tanımlanmıştır:
 
 ```yaml
 resources:
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-Aşağıdaki örnek, [kubectl otomatik ölçeklendirme][kubectl-autoscale] komutunu kullanarak *Azure-oy ön* dağıtımındaki Pod sayısını otomatik olarak ölçeklendirin. Tüm FID 'ler genelinde ortalama CPU kullanımı, istenen kullanımlarının% 50 ' ünü aşarsa, otomatik Scaler, Pod 'leri en fazla *10* örneğe kadar artırır. Dağıtım için en az *3* örnek tanımlanmıştır:
+Aşağıdaki örnek, [kubectl otomatik ölçeklendirme][kubectl-autoscale] komutunu kullanarak *Azure-oy ön* dağıtımındaki Pod sayısını otomatik olarak ölçeklendirin. Tüm FID 'ler genelinde ortalama CPU kullanımı, istenen kullanımlarının %50 ' ünü aşarsa, otomatik Scaler, Pod 'leri en fazla *10* örneğe kadar artırır. Dağıtım için en az *3* örnek tanımlanmıştır:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

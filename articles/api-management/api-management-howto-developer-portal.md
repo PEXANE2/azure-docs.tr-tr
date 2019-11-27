@@ -1,6 +1,6 @@
 ---
-title: Overview of Azure API Management developer portal - Azure API Management | Microsoft Docs
-description: Learn about the developer portal in API Management.
+title: Azure API Management geliştirici portalına genel bakış-Azure API Management | Microsoft Docs
+description: API Management 'de geliştirici portalı hakkında bilgi edinin.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -19,123 +19,123 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454397"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management developer portal overview
+# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
-Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, request access, and try them out.
+Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi bulabileceği, bunları nasıl kullanacağınızı, erişim isteyeceğini ve bunları nasıl deneyebileceği de vardır.
 
-This article describes the differences between self-hosted and managed versions of the developer portal in API Management. It also explains its architecture and provides answers to frequently asked questions.
+Bu makalede, API Management 'de geliştirici portalının şirket içinde barındırılan ve yönetilen sürümleri arasındaki farklar açıklanmaktadır. Ayrıca, mimarisini açıklar ve sık sorulan soruların yanıtlarını sağlar.
 
 > [!WARNING]
 >
-> [Learn how to migrate from the preview version to the generally available version](#preview-to-ga) of the developer portal.
+> [Önizleme sürümünden geliştirici portalının genel kullanıma sunulan sürümüne geçiş yapmayı öğrenin](#preview-to-ga) .
 
-![API Management developer portal](media/api-management-howto-developer-portal/cover.png)
+![API Management geliştirici portalı](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="managed-vs-self-hosted"></a> Managed and self-hosted versions
+## <a name="managed-vs-self-hosted"></a>Yönetilen ve şirket içinde barındırılan sürümler
 
-You can build your developer portal in two ways:
+Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
 
-- **Managed version** - by editing and customizing the portal, which is built into your API Management instance and is accessible through the URL `<your-api-management-instance-name>.developer.azure-api.net`. Refer to [this documentation article](api-management-howto-developer-portal-customize.md) to learn how to access and customize the managed portal.
-- **Self-hosted version** - by deploying and self-hosting your portal outside of an API Management instance. This approach allows you to edit the portal's codebase and extend the provided core functionality. You also need to upgrade the portal to the latest version yourself. For details and instructions, refer to the [GitHub repository with the source code of the portal][1]. The [tutorial for the managed version](api-management-howto-developer-portal-customize.md) walks through the portal's administrative panel, which is also featured in the self-hosted version.
+- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL `<your-api-management-instance-name>.developer.azure-api.net`üzerinden erişilebilen portalı düzenleyerek ve özelleştirerek. Yönetilen portala erişme ve bunları özelleştirme hakkında bilgi edinmek için [Bu belge makalesine](api-management-howto-developer-portal-customize.md) başvurun.
+- **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan çekirdek işlevselliği genişletmenizi sağlar. Ayrıca, portalı en son sürüme yükseltmeniz gerekir. Ayrıntılar ve yönergeler için, [portalın kaynak kodu Ile GitHub deposuna][1]bakın. [Yönetilen sürüm için öğretici](api-management-howto-developer-portal-customize.md) , portalın Yönetim panelinden, ayrıca şirket içinde barındırılan sürümde de tanıtılan bir adım adım yol gösterir.
 
-## <a name="portal-architectural-concepts"></a>Portal architectural concepts
+## <a name="portal-architectural-concepts"></a>Portal mimari kavramları
 
-The portal components can be logically divided into two categories: *code* and *content*.
+Portal bileşenleri, mantıksal olarak iki kategoriye ayrılabilir: *kod* ve *içerik*.
 
-*Code* is maintained in [the GitHub repository][1] and includes:
+*Kod* [GitHub deposunda][1] tutulur ve şunları içerir:
 
-- Widgets - which represent visual elements and combine HTML, JavaScript, styling ability, settings, and content mapping. Examples are an image, a text paragraph, a form, a list of APIs etc.
-- Styling definitions - which specify how widgets can be styled
-- Engine - which generates static webpages from portal content and is written in JavaScript
-- Visual editor - which allows for in-browser customization and authoring experience
+- Pencere öğeleri-görsel öğeleri temsil eder ve HTML, JavaScript, stil oluşturma özelliği, ayarlar ve içerik eşlemeyi birleştirir. Örnekler, bir resim, metin paragrafı, form, API 'lerin listesi vb.
+- Pencere öğelerinin nasıl Stillenebilir olduğunu belirten stil tanımları
+- Altyapı-Portal içeriğinden statik Web sayfaları oluşturur ve JavaScript 'te yazılmıştır
+- Tarayıcı içi özelleştirme ve yazma deneyimine izin veren görsel düzenleyici
 
-*Content* is divided into two subcategories: *portal content* and *API Management content*.
+*İçerik* iki alt kategorilere ayrılmıştır: *portal içeriği* ve *API Management içeriği*.
 
-*Portal content* is specific to the portal and includes:
+*Portal içeriği* portala özeldir ve şunları içerir:
 
-- Pages - for example, landing page, API tutorials, blog posts
-- Media - images, animations, and other file-based content
-- Layouts - templates, which are matched against a URL and define how pages are displayed
-- Styles - values for styling definitions, e.g. fonts, colors, borders
-- Settings - configuration, e.g. favicon, website metadata
+- Sayfalar-örneğin, giriş sayfası, API öğreticileri, blog gönderileri
+- Medya-görüntüler, animasyonlar ve diğer dosya tabanlı içerikler
+- Düzenler-bir URL ile eşleşen ve sayfaların nasıl görüntülendiğini tanımlayan şablonlar
+- Stiller-stil tanımlarının değerleri, örn. yazı tipleri, renkler, kenarlıklar
+- Ayarlar-yapılandırma, örneğin, ayrıcalıklı simge, Web sitesi meta verileri
 
-*Portal content*, except for media, is expressed as JSON documents.
+Medya dışında *Portal içeriği*, JSON belgeleri olarak ifade edilir.
 
-*API Management content* includes entities such as APIs, Operations, Products, Subscriptions.
+*API Management içerik* , API 'Ler, Işlemler, ürünler, abonelikler gibi varlıkları içerir.
 
-The portal is based on an adapted fork of the [Paperbits framework](https://paperbits.io/). The original Paperbits functionality has been extended to provide API Management-specific widgets (for example, a list of APIs, a list of Products) and a connector to API Management service for saving and retrieving content.
+Portal, [Paperbits çerçevesinin](https://paperbits.io/)uyarbir çatalını temel alır. Özgün Paperbits işlevselliği, API Management özgü pencere öğeleri sağlamak üzere genişletilmiştir (örneğin, API 'lerin listesi, ürünlerin listesi) ve içeriği kaydetmek ve almak için bir bağlayıcı API Management.
 
-## <a name="faq"></a> Frequently asked questions
+## <a name="faq"></a>Sık sorulan sorular
 
-In this section, we answer common questions about the new developer portal, which are of general nature. For questions specific to the self-hosted version, refer to [the wiki section of the GitHub repository](https://github.com/Azure/api-management-developer-portal/wiki).
+Bu bölümde, genel doğası olan yeni geliştirici portalı hakkında sık sorulan soruları yanıtlarız. Şirket içinde barındırılan sürüme özgü sorular için [GitHub deposunun wiki bölümüne](https://github.com/Azure/api-management-developer-portal/wiki)bakın.
 
-### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> How can I migrate from the preview version of the portal?
+### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a>Portalın önizleme sürümünden nasıl geçiş yapabilirim <a id="preview-to-ga"/>?
 
-By using the preview version of the developer portal, you provisioned the preview content in your API Management service. The default content has been significantly modified in the generally available version for better user experience. It also includes new widgets.
+Geliştirici portalının önizleme sürümünü kullanarak, API Management hizmetinizde önizleme içeriğini sağlamış olursunuz. Varsayılan içerik, daha iyi kullanıcı deneyimi için genel kullanıma sunulan sürümde önemli ölçüde değiştirilmiştir. Ayrıca yeni pencere öğeleri içerir.
 
-If you're using the managed version, reset the content of the portal by clicking **Reset content** in the **Operations** menu section. Confirming this operation will remove all the content of the portal and provision the new default content. The portal's engine has been automatically updated in your API Management service.
+Yönetilen sürümü kullanıyorsanız, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' ya tıklayarak portalın içeriğini sıfırlayın. Bu işlemin onaylanmasının, portalın tüm içeriğini kaldıracaksa ve yeni varsayılan içeriği sağlaması istenir. Portalın altyapısı, API Management hizmetinizde otomatik olarak güncelleştirilmiştir.
 
-![Reset portal content](media/api-management-howto-developer-portal/reset-content.png)
+![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
-If you're using the self-hosted version, use the `scripts/cleanup.bat` and `scripts/generate.bat` from the GitHub repository to remove existing content and provision new content. Make sure you upgrade your portal's code to the latest release from the GitHub repository beforehand.
+Şirket içinde barındırılan sürümü kullanıyorsanız, mevcut içeriği kaldırmak ve yeni içerik sağlamak için GitHub deposundan `scripts/cleanup.bat` ve `scripts/generate.bat` kullanın. Portalınızın kodunu önceden GitHub deposundan en son sürüme yükseltdiğinizden emin olun.
 
-If you don't want to reset the content of the portal, you may consider using newly available widgets throughout your pages. Existing widgets have been automatically updated to the latest versions.
+Portalın içeriğini sıfırlamak istemiyorsanız, sayfalarınızın tamamında yeni kullanılabilir pencere öğelerini kullanmayı düşünebilirsiniz. Mevcut pencere öğeleri, en son sürümlere otomatik olarak güncelleştirildi.
 
-If your portal was provisioned after the general availability announcement, it should already feature the new default content. No action is required from your side.
+Portalınız genel kullanılabilirlik duyurusu sonrasında sağlandıysa, yeni varsayılan içeriği zaten kullanıma hazır olmalıdır. Sizin tarafınızdan bir işlem yapılması gerekmez.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>How can I migrate from the old developer portal to the new developer portal?
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Eski geliştirici portalından yeni geliştirici portalına nasıl geçiş yapabilirim?
 
-Portals are incompatible and you need to migrate the content manually.
+Portallar uyumsuzdur ve içeriği el ile geçirmeniz gerekir.
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Does the new portal have all the features of the old portal?
+### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Yeni Portal eski portalın tüm özelliklerine sahip mi?
 
-The new developer portal doesn't support *Applications* and *Issues*. If you have used *Issues* in the old portal and need them in the new one, post a comment in [a dedicated GitHub issue](https://github.com/Azure/api-management-developer-portal/issues/122).
+Yeni geliştirici portalı *uygulamaları* ve *sorunları*desteklemez. Eski portalda *sorunlar* kullandıysanız ve bunların yeni bir tane olması gerekiyorsa, [özel bir GitHub sorununa](https://github.com/Azure/api-management-developer-portal/issues/122)yorum gönderin.
 
-Authentication with OAuth in the interactive developer console is not yet supported. You can track the progress through [the GitHub issue](https://github.com/Azure/api-management-developer-portal/issues/208).
+Etkileşimli geliştirici konsolundaki OAuth ile kimlik doğrulaması henüz desteklenmiyor. İlerleme durumunu [GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/208)izleyebilirsiniz.
 
-### <a name="has-the-old-portal-been-deprecated"></a>Has the old portal been deprecated?
+### <a name="has-the-old-portal-been-deprecated"></a>Eski Portal kullanımdan kaldırılmıştır mı?
 
-The old developer and publisher portals are now *legacy* features - they will be receiving security updates only. Yeni özellikler yalnızca yeni geliştirici portalına eklenecek.
+Eski geliştirici ve yayımcı portalları artık *eski* özelliklerdir; yalnızca güvenlik güncelleştirmelerini alacak. Yeni özellikler yalnızca yeni geliştirici portalına eklenecek.
 
-Deprecation of the legacy portals will be announced separately. If you have questions, concerns, or comments, raise them [in a dedicated GitHub issue](https://github.com/Azure/api-management-developer-portal/issues/121).
+Eski portalların kullanımdan kaldırılması, ayrı olarak duyurulacak. Sorularınız, endişeleriniz veya açıklamalarınız varsa, bunları [özel bir GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/121)yükseltin.
 
-### <a name="how-can-i-automate-portal-deployments"></a>How can I automate portal deployments?
+### <a name="how-can-i-automate-portal-deployments"></a>Portal dağıtımlarını nasıl otomatikleştirebilirim?
 
-You can programmatically access and manage the developer portal's content through the REST API, regardless if you're using a managed or a self-hosted version.
+Yönetilen veya şirket içinde barındırılan bir sürümü kullanıyor olmanız fark etmeksizin, geliştirici portalının içeriğine REST API aracılığıyla programlı bir şekilde erişebilir ve yönetebilirsiniz.
 
-The API is documented in [the GitHub repository's wiki section][2]. It can also be used for automating migrations of portal content between environments - for example from a test environment to the production environment. You can learn more about this process [in this documentation article](https://aka.ms/apimdocs/migrateportal) on GitHub.
+API, [GitHub deposunun wiki bölümünde][2]belgelenmiştir. Ayrıca, ortamlar arasında portal içeriğinin geçişini otomatik hale getirmek için kullanılabilir (örneğin, bir test ortamından üretim ortamına). Bu işlem hakkında daha fazla bilgi için GitHub 'daki [Bu belge makalesine](https://aka.ms/apimdocs/migrateportal) daha fazla bilgi edinebilirsiniz.
 
-### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Does the portal support Azure Resource Manager templates and/or is it compatible with API Management DevOps Resource Kit?
+### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Portal Azure Resource Manager şablonları destekliyor mu ve/veya API Management DevOps kaynak seti ile uyumlu mı?
 
 Hayır.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Do I need to enable additional VNet connectivity for the new managed portal dependencies?
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Yeni yönetilen Portal bağımlılıkları için ek VNet bağlantısını etkinleştirmem gerekir mi?
 
-In most cases - no.
+Çoğu durumda-Hayır.
 
-If your API Management service is in an internal VNet, your developer portal is only accessible from within the network. The management endpoint's host name must resolve to the internal VIP of the service from the machine you use to access the portal's administrative interface. Make sure the management endpoint is registered in the DNS. In case of misconfiguration, you will see an error: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+API Management hizmetiniz bir iç VNet içindeyse, geliştirici portalınızın yalnızca ağ içinden erişilebilir olması gerekir. Yönetim uç noktasının ana bilgisayar adı, portalın yönetim arabirimine erişmek için kullandığınız makineden hizmetin iç VIP 'sine çözümlenmelidir. Yönetim uç noktasının DNS 'de kayıtlı olduğundan emin olun. Yanlış yapılandırma durumunda bir hata görürsünüz: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
 
-### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>I have assigned a custom API Management domain and the published portal doesn't work
+### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Özel bir API Management etki alanı atadım ve yayımlanan Portal çalışmıyor
 
-After you update the domain, you need to [republish the portal](api-management-howto-developer-portal-customize.md#publish) for the changes to take effect.
+Etki alanını güncelleştirdikten sonra değişikliklerin etkili olması için [portalı yeniden yayımlamanız](api-management-howto-developer-portal-customize.md#publish) gerekir.
 
-### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>I have added an identity provider and I can't see it in the portal
+### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>Bir kimlik sağlayıcısı ekledim ve Portal 'da göremiyorum
 
-After you configure an identity provider (for example, AAD, AAD B2C), you need to [republish the portal](api-management-howto-developer-portal-customize.md#publish) for the changes to take effect.
+Bir kimlik sağlayıcısı yapılandırdıktan sonra (örneğin, AAD, AAD B2C), değişikliklerin etkili olması için [portalı yeniden yayımlamanız](api-management-howto-developer-portal-customize.md#publish) gerekir.
 
-### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>I have set up delegation and the portal doesn't use it
+### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>Temsilciyi ayarladım ve Portal bunu kullanmıyor
 
-After you set up delegation, you need to [republish the portal](api-management-howto-developer-portal-customize.md#publish) for the changes to take effect.
+Temsilciyi ayarladıktan sonra değişikliklerin etkili olması için portalı yeniden [yayımlamanız](api-management-howto-developer-portal-customize.md#publish) gerekir.
 
-### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>My other API Management configuration changes haven't been propagated in the developer portal
+### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>Diğer API Management yapılandırma Değişikliklerim Geliştirici Portalında yayılmadı
 
-Most configuration changes (for example, VNet, sign-in and product terms) require [republishing the portal](api-management-howto-developer-portal-customize.md#publish).
+Çoğu yapılandırma değişikliği (örneğin, VNet, oturum açma ve ürün koşulları) [portalın yeniden yayımmesini](api-management-howto-developer-portal-customize.md#publish)gerektirir.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>I'm getting a CORS error when using the interactive console
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Etkileşimli konsolu kullanırken CORS hatası alıyorum
 
-The interactive console makes a client-side API request from the browser. You can resolve the CORS problem by adding [a CORS policy](api-management-cross-domain-policies.md#CORS) on your API(s). You can specify all the parameters manually or use wildcard `*` values. Örnek:
+Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](api-management-cross-domain-policies.md#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilir veya joker karakter `*` değerlerini kullanabilirsiniz. Örneğin:
 
 ```XML
 <cors>
@@ -163,19 +163,19 @@ The interactive console makes a client-side API request from the browser. You ca
 
 > [!NOTE]
 > 
-> If you apply the CORS policy in the Product scope, instead of the API(s) scope, and your API uses subscription key authentication through a header, your console won't work.
+> CORS ilkesini, API (ler) kapsamı yerine ürün kapsamında uygularsanız ve API 'niz bir üst bilgi aracılığıyla abonelik anahtarı kimlik doğrulaması kullanıyorsa, konsolunuz çalışmaz.
 >
-> The browser automatically issues an OPTIONS HTTP request, which doesn’t contain a header with the subscription key. Because of the missing subscription key, API Management can't associate the OPTIONS call with a Product, so it can’t apply the CORS policy.
+> Tarayıcı, abonelik anahtarı içeren bir üst bilgi içermeyen bir seçenekler HTTP isteği otomatik olarak yayımlar. Eksik abonelik anahtarı nedeniyle API Management, bu seçenek çağrısını bir ürünle ilişkilendiremez, bu nedenle CORS ilkesini uygulayamaz.
 >
-> As a workaround you can pass the subscription key in a query parameter.
+> Geçici bir çözüm olarak, abonelik anahtarını bir sorgu parametresine geçirebilirsiniz.
 
-### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>What permissions do I need to edit the developer portal?
+### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Geliştirici portalını düzenlemek için hangi izinlere ihtiyacım var?
 
-If you're seeing the `Oops. Something went wrong. Please try again later.` error when you open the portal in the administrative mode, you may be lacking the required permissions (RBAC).
+Portalı yönetim modunda açtığınızda `Oops. Something went wrong. Please try again later.` hatası görüyorsanız, gerekli izinlere (RBAC) gerek duyulmayabilir.
 
-The legacy portals required the permission `Microsoft.ApiManagement/service/getssotoken/action` at the service scope (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) to allow the user administrator access to the portals. The new portal requires the permission `Microsoft.ApiManagement/service/users/token/action` at the scope `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1`.
+Eski portallar, Kullanıcı yöneticisinin portallara erişmesine izin vermek için hizmet kapsamında (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) izin `Microsoft.ApiManagement/service/getssotoken/action` gerektirdi. Yeni Portal, kapsam `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1``Microsoft.ApiManagement/service/users/token/action` izin gerektirir.
 
-You can use the following PowerShell script to create a role with the required permission. Remember to change the `<subscription-id>` parameter. 
+Gerekli izne sahip bir rol oluşturmak için aşağıdaki PowerShell betiğini kullanabilirsiniz. `<subscription-id>` parametresini değiştirmeyi unutmayın. 
 
 ```PowerShell
 #New Portals Admin Role 
@@ -193,33 +193,33 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-Once the role is created, it can be granted to any user from the **Access Control (IAM)** section in the Azure portal. Assigning this role to a user will assign the permission at the service scope. The user will be able to generate SAS tokens on behalf of *any* user in the service. At the minimum, this role needs to be assigned to the administrator of the service. The following PowerShell command demonstrates how to assign the role to a user `user1` at the lowest scope to avoid granting unnecessary permissions to the user: 
+Rol oluşturulduktan sonra, Azure portal **Access Control (IAM)** bölümünde herhangi bir kullanıcıya verilebilir. Bu rolün bir kullanıcıya atanması, bu izni hizmet kapsamında atayacaktır. Kullanıcı, hizmette *herhangi bir* Kullanıcı adına SAS belirteçleri üretebilecektir. En azından, bu rolün hizmetin yöneticisine atanması gerekir. Aşağıdaki PowerShell komutu, kullanıcıya gereksiz izinler vermekten kaçınmak için en düşük kapsamdaki Kullanıcı `user1` rolün nasıl atanacağını gösterir: 
 
 ```PowerShell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
-After the permissions have been granted to a user, the user must sign out and sign in again to the Azure portal for the new permissions to take effect.
+İzinler bir kullanıcıya verildikten sonra, yeni izinlerin etkili olması için kullanıcının oturumu kapatıp Azure portal yeniden oturum açması gerekir.
 
-### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>I'm seeing the `Unable to start the portal. See if settings are specified correctly (...)` error
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>`Unable to start the portal. See if settings are specified correctly (...)` hatası görüyorum
 
-This error is shown when a `GET` call to `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` fails. The call is issued from the browser by the administrative interface of the portal.
+`https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` `GET` çağrısı başarısız olduğunda bu hata gösterilir. Bu çağrı tarayıcıdan portalın yönetim arabirimi tarafından verilir.
 
-If your API Management service is in a VNet - refer to the VNet connectivity question above.
+API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna başvurun.
 
-The call failure may also be caused by an SSL certificate, which is assigned to a custom domain and is not trusted by the browser. As a mitigation, you can remove the management endpoint custom domain - API Management will fall back to the default endpoint with a trusted certificate.
+Çağrı hatasına Ayrıca özel bir etki alanına atanan ve tarayıcı tarafından güvenilmeyen bir SSL sertifikası neden olabilir. Risk azaltma olarak, yönetim uç noktası özel etki alanını kaldırabilirsiniz. API Management, güvenilen bir sertifika ile varsayılan uç noktaya geri döner.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about the new developer portal:
+Yeni geliştirici portalı hakkında daha fazla bilgi edinin:
 
-- [Access and customize the managed developer portal](api-management-howto-developer-portal-customize.md)
-- [Set up self-hosted version of the portal][2]
+- [Yönetilen geliştirici portalına erişme ve bunları özelleştirme](api-management-howto-developer-portal-customize.md)
+- [Portalın şirket içinde barındırılan sürümünü ayarlama][2]
 
-Browse other resources:
+Diğer kaynaklara gözatamazsınız:
 
-- [GitHub repository with the source code][1]
-- [Public roadmap of the project][3]
+- [Kaynak kodlu GitHub deposu][1]
+- [Projenin ortak yol haritası][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki

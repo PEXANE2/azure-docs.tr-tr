@@ -1,10 +1,10 @@
 ---
-title: GitHub Actions & Azure Kubernetes Service
+title: Azure Kubernetes hizmeti & GitHub eylemleri
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Review and test changes from a pull request directly in Azure Kubernetes Service using GitHub Actions and Azure Dev Spaces.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, GitHub Actions, Helm, service mesh, service mesh routing, kubectl, k8s
+description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
@@ -13,16 +13,16 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483934"
 ---
-# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (preview)
+# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
-Azure Dev Spaces provides a workflow using GitHub Actions that allows you to test changes from a pull request directly in AKS before the pull request is merged into your repository’s main branch. Having a running application to review changes of a pull request can increase the confidence of both the developer as well as team members. This running application can also help team members such as, product managers and designers, become part of the review process during early stages of development.
+Azure Dev Spaces, çekme isteği deponuzdaki ana dalınızla birleştirilmeden önce doğrudan AKS 'de yapılan değişiklikleri test etmenize olanak sağlayan GitHub eylemleri kullanarak bir iş akışı sağlar. Bir çekme isteğinin değişikliklerini gözden geçirmek için çalışan bir uygulamanın olması, hem geliştiricinin hem de takım üyelerinin güvenini artırabilir. Bu çalışan uygulama, ürün yöneticileri ve tasarımcılar gibi takım üyelerinin, geliştirme aşamaları sırasında inceleme sürecinin bir parçası haline gelmesine de yardımcı olabilir.
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
-* Set up Azure Dev Spaces on a managed Kubernetes cluster in Azure.
-* Deploy a large application with multiple microservices to a dev space.
-* Set up CI/CD with GitHub actions.
-* Test a single microservice in an isolated dev space within the context of the full application.
+* Azure 'da yönetilen bir Kubernetes kümesinde Azure Dev Spaces ayarlayın.
+* Birden fazla mikro hizmet ile bir geliştirme alanına büyük bir uygulama dağıtın.
+* GitHub eylemleri ile CI/CD ayarlayın.
+* Tek bir mikro hizmeti, tam uygulamanın bağlamı içinde yalıtılmış bir geliştirme alanında test edin.
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
@@ -31,47 +31,47 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli-installed].
-* [Helm 2.13 - 2.16 installed][helm-installed].
-* A GitHub Account with [GitHub Actions enabled][github-actions-beta-signup].
-* The [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) running on an AKS cluster.
+* [Held 2,13-2,16 yüklendi][helm-installed].
+* [GitHub eylemleri etkin][github-actions-beta-signup]olan bir GitHub hesabı.
+* Bir AKS kümesinde çalışan [Örnek uygulamayı Azure dev Spaces bisiklet paylaşımı](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) .
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry oluşturma
 
-Create an Azure Container Registry (ACR):
+Azure Container Registry oluşturma (ACR):
 
 ```cmd
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
 > [!IMPORTANT]
-> The name your ACR must be unique within Azure and contain 5-50 alphanumeric characters. Any letters you use must be lower case.
+> ACR 'nizin adı Azure içinde benzersiz olmalıdır ve 5-50 alfasayısal karakter içermelidir. Kullandığınız tüm mektuplar küçük harf olmalıdır.
 
-Save the *loginServer* value from the output because it is used in a later step.
+Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini kaydedin.
 
-## <a name="create-a-service-principal-for-authentication"></a>Create a service principal for authentication
+## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Use [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] to create a service principal. Örnek:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
-Save the JSON output because it is used in a later step.
+Sonraki bir adımda kullanıldığından JSON çıkışını kaydedin.
 
 
-Use [az aks show][az-aks-show] to display the *id* of your AKS cluster:
+AKS kümenizin *kimliğini* görüntülemek için [az aks Show][az-aks-show] kullanın:
 
 ```cmd
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-Use [az acr show][az-acr-show] to display the *id* of the ACR:
+ACR 'nin *kimliğini* görüntülemek için [az ACR Show][az-acr-show] kullanın:
 
 ```cmd
 az acr show --name <acrName> --query id
 ```
 
-Use [az role assignment create][az-role-assignment-create] to give *Contributor* access to your AKS cluster and *AcrPush* access to your ACR.
+AKS kümenize *katkıda bulunan* erişim sağlamak ve ACR 'Nize *acrpush* erişimi sağlamak için [az role atama oluştur][az-role-assignment-create] kullanın.
 
 ```cmd
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
@@ -79,46 +79,46 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
 
 > [!IMPORTANT]
-> You must be the owner of both your AKS cluster and ACR in order to give your service principal access to those resources.
+> Hizmet sorumlusuna bu kaynaklara erişim sağlamak için hem AKS kümenizin hem de ACR 'nizin sahibi olmanız gerekir.
 
-## <a name="configure-your-github-action"></a>Configure your GitHub action
+## <a name="configure-your-github-action"></a>GitHub eyleminizi yapılandırma
 
 > [!IMPORTANT]
-> You must have GitHub Actions enabled for your repository. To enable GitHub Actions for your repository, navigate to your repository on GitHub, click on the Actions tab, and choose to enable actions for this repository.
+> Deponuz için GitHub eylemlerinin etkinleştirilmiş olması gerekir. Deponuzdaki GitHub eylemlerini etkinleştirmek için GitHub 'daki deponuza gidin, eylemler sekmesine tıklayın ve bu depo için eylemleri etkinleştirmeyi seçin.
 
-Navigate to your forked repository and click *Settings*. Click on *Secrets* in the left sidebar. Click *Add a new secret* to add each new secret below:
+Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundaki *sırlar* ' a tıklayın. Yeni gizli dizi *Ekle* ' ye tıklayarak aşağıdaki her bir parolayı ekleyin:
 
-1. *AZURE_CREDENTIALS*: the entire output from the service principal creation.
-1. *RESOURCE_GROUP*: the resource group for your AKS cluster, which in this example is *MyResourceGroup*.
-1. *CLUSTER_NAME*: the name of your AKS cluster, which in this example is *MyAKS*.
-1. *CONTAINER_REGISTRY*: the *loginServer* for the ACR.
-1. *HOST*: the host for your Dev Space, which takes the form *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* , which in this example is *dev.bikesharingweb.fedcab0987.eus.azds.io*.
-1. *HOST_SUFFIX*: the host suffix for your Dev Space, which in this example is *fedcab0987.eus.azds.io*.
-1. *IMAGE_PULL_SECRET*: the name of the secret you wish to use, for example *demo-secret*.
-1. *MASTER_SPACE*: the name of your parent Dev Space, which in this example is *dev*.
-1. *REGISTRY_USERNAME*: the *clientId* from the JSON output from the service principal creation.
-1. *REGISTRY_PASSWORD*: the *clientSecret* from the JSON output from the service principal creation.
+1. *AZURE_CREDENTIALS*: hizmet sorumlusu oluşturma işleminden tümüyle çıkış.
+1. *RESOURCE_GROUP*: Bu örnekte *MYRESOURCEGROUP*olan aks kümeniz için kaynak grubu.
+1. *CLUSTER_NAME*: Bu örnekte *MYAKS*olan aks Kümenizin adı.
+1. *CONTAINER_REGISTRY*: ACR Için *loginserver* .
+1. *Ana bilgisayar*: *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX*> olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
+1. *HOST_SUFFIX*: geliştirme alanınız için konak soneki, bu örnekte *fedcab0987.EUS.azds.io*.
+1. *IMAGE_PULL_SECRET*: kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli*.
+1. *MASTER_SPACE*: Bu örnekte *dev*olan üst geliştirme alanının adı.
+1. *REGISTRY_USERNAME*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
+1. *REGISTRY_PASSWORD*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientSecret* .
 
 > [!NOTE]
-> All of these secrets are used by the GitHub action and are configured in [.github/workflows/bikes.yml][github-action-yaml].
+> Tüm bu gizlilikler GitHub eylemi tarafından kullanılır ve [. GitHub/iş akışları/bisiklet. yıml][github-action-yaml]içinde yapılandırılır.
 
-## <a name="create-a-new-branch-for-code-changes"></a>Create a new branch for code changes
+## <a name="create-a-new-branch-for-code-changes"></a>Kod değişiklikleri için yeni dal oluştur
 
-Navigate to `BikeSharingApp/` and create a new branch called *bike-images*.
+`BikeSharingApp/` gidin ve *Bisiklet görüntüleri*adlı yeni bir dal oluşturun.
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-Edit [Bikes/server.js][bikes-server-js] to remove lines 232 and 233:
+232 ve 233 satırlarını kaldırmak için [Bisiklet/Server. js][bikes-server-js] ' i düzenleyin:
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-The section should now look like:
+Bölüm şu şekilde görünmelidir:
 
 ```javascript
     var theBike = result;
@@ -126,37 +126,37 @@ The section should now look like:
     delete theBike._id;
 ```
 
-Save the file then use `git add` and `git commit` to stage your changes.
+Dosyayı kaydedin ve sonra değişikliklerinizi hazırlamak için `git add` ve `git commit` kullanın.
 
 ```cmd
 git add Bikes/server.js 
 git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 ```
 
-## <a name="push-your-changes"></a>Push your changes
+## <a name="push-your-changes"></a>Değişikliklerinizi gönderin
 
-Use `git push` to push your new branch to your forked repository:
+Yeni dalınızı, kullanılan deponuza göndermek için `git push` kullanın:
 
 ```cmd
 git push origin bike-images
 ```
 
-After the push is complete, navigate to your forked repository on GitHub to create a pull request with the *master* branch in your forked repository as the base branch compared to the *bike-images* branch.
+Gönderme işlemi tamamlandıktan sonra, *Bisiklet görüntüleri* dalına kıyasla temel dal olarak, dallanmış deponuzdaki *ana* dala sahip bir çekme isteği oluşturmak için GitHub 'daki dallanmış deponuza gidin.
 
-After your pull request is opened, navigate to the *Actions* tab. Verify a new action has started and is building the *Bikes* service.
+Çekme isteğiniz açıldıktan sonra, *Eylemler* sekmesine gidin. yeni bir eylemin başlatıldığını ve *Bisiklet* hizmetini oluşturuyor olduğunu doğrulayın.
 
-## <a name="view-the-child-space-with-your-changes"></a>View the child space with your changes
+## <a name="view-the-child-space-with-your-changes"></a>Değişikliklerinizin bulunduğu alt alanı görüntüleyin
 
-After the action has completed, you will see a comment with a URL to your new child space based the changes in the pull request.
+Eylem tamamlandıktan sonra, çekme isteğindeki değişiklikleri temel alan yeni alt alana yönelik URL ile bir açıklama görürsünüz.
 
 > [!div class="mx-imgBorder"]
-> ![GitHub Action Url](../media/github-actions/github-action-url.png)
+> GitHub eylem URL 'Si ![](../media/github-actions/github-action-url.png)
 
-Navigate to the *bikesharingweb* service by opening the URL from the comment. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent. Verify you no longer see the placeholder image for the bike.
+Açıklamadan URL 'YI açarak *bıkesharingweb* hizmetine gidin. Kullanıcı olarak *Aurelia Briggs (müşteri)* öğesini seçin ve ardından kiralamak istediğiniz bir bisiklet seçin. Bisiklet için yer tutucu görüntüsünü artık görmediğinizi doğrulayın.
 
-If you merge your changes into the *master* branch in your fork, another action will run to rebuild and run your entire application in the parent dev space. In this example, the parent space is *dev*. This action is configured in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml].
+Değişikliklerinizi çatalınızdaki *ana* dalda birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev*olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
-## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
+## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -164,10 +164,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces.
+Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Team development in Azure Dev Spaces][team-quickstart]
+> [Azure Dev Spaces 'de takım geliştirme][team-quickstart]
 
 [azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac

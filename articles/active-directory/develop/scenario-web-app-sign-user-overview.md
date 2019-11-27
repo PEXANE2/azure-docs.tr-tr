@@ -1,6 +1,6 @@
 ---
-title: Web app that signs in users (overview) - Microsoft identity platform
-description: Learn how to build a web app that signs in users (overview)
+title: Kullanıcılara oturum açan Web uygulaması (genel bakış)-Microsoft Identity platform
+description: Kullanıcılara oturum açan bir Web uygulaması oluşturma hakkında bilgi edinin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -22,68 +22,68 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482481"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web app that signs in users
+# <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
-Learn all you need to build a web app that uses the Microsoft identity platform to sign in users.
+Kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir Web uygulaması oluşturmak için ihtiyacınız olan tüm kullanıcıları öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
 
-If you want to create your first portable (ASP.NET Core) web app that signs in users, follow this quickstart:
+Kullanıcılar tarafından oturum açan ilk taşınabilir (ASP.NET Core) Web uygulamanızı oluşturmak istiyorsanız bu hızlı başlangıcı izleyin:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET Core web app that signs in users](quickstart-v2-aspnet-core-webapp.md)
+> [Hızlı başlangıç: kullanıcılarda oturum açan Web uygulamasını ASP.NET Core](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-If you want to understand how to add sign-in to an existing ASP.NET web application, try the following quickstart:
+Mevcut bir ASP.NET Web uygulamasına oturum açma ekleme hakkında bilgi edinmek istiyorsanız, aşağıdaki hızlı başlangıcı deneyin:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET web app that signs in users](quickstart-v2-aspnet-webapp.md)
+> [Hızlı başlangıç: kullanıcılar oturum açan ASP.NET Web uygulaması](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-If you're a Java developer, try the following quickstart:
+Java geliştiricisiyseniz aşağıdaki hızlı başlangıcı deneyin:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Java web app](quickstart-v2-java-webapp.md)
+> [Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-If you develop with Python, try the following quickstart:
+Python ile geliştirirseniz, aşağıdaki hızlı başlangıcı deneyin:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Python web app](quickstart-v2-python-webapp.md)
+> [Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Genel Bakış
 
-You add authentication to your web app so that it can sign in users. Adding authentication enables your web app to access limited profile information in order to customize the experience for users. 
+Web uygulamanıza, kullanıcıların oturum açmasını sağlamak için kimlik doğrulaması eklersiniz. Kimlik doğrulaması eklemek, Web uygulamanızın, Kullanıcı deneyimini özelleştirmek için sınırlı profil bilgilerine erişmesini sağlar. 
 
-Web apps authenticate a user in a web browser. In this scenario, the web app directs the user's browser to sign them in to Azure Active Directory (Azure AD). Azure AD returns a sign-in response through the user's browser, which contains claims about the user in a security token. Signing in users takes advantage of the [Open ID Connect](./v2-protocols-oidc.md) standard protocol, simplified by the use of middleware [libraries](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
+Web Apps bir kullanıcının kimliğini bir Web tarayıcısında doğrular. Bu senaryoda, Web uygulaması, kullanıcının tarayıcısını Azure Active Directory (Azure AD) içinde oturum açmak üzere yönlendirir. Azure AD, kullanıcının tarayıcısı aracılığıyla bir güvenlik belirtecinde Kullanıcı hakkında talepler içeren bir oturum açma yanıtı döndürür. Kullanıcıların oturum açması, ara yazılım [kitaplıkları](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)kullanılarak Basitleştirilen [Açık kimlik Connect](./v2-protocols-oidc.md) standart protokolünden yararlanır.
 
-![Web app signs in users](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Kullanıcılarda Web uygulaması işaretleri](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-As a second phase, you can enable your application to call web APIs on behalf of the signed-in user. This next phase is a different scenario, which you'll find in [Web app that calls web APIs](scenario-web-app-call-api-overview.md).
+İkinci bir aşamada, uygulamanızı oturum açmış kullanıcı adına Web API 'Leri çağırabilmesini sağlayabilirsiniz. Bu sonraki aşama, Web [API 'lerini çağıran Web](scenario-web-app-call-api-overview.md)uygulamasında bulacağınız farklı bir senaryodur.
 
 > [!NOTE]
-> Adding sign-in to a web app is about protecting the web app and validating a user token, which is what  **middleware** libraries do. In the case of .NET, this scenario does not yet require the Microsoft Authentication Library (MSAL), which is about acquiring a token to call protected APIs. Authentication libraries will be introduced in the follow-up scenario, when the web app needs to call web APIs.
+> Web uygulamasına oturum açma ekleme, Web uygulamasını koruma ve **Ara yazılım** kitaplıklarının yaptığı bir kullanıcı belirtecini doğrulama ile ilgilidir. .NET söz konusu olduğunda, bu senaryo, korumalı API 'Leri çağırmak için bir belirteç almak üzere Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) henüz gerektirmez. Web uygulamasının Web API 'Lerini çağırması gerektiğinde, izleme senaryosunda kimlik doğrulama kitaplıkları tanıtılacaktır.
 
-## <a name="specifics"></a>Specifics
+## <a name="specifics"></a>Özelliklerini
 
-- During the application registration, you'll need to provide one or several (if you deploy your app to several locations) reply URIs. In some cases (ASP.NET and ASP.NET Core), you'll need to enable the ID token. Finally, you'll want to set up a sign-out URI so that your application reacts to users signing out.
-- In the code for your application, you'll need to provide the authority to which your web app delegates sign-in. You might want to customize token validation (in particular, in partner scenarios).
-- Web applications support any account types. For more information, see [Supported account types](v2-supported-account-types.md).
+- Uygulama kaydı sırasında, bir veya birkaç (uygulamanızı birkaç konuma dağıtırsanız) yanıt URI 'Lerini sağlamanız gerekir. Bazı durumlarda (ASP.NET ve ASP.NET Core), KIMLIK belirtecini etkinleştirmeniz gerekir. Son olarak, uygulamanızın kullanıcı oturumunu açmasını sağlayacak bir oturum açma URI 'SI ayarlamak isteyeceksiniz.
+- Uygulamanızın kodunda, Web uygulamanızın temsilci olarak çalıştırılacağı yetkiyi sağlamanız gerekir. Belirteç doğrulamayı (özellikle de iş ortağı senaryolarında) özelleştirmek isteyebilirsiniz.
+- Web uygulamaları tüm hesap türlerini destekler. Daha fazla bilgi için bkz. [Desteklenen hesap türleri](v2-supported-account-types.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)

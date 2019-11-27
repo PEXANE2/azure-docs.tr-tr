@@ -1,6 +1,6 @@
 ---
-title: Cross-registry authentication from ACR task
-description: Configure an Azure Container Registry Task (ACR Task) to access another private Azure container registry by using a managed identity for Azure Resources
+title: ACR görevinden çapraz kayıt defteri kimlik doğrulaması
+description: Azure kaynakları için yönetilen bir kimlik kullanarak başka bir özel Azure Container Registry 'ye erişmek üzere bir Azure Container Registry görevi (ACR görevi) yapılandırma
 ms.topic: article
 ms.date: 07/12/2019
 ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
@@ -10,49 +10,49 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456188"
 ---
-# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Cross-registry authentication in an ACR task using an Azure-managed identity 
+# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanan bir ACR görevinde çapraz kayıt defteri kimlik doğrulaması 
 
-In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
+Bir [ACR görevinde](container-registry-tasks-overview.md), [Azure kaynakları için yönetilen bir kimliği etkinleştirebilirsiniz](container-registry-tasks-authentication-managed-identity.md). Görev, kimlik bilgilerini sağlamaya veya yönetmeye gerek kalmadan diğer Azure kaynaklarına erişmek için kimliği kullanabilir. 
 
-In this article, you learn how to enable a managed identity in a task that pulls an image from a registry different from the one used to run the task.
+Bu makalede, görevi çalıştırmak için kullanılan sunucudan farklı bir kayıt defterinden görüntü çeken bir görevde yönetilen bir kimliği nasıl etkinleştireceğinizi öğreneceksiniz.
 
-To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
+Azure kaynaklarını oluşturmak için bu makale, Azure CLı sürüm 2.0.68 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-The example task pulls a base image from another Azure container registry to build and push an application image. To pull the base image, you configure the task with a managed identity and assign appropriate permissions to it. 
+Örnek görev, bir uygulama görüntüsü oluşturmak ve göndermek için başka bir Azure Container Registry 'den bir temel görüntü çeker. Temel görüntüyü çekmek için, görevi yönetilen bir kimlikle yapılandırıp ilgili izinleri buna atayabilirsiniz. 
 
-This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
+Bu örnek, Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen kimlik kullanarak adımları gösterir. Kimlik seçiminiz, kuruluşunuzun ihtiyaçlarına bağlıdır.
 
-In a real-world scenario, an organization might maintain a set of base images used by all development teams to build their applications. These base images are stored in a corporate registry, with each development team having only pull rights. 
+Gerçek dünyada bir senaryoda kuruluş, tüm geliştirme ekipleri tarafından uygulamalarını oluşturmak için kullanılan bir dizi temel görüntü tutabilir. Bu temel görüntüler, her geliştirme ekibinin yalnızca çekme haklarına sahip olduğu bir kurumsal kayıt defterinde saklanır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-For this article, you need two Azure container registries:
+Bu makalede iki Azure Container Registry gerekir:
 
-* You use the first registry to create and execute ACR tasks. In this article, this registry is named *myregistry*. 
-* The second registry hosts a base image used for the task to build an image. In this article, the second registry is named *mybaseregistry*. 
+* ACR görevlerini oluşturmak ve yürütmek için ilk kayıt defterini kullanın. Bu makalede, bu kayıt defteri *myregistry*olarak adlandırılmıştır. 
+* İkinci kayıt defteri, görev için bir görüntü oluşturmak için kullanılan bir temel görüntü barındırır. Bu makalede ikinci kayıt defteri *mybaseregyıı*olarak adlandırılmıştır. 
 
-Replace with your own registry names in later steps.
+Sonraki adımlarda kendi kayıt defteri adlarınızla değiştirin.
 
-If you don't already have the needed Azure container registries, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
+Gerekli Azure Container Registry 'ye zaten sahip değilseniz bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md). Görüntüleri kayıt defterine henüz göndermeniz gerekmez.
 
-## <a name="prepare-base-registry"></a>Prepare base registry
+## <a name="prepare-base-registry"></a>Temel kayıt defterini hazırla
 
-First, create a working directory and then create a file named Dockerfile with the following content. This simple example builds a Node.js base image from a public image in Docker Hub.
+İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içeriğe sahip Dockerfile adlı bir dosya oluşturun. Bu basit örnek, Docker Hub 'daki ortak görüntüden bir Node. js temel görüntüsü oluşturur.
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
-In the current directory, run the [az acr build][az-acr-build] command to build and push the base image to the base registry. In practice, another team or process in the organization might maintain the base registry.
+Geçerli dizinde, temel görüntüyü derlemek ve temel bir kayıt defterine göndermek için [az ACR Build][az-acr-build] komutunu çalıştırın. Uygulamada, kuruluştaki başka bir takım veya işlem temel kayıt defterini koruyabilir.
     
 ```azurecli
 az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
 ```
 
-## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
+## <a name="define-task-steps-in-yaml-file"></a>YAML dosyasında görev adımlarını tanımlama
 
-The steps for this example [multi-step task](container-registry-tasks-multi-step.md) are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `helloworldtask.yaml` in your local working directory and paste in the following contents. Update the value of `REGISTRY_NAME` in the build step with the server name of your base registry.
+Bu örnek [çoklu adım görevi](container-registry-tasks-multi-step.md) için adımlar bir [YAML dosyasında](container-registry-tasks-reference-yaml.md)tanımlanmıştır. Yerel çalışma dizininizde `helloworldtask.yaml` adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Derleme adımındaki `REGISTRY_NAME` değerini temel kayıt defterinizin sunucu adıyla güncelleştirin.
 
 ```yml
 version: v1.0.0
@@ -62,17 +62,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-The build step uses the `Dockerfile-app` file in the [Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) repo to build an image. The `--build-arg` references the base registry to pull the base image. When successfully built, the image is pushed to the registry used to run the task.
+Derleme adımı, bir görüntü oluşturmak için [Azure-Samples/ACR-Build-HelloWorld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) depoındaki `Dockerfile-app` dosyasını kullanır. `--build-arg` temel görüntüyü çekmek için temel kayıt defterine başvurur. Başarılı bir şekilde oluşturulduğunda, görüntü, görevi çalıştırmak için kullanılan kayıt defterine gönderilir.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Seçenek 1: Kullanıcı tarafından atanan kimlikle görev oluşturma
 
-The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
+Bu bölümdeki adımlar bir görev oluşturur ve Kullanıcı tarafından atanan bir kimliği etkinleştirir. Bunun yerine sistem tarafından atanan bir kimliği etkinleştirmek istiyorsanız, bkz. [seçenek 2: sistem tarafından atanan kimlik ile görev oluşturma](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
-### <a name="create-task"></a>Create task
+### <a name="create-task"></a>Görev Oluştur
 
-Create the task *helloworldtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `helloworldtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki `helloworldtask.yaml` dosyasına başvurur. `--assign-identity` parametresi, Kullanıcı tarafından atanan kimliğin kaynak KIMLIĞINI geçirir. 
 
 ```azurecli
 az acr task create \
@@ -85,13 +85,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
+## <a name="option-2-create-task-with-system-assigned-identity"></a>2\. seçenek: sistem tarafından atanan kimlikle görev oluşturma
 
-The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
+Bu bölümdeki adımlar bir görev oluşturur ve sistem tarafından atanan bir kimliği etkinleştirir. Bunun yerine Kullanıcı tarafından atanan bir kimliği etkinleştirmek istiyorsanız, bkz. [1. seçenek: Kullanıcı tarafından atanan kimlik ile görev oluşturma](#option-1-create-task-with-user-assigned-identity). 
 
-### <a name="create-task"></a>Create task
+### <a name="create-task"></a>Görev Oluştur
 
-Create the task *helloworldtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `helloworldtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki `helloworldtask.yaml` dosyasına başvurur. Değer içermeyen `--assign-identity` parametresi, görevde sistem tarafından atanan kimliği etkinleştirmesine izin vermez. 
 
 ```azurecli
 az acr task create \
@@ -103,25 +103,25 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Give identity pull permissions to the base registry
+## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
 
-In this section, give the managed identity permissions to pull from the base registry, *mybaseregistry*.
+Bu bölümde, *mybaseregyıı*temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
 
-Use the [az acr show][az-acr-show] command to get the resource ID of the base registry and store it in a variable:
+Temel kayıt defterinin kaynak KIMLIĞINI almak ve bir değişkende depolamak için [az ACR Show][az-acr-show] komutunu kullanın:
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Use the [az role assignment create][az-role-assignment-create] command to assign the identity the `acrpull` role to the base registry. This role has permissions only to pull images from the registry.
+`acrpull` rolün kimliğini temel kayıt defterine atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın. Bu rol yalnızca kayıt defterinden görüntüleri çekmek için izinlere sahiptir.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $baseregID --role acrpull
 ```
 
-## <a name="add-target-registry-credentials-to-task"></a>Add target registry credentials to task
+## <a name="add-target-registry-credentials-to-task"></a>Göreve hedef kayıt defteri kimlik bilgilerini ekle
 
-Now use the [az acr task credential add][az-acr-task-credential-add] command to add the identity's credentials to the task so that it can authenticate with the base registry. Run the command corresponding to the type of managed identity you enabled in the task. If you enabled a user-assigned identity, pass `--use-identity` with the client ID of the identity. If you enabled a system-assigned identity, pass `--use-identity [system]`.
+Şimdi, kimliğin kimlik bilgilerini temel kayıt defteri ile kimlik doğrulaması yapabilmesi için göreve eklemek üzere [az ACR Task Credential Add][az-acr-task-credential-add] komutunu kullanın. Görevde etkinleştirdiğiniz yönetilen kimliğin türüne karşılık gelen komutu çalıştırın. Kullanıcı tarafından atanan bir kimlik etkinleştirdiyseniz, `--use-identity` kimliğin istemci KIMLIĞIYLE geçirin. Sistem tarafından atanan bir kimlik etkinleştirdiyseniz, `--use-identity [system]`geçirin.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -139,9 +139,9 @@ az acr task credential add \
   --use-identity [system]
 ```
 
-## <a name="manually-run-the-task"></a>Manually run the task
+## <a name="manually-run-the-task"></a>Görevi el ile çalıştırın
 
-To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. 
+Yönetilen bir kimliği etkinleştirdiğiniz görevin başarıyla çalıştığını doğrulamak için, görevi [az ACR Task Run][az-acr-task-run] komutuyla el ile tetikleyin. 
 
 ```azurecli
 az acr task run \
@@ -149,7 +149,7 @@ az acr task run \
   --registry myregistry
 ```
 
-If the task runs successfully, output is similar to:
+Görev başarıyla çalışırsa, çıkış şuna benzerdir:
 
 ```
 Queued a run with ID: cf10
@@ -198,7 +198,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Run the [az acr repository show-tags][az-acr-repository-show-tags] command to verify that the image built and was successfully pushed to *myregistry*:
+Oluşturulan görüntünün ve *myregistry*'e başarıyla gönderildiğinden emin olmak için [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırın:
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -212,8 +212,8 @@ cf10
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
-* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
+* Bir [ACR görevinde yönetilen kimliği etkinleştirme](container-registry-tasks-authentication-managed-identity.md)hakkında daha fazla bilgi edinin.
+* [ACR görevlerine YAML başvurusunu](container-registry-tasks-reference-yaml.md) gör
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

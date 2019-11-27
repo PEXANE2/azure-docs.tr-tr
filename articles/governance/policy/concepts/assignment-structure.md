@@ -17,11 +17,11 @@ ms.locfileid: "74279479"
 Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için öğeleri içerir:
 
 - Görünen ad
-- açıklama
+- description
 - meta veriler
 - zorlama modu
 - ilke tanımı
-- parametreler
+- parameters
 
 Örneğin, aşağıdaki JSON, _Donotenzorlama_ modunda dinamik parametrelerle bir ilke atamasını göstermektedir:
 
@@ -59,10 +59,10 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 Bu özellik aşağıdaki değerlere sahiptir:
 
-|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
+|Mod |JSON değeri |Type |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
-|Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
-|Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
+|Etkin |Varsayılan |string |Evet |Evet |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
+|Devre dışı |Donotenzorlamalı |string |Evet |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
 İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, C++ -konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Henüz belirlenmedi.
 services: cognitive-services
 author: erhopf
 manager: nitinme

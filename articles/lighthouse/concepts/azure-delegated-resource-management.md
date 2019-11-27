@@ -1,6 +1,6 @@
 ---
 title: Azure tarafından atanan temsilcinin kaynak yönetimi
-description: Managed services offers allow service providers to sell resource management offers to customers in Azure Marketplace.
+description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
@@ -12,38 +12,38 @@ ms.locfileid: "74464015"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
-Azure delegated resource management is one of the key components of Azure Lighthouse. With Azure delegated resource management, service providers can simplify customer engagement and onboarding experiences, while managing delegated resources at scale with agility and precision.
+Azure Temsilcili kaynak yönetimi, Azure Use 'ın temel bileşenlerinden biridir. Azure Temsilcili kaynak yönetimi sayesinde, hizmet sağlayıcıları müşteri katılımı ve ekleme deneyimlerini basitleştirecek şekilde, yetki verilen kaynakları çeviklik ve duyarlıkla yönetdirebilir.
 
-## <a name="what-is-azure-delegated-resource-management"></a>What is Azure delegated resource management?
+## <a name="what-is-azure-delegated-resource-management"></a>Azure Temsilcili kaynak yönetimi nedir?
 
-Azure delegated resource management enables logical projection of resources from one tenant onto another tenant. This lets authorized users in one Azure Active Directory (Azure AD) tenant perform management operations across different Azure AD tenants belonging to their customers. Service providers can sign in to their own Azure AD tenant and have authorization to work in delegated customer subscriptions and resource groups. This lets them perform management operations on behalf of their customers, without having to sign in to each individual customer tenant.
+Azure Temsilcili kaynak yönetimi, kaynakların bir kiracıdan başka bir kiracıya mantıksal olarak projeksiyonunu sunar. Bu, bir Azure Active Directory (Azure AD) kiracısındaki yetkili kullanıcıların müşterilerine ait farklı Azure AD kiracılar arasında yönetim işlemleri gerçekleştirmesini sağlar. Hizmet sağlayıcıları kendi Azure AD kiracısında oturum açabilir ve Temsilcili müşteri abonelikleri ve kaynak gruplarında çalışmak için yetkilendirmeye sahip olabilir. Bu, her bir müşteri kiracısında oturum açmaya gerek kalmadan, kendi müşterileri adına yönetim işlemleri gerçekleştirmesini sağlar.
 
 > [!NOTE]
-> Azure delegated resource management can also be used [within an enterprise which has multiple Azure AD tenants of its own](enterprise.md) to simplify cross-tenant management.
+> Azure Temsilcili kaynak yönetimi, platformlar arası yönetimi basitleştirmek için [birden çok Azure AD kiracısına sahip bir kuruluşta](enterprise.md) de kullanılabilir.
 
-With Azure delegated resource management, authorized users can work directly in the context of a customer subscription without having an account in that customer's tenant or being a co-owner of the customer's tenant. They can also [view and manage all delegated customer subscriptions in the new **My customers** page](../how-to/view-manage-customers.md) in the Azure portal.
+Yetkili kullanıcılar, Azure Temsilcili kaynak yönetimi sayesinde, bu müşterinin kiracısında bir hesabı olmadan veya müşterinin kiracısının ortak sahibi olmasına gerek kalmadan doğrudan bir müşteri aboneliği bağlamında çalışabilir. Ayrıca, [Tüm Temsilcili müşteri aboneliklerini, Azure Portal yeni **müşterilerimiz** sayfasında görüntüleyebilir ve yönetebilir](../how-to/view-manage-customers.md) .
 
-The [cross-tenant management experience](cross-tenant-management-experience.md) helps you work more efficiently with Azure management services like Azure Policy, Azure Security Center, and more. All service provider activity is tracked in the activity log, which is stored in both the service provider's and the customer's tenants. This means that both the customer and service provider can easily identify the user associated with any changes.
+[Çapraz kiracı yönetim deneyimi](cross-tenant-management-experience.md) , Azure Ilkesi, Azure Güvenlik Merkezi ve daha fazlası gibi Azure Yönetim Hizmetleri ile daha verimli çalışmanıza yardımcı olur. Tüm hizmet sağlayıcı etkinlikleri, hem hizmet sağlayıcısının hem de müşterinin kiracılarında depolanan etkinlik günlüğünde izlenir. Bu, hem müşteri hem de hizmet sağlayıcının herhangi bir değişiklikle ilişkili kullanıcıyı kolayca tanımlayabileceği anlamına gelir.
 
-When you onboard a customer to Azure delegated resource management, they’ll have access to the new **Service providers** page in the Azure portal, where they can [confirm and manage their offers, service providers, and delegated resources](../how-to/view-manage-service-providers.md). If the customer ever wants to revoke access for a service provider, they can do so here at any time.
+Azure tarafından atanan kaynak yönetimine bir müşteri eklediğinizde, bu [kişilerin tekliflerini, hizmet sağlayıcılarını ve Temsilcili kaynakları doğrulayabilecekleri ve yönetebilecekleri](../how-to/view-manage-service-providers.md)Azure Portal yeni **hizmet sağlayıcıları** sayfasına erişimi vardır. Müşteri, bir hizmet sağlayıcısı için erişimi iptal etmek isterse, bunu dilediğiniz zaman yapabilirsiniz.
 
-You can [publish the new Managed Services offer type to Azure Marketplace](../how-to/publish-managed-services-offers.md) to easily onboard customers to Azure delegated resource management. Alternatively, you can [complete the onboarding process by deploying Azure Resource Manager templates](../how-to/onboard-customer.md).
+Azure 'un sunduğu kaynak yönetimine kolayca müşteri eklemek için [Yeni yönetilen hizmet teklifi türünü Azure Market 'e yayımlayabilirsiniz](../how-to/publish-managed-services-offers.md) . Alternatif olarak, [Azure Resource Manager şablonlarını dağıtarak ekleme işlemini tamamlayabilirsiniz](../how-to/onboard-customer.md).
 
-## <a name="how-azure-delegated-resource-management-works"></a>How Azure delegated resource management works
+## <a name="how-azure-delegated-resource-management-works"></a>Azure Temsilcili kaynak yönetimi nasıl kullanılır?
 
-At a high level, here's how Azure delegated resource management works:
+Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalıştığı aşağıda verilmiştir:
 
-1. As a service provider, you identify the access (roles) that your groups, service principals, or users will need to manage the customer's Azure resources. The access definition contains the service provider's tenant ID along with the required access for the offer, defined using **principalId** identities from your tenant mapped to [built-in **roleDefinition** values](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (Contributor, VM Contributor, Reader, etc.).
-2. You specify this access and onboard the customer to Azure delegated resource management in one of two ways:
-   - [Publish an Azure Marketplace managed services offer](../how-to/publish-managed-services-offers.md) (private or public) that the customer will accept
-   - [Deploy an Azure Resource Manager template to the customer's tenant](../how-to/onboard-customer.md) for one or more specific subscriptions or resource groups
-3. Once the customer has been onboarded, authorized users can sign in to your service provider tenant and perform management tasks at the given customer scope, based on the access that you defined.
+1. Hizmet sağlayıcı olarak, gruplarınızın, hizmet sorumlularının veya kullanıcılarınızın müşterinin Azure kaynaklarını yönetmesi gereken erişimi (rolleri) belirlersiniz. Erişim tanımı, hizmet sağlayıcısının kiracı KIMLIĞINI ve [yerleşik **roledefinition** değerlerine](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (katkıda bulunan, VM) eşlenmiş kiracınızdan **PrincipalId** kimlikleri kullanılarak tanımlanan teklif için gerekli erişimi içerir. Katkıda bulunan, okuyucu vb.).
+2. Bu erişimi belirtin ve müşteriyi, Azure tarafından atanan kaynak yönetimine iki şekilde katılın:
+   - Müşterinin kabul edeceği [bir Azure Market yönetilen hizmet teklifi](../how-to/publish-managed-services-offers.md) (özel veya ortak) yayımlayın
+   - Bir veya daha fazla belirli abonelik veya kaynak grubu için [Azure Resource Manager şablonunu müşterinin kiracısına dağıtma](../how-to/onboard-customer.md)
+3. Müşteri eklendi olduktan sonra yetkili kullanıcılar, hizmet sağlayıcı kiracınızda oturum açabilir ve tanımladığınız erişime göre belirtilen müşteri kapsamında yönetim görevleri gerçekleştirebilir.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Support for Azure delegated resource management
+## <a name="support-for-azure-delegated-resource-management"></a>Azure tarafından yetkilendirilen kaynak yönetimi desteği
 
-If you need help related to Azure delegated resource management, you can open a support request in the Azure portal. For **Issue type**, choose **Technical**. Select a subscription, then select **Delegated Resource Management** (under **Monitoring & Management**).
+Azure Temsilcili kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa Azure portal bir destek isteği açabilirsiniz. **Sorun türü**için **Teknik**' i seçin. Bir abonelik seçin ve ardından **temsilci kaynak yönetimi** ( **izleme & yönetimi**altında) seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
-- Learn about [managed services offers in Azure Marketplace](managed-services-offers.md).
+- [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
+- [Azure Market 'te yönetilen hizmet teklifleri](managed-services-offers.md)hakkında bilgi edinin.

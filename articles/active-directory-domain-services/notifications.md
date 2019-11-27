@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993145"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546267"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services sorunları için e-posta bildirimlerini yapılandırın
 
@@ -33,7 +33,7 @@ Aşağıdaki örnek e-posta bildirimi, Azure AD DS yönetilen etki alanında kri
 ![Örnek e-posta bildirimi](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> İletideki bağlantılara tıklamadan önce her zaman e-postanın doğrulanmış bir Microsoft göndericiden geldiğinden emin olun. E-posta bildirimleri her zaman `azure-noreply@microsoft.com` adresten gelir.
+> İletideki bağlantılara tıklamadan önce her zaman e-postanın doğrulanmış bir Microsoft göndericiden geldiğinden emin olun. E-posta bildirimleri her zaman `azure-noreply@microsoft.com` adresinden gelir.
 
 ### <a name="why-would-i-receive-email-notifications"></a>Neden e-posta bildirimleri alıyorum?
 
@@ -78,7 +78,7 @@ Azure portal bildirim ayarları sayfasına erişemezseniz Azure AD DS yönetilen
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>E-posta adresimi sağladığım halde e-posta bildirimleri almıyorum. Neden?
 
-Bildirim için e-postalarınızın istenmeyen posta veya istenmeyen klasörünüzü denetleyin ve göndericiye `azure-noreply@microsoft.com`izin vermeyi unutmayın.
+Bildirim için e-postalarınızın istenmeyen posta veya istenmeyen klasörünüzü denetleyin ve `azure-noreply@microsoft.com`gönderene izin vermeyi unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

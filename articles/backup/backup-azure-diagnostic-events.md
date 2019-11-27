@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281109"
 ---
-# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanma
+# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
 
 Azure Backup, analiz, uyarı ve raporlama amacıyla toplanabilecek ve kullanılabilecek tanılama olayları gönderir. 
 

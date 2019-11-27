@@ -1,6 +1,6 @@
 ---
-title: Understanding the IP address of your IoT hub | Microsoft Docs
-description: Understand how to query your IoT hub IP address and its properties. The IP address of your IoT hub can change during certain scenarios such as disaster recovery or regional failover.
+title: IoT Hub 'ınızın IP adresini anlama | Microsoft Docs
+description: IoT Hub IP adresinizi ve özelliklerini sorgulamayı öğrenin. IoT Hub 'ınızın IP adresi, olağanüstü durum kurtarma veya bölgesel yük devretme gibi belirli senaryolar sırasında değiştirilebilir.
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
@@ -14,17 +14,17 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383907"
 ---
-# <a name="iot-hub-ip-addresses"></a>IoT Hub IP addresses
+# <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresleri
 
-The IP address prefixes of IoT hub are published periodically under the *AzureIoTHub* [service tag](../virtual-network/service-tags-overview.md). To ensure proper operation, your IoT devices must have outbound connectivity to address prefixes listed under *AzureIoTHub* service tag. Your IoT application services need to additionally have outbound connectivity to address prefixes listed under *EventHub* service tag.
+IoT Hub 'ın IP adresi önekleri, *AzureIoTHub* [Service etiketi](../virtual-network/service-tags-overview.md)altında düzenli aralıklarla yayımlanır. Doğru işlemi sağlamak için, IoT cihazlarınızın *AzureIoTHub* hizmet etiketi altında listelenen ön ekleri karşılamak üzere giden bağlantılara sahip olması gerekir. IoT uygulama hizmetlerinizin Ayrıca, *EventHub* hizmet etiketi altında listelenen ön ekleri karşılamak için giden bağlantısı olması gerekir.
 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-* The IP address prefixes of IoT hub are subject to change. These changes are published periodically via service tags before taking effect. It is therefore important that you develop processes to regularly retrieve and use the latest service tags. This process can be automated via the [service tags discovery API](../virtual-network/service-tags-overview.md#service-tags-in-on-premises).
-* Use the *AzureIoTHub.[region name]* tag to identify IP prefixes used by IoT hub endpoints in a specific region. To account for datacenter disaster recovery, or [regional failover](iot-hub-ha-dr.md) ensure connectivity to IP prefixes of your IoT Hub's geo-pair region is also enabled.
+* IoT Hub 'ının IP adresi önekleri değişebilir. Bu değişiklikler, etkin olmadan önce hizmet etiketleri aracılığıyla düzenli olarak yayımlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için işlem geliştirmeniz önemlidir. Bu işlem, [hizmet etiketleri bulma API 'si](../virtual-network/service-tags-overview.md#service-tags-in-on-premises)aracılığıyla otomatikleştirilebilir.
+* AzureIoTHub kullanın *. [ bölge adı]* etiketi, belirli bir bölgedeki IoT Hub uç noktaları tarafından kullanılan IP öneklerini belirler. Veri merkezi olağanüstü durum kurtarmaya veya [bölgesel yük devretmeye](iot-hub-ha-dr.md) yönelik hesaba gitmek için IoT Hub coğrafi ÇIFT bölgesinin IP öneklerine yönelik bağlantıların de etkinleştirildiğinden emin olun.
 
 
-## <a name="support-for-ipv6"></a>Support for IPv6 
+## <a name="support-for-ipv6"></a>IPv6 desteği 
 
-IPv6 is currently not supported on IoT Hub.
+IPv6 Şu anda IoT Hub desteklenmiyor.

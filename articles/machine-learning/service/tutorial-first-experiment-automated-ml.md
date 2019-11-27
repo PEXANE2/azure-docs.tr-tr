@@ -89,7 +89,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         Sınırlayıcı|Düz metin veya diğer veri akışlarında&nbsp; ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun üstbilgileri| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| None
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok.
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
 
@@ -133,7 +133,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
         Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
-        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| None
+        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok.
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;süresi (saat): 1 <br> Ölçüm&nbsp;puanı&nbsp;eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>çapraz doğrulama&nbsp;&nbsp;k katlama <br> <br> Doğrulama sayısı: 2
         Eşzamanlılık| Yürütülen en fazla paralel yineleme sayısı ve yineleme başına kullanılan çekirdekler| En fazla&nbsp;eşzamanlı&nbsp;yineleme: 5<br> &nbsp;yineleme başına en fazla&nbsp;çekirdek&nbsp;: yok
@@ -173,7 +173,7 @@ Bu deneme bağlamında, **Votingensediskte** **AUC_weighted** ölçüsüne göre
 
 1. **Model dağıt** bölmesini aşağıdaki gibi doldurun:
 
-    Alan| Değer
+    Alan| Value
     ----|----
     Dağıtım adı| My-Oto ml-Deploy
     Dağıtım açıklaması| İlk otomatik makine öğrenimi deneme dağıtımı

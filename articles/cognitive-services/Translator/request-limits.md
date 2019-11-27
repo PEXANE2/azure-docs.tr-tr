@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671958"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533714"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Metin Çevirisi için istek sınırları
 
@@ -29,10 +29,10 @@ Aşağıdaki tabloda Translator Metin Çevirisi API'si her bir işlemi için diz
 
 | İşlem | Dizi öğesinin en büyük boyutu |   En fazla dizi öğesi sayısı |  En fazla Istek boyutu (karakter) |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 50,000 |
+| Çevirme | 5\.000 | 100   | 5\.000 |
+| Karakter Dönüştürme | 5\.000 | 10    | 5\.000 |
+| Algılama | 10,000 | 100 |   50.000 |
+| BreakSentence | 10,000    | 100 | 50.000 |
 | Sözlük Arama| 100 |  10  | 1000 |
 | Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2,000 |
 
@@ -58,7 +58,7 @@ Bu sınırlar, Microsoft 'un standart çeviri modelleriyle kısıtlıdır. Özel
 
 ## <a name="latency"></a>Gecikme süresi
 
-Translator Metin Çevirisi API'si, Standart modeller kullanılarak en fazla 15 saniye gecikme süresine sahiptir. Özel modelleri kullanan çeviri, en fazla 25 saniye gecikme süresine sahiptir. Bu kez bir sonuç veya bir zaman aşımı yanıtı aldınız. Genellikle yanıtlar 150 milisaniye ile 300 milisaniyeye döndürülür. Yanıt süreleri, istek ve dil çiftinin boyutuna bağlı olarak değişir. Bu zaman diliminde bir çeviri veya [hata yanıtı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) almazsanız, ağ bağlantınızı denetlemeniz ve yeniden denemeniz gerekir.
+Translator Metin Çevirisi API'si, özel modeller kullanılırken Standart modeller ve 120 saniye kullanarak en fazla 15 saniyelik gecikme süresine sahiptir. Genellikle, *100 karakter içindeki metin* yanıtları 150 milisaniyelik ile 300 milisaniyeye döndürülür. Özel çevirmen modelleri sürekli istek hızında benzer gecikme özelliklerine sahiptir ve istek hızlarınız aralıklı olduğunda daha yüksek bir gecikme süresine sahip olabilir. Yanıt süreleri, istek ve dil çiftinin boyutuna bağlı olarak değişir. Bu zaman diliminde bir çeviri veya [hata yanıtı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) almazsanız lütfen kodunuzu, ağ bağlantınızı kontrol edin ve yeniden deneyin. 
 
 ## <a name="sentence-length-limits"></a>Tümce uzunluğu sınırları
 

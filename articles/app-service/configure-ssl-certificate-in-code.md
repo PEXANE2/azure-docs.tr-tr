@@ -159,7 +159,7 @@ var cert = new X509Certificate2(bytes);
 
 Node. js, PHP, Python, Java veya Ruby içindeki bir dosyadan SSL sertifikası yükleme hakkında bilgi almak için ilgili dile veya Web platformuna yönelik belgelere bakın.
 
-## <a name="more-resources"></a>Diğer kaynaklar
+## <a name="more-resources"></a>Daha fazla kaynak
 
 * [SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS zorlama](configure-ssl-bindings.md#enforce-https)

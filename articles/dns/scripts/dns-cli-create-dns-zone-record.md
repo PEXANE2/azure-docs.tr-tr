@@ -1,5 +1,5 @@
 ---
-title: Create a DNS zone and record for a domain name - Azure CLI - Azure DNS
+title: Etki alanı adı için bir DNS bölgesi ve kaydı oluşturma-Azure CLı-Azure DNS
 description: Bu Azure CLI betik örneği, bir etki alanı için DNS bölgesi ve kaydı oluşturmayı gösterir
 services: dns
 author: asudbring

@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 1. Ekranın sol üst kısmında, **kaynak oluştur**' u seçin > **WAF**araması yapın > **Web uygulaması güvenlik duvarı (Önizleme)** seçin > **Oluştur**' u seçin.
 2. **BIR WAF Ilkesi oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
-    | Ayar                 | Değer                                              |
+    | Ayar                 | Value                                              |
     | ---                     | ---                                                |
     | Abonelik            |Ön kapı abonelik adınızı seçin.|
     | Kaynak grubu          |Ön kapı kaynak grubu adınızı seçin.|
@@ -46,7 +46,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 3. **BIR WAF Ilkesi oluştur** sayfasının **ilişkilendirme** sekmesinde, **ön uç Konağı Ekle**' yi seçin, aşağıdaki ayarları girin ve ardından **Ekle**' yi seçin:
 
-    | Ayar                 | Değer                                              |
+    | Ayar                 | Value                                              |
     | ---                     | ---                                                |
     | Ön kapı              | Ön kapı profili adınızı seçin.|
     | Ön uç Konağı           | Ön kapı ana bilgisayarın adını ve ardından **Ekle**' yi seçin.|

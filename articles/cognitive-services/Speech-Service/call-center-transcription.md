@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075857"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538168"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
 
@@ -70,7 +70,7 @@ Uçtan uca gecikme süresi, [konuşmadan metne](speech-to-text.md), [Luo](https:
 
 Yeni seslerimiz de insan seslerinden ayırt edilemez. Kendi seslerimizi kullanarak botumuzu benzersiz kişiliğine aktarabilirsiniz.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Ara
 
 Analize ait başka bir zımba, belirli bir olay veya deneyimin gerçekleştiği etkileşimleri belirlemektir. Bu genellikle iki yaklaşımdan biriyle yapılır; kullanıcının bir tümceciği ve sistem yanıt verdiğini veya bir analistdeki bir senaryoyu tanımlayan mantıksal deyimler kümesi oluşturabileceğiniz daha yapılandırılmış bir sorgu ya da her çağrının bu sorgu kümesine göre dizine alınması için bir ad hoc arama. İyi bir arama örneği, ubititous uyumluluk deyimidir "Bu çağrı kalite amacıyla kaydedilecek... ". Birçok şirket, aracıların gerçekten kaydedilmeden önce bu vazgeçme belgesi müşterilere bu bildirimi sağladığından emin olmak ister. Çoğu analiz sistemi, sorgu/arama algoritmalarıyla bulunan davranışları eğilim özelliğine sahiptir ve bu eğilimleri raporlamak, son olarak bir analiz sisteminin en önemli işlevlerinden biridir. Bilişsel [Hizmetler dizini](https://azure.microsoft.com/services/cognitive-services/directory/search/) sayesinde uçtan uca çözümünüz, dizin oluşturma ve arama özellikleri ile önemli ölçüde iyileştirilen olabilir.
 
@@ -95,7 +95,6 @@ Tipik bir çözüm bu hizmetleri kullanır:
 - Konuşma hizmeti konuşmayı metne eklemek için kullanılır. Toplu Iş dökümü API 'sini kullanmak için konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelikler (F0) çalışmayacak.
 - [Azure depolama](https://azure.microsoft.com/services/storage/) , telefon verilerini depolamak Için ve toplu iş dökümü API 'si tarafından döndürülen döküm dosyaları için kullanılır. Bu depolama hesabı, özellikle yeni dosyaların eklendiği zaman için bildirimleri kullanmalıdır. Bu bildirimler, döküm işleminin tetiklenmesi için kullanılır.
 - [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) , her kayıt için paylaşılan erişim IMZALARı (SAS) URI 'si oluşturmak için KULLANıLıR ve http post isteğini bir döküm başlatacak şekilde tetikler. Ayrıca, Azure Işlevleri, toplu Iş dökümü API 'sini kullanarak döküm alma ve silme istekleri oluşturmak için kullanılır.
-- [Web kancaları](webhooks.md) , döküm tamamlandığında bildirim almak için kullanılır.
 
 Dahili olarak, Microsoft Müşteri çağrılarını toplu Iş modunda desteklemek için yukarıdaki teknolojileri kullanıyoruz.
 Batch mimarisi ![](media/scenarios/call-center-batch-pipeline.png)
@@ -124,7 +123,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 
 | Konuşma hizmeti | Model | Açıklama |
 | -------------- | ----- | ----------- |
-| Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
+| Konuşmayı Metne Dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 |                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
 |                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş koşullarını işlemek için kullanışlıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir `.txt` dosyası olan bir telaffuz dosyasıdır. |
 | Metin okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |

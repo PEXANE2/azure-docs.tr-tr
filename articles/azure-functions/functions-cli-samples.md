@@ -6,12 +6,12 @@ ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
-ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 8de245dc6307890c872bfc4b8b66371775e1ad12
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230909"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532881"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI Örnekleri
 
@@ -22,7 +22,9 @@ Aşağıdaki tablo, Azure CLI kullanan Azure İşlevleri için bash betiklerine 
 | Uygulama oluştur | Açıklama |
 |---|---|
 | [Sunucusuz yürütme için bir işlev uygulaması oluşturma](scripts/functions-cli-create-serverless.md) | Tüketim planında bir işlev uygulaması oluşturur.  |
-| [App Service planında bir işlev uygulaması oluşturma](scripts/functions-cli-create-app-service-plan.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
+| [Sunucusuz Python işlev uygulaması oluşturma](scripts/functions-cli-create-serverless-python.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
+| [Ölçeklenebilir Premium planında bir işlev uygulaması oluşturma](scripts/functions-cli-create-premium-plan.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
+| [Adanmış (App Service) bir planda bir işlev uygulaması oluşturma](scripts/functions-cli-create-app-service-plan.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
 
 | Tümleştirin | Açıklama|
 |---|---|
@@ -33,15 +35,3 @@ Aşağıdaki tablo, Azure CLI kullanan Azure İşlevleri için bash betiklerine 
 |---|---|
 | [GitHub’dan dağıtım](scripts/functions-cli-create-function-app-github-continuous.md) | GitHub deposundan dağıtım yapan bir işlev uygulaması oluşturur.  |
 | [Azure DevOps'tan dağıtım](scripts/functions-cli-create-function-app-vsts-continuous.md) | Azure DevOps deposundan dağıtan bir işlev uygulaması oluşturun.  |
-
-| Uygulama yapılandırma | Açıklama |
-|---|---|
-| [Özel bir etki alanını işlev uygulaması ile eşleme](scripts/functions-cli-configure-custom-domain.md) | İşlevleriniz için özel etki alanı tanımlayın.  |
-| [SSL sertifikasını işlev uygulamasına bağlama](scripts/functions-cli-configure-ssl-certificate.md)  |  Özel etki alanındaki işlevler için SSL sertifikaları yükleyin. |
-
-<!---
-
-|**Scale app**||
-
-|**Connect app to resources**||
--->

@@ -1,6 +1,6 @@
 ---
-title: Define a new Azure IoT Edge device type in Azure IoT Central | Microsoft Docs
-description: This tutorial shows you, as a builder, how to create a new Azure IoT Edge device in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
+title: Azure IoT Central yeni bir Azure IoT Edge cihaz türü tanımlayın | Microsoft Docs
+description: Bu öğreticide, Azure IoT Central uygulamanızda yeni bir Azure IoT Edge cihaz oluşturma, Oluşturucu olarak gösterilir. Türü için telemetri, durum, özellik ve komutları tanımlarsınız.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,98 +16,98 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406473"
 ---
-# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new Azure IoT Edge device type in your Azure IoT Central application (preview features)
+# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir Azure IoT Edge cihaz türü tanımlama (Önizleme özellikleri)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you, as a builder, how to use a device template to define a new type of Azure IoT Edge device in your Azure IoT Central application. 
+Bu öğreticide, bir Oluşturucu olarak, Azure IoT Central uygulamanızda yeni bir Azure IoT Edge cihaz türü tanımlamak için bir cihaz şablonunun nasıl kullanılacağı gösterilmektedir. 
 
-For an overview, see [What is Azure IoT Central (preview features)?](overview-iot-central.md). 
+Genel bakış için bkz. [Azure IoT Central (Önizleme özellikleri) nedir?](overview-iot-central.md). 
 
-IoT Edge is made up of three components:
-* **IoT Edge modules** are containers that run Azure services, partner services, or your own code. Modules are deployed to IoT Edge devices, and run locally on those devices.
-* The **IoT Edge runtime** runs on each IoT Edge device, and manages the modules deployed to each device.
-* A **cloud-based interface** enables you to remotely monitor and manage IoT Edge devices. IoT Central is the cloud interface.
+IoT Edge üç bileşenden oluşur:
+* **IoT Edge modüller** , Azure Hizmetleri, iş ortağı hizmetleri veya kendi kodunuzla çalışan kapsayıcılardır. Modüller IoT Edge cihazlara dağıtılır ve bu cihazlarda yerel olarak çalıştırılır.
+* **IoT Edge çalışma zamanı** her bir IoT Edge cihazında çalışır ve her cihaza dağıtılan modülleri yönetir.
+* **Bulut tabanlı bir arabirim** , IoT Edge cihazları uzaktan izlemenize ve yönetmenize olanak sağlar. IoT Central bulut arabirimidir.
 
-An **Azure IoT Edge** device can be a gateway device, with downstream devices connecting into the IoT Edge device. This tutorial shares more information about downstream device connectivity patterns.
+**Azure IoT Edge** cihaz, IoT Edge cihazına bağlanan aşağı akış cihazları ile bir ağ geçidi cihazı olabilir. Bu öğretici, aşağı akış cihaz bağlantısı desenleri hakkında daha fazla bilgi paylaşır.
 
-A **device template** defines the capabilities of your device and IoT Edge modules. Capabilities include telemetry the module sends, module properties, and the commands a module responds to.
+**Cihaz şablonu** , cihazınızın ve IoT Edge modüllerinizin yeteneklerini tanımlar. Özellikler modülün gönderdiği Telemetriyi, modül özelliklerini ve bir modülün yanıt verdiği komutları içerir.
 
-In this tutorial, you create an Environment Sensor device template. An environmental sensor device:
+Bu öğreticide, bir ortam algılayıcısı cihaz şablonu oluşturacaksınız. Bir ortam algılayıcı cihazı:
 
-* Sends telemetry, such as temperature.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
+* Sıcaklık gibi telemetri gönderir.
+* Bulutta güncelleştirildiği zaman, telemetri gönderme aralığı gibi yazılabilir özelliklere yanıt verir.
+* Sıcaklık sıfırlama gibi komutlara yanıt verir.
 
-Also in this tutorial, you create an Environment Gateway device template. An environmental gateway device:
+Ayrıca, bu öğreticide bir ortam ağ geçidi cihaz şablonu oluşturacaksınız. Bir çevresel ağ geçidi cihazı:
 
-* Sends telemetry, such as temperature.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
-* Allows relationships to other device capability models.
+* Sıcaklık gibi telemetri gönderir.
+* Bulutta güncelleştirildiği zaman, telemetri gönderme aralığı gibi yazılabilir özelliklere yanıt verir.
+* Sıcaklık sıfırlama gibi komutlara yanıt verir.
+* Diğer cihaz yetenek modelleriyle ilişkilerin yapılmasına izin verir.
 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Create a new Azure IoT Edge device device template.
-> * Upload a deployment manifest.
-> * Create capabilities including telemetry, properties, and commands for each module.
-> * Define a visualization for the module telemetry.
-> * Add relationships to downstream device templates.
-> * Publish your device template.
+> * Yeni bir cihaz cihaz şablonu oluşturun Azure IoT Edge.
+> * Dağıtım bildirimini karşıya yükleyin.
+> * Her modül için telemetri, özellik ve komutları içeren yetenekler oluşturun.
+> * Modül telemetrisi için görselleştirme tanımlayın.
+> * Aşağı akış cihaz şablonlarına ilişkiler ekleyin.
+> * Cihaz şablonunuzu yayımlayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
+Bu öğreticiyi tamamlayabilmeniz için [bir Azure IoT Central uygulaması oluşturmanız](quick-deploy-iot-central.md)gerekir.
 
 
-## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Downstream device relationships with a gateway and modules
+## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Ağ geçidi ve modüllerle aşağı akış cihaz ilişkileri
 
-Downstream devices can connect to an IoT Edge gateway device through the `$edgeHub` module. This IoT Edge device becomes a transparent gateway in this scenario.
+Aşağı akış cihazları `$edgeHub` modülü aracılığıyla bir IoT Edge Gateway cihazına bağlanabilir. Bu IoT Edge cihaz, bu senaryoda saydam bir ağ geçidi haline gelir.
 
-![Diagram of transparent gateway](./media/tutorial-define-edge-device-type/gateway-transparent.png)
+![Saydam ağ geçidi diyagramı](./media/tutorial-define-edge-device-type/gateway-transparent.png)
 
-Downstream devices can also connect to an IoT Edge gateway device through a custom module. In the following scenario, downstream devices connect through a Modbus custom module.
+Aşağı akış cihazları, özel bir modül aracılığıyla bir IoT Edge Gateway cihazına da bağlanabilir. Aşağıdaki senaryoda, aşağı akış cihazları bir Modbus özel modülü aracılığıyla bağlanır.
 
-![Diagram of custom module connection](./media/tutorial-define-edge-device-type/gateway-module.png)
+![Özel modül bağlantısının diyagramı](./media/tutorial-define-edge-device-type/gateway-module.png)
 
-The following diagram shows connection to an IoT Edge gateway device through both types of modules (custom and `$edgeHub`).  
+Aşağıdaki diyagramda her iki modül türü (özel ve `$edgeHub`) aracılığıyla bir IoT Edge ağ geçidi cihazına bağlantı gösterilmektedir.  
 
-![Diagram of connecting via both connection modules](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
+![Her iki bağlantı modülü ile bağlanma diyagramı](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
 
-Finally, downstream devices can connect to an IoT Edge gateway device through multiple custom modules. The following diagram shows downstream devices connecting through a Modbus custom module, a BLE custom module, and the `$edgeHub` module. 
+Son olarak, aşağı akış cihazları birden çok özel modülle bir IoT Edge ağ geçidi cihazına bağlanabilir. Aşağıdaki diyagramda, bir Modbus özel modülü, uyumlu olmayan özel bir modül ve `$edgeHub` modülü aracılığıyla bağlanan aşağı akış cihazları gösterilmektedir. 
 
-![Diagram of connecting via multiple custom modules](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
+![Birden çok özel modül aracılığıyla bağlantı diyagramı](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
 
 
 ## <a name="create-a-template"></a>Şablon oluşturma
 
-As a builder, you can create and edit IoT Edge device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
+Bir Oluşturucu olarak, uygulamanızda IoT Edge cihaz şablonları oluşturabilir ve düzenleyebilirsiniz. Bir cihaz şablonu yayımladıktan sonra, cihaz şablonunu uygulayan gerçek cihazlara bağlanabilirsiniz.
 
-### <a name="select-device-template-type"></a>Select device template type 
+### <a name="select-device-template-type"></a>Cihaz şablonu türünü seçin 
 
-To add a new device template to your application, select **Device Templates** on the left pane.
+Uygulamanıza yeni bir cihaz şablonu eklemek için sol bölmedeki **cihaz şablonları** ' nı seçin.
 
-![Screenshot of Preview Application, with Device Templates highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
+![Cihaz şablonları vurgulanmış şekilde, önizleme uygulamasının ekran görüntüsü](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
 
-Select **+ New** to start creating a new device template.
+Yeni bir cihaz şablonu oluşturmaya başlamak için **+ Yeni** ' yi seçin.
 
-![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
+![Yeni vurgulanmış şekilde cihaz şablonları sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
 
-On the **Select template type** page, select **Azure IoT Edge**, and select **Next: Customize**.
+**Şablon türü seç** sayfasında, **Azure IoT Edge**' yi seçin ve **İleri**' yi seçin.
 
-![Screenshot of Select template type page](./media/tutorial-define-edge-device-type/selectiotedge.png)
+![Şablon türü seç sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/selectiotedge.png)
 
-### <a name="customize-device-template"></a>Customize device template
+### <a name="customize-device-template"></a>Cihaz şablonunu özelleştirme
 
-In IoT Edge, you can deploy and manage business logic in the form of modules. IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics), or your own solution-specific code. To understand how modules are developed, deployed, and maintained, see [IoT Edge modules](../../iot-edge/iot-edge-modules.md).
+IoT Edge, iş mantığını modül biçiminde dağıtabilir ve yönetebilirsiniz. IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure Hizmetleri (Azure Stream Analytics gibi) veya kendi çözüme özgü kodunuzla bulunabilir. Modüllerin nasıl geliştirildiğini, dağıtıldığını ve yapıldığını anlamak için bkz. [IoT Edge modüller](../../iot-edge/iot-edge-modules.md).
 
-At a high level, a deployment manifest is a list of module twins that are configured with their desired properties. A deployment manifest tells an IoT Edge device (or a group of devices) which modules to install, and how to configure them. Deployment manifests include the desired properties for each module twin. IoT Edge devices report back the reported properties for each module.
+Yüksek düzeyde, bir dağıtım bildirimi, istenen özellikleri ile yapılandırılan modül ikizlerini bir listesidir. Dağıtım bildirimi, hangi modüllerin yükleneceğini ve bunların nasıl yapılandırılacağını bir IoT Edge cihazına (veya bir cihaz grubuna) bildirir. Dağıtım bildirimleri, her modül için istenen özellikleri içerir ikizi. IoT Edge cihazlar her bir modülün bildirilen özelliklerini geri bildirir.
 
-Use Visual Studio Code to create a deployment manifest. To learn more, see [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+Dağıtım bildirimi oluşturmak için Visual Studio Code kullanın. Daha fazla bilgi için bkz. [Visual Studio Code Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
-Here's a basic deployment manifest, with one module as an example to be used for this tutorial. Copy the following JSON, and save it as a .json file. 
+Bu öğretici için kullanılacak örnek olarak bir modülle birlikte temel bir dağıtım bildirimi aşağıda verilmiştir. Aşağıdaki JSON 'u kopyalayın ve bir. JSON dosyası olarak kaydedin. 
 
    ```JSON
    {
@@ -176,53 +176,53 @@ Here's a basic deployment manifest, with one module as an example to be used for
    }
    ```
 
-#### <a name="upload-an-iot-edge-deployment-manifest"></a>Upload an IoT Edge deployment manifest
+#### <a name="upload-an-iot-edge-deployment-manifest"></a>IoT Edge dağıtım bildirimini karşıya yükle
 
-On the **Customize device** page, under **Upload an Azure IoT Edge deployment manifest**, select **Browse**. 
+**Cihazı Özelleştir** sayfasında, **Azure IoT Edge dağıtım bildirimini yükle**' nin altında, **Araştır**' ı seçin. 
 
-![Screenshot of Customize device page, with Browse highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
+![Tarama vurgulanacak şekilde cihaz özelleştirme sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
 
-If you plan to create an IoT Edge Gateway device template, make sure to select **Gateway device with downstream devices**.
+Bir IoT Edge ağ geçidi cihaz şablonu oluşturmayı planlıyorsanız, **ağ geçidi cihazını aşağı akış cihazlarıyla**seçtiğinizden emin olun.
 
-![Screenshot of Customize device page, with Gateway device with downstream devices highlighted](./media/tutorial-define-edge-device-type/gateway-upload.png)
+![Aşağı akış cihazları vurgulanmış şekilde ağ geçidi aygıtıyla cihaz özelleştirme sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/gateway-upload.png)
 
-In the file selection dialog box, select the deployment manifest file, and select **Open**.
+Dosya seçimi iletişim kutusunda, dağıtım bildirim dosyasını seçin ve **Aç**' ı seçin.
 
-IoT Edge validates the deployment manifest file against a schema. If the validation is successful, select **Review**.
+IoT Edge, dağıtım bildirim dosyasını bir şemaya karşı doğrular. Doğrulama başarılı olursa, **gözden geçir**' i seçin.
 
-![Screenshot of Customize device page, with Deployment Manifest and Review highlighted](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
+![Dağıtım bildirimi ve gözden geçirme vurgulanmış şekilde cihaz özelleştirme sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
 
-The following flowchart shows a deployment manifest life cycle in IoT Central.
+Aşağıdaki akış çizelgesinde IoT Central bir dağıtım bildirimi yaşam döngüsü gösterilmektedir.
 
-![Flowchart of deployment manifest life cycle](./media/tutorial-define-edge-device-type/dmflow.png)
+![Dağıtım bildirimi yaşam döngüsü akış çizelgesi](./media/tutorial-define-edge-device-type/dmflow.png)
 
-Next, you'll see a review page, with details of the deployment manifest. This page shows a list of modules from the deployment manifest. In this tutorial, note that the `SimulatedTemperatureSensor` module is listed. **Oluştur**'u seçin.
+Ardından, dağıtım bildiriminin ayrıntılarını içeren bir inceleme sayfası görürsünüz. Bu sayfada dağıtım bildiriminden modüllerin bir listesi gösterilir. Bu öğreticide `SimulatedTemperatureSensor` modülünün listelendiğini unutmayın. **Oluştur**'u seçin.
 
-![Screenshot of Review page, with Module and Create highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
+![Modülle birlikte Inceleme sayfasının ekran görüntüsü ve vurgulanmış oluştur](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
-If you had selected a gateway device, you see the following review page.
+Bir ağ geçidi cihazı seçtiyseniz, aşağıdaki gözden geçirme sayfasını görürsünüz.
 
-![Screenshot of Review page, with Azure IoT Edge Gateway highlighted](./media/tutorial-define-edge-device-type/gateway-review.png)
+![Azure IoT Edge ağ geçidi vurgulanmış şekilde Inceleme sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/gateway-review.png)
 
 
-You create a device template with module capability models. In this tutorial, you create a device template with the `SimulatedTemperatureSensor` module capability model. 
+Modül yetenek modelleriyle bir cihaz şablonu oluşturursunuz. Bu öğreticide, `SimulatedTemperatureSensor` modülü yetenek modeliyle bir cihaz şablonu oluşturacaksınız. 
 
-Change title of the device template to **Environment Sensor Device Template**.
+Cihaz şablonunun başlığını **ortam algılayıcı cihaz şablonuna**değiştirin.
 
-![Screenshot of device template, with updated title highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
+![Güncelleştirilmiş başlık vurgulanmış şekilde cihaz şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
 
-In IoT Edge device, model IoT Plug and Play as follows:
-* Every IoT Edge device template has a device capability model.
-* For every custom module listed in the deployment manifest, a module capability model is generated.
-* A relationship is established between each module capability model and a device capability model.
-* A module capability model implements module interfaces.
-* Each module interface contains telemetry, properties, and commands.
+IoT Edge cihaz ' de IoT Tak ve Kullan aşağıdaki şekilde modelleyin:
+* Her IoT Edge cihaz şablonunda bir cihaz yetenek modeli vardır.
+* Dağıtım bildiriminde listelenen her özel modül için bir modül yetenek modeli oluşturulur.
+* Her modül yetenek modeli ve cihaz yetenek modeli arasında bir ilişki oluşturulur.
+* Modül yetenek modeli modül arabirimlerini uygular.
+* Her modül arabirimi telemetri, Özellikler ve komutlar içerir.
 
-![Diagram of IoT Edge modeling](./media/tutorial-define-edge-device-type/edgemodelling.png)
+![IoT Edge modelleme diyagramı](./media/tutorial-define-edge-device-type/edgemodelling.png)
 
-#### <a name="add-capabilities-to-a-module-capability-model"></a>Add capabilities to a module capability model
+#### <a name="add-capabilities-to-a-module-capability-model"></a>Modül yetenek modeline özellikler ekleme
 
-Here is a sample output from the `SimulatedTemperatureSensor` module:
+`SimulatedTemperatureSensor` modülünden bir örnek çıktı aşağıda verilmiştir:
 ```json
 {
 
@@ -239,165 +239,165 @@ Here is a sample output from the `SimulatedTemperatureSensor` module:
 }
 ```
 
-You can add capabilities to the `SimulatedTemperatureSensor` module, which will reflect the preceding output. 
+`SimulatedTemperatureSensor` modüle, önceki çıktıyı yansıtan yetenekler ekleyebilirsiniz. 
 
-1. To manage an interface of the `SimulatedTemperatureSensor` module capability model, select **Manage** > **Add Capability**. 
+1. `SimulatedTemperatureSensor` Module yetenek modelinin bir arabirimini yönetmek için **yönet** > **Add capability**' yi seçin. 
 
-    ![Screenshot of Environment Sensor Template, with Add Capability highlighted](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
+    ![Ortam algılayıcısı şablonunun ekleme özelliği vurgulanmış ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
   
-1. Add a machine as an object type.
+1. Bir makineyi nesne türü olarak ekleyin.
   
-    ![Screenshot of Environment Sensor Template Capabilities page, with Schema highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
+    ![Şema vurgulanmış şekilde ortam algılayıcısı Şablon Özellikleri sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
 
-1. Select **Define**. In the dialog box that appears, change the object name to **machine**. Create temperature and pressure properties, and select **Apply**.
+1. **Tanımla**' yı seçin. Görüntülenen iletişim kutusunda, nesne adını **makine**olarak değiştirin. Sıcaklık ve basınç özellikleri oluşturun ve **Uygula**' yı seçin.
   
-    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
+    ![Çeşitli seçenekler vurgulanmış şekilde öznitelikler iletişim kutusunun ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
   
-1. Add **ambient** as an object type.
+1. Bir nesne türü olarak **ortam** ekleyin.
 
-1. Select **Define**. In the dialog box that appears, change the object name to **ambient**. Create temperature and humidity properties, and select **Apply**.
+1. **Tanımla**' yı seçin. Görüntülenen iletişim kutusunda, nesne adını **çevresel**olarak değiştirin. Sıcaklık ve nem özellikleri oluşturun ve **Uygula**' yı seçin.
   
-    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
+    ![Çeşitli seçenekler vurgulanmış şekilde öznitelikler iletişim kutusunun ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
 
   
-1. Add `timeCreated` as a `DateTime` type, and select **Save**.
+1. `timeCreated` `DateTime` türü olarak ekleyin ve **Kaydet**' i seçin.
   
-    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
+    ![Kayıt vurgulandığında, ortam algılayıcısı şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
 
 
-### <a name="add-relationships"></a>Add relationships
+### <a name="add-relationships"></a>İlişki Ekle
 
-If you selected an IoT Edge device to be a gateway device, you can add downstream relationships to device capability models for devices you want to connect to the gateway device.
+Bir IoT Edge cihazını ağ geçidi cihazı olacak şekilde seçtiyseniz, ağ geçidi cihazına bağlamak istediğiniz cihazlar için cihaz yetenek modellerine aşağı akış ilişkileri ekleyebilirsiniz.
   
-  ![Screenshot of Environment Gateway Template, with Add Relationship highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
+  ![Ilişki Ekle vurgulanmış olan ortam ağ geçidi şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
 
-You can add a relationship at a device or at a module.
+Bir cihaza veya modüle bir ilişki ekleyebilirsiniz.
   
-  ![Screenshot of Environment Gateway Template, with device and module level relationships highlighted](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
+  ![Cihaz ve modül düzeyi ilişkileri vurgulanmış şekilde ortam ağ geçidi şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
 
 
-You can select a downstream device capability model, or you can select the asterisk symbol. 
+Bir aşağı akış cihazı yetenek modeli seçebilir veya yıldız simgesini seçebilirsiniz. 
   
-  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
+  ![Hedef vurgulanan ortam ağ geçidi şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
 
-  For this tutorial, select the asterisk. This option allows any downstream relationship. Daha sonra **Kaydet**’e tıklayın.
+  Bu öğretici için yıldız işaretini seçin. Bu seçenek, herhangi bir aşağı akış ilişkisine izin verir. Daha sonra **Kaydet**’e tıklayın.
 
-  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
+  ![Hedef vurgulanan ortam ağ geçidi şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
 
 
-### <a name="add-cloud-properties"></a>Add cloud properties
+### <a name="add-cloud-properties"></a>Bulut özellikleri ekle
 
-A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
+Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve bir cihazdan hiçbir şekilde gönderilmez veya buradan alınmaz.
 
-1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+1. **Bulut özelliklerini** seçin >  **+ bulut özelliği ekleyin**. Cihaz şablonunuza bir bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın.
 
-    | Görünen ad      | Semantic type | Şema |
+    | Görünen ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
-    | Customer name     | Hiçbiri          | Dize |
+    | Son Hizmet Tarihi | Yok.          | Date   |
+    | Müşteri adı     | Yok.          | Dize |
 
 2. **Kaydet**’i seçin.
 
   
-    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
+    ![Kayıt vurgulandığında, ortam algılayıcısı şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
 
-### <a name="add-customizations"></a>Add customizations
+### <a name="add-customizations"></a>Özelleştirmeler ekleme
 
-Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Örneğin, şunları yapabilirsiniz:
+Bir arabirimi değiştirmek ya da cihaz yetenek modelinizi sürümünüzü gerektirmeyen bir özelliğe IoT Central özgü özellikler eklemek için özelleştirmeleri kullanın. Yetenek modeli taslak veya Yayımlanma durumundaysa alanları özelleştirebilirsiniz. Yalnızca arabirim uyumluluğunu kesen alanları özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Bir özelliğin görünen adını ve birimlerini özelleştirin.
+- Değer bir grafikte göründüğünde kullanılacak varsayılan rengi ekleyin.
+- Bir özellik için başlangıçtaki, minimum ve maksimum değerleri belirtin.
 
-You can't customize the capability name or capability type.
+Yetenek adını veya yetenek türünü özelleştiremezsiniz.
 
-When you're finished customizing, select **Save**.
+Özelleştirmeyi bitirdiğinizde **Kaydet**' i seçin.
   
-![Screenshot of Environment Sensor Template Customize page](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
+![Ortam algılayıcı şablonu özelleştirme sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
 
 
-### <a name="create-views"></a>Create views
+### <a name="create-views"></a>Görünüm oluşturma
 
-As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
+Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihazı hakkındaki ilgili bilgileri görüntüleyecek şekilde özelleştirebilirsiniz. Özelleştirmeleriniz, uygulamaya bağlı çevresel algılayıcı cihazlarını yönetmek için işlecini etkinleştirir. Cihazlarla etkileşim kurmak için kullanılacak bir operatör için iki tür görünüm oluşturabilirsiniz:
 
-* Forms to view and edit device and cloud properties.
-* Dashboards to visualize devices.
+* Cihaz ve bulut özelliklerini görüntüleme ve düzenleme için formlar.
+* Cihazları görselleştirmek için panolar.
 
-### <a name="configure-a-view-to-visualize-devices"></a>Configure a view to visualize devices
+### <a name="configure-a-view-to-visualize-devices"></a>Cihazları görselleştirmek için bir görünüm yapılandırma
 
-A device dashboard lets an operator visualize a device by using charts and metrics. As a builder, you can define what information appears on a device dashboard. You can define multiple dashboards for devices. To create a dashboard to visualize the environmental sensor telemetry, select **Views** > **Visualizing the Device**:
+Bir cihaz panosu, bir işlecin grafikleri ve ölçümleri kullanarak bir cihazı görselleştirmesine olanak sağlar. Bir Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin göründüğünü tanımlayabilirsiniz. Cihazlar için birden çok Pano tanımlayabilirsiniz. Ortam algılayıcısı telemetrisini görselleştirmek üzere bir pano oluşturmak için, **cihazı görselleştirme** > **Görünümler** ' i seçin:
 
   
-![Screenshot of Environment Sensor Template Views page, with Visualizing the Device highlighted](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
+![Cihaz vurgulanmasını içeren ortam algılayıcısı şablon görünümleri sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
 
 
-Ambient Telemetry and Machine Telemetry are complex objects. To create charts:
+Çevresel telemetri ve makine telemetrisi karmaşık nesnelerdir. Grafik oluşturmak için:
 
-1. Drag **Ambient Telemetry**, and select **Line chart**. 
+1. **Çevresel telemetri**' i sürükleyin ve **çizgi grafik**' i seçin. 
   
-   ![Screenshot of Environment Sensor Template, with Ambient Telemetry and Line chart highlighted](./media/tutorial-define-edge-device-type/sensorambientchart.png)
+   ![Çevresel telemetri ve çizgi grafik vurgulanmış şekilde ortam algılayıcısı şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/sensorambientchart.png)
 
-1. Select the configure icon. Select **Temperature** and **Humidity** to visualize the data, and select **Update configuration**. 
+1. Yapılandır simgesini seçin. Verileri görselleştirmek için **sıcaklık** ve **nem** ' ı seçin ve **yapılandırmayı Güncelleştir**' i seçin. 
   
-   ![Screenshot of Environment Sensor Template, with various options highlighted](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
+   ![Çeşitli seçenekler vurgulanmış şekilde ortam algılayıcısı şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
 
 1. **Kaydet**’i seçin.
 
-You can add more tiles that show other properties or telemetry values. You can also add static text, links, and images. To move or resize a tile on the dashboard, move the mouse pointer over the tile, and drag the tile to a new location or resize it.
+Diğer özellikleri veya telemetri değerlerini gösteren daha fazla kutucuk ekleyebilirsiniz. Statik metin, bağlantılar ve görüntüler de ekleyebilirsiniz. Panodaki bir kutucuğu taşımak veya yeniden boyutlandırmak için fare işaretçisini döşemenin üzerine taşıyın ve kutucuğu yeni bir konuma sürükleyin veya yeniden boyutlandırın.
   
-![Screenshot of Environment Sensor Template Dashboard view](./media/tutorial-define-edge-device-type/viewsdashboard.png)
+![Ortam algılayıcısı şablon panosu görünümünün ekran görüntüsü](./media/tutorial-define-edge-device-type/viewsdashboard.png)
 
-### <a name="add-a-device-form"></a>Add a device form
+### <a name="add-a-device-form"></a>Bir cihaz formu Ekle
 
-A device form lets an operator edit writeable device properties and cloud properties. As a builder, you can define multiple forms and choose which device and cloud properties to show on each form. You can also display read-only device properties on a form.
+Bir cihaz formu, bir işlecin yazılabilir cihaz özelliklerini ve bulut özelliklerini düzenlemesini sağlar. Bir Oluşturucu olarak, birden çok form tanımlayabilir ve her formda hangi cihaz ve bulut özelliklerinin gösterileceğini seçebilirsiniz. Ayrıca, salt okunurdur cihaz özelliklerini bir formda görüntüleyebilirsiniz.
 
-To create a form to view and edit environmental sensor properties:
+Ortam algılayıcısı özelliklerini görüntülemek ve düzenlemek için bir form oluşturmak için:
 
-1. In the **Environmental Sensor Template**, go to **Views**. Select the **Editing Device and Cloud data** tile to add a new view.
+1. **Çevresel algılayıcı şablonunda**, **Görünümler**' e gidin. Yeni bir görünüm eklemek için **cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
   
-   ![Screenshot of Environmental Sensor Template Views page, with Editing Device and Cloud data highlighted](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
+   ![Cihaz ve bulut verilerinin düzenlenme ile ortam algılayıcısı şablon görünümleri sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
 
-1. Enter the form name **Environmental Sensor properties**.
+1. **Çevresel algılayıcı özellikleri**form adını girin.
 
-1. Drag the **Customer name** and **Last service date** cloud properties onto the existing section on the form.
+1. **Müşteri adı** ve **son hizmet tarihi** bulutu özelliklerini formdaki mevcut bölüme sürükleyin.
   
-   ![Screenshot of Environmental Sensor Template Views page, with various options highlighted](./media/tutorial-define-edge-device-type/views-properties.png)
+   ![Çeşitli seçenekler vurgulanmış şekilde çevresel algılayıcı şablonu görünümleri sayfasının ekran görüntüsü](./media/tutorial-define-edge-device-type/views-properties.png)
 
 1. **Kaydet**’i seçin.
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Bir cihaz şablonu yayımlama
 
-Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+Sanal bir ortam algılayıcısı oluşturmadan veya gerçek bir ortam sensöre bağlanmadan önce, cihaz şablonunuzu yayımlamanız gerekir.
 
-To publish a device template:
+Bir cihaz şablonunu yayımlamak için:
 
-1. Go to your device template from the **Device Templates** page.
+1. Cihaz **şablonları** sayfasından cihaz şablonunuza gidin.
 
 2. **Yayımla**’yı seçin.
   
-    ![Screenshot of Environmental Sensor Template, with Publish highlighted](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
+    ![Yayımlama vurgulanmış şekilde, ortam algılayıcısı şablonunun ekran görüntüsü](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
 
-1. In the **Publish a Device Template** dialog box, choose **Publish**.
+1. **Cihaz şablonu Yayımla** Iletişim kutusunda **Yayımla**' yı seçin.
   
-    ![Screenshot of Publish a Device Template dialog box, with Publish highlighted](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
+    ![Bir cihaz şablonu Yayımla iletişim kutusunun, yayınla vurgulanmış ekran görüntüsü](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
 
-After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After you make any changes, select **Publish** to push those changes out to your operator.
+Bir cihaz şablonu yayımlandıktan sonra **cihazlar** sayfasında ve işlecine görünür. Yayımlanmış bir cihaz şablonunda, yeni bir sürüm oluşturmadan bir cihaz yetenek modeli düzenleyemezsiniz. Ancak, yayımlanmış bir cihaz şablonunda bulut özellikleri, özelleştirmeler ve görünümlerde güncelleştirmeler yapabilirsiniz. Bu güncelleştirmeler yeni bir sürümün oluşturulmasına neden olmaz. Herhangi bir değişiklik yaptıktan sonra, bu değişiklikleri işletmenizin dışına göndermek için **Yayımla** ' yı seçin.
   
-![Screenshot of Device templates list of published templates](./media/tutorial-define-edge-device-type/publishedtemplate.png)
+![Yayınlanan şablonlar cihaz şablonları listesinin ekran görüntüsü](./media/tutorial-define-edge-device-type/publishedtemplate.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
-* Create a new edge as a leaf device template.
-* Generate modules from an uploaded deployment manifest.
-* Add complex type telemetry and properties.
-* Create cloud properties.
-* Create customizations.
-* Define a visualization for the device telemetry.
-* Publish your edge device template.
+* Yaprak cihaz şablonu olarak yeni bir kenar oluşturun.
+* Karşıya yüklenen bir dağıtım bildiriminden modüller üretin.
+* Karmaşık tür telemetrisi ve özellikleri ekleyin.
+* Bulut özellikleri oluşturun.
+* Özelleştirmeler oluşturun.
+* Cihaz telemetrisi için görselleştirme tanımlayın.
+* Edge cihaz şablonunuzu yayımlayın.
 
-Now that you've created a device template in your Azure IoT Central application, you can do this next:
+Artık Azure IoT Central uygulamanızda bir cihaz şablonu oluşturduğunuza göre, bunu bir sonraki adımda yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Connect device](./tutorial-connect-pnp-device.md)
+> [Cihaza Bağlan](./tutorial-connect-pnp-device.md)

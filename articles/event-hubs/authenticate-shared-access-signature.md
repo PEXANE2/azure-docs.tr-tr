@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cb5c53f3f473c10a3c9a12bb1aac20b109c06422
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992542"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545583"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 
@@ -48,10 +48,10 @@ SendRuleNS yetkilendirme kuralı kullanılırken, istemci uygulamaları hem EH1 
 ## <a name="generate-a-shared-access-signature-token"></a>Paylaşılan erişim Imza belirteci oluştur 
 Bir yetkilendirme kuralı adı adına erişimi olan tüm istemciler ve imzalama anahtarlarından biri bir SAS belirteci oluşturabilir. Belirteç, aşağıdaki biçimde bir dize oluşturarak oluşturulur:
 
-- `se`– Token süre sonu anında. Belirtecin süresi 1 1970 Ocak 00:00:00 ' de (UNIX dönemi), bu yana beklenen saniye sayısı
-- `skn`– SAS anahtar adı olan yetkilendirme kuralının adı.
-- `sr`– Erişilmekte olan kaynağın URI 'SI.
-- `sig`İmza.
+- `se` – Token süre sonu anında. Belirtecin süresi 1 1970 Ocak 00:00:00 ' de (UNIX dönemi), bu yana beklenen saniye sayısı
+- `skn` – SAS anahtar adı olan yetkilendirme kuralının adı.
+- `sr` – erişilmekte olan kaynağın URI 'SI.
+- `sig` – Imza.
 
 İmza-dize, kaynak URI üzerinden (önceki bölümde açıklandığı gibi kapsam) ve CRLF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize gösterimine göre hesaplanan SHA-256 karmasıdır.
 
@@ -63,13 +63,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Belirteç, karma değeri aynı parametrelerle yeniden hesaplanabilmesi, böylece veren 'in geçerli bir imzalama anahtarına sahip olduğu doğrulanıyor.
 
-Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, http://<namespace>. ServiceBus.Windows.net/<entityPath> veya `sb://<namespace>.servicebus.windows.net/<entityPath>;` olan `http://contoso.servicebus.windows.net/eventhubs/eh1`.
+Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, http://<namespace>. servicebus.windows.net/<entityPath> veya `sb://<namespace>.servicebus.windows.net/<entityPath>;` `http://contoso.servicebus.windows.net/eventhubs/eh1`.
 
 URI yüzde kodlamalı olmalıdır.
 
-İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/eventhubs/eh1` veya `http://contoso.servicebus.windows.net` önceki örnekte.
+İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, önceki örnekte `http://contoso.servicebus.windows.net/eventhubs/eh1` veya `http://contoso.servicebus.windows.net`.
 
-Bir SAS belirteci, imza dizesinde <resourceURI> kullanılan ön ekli tüm kaynaklar için geçerlidir.
+Bir SAS belirteci, imza dizesinde kullanılan <resourceURI> ön ekli tüm kaynaklar için geçerlidir.
 
 > [!NOTE]
 > Paylaşılan erişim ilkesini kullanarak Event Hubs için bir erişim belirteci oluşturabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim yetkilendirme ilkesi](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
@@ -183,22 +183,33 @@ Bir olay yayımcısı, bir olay hub'ı için sanal bir uç nokta tanımlar. Yay�
 
 Genellikle, bir yayımcı istemci başına bir olay hub'ı kullanır. Herhangi bir olay hub'ının yayımcıları gönderilen tüm iletilerin sıraya alınan olay hub'ındaki ' dir. Yayımcılar ayrıntılı erişim denetimini etkinleştirir.
 
-Her bir olay hub'ları istemci, istemci için karşıya bir benzersiz belirteci atanır. Belirteçler, her benzersiz belirtecin farklı benzersiz yayımcıya erişim izni verdiği şekilde üretilir. Belirteç tutan bir istemci yalnızca bir yayımcıya ve başka bir yayımcıya bağlanabilir. Birden çok istemci aynı belirteci paylaşıyorsanız, bunların her biri bir yayımcı paylaşır.
+Her bir olay hub'ları istemci, istemci için karşıya bir benzersiz belirteci atanır. Belirteçler, her benzersiz belirtecin farklı benzersiz yayımcıya erişim izni verdiği şekilde üretilir. Belirteç tutan bir istemci yalnızca bir yayımcıya ve başka bir yayımcıya bağlanabilir. Birden çok istemci aynı belirteci paylaşıyorsa, her biri yayımcıyı paylaşır.
 
-Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler aynı anahtarla imzalanmıştır. İstemciler anahtardan haberdar değildir ve diğer istemcilerin bu belirteçleri üretmelerini önler. İstemciler, süreleri dolana kadar aynı belirteçlerde çalışır.
+Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler aynı anahtarla imzalanmıştır. İstemciler, istemcilerin bu belirteçleri üretmelerini önleyen anahtardan haberdar değildir. İstemciler, süreleri dolana kadar aynı belirteçlerde çalışır.
 
 Örneğin, yalnızca Event Hubs göndermek/yayımlamak üzere kapsamı belirlenmiş yetkilendirme kurallarını tanımlamak için bir gönderme yetkilendirme kuralı tanımlamanız gerekir. Bu, bir ad alanı düzeyinde yapılabilir veya belirli bir varlığa (Olay Hub 'ları örneği veya konu başlığı) daha ayrıntılı kapsam sağlayabilir. Bir istemci veya bu tür ayrıntılı erişim kapsamına sahip bir uygulama Event Hubs yayımcı olarak adlandırılır. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. Kendisine **gönderme** kapsamını atamak için yayımlamak istediğiniz VARLıKTA bir SAS anahtarı oluşturun. Daha fazla bilgi için bkz. [paylaşılan erişim yetkilendirme ilkeleri](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 2. Adım içinde oluşturulan anahtarı kullanarak belirli bir yayımcının süre sonu zamanına sahip bir SAS belirteci oluşturun.
-3. Yalnızca belirtecin erişim izni verdiği varlığa gönderebilen yayımcı istemcisine belirteç sağlayın.
-4. Belirtecin süresi dolduktan sonra istemci, varlığa gönderme/yayımlama erişimini kaybeder. 
+
+    ```csharp
+    var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
+                new Uri("Service-Bus-URI"),
+                "eventub-name",
+                "publisher-name",
+                "sas-key-name",
+                "sas-key",
+                TimeSpan.FromMinutes(30));
+    ```
+3. Yalnızca bir varlığa ve belirtecin erişim izni verdiği yayımcıya gönderebilen yayımcı istemcisine belirteç sağlayın.
+
+    Belirtecin süresi dolduktan sonra istemci, varlığa gönderme/yayımlama erişimini kaybeder. 
 
 
 > [!NOTE]
-> Önerilmese de, bir olay hub 'ına erişim izni veren belirteçlere sahip cihazlara olanak tanır. Bu belirteci tutan herhangi bir cihaz, doğrudan bu olay hub 'ına ileti gönderebilir. Ayrıca, cihaz, olay hub'ına göndermesini kara listede olamaz.
+> Önerilmese de, bir olay hub 'ına veya bir ad alanına erişim izni veren belirteçlerle donabilme mümkündür. Bu belirteci tutan herhangi bir cihaz, doğrudan bu olay hub 'ına ileti gönderebilir. Ayrıca, cihaz, olay hub'ına göndermesini kara listede olamaz.
 > 
-> Yukarıdaki davranış, aynı belirteç ad alanı düzeyinde erişim sağlayan birden çok cihaza dağıtıldığında gözlemlenebilir. Bu durumda, bir kabın cihazı/yayımcısı yalıtılamaz ve iptal edilemez. Belirli ve ayrıntılı kapsamları sağlamak her zaman önerilir.
+> Belirli ve ayrıntılı kapsamları sağlamak her zaman önerilir.
 
 > [!IMPORTANT]
 > Belirteçleri oluşturduktan sonra her bir istemci kendi benzersiz bir belirteç ile sağlanır.
@@ -209,7 +220,7 @@ Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler ayn
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>SAS ile Event Hubs tüketicilerinin kimliğini doğrulama 
-Event Hubs üreticileri tarafından oluşturulan verilerden kullanılan arka uç uygulamalarının kimlik doğrulamasını yapmak için, Event Hubs belirteci kimlik doğrulaması, istemcilerinin **Yönetim** haklarına sahip olmasını veya Event Hubs atanmış **dinleme** ayrıcalıklarını kullanmasını gerektirir ad alanı veya Olay Hub 'ı örneği veya konusu. Veriler, tüketici grupları kullanılarak Event Hubs tüketilecektir. SAS ilkesi size ayrıntılı kapsam sağlarken, bu kapsam yalnızca varlık düzeyinde tanımlanır ve tüketici düzeyinde değildir. Bu, ad alanı düzeyinde tanımlanan ayrıcalıkların veya Olay Hub 'ının örneği ya da konu düzeyi söz konusu varlığın tüketici gruplarına uygulanacak anlamına gelir.
+Event Hubs üreticileri tarafından oluşturulan verilerden kullanılan arka uç uygulamalarının kimliğini doğrulamak için, Event Hubs belirteci kimlik doğrulaması, istemcilerinin, Event Hubs ad alanına veya Olay Hub örneğine veya konusuna atanmış olan **Yönetim** haklarına veya **dinleme** ayrıcalıklarına sahip olmasını gerektirir. Veriler, tüketici grupları kullanılarak Event Hubs tüketilecektir. SAS ilkesi size ayrıntılı kapsam sağlarken, bu kapsam yalnızca varlık düzeyinde tanımlanır ve tüketici düzeyinde değildir. Bu, ad alanı düzeyinde tanımlanan ayrıcalıkların veya Olay Hub 'ının örneği ya da konu düzeyi söz konusu varlığın tüketici gruplarına uygulanacak anlamına gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

@@ -1,6 +1,6 @@
 ---
 title: Azure Market’teki yönetilen hizmetler teklifleri
-description: Managed services offers allow service providers to sell resource management offers to customers in Azure Marketplace.
+description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.openlocfilehash: f7dcaa34b1fb471823acd74a7d9b05e42dd44161
@@ -12,31 +12,31 @@ ms.locfileid: "74463992"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Market’teki yönetilen hizmetler teklifleri
 
-This article describes the new **Managed Services** offer type in [Azure Marketplace](https://azuremarketplace.microsoft.com). Managed services offers allow you to offer resource management services to customers with Azure delegated resource management. You can make these offers available to all potential customers or only to one or more specific customers. Since you bill customers directly for costs related to these managed services, there are no fees charged by Microsoft.
+Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Nde yeni **yönetilen hizmetler** teklif türü açıklanmaktadır. Yönetilen hizmetler teklifi, Azure tarafından atanan kaynak yönetimine sahip müşterilere kaynak yönetimi hizmetleri sunmanıza olanak tanır. Bu teklifleri tüm potansiyel müşteriler için veya yalnızca bir veya daha fazla belirli müşteriye kullanılabilir hale getirebilirsiniz. Müşterileri bu yönetilen hizmetlerle ilgili maliyetlerle doğrudan faturalandırınızdan, Microsoft tarafından ücretlendirilmez.
 
-## <a name="understand-managed-services-offers"></a>Understand managed services offers
+## <a name="understand-managed-services-offers"></a>Yönetilen hizmet tekliflerini anlama
 
-Managed services offers streamline the process of onboarding customers for Azure delegated resource management. When a customer purchases an offer in Azure Marketplace, they'll be able to specify which subscriptions and/or resource groups should be onboarded. Note that the subscription must first be authorized for onboarding by manually registering the **Microsoft.ManagedServices** resource provider.
+Yönetilen hizmetler, Azure tarafından atanan kaynak yönetimi için müşterileri ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir. Aboneliğin öncelikle **Microsoft. ManagedServices** kaynak sağlayıcısını el ile kaydederek ekleme için yetkilendirilmiş olması gerektiğini unutmayın.
 
-After that, users in your organization will be able to perform administration tasks for those resources from within your organization's tenant, according to the access you defined when creating the offer in the [Cloud Partner Portal](https://cloudpartner.azure.com/). This is done through a manifest that specifies the Azure AD users, groups, and service principals that will have access to customer resources using Azure delegated resource management, along with roles that define their level of access. By assigning permissions to an Azure AD group rather than a series of individual user or application accounts, you can add or remove individual users when your access requirements change.
+Bundan sonra kuruluşunuzdaki kullanıcılar, [bulut iş ortağı portalı](https://cloudpartner.azure.com/)teklifi oluştururken tanımladığınız erişime göre kuruluşunuzun kiracısından bu kaynaklar için yönetim görevleri gerçekleştirebilir. Bu işlem, Azure tarafından atanan kaynak yönetimi kullanılarak müşteri kaynaklarına erişimi olacak Azure AD kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde ve erişim düzeyini tanımlayan rollerle birlikte yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
 
-## <a name="public-and-private-offers"></a>Public and private offers
+## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
 
-Each managed services offer includes one or more plans. These plans can be either private or public.
+Her yönetilen hizmet teklifi bir veya daha fazla plan içerir. Bu planlar özel veya genel olabilir.
 
-If you want to limit your offer to specific customers, you can publish a private plan. When you do so, the plan can only be purchased for the specific] subscription IDs that you provide. For more info, see [Private offers](https://docs.microsoft.com/azure/marketplace/private-offers).
+Teklifinizi belirli müşterilerle sınırlandırmak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli abonelik kimlikleri için satın alınabilir. Daha fazla bilgi için bkz. [özel teklifler](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-Public plans let you promote your services to new customers. These are usually more appropriate when you only require limited access to the customer's tenant. Once you've established a relationship with a customer, if they decide to grant your organization additional access, you can do so either by publishing a new private plan for that customer only, or by [onboarding them for further access using Azure Resource Manager templates](../how-to/onboard-customer.md).
+Genel planlar, hizmetlerinizi yeni müşterilere yükseltemenizi sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim istediğinizde daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirse, bu, yalnızca söz konusu müşteri için yeni bir özel plan yayımlayarak veya [Azure Resource Manager şablonları kullanarak daha fazla erişim sağlamak için bunları](../how-to/onboard-customer.md)ekleyebilirsiniz.
 
-Keep in mind that once a plan has been published as public, you can't change it to private. Additionally, you can't restrict a public plan's availability to certain customers or even to a certain number of customers, although you can stop selling the plan completely if you choose to do so.
+Bir plana ortak olarak yayımlandıktan sonra özel olarak değiştiremeyeceğini aklınızda bulundurun. Ayrıca, bir genel planın belirli müşterilere veya hatta belirli sayıda müşteriye yönelik kullanılabilirliğini kısıtlayamazsınız, ancak bunu yapmak isterseniz planı tamamen satmaya de durdurabilirsiniz.
 
-If appropriate, you can include both public and private plans in the same offer.
+Uygunsa, hem genel hem de özel planları aynı teklifine dahil edebilirsiniz.
 
-## <a name="publish-managed-service-offers"></a>Publish managed service offers
+## <a name="publish-managed-service-offers"></a>Yönetilen hizmet tekliflerini yayımlama
 
-To learn how to publish a managed services offer, see [Publish a Managed Services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md). For general info about publishing to Azure Marketplace using the Cloud Partner Portal, see [Azure Marketplace and AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) and [Manage Azure and AppSource Marketplace offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Yönetilen bir hizmet teklifini yayımlamayı öğrenmek için bkz. [Azure Market 'Te yönetilen hizmetler teklifi yayımlama](../how-to/publish-managed-services-offers.md). Bulut İş Ortağı Portalı kullanarak Azure Marketi 'Nde yayımlama hakkında genel bilgi için bkz. [Azure Market ve Appsource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) ve [Azure ve appsource Market tekliflerini yönetme](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about [Azure delegated resource management](azure-delegated-resource-management.md) and [cross-tenant management experiences](cross-tenant-management-experience.md).
-- [Publish managed services offers](../how-to/publish-managed-services-offers.md) to Azure Marketplace.
+- [Azure Temsilcili kaynak yönetimi](azure-delegated-resource-management.md) ve [çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
+- [Yönetilen hizmet tekliflerini](../how-to/publish-managed-services-offers.md) Azure Market 'te yayımlayın.

@@ -1,7 +1,7 @@
 ---
-title: Label entity example utterance
+title: Etiket varlık örneği söylenişi
 titleSuffix: Azure Cognitive Services
-description: Learn how to label a machine-learned entity with subcomponents in an example utterance in an intent detail page of the LUIS portal.
+description: Makine tarafından öğrenilen bir varlığı, LUS portalının amaç ayrıntısı sayfasında örnek bir örnekte bulunan alt bileşenler ile nasıl etiketleyeceğinizi öğrenin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,106 +11,106 @@ ms.topic: quickstart
 ms.date: 11/21/2019
 ms.author: diberry
 ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 11/26/2019
 ms.locfileid: "74383698"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Label machine-learned entity in an example utterance
+# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Makine tarafından öğrenilen varlığı örnek bir mekan etiketleme
 
-Labeling an entity in an example utterance gives LUIS an example of what the entity is and where the entity can appear in the utterance. 
+Bir varlığın bir örnek içinde etiketlenmesi, LUYA varlığın ne olduğu ve varlığın utterde görünebileceği bir örnektir. 
 
-## <a name="labeling-machine-learned-entity"></a>Labeling machine-learned entity
+## <a name="labeling-machine-learned-entity"></a>Makine tarafından öğrenilen Varlık etiketleme
 
-Consider the phrase, `hi, please I want a cheese pizza in 20 minutes`. 
+`hi, please I want a cheese pizza in 20 minutes`tümceciğini göz önünde bulundurun. 
 
-1. Select the left-most text, then select the right-most text of the entity, then pick the entity you want to label with, in this case Complete Order. The _complete order_ is labeled in the following image.
+1. En soldaki metni seçin, ardından varlığın en sağ metnini seçip, ardından etiketlemek istediğiniz varlığı, bu durumda tam sırayı seçin. _Tüm sıra_ aşağıdaki görüntüde etiketlidir.
 
     > [!div class="mx-imgBorder"]
-    > ![Label complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![etiketi makine tarafından öğrenilen varlık](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Select the entity from the pop-up window. The labeled complete pizza order entity includes all words (from left to right in English) that are labeled. 
+1. Açılır penceredeki varlığı seçin. Etiketli tamamlanmış pizza sırası varlığı, etiketli tüm sözcükleri (Ingilizce 'de soldan sağa) içerir. 
 
-## <a name="review-labeled-text"></a>Review labeled text
+## <a name="review-labeled-text"></a>Etiketli metni gözden geçirme
 
-After labeling, review the example utterance and ensure the selected span of text has been underlined with the chosen entity. The solid line indicates the text has been labeled. 
+Etiketledikten sonra, örnek bir şekilde gözden geçirin ve seçilen varlık için seçili varlıkla metnin altı çizili olduğundan emin olun. Düz çizgi, metnin etiketlendiği anlamına gelir. 
 
 > [!div class="mx-imgBorder"]
-> ![Labeled complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![makine tarafından öğrenilen varlığın tamamını etiketlendi](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
-## <a name="confirm-predicted-entity"></a>Confirm predicted entity
+## <a name="confirm-predicted-entity"></a>Tahmin edilen varlığı Onayla
 
-If there is a dotted-lined box around the span of text and the entity name is above the utterance, it indicates the text is predicted but _not labeled yet_. To turn the prediction into a label, select the utterance row, then select **Confirm entity predictions**.
-
-> [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
-
-Alternatively, you could select the entity name above the text, then select **Confirm Prediction** from the menu that appears.
+Metnin yayılımı etrafında noktalı çizgili bir kutu varsa ve varlık adı, utterance 'in üstündeyse, metnin tahmin _edildiğini ancak henüz etiketlenmediğini_belirtir. Tahmine bir etiketi açmak için, söylenişi satırını seçin ve ardından **varlık tahminlerini Onayla**' yı seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity with menu](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
+> ![makine tarafından öğrenilen tüm varlığı tahmin edin](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Label entity by painting with entity palette cursor
-
-The entity palette offers an alternative to the previous labeling experience. It allows you to brush over text to instantly label it with an entity.
-
-1. Open the entity palette by selecting on the Highlighter icon at the top right of the utterance table. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. Select the entity component. This action is visually indicated with a new cursor. The cursor follows the mouse as you move in the portal. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
-
-3. In the example utterance, _paint_ the entity with the cursor.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Labeling subcomponents of a machine learned entity
-
-Subcomponents in entities are labeled exactly the same way as top level entities. When selecting text, the entities available in the pop-up window are relative to the context in which the text appears. For example, if you have a 5-level machine-learned entity, and you are selecting text that has been labeled with the 1st and 2nd levels (indicated by a labeled entity name under the example utterance), the entities available in the pop-up window are limited to the context of components of the 3rd level. To label the text with other entities, select **Label as another entity** option.
+Alternatif olarak, metnin üzerindeki varlık adını seçip görüntülenen menüden **tahmin Onayla** ' yı seçebilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+> ![, tüm makine öğrenilen varlığı menü](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png) tahmin eder
 
-Subcomponents can be labeled only if the parent is also labeled. 
+## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Varlık paleti imletiyle boyayarak varlığı etiketle
 
-## <a name="unlabel-entities"></a>Unlabel entities
+Varlık paleti, önceki etiketleme deneyimine bir alternatif sunar. Bir varlıkla anında etiketlemek için metnin üzerine fırçanızı sağlar.
 
-To unlabel an entity, select the entity name underneath the text and select **Unlabel**. If the entity you are trying to unlabel has labeled subcomponents, then the subcomponents must be unlabeled first. 
-
-## <a name="editing-labels-using-the-entity-palette"></a>Editing labels using the entity palette
-
-If you make a mistake while labeling, the entity palette is an easy tool that allows for quick edits. For example, if an entity label spans an extra word by mistake, and it already has labeled subcomponents, then you can use the entity palette to brush over the required shorter span of words.
-
-Örnek:
-
-1. Pizza Type subcomponent spans "cheese pizza with" which includes an extra incorrect word -- "with"
+1. Söylenişi tablosunun sağ üst köşesindeki vurgulayıcı simgesini seçerek varlık paletini açın. 
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-1.png)
+    > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Use the entity palette to pick Pizza Type and brush over "cheese pizza". The outcome is that only cheese pizza is labeled as Pizza Type now.
+2. Varlık bileşenini seçin. Bu eylem, görsel olarak yeni bir imlece belirtilir. İmleç, portalda hareket ettirdiği şekilde fareyi izler. 
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-2.png)
+    > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
 
+3. Örnekte, varlığı imlece _boyayın_ .
 
-## <a name="labels-for-matching-text-entities"></a>Labels for matching-text entities
+    > [!div class="mx-imgBorder"]
+    > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
-Matching-text entities include prebuilt entities, regular expression entities, list entities, and pattern.any entities. These are automatically labeled by LUIS so they are not required to be manually labeled by users.
+## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Makine tarafından öğrenilen bir varlığın alt bileşenlerini etiketleme
 
-## <a name="entity-prediction-errors"></a>Entity prediction errors
-
-Entity prediction errors indicate the predicted entity doesn't match the labeled entity. This is visualized with a caution indicator next to the utterance.
+Varlıkların alt bileşenleri, en üst düzey varlıklarla tamamen aynı şekilde etiketlidir. Metin seçerken, açılır pencerede bulunan varlıklar, metnin göründüğü içeriğe göre değişir. Örneğin, 5 düzeyli bir makine tarafından öğrenilen bir varlığınız varsa ve 1. ve 2. Düzeyler (örneğin, bir etiketli varlık adıyla belirtilir) ile etiketlenmiş bir metin seçiyorsanız, açılır pencerede bulunan varlıkların 3. düzey bileşenlerinin bağlamı. Metni diğer varlıklarla etiketlemek için, **başka bir varlık seçeneği olarak etiketle** seçeneğini belirleyin.
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+
+Alt bileşenler yalnızca üst öğe de etiketlendirilmişse etiketlenebilir. 
+
+## <a name="unlabel-entities"></a>Varlıkların etiketini kaldır
+
+Bir varlığın etiketini kaldırmak için, metnin altındaki varlık adını seçin ve **etiketi kaldır**' ı seçin. Etiketi kaldırmak istediğiniz varlığın alt bileşenleri etiketlenmişse, alt bileşenlerin önce etiketlenmesi gerekir. 
+
+## <a name="editing-labels-using-the-entity-palette"></a>Varlık paletini kullanarak etiketleri düzenle
+
+Etiketleme sırasında bir hata yaparsanız, varlık paleti hızlı düzenlemelere izin veren kolay bir araçtır. Örneğin, bir varlık etiketi yanlışlıkla ek bir sözcüğe yayılmışsa ve zaten alt bileşenleri etiketlenmişse, bu durumda sözcüklerin gerekli daha kısa yayılmasını sağlamak için varlık paletini kullanabilirsiniz.
+
+Örneğin:
+
+1. Pizza tür alt bileşeni "Cheese pizza" ile birlikte "birlikte" ek yanlış bir sözcük içerir
+
+    > [!div class="mx-imgBorder"]
+    > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/edit-label-with-palette-1.png)
+
+2. Pizza türünü ve "Cheese pizza" üzerine fırçayı seçmek için varlık paletini kullanın. Sonuç yalnızca Cheese pizza, şimdi pizza türü olarak etiketlidir.
+
+    > [!div class="mx-imgBorder"]
+    > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/edit-label-with-palette-2.png)
+
+
+## <a name="labels-for-matching-text-entities"></a>Eşleşen metin varlıklarının etiketleri
+
+Eşleşen metin varlıkları, önceden oluşturulmuş varlıklar, normal ifade varlıkları, liste varlıkları ve model. herhangi bir varlık içerir. Bunlar, LULAR tarafından otomatik olarak etiketlendirildiklerinden, kullanıcılar tarafından el ile etiketlenmesi gerekmez.
+
+## <a name="entity-prediction-errors"></a>Varlık tahmin hataları
+
+Varlık tahmin hataları, tahmin edilen varlığın etiketlenmiş varlıkla eşleşmediği anlamına gelebilir. Bu, utterance 'in yanında dikkatli bir göstergeyle görselleştirilir.
+
+> [!div class="mx-imgBorder"]
+> makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Use the [dashboard](luis-how-to-use-dashboard.md) and [review endpoint utterances](luis-how-to-review-endpoint-utterances.md) to improve the prediction quality of your app.
+Uygulamanızı tahmin kalitesini artırmak için [panoyu](luis-how-to-use-dashboard.md) kullanın ve [uç nokta utlerini gözden geçirin](luis-how-to-review-endpoint-utterances.md) .

@@ -27,8 +27,8 @@ Bir sohbet robotunda veya başka bir istemci uygulamasında bir LUIS tahmini alm
 
     ![LUIS uç noktasına yayımlama](../media/howto-publish/publish-app-popup.png)
 
-3. Publishing is complete when you see the status bar at the top of the page confirming success.
+3. Başarıyı onaylayan sayfanın en üstünde durum çubuğunu gördüğünüzde yayımlama işlemi tamamlanır.
 
     ![LUIS uç noktasına yayımlama](../media/howto-publish/publish-endpoint-success.png)
 
-4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.
+4. **Azure kaynakları** sayfasına gitmek için bildirimde **uç nokta URL 'lerine erişin** bağlantısına tıklayın. Uç nokta URL 'Leri **örnek sorgu**olarak listelenir.

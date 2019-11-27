@@ -31,7 +31,7 @@ Farklı performans katmanları için aşağıdaki noktalar geçerlidir:
 |Bölge kullanılabilirliği     |   Tüm bölgeler      | [Select bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
 |Desteklenen [depolama hesabı türleri](../common/storage-account-overview.md#types-of-storage-accounts)     |     Genel amaçlı v2, BlobStorage, genel amaçlı v1    |    BlockBlobStorage     |
 |[Yüksek verimlilik blok bloblarını](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) destekler     |    Evet, 4 MIB PutBlock veya PutBlob boyutlarından daha fazla     |    Evet, 256 KiB PutBlock veya PutBlob boyutlarından daha büyük    |
-|Yedeklilik     |     Bkz. [depolama hesabı türleri](../common/storage-account-overview.md#types-of-storage-accounts)   |  Şu anda yalnızca yerel olarak yedekli depolama (LRS) ve bölge-redudant depolama (ZRS) destekleniyor<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+|Yedekleme     |     Bkz. [depolama hesabı türleri](../common/storage-account-overview.md#types-of-storage-accounts)   |  Şu anda yalnızca yerel olarak yedekli depolama (LRS) ve bölge-redudant depolama (ZRS) destekleniyor<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
 
 <div id="zone-redundant-storage"><sup>1</sup> Bölgesel olarak yedekli depolama (ZRS), Premium performans bloğu BLOB depolama hesapları için seçim bölgelerinde kullanılabilir.</div>
 

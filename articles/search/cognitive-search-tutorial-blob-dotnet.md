@@ -85,7 +85,7 @@ Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. 
 
 Paylaşılan erişim imzası sağlama gibi, bağlantı dizesini belirtmenin başka birçok yolu vardır. Veri kaynağı kimlik bilgileri hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Depolama Alanı dizinini oluşturma](search-howto-indexing-azure-blob-storage.md#Credentials).
 
-## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
+## <a name="set-up-your-environment"></a>Ortamınızı kurma
 
 Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygulama projesi oluşturarak başlayın.
 
@@ -162,7 +162,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > 
 > 
 
-## <a name="create-a-data-source"></a>Veri kaynağı oluşturma
+## <a name="create-a-data-source"></a>Bir veri kaynağı oluşturun
 
 `DataSource.AzureBlobStorage`çağırarak yeni bir `DataSource` örneği oluşturun. `DataSource.AzureBlobStorage`, veri kaynağı adı, bağlantı dizesi ve BLOB kapsayıcısı adını belirtmenizi gerektirir.
 

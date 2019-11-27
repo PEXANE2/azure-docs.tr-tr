@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service limits
-description: Overview of the service and functional limits in Azure Blockchain Service
+title: Azure blok zinciri hizmeti sınırları
+description: Azure blok zinciri hizmetindeki hizmet ve işlevsel sınırlara genel bakış
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,51 +11,51 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455651"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limits in Azure Blockchain Service
+# <a name="limits-in-azure-blockchain-service"></a>Azure blok zinciri hizmeti sınırları
 
-Azure Blockchain Service has service and functional limits such as the number of nodes a member can have, consortium restrictions, and storage amounts.
+Azure blok zinciri hizmeti, bir üyenin sahip olduğu düğüm sayısı, konsorsiyum kısıtlamaları ve depolama tutarları gibi hizmet ve işlevsel sınırlara sahiptir.
 
 ## <a name="pricing-tier"></a>Fiyatlandırma katmanı
 
-Maximum limits on transactions and validator nodes depend on whether you provision Azure Blockchain Service at Basic or Standard pricing tiers.
+İşlem ve doğrulayıcı düğümlerine yönelik en fazla sınır, Azure blok zinciri hizmetini temel veya standart fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır.
 
-| Fiyatlandırma katmanı | Max transaction nodes | Max validator nodes |
+| Fiyatlandırma katmanı | En fazla işlem düğümleri | En fazla Doğrulayıcı düğümleri |
 |:---|:---:|:---:|
-| Temel | 10 | 1 |
+| Temel | 10 | 1\. |
 | Standart | 10 | 2 |
 
-Changing the pricing tier between Basic and Standard after member creation is not supported.
+Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanını değiştirmek desteklenmez.
 
 ## <a name="storage-capacity"></a>Depolama kapasitesi
 
-The maximum amount of storage that can be used per node for ledger data and logs is 1.8 terabytes.
+Muhasebe verileri ve Günlükler için düğüm başına kullanılabilecek maksimum depolama alanı miktarı 1,8 terabayt 'dir.
 
-Decreasing ledger and log storage size is not supported.
+Azalan defter ve günlük depolama boyutu desteklenmiyor.
 
-## <a name="consortium-limits"></a>Consortium limits
+## <a name="consortium-limits"></a>Konsorsiyum sınırları
 
-* **Consortium and member names must be unique** from other consortium and member names in the Azure Blockchain Service.
+* **Konsorsiyumun ve üye adlarının** Azure blok zinciri hizmetindeki diğer konsorsiyum ve üye adlarından benzersiz olması gerekir.
 
-* **Member and consortium names cannot be changed**
+* **Üye ve konsorsiyum adları değiştirilemez**
 
-* **All members in a consortium must be in the same pricing tier**
+* **Bir konsorsiyumun tüm üyeleri aynı fiyatlandırma katmanında olmalıdır**
 
-* **All members that participate in a consortium must reside in the same region**
+* **Bir konsorsiyumde katılan tüm Üyeler aynı bölgede bulunmalıdır**
 
-    The first member created in a consortium dictates the region. Invited members to the consortium must reside in the same region as the first member. Limiting all members to the same region helps ensure network consensus is not negatively impacted.
+    Bir konsorsiyda oluşturulan ilk üye bölgeyi belirler. Bir konsorsiyumye davet edilen Üyeler ilk üyeyle aynı bölgede bulunmalıdır. Tüm üyelerin aynı bölgeye sınırlandırılması, ağ konsensus 'in olumsuz şekilde etkilenmemesini sağlamaya yardımcı olur.
 
-* **A consortium must have at least one administrator**
+* **Konsorsiyumun en az bir Yöneticisi olmalıdır**
 
-    If there is only one administrator in a consortium, they cannot remove themselves from the consortium or delete their member until another administrator is added or promoted in the consortium.
+    Bir konsorsiyumda yalnızca bir yönetici varsa, bu kullanıcılar kendi konsorsiyumdan kaldıramazlar veya konsorsiyumun başka bir Yöneticisi eklenip yükseltilene kadar üyelerini silmez.
 
-* **Members removed from the consortium cannot be added again**
+* **Konsorsiyumun kaldırıldığı Üyeler yeniden eklenemez**
 
-    Rather, they must be reinvited to join the consortium and create a new member. Their existing member resource are not deleted to preserve historical transactions.
+    Bunun yerine, konsorsiyumun katılması için yeniden davet edilmesi ve yeni bir üye oluşturulması gerekir. Geçmiş işlemleri korumak için mevcut üye kaynakları silinmez.
 
-* **All members in a consortium must be using the same ledger version**
+* **Bir konsorsiyumun tüm üyeleri aynı muhasebe sürümünü kullanıyor olmalıdır**
 
-    For more information on the patching, updates, and ledger versions available in Azure Blockchain Service, see [Patching, updates, and versions](ledger-versions.md).
+    Azure blok zinciri hizmeti 'nde kullanılabilen düzeltme eki, güncelleştirmeler ve genel muhasebe sürümleri hakkında daha fazla bilgi için bkz. [düzeltme eki uygulama, güncelleştirmeler ve sürümler](ledger-versions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about policies regarding systems patching and upgrades - [Patching, updates, and versions](ledger-versions.md).
+Sistem düzeltme eki uygulama [, güncelleştirmeler ve sürümler](ledger-versions.md)hakkında daha fazla bilgi edinin.

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200325"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533050"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft Identity platform (v 2.0) güncelleştirmesi?
 
@@ -62,9 +62,9 @@ Bir kuruluş adına yapılan yönetici onayı, yine de uygulama için kayıtlı 
 
 ## <a name="scopes-not-resources"></a>Kapsam, kaynak değil
 
-V 1.0 uç noktasını kullanan uygulamalar için, bir uygulama **kaynak**veya belirteç alıcısı olarak davranabilir. Bir kaynak, anladığı sayıda **kapsam** veya **oAuth2Permissions** tanımlayabilir ve bu da istemci uygulamaların belirli bir kapsam kümesi için bu kaynaktan belirteç istemesine izin verir. Azure AD Graph API bir kaynağa örnek olarak göz önünde bulundurun:
+V 1.0 uç noktasını kullanan uygulamalar için, bir uygulama **kaynak**veya belirteç alıcısı olarak davranabilir. Bir kaynak, anladığı sayıda **kapsam** veya **oAuth2Permissions** tanımlayabilir ve bu da istemci uygulamaların belirli bir kapsam kümesi için bu kaynaktan belirteç istemesine izin verir. Microsoft Graph API 'sini bir kaynak örneği olarak düşünün:
 
-* Kaynak tanımlayıcısı veya `AppID URI`: `https://graph.windows.net/`
+* Kaynak tanımlayıcısı veya `AppID URI`: `https://graph.microsoft.com/`
 * Kapsamlar veya `oAuth2Permissions`: `Directory.Read`, `Directory.Write`, vb.
 
 Bu, Microsoft Identity platform uç noktası için doğru bir durum içerir. Bir uygulama yine de kaynak olarak davranabilir, kapsamları tanımlayabilir ve bir URI ile tanımlanabilir. İstemci uygulamaları yine de bu kapsamlara erişim isteğinde bulunabilir. Ancak, bir istemcinin bu izinleri istemesi yöntemi değişmiştir.
@@ -103,12 +103,12 @@ OAuth 2,0, `refresh_tokens`ve `access_tokens`hakkında daha fazla bilgi edinmek 
 
 ### <a name="openid-profile-and-email"></a>OpenID, profile ve email
 
-Geçmişte, Microsoft Identity platform ile en temel OpenID Connect oturum açma akışı, sonuçta elde edilen *id_token*Kullanıcı hakkında çok fazla bilgi sağlayacaktır. Bir id_token içindeki talepler kullanıcının adını, tercih edilen Kullanıcı adını, e-posta adresini, nesne KIMLIĞINI ve daha fazlasını içerebilir.
+Geçmişte, Microsoft Identity platform ile en temel OpenID Connect oturum açma akışı, sonuçta elde edilen *id_token*Kullanıcı hakkında çok fazla bilgi sağlayacaktır. Bir id_token talepler kullanıcının adını, tercih edilen Kullanıcı adını, e-posta adresini, nesne KIMLIĞINI ve daha fazlasını içerebilir.
 
 `openid` kapsamının uygulamanızın erişim için kullandığı bilgiler artık kısıtlıdır. `openid` kapsamı yalnızca uygulamanızın kullanıcıya oturum açmasını ve Kullanıcı için uygulamaya özel bir tanımlayıcı almasını sağlar. Uygulamanızdaki Kullanıcı hakkında kişisel veriler almak istiyorsanız, uygulamanızın kullanıcıdan ek izinler istemesi gerekir. `email` ve `profile`iki yeni kapsam, ek izinler isteyebilmeniz için izin verir.
 
-* `email` kapsamı, kullanıcının adreslenebilir bir e-posta adresi olduğu varsayıldığında, id_token 'deki `email` talebi aracılığıyla uygulamanızın kullanıcının birincil e-posta adresine erişmesine izin verir.
-* `profile` kapsamı, uygulamanızın adı, tercih edilen Kullanıcı adı, nesne KIMLIĞI, vb. gibi diğer tüm temel bilgilere erişmesini sağlar (id_token.
+* `email` kapsamı, kullanıcının adreslenebilir bir e-posta adresine sahip olduğu varsayılarak, id_token `email` talebi aracılığıyla uygulamanızın kullanıcının birincil e-posta adresine erişmesine izin verir.
+* `profile` kapsamı, uygulamanızın, id_token adı, tercih edilen Kullanıcı adı, nesne KIMLIĞI gibi diğer tüm temel bilgilere erişmesini sağlar ve.
 
 Bu kapsamlar, uygulamanızı en düşük düzeyde bir şekilde kodlarabilmeniz için, kullanıcıdan yalnızca uygulamanızın işini yapması için ihtiyaç duyacağı bilgi kümesini sormasını sağlayabilirsiniz. Bu kapsamlar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform kapsam başvurusu](v2-permissions-and-consent.md).
 
@@ -117,7 +117,7 @@ Bu kapsamlar, uygulamanızı en düşük düzeyde bir şekilde kodlarabilmeniz i
 Microsoft Identity platform uç noktası, yüklerini küçük tutmak için varsayılan olarak belirteçlerinde daha küçük bir talepler kümesi yayınlar. Bir Microsoft Identity platform belirtecinde artık varsayılan olarak sağlanmayan bir v 1.0 belirtecindeki belirli bir talebe bağımlılığı olan uygulama ve hizmetlerinize sahipseniz, bu talebi dahil etmek için [isteğe bağlı talepler](active-directory-optional-claims.md) özelliğini kullanmayı göz önünde bulundurun.
 
 > [!IMPORTANT]
-> v 1.0 ve v 2.0 belirteçleri hem v 1.0 hem de v 2.0 uç noktaları tarafından verilebilir! id_tokens *her zaman* istediğiniz uç *noktayla eşleşir ve erişim belirteçleri,* istemcinizin bu belirteci kullanarak çağırabilecekleri Web API 'si tarafından beklenen biçimle eşleşir.  Uygulama, v 1.0 biçim erişim belirteçlerini bekleyen Microsoft Graph çağrısı yapmak için v 2.0 uç noktasını kullanıyorsa, uygulamanız v 1.0 biçiminde bir belirteç alır.  
+> v 1.0 ve v 2.0 belirteçleri hem v 1.0 hem de v 2.0 uç noktaları tarafından verilebilir! id_tokens, istedikleri bitiş noktasıyla *her zaman* *eşleşir ve erişim belirteçleri,* istemcinizin bu belirteci kullanarak çağırabilecekleri Web API 'si tarafından beklenen biçimle eşleşir.  Uygulama, v 1.0 biçim erişim belirteçlerini bekleyen Microsoft Graph çağrısı yapmak için v 2.0 uç noktasını kullanıyorsa, uygulamanız v 1.0 biçiminde bir belirteç alır.  
 
 ## <a name="limitations"></a>Sınırlamalar
 

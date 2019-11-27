@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Create a search index in Postman using REST APIs'
+title: "Hızlı başlangıç: REST API 'Leri kullanarak Postman 'da arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
-description: In this REST API quickstart, learn how to call the Azure Cognitive Search REST APIs using Postman and sample data and definitions.
+description: Bu REST API hızlı başlangıçta, Postman kullanarak Azure Bilişsel Arama REST API 'Lerini çağırma ve örnek veriler ve tanımlar hakkında bilgi edinin.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -16,7 +16,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406949"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Quickstart: Create an Azure Cognitive Search index in Postman using REST APIs
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Postman 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,74 +25,74 @@ ms.locfileid: "74406949"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-One of the easiest ways to explore the [Azure Cognitive Search REST APIs](https://docs.microsoft.com/rest/api/searchservice) is using Postman or another web testing tool to formulate HTTP requests and inspect the responses. Doğru araçlar ve bu yönergelerden yararlanarak herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
+[Azure BILIŞSEL arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice) keşfetmeye yönelik en kolay yollarından bırı, http isteklerini oluşturmak ve yanıtları Incelemek Için Postman veya başka bir Web testi aracı kullanmaktır. Doğru araçlar ve bu yönergelerden yararlanarak herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
 
-This article explains how to formulate requests interactively. Alternatively, you can [download and import a Postman collection](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) to use predefined requests.
+Bu makalede, isteklerin etkileşimli olarak nasıl formülleneceği açıklanır. Alternatif olarak, önceden tanımlanmış istekleri kullanmak için [bir Postman koleksiyonunu indirebilir ve içeri aktarabilirsiniz](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) .
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-The following services and tools are required for this quickstart. 
+Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
-+ [Postman desktop app](https://www.getpostman.com/) is used for sending requests to Azure Cognitive Search.
++ [Postman masaüstü uygulaması](https://www.getpostman.com/) , Azure bilişsel arama istek göndermek için kullanılır.
 
-+ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
++ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
-## <a name="get-a-key-and-url"></a>Get a key and URL
+## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
-REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
+REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
-1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
+1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
-All requests require an api-key on every request sent to your service. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
+Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="connect-to-azure-cognitive-search"></a>Connect to Azure Cognitive Search
+## <a name="connect-to-azure-cognitive-search"></a>Azure Bilişsel Arama bağlanma
 
-In this section, use your web tool of choice to set up connections to Azure Cognitive Search. Each tool persists request header information for the session, which means you only have to enter the api-key and Content-Type once.
+Bu bölümde, Azure Bilişsel Arama bağlantıları kurmak için tercih ettiğiniz Web aracını kullanın. Her araç oturum için istek üst bilgisi bilgilerini sürdürür, bu da yalnızca API anahtarı ve Içerik türü bir kez girmeniz gereken anlamına gelir.
 
-For either tool, you need to choose a command (GET, POST, PUT, and so forth), provide a URL endpoint, and for some tasks, provide JSON in the body of the request. Replace the search service name (YOUR-SEARCH-SERVICE-NAME)  with a valid value. Add `$select=name` to return just the name of each index. 
+Her iki araç için de bir komut seçmeniz gerekir (GET, POST, PUT, vb.), bir URL uç noktası sağlamanız ve bazı görevler için isteğin gövdesinde JSON sağlamalısınız. Arama hizmeti adı 'nı (-SEARCH-SERVICE-NAME) geçerli bir değerle değiştirin. Yalnızca her bir dizinin adını döndürmek için `$select=name` ekleyin. 
 
     https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
-Notice the HTTPS prefix, the name of the service, the name of an object (in this case, the indexes collection), and the [api-version](search-api-versions.md). The api-version is a required, lowercase string specified as `?api-version=2019-05-06` for the current version. API versions are updated regularly. api-version parametresini her isteğe dahil etmeniz hangisinin kullanıldığıyla ilgili tam denetim sahibi olmanızı sağlar.  
+HTTPS ön ekine, hizmetin adına, bir nesnenin adına (Bu durumda, dizinler koleksiyonuna) ve [api sürümüne](search-api-versions.md)dikkat edin. Api sürümü, geçerli sürüm için `?api-version=2019-05-06` olarak belirtilen, küçük harfli bir dizedir. API sürümleri düzenli olarak güncelleştirilir. api-version parametresini her isteğe dahil etmeniz hangisinin kullanıldığıyla ilgili tam denetim sahibi olmanızı sağlar.  
 
-Request header composition includes two elements, content type, plus the api-key used to authenticate to Azure Cognitive Search. Replace the admin API key (YOUR-AZURE-SEARCH-ADMIN-API-KEY) with a valid value. 
+İstek üst bilgisi bileşimi iki öğe, içerik türü ve Azure Bilişsel Arama kimlik doğrulaması için kullanılan API anahtarını içerir. Yönetici API anahtarını (-AZURE-SEARCH-ADMIN-API-KEY) geçerli bir değerle değiştirin. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-In Postman, formulate a request that looks like the following screenshot. Choose **GET** as the verb, provide the URL, and click **Send**. This command connects to Azure Cognitive Search, reads the indexes collection, and returns HTTP status code 200 on a successful connection. If your service has indexes already, the response will also include index definitions.
+Postman 'da, aşağıdaki ekran görüntüsü gibi görünen bir istek girin. Fiil olarak **Al** ' ı SEÇIN, URL 'yi sağlayın ve **Gönder**' e tıklayın. Bu komut Azure Bilişsel Arama bağlanır, dizinler koleksiyonunu okur ve başarılı bir bağlantıda HTTP durum kodu 200 döndürür. Hizmetiniz zaten dizinler içeriyorsa, yanıt Dizin tanımlarını da içerir.
 
-![Postman request URL and header](media/search-get-started-postman/postman-url.png "Postman request URL and header")
+![Postman istek URL 'SI ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'SI ve üstbilgisi")
 
 ## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
-In Azure Cognitive Search, you usually create the index before loading it with data. The [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) is used for this task. 
+Azure Bilişsel Arama, genellikle dizini verilerle yüklemeden önce oluşturursunuz. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu görev için kullanılır. 
 
-The URL is extended to include the `hotels` index name.
+URL, `hotels` dizin adını içerecek şekilde genişletilir.
 
-To do this in Postman:
+Bunu Postman 'da yapmak için:
 
-1. Change the verb to **PUT**.
+1. Fiili öğesini **koymak**için değiştirin.
 
-2. Copy in this URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
+2. Bu URL 'de kopyalama `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
 
-3. Provide the index definition (copy-ready code is provided below) in the body of the request.
+3. İsteğin gövdesinde Dizin tanımını (aşağıda, kopyalama öncesi kod verilmiştir) sağlayın.
 
-4. Click **Send**.
+4. **Gönder**' e tıklayın.
 
-![Index JSON document in request body](media/search-get-started-postman/postman-request.png "Index JSON document in request body")
+![İstek gövdesinde JSON belgesi dizini oluştur](media/search-get-started-postman/postman-request.png "İstek gövdesinde JSON belgesi dizini oluştur")
 
 ### <a name="index-definition"></a>Dizin tanımı
 
-The fields collection defines document structure. Each document must have these fields, and each field must have a data type. Dize alanları tam metin araması için kullanılır. Bu nedenle içerikte arama yapılabilmesini istiyorsanız sayısal verileri dize olarak ayarlamak isteyebilirsiniz.
+Alanlar koleksiyonu belge yapısını tanımlar. Her belge bu alanlara sahip olmalıdır ve her bir alan bir veri türüne sahip olmalıdır. Dize alanları tam metin araması için kullanılır. Bu nedenle içerikte arama yapılabilmesini istiyorsanız sayısal verileri dize olarak ayarlamak isteyebilirsiniz.
 
-Alan öznitelikleri izin verilen eylemi belirler. REST API'leri varsayılan olarak birçok eyleme izin verir. Örneğin tüm dizelerde arama, getirme, filtreleme ve modelleme özellikleri varsayılan olarak etkindir. Often, you only have to set attributes when you need to turn off a behavior.
+Alan öznitelikleri izin verilen eylemi belirler. REST API'leri varsayılan olarak birçok eyleme izin verir. Örneğin tüm dizelerde arama, getirme, filtreleme ve modelleme özellikleri varsayılan olarak etkindir. Genellikle, öznitelikleri yalnızca bir davranışı kapatmanız gerektiğinde ayarlamanız gerekir.
 
 ```json
 {
@@ -124,25 +124,25 @@ Bu isteği gönderdiğinizde dizinin başarıyla oluşturulduğunu belirten HTTP
 > [!TIP]
 > HTTP 504 yanıtı alırsanız HTTPS'yi belirten URL'yi doğrulayın. HTTP 400 veya 404 yanıtı görürseniz kopyala-yapıştır hatası olmadığını doğrulamak için istek gövdesini kontrol edin. HTTP 403 genelde api anahtarı ile ilgili bir sorunu gösterir (geçersiz anahtar veya api anahtarının nasıl belirtildiğine ilişkin söz dizimi sorunu).
 
-## <a name="2---load-documents"></a>2 - Load documents
+## <a name="2---load-documents"></a>2-belge yükleme
 
-Dizini oluşturma ve dizini doldurma ayrı adımlardır. In Azure Cognitive Search, the index contains all searchable data, which you can provide as JSON documents. The [Add, Update, or Delete Documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) is used for this task. 
+Dizini oluşturma ve dizini doldurma ayrı adımlardır. Azure Bilişsel Arama, dizin, JSON belgeleri olarak sağlayabilmeniz için tüm aranabilir verileri içerir. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
 
-The URL is extended to include the `docs` collections and `index` operation.
+URL, `docs` koleksiyonlarını ve `index` işlemini içerecek şekilde genişletilir.
 
-To do this in Postman:
+Bunu Postman 'da yapmak için:
 
 1. Fiili **POST** olarak değiştirin.
 
-2. Copy in this URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
+2. Bu URL 'de kopyalama `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
 
-3. Provide the JSON documents (copy-ready code is below) in the body of the request.
+3. İsteğin gövdesinde JSON belgelerini (kopya-Ready kodu aşağıda bulunur) sağlayın.
 
-4. Click **Send**.
+4. **Gönder**' e tıklayın.
 
-![JSON documents in request body](media/search-get-started-postman/postman-docs.png "JSON documents in request body")
+![İstek gövdesinde JSON belgeleri](media/search-get-started-postman/postman-docs.png "İstek gövdesinde JSON belgeleri")
 
-### <a name="json-documents-to-load-into-the-index"></a>JSON documents to load into the index
+### <a name="json-documents-to-load-into-the-index"></a>Dizine yüklenecek JSON belgeleri
 
 İstek Gövdesi, oteller dizinine eklenecek dört belge içerir.
 
@@ -229,7 +229,7 @@ To do this in Postman:
 }
 ```
 
-In a few seconds, you should see an HTTP 201 response in the session list. Bu, belgelerin başarıyla oluşturulduğunu belirtir. 
+Birkaç saniye içinde oturum listesinde bir HTTP 201 yanıtı görmeniz gerekir. Bu, belgelerin başarıyla oluşturulduğunu belirtir. 
 
 207 yanıtı alırsanız en az bir belge karşıya yüklenemedi. 404 yanıtı alırsanız üst bilgi veya istek gövdesinde söz dizimi hatanız vardır. Uç noktayı `/docs/index` içerecek şekilde değiştirdiğinizden emin olun.
 
@@ -239,25 +239,25 @@ In a few seconds, you should see an HTTP 201 response in the session list. Bu, b
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Now that an index and documents are loaded, you can issue queries against them using [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Artık bir dizin ve belge yüklendikten sonra, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bunlara yönelik sorgular verebilirsiniz REST API.
 
-The URL is extended to include a query expression, specified using the search operator.
+URL, arama işleci kullanılarak belirtilen bir sorgu ifadesi içerecek şekilde genişletilir.
 
-To do this in Postman:
+Bunu Postman 'da yapmak için:
 
-1. Change the verb to **GET**.
+1. **Alınacak**fiili ' i değiştirin.
 
-2. Copy in this URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
+2. Bu URL 'de kopyalama `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
 
-3. Click **Send**.
+3. **Gönder**' e tıklayın.
 
-This query is an empty and returns a count of the documents in the search results. The request and response should look similar to the following screenshot for Postman after you click **Send**. Durum kodu 200 olmalıdır.
+Bu sorgu boş ve arama sonuçlarındaki belgelerin sayısını döndürüyor. **Gönder**' e tıkladıktan sonra istek ve yanıt, Postman için aşağıdaki ekran görüntüsüne benzer görünmelidir. Durum kodu 200 olmalıdır.
 
- ![GET with search string on the URL](media/search-get-started-postman/postman-query.png "GET with search string on the URL")
+ ![URL 'de arama dizesiyle al](media/search-get-started-postman/postman-query.png "URL 'de arama dizesiyle al")
 
-Try a few other query examples to get a feel for the syntax. You can do a string search, verbatim $filter queries, limit the results set, scope the search to specific fields, and more.
+Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. Dize araması yapabilir, tam $filter sorgular yapabilir, sonuç kümesini sınırlayabilir, aramanın belirli alanlarla kapsamını ve daha fazlasını yapabilirsiniz.
 
-Swap out the current URL with the ones below, clicking **Send** each time to view the results.
+Geçerli URL 'yi aşağıdaki gibi değiştirin ve sonuçları görüntülemek için her seferinde **Gönder** ' e tıklayın.
 
 ```
 # Query example 1 - Search on restaurant and wifi
@@ -275,30 +275,30 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
 ```
 
-## <a name="get-index-properties"></a>Get index properties
-You can also use [Get Statistics](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) to query for document counts and index size: 
+## <a name="get-index-properties"></a>Dizin özelliklerini al
+Belge sayılarını ve dizin boyutunu sorgulamak için de [Istatistikleri al](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) ' da kullanabilirsiniz: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
 ```
 
-Adding `/stats` to your URL returns index information. Postman uygulamasında isteğinizin aşağıdakine benzer olması ve yanıtta belge sayısı ile kullanılan alanın bayt cinsinden değerinin belirtilmesi gerekir.
+URL 'nize `/stats` eklemek dizin bilgilerini döndürür. Postman uygulamasında isteğinizin aşağıdakine benzer olması ve yanıtta belge sayısı ile kullanılan alanın bayt cinsinden değerinin belirtilmesi gerekir.
 
- ![Get index information](media/search-get-started-postman/postman-system-query.png "Get index information")
+ ![Dizin bilgilerini al](media/search-get-started-postman/postman-system-query.png "Dizin bilgilerini al")
 
-api-version söz diziminin farklı olduğuna dikkat edin. Bu istek için api-version parametresine `?` ekleyin. The `?` separates the URL path from the query string, while & separates each 'name=value' pair in the query string. Bu sorgu için api-version, sorgu dizesindeki ilk ve tek öğedir.
+api-version söz diziminin farklı olduğuna dikkat edin. Bu istek için api-version parametresine `?` ekleyin. `?`, URL yolunu sorgu dizesinden ayırır, & her bir ' name = value ' çiftini sorgu dizesinde ayırır. Bu sorgu için api-version, sorgu dizesindeki ilk ve tek öğedir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
+Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you know how to perform core tasks, you can move forward with additional REST API calls for more advanced features, such as indexers or [setting up a cognitive search pipeline](cognitive-search-tutorial-blob.md). For your next step, we recommend the following link:
+Temel görevlerin nasıl gerçekleştirileceğini öğrenmiş olduğunuza göre, Dizin oluşturucular veya bilişsel [Arama işlem hattı ayarlama](cognitive-search-tutorial-blob.md)gibi daha gelişmiş özellikler için ek REST API çağrılarıyla ileriye geçebilirsiniz. Sonraki adımınız için aşağıdaki bağlantıyı öneririz:
 
 > [!div class="nextstepaction"]
-> [REST Tutorial: Index and search semi-structured data (JSON blobs) in Azure Cognitive Search](search-semi-structured-data.md)
+> [REST öğreticisi: Azure Bilişsel Arama yarı yapılandırılmış verileri (JSON blob 'ları) dizin ve arama](search-semi-structured-data.md)

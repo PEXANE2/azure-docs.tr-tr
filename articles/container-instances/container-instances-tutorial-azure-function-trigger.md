@@ -1,22 +1,17 @@
 ---
-title: Öğretici-Azure işlevi tarafından Azure Container Instances tetikleme
+title: Öğretici-Azure işlevine göre kapsayıcı grubunu tetikleme
 description: Azure Container Instances oluşturmayı otomatikleştirmek için HTTP ile tetiklenen, sunucusuz bir PowerShell işlevi oluşturma
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179984"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533366"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: Bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
 
 [Azure işlevleri](../azure-functions/functions-overview.md) , bir http isteği, süreölçer veya bir Azure depolama kuyruğundaki ileti gibi çeşitli olaylara yanıt olarak komut dosyalarını veya kodu çalıştıran sunucusuz bir bilgi işlem hizmetidir.
 
@@ -66,7 +61,7 @@ az functionapp identity assign \
 
 ## <a name="modify-httptrigger-function"></a>HttpTrigger işlevini Değiştir
 
-Bir kapsayıcı grubu oluşturmak için **Httptrigger** işlevinin PowerShell kodunu değiştirin. İşlevin dosyasında `run.ps1` aşağıdaki kod bloğunu bulun. Bu kod, işlev URL 'sinde sorgu dizesi olarak geçirilmemişse bir ad değeri görüntüler:
+Bir kapsayıcı grubu oluşturmak için **Httptrigger** işlevinin PowerShell kodunu değiştirin. İşlevin dosya `run.ps1`, aşağıdaki kod bloğunu bulun. Bu kod, işlev URL 'sinde sorgu dizesi olarak geçirilmemişse bir ad değeri görüntüler:
 
 ```powershell
 [...]
@@ -92,11 +87,11 @@ if ($name) {
 [...]
 ```
 
-Bu örnek, `alpine` görüntüyü çalıştıran tek bir kapsayıcı örneğinden oluşan bir kapsayıcı grubu oluşturur. Kapsayıcı tek `echo` bir komut çalıştırır ve sonra sonlanır. Gerçek dünyada bir örnekte, toplu iş çalıştırmak için bir veya daha fazla kapsayıcı grubu oluşturulmasını tetikleyebilirsiniz.
+Bu örnek, `alpine` görüntüsünü çalıştıran tek bir kapsayıcı örneğinden oluşan bir kapsayıcı grubu oluşturur. Kapsayıcı tek bir `echo` komutu çalıştırır ve sonra sonlanır. Gerçek dünyada bir örnekte, toplu iş çalıştırmak için bir veya daha fazla kapsayıcı grubu oluşturulmasını tetikleyebilirsiniz.
  
 ## <a name="test-function-app-locally"></a>İşlev uygulamasını yerel olarak test etme
 
-İşlev uygulaması projesini Azure 'a yeniden yayımlayabilmeniz için işlevin düzgün şekilde yerel olarak çalıştığından emin olun. [PowerShell hızlı başlangıç](../azure-functions/functions-create-first-function-powershell.md)bölümünde gösterildiği gibi, PowerShell betiğine bir yerel kesme noktası ve bunun üzerine `Wait-Debugger` bir çağrı ekleyin. Hata ayıklama Kılavuzu için bkz. [PowerShell Azure işlevleri 'nde yerel olarak hata ayıklama](../azure-functions/functions-debug-powershell-local.md).
+İşlev uygulaması projesini Azure 'a yeniden yayımlayabilmeniz için işlevin düzgün şekilde yerel olarak çalıştığından emin olun. [PowerShell hızlı başlangıç](../azure-functions/functions-create-first-function-powershell.md)bölümünde gösterildiği gibi, PowerShell betiğine bir yerel kesme noktası ve yukarıdaki `Wait-Debugger` bir çağrı ekleyin. Hata ayıklama Kılavuzu için bkz. [PowerShell Azure işlevleri 'nde yerel olarak hata ayıklama](../azure-functions/functions-debug-powershell-local.md).
 
 
 ## <a name="republish-azure-function-app"></a>Azure işlev uygulamasını yeniden yayımlama
@@ -104,9 +99,9 @@ Bu örnek, `alpine` görüntüyü çalıştıran tek bir kapsayıcı örneğinde
 İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi Azure 'da var olan işlev uygulamasına yeniden yayımlamanız zaman alır.
 
 > [!NOTE]
-> İşlevlerinizi Azure 'da yayımlamadan `Wait-Debugger` önce tüm çağrıları kaldırmayı unutmayın.
+> İşlevlerinizi Azure 'da yayımlamadan önce `Wait-Debugger` yapılan çağrıları kaldırmayı unutmayın.
 
-1. Visual Studio Code ' de, komut paleti ' ni açın. Araması yapın ve seçin `Azure Functions: Deploy to function app...`.
+1. Visual Studio Code ' de, komut paleti ' ni açın. Arama yapın ve `Azure Functions: Deploy to function app...`seçin.
 1. Zip ve dağıtım için geçerli çalışma klasörünü seçin.
 1. Aboneliği ve ardından mevcut işlev uygulamasının adını (*myfunctionapp*) seçin. Önceki dağıtımın üzerine yazmak istediğinizi onaylayın.
 
@@ -114,7 +109,7 @@ Bu örnek, `alpine` görüntüyü çalıştıran tek bir kapsayıcı örneğinde
 
 ## <a name="run-the-function-in-azure"></a>İşlevi Azure 'da çalıştırma
 
-Dağıtım başarıyla tamamlandıktan sonra işlev URL 'sini alın. Örneğin, **Azure 'u kullanın: Visual** Studio Code 'da, **httptrigger** işlev URL 'sini kopyalamak veya [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function)işlev URL 'sini almak için işlevler alanı.
+Dağıtım başarıyla tamamlandıktan sonra işlev URL 'sini alın. Örneğin, **Httptrigger** işlev URL 'sini kopyalamak veya [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function)işlev URL 'Sini almak için Visual Studio Code 'daki **Azure: Functions** alanını kullanın.
 
 İşlev URL 'SI benzersiz bir kod içerir ve şu biçimdedir:
 
@@ -124,13 +119,13 @@ https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0Gng
 
 ### <a name="run-function-without-passing-a-name"></a>İşlevi bir ad geçirmeden Çalıştır
 
-İlk test olarak, `curl` komutunu çalıştırın ve bir `name` sorgu dizesi eklemeden işlev URL 'sini geçirin. İşlevinizin benzersiz kodunu eklediğinizden emin olun.
+İlk test olarak, `curl` komutunu çalıştırın ve işlev URL 'sini bir `name` sorgu dizesi eklemeden geçirin. İşlevinizin benzersiz kodunu eklediğinizden emin olun.
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
 ```
 
-İşlev 400 durum kodunu ve metnini `Please pass a name on the query string or in the request body`döndürür:
+İşlev 400 durum kodunu ve metin `Please pass a name on the query string or in the request body`döndürür:
 
 ```
 [...]
@@ -151,7 +146,7 @@ Please pass a name on the query string or in the request body.
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>İşlevi Çalıştır ve bir kapsayıcı grubunun adını geçir
 
-Şimdi bir kapsayıcı `curl` grubunun adını (*mycontainergroup*) bir sorgu dizesi `&name=mycontainergroup`olarak ekleyerek komutu çalıştırın:
+Şimdi bir kapsayıcı grubunun adını (*mycontainergroup*) bir sorgu dizesi olarak ekleyerek `curl` komutunu çalıştırın `&name=mycontainergroup`:
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"

@@ -36,7 +36,7 @@ Bu komutu işlemek için yeterli kota yok
 
 Dosya paylaşımının takılabileceği bilgisayarda bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 oluşur. Daha fazla bilgi için bkz. [Azure depolama performansı ve ölçeklenebilirlik denetim listesi](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
 Bazı tutamaçları kapatarak eşzamanlı açma tanıtıcılarının sayısını azaltın.
 

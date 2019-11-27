@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add parameters to template
-description: Add parameters to your Azure Resource Manager template to make it reusable.
+title: Öğretici-şablona parametreler ekleme
+description: Yeniden kullanılabilir hale getirmek için Azure Resource Manager şablonunuza parametreler ekleyin.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,37 +12,37 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406083"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Tutorial: Add parameters to your Resource Manager template
+# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza parametreler ekleme
 
-In the [previous tutorial](template-tutorial-add-resource.md), you learned how to add a storage account to the template and deploy it. In this tutorial, you learn how to improve the template by adding parameters. This tutorial takes about **14 minutes** to complete.
+[Önceki öğreticide](template-tutorial-add-resource.md), şablona bir depolama hesabı eklemeyi ve bunu dağıtmayı öğrendiniz. Bu öğreticide, parametreleri ekleyerek şablonu geliştirmeyi öğrenirsiniz. Bu öğreticinin tamamlanabilmesi yaklaşık **14 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-We recommend that you complete the [tutorial about resources](template-tutorial-add-resource.md), but it's not required.
+[Kaynaklar hakkında öğreticiyi](template-tutorial-add-resource.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Şablonu gözden geçir
 
-At the end of the previous tutorial, your template had the following JSON:
+Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
 
-You may have noticed that there's a problem with this template. The storage account name is hard-coded. You can only use this template to deploy the same storage account every time. To deploy a storage account with a different name, you would have to create a new template, which obviously isn't a practical way to automate your deployments.
+Bu şablonla ilgili bir sorun olduğunu fark etmiş olabilirsiniz. Depolama hesabı adı sabit kodlanmış. Bu şablonu yalnızca aynı depolama hesabını her seferinde dağıtmak için kullanabilirsiniz. Bir depolama hesabını farklı bir adla dağıtmak için, dağıtımlarınızı otomatik hale getirmenin pratik bir yolu olmayan yeni bir şablon oluşturmanız gerekir.
 
-## <a name="make-template-reusable"></a>Make template reusable
+## <a name="make-template-reusable"></a>Şablonu yeniden kullanılabilir yap
 
-To make your template reusable, let's add a parameter that you can use to pass in a storage account name. The highlighted JSON in the following example shows what changed in your template. The **storageName** parameter is identified as a string. The max length is set to 24 characters to prevent any names that are too long.
+Şablonunuzu yeniden kullanılabilir hale getirmek için, depolama hesabı adında geçiş yapmak üzere kullanabileceğiniz bir parametre ekleyelim. Aşağıdaki örnekteki vurgulanmış JSON, şablonunuzda nelerin değiştiğini gösterir. **Storagename** parametresi bir dize olarak tanımlanır. Çok uzun olan adların önlenmesi için en fazla uzunluk 24 karakter olarak ayarlanır.
 
-Copy the whole file and replace your template with its contents.
+Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Let's deploy the template. The following example deploys the template with Azure CLI or PowerShell. Notice that you provide the storage account name as one of the values in the deployment command. For the storage account name, provide the same name you used in the previous tutorial.
+Şablonu dağıtalım. Aşağıdaki örnek, şablonu Azure CLı veya PowerShell ile dağıtır. Depolama hesabı adını dağıtım komutundaki değerlerden biri olarak sağladığınızdan emin olun. Depolama hesabı adı için, önceki öğreticide kullandığınız adı belirtin.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -66,27 +66,27 @@ az group deployment create \
 
 ---
 
-## <a name="understand-resource-updates"></a>Understand resource updates
+## <a name="understand-resource-updates"></a>Kaynak güncelleştirmelerini anlama
 
-In the previous section, you deployed a storage account with the same name that you had created earlier. You may be wondering how the resource is affected by the redeployment.
+Önceki bölümde, daha önce oluşturduğunuz aynı ada sahip bir depolama hesabı dağıttınız. Kaynağın yeniden dağıtım tarafından nasıl etkilendiğini merak ediyor olabilirsiniz.
 
-If the resource already exists and no change is detected in the properties, no action is taken. If the resource already exists and a property has changed, the resource is updated. If the resource doesn't exist, it's created.
+Kaynak zaten varsa ve özelliklerde hiçbir değişiklik algılanırsa hiçbir işlem yapılmaz. Kaynak zaten varsa ve bir özellik değiştiyse, kaynak güncellenir. Kaynak yoksa, oluşturulur.
 
-This way of handling updates means your template can include all of the resources you need for an Azure solution. You can safely redeploy the template and know that resources are changed or created only when needed. For example, if you have added files to your storage account, you can redeploy the storage account without losing those files.
+Güncelleştirmeleri işlemenin bu yolu, şablonunuz bir Azure çözümü için ihtiyaç duyduğunuz tüm kaynakları içerebileceği anlamına gelir. Şablonu güvenle yeniden gönderebilir ve kaynakların değiştirildiğini veya yalnızca gerektiğinde oluşturulduğunu bilirsiniz. Örneğin, depolama hesabınıza dosya eklediyseniz depolama hesabını bu dosyaları kaybetmeden yeniden dağıtabilirsiniz.
 
-## <a name="customize-by-environment"></a>Customize by environment
+## <a name="customize-by-environment"></a>Ortama göre özelleştirme
 
-Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıtımı özelleştirmenizi sağlar. For example, you can pass different values based on whether you're deploying to an environment for development, test, and production.
+Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıtımı özelleştirmenizi sağlar. Örneğin, geliştirme, test ve üretim için bir ortama dağıtıp dağıtsanız farklı değerleri geçirebilirsiniz.
 
-The previous template always deployed a Standard_LRS storage account. You might want the flexibility to deploy different SKUs depending on the environment. The following example shows the changes to add a parameter for SKU. Copy the whole file and paste over your template.
+Önceki şablon her zaman bir Standard_LRS depolama hesabı dağıttı. Ortama bağlı olarak farklı SKU 'Ları dağıtma esnekliği isteyebilirsiniz. Aşağıdaki örnek, SKU için bir parametre eklemek için yapılan değişiklikleri gösterir. Tüm dosyayı kopyalayın ve şablonunuzun üzerine yapıştırın.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 
-The **storageSKU** parameter has a default value. This value is used when a value isn't specified during the deployment. It also has a list of allowed values. These values match the values that are needed to create a storage account. You don't want users of your template to pass in SKUs that don't work.
+**Storagesku** parametresinin varsayılan bir değeri vardır. Bu değer, dağıtım sırasında bir değer belirtilmediğinde kullanılır. Ayrıca, izin verilen değerlerin bir listesini içerir. Bu değerler, bir depolama hesabı oluşturmak için gereken değerlerle eşleşir. Şablon kullanıcılarının çalışmayan SKU 'Larda geçmesini istemezsiniz.
 
 ## <a name="redeploy-template"></a>Şablonu yeniden dağıtma
 
-You're ready to deploy again. Because the default SKU is set to **Standard_LRS**, you don't need to provide a value for that parameter.
+Yeniden dağıtım için hazırsınız. Varsayılan SKU **Standard_LRS**olarak ayarlandığı için, bu parametre için bir değer sağlamanız gerekmez.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -110,7 +110,7 @@ az group deployment create \
 
 ---
 
-To see the flexibility of your template, let's deploy again. This time set the SKU parameter to **Standard_GRS**. You can either pass in a new name to create a different storage account, or use the same name to update your existing storage account. Both options work.
+Şablonunuzun esnekliğini görmek için yeniden dağıtmanıza izin verin. Bu kez, SKU parametresini **Standard_GRS**olarak ayarlayın. Farklı bir depolama hesabı oluşturmak için yeni bir ad geçirebilir ya da mevcut depolama hesabınızı güncelleştirmek için aynı adı kullanabilirsiniz. Her iki seçenek de çalışır.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -135,7 +135,7 @@ az group deployment create \
 
 ---
 
-Finally, let's run one more test and see what happens when you pass in a SKU that isn't one of the allowed values. In this case, we test the scenario where a user of your template thinks **basic** is one of the SKUs.
+Son olarak, bir test çalıştıralım ve izin verilen değerlerden biri olmayan bir SKU 'ya geçirdiğinizde ne olacağını görelim. Bu durumda, şablonunuzda bir kullanıcının **temel** olarak SKU 'lardan biri olduğu senaryoya test ederiz.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,13 +160,13 @@ az group deployment create \
 
 ---
 
-The command fails immediately with an error message that states which values are allowed. Resource Manager identifies the error before the deployment starts.
+Komut, hangi değerlere izin verileceğini belirten bir hata iletisiyle hemen başarısız olur. Kaynak Yöneticisi, dağıtım başlamadan önce hatayı tanımlar.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -175,7 +175,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You improved the template created in the [first tutorial](template-tutorial-create-first-template.md) by adding parameters. In the next tutorial, you'll learn about template functions.
+Parametreleri ekleyerek [ilk öğreticide](template-tutorial-create-first-template.md) oluşturulan şablonu geliştirdik. Sonraki öğreticide, Şablon işlevleri hakkında bilgi edineceksiniz.
 
 > [!div class="nextstepaction"]
-> [Add template functions](template-tutorial-add-functions.md)
+> [Şablon işlevleri ekleme](template-tutorial-add-functions.md)

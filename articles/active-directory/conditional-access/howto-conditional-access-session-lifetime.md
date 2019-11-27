@@ -1,6 +1,6 @@
 ---
-title: Configure authentication session management - Azure Active Directory
-description: Customize Azure AD authentication session configuration including user sign in frequency and browser session persistence.
+title: Kimlik doğrulama oturumu yönetimini Yapılandırma-Azure Active Directory
+description: Kullanıcı oturum açma sıklığı ve tarayıcı oturumu kalıcılığı dahil olmak üzere Azure AD kimlik doğrulaması oturumu yapılandırmasını özelleştirin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,100 +18,100 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483468"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Configure authentication session management with Conditional Access
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
 
-In complex deployments, organizations might have a need to restrict authentication sessions. Some scenarios might include:
+Karmaşık dağıtımlarda, kuruluşların kimlik doğrulama oturumlarını kısıtlama gereksinimi olabilir. Bazı senaryolarda şunlar bulunabilir:
 
-* Resource access from an unmanaged or shared device
-* Access to sensitive information from an external network
-* High impact users
-* Critical business applications
+* Yönetilmeyen veya paylaşılan bir cihazdan kaynak erişimi
+* Dış bir ağdan hassas bilgilere erişim
+* Yüksek etki kullanıcıları
+* Kritik iş uygulamaları
 
-Conditional Access controls allow you to create policies that target specific use cases within your organization without affecting all users.
+Koşullu erişim denetimleri, tüm kullanıcıları etkilemeden kuruluşunuzdaki belirli kullanım örneklerini hedefleyen ilkeler oluşturmanızı sağlar.
 
-Before diving into details on how to configure the policy, let’s examine the default configuration.
+İlkenin nasıl yapılandırılacağı hakkında ayrıntılı bilgi almak için önce varsayılan yapılandırmayı inceleyelim.
 
-## <a name="user-sign-in-frequency"></a>User sign-in frequency
+## <a name="user-sign-in-frequency"></a>Kullanıcı oturum açma sıklığı
 
-Sign-in frequency defines the time period before a user is asked to sign in again when attempting to access a resource.
+Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırken yeniden oturum açması istenmeden önce geçen süreyi tanımlar.
 
-The Azure Active Directory (Azure AD) default configuration for user sign in frequency is a rolling window of 90 days. Asking users for credentials often seems like a sensible thing to do, but it can backfire: users that are trained to enter their credentials without thinking can unintentionally supply them to a malicious credential prompt.
+Kullanıcı oturum açma sıklığı için Azure Active Directory (Azure AD) varsayılan yapılandırması, 90 günlük bir toplama penceresidir. Kimlik bilgileri için kullanıcılardan genellikle yapılacak bir şey gibi görünse de, bu durum geri yüklenebilir: kimlik bilgilerini düşünmeden girmek için eğitilen kullanıcılar, bunları istemeden kötü amaçlı bir kimlik bilgisi istemine girebilirler.
 
-It might sound alarming to not ask for a user to sign back in, in reality any violation of IT policies will revoke the session. Some examples include (but are not limited to) a password change, an incompliant device, or account disable. You can also explicitly [revoke users’ sessions using PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). The Azure AD default configuration comes down to “don’t ask users to provide their credentials if security posture of their sessions has not changed”.
+Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
 
-Sign-in frequency setting works with apps that have implemented OAUTH2 or OIDC protocols according to the standards. Most Microsoft native apps for Windows, Mac, and Mobile including the following web applications comply with the setting.
+Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte çalışarak. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
 
-- Word, Excel, PowerPoint Online
+- Word, Excel, PowerPoint online
 - OneNote Online
 - Office.com
-- O365 Admin portal
+- O365 yönetim portalı
 - Exchange Online
-- SharePoint and OneDrive
-- Teams web client
+- SharePoint ve OneDrive
+- Takımlar Web istemcisi
 - Dynamics CRM Online
-- Azure portalı
+- Azure portal
 
-## <a name="persistence-of-browsing-sessions"></a>Persistence of browsing sessions
+## <a name="persistence-of-browsing-sessions"></a>Gözatma oturumlarının kalıcılığı
 
-A persistent browser session allows users to remain signed in after closing and reopening their browser window.
+Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturum açmasına olanak tanır.
 
-The Azure AD default for browser session persistence allows users on personal devices to choose whether to persist the session by showing a “Stay signed in?” prompt after successful authentication. If browser persistence is configured in AD FS using the guidance in the article [AD FS Single Sign-On Settings](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-), we will comply with that policy and persist the Azure AD session as well. You can also configure whether users in your tenant see the “Stay signed in?” prompt by changing the appropriate setting in the company branding pane in Azure portal using the guidance in the article [Customize your Azure AD sign-in page](../fundamentals/customize-branding.md).
+Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel cihazlardaki kullanıcıların "oturum açık kal mı?" göstererek oturumu kalıcı olarak belirleyip kapatmayacağını seçmesine olanak sağlar. başarılı kimlik doğrulamasından sonra sor. Tarayıcı kalıcılığı AD FS ' de [Çoklu oturum açma ayarları AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)makaledeki yönergeler kullanılarak yapılandırılmışsa, bu ilkeye uyum sağlayacak ve Azure AD oturumunun de kalıcı hale getirilecektir. Ayrıca kiracınızdaki kullanıcıların "oturum açmış durumda kal?" i görmesini da yapılandırabilirsiniz. [Azure AD oturum açma sayfanızı özelleştirme](../fundamentals/customize-branding.md)makalesindeki kılavuzu kullanarak Azure Portal içindeki şirket markası bölmesinde uygun ayarı değiştirerek istemde bulun.
 
-## <a name="configuring-authentication-session-controls"></a>Configuring authentication session controls
+## <a name="configuring-authentication-session-controls"></a>Kimlik doğrulama oturumu denetimlerini yapılandırma
 
-Conditional Access is an Azure AD Premium capability and requires a premium license. If you would like to learn more about Conditional Access, see [What is Conditional Access in Azure Active Directory?](overview.md#license-requirements)
+Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. Koşullu erişim hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Active Directory Koşullu erişim nedir?](overview.md#license-requirements)
 
 > [!WARNING]
-> If you are using the [configurable token lifetime](../develop/active-directory-configurable-token-lifetimes.md) feature currently in public preview, please note that we don’t support creating two different policies for the same user or app combination: one with this feature and another one with configurable token lifetime feature. Microsoft plans to retire the configurable token lifetime feature on May 1, 2020 and replace it with the Conditional Access authentication session management feature.  
+> Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç yaşam süresi](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirteç ömrü özelliğine sahip başka bir uygulamayla aynı şekilde desteklenmediğini unutmayın. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 1 Mayıs 2020 ' de devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirebilir.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>Policy 1: Sign-in frequency control
+### <a name="policy-1-sign-in-frequency-control"></a>İlke 1: oturum açma sıklığı denetimi
 
-1. Create new policy
-1. Choose all required conditions for customer’s environment, including the target cloud apps.
-
-   > [!NOTE]
-   > It is recommended to set equal authentication prompt frequency for key Microsoft Office apps such as Exchange Online and SharePoint Online for best user experience.
-
-1. Go to **Access Controls** > **Session** and click **Sign-in frequency**
-1. Enter the required value of days and hours in the first text box
-1. Select a value of **Hours** or **Days** from dropdown
-1. Save your policy
-
-![Conditional Access policy configured for sign in frequency](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
-
-On Azure AD registered Windows devices sign in to the device is considered a prompt. For example, if you have configured the Sign in frequency to 24 hours for Office apps, users on Azure AD registered Windows devices will satisfy the Sign in frequency policy by signing in to the device and will be not prompted again when opening Office apps.
-
-If you have configured different Sign-in frequency for different web apps that are running in the same browser session, the strictest policy will be applied to both apps because all apps running in the same browser session share a single session token.
-
-### <a name="policy-2-persistent-browser-session"></a>Policy 2: Persistent browser session
-
-1. Create new policy
-1. Choose all required conditions.
+1. Yeni ilke oluştur
+1. Hedef bulut uygulamaları dahil olmak üzere müşterinin ortamı için gerekli tüm koşulları seçin.
 
    > [!NOTE]
-   > Please note that this control requires to choose “All Cloud Apps” as a condition. Browser session persistence is controlled by authentication session token. All tabs in a browser session share a single session token and therefore they all must share persistence state.
+   > En iyi kullanıcı deneyimi için Exchange Online ve SharePoint Online gibi anahtar Microsoft Office uygulamalar için eşit kimlik doğrulama istem sıklığı ayarlamanız önerilir.
 
-1. Go to **Access Controls** > **Session** and click **Persistent browser session**
-1. Select a value from dropdown
-1. Save you policy
+1. **Erişim denetimleri** > **oturumuna** gidin ve **oturum açma sıklığı** ' na tıklayın
+1. İlk metin kutusuna gereken gün ve saat değerlerini girin
+1. Açılan menüden **saat** veya **gün** değeri seçin
+1. İlkenizi kaydetme
 
-![Conditional Access policy configured for persistent browser](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![Oturum açma sıklığı için yapılandırılmış koşullu erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+
+Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak kabul edilir. Örneğin, Office uygulamaları için oturum açma sıklığını 24 saat olarak yapılandırdıysanız, Azure AD kayıtlı Windows cihazlarındaki kullanıcılar cihazda oturum açarak oturum açma sıklığı ilkesini karşılar ve Office uygulamaları açılırken bir daha sorulmayacaktır.
+
+Aynı tarayıcı oturumunda çalışan farklı Web uygulamaları için farklı oturum açma sıklığı yapılandırdıysanız, aynı tarayıcı oturumunda çalışan tüm uygulamalar tek bir oturum belirtecini paylaştığından, her iki uygulama için de en katı ilkesi uygulanır.
+
+### <a name="policy-2-persistent-browser-session"></a>İlke 2: kalıcı tarayıcı oturumu
+
+1. Yeni ilke oluştur
+1. Tüm gerekli koşulları seçin.
+
+   > [!NOTE]
+   > Lütfen bu denetimin koşul olarak "tüm bulut uygulamaları" seçmesini gerektirdiğini unutmayın. Tarayıcı oturumu kalıcılığı, kimlik doğrulama oturumu belirteci tarafından denetlenir. Bir tarayıcı oturumundaki tüm sekmeler tek bir oturum belirtecini paylaşır ve bu nedenle tümünün kalıcılık durumunu paylaşması gerekir.
+
+1. **Erişim denetimleri** > **oturumuna** gidin ve **kalıcı tarayıcı oturumu** ' na tıklayın.
+1. Açılan listeden bir değer seçin
+1. İlkenizi kaydetme
+
+![Kalıcı tarayıcı için yapılandırılmış koşullu erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
-> Persistent Browser Session configuration in Azure AD Conditional Access will overwrite the “Stay signed in?” setting in the company branding pane in the Azure portal for the same user if you have configured both policies.
+> Azure AD koşullu erişim 'de kalıcı tarayıcı oturumu yapılandırması "oturum açmış durumda kalsın" üzerine yazılacak. Her iki ilkeyi de yapılandırdıysanız, aynı kullanıcı için Azure portal Şirket markası bölmesinde ayarlama.
 
 ## <a name="validation"></a>Doğrulama
 
-Use the What-If tool to simulate a login from the user to the target application and other conditions based on how you configured your policy. The authentication session management controls show up in the result of the tool.
+İlkeyi nasıl yapılandırdığınıza bağlı olarak kullanıcıdan hedef uygulamaya ve diğer koşullara bir oturum açma benzetimi yapmak için ne yapılır aracını kullanın. Kimlik doğrulama oturumu yönetimi denetimleri, aracın sonucuna göre görünür.
 
-![Conditional Access What If tool results](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Koşullu erişim What If araç sonuçları](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
-## <a name="policy-deployment"></a>Policy deployment
+## <a name="policy-deployment"></a>İlke dağıtımı
 
-To make sure that your policy works as expected, the recommended best practice is to test it before rolling it out into production. Ideally, use a test tenant to verify whether your new policy works as intended. For more information, see the article [Best practices for Conditional Access in Azure Active Directory](best-practices.md).
+İlkenizin beklenildiği gibi çalıştığından emin olmak için önerilen en iyi yöntem, üretime geçmeden önce test sağlamaktır. İdeal olarak, yeni ilkenizin istendiği gibi çalışıp çalışmadığını doğrulamak için bir test kiracısı kullanın. Daha fazla bilgi için [Azure Active Directory Koşullu erişim Için en iyi yöntemler](best-practices.md)makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* If you want to know how to configure a Conditional Access policy, see the article [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-* If you are ready to configure Conditional Access policies for your environment, see the article [Best practices for Conditional Access in Azure Active Directory](best-practices.md).
+* Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz, [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md)makalesine bakın.
+* Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim Için en iyi yöntemler](best-practices.md)makalesine bakın.

@@ -1,7 +1,7 @@
 ---
-title: Custom token cache serialization in MSAL for Java
+title: Java için MSAL içinde özel belirteç önbelleği serileştirme
 titleSuffix: Microsoft identity platform
-description: Learn how to serialize the token cache for MSAL for Java
+description: Java için MSAL için belirteç önbelleğini serileştirme hakkında bilgi edinin
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,15 +25,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452609"
 ---
-# <a name="custom-token-cache-serialization-in-msal-for-java"></a>Custom token cache serialization in MSAL for Java
+# <a name="custom-token-cache-serialization-in-msal-for-java"></a>Java için MSAL içinde özel belirteç önbelleği serileştirme
 
-To persist the token cache between instances of your application, you will need to customize the serialization. The Java classes and interfaces involved in token cache serialization are the following:
+Uygulamanızın örnekleri arasında belirteç önbelleğini kalıcı hale getirmek için serileştirme özelleştirmeniz gerekir. Belirteç önbelleği serileştirmesine dahil olan Java sınıfları ve arabirimleri şunlardır:
 
-- [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html):  Interface representing security token cache.
-- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): Interface representing operation of executing code before and after access. You would @Override *beforeCacheAccess* and *afterCacheAccess* with the logic responsible for serializing and deserializing the cache.
-- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): Interface representing context in which the token cache is accessed. 
+- [Itokencache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): güvenlik belirteci önbelleğini temsil eden arabirim.
+- [Itokencacheaccessaspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): Access 'ten önce ve sonra kod yürütme işlemini temsil eden arabirim. Bu, önbelleğin serileştirilmesinin ve serisini kaldırmada sorumlu mantığa karşı *beforecacheaccess* ve *aftercacheaccess* @Override.
+- [Itokencachecontext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): belirteç önbelleğine erişildiği bağlamı temsil eden arabirim. 
 
-Below is a naive implementation of custom serialization of token cache serialization/deserialization. Do not copy and paste this into a production environment.
+Belirteç önbelleği serileştirme/seri hale getirme için özel serileştirme bir Naïve uygulamasıdır. Bunu kopyalayıp bir üretim ortamına yapıştırmayın.
 
 ```Java
 static class TokenPersistence implements ITokenCacheAccessAspect {
@@ -65,6 +65,6 @@ PublicClientApplication app =
 PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persistenceAspect).build();
 ```
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-Learn about [Get and remove accounts from the token cache using MSAL for Java](msal-java-get-remove-accounts-token-cache.md).
+[Java IÇIN msal kullanarak belirteç önbelleğinden hesap alma ve kaldırma](msal-java-get-remove-accounts-token-cache.md)hakkında bilgi edinin.

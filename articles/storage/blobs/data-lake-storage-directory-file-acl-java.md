@@ -1,6 +1,6 @@
 ---
-title: Use Java for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use Azure Storage libraries for Java to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: Azure Data Lake Storage 2. & ACL 'Leri için Java kullanma (Önizleme)
+description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için Java için Azure depolama kitaplıklarını kullanın.
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -8,31 +8,31 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 4593c16905c331b0d76c9c5c93faac6accfb0977
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485217"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534259"
 ---
-# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Java for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. & ACL 'Leri için Java kullanma (Önizleme)
 
-This article shows you how to use Java to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+Bu makalede, Java kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesaplarında Dizin, dosya ve izinleri oluşturma ve bunları yönetme işlemi gösterilmektedir. 
 
 > [!IMPORTANT]
-> The Java library that is featured in this article is currently in public preview.
+> Bu makalede tanıtılan Java kitaplığı şu anda genel önizleme aşamasındadır.
 
-[Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+[Paket (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [geri bildirim verme](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 
-## <a name="set-up-your-project"></a>Set up your project
+## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-To get started, open the *pom.xml* file in your text editor. Add the following dependency element to the group of dependencies.
+Başlamak için, metin düzenleyicinizdeki *Pod. xml* dosyasını açın. Aşağıdaki bağımlılık öğesini bağımlılıklar grubuna ekleyin.
 
 ```xml
 <dependency>
@@ -42,7 +42,7 @@ To get started, open the *pom.xml* file in your text editor. Add the following d
 </dependency>
 ```
 
-Then, add these imports statements to your code file.
+Ardından, bu Imports deyimlerini kod dosyanıza ekleyin.
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;
@@ -59,11 +59,11 @@ import com.azure.storage.file.datalake.models.PathPermissions;
 import com.azure.storage.file.datalake.models.RolePermissions;
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account 
+## <a name="connect-to-the-account"></a>Hesaba Bağlan 
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+Bu makaledeki kod parçacıklarını kullanmak için depolama hesabını temsil eden bir **DataLakeServiceClient** örneği oluşturmanız gerekir. Bir tane almanın en kolay yolu, hesap anahtarı kullanmaktır. 
 
-This example creates an instance of the **DataLakeServiceClient** by using an account key.
+Bu örnek, bir hesap anahtarı kullanarak **DataLakeServiceClient** örneği oluşturur.
 
 ```java
 
@@ -82,11 +82,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 }      
 
 ```
-## <a name="create-a-file-system"></a>Create a file system
+## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
 
-A file system acts as a container for your files. You can create one by calling the **DataLakeServiceClient.createFileSystem** method.
+Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. **DataLakeServiceClient. createFileSystem** metodunu çağırarak bir tane oluşturabilirsiniz.
 
-This example creates a file system named `my-file-system`. 
+Bu örnek `my-file-system`adlı bir dosya sistemi oluşturur. 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -98,9 +98,9 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-Create a directory reference by calling the **DataLakeFileSystemClient.createDirectory** method.
+**Datalakefilesystemclient. createDirectory** metodunu çağırarak bir dizin başvurusu oluşturun.
 
-This example adds a directory named `my-directory` to a file system, and then adds a sub-directory named `my-subdirectory`. 
+Bu örnek, bir dosya sistemine `my-directory` adlı bir dizin ekler ve sonra `my-subdirectory`adlı bir alt dizin ekler. 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -116,11 +116,11 @@ static public DataLakeDirectoryClient CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
 
-Rename or move a directory by calling the **DataLakeDirectoryClient.rename** method. Pass the path of the desired directory a parameter. 
+**Datalakedirectoryclient. Rename** metodunu çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+Bu örnek, `my-subdirectory-renamed`adı için bir alt dizini yeniden adlandırır.
 
 ```java
 static public DataLakeDirectoryClient
@@ -133,7 +133,7 @@ static public DataLakeDirectoryClient
 }
 ```
 
-This example moves a directory named `my-subdirectory-renamed` to a sub-directory of a directory named `my-directory-2`. 
+Bu örnek, `my-subdirectory-renamed` adlı bir dizini `my-directory-2`adlı bir dizinin alt dizinine taşır. 
 
 ```java
 static public DataLakeDirectoryClient MoveDirectory
@@ -148,9 +148,9 @@ static public DataLakeDirectoryClient MoveDirectory
 
 ## <a name="delete-a-directory"></a>Bir dizini silme
 
-Delete a directory by calling the **DataLakeDirectoryClient.deleteWithResponse** method.
+**Datalakedirectoryclient. deleteWithResponse** yöntemini çağırarak bir dizini silin.
 
-This example deletes a directory named `my-directory`.   
+Bu örnek, `my-directory`adlı bir dizini siler.   
 
 ```java
 static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -162,9 +162,9 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Manage a directory ACL
+## <a name="manage-a-directory-acl"></a>Dizin ACL 'sini yönetme
 
-This example gets and then sets the ACL of a directory named `my-directory`. This example gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read access.
+Bu örnek, `my-directory`adlı bir dizinin ACL 'sini alır ve ayarlar. Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
@@ -195,11 +195,11 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.append** method. Make sure to complete the upload by calling the **DataLakeFileClient.FlushAsync** method.
+İlk olarak, **Datalakefileclient** sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. **Datalakefileclient. Append** metodunu çağırarak bir dosyayı karşıya yükleyin. **Datalakefileclient. FlushAsync** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-This example uploads a text file to a directory named `my-directory`.`
+Bu örnek `my-directory`. ' adlı dizine bir metin dosyası yükler.
 
 ```java
 static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
@@ -222,9 +222,9 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Manage a file ACL
+## <a name="manage-a-file-acl"></a>Dosya ACL 'sini yönetme
 
-This example gets and then sets the ACL of a file named `upload-file.txt`. This example gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read access.
+Bu örnek, `upload-file.txt`adlı bir dosyanın ACL 'sini alır ve ayarlar. Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
 
 ```java
 static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
@@ -257,11 +257,11 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory
+## <a name="download-from-a-directory"></a>Bir dizinden indir
 
-First, create a **DataLakeFileClient** instance that represents the file that you want to download. Use the **DataLakeFileClient.read** method to read the file. Use any .NET file processing API to save bytes from the stream to a file. 
+İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **Datalakefileclient** örneği oluşturun. Dosyayı okumak için **Datalakefileclient. Read** metodunu kullanın. Akıştan bir dosyaya bayt kaydetmek için herhangi bir .NET dosya işleme API 'sini kullanın. 
 
-Make sure to complete the download by calling the **DataLakeFileClient.flush** method.
+**Datalakefileclient. Flush** metodunu çağırarak indirmeyi tamamladığınızdan emin olun.
 
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -289,7 +289,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-This example, prints the names of each file that is located in a directory named `my-directory`.
+Bu örnek, `my-directory`adlı bir dizinde bulunan her bir dosyanın adını yazdırır.
 
 ```java
 static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -322,9 +322,9 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
-* [Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
+* [API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
+* [Paket (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
 * [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+* [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-java/issues)

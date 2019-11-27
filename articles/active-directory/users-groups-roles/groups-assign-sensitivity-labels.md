@@ -1,6 +1,6 @@
 ---
-title: Assign sensitivity labels to groups - Azure AD | Microsoft Docs
-description: How to create membership rules to automatically populate groups, and a rule reference.
+title: Gruplara duyarlılık etiketleri atama-Azure AD | Microsoft Docs
+description: Grupları otomatik olarak doldurmak için üyelik kuralları ve bir kural başvurusu oluşturma.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,25 +21,25 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404800"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Assign sensitivity labels to Office 365 groups in Azure Active Directory (preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) içinde Office 365 gruplarına duyarlılık etiketleri atama
 
-Azure Active Directory (Azure AD) supports applying sensitivity labels published by the [Microsoft 365 compliance center](https://sip.protection.office.com/homepage) to Office 365 groups. Sensitivity labels apply to group across services like Outlook, Microsoft Teams, and SharePoint. This feature is currently in public preview.
+Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından Office 365 gruplarına yayınlanan duyarlılık etiketlerinin uygulanmasını destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Bu özellik şu anda genel önizleme aşamasındadır.
 
 > [!IMPORTANT]
-> Using Azure AD sensitivity labels for Office 365 groups requires an Azure Active Directory Premium P1 license.
+> Office 365 grupları için Azure AD duyarlılık etiketlerinin kullanılması Azure Active Directory Premium P1 lisansı gerektirir.
 
-## <a name="group-settings-controlled-by-labels"></a>Group settings controlled by labels
+## <a name="group-settings-controlled-by-labels"></a>Etiketlere göre denetlenen grup ayarları
 
-There are two settings that can be associated with a label:
+Bir etiketle ilişkilendirilebilen iki ayar vardır:
 
-- **Privacy**: Admins can associate a privacy setting with the label to control whether a group is public or private.
-- **Guest access**: Admins can enforce the guest policy for all groups that have the label assigned. This policy specifies whether guests can be added as members or not. If the guest policy is configured for a label, any groups that you assign the label to won't allow the AllowToAddGuests setting to be changed.
+- **Gizlilik**: Yöneticiler, bir grubun genel mi yoksa özel mi olduğunu denetlemek için bir gizlilik ayarını etiketle ilişkilendirebilirler.
+- **Konuk erişimi**: Yöneticiler, atanmış etiketi olan tüm gruplar için konuk ilkesini zorunlu kılabilir. Bu ilke, konukların üye olarak eklenip eklenemeyeceğini belirtir. Konuk ilkesi bir etiket için yapılandırılmışsa, etiketi atadığınız tüm gruplar, AllowToAddGuests ayarının değiştirilmesine izin vermez.
 
-## <a name="enable-sensitivity-label-support-in-powershell"></a>Enable sensitivity label support in PowerShell
+## <a name="enable-sensitivity-label-support-in-powershell"></a>PowerShell 'de duyarlılık etiketi desteğini etkinleştir
 
-To apply published labels to groups, you must first enable the feature. These steps enable the feature in Azure AD.
+Yayınlanmış etiketleri gruplara uygulamak için, önce özelliği etkinleştirmeniz gerekir. Bu adımlar, Azure AD 'deki özelliği etkinleştirir.
 
-1. Open a Windows PowerShell window on your computer. You can open it without elevated privileges.
+1. Bilgisayarınızda bir Windows PowerShell penceresi açın. Bunu yükseltilmiş ayrıcalıklar olmadan açabilirsiniz.
 1. Ortamı cmdlet'leri çalıştırmaya hazır hale getirmek için aşağıdaki komutları çalıştırın.
 
     ```PowerShell
@@ -47,127 +47,127 @@ To apply published labels to groups, you must first enable the feature. These st
     Connect-AzureAD
     ```
 
-    In the **Sign in to your account** page, enter your admin account and password to connect you to your service, and select **Sign in**.
-1. Fetch the current group settings for the Azure AD organization.
+    **Hesabınızda oturum açın** sayfasında, hizmetinize bağlanmak için yönetici hesabınızı ve parolanızı girin ve **oturum aç**' ı seçin.
+1. Azure AD kuruluşu için geçerli grup ayarlarını getirin.
 
     ```PowerShell
     $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
     ```
 
     > [!NOTE]
-    > If no group settings have been created for this Azure AD organization, you must first create the settings. Follow the steps in [Azure Active Directory cmdlets for configuring group settings](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) to create group settings for this Azure AD organization.
+    > Bu Azure AD kuruluşu için Grup ayarları oluşturulmadıysa, önce ayarları oluşturmanız gerekir. Bu Azure AD kuruluşunun grup ayarlarını oluşturmak için [Grup ayarlarını yapılandırmak üzere Azure Active Directory cmdlet 'lerinde](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) adımları izleyin.
 
-1. Next, display the current group settings.
+1. Sonra, geçerli grup ayarlarını görüntüleyin.
 
     ```PowerShell
     $Setting.Values
     ```
 
-1. Then enable the feature:
+1. Sonra özelliği etkinleştirin:
 
     ```PowerShell
     $Setting["EnableMIPLabels"] = "True"
     ```
 
-1. Then save the changes and apply the settings:
+1. Ardından, değişiklikleri kaydedin ve ayarları uygulayın:
 
     ```PowerShell
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Bu kadar. You've enabled the feature and you can apply published labels to groups.
+Bu kadar. Özelliği etkinleştirdiniz ve gruplar için yayımlanmış Etiketler uygulayabilirsiniz.
 
-## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Assign a label to a new group in Azure portal
+## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Azure portal yeni bir gruba etiket atama
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com).
-1. Select **Groups**, and then select **New group**.
-1. On the **New Group** page, select **Office 365**, and then fill out the required information for the new group and select a sensitivity label from the list.
+1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com)oturum açın.
+1. **Gruplar**' ı seçin ve ardından **Yeni Grup**' u seçin.
+1. **Yeni Grup** sayfasında **Office 365**' i seçin ve ardından yeni grup için gerekli bilgileri doldurun ve listeden bir duyarlılık etiketi seçin.
 
-   ![Assign a sensitivity label in the New groups page](./media/groups-assign-sensitivity-labels/new-group-page.png)
+   ![Yeni Gruplar sayfasında duyarlılık etiketi atama](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Save your changes and select **Create**.
+1. Değişikliklerinizi kaydedin ve **Oluştur**' u seçin.
 
-Your group is created and the policies associated with the selected label are then automatically enforced.
+Grubunuz oluşturulur ve seçili etiketle ilişkili ilkeler otomatik olarak zorlanır.
 
-## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Assign a label to an existing group in Azure portal
+## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Azure portal var olan bir gruba etiket atama
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a sensitivity label from the list.
+1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) genel yönetici veya gruplar yönetici hesabıyla veya grup sahibi olarak oturum açın.
+1. **Grupları**seçin.
+1. **Tüm gruplar** sayfasında, etiketlemek istediğiniz grubu seçin.
+1. Seçili grubun sayfasında, **Özellikler** ' i seçin ve listeden bir duyarlılık etiketi seçin.
 
-   ![Assign a sensitivity label on the overview page for a group](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
+   ![Bir grup için genel bakış sayfasında duyarlılık etiketi atama](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. Select **Save** to save your changes.
+1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
-## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Remove a label from an existing group in Azure portal
+## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Azure portal var olan bir gruptan bir etiketi kaldır
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to remove the label from.
-1. On the **Group** page, select **Properties**.
+1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) genel yönetici veya gruplar yönetici hesabıyla veya grup sahibi olarak oturum açın.
+1. **Grupları**seçin.
+1. **Tüm gruplar** sayfasında, etiketi kaldırmak istediğiniz grubu seçin.
+1. **Grup** sayfasında, **Özellikler**' i seçin.
 1. **Kaldır**’ı seçin.
-1. Select **Save** to apply your changes.
+1. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365 app support for sensitivity labels
+## <a name="office-365-app-support-for-sensitivity-labels"></a>Duyarlılık etiketleri için Office 365 uygulama desteği
 
-The following Office 365 apps and services support the sensitivity labels in this preview:
+Aşağıdaki Office 365 uygulamaları ve Hizmetleri, bu Önizlemedeki duyarlılık etiketlerini destekler:
 
-- Azure AD admin center
-- Microsoft 365 compliance center
+- Azure AD Yönetim Merkezi
+- Uyumluluk Merkezi Microsoft 365
 - SharePoint
-- Outlook on the web
-- Teams
-- SharePoint admin center
+- Web 'de Outlook
+- Ekipler
+- SharePoint Yönetim Merkezi
 
-For more information about Office 365 apps support, see [Office 365 support for sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+Office 365 uygulamaları desteği hakkında daha fazla bilgi için bkz. [duyarlılık etiketleri Için office 365 desteği](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
-## <a name="using-classic-azure-ad-classifications"></a>Using classic Azure AD classifications
+## <a name="using-classic-azure-ad-classifications"></a>Klasik Azure AD sınıflandırmalarını kullanma
 
-After you enable this feature, Office 365 no longer supports the “classic” classifications for new groups. Classic classifications are the old classifications you set up by defining values for the `ClassificationList` setting in Azure AD PowerShell. When this feature is enabled, those classifications will not be applied to groups.
+Bu özelliği etkinleştirdikten sonra, Office 365 yeni gruplar için "klasik" sınıflandırmaları artık desteklememektedir. Klasik sınıflandırmalar, Azure AD PowerShell 'de `ClassificationList` ayarı için değerleri tanımlayarak ayarladığınız eski sınıflandırmalardır. Bu özellik etkinleştirildiğinde, bu sınıflandırmalar gruplara uygulanmaz.
 
-## <a name="troubleshooting-issues"></a>Troubleshooting issues
+## <a name="troubleshooting-issues"></a>Sorun giderme sorunları
 
-### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Sensitivity labels are not available for assignment on a group
+### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Duyarlılık etiketleri bir grupta atama için kullanılamaz
 
-The sensitivity label option is only displayed for groups when all the following conditions are met:
+Duyarlılık etiketi seçeneği yalnızca aşağıdaki koşulların tümü karşılandığında gruplar için görüntülenir:
 
-1. Labels are published in the Microsoft 365 Compliance Center for this tenant.
-1. The feature is enabled, EnableMIPLabels is set to True in PowerShell.
-1. The group is an Office 365 group.
-1. The tenant has an active Azure Active Directory Premium P1 license.
-1. The current signed-in user has access to published labels.
-1. The current signed-in user has sufficient privileges to assign labels. The user must be either a Global Administrator, Group Administrator, or the group owner.
-1. The current signed-in user has an Office 365 license assigned. For more information about license requirements, see [Sensitivity labels in Office apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
+1. Etiketler, bu kiracı için Microsoft 365 Uyumluluk Merkezi 'nde yayımlanır.
+1. Özellik etkin, PowerShell 'de Enablemıplabels true olarak ayarlandı.
+1. Grup bir Office 365 grubudur.
+1. Kiracının etkin bir Azure Active Directory Premium P1 lisansı vardır.
+1. Geçerli oturum açmış kullanıcının yayımlanmış etiketlere erişimi var.
+1. Geçerli oturum açan kullanıcının etiket atamak için yeterli ayrıcalıkları vardır. Kullanıcının bir genel yönetici, Grup Yöneticisi veya grup sahibi olması gerekir.
+1. Şu anda oturum açmış olan kullanıcıya bir Office 365 lisansı atanmış. Lisans gereksinimleri hakkında daha fazla bilgi için bkz. [Office uygulamalarında duyarlılık etiketleri](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
-Please make sure all the conditions are met in order to assign labels to a group.
+Bir gruba etiket atamak için lütfen tüm koşulların karşılandığından emin olun.
 
-### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>The label I want to assign is not in the list
+### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>Atamak istediğim etiket listede değil
 
-If the label you are looking for is not in the list, this could be the case for one of the following reasons:
+Aradığınız etiket listede yoksa, bu durum aşağıdaki nedenlerden biri olabilir:
 
-- The label might not be published in the Microsoft 365 Compliance Center. This could also apply to labels that are no longer published. Please check with your administrator for more information.
-- The label may be published, however, it is not available to the user that is signed-in. Please check with your administrator for more information on how to get access to the label.
+- Etiket Microsoft 365 Uyumluluk Merkezi 'nde yayımlanmayabilir. Bu, artık yayımlanmayacak Etiketler için de uygulanabilir. Daha fazla bilgi için lütfen yöneticinize başvurun.
+- Etiket yayımlanmayabilir, ancak oturum açmış olan kullanıcı tarafından kullanılamaz. Etikete erişim alma hakkında daha fazla bilgi için lütfen yöneticinize başvurun.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>How can I change the label on a group?
+### <a name="how-can-i-change-the-label-on-a-group"></a>Bir gruptaki etiketi nasıl değiştirebilirim?
 
-Labels can be swapped at any time using the same steps as assigning a label to an existing group, as follows:
+Etiketler, mevcut bir gruba etiket atama ile aynı adımları kullanarak herhangi bir zamanda değiştirilebilir:
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global or Group administrator account or as group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a new sensitivity label from the list.
+1. Küresel veya grup yöneticisi hesabı veya grup sahibi olarak [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+1. **Grupları**seçin.
+1. **Tüm gruplar** sayfasında, etiketlemek istediğiniz grubu seçin.
+1. Seçili grubun sayfasında, **Özellikler** ' i seçin ve listeden yeni bir duyarlılık etiketi seçin.
 1. **Kaydet**’i seçin.
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Group setting changes to published labels are not updated on the groups
+### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Yayınlanmış etiketlere yapılan grup ayarı değişiklikleri gruplar üzerinde güncelleştirilmiyor
 
-As a best practice, we don't recommend that you change group settings for a label after the label is applied to groups. When you make changes to group settings associated with published labels in [Microsoft 365 compliance center](https://sip.protection.office.com/homepage), those policy changes aren't automatically applied on the impacted groups.
+En iyi uygulama olarak, etiket gruplara uygulandıktan sonra bir etiketin grup ayarlarını değiştirmenizi önermiyoruz. [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage)'nde yayımlanan etiketlerle ilişkili Grup ayarlarında değişiklik yaptığınızda, bu ilke değişiklikleri etkilenen gruplara otomatik olarak uygulanmaz.
 
-If you must make a change, use an [Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) to manually apply updates to the impacted groups. This method makes sure that all existing groups enforce the new setting.
+Değişiklik yapmanız gerekiyorsa, etkilenen gruplara el ile güncelleştirmeleri uygulamak için bir [Azure AD PowerShell betiği](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) kullanın. Bu yöntem, var olan tüm grupların yeni ayarı zorlayacağı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Use sensitivity labels with Microsoft Teams, Office 365 groups, and SharePoint sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
-- [Update groups after label policy change manually with Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
+- [Microsoft ekipleri, Office 365 grupları ve SharePoint siteleri ile duyarlılık etiketleri kullanma](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Azure AD PowerShell betiği ile etiket ilkesi el ile değiştirildikten sonra grupları güncelleştirme](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Grup ayarlarınızı düzenleme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [PowerShell komutlarını kullanarak grupları yönetme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

@@ -1,6 +1,6 @@
 ---
-title: Error reference for health checks
-description: Error codes and possible solutions to problems found by running the az acr check-health diagnostic command in Azure Container Registry
+title: Sistem durumu denetimleri için hata başvurusu
+description: Azure Container Registry ' de az ACR Check-Health Diagnostic komutu çalıştırılarak bulunan sorunlara yönelik olası çözümler ve hata kodları
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
@@ -10,99 +10,99 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455041"
 ---
-# <a name="health-check-error-reference"></a>Health check error reference
+# <a name="health-check-error-reference"></a>Sistem durumu denetimi hata başvurusu
 
-Following are details about error codes returned by the [az acr check-health][az-acr-check-health] command. For each error, possible solutions are listed.
+[Az ACR Check-Health][az-acr-check-health] komutu tarafından döndürülen hata kodlarıyla ilgili ayrıntılar aşağıda verilmiştir. Her hata için olası çözümler listelenir.
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
-This error means that Docker client for CLI could not be found. As a result, the following additional checks are not run: finding Docker version, evaluating Docker daemon status, and running a Docker pull command.
+Bu hata, CLı için Docker istemcisinin bulunamadığı anlamına gelir. Sonuç olarak, aşağıdaki ek denetimler çalıştırılmaz: Docker sürümü bulunuyor, Docker Daemon durumunu değerlendiriyor ve Docker Pull komutu çalıştırılıyor.
 
-*Potential solutions*: Install Docker client; add Docker path to the system variables.
+*Olası çözümler*: Docker Client 'ı yükler; Sistem değişkenlerine Docker yolu ekleyin.
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-This error means that the Docker daemon status is unavailable, or that it could not be reached using the CLI. As a result, Docker operations (such as `docker login` and `docker pull`) are unavailable through the CLI.
+Bu hata, Docker Daemon durumunun kullanılamadığı veya CLı kullanılarak erişilemeyen anlamına gelir. Sonuç olarak, Docker işlemleri (`docker login` ve `docker pull`gibi) CLı aracılığıyla kullanılamaz.
 
-*Potential solutions*: Restart Docker daemon, or validate that it is properly installed.
+*Olası çözümler*: Docker Daemon 'ı yeniden başlatın veya düzgün bir şekilde yüklendiğini doğrulayın.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-This error means that CLI was not able to run the command `docker --version`.
+Bu hata, CLı 'nin komutu `docker --version`çalıştıramadığını gösterir.
 
-*Potential solutions*: Try running the command manually, make sure you have the latest CLI version, and investigate the error message.
+*Olası çözümler*: komutu el ile çalıştırmayı deneyin, en son CLI sürümüne sahip olduğunuzdan emin olun ve hata iletisini araştırın.
 
 ## <a name="docker_pull_error"></a>DOCKER_PULL_ERROR
 
-This error means that the CLI was not able to pull a sample image to your environment.
+Bu hata, CLı 'nin ortamınıza örnek bir görüntü çekemediği anlamına gelir.
 
-*Potential solutions*: Validate that all components necessary to pull an image are running properly.
+*Olası çözümler*: bir görüntüyü çekmek için gereken tüm bileşenlerin düzgün şekilde çalıştığını doğrulayın.
 
 ## <a name="helm_command_error"></a>HELM_COMMAND_ERROR
 
-This error means that Helm client could not be found by the CLI, which precludes other Helm operations.
+Bu hata, diğer HELI işlemlerini daha fazla kullanan CLı tarafından, Helu istemcisinin bulunamadıkları anlamına gelir.
 
-*Potential solutions*: Verify that Helm client is installed, and that its path is added to the system environment variables.
+*Olası çözümler*: hele istemcisinin yüklü olduğunu ve yolunun sistem ortam değişkenlerine eklendiğini doğrulayın.
 
 ## <a name="helm_version_error"></a>HELM_VERSION_ERROR
 
-This error means that the CLI was unable to determine the Helm version installed. This can happen if the Azure CLI version (or if the Helm version) being used is obsolete.
+Bu hata, CLı 'nin yüklü Held sürümünü belirleyemediği anlamına gelir. Bu durum, kullanılmakta olan Azure CLı sürümü (veya Held sürümü) kullanılmıyorsa oluşabilir.
 
-*Potential solutions*: Update to the latest Azure CLI version or to the recommended Helm version; run the command manually and investigate the error message.
+*Olası çözümler*: en son Azure CLI sürümüne veya önerilen Held sürümüne güncelleştirin; komutu el ile çalıştırın ve hata iletisini araştırın.
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 
-This error means that the DNS for the given registry login server was pinged but did not respond, which means it is unavailable. This can indicate some connectivity issues. Alternatively, the registry might not exist, the user might not have the permissions on the registry (to retrieve its login server properly), or the target registry is in a different cloud than the one used in the Azure CLI.
+Bu hata, verilen kayıt defteri oturum açma sunucusu için DNS 'nin ping işlemi yaptığı ancak yanıt vermediği anlamına gelir; bu da kullanılamaz. Bu, bazı bağlantı sorunlarını gösterebilir. Alternatif olarak, kayıt defteri mevcut olmayabilir, Kullanıcı kayıt defteri üzerinde izinlere sahip olmayabilir (oturum açma sunucusunu düzgün bir şekilde almak için) veya hedef kayıt defteri, Azure CLı 'de kullanılandan farklı bir bulutta bulunuyor olabilir.
 
-*Potential solutions*: Validate connectivity; verify spelling of the registry, and that registry exists; verify that the user has the right permissions on it and that the registry's cloud is the same that is used in the Azure CLI.
+*Olası çözümler*: bağlantıyı doğrulama; kayıt defterinin var olduğunu ve kayıt defteri olduğunu doğrulayın; kullanıcının üzerinde doğru izinlere sahip olduğunu ve kayıt defterinin bulutu 'nın Azure CLı 'de kullanılan aynı olduğunu doğrulayın.
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-This error means that the challenge endpoint for the given registry responded with a 403 Forbidden HTTP status. This error means that users don't have access to the registry, most likely because of a virtual network configuration. To see the currently configured firewall rules, run `az acr show --query networkRuleSet --name <registry>`.
+Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle, kullanıcıların kayıt defterine erişemeyeceği anlamına gelir. Yapılandırılmış olan güvenlik duvarı kurallarını görmek için `az acr show --query networkRuleSet --name <registry>`çalıştırın.
 
-*Potential solutions*: Remove virtual network rules, or add the current client IP address to the allowed list.
+*Olası çözümler*: sanal ağ kurallarını kaldırın veya GEÇERLI istemci IP adresini izin verilenler listesine ekleyin.
 
 ## <a name="connectivity_challenge_error"></a>CONNECTIVITY_CHALLENGE_ERROR
 
-This error means that the challenge endpoint of the target registry did not issue a challenge.
+Bu hata, hedef kayıt defterinin sınama uç noktasının bir zorluk yayınlamadığı anlamına gelir.
 
-*Potential solutions*: Try again after some time. If the error persists, open an issue at https://aka.ms/acr/issues.
+*Olası çözümler*: bir süre sonra yeniden deneyin. Hata devam ederse, https://aka.ms/acr/issuesbir sorun açın.
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
-This error means that the challenge endpoint of the target registry issued a challenge, but the registry does not support Azure Active Directory authentication.
+Bu hata, hedef kayıt defterinin sınama uç noktasının bir zorluk verdiği, ancak kayıt defterinin Azure Active Directory kimlik doğrulamasını desteklemediği anlamına gelir.
 
-*Potential solutions*: Try a different way to authenticate, for example, with admin credentials. If users need  to authenticate using Azure Active Directory, open an issue at https://aka.ms/acr/issues.
+*Olası çözümler*: Örneğin, yönetici kimlik bilgileriyle kimlik doğrulamanın farklı bir yolunu deneyin. Kullanıcıların Azure Active Directory kullanarak kimlik doğrulaması yapması gerekiyorsa https://aka.ms/acr/issuesbir sorun açın.
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
-This error means that the registry login server did not respond with a refresh token, so access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the  Azure CLI are stale.
+Bu hata, kayıt defteri oturum açma sunucusunun yenileme belirteciyle yanıt vermediği anlamına gelir; bu nedenle hedef kayıt defterine erişim reddedildi. Bu hata, kullanıcının kayıt defterinde doğru izinlere sahip olmaması veya Azure CLı için Kullanıcı kimlik bilgilerinin eski olması durumunda meydana gelebilir.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; izinleri, belirteçleri ve kimlik bilgilerini yenilemek için `az login` çalıştırın.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
-This error means that the registry login server did not respond with an access token, so that the access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the Azure CLI are stale.
+Bu hata, kayıt defteri oturum açma sunucusunun bir erişim belirteciyle yanıt vermediği, hedef kayıt defterine erişimin reddedilmediği anlamına gelir. Bu hata, kullanıcının kayıt defterinde doğru izinlere sahip olmaması veya Azure CLı için Kullanıcı kimlik bilgilerinin eski olması durumunda meydana gelebilir.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; izinleri, belirteçleri ve kimlik bilgilerini yenilemek için `az login` çalıştırın.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
-This error means that the client was unable to establish a secure connection to the container registry. This error generally occurs if you're running or using a proxy server.
+Bu hata, istemcinin kapsayıcı kayıt defterine güvenli bir bağlantı kurmadığını gösterir. Bu hata genellikle bir ara sunucu çalıştırıyorsanız veya kullanıyorsanız oluşur.
 
-*Potential solutions*: More information on working behind a proxy can be [found here](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Olası çözümler*: bir proxy 'nin arkasında çalışma hakkında daha fazla bilgi [burada bulunabilir](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 
-This error means that the CLI was unable to find the login server of the given registry, and no default suffix was found for the current cloud. This error can occur if the registry does not exist, if the user does not have the right permissions on the registry, if the registry's cloud and the current Azure CLI cloud do not match, or if the Azure CLI version is obsolete.
+Bu hata, CLı 'nin verilen kayıt defteri 'nin oturum açma sunucusunu bulamadığı ve geçerli bulut için varsayılan sonekin bulunmadığı anlamına gelir. Kayıt defteri yoksa, kullanıcının kayıt defterinde doğru izinleri yoksa, kayıt defterinin bulutu ve geçerli Azure CLı bulutu eşleşmiyorsa veya Azure CLı sürümü artık kullanılmıyor ise bu hata oluşabilir.
 
-*Potential solutions*: Verify that the spelling is correct and that the registry exists; verify that user has the right permissions on the registry, and that the clouds of the registry and the CLI environment match; update Azure CLI to the latest version.
+*Olası çözümler*: Yazımın doğru olduğundan ve kayıt defterinin bulunduğundan emin olun; kullanıcının kayıt defterinde doğru izinlere sahip olduğunu ve kayıt defterinin ve CLı ortamının bulutlarının eşleştiğini doğrulayın; Azure CLı 'yı en son sürüme güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For options to check the health of a registry, see [Check the health of an Azure container registry](container-registry-check-health.md).
+Bir kayıt defterinin sistem durumunu denetleme seçenekleri için bkz. [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md).
 
-See the [FAQ](container-registry-faq.md) for frequently asked questions and other known issues about Azure Container Registry.
+Sık sorulan sorular ve Azure Container Registry ilgili diğer bilinen sorunlar için [SSS](container-registry-faq.md) bölümüne bakın.
 
 
 

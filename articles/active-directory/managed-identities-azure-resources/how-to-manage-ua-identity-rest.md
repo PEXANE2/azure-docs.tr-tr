@@ -1,6 +1,6 @@
 ---
-title: Manage user-assigned managed identities using REST - Azure AD
-description: Step by step instructions on how to create, list and delete a user-assigned managed identity to make REST API calls.
+title: REST kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri yönetme-Azure AD
+description: REST API çağrısı yapmak için Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme konusunda adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,35 +15,35 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b4da7f47181341fce7c5fa5e7a6d239fe3070d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 39e108451e4c19e77e01b5bcc5d8dd21e86ad73a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224659"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547422"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Create, list or delete a user-assigned managed identity using REST API calls
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>REST API çağrılarını kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Managed identities for Azure resources provides Azure services the ability to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
+Azure kaynakları için Yönetilen kimlikler, Azure hizmetleri 'nin kodunuzda kimlik bilgilerine gerek duymadan Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapma yeteneği sağlar. 
 
-In this article, you learn how to create, list, and delete a user-assigned managed identity using CURL to make REST API calls.
+Bu makalede, REST API çağrısı yapmak için KıVRıMLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturmayı, listeleyeceğinizi ve silmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- If you are using Windows, install the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal.
-- If you use the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or a [Linux distribution OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [Install the Azure CLI local console](/cli/azure/install-azure-cli).
-- If you are using Azure CLI local console, sign in to Azure using `az login` with an account that is associated with the Azure subscription you would like to deploy or retrieve user-assigned managed identity information.
-- Retrieve a Bearer access token using `az account get-access-token` to perform the following user-assigned managed identity operations.
+- Windows kullanıyorsanız, [Linux Için Windows alt sistemini](https://msdn.microsoft.com/commandline/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
+- [Linux Için Windows alt sistemi](https://msdn.microsoft.com/commandline/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
+- Azure CLı yerel Konsolu kullanıyorsanız, dağıtmak veya Kullanıcı tarafından atanan yönetilen kimlik bilgilerini almak istediğiniz Azure aboneliğiyle ilişkili bir hesapla `az login` kullanarak Azure 'da oturum açın.
+- Aşağıdaki Kullanıcı tarafından atanan yönetilen kimlik işlemlerini gerçekleştirmek için `az account get-access-token` kullanarak bir taşıyıcı erişim belirteci alın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma 
 
-To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -58,22 +58,22 @@ PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-**Request headers**
+**İstek üst bilgileri**
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        |
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
-**Request body**
+**İstek gövdesi**
 
-|Adı  |Açıklama  |
+|Ad  |Açıklama  |
 |---------|---------|
-|location     | Gereklidir. Resource location.        |
+|location     | Gerekli. Kaynak konumu.        |
 
-## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
+## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listeleme
 
-To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Kullanıcı tarafından atanan yönetilen kimliği listelemek/okumak için hesabınızın [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) veya [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rolü ataması gerekir.
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -85,15 +85,15 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        |
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
+## <a name="delete-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimliği silme
 
-To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Kullanıcı tarafından atanan bir yönetilen kimliği silmek için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
 
 > [!NOTE]
-> Deleting a user-assigned managed identity will not remove the reference from any resource it was assigned to. To remove a user-assigned managed identity from a VM using CURL see [Remove a user-assigned identity from an Azure VM](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Kullanıcı tarafından atanan bir yönetilen kimliğin silinmesi, atandığı herhangi bir kaynaktaki başvuruyu kaldırmaz. Bir VM 'den Kullanıcı tarafından atanan yönetilen kimliği, KıVRıMLı kullanarak kaldırmak için bkz. [Azure VM 'den Kullanıcı tarafından atanan kimliği kaldırma](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
@@ -105,9 +105,9 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 ```
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Set to a valid `Bearer` access token.        |
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For information on how to assign a user-assigned managed identity to an Azure VM/VMSS using CURL see, [Configure managed identities for Azure resources on an Azure VM using REST API calls](qs-configure-rest-vm.md#user-assigned-managed-identity) and [Configure managed identities for Azure resources on a virtual machine scale set using REST API calls](qs-configure-rest-vmss.md#user-assigned-managed-identity).
+Kullanıcı tarafından atanan yönetilen kimliği, bir Azure VM/VMSS 'yi kullanarak atama hakkında daha fazla bilgi için bkz. [bir Azure VM üzerinde Azure kaynakları için Yönetilen kimlikler yapılandırma REST API çağırır](qs-configure-rest-vm.md#user-assigned-managed-identity) ve [REST API çağrılarını kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler](qs-configure-rest-vmss.md#user-assigned-managed-identity)yapılandırma.

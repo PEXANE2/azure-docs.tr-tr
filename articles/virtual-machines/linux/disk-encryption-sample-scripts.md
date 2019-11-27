@@ -1,6 +1,6 @@
 ---
-title: Azure Disk Encryption sample scripts
-description: This article is the appendix for Microsoft Azure Disk Encryption for Linux VMs.
+title: Azure disk şifrelemesi örnek betikleri
+description: Bu makalede, Linux sanal makineleri için Microsoft Azure disk şifrelemesi eki bulunur.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -14,15 +14,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326360"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption sample scripts 
+# <a name="azure-disk-encryption-sample-scripts"></a>Azure disk şifrelemesi örnek betikleri 
 
-This article provides sample scripts for preparing pre-encrypted VHDs and other tasks.
+Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.
 
  
 
-## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Sample PowerShell scripts for Azure Disk Encryption 
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure Disk şifrelemesi için örnek PowerShell betikleri 
 
-- **List all encrypted VMs in your subscription**
+- **Aboneliğinizdeki tüm şifreli VM 'Leri listeleyin**
 
      ```azurepowershell-interactive
      $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
@@ -30,84 +30,84 @@ This article provides sample scripts for preparing pre-encrypted VHDs and other 
      Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
      ```
 
-- **List all disk encryption secrets used for encrypting VMs in a key vault** 
+- **Bir anahtar kasasındaki VM 'Leri şifrelemek için kullanılan tüm disk şifreleme gizli dizilerini listeleyin** 
 
      ```azurepowershell-interactive
      Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
-### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Using the Azure Disk Encryption prerequisites PowerShell script
-If you're already familiar with the prerequisites for Azure Disk Encryption, you can use the [Azure Disk Encryption prerequisites PowerShell script](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). For an example of using this PowerShell script, see the [Encrypt a VM Quickstart](disk-encryption-powershell-quickstart.md). You can remove the comments from a section of the script, starting at line 211, to encrypt all disks for existing VMs in an existing resource group. 
+### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Azure disk şifrelemesi önkoşulları PowerShell betiğini kullanma
+Azure disk şifrelemesi önkoşullarını zaten biliyorsanız, [Azure disk şifrelemesi önkoşulları PowerShell betiğini](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )kullanabilirsiniz. Bu PowerShell betiğini kullanmayla ilgili bir örnek için bkz. [VM 'Yi şifreleme hızlı başlangıç](disk-encryption-powershell-quickstart.md). Satırında 211, mevcut bir kaynak grubunda var olan VM'ler için tüm diskler şifrelemek için başlatma komut dosyasının bir bölümünden açıklamaları kaldırabilirsiniz. 
 
-The following table shows which parameters can be used in the PowerShell script: 
+Aşağıdaki tabloda, PowerShell betik parametreleri kullanılabileceğini gösterir: 
 
 
-|Parametre|Açıklama|Mandatory?|
+|Parametre|Açıklama|Girilmesi?|
 |------|------|------|
-|$resourceGroupName| Name of the resource group to which the KeyVault belongs to.  A new resource group with this name will be created if one doesn't exist.| Doğru|
-|$keyVaultName|Name of the KeyVault in which encryption keys are to be placed. A new vault with this name will be created if one doesn't exist.| Doğru|
-|$location|Location of the KeyVault. Make sure the KeyVault and VMs to be encrypted are in the same location. `Get-AzLocation` komutu ile bir konum listesi alın.|Doğru|
-|$subscriptionId|Identifier of the Azure subscription to be used.  Abonelik Kimliğinizi `Get-AzSubscription` komutu ile alabilirsiniz.|Doğru|
-|$aadAppName|Name of the Azure AD application that will be used to write secrets to KeyVault. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. If this app already exists, pass aadClientSecret parameter to the script.|Yanlış|
-|$aadClientSecret|Client secret of the Azure AD application that was created earlier.|Yanlış|
-|$keyEncryptionKeyName|Name of optional key encryption key in KeyVault. A new key with this name will be created if one doesn't exist.|Yanlış|
+|$resourceGroupName| Anahtar kasası ait olduğu kaynak grubunun adı.  Yoksa, bu ada sahip yeni bir kaynak grubu oluşturulur.| True|
+|$keyVaultName|Şifreleme anahtarları, yerleştirilecek olan anahtar kasası adı. Yoksa, bu ada sahip yeni bir kasa oluşturulur.| True|
+|$location|Anahtar kasası konumu. Anahtar kasası ve VM'lerin şifrelenmesini aynı konumda olduğundan emin olun. `Get-AzLocation` komutu ile bir konum listesi alın.|True|
+|$subscriptionId|Kullanılacak Azure aboneliğini tanımlayıcısı.  Abonelik Kimliğinizi `Get-AzSubscription` komutu ile alabilirsiniz.|True|
+|$aadAppName|Anahtar kasası için gizli anahtarları yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. Bu uygulama zaten varsa, aadClientSecret parametre betiğine geçirin.|False|
+|$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci gizli anahtarı.|False|
+|$keyEncryptionKeyName|KeyVault, isteğe bağlı anahtar şifreleme anahtarı adı. Bu ada sahip yeni bir anahtar yoksa oluşturulur.|False|
 
 
-### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Encrypt or decrypt VMs without an Azure AD app
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Şifrelemek veya VM'lerin şifresini çözmek bir Azure AD uygulaması
 
-- [Enable disk encryption on an existing or running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
-- [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
-    - Disabling encryption is only allowed on Data volumes for Linux VMs.  
+- [Mevcut veya çalışan bir Linux VM 'de disk şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+- [Çalışan bir Linux VM 'de şifrelemeyi devre dışı bırakma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+    - Şifreleme devre dışı bırakıldığında yalnızca veri birimlerinde Linux VM'ler için izin verilir.  
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Encrypt or decrypt VMs with an Azure AD app (previous release) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Şifrelemek veya Vm'leri bir Azure AD uygulamasını (önceki sürüm) şifresini çözme 
  
-- [Enable disk encryption on an existing or running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
+- [Mevcut veya çalışan bir Linux VM 'de disk şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 
--  [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
-    - Disabling encryption is only allowed on Data volumes for Linux VMs. 
+-  [Çalışan bir Linux VM 'de şifrelemeyi devre dışı bırakma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
+    - Şifreleme devre dışı bırakıldığında yalnızca veri birimlerinde Linux VM'ler için izin verilir. 
 
 
-- [Create a new encrypted managed disk from a pre-encrypted VHD/storage blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Creates a new encrypted managed disk provided a pre-encrypted VHD and its corresponding encryption settings
+- [Önceden şifrelenen bir VHD/depolama blobundan yeni bir şifrelenmiş yönetilen disk oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Önceden şifrelenmiş bir VHD ve karşılık gelen şifreleme ayarları ile sağlanan yeni şifrelenmiş yönetilen disk oluşturur
 
 
 
 
 
-## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>Encrypting an OS drive on a running Linux VM
+## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>Çalışan bir Linux VM 'de işletim sistemi sürücüsü şifreleme
 
-### <a name="prerequisites-for-os-disk-encryption"></a>Prerequisites for OS disk encryption
+### <a name="prerequisites-for-os-disk-encryption"></a>İşletim sistemi disk şifrelemesi önkoşulları
 
-* The VM must be using a distribution compatible with OS disk encryption as listed in the [Azure Disk Encryption supported operating systems](disk-encryption-overview.md#supported-vm-sizes) 
-* The VM must be created from the Marketplace image in Azure Resource Manager.
-* Azure VM with at least 4 GB of RAM (recommended size is 7 GB).
-* (For RHEL and CentOS) Disable SELinux. To disable SELinux, see "4.4.2. Disabling SELinux" in the [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) on the VM.
-* After you disable SELinux, reboot the VM at least once.
+* VM, [Azure Disk Şifrelemesi tarafından desteklenen işletim sistemlerinde](disk-encryption-overview.md#supported-vm-sizes) listelendiği gibi işletim sistemi disk şifrelemesi ile uyumlu bir dağıtım kullanıyor olmalıdır 
+* Azure Resource Manager'daki Market görüntüsünden VM yeniden oluşturulması gerekir.
+* En az 4 GB RAM ile Azure VM (boyutudur, 7 GB önerilir).
+* (RHEL ve CentOS) SELinux devre dışı bırakın. SELinux devre dışı bırakmak için "4.4.2. bkz. SELinux kullanıcısının ve sanal makine üzerinde [yönetici kılavuzundaki](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) SELinux devre dışı bırakılıyor.
+* SELinux devre dışı bıraktıktan sonra VM'yi en az bir kez yeniden başlatın.
 
 ### <a name="steps"></a>Adımlar
-1. Create a VM by using one of the distributions specified previously.
+1. Daha önce belirtilen dağıtımları birini kullanarak bir VM oluşturun.
 
-   For CentOS 7.2, OS disk encryption is supported via a special image. To use this image, specify "7.2n" as the SKU when you create the VM:
+   CentOS 7.2 için işletim sistemi disk şifreleme özel bir görüntü desteklenir. Bu görüntü kullanmak için VM'yi oluştururken "7.2n" SKU olarak belirtin:
 
    ```powershell
     Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
    ```
-2. Configure the VM according to your needs. If you're going to encrypt all the (OS + data) drives, the data drives need to be specified and mountable from /etc/fstab.
+2. Sanal makine gereksinimlerinize göre yapılandırın. Gideceğinizi varsa tüm (işletim sistemi ve veri) şifrelemek için sürücüleri, veri sürücüleri belirtilen ve gelen bağlanabilir /etc/fstab olmanız gerekir.
 
    > [!NOTE]
-   > Use UUID=... to specify data drives in /etc/fstab instead of specifying the block device name (for example, /dev/sdb1). During encryption, the order of drives changes on the VM. If your VM relies on a specific order of block devices, it will fail to mount them after encryption.
+   > UUID kullanmak =... veri sürücülerinde blok cihaz adı (örneğin, / dev/sdb1) belirtmek yerine/etc/fstab dosyasında belirtmek için. Şifreleme sırasında sanal makinede sürücüleri sırasını değiştirir. Sanal makinenizin blok cihazları belirli bir sırada dayanıyorsa, şifreleme sonrasında bağlamak başarısız olur.
 
-3. Sign out of the SSH sessions.
+3. SSH oturumları dışında oturum açın.
 
-4. To encrypt the OS, specify volumeType as **All** or **OS** when you enable encryption.
+4. İşletim sistemini şifrelemek için, şifrelemeyi etkinleştirdiğiniz sırada volumeType 'ı **All** veya **OS** olarak belirtin.
 
    > [!NOTE]
-   > All user-space processes that are not running as `systemd` services should be killed with a `SIGKILL`. Reboot the VM. When you enable OS disk encryption on a running VM, plan on VM downtime.
+   > `systemd` Hizmetleri olarak çalıştırmayan tüm Kullanıcı alanı işlemlerinin bir `SIGKILL`sonlandırılmalıdır. VM'yi yeniden başlatın. VM kapalı kalma süresi üzerinde çalışan bir VM'deki işletim sistemi disk şifreleme etkinleştirdiğinizde planlayın.
 
-5. Periodically monitor the progress of encryption by using the instructions in the [next section](#monitoring-os-encryption-progress).
+5. Bir [sonraki bölümdeki](#monitoring-os-encryption-progress)yönergeleri kullanarak şifreleme ilerlemesini düzenli olarak izleyin.
 
-6. After Get-AzVmDiskEncryptionStatus shows "VMRestartPending", restart your VM either by signing in to it or by using the portal, PowerShell, or CLI.
+6. Get-AzVmDiskEncryptionStatus "VMRestartPending" değerini görüntülendikten sonra, sanal makineyi oturum açarak veya Portal, PowerShell veya CLı kullanarak yeniden başlatın.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -117,23 +117,23 @@ The following table shows which parameters can be used in the PowerShell script:
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, reboot the VM
     ```
-   Before you reboot, we recommend that you save [boot diagnostics](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) of the VM.
+   Yeniden başlatmadan önce, VM 'nin [önyükleme tanılamayı](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) kaydetmenizi öneririz.
 
-## <a name="monitoring-os-encryption-progress"></a>Monitoring OS encryption progress
-You can monitor OS encryption progress in three ways:
+## <a name="monitoring-os-encryption-progress"></a>İşletim sistemi şifreleme ilerlemesini izleme
+İşletim sistemi şifreleme ilerleme üç yolla izleyebilirsiniz:
 
-* Use the `Get-AzVmDiskEncryptionStatus` cmdlet and inspect the ProgressMessage field:
+* `Get-AzVmDiskEncryptionStatus` cmdlet 'ini kullanın ve Ilerlemedurumuiletisi alanını inceleyin:
     ```powershell
     OsVolumeEncrypted          : EncryptionInProgress
     DataVolumesEncrypted       : NotMounted
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk encryption started
     ```
-  After the VM reaches "OS disk encryption started", it takes about 40 to 50 minutes on a Premium-storage backed VM.
+  "Şifreleme başlatılan işletim sistemi diski" VM ulaştıktan sonra yaklaşık 40 ila 50 dakika sürer. VM üzerinde bir Premium depolama desteklenir.
 
-  Because of [issue #388](https://github.com/Azure/WALinuxAgent/issues/388) in WALinuxAgent, `OsVolumeEncrypted` and `DataVolumesEncrypted` show up as `Unknown` in some distributions. With WALinuxAgent version 2.1.5 and later, this issue is fixed automatically. If you see `Unknown` in the output, you can verify disk-encryption status by using the Azure Resource Explorer.
+  Walınuxagent içindeki [sorun #388](https://github.com/Azure/WALinuxAgent/issues/388) nedeniyle `OsVolumeEncrypted` ve `DataVolumesEncrypted` bazı dağıtımlarda `Unknown` olarak gösterilir. WALinuxAgent 2.1.5 sürümü ile ve daha sonra bu sorun otomatik olarak düzeltildi. Çıkışta `Unknown` görürseniz, Azure Kaynak Gezgini kullanarak disk şifreleme durumunu doğrulayabilirsiniz.
 
-  Go to [Azure Resource Explorer](https://resources.azure.com/), and then expand this hierarchy in the selection panel on left:
+  [Azure Kaynak Gezgini](https://resources.azure.com/)gidin ve sol taraftaki seçim panelinde bu hiyerarşiyi genişletin:
 
   ~~~~
   |-- subscriptions
@@ -147,49 +147,49 @@ You can monitor OS encryption progress in three ways:
                                         |-- InstanceView
   ~~~~                
 
-  In the InstanceView, scroll down to see the encryption status of your drives.
+  Instanceview içinde sürücülerinizin şifreleme durumunu görmek için aşağı kaydırın.
 
-  ![VM Instance View](./media/disk-encryption/vm-instanceview.png)
+  ![Sanal makine örnek görünümü](./media/disk-encryption/vm-instanceview.png)
 
-* Look at [boot diagnostics](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Messages from the ADE extension should be prefixed with `[AzureDiskEncryption]`.
+* [Önyükleme tanılarına](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)bakın. ADE uzantısından iletiler `[AzureDiskEncryption]`ön eki olmalıdır.
 
-* Sign in to the VM via SSH, and get the extension log from:
+* Sanal makineye SSH aracılığıyla oturum açın ve uzantı günlüğünden alın:
 
-    /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
+    /var/log/Azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
-  We recommend that you don't sign-in to the VM while OS encryption is in progress. Copy the logs only when the other two methods have failed.
+  VM için işletim sistemi şifreleme işlemi devam ederken oturum emin değilseniz öneririz. Diğer iki yöntemden yalnızca başarısız olan günlükler kopyalayın.
 
-## <a name="prepare-a-pre-encrypted-linux-vhd"></a>Prepare a pre-encrypted Linux VHD
-The preparation for pre-encrypted VHDs can vary depending on the distribution. Examples on preparing Ubuntu 16, openSUSE 13.2, and CentOS 7 are available. 
+## <a name="prepare-a-pre-encrypted-linux-vhd"></a>Önceden şifrelenen bir Linux VHD hazırlama
+Önceden şifrelenmiş VHD'ler için hazırlık, dağıtım bağlı olarak farklılık gösterebilir. Ubuntu 16, openSUSE 13,2 ve CentOS 7 ' yi hazırlama örnekleri mevcuttur. 
 
 ### <a name="ubuntu-16"></a>Ubuntu 16
-Configure encryption during the distribution installation by doing the following steps:
+Şifreleme dağıtım yüklemesi sırasında aşağıdaki adımları uygulayarak yapılandırın:
 
-1. Select **Configure encrypted volumes** when you partition the disks.
+1. Diskleri bölümleyerek **şifrelenmiş birimleri Yapılandır** ' ı seçin.
 
-   ![Ubuntu 16.04 Setup - Configure encrypted volumes](./media/disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+   ![Ubuntu 16.04 Kurulumu - şifrelenmiş hacimlerini yapılandırma](./media/disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
-2. Create a separate boot drive, which must not be encrypted. Encrypt your root drive.
+2. Şifrelenmemiş olması bir ayrı önyükleme sürücüsü oluşturun. Kök drive'ınızdaki şifreleyin.
 
-   ![Ubuntu 16.04 Setup - Select devices to encrypt](./media/disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+   ![Ubuntu 16.04 Kurulumu - şifrelemek için cihazları seçin](./media/disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
-3. Provide a passphrase. This is the passphrase that you uploaded to the key vault.
+3. Bir parola girin. Anahtar kasasına yüklenmiş parolayı budur.
 
-   ![Ubuntu 16.04 Setup - Provide passphrase](./media/disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+   ![Ubuntu 16.04 Kurulumu - parola girin](./media/disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
-4. Finish partitioning.
+4. Bölümleme tamamlayın.
 
-   ![Ubuntu 16.04 Setup - Finish partitioning](./media/disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+   ![Ubuntu 16.04 Kurulumu - son bölümleme](./media/disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
-5. When you boot the VM and are asked for a passphrase, use the passphrase you provided in step 3.
+5. VM'yi önyüklemek için bir parola istendiğinde, 3. adımda belirttiğiniz parolayı kullanın.
 
-   ![Ubuntu 16.04 Setup - Provide passphrase on boot](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+   ![Ubuntu 16.04 Kurulumu - önyüklemede parolayı girin](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Prepare the VM for uploading into Azure using [these instructions](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Don't run the last step (deprovisioning the VM) yet.
+6. [Bu yönergeleri](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)kullanarak VM 'yi Azure 'a yükleme için hazırlayın. (VM sağlamayı kaldırma) işleminin son adımında çalıştırma henüz.
 
-Configure encryption to work with Azure by doing the following steps:
+Şifreleme aşağıdaki adımları uygulayarak Azure ile çalışacak şekilde yapılandırın:
 
-1. Create a file under /usr/local/sbin/azure_crypt_key.sh, with the content in the following script. Pay attention to the KeyFileName, because it's the passphrase file name used by Azure.
+1. Aşağıdaki betiği içerikle /usr/local/sbin/azure_crypt_key.sh altında bir dosya oluşturun. Azure tarafından kullanılan parola dosya adı olduğundan KeyFileName dikkat edin.
 
     ```bash
     #!/bin/sh
@@ -226,16 +226,16 @@ Configure encryption to work with Azure by doing the following steps:
     fi
    ```
 
-2. Change the crypt config in */etc/crypttab*. Şu şekilde görünmelidir:
+2. */Etc/crypttab*içinde Crypt yapılandırmasını değiştirin. Şu şekilde görünmelidir:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
 
-4. Add executable permissions to the script:
+4. Yürütülebilir izinleri komut dosyasına ekleyin:
    ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
    ```
-5. Edit */etc/initramfs-tools/modules* by appending lines:
+5. */Etc/initramfs-Tools/modules* satırları ekleyerek düzenleyin:
    ```
     vfat
     ntfs
@@ -243,32 +243,32 @@ Configure encryption to work with Azure by doing the following steps:
     nls_utf8
     nls_iso8859-1
    ```
-6. Run `update-initramfs -u -k all` to update the initramfs to make the `keyscript` take effect.
+6. `keyscript` etkili olması için initramfs 'yi güncelleştirmek üzere `update-initramfs -u -k all` çalıştırın.
 
-7. Now you can deprovision the VM.
+7. Artık VM yetkisini kaldırabilirsiniz.
 
-   ![Ubuntu 16.04 Setup - update-initramfs](./media/disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+   ![Ubuntu 16.04 kurulumu - güncelleştirme initramfs](./media/disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
-8. Continue to the next step and upload your VHD into Azure.
+8. Sonraki adıma devam edin ve VHD'nizi Azure'a yükleyin.
 
 ### <a name="opensuse-132"></a>openSUSE 13.2
-To configure encryption during the distribution installation, do the following steps:
-1. When you partition the disks, select **Encrypt Volume Group**, and then enter a password. This is the password that you'll upload to your key vault.
+Dağıtım yüklenmesi sırasında şifreleme yapılandırmak için aşağıdaki adımları uygulayın:
+1. Diskleri bölümlediğinizde, **birim grubunu şifreleyin**' ı seçin ve ardından bir parola girin. Bu anahtar kasanız için karşıya yükleyelim paroladır.
 
-   ![openSUSE 13.2 Setup - Encrypt Volume Group](./media/disk-encryption/opensuse-encrypt-fig1.png)
+   ![openSUSE 13.2 Kurulumu - şifreleme birim grubu](./media/disk-encryption/opensuse-encrypt-fig1.png)
 
-2. Boot the VM using your password.
+2. Parolanızı kullanarak VM'yi önyükleyin.
 
-   ![openSUSE 13.2 Setup - Provide passphrase on boot](./media/disk-encryption/opensuse-encrypt-fig2.png)
+   ![openSUSE 13.2 Kurulumu - önyüklemede parolayı girin](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Prepare the VM for uploading to Azure by following the instructions in [Prepare a SLES or openSUSE virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Don't run the last step (deprovisioning the VM) yet.
+3. [Azure için BIR SLES veya openSUSE sanal makinesi hazırlama](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)bölümündeki YÖNERGELERI izleyerek VM 'yi Azure 'a yüklemek üzere hazırlayın. (VM sağlamayı kaldırma) işleminin son adımında çalıştırma henüz.
 
-To configure encryption to work with Azure, do the following steps:
-1. Edit the /etc/dracut.conf, and add the following line:
+Azure ile çalışacak şekilde şifrelemesini yapılandırmak için aşağıdaki adımları uygulayın:
+1. /Etc/dracut.conf düzenleyin ve aşağıdaki satırı ekleyin:
     ```
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
-2. Comment out these lines by the end of the file /usr/lib/dracut/modules.d/90crypt/module-setup.sh:
+2. Bu satırları açıklama satırı yapar dosya /usr/lib/dracut/modules.d/90crypt/module-setup.sh sonunda:
    ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
@@ -281,11 +281,11 @@ To configure encryption to work with Azure, do the following steps:
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
    ```
 
-3. Append the following line at the beginning of the file /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh:
+3. Dosya /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh başındaki aşağıdaki satırı ekleyin:
    ```bash
     DRACUT_SYSTEMD=0
    ```
-   And change all occurrences of:
+   Ve tüm oluşumlarını değiştirin:
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
@@ -293,7 +293,7 @@ To configure encryption to work with Azure, do the following steps:
    ```bash
     if [ 1 ]; then
    ```
-4. Edit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh and append it to “# Open LUKS device”:
+4. /Usr/lib/dracut/Modules.d/90crypt/cryptroot-ASK.sh düzenleyin ve "# açık LUKS cihaza" ekleyin:
 
     ```bash
     MountPoint=/tmp-keydisk-mount
@@ -315,41 +315,41 @@ To configure encryption to work with Azure, do the following steps:
     fi
     done
     ```
-5. Run `/usr/sbin/dracut -f -v` to update the initrd.
+5. Initrd 'yi güncelleştirmek için `/usr/sbin/dracut -f -v` çalıştırın.
 
-6. Now you can deprovision the VM and upload your VHD into Azure.
+6. Artık VM'nin sağlamasını kaldırmak ve Azure'a VHD'nizi karşıya yükleyin.
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 and RHEL 8.1
+### <a name="centos-7-and-rhel-81"></a>CentOS 7 ve RHEL 8,1
 
-To configure encryption during the distribution installation, do the following steps:
-1. Select **Encrypt my data** when you partition disks.
+Dağıtım yüklenmesi sırasında şifreleme yapılandırmak için aşağıdaki adımları uygulayın:
+1. Diskleri bölümlediğinizde verilerimi **şifreleyin** ' ı seçin.
 
-   ![CentOS 7 Setup -Installation destination](./media/disk-encryption/centos-encrypt-fig1.png)
+   ![CentOS 7 Kurulumu - yükleme hedefi](./media/disk-encryption/centos-encrypt-fig1.png)
 
-2. Make sure **Encrypt** is selected for root partition.
+2. Kök bölüm için **şifreleme** seçildiğinden emin olun.
 
-   ![CentOS 7 Setup -Select encrypt for root partition](./media/disk-encryption/centos-encrypt-fig2.png)
+   ![CentOS 7 Kurulumu - şifrelemek için kök bölümü seçin](./media/disk-encryption/centos-encrypt-fig2.png)
 
-3. Provide a passphrase. This is the passphrase that you'll upload to your key vault.
+3. Bir parola girin. Anahtar kasanız için karşıya yükleyelim parolayı budur.
 
-   ![CentOS 7 Setup - provide passphrase](./media/disk-encryption/centos-encrypt-fig3.png)
+   ![CentOS 7 Kurulumu - parola girin](./media/disk-encryption/centos-encrypt-fig3.png)
 
-4. When you boot the VM and are asked for a passphrase, use the passphrase you provided in step 3.
+4. VM'yi önyüklemek için bir parola istendiğinde, 3. adımda belirttiğiniz parolayı kullanın.
 
-   ![CentOS 7 Setup - Enter passphrase on bootup](./media/disk-encryption/centos-encrypt-fig4.png)
+   ![CentOS 7 Kurulumu - önyükleme parola girin](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. Prepare the VM for uploading into Azure by using the "CentOS 7.0+" instructions in [Prepare a CentOS-based virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Don't run the last step (deprovisioning the VM) yet.
+5. [Azure Için CentOS tabanlı bir sanal makine hazırlama](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)konusundaki "CentOS 7.0 +" yönergelerini kullanarak VM 'yi Azure 'a yükleme için hazırlayın. (VM sağlamayı kaldırma) işleminin son adımında çalıştırma henüz.
 
-6. Now you can deprovision the VM and upload your VHD into Azure.
+6. Artık VM'nin sağlamasını kaldırmak ve Azure'a VHD'nizi karşıya yükleyin.
 
-To configure encryption to work with Azure, do the following steps:
+Azure ile çalışacak şekilde şifrelemesini yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Edit the /etc/dracut.conf, and add the following line:
+1. /Etc/dracut.conf düzenleyin ve aşağıdaki satırı ekleyin:
     ```
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 
-2. Comment out these lines by the end of the file /usr/lib/dracut/modules.d/90crypt/module-setup.sh:
+2. Bu satırları açıklama satırı yapar dosya /usr/lib/dracut/modules.d/90crypt/module-setup.sh sonunda:
    ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
@@ -362,11 +362,11 @@ To configure encryption to work with Azure, do the following steps:
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
    ```
 
-3. Append the following line at the beginning of the file /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh:
+3. Dosya /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh başındaki aşağıdaki satırı ekleyin:
    ```bash
     DRACUT_SYSTEMD=0
    ```
-   And change all occurrences of:
+   Ve tüm oluşumlarını değiştirin:
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
@@ -374,7 +374,7 @@ To configure encryption to work with Azure, do the following steps:
    ```bash
     if [ 1 ]; then
    ```
-4. Edit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh and append the following after the “# Open LUKS device”:
+4. /Usr/lib/dracut/Modules.d/90crypt/cryptroot-ASK.sh düzenleyin ve sonra "# açık LUKS cihaz" aşağıdakini ekleyin:
     ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -395,17 +395,17 @@ To configure encryption to work with Azure, do the following steps:
     fi
     done
     ```    
-5. Run the “/usr/sbin/dracut -f -v” to update the initrd.
+5. Çalıştır "/ usr/sbin/dracut - f - v" initrd güncelleştirilecek.
 
-    ![CentOS 7 Setup - run /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
+    ![CentOS 7 Kurulumu - /usr/sbin/dracut -f - v çalıştıran](./media/disk-encryption/centos-encrypt-fig5.png)
 
-## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Upload encrypted VHD to an Azure storage account
-After DM-Crypt encryption is enabled, the local encrypted VHD needs to be uploaded to your storage account.
+## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Şifrelenmiş VHD 'YI bir Azure depolama hesabına yükleme
+DM-Crypt şifrelemesi etkinleştirildikten sonra, yerel şifreli VHD 'nin depolama hesabınıza yüklenmesi gerekir.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Upload the secret for the pre-encrypted VM to your key vault
-When encrypting using an Azure AD app (previous release), the disk-encryption secret that you obtained previously must be uploaded as a secret in your key vault. The key vault needs to have disk encryption and permissions enabled for your Azure AD client.
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Önceden şifrelenen VM 'nin parolasını anahtar kasanıza yükleme
+Bir Azure AD uygulamasını (önceki sürüm) kullanarak şifreleme, daha önce edindiğiniz disk şifreleme gizli anahtar kasanızdaki gizli dizi olarak yüklenmelidir. Anahtar kasası disk şifrelemesi ve Azure AD istemciniz için etkinleştirilmiş olmalıdır.
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"
@@ -417,8 +417,8 @@ When encrypting using an Azure AD app (previous release), the disk-encryption se
  Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
 ``` 
 
-### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>Disk encryption secret not encrypted with a KEK
-To set up the secret in your key vault, use [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). The passphrase is encoded as a base64 string and then uploaded to the key vault. In addition, make sure that the following tags are set when you create the secret in the key vault.
+### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>Disk şifreleme parolası bir KEK ile şifrelenmedi
+Anahtar kasasında gizli dizi ayarlamak için [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)kullanın. Parola Base64 dizesi olarak kodlanır ve sonra anahtar kasasına yüklenir. Ayrıca, anahtar kasasında gizli dizi oluşturduğunuzda, aşağıdaki etiketleri ayarlandığından emin olun.
 
 ```powershell
 
@@ -435,10 +435,10 @@ To set up the secret in your key vault, use [Set-AzKeyVaultSecret](/powershell/m
 ```
 
 
-Use the `$secretUrl` in the next step for [attaching the OS disk without using KEK](#without-using-a-kek).
+[Kek kullanmadan işletim sistemi diskini eklemek](#without-using-a-kek)için bir sonraki adımda `$secretUrl` kullanın.
 
-### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Disk encryption secret encrypted with a KEK
-Before you upload the secret to the key vault, you can optionally encrypt it by using a key encryption key. Use the wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) to first encrypt the secret using the key encryption key. The output of this wrap operation is a base64 URL encoded string, which you can then upload as a secret by using the [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
+### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Disk şifrelemesi gizli anahtarı bir KEK ile şifrelendi
+Gizli anahtar Kasası'na yüklemeden önce bir anahtar şifreleme anahtarı kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 'sini kullanın. Bu Wrap işleminin çıktısı, [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebileceğiniz Base64 URL kodlamalı bir dizedir.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -528,12 +528,12 @@ Before you upload the secret to the key vault, you can optionally encrypt it by 
     $secretUrl = $response.id
 ```
 
-Use `$KeyEncryptionKey` and `$secretUrl` in the next step for [attaching the OS disk using KEK](#using-a-kek).
+[Kek kullanarak işletim sistemi diskini eklemek](#using-a-kek)için bir sonraki adımda `$KeyEncryptionKey` ve `$secretUrl` kullanın.
 
-##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Specify a secret URL when you attach an OS disk
+##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Bir işletim sistemi diski iliştirmeye çalıştığınızda gizli bir URL belirtin
 
-###  <a name="without-using-a-kek"></a>Without using a KEK
-While you're attaching the OS disk, you need to pass `$secretUrl`. The URL was generated in the "Disk-encryption secret not encrypted with a KEK" section.
+###  <a name="without-using-a-kek"></a>KEK kullanmadan
+İşletim sistemi diskini iliştirirken `$secretUrl`geçirmeniz gerekir. URL "Disk şifreleme gizli bir KEK ile şifrelenmiş değil" bölümünde oluşturuldu.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -545,8 +545,8 @@ While you're attaching the OS disk, you need to pass `$secretUrl`. The URL was g
             -DiskEncryptionKeyVaultId $KeyVault.ResourceId `
             -DiskEncryptionKeyUrl $SecretUrl
 ```
-### <a name="using-a-kek"></a>Using a KEK
-When you attach the OS disk, pass `$KeyEncryptionKey` and `$secretUrl`. The URL was generated in the "Disk encryption secret encrypted with a KEK" section.
+### <a name="using-a-kek"></a>KEK kullanma
+İşletim sistemi diskini iliştirmeniz durumunda `$KeyEncryptionKey` geçirin ve `$secretUrl`. URL "Disk şifreleme gizli bir KEK ile şifrelenmiş" bölümünde oluşturuldu.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

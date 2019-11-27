@@ -1,6 +1,6 @@
 ---
-title: Create & publish single sign-on documentation for your application
-description: Guidance for independent software vendors on integrating with Azure Active Directory
+title: Uygulamanız için çoklu oturum açma belgeleri oluşturun & yayımlayın
+description: Azure Active Directory tümleştirilirken bağımsız yazılım satıcıları için rehberlik
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -19,46 +19,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232273"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Create and publish single sign-on documentation for your application   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Uygulamanız için çoklu oturum açma belgeleri oluşturun ve yayımlayın   
 
-## <a name="documentation-on-your-site"></a>Documentation on your site
+## <a name="documentation-on-your-site"></a>Sitenizdeki belgeler
 
-Ease of adoption is a significant factor in enterprise software decisions. Clear easy-to-follow documentation supports your customers in their adoption journey and reduces support costs. Working with thousands of software vendors, Microsoft has seen what works.
+Benimseme kolaylığı, kurumsal yazılım kararlarında önemli bir faktördür. Kolayca takip eden belgeleri Temizleme, müşterilerinizin benimseme yolculuğunda müşterilerinizi destekler ve destek maliyetlerini azaltır. Binlerce yazılım satıcısı ile birlikte çalışarak, Microsoft nelerin çalıştığını gördük.
 
-We recommend that your documentation on your site at a minimum include the following items.
+Sitenizdeki tüm belgelerinize, en azından aşağıdaki öğeleri eklemesi önerilir.
 
-* Introduction to your SSO functionality
+* SSO işlevselliğine giriş
 
-  * Protocols supported
+  * Desteklenen protokoller
 
-  * Version and SKU
+  * Sürüm ve SKU
 
-  * Supported Identity Providers list with documentation links
+  * Belge bağlantılarıyla desteklenen kimlik sağlayıcıları listesi
 
-* Licensing information for your application
+* Uygulamanız için lisans bilgileri
 
-* Role-based access control for configuring SSO
+* SSO 'yu yapılandırmak için rol tabanlı erişim denetimi
 
-* SSO Configuration Steps
+* SSO yapılandırma adımları
 
-  * UI configuration elements for SAML with expected values from the provider
+  * Sağlayıcıdan beklenen değerler içeren SAML için Kullanıcı arabirimi yapılandırma öğeleri
 
-  * Service provider information to be passed to identity providers
+  * Kimlik sağlayıcılarına geçirilecek hizmet sağlayıcı bilgileri
 
-* If OIDC/OAuth
+* Eğer OıDC/OAuth ise
 
-  * List of permissions required for consent with business justifications
+  * Business gerekçeler ile onay için gereken izinlerin listesi
 
-* Testing steps for pilot users
+* Pilot kullanıcılar için test adımları
 
-* Troubleshooting information, including error codes and messages
+* Hata kodları ve iletileri dahil sorun giderme bilgileri
 
-* Support mechanisms for customers
+* Müşteriler için destek mekanizmaları
 
-## <a name="documentation-on-the-microsoft-site"></a>Documentation on the Microsoft Site
+## <a name="documentation-on-the-microsoft-site"></a>Microsoft sitesindeki belgeler
 
-When you list your application with the Azure Active Directory Application Gallery, which also publishes your application in the Azure Marketplace, Microsoft will generate documentation for our mutual customers explaining the step-by-step process. You can see an example [here](https://aka.ms/appstutorial). This documentation is created based on your submission to the gallery, and you can easily update it if you make changes to your application using your GitHub account.
+Uygulamanızı Azure Marketi 'nde da yayımlayan Azure Active Directory Uygulama galerisinde, Microsoft, adım adım işlemi açıklayan, karşılıklı müşterilerimiz için belge oluşturacaktır. [Burada](https://aka.ms/appstutorial)bir örnek görebilirsiniz. Bu belge, galeriye gönderiminiz temel alınarak oluşturulur ve GitHub hesabınızı kullanarak uygulamanızda değişiklik yaparsanız onu kolayca güncelleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[List your application in the Azure AD Application Gallery](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Uygulamanızı Azure AD uygulama galerisinde listeleme](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

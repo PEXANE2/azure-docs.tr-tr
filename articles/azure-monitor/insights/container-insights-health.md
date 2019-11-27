@@ -76,9 +76,9 @@ Kapsayıcılar için Azure Izleyici sistem durumu özelliğini destekleyen her m
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS veya AKS olmayan kümenin durumunu görüntüleme
 
-Kapsayıcılar için Azure Izleyici sistem durumu (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir. Altında **Insights** bölümünden **kapsayıcıları**. 
+Kapsayıcılar için Azure Izleyici sistem durumu (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin. 
 
-Şirket içinde veya Azure Stack barındırılan bir AKS altyapısı kümesi olan AKS olmayan bir kümeden sistem durumunu görüntülemek için, Azure portal sol bölmeden **Azure izleyici** ' yi seçin. Altında **Insights** bölümünden **kapsayıcıları**.  Çoklu küme sayfasında, listeden AKS olmayan kümeyi seçin.
+Şirket içinde veya Azure Stack barındırılan bir AKS altyapısı kümesi olan AKS olmayan bir kümeden sistem durumunu görüntülemek için, Azure portal sol bölmeden **Azure izleyici** ' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin.  Çoklu küme sayfasında, listeden AKS olmayan kümeyi seçin.
 
 Kapsayıcılar için Azure Izleyici 'de, **küme** sayfasından **sistem durumu**' nu seçin.
 

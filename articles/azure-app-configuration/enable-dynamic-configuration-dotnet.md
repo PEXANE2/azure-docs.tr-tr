@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma gezgini** >  **+ Oluştur** ' u seçin:
 
-    | Anahtar | Değer |
+    | Anahtar | Value |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından veriler |
 
@@ -57,7 +57,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**'a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’ tıklayın.
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, *Microsoft. Extensions. Configuration. AzureAppConfiguration* NuGet paketini arayın ve projenize ekleyin. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
@@ -138,7 +138,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 
-    | Anahtar | Değer |
+    | Anahtar | Value |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-güncelleştirildi |
 

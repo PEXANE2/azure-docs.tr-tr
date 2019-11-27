@@ -15,27 +15,27 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260908"
 ---
-For now, ultra disks have additional limitations, they are as follows:
+Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
-- Are supported in the following regions, with a varying number of availability zones per region:
+- , Bölge başına değişen sayıda kullanılabilirlik bölgesi ile aşağıdaki bölgelerde desteklenir:
     - Doğu ABD 2
     - Doğu ABD
     - Batı ABD 2
-    - SouthEast Asia
+    - Güneydoğu Asya
     - Kuzey Avrupa
     - Batı Avrupa
-    - Birleşik Krallık, Güney 
-- Can only be used with availability zones (availability sets and single VM deployments outside of zones will not have the ability to attach an ultra disk)
-- Are only supported on the following VM series:
+    - Birleşik Krallık Güney 
+- Yalnızca kullanılabilirlik alanları ile kullanılabilir (bölge dışındaki kullanılabilirlik kümeleri ve tek VM dağıtımları, bir ultra disk iliştirebilme özelliğine sahip olmaz)
+- Yalnızca şu VM serisinde desteklenir:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
     - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Not every VM size is available in every supported region with ultra disks.
-- Are only available as data disks and only support 4k physical sector size  
-- Can only be created as empty disks  
-- Do not yet support disk snapshots, VM images, availability sets, and Azure disk encryption
-- Do not yet support integration with Azure Backup or Azure Site Recovery
-- The current maximum limit for IOPS on GA VMs is 80,000.
-- If you would like to participate in a limited preview of a VM that can accomplish 160,000 IOPS with ultra disks, please email UltraDiskFeedback@microsoft .com
+- Her VM boyutu, Ultra disklerle desteklenen her bölgede kullanılabilir değildir.
+- Yalnızca veri diskleri olarak kullanılabilir ve yalnızca 4k fiziksel sektör boyutunu destekler  
+- Yalnızca boş disk olarak oluşturulabilir  
+- Disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini ve Azure disk şifrelemesini henüz desteklemez
+- Azure Backup veya Azure Site Recovery tümleştirmeyi henüz desteklemez
+- GA VM 'lerde ıOPS için geçerli en büyük sınır 80.000 ' dir.
+- Ultra disklerle 160.000 ıOPS gerçekleştirebilecek bir sanal makinenin sınırlı önizlemesine katılmak istiyorsanız lütfen e-posta UltraDiskFeedback@microsoft. com

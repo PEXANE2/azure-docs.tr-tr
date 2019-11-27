@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09a1b8e54726accf705515bf077f6a599f0f9b78
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266913"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534524"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizin oluşturucular
 
@@ -69,7 +69,7 @@ Dizin oluşturucu veri alımıyla ilgili bazı görevleri otomatikleştirir, anc
 > Dizin oluşturucular sizin için dizin oluşturamasa da, portaldaki **Verileri içeri aktarma** sihirbazı bu işlem için size yardımcı olabilir. Çoğu durumda, sihirbaz, kaynaktaki mevcut meta verilerden dizin şeması çıkarsayarak, sihirbaz etkin olduğunda satır içinde düzenleyebileceğiniz geçici bir dizin şeması sunar. Hizmet için sihirbaz oluşturulduğunda, portalda yapılabilecek ayrıntılı düzenlemeler, genellikle yeni alanlar eklemeyle sınırlıdır. Sihirbaz dizin oluşturmak için uygun olsa da, düzenlemek için uygun değildir. Uygulama yaparak öğrenmek için, [portal kılavuzundaki](search-get-started-portal.md) adımları izleyin.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>3\. Adım: Dizin oluşturucuyu oluşturma ve zamanlama
-Dizin Oluşturucu tanımı, veri alımı ile ilgili tüm öğeleri birlikte getiren bir yapıdır. Gerekli öğeler bir veri kaynağı ve dizin içerir. İsteğe bağlı öğeler bir zamanlama ve alan eşlemeleri içerir. Alan eşleme yalnızca kaynak alanları ve dizin alanları açıkça karşılık geliyorsa isteğe bağlıdır. Bir dizin oluşturucu, aynı abonelikten olduğu sürece başka bir hizmetteki bir veri kaynağına başvurabilir. Dizin oluşturucuyu yapılandırma hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Dizin Oluşturucu tanımı, veri alımı ile ilgili tüm öğeleri birlikte getiren bir yapıdır. Gerekli öğeler bir veri kaynağı ve dizin içerir. İsteğe bağlı öğeler bir zamanlama ve alan eşlemeleri içerir. Alan eşleme yalnızca kaynak alanları ve dizin alanları açıkça karşılık geliyorsa isteğe bağlıdır. Dizin oluşturucuyu yapılandırma hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 

@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515128"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546858"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Tehditleri algılamak için Azure Sentinel 'de Livestream 'i kullanma
 
 > [!IMPORTANT]
-> Azure Sentinel 'de Livestream 'i Şu anda genel önizleme aşamasındadır.
+> Azure Sentinel 'de Livestream 'i Şu anda genel önizlemede bulabilirsiniz ve kiracılar için kademeli olarak kullanıma alınıyor.
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
@@ -63,7 +63,7 @@ Mevcut bir arama sorgusundan Livestream oturumu oluşturabilir veya oturumunuzu 
     1. **Livestream** sekmesini seçin
     2. **Livestream 'e git**' i seçin.
     
-4. **Livestream** dikey penceresinde:
+4. **Livestream** bölmesinde:
     
     - Bir sorgudan Livestream 'i başlattıysanız, sorguyu gözden geçirin ve yapmak istediğiniz değişiklikleri yapın.
     - Sıfırdan Livestream 'i başlattıysanız sorgunuzu oluşturun. 
@@ -96,7 +96,7 @@ Yeni olaylar için Livestream bildirimleri Azure portal bildirimleri kullandığ
 
 ![Livestream için Azure portal bildirimi](./media/livestream/notification.png)
 
-**Livestream** dikey penceresini açmak için bildirimi seçin.
+**Livestream** bölmesini açmak için bildirimi seçin.
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>Canlı akış oturumunu bir uyarıya yükseltme
 

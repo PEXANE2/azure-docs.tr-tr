@@ -88,6 +88,6 @@ Aşağıdaki özellikler Build 2019 Konferansı 'nda yayımlanmıştır:
 
 [Azure konuşma AI kullanarak işinizi bir sonraki nesil için ölçeklendirin](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="service-updates"></a>Hizmet güncelleştirmeleri
+## <a name="service-updates"></a>Hizmet güncellemeleri
 
 [Bilişsel hizmetler için Azure Update duyuruları](https://azure.microsoft.com/updates/?product=cognitive-services)

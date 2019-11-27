@@ -15,23 +15,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74414561"
 ---
-This article provides you with an overview of the availability features of Azure virtual machines (VMs).
+Bu makalede, Azure sanal makinelerinin (VM 'Ler) kullanılabilirlik özelliklerine ilişkin bir genel bakış sunulmaktadır.
 
 ## <a name="high-availability"></a>Yüksek kullanılabilirlik
 
-Workloads are typically spread across different virtual machines to gain high throughput, performance, and to create redundancy in case a VM is impacted due to an update or other event. 
+İş yükleri genellikle yüksek aktarım hızı, performans ve bir VM 'nin bir güncelleştirme ya da başka bir olay nedeniyle etkilenmemesi durumunda artıklık oluşturmak için farklı sanal makinelere yayılır. 
 
-There are few options that Azure provides to achieve High Availability. First let’s talk about basic constructs. 
+Azure 'un yüksek kullanılabilirlik elde etmek için sağladığı birkaç seçenek vardır. İlk olarak temel yapılar hakkında konuşalım. 
 
 ### <a name="availability-zones"></a>Kullanılabilirlik alanları
 
-[Availability zones](../articles/availability-zones/az-overview.md) expand the level of control you have to maintain the availability of the applications and data on your VMs. An Availability Zone is a physically separate zone, within an Azure region. There are three Availability Zones per supported Azure region. 
+[Kullanılabilirlik alanları](../articles/availability-zones/az-overview.md) , sanal makinelerinizdeki uygulamaların ve verilerin kullanılabilirliğini korumak için sahip olduğunuz denetim düzeyini genişletir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde fiziksel olarak ayrı bir bölgedir. Desteklenen Azure bölgesi başına üç Kullanılabilirlik Alanları vardır. 
 
-Her Kullanılabilirlik Alanı farklı bir güç kaynağı, ağ ve soğutma sistemine sahiptir. By architecting your solutions to use replicated VMs in zones, you can protect your apps and data from the loss of a datacenter. If one zone is compromised, then replicated apps and data are instantly available in another zone. 
+Her Kullanılabilirlik Alanı farklı bir güç kaynağı, ağ ve soğutma sistemine sahiptir. Bölgelerde çoğaltılan VM 'Leri kullanma çözümlerinizi tasarlayarak, uygulamalarınızı ve verilerinizi bir veri merkezi kaybından koruyabilirsiniz. Bir bölge tehlikeye girerse, çoğaltılan uygulamalar ve veriler başka bir bölgede anında kullanılabilir. 
 
 ![Kullanılabilirlik alanları](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
-Learn more about deploying a [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) or [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) VM in an Availability Zone.
+Bir [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) veya [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) VM 'yi bir kullanılabilirlik alanına dağıtma hakkında daha fazla bilgi edinin.
 
 
 ### <a name="fault-domains"></a>Hata etki alanları
@@ -42,42 +42,42 @@ Hata etki alanı, ortak bir güç kaynağı ve ağ anahtarını paylaşan, şirk
 
 Güncelleme etki alanı, bakımdan geçirilebilen ya da aynı anda yeniden başlatılabilen bir temel alınan donanım mantıksal grubudur. 
 
-Bu yaklaşım, Azure platformu periyodik bakımdan geçirilirken uygulamanızın en az bir örneğinin her zaman çalışır durumda kalmasını sağlar. The order of update domains being rebooted may not proceed sequentially during maintenance, but only one update domain is rebooted at a time.
+Bu yaklaşım, Azure platformu periyodik bakımdan geçirilirken uygulamanızın en az bir örneğinin her zaman çalışır durumda kalmasını sağlar. Yeniden başlatılan güncelleştirme etki alanlarının sırası bakım sırasında sırayla ilerlemeyebilir, ancak aynı anda yalnızca bir güncelleştirme etki alanı yeniden başlatılır.
 
 
-## <a name="virtual-machines-scale-sets"></a>Virtual Machines Scale Sets 
+## <a name="virtual-machines-scale-sets"></a>Sanal Makine Ölçek Kümeleri 
 
-Azure virtual machine scale sets let you create and manage a group of load balanced VMs. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Scale sets provide high availability to your applications, and allow you to centrally manage, configure, and update many VMs. We recommended that two or more VMs are created within a scale set to provide for a highly available application and to meet the [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). There is no cost for the scale set itself, you only pay for each VM instance that you create. When a single VM is using [Azure premium SSDs](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd), the Azure SLA applies for unplanned maintenance events. Virtual machines in a scale set can be deployed across multiple update domains and fault domains to maximize availability and resilience to outages due to data center outages, and planned or unplanned maintenance events. Virtual machines in a scale set can also be deployed into a single Availability zone, or regionally. Availability zone deployment options may differ based on the orchestration mode.
+Azure sanal makine ölçek kümeleri, yük dengeli bir VM grubu oluşturmanızı ve yönetmenizi sağlar. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Ölçek Kümeleri, uygulamalarınız için yüksek kullanılabilirlik sağlar ve birçok VM 'yi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize olanak tanır. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için ölçek kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Ölçek kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız. Tek bir VM [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)kullanırken, planlanmamış bakım olayları için Azure SLA 'sı geçerlidir. Ölçek kümesindeki sanal makineler, çok sayıda güncelleştirme etki alanına ve hata etki alanına dağıtılabilir ve bu da veri merkezi kesintileri ve planlı ya da plansız bakım olayları nedeniyle kullanılabilirlik ve esnekliği 'in kesintilerine en üst düzeye çıkarabilir. Ölçek kümesindeki sanal makineler aynı zamanda tek bir kullanılabilirlik bölgesine veya bölgeye göre dağıtılabilir. Kullanılabilirlik alanı dağıtım seçenekleri, düzenleme moduna göre farklılık gösterebilir.
 
-### <a name="preview-orchestration-mode-preview"></a>Preview: Orchestration mode Preview
-Virtual machines scale sets allow you to specify orchestration mode.  With the virtual machine scale set orchestration mode (preview), you can now choose whether the scale set should orchestrate virtual machines which are created explicitly outside of a scale set configuration model, or virtual machine instances created implicitly based on the configuration model. Choose the orchestration mode that VM orchestration model allows you group explicitly defined Virtual Machines together in a region or in an availability zone. Virtual machines deployed in an Availability Zone provides zonal isolation to VMs are they are bound to the availability zone boundary and are not subjected to any failures that may occur in other availability zone in the region. 
+### <a name="preview-orchestration-mode-preview"></a>Önizleme: Orchestration modu Önizleme
+Sanal Makine Ölçek Kümeleri, düzenleme modunu belirtmenize olanak tanır.  Sanal makine ölçek kümesi düzenleme modu (Önizleme) ile artık ölçek kümesinin, bir ölçek kümesi yapılandırma modeli dışında oluşturulan sanal makineleri veya örtük olarak oluşturulan sanal makine örneklerini belirleyip düzenleyemeyeceğini seçebilirsiniz yapılandırma modeline göre. VM Orchestration modelinin, bir bölgede veya bir kullanılabilirlik alanında açıkça tanımlanmış sanal makineleri gruplamanıza izin verdiğini düzenleme modunu seçin. Bir kullanılabilirlik alanında dağıtılan sanal makineler, VM 'lere göre daha fazla yalıtım sağlar ve bölgesel bölge sınırlarına bağlanır ve bölgedeki diğer kullanılabilirlik bölgesinde oluşabilecek hatalara tabi değildir. 
 
-|   | “orchestrationMode”: “VM” (VirtualMachine)| “orchestrationMode”: “ScaleSetVM” (VirtualMachineScaleSetVM) |
+|   | "orchestrationMode": "VM" (VirtualMachine)| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |----|----|----|
-| VM configuration model| Hiçbiri. VirtualMachineProfile is undefined in the scale set model. | Gereklidir. VirtualMachineProfile is populated in the scale set model. |
-| Adding new VM to Scale Set| VMs are explicitly added to the scale set when the VM is created. | VMs are implicitly created and added to the scale set based on the VM configuration model, instance count, and AutoScaling rules. |
-| Kullanılabilirlik Alanları| Supports regional deployment or VMs in one Availability Zone| Supports regional deployment or multiple Availability Zones; Can define the zone balancing strategy |
-| Hata etki alanları| Can define fault domains count. 2 or 3 based on regional support and 5 for Availability zone. The assigned VM fault domain will persist with VM lifecycle, including deallocate and restart. | Can define 1, 2, or 3 fault domains for non-zonal deployments, and 5 for Availability zone deployments. The assigned VM fault domain does not persist with VM lifecycle, virtual machines are assigned a fault domain at time of allocation. |
-| Güncelleme etki alanları| Yok. Update domains are automatically mapped to fault domains| Yok. Update domains are automatically mapped to fault domains |
+| VM yapılandırma modeli| Yok. VirtualMachineProfile, ölçek kümesi modelinde tanımsızdır. | Gerekli. VirtualMachineProfile, ölçek kümesi modelinde doldurulur. |
+| Ölçek kümesine yeni VM ekleniyor| VM oluşturulduğunda, sanal makineler ölçek kümesine açıkça eklenir. | VM 'Ler örtük olarak oluşturulur ve VM yapılandırma modeli, örnek sayısı ve otomatik ölçeklendirme kuralları temelinde ölçek kümesine eklenir. |
+| Kullanılabilirlik Alanları| Tek bir kullanılabilirlik bölgesindeki bölgesel dağıtımı veya VM 'Leri destekler| Bölgesel dağıtımı veya birden çok Kullanılabilirlik Alanları destekler; Bölge Dengeleme stratejisini tanımlayabilir |
+| Hata etki alanları| , Hata etki alanı sayısını tanımlayabilir. 2 veya 3 kullanılabilirlik alanı için bölgesel destek ve 5 ' i temel alır. Atanan VM hata etki alanı, serbest bırakma ve yeniden başlatma dahil olmak üzere VM yaşam döngüsüyle kalır. | , ZGen olmayan dağıtımlar için 1, 2 veya 3 hata etki alanı tanımlayabilir ve kullanılabilirlik alanı dağıtımları için 5 ' i kullanabilirsiniz. Atanan VM hata etki alanı VM yaşam döngüsüyle kalıcı olmadığından, sanal makinelere ayırma sırasında bir hata etki alanı atanır. |
+| Güncelleme etki alanları| Yok. Güncelleştirme etki alanları hata etki alanlarına otomatik olarak eşlenir| Yok. Güncelleştirme etki alanları hata etki alanlarına otomatik olarak eşlenir |
 
-**Fault domains and update domains**
+**Hata etki alanları ve güncelleştirme etki alanları**
 
-Virtual machine scale sets simplify designing for high availability by aligning fault domains and update domains. You will only have to define fault domains count for the scale set. The number of fault domains available to the scale sets may vary by region. See [Number of Fault Domains per region](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region).
+Sanal Makine Ölçek Kümeleri, hata etki alanlarını ve güncelleştirme etki alanlarını hizalayarak yüksek kullanılabilirlik için tasarlamayı basitleştirir. Ölçek kümesi için yalnızca hata etki alanı sayısı tanımlamanız gerekir. Ölçek kümelerinin kullanabildiği hata etki alanlarının sayısı bölgeye göre farklılık gösterebilir. Bkz. [bölge başına hata etki alanı sayısı](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region).
 
 
 ## <a name="availability-sets"></a>Kullanılabilirlik kümeleri
-An availability set is a logical grouping of VMs within a datacenter that allows Azure to understand how your application is built to provide for redundancy and availability. We recommended that two or more VMs are created within an availability set to provide for a highly available application and to meet the [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). There is no cost for the Availability Set itself, you only pay for each VM instance that you create. When a single VM is using [Azure premium SSDs](../articles/virtual-machines/windows/disks-types.md#premium-ssd), the Azure SLA applies for unplanned maintenance events.
+Kullanılabilirlik kümesi, Azure 'un, uygulamanızın artıklık ve kullanılabilirlik sağlamak üzere nasıl oluşturulduğunu anlamasına olanak tanıyan bir veri merkezi içindeki VM 'lerin mantıksal bir gruplandırmasıdır. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için bir kullanılabilirlik kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Kullanılabilirlik kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız. Tek bir VM [Azure Premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd)kullanırken, planlanmamış bakım olayları için Azure SLA 'sı geçerlidir.
 
-In an availability set, VMs are automatically distributed across these fault domains. Bu yaklaşım, olası fiziksel donanım hatalarının, ağ kesintilerinin veya güç kesintilerinin etkisini sınırlar.
+Bir kullanılabilirlik kümesinde VM 'Ler bu hata etki alanlarına otomatik olarak dağıtılır. Bu yaklaşım, olası fiziksel donanım hatalarının, ağ kesintilerinin veya güç kesintilerinin etkisini sınırlar.
 
 [Azure Yönetilen Diskler](../articles/virtual-machines/windows/faq-for-disks.md)’i kullanan sanal makineler, yönetilen kullanılabilirlik kümesi kullanılırken yönetilen disk hata etki alanları ile hizalanır. Bu hizalama, bir VM'ye bağlı tüm yönetilen disklerin, aynı yönetilen disk hata etki alanı içinde olmasını sağlar. 
 
-Yönetilen bir kullanılabilirlik kümesinde yalnızca, yönetilen disklere sahip VM’ler oluşturulabilir. Yönetilen disk hata etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki ya da üç yönetilen disk hata etki alanı). You can read more about these managed disk fault domains for [Linux VMs](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) or [Windows VMs](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
+Yönetilen bir kullanılabilirlik kümesinde yalnızca, yönetilen disklere sahip VM’ler oluşturulabilir. Yönetilen disk hata etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki ya da üç yönetilen disk hata etki alanı). [Linux VM 'leri](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) veya [Windows VM 'leri](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)için bu yönetilen disk hata etki alanları hakkında daha fazla bilgi edinebilirsiniz.
 
-![Managed availability set](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![Yönetilen kullanılabilirlik kümesi](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 
-VMs within an availability set are also automatically distributed across update domains. 
+Bir kullanılabilirlik kümesindeki VM 'Ler Ayrıca güncelleştirme etki alanları arasında otomatik olarak dağıtılır. 
 
 ![Kullanılabilirlik kümeleri](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 

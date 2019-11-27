@@ -1,6 +1,6 @@
 ---
-title: About repositories & images
-description: Introduction to key concepts of Azure container registries, repositories, and container images.
+title: '& Görüntüleri hakkında'
+description: Azure Container kayıt defterleri, depolar ve kapsayıcı görüntülerinin temel kavramlarına giriş.
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
@@ -10,41 +10,41 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455282"
 ---
-# <a name="about-registries-repositories-and-images"></a>About registries, repositories, and images
+# <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 
-This article introduces the key concepts of container registries, repositories, and container images and related artifacts. 
+Bu makalede, kapsayıcı kayıt defterleri, depolar ve kapsayıcı görüntülerinin ve ilgili yapıtların temel kavramları tanıtılmaktadır. 
 
-## <a name="registry"></a>Kayıt Defteri
+## <a name="registry"></a>Kayıt defteri
 
-A container *registry* is a service that stores and distributes container images. Docker Hub is a public container registry that supports the open source community and serves as a general catalog of images. Azure Container Registry provides users with direct control of their images, with integrated authentication, [geo-replication](container-registry-geo-replication.md) supporting global distribution and reliability for network-close deployments, [virtual network and firewall configuration](container-registry-vnet.md), [tag locking](container-registry-image-lock.md), and many other enhanced features. 
+Kapsayıcı *kayıt defteri* , kapsayıcı görüntülerini depolayan ve dağıtan bir hizmettir. Docker Hub, açık kaynak topluluğu destekleyen ve görüntülerin genel kataloğu olarak hizmet veren ortak bir kapsayıcı kayıt defteridir. Azure Container Registry, kullanıcılara, tümleşik kimlik doğrulama, [coğrafi çoğaltma](container-registry-geo-replication.md) , ağ kapatma dağıtımları, [sanal ağ ve güvenlik duvarı yapılandırması](container-registry-vnet.md), [etiket kilitleme](container-registry-image-lock.md)ve diğer birçok gelişmiş özellik için genel dağıtım ve güvenilirlik desteği sağlar. 
 
-In addition to Docker container images, Azure Container Registry supports related [content artifacts](container-registry-image-formats.md) including Open Container Initiative (OCI) image formats.
+Docker kapsayıcı görüntülerine ek olarak Azure Container Registry, açık kapsayıcı girişimi (OCı) görüntü biçimleri dahil ilgili [içerik yapılarını](container-registry-image-formats.md) destekler.
 
-## <a name="content-addressable-elements-of-an-artifact"></a>Content addressable elements of an artifact
+## <a name="content-addressable-elements-of-an-artifact"></a>Yapıtın içerik adreslenebilir öğeleri
 
-The address of an artifact in an Azure container registry includes the following elements. 
+Bir Azure Container Registry 'deki yapıt adresi aşağıdaki öğeleri içerir. 
 
 ```
 [loginUrl]/[namespace]/[artifact:][tag]
 ```
 
-* **loginUrl** - The fully qualified name of the registry host. The registry host in an Azure container registry is in the format *myregistry*.azurecr.io (all lowercase). You must specify the loginUrl when using Docker or other client tools to pull or push artifacts to an Azure container registry. 
-* **namespace** - Slash-delimited logical grouping of related images or artifacts - for example, for a workgroup or app
-* **artifact** - The name of a repository for a particular image or artifact
-* **tag** - A specific version of an image or artifact stored in a repository
+* **loginUrl** -kayıt defteri konağının tam adı. Azure Container Registry içindeki kayıt defteri Konağı *myregistry*. azurecr.io biçimindedir (tümü küçük harfle). Bir Azure Container Registry 'ye yapıt çekmek veya göndermek için Docker veya diğer istemci araçlarını kullanırken loginUrl 'sini belirtmeniz gerekir. 
+* **ad alanı** eğik çizgili-ilişkili görüntülerin veya yapıtların mantıksal gruplandırması-Örneğin, bir çalışma grubu veya uygulama için
+* **yapıt** -belirli bir görüntü veya yapıt için bir deponun adı
+* **etiket** -bir depoda depolanan bir görüntünün veya yapıtın belirli bir sürümü
 
 
-For example, the full name of an image in an Azure container registry might look like:
+Örneğin, bir Azure Container Registry 'deki bir görüntünün tam adı şöyle görünebilir:
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
 ```
 
-See the following sections for details about these elements.
+Bu öğeler hakkındaki ayrıntılar için aşağıdaki bölümlere bakın.
 
-## <a name="repository-name"></a>Repository name
+## <a name="repository-name"></a>Depo adı
 
-Container registries manage *repositories*, collections of container images or other artifacts with the same name, but different tags. For example, the following three images are in the "acr-helloworld" repository:
+Kapsayıcı kayıt defterleri, *depoları*, kapsayıcı görüntülerinin koleksiyonlarını veya aynı ada sahip diğer yapıtları, ancak farklı etiketleri yönetir. Örneğin, aşağıdaki üç görüntü "ACR-HelloWorld" deposunda bulunur:
 
 ```
 acr-helloworld:latest
@@ -52,7 +52,7 @@ acr-helloworld:v1
 acr-helloworld:v2
 ```
 
-Repository names can also include [namespaces](container-registry-best-practices.md#repository-namespaces). Namespaces allow you to group images using forward slash-delimited repository names, for example:
+Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış depo adlarını kullanarak resimleri gruplandırmalarınıza izin verir, örneğin:
 
 ```
 marketing/campaign10-18/web:v2
@@ -62,35 +62,35 @@ product-returns/web-submission:20180604
 product-returns/legacy-integrator:20180715
 ```
 
-## <a name="image"></a>Resim
+## <a name="image"></a>Görüntü
 
-A container image or other artifact within a registry is associated with one or more tags, has one or more layers, and is identified by a manifest. Understanding how these components relate to each other can help you manage your registry effectively.
+Bir kayıt defteri içindeki bir kapsayıcı görüntüsü veya diğer yapıtlar, bir veya daha fazla katmana sahiptir ve bir bildirim tarafından tanımlanır. Bu bileşenlerin birbirleriyle ilişkisini anlamak, kayıt defterinizi etkili bir şekilde yönetmenize yardımcı olabilir.
 
 ### <a name="tag"></a>Etiket
 
-The *tag* for an image or other artifact specifies its version. A single artifact within a repository can be assigned one or many tags, and may also be "untagged." That is, you can delete all tags from an image, while the image's data (its layers) remain in the registry.
+Bir görüntünün veya diğer yapıtın *etiketi* , sürümünü belirtir. Bir depodaki tek bir yapıya bir veya daha fazla etiket atanabilir ve ayrıca "etiketsiz" olabilir. Diğer bir deyişle, görüntünün verileri (katmanları) kayıt defterinde kalacağından, bir görüntüdeki tüm etiketleri silebilirsiniz.
 
-The repository (or repository and namespace) plus a tag defines an image's name. You can push and pull an image by specifying its name in the push or pull operation.
+Depo (veya depo ve ad alanı) ve bir etiket bir görüntünün adını tanımlar. Anında iletme veya çekme işleminde adını belirterek bir görüntüyü gönderebilir ve çekebilirsiniz.
 
-How you tag container images is guided by your scenarios to develop or deploy them. For example, stable tags are recommended for maintaining your base images, and unique tags for deploying images. For more information, see [Recommendations for tagging and versioning container images](container-registry-image-tag-version.md).
+Kapsayıcı görüntülerini etiketleyerek, bunları geliştirmek veya dağıtmak için senaryolarınız tarafından nasıl kılavuzluk edilir. Örneğin, kararlı Etiketler temel görüntülerinizi sürdürmek için, görüntü dağıtmak için de benzersiz Etiketler önerilir. Daha fazla bilgi için bkz. [kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri](container-registry-image-tag-version.md).
 
-### <a name="layer"></a>Layer
+### <a name="layer"></a>Katman
 
-Container images are made up of one or more *layers*, each corresponding to a line in the Dockerfile that defines the image. Images in a registry share common layers, increasing storage efficiency. For example, several images in different repositories might share the same Alpine Linux base layer, but only one copy of that layer is stored in the registry.
+Kapsayıcı görüntüleri, her biri görüntüyü tanımlayan Dockerfile dosyasında bir satıra karşılık gelen bir veya daha fazla *katmandan*oluşur. Kayıt defterindeki görüntüler ortak katmanları paylaşır ve depolama verimliliğini artırır. Örneğin, farklı depolardaki birçok görüntü aynı alp Linux temel katmanını paylaşabilir, ancak bu katmanın yalnızca bir kopyası kayıt defterinde saklanır.
 
-Layer sharing also optimizes layer distribution to nodes with multiple images sharing common layers. For example, if an image already on a node includes the Alpine Linux layer as its base, the subsequent pull of a different image referencing the same layer doesn't transfer the layer to the node. Instead, it references the layer already existing on the node.
+Katman paylaşımı, katman dağıtımını aynı zamanda ortak katmanları paylaşan birden çok görüntü içeren düğümlere iyileştirir. Örneğin, zaten bir düğümde bulunan bir görüntü temel olarak alp Linux katmanını içeriyorsa, aynı katmana başvuran farklı bir görüntünün sonraki çekme katmanı düğüme aktarılmaz. Bunun yerine, düğüm üzerinde zaten var olan katmana başvurur.
 
-To provide secure isolation and protection from potential layer manipulation, layers are not shared across registries.
+Olası katman işlemesini güvenli yalıtım ve koruma sağlamak için Katmanlar kayıt defterleri arasında paylaşılmaz.
 
-### <a name="manifest"></a>Bildirim
+### <a name="manifest"></a>Bildirimi
 
-Each container image or artifact pushed to a container registry is associated with a *manifest*. The manifest, generated by the registry when the image is pushed, uniquely identifies the image and specifies its layers. You can list the manifests for a repository with the Azure CLI command [az acr repository show-manifests][az-acr-repository-show-manifests]:
+Bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü veya yapıtı bir *bildirimle*ilişkilendirilir. Görüntü gönderildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. Azure CLı komutu ile bir depo için bildirimleri listeleyebilir [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
 ```
 
-For example, list the manifests for the "acr-helloworld" repository:
+Örneğin, "ACR-HelloWorld" deposu için bildirimleri listeleyin:
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -120,24 +120,24 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-### <a name="manifest-digest"></a>Manifest digest
+### <a name="manifest-digest"></a>Bildirim Özeti
 
-Manifests are identified by a unique SHA-256 hash, or *manifest digest*. Each image or artifact--whether tagged or not--is identified by its digest. The digest value is unique even if the image's layer data is identical to that of another image. This mechanism is what allows you to repeatedly push identically tagged images to a registry. For example, you can repeatedly push `myimage:latest` to your registry without error because each image is identified by its unique digest.
+Bildirimler benzersiz bir SHA-256 karması veya *bildirim Özeti*tarafından tanımlanır. Her resim veya yapıt--etiketlenebilir veya değil, Özeti tarafından tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile Özet değeri benzersizdir. Bu mekanizma, aynı etiketli görüntüleri bir kayıt defterine sürekli olarak göndermenize olanak tanır. Örneğin, her görüntü benzersiz Özet tarafından tanımlandığından, hatasız `myimage:latest` Kayıt defterinize sürekli olarak gönderebilirsiniz.
 
-You can pull an image from a registry by specifying its digest in the pull operation. Some systems may be configured to pull by digest because it guarantees the image version being pulled, even if an identically tagged image is subsequently pushed to the registry.
+Çekme işleminde özetini belirterek bir kayıt defterinden görüntü çekebilirsiniz. Bazı sistemler, aynı etiketli bir görüntü daha sonra kayıt defterine gönderilse bile, çekilmekte olan görüntü sürümünü garanti ettiğinden Özet tarafından çekilecek şekilde yapılandırılabilir.
 
-For example, pull an image from the "acr-helloworld" repository by manifest digest:
+Örneğin, bildirim özetine göre "ACR-HelloWorld" deposundan bir görüntü çekin:
 
 ```console
 $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
 ```
 
 > [!IMPORTANT]
-> If you repeatedly push modified images with identical tags, you might create orphaned images--images that are untagged, but still consume space in your registry. Untagged images are not shown in the Azure CLI or in the Azure portal when you list or view images by tag. However, their layers still exist and consume space in your registry. Deleting an untagged image frees registry space when the manifest is the only one, or the last one, pointing to a particular layer. For information about freeing space used by untagged images, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+> Aynı etiketlere sahip değiştirilmiş görüntüleri sürekli olarak gönderseniz, yalnız bırakılmış görüntüler oluşturabilirsiniz--etiketsiz, ancak hala kayıt defterinizde alan tüketiyor olabilirsiniz. Resimleri etikete göre listelediğinizde veya görüntülediğinizde etiketlenmemiş görüntüler Azure CLı 'de veya Azure portal gösterilmez. Ancak, katmanları hala mevcut ve kayıt defterinizde alan tüketir. Etiketlenmemiş bir görüntünün silinmesi, bildirim tek bir veya sonuncu olduğunda, belirli bir katmana işaret edildiğinde kayıt defteri alanını serbest bırakır. Etiketlenmemiş görüntüler tarafından kullanılan boşluğu boşaltma hakkında daha fazla bilgi için bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about [image storage](container-registry-storage.md) and [supported content formats](container-registry-image-formats.md) in Azure Container Registry.
+Azure Container Registry ' de [görüntü depolama](container-registry-storage.md) ve [desteklenen içerik biçimleri](container-registry-image-formats.md) hakkında daha fazla bilgi edinin.
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

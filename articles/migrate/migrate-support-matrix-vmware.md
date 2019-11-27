@@ -39,7 +39,7 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
-Azure Kamu | ABD Devleti Virginia
+Azure Devlet Kurumları | ABD Devleti Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
 Brezilya | Güney Brezilya
@@ -65,7 +65,7 @@ Azure geçişi: Sunucu değerlendirmesi uygulamalar, rol ve özellikleri bulabil
 --- | ---
 Desteklenen makineler | Şirket içi VMware sanal makineleri
 Makine işletim sistemi | Tüm Windows ve Linux sürümleri
-Kimlik bilgileri | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir. Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
+Kimlik Bilgileri | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir. Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 Uygulama bulma için makine sınırları | Gereç başına 10000. proje başına 35000
 
 ## <a name="assessment-vcenter-server-requirements"></a>Değerlendirme-vCenter Server gereksinimleri
@@ -111,7 +111,7 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 *.portal.azure.com  | Azure portal Azure geçişi ' ne gidin.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
-management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+Management.Azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -121,7 +121,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="assessment-port-requirements"></a>Değerlendirme-bağlantı noktası gereksinimleri
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
 vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
@@ -179,15 +179,15 @@ Sanal makine. ınteroff. güç kapalı | Azure 'a geçiş sırasında sanal maki
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 4 TB.
 **Disk sınırları** |  VM başına en fazla 60 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmiyor.
-**Bağımsız diskler** | Desteklenmiyor.
+**Paylaşılan disk kümesi** | Desteklenmez.
+**Bağımsız diskler** | Desteklenmez.
 **RDM/geçiş diskleri** | VM 'Lerin RDM veya PASSTHROUGH diskleri varsa, bu diskler Azure 'a çoğaltılmaz.
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmiyor.
-**Depolama vMotion** | Desteklenmiyor. VM, Depolama vMotion kullanıyorsa çoğaltma çalışmayacaktır.
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
-**IPv6** | Desteklenmiyor.
+**Çok yollu GÇ** | Desteklenmez.
+**Depolama vMotion** | Desteklenmez. VM, Depolama vMotion kullanıyorsa çoğaltma çalışmayacaktır.
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
+**IPv6** | Desteklenmez.
 **Hedef disk** | VM 'Ler yalnızca Azure 'da yönetilen disklere (Standart HDD, Premium SSD) geçirilebilirler.
 **Eşzamanlı çoğaltma** | vCenter Server başına 100 VM. Daha fazlasına sahipseniz, bunları 100 toplu işlem halinde geçirin.
 
@@ -214,7 +214,7 @@ Azure geçişi gereci internet 'e internet bağlantısı gerektirir.
 *.portal.azure.com | Azure portal Azure geçişi ' ne gidin.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
-management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+Management.Azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -225,7 +225,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="agentless-migration-port-requirements"></a>Aracısız geçiş-bağlantı noktası gereksinimleri
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 Elektrikli | 443 numaralı bağlantı noktası, çoğaltılan verileri Azure 'a yüklemek ve Azure geçiş Hizmetleri ile iletişim kurmak için çoğaltma ve geçiş işlemlerini düzenleyen giden bağlantılar.
 vCenter server | Bağlantı noktası 443 ' deki gelen bağlantılar, gerecin çoğaltma düzenlemesine olanak tanımak için anlık görüntü oluşturma, veri kopyalama, anlık görüntüleri yayınlama
@@ -325,15 +325,15 @@ Azure geçişi 'ne indirme ve yükleme | Gereci yüklerken ve MySQL istendiğind
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  VM başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmiyor.
+**Paylaşılan disk kümesi** | Desteklenmez.
 **Bağımsız diskler** | Destekleniyor.
 **Geçiş diskleri** | Destekleniyor.
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmiyor.
-**Depolama vMotion** | Destekleniyor
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
-**IPv6** | Desteklenmiyor.
+**Çok yollu GÇ** | Desteklenmez.
+**Depolama vMotion** | Desteklenir
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
+**IPv6** | Desteklenmez.
 
 
 
@@ -350,7 +350,7 @@ Mobility hizmetini dağıttığınızda, aşağıdaki tabloda özetlenen URL 'le
 *.portal.azure.com | Azure portal Azure geçişi ' ne gidin.
 *.windows.net | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
-management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+Management.Azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -359,9 +359,9 @@ dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlükle
 
 ## <a name="agent-based-migration-port-requirements"></a>Aracı tabanlı geçiş-bağlantı noktası gereksinimleri
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
-VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
+VM’ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
 İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.<br/> Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde çalışır.
 
@@ -374,13 +374,13 @@ Azure 'a çoğaltılan tüm şirket içi VM 'Lerin bu tabloda özetlenen Azure V
 Konuk işletim sistemi | [Aracısız çoğaltma kullanarak VMware VM 'leri](#agentless-migration-vmware-vm-requirements)için desteklenen işletim sistemlerini ve [aracı tabanlı çoğaltma kullanan VMware VM](#agent-based-migration-vmware-vm-requirements)'lerini doğrulayın.<br/> Desteklenen bir işletim sistemi üzerinde çalışan herhangi bir iş yükünü geçirebilirsiniz. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk boyutu | 2\.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
-İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk sayısı | 1\. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | 4\.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
-FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
-BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
+Paylaşılan VHD | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
+FC diski | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
+BitLocker | Desteklenmez. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1 ile 63 karakter arasında.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
 Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **etki alanı ve özel** ağlar Için **izin verilen uygulamalar ve Özellikler** -> **Windows Güvenlik Duvarı** 'nda RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
 Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin. Ayrıca, VM için bir genel IP adresi ekleyin. |  

@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Predict credit risk example'
+title: 'Tasarımcı: Kredi risk örneğini tahmin etme'
 titleSuffix: Azure Machine Learning
-description: Build a classifier and use custom Python scripts to predict credit risk using Azure Machine Learning designer.
+description: Azure Machine Learning tasarımcısını kullanarak kredi riskini tahmin etmek için bir sınıflandırıcı oluşturun ve özel Python betikleri kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,61 +17,61 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214265"
 ---
-# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Build a classifier & use Python scripts to predict credit risk using Azure Machine Learning designer
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak kredi riskini tahmin etmek için Python betikleri kullanma & bir sınıflandırıcı oluşturma
 
-**Designer (preview) sample 4**
+**Tasarımcı (Önizleme) örnek 4**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-This article shows you how to build a complex machine learning pipeline using the designer (preview). You'll learn how to implement custom logic using Python scripts and compare multiple models to choose the best option.
+Bu makalede tasarımcı (Önizleme) kullanarak karmaşık makine öğrenimi işlem hattı oluşturma gösterilmektedir. Python betikleri kullanarak özel mantık uygulamayı ve en iyi seçeneği belirlemek için birden çok modeli karşılaştırmayı öğreneceksiniz.
 
-This sample trains a classifier to predict credit risk using credit application information such as credit history, age, and number of credit cards. However, you can apply the concepts in this article to tackle your own machine learning problems.
+Bu örnek kredi geçmişi, yaş ve kredi kartı sayısı gibi kredi uygulama bilgilerini kullanarak kredi riskini tahmin etmek için bir sınıflandırıcının kullanımını sağlar. Ancak, bu makaledeki kavramları uygulayarak kendi makine öğrenimi sorunlarınızı ortadan kaldırabilirsiniz.
 
-Here's the completed graph for this pipeline:
+Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
 
-[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[işlem hattının ![grafiği](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click sample 4 to open it.
+4. Örnek 4 ' e tıklayarak açın.
 
 ## <a name="data"></a>Veriler
 
-This sample uses the German Credit Card dataset from the UC Irvine repository. It contains 1,000 samples with 20 features and one label. Each sample represents a person. The 20 features include numerical and categorical features. For more information about the dataset, see the [UCI website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). The last column is the label, which denotes the credit risk and has only two possible values: high credit risk = 2, and low credit risk = 1.
+Bu örnek, UC Irvine deposundaki Alman kredi kartı veri kümesini kullanır. 20 özellik ve bir etiket ile 1.000 örnek içerir. Her örnek bir kişiyi temsil eder. 20 Özellik sayısal ve kategorik özellikler içerir. Veri kümesi hakkında daha fazla bilgi için, bkz. [UCI Web sitesi](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Son sütun, kredi riskini belirten ve yalnızca iki olası değere sahip olan etikettir: yüksek kredi riski = 2 ve düşük kredi riski = 1.
 
-## <a name="pipeline-summary"></a>Pipeline summary
+## <a name="pipeline-summary"></a>Ardışık düzen Özeti
 
-In this pipeline, you compare two different approaches for generating models to solve this problem:
+Bu işlem hattında, bu sorunu çözmek için modeller oluşturmak üzere iki farklı yaklaşım karşılaştırırsınız:
 
-- Training with the original dataset.
-- Training with a replicated dataset.
+- Özgün veri kümesiyle eğitim.
+- Çoğaltılan bir veri kümesiyle eğitim.
 
-With both approaches, you evaluate the models by using the test dataset with replication to ensure that results are aligned with the cost function. Test two classifiers with both approaches: **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
+Her iki yaklaşımdan, sonuçların maliyet işleviyle hizalandığından emin olmak için, çoğaltma ile test veri kümesini kullanarak modelleri değerlendirmelisiniz. Her iki yaklaşımdan iki sınıflandırıcıyı test edin: **Iki sınıf destek vektör makinesi** ve **Iki sınıf artırılmış karar ağacı**.
 
-The cost of misclassifying a low-risk example as high is 1, and the cost of misclassifying a high-risk example as low is 5. We use an **Execute Python Script** module to account for this misclassification cost.
+Düşük riskli bir örneği yüksek olarak sınıflandırın maliyeti 1 ' dir ve yüksek riskli bir örneği düşük olarak sınıflandırın maliyeti 5 ' tir. Bu hatalı sınıflandırma maliyetini hesaba eklemek için bir **Python betik modülünü yürütme** kullanıyoruz.
 
-Here's the graph of the pipeline:
+İşlem hattının grafiği aşağıdadır:
 
-[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[işlem hattının ![grafiği](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Veri işleme
 
-Start by using the **Metadata Editor** module to add column names to replace the default column names with more meaningful names, obtained from the dataset description on the UCI site. Provide the new column names as comma-separated values in the **New column** name field of the **Metadata Editor**.
+Varsayılan sütun adlarını, UCı sitesindeki veri kümesi açıklamasından elde edilen daha anlamlı adlarla değiştirecek şekilde sütun adları eklemek için **meta veri Düzenleyicisi** modülünü kullanarak başlayın. Yeni sütun adlarını, **meta veri düzenleyicisinin** **Yeni sütun** adı alanında virgülle ayrılmış değerler olarak sağlayın.
 
-Next, generate the training and test sets used to develop the risk prediction model. Split the original dataset into training and test sets of the same size by using the **Split Data** module. To create sets of equal size, set the **Fraction of rows in the first output dataset** option to 0.7.
+Ardından, risk tahmin modelini geliştirmek için kullanılan eğitimi ve test kümelerini oluşturun. Özgün veri kümesini, **bölünmüş veri** modülünü kullanarak aynı boyuttaki eğitim ve test kümelerine ayırın. Eşit boyut kümesi oluşturmak için, **ilk çıkış veri kümesi seçeneğinde satır kesirini** 0,7 olarak ayarlayın.
 
-### <a name="generate-the-new-dataset"></a>Generate the new dataset
+### <a name="generate-the-new-dataset"></a>Yeni veri kümesini oluştur
 
-Because the cost of underestimating risk is high, set the cost of misclassification like this:
+Risk tahmini maliyeti yüksek olduğundan, yanlış sınıflandırma maliyetini şöyle ayarlayın:
 
-- For high-risk cases misclassified as low risk: 5
-- For low-risk cases misclassified as high risk: 1
+- Yüksek riskli durumlar için düşük riskli olarak yanlış sınıflandırıldı: 5
+- Düşük riskli durumlar için yüksek riskli olarak yanlış sınıflandırılmış: 1
 
-To reflect this cost function, generate a new dataset. In the new dataset, each high-risk example is replicated five times, but the number of low-risk examples doesn't change. Split the data into training and test datasets before replication to prevent the same row from being in both sets.
+Bu maliyet işlevini yansıtmak için yeni bir veri kümesi oluşturun. Yeni veri kümesinde, her bir yüksek riskli örnek beş kez çoğaltılır, ancak düşük riskli örneklerin sayısı değişmez. Aynı satırın her iki durumda da olmasını engellemek için verileri, çoğaltmadan önce eğitime ve test veri kümelerine ayırın.
 
-To replicate the high-risk data, put this Python code into an **Execute Python Script** module:
+Yüksek riskli verileri çoğaltmak için, bu python kodunu bir **Python betik** modülüne koyun:
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-The **Execute Python Script** module replicates both the training and test datasets.
+**Execute Python betik** modülü hem eğitim hem de test veri kümelerini çoğaltır.
 
 ### <a name="feature-engineering"></a>Özellik mühendisliği
 
-The **Two-Class Support Vector Machine** algorithm requires normalized data. So use the **Normalize Data** module to normalize the ranges of all numeric features with a `tanh` transformation. A `tanh` transformation converts all numeric features to values within a range of 0 and 1 while preserving the overall distribution of values.
+**Iki sınıflı destek vektör makinesi** algoritması, normalleştirilmiş veriler gerektirir. Bu nedenle, tüm sayısal özelliklerin aralıklarını bir `tanh` dönüşümle normalleştirmek için **Normalleştir** modülünü kullanın. `tanh` dönüştürme, tüm sayısal özellikleri 0 ve 1 aralığı içindeki değerlere dönüştürür, ancak değerlerin genel dağıtımını korur.
 
-The **Two-Class Support Vector Machine** module handles string features, converting them to categorical features and then to binary features with a value of zero or one. So you don't need to normalize these features.
+**Iki sınıflı destek vektör makinesi** modülü, dize özelliklerini, bunları kategorik özelliklere dönüştürerek ve sonra sıfır veya bir değeri olan ikili özelliklere dönüştüren şekilde işler. Bu nedenle, bu özellikleri normalleştirmeniz gerekmez.
 
 ## <a name="models"></a>Modeller
 
-Because you applied two classifiers, **Two-Class Support Vector Machine** (SVM) and **Two-Class Boosted Decision Tree**, and two datasets, you generate a total of four models:
+İki **sınıflı, Iki sınıf destek vektör makinesi** (SVM) ve **iki sınıflı bir karar ağacı**ve iki veri kümesi uyguladığınız için, toplam dört model oluşturursunuz:
 
-- SVM trained with original data.
-- SVM trained with replicated data.
-- Boosted Decision Tree trained with original data.
-- Boosted Decision Tree trained with replicated data.
+- SVM özgün verilerle eğitildi.
+- SVM çoğaltılan verilerle eğitildi.
+- Özgün verilerle eğitilen karar ağacı.
+- Çoğaltılan verilerle eğitilen karar ağacı.
 
-This sample uses the standard data science workflow to create, train, and test the models:
+Bu örnek, modelleri oluşturmak, eğitme ve test etmek için standart veri bilimi iş akışını kullanır:
 
-1. Initialize the learning algorithms, using **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
-1. Use **Train Model** to apply the algorithm to the data and create the actual model.
-1. Use **Score Model** to produce scores by using the test examples.
+1. **Iki sınıf destek vektör makinesi** ve **Iki sınıf artırılmış karar ağacının**kullanıldığı öğrenme algoritmalarını başlatın.
+1. Algoritmayı veriye uygulamak ve gerçek modeli oluşturmak için **eğitme modeli** kullanın.
+1. Test örneklerini kullanarak puan oluşturmak için **puan modeli** kullanın.
 
-The following diagram shows a portion of this pipeline, in which the original and replicated training sets are used to train two different SVM models. **Train Model** is connected to the training set, and **Score Model** is connected to the test set.
+Aşağıdaki diyagramda, bu işlem hattının, orijinal ve çoğaltılan eğitim kümelerinin iki farklı SVM modelini eğitmek için kullanıldığı bir kısmı gösterilmektedir. **Eğitme modeli** eğitim kümesine bağlıdır ve test kümesine **puan modeli** bağlıdır.
 
-![Pipeline graph](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Ardışık düzen grafiği](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-In the evaluation stage of the pipeline, you compute the accuracy of each of the four models. For this pipeline, use **Evaluate Model** to compare examples that have the same misclassification cost.
+İşlem hattının değerlendirme aşamasında dört modelin her birinin doğruluğunu hesaplamalısınız. Bu işlem hattı için, aynı yanlış sınıflandırma maliyetine sahip örnekleri karşılaştırmak üzere **modeli değerlendir** ' i kullanın.
 
-The **Evaluate Model** module can compute the performance metrics for as many as two scored models. So you can use one instance of **Evaluate Model** to evaluate the two SVM models and another instance of **Evaluate Model** to evaluate the two Boosted Decision Tree models.
+**Modeli değerlendir** modülü, performans ölçümlerini iki puandan daha fazla model için işlem yapabilir. Bu nedenle, iki SVM modelini değerlendirmek için bir **değerlendirme modeli** örneği ve Iki farklı karar ağacı modelini değerlendirmek Için **modeli değerlendir** başka bir örneği kullanabilirsiniz.
 
-Notice that the replicated test dataset is used as the input for **Score Model**. In other words, the final accuracy scores include the cost for getting the labels wrong.
+Çoğaltılan test veri kümesinin, **Puanlama modeli**girişi olarak kullanıldığına dikkat edin. Diğer bir deyişle, son doğruluk puanları etiketlerin yanlış alınması için maliyeti içerir.
 
-## <a name="combine-multiple-results"></a>Combine multiple results
+## <a name="combine-multiple-results"></a>Birden çok sonucu birleştirme
 
-The **Evaluate Model** module produces a table with a single row that contains various metrics. To create a single set of accuracy results, we first use **Add Rows** to combine the results into a single table. We then use the following Python script in the **Execute Python Script** module to add the model name and training approach for each row in the table of results:
+**Modeli değerlendir** modülü, çeşitli ölçümler içeren tek bir satır içeren bir tablo oluşturur. Tek bir doğruluk sonuçları kümesi oluşturmak için, önce sonuçları tek bir tabloya birleştirmek üzere **satır ekle** ' yi kullanıyoruz. Daha sonra, sonuç tablosundaki her bir satır için model adını ve eğitim yaklaşımını eklemek üzere **Python betik modülünü yürütme** bölümünde aşağıdaki Python betiğini kullanacağız:
 
 ```Python
 import pandas as pd
@@ -142,17 +142,17 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Sonuçlar
 
-To view the results of the pipeline, you can right-click the Visualize output of the last **Select Columns in Dataset** module.
+İşlem hattının sonuçlarını görüntülemek için **veri kümesi modülündeki son seçme sütunlarının** görselleştirilecek ' a sağ tıklayabilirsiniz.
 
-![Visualize output](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Çıktıyı görselleştirin](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-The first column lists the machine learning algorithm used to generate the model.
+İlk sütunda, modeli oluşturmak için kullanılan makine öğrenimi algoritması listelenir.
 
-The second column indicates the type of the training set.
+İkinci sütun, eğitim kümesinin türünü gösterir.
 
-The third column contains the cost-sensitive accuracy value.
+Üçüncü sütun, maliyet duyarlı doğruluk değerini içerir.
 
-From these results, you can see that the best accuracy is provided by the model that was created with **Two-Class Support Vector Machine** and trained on the replicated training dataset.
+Bu sonuçlardan en iyi doğruluk, **Iki sınıf destek vektör makinesi** ile oluşturulmuş ve çoğaltılan eğitim veri kümesi üzerinde eğitilen model tarafından sağlandığını görebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -160,11 +160,11 @@ From these results, you can see that the best accuracy is provided by the model 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Explore the other samples available for the designer:
+Tasarımcı için kullanılabilen diğer örnekleri keşfet:
 
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Örnek 2-gerileme: otomobil fiyatlandırma için algoritmaları karşılaştırın](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini](how-to-designer-sample-classification-predict-income.md)
+- [Örnek 5-sınıflandırma: karmaşıklığı tahmin etme](how-to-designer-sample-classification-churn.md)
+- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
+- [Örnek 7-metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)

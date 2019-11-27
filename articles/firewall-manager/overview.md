@@ -18,7 +18,7 @@ ms.locfileid: "74267962"
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi, bulut tabanlı güvenlik perimeters için merkezi güvenlik ilkesi ve rota yönetimi sağlayan bir güvenlik yönetim hizmetidir. Hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynak olan [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources)ile birlikte çalışmaktadır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
+Azure Güvenlik Duvarı Yöneticisi Önizlemesi, bulut tabanlı güvenlik sınırları için merkezi güvenlik ilkesi ve yol yönetimi sağlayan bir güvenlik yönetim hizmetidir. Hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynak olan [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources)ile birlikte çalışmaktadır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
 
 ![Güvenlik Duvarı-yönetici](media/overview/firewallmanagerv3.png)
 

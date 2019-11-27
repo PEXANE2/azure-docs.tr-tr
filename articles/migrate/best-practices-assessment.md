@@ -23,7 +23,7 @@ Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak değerl
 
 Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi 'nde iki tür değerlendirme vardır.
 
-**Değerlendirme türü** | **Ayrıntılar** | **Veri**
+**Değerlendirme türü** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | VM boyutu önerisi, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.
 **Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | VM boyutu önerisi, şirket içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.

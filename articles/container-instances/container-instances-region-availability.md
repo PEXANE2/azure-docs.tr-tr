@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances kaynak kullanılabilirliği
+title: Bölgeye göre kaynak kullanılabilirliği
 description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti için işlem ve bellek kaynaklarının kullanılabilirliği.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 05/14/2019
-ms.author: danlep
-ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172387"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533483"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -30,7 +25,7 @@ Dağıtımlarınızdaki kotalar ve diğer sınırlar hakkında daha fazla bilgi 
 
 Aşağıdaki bölgeler ve kaynaklar, Linux ve [desteklenen](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 tabanlı kapsayıcılar ile kapsayıcı grupları için kullanılabilir.
 
-| Location | OS | CPU | Bellek (GB) |
+| Konum | İşletim Sistemi | CPU | Bellek (GB) |
 | -------- | -- | :---: | :-----------: |
 | Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı ABD | Linux | 4 | 16 |
 | Batı Avrupa, Batı ABD 2 | Linux | 4 | 14 |
@@ -44,7 +39,7 @@ Aşağıdaki bölgeler ve kaynaklar, Linux ve [desteklenen](container-instances-
 
 Windows Server 2019 tabanlı kapsayıcılar (Önizleme) ile kapsayıcı grupları için aşağıdaki bölgeler ve kaynaklar mevcuttur.
 
-| Location | OS | CPU | Bellek (GB) |
+| Konum | İşletim Sistemi | CPU | Bellek (GB) |
 | -------- | -- | :---: | :-----------: |
 | Güneydoğu Asya, Kuzey Avrupa, Batı Avrupa, Orta ABD, Doğu ABD, Batı ABD, Batı ABD 2 | Windows | 4 | 16 |
 | Doğu ABD 2 | Windows | 2 | 3,5 |

@@ -1,6 +1,6 @@
 ---
-title: How to stop monitoring your Azure Red Hat OpenShift cluster | Microsoft Docs
-description: This article describes how you can stop monitoring of your Azure Red Hat OpenShift cluster with Azure Monitor for containers.
+title: Azure Red Hat OpenShift kümenizi izlemeyi durdurma | Microsoft Docs
+description: Bu makalede, Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -14,19 +14,19 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384337"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>How to stop monitoring your Azure Red Hat OpenShift cluster with Azure Monitor for containers
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi durdurma
 
-After you enable monitoring of your Azure Red Hat OpenShift cluster, you can stop monitoring the cluster if you decide you no longer want to monitor it. This article shows how to accomplish this using the provided Azure Resource Manager templates.  
+Azure Red Hat OpenShift kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istememeye karar verirseniz kümeyi izlemeyi durdurabilirsiniz. Bu makalede, bunun nasıl yapılacağı, belirtilen Azure Resource Manager şablonları kullanılarak nasıl gerçekleştirileceğini gösterir.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Provided are two Azure Resource Manager template to support removing the solution resources consistently and repeatedly in your resource group. One is a JSON template specifying the configuration to stop monitoring and the other contains parameter values that you configure to specify the OpenShift cluster resource ID and Azure region that the cluster is deployed in. 
+Sağlanan olan iki çözüm kaynakları tutarlı ve sürekli kaynak grubunuzda kaldırma desteklemek için Azure Resource Manager şablonu. Bunlardan biri, izlemeyi durduracak yapılandırmayı belirten bir JSON şablonudur ve diğeri, OpenShift kümesi kaynak KIMLIĞINI ve kümenin dağıtıldığı Azure bölgesini belirtmek için yapılandırdığınız parametre değerlerini içerir. 
 
-If you're unfamiliar with the concept of deploying resources by using a template, see:
+Bir şablon kullanarak kaynakları dağıtma kavramıyla bilmiyorsanız, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Deploy resources with Resource Manager templates and the Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-If you choose to use the Azure CLI, you first need to install and use the CLI locally. You must be running the Azure CLI version 2.0.65 or later. To identify your version, run `az --version`. If you need to install or upgrade the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-template"></a>Şablon oluşturma
 
@@ -69,9 +69,9 @@ If you choose to use the Azure CLI, you first need to install and use the CLI lo
     }
     ```
 
-2. Save this file as **OptOutTemplate.json** to a local folder.
+2. Bu dosyayı bir yerel klasöre **Optouttemplate. JSON** olarak kaydedin.
 
-3. Paste the following JSON syntax into your file:
+3. Aşağıdaki JSON söz dizimi dosyanıza yapıştırın:
 
     ```json
     {
@@ -88,17 +88,17 @@ If you choose to use the Azure CLI, you first need to install and use the CLI lo
     }
     ```
 
-4. Edit the values for **aroResourceId** and **aroResourceLocation** by using the values of the OpenShift cluster, which you can find on the **Properties** page for the selected cluster.
+4. **Aroresourceıd** ve **Aroresourcelocation** değerlerini, seçili kümenin **Özellikler** sayfasında bulabileceğiniz OpenShift kümesinin değerlerini kullanarak düzenleyin.
 
-    ![Container properties page](media/container-insights-optout-openshift/cluster-properties-page.png)
+    ![Kapsayıcı Özellikleri Sayfası](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Save this file as **OptOutParam.json** to a local folder.
+5. Bu dosyayı bir yerel klasöre **Optoutparam. JSON** olarak kaydedin.
 
 6. Bu şablonu dağıtmaya hazırsınız. 
 
-### <a name="remove-the-solution-using-azure-cli"></a>Remove the solution using Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>Azure CLI kullanarak çözümünü Kaldır
 
-Execute the following command with Azure CLI on Linux to remove the solution and clean up the configuration on your cluster.
+Çözümü kaldırmak ve kümenizdeki yapılandırmayı temizlemek için Linux 'ta Azure CLı ile aşağıdaki komutu yürütün.
 
 ```azurecli
 az login   
@@ -106,17 +106,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-The configuration change can take a few minutes to complete. When it's completed, a message similar to the following that includes the result is returned:
+Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuçları içeren aşağıdakine benzer bir ileti döndürülür:
 
 ```azurecli
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Remove the solution using PowerShell
+### <a name="remove-the-solution-using-powershell"></a>PowerShell kullanarak çözümünü Kaldır
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Execute the following PowerShell commands in the folder containing the template to remove the solution and clean up the configuration from your cluster.    
+Çözümü kaldırmak ve yapılandırmayı kümenizdeki temizlemek için şablonu içeren klasörde aşağıdaki PowerShell komutlarını yürütün.    
 
 ```powershell
 Connect-AzAccount
@@ -124,7 +124,7 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-The configuration change can take a few minutes to complete. When it's completed, a message similar to the following that includes the result is returned:
+Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuçları içeren aşağıdakine benzer bir ileti döndürülür:
 
 ```powershell
 ProvisioningState       : Succeeded
@@ -132,4 +132,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-If the workspace was created only to support monitoring the cluster and it's no longer needed, you have to manually delete it. If you are not familiar with how to delete a workspace, see [Delete an Azure Log Analytics workspace](../../log-analytics/log-analytics-manage-del-workspace.md). 
+Yalnızca küme İzleme'yi desteklemek için çalışma alanı oluşturuldu ve artık gerekli olmadığında, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../../log-analytics/log-analytics-manage-del-workspace.md). 

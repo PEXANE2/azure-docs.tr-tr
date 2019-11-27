@@ -74,7 +74,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
    1. **Oturum açma URL 'si** metin kutusuna `http://localhost`yazın.
 
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’ tıklayın.
 1. **Ayarlar** sayfasını açmak için, uygulamalar listesinde, yeni oluşturduğunuz uygulama kaydına tıklayın. 
 1. **Uygulama kimliğini**kopyalayın.
 
@@ -124,7 +124,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
    1. **Anahtar açıklaması** metin kutusuna bir açıklama yazın (örneğin, *Azure AD risk algılama*).
    1. **Süre**olarak **1 yıl içinde**öğesini seçin.
-   1. **Kaydet**’e tıklayın.
+   1. **Save (Kaydet)** düğmesine tıklayın.
    1. Anahtar değerini kopyalayın ve ardından güvenli bir konuma yapıştırın.   
    
    > [!NOTE]
