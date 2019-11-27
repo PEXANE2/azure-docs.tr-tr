@@ -32,7 +32,7 @@ Bu makalede, Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetil
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
@@ -40,7 +40,7 @@ Bu makalede, Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetil
 - PowerShell'i yerel ortamda çalıştırıyorsanız şunları da yapmanız gerekir: 
     - Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
     - [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
-    - `Install-Module -Name PowerShellGet -AllowPrerelease` komutunu çalıştırarak `PowerShellGet` modülünün yayın öncesi sürümünü alın (`Exit` modülünü yüklemek için bu komutu çalıştırdıktan sonra geçerli PowerShell oturumundan `Az.ManagedServiceIdentity` ile çıkmanız gerekebilir).
+    - `Install-Module -Name PowerShellGet -AllowPrerelease` komutunu çalıştırarak `PowerShellGet` modülünün yayın öncesi sürümünü alın (`Az.ManagedServiceIdentity` modülünü yüklemek için bu komutu çalıştırdıktan sonra geçerli PowerShell oturumundan `Exit` ile çıkmanız gerekebilir).
     - Bu makalede Kullanıcı tarafından atanan yönetilen kimlik işlemlerini gerçekleştirmek üzere `Az.ManagedServiceIdentity` modülünün ön sürümü sürümünü yüklemek için `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` çalıştırın.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma

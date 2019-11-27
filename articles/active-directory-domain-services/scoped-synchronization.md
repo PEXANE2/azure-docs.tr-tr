@@ -42,9 +42,9 @@ Kapsamlı eşitleme ayarlarını yapılandırmak için Azure portal veya PowerSh
 
 | Eylem | | |
 |--|--|--|
-| Azure AD DS yönetilen etki alanı oluşturma ve kapsamlı eşitlemeyi yapılandırma | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi değiştirme | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi devre dışı bırak | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Azure AD DS yönetilen etki alanı oluşturma ve kapsamlı eşitlemeyi yapılandırma | [Azure portalda](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi değiştirme | [Azure portalda](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi devre dışı bırak | [Azure portalda](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur.

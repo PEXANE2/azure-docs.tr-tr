@@ -40,7 +40,7 @@ Eksikse ayarla | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynakta
 
 Gün | Saat | Dakika | Saniye
 -----|-------|---------|--------
-Int | Int | Int | Int 
+'Tir | 'Tir | 'Tir | 'Tir 
 
 ### <a name="cache-key-query-string"></a>Önbellek anahtarı sorgu dizesi
 
@@ -61,10 +61,10 @@ Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirm
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Eylem | HTTP üst bilgi adı | Value
+Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
 Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
-Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
+Yazılacak | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi istekten silinir. | Dize
 
 ### <a name="modify-response-header"></a>Yanıt üst bilgisini Değiştir
@@ -73,10 +73,10 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Eylem | HTTP üst bilgi adı | Value
+Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
 Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
-Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
+Yazılacak | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi yanıttan silinir. | Dize
 
 ### <a name="url-redirect"></a>URL yeniden yönlendirme
@@ -87,12 +87,12 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 Alan | Açıklama 
 ------|------------
-Type | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
+Tür | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
 Protokol | Match Isteği, HTTP, HTTPS.
 Ana Bilgisayar Adı | İsteğin yeniden yönlendirilmesini istediğiniz ana bilgisayar adını seçin. Gelen ana bilgisayarı korumak için boş bırakın.
 Yol | Yeniden Yönlendirmede kullanılacak yolu tanımlayın. Gelen yolu korumak için boş bırakın.  
 Sorgu dizesi | Yeniden Yönlendirmede kullanılan sorgu dizesini tanımlayın. Gelen sorgu dizesini korumak için boş bırakın. 
-Parça | Yeniden Yönlendirmede kullanılacak parçayı tanımlayın. Gelen parçayı korumak için boş bırakın. 
+Parçada | Yeniden Yönlendirmede kullanılacak parçayı tanımlayın. Gelen parçayı korumak için boş bırakın. 
 
 Mutlak bir URL kullanmanızı kesinlikle öneririz. Göreli bir URL kullanmak Azure CDN URL 'Leri geçersiz bir yola yönlendirebilir. 
 

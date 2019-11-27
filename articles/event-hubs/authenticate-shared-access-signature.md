@@ -20,7 +20,7 @@ Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemci
 
 - Başlangıç saati ve sona erme saati dahil olmak üzere SAS 'ın geçerli olduğu Aralık.
 - SAS tarafından verilen izinler. Örneğin, bir Event Hubs ad alanı için SAS, dinleme iznini verebilir, ancak Send iznini alabilir.
-- Geçerli kimlik bilgilerini sunmak yalnızca istemciler, bir olay hub'ına veri gönderebilir.
+- Yalnızca geçerli kimlik bilgileri sunan istemciler, bir olay hub 'ına veri gönderebilir.
 - İstemci başka bir istemcinin kimliğine bürünemedi.
 - Bir kabage istemcisinin, bir olay hub 'ına veri göndermesi engellenebilir.
 
@@ -179,15 +179,15 @@ private static string createToken(string resourceUri, string keyName, string key
 ```
 
 ## <a name="authenticating-event-hubs-publishers-with-sas"></a>SAS ile Event Hubs yayımcılarının kimliğini doğrulama 
-Bir olay yayımcısı, bir olay hub'ı için sanal bir uç nokta tanımlar. Yayımcı yalnızca bir olay hub 'ına ileti göndermek ve ileti almak için kullanılabilir.
+Olay yayımcısı, bir olay hub 'ı için sanal uç noktası tanımlar. Yayımcı yalnızca bir olay hub 'ına ileti göndermek ve ileti almak için kullanılabilir.
 
-Genellikle, bir yayımcı istemci başına bir olay hub'ı kullanır. Herhangi bir olay hub'ının yayımcıları gönderilen tüm iletilerin sıraya alınan olay hub'ındaki ' dir. Yayımcılar ayrıntılı erişim denetimini etkinleştirir.
+Genellikle, bir olay hub 'ı istemci başına bir yayımcı kullanır. Bir olay hub 'ının yayımcılarından birine gönderilen tüm iletiler, bu olay hub 'ında sıraya alınır. Yayımcılar ayrıntılı erişim denetimini etkinleştirir.
 
-Her bir olay hub'ları istemci, istemci için karşıya bir benzersiz belirteci atanır. Belirteçler, her benzersiz belirtecin farklı benzersiz yayımcıya erişim izni verdiği şekilde üretilir. Belirteç tutan bir istemci yalnızca bir yayımcıya ve başka bir yayımcıya bağlanabilir. Birden çok istemci aynı belirteci paylaşıyorsa, her biri yayımcıyı paylaşır.
+Her Event Hubs istemciye, istemciye yüklenen benzersiz bir belirteç atanır. Belirteçler, her benzersiz belirtecin farklı benzersiz yayımcıya erişim izni verdiği şekilde üretilir. Belirteç tutan bir istemci yalnızca bir yayımcıya ve başka bir yayımcıya bağlanabilir. Birden çok istemci aynı belirteci paylaşıyorsa, her biri yayımcıyı paylaşır.
 
-Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler aynı anahtarla imzalanmıştır. İstemciler, istemcilerin bu belirteçleri üretmelerini önleyen anahtardan haberdar değildir. İstemciler, süreleri dolana kadar aynı belirteçlerde çalışır.
+Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler aynı anahtarla imzalanır. İstemciler, istemcilerin bu belirteçleri üretmelerini önleyen anahtardan haberdar değildir. İstemciler, süreleri dolana kadar aynı belirteçlerde çalışır.
 
-Örneğin, yalnızca Event Hubs göndermek/yayımlamak üzere kapsamı belirlenmiş yetkilendirme kurallarını tanımlamak için bir gönderme yetkilendirme kuralı tanımlamanız gerekir. Bu, bir ad alanı düzeyinde yapılabilir veya belirli bir varlığa (Olay Hub 'ları örneği veya konu başlığı) daha ayrıntılı kapsam sağlayabilir. Bir istemci veya bu tür ayrıntılı erişim kapsamına sahip bir uygulama Event Hubs yayımcı olarak adlandırılır. Bunu yapmak için aşağıdaki adımları izleyin:
+Örneğin, yalnızca Event Hubs göndermek/yayımlamak üzere kapsamı belirlenmiş yetkilendirme kurallarını tanımlamak için bir gönderme yetkilendirme kuralı tanımlamanız gerekir. Bu, bir ad alanı düzeyinde yapılabilir veya belirli bir varlığa (Olay Hub 'ları örneği veya konu başlığı) daha ayrıntılı kapsam sağlayabilir. Bir istemci veya bu tür ayrıntılı erişim kapsamına sahip bir uygulama Event Hubs yayımcı olarak adlandırılır. Bunu yapmak için şu adımları izleyin:
 
 1. Kendisine **gönderme** kapsamını atamak için yayımlamak istediğiniz VARLıKTA bir SAS anahtarı oluşturun. Daha fazla bilgi için bkz. [paylaşılan erişim yetkilendirme ilkeleri](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 2. Adım içinde oluşturulan anahtarı kullanarak belirli bir yayımcının süre sonu zamanına sahip bir SAS belirteci oluşturun.
@@ -207,16 +207,16 @@ Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler ayn
 
 
 > [!NOTE]
-> Önerilmese de, bir olay hub 'ına veya bir ad alanına erişim izni veren belirteçlerle donabilme mümkündür. Bu belirteci tutan herhangi bir cihaz, doğrudan bu olay hub 'ına ileti gönderebilir. Ayrıca, cihaz, olay hub'ına göndermesini kara listede olamaz.
+> Önerilmese de, bir olay hub 'ına veya bir ad alanına erişim izni veren belirteçlerle donabilme mümkündür. Bu belirteci tutan herhangi bir cihaz, doğrudan bu olay hub 'ına ileti gönderebilir. Ayrıca, cihaz, bu olay hub 'ına gönderilmeden listelenebilir.
 > 
 > Belirli ve ayrıntılı kapsamları sağlamak her zaman önerilir.
 
 > [!IMPORTANT]
-> Belirteçleri oluşturduktan sonra her bir istemci kendi benzersiz bir belirteç ile sağlanır.
+> Belirteçler oluşturulduktan sonra, her istemci kendi benzersiz belirteciyle sağlanır.
 >
-> İstemci bir olay hub 'ına veri gönderdiğinde, isteği belirteç ile Etiketler. Bir saldırgan, gizlice ve belirteç çalma önlemek için olay hub'ı ile istemci arasındaki iletişimin şifreli bir kanal gerçekleşmelidir.
+> İstemci bir olay hub 'ına veri gönderdiğinde, isteği belirteç ile Etiketler. Bir saldırganın belirteci bırakıp çalmasını önlemek için, istemci ile Olay Hub 'ı arasındaki iletişim şifrelenmiş bir kanal üzerinden gerçekleşmelidir.
 > 
-> Bir saldırgan tarafından bir belirteç çalınırsa, saldırgan belirteci çalınırsa istemcinin kimliğine bürünebilir. Bir yayımcıyı kara listelemek, farklı bir yayımcı kullanan yeni bir belirteç alıncaya kadar istemciyi kullanılamaz hale getirir.
+> Bir belirteç saldırgan tarafından çalınırsa saldırgan, belirtecinin çalındığı istemciyi taklit edebilir. Bir yayımcıyı kara listelemek, farklı bir yayımcı kullanan yeni bir belirteç alıncaya kadar istemciyi kullanılamaz hale getirir.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>SAS ile Event Hubs tüketicilerinin kimliğini doğrulama 

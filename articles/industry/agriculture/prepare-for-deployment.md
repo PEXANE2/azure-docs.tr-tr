@@ -35,11 +35,11 @@ Azure Farmtts dağıtımı, aboneliğiniz dahilinde aşağıdaki listelenen kayn
 
 |S.No  |Kaynak Adı  |Azure Farmtempts bileşeni  |
 |---------|---------|---------|
-|1\.  |       Azure Cosmos DB   |  Veri Merkezi       |
+|1  |       Azure Cosmos DB   |  Veri Merkezi       |
 |2  |    Application Insights      |     Veri merkezi/Hızlandırıcı     |
-|3  |Redis için Azure Önbelleği   |Veri Merkezi   |
+|3  |Redis için Azure Cache   |Veri Merkezi   |
 |4  |       Azure Keykasası    |  Veri merkezi/Hızlandırıcı        |
-|5  |    Time Series Insights       |     Veri Merkezi      |
+|5  |    Zaman Serisi İçgörüleri       |     Veri Merkezi      |
 |6 |      EventHub ad alanı    |  Veri Merkezi       |
 |7  |    Azure Data Factory V2       |     Veri merkezi/Hızlandırıcı      |
 |8  |Batch hesabı    |Veri Merkezi   |
@@ -49,7 +49,7 @@ Azure Farmtts dağıtımı, aboneliğiniz dahilinde aşağıdaki listelenen kayn
 |12|      App Service      |  Veri merkezi/Hızlandırıcı       |
 |13 |    App Service planı        |     Veri merkezi/Hızlandırıcı      |
 |14 |Azure haritalar hesabı     |Hızlandır    |
-|15 |       Time Series Insights      |  Veri Merkezi     |
+|15 |       Zaman Serisi İçgörüleri      |  Veri Merkezi     |
 
 Azure Farmırts, Azure Marketi 'nden indirebilirsiniz. Doğrudan Azure portal erişebilirsiniz.  
 

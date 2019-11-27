@@ -29,7 +29,7 @@ Bu REST Bağlayıcısı, [http Bağlayıcısı](connector-http.md) ve [Web tablo
 - **Http Bağlayıcısı** , örneğin dosyayı indirmek için HERHANGI bir HTTP uç noktasından veri almak için geneldir. Bu REST Bağlayıcısı kullanılabilir hale gelmeden önce, desteklenen ancak REST bağlayıcısıyla daha az işlevsel bir işlem olan API 'den veri kopyalamak için HTTP bağlayıcısını kullanabilirsiniz.
 - **Web tablosu Bağlayıcısı** , tablo IÇERIĞINI bir HTML Web sayfasından ayıklar.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
 Bir REST kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının bir listesi için bkz. [desteklenen veri depoları ve biçimleri](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -43,21 +43,21 @@ Bir REST kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyal
 > [!TIP]
 > Data Factory ' de REST bağlayıcısını yapılandırmadan önce veri alımı isteğini test etmek için, üst bilgi ve gövde gereksinimlerine yönelik API belirtimi hakkında bilgi edinin. Doğrulamak için Postman veya bir Web tarayıcısı gibi araçları kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Aşağıdaki bölümler, REST bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özelliklerle ilgili ayrıntıları sağlar.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
 REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | **Type** özelliği **RESTService**olarak ayarlanmalıdır. | Yes |
 | url | REST hizmetinin temel URL 'SI. | Yes |
@@ -69,9 +69,9 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 **AuthenticationType** özelliğini **temel**olarak ayarlayın. Önceki bölümde açıklanan genel özelliklere ek olarak, aşağıdaki özellikleri belirtin:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| userName | REST uç noktasına erişmek için kullanılacak Kullanıcı adı. | Yes |
+| Nitelen | REST uç noktasına erişmek için kullanılacak Kullanıcı adı. | Yes |
 | password | Kullanıcı için parola ( **Kullanıcı adı** değeri). Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** türü olarak işaretleyin. Ayrıca, [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi için de başvurabilirsiniz. | Yes |
 
 **Örnek**
@@ -102,11 +102,11 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 **AuthenticationType** özelliğini **Aadserviceprincipal**olarak ayarlayın. Önceki bölümde açıklanan genel özelliklere ek olarak, aşağıdaki özellikleri belirtin:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| servicePrincipalId | Azure Active Directory uygulamasının istemci KIMLIĞINI belirtin. | Yes |
-| servicePrincipalKey | Azure Active Directory uygulamasının anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| tenant | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Bu, Azure portalının sağ üst köşedeki fare gelerek alın. | Yes |
+| Serviceprincipalıd | Azure Active Directory uygulamasının istemci KIMLIĞINI belirtin. | Yes |
+| Servicesprincipalkey | Azure Active Directory uygulamasının anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Yes |
 | Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, örn. `https://management.core.windows.net`.| Yes |
 
 **Örnek**
@@ -139,7 +139,7 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 **AuthenticationType** özelliğini **managedserviceıdentity**olarak ayarlayın. Önceki bölümde açıklanan genel özelliklere ek olarak, aşağıdaki özellikleri belirtin:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, örn. `https://management.core.windows.net`.| Yes |
 
@@ -171,7 +171,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 REST 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | DataSet 'in **Type** özelliği **restresource**olarak ayarlanmalıdır. | Yes |
 | relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. HTTP Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar: `[URL specified in linked service]/[relative URL specified in dataset]`. | Hayır |
@@ -197,7 +197,7 @@ Veri kümesinde `requestMethod`, `additionalHeaders`, `requestBody` ve `paginati
 }
 ```
 
-## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
+## <a name="copy-activity-properties"></a>Kopyalama etkinliği özellikleri
 
 Bu bölüm, REST kaynağının desteklediği özelliklerin bir listesini sağlar.
 
@@ -207,7 +207,7 @@ Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam
 
 Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının **Type** özelliği **restsource**olarak ayarlanmalıdır. | Yes |
 | requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |

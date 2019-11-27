@@ -42,7 +42,7 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
 | Apache Storm           | -             | 1.1.0                       |
-| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
@@ -87,14 +87,14 @@ Aşağıdaki tabloda, Azure portal mevcut **olmayan** HDInsight sürümleri list
 | HDInsight sürümü | HDP sürümü | VM IŞLETIM SISTEMI | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Yes |Hayır |
-| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |Hayır |
-| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |Hayır |
-| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |Hayır |
-| HDInsight 3,2 |HDP 2.2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |Hayır |
-| HDInsight 3,1 |HDP 2.1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |Hayır |
-| HDInsight 3,0 |HDP 2.0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |Hayır |
-| HDInsight 2,1 |HDP 1.3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |Hayır |
-| HDInsight 1,6 |HDP 1.1 | |28 Ekim 2013 |26 Nisan 2014 |31 Mayıs 2015 |Hayır |Hayır |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |Hayır |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |Hayır |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |Hayır |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |Hayır |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |Hayır |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |Hayır |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |Hayır |
+| HDInsight 1,6 |HDP 1,1 | |28 Ekim 2013 |26 Nisan 2014 |31 Mayıs 2015 |Hayır |Hayır |
 
 > [!NOTE]  
 > İki baş düğümü olan yüksek oranda kullanılabilir kümeler, HDInsight sürüm 2,1 ve üzeri için varsayılan olarak dağıtılır. Bunlar HDInsight sürüm 1,6 kümeleri için kullanılamaz.
@@ -131,7 +131,7 @@ Kurumsal Güvenlik, HDInsight kümenize küme iş akışı oluşturma işlemi ka
 
 - Hadoop (yalnızca HDInsight 3,6)
 - Spark
-- Interactive Query
+- Etkileşimli Sorgu
 
 ### <a name="support-for-azure-data-lake-storage"></a>Azure Data Lake Storage için destek
 

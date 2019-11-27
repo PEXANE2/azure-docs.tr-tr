@@ -18,7 +18,7 @@ ms.locfileid: "74534081"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps 'de B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturun ve yönetin
 
-[Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-overview.md) kullanarak [kurumsal tümleştirme ve B2B çözümleri](../logic-apps/logic-apps-overview.md) oluşturabilmek için önce bir tümleştirme hesabı oluşturmanız gerekir. Bu hesap, mantıksal uygulama iş akışlarınızla tanımladığınız ve kullandığınız tümleştirme yapıları için güvenli, ölçeklenebilir ve yönetilebilir bir kapsayıcı sağlayan ayrı bir Azure kaynağıdır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) kullanarak [kurumsal tümleştirme ve B2B çözümleri](../logic-apps/logic-apps-enterprise-integration-overview.md) oluşturabilmek için önce bir tümleştirme hesabı oluşturmanız gerekir. Bu hesap, mantıksal uygulama iş akışlarınızla tanımladığınız ve kullandığınız tümleştirme yapıları için güvenli, ölçeklenebilir ve yönetilebilir bir kapsayıcı sağlayan ayrı bir Azure kaynağıdır.
 
 Örneğin, ticari iş ortakları, anlaşmalar, Haritalar, şemalar, sertifikalar ve toplu iş konfigürasyonları gibi B2B yapıtları oluşturabilir, saklayabilir ve yönetebilirsiniz. Ayrıca, mantıksal uygulamanızın bu yapıtlar ile çalışabilmesi ve Logic Apps B2B bağlayıcılarını kullanabilmesi için, [tümleştirme hesabınızı](#link-account) mantıksal uygulamanıza bağlamanız gerekir. Tümleştirme hesabınız ve mantıksal uygulamanız *aynı* konumda veya bölgede bulunmalıdır.
 
@@ -34,7 +34,7 @@ Bu konu başlığı altında, bu görevlerin nasıl gerçekleştirileceği göst
 * Tümleştirme hesabınızı başka bir Azure Kaynak grubuna veya aboneliğine taşıyın.
 * Tümleştirme hesabınızı silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -56,7 +56,7 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
 
    ![Tümleştirme hesabı ayrıntılarını sağlayın](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Özellik | Gerekli | Değer | Açıklama |
+   | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Adı** | Yes | <*tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı; yalnızca harfler, rakamlar, tireler (`-`), alt çizgiler (`_`), parantezler (`(`, `)`) ve noktalar (`.`) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
    | **Abonelik** | Yes | <*Azure-subscription-name*> | Azure aboneliğinizin adı |
@@ -113,7 +113,7 @@ Bir tümleştirme hesabının [sınırlarını](../logic-apps/logic-apps-limits-
 
 Bu değişikliği yapmak için, bu bölümdeki veya [Azure CLI](#upgrade-tier-azure-cli)'deki adımları izleyerek Azure Portal kullanabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portalı
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -207,7 +207,7 @@ Mantıksal uygulamanızı başka bir tümleştirme hesabına bağlamak veya art�
    },
    ```
 
-   Örneğin:
+   Örnek:
 
    !["Integrationaccount" nesnesini bul](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

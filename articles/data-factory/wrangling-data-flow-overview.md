@@ -42,9 +42,9 @@ Herhangi bir şeyi kaldırmak ve hızlı analizler için bir şekle uymak üzere
 
 | Bağlayıcı | Veri biçimi | Kimlik doğrulaması türü |
 | -- | -- | --|
-| [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV | Hesap Anahtarı |
+| [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV | Hesap anahtarı |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Hizmet Sorumlusu |
-| [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) | CSV | Hesap anahtarı, hizmet sorumlusu |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | CSV | Hesap anahtarı, hizmet sorumlusu |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | - | SQL kimlik doğrulaması |
 | [Azure SYNAPSE Analizi](connector-azure-sql-data-warehouse.md) | - | SQL kimlik doğrulaması |
 

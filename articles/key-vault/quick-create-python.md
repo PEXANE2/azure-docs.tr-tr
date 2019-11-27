@@ -121,7 +121,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Python için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
 
-Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appkullanılabilir.
+Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app kullanılabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 

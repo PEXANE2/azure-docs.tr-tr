@@ -65,7 +65,7 @@ Bu özellikler yeniden dağıtım öncesinde kapsayıcı grubu silmeyi gerektiri
 
 * İşletim sistemi türü
 * CPU
-* Bellek
+* Hafıza
 * Yeniden başlatma ilkesi
 * Bağlantı Noktaları
 

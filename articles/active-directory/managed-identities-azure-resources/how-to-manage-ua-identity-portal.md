@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory bir yöneti
 
 Bu makalede, Azure portalını kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atamayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
@@ -46,7 +46,7 @@ Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza 
    - **Abonelik**: Kullanıcı tarafından atanan yönetilen kimliği oluşturmak için aboneliği seçin
    - **Kaynak grubu**: Kullanıcı tarafından atanan yönetilen kimliğinizi içerecek yeni bir kaynak grubu oluşturun veya mevcut bir kaynak grubunda Kullanıcı tarafından atanan yönetilen kimliği oluşturmak Için **Varolanı kullan** ' ı seçin.
    - **Konum**: Kullanıcı tarafından atanan yönetilen kimliğin dağıtılacağı bir konum seçin, örneğin **Batı ABD**.
-4. **Oluştur**’ tıklayın.
+4. **Oluştur**’a tıklayın.
 
 ![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

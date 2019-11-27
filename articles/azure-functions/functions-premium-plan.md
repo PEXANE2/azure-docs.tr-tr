@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
 
-|SKU|Çekirdek|Bellek|Depolama|
+|SKU|Çekirdek|Hafıza|Depolama|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7 GB|250 GB|
@@ -102,25 +102,25 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 |--| -- | -- |
 |Avustralya Orta| ✔<sup>1</sup> | |
 |Avustralya Orta 2| ✔<sup>1</sup> | |
-|Avustralya Doğu| ✔ | |
-|Avustralya Güneydoğu | ✔ | ✔ |
-|Güney Brezilya| ✔<sup>2</sup> |  |
-|Orta Kanada| ✔ |  |
+|Doğu Avustralya| ✔ | |
+|Güneydoğu Avustralya | ✔ | ✔ |
+|Brezilya Güney| ✔<sup>2</sup> |  |
+|Kanada Orta| ✔ |  |
 |Orta ABD| ✔ |  |
 |Doğu Asya| ✔ |  |
 |Doğu ABD | ✔ | ✔ |
 |Doğu ABD 2| ✔ |  |
 |Fransa Orta| ✔ |  |
-|Japonya Doğu| ✔ | ✔ |
-|Japonya Batı| ✔ | |
+|Doğu Japonya| ✔ | ✔ |
+|Batı Japonya| ✔ | |
 |Kore Orta| ✔ |  |
 |Orta Kuzey ABD| ✔ |  |
 |Kuzey Avrupa| ✔ | ✔ |
-|Orta Güney ABD| ✔ |  |
+|Güney Orta ABD| ✔ |  |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔ |
-|Birleşik Krallık Güney| ✔ | |
-|Birleşik Krallık Batı| ✔ |  |
+|Birleşik Krallık, Güney| ✔ | |
+|Birleşik Krallık, Batı| ✔ |  |
 |Batı Avrupa| ✔ | ✔ |
 |Batı Hindistan| ✔ |  |
 |Batı ABD| ✔ | ✔ |

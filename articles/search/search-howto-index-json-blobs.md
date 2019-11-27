@@ -118,7 +118,7 @@ Kod tabanlı JSON dizin oluşturma için [Postman](search-get-started-postman.md
 
 Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi veya bir JSON "dizisi" olacaktır. Azure Bilişsel Arama blob Indexer, istek üzerinde **Parsingmode** parametresini nasıl ayarlayadiğinize bağlı olarak, her iki oluşturmayı de ayrıştırabilirler.
 
-| JSON belgesi | parsingMode | Açıklama | Kullanılabilirlik |
+| JSON belgesi | parsingMode | Açıklama | Erişilebilirlik |
 |--------------|-------------|--------------|--------------|
 | Blob başına bir tane | `json` | JSON bloblarını tek bir metin öbeği olarak ayrıştırır. Her JSON BLOBU tek bir Azure Bilişsel Arama belgesi haline gelir. | Genellikle [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API ve [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
 | Blob başına birden çok | `jsonArray` | Blob 'ta her bir dizi öğesinin ayrı bir Azure Bilişsel Arama belgesi haline geldiği bir JSON dizisi ayrıştırır.  | Genellikle [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API ve [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
@@ -405,7 +405,7 @@ Kaynak ve hedef alanlar kusursuz hizalı olmadığında, açık alan-alan ilişk
         }
     }
 
-Aşağıdaki alanlarla bir arama dizini olduğunu varsayalım: tür `Edm.String`, `date` türü `Edm.DateTimeOffset`ve `tags` türündeki `text`.`Collection(Edm.String)` Dizindeki kaynak ve `date` alanında "Dateyayýmlandý" arasındaki tutarsızlığı fark edin. JSON 'nizi istenen şekle eşlemek için aşağıdaki alan eşlemelerini kullanın:
+Aşağıdaki alanlarla bir arama dizini olduğunu varsayalım: tür `Edm.String`, `date` türü `Edm.DateTimeOffset`ve `tags` türündeki `text`. Dizindeki kaynak ve `date` alanında "Dateyayýmlandý" arasındaki tutarsızlığı fark edin. JSON 'nizi istenen şekle eşlemek için aşağıdaki alan eşlemelerini kullanın:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },

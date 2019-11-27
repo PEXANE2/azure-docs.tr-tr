@@ -33,7 +33,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
-1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
 3. "Azure Bilişsel Arama" bulmak için arama çubuğunu kullanın veya **Web** > **Azure bilişsel arama**aracılığıyla kaynağa gidin.
 

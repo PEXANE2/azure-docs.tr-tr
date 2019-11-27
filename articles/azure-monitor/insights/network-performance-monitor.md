@@ -38,14 +38,14 @@ Ağ Performansı İzleyicisi üç geniş özellik sunar:
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki bağlantıyı, aşağıdaki bölgelerden birinde barındırılan bir çalışma alanından izleyebilir:
 * Batı Avrupa
-* Batı Orta ABD
+* Orta Batı ABD
 * Orta Kuzey ABD
 * Doğu ABD
 * Doğu Japonya
 * Güneydoğu Asya
 * Güney Doğu Avustralya
 * Avustralya Orta
-* Avustralya Doğu
+* Doğu Avustralya
 * Güney UK
 * Orta Hindistan
 * ABD devleti Virginia
@@ -77,7 +77,7 @@ Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performa
 
 * **TCP protokolü**: izleme için protokol olarak TCP ' yi seçerseniz, aracıların birbirlerine bağlanabildiğinizden emin olmak için ağ performansı İzleyicisi ve ExpressRoute İzleyicisi için kullanılan aracılarda güvenlik duvarı bağlantı noktasını açın. Bağlantı noktasını açmak için, yönetim ayrıcalıklarına sahip bir PowerShell penceresinde herhangi bir parametre olmadan [Enablerules. ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini çalıştırın.
 
-    Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarları için değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. 
+    Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarların değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. 
 
     >[!NOTE]
     > Betik yalnızca Windows güvenlik duvarını yerel olarak yapılandırır. Bir ağ güvenlik duvarınız varsa, Ağ Performansı İzleyicisi tarafından kullanılan TCP bağlantı noktasına giden trafiğe izin verdiğinden emin olun.
@@ -157,12 +157,12 @@ Bir aracısının yüklü olduğu tüm düğümler **düğümler** sekmesinde li
 
  
 
-## <a name="data-collection-details"></a>Veri koleksiyonu ayrıntıları
+## <a name="data-collection-details"></a>Veri toplama ayrıntıları
 Protokol olarak TCP ' yi seçtiğinizde, kayıp ve gecikme bilgilerini toplamak için Ağ Performansı İzleyicisi TCP SYN-SYNACK-ACK Handshake paketlerini kullanır. Ağ Performansı İzleyicisi, protokol olarak ıCMP 'yi seçtiğinizde ıCMP YANKı ıCMP YANKı yanıtı kullanır. İzleme yolu, topoloji bilgilerini almak için de kullanılır.
 
 Aşağıdaki tabloda, verilerin Ağ Performansı İzleyicisi için nasıl toplandığı hakkında veri toplama yöntemleri ve diğer ayrıntılar gösterilmektedir.
 
-| Platform | Doğrudan aracı | System Center Operations Manager Aracısı | Azure Storage | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | Toplama sıklığı |
+| Platform | Doğrudan aracı | System Center Operations Manager Aracısı | Azure Depolama | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | Toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |TCP el sıkışmaları/ıCMP YANKı iletileri her 5 saniyede bir, 3 dakikada bir gönderilen veriler |
  
@@ -175,7 +175,7 @@ Aşağıdaki tabloda, verilerin Ağ Performansı İzleyicisi için nasıl toplan
 >[!NOTE]
 > Aracılar birbirleriyle sık iletişim kurmakla birlikte, testleri yürütülürken önemli bir ağ trafiği oluşturmaz. Aracılar, kaybı ve gecikmeyi belirlemede yalnızca TCP SYN-SYNACK-ACK Handshake paketlerine bağımlıdır. Hiçbir veri paketi değiş tokuş alınmaz. Bu işlem sırasında, aracılar yalnızca gerektiğinde iletişim kurar. Aracı iletişim topolojisi, ağ trafiğini azaltmak için iyileştirilmiştir.
 
-## <a name="use-the-solution"></a>Çözüm kullanın 
+## <a name="use-the-solution"></a>Çözümü kullanma 
 
 ### <a name="network-performance-monitor-overview-tile"></a>Ağ Performansı İzleyicisi genel bakış kutucuğu 
 
@@ -271,7 +271,7 @@ Bildirimler, [Azure izleyici fiyatlandırma sayfasında her bildirim fiyatlandı
 
 Fiyatlandırma hakkında bilgi [çevrimiçi](network-performance-monitor-pricing-faq.md)olarak sunulmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma 
+## <a name="provide-feedback"></a>Geri bildirim sağlayın 
 
 * **UserVoice:** Üzerinde çalışmamızı istediğiniz Ağ Performansı İzleyicisi özellikler için fikirlerinizi gönderebilirsiniz. [UserVoice sayfasını](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)ziyaret edin. 
 

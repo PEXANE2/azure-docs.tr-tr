@@ -56,7 +56,7 @@ Duraklatmayı ve sürdürmeyi planladığınız veri ambarı için veritabanı a
 
 Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımları uygulayın.
 
-1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure portalının sol taraftaki sayfasında **SQL veritabanları**’na tıklayın.
 3. **SQL veritabanları** sayfasından **mySampleDataWarehouse** seçeneğini belirleyin. Veri ambarı açılır.
 

@@ -58,7 +58,7 @@ Cosmos DB veritabanınızın veri içerdiğinden emin olun. [Veri alma Sihirbaz�
 
 ### <a name="2---start-import-data-wizard"></a>2-veri alma Sihirbazı 'nı başlatma
 
-Sihirbazı Azure Bilişsel Arama hizmeti sayfasında komut çubuğundan [başlatabilir](search-import-data-portal.md) veya Cosmos db SQL API 'sine bağlanıyorsanız, Cosmos DB hesabınızın solundaki **ayarlar** bölümünde **Azure bilişsel arama Ekle** ' ye tıklayabilirsiniz Gezinti bölmesi.
+Sihirbazı Azure Bilişsel Arama hizmeti sayfasında komut çubuğundan [başlatabilir](search-import-data-portal.md) veya Cosmos db SQL API 'sine bağlanıyorsanız, Cosmos DB hesabınızın sol gezinti bölmesindeki **ayarlar** bölümünde **Azure bilişsel arama Ekle** ' ye tıklayabilirsiniz.
 
    ![Portalda verileri içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'nı başlatma")
 
@@ -172,9 +172,9 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 
 | Alan   | Açıklama |
 |---------|-------------|
-| **ada** | Gerekli. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
-|**type**| Gerekli. `cosmosdb`olmalıdır. |
-|**Credentials** | Gerekli. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/><br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Bilişsel Arama Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
+| **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
+|**type**| Gereklidir. `cosmosdb`olmalıdır. |
+|**Credentials** | Gereklidir. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/><br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Bilişsel Arama Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
 | **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen. Bkz. [Dizin oluşturma değiştirilen belgeler](#DataChangeDetectionPolicy) bölümü.|
 |**dataDeletionDetectionPolicy** | İsteğe bağlı. Bkz. [Dizin oluşturma silinen belgeler](#DataDeletionDetectionPolicy) bölümü.|

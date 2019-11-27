@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomat
 
 Bu makalede, belirteç alımı için çeşitli kod ve betik örnekleri ve ayrıca belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda rehberlik sağlanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Instance Metadata Service için Azure kaynakları için Yönetilen kimlikler uç noktası. |
 | `api-version`  | IMDS uç noktası için API sürümünü gösteren bir sorgu dizesi parametresi. Lütfen API sürümü `2018-02-01` veya üstünü kullanın. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, https://management.azure.com/uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, https://management.azure.com/ uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister. |
 | `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır. |
 | `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 | `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `http://localhost:50342/oauth2/token` | Azure kaynakları için Yönetilen kimlikler uç noktası, burada 50342 varsayılan bağlantı noktasıdır ve yapılandırılabilir. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, https://management.azure.com/uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, https://management.azure.com/ uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister. |
 | `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır.|
 | `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 | `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|

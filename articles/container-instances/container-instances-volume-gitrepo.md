@@ -23,7 +23,7 @@ Bir Git deposunu kapsayıcı örneklerinizi kopyalamak için bir *gitRepo* birim
 
 Bir *gitRepo* birimi bağladığınızda, birimi yapılandırmak için üç özellik belirleyebilirsiniz:
 
-| Özellik | Gerekli | Açıklama |
+| Özellik | Gereklidir | Açıklama |
 | -------- | -------- | ----------- |
 | `repository` | Yes | Klonlanacak git deposunun `http://` veya `https://`dahil olmak üzere tam URL.|
 | `directory` | Hayır | Deponun klonlanacak dizin. Yol, "`..`" ile içermemelidir veya başlamamalıdır.  "`.`" belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |

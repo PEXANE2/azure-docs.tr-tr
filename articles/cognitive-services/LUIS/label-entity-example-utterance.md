@@ -87,7 +87,7 @@ Bir varlığın etiketini kaldırmak için, metnin altındaki varlık adını se
 
 Etiketleme sırasında bir hata yaparsanız, varlık paleti hızlı düzenlemelere izin veren kolay bir araçtır. Örneğin, bir varlık etiketi yanlışlıkla ek bir sözcüğe yayılmışsa ve zaten alt bileşenleri etiketlenmişse, bu durumda sözcüklerin gerekli daha kısa yayılmasını sağlamak için varlık paletini kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 1. Pizza tür alt bileşeni "Cheese pizza" ile birlikte "birlikte" ek yanlış bir sözcük içerir
 

@@ -1,5 +1,5 @@
 ---
-title: Yaygın sorunları giderme
+title: Sık karşılaşılan sorunları giderme
 description: Dağıtım, çalıştırma veya yönetme Azure Container Instances sık karşılaşılan sorunları giderme hakkında bilgi edinin
 ms.topic: article
 ms.date: 09/25/2019

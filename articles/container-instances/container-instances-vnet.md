@@ -63,7 +63,7 @@ Bir sanal ağ, bir veya daha fazla alt ağ oluşturduğunuz adres alanını tan�
 
 ### <a name="subnet-delegated"></a>Alt ağ (temsilci)
 
-Alt ağlar, sanal ağ yerleştirebilirsiniz, Azure kaynaklarını kullanılabilir ayrı adres alanları ölçütü. Bir sanal ağ içinde bir veya birden çok alt ağ oluşturursunuz.
+Alt ağlar sanal ağı, yerleştirdiğiniz Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler. Bir sanal ağ içinde bir veya birden çok alt ağ oluşturursunuz.
 
 Kapsayıcı grupları için kullandığınız alt ağ yalnızca kapsayıcı grupları içerebilir. Bir alt ağa ilk kez bir kapsayıcı grubu dağıttığınızda, Azure bu alt ağı Azure Container Instances için devreder. Temsilci seçildikten sonra alt ağ yalnızca kapsayıcı grupları için kullanılabilir. Bir temsilci alt ağına kapsayıcı grupları dışında kaynak dağıtmaya çalışırsanız, işlem başarısız olur.
 

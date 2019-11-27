@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74539084"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Hızlı Başlangıç: Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Hızlı başlangıç: Microsoft Genomiks hizmeti ile bir iş akışı çalıştırma
 
 Bu hızlı başlangıçta, giriş verilerini Azure Blob Depolama'ya yükleme ve Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma adımları gösterilir. Microsoft Genomiks, ham okumalardan başlayarak hizalanmış okumalar ve varyant ilanları üreten, bir genomu hızlı bir şekilde işleyebilen ikincil analize yönelik ölçeklenebilir ve güvenli bir hizmettir. 
 
@@ -123,7 +123,7 @@ Depolama hesabınızı bir önceki resimde gösterildiği gibi aşağıdaki bilg
  |Depolama hesabı adı         | MyStorageAccount     |Benzersiz bir hesap tanımlayıcı seçin. Geçerli adlar için bkz. [Adlandırma Kuralları](/azure/architecture/best-practices/resource-naming) |
  |Konum                  | Batı ABD 2                  | Çıkış ücretlerini ve gecikme süresini azaltmak için genomiks hesabınızla aynı konumu kullanın.  | 
  |Performans                  | Standart                   | Varsayılan olarak standart seçeneği kullanılır. Standart ve premium depolama hesapları hakkında daha fazla bilgi için bkz. [Microsoft Azure Depolama'ya giriş](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
- |Hesap türü       | Blob depolama       |  Blob depolama indirme ve yükleme işlemlerinde genel amaçlı depolama alanından 2-5 kat daha yüksek hız sunabilir. |
+ |Hesap türü       | Blob depolaması       |  Blob depolama indirme ve yükleme işlemlerinde genel amaçlı depolama alanından 2-5 kat daha yüksek hız sunabilir. |
  |Çoğaltma                  | Yerel olarak yedekli depolama                  | Yerel olarak yedekli depolama, verilerinizi depolama hesabınızı oluşturduğunuz bölgedeki veri merkezi içinde çoğaltır. Daha fazla bilgi için bkz. [Azure Depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
  |Erişim katmanı                  | Sık Erişimli                   | Sık erişimli seçeneği, depolama hesabındaki nesnelere erişimin daha sık olduğunu belirtir.    |
 
@@ -155,7 +155,7 @@ Genomiks hesabınızdan indirdiğiniz config.txt dosyasını açın. Belirtmeniz
 
 GATK4 çalıştırmak istiyorsanız `process_name` parametresini `gatk4`olarak ayarlayın.
 
-Varsayılan olarak, Genomiks hizmeti VCF dosyalarını çıktı. Bir VCF çıkışı yerine bir gVCF çıkışı isterseniz (GATK 3. x içindeki `-emitRefConfidence` eşdeğerdir ve GATK 4. x içinde `emit-ref-confidence`), `emit_ref_confidence` parametresini `config.txt` ekleyin ve `gvcf`olarak ayarlayın. , yukarıdaki şekilde gösterildiği gibi.  VCF çıktısına geri dönmek için `config.txt` dosyasından kaldırın ya da `emit_ref_confidence` parametresini `none`olarak ayarlayın. 
+Varsayılan olarak, Genomiks hizmeti VCF dosyalarını çıktı. Bir VCF çıkışı yerine bir gVCF çıkışı isterseniz (GATK 3. x içindeki `-emitRefConfidence` eşdeğerdir ve GATK 4. x içindeki `emit-ref-confidence`), `emit_ref_confidence` parametresini `config.txt` ekleyin ve yukarıdaki şekilde gösterildiği gibi `gvcf`olarak ayarlayın.  VCF çıktısına geri dönmek için `config.txt` dosyasından kaldırın ya da `emit_ref_confidence` parametresini `none`olarak ayarlayın. 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>İş akışınızı Microsoft Genomiks hizmetine ve Microsoft Genomiks istemcisine gönderme
 

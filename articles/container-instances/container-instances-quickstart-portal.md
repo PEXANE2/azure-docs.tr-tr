@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtma
 
 ![Azure Container Instances hizmetine dağıtılmış uygulamanın tarayıcıdaki görüntüsü][aci-portal-07]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -62,7 +62,7 @@ Myresourcegroup > **myContainer** > **kaynak gruplarına** giderek kapsayıcı g
 
 ![Azure portalında kapsayıcı grubuna genel bakış][aci-portal-06]
 
-**Çalışıyor** *Durumunda* iken tarayıcınızda kapsayıcının FQDN’sine gidin.
+*Çalışıyor* **Durumunda** iken tarayıcınızda kapsayıcının FQDN’sine gidin.
 
 ![Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor][aci-portal-07]
 
@@ -78,7 +78,7 @@ Kapsayıcının günlüklerini görüntülemek için **Ayarlar** altında **Kaps
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kapsayıcıyla işiniz bittiğinde, **mycontainer** kapsayıcı örneğine ait *Genel bakış*’ı ve ardından **Sil**’i seçin.
+Kapsayıcıyla işiniz bittiğinde, *mycontainer* kapsayıcı örneğine ait **Genel bakış**’ı ve ardından **Sil**’i seçin.
 
 ![Azure portalında kapsayıcı örneğini silme][aci-portal-09]
 

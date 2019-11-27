@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure hizmetleri 'nin kodunuzda ki
 
 Bu makalede, REST API çağrısı yapmak için KıVRıMLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturmayı, listeleyeceğinizi ve silmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
@@ -62,14 +62,14 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 **İstek gövdesi**
 
-|Ad  |Açıklama  |
+|Adı  |Açıklama  |
 |---------|---------|
-|location     | Gerekli. Kaynak konumu.        |
+|location     | Gereklidir. Kaynak konumu.        |
 
 ## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listeleme
 
@@ -85,8 +85,8 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimliği silme
 
@@ -105,8 +105,8 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 ```
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -37,7 +37,7 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu çözüm yüklenmeden ve yapılandırıldıktan önce aşağıdakiler gereklidir.
 
@@ -534,8 +534,8 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 
 | Sütun | Açıklama |
 |:--|:--|
-| İşlemler | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
-| Exchange | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
+| Operations | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
+| Değiştirin | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
 | SharePoint | Kullanıcıların SharePoint belgelerinde gerçekleştirdiği en iyi etkinlikleri gösterir. Bu kutucuktan ayrıntıya indığınızda arama sayfasında, bu etkinliklerin hedef belge ve bu etkinliğin konumu gibi ayrıntıları gösterilir. Örneğin, dosya erişimli bir olay için, erişilen belgeye, ilişkili hesap adına ve IP adresine bakabilirsiniz. |
 | Azure Active Directory | Kullanıcı parolası ve oturum açma girişimlerini sıfırlama gibi ilk kullanıcı etkinliklerini içerir. Ayrıntıya gitmediğiniz zaman, bu etkinliklerin sonuç durumu gibi ayrıntılarını görebileceksiniz. Bu, genellikle Azure Active Directory şüpheli etkinlikleri izlemek istediğinizde yararlı olur. |
 
@@ -554,14 +554,14 @@ Aşağıdaki özellikler tüm Office 365 kayıtları için ortaktır.
 |:--- |:--- |
 | Tür | *Officeetkinliği* |
 | ClientIP | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
-| Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Değiştirin<br>SharePoint|
 | İşlem | Kullanıcı veya yönetici etkinliğinin adı.  |
 | Kuruluş kimliği | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
 | RecordType | Gerçekleştirilen işlem türü. |
 | ResultStatus | Eylemin (Işlem özelliğinde belirtilen) başarılı olup olmadığını gösterir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
 | UserID | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
 | UserKey | UserID özelliğinde tanımlanan Kullanıcı için alternatif bir KIMLIK.  Örneğin, bu özellik SharePoint, OneDrive Iş ve Exchange kullanıcıları tarafından gerçekleştirilen olaylar için Passport benzersiz KIMLIĞI (PUıD) ile doldurulur. Bu özellik aynı zamanda diğer hizmetlerde gerçekleşen olaylar ve sistem hesapları tarafından gerçekleştirilen olaylar için UserID özelliği ile aynı değeri belirtebilir|
-| userType | İşlemi gerçekleştiren kullanıcı türü.<br><br>Yönetici<br>Uygulama<br>DcAdmin<br>Aralıklarla<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
+| userType | İşlemi gerçekleştiren kullanıcı türü.<br><br>yöneticileri<br>Uygulama<br>DcAdmin<br>Aralıklarla<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory taban
@@ -630,11 +630,11 @@ Bu kayıtlar, Exchange yapılandırmasında değişiklik yapıldığında oluşt
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Cmdlet 'inin kuruluşunuzdaki bir kullanıcı tarafından, Microsoft veri merkezi personeli veya bir veri merkezi hizmet hesabı tarafından mı yoksa yetkilendirilmiş bir yönetici tarafından mı çalıştırılacağını belirtir. False değeri, cmdlet 'inin kuruluşunuzdaki bir kişi tarafından çalıştırıldığını gösterir. True değeri, cmdlet 'in veri merkezi personeli, bir veri merkezi hizmet hesabı veya yönetici temsilcisi tarafından çalıştırıldığını belirtir. |
 | ModifiedObjectResolvedName |  Bu, cmdlet tarafından değiştirilen nesnenin Kullanıcı dostu adıdır. Bu, yalnızca cmdlet nesneyi değiştirdiğinde günlüğe kaydedilir. |
-| OrganizationName | Kiracının adı. |
+| © | Kiracının adı. |
 | OriginatingServer | Cmdlet 'in yürütüldüğü sunucunun adı. |
 | Parametreler | Operations özelliğinde tanımlanan cmdlet ile kullanılan tüm parametrelerin adı ve değeri. |
 
@@ -645,7 +645,7 @@ Exchange posta kutularına değişiklik veya eklemeler yapıldığında bu kayı
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | RecordType     | Exchangeıtem |
 | Clientınfostring | Bir tarayıcı sürümü, Outlook sürümü ve mobil cihaz bilgileri gibi, işlemi gerçekleştirmek için kullanılan e-posta istemcisiyle ilgili bilgiler. |
 | Client_IPAddress | İşlem günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
@@ -668,7 +668,7 @@ Bu kayıtlar, bir posta kutusu denetim girişi oluşturulduğunda oluşturulur.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | RecordType     | Exchangeıtem |
 | Öğe | İşlemin gerçekleştirildiği öğeyi temsil eder | 
 | SendAsUserMailboxGuid 'Si | E-posta göndermek için erişilen posta kutusunun Exchange GUID 'ı. |
@@ -683,7 +683,7 @@ Bu kayıtlar, Exchange gruplarında değişiklik veya eklemeler yapıldığında
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | Officeiş yükü | Exchangeıtemgroup |
 | AffectedItems | Gruptaki her öğe hakkında bilgi. |
 | CrossMailboxOperations | İşlemin birden fazla posta kutusu ile ilişkili olup olmadığını gösterir. |
@@ -693,7 +693,7 @@ Bu kayıtlar, Exchange gruplarında değişiklik veya eklemeler yapıldığında
 | DestMailboxOwnerUPN | Yalnızca CrossMailboxOperations parametresi true ise ayarlanır. Hedef posta kutusunun sahibinin UPN 'sini belirtir. |
 | DestFolder | Taşıma gibi işlemler için hedef klasör. |
 | Klasör | Bir öğe grubunun bulunduğu klasör. |
-| Klasörleri |     Bir işlemde yer alan kaynak klasörleriyle ilgili bilgiler; Örneğin, klasörler seçildiyse ve sonra silinirse. |
+| Klasörler |     Bir işlemde yer alan kaynak klasörleriyle ilgili bilgiler; Örneğin, klasörler seçildiyse ve sonra silinirse. |
 
 
 ### <a name="sharepoint-base"></a>SharePoint temeli

@@ -381,7 +381,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: BLOB depolama işlemi isabet sorunu.
 
-- **Öneri**: Lütfen ayrıntılar bölümündeki hatayı kontrol edin. Lütfen blob yardım belgesi: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesbakın. Yardım gerekirse depolama ekibine başvurun.
+- **Öneri**: Lütfen ayrıntılar bölümündeki hatayı kontrol edin. Lütfen blob yardım belgesi: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes bakın. Yardım gerekirse depolama ekibine başvurun.
 
 
 

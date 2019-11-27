@@ -106,7 +106,7 @@ Kontrol noktası tamamlandıktan sonra Orchestrator işlevi, kendisi için daha 
 
 Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi, Azure Tablo Depolaması 'nda aşağıdaki tabloya benzer bir şekilde görünür (çizim amaçları için kısaltılmış):
 
-| PartitionKey (InstanceId)                     | Türü             | Zaman damgası               | Giriş | Name             | Sonuç                                                    | Durum |
+| PartitionKey (InstanceId)                     | Türü             | Zaman damgası               | Girdi | Adı             | Sonuç                                                    | Durum |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | değer  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |

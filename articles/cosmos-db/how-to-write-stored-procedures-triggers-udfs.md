@@ -75,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Saklı yordamlar için giriş parametreleri olarak diziler 
 
-Azure portal ' de bir saklı yordam tanımlarken, giriş parametreleri her zaman saklı yordama bir dize olarak gönderilir. Dizelerden oluşan bir dizi girdi olarak geçirdiğiniz olsa bile, dizi dizeye dönüştürülür ve saklı yordamı gönderilir. Bu sorunu geçici olarak çözmek için, saklı yordamınız içinde dizeyi bir dizi olarak ayrıştırarak bir işlev tanımlayabilirsiniz. Aşağıdaki kod, bir dize giriş parametresinin dizi olarak nasıl ayrıştıralınacağını gösterir:
+Azure portal ' de bir saklı yordam tanımlarken, giriş parametreleri her zaman saklı yordama bir dize olarak gönderilir. Bir dizi dizeyi girdi olarak iletseniz bile, dizi dizeye dönüştürülür ve saklı yordama gönderilir. Bu sorunu geçici olarak çözmek için, saklı yordamınız içinde dizeyi bir dizi olarak ayrıştırarak bir işlev tanımlayabilirsiniz. Aşağıdaki kod, bir dize giriş parametresinin dizi olarak nasıl ayrıştıralınacağını gösterir:
 
 ```javascript
 function sample(arr) {
@@ -238,7 +238,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Öncesi tetikleyici, giriş parametreleri bulunamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
+Ön tetikleyicilerin hiçbir giriş parametresi olamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
 
 Tetikleyiciler kaydedildikten sonra, birlikte çalışacağı işlemleri belirtebilirsiniz. Bu tetikleyici, aşağıdaki kodda gösterildiği gibi bir değiştirme işleminde tetikleyicinin kullanılmasına izin verilmeyen bir `TriggerOperation` `TriggerOperation.Create`ile oluşturulmalıdır.
 
@@ -332,7 +332,7 @@ Console.WriteLine(response.ScriptLog);
 
 Azure Cosmos DB saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri yazma veya kullanma hakkında daha fazla bilgi edinin:
 
-* [Azure Cosmos DB saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri kaydetme ve kullanma](how-to-use-stored-procedures-triggers-udfs.md)
+* [Azure Cosmos DB'de saklı yordamları, tetikleyicileri ve kullanıcı tanımlı işlevleri kaydetme ve kullanma](how-to-use-stored-procedures-triggers-udfs.md)
 
 * [Azure Cosmos DB içinde JavaScript sorgu API 'sini kullanarak saklı yordamları ve Tetikleyicileri yazma](how-to-write-javascript-query-api.md)
 

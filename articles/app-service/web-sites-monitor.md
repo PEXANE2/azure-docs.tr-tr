@@ -43,7 +43,7 @@ Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kull
 | **CPU (kısa)** | Bu uygulama için, 5 dakikalık bir aralıkta izin verilen CPU miktarı. Bu kota her beş dakikada bir sıfırlanır. |
 | **CPU (gün)** | Bu uygulama için bir günde izin verilen toplam CPU miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
 | **Bellek** | Bu uygulama için izin verilen toplam bellek miktarı. |
-| **Bant Genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
+| **Bant genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
 | **Biçimlendiri** | İzin verilen toplam depolama miktarı. |
 
 *Temel*, *Standart*ve *Premium* 'da barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
