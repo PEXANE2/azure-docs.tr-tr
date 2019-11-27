@@ -1,6 +1,6 @@
 ---
-title: Deploy Hyperledger Fabric Consortium solution template on Azure
-description: How to deploy and configure the Hyperledger Fabric consortium network solution template on Azure
+title: Azure 'da Hyperledger Fabric Consortium çözüm şablonu dağıtma
+description: Azure 'da Hyperledger Fabric Consortium ağ çözüm şablonunu dağıtma ve yapılandırma
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
@@ -11,132 +11,132 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325128"
 ---
-# <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
+# <a name="hyperledger-fabric-consortium-network"></a>Hiper muhasebe doku Consortium ağı
 
-You can use the Hyperledger Fabric consortium solution template to deploy and configure a Hyperledger Fabric consortium network on Azure.
+Azure 'da bir hiper muhasebe doku Consortium ağı dağıtmak ve yapılandırmak için Hyperledger Fabric Consortium çözüm şablonunu kullanabilirsiniz.
 
 Bu makaleyi okuduktan sonra şunları yapabilir olacaksınız:
 
-- Obtain working knowledge of blockchain, Hyperledger Fabric, and more complicated consortium network architectures
-- Learn how to deploy and configure a Hyperledger Fabric consortium network from within the Azure portal
+- Blok zinciri, hiper muhasebe dokusu ve daha karmaşık konsorsiyum ağ mimarilerinin çalışma bilgisini edinin
+- Azure portal içinden bir hiper muhasebe doku Consortium ağını dağıtmayı ve yapılandırmayı öğrenin
 
-## <a name="about-blockchain"></a>About blockchain
+## <a name="about-blockchain"></a>Blok zinciri hakkında
 
-If you are new to the blockchain community, this solution template is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Blockchain is the underlying technology behind Bitcoin; however, it is much more than just an enabler for a virtual currency. It is a composite of existing database, distributed system, and cryptographic technologies that enables secure multi-party computation with guarantees around immutability, verifiability, auditability, and resiliency to attack. Different protocols employ different mechanisms to provide these attributes. [Hyperledger Fabric](https://github.com/hyperledger/fabric) is one such protocol.
+Blockzincirine yönelik yeni bir topluluk olan bu çözüm şablonu, Azure 'da kolay ve yapılandırılabilir bir şekilde teknoloji hakkında bilgi edinmek için harika bir fırsattır. Blok zinciri, Bitpara arkasındaki temel teknolojidir; Ancak, bir sanal para birimi için yalnızca Etkinleştirici 'tan çok daha fazla. Bu, mevcut veritabanı, Dağıtılmış Sistem ve şifreleme teknolojilerinin bir dağıdır ve bu sayede güvenli çok taraflı hesaplamayı, imlebilirlik, doğrulılığın, auditability ve saldırıya karşı dayanıklı bir şekilde garanti sağlar. Farklı protokoller, bu öznitelikleri sağlamak için farklı mekanizmalar sunar. [Hiper muhasebe dokusunu](https://github.com/hyperledger/fabric) bu tür bir protokoldür.
 
-## <a name="consortium-architecture-on-azure"></a>Consortium architecture on Azure
+## <a name="consortium-architecture-on-azure"></a>Azure 'da konsorsiyum mimarisi
 
-To enable Hyperledger Fabric in Azure, there are two primary deployment types that are supported. These deployments are designed to accommodate different topologies, based on desired target.
+Azure 'da hiper muhasebe dokusunu etkinleştirmek için, desteklenen iki birincil dağıtım türü vardır. Bu dağıtımlar, istenen hedefe göre farklı topolojilerle uyum sağlayacak şekilde tasarlanmıştır.
 
-- **Single virtual machine, developer server** - This deployment type is designed as a development environment used to build and test solutions built on Hyperledger Fabric.
-- **Multiple virtual machines, scale out deployment** - This deployment type is designed for environments that model a consortium of different participants leveraging a shared environment.
+- **Tek sanal makine, geliştirici sunucusu** -bu dağıtım türü, hiper muhasebe dokusunda oluşturulmuş çözümler derlemek ve test etmek için kullanılan bir geliştirme ortamı olarak tasarlanmıştır.
+- **Birden çok sanal makine, genişleme dağıtımı** -bu dağıtım türü, paylaşılan bir ortamı kullanan farklı katılımcılar için bir Konsorsiyumu modelleyerek ortamlar için tasarlanmıştır.
 
-In either deployment, the building blocks that are make the core of Hyperledger Fabric are the same.  The differences in the deployments are how these components are scaled out.
+Her iki dağıtımda de hiper muhasebe dokusunun çekirdeğini oluşturan yapı taşları aynıdır.  Dağıtımlardaki farklılıklar bu bileşenlerin nasıl ölçeklendiği bir şekilde yapılır.
 
-- **CA nodes**: A node running Certificate Authority that is used to generate certificates that are used for identities in the network.
-- **Orderer nodes**: A node running the communication service implementing a delivery guarantee, such as total order broadcast or atomic transactions.
-- **Peer nodes**: A node that commits transactions and maintains the state and a copy of the distributed ledger.
-- **CouchDB nodes**: A node that can run the CouchDB service that can hold the state database and provide rich querying of chaincode data, expanding from simple key/value to JSON type storage.
+- **CA düğümleri**: ağdaki kimlikler için kullanılan sertifikalar oluşturmak Için kullanılan sertifika yetkilisini çalıştıran bir düğüm.
+- **Orderer düğümleri**: Toplam sipariş yayını veya atomik işlemler gibi bir teslim garantisi uygulayan iletişim hizmetini çalıştıran bir düğüm.
+- **Eş düğümler**: işlemleri gerçekleştiren ve dağıtılmış bir genel muhasebe 'nin durumunu ve kopyasını tutan bir düğüm.
+- **Couşdb düğümleri**: durum veritabanını tutan ve chaincode verilerinin zengin sorgulanmasına sahip olan couşdb hizmetini çalıştıratabilecek ve basit anahtar/değerden JSON türü depolamaya genişleyen bir düğüm.
 
-### <a name="single-virtual-machine-architecture"></a>Single virtual machine architecture
+### <a name="single-virtual-machine-architecture"></a>Tek sanal makine mimarisi
 
-As mentioned previously the single virtual machine architecture is built for developers to have a low footprint server that is used to develop applications. All containers shown are running in a single virtual machine. The ordering service is using [SOLO](https://github.com/hyperledger/fabric/tree/master/orderer) for this configuration. This configuration is *not* a fault tolerant ordering service, but is designed to be lightweight for development purposes.
+Daha önce belirtildiği gibi, tek bir sanal makine mimarisi, geliştiricilerin uygulama geliştirmek için kullanılan düşük bir parmak izi sunucusuna sahip olması için oluşturulmuştur. Gösterilen tüm kapsayıcılar tek bir sanal makinede çalışıyor. Sıralama hizmeti bu yapılandırma için [solo](https://github.com/hyperledger/fabric/tree/master/orderer) kullanıyor. Bu yapılandırma, hataya dayanıklı bir sıralama hizmeti *değildir* , ancak geliştirme amacıyla hafif olacak şekilde tasarlanmıştır.
 
-![Single Virtual Machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
+![Tek sanal makine mimarisi](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
 
-### <a name="multiple-virtual-machine-architecture"></a>Multiple virtual machine architecture
+### <a name="multiple-virtual-machine-architecture"></a>Birden çok sanal makine mimarisi
 
-The multiple virtual machine, scale-out architecture, is built with high availability and scaling of each component at the core. This architecture is much more suitable for production grade deployments.
+Birden çok sanal makine, genişleme mimarisi, çekirdek üzerinde her bir bileşen için yüksek kullanılabilirlik ve ölçeklendirme ile oluşturulmuştur. Bu mimari, üretim sınıfı dağıtımları için çok daha uygundur.
 
-![Multiple virtual machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
+![Birden çok sanal makine mimarisi](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
-To begin, you need an Azure subscription that can support deploying several virtual machines and standard storage accounts. If you do not have an Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/).
+Başlamak için birkaç sanal makine ve standart depolama hesabı dağıtımı destekleyebilen bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/free/).
 
-Once you have a subscription, go to the [Azure portal](https://portal.azure.com). Select **Create a resource > Blockchain > Hyperledger Fabric Consortium**.
+Bir aboneliğiniz olduğunda [Azure Portal](https://portal.azure.com)gidin. **Hyperledger Fabric Consortium > > blok zinciri kaynak oluştur**' u seçin.
 
-![Hyperledger Fabric Single Member Blockchain Marketplace template](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
+![Hiper muhasebe yapısı tek üye blok zinciri Market şablonu](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
-In the **Hyperledger Fabric Consortium** template, select **Create**.
+**Hiper muhasebe doku Consortium** şablonunda **Oluştur**' u seçin.
 
-The template deployment will walk you through configuring the multi-node [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) network. The deployment flow is divided into four steps: Basics, Consortium Network Settings, Fabric configuration, and Optional components.
+Şablon dağıtımı, çok düğümlü [hiper muhasebeye 1,3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) ağını yapılandırma konusunda size yol gösterecektir. Dağıtım akışı dört adıma bölünmüştür: temel bilgiler, konsorsiyum ağ ayarları, doku yapılandırması ve Isteğe bağlı bileşenler.
 
 ### <a name="basics"></a>Temel Bilgiler
 
-In **Basics**, specify values for standard parameters for any deployment. Such as, subscription, resource group, and basic virtual machine properties.
+**Temel bilgiler**bölümünde, herhangi bir dağıtım için standart parametrelerin değerlerini belirtin. Örneğin, abonelik, kaynak grubu ve temel sanal makine özellikleri.
 
 ![Temel Bilgiler](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
 | Parametre Adı | Açıklama | İzin verilen değerler |
 |---|---|---|
-**Resource prefix** | Name prefix for resources provisioned as part of the deployment |6 characters or less |
-**Kullanıcı Adı** | The user name of the administrator for each of the virtual machines deployed for this member |1 - 64 characters |
-**Authentication type** | The method to authenticate to the virtual machine |Password or SSH public key|
-**Password (Authentication type = Password)** |The password for the administrator account for each of the virtual machines deployed. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character<br /><br />While all VMs initially have the same password, you can change the password after provisioning|12 - 72 characters|
-**SSH key (Authentication type = SSH public key)** |The secure shell key used for remote login ||
-**Abonelik** |The subscription to which to deploy ||
-**Kaynak grubu** |The resource group to which to deploy the consortium network ||
-**Konum** |The Azure region to which to deploy the first member in ||
+**Kaynak ön eki** | Dağıtımın bir parçası olarak sağlanan kaynaklar için ad ön eki |6 karakter veya daha az |
+**Kullanıcı Adı** | Bu üye için dağıtılan her bir sanal makine için yöneticinin Kullanıcı adı |1-64 karakter |
+**Kimlik doğrulama türü** | Sanal makinede kimlik doğrulama yöntemi |Parola veya SSH ortak anahtarı|
+**Parola (kimlik doğrulama türü = parola)** |Dağıtılan sanal makinelerin her biri için yönetici hesabının parolası. Parola şu karakter türlerinden üçünü içermelidir: 1 büyük harf, 1 küçük harf, 1 sayı ve 1 özel karakter<br /><br />Tüm VM 'Ler başlangıçta aynı parolaya sahip olsa da, sağlama sonrasında parolayı değiştirebilirsiniz|12-72 karakter|
+**SSH anahtarı (kimlik doğrulama türü = SSH ortak anahtarı)** |Uzaktan oturum açma için kullanılan güvenli kabuk anahtarı ||
+**Abonelik** |Dağıtım yapılacak abonelik ||
+**Kaynak grubu** |Consortium ağının dağıtılacağı kaynak grubu ||
+**Konum** |İlk üyenin dağıtılacağı Azure bölgesi ||
 
 **Tamam**’ı seçin.
 
-### <a name="consortium-network-settings"></a>Consortium Network Settings
+### <a name="consortium-network-settings"></a>Konsorsiyum ağ ayarları
 
-In **Network settings**, specify inputs for creating or joining an existing consortium network and configure your organization settings.
+**Ağ ayarları**' nda, var olan bir konsorsiyum ağı oluşturma veya katılma ve kuruluş ayarlarınızı yapılandırma için giriş belirtin.
 
-![Consortium Network Settings](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
+![Konsorsiyum ağ ayarları](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
 | Parametre Adı | Açıklama | İzin verilen değerler |
 |---|---|---|
-**Ağ yapılandırması** |You can choose to create a new network or join an existing one. If you choose *Join existing*, you need to provide additional values. |New network <br/> Join existing |
-**HLF CA password** |A password used for the certificates generated by the certificate authorities that are created as part of the deployment. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character.<br /><br />While all virtual machines initially have the same password, you can change the password after provisioning.|1 - 25 characters |
-**Organization setup** |You can customize your Organization's name and certificate or have default values to be used.|Varsayılan <br/> Gelişmiş |
-**VPN network settings** | Provision a VPN tunnel gateway for accessing the VMs | Yes <br/> Hayır |
+**Ağ yapılandırması** |Yeni bir ağ oluşturmayı veya var olan bir ağa katılmayı seçebilirsiniz. *Varolanı Birleştir*' i seçerseniz ek değerler sağlamanız gerekir. |Yeni ağ <br/> Mevcut olanı birleştirin |
+**HLF CA parolası** |Dağıtım kapsamında oluşturulan sertifika yetkilileri tarafından oluşturulan sertifikalar için kullanılan parola. Parola şu karakter türlerinden üçünü içermelidir: 1 büyük harf, 1 küçük harf, 1 sayı ve 1 özel karakter.<br /><br />Tüm sanal makineler başlangıçta aynı parolaya sahip olsa da, sağlama sonrasında parolayı değiştirebilirsiniz.|1-25 karakter |
+**Kuruluş kurulumu** |Kuruluşunuzun adını ve sertifikasını özelleştirebilir veya kullanılacak varsayılan değerlere sahip olabilirsiniz.|Varsayılan <br/> Gelişmiş |
+**VPN ağ ayarları** | VM 'Lere erişmek için bir VPN tüneli ağ geçidi sağlama | Yes <br/> Hayır |
 
 **Tamam**’ı seçin.
 
-### <a name="fabric-specific-settings"></a>Fabric-specific settings
+### <a name="fabric-specific-settings"></a>Yapıya özgü ayarlar
 
-In **Fabric configuration**, you configure network size and performance, and specify inputs for the availability of the network. Such as, number orderer and peer nodes, persistence engine used by each node, and the VM size.
+**Doku yapılandırması**' nda Ağ boyutunu ve performansını yapılandırır ve ağın kullanılabilirliği için girişleri belirtirsiniz. Örneğin, numara sırası ve eş düğümleri, her düğüm tarafından kullanılan Kalıcılık altyapısı ve VM boyutu.
 
-![Fabric settings](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
-
-| Parametre Adı | Açıklama | İzin verilen değerler |
-|---|---|---|
-**Scale type** |The deployment type of either a single virtual machine with multiple containers or multiple virtual machines in a scale-out model.|Single VM or Multi VM |
-**VM Disk type** |The type of storage backing each of the deployed nodes. <br/> To learn more about the available disk types, visit [select a disk type](../../virtual-machines/windows/disks-types.md).|Standart SSD <br/> Premium SSD |
-
-### <a name="multiple-vm-deployment-additional-settings"></a>Multiple VM deployment (additional settings)
-
-![Fabric settings for multiple vm deployments](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
+![Yapı ayarları](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
 | Parametre Adı | Açıklama | İzin verilen değerler |
 |---|---|---|
-**Number of orderer nodes** |The number of nodes that order (organize) transactions into a block. <br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
-**Orderer node virtual machine size** |The virtual machine size used for orderer nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
-**Number of peer nodes** | Nodes that are owned by consortium members that execute transactions and maintain the state and a copy of the ledger.<br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1-4 |
-**Node state persistence** |The persistence engine used by the peer nodes. You can configure this engine per peer node. See details below for multiple peer nodes.|CouchDB <br />LevelDB |
-**Peer node virtual machine size** |The virtual machine size used for all nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
+**Ölçek türü** |Genişleme modelinde birden çok kapsayıcı veya birden çok sanal makine içeren tek bir sanal makinenin dağıtım türü.|Tek VM veya çoklu VM |
+**VM disk türü** |Dağıtılan düğümlerin her birini yedekleyen depolama türü. <br/> Kullanılabilir disk türleri hakkında daha fazla bilgi edinmek için [disk türünü seçin](../../virtual-machines/windows/disks-types.md)' i ziyaret edin.|Standart SSD <br/> Premium SSD |
 
-### <a name="multiple-peer-node-configuration"></a>Multiple peer node configuration
+### <a name="multiple-vm-deployment-additional-settings"></a>Birden çok VM dağıtımı (ek ayarlar)
 
-This template allows you to pick your persistence engine per peer node. For example, if you have three peer nodes you can use CouchDB on one and LevelDB on the other two.
+![Birden çok VM dağıtımı için doku ayarları](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-![Multiple peer node configuration](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
+| Parametre Adı | Açıklama | İzin verilen değerler |
+|---|---|---|
+**Sipariş düğümü sayısı** |İşlemleri bir blok halinde sıraya alan (düzenleyen) düğümlerin sayısı. <br />Sipariş hizmeti hakkında daha fazla bilgi için hiper defter [belgelerini](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) ziyaret edin |1-4 |
+**Orderer düğüm sanal makine boyutu** |Ağdaki orderer düğümleri için kullanılan sanal makine boyutu|Standart BS,<br />Standart DS,<br />Standart FS |
+**Eş düğüm sayısı** | İşlemleri çalıştıran ve muhasebe 'nin durumunu ve bir kopyasını barındıran konsorsiyum üyelerine ait düğümler.<br />Sipariş hizmeti hakkında daha fazla bilgi için hiper defter [belgelerini](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)ziyaret edin.|1-4 |
+**Düğüm durumu kalıcılığı** |Eş düğümler tarafından kullanılan Kalıcılık motoru. Bu altyapıyı, eş düğüm başına yapılandırabilirsiniz. Birden çok eş düğüm için aşağıdaki ayrıntılara bakın.|CouchDB <br />LevelDB |
+**Eş düğüm sanal makine boyutu** |Ağdaki tüm düğümler için kullanılan sanal makine boyutu|Standart BS,<br />Standart DS,<br />Standart FS |
+
+### <a name="multiple-peer-node-configuration"></a>Birden çok eş düğüm yapılandırması
+
+Bu şablon, eş düğüm başına kalıcı altyapıyı seçmenizi sağlar. Örneğin, üç eş düğümünüz varsa, diğer iki üzerinde de bir ve LevelDB üzerinde Couşdb kullanabilirsiniz.
+
+![Birden çok eş düğüm yapılandırması](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
 **Tamam**’ı seçin.
 
-### <a name="deploy"></a>Kurulum
+### <a name="deploy"></a>Dağıt
 
-In **Summary**, review the inputs specified and to run basic pre-deployment validation.
+**Özet**' de, temel dağıtım öncesi doğrulamayı çalıştırmak için ve belirtilen girişleri gözden geçirin.
 
 ![Özet](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-Review legal and privacy terms and select **Purchase** to deploy. Depending on the number of VMs being provisioned, deployment time can vary from a few minutes to tens of minutes.
+Yasal ve gizlilik koşullarını gözden geçirin ve dağıtılacak **satın al** ' ı seçin. Sağlanmakta olan sanal makinelerin sayısına bağlı olarak, dağıtım süresi birkaç dakika ile on dakika arasında farklılık gösterebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You are now ready to focus on application and chaincode development against your Hyperledger consortium blockchain network.
+Artık hiper muhasebe Consortium blok zinciri ağınıza göre uygulama ve chaincode geliştirmeye odaklanmaya hazırsınız.

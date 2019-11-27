@@ -27,7 +27,7 @@ Bu konumda depolamak, platform ölçümleri için kullanabileceğiniz eylemlere 
 
 Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçları için geçerlidir. Diğer özel ölçümler için çalışmaz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](~/articles/billing/billing-add-change-azure-subscription-administrator.md) olmanız gerekir. 
 

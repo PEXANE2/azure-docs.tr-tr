@@ -1,19 +1,14 @@
 ---
-title: GitRepo birimi bağlama Azure Container Instances
+title: GitRepo birimini kapsayıcı grubuna bağlama
 description: Bir Git deposunu kapsayıcı örneklerinizi kopyalamak için gitRepo birimi bağlama hakkında bilgi edinin
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: danlep
-ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325435"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533228"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances bir gitRepo birimi bağlama
 
@@ -30,15 +25,15 @@ Bir *gitRepo* birimi bağladığınızda, birimi yapılandırmak için üç öze
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| `repository` | Evet | Klonlanacak git deposunun dahil `http://` olduğu `https://`tam URL.|
-| `directory` | Hayır | Deponun klonlanacak dizin. Yol, "`..`" ile içermemelidir veya başlamamalıdır.  "`.`" Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
-| `revision` | Hayır | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` düzeltme klonlanır. |
+| `repository` | Yes | Klonlanacak git deposunun `http://` veya `https://`dahil olmak üzere tam URL.|
+| `directory` | Hayır | Deponun klonlanacak dizin. Yol, "`..`" ile içermemelidir veya başlamamalıdır.  "`.`" belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
+| `revision` | Hayır | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` düzeltmesi klonlanır. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo birimi bağlama: Azure CLI
+## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo Volume bağlama: Azure CLı
 
-[Azure CLI](/cli/azure)ile kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, `--gitrepo-url` [az Container Create][az-container-create] komutuna ve `--gitrepo-mount-path` parametrelerini girin. İsteğe bağlı olarak, kopyalanacak birimin içindeki dizini (`--gitrepo-dir`) ve klonlanacak düzeltmenin COMMIT karmasını (`--gitrepo-revision`) belirtebilirsiniz.
+[Azure CLI](/cli/azure)ile kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, [az container Create][az-container-create] komutuna `--gitrepo-url` ve `--gitrepo-mount-path` parametrelerini girin. İsteğe bağlı olarak, kopyalamak için birim içindeki dizini (`--gitrepo-dir`) ve kopyalanacak düzeltmenin (`--gitrepo-revision`) COMMIT karmasını belirtebilirsiniz.
 
-Bu örnek komut, Microsoft [aci-HelloWorld][aci-helloworld] örnek uygulamasını kapsayıcı örneğinde `/mnt/aci-helloworld` içine kopyalar:
+Bu örnek komut, Microsoft [aci-HelloWorld][aci-helloworld] örnek uygulamasını kapsayıcı örneğindeki `/mnt/aci-helloworld` kopyalar:
 
 ```azurecli-interactive
 az container create \
@@ -63,9 +58,9 @@ total 16
 drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
-## <a name="mount-gitrepo-volume-resource-manager"></a>GitRepo birimi bağlama: Resource Manager
+## <a name="mount-gitrepo-volume-resource-manager"></a>Bağlama gitRepo birimi: Kaynak Yöneticisi
 
-Bir [Azure Resource Manager şablonuyla](/azure/templates/microsoft.containerinstance/containergroups)kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için, önce `volumes` dizinin kapsayıcı grubu `properties` bölümünde diziyi doldurun. Ardından, *gitRepo* birimini bağlamak istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
+Bir [Azure Resource Manager şablonuyla](/azure/templates/microsoft.containerinstance/containergroups)kapsayıcı örnekleri dağıtırken bir gitRepo birimi bağlamak için önce şablonun kapsayıcı grubu `properties` bölümünde `volumes` diziyi doldurun. Ardından, *gitRepo* birimini bağlamak istediğiniz kapsayıcı grubundaki her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümündeki `volumeMounts` dizisini doldurun.
 
 Örneğin, aşağıdaki Kaynak Yöneticisi şablonu tek bir kapsayıcıdan oluşan bir kapsayıcı grubu oluşturur. Kapsayıcı, *gitRepo* birim blokları tarafından belirtilen iki GitHub deposu klonlar. İkinci birim, kopyalamak üzere bir dizin belirten ek özellikler ve kopyalamak için belirli bir düzeltmenin COMMIT karmasını içerir.
 
@@ -85,7 +80,7 @@ Azure Resource Manager şablonuyla kapsayıcı örneği dağıtımına bir örne
 
 Özel bir git deposu için bir gitRepo birimi bağlamak üzere depo URL 'sinde kimlik bilgilerini belirtin. Genellikle, kimlik bilgileri, depoya kapsamlı erişim veren bir Kullanıcı adı ve kişisel erişim belirteci (PAT) biçimindedir.
 
-Örneğin, özel bir GitHub deposu `--gitrepo-url` için Azure CLI parametresi aşağıdakine benzer şekilde görünür (burada "gituser" GitHub kullanıcı adıdır ve "abcdef1234fdsa4321abcdef" kullanıcının kişisel erişim belirtecidir):
+Örneğin, özel bir GitHub deposu için Azure CLı `--gitrepo-url` parametresi aşağıdakine benzer görünür (burada "gituser" GitHub kullanıcı adıdır ve "abcdef1234fdsa4321abcdef" kullanıcının kişisel erişim belirtecidir):
 
 ```azurecli
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
@@ -99,16 +94,16 @@ Azure Repos git deposu için, herhangi bir Kullanıcı adı belirtin (aşağıda
 
 GitHub ve Azure Repos için kişisel erişim belirteçleri hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-GitHub [Komut satırı için bir kişisel erişim belirteci oluşturma][pat-github]
+GitHub: [komut satırı için bir kişisel erişim belirteci oluşturma][pat-github]
 
-Azure Repos: [Erişim kimliğini doğrulamak için kişisel erişim belirteçleri oluşturma][pat-repos]
+Azure Repos: [erişim kimliğini doğrulamak için kişisel erişim belirteçleri oluşturun][pat-repos]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Container Instances diğer birim türlerini nasıl bağlayacağınızı öğrenin:
 
-* [Azure kapsayıcı durumlarda bir Azure dosya paylaşımını bağlama](container-instances-volume-azure-files.md)
-* [Azure kapsayıcı durumlarda emptyDir birim](container-instances-volume-emptydir.md)
+* [Azure Container Instances'ta Azure dosya paylaşımı bağlama](container-instances-volume-azure-files.md)
+* [Azure Container Instances bir emptyDir birimi bağlama](container-instances-volume-emptydir.md)
 * [Azure Container Instances bir gizli birimi bağlama](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

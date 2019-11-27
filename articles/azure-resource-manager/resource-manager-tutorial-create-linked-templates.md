@@ -14,9 +14,9 @@ ms.locfileid: "74325417"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Öğretici: Bağlı Azure Resource Manager şablonları oluşturma
 
-Bağlı Azure Resource Manager şablonları oluşturma hakkında bilgi edinin. Bağlı şablonları kullanarak bir şablonun başka bir şablonu çağırmasını sağlayabilirsiniz. Şablonları modüllere ayırmak için harika bir yoldur. In this tutorial, you use the same template used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), which creates a virtual machine, a virtual network, and other dependent resource including a storage account. You separate the storage account resource creation to a linked template.
+Bağlı Azure Resource Manager şablonları oluşturma hakkında bilgi edinin. Bağlı şablonları kullanarak bir şablonun başka bir şablonu çağırmasını sağlayabilirsiniz. Şablonları modüllere ayırmak için harika bir yoldur. Bu öğreticide, bir sanal makine, sanal ağ ve depolama hesabı dahil diğer bağımlı kaynak oluşturan [bağımlı kaynaklarla Azure Resource Manager şablonlar oluşturma öğreticisinde](./resource-manager-tutorial-create-templates-with-dependent-resources.md)kullanılan şablonu kullanırsınız. Depolama hesabı kaynak oluşturma bağlı bir şablona ayırın.
 
-Calling a linked template is like making a function call.  You also learn how to pass parameter values to the linked template, and how to get "return values" from the linked template.
+Bağlı bir şablonu çağırmak, işlev çağrısı yapmak gibidir.  Ayrıca, parametre değerlerini bağlantılı şablona nasıl geçitireceğinizi ve bağlantılı şablondan "dönüş değerleri" alma hakkında bilgi edineceksiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -27,11 +27,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Bağlı şablona bağlama
 > * Bağımlılık yapılandırma
 > * Şablonu dağıtma
-> * Additional practices
+> * Ek uygulamalar
 
-For more information, see [Use linked and nested templates when deploying Azure resources](./resource-group-linked-templates.md).
+Daha fazla bilgi için bkz. [Azure kaynaklarını dağıttığınızda bağlı ve iç içe Şablonlar kullanma](./resource-group-linked-templates.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code. Bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](./resource-manager-tools-vs-code.md).
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```azurecli-interactive
@@ -49,7 +49,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
-Azure Hızlı Başlangıç Şablonları, Resource Manager şablonları için bir depolama alanıdır. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma). This is the same template used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Aynı şablonun iki kopyasını aşağıdaki amaçlarla kullanılacak şekilde kaydedin:
+Azure Hızlı Başlangıç Şablonları, Resource Manager şablonları için bir depolama alanıdır. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma). Bu, [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](./resource-manager-tutorial-create-templates-with-dependent-resources.md)bölümünde kullanılan şablondur. Aynı şablonun iki kopyasını aşağıdaki amaçlarla kullanılacak şekilde kaydedin:
 
 * **Ana şablon**: Depolama hesabı dışındaki tüm kaynakları oluşturur.
 * **Bağlı şablon**: Depolama hesabını oluşturur.
@@ -69,18 +69,18 @@ Azure Hızlı Başlangıç Şablonları, Resource Manager şablonları için bir
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-     It is helpful to get some basic understanding of the template schema before customizing the template.
+     Şablonu özelleştirmeden önce şablon şeması hakkında bazı temel bilgileri almak faydalı olur.
 5. **Dosya**>**Farklı Kaydet**'i seçerek dosyanın bir kopyasını yerel bilgisayarınıza **azuredeploy.json** adıyla kaydedin.
-6. Dosyanın **linkedTemplate.json** adıyla başka bir kopyasını oluşturmak için **Dosya**>**Farklı Kaydet**’i seçin.
+6. Dosyanın **linkedTemplate.json** adıyla başka bir kopyasını oluşturmak için >Dosya**Farklı Kaydet**’i seçin.
 
 ## <a name="create-the-linked-template"></a>Bağlı şablon oluşturma
 
-Bağlı şablon bir depolama hesabı oluşturur. The linked template can be used as a standalone template to create a storage account. In this tutorial, the linked template takes two parameters, and passes a value back to the main template. This "return" value is defined in the `outputs` element.
+Bağlı şablon bir depolama hesabı oluşturur. Bağlantılı şablon, bir depolama hesabı oluşturmak için tek başına bir şablon olarak kullanılabilir. Bu öğreticide, bağlantılı şablon iki parametre alır ve bir değeri ana şablona geri geçirir. Bu "return" değeri `outputs` öğesinde tanımlanmıştır.
 
-1. Open **linkedTemplate.json** in Visual Studio Code if the file is not opened.
+1. Dosya açılmadıysa Visual Studio Code **Linkedtemplate. JSON** dosyasını açın.
 2. Aşağıdaki değişiklikleri yapın:
 
-    * Remove all the parameters other than **location**.
+    * **Konum**dışındaki tüm parametreleri kaldırın.
     * **storageAccountName** adlı bir parametre ekleyin.
         ```json
         "storageAccountName":{
@@ -90,11 +90,11 @@ Bağlı şablon bir depolama hesabı oluşturur. The linked template can be used
           }
         },
         ```
-        The storage account name and location are passed from the main template to the linked template as parameters.
+        Depolama hesabı adı ve konumu, ana şablondan bağlantılı şablona parametreler olarak geçirilir.
 
-    * Remove the **variables** element, and all the variable definitions.
-    * Remove all the resources other than the storage account. Toplam dört kaynağı kaldırırsınız.
-    * Update the value of the **name** element of the storage account resource to:
+    * **Değişkenler** öğesini ve tüm değişken tanımlarını kaldırın.
+    * Depolama hesabı dışındaki tüm kaynakları kaldırın. Toplam dört kaynağı kaldırırsınız.
+    * Depolama hesabı kaynağının **ad** öğesinin değerini şu şekilde güncelleştirin:
 
         ```json
           "name": "[parameters('storageAccountName')]",
@@ -158,10 +158,10 @@ Bağlı şablon bir depolama hesabı oluşturur. The linked template can be used
 
 ## <a name="upload-the-linked-template"></a>Bağlı şablonu karşıya yükleme
 
-The main template and the linked template need to be accessible from where you run the deployment. In this tutorial, you use the Cloud shell deployment method as you used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Ana şablon (azuredeploy.json) kabuğa yüklenir. The linked template (linkedTemplate.json) must be shared somewhere securely. The following PowerShell script creates an Azure Storage account, uploads the template to the Storage account, and then generates a SAS token to grant limited access to the template file. To simplify the tutorial, the script downloads a completed linked template from a Github repository. If you want to use the linked template you created, you can use the [Cloud shell](https://shell.azure.com) to upload your linked template, and then modify the script to use your own linked template.
+Ana şablon ve bağlantılı şablon dağıtımı çalıştırdığı öğesinden erişilebilir olması gerekiyor. Bu öğreticide, [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](./resource-manager-tutorial-create-templates-with-dependent-resources.md)bölümünde kullandığınız için Cloud Shell dağıtım yöntemini kullanırsınız. Ana şablon (azuredeploy.json) kabuğa yüklenir. Bağlantılı şablonu (linkedTemplate.json) olmalıdır bir yerden güvenli bir şekilde paylaşılan. Aşağıdaki PowerShell betiği bir Azure depolama hesabı oluşturur, şablonu depolama hesabına yükler ve ardından şablon dosyasına sınırlı erişim vermek için bir SAS belirteci oluşturur. Öğreticiyi basitleştirmek için, betik bir GitHub deposundan tamamlanmış bir bağlantılı şablonu indirir. Oluşturduğunuz bağlı şablonu kullanmak istiyorsanız, bağlantılı şablonunuzu karşıya yüklemek için [Cloud Shell](https://shell.azure.com) 'i kullanabilir ve sonra komut dosyasını kendi bağlantılı şablonunuzu kullanacak şekilde değiştirebilirsiniz.
 
 > [!NOTE]
-> The script limits the SAS token to be used within eight hours. If you need more time to complete this tutorial, increase the expiry time.
+> Betik sekiz saat içinde kullanılacak SAS belirteci sınırlar. Bu öğreticiyi tamamlamak için daha fazla süreye ihtiyacınız varsa, sona erme saati artırın.
 
 ```azurepowershell-interactive
 $projectNamePrefix = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -213,20 +213,20 @@ echo "Resource Group Name: $resourceGroupName"
 echo "Linked template URI with SAS token: $templateURI"
 ```
 
-1. Select the **Try It** green button to open the Azure cloud shell pane.
-2. Select **Copy** to copy the PowerShell script.
-3. Right-click anywhere inside the shell pane (the navy blue part), and then select **Paste**.
-4. Make a note of the two values (Resource Group Name and Linked template URI) at the end of the shell pane. Öğreticinin sonraki bölümlerinde bu değerlere ihtiyacınız olacaktır.
-5. Select **Exit focus mode** to close the shell pane.
+1. Azure Cloud Shell bölmesini açmak için yeşil **BT 'Yi deneyin** düğmesini seçin.
+2. PowerShell betiğini kopyalamak için **Kopyala** ' yı seçin.
+3. Kabuk bölmesinin içinde herhangi bir yere (yani, mavi parça) sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+4. Kabuk bölmesinde sonunda iki değer (kaynak grubu adı ve bağlantılı şablon URI'si) not edin. Öğreticinin sonraki bölümlerinde bu değerlere ihtiyacınız olacaktır.
+5. Kabuk bölmesini kapatmak için **odak modundan çık** ' ı seçin.
 
-In practice, you generate a SAS token when you deploy the main template, and give the SAS token expiry a smaller window to make it more secure. For more information, see [Provide SAS token during deployment](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
+Uygulamada, ana şablonu dağıtın ve SAS belirteci süre sonu vermek daha güvenli hale getirmek için daha küçük bir pencere bir SAS belirteci oluşturur. Daha fazla bilgi için bkz. [dağıtım SıRASıNDA SAS belirteci sağlama](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Bağlı şablonu çağırma
 
 Ana şablon azuredeploy.json olarak adlandırılır.
 
-1. Open **azuredeploy.json** in Visual Studio Code if it is not opened.
-2. Delete the storage account resource definition from the template:
+1. Açık değilse, Visual Studio Code **azuredeploy. JSON** ' i açın.
+2. Depolama hesabı kaynak tanımı şablonu silin:
 
     ```json
     {
@@ -266,14 +266,14 @@ Ana şablon azuredeploy.json olarak adlandırılır.
     * Ana şablonda bir `Microsoft.Resources/deployments` kaynağı, başka bir şablona bağlamak için kullanılır.
     * `deployments` kaynağının adı `linkedTemplate` şeklindedir. Bu ad [bağımlılık yapılandırma](#configure-dependency) için kullanılır.
     * Bağlı şablonları çağırırken yalnızca [Artımlı](./deployment-modes.md) dağıtım modunu kullanabilirsiniz.
-    * `templateLink/uri` bağlı şablon URI’sini içerir. Update the value to the URI you get when you upload the linked template (the one with a SAS token).
+    * `templateLink/uri` bağlı şablon URI’sini içerir. Bağlı (bir SAS belirteci ile) şablonu karşıya yüklediğinizde, almak URI'ye değerini güncelleştirin.
     * Değerleri ana şablondan bağlı şablona geçirmek için `parameters` kullanın.
-4. Make sure you have updated the value of the `uri` element to the value you got when you upload the linked template (the one with a SAS token). In practice, you want to supply the URI with a parameter.
-5. Save the revised template
+4. `uri` öğesinin değerini bağlı şablonu (bir SAS belirtecine sahip olan) karşıya yüklerken aldığınız değere güncelleştirdiğinizden emin olun. Uygulamada, bir parametre URI sağlamak istersiniz.
+5. Değiştirilen şablonu kaydedin
 
 ## <a name="configure-dependency"></a>Bağımlılık yapılandırma
 
-Recall from [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), the virtual machine resource depends on the storage account:
+[Öğreticiden geri dön: bağımlı kaynaklarla Azure Resource Manager şablonlar oluşturma](./resource-manager-tutorial-create-templates-with-dependent-resources.md), sanal makine kaynağı depolama hesabına bağlıdır:
 
 ![Azure Resource Manager şablonları bağımlılık diyagramı](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
@@ -298,12 +298,12 @@ Depolama hesabı artık bağlı şablonda tanımlandığı için, `Microsoft.Com
     ![Azure Resource Manager bağlı şablonları bağımlılığı yapılandırma](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
     *linkedTemplate*, dağıtım kaynağının adıdır.
-3. Update **properties/diagnosticsProfile/bootDiagnostics/storageUri** as shown in the previous screenshot.
-4. Save the revised template.
+3. Önceki ekran görüntüsünde gösterildiği gibi **özellikleri/diagnosticsProfile/bootDiagnostics/storageUri** ' i güncelleştirin.
+4. Değiştirilen şablonu kaydedin.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Dağıtım yordamı için [Şablonu dağıtma](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) bölümüne bakın. Use the same resource group name as the storage account for storing the linked template. It makes it easier to clean up resources in the next section. Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
+Dağıtım yordamı için [Şablonu dağıtma](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) bölümüne bakın. Aynı kaynak grubu adı, bağlı şablonun depolamak için depolama hesabı olarak kullanın. Bu, sonraki bölümde kaynakları temizlemek kolaylaştırır. Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -314,16 +314,16 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 3. Kaynak grubu adını seçin.  Kaynak grubundaki toplam altı kaynak görüyor olmalısınız.
 4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
-## <a name="additional-practice"></a>Additional practice
+## <a name="additional-practice"></a>Ek uygulama
 
-To improve the project, make the following additional changes to the completed project:
+Projeyi geliştirmek için tamamlanan projeye aşağıdaki ek değişiklikleri yapın:
 
-1. Modify the main template (azuredeploy.json) so that it takes the linked template URI value via a parameter.
-2. Instead of generating a SAS token when you upload the linked template, generate the token when you deploy the main template. For more information, see [Provide SAS token during deployment](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
+1. Bir parametre üzerinden bağlı şablon URI değerini alır (azuredeploy.json) ana şablon değiştirin.
+2. Ana şablonu dağıtırken, bağlı şablonun karşıya yüklediğinizde bir SAS belirteci üretmek yerine, belirteci oluşturur. Daha fazla bilgi için bkz. [dağıtım SıRASıNDA SAS belirteci sağlama](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you modularized a template into a main template and a linked template. To learn how to use virtual machine extensions to perform post deployment tasks, see:
+Bu öğreticide, modularized, bir ana şablon ve bağlı bir şablona bir şablona. Post dağıtım görevlerini gerçekleştirmek için sanal makine uzantıları kullanmayı öğrenmek için bkz:
 
 > [!div class="nextstepaction"]
 > [Sanal makine uzantılarını dağıtma](./resource-manager-tutorial-deploy-vm-extensions.md)

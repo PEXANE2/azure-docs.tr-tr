@@ -1,6 +1,6 @@
 ---
-title: Disaster recovery and geo-distribution in Durable Functions - Azure
-description: Learn about disaster recovery and geo-distribution in Durable Functions.
+title: Dayanıklı İşlevler-Azure 'da olağanüstü durum kurtarma ve coğrafi dağıtım
+description: Dayanıklı İşlevler ' de olağanüstü durum kurtarma ve coğrafi dağıtım hakkında bilgi edinin.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
@@ -16,73 +16,73 @@ ms.locfileid: "74232934"
 
 ## <a name="overview"></a>Genel Bakış
 
-In Durable Functions, all state is persisted in Azure Storage. A [task hub](durable-functions-task-hubs.md) is a logical container for Azure Storage resources that are used for orchestrations. Orchestrator and activity functions can only interact with each other when they belong to the same task hub.
-The described scenarios propose deployment options to increase availability and minimize downtime during disaster recovery activities.
+Dayanıklı İşlevler, Azure depolama 'da tüm durum kalıcı hale getirilir. [Görev hub 'ı](durable-functions-task-hubs.md) , Azure depolama kaynakları için, düzenleme için kullanılan mantıksal bir kapsayıcıdır. Orchestrator ve Activity işlevleri aynı görev merkezine ait olduklarında yalnızca birbirleriyle etkileşim kurabilir.
+Açıklanan senaryolar kullanılabilirliği artırmak ve olağanüstü durum kurtarma etkinlikleri sırasında kapalı kalma süresini en aza indirmek için dağıtım seçenekleri önerin.
 
-It's important to notice that these scenarios are based on Active-Passive configurations, since they are guided by the usage of Azure Storage. This pattern consists of deploying a backup (passive) function app to a different region. Traffic Manager will monitor the primary (active) function app for availability. It will fail over to the backup function app if the primary fails. For more information,  see [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)'s [Priority Traffic-Routing Method.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Bu senaryoların, Azure Storage kullanımı tarafından sunulduğundan, etkin-Pasif yapılandırmalara dayalı olduğunu fark etmek önemlidir. Bu model, farklı bir bölgeye yedek (pasif) işlev uygulaması dağıtmaktan oluşur. Traffic Manager, birincil (etkin) işlev uygulamasını kullanılabilirlik için izler. Birincil işlem başarısız olursa yedekleme işlevi uygulamasına yük devreder. Daha fazla bilgi için bkz [](https://azure.microsoft.com/services/traffic-manager/). Traffic Manager [Öncelik trafiği-yönlendirme yöntemi.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >
-> - The proposed Active-Passive configuration ensures that a client is always able to trigger new orchestrations via HTTP. However, as a consequence of having two function apps sharing the same storage, background processing will be distributed between both of them, competing for messages on the same queues. This configuration incurs in added egress costs for the secondary function app.
-> - The underlying storage account and task hub are created in the primary region, and are shared by both function apps.
-> - All function apps that are redundantly deployed, must share the same function access keys in the case of being activated via HTTP. The Functions Runtime exposes a [management API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) that enables consumers to programmatically add, delete, and update function keys.
+> - Önerilen etkin-Pasif yapılandırma, bir istemcinin HTTP aracılığıyla her zaman yeni düzenlemeleri tetikleyebilmesini sağlar. Ancak, iki işlev uygulamasının aynı depolamayı paylaştığı bir sonucu olarak, arka plan işleme her ikisi arasında dağıtılır ve aynı kuyruklarda iletiler için rekabet edilir. Bu yapılandırma, ikincil işlev uygulaması için eklenen çıkış maliyetlerinde yer doğurur.
+> - Temel alınan depolama hesabı ve görev hub 'ı birincil bölgede oluşturulur ve her iki işlev uygulaması tarafından paylaşılır.
+> - Redundantly dağıtılan tüm işlev uygulamaları, HTTP aracılığıyla etkinleştirilme durumunda aynı işlev erişim anahtarlarını paylaşmalıdır. Işlevler çalışma zamanı, tüketicilerin program aracılığıyla işlev anahtarlarını eklemesini, silmesini ve güncelleştirmesini sağlayan bir [Yönetim API 'si](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) sunar.
 
-## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scenario 1 - Load balanced compute with shared storage
+## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Senaryo 1-paylaşılan depolama ile yük dengeli işlem
 
-If the compute infrastructure in Azure fails, the function app may become unavailable. To minimize the possibility of such downtime, this scenario uses two function apps deployed to different regions.
-Traffic Manager is configured to detect problems in the primary function app and automatically redirect traffic to the function app in the secondary region. This function app shares the same Azure Storage account and Task Hub. Therefore, the state of the function apps isn't lost and work can resume normally. Once health is restored to the primary region, Azure Traffic Manager will start routing requests to that function app automatically.
+Azure 'daki işlem altyapısı başarısız olursa, işlev uygulaması kullanılamaz hale gelebilir. Bu gibi kapalı kalma olasılığını en aza indirmek için, bu senaryo farklı bölgelere dağıtılan iki işlev uygulaması kullanır.
+Traffic Manager, birincil işlev uygulamasındaki sorunları tespit etmek ve trafiği ikincil bölgedeki işlev uygulamasına otomatik olarak yeniden yönlendirmek üzere yapılandırılır. Bu işlev uygulaması aynı Azure Depolama hesabını ve görev hub 'ını paylaşır. Bu nedenle, işlev uygulamalarının durumu kaybedilmez ve iş normal şekilde sürdürülür. Sistem durumu birincil bölgeye geri yüklendikten sonra Azure Traffic Manager, istekleri bu işlev uygulamasına otomatik olarak yönlendirmeye başlar.
 
-![Diagram showing scenario 1.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
+![Senaryo 1 ' i gösteren diyagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
 
-There are several benefits when using this deployment scenario:
+Bu dağıtım senaryosu kullanılırken birçok avantaj vardır:
 
-- If the compute infrastructure fails, work can resume in the fail over region without state loss.
-- Traffic Manager takes care of the automatic fail over to the healthy function app automatically.
-- Traffic Manager automatically re-establishes traffic to the primary function app after the outage has been corrected.
+- İşlem altyapısı başarısız olursa, iş, yük devretme bölgesinde durum kaybı olmadan sürdürülür.
+- Traffic Manager, otomatik olarak sağlıklı işlev uygulamasına otomatik yük devretme işlemini gerçekleştirir.
+- Traffic Manager, kesinti düzeltildikten sonra birincil işlev uygulamasına trafiği otomatik olarak yeniden oluşturur.
 
-However,  using this scenario consider:
+Ancak, bu senaryonun kullanılması şunları göz önünde bulundurun:
 
-- If the function app is deployed using a dedicated App Service plan, replicating the compute infrastructure in the fail over datacenter increases costs.
-- This scenario covers outages at the compute infrastructure, but the storage account continues to be the single point of failure for the function App. If there is a Storage outage, the application suffers a downtime.
-- If the function app is failed over, there will be increased latency since it will access its storage account across regions.
-- Accessing the storage service from a different region where it's located incurs in higher cost due to network egress traffic.
-- This scenario depends on Traffic Manager. Considering [how Traffic Manager works](../../traffic-manager/traffic-manager-how-it-works.md), it may be some time until a client application that consumes a Durable Function needs to query again the function app address from Traffic Manager.
+- İşlev uygulaması ayrılmış bir App Service planı kullanılarak dağıtılırsa, işlem altyapısını yük devretmek için çoğaltma maliyetlerini artırır.
+- Bu senaryo, işlem altyapısındaki kesintileri ele alır, ancak depolama hesabı, işlev uygulaması için tek hata noktası olmaya devam eder. Depolama kesintisi varsa, uygulama kesinti süresi yaşar.
+- İşlev uygulaması yük devretmede başarısız olursa, bölgeler arasında depolama hesabına erişim olacağı için gecikme süresi artacaktır.
+- Depolama hizmetine, bulunduğu farklı bir bölgeden, ağ çıkış trafiği nedeniyle daha yüksek maliyetli bir şekilde erişme.
+- Bu senaryo Traffic Manager bağımlıdır. [Traffic Manager nasıl çalıştığını](../../traffic-manager/traffic-manager-how-it-works.md)göz önünde bulundurarak, dayanıklı bir işlevi tüketen bir istemci uygulamasının Traffic Manager işlev uygulama adresini yeniden sorgulayabilmesini gerektiren bir zaman olabilir.
 
-## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scenario 2 - Load balanced compute with regional storage
+## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Senaryo 2-bölgesel depolama ile yük dengeli işlem
 
-The preceding scenario covers only the case of failure in the compute infrastructure. If the storage service fails, it will result in an outage of the function app.
-To ensure continuous operation of the durable functions, this scenario uses a local storage account on each region to which the function apps are deployed.
+Yukarıdaki senaryo yalnızca işlem altyapısındaki hata durumunu ele alır. Depolama hizmeti başarısız olursa, işlev uygulamasının kesintiye neden olur.
+Dayanıklı işlevlerin sürekli çalışmasını sağlamak için bu senaryo, işlev uygulamalarının dağıtıldığı her bölgede yerel bir depolama hesabı kullanır.
 
-![Diagram showing scenario 2.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
+![Senaryo 2 ' nin gösterildiği diyagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
 
-This approach adds improvements on the previous scenario:
+Bu yaklaşım, önceki senaryoya yönelik iyileştirmeler ekler:
 
-- If the function app fails, Traffic Manager takes care of failing over to the secondary region. However, because the function app relies on its own storage account, the durable functions continue to work.
-- During a fail over, there is no additional latency in the fail over region, since the function app and the storage account are co-located.
-- Failure of the storage layer will cause failures in the durable functions, which, in turn, will trigger a redirection to the fail over region. Again, since the function app and storage are isolated per region, the durable functions will continue to work.
+- İşlev uygulaması başarısız olursa, Traffic Manager ikincil bölgeye yük devretme işlemini gerçekleştirir. Ancak, işlev uygulaması kendi depolama hesabını temel aldığından, dayanıklı işlevler çalışmaya devam eder.
+- Yük devretme sırasında, işlev uygulaması ve depolama hesabı birlikte bulunduğundan, yük devretme bölgesinde ek bir gecikme yoktur.
+- Depolama katmanının başarısızlığı, dayanıklı işlevlerde hatalara neden olur. Bu, sırasıyla yük devretme bölgesine yeniden yönlendirme tetikleyecektir. Aynı şekilde, işlev uygulaması ve depolama alanı her bölge için yalıtılmış olduğundan, dayanıklı işlevler çalışmaya devam edecektir.
 
-Important considerations for this scenario:
+Bu senaryoya ilişkin önemli noktalar:
 
-- If the function app is deployed using a dedicated AppService plan, replicating the compute infrastructure in the fail over datacenter increases costs.
-- Current state isn't failed over, which implies that executing and checkpointed functions will fail. It's up to the client application to retry/restart the work.
+- İşlev uygulaması ayrılmış bir AppService planı kullanılarak dağıtılırsa, işlem altyapısını yük devretmek için çoğaltma maliyetlerini artırır.
+- Geçerli durum yük devretmez, bu da yürütmenin yürütülmesi ve CheckIn işlevinin başarısız olacağını gösterir. İşi yeniden denemek/yeniden başlatmak için istemci uygulamasına kadar.
 
-## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scenario 3 - Load balanced compute with GRS shared storage
+## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Senaryo 3-GRS paylaşılan depolama ile yük dengeli işlem
 
-This scenario is a modification over the first scenario, implementing a shared storage account. The main difference that the storage account is created with geo-replication enabled.
-Functionally, this scenario provides the same advantages as Scenario 1, but it enables additional data recovery advantages:
+Bu senaryo, paylaşılan depolama hesabı uygulayan ilk senaryonun üzerinde yapılan bir değişikliktir. Depolama hesabının coğrafi çoğaltma etkin olarak oluşturulduğu temel fark.
+İşlevsellik, bu senaryo Senaryo 1 ile aynı avantajları sağlar, ancak ek veri kurtarma avantajları sağlar:
 
-- Geo-redundant storage (GRS) and Read-access GRS (RA-GRS) maximize availability for your storage account.
-- If there is a region outage of the storage service, one of the possibilities is that the datacenter operations determine that storage must be failed over to the secondary region. In this case, storage account access will be redirected transparently to the geo-replicated copy of the storage account, without user intervention.
-- In this case, state of the durable functions will be preserved up to the last replication of the storage account, which occurs every few minutes.
+- Coğrafi olarak yedekli depolama (GRS) ve Okuma Erişimli GRS (RA-GRS), depolama hesabınız için kullanılabilirliği en üst düzeye çıkarır.
+- Depolama hizmeti 'nin bir bölge kesintisi varsa, olasılıklardan biri, veri merkezi işlemlerinin, depolama alanının ikincil bölgeye yük devretmeli olduğunu belirlemesidir. Bu durumda, depolama hesabı erişimi, Kullanıcı müdahalesi olmadan depolama hesabının coğrafi olarak çoğaltılan kopyasına saydam olarak yönlendirilir.
+- Bu durumda, dayanıklı işlevlerin durumu depolama hesabının en son çoğaltmasına kadar saklanır ve bu işlem birkaç dakikada bir gerçekleşir.
 
-As with the other scenarios, there are important considerations:
+Diğer senaryolarda olduğu gibi önemli noktalar da vardır:
 
-- Fail over to the replica is done by datacenter operators and it may take some time. Until that time, the function app will suffer an outage.
-- There is an increased cost for using geo-replicated storage accounts.
-- GRS occurs asynchronously. Some of the latest transactions might be lost because of the latency of the replication process.
+- Çoğaltmaya yük devretme, veri merkezi işleçleri tarafından yapılır ve bu işlem biraz zaman alabilir. Bu saate kadar, işlev uygulaması bir kesinti olduğunu etkilemeyecektir.
+- Coğrafi olarak çoğaltılan depolama hesaplarını kullanmanın maliyeti artar.
+- GRS zaman uyumsuz olarak gerçekleştirilir. Çoğaltma işleminin gecikmesi nedeniyle en son işlemlerden bazıları kaybolmuş olabilir.
 
-![Diagram showing scenario 3.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
+![Senaryo 3 ' ü gösteren diyagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You can read more about [Designing Highly Available Applications using RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+[RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](../../storage/common/storage-designing-ha-apps-with-ragrs.md) hakkında daha fazla bilgi edinebilirsiniz

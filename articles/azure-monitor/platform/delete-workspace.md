@@ -1,6 +1,6 @@
 ---
-title: Delete and recover Azure Log Analytics workspace | Microsoft Docs
-description: Learn how to delete your Log Analytics workspace if you created one in a personal subscription or restructure your workspace model.
+title: Azure Log Analytics çalışma alanını silme ve kurtarma | Microsoft Docs
+description: Kişisel abonelikte bir tane oluşturduysanız veya çalışma alanı modelinizi yeniden yapılandırmak için Log Analytics çalışma alanınızı silmeyi öğrenin.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
@@ -14,56 +14,56 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326504"
 ---
-# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Delete and restore Azure Log Analytics workspace
+# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve geri yükleme
 
-This article explains the concept of Azure Log Analytics workspace soft-delete and how to recover deleted workspace. 
+Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve silinen çalışma alanının nasıl kurtarılacağı açıklanmaktadır. 
 
-## <a name="considerations-when-deleting-a-workspace"></a>Considerations when deleting a workspace
+## <a name="considerations-when-deleting-a-workspace"></a>Çalışma alanı silinirken dikkat edilecek noktalar
 
-When you delete a Log Analytics workspace, a soft-delete operation is performed to allow the recovery of the workspace including its data and connected agents within 14 days, whether the deletion was accidental or intentional. After the soft-delete period, the workspace and its data are non-recoverable – data is queued for permanent deletion within 30 days and the workspace name is available and can be used to create a new workspace.
+Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı ve verileri kurtarılamaz olur – veriler 30 gün içinde kalıcı silinmek üzere sıraya alınır ve yeni bir çalışma alanı oluşturmak için kullanılabilir.
 
-You want to exercise caution when you delete a workspace because there might be important data and configuration that may negatively impact your service operation. Review what agents, solutions, and other Azure services and sources that store their data in Log Analytics, such as:
+Hizmet işleminizi olumsuz yönde etkileyebilecek önemli veriler ve yapılandırma olabileceğinden, bir çalışma alanını sildiğinizde dikkatli olmak istersiniz. Şu gibi Log Analytics verilerini depolayan aracıları, çözümleri ve diğer Azure hizmetlerini ve kaynakları inceleyin:
 
 * Yönetim çözümleri
 * Azure Otomasyonu
-* Agents running on Windows and Linux virtual machines
-* Agents running on Windows and Linux computers in your environment
+* Windows ve Linux sanal makinelerinde çalışan aracılar
+* Ortamınızdaki Windows ve Linux bilgisayarları üzerinde çalışan aracılar
 * System Center Operations Manager
 
-The soft-delete operation deletes the workspace resource and any associated users’ permission is broken. If users are associated with other workspaces, then they can continue using Log Analytics with those other workspaces.
+Geçici silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanıcıların izni bozulur. Kullanıcılar başka çalışma alanlarıyla ilişkiliyse, bu diğer çalışma alanlarıyla Log Analytics kullanmaya devam edebilirler.
 
-## <a name="soft-delete-behavior"></a>Soft-delete behavior
+## <a name="soft-delete-behavior"></a>Geçici silme davranışı
 
-The workspace delete operation removes the workspace Resource Manager resource, but its configuration and data are kept for 14 days, while giving the appearance that the workspace is deleted. Any agents and System Center Operations Manager management groups configured to report to the workspace remain in an orphaned state during the soft-delete period. The service further provides a mechanism for recovering the deleted workspace including its data and connected resources, essentially undoing the deletion.
+Çalışma alanı silme işlemi, çalışma alanı Kaynak Yöneticisi kaynağını kaldırır, ancak yapılandırma ve veriler 14 gün boyunca tutulur ve çalışma alanının silindiği görünümü verir. Çalışma alanına rapor verecek şekilde yapılandırılan tüm aracılar ve System Center Operations Manager yönetim grupları, geçici silme dönemi boyunca yalnız bırakılmış durumda kalır. Bu hizmet, silinen çalışma alanının verileri ve bağlı kaynakları dahil olmak üzere, silme işlemini geri alarak kurtarmak için bir mekanizma sağlar.
 
 > [!NOTE] 
-> Installed solutions and linked services like your Azure Automation account are permanently removed from the workspace at deletion time and can’t be recovered. These should be reconfigured after the recovery operation to bring the workspace to its previously configured state.
+> Azure Otomasyonu hesabınız gibi yüklü çözümler ve bağlı hizmetler, silme sırasında çalışma alanından kalıcı olarak kaldırılır ve kurtarılamaz. Çalışma alanını önceden yapılandırılmış durumuna getirmek için kurtarma işleminden sonra bunların yeniden yapılandırılması gerekir.
 
-You can delete a workspace using [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete), or in the [Azure portal](https://portal.azure.com).
+Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
 
-### <a name="delete-workspace-in-azure-portal"></a>Delete workspace in Azure portal
+### <a name="delete-workspace-in-azure-portal"></a>Azure portal çalışma alanını sil
 
-1. To sign in, go to the [Azure portal](https://portal.azure.com). 
-2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. Select **Log Analytics workspaces**.
-3. In the list of Log Analytics workspaces, select a workspace and then click **Delete**  from the top of the middle pane.
-   ![Delete option from Workspace properties pane](media/delete-workspace/log-analytics-delete-workspace.png)
-4. When the confirmation message window appears asking you to confirm deletion of the workspace, click **Yes**.
-   ![Confirm deletion of workspace](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+1. Oturum açmak için [Azure Portal](https://portal.azure.com)gidin. 
+2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+3. Log Analytics çalışma alanları listesinde bir çalışma alanı seçin ve orta bölmenin en üstündeki **Sil** ' e tıklayın.
+   ![seçim alanı Özellikler bölmesinden](media/delete-workspace/log-analytics-delete-workspace.png)
+4. Çalışma alanını silme işlemini onaylamanızı isteyen onay iletisi penceresi göründüğünde **Evet**' e tıklayın.
+   ![çalışma alanının silinmesini onaylayın](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
-## <a name="recover-workspace"></a>Recover workspace
+## <a name="recover-workspace"></a>Çalışma alanını kurtar
 
-If you have Contributor permissions to the subscription and resource group where the workspace was associated before the soft-delete operation, you can recover it during its soft-delete period including its data, configuration and connected agents. After the soft-delete period, the workspace is non-recoverable and assigned for permanent deletion. Names of deleted workspaces are preserved during the soft-delete period and can't be used when attempting to create a new workspace.  
+Çalışma alanının geçici silme işleminden önce ilişkilendirildiği abonelik ve kaynak grubu için katkıda bulunan izinleriniz varsa, verileri, yapılandırması ve bağlı aracıları da dahil olmak üzere geçici silme döneminde kurtarabilirsiniz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz ve kalıcı silme için atanmaz. Silinen çalışma alanlarının adları, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturulmaya çalışılırken kullanılamaz.  
 
-You can recover a workspace by re-creating it using the following workspace create methods: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) or [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) as long as the following properties are populated with the deleted workspace details:
+Aşağıdaki özellikler silinen çalışma alanı ayrıntılarıyla doldurulduğu sürece, bir çalışma alanını yeniden oluşturarak kurtarabilirsiniz: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) veya [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) .
 
 * Abonelik Kimliği
-* Resource Group name
-* Workspace name
+* Kaynak grubu adı
+* Çalışma alanı adı
 * Bölge
 
-The workspace and all its data are brought back after the recovery operation. Solutions and linked services were permanently removed from the workspace when it was deleted and these should be reconfigured to bring the workspace to its previously configured state. Some of the data may not be available for query after the workspace recovery until the associated solutions are re-installed and their schemas are added to the workspace.
+Çalışma alanı ve tüm verileri kurtarma işleminden sonra geri getirilir. Çözüm ve bağlı hizmetler silindiği zaman çalışma alanından kalıcı olarak kaldırılmıştır ve çalışma alanını daha önce yapılandırılmış durumuna getirmek için yeniden yapılandırılması gerekir. İlişkili çözümler yeniden yüklenene ve şemaları çalışma alanına eklenene kadar, bazı veriler, çalışma alanı kurtarmasından sonra sorgu için kullanılamayabilir.
 
 > [!NOTE]
-> * Workspace recovery isn't supported in the [Azure portal](https://portal.azure.com). 
-> * Re-creating a workspace during the soft-delete period gives an indication that this workspace name is already in use. 
+> * [Azure Portal](https://portal.azure.com)çalışma alanı kurtarma desteklenmiyor. 
+> * Geçici silme dönemi sırasında çalışma alanının yeniden oluşturulması, bu çalışma alanı adının zaten kullanımda olduğunu belirten bir bildirim sağlar. 
 > 

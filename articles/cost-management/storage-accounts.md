@@ -1,6 +1,6 @@
 ---
-title: Configure storage accounts for Cloudyn in Azure | Microsoft Docs
-description: This article describes how you configure Azure storage accounts and AWS storage buckets for Cloudyn.
+title: Depolama hesaplarını Azure Cloudyn için yapılandırma | Microsoft Docs
+description: Bu makalede, Azure depolama hesapları ve AWS depolama demet için Cloudyn nasıl yapılandırılacağını açıklar.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,55 +17,55 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229920"
 ---
-# <a name="configure-storage-accounts-for-cloudyn"></a>Configure storage accounts for Cloudyn
+# <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn depolama hesaplarını yapılandırma
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-You can save Cloudyn reports in the Cloudyn portal, Azure storage, or AWS storage buckets. Saving your reports to the Cloudyn portal is free of charge. However, saving your reports to your cloud service provider's storage is optional and incurs additional cost. This article helps you configure Azure storage accounts and Amazon Web Services (AWS) storage buckets to store your reports.
+Cloudyn portalında, Azure depolama veya AWS depolama demet Cloudyn raporlarını kaydedebilirsiniz. Cloudyn portalında raporlarınızı kaydetme ücretsizdir. Ancak, bulut hizmeti sağlayıcısının depolama alanına raporlarınızı kaydetme isteğe bağlıdır ve ek ücret doğurur. Bu makalede, Azure depolama hesapları ve raporlarınızı depolamak için depolama demetler Amazon Web Services (AWS) yapılandırmanıza yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-You must have either an Azure storage account or an Amazon storage bucket.
+Bir Azure depolama hesabı ya da bir Amazon depolama aralığı olmalıdır.
 
-If you don't have an Azure storage account, you need to create one. For more information about creating an Azure storage account, see [Create a storage account](../storage/common/storage-quickstart-create-account.md).
+Azure depolama hesabınız yoksa, oluşturmanız gerekir. Azure depolama hesabı oluşturma hakkında daha fazla bilgi için bkz. [depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
 
-If you don't have an AWS simple storage service (S3) bucket, you need to create one. For more information about creating an S3 bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+AWS yoksa basit depolama hizmeti (S3 için) demetine bir oluşturmanız gerekir. S3 demeti oluşturma hakkında daha fazla bilgi için bkz. [demet oluşturma](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-## <a name="configure-your-azure-storage-account"></a>Configure your Azure storage account
+## <a name="configure-your-azure-storage-account"></a>Azure depolama hesabınızı yapılandırın
 
-Configuring you Azure storage for use by Cloudyn is straightforward. Gather details about the storage account and copy them in the Cloudyn portal.
+Yapılandırdığınız Cloudyn tarafından kullanılmak üzere Azure depolama oldukça basittir. Depolama hesabı ayrıntılarını toplayın ve bunları Cloudyn portalında kopyalayın.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-2. Click **All Services**, select **Storage accounts**, scroll to the storage account that you want to use, and then select the account.
-3. On your storage account page under **Settings**, click **Access Keys**.
-4. Copy your **Storage account name** and **Connection string** under key1.  
-   ![Copy storage account name and connection string](./media/storage-accounts/azure-storage-access-keys.png)  
+2. **Tüm hizmetler**' e tıklayın, **depolama hesapları**' nı seçin, kullanmak istediğiniz depolama hesabına gidin ve sonra hesabı seçin.
+3. Depolama Hesabınız sayfasında, **Ayarlar**altında **erişim anahtarları**' na tıklayın.
+4. **Depolama hesabı adınızı** ve **Bağlantı dizenizi** KEY1 altına kopyalayın.  
+   ![depolama hesabı adını ve bağlantı dizesini kopyalama](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com sayfasına gidip oturum açın.
-6. Click the cog symbol and then select **Reports Storage Management**.
-7. Click **Add new +** and ensure that Microsoft Azure is selected. Paste your Azure storage account name in the **Name** area. Paste your **connection string** in the corresponding area. Enter a container name and then click **Save**.  
-   ![Paste Azure storage account name and connection string in the Add a new report storage box](./media/storage-accounts/azure-cloudyn-storage.png)
+6. Dişli simgesine tıklayın ve ardından **raporlar depolama yönetimi**' ni seçin.
+7. **Yeni Ekle +** ' ye tıklayın ve Microsoft Azure seçili olduğundan emin olun. Azure depolama hesabınızın adını **ad** alanına yapıştırın. **Bağlantı dizenizi** ilgili alana yapıştırın. Bir kapsayıcı adı girin ve ardından **Kaydet**' e tıklayın.  
+   Azure depolama hesabı adını ve bağlantı dizesini yeni rapor depolama alanı ekle kutusuna yapıştırmayı ![](./media/storage-accounts/azure-cloudyn-storage.png)
 
-   Your new Azure report storage entry appears in the storage account list.  
-    ![New Azure report storage entry in list](./media/storage-accounts/azure-storage-entry.png)
+   Yeni Azure rapor depolama giriş depolama hesabı listesinde görüntülenir.  
+    ![Yeni Azure rapor depolama giriş listesi](./media/storage-accounts/azure-storage-entry.png)
 
 
-You can now save reports to Azure storage. In any report, click **Actions** and then select **Schedule report**. Name the report and then either add your own URL or use the automatically created URL. Select  **Save to storage**  and then select the storage account. Enter a prefix that gets appended to the report file name. Select either CSV or JSON file format and then save the report.
+Raporları, artık Azure depolama alanına kaydedebilirsiniz. Herhangi bir raporda, **Eylemler** ' i ve ardından **rapor zamanla**' yı seçin. Rapor adı ve ardından kendi URL ekleyebilir veya otomatik olarak oluşturulan URL'yi kullanın. **Depolama alanına kaydet** ' i seçin ve depolama hesabını seçin. Raporu dosya adına eklenmiş bir ön eki girin. CSV veya JSON dosya biçimi seçin ve ardından raporu kaydedin.
 
-## <a name="configure-an-aws-storage-bucket"></a>Configure an AWS storage bucket
+## <a name="configure-an-aws-storage-bucket"></a>Bir AWS depolama aralığı yapılandırın
 
-The Cloudyn uses existing AWS credentials: User or Role, to save the reports to your bucket. To test the access, Cloudyn tries to save a small text file to the bucket with the file name _check-bucket-permission.txt_.
+Mevcut AWS kimlik bilgilerini Cloudyn kullanır: kullanıcı veya rol, raporları, demetine kaydetmek için. Cloudyn, erişimi test etmek için, _Check-Bucket-Permission. txt_dosya adı ile sepete küçük bir metin dosyası kaydetmeye çalışır.
 
-You provide the Cloudyn role or user with the PutObject permission to your bucket. Then, use an existing bucket or create a new one to save reports. Finally, decide how to manage the storage class, set lifecycle rules, or remove any unnecessary files.
+Cloudyn rolü ya da kullanıcı PutObject izinle, demet için sağladığınız. Ardından, var olan bir demet kullanın veya raporları kaydetmek için yeni bir tane oluşturun. Son olarak, depolama sınıfı yönetmek, yaşam döngüsü kurallar veya gereksiz dosyaları kaldırın nasıl karar verin.
 
-###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Assign permissions to your AWS user or role
+###  <a name="assign-permissions-to-your-aws-user-or-role"></a>AWS kullanıcı veya rol izin atama
 
-When you create a new policy, you provide the exact permissions needed to save a report to a S3 bucket.
+Yeni bir ilke oluşturduğunuzda, bir rapor için bir S3 demetini kaydetmek için gereken tam izinleri sağlar.
 
-1. Sign in to the AWS console and select **Services**.
-2. Select **IAM** from the list of services.
-3. Select **Policies** on the left side of the console and then click **Create Policy**.
-4. Click the **JSON** tab.
-5. The following policy allows you to save a report to a S3 bucket. Copy and paste the following policy example to the **JSON** tab. Replace &lt;bucketname&gt; with your bucket name.
+1. AWS konsolunda oturum açın ve **Hizmetler**' i seçin.
+2. Hizmetler listesinden **IAM** ' i seçin.
+3. Konsolunun sol tarafındaki **ilkeler** ' i seçin ve ardından **ilke oluştur**' a tıklayın.
+4. **JSON** sekmesine tıklayın.
+5. Aşağıdaki ilke bir rapor için bir S3 demetini kaydetmenize olanak tanır. Aşağıdaki ilke örneğini kopyalayıp **JSON** sekmesine yapıştırın. &lt;bucketname&gt; değerini demet adınızla değiştirin.
 
    ```json
    {
@@ -85,42 +85,42 @@ When you create a new policy, you provide the exact permissions needed to save a
    }
    ```
 
-6. Click **Review policy**.  
-    ![AWS JSON policy showing example information](./media/storage-accounts/aws-policy.png)  
-7. On the Review policy page, type a name for your policy. For example, _CloudynSaveReport2S3_.
-8. Click **Create policy**.
+6. **Ilkeyi gözden geçir**' e tıklayın.  
+    örnek bilgileri gösteren AWS JSON ilkesi ![](./media/storage-accounts/aws-policy.png)  
+7. İnceleme İlkesi sayfasında, ilke için bir ad yazın. Örneğin, _CloudynSaveReport2S3_.
+8. **Ilke oluştur**' a tıklayın.
 
-### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Attach the policy to a Cloudyn role or user in your account
+### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>İlkeyi bir Cloudyn rolü ya da kullanıcı hesabı ekleme
 
-To attach the new policy, you open the AWS console and edit the Cloudyn role or user.
+Yeni ilke eklemek için AWS konsolunu açın ve Cloudyn rolü ya da kullanıcı düzenleyin.
 
-1. Sign in to the AWS console and select **Services**, then select **IAM** from the list of services.
-2. Select either **Roles** or **Users** from the left side of the console.
+1. AWS konsolunda oturum açın ve **Hizmetler**' i seçin ve ardından hizmetler listesinden **IAM** ' i seçin.
+2. Konsolunun sol tarafındaki **rol** veya **Kullanıcı** seçeneklerinden birini belirleyin.
 
-**For roles:**
+**Roller için:**
 
-  1. Click your Cloudyn role name.
-  2. On the **Permissions** tab, click **Attach Policy**.
-  3. Search for the policy that you created and select it, then click **Attach Policy**.
-    ![Example policy attached to your Cloudyn role](./media/storage-accounts/aws-attach-policy-role.png)
+  1. Cloudyn rol adınızı tıklatın.
+  2. **İzinler** sekmesinde, **ilke Ekle**' ye tıklayın.
+  3. Oluşturduğunuz ilkeyi arayın ve seçin ve ardından **Ilke Ekle**' ye tıklayın.
+    Cloudyn rolünüze ![örnek ilke eklendi](./media/storage-accounts/aws-attach-policy-role.png)
 
-**For users:**
+**Kullanıcılar için:**
 
-1. Select the Cloudyn User.
-2. On the **Permissions** tab, click **Add permissions**.
-3. In the **Grant Permission** section, select **Attach existing policies directly**.
-4. Search for the policy that you created and select it, then click **Next: Review**.
-5. On the Add permissions to role name page, click **Add permissions**.  
-    ![Example policy attached to your Cloudyn user](./media/storage-accounts/aws-attach-policy-user.png)
+1. Cloudyn kullanıcı seçin.
+2. **İzinler** sekmesinde **izin Ekle**' ye tıklayın.
+3. **Izin verme** bölümünde, **var olan ilkeleri doğrudan Ekle**' yi seçin.
+4. Oluşturduğunuz ilkeyi arayın ve seçin ve ardından **İleri: gözden geçir**' e tıklayın.
+5. Rol adına izin Ekle sayfasında, **Izin Ekle**' ye tıklayın.  
+    Cloudyn Kullanıcı](./media/storage-accounts/aws-attach-policy-user.png) bağlı ![örnek ilke
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>Optional: Set permission with bucket policy
+### <a name="optional-set-permission-with-bucket-policy"></a>İsteğe bağlı: demetine ilkesiyle izni ayarlayın
 
-You can also set permission to create reports on your S3 bucket using a bucket policy. In the classic S3 view:
+Bir demet İlkesi'ni kullanarak, S3 demetini üzerinde raporlar oluşturma izni de ayarlayabilirsiniz. Klasik S3 Görünümü'nde:
 
-1. Create or select an existing bucket.
-2. Select the **Permissions** tab and then click **Bucket policy**.
-3. Copy and paste the following policy sample. Replace &lt;bucket\_name&gt; and &lt;Cloudyn\_principle&gt; with the ARN of your bucket. Replace the ARN of either the role or user used by Cloudyn.
+1. Oluşturun veya mevcut bir aralığı seçin.
+2. **İzinler** sekmesini seçin ve ardından **demet ilkesi**' ne tıklayın.
+3. Aşağıdaki ilke örneği kopyalayıp yeniden açın. &lt;Bucket\_adı&gt; ve &lt;Cloudyn\_prensibi&gt; demet 'larınızın ARN 'iyle değiştirin. Cloudyn tarafından kullanılan kullanıcı veya rol ARN değiştirin.
 
    ```
    {
@@ -144,23 +144,23 @@ You can also set permission to create reports on your S3 bucket using a bucket p
    }
    ```
 
-4. In the Bucket policy editor, click **Save**.
+4. Demet İlkesi düzenleyicisinde **Kaydet**' e tıklayın.
 
-### <a name="add-aws-report-storage-to-cloudyn"></a>Add AWS report storage to Cloudyn
+### <a name="add-aws-report-storage-to-cloudyn"></a>Cloudyn'e AWS rapor depolama ekleme
 
 1. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com sayfasına gidip oturum açın.
-2. Click the cog symbol and then select **Reports Storage Management**.
-3. Click **Add new +** and ensure that AWS is selected.
-4. Select an account and storage bucket. The name of the AWS storage bucket is automatically filled-in.  
-    ![Example information in the Add a new report storage box](./media/storage-accounts/aws-cloudyn-storage.png)  
-5. Click **Save** and then click **Ok**.
+2. Dişli simgesine tıklayın ve ardından **raporlar depolama yönetimi**' ni seçin.
+3. **Yeni Ekle** ' ye tıklayın ve AWS 'nin seçili olduğundan emin olun.
+4. Bir hesabı ve depolama aralığı seçin. AWS depolama demet adını otomatik olarak doldurulmuş bileşenidir.  
+    ![Örnek bilgiler, yeni bir rapor depolama Kutusu Ekle](./media/storage-accounts/aws-cloudyn-storage.png)  
+5. **Kaydet** ' e ve ardından **Tamam**' a tıklayın.
 
-    Your new AWS report storage entry appears in the storage account list.  
-    ![New AWS report storage entry show in storage account list](./media/storage-accounts/aws-storage-entry.png)
+    Yeni AWS rapor depolama giriş depolama hesabı listesinde görüntülenir.  
+    ![Depolama giriş show depolama hesabı listesinde yeni AWS rapor](./media/storage-accounts/aws-storage-entry.png)
 
 
-You can now save reports to Azure storage. In any report, click **Actions**  and then select **Schedule report**. Name the report and then either add your own URL or use the automatically created URL. Select  **Save to storage**  and then select the storage account. Enter a prefix that gets appended to the report file name. Select either CSV or JSON file format and then save the report.
+Raporları, artık Azure depolama alanına kaydedebilirsiniz. Herhangi bir raporda, **Eylemler** ' i ve ardından **rapor zamanla**' yı seçin. Rapor adı ve ardından kendi URL ekleyebilir veya otomatik olarak oluşturulan URL'yi kullanın. **Depolama alanına kaydet** ' i seçin ve depolama hesabını seçin. Raporu dosya adına eklenmiş bir ön eki girin. CSV veya JSON dosya biçimi seçin ve ardından raporu kaydedin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Review [Understanding Cloudyn reports](understanding-cost-reports.md) to learn about the basic structure and functions of Cloudyn reports.
+- Cloudyn raporlarının temel yapısı ve işlevleri hakkında bilgi edinmek için [Cloudyn raporlarını](understanding-cost-reports.md) anlayın.

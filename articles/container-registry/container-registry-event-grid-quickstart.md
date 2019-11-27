@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Send events to Event Grid
-description: In this quickstart, you enable Event Grid events for your container registry, then send container image push and delete events to a sample application.
+title: Hızlı başlangıç-olayları Event Grid gönder
+description: Bu hızlı başlangıçta, kapsayıcı kayıt defteriniz için Event Grid olaylarını etkinleştirir, ardından kapsayıcı görüntüsü gönderme ve olay silme olaylarını örnek bir uygulamaya gönderirsiniz.
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
@@ -11,23 +11,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455353"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Quickstart: Send events from private container registry to Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Hızlı başlangıç: özel kapsayıcı kayıt defterinden olayları Event Grid gönder
 
-Azure Event Grid is a fully managed event routing service that provides uniform event consumption using a publish-subscribe model. In this quickstart, you use the Azure CLI to create a container registry, subscribe to registry events, then deploy a sample web application to receive the events. Finally, you trigger container image `push` and `delete` events and view the event payload in the sample application.
+Azure Event Grid, yayımlama-abonelik modeli kullanarak Tekdüzen olay tüketimi sağlayan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Bu hızlı başlangıçta, Azure CLı kullanarak bir kapsayıcı kayıt defteri oluşturabilir, kayıt defteri olaylarına abone olur ve olayları almak için örnek bir Web uygulaması dağıtabilirsiniz. Son olarak, kapsayıcı görüntüsünü `push` ve olayları `delete` ve olay yükünü örnek uygulamada görüntüleyebilirsiniz.
 
-After you complete the steps in this article, events sent from your container registry to Event Grid appear in the sample web app:
+Bu makaledeki adımları tamamladıktan sonra, kapsayıcı Kayıt defterinizden Event Grid için gönderilen olaylar örnek Web uygulamasında görünür:
 
-![Web browser rendering the sample web application with three received events][sample-app-01]
+![Üç alınan olayla örnek Web uygulamasını işleme Web tarayıcısı][sample-app-01]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-The Azure CLI commands in this article are formatted for the **Bash** shell. If you're using a different shell like PowerShell or Command Prompt, you may need to adjust line continuation characters or variable assignment lines accordingly. This article uses variables to minimize the amount of command editing required.
+Bu makaledeki Azure CLı komutları **Bash** kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi farklı bir kabuk kullanıyorsanız, satır devamlılık karakterlerini veya değişken atama satırlarını uygun şekilde ayarlamanız gerekebilir. Bu makale, gerekli komut düzenlemesini en aza indirmek için değişkenleri kullanır.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-An Azure resource group is a logical container in which you deploy and manage your Azure resources. The following [az group create][az-group-create] command creates a resource group named *myResourceGroup* in the *eastus* region. If you want to use a different name for your resource group, set `RESOURCE_GROUP_NAME` to a different value.
+Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, `RESOURCE_GROUP_NAME` farklı bir değere ayarlayın.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -37,7 +37,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Next, deploy a container registry into the resource group with the following commands. Before you run the [az acr create][az-acr-create] command, set `ACR_NAME` to a name for your registry. The name must be unique within Azure, and is restricted to 5-50 alphanumeric characters.
+Ardından, aşağıdaki komutlarla bir kapsayıcı kayıt defteri 'ni kaynak grubuna dağıtın. [Az ACR Create][az-acr-create] komutunu çalıştırmadan önce kayıt defteriniz için bir ada `ACR_NAME` ayarlayın. Ad, Azure içinde benzersiz olmalıdır ve 5-50 alfasayısal karakterlerle kısıtlıdır.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -45,7 +45,7 @@ ACR_NAME=<acrName>
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```
 
-Once the registry has been created, the Azure CLI returns output similar to the following:
+Kayıt defteri oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir çıktı döndürür:
 
 ```json
 {
@@ -69,11 +69,11 @@ Once the registry has been created, the Azure CLI returns output similar to the 
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Create an event endpoint
+## <a name="create-an-event-endpoint"></a>Olay uç noktası oluşturma
 
-In this section, you use a Resource Manager template located in a GitHub repository to deploy a pre-built sample web application to Azure App Service. Later, you subscribe to your registry's Event Grid events and specify this app as the endpoint to which the events are sent.
+Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Service dağıtmak için GitHub deposunda bulunan Kaynak Yöneticisi şablonunu kullanırsınız. Daha sonra, kayıt defterinizin Event Grid olaylarına abone olur ve bu uygulamayı olayların gönderildiği uç nokta olarak belirtirsiniz.
 
-To deploy the sample app, set `SITE_NAME` to a unique name for your web app, and execute the following commands. The site name must be unique within Azure because it forms part of the fully qualified domain name (FQDN) of the web app. In a later section, you navigate to the app's FQDN in a web browser to view your registry's events.
+Örnek uygulamayı dağıtmak için, `SITE_NAME` Web uygulamanız için benzersiz bir ad olarak ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -84,19 +84,19 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Once the deployment has succeeded (it might take a few minutes), open a browser and navigate to your web app to make sure it's running:
+Dağıtım başarılı olduktan sonra (birkaç dakika sürebilir), bir tarayıcı açın ve çalıştığından emin olmak için Web uygulamanıza gidin:
 
 `http://<your-site-name>.azurewebsites.net`
 
-You should see the sample app rendered with no event messages displayed:
+Örnek uygulamanın, hiçbir olay iletisi görüntülenmediğinde görüntülendiğini görmeniz gerekir:
 
-![Web browser showing sample web app with no events displayed][sample-app-02]
+![Olay görüntülenmeden örnek Web uygulamasını gösteren Web tarayıcısı][sample-app-02]
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>Subscribe to registry events
+## <a name="subscribe-to-registry-events"></a>Kayıt defteri olaylarına abone olma
 
-In Event Grid, you subscribe to a *topic* to tell it which events you want to track, and where to send them. The following [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] command subscribes to the container registry you created, and specifies your web app's URL as the endpoint to which it should send events. The environment variables you populated in earlier sections are reused here, so no edits are required.
+Event Grid, izlemek istediğiniz olayları ve nereden gönderileceğini söylemek için bir *konuya* abone olursunuz. Aşağıdaki [az eventgrid olay-abonelik oluştur][az-eventgrid-event-subscription-create] komutu oluşturduğunuz kapsayıcı kayıt defterine abone olur ve Web uygulamanızın URL 'sini, olayları göndereceği uç nokta olarak belirtir. Önceki bölümlerde doldurmuş olduğunuz ortam değişkenleri burada yeniden kullanılır, bu nedenle hiçbir düzenleme gerekmez.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -108,7 +108,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-When the subscription is completed, you should see output similar to the following:
+Abonelik tamamlandığında aşağıdakine benzer bir çıktı görmeniz gerekir:
 
 ```JSON
 {
@@ -135,19 +135,19 @@ When the subscription is completed, you should see output similar to the followi
 }
 ```
 
-## <a name="trigger-registry-events"></a>Trigger registry events
+## <a name="trigger-registry-events"></a>Kayıt defteri olaylarını tetikleme
 
-Now that the sample app is up and running and you've subscribed to your registry with Event Grid, you're ready to generate some events. In this section, you use ACR Tasks to build and push a container image to your registry. ACR Tasks is a feature of Azure Container Registry that allows you to build container images in the cloud, without needing the Docker Engine installed on your local machine.
+Örnek uygulama çalışır duruma gelmiştir ve Event Grid Kayıt defterinize abone olduğunuza göre, bazı olaylar oluşturmaya hazırsınız demektir. Bu bölümde, Kayıt defterinize bir kapsayıcı görüntüsü derlemek ve göndermek için ACR görevlerini kullanırsınız. ACR görevleri, yerel makinenizde Docker altyapısının yüklü olması gerekmeden bulutta kapsayıcı görüntüleri oluşturmanıza olanak sağlayan bir Azure Container Registry özelliğidir.
 
-### <a name="build-and-push-image"></a>Build and push image
+### <a name="build-and-push-image"></a>Görüntü oluşturma ve gönderme
 
-Execute the following Azure CLI command to build a container image from the contents of a GitHub repository. By default, ACR Tasks automatically pushes a successfully built image to your registry, which generates the `ImagePushed` event.
+GitHub deposunun içeriğinden bir kapsayıcı görüntüsü oluşturmak için aşağıdaki Azure CLı komutunu yürütün. Varsayılan olarak, ACR görevleri, `ImagePushed` olayı üreten, başarıyla oluşturulmuş bir görüntüyü Kayıt defterinize otomatik olarak gönderir.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-You should see output similar to the following while ACR Tasks builds and then pushes your image. The following sample output has been truncated for brevity.
+ACR görevleri görüntünüzü oluşturup daha sonra iletirken aşağıdakine benzer bir çıktı görmeniz gerekir. Aşağıdaki örnek çıktı, breçekimi için kesildi.
 
 ```console
 $ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -164,13 +164,13 @@ Step 1/5 : FROM node:9-alpine
 ...
 ```
 
-To verify that the built image is in your registry, execute the following command to view the tags in the "myimage" repository:
+Oluşturulan görüntünün kayıt defterinizde olduğunu doğrulamak için, "MyImage" deposundaki etiketleri görüntülemek için aşağıdaki komutu yürütün:
 
 ```azurecli-interactive
 az acr repository show-tags --name $ACR_NAME --repository myimage
 ```
 
-The "v1" tag of the image you built should appear in the output, similar to the following:
+Oluşturduğunuz görüntünün "v1" etiketinin çıktıda görünmesi gerekir, aşağıdakine benzer:
 
 ```console
 $ az acr repository show-tags --name $ACR_NAME --repository myimage
@@ -179,15 +179,15 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 ]
 ```
 
-### <a name="delete-the-image"></a>Delete the image
+### <a name="delete-the-image"></a>Görüntüyü silme
 
-Now, generate an `ImageDeleted` event by deleting the image with the [az acr repository delete][az-acr-repository-delete] command:
+Şimdi, [az ACR Repository Delete][az-acr-repository-delete] komutuyla görüntüyü silerek `ImageDeleted` bir olay oluşturun:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
 ```
 
-You should see output similar to the following, asking for confirmation to delete the manifest and associated images:
+Aşağıdakine benzer bir çıktı görmeniz ve bildirimi ve ilişkili görüntüleri silmeyi onaylamanız istenir:
 
 ```console
 $ az acr repository delete --name $ACR_NAME --image myimage:v1
@@ -195,38 +195,38 @@ This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a5
 Are you sure you want to continue? (y/n): y
 ```
 
-## <a name="view-registry-events"></a>View registry events
+## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüleme
 
-You've now pushed an image to your registry and then deleted it. Navigate to your Event Grid Viewer web app, and you should see both `ImageDeleted` and `ImagePushed` events. You might also see a subscription validation event generated by executing the command in the [Subscribe to registry events](#subscribe-to-registry-events) section.
+Şimdi Kayıt defterinize bir görüntü gönderdi ve sonra dosyayı silmiş oldunuz. Event Grid Viewer Web uygulamanıza gidin ve hem `ImageDeleted` hem de `ImagePushed` olaylarını görmeniz gerekir. Ayrıca, [kayıt defteri olaylarına abone ol](#subscribe-to-registry-events) bölümünde komutunu yürüterek oluşturulan bir abonelik doğrulama olayı da görebilirsiniz.
 
-The following screenshot shows the sample app with the three events, and the `ImageDeleted` event is expanded to show its details.
+Aşağıdaki ekran görüntüsünde, üç olayla örnek uygulama gösterilmektedir ve `ImageDeleted` olayı, ayrıntılarını göstermek üzere genişletilir.
 
-![Web browser showing the sample app with ImagePushed and ImageDeleted events][sample-app-03]
+![Imageitilmiş ve ımagedeleted olayları ile örnek uygulamayı gösteren Web tarayıcısı][sample-app-03]
 
-Tebrikler! If you see the `ImagePushed` and `ImageDeleted` events, your registry is sending events to Event Grid, and Event Grid is forwarding those events to your web app endpoint.
+Tebrikler! `ImagePushed` ve `ImageDeleted` olaylarını görürseniz, kayıt defteriniz Event Grid olayları gönderir ve Event Grid bu olayları Web uygulaması uç noktanıza iletmektedir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Once you're done with the resources you created in this quickstart, you can delete them all with the following Azure CLI command. When you delete a resource group, all of the resources it contains are permanently deleted.
+Bu hızlı başlangıçta oluşturduğunuz kaynaklarla işiniz bittiğinde, bunları aşağıdaki Azure CLı komutuyla silebilirsiniz. Bir kaynak grubunu sildiğinizde, içerdiği tüm kaynaklar kalıcı olarak silinir.
 
-**WARNING**: This operation is irreversible. Be sure you no longer need any of the resources in the group before running the command.
+**Uyarı**: Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki herhangi bir kaynağa artık ihtiyacınız olmadığından emin olun.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
 ```
 
-## <a name="event-grid-event-schema"></a>Event Grid event schema
+## <a name="event-grid-event-schema"></a>Event Grid olay şeması
 
-You can find the Azure Container Registry event message schema reference in the Event Grid documentation:
+Azure Container Registry olay iletisi şeması başvurusunu Event Grid belgelerinde bulabilirsiniz:
 
-[Azure Event Grid event schema for Container Registry](../event-grid/event-schema-container-registry.md)
+[Container Registry için Azure Event Grid olay şeması](../event-grid/event-schema-container-registry.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you deployed a container registry, built an image with ACR Tasks, deleted it, and have consumed your registry's events from Event Grid with a sample application. Next, move on to the ACR Tasks tutorial to learn more about building container images in the cloud, including automated builds on base image update:
+Bu hızlı başlangıçta bir kapsayıcı kayıt defteri dağıttığınızda, ACR görevleri ile bir görüntü oluşturup, silmiş ve kayıt defterinizin olaylarını örnek bir uygulamayla Event Grid kullandınız. Ardından, bulutta kapsayıcı görüntüleri oluşturma hakkında daha fazla bilgi edinmek için ACR görevleri öğreticisine geçin ve temel görüntü güncelleştirmesinde otomatik derlemeler de dahildir:
 
 > [!div class="nextstepaction"]
-> [Build container images in the cloud with ACR Tasks](container-registry-tutorial-quick-task.md)
+> [ACR görevlerle bulutta kapsayıcı görüntüleri oluşturun](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

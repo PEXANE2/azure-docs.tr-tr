@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and the Azure portal
-description: In this tutorial, learn how to grant a user access to Azure resources using role-based access control (RBAC) in the Azure portal.
+title: Öğretici-RBAC ve Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme
+description: Bu öğreticide, Azure portal rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -20,37 +20,37 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419655"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Öğretici: RBAC ve Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
-[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. In this tutorial, you grant a user access to create and manage virtual machines in a resource group.
+[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide, bir kaynak grubundaki sanal makineleri oluşturmak ve yönetmek için bir kullanıcı erişimi verirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Grant access for a user at a resource group scope
+> * Bir kaynak grubu kapsamındaki bir kullanıcı için erişim izni verme
 > * Erişimi kaldırma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. In the navigation list, click **Resource groups**.
+1. Gezinti listesinde, **kaynak grupları**' na tıklayın.
 
-1. Click **Add** to open the **Resource group** blade.
+1. **Kaynak grubu** dikey penceresini açmak için **Ekle** ' ye tıklayın.
 
    ![Yeni kaynak grubu ekleme](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. For **Resource group name**, enter **rbac-resource-group**.
+1. **Kaynak grubu adı**için **RBAC-Resource-Group**yazın.
 
 1. Bir abonelik ve bir konum seçin.
 
-1. Click **Create** to create the resource group.
+1. Kaynak grubunu oluşturmak için **Oluştur** ' a tıklayın.
 
-1. Click **Refresh** to refresh the list of resource groups.
+1. Kaynak grupları listesini yenilemek için **Yenile** ' ye tıklayın.
 
    Yeni kaynak grubu kaynak grupları listenizde görünür.
 
@@ -60,29 +60,29 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir.
 
-1. In the list of **Resource groups**, click the new **rbac-resource-group** resource group.
+1. **Kaynak grupları**listesinde, yeni **RBAC-kaynak grubu** kaynak grubu ' na tıklayın.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-1. Click the **Role assignments** tab to see the current list of role assignments.
+1. Rol atamalarının geçerli listesini görmek için **rol atamaları** sekmesine tıklayın.
 
    ![Kaynak grubu için Erişim denetimi (IAM) dikey penceresi](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Click **Add** > **Add role assignment** to open the Add role assignment pane.
+1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
 
-   If you don't have permissions to assign roles, the Add role assignment option will be disabled.
+   Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
-   ![Add menu](./media/role-assignments-portal/add-menu.png)
+   ![Menü ekle](./media/role-assignments-portal/add-menu.png)
 
-   ![Add role assignment pane](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+   ![Rol atama bölmesi Ekle](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
 1. Aşağı açılan **Rol** listesinden **Sanal Makine Katılımcısı**'nı seçin.
 
 1. **Seç** listesinde kendinizi ve başka bir kullanıcıyı seçin.
 
-1. Click **Save** to create the role assignment.
+1. Rol atamasını oluşturmak için **Kaydet** ' e tıklayın.
 
-   After a few moments, the user is assigned the Virtual Machine Contributor role at the rbac-resource-group resource group scope.
+   Birkaç dakika sonra, Kullanıcı sanal makine katılımcısı rolü RBAC-kaynak grubu kaynak grubu kapsamında atanır.
 
    ![Sanal Makine Katılımcısı rolü ataması](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
@@ -90,29 +90,29 @@ RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir.
 
 RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir.
 
-1. In the list of role assignments, add a checkmark next to the user with the Virtual Machine Contributor role.
+1. Rol atamaları listesinde, sanal makine katılımcısı rolüne sahip kullanıcının yanına bir onay işareti ekleyin.
 
-1. Click **Remove**.
+1. **Kaldır**' a tıklayın.
 
    ![Rol atamasını kaldırma iletisi](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. In the remove role assignment message that appears, click **Yes**.
+1. Görüntülenen rol atamasını Kaldır iletisinde **Evet**' e tıklayın.
 
 ## <a name="clean-up"></a>Temizleme
 
-1. In the navigation list, click **Resource groups**.
+1. Gezinti listesinde, **kaynak grupları**' na tıklayın.
 
-1. Click **rbac-resource-group** to open the resource group.
+1. Kaynak grubunu açmak için **RBAC-kaynak grubu** ' na tıklayın.
 
-1. Click **Delete resource group** to delete the resource group.
+1. Kaynak grubunu silmek için **kaynak grubunu sil** ' e tıklayın.
 
    ![Kaynak grubunu silme](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
-1. On the **Are you sure you want to delete** blade, type the resource group name: **rbac-resource-group**.
+1. Dikey pencereyi **silmek istediğinizden emin misiniz** , kaynak grubu adı: **RBAC-Resource-Group**yazın.
 
-1. Click **Delete** to delete the resource group.
+1. Kaynak grubunu silmek için **Sil** ' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme](tutorial-role-assignments-user-powershell.md)

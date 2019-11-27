@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Deploy a preview environment and spatial graph - Azure Digital Twins| Microsoft Docs'
-description: Learn how to deploy your instance of Azure Digital Twins and configure your spatial resources by using the steps in this tutorial.
+title: 'Öğretici: Önizleme ortamı ve uzamsal grafik dağıtma-Azure dijital TWINS | Microsoft Docs'
+description: Azure dijital İkizlerini örneğinizi dağıtma ve bu öğreticideki adımları kullanarak uzamsal kaynaklarınızı yapılandırmak hakkında bilgi edinin.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -16,76 +16,76 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383019"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Deploy Azure Digital Twins Preview and configure a spatial graph
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital TWINS önizlemesi dağıtma ve uzamsal bir grafik yapılandırma
 
-You can use the Azure Digital Twins Preview service to bring together people, places, and devices in a coherent spatial system. This series of tutorials demonstrates how to use Azure Digital Twins to detect room occupancy with optimal conditions of temperature and air quality. 
+Azure Digital TWINS önizleme hizmetini kullanarak, kişileri, yerleri ve cihazları tutarlı bir uzamsal sisteme bir araya getirebilirsiniz. Bu öğretici serisinde, Azure dijital İkizlerini odası doluluk sıcaklık ve Uzaktan kalite en uygun koşullarla algılamak için nasıl kullanılacağını gösterir. 
 
-These tutorials will walk you through a .NET console application to build a scenario of an office building. The building has multiple floors and rooms within each floor. The rooms contain devices with attached sensors that detect motion, ambient temperature, and air quality. 
+Bu öğreticiler bir ofis binasındaki bir senaryo oluşturmak için bir .NET konsol uygulaması size yol gösterir. Yapı, her zemin içinde birden çok Katlar ve odaları sahiptir. Odaları ile ortam sıcaklığı, hareket algılayan ve kalite hava, bağlı sensörlerden cihazları içerir. 
 
-You'll learn how to replicate the physical areas and entities in the building as digital objects by using the Azure Digital Twins service. You'll simulate device events by using another console application. Then, you'll learn how to monitor the events that come from these physical areas and entities in near real time. 
+Azure dijital İkizlerini hizmetini kullanarak varlıkları dijital nesneleri oluşturma ve fiziksel alanları çoğaltmak öğreneceksiniz. Başka bir konsol uygulaması kullanarak cihaz olaylarının benzetimini yapma. Ardından, bu fiziksel alanları ve varlıkları neredeyse gerçek zamanlı olarak gelen olayları izlemek nasıl öğreneceksiniz. 
 
-Ofis yöneticileri bu tür bilgileri kullanarak bu binada görevli bir çalışanın en uygun koşullara sahip toplantı odalarını ayırması konusunda yardımcı olabilir. An office facilities manager can use your setup to get usage trends of the rooms, and to monitor working conditions for maintenance purposes.
+Ofis yöneticileri bu tür bilgileri kullanarak bu binada görevli bir çalışanın en uygun koşullara sahip toplantı odalarını ayırması konusunda yardımcı olabilir. Bir office tesis Yöneticisi kurulumunuzu odaları kullanım eğilimlerini almak ve bakım amacıyla çalışma koşullarına izlemek için kullanabilirsiniz.
 
 Bu serinin ilk öğreticisinde aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Deploy Digital Twins.
-> * Grant permissions to your app.
-> * Modify a Digital Twins sample app.
-> * Provision your building.
+> * Dijital İkizlerini dağıtın.
+> * Uygulamanıza izinler verir.
+> * Dijital İkizlerini örnek bir uygulama değiştirin.
+> * Yapı sağlayın.
 
 Bu öğreticilerde [uygun odaları bulma hızlı başlangıcındaki](quickstart-view-occupancy-dotnet.md) örnekler kullanılmakta, kavramlar daha ayrıntılı bir şekilde ele alınmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- The .NET Core SDK. The Azure Digital Twins samples used in these tutorials are written in C#. Make sure to install [.NET Core SDK version 2.1.403 or later](https://www.microsoft.com/net/download) on your development machine to build and run the sample. Check that the right version is installed on your machine by running `dotnet --version` in a command window.
+- .NET Core SDK. Aşağıdaki öğreticilerde kullanılan dijital İkizlerini Azure örnekleri yazılan C#. Örneği derlemek ve çalıştırmak için geliştirme makinenize [.NET Core SDK sürüm 2.1.403 veya sonraki bir sürümü](https://www.microsoft.com/net/download) yüklediğinizden emin olun. Bir komut penceresinde `dotnet --version` çalıştırarak, makinenizde doğru sürümün yüklü olduğundan emin olun.
 
 - Örnek kodu incelemek için [Visual Studio Code](https://code.visualstudio.com/). 
 
 ## <a name="deploy-digital-twins"></a>Digital Twins'i dağıtma
 
-Use the steps in this section to create a new instance of the Azure Digital Twins service. Only one instance can be created per subscription. Skip to the next section if you already have one running. 
+Azure dijital İkizlerini hizmetinin yeni bir örneğini oluşturmak için bu bölümdeki adımları kullanın. Abonelik başına yalnızca bir örneği oluşturulabilir. Bir çalıştırma zaten varsa, sonraki bölüme atlayın. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="grant-permissions-to-your-app"></a>Uygulamanıza izin verme
 
-Digital Twins uses [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) to control [read/write access](../active-directory/develop/v1-permissions-and-consent.md) to the service. Any application that needs to connect with your Digital Twins instance must be registered with Azure AD. Bu bölümde örnek uygulamanızı kaydetme adımları gösterilmektedir.
+Dijital TWINS, hizmete [okuma/yazma erişimini](../active-directory/develop/v1-permissions-and-consent.md) denetlemek için [Azure ACTIVE DIRECTORY](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) kullanır. Dijital İkizlerini Örneğinize bağlanmak için gereken herhangi bir uygulamadan Azure AD'ye kayıtlı olması gerekir. Bu bölümde örnek uygulamanızı kaydetme adımları gösterilmektedir.
 
-If you already have an app registration, you can reuse it for your sample. Ancak bu bölümdeki adımları izleyerek uygulama kaydınızın doğru yapılandırmaya sahip olduğundan emin olun.
+Bir uygulama kaydı zaten varsa, Örneğiniz için yeniden kullanabilirsiniz. Ancak bu bölümdeki adımları izleyerek uygulama kaydınızın doğru yapılandırmaya sahip olduğundan emin olun.
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
-## <a name="configure-the-digital-twins-sample"></a>Configure the Digital Twins sample
+## <a name="configure-the-digital-twins-sample"></a>Dijital İkizlerini örnek yapılandırma
 
-This section walks you through an Azure Digital Twins application that communicates with the [Digital Twins REST APIs](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index). 
+Bu bölümde, [dijital TWıNS REST API 'leri](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index)ile iletişim kuran bir Azure dijital TWINS uygulaması adım adım açıklanmaktadır. 
 
 ### <a name="download-the-sample"></a>Örneği indirme
 
 [Uygun odaları bulma hızlı başlangıcı](quickstart-view-occupancy-dotnet.md) için bu örnekleri daha önce indirdiyseniz bu adımları atlayabilirsiniz.
 
-1. Download the [Digital Twins .NET samples](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
-2. Extract the contents of the zip folder on your machine.
+1. [Dijital TWINS .net örneklerini](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)indirin.
+2. Makinenizde posta klasörünün içeriğini ayıklayın.
 
 ### <a name="explore-the-sample"></a>Örneği keşfetme
 
-In the extracted sample folder, open the file **digital-twins-samples-csharp\digital-twins-samples.code-workspace** in Visual Studio Code. Bu dosyada iki proje bulunur:
+Ayıklanan örnek klasöründe, **Digital-Twins-Samples-csharp\digital-Twins-Samples.Code-Workspace** dosyasını Visual Studio Code açın. Bu dosyada iki proje bulunur:
 
-* You can use the provisioning sample **occupancy-quickstart** to configure and provision a [spatial intelligence graph](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). This graph is the digitized image of your physical spaces and the resources in them. It uses an [object model](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), which defines objects for a smart building. For a complete list of Digital Twins objects and REST APIs, visit [this REST API documentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) or the Management API URL that was created for [your instance](#deploy-digital-twins).
+* Bir [uzamsal zeka grafiğini](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)yapılandırmak ve sağlamak için örnek **ön hızlı başlangıç** sağlama örneğini kullanabilirsiniz. Bu grafik, fiziksel alanları ve bunları kaynakları sayısal görüntüsüdür. Akıllı bir bina için nesneleri tanımlayan bir [nesne modeli](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)kullanır. Dijital TWINS nesnelerinin ve REST API 'lerinin tüm listesi için, [bu REST API belgelerini](https://docs.westcentralus.azuresmartspaces.net/management/swagger) veya [örneğiniz](#deploy-digital-twins)için oluşturulmuş yönetim API URL 'sini ziyaret edin.
 
-   To explore the sample to see how it communicates with your Digital Twins instance, you can start with the **src\actions** folder. The files in this folder implement the commands that you'll use in these tutorials:
-    - The **provisionSample.cs** file shows how to provision your spatial graph.
-    - The **getSpaces.cs** file gets information about the provisioned spaces.
-    - The **getAvailableAndFreshSpaces.cs** file gets the results of a custom function called a user-defined function.
-    - The **createEndpoints.cs** file creates endpoints to interact with other services.
+   Dijital TWINS örneğiniz ile nasıl iletişim kuracağını görmek üzere örneği araştırmak için **src\actions** klasörüyle başlayabilirsiniz. Bu klasördeki dosyalar bu öğreticilerde kullanacağınız komutları uygulayın:
+    - **ProvisionSample.cs** dosyası, uzamsal grafınızı nasıl sağlayacağınızı gösterir.
+    - **GetSpaces.cs** dosyası, sağlanan alanlarla ilgili bilgileri alır.
+    - **GetAvailableAndFreshSpaces.cs** dosyası, Kullanıcı tanımlı işlev olarak adlandırılan özel bir işlevin sonuçlarını alır.
+    - **CreateEndpoints.cs** dosyası diğer hizmetlerle etkileşimde bulunmak için uç noktalar oluşturur.
 
-* The simulation sample **device-connectivity** simulates sensor data and sends it to the IoT hub that's provisioned for your Digital Twins instance. You'll use this sample in [the next tutorial after you provision your spatial graph](tutorial-facilities-udf.md#simulate-sensor-data). The sensor and device identifiers that you use to configure this sample should be the same as what you'll use to provision your graph.
+* Simülasyon örneği **cihaz bağlantısı** , algılayıcı verilerinin benzetimini yapar ve bunu dijital TWINS örneğiniz Için sağlanan IoT Hub 'ına gönderir. Bu örneği [, uzamsal grafınızı sağladığınızda sonraki öğreticide](tutorial-facilities-udf.md#simulate-sensor-data)kullanacaksınız. Bu örneği yapılandırmak için kullandığınız sensör ve cihaz tanımlayıcıları grafınızı sağlamak için kullanacaksınız ile aynı olması gerekir.
 
 ### <a name="configure-the-provisioning-sample"></a>Sağlama örneğini yapılandırma
 
-1. Open a command window and go to the downloaded sample. Şu komutu çalıştırın:
+1. Bir komut penceresi açın ve indirilen örneğe gidin. Şu komutu çalıştırın:
 
     ```cmd/sh
     cd occupancy-quickstart/src
@@ -97,22 +97,22 @@ In the extracted sample folder, open the file **digital-twins-samples-csharp\dig
     dotnet restore
     ```
 
-1. In Visual Studio Code, open the [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) file in the **occupancy-quickstart** project. Update the following values:
-   * **ClientId**: Enter the application ID of your Azure AD app registration. You noted this ID in the section where you [set app permissions](#grant-permissions-to-your-app).
-   * **Tenant**: Enter the directory ID of your [Azure AD tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). You also noted this ID in the section where you [set app permissions](#grant-permissions-to-your-app).
-   * **BaseUrl**: Digital Twins örneğinizin URL'sini girin. To get this URL, replace the placeholders in this URL with values for your instance: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. You can also get this URL by modifying the Management API URL from [the deployment section](#deploy-digital-twins). Replace **swagger/** with **api/v1.0/** .
+1. Visual Studio Code, **is-QuickStart** projesinde [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) dosyasını açın. Aşağıdaki değerleri güncelleştirin:
+   * **ClientID**: Azure AD uygulama kaydlarınızın uygulama kimliğini girin. [Uygulama izinlerini ayarladığınız](#grant-permissions-to-your-app)bölümde bu kimliği not etmiştiniz.
+   * **Kiracı**: [Azure AD KIRACıNıZıN](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)dizin kimliğini girin. Ayrıca, bu KIMLIĞI [uygulama izinlerini ayarladığınız](#grant-permissions-to-your-app)bölümde de not etmiştiniz.
+   * **BaseUrl**: Digital Twins örneğinizin URL'sini girin. Bu URL 'YI almak için, bu URL 'deki yer tutucuları örneğinizin değerleriyle değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. [Dağıtım bölümünde](#deploy-digital-twins)yönetim API URL 'sini değiştirerek bu URL 'yi de alabilirsiniz. **Swagger/** , **api/v 1.0/** ile değiştirin.
 
-1. See a list of Digital Twins features that you can explore by using the sample. Şu komutu çalıştırın:
+1. Örnek kullanarak keşfedebilirsiniz dijital İkizlerini özelliklerin bir listesi bakın. Şu komutu çalıştırın:
 
     ```cmd/sh
     dotnet run
     ```
 
-## <a name="understand-the-provisioning-process"></a>Understand the provisioning process
+## <a name="understand-the-provisioning-process"></a>Sağlama işlemini anlama
 
 Bu bölümde örnekte binanın uzamsal grafının nasıl sağlandığı gösterilmektedir.
 
-In Visual Studio Code, browse to the **occupancy-quickstart\src\actions** folder and open the file **provisionSample.cs**. Aşağıdaki işleve dikkat edin:
+Visual Studio Code ' de **Occupancy-quickstart\src\actions** klasörüne gidin ve **provisionSample.cs**dosyasını açın. Aşağıdaki işleve dikkat edin:
 
 ```csharp
 public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(HttpClient httpClient, ILogger logger)
@@ -132,51 +132,51 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-This function uses [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) in the same folder. Open this file, and note the hierarchy of an office building: *Venue*, *Floor*, *Area*, and *Rooms*. Bu fiziksel alanların herhangi birinde *cihazlar* ve *sensörler* bulunabilir. Each entry has a predefined `type`&mdash;for example, Floor, Room.
+Bu işlev, aynı klasörde [Provisionsample. YAML](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 'yi kullanır. Bu dosyayı açın ve Office oluşturma: *mekan*, *Floor*, *Area*ve *Odalar*hiyerarşisini göz önünde edin. Bu fiziksel alanların herhangi birinde *cihazlar* ve *sensörler* bulunabilir. Her giriş için önceden tanımlanmış bir `type`&mdash;(örneğin, kat, oda) vardır.
 
-The sample **yaml** file shows a spatial graph that uses the `Default` Digital Twins object model. This model provides generic names for most types. Generic names are sufficient for a building. Examples are Temperature for SensorDataType, and Map for SpaceBlobType. An example space type is Room with subtypes FocusRoom, ConferenceRoom, and so on. 
+**YAML** dosyası örnek, `Default` Digital TWINS nesne modelini kullanan bir uzamsal grafiği gösterir. Bu model türlerinin çoğu için genel adlar sağlar. Genel adlar bir yapı için yeterlidir. Örnek SensorDataType için sıcaklık ve için SpaceBlobType eşleyin. Bir örnek alanı subtypes FocusRoom oda, ConferenceRoom ve benzeri türüdür. 
 
-Fabrika gibi farklı bir mekan için uzamsal graf oluşturmanız gerekmesi durumunda başka bir nesne modeline ihtiyaç duyabilirsiniz. You can find out which models are available to use by running the command `dotnet run GetOntologies` on the command line for the provisioning sample. 
+Fabrika gibi farklı bir mekan için uzamsal graf oluşturmanız gerekmesi durumunda başka bir nesne modeline ihtiyaç duyabilirsiniz. Sağlama örneği için komut satırında `dotnet run GetOntologies` komutunu çalıştırarak hangi modellerin kullanılabilir olduğunu bulabilirsiniz. 
 
-For more information on spatial graphs and object models, read [Understanding Digital Twins object models and spatial intelligence graph](concepts-objectmodel-spatialgraph.md).
+Uzamsal grafikler ve nesne modelleri hakkında daha fazla bilgi için bkz. [dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama](concepts-objectmodel-spatialgraph.md).
 
-### <a name="modify-the-sample-spatial-graph"></a>Modify the sample spatial graph
+### <a name="modify-the-sample-spatial-graph"></a>Örnek uzamsal grafiğe değiştirme
 
-The **provisionSample.yaml** file contains the following nodes:
+**Provisionsample. YAML** dosyası aşağıdaki düğümleri içerir:
 
-- **resources**: The `resources` node creates an Azure IoT Hub resource to communicate with the devices in your setup. An IoT hub at the root node of your graph can communicate with all the devices and sensors in your graph.  
+- **kaynaklar**: `resources` düğümü, kurulumlarınızdaki cihazlarla iletişim kurmak Için bir Azure IoT Hub kaynağı oluşturur. IOT hub'ı, grafiğin kök düğümde, tüm cihazlardan ve sensörlerden grafınızı ile iletişim kurabilir.  
 
-- **spaces**: Digital Twins nesne modelinde `spaces`, fiziksel konumları temsil eder. Each space has a `Type`&mdash;for example, Region, Venue, or Customer&mdash;and a friendly `Name`. Spaces can belong to other spaces, creating a hierarchical structure. The provisionSample.yaml file has a spatial graph of an imaginary building. Note the logical nesting of spaces of type `Floor` within `Venue`, `Area` in a floor, and `Room` nodes in an area. 
+- **spaces**: Digital Twins nesne modelinde `spaces`, fiziksel konumları temsil eder. Her bir alanda `Type`&mdash;, bölge, mekan veya müşteri&mdash;ve kolay bir `Name`bulunur. Alanları, hiyerarşik bir yapıyı başka alanları için ait olabilir. Sanal bir yapı uzamsal grafiğini provisionSample.yaml dosyası vardır. `Floor` türündeki boşlukların mantıksal iç içe geçme `Venue`, bir zemin içinde `Area` ve bir alandaki `Room` düğümlere göz önünde bulundurmayın. 
 
-- **devices**: Alanlarda, bir dizi sensörü yöneten fiziksel veya sanal varlıklar olan `devices` öğeleri bulunabilir. For example, a device might be a user’s phone, a Raspberry Pi sensor pod, or a gateway. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
+- **devices**: Alanlarda, bir dizi sensörü yöneten fiziksel veya sanal varlıklar olan `devices` öğeleri bulunabilir. Örneğin, bir cihaz bir kullanıcıya ait telefon, Raspberry Pi algılayıcı pod veya bir ağ geçidi olabilir. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
 
-- **sensors**: A device can contain multiple `sensors`. They can detect and record physical changes like temperature, motion, and battery level. Each sensor node is uniquely identified by a `hardwareId`, hardcoded here. For an actual application, replace these by using the unique identifiers of the sensors in your setup. The provisionSample.yaml file has two sensors to record *Motion* and *CarbonDioxide*. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Note that these are provided in provisionSample.yaml as commented-out lines. You can uncomment them by removing the `#` character in the front of each line. 
+- **Algılayıcılar**: bir cihazda birden çok `sensors`bulunabilir. Bunlar algılayabilir ve sıcaklık, hareket ve pil düzeyi kayıt fiziksel değişiklikleri ister. Her sensör düğümü, burada sabit kodlanmış `hardwareId` değeriyle benzersiz olarak tanımlanmıştır. Gerçek bir uygulama için bu kurulumda sensörlerden öğesinin benzersiz tanımlayıcıları kullanarak değiştirin. ProvisionSample. YAML dosyasının *hareketi* ve *Carbondioksit*kayıt işlemini yapmak için iki sensöri vardır. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Bunlar provisionSample.yaml içinde derleme dışı bırakılan satır olarak verildiğini unutmayın. Her satırın önündeki `#` karakterini kaldırarak bunların açıklamasını kaldırabilirsiniz. 
 
     ```yaml
             - dataType: Temperature
               hardwareId: SAMPLE_SENSOR_TEMPERATURE
     ```
     > [!NOTE]
-    > Make sure the `dataType` and `hardwareId` keys align with the statements above this snippet. Ayrıca düzenleyicinizin boşlukları sekmelerle değiştirmediğinden de emin olun. 
+    > `dataType` ve `hardwareId` anahtarlarının Bu kod parçacığının üzerindeki deyimlerle hizalanmasına dikkat edin. Ayrıca düzenleyicinizin boşlukları sekmelerle değiştirmediğinden de emin olun. 
 
-Save and close the provisionSample.yaml file. In the next tutorial, you'll add more information to this file, and then provision your Azure Digital Twins sample building.
+ProvisionSample.yaml dosyasını kaydedip kapatın. Sonraki öğreticide, daha fazla bilgi bu dosyaya ekleyin ve ardından, Azure dijital İkizlerini örnek yapı sağlamak.
 
 > [!TIP]
-> You can view and modify your spatial graph using the [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
+> [Azure dijital TWINS grafik Görüntüleyicisi 'ni](https://github.com/Azure/azure-digital-twins-graph-viewer)kullanarak uzamsal grafınızı görüntüleyebilir ve değiştirebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you want to stop exploring Azure Digital Twins at this point, feel free to delete resources created in this tutorial:
+Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu öğreticide oluşturulan kaynakları silmek çekinmeyin:
 
-1. From the left menu in the [Azure portal](https://portal.azure.com), select **All resources**, select your Digital Twins resource group, and select **Delete**.
+1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
 
     > [!TIP]
-    > If you experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
+    > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
 
-1. If necessary, delete the sample application on your work machine.
+1. Gerekirse, iş makinenizde örnek uygulamayı silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn how to implement a custom logic to monitor conditions in your sample building, go to the next tutorial in the series: 
+Koşullar oluşturma Örneğinizdeki izlemek için özel bir mantıksal uygulama hakkında bilgi edinmek için serideki sonraki öğretici gidin: 
 > [!div class="nextstepaction"]
 > [Öğretici: Binanızı sağlama ve çalışma koşullarını izleme](tutorial-facilities-udf.md)

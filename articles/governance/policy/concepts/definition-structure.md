@@ -20,9 +20,9 @@ Kuralları tanımlayarak daha kolayca kaynaklarınızı yönetmek ve maliyetleri
 Bir ilke tanımı oluşturmak için JSON kullanın. İlke tanımı yönelik öğeleri içerir:
 
 - mode
-- parametreler
+- parameters
 - Görünen ad
-- açıklama
+- description
 - ilke kuralı
   - mantıksal değerlendirme
   - Etkin
@@ -69,14 +69,14 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 ### <a name="resource-manager-modes"></a>Kaynak Yöneticisi modları
 
-**Modu** hangi kaynak türlerinin bir ilke değerlendirileceğini belirler. İlişkin desteklenen modları şunlardır:
+**Mod** , ilke için hangi kaynak türlerinin değerlendirileceğini belirler. İlişkin desteklenen modları şunlardır:
 
-- `all`: kaynak grupları ve tüm kaynak türleri değerlendirin
-- `indexed`: etiketlerini ve konumunu destekleyen kaynak türleri yalnızca değerlendirme
+- `all`: kaynak gruplarını ve tüm kaynak türlerini değerlendir
+- `indexed`: yalnızca etiketleri ve konumu destekleyen kaynak türlerini değerlendir
 
-Ayarlamanızı öneririz **modu** için `all` çoğu durumda. Portalı kullanarak oluşturulan tüm ilke tanımlarını `all` modu. PowerShell veya Azure CLI kullanıyorsanız, belirtebilmeniz için **modu** parametresi el ile. İlke tanımı içermiyorsa bir **modu** değeri, varsayılan olarak için `all` Azure PowerShell ve çok `null` Azure clı'daki. A `null` modu kullanarak aynı olup `indexed` geriye dönük uyumluluğunu desteklemek için.
+Çoğu durumda **modu** `all` ayarlamanızı öneririz. Portal üzerinden oluşturulan tüm ilke tanımları `all` modunu kullanır. PowerShell veya Azure CLı kullanıyorsanız, **mod** parametresini el ile belirtebilirsiniz. İlke tanımı bir **mod** değeri içermiyorsa, Azure PowerShell ve Azure clı 'de `null` `all` varsayılan olarak olur. `null` mod, geriye dönük uyumluluğu desteklemek için `indexed` kullanmayla aynıdır.
 
-`indexed` etiketleri veya konumları zorunlu ilkeleri oluştururken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları**. Konum veya bir kaynak grubu etiketleri takım politikaları ayarlamalıdır **modu** için `all` ve özellikle hedef `Microsoft.Resources/subscriptions/resourceGroups` türü. Bir örnek için bkz. [kaynak grubu etiketleri zorunlu](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/tag-support.md).
+Etiketler veya konumlar uygulayan ilkeler oluşturulurken `indexed` kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak gruplarıdır**. Bir kaynak grubunda konum veya etiket uygulayan ilkelerin **modu** `all` olarak ayarlaması ve özel olarak `Microsoft.Resources/subscriptions/resourceGroups` türünü hedeflemesi gerekir. Bir örnek için bkz. [kaynak grubu etiketlerini zorlama](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/tag-support.md).
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />kaynak sağlayıcısı modları (Önizleme)
 
@@ -92,7 +92,7 @@ Ayarlamanızı öneririz **modu** için `all` çoğu durumda. Portalı kullanara
 
 ## <a name="parameters"></a>Parametreler
 
-Parametreleri, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Düşünme – form üzerinde alanları gibi parametrelerin `name`, `address`, `city`, `state`. Bu parametreleri her zaman aynı kalır, tek tek formu dolduran üzerinde tabanlı ancak bunların değerlerini değiştirin.
+Parametreleri, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Parametreleri, `name`, `address`, `city``state`alanları gibi düşünün. Bu parametreleri her zaman aynı kalır, tek tek formu dolduran üzerinde tabanlı ancak bunların değerlerini değiştirin.
 Parametreler, ilkeleri oluştururken aynı şekilde çalışır. İlke tanımında parametreler ekleyerek, farklı değerler kullanarak farklı senaryolar için bu ilkeyi yeniden kullanabilirsiniz.
 
 > [!NOTE]
@@ -149,7 +149,7 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **allow
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` özelliği içinde, Azure portal içinde çok seçimli bir seçenek listesi sağlamak için **Strongtype** kullanabilirsiniz. İzin verilen değerler için **strongType** şu anda içerir:
+`metadata` özelliği içinde, Azure portal içinde çok seçimli bir seçenek listesi sağlamak için **Strongtype** kullanabilirsiniz. **Strongtype** için izin verilen değerler şu anda şunları içerir:
 
 - `location`
 - `resourceTypes`
@@ -169,18 +169,18 @@ Oluşturulurken bir girişim veya tanımını konumu belirtmek gereklidir. Tanı
 
 Tanım konumu c: ise
 
-- **Abonelik** - yalnızca bu Abonelikteki kaynakların ilke atanabilir.
-- **Yönetim grubu** - yalnızca alt Yönetim grupları ve alt abonelik içindeki kaynaklara ilke atanabilir. Konum, ilke tanımı birden fazla aboneliğe uygulayın planlıyorsanız, bu Aboneliklerdeki içeren yönetim grubu olması gerekir.
+- Yalnızca **abonelik** kapsamındaki kaynaklara ilke atanabilir.
+- **Yönetim grubu** -yalnızca alt yönetim grupları ve alt abonelikler içindeki kaynaklara ilke atanabilir. Konum, ilke tanımı birden fazla aboneliğe uygulayın planlıyorsanız, bu Aboneliklerdeki içeren yönetim grubu olması gerekir.
 
 ## <a name="display-name-and-description"></a>Görünen ad ve açıklama
 
-Kullandığınız **displayName** ve **açıklama** ilke tanımını ve kullanıldığında için bağlam sağlar. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
+**DisplayName** ve **Description** kullanarak ilke tanımını tanımlayabilir ve ne zaman kullanılacağı için bağlam sağlayabilirsiniz. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
 
 ## <a name="policy-rule"></a>İlke kuralı
 
-İlke kuralı oluşan **varsa** ve **ardından** engeller. İçinde **varsa** bloğu ne zaman ilkelerin hiçbiri uygulanmaz belirten bir veya daha fazla koşulları tanımlayın. Senaryo ilkesi için tam olarak tanımlamak için bu koşullar için mantıksal işleçler uygulayabilirsiniz.
+İlke kuralı **IF** ve **then** bloklarından oluşur. **IF** bloğunda, ilkenin ne zaman uygulanacağını belirten bir veya daha fazla koşul tanımlarsınız. Senaryo ilkesi için tam olarak tanımlamak için bu koşullar için mantıksal işleçler uygulayabilirsiniz.
 
-İçinde **ardından** bloğu gerçekleşen etkisi tanımladığınız zaman **varsa** koşullar yerine.
+**Sonra** bloğunda, **IF** koşulları yerine geldiğinde gerçekleşen etkiyi tanımlarsınız.
 
 ```json
 {
@@ -201,9 +201,9 @@ Desteklenen mantıksal işleçler şunlardır:
 - `"allOf": [{condition or operator},{condition or operator}]`
 - `"anyOf": [{condition or operator},{condition or operator}]`
 
-**Değil** söz dizimi koşul sonucunu tersine çevirir. **Tümü** sözdizimi (benzer şekilde mantıksal **ve** işlemi) tüm koşulların true olmasını gerektirir. **Herhangi** sözdizimi (benzer şekilde mantıksal **veya** işlemi) bir veya daha fazla koşul true olmasını gerektirir.
+**Not** söz dizimi koşulun sonucunu tersine çevirir. **Allof** söz dizimi (mantıksal **ve** işleme benzer şekilde) tüm koşulların doğru olmasını gerektirir. Söz dizimi (mantıksal **veya** işleme benzer şekilde **), bir** veya daha fazla koşulun doğru olmasını gerektirir.
 
-Mantıksal işleçler iç içe yerleştirebilirsiniz. Aşağıdaki örnekte gösterildiği bir **değil** içinde iç içe işlem bir **tümü** işlemi.
+Mantıksal işleçler iç içe yerleştirebilirsiniz. Aşağıdaki örnek, **allof** işleminin içinde iç içe **geçmiş bir işlem** gösterir.
 
 ```json
 "if": {
@@ -245,11 +245,11 @@ Bir koşul, bir **alanın** veya **değer** erişimcisinin belirli ölçütlere 
 - `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
-Kullanırken **gibi** ve **notLike** koşullar, sağladığınız bir joker karakter `*` değerindeki değişikliği belirtir.
-Birden fazla joker karakter değeri olmamalıdır `*`.
+**LIKE** ve **NOTLIKE** koşullarını kullanırken, değerinde bir joker karakter `*` sağlarsınız.
+Değerin birden fazla joker karakter `*`olamaz.
 
 **Match** ve **notmatch** koşullarını kullanırken, bir sayıyla eşleşecek `#`, bir harf için `?`, herhangi bir karakterle eşleşecek `.` ve bu gerçek karakterle eşleşecek başka herhangi bir karakter sağlayın.
-**Match** ve **notmatch** büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur. Örnekler için bkz [birkaç adı desenlerinin izin](../samples/allow-multiple-name-patterns.md).
+**Match** ve **notmatch** büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur. Örnekler için bkz. [birkaç ad desenlerine Izin verme](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Alanlar
 
@@ -269,13 +269,13 @@ Aşağıdaki alanları desteklenir:
 - `tags`
 - `tags['<tagName>']`
   - Bu köşeli ayraç sözdizimi, noktalama işareti, nokta veya boşluk gibi noktalama işaretlerinin bulunduğu etiket adlarını destekler.
-  - Burada **\<tagName\>** doğrulamak için bir koşul için etiket adıdır.
+  - **\<tagName\>** , koşulun doğrulanması için etiketin adıdır.
   - Örnekler: **ACCT. CostCenter** 'ın etiketin adı olduğu `tags['Acct.CostCenter']`.
 - `tags['''<tagName>''']`
   - Bu köşeli ayraç sözdizimi, çift tırnak işaretiyle kaçış ile kesme işareti olan etiket adlarını destekler.
   - Burada **'\<tagName\>'** , koşulun doğrulanması için etiketin adıdır.
   - Örnek: **' My. kesme. Tag '** öğesinin etiketin adı olduğu `tags['''My.Apostrophe.Tag''']`.
-- özellik diğer adları - bir listesi için bkz [diğer adlar](#aliases).
+- Özellik diğer adları-bir liste için bkz. [diğer adlar](#aliases).
 
 > [!NOTE]
 > `tags.<tagName>`, `tags[tagName]`ve `tags[tag.with.dots]`, bir Etiketler alanı bildirmek için kabul edilebilir yollarda kalır. Ancak, tercih edilen ifadeler yukarıda listelenmiş olanlardır.
@@ -308,7 +308,7 @@ Aşağıdaki örnekte `concat` **TagName** parametresinin değeri adlı etiket i
 }
 ```
 
-### <a name="value"></a>Değer
+### <a name="value"></a>Value
 
 Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametrelere](#parameters), [desteklenen şablon işlevlerine](#policy-functions)veya değişmez değerlere karşı koşulları denetler.
 **değer** , desteklenen herhangi bir [koşulla](#conditions)eşleştirildi.
@@ -398,12 +398,12 @@ Düzeltilen ilke kuralıyla `if()`, üç karakterden kısa bir değerde `substri
 
 Azure Ilkesi aşağıdaki efekt türlerini destekler:
 
-- **Append**: dizi alanları isteği ekler
-- **Denetim**: etkinlik günlüğünde uyarı olayı oluşturur, ancak istek başarısız değil
+- **Append**: isteğe tanımlı alan kümesini isteğe ekler
+- **Denetim**: etkinlik günlüğünde bir uyarı olayı oluşturur, ancak bu istek başarısız olmaz
 - **Auditınotexists**: ilgili bir kaynak yoksa, etkinlik günlüğünde bir uyarı olayı oluşturur
-- **Reddetme**: istek başarısız olur ve etkinlik günlüğüne bir olay oluşturur
+- **Reddet**: etkinlik günlüğünde bir olay oluşturur ve istekte başarısız olur
 - **Deployifnotexists**: zaten yoksa ilgili bir kaynak dağıtır
-- **Devre dışı bırakılmış**: uyumluluk İlkesi kuralı için kaynakları değerlendirmez
+- **Devre dışı**: kaynakları ilke kuralına uyum için değerlendirmez
 - **Enforceopaconstraint** (Önizleme): Azure 'da kendi kendine yönetilen Kubernetes kümeleri için ağ geçidi denetleyicisi ile açık ilke aracısı sayede denetleyicisini yapılandırır (Önizleme)
 - **Enforceregopolicy** (Önizleme): Azure Kubernetes hizmetinde Gatekeeper v2 ile açık ilke aracısı sayede denetleyiciyi yapılandırır
 - **Değiştir**: bir kaynaktaki tanımlı etiketleri ekler, güncelleştirir veya kaldırır
@@ -432,11 +432,11 @@ Aşağıdaki işlevler bir ilke kuralında kullanılabilir, ancak Azure Resource
 - utcNow ()-Kaynak Yöneticisi şablondan farklı olarak bu, defaultValue dışında kullanılabilir.
   - Universal ISO 8601 DateTime biçimindeki ' yyyy-aa-ddTHH: mm: ss. fffffffZ ' içinde geçerli tarih ve saate ayarlanmış bir dize döndürür
 
-Ayrıca, `field` işlevi ilke kuralları için kullanılabilir. `field` ile kullanılır **AuditIfNotExists** ve **Deployıfnotexists** değerlendirilmekte kaynak başvurusu alanlarında. Bu kullanım örneği görülebilir [Deployıfnotexists örnek](effects.md#deployifnotexists-example).
+Ayrıca, `field` işlevi ilke kuralları tarafından kullanılabilir. `field`, öncelikle, değerlendirilen kaynaktaki alanlara başvurmak için **Auditınotexists** ve **deployifnotexists** ile birlikte kullanılır. Bu kullanım örneği, [Deployifnotexists örneğinde](effects.md#deployifnotexists-example)görülebilir.
 
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
-Bu ilke kuralı örnekte `resourceGroup` almak için kaynak işlevi **adı** özelliği bir araya geldiğinde, `concat` oluşturmak için dizi ve nesne işlevi bir `like` başlatmak için kaynak adı zorlar durumu kaynak grubu adı ile.
+Bu ilke kuralı örneği, kaynak adının kaynak grubu adıyla başlamasını zorladığı bir `like` koşulu oluşturmak için, **ad** özelliğini almak üzere `concat` Array ve Object işleviyle birlikte `resourceGroup` Resource işlevini kullanır.
 
 ```json
 {
@@ -490,7 +490,7 @@ Diğer adlar listesini her zaman artmaktadır. Hangi diğer adlar şu anda Azure
 
 ### <a name="understanding-the--alias"></a>[*] Diğer anlama
 
-Birkaç kullanılabilir diğer adlarına sahip bir 'normal' bir ad ve başka görüntülenen bir sürümüne sahip **[\*]** eklediniz. Örneğin:
+Kullanılabilir diğer adların bazıları, ' normal ' ad olarak görünen bir sürüme ve buna ekli **[\*]** sahip. Örneğin:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -525,7 +525,7 @@ Daha fazla bilgi için bkz. [[\*] diğer adını değerlendirme](../how-to/autho
 
 Girişim atamaları ve yönetim grubu tek bir öğe olarak çalışmak için basitleştirmek için çeşitli ilgili ilke tanımlarını olanak sağlar. Örneğin, tek bir girişim etiketleme ilgili ilke tanımlarını gruplandırabilirsiniz. Tek tek her ilke atamak yerine, girişim uygulayın.
 
-Aşağıdaki örnek iki etiketi işlemeye yönelik bir girişim oluşturma işlemini gösterir: `costCenter` ve `productName`. Varsayılan etiket değeri uygulamak için iki yerleşik ilkeleri kullanır.
+Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı gösterir: `costCenter` ve `productName`. Varsayılan etiket değeri uygulamak için iki yerleşik ilkeleri kullanır.
 
 ```json
 {

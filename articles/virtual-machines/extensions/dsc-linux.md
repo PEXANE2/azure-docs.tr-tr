@@ -1,6 +1,6 @@
 ---
-title: Azure DSC extension for Linux
-description: Installs OMI and DSC packages to allow an Azure Linux VM to be configured using Desired State Configuration.
+title: Linux için Azure DSC Uzantısı
+description: Azure Linux VM 'sinin Istenen durum yapılandırması kullanılarak yapılandırılmasını sağlamak için OMı ve DSC paketlerini yükleyerek.
 services: virtual-machines-linux
 documentationcenter: ''
 author: bobbytreed
@@ -20,21 +20,21 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457513"
 ---
-# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
+# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
-Desired State Configuration (DSC) is a management platform that you can use to manage your IT and development infrastructure with configuration as code.
+İstenen Durum Yapılandırması (DSC), BT ve geliştirme altyapınızı kod olarak yapılandırmayla yönetmek için kullanabileceğiniz bir yönetim platformudur.
 
 > [!NOTE]
-> The DSC extension for Linux and the [Azure Monitor virtual machine extension for Linux](/azure/virtual-machines/extensions/oms-linux) currently present a conflict and aren't supported in a side-by-side configuration. Don't use the two solutions together on the same VM.
+> Linux için DSC Uzantısı ve [Linux Için Azure izleyici sanal makine uzantısı](/azure/virtual-machines/extensions/oms-linux) Şu anda bir çakışma sunmakta ve yan yana yapılandırmada desteklenmemektedir. İki çözümü aynı VM 'de birlikte kullanmayın.
 
-The DSCForLinux extension is published and supported by Microsoft. The extension installs the OMI and DSC agent on Azure virtual machines. The DSC extension can also do the following actions:
+DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine OMı ve DSC aracısını yükleme. DSC Uzantısı aşağıdaki eylemleri de gerçekleştirebilir:
 
 
-- Register the Linux VM to an Azure Automation account to pull configurations from the Azure Automation service (Register ExtensionAction).
-- Push MOF configurations to the Linux VM (Push ExtensionAction).
-- Apply meta MOF configuration to the Linux VM to configure a pull server in order to pull node configuration (Pull ExtensionAction).
-- Install custom DSC modules to the Linux VM (Install ExtensionAction).
-- Remove custom DSC modules from the Linux VM (Remove ExtensionAction).
+- Azure Otomasyonu hizmetinden (ExtensionAction 'ı Kaydet) yapılandırma çekmek için Linux VM 'yi bir Azure Otomasyonu hesabına kaydettirin.
+- MOF yapılandırmasını Linux VM 'ye gönderin (ExtensionAction öğesini Gönder).
+- Düğüm yapılandırmasını (çekme ExtensionAction) çekmek için bir çekme sunucusu yapılandırmak üzere Linux sanal makinesine meta MOF yapılandırması uygulayın.
+- Linux VM 'ye özel DSC modülleri (Install ExtensionAction) yükler.
+- Linux VM 'den özel DSC modüllerini kaldırın (ExtensionAction 'ı kaldırın).
 
  
 
@@ -42,57 +42,57 @@ The DSCForLinux extension is published and supported by Microsoft. The extension
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-The DSC Linux extension supports all the [Linux distributions endorsed on Azure](/azure/virtual-machines/linux/endorsed-distros) except:
+DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](/azure/virtual-machines/linux/endorsed-distros) destekler:
 
 | Dağıtım | Sürüm |
 |---|---|
 | Debian | Tüm sürümler |
-| Ubuntu| 18.04 |
+| Ubuntu| 18,04 |
  
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-The DSCForLinux extension requires the target virtual machine to be connected to the internet. For example, the Register extension requires connectivity to the Automation service. For other actions such as Pull, Pull, Install requires connectivity to Azure Storage and GitHub. It depends on settings provided by the customer.
+DSCForLinux uzantısı, hedef sanal makinenin internet 'e bağlanmasını gerektirir. Örneğin, YAZMAÇ uzantısının Automation hizmetine bağlantısı olması gerekir. Çekme, çekme, çekme gibi diğer eylemler için Azure depolama ve GitHub bağlantısı gerekir. Bu, müşteri tarafından sunulan ayarlara bağlıdır.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-### <a name="public-configuration"></a>Public configuration
+### <a name="public-configuration"></a>Ortak yapılandırma
 
-Here are all the supported public configuration parameters:
+Desteklenen tüm ortak yapılandırma parametreleri şunlardır:
 
-* `FileUri`: (optional, string) The uri of the MOF file, meta MOF file, or custom resource zip file.
-* `ResourceName`: (optional, string) The name of the custom resource module.
-* `ExtensionAction`: (optional, string) Specifies what an extension does. Valid values are Register, Push, Pull, Install, and Remove. If not specified, it's considered a Push Action by default.
-* `NodeConfigurationName`: (optional, string) The name of a node configuration to apply.
-* `RefreshFrequencyMins`: (optional, int) Specifies how often (in minutes) that DSC attempts to obtain the configuration from the pull server. 
-       If configuration on the pull server differs from the current one on the target node, it's copied to the pending store and applied.
-* `ConfigurationMode`: (optional, string) Specifies how DSC should apply the configuration. Valid values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-* `ConfigurationModeFrequencyMins`: (optional, int) Specifies how often (in minutes) DSC ensures that the configuration is in the desired state.
+* `FileUri`: (isteğe bağlı, dize) MOF dosyasının URI 'si, meta MOF dosyası veya özel kaynak ZIP dosyası.
+* `ResourceName`: (isteğe bağlı, dize) özel kaynak modülünün adı.
+* `ExtensionAction`: (isteğe bağlı, dize) bir uzantının ne yaptığını belirtir. Geçerli değerler kayıt, gönderim, çekme, yükleme ve kaldırma. Belirtilmemişse, varsayılan olarak bir gönderme eylemi olarak kabul edilir.
+* `NodeConfigurationName`: (isteğe bağlı, dize) uygulanacak düğüm yapılandırmasının adı.
+* `RefreshFrequencyMins`: (isteğe bağlı, int) DSC 'nin çekme sunucusundan yapılandırmayı ne sıklıkta (dakika cinsinden) alacağını belirtir. 
+       Çekme sunucusundaki yapılandırma hedef düğümdeki geçerli olandan farklıysa, bu, bekleyen depoya kopyalanıp uygulanır.
+* `ConfigurationMode`: (isteğe bağlı, dize) DSC 'nin yapılandırmayı nasıl uygulanacağını belirtir. Geçerli değerler yalnızca Apply, ApplyAndMonitor ve Applyandadutocorrect.
+* `ConfigurationModeFrequencyMins`: (isteğe bağlı, int), ne sıklıkta (dakika cinsinden) DSC 'nin yapılandırmanın istenen durumda olmasını sağlar.
 
 > [!NOTE]
-> If you use a version earlier than 2.3, the mode parameter is the same as ExtensionAction. Mode seems to be an overloaded term. To avoid confusion, ExtensionAction is used from version 2.3 onward. For backward compatibility, the extension supports both mode and ExtensionAction. 
+> 2,3 'den önceki bir sürümü kullanıyorsanız, mode parametresi ExtensionAction ile aynı olur. Mod aşırı yüklenmiş bir terim gibi görünüyor. Karışıklığın önüne geçmek için, 2,3. sürümden ExtensionAction kullanılır. Uzantı, geriye dönük uyumluluk için hem modu hem de ExtensionAction 'ı destekler. 
 >
 
-### <a name="protected-configuration"></a>Protected configuration
+### <a name="protected-configuration"></a>Korumalı yapılandırma
 
-Here are all the supported protected configuration parameters:
+Desteklenen tüm korumalı yapılandırma parametreleri aşağıda verilmiştir:
 
-* `StorageAccountName`: (optional, string) The name of the storage account that contains the file
-* `StorageAccountKey`: (optional, string) The key of the storage account that contains the file
-* `RegistrationUrl`: (optional, string) The URL of the Azure Automation account
-* `RegistrationKey`: (optional, string) The access key of the Azure Automation account
+* `StorageAccountName`: (isteğe bağlı, dize) dosyayı içeren depolama hesabının adı
+* `StorageAccountKey`: (isteğe bağlı, dize) dosyayı içeren depolama hesabının anahtarı
+* `RegistrationUrl`: (isteğe bağlı, dize) Azure Otomasyonu hesabının URL 'SI
+* `RegistrationKey`: (isteğe bağlı, dize) Azure Otomasyonu hesabının erişim anahtarı
 
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="register-an-azure-automation-account"></a>Register an Azure Automation account
-protected.json
+### <a name="register-an-azure-automation-account"></a>Azure Otomasyonu hesabı kaydetme
+Protected. JSON
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-public.json
+public. JSON
 ```json
 {
   "ExtensionAction" : "Register",
@@ -103,7 +103,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell biçimi
 ```powershell
 $privateConfig = '{
   "RegistrationUrl": "<azure-automation-account-url>",
@@ -119,9 +119,9 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Apply an MOF configuration file (in an Azure storage account) to the VM
+### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>SANAL makineye bir MOF yapılandırma dosyası (Azure Storage hesabında) uygulama
 
-protected.json
+Protected. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -129,7 +129,7 @@ protected.json
 }
 ```
 
-public.json
+public. JSON
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -137,7 +137,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell biçimi
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -151,25 +151,25 @@ $publicConfig = '{
 ```
 
 
-### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Apply an MOF configuration file (in public storage) to the VM
+### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>SANAL makineye bir MOF yapılandırma dosyası (ortak depolamada) uygulama
 
-public.json
+public. JSON
 ```json
 {
   "FileUri": "<mof-file-uri>"
 }
 ```
 
-PowerShell format
+PowerShell biçimi
 ```powershell
 $publicConfig = '{
   "FileUri": "<mof-file-uri>"
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Apply a meta MOF configuration file (in an Azure storage account) to the VM
+### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>VM 'ye bir meta MOF yapılandırma dosyası (bir Azure depolama hesabında) uygulama
 
-protected.json
+Protected. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -177,7 +177,7 @@ protected.json
 }
 ```
 
-public.json
+public. JSON
 ```json
 {
   "ExtensionAction": "Pull",
@@ -185,7 +185,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell biçimi
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -198,15 +198,15 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Apply a meta MOF configuration file (in public storage) to the VM
-public.json
+### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>VM 'ye bir meta MOF yapılandırma dosyası (genel depolamada) uygulama
+public. JSON
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
   "ExtensionAction": "Pull"
 }
 ```
-PowerShell format
+PowerShell biçimi
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -214,15 +214,15 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Install a custom resource module (a zip file in an Azure storage account) to the VM
-protected.json
+### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>VM 'ye özel bir kaynak modülü (bir Azure depolama hesabına ZIP dosyası) yüklemek
+Protected. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-public.json
+public. JSON
 ```json
 {
   "ExtensionAction": "Install",
@@ -230,7 +230,7 @@ public.json
 }
 ```
 
-PowerShell format
+PowerShell biçimi
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -243,15 +243,15 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Install a custom resource module (a zip file in public storage) to the VM
-public.json
+### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>VM 'ye özel bir kaynak modülü (ortak depolamaya bir ZIP dosyası) yüklemek
+public. JSON
 ```json
 {
   "ExtensionAction": "Install",
   "FileUri": "<resource-zip-file-uri>"
 }
 ```
-PowerShell format
+PowerShell biçimi
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -259,15 +259,15 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="remove-a-custom-resource-module-from-the-vm"></a>Remove a custom resource module from the VM
-public.json
+### <a name="remove-a-custom-resource-module-from-the-vm"></a>Özel bir kaynak modülünü VM 'den kaldırma
+public. JSON
 ```json
 {
   "ResourceName": "<resource-name>",
   "ExtensionAction": "Remove"
 }
 ```
-PowerShell format
+PowerShell biçimi
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -277,62 +277,62 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM extensions can be deployed with Azure Resource Manager templates. Templates are ideal when you deploy one or more virtual machines that require post-deployment configuration, such as onboarding to Azure Automation. 
+Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Azure Otomasyonu 'na ekleme gibi dağıtım sonrası yapılandırma gerektiren bir veya daha fazla sanal makine dağıttığınızda şablonlar idealdir. 
 
-The sample Resource Manager template is [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) and [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
+Örnek Kaynak Yöneticisi şablonu [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) ve [201-DSC-Linux-genel-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu)olur.
 
-For more information about the Azure Resource Manager template, see [Authoring Azure Resource Manager templates](../../azure-resource-manager/resource-group-authoring-templates.md).
+Azure Resource Manager şablonu hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../../azure-resource-manager/resource-group-authoring-templates.md).
 
 
-## <a name="azure-cli-deployment"></a>Azure CLI deployment
+## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
-### <a name="use-azure-cliazure-cli"></a>Use [Azure CLI][azure-cli]
-Before you deploy the DSCForLinux extension, configure your `public.json` and `protected.json` according to the different scenarios in section 3.
+### <a name="use-azure-cliazure-cli"></a>[Azure CLı] [Azure-CLI] kullanın
+DSCForLinux uzantısını dağıtmadan önce, Bölüm 3 ' teki farklı senaryolara göre `public.json` ve `protected.json` yapılandırın.
 
 #### <a name="classic"></a>Klasik
-The classic deployment mode is also called Azure Service Management mode. You can switch to it by running:
+Klasik dağıtım moduna Azure hizmet yönetimi modu da denir. Şunu çalıştırarak geçiş yapabilirsiniz:
 ```
 $ azure config mode asm
 ```
 
-You can deploy the DSCForLinux extension by running:
+Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
-To learn the latest extension version available, run:
+Kullanılabilir en son uzantı sürümünü öğrenmek için şunu çalıştırın:
 ```
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Kaynak Yöneticisi
-You can switch to Azure Resource Manager mode by running:
+#### <a name="resource-manager"></a>Resource Manager
+Şunu çalıştırarak Azure Resource Manager moduna geçebilirsiniz:
 ```
 $ azure config mode arm
 ```
 
-You can deploy the DSCForLinux extension by running:
+Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> In Azure Resource Manager mode, `azure vm extension list` isn't available for now.
+> Azure Resource Manager modunda, `azure vm extension list` şimdilik kullanılamaz.
 >
 
-### <a name="use-azure-powershellazure-powershell"></a>Use [Azure PowerShell][azure-powershell]
+### <a name="use-azure-powershellazure-powershell"></a>[Azure PowerShell] [Azure-PowerShell] kullanın
 
 #### <a name="classic"></a>Klasik
 
-You can sign in to your Azure account in Azure Service Management mode by running:
+Aşağıdakileri çalıştırarak Azure hizmet yönetimi modunda Azure hesabınızda oturum açabilirsiniz:
 
 ```powershell>
 Add-AzureAccount
 ```
 
-And deploy the DSCForLinux extension by running:
+Ve şunu çalıştırarak DSCForLinux uzantısını dağıtın:
 
 ```powershell>
 $vmname = '<vm-name>'
@@ -342,7 +342,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-Change the content of $privateConfig and $publicConfig according to different scenarios in the previous section.
+$PrivateConfig ve $publicConfig içeriğini önceki bölümdeki farklı senaryolara göre değiştirin.
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -363,17 +363,17 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Kaynak Yöneticisi
+#### <a name="resource-manager"></a>Resource Manager
 
-You can sign in to your Azure account in Azure Resource Manager mode by running:
+Aşağıdakileri çalıştırarak Azure hesabınızda Azure Resource Manager modunda oturum açabilirsiniz:
 
 ```powershell>
 Login-AzAccount
 ```
 
-To learn more about how to use Azure PowerShell with Azure Resource Manager, see [Manage Azure resources by using Azure PowerShell](../../azure-resource-manager/manage-resources-powershell.md).
+Azure PowerShell Azure Resource Manager ile birlikte kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell kullanarak Azure kaynaklarını yönetme](../../azure-resource-manager/manage-resources-powershell.md).
 
-You can deploy the DSCForLinux extension by running:
+Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
 
 ```powershell>
 $rgName = '<resource-group-name>'
@@ -384,7 +384,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-Change the content of $privateConfig and $publicConfig according to different scenarios in the previous section.
+$PrivateConfig ve $publicConfig içeriğini önceki bölümdeki farklı senaryolara göre değiştirin.
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -405,30 +405,30 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```
 
-## <a name="troubleshoot-and-support"></a>Troubleshoot and support
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Data about the state of extension deployments can be retrieved from the Azure portal and by using the Azure CLI. To see the deployment state of extensions for a given VM, run the following command by using the Azure CLI.
+Uzantı dağıtımlarının durumuyla ilgili veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı kullanarak aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Extension execution output is logged to the following file:
+Uzantı yürütme çıkış aşağıdaki dosyasına kaydedilir:
 
 ```
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Error code: 51 represents either unsupported distribution or unsupported extension action.
-In some cases, DSC Linux extension fails to install OMI when a higher version of OMI already exists in the machine. [error response: (000003)Downgrade not allowed]
+Hata kodu: 51, desteklenmeyen dağıtım veya desteklenmeyen uzantı eylemini temsil eder.
+Bazı durumlarda, daha yüksek bir OMı sürümü makinede zaten mevcutsa DSC Linux uzantısı OMı 'yi yükleyemez. [hata yanıtı: (000003) Indirgeme izin verilmiyor]
 
 
 
 ### <a name="support"></a>Destek
 
-If you need more help at any point in this article, contact the Azure experts on the [MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/community/). Alternatively, you can file an Azure Support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/), and select **Get support**. For information about using Azure Support, read the [Microsoft Azure Support FAQ](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-For more information about extensions, see [Virtual machine extensions and features for Linux](features-linux.md).
+Uzantılar hakkında daha fazla bilgi için bkz. [Linux Için sanal makine uzantıları ve özellikleri](features-linux.md).

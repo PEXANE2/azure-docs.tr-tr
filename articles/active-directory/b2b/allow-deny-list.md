@@ -49,7 +49,7 @@ Reddetme listesi eklemek için:
 
    ![Eklenen etki alanları ile reddetme seçeneğini gösterir](./media/allow-deny-list/DenyListSettings.png)
  
-6. İşiniz bittiğinde tıklayın **Kaydet**.
+6. İşiniz bittiğinde **Kaydet**' e tıklayın.
 
 İlkeyi ayarladıktan sonra, engellenen bir etki alanından bir kullanıcıyı davet etmeye çalışırsanız, kullanıcının etki alanının şu anda davet ilkeniz tarafından engellendiğini söyleyen bir ileti alırsınız.
  
@@ -70,7 +70,7 @@ Bir izin verilenler listesi eklemek için:
 
    ![Eklenmiş etki alanları ile izin ver seçeneğini gösterir](./media/allow-deny-list/AllowListSettings.png)
  
-6. İşiniz bittiğinde tıklayın **Kaydet**.
+6. İşiniz bittiğinde **Kaydet**' e tıklayın.
 
 İlkeyi ayarladıktan sonra, izin verilenler listesinde olmayan bir etki alanından bir kullanıcıyı davet etmeye çalışırsanız, kullanıcının etki alanının şu anda davet ilkeniz tarafından engellendiğini söyleyen bir ileti alırsınız.
 

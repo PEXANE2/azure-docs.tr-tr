@@ -1,6 +1,6 @@
 ---
-title: How to manage devices using the Azure portal | Microsoft Docs
-description: Learn how to use the Azure portal to manage devices.
+title: Azure portal kullanarak cihazları yönetme | Microsoft Docs
+description: Azure portal kullanarak cihazları yönetme hakkında bilgi edinin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,189 +18,189 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420609"
 ---
-# <a name="manage-device-identities-using-the-azure-portal"></a>Manage device identities using the Azure portal
+# <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal kullanarak cihaz kimliklerini yönetme
 
-With device identity management in Azure Active Directory (Azure AD), you can ensure that your users are accessing your resources from devices that meet your standards for security and compliance.
+Azure Active Directory (Azure AD) ' de cihaz kimlik yönetimi ile kullanıcılarınızın, güvenlik ve uyumluluk standartlarınıza uygun cihazlardan kaynaklarınıza erişmesini sağlayabilirsiniz.
 
 Bu makalede:
 
-- Assumes that you are familiar with the [introduction to device identity management in Azure Active Directory](overview.md)
-- Provides you with information about managing your device identities using the Azure AD portal
+- [Azure Active Directory içinde cihaz kimliği yönetimine giriş](overview.md) hakkında bilgi sahibi olduğunuzu varsayar.
+- Azure AD portalını kullanarak cihaz kimliklerinizi yönetme hakkında bilgi sağlar
 
 ## <a name="manage-device-identities"></a>Cihaz kimliklerini yönetme
 
-The Azure AD portal provides you with a central place to manage your device identities. You can get to this place by either using a [direct link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) or by following these manual steps:
+Azure AD portalı, cihaz kimliklerinizi yönetmek için size merkezi bir yer sağlar. Bu yere [doğrudan bir bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) kullanarak veya bu el ile adımları izleyerek ulaşabilirsiniz:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as administrator.
+1. [Azure Portal](https://portal.azure.com) yönetici olarak oturum açın.
 
-2. Search for and select **Azure Active Directory** or select it from the **Home** page.
+2. **Azure Active Directory** bulun ve **giriş** sayfasından seçin.
 
-3. In the **Manage** section, click **Devices**.
+3. **Yönet** bölümünde, **cihazlar**' a tıklayın.
 
-   ![Configure device settings](./media/device-management-azure-portal/74.png)
+   ![Cihaz ayarlarını yapılandır](./media/device-management-azure-portal/74.png)
 
-The **Devices** page enables you to:
+**Cihazlar** sayfası şunları yapmanızı sağlar:
 
-- Configure your device settings
-- Locate devices
-- Perform device identity management tasks
-- Review device-related audit logs  
+- Cihaz ayarlarınızı yapılandırın
+- Cihazları bul
+- Cihaz kimliği yönetim görevlerini gerçekleştirme
+- Cihazla ilgili denetim günlüklerini gözden geçirme  
   
-## <a name="configure-device-settings"></a>Configure device settings
+## <a name="configure-device-settings"></a>Cihaz ayarlarını yapılandır
 
-To manage your device identities using the Azure AD portal, your devices need to be either [registered or joined](overview.md) to Azure AD. As an administrator, you can fine-tune the process of registering and joining devices by configuring the device settings.
+Azure AD portalını kullanarak cihaz kimliklerinizi yönetmek için, cihazlarınızın [kayıtlı veya](overview.md) Azure AD 'ye katılmış olması gerekir. Yönetici olarak, cihaz ayarlarını yapılandırarak cihazları kaydetme ve birleştirme sürecinde ince ayar yapabilirsiniz.
 
-![Configure device settings](./media/device-management-azure-portal/22.png)
+![Cihaz ayarlarını yapılandır](./media/device-management-azure-portal/22.png)
 
-The device settings page enables you to configure:
+Cihaz ayarları sayfası şunları yapılandırmanıza olanak sağlar:
 
-![Manage an Intune device](./media/device-management-azure-portal/21.png)
+![Intune cihazını yönetme](./media/device-management-azure-portal/21.png)
 
-- **Users may join devices to Azure AD** - This setting enables you to select the users who can register their devices as Azure AD joined devices. The default is **All**.
-
-> [!NOTE]
-> **Users may join devices to Azure AD** setting is only applicable to Azure AD join on Windows 10.
-
-- **Additional local administrators on Azure AD joined devices** - You can select the users that are granted local administrator rights on a device. Users added here are added to the *Device Administrators* role in Azure AD. Global administrators in Azure AD and device owners are granted local administrator rights by default. This option is a premium edition capability available through products such as Azure AD Premium or the Enterprise Mobility Suite (EMS).
-- **Users may register their devices with Azure AD** - You need to configure this setting to allow Windows 10 personal, iOS, Android, and macOs devices to be registered with Azure AD. If you select **None**, devices are not allowed to register with Azure AD. Enrollment with Microsoft Intune or Mobile Device Management (MDM) for Office 365 requires registration. If you have configured either of these services, **ALL** is selected and **NONE** is not available.
-- **Require Multi-Factor Auth to join devices** - You can choose whether users are required to provide an additional authentication factor to join their device to Azure AD. The default is **No**. We recommend requiring multi-factor authentication when registering a device. Before you enable multi-factor authentication for this service, you must ensure that multi-factor authentication is configured for the users that register their devices. For more information on different Azure multi-factor authentication services, see [getting started with Azure multi-factor authentication](../authentication/concept-mfa-whichversion.md). 
+- **Kullanıcılar cihazları Azure AD 'ye katabilir** -Bu ayar, CIHAZLARıNı Azure AD 'ye katılmış cihazlar olarak kaydedebilen kullanıcıları seçmenize olanak sağlar. Varsayılan değer **Tümü**' dir.
 
 > [!NOTE]
-> **Require Multi-Factor Auth to join devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
+> **Kullanıcılar cihazları Azure AD 'ye katabilir** ve yalnızca Windows 10 ' da Azure AD katılımı için geçerlidir.
 
-- **Maximum number of devices** - This setting enables you to select the maximum number of Azure AD joined or Azure AD registered devices that a user can have in Azure AD. If a user reaches this quota, they are not be able to add additional devices until one or more of the existing devices are removed. The default value is **20**.
+- **Azure AD 'ye katılmış cihazlarda ek yerel Yöneticiler** -bir cihazda yerel yönetici hakları verilen kullanıcıları seçebilirsiniz. Buraya eklenen kullanıcılar, Azure AD 'de *cihaz yöneticileri* rolüne eklenir. Azure AD ve cihaz sahiplerine Genel Yöneticiler varsayılan olarak yerel yönetici haklarına sahiptir. Bu seçenek, Azure AD Premium veya Enterprise Mobility Suite (EMS) gibi ürünlerle kullanılabilen bir Premium sürüm özelliğidir.
+- **Kullanıcılar cihazlarını Azure AD 'ye kaydedebileceği** için bu ayarı Windows 10 Personal, IOS, Android ve MacOS CIHAZLARıNıN Azure AD 'ye kaydolmalarına izin verecek şekilde yapılandırmanız gerekir. **Hiçbiri**' ni seçerseniz, CIHAZLARıN Azure AD 'ye kaydolmaya izin verilmez. Office 365 için Microsoft Intune veya mobil cihaz yönetimi (MDM) kaydı için kayıt gereklidir. Bu hizmetlerden birini yapılandırdıysanız, **Tümü** seçilidir ve **hiçbiri** kullanılamaz.
+- **Cihazlara katılması Için Multi-Factor auth gerektir** -kullanıcıların CIHAZLARıNı Azure AD 'ye katmak için ek bir kimlik doğrulama faktörü sağlaması gerekip gerekmediğini seçebilirsiniz. Varsayılan değer **Hayır**' dır. Bir cihazı kaydederken çok faktörlü kimlik doğrulamasının gerekli olmasını öneririz. Bu hizmet için Multi-Factor Authentication 'ı etkinleştirmeden önce, cihazlarını kaydeden kullanıcılar için Multi-Factor Authentication ' ın yapılandırıldığından emin olmanız gerekir. Farklı Azure Multi-Factor Authentication hizmetleri hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication](../authentication/concept-mfa-whichversion.md)kullanmaya başlama. 
 
 > [!NOTE]
-> **Maximum number of devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
+> **Cihazların katılmasını sağlamak Için Multi-Factor auth iste** ayarı, Azure AD 'ye katılmış veya Azure AD 'ye kayıtlı cihazlar için geçerlidir. Bu ayar, karma Azure AD 'ye katılmış cihazlar için geçerlidir.
 
-- **Users may sync settings and app data across devices** - By default, this setting is set to **NONE**. Selecting specific users or groups or ALL allows the user’s settings and app data to sync across their Windows 10 devices. Learn more on how sync works in Windows 10.
-This option is a premium capability available through products such as Azure AD Premium or the Enterprise Mobility Suite (EMS).
+- **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla Azure AD 'ye katılmış veya Azure AD kayıtlı cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Varsayılan değer **20**' dir.
 
-## <a name="locate-devices"></a>Locate devices
+> [!NOTE]
+> Azure AD 'ye katılmış ya da Azure AD 'ye kayıtlı cihazlar için **en fazla cihaz sayısı** ayarı geçerlidir. Bu ayar, karma Azure AD 'ye katılmış cihazlar için geçerlidir.
 
-You have two options to locate registered and joined devices:
+- **Kullanıcılar ayarları ve uygulama verilerini cihazlarda eşitleyebilir** -varsayılan olarak, bu ayar **none**olarak ayarlanır. Belirli kullanıcılar veya gruplar veya tümü seçildiğinde kullanıcının ayarlarının ve uygulama verilerinin Windows 10 cihazlarında eşitlenmesi izin verir. Windows 10 ' da eşitlemenin nasıl çalıştığı hakkında daha fazla bilgi edinin.
+Bu seçenek, Azure AD Premium veya Enterprise Mobility Suite (EMS) gibi ürünlerle kullanılabilen bir Premium yetenektir.
 
-- **All devices** in the **Manage** section of the **Devices** page  
+## <a name="locate-devices"></a>Cihazları bul
 
-   ![All devices](./media/device-management-azure-portal/41.png)
+Kayıtlı ve birleştirilmiş cihazları bulmak için iki seçeneğiniz vardır:
 
-- **Devices** in the **Manage** section of a **User** page
+- **Cihazlar** sayfasının **Yönet** bölümündeki **tüm cihazlar**  
 
-   ![All devices](./media/device-management-azure-portal/43.png)
+   ![Tüm cihazlar](./media/device-management-azure-portal/41.png)
 
-With both options, you can get to a view that:
+- Bir **Kullanıcı** sayfasının **Yönet** bölümündeki **cihazlar**
 
-- Enables you to search for devices using the display name or device ID as filter.
-- Provides you with detailed overview of registered and joined devices
-- Enables you to perform common device management tasks
+   ![Tüm cihazlar](./media/device-management-azure-portal/43.png)
 
-![All devices](./media/device-management-azure-portal/51.png)
+Her iki seçenekten de şunları yapabilirsiniz:
+
+- Ekran adını veya cihaz KIMLIĞINI filtre olarak kullanarak cihazları aramanızı sağlar.
+- Kayıtlı ve birleştirilmiş cihazlara ayrıntılı bir genel bakış sağlar
+- Ortak cihaz yönetim görevleri gerçekleştirmenizi sağlar
+
+![Tüm cihazlar](./media/device-management-azure-portal/51.png)
 
 >[!TIP]
 >
->* If you see a device that is "Hybrid Azure AD joined" with a state "Pending" under the REGISTERED column, it indicates that the device has been synchronized from Azure AD connect and is waiting to complete registration from the client. Read more on how to [plan your Hybrid Azure AD join implementation](hybrid-azuread-join-plan.md). Additional information can be found in the article, [Devices frequently asked questions](faq.md).
+>* KAYıTLı sütun altında "bekliyor" durumuna sahip "hibrit Azure AD 'ye katılmış" bir cihaz görürseniz, cihazın Azure AD Connect 'ten eşitlendiğini ve istemciden kayıt tamamlamayı beklediğini gösterir. [Hibrit Azure AD JOIN uygulamanızın nasıl planlanacağı](hybrid-azuread-join-plan.md)hakkında daha fazla bilgi edinin. Daha fazla bilgi için, [cihazlar sık sorulan sorular](faq.md)makalesinde bulunabilir.
 >
->   ![Pending devices](./media/device-management-azure-portal/75.png)
+>   ![Bekleyen cihazlar](./media/device-management-azure-portal/75.png)
 >
->* For some iOS devices, the device names containing apostrophes can potentially use different characters that look like apostrophes. So searching for such devices is a little tricky - if you are not seeing search results correctly, ensure that the search string contains matching apostrophe character.
+>* Bazı iOS cihazlarında, kesme işaretleri içeren cihaz adları, kesme işareti gibi farklı karakterler kullanabilir. Bu nedenle, bu tür cihazları aramak biraz karmaşık değildir. arama sonuçlarını doğru şekilde görmüyorsanız, arama dizesinin eşleşen kesme işareti karakteri içerdiğinden emin olun.
 
-## <a name="device-identity-management-tasks"></a>Device identity management tasks
+## <a name="device-identity-management-tasks"></a>Cihaz kimliği yönetim görevleri
 
-As a global administrator or cloud device administrator, you can manage the registered or joined devices. Intune Service administrators can:
+Genel yönetici veya bulut cihaz yöneticisi olarak, kayıtlı veya katılmış cihazları yönetebilirsiniz. Intune hizmet yöneticileri şunları yapabilir:
 
-- Update devices  - Examples are daily operations such as enabling/disabling devices
-- Delete devices – When a device is retired and should be deleted in Azure AD
+- Cihazları güncelleştirme-örnekleri cihazları etkinleştirme/devre dışı bırakma gibi günlük işlemlerdir
+- Cihazları Sil – bir cihaz kullanımdan kaldırıldığında ve Azure AD 'de silinmeli
 
-This section provides you with information about common device identity management tasks.
+Bu bölüm, ortak cihaz kimlik yönetimi görevleri hakkında bilgi sağlar.
 
-### <a name="manage-an-intune-device"></a>Manage an Intune device
+### <a name="manage-an-intune-device"></a>Intune cihazını yönetme
 
-If you are an Intune administrator, you can manage devices marked as **Microsoft Intune**. If the device is not enrolled with Microsoft Intune the "Manage" option will be greyed out.
+Bir Intune yöneticisiyseniz, **Microsoft Intune**olarak işaretlenen cihazları yönetebilirsiniz. Cihaz Microsoft Intune kayıtlı değilse, "Yönet" seçeneği gri kalır.
 
-![Manage an Intune device](./media/device-management-azure-portal/31.png)
+![Intune cihazını yönetme](./media/device-management-azure-portal/31.png)
 
-### <a name="enable--disable-an-azure-ad-device"></a>Enable / disable an Azure AD device
+### <a name="enable--disable-an-azure-ad-device"></a>Azure AD cihazını etkinleştirme/devre dışı bırakma
 
-To enable / disable a device, you have two options:
+Bir cihazı etkinleştirmek/devre dışı bırakmak için iki seçeneğiniz vardır:
 
-- The tasks menu ("...") on the **All devices** page
+- **Tüm cihazlar** sayfasında görevler menüsü ("...")
 
-   ![Manage an Intune device](./media/device-management-azure-portal/71.png)
+   ![Intune cihazını yönetme](./media/device-management-azure-portal/71.png)
 
-- The toolbar on the **Devices** page
+- **Cihazlar** sayfasındaki araç çubuğu
 
-   ![Manage an Intune device](./media/device-management-azure-portal/32.png)
+   ![Intune cihazını yönetme](./media/device-management-azure-portal/32.png)
 
-**Remarks:**
+**Açıklamalarının**
 
-- You need to be a global administrator or cloud device administrator in Azure AD to enable / disable a device. 
-- Disabling a device prevents a device from successfully authenticating with Azure AD, thereby preventing the device from accessing your Azure AD resources that are guarded by device CA or using your WH4B credentials.
-- Disabling the device will revoke both the Primary Refresh Token (PRT) and any Refresh Tokens (RT) on the device.
+- Bir cihazı etkinleştirmek/devre dışı bırakmak için Azure AD 'de Genel yönetici veya bulut cihaz yöneticisi olmanız gerekir. 
+- Bir cihazın devre dışı bırakılması, cihazın Azure AD ile başarılı bir şekilde kimlik doğrulamasına engel olur, böylece cihazın cihaz CA 'sı tarafından korunan Azure AD kaynaklarınıza veya WH4B kimlik bilgilerinizi kullanarak erişmesini önler.
+- Cihazın devre dışı bırakılması hem birincil yenileme belirtecini (PRT) hem de cihazdaki yenileme belirteçlerini (RT) iptal eder.
 
-### <a name="delete-an-azure-ad-device"></a>Delete an Azure AD device
+### <a name="delete-an-azure-ad-device"></a>Azure AD cihazını silme
 
-To delete a device, you have two options:
+Bir cihazı silmek için iki seçeneğiniz vardır:
 
-- The tasks menu ("...") on the **All devices** page
+- **Tüm cihazlar** sayfasında görevler menüsü ("...")
 
-   ![Manage an Intune device](./media/device-management-azure-portal/72.png)
+   ![Intune cihazını yönetme](./media/device-management-azure-portal/72.png)
 
-- The toolbar on the **Devices** page
+- **Cihazlar** sayfasındaki araç çubuğu
 
-   ![Delete a device](./media/device-management-azure-portal/34.png)
+   ![Bir cihazı silme](./media/device-management-azure-portal/34.png)
 
-**Remarks:**
+**Açıklamalarının**
 
-- You need to be a global administrator or an Intune administrator in Azure AD to delete a device.
-- Deleting a device:
-   - Prevents a device from accessing your Azure AD resources.
-   - Removes all details that are attached to the device, for example, BitLocker keys for Windows devices.  
-   - Represents a non-recoverable activity and is not recommended unless it is required.
+- Bir cihazı silmek için Azure AD 'de Genel yönetici veya Intune yöneticisi olmanız gerekir.
+- Bir cihazı silme:
+   - Bir cihazın Azure AD kaynaklarınıza erişmesini önler.
+   - Cihaza iliştirilmiş tüm ayrıntıları kaldırır, örneğin, Windows cihazları için BitLocker anahtarları.  
+   - Kurtarılabilir olmayan bir etkinliği temsil eder ve gerekli olmadığı takdirde önerilmez.
 
-If a device is managed by another management authority (for example, Microsoft Intune), make sure that the device has been wiped / retired before deleting the device in Azure AD. Review how to [manage stale devices](device-management-azure-portal.md) before deleting any devices.
+Bir cihaz başka bir yönetim yetkilisi tarafından yönetiliyorsa (örneğin, Microsoft Intune), cihazın Azure AD 'de silinmeden önce temizlendiğinden/devre dışı olduğundan emin olun. Herhangi bir cihazı silmeden önce [eski cihazların nasıl yönetileceğini](device-management-azure-portal.md) inceleyin.
 
-### <a name="view-or-copy-device-id"></a>View or copy device ID
+### <a name="view-or-copy-device-id"></a>Cihaz KIMLIĞINI görüntüle veya Kopyala
 
-You can use a device ID to verify the device ID details on the device or using PowerShell during troubleshooting. To access the copy option, click the device.
+Cihazdaki cihaz KIMLIĞI ayrıntılarını doğrulamak veya sorun giderme sırasında PowerShell 'i kullanmak için bir cihaz KIMLIĞI kullanabilirsiniz. Kopyala seçeneğine erişmek için cihaza tıklayın.
 
-![View a device ID](./media/device-management-azure-portal/35.png)
+![Cihaz KIMLIĞINI görüntüleme](./media/device-management-azure-portal/35.png)
   
-### <a name="view-or-copy-bitlocker-keys"></a>View or copy BitLocker keys
+### <a name="view-or-copy-bitlocker-keys"></a>BitLocker anahtarlarını görüntüleme veya kopyalama
 
-You can view and copy the BitLocker keys to help users to recover their encrypted drive. These keys are only available for Windows devices that are encrypted and have their keys stored in Azure AD. You can copy these keys when accessing details of the device.
+Kullanıcıların şifreli sürücüsünü kurtarmalarına yardımcı olmak için BitLocker anahtarlarını görüntüleyebilir ve kopyalayabilirsiniz. Bu anahtarlar yalnızca şifrelenmiş ve anahtarları Azure AD 'de depolanan Windows cihazlarında kullanılabilir. Cihazın ayrıntılarına erişirken bu anahtarları kopyalayabilirsiniz.
 
-![View BitLocker keys](./media/device-management-azure-portal/36.png)
+![BitLocker anahtarlarını görüntüle](./media/device-management-azure-portal/36.png)
 
-To view or copy the BitLocker keys, you need to be either the owner of the device, or a user that has at least one of the following roles assigned:
+BitLocker anahtarlarını görüntülemek veya kopyalamak için, cihazın sahibi ya da aşağıdaki rollerden en az birine sahip olan bir kullanıcı olmanız gerekir:
 
-- Cloud Device Administrator
+- Bulut Cihaz Yöneticisi
 - Genel Yönetici
-- Helpdesk Administrator
+- Yardım Masası Yöneticisi
 - Intune Hizmet Yöneticisi
-- Security Administrator
-- Security Reader
+- Güvenlik Yöneticisi
+- Güvenlik okuyucusu
 
 > [!NOTE]
-> Hybrid Azure AD Joined Windows 10 devices do not have an owner. So, if you are looking for a device by owner and didn't find it, search by the device ID.
+> Karma Azure AD 'ye katılmış Windows 10 cihazlarının sahibi yok. Bu nedenle, bir cihazı sahibine göre arıyorsanız ve bulamıyorsanız, cihaz KIMLIĞINE göre arama yapın.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Device activities are available through the activity logs. These logs include activities triggered by the device registration service and by users:
+Cihaz etkinlikleri, etkinlik günlükleri aracılığıyla kullanılabilir. Bu Günlükler cihaz kayıt hizmeti tarafından tetiklenen etkinlikleri ve kullanıcılar tarafından şunları içerir:
 
-- Device creation and adding owners / users on the device
-- Changes to device settings
-- Device operations such as deleting or updating a device
+- Cihaz oluşturma ve cihazda sahipler/kullanıcılar ekleme
+- Cihaz ayarlarında yapılan değişiklikler
+- Bir cihazı silme veya güncelleştirme gibi cihaz işlemleri
 
-Your entry point to the auditing data is **Audit logs** in the **Activity** section of the **Devices** page.
+Denetim verilerine giriş noktanız, **cihazlar** sayfasının **etkinlik** bölümündeki **Denetim günlükleri** ' dir.
 
 ![Denetim günlükleri](./media/device-management-azure-portal/61.png)
 
 Denetim günlüklerinin aşağıdakileri gösteren bir varsayılan liste görünümü vardır:
 
-- The date and time of the occurrence
-- The targets
-- The initiator / actor (who) of an activity
-- The activity (what)
+- Olayın tarih ve saati
+- Hedefler
+- Etkinliğin başlatıcısı/aktör (kim)
+- Etkinlik (ne)
 
 ![Denetim günlükleri](./media/device-management-azure-portal/63.png)
 
@@ -214,13 +214,13 @@ Raporlanan verileri istediğiniz düzeye gelecek şekilde daraltmak için, aşa�
 - Etkinlik kaynak türü
 - Etkinlik
 - Tarih aralığı
-- Hedefleyin
-- Initiated By (Actor)
+- Hedef
+- Başlatan (aktör)
 
-In addition to the filters, you can search for specific entries.
+Filtrelerin yanı sıra belirli girdileri de arayabilirsiniz.
 
 ![Denetim günlükleri](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[How to manage stale devices in Azure AD](manage-stale-devices.md)
+[Azure AD 'de eski cihazları yönetme](manage-stale-devices.md)

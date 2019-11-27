@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed storage account SKUs
-description: This sample policy definition requires that storage accounts use an approved SKU defined in a parameter.
+title: Örnek-Izin verilen depolama hesabı SKU 'Ları
+description: Bu örnek ilke tanımı, depolama hesaplarının bir parametrede tanımlanan onaylanmış bir SKU 'YU kullanmasını gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 843c06b4c7b18e130b325c9ccd37a4fe70fc471f
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463690"
 ---
-# <a name="sample---allowed-storage-account-skus"></a>Sample - Allowed storage account SKUs
+# <a name="sample---allowed-storage-account-skus"></a>Örnek-Izin verilen depolama hesabı SKU 'Ları
 
 Bu ilke, depolama hesaplarının onaylı bir SKU kullanmasını gerektirir. Onaylı bir SKU dizisi belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke, depolama hesaplarının onaylı bir SKU kullanmasını gerektirir. Onay
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-storageaccount-sku%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-storageaccount-sku%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

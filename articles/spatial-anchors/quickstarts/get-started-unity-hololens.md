@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kull
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 

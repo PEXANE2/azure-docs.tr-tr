@@ -1,6 +1,6 @@
 ---
-title: Migrate TDE certificate - managed instance
-description: Migrate certificate protecting Database Encryption Key of a database with transparent Data Encryption to Azure SQL Database Managed Instance
+title: TDE sertifikası ile yönetilen örneği geçirme
+description: Azure SQL veritabanı yönetilen örneği 'ne saydam veri şifrelemesi ile bir veritabanının veritabanı şifreleme anahtarını koruyan sertifikayı geçirme
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -18,9 +18,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420736"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrate certificate of TDE protected database to Azure SQL Database Managed Instance
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE korumalı veritabanının sertifikasını Azure SQL veritabanı yönetilen örneği 'ne geçirme
 
-When migrating a database protected by [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) to Azure SQL Database Managed Instance using native restore option, the corresponding certificate from the on-premises or IaaS SQL Server needs to be migrated before database restore. Bu makale, sertifikanın Azure SQL Veritabanı Yönetilen Örneği’ne el ile geçiş işleminde size yol gösterir:
+Yerel geri yükleme seçeneği kullanılarak [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) tarafından korunan bir VERITABANıNı Azure SQL veritabanı yönetilen örneği 'ne geçirirken, şirket Içi veya ıaas SQL Server karşılık gelen sertifikanın veritabanı geri yüklemeden önce geçirilmesi gerekir. Bu makale, sertifikanın Azure SQL Veritabanı Yönetilen Örneği’ne el ile geçiş işleminde size yol gösterir:
 
 > [!div class="checklist"]
 > * Sertifikayı Kişisel Bilgi Değişimi (.pfx) dosyası olarak dışarı aktarma
@@ -30,7 +30,7 @@ When migrating a database protected by [Transparent Data Encryption](https://doc
 Tam yönetilen hizmet kullanılarak hem TDE korumalı veritabanının hem de ilgili sertifikanın sorunsuz geçişini sağlamaya yönelik alternatif bir seçenek için bkz. [Azure Veritabanı Geçiş Hizmeti'ni kullanarak şirket içi veritabanınızı Yönetilen Örneğe geçirme](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Geçirilen sertifika yalnızca TDE korumalı veritabanını geri yüklemek için kullanılır. Soon after restore is done, the migrated certificate gets replaced by a different protector, either service-managed certificate or asymmetric key from the key vault, depending on the type of the transparent data encryption you set on the instance.
+> Geçirilen sertifika yalnızca TDE korumalı veritabanını geri yüklemek için kullanılır. Geri yükleme işlemi yapıldıktan kısa süre sonra, geçirilen sertifika, örnekte belirlediğiniz saydam veri şifrelemesinin türüne bağlı olarak, hizmet tarafından yönetilen sertifika veya asimetrik anahtar tarafından farklı bir koruyucu ile değiştirilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,15 +43,15 @@ Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
 Aşağıdakilere sahip olduğunuzdan emin olun:
 
-- Azure PowerShell module [installed and updated](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
+- Azure PowerShell modül [yüklendi ve güncelleştirildi](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [Az. SQL modülü](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-Run the following commands in PowerShell to install/update the module:
+Modülü yüklemek/güncelleştirmek için PowerShell 'de aşağıdaki komutları çalıştırın:
 
 ```azurepowershell
 Install-Module -Name Az.Sql
@@ -60,7 +60,7 @@ Update-Module -Name Az.Sql
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
+Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 * * *
 
@@ -127,7 +127,7 @@ Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa
 
 4. Sertifikayı ve özel anahtarı Kişisel Bilgi Değişimi biçiminde dışarı aktarmak için sihirbazı izleyin
 
-## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Upload certificate to Azure SQL Database Managed Instance using Azure PowerShell cmdlet
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell cmdlet 'ini kullanarak Azure SQL veritabanı yönetilen örneği 'ne sertifika yükleme
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -158,7 +158,7 @@ Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You need to first [setup an Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) with your *.pfx* file.
+Önce *. pfx* dosyanız ile [bir Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) ayarlamanız gerekir.
 
 1. PowerShell’deki hazırlık adımlarını başlatın:
 
@@ -186,6 +186,6 @@ Sertifikaya artık belirtilen Yönetilen Örnekten ulaşılabilir ve buna karş�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this article, you learned how to migrate certificate protecting encryption key of database with Transparent Data Encryption, from the on-premises or IaaS SQL Server to Azure SQL Database Managed Instance.
+Bu makalede, şirket içi veya IaaS SQL Server Azure SQL veritabanı yönetilen örneği ' ne Saydam Veri Şifrelemesi ile veritabanının şifreleme anahtarını koruyan sertifikayı nasıl geçirebileceğiniz öğrendiniz.
 
 Azure SQL Veritabanı Yönetilen Örneği’nde veritabanı yedeğini geri yüklemeyi öğrenmek için bkz. [Veritabanı yedeğini Azure SQL Veritabanı Yönetilen Örneği’ne geri yükleme](sql-database-managed-instance-get-started-restore.md).

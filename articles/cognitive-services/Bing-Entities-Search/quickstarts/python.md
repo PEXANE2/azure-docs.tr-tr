@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using Python - Bing Entity Search'
+title: 'Hızlı başlangıç: Python ile REST API arama isteği gönderme Bing Varlık Arama'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send a request to the Bing Entity Search REST API using Python, and receive a JSON response.
+description: Python kullanarak Bing Varlık Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,21 +17,21 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327096"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Quickstart: Send a search request to the Bing Entity Search REST API using Python
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Hızlı başlangıç: Python kullanarak Bing Varlık Arama REST API arama isteği gönderme
 
-Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple Python application sends a news search query to the API, and displays the response. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)’da mevcuttur.
+Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)’da mevcuttur.
 
 Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Python](https://www.python.org/downloads/) 2.x or 3.x
+* [Python](https://www.python.org/downloads/) 2. x veya 3. x
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Create a new Python file in your favorite IDE or editor, and add the following imports. Create variables for your subscription key, endpoint, market, and a search query. You can find your endpoint in the Azure dashboard.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarmaları ekleyin. Abonelik anahtarınız, uç nokta, Pazar ve arama sorgunuz için değişkenler oluşturun. Uç noktanızı Azure panosu 'nda bulabilirsiniz.
 
     ```python
     import http.client, urllib.parse
@@ -44,18 +44,18 @@ Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama dili
     query = 'italian restaurants near me'
     ```
 
-2. Create a request url by appending your market variable to the `?mkt=` parameter. Url-encode your query and appending it to the `&q=` parameter. 
+2. Pazar değişkeninizi `?mkt=` parametresine ekleyerek bir istek URL 'si oluşturun. URL-sorgunuzu kodlayın ve `&q=` parametresine ekleyerek. 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
     ```
 
-## <a name="send-a-request-and-get-a-response"></a>Send a request and get a response
+## <a name="send-a-request-and-get-a-response"></a>İstek gönderme ve yanıt edinme
 
-1. Create a function called `get_suggestions()`. Then perform the following steps.
-   1. Add your subscription key to a dictionary with `Ocp-Apim-Subscription-Key` as a key.
-   2. Use `http.client.HTTPSConnection()` to create a HTTPS client object. Send a `GET` request using `request()` with your path and parameters, and header information.
-   3. Store the response with `getresponse()`, and return `response.read()`.
+1. `get_suggestions()`adlı bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
+   1. Abonelik anahtarınızı anahtar olarak `Ocp-Apim-Subscription-Key` bir sözlüğe ekleyin.
+   2. HTTPS istemci nesnesi oluşturmak için `http.client.HTTPSConnection()` kullanın. Yol ve parametreleriniz ile `request()` kullanarak `GET` isteği ve başlık bilgilerini gönderin.
+   3. `getresponse()`ile yanıtı depolayın ve `response.read()`döndürün.
 
       ```python
       def get_suggestions ():
@@ -66,14 +66,14 @@ Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama dili
        return response.read()
       ```
 
-2. Call `get_suggestions()`, and print the json response.
+2. `get_suggestions()`çağırın ve JSON yanıtını yazdırın.
 
     ```python
     result = get_suggestions ()
     print (json.dumps(json.loads(result), indent=4))
     ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 
@@ -141,7 +141,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API](../search-the-web.md)
-* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Varlık Arama API'si nedir?](../search-the-web.md)
+* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

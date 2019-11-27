@@ -87,8 +87,8 @@ Varlık (a), varlık (B) için önemli olduğunda bu varlığın (A) algılanabi
 Örneğin, sokak adresi varlığı (A) algılanırsa, sokak adresini bulma (A), sevkiyat adresi varlığı için tahmine ağırlık ekler (B). 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
-Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).
+[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [Özellik Ekle](luis-how-to-add-features.md) LUIS uygulamanızı özellikleri ekleme hakkında daha fazla bilgi için.
+LUSıS uygulamanıza özellikler ekleme hakkında daha fazla bilgi edinmek için bkz. [özellik ekleme](luis-how-to-add-features.md) .

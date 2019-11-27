@@ -1,6 +1,6 @@
 ---
-title: Conditional Access require managed device - Azure Active Directory
-description: Learn how to configure Azure Active Directory (Azure AD) device-based Conditional Access policies that require managed devices for cloud app access.
+title: Koşullu erişim yönetilen cihaz gerektirir-Azure Active Directory
+description: Cloud App Access için yönetilen cihazlar gerektiren Azure Active Directory (Azure AD) cihaz tabanlı koşullu erişim ilkelerinin nasıl yapılandırılacağını öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,82 +18,82 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452405"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>How To: Require managed devices for cloud app access with Conditional Access
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
-In a mobile-first, cloud-first world, Azure Active Directory (Azure AD) enables single sign-on to apps, and services from anywhere. Authorized users can access your cloud apps from a broad range of devices including mobile and also personal devices. However, many environments have at least a few apps that should only be accessed by devices that meet your standards for security and compliance. These devices are also known as managed devices. 
+Mobil ve bulut öncelikli bir dünyada Azure Active Directory (Azure AD), uygulamalara ve hizmetlere her yerden çoklu oturum açma imkanı sağlar. Yetkili kullanıcılar, mobil ve ayrıca kişisel cihazlar dahil olmak üzere çok çeşitli cihazlardan bulut uygulamalarınıza erişebilirler. Ancak, birçok ortamda yalnızca güvenlik ve uyumluluk standartlarınızı karşılayan cihazlar tarafından erişilmesi gereken en az bir uygulama vardır. Bu cihazlar yönetilen cihazlar olarak da bilinir. 
 
-This article explains how you can configure Conditional Access policies that require managed devices to access certain cloud apps in your environment. 
+Bu makalede, yönetilen cihazların ortamınızdaki belirli bulut uygulamalarına erişmesi için gereken koşullu erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Requiring managed devices for cloud app access ties **Azure AD Conditional Access** and **Azure AD device management** together. If you are not familiar with one of these areas yet, you should read the following topics, first:
+Bulut uygulama erişimi için yönetilen cihazların gerekli olması, **Azure AD koşullu erişimi** Ile **Azure AD cihaz yönetimini** birbirine bağlalardır. Henüz bu alanlardan birini bilmiyorsanız, önce aşağıdaki konuları okumanız gerekir:
 
-- **[Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** - This article provides you with a conceptual overview of Conditional Access and the related terminology.
-- **[Introduction to device management in Azure Active Directory](../devices/overview.md)** - This article gives you an overview of the various options you have to get devices under organizational control. 
+- **[Azure Active Directory Koşullu erişim](../active-directory-conditional-access-azure-portal.md)** -Bu makalede, koşullu erişime ve ilgili terimlere kavramsal bir genel bakış sunulmaktadır.
+- **[Azure Active Directory cihaz yönetimine giriş](../devices/overview.md)** -Bu makalede, cihazları kurumsal denetim altında almak için sahip olduğunuz çeşitli seçeneklere genel bakış sunulmaktadır. 
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Mastering the balance between security and productivity is a challenge. The proliferation of supported devices to access your cloud resources helps to improve the productivity of your users. On the flip side, you probably don't want certain resources in your environment to be accessed by devices with an unknown protection level. For the affected resources, you should require that users can only access them using a managed device. 
+Güvenlik ve üretkenlik arasındaki Bakiyenin dengelenmesi bir zorluktur. Bulut kaynaklarınıza erişmek için desteklenen cihazların uzalama, kullanıcılarınızın verimliliğini artırmaya yardımcı olur. Ters çevir tarafında, ortamınızdaki belirli kaynaklara bilinmeyen koruma düzeyi olan cihazların erişmesini istemezsiniz. Etkilenen kaynaklar için kullanıcıların yalnızca yönetilen bir cihaz kullanarak erişebilmesi gerekir. 
 
-With Azure AD Conditional Access, you can address this requirement with a single policy that grants access:
+Azure AD koşullu erişimi sayesinde, erişim izni veren tek bir ilkeyle bu gereksinimi ele alabilirsiniz:
 
-- To selected cloud apps
-- For selected users and groups
-- Requiring a managed device
+- Seçili bulut uygulamalarına
+- Seçili kullanıcılar ve gruplar için
+- Yönetilen bir cihaz gerektirme
 
-## <a name="managed-devices"></a>Managed devices  
+## <a name="managed-devices"></a>Yönetilen cihazlar  
 
-In simple terms, managed devices are devices that are under *some sort* of organizational control. In Azure AD, the prerequisite for a managed device is that it has been registered with Azure AD. Registering a device creates an identity for the device in form of a device object. This object is used by Azure to track status information about a device. As an Azure AD administrator, you can already use this object to toggle (enable/disable) the state of a device.
+Basit koşullarda, yönetilen cihazlar bazı kurumsal denetim *sıralaması* altında bulunan cihazlardır. Azure AD 'de, yönetilen bir cihaz için önkoşul Azure AD 'ye kayıtlı. Bir cihazın kaydedilmesi cihaz nesnesi biçiminde cihaz için bir kimlik oluşturur. Bu nesne, Azure tarafından bir cihazla ilgili durum bilgilerini izlemek için kullanılır. Bir Azure AD yöneticisi olarak, bir cihazın durumunu değiştirmek (etkinleştirmek/devre dışı bırakmak) için bu nesneyi zaten kullanabilirsiniz.
   
-![Device-based conditions](./media/require-managed-devices/32.png)
+![Cihaz tabanlı koşullar](./media/require-managed-devices/32.png)
 
-To get a device registered with Azure AD, you have three options: 
+Azure AD 'ye kayıtlı bir cihaz almak için üç seçeneğiniz vardır: 
 
-- **Azure AD registered devices** - to get a personal device registered with Azure AD
-- **Azure AD joined devices** - to get an organizational Windows 10 device that is not joined to an on-premises AD registered with Azure AD. 
-- **Hybrid Azure AD joined devices** - to get a Windows 10 or supported down-level device that is joined to an on-premises AD registered with Azure AD.
+- **Azure AD kayıtlı cihazlar** -Azure AD 'ye kayıtlı kişisel bir cihaz almak için
+- **Azure AD 'ye katılmış cihazlar** -Azure AD 'ye kayıtlı şirket ıçı bir ad 'ye katılmamış bir kuruluş Windows 10 cihazını almak için. 
+- **Karma Azure AD 'ye katılmış cihazlar** -Azure AD 'ye kayıtlı şirket ıçı bir ad 'ye katılmış bir Windows 10 veya desteklenen bir alt düzey cihaz almak için.
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+Bu üç seçenek, [cihaz kimliği](../devices/overview.md) nedir makalesinde açıklanmaktadır.
 
-To become a managed device, a registered device must be either a **Hybrid Azure AD joined device** or a **device that has been marked as compliant**.  
+Yönetilen bir cihaz olması için, kayıtlı bir cihazın **karma bir Azure AD 'ye katılmış cihaz** ya da **uyumlu olarak işaretlenmiş bir cihaz**olması gerekir.  
 
-![Device-based conditions](./media/require-managed-devices/47.png)
+![Cihaz tabanlı koşullar](./media/require-managed-devices/47.png)
  
-## <a name="require-hybrid-azure-ad-joined-devices"></a>Require Hybrid Azure AD joined devices
+## <a name="require-hybrid-azure-ad-joined-devices"></a>Karma Azure AD 'ye katılmış cihazlar gerektir
 
-In your Conditional Access policy, you can select **Require Hybrid Azure AD joined device** to state that the selected cloud apps can only be accessed using a managed device. 
+Koşullu erişim ilkenizde, seçilen bulut uygulamalarının yalnızca yönetilen bir cihaz kullanılarak erişilebilmesini sağlamak için **karma Azure AD 'ye katılmış cihaz gerektir** seçeneğini belirleyebilirsiniz. 
 
-![Device-based conditions](./media/require-managed-devices/10.png)
+![Cihaz tabanlı koşullar](./media/require-managed-devices/10.png)
 
-This setting only applies to Windows 10 or down-level devices such as Windows 7 or Windows 8 that are joined to an on-premises AD. You can only register these devices with Azure AD using a Hybrid Azure AD join, which is an [automated process](../devices/hybrid-azuread-join-plan.md) to get a Windows 10 device registered. 
+Bu ayar yalnızca, şirket içi bir AD 'ye katılmış Windows 7 veya Windows 8 gibi Windows 10 veya alt düzey cihazlar için geçerlidir. Bu cihazları yalnızca, kayıtlı bir Windows 10 cihazını almak için [otomatik bir işlem](../devices/hybrid-azuread-join-plan.md) olan karma BIR Azure AD JOIN kullanarak Azure AD 'ye kaydedebilirsiniz. 
 
-![Device-based conditions](./media/require-managed-devices/45.png)
+![Cihaz tabanlı koşullar](./media/require-managed-devices/45.png)
 
-What makes a Hybrid Azure AD joined device a managed device?  For devices that are joined to an on-premises AD, it is assumed that the control over these devices is enforced using management solutions such as **System Center Configuration Manager (SCCM)** or **group policy (GP)** to manage them. Because there is no method for Azure AD to determine whether any of these methods has been applied to a device, requiring a hybrid Azure AD joined device is a relatively weak mechanism to require a managed device. It is up to you as an administrator to judge whether the methods that are applied to your on-premises domain-joined devices are strong enough to constitute a managed device if such a device is also a Hybrid Azure AD joined device.
+Hibrit Azure AD 'ye katılmış cihaza yönetilen cihaz ne olur?  Şirket içi bir AD 'ye katılmış cihazlar için, bu cihazların üzerindeki denetimin **System Center Configuration Manager (SCCM)** gibi yönetim çözümlerini veya bunları yönetmek için **Grup İlkesi (GP)** ile uygulanacağını kabul edilir. Azure AD 'nin bu yöntemlerin bir cihaza uygulanıp uygulanmadığı tespit etmek için bir yöntem olmadığından, karma bir Azure AD 'ye katılmış cihazın gerekli olması, yönetilen bir cihaz gerektiren görece zayıf bir mekanizmadır. Şirket içi etki alanına katılmış cihazlara uygulanan yöntemlerin, bu tür bir cihazın karma Azure AD 'ye katılmış bir cihaz olması halinde yönetilen bir cihaz oluşturması için yeterince güçlü olup olmadığını bir yönetici olarak öğreneceksiniz.
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Require device to be marked as compliant
+## <a name="require-device-to-be-marked-as-compliant"></a>Cihazın uyumlu olarak işaretlenmesini gerektir
 
-The option to *require a device to be marked as compliant* is the strongest form to request a managed device.
+Bir *cihazın uyumlu olarak işaretlenmesini gerektirme* seçeneği, yönetilen bir cihaz istemek için en güçlü formdur.
 
-![Device-based conditions](./media/require-managed-devices/11.png)
+![Cihaz tabanlı koşullar](./media/require-managed-devices/11.png)
 
-This option requires a device to be registered with Azure AD, and also to be marked as compliant by:
+Bu seçenek, bir cihazın Azure AD 'ye kaydedilmesini ve ayrıca, tarafından uyumlu olarak işaretlenmesini gerektirir:
          
 - Intune
-- A third-party mobile device management (MDM) system that manages Windows 10 devices via Azure AD integration. Third-party MDM systems for device OS types other than Windows 10 are not supported.
+- Windows 10 cihazlarını Azure AD tümleştirmesi aracılığıyla yöneten bir üçüncü taraf mobil cihaz yönetimi (MDM) sistemi. Windows 10 dışındaki cihaz işletim sistemi türleri için üçüncü taraf MDM sistemleri desteklenmez.
  
-![Device-based conditions](./media/require-managed-devices/46.png)
+![Cihaz tabanlı koşullar](./media/require-managed-devices/46.png)
 
-For a device that is marked as compliant, you can assume that: 
+Uyumlu olarak işaretlenen bir cihaz için şunları varsayabilirsiniz: 
 
-- The mobile devices your workforce uses to access company data are managed
-- Mobile apps your workforce uses are managed
-- Your company information is protected by helping to control the way your workforce accesses and shares it
-- The device and its apps are compliant with company security requirements
+- İş gücünüzün şirket verilerine erişmek için kullandığı mobil cihazlar yönetilir
+- İş gücünüzün kullandığı mobil uygulamalar yönetiliyor
+- Şirket bilgileriniz, iş gücünüzün eriştiği ve paylaştığı bir şekilde denetim sağlanmasına yardımcı olur.
+- Cihaz ve uygulamaları, şirket güvenlik gereksinimleriyle uyumludur
 
 > [!NOTE]
-> If you configure a policy to require compliant devices users may be prompted on Mac, iOS, and Android to select a device certificate during policy evaluation. This is a known behavior.
+> Uyumlu cihazlar gerektirecek bir ilke yapılandırırsanız, kullanıcılar, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmek için Mac, iOS ve Android 'de istenebilir. Bu bilinen bir davranıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Before configuring a device-based Conditional Access policy in your environment, you should take a look at the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+Ortamınızda cihaz tabanlı bir koşullu erişim ilkesini yapılandırmadan önce, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)göz atalım.

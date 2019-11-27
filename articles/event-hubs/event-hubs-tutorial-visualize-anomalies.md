@@ -217,7 +217,7 @@ Steam Analytics işinin girişleri, olay hub'ından gelen kredi kartı işlemler
 
    ![Stream Analytics işine giriş akışı ekleme adımlarını gösteren ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. **Kaydet**’e tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
@@ -239,7 +239,7 @@ Steam Analytics işinin girişleri, olay hub'ından gelen kredi kartı işlemler
 
 4. Kalan alanlarda varsayılan değerleri kabul edin.
 
-5. **Kaydet**’e tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
@@ -268,7 +268,7 @@ Bu sorgu, Power BI görselleştirmesine gönderilecek verilerin alınması için
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **Kaydet**’e tıklayın.
+4. **Save (Kaydet)** düğmesine tıklayın.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu test etme 
 

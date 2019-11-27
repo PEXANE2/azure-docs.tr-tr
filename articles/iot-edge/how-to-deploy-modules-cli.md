@@ -1,6 +1,6 @@
 ---
-title: Deploy modules from command line - Azure IoT Edge | Microsoft Docs
-description: Use the IoT extension for Azure CLI to deploy modules to an IoT Edge device
+title: Komut satırından - Azure IOT Edge modüllerini dağıtmak | Microsoft Docs
+description: Modüller IOT Edge cihazına dağıtmak için Azure CLI için IOT uzantısı kullanma
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -16,28 +16,28 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457465"
 ---
-# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Deploy Azure IoT Edge modules with Azure CLI
+# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI ile Azure IOT Edge modüllerini dağıtmak
 
-Once you create IoT Edge modules with your business logic, you want to deploy them to your devices to operate at the edge. If you have multiple modules that work together to collect and process data, you can deploy them all at once and declare the routing rules that connect them.
+IOT Edge modülleri, iş mantığı ile oluşturduktan sonra bunları ucuna çalışılacak cihazlarınıza dağıtmak istiyorsanız. Toplamak ve veri işlemek için birlikte çalışan birden çok modül varsa, bunları tamamını aynı anda dağıtabilir ve bunları bağlayan yönlendirme kurallarını bildirin.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is an open-source cross platform command-line tool for managing Azure resources such as IoT Edge. It enables you to manage Azure IoT Hub resources, device provisioning service instances, and linked-hubs out of the box. The new IoT extension enriches Azure CLI with features such as device management and full IoT Edge capability.
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) , IoT Edge gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure IOT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub'ları hazır yönetmenizi sağlar. Yeni IOT uzantısı, Azure CLI cihaz yönetimi ve tam IOT Edge özelliği gibi özelliklerle zenginleştirir.
 
-This article shows how to create a JSON deployment manifest, then use that file to push the deployment to an IoT Edge device. For information about creating a deployment that targets multiple devices based on their shared tags, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor-cli.md)
+Bu makalede, bir JSON dağıtım bildirimi oluşturun, sonra IOT Edge cihazına dağıtım göndermek için bu dosyayı kullanma gösterilmektedir. Paylaşılan etiketlerine göre birden çok cihazı hedefleyen bir dağıtım oluşturma hakkında bilgi için bkz. [IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme](how-to-deploy-monitor-cli.md)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* An [IoT hub](../iot-hub/iot-hub-create-using-cli.md) in your Azure subscription.
-* An [IoT Edge device](how-to-register-device.md#register-with-the-azure-cli) with the IoT Edge runtime installed.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in your environment. At a minimum, your Azure CLI version must be 2.0.24 or above. Doğrulamak için `az --version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar.
-* The [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-using-cli.md) .
+* IoT Edge çalışma zamanı yüklü [IoT Edge bir cihaz](how-to-register-device.md#register-with-the-azure-cli) .
+* Ortamınızdaki [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) . En az 2.0.24 Azure CLI sürümünüzü olmalıdır veya üzeri. Doğrulamak için `az --version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar.
+* [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="configure-a-deployment-manifest"></a>Configure a deployment manifest
+## <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-A deployment manifest is a JSON document that describes which modules to deploy, how data flows between the modules, and desired properties of the module twins. For more information about how deployment manifests work and how to create them, see [Understand how IoT Edge modules can be used, configured, and reused](module-composition.md).
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Dağıtım bildirimlerinin nasıl çalıştığı ve nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [IoT Edge modüllerinin nasıl kullanılabileceğini, yapılandırılacağını ve yeniden kullanıldığını anlayın](module-composition.md).
 
-To deploy modules using the Azure CLI, save the deployment manifest locally as a .json file. You will use the file path in the next section when you run the command to apply the configuration to your device.
+Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel olarak bir .json dosyası kaydedin. Cihazınıza yapılandırmayı uygulamak için komutu çalıştırdığınızda, sonraki bölümde dosya yolu kullanır.
 
-Here's a basic deployment manifest with one module as an example:
+Örnek olarak bir modülü ile temel bir dağıtım bildirimi şöyledir:
 
    ```json
    {
@@ -105,23 +105,23 @@ Here's a basic deployment manifest with one module as an example:
 
 ## <a name="deploy-to-your-device"></a>Cihazınıza dağıtma
 
-You deploy modules to your device by applying the deployment manifest that you configured with the module information.
+Modül bilgileri yapılandırdığınız dağıtım bildirimini uygulayarak modülleri cihazınıza dağıtın.
 
-Change directories into the folder where your deployment manifest is saved. If you used one of the VS Code IoT Edge templates, use the `deployment.json` file in the **config** folder of your solution directory and not the `deployment.template.json` file.
+Dağıtım bildiriminin kaydedildiği klasöre dizinleri değiştirin. VS Code IoT Edge şablonlarından birini kullandıysanız, `deployment.template.json` dosyasına değil çözüm dizininizin **config** klasöründeki `deployment.json` dosyasını kullanın.
 
-Use the following command to apply the configuration to an IoT Edge device:
+IOT Edge cihazına yapılandırmayı uygulamak için aşağıdaki komutu kullanın:
 
    ```cli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-The device ID parameter is case-sensitive. The content parameter points to the deployment manifest file that you saved.
+Cihaz KIMLIĞI parametresi, büyük/küçük harfe duyarlıdır. İçerik parametresi dağıtım noktalarına bildirim kaydettiğiniz dosyası.
 
-   ![az iot edge set-modules output](./media/how-to-deploy-cli/set-modules.png)
+   ![az IOT edge modülleri kümesini çıktı](./media/how-to-deploy-cli/set-modules.png)
 
-## <a name="view-modules-on-your-device"></a>View modules on your device
+## <a name="view-modules-on-your-device"></a>Cihazınızda modülleri görüntüleme
 
-Once you've deployed modules to your device, you can view all of them with the following command:
+Cihazınıza modülleri dağıttıktan sonra tüm bunları aşağıdaki komutla görebilirsiniz:
 
 IoT Edge cihazınızda modülleri görüntüleme:
 
@@ -129,10 +129,10 @@ IoT Edge cihazınızda modülleri görüntüleme:
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-The device ID parameter is case-sensitive.
+Cihaz KIMLIĞI parametresi, büyük/küçük harfe duyarlıdır.
 
-   ![az iot hub module-identity list output](./media/how-to-deploy-cli/list-modules.png)
+   ![az IOT hub kimlik modülü liste çıkışı](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn how to [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)
+[IoT Edge modüllerini ölçekli olarak dağıtmayı ve izlemeyi](how-to-deploy-monitor.md) öğrenin

@@ -1,6 +1,6 @@
 ---
-title: Password protection monitor and logging- Azure Active Directory
-description: Understand Azure AD Password Protection monitoring and logging
+title: Parola koruma İzleyicisi ve günlüğü-Azure Active Directory
+description: Azure AD parola koruması izlemeyi ve günlüğe kaydetmeyi anlama
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,15 +18,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381688"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD Password Protection monitoring and logging
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD parola koruması izleme ve günlüğe kaydetme
 
-After the deployment of Azure AD Password Protection, monitoring and reporting are essential tasks. This article goes into detail to help you understand various monitoring techniques, including where each service logs information and how to report on the use of Azure AD Password Protection.
+Azure AD parola koruması, izleme ve raporlama dağıtımıyla sonra önemli görevlerdir. Bu makale, her bir hizmetin bilgileri günlüğe kaydettiği ve Azure AD parola korumasının kullanımını nasıl rapor açtığına dahil olmak üzere çeşitli izleme tekniklerini anlamanıza yardımcı olmak için ayrıntılı bir hale geçer.
 
-Monitoring and reporting are done either by event log messages or by running PowerShell cmdlets. The DC agent and proxy services both log event log messages. All PowerShell cmdlets described below are only available on the proxy server (see the AzureADPasswordProtection PowerShell module). The DC agent software does not install a PowerShell module.
+İzleme ve raporlama olay günlüğü iletileri ya da PowerShell cmdlet 'leri çalıştırılarak yapılır. DC Aracısı ve proxy hizmetleri, olay günlüğü iletilerinin ikisini de günlüğe kaydeder. Aşağıda açıklanan tüm PowerShell cmdlet 'leri yalnızca proxy sunucuda mevcuttur (bkz. AzureADPasswordProtection PowerShell modülü). DC Aracısı yazılımı PowerShell modülünü yüklemez.
 
-## <a name="dc-agent-event-logging"></a>DC agent event logging
+## <a name="dc-agent-event-logging"></a>DC Aracısı olay günlüğü
 
-On each domain controller, the DC agent service software writes the results of each individual password validation operation (and other status) to a local event log:
+Her etki alanı denetleyicisinde, DC Aracısı hizmet yazılımı her bir parola doğrulama işleminin sonuçlarını (ve diğer durumu) yerel bir olay günlüğüne yazar:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
@@ -34,52 +34,52 @@ On each domain controller, the DC agent service software writes the results of e
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-The DC agent Admin log is the primary source of information for how the software is behaving.
+DC Aracısı Yönetici günlüğü, yazılımın nasıl davranmakta olduğunu gösteren birincil bilgi kaynağıdır.
 
-Note that the Trace log is off by default.
+Izleme günlüğünün varsayılan olarak kapalı olduğunu unutmayın.
 
-Events logged by the various DC agent components fall within the following ranges:
+Çeşitli DC Aracısı bileşenleri tarafından günlüğe kaydedilen olaylar aşağıdaki aralıklar içinde yer almalıdır:
 
-|Bileşen |Event ID range|
+|Bileşen |Olay KIMLIĞI aralığı|
 | --- | --- |
-|DC Agent password filter dll| 10000-19999|
-|DC agent service hosting process| 20000-29999|
-|DC agent service policy validation logic| 30000-39999|
+|DC aracısı parola filtresi dll 'si| 10000-19999|
+|DC aracı hizmeti barındırma işlemi| 20000-29999|
+|DC Aracısı hizmet ilkesi doğrulama mantığı| 30000-39999|
 
-## <a name="dc-agent-admin-event-log"></a>DC agent Admin event log
+## <a name="dc-agent-admin-event-log"></a>DC Aracısı Yönetici olay günlüğü
 
-### <a name="password-validation-outcome-events"></a>Password validation outcome events
+### <a name="password-validation-outcome-events"></a>Parola doğrulama sonucu olayları
 
-On each domain controller, the DC agent service software writes the results of each individual password validation to the DC agent admin event log.
+Her etki alanı denetleyicisinde, DC Aracısı hizmet yazılımı her bir parola doğrulamasının sonuçlarını DC Aracısı Yönetici olay günlüğüne yazar.
 
-For a successful password validation operation, there is generally one event logged from the DC agent password filter dll. For a failing password validation operation, there are generally two events logged, one from the DC agent service, and one from the DC Agent password filter dll.
+Başarılı bir parola doğrulama işlemi için, DC aracısı parola filtresi dll 'sinden genellikle bir olay günlüğe kaydedilir. Hatalı parola doğrulama işlemi için, biri DC aracı hizmetinden diğeri de DC aracısı parola filtresi dll 'sinden günlüğe kaydedilen genellikle iki olay vardır.
 
-Discrete events to capture these situations are logged, based around the following factors:
+Bu durumları yakalamaya yönelik ayrık olaylar, aşağıdaki faktörlere göre günlüğe kaydedilir:
 
-* Whether a given password is being set or changed.
-* Whether validation of a given password passed or failed.
-* Whether validation failed due to the Microsoft global policy, the organizational policy, or a combination.
-* Whether audit only mode is currently on or off for the current password policy.
+* Belirli bir parolanın ayarlanmış veya değiştirilmiş olup olmadığı.
+* Verilen parola doğrulamanın başarılı veya başarısız olup olmadığı.
+* Microsoft genel ilkesi, kuruluş ilkesi veya bir bileşim nedeniyle doğrulamanın başarısız olup olmadığı.
+* Geçerli parola ilkesi için yalnızca denetim modunun etkin olup olmadığı.
 
-The key password-validation-related events are as follows:
+Anahtar parolası-doğrulama ile ilgili olaylar aşağıdaki gibidir:
 
-|   |Parola değiştirme |Password set|
+|   |Parola değiştirme |Parola kümesi|
 | --- | :---: | :---: |
-|Pass |10014 |10015|
-|Fail (due to customer password policy)| 10016, 30002| 10017, 30003|
-|Fail (due to Microsoft password policy)| 10016, 30004| 10017, 30005|
-|Fail (due to combined Microsoft and customer password policies)| 10016, 30026| 10017, 30027|
-|Audit-only Pass (would have failed customer password policy)| 10024, 30008| 10025, 30007|
-|Audit-only Pass (would have failed Microsoft password policy)| 10024, 30010| 10025, 30009|
-|Audit-only Pass (would have failed combined Microsoft and customer password policies)| 10024, 30028| 10025, 30029|
+|Aktar |10014 |10015|
+|Başarısız (müşteri parola ilkesi nedeniyle)| 10016, 30002| 10017, 30003|
+|Başarısız (Microsoft parola ilkesi nedeniyle)| 10016, 30004| 10017, 30005|
+|Başarısız (Birleşik Microsoft ve müşteri parola ilkeleri nedeniyle)| 10016, 30026| 10017, 30027|
+|Yalnızca denetim geçişi (müşteri parolası ilkesi başarısız olur)| 10024, 30008| 10025, 30007|
+|Yalnızca denetim geçişi (Microsoft parola ilkesi başarısız olur)| 10024, 30010| 10025, 30009|
+|Yalnızca denetim geçişi (Microsoft ve müşteri parola ilkelerini birleştirmelidir)| 10024, 30028| 10025, 30029|
 
-The cases in the table above that refer to "combined policies" are referring to situations where a user's password was found to contain at least one token from both the Microsoft banned password list and the customer banned password list.
+Yukarıdaki tabloda yer alan "birleştirilmiş ilkeler" e başvuran durumlar, bir kullanıcının parolasının hem Microsoft yasaklanmış parola listesi hem de müşteri yasaklanmış parola listesinden en az bir belirteç içerdiği durumlara başvururlar.
 
-When a pair of events is logged together, both events are explicitly associated by having the same CorrelationId.
+Bir çift olay çifti birlikte kaydedildiğinde, her iki olay da aynı CorrelationId 'ye sahip tarafından açıkça ilişkilendirilir.
 
-### <a name="password-validation-summary-reporting-via-powershell"></a>Password validation summary reporting via PowerShell
+### <a name="password-validation-summary-reporting-via-powershell"></a>PowerShell aracılığıyla parola doğrulama özeti raporlaması
 
-The `Get-AzureADPasswordProtectionSummaryReport` cmdlet may be used to produce a summary view of password validation activity. An example output of this cmdlet is as follows:
+`Get-AzureADPasswordProtectionSummaryReport` cmdlet 'i, parola doğrulama etkinliğinin Özet görünümünü oluşturmak için kullanılabilir. Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -94,32 +94,32 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-The scope of the cmdlet’s reporting may be influenced using one of the –Forest, -Domain, or –DomainController parameters. Not specifying a parameter implies –Forest.
+Cmdlet 'in raporlama kapsamı – Forest,-Domain veya – DomainController parametrelerinden biri kullanılarak etkilenebilir. Bir parametre belirtilmemekle, – Forest anlamına gelir.
 
-The `Get-AzureADPasswordProtectionSummaryReport` cmdlet works by querying the DC agent admin event log, and then counting the total number of events that correspond to each displayed outcome category. The following table contains the mappings between each outcome and its corresponding event ID:
+`Get-AzureADPasswordProtectionSummaryReport` cmdlet 'i, DC Aracısı Yönetici olay günlüğünü sorgulayarak ve ardından görüntülenen her bir sonuç kategorisine karşılık gelen olayların toplam sayısını sayarak işe yarar. Aşağıdaki tabloda, her bir sonuç ve onun karşılık gelen olay KIMLIĞI arasındaki eşlemeler yer almaktadır:
 
-|Get-AzureADPasswordProtectionSummaryReport property |Corresponding event ID|
+|Get-AzureADPasswordProtectionSummaryReport özelliği |Karşılık gelen olay KIMLIĞI|
 | :---: | :---: |
-|PasswordChangesValidated |10014|
-|PasswordSetsValidated |10015|
-|PasswordChangesRejected |10016|
-|PasswordSetsRejected |10017|
-|PasswordChangeAuditOnlyFailures |10024|
-|PasswordSetAuditOnlyFailures |10025|
+|Passwordchangesdoğruladı |10014|
+|Passwordsetsdoğrulanan |10015|
+|Passwordchangesreddedildi |10016|
+|Passwordsetsreddedildi |10017|
+|Passwordchangesestonlyarızaları |10024|
+|Passwordsetauditonlyarızaları |10025|
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Note that the `Get-AzureADPasswordProtectionSummaryReport` cmdlet is shipped in PowerShell script form and if needed may be referenced directly at the following location:
+`Get-AzureADPasswordProtectionSummaryReport` cmdlet 'inin PowerShell betik biçiminde gönderildiğini ve gerekirse doğrudan aşağıdaki konumda başvurulduğunu unutmayın:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
 > [!NOTE]
-> This cmdlet works by opening a PowerShell session to each domain controller. In order to succeed, PowerShell remote session support must be enabled on each domain controller, and the client must have sufficient privileges. For more information on PowerShell remote session requirements, run 'Get-Help about_Remote_Troubleshooting' in a PowerShell window.
+> Bu cmdlet, her etki alanı denetleyicisine bir PowerShell oturumu açarak işe yarar. Başarılı olmak için, her etki alanı denetleyicisinde PowerShell uzak oturum desteğinin etkinleştirilmesi ve istemcinin yeterli ayrıcalıklara sahip olması gerekir. PowerShell uzak oturum gereksinimleri hakkında daha fazla bilgi için bir PowerShell penceresinde ' Get-Help about_Remote_Troubleshooting ' öğesini çalıştırın.
 
 > [!NOTE]
-> This cmdlet works by remotely querying each DC agent service’s Admin event log. If the event logs contain large numbers of events, the cmdlet may take a long time to complete. In addition, bulk network queries of large data sets may impact domain controller performance. Therefore, this cmdlet should be used carefully in production environments.
+> Bu cmdlet, her DC Aracısı hizmetinin yönetici olay günlüğünü uzaktan sorgulayarak işe yarar. Olay günlükleri çok sayıda olay içeriyorsa, cmdlet 'in tamamlanması uzun zaman alabilir. Ayrıca, büyük veri kümelerinin toplu ağ sorguları, etki alanı denetleyicisi performansını etkileyebilir. Bu nedenle, bu cmdlet üretim ortamlarında dikkatle kullanılmalıdır.
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Sample event log message for Event ID 10014 (successful password change)
+### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Olay KIMLIĞI 10014 için örnek olay günlüğü iletisi (başarılı parola değişikliği)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
@@ -128,7 +128,7 @@ The changed password for the specified user was validated as compliant with the 
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Sample event log message for Event ID 10017 and 30003 (failed password set)
+### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Olay KIMLIĞI 10017 ve 30003 için örnek olay günlüğü iletisi (başarısız parola kümesi)
 
 10017:
 
@@ -148,7 +148,7 @@ The reset password for the specified user was rejected because it matched at lea
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Sample event log message for Event ID 30001 (password accepted due to no policy available)
+### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Olay KIMLIĞI 30001 için örnek olay günlüğü iletisi (kullanılabilir ilke olmaması nedeniyle parola kabul edildi)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -175,7 +175,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Sample event log message for Event ID 30006 (new policy being enforced)
+### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Olay KIMLIĞI 30006 için örnek olay günlüğü iletisi (zorlanmakta olan yeni ilke)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -187,7 +187,7 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Sample event log message for Event ID 30019 (Azure AD Password Protection is disabled)
+### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Olay KIMLIĞI 30019 için örnek olay günlüğü iletisi (Azure AD parola koruması devre dışı)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
@@ -196,63 +196,63 @@ No further events will be logged until the policy is changed.%n
 
 ```
 
-## <a name="dc-agent-operational-log"></a>DC Agent Operational log
+## <a name="dc-agent-operational-log"></a>DC Aracısı Işlem günlüğü
 
-The DC agent service will also log operational-related events to the following log:
+DC Aracısı hizmeti, işlemsel ilgili olayları aşağıdaki günlüğe de kaydeder:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-## <a name="dc-agent-trace-log"></a>DC Agent Trace log
+## <a name="dc-agent-trace-log"></a>DC Aracısı Izleme günlüğü
 
-The DC agent service can also log verbose debug-level trace events to the following log:
+DC Aracısı hizmeti ayrıntılı hata ayıklama düzeyi izleme olaylarını aşağıdaki günlüğe de kaydedebilir:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-Trace logging is disabled by default.
+İzleme günlüğü varsayılan olarak devre dışıdır.
 
 > [!WARNING]
-> When enabled, the Trace log receives a high volume of events and may impact domain controller performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Etkinleştirildiğinde, Izleme günlüğü yüksek hacimli olaylar alır ve etki alanı denetleyicisi performansını etkileyebilir. Bu nedenle, bu gelişmiş günlüğün yalnızca bir sorun daha derin bir araştırma gerektirdiğinde ve daha sonra yalnızca en az bir süre için etkinleştirilmesi gerekir.
 
-## <a name="dc-agent-text-logging"></a>DC Agent text logging
+## <a name="dc-agent-text-logging"></a>DC Aracısı metin günlüğü
 
-The DC agent service can be configured to write to a text log by setting the following registry value:
+DC Aracısı hizmeti, aşağıdaki kayıt defteri değerini ayarlayarak bir metin günlüğüne yazmak üzere yapılandırılabilir:
 
 ```text
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 ```
 
-Text logging is disabled by default. A restart of the DC agent service is required for changes to this value to take effect. When enabled the DC agent service will write to a log file located under:
+Metin günlüğe kaydetme varsayılan olarak devre dışıdır. Bu değerde yapılan değişikliklerin etkili olması için DC Aracısı hizmetinin yeniden başlatılması gerekiyor. Etkinleştirildiğinde, DC Aracısı hizmeti şu konumda bulunan bir günlük dosyasına yazılır:
 
 `%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
 
 > [!TIP]
-> The text log receives the same debug-level entries that can be logged to the Trace log, but is generally in an easier format to review and analyze.
+> Metin günlüğü, Izleme günlüğüne kaydedilen hata ayıklama düzeyi girdileri alır, ancak genellikle gözden geçirmek ve analiz etmek daha kolay bir biçimdedir.
 
 > [!WARNING]
-> When enabled, this log receives a high volume of events and may impact domain controller performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Bu günlük etkinleştirildiğinde, yüksek hacimli olaylar alır ve etki alanı denetleyicisi performansını etkileyebilir. Bu nedenle, bu gelişmiş günlüğün yalnızca bir sorun daha derin bir araştırma gerektirdiğinde ve daha sonra yalnızca en az bir süre için etkinleştirilmesi gerekir.
 
-## <a name="dc-agent-performance-monitoring"></a>DC agent performance monitoring
+## <a name="dc-agent-performance-monitoring"></a>DC Aracısı performans izleme
 
-The DC agent service software installs a performance counter object named **Azure AD Password Protection**. The following perf counters are currently available:
+DC aracı hizmeti yazılımı, **Azure AD parola koruması**adlı bir performans sayacı nesnesi yüklüyor. Aşağıdaki performans sayaçları Şu anda kullanılabilir:
 
-|Perf counter name | Açıklama|
+|Performans sayacı adı | Açıklama|
 | --- | --- |
-|Passwords processed |This counter displays the total number of passwords processed (accepted or rejected) since last restart.|
-|Passwords accepted |This counter displays the total number of passwords that were accepted since last restart.|
-|Passwords rejected |This counter displays the total number of passwords that were rejected since last restart.|
-|Password filter requests in progress |This counter displays the number of password filter requests currently in progress.|
-|Peak password filter requests |This counter displays the peak number of concurrent password filter requests since the last restart.|
-|Password filter request errors |This counter displays the total number of password filter requests that failed due to an error since last restart. Errors can occur when the Azure AD Password Protection DC agent service is not running.|
-|Password filter requests/sec |This counter displays the rate at which passwords are being processed.|
-|Password filter request processing time |This counter displays the average time required to process a password filter request.|
-|Peak password filter request processing time |This counter displays the peak password filter request processing time since the last restart.|
-|Passwords accepted due to audit mode |This counter displays the total number of passwords that would normally have been rejected, but were accepted because the password policy was configured to be in audit-mode (since last restart).|
+|İşlenen parolalar |Bu sayaç, son yeniden başlatmadan bu yana işlenen toplam parola sayısını (kabul edilen veya reddedilen) görüntüler.|
+|Kabul edilen parolalar |Bu sayaç, son yeniden başlatmadan bu yana kabul edilen toplam parola sayısını görüntüler.|
+|Parolalar reddedildi |Bu sayaç, son yeniden başlatmadan bu yana reddedilen toplam parola sayısını görüntüler.|
+|Parola filtresi istekleri devam ediyor |Bu sayaç, şu anda sürmekte olan parola filtresi isteklerinin sayısını görüntüler.|
+|En yüksek parola filtresi istekleri |Bu sayaç, son yeniden başlatmadan bu yana eşzamanlı parola filtresi isteklerinin en yüksek sayısını görüntüler.|
+|Parola filtresi istek hataları |Bu sayaç, son yeniden başlatmadan bu yana bir hata nedeniyle başarısız olan parola filtresi isteklerinin toplam sayısını görüntüler. Azure AD parola koruması DC Aracısı hizmeti çalışmadığı zaman hatalar meydana gelebilir.|
+|Parola filtresi isteği/sn |Bu sayaç, parolaların işlenme hızını görüntüler.|
+|Parola filtresi isteği işleme süresi |Bu sayaç, bir parola filtresi isteğini işlemek için gereken ortalama süreyi gösterir.|
+|En yoğun parola filtresi isteği işleme süresi |Bu sayaç, son yeniden başlatmadan bu yana en yüksek parola filtresi isteği işleme süresini görüntüler.|
+|Denetim modu nedeniyle parola kabul edildi |Bu sayaç normalde reddedilen toplam parola sayısını görüntüler, ancak parola ilkesi denetim modunda olacak şekilde yapılandırıldığından (son yeniden başlatmadan bu yana) kabul edilir.|
 
-## <a name="dc-agent-discovery"></a>DC Agent discovery
+## <a name="dc-agent-discovery"></a>DC Aracısı bulma
 
-The `Get-AzureADPasswordProtectionDCAgent` cmdlet may be used to display basic information about the various DC agents running in a domain or forest. This information is retrieved from the serviceConnectionPoint object(s) registered by the running DC agent service(s).
+`Get-AzureADPasswordProtectionDCAgent` cmdlet 'i, bir etki alanında veya ormanda çalışan çeşitli DC aracıları hakkındaki temel bilgileri göstermek için kullanılabilir. Bu bilgiler, çalışan DC Aracısı Hizmetleri tarafından kaydedilen serviceConnectionPoint nesnesinden alınır.
 
-An example output of this cmdlet is as follows:
+Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
 
 ```powershell
 Get-AzureADPasswordProtectionDCAgent
@@ -263,17 +263,17 @@ PasswordPolicyDateUTC : 2/16/2018 8:35:01 AM
 HeartbeatUTC          : 2/16/2018 8:35:02 AM
 ```
 
-The various properties are updated by each DC agent service on an approximate hourly basis. The data is still subject to Active Directory replication latency.
+Çeşitli özellikler, her DC Aracısı hizmeti tarafından yaklaşık saat temelinde güncelleştirilir. Veriler hala Active Directory çoğaltma gecikmesine tabidir.
 
-The scope of the cmdlet’s query may be influenced using either the –Forest or –Domain parameters.
+Cmdlet 'inin sorgusunun kapsamı, – Forest veya – Domain parametreleri kullanılarak etkilenebilir.
 
-If the HeartbeatUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that domain controller is not running, or has been uninstalled, or the machine was demoted and is no longer a domain controller.
+HeartbeatUTC değeri eski alırsa, bu etki alanı denetleyicisindeki Azure AD parola koruması DC aracısının çalışmadığını veya kaldırıldığını ya da makinenin indirgenmiş olduğunu ve artık bir etki alanı denetleyicisi olmadığını belirten bir belirti olabilir.
 
-If the PasswordPolicyDateUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that machine is not working properly.
+PasswordPolicyDateUTC değeri eski alırsa bu durum, söz konusu makinedeki Azure AD parola koruması DC aracısının düzgün çalışmadığını belirten bir belirti olabilir.
 
-## <a name="dc-agent-newer-version-available"></a>DC agent newer version available
+## <a name="dc-agent-newer-version-available"></a>DC Aracısı daha yeni sürümü kullanılabilir
 
-The DC agent service will log a 30034 warning event to the Operational log upon detecting that a newer version of the DC agent software is available, for example:
+DC Aracısı yazılımının daha yeni bir sürümünün kullanılabilir olduğunu algılayarak, DC aracı hizmeti bir 30034 uyarı olayını Işletimsel günlüğe günlüğe kaydeder, örneğin:
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,14 +287,14 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
+Yukarıdaki olay, yeni yazılımın sürümünü belirtmiyor. Bu bilgi için olay iletisindeki bağlantıya gitmeniz gerekir.
 
 > [!NOTE]
-> Despite the references to "autoupgrade" in the above event message, the DC agent software does not currently support this feature.
+> Yukarıdaki olay iletisindeki "Oto Upgrade" başvurusu olmasına rağmen, DC aracı yazılımı şu anda bu özelliği desteklememektedir.
 
-## <a name="proxy-service-event-logging"></a>Proxy service event logging
+## <a name="proxy-service-event-logging"></a>Proxy hizmeti olay günlüğü
 
-The Proxy service emits a minimal set of events to the following event logs:
+Proxy hizmeti, aşağıdaki olay günlüklerine minimum bir olay kümesi yayar:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
 
@@ -302,50 +302,50 @@ The Proxy service emits a minimal set of events to the following event logs:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
 
-Note that the Trace log is off by default.
+Izleme günlüğünün varsayılan olarak kapalı olduğunu unutmayın.
 
 > [!WARNING]
-> When enabled, the Trace log receives a high volume of events and this may impact performance of the proxy host. Therefore, this log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Etkinleştirildiğinde, Izleme günlüğü yüksek hacimli olaylar alır ve bu, proxy konağın performansını etkileyebilir. Bu nedenle, bu günlük yalnızca bir sorun daha derin bir araştırma gerektirdiğinde ve daha sonra yalnızca en az bir süre için etkinleştirilmelidir.
 
-Events are logged by the various Proxy components using the following ranges:
+Olaylar, aşağıdaki aralıklar kullanılarak çeşitli proxy bileşenleri tarafından günlüğe kaydedilir:
 
-|Bileşen |Event ID range|
+|Bileşen |Olay KIMLIĞI aralığı|
 | --- | --- |
-|Proxy service hosting process| 10000-19999|
-|Proxy service core business logic| 20000-29999|
+|Proxy hizmeti barındırma işlemi| 10000-19999|
+|Proxy hizmeti Core iş mantığı| 20000-29999|
 |PowerShell cmdlet'leri| 30000-39999|
 
-## <a name="proxy-service-text-logging"></a>Proxy service text logging
+## <a name="proxy-service-text-logging"></a>Proxy hizmeti metin günlüğü
 
-The Proxy service can be configured to write to a text log by setting the following registry value:
+Proxy hizmeti, aşağıdaki kayıt defteri değerini ayarlayarak bir metin günlüğüne yazmak üzere yapılandırılabilir:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD value)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (REG_DWORD değeri)
 
-Text logging is disabled by default. A restart of the Proxy service is required for changes to this value to take effect. When enabled the Proxy service will write to a log file located under:
+Metin günlüğe kaydetme varsayılan olarak devre dışıdır. Bu değerde yapılan değişikliklerin etkili olması için proxy hizmeti 'nin yeniden başlatılması gerekiyor. Etkinleştirildiğinde proxy hizmeti şu konumda bulunan bir günlük dosyasına yazılır:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
 > [!TIP]
-> The text log receives the same debug-level entries that can be logged to the Trace log, but is generally in an easier format to review and analyze.
+> Metin günlüğü, Izleme günlüğüne kaydedilen hata ayıklama düzeyi girdileri alır, ancak genellikle gözden geçirmek ve analiz etmek daha kolay bir biçimdedir.
 
 > [!WARNING]
-> When enabled, this log receives a high volume of events and may impact the machine's performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
+> Bu günlük etkinleştirildiğinde, yüksek hacimli olaylar alır ve makinenin performansını etkileyebilir. Bu nedenle, bu gelişmiş günlüğün yalnızca bir sorun daha derin bir araştırma gerektirdiğinde ve daha sonra yalnızca en az bir süre için etkinleştirilmesi gerekir.
 
-## <a name="powershell-cmdlet-logging"></a>PowerShell cmdlet logging
+## <a name="powershell-cmdlet-logging"></a>PowerShell cmdlet günlüğü
 
-PowerShell cmdlets that result in a state change (for example, Register-AzureADPasswordProtectionProxy) will normally log an outcome event to the Operational log.
+Durum değişikliğine neden olan PowerShell cmdlet 'leri (örneğin, Register-AzureADPasswordProtectionProxy), normalde bir sonuç olayını Işlemsel günlüğe kaydeder.
 
-In addition, most of the Azure AD Password Protection PowerShell cmdlets will write to a text log located under:
+Ayrıca, Azure AD parola koruması PowerShell cmdlet 'lerinin çoğu altında bulunan bir metin günlüğüne yazılır:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
-If a cmdlet error occurs and the cause and\or solution is not readily apparent, these text logs may also be consulted.
+Bir cmdlet hatası oluşursa ve nedeni and\veya çözümü açık değilse, bu metin günlükleri de uygulanabilir.
 
-## <a name="proxy-discovery"></a>Proxy discovery
+## <a name="proxy-discovery"></a>Proxy bulma
 
-The `Get-AzureADPasswordProtectionProxy` cmdlet may be used to display basic information about the various Azure AD Password Protection Proxy services running in a domain or forest. This information is retrieved from the serviceConnectionPoint object(s) registered by the running Proxy service(s).
+`Get-AzureADPasswordProtectionProxy` cmdlet 'i, bir etki alanında veya ormanda çalışan çeşitli Azure AD parola koruma proxy hizmetleriyle ilgili temel bilgileri göstermek için kullanılabilir. Bu bilgiler, çalışan proxy hizmetleri tarafından kaydedilen serviceConnectionPoint nesnesinden alınır.
 
-An example output of this cmdlet is as follows:
+Bu cmdlet 'in bir örnek çıktısı aşağıdaki gibidir:
 
 ```powershell
 Get-AzureADPasswordProtectionProxy
@@ -355,15 +355,15 @@ Forest                : bplRootDomain.com
 HeartbeatUTC          : 12/25/2018 6:35:02 AM
 ```
 
-The various properties are updated by each Proxy service on an approximate hourly basis. The data is still subject to Active Directory replication latency.
+Çeşitli özellikler her bir proxy hizmeti tarafından yaklaşık saat temelinde güncelleştirilir. Veriler hala Active Directory çoğaltma gecikmesine tabidir.
 
-The scope of the cmdlet’s query may be influenced using either the –Forest or –Domain parameters.
+Cmdlet 'inin sorgusunun kapsamı, – Forest veya – Domain parametreleri kullanılarak etkilenebilir.
 
-If the HeartbeatUTC value gets stale, this may be a symptom that the Azure AD Password Protection Proxy on that machine is not running or has been uninstalled.
+HeartbeatUTC değeri eski alırsa bu, söz konusu makinedeki Azure AD parola koruma proxy 'Sinin çalışmadığını veya kaldırıldığını belirten bir belirti olabilir.
 
-## <a name="proxy-agent-newer-version-available"></a>Proxy agent newer version available
+## <a name="proxy-agent-newer-version-available"></a>Proxy aracısı daha yeni sürümü kullanılabilir
 
-The Proxy service will log a 20002 warning event to the Operational log upon detecting that a newer version of the proxy software is available, for example:
+Proxy hizmeti, proxy yazılımının daha yeni bir sürümünün kullanılabilir olduğunu algılayarak bir 20002 uyarı olayını Işlem günlüğüne kaydeder, örneğin:
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,12 +378,12 @@ Current version: 1.2.116.0
 .
 ```
 
-The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
+Yukarıdaki olay, yeni yazılımın sürümünü belirtmiyor. Bu bilgi için olay iletisindeki bağlantıya gitmeniz gerekir.
 
-This event will be emitted even if the Proxy agent is configured with autoupgrade enabled.
+Bu olay, proxy aracısı otomatik yükseltme etkinleştirilmiş olarak yapılandırılmış olsa bile, bu olay yayınlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Troubleshooting for Azure AD Password Protection](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Azure AD parola koruması sorunlarını giderme](howto-password-ban-bad-on-premises-troubleshoot.md)
 
-For more information on the global and custom banned password lists, see the article [Ban bad passwords](concept-password-ban-bad.md)
+Genel ve özel yasaklanmış parola listeleri hakkında daha fazla bilgi için bkz. [Hatalı parolalar](concept-password-ban-bad.md)

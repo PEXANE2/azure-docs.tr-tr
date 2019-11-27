@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Adaptive Insights | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Adaptive Insights.
+title: 'Öğretici: Uyarlamalı Öngörüler ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve Uyarlamalı Öngörüler arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,191 +23,191 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232134"
 ---
-# <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Tutorial: Integrate Adaptive Insights with Azure Active Directory
+# <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Öğretici: Uyarlamalı öngörüleri Azure Active Directory tümleştirin
 
-In this tutorial, you'll learn how to integrate Adaptive Insights with Azure Active Directory (Azure AD). When you integrate Adaptive Insights with Azure AD, you can:
+Bu öğreticide, uyarlamalı öngörüleri Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Uyarlamalı öngörüleri Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Control in Azure AD who has access to Adaptive Insights.
-* Enable your users to be automatically signed-in to Adaptive Insights with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Azure AD 'de Uyarlamalı Öngörüler 'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Uyarlamalı Öngörüler 'e otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To get started, you need the following items:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* Adaptive Insights single sign-on (SSO) enabled subscription.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Uyarlamalı Öngörüler çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Adaptive Insights supports **IDP** initiated SSO
+* Uyarlamalı Öngörüler **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-adaptive-insights-from-the-gallery"></a>Adding Adaptive Insights from the gallery
+## <a name="adding-adaptive-insights-from-the-gallery"></a>Galeriden Uyarlamalı Öngörüler ekleme
 
-To configure the integration of Adaptive Insights into Azure AD, you need to add Adaptive Insights from the gallery to your list of managed SaaS apps.
+Uyarlamalı Öngörüler 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize Uyarlamalı Öngörüler eklemeniz gerekir.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **Adaptive Insights** in the search box.
-1. Select **Adaptive Insights** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Uyarlamalı Öngörüler** yazın.
+1. Sonuçlar panelinden **Uyarlamalı Öngörüler** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-Configure and test Azure AD SSO with Adaptive Insights using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Adaptive Insights.
+**B. Simon**adlı bir test kullanıcısı kullanarak, uyarlamalı Öngörüler Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, uyarlamalı Öngörüler içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-To configure and test Azure AD SSO with Adaptive Insights, complete the following building blocks:
+Azure AD SSO 'yu Uyarlamalı Öngörüler ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-2. **[Configure Adaptive Insights SSO](#configure-adaptive-insights-sso)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-5. **[Create Adaptive Insights test user](#create-adaptive-insights-test-user)** - to have a counterpart of B.Simon in Adaptive Insights that is linked to the Azure AD representation of user.
-6. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. **[Uyarlamalı Öngörüler SSO 'Yu yapılandırma](#configure-adaptive-insights-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+5. Uyarlamalı **[Öngörüler test kullanıcısı oluşturun](#create-adaptive-insights-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan Uyarlamalı içgörüler 'de B. Simon 'a karşılık gelen bir.
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Adaptive Insights** application integration page, find the **Manage** section and select **Single sign-on**.
-1. On the **Select a Single sign-on method** page, select **SAML**.
-1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. [Azure Portal](https://portal.azure.com/), **Uyarlamalı Öngörüler** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, perform the following steps:
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. In the **Identifier** text box, type a URL using the following pattern: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
-    b. In the **Reply URL** text box, type a URL using the following pattern: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
-    > You can get Identifier(Entity ID) and Reply URL values from the Adaptive Insights’s **SAML SSO Settings** page.
+    > Uyarlamalı Öngörüler 'in **SAML SSO ayarları** sayfasından tanımlayıcıyı (varlık kimliği) ve yanıt URL 'si değerlerini elde edebilirsiniz.
 
-4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. On the **Set up Adaptive Insights** section, copy the appropriate URL(s) based on your requirement.
+6. **Uyarlamalı Öngörüler ayarlama** bölümünde, uygun URL 'leri gereksinime göre kopyalayın.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-adaptive-insights-sso"></a>Configure Adaptive Insights SSO
+### <a name="configure-adaptive-insights-sso"></a>Uyarlamalı Öngörüler SSO 'yu yapılandırma
 
-1. In a different web browser window, sign in to your Adaptive Insights company site as an administrator.
+1. Farklı bir Web tarayıcısı penceresinde, uyarlamalı Öngörüler Şirket sitenizde yönetici olarak oturum açın.
 
-2. Go to **Administration**.
+2. **Yönetim**bölümüne gidin.
 
-    ![Admin](./media/adaptivesuite-tutorial/ic805644.png "Admin")
+    ![Yöneticileri](./media/adaptivesuite-tutorial/ic805644.png "Yönetici")
 
-3. In the **Users and Roles** section, click **SAML SSO Settings**.
+3. **Kullanıcılar ve roller** bölümünde **SAML SSO ayarları**' na tıklayın.
 
-    ![Manage SAML SSO Settings](./media/adaptivesuite-tutorial/ic805645.png "Manage SAML SSO Settings")
+    ![SAML SSO ayarlarını yönetme](./media/adaptivesuite-tutorial/ic805645.png "SAML SSO ayarlarını yönetme")
 
-4. On the **SAML SSO Settings** page, perform the following steps:
+4. **SAML SSO ayarları** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![SAML SSO Settings](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO Settings")
+    ![SAML SSO ayarları](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO ayarları")
 
-    a. In the **Identity provider name** textbox, type a name for your configuration.
+    a. **Kimlik sağlayıcısı adı** metin kutusuna yapılandırmanız için bir ad yazın.
 
-    b. Paste the **Azure AD Identifier** value copied from Azure portal into the **Identity provider Entity ID** textbox.
+    b. Azure portal ' dan kopyalanmış **Azure AD tanımlayıcı** değerini **KIMLIK sağlayıcısı varlık kimliği** metin kutusuna yapıştırın.
 
-    c. Paste the **Login URL** value copied from Azure portal into the **Identity provider SSO URL** textbox.
+    c. Azure portal ' dan kopyalanmış **oturum açma URL 'si** değerini **kimlik sağlayıcısı SSO URL 'si** metin kutusuna yapıştırın.
 
-    d. Paste the **Logout URL** value copied from Azure portal into the **Custom logout URL** textbox.
+    d. Azure portal ' den kopyalanmış **oturum kapatma URL 'si** değerini **özel oturum kapatma URL 'si** metin kutusuna yapıştırın.
 
-    e. To upload your downloaded certificate, click **Choose file**.
+    e. İndirilen sertifikanızı karşıya yüklemek için **Dosya Seç**' e tıklayın.
 
-    f. Select the following, for:
+    f. Aşağıdakiler için aşağıdakileri seçin:
 
-     * **SAML user id**, select **User’s Adaptive Insights user name**.
+     * **SAML Kullanıcı kimliği**, **kullanıcının Uyarlamalı Öngörüler Kullanıcı adını**seçin.
 
-     * **SAML user id location**, select **User id in NameID of Subject**.
+     * **SAML Kullanıcı kimliği konumu**, **ilgilinin NameID içinde Kullanıcı kimliği**' ni seçin.
 
-     * **SAML NameID format**, select **Email address**.
+     * **SAML NameID biçimi**, **e-posta adresi**seçin.
 
-     * **Enable SAML**, select **Allow SAML SSO and direct Adaptive Insights login**.
+     * **SAML 'Yi etkinleştirin**, **SAML SSO ve doğrudan Uyarlamalı**içgörüler oturum açma seçeneğini belirleyin.
 
-    g. Copy **Adaptive Insights SSO URL** and paste into the **Identifier(Entity ID)** and **Reply URL** textboxes in the **Basic SAML Configuration** section in the Azure portal.
+    g. **Uyarlamalı Öngörüler SSO URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı (varlık kimliği)** ve **yanıt URL 'si** metin kutularına yapıştırın.
 
-    h. **Kaydet** düğmesine tıklayın.
+    h. **Save (Kaydet)** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. In the **User name** field, enter the username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
-   1. **Oluştur**’a tıklayın.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Adaptive Insights.
+Bu bölümde, uyarlamalı Öngörüler 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **Adaptive Insights**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Uyarlamalı Öngörüler**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-adaptive-insights-test-user"></a>Create Adaptive Insights test user
+### <a name="create-adaptive-insights-test-user"></a>Uyarlamalı Öngörüler test kullanıcısı oluşturma
 
-To enable Azure AD users to sign in to Adaptive Insights, they must be provisioned into Adaptive Insights. In the case of Adaptive Insights, provisioning is a manual task.
+Azure AD kullanıcılarının Uyarlamalı Öngörüler 'de oturum açmasını sağlamak için bunların Uyarlamalı Öngörüler 'e sağlanması gerekir. Uyarlamalı Öngörüler söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
 
-**To configure user provisioning, perform the following steps:**
+**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:**
 
-1. Sign in to your **Adaptive Insights** company site as an administrator.
+1. **Uyarlamalı Öngörüler** şirket sitenizde yönetici olarak oturum açın.
 
-2. Go to **Administration**.
+2. **Yönetim**bölümüne gidin.
 
-   ![Admin](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+   ![Yöneticileri](./media/adaptivesuite-tutorial/IC805644.png "Yönetici")
 
-3. In the **Users and Roles** section, click **Users**.
+3. **Kullanıcılar ve roller** bölümünde **Kullanıcılar**' a tıklayın.
 
-   ![Add User](./media/adaptivesuite-tutorial/IC805648.png "Kullanıcı Ekleme")
+   ![Kullanıcı Ekle](./media/adaptivesuite-tutorial/IC805648.png "Kullanıcı Ekleme")
 
-4. In the **New User** section, perform the following steps:
+4. **Yeni Kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
 
    ![Gönder](./media/adaptivesuite-tutorial/IC805649.png "Gönder")
 
-   a. Type the **Name**, **Username**, **Email**, **Password** of a valid Azure Active Directory user you want to provision into the related textboxes.
+   a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure Active Directory kullanıcısına ilişkin **adı**, **Kullanıcı**adını, **e-postayı**ve **parolayı** yazın.
 
-   b. Select a **Role**.
+   b. Bir **rol**seçin.
 
-   c. Click **Submit**.
+   c. **Gönder**' e tıklayın.
 
 > [!NOTE]
-> You can use any other Adaptive Insights user account creation tools or APIs provided by Adaptive Insights to provision Azure AD user accounts.
+> Azure AD Kullanıcı hesapları sağlamak için, uyarlamalı içgörüler tarafından sunulan diğer Uyarlamalı içgörüler Kullanıcı hesabı oluşturma araçlarını veya API 'Lerini kullanabilirsiniz.
 
-### <a name="test-sso"></a>Test SSO 
+### <a name="test-sso"></a>Test SSO 'SU 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-When you click the Adaptive Insights tile in the Access Panel, you should be automatically signed in to the Adaptive Insights for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Uyarlamalı Öngörüler kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Uyarlamalı öngörülere otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

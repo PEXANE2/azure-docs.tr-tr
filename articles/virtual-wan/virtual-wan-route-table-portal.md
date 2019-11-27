@@ -1,6 +1,6 @@
 ---
-title: 'Virtual WAN: Create virtual hub route table to NVA: Azure portal'
-description: Virtual WAN virtual hub route table to steer traffic to a network virtual appliance using the portal.
+title: 'Sanal WAN: NVA: Azure portal sanal hub yol tablosu oluşturma'
+description: Portalı kullanarak bir ağ sanal gerecine trafiği yönlendiren sanal WAN sanal hub yol tablosu.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,88 +8,88 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 3aa5660e5b777364ef9d684debe7e06f42acee6e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482026"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534146"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Create a Virtual WAN hub route table for NVAs: Azure portal
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 'lar için bir sanal WAN hub yol tablosu oluşturma: Azure portal
 
-This article shows you how to steer traffic from a branch (on-premises site) connected to the Virtual WAN hub to a Spoke Vnet via a Network Virtual Appliance (NVA).
+Bu makalede, sanal WAN hub 'ına bir ağ sanal gereci (NVA) aracılığıyla bağlı olan VNET 'e bağlanan bir daldan (Şirket içi site) giden trafiğin nasıl yapılacağı gösterilir.
 
 ![Sanal WAN diyagramı](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Verify that you have met the following criteria:
+Aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
-*  You have a Network Virtual Appliance (NVA). A Network Virtual Appliance is a third-party software of your choice that is typically provisioned from Azure Marketplace in a virtual network.
+*  Bir ağ sanal gereci (NVA) vardır. Bir ağ sanal gereci, genellikle bir sanal ağdaki Azure Marketi 'nden sağlanan üçüncü taraf bir yazılımdır.
 
-    * A private IP address must be assigned to the NVA network interface.
+    * NVA ağ arabirimine özel bir IP adresinin atanması gerekir.
 
-    * The NVA is not deployed in the virtual hub. It must be deployed in a separate VNet.
+    * NVA sanal hub 'da dağıtılmadı. Ayrı bir sanal ağa dağıtılması gerekir.
 
-    *  The NVA VNet may have one or many virtual networks connected to it. In this article, we refer to the NVA VNet as an 'indirect spoke VNet'. These VNets can be connected to the NVA VNet by using VNet peering. The Vnet Peering links are depicted by black arrows in the above figure.
-*  You have created 2 VNets. They will be used as spoke VNets.
+    *  NVA VNet 'e bağlı bir veya daha fazla sanal ağ olabilir. Bu makalede, NVA VNet 'e ' dolaylı bağlı bileşen VNet ' olarak başvurduk. VNet eşlemesi kullanılarak bu sanal ağlar NVA VNet 'e bağlanabilir. VNET eşleme bağlantıları, VNET 1, VNET 2 ve NVA VNET arasında yukarıdaki şekilde siyah oklara göre gösterilmiştir.
+*  2 sanal ağ oluşturdunuz. Bunlar, bağlı olan VNET 'ler olarak kullanılacaktır.
 
-    * For this exercise, the VNet spoke address spaces are: VNet1: 10.0.2.0/24 and VNet2: 10.0.3.0/24. If you need information on how to create a VNet, see [Create a virtual network](../virtual-network/quick-create-portal.md).
+    * Bu alıştırmada, VNet 'in bağlı olduğu adres alanları şunlardır: VNet1:10.0.2.0/24 ve VNet2:10.0.3.0/24. VNet oluşturma hakkında bilgi için bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md).
 
-    * Ensure there are no virtual network gateways in any of the VNets.
-    * For this configuration, these VNets do not require a gateway subnet.
+    * VNET 'lerden hiçbirinde sanal ağ geçidi olmadığından emin olun.
+    * Bu yapılandırma için bu sanal ağlar bir ağ geçidi alt ağı gerektirmez.
 
-## <a name="signin"></a>1. Sign in
+## <a name="signin"></a>1. oturum aç
 
 Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure hesabınızla oturum açın.
 
-## <a name="vwan"></a>2. Create a virtual WAN
+## <a name="vwan"></a>2. sanal WAN oluşturun
 
-Create a virtual WAN. For the purposes of this exercise, you can use the following values:
+Sanal WAN oluşturun. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki değerleri kullanabilirsiniz:
 
-* **Virtual WAN name:** myVirtualWAN
-* **Resource group:** testRG
-* **Location:** West US
+* **Sanal WAN adı:** myvirtualwan
+* **Kaynak grubu:** testrg
+* **Konum:** Batı ABD
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3. Create a hub
+## <a name="hub"></a>3. bir hub oluşturun
 
-Create the hub. For the purposes of this exercise, you can use the following values:
+Hub 'ı oluşturun. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki değerleri kullanabilirsiniz:
 
-* **Location:** West US
-* **Name:** westushub
-* **Hub private address space:** 10.0.1.0/24
+* **Konum:** Batı ABD
+* **Ad:** westushub
+* **Hub özel adres alanı:** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4. Create and apply a hub route table
+## <a name="route"></a>4. bir hub yol tablosu oluşturun ve uygulayın
 
-Update the hub with a hub route table. For the purposes of this exercise, you can use the following values:
+Hub 'ı bir hub yol tablosuyla güncelleştirin. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki değerleri kullanabilirsiniz:
 
-* **Indirect spoke VNet address spaces:** (VNet1 and VNet2) 10.0.2.0/24 and 10.0.3.0/24
-* **DMZ NVA network interface private IP address:** 10.0.4.5
+* **Dolaylı bağlı olan VNET adres alanları:** (VNet1 ve VNet2) 10.0.2.0/24 ve 10.0.3.0/24
+* **DMZ NVA ağ arabirimi özel IP adresi:** 10.0.4.5
 
-1. Navigate to your virtual WAN.
-2. Click the hub for which you want to create a route table.
-3. Click the **...** , and then click **Edit virtual hub**.
-4. On the **Edit virtual hub** page, scroll down and select the checkbox **Use table for routing**.
-5. In the **If destination prefix is** column, add the address spaces. In the **Send to next hop** column, add the DMZ NVA network interface private IP address.
-6. Click **Confirm** to update the hub resource with the route table settings.
+1. Sanal WAN 'nize gidin.
+2. Yol tablosu oluşturmak istediğiniz hub 'a tıklayın.
+3. **...** Öğesine ve ardından **sanal hub 'ı Düzenle**' ye tıklayın.
+4. **Sanal hub 'ı Düzenle** sayfasında, aşağı kaydırın ve yönlendirme için onay kutusu **kullan tablosunu**seçin.
+5. **IF Destination öneki** sütununda, adres alanlarını ekleyin. **Sonraki atlamaya gönder** sütununda, DMZ NVA ağ ARABIRIMI özel IP adresini ekleyin.
+6. Merkez kaynağını rota tablosu ayarlarıyla güncelleştirmek için **Onayla** ' ya tıklayın.
 
-## <a name="connections"></a>5. Create the VNet connections
+## <a name="connections"></a>5. VNet bağlantıları oluşturma
 
-Create a connection from each indirect spoke VNet (VNet1 and VNet2) to the hub. Then, create a connection from the NVA VNet to the hub. These Vnet Connections are dipicted by blue arrows in the figure above. 
+Her bir dolaylı bağlı bileşen VNet 'ten (VNet1 ve VNet2) hub 'a VNet bağlantısı oluşturun. Bu VNET bağlantıları, yukarıdaki şekilde mavi oklara göre gösterilmiştir. Ardından, NVA VNet 'ten hub 'a VNet bağlantısı oluşturun (şekildeki siyah ok tuşuna basın). 
 
- For this step, you can use the following values:
+ Bu adım için aşağıdaki değerleri kullanabilirsiniz:
 
-| VNet name| Bağlantı adı|
+| VNet adı| Bağlantı adı|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Repeat the following procedure for each VNet that you want to connect.
+Bağlanmak istediğiniz her VNet için aşağıdaki yordamı tekrarlayın.
 
 1. Sanal WAN'ınızın sayfasında **Sanal ağ bağlantıları**'na tıklayın.
 2. Sanal ağ bağlantısı sayfasında **+Bağlantı ekle**'ye tıklayın.
@@ -99,7 +99,7 @@ Repeat the following procedure for each VNet that you want to connect.
     * **Hub'lar**: Bu bağlantıyla ilişkilendirmek istediğiniz hub'ı seçin.
     * **Abonelik**: Aboneliği doğrulayın.
     * **Sanal ağ**: Bu hub'a bağlamak istediğiniz sanal ağı seçin. Sanal ağda önceden var olan bir sanal ağ geçidi bulunamaz.
-4. Click **OK** to create the connection.
+4. Bağlantıyı oluşturmak için **Tamam** ' ı tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

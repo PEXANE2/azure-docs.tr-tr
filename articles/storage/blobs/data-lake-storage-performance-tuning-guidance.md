@@ -1,6 +1,6 @@
 ---
-title: Optimize Azure Data Lake Storage Gen2 for performance | Microsoft Docs
-description: Azure Data Lake Storage Gen2 Performance Tuning Guidelines
+title: Performans için Azure Data Lake Storage 2. iyileştirin | Microsoft Docs
+description: Azure Data Lake Storage 2. performans ayarlama yönergeleri
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,128 +15,128 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327936"
 ---
-# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimize Azure Data Lake Storage Gen2 for performance
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Performans için Azure Data Lake Storage 2. iyileştirin
 
-Azure Data Lake Storage Gen2 supports high-throughput for I/O intensive analytics and data movement.  In Data Lake Storage Gen2, using all available throughput – the amount of data that can be read or written per second – is important to get the best performance.  This is achieved by performing as many reads and writes in parallel as possible.
+Azure Data Lake Storage 2., g/ç yoğun analiz ve veri hareketi için yüksek aktarım hızını destekler.  Data Lake Storage 2., tüm kullanılabilir üretilen iş üretimini kullanarak, en iyi performansı elde etmek için, bir saniyede okunabilen veya yazılan veri miktarı önemlidir.  Bu, olabildiğince çok okuma ve yazma işlemleri gerçekleştirerek elde edilir.
 
-![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
+![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 can scale to provide the necessary throughput for all analytics scenario. By default, a Data Lake Storage Gen2 account provides automatically enough throughput to meet the needs of a broad category of use cases. For the cases where customers run into the default limit, the Data Lake Storage Gen2 account can be configured to provide more throughput by contacting [Azure Support](https://azure.microsoft.com/support/faq/).
+Data Lake Storage 2., tüm analiz senaryosu için gerekli aktarım hızını sağlamak üzere ölçeklendirebilir. Varsayılan olarak, Data Lake Storage 2. bir hesap, geniş bir kullanım durumu kategorisinin ihtiyaçlarını karşılamak için otomatik olarak yeterli aktarım hızı sağlar. Müşterilerin varsayılan limite çalıştığı durumlar için Data Lake Storage 2. hesabı, [Azure desteği](https://azure.microsoft.com/support/faq/)ile iletişime geçerek daha fazla verimlilik sunacak şekilde yapılandırılabilir.
 
 ## <a name="data-ingestion"></a>Veri alımı
 
-When ingesting data from a source system to Data Lake Storage Gen2, it is important to consider that the source hardware, source network hardware, and network connectivity to Data Lake Storage Gen2 can be the bottleneck.  
+Kaynak sistemden Data Lake Storage 2. verileri alırken, kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 2. ağ bağlantısının performans sorunu olduğunu göz önünde bulundurmanız önemlidir.  
 
-![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
-It is important to ensure that the data movement is not affected by these factors.
+Veri hareketinin bu faktörlerden etkilenmemesini sağlamak önemlidir.
 
-### <a name="source-hardware"></a>Source hardware
+### <a name="source-hardware"></a>Kaynak donanım
 
-Whether you are using on-premises machines or VMs in Azure, you should carefully select the appropriate hardware. For Source Disk Hardware, prefer SSDs to HDDs and pick disk hardware with faster spindles. For Source Network Hardware, use the fastest NICs possible.  On Azure, we recommend Azure D14 VMs which have the appropriately powerful disk and networking hardware.
+Azure 'da şirket içi makineleri veya VM 'Leri kullanıp kullanmayacağınızı, uygun donanımı dikkatle seçmeniz gerekir. Kaynak disk donanımı için SSD 'leri ve daha hızlı bir şekilde disk donanımı seçmek için SSDs 'yi tercih edin. Kaynak ağ donanımı için mümkün olan en hızlı NIC 'Leri kullanın.  Azure 'da, uygun şekilde güçlü disk ve ağ donanımlarına sahip Azure D14 VM 'Leri öneririz.
 
-### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Network connectivity to Data Lake Storage Gen2
+### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Data Lake Storage 2. ağ bağlantısı
 
-The network connectivity between your source data and Data Lake Storage Gen2 can sometimes be the bottleneck. When your source data is On-Premises, consider using a dedicated link with [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . If your source data is in Azure, the performance will be best when the data is in the same Azure region as the Data Lake Storage Gen2 account.
+Kaynak verileriniz ve Data Lake Storage 2. arasındaki ağ bağlantısı bazen performans sorunlarına neden olabilir. Kaynak verileriniz şirket Içinde olduğunda [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) ile adanmış bir bağlantı kullanmayı göz önünde bulundurun. Kaynak verileriniz Azure 'da ise, veriler Data Lake Storage 2. hesabıyla aynı Azure bölgesinde olduğunda performans en iyi sonucu verir.
 
-### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Configure data ingestion tools for maximum parallelization
+### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>En yüksek paralelleştirme için veri alma araçlarını yapılandırın
 
-Once you have addressed the source hardware and network connectivity bottlenecks above, you are ready to configure your ingestion tools. The following table summarizes the key settings for several popular ingestion tools and provides in-depth performance tuning articles for them.  To learn more about which tool to use for your scenario, visit this [article](data-lake-storage-data-scenarios.md).
+Yukarıdaki kaynak donanım ve ağ bağlantısı sorunlarını giderdikten sonra, Alım araçlarınızı yapılandırmaya hazırsanız. Aşağıdaki tabloda, çeşitli popüler alım araçları için anahtar ayarları özetlenmektedir ve bunlar için ayrıntılı performans ayarlama makaleleri sağlanmaktadır.  Senaryolarınız için kullanılacak araç hakkında daha fazla bilgi edinmek için bu [makaleyi](data-lake-storage-data-scenarios.md)ziyaret edin.
 
-| Araç               | Ayarlar     | More Details                                                                 |
+| Araç               | Ayarlar     | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (mapper)   | [Bağlantı](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| DistCp            | -a (Eşleyici)   | [Bağlantı](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Bağlantı](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (mapper)    |   [Bağlantı](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantı](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
-## <a name="structure-your-data-set"></a>Structure your data set
+## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
-When data is stored in Data Lake Storage Gen2, the file size, number of files, and folder structure have an impact on performance.  The following section describes best practices in these areas.  
+Veriler Data Lake Storage 2. depolandığında, dosya boyutu, dosya sayısı ve klasör yapısı performansı etkiler.  Aşağıdaki bölümde bu alanlardaki en iyi uygulamalar açıklanmaktadır.  
 
 ### <a name="file-size"></a>Dosya boyutu
 
-Typically, analytics engines such as HDInsight and Azure Data Lake Analytics have a per-file overhead. If you store your data as many small files, this can negatively affect performance. In general, organize your data into larger sized files for better performance (256MB to 100GB in size). Some engines and applications might have trouble efficiently processing files that are greater than 100GB in size.
+Genellikle, HDInsight ve Azure Data Lake Analytics gibi analiz altyapılarının dosya başına ek yükü vardır. Verilerinizi birçok küçük dosya olarak depoluseniz bu, performansı olumsuz etkileyebilir. Genel olarak, daha iyi performans için verilerinizi daha büyük boyutlu dosyalara düzenleyin (256 MB/100 GB boyutunda). Bazı altyapıların ve uygulamaların boyutu 100 GB 'tan büyük dosyaları verimli bir şekilde işleme sorunu olabilir.
 
-Sometimes, data pipelines have limited control over the raw data which has lots of small files. It is recommended to have a "cooking" process that generates larger files to use for downstream applications.
+Bazen veri işlem hatları, çok sayıda küçük dosya içeren ham veriler üzerinde sınırlı denetime sahiptir. Aşağı akış uygulamalarında kullanılmak üzere daha büyük dosyalar üreten bir "pişirme" işleminin olması önerilir.
 
-### <a name="organizing-time-series-data-in-folders"></a>Organizing time series data in folders
+### <a name="organizing-time-series-data-in-folders"></a>Klasörlerdeki zaman serisi verilerini düzenleme
 
-For Hive workloads, partition pruning of time-series data can help some queries read only a subset of the data which improves performance.    
+Hive iş yükleri için, zaman serisi verilerinin bölüm ayıklanması, bazı sorguların performansı artıran verilerin yalnızca bir alt kümesini okumasına yardımcı olabilir.    
 
-Those pipelines that ingest time-series data, often place their files with a very structured naming for files and folders. Below is a very common example we see for data that is structured by date:
+Zaman serisi verileri alan işlem hatları, genellikle dosyalarını dosya ve klasörler için çok yapılandırılmış bir adlandırma ile yerleştirir. Aşağıda, şu tarihe göre yapılandırılmış veriler için görtiğimiz çok yaygın bir örnek verilmiştir:
 
     \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
-Notice that the datetime information appears both as folders and in the filename.
+Tarih saat bilgilerinin hem klasör hem de dosya adında göründüğünü unutmayın.
 
-For date and time, the following is a common pattern
+Tarih ve saat için aşağıdaki genel bir örüntü
 
     \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
-Again, the choice you make with the folder and file organization should optimize for the larger file sizes and a reasonable number of files in each folder.
+Yine, klasör ve dosya kuruluşunda yaptığınız seçim, daha büyük dosya boyutları ve her klasörde makul sayıda dosya için iyileştirmelidir.
 
-## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>Optimizing I/O intensive jobs on Hadoop and Spark workloads on HDInsight
+## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>HDInsight 'ta Hadoop ve Spark iş yüklerinde g/ç yoğunluklu işleri en iyi duruma getirme
 
-Jobs fall into one of the following three categories:
+İşler aşağıdaki üç kategoriden birine girer:
 
-* **CPU intensive.**  These jobs have long computation times with minimal I/O times.  Examples include machine learning and natural language processing jobs.  
-* **Memory intensive.**  These jobs use lots of memory.  Examples include PageRank and real-time analytics jobs.  
-* **I/O intensive.**  These jobs spend most of their time doing I/O.  A common example is a copy job which does only read and write operations.  Other examples include data preparation jobs that read a lot of data, performs some data transformation, and then writes the data back to the store.  
+* **Yoğun CPU kullanımı.**  Bu işlerin en az g/ç süreleriyle uzun hesaplama süreleri vardır.  Makine öğrenimi ve doğal dil işleme işleri örnekleri içerir.  
+* **Bellek kullanımı.**  Bu işler çok fazla bellek kullanır.  Örnekler PageRank ve gerçek zamanlı analiz işleri içerir.  
+* **G/ç yoğun.**  Bu işler, çoğu zaman g/ç yaparken harcamaktadır.  Ortak bir örnek, yalnızca okuma ve yazma işlemleri olan bir kopyalama işdir.  Diğer örnekler arasında çok fazla veri okuyan veri hazırlama işleri, bazı veri dönüştürme işlemleri gerçekleştirir ve ardından veriler depoya geri yazılır.  
 
-The following guidance is only applicable to I/O intensive jobs.
+Aşağıdaki kılavuz yalnızca g/ç yoğun işler için geçerlidir.
 
-## <a name="general-considerations"></a>General considerations
+## <a name="general-considerations"></a>Genel hususlar
 
-You can have a job that reads or writes as much as 100MB in a single operation, but a buffer of that size might compromise performance.
-To optimize performance, try to keep the size of an I/O operation between 4MB and 16MB.
+Tek bir işlemde 100 MB 'a kadar okuyan veya yazan bir işiniz olabilir, ancak bu boyutta bir arabellek performansı tehlikeye atabilir.
+Performansı iyileştirmek için, bir g/ç işleminin boyutunu 4 MB ile 16 arasında tutmaya çalışın.
 
-### <a name="general-considerations-for-an-hdinsight-cluster"></a>General considerations for an HDInsight cluster
+### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight kümesi için genel konular
 
-* **HDInsight versions.** For best performance, use the latest release of HDInsight.
-* **Regions.** Place the Data Lake Storage Gen2 account in the same region as the HDInsight cluster.  
+* **HDInsight sürümleri.** En iyi performans için HDInsight 'ın en son sürümünü kullanın.
+* **Düzenleye.** Data Lake Storage 2. hesabını HDInsight kümesiyle aynı bölgeye yerleştirin.  
 
-An HDInsight cluster is composed of two head nodes and some worker nodes. Each worker node provides a specific number of cores and memory, which is determined by the VM-type.  When running a job, YARN is the resource negotiator that allocates the available memory and cores to create containers.  Each container runs the tasks needed to complete the job.  Containers run in parallel to process tasks quickly. Therefore, performance is improved by running as many parallel containers as possible.
+An HDInsight küme iki baş düğümden ve bazı çalışan düğümlerinden oluşur. Her çalışan düğümü, VM türü tarafından belirlenen belirli sayıda çekirdek ve bellek sağlar.  Bir işi çalıştırırken YARN, kapsayıcılar oluşturmak için kullanılabilir belleği ve çekirdekleri ayıran kaynak Negotiator ' dır.  Her kapsayıcı, işi tamamlaması için gereken görevleri çalıştırır.  Kapsayıcılar, görevleri hızla işlemek için paralel olarak çalışır. Bu nedenle, mümkün olduğunca çok sayıda paralel kapsayıcı çalıştırılarak performans geliştirilmiştir.
 
-There are three layers within an HDInsight cluster that can be tuned to increase the number of containers and use all available throughput.  
+HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kullanılabilir üretilen işi kullanmak için ayarlanabilir üç katman vardır.  
 
-* **Physical layer**
-* **YARN layer**
-* **Workload layer**
+* **Fiziksel katman**
+* **YARN katmanı**
+* **İş yükü katmanı**
 
-### <a name="physical-layer"></a>Physical Layer
+### <a name="physical-layer"></a>Fiziksel katman
 
-**Run cluster with more nodes and/or larger sized VMs.**  A larger cluster will enable you to run more YARN containers as shown in the picture below.
+**Kümeyi daha fazla düğüm ve/veya daha büyük boyutlu VM 'Ler ile çalıştırın.**  Daha büyük bir küme, aşağıdaki resimde gösterildiği gibi daha fazla YARN kapsayıcısı çalıştırmanızı sağlar.
 
-![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
-**Use VMs with more network bandwidth.**  The amount of network bandwidth can be a bottleneck if there is less network bandwidth than Data Lake Storage Gen2 throughput.  Different VMs will have varying network bandwidth sizes.  Choose a VM-type that has the largest possible network bandwidth.
+**Daha fazla ağ bant genişliğine sahip VM 'Leri kullanın.**  Data Lake Storage 2. aktarım hızına kıyasla daha az ağ bant genişliği varsa, ağ bant genişliği miktarı bir performans sorunu olabilir.  Farklı VM 'Lerde farklı ağ bant genişliği boyutları olacaktır.  Olası en büyük ağ bant genişliğine sahip bir VM türü seçin.
 
-### <a name="yarn-layer"></a>YARN Layer
+### <a name="yarn-layer"></a>YARN katmanı
 
-**Use smaller YARN containers.**  Reduce the size of each YARN container to create more containers with the same amount of resources.
+**Daha küçük YARN kapsayıcıları kullanın.**  Aynı miktarda kaynakla daha fazla kapsayıcı oluşturmak için her bir YARN kapsayıcısının boyutunu küçültün.
 
-![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
-Depending on your workload, there will always be a minimum YARN container size that is needed. If you pick too small a container, your jobs will run into out-of-memory issues. Typically YARN containers should be no smaller than 1GB. It's common to see 3GB YARN containers. For some workloads, you may need larger YARN containers.  
+İş yükünüze bağlı olarak, gereken en az YARN kapsayıcı boyutu her zaman olacaktır. Çok küçük bir kapsayıcı seçerseniz, işleriniz bellek dışı sorunlara çalışacaktır. Genellikle YARN kapsayıcıları 1 GB 'tan küçük olmamalıdır. 3GB YARN kapsayıcıları görmek yaygındır. Bazı iş yükleri için daha büyük YARN kapsayıcıları gerekebilir.  
 
-**Increase cores per YARN container.**  Increase the number of cores allocated to each container to increase the number of parallel tasks that run in each container.  This works for applications like Spark which run multiple tasks per container.  For applications like Hive which run a single thread in each container, it is better to have more containers rather than more cores per container.
+**YARN kapsayıcısı başına çekirdekleri artırın.**  Her bir kapsayıcıda çalışan paralel görev sayısını artırmak için her bir kapsayıcıya ayrılan çekirdek sayısını artırın.  Bu, kapsayıcı başına birden çok görevi çalıştıran Spark gibi uygulamalar için çalışır.  Her kapsayıcıda tek bir iş parçacığı çalıştıran Hive gibi uygulamalar için, kapsayıcı başına daha fazla çekirdeğe sahip olmak yerine daha fazla kapsayıcı olması daha iyidir.
 
-### <a name="workload-layer"></a>Workload Layer
+### <a name="workload-layer"></a>İş yükü katmanı
 
-**Use all available containers.**  Set the number of tasks to be equal or larger than the number of available containers so that all resources are utilized.
+**Tüm kullanılabilir kapsayıcıları kullanın.**  Tüm kaynakların kullanılabilmesi için kullanılabilir kapsayıcı sayısına eşit veya daha büyük olacak görev sayısını ayarlayın.
 
-![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
-**Failed tasks are costly.** If each task has a large amount of data to process, then failure of a task results in an expensive retry.  Therefore, it is better to create more tasks, each of which processes a small amount of data.
+**Başarısız görevler maliyetlidir.** Her görevin işlemek için büyük miktarda veri varsa, bir görevin başarısızlığı pahalı bir yeniden denemeye neden olur.  Bu nedenle, her biri az miktarda veri işleyen daha fazla görev oluşturmak daha iyidir.
 
-In addition to the general guidelines above, each application has different parameters available to tune for that specific application. The table below lists some of the parameters and links to get started with performance tuning for each application.
+Yukarıdaki genel yönergelere ek olarak, her uygulamanın belirli bir uygulama için ayarlanacak farklı parametreleri vardır. Aşağıdaki tabloda, her bir uygulama için performans ayarlama ile çalışmaya başlamak için bazı parametreler ve bağlantılar listelenmektedir.
 
-| İş yükü | Parameter to set tasks |
+| İş yükü | Görevleri ayarlanacak parametre |
 |----------|------------------------|
-| [Spark on HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
-| [Hive on HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
-| [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Number of worker processes</li><li>Number of spout executor instances</li><li>Number of bolt executor instances </li><li>Number of spout tasks</li><li>Number of bolt tasks</li></ul>|
+| [HDInsight 'ta Spark](data-lake-storage-performance-tuning-spark.md) | <ul><li>Sayı yürüticileri</li><li>Yürütücü-bellek</li><li>Yürütücü-çekirdekler</li></ul> |
+| [HDInsight üzerinde Hive](data-lake-storage-performance-tuning-hive.md) | <ul><li>Hive. tez. Container. size</li></ul> |
+| [HDInsight üzerinde MapReduce](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. Map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. küçültme. bellek</li><li>MapReduce. job. azaltıyor</li></ul> |
+| [HDInsight üzerinde fırtınası](data-lake-storage-performance-tuning-storm.md)| <ul><li>Çalışan işlem sayısı</li><li>Spout yürütücü örneklerinin sayısı</li><li>Cıvagular yürütücü örneklerinin sayısı </li><li>Spout görevi sayısı</li><li>Cıvatın görevi sayısı</li></ul>|
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Overview of Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)
+* [Azure Data Lake Storage 2. genel bakış](data-lake-storage-introduction.md)

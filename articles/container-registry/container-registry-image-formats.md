@@ -1,6 +1,6 @@
 ---
-title: Supported content formats
-description: Learn about content formats supported by Azure Container Registry, including Docker-compatible container images, Helm charts, OCI images, and OCI artifacts.
+title: Desteklenen içerik biçimleri
+description: Docker ile uyumlu kapsayıcı görüntüleri, Held grafikleri, OCı görüntüleri ve OCı yapıtları dahil Azure Container Registry tarafından desteklenen içerik biçimleri hakkında bilgi edinin.
 ms.topic: article
 ms.date: 08/30/2019
 ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
@@ -10,40 +10,40 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455010"
 ---
-# <a name="content-formats-supported-in-azure-container-registry"></a>Content formats supported in Azure Container Registry
+# <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry desteklenen içerik biçimleri
 
-Use a private repository in Azure Container Registry to manage one of the following content formats. 
+Aşağıdaki içerik biçimlerinden birini yönetmek için Azure Container Registry bir özel depo kullanın. 
 
-## <a name="docker-compatible-container-images"></a>Docker-compatible container images
+## <a name="docker-compatible-container-images"></a>Docker ile uyumlu kapsayıcı görüntüleri
 
-The following Docker container image formats are supported:
+Aşağıdaki Docker kapsayıcı görüntü biçimleri desteklenir:
 
-* [Docker Image Manifest V2, Schema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
+* [Docker görüntü bildirimi v2, şema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker Image Manifest V2, Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - includes Manifest Lists which allow registries to store multiplatform images under a single "image:tag" reference
+* [Docker Image manifest v2, şema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -kayıt defterlerinin çoklu platform görüntülerini tek bir "Image: Tag" başvurusu altında depolamasına Izin veren bildirim listeleri içerir
 
-## <a name="oci-images"></a>OCI images
+## <a name="oci-images"></a>OCı görüntüleri
 
-Azure Container Registry supports images that meet the [Open Container Initiative (OCI) Image Format Specification](https://github.com/opencontainers/image-spec/blob/master/spec.md). Packaging formats include [Singularity Image Format (SIF)](https://github.com/sylabs/sif).
+Azure Container Registry, [Açık kapsayıcı girişimi (OCI) görüntü biçimi belirtimini](https://github.com/opencontainers/image-spec/blob/master/spec.md)karşılayan görüntüleri destekler. Paketleme biçimleri, [Singularımage Format (SIF)](https://github.com/sylabs/sif)içerir.
 
-## <a name="oci-artifacts"></a>OCI artifacts
+## <a name="oci-artifacts"></a>OCı yapıtları
 
-Azure Container Registry supports the [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec), a vendor-neutral, cloud-agnostic spec to store, share, secure, and deploy container images and other content types (artifacts). The specification allows a registry to store a wide range of artifacts in addition to container images. You use tooling appropriate to the artifact to push and pull artifacts. For an example, see [Push and pull an OCI artifact using an Azure container registry](container-registry-oci-artifacts.md).
+Azure Container Registry, kapsayıcı görüntülerini ve diğer içerik türlerini (yapıtları) depolamak, paylaşmak, güvenli hale getirmek ve dağıtmak için satıcı tarafsız, buluttan bağımsız bir belirtim olan [OCI dağıtım belirtimini](https://github.com/opencontainers/distribution-spec)destekler. Belirtim, bir kayıt defterinin kapsayıcı görüntülerine ek olarak çok çeşitli yapıtları depolamasına izin verir. Yapıtları göndermek ve çekmek için yapıtı uygun araçları kullanın. Bir örnek için bkz. [Azure Container Registry kullanarak BIR OCI yapıtı gönderme ve çekme](container-registry-oci-artifacts.md).
 
-To learn more about OCI artifacts, see the [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) repo and the [OCI Artifacts](https://github.com/opencontainers/artifacts) repo on GitHub.
+OCı yapıtları hakkında daha fazla bilgi edinmek için bkz. [depolama (ORAS) deposu olarak OCI kayıt defteri](https://github.com/deislabs/oras) ve GitHub 'Daki [OCI yapıtları](https://github.com/opencontainers/artifacts) deposu.
 
-## <a name="helm-charts"></a>Helm charts
+## <a name="helm-charts"></a>Helb grafikleri
 
-Azure Container Registry can host repositories for [Helm charts](https://helm.sh/), a packaging format used to quickly manage and deploy applications for Kubernetes. [Helm client](https://docs.helm.sh/using_helm/#installing-helm) version 2 (2.11.0 or later) is supported.
+Azure Container Registry, Kubernetes için uygulamaları hızlı bir şekilde yönetmek ve dağıtmak üzere kullanılan bir paketleme biçimi olan [helk grafikleri](https://helm.sh/)için depolar barındırabilir. [Held Client](https://docs.helm.sh/using_helm/#installing-helm) sürüm 2 (2.11.0 veya üzeri) desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* See how to [push and pull](container-registry-get-started-docker-cli.md) images with Azure Container Registry.
+* Azure Container Registry görüntüleri [gönderme ve çekme](container-registry-get-started-docker-cli.md) hakkında bilgi edinme.
 
-* Use [ACR tasks](container-registry-tasks-overview.md) to build and test container images. 
+* Kapsayıcı görüntülerini derlemek ve test etmek için [ACR görevlerini](container-registry-tasks-overview.md) kullanın. 
 
-* Use the [Moby BuildKit](https://github.com/moby/buildkit) to build and package containers in OCI format.
+* Kapsayıcıları OCı biçiminde derlemek ve paketlemek için [Moby BuildKit](https://github.com/moby/buildkit) ' i kullanın.
 
-* Set up a [Helm repository](container-registry-helm-repos.md) hosted in Azure Container Registry. 
+* Azure Container Registry barındırılan bir [Held deposu](container-registry-helm-repos.md) ayarlayın. 
 
 

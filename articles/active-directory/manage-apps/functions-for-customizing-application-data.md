@@ -42,216 +42,216 @@ Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz i
 
 ---
 ### <a name="append"></a>Ekle
-**İşlev:**<br> Append(Source, Suffix)
+**Çalışmayacaktır**<br> Append(Source, Suffix)
 
-**Açıklama:**<br> Kaynak dize değerini alır ve soneki, sonuna ekler.
+**Açıklaması**<br> Kaynak dize değerini alır ve soneki, sonuna ekler.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-| **suffix** |Gerekli |Dize |Kaynak değerin sonuna istediğiniz dize. |
+| **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+| **önekini** |Gerekli |Dize |Kaynak değerin sonuna istediğiniz dize. |
 
 ---
 ### <a name="formatdatetime"></a>formatDateTime
-**İşlev:**<br> FormatDateTime (kaynak, inputFormat, outputFormat)
+**Çalışmayacaktır**<br> FormatDateTime (kaynak, inputFormat, outputFormat)
 
-**Açıklama:**<br> Bir tarih dizesini bir biçimden alır ve farklı bir biçime dönüştürür.
+**Açıklaması**<br> Bir tarih dizesini bir biçimden alır ve farklı bir biçime dönüştürür.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-| **inputFormat** |Gerekli |Dize |Kaynak değeri beklenen biçimi. Desteklenen biçimler için bkz: [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+| **InPutFormat** |Gerekli |Dize |Kaynak değeri beklenen biçimi. Desteklenen biçimler için bkz. [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Gerekli |Dize |Çıkış tarih biçimi. |
 
 ---
 ### <a name="join"></a>Birleştir
-**İşlev:**<br> Birleştirme (ayırıcı, kaynak1, kaynak2,...)
+**Çalışmayacaktır**<br> Birleştirme (ayırıcı, kaynak1, kaynak2,...)
 
-**Açıklama:**<br> Birden çok birleştirebilirsiniz dışında join() Append() için benzer **kaynak** dize değerleri tek bir dize olarak ve her bir değeri ile ayrılmış bir **ayırıcı** dize.
+**Açıklaması**<br> JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.
 
 Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki her değer, ayırıcı değeriyle ayırarak birlikte birleştirilir.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Ayırıcı** |Gerekli |Dize |Kaynak değerler bir dizeye birleştirilmiş, ayırmak için kullanılan dize. Olabilir "" ayırıcı gerekiyorsa. |
-| **... kaynak1 kaynakN** |Değişken-sayısı gerekli |Dize |Değerleri birlikte birleştirilecek dize. |
+| **ayırıcı** |Gerekli |Dize |Kaynak değerler bir dizeye birleştirilmiş, ayırmak için kullanılan dize. Olabilir "" ayırıcı gerekiyorsa. |
+| **source1 ... Kaynakcen** |Değişken-sayısı gerekli |Dize |Değerleri birlikte birleştirilecek dize. |
 
 ---
 ### <a name="mid"></a>Orta
-**İşlev:**<br> Mid (kaynak, başlangıç, uzunluk)
+**Çalışmayacaktır**<br> Mid (kaynak, başlangıç, uzunluk)
 
-**Açıklama:**<br> Kaynak değerin bir alt dizeyi döndürür. Bir alt dizenin yalnızca bazı kaynak dizeden karakterleri içeren bir dizedir.
+**Açıklaması**<br> Kaynak değerin bir alt dizeyi döndürür. Bir alt dizenin yalnızca bazı kaynak dizeden karakterleri içeren bir dizedir.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |Genellikle özniteliğin adı. |
-| **start** |Gerekli |integer |İçinde dizin **kaynak** alt dizenin başladığı dize. Dizedeki ilk karakter dizini 1 gerekir, ikinci karakter 2 dizine sahip ve benzeri. |
-| **length** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluğu dışında sona ererse **kaynak** dize işlevi alt dizeyi döndürecektir **Başlat** sonuna kadar dizin **kaynak** dize. |
+| **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
+| **start** |Gerekli |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter dizini 1 gerekir, ikinci karakter 2 dizine sahip ve benzeri. |
+| **uzunluklu** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
-**İşlev:**<br> NormalizeDiacritics(source)
+**Çalışmayacaktır**<br> NormalizeDiacritics(source)
 
-**Açıklama:**<br> Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm Aksan karakteriyle değiştirildiğini aksanlı eşdeğer karakterlerle. Genellikle kullanıcı asıl adı, SAM hesap adlarını ve e-posta adresleri gibi çeşitli kullanıcı tanımlayıcılarını kullanılabilir yasal değerlerine adlarını ve soyadlarını aksanlı karakterleri (vurgu işaretleri) içeren dönüştürmek için kullanılır.
+**Açıklaması**<br> Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm Aksan karakteriyle değiştirildiğini aksanlı eşdeğer karakterlerle. Genellikle kullanıcı asıl adı, SAM hesap adlarını ve e-posta adresleri gibi çeşitli kullanıcı tanımlayıcılarını kullanılabilir yasal değerlerine adlarını ve soyadlarını aksanlı karakterleri (vurgu işaretleri) içeren dönüştürmek için kullanılır.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
+| **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
 ---
-### <a name="not"></a>Not
-**İşlev:**<br> Not(Source)
+### <a name="not"></a>değil
+**Çalışmayacaktır**<br> Not(Source)
 
-**Açıklama:**<br> Boole değeri çevirir **kaynak**. Varsa **kaynak** değeridir "*True*", döndürür "*False*". Aksi halde döndürür "*True*".
+**Açıklaması**<br> **Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
+| **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
 ---
 ### <a name="replace"></a>Değiştir
-**İşlev:**<br> Değiştir (kaynak, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, şablon)
+**Çalışmayacaktır**<br> Değiştir (kaynak, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, şablon)
 
-**Açıklama:**<br>
+**Açıklaması**<br>
 Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olarak farklı şekilde çalışır:
 
-* Zaman **oldValue** ve **replacementValue** sağlanır:
+* **OldValue** ve **replacementvalue** sağlandığında:
   
   * **Kaynaktaki** tüm **OldValue** yinelemelerini **replacementvalue** ile değiştirir
-* Zaman **oldValue** ve **şablon** sağlanır:
+* **OldValue** ve **şablon** sağlandığında:
   
-  * Tüm oluşumlarını değiştirir **oldValue** içinde **şablon** ile **kaynak** değeri
+  * **Şablondaki** **OldValue** tüm oluşumlarını **kaynak** değerle değiştirir
 * **Regexmodel** ve **replacementvalue** sağlandığında:
 
   * İşlevi, **Regexmodel** öğesini **kaynak** dizeye uygular ve **replacementvalue** için dizeyi oluşturmak üzere Regex grup adlarını kullanabilirsiniz
-* Zaman **regexPattern**, **regexGroupName**, **replacementValue** sağlanır:
+* **Regexgroupname**, **replacementvalue** sağlandığında:
   
   * İşlev, **kaynak** dizeye **regexmodel** uygular ve **regexgroupname** Ile eşleşen tüm değerleri **replacementvalue** ile değiştirir
 * **Regexgroupname**, **replacementAttributeName** sağlandığında:
   
-  * Varsa **kaynak** değeri **kaynak** döndürülür
+  * **Kaynakta** değer yoksa, **kaynak** döndürülür
   * **Kaynakta** bir değer varsa, Işlev **regexmodel** öğesini **kaynak** dizeye uygular ve **Regexgroupname** ile eşleşen tüm değerleri **replacementAttributeName** ile ilişkili değerle değiştirir
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
-| **oldValue** |İsteğe Bağlı |Dize |İçinde değiştirilecek değer **kaynak** veya **şablon**. |
-| **regexPattern** |İsteğe Bağlı |Dize |Regex deseni olarak değiştirilecek değeri **kaynak**. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
-| **regexGroupName** |İsteğe Bağlı |Dize |Grup içinde adını **regexPattern**. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
+| **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
+| **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
+| **Regexmodel** |İsteğe Bağlı |Dize |**Kaynakta**değiştirilmekte olan değer için Regex stili. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
+| **regexGroupName** |İsteğe Bağlı |Dize |**Regexmodel**içindeki grubun adı. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
 | **replacementValue** |İsteğe Bağlı |Dize |Eski değiştirmek için yeni değeri. |
 | **replacementAttributeName** |İsteğe Bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
-| **Şablonu** |İsteğe Bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
+| **şablonlarını** |İsteğe Bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
-**İşlev:**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
+**Çalışmayacaktır**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
 
-**Açıklama:**<br> En az benzersiz değer oluşturma kuralları ifadeleri kullanılarak tanımlanmış olan iki bağımsız değişken gerektirir. İşlev, her kural değerlendirir ve ardından hedef uygulama/dizinindeki benzersizlik için oluşturulan değeri denetler. Bir döndürülen ilk benzersiz değeri bulundu. Tüm değerleri hedefte zaten varsa, giriş kalacakları ve nedeni denetim günlüklerinde günlüğe. Sağlanan bağımsız değişken sayısı için üst sınır yoktur.
+**Açıklaması**<br> En az benzersiz değer oluşturma kuralları ifadeleri kullanılarak tanımlanmış olan iki bağımsız değişken gerektirir. İşlev, her kural değerlendirir ve ardından hedef uygulama/dizinindeki benzersizlik için oluşturulan değeri denetler. Bir döndürülen ilk benzersiz değeri bulundu. Tüm değerleri hedefte zaten varsa, giriş kalacakları ve nedeni denetim günlüklerinde günlüğe. Sağlanan bağımsız değişken sayısı için üst sınır yoktur.
 
 > [!NOTE]
 > - Bu üst düzey bir işlev, iç içe olamaz.
 > - Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.  
-> - Bu işlev yalnızca girişi oluşturma için kullanılmak üzere tasarlanmıştır. Bir öznitelik ile kullanırken, ayarlayın **uygulamak eşleme** özelliğini **yalnızca nesne oluşturma sırasında**.
+> - Bu işlev yalnızca girişi oluşturma için kullanılmak üzere tasarlanmıştır. Bir özniteliğiyle birlikte kullanıldığında, **uygulamayı Uygula** özelliğini **yalnızca nesne oluşturma sırasında**olarak ayarlayın.
 > - Bu işlev şu anda yalnızca "Workday for User sağlamasını Active Directory" için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz. 
 
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **... uniqueValueRule1 uniqueValueRuleN** |En az 2 gerekli, en üst sınır. |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
+| **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekli, en üst sınır. |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**İşlev:**<br> SingleAppRoleAssignment([appRoleAssignments])
+**Çalışmayacaktır**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Açıklama:**<br> Belirli bir uygulama için kullanıcıya atanan tüm Approtaatamalar listesinden tek bir Approtaatama döndürür. Approtaatamalar nesnesini tek bir rol adı dizesine dönüştürmek için bu işlev gereklidir. En iyi yöntem, tek seferde bir kullanıcıya yalnızca bir Approelatama atandığından emin olmak ve birden çok rol atanmamışsa döndürülen rol dizesinin tahmin edilebilir olamayacağını unutmayın. 
+**Açıklaması**<br> Belirli bir uygulama için kullanıcıya atanan tüm Approtaatamalar listesinden tek bir Approtaatama döndürür. Approtaatamalar nesnesini tek bir rol adı dizesine dönüştürmek için bu işlev gereklidir. En iyi yöntem, tek seferde bir kullanıcıya yalnızca bir Approelatama atandığından emin olmak ve birden çok rol atanmamışsa döndürülen rol dizesinin tahmin edilebilir olamayacağını unutmayın. 
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Gerekli |Dize |**[appRoleAssignments]**  nesne. |
+| **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
 ---
 ### <a name="split"></a>Bölme
-**İşlev:**<br> Böl (kaynak, sınırlayıcı)
+**Çalışmayacaktır**<br> Böl (kaynak, sınırlayıcı)
 
-**Açıklama:**<br> Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.
+**Açıklaması**<br> Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |**Kaynak** güncelleştirmek için değer. |
+| **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
-**İşlev:**<br> StripSpaces(source)
+**Çalışmayacaktır**<br> StripSpaces(source)
 
-**Açıklama:**<br> Tüm alan kaldırır ("") karakter kaynak dizesi.
+**Açıklaması**<br> Tüm alan kaldırır ("") karakter kaynak dizesi.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |**Kaynak** güncelleştirmek için değer. |
+| **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
 ---
 ### <a name="switch"></a>Anahtar
-**İşlev:**<br> Anahtar (kaynak, defaultValue, key1, value1, key2, value2,...)
+**Çalışmayacaktır**<br> Anahtar (kaynak, defaultValue, key1, value1, key2, value2,...)
 
-**Açıklama:**<br> Zaman **kaynak** değeri eşleşen bir **anahtarı**, döndürür **değer** söz konusu **anahtar**. Varsa **kaynak** değeri döndürür bir anahtarı eşleşmiyor **defaultValue**.  **Anahtar** ve **değer** parametreleri her zaman çiftler halinde gelmelidir. İşlev her zaman bir çift sayı parametre bekliyor.
+**Açıklaması**<br> **Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue**döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman bir çift sayı parametre bekliyor.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |**Kaynak** güncelleştirmek için değer. |
-| **defaultValue** |İsteğe Bağlı |Dize |Tüm anahtarları kaynak eşleşmediğinde kullanılacak varsayılan değeri. Boş bir dize olabilir (""). |
-| **anahtar** |Gerekli |Dize |**Anahtar** Karşılaştırılacak **kaynak** ile değeri. |
-| **value** |Gerekli |Dize |İçin değiştirme değeri **kaynak** anahtarıyla eşleşen. |
+| **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
+| **Değerinin** |İsteğe Bağlı |Dize |Tüm anahtarları kaynak eşleşmediğinde kullanılacak varsayılan değeri. Boş bir dize olabilir (""). |
+| **anahtar** |Gerekli |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
+| **value** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
 
 ---
 ### <a name="tolower"></a>ToLower
-**İşlev:**<br> ToLower (kaynak, kültür)
+**Çalışmayacaktır**<br> ToLower (kaynak, kültür)
 
-**Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
+**Açıklaması**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
+| **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 ### <a name="toupper"></a>ToUpper
-**İşlev:**<br> ToUpper (kaynak, kültür)
+**Çalışmayacaktır**<br> ToUpper (kaynak, kültür)
 
-**Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
+**Açıklaması**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
 
-**Parametreler:**<br> 
+**Parametrelere**<br> 
 
-| Ad | Gerekli / yinelenen | Tür | Notlar |
+| Name | Gerekli / yinelenen | Type | Notlar |
 | --- | --- | --- | --- |
-| **Kaynak** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+| **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ## <a name="examples"></a>Örnekler
@@ -259,52 +259,52 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 Bir kullanıcı adı almak için bir kullanıcının e-posta bilinen etki alanı adından çıkarmanız gerekir. <br>
 Örneğin, "contoso.com" etki alanı varsa, aşağıdaki ifade kullanabilirsiniz:
 
-**İfade:** <br>
+**İfadesini** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**Giriş / Çıkış örneği:** <br>
+**Örnek giriş/çıkış:** <br>
 
 * **Giriş** (posta): "john.doe@contoso.com"
-* **Çıkış**: "john.doe"
+* **Çıkış**: "John. tikan"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Kullanıcı adı için sabit bir sonek ekleme
 Salesforce korumalı alan kullanıyorsanız, ek bir sonek eşitlemeden önce tüm kullanıcı adları eklemek gerekebilir.
 
-**İfade:** <br>
+**İfadesini** <br>
 `Append([userPrincipalName], ".test")`
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş**: (userPrincipalName): "John.Doe@contoso.com"
-* **ÇIKIŞ**: "John.Doe@contoso.com.test"
+* **Giriş**: (UserPrincipalName): "John.Doe@contoso.com"
+* **Çıkış**: "John.Doe@contoso.com.test"
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birleştirme bölümleri adının ilk ve son tarafından kullanıcı diğer adı oluştur
 Bir kullanıcı diğer kullanıcının adını, ilk 3 harf ve kullanıcının soyadını ilk 5 harfini yararlanarak oluşturmanız gerekiyor.
 
-**İfade:** <br>
+**İfadesini** <br>
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (givenName): "John"
-* **Giriş** (Soyadı): "Doe"
-* **Çıkış**: "JohDoe"
+* **Giriş** ("John"): "John"
+* **Giriş** (soyad): "tikan"
+* **Çıkış**: "cantikan"
 
 ### <a name="remove-diacritics-from-a-string"></a>Bir dizeden Aksanları Kaldır
 Vurgu işaretlerinin içermeyen eşdeğer karakterlerle vurgu işaretleri içeren karakter değiştirmeniz gerekir.
 
-**İfade:** <br>
+**İfadesini** <br>
 NormalizeDiacritics([givenName])
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (givenName): "Zoë"
-* **Çıkış**: "Zoe"
+* **Giriş** (Zoë): ""
+* **Çıkış**: "Bure"
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Dizeyi çok değerli bir diziye bölme
 Virgülle ayrılmış dizelerin bir listesini almanız ve bunları Salesforce 'ın PermissionSets özniteliği gibi bir çok değerli özniteliğe takılmış bir diziye bölmeniz gerekir. Bu örnekte, Azure AD 'de extensionAttribute5 'de izin kümelerinin bir listesi doldurulmuştur.
 
-**İfade:** <br>
+**İfadesini** <br>
 Böl ([extensionAttribute5], ",")
 
 **Örnek giriş/çıkış:** <br>
@@ -316,21 +316,21 @@ Böl ([extensionAttribute5], ",")
 Belirli bir biçimdeki bir SaaS uygulamasına tarihleri göndermek istediğiniz. <br>
 Örneğin, tarihleri biçimlendirmek için ServiceNow istiyorsunuz.
 
-**İfade:** <br>
+**İfadesini** <br>
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (extensionAttribute1): "20150123105347.1Z"
-* **ÇIKIŞ**: "2015-01-23"
+* **Giriş** (extensionAttribute1): "20150123105347.1 z"
+* **Çıkış**: "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenekleri kümesi temel alınarak bir değeri değiştirin
 
 Azure AD'de depolanan eyalet koduna göre kullanıcının saat dilimi tanımlamak gerekir. <br>
 Önceden tanımlanmış seçeneklerden herhangi biri durum kodu eşleşmiyorsa, "Avustralya/Sidney" varsayılan değeri kullanın.
 
-**İfade:** <br>
+**İfadesini** <br>
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Örnek giriş/çıkış:**
@@ -341,7 +341,7 @@ Azure AD'de depolanan eyalet koduna göre kullanıcının saat dilimi tanımlama
 ### <a name="replace-characters-using-a-regular-expression"></a>Normal ifade kullanarak karakterleri değiştirme
 Normal ifade değeriyle eşleşen karakterler bulmanız ve bunları kaldırmanız gerekir.
 
-**İfade:** <br>
+**İfadesini** <br>
 
 Replace ([Mailtakma ad],, "[a-zA-Z_] *",, "",,)
 
@@ -357,14 +357,14 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (PreferredFirstName): "John"
-* **Giriş** (PreferredLastName): "Smith"
+* **Giriş** (preferredfirstname): "John"
+* **Giriş** (preferredlastname): "Smith"
 * **Çıkış**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz bir değer oluşturur
 Bağlı kullanıcının ilk adını, ikinci adı ve Soyadı, UPN özniteliği için değer atamadan önce hedef AD dizininde UPN özniteliği için bir değer ve kendi benzersizlik denetimi oluşturmanız gerekiyor.
 
-**İfade:** <br>
+**İfadesini** <br>
 
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
@@ -374,16 +374,16 @@ Bağlı kullanıcının ilk adını, ikinci adı ve Soyadı, UPN özniteliği i�
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (PreferredFirstName): "John"
-* **Giriş** (PreferredLastName): "Smith"
-* **Çıkış**: "John.Smith@contoso.com" değilse UPN değerini John.Smith@contoso.com dizininde zaten mevcut değil
-* **Çıkış**: "J.Smith@contoso.com" değilse UPN değerini John.Smith@contoso.com dizinde zaten var.
-* **Çıkış**: "Jo.Smith@contoso.com" Yukarıdaki iki UPN değeri dizinde zaten mevcutsa
+* **Giriş** (preferredfirstname): "John"
+* **Giriş** (preferredlastname): "Smith"
+* **Çıkış**: John.Smith@contoso.com UPN değeri zaten dizinde yoksa "John.Smith@contoso.com"
+* **Çıkış**: John.Smith@contoso.com UPN değeri zaten dizinde varsa "J.Smith@contoso.com"
+* **Çıkış**: YUKARıDAKI iki UPN değeri dizinde zaten mevcutsa "Jo.Smith@contoso.com"
 
 ## <a name="related-articles"></a>İlgili makaleler
-* [Kullanıcı sağlama/sağlamayı kaldırma SaaS uygulamaları için otomatik hale getirin](user-provisioning.md)
-* [Kullanıcı sağlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)
-* [Kullanıcı sağlama için kapsam oluşturma filtresi](define-conditional-rules-for-provisioning-user-accounts.md)
+* [SaaS uygulamalarına Kullanıcı sağlamasını/sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md)
+* [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)
+* [Kullanıcı hazırlama için kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Kullanıcıların ve grupların Azure Active Directory'den uygulamalara otomatik olarak hazırlanmasını etkinleştirmek için SCIM'yi kullanma](use-scim-to-provision-users-and-groups.md)
 * [Hesap sağlama bildirimleri](user-provisioning.md)
-* [SaaS uygulamalarını tümleştirme hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
+* [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)

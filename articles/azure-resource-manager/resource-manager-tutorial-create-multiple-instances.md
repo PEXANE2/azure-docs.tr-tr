@@ -16,7 +16,7 @@ ms.locfileid: "74326527"
 
 Bir Azure Kaynağı’nın birden çok örneğini oluşturmak için Azure Resource Manager şablonunuzda yineleme yapmayı öğrenin. Bu öğreticide, bir şablonu değiştirerek üç depolama hesabı örneği oluşturacaksınız.
 
-![Azure Resource Manager creates multiple instances diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager birden çok örnek diyagramı oluşturuyor](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -25,13 +25,13 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu düzenleme
 > * Şablonu dağıtma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code. Bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
@@ -45,7 +45,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
 4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
+5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 

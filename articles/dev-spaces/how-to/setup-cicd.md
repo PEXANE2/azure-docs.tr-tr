@@ -23,7 +23,7 @@ Bu makalede, geliştirme alanları etkinken Azure Kubernetes Service (AKS) ile s
 
 Bu makalede Azure DevOps ile ilgili yol, ancak Jenkins, TeamCity vb. gibi CI/CD sistemleri için de aynı kavramlar geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Azure Dev Spaces etkin Azure Kubernetes hizmeti (AKS) kümesi](../get-started-netcore.md)
 * [Azure Dev Spaces CLı yüklendi](upgrade-tools.md)
 * [Bir proje ile Azure DevOps organizasyonu](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
@@ -119,7 +119,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Sağ üst köşedeki **Kaydet** ' e tıklayıp **Tamam**' a tıklayın.
 1. **+ Release** (Kaydet düğmesinin yanında) seçeneğine tıklayın ve **bir yayın oluşturun**.
 1. **Yapıtlar**bölümünde, derleme işlem hattınızdan en son derlemeyi doğrulayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 
 Otomatik bir yayın işlemi başlar, şimdi _geliştirme_ üst düzey alanında *mywebapi* ve *Webön uç* grafiklerini Kubernetes kümenize dağıtacaksınız. Azure DevOps web portalında, yayınınızın ilerlemesini izleyebilirsiniz:
 

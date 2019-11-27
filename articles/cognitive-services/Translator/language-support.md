@@ -127,7 +127,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Kannada dili | `kn` | Kannada dili `Knda` | --> | Latin `Latn` |
 | Malayalam dili | `ml` | Malayalam dili `Mlym` | --> | Latin `Latn` |
 | Marathi | `mr` | Devanagari `Deva` | --> | Latin `Latn` |
-| Oriya | `or` | Odia `Orya` | <--> | Latin `Latn` |
+| Oriya | `or` | Oriya dili `Orya` | <--> | Latin `Latn` |
 | Pencap dili | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | Sırpça (Kiril) | `sr-Cyrl` | Kiril `Cyrl`  | --> | Latin `Latn` |
 | Sırpça (Latin) | `sr-Latn` | Latin `Latn` | --> | Kiril `Cyrl`|

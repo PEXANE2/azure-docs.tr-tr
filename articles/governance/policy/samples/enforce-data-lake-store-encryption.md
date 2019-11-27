@@ -1,6 +1,6 @@
 ---
-title: Sample - Require encryption for Data Lake Store
-description: This sample policy definition requires the encryption state on Data Lake Store accounts to be enabled.
+title: Örnek-Data Lake Store için şifreleme gerektir
+description: Bu örnek ilke tanımı Data Lake Store hesapların etkinleştirilmesi için şifreleme durumunun etkinleştirilmesini gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 5b29caa7fa8b9169b8c2164975f9cdb2663c5cef
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463634"
 ---
-# <a name="sample---require-data-lake-store-encryption"></a>Sample - Require Data Lake Store encryption
+# <a name="sample---require-data-lake-store-encryption"></a>Örnek-Data Lake Store şifreleme gerektir
 
 Bu yerleşik ilke, şifreleme etkin olmayan Data Lake Store hesaplarını reddeder.
 

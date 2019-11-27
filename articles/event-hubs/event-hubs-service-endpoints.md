@@ -43,7 +43,7 @@ Sonuç, alt ağ ve ilgili Event Hubs ad alanı, Mesajlaşma Hizmeti uç noktası
 > - Azure İşlevleri
 
 > [!IMPORTANT]
-> Sanal ağlar desteklenir **standart** ve **adanmış** Event Hubs'ın katmanları. Temel katmanda desteklenmiyor.
+> Sanal ağlar, Event Hubs **Standart** ve **adanmış** katmanlarında desteklenir. Temel katmanda desteklenmiyor.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi etkin Gelişmiş Güvenlik senaryoları 
 
@@ -55,9 +55,9 @@ Bu, bulut çözümleri yalnızca Azure sektör lideri güvenilir ve ölçekleneb
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Olay hub'ları sanal ağlara bağlama
 
-*Sanal ağ kuralları* Azure Event Hubs ad alanınız belirli bir sanal ağ alt ağından gelen bağlantıları kabul edip etmeyeceğini denetleyen güvenlik duvarı güvenliği özelliğidir.
+*Sanal ağ kuralları* , Azure Event Hubs ad uzayının belirli bir sanal ağ alt ağından gelen bağlantıları kabul edip etmediğini denetleyen güvenlik duvarı güvenlik özelliğidir.
 
-Bir Event Hubs ad alanı, bir sanal ağa bağlama iki adımlı bir işlemdir. Önce bir sanal ağ alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve bunu [hizmet uç noktasına genel bakış][vnet-sep]bölümünde açıklandığı gibi "Microsoft. EventHub" için etkinleştirmeniz gerekir. Hizmet uç noktası ekledikten sonra Event Hubs ad alanı ile bağlama bir *sanal ağ kuralı*.
+Bir Event Hubs ad alanı, bir sanal ağa bağlama iki adımlı bir işlemdir. Önce bir sanal ağ alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve bunu [hizmet uç noktasına genel bakış][vnet-sep]bölümünde açıklandığı gibi "Microsoft. EventHub" için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Event Hubs ad alanını bir *sanal ağ kuralıyla*bağlayın.
 
 Sanal ağ kuralı, bir sanal ağ alt ağıyla Event Hubs ad alanının bir ilişkidir. Kural bulunduğu sürece bir alt ağa bağlı tüm iş yükleri Event Hubs ad alanına erişimi verilir. Event hubs'ı kendisi asla giden bağlantı kurar, erişim gerekmez ve bu nedenle asla erişimi alt ağınız bu kuralı etkinleştirmek tarafından verilir.
 
@@ -67,9 +67,9 @@ Aşağıdaki Resource Manager şablonu var olan bir Event Hubs ad alanı için b
 
 Şablon parametreleri:
 
-* **namespaceName**: Event Hubs ad alanı.
-* **vnetRuleName**: Oluşturulacak sanal ağ kuralı adı.
-* **virtualNetworkingSubnetId**: tam Resource Manager yolu için sanal ağ alt ağı; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` sanal ağ varsayılan alt ağ.
+* **NamespaceName**: Event Hubs ad alanı.
+* **Vnetrutaname**: oluşturulacak sanal ağ kuralının adı.
+* **Virtualnetworkingsubnetıd**: sanal ağ alt ağı için tam olarak nitelenmiş Kaynak Yöneticisi yolu; Örneğin, bir sanal ağın varsayılan alt ağı için `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default`.
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.

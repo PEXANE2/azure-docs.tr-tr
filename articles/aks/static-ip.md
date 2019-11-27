@@ -1,6 +1,6 @@
 ---
-title: Use a static IP address with the Azure Kubernetes Service (AKS) load balancer
-description: Learn how to create and use a static IP address with the Azure Kubernetes Service (AKS) load balancer.
+title: Azure Kubernetes Service (AKS) yük dengeleyicisiyle bir statik IP adresi kullanın
+description: Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir IP adresi oluşturmayı ve kullanmayı öğrenin.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,23 +14,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325437"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Use a static public IP address with the Azure Kubernetes Service (AKS) load balancer
+# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir genel IP adresi kullanın
 
-By default, the public IP address assigned to a load balancer resource created by an AKS cluster is only valid for the lifespan of that resource. If you delete the Kubernetes service, the associated load balancer and IP address are also deleted. If you want to assign a specific IP address or retain an IP address for redeployed Kubernetes services, you can create and use a static public IP address.
+Varsayılan olarak, bir AKS kümesi tarafından oluşturulan bir yük dengeleyici kaynağına atanan genel IP adresi yalnızca söz konusu kaynağın kullanım ömrü için geçerlidir. Kubernetes hizmetini silerseniz ilişkili yük dengeleyici ve IP adresi de silinir. Belirli bir IP adresi atamak veya yeniden dağıtılan Kubernetes Hizmetleri için bir IP adresi korumak istiyorsanız statik bir genel IP adresi oluşturabilir ve kullanabilirsiniz.
 
-This article shows you how to create a static public IP address and assign it to your Kubernetes service.
+Bu makalede, statik bir genel IP adresi oluşturma ve Kubernetes hizmetinize atama işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
-This article covers using a *Standard* SKU IP with a *Standard* SKU load balancer. For more information, see [IP address types and allocation methods in Azure][ip-sku].
+Bu makalede *Standart* SKU 'su yük dengeleyiciye sahip *Standart* SKU IP 'si kullanımı ele alınmaktadır. Daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri][ip-sku].
 
-## <a name="create-a-static-ip-address"></a>Create a static IP address
+## <a name="create-a-static-ip-address"></a>Statik IP adresi oluşturma
 
-Create a static public IP address with the [az network public ip create][az-network-public-ip-create] command. The following creates a static IP resource named *myAKSPublicIP* in the *myResourceGroup* resource group:
+[Az Network public IP Create][az-network-public-ip-create] komutuyla bir STATIK genel IP adresi oluşturun. Aşağıdaki, *Myresourcegroup* kaynak grubunda *Myakspublicıp* adlı bir statik IP kaynağı oluşturur:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -41,9 +41,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> If you are using a *Basic* SKU load balancer in your AKS cluster, use *Basic* for the *sku* parameter when defining a public IP. Only *Basic* SKU IPs work with the *Basic* SKU load balancer and only *Standard* SKU IPs work with *Standard* SKU load balancers. 
+> AKS kümenizde *temel* bir SKU yük dengeleyicisi kullanıyorsanız, ortak IP tanımlarken *SKU* parametresi için *temel* ' yı kullanın. Yalnızca *temel* SKU 'ları *temel* SKU yük dengeleyicisiyle çalışır ve yalnızca *Standart* SKU 'ları *Standart* SKU yük dengeleyicileri ile çalışır. 
 
-The IP address is displayed, as shown in the following condensed example output:
+Aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi IP adresi görüntülenir:
 
 ```json
 {
@@ -55,7 +55,7 @@ The IP address is displayed, as shown in the following condensed example output:
 }
 ```
 
-You can later get the public IP address using the [az network public-ip list][az-network-public-ip-list] command. Specify the name of the node resource group and public IP address you created, and query for the *ipAddress* as shown in the following example:
+Daha sonra [az Network public-IP List][az-network-public-ip-list] komutunu kullanarak genel IP adresini alabilirsiniz. Oluşturduğunuz düğüm kaynak grubu ve genel IP adresinin adını belirtin ve aşağıdaki örnekte gösterildiği gibi *IPAddress* için sorgulama yapın:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -63,9 +63,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Create a service using the static IP address
+## <a name="create-a-service-using-the-static-ip-address"></a>Statik IP adresini kullanarak bir hizmet oluşturma
 
-Before creating a service, ensure the service principal used by the AKS cluster has delegated permissions to the other resource group. Örnek:
+Bir hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet sorumlusunun diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Örneğin:
 
 ```azurecli-interactive
 az role assignment create \
@@ -74,7 +74,7 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-To create a *LoadBalancer* service with the static public IP address, add the `loadBalancerIP` property and the value of the static public IP address to the YAML manifest. Create a file named `load-balancer-service.yaml` and copy in the following YAML. Provide your own public IP address created in the previous step. The following example also sets the annotation to the resource group named *myResourceGroup*. Provide your own resource group name.
+Statik genel IP adresi ile bir *LoadBalancer* hizmeti oluşturmak için, `loadBalancerIP` özelliğini ve STATIK genel IP adresinin değerini YAML bildirimine ekleyin. `load-balancer-service.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML 'de kopyalayın. Önceki adımda oluşturulan kendi genel IP adresinizi sağlayın. Aşağıdaki örnek, ek açıklamayı *Myresourcegroup*adlı kaynak grubuna da ayarlar. Kendi kaynak grubunuzun adını sağlayın.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +92,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Create the service and deployment with the `kubectl apply` command.
+`kubectl apply` komutuyla hizmeti ve dağıtımı oluşturun.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -100,13 +100,13 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-If the static IP address defined in the *loadBalancerIP* property of the Kubernetes service manifest does not exist, or has not been created in the node resource group and no additional delegations configured, the load balancer service creation fails. To troubleshoot, review the service creation events with the [kubectl describe][kubectl-describe] command. Provide the name of the service as specified in the YAML manifest, as shown in the following example:
+Kubernetes hizmet bildiriminin *Loadbalancerıp* özelliğinde tanımlanan statik IP adresi yoksa veya düğüm kaynak grubunda oluşturulmamışsa ve ek temsilci yapılandırılmamışsa, yük dengeleyici hizmeti oluşturma işlemi başarısız olur. Sorunu gidermek için, [kubectl açıkla][kubectl-describe] komutuyla hizmet oluşturma olaylarını gözden geçirin. Aşağıdaki örnekte gösterildiği gibi, YAML bildiriminde belirtilen hizmetin adını sağlayın:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Information about the Kubernetes service resource is displayed. The *Events* at the end of the following example output indicate that the *user supplied IP Address was not found*. In these scenarios, verify that you have created the static public IP address in the node resource group and that the IP address specified in the Kubernetes service manifest is correct.
+Kubernetes hizmet kaynağı hakkında bilgi görüntülenir. Aşağıdaki örnek çıktının sonundaki *Olaylar* , *Kullanıcı tarafından sağlanan IP adresinin bulunamadığını*gösterir. Bu senaryolarda, düğüm kaynak grubunda statik genel IP adresi oluşturdunuz ve Kubernetes hizmet bildiriminde belirtilen IP adresinin doğru olduğundan emin olun.
 
 ```
 Name:                     azure-load-balancer
@@ -132,7 +132,7 @@ Events:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For additional control over the network traffic to your applications, you may want to instead [create an ingress controller][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
+Uygulamalarınıza yönelik ağ trafiği üzerinde ek denetim için, bunun yerine [bir giriş denetleyicisi oluşturmak][aks-ingress-basic]isteyebilirsiniz. [Statik bir genel IP adresi olan][aks-static-ingress]bir giriş denetleyicisi de oluşturabilirsiniz.
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

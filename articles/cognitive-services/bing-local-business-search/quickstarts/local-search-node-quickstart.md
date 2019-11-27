@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API using Node.js - Bing Local Business Search
+title: Hızlı başlangıç-Node. js kullanarak API 'ye bir sorgu gönderme-Bing yerel Iş arama
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
+description: Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,28 +17,28 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326700"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Quickstart: Send a query to the Bing Local Business Search API using Node.js
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Node.js, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Node. js ' de yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
 
-* The [JavaScript Request Library](https://github.com/request/request)
+* [JavaScript Istek kitaplığı](https://github.com/request/request)
 
-You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Use the access key provided by the free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Bing API 'lerle bir bilişsel [Hizmetler API 'si hesabınızın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme tarafından sunulan erişim anahtarını kullanın.  Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Kod senaryosu
 
-The following code gets defines and sends the request. Aşağıdaki adımları izler:
+Aşağıdaki kod, isteği tanımlar ve gönderir. Aşağıdaki adımları izler:
 
 1. Ana bilgisayar ve yol ile uç noktayı belirtmek için değişkenleri bildirme.
-2. Specify the query, and add the query parameter.
+2. Sorguyu belirtin ve sorgu parametresini ekleyin.
 3. Yanıt için bir işleyici işlevi oluşturma.
-4. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
+4. İsteği oluşturan arama işlevini tanımlayın ve OCP-apim-Subscription-Key üstbilgisini ekler.
 5. Search işlevini çalıştırma.
 
 Bu tanıtımda kullanılan kodun tamamı aşağıda verilmiştir:
@@ -94,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Local Business Search quickstart](local-quickstart.md)
-* [Local Business Search Java quickstart](local-search-java-quickstart.md)
-* [Local Business Search Python quickstart](local-search-python-quickstart.md)
+* [Yerel Iş araması hızlı başlangıç](local-quickstart.md)
+* [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
+* [Yerel Iş arama Python hızlı başlangıç](local-search-python-quickstart.md)

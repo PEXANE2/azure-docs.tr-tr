@@ -28,7 +28,7 @@ ms.locfileid: "74304924"
 > [!NOTE]
 > Bu makaledeki örneklerde, yönetim çözümlerinde gerekli veya ortak olan ve [Azure 'da bir yönetim çözümü tasarlama ve derleme](solutions-creating.md) konularında açıklanan parametreleri ve değişkenleri kullanır
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede [bir yönetim çözümünün nasıl oluşturulacağı](solutions-creating.md) ve bir [Kaynak Yöneticisi şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) ve çözüm dosyasının yapısı hakkında zaten bilgi sahibi olduğunuz varsayılır.
 
 

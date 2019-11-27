@@ -1,6 +1,6 @@
 ---
-title: Prepare devices and deployments for production - Azure IoT Edge | Microsoft Docs
-description: Learn how to take your Azure IoT Edge solution from development to production, including setting up your devices with the appropriate certificates and making a deployment plan for future code updates.
+title: Cihazlar ve dağıtımları üretim - Azure IOT Edge için hazırlama | Microsoft Docs
+description: Uygun sertifikalarla cihazlarınızı ayarlama ve gelecekteki kod güncelleştirmeleri için bir dağıtım planı yapma dahil olmak üzere Azure IoT Edge çözümünüzü geliştirmeyle üretime nasıl alabileceğinizi öğrenin.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,202 +15,202 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457310"
 ---
-# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Prepare to deploy your IoT Edge solution in production
+# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IOT Edge çözümünüzü üretim ortamında dağıtmaya hazırlanma
 
-When you're ready to take your IoT Edge solution from development into production, make sure that it's configured for ongoing performance.
+IOT Edge çözümünüzü geliştirmeden üretime almaya hazır olduğunuzda, devam eden performansı için yapılandırıldığından emin olun.
 
-The information provided in this article isn't all equal. To help you prioritize, each section starts with lists that divide the work into two sections: **important** to complete before going to production, or **helpful** for you to know.
+Bu makalede belirtilen bilgiler eşit değildir. Önceliklendirmenize yardımcı olmak için, her bölüm çalışmayı iki bölüme ayıran listelerle başlar: üretime geçmeden önce **önemli** veya bilmeniz için **faydalıdır** .
 
-## <a name="device-configuration"></a>Device configuration
+## <a name="device-configuration"></a>Cihaz yapılandırması
 
-IoT Edge devices can be anything from a Raspberry Pi to a laptop to a virtual machine running on a server. You may have access to the device either physically or through a virtual connection, or it may be isolated for extended periods of time. Either way, you want to make sure that it's configured to work appropriately. 
+IOT Edge cihazları, bir dizüstü bilgisayar bir sunucu üzerinde çalışan bir sanal makineye Raspberry Pi'yi her şey olabilir. Fiziksel veya sanal bir bağlantı üzerinden erişim cihaza sahip olabilir veya uzun süre için yalıtılmış olabilir. Her iki durumda da uygun şekilde çalışacak şekilde yapılandırıldığından emin olmak istersiniz. 
 
 * **Önemli**
-    * Install production certificates
-    * Have a device management plan
-    * Use Moby as the container engine
+    * Üretim sertifika yükleme
+    * Bir cihaz yönetimi planı
+    * Moby kapsayıcı altyapısı olarak kullanma
 
-* **Helpful**
-    * Choose upstream protocol
+* **İpuçları**
+    * Yukarı Akış Protokolü seçin
 
-### <a name="install-production-certificates"></a>Install production certificates
+### <a name="install-production-certificates"></a>Üretim sertifika yükleme
 
-Every IoT Edge device in production needs a device certificate authority (CA) certificate installed on it. That CA certificate is then declared to the IoT Edge runtime in the config.yaml file. To make development and testing easier, the IoT Edge runtime creates temporary certificates if no certificates are declared in the config.yaml file. However, these temporary certificates expire after three months and aren't secure for production scenarios. 
+Her IOT Edge Cihazınızı üretim ortamına yüklü bir cihaz sertifika yetkilisi (CA) sertifikası gerekir. Bu CA sertifikası, sonra IOT Edge çalışma zamanına config.yaml dosyasında bildirilir. Geliştirme ve IOT Edge daha kolay test yapmak için sertifika config.yaml dosyasında bildirilmiş olan çalışma zamanı geçici sertifikalar oluşturur. Ancak, bu geçici sertifikalar üç ay sonra sona erer ve üretim senaryoları için güvenli değildir. 
 
-To understand the role of the device CA certificate, see [How Azure IoT Edge uses certificates](iot-edge-certs.md).
+Cihaz CA sertifikasının rolünü anlamak için bkz. [Azure IoT Edge sertifikaları nasıl kullanır](iot-edge-certs.md).
 
-For more information about how to install certificates on an IoT Edge device and reference them from the config.yaml file, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). The steps for configuring the certificates are the same whether the device is going to be used as a gateway or not. That article provides scripts to generate sample certificates for testing only. Don't use those sample certificates in production. 
+Sertifikaları bir IoT Edge cihazına yüklemek ve config. YAML dosyasından başvurmak hakkında daha fazla bilgi için bkz. bir [IoT Edge cihazı, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md). Cihaz veya bir ağ geçidi olarak kullanılacak geçiyor olmadığını sertifikaları yapılandırma adımları aynıdır. Bu makalede, yalnızca test için örnek sertifikalarını oluşturmak için betikler sağlar. Bu örnek sertifikaları üretim ortamında kullanmayın. 
 
-### <a name="have-a-device-management-plan"></a>Have a device management plan
+### <a name="have-a-device-management-plan"></a>Bir cihaz yönetimi planı
 
-Before you put any device in production you should know how you're going to manage future updates. For an IoT Edge device, the list of components to update may include:
+Herhangi bir CİHAZDAN üretime yerleştirmeden önce gelecekteki güncelleştirmeleri yönetmek için nasıl gideceğinizi bilmeniz gerekir. Bir IOT Edge cihazı için güncelleştirilecek bileşenlerin listesini içerebilir:
 
-* Device firmware
-* Operating system libraries
-* Container engine, like Moby
-* IoT Edge daemon
-* CA certificates
+* Cihaz üretici yazılımını
+* İşletim sistemi kitaplığı
+* Moby gibi kapsayıcı altyapısı
+* IOT Edge arka plan programı
+* CA sertifikaları
 
-For more information, see [Update the IoT Edge runtime](how-to-update-iot-edge.md). The current methods for updating the IoT Edge daemon require physical or SSH access to the IoT Edge device. If you have many devices to update, consider adding the update steps to a script or use an automation tool like Ansible.
+Daha fazla bilgi için bkz. [IoT Edge çalışma zamanını güncelleştirme](how-to-update-iot-edge.md). IOT Edge arka plan programı güncelleştirmek için geçerli olan yöntemler, fiziksel ya da SSH erişimini IOT Edge cihazı gerektirir. Güncelleştirilecek çok sayıda cihaz varsa, güncelleştirme adımlarını bir betiğe eklemeyi veya anormal gibi bir Otomasyon aracını kullanmayı düşünün.
 
-### <a name="use-moby-as-the-container-engine"></a>Use Moby as the container engine
+### <a name="use-moby-as-the-container-engine"></a>Moby kapsayıcı altyapısı olarak kullanma
 
-A container engine is a prerequisite for any IoT Edge device. Only moby-engine is supported in production. Other container engines, like Docker, do work with IoT Edge and it's ok to use these engines for development. The moby-engine can be redistributed when used with Azure IoT Edge, and Microsoft provides servicing for this engine.
+Kapsayıcı altyapısı, herhangi bir IoT Edge cihazı için önkoşuldur. Yalnızca moby altyapısı, üretim ortamında desteklenir. Docker gibi diğer kapsayıcı altyapıları ile IOT Edge çalışma ve bu altyapılar geliştirme için kullanılacak normaldir. Azure IOT Edge ile kullanıldığında moby altyapısı dağıtılabilir ve Microsoft bu altyapısı için bakım sağlar.
 
-### <a name="choose-upstream-protocol"></a>Choose upstream protocol
+### <a name="choose-upstream-protocol"></a>Yukarı Akış Protokolü seçin
 
-The protocol (and therefore the port used) for upstream communication to IoT Hub can be configured for both the IoT Edge agent and the IoT Edge hub. The default protocol is AMQP, but you may want to change that depending on your network setup. 
+IoT Hub yukarı akış iletişimi için iletişim kuralı (ve bu nedenle kullanılan bağlantı noktası) hem IoT Edge Aracısı hem de IoT Edge hub 'ı için yapılandırılabilir. Varsayılan protokol AMQP olmakla birlikte, ağ kurulumunuza bağlı olarak değiştirmek isteyebilirsiniz. 
 
-The two runtime modules both have an **UpstreamProtocol** environment variable. The valid values for the variable are: 
+İki çalışma zamanı modülünün ikisi de bir **Upstreamprotocol** ortam değişkenine sahiptir. Değişken için geçerli değerler şunlardır: 
 
 * MQTT
 * AMQP
 * MQTTWS
 * AMQPWS
 
-Configure the UpstreamProtocol variable for the IoT Edge agent in the config.yaml file on the device itself. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you may need to configure the IoT Edge agent to use AMQP over WebSocket (AMQPWS) to establish the initial connection to IoT Hub. 
+IoT Edge Aracısı için UpstreamProtocol değişkenini cihazın kendisindeki config. YAML dosyasında yapılandırın. Örneğin, IoT Edge cihazınız AMQP bağlantı noktalarını engelleyen bir proxy sunucusunun arkasındaysa, IoT Hub ilk bağlantıyı kurmak için IoT Edge aracısını WebSocket üzerinden (AMQPWS) AMQP 'yi kullanacak şekilde yapılandırmanız gerekebilir. 
 
-Once your IoT Edge device connects, be sure to continue configuring the UpstreamProtocol variable for both runtime modules in future deployments. An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
+IOT Edge Cihazınızı bağlayan sonra UpstreamProtocol değişken her iki çalışma zamanı modülü için gelecek dağıtımlarda yapılandırmasına devam etmek emin olun. Bir [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazı yapılandırma](how-to-configure-proxy-support.md)bölümünde bu işleme bir örnek verilmiştir.
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
-* **Helpful**
-    * Be consistent with upstream protocol
-    * Set up host storage for system modules
-    * Reduce memory space used by the IoT Edge hub
-    * Do not use debug versions of module images
+* **İpuçları**
+    * Yukarı Akış Protokolü ile tutarlı olması
+    * Sistem modülleri için konak depolamayı ayarlama
+    * IoT Edge hub 'ı tarafından kullanılan bellek alanını azaltma
+    * Hata ayıklama sürümleri modül görüntüleri kullanmayın
 
-### <a name="be-consistent-with-upstream-protocol"></a>Be consistent with upstream protocol
+### <a name="be-consistent-with-upstream-protocol"></a>Yukarı Akış Protokolü ile tutarlı olması
 
-If you configured the IoT Edge agent on your IoT Edge device to use a different protocol than the default AMQP, then you should declare the same protocol in all future deployments. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you probably configured the device to connect over AMQP over WebSocket (AMQPWS). When you deploy modules to the device, configure the same AMQPWS protocol for the IoT Edge agent and IoT Edge hub, or else the default AMQP will override the settings and prevent you from connecting again. 
+IoT Edge cihazınızda IoT Edge aracısını varsayılan AMQP 'den farklı bir protokol kullanacak şekilde yapılandırdıysanız, gelecekteki tüm dağıtımlarda aynı protokolü bildirmeniz gerekir. Örneğin, IOT Edge Cihazınızı bir proxy sunucunun arkasındaki engelleyen AMQP bağlantı noktaları, büyük olasılıkla cihazı (AMQPWS) WebSocket üzerinden AMQP üzerinden bağlanmak için yapılandırılmış. Cihaza modül dağıtırken, IoT Edge Aracısı ve IoT Edge hub 'ı için aynı AMQPWS protokolünü yapılandırın veya varsayılan AMQP ayarları geçersiz kılar ve yeniden bağlanmanızı önler. 
 
-You only have to configure the UpstreamProtocol environment variable for the IoT Edge agent and IoT Edge hub modules. Any additional modules adopt whatever protocol is set in the runtime modules. 
+Yalnızca IoT Edge Aracısı ve IoT Edge hub modülleri için UpstreamProtocol ortam değişkenini yapılandırmanız yeterlidir. Ek modüllerin her protokolü, çalışma zamanı modülleri ayarlanır benimseyin. 
 
-An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
+Bir [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazı yapılandırma](how-to-configure-proxy-support.md)bölümünde bu işleme bir örnek verilmiştir.
 
-### <a name="set-up-host-storage-for-system-modules"></a>Set up host storage for system modules
+### <a name="set-up-host-storage-for-system-modules"></a>Sistem modülleri için konak depolamayı ayarlama
 
-The IoT Edge hub and agent modules use local storage to maintain state and enable messaging between modules, devices, and the cloud. For better reliability and performance, configure the system modules to use storage on the host filesystem.
+IoT Edge hub ve aracı modülleri, durumu korumak ve modüller, cihazlar ve bulut arasında mesajlaşma sağlamak için yerel depolama kullanır. Daha iyi güvenilirlik ve performans sağlamak için sistem modüllerini konak dosya sisteminde depolamayı kullanacak şekilde yapılandırın.
 
-For more information, see [Host storage for system modules](how-to-access-host-storage-from-module.md).
+Daha fazla bilgi için bkz. [Sistem modülleri Için konak depolama](how-to-access-host-storage-from-module.md).
 
-### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduce memory space used by IoT Edge hub
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>IoT Edge hub tarafından kullanılan bellek alanını azaltma
 
-If you're deploying constrained devices with limited memory available, you can configure IoT Edge hub to run in a more streamlined capacity and use less disk space. These configurations do limit the performance of the IoT Edge hub, however, so find the right balance that works for your solution. 
+Sınırlı bellek bulunan kısıtlı cihazları dağıtıyorsanız, IoT Edge hub 'ı daha akıcı bir kapasitede çalışacak şekilde yapılandırabilir ve daha az disk alanı kullanabilirsiniz. Bu yapılandırma IoT Edge hub 'ın performansını sınırlar, ancak çözümünüz için uygun olan doğru dengeyi bulun. 
 
-#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Don't optimize for performance on constrained devices
+#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Kısıtlanmış cihazlarda performansı iyileştirme
 
-The IoT Edge hub is optimized for performance by default, so it attempts to allocate large chunks of memory. This configuration can cause stability problems on smaller devices like the Raspberry Pi. If you're deploying devices with constrained resources, you may want to set the **OptimizeForPerformance** environment variable to **false** on the IoT Edge hub. 
+IoT Edge hub, varsayılan olarak performans için en iyi duruma getirilmiştir, bu nedenle büyük miktarda bellek ayırmaya çalışır. Bu yapılandırma, Raspberry Pi gibi küçük cihazlarda kararlılık sorunlara neden olabilir. Sınırlı kaynaklarla cihaz dağıtıyorsanız, IoT Edge hub 'ında **Optimizeforperformance** ortam değişkenini **false** olarak ayarlamak isteyebilirsiniz. 
 
-When **OptimizeForPerformance** is set to **true**, the MQTT protocol head uses the PooledByteBufferAllocator which has better performance but allocates more memory. The allocator does not work well on 32 bit operating systems or on devices with low memory. Additionally, when optimized for performance, RocksDb allocates more memory for its role as the local storage provider. 
+**Optimizeforperformance** **değeri true**olarak ayarlandığında MQTT protokol kafası, daha iyi performansa sahip olan ancak daha fazla bellek ayıran PooledByteBufferAllocator kullanır. Ayırıcı 32 bit işletim sistemlerinde veya düşük bellekli cihazlarda iyi çalışmaz. Ayrıca, performans için optimize edildiğinde, RocksDb yerel depolama sağlayıcısı olarak rolü için daha fazla bellek ayırır. 
 
-For more information, see [Stability issues on resource constrained devices](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+Daha fazla bilgi için bkz. [kaynak kısıtlı cihazlarda kararlılık sorunları](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
-#### <a name="disable-unused-protocols"></a>Disable unused protocols
+#### <a name="disable-unused-protocols"></a>Kullanılmayan protokollerini devre dışı bırakın
 
-Another way to optimize the performance of the IoT Edge hub and reduce its memory usage is to turn off the protocol heads for any protocols that you're not using in your solution. 
+IoT Edge hub 'ın performansını iyileştirmek ve bellek kullanımını azaltmak, çözümünüzde kullanmadığınız protokollerin protokol kafalarını devre dışı bırakmak için başka bir yoldur. 
 
-Protocol heads are configured by setting boolean environment variables for the IoT Edge hub module in your deployment manifests. The three variables are:
+Protokol kafaları, dağıtım bildirimlerinizde IoT Edge hub modülünün Boole ortam değişkenleri ayarlanarak yapılandırılır. Üç değişkenleri şunlardır:
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-All three variables have *two underscores* and can be set to either true or false. 
+Üç değişkenin üçü de *iki alt çizgi* vardır ve true ya da false olarak ayarlanabilir. 
 
-#### <a name="reduce-storage-time-for-messages"></a>Reduce storage time for messages
+#### <a name="reduce-storage-time-for-messages"></a>İletiler için depolama daraltır
 
-The IoT Edge hub module stores messages temporarily if they cannot be delivered to IoT Hub for any reason. You can configure how long the IoT Edge hub holds on to undelivered messages before letting them expire. If you have memory concerns on your device, you can lower the **timeToLiveSecs** value in the IoT Edge hub module twin. 
+IoT Edge hub modülü, herhangi bir nedenle IoT Hub teslim edilamadıklarında iletileri geçici olarak depolar. IoT Edge hub 'ının süreleri dolmadan önce teslim edilmeyen iletileri ne kadar süre içinde tutduğunu yapılandırabilirsiniz. Cihazınızda bellek endişeleri varsa, IoT Edge hub Module ikizi **Timetolivesecs** değerini düşürebilirsiniz. 
 
-The default value of the timeToLiveSecs parameter is 7200 seconds, which is two hours. 
+İki saat olduğu 7200 saniye timeToLiveSecs parametresinin varsayılan değeri var. 
 
-### <a name="do-not-use-debug-versions-of-module-images"></a>Do not use debug versions of module images
+### <a name="do-not-use-debug-versions-of-module-images"></a>Hata ayıklama sürümleri modül görüntüleri kullanmayın
 
-When moving from test scenarios to production scenarios, remember to remove debug configurations from deployment manifests. Check that none of the module images in the deployment manifests have the **\.debug** suffix. If you added create options to expose ports in the modules for debugging, remove those create options as well. 
+Test senaryolarından üretim senaryoları taşınırken hata ayıklama yapılandırmaları dağıtım bildirimlerinden kaldırmayı unutmayın. Dağıtım bildirimlerinde modül görüntülerinin hiçbirinin **\.hata ayıklama** sonekine sahip olup olmadığını denetleyin. Oluşturma, hata ayıklama için modüller bağlantı noktalarını ortaya çıkarmak için seçenekleri eklediyseniz bu oluşturma kaldırma seçenekleri de. 
 
 ## <a name="container-management"></a>Kapsayıcı yönetimi
 
 * **Önemli**
-    * Manage access to your container registry
-    * Use tags to manage versions
+    * Kapsayıcı kayıt defterinizde erişimi yönetme
+    * Sürümleri yönetmek için etiketleri kullanma
 
-### <a name="manage-access-to-your-container-registry"></a>Manage access to your container registry
+### <a name="manage-access-to-your-container-registry"></a>Kapsayıcı kayıt defterinizde erişimi yönetme
 
-Before you deploy modules to production IoT Edge devices, ensure that you control access to your container registry so that outsiders can't access or make changes to your container images. Use a private, not public, container registry to manage container images. 
+Modüller için üretim IOT Edge cihazları dağıtmadan önce böylece dışarıdaki kişilerin erişmek veya kapsayıcı görüntülerinizi değişiklik kapsayıcı kayıt defterinizde erişim denetim emin olun. Özel, genel, kapsayıcı kayıt defteri, kapsayıcı görüntülerini yönetmek için kullanın. 
 
-In the tutorials and other documentation, we instruct you to use the same container registry credentials on your IoT Edge device as you use on your development machine. These instructions are only intended to help you set up testing and development environments more easily, and should not be followed in a production scenario. Azure Container Registry recommends [authenticating with service principals](../container-registry/container-registry-auth-service-principal.md) when applications or services pull container images in an automated or otherwise unattended manner, as IoT Edge devices do. Create a service principal with read-only access to your container registry, and provide that username and password in the deployment manifest.
+Öğreticiler ve diğer belgeler, biz, geliştirme makinenizde kullanırken, IOT Edge Cihazınızda aynı kapsayıcı kayıt defteri kimlik bilgilerini kullanmak için isteyin. Bu yönergeler yalnızca test ve geliştirme ortamları daha kolay ayarlama yardımcı olmak için tasarlanmıştır ve bir üretim senaryosunda gelmelidir değil. Azure Container Registry, IoT Edge cihazlar gibi uygulamalar veya hizmetler kapsayıcı görüntülerini otomatik olarak veya katılımsız bir biçimde çekme sırasında [hizmet sorumlularıyla kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) yapılmasını önerir. Kapsayıcı kayıt defterinizde salt okunur erişimi olan bir hizmet sorumlusu oluşturma ve bu kullanıcı adını belirtin ve parola dağıtım bildirimi içinde.
 
-### <a name="use-tags-to-manage-versions"></a>Use tags to manage versions
+### <a name="use-tags-to-manage-versions"></a>Sürümleri yönetmek için etiketleri kullanma
 
-A tag is a docker concept that you can use to distinguish between versions of docker containers. Tags are suffixes like **1.0** that go on the end of a container repository. For example, **mcr.microsoft.com/azureiotedge-agent:1.0**. Tags are mutable and can be changed to point to another container at any time, so your team should agree on a convention to follow as you update your module images moving forward. 
+Etiket, Docker Kapsayıcıları sürümlerini ayırt etmek için kullanabileceğiniz bir Docker kavramıdır. Etiketler, bir kapsayıcı deposunun sonuna gelen **1,0** gibi sonlardır. Örneğin, **MCR.Microsoft.com/azureiotedge-Agent:1.0**. Etiketleri değişebilir ve takımınızın ilerletme, modül görüntüleri güncelleştirme olarak izlemek için bir kuralı kabul ediyorum için herhangi bir zamanda başka bir kapsayıcıya işaret edecek şekilde değiştirilebilir. 
 
-Tags also help you to enforce updates on your IoT Edge devices. When you push an updated version of a module to your container registry, increment the tag. Then, push a new deployment to your devices with the tag incremented. The container engine will recognize the incremented tag as a new version and will pull the latest module version down to your device. 
+Etiketler, IOT Edge cihazlarınıza güncelleştirmeleri uygulamak için de yardımcı olur. Kapsayıcı kayıt defterinizde bir modül güncelleştirilmiş bir sürümünü gönderdiğinizde, etiket artırın. Ardından, yeni bir dağıtım artan etiketiyle cihazlarınıza gönderin. Kapsayıcı altyapısı, yeni bir sürüm olarak artan etiketi algılar ve en son Modül sürümü cihazınıza çeker. 
 
-For an example of a tag convention, see [Update the IoT Edge runtime](how-to-update-iot-edge.md#understand-iot-edge-tags) to learn how IoT Edge uses rolling tags and specific tags to track versions. 
+Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümleri izlemek için belirli etiketleri nasıl kullandığını öğrenmek için [IoT Edge çalışma zamanını güncelleştirin](how-to-update-iot-edge.md#understand-iot-edge-tags) . 
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 
-* **Helpful**
-    * Review outbound/inbound configuration
-    * Allow connections from IoT Edge devices
-    * Configure communication through a proxy
+* **İpuçları**
+    * Giden/gelen yapılandırmayı gözden geçir
+    * IoT Edge cihazlarından bağlantılara izin ver
+    * Bir proxy üzerinden iletişimi yapılandırma
 
-### <a name="review-outboundinbound-configuration"></a>Review outbound/inbound configuration
+### <a name="review-outboundinbound-configuration"></a>Giden/gelen yapılandırmayı gözden geçir
 
-Communication channels between Azure IoT Hub and IoT Edge are always configured to be outbound. For most IoT Edge scenarios, only three connections are necessary. The container engine needs to connect with the container registry (or registries) that holds the module images. The IoT Edge runtime needs to connect with IoT Hub to retrieve device configuration information, and to send messages and telemetry. And if you use automatic provisioning, the IoT Edge daemon needs to connect to the Device Provisioning Service. For more information, see [Firewall and port configuration rules](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Azure IOT Hub ve IOT Edge arasındaki iletişim kanallarını, her zaman giden olacak şekilde yapılandırılır. IOT Edge senaryolar için yalnızca üç bağlantı gereklidir. Kapsayıcı altyapısı, kapsayıcı kayıt defteri (veya kayıt defterleri ile) modül görüntüleri tutan bağlanması gerekir. IOT Edge çalışma zamanı, IOT Hub ile cihaz yapılandırma bilgilerini almak ve iletileri ve telemetri göndermek için bağlantı gerekiyor. Ve IOT Edge arka plan programı otomatik sağlama kullanırsanız, cihaz sağlama Hizmeti'ne bağlanması gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
 
-### <a name="allow-connections-from-iot-edge-devices"></a>Allow connections from IoT Edge devices
+### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge cihazlarından bağlantılara izin ver
 
-If your networking setup requires that you explicitly permit connections made from IoT Edge devices, review the following list of IoT Edge components:
+Ağ Kurulum, IoT Edge cihazlarından yapılan bağlantılara açıkça izin vermenizi gerektiriyorsa, aşağıdaki IoT Edge bileşenleri listesini gözden geçirin:
 
-* **IoT Edge agent** opens a persistent AMQP/MQTT connection to IoT Hub, possibly over WebSockets. 
-* **IoT Edge hub** opens a single persistent AMQP connection or multiple MQTT connections to IoT Hub, possibly over WebSockets. 
-* **IoT Edge daemon** makes intermittent HTTPS calls to IoT Hub. 
+* **IoT Edge Aracısı** , büyük olasılıkla WebSockets üzerinden IoT Hub için kalıcı bir AMQP/MQTT bağlantısı açar. 
+* **IoT Edge hub** , büyük olasılıkla WebSockets üzerinden tek bir kalıcı AMQP bağlantısı veya IoT Hub için birden çok MQTT bağlantısı açar. 
+* **IoT Edge Daemon** , IoT Hub için ARALıKLı olarak https çağrıları yapar. 
 
-In all three cases, the DNS name would match the pattern \*.azure-devices.net. 
+Üç durumda, DNS adı \*. azure-devices.net düzeniyle eşleşir. 
 
-Additionally, the **Container engine** makes calls to container registries over HTTPS. To retrieve the IoT Edge runtime container images, the DNS name is mcr.microsoft.com. The container engine connects to other registries as configured in the deployment. 
+Ayrıca, **kapsayıcı altyapısı** , https üzerinden kapsayıcı kayıt defterlerine çağrı yapar. IOT Edge çalışma zamanı kapsayıcı görüntülerini almak için DNS mcr.microsoft.com adıdır. Kapsayıcı altyapısı diğer kayıt defterleri için Dağıtımda yapılandırılmış olarak bağlanır. 
 
-This checklist is a starting point for firewall rules:
+Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktasıdır:
 
-   | URL (\* = wildcard) | Outbound TCP Ports | Kullanım |
+   | URL (\* = joker karakter) | Giden TCP bağlantı noktaları | Kullanım |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft container registry |
-   | global.azure-devices-provisioning.net  | 443 | DPS access (optional) |
-   | \*.azurecr.io | 443 | Personal and third-party container registries |
-   | \*.blob.core.windows.net | 443 | Download Azure Container Registry image deltas from blob storage  | 
-   | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub access |
-   | \*.docker.io  | 443 | Docker Hub access (optional) |
+   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
+   | global.azure-devices-provisioning.net  | 443 | DPS erişimi (isteğe bağlı) |
+   | \*. azurecr.io | 443 | Kişisel ve üçüncü taraf kapsayıcı kayıt defterleri |
+   | \*.blob.core.windows.net | 443 | Blob depolamadan Azure Container Registry Image değişimleri indirin  | 
+   | \*. azure-devices.net | 5671, 8883, 443 | IoT Hub erişim |
+   | \*. docker.io  | 443 | Docker Hub erişimi (isteğe bağlı) |
 
-Some of these firewall rules are inherited from Azure Container Registry. For more information, see [Configure rules to access an Azure container registry behind a firewall](../container-registry/container-registry-firewall-access-rules.md).
+Bu güvenlik duvarı kurallarından bazıları Azure Container Registry devralınır. Daha fazla bilgi için bkz. [güvenlik duvarı arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırma](../container-registry/container-registry-firewall-access-rules.md).
 
-### <a name="configure-communication-through-a-proxy"></a>Configure communication through a proxy
+### <a name="configure-communication-through-a-proxy"></a>Bir proxy üzerinden iletişimi yapılandırma
 
-If your devices are going to be deployed on a network that uses a proxy server, they need to be able to communicate through the proxy to reach IoT Hub and container registries. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
+Cihazlarınızı bir ara sunucu kullanıyorsa bir ağ üzerinde dağıtılıp kullanacaksanız, bunların IOT Hub ile kapsayıcı kayıt defterleri ulaşmak için Ara sunucu iletişim kurabilmesi gerekir. Daha fazla bilgi için bkz. [bir IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](how-to-configure-proxy-support.md).
 
-## <a name="solution-management"></a>Solution management
+## <a name="solution-management"></a>Çözüm Yönetimi
 
-* **Helpful**
-    * Set up logs and diagnostics
-    * Consider tests and CI/CD pipelines
+* **İpuçları**
+    * Günlükleri ve tanılamayı ayarlama
+    * Test ve CI/CD işlem hatları göz önünde bulundurun
 
-### <a name="set-up-logs-and-diagnostics"></a>Set up logs and diagnostics
+### <a name="set-up-logs-and-diagnostics"></a>Günlükleri ve tanılamayı ayarlama
 
-On Linux, the IoT Edge daemon uses journals as the default logging driver. You can use the command-line tool `journalctl` to query the daemon logs. On Windows, the IoT Edge daemon uses PowerShell diagnostics. Use `Get-IoTEdgeLog` to query logs from the daemon. IoT Edge modules use the JSON driver for logging, which is the  default.  
+Linux 'ta IoT Edge Daemon, günlükleri varsayılan günlük sürücüsü olarak kullanır. Arka plan günlüklerini sorgulamak için `journalctl` komut satırı aracını kullanabilirsiniz. Windows üzerinde PowerShell tanılama IOT Edge arka plan programı kullanır. Arka plan programından günlükleri sorgulamak için `Get-IoTEdgeLog` kullanın. IoT Edge modüller, günlük kaydı için varsayılan olan JSON sürücüsünü kullanır.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-When you're testing an IoT Edge deployment, you can usually access your devices to retrieve logs and troubleshoot. In a deployment scenario, you may not have that option. Consider how you're going to gather information about your devices in production. One option is to use a logging module that collects information from the other modules and sends it to the cloud. One example of a logging module is [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), or you can design your own. 
+IOT Edge dağıtımı test ederken cihazlarınızı günlüklerini almak ve sorunları gidermek için genellikle erişebilirsiniz. Dağıtım senaryosunda, bu seçeneği olmayabilir. Cihazlarınızı üretimde hakkında bilgi toplamak için nasıl gideceğinizi göz önünde bulundurun. Diğer modüller bilgilerini toplar ve buluta gönderen bir günlük modülü kullanmak bir seçenektir. Günlüğe kaydetme modülüne bir örnek [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics)veya kendi tasarımınızı tasarlayabilmeniz gerekir. 
 
-### <a name="place-limits-on-log-size"></a>Place limits on log size
+### <a name="place-limits-on-log-size"></a>Günlük boyutu sınırlarını yerleştir
 
-By default the Moby container engine does not set container log size limits. Over time this can lead to the device filling up with logs and running out of disk space. Consider the following options to prevent this:
+Varsayılan olarak, Moby kapsayıcı altyapısı kapsayıcı günlük boyutu sınırlarını yapmaz. Zamanla bu, cihazın günlüklere doldurmasını ve disk alanının tükenmesine yol açabilir. Bunu engellemek için aşağıdaki seçenekleri göz önünde bulundurun:
 
-**Option: Set global limits that apply to all container modules**
+**Seçenek: tüm kapsayıcı modülleri için uygulanan genel sınırları ayarla**
 
-You can limit the size of all container logfiles in the container engine log options. The following example sets the log driver to `json-file` (recommended) with limits on size and number of files:
+Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyalarının boyutunu sınırlayabilirsiniz. Aşağıdaki örnek, günlük sürücüsünü, boyut ve dosya sayısı limitleriyle `json-file` (önerilir) olarak ayarlar:
 
 ```JSON
 {
@@ -222,18 +222,18 @@ You can limit the size of all container logfiles in the container engine log opt
 }
 ```
 
-Add (or append) this information to a file named `daemon.json` and place it the right location for your device platform.
+Bu bilgileri `daemon.json` adlı bir dosyaya ekleyin (veya ekleyin) ve cihaz platformunuzun doğru konumunu yerleştirin.
 
 | Platform | Konum |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
 
-The container engine must be restarted for the changes to take effect.
+Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başlatılması gerekir.
 
-**Option: Adjust log settings for each container module**
+**Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla**
 
-You can do so in the **createOptions** of each module. Örnek:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
 
 ```yml
 "createOptions": {
@@ -249,11 +249,11 @@ You can do so in the **createOptions** of each module. Örnek:
 }
 ```
 
-**Additional options on Linux systems**
+**Linux sistemlerinde ek seçenekler**
 
-* Configure the container engine to send logs to `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/) by setting `journald` as the default logging driver. 
+* Varsayılan günlük sürücüsü olarak `journald` ayarlayarak, kapsayıcı altyapısını `systemd` [günlüğüne](https://docs.docker.com/config/containers/logging/journald/) Günlükler gönderecek şekilde yapılandırın. 
 
-* Periodically remove old logs from your device by installing a logrotate tool. Use the following file specification: 
+* Logrotate aracını yükleyerek eski günlükleri cihazınızdan düzenli olarak kaldırın. Aşağıdaki dosya belirtimi kullanın: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{
@@ -267,11 +267,11 @@ You can do so in the **createOptions** of each module. Örnek:
    }
    ```
 
-### <a name="consider-tests-and-cicd-pipelines"></a>Consider tests and CI/CD pipelines
+### <a name="consider-tests-and-cicd-pipelines"></a>Test ve CI/CD işlem hatları göz önünde bulundurun
 
-For the most efficient IoT Edge deployment scenario, consider integrating your production deployment into your testing and CI/CD pipelines. Azure IoT Edge supports multiple CI/CD platforms, including Azure DevOps. For more information, see [Continuous integration and continuous deployment to Azure IoT Edge](how-to-ci-cd.md).
+En verimli IOT Edge dağıtım senaryosu için üretim dağıtımınızı test ve CI/CD işlem hatları ile tümleştirme göz önünde bulundurun. Azure IOT Edge, Azure DevOps dahil olmak üzere, birden fazla CI/CD platformları destekler. Daha fazla bilgi için bkz. [Azure IoT Edge Için sürekli tümleştirme ve sürekli dağıtım](how-to-ci-cd.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Learn more about [IoT Edge automatic deployment](module-deployment-monitoring.md).
-* See how IoT Edge supports [Continuous integration and continuous deployment](how-to-ci-cd.md).
+* [IoT Edge otomatik dağıtım](module-deployment-monitoring.md)hakkında daha fazla bilgi edinin.
+* IoT Edge [sürekli tümleştirme ve sürekli dağıtımı](how-to-ci-cd.md)nasıl desteklediğine bakın.

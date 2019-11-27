@@ -1,7 +1,7 @@
 ---
-title: PowerShell V2 examples for managing groups - Azure AD  | Microsoft Docs
-description: This page provides PowerShell examples to help you manage your groups in Azure Active Directory
-keywords: Azure AD, Azure Active Directory, PowerShell, Groups, Group management
+title: Grupları yönetmek için PowerShell V2 örnekleri-Azure AD | Microsoft Docs
+description: Bu sayfa, Azure Active Directory ' de gruplarınızı yönetmenize yardımcı olacak PowerShell örnekleri sağlar
+keywords: Azure AD, Azure Active Directory, PowerShell, gruplar, Grup Yönetimi
 services: active-directory
 author: curtand
 manager: daveba
@@ -21,26 +21,26 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233106"
 ---
-# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory version 2 cmdlets for group management
+# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
 > [!div class="op_single_selector"]
-> - [Azure portalda](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
-This article contains examples of how to use PowerShell to manage your groups in Azure Active Directory (Azure AD).  It also tells you how to get set up with the Azure AD PowerShell module. First, you must [download the Azure AD PowerShell module](https://www.powershellgallery.com/packages/AzureAD/).
+Bu makalede, Azure Active Directory (Azure AD) içinde gruplarınızı yönetmek için PowerShell 'in nasıl kullanılacağına ilişkin örnekler yer almaktadır.  Ayrıca, Azure AD PowerShell modülü ile nasıl ayarlanalınacağını da söyler. İlk olarak, [Azure AD PowerShell modülünü indirmeniz](https://www.powershellgallery.com/packages/AzureAD/)gerekir.
 
-## <a name="install-the-azure-ad-powershell-module"></a>Install the Azure AD PowerShell module
+## <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell modülünü yükleme
 
-To install the Azure AD PowerShell module, use the following commands:
+Azure AD PowerShell modülünü yüklemek için aşağıdaki komutları kullanın:
 
 ```powershell
     PS C:\Windows\system32> install-module azuread
     PS C:\Windows\system32> import-module azuread
 ```
 
-To verify that the module is ready to use, use the following command:
+Modülün kullanıma hazırsa emin olmak için aşağıdaki komutu kullanın:
 
 ```powershell
     PS C:\Windows\system32> get-module azuread
@@ -50,17 +50,17 @@ To verify that the module is ready to use, use the following command:
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Now you can start using the cmdlets in the module. For a full description of the cmdlets in the Azure AD module, please refer to the online reference documentation for [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0).
+Artık modüldeki cmdlet 'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet 'lerin tam açıklaması için lütfen [Azure Active Directory PowerShell sürüm 2](/powershell/azure/install-adv2?view=azureadps-2.0)' ye yönelik çevrimiçi başvuru belgelerine bakın.
 
-## <a name="connect-to-the-directory"></a>Connect to the directory
+## <a name="connect-to-the-directory"></a>Dizine Bağlan
 
-Before you can start managing groups using Azure AD PowerShell cmdlets, you must connect your PowerShell session to the directory you want to manage. Aşağıdaki komutu kullanın:
+Azure AD PowerShell cmdlet 'lerini kullanarak grupları yönetmeye başlayabilmeniz için önce, PowerShell oturumunuzu yönetmek istediğiniz dizine bağlamanız gerekir. Aşağıdaki komutu kullanın:
 
 ```powershell
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-The cmdlet prompts you for the credentials you want to use to access your directory. In this example, we are using karen@drumkit.onmicrosoft.com to access the demonstration directory. The cmdlet returns a confirmation to show the session was connected successfully to your directory:
+Cmdlet 'i, dizininize erişmek için kullanmak istediğiniz kimlik bilgilerini ister. Bu örnekte, tanıtım dizinine erişmek için karen@drumkit.onmicrosoft.com kullanıyoruz. Cmdlet, oturumun başarıyla bağlanıp bağlandığına ilişkin bir onay döndürür:
 
 ```powershell
     Account                       Environment Tenant
@@ -68,27 +68,27 @@ The cmdlet prompts you for the credentials you want to use to access your direct
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
-Now you can start using the AzureAD cmdlets to manage groups in your directory.
+Artık, dizininizde grupları yönetmek için AzureAD cmdlet 'lerini kullanmaya başlayabilirsiniz.
 
-## <a name="retrieve-groups"></a>Retrieve groups
+## <a name="retrieve-groups"></a>Grupları Al
 
-To retrieve existing groups from your directory, use the Get-AzureADGroups cmdlet. 
+Dizininizden varolan grupları almak için Get-AzureADGroups cmdlet 'ini kullanın. 
 
-To retrieve all groups in the directory, use the cmdlet without parameters:
+Dizindeki tüm grupları almak için cmdlet 'ini parametresiz kullanın:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup
 ```
 
-The cmdlet returns all groups in the connected directory.
+Cmdlet 'i bağlı dizindeki tüm grupları döndürür.
 
-You can use the -objectID parameter to retrieve a specific group for which you specify the group’s objectID:
+Grubun ObjectID 'yi belirttiğiniz belirli bir grubu almak için-objectID parametresini kullanabilirsiniz:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup -ObjectId e29bae11-4ac0-450c-bc37-6dae8f3da61b
 ```
 
-The cmdlet now returns the group whose objectID matches the value of the parameter you entered:
+Cmdlet artık, NesneKimliği girdiğiniz parametrenin değeriyle eşleşen grubu döndürür:
 
 ```powershell
     DeletionTimeStamp            :
@@ -107,7 +107,7 @@ The cmdlet now returns the group whose objectID matches the value of the paramet
     SecurityEnabled              : True
 ```
 
-You can search for a specific group using the -filter parameter. This parameter takes an ODATA filter clause and returns all groups that match the filter, as in the following example:
+-Filter parametresini kullanarak belirli bir grup için arama yapabilirsiniz. Bu parametre bir ODATA filtre yan tümcesini alır ve aşağıdaki örnekte olduğu gibi filtreyle eşleşen tüm grupları döndürür:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -130,19 +130,19 @@ You can search for a specific group using the -filter parameter. This parameter 
 ```
 
 > [!NOTE]
-> The Azure AD PowerShell cmdlets implement the OData query standard. For more information, see **$filter** in [OData system query options using the OData endpoint](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
+> Azure AD PowerShell cmdlet 'leri OData sorgu standardını uygular. Daha fazla bilgi için bkz. OData [uç noktası kullanılarak OData sistem sorgu seçeneklerinde](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter) **$Filter** .
 
-## <a name="create-groups"></a>Create groups
+## <a name="create-groups"></a>Grup Oluştur
 
-To create a new group in your directory, use the New-AzureADGroup cmdlet. This cmdlet creates a new security group called “Marketing":
+Dizininizde yeni bir grup oluşturmak için New-AzureADGroup cmdlet 'ini kullanın. Bu cmdlet "pazarlama" adlı yeni bir güvenlik grubu oluşturur:
 
 ```powershell
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 ```
 
-## <a name="update-groups"></a>Update groups
+## <a name="update-groups"></a>Güncelleştirme grupları
 
-To update an existing group, use the Set-AzureADGroup cmdlet. In this example, we’re changing the DisplayName property of the group “Intune Administrators.” First, we’re finding the group using the Get-AzureADGroup cmdlet and filter using the DisplayName attribute:
+Var olan bir grubu güncelleştirmek için set-AzureADGroup cmdlet 'ini kullanın. Bu örnekte, "Intune yöneticileri" grubunun DisplayName özelliğini değiştiriyorsunuz. İlk olarak, Get-AzureADGroup cmdlet 'ini kullanarak grubu buluyoruz ve DisplayName özniteliğini kullanarak filtreliyoruz:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -164,13 +164,13 @@ To update an existing group, use the Set-AzureADGroup cmdlet. In this example, w
     SecurityEnabled              : True
 ```
 
-Next, we’re changing the Description property to the new value “Intune Device Administrators”:
+Sonra, Description özelliğini "Intune cihaz yöneticileri" yeni değeriyle değiştiriyorsunuz:
 
 ```powershell
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-Now, if we find the group again, we see the Description property is updated to reflect the new value:
+Şimdi, grubu yeniden bulduk açıklama özelliğinin yeni değeri yansıtacak şekilde güncelleştirildiğini görüyoruz:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -191,29 +191,29 @@ Now, if we find the group again, we see the Description property is updated to r
     SecurityEnabled              : True
 ```
 
-## <a name="delete-groups"></a>Delete groups
+## <a name="delete-groups"></a>Grupları sil
 
-To delete groups from your directory, use the Remove-AzureADGroup cmdlet as follows:
+Dizininizden grupları silmek için Remove-AzureADGroup cmdlet 'ini aşağıdaki gibi kullanın:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 ```
 
-## <a name="manage-group-membership"></a>Manage group membership
+## <a name="manage-group-membership"></a>Grup üyeliğini Yönet
 
-### <a name="add-members"></a>Add members
+### <a name="add-members"></a>Üye Ekle
 
-To add new members to a group, use the Add-AzureADGroupMember cmdlet. This command adds a member to the Intune Administrators group we used in the previous example:
+Bir gruba yeni üyeler eklemek için Add-AzureADGroupMember cmdlet 'ini kullanın. Bu komut, önceki örnekte kullandığımız Intune yöneticileri grubuna bir üye ekler:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-The -ObjectId parameter is the ObjectID of the group to which we want to add a member, and the -RefObjectId is the ObjectID of the user we want to add as a member to the group.
+-ObjectID parametresi, üye eklemek istediğimiz grubun NesneKimliği ve-Refobjectıd, gruba üye olarak eklemek istediğimiz kullanıcının ObjectID.
 
-### <a name="get-members"></a>Get members
+### <a name="get-members"></a>Üyeleri al
 
-To get the existing members of a group, use the Get-AzureADGroupMember cmdlet, as in this example:
+Bir grubun var olan üyelerini almak için, Get-AzureADGroupMember cmdlet 'ini şu örnekte olduğu gibi kullanın:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -224,29 +224,29 @@ To get the existing members of a group, use the Get-AzureADGroupMember cmdlet, a
                           8120cc36-64b4-4080-a9e8-23aa98e8b34f User
 ```
 
-### <a name="remove-members"></a>Remove members
+### <a name="remove-members"></a>Üyeleri kaldır
 
-To remove the member we previously added to the group, use the Remove-AzureADGroupMember cmdlet, as is shown here:
+Daha önce gruba eklediğimiz üyeyi kaldırmak için, burada gösterildiği gibi Remove-AzureADGroupMember cmdlet 'ini kullanın:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-### <a name="verify-members"></a>Verify members
+### <a name="verify-members"></a>Üyeleri doğrula
 
-To verify the group memberships of a user, use the Select-AzureADGroupIdsUserIsMemberOf cmdlet. This cmdlet takes as its parameters the ObjectId of the user for which to check the group memberships, and a list of groups for which to check the memberships. The list of groups must be provided in the form of a complex variable of type “Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck”, so we first must create a variable with that type:
+Bir kullanıcının grup üyeliklerini doğrulamak için, select-AzureADGroupIdsUserIsMemberOf cmdlet 'ini kullanın. Bu cmdlet, kendi parametrelerini, grup üyeliklerini denetlemek için kullanıcının ObjectID 'sini ve üyeliklerinin denetlenecek grupların bir listesini alır. Grup listesi, "Microsoft. Open. AzureAD. model. Groupıdsformembershipcheck" türünde bir karmaşık değişken biçiminde sağlanmalıdır. bu nedenle öncelikle bu türde bir değişken oluşturmanız gerekir:
 
 ```powershell
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 ```
 
-Next, we provide values for the groupIds to check in the attribute “GroupIds” of this complex variable:
+Ardından, bu karmaşık değişkenin "Groupıds" özniteliğini iade etmek için Groupıds değerlerini sağlıyoruz:
 
 ```powershell
     PS C:\Windows\system32> $g.GroupIds = "b11ca53e-07cc-455d-9a89-1fe3ab24566b", "31f1ff6c-d48c-4f8a-b2e1-abca7fd399df"
 ```
 
-Now, if we want to check the group memberships of a user with ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea against the groups in $g, we should use:
+Artık, ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea ' ı bir kullanıcının grup üyeliklerini $g gruplara göre denetlemek istiyorsam, şunu kullanacağız:
 
 ```powershell
     PS C:\Windows\system32> Select-AzureADGroupIdsUserIsMemberOf -ObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea -GroupIdsForMembershipCheck $g
@@ -256,43 +256,43 @@ Now, if we want to check the group memberships of a user with ObjectID 72cd4bbd-
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-The value returned is a list of groups of which this user is a member. You can also apply this method to check Contacts, Groups or Service Principals membership for a given list of groups, using Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf or Select-AzureADGroupIdsServicePrincipalIsMemberOf
+Döndürülen değer, bu kullanıcının üye olduğu grupların bir listesidir. Bu yöntemi, belirli bir Grup listesi için kişileri, grupları veya hizmet sorumluları üyeliğini, select-Azureadgroupidsınte Tısıı ' yi, select-AzureADGroupIdsGroupIsMemberOf ' i kullanarak denetlemek için de uygulayabilirsiniz. Select-Azureadgroupidsservicesprincipalismemberof
 
-## <a name="disable-group-creation-by-your-users"></a>Disable group creation by your users
+## <a name="disable-group-creation-by-your-users"></a>Kullanıcılarınız tarafından grup oluşturmayı devre dışı bırakma
 
-You can prevent non-admin users from creating security groups. The default behavior in Microsoft Online Directory Services (MSODS) is to allow non-admin users to create groups, whether or not self-service group management (SSGM) is also enabled. The SSGM setting  controls behavior only in the My Apps access panel.
+Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelleyebilirsiniz. Microsoft Çevrimiçi Dizin Hizmetleri 'ndeki (MSODS) varsayılan davranış, yönetici olmayan kullanıcıların grup oluşturmalarına izin vermeksizin, Self Servis Grup Yönetimi (SSGM) de etkinleştirilip etkinleştirilmediğini belirtir. SSGM ayarı yalnızca uygulamalarım erişim panelinde davranışı denetler.
 
-To disable group creation for non-admin users:
+Yönetici olmayan kullanıcılar için Grup oluşturmayı devre dışı bırakmak için:
 
-1. Verify that non-admin users are allowed to create groups:
+1. Yönetici olmayan kullanıcıların grup oluşturmalarına izin verildiğini doğrulayın:
    
    ```powershell
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. If it returns `UsersPermissionToCreateGroupsEnabled : True`, then non-admin users can create groups. To disable this feature:
+2. `UsersPermissionToCreateGroupsEnabled : True`döndürürse yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```
   
-## <a name="manage-owners-of-groups"></a>Manage owners of groups
+## <a name="manage-owners-of-groups"></a>Grupların sahiplerini yönetme
 
-To add owners to a group, use the Add-AzureADGroupOwner cmdlet:
+Bir gruba sahip eklemek için Add-AzureADGroupOwner cmdlet 'ini kullanın:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-The -ObjectId parameter is the ObjectID of the group to which we want to add an owner, and the -RefObjectId is the ObjectID of the user or service principal we want to add as an owner of the group.
+-ObjectID parametresi, sahip eklemek istediğimiz grubun NesneKimliği ve-Refobjectıd, grubun sahibi olarak eklemek istediğimiz Kullanıcı veya hizmet sorumlusunun ObjectID.
 
-To retrieve the owners of a group, use the Get-AzureADGroupOwner cmdlet:
+Bir grubun sahiplerini almak için Get-AzureADGroupOwner cmdlet 'ini kullanın:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-The cmdlet returns the list of owners (users and service principals) for the specified group:
+Cmdlet 'i, belirtilen grup için sahip (kullanıcılar ve hizmet sorumluları) listesini döndürür:
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -300,41 +300,41 @@ The cmdlet returns the list of owners (users and service principals) for the spe
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 ```
 
-If you want to remove an owner from a group, use the Remove-AzureADGroupOwner cmdlet:
+Bir gruptan bir sahibi kaldırmak istiyorsanız, Remove-AzureADGroupOwner cmdlet 'ini kullanın:
 
 ```powershell
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 ```
 
-## <a name="reserved-aliases"></a>Reserved aliases
+## <a name="reserved-aliases"></a>Ayrılmış diğer adlar
 
-When a group is created, certain endpoints allow the end user to specify a mailNickname or alias to be used as part of the email address of the group. Groups with the following highly privileged email aliases can only be created by an Azure AD global administrator. 
+Bir grup oluşturulduğunda, belirli uç noktalar, son kullanıcının grubun e-posta adresinin bir parçası olarak kullanılacak bir Mailtakma ad veya diğer ad belirtmesini sağlar. Aşağıdaki yüksek ayrıcalıklı e-posta diğer adlarını içeren gruplar yalnızca bir Azure AD Genel Yöneticisi tarafından oluşturulabilir. 
   
-* abuse
-* admin
-* administrator
-* hostmaster
-* majordomo
+* uygunsuz
+* yöneticileri
+* danışın
+* HOSTMASTER
+* Majordomo
 * postmaster
-* root
+* kök
 * güvenli
 * güvenlik
-* ssl-admin
-* webmaster
+* SSL-yönetici
+* Web
 
-## <a name="group-writeback-to-on-premises-preview"></a>Group writeback to on-premises (preview)
+## <a name="group-writeback-to-on-premises-preview"></a>Şirket içi için Grup geri yazma (Önizleme)
 
-Today, many groups are still managed in on-premises Active Directory. To answer requests to sync cloud groups back to on-premises, Office 365 groups writeback feature for Azure AD is now available for preview.
+Günümüzde, çok sayıda grup hala şirket içi Active Directory yönetilmektedir. Bulut gruplarını şirket içine geri eşitleme isteklerini yanıtlamak için, Azure AD için Office 365 grupları geri yazma özelliği artık önizleme için kullanılabilir.
 
-Office 365 groups are created and managed in the cloud. The writeback capability allows you to write back Office 365 groups as distribution groups to an Active Directory forest with Exchange installed. Users with on-premises Exchange mailboxes can then send and receive emails from these groups. The group writeback feature doesn't support Azure AD security groups or distribution groups.
+Office 365 grupları bulutta oluşturulur ve yönetilir. Geri yazma özelliği, Exchange yüklü bir Active Directory ormanında Office 365 gruplarını dağıtım grupları olarak yazmanızı sağlar. Şirket içi Exchange posta kutularına sahip kullanıcılar, bu gruplardan e-posta gönderip alabilir. Grup geri yazma özelliği, Azure AD güvenlik gruplarını veya dağıtım gruplarını desteklemez.
 
-For more details, please refer to documentation for the [Azure AD Connect sync service](../hybrid/how-to-connect-syncservice-features.md).
+Daha fazla ayrıntı için lütfen [Azure AD Connect Eşitleme hizmetine](../hybrid/how-to-connect-syncservice-features.md)yönelik belgelere bakın.
 
-Office 365 group writeback is a public preview feature of Azure Active Directory (Azure AD) and is available with any paid Azure AD license plan. For some legal information about previews, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Office 365 grup geri yazma, Azure Active Directory (Azure AD) genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizlemeler hakkında bazı yasal bilgiler için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You can find more Azure Active Directory PowerShell documentation at [Azure Active Directory Cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
+[Azure Active Directory cmdlet 'lerinde](/powershell/azure/install-adv2?view=azureadps-2.0)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
 
 * [Azure Active Directory grupları ile kaynaklara erişimi yönetme](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

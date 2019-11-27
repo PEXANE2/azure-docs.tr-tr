@@ -50,10 +50,10 @@ Her hiper parametre ayrı veya sürekli olabilir ve bir [parametre ifadesi](http
 
 #### <a name="discrete-hyperparameters"></a>Ayrık hiperparametreleri 
 
-Ayrık hiperparametreleri olarak belirtilen bir `choice` ayrık değerler arasında. `choice` aşağıdakilerden biri olabilir:
+Ayrık hiper parametreler, ayrık değerler arasında bir `choice` olarak belirtilir. `choice` şu olabilir:
 
 * bir veya daha fazla virgülle ayrılmış değerler
-* A `range` nesnesi
+* `range` nesnesi
 * herhangi bir rastgele `list` nesnesi
 
 
@@ -64,23 +64,23 @@ Ayrık hiperparametreleri olarak belirtilen bir `choice` ayrık değerler arası
     }
 ```
 
-Bu durumda, `batch_size` [16, 32, 64, 128] değerden birini alır ve `number_of_hidden_layers` [1, 2, 3, 4] değerden birini alır.
+Bu durumda, `batch_size` [16, 32, 64, 128] değerlerinden birini alır ve `number_of_hidden_layers` [1, 2, 3, 4] değerlerinden birini alır.
 
 Bir dağıtım kullanarak gelişmiş ayrık hiperparametreleri de belirtilebilir. Aşağıdaki dağıtımlar desteklenir:
 
-* `quniform(low, high, q)` -Hepsini gibi bir değer döndürür (Tekdüzen (düşük, yüksek) / s) * q
-* `qloguniform(low, high, q)` -Hepsini gibi bir değeri döndürür (exp (tek düzen (düşük, yüksek)) / s) * q
-* `qnormal(mu, sigma, q)` -Hepsini gibi bir değeri döndürür (normal (mu, sigma) / s) * q
-* `qlognormal(mu, sigma, q)` -Hepsini gibi bir değeri döndürür (exp (normal (mu, sigma)) / s) * q
+* `quniform(low, high, q)`-Round (Tekdüzen (düşük, yüksek)/q) * q gibi bir değer döndürür
+* `qloguniform(low, high, q)`-Round gibi bir değer döndürür (EXP (Tekdüzen (düşük, yüksek))/q) * q
+* `qnormal(mu, sigma, q)`-Round (normal (mu, Sigma)/q) * q gibi bir değer döndürür
+* `qlognormal(mu, sigma, q)`-Round (EXP (normal (mu, Sigma))/q) * q gibi bir değer döndürür
 
 #### <a name="continuous-hyperparameters"></a>Sürekli hiperparametreleri 
 
 Sürekli hiperparametreleri sürekli bir değerler aralığı içinde bir dağıtım belirtilir. Desteklenen dağıtımlar dahil et:
 
-* `uniform(low, high)` -Düşük ve yüksek arasında birörnek dağıtılmış bir değer döndürür
-* `loguniform(low, high)` -Böylece dönüş değeri logaritmasını birörnek dağıtılmış exp (tek düzen (düşük, yüksek)) göre çizilmiş bir değer döndürür
-* `normal(mu, sigma)` -Normalde ortalama mu ve standart sapma sigma ile dağıtılan gerçek bir değer döndürür
-* `lognormal(mu, sigma)` -Dönüş değeri logaritmasını dağıtılması için normalde exp (normal (mu, sigma)) göre çizilmiş bir değer döndürür
+* `uniform(low, high)`-düşük ve yüksek arasında eşit olarak dağıtılan bir değer döndürür
+* `loguniform(low, high)`-dönüş değerinin logaritması eşit olarak dağıtılabilmesi için, exp (Tekdüzen (düşük, yüksek)) değerine göre çizilen bir değer döndürür
+* `normal(mu, sigma)`-normalde ortalama mu ve standart sapma sigma ile dağıtılan gerçek bir değer döndürür
+* `lognormal(mu, sigma)`-Return değerine göre çizilen bir değer döndürür (normal (mu, Sigma)), böylece dönüş değerinin logaritması normal şekilde dağıtılır
 
 Parametre alanı tanımının örneği:
 
@@ -91,7 +91,7 @@ Parametre alanı tanımının örneği:
     }
 ```
 
-Bu kod, bir arama alanı ile iki parametre - tanımlar `learning_rate` ve `keep_probability`. `learning_rate` Ortalama değer 10 ve 3 standart sapmasını içeren bir normal dağıtım var. `keep_probability` 0,05 ve en yüksek değeri 0,1 Tekdüzen bir dağıtım ile en az bir değere sahip.
+Bu kod iki parametreli bir arama alanı tanımlar-`learning_rate` ve `keep_probability`. `learning_rate`, ortalama değeri 10 ve standart sapması 3 olan normal bir dağıtıma sahiptir. `keep_probability`, en az 0,05 değeri ve en fazla 0,1 değeri olan bir Tekdüzen dağıtımına sahiptir.
 
 ### <a name="sampling-the-hyperparameter-space"></a>Hiper parametre alanı örnekleme
 
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Kılavuz örnekleme
 
-[Grid örneklemesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) , tanımlanan arama alanındaki tüm uygun değerler üzerinde basit bir kılavuz araması gerçekleştirir. Yalnızca kullanarak belirtilen hiperparametreleri ile kullanılabilir `choice`. Örneğin, aşağıdaki alana toplam altı örneği vardır:
+[Grid örneklemesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) , tanımlanan arama alanındaki tüm uygun değerler üzerinde basit bir kılavuz araması gerçekleştirir. Yalnızca, `choice`kullanılarak belirtilen ayarlama hiperparametreleri ile kullanılabilir. Örneğin, aşağıdaki alana toplam altı örneği vardır:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -148,7 +148,7 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Herhangi bir erken sonlandırma ilke Bayes örnekleme desteklemez (bkz [bir erken sonlandırma ilkesini belirtin](#specify-early-termination-policy)). Bayes parametre örnekleme kullanırken ayarlayın `early_termination_policy = None`, ya da devre dışı bırakın `early_termination_policy` parametresi.
+> Bayema örneklemesi, hiçbir erken sonlandırma ilkesini desteklemez (bkz. [erken sonlandırma Ilkesi belirtme](#specify-early-termination-policy)). Bayeme parametre örneklemesi kullanılırken, `early_termination_policy = None`ayarlayın veya `early_termination_policy` parametresini bırakın.
 
 <a name='specify-primary-metric-to-optimize'/>
 
@@ -156,8 +156,8 @@ param_sampling = BayesianParameterSampling( {
 
 Hiperparameter ayarlama denemesinin [İyileştirilmek istediğiniz birincil ölçüyü](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py) belirtin. Her bir eğitim çalıştırmanın birincil ölçümü için değerlendirilir. Hatalı çalıştırmalar (burada birincil ölçüm ve Erken sonlandırma ilke tarafından ayarlanan ölçütlere uymuyor) gerçekleştirme sonlandırılacak. Birincil ölçüm adı yanı sıra, ayrıca amacı, en iyi duruma getirme - belirttiğiniz en üst düzeye çıkarmak veya birincil ölçüm en aza indirin.
 
-* `primary_metric_name`: En iyi duruma getirmek için birincil ölçüm adı. Birincil ölçüm adı bir eğitim betiği tarafından günlüğe ölçüm adı tam olarak eşleşmesi gerekir. Bkz: [oturum hiper parametre ayarı için ölçümleri](#log-metrics-for-hyperparameter-tuning).
-* `primary_metric_goal`: Kaynaklar şunlar olabilir bu `PrimaryMetricGoal.MAXIMIZE` veya `PrimaryMetricGoal.MINIMIZE` ve birincil Metrik ekranı veya kaldırılacak çalıştırmalar değerlendirirken simge durumuna küçültülmüş olup olmadığını belirler. 
+* `primary_metric_name`: optimize edilecek birincil ölçümün adı. Birincil ölçüm adı bir eğitim betiği tarafından günlüğe ölçüm adı tam olarak eşleşmesi gerekir. Bkz. [hyperparameter ayarlama Için günlük ölçümleri](#log-metrics-for-hyperparameter-tuning).
+* `primary_metric_goal`: `PrimaryMetricGoal.MAXIMIZE` veya `PrimaryMetricGoal.MINIMIZE` ya da çalıştırmalar değerlendirilirken birincil metriğin en küçük veya en aza indirilip küçültülmeyeceğini belirler. 
 
 ```Python
 primary_metric_name="accuracy",
@@ -180,7 +180,7 @@ run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 
-Eğitim betiğini hesaplar `val_accuracy` ve birincil ölçüm kullanılan "doğruluğu" olarak günlüğe kaydeder. Ölçüm her oturum, Hiper parametre ayarı hizmet tarafından alınır. Bu, genellikle bu ölçüm bildirme belirlemek için model geliştiricisi kadar kadar.
+Eğitim betiği `val_accuracy` hesaplar ve birincil ölçüm olarak kullanılan "doğruluk" olarak günlüğe kaydeder. Ölçüm her oturum, Hiper parametre ayarı hizmet tarafından alınır. Bu, genellikle bu ölçüm bildirme belirlemek için model geliştiricisi kadar kadar.
 
 <a name='specify-early-termination-policy'/>
 
@@ -190,8 +190,8 @@ Kötü bir erken sonlandırma İlkesi ile otomatik olarak çalışmaları gerçe
 
 Bir erken sonlandırma ilkesini kullanarak, bir ilke uygulandığında denetleyen aşağıdaki parametreleri yapılandırabilirsiniz:
 
-* `evaluation_interval`: ilkeyi uygulamak için sıklığı. Her birincil Metrik eğitim betiği oturum açtığında bir aralık olarak sayılır. Bu nedenle bir `evaluation_interval` birincil Metrik eğitim betiğini raporları her zaman 1 ilke uygulanır. Bir `evaluation_interval` 2 eğitim betiğini birincil Metrik raporları her zaman ilke uygulanır. Belirtilmezse, `evaluation_interval` varsayılan olarak 1 olarak ayarlanır.
-* `delay_evaluation`: belirtilen sayıda aralıkları için ilk ilke değerlendirmesi geciktirir. Bu Eğitimin erken sonlandırma önleme aralıkları, ilk en düşük numaralı çalıştırmak tüm yapılandırmaları sağlayan isteğe bağlı bir parametre çalıştıran olur. Bu seçenek belirtilmişse, büyüktür veya eşittir delay_evaluation evaluation_interval her birden çok ilke uygulanır.
+* `evaluation_interval`: ilkeyi uygulama sıklığı. Her birincil Metrik eğitim betiği oturum açtığında bir aralık olarak sayılır. Bu nedenle, eğitim betiği birincil ölçümü raporlayan her seferinde `evaluation_interval` 1 bir ilke uygular. 2 `evaluation_interval`, her eğitim betiği birincil ölçümü raporlayan her seferinde ilkeyi uygular. Belirtilmezse, `evaluation_interval` varsayılan olarak 1 ' e ayarlanır.
+* `delay_evaluation`: belirtilen Aralık sayısı için ilk ilke değerlendirmesini geciktirir. Bu Eğitimin erken sonlandırma önleme aralıkları, ilk en düşük numaralı çalıştırmak tüm yapılandırmaları sağlayan isteğe bağlı bir parametre çalıştıran olur. Bu seçenek belirtilmişse, büyüktür veya eşittir delay_evaluation evaluation_interval her birden çok ilke uygulanır.
 
 Azure Machine Learning, aşağıdaki erken sonlandırma Ilkelerini destekler.
 
@@ -199,11 +199,11 @@ Azure Machine Learning, aşağıdaki erken sonlandırma Ilkelerini destekler.
 
 [Bandıt](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) , bolluk faktörü/bolluk miktarına ve değerlendirme aralığına dayalı bir sonlandırma ilkesidir. İlke burada birincil Metrik içinde belirtilen slack etken olmadığı durumlar / slack miktarı en iyi performansa sahip eğitim göre çalıştır her çalıştırma erken sona erer. Bunu, aşağıdaki yapılandırma parametreleri alır:
 
-* `slack_factor` veya `slack_amount`: en iyi performansa sahip çalıştırma eğitim göre izin verilen slack. `slack_factor` izin verilen slack oranı belirtir. `slack_amount` izin verilen slack oranı yerine bir mutlak miktarını belirtir.
+* `slack_factor` veya `slack_amount`: en iyi yapan eğitim çalıştırmasına göre izin verilen bolluk. `slack_factor`, izin verilen bolluk oranını bir oran olarak belirtir. `slack_amount`, izin verilen bolluğu bir oran yerine mutlak bir miktar olarak belirtir.
 
-    Örneğin, aralığı 10 uygulanmakta Bandit ilke göz önünde bulundurun. En iyi 10 aralıkla çalışması gerçekleştiren bir birincil Metrik 0.8 birincil ölçüm en üst düzeye çıkarmak için bir hedef bildirilen varsayılır. İlke ile belirtildiyse bir `slack_factor` 0.2 herhangi bir eğitim çalıştığında, 10 aralığında olan en iyi ölçüm 0.66 küçüktür (0,8 / (1 +`slack_factor`)) sonlandırılacak. Bunun yerine, ilke ile belirtilmemişse bir `slack_amount` 0.2 herhangi bir eğitim çalıştığında, 10 aralığında olan en iyi ölçüm 0,6 küçüktür (0,8 - `slack_amount`) sonlandırılacak.
-* `evaluation_interval`: (isteğe bağlı parametresi) ilkesini uygulamak için sıklığı.
-* `delay_evaluation`: belirtilen sayıda aralıkları (isteğe bağlı parametresi) için ilk ilke değerlendirmesi geciktirir.
+    Örneğin, aralığı 10 uygulanmakta Bandit ilke göz önünde bulundurun. En iyi 10 aralıkla çalışması gerçekleştiren bir birincil Metrik 0.8 birincil ölçüm en üst düzeye çıkarmak için bir hedef bildirilen varsayılır. İlke 0,2 `slack_factor` belirtilirse, zaman aralığı 10 ' da en iyi ölçüm 0,66 ' den (0.8/(1 +`slack_factor`)) sona erer. Bunun yerine, ilke 0,2 `slack_amount` ile belirtilirse, zaman aralığı 10 ' da en iyi ölçüm 0,6 ' den (0,8-`slack_amount`) sona erer.
+* `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
+* `delay_evaluation`: belirtilen Aralık sayısı için (isteğe bağlı parametre) ilk ilke değerlendirmesini geciktirir.
 
 
 ```Python
@@ -216,8 +216,8 @@ Bu örnekte, ölçümleri bildirildiğinde 5 değerlendirmesi aralıkta başlang
 ### <a name="median-stopping-policy"></a>ORTANCA durdurma İlkesi
 
 [Ortanca durdurma](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py) , çalıştırmalar tarafından bildirilen birincil ölçümlerin çalışma ortalamaları temelinde erken sonlandırma ilkesidir. Bu ilke, tüm eğitim çalıştırmaları arasında çalışan ortalamaları hesaplar ve çalışan ortalamalar, Orta başarımını kötüsü çalıştırmaları sonlandırır. Bu ilke aşağıdaki yapılandırma parametreleri alır:
-* `evaluation_interval`: (isteğe bağlı parametresi) ilkesini uygulamak için sıklığı.
-* `delay_evaluation`: belirtilen sayıda aralıkları (isteğe bağlı parametresi) için ilk ilke değerlendirmesi geciktirir.
+* `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
+* `delay_evaluation`: belirtilen Aralık sayısı için (isteğe bağlı parametre) ilk ilke değerlendirmesini geciktirir.
 
 
 ```Python
@@ -231,9 +231,9 @@ Bu örnekte, değerlendirme aralığı 5 başlayarak her bir aralıkta erken son
 
 [Kesme seçimi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py) , her değerlendirme aralığında verilen en düşük performanslı çalıştırma yüzdesini iptal eder. Çalıştırmaları performanslarını birincil Metrik üzerinde göre karşılaştırılır ve en düşük %x sonlandırılır. Bunu, aşağıdaki yapılandırma parametreleri alır:
 
-* `truncation_percentage`: her değerlendirme aralıkta sonlandırmak için en düşük performanslı yüzdesi çalıştırır. 1 ile 99 arasında bir tamsayı değeri belirtin.
-* `evaluation_interval`: (isteğe bağlı parametresi) ilkesini uygulamak için sıklığı.
-* `delay_evaluation`: belirtilen sayıda aralıkları (isteğe bağlı parametresi) için ilk ilke değerlendirmesi geciktirir.
+* `truncation_percentage`: her değerlendirme aralığında sonlandırmak için en düşük performanslı çalıştırmanın yüzdesi. 1 ile 99 arasında bir tamsayı değeri belirtin.
+* `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
+* `delay_evaluation`: belirtilen Aralık sayısı için (isteğe bağlı parametre) ilk ilke değerlendirmesini geciktirir.
 
 
 ```Python
@@ -257,22 +257,22 @@ Herhangi bir ilke belirtilmemişse, hyperparameter ayarlama hizmeti tüm eğitim
 
 ### <a name="picking-an-early-termination-policy"></a>Erken sonlandırma ilkesi seçme
 
-* Taahhüdü işleri sonlandırmadan tasarruf sağlar koruyucu bir ilke arıyorsanız ORTANCA durdurma ilkesiyle kullanabileceğiniz `evaluation_interval` 1 ve `delay_evaluation` 5. Yaklaşık % 25-%35 tasarruf kaybı olmadan ile birincil ölçüm (değerlendirme verilerimizi göre) üzerinde sağlayabilen koruyucu ayarları şunlardır.
+* Taahhüt işlerini sonlandırmadan tasarruf sağlayan bir koruyucu ilke arıyorsanız, `evaluation_interval` 1 ve `delay_evaluation` 5 ile bir ortanca durdurma Ilkesi kullanabilirsiniz. Yaklaşık % 25-%35 tasarruf kaybı olmadan ile birincil ölçüm (değerlendirme verilerimizi göre) üzerinde sağlayabilen koruyucu ayarları şunlardır.
 * Erken sonlandırmaya karşı daha fazla ısrarlı tasarruf arıyorsanız, daha büyük bir kesme yüzdesine sahip, daha sıkı (daha küçük), izin verilen bolluk veya kesme seçim Ilkesiyle bandıt Ilkesini kullanabilirsiniz.
 
 ## <a name="allocate-resources"></a>Kaynakları ayırın
 
 Eğitim çalıştırmalarının toplam sayısı belirterek deneme ayarlama, Hiper parametre Kaynak bütçenizi denetim.  İsteğe bağlı olarak, deneme ayarlama, Hiper parametre için süre üst sınırını belirtin.
 
-* `max_total_runs`: Oluşturulacak eğitim çalıştırmalarının en fazla toplam sayısı. Üst sınır - olabilir daha az çalıştığında, örneğin, Hiper parametre alanı sınırlıdır ve daha az örnek varsa. 1 ile 1000 arasında bir sayı olmalıdır.
-* `max_duration_minutes`: En fazla süreyi dakika cinsinden, deneme ayarlama hiper parametre. Parametre isteğe bağlıdır ve varsa, bu süreden sonra çalıştırıyordur çalıştırmalarının otomatik olarak iptal edilir.
+* `max_total_runs`: oluşturulacak en büyük toplam eğitim çalıştırması sayısı. Üst sınır - olabilir daha az çalıştığında, örneğin, Hiper parametre alanı sınırlıdır ve daha az örnek varsa. 1 ile 1000 arasında bir sayı olmalıdır.
+* `max_duration_minutes`: hiper parametre ayarlama denemesinde dakika cinsinden en uzun süre. Parametre isteğe bağlıdır ve varsa, bu süreden sonra çalıştırıyordur çalıştırmalarının otomatik olarak iptal edilir.
 
 >[!NOTE] 
->Her iki `max_total_runs` ve `max_duration_minutes` belirtilirse, deneme ayarlama hiper parametre bu iki eşik ilk ulaşıldığında sona erer.
+>Hem `max_total_runs` hem de `max_duration_minutes` belirtilirse, bu iki eşikte ilk kez ulaşıldığında hyperparameter ayarlama denemesi sonlanır.
 
 Ayrıca, arama ayarlama eşzamanlı olarak, Hiper parametre sırasında çalıştırılacak çalıştırma eğitim maksimum sayısı belirtin.
 
-* `max_concurrent_runs`: En fazla çalıştırma sayısına eşzamanlı olarak belirli bir andaki çalıştırılacak. Hiçbiri belirtilmişse, tüm `max_total_runs` paralel olarak başlatılır. Belirtilirse, 1 ile 100 arasında bir sayı olmalıdır.
+* `max_concurrent_runs`: herhangi bir anda aynı anda çalıştırılacak en fazla çalıştırma sayısı. Belirtilmemişse, tüm `max_total_runs` paralel olarak başlatılır. Belirtilirse, 1 ile 100 arasında bir sayı olmalıdır.
 
 >[!NOTE] 
 >Belirtilen işlem hedefte kullanılabilir kaynaklar eş zamanlı çalıştırma sayısını Geçitli. Bu nedenle, işlem hedef istenen eşzamanlılık için kullanılabilir kaynaklar olduğundan emin olmak gerekir.
@@ -288,7 +288,7 @@ Bu kod, tek seferde dört yapılandırmayı çalıştıran en fazla 20 toplam ç
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
 
-Tanımlı hiper parametre arama alanını, erken sonlandırma ilkesini, birincil ölçüyü ve Yukarıdaki bölümlerden kaynak ayırmayı kullanarak [hyperparameter ayarlama denemenizi yapılandırın](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) . Ayrıca, sağlayan bir `estimator` ile örneklenen hiperparametreleri çağrılır. `estimator` Eğitim betiği çalıştırarak, kaynakları (tek veya birden çok gpu) iş başına ve kullanmak için işlem hedef açıklanmaktadır. Deneme ayarlama, Hiper parametre kullanılabilir kaynakları Geçitli için eşzamanlılık emin olmak olduğundan işlem hedef içinde belirtilen `estimator` istenen eşzamanlılığınız için yeterli kaynaklara sahip. (Estimators hakkında daha fazla bilgi için bkz. [modelleri eğitme](how-to-train-ml-models.md).)
+Tanımlı hiper parametre arama alanını, erken sonlandırma ilkesini, birincil ölçüyü ve Yukarıdaki bölümlerden kaynak ayırmayı kullanarak [hyperparameter ayarlama denemenizi yapılandırın](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) . Ayrıca, Örneklenmiş hiper parametrelerle çağrılacak bir `estimator` sağlayın. `estimator`, çalıştırdığınız eğitim betiğini, iş başına kaynakları (tek veya birden çok GPU) ve kullanılacak işlem hedefini açıklar. Hiperparameter ayarlama denemeniz için eşzamanlılık kullanılabilir kaynakları kullandığından, `estimator` belirtilen işlem hedefinin istediğiniz eşzamanlılık için yeterli kaynaklara sahip olduğundan emin olun. (Estimators hakkında daha fazla bilgi için bkz. [modelleri eğitme](how-to-train-ml-models.md).)
 
 Deneme ayarlama, Hiper parametre yapılandırın:
 
@@ -376,7 +376,7 @@ Ayrıca, performans ve bir paralel koordinatları çizim kullanarak tek tek hipe
 
 [Hiper parametre ayarlama paralel koordinatları ![](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-Çalıştırmaları de Azure web portalında ayarlama tüm, Hiper parametre görselleştirebilirsiniz. Bir deney web portalında görüntüleme hakkında daha fazla bilgi için bkz. [nasıl izleneceğini denemeleri](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
+Çalıştırmaları de Azure web portalında ayarlama tüm, Hiper parametre görselleştirebilirsiniz. Web portalında bir denemeyi görüntüleme hakkında daha fazla bilgi için bkz. [denemeleri Track](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
 ## <a name="find-the-best-model"></a>En iyi modeli bulun
 
@@ -396,10 +396,10 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>Örnek Not Defteri
 Bu klasördeki tren-hyperparameter-* Not defterleri bölümüne bakın:
-* [How-to-use-azureml/Training-With-DEEP-Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
+* [Nasıl yapılır kullanımı-azureml/eğitim-ayrıntılı-öğrenme](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Bir deney izleyin](how-to-track-experiments.md)
+* [Deneme izleme](how-to-track-experiments.md)
 * [Eğitilen model dağıtma](how-to-deploy-and-where.md)

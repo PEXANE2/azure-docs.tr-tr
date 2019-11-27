@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce tag and its value
-description: This sample policy definition requires a tag name and value defined in a parameter on each Azure resource.
+title: Örnek-zorla etiketi ve değeri
+description: Bu örnek ilke tanımı, her bir Azure kaynağındaki bir parametrede tanımlanmış bir etiket adı ve değeri gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: d405b5cbe2bdb7b96c74d665171714d1890ef624
@@ -10,9 +10,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463327"
 ---
-# <a name="sample---enforce-tag-and-its-value"></a>Sample - Enforce tag and its value
+# <a name="sample---enforce-tag-and-its-value"></a>Örnek-zorla etiketi ve değeri
 
-Bu ilke belirli bir etiket adı ve değeri gerektirir. Zorlanacak etiket adını ve değerini belirtirsiniz.
+Bu ilke belirli bir etiket adı ve değeri gerektirir. Zorlamak için etiket adını ve değerini belirtirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ Bu ilke belirli bir etiket adı ve değeri gerektirir. Zorlanacak etiket adını
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fenforce-tag-value%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

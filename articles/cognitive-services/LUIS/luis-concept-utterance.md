@@ -140,14 +140,14 @@ Modelinize eğitilen, yayımladım ve [uç nokta](luis-glossary.md#endpoint) sor
 
 Word choice veya word düzenleme aynıdır, ancak aynı şeyi anlamına gelmez, bu varlıkla etiket değil. 
 
-Aşağıdaki konuşma, word `fair` olan bir eş sesli sözcük. Aynı yazıldığından, ancak farklı bir anlama sahiptir:
+Aşağıdaki söyleyenlerdeki sözcük `fair` bir hograf. Aynı yazıldığından, ancak farklı bir anlama sahiptir:
 
-|Konuşma|
+|İfade|
 |--|
 |Ne tür bir ilçe fairs yapıldığını Seattle alanında bu yaz?|
 |Geçerli derecelendirme Seattle gözden geçirilmek üzere adil mi?|
 
-Tüm olay verileri bulmak için bir olay varlık istediyseniz, word etiket `fair` ilk utterance, ancak ikinci içinde değil.
+Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, sözcüğü ilk utterde `fair` etiketleyin, ancak ikinciden değil.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

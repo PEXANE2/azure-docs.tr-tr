@@ -1,6 +1,6 @@
 ---
-title: Automate tasks for enterprise integration - Azure Logic Apps
-description: Learn about automating workflows that integrate apps, data, services, and systems with minimal code for enterprise integration by using Azure Logic Apps.
+title: Kurumsal tümleştirme için görevleri otomatikleştirme-Azure Logic Apps
+description: Azure Logic Apps kullanarak, uygulamaları, verileri, hizmetleri ve sistemleri tümleştiren kurumsal tümleştirme için en az kodla tümleştiren iş akışlarını otomatikleştirme hakkında bilgi edinin.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -13,14 +13,14 @@ ms.custom: mvc
 ms.date: 06/29/2018
 ms.openlocfilehash: 679c648df1daaaaacec0c13922b4dd6ae42cf777
 ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420096"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>Overview - What is Azure Logic Apps?
+# <a name="overview---what-is-azure-logic-apps"></a>Genel Bakış-Azure Logic Apps nedir?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) is a cloud service that helps you schedule, automate, and orchestrate tasks, business processes, and [workflows](#logic-app-concepts) when you need to integrate apps, data, systems, and services across enterprises or organizations. Logic Apps simplifies how you design and build scalable solutions for app [integration](https://azure.microsoft.com/product-categories/integration/), data integration, system integration, enterprise application integration (EAI), and business-to-business (B2B) communication, whether in the cloud, on premises, or both.
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) , uygulamaları, verileri, sistemleri ve Hizmetleri kuruluşlar veya kuruluşlar genelinde tümleştirmeniz gerektiğinde görevleri, iş süreçlerini ve [iş akışlarını](#logic-app-concepts) zamanlamanıza, otomatikleştirmenize ve yönetmenize yardımcı olan bir bulut hizmetidir. Logic Apps, bulutta, şirket içinde veya her ikisinde de olmak üzere uygulama [tümleştirme](https://azure.microsoft.com/product-categories/integration/), veri tümleştirmesi, sistem tümleştirmesi, kurumsal uygulama TÜMLEŞTIRME (EAI) ve işletmeler arası (B2B) iletişim için ölçeklenebilir çözümler tasarlama ve oluşturma işlemlerini basitleştirir.
 
 Mantıksal uygulamalarla otomatikleştirebileceğiniz birkaç iş yükü örneği aşağıda verilmiştir:
 
@@ -32,13 +32,13 @@ Mantıksal uygulamalarla otomatikleştirebileceğiniz birkaç iş yükü örneğ
 
 * Belirli bir konu için tweet’leri izleme, yaklaşımı analiz etme ve gözden geçirilmesi gereken öğeler için uyarılar veya görevler oluşturma.
 
-To build enterprise integration solutions with Azure Logic Apps, you can choose from a growing gallery with [hundreds of ready-to-use connectors](../connectors/apis-list.md), which include services such as Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, file shares, and more. [Bağlayıcılar](#logic-app-concepts), verilere gerçek zamanlı olarak güvenli bir şekilde erişen ve verileri işleyen mantıksal uygulamalar oluşturmaya yönelik [tetikleyiciler](#logic-app-concepts), [eylemler](#logic-app-concepts) veya her ikisini de sağlar.
+Azure Logic Apps ile kurumsal tümleştirme çözümleri oluşturmak için, Azure Service Bus, Azure Işlevleri, Azure depolama, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, dosya paylaşımları ve diğer hizmetler dahil olmak üzere [yüzlerce kullanıma yönelik yerleşik bağlayıcı](../connectors/apis-list.md)ile büyüyen bir galeri arasından seçim yapabilirsiniz. [Bağlayıcılar](#logic-app-concepts), verilere gerçek zamanlı olarak güvenli bir şekilde erişen ve verileri işleyen mantıksal uygulamalar oluşturmaya yönelik [tetikleyiciler](#logic-app-concepts), [eylemler](#logic-app-concepts) veya her ikisini de sağlar.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
 ## <a name="how-does-logic-apps-work"></a>Logic Apps nasıl çalışır? 
 
-Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni kullanılabilir veriler belirli ölçütleri karşıladığında tetiklenen bir tetikleyici ile başlar. Many triggers provided by the connectors in Logic Apps include basic scheduling capabilities so that you can set up how regularly your workloads run. For more complex scheduling or advanced recurrences, you can use a Recurrence trigger as the first step in any workflow. Learn more about [schedule-based workflows](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni kullanılabilir veriler belirli ölçütleri karşıladığında tetiklenen bir tetikleyici ile başlar. Logic Apps içindeki bağlayıcılar tarafından sunulan birçok tetikleyici, iş yüklerinizin ne kadar düzenli olarak çalışacağını ayarlayabilmeniz için temel zamanlama yeteneklerini içerir. Daha karmaşık zamanlama veya gelişmiş Yinelenmeler için herhangi bir iş akışındaki ilk adım olarak bir yinelenme tetikleyicisi kullanabilirsiniz. [Zamanlama tabanlı iş akışları](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)hakkında daha fazla bilgi edinin.
 
 Tetikleyici her tetiklendiğinde, Logic Apps altyapısı iş akışındaki eylemleri çalıştıran bir mantıksal uygulama örneği oluşturur. Bu eylemlere koşullu deyimler, switch deyimleri, döngüler ve dallanma gibi veri dönüşümleri ve akış denetimleri de dahil olabilir. Örneğin, bu mantıksal uygulama yerleşik olarak “Bir kayıt güncelleştirildiğinde” ölçütüne sahip olan bir Dynamics 365 tetikleyicisi ile başlatılır. Tetikleyici bu ölçütle eşleşen bir olay algıladığında tetiklenir ve iş akışının eylemlerini çalıştırır. Burada, bu eylemlere XML dönüşümü, veri güncelleştirmeleri, karar dallanması ve e-posta bildirimleri dahildir.
 
@@ -79,7 +79,7 @@ Geçerli sistem ve hizmetlerinizi kullanarak küçük bir başlangıç yapın ve
 * Şu ürün ve hizmetlerden yararlanarak oluşturun:
 
   * [Microsoft BizTalk Server](https://docs.microsoft.com/biztalk/core/introducing-biztalk-server)
-  * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
+  * [Azure Hizmet Veri Yolu](../service-bus-messaging/service-bus-messaging-overview.md)
   * [Azure İşlevleri](../azure-functions/functions-overview.md)
   * [Azure API Management](../api-management/api-management-key-concepts.md)
 
@@ -102,11 +102,11 @@ Diğer taraftan BizTalk Server da [Microsoft BizTalk Server Adapter for Logic Ap
 
 ### <a name="write-once-reuse-often"></a>Bir kere yazın, tekrar tekrar kullanın
 
-Create your logic apps as Azure Resource Manager templates so that you can [automate logic app deployment](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) across multiple environments and regions.
+Mantıksal uygulama dağıtımını birden çok ortamda ve bölgede [otomatikleştirebilmeniz](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) için Logic apps 'i Azure Resource Manager şablonlar olarak oluşturun.
 
 ### <a name="built-in-extensibility"></a>Yerleşik genişletilebilirlik
 
-If you don't find the connector that you want to run custom code, you can extend logic apps by creating and calling your own code snippets on-demand through [Azure Functions](../azure-functions/functions-overview.md). Mantıksal uygulamalardan arayabileceğiniz kendi [API’lerinizi](../logic-apps/logic-apps-create-api-app.md) ve [özel bağlayıcılarınızı](../logic-apps/custom-connector-overview.md) oluşturun.
+Özel kod çalıştırmak istediğiniz bağlayıcıyı bulamazsanız, [Azure işlevleri](../azure-functions/functions-overview.md)aracılığıyla isteğe bağlı olarak kendi kod parçacıklarınızı oluşturup çağırarak mantıksal uygulamaları genişletebilirsiniz. Mantıksal uygulamalardan arayabileceğiniz kendi [API’lerinizi](../logic-apps/logic-apps-create-api-app.md) ve [özel bağlayıcılarınızı](../logic-apps/custom-connector-overview.md) oluşturun.
 
 ### <a name="pay-only-for-what-you-use"></a>Yalnızca kullandığınız kadar ödeyin
   
@@ -124,7 +124,7 @@ Bu giriş videoları ile Logic Apps hakkında daha fazla bilgi edinin:
 
 * **İş akışı**: İş süreçlerini bir dizi adım şeklinde görselleştirin, tasarlayın, oluşturun, otomatikleştirin ve dağıtın.
 
-* **Yönetilen bağlayıcılar**: Mantıksal uygulamalarınızın veri, hizmet ve sistemlere erişmesi gerekir. Önceden oluşturulmuş, Microsoft tarafından yönetilen ve verilerinize bağlanmak, erişmek ve verilerle çalışmak için tasarlanan bağlayıcıları kullanabilirsiniz. See [Connectors for Azure Logic Apps](../connectors/apis-list.md).
+* **Yönetilen bağlayıcılar**: Mantıksal uygulamalarınızın veri, hizmet ve sistemlere erişmesi gerekir. Önceden oluşturulmuş, Microsoft tarafından yönetilen ve verilerinize bağlanmak, erişmek ve verilerle çalışmak için tasarlanan bağlayıcıları kullanabilirsiniz. [Azure Logic Apps Için bağlayıcılar](../connectors/apis-list.md)' a bakın.
 
 * **Tetikleyiciler**: Microsoft tarafından yönetilen birçok bağlayıcı, olaylar veya yeni veriler belirtilen koşulları karşıladığında tetiklenen tetikleyiciler sağlar. Örneğin, bir olay e-posta alıyor veya Azure Depolama hesabınızdaki değişiklikleri algılıyor olabilir. Tetikleyici her tetiklendiğinde, Logic Apps altyapısı iş akışını çalıştıran yeni bir mantıksal uygulama örneği oluşturur.
 
@@ -136,7 +136,7 @@ Bu giriş videoları ile Logic Apps hakkında daha fazla bilgi edinin:
 
 Bu hizmetlerin tümü, bir "yapıştırıcı" ile bağımsız sistemleri birleştirmenize yardımcı olur. Her hizmetin kendine özgü avantajları olduğundan, hızlı bir şekilde ölçeklenebilen, tam özellikli bir tümleştirme sistemi oluşturmanın en iyi yolu bunların özelliklerini birleştirmektir. Daha fazla bilgi için bkz. [Flow, Logic Apps, Azure İşlevleri ve Web İşleri arasında seçim yapma](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 Logic Apps, Microsoft Azure’da barındırılan birçok hizmetten biridir. Bu nedenle, başlamak için önce bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

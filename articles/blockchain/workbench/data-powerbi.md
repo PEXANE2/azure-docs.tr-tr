@@ -17,11 +17,11 @@ Microsoft Power BI, Power BI Desktop uygulamasını kullanarak SQL DB veritabanl
 
 Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’ın içinden bağlanma, bir rapor oluşturma ve raporu powerbi.com’a dağıtma sürecine ilişkin adım adım bir kılavuz içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Download [Power BI Desktop](https://aka.ms/pbidesktopstore).
+* [Power BI Desktop](https://aka.ms/pbidesktopstore)indirin.
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Connecting Power BI to data in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'ndaki verilere Power BI bağlama
 
 1.  Power BI Desktop’ı açın.
 2.  **Veri Al**’ı seçin.
@@ -43,7 +43,7 @@ Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’
 
     ![Gezgin](./media/data-powerbi/navigator.png)
 
-7.  Dahil etmek istediğiniz görünümleri seçin. For demonstration purposes, we include **vwContractAction**, which provides details on the actions that have taken place on a contract.
+7.  Dahil etmek istediğiniz görünümleri seçin. Tanıtım amacıyla, bir sözleşmede gerçekleşen eylemler hakkında ayrıntılı bilgi sağlayan bir, **Cıcontractaction**ekledik.
 
     ![Görünümleri seçin](./media/data-powerbi/select-views.png)
 

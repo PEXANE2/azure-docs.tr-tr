@@ -209,7 +209,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="distributed-training"></a>Dağıtılmış eğitim
+## <a name="distributed-training"></a>Dağıtılmış eğitimi
 
 [`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) tahmin aracı Ayrıca CPU ve GPU kümelerinde dağıtılmış eğitimi destekler. Dağıtılmış TensorFlow işlerini kolayca çalıştırabilirsiniz ve Azure Machine Learning düzenleme sizin için yönetecektir.
 
@@ -242,7 +242,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 ### <a name="parameter-server"></a>Parametre sunucusu
 
-Ayrıca çalıştırabileceğiniz [yerel dağıtılmış TensorFlow](https://www.tensorflow.org/deploy/distributed), parametre sunucu modeli kullanır. Bu yöntemde, parametre sunucularının ve çalışan bir küme genelinde eğitin. Parametre sunucuları gradyanlar toplama sırasında çalışan gradyanlar eğitim sırasında hesaplayın.
+Ayrıca, parametre sunucu modelini kullanan [Yerel dağıtılmış TensorFlow](https://www.tensorflow.org/deploy/distributed)' u de çalıştırabilirsiniz. Bu yöntemde, parametre sunucularının ve çalışan bir küme genelinde eğitin. Parametre sunucuları gradyanlar toplama sırasında çalışan gradyanlar eğitim sırasında hesaplayın.
 
 Parameter Server metodunu kullanmak için, TensorFlow oluşturucusunda `distributed_training` parametresi için bir [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) nesnesi belirtin.
 
@@ -270,7 +270,7 @@ run = exp.submit(tf_est)
 
 Ayrıca, [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)kümenin ağ adresleri ve bağlantı noktaları da gerekir, Azure Machine Learning `TF_CONFIG` ortam değişkenini sizin için ayarlar.
 
-`TF_CONFIG` Ortam değişkenidir bir JSON dizesi. Parametre sunucusu için değişkenin bir örnek aşağıda verilmiştir:
+`TF_CONFIG` ortam değişkeni bir JSON dizesidir. Parametre sunucusu için değişkenin bir örnek aşağıda verilmiştir:
 
 ```JSON
 TF_CONFIG='{
@@ -317,6 +317,6 @@ Daha ayrıntılı Azure Machine Learning dağıtımı [nasıl](how-to-deploy-and
 
 Bu makalede, bir TensorFlow modeli eğitilmiş ve kaydettiniz ve dağıtım seçenekleri hakkında bilgi edindiniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için bu makaleye bakın.
 
-* [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
-* [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
+* [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
+* [Hiper parametreleri ayarla](how-to-tune-hyperparameters.md)
 * [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

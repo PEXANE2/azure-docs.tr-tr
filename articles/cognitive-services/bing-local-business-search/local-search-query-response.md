@@ -1,7 +1,7 @@
 ---
-title: Sending and using API queries and responses - Bing Local Business Search
+title: API sorguları ve yanıtları gönderme ve kullanma-Bing yerel Iş arama
 titleSuffix: Azure Cognitive Services
-description: Use this article to learn how to send and use search queries with the Bing Local Business Search API.
+description: Bing yerel Iş Arama API 'siyle arama sorguları gönderme ve kullanma hakkında bilgi edinmek için bu makaleyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,27 +17,27 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326735"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Sending and using Bing Local Business Search API queries and responses
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing yerel Iş Arama API 'SI sorguları ve yanıtları gönderme ve kullanma
 
-You can get local results from the Bing Local Business Search API by sending a search query to its endpoint and including the `Ocp-Apim-Subscription-Key` header, which is required. Along with available [headers](local-search-reference.md#headers) and [parameters](local-search-reference.md#query-parameters), Searches can be customized by specifying [geographic boundaries](specify-geographic-search.md) for the area to be searched, and the [categories](local-search-query-response.md) of places returned.
+Yerel sonuçları, uç noktasına bir arama sorgusu göndererek ve gerekli olan `Ocp-Apim-Subscription-Key` üst bilgisini ekleyerek Bing yerel Iş Arama API 'sinden elde edebilirsiniz. Kullanılabilir [üstbilgiler](local-search-reference.md#headers) ve [parametrelerle](local-search-reference.md#query-parameters)birlikte, aramalar, aranacak alanın [coğrafi sınırları](specify-geographic-search.md) belirtilerek ve döndürülen konum [kategorileri](local-search-query-response.md) belirtilerek özelleştirilebilir.
 
-## <a name="creating-a-request"></a>Creating a request
+## <a name="creating-a-request"></a>İstek oluşturma
 
-To send a request to the Bing Local Business Search API, append a search term to the `q=` parameter before adding it to the API endpoint, and including the `Ocp-Apim-Subscription-Key` header. Örnek:
+Bing yerel Iş Arama API 'sine bir istek göndermek için, API uç noktasına eklemeden önce `q=` parametresine bir arama terimi ekleyin ve `Ocp-Apim-Subscription-Key` üst bilgisini dahil edin. Örneğin:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-The full request URL syntax is shown below. See the Bing Local Business Search API [quickstarts](quickstarts/local-quickstart.md), and reference content for [headers](local-search-reference.md#headers) and [parameters](local-search-reference.md#query-parameters) for more information on sending requests. 
+Tam istek URL 'SI sözdizimi aşağıda gösterilmiştir. İstek gönderme hakkında daha fazla bilgi için bkz. Bing yerel Iş Arama API 'SI [hızlı başlangıç](quickstarts/local-quickstart.md)bilgileri ve [üstbilgiler](local-search-reference.md#headers) ve [Parametreler](local-search-reference.md#query-parameters) için başvuru içeriği. 
 
-For information on local search categories, see [Search categories for the Bing Local Business Search API](local-categories.md).
+Yerel Arama kategorileri hakkında daha fazla bilgi için bkz. [Bing yerel Iş Arama API 'si Için Arama kategorileri](local-categories.md).
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
-## <a name="using-responses"></a>Using responses
+## <a name="using-responses"></a>Yanıtları kullanma
 
-JSON responses from the Bing Local Business Search API contain a `SearchResponse` object. The API will return relevant search results in the `places` field. if no results are found, the `places` field will not be included in the response.
+Bing yerel Iş Arama API 'sindeki JSON yanıtları bir `SearchResponse` nesnesi içerir. API, `places` alanında ilgili arama sonuçlarını döndürür. Sonuç bulunmazsa `places` alanı yanıta eklenmez.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -52,29 +52,29 @@ JSON responses from the Bing Local Business Search API contain a `SearchResponse
 . . . 
 ```
 
-### <a name="search-result-attributes"></a>Search result attributes
+### <a name="search-result-attributes"></a>Arama sonucu öznitelikleri
 
-The JSON results returned by the API include the following attributes:
+API tarafından döndürülen JSON sonuçları aşağıdaki öznitelikleri içerir:
 
 * _type
 * address
-* entityPresentationInfo
-* geo
+* Entitypresentationınfo
+* Co
 * id
 * ad
 * routeablePoint
-* telephone
+* unuzdaki
 * url
 
-For general information about headers, parameters, market codes, response objects, errors, etc., see the [Bing Local Search API v7](local-search-reference.md) reference.
+Üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar vb. hakkında genel bilgi için bkz. [Bing yerel arama API 'si v7](local-search-reference.md) başvurusu.
 
 > [!NOTE]
-> You, or a third party on your behalf, may not use, retain, store, cache, share, or distribute any data from the Local Search API for the purpose of testing, developing, training, distributing or making available any non-Microsoft service or feature. 
+> Siz veya sizin adınıza üçüncü bir taraf, Microsoft dışı bir hizmet veya özelliği test etmek, geliştirmek, eğitmek, dağıtmak veya kullanıma açmak amacıyla yerel arama API 'sindeki herhangi bir veriyi kullanamaz, koruyabilir, saklayabilir, önbelleğe alabilir veya dağıtamazsınız. 
 
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
-The following JSON response includes search results specified by the query `?q=restaurant+in+Bellevue`.
+Aşağıdaki JSON yanıtı sorgu `?q=restaurant+in+Bellevue`tarafından belirtilen arama sonuçlarını içerir.
 
 ```json
 Vary: Accept-Encoding
@@ -147,7 +147,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Local Business Search quickstart](quickstarts/local-quickstart.md)
-- [Local Business Search Java quickstart](quickstarts/local-search-java-quickstart.md)
-- [Local Business Search Node quickstart](quickstarts/local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](quickstarts/local-search-python-quickstart.md)
+- [Yerel Iş araması hızlı başlangıç](quickstarts/local-quickstart.md)
+- [Yerel Iş arama Java hızlı başlangıç](quickstarts/local-search-java-quickstart.md)
+- [Yerel Iş arama düğümü hızlı başlangıç](quickstarts/local-search-node-quickstart.md)
+- [Yerel Iş arama Python hızlı başlangıç](quickstarts/local-search-python-quickstart.md)

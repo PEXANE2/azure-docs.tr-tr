@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Blockchain Workbench database firewall
-description: Learn how to configure the Azure Blockchain Workbench Preview database firewall to allow external clients and applications to connect.
+title: Azure blok zincirini yapılandırma çalışma ekranı veritabanı güvenlik duvarı
+description: Dış istemcilerin ve uygulamaların bağlanmasına izin vermek için Azure blok zinciri çalışma ekranı önizleme veritabanı güvenlik duvarını yapılandırma hakkında bilgi edinin.
 ms.date: 09/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
@@ -19,7 +19,7 @@ Bu makalede Azure portalını kullanarak güvenlik duvarı kuralı yapılandırm
 
 Bir kural yapılandırmak istediğiniz veritabanına bağlanmak için:
 
-1. Sign in to the Azure portal with an account that has **Owner**     permissions for the Azure Blockchain Workbench resources.
+1. Azure blok zinciri çalışma ekranı kaynakları için **sahip** izinlerine sahip bir hesapla Azure Portal oturum açın.
 2. Sol gezinti bölmesinden **Kaynak Grupları**'nı seçin.
 3. Blockchain Workbench dağıtımınıza yönelik kaynak grubunun adını seçin.
 4. Kaynakları sıralamak için **Tür**’ü, sonra da **SQL sunucunuzu** seçin.

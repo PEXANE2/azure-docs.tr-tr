@@ -41,11 +41,11 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 2. **İşlem**' ı seçin ve ardından **Windows Server 2016 Datacenter** veya **Ubuntu Server**sürümünü seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |---|---|
-    |Ad|myVm|
+    |Name|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD**’yi seçin|
@@ -77,7 +77,7 @@ Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sana
 2. **AĞ TANILAMA ARAÇLARI** altında **IP akışı doğrulama**’yı seçin.
 3. Aboneliğinizi seçin, aşağıdaki değerleri girin veya seçin ve sonra aşağıdaki resimde gösterildiği gibi **Denetle**’yi seçin:
 
-    |Ayar            |Değer                                                                                              |
+    |Ayar            |Value                                                                                              |
     |---------          |---------                                                                                          |
     | Kaynak grubu    | myResourceGroup öğesini seçin                                                                            |
     | Sanal makine   | MyVm öğesini seçin                                                                                       |

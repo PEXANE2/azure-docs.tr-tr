@@ -1,7 +1,7 @@
 ---
-title: Iterative app design - LUIS
+title: Yinelemeli uygulama tasarımı-LUSıS
 titleSuffix: Azure Cognitive Services
-description: LUIS learns best in an iterative cycle of model changes, utterance examples, publishing, and gathering data from endpoint queries.
+description: LUIS, en iyi modeli değişiklikleri, utterance örnekler, yayımlama ve veri toplamayı yinelemeli bir döngüyle uç nokta sorgularından öğrenir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,136 +18,136 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422595"
 ---
-# <a name="iterative-app-design-for-luis"></a>Iterative app design for LUIS
+# <a name="iterative-app-design-for-luis"></a>LUSıS için yinelemeli uygulama tasarımı
 
-A Language Understanding (LUIS) app learns and performs most efficiently with iteration. Here's a typical iteration cycle:
+Language Understanding (LUSıS) uygulaması, yineleme ile en verimli şekilde öğrenir ve çalışır. İşte tipik bir yineleme çevrimi:
 
-* Create new version
-* Edit the LUIS app schema. Buna aşağıdakiler dahildir:
-    * Intents with example utterances
+* Yeni sürüm oluştur
+* LUSıS uygulama şemasını düzenleyin. Buna aşağıdakiler dahildir:
+    * örnek söyleyle amaçları
     * Varlıklar
     * Özellikler
-* Train, test, and publish
-    * Test at the prediction endpoint for active learning
-* Gather data from endpoint queries
+* Eğitme, test ve yayımlama
+    * Etkin öğrenme için tahmin uç noktasında test edin
+* uç nokta sorgularından veri toplama
 
 ![Yazma döngüsü](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-schema"></a>Building a LUIS schema
+## <a name="building-a-luis-schema"></a>LUSıS şeması oluşturma
 
-An app's schema defines what the user is asking for (the _intention_ or _intent_ ) and what parts of the intent provide details (called _entities_) that are used to help determine the answer. 
+Bir uygulamanın şeması, kullanıcının ne sorabileceğini ( _Amaç_ veya _Amaç_ ) ve amacının hangi bölümlerinin yanıt belirlemek için kullanılan ayrıntıları ( _varlıklar_olarak adlandırılır) sağlar. 
 
-The app schema must be specific to the app domains to determine words and phrases that are relevant, as well as to determine typical word ordering. 
+Uygulama şemasının, ilgili kelimeleri ve tümcecikleri ve tipik sözcük sıralamasını belirlemesi için uygulama etki alanlarına özel olması gerekir. 
 
-Example utterances represent user inputs, such as recognized speech or text, that the app expects at runtime. 
+Örnek söyleyme, uygulamanın çalışma zamanında beklediği tanınan konuşma veya metin gibi kullanıcı girişlerini temsil eder. 
 
-The schema requires intents, and _should have_ entities. 
+Şema için _Amaç gerekir ve varlıklar olmalıdır_ . 
 
-### <a name="example-schema-of-intents"></a>Example schema of intents
+### <a name="example-schema-of-intents"></a>Örnek bir amaç şeması
 
-The most common schema is an intent schema organized with intents. This type of schema uses LUIS to determine a user's intention. 
+En yaygın şema, amaçlar ile düzenlenmiş bir amaç şemadır. Bu tür bir şema, bir kullanıcının amaç olduğunu belirlemede HALSıS kullanır. 
 
-The intent schema type may have entities if it helps LUIS determine the user's intention. For example, a shipping entity (as a descriptor to an intent) helps LUIS determine a shipping intention. 
+Amaç şeması türü, LUSıS 'in kullanıcının amacını belirlemesine yardımcı olması halinde varlıklara sahip olabilir. Örneğin, bir gönderim varlığı (bir amaca yönelik bir tanımlayıcı olarak), LUıN bir nakliye amacını belirlemesine yardımcı olur. 
 
-### <a name="example-schema-of-entities"></a>Example schema of entities
+### <a name="example-schema-of-entities"></a>Varlıkların örnek şeması
 
-An entity schema focuses on entities, which is the data that is extracted from user utterances. For example, if a user was to say, "I'd like to order three pizzas." There are two entities that would be extracted: _three_ and _pizzas_. These are used to help fulfill the intention, which was to make an order. 
+Bir varlık şeması, Kullanıcı utslarından ayıklanan veriler olan varlıklara odaklanır. Örneğin, bir Kullanıcı söyledim, "üç Pizzas sıralamak istiyorum." Ayıklanacak iki varlık vardır: _üç_ ve _Pizzas_. Bunlar, bir sipariş oluşturmak için kullanılan amaç yerine getirmek için kullanılır. 
 
-For an entity schema, the intention of the utterance is less important to the client application. 
+Bir varlık şeması için, söylenişi 'in amacı, istemci uygulaması için daha az önemlidir. 
 
-A common method of organizing an entity schema is to add all example utterances to the **None** intent. 
+Bir varlık şemasının düzenlenmesinin yaygın bir yöntemi, tüm örnek söyleylerini **none** amacına eklemektir. 
 
-### <a name="example-of-a-mixed-schema"></a>Example of a mixed schema
+### <a name="example-of-a-mixed-schema"></a>Karışık şema örneği
 
-The most powerful and mature schema is an intent schema with a full range of entities and features. This schema can begin as either an intent or entity schema and grow to include concepts of both, as the client application needs those pieces of information. 
+En güçlü ve olgun şeması, eksiksiz bir varlık ve özellik aralığına sahip bir amaç şemadır. Bu şema, bir amaç veya varlık şeması olarak başlayabilir ve istemci uygulaması bu bilgi parçasına ihtiyaç duydukça her ikisinin kavramlarını dahil etmek için büyüyebilir. 
 
-## <a name="add-example-utterances-to-intents"></a>Add example utterances to intents
+## <a name="add-example-utterances-to-intents"></a>Amaçlar için örnek ekleme
 
-LUIS needs a few example utterances in each **intent**. The example utterances need enough variation of word choice and word order to be able to determine which intent the utterance is meant for. 
+LUO 'NUN her bir **Amaç**için birkaç örnek elde etmek gerekir. Örnek söyleyler, hangi Amaçın hangi amaca yönelik olduğunu belirleyebilmek için yeterli sözcük seçimi ve sözcük sırası çeşitlemesine gerek duyar. 
 
 > [!CAUTION]
-> Do not add example utterances in bulk. Start with 15 to 30 specific and varying examples. 
+> Toplu olarak örnek eklemeyin. 15 ila 30 ' a ve değişen örneklerle başlayın. 
 
-Each example utterance needs to have any **required data to extract** designed and labeled with **entities**. 
+Her örnek söylenişi 'in, **varlıklar**ile tasarlanıp etiketlenmesi **için gerekli verilerin** olması gerekir. 
 
-|Key element|Amaç|
+|Anahtar öğesi|Amaç|
 |--|--|
-|Amaç|**Classify** user utterances into a single intention, or action. Examples include `BookFlight` and `GetWeather`.|
-|Kurum|**Extract** data from utterance required to complete intention. Examples include date and time of travel, and location.|
+|Amaç|Kullanıcı araslarını tek bir amaç veya eylem halinde **sınıflandırın** . Örnekler `BookFlight` ve `GetWeather`içerir.|
+|Varlık|Bir amaç için gereken materance 'tan veri **ayıklayın** . Örneğin, seyahat tarihi ve saati ve konumunu içerir.|
 
-A LUIS app can be designed to ignore utterances that aren't relevant to an app's domain by assigning the utterance to the **None** intent.
+Bir LUSıS uygulaması, bir uygulamanın etki alanıyla ilgili olmayan, **yok** etme amacına atanarak, bir uygulamanın etki alanıyla ilgisi olmayan utbotları yok sayacak şekilde tasarlanabilir.
 
-## <a name="test-and-train-your-app"></a>Test and train your app
+## <a name="test-and-train-your-app"></a>Uygulamanızı test edin ve eğitme
 
-After you have 15 to 30 different example utterances in each intent, with the required entities labeled, you need to test and [train](luis-how-to-train.md) your LUIS app. 
+Her bir amaca göre 15 ila 30 farklı örneğe sahip olduktan sonra, etiketli gerekli varlıklar sayesinde LUSıS uygulamanızı test etmeniz ve [eğmeniz](luis-how-to-train.md) gerekir. 
 
-## <a name="publish-to-a-prediction-endpoint"></a>Publish to a prediction endpoint
+## <a name="publish-to-a-prediction-endpoint"></a>Tahmin uç noktasında Yayımlama
 
-The LUIS app must be published so that it's available to you in the list [prediction endpoint regions](luis-reference-regions.md).
+LUO uygulamasının, liste [Tahmini uç nokta bölgelerinde](luis-reference-regions.md)kullanılabilir olması için yayımlanması gerekir.
 
-## <a name="test-your-published-app"></a>Test your published app
+## <a name="test-your-published-app"></a>Yayınlanan uygulamanızı test etme
 
-You can test your published LUIS app from the HTTPS prediction endpoint. Testing from the prediction endpoint allows LUIS to choose any utterances with low-confidence for [review](luis-how-to-review-endpoint-utterances.md).  
+Yayınlanan LUSıS uygulamanızı HTTPS tahmin uç noktasından test edebilirsiniz. Tahmin uç noktasından test etmek, LUSıS 'nin [Gözden geçirme](luis-how-to-review-endpoint-utterances.md)için düşük güvenilirliğe sahip herhangi bir noktayı seçmesine olanak sağlar.  
 
-## <a name="create-a-new-version-for-each-cycle"></a>Create a new version for each cycle
+## <a name="create-a-new-version-for-each-cycle"></a>Her bir döngüyle ilgili yeni bir sürüm oluşturun
 
-Each version is a snapshot in time of the LUIS app. Before you make changes to the app, create a new version. It is easier to go back to an older version than to try to remove intents and utterances to a previous state.
+Her sürüm, LUSıS uygulamasının zaman içindeki bir anlık görüntüdür. Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Daha eski bir sürüme geri dönmek daha kolaydır. Bu, önceki bir duruma göre amaçları ve kullanımları kaldırmaya çalışır.
 
-The version ID consists of characters, digits or '.' and cannot be longer than 10 characters.
+Sürüm KIMLIĞI, karakterler, rakamlar veya '. ' karakterlerinden oluşur ve 10 karakterden uzun olamaz.
 
-The initial version (0.1) is the default active version. 
+İlk sürüm (0,1) varsayılan etkin sürümdür. 
 
-### <a name="begin-by-cloning-an-existing-version"></a>Begin by cloning an existing version
+### <a name="begin-by-cloning-an-existing-version"></a>Mevcut bir sürümü klonlayarak başlayın
 
-Clone an existing version to use as a starting point for each new version. After you clone a version, the new version becomes the **active** version. 
+Her yeni sürüm için başlangıç noktası olarak kullanmak üzere var olan bir sürümü kopyalayın. Bir sürümü klonladıktan sonra, yeni sürüm **etkin** sürüm olur. 
 
-### <a name="publishing-slots"></a>Publishing slots
+### <a name="publishing-slots"></a>Yayımlama Yuvaları
 
-You can publish to either the stage and/or production slots. Each slot can have a different version or the same version. This is useful for verifying changes before publishing to production, which is available to bots or other LUIS calling apps. 
+Aşama ve/veya üretim yuvalarında yayımlayabilirsiniz. Her yuva farklı bir sürüme veya aynı sürüme sahip olabilir. Bu, robotların veya başka bir LUıN uygulama çağıran uygulamalar tarafından kullanılabilen üretime yayımlamadan önce değişiklikleri doğrulamak için yararlıdır. 
 
-Trained versions aren't automatically available at your LUIS app's [endpoint](luis-glossary.md#endpoint). You must [publish](luis-how-to-publish-app.md) or republish a version in order for it to be available at your LUIS app endpoint. You can publish to **Staging** and **Production**, giving you two versions of the app available at the endpoint. If more versions of the app need to be available at an endpoint, you should export the version and reimport it to a new app. The new app has a different app ID.
+Eğitilen sürümler, LUSıS uygulamanızın [uç noktasında](luis-glossary.md#endpoint)otomatik olarak kullanılamaz. LUSıS uygulama uç noktanıza kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Hazırlama** ve **üretime**yayınlayabilirsiniz ve bu sayede, uç noktada uygulamanın iki sürümünü kullanabilirsiniz. Bir uç noktada uygulamanın daha fazla sürümünün kullanılabilir olması gerekiyorsa, sürümü dışarı aktarıp yeni bir uygulamaya yeniden içeri aktarmanız gerekir. Yeni uygulamanın farklı bir uygulama KIMLIĞI vardır.
 
-### <a name="import-and-export-a-version"></a>Import and export a version
+### <a name="import-and-export-a-version"></a>Bir sürümü içeri ve dışarı aktarma
 
-A version can be imported at the app level. That version becomes the active version and uses the version ID in the `versionId` property of the app file. You can also import into an existing app, at the version level. The new version becomes the active version. 
+Bir sürüm, uygulama düzeyinde içeri aktarılabilir. Bu sürüm etkin sürüm olur ve uygulama dosyasının `versionId` özelliğindeki sürüm KIMLIĞINI kullanır. Ayrıca, sürüm düzeyinde mevcut bir uygulamaya de aktarabilirsiniz. Yeni sürüm etkin sürüm olur. 
 
-A version can be exported at the app or version level as well. The only difference is that the app-level exported version is the currently active version while at the version level, you can choose any version to export on the **[Settings](luis-how-to-manage-versions.md)** page. 
+Bir sürüm, uygulama veya sürüm düzeyinde de aktarılabilir. Tek fark, uygulama düzeyinde dışarı aktarılmış sürümün sürüm düzeyinde şu anda etkin olan sürümüdür, **[Ayarlar](luis-how-to-manage-versions.md)** sayfasında dışarı aktarılacak herhangi bir sürümü seçebilirsiniz. 
 
-The exported file **doesn't** contain:
+İçe **aktarılmış dosya şunları** içermez:
 
-* Machine-learned information, because the app is retrained after it's imported
-* Contributor information
+* Makine öğrenilmiş bilgiler, çünkü uygulama alındıktan sonra geri alınır
+* katkıda bulunan bilgileri
 
-In order to back up your LUIS app schema, export a version from the [LUIS portal](https://www.luis.ai/applications).
+LUSıS uygulama şemanızı yedeklemek için, bir sürümü [lusıs portalından](https://www.luis.ai/applications)dışarı aktarın.
 
-## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Manage contributor changes with versions and contributors
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Sürümler ve katkıda bulunanlar ile katkıda bulunan değişiklikleri yönetin
 
-LUIS uses the concept of contributors to an app, by providing Azure resource-level permissions. Combine this concept with versioning to provide targeted collaboration. 
+LUSıS, Azure Kaynak düzeyi izinleri sunarak bir uygulamaya katkıda bulunanlar kavramını kullanır. Hedeflenen işbirliği sağlamak için bu kavramı sürümü oluşturma ile birleştirin. 
 
-Use the following techniques to manage contributor changes to your app.
+Uygulamanıza katkıda bulunan değişiklikleri yönetmek için aşağıdaki teknikleri kullanın.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Manage multiple versions inside the same app
+### <a name="manage-multiple-versions-inside-the-same-app"></a>Aynı uygulama içinde birden çok sürümlerini yönetme
 
-Begin by [cloning](luis-how-to-manage-versions.md#clone-a-version) from a base version for each author. 
+Her yazar için bir temel sürümden [kopyalamaya](luis-how-to-manage-versions.md#clone-a-version) başlayın. 
 
-Each author makes changes to their own version of the app. When the author is satisfied with the model, export the new versions to JSON files.  
+Her yazar uygulamanın kendi sürümünde değişiklik yapar. Yazar modelle karşılanmıyorsa, yeni sürümleri JSON dosyalarına dışarı aktarın.  
 
-Exported apps, .json or .lu files, can be compared for changes. Combine the files to create a single file of the new version. Change the `versionId` property to signify the new merged version. Import that version into the original app. 
+Aktarılmış uygulamalar,. JSON veya. lu dosyaları, değişiklikler için karşılaştırılabilir. Yeni sürümden tek bir dosya oluşturmak için dosyaları birleştirin. `versionId` özelliğini yeni birleştirilmiş sürümü işaret etmek üzere değiştirin. Bu sürüm, özgün uygulamaya aktarma. 
 
-This method allows you to have one active version, one stage version, and one published version. You can compare the results of the active version with a published version (stage or production) in the [interactive testing pane](luis-interactive-test.md).
+Bu yöntem bir etkin sürüm, bir aşama sürümü ve bir yayımlanmış sürümüne sahip olmanızı sağlar. Etkin sürüm ile ilgili sonuçları, [etkileşimli test bölmesindeki](luis-interactive-test.md)yayımlanmış bir sürümle (aşama veya üretim) karşılaştırabilirsiniz.
 
-### <a name="manage-multiple-versions-as-apps"></a>Manage multiple versions as apps
+### <a name="manage-multiple-versions-as-apps"></a>Birden çok sürümü uygulamaları yönetme
 
-[Export](luis-how-to-manage-versions.md#export-version) the base version. Each author imports the version. The person that imports the app is the owner of the version. When they are done modifying the app, export the version. 
+Temel sürümü [dışarı aktarın](luis-how-to-manage-versions.md#export-version) . Her geliştirici sürümünü alır. Uygulamayı alır kişi sürüm sahibidir. Bunların ne zaman yapılır dışarı aktarma sürümü uygulama değiştirme. 
 
-Exported apps are JSON-formatted files, which can be compared with the base export for changes. Combine the files to create a single JSON file of the new version. Change the **versionId** property in the JSON to signify the new merged version. Import that version into the original app.
+Değişiklikler için temel dışarı aktarma ile karşılaştırılabilir JSON biçimli dosyaları dışarı aktarılan uygulamalardır. Yeni sürümü tek bir JSON dosyası oluşturmak için dosyaları birleştirin. JSON içindeki **VersionId** özelliğini yeni birleştirilmiş sürümü işaret etmek üzere değiştirin. Bu sürüm, özgün uygulamaya aktarma.
 
-Learn more about authoring contributions from [collaborators](luis-how-to-collaborate.md).
+[Ortak çalışanlarla](luis-how-to-collaborate.md)ilgili katkıları yazma hakkında daha fazla bilgi edinin.
 
-## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Review endpoint utterances to begin the new iterative cycle
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Yeni yinelemeli döngüyü başlatmak için uç nokta utslerini gözden geçirin
 
-When you are done with an iteration cycle, you can repeat the process. Start with [reviewing prediction endpoint utterances](luis-how-to-review-endpoint-utterances.md) LUIS marked with low-confidence. Check these utterances for both correct predicted intent and correct and complete entity extracted. After you review and accept changes, the review list should be empty.  
+Bir yineleme döngüsüyle işiniz bittiğinde, işlemi tekrarlayabilirsiniz. [İnceleme tahmini uç noktası utterations](luis-how-to-review-endpoint-utterances.md) lu, düşük güvenilirlikle işaretlendi. Bu söyleyeni, hem doğru tahmini amaç hem de doğru ve tamamen ayıklanan varlık için denetleyin. Değişiklikleri gözden geçirdikten ve kabul ettikten sonra, gözden geçirme listesinin boş olması gerekir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn concepts about [collaboration](luis-concept-keys.md).
+[İşbirliği](luis-concept-keys.md)hakkında kavramları öğrenin.

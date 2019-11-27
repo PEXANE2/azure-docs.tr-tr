@@ -1,6 +1,6 @@
 ---
-title: Sample - Ensure HTTPS traffic for storage accounts
-description: This sample policy definition requires all Azure storage accounts to allow only secure HTTPS traffic.
+title: Örnek-depolama hesapları için HTTPS trafiğine emin olun
+description: Bu örnek ilke tanımı, tüm Azure depolama hesaplarının yalnızca güvenli HTTPS trafiğine izin vermek için gereklidir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 4d6b6f7e494d2f8c5278c546ead1f9697f245f38
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463594"
 ---
-# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Sample - Ensure HTTPS traffic only for storage account
+# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Örnek-yalnızca depolama hesabı için HTTPS trafiğine emin olun
 
 Bu ilke, depolama hesaplarının HTTPS trafiği kullanmasını gerektirir.
 
@@ -24,7 +24,7 @@ Bu ilke, depolama hesaplarının HTTPS trafiği kullanmasını gerektirir.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

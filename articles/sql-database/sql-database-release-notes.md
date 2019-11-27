@@ -57,7 +57,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 ---
 
-## <a name="new-features"></a>Yeni özellikler
+## <a name="new-features"></a>Yeni Özellikler
 
 ### <a name="managed-instance-h2-2019-updates"></a>Yönetilen örnek H2 2019 güncelleştirmeleri
 

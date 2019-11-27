@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Java - Bing Visual Search'
+title: 'Hızlı başlangıç: REST API ve Java-Bing Görsel Arama kullanarak görüntü öngörülerini alın'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Bing Görsel Arama API'si bir görüntüyü karşıya yüklemeyi ve ilgili öngörüleri nasıl alabileceğinizi öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -17,11 +17,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383599"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Java
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Java kullanarak görüntü öngörülerini alın
 
-Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Java application uploads an image to the API and displays the information it returns. Though this application is written in Java, the API is a RESTful Web service compatible with most programming languages.
+Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülemek için bu hızlı başlangıcı kullanın. Bu Java uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Java 'da yazılmış olsa da, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
+Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üst bilgisini içermelidir. `name` parametresini "image" olarak ayarlamanız gerekir ve `filename` parametresini herhangi bir dizeye ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
 
 ```
 --boundary_1234-abcd
@@ -34,15 +34,15 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* The [Java Development Kit (JDK) 7 or 8](https://aka.ms/azure-jdks)
-* The [Gson Java library](https://github.com/google/gson)
+* [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks)
+* [Gson Java kitaplığı](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Create a new Java project in your favorite IDE or editor, and import the following libraries:
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Java projesi oluşturun ve aşağıdaki kitaplıkları içeri aktarın:
 
     ```java
     import java.util.*;
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Create variables for your API endpoint, subscription key, and the path to your image:
+2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,9 +71,9 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
-## <a name="create-the-json-parser"></a>Create the JSON parser
+## <a name="create-the-json-parser"></a>JSON ayrıştırıcısı oluşturma
 
-Create a method to make the JSON response from the API more readable using `JsonParser`:
+`JsonParser`kullanarak, API 'den gelen JSON yanıtının daha okunaklı olmasını sağlamak için bir yöntem oluşturun:
 
     ```java
     public static String prettify(String json_text) {
@@ -86,13 +86,13 @@ Create a method to make the JSON response from the API more readable using `Json
 
 ## <a name="construct-the-search-request-and-query"></a>Arama isteği ve sorgu oluşturma
 
-1. In the main method of your application, create an HTTP client using `HttpClientBuilder.create().build();`:
+1. Uygulamanızın ana yönteminde `HttpClientBuilder.create().build();`kullanarak bir HTTP istemcisi oluşturun:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Create an `HttpEntity` object to upload your image to the API:
+2. Görüntünüzü API 'ye yüklemek için bir `HttpEntity` nesnesi oluşturun:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -101,7 +101,7 @@ Create a method to make the JSON response from the API more readable using `Json
         .build();
     ```
 
-3. Create an `httpPost` object with your endpoint, and set the header to use your subscription key:
+3. Uç noktanızla bir `httpPost` nesnesi oluşturun ve üst bilgiyi abonelik anahtarınızı kullanacak şekilde ayarlayın:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -111,14 +111,14 @@ Create a method to make the JSON response from the API more readable using `Json
 
 ## <a name="receive-and-process-the-json-response"></a>JSON yanıtını alma ve işleme
 
-1. Use the `HttpClient.execute()` method to send a request to the API, and store the response in an `InputStream` object:
+1. API 'ye bir istek göndermek için `HttpClient.execute()` yöntemini kullanın ve yanıtı bir `InputStream` nesnesine depolayın:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Store the JSON string, and print the response:
+2. JSON dizesini depolayın ve yanıtı yazdırın:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -129,4 +129,4 @@ System.out.println(prettify(json));
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Görsel Arama tek sayfalı Web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)

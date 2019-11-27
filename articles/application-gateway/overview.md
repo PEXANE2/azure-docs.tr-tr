@@ -19,51 +19,51 @@ ms.locfileid: "74422305"
 
 Azure Application Gateway, web uygulamalarınıza trafiği yönetmenizi sağlayan bir web trafiği yük dengeleyicisidir. Geleneksel yük dengeleyiciler aktarım katmanında (OSI katman 4 - TCP ve UDP) çalışır ve trafiği kaynak IP adresi ve bağlantı noktasına göre hedef bir IP adresi ve bağlantı noktasına yönlendirir.
 
-![Application Gateway conceptual](media/overview/figure1-720.png)
+![Application Gateway kavramsal](media/overview/figure1-720.png)
 
-With Application Gateway, you can make routing decisions based on additional attributes of an HTTP request, such as URI path or host headers. Örneğin, gelen URL’yi temel alarak trafiği yönlendirebilirsiniz. Yani `/images` gelen URL’deyse, trafiği görüntüler için yapılandırılmış belirli bir sunucu kümesine (havuz olarak da bilinir) yönlendirebilirsiniz. If `/video` is in the URL, that traffic is routed to another pool that's optimized for videos.
+Application Gateway ile, URI yolu veya konak üstbilgileri gibi bir HTTP isteğinin ek özniteliklerine dayalı yönlendirme kararları alabilirsiniz. Örneğin, gelen URL’yi temel alarak trafiği yönlendirebilirsiniz. Yani `/images` gelen URL’deyse, trafiği görüntüler için yapılandırılmış belirli bir sunucu kümesine (havuz olarak da bilinir) yönlendirebilirsiniz. URL 'de `/video`, bu trafik, videolar için en iyi duruma getirilmiş başka bir havuza yönlendirilir.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
 Bu yönlendirme türü, uygulama katmanı (OSI katman 7) yük dengelemesi olarak bilinir. Azure Application Gateway, URL tabanlı yönlendirmeyi ve daha fazlasını yapabilir.
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. If you need high-performance, low-latency, Layer-4 load balancing, see [What is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) If you're looking for global DNS load balancing, see [What is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Your end-to-end scenarios may benefit from combining these solutions.
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Yüksek performanslı, düşük gecikmeli, katman 4 yük dengelemeye ihtiyacınız varsa bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
 >
-> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Azure Application Gateway aşağıdaki özellikleri içerir:
 
-## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) termination
+## <a name="secure-sockets-layer-ssltls-termination"></a>Güvenli Yuva Katmanı (SSL/TLS) sonlandırma
 
-Application gateway supports SSL/TLS termination at the gateway, after which traffic typically flows unencrypted to the backend servers. Bu özellik, web sunucularının maliyetli şifreleme ve şifre çözme ek yükünden kurtulmasını sağlar. But sometimes unencrypted communication to the servers is not an acceptable option. This can be because of security requirements, compliance requirements, or the application may only accept a secure connection. For these applications, application gateway supports end to end SSL/TLS encryption.
+Application Gateway, ağ geçidinde SSL/TLS sonlandırmasını destekler ve bu sayede trafik genellikle arka uç sunucularına şifrelenmemiş olarak akar. Bu özellik, web sunucularının maliyetli şifreleme ve şifre çözme ek yükünden kurtulmasını sağlar. Ancak bazen sunucularla şifrelenmemiş iletişim kabul edilebilir bir seçenek değildir. Bunun nedeni güvenlik gereksinimleri, uyumluluk gereksinimleri veya uygulamanın yalnızca güvenli bir bağlantıyı kabul etmesi olabilir. Bu uygulamalar için Application Gateway, uçtan uca SSL/TLS şifrelemesini destekler.
 
 ## <a name="autoscaling"></a>Otomatik ölçeklendirme
 
-Application Gateway or WAF deployments under Standard_v2 or WAF_v2 SKU support autoscaling and can scale up or down based on changing traffic load patterns. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. For more information about the Application Gateway Standard_v2 and WAF_v2  features, see [Autoscaling v2 SKU](application-gateway-autoscaling-zone-redundant.md).
+Standard_v2 veya WAF_v2 SKU 'nun otomatik ölçeklendirilmesine Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Application Gateway Standard_v2 ve WAF_v2 özellikler hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md).
 
-## <a name="zone-redundancy"></a>Zone redundancy
+## <a name="zone-redundancy"></a>Bölge artıklığı
 
-An Application Gateway or WAF deployments under  Standard_v2 or WAF_v2 SKU can span multiple Availability Zones, offering better fault resiliency and removing the need to provision separate Application Gateways in each zone.
+Standard_v2 veya WAF_v2 SKU 'SU altındaki bir Application Gateway veya WAF dağıtımları birden fazla Kullanılabilirlik Alanları yayılabilir, daha iyi hata esnekliği sunar ve her bölgede ayrı uygulama ağ geçitleri sağlama gereksinimini ortadan kaldırabilir.
 
-## <a name="static-vip"></a>Static VIP
+## <a name="static-vip"></a>Statik VIP
 
-The application gateway VIP on Standard_v2 or WAF_v2 SKU supports static VIP type exclusively. This ensures that the VIP associated with application gateway doesn't change even over the lifetime of the Application Gateway.
+Standard_v2 veya WAF_v2 SKU 'SU üzerinde uygulama ağ geçidi VIP yalnızca statik VIP türünü destekler. Bu, uygulama ağ geçidi ile ilişkili VIP 'nin Application Gateway ömrü boyunca bile değişmemesini sağlar.
 
 ## <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
 
-Web application firewall (WAF) is a service that provides centralized protection of your web applications from common exploits and vulnerabilities. WAF is based on rules from the [OWASP (Open Web Application Security Project) core rule sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1 (WAF_v2 only), 3.0, and 2.2.9. 
+Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın genel güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlayan bir hizmettir. WAF, [OWASP (açık Web uygulaması güvenlik projesi) çekirdek kural kümeleri](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (yalnızca WAF_v2), 3,0 ve 2.2.9 kurallarını temel alır. 
 
 Web uygulamaları, bilinen yaygın güvenlik açıklarından yararlanan kötü amaçlı saldırıların giderek daha fazla hedefi olmaktadır. Bu açıklardan yararlanma örnekleri arasında SQL ekleme saldırıları, siteler arası komut dosyası saldırıları yaygındır. Uygulama kodunda bu tür saldırıların önlenmesi zor olabilir ve uygulama topolojisinin birçok katmanında ayrıntılı bakım, düzeltme eki uygulama ve izleme işlemleri gerektirebilir. Merkezi bir web uygulaması güvenlik duvarı, güvenlik yönetimini çok daha kolay hale getirir ve yetkisiz erişim ya da izinsiz giriş tehditlerine karşı uygulama yöneticilerine daha iyi güvence verir. Bir WAF çözümü, bilinen bir güvenlik açığına merkezi bir konumda düzeltme eki uygulayarak güvenlik tehdidine karşı, web uygulamalarının her birinin güvenliğini sağlamaya göre daha hızlı tepki verebilir. Var olan uygulama ağ geçitleri, web uygulaması güvenlik duvarı bulunan bir uygulama ağ geçidine kolaylıkla dönüştürülebilir.
 
-For more information, see [What is Azure Web Application Firewall?](../web-application-firewall/overview.md).
+Daha fazla bilgi için bkz. [Azure Web uygulaması güvenlik duvarı nedir?](../web-application-firewall/overview.md).
 
 ## <a name="ingress-controller-for-aks"></a>AKS için Giriş Denetleyicisi
-Application Gateway Ingress Controller (AGIC) allows you to use Application Gateway as the ingress for an [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) cluster. 
+Application Gateway giriş denetleyicisi (AGIC), bir [Azure Kubernetes hizmeti (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümesi için giriş olarak Application Gateway kullanmanıza olanak sağlar. 
 
-The ingress controller runs as a pod within the AKS cluster and consumes [Kubernetes Ingress Resources](https://kubernetes.io/docs/concepts/services-networking/ingress/) and converts them to an Application Gateway configuration which allows the gateway to load-balance traffic to the Kubernetes pods. The ingress controller only supports Application Gateway V2 SKU. 
+Giriş denetleyicisi AKS kümesi içinde bir pod olarak çalışır ve [Kubernetes giriş kaynaklarını](https://kubernetes.io/docs/concepts/services-networking/ingress/) kullanır ve ağ geçidinin Kubernetes pods 'ye yük dengelemesi yapmasına izin veren bir Application Gateway yapılandırmasına dönüştürür. Giriş denetleyicisi yalnızca Application Gateway v2 SKU 'sunu destekler. 
 
-For more information, see [Application Gateway Ingress Controller (AGIC)](ingress-controller-overview.md).
+Daha fazla bilgi için bkz. [Application Gateway giriş denetleyicisi (AGIC)](ingress-controller-overview.md).
 
 ## <a name="url-based-routing"></a>URL tabanlı yönlendirme
 
@@ -71,23 +71,23 @@ URL Yolu Tabanlı Yönlendirme, trafiği isteğin URL Yollarına göre arka uç 
 
 Örneğin, `http://contoso.com/video/*` için istekler VideoServerPool’a ve `http://contoso.com/images/*` için istekler ImageServerPool’a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
 
-For more information, see [URL-based routing with Application Gateway](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
+Daha fazla bilgi için bkz. [Application Gateway Ile URL tabanlı yönlendirme](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
 
 ## <a name="multiple-site-hosting"></a>Birden çok site barındırma
 
-Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. This feature allows you to configure a more efficient topology for your deployments by adding up to 100 web sites to one Application Gateway, or 40 for WAF (for optimal performance). Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
+Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. Bu özellik, bir Application Gateway veya WAF için 40 (en iyi performans için) 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
 
 `http://contoso.com` için istekler ContosoServerPool’a ve `http://fabrikam.com` için istekler FabrikamServerPool’a yönlendirilir.
 
 Benzer şekilde, aynı üst etki alanının iki alt etki alanı, aynı uygulama ağ geçidi dağıtımında barındırılabilir. Alt etki alanı kullanım örnekleri, tek bir uygulama ağ geçidi dağıtımında barındırılan `http://blog.contoso.com` ve `http://app.contoso.com` öğelerini içerebilir.
 
-For more information, see [multiple-site hosting with Application Gateway](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+Daha fazla bilgi için bkz. [Application Gateway ile birden çok site barındırma](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
 
 ## <a name="redirection"></a>Yönlendirme
 
 Birçok web uygulaması için yaygın bir senaryo, bir uygulama ile kullanıcıları arasındaki tüm iletişimin şifrelenmiş bir yol üzerinden yapıldığından emin olmak için otomatik HTTP’yi HTTPS’ye dönüştürme yeniden yönlendirmesini desteklemektir.
 
-In the past, you may have used techniques such as dedicated pool creation whose sole purpose is to redirect requests it receives on HTTP to HTTPS. Uygulama ağ geçidi, Application Gateway’de trafiği yeniden yönlendirme özelliğini destekler. Bu uygulama yapılandırmasını basitleştirir, kaynak kullanımını en iyi duruma getirir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler. Application Gateway redirection support isn't limited to HTTP to HTTPS redirection alone. Bu, kuralları kullanarak tanımladığınız herhangi bir bağlantı noktasından ve bağlantı noktasına yeniden yönlendirebilmeniz için genel bir yeniden yönlendirme mekanizmasıdır. Ayrıca, bir dış siteye yönlendirmeyi de destekler.
+Geçmişte, tek amacı, HTTP üzerinde aldığı istekleri HTTPS 'ye yeniden yönlendirmek üzere olan adanmış havuz oluşturma gibi teknikler kullanmış olabilirsiniz. Uygulama ağ geçidi, Application Gateway’de trafiği yeniden yönlendirme özelliğini destekler. Bu uygulama yapılandırmasını basitleştirir, kaynak kullanımını en iyi duruma getirir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler. Application Gateway yeniden yönlendirme desteği, tek başına HTTP ile HTTPS yönlendirmesi ile sınırlı değildir. Bu, kuralları kullanarak tanımladığınız herhangi bir bağlantı noktasından ve bağlantı noktasına yeniden yönlendirebilmeniz için genel bir yeniden yönlendirme mekanizmasıdır. Ayrıca, bir dış siteye yönlendirmeyi de destekler.
 
 Application Gateway yeniden yönlendirme desteği aşağıdaki özellikleri sunar:
 
@@ -95,7 +95,7 @@ Application Gateway yeniden yönlendirme desteği aşağıdaki özellikleri suna
 - Yol tabanlı yönlendirme. Bu tür yeniden yönlendirmeler, HTTP’den HTTPS’ye yeniden yönlendirmeyi yalnızca belirli bir site alanında (örneğin `/cart/*` tarafından belirtilen bir alışveriş sepetinde) etkinleştirir.
 - Dış siteye yeniden yönlendirme.
 
-For more information, see [redirecting traffic](https://docs.microsoft.com/azure/application-gateway/redirect-overview) with Application Gateway.
+Daha fazla bilgi için bkz. Application Gateway ile [trafiği yeniden yönlendirme](https://docs.microsoft.com/azure/application-gateway/redirect-overview) .
 
 ## <a name="session-affinity"></a>Oturum benzeşimi
 
@@ -105,45 +105,45 @@ Tanımlama bilgilerine dayalı oturum benzeşimi özelliği, bir kullanıcı otu
 
 Application Gateway, WebSocket ve HTTP/2 protokolleri için yerel destek sağlar. WebSocket desteğini isteğe bağlı olarak etkinleştirmek veya devre dışı bırakmak için kullanıcı tarafından yapılandırılabilen bir ayar yoktur.
 
-WebSocket ve HTTP/2 protokolleri, uzun süre çalışan bir TCP bağlantısı üzerinden bir sunucu ile bir istemci arasında tam çift yönlü iletişimi etkinleştirir. Bu, web sunucusu ile istemci arasında HTTP tabanlı uygulamalarda gerektiği gibi yoklama olmadan çift yönlü olabilen daha etkileşimli bir iletişime olanak sağlar. These protocols have low overhead, unlike HTTP, and can reuse the same TCP connection for multiple request/responses resulting in a more efficient resource utilization . Bu protokoller, geleneksel HTTP bağlantı noktaları 80 ve 443 üzerinden çalışmak üzere tasarlanmıştır.
+WebSocket ve HTTP/2 protokolleri, uzun süre çalışan bir TCP bağlantısı üzerinden bir sunucu ile bir istemci arasında tam çift yönlü iletişimi etkinleştirir. Bu, web sunucusu ile istemci arasında HTTP tabanlı uygulamalarda gerektiği gibi yoklama olmadan çift yönlü olabilen daha etkileşimli bir iletişime olanak sağlar. Bu protokollerin, HTTP 'den farklı olarak düşük bir yükü vardır ve birden çok istek/yanıt için aynı TCP bağlantısını daha verimli bir kaynak kullanımına neden olabilir. Bu protokoller, geleneksel HTTP bağlantı noktaları 80 ve 443 üzerinden çalışmak üzere tasarlanmıştır.
 
-For more information, see [WebSocket support](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) and [HTTP/2 support](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
+Daha fazla bilgi için bkz. [WebSocket desteği](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) ve [http/2 desteği](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
 
 ## <a name="connection-draining"></a>Bağlantı boşaltma
 
-Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Once enabled, Application Gateway ensures all de-registering instances of a backend pool do not receive any new request while allowing existing requests to complete within a configured time limit. This applies to both backend instances that are explicitly removed from the backend pool by an API call, and backend instances that are reported as unhealthy as determined by the health probes.
+Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Etkinleştirildikten sonra Application Gateway, bir arka uç havuzunun tüm kayıt kaldırma örneklerinin yeni bir istek almamasını sağlarken, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını sağlar. Bu, arka uç havuzundan bir API çağrısıyla açıkça kaldırılan arka uç örnekleri için ve sistem durumu araştırmaları tarafından belirlendiği şekilde sağlıksız olarak bildirilen arka uç örnekleri için geçerlidir.
 
-For more information, see the Connection Draining section of [Application Gateway Configuration Overview](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
+Daha fazla bilgi için [Application Gateway yapılandırmasına genel bakış](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining)' ın bağlantı boşaltma bölümüne bakın.
 
 ## <a name="custom-error-pages"></a>Özel hata sayfaları
 
 Application Gateway, varsayılan hata sayfalarını göstermek yerine özel hata sayfaları oluşturmanızı sağlar. Özel hata sayfası sayesinde kendi logonuzu ve sayfa düzeninizi kullanabilirsiniz.
 
-For more information, see [Custom Errors](custom-error.md).
+Daha fazla bilgi için bkz. [özel hatalar](custom-error.md).
 
 ## <a name="rewrite-http-headers"></a>HTTP üst bilgilerini yeniden üretme
 
-HTTP headers allow the client and server to pass additional information with the request or the response. Rewriting these HTTP headers helps you accomplish several important scenarios, such as:
+HTTP üstbilgileri, istemci ve sunucunun istek veya Yanıt ile ek bilgi geçmesine izin verir. Bu HTTP üstbilgilerini yeniden yazmak, aşağıdaki gibi çeşitli önemli senaryolar gerçekleştirmenize yardımcı olur:
 
-- Adding security-related header fields like HSTS/ X-XSS-Protection.
-- Removing response header fields that can reveal sensitive information.
-- Stripping port information from X-Forwarded-For headers.
+- HSTS/X-XSS-Protection gibi güvenlikle ilgili üst bilgi alanları ekleme.
+- Hassas bilgileri açığa çıkartan yanıt üst bilgisi alanlarını kaldırma.
+- Üst bilgiler Için X-Iletilen bağlantı noktası bilgilerini yakdırın.
 
-Application Gateway supports the capability to add, remove, or update HTTP request and response headers, while the request and response packets move between the client and back-end pools. It also provides you with the capability to add conditions to ensure the specified headers are rewritten only when certain conditions are met.
+Application Gateway, HTTP isteği ve yanıt üst bilgilerini ekleme, kaldırma veya güncelleştirme özelliğini destekler, ancak istek ve yanıt paketleri istemci ile arka uç havuzları arasında taşınır. Ayrıca, belirtilen üstbilgilerin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar ekleme özelliği de sağlar.
 
-For more information, see [Rewrite HTTP headers](rewrite-http-headers.md).
+Daha fazla bilgi için bkz. [HTTP üstbilgilerini yeniden yazma](rewrite-http-headers.md).
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Application Gateway Standard_v2 and WAF_v2 SKU can be configured for autoscaling or fixed size deployments. These SKUs don't offer different instance sizes. For more information on v2 performance and pricing, see [Autoscaling v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
+Application Gateway Standard_v2 ve WAF_v2 SKU, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU 'Lar farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-The Application Gateway Standard and WAF SKU is currently offered in three sizes: **Small**, **Medium**, and **Large**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
+Application Gateway standart ve WAF SKU Şu anda üç boyutta sunulmaktadır: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
 Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-The following table shows an average performance throughput for each application gateway v1 instance with SSL offload enabled:
+Aşağıdaki tabloda SSL boşaltması etkin olan her bir Application Gateway v1 örneği için ortalama performans performansı gösterilmektedir:
 
-| Average back-end page response size | Küçük | Orta | Büyük |
+| Ortalama arka uç sayfa yanıt boyutu | Küçük | Orta | Büyük |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mbps |13 Mbps |50 Mb/sn |
 | 100 KB |35 Mbps |100 Mbps |200 Mbps |
@@ -155,6 +155,6 @@ The following table shows an average performance throughput for each application
 
 Gereksinimleriniz ve ortamınıza bağlı olarak, Azure portalı, Azure PowerShell veya Azure CLI kullanarak bir test Application Gateway oluşturabilirsiniz:
 
-- [Quickstart: Direct web traffic with Azure Application Gateway - Azure portal](quick-create-portal.md)
+- [Hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure portal](quick-create-portal.md)
 - [Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure PowerShell](quick-create-powershell.md)
 - [Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure CLI](quick-create-cli.md)

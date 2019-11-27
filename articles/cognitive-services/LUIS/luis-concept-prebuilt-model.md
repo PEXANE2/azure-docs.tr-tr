@@ -28,7 +28,7 @@ LUSıS, üç tür önceden oluşturulmuş model sağlar. Her model, herhangi bir
 
 |Model türü|İçerir|
 |--|--|
-|[Etki alanı](luis-reference-prebuilt-domains.md)|Hedefleri, konuşma, varlıklar|
+|[Alanını](luis-reference-prebuilt-domains.md)|Hedefleri, konuşma, varlıklar|
 |Hedefler|Hedefleri, konuşma|
 |[Varlıklar](luis-reference-prebuilt-entities.md)|Yalnızca varlıklar| 
 
@@ -40,13 +40,13 @@ Language Understanding (LUU), etki alanları ya da istemci uygulamalarının ort
 
 > [!TIP]
 > Amaç ve varlıkları önceden oluşturulmuş bir etki alanında en iyi birlikte çalışır. Hedefleri ve mümkün olduğunda aynı etki alanındaki varlık birleştirerek daha iyidir.
-> Yardımcı programları önceden oluşturulmuş etki alanının herhangi bir etki alanı kullanmak için özelleştirebileceğiniz amacı vardır. Örneğin, ekleyebileceğiniz `Utilities.Repeat` eğitimi ve uygulaması için tanı hangi eylemleri kullanıcı uygulamanızda yineleyin isteyebilirsiniz. 
+> Yardımcı programları önceden oluşturulmuş etki alanının herhangi bir etki alanı kullanmak için özelleştirebileceğiniz amacı vardır. Örneğin, uygulamanıza `Utilities.Repeat` ekleyebilir ve bu uygulamayı, kullanıcının uygulamanızda yinelemek isteyebileceğiniz her türlü eylemi tanımasını sağlayabilirsiniz. 
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Önceden oluşturulmuş etki alanına amacını davranışını değiştirme
 
 LUIS uygulamanızı olmasını istediğiniz bir hedefi benzer bir amaç önceden oluşturulmuş bir etki alanı içerir ancak farklı davranır istediğiniz bulabilirsiniz. Örneğin, önceden oluşturulmuş olan etki **alanı, Restoran** rezervasyonu yapmak için bir `MakeReservation` amacı sağlar, ancak uygulamanızın bu amacı, otel rezervasyonları yapmak için kullanmasını istiyorsunuz. Bu durumda, otel ayırmaları yapma ve sonra uygulamayı yeniden eğitme hakkında amaç ekleyerek bu amaca ilişkin davranışı değiştirebilirsiniz. 
 
-Önceden oluşturulmuş etki alanları içindeki tam listesini bulabilirsiniz [önceden oluşturulmuş etki alanları başvuru](./luis-reference-prebuilt-domains.md).
+Önceden [oluşturulmuş etki alanları başvurusunda](./luis-reference-prebuilt-domains.md)önceden oluşturulmuş etki alanlarının tam listesini bulabilirsiniz.
 
 ## <a name="prebuilt-intents"></a>Önceden oluşturulmuş hedefleri
 
@@ -54,13 +54,13 @@ LUO, önceden oluşturulmuş amaçlar ve bunların kendilerine ait yerleşik etk
 
 ## <a name="prebuilt-entities"></a>Önceden oluşturulmuş varlıklar
 
-LUIS, tarihler, saatler, sayılar, Ölçümler ve para birimi gibi bilgileri genel türleri tanıma için önceden oluşturulmuş varlıklar kümesi içerir. Önceden oluşturulmuş varlık destek LUIS uygulamanızı kültüre göre değişir. LUIS destekler, kültür tarafından desteği dahil olmak üzere önceden oluşturulmuş varlıkların tam listesi için bkz. [önceden oluşturulmuş bir varlık başvurusu](./luis-reference-prebuilt-entities.md).
+LUIS, tarihler, saatler, sayılar, Ölçümler ve para birimi gibi bilgileri genel türleri tanıma için önceden oluşturulmuş varlıklar kümesi içerir. Önceden oluşturulmuş varlık destek LUIS uygulamanızı kültüre göre değişir. LUID 'nin desteklediği önceden oluşturulmuş varlıkların tam listesi için, kültüre göre destek dahil olmak üzere, [önceden oluşturulmuş varlık başvurusuna](./luis-reference-prebuilt-entities.md)bakın.
 
-Önceden oluşturulmuş bir varlık, uygulamanızda eklendiğinde, Öngörüler, yayımlanan uygulamayı dahil edilir. Önceden oluşturulmuş varlıkların önceden eğitilmiş ve **olamaz** değiştirilemiyor. 
+Önceden oluşturulmuş bir varlık, uygulamanızda eklendiğinde, Öngörüler, yayımlanan uygulamayı dahil edilir. Önceden oluşturulmuş varlıkların davranışı önceden eğitilmiş **ve değiştirilemez** . 
 
 > [!NOTE]
-> **Builtin.DateTime** kullanım dışı bırakılmıştır. İle değiştirilir [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), tarih ve saat aralığı tanıma yanı sıra, belirsiz tarihler ve saatler geliştirilmiş tanınmasını sağlar.
+> **Builtin. DateTime** kullanım dışıdır. Tarih ve saat aralıklarının tanınabilmesi ve belirsiz tarih ve saatlerin daha iyi tanınmasını sağlayan [**Builtin. datetimeV2**](luis-reference-prebuilt-datetimev2.md)ile değiştirilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [önceden oluşturulmuş varlıklar ekleme](luis-prebuilt-entities.md) uygulamanıza.
+Uygulamanıza [önceden oluşturulmuş varlıklar eklemeyi](luis-prebuilt-entities.md) öğrenin.

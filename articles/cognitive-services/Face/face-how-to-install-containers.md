@@ -1,7 +1,7 @@
 ---
-title: Install and run containers - FACE API
+title: Kapsayıcılar-yüz tanıma API 'sini yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: This article shows you how to download, install, and run containers for Face in this walkthrough tutorial.
+description: Bu makalede, bu adım adım öğreticide, yüzleri için kapsayıcıları indirme, yükleme ve çalıştırma işlemlerinin nasıl yapılacağı gösterilir.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -18,73 +18,73 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327048"
 ---
-# <a name="install-and-run-face-containers-preview"></a>Install and run Face containers (Preview)
+# <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
 
-Azure Cognitive Services Face provides a standardized Linux container for Docker that detects human faces in images. It also identifies attributes, which include face landmarks such as noses and eyes, gender, age, and other machine-predicted facial features. In addition to detection, Face can check if two faces in the same image or different images are the same by using a confidence score. Face also can compare faces against a database to see if a similar-looking or identical face already exists. It also can organize similar faces into groups by using shared visual traits.
+Azure bilişsel hizmetler, resimlerde insan yüzlerini algılayan, Docker için standartlaştırılmış bir Linux kapsayıcısı sağlar. Ayrıca, Noi 'ler ve gözler, cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri gibi yüz başlıkları dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, aynı görüntüde veya farklı resimlerde iki yüzün aynı olup olmadığını, Güvenirlik puanı kullanılarak kontrol edebilir. Yüz Ayrıca, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için yüzleri bir veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-You must meet the following prerequisites before you use the Face API containers.
+Yüz Tanıma API'si kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 
-|Gereklidir|Amaç|
+|Gerekli|Amaç|
 |--|--|
-|Docker Engine| The Docker Engine must be installed on a [host computer](#the-host-computer). Docker provides packages that configure the Docker environment on [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), and [Linux](https://docs.docker.com/engine/installation/#supported-platforms). For a primer on Docker and container basics, see the [Docker overview](https://docs.docker.com/engine/docker-overview/).<br><br> Docker must be configured to allow the containers to connect with and send billing data to Azure. <br><br> On Windows, Docker also must be configured to support Linux containers.<br><br>|
-|Familiarity with Docker | You need a basic understanding of Docker concepts, such as registries, repositories, containers, and container images. You also need knowledge of basic `docker` commands.| 
-|Face resource |To use the container, you must have:<br><br>An Azure **Face** resource and the associated API key and the endpoint URI. Both values are available on the **Overview** and **Keys** pages for the resource. They're required to start the container.<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page
+|Docker altyapısı| Docker altyapısının bir [ana bilgisayara](#the-host-computer)yüklenmesi gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının temel olarak anlaşılmasına ihtiyacınız vardır. Ayrıca temel `docker` komutları bilgisine de ihtiyacınız vardır.| 
+|Yüz kaynağı |Kapsayıcıyı kullanmak için şunları yapmanız gerekir:<br><br>Bir Azure **yüz** kaynağı ve ilgili API anahtarı ve uç nokta URI 'si. Her iki değer de kaynak için **genel bakış** ve **anahtarlar** sayfalarında kullanılabilir. Kapsayıcının başlatılması gerekir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Request access to the private container registry
+## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
-### <a name="the-host-computer"></a>The host computer
+### <a name="the-host-computer"></a>Ana bilgisayar
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
+### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
 
-The following table describes the minimum and recommended CPU cores and memory to allocate for each Face API container.
+Aşağıdaki tabloda, her bir Yüz Tanıma API'si kapsayıcısı için ayrılacak minimum ve önerilen CPU çekirdekleri ve bellek açıklanmaktadır.
 
-| Kapsayıcı | Minimum | Önerilen | Saniye başına işlem<br>(Minimum, maximum)|
+| Kapsayıcı | Minimum | Önerilen | Saniye başına işlem<br>(En düşük, en yüksek)|
 |-----------|---------|-------------|--|
-|Yüz Tanıma | 1 core, 2-GB memory | 1 core, 4-GB memory |10, 20|
+|Yüz | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
 
-* Each core must be at least 2.6 GHz or faster.
-* Transactions per second (TPS).
+* Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
+* Saniyedeki işlem sayısı (TPS).
 
-Core and memory correspond to the `--cpus` and `--memory` settings, which are used as part of the `docker run` command.
+Çekirdek ve bellek, `docker run` komutunun bir parçası olarak kullanılan `--cpus` ve `--memory` ayarlarına karşılık gelir.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Get the container image with docker pull
+## <a name="get-the-container-image-with-docker-pull"></a>docker pull kapsayıcı görüntüsünü al
 
-Container images for the Face API are available. 
+Yüz Tanıma API'si için kapsayıcı görüntüleri kullanılabilir. 
 
-| Kapsayıcı | Repository |
+| Kapsayıcı | Havuz |
 |-----------|------------|
-| Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-face-container"></a>Docker pull for the Face container
+### <a name="docker-pull-for-the-face-container"></a>Yüz kapsayıcısı için Docker çekme
 
 ```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 ```
 
-## <a name="use-the-container"></a>Use the container
+## <a name="use-the-container"></a>Kapsayıcıyı kullanma
 
-After the container is on the [host computer](#the-host-computer), use the following process to work with the container.
+Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Run the container](#run-the-container-with-docker-run) with the required billing settings. More [examples](./face-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available. 
-1. [Query the container's prediction endpoint](#query-the-containers-prediction-endpoint). 
+1. [Kapsayıcıyı](#run-the-container-with-docker-run) gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` komutuna daha fazla [örnek](./face-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
+1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Run the container with docker run
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı Docker Run ile çalıştırma
 
-Use the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command to run the container. Refer to [gathering required parameters](#gathering-required-parameters) for details on how to get the `{ENDPOINT_URI}` and `{API_KEY}` values.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` ve `{API_KEY}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
 
-[Examples](face-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available.
+`docker run` komut [örnekleri](face-resource-container-config.md#example-docker-run-commands) mevcuttur.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -94,49 +94,49 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-This command:
+Bu komut:
 
-* Runs a face container from the container image.
-* Allocates one CPU core and 4 GB of memory.
-* Exposes TCP port 5000 and allocates a pseudo TTY for the container.
-* Automatically removes the container after it exits. The container image is still available on the host computer. 
+* Kapsayıcı görüntüsünden bir yüz kapsayıcısı çalıştırır.
+* Bir CPU çekirdeği ve 4 GB bellek ayırır.
+* TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sahte TTY ayırır.
+* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir. 
 
-More [examples](./face-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available. 
+`docker run` komutuna daha fazla [örnek](./face-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
 
 > [!IMPORTANT]
-> The `Eula`, `Billing`, and `ApiKey` options must be specified to run the container or the container won't start. For more information, see [Billing](#billing).
+> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir ya da kapsayıcı başlamamalıdır. Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query the container's prediction endpoint
+## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
-The container provides REST-based query prediction endpoint APIs. 
+Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
 
-Use the host, `http://localhost:5000`, for container APIs.
+Kapsayıcı API 'Leri için `http://localhost:5000`konak kullanın.
 
 
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Stop the container
+## <a name="stop-the-container"></a>Kapsayıcıyı durdur
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-If you run the container with an output [mount](./face-resource-container-config.md#mount-settings) and logging is enabled, the container generates log files that are helpful to troubleshoot issues that happen while you start or run the container.
+Kapsayıcıyı bir çıkış [bağlaması](./face-resource-container-config.md#mount-settings) ile çalıştırırsanız ve günlüğe kaydetme etkinse kapsayıcı, kapsayıcıyı başlatırken veya çalıştırırken oluşan sorunları gidermek için faydalı olan günlük dosyaları oluşturur.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
-The Face API containers send billing information to Azure by using a Face API resource on your Azure account. 
+Yüz Tanıma API'si kapsayıcıları Azure hesabınızdaki bir Yüz Tanıma API'si kaynağını kullanarak faturalandırma bilgilerini Azure 'a gönderir. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-For more information about these options, see [Configure containers](./face-resource-container-config.md).
+Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapılandırma](./face-resource-container-config.md).
 
 <!--blogs/samples/video coures -->
 
@@ -144,19 +144,19 @@ For more information about these options, see [Configure containers](./face-reso
 
 ## <a name="summary"></a>Özet
 
-In this article, you learned concepts and workflow for how to download, install, and run Face API containers. Özet:
+Bu makalede, Yüz Tanıma API'si kapsayıcıları indirme, yükleme ve çalıştırma ile ilgili kavramları ve iş akışını öğrendiniz. Özet:
 
-* Container images are downloaded from the Azure Container Registry.
-* Container images run in Docker.
-* You can use either the REST API or the SDK to call operations in Face API containers by specifying the host URI of the container.
-* You must specify billing information when you instantiate a container.
+* Kapsayıcı görüntüleri Azure Container Registry indirilir.
+* Docker kapsayıcı görüntüleri çalıştırın.
+* Kapsayıcının ana bilgisayar URI 'sini belirterek Yüz Tanıma API'si kapsayıcılarındaki işlemleri çağırmak için REST API ya da SDK kullanabilirsiniz.
+* Bir kapsayıcıyı örneklediğinizde faturalandırma bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]
-> Cognitive Services containers aren't licensed to run without being connected to Azure for metering. Customers must enable the containers to communicate billing information with the metering service at all times. Cognitive Services containers don't send customer data, such as the image or text that's being analyzed, to Microsoft.
+> Bilişsel hizmetler kapsayıcıları, ölçüm için Azure 'a bağlı kalmadan çalıştırılmak üzere lisanslanmaz. Müşterilerin, ödeme bilgilerini her zaman ölçüm hizmeti ile iletmelerini sağlamak için kapsayıcıların etkinleştirilmesi gerekir. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenen resim veya metin gibi) Microsoft 'a göndermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* For configuration settings, see [Configure containers](face-resource-container-config.md).
-* To learn more about how to detect and identify faces, see [Face overview](Overview.md).
-* For information about the methods supported by the container, see the [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
-* To use more Cognitive Services containers, see [Cognitive Services containers](../cognitive-services-container-support.md).
+* Yapılandırma ayarları için bkz. [kapsayıcıları yapılandırma](face-resource-container-config.md).
+* Yüzleri algılama ve belirleme hakkında daha fazla bilgi edinmek için bkz. [yüze genel bakış](Overview.md).
+* Kapsayıcı tarafından desteklenen yöntemler hakkında daha fazla bilgi için [Yüz Tanıma API'si](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)bakın.
+* Daha fazla bilişsel hizmetler kapsayıcısı kullanmak için bkz. bilişsel [Hizmetler kapsayıcıları](../cognitive-services-container-support.md).

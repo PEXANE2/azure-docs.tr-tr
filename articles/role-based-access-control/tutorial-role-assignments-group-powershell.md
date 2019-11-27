@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a group access to Azure resources using RBAC and Azure PowerShell
-description: Learn how to grant a group access to Azure resources using role-based access control (RBAC) and Azure PowerShell in this tutorial.
+title: Öğretici-RBAC ve Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme
+description: Bu öğreticide rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74418596"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Grant a group access to Azure resources using RBAC and Azure PowerShell
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme
 
-[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. Bu öğreticide bir gruba bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
+[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide bir gruba bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -70,13 +70,13 @@ Rol atamak için kullanıcı, grup veya hizmet sorumlu gerekir. Grubunuz yoksa b
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-If you don't have permissions to create groups, you can try the [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md) instead.
+Grup oluşturma izniniz yoksa [öğreticiyi deneyebilirsiniz: bunun yerıne RBAC ve Azure PowerShell kullanarak bir kullanıcıya Azure kaynaklarına erişim Izni verin](tutorial-role-assignments-user-powershell.md) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Kaynak grubu kapsamında rol atamasını göstermek için bir kaynak grubu kullanmanız gerekir.
 
-1. Get a list of region locations using the [Get-AzLocation](/powershell/module/az.resources/get-azlocation) command.
+1. [Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanarak bölge konumlarının bir listesini alın.
 
    ```azurepowershell
    Get-AzLocation | select Location
@@ -88,7 +88,7 @@ Kaynak grubu kapsamında rol atamasını göstermek için bir kaynak grubu kulla
    $location = "westus"
    ```
 
-1. Create a new resource group using the [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) command.
+1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak grubu oluşturun.
 
    ```azurepowershell
    New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
@@ -104,7 +104,7 @@ Kaynak grubu kapsamında rol atamasını göstermek için bir kaynak grubu kulla
 
 ## <a name="grant-access"></a>Erişim verme
 
-To grant access for the group, you use the [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) command to assign a role. Güvenlik sorumlusunu, rol tanımını ve kapsamı belirtmeniz gerekir.
+Gruba erişim vermek için, [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment) komutunu kullanarak bir rol atamalısınız. Güvenlik sorumlusunu, rol tanımını ve kapsamı belirtmeniz gerekir.
 
 1. [Get-AzureADGroup](/powershell/module/azuread/new-azureadgroup) komutunu kullanarak grubun nesne kimliğini alın.
 
@@ -124,7 +124,7 @@ To grant access for the group, you use the [New-AzRoleAssignment](/powershell/mo
     $groupId = "11111111-1111-1111-1111-111111111111"
     ```
 
-1. Get the ID of your subscription using the [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) command.
+1. [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) komutunu kullanarak aboneliğinizin kimliğini alın.
 
     ```azurepowershell
     Get-AzSubscription
@@ -185,7 +185,7 @@ To grant access for the group, you use the [New-AzRoleAssignment](/powershell/mo
 
 ## <a name="list-access"></a>Erişimi listeleme
 
-1. To verify the access for the subscription, use the [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) command to list the role assignments.
+1. Abonelik erişimini doğrulamak için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) komutunu kullanarak rol atamalarını listeleyin.
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId $groupId -Scope $subScope
@@ -205,7 +205,7 @@ To grant access for the group, you use the [New-AzRoleAssignment](/powershell/mo
 
     Çıktıda Okuyucu rolünün abonelik kapsamında RBAC Tutorial Group kullanıcısına atanmış olduğunu görebilirsiniz.
 
-1. To verify the access for the resource group, use the [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) command to list the role assignments.
+1. Kaynak grubunun erişimini doğrulamak için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) komutunu kullanarak rol atamalarını listeleyin.
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId $groupId -ResourceGroupName "rbac-tutorial-resource-group"
@@ -247,7 +247,7 @@ To grant access for the group, you use the [New-AzRoleAssignment](/powershell/mo
 
 ## <a name="remove-access"></a>Erişimi kaldırma
 
-To remove access for users, groups, and applications, use [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) to remove a role assignment.
+Kullanıcılar, gruplar ve uygulamalar için erişimi kaldırmak üzere, bir rol atamasını kaldırmak için [Remove-Azroleatama](/powershell/module/az.resources/remove-azroleassignment) komutunu kullanın.
 
 1. Grubun kaynak grubu kapsamındaki Katılımcı rol atamasını kaldırmak için aşağıdaki komutu kullanın.
 
@@ -269,7 +269,7 @@ To remove access for users, groups, and applications, use [Remove-AzRoleAssignme
 
 Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve grubu silebilirsiniz.
 
-1. Delete the resource group using the [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) command.
+1. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu silin.
 
     ```azurepowershell
     Remove-AzResourceGroup -Name "rbac-tutorial-resource-group"
@@ -281,7 +281,7 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve gr
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. When asked to confirm, type **Y**. It will take a few seconds to delete.
+1. Onaylamanız istendiğinde **Y**yazın. Bu işlem birkaç saniye sürer.
 
 1. Grubu silmek için [Remove-AzureADGroup](/powershell/module/azuread/remove-azureadgroup) komutunu kullanın.
 
@@ -294,4 +294,4 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve gr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Manage access to Azure resources using RBAC and Azure PowerShell](role-assignments-powershell.md)
+> [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-powershell.md)

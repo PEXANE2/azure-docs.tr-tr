@@ -1,6 +1,6 @@
 ---
-title: Enroll TPM device to Azure Device Provisioning Service using C#
-description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using C# service SDK. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+title: Kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetmeC#
+description: Hızlı başlangıç-Service SDK kullanarak C# TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydetme. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -16,61 +16,61 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423019"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using C# service SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Hızlı başlangıç: Service SDK kullanarak C# cihaz sağlama HIZMETI IoT Hub TPM cihazı kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-This article shows how to programmatically create an individual enrollment for a TPM device in the Azure IoT Hub Device Provisioning Service by using the [C# Service SDK](https://github.com/Azure/azure-iot-sdk-csharp) and a sample C# .NET Core application. You can optionally enroll a simulated TPM device to the provisioning service by using this individual enrollment entry. Although these steps work on both Windows and Linux computers, this article uses a Windows development computer.
+Bu makalede, [ C# hizmet SDK 'sını](https://github.com/Azure/azure-iot-sdk-csharp) ve örnek C# .NET Core uygulamasını kullanarak Azure IoT Hub cihaz sağlama hizmeti 'nde bir TPM cihazı için tek bir kayıt oluşturma işlemi gösterilmektedir. İsteğe bağlı olarak, bu bireysel kayıt girişini kullanarak sanal bir TPM cihazını sağlama hizmetine kaydedebilirsiniz. Bu adımlar hem Windows hem de Linux bilgisayarlarda çalışır, ancak bu makalede bir Windows geliştirme bilgisayarı kullanılmaktadır.
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
-1. Verify you have [Visual Studio 2019](https://www.visualstudio.com/vs/) installed on your computer.
+1. Bilgisayarınızda [Visual Studio 2019](https://www.visualstudio.com/vs/) yüklü olduğunu doğrulayın.
 
-1. Verify you have the [.NET Core SDK](https://www.microsoft.com/net/download/windows) installed on your computer.
+1. Bilgisayarınızda yüklü [.NET Core SDK](https://www.microsoft.com/net/download/windows) olduğunu doğrulayın.
 
-1. Complete the steps in [Set up the IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) before you continue.
+1. Devam etmeden önce [Azure portal IoT Hub cihaz sağlama hizmetini ayarlama](./quick-setup-auto-provision.md) bölümündeki adımları uygulayın.
 
-1. (Optional) If you want to enroll a simulated device at the end of this quickstart, follow the procedure in [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) up to the step where you get an endorsement key for the device. Save the endorsement key, registration ID, and, optionally, the device ID, because you need to use them later in this quickstart.
+1. Seçim Bu hızlı başlangıç sonunda sanal bir cihaz kaydetmek istiyorsanız cihaz [SDK 'sını kullanarak C# sanal bir TPM cihazı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) bölümündeki yordamı, cihaz için bir onay anahtarı aldığınız adıma kadar izleyin. Daha sonra bu hızlı başlangıçta kullanmanız gerektiğinden, onay anahtarını, kayıt KIMLIĞINI ve isteğe bağlı olarak cihaz KIMLIĞINI kaydedin.
 
    > [!NOTE]
-   > Don't follow the steps to create an individual enrollment by using the Azure portal.
+   > Azure portal kullanarak bireysel kayıt oluşturma adımlarını izleyin.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Sağlama hizmetinizin bağlantı dizesini alma
 
 Bu hızlı başlangıçtaki örnek için sağlama hizmetinizin bağlantı dizesine ihtiyacınız vardır.
 
-1. Sign in to the Azure portal, select **All resources**, and then your Device Provisioning Service.
+1. Azure portal oturum açın, **tüm kaynaklar**' ı ve ardından cihaz sağlama hizmeti ' ni seçin.
 
-1. Choose **Shared access policies**, then select the access policy you want to use to open its properties. In **Access Policy**, copy and save the primary key connection string.
+1. **Paylaşılan erişim ilkeleri**' ni seçin ve ardından özelliklerini açmak için kullanmak istediğiniz erişim ilkesini seçin. **Erişim ilkesi**' nde, birincil anahtar bağlantı dizesini kopyalayın ve kaydedin.
 
     ![Portaldan sağlama hizmeti bağlantı dizesini alma](media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>Bireysel kayıt örneğini oluşturma
 
-This section shows how to create a .NET Core console app that adds an individual enrollment for a TPM device to your provisioning service. Biraz değişiklikle, bireysel kayıt eklemek üzere bir [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) konsol uygulaması oluşturmak için de bu adımları izleyebilirsiniz. To learn more about developing with IoT Core, see [Windows IoT Core developer documentation](https://docs.microsoft.com/windows/iot-core/).
+Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Biraz değişiklikle, bireysel kayıt eklemek üzere bir [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) konsol uygulaması oluşturmak için de bu adımları izleyebilirsiniz. IoT Core ile geliştirme hakkında daha fazla bilgi için bkz. [Windows IoT Core geliştirici belgeleri](https://docs.microsoft.com/windows/iot-core/).
 
-1. Open Visual Studio and select **Create a new project**. In **Create a new project**, choose the **Console App (.NET Core)** project template for C# and select **Next**.
+1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin. **Yeni proje oluştur**' da, Için C# **konsol uygulaması (.NET Core)** proje şablonunu seçin ve **İleri**' yi seçin.
 
-1. Name the project *CreateTpmEnrollment*, and press **Create**.
+1. Projeyi *Createtpmenrollment*olarak adlandırın ve **Oluştur**' a basın.
 
-    ![Configure Visual C# Windows Classic Desktop project](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
+    ![Visual C# Windows Klasik Masaüstü projesini yapılandırma](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. When the solution opens in Visual Studio, in the **Solution Explorer** pane, right-click the **CreateTpmEnrollment** project. Select **Manage NuGet Packages**.
+1. Çözüm Visual Studio 'da açıldığında, **Çözüm Gezgini** bölmesinde, **Createtpmenrollment** projesine sağ tıklayın. **NuGet Paketlerini Yönet**' i seçin.
 
-1. In **NuGet Package Manager**, select **Browse**, search for and choose **Microsoft.Azure.Devices.Provisioning.Service**, and then press **Install**.
+1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, **Microsoft. Azure. Devices. sağlama. hizmeti**' ni arayın ve ardından **Install**tuşuna basın.
 
    ![NuGet Paket Yöneticisi penceresi](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
-   This step downloads, installs, and adds a reference to the [Azure IoT Provisioning Service Client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet package and its dependencies.
+   Bu adım, [Azure IoT sağlama hizmeti istemci SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Add the following `using` statements after the other `using` statements at the top of `Program.cs`:
+1. Aşağıdaki `using` deyimlerini `Program.cs`en üstündeki diğer `using` deyimlerinden sonra ekleyin:
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Add the following fields to the `Program` class, making the changes listed below.
+1. Aşağıdaki alanları `Program` sınıfına ekleyerek aşağıda listelenen değişiklikleri yapın.
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -87,13 +87,13 @@ This section shows how to create a .NET Core console app that adds an individual
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * Replace the `ProvisioningServiceConnectionString` placeholder value with the connection string of the provisioning service that you want to create the enrollment for.
+   * `ProvisioningServiceConnectionString` yer tutucu değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
 
    * İsteğe bağlı olarak kayıt kimliğini, onay anahtarını, cihaz kimliğini ve sağlama durumunu değiştirebilirsiniz.
 
-   * If you're using this quickstart together with the [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) quickstart to provision a simulated device, replace the endorsement key and registration ID with the values that you noted in that quickstart. You can replace the device ID with the value suggested in that quickstart, use your own value, or use the default value in this sample.
+   * Bu hızlı başlangıcı [cihaz SDK 'sını kullanarak C# sanal bir cihaz oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) hızlı başlangıcı ile birlikte kullanıyorsanız, onay anahtarını ve kayıt kimliğini bu hızlı başlangıçta not ettiğiniz değerlerle değiştirin. Cihaz KIMLIĞINI bu hızlı başlangıçta önerilen değer ile değiştirebilir, kendi değerini kullanabilir veya bu örnekteki varsayılan değeri kullanabilirsiniz.
 
-1. Add the following method to the `Program` class.  This code creates individual enrollment entry and then calls the `CreateOrUpdateIndividualEnrollmentAsync` method on the `ProvisioningServiceClient` to add the individual enrollment to the provisioning service.
+1. Aşağıdaki yöntemi `Program` sınıfına ekleyin.  Bu kod, bireysel kayıt girişi oluşturur ve sonra tek bir kaydı sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateIndividualEnrollmentAsync` yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()
@@ -128,7 +128,7 @@ This section shows how to create a .NET Core console app that adds an individual
    }
    ```
 
-1. Finally, replace the body of the `Main` method with the following lines:
+1. Son olarak, `Main` yönteminin gövdesini aşağıdaki satırlarla değiştirin:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();
@@ -136,39 +136,39 @@ This section shows how to create a .NET Core console app that adds an individual
    Console.ReadLine();
    ```
 
-1. Çözümü derleyin.
+1. Çözümü oluşturun.
 
 ## <a name="run-the-individual-enrollment-sample"></a>Bireysel kayıt örneğini çalıştırma
   
 Örneği Visual Studio'da çalıştırarak TPM cihazınızın bireysel kaydını oluşturun.
 
-A Command Prompt window will appear and start showing confirmation messages. On successful creation, the Command Prompt window displays the properties of the new individual enrollment.
+Bir komut Istemi penceresi görünür ve onay iletilerini göstermeye başlar. Başarılı bir şekilde oluşturulduğunda, komut Istemi penceresinde yeni bireysel kaydın özellikleri görüntülenir.
 
-You can verify that the individual enrollment has been created. Go to the Device Provisioning Service summary, and select **Manage enrollments**, then select **Individual Enrollments**. Örnekte kullandığınız kayıt kimliğine karşılık gelen yeni bir kayıt girdisi görmelisiniz.
+Bireysel kaydın oluşturulduğunu doğrulayabilirsiniz. Cihaz sağlama hizmeti özetine gidin ve kayıtları **Yönet**' i seçin ve **bireysel**kayıtlar ' ı seçin. Örnekte kullandığınız kayıt kimliğine karşılık gelen yeni bir kayıt girdisi görmelisiniz.
 
 ![Portaldaki kayıt özellikleri](media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
 
-Select the entry to verify the endorsement key and other properties for the entry.
+Onay anahtarını ve girişin diğer özelliklerini doğrulamak için girişi seçin.
 
-If you've been following the steps in the [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) quickstart, you can continue with the remaining steps in that quickstart to enroll your simulated device. Azure Portal'ı kullanarak bireysel kayıt oluşturma adımlarını atladığınızdan emin olun.
+[Cihaz SDK 'sını kullanarak C# sanal bir TPM cihazı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) ile ilgili adımları izlediyseniz, sanal cihazınızı kaydetmek için bu hızlı başlangıçta kalan adımlara devam edebilirsiniz. Azure Portal'ı kullanarak bireysel kayıt oluşturma adımlarını atladığınızdan emin olun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you plan to explore the C# service sample, don't clean up the resources created in this quickstart. Otherwise, use the following steps to delete all resources created by this quickstart.
+C# Hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Aksi takdirde, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
-1. Close the C# sample output window on your computer.
+1. Bilgisayarınızda C# örnek çıkış penceresini kapatın.
 
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the check box next to the *Registration ID* for the enrollment entry you created using this quickstart, and press the **Delete** button at the top of the pane.
+1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıç Ile oluşturduğunuz kayıt girişinin *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.
 
-1. If you followed the steps in [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) to create a simulated TPM device, do the following steps:
+1. [Cihaz SDK 'sını kullanarak C# ](quick-create-simulated-device-tpm-csharp.md) sanal bir TPM cihazı oluşturma ve sağlama bölümündeki adımları IZLEDIYSENIZ, sanal bir TPM cihazı oluşturmak için aşağıdaki adımları uygulayın:
 
     1. TPM simülatör penceresini ve simülasyon cihazının örnek çıkış penceresini kapatın.
 
-    1. Azure Portal'da, cihazınızın sağlandığı IoT Hub'ına gidin. In the menu under **Explorers**, select **IoT devices**, select the check box next to the *DEVICE ID* of the device you registered in this quickstart, and then press the **Delete** button at the top of the pane.
+    1. Azure Portal'da, cihazınızın sağlandığı IoT Hub'ına gidin. Araştırıcılar altındaki menüde, **IoT cihazları**' nı seçin, bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *cihaz kimliği* ' nin yanındaki onay kutusunu Işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you’ve programmatically created an individual enrollment entry for a TPM device. Optionally, you created a TPM simulated device on your computer and provisioned it to your IoT hub using the Azure IoT Hub Device Provisioning Service. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin.
+Bu hızlı başlangıçta, bir TPM cihazı için program aracılığıyla tek bir kayıt girişi oluşturdunuz. İsteğe bağlı olarak, bilgisayarınızda bir TPM sanal cihazı oluşturdunuz ve Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak IoT Hub 'ınıza sağladınız. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin.
 
 > [!div class="nextstepaction"]
 > [Azure IoT Hub Cihazı Sağlama Hizmeti öğreticileri](./tutorial-set-up-cloud.md)

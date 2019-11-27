@@ -1,6 +1,6 @@
 ---
-title: Sample - Not allowed resource types
-description: This sample policy definition prohibits the deployment of specified resource types defined in a parameter.
+title: Örnek-izin verilmeyen kaynak türleri
+description: Bu örnek ilke tanımı, bir parametrede tanımlanmış belirtilen kaynak türlerinin dağıtımını yasaklar.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 2ca0718ce730c3bede3fc65fcf48758de1617029
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463567"
 ---
-# <a name="sample---not-allowed-resource-types"></a>Sample - Not allowed resource types
+# <a name="sample---not-allowed-resource-types"></a>Örnek-izin verilmeyen kaynak türleri
 
 Bu ilke, belirtilen kaynak türlerinin dağıtımını engeller. Engellenen kaynak türü dizisini belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke, belirtilen kaynak türlerinin dağıtımını engeller. Engellenen kayn
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fnot-allowed-resourcetypes%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fnot-allowed-resourcetypes%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

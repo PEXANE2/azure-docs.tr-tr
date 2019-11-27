@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Build & run container image
-description: Quickly run tasks with Azure Container Registry to build and run a container image on-demand, in the cloud.
+title: Hızlı başlangıç-derleme & çalıştırma kapsayıcı görüntüsü
+description: Bulutta bir kapsayıcı görüntüsü derlemek ve çalıştırmak için Azure Container Registry ile görevleri hızlıca çalıştırın.
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
@@ -10,21 +10,21 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454955"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Build and run a container image using Azure Container Registry Tasks
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
-In this quickstart, you use Azure Container Registry Tasks commands to quickly build, push, and run a Docker container image natively within Azure, showing how to offload your "inner-loop" development cycle to the cloud. [ACR Tasks][container-registry-tasks-overview] is a suite of features within Azure Container Registry to help you manage and modify container images across the container lifecycle. 
+Bu hızlı başlangıçta, Azure 'da bir Docker kapsayıcı görüntüsünü hızlı bir şekilde oluşturmak, göndermek ve çalıştırmak için Azure Container Registry görev komutlarını kullanarak "iç döngü" geliştirme döngüsünün buluta nasıl boşalmasını istediğinizi gösterir. [ACR görevleri][container-registry-tasks-overview] kapsayıcı görüntülerini kapsayıcı yaşam döngüsü genelinde yönetmenize ve değiştirmenize yardımcı olmak üzere Azure Container Registry içindeki bir özellik paketidir. 
 
-After this quickstart, explore more advanced features of ACR Tasks. ACR Tasks can automate image builds based on code commits or base image updates, or test multiple containers, in parallel, among other scenarios. 
+Bu hızlı başlangıç sonrasında ACR görevlerinin daha gelişmiş özelliklerine göz atın. ACR görevleri kod yürütmelerine veya temel görüntü güncelleştirmelerine göre görüntü derlemelerini otomatikleştirebilir veya birden çok kapsayıcıyı paralel olarak diğer senaryolar arasında test edebilir. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. If you'd like to use it locally, version 2.0.58 or later is recommended. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.58 veya üzeri önerilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-If you don't already have a container registry, first create a resource group with the [az group create][az-group-create] command. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Zaten bir kapsayıcı kayıt defteriniz yoksa, önce [az Group Create][az-group-create] komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
@@ -34,29 +34,29 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Create a container registry using the [az acr create][az-acr-create] command. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. In the following example, *myContainerRegistry008* is used. Bunu benzersiz bir değerle güncelleştirin.
+[Az ACR Create][az-acr-create] komutunu kullanarak bir kapsayıcı kayıt defteri oluşturun. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnekte, *myContainerRegistry008* kullanılır. Bunu benzersiz bir değerle güncelleştirin.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-This example creates a *Basic* registry,  a cost-optimized option for developers learning about Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt oluşturur. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri SKU 'ları][container-registry-skus].
 
-## <a name="build-an-image-from-a-dockerfile"></a>Build an image from a Dockerfile
+## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma
 
-Now use Azure Container Registry to build an image. First, create a working directory and then create a Dockerfile named *Dockerfile* with the following content. This is a simple example to build a Linux container image, but you can create your own standard Dockerfile and build images for other platforms.
+Şimdi bir görüntü oluşturmak için Azure Container Registry kullanın. İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içerikle *dockerfile* adlı bir dockerfile oluşturun. Bu, Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir, ancak kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz.
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Run the [az acr build][az-acr-build] command to build the image. When successfully built, the image is pushed to your registry. The following example pushes the `sample/hello-world:v1` image. The `.` at the end of the command sets the location of the Dockerfile, in this case the current directory.
+Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüsünü iter. Komutun sonundaki `.`, bu durumda geçerli dizin olan Dockerfile konumunu ayarlar.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
 ```
 
-Output from a successful build and push is similar to the following:
+Başarılı bir derleme ve gönderim çıkışı aşağıdakine benzer:
 
 ```console
 Packing source code into tar to upload...
@@ -108,20 +108,20 @@ v1: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e8
 Run ID: ca8 was successful after 10s
 ```
 
-## <a name="run-the-image"></a>Run the image
+## <a name="run-the-image"></a>Görüntüyü çalıştırma
 
-Now quickly run the image you built and pushed to your registry. In your container development workflow, this might be a validation step before you deploy the image.
+Şimdi oluşturduğunuz ve Kayıt defterinize gönderdiğiniz görüntüyü hızlıca çalıştırın. Kapsayıcı geliştirme iş akışınızda bu, görüntüyü dağıtmadan önce bir doğrulama adımı olabilir.
 
-Create a file *quickrun.yaml* in a local working directory with the following content for a single step. Substitute the login server name of your registry for *\<acrLoginServer\>* . The login server name is in the format *\<registry-name\>.azurecr.io* (all lowercase), for example, *mycontainerregistry008.azurecr.io*. This example assumes that you built and pushed the `sample/hello-world:v1` image in the previous section:
+Tek bir adım için aşağıdaki içeriğe sahip bir yerel çalışma dizininde *Hızlı çalıştır. YAML* bir dosya oluşturun. *\<acrLoginServer\>* için kayıt defterinizin oturum açma sunucusu adını değiştirin. Oturum açma sunucusu adı *\<kayıt defteri-adı\>. azurecr.io* (tümü küçük harf) biçimindedir (örneğin, *mycontainerregistry008.azurecr.io*). Bu örnekte, önceki bölümde `sample/hello-world:v1` görüntüsünü oluşturduğunuzu ve gönderdiniz varsayılmaktadır:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-The `cmd` step in this example runs the container in its default configuration, but `cmd` supports additional `docker run` parameters or even other `docker` commands.
+Bu örnekteki `cmd` adımı, kapsayıcıyı varsayılan yapılandırmasında çalıştırır, ancak `cmd` ek `docker run` parametreleri ve hatta diğer `docker` komutlarını destekler.
 
-Run the container with the following command:
+Kapsayıcıyı aşağıdaki komutla çalıştırın:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 --file quickrun.yaml .
@@ -174,7 +174,7 @@ Run ID: cab was successful after 6s
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When no longer needed, you can use the [az group delete][az-group-delete] command to remove the resource group, the container registry, and the container images stored there.
+Artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı kayıt defterini ve orada depolanan kapsayıcı görüntülerini kaldırabilirsiniz.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -182,10 +182,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you used features of ACR Tasks to quickly build, push, and run a Docker container image natively within Azure. Continue to the Azure Container Registry tutorials to learn about using ACR Tasks to automate image builds and updates.
+Bu hızlı başlangıçta, Azure 'da bir Docker kapsayıcı görüntüsünü hızlıca oluşturmak, göndermek ve çalıştırmak için ACR görevlerinin özelliklerini kullandınız. Görüntü yapılarını ve güncelleştirmelerini otomatikleştirmek üzere ACR görevlerini kullanma hakkında bilgi edinmek için Azure Container Registry öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Azure Container Registry öğreticileri][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

@@ -40,7 +40,7 @@ Uygulamaps panelinden ve Office 365 uygulama başlatıcısı 'ndan bir uygulamay
 5.  Gizlemek istediğiniz uygulamayı arayın ve uygulamayı tıklatın.  Uygulamanın genel görünümü açılır.
 6.  **Özellikler**'e tıklayın. 
 7.  **Kullanıcılar Için görünebilir mi?** sorusu için **Hayır**'a tıklayın.
-8.  **Kaydet**’e tıklayın.
+8.  **Save (Kaydet)** düğmesine tıklayın.
 
 
 ## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Uygulamaps panelinden Office 365 uygulamalarını gizleme
@@ -52,7 +52,7 @@ Uygulamaps panelinden tüm Office 365 uygulamalarını gizlemek için aşağıda
 3.  **Kullanıcı ayarları**' nı seçin.
 4.  **Kurumsal uygulamalar**altında **son kullanıcıların uygulamalarını nasıl başlatıp görüntüleyebileceğini Yönet** ' e tıklayın.
 5.  **Kullanıcılar yalnızca office 365 portalında office 365 uygulamalarını görebilir**, **Evet**' e tıklayın.
-6.  **Kaydet**’e tıklayın.
+6.  **Save (Kaydet)** düğmesine tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

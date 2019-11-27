@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting issues with Azure Automation Desired State Configuration (DSC)
-description: This article provides information on troubleshooting Desired State Configuration (DSC)
+title: Azure Otomasyonu Istenen durum yapılandırması (DSC) ile ilgili sorunları giderme
+description: Bu makale, Istenen durum yapılandırması (DSC) sorunlarını giderme hakkında bilgi sağlar
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -16,40 +16,40 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231548"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Troubleshoot Desired State Configuration (DSC)
+# <a name="troubleshoot-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) sorunlarını giderme
 
-This article provides information on troubleshooting issues with Desired State Configuration (DSC).
+Bu makalede, Istenen durum yapılandırması (DSC) ile ilgili sorunları giderme hakkında bilgi verilmektedir.
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Steps to troubleshoot Desired State Configuration (DSC)
+## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) sorunlarını giderme adımları
 
-When you have errors compiling or deploying configurations in Azure State Configuration, here are a few steps to help you diagnose the issue.
+Azure Durum Yapılandırması 'nda yapılandırmaları derlerken veya dağıtmada hatalar olduğunda, sorunu tanılamanıza yardımcı olacak birkaç adım aşağıda verilmiştir.
 
-1. **Ensure your configuration compiles successfully on your local machine:**  Azure State Configuration is built on PowerShell DSC. You can find the documentation for the DSC language and syntax in the [PowerShell DSC Docs](https://docs.microsoft.com/powershell/scripting/overview).
+1. **Yapılandırmanızın yerel makinenizde başarıyla derlendiğinden emin olun:**  Azure Durum Yapılandırması PowerShell DSC üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)' da bulabilirsiniz.
 
-   By compiling your DSC configuration on your local machine you can discover and resolve common errors, such as:
+   Yerel makinenizde DSC yapılandırmanızı derleyerek, şu gibi yaygın hataları bulabilir ve çözebilirsiniz:
 
-   - **Missing Modules**
-   - **Syntax Errors**
-   - **Logic Errors**
+   - **Eksik modüller**
+   - **Sözdizimi hataları**
+   - **Mantık hataları**
 
-2. **View DSC logs on your Node:** If your configuration compiles successfully, but fails when applied to a Node, you can find detailed information in the logs. For information about where to find DSC logs, see [Where are the DSC Event Logs](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+2. **Düğümünüz IÇIN DSC günlüklerini görüntüleyin:** Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında başarısız olursa, günlüklerde ayrıntılı bilgiler bulabilirsiniz. DSC günlüklerinin nerede bulunacağı hakkında daha fazla bilgi için, bkz. [WHERE DSC olay günlükleri](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Furthermore, the [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) can assist you in parsing detailed information from the DSC logs. If you contact support, they will require these logs to diagnose your issue.
+   Ayrıca, [Xdscdiagnostics](https://github.com/PowerShell/xDscDiagnostics) , DSC günlüklerinden ayrıntılı bilgiler ayrıştırılırken size yardımcı olabilir. Desteğe başvurursanız, bu günlüklerin sorununuzu tanılamak için bu günlüklere ihtiyacı olacaktır.
 
-   You can install **xDscDiagnostics** on your local machine using the instructions found under [Install the stable version module](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
+   [Sabit sürüm modülünü Install](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)altında bulunan yönergeleri kullanarak, **xdscdiagnostics** 'i yerel makinenize yükleyebilirsiniz.
 
-   To install **xDscDiagnostics** on your Azure machine, you can use [az vm run-command](/cli/azure/vm/run-command) or [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). You can also use the **Run command** option from the portal, by following the steps found in [Run PowerShell scripts in your Windows VM with Run Command](../../virtual-machines/windows/run-command.md).
+   Azure makinenizde **Xdscdiagnostics** 'i yüklemek için [az VM Run-Command](/cli/azure/vm/run-command) veya [Invoke-azvmruncommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)komutunu kullanabilirsiniz. Ayrıca, [Çalıştır komutuyla WINDOWS sanal makinenizde PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümünde bulunan adımları izleyerek portaldan **Çalıştır komut** seçeneğini de kullanabilirsiniz.
 
-   For information on using **xDscDiagnostics**, see [Using xDscDiagnostics to analyze DSC logs](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs), as well as [xDscDiagnostics Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Ensure your Nodes and Automation workspace have the required modules:** Desired State Configuration depends on modules installed on the Node.  When using Azure Automation State Configuration, import any required modules into your automation account using the steps listed in [Import Modules](../shared-resources/modules.md#import-modules). Configurations can also have a dependency on specific versions of modules.  For more information, see, [Troubleshoot Modules](shared-resources.md#modules).
+   **Xdscdiagnostics**kullanımı hakkında bilgi için bkz. [XDSCDIAGNOSTICS kullanarak DSC günlüklerini analiz etme](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)ve [xdscdiagnostics cmdlet 'leri](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+3. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun:** İstenen durum yapılandırması, düğümde yüklü olan modüllere bağımlıdır.  Azure Otomasyonu durum yapılandırması kullanılırken, [Içeri aktarma modülleri](../shared-resources/modules.md#import-modules)' nde listelenen adımları kullanarak, gerekli tüm modülleri Otomasyon hesabınıza aktarın. Yapılandırmaların belirli modül sürümlerine de bağımlılığı olabilir.  Daha fazla bilgi için bkz., [modüller sorunlarını giderme](shared-resources.md#modules).
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Common errors when working with Desired State Configuration (DSC)
+## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) ile çalışırken sık karşılaşılan hatalar
 
-### <a name="unsupported-characters"></a>Scenario: A configuration with special characters cannot be deleted from the portal
+### <a name="unsupported-characters"></a>Senaryo: özel karakterler içeren bir yapılandırma portaldan silinemiyor
 
 #### <a name="issue"></a>Sorun
 
-When attempting to delete a DSC configuration from the portal, you see the following error:
+Portaldan bir DSC yapılandırmasını silmeye çalışırken şu hatayı görürsünüz:
 
 ```error
 An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
@@ -57,19 +57,19 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 #### <a name="cause"></a>Nedeni
 
-This error is a temporary issue that is planned to be resolved.
+Bu hata, çözülmesi planlanan geçici bir sorundur.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-* Use the Az Cmdlet "Remove-AzAutomationDscConfiguration" to delete the configuration.
-* The documentation for this cmdlet hasn't been updated yet.  Until then, refer to the documentation for the AzureRM module.
+* Yapılandırmayı silmek için az "Remove-AzAutomationDscConfiguration" cmdlet 'Ini kullanın.
+* Bu cmdlet 'in belgeleri henüz güncelleştirilmedi.  Bu durumda, Azurere modülünün belgelerine başvurun.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Scenario: Failed to register Dsc Agent
+### <a name="failed-to-register-agent"></a>Senaryo: DSC aracısının kaydı yapılamadı
 
 #### <a name="issue"></a>Sorun
 
-When attempting to run `Set-DscLocalConfigurationManager` or another DSC cmdlet you receive the error:
+`Set-DscLocalConfigurationManager` veya başka bir DSC cmdlet 'ini çalıştırmaya çalışırken şu hatayı alıyorsunuz:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -84,17 +84,17 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 #### <a name="cause"></a>Nedeni
 
-This error is normally caused by a firewall, the machine being behind a proxy server, or other network errors.
+Bu hata, normalde bir güvenlik duvarının, bir proxy sunucusunun arkasında olduğu makinenin veya diğer ağ hatalarının oluşmasına neden olur.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-Verify your machine has access to the proper endpoints for Azure Automation DSC and try again. For a list of ports and addresses needed, see [network planning](../automation-dsc-overview.md#network-planning)
+Makinenizin Azure Automation DSC için uygun uç noktalara erişimi olduğunu doğrulayın ve yeniden deneyin. Gereken bağlantı noktaları ve adreslerin listesi için bkz. [ağ planlama](../automation-dsc-overview.md#network-planning)
 
-### <a name="failed-not-found"></a>Scenario: Node is in failed status with a "Not found" error
+### <a name="failed-not-found"></a>Senaryo: düğüm, "bulunamadı" hatası ile başarısız durumda
 
 #### <a name="issue"></a>Sorun
 
-The node has a report with **Failed** status and containing the error:
+Düğüm, başarısız durumuna sahip bir rapora sahip ve **Şu** hatayı içerir:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -102,21 +102,21 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 #### <a name="cause"></a>Nedeni
 
-This error typically occurs when the node is assigned to a configuration name (for example, ABC) instead of a node configuration name (for example, ABC.WebServer).
+Bu hata genellikle düğüm bir düğüm yapılandırma adı (örneğin, ABC) yerine bir yapılandırma adına (örneğin, ABC) atandığında oluşur. Web sunucusu).
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-* Make sure that you're assigning the node with "node configuration name" and not the "configuration name".
-* You can assign a node configuration to a node using Azure portal or with a PowerShell cmdlet.
+* Düğümü "düğüm yapılandırma adı" ile ("yapılandırma adı" değil) atadığınızdan emin olun.
+* Azure portal veya PowerShell cmdlet 'i kullanarak bir düğüme düğüm yapılandırması atayabilirsiniz.
 
-  * To assign a node configuration to a node using Azure portal, open the **DSC Nodes** page, then select a node and click on **Assign node configuration** button.
-  * To assign a node configuration to a node using PowerShell cmdlet, use **Set-AzureRmAutomationDscNode** cmdlet
+  * Azure portal kullanarak bir düğüme düğüm yapılandırması atamak için **DSC düğümleri** sayfasını açın, ardından bir düğüm seçin ve **düğüm yapılandırması ata** düğmesine tıklayın.
+  * PowerShell cmdlet 'ini kullanarak bir düğüme düğüm yapılandırması atamak için **set-AzureRmAutomationDscNode** cmdlet 'ini kullanın
 
-### <a name="no-mof-files"></a>Scenario: No node configurations (MOF files) were produced when a configuration is compiled
+### <a name="no-mof-files"></a>Senaryo: bir yapılandırma derlendiğinde hiçbir düğüm yapılandırması (MOF dosyası) üretilmedi
 
 #### <a name="issue"></a>Sorun
 
-Your DSC compilation job suspends with the error:
+DSC derleme işiniz şu hatayla askıya alınır:
 
 ```error
 Compilation completed successfully, but no node configuration.mofs were generated.
@@ -124,20 +124,20 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Nedeni
 
-When the expression following the **Node** keyword in the DSC configuration evaluates to `$null`, then no node configurations are produced.
+DSC yapılandırmasındaki **düğüm** anahtar sözcüğünü izleyen ifade `$null`olarak değerlendirilirse, hiçbir düğüm yapılandırması üretilmez.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-Any of the following solutions fix the problem:
+Aşağıdaki çözümlerden herhangi biri sorunu çözer:
 
-* Make sure that the expression next to the **Node** keyword in the configuration definition isn't evaluating to $null.
-* If you are passing ConfigurationData when compiling the configuration, make sure that you are passing the expected values that the configuration requires from [ConfigurationData](../automation-dsc-compile.md).
+* Yapılandırma tanımındaki **node** anahtar sözcüğünün yanındaki ifadenin $null olarak değerlendirilmediğinden emin olun.
+* Yapılandırmayı derlerken ConfigurationData geçiriyorken, yapılandırmanın [configurationData](../automation-dsc-compile.md)tarafından gerek duyduğu beklenen değerleri geçirdiğinizden emin olun.
 
-### <a name="dsc-in-progress"></a>Scenario: The DSC node report becomes stuck "in progress" state
+### <a name="dsc-in-progress"></a>Senaryo: DSC düğüm raporu "sürüyor" durumunda takılmış olur
 
 #### <a name="issue"></a>Sorun
 
-The DSC agent outputs:
+DSC Aracısı çıkışları:
 
 ```error
 No instance found with given property values
@@ -145,17 +145,17 @@ No instance found with given property values
 
 #### <a name="cause"></a>Nedeni
 
-You have upgraded your WMF version and have corrupted WMI.
+WMF sürümünüzü yükselttiniz ve WMI 'yi bozmuş olursunuz.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-To fix the issue, follow the instructions in the [DSC known issues and limitations](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) article.
+Sorunu gidermek için, [DSC bilinen sorunlar ve sınırlamalar](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) makalesindeki yönergeleri izleyin.
 
-### <a name="issue-using-credential"></a>Scenario: Unable to use a credential in a DSC configuration
+### <a name="issue-using-credential"></a>Senaryo: DSC yapılandırmasında kimlik bilgileri kullanılamıyor
 
 #### <a name="issue"></a>Sorun
 
-Your DSC compilation job was suspended with the error:
+DSC derleme işiniz şu hatayla askıya alındı:
 
 ```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
@@ -163,17 +163,17 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="cause"></a>Nedeni
 
-You've used a credential in a configuration but didn’t provide proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration.
+Yapılandırmada bir kimlik bilgisi kullandınız, ancak her düğüm yapılandırması için **Psdscallowplaintextpassword** değerini true olarak ayarlamak Için uygun **configurationData** sağlamadık.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-* Make sure to pass in the proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration that is mentioned in the configuration. For more information, see [assets in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
+* Yapılandırmada belirtilen her düğüm yapılandırması için **Psdscallowplaintextpassword** öğesini true olarak ayarlamak üzere doğru **configurationData** ' ın geçdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure Automation DSC varlıklar](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Scenario: Onboarding from dsc extension, "Failure processing extension" error
+### <a name="failure-processing-extension"></a>Senaryo: DSC uzantısından ekleme, "uzantı işleme hatası" hatası
 
 #### <a name="issue"></a>Sorun
 
-When onboarding using DSC extension, a failure occurs containing the error:
+DSC uzantısını kullanarak ekleme yaparken, şu hatayı içeren bir hata oluşur:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -181,18 +181,18 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 #### <a name="cause"></a>Nedeni
 
-This error typically occurs when the node is assigned a node configuration name that does not exist in the service.
+Bu hata genellikle, düğüme hizmette olmayan bir düğüm yapılandırma adı atandığında oluşur.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-* Make sure that you're assigning the node with a node configuration name that exactly matches the name in the service.
-* You can choose to not include the node configuration name, which will result in onboarding the node but not assigning a node configuration
+* Düğümü, hizmette adıyla tam olarak eşleşen bir düğüm yapılandırma adı ile atadığınızdan emin olun.
+* Düğüm yapılandırma adını eklemeyi tercih edebilirsiniz; Bu, düğüm ekleme, ancak düğüm yapılandırması atamakla sonuçlanır
 
-### <a name="failure-linux-temp-noexec"></a>Scenario: Applying a configuration in Linux, a failure occurs with a general error
+### <a name="failure-linux-temp-noexec"></a>Senaryo: Linux 'ta bir yapılandırma uygulama genel hata ile bir hata oluşur
 
 #### <a name="issue"></a>Sorun
 
-When applying a configuration in Linux, a failure occurs containing the error:
+Linux 'ta bir yapılandırma uygularken, şu hatayı içeren bir hata oluşur:
 
 ```error
 This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
@@ -200,32 +200,32 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Nedeni
 
-Customers have identified that if the `/tmp` location is set to `noexec`, the current version of DSC will fail to apply configurations.
+Müşteriler `/tmp` konum `noexec`olarak ayarlanırsa, geçerli DSC sürümü yapılandırmaların uygulanmamasının başarısız olacağını belirledi.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-* Remove the `noexec` option from the `/tmp` location.
+* `noexec` seçeneğini `/tmp` konumundan kaldırın.
 
-### <a name="compilation-node-name-overlap"></a>Scenario: Node configuration names that overlap could result in bad release
+### <a name="compilation-node-name-overlap"></a>Senaryo: çakışan düğüm yapılandırma adları bozuk bir yayına neden olabilir
 
 #### <a name="issue"></a>Sorun
 
-If a single configuration script is used to generate multiple node configurations, and some of the node configurations have a name that is a subset of others, an issue in the compilation service could result in assigning the wrong configuration.  This only occurs when using a single script to generate configurations with configuration data per node, and only when the name overlap occurs at the beginning of the string.
+Birden çok düğüm yapılandırması oluşturmak için tek bir yapılandırma betiği kullanılıyorsa ve bazı düğüm yapılandırmalarının başkalarının alt kümesi olan bir adı varsa, derleme hizmetindeki bir sorun yanlış yapılandırma atamaya neden olabilir.  Bu yalnızca, düğüm başına yapılandırma verileri olan yapılandırmalar oluşturmak için tek bir komut dosyası kullanıldığında ve yalnızca ad örtüşme dizenin başlangıcında oluştuğunda oluşur.
 
-Example, if a single configuration script is used to generate configurations based on node data passed as a hashtable using cmdlets, and the node data includes a server named "server" and "1server".
+Örnek olarak, cmdlet 'ler kullanılarak bir karma tablosu olarak geçirilen düğüm verilerine dayalı yapılandırmalar oluşturmak için tek bir yapılandırma betiği kullanılırsa ve düğüm verileri "sunucu" ve "1Sunucu" adlı bir sunucu içeriyorsa.
 
 #### <a name="cause"></a>Nedeni
 
-Known issue with the compilation service.
+Derleme hizmeti ile ilgili bilinen sorun.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-The best workaround would be to compile locally or in a CI/CD pipeline and upload the MOF files directly to the service.  If compilation in the service is a requirement, the next best workaround would be to split the compilation jobs so there is no overlap in names.
+En iyi geçici çözüm, yerel olarak veya bir CI/CD ardışık düzeninde derlemek ve MOF dosyalarını doğrudan hizmete yüklemek olacaktır.  Hizmette derleme bir gereksinimle karşılaşırsanız, bir sonraki en iyi geçici çözüm, ad içinde çakışma olmaması için derleme işlerinin bölünmesi olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 * [Azure Forumları](https://azure.microsoft.com/support/forums/) aracılığıyla Azure uzmanlarından yanıtlar alın
 * [@AzureSupport](https://twitter.com/azuresupport) hesabı ile bağlantı kurun. Bu resmi Microsoft Azure hesabı, müşteri deneyimini geliştirmek için Azure topluluğunu doğru kaynaklara ulaştırır: yanıtlar, destek ve uzmanlar.
-* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

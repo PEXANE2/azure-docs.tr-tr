@@ -1,6 +1,6 @@
 ---
-title: Task hubs in Durable Functions - Azure
-description: Learn what a task hub is in the Durable Functions extension for Azure Functions. Learn how to configure task hubs.
+title: Dayanıklı İşlevler görev hub 'ları-Azure
+description: Bir görev hub 'ının Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda olduğunu öğrenin. Görev hub 'larını yapılandırmayı öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -12,32 +12,32 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232781"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Task hubs in Durable Functions (Azure Functions)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler görev hub 'ları (Azure Işlevleri)
 
-A *task hub* in [Durable Functions](durable-functions-overview.md) is a logical container for Azure Storage resources that are used for orchestrations. Orchestrator and activity functions can only interact with each other when they belong to the same task hub.
+[Dayanıklı işlevler](durable-functions-overview.md) bir *görev hub 'ı* , düzenleme için kullanılan Azure depolama kaynakları için mantıksal bir kapsayıcıdır. Orchestrator ve Activity işlevleri aynı görev merkezine ait olduklarında yalnızca birbirleriyle etkileşim kurabilir.
 
-If multiple function apps share a storage account, each function app *must* be configured with a separate task hub name. A storage account can contain multiple task hubs. The following diagram illustrates one task hub per function app in shared and dedicated storage accounts.
+Birden çok işlev uygulaması bir depolama hesabını paylaşıyorsa, her işlev uygulamasının ayrı bir görev hub 'ı adıyla yapılandırılması *gerekir* . Bir depolama hesabı, birden çok görev hub 'ı içerebilir. Aşağıdaki diyagramda, paylaşılan ve ayrılmış depolama hesaplarında işlev uygulaması başına bir görev hub 'ı gösterilmektedir.
 
-![Diagram showing shared and dedicated storage accounts.](./media/durable-functions-task-hubs/task-hubs-storage.png)
+![Paylaşılan ve ayrılmış depolama hesaplarını gösteren diyagram.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
-## <a name="azure-storage-resources"></a>Azure Storage resources
+## <a name="azure-storage-resources"></a>Azure depolama kaynakları
 
-A task hub consists of the following storage resources:
+Bir görev hub 'ı aşağıdaki depolama kaynaklarından oluşur:
 
-* One or more control queues.
-* One work-item queue.
-* One history table.
-* One instances table.
-* One storage container containing one or more lease blobs.
-* A storage container containing large message payloads, if applicable.
+* Bir veya daha fazla denetim kuyruğu.
+* Bir iş öğesi kuyruğu.
+* Bir geçmiş tablosu.
+* Tek örnek tablosu.
+* Bir veya daha fazla kira blob içeren bir depolama kapsayıcısı.
+* Varsa, büyük ileti yüklerini içeren bir depolama kapsayıcısı.
 
-All of these resources are created automatically in the default Azure Storage account when orchestrator, entity, or activity functions run or are scheduled to run. The [Performance and Scale](durable-functions-perf-and-scale.md) article explains how these resources are used.
+Orchestrator, varlık veya etkinlik işlevleri çalıştırıldığında veya çalıştırılmak üzere zamanlandığında, bu kaynakların tümü varsayılan Azure depolama hesabında otomatik olarak oluşturulur. [Performans ve ölçeklendirme](durable-functions-perf-and-scale.md) makalesinde bu kaynakların nasıl kullanıldığı açıklanmaktadır.
 
-## <a name="task-hub-names"></a>Task hub names
+## <a name="task-hub-names"></a>Görev hub 'ı adları
 
-Task hubs are identified by a name that is declared in the *host.json* file, as shown in the following example:
+Görev hub 'ları, aşağıdaki örnekte gösterildiği gibi *Host. JSON* dosyasında belirtilen bir adla tanımlanır:
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>Host. JSON (Işlevler 2,0)
 
 ```json
 {
@@ -50,7 +50,7 @@ Task hubs are identified by a name that is declared in the *host.json* file, as 
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+### <a name="hostjson-functions-1x"></a>Host. JSON (Işlevler 1. x)
 
 ```json
 {
@@ -60,9 +60,9 @@ Task hubs are identified by a name that is declared in the *host.json* file, as 
 }
 ```
 
-Task hubs can also be configured using app settings, as shown in the following `host.json` example file:
+Görev hub 'ları, aşağıdaki `host.json` örnek dosyasında gösterildiği gibi, uygulama ayarları kullanılarak da yapılandırılabilir:
 
-### <a name="hostjson-functions-10"></a>host.json (Functions 1.0)
+### <a name="hostjson-functions-10"></a>Host. JSON (Işlevler 1,0)
 
 ```json
 {
@@ -72,7 +72,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>Host. JSON (Işlevler 2,0)
 
 ```json
 {
@@ -85,7 +85,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-The task hub name will be set to the value of the `MyTaskHub` app setting. The following `local.settings.json` demonstrates how to define the `MyTaskHub` setting as `samplehubname`:
+Görev hub 'ı adı `MyTaskHub` uygulama ayarı değerine ayarlanır. Aşağıdaki `local.settings.json` `MyTaskHub` ayarının `samplehubname`olarak nasıl tanımlanacağını göstermektedir:
 
 ```json
 {
@@ -96,7 +96,7 @@ The task hub name will be set to the value of the `MyTaskHub` app setting. The f
 }
 ```
 
-The following code is a precompiled C# example of how to write a function that uses the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to work with a task hub that is configured as an App Setting:
+Aşağıdaki kod, bir uygulama ayarı C# olarak yapılandırılmış bir görev hub 'ı ile çalışmak üzere [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client) kullanan bir işlevin nasıl yazılacağı konusunda önceden derlenmiş bir örnektir:
 
 ### <a name="c"></a>C#
 
@@ -119,11 +119,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Önceki C# örnek dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 ### <a name="javascript"></a>JavaScript
 
-The task hub property in the `function.json` file is set via App Setting:
+`function.json` dosyasındaki görev hub 'ı özelliği uygulama ayarı aracılığıyla ayarlanır:
 
 ```json
 {
@@ -134,19 +134,19 @@ The task hub property in the `function.json` file is set via App Setting:
 }
 ```
 
-Task hub names must start with a letter and consist of only letters and numbers. If not specified, a default task hub name will be used as shown in the following table:
+Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, aşağıdaki tabloda gösterildiği gibi varsayılan bir görev hub 'ı adı kullanılacaktır:
 
-| Durable extension version | Default task hub name |
+| Dayanıklı uzantı sürümü | Varsayılan görev hub 'ı adı |
 | - | - |
-| 2.x | When deployed in Azure, the task hub name is derived from the name of the _function app_. When running outside of Azure, the default task hub name is `TestHubName`. |
-| 1.x | The default task hub name for all environments is `DurableFunctionsHub`. |
+| 2.x | Azure 'da dağıtıldığında, görev hub 'ı adı _işlev uygulamasının_adından türetilir. Azure dışında çalışırken, varsayılan görev hub 'ı adı `TestHubName`. |
+| 'in | Tüm ortamların varsayılan görev hub 'ı adı `DurableFunctionsHub`. |
 
-For more information about the differences between extension versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 > [!NOTE]
-> The name is what differentiates one task hub from another when there are multiple task hubs in a shared storage account. If you have multiple function apps sharing a shared storage account, you must explicitly configure different names for each task hub in the *host.json* files. Otherwise the multiple function apps will compete with each other for messages, which could result in undefined behavior, including orchestrations getting unexpectedly "stuck" in the `Pending` or `Running` state.
+> Ad, paylaşılan bir depolama hesabında birden çok görev hub 'ı olduğunda, bir görev hub 'ını diğerinden farklılaştırır. Paylaşılan bir depolama hesabını paylaşan birden çok işlev uygulamanız varsa, *Host. JSON* dosyalarındaki her bir görev hub 'ı için farklı adlar açıkça yapılandırmanız gerekir. Aksi halde, birden çok işlev uygulaması iletiler için birbirleriyle rekabet eder ve bu da, `Pending` veya `Running` durumunda beklenmedik şekilde "takılmalar" gibi, tanımsız davranışa neden olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn how to handle orchestration versioning](durable-functions-versioning.md)
+> [Düzenleme sürümü oluşturmayı nasıl ele alabileceğinizi öğrenin](durable-functions-versioning.md)

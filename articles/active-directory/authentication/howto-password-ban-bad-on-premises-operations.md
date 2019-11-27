@@ -1,6 +1,6 @@
 ---
-title: Password protection operations and reports - Azure Active Directory
-description: Azure AD Password Protection post-deployment operations and reporting
+title: Parola koruma işlemleri ve raporları-Azure Active Directory
+description: Azure AD parola koruması dağıtım sonrası işlemleri ve raporlama
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,50 +18,50 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381656"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD Password Protection operational procedures
+# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD parola koruması işlem yordamları
 
-After you have completed the [installation of Azure AD Password Protection](howto-password-ban-bad-on-premises-deploy.md) on-premises, there are a couple items that must be configured in the Azure portal.
+Şirket içi [Azure AD parola korumasını yüklemeyi](howto-password-ban-bad-on-premises-deploy.md) tamamladıktan sonra, Azure Portal yapılandırılması gereken birkaç öğe vardır.
 
-## <a name="configure-the-custom-banned-password-list"></a>Configure the custom banned password list
+## <a name="configure-the-custom-banned-password-list"></a>Özel yasaklanmış parola listesini yapılandırın
 
-Follow the guidance in the article [Configuring the custom banned password list](howto-password-ban-bad-configure.md) for steps to customize the banned password list for your organization.
+Kuruluşunuzun yasaklanmış parola listesini özelleştirme adımları için [özel yasaklanmış Password listesini yapılandırma](howto-password-ban-bad-configure.md) makalesindeki yönergeleri izleyin.
 
-## <a name="enable-password-protection"></a>Enable Password Protection
+## <a name="enable-password-protection"></a>Parola korumasını etkinleştir
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and browse to **Azure Active Directory**, **Authentication methods**, then **Password Protection**.
-1. Set **Enable Password Protection on Windows Server Active Directory** to **Yes**
-1. As mentioned in the [Deployment guide](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), it is recommended to initially set the **Mode** to **Audit**
-   * After you are comfortable with the feature, you can switch the **Mode** to **Enforced**
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**, **kimlik doğrulama yöntemleri**ve **parola koruması**' na gidin.
+1. **Windows Server 'Da parola korumasını etkinleştir Active Directory** **Evet** olarak ayarlayın
+1. [Dağıtım kılavuzunda](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)bahsedildiği gibi, başlangıçta **modunun** **Denetim** olarak ayarlanması önerilir
+   * Özelliği rahatladıktan sonra, **modu** **Zorlanmış** olarak değiştirebilirsiniz
 1. **Kaydet**’e tıklayın
 
-![Enabling Azure AD Password Protection components in the Azure portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Azure portal Azure AD parola koruma bileşenlerini etkinleştirme](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
-## <a name="audit-mode"></a>Audit Mode
+## <a name="audit-mode"></a>Denetim modu
 
-Audit mode is intended as a way to run the software in a “what if” mode. Each DC agent service evaluates an incoming password according to the currently active policy. If the current policy is configured to be in Audit mode, “bad” passwords result in event log messages but are accepted. This is the only difference between Audit and Enforce mode; all other operations run the same.
+Denetim modu, "durum" modunda yazılımı çalıştırmanın bir yolu olarak hazırlanmıştır. Her DC Aracısı hizmeti, geçerli etkin ilkeye göre gelen bir parolayı değerlendirir. Geçerli ilke denetim modunda olacak şekilde yapılandırıldıysa, "kötü" parolalar olay günlüğü iletilerine neden olur ancak kabul edilir. Bu, denetim ve zorlama modu arasındaki tek farktır; diğer tüm işlemler aynı şekilde çalışır.
 
 > [!NOTE]
-> Microsoft recommends that initial deployment and testing always start out in Audit mode. Events in the event log should then be monitored to try to anticipate whether any existing operational processes would be disturbed once Enforce mode is enabled.
+> Microsoft, ilk dağıtımın ve testin her zaman denetim modunda başlamasını önerir. Daha sonra, var olan bir işlem işleminin zorla modu etkinleştirildikten sonra olumsuz olup olmayacağını tahmin etmek için olay günlüğündeki olayların izlenmesi gerekir.
 
-## <a name="enforce-mode"></a>Enforce Mode
+## <a name="enforce-mode"></a>Zorla modu
 
-Enforce mode is intended as the final configuration. As in Audit mode above, each DC agent service evaluates incoming passwords according to the currently active policy. If Enforce mode is enabled though, a password that is considered unsecure according to the policy is rejected.
+Zorla modu, son yapılandırma olarak tasarlanmıştır. Yukarıdaki denetim modunda olduğu gibi, her DC Aracısı hizmeti, gelen parolaları geçerli etkin ilkeye göre değerlendirir. Ancak zorla modu etkinleştirilirse, ilkeye göre güvenli olmayan olarak kabul edilen bir parola reddedilir.
 
-When a password is rejected in Enforce mode by the Azure AD Password Protection DC Agent, the visible impact seen by an end user is identical to what they would see if their password was rejected by traditional on-premises password complexity enforcement. For example, a user might see the following traditional error message at the Windows logon\change password screen:
+Azure AD parola koruması DC Aracısı tarafından zorlama modunda bir parola reddedildiğinde, bir son kullanıcı tarafından görülen görünür etki, parolasının geleneksel şirket içi parola karmaşıklığı zorlaması tarafından reddedilip reddedildikleri ile aynıdır. Örneğin, bir Kullanıcı Windows logon\parola değiştirme ekranında aşağıdaki geleneksel hata iletisini görebilir:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
-This message is only one example of several possible outcomes. The specific error message can vary depending on the actual software or scenario that is attempting to set an unsecure password.
+Bu ileti birkaç olası sonuç için yalnızca bir örnektir. Belirli bir hata iletisi, güvenli olmayan bir parola ayarlamaya çalışan gerçek yazılıma veya senaryoya bağlı olarak değişebilir.
 
-Affected end users may need to work with their IT staff to understand the new requirements and be more able to choose secure passwords.
+Etkilenen son kullanıcıların, yeni gereksinimleri anlamak ve güvenli parolalar seçebilmeleri için BT personeli ile çalışması gerekebilir.
 
 > [!NOTE]
-> Azure AD Password Protection has no control over the specific error message displayed by the client machine when a weak password is rejected.
+> Zayıf bir parola reddedildiğinde, Azure AD parola korumasının istemci makine tarafından görüntülenmekte olan belirli bir hata iletisi üzerinde denetimi yoktur.
 
-## <a name="enable-mode"></a>Enable Mode
+## <a name="enable-mode"></a>Modu etkinleştir
 
-This setting should be left in its default enabled (Yes) state. Configuring this setting to disabled (No) will cause all deployed Azure AD Password Protection DC agents to go into a quiescent mode where all passwords are accepted as-is, and no validation activities will be executed whatsoever (for example, not even audit events will be emitted).
+Bu ayar, varsayılan etkin (Evet) durumunda bırakılmalıdır. Bu ayarın devre dışı olarak yapılandırılması (Hayır), tüm dağıtılan Azure AD parola koruma DC aracılarının tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçmesine neden olur ve hiçbir doğrulama etkinliği yürütülecektir (örneğin, hatta denetim olayları). yayılır).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Monitoring for Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md)
+[Azure AD parola koruması için izleme](howto-password-ban-bad-on-premises-monitor.md)

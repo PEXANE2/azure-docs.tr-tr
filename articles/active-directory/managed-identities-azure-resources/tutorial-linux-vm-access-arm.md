@@ -1,5 +1,5 @@
 ---
-title: Quickstart`:` Use a managed identity to access Azure Resource Manager - Azure AD
+title: Hızlı başlangıç`:` Azure Resource Manager erişmek için yönetilen kimlik kullanma-Azure AD
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Resource Manager’a erişme işleminde size yol gösteren bir hızlı başlangıç.
 services: active-directory
 documentationcenter: ''
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, Azure Resource Manager API'sine erişmek amacıyla, L
 > * Azure Resource Manager’da Kaynak Grubuna VM'niz için erişim verme 
 > * VM kimliğini kullanarak erişim belirteci alma ve Azure Resource Manager çağrısı yapmak için bunu kullanma 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -52,20 +52,20 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-resource-manager"></a>VM’nin sistem tarafından atanan yönetilen kimliğini kullanarak erişim belirteci alma ve Resource Manager çağrısı yapmak için bunu kullanma 
 
-Bu adımları tamamlamak için bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın.  
-2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
-3. In the terminal window, using `curl`, make a request to the local managed identities for Azure resources endpoint to get an access token for Azure Resource Manager.  
+2. Tercih ettiğiniz SSH istemcisiyle VM’ye bağlanmak için **Bağlan**’ı seçin. 
+3. Terminal penceresinde, `curl`kullanarak, Azure Resource Manager için bir erişim belirteci almak üzere Azure kaynakları için yerel yönetilen kimliklere bir istek yapın.  
  
-    The `curl` request for the access token is below.  
+    Erişim belirteci için `curl` isteği aşağıda verilmiştir.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > "Resource" parametre değeri Azure AD'nin beklediği değerle tam olarak eşleşmelidir.  In the case of the Resource Manager resource ID, you must include the trailing slash on the URI. 
+    > "Resource" parametre değeri Azure AD'nin beklediği değerle tam olarak eşleşmelidir.  Kaynak Yöneticisi kaynak KIMLIĞI söz konusu olduğunda, URI 'ye sondaki eğik çizgiyi dahil etmeniz gerekir. 
     
     Yanıtta, Azure Resource Manager’a erişmek için ihtiyacınız olan erişim belirteci vardır. 
     
@@ -81,7 +81,7 @@ Bu adımları tamamlamak için bir SSH istemciniz olmalıdır. Windows kullanıy
     "token_type":"Bearer"} 
     ```
     
-    Azure Resource Manager’a erişmek ve örneğin daha önceden bu VM’ye erişim verdiğiniz Kaynak Grubunun ayrıntılarını okumak için bu erişim belirtecini kullanabilirsiniz. Replace the values of \<SUBSCRIPTION ID\>, \<RESOURCE GROUP\>, and \<ACCESS TOKEN\> with the ones you created earlier. 
+    Azure Resource Manager’a erişmek ve örneğin daha önceden bu VM’ye erişim verdiğiniz Kaynak Grubunun ayrıntılarını okumak için bu erişim belirtecini kullanabilirsiniz. \<ABONELIK KIMLIĞI\>, \<kaynak grubu\>ve \<ERIŞIM BELIRTECI\> değerlerini daha önce oluşturdıklarla değiştirin. 
     
     > [!NOTE]
     > URL büyük/küçük harfe duyarlıdır; dolayısıyla daha önce Kaynak Grubunu adlandırırken kullandığınız büyük/küçük harf düzenini kullanmaya dikkat edin ("resourceGroups" adındaki büyük "G" harfine de dikkat edin).  
@@ -100,5 +100,5 @@ Bu adımları tamamlamak için bir SSH istemciniz olmalıdır. Windows kullanıy
 Bu hızlı başlangıçta, Azure Resource Manager API'sine erişmek amacıyla, sistem tarafından atanmış bir yönetilen kimliği nasıl kullanacağınızı öğrendiniz.  Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
+>[Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](how-to-manage-ua-identity-powershell.md)
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[Create, list or delete a user-assigned managed identity using Azure PowerShell](how-to-manage-ua-identity-powershell.md)

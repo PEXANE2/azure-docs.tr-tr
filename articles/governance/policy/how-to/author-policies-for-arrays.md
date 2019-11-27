@@ -1,6 +1,6 @@
 ---
-title: Author policies for array properties on resources
-description: Learn to work with array parameters and array language expressions, evaluate the [*] alias, and to append elements with Azure Policy definition rules.
+title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
+description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
@@ -10,23 +10,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463506"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Author policies for array properties on Azure resources
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
-Azure Resource Manager properties are commonly defined as strings and booleans. When a one-to-many relationship exists, complex properties are instead defined as arrays. In Azure Policy, arrays are used in several different ways:
+Azure Resource Manager özellikler genellikle dizeler ve Boole değerleri olarak tanımlanır. Bire çok ilişkisi olduğunda, karmaşık özellikler bunun yerine diziler olarak tanımlanır. Azure Ilkesinde diziler birkaç farklı şekilde kullanılır:
 
-- The type of a [definition parameter](../concepts/definition-structure.md#parameters), to provide multiple options
-- Part of a [policy rule](../concepts/definition-structure.md#policy-rule) using the conditions **in** or **notIn**
-- Part of a policy rule that evaluates the [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) to evaluate specific scenarios such as **None**, **Any**, or **All**
-- In the [append effect](../concepts/effects.md#append) to replace or add to an existing array
+- Birden çok seçenek sağlamak için bir [tanım parametresinin](../concepts/definition-structure.md#parameters)türü
+- **Ya da** **notın** koşullarını kullanan bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
+- **Yok**, **Any**veya **All** gibi belirli senaryoları değerlendirmek için [\[\*\] diğer adını](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının parçası
+- Var olan bir diziyi değiştirmek veya eklemek için [ekleme efekti](../concepts/effects.md#append)
 
-This article covers each use by Azure Policy and provides several example definitions.
+Bu makalede Azure Ilkesi tarafından kullanılan her kullanım ele alınmaktadır ve birkaç örnek tanım sunulmaktadır.
 
-## <a name="parameter-arrays"></a>Parameter arrays
+## <a name="parameter-arrays"></a>Parametre dizileri
 
-### <a name="define-a-parameter-array"></a>Define a parameter array
+### <a name="define-a-parameter-array"></a>Parametre dizisi tanımlama
 
-Defining a parameter as an array allows the policy flexibility when more than one value is needed.
-This policy definition allows any single location for the parameter **allowedLocations** and defaults to _eastus2_:
+Bir parametreyi dizi olarak tanımlamak, birden fazla değer gerektiğinde ilke esnekliği sağlar.
+Bu ilke tanımı, **Allowedlocations** parametresi için tek bir konuma izin verir ve varsayılan olarak _eastus2_:
 
 ```json
 "parameters": {
@@ -42,9 +42,9 @@ This policy definition allows any single location for the parameter **allowedLoc
 }
 ```
 
-As **type** was _string_, only one value can be set when assigning the policy. If this policy is assigned, resources in scope are only allowed within a single Azure region. Most policies definitions need to allow for a list of approved options, such as allowing _eastus2_, _eastus_, and _westus2_.
+**Tür** _dize_olduğu için, ilke atanırken yalnızca bir değer ayarlanabilir. Bu ilke atanırsa, kapsamdaki kaynaklara yalnızca tek bir Azure bölgesi içinde izin verilir. Çoğu ilke tanımlarının, _eastus2_, _eastus_ve _westus2_gibi onaylanan seçenekler listesi için izin verilmesi gerekir.
 
-To create the policy definition to allow multiple options, use the _array_ **type**. The same policy can be rewritten as follows:
+Birden çok seçeneğe izin vermek üzere ilke tanımı oluşturmak için _dizi_ **türünü**kullanın. Aynı ilke aşağıdaki gibi yeniden yazılabilir:
 
 ```json
 "parameters": {
@@ -67,17 +67,17 @@ To create the policy definition to allow multiple options, use the _array_ **typ
 ```
 
 > [!NOTE]
-> Once a policy definition is saved, the **type** property on a parameter can't be changed.
+> Bir ilke tanımı kaydedildikten sonra, bir parametresindeki **tür** özelliği değiştirilemez.
 
-This new parameter definition takes more than one value during policy assignment. With the array property **allowedValues** defined, the values available during assignment are further limited to the predefined list of choices. Use of **allowedValues** is optional.
+Bu yeni parametre tanımı, ilke ataması sırasında birden fazla değer alır. Dizi özelliği tarafından tanımlanan, atama sırasında kullanılabilir olan değerler **önceden tanımlanmış seçenek** listesiyle daha da sınırlıdır. **AllowedValues** kullanımı isteğe bağlıdır.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Pass values to a parameter array during assignment
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Atama sırasında değerleri bir parametre dizisine geçirme
 
-When assigning the policy through the Azure portal, a parameter of **type** _array_ is displayed as a single textbox. The hint says "Use ; to separate values. (e.g. London;New York)". To pass the allowed location values of _eastus2_, _eastus_, and _westus2_ to the parameter, use the following string:
+İlke Azure portal aracılığıyla atanırken, _dizi_ **türünde** bir parametre tek bir metin kutusu olarak görüntülenir. İpucu "kullanım" diyor. değerlerini ayırmak için. (örneğin, Londra; New York) ". _Eastus2_, _eastus_ve _westus2_ izin verilen konum değerlerini parametreye geçirmek için aşağıdaki dizeyi kullanın:
 
 `eastus2;eastus;westus2`
 
-The format for the parameter value is different when using Azure CLI, Azure PowerShell, or the REST API. The values are passed through a JSON string that also includes the name of the parameter.
+Azure CLı, Azure PowerShell veya REST API kullanılırken parametre değerinin biçimi farklıdır. Değerler, parametrenin adını da içeren bir JSON dizesi aracılığıyla geçirilir.
 
 ```json
 {
@@ -91,18 +91,18 @@ The format for the parameter value is different when using Azure CLI, Azure Powe
 }
 ```
 
-To use this string with each SDK, use the following commands:
+Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
-- Azure CLI: Command [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with parameter **params**
-- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with parameter **PolicyParameter**
-- REST API: In the _PUT_ [create](/rest/api/resources/policyassignments/create) operation as part of the Request Body as the value of the **properties.parameters** property
+- Azure CLı: komut [az Policy atama Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) parametresini parametre **params**
+- Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with Parameter **PolicyParameter**
+- REST API: _PUT_ [oluşturma](/rest/api/resources/policyassignments/create) işleminde, **Properties. Parameters** özelliğinin değeri olarak istek gövdesinin bir parçası olarak
 
-## <a name="policy-rules-and-arrays"></a>Policy rules and arrays
+## <a name="policy-rules-and-arrays"></a>İlke kuralları ve diziler
 
-### <a name="array-conditions"></a>Array conditions
+### <a name="array-conditions"></a>Dizi koşulları
 
-The policy rule [conditions](../concepts/definition-structure.md#conditions) that an _array_
-**type** of parameter may be used with is limited to `in` and `notIn`. Take the following policy definition with condition `equals` as an example:
+_Dizi_
+parametre **türünün** birlikte kullanılabileceği ilke kuralı [Koşulları](../concepts/definition-structure.md#conditions) `in` ve `notIn`sınırlıdır. Aşağıdaki ilke tanımını örnek olarak `equals` koşulu ile gerçekleştirin:
 
 ```json
 {
@@ -130,20 +130,20 @@ The policy rule [conditions](../concepts/definition-structure.md#conditions) tha
 }
 ```
 
-Attempting to create this policy definition through the Azure portal leads to an error such as this error message:
+Azure portal aracılığıyla bu ilke tanımını oluşturmaya çalışmak, bu hata iletisi gibi bir hataya yol açar:
 
-- "The policy '{GUID}' could not be parameterized because of validation errors. Please check if policy parameters are properly defined. The inner exception 'Evaluation result of language expression '[parameters('allowedLocations')]' is type 'Array', expected type is 'String'.'."
+- "' {GUID} ' ilkesi doğrulama hataları nedeniyle parametreleştirimedi. İlke parametrelerinin doğru tanımlanıp tanımlanmadığından emin olun. ' [Parameters (' allowedLocations ')] ' dil ifadesinin değerlendirme sonucu, ' Array ' türü, beklenen tür ' String '. '. "
 
-The expected **type** of condition `equals` is _string_. Since **allowedLocations** is defined as **type** _array_, the policy engine evaluates the language expression and throws the error. With the `in` and `notIn` condition, the policy engine expects the **type** _array_ in the language expression. To resolve this error message, change `equals` to either `in` or `notIn`.
+Beklenen koşul **türü** `equals` _dizedir_. **Allowedlocations** **türü** _dizi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. `in` ve `notIn` koşulu ile, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için `equals` `in` veya `notIn`olarak değiştirin.
 
-### <a name="evaluating-the--alias"></a>Evaluating the [*] alias
+### <a name="evaluating-the--alias"></a>[*] Diğer adı değerlendiriliyor
 
-Aliases that have **[\*]** attached to their name indicate the **type** is an _array_. Instead of evaluating the value of the entire array, **[\*]** makes it possible to evaluate each element of the array. There are three scenarios this per item evaluation is useful in: None, Any, and All.
+Adı **[\*]** olan diğer adlar **türün** bir _dizi_olduğunu gösterir. **[\*]** , tüm dizinin değerini değerlendirmek yerine dizinin her bir öğesini değerlendirmek mümkün hale getirir. Öğe değerlendirmesi başına bu üç senaryo vardır: None, any ve ALL.
 
-The policy engine triggers the **effect** in **then** only when the **if** rule evaluates as true.
-This fact is important to understand in context of the way **[\*]** evaluates each individual element of the array.
+İlke altyapısı **, yalnızca** **IF** kuralı doğru olarak değerlendirildiğinde **etkisini** tetikler.
+Bu olgu, dizi öğelerinin her birini değerlendiren **[\*]** yolunu anlamak için önemlidir.
 
-The example policy rule for the scenario table below:
+Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 
 ```json
 "policyRule": {
@@ -162,7 +162,7 @@ The example policy rule for the scenario table below:
 }
 ```
 
-The **ipRules** array is as follows for the scenario table below:
+**Iprules** dizisi aşağıdaki senaryo tablosu için aşağıdaki gibidir:
 
 ```json
 "ipRules": [
@@ -177,35 +177,35 @@ The **ipRules** array is as follows for the scenario table below:
 ]
 ```
 
-For each condition example below, replace `<field>` with `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+Aşağıdaki her bir koşul örneği için `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`ile değiştirin.
 
-The following outcomes are the result of the combination of the condition and the example policy rule and array of existing values above:
+Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerden oluşan örnek ilke kuralının sonucudur:
 
 |Koşul |Sonuç |Açıklama |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_ and the effect is triggered. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Policy effect |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Policy effect |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_. The logical operator evaluates as false (**not** _true_), so the effect isn't triggered. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Yapma |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Yapma |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
+|`{<field>,"Equals":"127.0.0.1"}` |Yapma |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"Equals":"10.0.4.1"}` |Yapma |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 
-## <a name="the-append-effect-and-arrays"></a>The append effect and arrays
+## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
 
-The [append effect](../concepts/effects.md#append) behaves differently depending on if the **details.field** is a **[\*]** alias or not.
+**Ayrıntılar. alanın** bir **[\*]** diğer adı olmasına bağlı olarak, [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır.
 
-- When not a **[\*]** alias, append replaces the entire array with the **value** property
-- When a **[\*]** alias, append adds the **value** property to the existing array or creates the new array
+- Bir **[\*]** diğer adı olmadığında, append değeri tüm diziyi **değer** özelliği ile değiştirir
+- Bir **[\*]** diğer adı olduğunda, append değeri, var olan diziye **değer** özelliğini ekler veya yeni diziyi oluşturur
 
-For more information, see the [append examples](../concepts/effects.md#append-examples).
+Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Review examples at [Azure Policy samples](../samples/index.md).
+- [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
-- Understand how to [programmatically create policies](programmatically-create.md).
-- Learn how to [remediate non-compliant resources](remediate-resources.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](remediate-resources.md)öğrenin.
+- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

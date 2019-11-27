@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce like pattern
-description: This sample policy definition requires that resources meet the like pattern defined in a parameter for naming conventions.
+title: Örnek-model gibi zorla
+description: Bu örnek ilke tanımı, kaynakların adlandırma kuralları için bir parametrede tanımlanan benzer bir model ile buluşmasını gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: df72db59e0370e82ca9f4aff199498ffdf06d834
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463602"
 ---
-# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Sample - Enforce like pattern for naming conventions
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Örnek-adlandırma kuralları için LIKE deseninin uygulanmasını sağlamak
 
 Kaynak adlarının adlandırma kuralları için benzer bir desenle eşleşmesini zorunlu tutun. İzin verilen benzer deseni parametre olarak belirtin.
 
@@ -24,7 +24,7 @@ Kaynak adlarının adlandırma kuralları için benzer bir desenle eşleşmesini
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

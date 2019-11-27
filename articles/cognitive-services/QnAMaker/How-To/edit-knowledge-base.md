@@ -1,7 +1,7 @@
 ---
-title: Edit a knowledge base - QnA Maker
+title: Bilgi Bankası - soru-cevap Oluşturucu Düzenle
 titleSuffix: Azure Cognitive Services
-description: QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
+description: Soru-cevap Oluşturucu, kullanımı kolay bir düzenleme deneyimi sunarak bilgi bankanızı içeriğini yönetmenizi sağlar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,92 +18,92 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326795"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Edit a knowledge base in QnA Maker
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>Soru-cevap Oluşturucu, Bilgi Bankası Düzenle
 
-QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
+Soru-cevap Oluşturucu, kullanımı kolay bir düzenleme deneyimi sunarak bilgi bankanızı içeriğini yönetmenizi sağlar.
 
 <a name="add-datasource"></a>
 
-## <a name="edit-your-knowledge-base-content"></a>Edit your knowledge base content
+## <a name="edit-your-knowledge-base-content"></a>Bilgi Bankası içeriğinizi düzenleyin
 
-1.  Select **My knowledge bases** in the top navigation bar. 
+1.  Üst gezinti çubuğunda **bilgi tabanlarımı** seçin. 
 
-    You can see all the services you created or shared with you sorted in the descending order of the **last modified** date.
+    Oluşturduğunuz veya paylaştığınız tüm hizmetleri, **son değiştirilme** tarihinin azalan sırasına göre görebilirsiniz.
 
-    ![My Knowledge Bases](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    ![My bilgi Bankalarından](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Select a particular knowledge base to make edits to it.
+1. Düzenlemeler yapmak için belirli bir Bilgi Bankası'nı seçin.
  
-1. Select **Settings**. Here you can edit mandatory field Service Name.
+1. **Ayarlar**' ı seçin. Burada zorunlu alan hizmet adını düzenleyebilirsiniz.
   
     |Hedef|Eylem|
     |--|--|
-    |Add URL|You can add new URLs to add new FAQ content to Knowledge base by clicking **Manage knowledge base -> '+ Add URL'** link.|
-    |Delete URL|You can delete existing URLs by selecting the delete icon, the trash can.|
-    |Refresh content|If you want your knowledge base to crawl the latest content of existing URLs, select the **Refresh** checkbox. This will update the knowledge base with latest URL content once. This is not setting a regular schedule of updates.|
-    |Add file|You can add a supported file document to be part of a knowledge base, by selecting **Manage knowledge base**, then selecting **+ Add File**|
-    |İçeri Aktarma|You can also import any existing knowledge base by selecting **Ímport Knowledge base** button. |
-    |Güncelleştir|Updating of knowledge base depends on **management pricing tier** used while creating QnA Maker service associated with your knowledge base. You can also update the management tier from Azure portal if required.
+    |URL ekle|Bilgi bankasını **Yönet-> ' + URL Ekle '** bağlantısına tıklayarak Bilgi Bankası 'na yenı bir SSS içeriği eklemek Için yeni URL 'ler ekleyebilirsiniz.|
+    |URL Sil|Var olan URL'ler Sil simgesini seçerek silebilirsiniz, çöp kutusu.|
+    |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
+    |Dosya Ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
+    |İçeri Aktarma|Ayrıca, **Ímport Bilgi Bankası** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
+    |Güncelleştirme|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Gerekli olursa yönetim katmanı Azure Portal'dan da güncelleştirebilirsiniz.
 
-1. Once you are done making changes to the knowledge base, select **Save and train** in the top right corner of the page in order to persist the changes.    
+1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.    
 
-    ![Save and Train](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![Kaydet ve eğitme](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!CAUTION]
-    >If you leave the page before selecting **Save and train**, all changes will be lost.
+    >**Kaydet ve eğitme**seçmeden önce sayfadan ayrılırsanız tüm değişiklikler kaybedilir.
 
 ## <a name="add-a-qna-pair"></a>Soru-Cevap çifti ekleme
 
-On the **EDIT** page, select **Add QnA pair** to add a new row to the knowledge base table.
+Bilgi Bankası tablosuna yeni bir satır eklemek için **Düzenle** sayfasında **QNA Pair Ekle** ' yi seçin.
 
-![Add QnA pair](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+![Soru-cevap çifti Ekle](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-## <a name="delete-a-qna-pair"></a>Delete a QnA pair
+## <a name="delete-a-qna-pair"></a>Soru-cevap çifti Sil
 
-To delete a QnA, click the **delete** icon on the far right of the QnA row. This is a permanent operation. It can't be undone. Consider exporting your KB from the **Publish** page before deleting pairs. 
+Bir QnA 'yi silmek için QnA satırının en sağındaki **Sil** simgesine tıklayın. Bu kalıcı bir işlemdir. Geri alınamaz. Çiftleri silinmeden önce **Yayımla** sayfasından KB 'nizi dışarı aktarmayı düşünün. 
 
-![Delete QnA pair](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![Soru-cevap çifti Sil](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="add-alternate-questions"></a>Add alternate questions
+## <a name="add-alternate-questions"></a>Diğer sorular ekleyin
 
-Add alternate questions to an existing QnA pair to improve the likelihood of a match to a user query.
+Bir kullanıcı sorgu için bir eşleşme olasılığını artırmak için var olan bir soru-cevap çifti diğer sorular ekleyin.
 
-![Add Alternate Questions](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+![Diğer sorular ekleyin](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="add-metadata"></a>Add metadata
+## <a name="add-metadata"></a>meta veri ekleme
 
-Add metadata pairs by first selecting **View options**, then selecting **Show metadata**. This displays the metadata column. Next, select the **+** sign to add a metadata pair. This pair consists of one key and one value.
+Önce **Görünüm seçeneklerini**belirleyip **meta verileri göster**' i seçerek meta veri çiftleri ekleyin. Bu, meta veri sütununu görüntüler. Sonra, bir meta veri çifti eklemek için **+** işaretini seçin. Bu çift bir anahtar ve bir değer içerir.
 
-![Add Metadata](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+![Meta veri ekleme](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 > [!TIP]
-> Make sure to periodically Save and train the knowledge base after making edits to avoid losing changes.
+> Düzenli olarak kaydedin ve değişiklikleri kaybetmek istemiyorsanız düzenlemeler yaptıktan sonra Bilgi Bankası eğitme emin olun.
 
-## <a name="manage-large-knowledge-bases"></a>Manage large knowledge bases
+## <a name="manage-large-knowledge-bases"></a>Büyük bilgi bankalarından yönetme
 
-* **Data source groups**: The QnAs are grouped by the data source from which they were extracted. You can expand or collapse the data source.
+* **Veri kaynağı grupları**: qnas, ayıklandıkları veri kaynağına göre gruplandırılır. Genişlet veya daralt veri kaynağı.
 
-    ![Use the QnA Maker data source bar to collapse and expand data source questions and answers](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Veri kaynağı sorularını ve yanıtlarını daraltmak ve genişletmek için Soru-Cevap Oluşturma veri kaynağı çubuğunu kullanın](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Search knowledge base**: You can search the knowledge base by typing in the text box at the top of the Knowledge Base table. Click enter to search on the question, answer, or metadata content. Click on the X icon to remove the search filter.
+* **Bilgi Bankası ara**: Bilgi Bankası tablosunun en üstündeki metin kutusuna yazarak bilgi bankasında arama yapabilirsiniz. Soru, yanıt veya meta veri içeriğini aramak için ENTER'a tıklayın. Arama filtresi kaldırmak için X simgesine tıklayın.
 
-    ![Use the QnA Maker search box above the questions and answers to reduce the view to only filter-matching items](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Görünümü yalnızca filtre eşleme öğelerine düşürmek için soruların ve yanıtların üzerindeki Soru-Cevap Oluşturma arama kutusunu kullanın](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Pagination**: Quickly move through data sources to manage large knowledge bases
+* **Sayfalandırma**: büyük bilgi bankaslarını yönetmek için veri kaynaklarından hızlıca geçiş yapın
 
-    ![Use the QnA Maker pagination features above the questions and answers to move through pages of questions and answers](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Soruların ve yanıtların sayfalarında gezinmek için soruların ve yanıtların üzerinde Soru-Cevap Oluşturma sayfalandırma özelliklerini kullanın](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Delete knowledge bases
+## <a name="delete-knowledge-bases"></a>Bilgi bankaları Sil
 
-Deleting a knowledge base (KB) is a permanent operation. It can't be undone. Before deleting a knowledge base, you should export the knowledge base from the **Settings** page of the QnA Maker portal. 
+Bilgi Bankası (KB) silinmesi kalıcı bir işlemdir. Geri alınamaz. Bilgi Bankası 'nı silmeden önce, Bilgi Bankası 'nı Soru-Cevap Oluşturma portalının **Ayarlar** sayfasından dışarı aktarmanız gerekir. 
 
-If you share your KB with [collaborators](collaborate-knowledge-base.md) then delete it, everyone loses access to the KB. 
+KB 'nizi [ortak çalışanlarla](collaborate-knowledge-base.md) paylaşıyorsanız, herkes KB 'ye erişimi kaybeder. 
 
 ## <a name="delete-azure-resources"></a>Azure kaynaklarını silme 
 
-If you delete any of the Azure resources used for your QnA Maker knowledge bases, the knowledge bases will no longer function. Before deleting any resources, make sure you export your knowledge bases from the **Settings** page. 
+Soru-cevap Oluşturucu, bilgi bankaları için kullanılan Azure kaynakları silerseniz, bilgi bankalarından artık çalışmaz. Herhangi bir kaynağı silmeden önce, bilgi temellerinizi **Ayarlar** sayfasından dışarı aktardığınızdan emin olun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Collaborate on a knowledge base](./collaborate-knowledge-base.md)
+> [Bilgi Bankası 'nda işbirliği yapma](./collaborate-knowledge-base.md)

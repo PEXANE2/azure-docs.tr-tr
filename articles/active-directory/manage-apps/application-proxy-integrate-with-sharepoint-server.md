@@ -23,7 +23,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74275455"
 ---
-# <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme
+# <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD uygulama ara sunucusu ile SharePoint uzaktan erişimi etkinleştirme
 
 Bu adım adım kılavuzda, şirket içi SharePoint grubunun Azure Active Directory (Azure AD) uygulama proxy 'Si ile nasıl tümleştirileceği açıklanmaktadır.
 
@@ -55,7 +55,7 @@ Bu makale aşağıdaki değerleri kullanır:
 
 Bu adımda, Azure Active Directory kiracınızda uygulama proxy 'Si kullanan bir uygulama oluşturacaksınız. Dış URL 'yi ayarlarsınız ve ikisi de SharePoint 'te daha sonra kullanılan iç URL 'YI belirtirsiniz.
 
-1. Aşağıdaki ayarlarla açıklandığı gibi uygulamayı oluşturun. Adım adım yönergeler için bkz: [Azure AD uygulama proxy'si kullanarak uygulamaları yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+1. Aşağıdaki ayarlarla açıklandığı gibi uygulamayı oluşturun. Adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    * **Iç URL**: `https://sharepoint`gibi SharePoint 'te daha sonra ayarlanacak SharePoint iç URL 'si.
    * **Ön kimlik doğrulaması**: Azure Active Directory
    * **Üst bilgilerdeki URL 'Leri çevir**: Hayır
@@ -65,14 +65,14 @@ Bu adımda, Azure Active Directory kiracınızda uygulama proxy 'Si kullanan bir
 
 1. Uygulamanız yayımlandıktan sonra, çoklu oturum açma ayarlarını yapılandırmak için aşağıdaki adımları izleyin:
 
-   1. Uygulama sayfasında portalında seçin **çoklu oturum açma**.
+   1. Portaldaki uygulama sayfasında, **Çoklu oturum açma**' yı seçin.
    1. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
    1. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın. Bu örnekte, değer `HTTP/sharepoint`.
    1. **Temsilci atanan oturum kimliği**altında Active Directory orman yapılandırmanız için en uygun seçeneği belirleyin. Örneğin, ormanınızda tek bir Active Directory etki alanınız varsa Şirket **ıçı Sam hesap adı** ' nı (aşağıdaki ekran görüntüsünde gösterildiği gibi) seçin. Ancak kullanıcılarınız SharePoint ve uygulama proxy Bağlayıcısı sunucularıyla aynı etki alanında değilse **Şirket içi Kullanıcı asıl adı** ' nı (ekran görüntüsünde gösterilmez) seçin.
 
    ![SSO için tümleşik Windows kimlik doğrulamasını yapılandırma](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
-1. Uygulamanızı ayarlama işlemini sonlandırmak için şuraya gidin: **kullanıcılar ve gruplar** bölümünde ve bu uygulamaya erişmek için kullanıcı atama. 
+1. Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın. 
 
 ## <a name="step-2-configure-the-sharepoint-web-application"></a>2\. Adım: SharePoint Web uygulamasını yapılandırma
 
@@ -103,7 +103,7 @@ SharePoint Web uygulaması, Kerberos ile yapılandırılmalı ve Azure AD Uygula
        ```
 
     2. **SharePoint Yönetim Merkezi** sitesini açın.
-    1. Altında **sistem ayarlarını**seçin **alternatif erişim eşlemelerini yapılandırma**. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
+    1. **Sistem ayarları**altında, **Alternatif erişim eşlemelerini Yapılandır**' ı seçin. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
     1. Ekranı yeni Web uygulamasıyla filtreleyin ve şuna benzer bir şey görmediğinizi onaylayın:
 
        ![Web uygulaması için alternatif erişim eşlemeleri](./media/application-proxy-integrate-with-sharepoint-server/new-webapp-aam.png)
@@ -126,7 +126,7 @@ SharePoint Web uygulaması, Kerberos ile yapılandırılmalı ve Azure AD Uygula
        ```
 
     2. **SharePoint Yönetim Merkezi** sitesini açın.
-    1. Altında **sistem ayarlarını**seçin **alternatif erişim eşlemelerini yapılandırma**. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
+    1. **Sistem ayarları**altında, **Alternatif erişim eşlemelerini Yapılandır**' ı seçin. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
     1. Genişletilmiş Web uygulamasıyla ekranı filtreleyin ve şuna benzer bir şey görmediğinizi onaylayın:
 
         ![Genişletilmiş uygulamanın alternatif erişim eşlemeleri](./media/application-proxy-integrate-with-sharepoint-server/extend-webapp-aam.png)
@@ -136,7 +136,7 @@ SharePoint Web uygulaması, Kerberos ile yapılandırılmalı ve Azure AD Uygula
 SharePoint Web uygulamasının uygulama havuzunu çalıştıran hesabı belirlemek ve bir etki alanı hesabı olduğundan emin olmak için şu adımları izleyin:
 
 1. **SharePoint Yönetim Merkezi** sitesini açın.
-1. Git **güvenlik** seçip **hizmet hesaplarını yapılandırın**.
+1. **Güvenlik** ' e gidin ve **hizmet hesaplarını yapılandır**' ı seçin.
 1. **Web uygulaması havuzunu seçin-YourWebApplicationName**.
 
    ![Bir hizmet hesabı yapılandırma seçenekleri](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
@@ -176,7 +176,7 @@ SharePoint uygulama havuzu hesabı `Contoso\spapppool`için SPN `HTTP/sharepoint
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-`Setspn` komutu SPN 'YI eklemeden önce arar. SPN zaten varsa **Yinelenen BIR SPN değeri** hatası görürsünüz. Bu durumda, doğru uygulama havuzu hesabı altında ayarlanmamışsa mevcut SPN 'YI kaldırmayı göz önünde bulundurun. `Setspn` komutunu-L seçeneğiyle çalıştırarak SPN 'nin başarıyla eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi için bkz. [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
+`Setspn` komutu SPN 'YI eklemeden önce arar. SPN zaten varsa **Yinelenen BIR SPN değeri** hatası görürsünüz. Bu durumda, doğru uygulama havuzu hesabı altında ayarlanmamışsa mevcut SPN 'YI kaldırmayı göz önünde bulundurun. `Setspn` komutunu-L seçeneğiyle çalıştırarak SPN 'nin başarıyla eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>Bağlayıcının SharePoint uygulama havuzu hesabına eklenen SPN 'ye devredilmek için güvenilir olduğundan emin olun
 
@@ -187,7 +187,7 @@ KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adı
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından Active Directory Kullanıcıları ve Bilgisayarları ' nı açın.
 1. Azure AD proxy bağlayıcısını çalıştıran bilgisayarı bulun. Bu örnekte, SharePoint sunucusudur.
 1. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
-1. Atama seçeneklerinin **yalnızca belirtilen hizmetlere temsilciliğini sağlamak üzere bu bilgisayara güvenecek**şekilde ayarlandığından emin olun. Ardından, **herhangi bir kimlik doğrulama protokolünü kullan**.
+1. Atama seçeneklerinin **yalnızca belirtilen hizmetlere temsilciliğini sağlamak üzere bu bilgisayara güvenecek**şekilde ayarlandığından emin olun. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 1. **Ekle** düğmesini seçin, **Kullanıcılar veya bilgisayarlar**' ı seçin ve SharePoint uygulama havuzu hesabını bulun. Örneğin: `Contoso\spapppool`.
 1. SPN'ler listesinde, daha önce oluşturduğunuz hizmet hesabı için bir tane seçin.
 1. **Tamam** ' ı seçin ve sonra değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.
@@ -202,5 +202,5 @@ Sitede oturum açma çalışmıyorsa, bağlayıcı günlüklerinde sorun hakkın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD uygulama proxy'sinde özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md)
-* [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)
+* [Azure AD Uygulama Ara Sunucusu özel etki alanlarıyla çalışma](application-proxy-configure-custom-domain.md)
+* [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)

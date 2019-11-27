@@ -27,7 +27,7 @@ Front Door 7. Katmanda veya HTTP/HTTPS katmanında çalışır ve genel bağlant
 >[!NOTE]
 > Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. DNS tabanlı genel yönlendirme istiyorsanız ve Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma") veya HTTP/HTTPS isteği başına uygulama katmanı işleme özellikleri gereksinimleriniz **yoksa**, [Traffic Manager](../traffic-manager/traffic-manager-overview.md)'ı inceleyin. Bölgenizdeki sunucular arasında yük dengeleme istiyorsanız, uygulama katmanı için [Application Gateway](../application-gateway/application-gateway-introduction.md)’i, ağ katmanı yük dengelemesi için de [Load Balancer](../load-balancer/load-balancer-overview.md)’ı gözden geçirin. Uçtan uca senaryolarınızda bu çözümleri bir arada da kullanabilirsiniz.
 >
-> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Front Door aşağıdaki özellikleri içerir:
 
@@ -59,16 +59,16 @@ Front Door uçta SSL sonlandırmayı destekler. Başka bir deyişle, tek tek kul
 Front Door özel etki alanı adlarında HTTPS’yi de destekler. Trafiğiniz için Front Door tarafından yönetilen sertifikaları seçerek veya kendi özel SSL sertifikanızı karşıya yükleyerek bu özelliği kullanabilirsiniz.
 
 ## <a name="application-layer-security"></a>Uygulama katmanı güvenliği
-Azure Front Door allows you to author custom Web Application Firewall (WAF) rules for access control to protect your HTTP/HTTPS workload from exploitation based on client IP addresses, country code, and http parameters. Buna ek olarak, Front Door kötü amaçlı bot trafiğiyle mücadele etmek için hız sınırlaması kuralları oluşturmanızı da sağlar. For more information about Web Application Firewall, see [What is Azure Web Application Firewall?](../web-application-firewall/overview.md)
+Azure ön kapısı, HTTP/HTTPS iş yükünüzü istemci IP adresleri, ülke kodu ve http parametrelerine göre kullanım açısından korumak için erişim denetimi için özel Web uygulaması güvenlik duvarı (WAF) kuralları yazmanıza izin verir. Buna ek olarak, Front Door kötü amaçlı bot trafiğiyle mücadele etmek için hız sınırlaması kuralları oluşturmanızı da sağlar. Web uygulaması güvenlik duvarı hakkında daha fazla bilgi için bkz. [Azure Web uygulaması güvenlik duvarı nedir?](../web-application-firewall/overview.md)
 
 Front Door platformunun kendisi Temel [Azure DDoS Koruması](../virtual-network/ddos-protection-overview.md) ile korunur. Korumayı artırmak için, sanal ağlarınızda Azure DDoS Koruması Standart etkinleştirilebilir ve kaynakları ağ katmanı (TCP/UDP) saldırılarına karşı otomatik ayar ve risk azaltma yoluyla koruma altına alır. Front Door bir 7. katman ters ara sunucudur; web trafiğinin yalnızca arka uçlardan geçmesine izin verir ve diğer trafik türlerini varsayılan olarak engeller.
 
 ## <a name="url-redirection"></a>URL yeniden yönlendirme
-With the strong industry push on supporting only secure communication, web applications are expected to automatically redirect any HTTP traffic to HTTPS. This ensures that all communication between the users and the application occurs over an encrypted path. 
+Yalnızca güvenli iletişimi desteklemeye yönelik güçlü sektör gönderimi sayesinde, Web uygulamalarının HTTP trafiğinin otomatik olarak HTTPS 'ye yönlendirilmesini bekleniyor. Bu, kullanıcılar ve uygulama arasındaki tüm iletişimin şifreli bir yol üzerinde gerçekleşmesini sağlar. 
 
-Traditionally, application owners have dealt with this requirement by creating a dedicated service, whose sole purpose was to redirect requests it receives on HTTP to HTTPS. Azure Front Door Service supports the ability to redirect traffic from HTTP to HTTPS. Bu uygulama yapılandırmasını basitleştirir, kaynak kullanımını en iyi duruma getirir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler. URL redirection from Azure Front Door Service is not limited to HTTP to HTTPS redirection alone, but also to redirect to a different hostname, redirecting to a different path, or even redirecting to a new query string in the URL.
+Geleneksel olarak, uygulama sahipleri, tek amacı HTTP üzerinde aldığı istekleri HTTPS 'ye yeniden yönlendirmek üzere olan adanmış bir hizmet oluşturarak bu gereksinimle ilgilendi. Azure ön kapı hizmeti, trafiği HTTP 'den HTTPS 'ye yeniden yönlendirme özelliğini destekler. Bu uygulama yapılandırmasını basitleştirir, kaynak kullanımını en iyi duruma getirir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler. Azure ön kapısı hizmetinden URL yeniden yönlendirme, tek başına HTTP-HTTPS yönlendirmesi için sınırlı değildir, aynı zamanda farklı bir ana bilgisayar adına yeniden yönlendirme, farklı bir yola yönlendirme veya hatta URL 'de yeni bir sorgu dizesine yönlendirme.
 
-For more information, see [redirecting traffic](front-door-url-redirect.md) with Azure Front Door Service.
+Daha fazla bilgi için bkz. Azure ön kapı hizmeti ile [trafiği yeniden yönlendirme](front-door-url-redirect.md) .
 
 ## <a name="url-rewrite"></a>URL yeniden yazma
 Front Door, isteği arka uca yönlendirecek şekilde hazırlarken isteğe bağlı bir Özel İletme Yolu yapılandırmanıza olanak tanıyarak [URL yeniden yazma](front-door-url-rewrite.md) desteği sağlar. Front Door, istek arka ucunuza iletildiğinde gönderilecek Host üst bilgisini yapılandırmanıza da izin verir.

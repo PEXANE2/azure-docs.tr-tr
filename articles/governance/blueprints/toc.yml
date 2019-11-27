@@ -203,7 +203,7 @@
 - name: Sorun giderme
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
-- name: Başvurular
+- name: Başvuru
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

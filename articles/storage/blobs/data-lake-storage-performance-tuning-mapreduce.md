@@ -1,6 +1,6 @@
 ---
-title: 'Tune performance: MapReduce, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 MapReduce Performance Tuning Guidelines
+title: 'Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2. | Microsoft Docs'
+description: Azure Data Lake Storage 2. MapReduce performansı ayarlama yönergeleri
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,97 +15,97 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327921"
 ---
-# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: MapReduce, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2.
 
-Understand the factors that you should consider when you tune the performance of Map Reduce jobs. This article covers a range of performance tuning guidelines.
+Harita azaltma işlerinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Bu makalede, bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
-* **Using MapReduce on HDInsight**.  For more information, see [Use MapReduce in Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md)
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
+* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+* **HDInsight üzerinde MapReduce kullanma**.  Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop 'Ta MapReduce kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
+* **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için bkz. [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>Parametreler
 
-When running MapReduce jobs, here are the parameters that you can configure to increase performance on Data Lake Storage Gen2:
+MapReduce işlerini çalıştırırken, Data Lake Storage 2. performansı artırmak için yapılandırabileceğiniz parametreler şunlardır:
 
-* **Mapreduce.map.memory.mb** – The amount of memory to allocate to each mapper
-* **Mapreduce.job.maps** – The number of map tasks per job
-* **Mapreduce.reduce.memory.mb** – The amount of memory to allocate to each reducer
-* **Mapreduce.job.reduces** – The number of reduce tasks per job
+* **MapReduce. Map. Memory. MB** – her bir Eşleyici 'e ayrılacak bellek miktarı
+* **MapReduce. job. Maps** : iş başına harita görevi sayısı
+* **MapReduce. küçültme. Memory. MB** – her bir Reducer ayrılacak bellek miktarı
+* **MapReduce. job. azaltması** : iş başına görev azaltma sayısı
 
-**Mapreduce.map.memory / Mapreduce.reduce.memory** This number should be adjusted based on how much memory is needed for the map and/or reduce task.  The default values of mapreduce.map.memory and mapreduce.reduce.memory can be viewed in Ambari via the Yarn configuration.  In Ambari, navigate to YARN and view the Configs tab.  The YARN memory will be displayed.  
+**MapReduce. Map. Memory/MapReduce. küçültme. bellek** Bu sayı, eşleme için gereken bellek miktarına ve/veya görevi azaltmaya göre ayarlanmalıdır.  MapReduce. Map. Memory ve MapReduce. küçültme. belleğin varsayılan değerleri, Yarn yapılandırması aracılığıyla ambarı 'nda görüntülenebilir.  Ambarı 'nda YARN ' ye gidin ve configs sekmesini görüntüleyin.  YARN belleği görüntülenecektir.  
 
-**Mapreduce.job.maps / Mapreduce.job.reduces** This will determine the maximum number of mappers or reducers to be created.  The number of splits will determine how many mappers will be created for the MapReduce job.  Therefore, you may get less mappers than you requested if there are less splits than the number of mappers requested.       
+**MapReduce. job. Maps/MapReduce. job. azaltıyor** Bu, oluşturulacak maksimum Map, veya azaltıcının sayısını belirleyecek.  Bölme sayısı, MapReduce işi için kaç tane eşleme oluşturulacağını saptacaktır.  Bu nedenle, istenen mapgt sayısından daha az bölme varsa, istenenden daha az mapto alabilirsiniz.       
 
-## <a name="guidance"></a>Kılavuz
+## <a name="guidance"></a>Rehber
 
 > [!NOTE]
-> The guidance in this document assumes that your application is the only application running on your cluster.
+> Bu belgedeki kılavuz, uygulamanızın kümenizde çalışan tek uygulama olduğunu varsayar.
 
-**Step 1: Determine number of jobs running**
+**1. Adım: çalışan işlerin sayısını belirleme**
 
-By default, MapReduce will use the entire cluster for your job.  You can use less of the cluster by using less mappers than there are available containers.        
+Varsayılan olarak, MapReduce, işiniz için tüm kümeyi kullanır.  Kullanılabilir kapsayıcılardan daha az mapın kullanarak, daha az sayıda küme kullanabilirsiniz.        
 
-**Step 2: Set mapreduce.map.memory/mapreduce.reduce.memory**
+**2. Adım: MapReduce. Map. Memory/MapReduce. küçültme. bellek ' i ayarlayın**
 
-The size of the memory for map and reduce tasks will be dependent on your specific job.  You can reduce the memory size if you want to increase concurrency.  The number of concurrently running tasks depends on the number of containers.  By decreasing the amount of memory per mapper or reducer, more containers can be created, which enable more mappers or reducers to run concurrently.  Decreasing the amount of memory too much may cause some processes to run out of memory.  If you get a heap error when running your job, you should increase the memory per mapper or reducer.  You should consider that adding more containers will add extra overhead for each additional container, which can potentially degrade performance.  Another alternative is to get more memory by using a cluster that has higher amounts of memory or increasing the number of nodes in your cluster.  More memory will enable more containers to be used, which means more concurrency.  
+Eşleme için bellek boyutu ve görevlerin azaltılması, belirli bir işinize göre değişir.  Eşzamanlılık arttırmak istiyorsanız bellek boyutunu azaltabilirsiniz.  Eşzamanlı çalışan görevlerin sayısı, kapsayıcı sayısına bağlıdır.  Eşleyici veya Reducer başına bellek miktarını azaltarak, daha fazla eşleme oluşturulabilir ve bu da daha fazla mapbir veya azaltıcının 'ın eşzamanlı olarak çalışmasını sağlar.  Bellek miktarını çok fazla azaltmak, bazı işlemlerin belleğin tükenmesine neden olabilir.  İşinizi çalıştırırken bir yığın hatası alırsanız, Eşleyici veya Reducer başına belleği artırmanız gerekir.  Daha fazla kapsayıcı eklemenin, performansı düşürebilecek ek bir kapsayıcı için ek yük ekleytireceği göz önünde bulundurmanız gerekir.  Diğer bir seçenek de daha yüksek miktarda belleğe sahip olan veya kümenizdeki düğüm sayısını artıran bir küme kullanarak daha fazla bellek edinmaktır.  Daha fazla bellek daha fazla kapsayıcının kullanılmasını sağlayacaktır, bu da daha fazla eşzamanlılık anlamına gelir.  
 
-**Step 3: Determine Total YARN memory**
+**3. Adım: Toplam YARN belleği belirleme**
 
-To tune mapreduce.job.maps/mapreduce.job.reduces, you should consider the amount of total YARN memory available for use.  This information is available in Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  You should multiply the YARN memory with the number of nodes in your cluster to get the total YARN memory.
+MapReduce. job. Maps/MapReduce. job. azaltıyor olması için, kullanılabilecek toplam YARN bellek miktarını dikkate almalısınız.  Bu bilgiler, ambarı 'nda mevcuttur.  YARN 'ye gidin ve configs sekmesini görüntüleyin.  YARN belleği Bu pencerede görüntülenir.  Toplam YARN belleği almak için, YARN belleğini kümenizdeki düğüm sayısıyla çarpmalısınız.
 
     Total YARN memory = nodes * YARN memory per node
 
-If you are using an empty cluster, then memory can be the total YARN memory for your cluster.  If other applications are using memory, then you can choose to only use a portion of your cluster’s memory by reducing the number of mappers or reducers to the number of containers you want to use.  
+Boş bir küme kullanıyorsanız, bellek kümeniz için toplam YARN bellek olabilir.  Diğer uygulamalar bellek kullanıyorsa, kullanmak istediğiniz kapsayıcı sayısına göre Map, veya azaltıcının sayısını azaltarak yalnızca kümenizin belleğinin bir bölümünü kullanabilirsiniz.  
 
-**Step 4: Calculate number of YARN containers**
+**4. Adım: YARN kapsayıcıları sayısını hesaplama**
 
-YARN containers dictate the amount of concurrency available for the job.  Take total YARN memory and divide that by mapreduce.map.memory.  
+YARN kapsayıcıları, iş için kullanılabilir eşzamanlılık miktarını belirler.  Toplam YARN belleği alıp MapReduce. Map. Memory ile ayırın.  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**Step 5: Set mapreduce.job.maps/mapreduce.job.reduces**
+**5. Adım: MapReduce. job. Maps/MapReduce. job. azaltımı ayarlayın**
 
-Set mapreduce.job.maps/mapreduce.job.reduces to at least the number of available containers.  You can experiment further by increasing the number of mappers and reducers to see if you get better performance.  Keep in mind that more mappers will have additional overhead so having too many mappers may degrade performance.  
+MapReduce. job. Maps/MapReduce. job., en az kullanılabilir kapsayıcı sayısına göre azaltılır.  Daha iyi performans elde ediyorsanız, bkz. mapbir ve azaltıcının sayısını artırarak daha fazla deneyebilirsiniz.  Daha fazla mapa 'nın daha fazla ek yüke sahip olacağını aklınızda bulundurun. bu nedenle, çok fazla eşleme olması performansı düşürebilir.  
 
-CPU scheduling and CPU isolation are turned off by default so the number of YARN containers is constrained by memory.
+CPU zamanlaması ve CPU yalıtımı varsayılan olarak kapalıdır, böylece YARN kapsayıcılarının sayısı bellekle sınırlandırılır.
 
-## <a name="example-calculation"></a>Example calculation
+## <a name="example-calculation"></a>Örnek hesaplama
 
-Let’s assume that we have a cluster composed of 8 D14 nodes, and we want to run an I/O intensive job.  Here are the calculations you should do:
+8 D14 düğümden oluşan bir kümeniz olduğunu ve g/ç yoğunluklu bir işi çalıştırmak istiyoruz.  Yapmanız gereken hesaplamalar şunlardır:
 
-**Step 1: Determine number of jobs running**
+**1. Adım: çalışan işlerin sayısını belirleme**
 
-In this example, let's assume that our job is the only job that is running.  
+Bu örnekte, işimizin çalışan tek iş olduğunu varsayalım.  
 
-**Step 2: Set mapreduce.map.memory/mapreduce.reduce.memory**
+**2. Adım: MapReduce. Map. Memory/MapReduce. küçültme. bellek ' i ayarlayın**
 
-In this example, we are running an I/O intensive job and decide that 3GB of memory for map tasks will be sufficient.
+Bu örnekte, bir g/ç yoğun işi çalıştırdık ve eşleme görevleri için bir dizi belleğin yeterli olacağını seçiyoruz.
 
     mapreduce.map.memory = 3GB
 
-**Step 3: Determine Total YARN memory**
+**3. Adım: Toplam YARN belleği belirleme**
 
     Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**Step 4: Calculate # of YARN containers**
+**4. Adım: YARN kapsayıcıları sayısını hesaplama**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
-**Step 5: Set mapreduce.job.maps/mapreduce.job.reduces**
+**5. Adım: MapReduce. job. Maps/MapReduce. job. azaltımı ayarlayın**
 
     mapreduce.map.jobs = 256
 
-## <a name="examples-to-run"></a>Examples to run
+## <a name="examples-to-run"></a>Çalıştırılacak örnekler
 
-To demonstrate how MapReduce runs on Data Lake Storage Gen2, below is some sample code that was run on a cluster with the following settings:
+MapReduce 'nin Data Lake Storage 2. nasıl çalıştığını göstermek için aşağıdaki ayarlara sahip bir kümede çalıştırılan bazı örnek kodlar aşağıda verilmiştir:
 
-* 16 node D14v2
-* Hadoop cluster running HDI 3.6
+* 16 düğüm D14v2
+* HDI 3,6 çalıştıran Hadoop kümesi
 
-For a starting point, here are some example commands to run MapReduce Teragen, Terasort, and Teravalidate.  You can adjust these commands based on your resources.
+Başlangıç noktası için, MapReduce Teragen, Terasort ve Teravalidate çalıştırmak için bazı örnek komutlar aşağıda verilmiştir.  Kaynaklarınıza göre bu komutları ayarlayabilirsiniz.
 
 **Teragen**
 

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for images REST API and Python - Bing Image Search'
+title: 'Hızlı başlangıç: görüntüleri arama REST API ve Python-Bing Resim Arama'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send image search requests to the Bing Image Search REST API using Python, and receive JSON responses.
+description: Python kullanarak Bing Resim Arama REST API görüntü arama istekleri göndermek ve JSON yanıtlarını almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,11 +18,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323808"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Quickstart: Search for images using the Bing Image Search REST API and Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Resim Arama REST API ve Python kullanarak görüntü arama
 
-Use this quickstart to start sending search requests to the Bing Image Search API. This Python application sends a search query to the API, and displays the URL of the first image in the results. While this application is written in Python, the API is a RESTful web service compatible with most programming languages.
+Bing Resim Arama API'si arama istekleri göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu Python uygulaması, API 'ye bir arama sorgusu gönderir ve sonuçlarda ilk görüntünün URL 'sini görüntüler. Bu uygulama Python 'da yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)'da bir Jupyter not defteri olarak çalıştırabilirsiniz:
+Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)’da bir Jupyter not defteri olarak çalıştırabilirsiniz:
 
 [![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -32,15 +32,15 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Python 2.x or 3.x](https://www.python.org/)
-* The [Python Imaging Library (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
-* [matplotlib](https://matplotlib.org/) 
+* [Python 2. x veya 3. x](https://www.python.org/)
+* [Python görüntüleme kitaplığı (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
+* [Matplotlib](https://matplotlib.org/) 
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Create a new Python file in your favorite IDE or editor, and import the following modules. Create a variable for your subscription key, search endpoint, and search term.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki modülleri içeri aktarın. Abonelik anahtarınız, arama uç noktası ve arama teriminiz için bir değişken oluşturun.
 
     ```python
     import requests
@@ -53,21 +53,21 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
     search_term = "puppies"
     ```
 
-2. Add your subscription key to the `Ocp-Apim-Subscription-Key` header by creating a dictionary, and adding the key as a value. 
+2. Bir sözlük oluşturarak ve anahtarı bir değer olarak ekleyerek abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üst bilgisine ekleyin. 
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="create-and-send-a-search-request"></a>Create and send a search request
+## <a name="create-and-send-a-search-request"></a>Arama isteği oluştur ve Gönder
 
-1. Create a dictionary for the search request's parameters. Add your search term to the `q` parameter. Use "public" for the `license` parameter to search for images in the public domain. Use "photo" for the `imageType` to search only for photos.
+1. Arama isteğinin parametreleri için bir sözlük oluşturun. Arama teriminizi `q` parametresine ekleyin. Genel etki alanındaki resimleri aramak için `license` parametresi için "public" kullanın. Yalnızca fotoğraflar için arama yapmak üzere `imageType` için "Photo" kullanın.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Use the `requests` library to call the Bing Image Search API. Add your header and parameters to the request, and return the response as a JSON object. Get The URLs to several thumbnail images from the response's `thumbnailUrl` field.
+2. Bing Resim Arama API'si çağırmak için `requests` kitaplığı kullanın. Üstbilgiye ve parametrelerinizi isteğe ekleyin ve yanıtı JSON nesnesi olarak döndürün. Yanıtın `thumbnailUrl` alanından birkaç küçük resim resmine ait URL 'Leri alın.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -76,13 +76,13 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
     thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
-## <a name="view-the-response"></a>View the response
+## <a name="view-the-response"></a>Yanıtı görüntüleme
 
-1. Create a new figure with four columns, and four rows using the matplotlib library. 
+1. Dört sütun ile yeni bir şekil ve Matplotlib kitaplığını kullanarak dört satır oluşturun. 
 
-2. Iterate through the figure's rows and columns, and use the PIL library's `Image.open()` method to add an image thumbnail to each space. 
+2. Şeklin satırları ve sütunları boyunca yineleme yapın ve her alana bir görüntü küçük resmi eklemek için PIL kitaplığının `Image.open()` yöntemini kullanın. 
 
-3. Use `plt.show()` to draw the figure and display the images.
+3. Şekil çizmek ve görüntüleri göstermek için `plt.show()` kullanın.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -97,7 +97,7 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
     ```
 
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Bing Resim Arama API'sinden yanıtlar JSON olarak döndürülür. Bu örnek yanıt, tek bir sonuç göstermek için kısaltıldı.
 
@@ -150,8 +150,8 @@ Bing Resim Arama API'sinden yanıtlar JSON olarak döndürülür. Bu örnek yan�
 > [!div class="nextstepaction"]
 > [Bing Resim Arama tek sayfalı uygulama öğreticisi](../tutorial-bing-image-search-single-page-app.md)
 
-* [What is the Bing Image Search API?](../overview.md)  
-* [Pricing details](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) for the Bing Search APIs. 
+* [Bing Resim Arama API'si nedir?](../overview.md)  
+* Bing Arama API'leri için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) . 
 * [Ücretsiz bir Bilişsel Hizmetler erişim anahtarı alın](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure Bilişsel Hizmetler Belgeleri](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Resim Arama API’si başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

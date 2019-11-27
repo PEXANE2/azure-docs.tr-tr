@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Java - Bing Entity Search'
+title: 'Hızlı başlangıç: Java için SDK ile varlıkları arama-Bing Varlık Arama'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Java
+description: Java için Bing Varlık Arama SDK 'Sı ile varlıkları aramak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,15 +17,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327149"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Java
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Hızlı başlangıç: Java için Bing Varlık Arama SDK ile bir arama isteği gönderme
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Java. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+Java için Bing Varlık Arama SDK ile varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)' da bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
-* The Bing Entity Search SDK for Java
+* Java için Bing Varlık Arama SDK 'Sı
 
 Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başka bir bağımlılık dosyası yönetim sistemini kullanarak yükleyin. Maven POM dosyası şu bildirimi gerektirir:
 
@@ -59,15 +59,15 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
     import java.util.List;
     ```
 
-2. Create a variable for your subscription key
+2. Abonelik anahtarınız için bir değişken oluşturun
 
     ```java
     String subscriptionKey = "your-key-here"
     ```
 
-## <a name="create-a-search-client"></a>Create a search client
+## <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
-1. Implement the `dominantEntityLookup` client, which requires your API endpoint, and an instance of the `ServiceClientCredentials` class.
+1. API uç noktanızı gerektiren `dominantEntityLookup` istemcisini ve `ServiceClientCredentials` sınıfının bir örneğini uygulayın.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -78,9 +78,9 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
     )};
     ```
 
-    To implement the `ServiceClientCredentials`, follow these steps:
+    `ServiceClientCredentials`uygulamak için aşağıdaki adımları izleyin:
 
-   1. override the `applyCredentialsFilter()` function, with a `OkHttpClient.Builder` object as a parameter. 
+   1. `applyCredentialsFilter()` işlevini parametre olarak `OkHttpClient.Builder` bir nesne ile geçersiz kılın. 
         
        ```java
        //...
@@ -92,7 +92,7 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
        //...
        ```
     
-   2. Within `applyCredentialsFilter()`, call `builder.addNetworkInterceptor()`. Create a new `Interceptor` object, and override its `intercept()` method to take a `Chain` interceptor object.
+   2. `applyCredentialsFilter()`içinde `builder.addNetworkInterceptor()`çağırın. Yeni bir `Interceptor` nesnesi oluşturun ve `Chain` bir dinleyici nesnesi almak için `intercept()` metodunu geçersiz kılın.
 
        ```java
        //...
@@ -106,7 +106,7 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
        ///...
        ```
 
-   3. Within the `intercept` function, create variables for your request. Use `Request.Builder()` to build your request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header, and return `chain.proceed()` on the request object.
+   3. `intercept` işlevi içinde, isteğiniz için değişkenler oluşturun. İsteğinizi derlemek için `Request.Builder()` kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin ve istek nesnesine `chain.proceed()` döndürün.
             
        ```java
        //...
@@ -120,9 +120,9 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
        }
        //...
        ```
-      ## <a name="send-a-request-and-receive-a-response"></a>Send a request and receive a response
+      ## <a name="send-a-request-and-receive-a-response"></a>İstek gönderme ve yanıt alma
 
-1. Create a new instance of the search client with your subscription key. use `client.entities().search()` to send a search request for the search query `satya nadella`, and get a response. 
+1. Abonelik anahtarınızla arama istemcisinin yeni bir örneğini oluşturun. Arama sorgusu `satya nadella`için bir arama isteği göndermek ve bir yanıt almak için `client.entities().search()` kullanın. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);
@@ -130,7 +130,7 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-1. If any entities were returned, convert them into a list. Iterate through them, and print the dominant entity.
+1. Herhangi bir varlık döndürülürse, bunları bir listeye dönüştürün. Aralarında yineleme yapın ve baskın varlığı yazdırın.
 
     ```java
     if (entityData.entities().value().size() > 0){
@@ -150,6 +150,6 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Bing Varlık Arama API'si nedir?](../overview.md )

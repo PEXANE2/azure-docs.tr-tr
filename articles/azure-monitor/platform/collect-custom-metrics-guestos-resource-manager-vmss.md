@@ -25,7 +25,7 @@ Bu makalede, Azure Izleyici veri deposuna bir Windows sanal makine ölçek küme
 
 Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/resource-group-overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir. 
 

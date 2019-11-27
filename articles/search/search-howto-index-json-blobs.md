@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112735"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533965"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu kullanarak JSON bloblarını dizin oluşturma
 
@@ -33,7 +33,7 @@ Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi (ayrışt
 
 JSON belgelerini dizinlemek için en kolay yöntem [Azure Portal](https://portal.azure.com/)bir Sihirbazı kullanmaktır. Azure Blob kapsayıcısında meta verileri ayrıştırarak, [**verileri Içeri aktarma**](search-import-data-portal.md) Sihirbazı varsayılan bir dizin oluşturabilir, kaynak alanları hedef dizin alanlarıyla eşleyebilir ve dizini tek bir işlemde yükleyebilir. Kaynak verilerin boyutuna ve karmaşıklığına bağlı olarak, dakikalar içinde işlemsel bir tam metin arama dizinine sahip olabilirsiniz.
 
-Aynı bölgede, tercihen Azure Bilişsel Arama ve Azure depolama için aynı Azure aboneliğini kullanmanızı öneririz.
+Azure Bilişsel Arama ve Azure Storage için, daha düşük gecikme süresi ve bant genişliği ücretlerinden kaçınmak için aynı bölge veya konumun kullanılmasını öneririz.
 
 ### <a name="1---prepare-source-data"></a>1-kaynak verileri hazırlama
 

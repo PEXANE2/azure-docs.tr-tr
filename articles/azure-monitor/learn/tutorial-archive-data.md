@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’da oturum açın.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -96,7 +96,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
 6. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
 
-7. **Kaydet**’e tıklayın.
+7. **Save (Kaydet)** düğmesine tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
@@ -137,7 +137,7 @@ Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
 9. Görüntülenen bölümde, önceki **Depolama hesabı oluşturma** adımında oluşturduğunuz depolama hesabını seçin.
 
-10. **Kaydet**’e tıklayın.
+10. **Save (Kaydet)** düğmesine tıklayın.
 
 Sanal makinelerinizdeki izleme verileri artık depolama hesabına akar.
 

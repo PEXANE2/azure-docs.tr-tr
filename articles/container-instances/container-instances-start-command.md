@@ -1,23 +1,18 @@
 ---
-title: Azure Container Instances bir başlangıç komut satırı kullanın
-description: Bir Azure Container Instance dağıtırken kapsayıcı görüntüsünde yapılandırılan giriş noktasını geçersiz kılma
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Kapsayıcı örneğinde giriş noktasını geçersiz kıl
+description: Bir Azure Container Instance dağıtırken bir kapsayıcı görüntüsündeki giriş noktasını geçersiz kılmak için bir komut satırı ayarlayın
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619670"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533399"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Varsayılan komut satırı işlemini geçersiz kılmak için bir kapsayıcı örneğindeki komut satırını ayarlayın
 
-Bir kapsayıcı örneği oluşturduğunuzda, isteğe bağlı olarak kapsayıcı görüntüsüne bakmış varsayılan komut satırı yönergesini geçersiz kılmak için bir komut belirtin. Bu davranış, `--entrypoint` komut satırı `docker run`bağımsız değişkenine benzerdir.
+Bir kapsayıcı örneği oluşturduğunuzda, isteğe bağlı olarak kapsayıcı görüntüsüne bakmış varsayılan komut satırı yönergesini geçersiz kılmak için bir komut belirtin. Bu davranış, `docker run`için `--entrypoint` komut satırı bağımsız değişkenine benzerdir.
 
 Kapsayıcı örnekleri için [ortam değişkenlerini](container-instances-environment-variables.md) ayarlamak gibi, bir başlangıç komut satırı belirtmek, her kapsayıcıyı göreve özgü yapılandırmayla dinamik olarak hazırlamanız gereken toplu işler için yararlıdır.
 
@@ -37,7 +32,7 @@ Kapsayıcı örnekleri için [ortam değişkenlerini](container-instances-enviro
 
 * Kapsayıcı yapılandırmasına bağlı olarak, komut satırı yürütülebilir dosyası veya bağımsız değişkenlerin tam yolunu ayarlamanız gerekebilir.
 
-* Komut satırının uzun süre çalışan bir görevi mi yoksa bir kez çalıştır görevini mi belirttiğinden bağımsız olarak kapsayıcı örneği için uygun bir [yeniden başlatma ilkesi](container-instances-restart-policy.md) ayarlayın. Örneğin, bir `Never` veya `OnFailure` bir kez çalıştır görevi için bir yeniden başlatma ilkesi önerilir. 
+* Komut satırının uzun süre çalışan bir görevi mi yoksa bir kez çalıştır görevini mi belirttiğinden bağımsız olarak kapsayıcı örneği için uygun bir [yeniden başlatma ilkesi](container-instances-restart-policy.md) ayarlayın. Örneğin, bir kez çalıştır görevi için `Never` veya `OnFailure` yeniden başlatma ilkesi önerilir. 
 
 * Bir kapsayıcı görüntüsünde varsayılan giriş noktası kümesi hakkında bilgiye ihtiyacınız varsa [Docker Image İnceleme](https://docs.docker.com/engine/reference/commandline/image_inspect/) komutunu kullanın.
 
@@ -45,13 +40,13 @@ Kapsayıcı örnekleri için [ortam değişkenlerini](container-instances-enviro
 
 Komut satırı sözdizimi, örnekleri oluşturmak için kullanılan Azure API veya aracına bağlı olarak değişir. Bir kabuk ortamı belirtirseniz, kabuğun komut sözdizimi kurallarını da gözlemleyin.
 
-* [az Container Create][az-container-create] komutu: `--command-line` Parametresi ile bir dize geçirin. Örnek: `--command-line "python myscript.py arg1 arg2"`).
+* [az Container Create][az-container-create] komutu: `--command-line` parametresine sahip bir dize geçirin. Örnek: `--command-line "python myscript.py arg1 arg2"`).
 
-* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet 'i: `-Command` Parametresi ile bir dize geçirin. Örnek: `-Command "echo hello"`.
+* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet 'i: `-Command` parametresine sahip bir dize geçirin. Örnek: `-Command "echo hello"`.
 
-* Azure portal: Kapsayıcı yapılandırmasının **komut geçersiz kılma** özelliğinde, tırnak işaretleri olmadan, virgülle ayrılmış dizelerin bir listesini sağlayın. Örnek: `python, myscript.py, arg1, arg2`). 
+* Azure portal: kapsayıcı yapılandırmasının **komut geçersiz kılma** özelliğinde, tırnak işaretleri olmadan, virgülle ayrılmış dizelerin bir listesini sağlayın. Örnek: `python, myscript.py, arg1, arg2`). 
 
-* Kaynak Yöneticisi Template veya YAML dosyası ya da Azure SDK 'larından biri: Komut satırı özelliğini dize dizisi olarak belirtin. Örnek: Kaynak Yöneticisi şablonunda JSON `["python", "myscript.py", "arg1", "arg2"]` dizisi. 
+* Kaynak Yöneticisi Template veya YAML dosyası ya da Azure SDK 'larından biri: komut satırı özelliğini dize dizisi olarak belirtin. Örnek: JSON dizisi bir Kaynak Yöneticisi şablonunda `["python", "myscript.py", "arg1", "arg2"]`. 
 
   [Dockerfile](https://docs.docker.com/engine/reference/builder/) söz dizimine alışkın değilseniz, bu biçim cmd yönergesinin *Exec* biçimine benzer.
 
@@ -59,12 +54,12 @@ Komut satırı sözdizimi, örnekleri oluşturmak için kullanılan Azure API ve
 
 |    |  Azure CLI   | Portal | Şablon | 
 | ---- | ---- | --- | --- |
-| Tek komut | `--command-line "python myscript.py arg1 arg2"` | **Komut geçersiz kılma**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Birden çok komut | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Komut geçersiz kılma**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| Tek komut | `--command-line "python myscript.py arg1 arg2"` | **Komut geçersiz kılma**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| Birden çok komut | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Komut geçersiz kılma**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLı örneği
 
-Örnek olarak, [Microsoft/aci-WORDCOUNT][aci-wordcount] kapsayıcı resminin davranışını değiştirerek, en sık karşılaşılan kelimeleri bulmak için Shakespeare 'in hamine ilişkin metni analiz edin. *Hamlet*'in çözümlenmesi yerine, farklı bir metin kaynağına işaret eden bir komut satırı ayarlayabilirsiniz.
+Örnek olarak, [Microsoft/aci-WORDCOUNT][aci-wordcount] kapsayıcı resminin davranışını değiştirerek, en sık karşılaşılan kelimeleri bulmak için Shakespeare 'in *hamine* ilişkin metni analiz edin. *Hamlet*'in çözümlenmesi yerine, farklı bir metin kaynağına işaret eden bir komut satırı ayarlayabilirsiniz.
 
 Varsayılan metni analiz eden [Microsoft/aci-WORDCOUNT][aci-wordcount] kapsayıcısının çıktısını görmek için, aşağıdaki [az Container Create][az-container-create] komutuyla çalıştırın. Başlangıç komut satırı belirtilmedi, bu nedenle varsayılan kapsayıcı komutu çalışır. Bu örnek, çizim amacıyla, en az beş karakter uzunluğunda olan ilk 3 sözcüğü bulmak için [ortam değişkenlerini](container-instances-environment-variables.md) ayarlar:
 
@@ -77,7 +72,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Kapsayıcının durumu sonlandırıldıktan sonra (durumu denetlemek için [az Container Show][az-container-show] kullanın), çıktıyı görmek için [az Container logs][az-container-logs] komutuyla günlüğü görüntüleyin.
+Kapsayıcının durumu *sonlandırıldıktan* sonra (durumu denetlemek için [az Container Show][az-container-show] kullanın), çıktıyı görmek için [az Container logs][az-container-logs] komutuyla günlüğü görüntüleyin.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -103,7 +98,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Yeniden, kapsayıcı sonlandırıldıktan sonrakapsayıcının günlüklerini göstererek çıktıyı görüntüleyin:
+Yeniden, kapsayıcı *sonlandırıldıktan*sonra kapsayıcının günlüklerini göstererek çıktıyı görüntüleyin:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using C# - Bing Entity Search'
+title: Hızlı başlangıç:-Bing Varlık Arama kullanarak C# REST API bir arama isteği gönderin
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send a request to the Bing Entity Search REST API using C#, and receive a JSON response.
+description: Kullanarak C#Bing varlık arama REST API bir istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,31 +17,31 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327163"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Quickstart: Send a search request to the Bing Entity Search REST API using C#
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: Bing Varlık Arama REST API kullanarak bir arama isteği gönderinC#
 
-Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple C# application sends a news search query to the API, and displays the response. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
+Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit C# uygulama, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs)' da kullanılabilir.
 
 Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
+- Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 
-- NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi. To install the NuGet package in Visual Studio:
+- NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi. NuGet paketini Visual Studio 'ya yüklemek için:
 
-   1. Right click your project in **Solution Explorer**.
-   2. Select **Manage NuGet Packages**.
-   3. Search for *Newtonsoft.Json* and install the package.
+   1. **Çözüm Gezgini**' de projenize sağ tıklayın.
+   2. **NuGet Paketlerini Yönet**' i seçin.
+   3. *Newtonsoft. JSON* araması yapın ve paketi yükler.
 
-- If you're using Linux/MacOS, this application can be run by  using [Mono](https://www.mono-project.com/).
+- Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. create a new C# console solution in Visual Studio. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
+1. Visual Studio 'da C# yeni bir konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
     
     ```csharp
     using Newtonsoft.Json;
@@ -50,7 +50,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
     using System.Text;
     ```
 
-2. Create a new class, and add variables for the API endpoint, your subscription key, and query you want to search.
+2. Yeni bir sınıf oluşturun ve API uç noktası, abonelik anahtarınız ve aramak istediğiniz sorgunuz için değişkenler ekleyin.
 
     ```csharp
     namespace EntitySearchSample
@@ -71,13 +71,13 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
     }
     ```
 
-## <a name="send-a-request-and-get-the-api-response"></a>Send a request and get the API response
+## <a name="send-a-request-and-get-the-api-response"></a>İstek Gönder ve API yanıtını al
 
-1. Within the class, create a function called `Search()`. Create a new `HttpClient` object, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+1. Sınıfı içinde `Search()`adlı bir işlev oluşturun. Yeni bir `HttpClient` nesnesi oluşturun ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
 
-   1. Construct the URI for your request by combining the host and path. Then add your market, and URL-encode your query.
-   2. Await `client.GetAsync()` to get a HTTP response, and then store the json response by awaiting `ReadAsStringAsync()`.
-   3. Format the JSON string with `JsonConvert.DeserializeObject()` and print it to the console.
+   1. Konağı ve yolu birleştirerek isteğiniz için URI 'yi oluşturun. Ardından pazarlamanızı ekleyin ve sorgunuzu URL ile kodlayın.
+   2. HTTP yanıtı almak için `client.GetAsync()` await, sonra da `ReadAsStringAsync()`bekleyen JSON yanıtını depolayın.
+   3. JSON dizesini `JsonConvert.DeserializeObject()` biçimlendirin ve konsolda yazdırın.
 
       ```csharp
       async static void Search()
@@ -96,7 +96,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
       }
       ```
 
-2. In the main method of your application, call the `Search()` function.
+2. Uygulamanızın Main yönteminde `Search()` işlevini çağırın.
     
     ```csharp
     static void Main(string[] args)
@@ -107,7 +107,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
     ```
 
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 
@@ -175,7 +175,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
-* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Varlık Arama API'si nedir?](../overview.md )
+* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

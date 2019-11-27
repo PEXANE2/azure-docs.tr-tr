@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Extract, transform, and load data by using Azure HDInsight'
-description: In this tutorial, you learn how to extract data from a raw CSV dataset, transform it by using Apache Hive on Azure HDInsight, and then load the transformed data into Azure SQL Database by using Sqoop.
+title: 'Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme'
+description: Bu öğreticide, ham CSV veri kümesinden veri çıkarmayı, Azure HDInsight üzerinde Apache Hive kullanarak dönüştürmeyi ve sonra Sqoop kullanarak dönüştürülmüş verileri Azure SQL veritabanı 'na yüklemeyi öğrenirsiniz.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,64 +15,64 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327569"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Tutorial: Extract, transform, and load data by using Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
-In this tutorial, you perform an ETL operation: extract, transform, and load data. You take a raw CSV data file, import it into an Azure HDInsight cluster, transform it with Apache Hive, and load it into an Azure SQL database with Apache Sqoop.
+Bu öğreticide, bir ETL işlemi gerçekleştirirsiniz: verileri ayıklama, dönüştürme ve yükleme. Ham bir CSV veri dosyası alır, Azure HDInsight kümesine içeri aktarabilir, Apache Hive dönüştürürler ve Apache Sqoop ile bir Azure SQL veritabanı 'na yüklersiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Extract and upload the data to an HDInsight cluster.
-> * Transform the data by using Apache Hive.
-> * Load the data to an Azure SQL database by using Sqoop.
+> * Verileri bir HDInsight kümesine ayıklayın ve karşıya yükleyin.
+> * Apache Hive kullanarak verileri dönüştürün.
+> * Sqoop kullanarak verileri bir Azure SQL veritabanına yükleyin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **An Azure Data Lake Storage Gen2 storage account that is configured for HDInsight**
+* **HDInsight için yapılandırılmış Azure Data Lake Storage 2. depolama hesabı**
 
-    See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+    Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
 
-* **A Linux-based Hadoop cluster on HDInsight**
+* **HDInsight 'ta Linux tabanlı Hadoop kümesi**
 
-    See [Quickstart: Get started with Apache Hadoop and Apache Hive in Azure HDInsight using the Azure portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Bkz. [hızlı başlangıç: Azure HDInsight 'ta Azure Portal kullanarak Apache Hadoop ve Apache Hive ile çalışmaya başlama](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: You use an Azure SQL database as a destination data store. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
+* **Azure SQL veritabanı**: BIR Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
 
-* **Azure CLI**: If you haven't installed the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **A Secure Shell (SSH) client**: For more information, see [Connect to HDInsight (Hadoop) by using SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Bir Secure Shell (SSH) istemcisi**: daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'a (Hadoop) bağlanma](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
-1. Browse to [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. [Araştırma ve yenilikçi teknoloji yönetimi, nakliye Istatistikleri Bürosu ' nı](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)inceleyin.
 
 2. Sayfada aşağıdaki değerleri seçin:
 
-   | Adı | Değer |
+   | Ad | Değer |
    | --- | --- |
    | Yıl Filtresi |2013 |
    | Dönem Filtresi |Ocak |
-   | Alanlar |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Alanlar |Yıl, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, Originairportıd, Origin, OriginCityName, OriginState, Destairportıd, dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, dalgalı Therdelay, NASDelay, SecurityDelay, Lateaırcraftdelay. |
    
    Diğer tüm alanları temizleyin.
 
 3. **Download** (İndir) seçeneğini belirleyin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
-## <a name="extract-and-upload-the-data"></a>Extract and upload the data
+## <a name="extract-and-upload-the-data"></a>Verileri ayıklama ve karşıya yükleme
 
-In this section, you'll upload data to your HDInsight cluster and then copy that data to your Data Lake Storage Gen2 account.
+Bu bölümde, HDInsight kümenize verileri yükleyecek ve ardından bu verileri Data Lake Storage 2. hesabınıza kopyalayacaksınız.
 
-1. Open a command prompt and use the following Secure Copy (Scp) command to upload the .zip file to the HDInsight cluster head node:
+1. Bir komut istemi açın ve. zip dosyasını HDInsight kümesi baş düğümüne yüklemek için aşağıdaki güvenli kopya (SCP) komutunu kullanın:
 
    ```bash
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * Replace the `<file-name>` placeholder with the name of the .zip file.
-   * Replace the `<ssh-user-name>` placeholder with the SSH login for the HDInsight cluster.
-   * Replace the `<cluster-name>` placeholder with the name of the HDInsight cluster.
+   * `<file-name>` yer tutucusunu. zip dosyasının adıyla değiştirin.
+   * `<ssh-user-name>` yer tutucusunu HDInsight kümesi için SSH oturum açma ile değiştirin.
+   * `<cluster-name>` yer tutucusunu HDInsight kümesinin adıyla değiştirin.
 
    SSH oturum açma bilgilerinizi doğrulamak için bir parola kullanıyorsanız parola girmeniz istenir.
 
@@ -90,45 +90,45 @@ In this section, you'll upload data to your HDInsight cluster and then copy that
    unzip <file-name>.zip
    ```
 
-   The command extracts a **.csv** file.
+   Komut bir **. csv** dosyası ayıklar.
 
-4. Use the following command to create the Data Lake Storage Gen2 container.
+4. Data Lake Storage 2. kapsayıcısını oluşturmak için aşağıdaki komutu kullanın.
 
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Replace the `<container-name>` placeholder with the name that you want to give your container.
+   `<container-name>` yer tutucusunu, kapsayıcınıza vermek istediğiniz adla değiştirin.
 
-   Replace the `<storage-account-name>` placeholder with the name of your storage account.
+   `<storage-account-name>` yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
-5. Use the following command to create a directory.
+5. Bir dizin oluşturmak için aşağıdaki komutu kullanın.
 
    ```bash
    hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
-6. Use the following command to copy the *.csv* file to the directory:
+6. *. Csv* dosyasını dizine kopyalamak için aşağıdaki komutu kullanın:
 
    ```bash
    hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
-   Use quotes around the file name if the file name contains spaces or special characters.
+   Dosya adı boşluk veya özel karakterler içeriyorsa dosya adı etrafında tırnak işareti kullanın.
 
-## <a name="transform-the-data"></a>Transform the data
+## <a name="transform-the-data"></a>Verileri dönüştürme
 
-In this section, you use Beeline to run an Apache Hive job.
+Bu bölümde, bir Apache Hive işini çalıştırmak için Beeline kullanırsınız.
 
-As part of the Apache Hive job, you import the data from the .csv file into an Apache Hive table named **delays**.
+Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir Apache Hive tablosuna aktarırsınız.
 
-1. From the SSH prompt that you already have for the HDInsight cluster, use the following command to create and edit a new file named     **flightdelays.hql**:
+1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden, **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
 
    ```bash
    nano flightdelays.hql
    ```
 
-2. Modify the following text by replace the `<container-name>` and `<storage-account-name>` placeholders with your container and storage account name. Then copy and paste the text into the nano console by using pressing the SHIFT key along with the right-mouse click button.
+2. `<container-name>` ve `<storage-account-name>` yer tutucuları kapsayıcınızda ve depolama hesabı adınızla değiştirerek aşağıdaki metni değiştirin. Sonra sağ fare tıklama düğmesi ile birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -192,7 +192,7 @@ As part of the Apache Hive job, you import the data from the .csv file into an A
     FROM delays_raw;
     ```
 
-3. Save the file by using use CTRL+X and then type `Y` when prompted.
+3. CTRL + X kullan ' ı kullanarak dosyayı kaydedin ve istendiğinde `Y` yazın.
 
 4. Hive’ı başlatmak ve **flightdelays.hql** dosyasını çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -224,17 +224,17 @@ As part of the Apache Hive job, you import the data from the .csv file into an A
 
 ## <a name="create-a-sql-database-table"></a>SQL veritabanı tablosu oluşturma
 
-You need the server name from your SQL database for this operation. Complete these steps to find your server name.
+Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunucu adınızı bulmak için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
-2. Select **SQL Databases**.
+2. **SQL veritabanlarını**seçin.
 
-3. Filter on the name of the database that you choose to use. Sunucu adı, **Sunucu adı** sütununda listelenir.
+3. Kullanmayı seçtiğiniz veritabanının adını filtreleyin. Sunucu adı, **Sunucu adı** sütununda listelenir.
 
-4. Filter on the name of the database that you want to use. Sunucu adı, **Sunucu adı** sütununda listelenir.
+4. Kullanmak istediğiniz veritabanının adını filtreleyin. Sunucu adı, **Sunucu adı** sütununda listelenir.
 
-    ![Get Azure SQL server details](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Get Azure SQL server details")
+    ![Azure SQL Server ayrıntılarını al](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL Server ayrıntılarını al")
 
     SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aşağıdaki adımlarda HDInsight kümesinden [FreeTDS](https://www.freetds.org/) kullanılır.
 
@@ -244,18 +244,18 @@ You need the server name from your SQL database for this operation. Complete the
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. After the installation completes, use the following command to connect to the SQL Database server.
+6. Yükleme tamamlandıktan sonra, SQL veritabanı sunucusuna bağlanmak için aşağıdaki komutu kullanın.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * Replace the `<server-name>` placeholder with the SQL Database server name.
+   * `<server-name>` yer tutucusunu SQL veritabanı sunucu adıyla değiştirin.
 
-   * Replace the `<admin-login>` placeholder with the admin login for SQL Database.
+   * `<admin-login>` yer tutucusunu SQL veritabanı için yönetici oturum açmayla değiştirin.
 
-   * Replace the `<database-name>` placeholder with the database name
+   * `<database-name>` yer tutucusunu veritabanı adıyla değiştirin
 
-   When you're prompted, enter the password for the SQL Database admin login.
+   İstendiğinde, SQL veritabanı yönetici oturumu açma parolasını girin.
 
    Aşağıdakine benzer bir çıktı alırsınız:
 
@@ -267,7 +267,7 @@ You need the server name from your SQL database for this operation. Complete the
    1>
    ```
 
-7. At the `1>` prompt, enter the following statements:
+7. `1>` istemine aşağıdaki deyimleri girin:
 
    ```hiveql
    CREATE TABLE [dbo].[delays](
@@ -280,9 +280,9 @@ You need the server name from your SQL database for this operation. Complete the
 
 8. `GO` deyimi girildiğinde önceki deyimler değerlendirilir.
 
-   The query creates a table named **delays**, which has a clustered index.
+   Sorgu, kümelenmiş dizine sahip olan **gecikmeler**adlı bir tablo oluşturur.
 
-9. Use the following query to verify that the table is created:
+9. Tablonun oluşturulduğunu doğrulamak için aşağıdaki sorguyu kullanın:
 
    ```hiveql
    SELECT * FROM information_schema.tables
@@ -296,11 +296,11 @@ You need the server name from your SQL database for this operation. Complete the
    databaseName       dbo             delays        BASE TABLE
    ```
 
-10. Tsql yardımcı programından çıkış yapmak için `1>` istemine `exit` girin.
+10. Tsql yardımcı programından çıkış yapmak için `exit` istemine `1>` girin.
 
-## <a name="export-and-load-the-data"></a>Export and load the data
+## <a name="export-and-load-the-data"></a>Verileri dışarı ve yükleme
 
-In the previous sections, you copied the transformed data at the location  `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. In this section, you use Sqoop to export the data from `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` to the table you created in the Azure SQL database.
+Önceki bölümlerde, `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`konumdaki dönüştürülmüş verileri kopyaladınız. Bu bölümde, `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` verileri Azure SQL veritabanında oluşturduğunuz tabloya aktarmak için Sqoop 'yi kullanırsınız.
 
 1. Sqoop’un SQL veritabanınızı görebildiğini doğrulamak için aşağıdaki komutu kullanın:
 
@@ -308,23 +308,23 @@ In the previous sections, you copied the transformed data at the location  `abfs
    sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
    ```
 
-   The command returns a list of databases, including the database in which you created the **delays** table.
+   Komut, **gecikmeler** tablosunu oluşturduğunuz veritabanı da dahil olmak üzere veritabanlarının bir listesini döndürür.
 
-2. Use the following command to export data from the **hivesampletable** table to the **delays** table:
+2. **Hivesampletable** tablosundan **gecikme** tablosuna veri aktarmak için aşağıdaki komutu kullanın:
 
    ```bash
    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
-   Sqoop connects to the database that contains the **delays** table, and exports data from the `/tutorials/flightdelays/output` directory to the **delays** table.
+   Sqoop, **gecikmeler** tablosunu içeren veritabanına bağlanır ve verileri `/tutorials/flightdelays/output` dizininden **gecikmeler** tablosuna aktarır.
 
-3. After the `sqoop` command finishes, use the tsql utility to connect to the database:
+3. `sqoop` komutu bittikten sonra, veritabanına bağlanmak için TSQL yardımcı programını kullanın:
 
    ```bash
    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
    ```
 
-4. Use the following statements to verify that the data was exported to the **delays** table:
+4. Verilerin **gecikmeler** tablosuna verildiğini doğrulamak için aşağıdaki deyimleri kullanın:
 
    ```sql
    SELECT * FROM delays
@@ -333,15 +333,15 @@ In the previous sections, you copied the transformed data at the location  `abfs
 
    Tabloda verilerin listesini görürsünüz. Tablo, şehir adını ve bu şehre ait ortalama uçuş gecikme süresini içerir.
 
-5. Enter `exit` to exit the tsql utility.
+5. TSQL yardımcı programından çıkmak için `exit` girin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-All resources used in this tutorial are preexisting. No cleanup is necessary.
+Bu öğreticide kullanılan tüm kaynaklar önceden yüklenir. Temizlik gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more ways to work with data in HDInsight, see the following article:
+HDInsight 'ta verilerle çalışmanın daha fazla yolunu öğrenmek için aşağıdaki makaleye bakın:
 
 > [!div class="nextstepaction"]
 > [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

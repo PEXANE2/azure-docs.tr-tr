@@ -1,6 +1,6 @@
 ---
 title: Azure Kaynak Grafiği'ne Genel Bakış
-description: Understand how the Azure Resource Graph service enables complex querying of resources at scale across subscriptions and tenants.
+description: Azure Kaynak Grafiği hizmeti 'nin, abonelikler ve kiracılar arasında ölçeklendirerek kaynakların karmaşık şekilde sorgulanmasını nasıl sağladığını anlayın.
 ms.date: 10/21/2019
 ms.topic: overview
 ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
@@ -12,45 +12,45 @@ ms.locfileid: "74406696"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Kaynak Grafı nedir?
 
-Azure Resource Graph is a service in Azure that is designed to extend Azure Resource Management by providing efficient and performant resource exploration with the ability to query at scale across a given set of subscriptions so that you can effectively govern your environment. Bu sorgular aşağıdaki özellikleri sağlar:
+Azure Kaynak Grafiği, Azure 'da Azure Kaynak yönetimini uzatmak için tasarlanan bir hizmet olarak, belirli bir abonelik kümesi genelinde ölçeği sorgulama olanağı sunarak, ortamınızın. Bu sorgular aşağıdaki özellikleri sağlar:
 
 - Karmaşık filtreleme, gruplandırma ve kaynak özelliklerine göre sıralama ile kaynakları sorgulama özelliği.
-- Ability to iteratively explore resources based on governance requirements.
+- Kaynakları idare gereksinimlerine göre yineleyebilme özelliği.
 - Uygulanan ilkenin geniş bir bulut ortamındaki etkisini değerlendirme özelliği.
-- Ability to [detail changes made to resource properties](./how-to/get-resource-changes.md) (preview).
+- [Kaynak özelliklerinde yapılan değişiklikleri ayrıntılandırın](./how-to/get-resource-changes.md) (Önizleme) özelliği.
 
 Bu belgede her özelliği ayrıntılı olarak inceleyeceksiniz.
 
 > [!NOTE]
-> Azure Resource Graph powers Azure portal's search bar, the new browse 'All resources' experience, and Azure Policy's [Change history](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _visual diff_. It's designed to help customers manage large-scale environments.
+> Azure Kaynak Grafiği Azure portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure Ilkesinin [değişiklik geçmişini](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> _görsel fark_. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Kaynak Grafiği, Azure Resource Manager'ı nasıl tamamlar
 
-Azure Resource Manager currently supports queries over basic resource fields, specifically - Resource name, ID, Type, Resource Group, Subscription, and Location. Resource Manager also provides facilities for calling individual resource providers for detailed properties one resource at a time.
+Azure Resource Manager şu anda temel kaynak alanları, özellikle kaynak adı, KIMLIK, tür, kaynak grubu, abonelik ve konum üzerinde sorguları desteklemektedir. Kaynak Yöneticisi ayrıca, tek seferde bir kaynağın ayrıntılı özelliklerine yönelik ayrı kaynak sağlayıcıları çağırma olanakları sağlar.
 
-Azure Kaynak Grafiği ile, her kaynak sağlayıcısına tek tek çağrı yapmanıza gerek kalmadan, kaynak sağlayıcılarının geri döndürdüğü bu özelliklere erişebilirsiniz. For a list of supported resource types, look for a **Yes** in the [Resources for complete mode deployments](../../azure-resource-manager/complete-mode-deletion.md) table. Additional resource types are found in the related [Resource Graph tables](./concepts/query-language.md#resource-graph-tables). An alternative way to see supported resource types is through the [Azure Resource Graph Explorer Schema browser](./first-query-portal.md#schema-browser).
+Azure Kaynak Grafiği ile, her kaynak sağlayıcısına tek tek çağrı yapmanıza gerek kalmadan, kaynak sağlayıcılarının geri döndürdüğü bu özelliklere erişebilirsiniz. Desteklenen kaynak türlerinin bir listesi için, [kaynaklar için tüm mod dağıtımları](../../azure-resource-manager/complete-mode-deletion.md) tablosunda **Evet** ' i arayın. Ek kaynak türleri ilgili [kaynak grafik tablolarında](./concepts/query-language.md#resource-graph-tables)bulunur. Desteklenen kaynak türlerini görmenin alternatif bir yolu, [Azure Kaynak Grafiği Gezgini şema tarayıcısı](./first-query-portal.md#schema-browser)aracılığıyla yapılır.
 
-With Azure Resource Graph, you can:
+Azure Kaynak Grafiği ile şunları yapabilirsiniz:
 
-- Access the properties returned by resource providers without needing to make individual calls to each resource provider.
-- View the last 14 days of change history made to the resource to see what properties changed and when. (önizleme)
+- Kaynak sağlayıcıları tarafından döndürülen özelliklere, her bir kaynak sağlayıcısına tek tek çağrılar yapmaya gerek kalmadan erişin.
+- Hangi özelliklerin değiştirildiğini ve ne zaman değiştiğini görmek için kaynakta yapılan değişiklik geçmişinin son 14 günü görüntüleyin. (önizleme)
 
-## <a name="how-resource-graph-is-kept-current"></a>How Resource Graph is kept current
+## <a name="how-resource-graph-is-kept-current"></a>Kaynak grafiğinin nasıl güncel tutulduğu
 
-When an Azure resource is updated, Resource Graph is notified by Resource Manager of the change.
-Resource Graph then updates its database. Resource Graph also does a regular _full scan_. This scan ensures that Resource Graph data is current if there are missed notifications or when a resource is updated outside of Resource Manager.
+Bir Azure kaynağı güncelleştirildiği zaman, kaynak grafiğine değişikliğin Kaynak Yöneticisi bildirilir.
+Kaynak Grafiği daha sonra veritabanını güncelleştirir. Kaynak Grafiği de düzenli bir _tam tarama_yapar. Bu tarama, eksik bildirimler varsa veya bir kaynağın Kaynak Yöneticisi dışında güncelleştirildiği durumlarda kaynak Grafik verilerinin güncel olmasını sağlar.
 
 > [!NOTE]
-> Resource Graph uses a `GET` to the latest non-preview API of each resource provider to gather properties and values. As a result, the property expected may not be available. In some cases, the API version used has been overridden to provide more current or widely used properties in the results. See the [Show API version for each resource type](./samples/advanced.md#apiversion) sample for a complete list in your environment.
+> Kaynak Grafiği, özellikleri ve değerleri toplamak için her kaynak sağlayıcının en son önizleme dışı API 'sine yönelik bir `GET` kullanır. Sonuç olarak, beklenen özellik kullanılamıyor olabilir. Bazı durumlarda kullanılan API sürümü, sonuçlarda daha güncel veya yaygın olarak kullanılan özellikler sağlamak için geçersiz kılındı. Ortamınızdaki tüm bir liste için [her kaynak türü örneği IÇIN API sürümünü göster](./samples/advanced.md#apiversion) ' i inceleyin.
 
 ## <a name="the-query-language"></a>Sorgu dili
 
-Now that you have a better understanding of what Azure Resource Graph is, let's dive into how to construct queries.
+Azure Kaynak Grafının ne olduğunu daha iyi kavradığınıza göre, sorgu oluşturma konusuna bakalım.
 
-It's important to understand that Azure Resource Graph's query language is based on the [Kusto query language](../../data-explorer/data-explorer-overview.md) used by Azure Data Explorer.
+Azure Kaynak grafiğinin sorgu dilinin Azure Veri Gezgini tarafından kullanılan [kusto sorgu diline](../../data-explorer/data-explorer-overview.md) göre olduğunu anlamak önemlidir.
 
 Önce, Azure Kaynak Grafiği ile kullanılabilecek işlemler ve işlevler hakkında ayrıntılar için, bkz. [Kaynak Grafiği sorgu dili](./concepts/query-language.md).
 Kaynakları göz atmak için, bkz, [kaynakları keşfedin](./concepts/explore-resources.md).
@@ -60,35 +60,35 @@ Kaynakları göz atmak için, bkz, [kaynakları keşfedin](./concepts/explore-re
 Kaynak Grafı’nı kullanmak için, sorgulamak istediğiniz kaynaklara en az okuma erişimi olan [Rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) kapsamında uygun izinlere sahip olmanız gerekir. Sonuç döndürülmesi için Azure nesnesinde veya nesne grubunda en azından `read` iznine sahip olmanız gerekir.
 
 > [!NOTE]
-> Resource Graph uses the subscriptions available to a principal during login. To see resources of a new subscription added during an active session, the principal must refresh the context. This action happens automatically when logging out and back in.
+> Kaynak Grafiği, oturum açma sırasında bir sorumlu için kullanılabilen abonelikleri kullanır. Etkin bir oturum sırasında eklenen yeni aboneliğin kaynaklarını görmek için sorumlu bağlamı yenilemeniz gerekir. Bu eylem, oturumunuzu kapatıp yeniden oturum açarken otomatik olarak gerçekleşir.
 
-Azure CLI and Azure PowerShell use subscriptions that the user has access to. When using REST API directly, the subscription list is provided by the user. If the user has access to any of the subscriptions in the list, the query results are returned for the subscriptions the user has access to. This behavior is the same as when calling [Resource Groups - List](/rest/api/resources/resourcegroups/list) \- you get resource groups you've access to without any indication that the result may be partial.
-If there are no subscriptions in the subscription list that the user has appropriate rights to, the response is a _403_ (Forbidden).
+Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) aynıdır \-, girdiğiniz kaynak gruplarını sonucun kısmi olabileceğini belirten herhangi bir belirti olmadan elde edersiniz.
+Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
 
 ## <a name="throttling"></a>Azaltma
 
-As a free service, queries to Resource Graph are throttled to provide the best experience and response time for all customers. If your organization wants to use the Resource Graph API for large-scale and frequent queries, use portal 'Feedback' from the [Resource Graph portal page](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
-Provide your business case and select the 'Microsoft can email you about your feedback' checkbox in order for the team to contact you.
+Ücretsiz bir hizmet olarak, kaynak grafiğine yapılan sorgular, tüm müşteriler için en iyi deneyimi ve yanıt süresini sağlamak üzere azaltılır. Kuruluşunuz büyük ölçekli ve sık kullanılan sorgular için kaynak Graph API kullanmak istiyorsa, [Kaynak Grafiği portalı sayfasından](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)Portal ' geri bildirim ' kullanın.
+Takımınızın sizinle iletişim kurabilmesi için iş büyük ve küçük ' Microsoft sizi geri bildiriminiz hakkında size e-posta ile gönderebilirsiniz ' onay kutusunu seçin.
 
-Resource Graph throttles queries at the user level. The service response contains the following HTTP headers:
+Kaynak Grafiği, kullanıcı düzeyindeki sorguları kısıtlar. Hizmet yanıtı aşağıdaki HTTP üstbilgilerini içerir:
 
-- `x-ms-user-quota-remaining` (int): The remaining resource quota for the user. This value maps to query count.
-- `x-ms-user-quota-resets-after` (hh:mm:ss): The time duration until a user's quota consumption is reset
+- `x-ms-user-quota-remaining` (int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
+- `x-ms-user-quota-resets-after` (SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre
 
-For more information, see [Guidance for throttled requests](./concepts/guidance-for-throttled-requests.md).
+Daha fazla bilgi için bkz. [Kısıtlanmış istekler Için rehberlik](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>İlk sorgunuzu çalıştırma
 
-Azure Resource Graph Explorer, part of Azure portal, enables running Resource Graph queries directly in Azure portal. Pin the results as dynamic charts to provide real-time dynamic information to your portal workflow. For more information, see [First query with Azure Resource Graph Explorer](first-query-portal.md).
+Azure portal bir parçası olan Azure Kaynak grafik Gezgini, kaynak grafik sorgularını doğrudan Azure portal üzerinde çalıştırmaya izin verebilir. Portal iş akışınıza gerçek zamanlı dinamik bilgiler sağlamak için sonuçları dinamik grafik olarak sabitleyin. Daha fazla bilgi için bkz. [Azure Resource Graph Explorer Ile ilk sorgu](first-query-portal.md).
 
-Resource Graph supports Azure CLI, Azure PowerShell, Azure SDK for .NET, and more. The query is structured the same for each language. Learn how to enable Resource Graph with:
+Kaynak Grafiği Azure CLı, Azure PowerShell, .NET için Azure SDK ve daha fazlasını destekler. Sorgu her dil için aynı şekilde yapılandırılmıştır. Kaynak grafiğini nasıl etkinleştireceğinizi öğrenin:
 
-- [Azure portal and Resource Graph Explorer](first-query-portal.md) 
+- [Azure portal ve kaynak grafiği Gezgini](first-query-portal.md) 
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Run your first query by using the [Azure portal](first-query-portal.md).
-- Run your first query with [Azure CLI](first-query-azurecli.md).
-- Run your first query with [Azure PowerShell](first-query-powershell.md).
+- [Azure Portal](first-query-portal.md)kullanarak ilk sorgunuzu çalıştırın.
+- [Azure CLI](first-query-azurecli.md)ile ilk sorgunuzu çalıştırın.
+- [Azure PowerShell](first-query-powershell.md)ile ilk sorgunuzu çalıştırın.

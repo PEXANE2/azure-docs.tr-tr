@@ -1,6 +1,6 @@
 ---
-title: Sample - No cool access tiering on storage account
-description: This sample policy definition prohibits the use of cool access tiering for all blob storage accounts.
+title: Örnek-depolama hesabında seyrek erişimli erişim yok
+description: Bu örnek ilke tanımı, tüm blob depolama hesapları için seyrek erişimli erişim katmanlama kullanımını yasaklar.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: cbee14edffb79ed3261bf65776b41017a30276fc
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463375"
 ---
-# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Sample - Deny cool access tiering for storage accounts
+# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Örnek-depolama hesapları için seyrek erişimli erişimi reddetme
 
 Bu ilke, blob depolama hesapları için seyrek erişimli depolama katmanının kullanılmasını engeller.
 
@@ -24,7 +24,7 @@ Bu ilke, blob depolama hesapları için seyrek erişimli depolama katmanının k
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

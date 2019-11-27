@@ -50,7 +50,7 @@ Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlan
 Birden çok kuralı tek bir düzende daraltarak, geliştirilmiş varlık tahminini görmeyi beklememeniz gerekmez. Basit varlıkların tetiklenmesi için, bu tür varlıkları eklemeniz veya liste varlıklarını kullanmanız gerekir, ancak sizin düzeniniz tetikleymeyecektir.
 
 ## <a name="patterns-use-entity-roles"></a>Varlık rolleri desenleri kullanın
-İki veya daha fazla varlık desenindeki bağlamsal ilişkiliyse, varlık desenleri kullanın [rolleri](luis-concept-roles.md) varlıklarla ilgili bağlamsal bilgi ayıklamak için.  
+Bir Desendeki iki veya daha fazla varlık bağlamsal olarak ilişkiliyse, desenler hakkında bağlamsal bilgileri ayıklamak için, desenler varlık [rollerini](luis-concept-roles.md) kullanır.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Desenler olmadan ve tahmin puanları
 Yeterli örnek konuşma göz önünde bulundurulduğunda, LUIS tahmin olasılık desensiz imkanımız olacaktır. Desen çok konuşma sağlamaya gerek kalmadan güvenilirlik puanı artırın.  
@@ -62,9 +62,9 @@ Bir düzeni desen içinde varlıkları ilk algılama ve ardından bir kelimeleri
 Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içeren bir uygulama oluşturabilirsiniz. Tek bir uygulama için, bu, örnek bir varlık gerektirdiğinden, bu model makine tarafından öğrenilen varlıklar içermemelidir. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
-Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).
+[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
-## <a name="pattern-syntax"></a>Desen söz dizimi
+## <a name="pattern-syntax"></a>Desen sözdizimi
 
 [Model sözdizimi başvurusundan](reference-pattern-syntax.md)bir model sözdizimi öğrenin. 
 
@@ -77,4 +77,4 @@ Desenler hakkında daha fazla bilgi edinin:
 * [Desenler sözdizimi](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Bu öğreticide desenlerini uygulama hakkında bilgi edinin](luis-tutorial-pattern.md)
+> [Bu öğreticide desenleri uygulamayı öğrenin](luis-tutorial-pattern.md)

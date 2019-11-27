@@ -1,7 +1,7 @@
 ---
-title: Use entity recognition with the Text Analytics API
+title: Metin Analizi API'si ile varlık tanımayı kullanın
 titleSuffix: Azure Cognitive Services
-description: Learn how to identify and disambiguate the identity of an entity found in text with the Text Analytics REST API.
+description: Metin Analizi REST API metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme hakkında bilgi edinin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,23 +17,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326634"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>How to use Named Entity Recognition in Text Analytics
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
-The [Named Entity Recognition API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) takes unstructured text, and for each JSON document, returns a list of disambiguated entities with links to more information on the web (Wikipedia and Bing).
+[Adlandırılmış varlık tanıma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) yapılandırılmamış metin alır ve her JSON belgesinde, Web üzerinde daha fazla bilgi için bağlantıları olan, ayırt edici varlıkların bir listesini döndürür (Vikipedi ve Bing).
 
-## <a name="entity-linking-and-named-entity-recognition"></a>Entity Linking and Named Entity Recognition
+## <a name="entity-linking-and-named-entity-recognition"></a>Varlık bağlama ve adlandırılmış varlık tanıma
 
-The Text Analytics' `entities` endpoint supports both named entity recognition (NER) and entity linking.
+Metin Analizi ' `entities` uç noktası hem adlandırılmış varlık tanıma (NER) hem de varlık bağlamayı destekler.
 
 ### <a name="entity-linking"></a>Varlık Bağlama
-Entity linking is the ability to identify and disambiguate the identity of an entity found in text (for example, determining whether the "Mars" is being used as the planet or as the Roman god of war). This process requires the presence of a knowledge base to which recognized entities are linked - Wikipedia is used as the knowledge base for the `entities` endpoint Text Analytics.
+Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, "Mars" ın dünya olarak mı yoksa War 'nın roman gerçekleşen olarak mı kullanıldığını belirleme). Bu işlem, tanınan varlıkların bağlandığı bir Bilgi Bankası 'nın varolup olmadığını, `entities` uç noktası Metin Analizi Bilgi Bankası olarak kullanılır.
 
-### <a name="named-entity-recognition-ner"></a>Named Entity Recognition (NER)
-Named entity recognition (NER) is the ability to identify different entities in text and categorize them into pre-defined classes, or types. 
+### <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
+Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler halinde kategorilere ayırma olanağıdır. 
 
-## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 public preview
+## <a name="named-entity-recognition-v3-public-preview"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi
 
-The next version of Named Entity Recognition is now available for public preview. It provides updates to both entity linking and Named Entity Recognition. Try it using the [API test console](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral).
+Adlandırılmış varlık tanımanın bir sonraki sürümü artık genel önizlemeye sunuldu. Hem varlık bağlama hem de adlandırılmış varlık tanıma için güncelleştirmeler sağlar. [API test konsolunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)kullanarak deneyin.
 
 :::row:::
     :::column span="":::
@@ -46,96 +46,96 @@ The next version of Named Entity Recognition is now available for public preview
 <!-- expanded types and subtypes row-->
 :::row:::
     :::column span="":::
-        Expanded entity types and subtypes
+        Genişletilmiş varlık türleri ve alt türleri
     :::column-end:::
     :::column span="":::
-     Expanded classification and detection for several named entity types.
+     Birkaç adlandırılmış varlık türü için genişletilmiş sınıflandırma ve algılama.
     :::column-end:::
 :::row-end:::
 <!-- separate endpoints row-->
 :::row:::
     :::column span="":::
-        Separate request endpoints 
+        İstek uç noktalarını ayır 
     :::column-end:::
     :::column span="":::
-        Separate endpoints for sending entity linking and NER requests.
+        Varlık bağlama ve NER istekleri göndermek için ayrı uç noktalar.
     :::column-end:::
 :::row-end:::
 <!-- model-version row -->
 :::row:::
     :::column span="":::
-        `model-version` parameter
+        `model-version` parametresi
     :::column-end:::
     :::column span="":::
-        An optional parameter for choosing a version of the Text Analytics model. Currently only the default model is available for use.
+        Metin Analizi modelinin bir sürümünü seçmek için isteğe bağlı bir parametre. Şu anda yalnızca varsayılan model kullanıma sunuldu.
     :::column-end:::
 :::row-end:::
 
-### <a name="entity-types"></a>Entity types
+### <a name="entity-types"></a>Varlık türleri
 
-Named Entity Recognition v3 provides expanded detection across multiple types. Currently, NER v3 can recognize the following categories of entities. For a detailed list of supported entities and languages, see the [Named entity types](../named-entity-types.md) article.
+Adlandırılmış varlık tanıma v3, birden çok tür genelinde genişletilmiş algılama sağlar. Şu anda NER v3 aşağıdaki varlık kategorilerini algılayabilir. Desteklenen varlıkların ve dillerin ayrıntılı bir listesi için bkz. [adlandırılmış varlık türleri](../named-entity-types.md) makalesi.
 
 * Genel
-* Personal Information 
+* Kişisel bilgiler 
 
-### <a name="request-endpoints"></a>Request endpoints
+### <a name="request-endpoints"></a>İstek uç noktaları
 
-Named Entity Recognition v3 uses separate endpoints for NER and entity linking requests. Use a URL format below based on your request:
+Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
 
-NER
-* General entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+HI
+* Genel varlıklar-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Personal information entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Kişisel bilgi varlıkları-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entity linking
+Varlık bağlama
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Model versioning
+### <a name="model-versioning"></a>Model sürümü oluşturma
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-## <a name="supported-types-for-named-entity-recognition-v2"></a>Supported Types for Named Entity Recognition v2
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Adlandırılmış varlık tanıma v2 için desteklenen türler
 
 > [!NOTE]
-> The following entities are supported by Named Entity Recognition(NER) version 2. [NER v3](#named-entity-recognition-v3-public-preview) is in public preview, and greatly expands the number and depth of the entities recognized in text.   
+> Aşağıdaki varlıklar adlandırılmış varlık tanıma (NER) sürüm 2 tarafından desteklenir. [Ner v3](#named-entity-recognition-v3-public-preview) genel önizlemededir ve metinde tanınan varlıkların sayısını ve derinliğini büyük ölçüde genişletir.   
 
-| Tür  | SubType | Örnek |
+| Type  | SubType | Örnek |
 |:-----------   |:------------- |:---------|
-| Kişi        | N/A\*         | "Jeff", "Bill Gates"     |
-| Konum      | N/A\*         | "Redmond, Washington", "Paris"  |
-| Kuruluş  | N/A\*         | “Microsoft”   |
+| Kişi        | Yok\*         | "Jeff", "Bill Gates"     |
+| Konum      | Yok\*         | "Redmond, Washington", "Paris"  |
+| Kuruluş  | Yok\*         | “Microsoft”   |
 | Miktar      | Sayı        | "6", "altı"     |
 | Miktar      | Yüzde    | "%50", "yüzde elli"|
 | Miktar      | Sıra       | "2.", "ikinci"     |
-| Miktar      | Yaş           | "90 day old", "30 years old"    |
-| Miktar      | Para birimi      | “10,99 ABD Doları”     |
+| Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
+| Miktar      | Currency      | “10,99 ABD Doları”     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
-| Tarih Saat      | N/A\*         | “18:30 4 Şubat 2012”      |
-| Tarih Saat      | Tarih          | “2 Mayıs 2017”, “02.05.2017”   |
-| Tarih Saat      | Zaman          | "8am", "8:00"  |
-| Tarih Saat      | Tarih Aralığı     | “2 - 5 Mayıs Arası”    |
-| Tarih Saat      | Saat Aralığı     | “18.00 ve 19.00 Arası”     |
-| Tarih Saat      | Süre      | "1 dakika 45 saniye"   |
-| Tarih Saat      | Ayarla           | "Her Salı"     |
-| URL           | N/A\*         | "https:\//www.bing.com"    |
-| E-posta         | N/A\*         | "support@contoso.com" |
-| US Phone Number  | N/A\*         | (US phone numbers only) "(312) 555-0176" |
-| IP Adresi    | N/A\*         | "10.0.0.100" |
+| DateTime      | Yok\*         | “18:30 4 Şubat 2012”      |
+| DateTime      | Date          | “2 Mayıs 2017”, “02.05.2017”   |
+| DateTime      | Time          | "08:00", "8:00"  |
+| DateTime      | Tarih Aralığı     | “2 - 5 Mayıs Arası”    |
+| DateTime      | Saat Aralığı     | “18.00 ve 19.00 Arası”     |
+| DateTime      | Duration      | "1 dakika 45 saniye"   |
+| DateTime      | Ayarla           | "Her Salı"     |
+| URL           | Yok\*         | "https:\//www.bing.com"    |
+| Email         | Yok\*         | "support@contoso.com" |
+| ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
+| IP Adresi    | Yok\*         | alana 10.0.0.100 |
 
-\* Depending on the input and extracted entities, certain entities may omit the `SubType`.  All the supported entity types listed are available only for the English, Chinese-Simplified, French, German, and Spanish languages.
+giriş ve ayıklanan varlıklara göre \*, bazı varlıklar `SubType`yok edebilir.  Listelenen tüm desteklenen varlık türleri yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dillerde kullanılabilir.
 
 ### <a name="language-support"></a>Dil desteği
 
-Using entity linking in various languages requires using a corresponding knowledge base in each language. For entity linking in Text Analytics, this means each language that is supported by the `entities` endpoint will link to the corresponding Wikipedia corpus in that language. Since the size of corpora varies between languages, it is expected that the entity linking functionality's recall will also vary. See the [language support](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) article for more information.
+Çeşitli dillerde varlık bağlamayı kullanmak için her dilde ilgili bir Bilgi Bankası kullanılması gerekir. Metin Analizi ' de varlık bağlama için bu, `entities` uç noktası tarafından desteklenen her dilin ilgili dildeki ilişkili Viseı corpa bağlantısı olacağı anlamına gelir. Yapılar boyutu diller arasında farklılık gösterdiğinden, varlık bağlama işlevinin geri çağırma işlemi de değişir. Daha fazla bilgi için [dil desteği](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) makalesine bakın.
 
 ## <a name="preparation"></a>Hazırlık
 
-You must have JSON documents in this format: ID, text, language
+Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin, dil
 
-For currently supported languages, see [this list](../text-analytics-supported-languages.md).
+Şu anda desteklenen diller için [Bu listeye](../text-analytics-supported-languages.md)bakın.
 
-Document size must be under 5,120 characters per document, and you can have up to 1,000 items (IDs) per collection. Koleksiyon, istek gövdesinde gönderilir. The following example is an illustration of content you might submit to the entity linking end.
+Belge boyutu belge başına 5.120 karakter altında olmalıdır ve koleksiyon başına en fazla 1.000 öğe (kimlik) olabilir. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, varlık bağlama ucuna gönderebileceğiniz içerik çizimidir.
 
 ```json
     {
@@ -158,20 +158,20 @@ Document size must be under 5,120 characters per document, and you can have up t
 
 İstek tanımıyla ilgili ayrıntılara [Metin Analizi API’sini çağırma](text-analytics-how-to-call-api.md) bölümünden erişilebilir. Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
-+ Bir **POST** isteği oluşturun. Review the API documentation for this request: [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [varlıklar API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Set the HTTP endpoint for key phrase extraction by using either a Text Analytics resource on Azure or an instantiated [Text Analytics container](text-analytics-how-to-install-containers.md). You must include `/text/analytics/v2.1/entities`. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. `/text/analytics/v2.1/entities`dahil etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
-+ Set a request header to include [the access key](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) for Text Analytics operations.
++ Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
 + İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın
 
 > [!Tip]
-> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) **API testi konsolu**’nu açın.
+> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya **belgelerdeki** [API testi konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)’nu açın.
 
 ## <a name="step-2-post-the-request"></a>2\. Adım: İsteği gönderme
 
-İstek alındığında analiz gerçekleştirilir. See the [data limits](../overview.md#data-limits) section in the overview for information on the size and number of requests you can send per minute and second.
+İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için isteklerin boyutu ve sayısı hakkında genel bakış konusundaki [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
 Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
 
@@ -181,7 +181,7 @@ Tüm POST istekleri, kimlikler ve algılanan özelliklerle JSON tarafından biç
 
 Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
 
-An example of the output for entity linking is shown next:
+Varlık bağlama çıkışının bir örneği aşağıda gösterilmiştir:
 
 ```json
     {
@@ -341,12 +341,12 @@ An example of the output for entity linking is shown next:
 
 ## <a name="summary"></a>Özet
 
-In this article, you learned concepts and workflow for entity linking using Text Analytics in Cognitive Services. Özet:
+Bu makalede, bilişsel hizmetler 'deki Metin Analizi kullanarak varlık bağlama kavramlarını ve iş akışını öğrendiniz. Özet:
 
-+ [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) is available for selected languages.
-+ JSON documents in the request body include an ID, text, and language code.
-+ POST isteği, aboneliğiniz için geçerli olan kişiselleştirilmiş bir [erişim anahtarı ve uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kullanılarak `/entities` uç noktasına yapılır.
-+ Response output, which consists of linked entities (including confidence scores, offsets, and web links, for each document ID) can be used in any application
++ [Varlıklar API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) seçili diller için kullanılabilir.
++ İstek gövdesindeki JSON belgeleri bir KIMLIK, metin ve dil kodu içerir.
++ POST isteği, aboneliğiniz için geçerli olan kişiselleştirilmiş bir `/entities`erişim anahtarı ve uç nokta[ kullanılarak ](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) uç noktasına yapılır.
++ Bağlı varlıklardan oluşan yanıt çıkışı (her belge KIMLIĞI için güven puanları, uzaklıklar ve Web bağlantıları dahil) herhangi bir uygulamada kullanılabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

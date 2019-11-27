@@ -17,7 +17,7 @@ ms.locfileid: "74451432"
 ---
 Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. On the Azure portal menu, select **All services**. Kaynak listesinde **Depolama Hesapları** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Depolama Hesapları**’nı seçin.
+1. Azure portal menüsünde **tüm hizmetler**' i seçin. Kaynak listesinde **Depolama Hesapları** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Depolama Hesapları**’nı seçin.
 1. Açılan **Depolama Hesapları** penceresinde **Ekle**'yi seçin.
 1. Depolama hesabının oluşturulacağı aboneliği seçin.
 1. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Aşağıdaki görüntüde gösterildiği gibi yeni kaynak grubunuz için bir ad girin.
@@ -28,9 +28,9 @@ Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşa�
 1. Depolama hesabınız için bir konum seçin veya varsayılan konumu kullanın.
 1. Bu alanları varsayılan değerlerine ayarlanmış olarak bırakın:
 
-   |Alan  |Değer  |
+   |Alan  |Value  |
    |---------|---------|
-   |Dağıtım modeli     |Kaynak Yöneticisi         |
+   |Dağıtım modeli     |Resource Manager         |
    |Performans     |Standart         |
    |Hesap türü     |StorageV2 (genel amaçlı v2)         |
    |Çoğaltma     |Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)         |

@@ -37,7 +37,7 @@ Bir Kullanıcı uygulamayı başlattığında, varsayılan olarak yayımlanan uy
 - Bunun yerine giriş sayfası URL 'SI olarak `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` ayarlamak istiyorsunuz, bu nedenle bir dış Kullanıcı önce oturum açma sayfasını görür.
 
 > [!NOTE]
-> Kullanıcıların yayımlanan uygulamalara erişmesini sağlamak, uygulamalar görüntülenecek [Azure AD erişim paneli](../user-help/my-apps-portal-end-user-access.md) ve [Office 365 uygulama başlatıcısında](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Kullanıcılara yayımlanan uygulamalara erişim izni verdiğinizde, uygulamalar [Azure AD erişim panelinde](../user-help/my-apps-portal-end-user-access.md) ve [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)'nda görüntülenir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -85,7 +85,7 @@ Paketi yüklemek için aşağıdaki adımları izleyin:
    Install-Module -Name AzureAD
    ```
 
-    Komutu yönetici olmayan çalıştırıyorsanız, kullanın `-scope currentuser` seçeneği.
+    Komutu yönetici olmayan olarak çalıştırıyorsanız, `-scope currentuser` seçeneğini kullanın.
 
 1. Yükleme sırasında, Nuget.org adresinden iki paket yüklemek için **Y** ' yi seçin. Her iki paket de gereklidir.
 
@@ -147,7 +147,7 @@ Giriş sayfası URL 'sini oluşturun ve uygulamanızı bu değerle güncelleşti
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. Giriş sayfası URL'si istediğiniz değere ayarlayın. Değer yayımlanan bir uygulamanın bir alt etki alanı yolu olmalıdır. Örneğin, giriş sayfası URL değiştirirseniz `https://sharepoint-iddemo.msappproxy.net/` için `https://sharepoint-iddemo.msappproxy.net/hybrid/`, uygulama kullanıcılarının doğrudan özel giriş sayfasına gidin.
+1. Giriş sayfası URL'si istediğiniz değere ayarlayın. Değer yayımlanan bir uygulamanın bir alt etki alanı yolu olmalıdır. Örneğin, `https://sharepoint-iddemo.msappproxy.net/` giriş sayfası URL 'sini `https://sharepoint-iddemo.msappproxy.net/hybrid/`olarak değiştirirseniz, uygulama kullanıcıları doğrudan özel giriş sayfasına gider.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
@@ -180,5 +180,5 @@ Giriş sayfası URL 'sini oluşturun ve uygulamanızı bu değerle güncelleşti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD uygulama ara sunucusu ile SharePoint uzaktan erişimi etkinleştirme](application-proxy-integrate-with-sharepoint-server.md)
+- [Azure AD Uygulama Ara Sunucusu ile SharePoint 'e uzaktan erişimi etkinleştirme](application-proxy-integrate-with-sharepoint-server.md)
 - [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)

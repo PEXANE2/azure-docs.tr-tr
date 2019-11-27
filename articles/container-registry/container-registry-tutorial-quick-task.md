@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Quick container image build
+title: Öğretici-hızlı kapsayıcı görüntüsü oluşturma
 description: Bu öğreticide, Azure’da Azure Container Registry Görevleri (ACR Görevleri) ile bir Docker kapsayıcı görüntüsü derleme, ardından bu görüntüyü Azure Container Instances’a dağıtma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 09/24/2018
@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456055"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Build and deploy container images in the cloud with Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın
 
 **ACR Görevleri**, Azure’da kolaylaştırılmış ve verimli Docker kapsayıcı görüntüsü derlemeleri sağlayan bir Azure Container Registry özellik paketidir. Bu makalede, ACR Görevlerinin *hızlı görev* özelliğini kullanmayı öğreneceksiniz.
 
@@ -26,13 +26,13 @@ Dizinin birinci bölümü olan bu öğreticide şunları öğreneceksiniz:
 > * Azure’da kapsayıcı görüntüsü derleme
 > * Azure Container Instances‘a kapsayıcı dağıtma
 
-Sonraki öğreticilerde, ACR Görevlerini kod işleme ve temel görüntü güncelleştirmesi üzerindeki otomatik kapsayıcı görüntüsü derlemelerine yönelik görevler için kullanmayı öğreneceksiniz. ACR Tasks can also run [multi-step tasks](container-registry-tasks-multi-step.md), using a YAML file to define steps to build, push, and optionally test multiple containers.
+Sonraki öğreticilerde, ACR Görevlerini kod işleme ve temel görüntü güncelleştirmesi üzerindeki otomatik kapsayıcı görüntüsü derlemelerine yönelik görevler için kullanmayı öğreneceksiniz. ACR görevleri, birden çok kapsayıcıyı oluşturma, gönderme ve isteğe bağlı olarak test etme adımlarını tanımlamak için bir YAML dosyası kullanarak [çok adımlı görevler](container-registry-tasks-multi-step.md)de çalıştırabilir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.46** or later installed and logged in with [az login][az-login]. Sürümü bulmak için `az --version` komutunu çalıştırın. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
+Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Azure CLI sürüm **2.0.46** veya sonraki bir sürümünün yüklü ve oturum açmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek][azure-cli].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="github-account"></a>GitHub hesabı
 
@@ -70,7 +70,7 @@ Bu öğretici serisindeki komutlar Bash kabuğu için biçimlendirilmiştir. Pow
 
 Kaynak kodunu makinenize çektikten sonra aşağıdaki adımları izleyerek bir kapsayıcı kayıt defteri oluşturun ve ACR Görevleri ile kapsayıcı görüntüsünü derleyin.
 
-Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. **\<registry-name\>** değerini yeni kapsayıcı kayıt defterinizin benzersiz adıyla değiştirin. The registry name must be unique within Azure, contain only lower case letters, and contain 5-50 alphanumeric characters. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
+Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. **\<registry-name\>** değerini yeni kapsayıcı kayıt defterinizin benzersiz adıyla değiştirin. Kayıt defteri adı Azure içinde benzersiz olmalı, yalnızca küçük harf ve 5-50 alfasayısal karakter içermelidir. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -85,13 +85,13 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Bir kayıt defteri oluşturduktan sonra ACR Görevlerini kullanarak örnek koddan bir kapsayıcı görüntüsü derleyebilirsiniz. Execute the [az acr build][az-acr-build] command to perform a *quick task*:
+Bir kayıt defteri oluşturduktan sonra ACR Görevlerini kullanarak örnek koddan bir kapsayıcı görüntüsü derleyebilirsiniz. *Hızlı bir görev*gerçekleştirmek için [az ACR Build][az-acr-build] komutunu yürütün:
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-Output from the [az acr build][az-acr-build] command is similar to the following. Kaynak kodun Azure’a yüklenme durumunu ("bağlam") ve ACR görevinin bulutta çalıştırdığı `docker build` işlemini görebilirsiniz. ACR görevleri görüntülerinizi derlemek için `docker build` kullandığından, ACR Görevlerini kullanmaya hemen başlamak üzere Dockerfile üzerinde bir değişiklik yapılması gerekmez.
+[Az ACR Build][az-acr-build] komutunun çıktısı aşağıdakine benzer. Kaynak kodun Azure’a yüklenme durumunu ("bağlam") ve ACR görevinin bulutta çalıştırdığı `docker build` işlemini görebilirsiniz. ACR görevleri görüntülerinizi derlemek için `docker build` kullandığından, ACR Görevlerini kullanmaya hemen başlamak üzere Dockerfile üzerinde bir değişiklik yapılması gerekmez.
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -171,7 +171,7 @@ Bu bölümde, bir Azure Anahtar Kasası ve hizmet sorumlusu oluşturacak, ardın
 
 ### <a name="configure-registry-authentication"></a>Kayıt defteri kimlik doğrulamasını yapılandırma
 
-All production scenarios should use [service principals][service-principal-auth] to access an Azure container registry. Hizmet sorumluları, kapsayıcı görüntüleriniz için rol tabanlı erişim denetimi sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
+Tüm üretim senaryoları, Azure Container Registry 'ye erişmek için [hizmet sorumlularını][service-principal-auth] kullanmalıdır. Hizmet sorumluları, kapsayıcı görüntüleriniz için rol tabanlı erişim denetimi sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
 
 #### <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
@@ -187,7 +187,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Şimdi bir hizmet sorumlusu oluşturup kimlik bilgilerini anahtar kasanızda depolamanız gerekiyor.
 
-Use the [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] to store the service principal's **password** in the vault:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] komutunu kullanın ve hizmet sorumlusu **parolasını** kasada depolamak için [az keykasa Secret][az-keyvault-secret-set] :
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -202,7 +202,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-The `--role` argument in the preceding command configures the service principal with the *acrpull* role, which grants it pull-only access to the registry. To grant both push and pull access, change the `--role` argument to *acrpush*.
+Yukarıdaki komutta `--role` bağımsız değişkeni, hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush*olarak değiştirin.
 
 Ardından, hizmet sorumlusunun *uygulama kimliğini* kasada depolayın. Bu değer, kimlik doğrulaması için Azure Container Registry’ye geçirdiğiniz **kullanıcı adıdır**:
 
@@ -225,7 +225,7 @@ Artık siz veya uygulamalarınız ve hizmetleriniz kayıt defterinden görüntü
 
 Hizmet sorumlusu kimlik bilgileri Azure Key Vault gizli dizileri olarak depolandıktan sonra, uygulamalarınız ve hizmetleriniz bu kimlik bilgilerini kullanarak özel kayıt defterinize erişebilir.
 
-Execute the following [az container create][az-container-create] command to deploy a container instance. Komut, kapsayıcı kayıt defterinizde kimlik doğrulaması yapmak için hizmet sorumlusunun Azure Key Vault’ta depolanmış kimlik bilgilerini kullanır.
+Bir kapsayıcı örneği dağıtmak için aşağıdaki [az Container Create][az-container-create] komutunu yürütün. Komut, kapsayıcı kayıt defterinizde kimlik doğrulaması yapmak için hizmet sorumlusunun Azure Key Vault’ta depolanmış kimlik bilgilerini kullanır.
 
 ```azurecli-interactive
 az container create \
@@ -262,7 +262,7 @@ Kapsayıcının FQDN'sini not alın, sonraki bölümde kullanacaksınız.
 
 ### <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-To watch the startup process of the container, use the [az container attach][az-container-attach] command:
+Kapsayıcının başlatma işlemini izlemek için [az Container Attach][az-container-attach] komutunu kullanın:
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -290,7 +290,7 @@ Konsolunuzu kapsayıcıdan ayırmak için `Control+C` öğesine dokunun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Stop the container instance with the [az container delete][az-container-delete] command:
+[Az Container Delete][az-container-delete] komutuyla kapsayıcı örneğini durdurun:
 
 ```azurecli-interactive
 az container delete --resource-group $RES_GROUP --name acr-tasks

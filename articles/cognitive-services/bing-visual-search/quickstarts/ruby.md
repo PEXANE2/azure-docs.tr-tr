@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Ruby - Bing Visual Search'
+title: 'Hızlı başlangıç: REST API ve Ruby-Bing Görsel Arama kullanarak görüntü öngörülerini alın'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Bing Görsel Arama API'si bir görüntüyü karşıya yüklemeyi ve ilgili öngörüleri nasıl alabileceğinizi öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,22 +17,22 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383128"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Ruby
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Ruby kullanarak görüntü öngörülerini alın
 
-This quickstart uses the Ruby programming language to call Bing Visual Search and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
+Bu hızlı başlangıç, Bing Görsel Arama çağırmak ve sonuçları göstermek için Ruby programlama dilini kullanır. POST isteği bir görüntüyü API uç noktasına yükler. Sonuçlar, karşıya yüklenen görüntüye benzer görüntüler ve URL 'Ler hakkında açıklayıcı bilgiler içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-To run this quickstart:
+Bu hızlı başlangıcı çalıştırmak için:
 
-* Install [Ruby 2.4 or later](https://www.ruby-lang.org/en/downloads/)
-* Get a subscription key:
+* [Ruby 2,4 veya üstünü](https://www.ruby-lang.org/en/downloads/) yükler
+* Abonelik anahtarı al:
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-required-modules"></a>Project and required modules
+## <a name="project-and-required-modules"></a>Proje ve gerekli modüller
 
-Create a new Ruby project in your IDE or editor. Import `net/http`, `uri` , and `json` to handle the JSON text of results. The `base64` library is used to encode the file name string: 
+IDE veya Düzenleyicinizde yeni bir Ruby projesi oluşturun. Sonuçların JSON metnini işlemek için `net/http`, `uri` ve `json` içeri aktarın. `base64` kitaplığı, dosya adı dizesini kodlamak için kullanılır: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-The following code assigns required variables. Confirm that the endpoint is correct and replace the `accessKey` value with a subscription key from your Azure account.  The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data.  The `fileName` variable identifies the image file for the POST.  The `if` block tests for a valid subscription key.
+Aşağıdaki kod gerekli değişkenleri atar. Uç noktanın doğru olduğundan emin olun ve `accessKey` değerini Azure hesabınızdaki bir abonelik anahtarıyla değiştirin.  `batchNumber`, POST verilerinin baştaki ve sondaki sınırları için gereken bir GUID 'dir.  `fileName` değişkeni GÖNDERI için görüntü dosyasını tanımlar.  `if`, geçerli bir abonelik anahtarı için testleri engeller.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Form data for POST request
+## <a name="form-data-for-post-request"></a>POST isteği için veri formu
 
-The image data to POST is enclosed by leading and trailing boundaries. The following functions set the boundaries:
+GÖNDERILECEK görüntü verileri, baştaki ve sondaki sınırlara göre alınmıştır. Aşağıdaki işlevler sınırları ayarlar:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-Next, construct the endpoint URI and an array to contain the POST body.  Use the previous function to load the start boundary into the array. Read the image file into the array. Then, read the end boundary into the array:
+Sonra, uç nokta URI 'sini ve POST gövdesini içeren bir diziyi oluşturun.  Başlangıç sınırını diziye yüklemek için Previous işlevini kullanın. Görüntü dosyasını diziye okuyun. Ardından, bitiş sınırını diziye okuyun:
 
 ```
 uri = URI(uri + path)
@@ -92,9 +92,9 @@ post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 post_body << BuildFormDataEnd(batchNumber)
 ```
 
-## <a name="create-the-http-request"></a>Create the HTTP request
+## <a name="create-the-http-request"></a>HTTP isteği oluşturma
 
-Set the `Ocp-Apim-Subscription-Key` header.  İsteği oluşturma. Then, assign the header and content type. Join the POST body created previously to the request:
+`Ocp-Apim-Subscription-Key` üst bilgisini ayarlayın.  İsteği oluşturma. Ardından, üst bilgi ve içerik türünü atayın. Daha önce oluşturulan POST gövdesini isteğe ekleyin:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -106,9 +106,9 @@ request.body = post_body.join
 
 ```
 
-## <a name="request-and-response"></a>Request and response
+## <a name="request-and-response"></a>İstek ve yanıt
 
-Ruby sends the request and gets the response with the following line of code:
+Ruby isteği gönderir ve aşağıdaki kod satırıyla yanıtı alır:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>Print the results
+## <a name="print-the-results"></a>Sonuçları Yazdır
 
-Print the headers of the response, and use the JSON library to format output:
+Yanıtın üst bilgilerini yazdırın ve çıktıyı biçimlendirmek için JSON kitaplığını kullanın:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -136,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Sonuçlar
 
-The following JSON is a segment of the output:
+Aşağıdaki JSON, çıktının bir segmentine sahiptir:
 
 ```
 Relevant Headers:
@@ -284,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Visual Search overview](../overview.md)
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Bing Görsel Arama genel bakış](../overview.md)
+> [bir görsel arama tek sayfalı Web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)

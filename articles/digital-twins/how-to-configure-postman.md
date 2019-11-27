@@ -99,7 +99,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     | Kimlik doğrulama URL 'SI | **2. adımdaki** **yetkilendirme URL 'sini** kullanın |
     | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
     | Kapsam | Boş bırakın |
-    | Durum | Boş bırakın |
+    | State | Boş bırakın |
     | İstemci kimlik doğrulaması | `Send as Basic Auth header` |
 
 1. İstemci şu şekilde görünmelidir:

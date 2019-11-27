@@ -29,7 +29,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’da oturum açın.
 
 Yeni bir Linux sanal makinesi oluşturun: 
 
@@ -106,7 +106,7 @@ Artık Aracı, belirtilen giriş eklentilerinden her bir ölçüm toplayacak ve 
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Telegraf ölçümlerini Azure portal çizme 
 
-1. [Azure portalı](https://portal.azure.com) açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 
 1. Yeni **izleyici** sekmesine gidin. Ardından **ölçümler**' i seçin.  
 

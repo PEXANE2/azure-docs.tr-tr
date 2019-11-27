@@ -86,7 +86,7 @@ OpenID Connect 'in Microsoft Identity Platform uygulaması, belirli bir kaynak i
 
 Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturum açma işlemini gerçekleştiriyorsa, `openid` kapsamını istemesi gerekir. `openid` kapsam, çalışma hesabı onay sayfasında "oturumunuzu aç" izninin yanı sıra kişisel Microsoft hesabı izin sayfasında "profilinizi görüntüleme ve Microsoft hesabı ile uygulama ve hizmetlere bağlanma" iznini olarak gösterir. Bu izinle, bir uygulama kullanıcı için `sub` talebi biçiminde benzersiz bir tanımlayıcı alabilir. Ayrıca uygulama, UserInfo uç noktasına erişim sağlar. `openid` kapsamı, uygulama tarafından kimlik doğrulaması için kullanılabilecek kimlik belirteçleri elde etmek için Microsoft Identity platform belirteci uç noktasında kullanılabilir.
 
-### <a name="email"></a>e-posta
+### <a name="email"></a>email
 
 `email` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulama, kullanıcının birincil e-posta adresine `email` talebi biçiminde erişim sağlar. `email` talebi, yalnızca bir e-posta adresi kullanıcı hesabıyla ilişkiliyse, her zaman durum olmayan bir belirtece dahil edilir. `email` kapsamını kullanıyorsa, uygulamanız `email` talebinin belirteçte olmadığı bir durumu işlemeye hazırlanmalıdır.
 

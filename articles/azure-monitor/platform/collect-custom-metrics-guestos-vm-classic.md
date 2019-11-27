@@ -27,7 +27,7 @@ Bu konumda depolamak, platform ölçümleri için yaptığınız aynı eylemlere
 
 Bu makalede özetlenen işlem yalnızca Windows işletim sistemini çalıştıran klasik sanal makinelerde çalışır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](../../billing/billing-add-change-azure-subscription-administrator.md) olmanız gerekir. 
 

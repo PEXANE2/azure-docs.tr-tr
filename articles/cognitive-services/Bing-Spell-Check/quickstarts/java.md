@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and Java - Bing Spell Check'
+title: 'Hızlı başlangıç: REST API ve Java-Bing Yazım Denetimi ile yazım denetimi yapma'
 titleSuffix: Azure Cognitive Services
-description: Get started using the Bing Spell Check REST API to check spelling and grammar.
+description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,21 +17,21 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383866"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Java
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Java ile yazım denetimi yapma
 
-Use this quickstart to make your first call to the Bing Spell Check REST API. This simple Java application sends a request to the API and returns a list of suggested corrections. While this application is written in Java, the API is a RESTful web service compatible with most programming languages. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
+Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama Java 'da yazıldığı sırada, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* The Java Development Kit(JDK) 7 or later.
+* Java Development Kit (JDK) 7 veya üzeri.
 
-* Import the [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) or the most current [Gson](https://github.com/google/gson) version. For command line execution, add the `.jar` to your Java folder with the main class.
+* [Gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) veya en güncel [gson](https://github.com/google/gson) sürümünü içeri aktarın. Komut satırı yürütmesi için, ana sınıfla `.jar` Java klasörünüze ekleyin.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="create-and-initialize-an-application"></a>Create and initialize an application
+## <a name="create-and-initialize-an-application"></a>Uygulama oluşturma ve başlatma
 
-1. Create a new Java Project in your favorite IDE or editor with a class name of your choosing, and then import the following packages.
+1. Seçtiğiniz bir sınıf adı ile en sevdiğiniz IDE veya düzenleyicide yeni bir Java projesi oluşturun ve ardından aşağıdaki paketleri içeri aktarın.
 
     ```java
     import java.io.*;
@@ -40,7 +40,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Create variables for the API endpoint's host, path, and your subscription key. Then create variables for your market, the text you want to spell check, and a string for the spell check mode.
+2. API uç noktasının ana bilgisayar, yol ve abonelik anahtarınız için değişkenler oluşturun. Daha sonra Pazar için değişkenler, yazım denetimi yapmak istediğiniz metin ve yazım denetimi modu için bir dize oluşturun.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -53,9 +53,9 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     static String text = "Hollo, wrld!";
     ```
 
-## <a name="create-and-send-an-api-request"></a>Create and send an API request
+## <a name="create-and-send-an-api-request"></a>API isteği oluşturma ve gönderme
 
-1. Create a function called `check()` to create and send the API request. Within it, follow these steps. Create a string for the request parameters. append the `?mkt=` parameter to your market string, and the `&mode=` parameter to your spell check mode.  
+1. API isteği oluşturmak ve göndermek için `check()` adlı bir işlev oluşturun. Bunun içinde, aşağıdaki adımları izleyin. İstek parametreleri için bir dize oluşturun. `?mkt=` parametresini Pazar dizeniz ve `&mode=` parametresini yazım denetimi moduna ekleyin.  
 
    ```java
    public static void check () throws Exception {
@@ -64,14 +64,14 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
    }
    ```
 
-2. Create a URL by combining the endpoint host, path and parameters string. Create a new `HttpsURLConnection` object.
+2. Uç nokta konağını, yolunu ve Parameters dizesini birleştirerek bir URL oluşturun. Yeni bir `HttpsURLConnection` nesnesi oluşturun.
 
     ```java
     URL url = new URL(host + path + params);
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Open a connection to the URL. Set the request method to `POST`. Add your request parameters. Make sure to add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+3. URL 'ye bir bağlantı açın. İstek yöntemini `POST`olarak ayarlayın. İstek parametrelerinizi ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üst bilgisine eklediğinizden emin olun.
 
     ```java
     connection.setRequestMethod("POST");
@@ -80,7 +80,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     connection.setDoOutput(true);
     ```
 
-4. Create a new `DataOutputStream` object and Send the request to the API.
+4. Yeni bir `DataOutputStream` nesnesi oluşturun ve isteği API 'ye gönderin.
 
     ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -89,9 +89,9 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
         wr.close();
     ```
 
-## <a name="format-and-read-the-api-response"></a>Format and read the API response
+## <a name="format-and-read-the-api-response"></a>API yanıtını biçimlendirme ve okuma
 
-1. Add this method to your class. It formats the JSON for a more readable output.
+1. Bu yöntemi sınıfınıza ekleyin. Daha okunabilir bir çıkış için JSON 'ı biçimlendirir.
 
     ``` java
     // This function prettifies the json response.
@@ -103,7 +103,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     }
     ```
 
-1. Create a `BufferedReader` and read the response from the API. Print it to the console.
+1. `BufferedReader` oluşturun ve API 'den yanıtı okuyun. Bunu konsola yazdır.
     
     ```java
     BufferedReader in = new BufferedReader(
@@ -117,7 +117,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
 
 ## <a name="call-the-api"></a>API çağırma
 
-In the main function of your application, call your check() method created above.
+Uygulamanızın ana işlevinde, yukarıda oluşturulan Check () yöntemini çağırın.
 ```java
         public static void main(String[] args) {
             try {
@@ -131,21 +131,21 @@ In the main function of your application, call your check() method created above
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Build and run your project.
+Projenizi derleyin ve çalıştırın.
 
-If you're using the command line, use the following commands to build and run the application.
+Komut satırını kullanıyorsanız, uygulamayı derlemek ve çalıştırmak için aşağıdaki komutları kullanın.
 
-**Build:**
+**Derlemeyi**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**Run:**
+**Çalışmaz**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
@@ -192,5 +192,5 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [!div class="nextstepaction"]
 > [Tek sayfalı web uygulaması oluşturma](../tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](../overview.md)
+- [Bing Yazım Denetimi API'si nedir?](../overview.md)
 - [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

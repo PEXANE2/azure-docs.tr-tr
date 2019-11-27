@@ -1,6 +1,6 @@
 ---
-title: Store Helm charts
-description: Learn how to use a Helm repository with Azure Container Registry to store charts for your applications
+title: Held grafiklerini depola
+description: Uygulamalarınız için grafik depolamak üzere Azure Container Registry ile Held deposunu nasıl kullanacağınızı öğrenin
 ms.topic: article
 ms.date: 09/24/2018
 ms.openlocfilehash: 0c5e66d5f2fc3dd3c2d8c0a975c3e9d1c813732d
@@ -10,61 +10,61 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456349"
 ---
-# <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Use Azure Container Registry as a Helm repository for your application charts
+# <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Uygulama grafiklerinizde Helu deposu olarak Azure Container Registry kullanın
 
-To quickly manage and deploy applications for Kubernetes, you can use the [open-source Helm package manager][helm]. With Helm, applications are defined as *charts* that are stored in a Helm chart repository. These charts define configurations and dependencies, and can be versioned throughout the application lifecycle. Azure Container Registry can be used as the host for Helm chart repositories.
+Kubernetes uygulamalarını hızlıca yönetmek ve dağıtmak için, [Açık kaynaklı HELI paket yöneticisini][helm]kullanabilirsiniz. Held ile uygulamalar, Held grafik deposunda depolanan *grafikler* olarak tanımlanır. Bu grafikler, yapılandırma ve bağımlılıkları tanımlar ve uygulama yaşam döngüsü boyunca sürümlenebilir. Azure Container Registry, Held grafik depoları için konak olarak kullanılabilir.
 
-With Azure Container Registry, you have a private, secure Helm chart repository, that can integrate with build pipelines or other Azure services. Helm chart repositories in Azure Container Registry include geo-replication features to keep your charts close to deployments and for redundancy. You only pay for the storage used by the charts, and are available across all Azure Container Registry price tiers.
+Azure Container Registry, derleme işlem hatları veya diğer Azure hizmetleriyle tümleştirilen özel, güvenli bir Held grafik deposudur. Azure Container Registry hele grafik depoları, grafiklerinizi dağıtımlara ve artıklık için kapalı tutmaya yönelik coğrafi çoğaltma özelliklerini içerir. Yalnızca grafikler tarafından kullanılan depolama alanı için ödeme yaparsınız ve tüm Azure Container Registry fiyat katmanlarında kullanılabilir.
 
-This article shows you how to use a Helm chart repository stored in Azure Container Registry.
+Bu makalede, Azure Container Registry depolanan bir Helu grafik deposunun nasıl kullanılacağı gösterilmektedir.
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-To complete the steps in this article, the following pre-requisites must be met:
+Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki önkoşulların karşılanması gerekir:
 
-- **Azure Container Registry** - Create a container registry in your Azure subscription. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md).
-- **Helm client version 2.11.0 (not an RC version) or later** - Run `helm version` to find your current version. You also need a Helm server (Tiller) initialized within a Kubernetes cluster. If needed, you can [create an Azure Kubernetes Service cluster][aks-quickstart]. For more information on how to install and upgrade Helm, see [Installing Helm][helm-install].
-- **Azure CLI version 2.0.46 or later** - Run `az --version` to find the version. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+- **Azure Container Registry** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
+- **Hele istemci sürümü 2.11.0 (RC sürümü değil) veya daha sonra** , geçerli sürümünüzü bulmak için `helm version` çalıştırın. Ayrıca bir Kubernetes kümesi içinde başlatılan bir Held sunucusuna (Tiller) ihtiyacınız vardır. Gerekirse, [bir Azure Kubernetes hizmet kümesi oluşturabilirsiniz][aks-quickstart]. Held 'yi yükleme ve yükseltme hakkında daha fazla bilgi için bkz. [Held yükleme][helm-install].
+- **Azure CLI sürüm 2.0.46 veya üzeri** -sürümü bulmak için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
-## <a name="add-a-repository-to-helm-client"></a>Add a repository to Helm client
+## <a name="add-a-repository-to-helm-client"></a>Hele istemcisine bir depo ekleyin
 
-A Helm repository is an HTTP server that can store Helm charts. Azure Container Registry can provide this storage for Helm charts, and manage the index definition as you add and remove charts to the repository.
+Held deposu, Held grafiklerini depolayabilen bir HTTP sunucusudur. Azure Container Registry, Held grafikleri için bu depolama alanını sağlayabilir ve havuza grafik ekleyip kaldırırken Dizin tanımını yönetebilir.
 
-To add your Azure Container Registry as a Helm chart repository, you use the Azure CLI. With this approach, your Helm client is updated with the URI and credentials for the repository backed by Azure Container Registry. You don't need to manually specify this repository information, so the credentials aren't exposed in the command history, for example.
+Azure Container Registry hele grafik deposu olarak eklemek için Azure CLı 'yi kullanırsınız. Bu yaklaşımda, HELI istemciniz Azure Container Registry tarafından desteklenen deponun URI ve kimlik bilgileriyle güncelleştirilir. Bu depo bilgilerini el ile belirtmeniz gerekmez, bu nedenle kimlik bilgileri komut geçmişinde gösterilmez, örneğin.
 
-If needed, log in to the Azure CLI and follow the prompts:
+Gerekirse, Azure CLı 'da oturum açın ve istemleri izleyin:
 
 ```azurecli
 az login
 ```
 
-Configure the Azure CLI defaults with the name of your Azure Container Registry using the [az configure][az-configure] command. In the following example, replace `<acrName>` with the name of your registry:
+[Az configure][az-configure] komutunu kullanarak Azure CLI varsayılan değerlerini Azure Container Registry adıyla yapılandırın. Aşağıdaki örnekte `<acrName>`, kayıt defterinizin adıyla değiştirin:
 
 ```azurecli
 az configure --defaults acr=<acrName>
 ```
 
-Now add your Azure Container Registry Helm chart repository to your Helm client using the [az acr helm repo add][az-acr-helm-repo-add] command. This command gets an authentication token for your Azure container registry that is used by the Helm client. The authentication token is valid for 1 hour. Similar to `docker login`, you can run this command in future CLI sessions to authenticate your Helm client with your Azure Container Registry Helm chart repository:
+Şimdi [az ACR Helm depo Add][az-acr-helm-repo-add] komutunu kullanarak Azure Container Registry Helm grafik deponuzu Helm istemcimize ekleyin. Bu komut, Azure Container kayıt defteriniz için Helm istemcisi tarafından kullanılan bir kimlik doğrulama belirteci alır. Kimlik doğrulama belirteci 1 saat için geçerlidir. `docker login`benzer şekilde, Azure Container Registry Helu grafik deponuzla hele istemcinizi kimlik doğrulaması yapmak için bu komutu gelecekteki CLı oturumlarında çalıştırabilirsiniz:
 
 ```azurecli
 az acr helm repo add
 ```
 
-## <a name="add-a-chart-to-the-repository"></a>Add a chart to the repository
+## <a name="add-a-chart-to-the-repository"></a>Depoya bir grafik ekleyin
 
-For this article, let's get an existing Helm chart from the public Helm *stable* repo. The *stable* repo is a curated, public repo that includes common application charts. Package maintainers can submit their charts to the *stable* repo, in the same way that Docker Hub provides a public registry for common container images. The chart downloaded from the public *stable* repo can then be pushed to your private Azure Container Registry repository. In most scenarios, you would build and upload your own charts for the applications you develop. For more information on how to build your own Helm charts, see [developing Helm charts][develop-helm-charts].
+Bu makalede, genel Helm *kararlı* deposundan mevcut bir Helm grafiği edinebilirsiniz. *Kararlı* depo, ortak uygulama grafiklerini içeren, seçkin bir ortak depodır. Paket bakım makineleri, Docker Hub 'ının ortak kapsayıcı görüntüleri için ortak bir kayıt defteri sağladığı şekilde grafiklerini *kararlı* depoya gönderebilirler. Ortak *kararlı* depodan indirilen grafik daha sonra özel Azure Container Registry deponuza gönderilir. Çoğu senaryoda, geliştirdiğiniz uygulamalar için kendi grafiklerinizi derleyip karşıya yüklersiniz. Kendi hele grafiklerini oluşturma hakkında daha fazla bilgi için bkz. [HELI grafikleri geliştirme][develop-helm-charts].
 
-First, create a directory at *~/acr-helm*, then download the existing *stable/wordpress* chart:
+İlk olarak, *~/ACR-Held*konumunda bir dizin oluşturun, ardından mevcut *kararlı/WordPress* grafiğini indirin:
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
 helm fetch stable/wordpress
 ```
 
-List the downloaded chart, and note the Wordpress version included in the filename. The `helm fetch stable/wordpress` command didn't specify a particular version, so the *latest* version was fetched. All Helm charts include a version number in the filename that follows the [SemVer 2][semver2] standard. In the following example output, the Wordpress chart is version *2.1.10*:
+İndirilen grafiği listeleyin ve dosya adına dahil olan WordPress sürümünü aklınızda yapın. `helm fetch stable/wordpress` komutu belirli bir sürüm belirtmedi, bu nedenle *en son* sürüm getirildi. Tüm Heli grafikleri, [Semver 2][semver2] standardını izleyen dosya adında bir sürüm numarası içerir. Aşağıdaki örnek çıktıda, WordPress grafiğinin sürümü *2.1.10*olur:
 
 ```
 $ ls
@@ -72,13 +72,13 @@ $ ls
 wordpress-2.1.10.tgz
 ```
 
-Now push the chart to your Helm chart repository in Azure Container Registry using the Azure CLI [az acr helm push][az-acr-helm-push] command. Specify the name of your Helm chart downloaded in the previous step, such as *wordpress-2.1.10.tgz*:
+Şimdi Azure CLı [az ACR Helm Push][az-acr-helm-push] komutunu kullanarak Azure Container Registry ' deki Helm grafik deponuza grafik gönderin. Önceki adımda indirilen HELI grafiğinin adını belirtin, örneğin *WordPress-2.1.10. tgz*:
 
 ```azurecli
 az acr helm push wordpress-2.1.10.tgz
 ```
 
-After a few moments, the Azure CLI reports that your chart has been saved, as shown in the following example output:
+Birkaç dakika sonra Azure CLı, aşağıdaki örnek çıktıda gösterildiği gibi, grafiğinizin kaydedildiğini bildirir:
 
 ```
 $ az acr helm push wordpress-2.1.10.tgz
@@ -88,21 +88,21 @@ $ az acr helm push wordpress-2.1.10.tgz
 }
 ```
 
-## <a name="list-charts-in-the-repository"></a>List charts in the repository
+## <a name="list-charts-in-the-repository"></a>Depodaki grafikleri listeleme
 
-The Helm client maintains a local cached copy of the contents of remote repositories. Changes to a remote repository don't automatically update the list of available charts known locally by the Helm client. When you search for charts across repositories, Helm uses it's local cached index. To use the chart uploaded in the previous step, the local Helm repository index must be updated. You can reindex the repositories in the Helm client, or use the Azure CLI to update the repository index. Each time you add a chart to your repository, this step must be completed:
+Helmclient, uzak depoların içeriklerinin yerel olarak önbelleğe alınmış bir kopyasını tutar. Uzak bir depodaki değişiklikler, hele istemcisi tarafından yerel olarak bilinen kullanılabilir grafiklerin listesini otomatik olarak güncelleştirmez. Depolarda grafik ararken, HELI yerel önbelleğe alınmış dizini kullanır. Önceki adımda karşıya yüklenen grafiği kullanmak için yerel Held depo dizininin güncellenmesi gerekir. Hele istemcisinde depoları yeniden düzenleyebilir veya depo dizinini güncelleştirmek için Azure CLı kullanabilirsiniz. Deponuza bir grafik eklediğiniz her sefer, bu adımın tamamlanması gerekir:
 
 ```azurecli
 az acr helm repo add
 ```
 
-With a chart stored in your repository and the updated index available locally, you can use the regular Helm client commands to search or install. To see all the charts in your repository, use `helm search <acrName>`. Provide your own Azure Container Registry name:
+Deponuzda depolanan ve güncelleştirilmiş Dizin yerel olarak bulunan bir grafik ile, aramak veya yüklemek için normal hele istemci komutlarını kullanabilirsiniz. Deponuzdaki tüm grafikleri görmek için `helm search <acrName>`kullanın. Kendi Azure Container Registry adınızı sağlayın:
 
 ```console
 helm search <acrName>
 ```
 
-The Wordpress chart pushed in the previous step is listed, as shown in the following example output:
+Önceki adımda gönderilen WordPress grafiği, aşağıdaki örnek çıktıda gösterildiği gibi listelenir:
 
 ```
 $ helm search myacrhelm
@@ -111,21 +111,21 @@ NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  2.1.10          4.9.8       Web publishing platform for building blogs and websites.
 ```
 
-You can also list the charts with the Azure CLI, using [az acr helm list][az-acr-helm-list]:
+Grafikleri, [az ACR Helm List][az-acr-helm-list]kullanarak Azure CLI ile de listeleyebilirsiniz:
 
 ```azurecli
 az acr helm list
 ```
 
-## <a name="show-information-for-a-helm-chart"></a>Show information for a Helm chart
+## <a name="show-information-for-a-helm-chart"></a>Hela grafiğinin bilgilerini göster
 
-To view information for a specific chart in the repo, you can again use the regular Helm client. To see information for the chart named *wordpress*, use `helm inspect`.
+Depodaki belirli bir grafiğin bilgilerini görüntülemek için, normal hele istemcisini yeniden kullanabilirsiniz. *WordPress*adlı grafik hakkındaki bilgileri görmek için `helm inspect`kullanın.
 
 ```console
 helm inspect <acrName>/wordpress
 ```
 
-When no version number is provided, the *latest* version is used. Helm returns detailed information about your chart, as shown in the following condensed example output:
+Sürüm numarası sağlanmamışsa, *en son* sürüm kullanılır. HELI, aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, grafiğiniz hakkında ayrıntılı bilgiler döndürür:
 
 ```
 $ helm inspect myacrhelm/wordpress
@@ -153,30 +153,30 @@ version: 2.1.10
 [...]
 ```
 
-You can also show the information for a chart with the Azure CLI [az acr helm show][az-acr-helm-show] command. Again, the *latest* version of a chart is returned by default. You can append `--version` to list a specific version of a chart, such as *2.1.10*:
+Ayrıca, Azure CLı [az ACR Helm Show][az-acr-helm-show] komutuyla bir grafik için bilgileri gösterebilirsiniz. Yine, bir grafiğin *en son* sürümü varsayılan olarak döndürülür. Grafiğin belirli bir sürümünü listelemek için `--version` ekleyebilirsiniz, örneğin, *2.1.10*:
 
 ```azurecli
 az acr helm show wordpress
 ```
 
-## <a name="install-a-helm-chart-from-the-repository"></a>Install a Helm chart from the repository
+## <a name="install-a-helm-chart-from-the-repository"></a>Depodan bir Held grafiği yükler
 
-The Helm chart in your repository is installed by specifying the repository name and then chart name. Use the Helm client to install the Wordpress chart:
+Deponuzdaki hele grafiği, Depo adı ve sonra grafik adı belirtilerek yüklenir. WordPress grafiğini yüklemek için hele istemcisini kullanın:
 
 ```console
 helm install <acrName>/wordpress
 ```
 
 > [!TIP]
-> If you push to your Azure Container Registry Helm chart repository and later return in a new CLI session, your local Helm client needs an updated authentication token. To obtain a new authentication token, use the [az acr helm repo add][az-acr-helm-repo-add] command.
+> Azure Container Registry hele grafik deponuza gönderim yaparsanız ve daha sonra yeni bir CLı oturumunda geri dönerseniz, yerel hele istemciniz güncelleştirilmiş bir kimlik doğrulama belirtecine ihtiyaç duyuyor. Yeni bir kimlik doğrulama belirteci almak için [az ACR Helm depo Add][az-acr-helm-repo-add] komutunu kullanın.
 
-The following steps are completed during the install process:
+Aşağıdaki adımlar, yüklemesi işlemi sırasında tamamlanır:
 
-- The Helm client searches the local repository index.
-- The corresponding chart is downloaded from the Azure Container Registry repository.
-- The chart is deployed using the Tiller in your Kubernetes cluster.
+- Hela istemcisi yerel depo dizinini arar.
+- Karşılık gelen grafik Azure Container Registry deposundan indirilir.
+- Grafik, Kubernetes kümenizdeki Tiller kullanılarak dağıtılır.
 
-The following condensed example output shows the Kubernetes resources deployed through the Helm chart:
+Aşağıdaki sıkıştırılmış örnek çıktısı, Helu grafiğinden dağıtılan Kubernetes kaynaklarını göstermektedir:
 
 ```
 $ helm install myacrhelm/wordpress
@@ -194,17 +194,17 @@ irreverent-jaguar-mariadb-0                   0/1    Pending  0         1s
 [...]
 ```
 
-## <a name="delete-a-helm-chart-from-the-repository"></a>Delete a Helm chart from the repository
+## <a name="delete-a-helm-chart-from-the-repository"></a>Depodaki bir hela grafiğini silme
 
-To delete a chart from the repository, use the [az acr helm delete][az-acr-helm-delete] command. Specify the name of the chart, such as *wordpress*, and the version to delete, such as *2.1.10*.
+Bir grafiği depodan silmek için [az ACR Helm Delete][az-acr-helm-delete] komutunu kullanın. *WordPress*gibi grafiğin adını ve silinecek sürümü (örneğin, *2.1.10*) belirtin.
 
 ```azurecli
 az acr helm delete wordpress --version 2.1.10
 ```
 
-If you wish to delete all versions of the named chart, leave out the `--version` parameter.
+Adlandırılmış grafiğin tüm sürümlerini silmek isterseniz, `--version` parametresini bırakın.
 
-The chart continues to be returned in `helm search <acrName>`. Again, the Helm client doesn't automatically update the list of available charts in a repository. To update the Helm client repo index, use the [az acr helm repo add][az-acr-helm-repo-add] command again:
+Grafik `helm search <acrName>`döndürülmeye devam eder. Yine, HELI istemcisi bir depodaki kullanılabilir grafiklerin listesini otomatik olarak güncelleştirmez. Helm istemci deposu dizinini güncelleştirmek için [az ACR Helm depo Add][az-acr-helm-repo-add] komutunu tekrar kullanın:
 
 ```azurecli
 az acr helm repo add
@@ -212,11 +212,11 @@ az acr helm repo add
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-This article used an existing Helm chart from the public *stable* repository. For more information on how to create and deploy Helm charts, see [Developing Helm charts][develop-helm-charts].
+Bu makalede, genel *kararlı* depodan mevcut bir hela grafiği kullanıldı. HELI grafikleri oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [HELI grafikleri geliştirme][develop-helm-charts].
 
-Helm charts can be used as part of the container build process. For more information, see [use Azure Container Registry Tasks][acr-tasks].
+Held grafikleri kapsayıcı oluşturma sürecinin bir parçası olarak kullanılabilir. Daha fazla bilgi için bkz. [Azure Container Registry görevleri kullanma][acr-tasks].
 
-For more information on how to use and manage Azure Container Registry, see the [best practices][acr-bestpractices].
+Azure Container Registry kullanımı ve yönetimi hakkında daha fazla bilgi için [en iyi uygulamalar][acr-bestpractices]bölümüne bakın.
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/

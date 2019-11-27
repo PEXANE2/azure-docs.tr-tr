@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Workbench troubleshooting
-description: How to troubleshoot an Azure Blockchain Workbench Preview application.
+title: Azure blok zinciri ve sorun giderme
+description: Azure blok zinciri çalışma ekranı önizleme uygulaması sorunlarını giderme.
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: brendal
@@ -11,22 +11,22 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74324293"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench Preview troubleshooting
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure blok zinciri ekranı önizleme sorunlarını giderme
 
-A PowerShell script is available to assist with developer debugging or support. The script generates a summary and collects detailed logs for troubleshooting. Collected logs include:
+Geliştirici hata ayıklamasına veya desteklemeye yardımcı olmak için bir PowerShell betiği kullanılabilir. Betik bir Özet oluşturur ve sorun giderme için ayrıntılı günlükleri toplar. Toplanan Günlükler şunları içerir:
 
-* Blockchain network, such as Ethereum
-* Blockchain Workbench microservices
+* Ethereum gibi blok zinciri ağı
+* Blok zinciri çalışma ekranı mikro hizmetleri
 * Application Insights
-* Azure Monitoring (Azure Monitor logs)
+* Azure Izleme (Azure Izleyici günlükleri)
 
-You can use the information to determine next steps and determine root cause of issues.
+Sonraki adımları tespit etmek ve sorunların temel nedenini anlamak için bu bilgileri kullanabilirsiniz.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="troubleshooting-script"></a>Troubleshooting script
+## <a name="troubleshooting-script"></a>Sorun giderme betiği
 
-The PowerShell troubleshooting script is available on GitHub. GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/blockchain/archive/master.zip) veya örneği kopyalayın.
+PowerShell sorun giderme betiği GitHub ' da kullanılabilir. GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/blockchain/archive/master.zip) veya örneği kopyalayın.
 
 ```
 git clone https://github.com/Azure-Samples/blockchain.git
@@ -35,40 +35,40 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Betiği çalıştırın
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Run the `collectBlockchainWorkbenchTroubleshooting.ps1` script to collect logs and create a ZIP file containing a folder of troubleshooting information. Örnek:
+Günlükleri toplamak ve sorun giderme bilgileri klasörünü içeren bir ZIP dosyası oluşturmak için `collectBlockchainWorkbenchTroubleshooting.ps1` betiğini çalıştırın. Örneğin:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
-The script accepts the following parameters:
+Betik aşağıdaki parametreleri kabul eder:
 
-| Parametre  | Açıklama | Gereklidir |
+| Parametre  | Açıklama | Gerekli |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID to create or locate all resources. | Yes |
-| ResourceGroupName | Name of the Azure Resource Group where Blockchain Workbench has been deployed. | Yes |
-| OutputDirectory | Path to create the output .ZIP file. If not specified, defaults to the current directory. | Hayır |
-| LookbackHours | Number of hours to use when pulling telemetry. Default value is 24 hours. Maximum value is 90 hours | Hayır |
-| OmsSubscriptionId | The subscription ID where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Hayır |
-| OmsResourceGroup |The resource group where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Hayır |
-| OmsWorkspaceName | The Log Analytics workspace name. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group | Hayır |
+| SubscriptionID | Tüm kaynakları oluşturmak veya bulmak için SubscriptionID. | Yes |
+| ResourceGroupName | Blok zinciri çalışma ekranının dağıtıldığı Azure Kaynak grubunun adı. | Yes |
+| OutputDirectory | Çıktının oluşturulacağı yol. ZIP dosyası. Belirtilmezse, varsayılan olarak geçerli dizini alır. | Hayır |
+| Geriye yönelik saat | Telemetri çekme sırasında kullanılacak saat sayısı. Varsayılan değer 24 saattir. Maksimum değer 90 saattir | Hayır |
+| Omssubscriptionıd | Azure Izleyici günlüklerinin dağıtıldığı abonelik KIMLIĞI. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
+| OmsResourceGroup |Azure Izleyici günlüklerinin dağıtıldığı kaynak grubu. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
+| Omsçalışmaalanıadı | Log Analytics çalışma alanı adı. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlüklerinin, blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin | Hayır |
 
-## <a name="what-is-collected"></a>What is collected?
+## <a name="what-is-collected"></a>Ne toplanır?
 
-The output ZIP file contains the following folder structure:
+Çıkış ZIP dosyası aşağıdaki klasör yapısını içerir:
 
-| Folder or File | Açıklama  |
+| Klasör veya dosya | Açıklama  |
 |---------|---------|
-| \Summary.txt | Summary of the system |
-| \Metrics\blockchain | Metrics about the blockchain |
-| \Metrics\Workbench | Metrics about the workbench |
-| \Details\Blockchain | Detailed logs about the blockchain |
-| \Details\Workbench | Detailed logs about the workbench |
+| \Summary.txt | Sistemin Özeti |
+| \Metrics\blockzinciri | Blok zinciri hakkında ölçümler |
+| \Metrics\çalışma alanı | Çalışma ekranı hakkında ölçümler |
+| \Details\blockzinciri | Blok zinciri hakkında ayrıntılı Günlükler |
+| \ Ayrıntı \ çalışma alanı | Çalışma ekranı hakkında ayrıntılı Günlükler |
 
-The summary file gives you a snapshot of the overall state of the application and health of the application. The summary provides recommended actions, highlights top errors, and metadata about running services.
+Özet dosyası, uygulamanın genel durumunun bir anlık görüntüsünü ve uygulamanın sistem durumunu sağlar. Özet, önerilen eylemleri, en önemli hataları vurgular ve Hizmetleri çalıştırma hakkında meta verileri sağlar.
 
-The **Metrics** folder contains metrics of various system components over time. For example, the output file `\Details\Workbench\apiMetrics.txt` contains a summary of different response codes, and response times throughout the collection period. The **Details** folder contains detailed logs for troubleshooting specific issues with Workbench or the underlying blockchain network. For example, `\Details\Workbench\Exceptions.csv` contains a list of the most recent exceptions that have occurred in the system, which is useful for troubleshooting errors with smart contracts or interactions with the blockchain. 
+**Ölçüm** klasörü, zaman içinde çeşitli sistem bileşenlerinin ölçümlerini içerir. Örneğin, çıkış dosyası `\Details\Workbench\apiMetrics.txt` farklı yanıt kodlarının özetini ve toplama süresi boyunca yanıt sürelerini içerir. **Ayrıntılar** klasörü, çalışma ekranı veya temeldeki blok zinciri ağı ile ilgili sorunları gidermeye yönelik ayrıntılı günlükleri içerir. Örneğin, `\Details\Workbench\Exceptions.csv`, sistemde oluşan en son özel durumların listesini içerir, bu, akıllı sözleşmelerle veya blok zinciriyle etkileşimlerle ilgili sorunları gidermek için kullanışlıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench Application Insights troubleshooting guide](https://aka.ms/workbenchtroubleshooting)
+> [Azure blok zinciri çalışma ekranı Application Insights sorun giderme kılavuzu](https://aka.ms/workbenchtroubleshooting)

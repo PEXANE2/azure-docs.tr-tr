@@ -1,6 +1,6 @@
 ---
-title: Implement password hash synchronization with Azure AD Connect sync | Microsoft Docs
-description: Provides information about how password hash synchronization works and how to set up.
+title: Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama | Microsoft Docs
+description: Parola Karması eşitleme nasıl çalıştığı ve nasıl ayarlandığı hakkında bilgi sağlar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,207 +15,207 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5ca62bc032c12c568e2b8065630dcd8b687513
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483104"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539015"
 ---
-# <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implement password hash synchronization with Azure AD Connect sync
-This article provides information that you need to synchronize your user passwords from an on-premises Active Directory instance to a cloud-based Azure Active Directory (Azure AD) instance.
+# <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
+Bu makalede, şirket içi Active Directory örneğinden bulut tabanlı bir Azure Active Directory (Azure AD) örneği, kullanıcı parolalarını eşitlemek için gereken bilgileri sağlar.
 
 ## <a name="how-password-hash-synchronization-works"></a>Parola karması eşitleme nasıl çalışır?
-The Active Directory domain service stores passwords in the form of a hash value representation, of the actual user password. A hash value is a result of a one-way mathematical function (the *hashing algorithm*). Tek yönlü işlevin sonucunu, parolanın düz metin sürümüne döndürmek mümkün değildir. 
+Active Directory etki alanı hizmeti parolaları bir karma değer gösterimini gerçek kullanıcı parolasının biçiminde depolar. Karma değeri, tek yönlü matematik işlevinin ( *karma algoritma*) bir sonucudur. Tek yönlü işlevin sonucunu, parolanın düz metin sürümüne döndürmek mümkün değildir. 
 
-To synchronize your password, Azure AD Connect sync extracts your password hash from the on-premises Active Directory instance. Extra security processing is applied to the password hash before it is synchronized to the Azure Active Directory authentication service. Passwords are synchronized on a per-user basis and in chronological order.
+Parolanızı eşitlemek için şirket içi Active Directory örneğinden, parola karmasını Azure AD Connect eşitleme ayıklar. Azure Active Directory kimlik doğrulama hizmeti eşitlenmeden önce ek güvenlik işleme için parola karması uygulanır. Parolalar, kullanıcı başına temelinde ve kronolojik sırayla eşitlenir.
 
-The actual data flow of the password hash synchronization process is similar to the synchronization of user data. However, passwords are synchronized more frequently than the standard directory synchronization window for other attributes. The password hash synchronization process runs every 2 minutes. You cannot modify the frequency of this process. When you synchronize a password, it overwrites the existing cloud password.
+Parola Karması eşitleme işlemini gerçek veri akışını verilerinin eşitlemesine ilişkin kullanıcı için benzerdir. Ancak, parolaları diğer öznitelikler için standart dizin eşitleme penceresinde daha sık eşitlenir. Parola Karması eşitleme işlemi 2 dakikada bir çalışır. Bu işlemin sıklığını değiştiremezsiniz. Parola Eşitleme sırasında mevcut bulut parolayı üzerine yazar.
 
-The first time you enable the password hash synchronization feature, it performs an initial synchronization of the passwords of all in-scope users. You cannot explicitly define a subset of user passwords that you want to synchronize. However, if there are multiple connectors, it is possible to disable password hash sync for some connectors but not others using the [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet.
+İlk kez parola karması eşitleme özelliğini etkinleştirdiğinizde tüm kapsamındaki kullanıcıların parolalarının ilk eşitlemeyi gerçekleştirir. Bir alt kümesini eşitlemek istediğiniz kullanıcı parolalarını açıkça tanımlayamazsınız. Ancak, birden çok bağlayıcı varsa, bazı bağlayıcılar için parola karma eşitlemesini devre dışı bırakmak mümkündür ancak [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) cmdlet 'ini kullanarak diğerlerine uygulanmaz.
 
-When you change an on-premises password, the updated password is synchronized, most often in a matter of minutes.
-The password hash synchronization feature automatically retries failed synchronization attempts. If an error occurs during an attempt to synchronize a password, an error is logged in your event viewer.
+Bir şirket içi parolayı değiştirdiğinizde, güncelleştirilmiş parolayı, genellikle birkaç dakika içinde eşitlenir.
+Parola Karması eşitleme özelliği eşitleme başarısız girişimleri otomatik olarak yeniden dener. Bir hata, bir parola eşitleme girişimi sırasında bir hata meydana gelirse, Olay Görüntüleyicisi'nde günlüğe kaydedilir.
 
-The synchronization of a password has no impact on the user  who is currently signed in.
-Your current cloud service session is not immediately affected by a synchronized password change that occurs, while you are signed in, to a cloud service. However, when the cloud service requires you to authenticate again, you need to provide your new password.
+Parola Eşitleme, şu anda oturum açan kullanıcının herhangi bir etkisi yoktur.
+Geçerli bulut hizmeti oturumunuzu, bir bulut hizmeti için oturum açtığınız sırada gerçekleşen, eşitlenmiş parola değişikliği hemen etkilenmez. Ancak, bulut hizmetine yeniden kimlik doğrulaması gerektirdiğinde, yeni parolanızı vermeniz gerekir.
 
-A user must enter their corporate credentials a second time to authenticate to Azure AD, regardless of whether they're signed in to their corporate network. This pattern can be minimized, however, if the user selects the Keep me signed in (KMSI) check box at sign-in. This selection sets a session cookie that bypasses authentication for 180 days. KMSI behavior can be enabled or disabled by the Azure AD administrator. In addition, you can reduce password prompts by turning on [Seamless SSO](how-to-connect-sso.md), which automatically signs users in when they are on their corporate devices connected to your corporate network.
-
-> [!NOTE]
-> Password sync is only supported for the object type user in Active Directory. It is not supported for the iNetOrgPerson object type.
-
-### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Detailed description of how password hash synchronization works
-
-The following section describes, in-depth, how password hash synchronization works between Active Directory and Azure AD.
-
-![Detailed password flow](./media/how-to-connect-password-hash-synchronization/arch3b.png)
-
-1. Every two minutes, the password hash synchronization agent on the AD Connect server requests stored password hashes (the unicodePwd attribute) from a DC.  This request is via the standard [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) replication protocol used to synchronize data between DCs. The service account must have Replicate Directory Changes and Replicate Directory Changes All AD permissions (granted by default on installation) to obtain the password hashes.
-2. Before sending, the DC encrypts the MD4 password hash by using a key that is a [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) hash of the RPC session key and a salt. It then sends the result to the password hash synchronization agent over RPC. The DC also passes the salt to the synchronization agent by using the DC replication protocol, so the agent will be able to decrypt the envelope.
-3. After the password hash synchronization agent has the encrypted envelope, it uses [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) and the salt to generate a key to decrypt the received data back to its original MD4 format. The password hash synchronization agent never has access to the clear text password. The password hash synchronization agent’s use of MD5 is strictly for replication protocol compatibility with the DC, and it is only used on premises between the DC and the password hash synchronization agent.
-4. The password hash synchronization agent expands the 16-byte binary password hash to 64 bytes by first converting the hash to a 32-byte hexadecimal string, then converting this string back into binary with UTF-16 encoding.
-5. The password hash synchronization agent adds a per user salt, consisting of a 10-byte length salt, to the 64-byte binary to further protect the original hash.
-6. The password hash synchronization agent then combines the MD4 hash plus the per user salt, and inputs it into the [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) function. 1000 iterations of the [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) keyed hashing algorithm are used. 
-7. The password hash synchronization agent takes the resulting 32-byte hash, concatenates both the per user salt and the number of SHA256 iterations to it (for use by Azure AD), then transmits the string from Azure AD Connect to Azure AD over SSL.</br> 
-8. When a user attempts to sign in to Azure AD and enters their password, the password is run through the same MD4+salt+PBKDF2+HMAC-SHA256 process. If the resulting hash matches the hash stored in Azure AD, the user has entered the correct password and is authenticated.
+Bir kullanıcı şirket kimlik bilgilerini, olup, şirket ağlarına oturum açmadıysanız bağımsız olarak Azure AD'ye kimlik doğrulaması için ikinci bir kez girmeniz gerekir. Bu düzen, ancak kullanıcı oturum açma sırasında (KMSI) onay kutusu Oturumumu açık bırak seçerse indirgenebilir. Bu seçim, 180 gün için kimlik doğrulamasını atlar bir oturum tanımlama bilgisini ayarlar. KMSI'yi davranışı, etkin veya Azure AD Yöneticisi tarafından devre dışı. Ayrıca, şirket ağınıza bağlı şirket cihazlarındaki kullanıcıları otomatik olarak imzalayan [sorunsuz SSO](how-to-connect-sso.md)'yu etkinleştirerek parola istemlerini azaltabilirsiniz.
 
 > [!NOTE]
-> The original MD4 hash is not transmitted to Azure AD. Instead, the SHA256 hash of the original MD4 hash is transmitted. As a result, if the hash stored in Azure AD is obtained, it cannot be used in an on-premises pass-the-hash attack.
+> Parola Eşitleme, yalnızca Active Directory nesne türü kullanıcı için desteklenir. InetOrgPerson nesnesi türü için desteklenmiyor.
+
+### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Parola Karması eşitleme nasıl çalıştığına ilişkin ayrıntılı bir açıklaması
+
+Aşağıdaki bölümde açıklanmaktadır, ayrıntılı, Active Directory ve Azure AD arasında parola karması eşitleme nasıl çalışır.
+
+![Ayrıntılı parola akış](./media/how-to-connect-password-hash-synchronization/arch3b.png)
+
+1. Her iki dakikada bir DC gelen parola karmalarını (unicodePwd özniteliğini) AD Connect sunucusu isteklerde parola karması eşitleme Aracısı depolanır.  Bu istek, DC 'Ler arasında verileri eşzamanlı hale getirmek için kullanılan standart [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) çoğaltma protokolü aracılığıyla yapılır. Hizmet hesabı, parola karmaları almak için dizin değişikliklerini çoğaltma ve (varsayılan olarak yükleme izni) dizin değişikliklerini tümüne çoğaltma AD izinleri olmalıdır.
+2. Göndermeden önce, DC, RPC oturum anahtarının [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) karması ve bir güvenlik alanı olan bir anahtar kullanarak MD4 parola karmasını şifreler. Bunu ardından sonuç parola karması eşitleme Aracısı ile RPC üzerinden gönderir. Eşitleme aracısına ayrıca geçirir salt aracı Zarf şifresini olacak şekilde DC çoğaltma protokolü kullanarak etki alanı denetleyicisi.
+3. Parola karması eşitleme aracısının şifreli zarfı olduktan sonra, alınan verilerin şifresinin çözülmesi için bir anahtar oluşturmak üzere [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) kullanır ve bu ANAHTARıN özgün MD4 biçimine geri dönmesi için anahtarı oluşturur. Parola Karması eşitleme Aracısı düz metin parolası hiç erişebilir. Parola Karması eşitleme aracısının MD5 kesinlikle DC ile çoğaltma protokol uyumluluk için kullanılır ve yalnızca şirket içi etki alanı denetleyicisi ve parola karması eşitleme aracısı arasında kullanılır.
+4. Parola Karması eşitleme Aracısı'nı, ilk UTF-16 kodlamalı ikili ardından bu dize dönüştürme 32 bayt onaltılık dize, karma geri dönüştürerek 64 bayt ile 16 bayt ikili parola karması genişletir.
+5. Parola Karması eşitleme Aracısı ekler bir kullanıcı güvenlik değeri, özgün karma daha iyi korumak için 64-bayt ikili için 10 bayt uzunlukta bir güvenlik değeri oluşan başına.
+6. Parola karması eşitleme Aracısı daha sonra MD4 karmasını ve Kullanıcı başına anahtar olarak birleştirir ve [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) işlevine giriş yapın. [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) anahtarlı karma algoritmasının 1000 yinelemesi kullanılır. 
+7. Parola Karması eşitleme Aracısı elde edilen 32 bayt karma alır, her ikisini birleştirerek kullanıcı salt ve SHA256 sayısı ona yinelemeler (tarafından kullanılacak Azure AD), ardından iletir Azure AD Connect dizeden Azure AD'ye SSL üzerinden.</br> 
+8. Bir kullanıcının Azure AD'de oturum dener ve parolasını girer, parola aynı MD4 + salt + PBKDF2 + HMAC SHA256 işlemi çalıştırılır. Sonuçta elde edilen karma Azure AD'de depolanan karma eşleşirse, kullanıcı doğru parolayı geçtiğini ve doğrulanır.
+
+> [!NOTE]
+> Özgün MD4 karma Azure AD'ye aktarılan değil. Bunun yerine, özgün MD4 karma SHA256 karma iletilir. Sonuç olarak, Azure AD'de depolanan karma aldıysanız, bir şirket içi pass--hash saldırısında kullanılamaz.
 
 ### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
-When synchronizing passwords, the plain-text version of your password is not exposed to the password hash synchronization feature, to Azure AD, or any of the associated services.
+Parola eşitleme yaparken parolanızı düz metin sürümünü Azure AD'ye parola karması eşitleme özelliğini veya tüm ilişkili hizmetlerin gösterilmez.
 
-User authentication takes place against Azure AD rather than against the organization's own Active Directory instance. The SHA256 password data stored in Azure AD--a hash of the original MD4 hash--is more secure than what is stored in Active Directory. Further, because this SHA256 hash cannot be decrypted, it cannot be brought back to the organization's Active Directory environment and presented as a valid user password in a pass-the-hash attack.
+Kullanıcı kimlik doğrulamasını Azure AD'ye yönelik yerine kuruluşun kendi Active Directory örneğine karşı gerçekleşir. Azure AD'de--depolanan SHA256 parola verileri özgün MD4 karma--karma Active Directory'de depolanan değerinden daha güvenlidir. Ayrıca, bu SHA256 karma şifresi çözülemiyor olduğundan, bu olamaz kuruluşun Active Directory ortamına geri getirildi ve pass--hash saldırısı bir geçerli kullanıcı parolası olarak sunulan.
 
-### <a name="password-policy-considerations"></a>Password policy considerations
+### <a name="password-policy-considerations"></a>Parola ilke konuları
 
-There are two types of password policies that are affected by enabling password hash synchronization:
+Parola Karması eşitlemeyi etkinleştirerek, etkilenen parola ilkelerini iki tür vardır:
 
-* Password complexity policy
-* Password expiration policy
+* Parola karmaşıklığı İlkesi
+* Parola süre Dolum İlkesi
 
-#### <a name="password-complexity-policy"></a>Password complexity policy
+#### <a name="password-complexity-policy"></a>Parola karmaşıklığı İlkesi
 
-When password hash synchronization is enabled, the password complexity policies in your on-premises Active Directory instance override complexity policies in the cloud for synchronized users. You can use all of the valid passwords from your on-premises Active Directory instance to access Azure AD services.
+Parola Karması eşitleme etkinleştirildiğinde, şirket içi Active Directory Örneğinizde parola karmaşıklık ilkeleri eşitlenmiş kullanıcılar için bulutta karmaşıklığı ilkeleri geçersiz kılar. Azure AD Hizmetleri erişmek için şirket içi Active Directory örneğinden tüm geçerli parolaların kullanabilirsiniz.
 
 > [!NOTE]
-> Passwords for users that are created directly in the cloud are still subject to password policies as defined in the cloud.
+> Bulutta tanımlandığı gibi doğrudan bulutta oluşturulan sanal kullanıcıların parolalarını yine de parola ilkelerine sahiptir.
 
-#### <a name="password-expiration-policy"></a>Password expiration policy
+#### <a name="password-expiration-policy"></a>Parola süre Dolum İlkesi
 
-If a user is in the scope of password hash synchronization, by default the cloud account password is set to *Never Expire*.
+Bir kullanıcı parola karması eşitleme kapsamınsa, varsayılan olarak, bulut hesabı parolası *hiç kullanım*dışı olarak ayarlanır.
 
-You can continue to sign in to your cloud services by using a synchronized password that is expired in your on-premises environment. Your cloud password is updated the next time you change the password in the on-premises environment.
+Şirket içi ortamınızda süresi dolmuş bir eşitlenmiş parola kullanarak bulut hizmetlerinizde oturum açmak devam edebilirsiniz. Bulut parolanızı, parola şirket içi ortamda bir sonraki değiştirdiğinizde güncelleştirilir.
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>Public preview of the *EnforceCloudPasswordPolicyForPasswordSyncedUsers* feature
+##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>*Enforcechoparlör Passwordpolicyforpasswordsyncedusers* özelliğinin genel önizlemesi
 
-If there are synchronized users that only interact with Azure AD integrated services and must also comply with a password expiration policy, you can force them to comply with your Azure AD password expiration policy by enabling the *EnforceCloudPasswordPolicyForPasswordSyncedUsers* feature.
+Yalnızca Azure AD ile tümleşik hizmetler ile etkileşime geçen eşitlenmiş kullanıcılar varsa ve bir parola süre sonu ilkesiyle uyumlu olması gerekiyorsa, bunu Azure AD parola süre sonu ilkenize uygun hale getirerek  *Enforcechoparlör Passwordpolicyforpasswordsyncedusers* özelliği.
 
-When *EnforceCloudPasswordPolicyForPasswordSyncedUsers* is disabled (which is the default setting), Azure AD Connect sets the PasswordPolicies attribute of synchronized users to "DisablePasswordExpiration". This is done every time a user's password is synchronized and instructs Azure AD to ignore the cloud password expiration policy for that user. You can check the value of the attribute using the Azure AD PowerShell module with the following command:
+*Enforcecıpasswordpolicyforpasswordsyncedusers* devre dışı bırakıldığında (varsayılan ayar), Azure AD Connect eşitlenen kullanıcıların passwordpolicies özniteliğini "Disablepasswordexpidıma" olarak ayarlar. Bu, bir kullanıcının parolasının her eşitlenilişinde yapılır ve Azure AD 'yi bu kullanıcı için bulut parolası süre sonu ilkesini yoksayacak şekilde yönlendirir. Aşağıdaki komutla Azure AD PowerShell modülünü kullanarak özniteliğin değerini kontrol edebilirsiniz:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
 
-To enable the EnforceCloudPasswordPolicyForPasswordSyncedUsers feature, run the following command using the MSOnline PowerShell module:
+Enforcechoparlör Passwordpolicyforpasswordsyncedusers özelliğini etkinleştirmek için MSOnline PowerShell modülünü kullanarak aşağıdaki komutu çalıştırın:
 
 `Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
-Once enabled, Azure AD does not go to each synchronized user to remove the `DisablePasswordExpiration` value from the PasswordPolicies attribute. Instead, the value is set to `None` during the next password sync for each user when they next change their password in on-premises AD.  
+Azure AD etkinleştirildikten sonra, `DisablePasswordExpiration` değeri PasswordPolicies özniteliğinden kaldırmak için eşitlenmiş her kullanıcıya gitmez. Bunun yerine, daha sonra şirket içi AD 'de parolasını değiştirdiklerinde, her kullanıcı için bir sonraki parola eşitleme sırasında değer `None` olarak ayarlanır.  
 
-It is recommended to enable EnforceCloudPasswordPolicyForPasswordSyncedUsers, prior to enabling password hash sync, so that the initial sync of password hashes does not add the `DisablePasswordExpiration` value to the PasswordPolicies attribute for the users.
+Parola karma eşitlemesi etkinleştirilmeden önce Enforcecizpasswordpolicyforpasswordsyncedusers etkinleştirilmesi önerilir, böylece parola karmalarının ilk eşitlenmesi, kullanıcılar için PasswordPolicies özniteliğine `DisablePasswordExpiration` değerini eklemez.
 
-The default Azure AD password policy requires users to change their passwords every 90 days. If your policy in AD is also 90 days, the two policies should match. However, if the AD policy is not 90 days, you can update the Azure AD password policy to match by using the Set-MsolPasswordPolicy PowerShell command.
+Varsayılan Azure AD parola ilkesi, kullanıcıların parolalarının her 90 günde bir değiştirilmesini gerektirir. AD 'deki ilkeniz da 90 gün ise, iki ilke eşleşmelidir. Ancak, AD ilkesi 90 gün değilse, Set-MsolPasswordPolicy PowerShell komutunu kullanarak Azure AD parola ilkesini eşleşecek şekilde güncelleştirebilirsiniz.
 
-Azure AD supports a separate password expiration policy per registered domain.
+Azure AD, kayıtlı etki alanı başına ayrı bir parola süre sonu ilkesini destekler.
 
-Caveat: If there are synchronized accounts that need to have non-expiring passwords in Azure AD, you must explicitly add the `DisablePasswordExpiration` value to the PasswordPolicies attribute of the user object in Azure AD.  You can do this by running the following command.
+Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip olması gereken eşitlenmiş hesaplar varsa, `DisablePasswordExpiration` değerini Azure AD 'deki Kullanıcı nesnesinin PasswordPolicies özniteliğine açıkça eklemeniz gerekir.  Bunu, aşağıdaki komutu çalıştırarak yapabilirsiniz.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> This feature is in Public Preview right now.
+> Bu özellik şu anda genel önizlemede.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>Public Preview of synchronizing temporary passwords and "Force Password on Next Logon"
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>Geçici parolaların eşitlenmesinin genel önizlemesi ve "bir sonraki oturumda parola zorla"
 
-It is typical to force a user to change their password during their first logon, especially after an admin password reset occurs.  It is commonly known as setting a "temporary" password and is completed by checking the "User must change password at next logon" flag on a user object in Active Directory (AD).
+Bir kullanıcıyı ilk oturum açma sırasında, özellikle de yönetici parolası sıfırlama oluştuktan sonra parolalarını değiştirmeye zorlamak normaldir.  Genellikle "geçici" bir parola ayarı olarak bilinir ve Active Directory (AD) içindeki bir kullanıcı nesnesi üzerinde "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" bayrağıyla tamamlanır.
   
-The temporary password functionality helps to ensure that the transfer of ownership of the credential is completed on first use, to minimize the duration of time in which more than one individual has knowledge of that credential.
+Geçici parola işlevi, kimlik bilgisinin sahipliğinin bu kimlik bilgisi ile ilgili bilgi sahibi olduğu süreyi en aza indirmek için ilk kullanımda, kimlik bilgisinin sahipliğinin aktarılışında emin olmaya yardımcı olur.
 
-To support temporary passwords in Azure AD for synchronized users, you can enable the *ForcePasswordResetOnLogonFeature* feature, by running the following command on your Azure AD Connect server, replacing <AAD Connector Name> with the connector name specific to your environment:
+Eşitlenmiş kullanıcılar için Azure AD 'de geçici parolaları desteklemek üzere, Azure AD Connect sunucunuzda aşağıdaki komutu çalıştırarak *Forcepasswordresetonlogonfeature* özelliğini etkinleştirebilir ve <AAD Connector Name> bağlayıcı adı ile değiştirin ortamınız:
 
 `Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
 
-You can use the following command to determine the connector name:
+Bağlayıcı adını öğrenmek için aşağıdaki komutu kullanabilirsiniz:
 
 `(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
 
-Caveat:  Forcing a user to change their password on next logon requires a password change at the same time.  AD Connect will not pick up the force password change flag by itself, it is supplemental to the detected password change that occurs during password hash sync.
+Desteklenmediği uyarısıyla: bir kullanıcının bir sonraki oturum açışında parolasını değiştirmesini zorlamak aynı anda bir parola değişikliği gerektirir.  AD Connect, parola değişikliğini zorla bayrağını kendisi içermez, Parola karması eşitleme sırasında oluşan algılanan parola değişikliğine ek olarak görünür.
 
 > [!CAUTION]
-> If you do not enable Self-service Password Reset (SSPR) in Azure AD users will have a confusing experience when they reset their password in Azure AD and then attempt to sign in in Active Directory with the new password, as the new password isn’t valid in Active Directory. You should only use this feature when SSPR and Password Writeback is enabled on the tenant.
+> Azure AD 'de self servis parola sıfırlama (SSPR) seçeneğini etkinleştirmezseniz, Azure AD 'de parolalarını sıfırlayıp yeni parola ile Active Directory oturum açmayı denediğinizde yeni parola geçerli olmadığından kafa karıştırıcı bir deneyimle karşılaşacaktır Active Directory . Bu özelliği yalnızca, kiracı üzerinde SSPR ve parola geri yazma etkinleştirildiğinde kullanmanız gerekir.
 
 > [!NOTE]
-> This feature is in Public Preview right now.
+> Bu özellik şu anda genel önizlemede.
 
-#### <a name="account-expiration"></a>Account expiration
+#### <a name="account-expiration"></a>Hesap süresi
 
-If your organization uses the accountExpires attribute as part of user account management, this attribute is not synchronized to Azure AD. As a result, an expired Active Directory account in an environment configured for password hash synchronization will still be active in Azure AD. We recommend that if the account is expired, a workflow action should trigger a PowerShell script that disables the user's Azure AD account (use the [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet). Conversely, when the account is turned on, the Azure AD instance should be turned on.
+Kuruluşunuzun kullanıcı hesabı Yönetimi işleminin bir parçası olarak accountExpires öznitelik kullanıyorsa, bu öznitelik Azure AD'ye eşitlenmez. Sonuç olarak, süresi dolmuş bir Active Directory hesabı için parola karması eşitlemeyi yapılandırılmış bir ortamda hala Azure AD'de etkin olacaktır. Hesabın kullanım zamanı dolmuşsa, bir iş akışı eyleminin kullanıcının Azure AD hesabını devre dışı bırakan bir PowerShell betiğini tetiklemesi gerektiğini öneririz ( [set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet 'ini kullanın). Hesap açık olduğunda, buna karşılık, Azure AD örneği açık olması.
 
-### <a name="overwrite-synchronized-passwords"></a>Overwrite synchronized passwords
+### <a name="overwrite-synchronized-passwords"></a>Eşitlenmiş parolalar üzerine yaz
 
-An administrator can manually reset your password by using Windows PowerShell.
+Bir yönetici, el ile Windows PowerShell kullanarak parolanızı sıfırlayabilirsiniz.
 
-In this case, the new password overrides your synchronized password, and all password policies defined in the cloud are applied to the new password.
+Bu durumda, yeni parola eşitlenmiş parolanızı geçersiz kılar ve bulutta tanımlanan tüm parola ilkelerini yeni parola uygulanır.
 
-If you change your on-premises password again, the new password is synchronized to the cloud, and it overrides the manually updated password.
+Şirket içi parolanızı değiştirirseniz yeniden, yeni parola, buluta eşitlenebilir ve el ile güncelleştirilmiş parolayı geçersiz kılar.
 
-The synchronization of a password has no impact on the Azure user who is signed in. Your current cloud service session is not immediately affected by a synchronized password change that occurs while you're signed in to a cloud service. KMSI extends the duration of this difference. When the cloud service requires you to authenticate again, you need to provide your new password.
+Parola Eşitleme, oturum açmış kullanıcının Azure üzerinde hiçbir etkisi yoktur. Geçerli bulut hizmeti oturumunuzu, bir bulut hizmetine oturumunuz sırasında oluşan eşitlenmiş parola değişikliği hemen etkilenmez. KMSI'yi bu fark süresini uzatır. Bulut hizmetine yeniden kimlik doğrulaması gerektirdiğinde, yeni parolanızı vermeniz gerekir.
 
-### <a name="additional-advantages"></a>Additional advantages
+### <a name="additional-advantages"></a>Ek avantajlar
 
-- Generally, password hash synchronization is simpler to implement than a federation service. It doesn't require any additional servers, and eliminates dependence on a highly available federation service to authenticate users.
-- Password hash synchronization can also be enabled in addition to federation. It may be used as a fallback if your federation service experiences an outage.
+- Genellikle, parola karması eşitleme bir Federasyon Hizmeti uygulamak daha kolaydır. Diğer sunucular gerektirmez ve kullanıcıların kimliğini doğrulamak için bir yüksek oranda kullanılabilir bir Federasyon Hizmeti bağımlılığa ortadan kaldırır.
+- Parola Karması eşitleme, Federasyon yanı sıra da etkinleştirilebilir. Federasyon hizmetinize bir kesinti oluşursa bir geri dönüş olarak kullanılabilir.
 
-## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Password hash sync process for Azure AD Domain Services
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD Domain Services için Parola karması eşitleme işlemi
 
-If you use Azure AD Domain Services to provide legacy authentication for applications and services that need to use Keberos, LDAP, or NTLM, some additional processes are part of the password hash synchronization flow. Azure AD Connect uses the additional following process to synchronize password hashes to Azure AD for use in Azure AD Domain Services:
+Kerberos, LDAP veya NTLM kullanması gereken uygulamalar ve hizmetler için eski kimlik doğrulama sağlamak üzere Azure AD Domain Services kullanırsanız, bazı ek süreçler Parola karması eşitleme akışının bir parçasıdır. Azure AD Connect, Azure AD Domain Services kullanım için parola karmalarını Azure AD ile eşitlemeye yönelik aşağıdaki ek işlemleri kullanır:
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
 >
-> Azure AD Connect only synchronizes legacy password hashes when you enable Azure AD DS for your Azure AD tenant. The following steps aren't used if you only use Azure AD Connect to synchronize an on-premises AD DS environment with Azure AD.
+> Azure AD Connect yalnızca Azure AD kiracınız için Azure AD DS etkinleştirdiğinizde eski parola karmalarını eşitler. Yalnızca Azure AD ile şirket içi AD DS ortamı eşitlemesini Azure AD Connect kullanıyorsanız aşağıdaki adımlar kullanılmaz.
 >
-> If your legacy applications don't use NTLM authentication or LDAP simple binds, we recommend that you disable NTLM password hash synchronization for Azure AD DS. For more information, see [Disable weak cipher suites and NTLM credential hash synchronization](../../active-directory-domain-services/secure-your-domain.md).
+> Eski uygulamalarınız NTLM kimlik doğrulaması veya LDAP basit bağlamalar kullanmıyorsanız, Azure AD DS için NTLM parola karma eşitlemesini devre dışı bırakmanızı öneririz. Daha fazla bilgi için bkz. [zayıf şifre paketlerini ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırakma](../../active-directory-domain-services/secure-your-domain.md).
 
-1. Azure AD Connect retrieves the public key for the tenant's instance of Azure AD Domain Services.
-1. When a user changes their password, the on-premises domain controller stores the result of the password change (hashes) in two attributes:
-    * *unicodePwd* for the NTLM password hash.
-    * *supplementalCredentials* for the Kerberos password hash.
-1. Azure AD Connect detects password changes through the directory replication channel (attribute changes needing to replicate to other domain controllers).
-1. For each user whose password has changed, Azure AD Connect performs the following steps:
-    * Generates a random AES 256-bit symmetric key.
-    * Generates a random initialization vector needed for the first round of encryption.
-    * Extracts Kerberos password hashes from the *supplementalCredentials* attributes.
-    * Checks the Azure AD Domain Services security configuration *SyncNtlmPasswords* setting.
-        * If this setting is disabled, generates a random, high-entropy NTLM hash (different from the user's password). This hash is then combined with the exacted Kerberos password hashes from the *supplementalCrendetials* attribute into one data structure.
-        * If enabled, combines the value of the *unicodePwd* attribute with the extracted Kerberos password hashes from the *supplementalCredentials* attribute into one data structure.
-    * Encrypts the single data structure using the AES symmetric key.
-    * Encrypts the AES symmetric key using the tenant's Azure AD Domain Services public key.
-1. Azure AD Connect transmits the encrypted AES symmetric key, the encrypted data structure containing the password hashes, and the initialization vector to Azure AD.
-1. Azure AD stores the encrypted AES symmetric key, the encrypted data structure, and the initialization vector for the user.
-1. Azure AD pushes the encrypted AES symmetric key, the encrypted data structure, and the initialization vector using an internal synchronization mechanism over an encrypted HTTP session to Azure AD Domain Services.
-1. Azure AD Domain Services retrieves the private key for the tenant's instance from Azure Key vault.
-1. For each encrypted set of data (representing a single user's password change), Azure AD Domain Services then performs the following steps:
-    * Uses its private key to decrypt the AES symmetric key.
-    * Uses the AES symmetric key with the initialization vector to decrypt the encrypted data structure that contains the password hashes.
-    * Writes the Kerberos password hashes it receives to the Azure AD Domain Services domain controller. The hashes are saved into the user object's *supplementalCredentials* attribute that is encrypted to the Azure AD Domain Services domain controller's public key.
-    * Azure AD Domain Services writes the NTLM password hash it received to the Azure AD Domain Services domain controller. The hash is saved into the user object's *unicodePwd* attribute that is encrypted to the Azure AD Domain Services domain controller's public key.
+1. Azure AD Connect kiracının Azure AD Domain Services örneğinin ortak anahtarını alır.
+1. Kullanıcı parolasını değiştirdiğinde, şirket içi etki alanı denetleyicisi parola değişikliğinin (karma) sonucunu iki özniteliğe depolar:
+    * NTLM parola karması için *unicodePwd* .
+    * , Kerberos Parola karması için *kimlik bilgileri* .
+1. Azure AD Connect, Dizin çoğaltma kanalı aracılığıyla parola değişikliklerini algılar (öznitelik değişiklikleri diğer etki alanı denetleyicilerine çoğaltılmaya gerek yoktur).
+1. Parolası değişmiş olan her kullanıcı için, Azure AD Connect aşağıdaki adımları gerçekleştirir:
+    * Rastgele bir AES 256 bit simetrik anahtar üretir.
+    * Şifrelemenin ilk yuvarlaklaştırmak için gereken rastgele bir başlatma vektörü üretir.
+    * , *Mentalcredentials* özniteliklerinden Kerberos parola karmalarını ayıklar.
+    * Azure AD Domain Services Güvenlik Yapılandırması *Syncntlmpasswords* ayarını denetler.
+        * Bu ayar devre dışı bırakılırsa, rastgele, yüksek entropi bir NTLM karması (kullanıcının parolasından farklı) oluşturur. Bu karma daha sonra, exacted Kerberos parola karmalarıyla birlikte, *Mentalcrendetials* özniteliğinden bir veri yapısına birleştirilir.
+        * Etkinleştirilirse, *unicodePwd* özniteliğinin değerini, *dtalcredentials* özniteliğinden ayıklanan Kerberos parola karmalarıyla tek bir veri yapısına birleştirir.
+    * AES Simetrik anahtarını kullanarak tek veri yapısını şifreler.
+    * Kiracının Azure AD Domain Services ortak anahtarını kullanarak AES Simetrik anahtarını şifreler.
+1. Azure AD Connect şifreli AES Simetrik anahtarını, parola karmalarını içeren şifreli veri yapısını ve Azure AD 'ye başlatma vektörünü iletir.
+1. Azure AD şifreli AES Simetrik anahtarını, şifreli veri yapısını ve Kullanıcı için başlatma vektörünü depolar.
+1. Azure AD, şifreli AES Simetrik anahtarını, şifrelenmiş veri yapısını ve Azure AD Domain Services için şifrelenmiş bir HTTP oturumunda iç eşitleme mekanizması kullanarak başlatma vektörünü gönderir.
+1. Azure AD Domain Services kiracının Azure Anahtar Kasası 'na ait örneğinin özel anahtarını alır.
+1. Her şifreli veri kümesi (tek bir kullanıcının parola değişikliğini temsil eden) için Azure AD Domain Services aşağıdaki adımları gerçekleştirir:
+    * , AES Simetrik anahtarının şifresini çözmek için özel anahtarını kullanır.
+    * Parola karmalarını içeren şifreli veri yapısının şifresini çözmek için başlatma vektörü ile AES Simetrik anahtarını kullanır.
+    * Aldığı Kerberos parola karmalarını Azure AD Domain Services etki alanı denetleyicisine yazar. Karmalar, Azure AD Domain Services etki alanı denetleyicisinin ortak anahtarına şifrelenmiş Kullanıcı nesnesinin *Mentalcredentials* özniteliğine kaydedilir.
+    * Azure AD Domain Services, Azure AD Domain Services etki alanı denetleyicisine aldığı NTLM parola karmasını yazar. Karma, Azure AD Domain Services etki alanı denetleyicisinin ortak anahtarına şifrelenmiş Kullanıcı nesnesinin *unicodePwd* özniteliğine kaydedilir.
 
 ## <a name="enable-password-hash-synchronization"></a>Parola karması eşitlemeyi etkinleştirme
 
 >[!IMPORTANT]
->If you are migrating from AD FS (or other federation technologies) to Password Hash Synchronization, we highly recommend that you follow our detailed deployment guide published [here](https://aka.ms/adfstophsdpdownload).
+>AD FS (veya başka bir Federasyon teknolojileri) ile parola karması eşitlemeye geçiş yapıyorsanız, [burada](https://aka.ms/adfstophsdpdownload)yayımlanan ayrıntılı dağıtım kılavuzumuzu izlemenizi kesinlikle öneririz.
 
-When you install Azure AD Connect by using the **Express Settings** option, password hash synchronization is automatically enabled. For more information, see [Getting started with Azure AD Connect using express settings](how-to-connect-install-express.md).
+Azure AD Connect **Express ayarları** seçeneğini kullanarak yüklediğinizde, Parola karması eşitleme otomatik olarak etkinleştirilir. Daha fazla bilgi için bkz. [Express ayarlarını kullanarak Azure AD Connect](how-to-connect-install-express.md)kullanmaya başlama.
 
-If you use custom settings when you install Azure AD Connect, password hash synchronization is available on the user sign-in page. For more information, see [Custom installation of Azure AD Connect](how-to-connect-install-custom.md).
+Azure AD Connect yükleme sırasında özel ayarları kullanırsanız, parola karması eşitleme, kullanıcı oturum açma sayfasında kullanılabilir. Daha fazla bilgi için bkz. [özel Azure AD Connect yüklemesi](how-to-connect-install-custom.md).
 
 ![Parola karmasını eşitlemeyi etkinleştirme](./media/how-to-connect-password-hash-synchronization/usersignin2.png)
 
-### <a name="password-hash-synchronization-and-fips"></a>Password hash synchronization and FIPS
-If your server has been locked down according to Federal Information Processing Standard (FIPS), then MD5 is disabled.
+### <a name="password-hash-synchronization-and-fips"></a>Parola karma eşitlemesi ve FIPS
+Sunucunuz Federal Bilgi İşleme Standardı (FIPS göre) kilitli, MD5 devre dışı bırakıldı.
 
-**To enable MD5 for password hash synchronization, perform the following steps:**
+**Parola karması eşitlemesi için MD5 etkinleştirmek üzere aşağıdaki adımları uygulayın:**
 
-1. Go to %programfiles%\Azure AD Sync\Bin.
-2. Open miiserver.exe.config.
-3. Go to the configuration/runtime node at the end of the file.
-4. Add the following node: `<enforceFIPSPolicy enabled="false"/>`
+1. İçin %ProgramFiles%\Azure AD Sync\Bin gidin.
+2. Miiserver.exe.config açın.
+3. Dosyanın sonunda configuration/çalışma zamanı düğümüne gidin.
+4. Şu düğümü ekleyin: `<enforceFIPSPolicy enabled="false"/>`
 5. Yaptığınız değişiklikleri kaydedin.
 
-For reference, this snippet is what it should look like:
+Başvuru için bu kod parçacığı, ne gibi görünmelidir gösterilmiştir:
 
 ```
     <configuration>
@@ -225,12 +225,12 @@ For reference, this snippet is what it should look like:
     </configuration>
 ```
 
-For information about security and FIPS, see [Azure AD password hash sync, encryption, and FIPS compliance](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/).
+Güvenlik ve FIPS hakkında daha fazla bilgi için bkz. [Azure AD Parola karması eşitleme, şifreleme ve FIPS uyumluluğu](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/).
 
-## <a name="troubleshoot-password-hash-synchronization"></a>Troubleshoot password hash synchronization
-If you have problems with password hash synchronization, see [Troubleshoot password hash synchronization](tshoot-connect-password-hash-synchronization.md).
+## <a name="troubleshoot-password-hash-synchronization"></a>Parola Karması eşitleme sorunlarını giderme
+Parola karması eşitlemeyle ilgili sorun yaşıyorsanız, bkz. [Parola karması eşitleme sorunlarını giderme](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure AD Connect sync: Customizing synchronization options](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitleme: eşitleme seçeneklerini özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)
-* [Get a step-by-step deployment plan for migrating from ADFS to Password Hash Synchronization](https://aka.ms/authenticationDeploymentPlan)
+* [ADFS 'den Parola karması eşitlemesine geçiş için adım adım bir dağıtım planı alın](https://aka.ms/authenticationDeploymentPlan)

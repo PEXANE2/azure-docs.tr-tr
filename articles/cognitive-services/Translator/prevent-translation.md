@@ -1,7 +1,7 @@
 ---
-title: Prevent content translation - Translator Text API
+title: İçerik çevirisini önleme-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Prevent translation of content with the Translator Text API. The Translator Text API allows you to tag content so that it isn't translated.
+description: Translator Metin Çevirisi API'si içerik çevirisini önleyin. Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -17,14 +17,14 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326768"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>How to prevent translation of content with the Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Translator Metin Çevirisi API'si içerik çevirisini önleme
 
-The Translator Text API allows you to tag content so that it isn't translated. For example, you may want to tag code, a brand name, or a word/phrase that doesn't make sense when localized.
+Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar. Örneğin, kod, marka adı veya yerelleştirmeden anlamlı olmayan bir sözcük/tümcecik etiketlemek isteyebilirsiniz.
 
-## <a name="methods-for-preventing-translation"></a>Methods for preventing translation
-1. Escape to a Twitter tag @somethingtopassthrough or #somethingtopassthrough. Un-escape after translation. This is the regular expression for valid twitter tags: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A tag should start with a "@" sign, followed by a character and then followed by one or many characters, digits or underscore. It is recommended to keep tags short and the opening tag must be preceded by a space.
+## <a name="methods-for-preventing-translation"></a>Çeviriyi önlemek için Yöntemler
+1. Twitter etiketine kaçış @somethingtopassthrough veya #somethingtopassthrough. Çeviri sonrasında kaçış işaretini kaldır. Bu, geçerli Twitter etiketleri için normal ifadedir: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. Bir etiket bir "@" işareti ile başlamalı, ardından bir karakter ve ardından bir veya daha fazla karakter, rakam veya alt çizgi gelmelidir. Etiketlerin kısa tutulması ve açılış etiketinin önünde bir boşluk olması önerilir.
 
-2. Tag your content with `notranslate`. It's by design that this works only when the input textType is set as HTML
+2. İçeriğinizi `notranslate`etiketleyin. Bu, yalnızca Input textType 'ın HTML olarak ayarlandığı durumlarda çalıştığını tasarlayabilmesini sağlamaktır
 
    Örnek:
 
@@ -38,13 +38,13 @@ The Translator Text API allows you to tag content so that it isn't translated. F
    <div>This will be translated. </div>
    ```
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+3. Belirli bir çeviri yapmak için [dinamik sözlüğü](dynamic-dictionary.md) kullanın.
 
-4. Don't pass the string to the Translator Text API for translation.
+4. Dizeyi çeviri için Translator Metin Çevirisi API'si iletmeyin.
 
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. Özel çevirici: bir tümceciği %100 olasılığa sahip bir ifadenin çevirisi yapmak için [özel çevirmende bir sözlük](custom-translator/what-is-dictionary.md) kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Avoid translation in your Translator API call](reference/v3-0-translate.md)
+> [Translator API çağrısındaki çeviriyi önleyin](reference/v3-0-translate.md)

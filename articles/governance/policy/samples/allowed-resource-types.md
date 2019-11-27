@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed resource types
-description: This sample policy definition ensures only approved resource types defined in a parameter are deployed.
+title: Örnek-Izin verilen kaynak türleri
+description: Bu örnek ilke tanımı, yalnızca bir parametrede tanımlanan onaylanan kaynak türlerinin dağıtılmasını sağlar.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 5fdf17ff037aaf6f8094bb811e2e6e5a61093250
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463426"
 ---
-# <a name="sample---allowed-resource-types"></a>Sample - Allowed resource types
+# <a name="sample---allowed-resource-types"></a>Örnek-Izin verilen kaynak türleri
 
 Bu ilke, yalnızca onaylanan kaynak türlerinin dağıtılmasını güvence altına alır. İzin verilen kaynak türü dizisini belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke, yalnızca onaylanan kaynak türlerinin dağıtılmasını güvence alt�
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-resourcetypes%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-resourcetypes%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

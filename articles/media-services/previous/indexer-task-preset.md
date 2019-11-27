@@ -1,6 +1,6 @@
 ---
-title: Task preset for Azure Media Indexer
-description: This topic gives an overview of task preset for Azure Media Indexer.
+title: Azure Media Indexer için görev önayarı
+description: Bu konu, Azure Media Indexer için görev önayara genel bir bakış sunar.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -20,23 +20,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464107"
 ---
-# <a name="task-preset-for-azure-media-indexer"></a>Task preset for Azure Media Indexer 
+# <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer için görev önayarı 
 
-Azure Media Indexer is a Media Processor that you use to perform the following tasks: make media files and content searchable, generate closed captioning tracks and keywords, index asset files that are part of your asset.
+Azure Media Indexer, aşağıdaki görevleri gerçekleştirmek için kullandığınız bir medya Işlemcisidir: medya dosyalarını ve içeriği aranabilir yapın, Kapalı açıklamalı altyazı parçaları ve anahtar sözcükleri oluşturun, varlığınızın bir parçası olan varlık dosyalarını dizine alın.
 
-This topic describes the task preset that you need to pass to your indexing job. For complete example, see [Indexing media files with Azure Media Indexer](media-services-index-content.md).
+Bu konuda, dizin oluşturma işinize geçirmeniz gereken görev ön ayarı açıklanmaktadır. Tüm örnek için bkz. [Azure Media Indexer medya dosyalarını dizine alma](media-services-index-content.md).
 
-## <a name="azure-media-indexer-configuration-xml"></a>Azure Media Indexer Configuration XML
+## <a name="azure-media-indexer-configuration-xml"></a>Azure Media Indexer yapılandırması XML
 
-The following table explains elements and attributes of the configuration XML.
+Aşağıdaki tabloda, yapılandırma XML öğelerinin ve öznitelikleri açıklanmaktadır.
 
-|Adı|Gerektirme|Açıklama|
+|Name|Gerektirme|Açıklama|
 |---|---|---|
-|Girdi|doğru|Asset file(s) that you want to index.<br/>Azure Media Indexer supports the following media file formats: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>You can specify the file name (s) in the **name** or **list** attribute of the **input** element (as shown below). If you do not specify which asset file to index, the primary file is picked. If no primary asset file is set, the first file in the input asset is indexed.<br/><br/>To explicitly specify the asset file name, do:<br/>```<input name="TestFile.wmv" />```<br/><br/>You can also index multiple asset files at once (up to 10 files). Bunu yapmak için:<br/>- Create a text file (manifest file) and give it an .lst extension.<br/>- Add a list of all the asset file names in your input asset to this manifest file.<br/>- Add (upload) the manifest file to the asset.<br/>- Specify the name of the manifest file in the input’s list attribute.<br/>```<input list="input.lst">```<br/><br/>**Note:** If you add more than 10 files to the manifest file, the indexing job will fail with the 2006 error code.|
-|meta veriler|yanlış|Metadata for the specified asset file(s).<br/>```<metadata key="..." value="..." />```<br/><br/>You can supply values for predefined keys. <br/><br/>Currently, the following keys are supported:<br/><br/>**title** and **description** - used to update the language model to improve speech recognition accuracy.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**username** and **password** - used for authentication when downloading internet files via http or https.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>The username and password values apply to all media URLs in the input manifest.|
-|SaaS Uygulamaları Geliştirme<br/><br/>Added in version 1.2. Currently, the only supported feature is speech recognition ("ASR").|yanlış|The Speech Recognition feature has the following settings keys:<br/><br/>Dil:<br/>- The natural language to be recognized in the multimedia file.<br/>- English, Spanish<br/><br/>CaptionFormats:<br/>- a semicolon-separated list of the desired output caption formats (if any)<br/>- ttml;webvtt<br/><br/><br/>GenerateKeywords:<br/>- A boolean flag specifying whether or not a keyword XML file is required.<br/>- True; False.|
+|Giriş|true|Dizin eklemek istediğiniz varlık dosyaları.<br/>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.<br/><br/>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>```<input name="TestFile.wmv" />```<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/>-Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin.<br/>-Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin.<br/>-Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).<br/>-Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>```<input list="input.lst">```<br/><br/>**Note:** Bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur.|
+|meta veriler|false|Belirtilen varlık dosyalarının meta verileri.<br/>```<metadata key="..." value="..." />```<br/><br/>Önceden tanımlanmış anahtarlar için değerler sağlayabilirsiniz. <br/><br/>Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>**başlık** ve **Açıklama** -konuşma tanıma doğruluğunu artırmak için dil modelini güncelleştirmek üzere kullanılır.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**Kullanıcı adı** ve **parola** -http veya HTTPS aracılığıyla Internet dosyaları indirirken kimlik doğrulaması için kullanılır.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>Kullanıcı adı ve parola değerleri, giriş bildirimindeki tüm medya URL 'Leri için geçerlidir.|
+|SaaS Uygulamaları Geliştirme<br/><br/>Sürüm 1,2 ' ye eklenmiştir. Şu anda desteklenen tek özellik konuşma tanıma ("ASR") ' dir.|false|Konuşma tanıma özelliği aşağıdaki ayarlar anahtarlarına sahiptir:<br/><br/>Dil:<br/>-Multimedya dosyasında tanınmak için doğal dil.<br/>-İngilizce, Ispanyolca<br/><br/>CaptionFormats:<br/>-istenen çıkış resim yazısı biçimlerinin noktalı virgülle ayrılmış listesi (varsa)<br/>-ttml; WEBVTT<br/><br/><br/>GenerateKeywords:<br/>-Anahtar sözcüğünün XML dosyası gerekip gerekmediğini belirten bir Boole bayrağı.<br/>Değeri Yanlýþ.|
 
-## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer configuration XML example
+## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer Configuration XML örneği
 
 ``` 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -62,5 +62,5 @@ The following table explains elements and attributes of the configuration XML.
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-See [Indexing media files with Azure Media Indexer](media-services-index-content.md).
+Bkz. [Azure Media Indexer Ile dizin oluşturma medya dosyaları](media-services-index-content.md).
 

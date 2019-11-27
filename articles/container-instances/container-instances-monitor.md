@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances’taki kapsayıcıları izleme
+title: Kapsayıcı örneklerini izleme
 description: Azure Container Instances kapsayıcılarında, CPU ve bellek gibi işlem kaynaklarının tüketimini izleme.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172249"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533640"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcı kaynaklarını izleme
 
@@ -32,7 +27,7 @@ Azure Izleyici ölçümleri Şu anda yalnızca Linux kapsayıcıları için kull
 
 Azure Izleyici [Azure Container Instances için aşağıdaki ölçümleri][supported-metrics]sağlar. Bu ölçümler bir kapsayıcı grubu ve bağımsız kapsayıcılar için kullanılabilir.
 
-* **CPU kullanımı** - **miliçekirdekte**ölçülür. Bir milincil bir CPU Core 'un 1/1000 ' inden biridir, bu nedenle 500 milicore (veya 500 GB) bir CPU çekirdeğinin% 50 kullanımını temsil eder. Tüm çekirdekler genelinde **Ortalama kullanım** olarak toplanır.
+* **CPU kullanımı** - **miliçekirdekte**ölçülür. Bir milincil bir CPU Core 'un 1/1000 ' inden biridir, bu nedenle 500 milicore (veya 500 GB) bir CPU çekirdeğinin %50 kullanımını temsil eder. Tüm çekirdekler genelinde **Ortalama kullanım** olarak toplanır.
 
 * **Bellek kullanımı** - **ortalama bayt**olarak toplanır.
 
@@ -81,7 +76,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-[Desteklenen diğer ölçümleri][supported-metrics]almak için `--metric` komutundaki parametresinin değerini değiştirin. Örneğin, **bellek** kullanım ölçümlerini almak için aşağıdaki komutu kullanın. 
+[Desteklenen diğer ölçümleri][supported-metrics]almak için komutundaki `--metric` parametresinin değerini değiştirin. Örneğin, **bellek** kullanım ölçümlerini almak için aşağıdaki komutu kullanın. 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -102,7 +97,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Çok kapsayıcılı bir grup için, `containerName` boyut, kapsayıcı başına dönüş ölçümlerine eklenebilir.
+Çok kapsayıcılı bir grup için, `containerName` boyutu kapsayıcı başına dönüş ölçümlerine eklenebilir.
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for C# - Bing News Search'
+title: Hızlı başlangıç:-Bing Haber Arama için C# SDK kullanarak bir haber araması gerçekleştirme
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for C#, and process the response.
+description: İçin C#Bing haber arama SDK 'sını kullanarak haberleri aramak ve yanıtı işlemek için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,17 +18,17 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379007"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Quickstart: Perform a news search with the Bing News Search SDK for C#
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Hızlı başlangıç: Bing Haber Arama SDK 'Sı ile bir haber araması gerçekleştirinC#
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for C#. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
+İçin C#Bing haber arama SDK 'sı ile haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
+* Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 * NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi.
 * Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
 
-* The [Bing News Search SDK NuGet package](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Installing this package also installs the following:
+* [BING haber arama SDK NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Bu paketin yüklenmesi aşağıdakileri de yapar:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
@@ -37,11 +37,11 @@ Bing Haber Araması SDK'sını kullanarak bir konsol uygulaması kurmak için Vi
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Create a new C# console solution in Visual Studio. Then add the following into the main code file.
+1. Visual Studio 'da C# yeni bir konsol çözümü oluşturun. Ardından aşağıdakini ana kod dosyasına ekleyin.
     
     ```csharp
     using System;
@@ -49,7 +49,7 @@ See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
     ```
 
-2. Create a variable for your API key, a search term, and then instantiate the news search client with it.
+2. Bir arama terimi olan API anahtarınız için bir değişken oluşturun ve ardından haber arama istemcisinin örneğini oluşturun.
 
     ```csharp
     var key = "YOUR-ACCESS-KEY";
@@ -57,14 +57,14 @@ See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.
     var client = new NewsSearchClient(new ApiKeyServiceClientCredentials(key));
     ```
 
-## <a name="send-a-request-and-parse-the-result"></a>Send a request, and parse the result
+## <a name="send-a-request-and-parse-the-result"></a>İstek gönderme ve sonucu ayrıştırma
 
-1. Use the client to send a search request to the Bing News Search service:
+1. Bing Haber Arama hizmetine bir arama isteği göndermek için istemcisini kullanın:
     ```csharp
     var newsResults = client.News.SearchAsync(query: searchTerm, market: "en-us", count: 10).Result;
     ```
 
-2. If any results were returned, parse them:
+2. Herhangi bir sonuç döndürülürse, bunları ayrıştırın:
 
     ```csharp
     if (newsResults.Value.Count > 0)

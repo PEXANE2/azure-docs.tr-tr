@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d77ab142e227cfaa6533395cc256d992e698dd17
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 66d867d33060aa931dbe42c534166e61ee7692fe
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495921"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534509"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim yetkisi verme
 
@@ -34,39 +34,92 @@ VM 'nizden blob 'lara ve kuyruklara erişim yetkisi vermek üzere Azure kaynakla
 
 Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="authenticate-with-the-azure-identity-library-preview"></a>Azure kimlik kitaplığı ile kimlik doğrulama (Önizleme)
+## <a name="authenticate-with-the-azure-identity-library"></a>Azure kimlik kitaplığı ile kimlik doğrulama
 
-.NET için Azure Identity istemci kitaplığı (Önizleme) bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir.
+Azure Identity istemci kitaplığı 'nın bir avantajı, uygulamanızın geliştirme ortamında veya Azure 'da çalışıp çalışmadığını doğrulamak için aynı kodu kullanmanızı sağlar. Azure ortamında çalışan kodda, istemci kitaplığı Azure kaynakları için yönetilen bir kimliğin kimliğini doğrular. Geliştirme ortamında, yönetilen kimlik yok, bu nedenle istemci kitaplığı Kullanıcı veya test amaçları için bir hizmet sorumlusu kimliğini doğrular.
 
-Kodunuz geliştirme ortamında çalışırken, kimlik doğrulaması otomatik olarak işlenebilir veya kullandığınız araçlara bağlı olarak bir tarayıcı oturum açma işlemi gerektirebilir. Microsoft Visual Studio çoklu oturum açmayı (SSO) destekler, böylece etkin Azure AD Kullanıcı hesabı kimlik doğrulaması için otomatik olarak kullanılır. SSO hakkında daha fazla bilgi için bkz. [uygulamalarda çoklu oturum açma](../../active-directory/manage-apps/what-is-single-sign-on.md).
-
-Diğer geliştirme araçları, bir Web tarayıcısı aracılığıyla oturum açmanız istenebilir. Geliştirme ortamından kimlik doğrulaması yapmak için bir hizmet sorumlusu da kullanabilirsiniz. Daha fazla bilgi için bkz. [portalda Azure uygulaması için kimlik oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md).
+.NET için Azure Identity istemci kitaplığı, bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir.
 
 Kimlik doğrulamasından sonra Azure Identity istemci kitaplığı bir belirteç kimlik bilgisi alır. Bu belirteç kimlik bilgileri daha sonra Azure depolama 'ya karşı işlemleri gerçekleştirmek için oluşturduğunuz hizmet istemci nesnesinde kapsüllenir. Kitaplık, uygun belirteç kimlik bilgisini alarak sizin için sorunsuz bir şekilde işler.
 
 Azure Identity istemci kitaplığı hakkında daha fazla bilgi için bkz. [.net Için Azure kimlik istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>Verilere erişmek için RBAC rolleri atama
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Verilere erişmek için rol tabanlı erişim denetimi (RBAC) rolleri atama
 
 Bir Azure AD güvenlik sorumlusu blob veya kuyruk verilerine erişmeyi denediğinde, bu güvenlik sorumlusunun kaynak için izinleri olması gerekir. Güvenlik sorumlusunun Azure 'da yönetilen bir kimlik veya geliştirme ortamında kod çalıştıran bir Azure AD Kullanıcı hesabı olup olmadığı, güvenlik sorumlusu, Azure depolama 'daki blob veya kuyruk verilerine erişim izni veren bir RBAC rolü atanmalıdır. RBAC aracılığıyla izin atama hakkında daha fazla bilgi için, [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)konusundaki **ERIŞIM hakları Için RBAC rolleri atama** başlıklı bölüme bakın.
 
-## <a name="install-the-preview-packages"></a>Önizleme paketlerini yükler
+### <a name="authenticate-the-user-in-the-development-environment"></a>Geliştirme ortamında kullanıcının kimliğini doğrulama
 
-Bu makaledeki örneklerde, BLOB depolama için Azure Storage istemci kitaplığı 'nın en son önizleme sürümü kullanılmaktadır. Önizleme paketini yüklemek için, NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+Kodunuz geliştirme ortamında çalışırken, kimlik doğrulaması otomatik olarak işlenebilir veya kullandığınız araçlara bağlı olarak bir tarayıcı oturum açma işlemi gerektirebilir. Microsoft Visual Studio çoklu oturum açmayı (SSO) destekler, böylece etkin Azure AD Kullanıcı hesabı kimlik doğrulaması için otomatik olarak kullanılır. SSO hakkında daha fazla bilgi için bkz. [uygulamalarda çoklu oturum açma](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
-```powershell
-Install-Package Azure.Storage.Blobs -IncludePrerelease
+Diğer geliştirme araçları, bir Web tarayıcısı aracılığıyla oturum açmanız istenebilir.
+
+### <a name="authenticate-a-service-principal-in-the-development-environment"></a>Geliştirme ortamında hizmet sorumlusu kimlik doğrulaması
+
+Geliştirme ortamınız bir Web tarayıcısı aracılığıyla çoklu oturum açmayı veya oturum açmayı desteklemiyorsa, geliştirme ortamından kimlik doğrulaması yapmak için bir hizmet sorumlusu kullanabilirsiniz.
+
+#### <a name="create-the-service-principal"></a>Hizmet sorumlusunu oluşturma
+
+Azure CLı ile bir hizmet sorumlusu oluşturmak ve RBAC rolü atamak için, [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) komutunu çağırın. Yeni hizmet sorumlusuna atamak için bir Azure depolama veri erişim rolü sağlayın. Ayrıca, rol atamasının kapsamını belirtin. Azure depolama için sunulan yerleşik roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için yerleşik roller](../../role-based-access-control/built-in-roles.md).
+
+Hizmet sorumlusuna rol atamak için yeterli izniniz yoksa, hesap sahibine veya yöneticiden rol atamasını gerçekleştirmesini isteyebilirsiniz.
+
+Aşağıdaki örnek, yeni bir hizmet sorumlusu oluşturmak ve **Depolama Blobu veri okuyucusu** rolünü hesap kapsamı ile atamak IÇIN Azure CLI 'yi kullanır
+
+```azurecli-interactive
+az ad sp create-for-rbac \
+    --name <service-principal> \
+    --role "Storage Blob Data Reader" \
+    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Bu makaledeki örneklerde, Azure AD kimlik bilgileriyle kimlik doğrulaması yapmak için [.net Için Azure Identity istemci kitaplığı](https://www.nuget.org/packages/Azure.Identity/) 'nın en son önizleme sürümü de kullanılır. Önizleme paketini yüklemek için, NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+`az ad sp create-for-rbac` komutu, JSON biçiminde hizmet sorumlusu özelliklerinin bir listesini döndürür. Bir sonraki adımda gerekli ortam değişkenlerini oluşturmak için bunları kullanabilmeniz için bu değerleri kopyalayın.
 
-```powershell
-Install-Package Azure.Identity -IncludePrerelease
+```json
+{
+    "appId": "generated-app-ID",
+    "displayName": "service-principal-name",
+    "name": "http://service-principal-uri",
+    "password": "generated-password",
+    "tenant": "tenant-ID"
+}
 ```
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET kod örneği: blok blobu oluşturma
+> [!IMPORTANT]
+> RBAC rol atamalarının yayılması birkaç dakika sürebilir.
 
-Azure kimlik ve Azure depolama istemci kitaplıklarının önizleme sürümlerini kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
+#### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
+
+Azure Identity istemci kitaplığı, hizmet sorumlusunun kimliğini doğrulamak için çalışma zamanında üç ortam değişkeninden değerleri okur. Aşağıdaki tabloda her ortam değişkeni için ayarlanacak değer açıklanmaktadır.
+
+|Ortam değişkeni|Değer
+|-|-
+|`AZURE_CLIENT_ID`|Hizmet sorumlusu için uygulama KIMLIĞI
+|`AZURE_TENANT_ID`|Hizmet sorumlusunun Azure AD kiracı KIMLIĞI
+|`AZURE_CLIENT_SECRET`|Hizmet sorumlusu için oluşturulan parola
+
+> [!IMPORTANT]
+> Ortam değişkenlerini ayarladıktan sonra konsol pencerenizi kapatıp yeniden açın. Visual Studio veya başka bir geliştirme ortamı kullanıyorsanız, yeni ortam değişkenlerini kaydedebilmesi için geliştirme ortamını yeniden başlatmanız gerekebilir.
+
+Daha fazla bilgi için bkz. [portalda Azure uygulaması için kimlik oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md).
+
+## <a name="install-client-library-packages"></a>İstemci kitaplığı paketlerini yükler
+
+Bu makaledeki örneklerde, BLOB depolama için Azure Storage istemci kitaplığı 'nın en son sürümü kullanılır. Paketi yüklemek için NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+
+```powershell
+Install-Package Azure.Storage.Blobs
+```
+
+Bu makaledeki örneklerde, Azure AD kimlik bilgileriyle kimlik doğrulaması yapmak için [.net Için Azure Identity istemci kitaplığı](https://www.nuget.org/packages/Azure.Identity/) 'nın en son sürümünü de kullanabilirsiniz. Paketi yüklemek için NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+
+```powershell
+Install-Package Azure.Identity
+```
+
+## <a name="net-code-example-create-a-block-blob"></a>.NET kod örneği: bir blok blobu oluştur
+
+Azure kimlik ve Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
 
 ```csharp
 using System;

@@ -1,5 +1,5 @@
 ---
-title: Two-step verification Azure MFA and ADFS - Azure Active Directory
+title: İki aşamalı doğrulama Azure MFA ve ADFS-Azure Active Directory
 description: Bu, nasıl Azure MFA ve AD FS kullanmaya başlayacağınızı açıklayan Azure Multi-Factor Authentication sayfasıdır.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381173"
 
 <center>
 
-![Azure MFA and ADFS getting started](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+![Azure MFA ve ADFS kullanmaya başlama](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Kuruluşunuz şirket için Active Directory’nizi AD FS kullanan Azure Active Directory ile birleştirdiyse Azure Multi-Factor Authentication’ın kullanılması için iki seçenek mevcuttur.
 

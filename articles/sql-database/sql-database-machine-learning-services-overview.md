@@ -1,6 +1,6 @@
 ---
-title: Machine Learning Services with R (preview)
-description: This article describes Azure SQL Database Machine Learning Services (with R) and explains how it works.
+title: R ile Machine Learning Services (Önizleme)
+description: Bu makalede, Azure SQL veritabanı Machine Learning Services (R ile) açıklanmakta ve nasıl çalıştığı açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -19,46 +19,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462345"
 ---
-# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services with R (preview)
+# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>R ile Azure SQL veritabanı Machine Learning Services (Önizleme)
 
-Machine Learning Services is a feature of Azure SQL Database, used for executing in-database R scripts. The feature includes Microsoft R packages for high-performance predictive analytics and machine learning. The relational data can be used in R scripts through stored procedures, T-SQL script containing R statements, or R code containing T-SQL.
+Machine Learning Services, veritabanı içi R betiklerini yürütmek için kullanılan Azure SQL veritabanı 'nın bir özelliğidir. Özelliği, yüksek performanslı tahmine dayalı analiz ve makine öğrenimi için Microsoft R paketleri içerir. İlişkisel veriler, saklı yordamlar aracılığıyla R betiklerde, R deyimlerini içeren T-SQL betiği veya T-SQL içeren R kodu ile kullanılabilir.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 > [!NOTE]
-> The preview is available for single databases and elastic pools using the vCore-based purchasing model in the **general purpose** and **business critical** service tiers. In this initial preview, the **hyperscale** service tier and the **managed instance** deployment option are not supported. Şu an için yalnızca R dili desteklenmektedir. Python desteği yoktur.
+> Önizleme, **genel amaçlı** ve **iş açısından kritik** hizmet katmanlarında sanal çekirdek tabanlı satın alma modeli kullanılarak tek veritabanları ve elastik havuzlar için kullanılabilir. Bu ilk önizlemede, **hiper ölçek** hizmet katmanı ve **yönetilen örnek** dağıtım seçeneği desteklenmez. Şu an için yalnızca R dili desteklenmektedir. Python desteği yoktur.
 >
-> The preview is currently available in the following regions: West Europe, North Europe, West US 2, East US, South Central US, North Central US, Canada Central, Southeast Asia, India South, and Australia Southeast.
+> Önizleme Şu anda şu bölgelerde kullanılabilir: Batı Avrupa, Kuzey Avrupa, Batı ABD 2, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Kanada Orta, Güneydoğu Asya, Hindistan Güney ve Avustralya Güneydoğu.
 
-## <a name="what-you-can-do-with-r"></a>What you can do with R
+## <a name="what-you-can-do-with-r"></a>R ile yapabilecekleriniz
 
-Use the power of R language to deliver advanced analytics and machine learning in-database. This ability brings calculations and processing to where the data resides, eliminating the need to pull data across the network. Also, you can leverage the power of enterprise R packages to deliver advanced analytics at scale.
+Veritabanı içi gelişmiş analiz ve makine öğrenimi sağlamak için R dilinin gücünü kullanın. Bu özellik, verilerin bulunduğu yere hesaplamalar ve işleme getirir ve ağ üzerinden veri çekme gereksinimini ortadan kaldırır. Ayrıca, uygun ölçekte gelişmiş analizler sunmak için kurumsal R paketlerinin gücünden yararlanabilirsiniz.
 
-Machine Learning Services includes a base distribution of R, overlaid with enterprise R packages from Microsoft. Microsoft's R functions and algorithms are engineered for both scale and utility, delivering predictive analytics, statistical modeling, data visualizations, and leading-edge machine learning algorithms.
+Machine Learning Services, Microsoft 'un kurumsal R paketleriyle çakışan, R 'nin temel bir dağılımını içerir. Microsoft 'un R işlevleri ve algoritmaları, tahmine dayalı analiz, istatistiksel modelleme, veri görselleştirmeleri ve önde gelen uç makine öğrenimi algoritmaları sunarak hem ölçek hem de yardımcı olmak için tasarlanmıştır.
 
-### <a name="r-packages"></a>R packages
+### <a name="r-packages"></a>R paketleri
 
-Most common open-source R packages are pre-installed in Machine Learning Services. The following R packages from Microsoft are also included:
+En yaygın açık kaynaklı R paketleri Machine Learning Services önceden yüklenir. Microsoft 'un aşağıdaki R paketleri de dahil edilmiştir:
 
-| R package | Açıklama|
+| R paketi | Açıklama|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open is the enhanced distribution of R from Microsoft. It is a complete open-source platform for statistical analysis and data science. It is based on and 100% compatible with R, and includes additional capabilities for improved performance and reproducibility. |
-| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR is the primary library for scalable R. Functions in this library are among the most widely used. Data transformations and manipulation, statistical summarization, visualization, and many forms of modeling and analyses are found in these libraries. Additionally, functions in these libraries automatically distribute workloads across available cores for parallel processing, with the ability to work on chunks of data that are coordinated and managed by the calculation engine. |
-| [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML adds machine learning algorithms to create custom models for text analysis, image analysis, and sentiment analysis. |
+| [Microsoft R açık](https://mran.microsoft.com/rro) | Microsoft R Open, Microsoft 'tan R 'nin gelişmiş bir dağıtımı olan Microsoft. İstatistiksel analiz ve veri bilimi için tam açık kaynaklı bir platformdur. Bu, R ile uyumlu olan ve %100 ' i temel alır ve gelişmiş performans ve reproducibility için ek yetenekler içerir. |
+| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | Geri alınamaz, ölçeklenebilir R için birincil kitaplıktır. bu kitaplıktaki Işlevler en yaygın olarak kullanılan bir seçenektir. Bu kitaplıklarda veri dönüştürmeleri ve düzenleme, istatistiksel özetleme, görselleştirme ve birçok modelleme ve analizler bulunur. Ayrıca, bu kitaplıkların işlevleri paralel işleme için kullanılabilir çekirdekler üzerinde iş yüklerini otomatik olarak dağıtır ve hesaplama altyapısı tarafından düzenlenen ve yönetilen veri öbeklerinde çalışma olanağı sağlar. |
+| [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML, metin analizi, görüntü analizi ve yaklaşım analizi için özel modeller oluşturmak üzere makine öğrenimi algoritmaları ekler. |
 
-In addition to the pre-installed packages, you can [install additional packages](sql-database-machine-learning-services-add-r-packages.md).
+Önceden yüklenmiş paketlere ek olarak [ek paketler de yükleyebilirsiniz](sql-database-machine-learning-services-add-r-packages.md).
 
 <a name="signup"></a>
 
 ## <a name="sign-up-for-the-preview"></a>Önizleme için kaydolun
 
 > [!IMPORTANT]
-> Sign up for Azure SQL Database Machine Learning Services (preview) is currently closed.
+> Azure SQL veritabanı için kaydolun Machine Learning Services (Önizleme) Şu anda kapalı.
 
-Machine Learning Services with R is not recommended for production workload during the preview.
+Önizleme sırasında üretim iş yükü için R ile Machine Learning Services önerilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- See the [key differences from SQL Server Machine Learning Services](sql-database-machine-learning-services-differences.md).
-- To learn how to use R to query Azure SQL Database Machine Learning Services (preview), see the [Quickstart guide](sql-database-connect-query-r.md).
-- To get started with some simple R scripts, see [Create and run simple R scripts in Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md).
+- [SQL Server Machine Learning Services arasındaki önemli farklılıkları](sql-database-machine-learning-services-differences.md)inceleyin.
+- R 'yi kullanarak Azure SQL veritabanı Machine Learning Services (Önizleme) sorgulama hakkında bilgi edinmek için [hızlı başlangıç kılavuzuna](sql-database-connect-query-r.md)bakın.
+- Bazı basit R betiklerini kullanmaya başlamak için bkz. [Azure SQL veritabanı 'nda basit r betikleri oluşturma ve çalıştırma Machine Learning Services (Önizleme)](sql-database-quickstart-r-create-script.md).

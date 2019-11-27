@@ -1,6 +1,6 @@
 ---
-title: Sample - Allow custom VM image from resource group
-description: This sample policy definition requires that custom images come from an approved resource group defined in a parameter.
+title: Örnek-kaynak grubundan özel VM görüntüsüne Izin ver
+description: Bu örnek ilke tanımı, özel görüntülerin bir parametrede tanımlanmış onaylanmış bir kaynak grubundan gelmesini gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 788098998bb5a1f268203e8e37fd671bdfbd6425
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463770"
 ---
-# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Sample - Allow custom VM image from a resource group
+# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Örnek-kaynak grubundan özel VM görüntüsüne Izin ver
 
 Bu örnek ilkesi, özel görüntülerin onaylı bir kaynak grubundan gelmesini gerektirir. Onaylı kaynak grubunun adını belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu örnek ilkesi, özel görüntülerin onaylı bir kaynak grubundan gelmesini g
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fcustom-image-from-rg%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fcustom-image-from-rg%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

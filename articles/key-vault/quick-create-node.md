@@ -1,6 +1,6 @@
 ---
-title: Quickstart -  Azure Key Vault client library for Node.js (v4)
-description: Learn how to create, retrieve, and delete secrets from an Azure key vault using the Node.js client library
+title: Hızlı başlangıç-Node. js için Azure Key Vault istemci kitaplığı (v4)
+description: Node. js istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
@@ -8,55 +8,55 @@ ms.service: key-vault
 ms.topic: quickstart
 ms.openlocfilehash: 376a0778e581b17462fb632d7e49f4762f54b83e
 ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456744"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Quickstart: Azure Key Vault client library for Node.js (v4)
+# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Hızlı başlangıç: node. js için Azure Key Vault istemci kitaplığı (v4)
 
-Get started with the Azure Key Vault client library for Node.js. Follow the steps below to install the package and try out example code for basic tasks.
+Node. js için Azure Key Vault istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
 
-Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Use the Key Vault client library for Node.js to:
+Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Node. js için Key Vault istemci kitaplığını kullanarak şunları yapın:
 
-- Increase security and control over keys and passwords.
-- Create and import encryption keys in minutes.
-- Reduce latency with cloud scale and global redundancy.
-- Simplify and automate tasks for SSL/TLS certificates.
-- Use FIPS 140-2 Level 2 validated HSMs.
+- Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
+- Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
+- Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
+- SSL/TLS sertifikaları için görevleri basitleştirme ve otomatikleştirme.
+- FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
-[API reference documentation](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [Package (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API başvuru belgeleri](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [paketi (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- An Azure subscription - [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Current [Node.js](https://nodejs.org) for your operating system.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) or [Azure PowerShell](/powershell/azure/overview)
+- Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- İşletim sisteminiz için geçerli [Node. js](https://nodejs.org) .
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview)
 
-This quickstart assumes you are running [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) in a Linux terminal window.
+Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'Yi bir Linux Terminal penceresinde çalıştırdığınız varsayılır.
 
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="install-the-package"></a>Install the package
+### <a name="install-the-package"></a>Paketi yükler
 
-From the console window, install the Azure Key Vault secrets library for Node.js.
+Konsol penceresinde Node. js için Azure Key Vault gizli dizi Kitaplığı ' nı yükler.
 
 ```console
 npm install @azure/keyvault-secrets
 ```
 
-For this quickstart, you will need to install the azure.identity package as well:
+Bu hızlı başlangıçta, Azure. Identity paketini de yüklemeniz gerekecektir:
 
 ```console
 npm install @azure/identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Create a resource group and key vault
+### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
 
-This quickstart uses a pre-created Azure key vault. You can create a key vault by following the steps in the [Azure CLI quickstart](quick-create-cli.md), [Azure PowerShell quickstart](quick-create-powershell.md), or [Azure portal quickstart](quick-create-portal.md). Alternatively, you can simply run the Azure CLI commands below.
+Bu hızlı başlangıçta önceden oluşturulmuş bir Azure Anahtar Kasası kullanılmaktadır. [Azure CLI hızlı başlangıç](quick-create-cli.md), [Azure PowerShell hızlı](quick-create-powershell.md)başlangıç veya [Azure Portal Hızlı Başlangıç](quick-create-portal.md)adımlarını izleyerek bir Anahtar Kasası oluşturabilirsiniz. Alternatif olarak, yalnızca aşağıdaki Azure CLı komutlarını çalıştırabilirsiniz.
 
 > [!Important]
-> Each key vault must have a unique name. Replace <your-unique-keyvault-name> with the name of your key vault in the following examples.
+> Her Anahtar Kasası benzersiz bir ada sahip olmalıdır. -Unique-keykasa-adı > < Aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -66,15 +66,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-The simplest way to authenticate an cloud-based application is with a managed identity; see [Use an App Service managed identity to access Azure Key Vault](managed-identity.md) for details. For the sake of simplicity however, this quickstarts creates a console application. Authenticating a desktop application with Azure requires the use of a service principal and an access control policy.
+Bulut tabanlı bir uygulamanın kimlik doğrulamasının en kolay yolu, yönetilen bir kimlikle; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](managed-identity.md) konusuna bakın. Kolaylık sağlamak için bu hızlı başlangıç, bir konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimlik doğrulaması için hizmet sorumlusu ve erişim denetimi ilkesi kullanılması gerekir.
 
-Create a service principle using the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
+Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-This operation will return a series of key / value pairs. 
+Bu işlem, bir dizi anahtar/değer çifti döndürür. 
 
 ```azurecli
 {
@@ -91,21 +91,21 @@ This operation will return a series of key / value pairs.
 }
 ```
 
-Take note of the clientId and clientSecret, as we will use them in the [Set environmental variable](#set-environmental-variables) step below.
+Aşağıdaki [ortam değişkenini ayarla](#set-environmental-variables) adımında kullanabilmemiz Için ClientID ve ClientSecret değerlerini göz önünde ayırın.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Give the service principal access to your key vault
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Anahtar kasanıza hizmet sorumlusu erişimi verin
 
-Create an access policy for your key vault that grants permission to your service principal by passing the clientId to the [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) command. Give the service principal get, list, and set permissions for both keys and secrets.
+ClientID 'yi [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek, hizmet sorumlusuna izin veren Anahtar Kasası için bir erişim ilkesi oluşturun. Her iki anahtar ve gizli dizi için hizmet sorumlusu al, Listele ve ayarla izinlerini verin.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-#### <a name="set-environmental-variables"></a>Set environmental variables
+#### <a name="set-environmental-variables"></a>Ortam değişkenlerini ayarlama
 
-The DefaultAzureCredential method in our application relies on three environmental variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID`. Set these variables to the clientId, clientSecret, and tenantId values you noted in the [Create a service principal](#create-a-service-principal) step using the `export VARNAME=VALUE` format. (This only sets the variables for your current shell and processes created from the shell; to permanently add these variables to your environment, edit your `/etc/environment ` file.) 
+Uygulamamızda DefaultAzureCredential yöntemi üç ortam değişkenine dayanır: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`ve `AZURE_TENANT_ID`. Bu değişkenleri, `export VARNAME=VALUE` biçimini kullanarak [hizmet sorumlusu oluşturma](#create-a-service-principal) adımında not ettiğiniz ClientID, ClientSecret ve tenantıd değerlerine ayarlayın. (Bu yalnızca geçerli kabuğunuzun ve kabuktan oluşturulan süreçleriniz için değişkenleri ayarlar; bu değişkenleri ortamınıza kalıcı olarak eklemek için `/etc/environment ` dosyanızı düzenleyin.) 
 
-You will also need to save your key vault name as an environment variable called `KEY_VAULT_NAME`.
+Ayrıca, Anahtar Kasası adınızı `KEY_VAULT_NAME`adlı bir ortam değişkeni olarak kaydetmeniz gerekir.
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -117,28 +117,28 @@ export AZURE_TENANT_ID=<your-tenantId>
 export KEY_VAULT_NAME=<your-key-vault-name>
 ````
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Nesne modeli
 
-The Azure Key Vault client library for Node.js allows you to manage keys and related assets such as certificates and secrets. The code samples below will show you how to create a client, set a secret, retrieve a secret, and delete a secret.
+Node. js için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
 
-The entire console app is available at https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appkullanılabilir.
 
-## <a name="code-examples"></a>Code examples
+## <a name="code-examples"></a>Kod örnekleri
 
-### <a name="add-directives"></a>Add directives
+### <a name="add-directives"></a>Yönergeler ekleme
 
-Add the following directives to the top of your code:
+Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
 const { SecretClient } = require("@azure/keyvault-secrets");
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Authenticate and create a client
+### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
 
-Authenticating to your key vault and creating a key vault client depends on the environmental variables from the [Set environmental variables](#set-environmental-variables) step above, and the [SecretClient constructor](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-). 
+Anahtar kasanıza kimlik doğrulama ve Anahtar Kasası istemcisi oluşturma, yukarıdaki [ortam değişkenlerini ayarla](#set-environmental-variables) adımında ve [secretclient oluşturucusunun](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-)çevresel değişkenlerine bağlıdır. 
 
-The name of your key vault is expanded to the key vault URI, in the format `https://<your-key-vault-name>.vault.azure.net`. 
+Anahtar kasanızın adı, `https://<your-key-vault-name>.vault.azure.net`biçimindeki Anahtar Kasası URI 'sine genişletilir. 
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -148,39 +148,39 @@ const credential = new DefaultAzureCredential();
 const client = new SecretClient(KVUri, credential);
 ```
 
-### <a name="save-a-secret"></a>Save a secret
+### <a name="save-a-secret"></a>Gizli dizi Kaydet
 
-Now that your application is authenticated, you can put a secret into your keyvault using the [client.setSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-) This requires a name for the secret -- we're using "mySecret" in this sample.  
+Artık uygulamanız kimlik doğrulamasından geçirilse de, bu örnekte gizli anahtar için bir ad gerekiyor. [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-) kullanarak keykasanıza gizli dizi ekleyebilirsiniz  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
 ```
 
-You can verify that the secret has been set with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
+Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Retrieve a secret
+### <a name="retrieve-a-secret"></a>Gizli dizi alma
 
-You can now retrieve the previously set value with the [client.getSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-).
+Artık daha önce, [Client. getSecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-)daha önceden ayarlanan değeri alabilirsiniz.
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
  ```
 
-Your secret is now saved as `retrievedSecret.value`.
+Gizli bilgileriniz artık `retrievedSecret.value`olarak kaydedilir.
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
-Finally, let's delete the secret from your key vault with the [client.beginDeleteSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-).
+Son olarak, anahtar kasaınızdan parolayı [Client. beginDeleteSecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-)silelim.
 
 ```javascript
 await client.beginDeleteSecret(secretName)
 ```
 
-You can verify that the secret is gone with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
+Parolanın [az keykasasecret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla yapıldığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -188,7 +188,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When no longer needed, you can use the Azure CLI or Azure PowerShell to remove your key vault and the corresponding  resource group.
+Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
 
 ```azurecli
 az group delete -g "myResourceGroup" -l "EastUS" 
@@ -257,11 +257,11 @@ main()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart you created a key vault, stored a secret, and retrieved that secret. 
+Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. 
 
-To learn more about Key Vault and how to integrate it with your applications, continue on to the articles below.
+Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- Read an [Overview of Azure Key Vault](key-vault-overview.md)
-- See the [Azure Key Vault developer's guide](key-vault-developers-guide.md)
-- Learn about [keys, secrets, and certificates](about-keys-secrets-and-certificates.md)
-- Review [Azure Key Vault best practices](key-vault-best-practices.md)
+- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
+- [Azure Key Vault geliştirici kılavuzuna](key-vault-developers-guide.md) bakın
+- [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
+- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault

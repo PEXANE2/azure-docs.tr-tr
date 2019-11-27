@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create ExpressRoute connections using Azure Virtual WAN
-description: In this tutorial, learn how to use Azure Virtual WAN to create ExpressRoute connections to Azure and on-premises environments.
+title: Öğretici-Azure sanal WAN kullanarak ExpressRoute bağlantıları oluşturma
+description: Bu öğreticide Azure sanal WAN kullanarak Azure ve şirket içi ortamlara ExpressRoute bağlantıları oluşturma hakkında bilgi edinin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -15,82 +15,82 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422871"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Create an ExpressRoute association using Azure Virtual WAN
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
-This tutorial shows you how to use Virtual WAN to connect to your resources in Azure over an ExpressRoute circuit. For more information about Virtual WAN and Virtual WAN resources, see the [Virtual WAN Overview](virtual-wan-about.md).
+Bu öğreticide, Azure 'daki kaynaklarınıza bir ExpressRoute bağlantı hattı üzerinden bağlanmak için sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Sanal WAN ve sanal WAN kaynakları hakkında daha fazla bilgi için bkz. [sanal WAN 'A genel bakış](virtual-wan-about.md).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal WAN oluşturma
-> * Create a hub and a gateway
+> * Hub ve ağ geçidi oluşturma
 > * Bir sanal ağı bir hub'a bağlama
-> * Connect a circuit to a hub gateway
+> * Bir bağlantı merkezini hub ağ geçidine bağlama
 > * Bağlantıyı test etme
-> * Change a gateway size
-> * Advertise a default route
+> * Ağ Geçidi boyutunu değiştirme
+> * Varsayılan bir yol tanıtma
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
-* You have a virtual network that you want to connect to. Verify that none of the subnets of your on-premises networks overlap with the virtual networks that you want to connect to. To create a virtual network in the Azure portal, see the [Quickstart](../virtual-network/quick-create-portal.md).
+* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı](../virtual-network/quick-create-portal.md)başlangıca bakın.
 
-* Your virtual network does not have any virtual network gateways. If your virtual network has a gateway (either VPN or ExpressRoute), you must remove all gateways. This configuration requires that virtual networks are connected instead, to the Virtual WAN hub gateway.
+* Sanal ağınızda sanal ağ geçidi yok. Sanal ağınızda bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağın bunun yerine sanal WAN hub ağ geçidine bağlanmasını gerektirir.
 
-* Hub bölgenizden bir IP adresi aralığı edinin. The hub is a virtual network that is created and used by Virtual WAN. The address range that you specify for the hub cannot overlap with any of your existing virtual networks that you connect to. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. If you are unfamiliar with the IP address ranges located in your on-premises network configuration, coordinate with someone who can provide those details for you.
+* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="openvwan"></a>Create a virtual WAN
+## <a name="openvwan"></a>Sanal WAN oluşturma
 
 Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure hesabınızla oturum açın.
 
-1. Navigate to the Virtual WAN page. Portalda **+Kaynak oluştur**’a tıklayın. Type **Virtual WAN** into the search box and select Enter.
-2. Select **Virtual WAN** from the results. On the Virtual WAN page, click **Create** to open the Create WAN page.
-3. On the **Create WAN** page, on the **Basics** tab, fill in the following fields:
+1. Sanal WAN sayfasına gidin. Portalda **+Kaynak oluştur**’a tıklayın. Arama kutusuna **sanal WAN** yazın ve ENTER ' u seçin.
+2. Sonuçlardan **sanal WAN** ' ı seçin. Sanal WAN sayfasında, **Oluştur** ' a tıklayarak WAN sayfası oluştur sayfasını açın.
+3. **WAN oluştur** sayfasında, **temel bilgiler** sekmesinde aşağıdaki alanları girin:
 
    ![WAN oluşturma](./media/virtual-wan-expressroute-portal/createwan.png)
 
    * **Abonelik**: Kullanmak istediğiniz aboneliği seçin.
    * **Kaynak Grubu**: Yeni oluşturun veya var olanı kullanın.
-   * **Resource group location** - Choose a resource location from the dropdown. WAN, global bir kaynaktır ve belirli bir bölgeyle sınırlı değildir. Ancak oluşturduğunuz WAN kaynağını daha kolay yönetmek ve bulmak için bir bölge seçmeniz gerekir.
-   * **Name** - Type the name that you want to call your WAN.
-   * **Type** - Select **Standard**. You can't create an ExpressRoute gateway using the Basic SKU.
-4. After you finish filling out the fields, select **Review +Create**.
-5. Once validation passes, select **Create** to create the virtual WAN.
+   * **Kaynak grubu konumu** -açılan listeden bir kaynak konumu seçin. WAN, global bir kaynaktır ve belirli bir bölgeyle sınırlı değildir. Ancak oluşturduğunuz WAN kaynağını daha kolay yönetmek ve bulmak için bir bölge seçmeniz gerekir.
+   * **Ad** -WAN 'nizi çağırmak istediğiniz adı yazın.
+   * **Tür** seçin **Standart**. Temel SKU 'YU kullanarak bir ExpressRoute ağ geçidi oluşturamazsınız.
+4. Alanları doldurmayı tamamladıktan sonra, **gözden geçir + oluştur**' u seçin.
+5. Doğrulama başarılı olduktan sonra, sanal WAN oluşturmak için **Oluştur** ' u seçin.
 
-## <a name="hub"></a>Create a virtual hub and gateway
+## <a name="hub"></a>Sanal hub ve ağ geçidi oluşturma
 
-A virtual hub is a virtual network that is created and used by Virtual WAN. It can contain various gateways, such as VPN and ExpressRoute. In this section, you will create an ExpressRoute gateway for your virtual hub. You can either create the gateway when you [create a new virtual hub](#newhub), or you can create the gateway in an [existing hub](#existinghub) by editing it. 
+Sanal hub, sanal WAN tarafından oluşturulan ve kullanılan sanal bir ağ. VPN ve ExpressRoute gibi çeşitli ağ geçitleri içerebilir. Bu bölümde, sanal hub 'ınız için bir ExpressRoute ağ geçidi oluşturacaksınız. [Yeni bir sanal hub oluştururken](#newhub)ağ geçidini oluşturabilir ya da onu düzenleyerek [mevcut bir hub](#existinghub) 'da ağ geçidini oluşturabilirsiniz. 
 
-ExpressRoute gateways are provisioned in units of 2 Gbps. 1 scale unit = 2 Gbps with support up to 10 scale units = 20 Gbps. It takes about 30 minutes for a virtual hub and gateway to fully create.
+ExpressRoute ağ geçitleri 2 Gbps biriminde sağlanır. 1 ölçek birimi = 2 Gbps, en fazla 10 ölçek birimi destekler = 20 Gbps. Bir sanal hub ve ağ geçidinin tam olarak oluşturulması yaklaşık 30 dakika sürer.
 
-### <a name="newhub"></a>To create a new virtual hub and a gateway
+### <a name="newhub"></a>Yeni bir sanal hub ve bir ağ geçidi oluşturmak için
 
-Create a new virtual hub. Once a hub is created, you'll be charged for the hub, even if you don't attach any sites.
+Yeni bir sanal hub oluşturun. Bir hub oluşturulduktan sonra herhangi bir site iliştiremeseniz bile Hub için ücret ödersiniz.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>To create a gateway in an existing hub
+### <a name="existinghub"></a>Mevcut bir hub 'da ağ geçidi oluşturmak için
 
-You can also create a gateway in an existing hub by editing it.
+Ayrıca, var olan bir hub 'da düzenleyerek bir ağ geçidi oluşturabilirsiniz.
 
-1. Navigate to the virtual hub that you want to edit and select it.
-2. On the **Edit virtual hub** page, select the checkbox **Include ExpressRoute gateway**.
-3. Select **Confirm** to confirm your changes. It takes about 30 minutes for the hub and hub resources to fully create.
+1. Düzenlemek istediğiniz sanal hub 'a gidin ve seçin.
+2. **Sanal hub 'ı Düzenle** sayfasında **ExpressRoute ağ geçidini dahil et**onay kutusunu işaretleyin.
+3. Değişikliklerinizi onaylamak için **Onayla** ' yı seçin. Hub ve hub kaynaklarının tam olarak oluşturulması yaklaşık 30 dakika sürer.
 
-   ![existing hub](./media/virtual-wan-expressroute-portal/edithub.png "edit a hub")
+   ![Mevcut hub](./media/virtual-wan-expressroute-portal/edithub.png "Hub 'ı düzenleme")
 
-### <a name="to-view-a-gateway"></a>To view a gateway
+### <a name="to-view-a-gateway"></a>Bir ağ geçidini görüntülemek için
 
-Once you have created an ExpressRoute gateway, you can view gateway details. Navigate to the hub, select **ExpressRoute**, and view the gateway.
+Bir ExpressRoute ağ geçidi oluşturduktan sonra, ağ geçidi ayrıntılarını görüntüleyebilirsiniz. Hub 'a gidin, **ExpressRoute**' ı seçin ve ağ geçidini görüntüleyin.
 
-![View gateway](./media/virtual-wan-expressroute-portal/viewgw.png "view gateway")
+![Ağ geçidini görüntüle](./media/virtual-wan-expressroute-portal/viewgw.png "ağ geçidini görüntüle")
 
-## <a name="connectvnet"></a>Connect your VNet to the hub
+## <a name="connectvnet"></a>VNet 'iniz hub 'a bağlanır
 
-In this section, you create the peering connection between your hub and a VNet. Bu adımları bağlanmak istediğiniz tüm sanal ağlar için tekrarlayın.
+Bu bölümde, hub 'ınız ile VNet arasında eşleme bağlantısı oluşturursunuz. Bu adımları bağlanmak istediğiniz tüm sanal ağlar için tekrarlayın.
 
 1. Sanal WAN'ınızın sayfasında **Sanal ağ bağlantısı**'na tıklayın.
 2. Sanal ağ bağlantısı sayfasında **+Bağlantı ekle**'ye tıklayın.
@@ -99,57 +99,57 @@ In this section, you create the peering connection between your hub and a VNet. 
     * **Bağlantı adı**: Bağlantınıza bir ad verin.
     * **Hub'lar**: Bu bağlantıyla ilişkilendirmek istediğiniz hub'ı seçin.
     * **Abonelik**: Aboneliği doğrulayın.
-    * **Sanal ağ**: Bu hub'a bağlamak istediğiniz sanal ağı seçin. The virtual network cannot have an already existing virtual network gateway (neither VPN, nor ExpressRoute).
+    * **Sanal ağ**: Bu hub'a bağlamak istediğiniz sanal ağı seçin. Sanal ağda zaten var olan bir sanal ağ geçidi (VPN ya da ExpressRoute) olamaz.
 
-## <a name="connectcircuit"></a>Connect your circuit to the hub gateway
+## <a name="connectcircuit"></a>Devrenizi hub Gateway 'e bağlama
 
-Once the gateway is created, you can connect an [ExpressRoute circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) to it. Note that ExpressRoute Premium circuits that are in ExpressRoute Global Reach-supported locations can connect to a Virtual WAN ExpressRoute gateway.
+Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach tarafından desteklenen konumlardaki ExpressRoute Premium devrelerinin bir sanal WAN ExpressRoute Gateway 'e bağlanabildiğini unutmayın.
 
-### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>To connect the circuit to the hub gateway
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Devresine hub Gateway 'e bağlamak için
 
-In the portal, go to the **Virtual hub -> Connectivity -> ExpressRoute** page. If you have access in your subscription to an ExpressRoute circuit, you will see the circuit you want to use in the list of circuits. If you don’t see any circuits, but have been provided with an authorization key and peer circuit URI, you can redeem and connect a circuit. See [To connect by redeeming an authorization key](#authkey).
+Portalda **sanal hub-> bağlantısı-> ExpressRoute** sayfasına gidin. Aboneliğinizde bir ExpressRoute devresine erişiminiz varsa, devre listesinde kullanmak istediğiniz devreyi görürsünüz. Herhangi bir bağlantı görmüyorsanız, ancak bir yetkilendirme anahtarı ve eş devre URI 'SI ile sağlanmışsa, bir bağlantı hattı kullanabilir ve bağlayabilirsiniz. [Yetkilendirme anahtarını benimsemek için](#authkey)bkz. bağlanma.
 
-1. Select the circuit.
-2. Select **Connect circuit(s)** .
+1. Devresini seçin.
+2. **Bağlantı devresini**seçin.
 
-   ![connect circuits](./media/virtual-wan-expressroute-portal/cktconnect.png "connect circuits")
+   ![bağlantı devreleri](./media/virtual-wan-expressroute-portal/cktconnect.png "bağlantı devreleri")
 
-### <a name="authkey"></a>To connect by redeeming an authorization key
+### <a name="authkey"></a>Yetkilendirme anahtarını benimsemek yoluyla bağlanmak için
 
-Use the authorization key and circuit URI you were provided in order to connect.
+Bağlanmak için verdiğiniz yetkilendirme anahtarını ve devre URI 'sini kullanın.
 
-1. On the ExpressRoute page, click **+Redeem authorization key**
+1. ExpressRoute sayfasında **+ kullan yetkilendirme anahtarı** ' na tıklayın.
 
-   ![redeem](./media/virtual-wan-expressroute-portal/redeem.png "redeem")
-2. On the Redeem authorization key page, fill in the values.
+   ![dınız](./media/virtual-wan-expressroute-portal/redeem.png "dınız")
+2. Kullanma yetkilendirme anahtarı sayfasında, değerleri girin.
 
-   ![redeem key values](./media/virtual-wan-expressroute-portal/redeemkey2.png "redeem key values")
-3. Select **Add** to add the key.
-4. View the circuit. A redeemed circuit only shows the name (without the type, provider and other information) because it is in a different subscription than that of the user.
+   ![anahtar değerlerini kullanma](./media/virtual-wan-expressroute-portal/redeemkey2.png "anahtar değerlerini kullanma")
+3. Anahtarı eklemek için **Ekle** ' yi seçin.
+4. Devresini görüntüleyin. Kullanılan bir devre, kullanıcının adı (tür, sağlayıcı ve diğer bilgiler olmadan) yalnızca Kullanıcı tarafından farklı bir abonelikte olduğu için bu adı gösterir.
 
-## <a name="to-test-connectivity"></a>To test connectivity
+## <a name="to-test-connectivity"></a>Bağlantıyı sınamak için
 
-After the circuit connection is established, the hub connection status will indicate 'this hub', implying the connection is established to the hub ExpressRoute gateway. Wait approximately 5 minutes before you test connectivity from a client behind your ExpressRoute circuit, for example, a VM in the VNet that you created earlier.
+Bağlantı hattı bağlantısı kurulduktan sonra, hub bağlantı durumu ' Bu hub ' olarak gösterilir. Bu, bağlantının Merkez ExpressRoute ağ geçidine göre kuruladığını gösterir. ExpressRoute bağlantı hattının arkasındaki bir istemciden bağlantıyı test etmeden önce yaklaşık 5 dakika bekleyin. Örneğin, daha önce oluşturduğunuz VNet 'teki bir VM.
 
-If you have sites connected to a Virtual WAN VPN gateway in the same hub as the ExpressRoute gateway, you can have bidirectional connectivity between VPN and ExpressRoute end points. Dynamic routing (BGP) is supported. The ASN of the gateways in the hub is fixed and cannot be edited at this time.
+ExpressRoute ağ geçidiyle aynı hub 'daki bir sanal WAN VPN Gateway 'e bağlı olan siteleriniz varsa VPN ve ExpressRoute uç noktaları arasında çift yönlü bağlantıya sahip olabilirsiniz. Dinamik yönlendirme (BGP) destekleniyor. Hub 'daki ağ geçitlerinin ASN 'si düzeltildi ve şu an düzenlenemiyor.
 
-## <a name="to-change-the-size-of-a-gateway"></a>To change the size of a gateway
+## <a name="to-change-the-size-of-a-gateway"></a>Bir ağ geçidinin boyutunu değiştirmek için
 
-If you want to change the size of your ExpressRoute gateway, locate the ExpressRoute gateway inside the hub, and select the scale units from the dropdown. Save your change. It will take approximately 30 minutes to update the hub gateway.
+ExpressRoute ağ geçidinizin boyutunu değiştirmek istiyorsanız, hub 'ın içindeki ExpressRoute ağ geçidini bulun ve açılan listeden ölçek birimlerini seçin. Değişiklerinizi kaydedin. Hub Gateway 'in güncelleştirilmesi yaklaşık 30 dakika sürer.
 
-![change gateway size](./media/virtual-wan-expressroute-portal/changescale.png "change gateway size")
+![Ağ Geçidi boyutunu değiştir](./media/virtual-wan-expressroute-portal/changescale.png "Ağ Geçidi boyutunu değiştir")
 
-## <a name="to-advertise-default-route-00000-to-endpoints"></a>To advertise default route 0.0.0.0/0 to endpoints
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Varsayılan 0.0.0.0/0 yolunu uç noktalara tanıtmak için
 
-If you would like the Azure virtual hub to advertise the default route 0.0.0.0/0 to your ExpressRoute end points, you will need to enable 'Propagate default route'.
+Azure sanal hub 'ının varsayılan yolu olan 0.0.0.0/0 yolunu ExpressRoute bitiş noktalarına tanıtmasını istiyorsanız, ' Varsayılan rotayı yay ' seçeneğini etkinleştirmeniz gerekir.
 
-1. Select your **Circuit ->…-> Edit connection**.
+1. **Devre dışı >...-> Bağlantıyı Düzenle**' yi seçin.
 
-   ![Edit connection](./media/virtual-wan-expressroute-portal/defaultroute1.png "Edit connection")
+   ![Bağlantıyı Düzenle](./media/virtual-wan-expressroute-portal/defaultroute1.png "Bağlantıyı Düzenle")
 
-2. Select **Enable** to propagate the default route.
+2. Varsayılan yolu yaymak için **Etkinleştir** ' i seçin.
 
-   ![Propagate default route](./media/virtual-wan-expressroute-portal/defaultroute2.png "Propagate default route")
+   ![Varsayılan yolu yay](./media/virtual-wan-expressroute-portal/defaultroute2.png "Varsayılan yolu yay")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Indexing Media Files with Azure Media Indexer 2 Preview | Microsoft Docs
-description: Azure Media Indexer enables you to make content of your media files searchable and to generate a full-text transcript for closed captioning and keywords. This topic shows how to use Media Indexer 2 Preview.
+title: Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma | Microsoft Docs
+description: Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Bu konuda, Media Indexer 2 Preview kullanımı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -21,40 +21,40 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464073"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indexing Media Files with Azure Media Indexer 2 Preview
+# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma
 
 > [!NOTE]
-> The [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) media processor will be retired on January 1 of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces this legacy media processor. For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+> [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) medya Işlemcisi 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
 
-The **Azure Media Indexer 2 Preview** media processor (MP) enables you to make media files and content searchable, as well as generate closed captioning tracks. Compared to the previous version of [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 Preview** performs faster indexing and offers broader language support. Supported languages include English, Spanish, French, German, Italian, Chinese (Mandarin, Simplified), Portuguese, Arabic, Russian, and Japanese.
+**Azure Media Indexer 2 Preview** medya IŞLEMCISI (MP), medya dosyalarını ve içeriği aranabilir yapmanızı ve kapalı açıklamalı altyazı parçaları oluşturmanızı sağlar. Önceki [Azure Media Indexer](media-services-index-content.md)sürümüyle karşılaştırıldığında, **Azure Media Indexer 2 önizlemesi** daha hızlı Dizin oluşturma gerçekleştirir ve daha geniş bir dil desteği sunar. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Mandarin, Basitleştirilmiş), Portekizce, Arapça, Rusça ve Japonca bulunur.
 
-The **Azure Media Indexer 2 Preview** MP is currently in Preview.
+**Azure Media Indexer 2 Preview** MP, şu anda önizleme aşamasındadır.
 
-This article shows how to create indexing jobs with **Azure Media Indexer 2 Preview**.
+Bu makalede **Azure Media Indexer 2 Preview**ile dizin oluşturma işlerinin nasıl oluşturulacağı gösterilmektedir.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-The following considerations apply:
+Aşağıdaki noktalar geçerlidir:
  
-* Indexer 2 is not supported in Azure China 21Vianet and Azure Government.
-* When indexing content, make sure to use media files that have very clear speech (without background music, noise, effects, or microphone hiss). Some examples of appropriate content are: recorded meetings, lectures, or presentations. The following content might not be suitable for indexing: movies, TV shows, anything with mixed audio and sound effects, poorly recorded content with background noise (hiss).
+* Dizin Oluşturucu 2, Azure Çin 21Vianet ve Azure Kamu 'da desteklenmez.
+* İçerik dizin oluştururken, çok temiz konuşmaya sahip medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
  
-## <a name="input-and-output-files"></a>Input and output files
-### <a name="input-files"></a>Input files
-Audio or video files
+## <a name="input-and-output-files"></a>Giriş ve çıkış dosyaları
+### <a name="input-files"></a>Giriş dosyaları
+Ses veya video dosyaları
 
-### <a name="output-files"></a>Output files
-An indexing job can generate closed caption files in the following formats:  
+### <a name="output-files"></a>Çıkış dosyaları
+Bir dizin oluşturma işi, aşağıdaki biçimlerde kapalı açıklamalı altyazı dosyaları oluşturabilir:  
 
 * **TTML**
 * **WebVTT**
 
-Closed Caption (CC) files in these formats can be used to make audio and video files accessible to people with hearing disability.
+Bu biçimlerdeki kapalı açıklamalı altyazı (CC) dosyaları, ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilir.
 
-## <a name="task-configuration-preset"></a>Task configuration (preset)
-When creating an indexing task with **Azure Media Indexer 2 Preview**, you must specify a configuration preset.
+## <a name="task-configuration-preset"></a>Görev yapılandırması (önceden ayarlanmış)
+**Azure Media Indexer 2 Preview**ile bir dizin oluşturma görevi oluştururken, bir yapılandırma ön ayarı belirtmeniz gerekir.
 
-The following JSON sets available parameters.
+Aşağıdaki JSON, kullanılabilir parametreleri ayarlar.
 
 ```json
     {
@@ -73,31 +73,31 @@ The following JSON sets available parameters.
 ```
 
 ## <a name="supported-languages"></a>Desteklenen diller
-Azure Media Indexer 2 Preview supports speech-to-text for the following languages (when specifying the language name in the task configuration, use 4-character code in brackets as shown below):
+Azure Media Indexer 2 Preview, aşağıdaki diller için konuşmayı metne (görev yapılandırmasında dil adını belirtirken aşağıda gösterildiği gibi, parantez içinde 4 karakterlik kod kullanın) destekler:
 
-* English [EnUs]
-* Spanish [EsEs]
-* Chinese (Mandarin, Simplified) [ZhCn]
-* French [FrFr]
-* German [DeDe]
-* Italian [ItIt]
-* Portuguese  [PtBr]
-* Arabic (Egyptian) [ArEg]
-* Japanese [JaJp]
-* Russian [RuRu]
-* British English [EnGb]
-* Spanish (Mexico) [EsMx] 
+* İngilizce [EnUs]
+* İspanyolca [EsEs]
+* Çince (Mandarin, Basitleştirilmiş) [ZhCn]
+* Fransızca [FrFr]
+* Almanca [DeDe]
+* İtalyanca [ItIt]
+* Portekizce [PtBr]
+* Arapça (Mısır) [ArEg]
+* Japonca [JaJp]
+* Rusça [RuRu]
+* İngiliz Ingilizcesi [EnGb]
+* İspanyolca (Meksika) [EsMx] 
 
-## <a name="supported-file-types"></a>Supported file types
+## <a name="supported-file-types"></a>Desteklenen dosya türleri
 
-For information about supported files types, see the [supported codecs/formats](media-services-media-encoder-standard-formats.md#input-containerfile-formats) section.
+Desteklenen dosya türleri hakkında daha fazla bilgi için [Desteklenen codec bileşenleri/biçimler](media-services-media-encoder-standard-formats.md#input-containerfile-formats) bölümüne bakın.
 
-## <a name="net-sample-code"></a>.NET sample code
+## <a name="net-sample-code"></a>.NET örnek kodu
 
-The following program shows how to:
+Aşağıdaki program, aşağıdakilerin nasıl yapılacağını göstermektedir:
 
-1. Create an asset and upload a media file into the asset.
-2. Create a job with an indexing task based on a configuration file that contains the following json preset:
+1. Bir varlık oluşturun ve kıymete bir medya dosyası yükleyin.
+2. Aşağıdaki JSON ön ayarını içeren bir yapılandırma dosyasını temel alan bir dizin oluşturma göreviyle iş oluşturun:
 
     ```json
             {
@@ -115,7 +115,7 @@ The following program shows how to:
             }
     ```
     
-3. Download the output files. 
+3. Çıkış dosyalarını indirin. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
@@ -294,11 +294,11 @@ namespace IndexContent
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
-[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
+[Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
