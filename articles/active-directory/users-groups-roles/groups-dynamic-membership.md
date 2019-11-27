@@ -98,20 +98,20 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
 | ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
-| Bölüm |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
+| bölüme |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
 | displayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
 | Çalışan |Herhangi bir dize değeri |(User. EmployeeID-EQ "Value")<br>(User. EmployeeID-ne *null*) |
-| facsimileTelephoneNumber |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
+| facsimileTelephoneNumber 'dir |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
 | givenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
-| İş Unvanı |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
-| posta |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
+| jobTitle |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
+| - |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
 | mailNickName |Herhangi bir dize değeri (kullanıcının posta diğer adı) |(User. Mailtakma ad-EQ "değer") |
-| Mobil |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
-| objectId |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
+| Mo |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
+| Uzantının |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Şirket içinden buluta eşitlenen kullanıcılar için şirket içi güvenlik tanımlayıcısı (SID). |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword Disablepasswordexpiasyon Disablepasswordexpima, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Herhangi bir dize değeri veya *null* |(User. Physicaldeliveryofficeename-EQ "Value") |
-| posta kodu |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
+| postalCode |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
 | preferredLanguage |ISO 639-1 kodu |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Herhangi bir dize değeri veya *null* |(User. sipProxyAddress-EQ "değer") |
 | durum |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
@@ -140,12 +140,12 @@ Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunlar�
 | Eşit değildir |-ne |
 | Eşittir |-EQ |
 | Ile birlikte başlar |-notStartsWith |
-| Şununla başlar |-startsWith |
+| Ile başlar |-startsWith |
 | İçermez |-notContains |
 | Contains |-içerir |
 | Eşleşmiyor |-notMatch |
 | Eşleşebilir |-Match |
-| İçinde | -ın |
+| 'Ndaki | -ın |
 | Not ın | -Notın |
 
 ### <a name="using-the--in-and--notin-operators"></a>-İn ve-Notın işleçlerini kullanma
@@ -353,7 +353,7 @@ Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kuralları
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Özel özellik adı, Graph Explorer kullanılarak bir kullanıcının özelliği sorgulanarak ve özellik adı aranırken dizinde bulunabilir. Ayrıca, benzersiz bir uygulama KIMLIĞI girmek ve dinamik üyelik kuralı oluştururken kullanmak üzere özel uzantı özelliklerinin tam listesini almak için dinamik Kullanıcı grubu kural tasarımcısında **özel uzantı özellikleri al** bağlantısını seçebilirsiniz. Bu liste, bu uygulama için tüm yeni özel uzantı özellikleri almak için aynı zamanda yenilenebilir.
+Özel özellik adı, Graph Explorer kullanılarak bir kullanıcının özelliği sorgulanarak ve özellik adı aranırken dizinde bulunabilir. Ayrıca, benzersiz bir uygulama KIMLIĞI girmek ve dinamik üyelik kuralı oluştururken kullanmak üzere özel uzantı özelliklerinin tam listesini almak için dinamik Kullanıcı grubu kural tasarımcısında **özel uzantı özellikleri al** bağlantısını seçebilirsiniz. Bu liste ayrıca, bu uygulama için yeni özel uzantı özellikleri almak üzere yenilenebilir.
 
 ## <a name="rules-for-devices"></a>Cihazlar için kurallar
 
@@ -379,11 +379,11 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  deviceManufacturer | Herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
  DeviceModel | Herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
  Devicesahiplik | Kişisel, Şirket, bilinmeyen | (Device. Devicesahiplik-EQ "Şirket")
- enrollmentProfileName | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
+ KayıtAdı | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
  deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  Devicephysicilar | Tüm Autopilot cihazları, OrderID veya PurchaseOrderID gibi Autopilot tarafından kullanılan herhangi bir dize değeri  | (Device. Devicephysicids-any _-Contains "[Ztdıd]") (Device. Devicephysicids-any _-EQ "[OrderID]: 179887111881") (Device. Devicephysicids-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (Device. systemLabels-"M365Managed" içerir)
 

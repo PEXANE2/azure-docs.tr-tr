@@ -22,7 +22,7 @@ Azure Izleyici günlüklerine kapsayıcı grubu günlüğü ve olay verileri gö
 > [!NOTE]
 > Şu anda, Linux kapsayıcı örneklerinden yalnızca Log Analytics olay verileri gönderebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kapsayıcı örneklerinizde oturum açmayı etkinleştirmek için aşağıdakiler gerekir:
 

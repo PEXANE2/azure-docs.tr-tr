@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Ürün öğreticisi ekleme](media/api-management-howto-add-products/added-product.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -47,12 +47,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     Ürün eklerken aşağıdaki bilgileri sağlamanız gerekir: 
 
-    | Ad                     | Açıklama                                                                                                                                                                                                                                                                                                             |
+    | Adı                     | Açıklama                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Görünen ad             | **Geliştirici portalında** gösterilmesini istediğiniz ad.                                                                                                                                                                                                                                                        |
-    | Ad                     | Ürün için açıklayıcı bir ad.                                                                                                                                                                                                                                                                                      |
+    | Adı                     | Ürün için açıklayıcı bir ad.                                                                                                                                                                                                                                                                                      |
     | Açıklama              | **Açıklama** alanı, ürünün amacı ve hangi API’ler için erişim sağladığı gibi konularda ayrıntılı, kullanışlı bilgiler sağlamanıza imkan tanır.                                                                                                                                               |
-    | State                    | Ürünü yayımlamak istiyorsanız **Yayımlandı** seçeneğine basın. Bir üründeki API'lerin çağrılabilmesi için önce ürünün yayımlanması gerekir. Varsayılan olarak, yeni ürünler yayımlanmış durumda değildir ve yalnızca **Yöneticiler** grubundaki kullanıcılar tarafından görülebilir.                                                                                      |
+    | Eyalet                    | Ürünü yayımlamak istiyorsanız **Yayımlandı** seçeneğine basın. Bir üründeki API'lerin çağrılabilmesi için önce ürünün yayımlanması gerekir. Varsayılan olarak, yeni ürünler yayımlanmış durumda değildir ve yalnızca **Yöneticiler** grubundaki kullanıcılar tarafından görülebilir.                                                                                      |
     | Abonelik gerektirir    | Kullanıcının ürünü kullanmak için aboneliğe sahip olması gerekiyorsa **Abonelik iste**'yi işaretleyin.                                                                                                                                                                                                                                   |
     | Onay gerekiyor        | Yöneticinin bu ürüne yönelik abonelik girişimlerini gözden geçirip kabul etmesini ya da reddetmesini istiyorsanız **Onay iste** seçeneğini işaretleyin. Kutu işaretsiz bırakılırsa abonelik girişimleri otomatik olarak onaylanır.                                                                                                                         |
     | Abonelik sayısı limiti | Aynı anda sahip olunabilecek abonelik sayısını kısıtlamak için abonelik limitini girin.                                                                                                                                                                                                                                |
@@ -85,7 +85,7 @@ Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması g
 4. Bir API seçip **Seç**’e tıklayın.
 
 > [!TIP]
-> *REST API* veya PowerShell komutu aracılığıyla özel abonelik anahtarları kullanarak kullanıcının [Ürün](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) aboneliğini oluşturabilir veya güncelleştirebilirsiniz.
+> [REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) veya PowerShell komutu aracılığıyla özel abonelik anahtarları kullanarak kullanıcının *Ürün* aboneliğini oluşturabilir veya güncelleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

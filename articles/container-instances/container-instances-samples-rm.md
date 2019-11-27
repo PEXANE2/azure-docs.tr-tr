@@ -34,7 +34,7 @@ Dağıtım seçenekleri için [dağıtım](#deployment) bölümüne bakın. Kend
 | **Azure kaynakları** ||
 | [Azure depolama hesabı ve dosya paylaşma oluşturma][az-files] | Bir depolama hesabı ve bir Azure dosya paylaşma oluşturmak için bir kapsayıcı örneğinde Azure CLı kullanır.
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 Kaynak Yöneticisi şablonlarıyla kaynak dağıtmaya yönelik çeşitli seçenekleriniz vardır:
 
@@ -42,7 +42,7 @@ Kaynak Yöneticisi şablonlarıyla kaynak dağıtmaya yönelik çeşitli seçene
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Azure portalda][deploy-portal]
 
 [REST API][deploy-rest]
 

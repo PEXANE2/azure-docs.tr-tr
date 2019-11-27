@@ -24,7 +24,7 @@ Bu makalede Azure DevOps'ta test çalıştırmak için Cosmos DB öykünücüsü
 
 ## <a name="install-the-emulator-build-task"></a>Öykünücü derleme görevini yükleme
 
-Derleme görevini kullanmak için öncelikle Azure DevOps kuruluşunuza yüklemeniz gerekir. **Market** sayfasında [Azure Cosmos DB Emulator](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) uzantısını bulun ve **Ücretsiz edinin**'e tıklayın.
+Derleme görevini kullanmak için öncelikle Azure DevOps kuruluşunuza yüklemeniz gerekir. [Market](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) sayfasında **Azure Cosmos DB Emulator** uzantısını bulun ve **Ücretsiz edinin**'e tıklayın.
 
 ![Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin](./media/tutorial-setup-ci-cd/addExtension_1.png)
 

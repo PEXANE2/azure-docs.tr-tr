@@ -81,7 +81,7 @@ Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Uzaktan hata ayıklama için Web uygulaması kapalı olmaları
+- Web uygulaması için uzaktan hata ayıklama kapatılmalıdır
 
 ## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) denetim kayıtlarının Içeriği | Planlı denetim kaydı Içeriğinin Merkezi Yönetimi
 
@@ -247,7 +247,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için gereksinimleri dağıtma
-- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
@@ -266,7 +266,7 @@ Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../polic
 
 ## <a name="93172-si-2-flaw-remediation"></a>9.3.17.2 sı-2 hata düzeltme
 
-Bu şema, Azure Güvenlik 'teki eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi kusurlarını yönetmenize yardımcı olur Merkezinden. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, sanal makine ölçek kümeleri için işletim sisteminin yama yapılmasını sağlayan bir ilke tanımı atar.
+Bu şema, Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi kusurlarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, sanal makine ölçek kümeleri için işletim sisteminin yama yapılmasını sağlayan bir ilke tanımı atar.
 
 - Sanal makine ölçek kümelerinde otomatik işletim sistemi görüntüsü düzeltme eki uygulamayı gerektir
 - Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir
@@ -278,7 +278,7 @@ Bu şema, Azure Güvenlik 'teki eksik sistem güncelleştirmelerini, işletim si
 
 ## <a name="93173-si-3-malicious-code-protection"></a>9.3.17.3 sı-3 kötü amaçlı kod koruması
 
-Bu şema, Azure Güvenlik Merkezi 'nde sanal makinelerde eksik uç nokta koruması için izleme yapan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve Microsoft 'a zorlamak için kötü amaçlı kod koruma dahil, Endpoint Protection 'ı yönetmenize yardımcı olur. Windows sanal makinelerinde kötü amaçlı yazılımdan koruma çözümü.
+Bu şema, Azure Güvenlik Merkezi 'nde sanal makinelerde eksik uç nokta koruması için izleme yapan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve Windows sanal makinelerinde Microsoft kötü amaçlı yazılımdan koruma çözümünü zorlayarak, kötü amaçlı kod koruma dahil olmak üzere Endpoint Protection 'ı yönetmenize yardımcı olur.
 
 - Windows Server için varsayılan Microsoft ıaasantimalware uzantısını dağıt
 - Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir

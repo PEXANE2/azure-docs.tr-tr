@@ -36,7 +36,7 @@ Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Uygula
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portalda](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow soru gönderin
@@ -72,7 +72,7 @@ Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler sağl
 | Görüntü İşleme               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Özel Görüntü İşleme                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Yüz                          | https://cognitive.uservoice.com/forums/430315-face |
+| Yüz Tanıma                          | https://cognitive.uservoice.com/forums/430315-face |
 | Biçim                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Kapsamlı                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
@@ -80,7 +80,7 @@ Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler sağl
 | Soru-Cevap Oluşturma                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Konuşma Hizmetleri               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Metin Analizi                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator Metin Çevirisi               | https://cognitive.uservoice.com/forums/558796-translator |
+| Translator Metni               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Dizinleyici                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="release-notes"></a>Sürüm notları
@@ -106,7 +106,7 @@ Sürüm notları, yeni sürümler kullanılabilir hale getirildiğinden güncell
 
 Bilişsel hizmetler hakkında haberler, [Azure bloguna](https://azure.microsoft.com/blog/topics/cognitive-services/)göre paylaşılır.
 
-## <a name="search"></a>Ara
+## <a name="search"></a>Arama
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>

@@ -34,7 +34,7 @@ Aşağıdaki tabloda Translator Metin Çevirisi API'si her bir işlemi için diz
 | Algılama | 10,000 | 100 |   50.000 |
 | BreakSentence | 10,000    | 100 | 50.000 |
 | Sözlük Arama| 100 |  10  | 1000 |
-| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2,000 |
+| Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Saat başına karakter sınırları
 
@@ -64,7 +64,7 @@ Translator Metin Çevirisi API'si, özel modeller kullanılırken Standart model
 
 [Breakcümlesi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) işlevini kullanırken, cümle uzunluğu 275 karakterle sınırlıdır. Bu diller için özel durumlar mevcuttur:
 
-| Dil | Kod | Karakter sınırı |
+| Dil | Kodlayın | Karakter sınırı |
 |----------|------|-----------------|
 | Çince | zh | 132 |
 | Almanca | de | 290 |
@@ -73,7 +73,7 @@ Translator Metin Çevirisi API'si, özel modeller kullanılırken Standart model
 | Portekizce | yönergelerinin | 290 |
 | İspanyolca | es | 280 |
 | İtalyanca | it | 280 |
-| Tay Dili | 11 | 258 |
+| Tay dili | 11 | 258 |
 
 > [!NOTE]
 > Bu sınır, çeviriler için geçerlidir.

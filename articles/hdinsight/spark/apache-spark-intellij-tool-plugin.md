@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Apache Spark uygulamaları geliştirme
 > * Uygulamayı Azure HDInsight kümesine gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -455,7 +455,7 @@ IntelliJ fıkır içinde oluşturduğunuz mevcut Spark Scala uygulamalarını Az
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 
@@ -469,7 +469,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, [Scala](https://www.scala-lang.org/)'da yazılmış Apache Spark uygulamaları geliştirmek için Azure Toolkit for IntelliJ eklentisinin nasıl kullanılacağını öğrendiniz ve ardından bunları doğrudan IntelliJ tümleşik geliştirme ortamından bir HDInsight Spark kümesine gönderdiniz ( IDE). Apache Spark ' de kaydettiğiniz verilerin Power BI gibi bir bı Analytics aracına nasıl çekkullanılabileceğini görmek için sonraki makaleye ilerleyin.
+Bu öğreticide, [Scala](https://www.scala-lang.org/)'da yazılmış Apache Spark uygulamaları geliştirmek için Azure Toolkit for IntelliJ eklentisinin nasıl kullanılacağını öğrenmiş ve ardından onları doğrudan IntelliJ tümleşik geliştirme ORTAMıNDAN (IDE) bir HDInsight Spark kümesine gönderdiğinize öğrendiniz. Apache Spark ' de kaydettiğiniz verilerin Power BI gibi bir bı Analytics aracına nasıl çekkullanılabileceğini görmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [BI araçlarını kullanarak verileri analiz etme](apache-spark-use-bi-tools.md)

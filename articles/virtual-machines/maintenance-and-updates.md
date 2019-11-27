@@ -95,7 +95,7 @@ Sanal makinelerinizi yüksek kullanılabilirlik için ayarlama hakkında daha fa
 
 #### <a name="availability-zones"></a>Kullanılabilirlik alanları
 
-Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. 
+Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. 
 
 Kullanılabilirlik bölgesi bir hata etki alanı ve bir güncelleştirme etki alanının birleşimidir. Bir Azure bölgesindeki üç bölgede üç veya daha fazla sanal makine oluşturursanız, sanal makineleriniz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncelleştirildiğinden emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
 

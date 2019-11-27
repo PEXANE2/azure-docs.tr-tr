@@ -31,6 +31,18 @@
       href: active-directory-data-storage-eu.md
     - name: Microsoft 365 Kamu’daki yenilikler
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD İşlem başvurusu
+      items:
+        - name: Giriş
+          href: active-directory-ops-guide-intro.md
+        - name: Kimlik ve erişim yönetimi
+          href: active-directory-ops-guide-iam.md
+        - name: Kimlik doğrulaması yönetimi
+          href: active-directory-ops-guide-auth.md
+        - name: Kimlik idaresi
+          href: active-directory-ops-guide-govern.md
+        - name: İşlemler
+          href: active-directory-ops-guide-ops.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:

@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: bir mikrofon konuşma hizmetinden konuşmayı tanıma'
 titleSuffix: Azure Cognitive Services
-description: Henüz belirlenmedi.
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme

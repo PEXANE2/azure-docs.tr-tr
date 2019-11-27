@@ -134,7 +134,7 @@ Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.mic
 - [Azure AD Kimlik Koruması](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Kurumsal uygulamanın süresi dolan sertifika bildirimleri](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Kurumsal uygulama sağlama hizmet bildirimleri
+- Kurumsal uygulama sağlama hizmeti bildirimleri
 
 Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkında bilgi edinmek için aşağıdaki tabloya bakın:
 

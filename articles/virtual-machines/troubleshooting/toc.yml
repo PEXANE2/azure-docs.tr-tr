@@ -59,6 +59,8 @@
       href: linux-recovery-cannot-start-file-system-errors.md
     - name: Çekirdekle ilgili önyükleme sorunları giderme
       href: 'https://support.microsoft.com/help/4091524'
+    - name: LVM ile yapılandırılmış ve önyüklemesi olmayan VM’leri kurtarma
+      href: chroot-logical-volume-manager.md
     - name: Fstab hatalarını giderme
       href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH hakkındaki sorunları gidermeyle ilgili ayrıntılar

@@ -68,7 +68,7 @@ ms.locfileid: "74533809"
   * [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
   * [RHEL 7,6 üzerinde pacemaker 'da tek başına sıraya alma sunucu 2 (ENSA2) ile SAP S/4HANA yoks/ERS yapılandırma](https://access.redhat.com/articles/3974941)
 
-## <a name="cluster-installation"></a>Küme yükleme
+## <a name="cluster-installation"></a>Küme yüklemesi
 
 ![RHEL 'de pacemaker genel bakış](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
 
@@ -124,13 +124,13 @@ ms.locfileid: "74533809"
 
 1. **[A]** kurulum konak adı çözümlemesi
 
-   Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
-   IP adresi ve aşağıdaki komutlarda bulunan ana bilgisayar adını değiştirin. / Etc/hosts kullanmanın avantajı, kümenizin bir tek hata noktası çok olabilir DNS bağımsız olur.
+   Bir DNS sunucusu kullanabilir veya tüm düğümlerdeki/etc/Konakları değiştirebilirsiniz. Bu örnek,/etc/hosts dosyasının nasıl kullanılacağını gösterir.
+   Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin. /Etc/hosts kullanmanın avantajı, kümenizin DNS 'den bağımsız hale gelmesi ve tek bir başarısızlık noktası olması olabilir.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   / Etc/hosts aşağıdaki satırları ekleyin. IP adresi ve ana bilgisayar adını, ortamınızla eşleşecek şekilde değiştirin.
+   /Etc/hostklasörüne aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -198,26 +198,26 @@ ms.locfileid: "74533809"
 
 ## <a name="create-stonith-device"></a>STONITH cihazı oluşturma
 
-STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizmet sorumlusu kullanır. Bir hizmet sorumlusu oluşturmak için aşağıdaki adımları izleyin.
+STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlusu kullanır. Hizmet sorumlusu oluşturmak için bu adımları izleyin.
 
 1. Şuraya gidin: <https://portal.azure.com>
 1. Azure Active Directory dikey penceresini açın  
-   Özellikler bölümüne gidin ve dizin kimliği yazma Bu, **KIRACı kimliğidir**.
+   Özellikler ' e gidin ve Dizin KIMLIĞINI yazın. Bu, **KIRACı kimliğidir**.
 1. Uygulama kayıtları tıklayın
 1. Yeni kayıt öğesine tıklayın
 1. Bir ad girin, "yalnızca bu kuruluş dizinindeki hesaplar" ı seçin 
 2. "Web" uygulama türünü seçin, bir oturum açma URL 'SI girin (örneğin, http:\//localhost) ve Ekle ' ye tıklayın.  
-   Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
+   Oturum açma URL 'SI kullanılmıyor ve geçerli bir URL olabilir
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel Bakış ' ı seçin. Uygulama Kimliği yazma Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Genel Bakış ' ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
-Hizmet sorumlusu kullanarak Azure kaynaklarınızı varsayılan olarak erişim izni yok. Kümenin tüm sanal makinelerini başlatmak ve durdurmak (kapatmak) için hizmet sorumlusu izinleri vermeniz gerekir. Zaten özel rolü oluşturmadıysanız, [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) kullanarak oluşturabilirsiniz
+Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme iznine sahip değildir. Kümenin tüm sanal makinelerini başlatmak ve durdurmak (kapatmak) için hizmet sorumlusu izinleri vermeniz gerekir. Zaten özel rolü oluşturmadıysanız, [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) kullanarak oluşturabilirsiniz
 
-Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içeriği için aboneliklerinizi uyum, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 aboneliğinizin kimliği ile değiştirin. İkinci girdi, yalnızca bir aboneliğiniz varsa, ın AssignableScopes içinde kaldırın.
+Giriş dosyası için aşağıdaki içeriği kullanın. İçeriği aboneliklerinize uyarlamanız gerekir, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 ' i aboneliğinizin kimlikleriyle değiştirin. Yalnızca bir aboneliğiniz varsa, Astifblescopes ikinci girişi kaldırın.
 
 ```json
 {
@@ -241,22 +241,22 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içe
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** hizmet sorumlusuna özel rol atama
 
-Özel rol "Linux sınır aracısı hizmet sorumlusuna son bölümde oluşturduğunuz rolü" atayın. Sahip rolü artık kullanmayın!
+Son bölümde oluşturulan "Linux çit Aracısı rolü" özel rolünü hizmet sorumlusuna atayın. Sahip rolünü artık kullanmayın!
 
 1. Şuraya gidin: https://portal.azure.com
 1. Tüm kaynaklar dikey penceresini açın
-1. İlk küme düğümüne sanal makinesini seçin
-1. Erişim denetimi (IAM)'ye tıklayın.
-1. Ekle rol ataması
-1. "Linux sınır Aracısı rolü" rolü seçin
+1. İlk küme düğümünün sanal makinesini seçin
+1. Erişim denetimi (ıAM) öğesine tıklayın
+1. Rol ataması Ekle ' ye tıklayın
+1. "Linux çit Aracısı rolü" rolünü seçin
 1. Yukarıda oluşturduğunuz uygulamanın adını girin
 1. Kaydet’e tıklayın.
 
-İkinci küme düğümü için yukarıdaki adımları yineleyin.
+İkinci küme düğümü için yukarıdaki adımları tekrarlayın.
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** STONITH cihazlarını oluşturma
 
-Sanal makineler için izinleri düzenleme sonra kümedeki STONITH cihazları yapılandırabilirsiniz.
+Sanal makineler için izinleri düzenledikten sonra, kümedeki STONITH cihazlarını yapılandırabilirsiniz.
 
 <pre><code>
 sudo pcs property set stonith-timeout=900

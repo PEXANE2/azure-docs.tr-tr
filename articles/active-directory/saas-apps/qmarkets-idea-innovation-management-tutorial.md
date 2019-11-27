@@ -102,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
@@ -112,9 +112,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, QFE yönetimine & Qpazarlar Fikrlerine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -122,7 +122,7 @@ Bu bölümde, QFE yönetimine & Qpazarlar Fikrlerine erişim vererek Azure çokl
 1. Uygulamalar listesinde, **yenilik yönetimi & Qpazarlar fikir**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -134,7 +134,7 @@ Bu bölümde, QFE yönetimine & Qpazarlar Fikrlerine erişim vererek Azure çokl
 
 ## <a name="configure-qmarkets-idea--innovation-management-sso"></a>Yenilik yönetimi SSO & Qpazarlar fikrini yapılandırma
 
-**Yenilik yönetimi tarafında & Qpazarlar fikrini** çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** [qpazarlar fikir & yenilik yönetimi destek ekibine](mailto:support@qmarkets.net)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Yenilik yönetimi tarafında & Qpazarlar fikrini** çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** [qpazarlar fikir & yenilik yönetimi destek ekibine](mailto:support@qmarkets.net)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-qmarkets-idea--innovation-management-test-user"></a>Yenilik yönetimi test kullanıcısı & Qpazarlar fikir oluşturma
 
@@ -142,7 +142,7 @@ Bu bölümde, ıdetta Simon adlı bir Kullanıcı, bir yenilik yönetimi & Qpaza
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Qpazarlar fikir & yenilik yönetimi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik olarak Qpazarlar fikir & yenilik yönetimi ' ne oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

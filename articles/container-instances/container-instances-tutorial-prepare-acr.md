@@ -111,7 +111,7 @@ mycontainerregistry082.azurecr.io
 docker images
 ```
 
-Makinenizdeki diğer görüntülerle birlikte, *önceki öğreticide* derlediğiniz [aci-tutorial-app](container-instances-tutorial-prepare-app.md) görüntüsünü görmeniz gerekir:
+Makinenizdeki diğer görüntülerle birlikte, [önceki öğreticide](container-instances-tutorial-prepare-app.md) derlediğiniz *aci-tutorial-app* görüntüsünü görmeniz gerekir:
 
 ```console
 $ docker images
@@ -164,7 +164,7 @@ Az önce gönderdiğiniz görüntünün Azure Container kayıt defterinizde ger�
 az acr repository list --name <acrName> --output table
 ```
 
-Örneğin:
+Örnek:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table

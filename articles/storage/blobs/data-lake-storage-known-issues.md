@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar | Microsoft Docs
-description: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar ve sınırlamalar hakkında bilgi edinin
+title: Azure Data Lake Storage 2. ile ilgili bilinen sorunlar | Microsoft Docs
+description: Azure Data Lake Storage 2. sınırlamalar ve bilinen sorunlar hakkında bilgi edinin
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74548327"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
 Bu makalede henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen özellikler ve araçlar listelenmektedir.
 

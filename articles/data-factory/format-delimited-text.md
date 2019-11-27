@@ -20,16 +20,16 @@ ms.locfileid: "74548296"
 
 **Sınırlandırılmış metin dosyalarını ayrıştırmak veya verileri sınırlandırılmış metin biçimine yazmak**istediğinizde bu makaleye uyun. 
 
-Ayrılmış metin biçimi şu bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [ Google Cloud Storage](connector-google-cloud-storage.md), [,](connector-hdfs.md) [http](connector-http.md)ve [SFTP](connector-sftp.md).
+Ayrılmış metin biçimi şu bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md) [,,,](connector-hdfs.md) [http](connector-http.md)ve [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, sınırlandırılmış metin veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-| Özellik         | Açıklama                                                  | Gerekli |
+| Özellik         | Açıklama                                                  | Gereklidir |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Veri kümesinin Type özelliği, **Delimitedtext**olarak ayarlanmalıdır. | Evet      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır.  | Evet      |
+| type             | Veri kümesinin Type özelliği, **Delimitedtext**olarak ayarlanmalıdır. | Yes      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır.  | Yes      |
 | columnDelimiter  | Bir dosyadaki sütunları ayırmak için kullanılan karakter (ler). Şu anda, çok char sınırlayıcısı yalnızca veri akışı eşlemesi için desteklenir ancak kopyalama etkinliği değildir. <br>Varsayılan değer **virgüldür `,`** , sütun sınırlayıcısı boş bir dize olarak tanımlandığında, tüm satır tek bir sütun olarak alınır. | Hayır       |
 | rowDelimiter     | Tek karakter veya "\r\n" bir dosyadaki satırları ayırmak için kullanılır.<br>Varsayılan değer **: ["\r\n", "\r", "\n"]** ve **"\n" ya da "\r\n"** veri akışını eşleyerek ve kopyalama etkinliğini sırasıyla yazma sırasında aşağıdaki değerlerden herhangi biri. <br>`rowDelimiter` sınırlayıcı (boş dize) olarak ayarlandığında, `columnDelimiter` sınırlayıcı (boş dize) olarak ayarlanmalıdır ve bu da tüm içeriği tek bir değer olarak değerlendirmek anlamına gelir. | Hayır       |
 | quoteChar        | Sütun sınırlayıcısı içeriyorsa, tırnak işareti için tek karakter değeri. <br>Varsayılan değer `"`**çift tırnak** olur. <br>Veri akışını eşlemek için `quoteChar` boş bir dize olamaz. <br>Kopyalama etkinliği için `quoteChar` boş bir dize olarak tanımlandığında, tırnak işareti yok ve sütun değeri tırnak içine alınmaz ve sütun sınırlayıcısı ve kendisini atlamak için `escapeChar` kullanılır. | Hayır       |
@@ -75,34 +75,34 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 Aşağıdaki özellikler, kopyalama etkinliği ***\*kaynak\**** bölümünde desteklenir.
 
-| Özellik       | Açıklama                                                  | Gerekli |
+| Özellik       | Açıklama                                                  | Gereklidir |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsource**olarak ayarlanmalıdır. | Evet      |
+| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsource**olarak ayarlanmalıdır. | Yes      |
 | formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin okuma ayarları** tablosuna bakın. | Hayır       |
 | storeSettings  | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, `storeSettings`altında kendi desteklenen okuma ayarları vardır. | Hayır       |
 
 `formatSettings`altında desteklenen **sınırlandırılmış metin okuma ayarları** :
 
-| Özellik      | Açıklama                                                  | Gerekli |
+| Özellik      | Açıklama                                                  | Gereklidir |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | FormatSettings türü, **Delimitedtextreadsetting**olarak ayarlanmalıdır. | Evet      |
+| type          | FormatSettings türü, **Delimitedtextreadsetting**olarak ayarlanmalıdır. | Yes      |
 | skipLineCount | Giriş dosyalarından veri okurken atlanacak **boş olmayan** satır sayısını belirtir. <br>Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. | Hayır       |
 
 ### <a name="delimited-text-as-sink"></a>Havuz olarak ayrılmış metin
 
 Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde desteklenir.
 
-| Özellik       | Açıklama                                                  | Gerekli |
+| Özellik       | Açıklama                                                  | Gereklidir |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsink**olarak ayarlanmalıdır. | Evet      |
+| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsink**olarak ayarlanmalıdır. | Yes      |
 | formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin yazma ayarları** tablosuna bakın. |          |
 | storeSettings  | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının `storeSettings`altında kendi desteklenen yazma ayarları vardır.  | Hayır       |
 
 `formatSettings`altında desteklenen **sınırlandırılmış metin yazma ayarları** :
 
-| Özellik      | Açıklama                                                  | Gerekli                                              |
+| Özellik      | Açıklama                                                  | Gereklidir                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | FormatSettings türü **DelimitedTextWriteSetting**olarak ayarlanmalıdır. | Evet                                                   |
+| type          | FormatSettings türü **DelimitedTextWriteSetting**olarak ayarlanmalıdır. | Yes                                                   |
 | fileExtension | Çıkış dosyalarını adlandırmak için kullanılan dosya uzantısı, örneğin `.csv`, `.txt`. `fileName` output ıstreamtext veri kümesinde belirtilmediğinde belirtilmelidir. | Çıkış veri kümesinde dosya adı belirtilmediğinde Evet |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme

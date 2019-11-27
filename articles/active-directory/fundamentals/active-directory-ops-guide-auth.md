@@ -207,7 +207,7 @@ Azure AD 'de [adlandırılmış konumlar](https://docs.microsoft.com/azure/activ
 
 | **Öncelik** | **Senaryo** | **Önerilen** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 1\. | PHS veya PTA kullanıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
+| 1 | PHS veya PTA kullanıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
 | 2 | Federe çalışıyorsanız ve "insideCorporateNetwork" talebini kullanmıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
 | 3 | Koşullu erişim ilkelerinde adlandırılmış konumlar kullanmıyorsanız ve koşullu erişim ilkelerinde risk veya cihaz denetimi yoksa | Koşullu erişim ilkesini adlandırılmış konumları içerecek şekilde yapılandırma |
 | 4 | Federe çalışıyorsanız ve "insideCorporateNetwork" talebini kullanıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |

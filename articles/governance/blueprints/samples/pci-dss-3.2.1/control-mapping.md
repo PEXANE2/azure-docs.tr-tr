@@ -30,7 +30,7 @@ Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen [Azure ilke]
 
 Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullanımını zorlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak, ilkenizi cryptograph denetimleri ile zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler SQL veritabanlarında saydam veri şifrelemesi gerektirir; depolama hesaplarında eksik şifrelemeyi denetleyin ve Otomasyon hesabı değişkenleri. Ayrıca, depolama hesaplarına, Işlev uygulamalarına, WebApp, API Apps ve Redis Cache güvenli olmayan bağlantıları denetlemeye yönelik ilkeler de vardır ve şifrelenmemiş Service Fabric iletişimini denetleyebilir.
 
-- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir

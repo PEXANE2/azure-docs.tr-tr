@@ -70,7 +70,7 @@ Bir paralel test kiracısında bir değişikliği dağıtmak için kullanıcıla
 |Yetkilendirme, verme, MFA gibi AD FS kuralları değiştirme|Kullanıcı alt kümesini hedeflemek için grup talebi kullanın.|
 |AD FS kimlik doğrulama deneyimini veya benzer Grup genelinde değişiklikleri değiştirme|Aynı ana bilgisayar adına sahip bir paralel grup oluşturun, yapılandırma değişikliklerini uygulayın, Konaklar dosyası, NLB yönlendirme kuralları veya benzer yönlendirme kullanarak istemcilerden test edin.<br>Hedef platform HOSTS dosyalarını (örneğin, mobil cihazlar) desteklemiyorsa, Denetim değişikliği.|
 
-## <a name="access-reviews"></a>Erişim gözden geçirmeleri
+## <a name="access-reviews"></a>Erişim incelemeleri
 
 ### <a name="access-reviews-to-applications"></a>Uygulamalara erişim gözden geçirmeleri
 

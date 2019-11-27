@@ -16,7 +16,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74549522"
 ---
-| Hedef işlem | Kullanıldığı yerler | GPU desteği | FPGA desteği | Açıklama |
+| İşlem hedefi | Kullanıldığı yerler | GPU desteği | FPGA desteği | Açıklama |
 | ----- | ----- | ----- | ----- | ----- |
 | [Yerel&nbsp;Web&nbsp;hizmeti](../articles/machine-learning/service/how-to-deploy-and-where.md#local) | Test/hata ayıklama | &nbsp; | &nbsp; | Sınırlı test ve sorun giderme için kullanın. Donanım hızlandırma, yerel sistemdeki kitaplıkların kullanımına bağlıdır.
 | [&nbsp;Web&nbsp;hizmeti Azure Machine Learning işlem örneği](../articles/machine-learning/service/how-to-deploy-and-where.md#notebookvm) | Test/hata ayıklama | &nbsp; | &nbsp; | Sınırlı test ve sorun giderme için kullanın.
@@ -25,9 +25,9 @@ ms.locfileid: "74549522"
 | [İşlem kümelerini Azure Machine Learning](../articles/machine-learning/service/how-to-run-batch-predictions.md) | Önizle Batch&nbsp;çıkarımı | [Evet](../articles/machine-learning/service/how-to-run-batch-predictions.md) (Machine Learning işlem hattı) | &nbsp;  | Batch Puanlama 'nı sunucusuz işlem üzerinde çalıştırın. Normal ve düşük öncelikli VM 'Leri destekler. |
 | [Azure İşlevleri](../articles/machine-learning/service/how-to-deploy-functions.md) | Önizle Gerçek zamanlı çıkarım | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/service/how-to-deploy-and-where.md#iotedge) | Önizle IoT&nbsp;modülü |  &nbsp; | &nbsp; | IoT cihazlarında ML modellerini dağıtın ve sunun. |
-| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IoT Edge aracılığıyla |  &nbsp; | Evet | IoT cihazlarında ML modellerini dağıtın ve sunun. |
+| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IoT Edge aracılığıyla |  &nbsp; | Yes | IoT cihazlarında ML modellerini dağıtın ve sunun. |
 
 > [!NOTE]
-> Yerel, Azure Machine Learning işlem örneği gibi işlem hedefleri ve Azure Machine Learning işlem kümeleri eğitim ve deneme için GPU 'YU desteklese de, __bir Web hizmeti olarak dağıtıldığında__ , yalnızca Azure 'da destekleniyorsa, çıkarım için GPU kullanımı Kubernetes hizmeti.
+> Yerel, Azure Machine Learning işlem örneği gibi işlem hedefleri ve Azure Machine Learning işlem kümeleri eğitim ve deneme için GPU 'YU desteklese de, __Web hizmeti olarak dağıtıldığında__ , yalnızca Azure Kubernetes hizmetinde desteklenir.
 >
 > __Makine öğrenimi ardışık düzenine sahip Puanlama__ yalnızca Azure Machine Learning işlem sırasında desteklenirken çıkarımı için GPU kullanımı desteklenir.

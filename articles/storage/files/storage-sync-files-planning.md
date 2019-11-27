@@ -142,11 +142,11 @@ Sonuçları CSV 'de göstermek için:
 | Dosya/klasör | Not |
 |-|-|
 | Desktop. ini | Sisteme özel dosya |
-| ethumbs.db$ | Küçük resimler için geçici dosya |
+| ethumbs. db $ | Küçük resimler için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
 | \*. laccdb | DB kilitleme dosyasına erişin|
-| 635D02A9D91C401B97884B82B3BCDAEA.* | İç eşitleme dosyası|
+| 635D02A9D91C401B97884B82B3BCDADEA. * | İç eşitleme dosyası|
 | Sistem birimi bilgilerini \\ | Birime özgü klasör |
 | $RECYCLE. BÖLME| Klasör |
 | \\eşitleme | Eşitleme klasörü |
@@ -244,43 +244,43 @@ Genellikle, Azure Dosya Eşitleme BitLocker gibi dosya sisteminin altında bulun
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Diğer hiyerarşik depolama yönetimi (HSM) çözümleri
 Azure Dosya Eşitleme ile başka bir HSM çözümü kullanılmamalıdır.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
+## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
 Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 | Bölge | Veri merkezi konumu |
 |--------|---------------------|
-| Avustralya Doğu | Yeni Güney Galler |
-| Avustralya Güneydoğu | Victoria |
-| Güney Brezilya | Sao Paulo Eyaleti |
-| Orta Kanada | Toronto |
-| Doğu Kanada | Quebec City |
+| Doğu Avustralya | Yeni Güney Galler |
+| Güneydoğu Avustralya | Victoria |
+| Brezilya Güney | Sao Paulo Eyaleti |
+| Kanada Orta | Toronto |
+| Kanada Doğu | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
-| Doğu Asya | Hong Kong SAR |
+| Doğu Asya | Hong Kong ÖIB |
 | Doğu ABD | Virginia |
 | Doğu ABD 2 | Virginia |
 | Fransa Orta | Paris |
 | Fransa Güney * | Marseille |
-| Kore Orta | Seul |
+| Kore Orta | Seoul |
 | Kore Güney | Busan |
-| Japonya Doğu | Tokyo, Saitama |
-| Japonya Batı | Osaka |
+| Doğu Japonya | Tokyo, Saitama |
+| Batı Japonya | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
 | Güney Afrika Kuzey | Johannesburg |
 | Güney Afrika Batı * | Cape Town |
-| Orta Güney ABD | Texas |
+| Güney Orta ABD | Texas |
 | Güney Hindistan | Chennai |
 | Güneydoğu Asya | Singapur |
-| Birleşik Krallık Güney | Londra |
-| Birleşik Krallık Batı | Cardiff |
-| ABD Devleti Arizona | Arizona |
-| ABD Devleti Texas | Texas |
-| ABD Devleti Virginia | Virginia |
+| Birleşik Krallık, Güney | Londra |
+| Birleşik Krallık, Batı | Cardiff |
+| US Gov Arizona | Arizona |
+| US Gov Teksas | Texas |
+| ABD Hükümeti Virginia | Virginia |
 | BAE Kuzey | Dubai |
 | BAE Orta * | Abu Dabi |
 | Batı Avrupa | Hollanda |
-| Batı Orta ABD | Wyoming |
+| Orta Batı ABD | Wyoming |
 | Batı ABD | Kaliforniya |
 | Batı ABD 2 | Washington DC |
 
@@ -298,11 +298,11 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 
 | Birincil bölge      | Eşleştirilmiş bölge      |
 |---------------------|--------------------|
-| Avustralya Doğu      | Avustralya Güneydoğu|
-| Avustralya Güneydoğu | Avustralya Doğu     |
-| Güney Brezilya        | Orta Güney ABD   |
-| Orta Kanada      | Doğu Kanada        |
-| Doğu Kanada         | Orta Kanada     |
+| Doğu Avustralya      | Güneydoğu Avustralya|
+| Güneydoğu Avustralya | Doğu Avustralya     |
+| Brezilya Güney        | Güney Orta ABD   |
+| Kanada Orta      | Kanada Doğu        |
+| Kanada Doğu         | Kanada Orta     |
 | Orta Hindistan       | Güney Hindistan        |
 | Orta ABD          | Doğu ABD 2          |
 | Doğu Asya           | Güneydoğu Asya     |
@@ -310,26 +310,26 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Doğu ABD 2           | Orta ABD         |
 | Fransa Orta      | Fransa Güney       |
 | Fransa Güney        | Fransa Orta     |
-| Japonya Doğu          | Japonya Batı         |
-| Japonya Batı          | Japonya Doğu         |
+| Doğu Japonya          | Batı Japonya         |
+| Batı Japonya          | Doğu Japonya         |
 | Kore Orta       | Kore Güney        |
 | Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |
-| Orta Kuzey ABD    | Orta Güney ABD   |
+| Orta Kuzey ABD    | Güney Orta ABD   |
 | Güney Afrika Kuzey  | Güney Afrika Batı  |
 | Güney Afrika Batı   | Güney Afrika Kuzey |
-| Orta Güney ABD    | Orta Kuzey ABD   |
+| Güney Orta ABD    | Orta Kuzey ABD   |
 | Güney Hindistan         | Orta Hindistan      |
 | Güneydoğu Asya      | Doğu Asya          |
-| Birleşik Krallık Güney            | Birleşik Krallık Batı            |
-| Birleşik Krallık Batı             | Birleşik Krallık Güney           |
-| ABD Devleti Arizona      | ABD Devleti Texas       |
-| US Gov Iowa         | ABD Devleti Virginia    |
-| ABD Devleti Virginia      | ABD Devleti Texas       |
+| Birleşik Krallık, Güney            | Birleşik Krallık, Batı            |
+| Birleşik Krallık, Batı             | Birleşik Krallık, Güney           |
+| US Gov Arizona      | US Gov Teksas       |
+| US Gov Iowa         | ABD Hükümeti Virginia    |
+| ABD Hükümeti Virginia      | US Gov Teksas       |
 | Batı Avrupa         | Kuzey Avrupa       |
-| Batı Orta ABD     | Batı ABD 2          |
+| Orta Batı ABD     | Batı ABD 2          |
 | Batı ABD             | Doğu ABD            |
-| Batı ABD 2           | Batı Orta ABD    |
+| Batı ABD 2           | Orta Batı ABD    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

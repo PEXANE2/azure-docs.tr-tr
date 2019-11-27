@@ -53,7 +53,7 @@ Mevcut bir arama sorgusundan Livestream oturumu oluşturabilir veya oturumunuzu 
 2. Bir hunme sorgusundan canlı akış oturumu oluşturmak için:
     
     1. **Sorgular** sekmesinden kullanılacak arama sorgusunu bulun.
-    2. Sorguya sağ tıklayın ve **Livestream 'e Ekle**' yi seçin. Örneğin:
+    2. Sorguya sağ tıklayın ve **Livestream 'e Ekle**' yi seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > Azure Sentinel arama sorgusundan Livestream oturumu oluşturma ![](./media/livestream/livestream-from-query.png)
@@ -83,7 +83,7 @@ Mevcut bir arama sorgusundan Livestream oturumu oluşturabilir veya oturumunuzu 
 
 1. Azure portal, > **tehdit yönetimi** ** >  > ** **Livestream** sekmesi ' **ne gidin.**
 
-2. Görüntülemek veya düzenlemek istediğiniz Livestream oturumunu seçin. Örneğin:
+2. Görüntülemek veya düzenlemek istediğiniz Livestream oturumunu seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > Azure Sentinel arama sorgusundan Livestream oturumu oluşturma ![](./media/livestream/livestream-tab.png)
@@ -92,7 +92,7 @@ Mevcut bir arama sorgusundan Livestream oturumu oluşturabilir veya oturumunuzu 
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Yeni olaylar gerçekleştiğinde bildirim alın
 
-Yeni olaylar için Livestream bildirimleri Azure portal bildirimleri kullandığından, Azure portal her kullanışınızda bu bildirimleri görürsünüz. Örneğin:
+Yeni olaylar için Livestream bildirimleri Azure portal bildirimleri kullandığından, Azure portal her kullanışınızda bu bildirimleri görürsünüz. Örnek:
 
 ![Livestream için Azure portal bildirimi](./media/livestream/notification.png)
 

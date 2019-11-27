@@ -14,7 +14,7 @@ ms.reviewer: vanto
 ms.date: 08/22/2019
 ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
 ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74548413"
@@ -76,7 +76,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 ## <a name="classify-your-sql-database"></a>SQL veritabanınızı sınıflandırın
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
 2. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. Gelişmiş veri güvenliğini etkinleştirmek için tıklayın ve ardından **veri bulma & sınıflandırma** kartına tıklayın.
 

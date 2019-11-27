@@ -33,7 +33,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 Aşağıdaki özellikler MaintenanceRedeployStatus altında döndürülür: 
 
-| Value | Açıklama   |
+| Değer | Açıklama   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Şu anda VM 'de bakım başlatılıp başlatılmayacağını belirtir |
 | PreMaintenanceWindowStartTime         | VM 'niz üzerinde bakım başlatabilmeniz için bakım self servis penceresinin başlangıcı |

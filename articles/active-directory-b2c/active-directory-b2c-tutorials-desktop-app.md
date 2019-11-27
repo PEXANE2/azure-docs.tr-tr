@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 - **.Net masaüstü geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' ü yükler.
@@ -60,7 +60,7 @@ Uygulamayı Azure AD B2C kiracınızla çalışacak şekilde güncelleştirmek v
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. İlke adı değişkenlerini, önkoşulların bir parçası olarak oluşturduğunuz Kullanıcı akışlarının adlarıyla güncelleştirin. Örneğin:
+3. İlke adı değişkenlerini, önkoşulların bir parçası olarak oluşturduğunuz Kullanıcı akışlarının adlarıyla güncelleştirin. Örnek:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";

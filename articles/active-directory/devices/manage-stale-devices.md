@@ -53,7 +53,7 @@ Etkinlik zaman damgasının mevcut değeri ile geçerli değer arasındaki Delta
 
 Etkinlik zaman damgasının değerini almak için iki seçeneğiniz vardır:
 
-- Azure portaldaki **cihazlar sayfasının** [Etkinlik](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) sütunu
+- Azure portaldaki [cihazlar sayfasının](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) **Etkinlik** sütunu
 
     ![Etkinlik zaman damgası](./media/manage-stale-devices/01.png)
 

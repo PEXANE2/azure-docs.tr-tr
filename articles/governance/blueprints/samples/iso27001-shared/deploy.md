@@ -111,12 +111,12 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Ları|İzin verilen tanılama günlüğü depolama hesabı SKU 'Larının listesi. Varsayılan değer _["Standard_LRS"]_ değeridir.|
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Dağıtılmasına izin verilen sanal makine SKU 'Larının listesi. Varsayılan değer _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |ISO 27001 için Blueprint girişimi|İlke ataması|Tanılama günlüklerini denetlemek için kaynak türleri|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
-|Log Analytics kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvsc-log-rg` ile **kuruluş adını** art arda ekler.|
+|Log Analytics kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvsc-log-rg` ile **kuruluş adını** art arda ekler.|
 |Log Analytics kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Log Analytics şablonu|Resource Manager şablonu|Hizmet katmanı|Log Analytics çalışma alanının katmanını ayarlar. Varsayılan değer _PerNode_değeridir.|
 |Log Analytics şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Log Analytics şablonu|Resource Manager şablonu|Konum|Log Analytics çalışma alanını oluşturmak için kullanılan bölge. Varsayılan değer _Batı ABD 2_.|
-|Ağ kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-net-rg` ile **kuruluş adını** art arda ekler.|
+|Ağ kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-net-rg` ile **kuruluş adını** art arda ekler.|
 |Ağ kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Azure Güvenlik Duvarı şablonu|Resource Manager şablonu|Azure Güvenlik Duvarı özel IP 'si|[Azure Güvenlik duvarının](../../../../firewall/overview.md)özel IP 'sini yapılandırır. Bu değer, paylaşılan hizmetler alt ağında varsayılan yol tablosu olarak da kullanılır. **Azure Güvenlik Duvarı alt ağ adresi ön eki**'NDE tanımlanan CIDR gösteriminin bir parçası olmalıdır. Varsayılan değer _10.0.4.4_' dir.|
 |Azure Güvenlik Duvarı şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
@@ -128,7 +128,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Application Gateway alt ağ adresi öneki|Uygulama ağ geçidi alt ağının CıDR gösterimi. Varsayılan değer _10.0.2.0/24_' dir.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Sanal ağ geçidi alt ağ adresi ön eki|Sanal ağ geçidi alt ağının CıDR gösterimi. Varsayılan değer _10.0.3.0/24_' dir.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Azure Güvenlik Duvarı alt ağ adresi ön eki|[Azure Güvenlik Duvarı](../../../../firewall/overview.md) alt ağı için CIDR Gösterimi. **Azure Güvenlik Duvarı özel IP** parametresini içermelidir.|
-|Key Vault kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-kv-rg` ile **kuruluş adını** art arda ekler.|
+|Key Vault kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-kv-rg` ile **kuruluş adını** art arda ekler.|
 |Key Vault kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Key Vault şablonu|Resource Manager şablonu|JumpBox Yönetici Kullanıcı adı|Sıçrama kutusu için Kullanıcı adı. Sıçrama **kutusu şablonundaki**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _JB-admin-User_değeridir.|
 |Key Vault şablonu|Resource Manager şablonu|JumpBox yönetici SSH anahtarı veya parolası|Sıçrama kutusundaki hesabın anahtar veya parolası. Sıçrama **kutusu şablonundaki**aynı özellik değeriyle eşleşmelidir. Varsayılan değer olmadığından boş bırakılamaz.|
@@ -137,13 +137,13 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Key Vault şablonu|Resource Manager şablonu|AAD nesne KIMLIĞI|Key Vault örneğine erişim gerektiren hesabın AAD nesne tanımlayıcısı. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _nesne kimliğinin_yanındaki "kopyalamak için tıklayın" simgesini seçin.  |
 |Key Vault şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Key Vault şablonu|Resource Manager şablonu|Key Vault SKU 'SU|Oluşturulan Key Vault SKU 'sunu belirtir. Varsayılan değer _Premium_' dur.|
-|Atlama kutusu kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-jb-rg` ile **kuruluş adını** art arda ekler.|
+|Atlama kutusu kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-jb-rg` ile **kuruluş adını** art arda ekler.|
 |Atlama kutusu kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Sıçrama kutusu şablonu|Resource Manager şablonu|JumpBox Yönetici Kullanıcı adı|Sıçrama kutusu VM 'lerine erişmek için kullanılan Kullanıcı adı. **Key Vault şablonunda**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _JB-admin-User_değeridir.|
 |Sıçrama kutusu şablonu|Resource Manager şablonu|JumpBox yönetici parolası (Key Vault kaynak KIMLIĞI)|Key Vault kaynak KIMLIĞI. "/Subscriptions/{SubscriptionID}/resourceGroups/{orgName}-sharedsvcs-kV-RG/Providers/Microsoft.KeyVault/Vaults/{orgName}-sharedsvcs-kV" kullanın ve `{subscriptionId}` abonelik kimliğinizle ve `{orgName}` **kuruluş adı** şema parametresiyle değiştirin.|
 |Sıçrama kutusu şablonu|Resource Manager şablonu|JumpBox yönetici parolası (Key Vault gizli adı)|Sıçrama kutusu yöneticisinin Kullanıcı adı. **Key Vault Template** özelliği **JumpBox Yönetici Kullanıcı adı**' nın değeriyle eşleşmelidir.|
 |Sıçrama kutusu şablonu|Resource Manager şablonu|JumpBox Işletim sistemi|Sıçrama kutusu sanal makinesinin işletim sistemini belirler. Varsayılan değer _Windows_' dır.|
-|Active Directory Domain Services kaynak grubu|Kaynak grubu|Ad|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-adds-rg` ile **kuruluş adını** art arda ekler.|
+|Active Directory Domain Services kaynak grubu|Kaynak grubu|Adı|**Kilitli** -kaynak grubunu benzersiz hale getirmek için `-sharedsvcs-adds-rg` ile **kuruluş adını** art arda ekler.|
 |Active Directory Domain Services kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Active Directory Domain Services şablonu|Resource Manager şablonu|Etki alanı yöneticisi Kullanıcı adı|Atlama kutusu ekleme için Kullanıcı adı. **Key Vault şablonunda**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _ekler-admin-User_.|
 |Active Directory Domain Services şablonu|Resource Manager şablonu|Etki alanı yönetici parolası (Key Vault kaynak KIMLIĞI)|Key Vault kaynak KIMLIĞI. "/Subscriptions/{SubscriptionID}/resourceGroups/{orgName}-sharedsvcs-kV-RG/Providers/Microsoft.KeyVault/Vaults/{orgName}-sharedsvcs-kV" kullanın ve `{subscriptionId}` abonelik kimliğinizle ve `{orgName}` **kuruluş adı** şema parametresiyle değiştirin.|

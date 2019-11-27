@@ -36,14 +36,14 @@ Bu öğretici Azure PowerShell kullanır. Veri fabrikası oluşturmaya yönelik 
 ## <a name="end-to-end-workflow"></a>Uçtan uca iş akışı
 Bu senaryoda, Azure SQL Veritabanında SQL Veri Ambarı’na kopyalamak istediğimiz birkaç tablo vardır. İş akışının işlem hatlarında gerçekleşen adımlarının mantıksal sırası şöyledir:
 
-![İş akışı](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
+![İş Akışı](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * İlk işlem hattı, havuz veri depolarına kopyalanması gereken tabloların listesini arar.  Alternatif olarak, havuz veri deposuna kopyalanacak tüm tabloları listeleyen bir meta veri tablosu tutabilirsiniz. İşlem hattı daha sonra veritabanındaki her bir tabloda yinelenen ve veri kopyalama işlemini gerçekleştiren başka bir işlem hattını tetikler.
 * İkinci işlem hattı gerçek kopyalama işlemini gerçekleştirir. Tablo listesini bir parametre olarak alır. Listedeki her tablo için, en iyi performansı elde etmek üzere [Blob depolama ve PolyBase yoluyla hazırlanan kopyayı](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) kullanarak Azure SQL Veritabanındaki ilgili tabloyu SQL Veri Ambarında karşılık gelen tabloya kopyalayın. Bu örnekte, ilk işlem hattı tablo listesini bir parametre değeri olarak geçirir. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -229,7 +229,7 @@ Bu öğreticide Azure Blob depolamayı daha iyi bir kopyalama performansı için
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
     ```
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturma
+## <a name="create-datasets"></a>Veri kümeleri oluşturun
 
 Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri kümelerini oluşturacaksınız:
 
@@ -313,7 +313,7 @@ Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri k
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDwTableDataset
     ```
 
-## <a name="create-pipelines"></a>İşlem hattı oluşturma
+## <a name="create-pipelines"></a>Komut zincirleri oluşturun
 
 Bu öğreticide, iki işlem hattı oluşturacaksınız:
 

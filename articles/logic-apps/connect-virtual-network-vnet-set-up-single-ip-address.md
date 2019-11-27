@@ -50,7 +50,7 @@ Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-net
 
    ![Giden trafiği yönlendirmek için kural ayarla](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Özellik | Value | Açıklama |
+   | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Yol adı** | <*benzersiz-yol adı*> | Yol tablosundaki yol için benzersiz bir ad |
    | **Adres ön eki** | <*hedef adresi*> | Trafiğin gitmesini istediğiniz hedef sistemin adresi. Bu adres için [sınıfsız etki alanları arası yönlendirme (CIDR) gösterimi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) kullandığınızdan emin olun. |
@@ -72,7 +72,7 @@ Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-net
 
    **Ağ kuralı koleksiyonu özellikleri**
 
-   | Özellik | Value | Açıklama |
+   | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Adı** | <*ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
    | **Öncelik** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
@@ -81,7 +81,7 @@ Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-net
 
    **Ağ kuralı özellikleri**
 
-   | Özellik | Value | Açıklama |
+   | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Adı** | <*ağ kuralı-adı*> | Ağ kuralınız için ad |
    | **Protokol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |

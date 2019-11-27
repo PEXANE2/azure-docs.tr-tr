@@ -265,7 +265,7 @@ Seçenek listesini görüntülemek için komut satırına `CosmosDB.Emulator.exe
 | DisableRateLimiting |İstek oranını sınırlama davranışının devre dışı bırakıldığını belirtir. |CosmosDB.Emulator.exe /DisableRateLimiting | |
 | NoUI | Öykünücü kullanıcı arabirimini gösterme. | CosmosDB.Emulator.exe /NoUI | |
 | NoExplorer | Başlangıçta veri gezginini gösterme. |CosmosDB.Emulator.exe /NoExplorer | | 
-| PartitionCount | En fazla bölümlenmiş kapsayıcı sayısını belirtir. Daha fazla bilgi için bkz. [kapsayıcı sayısını değiştirme](#set-partitioncount) . | CosmosDB.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitionCount\>: izin verilen en fazla sayıda tek bölüm kapsayıcısı. Varsayılan değer 25’tir. Maksimum izin verilen: 250.|
+| PartitionCount | En fazla bölümlenmiş kapsayıcı sayısını belirtir. Daha fazla bilgi için bkz. [kapsayıcı sayısını değiştirme](#set-partitioncount) . | CosmosDB.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitionCount\>: izin verilen en fazla sayıda tek bölüm kapsayıcısı. Varsayılan değer 25 ' tir. Maksimum izin verilen: 250.|
 | DefaultPartitionCount| Bölümlenmiş bir kapsayıcı için varsayılan bölüm sayısını belirtir. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> varsayılan değer 25 ' tir.|
 | AllowNetworkAccess | Bir ağ üzerinden öykünücüye erişilmesini sağlar. Ağ erişimini etkinleştirmek için /Key=\<key_string\> veya /KeyFile=\<file_name\> öğesini de geçirmeniz gerekir. | CosmosDB. Emulator. exe/AllowNetworkAccess/Key =\<key_string\> veya CosmosDB. Emulator. exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
 | NoFirewall | /AllowNetworkAccess seçeneği kullanıldığında güvenlik duvarı kurallarını ayarlamadığınızda. |CosmosDB.Emulator.exe /NoFirewall | |

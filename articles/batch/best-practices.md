@@ -76,7 +76,7 @@ Bir düğümün başarısız olması durumunda, Batch otomatik olarak bu işlem 
 - **Azure bölge bağımlılığı**  
     Zamana duyarlı veya üretim iş yükünüz varsa, tek bir Azure bölgesine bağlı olmaması önerilir. Nadir olarak, bir bölgenin tamamını etkileyebilecek sorunlar vardır. Örneğin, işlemelerinizin belirli bir zamanda başlaması gerekiyorsa, birincil bölgenizdeki havuzun ölçeğini *başlangıç zamanından önce da*ölçeklendirin. Havuz ölçeği başarısız olursa, bir yedekleme bölgesindeki (veya bölgelerde) bir havuzu ölçeklendirmeye geri dönebilirsiniz. Farklı bölgelerdeki birden çok hesap genelinde havuzlar, başka bir havuz ile yanlış bir sorun varsa, daha kolay erişilebilir bir yedekleme sağlar. Daha fazla bilgi için bkz. [uygulamanızı yüksek kullanılabilirlik Için tasarlama](high-availability-disaster-recovery.md).
 
-## <a name="jobs"></a>İşler
+## <a name="jobs"></a>İş
 
 İş, yüzlerce, binlerce veya hatta milyonlarca görevi içerecek şekilde tasarlanan bir kapsayıcıdır.
 
@@ -131,7 +131,7 @@ Nadir olarak bir görev, işlem düğümündeki hatalar nedeniyle, görev çalı
 - **Görev yürütme süresi**  
     Kısa yürütme süresine sahip görevlerden kaçının. Yalnızca bir ile iki saniye çalışan görevler ideal değildir. Tek bir görevde önemli miktarda iş yapmayı denemelisiniz (en az 10 saniye, saat veya güne kadar). Her görev bir dakika (veya daha fazla) boyunca yürütülüyordur, genel işlem zamanının bir bölümü olarak zamanlama yükü küçüktür.
 
-## <a name="nodes"></a>Nodes
+## <a name="nodes"></a>Düğümler
 
 - **Başlangıç görevleri ıdempotent olmalıdır**  
     Diğer görevlere benzer şekilde, düğüm başlangıç görevi, düğüm her önyüklendiğinde yeniden çalıştırılacak şekilde ıdempotent olmalıdır. Bir ıdempotent görevi, birden çok kez çalıştırıldığında tutarlı bir sonuç üreten bir görevdir.

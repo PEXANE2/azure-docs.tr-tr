@@ -17,7 +17,7 @@ ms.locfileid: "74534410"
 Bu makalede, MariaDB sunucuları için Azure veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
 ## <a name="sign-in"></a>Oturum aç
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
 MariaDB sunucusu için Azure veritabanı oluşturma ve kullanmaya başlama hakkında bilgi edinmek için [hızlı başlangıç](quickstart-create-mariadb-server-database-using-azure-portal.md) sayfasını ziyaret edin.
@@ -84,7 +84,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
 
 
-## <a name="delete-a-server"></a>Bir sunucu silme
+## <a name="delete-a-server"></a>Sunucu silme
 
 Artık gerekmiyorsa, sunucunuzu silebilirsiniz. 
 

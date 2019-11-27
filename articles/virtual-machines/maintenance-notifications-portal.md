@@ -24,7 +24,7 @@ Planlı bir [bakım](maintenance-notifications.md) dalgası zamanlandıktan sonr
 
 Azure portal kullanabilir ve bakım için zamanlanmış VM 'Ler için arama yapabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Sol gezinti bölmesinde, **sanal makineler**' e tıklayın.
 
@@ -34,7 +34,7 @@ Azure portal kullanabilir ve bakım için zamanlanmış VM 'Ler için arama yapa
 
    **Bakım durumu**: VM 'nin bakım durumunu gösterir. Olası değerler şunlardır:
       
-      | Value | Açıklama |
+      | Değer | Açıklama |
       |-------|-------------|
       | Şimdi başlayın | VM, bakımı kendiniz başlatabilmenizi sağlayan self servis bakım penceresidir. VM 'niz üzerinde bakım başlatma hakkında bilgi için aşağıya bakın. | 
       | Zamanlanan | VM, size başlatma seçeneği sunulmayan bir bakım için zamanlanır. Bakım penceresini, bu görünümdeki bakım-zamanlanan pencereyi seçerek veya VM 'ye tıklayarak öğrenebilirsiniz. | 

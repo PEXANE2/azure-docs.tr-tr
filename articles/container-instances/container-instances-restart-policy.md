@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances içindeki Kapsayıcılı görevlerle yeniden başlatma ilkeleri kullanın
+title: Bir kez çalıştır görevi için yeniden başlatma ilkesi
 description: Derleme, test veya görüntü işleme işlerinde olduğu gibi, tamamlama için çalışan görevleri yürütmek üzere Azure Container Instances nasıl kullanacağınızı öğrenin.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f814b1c99827c07f8dadfb0cfd80c87a93377cdc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325674"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533450"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle Kapsayıcılı görevleri çalıştırma
 
@@ -35,7 +30,7 @@ Azure Container Instances ' de bir [kapsayıcı grubu](container-instances-conta
 
 ## <a name="specify-a-restart-policy"></a>Yeniden başlatma ilkesi belirtin
 
-Yeniden başlatma ilkesi nasıl belirttiğinizde, Azure CLı, Azure PowerShell cmdlet 'leri veya Azure portal gibi kapsayıcı örneklerinizi nasıl oluşturacağınız üzerine bağlıdır. Azure CLI 'da [az Container Create][az-container-create]öğesini `--restart-policy` çağırdığınızda parametresini belirtin.
+Yeniden başlatma ilkesi nasıl belirttiğinizde, Azure CLı, Azure PowerShell cmdlet 'leri veya Azure portal gibi kapsayıcı örneklerinizi nasıl oluşturacağınız üzerine bağlıdır. Azure CLı 'da [az Container Create][az-container-create]öğesini çağırdığınızda `--restart-policy` parametresini belirtin.
 
 ```azurecli-interactive
 az container create \
@@ -47,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Tamamlanma için Çalıştır örneği
 
-Yeniden başlatma ilkesini eylemde görmek için Microsoft [aci-WORDCOUNT][aci-wordcount-image] görüntüsünden bir kapsayıcı örneği oluşturun ve `OnFailure` yeniden başlatma ilkesini belirtin. Bu örnek kapsayıcı, varsayılan olarak, Shakespeare 'ın Hamine ait metni analiz ederek en sık kullanılan [](http://shakespeare.mit.edu/hamlet/full.html)10 sözcüğü stdout 'a yazar ve ardından çıkar ' a bir Python betiği çalıştırır.
+Yeniden başlatma ilkesini eylemde görmek için Microsoft [aci-WORDCOUNT][aci-wordcount-image] görüntüsünden bir kapsayıcı örneği oluşturun ve `OnFailure` yeniden başlatma ilkesini belirtin. Bu örnek kapsayıcı, varsayılan olarak, Shakespeare 'ın [hamine](http://shakespeare.mit.edu/hamlet/full.html)ait metni analiz ederek en sık kullanılan 10 sözcüğü stdout 'a yazar ve ardından çıkar ' a bir Python betiği çalıştırır.
 
 Aşağıdaki [az Container Create][az-container-create] komutuyla örnek kapsayıcıyı çalıştırın:
 
@@ -71,7 +66,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query co
 "Terminated"
 ```
 
-Örnek kapsayıcısının durumu sonlandırıldıktan sonra,kapsayıcı günlüklerini görüntüleyerek onun görev çıktısını görebilirsiniz. Betiğin çıkışını görüntülemek için [az Container logs][az-container-logs] komutunu çalıştırın:
+Örnek kapsayıcısının durumu *sonlandırıldıktan*sonra, kapsayıcı günlüklerini görüntüleyerek onun görev çıktısını görebilirsiniz. Betiğin çıkışını görüntülemek için [az Container logs][az-container-logs] komutunu çalıştırın:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer

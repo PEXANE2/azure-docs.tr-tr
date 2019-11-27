@@ -50,7 +50,7 @@ Etki alanı, çağrı sonrası veya gerçek zamanlı olup olmadığı için Azur
 
 [Konuşmayı metne](speech-to-text.md) dönüştürme işlemi, herhangi bir çağrı merkezi çözümündeki en son aranan özelliktir. Aşağı akış analizi işlemlerinin birçoğu, metnin sonuna kadar önemli olduğundan, hata oranı (_wer_) en önemli öneme sahiptir. Çağrı merkezi 'ndeki önemli güçlüklerden biri, çağrı merkezi 'nde (örneğin, arka planda konuşuyor diğer aracılar) yaygın olarak kullanılan ve gerçek telefon sinyalinin en düşük kalitesindeki, çok sayıda dil yerel ayarı ve diapahı 'nin yaygın olduğu gürültü. WER, belirli bir yerel ayar için akustik ve dil modellerinin eğitilme açısından yüksek bir şekilde bağıntılı olduğundan, modeli yerel ayarınızdaki şekilde özelleştirebilme özelliği önemli olur. En son birleştirilmiş sürüm 4. x modellerimiz, hem döküm doğruluğu hem de gecikme süresi çözümüdür. En fazla binlerce saatlik akustik veri ve milyarlarca çok sayıda bilgi işlem ile eğitilen, Birleşik modeller pazardaki en doğru modellerdir ve bu da çağrı merkezi verilerini alın.
 
-### <a name="sentiment"></a>Yaklaşım
+### <a name="sentiment"></a>Duygu
 
 Ölçmek, arama merkezi alanına uygulandığında konuşma analizinin en önemli alanlarından biridir. [Toplu Iş dökümü API](batch-transcription.md) 'imiz, utterance başına yaklaşım analizi sunar. Hem aracılarınız hem de müşteri için çağrının yaklaşımını tespit etmek üzere çağrı dökümünü bir parçası olarak elde edilen değerler kümesini toplayabilirsiniz.
 
@@ -70,11 +70,11 @@ Uçtan uca gecikme süresi, [konuşmadan metne](speech-to-text.md), [Luo](https:
 
 Yeni seslerimiz de insan seslerinden ayırt edilemez. Kendi seslerimizi kullanarak botumuzu benzersiz kişiliğine aktarabilirsiniz.
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arama
 
 Analize ait başka bir zımba, belirli bir olay veya deneyimin gerçekleştiği etkileşimleri belirlemektir. Bu genellikle iki yaklaşımdan biriyle yapılır; kullanıcının bir tümceciği ve sistem yanıt verdiğini veya bir analistdeki bir senaryoyu tanımlayan mantıksal deyimler kümesi oluşturabileceğiniz daha yapılandırılmış bir sorgu ya da her çağrının bu sorgu kümesine göre dizine alınması için bir ad hoc arama. İyi bir arama örneği, ubititous uyumluluk deyimidir "Bu çağrı kalite amacıyla kaydedilecek... ". Birçok şirket, aracıların gerçekten kaydedilmeden önce bu vazgeçme belgesi müşterilere bu bildirimi sağladığından emin olmak ister. Çoğu analiz sistemi, sorgu/arama algoritmalarıyla bulunan davranışları eğilim özelliğine sahiptir ve bu eğilimleri raporlamak, son olarak bir analiz sisteminin en önemli işlevlerinden biridir. Bilişsel [Hizmetler dizini](https://azure.microsoft.com/services/cognitive-services/directory/search/) sayesinde uçtan uca çözümünüz, dizin oluşturma ve arama özellikleri ile önemli ölçüde iyileştirilen olabilir.
 
-### <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
+### <a name="key-phrase-extraction"></a>Anahtar Tümcecik Ayıklama
 
 Bu alan, daha zorlu analitik uygulamalardan biridir ve bunlardan biri AI ve makine öğrenimi uygulamasından yararlanırken. Bu örnekte birincil senaryo müşteri amacını çıkarmaktır. Müşteri neden çağrılıyor? Müşteri sorunu nedir? Müşterinin neden negatif bir deneyimi var? [Metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) hizmetimiz, bu önemli anahtar kelimeleri veya tümceleri ayıklamanıza yönelik uçtan uca çözümünüzü hızlı bir şekilde yükseltmek için kutudan çıkan bir analiz kümesi sağlar.
 
@@ -123,9 +123,9 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 
 | Konuşma hizmeti | Model | Açıklama |
 | -------------- | ----- | ----------- |
-| Konuşmayı Metne Dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
+| Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 |                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
-|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş koşullarını işlemek için kullanışlıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir `.txt` dosyası olan bir telaffuz dosyasıdır. |
+|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir `.txt` dosyası olan bir telaffuz dosyasıdır. |
 | Metin okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
 
 ## <a name="sample-code"></a>Örnek kod

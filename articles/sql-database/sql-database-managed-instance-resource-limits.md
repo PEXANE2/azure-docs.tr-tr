@@ -178,7 +178,7 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
 
 5. **İleri**’ye tıklayın.
 6. Yeni destek isteği için kişi bilgileri sekmesinde, tercih edilen iletişim yöntemini (e-posta veya telefon) ve iletişim ayrıntılarını girin.
-7. **Oluştur**’ tıklayın.
+7. **Oluştur**’a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

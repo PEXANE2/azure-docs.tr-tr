@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -52,7 +52,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 4. Yeni oluşturduğunuz depolama hesabınıza gidin ve **genel bakış** sayfasındaki **Hizmetler** altında **Bloblar** ' ı seçin. Ardından **+ kapsayıcı** ' yı seçin ve bir kapsayıcı adı girin. **Tamam**’ı seçin.
 
-   ![Yeni bir kapsayıcı oluşturma](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
+   ![Yeni kapsayıcı oluştur](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
 5. BLOB depolama kapsayıcınıza yüklemek istediğiniz dosyayı bulun. Bir dosyanız yoksa, bazı bilgilerle yeni bir metin dosyası oluşturmak için bir metin düzenleyicisi kullanın. Bu örnekte, **HW. txt** adlı bir dosya "Hello World" metnini içerir. Metin dosyanızı yerel olarak kaydedin ve BLOB depolama kapsayıcınıza yükleyin.
 
@@ -76,7 +76,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    |Özellik|Açıklama|
    |--------|-----------|
-   |Name|Anahtar kasanızın benzersiz adı.|
+   |Adı|Anahtar kasanızın benzersiz adı.|
    |Abonelik|Bir abonelik seçin.|
    |Kaynak grubu|Bir kaynak grubu seçin veya yeni bir tane oluşturun.|
    |Konum|Konum seçin.|
@@ -91,11 +91,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 5. Gizli dizi **Oluştur** sayfasında aşağıdaki bilgileri sağlayın ve kalan alanlar için varsayılan değerleri tutun:
 
-   |Özellik|Value|
+   |Özellik|Değer|
    |--------|-----------|
    |Karşıya yükleme seçenekleri|Manual|
-   |Name|Depolama hesabı anahtarınız için kolay ad.|
-   |Value|depolama hesabınızdan key1.|
+   |Adı|Depolama hesabı anahtarınız için kolay ad.|
+   |Değer|depolama hesabınızdan key1.|
 
    ![Yeni Anahtar Kasası gizli dizisi özellikleri](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -105,7 +105,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Azure Databricks çalışma alanı oluşturma ve gizli dizi kapsamı ekleme
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks** seçeneklerini belirleyin.
+1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
 
     ![Azure portal databricks](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
 

@@ -70,7 +70,7 @@ Dağıtım başarılı olduktan sonra, kapsayıcının tam etki alanı adını (
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Örneğin:
+Örnek:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"

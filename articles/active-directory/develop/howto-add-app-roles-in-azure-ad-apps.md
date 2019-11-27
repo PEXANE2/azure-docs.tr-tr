@@ -39,7 +39,7 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
-1. [Azure Portal](https://portal.azure.com)’da oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üstteki çubukta hesabınızı seçin ve ardından dizin ' i **değiştirin**.
 1. **Dizin + abonelik** bölmesi açıldıktan sonra, **Sık Kullanılanlar** veya **tüm dizinler** listesinden uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
 1. Sol taraftaki Gezinti bölmesinde **tüm hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.

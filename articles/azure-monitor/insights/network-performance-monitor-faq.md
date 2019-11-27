@@ -258,7 +258,7 @@ Bir veya daha fazla doğruysa bu durum oluşabilir:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>Hizmet bağlantısı Izleyicisi özelliği ' nde, hizmet yanıt süresi yok ancak ağ kaybı ve gecikme süresi geçerli
 Hedef hizmet bir Web uygulaması değilse ancak test bir Web testi olarak yapılandırıldığında bu durum oluşabilir. Test yapılandırmasını düzenleyin ve test türünü web yerine ağ olarak seçin.
 
-## <a name="miscellaneous"></a>Çeşitli
+## <a name="miscellaneous"></a>Muhtelif Hükümler
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>İzleme için kullanılan düğüm üzerinde bir performans etkisi var mı?
 NPM işlemi, ana bilgisayar CPU kaynaklarının %5 ' inden fazlasını kullanıyorsa durdurulacak şekilde yapılandırıldı. Bu, performansı etkilemeden olağan iş yükleri için düğümleri kullanmaya devam etmek zorunda kalmasından emin olmak içindir.
