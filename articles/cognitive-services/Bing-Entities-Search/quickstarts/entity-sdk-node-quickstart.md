@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request with the SDK for Node.js - Bing Entity Search'
+title: 'Hızlı başlangıç: node. js için SDK ile bir arama isteği gönderme-Bing Varlık Arama'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Node.js
+description: Node. js için Bing Varlık Arama SDK ile varlıkları aramak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,43 +17,43 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323842"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Node.js
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Hızlı başlangıç: node. js için Bing Varlık Arama SDK ile arama isteği gönderme
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Node.js. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
+Node. js için Bing Varlık Arama SDK ile varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)' da bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
 
-* The [Bing Entity Search SDK for Node.js](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
+* [Node. js için Bing varlık arama SDK 'sı](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
 
-To install the Bing Entity Search SDK:
+Bing Varlık Arama SDK 'sını yüklemek için:
 
-1. Run `npm install ms-rest-azure` in your development environment.
-2. Run `npm install azure-cognitiveservices-entitysearch` in your development environment.
+1. Geliştirme ortamınızda `npm install ms-rest-azure` çalıştırın.
+2. Geliştirme ortamınızda `npm install azure-cognitiveservices-entitysearch` çalıştırın.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Create a new JavaScript file in your favorite IDE or editor, and add the following requirements. 
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve aşağıdaki gereksinimleri ekleyin. 
     
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
     ```
 
-2. Create an instance of `CognitiveServicesCredentials` using your subscription key. Then create an instance of the search client with it.
+2. Abonelik anahtarınızı kullanarak `CognitiveServicesCredentials` örneğini oluşturun. Ardından, bununla birlikte arama istemcisinin bir örneğini oluşturun.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let entitySearchApiClient = new EntitySearchAPIClient(credentials);
     ```
 
-## <a name="send-a-request-and-receive-a-response"></a>Send a request and receive a response
+## <a name="send-a-request-and-receive-a-response"></a>İstek gönderme ve yanıt alma
 
-1. Send an entities search request with `entitiesOperations.search()`. After receiving a response, print out the `queryContext`, number of returned results, and the description of the first result.
+1. `entitiesOperations.search()`bir varlık arama isteği gönderin. Yanıt aldıktan sonra `queryContext`, döndürülen sonuçların sayısını ve ilk sonucun açıklamasını yazdırın.
       
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
@@ -74,4 +74,4 @@ To install the Bing Entity Search SDK:
 > [!div class="nextstepaction"]
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Bing Varlık Arama API'si nedir?](../overview.md )

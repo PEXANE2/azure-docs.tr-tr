@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
-description: This tutorial shows how to run Spark queries on an Azure Databricks cluster to access data in an Azure Data Lake Storage Gen2 storage account.
+title: 'Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark | Microsoft Docs'
+description: Bu öğreticide, bir Azure Data Lake Storage 2. depolama hesabındaki verilere erişmek için bir Azure Databricks kümesinde Spark sorgularının nasıl çalıştırılacağı gösterilmektedir.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,61 +15,61 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327533"
 ---
-# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark
 
-This tutorial shows you how to connect your Azure Databricks cluster to data stored in an Azure storage account that has Azure Data Lake Storage Gen2 enabled. This connection enables you to natively run queries and analytics from your cluster on your data.
+Bu öğreticide, Azure Databricks kümenizi Azure Data Lake Storage 2. etkin olan bir Azure depolama hesabında depolanan verilere nasıl bağlayabilmeniz gösterilmektedir. Bu bağlantı, verilerinizde kümenizdeki sorguları ve Analizi yerel olarak çalıştırmanızı sağlar.
 
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
 > * Databricks kümesi oluşturma
 > * Yapılandırılmamış verileri bir depolama hesabına alma
-> * Run analytics on your data in Blob storage
+> * Blob depolamada verileriniz üzerinde analiz çalıştırma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Create an Azure Data Lake Storage Gen2 account.
+* Azure Data Lake Storage 2. hesabı oluşturun.
 
-  See [Create an Azure Data Lake Storage Gen2 account](data-lake-storage-quickstart-create-account.md).
+  Bkz. [Azure Data Lake Storage 2. hesap oluşturma](data-lake-storage-quickstart-create-account.md).
 
-* Make sure that your user account has the [Storage Blob Data Contributor role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) assigned to it.
+* Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) atanmış olduğundan emin olun.
 
-* Install AzCopy v10. See [Transfer data with AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* AzCopy ile v10 arasındaki 'i yükler. Bkz. [AzCopy ile v10 arasındaki ile veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Create a service principal. See [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-  There's a couple of specific things that you'll have to do as you perform the steps in that article.
+  Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  :heavy_check_mark: When performing the steps in the [Assign the application to a role](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) section of the article, make sure to assign the **Storage Blob Data Contributor** role to the service principal.
+  : heavy_check_mark: makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
-  > Make sure to assign the role in the scope of the Data Lake Storage Gen2 storage account. You can assign a role to the parent resource group or subscription, but you'll receive permissions-related errors until those role assignments propagate to the storage account.
+  > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
-  :heavy_check_mark: When performing the steps in the [Get values for signing in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section of the article, paste the tenant ID, app ID, and password values into a text file. You'll need those soon.
+  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
 
 ### <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
-This tutorial uses flight data from the Bureau of Transportation Statistics to demonstrate how to perform an ETL operation. You must download this data to complete the tutorial.
+Bu öğretici, bir ETL işleminin nasıl gerçekleştirileceğini göstermek için, taşıma Istatistikleri bürolarından uçuş verilerini kullanır. Öğreticiyi tamamlayabilmeniz için bu verileri indirmeniz gerekir.
 
-1. Go to [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. [Araştırma ve yenilikçi teknoloji yönetimi, nakliye Istatistikleri Bürosu '](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)na gidin.
 
-2. Select the **Prezipped File** check box to select all data fields.
+2. Tüm veri alanlarını seçmek için **önceden daraltılmış dosya** onay kutusunu seçin.
 
-3. Select the **Download** button and save the results to your computer. 
+3. **İndir** düğmesini seçin ve sonuçları bilgisayarınıza kaydedin. 
 
-4. Unzip the contents of the zipped file and make a note of the file name and the path of the file. You need this information in a later step.
+4. Daraltılmış dosyanın içeriğini açın ve dosyanın adını ve yolunu bir yere ayıklayın. Daha sonraki bir adımda bu bilgilere ihtiyacınız vardır.
 
-## <a name="create-an-azure-databricks-service"></a>Create an Azure Databricks service
+## <a name="create-an-azure-databricks-service"></a>Azure Databricks hizmeti oluşturma
 
-In this section, you create an Azure Databricks service by using the Azure portal.
+Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
+1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks** seçeneklerini belirleyin.
 
-    ![Databricks on Azure portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks on Azure portal")
+    ![Azure portal databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure portal databricks")
 
-2. Under **Azure Databricks Service**, provide the following values to create a Databricks service:
+2. **Azure Databricks hizmeti**altında, Databricks hizmeti oluşturmak için aşağıdaki değerleri sağlayın:
 
     |Özellik  |Açıklama  |
     |---------|---------|
@@ -77,25 +77,25 @@ In this section, you create an Azure Databricks service by using the Azure porta
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/resource-group-overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).       |
-    |**Fiyatlandırma Katmanı**     |  Select **Standard**.     |
+    |**Fiyatlandırma Katmanı**     |  **Standart**' ı seçin.     |
 
-    ![Create an Azure Databricks workspace](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Create an Azure Databricks service")
+    ![Azure Databricks çalışma alanı oluşturma](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks hizmeti oluşturma")
 
-3. Hesabın oluşturulması birkaç dakika sürer. To monitor the operation status, view the progress bar at the top.
+3. Hesabın oluşturulması birkaç dakika sürer. İşlem durumunu izlemek için üstteki ilerleme çubuğunu görüntüleyin.
 
 4. **Panoya sabitle**’yi ve sonra **Oluştur**’u seçin.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Azure Databricks’te Spark kümesi oluşturma
 
-1. In the Azure portal, go to the Databricks service that you created, and select **Launch Workspace**.
+1. Azure portal, oluşturduğunuz Databricks hizmetine gidin ve **çalışma alanını Başlat**' ı seçin.
 
-2. You're redirected to the Azure Databricks portal. Portaldan **Küme**’yi seçin.
+2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme**’yi seçin.
 
-    ![Databricks on Azure](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Databricks on Azure")
+    ![Azure 'da databricks](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Azure 'da databricks")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Create Databricks Spark cluster on Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
+    ![Azure 'da Databricks Spark kümesi oluşturma](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
 
     Aşağıdaki alanlara değerleri girin ve diğer alanlar için varsayılan değerleri kabul edin:
 
@@ -103,49 +103,49 @@ In this section, you create an Azure Databricks service by using the Azure porta
      
     - **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-4. **Küme oluştur**’u seçin. After the cluster is running, you can attach notebooks to the cluster and run Spark jobs.
+4. **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 ## <a name="ingest-data"></a>Veriyi çekme
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kaynak verilerini depolama hesabına kopyalama
 
-Use AzCopy to copy data from your *.csv* file into your Data Lake Storage Gen2 account.
+*. Csv* dosyanızdaki verileri Data Lake Storage 2. hesabınıza kopyalamak Için AzCopy kullanın.
 
-1. Open a command prompt window, and enter the following command to log into your storage account.
+1. Bir komut istemi penceresi açın ve depolama hesabınızda oturum açmak için aşağıdaki komutu girin.
 
    ```bash
    azcopy login
    ```
 
-   Follow the instructions that appear in the command prompt window to authenticate your user account.
+   Kullanıcı hesabınızın kimliğini doğrulamak için komut istemi penceresinde görüntülenen yönergeleri izleyin.
 
-2. To copy data from the *.csv* account, enter the following command.
+2. *. Csv* hesabındaki verileri kopyalamak için aşağıdaki komutu girin.
 
    ```bash
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Replace the `<csv-folder-path>` placeholder value with the path to the *.csv* file.
+   * `<csv-folder-path>` yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
 
-   * Replace the `<storage-account-name>` placeholder value with the name of your storage account.
+   * `<storage-account-name>` yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-   * Replace the `<container-name>` placeholder with any name that you want to give your container.
+   * `<container-name>` yer tutucusunu, kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
 
-## <a name="create-a-container-and-mount-it"></a>Create a container and mount it
+## <a name="create-a-container-and-mount-it"></a>Kapsayıcı oluşturma ve bağlama
 
-In this section, you'll create a container and a folder in your storage account.
+Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacaksınız.
 
-1. In the [Azure portal](https://portal.azure.com), go to the Azure Databricks service that you created, and select **Launch Workspace**.
+1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks hizmetine gidin ve **çalışma alanını Başlat**' ı seçin.
 
-2. On the left, select **Workspace**. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
+2. Sol tarafta **çalışma alanı**' nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
-    ![Create a notebook in Databricks](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Create notebook in Databricks")
+    ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
-3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Select **Python** as the language, and then select the Spark cluster that you created earlier.
+3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
 4. **Oluştur**'u seçin.
 
-5. Copy and paste the following code block into the first cell, but don't run this code yet.
+5. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
@@ -161,28 +161,28 @@ In this section, you'll create a container and a folder in your storage account.
     extra_configs = configs)
     ```
 
-18. In this code block, replace the `appId`, `password`, `tenant`, and `storage-account-name` placeholder values in this code block with the values that you collected while completing the prerequisites of this tutorial. Replace the `container-name` placeholder value with the name that you gave to the container on the previous step.
+18. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `appId`, `password`, `tenant`ve `storage-account-name` yer tutucu değerlerini topladığınız değerlerle değiştirin. `container-name` yer tutucu değerini, önceki adımda kapsayıcıya verdiğiniz adla değiştirin.
 
-Use these values to replace the mentioned placeholders.
+Bu değerleri, belirtilen yer tutucuları değiştirmek için kullanın.
 
-   * The `appId`, and `password` are from the app that you registered with active directory as part of creating a service principal.
+   * `appId`ve `password`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
 
-   * The `tenant-id` is from your subscription.
+   * `tenant-id` aboneliğinizden.
 
-   * The `storage-account-name` is the name of your Azure Data Lake Storage Gen2 storage account.
+   * `storage-account-name`, Azure Data Lake Storage 2. depolama hesabınızın adıdır.
 
-   * Replace the `container-name` placeholder with any name that you want to give your container.
+   * `container-name` yer tutucusunu, kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
 
    > [!NOTE]
-   > In a production setting, consider storing your password in Azure Databricks. Then, add a look up key to your code block instead of the password. After you've completed this quickstart, see the [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) article on the Azure Databricks Website to see examples of this approach.
+   > Bir üretim ayarında parolanızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, parola yerine kod blosonra bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
 
-19. Press the **SHIFT + ENTER** keys to run the code in this block.
+19. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
-   Keep this notebook open as you will add commands to it later.
+   Daha sonra komutlara ekleyebileceğiniz bu not defterini açık tutun.
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Databricks Not Defteri'ni kullanarak CSV'yi Parquet biçimine dönüştürme
 
-In the notebook that you previously created, add a new cell, and paste the following code into that cell. 
+Daha önce oluşturduğunuz not defterinde, yeni bir hücre ekleyin ve aşağıdaki kodu bu hücreye yapıştırın. 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -198,7 +198,7 @@ print("Done")
 
 ## <a name="explore-data"></a>Verileri inceleme
 
-In a new cell, paste the following code to get a list of CSV files uploaded via AzCopy.
+Yeni bir hücrede, AzCopy aracılığıyla karşıya yüklenen CSV dosyalarının listesini almak için aşağıdaki kodu yapıştırın.
 
 ```python
 import os.path
@@ -220,9 +220,9 @@ Bu kod örnekleriyle Data Lake Storage 2. Nesil etkin bir depolama hesabında de
 
 Bir sonraki adımda depolama hesabınıza yüklediğiniz verileri sorgulamaya başlayabilirsiniz. Aşağıdaki kod bloklarını **Cmd 1** bölümüne girin ve **Cmd + Enter** tuşlarına basarak Python betiğini çalıştırın.
 
-To create data frames for your data sources, run the following script:
+Veri kaynaklarınız için veri çerçeveleri oluşturmak için aşağıdaki betiği çalıştırın:
 
-* Replace the `<csv-folder-path>` placeholder value with the path to the *.csv* file.
+* `<csv-folder-path>` yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -251,7 +251,7 @@ flightDF.show(20, False)
 display(flightDF)
 ```
 
-Enter this script to run some basic analysis queries against the data.
+Verilerin bazı temel analiz sorgularını çalıştırmak için bu betiği girin.
 
 ```python
 # Run each of these queries, preferably in a separate cmd cell for separate analysis
@@ -285,7 +285,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When they're no longer needed, delete the resource group and all related resources. To do so, select the resource group for the storage account and select **Delete**.
+Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

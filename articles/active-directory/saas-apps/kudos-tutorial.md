@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Kudos | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Kudos.
+title: 'Öğretici: Kudos ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Kudos arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,220 +22,220 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227475"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Tutorial: Azure Active Directory integration with Kudos
+# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Öğretici: Kudos ile tümleştirme Azure Active Directory
 
-In this tutorial, you learn how to integrate Kudos with Azure Active Directory (Azure AD).
-Integrating Kudos with Azure AD provides you with the following benefits:
+Bu öğreticide Kudos 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Kudos 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* You can control in Azure AD who has access to Kudos.
-* You can enable your users to be automatically signed-in to Kudos (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Kudos erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Kudos (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To configure Azure AD integration with Kudos, you need the following items:
+Azure AD tümleştirmesini Kudos ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
-* Kudos single sign-on enabled subscription
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Kudos çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Kudos supports **SP** initiated SSO
+* Kudos, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-kudos-from-the-gallery"></a>Adding Kudos from the gallery
+## <a name="adding-kudos-from-the-gallery"></a>Galeriden Kudos ekleme
 
-To configure the integration of Kudos into Azure AD, you need to add Kudos from the gallery to your list of managed SaaS apps.
+Kudos 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Kudos 'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**To add Kudos from the gallery, perform the following steps:**
+**Galeriden Kudos eklemek için aşağıdaki adımları uygulayın:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![The New application button](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. In the search box, type **Kudos**, select **Kudos** from result panel then click **Add** button to add the application.
+4. Arama kutusuna **Kudos**yazın, sonuç panelinden **Kudos** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Kudos in the results list](common/search-new-app.png)
+     ![Sonuç listesinde Kudos](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-In this section, you configure and test Azure AD single sign-on with Kudos based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Kudos needs to be established.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Kudos Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Kudos 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-To configure and test Azure AD single sign-on with Kudos, you need to complete the following building blocks:
+Azure AD çoklu oturum açma 'yı Kudos ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Kudos Single Sign-On](#configure-kudos-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Kudos test user](#create-kudos-test-user)** - to have a counterpart of Britta Simon in Kudos that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Kudos çoklu oturum açmayı yapılandırma](#configure-kudos-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Kudos test kullanıcısı oluşturma](#create-kudos-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Kudos 'Ta Britta Simon 'a sahip olmak için.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-To configure Azure AD single sign-on with Kudos, perform the following steps:
+Azure AD çoklu oturum açmayı Kudos ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Kudos** application integration page, select **Single sign-on**.
+1. [Azure Portal](https://portal.azure.com/), **Kudos** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Kudos Domain and URLs single sign-on information](common/sp-signonurl.png)
+    ![Kudos etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<company>.kudosnow.com`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<company>.kudosnow.com`
 
     > [!NOTE]
-    > The value is not real. Update the value with the actual Sign-On URL. Contact [Kudos Client support team](http://success.kudosnow.com/home) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Kudos istemci desteği ekibine](http://success.kudosnow.com/home) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. On the **Set up Kudos** section, copy the appropriate URL(s) as per your requirement.
+6. **Kudos ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Oturum Açma URL'si:
 
-    b. Azure AD Identifier
+    b. Azure AD Tanımlayıcısı
 
-    c. Logout URL
+    c. Oturum Kapatma URL'si
 
-### <a name="configure-kudos-single-sign-on"></a>Configure Kudos Single Sign-On
+### <a name="configure-kudos-single-sign-on"></a>Kudos çoklu oturum açmayı yapılandırma
 
-1. In a different web browser window, sign into your Kudos company site as an administrator.
+1. Farklı bir Web tarayıcısı penceresinde, Kudos şirket sitenizde yönetici olarak oturum açın.
 
-1. In the menu on the top, click **Settings icon**.
+1. Üstteki menüde, **Ayarlar simgesi**' ne tıklayın.
 
     ![Ayarlar](./media/kudos-tutorial/ic787806.png "Ayarlar")
 
-1. Click **Integrations > SSO** and perform the following steps:
+1. **SSO > tümleştirme** ' e tıklayın ve aşağıdaki adımları uygulayın:
 
     ![SSO](./media/kudos-tutorial/ic787807.png "SSO")
 
-    a. In **Sign on URL** textbox, paste the value of  **Login URL** which you have copied from Azure portal.
+    a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    b. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X.509 certificate** textbox
+    b. Base-64 kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve **X. 509.440 sertifikası** metin kutusuna yapıştırın
 
-    c. In **Logout To URL** textbox, paste the value of  **Logout URL** which you have copied from Azure portal.
+    c. **URL 'Yi kapatma** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-    d. In the **Your Kudos URL** textbox, type your company name.
+    d. **Kudos URL 'si** metin kutusunda, şirketinizin adını yazın.
 
-    e. **Kaydet** düğmesine tıklayın.
+    e. **Save (Kaydet)** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![New user Button](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
-    ![The User dialog box](common/user-properties.png)
+    ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`  
+    b. **Kullanıcı adı** alan türü ' nde `brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kudos.
+Bu bölümde, Kudo 'a erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirirsiniz.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Kudos**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **Kudos**' yi seçin.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. In the applications list, select **Kudos**.
+2. Uygulamalar listesinde **Kudos**' ı seçin.
 
-    ![The Kudos link in the Applications list](common/all-applications.png)
+    ![Uygulamalar listesindeki Kudos bağlantısı](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-kudos-test-user"></a>Create Kudos test user
+### <a name="create-kudos-test-user"></a>Kudos test kullanıcısı oluşturma
 
-In order to enable Azure AD users to sign in to Kudos, they must be provisioned into Kudos. In the case of Kudos, provisioning is a manual task.
+Azure AD kullanıcılarının Kudos 'da oturum açmasını sağlamak için, Kudos 'a sağlanması gerekir. Kudos söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
 
-**To provision a user account, perform the following steps:**
+**Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Sign in to your **Kudos** company site as administrator.
+1. **Kudos** şirket sitenizde yönetici olarak oturum açın.
 
-1. In the menu on the top, click **Settings icon**.
+1. Üstteki menüde, **Ayarlar simgesi**' ne tıklayın.
 
    ![Ayarlar](./media/kudos-tutorial/ic787806.png "Ayarlar")
 
-1. Click **User Admin**.
+1. **Kullanıcı Yöneticisi**' ne tıklayın.
 
-1. Click the **Users** tab, and then click **Add a User**.
+1. **Kullanıcılar** sekmesine ve ardından **Kullanıcı Ekle**' ye tıklayın.
 
-   ![User Admin](./media/kudos-tutorial/ic787809.png "User Admin")
+   ![Kullanıcı Yöneticisi](./media/kudos-tutorial/ic787809.png "Kullanıcı Yöneticisi")
 
-1. In the **Add a User** section, perform the following steps:
+1. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Add a User](./media/kudos-tutorial/ic787810.png "Add a User")
+    ![Kullanıcı ekleme](./media/kudos-tutorial/ic787810.png "Kullanıcı ekleme")
 
-    a. Type the **First Name**, **Last Name**, **Email** and other details of a valid Azure Active Directory account you want to provision into the related textboxes.
+    a. **Ilk adı**, **Soyadı**, **e-postayı** ve ilgili metin kutularına sağlamak istediğiniz geçerli bir Azure Active Directory hesabının diğer ayrıntılarını yazın.
 
-    b. Click **Create User**.
+    b. **Kullanıcı oluştur**' a tıklayın.
 
 > [!NOTE]
-> You can use any other Kudos user account creation tools or APIs provided by Kudos to provision Azure AD user accounts.
+> Kudos tarafından sunulan diğer Kudos Kullanıcı hesabı oluşturma araçlarını veya API 'Leri, Azure AD Kullanıcı hesapları sağlamak için kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-When you click the Kudos tile in the Access Panel, you should be automatically signed in to the Kudos for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Kudos kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Kudos 'lar için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,126 +1,107 @@
 ---
-title: Azure portal kullanarak MySQL için Azure veritabanı sunucusu oluşturma ve yönetme
-description: Bu makalede, Azure portal kullanarak hızlı bir şekilde yeni bir MySQL Server için Azure veritabanı oluşturma ve sunucuyu yönetme işlemlerinin nasıl yapılacağı açıklanır.
+title: MySQL için Azure veritabanı 'nı yönetme-Azure portal
+description: Azure portal bir MySQL için Azure veritabanı sunucusunu yönetmeyi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: fdcb302d3a14b02ea86fb92c8dbf822ef3f42177
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 11/25/2019
+ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142254"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534000"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusu oluşturma ve yönetme
-Bu konu başlığı altında, yeni bir MySQL Server için Azure veritabanı oluşturmayı nasıl hızlı bir şekilde oluşturacağınız açıklanmaktadır. Ayrıca, Azure portal kullanarak sunucunun nasıl yönetileceği hakkındaki bilgileri de içerir. Sunucu Yönetimi sunucu ayrıntılarını ve veritabanlarını görüntülemeyi, parolayı sıfırlamayı, kaynakları ölçeklendirmeyi ve sunucuyu silmeyi içerir.
+# <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yönetme
+Bu makalede MySQL sunucuları için Afire veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
+## <a name="sign-in"></a>Oturum aç
 [Azure Portal](https://portal.azure.com)’da oturum açın.
 
-## <a name="create-an-azure-database-for-mysql-server"></a>MySQL için Azure Veritabanı sunucusu oluşturma
-"Mydemoserver" adlı bir MySQL için Azure veritabanı sunucusu oluşturmak için bu adımları izleyin.
+## <a name="create-a-server"></a>Sunucu oluşturma
+MySQL için Azure veritabanı sunucusu oluşturma ve kullanmaya başlama hakkında bilgi edinmek için [hızlı başlangıç](quickstart-create-mysql-server-database-using-azure-portal.md) sayfasını ziyaret edin.
 
-1. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesine tıklayın.
+## <a name="scale-compute-and-storage"></a>İşlem ve depolamayı ölçeklendirme
 
-2. Yeni sayfada **veritabanları**' nı seçin ve ardından veritabanları sayfasında **MySQL için Azure veritabanı**' nı seçin.
+Sunucu oluşturulduktan sonra, gereksinimleriniz değiştikçe Genel Amaçlı ve bellek için Iyileştirilmiş katmanlar arasında ölçeklendirebilirsiniz. Ayrıca, sanal çekirdekleri artırarak veya azaltarak işlem ve belleği da ölçeklendirebilirsiniz. Depolama alanı yukarı ölçeklendirilebilir (ancak, depolamayı ölçeklendirmezsiniz).
 
-    > MySQL için Azure veritabanı sunucusu, tanımlı bir dizi [işlem ve depolama](./concepts-pricing-tiers.md) kaynağı ile oluşturulur. Veritabanı bir Azure Kaynak grubu içinde ve MySQL için Azure veritabanı sunucusunda oluşturulur.
+### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>Genel Amaçlı ve bellek için Iyileştirilmiş katmanlar arasında ölçeklendirme
 
-   ![Yeni-sunucu oluştur](./media/howto-create-manage-server-portal/create-new-server.png)
+Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilirsiniz. Sunucu oluşturulduktan sonra temel katmandan ve arasında geçiş yapmak desteklenmez. 
 
-3. Aşağıdaki bilgileri kullanarak MySQL için Azure veritabanı formunu doldurun:
+1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını**seçin.
 
-    | **Form Alanı** | **Alan Açıklaması** |
-    |----------------|-----------------------|
-    | *Sunucu adı* | demosunucum (sunucu adı genel olarak benzersiz) |
-    | *Abonelik* | mysubscription (açılan menüden seçim yapın) |
-    | *Kaynak grubu* | myresourcegroup (yeni bir kaynak grubu oluşturun veya mevcut olanı kullanın) |
-    | *Kaynak seçme* | Boş (boş bir MySQL sunucusu oluşturun) |
-    | *Sunucu yöneticisi oturum açma bilgileri* | myadmin (yönetici hesabı adını ayarlayın) |
-    | *Parola* | Yönetici hesabı parolasını ayarla |
-    | *Parolayı onayla* | yönetici hesabı parolasını onaylayın |
-    | *Location* | Güneydoğu Asya (Kuzey Avrupa ve Batı ABD arasında seçim yapın) |
-    | *Sürüm* | 5,7 (MySQL sunucu sürümü için Azure veritabanı 'nı seçin) |
-
-   ![Yeni-sunucu oluştur](./media/howto-create-manage-server-portal/form-field.png)
-
-4. Yeni sunucunuzun hizmet katmanını ve performans düzeyini belirtmek için **fiyatlandırma katmanı** ' na tıklayın. **Genel amaçlı** sekmesini seçin. *5. Nesil*, *2 sanal çekirdek*, *5 GB* ve *7 gün*; **İşlem Nesli**, **Sanal Çekirdek**, **Depolama** ve **Yedekleme Bekletme Dönemi** için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilirsiniz. Coğrafi olarak yedekli depolamada sunucu yedeklerinizi etkinleştirmek için, **Fazladan Yedek Seçenekleri**’nde **Coğrafi Olarak Yedeklemeli**’yi seçin.
-
-   ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
-
-5. Sunucuyu sağlamak için **Oluştur**’a tıklayın. Sağlama birkaç dakika sürer.
-
-    > Dağıtımlarınızın kolayca izlenmesini sağlamak için **panoya sabitle** seçeneğini belirleyin.
-
-## <a name="update-an-azure-database-for-mysql-server"></a>MySQL sunucusu için Azure veritabanı 'nı güncelleştirme
-Yeni sunucu sağlandıktan sonra, Kullanıcı, yönetici parolasını sıfırlama, fiyatlandırma katmanını değiştirme ve sanal çekirdek ya da depolamayı değiştirerek sunucu ölçeğini büyütme veya azaltma dahil olmak üzere var olan sunucuyu yapılandırmaya yönelik çeşitli seçeneklere sahiptir
-
-### <a name="change-the-administrator-user-password"></a>Yönetici Kullanıcı parolasını değiştirme
-1. Sunucu **genel bakışta**parola sıfırlama penceresini göstermek Için **Parolayı Sıfırla** ' ya tıklayın.
-
-   ![genel bakış](./media/howto-create-manage-server-portal/overview.png)
-
-2. Yeni bir parola girin ve penceredeki parolayı gösterildiği gibi onaylayın:
-
-   ![sıfırlama-parola](./media/howto-create-manage-server-portal/reset-password.png)
-
-3. Yeni parolayı kaydetmek için **Tamam** ' ı tıklatın.
-
-### <a name="change-the-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
-> [!NOTE]
-> Ölçeklendirme yalnızca bellek için Iyileştirilmiş hizmet katmanlarına Genel Amaçlı desteklenir, tersi de geçerlidir. Sunucu oluşturulduktan sonra, MySQL için Azure veritabanı 'nda sunucu oluşturulduktan sonra ve temel fiyatlandırma katmanında değişiklik yapmanız gerektiğini lütfen unutmayın.
-> 
-1. **Ayarlar**' ın altında bulunan **fiyatlandırma katmanı**' na tıklayın.
-2. Değiştirmek istediğiniz **fiyatlandırma katmanını** seçin.
+2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş**' u seçin. 
 
     ![değişiklik-Fiyatlandırma Katmanı](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
-4. Değişiklikleri kaydetmek için **Tamam**'a tıklayın. 
+    > [!NOTE]
+    > Katmanların değiştirilmesi, sunucunun yeniden başlatılmasına neden olur.
 
-### <a name="scale-vcores-updown"></a>Sanal çekirdekleri yukarı/aşağı ölçeklendirme
+4. Değişiklikleri kaydetmek için **Tamam ' ı** seçin.
 
-1. **Ayarlar**' ın altında bulunan **fiyatlandırma katmanı**' na tıklayın.
+
+### <a name="scale-vcores-up-or-down"></a>Sanal çekirdekleri yukarı veya aşağı ölçeklendirme
+
+1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını**seçin.
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **Vcore** ayarını değiştirin.
 
-    ![ölçek-işlem](./media/howto-create-manage-server-portal/scale-compute.png)
+    ![ölçek-işlem](./media/howto-create-manage-server-portal/scaling-compute.png)
 
-3. Değişiklikleri kaydetmek için **Tamam**'a tıklayın.
+    > [!NOTE]
+    > Sanal çekirdekleri ölçeklendirmek, sunucunun yeniden başlatılmasına neden olur.
+
+3. Değişiklikleri kaydetmek için **Tamam ' ı** seçin.
+
 
 ### <a name="scale-storage-up"></a>Depolama ölçeğini artırma
 
-1. **Ayarlar**' ın altında bulunan **fiyatlandırma katmanı**' na tıklayın.
+1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını**seçin.
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **depolama** ayarını değiştirin.
 
-    ![ölçek depolama](./media/howto-create-manage-server-portal/scale-storage.png)
+    ![ölçek depolama](./media/howto-create-manage-server-portal/scaling-storage.png)
 
-3. Değişiklikleri kaydetmek için **Tamam**'a tıklayın.
+    > [!NOTE]
+    > Depolama alanı aşağı ölçeklendirilmez.
 
-## <a name="delete-an-azure-database-for-mysql-server"></a>MySQL sunucusu için Azure veritabanı 'nı silme
+3. Değişiklikleri kaydetmek için **Tamam ' ı** seçin.
 
-1. Sunucuya **genel bakış**' da Sil ' e tıklayarak silme onaylama istemi ' ni açın.
 
-    ![sil](./media/howto-create-manage-server-portal/delete.png)
+## <a name="update-admin-password"></a>Yönetici parolasını Güncelleştir
+Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
-2. Çift onay için giriş kutusuna sunucunun adını yazın.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla**' yı seçin.
 
-    ![Onayla-Sil](./media/howto-create-manage-server-portal/confirm.png)
+   ![genel bakış](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
-3. Sunucu silmeyi onaylamak için **Sil** düğmesine tıklayın. Bildirim çubuğunda "başarıyla silinen MySQL Server" açılır penceresini bekleyin.
+2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
-## <a name="list-the-azure-database-for-mysql-databases"></a>MySQL veritabanları için Azure veritabanı 'nı listeleyin
-Sunucu **genel bakışta**, alt kısımdaki veritabanı kutucuğunu görene kadar aşağı kaydırın. Sunucudaki tüm veritabanları tabloda listelenir.
+   ![Sıfırlama-parola](./media/howto-create-manage-server-portal/reset-password.png)
 
-   ![veritabanlarını göster](./media/howto-create-manage-server-portal/show-databases.png)
+3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
 
-## <a name="show-details-of-an-azure-database-for-mysql-server"></a>MySQL sunucusu için Azure veritabanı 'nın ayrıntılarını gösterme
-Sunucu hakkındaki ayrıntılı bilgileri görüntülemek için **Ayarlar** ' ın altında bulunan **Özellikler**' e tıklayın.
 
-![properties](./media/howto-create-manage-server-portal/properties.png)
+## <a name="delete-a-server"></a>Bir sunucu silme
+
+Artık gerekmiyorsa, sunucunuzu silebilirsiniz. 
+
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
+
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
+
+2. Bu sunucunun silmek istediğiniz sunucu olduğunu onaylamak için, giriş kutusuna sunucunun adını yazın.
+
+    ![Onayla-Sil](./media/howto-create-manage-server-portal/confirm-delete.png)
+
+    > [!NOTE]
+    > Sunucu silindiğinde geri alınamaz.
+
+3. **Sil**’i seçin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-[Hızlı Başlangıç: Azure portal kullanarak MySQL için Azure veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Yedeklemeler ve sunucu geri yükleme](howto-restore-server-portal.md) hakkında bilgi edinin
+- [MySQL Için Azure veritabanı 'nda ayarlama ve izleme seçenekleri](concepts-monitoring.md) hakkında bilgi edinin

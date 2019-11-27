@@ -1,6 +1,6 @@
 ---
-title: Sample - Billing tags policy initiative
-description: This sample policy initiative (policy set) requires specified tag values defined in parameters for cost center and product name.
+title: Örnek-faturalandırma etiketleri ilke girişimi
+description: Bu örnek ilke girişimi (ilke kümesi), maliyet merkezi ve ürün adı için parametrelerde tanımlanmış belirtilen etiket değerlerini gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463378"
 ---
-# <a name="sample---billing-tags-policy-initiative"></a>Sample - Billing tags policy initiative
+# <a name="sample---billing-tags-policy-initiative"></a>Örnek-faturalandırma etiketleri ilke girişimi
 
 Bu ilke kümesi, maliyet merkezi ve ürün adı için belirtilen etiket değerlerini gerektirir. Gerekli etiketleri uygulamak ve zorlamak için yerleşik ilkeleri kullanır. Etiketler için gereken değerleri belirtin.
 
@@ -20,7 +20,7 @@ Bu ilke kümesi, maliyet merkezi ve ürün adı için belirtilen etiket değerle
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-You can deploy this template with [PowerShell](#deploy-with-powershell).
+Bu şablonu [PowerShell](#deploy-with-powershell)ile dağıtabilirsiniz.
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

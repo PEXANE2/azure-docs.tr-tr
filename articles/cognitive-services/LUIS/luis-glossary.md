@@ -1,7 +1,7 @@
 ---
-title: Glossary - LUIS
+title: Sözlük-LUSıS
 titleSuffix: Azure Cognitive Services
-description: The glossary explains terms that you might encounter as you work with the LUIS API Service.
+description: Terimler sözlüğü açıklanmaktadır LUIS API'si hizmeti ile çalışırken karşılaşabileceğiniz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -17,174 +17,174 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325956"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding glossary of common vocabulary and concepts
-The Language Understanding (LUIS) glossary explains terms that you might encounter as you work with the LUIS API Service.
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
+LUIS API'si hizmeti ile çalışırken, Language Understanding (LUIS), koşulları sözlüğü açıklar karşılaşabilirsiniz.
 
-## <a name="active-version"></a>Active version
+## <a name="active-version"></a>Etkin sürüm
 
-The active LUIS version is the version that receives any changes to the model. In the [LUIS](luis-reference-regions.md) portal, if you want to make changes to a version that is not the active version, you need to first set that version as active.
+Etkin LUIS sürüm model değişiklikleri alan sürümdür. [Luu](luis-reference-regions.md) portalında, etkin sürüm olmayan bir sürümde değişiklik yapmak istiyorsanız, önce bu sürümü etkin olarak ayarlamanız gerekir.
 
-## <a name="authoring"></a>Authoring
+## <a name="authoring"></a>Özgün
 
-Authoring is the ability to create, manage and deploy a [LUIS app](#luis-app), either using the [LUIS](luis-reference-regions.md) portal or the [authoring APIs](https://go.microsoft.com/fwlink/?linkid=2092087).
+Yazma, [LUIS](luis-reference-regions.md) portalını veya [yazma API 'Lerini](https://go.microsoft.com/fwlink/?linkid=2092087)kullanarak bir [LUIS uygulaması](#luis-app)oluşturma, yönetme ve dağıtma olanağıdır.
 
-## <a name="authoring-key"></a>Authoring Key
+## <a name="authoring-key"></a>Yazma anahtarı
 
-Previously named "Programmatic" key. Used to author the app. Not used for production-level endpoint queries. For more information, see [Key limits](luis-boundaries.md#key-limits).
+Daha önce "Programlama" anahtar adı. Uygulama yazmak için kullanılır. Üretim düzeyinde uç nokta sorgular için kullanılmaz. Daha fazla bilgi için bkz. [anahtar sınırları](luis-boundaries.md#key-limits).
 
-## <a name="batch-test-json-file"></a>Batch test JSON file
+## <a name="batch-test-json-file"></a>Batch test JSON dosyası
 
-Batch testing is the ability to validate a current LUIS app's model with a consistent and known test set of user utterances. The batch test is defined in a [JSON formatted file](luis-concept-batch-test.md#batch-file-format).
+Toplu iş testi, geçerli bir LUO uygulamasının modelini tutarlı ve bilinen bir kullanıcı tarafından yapılan test kümesiyle doğrulama yeteneğidir. Batch testi, [JSON biçimli bir dosyada](luis-concept-batch-test.md#batch-file-format)tanımlanır.
 
 Ayrıca bkz:
 * [Kavramlar ](luis-concept-batch-test.md)
-* [How-to](luis-how-to-batch-test.md)
+* [Nasıl yapılır](luis-how-to-batch-test.md)
 * [Öğretici](luis-tutorial-batch-testing.md)
 
-## <a name="collaborator"></a>Collaborator
+## <a name="collaborator"></a>Ortak çalışan
 
-A collaborator/contributor, is not the [owner](#owner) of the app, but has the same permissions to add, edit, and delete the intents, entities, utterances.
+Ortak çalışan/katkıda bulunan, uygulamanın [sahibi](#owner) değildir, ancak hedefleri, varlıkları ve atları eklemek, düzenlemek ve silmek için aynı izinlere sahiptir.
 
-## <a name="contributor"></a>Contributor
+## <a name="contributor"></a>Mcý
 
-A contributor is the same thing as a [collaborator](#collaborator).
+Katkıda bulunan, [ortak çalışan](#collaborator)ile aynı şeydir.
 
-## <a name="descriptor"></a>Descriptor
+## <a name="descriptor"></a>CI
 
-A descriptor is a [feature](#features) applied to a model at training time, including [phrase lists](#phrase-list) and [entities](#entity). 
+Bir tanımlayıcı, bir modele, [tümce listeleri](#phrase-list) ve [varlıklar](#entity)dahil olmak üzere eğitim zamanında uygulanan bir [özelliktir](#features) . 
 
-## <a name="domain"></a>Domain
+## <a name="domain"></a>Alanını
 
-In the LUIS context, a **domain** is an area of knowledge. Your domain is specific to your app area of knowledge. This can be a general area such as the travel agent app. A travel agent app can also be specific to just the areas of information for your company such as specific geographical locations, languages, and services.
+LUSıS bağlamında, **etki alanı** bir bilgi alanıdır. Etki alanınız, Bilgi Bankası uygulama bölgesine özeldir. Bu, seyahat aracı uygulaması gibi genel bir alan olabilir. Bir seyahat aracı uygulaması belirli alanlara yalnızca belirli coğrafi konumlar, diller ve Hizmetleri gibi şirketinizin bilgi olabilir.
 
-## <a name="endpoint"></a>Endpoint
+## <a name="endpoint"></a>Bkz
 
-The [LUIS endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) URL is where you submit LUIS queries after the [LUIS app](#luis-app) is authored and published. The endpoint URL contains the region of the published app as well as the app ID. You can find the endpoint on the **[Keys and endpoints](luis-how-to-azure-subscription.md)** page of your app, or you can get the endpoint URL from the [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+Lusıs [bitiş noktası](https://go.microsoft.com/fwlink/?linkid=2092356) URL 'si, luın [uygulaması](#luis-app) YAPıLDıKTAN ve yayımlandıktan sonra lusıs sorgularını gönderdiğiniz yerdir. Yayımlanmış uygulama ve bunun yanı sıra uygulama kimliği bölge uç nokta URL'sini içerir Uç noktasını uygulamanızın **[anahtarlar ve uç noktalar](luis-how-to-azure-subscription.md)** sayfasında bulabilir veya [uygulama bilgileri al](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API 'sinden Endpoint URL 'sini alabilirsiniz.
 
-## <a name="entity"></a>Entity
+## <a name="entity"></a>Varlığının
 
-[Entities](luis-concept-entity-types.md) are important words in [utterances](luis-concept-utterance.md) that describe information relevant to the [intent](luis-concept-intent.md), and sometimes they are essential to it. An entity is essentially a datatype in LUIS.
+[Varlıklar](luis-concept-entity-types.md) , [Amaç](luis-concept-intent.md)ile ilgili [bilgileri anlatan önemli](luis-concept-utterance.md) sözcüklerdir ve bazen bunun için önemli olan öneme sahiptir. Veri türü LUIS, aslında bir varlıktır.
 
-## <a name="f-measure"></a>F-measure
+## <a name="f-measure"></a>F ölçümü
 
-In [batch testing](luis-interactive-test.md#batch-testing), a measure of the test's accuracy.
+[Batch testinde](luis-interactive-test.md#batch-testing), testin doğruluğunu ölçer.
 
-## <a name="false-negative"></a>False negative (FN)
+## <a name="false-negative"></a>Yanlış negatif (FN)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the absence of the target intent/entity.
+[Toplu iş testinde](luis-interactive-test.md#batch-testing), veri noktaları, uygulamanızın hedef amaç/varlık yokluğunu yanlış tahmin ettiği noktaları temsil eder.
 
-## <a name="false-positive"></a>False positive (FP)
+## <a name="false-positive"></a>Yanlış pozitif (FP)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the existence of the target intent/entity.
+[Toplu iş testinde](luis-interactive-test.md#batch-testing), veri noktaları, uygulamanızın hedef amaç/varlık varlığını yanlış tahmin ettiği noktaları temsil eder.
 
-## <a name="features"></a>Features
+## <a name="features"></a>Özelliklerinde
 
-In machine learning, a [feature](luis-concept-feature.md) is a distinguishing trait or attribute of data that your system observes.
+Machine Learning 'de, bir [özellik](luis-concept-feature.md) sistem engelinizdeki verilerin bir ayırt edici nitelik veya özniteliğidir.
 
-## <a name="intent"></a>Intent
+## <a name="intent"></a>Varsayılandır
 
-An [intent](luis-concept-intent.md) represents a task or action the user wants to perform. It is a purpose or goal expressed in a user's input, such as booking a flight, paying a bill, or finding a news article. In LUIS, the intent prediction is based on the entire utterance. Entities, by comparison, are pieces of an utterance.
+[Amaç](luis-concept-intent.md) , kullanıcının gerçekleştirmek istediği bir görevi veya eylemi temsil eder. Bir amaç veya hedefin bir uçuştaki kayıt, fatura ödeme veya haber makalesinin bulma gibi bir kullanıcının giriş, ifade olduğundan. LUIS hedefi tahmin tüm utterance üzerinde temel alır. Varlıklar, buna karşılık olarak bir utterance parçalarıdır.
 
-## <a name="labeling"></a>Labeling
+## <a name="labeling"></a>Kapatma
 
-Labeling, or marking, is the process of associating a word or phrase in an intent's [utterance](#utterance) with an [entity](#entity) (datatype).
+Etiketleme veya işaretleme, bir [varlıkla](#entity) (veri türü) bir sözcüğün veya tümceciğin bir [amaca göre ilişkilendirilmesi](#utterance) işlemidir.
 
-## <a name="luis-app"></a>LUIS app
+## <a name="luis-app"></a>LUSıS uygulaması
 
-A LUIS app is a collection of language models for natural language processing including [intents](#intent), [entities](#entity), and labeled [utterances](#utterance).
+Bir LUSıS uygulaması, [amaçlar](#intent), [varlıklar](#entity)ve Etiketlendirme dahil olmak üzere doğal dil işleme için dil modellerinin [](#utterance)bir koleksiyonudur.
 
-## <a name="owner"></a>Owner
+## <a name="owner"></a>İnde
 
-Each app has one owner who is the person that created the app. The owner can add [collaborators](#collaborator).
+Her uygulamanın, uygulamayı oluşturan kişi olan bir sahip vardır. Sahip, [ortak çalışanlar](#collaborator)ekleyebilir.
 
-## <a name="pattern"></a>Patterns
-The previous Pattern feature is replaced with [Patterns](luis-concept-patterns.md). Use patterns to improve prediction accuracy by providing fewer training examples.
+## <a name="pattern"></a>Lıklarını
+Önceki desen özelliği [desenlerle](luis-concept-patterns.md)değiştirilmiştir. Desenler, daha az eğitim örnekleri sağlayarak tahmin doğruluğunu artırmak için kullanın.
 
-## <a name="phrase-list"></a>Phrase list
+## <a name="phrase-list"></a>Tümcecik listesi
 
-A [phrase list](luis-concept-feature.md) includes a group of values (words or phrases) that belong to the same class and must be treated similarly (for example, names of cities or products). An interchangeable list is treated as synonyms.
+[Tümcecik listesi](luis-concept-feature.md) , aynı sınıfa ait olan ve benzer şekilde (örneğin, şehirlerin veya ürünlerin adları) bir grup değer (sözcükler veya ifadeler) içerir. Değiştirilebilir bir listesi, eş anlamlı sözcükler kabul edilir.
 
-## <a name="prebuilt-domains"></a>Prebuilt domain
+## <a name="prebuilt-domains"></a>Önceden oluşturulmuş etki alanı
 
-A [prebuilt domain](luis-how-to-use-prebuilt-domains.md) is a LUIS app configured for a specific domain such as home automation (HomeAutomation) or restaurant reservations (RestaurantReservation). The intents, utterances, and entities are configured for this domain.
+[Önceden oluşturulmuş bir etki alanı](luis-how-to-use-prebuilt-domains.md) , giriş Otomasyonu (homeautomation) veya restoran ayırmaları (Restoran antreservatıon) gibi belirli bir etki alanı için YAPıLANDıRıLMıŞ bir LUL uygulamasıdır. Hedefleri, konuşma ve varlıklar, bu etki alanı için yapılandırılır.
 
-## <a name="prebuilt-entity"></a>Prebuilt entity
+## <a name="prebuilt-entity"></a>Önceden oluşturulmuş varlık
 
-A [prebuilt entity](luis-prebuilt-entities.md) is an entity LUIS provides for common types of information such as number, URL, and email. You choose to add a prebuilt entity to your application.
+[Önceden oluşturulmuş bir varlık](luis-prebuilt-entities.md) , sayı, URL ve e-posta gibi yaygın bilgi türleri IÇIN bir lusıs sağlar. Uygulamanız için önceden oluşturulmuş bir varlık eklemek seçin.
 
-## <a name="precision"></a>Precision
-In [batch testing](luis-interactive-test.md#batch-testing), precision (also called positive predictive value) is the fraction of relevant utterances among the retrieved utterances.
+## <a name="precision"></a>Duyarlılık
+[Toplu iş testinde](luis-interactive-test.md#batch-testing)duyarlık (pozitif tahmine dayalı değer olarak da bilinir), alınan bildirimler arasında ilgili söylerin kesiri olur.
 
-## <a name="programmatic-key"></a>Programmatic key
+## <a name="programmatic-key"></a>Programlı anahtar
 
-Renamed to [authoring key](#authoring-key).
+[Yazma anahtarı](#authoring-key)olarak yeniden adlandırıldı.
 
-## <a name="publish"></a>Publish
+## <a name="publish"></a>Yayınlamanız
 
-Publishing means making a LUIS active version available on either the staging or production [endpoint](#endpoint).  
+Yayımlama, bir LUSıS etkin sürümünü hazırlama veya üretim [uç noktasında](#endpoint)kullanılabilir hale getirmek anlamına gelir.  
 
-## <a name="quota"></a>Quota
+## <a name="quota"></a>Kotasının
 
-LUIS quota is the limitation of the [Azure subscription tier](https://aka.ms/luis-price-tier). The LUIS quota can be limited by both requests per second (HTTP Status 429) and total requests in a month (HTTP Status 403).
+LUSıS kotası, [Azure abonelik katmanının](https://aka.ms/luis-price-tier)kısıtlamasıdır. Her iki istek / saniye (HTTP durum 429) ve toplam istek (HTTP durum 403) ayda LUIS kota sınırlı olabilir.
 
-## <a name="recall"></a>Recall
-In [batch testing](luis-interactive-test.md#batch-testing), recall (also known as sensitivity), is the ability for LUIS to generalize.
+## <a name="recall"></a>Çekmenin
+[Toplu iş testinde](luis-interactive-test.md#batch-testing)geri çek (duyarlılık olarak da bilinir), luto Genelleştirmenin bir özelliğidir.
 
-## <a name="semantic-dictionary"></a>Semantic dictionary
-A semantic dictionary is provided on the List entity page as well as the Phrase list page. The semantic dictionary provides suggestions of words based on the current scope.
+## <a name="semantic-dictionary"></a>Anlamsal sözlük
+İfade listesi sayfası yanı sıra listesi varlık sayfası üzerinde bir anlam sözlük sağlanır. Anlam sözlük bir kelimelerin geçerli kapsamda önerileri sağlar.
 
-## <a name="sentiment-analysis"></a>Sentiment Analysis
-Sentiment analysis provides positive or negative values of the utterances provided by [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+## <a name="sentiment-analysis"></a>Yaklaşım Analizi
+Yaklaşım analizi, [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/)tarafından sağlanan sensülebilirlik değerlerinin pozitif veya negatif değerlerini sağlar.
 
-## <a name="speech-priming"></a>Speech priming
+## <a name="speech-priming"></a>Konuşma primi
 
-Speech priming allows your speech service to be primed with your LUIS model.
+Konuşma Hazırlama işlemi aracılığıyla LUIS modelinize primed, konuşma hizmeti sağlar.
 
-## <a name="spelling-correction"></a>Spelling correction
+## <a name="spelling-correction"></a>Yazım denetimi düzeltmesi
 
-Enable Bing spell checker to correct misspelled words in the utterances before prediction.
+Bing yazım denetleyicisi önce tahmin uzunluğu yanlış yazılan sözcükleri düzeltmek etkinleştirin.
 
-## <a name="starter-key"></a>Starter key
+## <a name="starter-key"></a>Başlangıç anahtarı
 
-A free key to use when first starting out using LUIS.
+İlk olarak lusıs kullanarak ilk kez başlatıldığında kullanılacak olan ücretsiz bir anahtar.
 
-## <a name="structure"></a>Structure
+## <a name="structure"></a>Yapısı
 
-Add structure to a machine-learned entity to provide subcomponents with descriptors (features) and constraints (regular expression or list entities).
+Tanımlayıcılar (Özellikler) ve kısıtlamalar (normal ifade veya liste varlıkları) ile alt bileşenler sağlamak için makineye öğrenilen bir varlığa yapı ekleyin.
 
-## <a name="subscription-key"></a>Subscription key
+## <a name="subscription-key"></a>Abonelik anahtarı
 
-The subscription key is the **prediction endpoint** key associated with the LUIS service [you created in Azure](luis-how-to-azure-subscription.md). This key is not the [authoring key](#programmatic-key). If you have an endpoint key, it should be used for any endpoint requests instead of the authoring key. You can see your current endpoint key inside the endpoint URL at the bottom of [**Keys and endpoints** page](luis-how-to-azure-subscription.md) in [LUIS](luis-reference-regions.md) website. It is the value of **subscription-key** name/value pair.
+Abonelik anahtarı, [Azure 'da oluşturduğunuz](luis-how-to-azure-subscription.md)Luo hizmeti ile ilişkili **tahmin uç noktası** anahtarıdır. Bu anahtar [yazma anahtarı](#programmatic-key)değil. Bir uç noktası anahtarı varsa, tüm uç nokta istekleri yazma anahtarı yerine kullanılmalıdır. Geçerli uç nokta anahtarınızı, [lusıs](luis-reference-regions.md) Web sitesindeki [ **anahtarlar ve uç noktalar** sayfasının](luis-how-to-azure-subscription.md) alt kısmında bulunan uç nokta URL 'si içinde görebilirsiniz. Bu, **abonelik anahtar** adı/değer çiftinin değeridir.
 
-## <a name="test"></a>Test
+## <a name="test"></a>Sınamanız
 
-[Testing](luis-interactive-test.md#test-your-app) a LUIS app means passing an utterance to LUIS and viewing the JSON results.
+Bir lusıs uygulamasını [Test](luis-interactive-test.md#test-your-app) etmek, luya 'ya bir söylenişi ve JSON sonuçlarını görüntüleme anlamına gelir.
 
-## <a name="timezoneoffset"></a>Timezone offset
+## <a name="timezoneoffset"></a>Saat dilimi kayması
 
-The endpoint includes timezoneOffset. This is the number in minutes you want to add or remove from the datetimeV2 prebuilt entity. For example, if the utterance is "what time is it now?", the datetimeV2 returned is the current time for the client request. If your client request is coming from a bot or other application that is not the same as your bot's user, you should pass in the offset between the bot and the user.
+Uç nokta timezoneOffset içerir. Bu ekleyin veya datetimeV2 kaldırmak istediğiniz dakika sayısıdır önceden oluşturulmuş varlık. Utterance Örneğin, "ne zaman artık sağlıyor?", döndürülen datetimeV2 istemci isteği için geçerli zaman ise. Bir bot veya botunuzun ait kullanıcı ile aynı değil başka bir uygulama, istemci istek geliyorsa, bot ve kullanıcı uzaklığı geçmelidir.
 
-See [Change time zone of prebuilt datetimeV2 entity](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
+Bkz. [önceden oluşturulmuş datetimeV2 varlığının saat dilimini değiştirme](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
-## <a name="token"></a>Token
-A token is the smallest unit that can be labeled in an entity. Tokenization is based on the application's [culture](luis-language-support.md#tokenization).
+## <a name="token"></a>Simgesinde
+Bir belirteç varlık etiketli en küçük birimdir. Simgeleştirme, uygulamanın [kültürünü](luis-language-support.md#tokenization)temel alır.
 
-## <a name="train"></a>Train
+## <a name="train"></a>Eğit
 
-Training is the process of teaching LUIS about any changes to the active version since the last training.
+Eğitim süreci, son eğitiminden bu yana etkin sürümde yapılan tüm değişiklikler hakkında eğitme işlemidir.
 
-## <a name="true-negative"></a>True negative (TN)
+## <a name="true-negative"></a>True negatif (TN)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the absence of the target intent/entity.
+[Toplu iş testinde](luis-interactive-test.md#batch-testing), veri noktaları, uygulamanızın hedef amaç/varlık yokluğunu doğru bir şekilde tahmin ettiği noktaları temsil eder.
 
-## <a name="true-positive"></a>True positive (TP)
+## <a name="true-positive"></a>True pozitif (TP)
 
-In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the existence of the target intent/entity.
+[Toplu iş testinde](luis-interactive-test.md#batch-testing), veri noktaları, uygulamanızın hedef hedefin/varlığın varlığını doğru bir şekilde tahmin ettiği noktaları temsil eder.
 
-## <a name="utterance"></a>Utterance
+## <a name="utterance"></a>Söylenişi
 
-An utterance is a natural language phrase such as "book 2 tickets to Seattle next Tuesday". Example utterances are added to the intent.
+Bir utterance, "Seattle sonraki Salı kitap 2 bilet" gibi doğal dil bir terimdir. Örnek konuşma ıntent'e eklenir.
 
-## <a name="version"></a>Version
+## <a name="version"></a>Sürüm
 
-A LUIS [version](luis-how-to-manage-versions.md) is a specific data model associated with a LUIS app ID and the published endpoint. Every LUIS app has at least one version.
+Bir LUSıS [sürümü](luis-how-to-manage-versions.md) , bir lusıs uygulama kimliğiyle ve yayımlanan uç noktayla ilişkili belirli bir veri modelidir. Her LUIS uygulaması en az bir sürüm var.

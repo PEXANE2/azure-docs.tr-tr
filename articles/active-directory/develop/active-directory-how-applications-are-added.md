@@ -14,26 +14,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/04/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
+ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803442"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532992"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
-Azure AD 'de uygulamaların iki gösterimi vardır: 
+Azure AD 'de uygulamaların iki gösterimi vardır:
+
 * [Uygulama nesneleri](app-objects-and-service-principals.md#application-object) - [özel durumlar](#notes-and-exceptions)olsa da, uygulama nesneleri bir uygulamanın tanımı olarak düşünülebilir.
 * [Hizmet sorumluları](app-objects-and-service-principals.md#service-principal-object) , bir uygulamanın örneği olarak düşünülebilir. Hizmet sorumluları genellikle bir uygulama nesnesine başvurur ve tek bir uygulama nesnesine dizinler arasında birden çok hizmet sorumlusu tarafından başvurulabilir.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Uygulama nesneleri nedir ve nereden geliyor?
+
 Uygulama [kayıt](https://aka.ms/appregistrations) deneyimi aracılığıyla Azure Portal [uygulama nesnelerini](app-objects-and-service-principals.md#application-object) yönetebilirsiniz. Uygulama nesneleri, uygulamayı Azure AD 'ye anlatmaktadır ve uygulamanın tanımı olarak düşünülebilir ve bu da hizmetin, ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi sahibi olabilir. Uygulama nesnesi, diğer dizinlerde hizmet sorumlularını destekleyen çok kiracılı bir uygulama olsa bile, yalnızca kendi giriş dizininde bulunur. Uygulama nesnesi aşağıdakilerden herhangi birini (ve burada açıklanmayan ek bilgileri) içerebilir:
+
 * Ad, logo ve Yayımcı
 * Yeniden yönlendirme URI 'Leri
 * Gizlilikler (uygulamanın kimliğini doğrulamak için kullanılan simetrik ve/veya asimetrik anahtarlar)
@@ -45,13 +48,15 @@ Uygulama [kayıt](https://aka.ms/appregistrations) deneyimi aracılığıyla Azu
 * Proxy meta verileri ve yapılandırması
 
 Uygulama nesneleri, aşağıdakiler dahil olmak üzere birden çok yol yoluyla oluşturulabilir:
+
 * Azure portal uygulama kayıtları
 * Visual Studio kullanarak yeni bir uygulama oluşturma ve bunu Azure AD kimlik doğrulaması kullanacak şekilde yapılandırma
 * Yönetici, uygulama galerisinden bir uygulama eklediğinde (bir hizmet sorumlusu de oluşturur)
-* Yeni bir uygulama oluşturmak için Microsoft Graph API 'sini, Azure AD Graph API veya PowerShell 'i kullanma
+* Yeni bir uygulama oluşturmak için Microsoft Graph API veya PowerShell kullanma
 * Birçok başka geliştirici deneyimi de dahil olmak üzere Azure 'da ve API Explorer deneyimlerindeki çeşitli geliştiriciler
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Hizmet sorumlusu nedir ve nereden geliyor?
+
 [Kurumsal uygulamalar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) deneyimi aracılığıyla Azure Portal [hizmet sorumlularını](app-objects-and-service-principals.md#service-principal-object) yönetebilirsiniz. Hizmet sorumluları, Azure AD 'ye bağlanan bir uygulamayı yönetme ve dizininizde uygulamanın örneği olarak kabul edilebilir. Belirli bir uygulama için, en fazla bir uygulama nesnesi ("ana" dizinde kayıtlı) ve üzerinde çalıştığı her dizinde uygulamanın örneklerini temsil eden bir veya daha fazla hizmet sorumlusu nesnesi olabilir. 
 
 Hizmet sorumlusu şunlar olabilir:
@@ -122,7 +127,7 @@ Uygulamalar, aşağıdakileri içeren bir veya daha fazla hizmetten yararlanmak 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD örneğinize uygulama ekleme izni var mı?
 
-Yalnızca genel yöneticilerin yapabilmesine (uygulama galerisinden uygulama ekleme ve uygulamayı uygulama proxy 'Si kullanacak şekilde yapılandırma gibi) bazı görevler, varsayılan olarak, dizininizdeki tüm kullanıcıların uygulama nesnelerini kaydetme hakları vardır Bunlar, hangi uygulamaların paylaştıkları ve izin üzerinden kurumsal verilerine erişim izni verdiği konusunda geliştirirler. Bir kişi, bir uygulamada oturum açmak ve izin vermek için dizininizdeki ilk kullanıcı ise kiracınızda bir hizmet sorumlusu oluşturur; Aksi takdirde, izin verme bilgileri mevcut hizmet sorumlusu üzerinde depolanır.
+Yalnızca genel yöneticilerin yapabilecekleri bazı görevler vardır (uygulama galerisinden uygulama ekleme ve uygulama proxy 'sini kullanmak üzere uygulama yapılandırma gibi), dizininizdeki tüm kullanıcıların, kendi geliştirdikleri uygulama nesnelerini kaydetme ve izin aracılığıyla kurumsal verilerine erişim izni verme hakları vardır. Bir kişi, bir uygulamada oturum açmak ve izin vermek için dizininizdeki ilk kullanıcı ise kiracınızda bir hizmet sorumlusu oluşturur; Aksi takdirde, izin verme bilgileri mevcut hizmet sorumlusu üzerinde depolanır.
 
 Kullanıcıların uygulamalara kaydolmasına ve izin vermesini sağlamak, başlangıçta bununla ilgili olarak devam edebilir, ancak şunları aklınızda tutun:
 

@@ -18,7 +18,7 @@ Aşağıdaki görüntüde, Markdown ve kod hücreleri tümünü bir araya göreb
 
 ![Standart görünümünde bir not defteri](media/slideshow/slideshow-notebook-view.png)
 
-Slayt gösterisi başlatmak, ilk hücrenin tarayıcı dolduracak şekilde genişletilir burada **X** slayt gösterisi, sol üst çıkar **?** alt sol görüntüler slaytlar arasında klavye kısayolları ve sağ alt köşesinde oklar gidin:
+Bir slayt gösterisi başlattığınızda, ilk hücre tarayıcıyı dolduracak şekilde genişletilir ve sol üst taraftaki **X** **, slayt** gösterisinin çıkar. alt sol görüntüler slaytlar arasında klavye kısayolları ve sağ alt köşesinde oklar gidin:
 
 ![Slayt gösterisi modunda bir not defteri](media/slideshow/slideshow-slide-view.png)
 
@@ -32,11 +32,11 @@ Bir not defteri için slayt gösterisi hazırlama birincil iki etkinlik içerir:
 
 Rastgele bir not alın ve bunu kullanmak için bir slayt gösterisi, tüm hücreleri birlikte önlenmiş ve içeriğin tarayıcı penceresinin alt kısmındaki gizli genellikle bulun. Etkili bir sunum yapmak, daha sonra bir slayt gösterisi türü slayt gösterisi hücresi araç çubuğunu kullanarak her hücreye atamanız gerekir:
 
-1. Üzerinde **görünümü** menüsünde **hücresi araç** > **slayt gösterisi**:
+1. **Görünüm** menüsünde **hücre araç çubuğu** > **Slayt**çubuğunu seçin:
 
     ![Hücre slayt gösterisi araç kapatma](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. A **slayt türü** sağ üst kısmındaki her hücreye not defterindeki açılan bulunur:
+1. Not defterindeki her hücrenin sağ üst köşesinde bir **slayt türü** açılır listesi görünür:
 
     ![Hücre slayt gösterisi araç çubuğu](media/slideshow/slideshow-cell-toolbar.png)
 
@@ -53,11 +53,11 @@ Rastgele bir not alın ve bunu kullanmak için bir slayt gösterisi, tüm hücre
     | Atla | Hücre slayt gösterisi olarak gösterilmez. |
     | Notlar | Slayt gösterisi olarak gösterilmez Konuşmacı notları, hücre içerir. |
 
-1. Başlangıçta seçilecek yardımcı **slayt** her hücre için. Ardından, slayt gösterisi çalıştırın ve uygun ayarlamaları yapın.
+1. Başlangıçta, her hücre için **Slayt** seçmek yararlıdır. Ardından, slayt gösterisi çalıştırın ve uygun ayarlamaları yapın.
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>Örnek: parça hücreleri maddesi öğeleri için
 
-Tek bir yerde Markdown hücrede slayt üstbilgi görünür madde işaretleri slayttaki yapmak **slayt** yazın, sonra ayrı bir Markdown hücre her madde işareti koyun **parça** türü:
+Bir slaytta yer alan madde işaretlerinin tek tek görünmesi için, slayt başlığını **Slayt** türüyle bir markaşağı hücresine yerleştirip, her bir madde işaretini **parça** türüyle ayrı bir markaşağı hücresine yerleştirin:
 
 ![Birden fazla Markdown hücre maddesi öğeleri için oluşturma örneği](media/slideshow/slideshow-fragments.png)
 
@@ -65,13 +65,13 @@ Slayt gösterisi madde işaretleri aynı hücrede olduğunda, daha fazla dikey d
 
 ## <a name="run-the-slideshow"></a>Slayt gösterisi çalıştırın
 
-1. Markdown hücreler düzenlenebilir, aksi durumda görünürler, HTML işlemek için bunları çalıştırmaya karar emin *olarak* slayt gösterisi Markdown'da.
+1. Herhangi bir Markaşağı hücresini düzenlediyseniz, bunları HTML olarak işlemek için çalıştırdığınızdan emin olun, aksi takdirde slayt gösterisinde markaşağı *olarak* görünürler.
 
-1. Yapılandırdıktan sonra **slayt türü** her hücre için slayt gösterisi başlatmak ve ardından istediğiniz içeren hücreyi seçin **Enter/çıkış YÜKSELMEYE slayt gösterisi** ana araç çubuğunda:
+1. Her hücre için **Slayt türünü** yapılandırdıktan sonra, slayt gösterisinin başlatılacağı hücreyi seçin, sonra ana araç çubuğundaki **Slayt gösterisini gir/çık** düğmesini seçin:
 
     ![Ana araç çubuğunda girin/çıkış YÜKSELMEYE slayt gösterisi](media/slideshow/slideshow-start.png)
 
-1. Parçaları yanı sıra slaytları arasında gezinmek için sol ve sağ ok Gezinti denetimi olarak kullanın. Denetimdeki metin temsil eden bir sayıyı gösteren *slide.sub slayt*.
+1. Parçaları yanı sıra slaytları arasında gezinmek için sol ve sağ ok Gezinti denetimi olarak kullanın. Denetimdeki metin, *Slide. alt slaytı*temsil eden bir sayı gösterir.
 
     ![Slayt gösterisi gezinme kontrolü](media/slideshow/slideshow-navigation-control.png)
 
@@ -86,13 +86,13 @@ Slayt gösterisi madde işaretleri aynı hücrede olduğunda, daha fazla dikey d
     ![Kodu hücreyi çıkış slayt gösterisi görünür.](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Hücre çıkış bir slayt gösterisi hücresinde bir parçası olarak kabul edilir. Not Defteri veya Slayt Gösterisi Görünümü'nde bir hücre çalıştırırsanız, çıkış diğer görünümünde de görüntülenir. Çıkışı silmek için kullanın **hücre** > **geçerli çıkışları** > **Temizle** (geçerli hücreyi) komutunu veya **hücre**  >  **Tüm çıkışları** > **Temizle** (için tüm hücreleri).
+    > Hücre çıkış bir slayt gösterisi hücresinde bir parçası olarak kabul edilir. Not Defteri veya Slayt Gösterisi Görünümü'nde bir hücre çalıştırırsanız, çıkış diğer görünümünde de görüntülenir. Çıktıyı temizlemek için, **Şu anki çıktıları** > **hücreyi** kullanın > **Temizle** komutu (geçerli hücre Için) veya **hücre** > **tüm çıktılar** > **Temizle** (tüm hücreler için).
 
-1. Slayt gösterisi ile işiniz bittiğinde kullanın **X** not defteri görünümüne dönmek için.
+1. Slayt gösterisine işiniz bittiğinde, **X** ' i kullanarak not defteri görünümüne geri dönün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Nasıl yapılır: projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md)
-- [Nasıl yapılır: yükleme paketleri içinde bir not defteri](install-packages-jupyter-notebook.md)
+- [Nasıl yapılır: projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
+- [Nasıl yapılır: bir not defteri içinden paket yüklemesi](install-packages-jupyter-notebook.md)
 - [Nasıl yapılır: veri dosyalarıyla çalışma](work-with-project-data-files.md)
-- [Nasıl yapılır: veri kaynaklarına erişim](access-data-resources-jupyter-notebooks.md)
+- [Nasıl yapılır: veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)

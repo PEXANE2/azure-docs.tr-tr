@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce tag match pattern
-description: This sample policy definition requires that resources meet the match pattern for tag value for a specific date format.
+title: Örnek-uygulama etiketi eşleşme deseninin
+description: Bu örnek ilke tanımı, kaynakların belirli bir tarih biçimi için etiket değeri için eşleşme modelini karşılamasını gerektirir.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: a2d5f85f02a2197e9e213b7e9fd7dfec7adc7813
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463350"
 ---
-# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Sample - Enforce tag match pattern for tag values
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Örnek-Etiket değerleri için etiket eşleşme modelini Uygula
 
 Bir eşleme deseniyle eşleşen bir etiket değerini zorunlu tutun. İlke kuralında izin verilen deseni belirtin.
 
@@ -24,7 +24,7 @@ Bir eşleme deseniyle eşleşen bir etiket değerini zorunlu tutun. İlke kural�
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
+[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

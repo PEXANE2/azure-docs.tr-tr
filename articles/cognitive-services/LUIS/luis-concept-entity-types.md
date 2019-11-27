@@ -1,7 +1,7 @@
 ---
-title: Entity types - LUIS
+title: Varlık türleri-LUSıS
 titleSuffix: Azure Cognitive Services
-description: 'Entities extract data from the utterance. Entity types give you predictable extraction of data. There are two types of entities: machine-learned and non-machine-learned. It is important to know which type of entity you are working with in utterances.'
+description: "Varlıklar, utterance 'ten veri ayıklar. Varlık türleri, verilerin tahmin edilebilir bir şekilde ayıklanmasını sağlar. İki tür varlık vardır: makine tarafından öğrenilen ve makine tarafından öğrenilmemiş. Ne tür bir varlık ile birlikte çalıştığınızı bilmeniz önemlidir."
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,66 +18,66 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422572"
 ---
-# <a name="entities-and-their-purpose-in-luis"></a>Entities and their purpose in LUIS
+# <a name="entities-and-their-purpose-in-luis"></a>ISIS 'de varlıklar ve amaçları
 
-The primary purpose of entities is to give the client application predictable extraction of data. An _optional_, secondary purpose is to boost the prediction of the intent or other entities with descriptors.
+Varlıkların birincil amacı, istemci uygulamaya tahmin edilebilir veri ayıklama hakkı vermektir. _İsteğe bağlı_, ikincil amaç, tanımlayıcı içeren amaç veya diğer varlıkların tahminini artırmak için kullanılır.
 
-There are two types of entities:
+İki tür varlık vardır:
 
-* machine-learned - from context
-* non-machine-learned - for exact text matches, pattern matches, or detection by prebuilt entities
+* makine tarafından öğrenilen-bağlam
+* makine tarafından öğrenilmeyen-tam metin eşleşmeleri, model eşleşmeleri veya önceden oluşturulmuş varlıklar tarafından algılama için
 
-Machine-learned entities provide the widest range of data extraction choices. Non-machine-learned entities work by text matching and may be used independently or as a [constraint](#design-entities-for-decomposition) on a machine-learned entity.
+Makine tarafından öğrenilen varlıklar, en geniş veri ayıklama seçeneği yelpazesi sağlar. Makine tarafından öğrenilen varlıklar, metin eşleştirme ile çalışır ve makine tarafından öğrenilen bir varlıkta bağımsız olarak veya [kısıtlama](#design-entities-for-decomposition) olarak kullanılabilir.
 
-## <a name="entities-represent-data"></a>Entities represent data
+## <a name="entities-represent-data"></a>Varlık verilerini temsil eder.
 
-Entities are data you want to pull from the utterance, such as names, dates, product names, or any significant group of words. An utterance can include many entities or none at all. A client application _may_ need the data to perform its task.
+Varlıklar, adlar, tarihler, ürün adları veya herhangi bir önemli sözcük grubu gibi, utterklerden çekmek istediğiniz verilerden oluşur. Bir utterance birçok varlığın veya hiçbiri hiç içerebilir. İstemci uygulaması, görevini gerçekleştirmek için verilere gereksinim duyuyor _olabilir_ .
 
-Entities need to be labeled consistently across all training utterances for each intent in a model.
+Varlıkların, bir modeldeki her amaç için tüm eğitimlere sürekli olarak etiketlenmesi gerekir.
 
- You can define your own entities or use prebuilt entities to save time for common concepts such as [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal](luis-reference-prebuilt-ordinal.md), [email](luis-reference-prebuilt-email.md), and [phone number](luis-reference-prebuilt-phonenumber.md).
+ [DatetimeV2](luis-reference-prebuilt-datetimev2.md), [Ordinal](luis-reference-prebuilt-ordinal.md), [e-posta](luis-reference-prebuilt-email.md)ve [telefon numarası](luis-reference-prebuilt-phonenumber.md)gibi yaygın kavramlara zaman kazanmak için kendi varlıklarınızı tanımlayabilir veya önceden oluşturulmuş varlıkları kullanabilirsiniz.
 
-|İfade|Kurum|Veriler|
+|İfade|Varlık|Veriler|
 |--|--|--|
-|Buy 3 tickets to New York|Prebuilt number<br>Location.Destination|3<br>New York|
-|Buy a ticket from New York to London on March 5|Location.Origin<br>Location.Destination<br>Prebuilt datetimeV2|New York<br>Londra<br>5 Mart 2018|
+|New York 3 bilet satın alma|Önceden oluşturulmuş numarası<br>Location.Destination|3<br>New York|
+|5 Mart Londra New York'tan bilet satın alma|Location.Origin<br>Location.Destination<br>Önceden oluşturulmuş datetimeV2|New York<br>Londra<br>5 Mart 2018|
 
-### <a name="entities-are-optional"></a>Entities are optional
+### <a name="entities-are-optional"></a>Varlıklar isteğe bağlıdır
 
-While intents are required, entities are optional. You do not need to create entities for every concept in your app, but only for those required for the client application to take action.
+Varlıklar, amacı gerekli olsa da, isteğe bağlıdır. Uygulamanızdaki her kavram için varlık oluşturmanız gerekmez, ancak yalnızca istemci uygulamasının işlem yapması için gerekli olanlar için.
 
-If your utterances do not have data the client application requires, you do not need to add entities. As your application develops and a new need for data is identified, you can add appropriate entities to your LUIS model later.
+Utterklerinizin istemci uygulaması için gereken verileri yoksa, varlık eklemeniz gerekmez. Uygulamanız geliştirdiğinden ve veriler için yeni bir gereksinim belirlendiğinde, daha sonra LUO modelinize uygun varlıkları ekleyebilirsiniz.
 
-## <a name="entity-compared-to-intent"></a>Entity compared to intent
+## <a name="entity-compared-to-intent"></a>Intent'e karşılaştırıldığında varlık
 
-The entity represents a data concept inside the utterance that you want extracted.
+Varlık, ayıklanarak ayıklanmasını istediğiniz bir veri kavramını temsil eder.
 
-An utterance may optionally include entities. By comparison, the prediction of the intent for an utterance is _required_ and represents the entire utterance. LUIS requires example utterances are contained in an intent.
+Bir söylenişi, isteğe bağlı olarak varlıklar içerebilir. Karşılaştırmayla, bir söylenişi için amaç tahmini _gereklidir_ ve tüm söylik 'i temsil eder. LU, örnek söyleyeni bir amaç içinde bulundurmaktır.
 
-Consider the following 4 utterances:
+Aşağıdaki 4 göz önünde bulundurun:
 
-|İfade|Intent predicted|Entities extracted|Açıklama|
+|İfade|Tahmin hedefi|Ayıklanan varlıklar|Açıklama|
 |--|--|--|--|
-|Yardım|help|-|Nothing to extract.|
-|Send something|sendSomething|-|Nothing to extract. The model has not been trained to extract `something` in this context, and there is no recipient either.|
-|Send Bob a present|sendSomething|`Bob`, `present`|The model has been trained with the [personName](luis-reference-prebuilt-person.md) prebuilt entity, which has extracted the name `Bob`. A machine-learned entity has been used to extract `present`.|
-|Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|The two important pieces of data, `Bob` and the `box of chocolates`, have been extracted by entities.|
+|Yardım|Yardım|-|Ayıklanacak bir şey yok.|
+|Bir şey gönder|Sendbir şey|-|Ayıklanacak bir şey yok. Model, bu bağlamda `something` ayıklamak üzere eğitilmedi ve herhangi bir alıcı yok.|
+|Emre 'yi mevcut gönder|Sendbir şey|`Bob`, `present`|Model, `Bob`adı ayıklanmış olan [PersonName](luis-reference-prebuilt-person.md) önceden oluşturulmuş varlıkla eğitildi. `present`ayıklamak için makine tarafından öğrenilen bir varlık kullanıldı.|
+|Emre 'nin bir çikolata kutusunu Gönder|Sendbir şey|`Bob`, `box of chocolates`|`Bob` ve `box of chocolates`iki önemli veri parçası varlıklar tarafından ayıklandı.|
 
-## <a name="design-entities-for-decomposition"></a>Design entities for decomposition
+## <a name="design-entities-for-decomposition"></a>Ayrıştırma için varlıkları tasarlama
 
-It is good entity design to make your top-level entity a machine-learned entity. This allows for changes to your entity design over time and the use of **subcomponents** (child entities), optionally with **constraints** and **descriptors**, to decompose the top-level entity into the parts needed by the client application.
+En üst düzey varlığınızı makine tarafından öğrenilen bir varlık haline getirmek için iyi bir varlık tasarımdır. Bu, en üst düzey varlığı istemci uygulaması için gereken parçalara ayırmak için zaman içinde varlık tasarımınızda, isteğe bağlı olarak **kısıtlamalar** ve **tanımlayıcılarla**yapılan değişikliklere izin verir.
 
-Designing for decomposition allows LUIS to return a deep degree of entity resolution to your client application. This allows your client application to focus on business rules and leave data resolution to LUIS.
+Ayrıştırma için tasarlamak, LUSıS 'nin istemci uygulamanıza derin bir varlık çözümlemesi döndürmesini sağlar. Bu, istemci uygulamanızın iş kurallarına odaklanılmasını ve veri çözünürlüğünü LUO 'ya bırakmasını sağlar.
 
-### <a name="machine-learned-entities-are-primary-data-collections"></a>Machine-learned entities are primary data collections
+### <a name="machine-learned-entities-are-primary-data-collections"></a>Makine tarafından öğrenilen varlıklar birincil veri koleksiyonlarıdır
 
-[**Machine-learned entities**](tutorial-machine-learned-entity.md) are the top-level data unit. Subcomponents are child entities of machine-learned entities.
+[**Makine tarafından öğrenilen varlıklar**](tutorial-machine-learned-entity.md) , en üst düzey veri birimidir. Alt bileşenler, makine tarafından öğrenilen varlıkların alt varlıklarıdır.
 
-A machine-learned entity triggers based on the context learned through training utterances. **Constraints** are optional rules applied to a machine-learned entity that further constrains triggering based on the exact-text matching definition of a non-machine-learned entity such as a [List](reference-entity-list.md) or [Regex](reference-entity-regular-expression.md). For example, a `size` machine-learned entity can have a constraint of a `sizeList` list entity that constrains the `size` entity to trigger only when values contained within the `sizeList` entity are encountered.
+Makine tarafından öğrenilen bir varlık, eğitim dıkları aracılığıyla öğrenilmiş içeriğe göre tetiklenir. **Kısıtlamalar** , bir [liste](reference-entity-list.md) veya [Regex](reference-entity-regular-expression.md)gibi makine tarafından öğrenilen bir varlığın tam metin eşleştirme tanımına bağlı olarak, tetiklemenin daha fazla kısıtlanacak makine tarafından öğrenilen bir varlığa uygulanan isteğe bağlı kurallardır. Örneğin, `size` makine tarafından öğrenilen bir varlık, `size` varlığını yalnızca `sizeList` varlığı içinde yer alan değerler ile karşılaşıldığında tetiklemek üzere kısıtlayan bir `sizeList` listesi varlığının kısıtlamasına sahip olabilir.
 
-[**Descriptors**](luis-concept-feature.md) are features applied to boost the relevance of the words or phrases for the prediction. They are called *descriptors* because they are used to *describe* an intent or entity. Descriptors describe distinguishing traits or attributes of data, such as important words or phrases. that LUIS observes and learns through.
+[**Tanımlayıcılar**](luis-concept-feature.md) , tahmine yönelik sözcüklerin veya tümceciklerin uygunluğunu artırmak için uygulanan özelliklerdir. Bu değerler, amacı veya varlığı *tanımlamakta* kullanıldıklarından *tanımlayıcı* olarak adlandırılırlar. Tanımlayıcılar, önemli sözcükler veya ifadeler gibi ayırt edici nitelikleri veya veri özniteliklerini anlatmaktadır. Bu, HALDIR ve aracılığıyla öğrenir.
 
-When you create a phrase list feature in your LUIS app, it is enabled globally by default and applies evenly across all intents and entities. However, if you apply the phrase list as a descriptor (feature) of a machine-learned entity (or *model*), then its scope reduces to apply only to that model and is no longer used with all the other models. Using a phrase list as a descriptor to a model helps decomposition by assisting with the accuracy for the model it is applied to.
+LUSıS uygulamanızda bir ifade listesi özelliği oluşturduğunuzda, varsayılan olarak genel olarak etkinleştirilir ve tüm amaçlar ve varlıklar arasında eşit olarak uygulanır. Ancak, tümcecik listesini makine tarafından öğrenilen bir varlığın (veya *modelinin*) tanımlayıcı (özellik) olarak uygularsanız, kapsamı yalnızca o modele uygulanabilir ve artık diğer tüm modellerle kullanılmaz. Bir model için tanımlayıcı olarak bir ifade listesi kullanmak, uygulandığı modelin doğruluğunu ele alarak ayrışmaya yardımcı olur.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -86,58 +86,58 @@ When you create a phrase list feature in your LUIS app, it is enabled globally b
 <a name="regular-expression-entity"></a>
 <a name="simple-entity"></a>
 
-## <a name="types-of-entities"></a>Types of entities
+## <a name="types-of-entities"></a>Varlık türleri
 
-Choose the entity based on how the data should be extracted and how it should be represented after it is extracted.
+Verilerin ayıklanabilmesi ve ayıklandıktan sonra nasıl temsil edilebilmesi gerektiğine bağlı olarak varlığı seçin.
 
-|Entity type|Amaç|
+|Varlık türü|Amaç|
 |--|--|
-|[**Machine-learned**](tutorial-machine-learned-entity.md)|Machine-learned entities learn from context in the utterance. Parent grouping of entities, regardless of entity type. This makes variation of placement in example utterances significant. |
-|[**List**](reference-entity-list.md)|List of items and their synonyms extracted with **exact text match**.|
-|[**Pattern.any**](reference-entity-pattern-any.md)|Entity where end of entity is difficult to determine. |
-|[**Prebuilt**](luis-reference-prebuilt-entities.md)|Already trained to extract specific kind of data such as URL or email. Some of these prebuilt entities are defined in the open-source [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) project. If your specific culture or entity isn't currently supported, contribute to the project.|
-|[**Regular Expression**](reference-entity-regular-expression.md)|Uses regular expression for **exact text match**.|
+|[**Makine tarafından öğrenilen**](tutorial-machine-learned-entity.md)|Makine tarafından öğrenilen varlıklar, utterde bağlamdaki içerikten öğrenilir. Varlık türünden bağımsız olarak varlıkların üst gruplandırması. Bu, yerleştirme Çeşitlemelerinde önemli bir değer sağlar. |
+|[**Listele**](reference-entity-list.md)|Öğelerin listesi ve **tam metin eşleşmesi**ile ayıklanan eş anlamlılar.|
+|[**Model. any**](reference-entity-pattern-any.md)|Varlık sonunun belirlenmesi zor olan varlık. |
+|[**Önceden oluşturulmuş**](luis-reference-prebuilt-entities.md)|URL veya e-posta gibi belirli tür verileri ayıklamak zaten eğitildi. Bu önceden oluşturulmuş varlıkların bazıları açık kaynaklı [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text) projesinde tanımlanmıştır. Belirli bir kültürün veya varlık şu anda desteklenmemektedir, projeye katkıda bulunur.|
+|[**Normal Ifade**](reference-entity-regular-expression.md)|**Tam metin eşleşmesi**için normal ifade kullanır.|
 
-## <a name="extracting-contextually-related-data"></a>Extracting contextually related data
+## <a name="extracting-contextually-related-data"></a>Bağlamsal olarak ile ilgili veriler ayıklanıyor
 
-An utterance may contain two or more occurrences of an entity where the meaning of the data is based on context within the utterance. An example is an utterance for booking a flight that has two locations, origin and destination.
+Söylenişi, verilerin anlamı, söylenişi içindeki bağlamı temel alan bir varlığın iki veya daha fazla örneğini içerebilir. İki konum, kaynak ve hedef olan bir uçuşmanın bir örneği olan bir örnek bir örnektir.
 
 `Book a flight from Seattle to Cairo`
 
-The two examples of a `location` entity need to be extracted. The client-application needs to know the type of location for each in order to complete the ticket purchase.
+`location` varlığın iki örneği ayıklanmalıdır. Bilet satın alma işleminin tamamlanabilmesi için istemci uygulamanın konumun türünü bilmesi gerekir.
 
-There are two techniques for extracting contextually-related data:
+Bağlamsal olarak ile ilgili verileri ayıklamak için iki teknik vardır:
 
- * The `location` entity is a machine-learned entity and uses two subcomponent entities to capture the  `origin` and `destination` (preferred)
- * The `location` entity uses two **roles** of `origin` and `destination`
+ * `location` varlık, makine tarafından öğrenilen bir varlıktır ve `origin` ve `destination` yakalamak için iki alt bileşen varlığı kullanır (tercih edilen)
+ * `location` varlık `origin` ve `destination` iki **rolünü** kullanır
 
-Multiple entities can exist in an utterance and can be extracted without using decomposition or roles if the context in which they are used has no significance. For example, if the utterance includes a list of locations, `I want to travel to Seattle, Cairo, and London.`, this is a list where each item doesn't have an additional meaning.
+Birden çok varlık bir söylenişi içinde bulunabilir ve kullanıldıkları bağlamın hiç önemi yoksa, ayrıştırma veya roller kullanılmadan ayıklanabilir. Örneğin, söylenişi bir konum listesi içeriyorsa `I want to travel to Seattle, Cairo, and London.`, her öğenin ek anlamı olmadığı bir listesidir.
 
-### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>Using subcomponent entities of a machine-learned entity to define context
+### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>Bağlam tanımlamak için makine tarafından öğrenilen bir varlığın alt bileşen varlıklarını kullanma
 
-You can use a [**machine-learned entity**](tutorial-machine-learned-entity.md) to extract the data that describes the action of booking a flight and then to decompose the top-level entity into the separate parts needed by the client application.
+Bir uçuşın kayıt işlemini açıklayan verileri ayıklamak ve ardından üst düzey varlığı istemci uygulaması için gereken ayrı parçalara çıkarmak için [**makine tarafından öğrenilen bir varlık**](tutorial-machine-learned-entity.md) kullanabilirsiniz.
 
-In this example, `Book a flight from Seattle to Cairo`, the top-level entity could be `travelAction` and labeled to extract `flight from Seattle to Cairo`. Then two subcomponent entities are created, called `origin` and `destination`, both with a constraint applied of the prebuilt `geographyV2` entity. In the training utterances, the `origin` and `destination` are labeled appropriately.
+Bu örnekte `Book a flight from Seattle to Cairo`, üst düzey varlık `travelAction` ve `flight from Seattle to Cairo`ayıklamak için etiketlenebilir. Ardından, `origin` ve `destination`olarak adlandırılan iki alt bileşen varlığı, önceden oluşturulmuş `geographyV2` varlığına uygulanan bir kısıtlama ile oluşturulur. Eğitim arasları 'nda `origin` ve `destination` uygun şekilde etiketlidir.
 
-### <a name="using-entity-role-to-define-context"></a>Using Entity role to define context
+### <a name="using-entity-role-to-define-context"></a>Bağlamı tanımlamak için varlık rolü kullanma
 
-A Role is a named alias for an entity based on context within the utterance. A role can be used with any prebuilt or custom entity type, and used in both example utterances and patterns. In this example, the `location` entity needs two roles of `origin` and `destination` and both need to be marked in the example utterances.
+Rol, bir varlık için, utterance içindeki bağlamı temel alan adlandırılmış diğer addır. Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir. Bu örnekte `location` varlığının iki `origin` ve `destination` olması gerekir ve her ikisi de örnek söylerde işaretlenmelidir.
 
-If LUIS finds the `location` but can't determine the role, the location entity is still returned. The client application would need to follow up with a question to determine which type of location the user meant.
+LUSıS `location` bulursa ve rolü tespit leyemiyorsa, konum varlığı yine de döndürülür. Kullanıcının ne tür bir konum olduğunu belirleyebilmek için istemci uygulamanın bir soru ile izlenmesi gerekir.
 
 
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>If you need more than the maximum number of entities
+## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Varlıklar, en fazla sayısından daha ihtiyacınız varsa
 
-If you need more than the limit, contact support. To do so, gather detailed information about your system, go to the [LUIS](luis-reference-regions.md#luis-website) website, and then select **Support**. If your Azure subscription includes support services, contact [Azure technical support](https://azure.microsoft.com/support/options/).
+Sınırdan daha fazlasına ihtiyacınız varsa desteğe başvurun. Bunu yapmak için sisteminizle ilgili ayrıntılı bilgiler toplayın, [Luo](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **destek**' i seçin. Azure aboneliğiniz destek hizmetleri içeriyorsa, [Azure teknik desteği](https://azure.microsoft.com/support/options/)'ne başvurun.
 
-## <a name="entity-prediction-status"></a>Entity prediction status
+## <a name="entity-prediction-status"></a>Varlık tahmin durumu
 
-The LUIS portal shows when the entity, in an example utterance, has a different entity prediction than the entity you selected. This different score is based on the current trained model.
+LUU portalı, bir örnekte varlığın seçtiğiniz varlıktan farklı bir varlık tahminiyle ne zaman olduğunu gösterir. Bu farklı puan, geçerli eğitilen modele dayalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn concepts about good [utterances](luis-concept-utterance.md).
+[Tebrikler ilgili](luis-concept-utterance.md)kavramları öğrenin.
 
-See [Add entities](luis-how-to-add-entities.md) to learn more about how to add entities to your LUIS app.
+LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .
 
-See [Tutorial: Extract structured data from user utterance with machine-learned entities in Language Understanding (LUIS)](tutorial-machine-learned-entity.md) to learn how to extract structured data from an utterance using the machine-learned entity.
+Bkz. Öğretici: makine tarafından öğrenilen varlığı kullanarak bir noktadan yapılandırılmış verilerin nasıl ayıklanacağını öğrenmek için [Language Understanding (LUA) içindeki makine tarafından öğrenilen varlıklara sahip kullanıcı aracılığıyla yapılandırılmış verileri ayıklama](tutorial-machine-learned-entity.md) .

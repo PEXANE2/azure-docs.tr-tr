@@ -47,7 +47,7 @@ Uygulama ayrıntıları için bkz. [Azure AD B2B işbirliğini kullanarak bulut 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [GRANT B2B kullanıcıları Azure AD'de, şirket içi uygulamalarınıza erişim](hybrid-cloud-to-on-premises.md)
+- [Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme](hybrid-cloud-to-on-premises.md)
 - [Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesapları erişimi verme](hybrid-on-premises-to-cloud.md)
 
 

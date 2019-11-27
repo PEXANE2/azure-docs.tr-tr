@@ -1,6 +1,6 @@
 ---
-title: How to troubleshoot Azure Functions Runtime is unreachable.
-description: Learn how to troubleshoot an invalid storage account.
+title: Sorun giderme Azure İşlevleri Çalışma Zamanı ulaşılamaz.
+description: Geçersiz bir depolama hesabında sorun gidermeyi öğrenin.
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
@@ -12,78 +12,78 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226772"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>How to troubleshoot "functions runtime is unreachable"
+# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>"İşlevler çalışma zamanına ulaşılamıyor" sorununu giderme
 
 
-## <a name="error-text"></a>Error text
-This doc is intended to troubleshoot the following error when displayed in the Functions portal.
+## <a name="error-text"></a>Hata metni
+Bu belge, Işlevler portalında görüntülendiğinde aşağıdaki hatayla ilgili sorunları gidermeye yöneliktir.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Özet
-This issue occurs when the Azure Functions Runtime cannot start. The most common reason for this error to occur is the function app losing access to its storage account. [Read more about the storage account requirements here](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Azure İşlevleri Çalışma Zamanı başlayamediğinde bu sorun oluşur. Bu hatanın oluşma en yaygın nedeni, işlev uygulamasının depolama hesabına erişimi kaybetmesi durumunda meydana gelir. [Depolama hesabı gereksinimleri hakkında buradan daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Sorun giderme
-We'll walk through the four most common error cases, how to identify, and how to resolve each case.
+En yaygın dört hata durumuna, nasıl tanımlanacağına ve her bir durumda nasıl çözümleneceğini adım adım inceleyeceğiz.
 
-1. Storage Account deleted
-1. Storage Account application settings deleted
-1. Storage Account credentials invalid
-1. Storage Account Inaccessible
-1. Daily Execution Quota Full
+1. Depolama hesabı silindi
+1. Depolama hesabı uygulama ayarları silindi
+1. Depolama hesabı kimlik bilgileri geçersiz
+1. Depolama hesabına erişilemiyor
+1. Günlük yürütme kotası dolu
 
-## <a name="storage-account-deleted"></a>Storage account deleted
+## <a name="storage-account-deleted"></a>Depolama hesabı silindi
 
-Every function app requires a storage account to operate. If that account is deleted your Function will not work.
+Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse Işleviniz çalışmaz.
 
-### <a name="how-to-find-your-storage-account"></a>How to find your storage account
+### <a name="how-to-find-your-storage-account"></a>Depolama hesabınızı bulma
 
-Start by looking up your storage account name in your Application Settings. Either `AzureWebJobsStorage` or `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` will contain the name of your storage account wrapped up in a connection string. Read more specifics at the [application setting reference here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage` veya `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`, bir bağlantı dizesinde Sarmalanan depolama hesabınızın adını içerecektir. [Burada uygulama ayarı başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage) ' na daha fazla bilgi okuyun
 
-Search for your storage account in the Azure portal to see if it still exists. If it has been deleted, you will need to recreate a storage account and replace your storage connection strings. Your function code is lost and you will need to redeploy it again.
+Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınızı arayın. Silinmişse, bir depolama hesabı oluşturmanız ve depolama bağlantı Dizelerinizin yerine getirmeniz gerekir. İşlev kodunuz kaybolur ve yeniden dağıtmanız gerekir.
 
-## <a name="storage-account-application-settings-deleted"></a>Storage account application settings deleted
+## <a name="storage-account-application-settings-deleted"></a>Depolama hesabı uygulama ayarları silindi
 
-In the previous step, if you did not have a storage account connection string they were likely deleted or overwritten. Deleting app settings is most commonly done when using deployment slots or Azure Resource Manager scripts to set application settings.
+Önceki adımda, büyük olasılıkla silinmiş veya üzerine yazılmış bir depolama hesabı bağlantı dizeniz yoksa. Uygulama ayarlarını yapmak için dağıtım yuvaları veya Azure Resource Manager betikleri kullanılırken uygulama ayarlarının silinmesi genellikle yapılır.
 
-### <a name="required-application-settings"></a>Required application settings
+### <a name="required-application-settings"></a>Gerekli uygulama ayarları
 
-* Gereklidir
+* Gerekli
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* Required for Consumption Plan Functions
+* Tüketim planı Işlevleri için gereklidir
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Read about these application settings here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Bu uygulama ayarları hakkında buradan okuyun](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Kılavuz
+### <a name="guidance"></a>Rehber
 
-* Do not check "slot setting" for any of these settings. When you swap deployment slots the Function will break.
-* Do not modify these settings as part of automated deployments.
-* These settings must be provided and valid at creation time. An automated deployment that does not contain these settings will result in a non-functional App, even if the settings are added after the fact.
+* Bu ayarlardan herhangi biri için "yuva ayarı" denetimini kaldırmayın. Dağıtım yuvalarını değiştirdiğinizde Işlev kesilir.
+* Bu ayarları otomatik dağıtımların parçası olarak değiştirmeyin.
+* Bu ayarlar, oluşturma sırasında sağlanmalı ve geçerli olmalıdır. Bu ayarları içermeyen bir otomatik dağıtım, ayarlar olgusuna sonra eklense bile işlevsel olmayan bir uygulamaya neden olur.
 
-## <a name="storage-account-credentials-invalid"></a>Storage account credentials invalid
+## <a name="storage-account-credentials-invalid"></a>Depolama hesabı kimlik bilgileri geçersiz
 
-The above Storage Account connection strings must be updated if you regenerate storage keys. [Read more about storage key management here](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+Depolama anahtarlarını yeniden oluşturursanız yukarıdaki depolama hesabı bağlantı dizelerinin güncellenmesi gerekir. [Depolama anahtarı yönetimi hakkında buradan daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
-## <a name="storage-account-inaccessible"></a>Storage account inaccessible
+## <a name="storage-account-inaccessible"></a>Depolama hesabına erişilemiyor
 
-Your Function App must be able to access the storage account. Common issues that block a Functions access to a storage account are:
+İşlev Uygulaması depolama hesabına erişebilmelidir. Bir depolama hesabına erişim Işlevi engelleyen yaygın sorunlar şunlardır:
 
-* Function Apps deployed to App Service Environments without the correct network rules to allow traffic to and from the storage account
-* The storage account firewall is enabled and not configured to allow traffic to and from Functions. [Read more about storage account firewall configuration here](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Depolama hesabından gelen ve giden trafiğe izin vermek için doğru ağ kuralları olmadan App Service ortamlara dağıtılan işlev uygulamaları
+* Depolama hesabı güvenlik duvarı etkinleştirilir ve IŞLEVLERE ve Işlevlerine giden trafiğe izin verecek şekilde yapılandırılmamıştır. [Depolama hesabı güvenlik duvarı yapılandırması hakkında buradan daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
-## <a name="daily-execution-quota-full"></a>Daily Execution Quota Full
+## <a name="daily-execution-quota-full"></a>Günlük yürütme kotası dolu
 
-If you have a Daily Execution Quota configured, your Function App will be temporarily disabled and many of the portal controls will become unavailable. 
+Günlük yürütme kotayı yapılandırdıysanız, İşlev Uygulaması geçici olarak devre dışı bırakılır ve Portal denetimlerinin birçoğu kullanılamaz hale gelir. 
 
-* To verify, check open Platform Features > Function App Settings in the portal. You will see the following message if you are over quota
+* Doğrulamak için, portalda açık platform özellikleri > İşlev Uygulaması ayarları ' na bakın. Kotayı daha fazla olursa aşağıdaki iletiyi görürsünüz
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Remove the quota and restart your app to resolve the issue.
+* Sorunu çözmek için kotayı kaldırın ve uygulamanızı yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Now that your Function App is back and operational take a look at our quickstarts and developer references to get up and running again!
+Artık İşlev Uygulaması ve çalışır duruma getirilene kadar hızlı başlangıç ve geliştirici başvurularımıza bakarak yeniden çalışmaya başlayın!
 
 * [İlk Azure İşlevinizi oluşturma](functions-create-first-azure-function.md)  
   Hemen başlayın ve Azure İşlevleri hızlı başlangıcını kullanarak ilk işlevinizi oluşturun. 

@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036655"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534191"
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux’ta Yazılım RAID yapılandırma
 Azure 'daki Linux sanal makinelerinde yazılım RAID 'i kullanarak birden çok bağlı veri diskini tek bir RAID cihazı olarak sunmak için yaygın bir senaryodur. Genellikle bu, performansı artırmak ve yalnızca tek bir disk kullanılmasına kıyasla İyileştirilmiş işleme sağlamak için kullanılabilir.
 
 ## <a name="attaching-data-disks"></a>Veri diskleri iliştirme
 RAID cihazını yapılandırmak için iki veya daha fazla boş veri diski gereklidir.  RAID cihazı oluşturmanın birincil nedeni, disk GÇ 'nizin performansını artırmaktır.  G/ç gereksinimlerinize göre disk başına en fazla 500 GÇ/PS veya disk başına en fazla 5000 GÇ/PS olan Premium depolama alanı ile standart depomızda depolanan diskleri eklemeyi tercih edebilirsiniz. Bu makale, bir Linux sanal makinesine veri diskleri sağlama ve iliştirme hakkında ayrıntılı bilgi vermez.  Azure 'da bir Linux sanal makinesine boş veri diski iliştirme hakkında ayrıntılı yönergeler için Microsoft Azure makalesine [disk iliştirme](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bölümüne bakın.
+
+> [!IMPORTANT]
+>Farklı boyutlardaki diskleri karışmayın, bunu yapmak, kıdset performansının en yavaş diskle sınırlı olmasını sağlar. 
 
 ## <a name="install-the-mdadm-utility"></a>Mdaddm yardımcı programını yükler
 * **Ubuntu**

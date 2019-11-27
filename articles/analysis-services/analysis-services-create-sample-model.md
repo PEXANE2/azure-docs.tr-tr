@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Add a sample model- Azure Analysis Services | Microsoft Docs
+title: Öğretici-Azure Analysis Services bir örnek model ekleme | Microsoft Docs
 description: Bu öğretici derste, Azure Analysis Services'e örnek model eklemeyi öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -22,7 +22,7 @@ Bu öğreticide, sunucunuza örnek Adventure Works tablolu model veritabanını 
 > * Sunucuya tamamlanmış bir örnek tablolu veri modeli ekleme 
 > * SSMS ile modele bağlanma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
     ![Örnek model oluşturma](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. In **New model** > **Choose a data source**,  verify **Sample data** is selected, and then click **Add**.
+2. **Yeni modelde** > **bir veri kaynağı seçin**, **örnek verilerin** seçili olduğunu doğrulayın ve ardından **Ekle**' ye tıklayın.
 
     ![Örnek verileri seçme](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 

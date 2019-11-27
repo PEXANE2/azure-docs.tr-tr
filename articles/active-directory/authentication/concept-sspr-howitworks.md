@@ -1,6 +1,6 @@
 ---
-title: Self-service password reset deep dive - Azure Active Directory
-description: How does self-service password reset work
+title: Self servis parola sıfırlama derin bakış-Azure Active Directory
+description: Self servis parola sıfırlama nasıl çalışır?
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,190 +18,190 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420706"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>How it works: Azure AD self-service password reset
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl kullanılır: Azure AD self servis parola sıfırlama
 
-How does self-service password reset (SSPR) work? What does that option mean in the interface? Continue reading to find out more about Azure Active Directory (Azure AD) SSPR.
+Self servis parola sıfırlama (SSPR) nasıl çalışır? Bu seçenek arabirimde ne anlama geliyor? Azure Active Directory (Azure AD) SSPR hakkında daha fazla bilgi edinmek için okumaya devam edin.
 
-## <a name="how-does-the-password-reset-portal-work"></a>How does the password reset portal work?
+## <a name="how-does-the-password-reset-portal-work"></a>Parola sıfırlama portalı nasıl çalışır?
 
-When a user goes to the password reset portal, a workflow is kicked off to determine:
+Bir kullanıcı parola sıfırlama portalına gittiğinde şunları öğrenmek için bir iş akışı açılır:
 
-   * How should the page be localized?
-   * Is the user account valid?
-   * What organization does the user belong to?
-   * Where is the user’s password managed?
-   * Is the user licensed to use the feature?
+   * Sayfa nasıl Yerelleştirilecek?
+   * Kullanıcı hesabı geçerli mi?
+   * Kullanıcı hangi kuruluşa ait?
+   * Kullanıcının parolası nerede yönetilir?
+   * Kullanıcı, özelliği kullanmak için lisanslı mı?
 
-Read through the following steps to learn about the logic behind the password reset page:
+Parola sıfırlama sayfasının arkasındaki mantık hakkında bilgi edinmek için aşağıdaki adımları okuyun:
 
-1. The user selects the **Can't access your account** link or goes directly to [https://aka.ms/sspr](https://passwordreset.microsoftonline.com).
-   * Based on the browser locale, the experience is rendered in the appropriate language. The password reset experience is localized into the same languages that Office 365 supports.
-   * To view the password reset portal in a different localized language append "?mkt=" to the end of the password reset URL with the example that follows localizing to Spanish [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us).
-2. The user enters a user ID and passes a captcha.
-3. Azure AD verifies that the user is able to use this feature by doing the following checks:
-   * Checks that the user has this feature enabled and has an Azure AD license assigned.
-     * If the user does not have this feature enabled or have a license assigned, the user is asked to contact their administrator to reset their password.
-   * Checks that the user has the right authentication methods defined on their account in accordance with administrator policy.
-     * If the policy requires only one method, then it ensures that the user has the appropriate data defined for at least one of the authentication methods enabled by the administrator policy.
-       * If the authentication methods are not configured, then the user is advised to contact their administrator to reset their password.
-     * If the policy requires two methods, then it ensures that the user has the appropriate data defined for at least two of the authentication methods enabled by the administrator policy.
-       * If the authentication methods are not configured, then the user is advised to contact their administrator to reset their password.
-     * If an Azure administrator role is assigned to the user, then the strong two-gate password policy is enforced. More information about this policy can be found in the section [Administrator reset policy differences](concept-sspr-policy.md#administrator-reset-policy-differences).
-   * Checks to see if the user’s password is managed on-premises (federated, pass-through authentication, or password hash synchronized).
-     * If writeback is deployed and the user’s password is managed on-premises, then the user is allowed to proceed to authenticate and reset their password.
-     * If writeback is not deployed and the user’s password is managed on-premises, then the user is asked to contact their administrator to reset their password.
-4. If it's determined that the user is able to successfully reset their password, then the user is guided through the reset process.
+1. Kullanıcı, **Hesap bağlantıhesabınıza erişemez** veya doğrudan [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)gider.
+   * Tarayıcı yerel ayarlarına bağlı olarak deneyim uygun dilde işlenir. Parola sıfırlama deneyimi, Office 365 'nin desteklediği dillere yereldir.
+   * Parola sıfırlama portalını farklı bir yerelleştirilmiş dilde görüntülemek için, parola sıfırlama URL 'sinin sonuna, Ispanyolca [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)yerelleştirilmesi gereken örnekle "? Mkt =" ekleyin.
+2. Kullanıcı bir kullanıcı KIMLIĞI girer ve bir CAPTCHA geçirir.
+3. Azure AD, kullanıcının bu özelliği aşağıdaki denetimleri yaparak kullanabildiğini doğrular:
+   * Kullanıcının bu özelliğin etkin olduğunu ve atanmış bir Azure AD lisansının olduğunu denetler.
+     * Kullanıcıya bu özellik etkinleştirilmemişse veya atanmış bir lisans yoksa, kullanıcıdan parolasını sıfırlaması için yöneticisiyle iletişim kurabilmesi istenir.
+   * Kullanıcının, yönetici ilkesine uygun olarak hesabında tanımlı doğru kimlik doğrulama yöntemlerine sahip olduğunu denetler.
+     * İlke yalnızca bir yöntem gerektiriyorsa, kullanıcının yönetici ilkesi tarafından etkinleştirilen kimlik doğrulama yöntemlerinden en az biri için tanımlı uygun verileri olmasını sağlar.
+       * Kimlik doğrulama yöntemleri yapılandırılmamışsa, kullanıcının parolasını sıfırlaması için yöneticisiyle iletişim kurabilmesi önerilir.
+     * İlke iki yöntem gerektiriyorsa, kullanıcının yönetici ilkesi tarafından etkinleştirilen kimlik doğrulama yöntemlerinin en az ikisi için tanımlanmış uygun verileri olmasını sağlar.
+       * Kimlik doğrulama yöntemleri yapılandırılmamışsa, kullanıcının parolasını sıfırlaması için yöneticisiyle iletişim kurabilmesi önerilir.
+     * Kullanıcıya bir Azure yönetici rolü atanırsa, güçlü iki geçit parola ilkesi zorlanır. Bu ilkeyle ilgili daha fazla bilgi, [yönetici ilke farklılıklarını sıfırlama](concept-sspr-policy.md#administrator-reset-policy-differences)bölümünde bulunabilir.
+   * Kullanıcının parolasının şirket içinde yönetilip yönetilmediğini (Federe, geçişli kimlik doğrulaması veya parola karması eşitlenmiş) görmek için denetler.
+     * Geri yazma dağıtılırsa ve kullanıcının parolası şirket içinde yönetiliyorsa, kullanıcının kimlik doğrulamasına ve parolalarını sıfırlamasına izin verilir.
+     * Geri yazma dağıtılırsa ve kullanıcının parolası şirket içinde yönetiliyorsa, kullanıcıdan parolasını sıfırlaması için yöneticisiyle iletişim kurabilmesi istenir.
+4. Kullanıcının parolasını başarıyla sıfırladığını tespit ediyorsanız, Kullanıcı sıfırlama işlemini kolaylaştırır.
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-If SSPR is enabled, you must select at least one of the following options for the authentication methods. Sometimes you hear these options referred to as "gates." We highly recommend that you **choose two or more authentication methods** so that your users have more flexibility in case they are unable to access one when they need it. Additional details about the methods listed below can be found in the article [What are authentication methods?](concept-authentication-methods.md).
+SSPR etkinse, kimlik doğrulama yöntemleri için aşağıdaki seçeneklerden en az birini seçmeniz gerekir. Bazen "kapıları" olarak adlandırılan bu seçenekleri duydunuz. Kullanıcılarınızın ihtiyaç duydukları bir birine erişememesi durumunda daha fazla esneklik sağlamak için **iki veya daha fazla kimlik doğrulama yöntemi seçmenizi** kesinlikle öneririz. Aşağıda listelenen yöntemlerle ilgili ek ayrıntılar, [kimlik doğrulama yöntemleri nelerdir?](concept-authentication-methods.md)makalesinde bulunabilir.
 
 * Mobil uygulama bildirimi
-* Mobile app code
-* E-posta
+* Mobil uygulama kodu
+* Email
 * Cep telefonu
-* Office phone
-* Security questions
+* Ofis telefonu
+* Güvenlik soruları
 
-Users can only reset their password if they have data present in the authentication methods that the administrator has enabled.
-
-> [!IMPORTANT]
-> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
-
-> [!WARNING]
-> Accounts assigned Azure Administrator roles will be required to use methods as defined in the section [Administrator reset policy differences](concept-sspr-policy.md#administrator-reset-policy-differences).
-
-![Authentication methods selection in the Azure portal][Authentication]
-
-### <a name="number-of-authentication-methods-required"></a>Number of authentication methods required
-
-This option determines the minimum number of the available authentication methods or gates a user must go through to reset or unlock their password. It can be set to either one or two.
-
-Users can choose to supply more authentication methods if the administrator enables that authentication method.
-
-If a user does not have the minimum required methods registered, they see an error page that directs them to request that an administrator reset their password.
-
-#### <a name="mobile-app-and-sspr"></a>Mobile app and SSPR
-
-When using a mobile app, like the Microsoft Authenticator app, as a method for password reset, you should be aware of the following caveats:
-
-* When administrators require one method be used to reset a password, verification code is the only option available.
-* When administrators require two methods be used to reset a password, users are able to use **EITHER** notification **OR** verification code in addition to any other enabled methods.
-
-| Number of methods required to reset | One | İki |
-| :---: | :---: | :---: |
-| Mobile app features available | Kodlayın | Code or Notification |
-
-Users do not have the option to register their mobile app when registering for self-service password reset from [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Users can register their mobile app at [https://aka.ms/mfasetup](https://aka.ms/mfasetup), or in the new security info registration preview at [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
-
-> [!WARNING]
-> You must enable the [Converged registration for self-service password reset and Azure Multi-Factor Authentication (Public preview)](concept-registration-mfa-sspr-converged.md) before users will be able to access the new experience at [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+Kullanıcılar, yalnızca yöneticinin etkinleştirildiği kimlik doğrulama yöntemlerinde veriler varsa, parolalarını sıfırlayabilir.
 
 > [!IMPORTANT]
-> The authenticator app cannot be selected as the only authentication method when configuring a 1-gate policy. Similarly, the authenticator app and only one additional method cannot be selected when configuring a 2-gates policy.
-> Then, when configuring SSPR policies that include the authenticator app as a method, at least an additional method should be selected when configuring a 1-gate policy, and at least two additional methods should be selected when configuring a 2-gates policy.
-> The reason for this requirement is because the current SSPR registration experience does not include the option to register the authenticator app. The option to register the authenticator app is included with the new [Converged registration for self-service password reset and Azure Multi-Factor Authentication (Public preview)](concept-registration-mfa-sspr-converged.md).
-> Allowing policies that only use the authenticator app (for 1-gate policies), or the authenticator app and only one additional method (for 2-gates policies), could lead to users being blocked from registering for  SSPR until they have been configured to use the new registration experience.
+> Mart 2019 ' den itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında MFA ve SSPR kullanıcıları tarafından kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması, ücretli Azure AD kiracılarındaki kullanıcılar için kullanılabilir olmaya devam edecektir. Bu değişiklik yalnızca ücretsiz/deneme Azure AD kiracılarını etkiler.
 
-### <a name="change-authentication-methods"></a>Change authentication methods
+> [!WARNING]
+> Azure yönetici rolleri atanan hesaplara, [yönetici ilke farklılıklarını sıfırlama](concept-sspr-policy.md#administrator-reset-policy-differences)bölümünde tanımlandığı şekilde yöntemler kullanılması gerekir.
 
-If you start with a policy that has only one required authentication method for reset or unlock registered and you change that to two methods, what happens?
+![Azure portal, kimlik doğrulama yöntemleri seçimi][Authentication]
 
-| Number of methods registered | Number of methods required | Sonuç |
+### <a name="number-of-authentication-methods-required"></a>Gereken kimlik doğrulama yöntemi sayısı
+
+Bu seçenek, bir kullanıcının parolasını sıfırlamak veya kilidini açmak için geçmesi gereken en az kullanılabilir kimlik doğrulama yöntemleri veya kapıları sayısını belirler. Bir ya da iki olarak ayarlanabilir.
+
+Yönetici bu kimlik doğrulama yöntemini etkinleştirmesine izin verirseniz, kullanıcılar daha fazla kimlik doğrulama yöntemi sağlamayı tercih edebilir.
+
+Bir Kullanıcı en düşük gerekli yöntemlere kayıtlı değilse, bunları yöneticinin parolasını sıfırlamasına izin veren bir hata sayfası görürler.
+
+#### <a name="mobile-app-and-sspr"></a>Mobil uygulama ve SSPR
+
+Microsoft Authenticator uygulaması gibi bir mobil uygulama kullanırken, parola sıfırlama yöntemi olarak, aşağıdaki uyarıları bilmelisiniz:
+
+* Yöneticiler bir parolayı sıfırlamak için bir yöntem kullanılmasını gerektirdiğinde, doğrulama kodu kullanılabilir tek seçenektir.
+* Yöneticiler bir parolayı sıfırlamak için iki yöntem gerektirdiğinde, kullanıcılar herhangi bir etkin yönteme ek olarak bildirim **ya** **da** doğrulama kodunu kullanabilir.
+
+| Sıfırlamak için gereken Yöntem sayısı | Biriyle | İki |
 | :---: | :---: | :---: |
-| 1 or more | 1 | **Able** to reset or unlock |
-| 1 | 2 | **Unable** to reset or unlock |
-| 2 or more | 2 | **Able** to reset or unlock |
+| Mobil uygulama özellikleri kullanılabilir | Kod | Kod veya bildirim |
 
-If you change the types of authentication methods that a user can use, you might inadvertently stop users from being able to use SSPR if they don't have the minimum amount of data available.
+Kullanıcıların [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)' dan self servis parola sıfırlama kaydı sırasında mobil uygulamalarını kaydetme seçeneği yoktur. Kullanıcılar mobil uygulamalarını [https://aka.ms/mfasetup](https://aka.ms/mfasetup)'e veya [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)yeni güvenlik bilgileri kayıt önizlemeye kaydedebilir.
+
+> [!WARNING]
+> Kullanıcıların [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)yeni deneyimle erişebilmeleri için, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) için yakınsama kaydını](concept-registration-mfa-sspr-converged.md) etkinleştirmeniz gerekir.
+
+> [!IMPORTANT]
+> Kimlik doğrulayıcı uygulaması, bir 1-Gate ilkesi yapılandırılırken tek kimlik doğrulama yöntemi olarak seçilemez. Benzer şekilde, bir 2 kapıları ilkesi yapılandırılırken kimlik doğrulayıcı uygulaması ve yalnızca bir ek yöntem seçilemez.
+> Daha sonra, bir yöntem olarak Authenticator uygulamasını içeren SSPR ilkelerini yapılandırırken, bir 1-Gate ilkesi yapılandırılırken en az bir ek yöntem seçilmelidir ve 2 kapıları ilkesi yapılandırılırken en az iki ek yöntem seçilmelidir.
+> Bu gereksinimin nedeni, geçerli SSPR kayıt deneyiminin kimlik doğrulayıcı uygulamasını kaydetme seçeneğini içermediğinden oluşur. Kimlik doğrulayıcı uygulamasını kaydetme seçeneği, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) için yeni Yakınsanan kayda](concept-registration-mfa-sspr-converged.md)dahildir.
+> Yalnızca Authenticator uygulamasını (1 kapı ilkeleri için) veya kimlik doğrulayıcı uygulamasını (2 kapıları ilkeleri için) kullanan ilkelere izin vermek, kullanıcıların, yeni bir tane kullanmak üzere yapılandırılıncaya kadar SSPR için kaydolmaları engellenmesine neden olabilir kayıt deneyimi.
+
+### <a name="change-authentication-methods"></a>Kimlik doğrulama yöntemlerini Değiştir
+
+Sıfırlama veya kilit açma için yalnızca bir gerekli kimlik doğrulama yöntemine sahip bir ilkeyle başlatırsanız ve bu, iki yönteme göre değişiklik yaparsanız, ne olur?
+
+| Kayıtlı yöntemlerin sayısı | Gereken Yöntem sayısı | Sonuç |
+| :---: | :---: | :---: |
+| 1 veya daha fazla | 1\. | **Sıfırlayabiliyor** veya kilit açıldı |
+| 1\. | 2 | Sıfırlanamıyor veya kilit **açılamıyor** |
+| 2 veya daha fazla | 2 | **Sıfırlayabiliyor** veya kilit açıldı |
+
+Bir kullanıcının kullanabileceği kimlik doğrulama yöntemlerinin türlerini değiştirirseniz, kullanıcıların kullanılabilir en az miktarda veri yoksa SSPR 'yi kullanmalarını istemeden durdurabilirsiniz.
 
 Örnek:
-1. The original policy is configured with two authentication methods required. It uses only the office phone number and the security questions. 
-2. The administrator changes the policy to no longer use the security questions, but allows the use of a mobile phone and an alternate email.
-3. Users without the mobile phone or alternate email fields populated can't reset their passwords.
+1. Özgün ilke, gereken iki kimlik doğrulama yöntemi ile yapılandırılır. Yalnızca ofis telefon numarasını ve güvenlik sorularını kullanır. 
+2. Yönetici, ilkeyi artık güvenlik sorularını kullanmayacak şekilde değiştirir, ancak cep telefonu ve alternatif e-posta kullanımına izin verir.
+3. Mobil telefon veya alternatif e-posta alanları doldurulmuş kullanıcılar parolalarını sıfırlayamaz.
 
 ## <a name="registration"></a>Kayıt
 
-### <a name="require-users-to-register-when-they-sign-in"></a>Require users to register when they sign in
+### <a name="require-users-to-register-when-they-sign-in"></a>Kullanıcıların oturum açtıklarında kaydolmaları iste
 
-Enabling this option requires a user to complete the password reset registration if they sign in to any applications using Azure AD. This workflow includes the following applications:
+Bu seçeneğin etkinleştirilmesi, kullanıcının Azure AD kullanan herhangi bir uygulamada oturum açtıklarında parola sıfırlama kaydını tamamlamasını gerektirir. Bu iş akışı aşağıdaki uygulamaları içerir:
 
 * Office 365
-* Azure portalı
+* Azure portal
 * Erişim Paneli
-* Federated applications
-* Custom applications using Azure AD
+* Federasyon uygulamaları
+* Azure AD kullanarak özel uygulamalar
 
-When requiring registration is disabled, users can manually register. They can either visit [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) or select the **Register for password reset** link under the **Profile** tab in the Access Panel.
+Kayıt gereksinimi devre dışı bırakıldığında, kullanıcılar el ile kaydobilirler. [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) ziyaret edebilir veya erişim panelindeki **profil** sekmesinde **parola sıfırlama için kaydol** bağlantısını seçebilir.
 
 > [!NOTE]
-> Users can dismiss the password reset registration portal by selecting **cancel** or by closing the window. But they are prompted to register each time they sign in until they complete their registration.
+> Kullanıcılar, **iptal** ' i seçerek veya pencereyi kapatarak parola sıfırlama kayıt portalını kapatabilir. Ancak kaydolmaları tamamlanana kadar her oturum açtıklarında kaydolmaları istenir.
 >
-> This interrupt doesn't break the user's connection if they are already signed in.
+> Bu kesme, kullanıcının zaten oturum açmış olmaları durumunda bağlantısını kesmez.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Set the number of days before users are asked to reconfirm their authentication information
+### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısını ayarlayın
 
-This option determines the period of time between setting and reconfirming authentication information and is available only if you enable the **Require users to register when signing in** option.
+Bu seçenek, kimlik doğrulama bilgilerini ayarlama ve yeniden onaylama arasındaki süreyi belirler ve yalnızca **kullanıcıların oturum açarken kaydolmasını gerektir** seçeneğini etkinleştirdiğinizde kullanılabilir.
 
-Valid values are 0 to 730 days, with "0" meaning users are never asked to reconfirm their authentication information.
+Geçerli değerler 0 ile 730 gün, "0" anlamına gelir ve kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını hiçbir şekilde istenmez.
 
 ## <a name="notifications"></a>Bildirimler
 
 ### <a name="notify-users-on-password-resets"></a>Parola sıfırlamayı kullanıcılara bildir
 
-If this option is set to **Yes**, then users resetting their password receive an email notifying them that their password has been changed. The email is sent via the SSPR portal to their primary and alternate email addresses that are on file in Azure AD. No one else is notified of the reset event.
+Bu seçenek **Evet**olarak ayarlanırsa, parolalarını sıfırlayan kullanıcılar, parolasının değiştiğini bildiren bir e-posta alır. E-posta, SSPR portalı aracılığıyla Azure AD 'deki dosyada bulunan birincil ve alternatif e-posta adreslerine gönderilir. Sıfırlama olayının başka birine bildirim alınmaz.
 
-### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Notify all admins when other admins reset their passwords
+### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Diğer yöneticiler parolalarını sıfırladıktan sonra tüm yöneticilere bildir
 
-If this option is set to **Yes**, then *all administrators* receive an email to their primary email address on file in Azure AD. The email notifies them that another administrator has changed their password by using SSPR.
+Bu seçenek **Evet**olarak ayarlanırsa, *Tüm Yöneticiler* Azure AD 'de dosya üzerinde birincil e-posta adresine bir e-posta alır. E-posta, SSPR kullanarak başka bir yöneticinin parolalarını değiştirdiğinizi bildirir.
 
-Example: There are four administrators in an environment. Administrator A resets their password by using SSPR. Administrators B, C, and D receive an email alerting them of the password reset.
+Örnek: bir ortamda dört yönetici vardır. Yönetici A, SSPR kullanarak parolalarını sıfırlar. Yöneticiler B, C ve D bir e-posta göndererek parola sıfırlamasının uyarı almasını ister.
 
 ## <a name="on-premises-integration"></a>Şirket içi tümleştirme
 
-If you install, configure, and enable Azure AD Connect, you have the following additional options for on-premises integrations. If these options are grayed out, then writeback has not been properly configured. For more information, see [Configuring password writeback](howto-sspr-writeback.md).
+Azure AD Connect yükler, yapılandırır ve etkinleştirirseniz, şirket içi Tümleştirmeler için aşağıdaki ek seçeneklere sahip olursunuz. Bu seçenekler gri ise, geri yazma düzgün şekilde yapılandırılmadı. Daha fazla bilgi için bkz. [parola geri yazmayı yapılandırma](howto-sspr-writeback.md).
 
-![Validating password writeback is enabled and working][Writeback]
+![Parola geri yazma özelliğinin etkin ve çalışır olduğu doğrulanıyor][Writeback]
 
-This page provides you a quick status of the on-premises writeback client, one of the following messages is displayed based on the current configuration:
+Bu sayfa, şirket içi geri yazma istemcisinin hızlı bir durumunu sağlar, geçerli yapılandırmaya göre aşağıdaki iletilerden biri görüntülenir:
 
-* Your On-premises writeback client is up and running.
-* Azure AD is online and is connected to your on-premises writeback client. However, it looks like the installed version of Azure AD Connect is out-of-date. Consider [Upgrading Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) to ensure that you have the latest connectivity features and important bug fixes.
-* Unfortunately, we can’t check your on-premises writeback client status because the installed version of Azure AD Connect is out-of-date. [Upgrade Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) to be able to check your connection status.
-* Unfortunately, it looks like we can't connect to your on-premises writeback client right now. [Troubleshoot Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) to restore the connection.
-* Unfortunately, we can't connect to your on-premises writeback client because password writeback has not been properly configured. [Configure password writeback](howto-sspr-writeback.md) to restore the connection.
-* Unfortunately, it looks like we can't connect to your on-premises writeback client right now. This may be due to temporary issues on our end. If the problem persists, [Troubleshoot Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) to restore the connection.
+* Şirket içi geri yazma istemciniz çalışıyor ve çalışıyor.
+* Azure AD çevrimiçi ve şirket içi geri yazma istemcinizi bağlamış. Ancak, Azure AD Connect yüklü sürümü güncel değil gibi görünüyor. En son bağlantı özelliklerine ve önemli hata düzeltmelerine sahip olduğunuzdan emin olmak için [Azure AD Connect yükseltmeyi](../hybrid/how-to-upgrade-previous-version.md) düşünün.
+* Ne yazık ki, Azure AD Connect yüklü sürümü güncel olmadığından şirket içi geri yazma istemci durumunuzu denetleyemiyorum. Bağlantı durumunuzu denetlemek için [Azure AD Connect yükseltin](../hybrid/how-to-upgrade-previous-version.md) .
+* Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bağlantıyı geri yüklemek için [Azure AD Connect sorunlarını giderin](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
+* Ne yazık ki, parola geri yazma düzgün yapılandırılmadığından şirket içi geri yazma istemcinizi bağlayamıyoruz. Bağlantıyı geri yüklemek için [parola geri yazma 'Yı yapılandırın](howto-sspr-writeback.md) .
+* Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bu, bizim sonunda geçici sorunlardan kaynaklanıyor olabilir. Sorun devam ederse, bağlantıyı geri yüklemek için [Azure AD Connect sorun giderin](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
 
-### <a name="write-back-passwords-to-your-on-premises-directory"></a>Write back passwords to your on-premises directory
+### <a name="write-back-passwords-to-your-on-premises-directory"></a>Parolaları şirket içi dizininize geri yazma
 
-This control determines whether password writeback is enabled for this directory. If writeback is on, it indicates the status of the on-premises writeback service. This control is useful if you want to temporarily disable password writeback without having to reconfigure Azure AD Connect.
+Bu denetim, bu dizin için parola geri yazma özelliğinin etkinleştirilip etkinleştirilmediğini belirler. Geri yazma açık ise, şirket içi geri yazma hizmetinin durumunu gösterir. Azure AD Connect yeniden yapılandırmak zorunda kalmadan parola geri yazmayı geçici olarak devre dışı bırakmak istiyorsanız bu denetim yararlı olur.
 
-* If the switch is set to **Yes**, then writeback is enabled, and federated, pass-through authentication, or password hash synchronized users are able to reset their passwords.
-* If the switch is set to **No**, then writeback is disabled, and federated, pass-through authentication, or password hash synchronized users are not able to reset their passwords.
+* Anahtar **Evet**olarak ayarlanırsa, geri yazma etkinleştirilir, Federasyon, geçişli kimlik doğrulama veya parola karması eşitlenmiş kullanıcılar parolalarını sıfırlayabiliyor.
+* Anahtar **Hayır**olarak ayarlanırsa, geri yazma devre dışı bırakılır, Federasyon, geçişli kimlik doğrulama veya parola karması eşitlenmiş kullanıcılar parolalarını sıfırlayamaz.
 
-### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Allow users to unlock accounts without resetting their password
+### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Kullanıcıların, parolasını sıfırlamadan hesapların kilidini açmalarına izin ver
 
-This control designates whether users who visit the password reset portal should be given the option to unlock their on-premises Active Directory accounts without having to reset their password. By default, Azure AD unlocks accounts when it performs a password reset. You use this setting to separate those two operations.
+Bu denetim, parola sıfırlama portalını ziyaret eden kullanıcılara parolasını sıfırlamak zorunda kalmadan şirket içi Active Directory hesaplarının kilidini açma seçeneği verilmesini belirler. Varsayılan olarak, Azure AD, parola sıfırlama gerçekleştirdiğinde hesapların kilidini açar. Bu iki işlemi ayırmak için bu ayarı kullanabilirsiniz.
 
-* If set to **Yes**, then users are given the option to reset their password and unlock the account, or to unlock their account without having to reset the password.
-* If set to **No**, then users are only be able to perform a combined password reset and account unlock operation.
+* **Evet**olarak ayarlanırsa, kullanıcılara parolasını sıfırlama ve hesabın kilidini açma veya parolayı sıfırlamak zorunda kalmadan hesabının kilidini açma seçeneği verilir.
+* **Hayır**olarak ayarlanırsa, kullanıcılar yalnızca bir birleştirilmiş parola sıfırlama ve hesap kilit açma işlemi gerçekleştirebilir.
 
-### <a name="on-premises-active-directory-password-filters"></a>On-premises Active Directory password filters
+### <a name="on-premises-active-directory-password-filters"></a>Şirket içi Active Directory parola filtreleri
 
-Azure AD self-service password reset performs the equivalent of an admin-initiated password reset in Active Directory. If you are using a third-party password filter to enforce custom password rules, and you require that this password filter is checked during Azure AD self-service password reset, ensure that the third-party password filter solution is configured to apply in the admin password reset scenario. [Azure AD password protection for Windows Server Active Directory](concept-password-ban-bad-on-premises.md) is supported by default.
+Azure AD self servis parola sıfırlama, Active Directory ' de yönetici tarafından başlatılan parola sıfırlamasının eşdeğerini uygular. Özel parola kurallarını zorlamak için bir üçüncü taraf parola filtresi kullanıyorsanız ve bu parola filtresinin Azure AD self servis parola sıfırlama sırasında denetlenmesi gerekiyorsa, üçüncü taraf parola filtresi çözümünün şu şekilde yapılandırıldığından emin olun Yönetici parolası sıfırlama senaryosu. [Windows Server Active Directory Için Azure AD parola koruması](concept-password-ban-bad-on-premises.md) varsayılan olarak desteklenir.
 
-## <a name="password-reset-for-b2b-users"></a>Password reset for B2B users
+## <a name="password-reset-for-b2b-users"></a>B2B kullanıcıları için parola sıfırlama
 
-Password reset and change are fully supported on all business-to-business (B2B) configurations. B2B user password reset is supported in the following three cases:
+Parola sıfırlama ve değiştirme, tüm işletmeler arası (B2B) yapılandırmalarda tam olarak desteklenmektedir. B2B Kullanıcı parolası sıfırlama, aşağıdaki üç durumda desteklenir:
 
-* **Users from a partner organization with an existing Azure AD tenant**: If the organization you're partnering with has an existing Azure AD tenant, we *respect whatever password reset policies are enabled on that tenant*. For password reset to work, the partner organization just needs to make sure that Azure AD SSPR is enabled. There is no additional charge for Office 365 customers, and it can be enabled by following the steps in our [Get started with password management](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) guide.
-* **Users who sign up through** self-service sign-up: If the organization you're partnering with used the [self-service sign-up](../users-groups-roles/directory-self-service-signup.md) feature to get into a tenant, we let them reset the password with the email they registered.
-* **B2B users**: Any new B2B users created by using the new [Azure AD B2B capabilities](../active-directory-b2b-what-is-azure-ad-b2b.md) will also be able to reset their passwords with the email they registered during the invite process.
+* **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: BIR Azure AD kiracısında ortaklığı varsa, *Bu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate*aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Office 365 müşterileri için ek ücret alınmaz ve [parola yönetimi ile çalışmaya başlama](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) Kılavuzu ' nda bulunan adımları izleyerek etkinleştirilebilir.
+* Self Servis kaydolma **ile kaydolan kullanıcılar** : bir kiracıya ulaşmak üzere [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandıysanız, kendilerine kaydoldukları e-posta ile parolayı sıfırlayacağız.
+* **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../active-directory-b2b-what-is-azure-ad-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları, parolaları, davet işlemi sırasında kayıtlı olan e-postalarla sıfırlayabilecektir.
 
-To test this scenario, go to https://passwordreset.microsoftonline.com with one of these partner users. If they have an alternate email or authentication email defined, password reset works as expected.
+Bu senaryoyu test etmek için, bu iş ortağı kullanıcılarından birine sahip https://passwordreset.microsoftonline.com gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.
 
 > [!NOTE]
-> Microsoft accounts that have been granted guest access to your Azure AD tenant, such as those from Hotmail.com, Outlook.com, or other personal email addresses, are not able to use Azure AD SSPR. They need to reset their password by using the information found in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+> Hotmail.com, Outlook.com veya diğer kişisel e-posta adreslerinden gelen Azure AD kiracınıza konuk erişimi verilen Microsoft hesapları Azure AD SSPR 'yi kullanamaz. Microsoft hesabı makalemize [oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içinde bulunan bilgileri kullanarak parolalarını sıfırlamaları gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -217,8 +217,8 @@ Aşağıdaki makaleler, Azure AD aracılığıyla parola sıfırlama konusunda e
 * [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
 * [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
+* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)
 * [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "Kullanılabilir Azure AD kimlik doğrulama yöntemleri ve gereken miktar"
-[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-on-premises-integration-writeback.png "On-premises integration password writeback configuration and troubleshooting information"
+[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-on-premises-integration-writeback.png "Şirket içi tümleştirme parolası geri yazma yapılandırması ve sorun giderme bilgileri"

@@ -1,6 +1,6 @@
 ---
-title: Optimize your cloud investment with Azure Cost Management | Microsoft Docs
-description: This article helps get the most value out of your cloud investments, reduce your costs, and evaluate where your money is being spent.
+title: Azure maliyet yönetimi ile bulut yatırımınızdan en iyi duruma getirme | Microsoft Docs
+description: Bu makalede, dışında bulut yatırımlarınızın en yüksek değeri elde, maliyetlerinizi düşürün ve, para nerede harcandığını değerlendirmenize yardımcı olur.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,179 +17,179 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219129"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>How to optimize your cloud investment with Azure Cost Management
+# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure maliyet yönetimi ile bulut yatırımınızdan en iyi duruma getirme
 
-Azure Cost Management gives you the tools to plan for, analyze and reduce your spending to maximize your cloud investment. This document provides you with a methodical approach to cost management and highlights the tools available to you as you address your organization’s cost challenges. Azure makes it easy to build and deploy cloud solutions. However, it's important that those solutions are optimized to minimize the cost to your organization. Following the principles outlined in this document and using our tools will help to make sure your organization is prepared for success.
+Azure maliyet yönetimi için planlama, analiz ve bulut yatırımınızdan en üst düzeye çıkarmak için harcamalarınızı azaltmak için Araçlar verir. Bu belge, maliyet Yönetimi sistemli bir yaklaşım sağlar ve kuruluşunuzun maliyet güçlükleri olarak kullanabileceğiniz araçları vurgular. Azure bulut çözümleri oluşturma ve dağıtma daha kolay hale getirir. Ancak, bu çözümleri kuruluşunuza maliyeti en aza indirmek için optimize edilmiş önemlidir. Araçlarımız kuruluşunuz emin olmak için yardımcı olacak bu belge ve kullanarak belirtilen kuralları aşağıdaki başarı için hazır.
 
-## <a name="methodology"></a>Yöntem
+## <a name="methodology"></a>Yöntemi
 
-Cost management is an organizational problem and should be an ongoing practice that begins before you spend money on cloud resources. To successfully implement cost management and optimize costs, your organization must:
+Maliyet yönetimi, kurumsal bir sorundur ve bulut kaynaklarında para harcamanız önce başlayan devam eden bir uygulama olmalıdır. Başarıyla maliyet Yönetimi uygulamak ve maliyetleri iyileştirmek için kuruluşunuz gerekir:
 
-- Be prepared with the proper tools for success
-- Be accountable for costs
-- Take appropriate action to optimize spending
+- Başarı için uygun araçları ile hazırlıklı olun
+- Maliyetleri için sorumlu olabilir
+- Harcama iyileştirmek için uygun eylemi gerçekleştirin
 
-Three key groups, outlined below, must be aligned in your organization to make sure that you successfully manage costs.
+Aşağıda özetlenen, üç anahtar gruplarını başarıyla maliyetleri yönetme emin olmak için kuruluşunuzda hizalanması gerekir.
 
-- **Finance** - People responsible for approving budget requests across the organization based on cloud spending forecasts. They pay the corresponding bill and assign costs to various teams to drive accountability.
-- **Managers** - Business decision makers in an organization that need to understand cloud spending to find the best spending results.
-- **App teams** - Engineers managing cloud resources on a day-to-day basis, developing services to meet the organization's needs. These teams need the flexibility to deliver the most value in their defined budgets.
+- **Finans** -bulut harcama tahminlerine bağlı olarak kuruluş genelinde bütçe isteklerini onaylamadan sorumlu kişiler. Bunlar, karşılık gelen fatura ödemek ve maliyetleri çeşitli ekipler için sorumluluk atayın.
+- **Yöneticiler** -bir kuruluştaki, en iyi harcama sonuçlarını bulmak için bulut harcamalarını anlaması gereken iş karar mekanizmaları.
+- **Uygulama takımları** -bulut kaynaklarını gündelik bir şekilde yöneten mühendisler, kuruluşun ihtiyaçlarını karşılamak için hizmetler geliştiriyor. Bu takımlar kendi tanımlanmış bütçelerini en yüksek değeri sunabilecek esnekliğe gerekir.
 
-### <a name="key-principles"></a>Key principles
+### <a name="key-principles"></a>Temel ilkeler
 
-Use the principles outlined below to position your organization for success in cloud cost management.
+Kuruluşunuzun bulut maliyet Yönetimi başarısında konumlandırmak için aşağıda açıklanan ilkeleri kullanın.
 
 #### <a name="planning"></a>Planlama
 
-Comprehensive, up-front planning allows you to tailor cloud usage to your specific business requirements. Ask yourself:
+Kapsamlı, önceden planlama, bulut kullanımı belirli iş gereksinimlerinize uyarlamanıza olanak sağlar. Kendinize sorun:
 
-- What business problem am I solving?
-- What usage patterns do I expect from my resources?
+- Hangi iş sorununu miyim çözme?
+- Hangi kullanım düzenlerini miyim kaynaklarımı bekliyorsunuz?
 
-Your answers will help you select the offerings that are right for you. They determine the infrastructure to use and how it's used to maximize your Azure efficiency.
+Yanıtlarınızı sizin için doğru teklifler seçmenize yardımcı olur. Bunlar, altyapı ve Azure verimliliğinizi en üst düzeye çıkarmak için nasıl kullanılacağını belirler.
 
-#### <a name="visibility"></a>Visibility
+#### <a name="visibility"></a>Görünürlük
 
-When structured well, Cost Management helps you to inform people about the Azure costs they're responsible for or for the money they spend. Azure has services designed to give you insight into *where* your money is spent. Take advantage of these tools. They can help you find resources that are underused, remove waste, and maximize cost-saving opportunities.
+İyi yapılandırılmış, maliyet yönetimi, kişi veya bunlar harcadığınız para için sorumlu oldukları Azure maliyetleri hakkında bilgilendirmek için yardımcı olur. Azure, maliyetlerinizin *nerede* harcandığına ilişkin Öngörüler sunacak şekilde tasarlanan hizmetlere sahiptir. Bu araçlardan yararlanın. Bunlar kapatacağı kaynakları bulun, atık kaldırın ve maliyet tasarrufu fırsatlarını en üst düzeye yardımcı olabilir.
 
-#### <a name="accountability"></a>Accountability
+#### <a name="accountability"></a>Sorumluluk
 
-Attribute costs in your organization to make sure that people responsible are accountable for their team's spending. To fully understand your organization's Azure spending, you should organize your resources to maximize insight into cost attribution. Good organization helps to manage and reduce costs and hold people accountable for efficient spending in your organization.
+Maliyetleri, kuruluşunuzdaki kişilerin sorumlu ekip harcama için sorumlu olduğundan emin olmak için öznitelik. Kuruluşunuzun Azure harcama tam olarak anlamak için kaynaklarınızın maliyeti attribution öngörü en üst düzeye çıkarmak için düzenlemeniz gerekir. İyi bir kuruluş, yönetmek ve maliyetleri azaltmak ve verimli kuruluşunuzda harcama sorumlu kişi tutmak için yardımcı olur.
 
 #### <a name="optimization"></a>İyileştirme
 
-Act to reduce your spending. Make the most of it based on the findings gathered through planning and increasing cost visibility. You might consider purchase and licensing optimizations along with infrastructure deployment changes that are discussed in detail later in this document.
+Harcamalarınızı azaltmak için harekete geçin. En iyi şekilde planlama ve maliyet görünürlüğü artırma aracılığıyla toplanan bulguları göre yapın. Satın alma ve bu belgenin sonraki bölümlerinde ayrıntılı ele alınmıştır altyapı dağıtımı değişiklikleri birlikte iyileştirmeleri lisanslama göz önünde bulundurabilirsiniz.
 
-#### <a name="iteration"></a>Iteration
+#### <a name="iteration"></a>Yineleme
 
-Everyone in your organization must engage in the cost management lifecycle. They need to stay involved on an ongoing basis to optimize costs. Be rigorous about this iterative process and make it a key tenet of responsible cloud governance in your organization.
+Kuruluşunuzdaki herkes, maliyet Yönetimi yaşam döngüsündeki ilgisini gerekir. Maliyetleri uygun duruma getirmek için sürekli olarak katılan kalmak gerekir. Bu yinelemeli süreci hakkında ayrıntılı ve kuruluşunuzda sorumlu bulut idare anahtar de aynen geçerli yapın.
 
-![Key principles diagram showing visibility, accountability, and optimization](./media/cost-mgt-best-practices/principles.png)
+![Görünürlük ve Sorumluluk iyileştirme gösteren temel ilkeler diyagram](./media/cost-mgt-best-practices/principles.png)
 
-## <a name="plan-with-cost-in-mind"></a>Plan with cost in mind
+## <a name="plan-with-cost-in-mind"></a>Maliyet aklınızda planlama
 
-Before you deploy cloud resources, assess the following items:
+Bulut kaynaklarını dağıtmadan önce aşağıdakileri değerlendirin:
 
-- The Azure offer that best meets your needs
-- The resources you plan to use
-- How much they might cost
+- Gereksinimlerinizi en iyi şekilde karşılayan Azure teklifi
+- Kullanmayı planladığınız kaynakları
+- Ne kadara mal
 
-Azure provides tools to assist you in the assessment process. The tools can give you a good idea of the investment required to enable your workloads. Then you can select the best configuration for your situation.
+Azure değerlendirme işleminde size yardımcı olan araçlar sağlar. Araçlar, iş yüklerinizi etkinleştirmek için gerekli yatırım hakkında fikir verebilirsiniz. Ardından, sizin durumunuz için en iyi yapılandırma seçebilirsiniz.
 
-### <a name="azure-onboarding-options"></a>Azure onboarding options
+### <a name="azure-onboarding-options"></a>Azure ekleme seçenekleri
 
-The first step in maximizing your experience within Cost Management is to investigate and decide which Azure offer is best for you. Think about how you plan to use Azure in the future. Also consider how you want your billing model configured. Consider the following questions when making your decision:
+Maliyet Yönetimi içinde deneyiminizi en üst düzeye ilk adımı, araştırmanıza ve hangi Azure teklifi sizin için en iyi olduğuna karar sağlamaktır. Nasıl Azure gelecekte kullanmayı planlıyorsanız hakkında düşünün. Ayrıca, yapılandırılmış faturalama modelinizi nasıl istediğinizi düşünün. Karar verirken aşağıdaki soruları göz önünde bulundurun:
 
-- How long do I plan to use Azure? Am I testing, or do I plan to build longer-term infrastructure?
-- How do I want to pay for Azure? Should I prepay for a reduced price or get invoiced at the end of the month?
+- Azure'ı kullanmak ne kadar süreyle planlıyor musunuz? Test am veya daha uzun vadeli altyapısı oluşturmak planlıyor musunuz?
+- Nasıl Azure için ödeme yapmak istiyor musunuz? Gereken bir indirimli fiyat için ön ödeme veya ayın sonunda Faturalanan?
 
-To learn more about the various options, visit [How to buy Azure](https://azure.microsoft.com/pricing/purchase-options/). Several of the most common billing models are identified below.
+Çeşitli seçenekler hakkında daha fazla bilgi edinmek için [Azure satın alma](https://azure.microsoft.com/pricing/purchase-options/)makalesini ziyaret edin. Aşağıda birkaç yaygın faturalandırma modelleri tanımlanır.
 
 #### <a name="freehttpsazuremicrosoftcomfree"></a>[Ücretsiz](https://azure.microsoft.com/free/)
 
-- Popüler hizmetlerden 12 ay ücretsiz yararlanma
-- $200 in credit to explore services for 30 days
-- 25+ services are always free
+- popüler ücretsiz Hizmetleri 12 ay
+- 200 ABD Doları kredi Hizmetleri 30 gün için keşfetmek için
+- 25'ten fazla hizmetleri her zaman ücretsiz olan
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Pay as you go](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Alt sınır veya taahhüt yok
-- Rekabetçi Fiyatlandırma
+- Rekabetçi fiyatlandırma
 - Yalnızca kullandığınız kadar ödeyin
 - Dilediğiniz zaman iptal edin
 
 #### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- Options for up-front monetary commitments
-- Access to reduced Azure pricing
+- Ön parasal taahhütler için seçenekleri
+- Erişim için indirimli Azure fiyatlandırması
 
-## <a name="estimate-the-cost-of-your-solution"></a>Estimate the cost of your solution
+## <a name="estimate-the-cost-of-your-solution"></a>Çözümünüzü maliyetini tahmin etmek
 
-Before you deploy any infrastructure, assess how much your solution will cost. The assessment will help you create a budget for your organization for the workload, up-front. Then you can use a budget over time to benchmark the validity of your initial estimation. And you can compare it with the actual cost of your deployed solution.
+Herhangi bir altyapının dağıtmadan önce ne kadar çözümünüzü maliyetini değerlendirin. Değerlendirme iş yükü için ön kuruluşunuz için bir bütçe oluşturmanıza yardımcı olur. Ardından, ilk tahmin geçerliliğini Kıyaslama için zaman içinde bir bütçe kullanabilirsiniz. Ve dağıtılan çözümünüzün gerçek maliyet ile karşılaştırın.
 
 ### <a name="azure-pricing-calculator"></a>Azure fiyatlandırma hesaplayıcısı
 
-The Azure pricing calculator allows you to mix and match different combinations of Azure services to see an estimate of the costs. You can implement your solution using different ways in Azure - each might influence your overall spending. Thinking early about all of the infrastructure needs of your cloud deployment helps you use the tool most effectively. It can help you get a solid estimate of your estimated spending in Azure.
+Azure fiyatlandırma hesaplayıcısı karıştırın ve eşleştirin farklı birleşimlerini tahmini maliyetleri görmek için Azure hizmetleri sağlar. Azure'da farklı yolları kullanarak çözümünüzü uygulamak - her genel harcamalarınızı etkileyebilir. Erken tüm Altyapı gereksinimlerini, bulut dağıtımınızla hakkında düşünmeye aracı en etkili bir şekilde kullanmanıza yardımcı olur. Tahmini Azure harcamalarınızı, düz bir tahmin elde etmenize yardımcı olabilir.
 
-For more information, see the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator).
+Daha fazla bilgi için bkz. [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator).
 
 ### <a name="azure-migrate"></a>Azure Geçişi
 
-Azure Migrate is a service that assesses your organization's current workloads in on-premises datacenters. It gives you insight into what you might need from an Azure replacement solution. First, Migrate analyzes your on-premises machines to determine whether migration is feasible. Then, it recommends VM sizing in Azure to maximize performance. Finally, it also creates a cost estimate for an Azure-based solution.
+Azure geçişi, kuruluşunuzun şirket içi veri merkezlerinde geçerli iş yüklerini değerlendirir bir hizmettir. Bir Azure değiştirme çözümden gerek duyabileceğiniz Öngörüler sağlar. İlk olarak, geçiş, şirket içi makinelerinizi geçiş uygun olup olmadığını belirlemek için analiz eder. Ardından, performansı en üst düzeye çıkarmak için azure'da VM boyutu önerir. Son olarak, Azure tabanlı bir çözüm için maliyet tahmini da oluşturur.
 
-For more information, see [Azure Migrate](../migrate/migrate-overview.md).
+Daha fazla bilgi için bkz. [Azure geçişi](../migrate/migrate-overview.md).
 
-## <a name="analyze-and-manage-your-costs"></a>Analyze and manage your costs
+## <a name="analyze-and-manage-your-costs"></a>Analiz edin ve maliyetlerinizi yönetin
 
-Keep informed about how your organization's costs evolve over time. Use the following techniques to properly understand and manage your spending.
+Kuruluşunuzun maliyetleri zamanla gelişmesinin nasıl hakkında haberdar edin. Düzgün bir şekilde anlamak ve harcamalarınızı yönetmek için aşağıdaki teknikleri kullanır.
 
-### <a name="organize-and-tag-your-resources"></a>Organize and tag your resources
+### <a name="organize-and-tag-your-resources"></a>Düzenleme ve kaynaklarınıza etiket
 
-Organize your resources with cost in mind. As you create subscriptions and resource groups, think about the teams that are responsible for associated costs. Make sure your reporting keeps your organization in mind. Subscriptions and resource groups provide good buckets to organize and attribute spending across your organization. Tags provide a good way to attribute cost. You can use tags as a filter. And you can use them to group by when you analyze data and investigate costs. Enterprise Agreement customers can also create departments and place subscriptions under them. Cost-based organization in Azure helps keep the relevant people in your organization accountable for reducing their team's spending.
+Maliyet aklınızda kaynaklarınızla düzenleyin. Abonelikler ve kaynak grupları oluştururken, ilişkili tüm maliyetler için sorumlu takımlar düşünün. Kuruluşunuz aklınızda tutar, raporlama emin olun. Abonelikler ve kaynak gruplarını düzenlemek ve kuruluşunuz genelinde harcama özniteliği için iyi bir demet sağlar. Etiketleri özniteliği maliyet için iyi bir yol sağlar. Filtre olarak etiketleri kullanabilirsiniz. Ve verileri analiz etmek ve maliyetlerini incelemenize gruplandırma ölçütü için kullanabilirsiniz. Kurumsal Anlaşma müşterileri, ayrıca departmanlar oluşturabilir ve bunları kapsamında abonelikleri yerleştirin. Azure maliyet tabanlı kuruluşta, ilgili kişi kuruluşunuzda sorumlu ekip harcamalarınızı azaltmak için'e tutmaya yardımcı olur.
 
-### <a name="use-cost-analysis"></a>Use cost analysis
+### <a name="use-cost-analysis"></a>Maliyet analizi kullanma
 
-Cost analysis allows you to analyze your organizational costs in-depth by slicing and dicing your costs using standard resource properties. Consider the following common questions as a guide for your analysis. Answering these questions on a regular basis will help you stay more informed and enable more cost-conscious decisions.
+Maliyet analizi kuruluş maliyetlerinizi ayrıntılı şekilde dilimlenmesi ve standart kaynak özelliklerini kullanarak, maliyetlerinizi ayrıntılı olarak incelemenin çözümlemenizi sağlar. Çözümleme için kılavuz olarak aşağıdaki ortak soruları göz önünde bulundurun. Düzenli olarak bu soruların yanıtlanması, daha fazla bilgi edinmenizi ve daha fazla maliyet konusunda bilinçli kararlar yardımcı olur.
 
-- **Estimated costs for the current month** – How much have I incurred so far this month? Will I stay under my budget?
-- **Investigate anomalies** – Do routine checks to make sure that costs stay within a reasonable range of normal usage. Eğilimler nelerdir? Are there any outliers?
-- **Invoice reconciliation** - Is my latest invoiced cost more than the previous month? How did spending habits change month-over-month?
-- **Internal chargeback** - Now that I know how much I'm being charged, how should those charges be broken down for my organization?
+- **Geçerli aya ait tahmini maliyetler** : Bu ayda şimdiye kadar ne kadar çok ne kadar harcamalıyım? My bütçe altında açık kalsın mı?
+- **Anormallikleri araştırın** : maliyetlerin makul bir normal kullanım aralığı içinde kalmasını sağlamak için rutin denetimleri yapın. Eğilimleri nelerdir? Herhangi bir aykırı değer vardır?
+- **Fatura mutabakatı** -en son faturalanmış maliyetim önceki aydan daha fazla mı? Nasıl harcama alışkanlıkları aya ay değişti?
+- **İç geri ödeme** -ne kadar ücretlendirildiğimize göre, Kuruluşumun bu ücretleri nasıl bölüneceğim?
 
-For more information, see [cost analysis](quick-acm-cost-analysis.md).
+Daha fazla bilgi için bkz. [Maliyet Analizi](quick-acm-cost-analysis.md).
 
-### <a name="export-billing-data-on-a-schedule"></a>Export billing data on a schedule
+### <a name="export-billing-data-on-a-schedule"></a>Bir zamanlamaya göre faturalandırma verileri dışarı aktarma
 
-Do you need to import your billing data into an external system, like a dashboard or financial system? Set up automated exports to Azure Storage and avoid manually downloading files every month. You can then easily set up automatic integrations with other systems to keep your billing data in sync.
+Bir Pano veya mali sistem gibi bir dış sistemle fatura verilerinizi içeri aktarmak gerekiyor mu? Dosyaları her ay el ile yüklenmesini önlemek ve Azure Depolama'ya otomatik dışarı aktarma ayarlayın. Daha sonra kolayca diğer sistemlerle otomatik tümleştirmeler fatura verilerinizi eşitlemek için ayarlayabilirsiniz.
 
-For more information about exporting billing data, see [Create and manage exported data](tutorial-export-acm-data.md).
+Faturalandırma verilerini dışa aktarma hakkında daha fazla bilgi için bkz. [dışarı aktarılan verileri oluşturma ve yönetme](tutorial-export-acm-data.md).
 
-### <a name="create-budgets"></a>Create budgets
+### <a name="create-budgets"></a>Bütçeleri oluşturun
 
-After you've identified and analyzed your spending patterns, it's important to begin setting limits for yourself and your teams. Azure budgets give you the ability to set either a cost or usage-based budget with many thresholds and alerts. Make sure to review the budgets that you create regularly to see your budget burn-down progress and make changes as needed. Azure budgets also allow you to configure an automation trigger when a given budget threshold is reached. For example, you can configure your service to shut down VMs. Or you can move your infrastructure to a different pricing tier in response to a budget trigger.
+Tanımlanan ve harcama, desenleri analiz sonra sizin ve takımlarınızın sınırlamalarıyla başlamak önemlidir. Azure bütçelerini maliyet veya kullanım tabanlı bütçe birçok eşikler ve uyarılarla ayarlamanıza olanak verir. Gerekli değişiklikleri yapın ve bütçe yazma aşağı ilerlemenizi görmek için düzenli olarak oluşturduğunuz bütçelerini gözden geçirdiğinizden emin olun. Azure bütçelerini de belirtilen bütçe Eşiğe ulaşıldığında bir Otomasyon tetikleyicisi yapılandırmanıza olanak sağlar. Örneğin, hizmetiniz Vm'lerini kapatmanız yapılandırabilirsiniz. Veya farklı bir fiyatlandırma katmanına bir bütçe tetikleyiciye yanıt altyapınızı taşıyabilirsiniz.
 
-For more information, see [Azure Budgets](tutorial-acm-create-budgets.md).
+Daha fazla bilgi için bkz. [Azure bütçeleri](tutorial-acm-create-budgets.md).
 
-For more information about budget-based automation, see [Budget Based Automation](../billing/billing-cost-management-budget-scenario.md).
+Bütçe tabanlı Otomasyon hakkında daha fazla bilgi için bkz. [Bütçe tabanlı Otomasyon](../billing/billing-cost-management-budget-scenario.md).
 
-## <a name="act-to-optimize"></a>Act to optimize
-Use the following ways to optimize spending.
+## <a name="act-to-optimize"></a>En iyi duruma getirmek için harekete geçin
+Harcama en iyi duruma getirmek için aşağıdaki yöntemleri kullanın.
 
-### <a name="cut-out-waste"></a>Cut out waste
+### <a name="cut-out-waste"></a>Atık Kes
 
-Azure’da altyapınızı dağıttıktan sonra bu altyapının kullanıldığından emin olmanız önemlidir. Hemen tasarruf yapmaya başlamanın en kolay yolu, kaynaklarınızı gözden geçirmek ve kullanılmayan kaynakları kaldırmaktır. From there, you should determine if your resources are being used as efficiently as possible.
+Altyapınızı azure'da dağıttıktan sonra kullanıldığı emin olmak önemlidir. Hemen başlayabileceğinizi en kolay yolu, kaynakları gözden geçirin ve kullanılmayan kaldırmak sağlamaktır. Burada, kaynaklarınızı mümkün olduğunca verimli bir şekilde kullanılıp kullanılmayacağını belirlemeniz gerekir.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
-Azure Advisor is a service that, among other things, identifies virtual machines with low utilization from a CPU or network usage standpoint. From there, you can decide to either shut down or resize the machine based on the estimated cost to continue running the machines. Advisor also provides recommendations for reserved instance purchases. The recommendations are based on your last 30 days of virtual machine usage. When acted on, the recommendations can help you reduce your spending.
+Azure Danışmanı, başka şeylerin yanında CPU veya ağ kullanımı açısından düşük kullanımına sahip sanal makineler tanımlayan bir hizmettir. Burada, kapatma ya da makineleri çalışmaya devam etmesini tahmini maliyet tabanlı makine yeniden boyutlandırma geçmeye karar verebilirsiniz. Advisor, ayrıca ayrılmış örnek satın alma işlemleri için öneriler sağlar. Önerileri üzerinde kullanımınızın son 30 günlük sanal makine kullanımı temel alır. Etkilediği, öneriler harcamalarınızı azaltmanıza yardımcı olabilir.
 
-For more information, see [Azure Advisor](../advisor/advisor-overview.md).
+Daha fazla bilgi için bkz. [Azure Advisor](../advisor/advisor-overview.md).
 
-### <a name="size-your-vms-properly"></a>Size your VMs properly
+### <a name="size-your-vms-properly"></a>Sanal makinelerinizin düzgün boyutu
 
-VM sizing has a significant impact on your overall Azure cost. The number of VMs needed in Azure might not equate to what you currently have deployed in an on-premises datacenter. Make sure your choose the right size for the workloads that you plan to run.
+VM boyutu, genel Azure maliyetinizi önemli bir etkisi yoktur. Azure'daki gerekli VM sayısına ne şu anda bir şirket içi veri merkezine dağıttığınız için günleriyle değil. Emin olun, çalıştırmayı planladığınız iş yükleri için doğru boyutu seçin.
 
-For more information, see [Azure IaaS: proper sizing and cost](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
+Daha fazla bilgi için bkz. [Azure IaaS: uygun boyutlandırma ve maliyet](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
 
-### <a name="use-purchase-discounts"></a>Use purchase discounts
+### <a name="use-purchase-discounts"></a>Satın alma indirimleri kullanın
 
-Azure has many discounts that your organization should take advantage of to save money.
+Azure, kuruluşunuzun avantajı Tasarruf için gerçekleştirmesi gereken birçok indirimler vardır.
 
-#### <a name="azure-reservations"></a>Azure Rezervasyonlar
+#### <a name="azure-reservations"></a>Azure ayırmalar
 
-Azure Reservations allow you to prepay for one-year or three-years of virtual machine or SQL Database compute capacity. Pre-paying will allow you to get a discount on the resources you use. Azure reservations can significantly reduce your virtual machine or SQL database compute costs — up to 72 percent on pay-as-you-go prices with one-year or three-year upfront commitment. Rezervasyonlar bir faturalandırma indirimi sağlar ve sanal makinelerinizin veya SQL veritabanlarınızın çalışma zamanı durumunu etkilemez.
+Azure ayırmaları için bir yıllık ön ödeme yapmanızı sağlar veya üç yıl, sanal makine veya SQL veritabanı, işlem kapasitesi. Önceden ödeme kullandığınız kaynaklar üzerinde bir indirim almak izin verir. Azure ayırmaları, sanal makine veya SQL veritabanı işlem maliyetleri önemli ölçüde azaltabilirsiniz — yıllık veya üç yıllık ön taahhüt ile Kullandıkça Öde fiyatlarında yüzde 72'ye kadar. Rezervasyon faturalandırma indirim sağlar ve sanal makine veya SQL veritabanları çalışma zamanı durumunu etkilemez.
 
-For more information, see [What are Azure Reservations?](../billing/billing-save-compute-costs-reservations.md).
+Daha fazla bilgi için bkz. [Azure ayırmaları nelerdir?](../billing/billing-save-compute-costs-reservations.md).
 
-#### <a name="use-azure-hybrid-benefit"></a>Azure Hibrit Avantajı’nı kullanın
+#### <a name="use-azure-hybrid-benefit"></a>Azure hibrit Avantajı'nı kullanın
 
-If you already have Windows Server or SQL Server licenses in your on-premises deployments, you can use the Azure Hybrid Benefit program to save in Azure. Windows Server avantajı ile her lisans, işletim sistemi maliyetini karşılar (iki adede kadar sanal makinede) ve siz yalnızca temel işlem maliyetleri için ödeme yaparsınız. Sanal çekirdek SQL Veritabanı seçeneklerinde yüzde 55’e kadar tasarruf elde etmek için mevcut SQL Server lisanslarını kullanabilirsiniz. Seçenekler arasında, SQL Server Integration Services ve Azure Sanal Makinelerinde SQL Server yer alır.
+Windows Server veya SQL Server lisansları, şirket içi dağıtımlarında zaten varsa Azure'da kaydetmek için Azure hibrit avantajı programı'nı kullanabilirsiniz. Windows Server avantajı, her lisans (iki adede kadar sanal makineler) işletim sistemi maliyetini kapsar ve yalnızca temel işlem maliyetleri için ödeme yaparsınız. Mevcut SQL Server lisanslarını sanal çekirdek tabanlı SQL veritabanı seçenekleri 55 yüzde kaydetmek için kullanabilirsiniz. seçenekleri SQL Server, SQL Server Integration Services ve Azure sanal makineler de içerir.
 
-For more information, see [Azure Hybrid Benefit savings calculator](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Daha fazla bilgi için bkz. [tasarruf Hesaplayıcı Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 ### <a name="other-resources"></a>Diğer kaynaklar
 
-Azure also has a service that allows you to build services that take advantage of surplus capacity in Azure for reduced rates. For more information, see [Use low priority VMs with Batch](../batch/batch-low-pri-vms.md).
+Ayrıca Azure kapasiteden Azure'da daha düşük ücretlerinden yararlanarak hizmetleri oluşturmanıza olanak sağlayan bir hizmet sahiptir. Daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM 'Ler kullanma](../batch/batch-low-pri-vms.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- If you're new to Cost Management, read [What is Azure Cost Management?](overview-cost-mgt.md) to learn how it helps monitor and control Azure spending and to optimize resource use.
+- Maliyet yönetimi için yeni başladıysanız [Azure maliyet yönetimi nedir?](overview-cost-mgt.md) konusunu okuyun. Bu, Azure harcamalarınızı izlemeye ve denetlemeye ve kaynak kullanımını iyileştirmenize nasıl yardımcı olduğunu öğrenin.

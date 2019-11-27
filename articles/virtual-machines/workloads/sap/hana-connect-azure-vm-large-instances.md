@@ -1,6 +1,6 @@
 ---
-title: Connectivity setup from virtual machines to SAP HANA on Azure (Large Instances) | Microsoft Docs
-description: Connectivity setup from virtual machines for using SAP HANA on Azure (Large Instances).
+title: Azure 'da SAP HANA sanal makinelerden bağlantı kurulumu (büyük örnekler) | Microsoft Docs
+description: Azure 'da SAP HANA (büyük örnekler) kullanarak sanal makinelerden bağlantı kurulumu.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -24,128 +24,128 @@ ms.locfileid: "74224722"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure VM'lerini HANA Büyük Örnekleri'ne bağlama
 
-The article [What is SAP HANA on Azure (Large Instances)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) mentions that the minimal deployment of HANA Large Instances with the SAP application layer in Azure looks like the following:
+[Azure 'da SAP HANA nedir (büyük örnekler)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) Azure 'da SAP uygulama katmanıyla en az HANA büyük örnek dağıtımının aşağıdaki gibi göründüğünü bahsetmeler:
 
-![Azure VNet connected to SAP HANA on Azure (Large Instances) and on-premises](./media/hana-overview-architecture/image1-architecture.png)
+![Azure 'da SAP HANA bağlı Azure VNet (büyük örnekler) ve şirket içi](./media/hana-overview-architecture/image1-architecture.png)
 
-Looking closer at the Azure virtual network side, there is a need for:
+Azure sanal ağ tarafında daha yakından bakıldığında şunlar için bir gereksinim vardır:
 
-- The definition of an Azure virtual network into which you're going to deploy the VMs of the SAP application layer.
-- The definition of a default subnet in the Azure virtual network that is really the one into which the VMs are deployed.
-- The Azure virtual network that's created needs to have at least one VM subnet and one Azure ExpressRoute virtual network gateway subnet. These subnets should be assigned the IP address ranges as specified and discussed in the following sections.
+- SAP uygulama katmanının VM 'lerini dağıtacaksınız bir Azure sanal ağının tanımı.
+- Azure sanal ağında, VM 'Lerin dağıtıldığı bir varsayılan alt ağın tanımı.
+- Oluşturulan Azure sanal ağının en az bir VM alt ağına ve bir Azure ExpressRoute sanal ağ geçidi alt ağına sahip olması gerekir. Bu alt ağlara, belirtilen ve aşağıdaki bölümlerde açıklandığı gibi IP adresi aralıkları atanmalıdır.
 
 
-## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Create the Azure virtual network for HANA Large Instances
+## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>HANA büyük örnekleri için Azure sanal ağını oluşturma
 
 >[!Note]
->The Azure virtual network for HANA Large Instances must be created by using the Azure Resource Manager deployment model. The older Azure deployment model, commonly known as the classic deployment model, isn't  supported by the HANA Large Instance solution.
+>HANA büyük örnekleri için Azure sanal ağı, Azure Resource Manager dağıtım modeli kullanılarak oluşturulmalıdır. Klasik dağıtım modeli olarak bilinen eski Azure dağıtım modeli, HANA büyük örnek çözümü tarafından desteklenmez.
 
-You can use the Azure portal, PowerShell, an Azure template, or the Azure CLI to create the virtual network. (For more information, see [Create a virtual network using the Azure portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). In the following example, we look at a virtual network that's created by using the Azure portal.
+Sanal ağı oluşturmak için Azure portal, PowerShell, Azure şablonu veya Azure CLı 'yı kullanabilirsiniz. (Daha fazla bilgi için bkz. [Azure Portal kullanarak sanal ağ oluşturma](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). Aşağıdaki örnekte, Azure portal kullanılarak oluşturulan bir sanal ağa bakacağız.
 
-When referring to the **address space** in this documentation, to the address space that the Azure virtual network is allowed to use. This address space is also the address range that the virtual network uses for BGP route propagation. This **address space** can be seen here:
+Bu belgede **Adres alanına** başvururken, Azure sanal ağının kullanmasına izin verilen adres alanı. Bu adres alanı Ayrıca sanal ağın BGP yol yayma için kullandığı adres aralığıdır. Bu **Adres alanına** buradan görünebilirler:
 
-![Address space of an Azure virtual network displayed in the Azure portal](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
+![Azure portal gösterildiği bir Azure sanal ağının adres alanı](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
 
-In the previous example, with 10.16.0.0/16, the Azure virtual network was given a rather large and wide IP address range to use. Therefore, all the IP address ranges of subsequent subnets within this virtual network can have their ranges within that address space. We  don't usually  recommend such a large address range for single virtual network in Azure. But let's look into the subnets that are defined in the Azure virtual network:
+Önceki örnekte, 10.16.0.0/16 ile Azure sanal ağına kullanılacak büyük ve geniş bir IP adresi aralığı verildi. Bu nedenle, bu sanal ağ içindeki sonraki alt ağların tüm IP adresi aralıklarının bu adres alanı içinde aralıkları olabilir. Azure 'da tek bir sanal ağ için genellikle bu tür büyük bir adres aralığı önermiyoruz. Ancak Azure sanal ağında tanımlı olan alt ağlara bakalım:
 
-![Azure virtual network subnets and their IP address ranges](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
+![Azure sanal ağ alt ağları ve IP adresi aralıkları](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
 
-We look at a virtual network with a first VM subnet (here called "default") and a subnet called "GatewaySubnet".
+İlk VM alt ağına ("varsayılan" olarak adlandırılır) ve "GatewaySubnet" adlı bir alt ağa sahip bir sanal ağa bakıyoruz.
 
-In the two previous graphics, the **virtual network address space** covers both **the subnet IP address range of the Azure VM** and that of the virtual network gateway.
+Önceki iki grafik içinde, **sanal ağ adres alanı** , hem Azure VM 'nin hem de sanal ağ geçidinin **alt ağ IP adresi aralığını** kapsıyor.
 
-You can restrict the **virtual network address space** to the specific ranges used by each subnet. You can also define the **virtual network address space** of a virtual network as multiple specific ranges, as shown here:
+**Sanal ağ adres alanını** her alt ağ tarafından kullanılan belirli aralıklar ile kısıtlayabilirsiniz. Bir sanal ağın **sanal ağ adres alanını** , burada gösterildiği gibi, birden çok belirli Aralık olarak da tanımlayabilirsiniz:
 
-![Azure virtual network address space with two spaces](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
+![İki boşlukla Azure sanal ağ adres alanı](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-In this case, the **virtual network address space** has two spaces defined. They are the same as the IP address ranges that are defined for the subnet IP address range of the Azure VM and the virtual network gateway. 
+Bu durumda, **sanal ağ adres alanının** tanımlı iki alanı vardır. Bunlar, Azure VM 'nin alt ağ IP adresi aralığı ve sanal ağ geçidi için tanımlanan IP adresi aralıklarıyla aynıdır. 
 
-You can use any naming standard you like for these tenant subnets (VM subnets). However, **there must always be one, and only one, gateway subnet for each virtual network** that connects to the SAP HANA on Azure (Large Instances) ExpressRoute circuit. **This gateway subnet has to be named "GatewaySubnet"** to make sure that the ExpressRoute gateway is properly placed.
+Bu kiracı alt ağları (VM alt ağları) için istediğiniz herhangi bir adlandırma standardını kullanabilirsiniz. Ancak, Azure (büyük örnekler) ExpressRoute bağlantı hattının SAP HANA bağlanan **her sanal ağ için her zaman bir ve yalnızca bir ağ geçidi alt ağı** olmalıdır. ExpressRoute ağ geçidinin düzgün yerleştirildiğinden emin olmak için **Bu ağ geçidi alt ağının "GatewaySubnet" olarak adlandırılması gerekiyor** .
 
 > [!WARNING] 
-> It's critical that the gateway subnet always be named "GatewaySubnet".
+> Ağ geçidi alt ağının her zaman "GatewaySubnet" olarak adlandırılması kritik öneme sahiptir.
 
-You can use multiple VM subnets and non-contiguous address ranges. These address ranges must be covered by the **virtual network address space** of the virtual network. They can be in an aggregated form. They can also be in a list of the exact ranges of the VM subnets and the gateway subnet.
+Birden çok VM alt ağını ve bitişik olmayan adres aralıklarını kullanabilirsiniz. Bu adres aralıkları, sanal ağın **sanal ağ adresi alanı** tarafından kapsanmalıdır. Bunlar, toplanmış bir biçimde olabilir. Ayrıca VM alt ağlarının ve ağ geçidi alt ağının tam aralıklarının bir listesinde de olabilirler.
 
-Following is a summary of the important facts about an Azure virtual network that connects to HANA Large Instances:
+Aşağıda, HANA büyük örneklerine bağlanan bir Azure sanal ağı hakkındaki önemli olguların bir özeti verilmiştir:
 
-- You must submit the **virtual network address space** to Microsoft  when you're performing an initial deployment of HANA Large Instances. 
-- The **virtual network address space** can be one larger range that covers the ranges for both the subnet IP address range of the Azure VM and the virtual network gateway.
-- Or you can submit multiple ranges that cover the different IP address ranges of VM subnet IP address range(s) and the virtual network gateway IP address range.
-- The defined **virtual network address space** is used for BGP routing propagation.
-- The name of the gateway subnet must be: **"GatewaySubnet"** .
-- The  address space is used as a filter on the HANA Large Instance side to allow or disallow traffic to the HANA Large Instance units from Azure. The BGP routing information of the Azure virtual network and the IP address ranges that are configured for filtering on the HANA Large Instance side should match. Otherwise, connectivity issues can occur.
-- There are some details about the gateway subnet that are discussed later, in the section **Connecting a virtual network to HANA Large Instance ExpressRoute.**
+- HANA büyük örneklerinin ilk dağıtımını gerçekleştirirken, **sanal ağ adres alanını** Microsoft 'a göndermeniz gerekir. 
+- **Sanal ağ adres alanı** , hem Azure VM 'nin hem de sanal ağ geçidinin alt ağ IP adresi aralığına yönelik aralıkları içeren bir daha büyük bir Aralık olabilir.
+- Ya da VM alt ağı IP adresi aralıklarının ve sanal ağ geçidi IP adresi aralığının farklı IP adresi aralıklarını kapsayan birden çok Aralık gönderebilirsiniz.
+- Tanımlanan **sanal ağ adresi alanı** BGP yönlendirme yayılması için kullanılır.
+- Ağ geçidi alt ağının adı şu olmalıdır: **"Gatewaysubnet"** .
+- Adres alanı, Azure 'dan HANA büyük örnek birimlerine giden trafiğe izin vermek veya bu trafiği engellemek için HANA büyük örnek tarafında bir filtre olarak kullanılır. Azure sanal ağının BGP yönlendirme bilgileri ve HANA büyük örnek tarafında filtreleme için yapılandırılan IP adresi aralıkları eşleşmelidir. Aksi takdirde, bağlantı sorunları meydana gelebilir.
+- **Sanal ağı Hana büyük örnek ExpressRoute 'A bağlama** bölümünde daha sonra ele alınan ağ geçidi alt ağıyla ilgili bazı ayrıntılar bulunur.
 
 
 
-## <a name="different-ip-address-ranges-to-be-defined"></a>Different IP address ranges to be defined 
+## <a name="different-ip-address-ranges-to-be-defined"></a>Tanımlanacak farklı IP adresi aralıkları 
 
-Some of the IP address ranges that are necessary for deploying HANA Large Instances got introduced already. But there are more IP address ranges that are also important. Not all of the following IP address ranges need to be submitted to Microsoft. However, you do need to define them before sending a request for initial deployment:
+HANA büyük örneklerinin dağıtımı için gerekli olan bazı IP adresi aralıkları zaten tanıtılmıştır. Ancak aynı zamanda önemli olan daha fazla IP adresi aralığı vardır. Aşağıdaki IP adresi aralıklarının tümünün Microsoft 'a gönderilmesi gerekmez. Ancak, ilk dağıtım için bir istek göndermeden önce bunları tanımlamanız gerekir:
 
-- **Virtual network address space**: The **virtual network address space** is the IP address ranges that you assign to your address space parameter in the Azure virtual networks. These networks connect to the SAP HANA Large Instance environment. We recommend that this address space parameter is a multi-line value. It should consist of the subnet range of the Azure VM and the subnet range(s) of the Azure gateway. This subnet range was shown in the previous graphics. It must NOT overlap with your on-premises or server IP pool or ER-P2P address ranges. How do you get these IP address range(s)? Your corporate network team or service provider should provide one or multiple IP address range(s) that aren't used inside your network. For example, the subnet of your Azure VM  is 10.0.1.0/24, and the subnet of your Azure gateway subnet is 10.0.2.0/28.  We recommend that your Azure virtual network address space is defined as: 10.0.1.0/24 and 10.0.2.0/28. Although the  address space values can be aggregated, we recommend matching them to the subnet ranges. This way you can accidentally avoid reusing unused IP address ranges within larger address spaces elsewhere in your network. **The virtual network address space is an IP address range. It needs to be submitted to Microsoft when you ask for an initial deployment**.
-- **Azure VM subnet IP address range:** This IP address range is the one you assign to the Azure virtual network subnet parameter. This parameter is in your Azure virtual network and connects to the SAP HANA Large Instance environment. This IP address range is used to assign IP addresses to your Azure VMs. The IP addresses out of this range are allowed to connect to your SAP HANA Large Instance server(s). If needed, you can use multiple Azure VM subnets. We recommend a /24 CIDR block for each Azure VM subnet. This address range must be a part of the values that are used in the Azure virtual network address space. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that isn't being used inside your network.
-- **Virtual network gateway subnet IP address range:** Depending on the features that you plan to use, the recommended size is:
-   - Ultra-performance ExpressRoute gateway: /26 address block--required for Type II class of SKUs.
-   - Coexistence with VPN and ExpressRoute using a high-performance ExpressRoute virtual network gateway (or smaller): /27 address block.
-   - All other situations: /28 address block. This address range must be a part of the values used in the "VNet address space" values. This address range must be a part of the values that are used in the Azure virtual network address space values that you submit to Microsoft. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network. 
-- **Address range for ER-P2P connectivity:** This range is the IP range for your SAP HANA Large Instance ExpressRoute (ER) P2P connection. This range of IP addresses must be a /29 CIDR IP address range. This range must NOT overlap with your on-premises or other Azure IP address ranges. This IP address range is used to set up the ER connectivity from your ExpressRoute virtual gateway to the SAP HANA Large Instance servers. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network. **This range is an IP address range. It needs to be submitted to Microsoft when you ask for an initial deployment**.  
-- **Server IP pool address range:** This IP address range is used to assign the individual IP address to HANA large instance servers. The recommended subnet size is a /24 CIDR block. If needed, it can be smaller, with as few as  64 IP addresses. From this range, the first 30 IP addresses are reserved for use by Microsoft. Make sure that you account for this fact when you choose the size of the range. This range must NOT overlap with your on-premises or other Azure IP addresses. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network.  **This range is an IP address range, which needs to be submitted to Microsoft when asking for an initial deployment**.
+- **Sanal ağ adres alanı**: **sanal ağ adres alanı** , Azure sanal ağlarında adres alanı parametreye atadığınız IP adres aralığıdır. Bu ağlar SAP HANA büyük örnek ortamına bağlanır. Bu adres alanı parametresinin çok satırlı bir değer olmasını öneririz. Azure VM 'nin alt ağ aralığından ve Azure ağ geçidinin alt ağ aralığından oluşmalıdır. Bu alt ağ aralığı önceki grafiklerde gösteriliyor. Şirket içi veya sunucu IP havuzunuzun veya ER-P2P adres aralıklarıyla çakışmamalıdır. Bu IP adresi aralıklarını nasıl alırsınız? Şirket ağı takımınız veya hizmet sağlayıcınız, ağınızda kullanılmayan bir veya birden çok IP adres aralığı sağlamalıdır. Örneğin, Azure sanal makinenizin alt ağı 10.0.1.0/24 ve Azure Gateway alt ağınızın alt ağı 10.0.2.0/28 olur.  Azure sanal ağ adres alanınızı şu şekilde tanımlanır: 10.0.1.0/24 ve 10.0.2.0/28. Adres alanı değerleri toplanabilse de, bunları alt ağ aralıklarıyla eşleştirmeyi öneririz. Bu şekilde, ağınızdaki başka bir yerde daha büyük adres alanları içinde kullanılmayan IP adresi aralıklarını yeniden kullanmaktan kaçınabilirsiniz. **Sanal ağ adres alanı BIR IP adresi aralığıdır. İlk dağıtımı istediğinizde Microsoft 'a gönderilmesi gerekir**.
+- **Azure VM alt ağı IP adresi aralığı:** Bu IP adresi aralığı, Azure sanal ağ alt ağı parametresine atadığınız bir adrestir. Bu parametre, Azure sanal ağınızda bulunur ve SAP HANA büyük örnek ortamına bağlanır. Bu IP adresi aralığı, Azure VM 'lerinize IP adresleri atamak için kullanılır. Bu aralığın dışında olan IP adreslerinin SAP HANA büyük örnek sunucunuza bağlanmasına izin verilir. Gerekirse, birden çok Azure VM alt ağı kullanabilirsiniz. Her bir Azure VM alt ağı için bir/24 CıDR bloğu önerilir. Bu adres aralığı, Azure sanal ağ adresi alanında kullanılan değerlerin bir parçası olmalıdır. Bu IP adresi aralığını nasıl alırsınız? Şirket ağı takımınız veya hizmet sağlayıcınız ağınızda kullanılmayan bir IP adresi aralığı sağlamalıdır.
+- **Sanal ağ geçidi alt ağı IP adresi aralığı:** Kullanmayı planladığınız özelliklere bağlı olarak önerilen boyut:
+   - Ultra performanslı ExpressRoute ağ geçidi:/26 adres bloğu--SKU 'ların tür II sınıfı için gereklidir.
+   - Yüksek performanslı bir ExpressRoute sanal ağ geçidi (veya daha küçük) kullanarak VPN ve ExpressRoute ile birlikte bulunma:/27 adres bloğu.
+   - Tüm diğer durumlar:/28 adres bloğu. Bu adres aralığı, "VNet adres alanı" değerlerinde kullanılan değerlerin bir parçası olmalıdır. Bu adres aralığı, Microsoft 'a gönderdiğiniz Azure sanal ağ adres alanı değerlerinde kullanılan değerlerin bir parçası olmalıdır. Bu IP adresi aralığını nasıl alırsınız? Şirket ağı takımınız veya hizmet sağlayıcınız, ağınızda Şu anda kullanılmayan bir IP adresi aralığı sağlamalıdır. 
+- **Er-P2P bağlantısı Için adres aralığı:** Bu Aralık SAP HANA büyük örnek ExpressRoute (ER) P2P bağlantınızın IP aralığıdır. Bu IP adresi aralığı bir/29 CıDR IP adresi aralığı olmalıdır. Bu Aralık, şirket içi veya diğer Azure IP adresi aralıklarıyla çakışmamalıdır. Bu IP adresi aralığı, ExpressRoute sanal ağ Geçidinizden SAP HANA büyük örnek sunucularına ER bağlantısı kurmak için kullanılır. Bu IP adresi aralığını nasıl alırsınız? Şirket ağı takımınız veya hizmet sağlayıcınız, ağınızda Şu anda kullanılmayan bir IP adresi aralığı sağlamalıdır. **Bu Aralık BIR IP adresi aralığıdır. İlk dağıtımı istediğinizde Microsoft 'a gönderilmesi gerekir**.  
+- **Sunucu IP havuzu adres aralığı:** Bu IP adresi aralığı, tek tek IP adresini HANA büyük örnek sunucularına atamak için kullanılır. Önerilen alt ağ boyutu bir/24 CıDR bloğudur. Gerekirse, en az 64 IP adresi olacak şekilde daha küçük olabilir. Bu aralıktan, ilk 30 IP adresi Microsoft tarafından kullanılmak üzere ayrılmıştır. Aralığın boyutunu seçerken bu olguyu hesaba aldığınızdan emin olun. Bu Aralık, şirket içi veya diğer Azure IP adresleriyle çakışmamalıdır. Bu IP adresi aralığını nasıl alırsınız? Şirket ağı takımınız veya hizmet sağlayıcınız, ağınızda Şu anda kullanılmayan bir IP adresi aralığı sağlamalıdır.  **Bu Aralık, bir ilk dağıtım Isterken Microsoft 'a gönderilmesi gereken bır IP adresi aralığıdır**.
 
-Optional IP address ranges that eventually need to be submitted to Microsoft:
+Son olarak Microsoft 'a gönderilmesi gereken isteğe bağlı IP adresi aralıkları:
 
-- If you choose to use [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from on-premises to HANA Large Instance units, you need to reserve another /29 IP address range. This range may not overlap with any of the other IP address ranges you defined before.
-- If you choose to use [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from a HANA Large Instance tenant in one Azure region to another HANA Large Instance tenant in another Azure region, you need to reserve another /29 IP address range. This range may not overlap with any of the other IP address ranges you defined before.
+- Şirket içinden HANA büyük örnek birimlerine doğrudan yönlendirmeyi etkinleştirmek üzere [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) kullanmayı seçerseniz, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
+- Bir Azure bölgesindeki bir HANA büyük örnek kiracısından başka bir Azure bölgesindeki başka bir HANA büyük örnek kiracıya doğrudan yönlendirmeyi etkinleştirmek üzere [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) kullanmayı seçerseniz, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
 
-For more information about ExpressRoute Global Reach and usage around HANA large instances, check the documents:
+ExpressRoute Global Reach ve HANA büyük örnekleri etrafında kullanım hakkında daha fazla bilgi için belgelere bakın:
 
-- [SAP HANA (Large Instances) network architecture](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Connect a virtual network to HANA large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
+- [Sanal ağı HANA büyük örneklerine bağlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
  
-You need to define and plan the IP address ranges that were described previously. However, you don't need to transmit all of them to Microsoft. The IP address ranges that you are required to name to Microsoft are:
+Daha önce açıklanan IP adresi aralıklarını tanımlamanız ve planlamanız gerekir. Ancak, bunların tümünü Microsoft 'a iletmeniz gerekmez. Microsoft 'a ad almanız gereken IP adresi aralıkları şunlardır:
 
-- Azure virtual network address space(s)
-- Address range for ER-P2P connectivity
-- Server IP pool address range
+- Azure sanal ağ adres alanları
+- ER-P2P bağlantısı için adres aralığı
+- Sunucu IP havuzu adres aralığı
 
-If you add additional virtual networks that need to connect to HANA Large Instances, you have to submit the new Azure virtual network address space that you're adding to Microsoft. 
+HANA büyük örneklerine bağlanması gereken ek sanal ağlar eklerseniz, Microsoft 'a eklemekte olduğunuz yeni Azure sanal ağ adresi alanını göndermeniz gerekir. 
 
-Following is an example of the different ranges and some example ranges as you need to configure and eventually provide  to Microsoft. The value for the Azure virtual network address space isn't aggregated in the first example. However, it is defined from the ranges of the first Azure VM subnet IP address range and the virtual network gateway subnet IP address range. 
+Aşağıda, yapılandırmak ve son olarak Microsoft 'a sağlamak için farklı aralıkların ve bazı örnek aralıkların bir örneği verilmiştir. Azure sanal ağ adres alanının değeri ilk örnekte toplanmaz. Ancak, ilk Azure VM alt ağı IP adresi aralığı ve sanal ağ geçidi alt ağı IP adresi aralığı aralıklarından tanımlanır. 
 
-You can use multiple VM subnets within the Azure virtual network when you configure and submit the additional IP address ranges of the additional VM subnet(s) as part of the Azure virtual network address space.
+Ek VM alt ağlarının ek IP adresi aralıklarını yapılandırıp Azure sanal ağ adresi alanının bir parçası olarak gönderdiğinizde Azure sanal ağı içinde birden fazla VM alt ağı kullanabilirsiniz.
 
-![IP address ranges required in SAP HANA on Azure (Large Instances) minimal deployment](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
+![Azure 'da SAP HANA gereken IP adresi aralıkları (büyük örnekler) en az dağıtım](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
 
-The graphic does not show the additional IP address range(s) that are required for the optional use of ExpressRoute Global Reach.
+Grafik, ExpressRoute Global Reach 'nin isteğe bağlı kullanımı için gerekli olan ek IP adresi aralıklarını göstermez.
 
-You can also aggregate the data that you submit to Microsoft. In that case, the address space of the Azure virtual network only includes one space. Using the IP address ranges from the earlier example, the aggregated virtual network address space could look like the following image:
+Ayrıca, Microsoft 'a gönderdiğiniz verileri de toplayabilirsiniz. Bu durumda, Azure sanal ağının adres alanı yalnızca bir boşluk içerir. Önceki örnekteki IP adresi aralıklarını kullanarak, toplanmış sanal ağ adresi alanı aşağıdaki görüntüye benzeyebilir:
 
-![Second possibility of IP address ranges required in SAP HANA on Azure (Large Instances) minimal deployment](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
+![Azure 'da SAP HANA gereken IP adresi aralıklarının (büyük örnekler) en az sayıda dağıtım olması gereken ikinci bir olasılık](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
 
-In the example, instead of two smaller ranges that defined the address space of the Azure virtual network, we have one larger range that covers 4096 IP addresses. Such a large definition of the address space leaves some rather large ranges unused. Since the virtual network address space value(s) are used for BGP route propagation, usage of the unused ranges on-premises or elsewhere in your network can cause routing issues. The graphic does not show the additional IP address range(s) that are required for the optional use of ExpressRoute Global Reach.
+Örnekte, Azure sanal ağının adres alanını tanımlayan iki küçük Aralık yerine 4096 IP adresini içeren bir daha büyük aralığınız vardır. Bu tür bir büyük Aralık, adres alanının büyük bir tanımına çok büyük aralıklar kullanılmamış halde kalır. Sanal ağ adres alanı değerleri BGP yol yayma için kullanıldığından, kullanılmayan aralıkların şirket içinde veya başka bir yerde kullanımı yönlendirme sorunlarına neden olabilir. Grafik, ExpressRoute Global Reach 'nin isteğe bağlı kullanımı için gerekli olan ek IP adresi aralıklarını göstermez.
 
-We recommend that you keep the address space tightly aligned with the actual subnet address space that you use. If needed, without incurring downtime on the virtual network, you can always add new address space values later.
+Adres alanını, kullandığınız gerçek alt ağ adres alanı ile sıkı bir şekilde tutmanızı öneririz. Gerekirse, sanal ağ üzerinde kapalı kalma süresi olmadan, her zaman yeni adres alanı değerleri ekleyebilirsiniz.
  
 > [!IMPORTANT] 
-> Each IP address range in ER-P2P, the server IP pool, and the Azure virtual network address space must **NOT** overlap with one another or with any other range that's used in your network. Each must be discrete. As the two previous graphics show, they also can't be a subnet of any other range. If overlaps occur between ranges, the Azure virtual network might not connect to the ExpressRoute circuit.
+> ER-P2P, sunucu IP havuzu ve Azure sanal ağ adres alanı içindeki her IP adresi aralığı birbirleriyle veya ağınızda kullanılan başka bir aralıkla **çakışmamalıdır** . Her birinin ayrı olması gerekir. Önceki iki grafik de gösterildiği gibi, diğer herhangi bir aralığın alt ağı olamaz. Aralıklar arasında örtüşmeler oluşursa, Azure sanal ağı ExpressRoute devresine bağlanmayabilir.
 
-## <a name="next-steps-after-address-ranges-have-been-defined"></a>Next steps after address ranges have been defined
-After the IP address ranges have been defined, the following things need to happen:
+## <a name="next-steps-after-address-ranges-have-been-defined"></a>Adres aralıkları tanımlandıktan sonraki adımlar
+IP adresi aralıkları tanımlandıktan sonra, aşağıdaki işlemlerin gerçekleşmesi gerekir:
 
-1. Submit the IP address ranges for the Azure virtual network address space, the ER-P2P connectivity, and server IP pool address range, together with other data that has been listed at the beginning of the document. At this point, you could also start to create the virtual network and the VM subnets. 
-2. An ExpressRoute circuit is created by Microsoft between your Azure subscription and the HANA Large Instance stamp.
-3. A tenant network is created on the Large Instance stamp by Microsoft.
-4. Microsoft configures networking in the SAP HANA on Azure (Large Instances) infrastructure to accept IP addresses from your Azure virtual network address space that communicates with HANA Large Instances.
-5. Depending on the specific SAP HANA on Azure (Large Instances) SKU that you bought, Microsoft assigns a compute unit in a tenant network. It also allocates and mounts storage, and installs the operating system (SUSE or Red Hat Linux). IP addresses for these units are taken out of the Server IP Pool address range that you submitted to Microsoft.
+1. Azure sanal ağ adres alanı, ER-P2P bağlantısı ve sunucu IP havuzu adres aralığı için IP adresi aralıklarını belgenin başlangıcında listelenmiş diğer verilerle birlikte gönderebilirsiniz. Bu noktada, sanal ağ ve VM alt ağlarını oluşturmaya de başlayabilirsiniz. 
+2. Azure aboneliğiniz ve HANA büyük örnek damgası arasında Microsoft tarafından bir ExpressRoute devresi oluşturulur.
+3. Microsoft tarafından büyük örnek damgasında bir kiracı ağı oluşturulur.
+4. Microsoft, Azure sanal ağ adres alanınızda HANA büyük örneklerle iletişim kuran IP adreslerini kabul etmek için SAP HANA Azure (büyük örnekler) altyapısında ağ yapılandırır.
+5. Satın aldığınız Azure (büyük örnekler) SKU 'sunda belirli SAP HANA bağlı olarak, Microsoft bir kiracı ağına bir işlem birimi atar. Ayrıca depolama alanını ayırır ve takar ve işletim sistemini (SUSE veya Red Hat Linux) kurar. Bu birimlerin IP adresleri, Microsoft 'a gönderdiğiniz sunucu IP havuzu adres aralığından alınmıştır.
 
-At the end of the deployment process, Microsoft delivers the following data to you:
-- Information that's needed to connect your Azure virtual network(s) to the ExpressRoute circuit that connects Azure virtual networks to HANA Large Instances:
-     - Authorization key(s)
-     - ExpressRoute PeerID
-- Data for accessing HANA Large Instances after you establish ExpressRoute circuit and Azure virtual network.
+Dağıtım sürecinin sonunda, Microsoft size aşağıdaki verileri sağlar:
+- Azure sanal ağlarınızı Azure sanal ağlarını HANA büyük örneklerine bağlayan ExpressRoute devresine bağlamak için gereken bilgiler:
+     - Yetkilendirme anahtarları
+     - ExpressRoute peerID
+- ExpressRoute bağlantı hattını ve Azure sanal ağını oluşturduktan sonra HANA büyük örneklerine erişim için veriler.
 
-You can also find the sequence of connecting HANA Large Instances in the document [SAP HANA on Azure (Large Instances) Setup](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Many of the following steps are shown in an example deployment in that document. 
+Ayrıca, [Azure 'da (büyük örnekler) kurulum 'da SAP HANA](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/)Hana büyük örnekleri bağlama sırasını bulabilirsiniz. Aşağıdaki adımların birçoğu, bu belgede örnek bir dağıtımda gösterilmiştir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Refer to [Connecting a virtual network to HANA Large Instance ExpressRoute](hana-connect-vnet-express-route.md).
+- [Sanal ağı Hana büyük örnek ExpressRoute 'A bağlama](hana-connect-vnet-express-route.md)bölümüne bakın.

@@ -1,6 +1,6 @@
 ---
-title: 'Tune performance: Spark, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 Spark Performance Tuning Guidelines
+title: 'Performansı ayarlama: Spark, HDInsight & Azure Data Lake Storage 2. | Microsoft Docs'
+description: Azure Data Lake Storage 2. Spark performansı ayarlama yönergeleri
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -16,100 +16,100 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327558"
 ---
-# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Spark, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: Spark, HDInsight & Azure Data Lake Storage 2.
 
-When tuning performance on Spark, you need to consider the number of apps that will be running on your cluster.  By default, you can run 4 apps concurrently on your HDI cluster (Note: the default setting is subject to change).  You may decide to use fewer apps so you can override the default settings and use more of the cluster for those apps.  
+Spark üzerinde performans ayarlaması yaparken, kümenizde çalıştırılacak uygulama sayısını göz önünde bulundurmanız gerekir.  Varsayılan olarak, HDI kümenizde 4 uygulamayı eşzamanlı olarak çalıştırabilirsiniz (Note: varsayılan ayar değişikliğe tabidir).  Varsayılan ayarları geçersiz kılabilmeniz ve bu uygulamalar için kümeyi daha fazla kullanabilmek için daha az uygulama kullanmaya karar verebilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Make sure you enable Remote Desktop for the cluster.
-* **Running Spark cluster on Data Lake Storage Gen2**.  For more information, see [Use HDInsight Spark cluster to analyze data in Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md) 
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
+* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
+* **Data Lake Storage 2. Spark kümesi çalıştırılıyor**.  Daha fazla bilgi için bkz. [Data Lake Storage 2. verileri çözümlemek Için HDInsight Spark kümesini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için bkz. [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>Parametreler
 
-When running Spark jobs, here are the most important settings that can be tuned to increase performance on Data Lake Storage Gen2:
+Spark işlerini çalıştırırken, Data Lake Storage 2. performansı artırmak için ayarlanabilir en önemli ayarlar şunlardır:
 
-* **Num-executors** - The number of concurrent tasks that can be executed.
+* **Sayı yürüticileri** -yürütülebilecek eşzamanlı görevlerin sayısı.
 
-* **Executor-memory** - The amount of memory allocated to each executor.
+* **Yürütücü-bellek** -her bir yürütücü için ayrılan bellek miktarı.
 
-* **Executor-cores** - The number of cores allocated to each executor.                     
+* **Yürütücü-çekirdekler** -her bir yürütücü için ayrılan çekirdek sayısı.                     
 
-**Num-executors** Num-executors will set the maximum number of tasks that can run in parallel.  The actual number of tasks that can run in parallel is bounded by the memory and CPU resources available in your cluster.
+**Sayı yürüticileri** Sayı yürüticileri, paralel olarak çalışabilecek en fazla görev sayısını ayarlar.  Paralel olarak çalışabilecek görevlerin gerçek sayısı, kümenizde bulunan bellek ve CPU kaynaklarıyla sınırlıdır.
 
-**Executor-memory** This is the amount of memory that is being allocated to each executor.  The memory needed for each executor is dependent on the job.  For complex operations, the memory needs to be higher.  For simple operations like read and write, memory requirements will be lower.  The amount of memory for each executor can be viewed in Ambari.  In Ambari, navigate to Spark and view the Configs tab.  
+**Yürütücü-bellek** Bu, her bir yürütücü için ayrılan bellek miktarıdır.  Her yürütücü için gereken bellek, işe bağımlıdır.  Karmaşık işlemler için belleğin daha yüksek olması gerekir.  Okuma ve yazma gibi basit işlemler için bellek gereksinimleri daha düşük olacaktır.  Her bir yürütücü için bellek miktarı, ambarı 'nda görüntülenebilir.  Ambarı 'nda Spark ' a gidin ve configs sekmesini görüntüleyin.  
 
-**Executor-cores** This sets the number of cores used per executor, which determines the number of parallel threads that can be run per executor.  For example, if executor-cores = 2, then each executor can run 2 parallel tasks in the executor.  The executor-cores needed will be dependent on the job.  I/O heavy jobs do not require a large amount of memory per task so each executor can handle more parallel tasks.
+**Yürütücü-çekirdekler** Bu, her yürütücü için kullanılan çekirdek sayısını ayarlar ve bu, her yürütücü için çalıştırılabilen paralel iş parçacığı sayısını belirler.  Örneğin, yürütücü-çekirdekler = 2 ise, her yürütücü yürütücü içinde 2 paralel görev çalıştırabilir.  Gereken yürütücü-çekirdekler işe bağlı olacaktır.  G/ç ağır işleri görev başına büyük miktarda bellek gerektirmez, böylece her bir yürütücü daha fazla paralel görevi işleyebilir.
 
-By default, two virtual YARN cores are defined for each physical core when running Spark on HDInsight.  This number provides a good balance of concurrency and amount of context switching from multiple threads.  
+Varsayılan olarak, HDInsight 'ta Spark çalıştırılırken her fiziksel çekirdek için iki sanal YARN çekirdeği tanımlanmıştır.  Bu sayı, birden fazla iş parçacığından eşzamanlılık ve bağlam değiştirme miktarının iyi bir bakiyesini sağlar.  
 
-## <a name="guidance"></a>Kılavuz
+## <a name="guidance"></a>Rehber
 
-While running Spark analytic workloads to work with data in Data Lake Storage Gen2, we recommend that you use the most recent HDInsight version to get the best performance with Data Lake Storage Gen2. When your job is more I/O intensive, then certain parameters can be configured to improve performance.  Data Lake Storage Gen2 is a highly scalable storage platform that can handle high throughput.  If the job mainly consists of read or writes, then increasing concurrency for I/O to and from Data Lake Storage Gen2 could increase performance.
+Spark analitik iş yüklerini Data Lake Storage 2. verilerle çalışacak şekilde çalıştırırken en son HDInsight sürümünü kullanarak Data Lake Storage 2. en iyi performansı elde etmenizi öneririz. İşiniz daha yoğun olan g/ç olduğunda, performansı artırmak için bazı parametreler yapılandırılabilir.  Data Lake Storage 2. yüksek aktarım hızını işleyebilen, yüksek düzeyde ölçeklenebilir bir depolama platformudur.  İş, genellikle okuma veya yazma işlemleri içeriyorsa, g/ç için eşzamanlılık kullanımını Data Lake Storage 2., performansı artırabilir.
 
-There are a few general ways to increase concurrency for I/O intensive jobs.
+G/ç yoğun işleri için eşzamanlılık artırmanın birkaç genel yolu vardır.
 
-**Step 1: Determine how many apps are running on your cluster** – You should know how many apps are running on the cluster including the current one.  The default values for each Spark setting assumes that there are 4 apps running concurrently.  Therefore, you will only have 25% of the cluster available for each app.  To get better performance, you can override the defaults by changing the number of executors.  
+**1. Adım: kümenizde kaç uygulama çalıştığını belirleme** -kümede, geçerli olanı de içeren kaç uygulama çalıştığını bilmeniz gerekir.  Her Spark ayarının varsayılan değerleri, eşzamanlı olarak çalışan 4 uygulamanın olduğunu varsayar.  Bu nedenle, kümenin yalnızca %25 ' i her bir uygulama için kullanılabilir olacak.  Daha iyi performans sağlamak için, yürüticileri sayısını değiştirerek Varsayılanları geçersiz kılabilirsiniz.  
 
-**Step 2: Set executor-memory** – The first thing to set is the executor-memory.  The memory will be dependent on the job that you are going to run.  You can increase concurrency by allocating less memory per executor.  If you see out of memory exceptions when you run your job, then you should increase the value for this parameter.  One alternative is to get more memory by using a cluster that has higher amounts of memory or increasing the size of your cluster.  More memory will enable more executors to be used, which means more concurrency.
+**2. Adım: yürütücü-bellek ayarlama** – ayarlanacak ilk şey, yürütücü-bellek ' dir.  Bellek, çalıştıracaksınız iş üzerine bağlı olacaktır.  Her yürütücü için daha az bellek ayırarak eşzamanlılık artırabilirsiniz.  İşinizi çalıştırdığınızda bellek dışında özel durumlar görürseniz, bu parametre için değeri artırmanız gerekir.  Diğer bir seçenek de daha yüksek miktarda belleğe sahip olan veya kümenizin boyutunu artıran bir küme kullanarak daha fazla bellek edinmaktır.  Daha fazla bellek, daha fazla eşzamanlılık sağlamak için daha fazla yürütme kullanılmasını sağlayacaktır.
 
-**Step 3: Set executor-cores** – For I/O intensive workloads that do not have complex operations, it’s good to start with a high number of executor-cores to increase the number of parallel tasks per executor.  Setting executor-cores to 4 is a good start.   
+**3. Adım: yürütücü-çekirdekleri ayarlama** – karmaşık işlemleri olmayan g/ç yoğunluklu iş yükleri için, yürütücü başına paralel görev sayısını artırmak için yüksek sayıda yürütücü çekirdeği ile başlamak iyi olur.  Yürütücü-çekirdekleri 4 olarak ayarlamak iyi bir başlangıç.   
 
     executor-cores = 4
-Increasing the number of executor-cores will give you more parallelism so you can experiment with different executor-cores.  For jobs that have more complex operations, you should reduce the number of cores per executor.  If executor-cores is set higher than 4, then garbage collection may become inefficient and degrade performance.
+Yürütücü sayısının artırılması, farklı yürütücü çekirdekleriyle denemeler yapabilmeniz için size daha paralellik verir.  Daha karmaşık işlemlere sahip işler için, yürütücü başına çekirdek sayısını azaltmalısınız.  Yürütücü-çekirdekleri 4 ' ten yüksek ayarlandıysa, çöp toplama verimsiz hale gelebilir ve performans düşebilir.
 
-**Step 4: Determine amount of YARN memory in cluster** – This information is available in Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  
-Note while you are in the window, you can also see the default YARN container size.  The YARN container size is the same as memory per executor parameter.
+**4. Adım: kümede YARN bellek miktarını belirleme** – bu bilgiler, ambarı 'nda mevcuttur.  YARN 'ye gidin ve configs sekmesini görüntüleyin.  YARN belleği Bu pencerede görüntülenir.  
+Göz atın, Ayrıca, varsayılan YARN kapsayıcı boyutunu da görebilirsiniz.  YARN kapsayıcı boyutu, yürütücü parametresi başına bellek ile aynıdır.
 
     Total YARN memory = nodes * YARN memory per node
-**Step 5: Calculate num-executors**
+**5. Adım: sayı yürüticileri hesaplama**
 
-**Calculate memory constraint** - The num-executors parameter is constrained either by memory or by CPU.  The memory constraint is determined by the amount of available YARN memory for your application.  You should take total YARN memory and divide that by executor-memory.  The constraint needs to be de-scaled for the number of apps so we divide by the number of apps.
+**Bellek kısıtlamasını hesapla** -NUM-eXecutors parametresi, bellek veya CPU tarafından sınırlandırılır.  Bellek kısıtlaması, uygulamanız için kullanılabilir YARN bellek miktarına göre belirlenir.  Toplam YARN belleği almanız ve bunu yürütücü-bellek ile bölmeniz gerekir.  Kısıtlama, uygulama sayısına göre bölünebilmemiz için uygulamanın sayısı için de ölçeklendirilmesi gerekir.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**Calculate CPU constraint** - The CPU constraint is calculated as the total virtual cores divided by the number of cores per executor.  There are 2 virtual cores for each physical core.  Similar to the memory constraint, we have to divide by the number of apps.
+**CPU kısıtlaması hesapla** -CPU kısıtlaması, toplam sanal çekirdekler için, yürütücü başına çekirdek sayısı olarak hesaplanır.  Her fiziksel çekirdek için 2 sanal çekirdek vardır.  Bellek kısıtlamasına benzer şekilde, uygulama sayısına göre bölmemiz gerekir.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**Set num-executors** – The num-executors parameter is determined by taking the minimum of the memory constraint and the CPU constraint. 
+**Num-Yürüticileri ayarlama** – NUM-eXecutors parametresi, en az bellek KıSıTLAMASı ve CPU kısıtlaması alınarak belirlenir. 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Setting a higher number of num-executors does not necessarily increase performance.  You should consider that adding more executors will add extra overhead for each additional executor, which can potentially degrade performance.  Num-executors is bounded by the cluster resources.    
+Daha yüksek sayıda NUM yürüticilerinin ayarlanması performansı artırmayabilir.  Daha fazla yürütme eklemenin, performansı düşürebilecek her ek yürütücü için ek yük eklemesini göz önünde bulundurmanız gerekir.  Sayı yürüticileri, küme kaynaklarıyla sınırlıdır.    
 
-## <a name="example-calculation"></a>Example calculation
+## <a name="example-calculation"></a>Örnek hesaplama
 
-Let’s say you currently have a cluster composed of 8 D4v2 nodes that is running 2 apps including the one you are going to run.  
+Şu anda, çalıştırmakta olduğunuz bir dahil olmak üzere 2 uygulama çalıştıran 8 D4v2 düğümden oluşan bir kümeniz olduğunu varsayalım.  
 
-**Step 1: Determine how many apps are running on your cluster** – you know that you have 2 apps on your cluster, including the one you are going to run.  
+**1. Adım: kümenizde kaç uygulama çalıştığını belirleme** -kümenizde çalıştırdığınız bir de dahil olmak üzere, kümenizde 2 uygulama olduğunu bilirsiniz.  
 
-**Step 2: Set executor-memory** – for this example, we determine that 6GB of executor-memory will be sufficient for I/O intensive job.  
+**2. Adım: yürütücü-bellek ayarlama** – Bu örnek IÇIN, 6GB 'ın yoğun çalışan iş için yeterli olacağını belirledik.  
 
     executor-memory = 6GB
-**Step 3: Set executor-cores** – Since this is an I/O intensive job, we can set the number of cores for each executor to 4.  Setting cores per executor to larger than 4 may cause garbage collection problems.  
+**3. Adım: yürütücü-çekirdekleri ayarlama** – bu bir g/ç yoğun iş olduğundan, her bir yürütücü için çekirdek sayısını 4 ' e ayarlayabiliriz.  Yürütücü başına çekirdekleri 4 ' ten büyük olarak ayarlamak çöp toplama sorunlarına neden olabilir.  
 
     executor-cores = 4
-**Step 4: Determine amount of YARN memory in cluster** – We navigate to Ambari to find out that each D4v2 has 25GB of YARN memory.  Since there are 8 nodes, the available YARN memory is multiplied by 8.
+**4. Adım: kümede Yarn bellek miktarını belirleme** – her bir D4V2 'ıN Yarn belleği 25 GB sahip olduğunu öğrenmek için ambarı 'na gittik.  8 düğüm olduğundan, kullanılabilir YARN belleği 8 ile çarpılır.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**Step 5: Calculate num-executors** – The num-executors parameter is determined by taking the minimum of the memory constraint and the CPU constraint divided by the # of apps running on Spark.    
+**5. Adım: sayı Yürüticileri hesaplama** – NUM-eXecutors parametresi, bellek kısıtlamasının minimum değeri ve Spark üzerinde çalışan # of Apps tarafından ayrılmış CPU kısıtlaması alınarak belirlenir.    
 
-**Calculate memory constraint** – The memory constraint is calculated as the total YARN memory divided by the memory per executor.
+**Bellek kısıtlamasını hesapla** – bellek kısıtlaması, her yürütücü için belleğe bölünen toplam Yarn belleği olarak hesaplanır.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**Calculate CPU constraint** - The CPU constraint is calculated as the total yarn cores divided by the number of cores per executor.
+**CPU kısıtlamasını hesapla** -CPU kısıtlaması, toplam Yarn çekirdeği, yürütücü başına çekirdek sayısına bölünen şekilde hesaplanır.
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**Set num-executors**
+**Sayı yürüticileri ayarlama**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)

@@ -1,7 +1,7 @@
 ---
-title: Tutorial - Diagnose communication problem between networks using the Azure portal
+title: Öğretici-Azure portal kullanarak ağlarla iletişim sorununu tanılama
 titleSuffix: Azure Network Watcher
-description: In this tutorial, learn how to diagnose a communication problem between an Azure virtual network connected to an on-premises, or other virtual network, through an Azure virtual network gateway, using Network Watcher's VPN diagnostics capability.
+description: Bu öğreticide, ağ izleyicisinin VPN Tanılama özelliğini kullanarak bir Azure sanal ağ geçidi aracılığıyla şirket içi veya diğer sanal ağa bağlı bir Azure sanal ağı arasında bir iletişim sorunu tanılamayı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -40,14 +40,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 VPN tanılamayı kullanmak için çalışır durumda bir VPN ağ geçidinizin olması gerekir. Tanılamak için mevcut bir VPN ağ geçidiniz yoksa, bir [PowerShell betiği](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kullanarak bir tane dağıtabilirsiniz. PowerShell betiğini şuradan çalıştırabilirsiniz:
-- **A local PowerShell installation**: The script requires the Azure PowerShell `Az` module. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+- **Yerel bir PowerShell yüklemesi**: betik, Azure PowerShell `Az` modülünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 - **Azure Cloud Shell**: [Azure Cloud Shell](https://shell.azure.com/powershell)’de PowerShell’in en son sürümü yüklü ve yapılandırılmış durumdadır ve Azure’da oturum açmanızı sağlar.
 
 Betiğin bir VPN ağ geçidi oluşturması yaklaşık bir saat sürer. Kalan adımlarda, tanılamakta olduğunuz ağ geçidinin bu betikle dağıtılan ağ geçidi olduğu varsayılır. Bunun yerine kendi mevcut ağ geçidinizi tanılarsanız sonuçlarınız farklılık gösterir.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-network-watcher"></a>Ağ İzleyicisini etkinleştirme
 
@@ -62,8 +62,8 @@ Doğu ABD bölgesinde etkinleştirilmiş bir ağ izleyicisi zaten varsa [Ağ ge�
 
 ## <a name="diagnose-a-gateway"></a>Ağ geçidi tanılama
 
-1. Portalın sol tarafından **Tüm hizmetler**’i seçin.
-2. **Filtre** kutusuna *ağ izleyicisi* yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
+1. Portalın sol tarafındaki **Tüm hizmetler**’i seçin.
+2. *Filtre* kutusuna **ağ izleyicisi** yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 3. **AĞ TANILAMA ARAÇLARI** altında **VPN Tanılama**’yı seçin.
 4. **Depolama hesabı**’nı ve ardından tanılama bilgilerini yazmak istediğiniz depolama hesabını seçin.
 5. **Depolama hesapları** listesinden kullanmak istediğiniz depolama hesabını seçin. Mevcut bir depolama hesabınız yoksa **+ Depolama hesabı**’nı seçin, gerekli bilgileri girin veya seçin ve ardından **Oluştur**’u seçerek bir depolama hesabı oluşturun. [Önkoşullar](#prerequisites) bölümündeki betiği kullanarak bir VPN ağ geçidi oluşturduysanız, depolama hesabını ağ geçidi ile aynı kaynak grubunda (*TestRG1*) oluşturmak isteyebilirsiniz.
@@ -99,7 +99,7 @@ Ağ geçidi bir ağ geçidi bağlantısı üzerinden diğer ağlara bağlanır. 
 
     VPN tanılama, **Durum** sekmesinde neyin yanlış olduğu konusunda sizi bilgilendirir ve **Eylem** sekmesinde soruna neden olabilecek durumlarla ilgili birkaç öneride bulunur.
 
-    Test ettiğiniz ağ geçidi [Önkoşullar](#prerequisites) bölümündeki [betik](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ile dağıtılan ağ geçidi ise, **Durum** sekmesindeki sorun ve **Eylemler** sekmesindeki ilk iki öğe, sorunun tam olarak ne olduğunu açıklar. Betik, şirket içi VPN ağ geçidi cihazı için 23.99.221.164 şeklinde bir yer tutucu IP adresi yapılandırır.
+    Test ettiğiniz ağ geçidi [Önkoşullar](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) bölümündeki [betik](#prerequisites) ile dağıtılan ağ geçidi ise, **Durum** sekmesindeki sorun ve **Eylemler** sekmesindeki ilk iki öğe, sorunun tam olarak ne olduğunu açıklar. Betik, şirket içi VPN ağ geçidi cihazı için 23.99.221.164 şeklinde bir yer tutucu IP adresi yapılandırır.
 
     Sorunu çözmek için şirket içi VPN ağ geçidinizin [düzgün yapılandırıldığından](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) emin olmanız ve yerel ağ geçidi için betik tarafından yapılandırılan IP adresini şirket içi VPN ağ geçidinizin gerçek genel adresi ile değiştirmeniz gerekir.
 
@@ -107,9 +107,9 @@ Ağ geçidi bir ağ geçidi bağlantısı üzerinden diğer ağlara bağlanır. 
 
 VPN ağ geçidini [önkoşullar](#prerequisites) bölümündeki betiği kullanarak yalnızca bu öğretici tamamlamak amacıyla oluşturduysanız, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **Arama** kutusuna *TestRG1* yazın. Arama sonuçlarında **TestREG1**’i gördüğünüzde seçin.
+1. Portalın üst kısmındaki *Arama* kutusuna **TestRG1** yazın. Arama sonuçlarında **TestREG1**’i gördüğünüzde seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** için *TestRG1* girin ve **Sil**’i seçin.
+3. *KAYNAK GRUBU ADINI YAZIN:* için **TestRG1** girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

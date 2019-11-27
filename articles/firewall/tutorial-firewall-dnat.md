@@ -149,9 +149,9 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 3. **Güvenlik duvarı**'na ve ardından **Oluştur**'a tıklayın. 
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
-   |Ayar  |Değer  |
+   |Ayar  |Value  |
    |---------|---------|
-   |Ad     |FW-DNAT-test|
+   |Name     |FW-DNAT-test|
    |Abonelik     |\<aboneliğiniz\>|
    |Kaynak grubu     |**Var olanı kullan**: RG-DNAT-Test |
    |Konum     |Önceden kullandığınız konumu seçin|

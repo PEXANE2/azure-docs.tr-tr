@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for C# - Bing Entity Search'
+title: 'Hızlı başlangıç: Bing Varlık Arama SDK ile varlıkları arama C# -'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for C#.
+description: İçin C#Bing varlık arama SDK 'sı olan varlıkları aramak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,29 +17,29 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323820"
 ---
-# <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Send a search request with the Bing Entity Search SDK for C#
+# <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>İçin Bing Varlık Arama SDK ile bir arama isteği gönderinC#
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for C#. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch).
+İçin C#Bing varlık arama SDK 'sı olan varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch)' da bulunabilir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
+* Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 * NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi.
 * Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
-* The [Bing News Search SDK NuGet package](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Installing this package also installs the following:
+* [BING haber arama SDK NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Bu paketin yüklenmesi aşağıdakileri de yapar:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-To add the Bing Entity Search SDK to your Visual Studio project, use the **Manage NuGet Packages** option from **Solution Explorer**, and add the `Microsoft.Azure.CognitiveServices.Search.EntitySearch` package.
+Bing Varlık Arama SDK 'Yı Visual Studio projenize eklemek için, **Çözüm Gezgini**'Daki **NuGet Paketlerini Yönet** seçeneğini kullanın ve `Microsoft.Azure.CognitiveServices.Search.EntitySearch` paketini ekleyin.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-an-application"></a>Create and initialize an application
+## <a name="create-and-initialize-an-application"></a>Uygulama oluşturma ve başlatma
 
-1. create a new C# console solution in Visual Studio. Then add the following into the main code file.
+1. Visual Studio 'da C# yeni bir konsol çözümü oluşturun. Ardından aşağıdakini ana kod dosyasına ekleyin.
 
     ```csharp
     using System;
@@ -50,29 +50,29 @@ To add the Bing Entity Search SDK to your Visual Studio project, use the **Manag
     using Newtonsoft.Json;
     ```
 
-## <a name="create-a-client-and-send-a-search-request"></a>Create a client and send a search request
+## <a name="create-a-client-and-send-a-search-request"></a>İstemci oluşturma ve arama isteği gönderme
 
-1. Create a new search client. Add your subscription key by creating a new `ApiKeyServiceClientCredentials`.
+1. Yeni bir arama istemcisi oluşturun. Yeni bir `ApiKeyServiceClientCredentials`oluşturarak abonelik anahtarınızı ekleyin.
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-1. Use the client's `Entities.Search()` function to search for your query:
+1. Sorgunuzu aramak için istemcinin `Entities.Search()` işlevini kullanın:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");
     ```
 
-## <a name="get-and-print-an-entity-description"></a>Get and print an entity description
+## <a name="get-and-print-an-entity-description"></a>Bir varlık açıklaması al ve Yazdır
 
-1. If the API returned search results, get the main entity from `entityData`.
+1. API arama sonuçları döndürdüğünden `entityData`ana varlığı alın.
 
     ```csharp
     var mainEntity = entityData.Entities.Value.Where(thing => thing.EntityPresentationInfo.EntityScenario == EntityScenario.DominantEntity).FirstOrDefault();
     ```
 
-2. Print the description of the main entity 
+2. Ana varlığın açıklamasını yazdır 
 
     ```csharp
     Console.WriteLine(mainEntity.Description);
@@ -83,4 +83,4 @@ To add the Bing Entity Search SDK to your Visual Studio project, use the **Manag
 > [!div class="nextstepaction"]
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Bing Varlık Arama API'si nedir?](../overview.md )

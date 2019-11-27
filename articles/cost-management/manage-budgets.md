@@ -1,6 +1,6 @@
 ---
-title: Manage Cloudyn budgets in Azure
-description: This article helps you quickly create budgets and start managing them in Cloudyn.
+title: Azure 'da Cloudyn bütçelerini yönetme
+description: Bu makalede, hızlı bir şekilde bütçeleri oluşturun ve bunları Cloudyn'de yönetmeye başlama yardımcı olur.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,73 +17,73 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219091"
 ---
-# <a name="manage-azure-budgets-with-cloudyn"></a>Manage Azure budgets with Cloudyn
+# <a name="manage-azure-budgets-with-cloudyn"></a>Cloudyn ile Azure bütçelerini yönetin
 
-Setting up budgets and budget-based alerts help to improve your cloud governance and accountability. This article helps you quickly create budgets and start managing them in Cloudyn.
+Ayar bütçelerini'kurmak ve bütçe tabanlı bulut idare ve Sorumluluk geliştirmek için Yardım uyarır. Bu makalede, hızlı bir şekilde bütçeleri oluşturun ve bunları Cloudyn'de yönetmeye başlama yardımcı olur.
 
-When you have an Enterprise or MSP account, you can use your hierarchical cost entity structure to assign monthly budget quotas to different business units, departments, or any other cost entity. When you have a Premium account, you can use the budget management functionality, which is then applied to your entire cloud expenditure. All budgets are manually assigned.
+Bir kuruluş ya da MSP hesabınız varsa, farklı iş birimleri, Departmanlar veya herhangi bir maliyet varlık aylık bütçe kotaları atamak için hiyerarşik maliyet varlık yapınızı kullanabilirsiniz. Premium hesabı varsa, daha sonra tüm bulut harcamalarını için uygulanan bütçe yönetimi işlevi kullanabilirsiniz. Tüm bütçelerini el ile atanır.
 
-Based on assigned budgets, you can set threshold alerts based on the percentage of your budget that's consumed and define the severity of each threshold.
+Atanan bütçeleri bağlı olarak, eşik uyarılarının tüketilen bütçenizi yüzdesine göre ayarlayabilir ve her eşiği önem derecesini tanımlayın.
 
-Budget reports show the assigned budget. Users can view when their spending is over, under, or at par with their consumption over time. When you select **Show/Hide Fields** at the top of a budget report, you can view cost, budget, accumulated cost, or total budget.
+Bütçe raporlar atanan bütçe gösterir. Kullanıcılar, kendi harcama üzerinden, altında veya par tüketimi için zamana sahip olduğunda görüntüleyebilir. Bütçe raporunun en üstünde **alanları göster/gizle** ' yi seçtiğinizde maliyet, bütçe, birikmiş maliyet veya toplam bütçeyi görüntüleyebilirsiniz.
 
-Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yönetimi, yerel Azure maliyet yönetimi çözümüdür. Maliyet analizi yapmanıza, bütçe oluşturup yönetmenize, verileri dışarı aktarmanıza ve tasarruf önerilerini gözden geçirip gerekli eylemleri gerçekleştirmenize yardımcı olur. For more information about budgets in Cost Management, see [Create and manage budgets](tutorial-acm-create-budgets.md).
+Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yönetimi, yerel Azure maliyet yönetimi çözümüdür. Maliyet analizi yapmanıza, bütçe oluşturup yönetmenize, verileri dışarı aktarmanıza ve tasarruf önerilerini gözden geçirip gerekli eylemleri gerçekleştirmenize yardımcı olur. Maliyet yönetiminin bütçeleri hakkında daha fazla bilgi için bkz. [bütçeleri oluşturma ve yönetme](tutorial-acm-create-budgets.md).
 
-## <a name="create-budgets"></a>Create budgets
+## <a name="create-budgets"></a>Bütçeleri oluşturun
 
-When you create a budget, you set it for your fiscal year and it applies to a specific entity.
+Bütçe oluşturduğunuzda, mali yıl için ayarlayın ve belirli bir varlığa uygulanır.
 
-To create a budget and assign it to an entity:
+Bütçe oluşturun ve bunu bir varlığa atamak için:
 
-1. Navigate to **Costs** &gt; **Cost Management** &gt; **Budget**.
-2. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
-3. In the budget year, select the year where you want to create the budget.
-4. For each month, set a budget value. When you're done, click  **Save**.
-In this example, the monthly budget for June 2018 is set to $135,000. The total budget for the year is $1,615,000.00.
-![Create a budget page where you set a budget for each month](./media/manage-budgets/set-budget.png)
+1. **Maliyetler** &gt; **maliyet yönetimi** &gt; **bütçesine**gidin.
+2. Bütçe yönetimi sayfasında, **varlıklar**' ın altında, bütçeyi oluşturmak istediğiniz varlığı seçin.
+3. Bütçe yılda bütçe oluşturmak istediğiniz yıl seçin.
+4. Her ay için bir bütçe değere ayarlayın. İşiniz bittiğinde **Kaydet**' e tıklayın.
+Bu örnekte, Haziran 2018 tarihinden itibaren aylık bütçe 135.000 için ayarlanır. Yıl için toplam bütçe $1,615,000.00 olacaktır.
+her ay için bir bütçe ayarladığınız bir bütçe sayfası oluşturmak ![](./media/manage-budgets/set-budget.png)
 
 
-To import a file for the annual budget:
+Yıllık bütçenin bir dosyayı içe aktarmak için:
 
-1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
-2. Fill in the CSV file with your budget entries and save it locally.
-3. Under **Actions**, select **Import**.
-4. Select your saved file and then click **OK**.
+1. **Eylemler**' in altında, bütçe için temel olarak kullanmak üzere boş bir CSV şablonunu Indirmek Için **dışarı aktar** ' ı seçin.
+2. Bütçe girişlerinizi içeren CSV dosyası doldurun ve yerel olarak kaydedin.
+3. **Eylemler**altında **içeri aktar**' ı seçin.
+4. Kayıtlı dosyanızı seçin ve ardından **Tamam**' a tıklayın.
 
-To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
+Tamamlanan bütçenizi bir CSV dosyası olarak dışa aktarmak için, **Eylemler**altında, dosyayı Indirmek Için **dışarı aktar** ' ı seçin.
 
-## <a name="view-budget-in-reports"></a>View budget in reports
+## <a name="view-budget-in-reports"></a>Rapor görünümü bütçede
 
-When completed, your budget is shown in most Cost reports under **Costs** &gt; **Cost Analysis** and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds using **Actions**.
+Bu tamamlandığında, bütçeniz **maliyetler** &gt; **Maliyet Analizi** kapsamında ve zaman içinde maliyet ile bütçeyi raporlamak için maliyet raporlarının çoğunda yer aldığı maliyet raporlarında gösterilir. Ayrıca, **eylemleri**kullanarak bütçe eşiklerine göre raporlar zamanlayabilirsiniz.
 
-Here's an example of the Cost Analysis report. It shows the total budget and cost by workload and usage types since the beginning of the year.
+Maliyet analizi raporu örneği aşağıda verilmiştir. Bu yılın başlangıcından bu yana toplam bütçe ve iş yükü ve kullanım türleri maliyeti gösterir.
 
-![Example Cost Analysis report with budget](./media/manage-budgets/cost-analysis-budget-example.png)
+![Bütçe ile örnek maliyet analizi raporu](./media/manage-budgets/cost-analysis-budget-example.png)
 
-In this example, assume the current date is June 22. The cost for June 2018 is $71,611.28 compared to the monthly budget of $135,000. The cost is much lower than the monthly budget because there are still eight days of spending before the end of the month.
+Bu örnekte, geçerli tarihi 22 Temmuz olduğunu varsayalım. Haziran 2018 için $ $135.000 aylık bütçeye kıyasla 71,611.28 maliyetidir. Sekiz gün ve ay sonuna kadar önce harcadığınız hala olduğundan maliyet aylık bütçe daha çok düşüktür.
 
-Another way to view the report is to look at accumulated cost vs your budget. To see accumulated costs, under **Show/Hide Fields**, select **Accumulated Cost** and **Total Budget**. Here's an example showing the accumulated cost since the beginning of the year.
+Raporu görüntülemek için başka bir yolu, bütçenizi birikmiş maliyeti veya aramaktır. Birikmiş maliyetleri görmek için **alanları göster/gizle**bölümünde **Birikmiş maliyet** ve **Toplam bütçe**' ı seçin. Yılın başlangıcından bu yana birikmiş maliyetini gösteren bir örnek aşağıda verilmiştir.
 
-![Example accumulated cost and total budget shown in the Cost vs. Budget Over Time report](./media/manage-budgets/accumulated-budget.png)
+![Örnek, birikmiş maliyet ve zaman Içinde Bütçe karşılaştırması raporunda gösterilen toplam bütçe](./media/manage-budgets/accumulated-budget.png)
 
-Sometime in the future your accumulated cost might exceed your budget. You can more easily see that if you change the chart view to the _line_ type.
+Süre gelecekte birikmiş maliyetini bütçenizi aştığında. Grafik görünümünü _satır_ türü olarak değiştirirseniz daha kolay görebilirsiniz.
 
-![Budget shown in a line chart in the Cost by Months report](./media/manage-budgets/budget-line.png)
+![Ay bazında maliyeti çizgi grafikte gösterilen bütçe](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Create budget alerts for a filter
+## <a name="create-budget-alerts-for-a-filter"></a>Bütçe uyarılar için bir filtre oluşturun
 
-In the previous example, you can see that the accumulated cost approached the budget. You can create automatic budget alerts so that you're notified when spending approaches or exceeds your budget. Basically, the alert is a scheduled report with a threshold. Budget alert threshold metrics include:
+Önceki örnekte birikmiş maliyeti bütçesi yaklaşıldığında görebilirsiniz. Böylece yaklaşım harcama olduğunda bildirim alırsınız veya bütçenizi aştığında otomatik bütçe uyarılar oluşturabilirsiniz. Aslında, uyarı, zamanlanmış bir raporu bir eşik ile belirtir. Bütçe uyarısı eşiği ölçümler şunları içerir:
 
-- Remaining cost vs. budget – to specify a currency value threshold
-- Cost percentage vs. budget – to specify a percentage value threshold
+- Kalan Maliyet ve bütçe, bir para birimi değeri eşiği belirtmek için – karşılaştırması
+- -Bir yüzde değeri eşiği belirtmek için bütçe – maliyet yüzdesi
 
-Let's look at an example.
+Bir örneğe göz atalım.
 
-In the Cost vs. Budget Over Time report, click **Actions** and then select **Schedule report**. On the Threshold tab, select a threshold metric. For example, **Cost percentage vs budget**. Select an alert type and enter a percentage value of the budget. If you want to get notified only once, select **Number of consecutive alerts** and then type _1_. **Kaydet** düğmesine tıklayın.
+Maliyet ve zaman Içinde bütçe raporunda, **Eylemler** ' i ve ardından **rapor zamanla**' yı seçin. Eşik sekmesinde, bir eşiği ölçümünü seçin. Örneğin, **Maliyet yüzdesi vs bütçe**. Bir uyarı türünü seçin ve bütçe yüzdesi değeri girin. Yalnızca bir kez bildirim almak istiyorsanız **ardışık uyarı sayısı** ' nı seçin ve _1_yazın. **Save (Kaydet)** düğmesine tıklayın.
 
-![Creating a budget alert on the Save or Schedule this report box](./media/manage-budgets/budget-alert.png)
+![Bütçe uyarısı kaydetme ya da bu raporu kutusunda zamanlama oluşturma](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- If you haven't already completed the first tutorial for Cloudyn, read it at  [Review usage and costs](tutorial-review-usage.md).
-- Learn more about the [reports available in Cloudyn](use-reports.md).
+- Cloudyn için ilk öğreticiyi tamamlamadıysanız [kullanımı ve maliyetleri gözden geçirin](tutorial-review-usage.md).
+- [Cloudyn 'de bulunan raporlar](use-reports.md)hakkında daha fazla bilgi edinin.

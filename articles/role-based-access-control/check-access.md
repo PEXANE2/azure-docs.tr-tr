@@ -1,6 +1,6 @@
 ---
-title: Quickstart - View the access a user has to Azure resources
-description: In this QuickStart, learn how to view the access a user or other security principal has to Azure resources using role-based access control (RBAC) and the Azure portal.
+title: Hızlı başlangıç-bir kullanıcının Azure kaynaklarına erişimi görüntüleme
+description: Bu hızlı başlangıçta, rol tabanlı erişim denetimi (RBAC) ve Azure portal kullanarak bir kullanıcının veya diğer güvenlik sorumlusunun Azure kaynaklarına erişimi nasıl görüntüleyebileceğinizi öğrenin.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -21,37 +21,37 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419611"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Quickstart: View the access a user has to Azure resources
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Hızlı başlangıç: bir kullanıcının Azure kaynaklarına erişimi görüntüleme
 
-You can use the **Access control (IAM)** blade in [role-based access control (RBAC)](overview.md) to view the access a user or another security principal has to Azure resources. However, sometimes you just need to quickly view the access for a single user or another security principal. The easiest way to do this is to use the **Check access** feature in the Azure portal.
+Kullanıcı veya başka bir güvenlik sorumlusunun Azure kaynaklarına erişimini görüntülemek için [rol tabanlı erişim denetimi (RBAC)](overview.md) içindeki **ERIŞIM denetimi (IAM)** dikey penceresini kullanabilirsiniz. Ancak bazen tek bir kullanıcı veya başka bir güvenlik sorumlusu için erişimi hızlıca görüntülemeniz yeterlidir. Bunu yapmanın en kolay yolu Azure portal **erişimi denetle** özelliğini kullanmaktır.
 
-## <a name="view-role-assignments"></a>View role assignments
+## <a name="view-role-assignments"></a>Rol atamalarını görüntüle
 
- The way that you view the access for a user is to list their roles assignments. Follow these steps to view the role assignments for a single user, group, service principal, or managed identity at the subscription scope.
+ Bir kullanıcı için erişimi görüntülemenin yolu, rollerinin atamalarını listeme yöntemidir. Abonelik kapsamında tek bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik için rol atamalarını görüntülemek için bu adımları izleyin.
 
-1. In the Azure portal, click **All services** and then **Subscriptions**.
+1. Azure portal, **tüm hizmetler** ve ardından **abonelikler**' e tıklayın.
 
-1. Click your subscription.
+1. Aboneliğinize tıklayın.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-1. Click the **Check access** tab.
+1. **Erişimi denetle** sekmesine tıklayın.
 
-    ![Access control - Check access tab](./media/check-access/access-control-check-access.png)
+    ![Erişim denetimi-erişim sekmesine göz atın](./media/check-access/access-control-check-access.png)
 
-1. In the **Find** list, select the type of security principal you want to check access for.
+1. **Bul** listesinde, erişimini denetlemek istediğiniz güvenlik sorumlusu türünü seçin.
 
-1. In the search box, enter a string to search the directory for display names, email addresses, or object identifiers.
+1. Arama kutusuna, görünen adlar, e-posta adresleri veya nesne tanımlayıcıları için dizinde arama yapmak üzere bir dize girin.
 
-    ![Check access select list](./media/check-access/check-access-select.png)
+    ![Erişim denetimi seçim listesi](./media/check-access/check-access-select.png)
 
-1. Click the security principal to open the **assignments** pane.
+1. **Atamalar** bölmesini açmak için güvenlik sorumlusuna tıklayın.
 
-    ![assignments pane](./media/check-access/check-access-assignments.png)
+    ![Atamalar bölmesi](./media/check-access/check-access-assignments.png)
 
-    On this pane, you can see the roles assigned to the selected security principal and the scope. If there are any deny assignments at this scope or inherited to this scope, they will be listed.
+    Bu bölmede, seçilen güvenlik sorumlusuna ve kapsamına atanan rolleri görebilirsiniz. Bu kapsamda herhangi bir reddetme ataması varsa veya bu kapsama devralınmışsa, bunlar listelenecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal](quickstart-assign-role-user-portal.md)
+> [Öğretici: RBAC ve Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](quickstart-assign-role-user-portal.md)

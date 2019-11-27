@@ -1,6 +1,6 @@
 ---
-title: Azure traffic analytics schema | Microsoft Docs
-description: Understand schema of Traffic Analytics to analyze Azure network security group flow logs.
+title: Azure Trafik Analizi şeması | Microsoft Docs
+description: Azure ağ güvenlik grubu akış günlüklerini çözümlemek için Trafik Analizi şemasını anlayın.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -20,32 +20,32 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229429"
 ---
-# <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema and data aggregation in Traffic Analytics
+# <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Trafik Analizi şema ve veri toplama
 
-Traffic Analytics is a cloud-based solution that provides visibility into user and application activity in cloud networks. Traffic Analytics analyzes Network Watcher network security group (NSG) flow logs to provide insights into traffic flow in your Azure cloud. With traffic analytics, you can:
+Trafik Analizi, bulut ağlarında Kullanıcı ve uygulama etkinliğine görünürlük sağlayan bulut tabanlı bir çözümdür. Trafik Analizi, Azure bulutunuzda trafik akışına yönelik Öngörüler sağlamak için ağ Izleyicisi ağ güvenlik grubu (NSG) akış günlüklerini analiz eder. Trafik Analizi ile şunları yapabilirsiniz:
 
-- Visualize network activity across your Azure subscriptions and identify hot spots.
-- Identify security threats to, and secure your network, with information such as open-ports, applications attempting internet access, and virtual machines (VM) connecting to rogue networks.
-- Understand traffic flow patterns across Azure regions and the internet to optimize your network deployment for performance and capacity.
-- Pinpoint network misconfigurations leading to failed connections in your network.
-- Know network usage in bytes, packets, or flows.
+- Azure abonelikleriniz genelinde ağ etkinliğini görselleştirin ve etkin noktaları belirlersiniz.
+- Açık bağlantı noktaları, internet erişimi yapılmaya çalışan uygulamalar ve standart dışı ağlara bağlanan sanal makineler (VM) gibi bilgilerle ağınızı güvenli hale getirin ve güvenliğini sağlayın.
+- Performans ve kapasite için ağ dağıtımınızı iyileştirmek üzere Azure bölgeleri ve İnternet genelinde trafik akışı düzenlerini anlayın.
+- Ağ yapılandırması hataları ağınızdaki başarısız bağlantıların başında.
+- Ağ kullanımını bayt, paket veya akışlarda öğrenin.
 
-### <a name="data-aggregation"></a>Data aggregation
+### <a name="data-aggregation"></a>Veri toplama
 
-1. All  flow logs at an NSG between “FlowIntervalStartTime_t” and “FlowIntervalEndTime_t” are captured at one-minute intervals in the storage account as blobs before being processed by Traffic Analytics.
-2. Default processing interval of Traffic Analytics is 60 minutes. This means that every 60 mins Traffic Analytics picks blobs from storage for aggregation. If processing interval chosen is 10 mins, Traffic Analytics will pick blobs from storage account after every 10 mins.
-3. Flows that have the same Source IP, Destination IP, Destination port, NSG name, NSG rule, Flow Direction, and Transport layer protocol (TCP or UDP) (Note: Source port is excluded for aggregation) are clubbed into a single flow by Traffic Analytics
-4. This single record is decorated (Details in the section below) and ingested in Log Analytics by Traffic Analytics.This process can take upto 1 hour max.
-5. FlowStartTime_t field indicates the first occurrence of such an aggregated flow (same four-tuple) in the flow log processing interval between “FlowIntervalStartTime_t” and “FlowIntervalEndTime_t”.
-6. For any resource in TA, the flows indicated in the UI are total flows seen by the NSG, but in Log Analytics user will see only the single, reduced record. To see all the flows, use the blob_id field,  which can be referenced from Storage. The total flow count for that record will match the individual flows seen in the blob.
+1. "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki NSG 'lerdeki tüm akış günlükleri, Trafik Analizi tarafından işlenmeden önce blob olarak depolama hesabındaki bir dakikalık aralıklarla yakalanır.
+2. Trafik Analizi varsayılan işleme aralığı 60 dakikadır. Bu, her 60 dakikalık Trafik Analizi, toplama için Blobların depolama alanından çekmeyeceği anlamına gelir. Seçilen Aralık 10 dakika ise, Trafik Analizi her 10 dakikada bir depolama hesabından blob 'ları seçer.
+3. Aynı kaynak IP, hedef IP, hedef bağlantı noktası, NSG adı, NSG kuralı, akış yönü ve Aktarım Katmanı Protokolü (TCP veya UDP) olan akışlar (Not: kaynak bağlantı noktası toplama için hariç tutulur) Trafik Analizi tarafından tek bir akışta kümelendirilebilir
+4. Bu tek kayıt, Trafik Analizi tarafından Log Analytics kaydedilir (aşağıdaki bölümde bulunan Ayrıntılar). Bu işlem, en fazla 1 saat sürer.
+5. FlowStartTime_t alan, "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki akış günlüğü işleme aralığına bu tür toplanmış akışın (aynı dört demet) ilk oluşumunu gösterir.
+6. TA 'daki herhangi bir kaynak için, Kullanıcı ARABIRIMINDE gösterilen akışlar NSG tarafından görülen toplam akışlardır, ancak Log Analytics Kullanıcı yalnızca tek, azaltılan kaydı görür. Tüm akışları görmek için, depolama alanından başvurulabilen blob_id alanını kullanın. Bu kayıt için toplam akış sayısı, blob 'da görülen bireysel akışlarla eşleşmeyecektir.
 
-The below query helps you looks at all flow logs from on-premises in the last 30 days.
+Aşağıdaki sorgu, son 30 gün içinde Şirket içindeki tüm akış günlüklerine bakmanıza yardımcı olur.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
 | project Subnet_s  
 ```
-To view the blob path for the flows in the above mentioned query, use the query below:
+Yukarıdaki belirtilen sorgudaki akışlara ait blob yolunu görüntülemek için aşağıdaki sorguyu kullanın:
 
 ```
 let TableWithBlobId =
@@ -77,104 +77,104 @@ TableWithBlobId
 | project Subnet_s , BlobPath
 ```
 
-The above query constructs a URL to access the blob directly. The URL with place-holders is below:
+Yukarıdaki sorgu, blob 'a doğrudan erişmek için bir URL oluşturur. Yer tutucuları olan URL aşağıda verilmiştir:
 
 ```
 https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroup}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
 ```
 
-### <a name="fields-used-in-traffic-analytics-schema"></a>Fields used in Traffic Analytics schema
+### <a name="fields-used-in-traffic-analytics-schema"></a>Trafik Analizi şemasında kullanılan alanlar
   > [!IMPORTANT]
-  > The Traffic Analytics Schema has been updated on 22nd August, 2019. The new schema provides source and destination IPs separately removing need to parse FlowDirection field making queries simpler. </br>
-  > FASchemaVersion_s updated from 1 to 2. </br>
-  > Deprecated fields: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
-  > New fields: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
-  > Deprecated fields will be available until 22nd November, 2019.
+  > Trafik Analizi şeması 22 Ağustos 2019 tarihinde güncelleştirilmiştir. Yeni şema, kaynakları daha basit hale getiren FlowDirection alanını ayrıştırma gereksinimini ortadan kaldırmak için kaynak ve hedef IP 'Leri de sağlar. </br>
+  > FASchemaVersion_s 1 ' den 2 ' ye güncelleştirildi. </br>
+  > Kullanım dışı alanlar: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > Yeni alanlar: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > Kullanım dışı bırakılan alanlar 22 Kasım 2019 tarihine kadar kullanılabilir olacaktır.
 
-Traffic Analytics is built on top of Log Analytics, so you can run custom queries on data decorated by Traffic Analytics and set alerts on the same.
+Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tarafından düzenlenmiş veriler üzerinde özel sorgular çalıştırabilir ve aynı üzerinde uyarılar ayarlayabilirsiniz.
 
-Listed below are the fields in the schema and what they signify
+Şema içindeki alanlar ve bunların işaret ettikleri yer aşağıda listelenmiştir
 
 | Alan | Biçimlendir | Yorumlar |
 |:---   |:---    |:---  |
-| TableName | AzureNetworkAnalytics_CL | Table for Traffic Analytics data
-| SubType_s | FlowLog | Subtype for the flow logs. Use only "FlowLog", other values of SubType_s are for internal workings of the product |
-| FASchemaVersion_s |   2   | Schema version. Does not reflect NSG Flow Log version |
-| TimeProcessed_t   | Date and Time in UTC  | Time at which the Traffic Analytics processed the raw flow logs from the storage account |
-| FlowIntervalStartTime_t | Date and Time in UTC |  Starting time of the flow log processing interval. This is time from which flow interval is measured |
-| FlowIntervalEndTime_t | Date and Time in UTC | Ending time of the flow log processing interval |
-| FlowStartTime_t | Date and Time in UTC |  First occurrence of the flow (which will get aggregated) in the flow log processing interval between “FlowIntervalStartTime_t” and “FlowIntervalEndTime_t”. This flow gets aggregated based on aggregation logic |
-| FlowEndTime_t | Date and Time in UTC | Last occurrence of the flow (which will get aggregated) in the flow log processing interval between “FlowIntervalStartTime_t” and “FlowIntervalEndTime_t”. In terms of flow log v2, this field contains the time when the last flow with the same four-tuple started (marked as “B” in the raw flow record) |
-| FlowType_s |  * IntraVNet <br> * InterVNet <br> * S2S <br> * P2S <br> * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow <br> * Unknown Private <br> * Unknown | Definition in notes below the table |
-| SrcIP_s | Kaynak IP adresi | Will be blank in case of AzurePublic and ExternalPublic flows |
-| DestIP_s | Hedef IP adresi | Will be blank in case of AzurePublic and ExternalPublic flows |
-| VMIP_s | IP of the VM | Used for AzurePublic and ExternalPublic flows |
-| PublicIP_s | Genel IP adresleri | Used for AzurePublic and ExternalPublic flows |
-| DestPort_d | Hedef Bağlantı Noktası | Port at which traffic is incoming |
-| L4Protocol_s  | * T <br> * U  | Transport Protocol. T = TCP <br> U = UDP |
-| L7Protocol_s  | Protocol Name | Derived from destination port |
-| FlowDirection_s | * I = Inbound<br> * O = Outbound | Direction of the flow in/out of NSG as per flow log |
-| FlowStatus_s  | * A = Allowed by NSG Rule <br> *  D = Denied by NSG Rule  | Status of flow allowed/nblocked by NSG as per flow log |
-| NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Network Security Group (NSG) associated with the flow |
-| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  NSG rule that allowed or denied this flow |
-| NSGRule_s | NSG_RULENAME |  NSG rule that allowed or denied this flow |
-| NSGRuleType_s | * User Defined *  Default |   The type of NSG Rule used by the flow |
-| MACAddress_s | MAC Address | MAC address of the NIC at which the flow was captured |
-| Subscription_s | Subscription of the Azure virtual network/ network interface/ virtual machine is populated in this field | Applicable only for FlowType = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow, and UnknownPrivate flow types (flow types where only one side is azure) |
-| Subscription1_s | Abonelik Kimliği | Subscription ID of virtual network/ network interface/ virtual machine to which the source IP in the flow belongs to |
-| Subscription2_s | Abonelik Kimliği | Subscription ID of virtual network/ network interface/ virtual machine to which the destination IP in the flow belongs to |
-| Region_s | Azure region of virtual network/ network interface/ virtual machine to which the IP in the flow belongs to | Applicable only for FlowType = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow, and UnknownPrivate flow types (flow types where only one side is azure) |
-| Region1_s | Azure Bölgesi | Azure region of virtual network/ network interface/ virtual machine to which the source IP in the flow belongs to |
-| Region2_s | Azure Bölgesi | Azure region of virtual network to which the destination IP in the flow belongs to |
-| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  NIC associated with the VM sending or receiving the traffic |
-| NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | NIC associated with the source IP in the flow |
-| NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | NIC associated with the destination IP in the flow |
-| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | Virtual Machine associated with the Network interface NIC_s |
-| VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | Virtual Machine associated with the source IP in the flow |
-| VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | Virtual Machine associated with the destination IP in the flow |
-| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Subnet associated with the NIC_s |
-| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Subnet associated with the Source IP in the flow |
-| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Subnet associated with the Destination IP in the flow |
-| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Application gateway associated with the Source IP in the flow |
-| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Application gateway associated with the Destination IP in the flow |
-| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Load balancer associated with the Source IP in the flow |
-| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Load balancer associated with the Destination IP in the flow |
-| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Local network gateway associated with the Source IP in the flow |
-| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Local network gateway associated with the Destination IP in the flow |
-| ConnectionType_s | Possible values are VNetPeering, VpnGateway, and ExpressRoute |    Connection Type |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Bağlantı Adı |
-| ConnectingVNets_s | Space separated list of virtual network names | In case of hub and spoke topology, hub virtual networks will be populated here |
-| Country_s | Two letter country code (ISO 3166-1 alpha-2) | Populated for flow type ExternalPublic. All IP addresses in PublicIPs_s field will share the same country code |
-| AzureRegion_s | Azure region locations | Populated for flow type AzurePublic. All IP addresses in PublicIPs_s field will share the Azure region |
-| AllowedInFlows_d | | Count of inbound flows that were allowed. This represents the number of flows that shared the same four-tuple inbound to the network interface at which the flow was captured |
-| DeniedInFlows_d |  | Count of inbound flows that were denied. (Inbound to the network interface at which the flow was captured) |
-| AllowedOutFlows_d | | Count of outbound flows that were allowed (Outbound to the network interface at which the flow was captured) |
-| DeniedOutFlows_d  | | Count of outbound flows that were denied (Outbound to the network interface at which the flow was captured) |
-| FlowCount_d | Deprecated. Total flows that matched the same four-tuple. In case of flow types ExternalPublic and AzurePublic, count will include the flows from various PublicIP addresses as well.
-| InboundPackets_d | Packets received as captured at the network interface where NSG rule was applied | This is populated only for the Version 2 of NSG flow log schema |
-| OutboundPackets_d  | Packets sent as captured at the network interface where NSG rule was applied | This is populated only for the Version 2 of NSG flow log schema |
-| InboundBytes_d |  Bytes received as captured at the network interface where NSG rule was applied | This is populated only for the Version 2 of NSG flow log schema |
-| OutboundBytes_d | Bytes sent as captured at the network interface where NSG rule was applied | This is populated only for the Version 2 of NSG flow log schema |
-| CompletedFlows_d  |  | This is populated with non-zero value only for the Version 2 of NSG flow log schema |
-| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Entries separated by bars |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Entries separated by bars |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Entries separated by bars |
+| TableName | AzureNetworkAnalytics_CL | Trafik Analizi verileri tablosu
+| SubType_s | FlowLog | Akış günlüklerinin alt türü. Yalnızca "FlowLog" kullanın, SubType_s diğer değerleri ürünün iç işleyişi içindir |
+| FASchemaVersion_s |   2   | Şema sürümü. NSG akış günlüğü sürümünü yansıtmıyor |
+| TimeProcessed_t   | UTC olarak tarih ve saat  | Trafik Analizi depolama hesabından ham akış günlüklerinin işlendiği zaman |
+| FlowIntervalStartTime_t | UTC olarak tarih ve saat |  Akış günlüğü işleme aralığının başlangıç saati. Bu, akış aralığının ölçülmüş olduğu süredir |
+| FlowIntervalEndTime_t | UTC olarak tarih ve saat | Akış günlüğü işleme aralığının bitiş saati |
+| FlowStartTime_t | UTC olarak tarih ve saat |  Akış günlüğü işleme aralığında "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki ilk akışın ilk oluşumu (toplanacak). Bu akış toplama mantığına göre toplanmış |
+| FlowEndTime_t | UTC olarak tarih ve saat | Akış günlüğü işleme aralığında "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki son olay (toplanacak). Akış günlüğü v2 ' de, bu alan, en son akışın aynı dört demet ile başladığı saati (ham akış kaydında "B" olarak işaretlenir) içerir |
+| FlowType_s |  * IntraVNet <br> * Intervnet <br> * S2S <br> * P2S <br> * Azucumhuriyeti <br> * ExternalPublic <br> * MaliciousFlow <br> * Bilinmeyen özel <br> * Bilinmiyor | Tablonun altındaki notlardaki tanım |
+| SrcIP_s | Kaynak IP adresi | Azucumhuriyeti ve ExternalPublic akışlar söz konusu olduğunda boş olacaktır |
+| DestIP_s | Hedef IP adresi | Azucumhuriyeti ve ExternalPublic akışlar söz konusu olduğunda boş olacaktır |
+| VMIP_s | VM 'nin IP 'si | Azucumhuriyeti ve ExternalPublic akışları için kullanılır |
+| PublicIP_s | Genel IP adresleri | Azucumhuriyeti ve ExternalPublic akışları için kullanılır |
+| DestPort_d | Hedef Bağlantı Noktası | Trafiğin gelen bağlantı noktası |
+| L4Protocol_s  | * T <br> * U  | Aktarım Protokolü. T = TCP <br> U = UDP |
+| L7Protocol_s  | Protokol adı | Hedef bağlantı noktasından türetilmiş |
+| FlowDirection_s | * I = gelen<br> * O = giden | Akış günlüğü başına NSG/çıkış akışı yönü |
+| FlowStatus_s  | * A = NSG kuralına Izin verilir <br> * D = NSG kuralı tarafından reddedildi  | Akış günlüğü başına NSG tarafından engellenen akışın durumu |
+| NSGList_s | \<SUBSCRIPTIONıD >\/< RESOURCEGROUP_NAME >\/< NSG_NAME > | Flow ile ilişkili ağ güvenlik grubu (NSG) |
+| NSGRules_s | \<dizin değeri 0) >\|\<NSG_RULENAME >\|\<akış yönü >\|\<Flow durumu >\|\<FlowCount ProcessedByRule > |  Bu akışa izin verilen veya reddedilen NSG kuralı |
+| NSGRule_s | NSG_RULENAME |  Bu akışa izin verilen veya reddedilen NSG kuralı |
+| NSGRuleType_s | * Kullanıcı tanımlı * varsayılan |   Akış tarafından kullanılan NSG kuralının türü |
+| MACAddress_s | MAC adresi | Akışın yakalandığı NIC 'in MAC adresi |
+| Subscription_s | Bu alana Azure sanal ağ/ağ arabirimi/sanal makine aboneliği doldurulur | Yalnızca FlowType = S2S, P2S, Azucumhuriyeti, ExternalPublic, MaliciousFlow ve UnknownPrivate akış türleri için geçerlidir (yalnızca bir tarafın Azure olduğu akış türleri) |
+| Subscription1_s | Abonelik Kimliği | Akıştaki kaynak IP 'nin ait olduğu sanal ağ/ağ arabiriminin/sanal makinenin abonelik KIMLIĞI |
+| Subscription2_s | Abonelik Kimliği | Akıştaki hedef IP 'nin ait olduğu sanal ağ/ağ arabiriminin/sanal makinenin abonelik KIMLIĞI |
+| Region_s | Akıştaki IP 'nin ait olduğu sanal ağ/ağ arabiriminin/sanal makinenin Azure bölgesi | Yalnızca FlowType = S2S, P2S, Azucumhuriyeti, ExternalPublic, MaliciousFlow ve UnknownPrivate akış türleri için geçerlidir (yalnızca bir tarafın Azure olduğu akış türleri) |
+| Region1_s | Azure Bölgesi | Akıştaki kaynak IP 'nin ait olduğu sanal ağ/ağ arabiriminin/sanal makinenin Azure bölgesi |
+| Region2_s | Azure Bölgesi | Akıştaki hedef IP 'nin ait olduğu sanal ağın Azure bölgesi |
+| NIC_s | \<resourcegroup_Name >\/\<Networkarabirimadı > |  Trafiği gönderen veya alan VM ile ilişkilendirilen NIC |
+| NIC1_s | < resourcegroup_Name >/\<Networkınterfacename > | Akıştaki kaynak IP ile ilişkili NIC |
+| NIC2_s | < resourcegroup_Name >/\<Networkınterfacename > | Akıştaki hedef IP ile ilişkili NIC |
+| VM_s | < resourcegroup_Name >\/\<Networkarabirimadı > | Ağ arabirimiyle ilişkili sanal makine NIC_s |
+| VM1_s | < resourcegroup_Name >/\<VirtualMachineName > | Akıştaki kaynak IP ile ilişkili sanal makine |
+| VM2_s | < resourcegroup_Name >/\<VirtualMachineName > | Akıştaki hedef IP ile ilişkili sanal makine |
+| Subnet_s | < ResourceGroup_Name >/< VNET_Name >/\<SubnetName > | NIC_s ilişkili alt ağ |
+| Subnet1_s | < ResourceGroup_Name >/< VNET_Name >/\<SubnetName > | Akıştaki kaynak IP ile ilişkili alt ağ |
+| Subnet2_s | < ResourceGroup_Name >/< VNET_Name >/\<SubnetName >    | Akıştaki hedef IP ile ilişkili alt ağ |
+| ApplicationGateway1_s | \<SubscriptionID >/\<ResourceGroupName >/\<ApplicationGatewayName > | Akıştaki kaynak IP ile ilişkili uygulama ağ geçidi |
+| ApplicationGateway2_s | \<SubscriptionID >/\<ResourceGroupName >/\<ApplicationGatewayName > | Akıştaki hedef IP ile ilişkili uygulama ağ geçidi |
+| LoadBalancer1_s | \<SubscriptionID >/\<ResourceGroupName >/\<LoadBalancerName > | Akıştaki kaynak IP ile ilişkili yük dengeleyici |
+| LoadBalancer2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LoadBalancerName > | Akıştaki hedef IP ile ilişkili yük dengeleyici |
+| LocalNetworkGateway1_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Akıştaki kaynak IP ile ilişkili yerel ağ geçidi |
+| LocalNetworkGateway2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Akıştaki hedef IP ile ilişkili yerel ağ geçidi |
+| ConnectionType_s | Olası değerler Vneteşleme, VpnGateway ve ExpressRoute şeklindedir |    Bağlantı türü |
+| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<ConnectionName > | Bağlantı Adı |
+| ConnectingVNets_s | Sanal ağ adlarının boşlukla ayrılmış listesi | Hub ve bağlı bileşen topolojisi söz konusu olduğunda, hub sanal ağları buraya doldurulacak |
+| Country_s | İki harfli ülke kodu (ISO 3166-1 Alpha-2) | ExternalPublic akış türü için dolduruldu. PublicIPs_s alanındaki tüm IP adresleri aynı ülke kodunu paylaşacaktır |
+| AzureRegion_s | Azure bölge konumları | Akış türü Azucumhuriyet için dolduruldu. PublicIPs_s alanındaki tüm IP adresleri Azure bölgesini paylaşacaktır |
+| AllowedInFlows_d | | İzin verilen gelen akış sayısı. Bu, akışın yakalandığı ağ arabirimine gelen aynı dört tanımlama grubunu paylaşan akış sayısını temsil eder |
+| DeniedInFlows_d |  | Reddedilen gelen akış sayısı. (Akışın yakalandığı ağ arabirimine gelen) |
+| AllowedOutFlows_d | | İzin verilen giden akış sayısı (akışın yakalandığı ağ arabirimine giden) |
+| DeniedOutFlows_d  | | Reddedilen giden akış sayısı (akışın yakalandığı ağ arabirimine giden) |
+| FlowCount_d | Kullanım dışı. Aynı dört demet ile eşleşen toplam akış. ExternalPublic ve Azucumhurflow türünde, say çeşitli Publicıp adreslerinden akışları da içerecektir.
+| InboundPackets_d | NSG kuralının uygulandığı ağ arabiriminde yakalanan olarak alınan paketler | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
+| OutboundPackets_d  | NSG kuralının uygulandığı ağ arabiriminde yakalanan olarak gönderilen paketler | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
+| InboundBytes_d |  NSG kuralının uygulandığı ağ arabiriminde yakalanan bayt alındı | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
+| OutboundBytes_d | NSG kuralının uygulandığı ağ arabiriminde yakalanan olarak gönderilen bayt sayısı | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
+| CompletedFlows_d  |  | Bu, yalnızca NSG akış günlüğü şemasının 2. sürümü için sıfır olmayan değer ile doldurulur |
+| PublicIPs_s | < PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Çubuklar ile ayrılmış girişler |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Çubuklar ile ayrılmış girişler |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Çubuklar ile ayrılmış girişler |
 
 ### <a name="notes"></a>Notlar
 
-1. In case of AzurePublic and ExternalPublic flows, the customer owned Azure VM IP is populated in VMIP_s field, while the Public IP addresses are being populated in the PublicIPs_s field. For these two flow types, we should use VMIP_s and PublicIPs_s instead of SrcIP_s and DestIP_s fields. For AzurePublic and ExternalPublicIP addresses, we aggregate further, so that the number of records ingested to customer log analytics workspace is minimal.(This field will be deprecated soon and we should be using SrcIP_ and DestIP_s depending on whether azure VM was the source or the destination in the flow)
-1. Details for flow types: Based on the IP addresses involved in the flow, we categorize the flows in to the following flow types:
-1. IntraVNet – Both the IP addresses in the flow reside in the same Azure Virtual Network.
-1. InterVNet - IP addresses in the flow reside in the two different Azure Virtual Networks.
-1. S2S – (Site To Site) One of the IP addresses belongs to Azure Virtual Network while the other IP address belongs to customer network (Site) connected to the Azure Virtual Network through VPN gateway or Express Route.
-1. P2S - (Point To Site) One of the IP addresses belongs to Azure Virtual Network while the other IP address belongs to customer network (Site) connected to the Azure Virtual Network through VPN gateway.
-1. AzurePublic - One of the IP addresses belongs to Azure Virtual Network while the other IP address belongs to Azure Internal Public IP addresses owned by Microsoft. Customer owned Public IP addresses won’t be part of this flow type. For instance, any customer owned VM sending traffic to an Azure Service (Storage endpoint) would be categorized under this flow type.
-1. ExternalPublic - One of the IP addresses belongs to Azure Virtual Network while the other IP address is a public IP that is not in Azure, is not reported as malicious in the ASC feeds that Traffic Analytics consumes for the processing interval between “FlowIntervalStartTime_t” and “FlowIntervalEndTime_t”.
-1. MaliciousFlow - One of the IP addresses belong to azure virtual network while the other IP address is a public IP that is not in Azure and  is reported as malicious in the ASC feeds that Traffic Analytics consumes for the processing interval between “FlowIntervalStartTime_t” and “FlowIntervalEndTime_t”.
-1. UnknownPrivate - One of the IP addresses belong to Azure Virtual Network while the other IP address belongs to private IP range as defined in RFC 1918 and could not be mapped by Traffic Analytics to a customer owned site or Azure Virtual Network.
-1. Unknown – Unable to map the either of the IP addresses in the flows with the customer topology in Azure as well as on-premises (site).
-1. Some field names are appended with \_s or \_d. These do NOT signify source and destination but indicate the data types string and decimal respectively.
+1. Azucumhuriyeti ve ExternalPublic akışları söz konusu olduğunda, müşterinin sahip olduğu Azure VM IP 'si VMIP_s alana girilir, ancak genel IP adresleri PublicIPs_s alanında doldurulur. Bu iki akış türü için, SrcIP_s ve DestIP_s alanları yerine VMIP_s ve PublicIPs_s kullanırız. Azucumhuriyeti ve Externalpublicıp adresleri için, müşteri günlüğü Analizi çalışma alanına alınan kayıt sayısının en az olması için daha fazla topladık. (Bu alan yakında kullanımdan kalkmış olacak ve Azure VM 'nin akışta kaynak veya hedef olmasına bağlı olarak SrcIP_ ve DestIP_s kullanıyor olması gerekir.
+1. Akış türleri için Ayrıntılar: akışta yer alan IP adreslerine göre, içindeki akışları aşağıdaki akış türlerine göre sınıflandırıyoruz:
+1. Invnet: her Iki akıştaki IP adresi aynı Azure sanal ağında yer alır.
+1. Akışdaki ıntervnet-IP adresleri iki farklı Azure sanal ağında yer alır.
+1. S2S – (siteden siteye) IP adreslerinden biri Azure sanal ağına aittir, diğer bir deyişle IP adresi, VPN Gateway veya Express Route aracılığıyla Azure sanal ağına bağlı olan müşteri ağına (site) bağlanır.
+1. P2S-(site üzerine gelin) IP adreslerinden biri Azure sanal ağına aittir, diğer bir deyişle diğer IP adresleri ise Azure sanal ağına VPN ağ geçidi üzerinden bağlı olan müşteri ağına (site) bağlanır.
+1. Azucumhuriyet-IP adreslerinden biri Azure sanal ağına aittir, diğer bir deyişle, diğer IP adresleri Microsoft 'un sahip olduğu Azure Iç genel IP adreslerine aittir. Müşterinin sahip olduğu genel IP adresleri, bu akış türünün bir parçası olmayacaktır. Örneğin, bir Azure hizmetine (depolama uç noktası) trafik gönderen herhangi bir müşterinin sahip olduğu sanal makine, bu akış türü altında kategorilere ayrılır.
+1. ExternalPublic-IP adreslerinden biri Azure sanal ağına aittir, ancak diğer IP adresi Azure 'da olmayan bir genel IP olduğunda, işlem aralığı için tükettiği Trafik Analizi " FlowIntervalStartTime_t "ve" FlowIntervalEndTime_t ".
+1. MaliciousFlow-IP adreslerinden biri Azure sanal ağına aittir, diğer IP adresi Azure 'da olmayan bir genel IP ve bu işlem aralığı için Trafik Analizi tüketen ASC akışlarında kötü amaçlı olarak bildirildi FlowIntervalStartTime_t "ve" FlowIntervalEndTime_t ".
+1. UnknownPrivate-IP adreslerinden biri Azure sanal ağına aittir, ancak diğer IP adresleri, RFC 1918 ' de tanımlandığı şekilde özel IP aralığına aittir ve müşterinin sahip olduğu bir siteye veya Azure sanal ağına Trafik Analizi tarafından eşlenemedi.
+1. Bilinmiyor – akışlardaki IP adreslerinden birinin Azure 'daki müşteri topolojisi ile şirket içi (site) arasında eşleme yapılamıyor.
+1. Bazı alan adlarına \_s veya \_d eklenmiş. Bunlar kaynak ve hedefi işaret etmez ancak sırasıyla veri türleri dize ve ondalık olduğunu gösterir.
 
 ### <a name="next-steps"></a>Sonraki Adımlar
-To get answers to frequently asked questions, see [Traffic analytics FAQ](traffic-analytics-faq.md) To see details about functionality, see [Traffic analytics documentation](traffic-analytics.md)
+Sık sorulan soruların yanıtlarını almak için bkz. [Traffic ANALYTICS SSS](traffic-analytics-faq.md) , işlevlerle ilgili ayrıntıları görmek için bkz. [Trafik Analizi belgeleri](traffic-analytics.md)

@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b5f839cc6216eb12bfd0a86009ec49e987279d6e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889828"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548413"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 
@@ -76,7 +76,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 ## <a name="classify-your-sql-database"></a>SQL veritabanınızı sınıflandırın
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 2. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. Gelişmiş veri güvenliğini etkinleştirmek için tıklayın ve ardından **veri bulma & sınıflandırma** kartına tıklayın.
 
@@ -128,8 +128,9 @@ Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izlem
 
 ![Denetim günlüğü](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>T-SQL kullanarak veri sınıflandırmasını yönetme
+### <a name="manage-classifications"></a>Sınıflandırmaları Yönet
 
+# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanının tüm sınıflandırmalarını almak için kullanabilirsiniz.
 
 > [!NOTE]
@@ -139,8 +140,7 @@ T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanını
 - Sınıflandırmayı bir veya daha fazla sütundan kaldırma: [DÜŞÜRÜLME DUYARLıLıĞı sınıflandırması](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Veritabanındaki tüm sınıflandırmaları görüntüle: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="manage-classifications-using-rest-apis"></a>REST API 'Leri kullanarak sınıflandırmaları yönetme
-
+# <a name="rest-apistabazure-rest-api"></a>[REST API 'Leri](#tab/azure-rest-api)
 Sınıflandırmaları programlı bir şekilde yönetmek için REST API 'Lerini de kullanabilirsiniz. Yayımlanan REST API 'Leri aşağıdaki işlemleri destekler:
 
 - [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) -belirli bir sütunun duyarlılık etiketini oluşturur veya güncelleştirir
@@ -152,12 +152,8 @@ Sınıflandırmaları programlı bir şekilde yönetmek için REST API 'Lerini d
 
 - [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -belirli bir veritabanının önerilen duyarlılık etiketlerini alır
 
-## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Azure PowerShell kullanarak veri bulmayı ve sınıflandırmayı yönetme
-
-Bir Azure SQL veritabanında ve yönetilen bir örnekte, önerilen tüm sütunları almak için PowerShell 'i kullanabilirsiniz.
-
-### <a name="powershell-cmdlets-for-azure-sql-database"></a>Azure SQL veritabanı için PowerShell cmdlet 'Leri
-
+# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Azure SQL için PowerShell cmdlet 'ı](#tab/azure-portal-sqldb)
+Bir Azure SQL veritabanında tüm önerilen sütunları almak için PowerShell 'i kullanabilirsiniz.
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -165,8 +161,8 @@ Bir Azure SQL veritabanında ve yönetilen bir örnekte, önerilen tüm sütunla
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>Yönetilen örnek için PowerShell cmdlet 'Leri
-
+# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Yönetilen örnek için PowerShell cmdlet 'Leri](#tab/azure-powershell-mi)
+Yönetilen bir örnekteki tüm önerilen sütunları almak için PowerShell kullanabilirsiniz.
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)

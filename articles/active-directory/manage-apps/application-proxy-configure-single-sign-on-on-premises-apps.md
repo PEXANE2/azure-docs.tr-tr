@@ -99,5 +99,5 @@ Tüm adımları tamamladıktan sonra uygulamanızı ve çalışıyor olması ger
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD uygulama proxy'si nasıl çoklu oturum açma sağlar?](application-proxy-single-sign-on.md)
-- [Uygulama Ara sunucusu sorunlarını giderme](application-proxy-troubleshoot.md)
+- [Azure AD Uygulama Ara Sunucusu çoklu oturum açma nasıl sağlar?](application-proxy-single-sign-on.md)
+- [Uygulama ara sunucusu sorunlarını giderme](application-proxy-troubleshoot.md)

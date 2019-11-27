@@ -94,7 +94,7 @@ Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi 
 3. **Grupları**seçin.
 4. **Yeni Grup**' u seçin.
 5. **Grup türü**altında **güvenlik**' i seçin.
-6. Bir **Grup adı** ve **Grup açıklaması** girin.
+6. Bir **Grup adı** ve **Grup açıklaması**yazın.
 7. **Üyelik türü**' nün altında, **atandı**' ı seçin.
 8. **Oluştur**' u seçin ve **Grup** sayfasını kapatın.
 9. **Gruplar-tüm gruplar** sayfasında, grubu açın. 

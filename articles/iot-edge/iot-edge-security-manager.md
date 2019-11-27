@@ -1,8 +1,8 @@
 ---
-title: Learn how the security manager protects devices, software - Azure IoT Edge | Microsoft Docs
-description: Manages the IoT Edge device security stance and the integrity of security services.
+title: Güvenlik Yöneticisi yazılım - Azure IOT Edge cihazları nasıl koruduğunu öğrenin | Microsoft Docs
+description: IOT Edge cihaz güvenlik tutum sergilemek ve güvenlik hizmetleri bütünlüğünü yönetir.
 services: iot-edge
-keywords: security, secure element, enclave, TEE, IoT Edge
+keywords: Güvenlik, güvenli öğesi, kuşatma, TEE, IOT Edge
 author: eustacea
 manager: philmea
 ms.author: eustacea
@@ -16,113 +16,113 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457538"
 ---
-# <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge security manager
+# <a name="azure-iot-edge-security-manager"></a>Azure IOT Edge Güvenlik Yöneticisi
 
-The Azure IoT Edge security manager is a well-bounded security core for protecting the IoT Edge device and all its components by abstracting the secure silicon hardware. It is the focal point for security hardening and provides technology integration point to original equipment manufacturers (OEM).
+Azure IOT Edge güvenlik IOT Edge cihazı ve tüm bileşenlerini güvenli Silikon donanım özetleyen tarafından korunması için iyi sınırlanmış güvenlik çekirdek yöneticisidir. Bu, güvenlik sağlamlaştırma için odak noktasıdır ve özgün ekipman üreticilerine (OEM) teknoloji tümleştirme noktası sağlar.
 
-![Azure IoT Edge security manager](media/edge-security-manager/iot-edge-security-manager.png)
+![Azure IOT Edge Güvenlik Yöneticisi](media/edge-security-manager/iot-edge-security-manager.png)
 
-IoT Edge security manager aims to defend the integrity of the IoT Edge device and all inherent software operations. The security manager transitions trust from underlying hardware root of trust hardware (if available) to bootstrap the IoT Edge runtime and monitor ongoing operations.  The IoT Edge security manager is software working along with secure silicon hardware (where available) to help deliver the highest security assurances possible.  
+IOT Edge Güvenlik Yöneticisi'ni IOT Edge cihazı ve tüm yazılım devralınan işlemler bütünlüğünü korumak amaçlar. Güvenlik Yöneticisi, IoT Edge çalışma zamanını önyüklemek ve devam eden işlemleri izlemek için, güven donanımının temel alınan donanım kökünden (varsa) güven geçişi yapar.  IoT Edge Güvenlik Yöneticisi, mümkün olan en yüksek güvenlik önlemlerinin sağlanmasına yardımcı olmak üzere güvenli bir Silicon Hardware (varsa) ile birlikte çalışır.  
 
-The responsibilities of the IoT Edge security manager include, but aren't limited to:
+IoT Edge Güvenlik Yöneticisi sorumlulukları şunlardır, ancak bunlarla sınırlı değildir:
 
-* Secured and measured bootstrapping of the Azure IoT Edge device.
-* Device identity provisioning and transition of trust where applicable.
-* Host and protect device components of cloud services like Device Provisioning Service.
-* Securely provision IoT Edge modules with unique identities.
-* Gatekeeper to device hardware root of trust through notary services.
-* Monitor the integrity of IoT Edge operations at runtime.
+* Güvenli ve Azure IOT Edge cihazı önyükleme ölçülür.
+* Cihaz kimlik sağlama ve güven geçişin uygun olduğunda.
+* Ana bilgisayar ve cihaz sağlama hizmeti gibi bulut hizmetlerinin bileşenleri cihaz koruyun.
+* Benzersiz kimliklerle IoT Edge modülleri güvenli bir şekilde sağlayın.
+* Ağ geçidi cihaz donanım kök güven notary Hizmetleri aracılığıyla.
+* IOT Edge çalışma zamanı operace bütünlüğünü izler.
 
-IoT Edge security manager includes three components:
+IOT Edge Güvenlik Yöneticisi üç bileşenleri içerir:
 
-* IoT Edge security daemon.
-* Hardware security module platform abstraction Layer (HSM PAL).
-* Optional but highly recommended hardware silicon root of trust or HSM.
+* IOT Edge güvenlik arka plan programı.
+* Donanım güvenlik modülü platform Soyutlama Katmanı (HSM PAL).
+* İsteğe bağlıdır, ancak donanım Silikon kök güveni veya HSM kesinlikle önerilir.
 
-## <a name="the-iot-edge-security-daemon"></a>The IoT Edge security daemon
+## <a name="the-iot-edge-security-daemon"></a>IOT Edge güvenlik arka plan programı
 
-The IoT Edge security daemon is responsible for the logical operations of IoT Edge security manager. It represents a significant portion of the trusted computing base of the IoT Edge device. 
+IoT Edge güvenlik arka plan programı, IoT Edge Security Manager 'ın mantıksal işlemlerinden sorumludur. IoT Edge cihazının güvenilir bilgi işlem tabanının önemli bir bölümünü temsil eder. 
 
 ### <a name="design-principles"></a>Tasarım ilkeleri
 
-The IoT Edge security daemon follows two core principles: maximize operational integrity, and minimize bloat and churn.
+IoT Edge güvenlik arka plan programı iki temel ilkeden daha sonra çalışır: işlemsel bütünlüğü en üst düzeye çıkarın ve oluşan şişirmeyi ve dalgalanma
 
-#### <a name="maximize-operational-integrity"></a>Maximize operational integrity
+#### <a name="maximize-operational-integrity"></a>İşletimsel bütünlüğü en üst düzeye çıkarın
 
-The IoT Edge security daemon operates with the highest integrity possible within the defense capability of any given root of trust hardware. With proper integration, the root of trust hardware measures and monitors the security daemon statically and at runtime to resist tampering.
+IoT Edge güvenlik arka plan programı, belirli bir güven donanımı kökünün savunma yeteneği dahilinde mümkün olan en yüksek bütünlüğü ile çalışır. Uygun Tümleştirmesi ile güven donanım kök ölçer ve güvenlik arka plan programı statik ve izinsiz kullanıma karşı dayanıklılık zamanında izler.
 
-Physical access is always a threat to IoT devices. Hardware root of trust plays an important role in defending the integrity of the IoT Edge security daemon.  Hardware root of trust come in two varieties:
+Fiziksel erişim, IoT cihazlarına yönelik her zaman bir tehdittir. Güvenin donanım kökü, IoT Edge güvenlik arka plan 'un bütünlüğünü erteleme bölümünde önemli bir rol oynar.  Güvenin donanım kökü iki değişken olarak gelir:
 
-* secure elements for the protection of sensitive information like secrets and cryptographic keys.
-* secure enclaves for the protection of secrets like keys, and sensitive workloads like metering and billing.
+* Gizli dizileri ve şifreleme anahtarları gibi hassas bilgilerin korunması için güvenli öğeleri.
+* Gizli dizileri koruması için güvenli enclaves anahtarları ve ölçüm ve faturalandırma gibi hassas iş yükleri gibi.
 
-Two kinds of execution environments exist to use hardware root of trust:
+Güvenin donanım kökünü kullanmak için iki tür yürütme ortamı vardır:
 
-* The standard or rich execution environment (REE) that relies on the use of secure elements to protect sensitive information.
-* The trusted execution environment (TEE) that relies on the use of secure enclave technology to protect sensitive information and offer protection to software execution.
+* Hassas bilgileri korumak için güvenli öğelerin kullanımına dayanan standart ya da zengin yürütme ortamı (REE).
+* Hassas bilgileri korumak ve yazılım yürütmeye koruma sunmak için güvenli şifreleme teknolojisini kullanan güvenilir yürütme ortamı (t).
 
-For devices using secure enclaves as hardware root of trust, sensitive logic within IoT Edge security daemon should be inside the enclave.  Non-sensitive portions of the security daemon can be outside of the TEE.  In any case, original design manufacturers (ODM) and original equipment manufacturers (OEM) should extend trust from their HSM to measure and defend the integrity of the IoT Edge security daemon at boot and runtime.
+Güvenli kuşanın donanım kökü olarak kullanıldığı cihazlarda, IoT Edge güvenlik cini içindeki hassas mantık kuşatma içinde olmalıdır.  Güvenlik arka plan programının hassas olmayan kısımları t 'nin dışında olabilir.  Herhangi bir durumda, özgün tasarım üreticileri (ODM) ve orijinal ekipman üreticileri (OEM), önyükleme ve çalışma zamanında IoT Edge güvenlik arka plan 'un bütünlüğünü ölçmek ve savunmak için HSM 'lerden güven genişletmelidir.
 
-#### <a name="minimize-bloat-and-churn"></a>Minimize bloat and churn
+#### <a name="minimize-bloat-and-churn"></a>Şişirme en aza indirmek ve değişim sıklığı
 
-Another core principle for the IoT Edge security daemon is to minimize churn.  For the highest level of trust, the IoT Edge security daemon can tightly couple with the device hardware root of trust and operate as native code.  It's common for these types of realizations to update the daemon software through the hardware root of trust's secure update paths (as opposed to OS provided update mechanisms), which can be challenging in some scenarios.  While security renewal is recommended for IoT devices, excessive update requirements or large update payloads can expand the threat surface in many ways.  Examples include skipping of updates to maximize operational availability or root of trust hardware too constrained to process large update payloads.  As such, the design of IoT Edge security daemon is concise to keep the footprint and trusted computing base small and to minimize update requirements.
+IoT Edge güvenlik arka plan programı için başka bir temel ilke, karmaşıklığı en aza indirmektir.  En yüksek güven düzeyi için IoT Edge güvenlik arka plan programı, güvenilir bir şekilde cihaz donanımı köküne sahiptir ve yerel kod olarak çalışır.  Bu gerçekçi türler, bazı senaryolarda zor olabilen güvenli güncelleştirme yollarının (işletim sistemi tarafından sunulan güncelleştirme mekanizmalarının aksine) donanım kökü aracılığıyla Daemon yazılımını güncelleştirmek için yaygındır.  IoT cihazları için güvenlik yenilemesi önerilse de, aşırı güncelleştirme gereksinimleri veya büyük güncelleştirme yükleri tehdit yüzeyini birçok şekilde genişletebilirler.  İşletimsel kullanılabilirliği en üst düzeye çıkarmak için güncelleştirmeleri atlanıyor verilebilir veya kök güven donanım çok büyük bir güncelleştirme yükü işlemek için kısıtlanmış.  Bu nedenle, IoT Edge güvenlik arka plan programının tasarımı, parmak izini ve güvenilir bilgi işlem temelini korumak ve güncelleştirme gereksinimlerini en aza indirmek için kısa bir işlemdir.
 
-### <a name="architecture-of-iot-edge-security-daemon"></a>Architecture of IoT Edge security daemon
+### <a name="architecture-of-iot-edge-security-daemon"></a>IOT Edge güvenlik arka plan programı mimarisi
 
-![Azure IoT Edge security daemon](media/edge-security-manager/iot-edge-security-daemon.png)
+![Azure IOT Edge güvenlik arka plan programı](media/edge-security-manager/iot-edge-security-daemon.png)
 
-The IoT Edge security daemon takes advantage of any available hardware root of trust technology for security hardening.  It also allows for split-world operation between a standard/rich execution environment (REE) and a trusted execution environment (TEE) when hardware technologies offer trusted execution environments. Role-specific interfaces enable the major components of IoT Edge to assure the integrity of the IoT Edge device and its operations.
+IoT Edge güvenlik arka plan programı, güvenlik sağlamlaştırma için herhangi bir güven teknolojisinin kullanılabilir donanım kökünden yararlanır.  Ayrıca, donanım teknolojileri güvenilir yürütme ortamları sundukları zaman standart/zengin yürütme ortamı (REE) ve güvenilir bir yürütme ortamı (t) arasında bölünmüş bir işleme de olanak tanır. Role özgü arabirimler, IoT Edge cihazının ve işlemlerinin bütünlüğünü güvence altına almak için IoT Edge ana bileşenlerini etkinleştirir.
 
-#### <a name="cloud-interface"></a>Cloud interface
+#### <a name="cloud-interface"></a>Bulut arabirimi
 
-The cloud interface allows the IoT Edge security daemon to access cloud services such as cloud compliments to device security like security renewal.  For example, the IoT Edge security daemon currently uses this interface to access the Azure IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) for device identity lifecycle management.  
+Bulut arabirimi, IoT Edge güvenlik arka plan programı, bulut Tebrikler gibi bulut hizmetlerine güvenlik yenilemesi gibi cihaz güvenliğine erişmesini sağlar.  Örneğin, IoT Edge güvenlik arka plan programı Şu anda bu arabirimi kullanarak cihaz kimliği yaşam döngüsü yönetimi için Azure IoT Hub [cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/) 'ne erişin.  
 
 #### <a name="management-api"></a>Yönetim API'si
 
-IoT Edge security daemon offers a management API, which is called by the IoT Edge agent when creating/starting/stopping/removing an IoT Edge module. The security daemon stores “registrations” for all active modules. These registrations map a module’s identity to some properties of the module. A few examples for these properties are the process identifier (pid) of the process running in the container or the hash of the docker container’s contents.
+IoT Edge güvenlik arka plan programı, bir IoT Edge modülünü oluştururken/başlatırken/kaldırırken IoT Edge Aracısı tarafından çağrılan bir yönetim API 'SI sunar. Güvenlik arka plan programı, tüm etkin modüller için "kayıtlar" depolar. Bu kayıtları bir modülün kimlik modülü bazı özelliklerine eşlenir. Bu özelliklerin birkaç örnek kapsayıcı ya da docker kapsayıcının içeriğinin karma çalışan işlemin işlem tanımlayıcısını (PID) verilmiştir.
 
-These properties are used by the workload API (described below) to verify that the caller is authorized to perform an action.
+Bu özellikler, arayanın bir eylem gerçekleştirme yetkisi olduğunu doğrulamak için iş yükü API 'SI (aşağıda açıklanmıştır) tarafından kullanılır.
 
-The management API is a privileged API, callable only from the IoT Edge agent.  Since the IoT Edge security daemon bootstraps and starts the IoT Edge agent, it can create an implicit registration for the IoT Edge agent, after it has attested that the IoT Edge agent has not been tampered with. The same attestation process that the workload API uses also restricts access to the management API to only the IoT Edge agent.
+Yönetim API 'si, yalnızca IoT Edge aracılarından çağrılabilir olan ayrıcalıklı bir API 'dir.  IOT Edge güvenlik daemon bootstraps ve IOT Edge Aracısı'nı başlatır olduğundan, IOT Edge Aracısı ile değiştirilmemiş olduğunu Kanıtlanmamış sonra IOT Edge aracısı için örtük bir kaydı oluşturabilirsiniz. İş yükü API 'sinin kullandığı kanıtlama işlemi aynı zamanda yönetim API 'sine erişimi yalnızca IoT Edge aracısına kısıtlar.
 
-#### <a name="container-api"></a>Container API
+#### <a name="container-api"></a>Kapsayıcı API
 
-The container API interacts with the container system in use for module management, like Moby or Docker.
+Kapsayıcı API 'SI, Moby veya Docker gibi modül yönetimi için kullanılan kapsayıcı sistemle etkileşime girer.
 
-#### <a name="workload-api"></a>Workload API
+#### <a name="workload-api"></a>İş yükü API
 
-The workload API is accessible to all modules. It provides proof of identity, either as an HSM rooted signed token or an X509 certificate, and the corresponding trust bundle to a module. The trust bundle contains CA certificates for all the other servers that the modules should trust.
+İş yükü API 'sine tüm modüller erişebilir. Bir HSM 'nin imzalı belirteci veya x509 sertifikası ile karşılık gelen güven paketini bir modüle, kimlik kanıtı sağlar. Güven paketi, modüllerin güveneceği diğer tüm sunucular için CA sertifikaları içerir.
 
-The IoT Edge security daemon uses an attestation process to guard this API. When a module calls this API, the security daemon attempts to find a registration for the identity. If successful, it uses the properties of the registration to measure the module. If the result of the measurement process matches the registration, a new proof of identity is generated. The corresponding CA certificates (trust bundle) are returned to the module.  The module uses this certificate to connect to IoT Hub, other modules, or start a server. When the signed token or certificate nears expiration, it's the responsibility of the module to request a new certificate. 
+IoT Edge güvenlik arka plan programı, bu API 'yi korumak için bir kanıtlama işlemi kullanır. Bir modül bu API 'yi çağırdığında, güvenlik cini kimlik için bir kayıt bulmaya çalışır. Başarılı olursa, modül ölçmek için kayıt özelliklerini kullanır. Ölçüm işleminin sonucu kayıtla eşleşiyorsa, yeni bir kimlik kanıtı oluşturulur. Karşılık gelen CA sertifikaları (güven paketi) modüle döndürülür.  Modül bir sunucuyu başlatın veya diğer modüller, IOT Hub'ına bağlanmak için bu sertifikayı kullanır. İmzalanmış belirteç veya sertifika süre sonu yaklaştığında, bu, modülün yeni bir sertifika istemesi için sorumluluğundadır. 
 
-### <a name="integration-and-maintenance"></a>Integration and maintenance
+### <a name="integration-and-maintenance"></a>Tümleştirme ve Bakım
 
-Microsoft maintains the main code base for the [IoT Edge security daemon on GitHub](https://github.com/Azure/iotedge/tree/master/edgelet).
+Microsoft, [GitHub üzerinde IoT Edge güvenlik arka plan programı](https://github.com/Azure/iotedge/tree/master/edgelet)için ana kod temelini saklar.
 
-#### <a name="installation-and-updates"></a>Installation and updates
+#### <a name="installation-and-updates"></a>Yükleme ve güncelleştirme
 
-Installation and updates of the IoT Edge security daemon are managed through the operating system's package management system. IoT Edge devices with hardware root of trust should provide additional hardening to the integrity of the daemon by managing its lifecycle through the secure boot and updates management systems. Device makers should explore these avenues based on their respective device capabilities.
+IoT Edge güvenlik arka plan programının yüklenmesi ve güncelleştirmeleri, işletim sisteminin paket yönetim sistemi üzerinden yönetilir. Donanım köküne sahip IoT Edge cihazlar, güvenli önyükleme ve güncelleştirme yönetimi sistemleri aracılığıyla yaşam döngüsünü yöneterek arka plan 'un bütünlüğünden daha fazla sağlamlaştırma sağlamalıdır. Cihaz üreticileri bu avenilgili cihaz özelliklerine göre araştırmalıdır.
 
 #### <a name="versioning"></a>Sürüm oluşturma
 
-The IoT Edge runtime tracks and reports the version of the IoT Edge security daemon. The version is reported as the *runtime.platform.version* attribute of the IoT Edge agent module reported property.
+IOT Edge çalışma zamanı izler ve IOT Edge güvenlik daemon sürümü bildiriyor. Sürüm, IoT Edge Agent modülünün bildirdiği özelliğin *Runtime. platform. Version* özniteliği olarak bildirilir.
 
-### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Hardware security module platform abstraction layer (HSM PAL)
+### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Donanım güvenlik modülü platform Soyutlama Katmanı (HSM PAL)
 
-The HSM PAL abstracts all root of trust hardware to isolate the developer or user of IoT Edge from their complexities.  It includes a combination of application programming interface (API) and trans-domain communication procedures, for example communication between a standard execution environment and a secure enclave.  The actual implementation of the HSM PAL depends on the specific secure hardware in use. Its existence enables the use of virtually any secure silicon hardware.
+Tüm kök geliştirici veya IOT Edge kullanıcıdan miktarı yalıtmak için güven donanım HSM PAL soyutlar.  Uygulama programlama arabirimi (API) ve Trans-etki alanı iletişim yordamlarının bir birleşimini içerir, örneğin standart bir yürütme ortamı ile güvenli bir şifreleme arasındaki iletişim.  HSM PAL gerçek uygulaması belirli güvenli donanımı bağlıdır. Varlığı neredeyse tüm güvenli Silicon Hardware kullanımına izin vermez.
 
-## <a name="secure-silicon-root-of-trust-hardware"></a>Secure silicon root of trust hardware
+## <a name="secure-silicon-root-of-trust-hardware"></a>Silikon kök güven donanım güvenliğini sağlama
 
-Secure silicon is necessary to anchor trust inside the IoT Edge device hardware.  Secure silicon come in variety to include Trusted Platform Module (TPM), embedded Secure Element (eSE), ARM TrustZone, Intel SGX, and custom secure silicon technologies.  The use of secure silicon root of trust in devices is recommended given the threats associated with physical accessibility of IoT devices.
+Güvenli Silikon, IOT Edge cihaz donanım içinde yer işareti güven için gereklidir.  Silikon güvenli, Güvenilir Platform Modülü (TPM), katıştırılmış güvenli öğesi (eSE), ARM TrustZone, Intel SGX ve özel güvenli Silikon teknolojileri dahil etmek için çeşitli gelir.  IoT cihazlarının fiziksel erişilebilirliği ile ilişkili tehditler verildiğinde cihazlarda güvenli bir güvenlik listesi kökünün kullanılması önerilir.
 
-## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge security manager integration and maintenance
+## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IOT Edge Güvenlik Yöneticisi tümleştirmesi ve bakımı
 
-The IoT Edge security manager aims to identify and isolate the components that defend the security and integrity of the Azure IoT Edge platform for custom hardening. Third parties, like device makers, should make use of custom security features available with their device hardware.  See next steps section for links that demonstrate how to harden the Azure IoT security manager with the Trusted Platform Module (TPM) on Linux and Windows platforms. These examples use software or virtual TPMs but directly apply to using discrete TPM devices.  
+IoT Edge Güvenlik Yöneticisi, özel sağlamlaştırma için Azure IoT Edge platformunun güvenliğini ve bütünlüğünü savunmaya yönelik bileşenleri belirleyip yalıtmak üzere amaçlar. Cihaz üreticileri gibi üçüncü taraflar, cihaz donanımlarıyla kullanılabilen özel güvenlik özelliklerini kullanmalıdır.  Azure IoT Güvenlik Yöneticisi 'nin Linux ve Windows platformlarındaki Güvenilir Platform Modülü (TPM) ile nasıl sağlamlaştıralınacağını gösteren bağlantılar için sonraki adımlar bölümüne bakın. Bu örnekler, yazılım veya sanal TPMs kullanır, ancak Ayrık TPM cihazlarını kullanarak doğrudan uygulanır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Read the blog on [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+[Akıllı kenarından güvenli hale](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)getirmek için blogu okuyun.
 
-Create and provision an [IoT Edge device with a virtual TPM on a Linux virtual machine](how-to-auto-provision-simulated-device-linux.md).
+[Linux sanal makinesinde sanal TPM ile bir IoT Edge cihazı](how-to-auto-provision-simulated-device-linux.md)oluşturun ve sağlayın.
 
-Create and provision an [IoT Edge device with a simulated TPM on Windows](how-to-auto-provision-simulated-device-windows.md).
+[Windows üzerinde sanal BIR TPM ile IoT Edge bir cihaz](how-to-auto-provision-simulated-device-windows.md)oluşturun ve sağlayın.

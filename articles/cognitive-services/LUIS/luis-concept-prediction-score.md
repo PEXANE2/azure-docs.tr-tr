@@ -26,7 +26,7 @@ Tahmin puanı, sıfır (0) ve bir (1) ' dir. Bir yüksek oranda başarılara LUI
 
 |Puanı değeri|Confidence|
 |--|--|
-|1|kesin eşleştir|
+|1\.|kesin eşleştir|
 |0.99|yüksek güvenilirlik|
 |0.01|düşük güven|
 |0|eşleştirilecek kesin hatası|
@@ -68,7 +68,7 @@ Sohbet botunuz, bir amaç için güvenilirliği belirtmek üzere belirli bir LUO
 
 ## <a name="e-exponent-notation"></a>E (üstel) gösterimde
 
-Tahmin puanları, üstel gösterim kullanabilir _görünen_ 0-1 yukarıda gibi aralığı `9.910309E-07`. Bu puanı göstergesidir bir çok **küçük** sayı.
+Tahmin puanları, `9.910309E-07`gibi 0-1 aralığının üstünde _görünen_ üs gösterimini kullanabilir. Bu puan, çok **küçük** bir sayının göstergesidir.
 
 |E gösterimi puanı |Gerçek puanı|
 |--|--|
@@ -80,4 +80,4 @@ Noktalama işaretlerini kullanma veya yoksayma hakkında [daha fazla bilgi edini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [varlık Ekle](luis-how-to-add-entities.md) LUIS uygulamanızı varlıklar ekleme hakkında daha fazla bilgi için.
+LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .

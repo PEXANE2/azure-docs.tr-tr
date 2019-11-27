@@ -90,7 +90,7 @@ Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece (örneğin `http
 Artık Google istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portalına girerek ya da PowerShell kullanarak ayarlayacaksınız. Kendinize bir Gmail adresi kullanarak davet ederek Google Federation yapılandırmanızı test ettiğinizden emin olun ve daveti davet edilen Google hesabınızla kullanmaya çalışıyorsunuz. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Google Federasyonu 'ni Azure AD portalında yapılandırmak için 
-1. [Azure Portal](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure portalına](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcıları**' nı seçin ve ardından **Google** düğmesine tıklayın.
 4. Bir ad girin. Daha önce edindiğiniz istemci KIMLIĞINI ve istemci gizli anahtarını girin. **Kaydet**’i seçin. 
@@ -112,7 +112,7 @@ Artık Google istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portalı
 Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten kullanan Google Konuk kullanıcılar oturum açamaz, ancak bunları dizinden silerek ve yeniden davet ederek kaynaklarınıza yeniden erişim izni verebilirsiniz. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Azure AD portalında Google Federasyonu 'ni silmek için: 
-1. [Azure Portal](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure portalına](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcıları**' nı seçin.
 4. **Google** satırında bağlam menüsünü ( **...** ) seçin ve **Sil**' i seçin. 

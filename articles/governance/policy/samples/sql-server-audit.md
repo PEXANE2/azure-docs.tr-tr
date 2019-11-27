@@ -1,6 +1,6 @@
 ---
-title: Sample - Audit SQL Server audit settings
-description: This sample policy definition audits the SQL server audit settings defined in a parameter with auditIfNotExists.
+title: Örnek-denetim SQL Server denetim ayarları
+description: Bu örnek ilke tanımı, Auditınotexists ile bir parametrede tanımlanan SQL Server denetim ayarlarını denetler.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 7eba24c0916297dba0649024874aed7ba0fac2f6
@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463118"
 ---
-# <a name="sample---audit-sql-server-audit-settings"></a>Sample - Audit SQL server audit settings
+# <a name="sample---audit-sql-server-audit-settings"></a>Örnek-SQL Server denetim ayarlarını denetleme
 
 Bu yerleşik ilke, denetim ayarlarının etkin olup olmamasına göre SQL sunucusunu denetler.
 

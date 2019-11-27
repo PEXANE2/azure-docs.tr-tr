@@ -33,6 +33,6 @@ Aşağıdaki tablo, Azure CLı kullanarak Azure Uygulama yapılandırması için
 | [Anahtar değerleriyle çalışma](./scripts/cli-work-with-keys.md) | Anahtar değerlerini oluşturur, görüntüler, güncelleştirir ve siler. |
 | [Anahtar değerlerini içeri aktar](./scripts/cli-import.md) | Diğer kaynaklardaki anahtar değerlerini içeri aktarır. |
 | [Anahtar değerlerini dışarı aktar](./scripts/cli-export.md) | Anahtar değerlerini diğer hedeflere dışa aktarır. |
-|**Delete**||
+|**Silme**||
 | [Uygulama yapılandırma deposunu silme](./scripts/cli-delete-service.md) | Bir uygulama yapılandırma deposu örneğini siler.  |
 | | |

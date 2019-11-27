@@ -1,10 +1,10 @@
 ---
-title: 'Debug and iterate on Kubernetes: Visual Studio & .NET Core'
+title: "Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core"
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
@@ -15,68 +15,68 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325616"
 ---
-# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quickstart: Debug and iterate on Kubernetes: Visual Studio & .NET Core - Azure Dev Spaces
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core-Azure Dev Spaces
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 - Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
 - Visual Studio kullanarak kapsayıcılarda yinelemeli kod geliştirin.
-- Debug code running in your cluster using Visual Studio.
+- Visual Studio kullanarak kümenizde çalışan kodda hata ayıklayın.
 
-Azure Dev Spaces also allows you debug and iterate using:
-- [Java and Visual Studio Code](quickstart-java.md)
-- [Node.js and Visual Studio Code](quickstart-nodejs.md)
-- [.NET Core and Visual Studio Code](quickstart-netcore.md)
+Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemenize olanak tanır:
+- [Java ve Visual Studio Code](quickstart-java.md)
+- [Node. js ve Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core ve Visual Studio Code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
-- Visual Studio 2019 on Windows with the Azure Development workload installed. You can also use Visual Studio 2017 on Windows with the Web Development workload and [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) installed. If you don't have Visual Studio installed, download it [here](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Azure geliştirme iş yükü yüklü olan Windows üzerinde Visual Studio 2019. Ayrıca, Web geliştirme iş yükü ve yüklü [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools) Windows üzerinde Visual Studio 2017 ' i de kullanabilirsiniz. Visual Studio yüklü değilse, [buradan](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)indirin.
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Create an Azure Kubernetes Service cluster
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
-You must create an AKS cluster in a [supported region][supported-regions]. To create a cluster:
+[Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Bir küme oluşturmak için:
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
-1. Select *+ Create a resource > Kubernetes Service*. 
-1. Enter the _Subscription_, _Resource Group_, _Kubernetes cluster name_, _Region_, _Kubernetes version_, and _DNS name prefix_.
+1. *Kubernetes hizmeti > + kaynak oluştur*' u seçin. 
+1. _Abonelik_, _kaynak grubu_, _Kubernetes kümesi adı_, _bölge_, _Kubernetes sürümü_ve _DNS adı ön eki_girin.
 
-    ![Create AKS in the Azure portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
+    ![Azure portal AKS oluşturma](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. *Gözden geçir ve oluştur*’a tıklayın.
-1. *Oluştur*’a tıklayın.
+1. *Oluştur*'a tıklayın.
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Enable Azure Dev Spaces on your AKS cluster
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-Navigate to your AKS cluster in the Azure portal and click *Dev Spaces*. Change *Use Dev Spaces* to *Yes* and click *Save*.
+Azure portal AKS kümenize gidin ve *geliştirme alanları*' na tıklayın. *Geliştirme alanlarını kullan* seçeneğini *Evet* olarak değiştirin ve *Kaydet*' e tıklayın.
 
-![Enable Dev Spaces in the Azure portal](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+![Azure portal dev alanlarını etkinleştirme](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
-## <a name="create-a-new-aspnet-web-app"></a>Create a new ASP.NET web app
+## <a name="create-a-new-aspnet-web-app"></a>Yeni bir ASP.NET Web uygulaması oluşturma
 
 1. Visual Studio'yu açın.
 1. Yeni bir proje oluşturma.
-1. Choose *ASP.NET Core Web Application* and click *Next*.
-1. Name your project *webfrontend* and click *Create*.
-1. When prompted, choose *Web Application (Model-View-Controller)* for the template.
-1. Select *.NET Core* and *ASP.NET Core 2.1* at the top.
-1. *Oluştur*’a tıklayın.
+1. *ASP.NET Core Web uygulaması* ' nı seçin ve *İleri*' ye tıklayın.
+1. Projenizin *Web ön uç* adını adlandırın ve *Oluştur*' a tıklayın.
+1. İstendiğinde, şablon için *Web uygulaması (Model-View-Controller)* öğesini seçin.
+1. En üstteki *.NET Core* ve *2,1 ASP.NET Core* seçin.
+1. *Oluştur*'a tıklayın.
 
-## <a name="connect-your-project-to-your-dev-space"></a>Connect your project to your dev space
+## <a name="connect-your-project-to-your-dev-space"></a>Projenizi geliştirme alanınıza bağlayın
 
-In your project, select **Azure Dev Spaces** from the launch settings dropdown as shown below.
+Projenizde, aşağıda gösterildiği gibi başlatma ayarları açılır listesinden **Azure dev Spaces** ' yi seçin.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-In the Azure Dev Spaces dialog, select your *Subscription* and *Azure Kubernetes Cluster*. Leave *Space* set to *default* and enable the *Publicly Accessible* checkbox. *Tamam*’a tıklayın.
+Azure Dev Spaces iletişim kutusunda, *aboneliğinizi* ve *Azure Kubernetes kümenizi*seçin. *Alanı* *varsayılan* olarak ayarlayın ve *herkese açık olarak erişilebilir* onay kutusunu etkinleştirin. *OK (Tamam)* düğmesine tıklayın.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-This process deploys your service to the *default* dev space with a publicly accessible URL. Azure Dev Spaces ile çalışacak şekilde yapılandırılmamış bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz. *Tamam*’a tıklayın.
+Bu işlem, hizmetinizi genel olarak erişilebilen bir URL ile *varsayılan* geliştirme alanına dağıtır. Azure Dev Spaces ile çalışacak şekilde yapılandırılmamış bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz. *OK (Tamam)* düğmesine tıklayın.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-The public URL for the service running in the *default* dev space is displayed in the *Output* window:
+*Varsayılan* dev alanında çalışan hizmetin genel URL 'si *Çıkış* penceresinde görüntülenir:
 
 ```cmd
 Starting warmup for project 'webfrontend'.
@@ -94,35 +94,35 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-In the above example, the public URL is http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Navigate to your service's public URL and interact with the service running in your dev space.
+Yukarıdaki örnekte, genel URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Hizmetinizin genel URL 'sine gidin ve geliştirme alanınızda çalışan hizmetle etkileşim kurun.
 
-This process may have disabled public access to your service. To enable public access, you can update the [ingress value in the *values.yaml*][ingress-update].
+Bu işlem hizmetinize genel erişimi devre dışı bırakmış olabilir. Ortak erişimi etkinleştirmek için, [ *values. YAML*değerindeki giriş değerini][ingress-update]güncelleştirebilirsiniz.
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-If Visual Studio is still connected to your dev space, click the stop button. Change line 20 in `Controllers/HomeController.cs` to:
+Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklayın. `Controllers/HomeController.cs` satır 20 ' sini değiştirin:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Save your changes and start your service using **Azure Dev Spaces** from the launch settings dropdown. Open the public URL of your service in a browser and click *About*. Observe that your updated message appears.
+Değişiklikleri kaydedin ve başlatma ayarları açılır listesinden **Azure dev Spaces** kullanarak hizmetinizi başlatın. Hizmetinizin genel URL 'sini bir tarayıcıda açın ve *hakkında*' ya tıklayın. Güncelleştirilmiş iletinizin göründüğünü gözlemleyin.
 
-Instead of rebuilding and redeploying a new container image each time code edits are made, Azure Dev Spaces incrementally recompiles code within the existing container to provide a faster edit/debug loop.
+Kod düzenlemeleri her yapıldığında yeni bir kapsayıcı görüntüsünü yeniden oluşturmak ve yeniden dağıtmak yerine, daha hızlı bir düzenleme/hata ayıklama döngüsü sağlamak üzere mevcut kapsayıcı içindeki kodu artımlı olarak yeniden derler Azure Dev Spaces.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Setting and using breakpoints for debugging
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlama ve kullanma
 
-If Visual Studio is still connected to your dev space, click the stop button. Open `Controllers/HomeController.cs` and click somewhere on line 20 to put your cursor there. To set a breakpoint hit *F9* or click *Debug* then *Toggle Breakpoint*. To start your service in debugging mode in your dev space, hit *F5* or click *Debug* then *Start Debugging*.
+Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklayın. `Controllers/HomeController.cs` açın ve imlecinizi buraya yerleştirmek için 20. satırda bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin* Uygulamanızı geliştirme alanınızda hata ayıklama modunda başlatmak için *F5* tuşuna basın veya *Hata Ayıkla* ' ya tıkladıktan sonra *hata ayıklamayı başlatın*.
 
-Open your service in a browser and notice no message is displayed. Return to Visual Studio and observe line 20 is highlighted. The breakpoint you set has paused the service at line 20. To resume the service, hit *F5* or click *Debug* then *Continue*. Return to your browser and notice the message is now displayed.
+Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio 'ya dönün ve 20. satırı vurgulanmıştır. Ayarladığınız kesme noktası, hizmeti 20. satırda duraklattı. Hizmeti sürdürmek için *F5* 'e basın veya *Hata Ayıkla* 'Ya tıkladıktan sonra *devam edin*. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
 
-While running your service in Kubernetes with a debugger attached, you have full access to debug information such as the call stack, local variables, and exception information.
+Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştırırken, çağrı yığını, yerel değişkenler ve özel durum bilgileri gibi bilgileri hata ayıklamaya yönelik tam erişime sahip olursunuz.
 
-Remove the breakpoint by putting your cursor on line 20 in `Controllers/HomeController.cs` and hitting *F9*.
+İmleci `Controllers/HomeController.cs` ve *F9*tuşuna basarak kesme noktasını kaldırın.
 
-## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
+## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 
-Navigate to your resource group in the Azure portal and click *Delete resource group*. Alternatively, you can use the [az aks delete](/cli/azure/aks#az-aks-delete) command:
+Azure portal kaynak grubunuza gidin ve *kaynak grubunu sil*' e tıklayın. Alternatif olarak, [az aks Delete](/cli/azure/aks#az-aks-delete) komutunu kullanabilirsiniz:
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait

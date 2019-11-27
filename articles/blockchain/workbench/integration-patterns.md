@@ -1,6 +1,6 @@
 ---
-title: Smart contract integration patterns - Azure Blockchain Workbench
-description: Overview of smart contract integration patterns in Azure Blockchain Workbench Preview.
+title: Akıllı sözleşme tümleştirme desenleri-Azure blok zinciri çalışma ekranı
+description: Azure blok zinciri çalışma ekranı önizlemesinde akıllı sözleşme tümleştirme düzenlerine genel bakış.
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
@@ -13,226 +13,226 @@ ms.locfileid: "74325964"
 ---
 # <a name="smart-contract-integration-patterns"></a>Akıllı anlaşma tümleştirme desenleri
 
-Smart contracts often represent a business workflow that needs to integrate with external systems and devices.
+Akıllı sözleşmeler genellikle dış sistemlerle ve cihazlarla tümleştirilmesi gereken iş akışını temsil eder.
 
-The requirements of these workflows include a need to initiate transactions on a distributed ledger that include data from an external system, service, or device. They also need to have external systems react to events originating from smart contracts on a distributed ledger.
+Bu iş akışlarının gereksinimleri, bir dış sistem, hizmet veya cihazdan veri içeren dağıtılmış bir defter üzerinde işlem başlatma gereksinimi içerir. Ayrıca, dağıtılmış bir muhasebedeki akıllı sözleşmelerden kaynaklanan olaylara yanıt vermek için dış sistemlerin da olması gerekir.
 
-The REST API and messaging integration sends transactions from external systems to smart contracts included in an Azure Blockchain Workbench application. It also sends event notifications to external systems based on changes that take place within an application.
+REST API ve mesajlaşma tümleştirmesi, dış sistemlerden Azure blok zinciri çalışma ekranı uygulamasına dahil edilen akıllı sözleşmelere işlem gönderir. Ayrıca, bir uygulama içinde gerçekleşen değişikliklere göre dış sistemlere olay bildirimleri gönderir.
 
-For data integration scenarios, Azure Blockchain Workbench includes a set of database views that merge a combination of transactional data from the blockchain and meta-data about applications and smart contracts.
+Veri tümleştirme senaryolarında, Azure blok zinciri çalışma ekranı blok zincirinden ve uygulamalar ve akıllı sözleşmeler hakkında meta verilerden işlem verilerinin bir birleşimini birleştirerek oluşan bir veritabanı görünümleri kümesi içerir.
 
-In addition, some scenarios, such as those related to supply chain or media, may also require the integration of documents. While Azure Blockchain Workbench does not provide API calls for handling documents directly, documents can be incorporated into a blockchain application. This section also includes that pattern.
+Ayrıca, tedarik zinciri veya medya ile ilgili olanlar gibi bazı senaryolar da belgelerin tümleştirilmesini gerektirebilir. Azure blok zinciri çalışma ekranı belgeleri doğrudan işlemek için API çağrıları sağlamıyorsa, belgeler blok zinciri uygulamasına eklenebilir. Bu bölümde ayrıca bu desenler de bulunur.
 
-This section includes the patterns identified for implementing each of these types of integrations in your end to end solutions.
+Bu bölüm, uçtan uca çözümlerinde bu tür tümleştirmelerin her birini uygulamak için tanımlanan desenleri içerir.
 
-## <a name="rest-api-based-integration"></a>REST API-based integration
+## <a name="rest-api-based-integration"></a>REST API tabanlı tümleştirme
 
-Capabilities within the Azure Blockchain Workbench generated web application are exposed via the REST API. Capabilities include Azure Blockchain Workbench uploading, configuration and administration of applications, sending transactions to a distributed ledger, and the querying of application metadata and ledger data.
+Azure blok zinciri çalışma ekranı tarafından oluşturulan Web uygulaması içindeki yetenekler REST API aracılığıyla sunulur. Yetenekler, Azure blok zinciri çalışma ekranı yükleme, uygulamaların yapılandırılması ve yönetimi, dağıtılmış bir genel muhasebeye işlem gönderme ve uygulama meta verilerinin ve muhasebe verilerinin sorgulanmasına dahildir.
 
-The REST API is primarily used for interactive clients such as web, mobile, and bot applications.
+REST API, öncelikle web, mobil ve bot uygulamaları gibi etkileşimli istemciler için kullanılır.
 
-This section looks at patterns focused on the aspects of the REST API that send transactions to a distributed ledger and patterns that query data about transactions from Azure Blockchain Workbench's *off chain* SQL database.
+Bu bölüm, dağıtılmış bir genel muhasebe ve Azure blok zinciri çalışma ekranı *zinciri* SQL veritabanı 'ndan işlemler hakkındaki verileri sorgulayan REST API yönlerini odaklanan desenlere bakar.
 
-### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Sending transactions to a distributed ledger from an external system
+### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Dış sistemden dağıtılmış bir genel muhasebeye işlem gönderme
 
-The Azure Blockchain Workbench REST API sends authenticated requests to execute transactions on a distributed ledger.
+Azure blok zinciri çalışma ekranı REST API dağıtılmış bir muhasebedeki işlemleri yürütmek için kimliği doğrulanmış istekleri gönderir.
 
-![Sending transactions to a distributed ledger](./media/integration-patterns/send-transactions-ledger.png)
+![Dağıtılmış bir genel muhasebeye işlem gönderme](./media/integration-patterns/send-transactions-ledger.png)
 
-Executing transactions occurs using the process depicted previously, where:
+İşlemleri yürütmek, daha önce gösterilen işlemi kullanarak oluşur, burada:
 
--   The external application authenticates to the Azure Active Directory provisioned as part of the Azure Blockchain Workbench deployment.
--   Authorized users receive a bearer token that can be sent with requests to the API.
--   External applications make calls to the REST API using the bearer token.
--   The REST API packages the request as a message and sends it to the Service Bus. From here it is retrieved, signed, and sent to the appropriate distributed ledger.
--   The REST API makes a request to the Azure Blockchain Workbench SQL DB to record the request and establish the current provisioning status.
--   The SQL DB returns the provisioning status and the API call returns the ID to the external application that called it.
+-   Dış uygulama, Azure blok zinciri çalışma ekranı dağıtımının bir parçası olarak sağlanan Azure Active Directory kimliğini doğrular.
+-   Yetkili kullanıcılar, API 'ye isteklerle gönderilebilecek bir taşıyıcı belirteci alır.
+-   Dış uygulamalar, REST API taşıyıcı belirtecini kullanarak çağrılar yapar.
+-   REST API, isteği bir ileti olarak paketler ve Service Bus gönderir. Buradan alınır, imzalanır ve uygun dağıtılmış bir genel muhasebeye gönderilir.
+-   REST API, Azure blok zinciri için SQL DB 'nin isteği kaydetmesine ve geçerli sağlama durumunu kurmaya yönelik bir istek yapar.
+-   SQL DB, sağlama durumunu döndürür ve API çağrısı KIMLIĞI onu çağıran dış uygulamaya döndürür.
 
-### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Querying Blockchain Workbench metadata and distributed ledger transactions
+### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Blok zinciri çalışma ekranı meta verileri ve dağıtılmış genel muhasebe işlemleri sorgulanıyor
 
-The Azure Blockchain Workbench REST API sends authenticated requests to query details related to smart contract execution on a distributed ledger.
+Azure blok zinciri çalışma ekranı REST API, dağıtılmış bir muhasebedeki akıllı sözleşme yürütme ile ilgili ayrıntıları sorgulamak için kimliği doğrulanmış istekleri gönderir.
 
-![Querying metadata](./media/integration-patterns/querying-metadata.png)
+![Meta veriler sorgulanıyor](./media/integration-patterns/querying-metadata.png)
 
-Querying occurs using the process depicted previously, where:
+Sorgulama, daha önce gösterilen işlemi kullanarak gerçekleşir, burada:
 
-1. The external application authenticates to the Azure Active Directory provisioned as part of the Azure Blockchain Workbench deployment.
-2. Authorized users receive a bearer token that can be sent with requests to the API.
-3. External applications make calls to the REST API using the bearer token.
-4. The REST API queries the data for the request from the SQL DB and returns it to the client.
+1. Dış uygulama, Azure blok zinciri çalışma ekranı dağıtımının bir parçası olarak sağlanan Azure Active Directory kimliğini doğrular.
+2. Yetkili kullanıcılar, API 'ye isteklerle gönderilebilecek bir taşıyıcı belirteci alır.
+3. Dış uygulamalar, REST API taşıyıcı belirtecini kullanarak çağrılar yapar.
+4. REST API SQL DB 'den istek için verileri sorgular ve istemciye döndürür.
 
-## <a name="messaging-integration"></a>Messaging integration
+## <a name="messaging-integration"></a>Mesajlaşma tümleştirmesi
 
-Messaging integration facilitates interaction with systems, services, and devices where an interactive sign-in is not possible or desirable. Messaging integration focuses on two types of messages: messages requesting transactions be executed on a distributed ledger, and events exposed by that ledger when transactions have taken place.
+Mesajlaşma tümleştirmesi, etkileşimli bir oturum açma mümkün veya istenmediğinde sistemlerle, hizmetlerle ve cihazlarla etkileşimi kolaylaştırır. Mesajlaşma tümleştirmesi iki tür iletiye odaklanır: işlem yapan iletiler dağıtılmış bir muhasebede yürütülür ve işlemler gerçekleştiği sırada bu muhasebe tarafından kullanıma sunulan olaylardır.
 
-Messaging integration focuses on the execution and monitoring of transactions related to user creation, contract creation, and execution of transactions on contracts and is primarily used by *headless* back-end systems.
+Mesajlaşma tümleştirmesi, Kullanıcı oluşturma, sözleşme oluşturma ve sözleşmelerin üzerinde işlem yürütme ile ilgili işlemlerin yürütülmesine ve izlenmesine odaklanır ve öncelikle *gözetimsiz* arka uç sistemleri tarafından kullanılır.
 
-This section looks at patterns focused on the aspects of the message-based API that send transactions to a distributed ledger and patterns that represent event messages exposed by the underlying distributed ledger.
+Bu bölüm, dağıtılmış bir defter ve temel alınan dağıtılmış defter tarafından kullanıma sunulan olay iletilerini temsil eden desenlere işlem gönderen ileti tabanlı API 'nin yönlerine odaklanan desenlere bakar.
 
-### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>One-way event delivery from a smart contract to an event consumer 
+### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Bir akıllı sözleşmeden bir olay tüketicisine tek yönlü olay teslimi 
 
-In this scenario, an event occurs within a smart contract, for example, a state change or the execution of a specific type of transaction. This event is broadcast via an Event Grid to downstream consumers, and those consumers then take appropriate actions.
+Bu senaryoda, bir akıllı sözleşmede, örneğin bir durum değişikliği veya belirli bir işlem türünün yürütülmesi gibi bir olay oluşur. Bu olay, bir Event Grid aşağı akış tüketicilerine ve bu tüketicilerle ilgili işlemleri gerçekleştirebilir.
 
-An example of this scenario is that when a transaction occurs, a consumer would be alerted and could take action, such as recording the information in a SQL DB or the Common Data Service. This scenario is the same pattern that Workbench follows to populate its *off chain* SQL DB.
+Bu senaryoya örnek olarak, bir işlem gerçekleştiğinde bir tüketici uyarı verebilir ve bilgileri bir SQL VERITABANıNA veya Common Data Service kaydetme gibi işlemler gerçekleştirebilir. Bu senaryo, SQL DB 'nin *kapalı zincirini* doldurmak için aşağıdaki şekilde kullanılan modeldir.
 
-Another would be if a smart contract transitions to a particular state, for example when a contract goes into an *OutOfCompliance*. When this state change happens, it could trigger an alert to be sent to an administrator's mobile phone.
+Başka bir deyişle, bir anlaşma bir *Outofuyum*içine geçtiğinde, bir akıllı anlaşma belirli bir duruma geçiş yaptığında olur. Bu durum değişikliği gerçekleştiğinde, bir uyarının bir yöneticinin cep telefonuna gönderilmesini tetikleyemeyebilir.
 
-![One-way event delivery](./media/integration-patterns/one-way-event-delivery.png)
+![Tek yönlü olay teslimi](./media/integration-patterns/one-way-event-delivery.png)
 
-This scenario occurs using the process depicted previously, where:
+Bu senaryo, daha önce gösterilen işlemi kullanarak oluşur; burada:
 
--   The smart contract transitions to a new state and sends an event to the ledger.
--   The ledger receives and delivers the event to Azure Blockchain Workbench.
--   Azure Blockchain Workbench is subscribed to events from the ledger and receives the event.
--   Azure Blockchain Workbench publishes the event to subscribers on the Event Grid.
--   External systems are subscribed to the Event Grid, consume the message, and take the appropriate actions.
+-   Akıllı sözleşme yeni bir duruma geçiş yapar ve bir olayı genel muhasebeye gönderir.
+-   Genel muhasebe, olayı alır ve Azure blok zinciri çalışma ekranına gönderir.
+-   Azure blok zinciri çalışma ekranı, genel muhasebedeki olaylara abone olur ve olayı alır.
+-   Azure blok zinciri çalışma ekranı, etkinliği Event Grid abonelere yayımlar.
+-   Dış sistemler Event Grid abone olunmuş, iletiyi tüketir ve uygun eylemleri gerçekleştirebilir.
 
-## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>One-way event delivery of a message from an external system to a smart contract
+## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Bir dış sistemden bir akıllı sözleşmeye yönelik bir iletinin tek yönlü olay teslimi
 
-There is also a scenario that flows from the opposite direction. In this case, an event is generated by a sensor or an external system and the data from that event should be sent to a smart contract.
+Ayrıca, karşıt yönden akan bir senaryo da vardır. Bu durumda, bir olay bir algılayıcı veya bir dış sistem tarafından oluşturulur ve bu olaydan gelen verilerin bir akıllı sözleşmeye gönderilmesi gerekir.
 
-A common example is the delivery of data from financial markets, for example, prices of commodities, stock, or bonds, to a smart contract.
+Yaygın olarak kullanılan örnek, finans pazarlarından veri tesliminin (örneğin, Commodities, hisse senedi veya Bonun fiyatları) akıllı bir sözleşmeye gönderilir.
 
-### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direct delivery of an Azure Blockchain Workbench in the expected format
+### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Beklenen biçimde bir Azure blok zinciri çalışma ekranının doğrudan teslimi
 
-Some applications are built to integrate with Azure Blockchain Workbench and directly generates and send messages in the expected formats.
+Bazı uygulamalar, Azure blok zinciri çalışma ekranı ile tümleştirilecek şekilde oluşturulmuştur ve beklenen biçimlerde iletileri doğrudan oluşturur ve gönderir.
 
-![Direct delivery](./media/integration-patterns/direct-delivery.png)
+![Doğrudan teslim](./media/integration-patterns/direct-delivery.png)
 
-This delivery occurs using the process depicted previously, where:
+Bu teslim, daha önce gösterilen işlem kullanılarak oluşur; burada:
 
--   An event occurs in an external system that triggers the creation of a message for Azure Blockchain Workbench.
--   The external system has code written to create this message in a known format and sends it directly to the Service Bus.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
--   Upon receipt of the message, the contract transitions to a new state.
+-   Bir dış sistemde, Azure blok zinciri çalışma ekranı için ileti oluşturmayı tetikleyen bir olay oluşur.
+-   Dış sistemin, bu iletiyi bilinen bir biçimde oluşturmak ve doğrudan Service Bus göndermesi için yazıldığı kodu vardır.
+-   Azure blok zinciri çalışma ekranı, Service Bus olaylara abone olur ve iletiyi alır.
+-   Azure blok zinciri çalışma ekranı, dış sistemden belirli bir sözleşmeye veri gönderen bir genel muhasebeye çağrı başlatır.
+-   İleti alındıktan sonra, sözleşme yeni bir duruma geçer.
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Delivery of a message in a format unknown to Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Azure blok zinciri için bilinmeyen bir biçimde ileti teslimi çalışma ekranı
 
-Some systems cannot be modified to deliver messages in the standard formats used by Azure Blockchain Workbench. In these cases, existing mechanisms and message formats from these systems can often be used. Specifically, the native message types of these systems can be transformed using Logic Apps, Azure Functions, or other custom code to map to one of the standard messaging formats expected.
+Bazı sistemler, Azure blok zinciri çalışma ekranı tarafından kullanılan standart biçimlerdeki iletileri teslim etmek üzere değiştirilemez. Bu durumlarda, bu sistemlerdeki mevcut mekanizmalar ve ileti biçimleri genellikle kullanılabilir. Özellikle, bu sistemlerin yerel ileti türleri, beklenen standart mesajlaşma biçimlerinden biriyle eşlenecek Logic Apps, Azure Işlevleri veya diğer özel kodlar kullanılarak dönüştürülebilir.
 
-![Unknown message format](./media/integration-patterns/unknown-message-format.png)
+![Bilinmeyen ileti biçimi](./media/integration-patterns/unknown-message-format.png)
 
-This occurs using the process depicted previously, where:
+Bu, daha önce gösterilen işlemi kullanarak oluşur; burada:
 
--   An event occurs in an external system that triggers the creation of a message.
--   A Logic App or custom code is used to receive that message and transform it to a standard Azure Blockchain Workbench formatted message.
--   The Logic App sends the transformed message directly to the Service Bus.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific function on the contract.
--   The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+-   Bir dış sistemde bir ileti oluşturulmasını tetikleyen bir olay oluşur.
+-   Bir mantıksal uygulama veya özel kod, bu iletiyi almak ve standart bir Azure blok zinciri çalışma ekranı biçimli iletiye dönüştürmek için kullanılır.
+-   Mantıksal uygulama, dönüştürülmüş iletiyi doğrudan Service Bus gönderir.
+-   Azure blok zinciri çalışma ekranı, Service Bus olaylara abone olur ve iletiyi alır.
+-   Azure blok zinciri çalışma ekranı, verileri dış sistemden sözleşmede belirli bir işleve gönderen bir genel muhasebeye çağrı başlatır.
+-   İşlev yürütülür ve genellikle durumu değiştirir. Durum değişikliği, akıllı sözleşmede yansıtıldığı iş iş akışını ileri doğru şekilde yürütülene kadar, diğer işlevlerin de uygun şekilde yürütülmesini sağlar.
 
-### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Transitioning control to an external process and await completion
+### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Denetimi bir dış işleme geçme ve tamamlanmayı bekleme
 
-There are scenarios where a smart contract must stop internal execution and hand off to an external process. That external process would then complete, send a message to the smart contract, and execution would then continue within the smart contract.
+Bir akıllı sözleşmenin iç yürütmeyi durdurması ve harici bir işleme kapalı olması gereken senaryolar vardır. Daha sonra bu dış işlem tamamlanır, akıllı sözleşmeye bir ileti gönderir ve ardından yürütme akıllı sözleşme içinde devam edecektir.
 
-#### <a name="transition-to-the-external-process"></a>Transition to the external process
+#### <a name="transition-to-the-external-process"></a>Dış işleme geçiş
 
-This pattern is typically implemented using the following approach:
+Bu model genellikle aşağıdaki yaklaşım kullanılarak uygulanır:
 
--   The smart contract transitions to a specific state. In this state, either no or a limited number of functions can be executed until an external system takes a desired action.
--   The change of state is surfaced as an event to a downstream consumer.
--   The downstream consumer receives the event and triggers external code execution.
+-   Akıllı sözleşme belirli bir duruma geçiş yapar. Bu durumda, bir dış sistem istenen bir eylem yapana kadar hiçbir veya sınırlı sayıda işlev Yürütülebilirler.
+-   Durum değişikliği, bir aşağı akış tüketiciye olay olarak ortaya çıkmış.
+-   Aşağı akış tüketicisi olayı alır ve dış kod yürütmeyi tetikler.
 
-![Transition control to external process](./media/integration-patterns/transition-external-process.png)
+![Dış işleme geçiş denetimi](./media/integration-patterns/transition-external-process.png)
 
-#### <a name="return-of-control-from-the-smart-contract"></a>Return of control from the smart contract
+#### <a name="return-of-control-from-the-smart-contract"></a>Akıllı sözleşmeden denetim döndürme
 
-Depending on the ability to customize the external system, it may or may not be able to deliver messages in one of the standard formats that Azure Blockchain Workbench expects. Based on the external systems ability to generate one of these messages determine which of the following two return paths is taken.
+Dış sistemi özelleştirme yeteneğinin ne olduğuna bağlı olarak, Azure blok zinciri çalışma ekranının beklediği standart biçimlerden birinde iletileri teslim edebilir veya mümkün olmayabilir. Dış sistemleri temel alan bu iletilerden birini oluşturma özelliği, aşağıdaki iki dönüş yolundan hangisinin alındığını tespit edilir.
 
-##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direct delivery of an Azure Blockchain Workbench in the expected format
+##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Beklenen biçimde bir Azure blok zinciri çalışma ekranının doğrudan teslimi
 
 ![](./media/integration-patterns/direct-delivery.png)
 
-In this model, the communication to the contract and subsequent state change occurs following the previous process where -
+Bu modelde, sözleşmeye ve sonraki durum değişikliğine yönelik iletişim, önceki işlem sonrasında oluşur-
 
--   Upon reaching the completion or a specific milestone in the external code execution, an event is sent to the Service Bus connected to Azure Blockchain Workbench.
+-   Dış kod yürütmesindeki tamamlamaya veya belirli bir kilometre taşına ulaştıktan sonra Azure blok zinciri çalışma ekranına bağlı Service Bus bir olay gönderilir.
 
--   For systems that can't be directly adapted to write a message that conforms to the expectations of the API, it is transformed.
+-   API 'nin beklentilerine uyan bir ileti yazmak üzere doğrudan uyarlanabilen sistemler için, dönüştürülür.
 
--   The content of the message is packaged up and sent to a specific function on the smart contract. This delivery is done on behalf of the user associated with the external system.
+-   İleti içeriği paketlenir ve akıllı sözleşmede belirli bir işleve gönderilir. Bu teslim, dış sistemle ilişkili kullanıcı adına yapılır.
 
--   The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+-   İşlev yürütülür ve genellikle durumu değiştirir. Durum değişikliği, akıllı sözleşmede yansıtıldığı iş iş akışını ileri doğru şekilde yürütülene kadar, diğer işlevlerin de uygun şekilde yürütülmesini sağlar.
 
 ### 
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Delivery of a message in a format unknown to Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Azure blok zinciri için bilinmeyen bir biçimde ileti teslimi çalışma ekranı
 
-![Unknown message format](./media/integration-patterns/unknown-message-format.png)
+![Bilinmeyen ileti biçimi](./media/integration-patterns/unknown-message-format.png)
 
-In this model where a message in a standard format cannot be sent directly, the communication to the contract and subsequent state change occurs following the previous process where:
+Standart biçimdeki bir iletinin doğrudan gönderilemediği bu modelde, sözleşmeye ve sonraki durum değişikliğine yönelik iletişim, şu durumlarda bir önceki işlemden sonra oluşur:
 
-1.  Upon reaching the completion or a specific milestone in the external code execution, an event is sent to the Service Bus connected to Azure Blockchain Workbench.
-2.  A Logic App or custom code is used to receive that message and transform it to a standard Azure Blockchain Workbench formatted message.
-3.  The Logic App sends the transformed message directly to the Service Bus.
-4.  Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
-5.  Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
-6. The content of the message is packaged up and sent to a specific function on the smart contract. This delivery is done on behalf of the user associated with the external system.
-7.  The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+1.  Dış kod yürütmesindeki tamamlamaya veya belirli bir kilometre taşına ulaştıktan sonra Azure blok zinciri çalışma ekranına bağlı Service Bus bir olay gönderilir.
+2.  Bir mantıksal uygulama veya özel kod, bu iletiyi almak ve standart bir Azure blok zinciri çalışma ekranı biçimli iletiye dönüştürmek için kullanılır.
+3.  Mantıksal uygulama, dönüştürülmüş iletiyi doğrudan Service Bus gönderir.
+4.  Azure blok zinciri çalışma ekranı, Service Bus olaylara abone olur ve iletiyi alır.
+5.  Azure blok zinciri çalışma ekranı, dış sistemden belirli bir sözleşmeye veri gönderen bir genel muhasebeye çağrı başlatır.
+6. İleti içeriği paketlenir ve akıllı sözleşmede belirli bir işleve gönderilir. Bu teslim, dış sistemle ilişkili kullanıcı adına yapılır.
+7.  İşlev yürütülür ve genellikle durumu değiştirir. Durum değişikliği, akıllı sözleşmede yansıtıldığı iş iş akışını ileri doğru şekilde yürütülene kadar, diğer işlevlerin de uygun şekilde yürütülmesini sağlar.
 
-## <a name="iot-integration"></a>IoT integration
+## <a name="iot-integration"></a>IoT tümleştirmesi
 
-A common integration scenario is the inclusion of telemetry data retrieved from sensors in a smart contract. Based on data delivered by sensors, smart contracts could take informed actions and alter the state of the contract.
+Ortak bir tümleştirme senaryosu, bir akıllı sözleşmede sensörlerden alınan Telemetri verilerinin içermesidir. Sensörler tarafından teslim edilen verilere bağlı olarak, akıllı sözleşmeler bilinçli eylemler alabilir ve sözleşmenin durumunu değiştirebilir.
 
-For example, if a truck delivering medicine had its temperature soar to 110 degrees, it may impact the effectiveness of the medicine and may cause a public safety issue if not detected and removed from the supply chain. If a driver accelerated their car to 100 miles per hour, the resulting sensor information could trigger a cancellation of insurance by their insurance provider. If the car was a rental car, GPS data could indicate when the driver went outside a geography covered by their rental agreement and charge a penalty.
+Örneğin, bir kamyonun sıcaklığını 110 derecenin altına çıkarıyorsa, ilaç 'nın verimliliğini etkileyebilir ve tedarik zincirinde algılanmadığında ve kaldırılmadığında ortak bir güvenlik sorununa neden olabilir. Bir sürücü, arabasını saat başına 100 mil olarak hızlandırdıysanız, sonuçta elde edilen algılayıcı bilgileri sigorta sağlayıcısı tarafından sigorta iptali tetiklenebilir. Araba bir kiralama arabasında ise, GPS verileri, sürücünün kiralama anlaşmasıyla ele alınan bir Coğrafya dışında ne zaman başladığını belirtebilir ve ceza ücreti ödemenize neden olabilir.
 
-The challenge is that these sensors can be delivering data on a constant basis and it is not appropriate to send all of this data to a smart contract. A typical approach is to limit the number of messages sent to the blockchain while delivering all messages to a secondary store. For example, deliver messages received at only fixed interval, for example, once per hour, and when a contained value falls outside of an agreed upon range for a smart contract. Checking values that fall outside of tolerances, ensures that the data relevant to the contracts business logic is received and executed. Checking the value at the interval confirms that the sensor is still reporting. All data is sent to a secondary reporting store to enable broader reporting, analytics, and machine learning. For example, while getting sensor readings for GPS may not be required every minute for a smart contract, they could provide interesting data to be used in reports or mapping routes.
+Sınama, bu sensörlerden sabit bir şekilde veri teslim edilebilir ve bu verilerin tümünü akıllı bir sözleşmeye göndermek uygun değildir. Tipik bir yaklaşım, tüm iletileri ikincil depoya teslim ederken blok zincirine gönderilen ileti sayısını sınırlandırmalıdır. Örneğin, yalnızca sabit aralıklarla alınan iletileri, örneğin saatte bir kez ve kapsanan bir değer bir akıllı sözleşme için kabul edilen bir değerin dışında kaldığında teslim edin. Toleranslar dışında kalan değerler kontrol edilirken, sözleşmelerin iş mantığı ile ilgili verilerin alınıp yürütülmesi sağlanır. Aralıktaki değeri denetlemek, sensörin hala raporlama olduğunu onaylar. Tüm veriler, daha geniş raporlama, analiz ve makine öğrenimini sağlamak için ikincil bir raporlama deposuna gönderilir. Örneğin, GPS için sensörler için bir akıllı sözleşme için her dakika gerek duyulmayabilir, ancak raporlarda veya eşleme rotalarında kullanılacak ilginç veriler sağlayabilir.
 
-On the Azure platform, integration with devices is typically done with IoT Hub. IoT Hub provides routing of messages based on content, and enables the type of functionality described previously.
+Azure platformunda cihazlarla tümleştirme, genellikle IoT Hub ile yapılır. IoT Hub, iletilerin içeriğe göre yönlendirilmesini sağlar ve daha önce açıklanan işlevselliğin türünü sağlar.
 
-![IoT messages](./media/integration-patterns/iot.png)
+![IoT iletileri](./media/integration-patterns/iot.png)
 
-The process depicts a pattern:
+İşlem bir model gösterir:
 
--   A device communicates directly or via a field gateway to IoT Hub.
--   IoT Hub receives the messages and evaluates the messages against routes established that check the content of the message, for example. *Does the sensor report a temperature greater than 50 degrees?*
--   The IoT Hub sends messages that meet the criteria to a defined Service Bus for the route.
--   A Logic App or other code listens to the Service Bus that IoT Hub has established for the route.
--   The Logic App or other code retrieves and transform the message to a known format.
--   The transformed message, now in a standard format, is sent to the Service Bus for Azure Blockchain Workbench.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
--   Upon receipt of the message, the contract evaluates the data and may change the state based on the outcome of that evaluation, for example, for a high temperature, change the state to *Out of Compliance*.
+-   Bir cihaz, IoT Hub için doğrudan veya bir alan ağ geçidi aracılığıyla iletişim kurar.
+-   IoT Hub iletileri alır ve ileti içeriğini kontrol eden yollarla iletileri değerlendirir (örneğin,). *Algılayıcı 50 dereceden büyük bir sıcaklık rapor veriyor mu?*
+-   IoT Hub, ölçütlere uyan iletileri yol için tanımlı bir Service Bus gönderir.
+-   Bir mantıksal uygulama veya diğer kod, IoT Hub yol için kurduğu Service Bus dinler.
+-   Mantıksal uygulama veya diğer kod, iletiyi alır ve bilinen bir biçime dönüştürür.
+-   Dönüştürülmüş ileti, artık standart biçimde, Azure blok zinciri çalışma ekranı için Service Bus gönderilir.
+-   Azure blok zinciri çalışma ekranı, Service Bus olaylara abone olur ve iletiyi alır.
+-   Azure blok zinciri çalışma ekranı, dış sistemden belirli bir sözleşmeye veri gönderen bir genel muhasebeye çağrı başlatır.
+-   İletinin alınması sırasında, sözleşme verileri değerlendirir ve bu değerlendirmenin sonucuna göre durumu değiştirebilir (örneğin, yüksek bir sıcaklık için durumu *uyumsuz*olarak değiştirin).
 
-## <a name="data-integration"></a>Veri entegrasyonu
+## <a name="data-integration"></a>Veri tümleştirmesi
 
-In addition to REST and message-based API, Azure Blockchain Workbench also provides access to a SQL DB populated with application and contract meta-data as well as transactional data from distributed ledgers.
+REST ve ileti tabanlı API 'nin yanı sıra Azure blok zinciri çalışma ekranı Ayrıca, uygulama ve Sözleşme meta verilerinin yanı sıra dağıtılmış defterlerden işlem verileri ile doldurulmuş bir SQL DB 'ye erişim sağlar.
 
-![Veri entegrasyonu](./media/integration-patterns/data-integration.png)
+![Veri tümleştirmesi](./media/integration-patterns/data-integration.png)
 
-The data integration is well known:
+Veri tümleştirmesi iyi bilinmektedir:
 
--   Azure Blockchain Workbench stores metadata about applications, workflows, contracts, and transactions as part of its normal operating behavior.
--   External systems or tools provide one or more dialogs to facilitate the collection of information about the database, such as database server name, database name, type of authentication, login credentials, and which database views to utilize.
--   Queries are written against SQL database views to facilitate downstream consumption by external systems, services, reporting, developer tools, and enterprise productivity tools.
+-   Azure blok zinciri, uygulamalar, iş akışları, sözleşmeler ve işlemler hakkındaki meta verileri normal çalışma davranışının bir parçası olarak depolar.
+-   Dış sistemler veya Araçlar veritabanı sunucu adı, veritabanı adı, kimlik doğrulama türü, oturum açma kimlik bilgileri ve hangi veritabanı görünümlerinin kullanıldığı hakkında bilgi toplamayı kolaylaştırmak için bir veya daha fazla iletişim kutusu sağlar.
+-   Dış sistemler, hizmetler, raporlama, geliştirici araçları ve kurumsal üretkenlik araçları tarafından aşağı akış tüketimini kolaylaştırmak için sorgular SQL veritabanı görünümlerine karşı yazılır.
 
-## <a name="storage-integration"></a>Storage integration
+## <a name="storage-integration"></a>Depolama tümleştirmesi
 
-Many scenarios may require the need to incorporate attestable files. For multiple reasons, it is inappropriate to put files on a blockchain. Instead, a common approach is to perform a cryptographic hash (for example, SHA-256)  against a file and share that hash on a distributed ledger. Performing the hash again at any future time should return the same result. If the file is modified, even if just one pixel is modified in an image, the hash returns a different value.
+Birçok senaryo, attestable dosyalarını birleştirme gereksinimini gerektirebilir. Birden çok nedenden dolayı, dosyaları bir blok zincirine yerleştirmek uygun değildir. Bunun yerine, yaygın bir yaklaşım bir dosyaya karşı şifreleme karması (örneğin, SHA-256) gerçekleştirmek ve bu karmayı dağıtılmış bir defter üzerinde paylaşmalıdır. Daha sonra herhangi bir zamanda karmayı yeniden gerçekleştirmek aynı sonucu döndürmelidir. Dosya değiştirilirse, görüntüde yalnızca bir piksel değiştirilse bile, karma farklı bir değer döndürür.
 
-![Storage integration](./media/integration-patterns/storage-integration.png)
+![Depolama tümleştirmesi](./media/integration-patterns/storage-integration.png)
 
-The pattern can be implemented where:
+Bu model şu şekilde uygulanabilir:
 
--   An external system persists a file in a storage mechanism, such as Azure Storage.
--   A hash is generated with the file or the file and associated metadata such as an identifier for the owner, the URL where the file is located, etc.
--   The hash and any metadata is sent to a function on a smart contract, such as *FileAdded*
--   In future, the file and meta-data can be hashed again and compared against the values stored on the ledger.
+-   Bir dış sistem, Azure depolama gibi bir depolama mekanizmasında bir dosyayı sürdürür.
+-   Bir karma dosya veya dosya ile, sahip için bir tanımlayıcı, dosyanın bulunduğu URL, vs. gibi ilişkili meta veriler ile oluşturulur.
+-   Karma ve tüm meta veriler akıllı bir sözleşmede bir işleve gönderilir; Örneğin, *dosya eklendi*
+-   Gelecekte dosya ve meta veriler karma hale getirilir ve bu, genel muhasebede depolanan değerlerle karşılaştırılır.
 
-## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Prerequisites for implementing integration patterns using the REST and message APIs
+## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>REST ve ileti API 'Lerini kullanarak tümleştirme desenleri uygulama önkoşulları
 
-To facilitate the ability for an external system or device to interact with the smart contract using either the REST or message API, the following must occur -
+Bir dış sistemin veya cihazın, REST veya ileti API 'sini kullanarak akıllı sözleşmeyle etkileşime geçmesini kolaylaştırmak için aşağıdakiler gerçekleşmelidir-
 
-1. In the Azure Active Directory for the consortium, an account is created that represents the external system or device.
-2. One or more appropriate smart contracts for your Azure Blockchain Workbench application have functions defined to accept the events from your external system or device.
-3. The application configuration file for your smart contract contains the role, which the system or device is assigned.
-4. The application configuration file for your smart contract identifies in which states this function is called by the defined role.
-5. The Application configuration file and its smart contracts are uploaded to Azure Blockchain Workbench.
+1. Konsorsiyumun Azure Active Directory, dış sistemi veya cihazı temsil eden bir hesap oluşturulur.
+2. Azure blok zinciri çalışma ekranı uygulamanız için bir veya daha fazla uygun akıllı sözleşme, dış sisteminizden veya cihazınızdan olayları kabul edecek şekilde tanımlı işlevlere sahip.
+3. Akıllı sözleşmeniz için uygulama yapılandırma dosyası, sistemin veya cihazın atandığı rolü içerir.
+4. Akıllı sözleşmeniz için uygulama yapılandırma dosyası, bu işlevin tanımlanan rol tarafından çağrıldığı durumları tanımlar.
+5. Uygulama yapılandırma dosyası ve akıllı sözleşmeleri Azure blok zinciri çalışma ekranı 'na yüklendi.
 
-Once the application is uploaded, the Azure Active Directory account for the external system is assigned to the contract and the associated role.
+Uygulama karşıya yüklendikten sonra, dış sistem için Azure Active Directory hesabı sözleşmeye ve ilişkili role atanır.
 
-## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Testing External System Integration Flows Prior to Writing Integration Code 
+## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Tümleştirme kodu yazmadan önce dış sistem tümleştirme akışlarını test etme 
 
-Integrating with external systems is a key requirement of many scenarios. It is desirable to be able to validate smart contract design prior or in parallel to the development of code to integrate with external systems.
+Dış sistemlerle tümleştirme pek çok senaryonun önemli bir gereksinimidir. Dış sistemlerle tümleştirme için kodun geliştirilmesine paralel olarak veya paralel olarak, akıllı sözleşme tasarımını doğrulayabilmek istenebilir.
 
-The use of Azure Active Directory (Azure AD) can greatly accelerate developer productivity and time to value. Specifically, the code integration with an external system may take a non-trivial amount of time. By using Azure AD and the auto-generation of UX by Azure Blockchain Workbench, you can allow developers to sign in to Blockchain Workbench as the external system and populate values from the external system via the UX. You can rapidly develop and validate ideas in a proof of concept environment before integration code is written for the external systems.
+Azure Active Directory (Azure AD) kullanımı, geliştirici üretkenliğini ve değere göre süreyi önemli ölçüde hızlandırmanızı sağlayabilir. Özellikle, bir dış sistemle kod tümleştirmesi, önemsiz olmayan bir süre alabilir. Azure AD 'yi ve UX 'i Azure blok zinciri çalışma ekranı tarafından otomatik olarak oluşturmayı kullanarak, geliştiricilerin dış sistem olarak blok zinciri çalışma ekranına oturum açmasını ve UX aracılığıyla dış sistemden değer doldurmasına izin verebilirsiniz. Tümleştirme kodu dış sistemler için yazılmadan önce kavram kanıtı ortamında hızlıca geliştirme ve doğrulama yapabilirsiniz.

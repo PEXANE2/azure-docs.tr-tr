@@ -1,6 +1,6 @@
 ---
-title: Authentication methods - Azure Active Directory
-description: Authentication methods available in Azure AD for MFA and SSPR
+title: Kimlik doğrulama yöntemleri-Azure Active Directory
+description: MFA ve SSPR için Azure AD 'de kullanılabilir kimlik doğrulama yöntemleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -20,149 +20,149 @@ ms.locfileid: "74420773"
 ---
 # <a name="what-are-authentication-methods"></a>Kimlik doğrulaması yöntemleri nelerdir?
 
-As an administrator, choosing authentication methods for Azure Multi-Factor Authentication and self-service password reset (SSPR) it is recommended that you require users to register multiple authentication methods. When an authentication method is not available for a user, they can choose to authenticate with another method.
+Yönetici olarak, Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini seçme, kullanıcıların birden çok kimlik doğrulama yöntemini kaydetmesini gerektirmesini öneririz. Bir kullanıcı için kimlik doğrulama yöntemi kullanılabilir olmadığında, başka bir yöntemle kimlik doğrulaması seçebilirler.
 
-Administrators can define in policy which authentication methods are available to users of SSPR and MFA. Some authentication methods may not be available to all features. For more information about configuring your policies see the articles [How to successfully roll out self-service password reset](howto-sspr-deployment.md) and [Planning a cloud-based Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+Yöneticiler, SSPR ve MFA kullanıcıları tarafından hangi kimlik doğrulama yöntemlerinin kullanılabildiği ilke ' de tanımlayabilir. Bazı kimlik doğrulama yöntemleri, tüm özellikler için kullanılamayabilir. İlkelerinizi yapılandırma hakkında daha fazla bilgi için [self servis parola sıfırlama](howto-sspr-deployment.md) ve [bulut tabanlı bir Azure Multi-Factor Authentication planlama](howto-mfa-getstarted.md) makalesine bakın.
 
-Microsoft highly recommends Administrators enable users to select more than the minimum required number of authentication methods in case they do not have access to one.
+Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönteminden fazlasını seçmesini olanaklı kılmanızı sağlar.
 
 |Kimlik Doğrulama Yöntemi|Kullanım|
 | --- | --- |
-| Parola | MFA and SSPR |
-| Security questions | SSPR Only |
-| E-posta adresi | SSPR Only |
-| Microsoft Authenticator uygulaması | MFA and SSPR |
-| OATH Hardware token | Public preview for MFA and SSPR |
-| SMS | MFA and SSPR |
-| Sesli çağrı | MFA and SSPR |
-| Uygulama parolaları | MFA only in certain cases |
+| istemcisiyle yönetilen bir cihaz için) | MFA ve SSPR |
+| Güvenlik soruları | Yalnızca SSPR |
+| E-posta adresi | Yalnızca SSPR |
+| Microsoft Authenticator uygulaması | MFA ve SSPR |
+| OATH donanım belirteci | MFA ve SSPR için genel önizleme |
+| SMS | MFA ve SSPR |
+| Sesli çağrı | MFA ve SSPR |
+| Uygulama parolaları | Yalnızca belirli durumlarda MFA |
 
-![Authentication methods in use at the sign-in screen](media/concept-authentication-methods/overview-login.png)
+![Oturum açma ekranında kullanılan kimlik doğrulama yöntemleri](media/concept-authentication-methods/overview-login.png)
 
 |     |
 | --- |
-| OATH Hardware tokens for MFA and SSPR are public preview features of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| MFA ve SSPR için OATH Donanım belirteçleri, Azure Active Directory genel önizleme özellikleridir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="password"></a>Parola
+## <a name="password"></a>istemcisiyle yönetilen bir cihaz için)
 
-Your Azure AD password is considered an authentication method. It is the one method that **cannot be disabled**.
+Azure AD parolanız bir kimlik doğrulama yöntemi olarak kabul edilir. Bu, **devre dışı**bırakıladesteklemeyen bir yöntemdir.
 
-## <a name="security-questions"></a>Security questions
+## <a name="security-questions"></a>Güvenlik soruları
 
-Security questions are available **only in Azure AD self-service password reset** to non-administrator accounts.
+Güvenlik soruları **yalnızca Azure AD self servis parola sıfırlama ' da** yönetici olmayan hesaplara kullanılabilir.
 
-If you use security questions, we recommend using them in conjunction with another method. Security questions can be less secure than other methods because some people might know the answers to another user's questions.
+Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte kullanmanızı öneririz. Bazı kullanıcılar başka bir Kullanıcı sorusunun yanıtlarını bilebileceğinden, güvenlik soruları diğer yöntemlerden daha az güvenli olabilir.
 
 > [!NOTE]
-> Security questions are stored privately and securely on a user object in the directory and can only be answered by users during registration. There is no way for an administrator to read or modify a user's questions or answers.
+> Güvenlik soruları, dizindeki bir kullanıcı nesnesi üzerinde özel olarak ve güvenli bir şekilde depolanır ve yalnızca kayıt sırasında kullanıcılar tarafından yanıtlanabilecek. Bir yöneticinin bir kullanıcının sorularını veya yanıtlarını okuması veya değiştirmesi için bir yol yoktur.
 >
 
-### <a name="predefined-questions"></a>Predefined questions
+### <a name="predefined-questions"></a>Önceden tanımlanmış sorular
 
-* In what city did you meet your first spouse/partner?
-* In what city did your parents meet?
-* In what city does your nearest sibling live?
-* In what city was your father born?
-* In what city was your first job?
-* In what city was your mother born?
-* What city were you in on New Year's 2000?
-* What is the last name of your favorite teacher in high school?
-* What is the name of a college you applied to but didn't attend?
-* What is the name of the place in which you held your first wedding reception?
-* What is your father's middle name?
-* What is your favorite food?
-* What is your maternal grandmother's first and last name?
-* What is your mother's middle name?
-* What is your oldest sibling's birthday month and year? (e.g. November 1985)
-* What is your oldest sibling's middle name?
-* What is your paternal grandfather's first and last name?
-* What is your youngest sibling's middle name?
-* What school did you attend for sixth grade?
-* What was the first and last name of your childhood best friend?
-* What was the first and last name of your first significant other?
-* What was the last name of your favorite grade school teacher?
-* What was the make and model of your first car or motorcycle?
-* What was the name of the first school you attended?
-* What was the name of the hospital in which you were born?
-* What was the name of the street of your first childhood home?
-* What was the name of your childhood hero?
-* What was the name of your favorite stuffed animal?
-* What was the name of your first pet?
-* What was your childhood nickname?
-* What was your favorite sport in high school?
-* What was your first job?
-* What were the last four digits of your childhood telephone number?
-* When you were young, what did you want to be when you grew up?
-* Who is the most famous person you have ever met?
+* İlk eşiniz/iş ortağınızı hangi şehirle karşıladınız?
+* Ebeveynleriniz hangi şehirle buluşmış?
+* En yakın eşdüzey ağınız hangi şehirde etkin?
+* Babalar hangi şehirde doğdu?
+* İlk işiniz hangi şehirdir?
+* Anneniz hangi şehirde doğdu?
+* Yeni yıl 2000 ' de hangi şehirdeydiniz?
+* Yüksek okulda en sevdiğiniz öğretmenin soyadı nedir?
+* Uyguladığınız bir üniversite adı nedir, ancak katılmadınız mı?
+* İlk evlilik alıyeninizi dağıttığınız yerin adı nedir?
+* Babalar ikinci adı nedir?
+* En sevdiğiniz yemek nedir?
+* Anneannenizin en Annenizin adı ve soyadı nedir?
+* Annenizin ikinci adı nedir?
+* En eski eşdüzey Doğum günün ayı ve yılı nedir? (örn. Kasım 1985)
+* En eski eşdüzey öğenin ikinci adı nedir?
+* Babanızın babalar adı ve soyadı nedir?
+* Kardeşinizin eşdüzey ortaınızın ikinci adı nedir?
+* Altıncı sınıf için hangi okula katıldınız?
+* Çocukluğunuzdaki en iyi arkadaşınızın adı ve soyadı neydi?
+* İlk önemli olan ilk ve soyadı neydi?
+* En sevdiğiniz sınıf okul öğretmeninizin soyadı neydi?
+* İlk arabalarınızın veya otodöngünüzün marka ve modeli neydi?
+* Katıldığınız ilk okulunuzun adı neydi?
+* Doğmakta olduğunuz hastanın adı neydi?
+* İlk çocukluk evin sokak adı neydi?
+* Çocukluğunuzdaki kahraman 'ın adı neydi?
+* En sevdiğiniz peluş ya da bir hayvan adı neydi?
+* İlk evcil hayvanınızın adı neydi?
+* Çocukluk takma ad nedir?
+* Yüksek okulda en sevdiğiniz spor nedir?
+* İlk işiniz neydi?
+* Çocukluk telefon numaranız için son dört basamak neydi?
+* Küçükken, büyüyken ne yapmak istiyorsunuz?
+* Şimdiye kadar tanıştığınız en ünlü kişi kim?
 
-All of the predefined security questions are translated and localized into the full set of Office 365 languages based on the user's browser locale.
+Önceden tanımlanmış tüm güvenlik soruları, kullanıcının tarayıcı yerel ayarlarına bağlı olarak Office 365 dillerinin tam kümesine çevrilir ve yerelleştirilir.
 
-### <a name="custom-security-questions"></a>Custom security questions
+### <a name="custom-security-questions"></a>Özel güvenlik soruları
 
-Custom security questions are not localized. All custom questions are displayed in the same language as they are entered in the administrative user interface, even if the user's browser locale is different. If you need localized questions, you should use the predefined questions.
+Özel güvenlik soruları yerelleştirilmez. Kullanıcının tarayıcı yerel ayarı farklı olsa bile, tüm özel sorular Yönetici Kullanıcı arabirimine girildikleri dilde görüntülenir. Yerelleştirilmiş sorulara ihtiyacınız varsa, önceden tanımlanmış soruları kullanmanız gerekir.
 
-The maximum length of a custom security question is 200 characters.
+Özel bir güvenlik sorusunun en fazla uzunluğu 200 karakterdir.
 
-### <a name="security-question-requirements"></a>Security question requirements
+### <a name="security-question-requirements"></a>Güvenlik sorusu gereksinimleri
 
-* The minimum answer character limit is three characters.
-* The maximum answer character limit is 40 characters.
-* Users can't answer the same question more than one time.
-* Users can't provide the same answer to more than one question.
-* Any character set can be used to define the questions and the answers, including Unicode characters.
-* The number of questions defined must be greater than or equal to the number of questions that were required to register.
+* En küçük yanıt karakter sınırı üç karakterdir.
+* En fazla yanıt karakter sınırı 40 karakterdir.
+* Kullanıcılar aynı sorudan birden çok kez yanıt vermez.
+* Kullanıcılar, birden fazla soruya aynı yanıtı sağlayamaz.
+* Herhangi bir karakter kümesi, Unicode karakterler de dahil olmak üzere soruları ve yanıtları tanımlamak için kullanılabilir.
+* Tanımlanan soruların sayısı, kaydolmak için gereken soru sayısına eşit veya ondan büyük olmalıdır.
 
 ## <a name="email-address"></a>E-posta adresi
 
-Email address is available **only in Azure AD self-service password reset**.
+E-posta adresi **yalnızca Azure AD self servis parola sıfırlama ' da**kullanılabilir.
 
-Microsoft recommends the use of an email account that would not require the user's Azure AD password to access.
+Microsoft, kullanıcının Azure AD parolasının erişmesini gerektirmeyen bir e-posta hesabının kullanılmasını önerir.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
 
-The Microsoft Authenticator app provides an additional level of security to your Azure AD work or school account or your Microsoft account.
+Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar.
 
 Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)'da kullanılabilir.
 
 > [!NOTE]
-> Users will not have the option to register their mobile app when registering for self-service password reset. Instead, users can register their mobile app at [https://aka.ms/mfasetup](https://aka.ms/mfasetup) or in the security info registration preview at [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+> Kullanıcılar self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip olmayacaktır. Bunun yerine, kullanıcılar mobil uygulamalarını [https://aka.ms/mfasetup](https://aka.ms/mfasetup) veya güvenlik bilgileri kayıt önizlemesine [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)adresinde kaydedebilir.
 >
 
-### <a name="notification-through-mobile-app"></a>Notification through mobile app
+### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
 
-The Microsoft Authenticator app can help prevent unauthorized access to accounts and stop fraudulent transactions by pushing a notification to your smartphone or tablet. Users view the notification, and if it's legitimate, select Verify. Otherwise, they can select Deny.
+Microsoft Authenticator uygulaması, Smartphone 'a veya tabletinize bildirim göndererek, hesaplara yetkisiz erişimin önlenmesine ve sahte işlemleri durdurmaya yardımcı olabilir. Kullanıcılar bildirimi görüntüler ve meşru ise Doğrula ' yı seçin. Aksi takdirde, Reddet ' i seçebilir.
 
 > [!WARNING]
-> For self-service password reset when only one method is required for reset, verification code is the only option available to users **to ensure the highest level of security**.
+> Yalnızca bir yöntem sıfırlama için gerekliyse, self servis parola sıfırlama için, **en yüksek düzeyde güvenlik sağlamak üzere**kullanıcılara sunulan tek seçenektir.
 >
-> When two methods are required users will be able to reset using **EITHER** notification **OR** verification code in addition to any other enabled methods.
+> İki yöntem gerekli olduğunda, kullanıcılar diğer etkin yöntemlerin yanı **sıra bildirim** **veya** doğrulama kodu kullanarak sıfırlayabilecektir.
 >
 
-If you enable the use of both notification through mobile app and verification code from mobile app, users who register the Microsoft Authenticator app using a notification are able to use both notification and code to verify their identity.
+Mobil uygulama ve doğrulama kodu aracılığıyla her iki bildirimin de kullanımını etkinleştirirseniz, bir bildirim kullanarak Microsoft Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için hem bildirimi hem de kodu kullanabilir.
 
 > [!NOTE]
-> If your organization has staff working in or traveling to China, the **Notification through mobile app** method on **Android devices** does not work in that country. Alternate methods should be made available for those users.
+> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
 
-### <a name="verification-code-from-mobile-app"></a>Verification code from mobile app
+### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 
-The Microsoft Authenticator app or other third-party apps can be used as a software token to generate an OATH verification code. After entering your username and password, you enter the code provided by the app into the sign-in screen. The verification code provides a second form of authentication.
+Microsoft Authenticator uygulaması veya diğer üçüncü taraf uygulamalar, bir OATH doğrulama kodu oluşturmak için yazılım belirteci olarak kullanılabilir. Kullanıcı adınızı ve parolanızı girdikten sonra, uygulama tarafından belirtilen kodu oturum açma ekranına girersiniz. Doğrulama kodu, ikinci bir kimlik doğrulama biçimi sağlar.
 
 > [!WARNING]
-> For self-service password reset when only one method is required for reset verification code is the only option available to users **to ensure the highest level of security**.
+> Kendi kendine parola sıfırlama için yalnızca bir yöntem gerekliyse, sıfırlama doğrulama kodu için yalnızca bir yöntem gerekliyse, **en yüksek düzeyde güvenlik sağlamak için**kullanıcılara sunulan tek seçenektir.
 >
 
-Users may have a combination of up to five OATH hardware tokens or authenticator applications such as the Microsoft Authenticator app configured for use at any time.
+Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Authenticator uygulaması gibi beş OATH donanım belirtecinin veya Authenticator uygulamasının bir birleşimine sahip olabilir.
 
-## <a name="oath-hardware-tokens-public-preview"></a>OATH hardware tokens (public preview)
+## <a name="oath-hardware-tokens-public-preview"></a>OATH Donanım belirteçleri (Genel Önizleme)
 
-OATH is an open standard that specifies how one-time password (OTP) codes are generated. Azure AD will support the use of OATH-TOTP SHA-1 tokens of the 30-second or 60-second variety. Customers can procure these tokens from the vendor of their choice. Secret keys are limited to 128 characters, which may not be compatible with all tokens. The secret keys need to be encoded in Base32.
+OATH, bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. Azure AD, 30 saniyelik veya 60 saniyelik birçok farklı OATH-TOTP SHA-1 belirteçleri kullanımını destekleyecektir. Müşteriler bu belirteçleri tercih ettikleri satıcıdan temin edebilir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtarların Base32 içinde kodlanmış olması gerekir.
 
-![Uploading OATH tokens to the MFA Server OATH tokens blade](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![OATH belirteçleri MFA sunucusu OATH belirteçleri dikey penceresine yükleniyor](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-OATH hardware tokens are being supported as part of a public preview. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenmektedir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-Once tokens are acquired they must be uploaded in a comma-separated values (CSV) file format including the UPN, serial number, secret key, time interval, manufacturer, and model as the example below shows.
+Belirteçler alındıktan sonra, aşağıdaki örnekte gösterildiği gibi, UPN, seri numarası, gizli anahtar, zaman aralığı, üretici ve model dahil olmak üzere bir virgülle ayrılmış değerler (CSV) dosya biçiminde karşıya yüklenmelidir.
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
@@ -170,99 +170,99 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 ```
 
 > [!NOTE]
-> Make sure you include the header row in your CSV file as shown above.
+> Üst bilgi satırını, yukarıda gösterildiği gibi CSV dosyanıza eklediğinizden emin olun.
 
-Once properly formatted as a CSV file, an administrator can then sign in to the Azure portal and navigate to **Azure Active Directory**, **MFA Server**, **OATH tokens**, and upload the resulting CSV file.
+Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, bir yönetici Azure portal oturum açabilir ve **Azure Active Directory**, **MFA sunucusu**, **Oath belirteçleri**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
 
-Depending on the size of the CSV file, it may take a few minutes to process. Click the **Refresh** button to get the current status. If there are any errors in the file, you will have the option to download a CSV file listing any errors for you to resolve.
+CSV dosyasının boyutuna bağlı olarak, işlem birkaç dakika sürebilir. Geçerli durumu almak için **Yenile** düğmesine tıklayın. Dosyada herhangi bir hata varsa, çözmeniz için herhangi bir hata listelemesi için bir CSV dosyası indirme seçeneğine sahip olursunuz.
 
-Once any errors have been addressed, the administrator then can activate each key by clicking **Activate** for the token to be activated and entering the OTP displayed on the token.
+Herhangi bir hata çözüldükten sonra, yönetici, belirtecin etkinleştirilebilmesi için **Etkinleştir** ' e tıklayarak ve BELIRTEÇTE görünen OTP 'yi girerek her anahtarı etkinleştirebilir.
 
-Users may have a combination of up to five OATH hardware tokens or authenticator applications such as the Microsoft Authenticator app configured for use at any time.
+Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Authenticator uygulaması gibi beş OATH donanım belirtecinin veya Authenticator uygulamasının bir birleşimine sahip olabilir.
 
-## <a name="phone-options"></a>Phone options
+## <a name="phone-options"></a>Telefon seçenekleri
 
 ### <a name="mobile-phone"></a>Cep telefonu
 
-Two options are available to users with mobile phones.
+Mobil telefonlarla kullanıcılara iki seçenek mevcuttur.
 
-If users don't want their mobile phone number to be visible in the directory, but they still want to use it for password reset, administrators should not populate it in the directory. Users should populate their **Authentication Phone** attribute via the [password reset registration portal](https://aka.ms/ssprsetup). Administrators can see this information in the user's profile, but it's not published elsewhere.
+Kullanıcılar cep telefonu numarasının dizinde görünür olmasını istemiyor, ancak yine de parola sıfırlama için kullanmak istiyorlarsa, yöneticiler onu dizinde doldurmamalıdır. Kullanıcılar, **kimlik doğrulama telefonu** özniteliğini [parola sıfırlama kayıt portalı](https://aka.ms/ssprsetup)aracılığıyla doldurmalıdır. Yöneticiler bu bilgileri kullanıcının profilinde görebilir, ancak başka bir yerde yayımlanmaz.
 
-To work properly, phone numbers must be in the format *+CountryCode PhoneNumber*, for example, +1 4255551234.
+Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin + 1 4255551234.
 
 > [!NOTE]
-> There needs to be a space between the country code and the phone number.
+> Ülke kodu ile telefon numarası arasında bir boşluk olması gerekir.
 >
-> Password reset does not support phone extensions. Even in the +1 4255551234X12345 format, extensions are removed before the call is placed.
+> Parola sıfırlama, telefon uzantılarını desteklemez. \+ 1 4255551234X12345 biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
 
-Microsoft does not guarantee consistent SMS or Voice-based Multi-Factor Authentication prompt delivery by the same number. In the interest of our users, Microsoft may add or remove Short codes at any time as we make route adjustments to improve SMS deliverability. Microsoft does not support short codes for countries/regions besides the United States and Canada.
+Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
 
 #### <a name="text-message"></a>Kısa mesaj
 
-An SMS is sent to the mobile phone number containing a verification code. Enter the verification code provided in the sign-in interface to continue.
+Bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Devam etmek için oturum açma arabiriminde belirtilen doğrulama kodunu girin.
 
-#### <a name="phone-call"></a>Phone call
+#### <a name="phone-call"></a>Telefon araması
 
-An automated voice call is made to the phone number you provide. Answer the call and press # in the phone keypad to authenticate
-
-> [!IMPORTANT]
-> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
-
-### <a name="office-phone"></a>Office phone
-
-An automated voice call is made to the phone number you provide. Answer the call and presses # in the phone keypad to authenticate.
-
-To work properly, phone numbers must be in the format *+CountryCode PhoneNumber*, for example, +1 4255551234.
-
-The office phone attribute is managed by your administrator.
+Sağladığınız telefon numarasına otomatik bir sesli çağrı yapılır. Numarayı yanıtlayın ve telefon tuş takımında # tuşlarına basarak kimlik doğrulaması yapın
 
 > [!IMPORTANT]
-> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
+> Mart 2019 ' den itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında MFA ve SSPR kullanıcıları tarafından kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması, ücretli Azure AD kiracılarındaki kullanıcılar için kullanılabilir olmaya devam edecektir. Bu değişiklik yalnızca ücretsiz/deneme Azure AD kiracılarını etkiler.
+
+### <a name="office-phone"></a>Ofis telefonu
+
+Sağladığınız telefon numarasına otomatik bir sesli çağrı yapılır. Numarayı yanıtlayın ve telefon tuş takımında # tuşlarına bastıktan sonra kimlik doğrulaması yapın.
+
+Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin + 1 4255551234.
+
+Ofis telefonu özniteliği yöneticiniz tarafından yönetilir.
+
+> [!IMPORTANT]
+> Mart 2019 ' den itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında MFA ve SSPR kullanıcıları tarafından kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması, ücretli Azure AD kiracılarındaki kullanıcılar için kullanılabilir olmaya devam edecektir. Bu değişiklik yalnızca ücretsiz/deneme Azure AD kiracılarını etkiler.
 
 > [!NOTE]
-> There needs to be a space between the country code and the phone number.
+> Ülke kodu ile telefon numarası arasında bir boşluk olması gerekir.
 >
-> Password reset does not support phone extensions. Even in the +1 4255551234X12345 format, extensions are removed before the call is placed.
+> Parola sıfırlama, telefon uzantılarını desteklemez. \+ 1 4255551234X12345 biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
 
-### <a name="troubleshooting-phone-options"></a>Troubleshooting phone options
+### <a name="troubleshooting-phone-options"></a>Telefon seçenekleri sorunlarını giderme
 
-Common problems related to authentication methods using a phone number:
+Telefon numarası kullanan kimlik doğrulama yöntemleriyle ilgili yaygın sorunlar:
 
-* Blocked caller ID on a single device
-   * Troubleshoot device
-* Wrong phone number, incorrect country code, home phone number versus work phone number
-   * Troubleshoot user object and configured authentication methods. Ensure correct phone numbers are registered.
-* Wrong PIN entered
-   * Confirm user has used the correct PIN registered in Azure MFA Server.
-* Call forwarded to voicemail
-   * Ensure user has phone turned on and that service is available in their area or use alternate method.
+* Tek bir cihazda engellenen arayan KIMLIĞI
+   * Cihaz sorunlarını giderme
+* Yanlış telefon numarası, yanlış ülke kodu, ev telefonu numarası ve iş telefonu numarası
+   * Kullanıcı nesnesi ve yapılandırılmış kimlik doğrulama yöntemleriyle ilgili sorunları giderin. Doğru telefon numaralarının kaydedildiğinden emin olun.
+* Yanlış PIN girildi
+   * Kullanıcının Azure MFA sunucusu 'nda kayıtlı doğru PIN 'ı kullandığını onaylayın.
+* Sesli mesaj ile iletilen çağrı
+   * Kullanıcının telefonu açık olduğundan ve bu hizmetin kendi alanında kullanılabilir olduğundan emin olun veya alternatif yöntemi kullanın.
 * Kullanıcı engellendi
-   * Have administrator unblock the user in the Azure portal.
-* SMS is not subscribed on the device
-   * Have the user change methods or activate SMS on the device.
-* Faulty telecom providers (No phone input detected, missing DTMF tones issues, blocked caller ID on multiple devices, or blocked SMS across multiple devices)
-   * Microsoft uses multiple telecom providers to route phone calls and SMS messages for authentication. If you are seeing any of the above issues have a user attempt to use the method at least 5 times within 5 minutes and have that user's information available when contacting Microsoft support.
+   * Yöneticinin Azure portal kullanıcının engellemesini kaldırma.
+* Cihazda SMS abone değil
+   * Kullanıcının bir yöntemi değiştirmesini veya cihazda SMS 'yi etkinleştirmesini sağlamak.
+* Hatalı Telekom sağlayıcıları (telefon girişi algılanmadı, eksik DTMF tonları sorunları, birden çok cihazda engellenen çağıran KIMLIĞI veya birden çok cihazda engellenen SMS)
+   * Microsoft, kimlik doğrulaması için telefon çağrılarını ve SMS iletilerini yönlendirmek üzere birden çok Telekom sağlayıcısı kullanır Yukarıdaki sorunlardan herhangi birini görüyorsanız, bir Kullanıcı, 5 dakika içinde yöntemi en az 5 kez kullanmaya çalışır ve Microsoft Destek ile iletişim kurarken bu kullanıcının bilgilerinin kullanılabilir olmasını sağlar.
 
-## <a name="app-passwords"></a>App Passwords
+## <a name="app-passwords"></a>Uygulama parolaları
 
-Certain non-browser apps do not support multi-factor authentication, if a user has been enabled for multi-factor authentication and attempt to use non-browser apps, they are unable to authenticate. An app password allows users to continue to authenticate
+Tarayıcı olmayan bazı uygulamalar Multi-Factor Authentication 'ı desteklemez, bir Kullanıcı Multi-Factor Authentication için etkinleştirildiyse ve tarayıcı olmayan uygulamaları kullanmaya çalışırsanız, kimlik doğrulaması yapamaz. Uygulama parolası, kullanıcıların kimlik doğrulamaya devam etmesine izin verir
 
-If you enforce Multi-Factor Authentication through Conditional Access policies and not through per-user MFA, you cannot create app passwords. Applications that use Conditional Access policies to control access do not need app passwords.
+Kullanıcı başına MFA aracılığıyla değil, koşullu erişim ilkeleri aracılığıyla Multi-Factor Authentication zorunlu kılabilirsiniz, uygulama parolaları oluşturamazsınız. Erişimi denetlemek için koşullu erişim ilkelerini kullanan uygulamalar, uygulama parolalara gerek kalmaz.
 
-If your organization is federated for SSO with Azure AD and you are going to be using Azure MFA, then be aware of the following details:
+Kuruluşunuz Azure AD ile SSO için federe ise ve Azure MFA 'yı kullanacaksanız, aşağıdaki ayrıntıları göz önünde bulundurun:
 
-* The app password is verified by Azure AD and therefore bypasses federation. Federation is only used when setting up app passwords. For federated (SSO) users, passwords are stored in the organizational ID. If the user leaves the company, that info has to flow to organizational ID using DirSync. Account disable/deletion may take up to three hours to sync, which delays disable/deletion of app passwords in Azure AD.
+* Uygulama parolası Azure AD tarafından doğrulanır ve bu nedenle Federasyonu atlar. Federasyon yalnızca uygulama parolaları ayarlanırken kullanılır. Federasyon (SSO) kullanıcıları için, parolalar kuruluş KIMLIĞINDE depolanır. Kullanıcı şirketten ayrılırsa, bu bilgi DirSync kullanarak kuruluş KIMLIĞINE akacaktır. Hesabın devre dışı bırakılması/silinmesi üç saate kadar zaman alabilir. Bu, Azure AD 'de uygulama parolalarının devre dışı bırakılması/silinmesi gecikmeyebilir.
 * Şirket için İstemci Erişimi Denetimi ayarları Uygulama Parolası tarafından onaylanmaz.
-* No on-premises authentication logging/auditing capability is available for app passwords.
-* Certain advanced architectural designs may require using a combination of organizational username and passwords and app passwords when using two-step verification with clients, depending on where they authenticate. For clients that authenticate against an on-premises infrastructure, you would use an organizational username and password. For clients that authenticate against Azure AD, you would use the app password.
-* By default, users cannot create app passwords. If you need to allow users to create app passwords, select the **Allow users to create app passwords to sign into non-browser applications option** under service settings.
+* Uygulama parolaları için şirket içi kimlik doğrulama günlüğü/Denetim yeteneği kullanılamaz.
+* Bazı gelişmiş mimari tasarımları, kimlik doğrulamalarına bağlı olarak istemcilerle iki aşamalı doğrulamayı kullanırken kurumsal Kullanıcı adı ve parolaların ve uygulama parolalarının bir birleşimini kullanmanızı gerektirebilir. Şirket içi altyapıya karşı kimlik doğrulaması yapan istemciler için bir kuruluş Kullanıcı adı ve parolası kullanırsınız. Azure AD kimlik doğrulaması yapan istemciler için uygulama parolasını kullanırsınız.
+* Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların uygulama parolaları oluşturmalarına izin vermeniz gerekiyorsa, hizmet ayarları altındaki **tarayıcı olmayan uygulamalarda oturum açmak için kullanıcıların uygulama parolaları oluşturmasına Izin ver seçeneğini** belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Enable self service password reset for your organization](quickstart-sspr.md)
+[Kuruluşunuz için self servis parola sıfırlamayı etkinleştirin](quickstart-sspr.md)
 
-[Enable Azure Multi-Factor Authentication for your organization](howto-mfa-getstarted.md)
+[Kuruluşunuz için Azure Multi-Factor Authentication etkinleştirme](howto-mfa-getstarted.md)
 
-[Enable combined registration in your tenant](howto-registration-mfa-sspr-combined.md)
+[Kiracınızda Birleşik kayıt özelliğini etkinleştirme](howto-registration-mfa-sspr-combined.md)
 
-[End-user authentication method configuration documentation](https://aka.ms/securityinfoguide)
+[Son Kullanıcı kimlik doğrulama yöntemi yapılandırma belgeleri](https://aka.ms/securityinfoguide)

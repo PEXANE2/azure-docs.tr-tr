@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Add an app to your Azure Active Directory tenant
+title: Hızlı başlangıç-Azure Active Directory kiracınıza uygulama ekleme
 description: Bu hızlı başlangıçta Azure portal kullanılarak Azure Active Directory (Azure AD) kiracınıza bir galeri uygulaması eklenmektedir.
 services: active-directory
 author: msmimart
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD), önceden tümleştirilmiş binlerce uygulaman
 
 Bir uygulamayı Azure AD kiracınıza ekledikten sonra aşağıdaki işlemleri gerçekleştirebilirsiniz:
 
-- Manage user access to the application with a Conditional Access policy.
+- Koşullu erişim ilkesiyle uygulamaya yönelik Kullanıcı erişimini yönetin.
 - Kullanıcıları Azure AD hesapları ile uygulamada çoklu oturum açma özelliğini kullanacak şekilde yapılandırma.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -42,58 +42,58 @@ Bu öğreticideki adımları test etmek için üretim ortamı harici bir ortam k
 
 Azure AD kiracınıza galeri uygulaması eklemek için:
 
-1. In the [Azure portal](https://portal.azure.com), on the left navigation panel, select **Azure Active Directory**.
+1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-2. In the **Azure Active Directory** pane, select **Enterprise applications**. The **All applications** pane opens and displays a random sample of the applications in your Azure AD tenant.
+2. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin. **Tüm uygulamalar** bölmesi açılır ve Azure AD kiracınızdaki uygulamaların rastgele bir örneğini görüntüler.
 
-3. To add a gallery app to your tenant, select **New application**. 
+3. Kiracınıza bir galeri uygulaması eklemek için **Yeni uygulama**' yı seçin. 
 
-    ![Select New application to add a gallery app to your tenant](media/add-application-portal/new-application.png)
+    ![Kiracınıza Galeri uygulaması eklemek için yeni uygulama ' yı seçin](media/add-application-portal/new-application.png)
 
- 4. Switch to the new gallery preview experience: In the banner at the top of the **Add an application page**, select the link that says **Click here to try out the new and improved app gallery**.
+ 4. Yeni Galeri önizleme deneyimine geç: **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**bağlantısını seçin.
 
-5. The **Browse Azure AD Gallery (Preview)** pane opens and displays tiles for cloud platforms, on-premises applications, and featured applications. Note that the applications listed in the **Featured applications** section have icons indicating whether they support federated single sign-on (SSO) and provisioning.
+5. **Azure AD galerisine gözatıp (Önizleme)** bölmesi açılır ve bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları görüntüler. **Öne çıkan uygulamalar** bölümünde listelenen uygulamaların, federe çoklu oturum açma (SSO) ve sağlamayı destekleyip desteklemediğini gösteren simgeler olduğunu unutmayın.
 
-    ![Search for an app by name or category](media/add-application-portal/browse-gallery.png)
+    ![Bir uygulamayı ada veya kategoriye göre ara](media/add-application-portal/browse-gallery.png)
 
-6. You can browse the gallery for the application you want to add, or search for the application by entering its name in the search box. Then select the application from the results. In the form, you can edit the name of the application to match the needs of your organization. In this example we've changed the name to **GitHub-test**.
+6. Eklemek istediğiniz uygulamanın galerisine gözatıp, arama kutusuna adını girerek uygulamayı arayabilirsiniz. Sonra sonuçlardan uygulamayı seçin. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Bu örnekte, adı **GitHub-test**olarak değiştirdik.
 
-    ![Shows how to add an application from the gallery](media/add-application-portal/create-application.png)
+    ![Galeriden bir uygulamanın nasıl ekleneceğini gösterir](media/add-application-portal/create-application.png)
 
 7. **Oluştur**'u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır.
 
-You've finished adding your application. Aşağıdaki bölümlerde uygulamanızın logosunu değiştirme ve diğer özelliklerini düzenleme adımları gösterilmektedir.
+Uygulamanızı eklemeyi tamamladınız. Aşağıdaki bölümlerde uygulamanızın logosunu değiştirme ve diğer özelliklerini düzenleme adımları gösterilmektedir.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Azure AD kiracısı uygulamanızı bulma
 
-İşlemi burada bırakmak zorunda kaldığınızı ve uygulamayı yapılandırmaya devam etmek için daha sonra tekrar geldiğinizi düşünelim. The first thing to do is find your application.
+İşlemi burada bırakmak zorunda kaldığınızı ve uygulamayı yapılandırmaya devam etmek için daha sonra tekrar geldiğinizi düşünelim. Yapmanız gereken ilk şey, uygulamanızı bulmledir.
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, select **Azure Active Directory**.
-1. In the **Azure Active Directory** pane, select **Enterprise applications**.
-1. From the **Application Type** drop-down menu, select **All Applications**, and then select **Apply**. Görüntüleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Kiracı uygulamalarını görüntüleme](view-applications-portal.md).
-1. Burada Azure AD kiracınızdaki tüm uygulamaların listesini görebilirsiniz. Bu listedeki uygulamalar rastgele seçilmiştir. To see more applications, select **Show more** one or more times.
-1. To quickly find an application in your tenant, enter the application name in the search box and select **Apply**. This example finds the GitHub-test application added previously.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin.
+1. **Uygulama türü** açılan menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin. Görüntüleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Kiracı uygulamalarını görüntüleme](view-applications-portal.md).
+1. Burada Azure AD kiracınızdaki tüm uygulamaların listesini görebilirsiniz. Bu listedeki uygulamalar rastgele seçilmiştir. Daha fazla uygulama görmek için **daha fazla** bir veya daha fazla kez göster ' i seçin.
+1. Kiracınızda bir uygulamayı hızlı bir şekilde bulmak için, arama kutusuna uygulamanın adını girin ve **Uygula**' yı seçin. Bu örnek, daha önce eklenen GitHub-test uygulamasını bulur.
 
-    ![Shows how to find an application using the search box](media/add-application-portal/find-application.png)
+    ![Arama kutusunu kullanarak bir uygulamanın nasıl bulunacağını gösterir](media/add-application-portal/find-application.png)
 
 ## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
 
-Now that you've found the application, you can open it and configure application properties.
+Uygulamayı buldığınıza göre, onu açabilir ve uygulama özelliklerini yapılandırabilirsiniz.
 
-To edit the application properties:
+Uygulama özelliklerini düzenlemek için:
 
-1. Select the application to open it.
-2. Select **Properties** to open the properties pane for editing.
+1. Açmak için uygulamayı seçin.
+2. Özellikler bölmesini düzenlenmek üzere açmak için **Özellikler** ' i seçin.
 
-    ![Shows the Properties screen and editable app properties](media/add-application-portal/edit-properties.png)
+    ![Özellikler ekranını ve düzenlenebilir uygulama özelliklerini gösterir](media/add-application-portal/edit-properties.png)
 
-3. Birkaç dakikanızı ayırarak oturum açma seçeneklerini inceleyin. The options determine how users who are assigned or unassigned to the application can sign into the application. And, the options also determine if a user can see the application in the access panel.
+3. Birkaç dakikanızı ayırarak oturum açma seçeneklerini inceleyin. Seçenekler, uygulamaya atanan veya atanmamış kullanıcıların uygulamada oturum açıp atamalayamadığını belirleyebilir. Ayrıca, seçenekler de kullanıcının erişim panelinde uygulamayı görüp görmediğine de sahiptir.
 
-    - **Enabled for users to sign-in?** determines whether users assigned to the application can sign in.
-    - **User assignment required?** determines whether users who aren't assigned to the application can sign in.
-    - **Visible to users?** determines whether users assigned to an app can see it in the access panel and O365 launcher.
+    - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
+    - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
+    - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların onu erişim paneli ve O365 başlatıcısı 'nda göremeyeceğini belirler.
 
-4. Use the following tables to help you choose the best options for your needs.
+4. Gereksinimleriniz için en iyi seçenekleri seçmenize yardımcı olması için aşağıdaki tabloları kullanın.
 
    - **Atanan** kullanıcılar için davranış:
 
@@ -113,7 +113,7 @@ To edit the application properties:
 
        | Uygulama özelliği ayarları | | | Atanmayan kullanıcı deneyimi | |
        |---|---|---|---|---|
-       | Enabled for users to sign in? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
+       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | hayır  | hayır   |
        | evet | evet | hayır  | hayır  | hayır   |
        | evet | hayır  | evet | evet | hayır   |
@@ -130,20 +130,20 @@ To edit the application properties:
 Özel logo kullanmak için:
 
 1. 215x215 piksel boyutunda bir logo oluşturun ve PNG biçiminde kaydedin.
-1. Since you've already found your application, select the application.
-1. In the left pane, select **Properties**.
+1. Uygulamanızı zaten bulduğundan, uygulamayı seçin.
+1. Sol bölmede **Özellikler**' i seçin.
 1. Logoyu yükleyin.
-1. When you're finished, select **Save**. 
+1. İşiniz bittiğinde **Kaydet**' i seçin. 
 
-    ![Shows how to change the logo from the app's Properties page](media/add-application-portal/change-logo.png)
+    ![Uygulamanın Özellikler sayfasından logonun nasıl değiştirileceğini gösterir](media/add-application-portal/change-logo.png)
 
    > [!NOTE]
-   > The thumbnail displayed on this **Properties** pane doesn't update right away. You can close and reopen the properties to see the updated icon.
+   > Bu **Özellikler** bölmesinde görünen küçük resim, hemen güncelleştirmez. Güncelleştirilmiş simgesini görmek için özellikleri kapatıp yeniden açabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've added the application to your Azure AD organization, [choose a single sign-on method](what-is-single-sign-on.md#choosing-a-single-sign-on-method) you want to use and refer to the appropriate article below:
+Artık uygulamayı Azure AD kuruluşunuza eklemişseniz, kullanmak istediğiniz [tek bir oturum açma yöntemi seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki ilgili makaleye başvurun:
 
-- [Configure SAML-based single sign-on](configure-single-sign-on-non-gallery-applications.md)
-- [Configure password single sign-on](configure-password-single-sign-on-non-gallery-applications.md)
-- [Configure linked sign-on](configure-linked-sign-on.md)
+- [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
+- [Parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
+- [Bağlantılı oturum açmayı Yapılandır](configure-linked-sign-on.md)

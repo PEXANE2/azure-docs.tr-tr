@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 58824b13cfac264c051de6bea45d2dab3aae8fae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: dd2ae2159c43da6a049d67cae739f111eba682c9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068114"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534464"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 'da Windows VM 'Leri için zaman eşitleme
 
@@ -38,7 +38,7 @@ Bir bilgisayar saatinin doğruluğu, bilgisayar saatinin Eşgüdümlü Evrensel 
 
 Azure Konakları, Microsoft 'a ait stratum 1 cihazlarından, GPS anteniyle zaman alan iç Microsoft zaman sunucularıyla eşitlenir. Azure 'daki sanal makineler, ana bilgisayarlarına bağlı olarak doğru süreyi (*konak saati*) VM 'ye veya VM 'nin bir zaman sunucusundan ya da her ikisinin birleşimini doğrudan almasını sağlayabilir. 
 
-Konak ile sanal makine etkileşimleri de aynı zamanda saati etkileyebilir. [Bakım koruma](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)sırasında, VM 'ler 30 saniyeye kadar duraklatılır. Örneğin, bakım başlamadan önce VM saati 10:00:00 ' i gösterir ve 28 saniye sürer. VM çalışmaya devam ettikten sonra, sanal makine üzerindeki saat yine 28 saniye olan 10:00:00 ' i gösteriyor olabilir. Bunu düzeltmek için, Vmictimessync hizmeti konakta neler olduğunu izler ve VM 'lerde telafi etmek için değişikliklerin gerçekleşmesini ister.
+Konak ile sanal makine etkileşimleri de aynı zamanda saati etkileyebilir. [Bakım koruma](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)sırasında, VM 'ler 30 saniyeye kadar duraklatılır. Örneğin, bakım başlamadan önce VM saati 10:00:00 ' i gösterir ve 28 saniye sürer. VM çalışmaya devam ettikten sonra, sanal makine üzerindeki saat yine 28 saniye olan 10:00:00 ' i gösteriyor olabilir. Bunu düzeltmek için, Vmictimessync hizmeti konakta neler olduğunu izler ve VM 'lerde telafi etmek için değişikliklerin gerçekleşmesini ister.
 
 Vmictimessync hizmeti, örnek veya eşitleme modunda çalışır ve yalnızca ileriye dönük saati etkiler. W32Time 'ın çalıştırılmasını gerektiren örnek modda, Vmictimessync hizmeti ana bilgisayarı 5 saniyede bir yoklar ve W32Time için zaman örnekleri sağlar. Her 30 saniyede bir, W32Time hizmeti en son örneği alır ve konuğun saatini etkilemek için kullanır. Bir konuğun sürdürüleceği veya bir konuğun saatinin, ana bilgisayar saatinin arkasında 5 saniyeden uzun Drifts, eşitleme modu etkinleştirir. W32Time hizmetinin düzgün çalıştığı durumlarda, ikinci durum asla gerçekleşmemelidir.
 

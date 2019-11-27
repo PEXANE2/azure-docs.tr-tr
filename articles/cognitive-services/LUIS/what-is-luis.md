@@ -19,9 +19,9 @@ ms.locfileid: "74456558"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
-Language Understanding (LUIS) is a cloud-based API service that applies custom machine-learning intelligence to natural language text to predict overall meaning, and pull out relevant, detailed information. 
+Language Understanding (LUSıS), genel anlamı tahmin etmek için doğal dil metnine özel makine öğrenimi zekası uygulayan bulut tabanlı bir API hizmetidir ve ilgili ayrıntılı bilgileri kullanıma alır. 
 
-For example, when a client application sends the text, `find me a wireless keyboard for $30`, LUIS responds with the following JSON object. 
+Örneğin, bir istemci uygulaması metni gönderdiğinde `find me a wireless keyboard for $30`, Lua aşağıdaki JSON nesnesiyle yanıt verir. 
 
 ```JSON
 {
@@ -48,26 +48,26 @@ For example, when a client application sends the text, `find me a wireless keybo
     }
 }
 ```
-In the example above, the _**intent**_ , or overall meaning of the phrase is that the user is trying to find an item. The detailed pieces of information that LUIS extracts are called _**entities**_ . In this case, the entities are the name of the item the user is looking for and the amount of money they want to spend.
+Yukarıdaki örnekte, ifadenin _**amacı**_ veya genel anlamı kullanıcının bir öğe bulmaya çalışıyor olması olur. LUIN çıkaran bilgilerin ayrıntılı parçaları, _**varlıklar**_ olarak adlandırılır. Bu durumda, varlıklar kullanıcının baktıkları öğenin adı ve harcamaları istedikleri para miktarı olur.
 
-Client applications use LUIS's returned JSON, the _intent_ (category), and _entities_ (extracted detailed information), to drive actions in the client application. A client application for LUIS is often a conversational application that communicates with a user in natural language to complete a task. İstemci uygulamalarına örnek olarak sosyal medya uygulamaları, sohbet botları ve konuşma özellikli masaüstü uygulamaları verilebilir. 
+İstemci uygulamaları, istemci uygulamasındaki eylemleri sağlamak için LUSıS 'nin döndürdüğü JSON, _Amaç_ (kategori) ve _varlıkları_ (ayrıntılı bilgi ayıklandı) kullanır. LUO 'nun istemci uygulaması genellikle bir görevi tamamlaması için doğal dilde bir kullanıcıyla iletişim kuran bir konuşma uygulamasıdır. İstemci uygulamalarına örnek olarak sosyal medya uygulamaları, sohbet botları ve konuşma özellikli masaüstü uygulamaları verilebilir. 
 
-![Conceptual image of 3 client applications working with Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Conceptual image of 3 client applications working with Cognitive Services Language Understanding (LUIS)")
+![Bilişsel hizmetler Language Understanding (LUSıS) ile çalışan 3 istemci uygulamasının kavramsal resmi](./media/luis-overview/luis-entry-point.png "Bilişsel hizmetler Language Understanding (LUSıS) ile çalışan 3 istemci uygulamasının kavramsal resmi")
 
-## <a name="example-use-luis-in-a-chat-bot"></a>Example use LUIS in a chat bot
+## <a name="example-use-luis-in-a-chat-bot"></a>Örnek, bir sohbet bot 'ta LUSıS kullanma
 
 <a name="Accessing-LUIS"></a>
 
-A client application sends utterances (text) to the published LUIS natural language processing endpoint [API][endpoint-apis] and receives the results as JSON responses. Sık kullanılan LUIS istemci uygulamalarından biri, sohbet botudur.
+Bir istemci uygulaması, yayımlanan LUSıS doğal dil işleme uç nokta [API][endpoint-apis] 'sine utterer (metin) gönderir ve sonuçları JSON yanıtları olarak alır. Sık kullanılan LUIS istemci uygulamalarından biri, sohbet botudur.
 
 
-![Conceptual imagery of LUIS working with Chat bot to predict user text with natural language understanding (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptual imagery of LUIS working with Chat bot to predict user text with natural language understanding (NLP")
+![Kullanıcı metnini doğal dil anlama (NLP) ile tahmin etmek için, lu](./media/luis-overview/LUIS-chat-bot-request-response.svg "Kullanıcı metnini doğal dil anlama ile tahmin etmek için, lu")
 
 |Adım|Eylem|
 |:--|:--|
-|1|İstemci uygulaması, kullanıcının "İK temsilcimi aramak istiyorum." şeklindeki _konuşmasını_ (kendi kullandıkları kelimelerle) bir HTTP isteği olarak LUIS uç noktasına gönderir.|
-|2|LUIS applies machine learned language models to the user's unstructured input text and returns a JSON-formatted response, with a top intent, `HRContact`. JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. It can also extract data such as the _Contact Type_ entity.|
-|3|İstemci uygulaması, JSON yanıtını kullanarak kullanıcının isteklerini gerçekleştirmeyle ilgili kararları verir. These decisions can include a decision tree in the bot and calls to other services. |
+|1\.|İstemci uygulaması, kullanıcının "İK temsilcimi aramak istiyorum." şeklindeki _konuşmasını_ (kendi kullandıkları kelimelerle) bir HTTP isteği olarak LUIS uç noktasına gönderir.|
+|2|LUSıS, kullanıcının yapılandırılmamış giriş metnine makine tarafından öğrenilen dil modellerini uygular ve en iyi amaç olan bir JSON biçimli yanıt döndürür `HRContact`. JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. Ayrıca, _kişi türü_ varlığı gibi verileri de ayıklayabilir.|
+|3|İstemci uygulaması, JSON yanıtını kullanarak kullanıcının isteklerini gerçekleştirmeyle ilgili kararları verir. Bu kararlar, bot 'ta bir karar ağacı ve diğer hizmetlere çağrılar içerebilir. |
 
 LUIS uygulaması, istemci uygulamasının akıllı seçimler yapabilmesi için gerekli bilgileri sunar. LUIS bu seçenekleri sağlamaz. 
 
@@ -76,18 +76,18 @@ LUIS uygulaması, istemci uygulamasının akıllı seçimler yapabilmesi için g
 
 ## <a name="natural-language-processing"></a>Doğal dil işleme
 
-Your LUIS app contains domain-specific natural language models, which work together. You can start the LUIS app with one or more prebuilt models, build your own model, or blend prebuilt models with your own custom information.
+LUSıS uygulamanız, birlikte çalışan, etki alanına özgü doğal dil modelleri içerir. LUO uygulamasını önceden oluşturulmuş bir veya daha fazla modelle başlatabilir, kendi modelinizi oluşturabilir ya da kendi özel bilgilerinizi kullanarak önceden oluşturulmuş modelleri karıştırabilirsiniz.
 
-* **Prebuilt model** LUIS has many prebuilt domains that include intent and entity models that work together to complete common usage scenarios. These domains include labeled utterances that can be inspected and edited, allowing you to customize them. [Önceden oluşturulmuş etki alanı modelleri](luis-how-to-use-prebuilt-domains.md), tasarımın tamamını içerir ve LUIS hizmetini kullanmaya başlamak için ideal bir yoldur. In addition, there are prebuilt entities such as currency and number that you can use independently from the prebuilt domains.
+* **Önceden oluşturulmuş model** LU, genel kullanım senaryolarını tamamlamaya yönelik amaç ve varlık modellerini içeren çok sayıda önceden oluşturulmuş etki alanı vardır. Bu etki alanları, özelleştirilecek ve düzenlenebilen ve bunları özelleştirmenize olanak tanıyan etiketli utüslar içerir. [Önceden oluşturulmuş etki alanı modelleri](luis-how-to-use-prebuilt-domains.md), tasarımın tamamını içerir ve LUIS hizmetini kullanmaya başlamak için ideal bir yoldur. Ayrıca, önceden oluşturulmuş etki alanlarından bağımsız olarak kullanabileceğiniz para birimi ve numara gibi önceden oluşturulmuş varlıklar vardır.
 
-* **Custom model** LUIS gives you several ways to build your own custom models including intents, and entities. Entities include machine-learned entities, pattern matching entities, and a combination of machine-learned and pattern matching.
+* **Özel model** LUO, amaçları ve varlıkları dahil olmak üzere kendi özel modellerinizi oluşturmak için size çeşitli yollar sağlar. Varlıklar, makine tarafından öğrenilen varlıkları, model eşleşen varlıkları ve makine tarafından öğrenilen ve model eşleştirmesinin bir birleşimini içerir.
 
-## <a name="build-the-luis-app"></a>Build the LUIS app
-Build the app with the [authoring](https://go.microsoft.com/fwlink/?linkid=2092087) APIs or with the [LUIS portal](https://www.luis.ai).
+## <a name="build-the-luis-app"></a>LUSıS uygulamasını oluşturma
+Uygulamayı [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'Leriyle veya [LUIS portalı](https://www.luis.ai)ile oluşturun.
 
-The LUIS app begins with categories of input text called **[intents](luis-concept-intent.md)** . Her amaç için kullanıcı **[konuşmaları](luis-concept-utterance.md)** örneklerine ihtiyaç duyulur. Each utterance can provide data that needs to be extracted. 
+LUSıS uygulaması, **[Amaç](luis-concept-intent.md)** olarak adlandırılan giriş metni kategorileri ile başlar. Her amaç için kullanıcı **[konuşmaları](luis-concept-utterance.md)** örneklerine ihtiyaç duyulur. Her söylük ayıklanmak gereken verileri sağlayabilir. 
 
-|Örnek kullanıcı konuşması|Amaç|Extracted data|
+|Örnek kullanıcı konuşması|Amaç|Ayıklanan veriler|
 |-----------|-----------|-----------|
 |`Book a flight to __Seattle__?`|BookFlight|Seattle|
 |`When does your store __open__?`|StoreHoursAndLocation|açık|
@@ -95,9 +95,9 @@ The LUIS app begins with categories of input text called **[intents](luis-concep
 
 ## <a name="query-prediction-endpoint"></a>Sorgu tahmin uç noktası
 
-After your app is trained and published to the endpoint, the client application sends utterances to the prediction [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) API. The API applies the app to the utterance for analysis and responds with the prediction results in a JSON format.  
+Uygulamanız eğitildikten ve uç noktada yayımlandıktan sonra, istemci uygulaması, tahmin [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) API 'sine bir konuşma gönderir. API, uygulamayı Analize analiz için uygular ve tahmin sonuçlarıyla bir JSON biçiminde yanıt verir.  
 
-JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. It can also extract data such as the following **Contact Type** entity and overall sentiment. 
+JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. Ayrıca, aşağıdaki **kişi türü** varlığı ve genel yaklaşım gibi verileri de ayıklayabilir. 
 
 ```JSON
 {
@@ -125,41 +125,41 @@ JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı ama
 
 ## <a name="improve-model-prediction"></a>Model tahminini geliştirme
 
-After your LUIS app is published and receives real user utterances, LUIS provides [active learning](luis-concept-review-endpoint-utterances.md) of endpoint utterances to improve prediction accuracy. 
+LUP uygulamanız yayımlandıktan ve gerçek Kullanıcı dıklılığını aldıktan sonra, Lud, tahmin doğruluğunu artırmak için uç nokta dıklarınızın etkin bir şekilde [öğrenilmesine](luis-concept-review-endpoint-utterances.md) olanak sağlar. 
 
 <a name="using-luis"></a>
 
-## <a name="iterative-development-lifecycle"></a>Iterative development lifecycle
-LUIS provides tools, versioning, and collaboration with other LUIS authors to integrate into the full iterative [development life cycle](luis-concept-app-iteration.md). 
+## <a name="iterative-development-lifecycle"></a>Yinelemeli geliştirme yaşam döngüsü
+LUO, tam yinelemeli [geliştirme yaşam döngüsü](luis-concept-app-iteration.md)ile tümleştirilecek diğer Luo yazarlarıyla birlikte araçlar, sürüm oluşturma ve işbirliği sağlar. 
 
 ## <a name="implementing-luis"></a>LUIS uygulama
-Language Understanding (LUIS), as a REST API, can be used with any product, service, or framework with an HTTP request. Aşağıdaki liste, LUIS ile birlikte en çok kullanılan Microsoft ürünlerini ve hizmetlerini göstermektedir.
+Language Understanding (LUU), bir REST API olarak HTTP isteğiyle herhangi bir ürünle, hizmette veya çerçevede kullanılabilir. Aşağıdaki liste, LUIS ile birlikte en çok kullanılan Microsoft ürünlerini ve hizmetlerini göstermektedir.
 
 En çok kullanılan LUIS istemci uygulamaları şunlardır:
-* [Web uygulaması botu](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0), kullanıcıyla metin girişi aracılığıyla konuşmak için hızlıca LUIS destekli bir sohbet botu oluşturur. Uses [Bot Framework][bot-framework] version [4.x](https://github.com/Microsoft/botbuilder-dotnet) for a complete bot experience.
+* [Web uygulaması botu](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0), kullanıcıyla metin girişi aracılığıyla konuşmak için hızlıca LUIS destekli bir sohbet botu oluşturur. Tüm bot deneyimi için [bot Framework][bot-framework] sürüm [4. x](https://github.com/Microsoft/botbuilder-dotnet) 'i kullanır.
 
 LUIS'i hızlı ve kolay bir şekilde botla birlikte kullanmanızı sağlayacak uygulamalar:
-* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) The NPM package provides authoring and prediction with as either a stand-alone command line tool or as import. 
+* [LUSıS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) NPM paketi, tek başına bir komut satırı aracı olarak veya içeri aktarma olarak ile yazma ve tahmin sağlar. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) LUISGen, dışarı aktarılan bir LUIS modelinden ayrıntılı C# ve typescript kaynak kodu yazmak için kullanılan bir araçtır.
 * [Gönderme](https://aka.ms/dispatch-tool), çeşitli LUIS ve Soru-Cevap Oluşturma uygulamalarının gönderme modelini kullanan bir üst uygulamadan kullanılmasını sağlar.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown, botunuz için dil modellerini yönetmenize yardımcı olan bir komut satırı aracıdır.
-* [Bot framework - Composer](https://github.com/microsoft/BotFramework-Composer) - an integrated development tool for developers and multi-disciplinary teams to build bots and conversational experiences with the Microsoft Bot Framework
+* [Bot Framework-besteci](https://github.com/microsoft/BotFramework-Composer) -geliştiriciler ve çok disiplinli takımlar Için Microsoft bot Framework ile botları ve konuşma deneyimleri oluşturmaya yönelik tümleşik bir geliştirme aracı
 
 LUIS ile kullanılan diğer Bilişsel Hizmetler:
-* [QnA Maker][qnamaker] allows several types of text to combine into a question and answer knowledge base.
+* [Soru-cevap oluşturma][qnamaker] , bir soru ve yanıt bilgi bankasındaki çeşitli metin türlerinin birleştirilmesine izin verir.
 * [Konuşma hizmeti](../Speech-Service/overview.md), sözlü dil isteklerini metne dönüştürür. 
 * [Konuşma öğrenici](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview), LUIS ile daha hızlı bir şekilde sohbet botları oluşturmanızı sağlar.
 
-Samples using LUIS:
-* [Conversational AI](https://github.com/Microsoft/AI) GitHub repository.
-* [Bot framework - Bot samples](https://github.com/microsoft/BotBuilder-Samples)
+LUŞU kullanan örnekler:
+* [Konuşma AI](https://github.com/Microsoft/AI) GitHub deposu.
+* [Bot Framework-bot örnekleri](https://github.com/microsoft/BotBuilder-Samples)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Yenilikler](whats-new.md)
-* Author a new LUIS app with a [prebuilt](luis-get-started-create-app.md) or [custom](luis-quickstart-intents-only.md) domain
+* [Önceden oluşturulmuş](luis-get-started-create-app.md) veya [özel](luis-quickstart-intents-only.md) bir etki alanı ile yeni bir Luo uygulaması yazma
 * Genel IoT uygulamasının [tahmin uç noktasını sorgulama](luis-get-started-get-intent-from-browser.md). 
-* [Developer resources](developer-reference-resource.md) for LUIS. 
+* LUSıS için [Geliştirici kaynakları](developer-reference-resource.md) . 
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/

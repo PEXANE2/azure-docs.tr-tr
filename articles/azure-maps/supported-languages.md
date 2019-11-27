@@ -25,7 +25,7 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
-| Kimlik         | Ad                   |  Haritalar | Search | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
+| Kimlik         | Name                   |  Haritalar | Ara | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikaner dili              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -148,7 +148,7 @@ Varsayılan olarak görünüm parametresi, istekte tanımlanmasanız bile **birl
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görünüm         | Açıklama                            |  Haritalar | Search | JS Harita Denetimi |
+| Görünüm         | Açıklama                            |  Haritalar | Ara | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |

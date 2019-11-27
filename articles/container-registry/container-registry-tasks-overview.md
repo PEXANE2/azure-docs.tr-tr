@@ -1,6 +1,6 @@
 ---
 title: ACR Görevlerine genel bakış
-description: An introduction to ACR Tasks, a suite of features in Azure Container Registry that provides secure, automated container image build, management, and patching in the cloud.
+description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
 ms.date: 09/05/2019
 ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
@@ -10,132 +10,132 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456149"
 ---
-# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automate container image builds and maintenance with ACR Tasks
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
-Containers provide new levels of virtualization, isolating application and developer dependencies from infrastructure and operational requirements. What remains, however, is the need to address how this application virtualization is managed and patched over the container lifecycle.
+Kapsayıcılar, altyapı ve işletimsel gereksinimlerden uygulama ve geliştirici bağımlılıklarını yalıtmak için yeni sanallaştırma düzeyleri sağlar. Ancak, bu uygulama sanallaştırmanın kapsayıcı yaşam döngüsü üzerinde nasıl yönetildiğini ve düzeltme eki ekleneceğini ele alma gereksinimiyle birlikte kalır.
 
-## <a name="what-is-acr-tasks"></a>What is ACR Tasks?
+## <a name="what-is-acr-tasks"></a>ACR görevleri nedir?
 
-**ACR Tasks** is a suite of features within Azure Container Registry. It provides cloud-based container image building for [platforms](#image-platforms) including Linux, Windows, and ARM, and can automate [OS and framework patching](#automate-os-and-framework-patching) for your Docker containers. ACR Tasks not only extends your "inner-loop" development cycle to the cloud with on-demand container image builds, but also enables automated builds triggered by source code updates, updates to a container's base image, or timers. For example, with base image update triggers, you can automate your OS and application framework patching workflow, maintaining secure environments while adhering to the principles of immutable containers.
+**ACR görevleri** Azure Container Registry içindeki bir özellik paketidir. Linux, Windows ve ARM dahil olmak üzere [platformlar](#image-platforms) için bulut tabanlı kapsayıcı görüntüsü oluşturma olanağı sağlar ve Docker kapsayıcılarınız Için [işletim sistemi ve çerçeve düzeltme ekini](#automate-os-and-framework-patching) otomatik hale getirebilir. ACR görevleri, isteğe bağlı kapsayıcı görüntüsü Derlemeleriyle yalnızca "iç döngüyle" geliştirme döngüsünü buluta genişletmez, ancak kaynak kodu güncelleştirmeleri tarafından tetiklenen otomatik yapıları, kapsayıcının temel görüntüsüne veya zamanlayıcılara yönelik güncelleştirmeleri de sağlar. Örneğin, temel görüntü güncelleştirme Tetikleyicileri ile, işletim sistemi ve uygulama çerçevesi düzeltme eki uygulama iş akışınızı otomatikleştirerek, sabit kapsayıcıların ilkelerine uyurken güvenli ortamları koruyun.
 
-## <a name="task-scenarios"></a>Task scenarios
+## <a name="task-scenarios"></a>Görev senaryoları
 
-ACR Tasks supports several scenarios to build and maintain container images and other artifacts. See the following sections in this article for details.
+ACR görevleri kapsayıcı görüntülerini ve diğer yapıtları derlemek ve sürdürmek için çeşitli senaryoları destekler. Ayrıntılar için bu makaledeki aşağıdaki bölümlere bakın.
 
-* **[Quick task](#quick-task)** - Build and push a single container image to a container registry on-demand, in Azure, without needing a local Docker Engine installation. Think `docker build`, `docker push` in the cloud.
-* **Automatically triggered tasks** - Enable one or more *triggers* to build an image:
-  * **[Trigger on source code update](#trigger-task-on-source-code-update)** 
-  * **[Trigger on base image update](#automate-os-and-framework-patching)** 
-  * **[Trigger on a schedule](#schedule-a-task)** 
-* **[Multi-step task](#multi-step-tasks)** - Extend the single image build-and-push capability of ACR Tasks with multi-step, multi-container-based workflows. 
+* **[Hızlı görev](#quick-task)** -tek bir kapsayıcı görüntüsünü oluşturun ve Azure 'da, yerel bir Docker altyapısı yüklemesine gerek kalmadan bir kapsayıcı kayıt defterine gönderin. `docker build`, bulutta `docker push` düşünün.
+* **Otomatik tetiklenen görevler** -bir görüntü oluşturmak için bir veya daha fazla *tetikleyici* etkinleştirin:
+  * **[Kaynak kodu güncelleştirmesinde Tetikle](#trigger-task-on-source-code-update)** 
+  * **[Temel görüntü güncelleştirmesinde Tetikle](#automate-os-and-framework-patching)** 
+  * **[Bir zamanlamaya göre Tetikle](#schedule-a-task)** 
+* **[Çok adımlı görev](#multi-step-tasks)** -çok adımlı, çok Kapsayıcılı tabanlı iş akışlarıyla ACR görevlerinin tek görüntü derleme ve gönderme özelliğini genişletir. 
 
-Each ACR Task has an associated [source code context](#context-locations) - the location of a set of source files used to build a container image or other artifact. Example contexts include a Git repository or a local filesystem.
+Her bir ACR görevinin ilişkili bir [kaynak kodu bağlamı](#context-locations) vardır; bir kapsayıcı görüntüsü veya başka yapıt oluşturmak için kullanılan bir kaynak dosyaları kümesinin konumu. Örnek bağlamlar bir git deposu veya yerel bir dosya sistemi içerir.
 
-Tasks can also take advantage of [run variables](container-registry-tasks-reference-yaml.md#run-variables), so you can reuse task definitions and standardize tags for images and artifacts.
+Görevler [çalışma değişkenlerinden](container-registry-tasks-reference-yaml.md#run-variables)de yararlanabilir, böylece görev tanımlarını yeniden kullanabilir ve görüntüler ve yapıtlar için etiketleri standartlaşabilirsiniz.
 
-## <a name="quick-task"></a>Quick task
+## <a name="quick-task"></a>Hızlı görev
 
-The inner-loop development cycle, the iterative process of writing code, building, and testing your application before committing to source control, is really the beginning of container lifecycle management.
+Kaynak denetimine işlemeden önce uygulamanızı kod yazma, oluşturma ve test etme için yinelemeli bir işlem olan iç döngü geliştirme döngüsü, kapsayıcı yaşam döngüsü yönetiminin başlangıcıdır.
 
-Before you commit your first line of code, ACR Tasks's [quick task](container-registry-tutorial-quick-task.md) feature can provide an integrated development experience by offloading your container image builds to Azure. With quick tasks, you can verify your automated build definitions and catch potential problems prior to committing your code.
+İlk kod satırlarınızı işlemeden önce, ACR görevlerinin [hızlı görev](container-registry-tutorial-quick-task.md) özelliği, kapsayıcı görüntüsü derlemelerinizi Azure 'a devrederek bir tümleşik geliştirme deneyimi sağlayabilir. Hızlı görevlerle, kodunuzu işlemeden önce otomatik derleme tanımlarınızı doğrulayabilirsiniz ve olası sorunları yakalayabilin.
 
-Using the familiar `docker build` format, the [az acr build][az-acr-build] command in the Azure CLI takes a [context](#context-locations) (the set of files to build), sends it ACR Tasks and, by default, pushes the built image to its registry upon completion.
+Tanıdık `docker build` biçimini kullanarak, Azure CLı 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandığında kayıt defterine iletir.
 
-For an introduction, see the quickstart to [build and run a container image](container-registry-quickstart-task-cli.md) in Azure Container Registry.  
+Giriş için bkz. Azure Container Registry [bir kapsayıcı görüntüsü oluşturma ve çalıştırma](container-registry-quickstart-task-cli.md) hızlı başlangıcı.  
 
-ACR Tasks is designed as a container lifecycle primitive. For example, integrate ACR Tasks into your CI/CD solution. By executing [az login][az-login] with a [service principal][az-login-service-principal], your CI/CD solution could then issue [az acr build][az-acr-build] commands to kick off image builds.
+ACR görevleri kapsayıcı yaşam döngüsü temel olarak tasarlanmıştır. Örneğin, ACR görevlerini CI/CD çözümünüz ile tümleştirin. Bir [hizmet sorumlusu][az-login-service-principal]ile [az oturum açma][az-login] ÇALıŞTıRARAK, CI/CD çözümünüz görüntü yapılarını açmak için [az ACR Build][az-acr-build] komutları verebilir.
 
-Learn how to use quick tasks in the first ACR Tasks tutorial, [Build container images in the cloud with Azure Container Registry Tasks](container-registry-tutorial-quick-task.md).
+İlk ACR görevleri öğreticisinde hızlı görevleri nasıl kullanacağınızı öğrenin, [bulutta kapsayıcı görüntülerini Azure Container Registry görevlerle oluşturun](container-registry-tutorial-quick-task.md).
 
 > [!TIP]
-> If you want to build and push an image directly from source code, without a Dockerfile, Azure Container Registry provides the [az acr pack build][az-acr-pack-build] command (preview). This tool builds and pushes an image from application source code using [Cloud Native Buildpacks](https://buildpacks.io/).
+> Dockerfile olmadan doğrudan kaynak kodundan bir görüntü oluşturup göndermek istiyorsanız, Azure Container Registry [az ACR Pack Build][az-acr-pack-build] komutunu (Önizleme) sağlar. Bu araç, [bulut Yerel Buildpacks](https://buildpacks.io/)kullanarak uygulama kaynak kodundan bir görüntü oluşturur ve gönderir.
 
-## <a name="trigger-task-on-source-code-update"></a>Trigger task on source code update
+## <a name="trigger-task-on-source-code-update"></a>Kaynak kodu güncelleştirmesinde tetikleme görevi
 
-Trigger a container image build or multi-step task when code is committed, or a pull request is made or updated, to a Git repository in GitHub or Azure DevOps. For example, configure a build task with the Azure CLI command [az acr task create][az-acr-task-create] by specifying a Git repository and optionally a branch and Dockerfile. When your team updates code in the repository, an ACR Tasks-created webhook triggers a build of the container image defined in the repo. 
+Kod yürütüldüğü sırada bir kapsayıcı görüntüsü oluşturma veya çok adımlı bir görev veya GitHub ya da Azure DevOps 'daki bir git deposuna bir çekme isteği yapıldığında veya güncelleştirilirken tetiklenir. Örneğin, bir git deposu ve isteğe bağlı olarak bir dal ve Dockerfile belirterek Azure [CLI komutu ile][az-acr-task-create] bir derleme görevi yapılandırın. Takımınız depodaki kodu güncelleştirdiğinde, ACR görevler tarafından oluşturulan bir Web kancası depoda tanımlanan kapsayıcı görüntüsünün derlemesini tetikler. 
 
-ACR Tasks supports the following triggers when you set a Git repo as the task's context:
+ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşağıdaki Tetikleyicileri destekler:
 
-| Tetikleyici | Enabled by default |
+| Tetikleyici | Varsayılan olarak etkin |
 | ------- | ------------------ |
-| İşleme | Yes |
-| Pull request | Hayır |
+| İşleme | Evet |
+| Çekme isteği | Hayır |
 
-To configure the trigger, you provide the task a personal access token (PAT) to set the webhook in the GitHub or Azure DevOps repo.
+Tetikleyiciyi yapılandırmak için, bir kişisel erişim belirteci (PAT) görevini GitHub veya Azure DevOps deposunda bir Web kancasını ayarlamaya sağlarsınız.
 
-Learn how to trigger builds on source code commit in the second ACR Tasks tutorial, [Automate container image builds with Azure Container Registry Tasks](container-registry-tutorial-build-task.md).
+İkinci ACR görevleri öğreticisinde kaynak kodu işlemesinde derlemelerin nasıl tetikleneceğini öğrenin, [Azure Container Registry görevlerle kapsayıcı görüntüsü derlemelerini otomatikleştirin](container-registry-tutorial-build-task.md).
 
-## <a name="automate-os-and-framework-patching"></a>Automate OS and framework patching
+## <a name="automate-os-and-framework-patching"></a>İşletim sistemi ve çerçeve düzeltme ekini otomatikleştirme
 
-The power of ACR Tasks to truly enhance your container build workflow comes from its ability to detect an update to a base image. When the updated base image is pushed to your registry, or a base image is updated in a public repo such as in Docker Hub, ACR Tasks can automatically build any application images based on it.
+ACR görevlerinin, kapsayıcı derleme iş akışınızı gerçek anlamda geliştirme gücü, bir temel görüntüde güncelleştirme algılama özelliğinden geliyor. Güncelleştirilmiş temel görüntü kayıt defterinize gönderildiğinde veya Docker Hub 'daki gibi bir genel depoda bir temel görüntü güncelleştirilirse, ACR görevleri bu uygulamayı temel alan herhangi bir uygulama görüntüsünü otomatik olarak oluşturabilir.
 
-Container images can be broadly categorized into *base* images and *application* images. Your base images typically include the operating system and application frameworks upon which your application is built, along with other customizations. These base images are themselves typically based on public upstream images, for example: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], or [Node.js][base-node]. Several of your application images might share a common base image.
+Kapsayıcı görüntüleri, *temel* görüntülere ve *uygulama* görüntülerine büyük ölçüde kategorilere ayrılabilir. Temel görüntüleriniz genellikle uygulamanızın oluşturulduğu işletim sistemini ve uygulama çerçevelerini, diğer özelleştirmelerle birlikte içerir. Bu temel görüntüler genellikle genel yukarı akış görüntülerini temel alır, örneğin: [alp Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]veya [Node. js][base-node]. Uygulama görüntülerinizin birkaçı ortak bir temel görüntü paylaşabilir.
 
-When an OS or app framework image is updated by the upstream maintainer, for example with a critical OS security patch, you must also update your base images to include the critical fix. Each application image must then also be rebuilt to include these upstream fixes now included in your base image.
+Bir işletim sistemi veya uygulama çerçevesi görüntüsü, örneğin, kritik bir işletim sistemi güvenlik düzeltme ekine sahip olan yukarı akış bakımını tarafından güncelleştirildiği zaman, temel görüntülerinizi de kritik düzeltme içerecek şekilde güncelleştirmeniz gerekir. Ayrıca, bu yukarı akış düzeltmelerini temel görüntıza dahil etmek için her bir uygulama görüntüsünün yeniden oluşturulması gerekir.
 
-Because ACR Tasks dynamically discovers base image dependencies when it builds a container image, it can detect when an application image's base image is updated. With one preconfigured [build task](container-registry-tutorial-base-image-update.md#create-a-task), ACR Tasks then **automatically rebuilds every application image** for you. With this automatic detection and rebuilding, ACR Tasks saves you the time and effort normally required to manually track and update each and every application image referencing your updated base image.
+ACR görevleri bir kapsayıcı görüntüsü oluşturduğunda temel görüntü bağımlılıklarını dinamik olarak bulduğu için, bir uygulama görüntüsünün temel görüntüsünün ne zaman güncelleştirileceğini algılayabilir. Önceden yapılandırılmış bir [derleme göreviyle](container-registry-tutorial-base-image-update.md#create-a-task), ACR görevleri daha sonra **her uygulama görüntüsünü sizin için otomatik olarak yeniden oluşturur** . Bu otomatik algılama ve yeniden oluşturma ile, ACR görevleri, güncelleştirilmiş temel görüntenize başvuran her bir uygulama görüntüsünü el ile izlemek ve güncelleştirmek için normalde gereken zaman ve çabayı kaydeder.
 
-For image builds from a Dockerfile, an ACR task tracks a base image update when the base image is in one of the following locations:
+Dockerfile 'dan görüntü yapıları için, bir ACR görevi, temel görüntü aşağıdaki konumlardan birinde olduğunda bir temel görüntü güncelleştirmesini izler:
 
-* The same Azure container registry where the task runs
-* Another Azure container registry in the same region 
-* A public repo in Docker Hub
-* A public repo in Microsoft Container Registry
+* Görevin çalıştığı aynı Azure Container kayıt defteri
+* Aynı bölgedeki başka bir Azure Kapsayıcı kayıt defteri 
+* Docker Hub 'da ortak depo
+* Microsoft Container Registry genel depo
 
 > [!NOTE]
-> * The base image update trigger is enabled by default in an ACR task. 
-> * Currently, ACR Tasks only tracks base image updates for application (*runtime*) images. ACR Tasks doesn't track base image updates for intermediate (*buildtime*) images used in multi-stage Dockerfiles. 
+> * Temel görüntü güncelleştirme tetikleyicisi bir ACR görevinde varsayılan olarak etkindir. 
+> * Şu anda ACR görevleri yalnızca uygulama (*çalışma zamanı*) görüntüleri için temel görüntü güncelleştirmelerini izler. ACR görevleri, çok aşamalı Dockerfiles 'da kullanılan ara (*buildtime*) görüntüleri için temel görüntü güncelleştirmelerini izlemez. 
 
-Learn more about OS and framework patching in the third ACR Tasks tutorial, [Automate image builds on base image update with Azure Container Registry Tasks](container-registry-tutorial-base-image-update.md).
+Üçüncü ACR görevleri öğreticisinde işletim sistemi ve çerçeve düzeltme eki uygulama hakkında daha fazla bilgi edinin. [Azure Container Registry görevlerle, temel görüntü güncelleştirme üzerinde görüntü derlemelerini otomatikleştirin](container-registry-tutorial-base-image-update.md).
 
 ## <a name="schedule-a-task"></a>Görev zamanlama
 
-Optionally schedule a task by setting up one or more *timer triggers* when you create or update the task. Scheduling a task is useful for running container workloads on a defined schedule, or running maintenance operations or tests on images pushed regularly to your registry. For details, see [Run an ACR task on a defined schedule](container-registry-tasks-scheduled.md).
+Görevi oluştururken veya güncelleştirdiğinizde bir veya daha fazla *Zamanlayıcı tetikleyicisi* ayarlayarak isteğe bağlı olarak bir görev zamanlayın. Bir görevi zamanlama, tanımlı bir zamanlamaya göre kapsayıcı iş yüklerini çalıştırmak veya düzenli olarak kayıt defterinize gönderilen görüntülerde bakım işlemleri ya da testler çalıştırmak için yararlıdır. Ayrıntılar için bkz. [tanımlı bir zamanlamaya göre ACR görevi çalıştırma](container-registry-tasks-scheduled.md).
 
 ## <a name="multi-step-tasks"></a>Çok adımlı görevler
 
-Multi-step tasks provide step-based task definition and execution for building, testing, and patching container images in the cloud. Task steps defined in a [YAML file](container-registry-tasks-reference-yaml.md) specify individual build and push operations for container images or other artifacts. Ayrıca, her adımın kapsayıcıyı kendi yürütme ortamı olarak kullanmasıyla bir veya daha fazla kapsayıcının yürütülmesini de tanımlayabilirler.
+Çok adımlı görevler, bulutta kapsayıcı görüntüleri oluşturmak, test etmek ve düzeltme eki uygulamak için adım tabanlı görev tanımı ve yürütme sağlar. [YAML dosyasında](container-registry-tasks-reference-yaml.md) tanımlanan görev adımları, kapsayıcı görüntüleri veya diğer yapıtlar için tek tek derleme ve gönderme işlemlerini belirtir. Ayrıca, her adımın kapsayıcıyı kendi yürütme ortamı olarak kullanmasıyla bir veya daha fazla kapsayıcının yürütülmesini de tanımlayabilirler.
 
-For example, you can create a multi-step task that automates the following:
+Örneğin, aşağıdakileri otomatikleştiren bir çok adımlı görev oluşturabilirsiniz:
 
-1. Build a web application image
-1. Run the web application container
-1. Build a web application test image
-1. Run the web application test container, which performs tests against the running application container
-1. If the tests pass, build a Helm chart archive package
-1. Perform a `helm upgrade` using the new Helm chart archive package
+1. Web uygulaması görüntüsü oluşturma
+1. Web uygulaması kapsayıcısını çalıştırma
+1. Web uygulaması test görüntüsü oluşturma
+1. Çalışan uygulama kapsayıcısına karşı testler gerçekleştiren Web uygulaması test kapsayıcısını çalıştırın
+1. Testler başarılı olursa bir Helu grafik arşiv paketi oluşturun
+1. Yeni Held grafik Arşivi paketini kullanarak bir `helm upgrade` gerçekleştirme
 
-Multi-step tasks enable you to split the building, running, and testing of an image into more composable steps, with inter-step dependency support. With multi-step tasks in ACR Tasks, you have more granular control over image building, testing, and OS and framework patching workflows.
+Çok adımlı görevler, bir görüntünün oluşturma, çalıştırma ve test etme özelliğini, adım adım bağımlılık desteğiyle daha birleştirilebilir adımlara bölmeye olanak tanır. ACR görevlerinde çok adımlı görevlerle, görüntü oluşturma, test etme ve işletim sistemi ve çerçeve düzeltme eki uygulama iş akışları üzerinde daha ayrıntılı denetime sahip olursunuz.
 
-Learn about multi-step tasks in [Run multi-step build, test, and patch tasks in ACR Tasks](container-registry-tasks-multi-step.md).
+[ACR görevlerinde multi-step Build, test ve Patch görevlerini Çalıştır](container-registry-tasks-multi-step.md)bölümünde çok adımlı görevler hakkında bilgi edinin.
 
-## <a name="context-locations"></a>Context locations
+## <a name="context-locations"></a>Bağlam konumları
 
-The following table shows a few examples of supported context locations for ACR Tasks:
+Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yönelik birkaç örnek gösterilmektedir:
 
-| Context location | Açıklama | Örnek |
+| Bağlam konumu | Açıklama | Örnek |
 | ---------------- | ----------- | ------- |
-| Local filesystem | Files within a directory on the local filesystem. | `/home/user/projects/myapp` |
-| GitHub master branch | Files within the master (or other default) branch of a GitHub repository.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub branch | Specific branch of a GitHub repo.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub subfolder | Files within a subfolder in a GitHub repo. Example shows combination of a branch and subfolder specification. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Azure DevOps subfolder | Files within a subfolder in an Azure repo. Example shows combination of branch and subfolder specification. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
-| Remote tarball | Files in a compressed archive on a remote webserver. | `http://remoteserver/myapp.tar.gz` |
+| Yerel dosya sistemi | Yerel dosya sisteminde bir dizin içindeki dosyalar. | `/home/user/projects/myapp` |
+| GitHub ana dalı | GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub dalı | GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub alt klasörü | GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Azure DevOps alt klasörü | Bir Azure deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, dal ve alt klasör belirtiminin birleşimini gösterir. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
 
-## <a name="image-platforms"></a>Image platforms
+## <a name="image-platforms"></a>Görüntü platformları
 
-By default, ACR Tasks builds images for the Linux OS and the amd64 architecture. Specify the `--platform` tag to build Windows images or Linux images for other architectures. Specify the OS and optionally a supported architecture in OS/architecture format (for example, `--platform Linux/arm`). For ARM architectures, optionally specify a variant in OS/architecture/variant format (for example, `--platform Linux/arm64/v8`):
+Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini derlemek için `--platform` etiketini belirtin. İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm`). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8`):
 
 | İşletim Sistemi | Mimari|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>arm64<br/>386 |
-| Windows | amd64 |
+| Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
+| Windows | 'tür |
 
-## <a name="view-task-logs"></a>View task logs
+## <a name="view-task-logs"></a>Görev günlüklerini görüntüle
 
-Each task run generates log output that you can inspect to determine whether the task steps ran successfully. If you use the [az acr build](/cli/azure/acr#az-acr-build), [az acr run](/cli/azure/acr#az-acr-run), or [az acr task run](/cli/azure/acr/task#az-acr-task-run) command to trigger the task, log output for the task run is streamed to the console and also stored for later retrieval. When a task is automatically triggered, for example by a source code commit or a base image update, task logs are only stored. View the logs for a task run in the Azure portal, or use the [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) command.
+Her görev çalıştırması, görev adımlarının başarıyla çalışıp çalışmadığını belirleyebilmek için inceleyebileceğiniz günlük çıktısı üretir. Görevi tetiklemek için [az ACR Build](/cli/azure/acr#az-acr-build), [az ACR Run](/cli/azure/acr#az-acr-run)veya [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) komutunu kullanırsanız, görev çalıştırmasının günlük çıktısı konsola akışla kaydedilir ve ayrıca daha sonra almak üzere saklanır. Bir görev otomatik olarak tetiklendiğinde (örneğin, kaynak kodu kaydı veya temel görüntü güncelleştirmesi), görev günlükleri yalnızca depolanır. Azure portal çalışan bir görevin günlüklerini görüntüleyin veya [az ACR görev günlükleri](/cli/azure/acr/task#az-acr-task-logs) komutunu kullanın.
 
-By default, data and logs for task runs in a registry are retained for 30 days and then automatically purged. If you want to archive the data for a task run, enable archiving using the [az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run) command. The following example enables archiving for the task run *cf11* in registry *myregistry*.
+Varsayılan olarak, bir kayıt defterindeki görev çalıştırmaları için veriler ve Günlükler 30 gün boyunca tutulur ve sonra otomatik olarak temizlenir. Bir görev çalıştırmasının verilerini arşivlemek istiyorsanız, [az ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) komutunu kullanarak arşivlemeyi etkinleştirin. Aşağıdaki örnek, kayıt defteri *myregistry*içinde *CF11* çalıştırması görevi için arşivlemeyi mümkün bir şekilde sunar.
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
@@ -143,9 +143,9 @@ az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-When you're ready to automate container image builds and maintenance in the cloud, check out the [ACR Tasks tutorial series](container-registry-tutorial-quick-task.md).
+Bulutta kapsayıcı görüntüsü derlemelerini ve bakımını otomatik hale getirmeye hazır olduğunuzda [ACR görevler öğretici serisini](container-registry-tutorial-quick-task.md)inceleyin.
 
-Optionally install the [Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) and the [Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extension to work with your Azure container registries. Pull and push images to an Azure container registry, or run ACR Tasks, all within Visual Studio Code.
+İsteğe bağlı olarak [Visual Studio Code Için Docker uzantısını](https://code.visualstudio.com/docs/azure/docker) ve Azure Container Registry 'larınız ile birlikte çalışmak Için [Azure hesap](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) uzantısını yükler. Azure Container Registry 'ye görüntü çekme ve gönderme veya ACR görevlerini Visual Studio Code.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

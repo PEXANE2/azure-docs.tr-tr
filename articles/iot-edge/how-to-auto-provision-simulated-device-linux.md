@@ -1,6 +1,6 @@
 ---
-title: Automatically provision Linux devices with DPS - Azure IoT Edge | Microsoft Docs
-description: Use a simulated TPM on a Linux VM to test Azure Device Provisioning Service for Azure IoT Edge
+title: DPS ile Linux cihazlarını otomatik olarak Sağlama-Azure IoT Edge | Microsoft Docs
+description: Azure cihaz sağlama hizmeti, Azure IOT Edge için test etmek için bir Linux VM üzerinde sanal bir TPM kullanma
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,95 +15,95 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457175"
 ---
-# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Create and provision an IoT Edge device with a virtual TPM on a Linux virtual machine
+# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux sanal makinesinde sanal TPM ile bir IoT Edge cihazı oluşturma ve sağlama
 
-Azure IoT Edge devices can be automatically provisioned using the [Device Provisioning Service](../iot-dps/index.yml). If you're unfamiliar with the process of auto-provisioning, review the [auto-provisioning concepts](../iot-dps/concepts-auto-provisioning.md) before continuing.
+Azure IoT Edge cihazlar [cihaz sağlama hizmeti](../iot-dps/index.yml)kullanılarak otomatik olarak sağlanabilir. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
 
-This article shows you how to test auto-provisioning on a simulated IoT Edge device with the following steps:
+Bu makalede, aşağıdaki adımlarla sanal bir IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir:
 
-* Create a Linux virtual machine (VM) in Hyper-V with a simulated Trusted Platform Module (TPM) for hardware security.
-* Create an instance of IoT Hub Device Provisioning Service (DPS).
-* Create an individual enrollment for the device
-* Install the IoT Edge runtime and connect the device to IoT Hub
+* Hyper-V ile bir sanal Güvenilir Platform Modülü (TPM) donanımı güvenlik için bir Linux sanal makinesini (VM) oluşturun.
+* Bir örnek, IOT Hub cihaz sağlama hizmeti (DPS) oluşturun.
+* Cihazı için bireysel kayıt oluşturma
+* IOT Edge çalışma zamanı yükleme ve cihaz IOT hub'a bağlama
 
 > [!NOTE]
-> TPM 2.0 is required when using TPM attestation with DPS and can only be used to create individual, not group, enrollments.
+> TPM kanıtlaması ile TPM kanıtlama kullanılırken TPM 2,0 gereklidir ve yalnızca bireysel, grup değil kayıtları oluşturmak için kullanılabilir.
 
 > [!TIP]
-> This article describes how to test DPS provisioning using a TPM simulator, but much of it applies to physical TPM hardware such as the [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), an Azure Certified for IoT device.
+> Bu makalede, bir TPM simülatörü kullanılarak DPS sağlama işlemi nasıl test edileceğini açıklanmaktadır, ancak bunun çoğu, IoT için Azure Sertifikalı bir cihaz olan [Infineon OPTIMIZE ga&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board)gıbı fiziksel TPM donanımları için geçerlidir.
 >
-> If you're using a physical device, you can skip ahead to the [Retrieve provisioning information from a physical device](#retrieve-provisioning-information-from-a-physical-device) section in this article.
+> Fiziksel bir cihaz kullanıyorsanız, bu makaledeki [sağlama bilgilerini bir fiziksel cihazdan alma](#retrieve-provisioning-information-from-a-physical-device) bölümüne geçebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* A Windows development machine with [Hyper-V enabled](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). This article uses Windows 10 running an Ubuntu Server VM.
-* An active IoT Hub.
-* If using a simulated TPM, [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
+* [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede, Windows 10 çalıştıran bir Ubuntu Server VM kullanır.
+* Etkin bir IOT Hub.
+* ' In ' de [masaüstü geliştirmesi C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ' ile sanal bir TPM, [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 veya sonraki bir sürümü kullanıyorsanız.
 
-## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Create a Linux virtual machine with a virtual TPM
+## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Sanal bir TPM ile bir Linux sanal makinesi oluşturma
 
-In this section, you create a new Linux virtual machine on Hyper-V. You configured this virtual machine with a simulated TPM so that you can use it for testing how automatic provisioning works with IoT Edge. 
+Bu bölümde, Hyper-V üzerinde yeni bir Linux sanal makinesi oluşturacaksınız. Otomatik sağlamanın IoT Edge ile nasıl çalıştığını test etmek üzere kullanabilmeniz için, bu sanal makineyi sanal bir TPM ile yapılandırdınız. 
 
-### <a name="create-a-virtual-switch"></a>Create a virtual switch
+### <a name="create-a-virtual-switch"></a>Sanal anahtar oluşturma
 
-A virtual switch enables your virtual machine to connect to a physical network.
+Bir sanal anahtar, fiziksel bir ağa bağlanmak sanal makinenizi sağlar.
 
-1. Open Hyper-V Manager on your Windows machine. 
+1. Windows makinenizde Hyper-V Yöneticisi 'Ni açın. 
 
-2. In the **Actions** menu, select **Virtual Switch Manager**. 
+2. **Eylemler** menüsünde **sanal anahtar Yöneticisi**' ni seçin. 
 
-3. Choose an **External** virtual switch, then select **Create Virtual Switch**. 
+3. Bir **dış** sanal anahtar seçin, sonra **sanal anahtar oluştur**' u seçin. 
 
-4. Give your new virtual switch a name, for example **EdgeSwitch**. Make sure that the connection type is set to **External network**, then select **Ok**.
+4. Yeni sanal anahtarınızda bir ad verin, örneğin **EdgeSwitch**. Bağlantı türünün **dış ağ**olarak ayarlandığından emin olun ve ardından **Tamam**' ı seçin.
 
-5. A pop-up warns you that network connectivity may be disrupted. Select **Yes** to continue. 
+5. Bir açılır pencere, ağ bağlantısı kesilebilir sizi uyarır. Devam etmek için **Evet** ' i seçin. 
 
-If you see errors while creating the new virtual switch, ensure that no other switches are using the ethernet adaptor, and that no other switches use the same name. 
+Yeni sanal anahtar oluştururken hatalar görürseniz, diğer bir anahtarlar ethernet bağdaştırıcısı kullandığından emin olun ve diğer bir anahtarlar aynı adı kullanın. 
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-1. Download a disk image file to use for your virtual machine and save it locally. For example, [Ubuntu server](https://www.ubuntu.com/download/server). 
+1. Sanal makineniz için kullanın ve yerel olarak kaydetmek için disk görüntü dosyasını indirin. Örneğin, [Ubuntu sunucusu](https://www.ubuntu.com/download/server). 
 
-2. In Hyper-V Manager again, select **New** > **Virtual Machine** in the **Actions** menu.
+2. Hyper-V Yöneticisi 'nde, **Eylemler** menüsünde **Yeni** > **sanal makine** ' yi seçin.
 
-3. Complete the **New Virtual Machine Wizard** with the following specific configurations:
+3. Aşağıdaki belirli yapılandırmalara sahip **Yeni sanal makine Sihirbazı 'nı** doldurun:
 
-   1. **Specify Generation**: Select **Generation 2**. Generation 2 virtual machines have nested virtualization enabled, which is required to run IoT Edge on a virtual machine.
-   2. **Configure Networking**: Set the value of **Connection** to the virtual switch that you created in the previous section. 
-   3. **Installation Options**: Select **Install an operating system from a bootable image file** and browse to the disk image file that you saved locally.
+   1. **Üretimi belirtin**: **2. nesil**seçeneğini belirleyin. 2\. nesil sanal makinelerde, bir sanal makinede IoT Edge çalıştırmak için gereken iç içe sanallaştırma etkinleştirilmiş.
+   2. **Ağı yapılandırma**: önceki bölümde oluşturduğunuz sanal anahtarla **bağlantı** değerini ayarlayın. 
+   3. **Yükleme seçenekleri**: **önyüklenebilir bir görüntü dosyasından işletim sistemi yükleme ' yi** seçin ve yerel olarak kaydettiğiniz disk görüntü dosyasına gidin.
 
-4. Select **Finish** in the wizard to create the virtual machine.
+4. Sanal makineyi oluşturmak için sihirbazda **son** ' u seçin.
 
-It may take a few minutes to create the new VM. 
+Bu, yeni bir VM oluşturmak için birkaç dakika sürebilir. 
 
-### <a name="enable-virtual-tpm"></a>Enable virtual TPM
+### <a name="enable-virtual-tpm"></a>Sanal TPM etkinleştir
 
-Once your VM is created, open its settings to enable the virtual trusted platform module (TPM) that lets you auto-provision the device.
+VM 'niz oluşturulduktan sonra, cihazı otomatik olarak sağlamanıza olanak tanıyan sanal Güvenilir Platform Modülü 'nü (TPM) etkinleştirmek için ayarlarını açın.
 
-1. Select the virtual machine, then open its **Settings**.
+1. Sanal makineyi seçin ve ardından **ayarlarını**açın.
 
-2. Navigate to **Security**. 
+2. **Güvenlik**' e gidin. 
 
-3. Uncheck **Enable Secure Boot**.
+3. **Güvenli önyüklemeyi etkinleştir**seçeneğinin işaretini kaldırın.
 
-4. Check **Enable Trusted Platform Module**. 
+4. **Güvenilir Platform Modülü etkinleştir**' i işaretleyin. 
 
-5. **Tamam**’a tıklayın.  
+5. **OK (Tamam)** düğmesine tıklayın.  
 
-### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Start the virtual machine and collect TPM data
+### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>TPM veri toplamak ve sanal makineyi Başlat
 
-In the virtual machine, build a tool that you can use to retrieve the device's **Registration ID** and **Endorsement key**.
+Sanal makinede, cihazın **kayıt kimliği** ve **onay anahtarını**almak için kullanabileceğiniz bir araç oluşturun.
 
-1. Start your virtual machine and connect to it.
+1. Sanal makinenizi başlatın ve bu sunucuya bağlanın.
 
-1. Follow the prompts within the virtual machine to finish the installation process and reboot the machine.
+1. Yükleme işlemini tamamlaması ve makineyi yeniden başlatmak için sanal makinedeki istemleri izleyin.
 
-1. Sign in to your VM, then follow the steps in [Set up a Linux development environment](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) to install and build the Azure IoT device SDK for C.
+1. SANAL makinenizde oturum açın ve ardından, C için Azure IoT cihaz SDK 'sını yüklemek ve derlemek için [bir Linux geliştirme ortamı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) bölümündeki adımları izleyin.
 
    >[!TIP]
-   >In the course of this article, you'll copy to and paste from the virtual machine, which is not easy through the Hyper-V Manager connection application. You may want to connect to the virtual machine through Hyper-V Manager once to retrieve its IP address: `ifconfig`. Then, you can use the IP address to connect through SSH: `ssh <username>@<ipaddress>`.
+   >Bu makalede, Hyper-V Yöneticisi bağlantı uygulaması aracılığıyla kolay olmayan sanal makineye kopyalanacak ve buradan yapıştırılacak. IP adresini almak için, sanal makineye Hyper-V Yöneticisi üzerinden bir kez bağlanmak isteyebilirsiniz: `ifconfig`. Daha sonra SSH: `ssh <username>@<ipaddress>`üzerinden bağlanmak için IP adresini kullanabilirsiniz.
 
-1. Run the following commands to build the SDK tool that retrieves your device provisioning information from the TPM simulator.
+1. TPM benzeticisinde cihaz sağlama bilgilerinizi alan SDK aracını oluşturmak için aşağıdaki komutları çalıştırın.
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -113,27 +113,27 @@ In the virtual machine, build a tool that you can use to retrieve the device's *
    sudo ./tpm_device_provision
    ```
 
-1. From a command window, navigate to the `azure-iot-sdk-c` directory and run the TPM simulator. 2321 ve 2322 bağlantı noktalarında bulunan bir yuva üzerinden dinler. Do not close this command window; you will need to keep this simulator running.
+1. Bir komut penceresinden `azure-iot-sdk-c` dizinine gidin ve TPM simülatörünü çalıştırın. 2321 ve 2322 bağlantı noktalarında bulunan bir yuva üzerinden dinler. Bu komut penceresini kapatmayın; Bu simülatörü çalışır durumda tutmanız gerekecektir.
 
-   From the `azure-iot-sdk-c` directory, run the following command to start the simulator:
+   `azure-iot-sdk-c` dizininden simülatörü başlatmak için aşağıdaki komutu çalıştırın:
 
    ```bash
    ./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe
    ```
 
-1. Using Visual Studio, open the solution generated in the `cmake` directory named `azure_iot_sdks.sln`, and build it using the **Build solution** command on the **Build** menu.
+1. Visual Studio 'yu kullanarak, `azure_iot_sdks.sln`adlı `cmake` dizinde oluşturulan çözümü açın ve **Build** menüsündeki Build **Solution** komutunu kullanarak derleyin.
 
 1. Visual Studio'nın **Çözüm Gezgini** bölmesinde **Sağlama\_Araçlar** klasörüne gidin. **tpm_device_provision** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin.
 
-1. Run the solution using either of the **Start** commands on the **Debug** menu. The output window displays the TPM simulator's **Registration ID** and the **Endorsement key**, which you should copy for use later when you create an individual enrollment for your device in You can close this window (with Registration ID and Endorsement key), but leave the TPM simulator window running.
+1. **Hata Ayıkla** menüsündeki **Başlat** komutlarından birini kullanarak çözümü çalıştırın. Çıkış penceresinde, daha sonra cihazınız için tek bir kayıt oluşturduğunuzda bu pencereyi kapatabilir (kayıt KIMLIĞI ve onay anahtarı ile), ancak TPM simülatörü penceresini çalışır durumda bırakarak TPM simülatörü **kayıt kimliği** ve **onay anahtarı**görüntülenir.
 
-## <a name="retrieve-provisioning-information-from-a-physical-device"></a>Retrieve provisioning information from a physical device
+## <a name="retrieve-provisioning-information-from-a-physical-device"></a>Fiziksel bir cihazdan sağlama bilgilerini alma
 
-On your device, build a tool that you can use to retrieve the device's provisioning information.
+Cihazınızda, cihazın sağlama bilgilerini almak için kullanabileceğiniz bir araç oluşturun.
 
-1. Follow the steps in [Set up a Linux development environment](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) to install and build the Azure IoT device SDK for C.
+1. C için Azure IoT cihaz SDK 'sını yüklemek ve derlemek için [bir Linux geliştirme ortamı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) bölümündeki adımları izleyin.
 
-1. Run the following commands to build the SDK tool that retrieves your device provisioning information from the TPM device.
+1. TPM cihazından cihaz sağlama bilgilerinizi alan SDK aracını oluşturmak için aşağıdaki komutları çalıştırın.
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -143,40 +143,40 @@ On your device, build a tool that you can use to retrieve the device's provision
    sudo ./tpm_device_provision
    ```
 
-1. Copy the values for **Registration ID** and **Endorsement key**. You use these values to create an individual enrollment for your device in DPS.
+1. **Kayıt kimliği** ve **onay anahtarı**değerlerini kopyalayın. DPS, cihazınız için bireysel kayıt oluşturmak için bu değerleri kullanırsınız.
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Set up the IoT Hub Device Provisioning Service
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>IOT Hub cihazı sağlama hizmetini ayarlama
 
-Create a new instance of the IoT Hub Device Provisioning Service in Azure, and link it to your IoT hub. You can follow the instructions in [Set up the IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
+Azure'da yeni bir IOT Hub cihazı sağlama hizmeti örneğini oluşturun ve IOT hub'ınıza bağlayın. [IoT Hub DPS 'Yi ayarlama](../iot-dps/quick-setup-auto-provision.md)bölümündeki yönergeleri izleyebilirsiniz.
 
-After you have the Device Provisioning Service running, copy the value of **ID Scope** from the overview page. You use this value when you configure the IoT Edge runtime. 
+Cihaz sağlama hizmetini çalıştırdıktan sonra, genel bakış sayfasından **kimlik kapsamının** değerini kopyalayın. IOT Edge çalışma zamanı yapılandırdığınızda bu değeri kullanın. 
 
-## <a name="create-a-dps-enrollment"></a>Create a DPS enrollment
+## <a name="create-a-dps-enrollment"></a>DPS kayıt oluşturma
 
-Retrieve the provisioning information from your virtual machine, and use that to create an individual enrollment in Device Provisioning Service. 
+Sanal makinenizden sağlama bilgilerini almak ve, cihaz sağlama hizmetinde bireysel kayıt oluşturmak için kullanın. 
 
-When you create an enrollment in DPS, you have the opportunity to declare an **Initial Device Twin State**. In the device twin, you can set tags to group devices by any metric you need in your solution, like region, environment, location, or device type. These tags are used to create [automatic deployments](how-to-deploy-monitor.md). 
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Cihaz ikizinde bölge, ortam, konuma veya cihaz türü gibi çözümünüzdeki gereken herhangi bir ölçümü tarafından cihazları için etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-monitor.md)oluşturmak için kullanılır. 
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your instance of IoT Hub Device Provisioning Service. 
+1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin. 
 
-2. Under **Settings**, select **Manage enrollments**. 
+2. **Ayarlar**altında kayıtları **Yönet**' i seçin. 
 
-3. Select **Add individual enrollment** then complete the following steps to configure the enrollment:  
+3. **Bireysel kayıt Ekle** ' yi seçin, ardından kaydı yapılandırmak için aşağıdaki adımları izleyin:  
 
-   1. For **Mechanism**, select **TPM**. 
+   1. **Mekanizma**için **TPM**' yi seçin. 
 
-   2. Provide the **Endorsement key** and **Registration ID** that you copied from your virtual machine.
+   2. Sanal makinenizden kopyaladığınız **onay anahtarını** ve **kayıt kimliğini** sağlayın.
 
       > [!TIP]
-      > If you're using a physical TPM device, you need to determine the **Endorsement key**, which is unique to each TPM chip and is obtained from the TPM chip manufacturer associated with it. You can derive a unique **Registration ID** for your TPM device by, for example, creating an SHA-256 hash of the endorsement key.
+      > Fiziksel bir TPM cihazı kullanıyorsanız, her TPM yongası için benzersiz olan ve kendisiyle ilişkili TPM yonga üreticisinden elde edilen **onay anahtarını**belirlemeniz gerekir. TPM cihazınız için benzersiz bir **kayıt kimliği** türetebilirsiniz; Örneğin, onay anahtarının SHA-256 karmasını oluşturma.
 
-   3. Select **True** to declare that this virtual machine is an IoT Edge device. 
+   3. Bu sanal makinenin IoT Edge bir cihaz olduğunu bildirmek için **true** ' ı seçin. 
 
-   4. Choose the linked **IoT Hub** that you want to connect your device to. You can choose multiple hubs, and the device will be assigned to one of them according to the selected allocation policy. 
+   4. Cihazınızı bağlamak istediğiniz bağlı **IoT Hub** seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır. 
 
-   5. Provide an ID for your device if you'd like. You can use device IDs to target an individual device for module deployment. If you don't provide a device ID, the registration ID is used.
+   5. İsterseniz cihazınız için bir kimlik belirtin. Cihaz kimliklerini modülü dağıtımı için tek bir cihaza hedeflemek için kullanabilirsiniz. Bir cihaz KIMLIĞI sağlamazsanız, kayıt KIMLIĞI kullanılır.
 
-   6. Add a tag value to the **Initial Device Twin State** if you'd like. You can use tags to target groups of devices for module deployment. Örnek: 
+   6. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Hedef cihaz gruplarına etiketleri modülü dağıtımı için kullanabilirsiniz. Örneğin: 
 
       ```json
       {
@@ -191,115 +191,115 @@ When you create an enrollment in DPS, you have the opportunity to declare an **I
 
    7. **Kaydet**’i seçin. 
 
-Now that an enrollment exists for this device, the IoT Edge runtime can automatically provision the device during installation. 
+Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. 
 
-## <a name="install-the-iot-edge-runtime"></a>Install the IoT Edge runtime
+## <a name="install-the-iot-edge-runtime"></a>IOT Edge çalışma zamanını yükleme
 
-IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Its components run in containers, and allow you to deploy additional containers to the device so that you can run code at the edge. Install the IoT Edge runtime on your virtual machine. 
+IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarında çalıştırmak ve kod ucuna çalıştırabilmeniz için cihaza ek kapsayıcıları dağıtma olanak sağlar. IOT Edge çalışma zamanı, sanal makinenize yükleyin. 
 
-Know your DPS **ID Scope** and device **Registration ID** before beginning the article that matches your device type. If you installed the example Ubuntu server, use the **x64** instructions. Make sure to configure the IoT Edge runtime for automatic, not manual, provisioning. 
+Cihaz türü ile eşleşen makaleye başlamadan önce, DPS **kimlik kapsamınızı** ve CIHAZ **Kayıt kimliğinizi** öğrenin. Ubuntu Server örneğini yüklediyseniz **x64** yönergelerini kullanın. Otomatik değil el ile sağlama için IOT Edge çalışma zamanı yapılandırdığınızdan emin olun. 
 
-[Install the Azure IoT Edge runtime on Linux](how-to-install-iot-edge-linux.md)
+[Linux üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
 
-## <a name="give-iot-edge-access-to-the-tpm"></a>Give IoT Edge access to the TPM
+## <a name="give-iot-edge-access-to-the-tpm"></a>IOT Edge erişmesini TPM'ye
 
-In order for the IoT Edge runtime to automatically provision your device, it needs access to the TPM. 
+Cihazınızı otomatik olarak sağlamak IOT Edge çalışma zamanı için sırada TPM erişimi gerekir. 
 
-You can give TPM access to the IoT Edge runtime by overriding the systemd settings so that the **iotedge** service has root privileges. If you don't want to elevate the service privileges, you can also use the following steps to manually provide TPM access. 
+**İotedge** hizmetinin kök ayrıcalıkları olması için systemd ayarlarını geçersiz kılarak IoT Edge çalışma zamanına TPM erişimi verebilirsiniz. Hizmet ayrıcalıklarını istemiyorsanız, aşağıdaki adımları el ile TPM erişim sağlamak için kullanabilirsiniz. 
 
-1. Find the file path to the TPM hardware module on your device and save it as a local variable. 
+1. Cihazınızın TPM donanım modülü olan dosya yolunu bulun ve yerel bir değişkene kaydedin. 
 
    ```bash
    tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
    ```
 
-2. Create a new rule that will give the IoT Edge runtime access to tpm0. 
+2. IOT Edge çalışma zamanı için tpm0 sürümlere erişmenizi sağlayacaktır yeni bir kural oluşturun. 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. Open the rules file. 
+3. Kurallar dosyası açın. 
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. Copy the following access information into the rules file. 
+4. Aşağıdaki erişim bilgileri kuralları dosyaya kopyalayın. 
 
    ```input 
    # allow iotedge access to tpm0
    KERNEL=="tpm0", SUBSYSTEM=="tpm", GROUP="iotedge", MODE="0660"
    ```
 
-5. Save and exit the file. 
+5. Kaydedin ve dosyayı çıkın. 
 
-6. Trigger the udev system to evaluate the new rule. 
+6. Yeni Kural değerlendirilemedi udev sistem tetikleyin. 
 
    ```bash
    /bin/udevadm trigger $tpm
    ```
 
-7. Verify that the rule was successfully applied.
+7. Kural başarıyla uygulandığını doğrulayın.
 
    ```bash
    ls -l /dev/tpm0
    ```
 
-   Successful output looks like the following:
+   Başarılı çıkış aşağıdaki gibi görünür:
 
    ```output
    crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
-   If you don't see that the correct permissions have been applied, try rebooting your machine to refresh udev. 
+   Doğru izinler uygulanmış görmüyorsanız udev yenilemek için makinenizi yeniden deneyin. 
 
-## <a name="restart-the-iot-edge-runtime"></a>Restart the IoT Edge runtime
+## <a name="restart-the-iot-edge-runtime"></a>IOT Edge çalışma zamanı yeniden başlatın
 
-Restart the IoT Edge runtime so that it picks up all the configuration changes that you made on the device. 
+Bu cihaz üzerinde yaptığınız tüm yapılandırma değişiklikleri alır, böylece IOT Edge çalışma zamanı yeniden başlatın. 
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-Check to see that the IoT Edge runtime is running. 
+IOT Edge çalışma zamanı çalışıp çalışmadığını denetleyin. 
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-If you see provisioning errors, it may be that the configuration changes haven't taken effect yet. Try restarting the IoT Edge daemon again. 
+Sağlama hataları görüyorsanız, yapılandırma değişikliklerinin henüz geçerlik kazanmadı olabilir. IOT Edge daemon'ı yeniden başlatmayı deneyin. 
 
    ```bash
    sudo systemctl daemon-reload
    ```
    
-Or, try restarting your virtual machine to see if the changes take effect on a fresh start. 
+Ya da değişiklikler yeni bir başlangıç etkisi olur, görmek için sanal makinenizi yeniden başlatmayı deneyin. 
 
-## <a name="verify-successful-installation"></a>Verify successful installation
+## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
 
-If the runtime started successfully, you can go into your IoT Hub and see that your new device was automatically provisioned. Now your device is ready to run IoT Edge modules. 
+Çalışma zamanı başarıyla başlatıldı, IOT Hub'ına gidin ve yeni Cihazınızı otomatik olarak sağlanan bakın. Artık Cihazınızı IOT Edge modüllerini çalıştırmak hazırdır. 
 
-Check the status of the IoT Edge Daemon.
+IOT Edge Daemon durumunu denetleyin.
 
 ```cmd/sh
 systemctl status iotedge
 ```
 
-Examine daemon logs.
+Arka plan programının günlüklerini inceleyin.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-List running modules.
+Çalışan modülleri listeleyin.
 
 ```cmd/sh
 iotedge list
 ```
 
-You can verify that the individual enrollment that you created in Device Provisioning Service was used. Navigate to your Device Provisioning Service instance in the Azure portal. Open the enrollment details for the individual enrollment that you created. Notice that the status of the enrollment is **assigned** and the device ID is listed. 
+Cihaz sağlama hizmeti 'nde oluşturduğunuz bireysel kaydın kullanıldığını doğrulayabilirsiniz. Azure portal cihaz sağlama hizmeti örneğinize gidin. Oluşturduğunuz bireysel kayıt için kayıt ayrıntılarını açın. Kayıt durumunun **atandığını** ve cihaz kimliğinin listelendiğini unutmayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-The Device Provisioning Service enrollment process lets you set the device ID and device twin tags at the same time as you provision the new device. You can use those values to target individual devices or groups of devices using automatic device management. Learn how to [Deploy and monitor IoT Edge modules at scale using the Azure portal](how-to-deploy-monitor.md) or [using Azure CLI](how-to-deploy-monitor-cli.md).
+Cihaz sağlama hizmeti kayıt işlemi, yeni cihaz sağlama gibi cihaz kimliği ve cihaz ikizi etiketleri aynı anda belirlemenizi sağlar. Bu değerleri ayrı ayrı cihazlar ya da otomatik cihaz Yönetimi'ni kullanarak cihaz grupları hedeflemek için kullanabilirsiniz. Azure portal veya [Azure CLI kullanarak](how-to-deploy-monitor-cli.md) [IoT Edge modüllerini ölçekte nasıl dağıtacağınızı ve izleyeceğinizi](how-to-deploy-monitor.md) öğrenin.

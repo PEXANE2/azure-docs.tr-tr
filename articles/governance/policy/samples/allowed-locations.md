@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed locations
-description: This sample policy definition requires that all resources are deployed to the approved locations defined in a parameter.
+title: Örnek Izin verilen konumlar
+description: Bu örnek ilke tanımı, tüm kaynakların bir parametrede tanımlanan onaylanan konumlara dağıtılmasını gerektirir.
 ms.date: 01/26/2019
 ms.topic: sample
 ms.openlocfilehash: 7620055c82a49c1e805da69205d14c5f0a925e8c
@@ -10,9 +10,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463714"
 ---
-# <a name="sample---allowed-region-locations"></a>Sample - Allowed region locations
+# <a name="sample---allowed-region-locations"></a>Örnek-Izin verilen bölge konumları
 
-Bu ilke, kuruluşunuzun kaynakları dağıtırken belirleyebileceği konumları kısıtlamanıza olanak verir. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region. You specify an array of allowed locations.
+Bu ilke, kuruluşunuzun kaynakları dağıtırken belirleyebileceği konumları kısıtlamanıza olanak verir. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz. Kaynak gruplarını, Microsoft. AzureActiveDirectory/b2cDirectories ve ' Global ' bölgesini kullanan kaynakları dışlar. İzin verilen konumların dizisini belirtirsiniz.
 
 Bu örnek ilkeyi aşağıdakileri kullanarak dağıtabilirsiniz:
 
@@ -48,14 +48,14 @@ Azure CLI ve Azure PowerShell tarafından kullanılan, ilke parametrelerini tan�
 
 ## <a name="parameters"></a>Parametreler
 
-|Adı |Tür |Alan |Açıklama |
+|Ad |Tür |Alan |Açıklama |
 |---|---|---|---|
-|listOfAllowedLocations |Dizi |locations |The list of allowed locations|
+|Lıfallodilimlerin konumları |Dizi |locations |İzin verilen konumların listesi|
 
 PowerShell veya Azure CLI ile atama oluştururken parametre verileri `-PolicyParameter` (PowerShell) veya `--params` (Azure CLI) kullanılarak dize ya da dosya şeklinde JSON biçiminde iletilebilir.
 PowerShell aynı zamanda cmdlet'e bir Ad/Değer hashtable iletilmesini gereken `-PolicyParameterObject` parametresini de destekler. Burada **Ad** parametrenin adı, **Değer** ise atama sırasında iletilen tek bir değer veya değer dizisidir.
 
-In this example parameter, only the _eastus2_ or _westus_ locations will be allowed.
+Bu örnek parametresinde yalnızca _eastus2_ veya _westus_ konumlarına izin verilir.
 
 ```json
 {
@@ -68,10 +68,10 @@ In this example parameter, only the _eastus2_ or _westus_ locations will be allo
 }
 ```
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portalında
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
-[![Deploy the Policy sample to Azure Gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json) ilke örneğini Azure
+dağıtma [![Ilke örneğini Azure gov 'ye dağıtma](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -163,7 +163,7 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 [ARMClient](https://github.com/projectkudu/ARMClient) veya PowerShell gibi Resource Manager REST API'si ile etkileşim kurmak için kullanılabilecek birçok araç vardır.
 
-### <a name="deploy-with-rest-api"></a>REST API ile dağıtma
+### <a name="deploy-with-rest-api"></a>REST API'si ile dağıtma
 
 - İlke Tanımını (Abonelik kapsamı) oluşturun. İstek Gövdesi için [ilke tanımı](#policy-definition) JSON kodunu kullanın.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Load Balancer VMs within a zone--Azure portal'
+title: "Öğretici: bölge içindeki VM 'Leri Load Balancer--Azure portal"
 titleSuffix: Azure Load Balancer
 description: Bu öğretici, Azure portalı kullanarak bir kullanılabilirlik alanı içindeki sanal makinelerin yükünü dengelemek üzere bölge ön ucu ile Standard Load Balancer oluşturma işlemini gösterir
 services: load-balancer
@@ -39,7 +39,7 @@ Standard Load Balancer ile kullanılabilirlik alanlarını kullanma hakkında da
 
 İsterseniz bu öğreticiyi tamamlamak için [Azure CLI](load-balancer-standard-public-zonal-cli.md) kullanabilirsiniz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -48,33 +48,33 @@ Standard Load Balancer ile kullanılabilirlik alanlarını kullanma hakkında da
 Standard Load Balancer yalnızca standart genel IP adresini destekler. Yük dengeleyiciyi oluştururken yeni bir genel IP oluşturduğunuzda, bir Standart SKU sürümü halinde otomatik olarak yapılandırılır. Ayrıca otomatik olarak bölgesel olarak yedeklidir.
 
 1. Ekranın sol üst kısmında **Kaynak oluştur** > **Ağ** > **Yük Dengeleyici** seçeneğini belirleyin.
-2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
+2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
-    | Ayar                 | Değer                                              |
+    | Ayar                 | Value                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
-    | Kaynak grubu         | Select **Create new** and type *MyResourceGroupZLB* in the text box.|
-    | Adı                   | *myLoadBalancer*                                   |
+    | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupzlb* yazın.|
+    | Name                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Tür          | Select **Public**.                                        |
-    | SKU           | Select **Standard**.                          |
+    | Type          | **Ortak**seçeneğini belirleyin.                                        |
+    | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
-    | Public IP address name              | Type *myPublicIP* in the text box.   |
-    |Availability zone| **1**'i seçin.    |
-3. In the **Review + create** tab, click **Create**.   
+    | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   |
+    |Kullanılabilirlik alanı| **1**'i seçin.    |
+3. **Gözden geçir + oluştur** sekmesinde **Oluştur**' a tıklayın.   
 
    ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
 
 Bu bölümde, bir sanal ağ oluşturursunuz. Ayrıca, yük dengeleyicinizin arka uç havuzuna eklenecek bölge için aynı bölgede (bölge 1) iki sanal makine oluşturursunuz. Ardından alanlar arası yedekli yük dengeleyicinin test edilmesine yardımcı olması için sanal makinelere IIS yükleyeceksiniz. Bir VM başarısız olursa aynı bölgedeki VM için sistem durumu araştırması başarısız olur. Trafik aynı bölgedeki diğer VM’ler tarafından sunulmaya devam eder.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 1. Ekranın sol üst kısmında **Kaynak oluştur** > **Ağ** > **Sanal ağ** seçeneğini belirleyin.  Sanal ağ için şu değerleri girin:
     - Sanal ağın adı olarak **myVNet**.
     - Mevcut kaynak grubunun adı olarak **myResourceGroupZLB**.
     - Alt ağ adı olarak **myBackendSubnet**.
 2. Sanal ağı oluşturmak için **Oluştur**’u seçin.
 
-    ![Sanal ağ oluşturun](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+    ![Sanal ağ oluşturma](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 

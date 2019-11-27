@@ -1,6 +1,6 @@
 ---
 title: Programlı olarak ilkeler oluşturma
-description: This article walks you through programmatically creating and managing policies for Azure Policy with Azure CLI, Azure PowerShell, and REST API.
+description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 01/31/2019
 ms.topic: conceptual
 ms.openlocfilehash: 98af714e5aaf8e103b81e77c9960589fa0ee6b77
@@ -12,19 +12,19 @@ ms.locfileid: "74463546"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
-This article walks you through programmatically creating and managing policies. Azure Policy definitions enforce different rules and effects over your resources. Enforcement makes sure that resources stay compliant with your corporate standards and service level agreements.
+Bu makalede, program aracılığıyla oluşturma ve ilkeleri yönetme gösterilmektedir. Azure Ilke tanımları, kaynaklarınız üzerinde farklı kurallar ve etkiler uygular. Zorlama kaynakları, Kurumsal standartlarınız ve hizmet düzeyi sözleşmeleri ile uyumluluğu sürdürün, emin olur.
 
-For information about compliance, see [getting compliance data](get-compliance-data.md).
+Uyumluluk hakkında daha fazla bilgi için bkz. [Uyumluluk verileri alma](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Before you begin, make sure that the following prerequisites are met:
+Başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
 1. Henüz yapmadıysanız [ARMClient](https://github.com/projectkudu/ARMClient)’ı yükleyin. Bu, HTTP isteklerini Azure Resource Manager tabanlı API’lere gönderen bir araçtır.
 
-1. Update your Azure PowerShell module to the latest version. See [Install Azure PowerShell module](/powershell/azure/install-az-ps) for detailed information. For more information about the latest version, see [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
+1. Azure PowerShell modülünüzü en son sürüme güncelleştirin. Ayrıntılı bilgi için bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps) . En son sürüm hakkında daha fazla bilgi için bkz. [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
-1. Register the Azure Policy Insights resource provider using Azure PowerShell to validate that your subscription works with the resource provider. To register a resource provider, you must have permission to run the register action operation for the resource provider. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
+1. Aboneliğinizin kaynak sağlayıcısıyla birlikte çalışıp çalışmadığını doğrulamak için Azure PowerShell kullanarak Azure Policy Insights kaynak sağlayıcısını kaydedin. Bir kaynak sağlayıcısını kaydetmek için kaynak sağlayıcısı kaydetme işlemini çalıştırma izni olmalıdır. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -32,15 +32,15 @@ Before you begin, make sure that the following prerequisites are met:
 
    Kaynak sağlayıcıları kaydetme ve görüntülemeyle ilgili daha fazla bilgi için bkz. [Kaynak Sağlayıcıları ve Türleri](../../../azure-resource-manager/resource-manager-supported-services.md).
 
-1. If you haven't already, install Azure CLI. You can get the latest version at [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows).
+1. Henüz yapmadıysanız, Azure CLI'yı yükleyin. [Windows 'Da Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli-windows)en son sürümü edinebilirsiniz.
 
-## <a name="create-and-assign-a-policy-definition"></a>Create and assign a policy definition
+## <a name="create-and-assign-a-policy-definition"></a>Bir ilke tanımı oluşturma ve atama
 
-The first step toward better visibility of your resources is to create and assign policies over your resources. The next step is to learn how to programmatically create and assign a policy. The example policy audits storage accounts that are open to all public networks using PowerShell, Azure CLI, and HTTP requests.
+Kaynaklarınızın daha iyi görünürlük ilk adım, ilkeleri, kaynaklarınız üzerinden oluşturup sağlamaktır. Sonraki adım, program aracılığıyla oluşturma ve ilke atama işlemlerini öğrenmektir. Örnek ilke, PowerShell, Azure CLI ve HTTP isteklerini kullanarak tüm genel ağa açık olan depolama hesaplarını denetler.
 
-### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Create and assign a policy definition with PowerShell
+### <a name="create-and-assign-a-policy-definition-with-powershell"></a>PowerShell ile bir ilke tanımı oluşturma ve atama
 
-1. Use the following JSON snippet to create a JSON file with the name AuditStorageAccounts.json.
+1. Aşağıdaki JSON kod parçacığında AuditStorageAccounts.json ada sahip bir JSON dosyası oluşturmak için kullanın.
 
    ```json
    {
@@ -61,23 +61,23 @@ The first step toward better visibility of your resources is to create and assig
    }
    ```
 
-   For more information about authoring a policy definition, see [Azure Policy Definition Structure](../concepts/definition-structure.md).
+   İlke tanımı yazma hakkında daha fazla bilgi için bkz. [Azure Ilke tanımı yapısı](../concepts/definition-structure.md).
 
-1. Run the following command to create a policy definition using the AuditStorageAccounts.json file.
+1. AuditStorageAccounts.json dosyası kullanarak bir ilke tanımı oluşturmak için aşağıdaki komutu çalıştırın.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   The command creates a policy definition named _Audit Storage Accounts Open to Public Networks_.
-   For more information about other parameters that you can use, see [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
+   Komut, _ortak ağlarda açık olan denetim depolama hesapları_adlı bir ilke tanımı oluşturur.
+   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
-   When called without location parameters, `New-AzPolicyDefinition` defaults to saving the policy definition in the selected subscription of the sessions context. To save the definition to a different location, use the following parameters:
+   Konum parametreleri olmadan çağrıldığında, varsayılan olarak `New-AzPolicyDefinition`, ilke tanımının oturum bağlamının seçili aboneliğine kaydedilmesini sağlar. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 
-   - **SubscriptionId** - Save to a different subscription. Requires a _GUID_ value.
-   - **ManagementGroupName** - Save to a management group. Requires a _string_ value.
+   - **SubscriptionID** -farklı bir aboneliğe kaydedin. Bir _GUID_ değeri gerektirir.
+   - **ManagementGroupName** -bir yönetim grubuna kaydedin. Bir _dize_ değeri gerektirir.
 
-1. After you create your policy definition, you can create a policy assignment by running the following commands:
+1. İlke tanımınız oluşturduktan sonra aşağıdaki komutları çalıştırarak ilke ataması oluşturabilirsiniz:
 
    ```azurepowershell-interactive
    $rg = Get-AzResourceGroup -Name 'ContosoRG'
@@ -85,23 +85,23 @@ The first step toward better visibility of your resources is to create and assig
    New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
-   Replace _ContosoRG_ with the name of your intended resource group.
+   _ContosoRG_ değerini amaçlanan kaynak grubunuzun adıyla değiştirin.
 
-   The **Scope** parameter on `New-AzPolicyAssignment` works with management group, subscription, resource group, or a single resource. The parameter uses a full resource path, which the **ResourceId** property on `Get-AzResourceGroup` returns. The pattern for **Scope** for each container is as follows. Replace `{rName}`, `{rgName}`, `{subId}`, and `{mgName}` with your resource name, resource group name, subscription ID, and management group name, respectively.
-   `{rType}` would be replaced with the **resource type** of the resource, such as `Microsoft.Compute/virtualMachines` for a VM.
+   `New-AzPolicyAssignment` **kapsam** parametresi yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte kullanılabilir. Parametresi, `Get-AzResourceGroup` **RESOURCEID** özelliğinin döndürdüğü tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. `{rName}`, `{rgName}`, `{subId}`ve `{mgName}`, sırasıyla kaynak adınızla, kaynak grubu adıyla, abonelik KIMLIĞINIZLE ve yönetim grubu adıyla değiştirin.
+   `{rType}`, kaynağın **kaynak türüyle** (örneğin, bir VM için `Microsoft.Compute/virtualMachines`) değiştirilebilir.
 
-   - Resource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resource group - `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Subscription - `/subscriptions/{subId}/`
-   - Management group - `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Kaynak-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Kaynak grubu-`/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Abonelik-`/subscriptions/{subId}/`
+   - Yönetim grubu-`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-For more information about managing resource policies using the Azure Resource Manager PowerShell module, see [Az.Resources](/powershell/module/az.resources/#policies).
+Azure Resource Manager PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
 
-### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Create and assign a policy definition using ARMClient
+### <a name="create-and-assign-a-policy-definition-using-armclient"></a>ARMClient kullanarak bir ilke tanımı oluşturma ve atama
 
-Use the following procedure to create a policy definition.
+İlke tanımı oluşturmak için aşağıdaki yordamı kullanın.
 
-1. Copy the following JSON snippet to create a JSON file. You'll call the file in the next step.
+1. Bir JSON dosyası oluşturmak için aşağıdaki JSON kod parçacığını kopyalayın. Sonraki adımda dosya ararız.
 
    ```json
    "properties": {
@@ -129,7 +129,7 @@ Use the following procedure to create a policy definition.
    }
    ```
 
-1. Create the policy definition using one of the following calls:
+1. Aşağıdaki çağrıları birini kullanarak ilke tanımı oluşturun:
 
    ```console
    # For defining a policy in a subscription
@@ -139,13 +139,13 @@ Use the following procedure to create a policy definition.
    armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
    ```
 
-   Replace the preceding {subscriptionId} with the ID of your subscription or {managementGroupId} with the ID of your [management group](../../management-groups/overview.md).
+   Önceki {SubscriptionID} öğesini aboneliğinizin KIMLIĞIYLE veya {ManagementGroupId} yerine [Yönetim GRUBUNUZUN](../../management-groups/overview.md)kimliğiyle değiştirin.
 
-   For more information about the structure of the query, see [Azure Policy Definitions – Create or Update](/rest/api/resources/policydefinitions/createorupdate) and [Policy Definitions – Create or Update At Management Group](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   Sorgunun yapısı hakkında daha fazla bilgi için bkz. [Azure Ilke tanımları – oluşturma veya güncelleştirme](/rest/api/resources/policydefinitions/createorupdate) ve [Ilke tanımları – Yönetim grubunda Oluştur veya Güncelleştir](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
-Use the following procedure to create a policy assignment and assign the policy definition at the resource group level.
+Bir ilke ataması oluşturma ve kaynak grubu düzeyinde ilke tanımını atamak için aşağıdaki yordamı kullanın.
 
-1. Copy the following JSON snippet to create a JSON policy assignment file. Replace example information in &lt;&gt; symbols with your own values.
+1. İlke ataması JSON dosyası oluşturmak için aşağıdaki JSON kod parçacığını kopyalayın. &lt;&gt; sembollerinde bulunan örnek bilgileri kendi değerlerinizle değiştirin.
 
    ```json
    {
@@ -159,21 +159,21 @@ Use the following procedure to create a policy assignment and assign the policy 
    }
    ```
 
-1. Create the policy assignment using the following call:
+1. Çağrısını kullanarak ilke ataması oluşturun:
 
    ```console
    armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
    ```
 
-   Replace example information in &lt;&gt; symbols with your own values.
+   &lt;&gt; sembollerinde bulunan örnek bilgileri kendi değerlerinizle değiştirin.
 
-   For more information about making HTTP calls to the REST API, see [Azure REST API Resources](/rest/api/resources/).
+   REST API HTTP çağrıları yapma hakkında daha fazla bilgi için bkz. [Azure REST API kaynakları](/rest/api/resources/).
 
-### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>Create and assign a policy definition with Azure CLI
+### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>Azure CLI ile bir ilke tanımı oluşturma ve atama
 
-To create a policy definition, use the following procedure:
+Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
 
-1. Copy the following JSON snippet to create a JSON policy assignment file.
+1. İlke ataması JSON dosyası oluşturmak için aşağıdaki JSON kod parçacığını kopyalayın.
 
    ```json
    {
@@ -194,55 +194,55 @@ To create a policy definition, use the following procedure:
    }
    ```
 
-   For more information about authoring a policy definition, see [Azure Policy Definition Structure](../concepts/definition-structure.md).
+   İlke tanımı yazma hakkında daha fazla bilgi için bkz. [Azure Ilke tanımı yapısı](../concepts/definition-structure.md).
 
-1. Run the following command to create a policy definition:
+1. İlke tanımı oluşturmak için aşağıdaki komutu çalıştırın:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
-   The command creates a policy definition named _Audit Storage Accounts Open to Public Networks_.
-   For more information about other parameters that you can use, see [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create).
+   Komut, _ortak ağlarda açık olan denetim depolama hesapları_adlı bir ilke tanımı oluşturur.
+   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [az Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create).
 
-   When called without location parameters, `az policy definition creation` defaults to saving the policy definition in the selected subscription of the sessions context. To save the definition to a different location, use the following parameters:
+   Konum parametreleri olmadan çağrıldığında, varsayılan olarak `az policy definition creation`, ilke tanımının oturum bağlamının seçili aboneliğine kaydedilmesini sağlar. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 
-   - **--subscription** - Save to a different subscription. Requires a _GUID_ value for the subscription ID or a _string_ value for the subscription name.
-   - **--management-group** - Save to a management group. Requires a _string_ value.
+   - **--Subscription** -farklı bir aboneliğe kaydedin. Abonelik KIMLIĞI için bir _GUID_ değeri veya abonelik adı için bir _dize_ değeri gerektirir.
+   - **--Yönetim-Group** -bir yönetim grubuna Kaydet. Bir _dize_ değeri gerektirir.
 
-1. Use the following command to create a policy assignment. Replace example information in &lt;&gt; symbols with your own values.
+1. Bir ilke ataması oluşturmak için aşağıdaki komutu kullanın. &lt;&gt; sembollerinde bulunan örnek bilgileri kendi değerlerinizle değiştirin.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   The **--scope** parameter on `az policy assignment create` works with management group, subscription, resource group, or a single resource. The parameter uses a full resource path. The pattern for **--scope** for each container is as follows. Replace `{rName}`, `{rgName}`, `{subId}`, and `{mgName}` with your resource name, resource group name, subscription ID, and management group name, respectively. `{rType}` would be replaced with the **resource type** of the resource, such as `Microsoft.Compute/virtualMachines` for a VM.
+   `az policy assignment create` üzerindeki **--scope** parametresi yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte kullanılabilir. Parametresi tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. `{rName}`, `{rgName}`, `{subId}`ve `{mgName}`, sırasıyla kaynak adınızla, kaynak grubu adıyla, abonelik KIMLIĞINIZLE ve yönetim grubu adıyla değiştirin. `{rType}`, kaynağın **kaynak türüyle** (örneğin, bir VM için `Microsoft.Compute/virtualMachines`) değiştirilebilir.
 
-   - Resource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resource group - `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Subscription - `/subscriptions/{subID}`
-   - Management group - `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Kaynak-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Kaynak grubu-`/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Abonelik-`/subscriptions/{subID}`
+   - Yönetim grubu-`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-You can get the Azure Policy Definition ID by using PowerShell with the following command:
+Aşağıdaki komutla PowerShell kullanarak Azure Ilke tanımı KIMLIĞI ' ni edinebilirsiniz:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
 ```
 
-The policy definition ID for the policy definition that you created should resemble the following example:
+İlke tanım kimliği, oluşturduğunuz ilke tanımı için aşağıdaki örneğe benzemelidir:
 
 ```output
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-For more information about how you can manage resource policies with Azure CLI, see [Azure CLI Resource Policies](/cli/azure/policy?view=azure-cli-latest).
+Azure CLı ile kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [Azure CLI kaynak ilkeleri](/cli/azure/policy?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Review the following articles for more information about the commands and queries in this article.
+Bu makaledeki sorgular ve komutları hakkında daha fazla bilgi için aşağıdaki makaleleri inceleyin.
 
-- [Azure REST API Resources](/rest/api/resources/)
-- [Azure PowerShell Modules](/powershell/module/az.resources/#policies)
-- [Azure CLI Policy Commands](/cli/azure/policy?view=azure-cli-latest)
-- [Azure Policy Insights resource provider REST API reference](/rest/api/policy-insights)
+- [Azure REST API kaynakları](/rest/api/resources/)
+- [Azure PowerShell modüller](/powershell/module/az.resources/#policies)
+- [Azure CLı Ilkesi komutları](/cli/azure/policy?view=azure-cli-latest)
+- [Azure Policy Insights kaynak sağlayıcısı REST API başvurusu](/rest/api/policy-insights)
 - [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).

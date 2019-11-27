@@ -1,6 +1,6 @@
 ---
-title: Set up staging environments for web apps in Azure App Service | Microsoft Docs
-description: Learn how to use staged publishing for web apps in Azure App Service.
+title: Azure App Service Web Apps için hazırlama ortamlarını ayarlama | Microsoft Docs
+description: Azure App Service 'de Web uygulamaları için hazırlanmış yayımlamayı nasıl kullanacağınızı öğrenin.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -22,188 +22,188 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382279"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Set up staging environments in Azure App Service
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service 'de hazırlama ortamlarını ayarlama
 <a name="Overview"></a>
 
-When you deploy your web app, web app on Linux, mobile back end, or API app to [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), you can use a separate deployment slot instead of the default production slot when you're running in the **Standard**, **Premium**, or **Isolated** App Service plan tier. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. 
+Web uygulamanızı, Linux 'ta Web uygulamanızı, mobil arka uca veya API uygulamasını [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)için dağıtırken, **Standart**, **Premium**veya **yalıtılmış** App Service planı katmanında çalışırken varsayılan üretim yuvası yerine ayrı bir dağıtım yuvası kullanabilirsiniz. Dağıtım yuvaları, kendi ana bilgisayar adlarına sahip canlı uygulamalardır. Uygulama içeriği ve yapılandırma öğeleri, üretim yuvası dahil olmak üzere iki dağıtım yuvası arasında değiştirilebilir. 
 
-Deploying your application to a non-production slot has the following benefits:
+Uygulamanızı üretim dışı bir yuvaya dağıtmak aşağıdaki avantajlara sahiptir:
 
-* You can validate app changes in a staging deployment slot before swapping it with the production slot.
-* Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app. The traffic redirection is seamless, and no requests are dropped because of swap operations. You can automate this entire workflow by configuring [auto swap](#Auto-Swap) when pre-swap validation isn't needed.
-* After a swap, the slot with previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can perform the same swap immediately to get your "last known good site" back.
+* Üretim yuvası ile takas etmeden önce hazırlama dağıtım yuvasındaki uygulama değişikliklerini doğrulayabilirsiniz.
+* İlk olarak bir yuvaya bir yuva dağıtmak ve bunu üretime dönüştürmek, yuvanın tüm örneklerinin üretime değiştirilmeden önce bir bütün olarak daha fazla olduğundan emin olur. Bu, uygulamanızı dağıtırken kapalı kalma süresini ortadan kaldırır. Trafik yeniden yönlendirmesi sorunsuz ve değiştirme işlemleri nedeniyle hiçbir istek atılamaz. Ön değiştirme doğrulaması gerekli olmadığında [otomatik değiştirme](#Auto-Swap) 'yi yapılandırarak bu bütün iş akışını otomatikleştirebilirsiniz.
+* Bir değiştirme işleminden sonra, önceden hazırlanmış uygulamaya sahip yuva artık önceki üretim uygulamasına sahiptir. Üretim yuvasında takas edilen değişiklikler beklenmediği sürece, "bilinen son iyi siteyi" geri almak için aynı değiştirmeyi hemen gerçekleştirebilirsiniz.
 
-Each App Service plan tier supports a different number of deployment slots. There's no additional charge for using deployment slots. To find out the number of slots your app's tier supports, see [App Service limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Her bir App Service plan katmanı farklı sayıda dağıtım yuvası destekler. Dağıtım yuvalarını kullanmak için ek ücret alınmaz. Uygulamanızın katmanının desteklediği yuva sayısını öğrenmek için bkz. [App Service sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
 
-To scale your app to a different tier, make sure that the target tier supports the number of slots your app already uses. For example, if your app has more than five slots, you can't scale it down to the **Standard** tier, because the **Standard** tier supports only five deployment slots. 
+Uygulamanızı farklı bir katmana ölçeklendirmek için, hedef katmanın uygulamanızın zaten kullandığı yuva sayısını desteklediğinden emin olun. Örneğin, uygulamanızda beşten fazla yuva varsa **Standart** katman yalnızca beş dağıtım yuvası desteklediğinden **Standart** katmana ölçeklendiremez. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Add a slot
-The app must be running in the **Standard**, **Premium**, or **Isolated** tier in order for you to enable multiple deployment slots.
+## <a name="add-a-slot"></a>Yuva Ekle
+Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standart**, **Premium**veya **yalıtılmış** katmanda çalışıyor olması gerekir.
 
-1. In the [Azure portal](https://portal.azure.com/), open your app's [resource page](../azure-resource-manager/manage-resources-portal.md#manage-resources).
+1. [Azure Portal](https://portal.azure.com/), uygulamanızın [kaynak sayfasını](../azure-resource-manager/manage-resources-portal.md#manage-resources)açın.
 
-2. In the left pane, select **Deployment slots** > **Add Slot**.
+2. Sol bölmede, **yuva ekle** > **dağıtım yuvaları** ' nı seçin.
    
-    ![Add a new deployment slot](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Yeni bir dağıtım yuvası Ekle](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
+   > Uygulama zaten **Standart**, **Premium**veya **yalıtılmış** katmanda değilse, hazırlanan yayımlamayı etkinleştirmek için desteklenen katmanları gösteren bir ileti alırsınız. Bu noktada, devam etmeden önce **Yükselt** ' i seçme ve uygulamanızın **Ölçek** sekmesine gitme seçeneğiniz vardır.
    > 
 
-3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
+3. **Yuva Ekle** iletişim kutusunda yuvaya bir ad verin ve bir uygulama yapılandırmasını başka bir dağıtım yuvasından klonlamak isteyip istemediğinizi seçin. Devam etmek için **Ekle** ' yi seçin.
    
-    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Yapılandırma kaynağı](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    You can clone a configuration from any existing slot. Settings that can be cloned include app settings, connection strings, language framework versions, web sockets, HTTP version, and platform bitness.
+    Bir yapılandırmayı var olan herhangi bir yuvadan kopyalayabilirsiniz. Klonlanabilen ayarlar uygulama ayarları, bağlantı dizeleri, dil çerçevesi sürümleri, Web yuvaları, HTTP sürümü ve platform bit genişliği içerir.
 
-4. After the slot is added, select **Close** to close the dialog box. The new slot is now shown on the **Deployment slots** page. By default, **Traffic %** is set to 0 for the new slot, with all customer traffic routed to the production slot.
+4. Yuva eklendikten sonra, iletişim kutusunu kapatmak için **Kapat** ' ı seçin. Yeni yuva artık **dağıtım yuvaları** sayfasında gösteriliyor. Varsayılan olarak, **% trafiği** yeni yuva için, tüm müşteri trafiği üretim yuvasına yönlendirilirken 0 olarak ayarlanır.
 
-5. Select the new deployment slot to open that slot's resource page.
+5. Bu yuvanın kaynak sayfasını açmak için yeni dağıtım yuvasını seçin.
    
-    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
+    ![Dağıtım yuvası başlığı](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    The staging slot has a management page just like any other App Service app. You can change the slot's configuration. The name of the slot is shown at the top of the page to remind you that you're viewing the deployment slot.
+    Hazırlama yuvasında, tıpkı diğer App Service uygulamaları gibi bir yönetim sayfası vardır. Yuvanın yapılandırmasını değiştirebilirsiniz. Yuva adı sayfanın en üstünde gösterilir ve dağıtım yuvasını görüntülemekte olduğunuzu hatırlatır.
 
-6. Select the app URL on the slot's resource page. The deployment slot has its own host name and is also a live app. To limit public access to the deployment slot, see [Azure App Service IP restrictions](app-service-ip-restrictions.md).
+6. Yuvanın kaynak sayfasında Uygulama URL 'sini seçin. Dağıtım yuvası kendi ana bilgisayar adına sahiptir ve ayrıca canlı bir uygulamadır. Dağıtım yuvasına genel erişimi sınırlandırmak için bkz. [IP kısıtlamaları Azure App Service](app-service-ip-restrictions.md).
 
-The new deployment slot has no content, even if you clone the settings from a different slot. For example, you can [publish to this slot with Git](app-service-deploy-local-git.md). You can deploy to the slot from a different repository branch or a different repository. 
+Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının içeriği yoktur. Örneğin, [Bu yuvaya git ile yayımlayabilirsiniz](app-service-deploy-local-git.md). Yuvaya farklı bir depo dalından veya farklı bir depodan dağıtım yapabilirsiniz. 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="what-happens-during-a-swap"></a>What happens during a swap
+## <a name="what-happens-during-a-swap"></a>Değiştirme sırasında ne olur?
 
-### <a name="swap-operation-steps"></a>Swap operation steps
+### <a name="swap-operation-steps"></a>Değiştirme işlemi adımları
 
-When you swap two slots (usually from a staging slot into the production slot), App Service does the following to ensure that the target slot doesn't experience downtime:
+İki yuva (genellikle bir hazırlama yuvasından üretim yuvasına) değiştirdiğinizde App Service, hedef yuvanın kapalı kalma süresi yaşamasını sağlamak için aşağıdakileri yapar:
 
-1. Apply the following settings from the target slot (for example, the production slot) to all instances of the source slot: 
-    - [Slot-specific](#which-settings-are-swapped) app settings and connection strings, if applicable.
-    - [Continuous deployment](deploy-continuous-deployment.md) settings, if enabled.
-    - [App Service authentication](overview-authentication-authorization.md) settings, if enabled.
+1. Hedef yuvadan (örneğin, üretim yuvası) kaynak yuvasının tüm örneklerine aşağıdaki ayarları uygulayın: 
+    - Varsa, [yuvaya özgü](#which-settings-are-swapped) uygulama ayarları ve bağlantı dizeleri.
+    - Etkinse, [sürekli dağıtım](deploy-continuous-deployment.md) ayarları.
+    - Etkinleştirilirse, [kimlik doğrulama ayarları App Service](overview-authentication-authorization.md) .
     
-    Any of these cases trigger all instances in the source slot to restart. During [swap with preview](#Multi-Phase), this marks the end of the first phase. The swap operation is paused, and you can validate that the source slot works correctly with the target slot's settings.
+    Bu durumların herhangi biri kaynak yuvadaki tüm örnekleri yeniden başlatılacak şekilde tetikler. [Önizleme ile değiştirme](#Multi-Phase)sırasında, bu ilk aşamanın sonunu işaretler. Değiştirme işlemi duraklatılır ve kaynak yuvasının hedef yuvasının ayarlarıyla doğru şekilde çalışıp çalışmadığını doğrulayabilirsiniz.
 
-1. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
+1. Kaynak yuvadaki her örnek için yeniden başlatma işleminin tamamlanmasını bekleyin. Herhangi bir örnek yeniden başlatılamazsa, değiştirme işlemi kaynak yuvada tüm değişiklikleri geri alır ve işlemi sonlandırır.
 
-1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
+1. [Yerel önbellek](overview-local-cache.md) etkinse, kaynak yuvasının her örneğindeki uygulama köküne ("/") bir http isteği getirerek yerel önbellek başlatmayı tetikleyin. Her örnek herhangi bir HTTP yanıtı döndürene kadar bekleyin. Yerel önbellek başlatma, her örnekte başka bir yeniden başlatmaya neden olur.
 
-1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
+1. [Otomatik takas](#Auto-Swap) [özel ısınma](#Warm-up)ile etkinleştirilirse, kaynak yuvasının her örneğindeki uygulama köküne ("/") bir http isteği getirerek [uygulama başlatma](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) tetikleyin.
 
-    If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
+    `applicationInitialization` belirtilmemişse, her örnekteki kaynak yuvasının uygulama köküne bir HTTP isteği tetikleyin. 
     
-    If an instance returns any HTTP response, it's considered to be warmed up.
+    Bir örnek herhangi bir HTTP yanıtı döndürürse, bu, çarpımış olarak kabul edilir.
 
-1. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for the two slots. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
+1. Kaynak yuvasındaki tüm örnekler başarıyla çarpıtlarsa iki yuva için yönlendirme kurallarını değiştirerek iki yuvayı değiştirin. Bu adımdan sonra, hedef yuva (örneğin, üretim yuvası), kaynak yuvada daha önce çarpımış olan uygulamaya sahiptir.
 
-1. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances.
+1. Artık kaynak yuvasının hedef yuvada daha önce takas öncesi uygulamasına sahip olduğuna göre, tüm ayarları uygulayıp örnekleri yeniden başlatarak aynı işlemi gerçekleştirin.
 
-At any point of the swap operation, all work of initializing the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared and warmed up, regardless of where the swap succeeds or fails. To swap a staging slot with the production slot, make sure that the production slot is always the target slot. This way, the swap operation doesn't affect your production app.
+Değiştirme işleminin herhangi bir noktasında, takas edilen uygulamaları başlatma işleminin hepsi kaynak yuvada gerçekleşir. Kaynak yuva hazırlanmakta olduğu veya başarısız olmasına bakılmaksızın, hedef yuva çevrimiçi kalır. Bir hazırlama yuvasını üretim yuvası ile değiştirmek için, üretim yuvasının her zaman hedef yuva olduğundan emin olun. Bu şekilde, değiştirme işlemi üretim uygulamanızı etkilemez.
 
-### <a name="which-settings-are-swapped"></a>Which settings are swapped?
+### <a name="which-settings-are-swapped"></a>Hangi ayarları değiştirmiş?
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
+Bir uygulama ayarını veya bağlantı dizesini belirli bir yuvaya (takas değil) eklemek üzere yapılandırmak için, Bu yuvanın **yapılandırma** sayfasına gidin. Bir ayar ekleyin veya düzenleyin ve ardından **dağıtım yuvası ayarı**' nı seçin. Bu onay kutusunun belirlenmesi, ayarın değiştirilebilir olmadığını App Service söyler. 
 
-![Slot setting](./media/web-sites-staged-publishing/SlotSetting.png)
+![Yuva ayarı](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-two-slots"></a>Swap two slots 
-You can swap deployment slots on your app's **Deployment slots** page and the **Overview** page. For technical details on the slot swap, see [What happens during swap](#AboutConfiguration).
+## <a name="swap-two-slots"></a>İki yuva değiştirme 
+Dağıtım yuvalarını uygulamanızın **dağıtım yuvaları** sayfasında ve **genel bakış** sayfasında takas edebilirsiniz. Yuva takası hakkında teknik ayrıntılar için bkz. [değiştirme sırasında ne olur](#AboutConfiguration).
 
 > [!IMPORTANT]
-> Before you swap an app from a deployment slot into production, make sure that production is your target slot and that all settings in the source slot are configured exactly as you want to have them in production.
+> Bir uygulamayı bir dağıtım yuvasından üretime değiştirmeden önce üretime ait hedef yuvalarınızın olduğundan ve kaynak yuvadaki tüm ayarların tamamen üretimde olmasını istediğiniz şekilde yapılandırıldığından emin olun.
 > 
 > 
 
-To swap deployment slots:
+Dağıtım yuvalarını değiştirmek için:
 
-1. Go to your app's **Deployment slots** page and select **Swap**.
+1. Uygulamanızın **dağıtım yuvaları** sayfasına gidin ve **takas**' ı seçin.
    
-    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![Takas düğmesi](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
+    **Takas** iletişim kutusu, seçilen kaynak ve hedef yuvalarda değiştirilecek ayarları gösterir.
 
-2. Select the desired **Source** and **Target** slots. Usually, the target is the production slot. Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
+2. İstenen **kaynak** ve **hedef** yuvaları seçin. Genellikle hedef, üretim yuvadır. Ayrıca, **kaynak değişiklikleri** ve **hedef değişiklikler** sekmelerini seçip yapılandırma değişikliklerinin beklendiğini doğrulayın. İşiniz bittiğinde, **Değiştir**' i seçerek yuvaları hemen takas edebilirsiniz.
 
     ![Takası tamamlama](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
+    Değiştirme işleminin gerçekten gerçekleşmeden önce hedef yuvalarınızın yeni ayarlarla nasıl çalışacağını görmek için **değiştirme**' yi seçmeyin, ancak [Önizleme ile değiştirme](#Multi-Phase)' deki yönergeleri izleyin.
 
-3. When you're finished, close the dialog box by selecting **Close**.
+3. İşiniz bittiğinde, **Kapat**' ı seçerek iletişim kutusunu kapatın.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps).
 
 <a name="Multi-Phase"></a>
 
-### <a name="swap-with-preview-multi-phase-swap"></a>Swap with preview (multi-phase swap)
+### <a name="swap-with-preview-multi-phase-swap"></a>Önizleme ile değiştirme (çok aşamalı takas)
 
-Before you swap into production as the target slot, validate that the app runs with the swapped settings. The source slot is also warmed up before the swap completion, which is desirable for mission-critical applications.
+Hedef yuva olarak üretime geçiş yapmadan önce, uygulamanın takas edilen ayarlarla çalıştığını doğrulayın. Kaynak yuva Ayrıca, değiştirme tamamlanmadan önce, görev açısından kritik uygulamalar için istenen şekilde daha da çarpmış olur.
 
-When you perform a swap with preview, App Service performs the same [swap operation](#AboutConfiguration) but pauses after the first step. You can then verify the result on the staging slot before completing the swap. 
+Önizleme ile bir değiştirme gerçekleştirdiğinizde, App Service aynı [değiştirme işlemini](#AboutConfiguration) gerçekleştirir, ancak ilk adımdan sonra duraklatılır. Daha sonra, değiştirmeyi tamamlamadan önce hazırlama yuvasındaki sonucu doğrulayabilirsiniz. 
 
-If you cancel the swap, App Service reapplies configuration elements to the source slot.
+Değiştirmeyi iptal ederseniz, App Service yapılandırma öğelerini kaynak yuvaya yeniden uygular.
 
-To swap with preview:
+Önizleme ile değiştirmek için:
 
-1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
+1. [Takas dağıtım yuvalarında](#Swap) bulunan adımları izleyin ancak **Önizleme ile değiştirme gerçekleştir**' i seçin.
 
-    ![Swap with preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Önizleme ile değiştirme](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-    The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
+    İletişim kutusunda kaynak yuvadaki yapılandırmanın 1. aşamada nasıl değiştiği ve kaynak ve hedef yuvanın aşama 2 ' de nasıl değiştirileceği gösterilir.
 
-2. When you're ready to start the swap, select **Start Swap**.
+2. Değiştirmeyi başlatmaya hazırsanız **değiştirmeyi Başlat**' ı seçin.
 
-    When phase 1 finishes, you're notified in the dialog box. Preview the swap in the source slot by going to `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    1\. aşama tamamlandığında, iletişim kutusunda bilgilendirilirsiniz. `https://<app_name>-<source-slot-name>.azurewebsites.net`giderek, kaynak yuvadaki takası önizleyin. 
 
-3. When you're ready to complete the pending swap, select **Complete Swap** in **Swap action** and select **Complete Swap**.
+3. Bekleyen değiştirme işlemini tamamlamaya hazırsanız değiştirme **eyleminde** **değiştirmeyi Tamam** ' ı seçin ve **değiştirmeyi Tamam**' ı seçin.
 
-    To cancel a pending swap, select **Cancel Swap** instead.
+    Bekleyen bir değişikliği iptal etmek için yerine **değiştirmeyi Iptal et** ' i seçin.
 
-4. When you're finished, close the dialog box by selecting **Close**.
+4. İşiniz bittiğinde, **Kapat**' ı seçerek iletişim kutusunu kapatın.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps).
 
-To automate a multi-phase swap, see [Automate with PowerShell](#automate-with-powershell).
+Çok aşamalı bir değiştirme işlemini otomatikleştirmek için bkz. [PowerShell Ile otomatikleştirin](#automate-with-powershell).
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-a-swap"></a>Roll back a swap
-If any errors occur in the target slot (for example, the production slot) after a slot swap, restore the slots to their pre-swap states by swapping the same two slots immediately.
+## <a name="roll-back-a-swap"></a>Değiştirme geri alma
+Bir yuva takası sonrasında hedef yuvada (örneğin, üretim yuvası) herhangi bir hata oluşursa, aynı iki yuvayı hemen değiştirerek Yuvaları ön değiştirme durumlarına geri yükleyin.
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Configure auto swap
+## <a name="configure-auto-swap"></a>Otomatik değiştirmeyi yapılandırma
 
 > [!NOTE]
-> Auto swap isn't supported in web apps on Linux.
+> Linux üzerinde Web Apps 'te otomatik takas desteklenmez.
 
-Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically [swaps the app into production](#swap-operation-steps) after it's warmed up in the source slot.
+Otomatik takas, uygulamanızı sıfır soğuk başlar ve uygulamanın müşterileri için sıfır kapalı kalma süresiyle sürekli olarak dağıtmak istediğiniz Azure DevOps senaryolarını kolaylaştırır. Otomatik takas bir yuvadan üretime etkin hale geldiğinde, kod değişikliklerinizi bu yuvaya her gönderdiğinizde, App Service, kaynak yuvada bir süre geçtikten sonra [uygulamayı otomatik olarak üretime dönüştürür](#swap-operation-steps) .
 
    > [!NOTE]
-   > Before you configure auto swap for the production slot, consider testing auto swap on a non-production target slot.
+   > Üretim yuvası için otomatik değiştirmeyi yapılandırmadan önce, bir üretim dışı hedef yuvasında otomatik değiştirmeyi test etmeyi göz önünde bulundurun.
    > 
 
-To configure auto swap:
+Otomatik değiştirmeyi yapılandırmak için:
 
-1. Go to your app's resource page. Select **Deployment slots** >  *\<desired source slot>*  > **Configuration** > **General settings**.
+1. Uygulamanızın kaynak sayfasına gidin. *\<istenen kaynak yuvası >*  > **yapılandırma** > **genel ayarları** > **dağıtım yuvaları** ' nı seçin.
    
-2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
+2. **Otomatik takas etkin**için **Açık**seçeneğini belirleyin. Ardından, **Otomatik takas dağıtım yuvası**için istenen hedef yuvayı seçin ve komut çubuğunda **Kaydet** ' i seçin. 
    
-    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![Otomatik değiştirmeyi yapılandırmaya yönelik seçimler](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. Execute a code push to the source slot. Auto swap happens after a short time, and the update is reflected at your target slot's URL.
+3. Kaynak yuvaya bir kod gönderimi yürütün. Otomatik değiştirme kısa bir süre sonra gerçekleşir ve güncelleştirme, hedef yuvaınızın URL 'sine yansıtılır.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps).
 
 <a name="Warm-up"></a>
 
-## <a name="specify-custom-warm-up"></a>Specify custom warm-up
+## <a name="specify-custom-warm-up"></a>Özel ısınma belirtin
 
-Some apps might require custom warm-up actions before the swap. The `applicationInitialization` configuration element in web.config lets you specify custom initialization actions. The [swap operation](#AboutConfiguration) waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
+Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerektirebilir. Web. config dosyasındaki `applicationInitialization` Configuration öğesi özel başlatma eylemleri belirtmenize izin verir. [Takas işlemi](#AboutConfiguration) , hedef yuva ile takas etmeden önce bu özel ısınma işleminin bitmesini bekler. Örnek bir Web. config parçası aşağıda verilmiştir.
 
     <system.webServer>
         <applicationInitialization>
@@ -212,75 +212,75 @@ Some apps might require custom warm-up actions before the swap. The `application
         </applicationInitialization>
     </system.webServer>
 
-For more information on customizing the `applicationInitialization` element, see [Most common deployment slot swap failures and how to fix them](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+`applicationInitialization` öğesinin özelleştirilmesi hakkında daha fazla bilgi için bkz. [en yaygın dağıtım yuvası değiştirme hataları ve bunların nasıl düzeltileceğini öğrenin](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-You can also customize the warm-up behavior with one or both of the following [app settings](configure-common.md):
+Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her ikisiyle de ısınma davranışını özelleştirebilirsiniz:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: The path to ping to warm up your site. Add this app setting by specifying a custom path that begins with a slash as the value. `/statuscheck` bunun bir örneğidir. The default value is `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Valid HTTP response codes for the warm-up operation. Add this app setting with a comma-separated list of HTTP codes. An example is `200,202` . If the returned status code isn't in the list, the warmup and swap operations are stopped. By default, all response codes are valid.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: ısınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek `200,202`. Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
 
 > [!NOTE]
-> The `<applicationInitialization>` configuration element is part of each app start-up, whereas the two warm-up behavior app settings apply only to slot swaps.
+> `<applicationInitialization>` yapılandırma öğesi her uygulamanın bir parçasıdır, ancak iki ısınma davranışı uygulama ayarları yalnızca yuva takas için geçerlidir.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps).
 
-## <a name="monitor-a-swap"></a>Monitor a swap
+## <a name="monitor-a-swap"></a>Değiştirme izleme
 
-If the [swap operation](#AboutConfiguration) takes a long time to complete, you can get information on the swap operation in the [activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+[Değiştirme işleminin](#AboutConfiguration) tamamlanmasını uzun sürerse, [etkinlik günlüğündeki](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)değiştirme işlemi hakkında bilgi edinebilirsiniz.
 
-On your app's resource page in the portal, in the left pane, select **Activity log**.
+Portalın kaynak sayfasında, sol bölmede **etkinlik günlüğü**' nü seçin.
 
-A swap operation appears in the log query as `Swap Web App Slots`. You can expand it and select one of the suboperations or errors to see the details.
+Günlük sorgusunda `Swap Web App Slots`olarak bir değiştirme işlemi görüntülenir. Bu öğeyi genişletebilir ve ayrıntılarını görmek için alt perations veya hatalardan birini seçebilirsiniz.
 
-## <a name="route-traffic"></a>Route traffic
+## <a name="route-traffic"></a>Trafiği yönlendirme
 
-By default, all client requests to the app's production URL (`http://<app_name>.azurewebsites.net`) are routed to the production slot. You can route a portion of the traffic to another slot. This feature is useful if you need user feedback for a new update, but you're not ready to release it to production.
+Varsayılan olarak, uygulamanın üretim URL 'sine (`http://<app_name>.azurewebsites.net`) tüm istemci istekleri üretim yuvasına yönlendirilir. Trafiğin bir bölümünü başka bir yuvaya yönlendirebilirsiniz. Bu özellik, yeni bir güncelleştirme için Kullanıcı geri bildirimlerine ihtiyacınız varsa, ancak bunu üretime serbest bırakmaya hazırsanız faydalıdır.
 
-### <a name="route-production-traffic-automatically"></a>Route production traffic automatically
+### <a name="route-production-traffic-automatically"></a>Üretim trafiğini otomatik olarak yönlendir
 
-To route production traffic automatically:
+Üretim trafiğini otomatik olarak yönlendirmek için:
 
-1. Go to your app's resource page and select **Deployment slots**.
+1. Uygulamanızın kaynak sayfasına gidin ve **dağıtım yuvaları**' nı seçin.
 
-2. In the **Traffic %** column of the slot you want to route to, specify a percentage (between 0 and 100) to represent the amount of total traffic you want to route. **Kaydet**’i seçin.
+2. Yönlendirmek istediğiniz yuvanın **trafik%** sütununda, yönlendirmek istediğiniz toplam trafik miktarını göstermek için bir yüzde (0 ile 100 arasında) belirtin. **Kaydet**’i seçin.
 
-    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
+    ![Trafik yüzdesini ayarlama](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
+Ayar kaydedildikten sonra, belirtilen istemci yüzdesi, bir üretim dışı yuvaya rastgele yönlendirilir. 
 
-After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. On the client browser, you can see which slot your session is pinned to by looking at the `x-ms-routing-name` cookie in your HTTP headers. A request that's routed to the "staging" slot has the cookie `x-ms-routing-name=staging`. A request that's routed to the production slot has the cookie `x-ms-routing-name=self`.
+İstemci belirli bir yuvaya otomatik olarak yönlendirildikten sonra, o istemci oturumunun ömrü için bu yuvaya "sabitlenmiş" olur. İstemci tarayıcısında, HTTP başlıklarınızın `x-ms-routing-name` tanımlama bilgisine bakarak oturumunuzun hangi yuvaya sabitlendiği hakkında bilgi alabilirsiniz. "Hazırlama" yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=staging`. Üretim yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Next to the Azure Portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
+   > Azure portalının yanında, DevOps işlem hatları veya diğer otomasyon sistemleri gibi CI/CD araçlarından yönlendirme yüzdelerini ayarlamak için Azure CLı 'daki [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) komutunu da kullanabilirsiniz.
    > 
 
-### <a name="route-production-traffic-manually"></a>Route production traffic manually
+### <a name="route-production-traffic-manually"></a>Üretim trafiğini el ile yönlendirin
 
-In addition to automatic traffic routing, App Service can route requests to a specific slot. This is useful when you want your users to be able to opt in to or opt out of your beta app. To route production traffic manually, you use the `x-ms-routing-name` query parameter.
+Otomatik Trafik yönlendirmeye ek olarak, App Service istekleri belirli bir yuvaya yönlendirebilir. Bu, kullanıcılarınızın beta uygulamanızı kabul edebilir veya devre dışı bırakmak istediğinizde faydalıdır. Üretim trafiğini el ile yönlendirmek için `x-ms-routing-name` sorgu parametresini kullanırsınız.
 
-To let users opt out of your beta app, for example, you can put this link on your webpage:
+Kullanıcıların beta uygulamanızı geri almasına izin vermek için, örneğin bu bağlantıyı Web sayfanıza yerleştirebilirsiniz:
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-The string `x-ms-routing-name=self` specifies the production slot. After the client browser accesses the link, it's redirected to the production slot. Every subsequent request has the `x-ms-routing-name=self` cookie that pins the session to the production slot.
+`x-ms-routing-name=self` dize, üretim yuvasını belirtir. İstemci tarayıcısı bağlantıya eriştiğinde, üretim yuvasına yönlendirilir. Sonraki tüm istekler, oturumu üretim yuvasına sabiteden `x-ms-routing-name=self` tanımlama bilgisine sahiptir.
 
-To let users opt in to your beta app, set the same query parameter to the name of the non-production slot. Bir örneği aşağıda verilmiştir:
+Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. Bir örneği aşağıda verilmiştir:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-By default, new slots are given a routing rule of `0%`, shown in grey. When you explicitly set this value to `0%` (shown in black text), your users can access the staging slot manually by using the `x-ms-routing-name` query parameter. But they won't be routed to the slot automatically because the routing percentage is set to 0. This is an advanced scenario where you can "hide" your staging slot from the public while allowing internal teams to test changes on the slot.
+Varsayılan olarak, yeni yuvalara gri olarak gösterilen `0%`bir yönlendirme kuralı verilir. Bu değeri açıkça `0%` (siyah metin olarak gösterilmiştir) olarak ayarlarsanız, kullanıcılarınız hazırlama yuvasına `x-ms-routing-name` sorgu parametresini kullanarak el ile erişebilir. Ancak, yönlendirme yüzdesi 0 olarak ayarlandığı için bunlar otomatik olarak yuvaya yönlendirilmez. Bu, iç ekiplerin yuvalarda değişiklikleri test kurmasına izin verirken, hazırlama yuvalarınızı genel olarak "gizleyebileceğiniz", gelişmiş bir senaryodur.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-slot"></a>Delete a slot
+## <a name="delete-a-slot"></a>Yuva silme
 
-Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete>*  > **Overview**. Select **Delete** on the command bar.  
+Uygulamanızın kaynak sayfasına gidin. > > **Genel Bakış ' ı** *silmek için\<yuvasını* > **dağıtım yuvaları** seçin. Komut çubuğunda **Sil** ' i seçin.  
 
-![Delete a deployment slot](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Dağıtım yuvasını silme](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -290,9 +290,9 @@ Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing deployment slots in Azure App Service.
+Azure PowerShell, Azure 'u, Azure App Service dağıtım yuvalarını yönetme desteği dahil olmak üzere Windows PowerShell aracılığıyla yönetmek için cmdlet 'ler sağlayan bir modüldür.
 
-For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
+Azure PowerShell yükleme ve yapılandırma hakkında bilgi edinmek ve Azure aboneliğinizle Azure PowerShell kimlik doğrulaması yapmak için bkz. [Microsoft Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview).  
 
 ---
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma
@@ -301,52 +301,52 @@ New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location
 ```
 
 ---
-### <a name="create-a-slot"></a>Create a slot
+### <a name="create-a-slot"></a>Yuva oluşturma
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiate a swap with a preview (multi-phase swap), and apply destination slot configuration to the source slot
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Önizleme ile bir değiştirme başlatın (çok aşamalı takas) ve hedef yuva yapılandırmasını kaynak yuvaya uygulayın
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Cancel a pending swap (swap with review) and restore the source slot configuration
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Bekleyen bir değiştirmeyi iptal et (gözden geçireni değiştirme) ve kaynak yuva yapılandırmasını geri yükleme
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Swap deployment slots
+### <a name="swap-deployment-slots"></a>Takas dağıtım Yuvaları
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>Monitor swap events in the activity log
+### <a name="monitor-swap-events-in-the-activity-log"></a>Etkinlik günlüğündeki değiştirme olaylarını izleme
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 ---
-### <a name="delete-a-slot"></a>Delete a slot
+### <a name="delete-a-slot"></a>Yuva silme
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automate with ARM templates
+## <a name="automate-with-arm-templates"></a>ARM şablonlarıyla otomatikleştirin
 
-[ARM Templates](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) are declarative JSON files used to automate the deployment and configuration of Azure resources. To swap slots using ARM templates, you will set two properties on the *Microsoft.Web/sites/slots* and *Microsoft.Web/sites* resources:
+[ARM şablonları](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) , Azure kaynaklarının dağıtımını ve yapılandırmasını otomatik hale getirmek için kullanılan BILDIRIM temelli JSON dosyalarıdır. ARM şablonları kullanarak yuvaları takas etmek için, *Microsoft. Web/Sites/yuvaları* ve *Microsoft. Web/Sites* kaynaklarında iki özellik ayarlayacaksınız:
 
-- `buildVersion`: this is a string property which represents the current version of the app deployed in the slot. For example: "v1", "1.0.0.1", or "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: this is a string property that specifies what `buildVersion` the slot should have. If the targetBuildVersion does not equal the current `buildVersion`, then this will trigger the swap operation by finding the slot which has the specified `buildVersion`.
+- `buildVersion`: Bu, yuvada dağıtılan uygulamanın geçerli sürümünü temsil eden bir dize özelliğidir. Örneğin: "v1", "1.0.0.1" veya "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: Bu, yuvanın ne `buildVersion` gerektiğini belirten bir dize özelliğidir. TargetBuildVersion geçerli `buildVersion`eşit değilse, bu işlem, belirtilen `buildVersion`sahip olan yuvayı bularak değiştirme işlemini tetikler.
 
-### <a name="example-arm-template"></a>Example ARM Template
+### <a name="example-arm-template"></a>Örnek ARM şablonu
 
-The following ARM template will update the `buildVersion` of the staging slot and set the `targetBuildVersion` on the production slot. This will swap the two slots. The template assumes you already have a webapp created with a slot named "staging".
+Aşağıdaki ARM şablonu, hazırlama yuvasının `buildVersion` güncelleştirecek ve üretim yuvasında `targetBuildVersion` ayarlayacaktır. Bu, iki yuvaları takas eder. Şablon zaten "hazırlama" adlı bir tepsisle oluşturulmuş bir WebApp olduğunu varsayar.
 
 ```json
 {
@@ -390,27 +390,27 @@ The following ARM template will update the `buildVersion` of the staging slot an
 }
 ```
 
-This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. After the first execution, `targetBuildVersion` will match the current `buildVersion`, so a swap will not be triggered.
+Bu ARM şablonu, tekrar tekrar yürütülebileceğini ve yuvaların aynı durumunun ortaya çıkarıdempotent anlamına gelir. İlk yürütmeden sonra, `targetBuildVersion` geçerli `buildVersion`eşleşecek, bu nedenle bir takas tetiklenmeyecektir.
 
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-the-cli"></a>Automate with the CLI
+## <a name="automate-with-the-cli"></a>CLı ile otomatikleştirin
 
-For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
+Dağıtım yuvaları için [Azure CLI](https://github.com/Azure/azure-cli) komutları için, bkz. [az WebApp Deployment slot](/cli/azure/webapp/deployment/slot).
 
-## <a name="troubleshoot-swaps"></a>Troubleshoot swaps
+## <a name="troubleshoot-swaps"></a>Takas sorunlarını giderme
 
-If any error occurs during a [slot swap](#AboutConfiguration), it's logged in *D:\home\LogFiles\eventlog.xml*. It's also logged in the application-specific error log.
+[Yuva değiştirme](#AboutConfiguration)sırasında herhangi bir hata oluşursa, bu, *D:\home\logfiles\eventlog.xml*dosyasına kaydedilir. Ayrıca uygulamaya özgü hata günlüğüne kaydedilir.
 
-Here are some common swap errors:
+Bazı yaygın değiştirme hataları aşağıda verilmiştir:
 
-- An HTTP request to the application root is timed. The swap operation waits for 90 seconds for each HTTP request, and retries up to 5 times. If all retries are timed out, the swap operation is stopped.
+- Uygulama köküne yönelik bir HTTP isteği zaman aşımına uğradı. Değiştirme işlemi her HTTP isteği için 90 saniye bekler ve 5 kez yeniden dener. Tüm denemeler zaman aşımına uğradıysanız değiştirme işlemi durdurulur.
 
-- Local cache initialization might fail when the app content exceeds the local disk quota specified for the local cache. For more information, see [Local cache overview](overview-local-cache.md).
+- Uygulama içeriği yerel önbellek için belirtilen yerel disk kotasını aştığında yerel önbellek başlatma başarısız olabilir. Daha fazla bilgi için bkz. [yerel önbelleğe genel bakış](overview-local-cache.md).
 
-- During [custom warm-up](#Warm-up), the HTTP requests are made internally (without going through the external URL). They can fail with certain URL rewrite rules in *Web.config*. For example, rules for redirecting domain names or enforcing HTTPS can prevent warm-up requests from reaching the app code. To work around this issue, modify your rewrite rules by adding the following two conditions:
+- [Özel ısınma](#Warm-up)sırasında http istekleri dahili olarak yapılır (dış URL 'ye geçmeden). *Web. config*DOSYASıNDAKI belirli URL yeniden yazma kurallarıyla başarısız olabilir. Örneğin, etki alanı adlarını yeniden yönlendirme veya HTTPS zorlama kuralları, uygulama koduna ulaşmasını önler. Bu sorunu geçici olarak çözmek için, aşağıdaki iki koşulu ekleyerek yeniden yazma kurallarınızı değiştirin:
 
     ```xml
     <conditions>
@@ -419,7 +419,7 @@ Here are some common swap errors:
       ...
     </conditions>
     ```
-- Without a custom warm-up, the URL rewrite rules can still block HTTP requests. To work around this issue, modify your rewrite rules by adding the following condition:
+- Özel bir ısınma olmadan, URL yeniden yazma kuralları yine de HTTP isteklerini engelliyor olabilir. Bu sorunu geçici olarak çözmek için, aşağıdaki koşulu ekleyerek yeniden yazma kurallarınızı değiştirin:
 
     ```xml
     <conditions>
@@ -427,9 +427,9 @@ Here are some common swap errors:
       ...
     </conditions>
     ```
-- Some [IP restriction rules](app-service-ip-restrictions.md) might prevent the swap operation from sending HTTP requests to your app. IPv4 address ranges that start with `10.` and `100.` are internal to your deployment. You should allow them to connect to your app.
+- Bazı [IP kısıtlama kuralları](app-service-ip-restrictions.md) değiştirme IŞLEMININ uygulamanıza http istekleri göndermesini engelleyebilir. `10.` ve `100.` ile başlayan IPv4 adresi aralıkları, dağıtımınız için dahili olarak kullanılır. Uygulamanıza bağlanmasına izin vermeniz gerekir.
 
-- After slot swaps, the app may experience unexpected restarts. This is because after a swap, the hostname binding configuration goes out of sync, which by itself doesn't cause restarts. However, certain underlying storage events (such as storage volume failovers) may detect these discrepancies and force all worker processes to restart. To minimize these types of restarts, set the [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app setting](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) on *all slots*. However, this app setting does *not* work with Windows Communication Foundation (WCF) apps.
+- Yuva değiştirildikten sonra, uygulama beklenmeyen yeniden başlatmalar ile karşılaşabilir. Bunun nedeni, bir değiştirme işleminden sonra, ana bilgisayar adı bağlama yapılandırması eşitlemeden sonra yeniden başlatmalara neden olmaz. Ancak, bazı temel depolama olayları (örneğin, depolama birimi yük devretme işlemleri), bu tutarsızlıkları algılayabilir ve tüm çalışan süreçlerini yeniden başlamaya zorlayabilir. Bu tür yeniden başlatma türlerini en aza indirmek için, *Tüm yuvalarda* [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` uygulama ayarını](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) ayarlayın. Ancak, bu uygulama ayarı Windows Communication Foundation (WCF) *uygulamalarıyla çalışmaz.*
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Block access to non-production slots](app-service-ip-restrictions.md)
+[Üretim dışı yuvalara erişimi engelleyin](app-service-ip-restrictions.md)

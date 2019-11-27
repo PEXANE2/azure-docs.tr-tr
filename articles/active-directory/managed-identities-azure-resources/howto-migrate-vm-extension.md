@@ -166,7 +166,7 @@ Windows ve Linux 'un belirli sürümlerinde, uzantı durdurulduğunda aşağıda
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Nerede: 
+Konumlar: 
 - Windows için uzantı adı ve tür: `ManagedIdentityExtensionForWindows`
 - Linux için uzantı adı ve türü: `ManagedIdentityExtensionForLinux`
 
