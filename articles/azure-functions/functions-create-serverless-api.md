@@ -1,6 +1,6 @@
 ---
-title: Customize an HTTP endpoint in Azure Functions
-description: Learn how to customize an HTTP trigger endpoint in Azure Functions
+title: Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
+description: Azure Işlevlerinde bir HTTP tetikleyici uç noktasını özelleştirmeyi öğrenin
 author: mattchenderson
 ms.topic: conceptual
 ms.date: 05/04/2017
@@ -13,15 +13,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230691"
 ---
-# <a name="customize-an-http-endpoint-in-azure-functions"></a>Customize an HTTP endpoint in Azure Functions
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
 
-In this article, you learn how Azure Functions allows you to build highly scalable APIs. Azure İşlevleri Node.JS, C# ve daha birçok dilde uç nokta yazmayı kolaylaştıran yerleşik HTTP tetikleyicisi ve bağlama koleksiyonuna sahiptir. In this article, you will customize an HTTP trigger to handle specific actions in your API design. Ayrıca Azure İşlev Proxy'leri tümleştirmesi yapıp sahte API'ler oluşturarak API'nizi ölçeklendirmeye hazır hale getireceksiniz. Tüm bu işlemler Azure İşlevleri'nin sunucusuz işlem ortamında gerçekleştirildiğinden kaynak ölçeklendirme konusunda endişelenmenize gerek yoktur. Tek yapmanız gereken API'nizin mantığına yoğunlaşmaktır.
+Bu makalede, Azure Işlevlerinin yüksek düzeyde ölçeklenebilir API 'Ler oluşturmanıza nasıl izin verdiğini öğrenirsiniz. Azure İşlevleri Node.JS, C# ve daha birçok dilde uç nokta yazmayı kolaylaştıran yerleşik HTTP tetikleyicisi ve bağlama koleksiyonuna sahiptir. Bu makalede, API tasarımınızda belirli eylemleri işlemek üzere bir HTTP tetikleyicisi özelleştirecek. Ayrıca Azure İşlev Proxy'leri tümleştirmesi yapıp sahte API'ler oluşturarak API'nizi ölçeklendirmeye hazır hale getireceksiniz. Tüm bu işlemler Azure İşlevleri'nin sunucusuz işlem ortamında gerçekleştirildiğinden kaynak ölçeklendirme konusunda endişelenmenize gerek yoktur. Tek yapmanız gereken API'nizin mantığına yoğunlaşmaktır.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-The resulting function will be used for the rest of this article.
+Sonuçta elde edilen işlev bu makalenin geri kalanında kullanılacaktır.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
@@ -35,7 +35,7 @@ HTTP ile tetiklenen işleviniz varsayılan olarak tüm HTTP yöntemlerini kabul 
 
     ![HTTP işlevini özelleştirme](./media/functions-create-serverless-api/customizing-http.png)
 
-1. Use the HTTP trigger settings as specified in the table.
+1. Tabloda belirtilen HTTP tetikleyici ayarlarını kullanın.
 
     | Alan | Örnek değer | Açıklama |
     |---|---|---|
@@ -47,7 +47,7 @@ HTTP ile tetiklenen işleviniz varsayılan olarak tüm HTTP yöntemlerini kabul 
     > [!NOTE] 
     > Genel ayar tarafından işlendiği için `/api` temel yol ön ekini yol şablonuna dahil etmediniz.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 HTTP işlevlerini özelleştirme hakkında daha fazla bilgi için bkz. [Azure İşlevleri HTTP bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
 
@@ -88,7 +88,7 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
     > [!NOTE] 
     > Proxy için sabit olarak yazılmış ortam bağımlılığı oluşmasını önleme amacıyla ana bilgisayar yapılandırması için uygulama ayarlarının kullanılması önerilir. Uygulama ayarlarını kullanarak proxy yapılandırmasını birden fazla ortamda kullanabilirsiniz ve bu durumda ortama özgü uygulama ayarları geçerli olur.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Ön uçta proxy oluşturma
 
@@ -99,13 +99,13 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
 
     | Alan | Örnek değer | Açıklama |
     |---|---|---|
-    | Adı | HelloProxy | Yalnızca yönetim için kullanılan kolay ad |
-    | Yol şablonu | /api/remotehello | Bu proxy'yi çağırmak için kullanılacak yolu belirler |
+    | Ad | HelloProxy | Yalnızca yönetim için kullanılan kolay ad |
+    | Yol şablonu | /api/remotemerhaba | Bu proxy'yi çağırmak için kullanılacak yolu belirler |
     | Arka uç URL'si | https://%HELLO_HOST%/api/hello | İsteğe proxy uygulanacak uç noktayı belirtir |
     
 1. Proxy'ler `/api` temel yol ön ekini sağlamaz ve bu ekin yol şablonuna dahil edilmesi gerekir.
 1. `%HELLO_HOST%` söz dizimi önceden oluşturduğunuz uygulama ayarına başvuracaktır. Çözümlenen URL, özgün işlevinize işaret edecektir.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Yeni proxy'yi denemek için Proxy URL'sini kopyalayıp tarayıcıda veya sık kullandığınız HTTP istemcisinde test edebilirsiniz.
     1. Anonim işlev için şunu kullanın:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
@@ -172,13 +172,13 @@ Bu noktaya kadar gösterilen adımları uyguladıysanız proxies.json dosyanız 
 }
 ```
 
-Bu kod backendUri özelliği olmayan "GetUserByName" adlı yeni bir proxy ekler. Bu proxy başka bir kaynağı çağırmak yerine yanıt geçersiz kılma özelliğini kullanarak Proxy'lerden gelen varsayılan yanıtı değiştirir. İstek ve yanıt geçersiz kılma işlemleri bir arka uç URL'si ile birlikte de kullanılabilir. This is particularly useful when proxying to a legacy system, where you might need to modify headers, query parameters, etc. To learn more about request and response overrides, see [Modifying requests and responses in Proxies](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
+Bu kod backendUri özelliği olmayan "GetUserByName" adlı yeni bir proxy ekler. Bu proxy başka bir kaynağı çağırmak yerine yanıt geçersiz kılma özelliğini kullanarak Proxy'lerden gelen varsayılan yanıtı değiştirir. İstek ve yanıt geçersiz kılma işlemleri bir arka uç URL'si ile birlikte de kullanılabilir. Bu özellikle, üst bilgileri, sorgu parametrelerini, vb. değişiklik yapmanız gerekebilecek eski bir sisteme proxy oluştururken kullanışlıdır. İstek ve yanıt geçersiz kılmaları hakkında daha fazla bilgi edinmek için bkz. [proxy 'lerde istekleri ve yanıtları değiştirme](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
 Sahte API'nizi test etmek için bir tarayıcı veya sık kullandığınız REST istemcisini kullanarak `<YourProxyApp>.azurewebsites.net/api/users/{username}` uç noktasını çağırın. _{username}_ yerine kullanıcı adını temsil eden bir dize değeri yazmayı unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this article, you learned how to build and customize an API on Azure Functions. Ayrıca sahteler dahil olmak üzere birden fazla API'yi bir araya getirerek birleştirilmiş bir API yüzeyi oluşturmayı da öğrendiniz. Bu teknikleri kullanarak istediğiniz karmaşıklık düzeyinde API'ler derleyebilir ve tümünü Azure İşlevleri tarafından sunulan sunucusuz işlem modeli üzerinde çalıştırabilirsiniz.
+Bu makalede, Azure Işlevlerinde bir API oluşturmayı ve özelleştirmeyi öğrendiniz. Ayrıca sahteler dahil olmak üzere birden fazla API'yi bir araya getirerek birleştirilmiş bir API yüzeyi oluşturmayı da öğrendiniz. Bu teknikleri kullanarak istediğiniz karmaşıklık düzeyinde API'ler derleyebilir ve tümünü Azure İşlevleri tarafından sunulan sunucusuz işlem modeli üzerinde çalıştırabilirsiniz.
 
 API'nizi geliştirirken aşağıdaki konulara da başvurabilirsiniz:
 

@@ -13,5 +13,5 @@ ms.locfileid: "74224417"
 ---
 | Kaynak | Varsayılan limit | Üst sınır | Not |
 | --- | --- | --- | --- |
-| Azure Ağ İzleyicisi | 1 per region | 1 per region | Network Watcher is created to enable access to the service. Only one instance of Network Watcher is required per subscription per region. |
-| Packet capture sessions |10,000 per region | 10,000 |Number of sessions only, not saved captures. |
+| Azure Ağ İzleyicisi | Bölge başına 1 | Bölge başına 1 | Hizmete erişim sağlamak için ağ Izleyicisi oluşturulur. Her bölge için abonelik başına yalnızca bir ağ Izleyicisi örneği gereklidir. |
+| Paket yakalama oturumları |Bölge başına 10.000 | 10,000 |Yalnızca oturum sayısı, kayıtlı yakalamalar değil. |

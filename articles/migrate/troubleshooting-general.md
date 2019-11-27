@@ -235,7 +235,7 @@ Uygulamaları bulma işlemi şu anda yalnızca VMware VM 'Leri için desteklenir
 
 Uygulamaları bulma işlemi, Gereç içinde VM kimlik bilgilerini sağlamadıysanız, uygulama bulma işlemi çalışmayacaktır. VCenter Server ve VMware VM 'Leri için gereken erişim ayrıcalıkları hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) . Gereç içinde VM kimlik bilgileri sağladıysanız ve uygulama bulma başarısız olursa, hata ve düzeltme eyleminin nedenini belirlemek için aşağıdaki tabloyu gözden geçirin:
 
-**Hata kodu** | **İleti** | **Olası nedeni** | **Önerilen eylem**
+**Hata kodu** | **İleti** | **Olası neden** | **Önerilen eylem**
 --- | --- | --- | ---
 10000 | Sunucuda yüklü olan uygulamalar bulunamıyor. | Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yüklenen uygulamaların bulunması yalnızca Windows ve Linux sunucuları için desteklenir.
 10001 | Sunucu yüklü olan uygulamalar alınamıyor. | Bu, bir iç hata nedeniyle gereç içindeki bazı eksik dosyalar var. | Lütfen Microsoft Desteği başvurun.
@@ -262,7 +262,7 @@ Uygulamaları bulma işlemi, Gereç içinde VM kimlik bilgilerini sağlamadıysa
 
 Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 
-**Konuda** | **Fix**
+**Konuda** | **Onar**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
 Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.

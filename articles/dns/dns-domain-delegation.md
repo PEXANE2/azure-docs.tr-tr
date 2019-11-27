@@ -1,5 +1,5 @@
 ---
-title: Azure DNS delegation overview
+title: Azure DNS temsilciye genel bakış
 description: Etki alanı temsilcisi seçiminin nasıl değiştirileceğini ve etki alanı barındırma sağlamak üzere Azure DNS ad sunucularının nasıl kullanılacağını anlayın.
 services: dns
 author: asudbring
@@ -28,7 +28,7 @@ Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı y
 
 **Etki alanı kayıt şirketi** - Etki alanı kayıt şirketi, İnternet etki alanı adlarını sağlayabilen bir şirkettir. Bu şirketler kullanmak istediğiniz İnternet etki alanının kullanılabilir olup olmadığını doğrular ve bu etki alanını satın almanızı sağlar. Etki alanı adı kaydedildikten sonra, etki alanı adının yasal sahibi olursunuz. Bir İnternet etki alanına zaten sahipseniz Azure DNS'ye devretmek için geçerli etki alanı kayıt şirketini kullanırsınız.
 
-For more information about accredited domain registrars, see [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html).
+Acann etki alanı kayıt şirketlerinde hakkında daha fazla bilgi için bkz. [ICANN-Acalacaklandırılan kayıt şirketlerinde](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ### <a name="resolution-and-delegation"></a>Çözümleme ve temsilci seçme
 
@@ -54,13 +54,13 @@ Aşağıdaki resimde örnek bir DNS sorgusu gösterilir. Contoso.net ve partners
 1. İstemci, yerel DNS sunucusundan `www.partners.contoso.net` ister.
 2. Yerel DNS sunucusunda kayıt yoktur, dolayısıyla kendi kök ad sunucusundan istekte bulunur.
 3. Kök ad sunucusunda kayıt yoktur, ama `.net` ad sunucusunun adresini bilir ve bu adresi DNS sunucusuna sağlar
-4. The local DNS server sends the request to the `.net` name server.
-5. The `.net` name server does not have the record but does know the address of the `contoso.net` name server. In this case, it responds with the address of the name server for the DNS zone hosted in Azure DNS.
-6. The local DNS server sends the request to the name server for the `contoso.net` zone hosted in Azure DNS.
-7. The zone `contoso.net` does not have the record but knows the name server for `partners.contoso.net` and responds with the address. In this case, it is a DNS zone hosted in Azure DNS.
-8. The local DNS server sends the request to the name server for the `partners.contoso.net` zone.
-9. The `partners.contoso.net` zone has the A record and responds with the IP address.
-10. The local DNS server provides the IP address to the client
+4. Yerel DNS sunucusu, isteği `.net` ad sunucusuna gönderir.
+5. `.net` ad sunucusu kaydına sahip değil, ancak `contoso.net` ad sunucusunun adresini tanıyor. Bu durumda, Azure DNS ' de barındırılan DNS bölgesi için ad sunucusunun adresiyle yanıt verir.
+6. Yerel DNS sunucusu, isteği Azure DNS barındırılan `contoso.net` bölgenin ad sunucusuna gönderir.
+7. `contoso.net` bölge, kayıt içermez, ancak ad sunucusu `partners.contoso.net` bilir ve adresle yanıt verir. Bu durumda, Azure DNS barındırılan bir DNS bölgesidir.
+8. Yerel DNS sunucusu, isteği `partners.contoso.net` bölgenin ad sunucusuna gönderir.
+9. `partners.contoso.net` bölgenin bir kaydı vardır ve IP adresiyle yanıt verir.
+10. Yerel DNS sunucusu, istemciye IP adresini sağlar
 11. İstemci `www.partners.contoso.net` web sitesine bağlanır.
 
 Her temsilci seçimi aslında NS kayıtlarının iki kopyasını içerir, bunlardan biri üst bölgede bulunup alt bölgeyi işaret ederken diğeri de alt bölgede yer alır. "Contoso.net" bölgesi, "contoso.net"e ait NS kayıtlarını içerir ("net"teki NS kayıtlarına ek olarak). Bu kayıtlar yetkili NS kayıtları olarak adlandırılır ve alt bölgenin tepesinde durur.

@@ -11,10 +11,10 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260910"
 ---
-## <a name="webapi-project"></a>WebAPI Project
+## <a name="webapi-project"></a>WebAPI projesi
 
-1. In Visual Studio, open the **AppBackend** project that you created in the **Notify Users** tutorial.
-2. In Notifications.cs, replace the whole **Notifications** class with the following code. Be sure to replace the placeholders with your connection string (with full access) for your notification hub, and the hub name. You can obtain these values from the [Azure portal](https://portal.azure.com). This module now represents the different secure notifications that will be sent. In a complete implementation, the notifications will be stored in a database; for simplicity, in this case we store them in memory.
+1. Visual Studio 'da, **kullanıcıları bilgilendir** öğreticisinde oluşturduğunuz **apparka uç** projesini açın.
+2. Notifications.cs ' de, tüm **bildirim** sınıfını aşağıdaki kodla değiştirin. Yer tutucuları, Bildirim Hub 'ınız ve hub adı için bağlantı dizeniz (tam erişim ile) değiştirdiğinizden emin olun. Bu değerleri [Azure Portal](https://portal.azure.com)elde edebilirsiniz. Bu modül artık gönderilecek farklı güvenli bildirimleri temsil eder. Tüm bir uygulamada, bildirimler bir veritabanında depolanır; kolaylık olması için, bu durumda bunları bellekte depolarız.
    
    ```csharp
     public class Notification
@@ -56,7 +56,7 @@ ms.locfileid: "74260910"
     }
     ```
 
-1. In NotificationsController.cs, replace the code inside the **NotificationsController** class definition with the following code. This component implements a way for the device to retrieve the notification securely, and also provides a way (for the purposes of this tutorial) to trigger a secure push to your devices. Note that when sending the notification to the notification hub, we only send a raw notification with the ID of the notification (and no actual message):
+1. NotificationsController.cs ' de, **Notificationscontroller** sınıf tanımının içindeki kodu aşağıdaki kodla değiştirin. Bu bileşen, cihazın bildirimi güvenli bir şekilde alması için bir yol uygular ve ayrıca cihazlarınıza güvenli bir gönderim tetiklemesi için bir yol (Bu öğreticinin amaçları doğrultusunda) sağlar. Bildirimi Bildirim Hub 'ına gönderirken yalnızca bildirimin KIMLIĞIYLE (gerçek ileti olmadan) ham Bildirim gönderdiğimiz unutulmamalıdır:
    
    ```csharp
     public NotificationsController()
@@ -92,7 +92,7 @@ ms.locfileid: "74260910"
     }
     ```
 
-Note that the `Post` method now does not send a toast notification. It sends a raw notification that contains only the notification ID, and not any sensitive content. Also, make sure to comment the send operation for the platforms for which you do not have credentials configured on your notification hub, as they will result in errors.
+`Post` yönteminin şimdi bir bildirim göndermediğini unutmayın. Yalnızca bildirim KIMLIĞINI içeren ve hassas içerik olmayan ham bir bildirim gönderir. Ayrıca, hata oluşmasına yol açacak şekilde, Bildirim Hub 'ında kimlik bilgilerinizin yapılandırılmadığı platformlar için gönderme işlemine yorum yaptığınızdan emin olun.
 
-1. Now we will re-deploy this app to an Azure Website in order to make it accessible from all devices. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
-2. Select Azure Website as your publish target. Sign in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. **Yayımla**’ta tıklayın.
+1. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
+2. Yayımlama hedefi olarak Azure Web sitesini seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önüne alın. Bu öğreticide daha sonra *arka uç uç* noktanız olarak bu URL 'ye başvuracağız. **Yayımla**’ta tıklayın.

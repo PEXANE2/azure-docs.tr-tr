@@ -23,7 +23,7 @@ Maliyetlerin etiketler temelinde dağıtımını yaparak Cloudyn'de maliyetleri 
 
 Örneğin, mühendislik maliyetleri için geri ödeme almak isteyebilirsiniz. Mühendislik ekibinize, kaynak maliyetleri temelinde belirli bir miktar almanız gerektiğini gösterebilmelisiniz. Tüm tüketilen *mühendislik* etiketli kaynaklar için onlara bir rapor gösterebilirsiniz.
 
-Bu makalede, etiketler ve kategoriler bazen eş anlamlı kullanılmıştır. Kategorileri geniş koleksiyonlardır ve birçok şey olabilir. Bunlar iş birimlerini, maliyet merkezlerini, web hizmetlerini veya etiketlenmiş herhangi bir şeyi içerebilir. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. Azure portalının önceki sürümlerinde *etiket adı*, *anahtar* olarak adlandırılıyordu. Etiketler tek bir Azure aboneliği için oluşturulur ve bu abonelikte depolanır. AWS etiketleri anahtar/değer çiftlerinden oluşur. Hem Azure'da hem de AWS'de kullanıldığından, Cloudyn'de de *anahtar* terimi kullanılır. Kategori Yöneticisi, etiketleri birleştirmek için anahtarları (etiket adları) kullanır.
+Bu makalede, etiketler ve kategoriler bazen eş anlamlı kullanılmıştır. Kategorileri geniş koleksiyonlardır ve birçok şey olabilir. Bunlar iş birimlerini, maliyet merkezlerini, web hizmetlerini veya etiketlenmiş herhangi bir şeyi içerebilir. Etiketler, birden fazla kaynağa ve kaynak grubuna aynı etiketi uygulayarak, kaynakları kategorilere ayırmanıza ve birleştirilmiş faturalandırma bilgilerini görüntülemenize ve yönetmenize olanak tanıyan ad/değer çiftleridir. Azure portalının önceki sürümlerinde *etiket adı*, *anahtar* olarak adlandırılıyordu. Etiketler tek bir Azure aboneliği için oluşturulur ve bu abonelikte depolanır. AWS etiketleri anahtar/değer çiftlerinden oluşur. Hem Azure'da hem de AWS'de kullanıldığından, Cloudyn'de de *anahtar* terimi kullanılır. Kategori Yöneticisi, etiketleri birleştirmek için anahtarları (etiket adları) kullanır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -53,11 +53,11 @@ Maliyet dağıtımına başladığınızda, ilk olarak bir maliyet modeli kullan
 
 Özel bir maliyet dağıtma modeli oluşturmak için, raporun menüsünde **Maliyetler** &gt; **Maliyet Yönetimi** &gt; **360° Maliyet Dağıtma**'yı seçin.
 
-![Example showing a dashboard where you select Cost Allocation 360](./media/tutorial-manage-costs/cost-allocation-360.png)
+![360 maliyet seçtiğiniz bir panoya gösteren örnek](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 **360 Maliyet Dağıtma** sayfasında **Ekle**'yi seçin ve ardından maliyet modeliniz için bir ad ve açıklama girin. Tüm hesapları veya tek tek hesapları seçin. Tek tek hesapları kullanmak istiyorsanız, birden çok bulut hizmeti sağlayıcısından birden çok hesap seçebilirsiniz. Sonra, bulunan ve verilerinizi kategorilere ayıracak etiketleri seçmek için **Kategorilere Ayırma**'ya tıklayın. Modelinize eklemek istediğiniz etiketleri (kategorileri) seçin. Aşağıdaki örnekte **Unit** (Birim) etiketi seçilmiştir.
 
-![Example showing cost model categorization](./media/tutorial-manage-costs/cost-model01.png)
+![Örnek gösteren maliyet modeli kategorilere ayırma](./media/tutorial-manage-costs/cost-model01.png)
 
 Örnekte, 19.680 ABD dolarının kategorilere ayrılmadığı (etiket içermediği) gösteriliyor.
 
@@ -91,11 +91,11 @@ Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Kate
 
 Kuralı tanımlarken, VEYA koşuluyla birden çok değer ekleyebilirsiniz. Ayrıca bazı temel dize işlemleri de yapabilirsiniz. Her iki durumda da, **Kural**'ın sağ tarafındaki üç nokta simgesine ( **…** ) tıklayın.
 
-Yeni kural oluşturmak için, **Kurallar** alanında yeni kuralı oluşturun. Örneğin, **Kurallar**'ın altına **dev** girin ve ardından **Eylemler**'in altına **R&amp;D** girin. İşiniz bittiğinde yeni kategorinizi kaydedin.
+Yeni kural oluşturmak için, **Kurallar** alanında yeni kuralı oluşturun. Örneğin, **Kurallar**'ın altına **dev** girin ve ardından **Eylemler&amp;'in altına** R**D** girin. İşiniz bittiğinde yeni kategorinizi kaydedin.
 
 Aşağıdaki resimde, **Work-Load** adlı yeni kategori için oluşturulan örnek kurallar gösterilir:
 
-![Example showing the new work-load category](./media/tutorial-manage-costs/category01.png)
+![Yeni iş yükü kategori gösteren örnek](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Etiket kaynakları ve raporlar
 
@@ -122,7 +122,7 @@ Kuruluşların ücret hesaplama ve ücret yansıtma işlemlerini yapmak için ku
 
 Maliyet dağıtma sonuçlarını görüntülemek için, Maliyet Analizi raporunu açın ve oluşturduğunuz maliyet modelini seçin. Ardından, maliyet modelinde seçilen bir veya birden çok etiketle bir gruplandırma ekleyin.
 
-![Cost Analysis report showing an example of data from the new cost](./media/tutorial-manage-costs/cost-analysis.png)
+![Maliyet gösteren bir örnek veri yeni maliyet analizi raporu](./media/tutorial-manage-costs/cost-analysis.png)
 
 Kolaylıkla belirli gruplar tarafından tüketilen belirli hizmetlere odaklanmış raporlar oluşturabilir ve kaydedebilirsiniz. Örneğin, Azure sanal makinelerini yaygın olarak kullanan bir bölümünüz olabilir. Tüketimi ve maliyetleri göstermek için Azure sanal makinelerine göre filtrelenmiş bir rapor oluşturabilirsiniz.
 

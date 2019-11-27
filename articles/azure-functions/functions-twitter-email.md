@@ -43,7 +43,7 @@ Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -76,7 +76,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
 
 ## <a name="create-an-http-triggered-function"></a>HTTP ile tetiklenen işlev oluşturma  
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı seçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı seçin.
 
     ![Azure portalındaki İşlevler hızlı başlangıç sayfası](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -121,7 +121,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
     ```
     Bu işlev kodu, istekte alınan duyarlılık puanına göre bir renk kategorisi döndürür. 
 
-4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. Yanıtın gövdesinde **RED** değeri döndürülür. 
+4. İşlevi test etmek için sağ taraftaki **Test** ' e tıklayarak test sekmesini genişletin. **istek gövdesi**Için `0.2` bir değer yazın ve ardından **Çalıştır**' a tıklayın. Yanıtın gövdesinde **RED** değeri döndürülür. 
 
     ![İşlevi Azure portalında test etme](./media/functions-twitter-email/07-function-test.png)
 
@@ -238,7 +238,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
 | **Konu** | Olumsuz tweet duyarlılığı algılandı  | E-posta bildiriminin konu satırı.  |
 | **Gövde** | Tweet metni, Konum | **Tweet metni** ve **Konum** parametrelerine tıklayın. |
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 İş akışı tamamlandığına göre mantıksal uygulamayı etkinleştirip işlevin nasıl çalıştığını görebilirsiniz.
 

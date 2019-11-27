@@ -11,7 +11,7 @@ ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 09a1b8e54726accf705515bf077f6a599f0f9b78
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74266913"
@@ -48,7 +48,7 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage 2.](search-howto-index-azure-data-lake-storage.md) (önizlemede)
-* [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Sanal Makinelerde SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
@@ -131,6 +131,6 @@ Artık temel fikri anladığınıza göre, atmanız gereken bir sonraki adım he
 * [Bir Azure sanal makinesinde Azure SQL Veritabanı veya SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
-* [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Bilişsel Arama blob Dizin oluşturucuyu kullanarak CSV bloblarını dizine ekleme](search-howto-index-csv-blobs.md)
 * [JSON bloblarını Azure Bilişsel Arama blob Indexer ile dizinleme](search-howto-index-json-blobs.md)

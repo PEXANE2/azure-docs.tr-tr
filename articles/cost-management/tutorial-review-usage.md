@@ -51,15 +51,15 @@ Eğilimleri belirlemek için Zaman İçinde raporları ile kullanım maliyetler 
 
 Örnek bir rapor aşağıda verilmiştir:
 
-![Example Actual Cost Over Time report](./media/tutorial-review-usage/actual-cost01.png)
+![Örnek zaman içinde gerçek maliyet raporu](./media/tutorial-review-usage/actual-cost01.png)
 
 Raporda son 30 gün içinde yapılan tüm harcamalar gösterilir. Yalnızca Azure hizmetlerine ilişkin harcamaları görüntülemek için Hizmet grubunu uygulayın ve ardından tüm Azure hizmetleri için filtreleyin. Aşağıdaki resimde filtrelenmiş hizmetler gösterilmektedir.
 
-![Example showing filtered Azure services](./media/tutorial-review-usage/actual-cost02.png)
+![Azure Hizmetleri için filtrelenmiş örnek gösteriliyor](./media/tutorial-review-usage/actual-cost02.png)
 
 Yukarıdaki örnekte 29.10.2018 tarihinden itibaren, önceki döneme göre daha az para harcanmıştır. Ancak, çok fazla sayıda sütun kullanılması, belirgin bir eğilimi belirsiz hale getirebilir. Diğer görünümlerde gösterilen verileri görmek için rapor görünümünü bir satır veya alan grafiği ile değiştirebilirsiniz. Aşağıdaki resimde eğilim daha net bir şekilde gösterilmektedir.
 
-![Example showing a decreasing Azure VM cost trend](./media/tutorial-review-usage/actual-cost03.png)
+![Azalan bir Azure VM maliyeti eğilimini gösteren örnek](./media/tutorial-review-usage/actual-cost03.png)
 
 Bu örnek üzerinden devam edecek olursak Azure VM maliyetlerinin düştüğünü görebilirsiniz. Ayrıca diğer Azure hizmetlerinin maliyetleri de aynı günde düşmeye başlamıştır. Öyleyse, harcamadaki bu azalmanın nedeni nedir? Bu örnekte büyük çaplı bir proje tamamlandığı için çoğu Azure hizmetinin kullanım oranı düşmüştür.
 
@@ -77,15 +77,15 @@ Uygun Maliyetli Boyutlandırma Önerileri raporu, VM örnek türü kapasitesini 
 
 Portalın üst kısmındaki menüde **İyileştirici** > **Boyutlandırma İyileştirmesi** > **Uygun Maliyetli Boyutlandırma Önerileri**’ne tıklayın. Gerekirse bir filtre uygulayarak sonuç sayısını azaltabilirsiniz. Örnek bir görüntü aşağıda verilmiştir.
 
-![Cost effective sizing recommendation report for Azure VMs](./media/tutorial-review-usage/sizing01.png)
+![Azure Vm'leri için öneri rapor boyutlandırma maliyeti](./media/tutorial-review-usage/sizing01.png)
 
 Bu örnekte, VM örnek türlerini değiştirme önerilerine uyularak 2.382 ABD doları tasarruf edilebilirdi. İlk öneri için **Ayrıntılar** altındaki artı sembolüne (+) tıklayın. Burada, ilk öneriye ilişkin ayrıntılar verilmiştir.
 
-![Example showing recommendation details](./media/tutorial-review-usage/sizing02.png)
+![Öneri ayrıntıları gösteren örnek](./media/tutorial-review-usage/sizing02.png)
 
 **Aday Listesi**’nin yanındaki artı sembolüne tıklarak VM örnek kimliklerini görüntüleyin.
 
-![Example showing a list of VM candidates to resize](./media/tutorial-review-usage/sizing03.png)
+![Yeniden boyutlandırmak için VM adayları listesini gösteren örnek](./media/tutorial-review-usage/sizing03.png)
 
 Kullanım verimsizliklerini algılama hakkında bir öğretici videosu izlemek için bkz. [Cloudyn’de VM Boyutunu İyileştirme](https://youtu.be/1xaZBNmV704).
 
@@ -93,23 +93,23 @@ Azure Maliyet Yönetimi, Azure hizmetleri için maliyet tasarrufu önerileri de 
 
 ## <a name="create-alerts-for-unusual-spending"></a>Olağan dışı harcama uyarıları oluşturma
 
-Alerts allow you to automatically notify stakeholders of spending anomalies and overspending risks. You can create alerts using reports that support alerts based on budget and cost thresholds.
+Uyarılar, katılımcıları harcama ve fazla harcama riskleri konusunda otomatik olarak bilgilendirmesini sağlar. Bütçe ve maliyet eşiklerine göre uyarıları destekleyen raporları kullanarak uyarılar oluşturabilirsiniz.
 
-This example uses the **Actual Cost Over Time** report to send a notification when your spending on an Azure VM  nears your total budget. In this scenario, you have a total budget of $20,000 and you want to receive a notification when costs are approaching half of your budget, $9,000, and an additional alert when costs reach $10,000.
+Bu örnek, bir Azure VM 'de harcama süresi toplam bütçenize yaklaştığında bildirim göndermek için **zaman Içinde gerçek maliyet** raporunu kullanır. Bu senaryoda toplam $20.000 bütçesine sahipsiniz ve maliyetler, maliyetlerinizin yarısını ve $9.000 ' e $10.000 ulaştığında bir uyarı almak istiyorsunuz.
 
-1. From the menu at the top of the Cloudyn portal, select **Costs** > **Cost Analysis** > **Actual Cost Over Time**.
+1. Cloudyn portalının en üstündeki menüden **maliyetler** > **Maliyet Analizi** > **zaman içinde gerçek maliyet**' i seçin.
 2. **Gruplar** seçeneğini **Hizmet** olarak, **Hizmet filtreleme** seçeneğini **Azure/VM** olarak ayarlayın.
-3. In the top right of the report, select **Actions** and then select **Schedule report**.
-4. To send yourself an email of the report at scheduled interval, select the **Scheduling** tab in the **Save or Schedule this** report dialog. **E-posta ile gönder**’i seçtiğinizden emin olun. Any tags, grouping, and filtering you use are included in the emailed report.
-5. Select the **Threshold** tab and then select  **Actual Cost vs. Threshold**.
-   1. In the **Red alert** threshold box enter 10000.
-   2. In the **Yellow alert** threshold box enter 9000.
-   3. In the **Number of consecutive alerts** box, enter the number of consecutive alerts to receive. Belirttiğiniz toplam uyarı sayısını aldığınızda, başka bir uyarı gönderilmez.
+3. Raporun sağ üst kısmında **Eylemler** ' i ve ardından **rapor zamanla**' yı seçin.
+4. Kendinize zamanlanan aralıkta rapor e-postası göndermek için, **Bu raporu Kaydet veya zamanla** Iletişim kutusunda **zamanlama** sekmesini seçin. **E-posta ile gönder**’i seçtiğinizden emin olun. Kullandığınız tüm Etiketler, gruplama ve filtreleme, e-postayla gönderilebilir raporuna dahil edilir.
+5. **Eşik** sekmesini seçin ve ardından **gerçek maliyet ile eşik**' ı seçin.
+   1. **Kırmızı uyarı** eşiği kutusuna 10000 girin.
+   2. **Sarı uyarı** eşiği kutusuna 9000 girin.
+   3. **Ardışık uyarı sayısı** kutusunda, almak için ardışık uyarı sayısını girin. Belirttiğiniz toplam uyarı sayısını aldığınızda, başka bir uyarı gönderilmez.
 6. **Kaydet**’i seçin.
 
-![Example showing red and yellow alerts based on spending thresholds](./media/tutorial-review-usage/schedule-alert01.png)
+![Kırmızı ve sarı uyarı eşikleri harcamayı göre gösteren örnek](./media/tutorial-review-usage/schedule-alert01.png)
 
-You can also choose the **Cost Percentage vs. Budget** threshold metric to create alerts. This allows you to specify the thresholds as percentages of your budget instead of currency values.
+Ayrıca, uyarı oluşturmak için **Maliyet yüzdesi Ile bütçe** eşiği ölçümünü de seçebilirsiniz. Bu, eşikleri para birimi değerleri yerine bütçeniz yüzdesi olarak belirtmenize olanak tanır.
 
 ## <a name="export-data"></a>Verileri dışarı aktar
 

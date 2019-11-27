@@ -1,6 +1,6 @@
 ---
-title: Copy data from Amazon Marketplace Web Service
-description: Learn how to copy data from Amazon Marketplace Web Service to supported sink data stores by using a copy activity in an Azure Data Factory pipeline.
+title: Amazon Market Web hizmetinden veri kopyalama
+description: Desteklenen bir havuz veri depolarına Amazon Market Web hizmetinden bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -17,43 +17,43 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74218766"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Copy data from Amazon Marketplace Web Service using Azure Data Factory
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Market Web hizmetinden veri kopyalama
 
-This article outlines how to use the Copy Activity in Azure Data Factory to copy data from Amazon Marketplace Web Service. It builds on the [copy activity overview](copy-activity-overview.md) article that presents a general overview of copy activity.
+Bu makalede, kopyalama etkinliği Azure Data Factory'de Amazon Market Web hizmetinden veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Supported capabilities
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-This Amazon Marketplace Web Service connector is supported for the following activities:
+Bu Amazon Market Web hizmeti Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-You can copy data from Amazon Marketplace Web Service to any supported sink data store. For a list of data stores that are supported as sources/sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
+Tüm desteklenen havuz veri deposuna Amazon Market Web hizmetinden veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory provides a built-in driver to enable connectivity, therefore you don't need to manually install any driver using this connector.
+Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlangıç
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-The following sections provide details about properties that are used to define Data Factory entities specific to Amazon Marketplace Web Service connector.
+Aşağıdaki bölümler, Data Factory varlıklarını belirli Amazon Market Web Hizmeti Bağlayıcısı tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Linked service properties
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-The following properties are supported for Amazon Marketplace Web Service linked service:
+Amazon Market Web bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | The type property must be set to: **AmazonMWS** | Yes |
-| endpoint | The endpoint of the Amazon MWS server, (that is, mws.amazonservices.com)  | Yes |
-| marketplaceID | The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple Marketplace IDs, separate them with a comma (`,`). (that is, A2EUQ1WTGCTBG2)  | Yes |
-| sellerID | The Amazon seller ID.  | Yes |
-| mwsAuthToken | The Amazon MWS authentication token. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| accessKeyId | The access key ID used to access data.  | Yes |
-| secretKey | The secret key used to access data. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| useEncryptedEndpoints | Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.  | Hayır |
-| useHostVerification | Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.  | Hayır |
-| usePeerVerification | Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.  | Hayır |
+| type | Type özelliği: **AmazonMWS** olarak ayarlanmalıdır | Evet |
+| endpoint | (Diğer bir deyişle, mws.amazonservices.com) Amazon MWS sunucu uç noktası  | Evet |
+| marketplaceID | Verileri almak istediğiniz Amazon Market ID. Birden çok Market kimliği 'nden verileri almak için bunları virgülle ayırın (`,`). (diğer bir deyişle, A2EUQ1WTGCTBG2)  | Evet |
+| sellerID | Amazon satıcı kimliği  | Evet |
+| mwsAuthToken | Amazon MWS kimlik doğrulama belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| accessKeyId | Erişim kimliği verilere erişmek için kullanılan anahtar.  | Evet |
+| secretKey | Verilere erişmek için kullanılan gizli anahtar. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
+| useHostVerification | Ana bilgisayar adı sunucunun sertifikasında SSL üzerinden bağlanırken sunucu ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer true olur.  | Hayır |
+| usePeerVerification | SSL üzerinden bağlanırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true olur.  | Hayır |
 
 **Örnek:**
 
@@ -80,16 +80,16 @@ The following properties are supported for Amazon Marketplace Web Service linked
 }
 ```
 
-## <a name="dataset-properties"></a>Dataset properties
+## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-For a full list of sections and properties available for defining datasets, see the [datasets](concepts-datasets-linked-services.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service dataset.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, Amazon Market Web hizmeti veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-To copy data from Amazon Marketplace Web Service, set the type property of the dataset to **AmazonMWSObject**. The following properties are supported:
+Amazon Market Web hizmetinden veri kopyalamak için, veri kümesinin Type özelliğini **AmazonMWSObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | The type property of the dataset must be set to: **AmazonMWSObject** | Yes |
-| tableName | Name of the table. | No (if "query" in activity source is specified) |
+| type | DataSet 'in Type özelliği: **AmazonMWSObject** olarak ayarlanmalıdır | Evet |
+| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -111,16 +111,16 @@ To copy data from Amazon Marketplace Web Service, set the type property of the d
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-For a full list of sections and properties available for defining activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service source.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Amazon Market Web hizmeti kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="amazon-mws-as-source"></a>Amazon MWS as source
+### <a name="amazon-mws-as-source"></a>Amazon MWS kaynağı olarak
 
-To copy data from Amazon Marketplace Web Service, set the source type in the copy activity to **AmazonMWSSource**. The following properties are supported in the copy activity **source** section:
+Amazon Market Web hizmetinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AmazonMWSSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | The type property of the copy activity source must be set to: **AmazonMWSSource** | Yes |
-| sorgu | Use the custom SQL query to read data. Örneğin: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | No (if "tableName" in dataset is specified) |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **AmazonMWSSource** olarak ayarlanmalıdır | Evet |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**
 
@@ -154,9 +154,9 @@ To copy data from Amazon Marketplace Web Service, set the source type in the cop
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup activity properties
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

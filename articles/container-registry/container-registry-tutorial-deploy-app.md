@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Deploy from geo-replicated registry
-description: Deploy a Linux-based web app to two different Azure regions using a container image from a geo-replicated Azure container registry. Üç bölümden oluşan bir serinin ikinci bölümü.
+title: Öğretici-coğrafi olarak çoğaltılan kayıt defterinden dağıtın
+description: Coğrafi olarak çoğaltılan bir Azure Container Registry 'den bir kapsayıcı görüntüsü kullanarak Linux tabanlı bir Web uygulamasını iki farklı Azure bölgesine dağıtın. Üç bölümden oluşan bir serinin ikinci bölümü.
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456109"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
 
 Bu, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. [Birinci bölümde](container-registry-tutorial-prepare-registry.md), özel bir coğrafi olarak çoğaltılmış kapsayıcı kayıt defteri oluşturuldu, kaynaktan bir kapsayıcı görüntüsü derlendi ve kayıt defterine gönderildi. Bu makalede, kapsayıcıyı farklı Azure bölgelerinde bulunan iki Web App örneğine dağıtarak coğrafi olarak çoğaltılmış kayıt defterinin ağa yakın özelliğinden yararlanacaksınız. Ardından her bir örnek, kapsayıcı görüntüsünü en yakın kayıt defterinden çeker.
 
@@ -49,12 +49,12 @@ Bu adımda, *Batı ABD* bölgesinde bir Kapsayıcılar için Web App örneği ol
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-westus` biçimini kullanıyoruz. |
 | **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
-| **Uygulama hizmeti planı/Konumu** | **Batı ABD** bölgesinde `plan-westus` adlı yeni bir plan oluşturun. |
+| **Uygulama hizmeti planı/Konumu** | `plan-westus`Batı ABD**bölgesinde** adlı yeni bir plan oluşturun. |
 | **Görüntü** | `acr-helloworld:v1` |
 | **İşletim sistemi** | Linux |
 
 > [!NOTE]
-> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
+> Kapsayıcılı uygulamanızı dağıtmak için yeni bir App Service planı oluşturduğunuzda, uygulamanızı barındırmak için varsayılan bir plan otomatik olarak seçilir. Varsayılan plan, işletim sistemi ayarına bağlıdır.
 
 **Oluştur**’u seçerek, web uygulamasını *Batı ABD* bölgesine sağlayın.
 
@@ -82,7 +82,7 @@ Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görün
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-eastus` biçimini kullanıyoruz. |
 | **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
-| **Uygulama hizmeti planı/Konumu** | **Doğu ABD** bölgesinde `plan-eastus` adlı yeni bir plan oluşturun. |
+| **Uygulama hizmeti planı/Konumu** | `plan-eastus`Doğu ABD**bölgesinde** adlı yeni bir plan oluşturun. |
 | **Görüntü** | `acr-helloworld:v1` |
 | **İşletim sistemi** | Linux |
 

@@ -11,20 +11,20 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211009"
 ---
-**Public DNS zones**
+**Genel DNS bölgeleri**
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Public DNS Zones per subscription |250 <sup>1</sup> |
-| Record sets per public DNS zone |10,000 <sup>1</sup> |
-| Records per record set in public DNS zone |20 |
-| Number of Alias records for a single Azure resource |20|
-| Private DNS zones per subscription |1000|
-| Record sets per private DNS zone |25000|
-| Records per record set for private DNS zones |20|
-| Virtual Network Links per private DNS zone |1000|
-| Virtual Networks Links per private DNS zones with auto-registration enabled |100|
-| Number of private DNS zones a virtual network can get linked to with auto-registration enabled |1|
-| Number of private DNS zones a virtual network can get linked |1000|
+| Abonelik başına genel DNS Bölgeleri |250 <sup>1</sup> |
+| Genel DNS bölgesi başına kayıt kümeleri |10.000 <sup>1</sup> |
+| Genel DNS bölgesinde kayıt kümesi başına kayıt sayısı |20 |
+| Tek bir Azure kaynağı için diğer ad kaydı sayısı |20|
+| Abonelik başına Özel DNS bölgeleri |1000|
+| Özel DNS bölgesi başına kayıt kümeleri |25000|
+| Özel DNS bölgeleri için kayıt kümesi başına kayıt sayısı |20|
+| Özel DNS bölgesi başına sanal ağ bağlantıları |1000|
+| Otomatik kayıt özellikli özel DNS bölgeleri başına sanal ağ bağlantıları |100|
+| Bir sanal ağın otomatik kayıt etkin ile bağlantılandırılan özel DNS bölgesi sayısı |1|
+| Bir sanal ağın bağlı olduğu özel DNS bölgesi sayısı |1000|
 
-<sup>1</sup>If you need to increase these limits, contact Azure Support.
+<sup>1</sup> Bu sınırları artırmanız gerekiyorsa, Azure desteği 'ne başvurun.

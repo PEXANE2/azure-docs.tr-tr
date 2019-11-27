@@ -17,7 +17,7 @@ ms.locfileid: "74211335"
 
 Azure DNS, DNS etki alanları için Microsoft Azure altyapısı kullanılarak ad çözümlemesi olanağı sağlayan bir hizmettir. Etki alanlarınızı Azure'da barındırarak DNS kayıtlarınızı diğer Azure hizmetlerinde kullandığınız kimlik bilgileri, API’ler, araçlar ve faturalarla yönetebilirsiniz.
 
-Azure DNS'yi kullanarak etki alanı adı satın alamazsınız. For an annual fee, you can buy a domain name by using [App Service domains](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) or a third-party domain name registrar. Ardından etki alanlarınızı kayıt yönetimi için Azure DNS'de barındırabilirsiniz. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](dns-domain-delegation.md).
+Azure DNS'yi kullanarak etki alanı adı satın alamazsınız. Yıllık bir ücret karşılığında, [App Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) etki alanı veya üçüncü taraf etki alanı adı Kaydedicisi kullanarak bir etki alanı adı satın alabilirsiniz. Ardından etki alanlarınızı kayıt yönetimi için Azure DNS'de barındırabilirsiniz. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](dns-domain-delegation.md).
 
 Azure DNS aşağıdaki özellikleri içerir.
 
@@ -39,7 +39,7 @@ Daha fazla bilgi için bkz. [DNS bölgelerini ve kayıtlarını koruma](dns-prot
 
 ## <a name="dnssec"></a>DNSSEC
 
-Azure DNS does not currently support DNSSEC. In most cases, you can reduce the need for DNSSEC by consistently using HTTPS/TLS in your applications. If DNSSEC is a critical requirement for your DNS zones, you can host these zones with third party DNS hosting providers.
+Azure DNS şu anda DNSSEC 'yi desteklemiyor. Çoğu durumda, uygulamalarınızda HTTPS/TLS kullanarak DNSSEC gereksinimini sürekli olarak azaltabilirsiniz. DNSSEC, DNS bölgeleriniz için kritik bir gereksinimle karşılaşırsanız, üçüncü taraf DNS barındırma sağlayıcılarıyla bu bölgeleri barındırabilirsiniz.
 
 ## <a name="ease-of-use"></a>Kullanım kolaylığı
 
@@ -51,15 +51,15 @@ Etki alanlarınızı ve kayıtlarınızı yönetmek için Azure portalı, Azure 
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Özel etki alanlarıyla özelleştirilebilir sanal ağlar
 
-Azure DNS also supports private DNS domains. Bu özellik, özel sanal ağlarınızda Azure tarafından sağlanan adların yerine özel etki alanı adlarınızı kullanmanızı sağlar.
+Ayrıca, özel DNS etki alanlarını da destekler Azure DNS. Bu özellik, özel sanal ağlarınızda Azure tarafından sağlanan adların yerine özel etki alanı adlarınızı kullanmanızı sağlar.
 
 Daha fazla bilgi için bkz. [Azure DNS'yi özel etki alanları için kullanma](private-dns-overview.md).
 
 ## <a name="alias-records"></a>Diğer ad kayıtları
 
-Azure DNS, diğer adı kayıt kümelerini destekler. You can use an alias record set to refer to an Azure resource, such as an Azure public IP address, an Azure Traffic Manager profile, or an Azure Content Delivery Network (CDN) endpoint. Temel alınan kaynağın IP adresi değişirse, diğer ad kayıt kümesi DNS çözümlemesi sırasında kendisini sorunsuz bir şekilde güncelleştirir. Diğer ad kaydı kümesi, hizmet örneğini işaret eder ve hizmet örneği bir IP adresi ile ilişkilidir.
+Azure DNS, diğer adı kayıt kümelerini destekler. Azure genel IP adresi, Azure Traffic Manager profili veya Azure Content Delivery Network (CDN) uç noktası gibi bir Azure kaynağına başvurmak için bir diğer ad kayıt kümesi kullanabilirsiniz. Temel alınan kaynağın IP adresi değişirse, diğer ad kayıt kümesi DNS çözümlemesi sırasında kendisini sorunsuz bir şekilde güncelleştirir. Diğer ad kaydı kümesi, hizmet örneğini işaret eder ve hizmet örneği bir IP adresi ile ilişkilidir.
 
-Also, you can now point your apex or naked domain to a Traffic Manager profile or CDN endpoint using an alias record. Örneğin: contoso.com.
+Ayrıca, artık tepesinde veya çıplak etki alanınızı bir diğer ad kaydı kullanarak bir Traffic Manager profile veya CDN uç noktasına ekleyebilirsiniz. Örneğin: contoso.com.
 
 Daha fazla bilgi için bkz. [Azure DNS diğer ad kayıtlarına genel bakış](dns-alias.md).
 

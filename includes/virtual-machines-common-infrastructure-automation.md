@@ -11,112 +11,112 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260907"
 ---
-To create and manage Azure virtual machines (VMs) in a consistent manner at scale, some form of automation is typically desired. There are many tools and solutions that allow you to automate the complete Azure infrastructure deployment and management lifecycle. This article introduces some of the infrastructure automation tools that you can use in Azure. These tools commonly fit in to one of the following approaches:
+Oluşturup uygun ölçekte tutarlı bir şekilde Azure sanal makineleri (VM'ler) yönetmek için Otomasyon biçimi genellikle istenildiği gibi. Birçok araca ve tam Azure altyapı dağıtımı ve Yönetimi yaşam döngüsünü otomatikleştirmenize olanak tanıyan çözümler vardır. Bu makalede, Azure'da kullanabileceğiniz altyapı Otomasyonu araçlardan bazıları tanıtılmaktadır. Bu araçlar genellikle aşağıdaki yaklaşımlardan birini sığacak:
 
-- Automate the configuration of VMs
-    - Tools include [Ansible](#ansible), [Chef](#chef), and [Puppet](#puppet).
-    - Tools specific to VM customization include [cloud-init](#cloud-init) for Linux VMs, [PowerShell Desired State Configuration (DSC)](#powershell-dsc), and the [Azure Custom Script Extension](#azure-custom-script-extension) for all Azure VMs.
+- Sanal Makine yapılandırmasını otomatikleştirin
+    - Araçlar, [anormal](#ansible), [Chef](#chef)ve [pupevcil hayvan](#puppet)içerir.
+    - VM özelleştirmesine özgü araçlar, Linux sanal makineleri için [Cloud-init](#cloud-init) , [PowerShell İstenen Durum Yapılandırması (DSC)](#powershell-dsc)ve tüm Azure VM 'Leri Için [Azure Özel Betik uzantısı](#azure-custom-script-extension) 'nı içerir.
  
-- Automate infrastructure management
-    - Tools include [Packer](#packer) to automate custom VM image builds, and [Terraform](#terraform) to automate the infrastructure build process.
-    - [Azure Automation](#azure-automation) can perform actions across your Azure and on-premises infrastructure.
+- Altyapı yönetimini otomatikleştirme
+    - Araçlar, özel VM görüntü yapılarını otomatikleştirmek için [Packer](#packer) ve altyapı oluşturma işlemini otomatikleştirmek Için [terrayform](#terraform) içerir.
+    - [Azure Otomasyonu](#azure-automation) , Azure ve şirket içi altyapınız üzerinde eylemler gerçekleştirebilir.
 
-- Automate application deployment and delivery
-    - Examples include [Azure DevOps Services](#azure-devops-services) and [Jenkins](#jenkins).
+- Uygulama dağıtımı ve teslim otomatikleştirin
+    - [Azure DevOps Services](#azure-devops-services) ve [Jenkins](#jenkins)örnekleri sayılabilir.
 
 ## <a name="ansible"></a>Ansible
-[Ansible](https://www.ansible.com/) is an automation engine for configuration management, VM creation, or application deployment. Ansible uses an agent-less model, typically with SSH keys, to authenticate and manage target machines. Configuration tasks are defined in playbooks, with a number of Ansible modules available to carry out specific tasks. For more information, see [How Ansible works](https://www.ansible.com/how-ansible-works).
+[Anormal](https://www.ansible.com/) , yapılandırma YÖNETIMI, VM oluşturma veya uygulama dağıtımı için bir Otomasyon altyapısıdır. Ansible, kimlik doğrulaması ve hedef makineleri yönetmek için genellikle SSH anahtarlarıyla bir aracısız modelini kullanır. Belirli görevleri gerçekleştirmek kullanılabilir olan Ansible modül sayısı ile playbook'ları yapılandırma görevleri tanımlanır. Daha fazla bilgi için bkz. [anormal çalışma](https://www.ansible.com/how-ansible-works).
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Install and configure Ansible on Linux for use with Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Create a Linux virtual machine](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Manage a Linux virtual machine](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- [Azure ile kullanmak Için Linux üzerinde erişilebilir ve yapılandırın](../articles/virtual-machines/linux/ansible-install-configure.md).
+- [Bir Linux sanal makinesi oluşturun](../articles/virtual-machines/linux/ansible-create-vm.md).
+- [Linux sanal makinesini yönetin](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
-[Chef](https://www.chef.io/) is an automation platform that helps define how your infrastructure is configured, deployed, and managed. Additional components included Chef Habitat for application lifecycle automation rather than the infrastructure, and Chef InSpec that helps automate compliance with security and policy requirements. Chef Clients are installed on target machines, with one or more central Chef Servers that store and manage the configurations. For more information, see [An Overview of Chef](https://docs.chef.io/chef_overview.html).
+[Chef](https://www.chef.io/) , altyapınızın nasıl yapılandırıldığını, dağıtıldığını ve yönetildiğini tanımlamaya yardımcı olan bir Otomasyon platformudur. Uygulama yaşam döngüsü Otomasyon altyapısı yerine, Chef, Habitat ek bileşenler dahil ve güvenlik ve ilke gereksinimlerine uyum Chef yardımcı olan InSpec otomatikleştirin. Chef istemciler, bir veya daha fazla merkezi Chef, yapılandırmaları yönetin ve sunucuları ile hedef makinelerde yüklenir. Daha fazla bilgi için bkz. [Chef 'e genel bakış](https://docs.chef.io/chef_overview.html).
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Deploy Chef Automate from the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Install Chef on Windows and create Azure VMs](../articles/virtual-machines/windows/chef-automation.md).
+- [Azure Marketi 'Nden Chef otomatikleştirmesini dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
+- [Windows üzerinde Chef 'ı yükleyip Azure VM 'leri oluşturun](../articles/virtual-machines/windows/chef-automation.md).
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) is an enterprise-ready automation platform that handles the application delivery and deployment process. Agents are installed on target machines to allow Puppet Master to run manifests that define the desired configuration of the Azure infrastructure and VMs. Puppet can integrate with other solutions such as Jenkins and GitHub for an improved devops workflow. For more information, see [How Puppet works](https://puppet.com/products/how-puppet-works).
+[Pupevcil hayvan](https://www.puppet.com) , uygulama teslimi ve dağıtım sürecini işleyen kurumsal özellikli bir Otomasyon platformudur. Aracılar Puppet Azure altyapısının istenen yapılandırmasını tanımlamak bildirimleri çalıştırmak için ana ve Vm'leri izin vermek için hedef makinede yüklü. Puppet bir Gelişmiş devops iş akışı için Jenkins ve GitHub gibi diğer çözümlerle tümleştirilebilir. Daha fazla bilgi için bkz. [Pupevcil hayvan nasıl çalıştığını öğrenin](https://puppet.com/products/how-puppet-works).
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Deploy Puppet from the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
+- [Azure Marketi 'Nden Pupevcil hayvan 'ı dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io), Linux VM’sini ilk kez önyüklendiğinde özelleştirmeyi sağlayan, sık kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration.  For more information on how to properly format your `#cloud-config` files, see the [cloud-init documentation site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` files are text files encoded in base64.
+[Cloud-init](https://cloudinit.readthedocs.io), Linux VM’sini ilk kez önyüklendiğinde özelleştirmeyi sağlayan, sık kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. Cloud-init önyükleme işlemi sırasında çağrıldığı için ek adımlar veya yapılandırmanıza uygulayabileceğiniz gerekli aracı yoktur.  `#cloud-config` dosyalarınızı düzgün şekilde biçimlendirme hakkında daha fazla bilgi için bkz. [Cloud-init belge sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` dosyalar, Base64 olarak kodlanmış metin dosyalarıdır.
 
 Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz dağıtım için yerel paket yönetim aracını otomatik olarak kullanır.
 
-We are actively working with our endorsed Linux distro partners in order to have cloud-init enabled images available in the Azure marketplace. These images make your cloud-init deployments and configurations work seamlessly with VMs and virtual machine scale sets. Learn more details about cloud-init on Azure:
+Etkin olarak desteklenen Linux distro ortaklarımızla birlikte kullanılabilir cloud-init etkinleştirilmiş görüntüleri Azure Market'te sahip olmak için çalışıyoruz. Bu görüntüleri cloud-init dağıtımlarınızı yapın ve yapılandırmaları VM'ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışır. Azure'da cloud-init hakkında daha ayrıntılı bilgi edinin:
 
-- [Cloud-init support for Linux virtual machines in Azure](../articles/virtual-machines/linux/using-cloud-init.md)
-- [Try a tutorial on automated VM configuration using cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
+- [Azure 'da Linux sanal makineleri için Cloud-init desteği](../articles/virtual-machines/linux/using-cloud-init.md)
+- [Cloud-init kullanarak OTOMATIK VM yapılandırması ile ilgili bir öğretici deneyin](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) is a management platform to define the configuration of target machines. DSC can also be used on Linux through the [Open Management Infrastructure (OMI) server](https://collaboration.opengroup.org/omi/).
+[PowerShell Istenen durum yapılandırması (DSC)](/powershell/scripting/dsc/overview/overview) , hedef makinelerin yapılandırmasını tanımlayan bir yönetim platformudur. DSC, [Open Management Infrastructure (OMı) sunucusu](https://collaboration.opengroup.org/omi/)üzerinden Linux üzerinde de kullanılabilir.
 
-DSC configurations define what to install on a machine and how to configure the host. A Local Configuration Manager (LCM) engine runs on each target node that processes requested actions based on pushed configurations. A pull server is a web service that runs on a central host to store the DSC configurations and associated resources. The pull server communicates with the LCM engine on each target host to provide the required configurations and report on compliance.
-
-Aşağıdakileri nasıl yapacağınızı öğrenin:
-
-- [Create a basic DSC configuration](/powershell/scripting/dsc/quickstarts/website-quickstart).
-- [Configure a DSC pull server](/powershell/scripting/dsc/pull-server/pullserver).
-- [Use DSC for Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
-
-
-## <a name="azure-custom-script-extension"></a>Azure Custom Script Extension
-The Azure Custom Script Extension for [Linux](../articles/virtual-machines/linux/extensions-customscript.md) or [Windows](../articles/virtual-machines/windows/extensions-customscript.md) downloads and executes scripts on Azure VMs. You can use the extension when you create a VM, or any time after the VM is in use. 
-
-Scripts can be downloaded from Azure storage or any public location such as a GitHub repository. With the Custom Script Extension, you can write scripts in any language that runs on the source VM. These scripts can be used to install applications or configure the VM as desired. To secure credentials, sensitive information such as passwords can be stored in a protected configuration. These credentials are only decrypted inside the VM.
+DSC yapılandırmaları ne bir makineye yükleyin ve ana bilgisayar yapılandırma tanımlar. İstenen Eylemler gönderilen yapılandırmalarına göre işler her hedef düğümde yerel Configuration Manager'ı (LCM) altyapısı çalıştırır. Bir çekme sunucusu DSC yapılandırmaları ve ilişkili kaynakları depolamak için merkezi bir konakta çalışan bir web hizmetidir. Çekme sunucusu, uyumluluk ve gerekli yapılandırmaları sağlamak için her bir hedef ana bilgisayarda LCM altyapısı ile iletişim kurar.
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Create a Linux VM with the Azure CLI and use the Custom Script Extension](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Create a Windows VM with Azure PowerShell and use the Custom Script Extension](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Temel BIR DSC yapılandırması oluşturun](/powershell/scripting/dsc/quickstarts/website-quickstart).
+- [DSC çekme sunucusu yapılandırın](/powershell/scripting/dsc/pull-server/pullserver).
+- [Linux IÇIN DSC kullanın](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
+
+
+## <a name="azure-custom-script-extension"></a>Azure özel betik uzantısı
+[Linux](../articles/virtual-machines/linux/extensions-customscript.md) veya [Windows](../articles/virtual-machines/windows/extensions-customscript.md) Için Azure Özel Betik uzantısı, Azure VM 'lerinde betikleri indirir ve yürütür. VM oluşturma veya VM sonra istediğiniz zaman kullanımda olduğunda, uzantıyı kullanabilirsiniz. 
+
+Betikler Azure depolama veya GitHub deposu gibi genel bir konumdan indirilebilir. Özel betik uzantısı ile komut dosyaları, kaynak VM üzerinde çalışan herhangi bir dilde yazabilirsiniz. Bu komut dosyaları, uygulamaları yüklemek veya VM olarak istenen yapılandırmak için kullanılabilir. Güvenli kimlik bilgileri için korumalı bir yapılandırmada parolalar gibi hassas bilgileri depolanabilir. Bu kimlik bilgileri, yalnızca sanal makine içinde şifresi çözülür.
+
+Aşağıdakileri nasıl yapacağınızı öğrenin:
+
+- [Azure CLI ile bir LINUX VM oluşturun ve özel Betik uzantısı 'nı kullanın](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
+- [Azure PowerShell ile bir Windows sanal makinesi oluşturun ve özel betik uzantısını kullanın](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
 
 
 ## <a name="packer"></a>Packer
-[Packer](https://www.packer.io) automates the build process when you create a custom VM image in Azure. You use Packer to define the OS and run post-configuration scripts that customize the VM for your specific needs. Once configured, the VM is then captured as a Managed Disk image. Packer automates the process to create the source VM, network and storage resources, run configuration scripts, and then create the VM image.
+[Packer](https://www.packer.io) , Azure 'da özel bir VM görüntüsü oluşturduğunuzda derleme işlemini otomatikleştirir. Packer, işletim sistemini tanımlamak ve VM için kendi özel gereksinimlerinize göre özelleştirme yapılandırma sonrası komut dosyalarını çalıştırmak için kullanın. Yapılandırıldıktan sonra VM'ye yönetilen Disk görüntüsü dahil edilir. Packer kaynak VM, ağ ve depolama kaynakları oluşturma, yapılandırma betiklerini çalıştırın ve ardından sanal makine görüntüsü oluşturma işlemini otomatikleştirir.
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Use Packer to create a Linux VM image in Azure](../articles/virtual-machines/linux/build-image-with-packer.md).
-- [Use Packer to create a Windows VM image in Azure](../articles/virtual-machines/windows/build-image-with-packer.md).
+- [Azure 'da bir LINUX VM görüntüsü oluşturmak Için Packer 'ı kullanın](../articles/virtual-machines/linux/build-image-with-packer.md).
+- [Azure 'da bir WINDOWS VM görüntüsü oluşturmak Için Packer 'ı kullanın](../articles/virtual-machines/windows/build-image-with-packer.md).
 
 
 ## <a name="terraform"></a>Terraform
-[Terraform](https://www.terraform.io) is an automation tool that allows you to define and create an entire Azure infrastructure with a single template format language - the HashiCorp Configuration Language (HCL). With Terraform, you define templates that automate the process to create network, storage, and VM resources for a given application solution. You can use your existing Terraform templates for other platforms with Azure to ensure consistency and simplify the infrastructure deployment without needing to convert to an Azure Resource Manager template.
+[Terkform](https://www.terraform.io) , tek bir şablon biçimi ile Azure altyapısının tamamını tanımlamanıza ve oluşturmanıza olanak tanıyan bir otomasyon aracıdır. Bu, diyez ICORP yapılandırma DILI (HCL). Terraform ile ağ, depolama ve uygulama çözümü için VM kaynakları oluşturma işlemini otomatik hale getiren şablonları tanımlayın. Mevcut Terraform şablonlarınızı tutarlılığı sağlamak ve altyapı dağıtımı için bir Azure Resource Manager şablonu dönüştürmek zorunda kalmadan basitleştirmek için Azure ile diğer platformlar için kullanabilirsiniz.
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Install and configure Terraform with Azure](../articles/virtual-machines/linux/terraform-install-configure.md).
-- [Create an Azure infrastructure with Terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
+- [Azure Ile Terrayform 'U yükleyip yapılandırın](../articles/virtual-machines/linux/terraform-install-configure.md).
+- [Terrayform ile bir Azure altyapısı oluşturun](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
 
 
 ## <a name="azure-automation"></a>Azure Otomasyonu
-[Azure Automation](https://azure.microsoft.com/services/automation/) uses runbooks to process a set of tasks on the VMs you target. Azure Automation is used to manage existing VMs rather than to create an infrastructure. Azure Automation can run across both Linux and Windows VMs, as well as on-premises virtual or physical machines with a hybrid runbook worker. Runbooks can be stored in a source control repository, such as GitHub. These runbooks can then run manually or on a defined schedule.
+[Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , hedeflediğiniz VM 'lerde bir dizi görevi işlemek için Runbook 'ları kullanır. Azure Otomasyonu, varolan Vm'leri yönetmek yerine bir altyapı oluşturmak için kullanılır. Azure Otomasyonu, hem Linux ve Windows sanal makineleri, hem de karma runbook çalışanı ile şirket içi sanal veya fiziksel makineler üzerinde çalıştırabilir. Runbook'ları, GitHub gibi kaynak denetim deposu depolanabilir. Bu runbook, daha sonra el ile ya da tanımlanmış bir zamanlamaya göre çalıştırabilir.
 
-Azure Automation also provides a Desired State Configuration (DSC) service that allows you to create definitions for how a given set of VMs should be configured. DSC then ensures that the required configuration is applied and the VM stays consistent. Azure Automation DSC runs on both Windows and Linux machines.
+Azure Otomasyonu, Vm'leri belirli bir dizi nasıl yapılandırılmalıdır tanımları oluşturmanıza olanak sağlayan bir Desired State Configuration ' nı (DSC) hizmet de sunar. DSC, ardından gerekli yapılandırma uygulanır ve VM tutarlı kalmasını sağlar. Azure Automation DSC, hem Windows hem de Linux makinelerinde çalışır.
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Create a PowerShell runbook](../articles/automation/automation-first-runbook-textual-powershell.md).
-- [Use Hybrid Runbook Worker to manage on-premises resources](../articles/automation/automation-hybrid-runbook-worker.md).
-- [Use Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
+- [PowerShell runbook 'U oluşturun](../articles/automation/automation-first-runbook-textual-powershell.md).
+- [Şirket içi kaynakları yönetmek Için karma Runbook Worker 'ı kullanın](../articles/automation/automation-hybrid-runbook-worker.md).
+- [Azure Automation DSC kullanın](../articles/automation/automation-dsc-getting-started.md).
 
 
 ## <a name="azure-devops-services"></a>Azure DevOps Services
-[Azure DevOps Services](https://www.visualstudio.com/team-services/) is a suite of tools that help you share and track code, use automated builds, and create a complete continuous integration and development (CI/CD) pipeline. Azure DevOps Services integrates with Visual Studio and other editors to simplify usage. Azure DevOps Services can also create and configure Azure VMs and then deploy code to them.
+[Azure DevOps Services](https://www.visualstudio.com/team-services/) , kodu paylaşmanıza ve izlemenize, otomatik derlemeler kullanmanıza ve eksiksiz bir sürekli tümleştirme ve GELIŞTIRME (CI/CD) işlem hattı oluşturmanıza yardımcı olan bir araç paketidir. Azure DevOps hizmetleriyle, kullanımı kolaylaştırmak için Visual Studio ve diğer düzenleyiciler ile tümleştirilir. Azure DevOps hizmetleriyle oluşturabilir ve Azure Vm'leri yapılandırabilir ve ardından kod bu bilgisayarlara dağıtın.
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
@@ -124,12 +124,12 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins](https://www.jenkins.io) is a continuous integration server that helps deploy and test applications, and create automated pipelines for code delivery. There are hundreds of plugins to extend the core Jenkins platform, and you can also integrate with many other products and solutions through webhooks. You can manually install Jenkins on an Azure VM, run Jenkins from within a Docker container, or use a pre-built Azure Marketplace image.
+[Jenkins](https://www.jenkins.io) , uygulamaları dağıtmaya ve test etmeye ve kod teslimi için otomatik işlem hatları oluşturmaya yardımcı olan bir sürekli tümleştirme sunucusudur. Eklenti temel Jenkins platformu genişletmek için yüzlerce vardır ve diğer birçok ürün ve Web kancaları aracılığıyla çözümler ile de tümleştirebilirsiniz. El ile Jenkins Azure VM üzerinde yüklemek, Jenkins'den Docker kapsayıcısı içinde çalıştırın veya önceden oluşturulmuş Azure Market görüntüsü kullanın.
 
 Aşağıdakileri nasıl yapacağınızı öğrenin:
 
-- [Create a development infrastructure on a Linux VM in Azure with Jenkins, GitHub, and Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
+- [Azure 'Da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde bir geliştirme altyapısı oluşturun](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-There are many different options to use infrastructure automation tools in Azure. You have the freedom to use the solution that best fits your needs and environment. To get started and try some of the tools built-in to Azure, see how to automate the customization of a [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) or [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM.
+Azure'da altyapı Otomasyon araçları kullanmak için birçok farklı seçenek vardır. Sahip olduğunuz bir ortamı ve gereksinimlerinize en uygun çözümü kullanma özgürlüğünü tanıyabilir. Kullanmaya başlamak ve Azure 'da yerleşik araçları denemek için bkz. bir [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) veya [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) sanal makinesi özelleştirmesini otomatikleştirme.

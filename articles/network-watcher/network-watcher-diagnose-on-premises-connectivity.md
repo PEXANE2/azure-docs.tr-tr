@@ -17,7 +17,7 @@ ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74275949"
@@ -84,7 +84,7 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| Nofatoult | Hata saptanmadı. |Yes|
+| Nofatoult | Hata saptanmadı. |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
 | PlannedMaintenance |  Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
@@ -92,26 +92,26 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 | PlatformInActive | Platformda bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
 | NoConnectionsFoundForGateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
+| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Evet|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Evet |
 
 ### <a name="connection"></a>Bağlantı
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| Nofatoult | Hata saptanmadı. |Yes|
+| Nofatoult | Hata saptanmadı. |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
 | PlannedMaintenance | Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
 | Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
-| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
+| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
+| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

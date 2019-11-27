@@ -1,6 +1,6 @@
 ---
-title: Monitoring in Azure Database for MySQL
-description: This article describes the metrics for monitoring and alerting for Azure Database for MySQL, including CPU, storage, and connection statistics.
+title: MySQL için Azure veritabanı 'nda izleme
+description: Bu makalede CPU, depolama ve bağlantı istatistikleri gibi MySQL için Azure veritabanı için izleme ve uyarı verme ölçümleri açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -13,54 +13,54 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384039"
 ---
-# <a name="monitoring-in-azure-database-for-mysql"></a>Monitoring in Azure Database for MySQL
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure Database for MySQL provides various metrics that give insight into the behavior of your server.
+# <a name="monitoring-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda izleme
+Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MySQL için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sağlar.
 
 ## <a name="metrics"></a>Ölçümler
-All Azure metrics have a one-minute frequency, and each metric provides 30 days of history. You can configure alerts on the metrics. For step by step guidance, see [How to set up alerts](howto-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30 gün geçmiş sağlar. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="list-of-metrics"></a>List of metrics
-These metrics are available for Azure Database for MySQL:
+### <a name="list-of-metrics"></a>Ölçüm listesi
+MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 
-|Ölçüm|Metric Display Name|Birim|Açıklama|
+|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
 |---|---|---|---|
-|cpu_percent|CPU percent|Yüzde|The percentage of CPU in use.|
-|memory_percent|Memory percent|Yüzde|The percentage of memory in use.|
-|io_consumption_percent|IO percent|Yüzde|The percentage of IO in use.|
-|storage_percent|Storage percentage|Yüzde|The percentage of storage used out of the server's maximum.|
-|storage_used|Kullanılan depolama|Bytes|The amount of storage in use. The storage used by the service may include the database files, transaction logs, and the server logs.|
-|serverlog_storage_percent|Server Log storage percent|Yüzde|The percentage of server log storage used out of the server's maximum server log storage.|
-|serverlog_storage_usage|Server Log storage used|Bytes|The amount of server log storage in use.|
-|serverlog_storage_limit|Server Log storage limit|Bytes|The maximum server log storage for this server.|
-|storage_limit|Storage limit|Bytes|The maximum storage for this server.|
-|active_connections|Active Connections|Sayı|The number of active connections to the server.|
-|connections_failed|Başarısız Bağlantılar|Sayı|The number of failed connections to the server.|
-|seconds_behind_master|Replication lag in seconds|Sayı|The number of seconds the replica server is lagging against the master server.|
-|network_bytes_egress|Ağ Çıkışı|Bytes|Network Out across active connections.|
-|network_bytes_ingress|Ağ Girişi|Bytes|Network In across active connections.|
-|backup_storage_used|Backup Storage Used|Bytes|The amount of backup storage used.|
+|cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
+|memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
+|io_consumption_percent|GÇ yüzdesi|Yüzde|Kullanımdaki GÇ yüzdesi.|
+|storage_percent|Depolama yüzdesi|Yüzde|Sunucunun en yüksek sınırının dışında kullanılan depolama alanı yüzdesi.|
+|storage_used|Kullanılan depolama|Bayt|Kullanımdaki depolama miktarı. Hizmet tarafından kullanılan depolama alanı, veritabanı dosyalarını, işlem günlüklerini ve sunucu günlüklerini içerebilir.|
+|serverlog_storage_percent|Sunucu günlüğü depolama yüzdesi|Yüzde|Sunucunun en yüksek sunucu günlük depolama alanı dışında kullanılan sunucu günlük depolama alanı yüzdesi.|
+|serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Kullanımdaki sunucu günlüğü depolama miktarı.|
+|serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Bu sunucu için en fazla sunucu günlük depolama alanı.|
+|storage_limit|Depolama sınırı|Bayt|Bu sunucu için en fazla depolama alanı.|
+|active_connections|Etkin bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
+|connections_failed|Başarısız Bağlantılar|Sayı|Sunucuya yönelik başarısız bağlantı sayısı.|
+|seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Sayı|Çoğaltma sunucusunun ana sunucuya yönelik olarak geçmesi gereken saniye sayısı.|
+|network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|
+|network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
+|backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Kullanılan yedekleme depolama alanı miktarı.|
 
 ## <a name="server-logs"></a>Sunucu günlükleri
-You can enable slow query and audit logging on your server. These logs are also available through Azure Diagnostic Logs in Azure Monitor logs, Event Hubs, and Storage Account. To learn more about logging, visit the [audit logs](concepts-audit-logs.md) and [slow query logs](concepts-server-logs.md) articles.
+Sunucunuzda yavaş sorgu ve denetim günlüğünü etkinleştirebilirsiniz. Bu Günlükler Azure Izleyici günlükleri, Event Hubs ve depolama hesabı 'ndaki Azure tanılama günlükleri aracılığıyla da kullanılabilir. Günlüğe kaydetme hakkında daha fazla bilgi edinmek için [Denetim günlükleri](concepts-audit-logs.md) ' ni ve [yavaş sorgu günlüğü](concepts-server-logs.md) makalelerini ziyaret edin.
 
 ## <a name="query-store"></a>Sorgu Deposu
-[Query Store](concepts-query-store.md) is a feature that keeps track of query performance over time including query runtime statistics and wait events. The feature persists query runtime performance information in the **mysql** schema. You can control the collection and storage of data via various configuration knobs.
+[Sorgu deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri ve bekleme olayları dahil olmak üzere zaman içinde sorgu performansını izlemeyi tutan bir özelliktir. Özellik, **MySQL** şemasında çalışma zamanı performans bilgilerini sorgu ile devam ettirir. Verilerin toplanmasını ve depolanmasını çeşitli yapılandırma düğmelerini kullanarak denetleyebilirsiniz.
 
 ## <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri
-[Query Performance Insight](concepts-query-performance-insight.md) works in conjunction with Query Store to provide visualizations accessible from the Azure portal. These charts enable you to identify key queries that impact performance. Query Performance Insight is accessible in the **Intelligent Performance** section of your Azure Database for MySQL server's portal page.
+[Sorgu performansı içgörüleri](concepts-query-performance-insight.md) , Azure Portal erişilebilir görselleştirmeler sağlamak üzere sorgu deposuyla birlikte çalışarak. Bu grafikler, performansı etkileyen anahtar sorgularını tanımlamanızı sağlar. Sorgu Performansı İçgörüleri, MySQL için Azure veritabanı sunucunuzun portal sayfasındaki **akıllı performans** bölümünde erişilebilir.
 
 ## <a name="performance-recommendations"></a>Performans Önerileri
-The [Performance Recommendations](concepts-performance-recommendations.md) feature identifies opportunities to improve workload performance. Performance Recommendations provides you with recommendations for creating new indexes that have the potential to improve the performance of your workloads. To produce index recommendations, the feature takes into consideration various database characteristics, including its schema and the workload as reported by Query Store. After implementing any performance recommendation, customers should test performance to evaluate the impact of those changes.
+[Performans önerileri](concepts-performance-recommendations.md) özelliği, iş yükü performansını artırmaya yönelik fırsatları tanımlar. Performans önerileri, iş yüklerinizin performansını geliştirmek için potansiyel olarak yeni dizinler oluşturmaya yönelik öneriler sağlar. Dizin önerileri oluşturmak için, özelliği şema ve sorgu deposu tarafından bildirilen iş yükü dahil çeşitli veritabanı özelliklerini dikkate alır. Herhangi bir performans önerisi uygulandıktan sonra, müşteriler bu değişikliklerin etkisini değerlendirmek için performansı test etmelidir.
 
 ## <a name="service-health"></a>Hizmet durumu
-[Azure Service health](../service-health/overview.md) provides a view of all service health notifications in your subscription. You can set up Service Health alerts to notify you via your preferred communication channels when there are issues or changes that may affect the Azure services and regions you use.
+[Azure hizmet durumu](../service-health/overview.md) , aboneliğinizdeki tüm hizmet durumu bildirimlerinin bir görünümünü sağlar. Kullandığınız Azure hizmetlerini ve bölgelerini etkileyebilecek sorunlar veya değişiklikler olduğunda tercih ettiğiniz iletişim kanallarınız aracılığıyla sizi bilgilendirmek üzere hizmet durumu uyarıları ayarlayabilirsiniz.
 
-You can view scheduled maintenance events for Azure Database for MySQL by using the **planned maintenance** event type. To learn how to create **service health alerts**, visit the [Create activity log alerts on service notifications](../service-health/alerts-activity-log-service-notifications.md) article.
+**Planlı bakım** olay türünü kullanarak MySQL Için Azure veritabanı için zamanlanmış bakım olaylarını görüntüleyebilirsiniz. **Hizmet durumu uyarıları**oluşturma hakkında bilgi edinmek için [hizmet bildirimleri üzerinde etkinlik günlüğü uyarıları oluştur](../service-health/alerts-activity-log-service-notifications.md) makalesini ziyaret edin.
 
 > [!IMPORTANT]
-> The planned maintenance notifications is available in preview for EAST US and UK South only.
+> Planlı bakım bildirimleri yalnızca Doğu ABD ve UK Güney önizleme sürümünde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- See [How to set up alerts](howto-alert-on-metric.md) for guidance on creating an alert on a metric.
-- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-- Read our blog on [best practices for monitoring your server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/).
+- Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
+- Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- [Sunucunuzu izlemek için en iyi uygulamalardan](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)blogumuzu okuyun.

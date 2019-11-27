@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260909"
 ---
-When you send template notifications, you only need to provide a set of properties. In this scenario, the set of properties contain the localized version of the current news.
+Şablon bildirimleri gönderdiğinizde yalnızca bir özellikler kümesi sağlamanız gerekir. Bu senaryoda, özellikler kümesi geçerli haberlerin yerelleştirilmiş sürümünü içerir.
 
 ```json
 {
@@ -25,9 +25,9 @@ When you send template notifications, you only need to provide a set of properti
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>Send notifications using a C# console app
+### <a name="send-notifications-using-a-c-console-app"></a>C# Konsol uygulaması kullanarak bildirim gönderme
 
-This section shows how to send notifications using a console app. The code broadcasts notifications to both Windows Store and iOS devices. Daha önce oluşturduğunuz konsol uygulamasındaki `SendTemplateNotificationAsync` yöntemini aşağıdaki kodla değiştirin:
+Bu bölüm, bir konsol uygulaması kullanarak bildirimlerin nasıl gönderileceğini gösterir. Kod hem Windows Mağazası hem de iOS cihazlarına bildirim yayınlar. Daha önce oluşturduğunuz konsol uygulamasındaki `SendTemplateNotificationAsync` yöntemini aşağıdaki kodla değiştirin:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-The SendTemplateNotificationAsync method delivers the localized piece of news to **all** your devices, irrespective of the platform. Your notification hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+Sendtemplatenocertificate bağımsız zaman uyumsuz yöntemi, platformdan bağımsız olarak yerelleştirilmiş haberleri **Tüm** cihazlarınıza gönderir. Bildirim Hub 'ınız, belirli bir etikete abone olan tüm cihazlara doğru yerel yük oluşturur ve gönderir.
 
-### <a name="sending-notification-with-mobile-services"></a>Sending notification with Mobile Services
+### <a name="sending-notification-with-mobile-services"></a>Mobile Services bildirim gönderiliyor
 
-In your Mobile Services scheduler, use the following script:
+Mobile Services Scheduler 'da aşağıdaki betiği kullanın:
 
 ```csharp
 var azure = require('azure');

@@ -1,6 +1,6 @@
 ---
-title: Get values for app authentication
-description: Create a service principal for accessing SQL Database from code.
+title: Uygulama kimlik doğrulaması için değerleri Al
+description: Koddan SQL veritabanına erişmek için bir hizmet sorumlusu oluşturun.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,18 +18,18 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421315"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Get the required values for authenticating an application to access SQL Database from code
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Koddan SQL veritabanına erişmek için bir uygulamanın kimlik doğrulaması için gerekli değerleri alın
 
-To create and manage SQL Database from code you must register your app in the Azure Active Directory (AAD) domain  in the subscription where your Azure resources have been created.
+Koddan SQL veritabanı oluşturup yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikte Azure Active Directory (AAD) etki alanına kaydetmeniz gerekir.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Create a service principal to access resources from an application
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Uygulamadan kaynaklara erişmek için hizmet sorumlusu oluşturma
 
-The following examples create the Active Directory (AD) application and the service principal that we need to authenticate our C# app. Betik önceki C# örneği için gereken değerleri çıkarır. Ayrıntılı bilgi için bkz. [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Aşağıdaki örneklerde, uygulamamız C# kimlik doğrulaması için gereken ACTIVE DIRECTORY (ad) uygulaması ve hizmet sorumlusu oluşturulur. Betik önceki C# örneği için gereken değerleri çıkarır. Ayrıntılı bilgi için bkz. [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -101,5 +101,5 @@ Write-Output "_applicationSecret:" $secret
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Create a SQL database with C#](sql-database-get-started-csharp.md)  
-[Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md)
+[İle SQL veritabanı oluşturmaC#](sql-database-get-started-csharp.md)  
+[Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na bağlanma](sql-database-aad-authentication.md)

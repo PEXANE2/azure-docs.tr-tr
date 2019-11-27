@@ -28,15 +28,15 @@ ms.locfileid: "74196576"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Bu makale, klasik dağıtım modelini kapsamaktadır. Ayrıca [Resource Manager dağıtım modelinde statik özel IP adresi yönetme](virtual-networks-static-private-ip-arm-cli.md).
+Bu makale, klasik dağıtım modelini kapsamaktadır. Ayrıca [, Kaynak Yöneticisi dağıtım modelinde statik bir özel IP adresi yönetebilirsiniz](virtual-networks-static-private-ip-arm-cli.md).
 
-Önceden oluşturulmuş basit bir ortam izleyen beklediğiniz Klasik Azure CLI komutları örneği. Bu belgede gösterildiği komutları çalıştırmak istiyorsanız, önce açıklanan test ortamında yapı [vnet oluşturma](virtual-networks-create-vnet-classic-cli.md).
+Önceden oluşturulmuş basit bir ortam izleyen beklediğiniz Klasik Azure CLI komutları örneği. Komutları bu belgede görüntülendikleri gibi çalıştırmak istiyorsanız, önce [VNET oluşturma](virtual-networks-create-vnet-classic-cli.md)bölümünde açıklanan test ortamını oluşturun.
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Bir VM oluşturulurken özel bir statik IP adresi belirtme
-Adlı yeni bir VM oluşturmak için *DNS01* adlı yeni bir bulut hizmetinde *TestService* yukarıdaki senaryo temel alınarak, şu adımları izleyin:
+Yukarıdaki senaryoya bağlı olarak *TestService* adlı yeni bir bulut hizmetinde *DNS01* adlı yeni bir sanal makine oluşturmak için aşağıdaki adımları izleyin:
 
 1. Hiç Azure CLI kullanmadıysanız bkz. [Azure CLI’yi Yükleme ve Yapılandırma](/cli/azure/install-cli-version-1.0); sonra da, Azure hesabınızı ve aboneliğinizi seçtiğiniz noktaya kadar yönergeleri uygulayın.
-2. Çalıştırma **azure hizmeti oluşturma** bulut hizmetini oluşturmak için komutu.
+2. Bulut hizmetini oluşturmak için **Azure hizmeti oluşturma** komutunu çalıştırın.
    
         azure service create TestService --location uscentral
    
@@ -46,7 +46,7 @@ Adlı yeni bir VM oluşturmak için *DNS01* adlı yeni bir bulut hizmetinde *Tes
         info:    Creating cloud service
         data:    Cloud service name TestService
         info:    service create command OK
-3. Çalıştırma **azure VM'yi oluşturma** VM oluşturmak için komutu. Statik özel IP adresi değeri dikkat edin. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır.
+3. VM oluşturmak için **Azure VM oluşturma** komutunu çalıştırın. Statik özel IP adresi değeri dikkat edin. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır.
    
         azure vm create -l centralus -n DNS01 -w TestVNet -S "192.168.1.101" TestService bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2 adminuser AdminP@ssw0rd
    
@@ -65,17 +65,17 @@ Adlı yeni bir VM oluşturmak için *DNS01* adlı yeni bir bulut hizmetinde *Tes
         info:    OK
         info:    vm create command OK
    
-   * **-l (veya --konum)** . VM'nin oluşturulacağı azure bölgesi. Bizim senaryomuz için bu *centralus* ’tur.
-   * **-n (veya--vm-adı)** . Oluşturulacak VM adı.
+   * **-l (veya --location)** . VM'nin oluşturulacağı azure bölgesi. Bizim senaryomuz için bu *centralus*’tur.
+   * **-n (veya--VM-adı)** . Oluşturulacak VM adı.
    * **-w (veya--sanal-ağ-adı)** . VM'nin oluşturulacağı Vnet'in adı. 
-   * **-S (veya--statik IP)** . Statik özel IP adresi VM için.
+   * **-S (veya--statik-IP)** . Statik özel IP adresi VM için.
    * **TestService**. VM'nin oluşturulacağı bulut hizmeti adı.
-   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**. VM oluşturmak için kullanılan görüntü.
+   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v 14.2**. VM oluşturmak için kullanılan görüntü.
    * **AdminUser**. Windows VM için Yönetici'yi tıklatın.
    * <strong>AdminP@ssw0rd</strong>. Windows VM yerel yönetici parolası.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Bir sanal makine için statik özel IP adresi bilgilerini alma
-Komut dosyası yukarıdaki oluşturulan VM için statik özel IP adresi bilgilerini görüntülemek için aşağıdaki Azure CLI komutunu çalıştırın ve değeri gözlemleyin *ağ StaticIP*:
+Yukarıdaki betikle oluşturulan VM 'nin statik özel IP adresi bilgilerini görüntülemek için aşağıdaki Azure CLı komutunu çalıştırın ve *ağ Staticıp*değerini gözlemleyin:
 
     azure vm static-ip show DNS01
 
@@ -118,6 +118,6 @@ Beklenen çıktı:
 Statik olarak bir sanal makinenin işletim sistemi içinde Azure sanal makinesine atanmış özel IP sürece atamayın, önerilen gerekli. İşletim sistemi içinde özel IP adresini el ile ayarlamanız durumunda Azure VM'sine atanan özel IP adresiyle aynı adresi olduğundan emin olun veya sanal makineye bağlantı kaybedebilir. Sanal makinenin işletim sistemi içindeki bir Azure sanal makinesine atanan genel IP adresini el ile atamayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Hakkında bilgi edinin [ayrılmış genel IP](virtual-networks-reserved-public-ip.md) adresleri.
-* Hakkında bilgi edinin [örnek düzeyi genel IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adresleri.
-* Başvurun [ayrılmış IP REST API'leri](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* [Ayrılmış genel IP](virtual-networks-reserved-public-ip.md) adresleri hakkında bilgi edinin.
+* [Örnek düzeyi genel IP (ıLPıP)](virtual-networks-instance-level-public-ip.md) adresleri hakkında bilgi edinin.
+* [Ayrılmış IP REST API 'lerine](https://msdn.microsoft.com/library/azure/dn722420.aspx)danışın.

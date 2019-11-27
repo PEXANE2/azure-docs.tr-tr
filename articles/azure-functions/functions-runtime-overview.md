@@ -1,6 +1,6 @@
 ---
-title: Azure Functions Runtime Overview
-description: Overview of the Azure Functions Runtime Preview
+title: Azure İşlevleri Çalışma Zamanı genel bakış
+description: Azure İşlevleri Çalışma Zamanı önizlemeye genel bakış
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
@@ -12,40 +12,40 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226622"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime Overview (preview)
+# <a name="azure-functions-runtime-overview-preview"></a>Azure İşlevleri Çalışma Zamanı genel bakış (Önizleme)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-The Azure Functions Runtime (preview) provides a new way for you to take advantage of the simplicity and flexibility of the Azure Functions programming model on-premises. Built on the same open source roots as Azure Functions, Azure Functions Runtime is deployed on-premises to provide a nearly identical development experience as the cloud service.
+Azure İşlevleri Çalışma Zamanı (Önizleme), şirket içi Azure Işlevleri programlama modelinin basitliğini ve esnekliğini avantajlarından yararlanmanıza yönelik yeni bir yol sağlar. Azure Işlevleri ile aynı açık kaynaklı köklere göre geliştirilen Azure İşlevleri Çalışma Zamanı, bulut hizmeti olarak neredeyse özdeş bir geliştirme deneyimi sağlamak için şirket içinde dağıtılır.
 
-![Azure Functions Runtime Preview Portal][1]
+![Azure İşlevleri Çalışma Zamanı Preview Portal][1]
 
-The Azure Functions Runtime provides a way for you to experience Azure Functions before committing to the cloud. In this way, the code assets you build can then be taken with you to the cloud when you migrate.  The runtime also opens up new options for you, such as using the spare compute power of your on-premises computers to run batch processes overnight. You can also use devices within your organization to conditionally send data to other systems, both on-premises and in the cloud.
+Azure İşlevleri Çalışma Zamanı, buluta işlemeden önce Azure Işlevleri ile karşılaşmanız için bir yol sağlar. Bu şekilde, oluşturduğunuz kod varlıkları, geçiş yaparken bulut ile birlikte alınabilir.  Çalışma zamanı, toplu işlemleri fazla gece çalıştırmak için şirket içi bilgisayarlarınızın yedek işlem gücünü kullanma gibi yeni seçenekleri de açar. Ayrıca kuruluşunuzdaki cihazları, hem şirket içinde hem de bulutta diğer sistemlere koşullu olarak göndermek için de kullanabilirsiniz.
 
-The Azure Functions Runtime consists of two pieces:
+Azure İşlevleri Çalışma Zamanı iki parçadan oluşur:
 
-* Azure Functions Runtime Management Role
-* Azure Functions Runtime Worker Role
+* Azure İşlevleri Çalışma Zamanı yönetim rolü
+* Azure İşlevleri Çalışma Zamanı çalışan rolü
 
-## <a name="azure-functions-management-role"></a>Azure Functions Management Role
+## <a name="azure-functions-management-role"></a>Azure Işlevleri yönetim rolü
 
-The Azure Functions Management Role provides a host for the management of your Functions on-premises. This role performs the following tasks:
+Azure Işlevleri yönetim rolü, şirket içi işlevlerinizin yönetimi için bir konak sağlar. Bu rol aşağıdaki görevleri gerçekleştirir:
 
-* Hosting of the Azure Functions Management Portal, which is the same one you see in the [Azure portal](https://portal.azure.com). The portal provides a consistent experience that lets you develop your functions in the same way as you would in the Azure portal.
-* Distributing functions across multiple Functions workers.
-* Providing a publishing endpoint so that you can publish your functions direct from Microsoft Visual Studio by downloading and importing the publishing profile.
+* Azure Işlevleri Yönetim Portalı barındırırken, [Azure Portal](https://portal.azure.com)gördüğünüz aynı bir değer vardır. Portal, işlevlerinizi Azure portal benzer şekilde geliştirmenize olanak tanıyan tutarlı bir deneyim sunar.
+* İşlevleri birden çok Işlev çalışanı arasında dağıtma.
+* Yayımlama profilini indirerek ve içeri aktararak işlevlerinizi doğrudan Microsoft Visual Studio yayımlayabilmeniz için bir yayımlama uç noktası sağlama.
 
-## <a name="azure-functions-worker-role"></a>Azure Functions Worker Role
+## <a name="azure-functions-worker-role"></a>Azure Işlevleri çalışan rolü
 
-The Azure Functions Worker Roles are deployed in Windows Containers and are where your function code executes.  You can deploy multiple Worker Roles throughout your organization and this option is a key way in which customers can make use of spare compute power.  One example of where spare compute exists in many organizations is machines powered on constantly but not being used for large periods of time.
+Azure Işlevleri çalışan rolleri Windows kapsayıcılarında dağıtılır ve işlev kodunuzun çalıştırıldığı yerdir.  Kuruluşunuz genelinde birden fazla çalışan rolü dağıtabilirsiniz ve bu seçenek müşterilerin yedek işlem gücünü kullanabileceği bir anahtar yoludur.  Birçok kuruluşta yedek bilgi işlemin mevcut olduğu bir örnek, makineler sürekli olarak desteklenmektedir ancak büyük süreler boyunca kullanılmaz.
 
-## <a name="minimum-requirements"></a>Minimum Requirements
+## <a name="minimum-requirements"></a>Minimum gereksinimler
 
-To get started with the Azure Functions Runtime, you must have a machine with Windows Server 2016 or Windows 10 Creators Update with access to a SQL Server instance.
+Azure İşlevleri Çalışma Zamanı kullanmaya başlamak için, bir SQL Server örneğine erişimi olan Windows Server 2016 veya Windows 10 Creators Update içeren bir makineniz olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Install the [Azure Functions Runtime preview](https://aka.ms/azafrdoc)
+[Azure işlevleri çalışma zamanı önizlemeyi](https://aka.ms/azafrdoc) yükler
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

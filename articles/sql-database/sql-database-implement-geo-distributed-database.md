@@ -1,6 +1,6 @@
 ---
-title: Implement a geo-distributed solution
-description: Learn to configure your Azure SQL database and application for failover to a replicated database, and test failover.
+title: Coğrafi olarak dağıtılmış bir çözüm uygulama
+description: Azure SQL veritabanınızı ve uygulamanızı, çoğaltılan bir veritabanına yük devretme için yapılandırmayı ve yük devretmeyi test yapmayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -18,52 +18,52 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421131"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Tutorial: Implement a geo-distributed database
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Öğretici: coğrafi olarak dağıtılmış bir veritabanı uygulama
 
-Configure an Azure SQL database and application for failover to a remote region and test a failover plan. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bir Azure SQL veritabanı ve uygulamasını uzak bir bölgeye yük devretme için yapılandırın ve yük devretme planını test edin. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> - Create a [failover group](sql-database-auto-failover-group.md)
-> - Run a Java application to query an Azure SQL database
+> - [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturma
+> - Bir Java uygulamasını çalıştırarak bir Azure SQL veritabanını sorgulama
 > - Yük devretme testi
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-To complete the tutorial, make sure you've installed the following items:
+Öğreticiyi tamamlayabilmeniz için aşağıdaki öğeleri yüklediğinizden emin olun:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- A single database in Azure SQL Database. To create one use,
+- Azure SQL veritabanı 'nda tek bir veritabanı. Bir kullanım oluşturmak için
   - [Portal](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > The tutorial uses the *AdventureWorksLT* sample database.
+  > Öğretici, *AdventureWorksLT* örnek veritabanını kullanır.
 
-- Java and Maven, see [Build an app using SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), highlight **Java** and select your environment, then follow the steps.
+- Java ve Maven, bkz. [SQL Server kullanarak uygulama oluşturma](https://www.microsoft.com/sql-server/developer-get-started/), **Java 'yı** vurgulama ve ortamınızı seçme, ardından adımları izleyin.
 
 > [!IMPORTANT]
-> Be sure to set up firewall rules to use the public IP address of the computer on which you're performing the steps in this tutorial. Database-level firewall rules will replicate automatically to the secondary server.
+> Bu öğreticideki adımları gerçekleştirdiğiniz bilgisayarın genel IP adresini kullanmak için güvenlik duvarı kuralları ayarladığınızdan emin olun. Veritabanı düzeyinde güvenlik duvarı kuralları otomatik olarak ikincil sunucuya çoğaltılır.
 >
-> For information see [Create a database-level firewall rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) or to determine the IP address used for the server-level firewall rule for your computer see [Create a server-level firewall](sql-database-server-level-firewall-rule.md).  
+> Bilgi için bkz. [veritabanı düzeyinde güvenlik duvarı kuralı oluşturma](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) veya bilgisayarınızın sunucu düzeyinde güvenlik duvarı kuralı IÇIN kullanılan IP adresini belirleme bkz. [sunucu düzeyinde güvenlik duvarı oluşturma](sql-database-server-level-firewall-rule.md).  
 
-## <a name="create-a-failover-group"></a>Create a failover group
+## <a name="create-a-failover-group"></a>Yük devretme grubu oluşturma
 
-Using Azure PowerShell, create [failover groups](sql-database-auto-failover-group.md) between an existing Azure SQL server and a new Azure SQL server in another region. Then add the sample database to the failover group.
+Azure PowerShell kullanarak, var olan bir Azure SQL Server ve başka bir bölgedeki yeni bir Azure SQL sunucusu arasında [Yük devretme grupları](sql-database-auto-failover-group.md) oluşturun. Ardından örnek veritabanını yük devretme grubuna ekleyin.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 
-To create a failover group, run the following script:
+Yük devretme grubu oluşturmak için aşağıdaki betiği çalıştırın:
 
 ```powershell
 $admin = "<adminName>"
@@ -93,7 +93,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
-> Run `az login` to sign in to Azure.
+> Azure 'da oturum açmak için `az login` çalıştırın.
 
 ```powershell
 $admin = "<adminName>"
@@ -118,29 +118,29 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-Geo-replication settings can also be changed in the Azure portal, by selecting your database, then **Settings** > **Geo-Replication**.
+Coğrafi çoğaltma ayarları Azure portal Ayrıca, veritabanınızı seçip, ardından **coğrafi çoğaltma** > **Ayarlar** ' da değiştirilebilir.
 
-![Geo-replication settings](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
+![Coğrafi çoğaltma ayarları](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
-## <a name="run-the-sample-project"></a>Run the sample project
+## <a name="run-the-sample-project"></a>Örnek projeyi çalıştırma
 
-1. In the console, create a Maven project with the following command:
+1. Konsolunda, aşağıdaki komutla bir Maven projesi oluşturun:
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Type **Y** and press **Enter**.
+1. **Y** yazın ve **ENTER**tuşuna basın.
 
-1. Change directories to the new project.
+1. Dizinleri yeni proje ile değiştirin.
 
    ```bash
    cd SqlDbSample
    ```
 
-1. Using your favorite editor, open the *pom.xml* file in your project folder.
+1. En sevdiğiniz düzenleyiciyi kullanarak, proje klasörünüzdeki *Pod. xml* dosyasını açın.
 
-1. Add the Microsoft JDBC Driver for SQL Server dependency by adding the following `dependency` section. The dependency must be pasted within the larger `dependencies` section.
+1. Aşağıdaki `dependency` bölümünü ekleyerek SQL Server bağımlılığı için Microsoft JDBC sürücüsü ekleyin. Bağımlılığın daha büyük `dependencies` bölümü içine yapıştırılabilmesi gerekir.
 
    ```xml
    <dependency>
@@ -150,7 +150,7 @@ Geo-replication settings can also be changed in the Azure portal, by selecting y
    </dependency>
    ```
 
-1. Specify the Java version by adding the `properties` section after the `dependencies` section:
+1. `dependencies` bölümünden sonra `properties` bölümünü ekleyerek Java sürümünü belirtin:
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ Geo-replication settings can also be changed in the Azure portal, by selecting y
    </properties>
    ```
 
-1. Support manifest files by adding the `build` section after the `properties` section:
+1. `properties` bölümünden sonra `build` bölümünü ekleyerek bildirim dosyalarını destekleme:
 
    ```xml
    <build>
@@ -180,9 +180,9 @@ Geo-replication settings can also be changed in the Azure portal, by selecting y
    </build>
    ```
 
-1. Save and close the *pom.xml* file.
+1. *Pod. xml* dosyasını kaydedin ve kapatın.
 
-1. Open the *App.java* file located in ..\SqlDbSample\src\main\java\com\sqldbsamples and replace the contents with the following code:
+1. İçinde bulunan *app. Java* dosyasını açın. \Sqldbsample\src\mainjava\com\sqldbsamples ve içeriği şu kodla değiştirin:
 
    ```java
    package com.sqldbsamples;
@@ -288,15 +288,15 @@ Geo-replication settings can also be changed in the Azure portal, by selecting y
    }
    ```
 
-1. Save and close the *App.java* file.
+1. *App. Java* dosyasını kaydedin ve kapatın.
 
-1. In the command console, run the following command:
+1. Komut konsolunda aşağıdaki komutu çalıştırın:
 
    ```bash
    mvn package
    ```
 
-1. Start the application that will run for about 1 hour until stopped manually, allowing you time to run the failover test.
+1. El ile durduruluncaya kadar yaklaşık 1 saat boyunca çalışacak uygulamayı başlatın ve yük devretme testini çalıştırma zamanı sağlar.
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -315,27 +315,27 @@ Geo-replication settings can also be changed in the Azure portal, by selecting y
 
 ## <a name="test-failover"></a>Yük devretme testi
 
-Run the following scripts to simulate a failover and observe the application results. Notice how some inserts and selects will fail during the database migration.
+Yük devretmenin benzetimini yapmak ve uygulama sonuçlarını gözlemlemek için aşağıdaki komut dosyalarını çalıştırın. Veritabanı geçişi sırasında bazı ekleme ve seçimi nasıl başarısız olacağını fark edebilirsiniz.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-You can check the role of the disaster recovery server during the test with the following command:
+Aşağıdaki komutla, test sırasında olağanüstü durum kurtarma sunucusunun rolünü kontrol edebilirsiniz:
 
 ```powershell
 (Get-AzSqlDatabaseFailoverGroup -FailoverGroupName $failoverGroup `
     -ResourceGroupName $resourceGroup -ServerName $drServer).ReplicationRole
 ```
 
-To test a failover:
+Yük devretmeyi test etmek için:
 
-1. Start a manual failover of the failover group:
+1. Yük devretme grubunun el ile yük devretmesini başlatın:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 
-1. Revert failover group back to the primary server:
+1. Yük devretme grubunu birincil sunucuya geri çevir:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
@@ -344,21 +344,21 @@ To test a failover:
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You can check the role of the disaster recovery server during the test with the following command:
+Aşağıdaki komutla, test sırasında olağanüstü durum kurtarma sunucusunun rolünü kontrol edebilirsiniz:
 
 ```azure-cli
 az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer
 ```
 
-To test a failover:
+Yük devretmeyi test etmek için:
 
-1. Start a manual failover of the failover group:
+1. Yük devretme grubunun el ile yük devretmesini başlatın:
 
    ```azure-cli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
-1. Revert failover group back to the primary server:
+1. Yük devretme grubunu birincil sunucuya geri çevir:
 
    ```azure-cli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
@@ -368,14 +368,14 @@ To test a failover:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you configured an Azure SQL database and application for failover to a remote region and tested a failover plan. Şunları öğrendiniz:
+Bu öğreticide, uzak bir bölgeye yük devretme için bir Azure SQL veritabanı ve uygulaması yapılandırmış ve bir yük devretme planını test edersiniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > - Coğrafi çoğaltma yük devretme grubu oluşturma
-> - Run a Java application to query an Azure SQL database
+> - Bir Java uygulamasını çalıştırarak bir Azure SQL veritabanını sorgulama
 > - Yük devretme testi
 
-Advance to the next tutorial on how to migrate using DMS.
+DMS kullanarak geçiş yapmak için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Migrate SQL Server to Azure SQL database managed instance using DMS](../dms/tutorial-sql-server-to-managed-instance.md)
+> [DMS kullanarak SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirme](../dms/tutorial-sql-server-to-managed-instance.md)

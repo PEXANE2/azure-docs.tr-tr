@@ -11,11 +11,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224409"
 ---
-Azure Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources, and you can use it to do analytics on exabytes of data. When the job completes, it winds down resources automatically. You pay only for the processing power that was used. Depolanan verilerin boyutunu veya kullanılan bilgi işlemin miktarını artırır veya azaltırsanız, yeniden kod yazmak zorunda kalmazsınız. To raise the default limits for your subscription, contact support.
+Azure Data Lake Analytics dağıtılmış altyapıyı ve karmaşık kodu yönetme karmaşık görevini kolaylaştırır. Kaynakları dinamik olarak sağlar ve eksabaytlarca veri üzerinde analiz yapmak için kullanabilirsiniz. İş tamamlandığında, kaynakları otomatik olarak kapatır. Yalnızca kullanılan işlem gücü için ödeme yaparsınız. Depolanan verilerin boyutunu veya kullanılan bilgi işlemin miktarını artırır veya azaltırsanız, yeniden kod yazmak zorunda kalmazsınız. Aboneliğiniz için varsayılan sınırları yükseltmek üzere desteğe başvurun.
 
 | **Kaynak** | **Varsayılan sınır** | **Açıklamalar** |
 | --- | --- | --- |
-| Maximum number of concurrent jobs |20 | |
-| Maximum number of analytics units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. To increase this limit, contact Microsoft Support. |
-| Maximum script size for job submission | 3 MB | |
-| Maximum number of Data Lake Analytics accounts per region per subscription | 5 | To increase this limit, contact Microsoft Support. |
+| En fazla eşzamanlı iş sayısı |20 | |
+| Hesap başına en fazla analiz birimi (Avustralya) sayısı |250 | 20 iş üzerinde en fazla 250 Avustralya birleşimini kullanın. Bu sınırı artırmak için Microsoft Desteği başvurun. |
+| İş gönderimi için en büyük betik boyutu | 3 MB | |
+| Her abonelik için bölge başına en fazla Data Lake Analytics hesabı sayısı | 5 | Bu sınırı artırmak için Microsoft Desteği başvurun. |

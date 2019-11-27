@@ -43,7 +43,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB tetikleyicisi oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -53,7 +53,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. Arama alanına `cosmos` yazıp **Azure Cosmos DB tetikleyicisi** şablonunu seçin.
 
-1. If prompted, select **Install** to install the Azure Cosmos DB extension in the function app. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. İstenirse, işlev uygulamasına Azure Cosmos DB uzantısını yüklemek için, **yüklensin** ' i seçin. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
     ![Bağlama uzantılarını yükleme](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -75,7 +75,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     Bu işlev şablonu, günlüklere belge sayısını ve ilk belgenin kimliğini yazar.
 
-Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Tasks` veritabanında `Items` koleksiyonunu oluşturursunuz.
+Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Items` veritabanında `Tasks` koleksiyonunu oluşturursunuz.
 
 ## <a name="create-the-items-collection"></a>Öğeler koleksiyonunu oluşturma
 
@@ -89,7 +89,7 @@ Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Tasks` veritabanında `Items
 
 1. **Koleksiyonlar** bölümünde **taskDatabase**’i seçip **Yeni Koleksiyon**’u seçin.
 
-    ![Koleksiyon oluşturun](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Koleksiyon oluşturma](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
 
 1. **Koleksiyon Ekle** bölümünde, resmin altındaki tabloda gösterilen ayarları kullanın. 
 

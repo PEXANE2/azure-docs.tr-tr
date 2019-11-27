@@ -1,6 +1,6 @@
 ---
-title: Apache Spark & Apache Kafka with Cosmos DB - Azure HDInsight
-description: Learn how to use Apache Spark Structured Streaming to read data from Apache Kafka and then store it into Azure Cosmos DB. Bu örnekte, HDInsight üzerinde Spark’tan bir Jupyter not defterini kullanarak verilerinizi akışla aktaracaksınız.
+title: Cosmos DB Apache Spark & Apache Kafka-Azure HDInsight
+description: Apache Kafka verileri okumak için Apache Spark yapısal akışı kullanmayı ve sonra Azure Cosmos DB nasıl depolayacağınızı öğrenin. Bu örnekte, HDInsight üzerinde Spark’tan bir Jupyter not defterini kullanarak verilerinizi akışla aktaracaksınız.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,16 +15,16 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406166"
 ---
-# <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Use Apache Spark Structured Streaming with Apache Kafka and Azure Cosmos DB
+# <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
 
-Learn how to use [Apache Spark](https://spark.apache.org/) [Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) to read data from [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight, and then store the data into Azure Cosmos DB.
+Azure HDInsight 'ta [Apache Kafka](https://kafka.apache.org/) verileri okumak için [Apache Spark](https://spark.apache.org/) [yapısal akışı](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) kullanmayı ve sonra verileri Azure Cosmos DB ' ye depolamayı öğrenin.
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) is a globally distributed, multi-model database. This example uses a SQL API database model. For more information, see the [Welcome to Azure Cosmos DB](../cosmos-db/introduction.md) document.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) , genel olarak dağıtılmış, çok modelli bir veritabanıdır. Bu örnek, bir SQL API veritabanı modeli kullanır. Daha fazla bilgi için bkz. [Azure Cosmos DB belgeye hoş geldiniz](../cosmos-db/introduction.md) .
 
-Spark yapılandırılmış akışı, Spark SQL üzerinde yerleşik bir akış işleme altyapısıdır. Bu altyapıyı kullanarak, statik veriler üzerinde toplu hesaplamayla aynı şekilde akış hesaplamalarını ifade edebilirsiniz. For more information on Structured Streaming, see the [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) at Apache.org.
+Spark yapılandırılmış akışı, Spark SQL üzerinde yerleşik bir akış işleme altyapısıdır. Bu altyapıyı kullanarak, statik veriler üzerinde toplu hesaplamayla aynı şekilde akış hesaplamalarını ifade edebilirsiniz. Yapılandırılmış akış hakkında daha fazla bilgi için Apache.org adresindeki [yapılandırılmış akış programlama kılavuzuna](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) bakın.
 
 > [!IMPORTANT]  
-> This example used Spark 2.2 on HDInsight 3.6.
+> Bu örnek, HDInsight 3,6 üzerinde Spark 2,2 kullandı.
 >
 > Bu belgede yer alan adımlar hem HDInsight üzerinde Spark hem de HDInsight kümesinde Kafka içeren bir Azure kaynak grubu oluşturur. Bu kümelerin her ikisi de Spark kümesinin Kafka kümesiyle doğrudan iletişim kurmasına olanak tanıyan bir Azure Sanal Ağı içinde bulunur.
 >
@@ -32,14 +32,14 @@ Spark yapılandırılmış akışı, Spark SQL üzerinde yerleşik bir akış i�
 
 ## <a name="create-the-clusters"></a>Kümeleri oluşturma
 
-Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the public internet. Anything that talks to Kafka must be in the same Azure virtual network as the nodes in the Kafka cluster. For this example, both the Kafka and Spark clusters are located in an Azure virtual network. The following diagram shows how communication flows between the clusters:
+HDInsight üzerinde Apache Kafka, genel İnternet üzerinden Kafka aracıları için erişim sağlamaz. Kafka ile iletişim kuran her şey, Kafka kümesindeki düğümlerle aynı Azure sanal ağında olmalıdır. Bu örnekte, hem Kafka hem de Spark kümeleri bir Azure sanal ağında bulunur. Aşağıdaki diyagramda, kümeler arasında iletişimin nasıl akagösterdiği gösterilmektedir:
 
 ![Bir Azure sanal ağında Spark ve Kafka kümeleri diyagramı](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
 > Kafka hizmeti, sanal ağ içindeki iletişimle sınırlıdır. SSH ve Ambari gibi küme üzerindeki diğer hizmetlere internet üzerinden erişilebilir. HDInsight üzerinde kullanılabilir olan genel bağlantı noktaları hakkında daha fazla bilgi için bkz. [HDInsight Tarafından Kullanılan Bağlantı Noktaları ve URI’ler](hdinsight-hadoop-port-settings-for-services.md).
 
-While you can create an Azure virtual network, Kafka, and Spark clusters manually, it's easier to use an Azure Resource Manager template. Use the following steps to deploy an Azure virtual network, Kafka, and Spark clusters to your Azure subscription.
+Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gibi, Azure Resource Manager şablonu kullanmak daha kolay olur. Azure aboneliğinize Azure sanal ağını, Kafka ve Spark kümelerini dağıtmak için aşağıdaki adımları kullanın.
 
 1. Aşağıdaki düğmeyi kullanarak Azure'da oturum açın ve şablonu Azure portalında açın.
 
@@ -47,46 +47,46 @@ While you can create an Azure virtual network, Kafka, and Spark clusters manuall
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    The Azure Resource Manager template is located in the GitHub repository for this project ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
+    Azure Resource Manager şablonu bu proje için GitHub deposunda ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) bulunur.
 
     Bu şablon aşağıdaki kaynakları oluşturur:
 
    * HDInsight 3.6 kümesi üzerinde bir Kafka.
 
-   * A Spark on HDInsight 3.6 cluster.
+   * HDInsight 3,6 kümesinde spark.
 
-   * HDInsight kümeleri içeren bir Azure Sanal Ağı. The virtual network created by the template uses the 10.0.0.0/16 address space.
+   * HDInsight kümeleri içeren bir Azure Sanal Ağı. Şablon tarafından oluşturulan sanal ağ, 10.0.0.0/16 adres alanını kullanır.
 
-   * An Azure Cosmos DB SQL API database.
+   * Azure Cosmos DB bir SQL API veritabanı.
 
     > [!IMPORTANT]  
     > Bu örnekte kullanılan yapılandırılmış akış not defteri, HDInsight 3.6 üzerinde Spark gerektirir. HDInsight üzerinde Spark’ın daha önceki bir sürümünü kullanıyorsanız, not defterini kullanırken hatalarla karşılaşırsınız.
 
-1. Use the following information to populate the entries on the **Custom deployment** section:
+1. **Özel dağıtım** bölümündeki girişleri doldurmak için aşağıdaki bilgileri kullanın:
 
     |Özellik |Değer |
     |---|---|
     |Abonelik|Azure aboneliğinizi seçin.|
-    |Kaynak grubu|Create a group or select an existing one. This group contains the HDInsight cluster.|
-    |Cosmos DB Account Name|This value is used as the name for the Cosmos DB account. The name can only contain lowercase letters, numbers, and the hyphen (-) character. It must be between 3-31 characters in length.|
-    |Base Cluster Name|This value is used as the base name for the Spark and Kafka clusters. For example, entering **myhdi** creates a Spark cluster named __spark-myhdi__ and a Kafka cluster named **kafka-myhdi**.|
-    |Cluster Version|The HDInsight cluster version. This example is tested with HDInsight 3.6, and may not work with other cluster types.|
-    |Küme Oturum Açma Kullanıcı Adı|The admin user name for the Spark and Kafka clusters.|
-    |Küme Oturum Açma Parolası|The admin user password for the Spark and Kafka clusters.|
-    |Ssh User Name|The SSH user to create for the Spark and Kafka clusters.|
-    |Ssh Password|The password for the SSH user for the Spark and Kafka clusters.|
+    |Kaynak grubu|Bir grup oluşturun veya var olan bir grubu seçin. Bu grup HDInsight kümesini içerir.|
+    |Cosmos DB hesap adı|Bu değer, Cosmos DB hesabının adı olarak kullanılır. Ad yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3-31 karakter uzunluğunda olmalıdır.|
+    |Taban küme adı|Bu değer Spark ve Kafka kümelerinin temel adı olarak kullanılır. Örneğin, **myhdı** girildiğinde __Spark-Myhdi__ adlı bir Spark kümesi ve **Kafka-Myhdi**adlı bir Kafka kümesi oluşturulur.|
+    |Küme sürümü|HDInsight kümesi sürümü. Bu örnek HDInsight 3,6 ile test edilmiştir ve diğer küme türleriyle çalışmayabilir.|
+    |Küme Oturum Açma Kullanıcı Adı|Spark ve Kafka kümeleri için Yönetici Kullanıcı adı.|
+    |Küme Oturum Açma Parolası|Spark ve Kafka kümeleri için Yönetici Kullanıcı parolası.|
+    |SSH Kullanıcı adı|Spark ve Kafka kümeleri için oluşturulacak SSH kullanıcısı.|
+    |SSH parolası|Spark ve Kafka kümeleri için SSH kullanıcısının parolası.|
 
-    ![HDInsight custom deployment values](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+    ![HDInsight özel dağıtım değerleri](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
 1. **Hüküm ve Koşullar**’ı okuyun ve ardından **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**’u seçin.
 
-1. Finally, select **Purchase**. It may take up to 45 minutes to create the clusters, virtual network, and Cosmos DB account.
+1. Son olarak, **satın al**' ı seçin. Kümelerin, sanal ağın ve Cosmos DB hesabının oluşturulması 45 dakika sürebilir.
 
-## <a name="create-the-cosmos-db-database-and-collection"></a>Create the Cosmos DB database and collection
+## <a name="create-the-cosmos-db-database-and-collection"></a>Cosmos DB veritabanı ve koleksiyonu oluşturma
 
-The project used in this document stores data in Cosmos DB. Before running the code, you must first create a _database_ and _collection_ in your Cosmos DB instance. You must also retrieve the document endpoint and the _key_ used to authenticate requests to Cosmos DB.
+Bu belgede kullanılan proje verileri Cosmos DB depolar. Kodu çalıştırmadan önce, önce Cosmos DB Örneğinizde bir _veritabanı_ ve _koleksiyon_ oluşturmanız gerekir. Ayrıca, Cosmos DB yönelik isteklerin kimliğini doğrulamak için kullanılan belge uç noktasını ve _anahtarı_ da almalısınız.
 
-One way to do this is to use the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). The following script will create a database named `kafkadata` and a collection named `kafkacollection`. It then returns the primary key.
+Bunu yapmanın bir yolu, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanmaktır. Aşağıdaki betik, `kafkadata` adlı bir veritabanı ve `kafkacollection`adlı bir koleksiyon oluşturur. Ardından birincil anahtarı döndürür.
 
 ```azurecli
 #!/bin/bash
@@ -114,7 +114,7 @@ az cosmosdb show --name $name --resource-group $resourceGroupName --query docume
 az cosmosdb keys list --name $name --resource-group $resourceGroupName --type keys
 ```
 
-The document endpoint and primary key information is similar to the following text:
+Belge uç noktası ve birincil anahtar bilgileri aşağıdaki metne benzer:
 
 ```text
 # endpoint
@@ -124,15 +124,15 @@ The document endpoint and primary key information is similar to the following te
 ```
 
 > [!IMPORTANT]  
-> Save the endpoint and key values, as they are needed in the Jupyter Notebooks.
+> Uç nokta ve anahtar değerlerini Jupyıter not defterlerinde gerektiği gibi kaydedin.
 
-## <a name="get-the-notebooks"></a>Get the notebooks
+## <a name="get-the-notebooks"></a>Not defterlerini al
 
 Bu belgede açıklanan örneğin kodu [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) sayfasından edinilebilir.
 
 ## <a name="upload-the-notebooks"></a>Not defterlerini karşıya yükleme
 
-Use the following steps to upload the notebooks from the project to your Spark on HDInsight cluster:
+Not defterlerini projeden HDInsight kümesine yüklemek için aşağıdaki adımları kullanın:
 
 1. Web tarayıcınızdan Spark kümeniz üzerindeki Jupyter not defterine bağlanın. Aşağıdaki URL’de `CLUSTERNAME` değerini __Spark__ kümenizin adıyla değiştirin:
 
@@ -140,24 +140,24 @@ Use the following steps to upload the notebooks from the project to your Spark o
 
     Sorulduğunda, kümeyi oluştururken kullanılan küme kullanıcı adı (yönetici) ve parolasını girin.
 
-2. From the upper right side of the page, use the __Upload__ button to upload the __Stream-taxi-data-to-kafka.ipynb__ file to the cluster. Karşıya yüklemeyi başlatmak için __Aç__’ı seçin.
+2. Sayfanın sağ üst kısmından __karşıya yükle__ düğmesini kullanarak __Stream-Taxi-Data-to-Kafka. ipynb__ dosyasını kümeye yükleyin. Karşıya yüklemeyi başlatmak için __Aç__’ı seçin.
 
-3. Find the __Stream-taxi-data-to-kafka.ipynb__ entry in the list of notebooks, and select __Upload__ button beside it.
+3. Not defterleri listesinde __Stream-Taxi-Data-to-Kafka. ipynb__ girişini bulun ve yanındaki __karşıya yükle__ düğmesini seçin.
 
-4. Repeat steps 1-3 to load the __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ notebook.
+4. Stream-Data-from- __Cosmos-DB. ipynb__ Not defteri 'ni yüklemek için 1-3 arasındaki adımları yineleyin.
 
-## <a name="load-taxi-data-into-kafka"></a>Load taxi data into Kafka
+## <a name="load-taxi-data-into-kafka"></a>Kafka 'e TAXI verileri yükleme
 
-Once the files have been uploaded, select the __Stream-taxi-data-to-kafka.ipynb__ entry to open the notebook. Follow the steps in the notebook to load data into Kafka.
+Dosyalar karşıya yüklendikten sonra, Not defterini açmak için __Stream-Taxi-Data-to-Kafka. ipynb__ girişini seçin. Kafka 'e veri yüklemek için not defterindeki adımları izleyin.
 
-## <a name="process-taxi-data-using-spark-structured-streaming"></a>Process taxi data using Spark Structured Streaming
+## <a name="process-taxi-data-using-spark-structured-streaming"></a>Spark yapılandırılmış akışını kullanarak TAXI verilerini işleme
 
-From the [Jupyter Notebook](https://jupyter.org/) home page, select the __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ entry. Follow the steps in the notebook to stream data from Kafka and into Azure Cosmos DB using Spark Structured Streaming.
+[Jupyter Notebook](https://jupyter.org/) giriş sayfasından __Stream-Data-from-Cosmos-DB. ipynb__ girişini seçin. Kafka 'ten veri akışı sağlamak ve Spark yapılandırılmış akışı kullanarak Azure Cosmos DB için not defterindeki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you've learned how to use Apache Spark Structured Streaming, see the following documents to learn more about working with Apache Spark, Apache Kafka, and Azure Cosmos DB:
+Apache Spark yapısal akışı kullanmayı öğrendiğinize göre, Apache Spark, Apache Kafka ve Azure Cosmos DB çalışma hakkında daha fazla bilgi edinmek için aşağıdaki belgelere bakın:
 
-* [How to use Apache Spark streaming (DStream) with Apache Kafka](hdinsight-apache-spark-with-kafka.md).
-* [Start with Jupyter Notebook and Apache Spark on HDInsight](spark/apache-spark-jupyter-spark-sql.md)
-* [Welcome to Azure Cosmos DB](../cosmos-db/introduction.md)
+* [Apache Kafka ile Apache Spark akışını (DStream) kullanma](hdinsight-apache-spark-with-kafka.md).
+* [HDInsight üzerinde Jupyter Notebook ve Apache Spark ile başlayın](spark/apache-spark-jupyter-spark-sql.md)
+* [Azure Cosmos DB hoş geldiniz](../cosmos-db/introduction.md)

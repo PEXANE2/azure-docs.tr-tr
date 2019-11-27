@@ -1,6 +1,6 @@
 ---
 title: Şablon işlevleri
-description: Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information.
+description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
@@ -10,11 +10,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224176"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager şablon işlevleri
 
-This article describes all the functions you can use in an Azure Resource Manager template. For information about using functions in your template, see [template syntax](template-expressions.md).
+Bu makalede, bir Azure Resource Manager şablonunda kullanabileceğiniz tüm işlevler açıklanmaktadır. Şablonunuzda işlevleri kullanma hakkında daha fazla bilgi için bkz. [şablon sözdizimi](template-expressions.md).
 
-To create your own functions, see [User-defined functions](resource-group-authoring-templates.md#functions).
+Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](resource-group-authoring-templates.md#functions).
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,25 +35,25 @@ To create your own functions, see [User-defined functions](resource-group-author
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Dizi ve nesne işlevleri
-Resource Manager provides several functions for working with arrays and objects.
+Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler sağlar.
 
-* [array](resource-group-template-functions-array.md#array)
-* [coalesce](resource-group-template-functions-array.md#coalesce)
-* [concat](resource-group-template-functions-array.md#concat)
-* [contains](resource-group-template-functions-array.md#contains)
+* [dizide](resource-group-template-functions-array.md#array)
+* [Coalesce](resource-group-template-functions-array.md#coalesce)
+* [Concat](resource-group-template-functions-array.md#concat)
+* [vardır](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
-* [empty](resource-group-template-functions-array.md#empty)
-* [first](resource-group-template-functions-array.md#first)
-* [intersection](resource-group-template-functions-array.md#intersection)
-* [json](resource-group-template-functions-array.md#json)
-* [last](resource-group-template-functions-array.md#last)
-* [length](resource-group-template-functions-array.md#length)
-* [min](resource-group-template-functions-array.md#min)
-* [max](resource-group-template-functions-array.md#max)
-* [range](resource-group-template-functions-array.md#range)
-* [skip](resource-group-template-functions-array.md#skip)
-* [take](resource-group-template-functions-array.md#take)
-* [union](resource-group-template-functions-array.md#union)
+* [olmamalıdır](resource-group-template-functions-array.md#empty)
+* [adı](resource-group-template-functions-array.md#first)
+* [imin](resource-group-template-functions-array.md#intersection)
+* [nesnesinde](resource-group-template-functions-array.md#json)
+* [soyadına](resource-group-template-functions-array.md#last)
+* [uzunluklu](resource-group-template-functions-array.md#length)
+* [Min](resource-group-template-functions-array.md#min)
+* [Biçimlendir](resource-group-template-functions-array.md#max)
+* [aralığı](resource-group-template-functions-array.md#range)
+* [Şimdilik](resource-group-template-functions-array.md#skip)
+* [almanız](resource-group-template-functions-array.md#take)
+* [birleşim](resource-group-template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -62,25 +62,25 @@ Resource Manager provides several functions for working with arrays and objects.
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Karşılaştırma işlevleri
-Resource Manager provides several functions for making comparisons in your templates.
+Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
-* [equals](resource-group-template-functions-comparison.md#equals)
-* [less](resource-group-template-functions-comparison.md#less)
-* [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [greater](resource-group-template-functions-comparison.md#greater)
+* [eşittir](resource-group-template-functions-comparison.md#equals)
+* [büyüktür](resource-group-template-functions-comparison.md#less)
+* [Lessotalals](resource-group-template-functions-comparison.md#lessorequals)
+* [ilerisi](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Deployment value functions
-Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
+## <a name="deployment-value-functions"></a>Dağıtım değeri işlevleri
+Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin değerlerini almak için aşağıdaki işlevleri sağlar:
 
-* [deployment](resource-group-template-functions-deployment.md#deployment)
-* [environment](resource-group-template-functions-deployment.md#environment)
+* [dağıtmak](resource-group-template-functions-deployment.md#deployment)
+* [ortamınızın](resource-group-template-functions-deployment.md#environment)
 * [parametreler](resource-group-template-functions-deployment.md#parameters)
-* [variables](resource-group-template-functions-deployment.md#variables)
+* [değişkenlerinin](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -89,13 +89,13 @@ Resource Manager provides the following functions for getting values from sectio
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Mantıksal işlevler
-Resource Manager provides the following functions for working with logical conditions:
+Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* [and](resource-group-template-functions-logical.md#and)
+* ['](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
-* [if](resource-group-template-functions-logical.md#if)
-* [not](resource-group-template-functions-logical.md#not)
-* [or](resource-group-template-functions-logical.md#or)
+* [kullandıysanız](resource-group-template-functions-logical.md#if)
+* [başlatılmadı](resource-group-template-functions-logical.md#not)
+* [veya](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -109,18 +109,18 @@ Resource Manager provides the following functions for working with logical condi
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Sayısal işlevler
-Resource Manager provides the following functions for working with integers:
+Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* [add](resource-group-template-functions-numeric.md#add)
-* [copyIndex](resource-group-template-functions-numeric.md#copyindex)
-* [div](resource-group-template-functions-numeric.md#div)
+* [ekleyemiyorum](resource-group-template-functions-numeric.md#add)
+* [Copyındex](resource-group-template-functions-numeric.md#copyindex)
+* [DIV](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
-* [int](resource-group-template-functions-numeric.md#int)
-* [min](resource-group-template-functions-numeric.md#min)
-* [max](resource-group-template-functions-numeric.md#max)
-* [mod](resource-group-template-functions-numeric.md#mod)
-* [mul](resource-group-template-functions-numeric.md#mul)
-* [sub](resource-group-template-functions-numeric.md#sub)
+* ['tir](resource-group-template-functions-numeric.md#int)
+* [Min](resource-group-template-functions-numeric.md#min)
+* [Biçimlendir](resource-group-template-functions-numeric.md#max)
+* [alma](resource-group-template-functions-numeric.md#mod)
+* [MUL](resource-group-template-functions-numeric.md#mul)
+* [alt](resource-group-template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -134,20 +134,20 @@ Resource Manager provides the following functions for working with integers:
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Kaynak işlevleri
-Resource Manager provides the following functions for getting resource values:
+Resource Manager kaynak değerlerini almak için aşağıdaki işlevleri sunar:
 
-* [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
+* [Extensionresourceıd](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [listKeys](resource-group-template-functions-resource.md#listkeys)
-* [listSecrets](resource-group-template-functions-resource.md#list)
-* [list*](resource-group-template-functions-resource.md#list)
-* [providers](resource-group-template-functions-resource.md#providers)
-* [reference](resource-group-template-functions-resource.md#reference)
-* [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [resourceId](resource-group-template-functions-resource.md#resourceid)
+* [ListKeys 'i al](resource-group-template-functions-resource.md#listkeys)
+* [Listgizlilikler](resource-group-template-functions-resource.md#list)
+* [Listele](resource-group-template-functions-resource.md#list)
+* [sağlayıcılarla](resource-group-template-functions-resource.md#providers)
+* [başvurunun](resource-group-template-functions-resource.md#reference)
+* [Kaynak](resource-group-template-functions-resource.md#resourcegroup)
+* [RESOURCEID](resource-group-template-functions-resource.md#resourceid)
 * [aboneliği](resource-group-template-functions-resource.md#subscription)
-* [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
-* [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
+* [Subscriptionresourceıd](resource-group-template-functions-resource.md#subscriptionresourceid)
+* [Tenantresourceıd](resource-group-template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
 <a id="base64tojson" aria-hidden="true" />
@@ -181,45 +181,45 @@ Resource Manager provides the following functions for getting resource values:
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Dize işlevleri
-Resource Manager provides the following functions for working with strings:
+Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 
-* [base64](resource-group-template-functions-string.md#base64)
+* [biçiminde](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [concat](resource-group-template-functions-string.md#concat)
-* [contains](resource-group-template-functions-string.md#contains)
+* [Concat](resource-group-template-functions-string.md#concat)
+* [vardır](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
-* [empty](resource-group-template-functions-string.md#empty)
+* [olmamalıdır](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
-* [first](resource-group-template-functions-string.md#first)
-* [format](resource-group-template-functions-string.md#format)
-* [guid](resource-group-template-functions-string.md#guid)
-* [indexOf](resource-group-template-functions-string.md#indexof)
-* [last](resource-group-template-functions-string.md#last)
-* [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [length](resource-group-template-functions-string.md#length)
+* [adı](resource-group-template-functions-string.md#first)
+* [formatını](resource-group-template-functions-string.md#format)
+* ['ini](resource-group-template-functions-string.md#guid)
+* [IndexOf](resource-group-template-functions-string.md#indexof)
+* [soyadına](resource-group-template-functions-string.md#last)
+* [LastIndexOf](resource-group-template-functions-string.md#lastindexof)
+* [uzunluklu](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
-* [padLeft](resource-group-template-functions-string.md#padleft)
-* [replace](resource-group-template-functions-string.md#replace)
-* [skip](resource-group-template-functions-string.md#skip)
+* [Asma sol](resource-group-template-functions-string.md#padleft)
+* [değiştirin](resource-group-template-functions-string.md#replace)
+* [Şimdilik](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [string](resource-group-template-functions-string.md#string)
-* [substring](resource-group-template-functions-string.md#substring)
-* [take](resource-group-template-functions-string.md#take)
+* [dizisinde](resource-group-template-functions-string.md#string)
+* [dizeden](resource-group-template-functions-string.md#substring)
+* [almanız](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [trim](resource-group-template-functions-string.md#trim)
+* [kırpma](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [uri](resource-group-template-functions-string.md#uri)
-* [uriComponent](resource-group-template-functions-string.md#uricomponent)
-* [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
+* [kullanılmamışsa](resource-group-template-functions-string.md#uri)
+* [URIComponent](resource-group-template-functions-string.md#uricomponent)
+* [Urıonenttostring](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
-* To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
-* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
-* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](resource-group-authoring-templates.md)
+* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlantılı şablonları kullanma](resource-group-linked-templates.md)
+* Kaynak türünü oluştururken belirtilen sayıda tekrarda yinelemek için bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](resource-group-create-multiple.md)
+* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](resource-group-template-deploy.md)

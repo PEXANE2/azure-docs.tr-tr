@@ -1,5 +1,5 @@
 ---
-title: Send push notifications to iOS apps using Azure Notification Hubs | Microsoft Docs
+title: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderin | Microsoft Docs
 description: Bu öğreticide, bir iOS uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs'ın nasıl kullanılacağını öğrenirsiniz.
 services: notification-hubs
 documentationcenter: ios
@@ -25,13 +25,13 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407369"
 ---
-# <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Tutorial: Send push notifications to iOS apps using Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-In this tutorial, you use Azure Notification Hubs to send push notifications to an iOS application. [Apple Anında İletilen Bildirim servisini (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) kullanarak anında iletme bildirimleri alan boş bir iOS uygulaması oluşturursunuz.
+Bu öğreticide, bir iOS uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs kullanırsınız. [Apple Anında İletilen Bildirim servisini (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) kullanarak anında iletme bildirimleri alan boş bir iOS uygulaması oluşturursunuz.
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -44,16 +44,16 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Test amaçlı anında iletme bildirimleri gönderme
 > * Uygulamanızın bildirim aldığını doğrulama
 
-The complete code for this tutorial can be found [on GitHub](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples).
+Bu öğreticinin tüm kodu [GitHub '](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
-* Etkin bir Azure hesabı. If you don't have an account, you can [create a free Azure account](https://azure.microsoft.com/free).
+* Etkin bir Azure hesabı. Hesabınız yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/free).
 * [Windows Azure Messaging Framework]
 * [Xcode]'un en son sürümü
-* An iOS version 10 (or later)-capable device
+* İOS sürüm 10 (veya üzeri) özellikli bir cihaz
 * [Apple Developer Program](https://developer.apple.com/programs/) üyeliği.
   
   > [!NOTE]
@@ -71,60 +71,60 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
 
 2. Yeni projeniz için seçenekleri ayarlarken, Apple Developer portalında paket kimliğini açarken kullandığınız **Product Name** (Ürün Adı) ve **Organization Identifier**'nı (Kuruluş Tanımlayıcısı) kullandığınızdan emin olun.
 
-3. Under Project Navigator, select your project name under **Targets**, then select the **Signing & Capabilities** tab. Make sure you select the appropriate **Team** for your Apple Developer account. XCode, paket tanımlayıcınızı temel alarak önceden oluşturduğunuz Sağlama Profilini otomatik olarak aşağı çekmelidir.
+3. Proje Gezgini altında, **hedefler**altında proje adınızı seçin, sonra **imzalama & özellikleri** sekmesini seçin. Apple geliştirici hesabınız için uygun **ekibi** seçtiğinizden emin olun. XCode, paket tanımlayıcınızı temel alarak önceden oluşturduğunuz Sağlama Profilini otomatik olarak aşağı çekmelidir.
 
     Xcode'da oluşturduğunuz yeni hazırlama profilini göremiyorsanız imzalama kimliğiniz için profilleri yenilemeyi deneyin. Menü çubuğunda **Xcode**'a tıklayın, **Preferences**'a (Tercihler) tıklayın, **Account** (Hesap) sekmesine tıklayın, **View Details** (Ayrıntıları Görüntüle) düğmesine tıklayın, imzalama kimliğinize tıklayın ve ardından sağ alt köşedeki yenile düğmesine tıklayın.
 
     ![Xcode - hazırlama profili][9]
 
-4. In the **Signing & Capabilities** tab, select **+ Capability**.  Double-click **Push Notifications** to enable it.
+4. **İmzalama & özellikleri** sekmesinde **+ yetenek**' ı seçin.  **Anında Iletme bildirimleri** ' ne çift tıklayarak etkinleştirin.
 
     ![Xcode - anında iletme bildirimleri][12]
 
-5. Add the Azure Notification Hubs SDK modules.
+5. Azure Notification Hubs SDK modüllerini ekleyin.
 
-   You can integrate the Azure Notification Hubs SDK in your app by using [Cocoapods](https://cocoapods.org) or by manually adding the binaries to your project.
+   [Cocoapods](https://cocoapods.org) kullanarak uygulamanızdaki Azure Notification Hubs SDK 'sını tümleştirebilir veya ikili dosyaları projenize el ile ekleyebilirsiniz.
 
-   - Integration via Cocoapods
+   - Cocoapods aracılığıyla tümleştirme
 
-     Add the following dependencies to your `podfile` to include Azure Notification Hubs SDK into your app.
+     Uygulamanıza Azure Notification Hubs SDK 'yı dahil etmek için aşağıdaki bağımlılıkları `podfile` ekleyin.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Run `pod install` to install your newly defined pod and open your `.xcworkspace`.
+     Yeni tanımlanan Pod 'nizi yüklemek için `pod install` çalıştırın ve `.xcworkspace`açın.
 
      > [!NOTE]
-     > If you see an error such as **[!] Unable to find a specification for AzureNotificationHubs-iOS** while running `pod install`, please run `pod repo update` to get the latest pods from the Cocoapods repository, and then run `pod install`.
+     > [!] Gibi bir hata görürseniz  **`pod install`çalıştırılırken azurenocertificate 'lar-iOS için bir belirtim bulunamıyor** , lütfen Cocoapods deposundan en son Pod 'yi almak için `pod repo update` çalıştırın ve ardından `pod install`çalıştırın.
 
-   - Integration via Carthage
+   - Carthage aracılığıyla tümleştirme
 
-     Add the following dependencies to your `Cartfile` to include Azure Notification Hubs SDK into your app.
+     Uygulamanıza Azure Notification Hubs SDK 'yı dahil etmek için aşağıdaki bağımlılıkları `Cartfile` ekleyin.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Next, update, and build dependencies:
+     Sonraki, güncelleştirme ve derleme bağımlılıkları:
 
      ```shell
      $ carthage update
      ```
 
-     For more information about using Carthage, see the [Carthage GitHub repository](https://github.com/Carthage/Carthage).
+     Carthage kullanma hakkında daha fazla bilgi için bkz. [Carthage GitHub deposu](https://github.com/Carthage/Carthage).
 
-   - Integration by copying the binaries into your project
+   - İkilileri projenize kopyalayarak tümleştirme
 
-     1. Download the [Azure Notification Hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) framework provided as a zip file and unzip it.
+     1. Zip dosyası olarak sunulan [Azure NOTIFICATION HUBS SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) çerçevesini indirin ve sıkıştırmayı açın.
 
      2. Xcode'da projenize sağ tıklayın ve **WindowsAzureMessaging.framework** klasörünü Xcode projenize eklemek için **Add Files to** (Dosyaları Şuraya Ekle) seçeneğine tıklayın. **Options** (Seçenekler) seçeneğine tıklayıp **Copy items if needed** (Gerekirse verileri kopyala) öğesinin seçili olduğundan emin olduktan sonra **Add** (Ekle) öğesine tıklayın.
 
         ![Azure SDK'nın sıkıştırmasını açma][10]
 
-6. Add a new header file to your project named **Constants.h**. To do so, right-click the project name and select **New File...** . Then select **Header File**. Bu dosya, bildirim hub’ınız için sabitleri tutar. Sonra **İleri**’yi seçin. Name the file **Constants.h**.
+6. Projenize **sabitler. h**adlı yeni bir üst bilgi dosyası ekleyin. Bunu yapmak için proje adına sağ tıklayın ve **yeni dosya...** öğesini seçin. Ardından **üstbilgi dosyası**' nı seçin. Bu dosya, bildirim hub’ınız için sabitleri tutar. Sonra **İleri**’yi seçin. Dosya **sabitlerini adlandırın. h**.
 
-7. Add the following code to the Constants.h file:
+7. Aşağıdaki kodu sabitler. h dosyasına ekleyin:
 
     ```objc
     #ifndef Constants_h
@@ -137,11 +137,11 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
     #endif /* Constants_h */
     ```
 
-8. Add the implementation file for Constants.h. To do so, right-click the project name and select **New File...** . Select **Objective-C File**, and then select **Next**. Name the file **Constants.m**.
+8. Sabitler. h için uygulama dosyası ekleyin. Bunu yapmak için proje adına sağ tıklayın ve **yeni dosya...** öğesini seçin. **Amaç-C dosyası**' nı seçin ve ardından **İleri**' yi seçin. Dosya **sabitlerini adlandırın. d**.
 
-    ![Add .m file](media/notification-hubs-ios-get-started/new-file-objc.png)
+    ![. D dosyası Ekle](media/notification-hubs-ios-get-started/new-file-objc.png)
 
-9. Open the **Constants.m** file and replace its contents with the following code. Replace the string literal placeholders `NotificationHubConnectionString` and `NotificationHubConnectionString` with the hub name and the **DefaultListenSharedAccessSignature**, respectively, as you  previously obtained from the portal:
+9. **Sabitleri. d** dosyasını açın ve içeriğini aşağıdaki kodla değiştirin. Daha önce portaldan elde ettiğiniz gibi `NotificationHubConnectionString` ve `NotificationHubConnectionString` dize değişmez yer tutucuları, sırasıyla hub adı ve **Defaultlistensharedaccesssignature**ile değiştirin:
 
     ```objc
     #import <Foundation/Foundation.h>
@@ -152,7 +152,7 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
     NSString* const NHUserDefaultTags = @"notification_tags";
     ```
 
-10. Open your project's **AppDelegate.h** file and replace its contents with the following code:
+10. Projenizin **Appdelegate. h** dosyasını açın ve içeriğini şu kodla değiştirin:
 
     ```objc
     #import <UIKit/UIKit.h>
@@ -170,20 +170,20 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
 
     ```
 
-11. In the project's **AppDelegate.m** file, add the following `import` statements:
+11. Projenin **Appdelegate. d** dosyasında aşağıdaki `import` deyimlerini ekleyin:
 
     ```objc
     #import "Constants.h"
     #import "NotificationDetailViewController.h"
     ```
 
-12. Also in your **AppDelegate.m** file, add the following line of code in the `didFinishLaunchingWithOptions` method based on your version of iOS. Bu kod, cihaz tanıtıcınızı APNs'ye kaydeder:
+12. **Appdelegate. d** dosyanızda, iOS sürümünüze bağlı olarak `didFinishLaunchingWithOptions` yöntemine aşağıdaki kod satırını ekleyin. Bu kod, cihaz tanıtıcınızı APNs'ye kaydeder:
 
     ```objc
     [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
     ```
 
-13. In the same **AppDelegate.m** file, replace all the code after `didFinishLaunchingWithOptions` with the following code:
+13. Aynı **Appdelegate. d** dosyasında, `didFinishLaunchingWithOptions` sonrasında tüm kodu aşağıdaki kodla değiştirin:
 
     ```objc
     // Tells the app that a remote notification arrived that indicates there is data to be fetched.
@@ -327,11 +327,11 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
     @end
     ```
 
-    This code connects to the notification hub using the connection information you specified in **Constants.h**. Ardından, cihaz belirtecini bildirim hub'ına verir. Böylece bildirim hub'ı bildirim gönderebilir.
+    Bu kod, **sabitler. h**içinde belirttiğiniz bağlantı bilgilerini kullanarak Bildirim Hub 'ına bağlanır. Ardından, cihaz belirtecini bildirim hub'ına verir. Böylece bildirim hub'ı bildirim gönderebilir.
 
 ### <a name="notificationdetailviewcontroller"></a>NotificationDetailViewController
 
-1. Similar the previous instructions, add another header file named **NotificationDetailViewController.h**. Replace the contents of the new header file with the following code:
+1. Önceki yönergelere benzer şekilde, **Notificationdetailviewcontroller. h**adlı başka bir üst bilgi dosyası ekleyin. Yeni üstbilgi dosyasının içeriğini aşağıdaki kodla değiştirin:
 
     ```objc
     #import <UIKit/UIKit.h>
@@ -353,7 +353,7 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
     NS_ASSUME_NONNULL_END
     ```
 
-2. Add the implementation file **NotificationDetailViewController.m**. Replace the contents of the file with the following code, which implements the `UIViewController` methods:
+2. **Notificationdetailviewcontroller. d**uygulama dosyasını ekleyin. Dosya içeriğini `UIViewController` yöntemlerini uygulayan aşağıdaki kodla değiştirin:
 
     ```objc
     #import "NotificationDetailViewController.h"
@@ -418,14 +418,14 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
 
 ### <a name="viewcontroller"></a>ViewController
 
-1. In the project's **ViewController.h** file, add the following `import` statements:
+1. Projenin **ViewController. h** dosyasında aşağıdaki `import` deyimlerini ekleyin:
 
     ```objc
     #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
     #import <UserNotifications/UserNotifications.h>
     ```
 
-2. Also in **ViewController.h**, add the following property declarations after the `@interface` declaration:
+2. Ayrıca, **ViewController. h**içinde, `@interface` bildiriminden sonra aşağıdaki özellik bildirimlerini ekleyin:
 
     ```objc
     @property (strong, nonatomic) IBOutlet UITextField *tagsTextField;
@@ -433,7 +433,7 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
     @property (strong, nonatomic) IBOutlet UIButton *unregisterButton;
     ```
 
-3. In the project's **ViewController.m** implementation file, replace the contents of the file with the following code:
+3. Projenin **ViewController. d** uygulama dosyasında, dosyanın içeriğini aşağıdaki kodla değiştirin:
 
     ```objc
     #import "ViewController.h"
@@ -479,7 +479,7 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
 
 ## <a name="send-test-push-notifications"></a>Test amaçlı anında iletme bildirimleri gönderme
 
-[Azure portalda] *Test Gönderimi* seçeneğini kullanarak uygulamanızda bildirim alma testi gerçekleştirebilirsiniz. Bu, cihazınıza test amaçlı anında iletme bildirimi gönderir.
+*Azure portalındaki* [Azure Portal] seçeneğini kullanarak uygulamanızda bildirim alma testi gerçekleştirebilirsiniz. Bu, cihazınıza test amaçlı anında iletme bildirimi gönderir.
 
 ![Azure portalı - Test Gönderimi][30]
 
@@ -493,7 +493,7 @@ iOS'ta anında iletme bildirimlerini test etmek için, uygulamayı fiziksel bir 
 
     ![iOS Uygulaması Anında İletme Bildirimi Kayıt Testi][33]
 
-2. Daha sonra, önceki bölümde açıklandığı gibi, [Azure portalda] test amaçlı anında iletme bildirimi gönderirsiniz.
+2. Daha sonra, önceki bölümde açıklandığı gibi, [Azure Portal] test amaçlı anında iletme bildirimi gönderirsiniz.
 
 3. Belirli Bildirim Hub'ından bildirimleri almak için kaydedilen tüm cihazlara anında iletme bildirimi gönderilir.
 
@@ -530,4 +530,4 @@ Bu basit örnekte, tüm kayıtlı iOS cihazlarınıza anında iletme bildirimler
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure portalda]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

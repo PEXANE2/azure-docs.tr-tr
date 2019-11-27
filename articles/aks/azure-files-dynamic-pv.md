@@ -1,6 +1,6 @@
 ---
-title: Dynamically create a Files volume for multiple pods in Azure Kubernetes Service (AKS)
-description: Learn how to dynamically create a persistent volume with Azure Files for use with multiple concurrent pods in Azure Kubernetes Service (AKS)
+title: Azure Kubernetes Service (AKS) içinde birden çok düğüm için dinamik olarak dosya birimi oluşturma
+description: Azure Kubernetes hizmetinde (aks) birden çok eş zamanlı Pod ile kullanmak üzere Azure dosyaları ile kalıcı olarak kalıcı bir birim oluşturmayı öğrenin
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,33 +14,33 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231749"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamically create and use a persistent volume with Azure Files in Azure Kubernetes Service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Azure dosyaları ile kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or many pods, and can be dynamically or statically provisioned. If multiple pods need concurrent access to the same storage volume, you can use Azure Files to connect using the [Server Message Block (SMB) protocol][smb-overview]. This article shows you how to dynamically create an Azure Files share for use by multiple pods in an Azure Kubernetes Service (AKS) cluster.
+Kalıcı bir birim, Kubernetes pods ile kullanılmak üzere sağlanmış bir depolama parçasını temsil eder. Kalıcı bir birim bir veya daha fazla sayıda pods tarafından kullanılabilir ve dinamik veya statik olarak sağlanabilir. Aynı depolama birimine eşzamanlı olarak birden çok Pod erişimi gerekiyorsa, [sunucu ileti bloğu (SMB) protokolünü][smb-overview]kullanarak bağlanmak için Azure dosyalarını kullanabilirsiniz. Bu makalede, bir Azure Kubernetes Service (AKS) kümesinde birden çok düğüm tarafından kullanılmak üzere Azure dosya paylaşımının nasıl dinamik olarak oluşturulacağı gösterilmektedir.
 
-For more information on Kubernetes volumes, see [Storage options for applications in AKS][concepts-storage].
+Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar Için depolama seçenekleri][concepts-storage].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
-## <a name="create-a-storage-class"></a>Create a storage class
+## <a name="create-a-storage-class"></a>Depolama sınıfı oluşturma
 
-A storage class is used to define how an Azure file share is created. A storage account is automatically created in the [node resource group][node-resource-group] for use with the storage class to hold the Azure file shares. Choose of the following [Azure storage redundancy][storage-skus] for *skuName*:
+Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir depolama sınıfı kullanılır. Depolama hesabı, Azure dosya paylaşımlarını tutmak üzere depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak oluşturulur. *Skuname*Için aşağıdaki [Azure depolama yedekliliği][storage-skus] arasından seçim yapın:
 
-* *Standard_LRS* - standard locally redundant storage (LRS)
-* *Standard_GRS* - standard geo-redundant storage (GRS)
-* *Standard_RAGRS* - standard read-access geo-redundant storage (RA-GRS)
-* *Premium_LRS* - premium locally redundant storage (LRS)
+* *Standard_LRS* -standart yerel olarak yedekli depolama (LRS)
+* *Standard_GRS* -standart coğrafi olarak yedekli depolama (GRS)
+* *Standard_RAGRS* -standart Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)
+* *Premium_LRS* -Premium yerel olarak yedekli depolama (LRS)
 
 > [!NOTE]
-> Azure Files support premium storage in AKS clusters that run Kubernetes 1.13 or higher.
+> Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerindeki Premium depolamayı destekler.
 
-For more information on Kubernetes storage classes for Azure Files, see [Kubernetes Storage Classes][kubernetes-storage-classes].
+Azure dosyaları için Kubernetes Depolama sınıfları hakkında daha fazla bilgi için bkz. [Kubernetes Depolama sınıfları][kubernetes-storage-classes].
 
-Create a file named `azure-file-sc.yaml` and copy in the following example manifest. For more information on *mountOptions*, see the [Mount options][mount-options] section.
+Aşağıdaki örnek bildiriminde `azure-file-sc.yaml` adlı bir dosya oluşturun ve kopyalayın. *Mountoptions*hakkında daha fazla bilgi için [bağlama seçenekleri][mount-options] bölümüne bakın.
 
 ```yaml
 kind: StorageClass
@@ -60,17 +60,17 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Create the storage class with the [kubectl apply][kubectl-apply] command:
+[Kubectl Apply][kubectl-apply] komutuyla depolama sınıfını oluşturun:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
 ```
 
-## <a name="create-a-persistent-volume-claim"></a>Create a persistent volume claim
+## <a name="create-a-persistent-volume-claim"></a>Kalıcı bir birim talebi oluşturun
 
-A persistent volume claim (PVC) uses the storage class object to dynamically provision an Azure file share. The following YAML can be used to create a persistent volume claim *5 GB* in size with *ReadWriteMany* access. For more information on access modes, see the [Kubernetes persistent volume][access-modes] documentation.
+Kalıcı bir birim talebi (PVC), bir Azure dosya paylaşımının dinamik olarak sağlanması için depolama sınıfı nesnesini kullanır. Aşağıdaki YAML, *Readwritemany* ERIŞIMIYLE *5 GB* boyutunda kalıcı bir birim talebi oluşturmak için kullanılabilir. Erişim modları hakkında daha fazla bilgi için bkz. [Kubernetes kalıcı birimi][access-modes] belgeleri.
 
-Now create a file named `azure-file-pvc.yaml` and copy in the following YAML. Make sure that the *storageClassName* matches the storage class created in the last step:
+Şimdi `azure-file-pvc.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML 'ye kopyalayın. *Storageclassname* 'in, son adımda oluşturulan depolama sınıfıyla eşleştiğinden emin olun:
 
 ```yaml
 apiVersion: v1
@@ -87,15 +87,15 @@ spec:
 ```
 
 > [!NOTE]
-> If using the *Premium_LRS* sku for your storage class, the minimum value for *storage* must be *100Gi*.
+> Depolama sınıfınız için *Premium_LRS* SKU kullanıyorsanız, *depolama* Için en düşük değer *100gi*olmalıdır.
 
-Create the persistent volume claim with the [kubectl apply][kubectl-apply] command:
+[Kubectl Apply][kubectl-apply] komutuyla kalıcı birim talebi oluşturun:
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Once completed, the file share will be created. A Kubernetes secret is also created that includes connection information and credentials. You can use the [kubectl get][kubectl-get] command to view the status of the PVC:
+İşlem tamamlandıktan sonra dosya paylaşma oluşturulur. Bağlantı bilgilerini ve kimlik bilgilerini içeren bir Kubernetes gizli dizisi de oluşturulur. PVC 'nin durumunu görüntülemek için [kubectl Get][kubectl-get] komutunu kullanabilirsiniz:
 
 ```console
 $ kubectl get pvc azurefile
@@ -104,11 +104,11 @@ NAME        STATUS    VOLUME                                     CAPACITY   ACCE
 azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
 ```
 
-## <a name="use-the-persistent-volume"></a>Use the persistent volume
+## <a name="use-the-persistent-volume"></a>Kalıcı birimi kullan
 
-The following YAML creates a pod that uses the persistent volume claim *azurefile* to mount the Azure file share at the */mnt/azure* path. For Windows Server containers (currently in preview in AKS), specify a *mountPath* using the Windows path convention, such as *'D:'* .
+Aşağıdaki YAML, */mnt/Azure* yolundaki Azure dosya paylaşımının bağlanması için kalıcı birim talebi *azurefile* kullanan bir pod oluşturur. Windows Server kapsayıcıları için (Şu anda AKS 'de önizlemededir), Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
 
-Create a file named `azure-pvc-files.yaml`, and copy in the following YAML. Make sure that the *claimName* matches the PVC created in the last step.
+`azure-pvc-files.yaml`adlı bir dosya oluşturun ve aşağıdaki YAML 'ye kopyalayın. *Claimname* 'in, son ADıMDA oluşturulan PVC ile eşleştiğinden emin olun.
 
 ```yaml
 kind: Pod
@@ -135,13 +135,13 @@ spec:
         claimName: azurefile
 ```
 
-Create the pod with the [kubectl apply][kubectl-apply] command.
+[Kubectl Apply][kubectl-apply] komutuyla Pod 'ı oluşturun.
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-You now have a running pod with your Azure Files share mounted in the */mnt/azure* directory. This configuration can be seen when inspecting your pod via `kubectl describe pod mypod`. The following condensed example output shows the volume mounted in the container:
+Artık, */mnt/Azure* dizininde oluşturulmuş Azure dosya paylaşımınızla çalışan bir pod sahipsiniz. Bu yapılandırma, Pod 'niz `kubectl describe pod mypod`aracılığıyla incelenirken görülebilir. Aşağıdaki sıkıştırılmış örnek çıktı, kapsayıcıya takılan birimi gösterir:
 
 ```
 Containers:
@@ -164,9 +164,9 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Mount options
+## <a name="mount-options"></a>Bağlama seçenekleri
 
-The default value for *fileMode* and *dirMode* is *0755* for Kubernetes version 1.9.1 and above. If using a cluster with Kuberetes version 1.8.5 or greater and dynamically creating the persistent volume with a storage class, mount options can be specified on the storage class object. The following example sets *0777*:
+*FileMode* ve *dirmode* Için varsayılan değer, Kubernetes sürüm 1.9.1 ve üzeri için *0755* ' dir. Kuberetes sürüm 1.8.5 veya üzerini içeren bir küme kullanıyorsanız ve kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturursanız, depolama sınıfı nesnesinde bağlama seçenekleri belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
 
 ```yaml
 kind: StorageClass
@@ -186,16 +186,16 @@ parameters:
   skuName: Standard_LRS
 ```
 
-If using a cluster of version 1.8.0 - 1.8.4, a security context can be specified with the *runAsUser* value set to *0*. For more information on Pod security context, see [Configure a Security Context][kubernetes-security-context].
+1\.8.0-1.8.4 sürümünün bir kümesini kullanıyorsanız, *RunAsUser* değeri *0*olarak ayarlanmış bir güvenlik bağlamı belirtilebilir. Pod güvenlik bağlamı hakkında daha fazla bilgi için bkz. [güvenlik bağlamını yapılandırma][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For associated best practices, see [Best practices for storage and backups in AKS][operator-best-practices-storage].
+İlişkili en iyi uygulamalar için bkz. [AKS 'de depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage].
 
-Learn more about Kubernetes persistent volumes using Azure Files.
+Azure dosyalarını kullanarak Kubernetes kalıcı birimleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Kubernetes plugin for Azure Files][kubernetes-files]
+> [Azure dosyaları için Kubernetes eklentisi][kubernetes-files]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes

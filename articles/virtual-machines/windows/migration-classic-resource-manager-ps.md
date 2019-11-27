@@ -1,6 +1,6 @@
 ---
-title: Migrate to Resource Manager with PowerShell
-description: This article walks through the platform-supported migration of IaaS resources such as virtual machines (VMs), virtual networks, and storage accounts from classic to Azure Resource Manager by using Azure PowerShell commands
+title: PowerShell ile Kaynak Yöneticisi 'e geçiş
+description: Bu makalede, Azure PowerShell komutlarını kullanarak, sanal makineler (VM 'Ler), sanal ağlar ve depolama hesapları gibi IaaS kaynaklarının, klasik 'dan Azure Resource Manager 'a yönelik platform tarafından desteklenen geçişi anlatılmaktadır
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -21,102 +21,102 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484374"
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrate IaaS resources from classic to Azure Resource Manager by using PowerShell
-These steps show you how to use Azure PowerShell commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model.
+# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS kaynaklarını klasik bilgisayardan Azure Resource Manager PowerShell kullanarak geçirme
+Bu adımlarda, klasik dağıtım modelinden bir hizmet olarak altyapı (IaaS) kaynaklarını Azure Resource Manager dağıtım modeline geçirmek için Azure PowerShell komutlarının nasıl kullanılacağı gösterilmektedir.
 
-If you want, you can also migrate resources by using the [Azure CLI](../linux/migration-classic-resource-manager-cli.md).
+İsterseniz de [Azure CLI](../linux/migration-classic-resource-manager-cli.md)kullanarak kaynakları geçirebilirsiniz.
 
-* For background on supported migration scenarios, see [Platform-supported migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-overview.md).
-* For detailed guidance and a migration walkthrough, see [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](migration-classic-resource-manager-deep-dive.md).
-* [Review the most common migration errors](migration-classic-resource-manager-errors.md).
+* Desteklenen geçiş senaryolarında arka plan için bkz. [Klasik 'dan Azure Resource Manager IaaS kaynaklarının platform tarafından desteklenen geçişi](migration-classic-resource-manager-overview.md).
+* Ayrıntılı yönergeler ve bir geçiş kılavuzu için bkz. [Klasik platformda Azure Resource Manager Için Teknik kapsamlı](migration-classic-resource-manager-deep-dive.md)bakış.
+* [En sık kullanılan geçiş hatalarını gözden geçirin](migration-classic-resource-manager-errors.md).
 
 <br>
-Here's a flowchart to identify the order in which steps need to be executed during a migration process.
+Bir geçiş işlemi sırasında hangi adımların yürütülmesi gerektiği sırayı belirlemek için bir akış çizelgesi aşağıda verilmiştir.
 
 ![Geçiş adımlarını gösteren ekran görüntüsü](media/migration-classic-resource-manager/migration-flow.png)
 
  
 
-## <a name="step-1-plan-for-migration"></a>Step 1: Plan for migration
-Here are a few best practices that we recommend as you evaluate whether to migrate IaaS resources from classic to Resource Manager:
+## <a name="step-1-plan-for-migration"></a>1\. Adım: geçiş planlaması
+IaaS kaynaklarının klasik 'ten Kaynak Yöneticisi geçişe geçirilip geçirmeyeceğini değerlendirirken önerdiğimiz birkaç en iyi yöntem aşağıda verilmiştir:
 
-* Read through the [supported and unsupported features and configurations](migration-classic-resource-manager-overview.md). If you have virtual machines that use unsupported configurations or features, wait for the configuration or feature support to be announced. Alternatively, if it suits your needs, remove that feature or move out of that configuration to enable migration.
-* If you have automated scripts that deploy your infrastructure and applications today, try to create a similar test setup by using those scripts for migration. Alternatively, you can set up sample environments by using the Azure portal.
+* [Desteklenen ve desteklenmeyen özellikleri ve konfigürasyonları](migration-classic-resource-manager-overview.md)okuyun. Desteklenmeyen yapılandırmalar veya özellikler kullanan sanal makineleriniz varsa, yapılandırma veya özellik desteğinin duyurulduğu için bekleyin. Alternatif olarak, gereksinimlerinize uygun değilse, geçişi etkinleştirmek için bu özelliği kaldırın veya bu yapılandırmanın dışına geçin.
+* Altyapınızı ve uygulamalarınızı hemen dağıtan otomatikleştirilmiş betikleriniz varsa, geçiş için bu betikleri kullanarak benzer bir test kurulumu oluşturmayı deneyin. Alternatif olarak, Azure portal kullanarak örnek ortamları da ayarlayabilirsiniz.
 
 > [!IMPORTANT]
-> Application gateways aren't currently supported for migration from classic to Resource Manager. To migrate a virtual network with an application gateway, remove the gateway before you run a Prepare operation to move the network. After you complete the migration, reconnect the gateway in Azure Resource Manager.
+> Uygulama ağ geçitleri Şu anda klasik ' ten Kaynak Yöneticisi geçiş için desteklenmemektedir. Bir sanal ağı bir uygulama ağ geçidine geçirmek için, ağı taşımak üzere hazırlama işlemini çalıştırmadan önce ağ geçidini kaldırın. Geçişi tamamladıktan sonra, Azure Resource Manager ağ geçidini yeniden bağlayın.
 >
-> Azure ExpressRoute gateways that connect to ExpressRoute circuits in another subscription can't be migrated automatically. In such cases, remove the ExpressRoute gateway, migrate the virtual network, and re-create the gateway. For more information, see [Migrate ExpressRoute circuits and associated virtual networks from the classic to the Resource Manager deployment model](../../expressroute/expressroute-migration-classic-resource-manager.md).
+> Başka bir abonelikteki ExpressRoute devrelerine bağlanan Azure ExpressRoute ağ geçitleri otomatik olarak geçirilemez. Bu gibi durumlarda, ExpressRoute ağ geçidini kaldırın, sanal ağı geçirin ve ağ geçidini yeniden oluşturun. Daha fazla bilgi için bkz. [ExpressRoute devreleri ve ilişkili sanal ağları klasik 'dan Kaynak Yöneticisi dağıtım modeline geçirme](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
-## <a name="step-2-install-the-latest-version-of-powershell"></a>Step 2: Install the latest version of PowerShell
-There are two main options to install Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) or [Web Platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI receives monthly updates. PowerShell Gallery receives updates on a continuous basis. This article is based on Azure PowerShell version 2.1.0.
+## <a name="step-2-install-the-latest-version-of-powershell"></a>2\. Adım: PowerShell 'in en son sürümünü yükler
+Azure PowerShell yüklemek için iki ana seçenek vardır: [PowerShell Galerisi](https://www.powershellgallery.com/profiles/azure-sdk/) veya [Web Platformu Yükleyicisi (WebPI)](https://aka.ms/webpi-azps). WebPI aylık güncelleştirmeleri alır. PowerShell Galerisi güncelleştirmeleri sürekli olarak alır. Bu makale, Azure PowerShell sürüm 2.1.0 ' i temel alır.
 
-For installation instructions, see [How to install and configure Azure PowerShell](/powershell/azure/overview).
+Yükleme yönergeleri için bkz. [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview).
 
 <br>
 
-## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Step 3: Ensure that you're an administrator for the subscription
-To perform this migration, you must be added as a coadministrator for the subscription in the [Azure portal](https://portal.azure.com).
+## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3\. Adım: abonelik için yönetici olduğunuzdan emin olun
+Bu geçişi gerçekleştirmek için, [Azure Portal](https://portal.azure.com)abonelik için bir ortak yönetici olarak eklenmeli.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. On the **Hub** menu, select **Subscription**. If you don't see it, select **All services**.
-3. Find the appropriate subscription entry, and then look at the **MY ROLE** field. For a coadministrator, the value should be _Account admin_.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **Hub** menüsünde, **abonelik**' ı seçin. Bunu görmüyorsanız, **tüm hizmetler**' i seçin.
+3. Uygun abonelik girişini bulun ve ardından **rol alanım** ' a bakın. Coadministrator için, değer _Hesap Yöneticisi_olmalıdır.
 
-If you're not able to add a coadministrator, contact a service administrator or coadministrator for the subscription to get yourself added.
+Bir abonelikteki ekleyemediğinizde, abonelik için bir hizmet yöneticisiyle veya abonelikteki ile iletişim kurun.
 
-## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Step 4: Set your subscription, and sign up for migration
-First, start a PowerShell prompt. For migration, set up your environment for both classic and Resource Manager.
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>4\. Adım: aboneliğinizi ayarlama ve geçiş için kaydolma
+İlk olarak bir PowerShell istemi başlatın. Geçiş için ortamınızı hem klasik hem de Kaynak Yöneticisi için ayarlayın.
 
-Sign in to your account for the Resource Manager model.
+Kaynak Yöneticisi modeli için hesabınızda oturum açın.
 
 ```powershell
     Connect-AzAccount
 ```
 
-Get the available subscriptions by using the following command:
+Aşağıdaki komutu kullanarak kullanılabilir abonelikleri alın:
 
 ```powershell
     Get-AzSubscription | Sort Name | Select Name
 ```
 
-Set your Azure subscription for the current session. This example sets the default subscription name to **My Azure Subscription**. Replace the example subscription name with your own.
+Geçerli oturum için Azure aboneliğinizi ayarlayın. Bu örnek, varsayılan abonelik adını **Azure aboneliğim**olarak ayarlar. Örnek abonelik adını kendi adınızla değiştirin.
 
 ```powershell
     Select-AzSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
-> Registration is a one-time step, but you must do it once before you attempt migration. Without registering, you see the following error message:
+> Kayıt tek seferlik bir adımdır, ancak geçişe kalkışmadan önce bunu bir kez yapmanız gerekir. Kaydolmadan aşağıdaki hata iletisini görürsünüz:
 >
-> *BadRequest : Subscription is not registered for migration.*
+> *Rozet Isteği: abonelik geçiş için kaydedilmemiş.*
 
-Register with the migration resource provider by using the following command:
+Aşağıdaki komutu kullanarak geçiş kaynak sağlayıcısına kaydolun:
 
 ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Wait five minutes for the registration to finish. Check the status of the approval by using the following command:
+Kaydın tamamlanabilmesi için beş dakika bekleyin. Aşağıdaki komutu kullanarak onay durumunu kontrol edin:
 
 ```powershell
     Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Make sure that RegistrationState is `Registered` before you proceed.
+Devam etmeden önce RegistrationState `Registered` olduğundan emin olun.
 
-Now, sign in to your account for the classic deployment model.
+Şimdi, klasik dağıtım modeli için hesabınızda oturum açın.
 
 ```powershell
     Add-AzureAccount
 ```
 
-Get the available subscriptions by using the following command:
+Aşağıdaki komutu kullanarak kullanılabilir abonelikleri alın:
 
 ```powershell
     Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 ```
 
-Set your Azure subscription for the current session. This example sets the default subscription to **My Azure Subscription**. Replace the example subscription name with your own.
+Geçerli oturum için Azure aboneliğinizi ayarlayın. Bu örnekte, varsayılan abonelik **Azure aboneliğime**ayarlanır. Örnek abonelik adını kendi adınızla değiştirin.
 
 ```powershell
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
@@ -124,32 +124,32 @@ Set your Azure subscription for the current session. This example sets the defau
 
 <br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Step 5: Have enough Resource Manager VM vCPUs
-Make sure that you have enough Azure Resource Manager virtual machine vCPUs in the Azure region of your current deployment or virtual network. You can use the following PowerShell command to check the current number of vCPUs you have in Azure Resource Manager. To learn more about vCPU quotas, see [Limits and the Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>5\. Adım: yeterli Kaynak Yöneticisi VM vCPU 'su
+Geçerli dağıtımınızın veya sanal ağınızın Azure bölgesinde yeterli sayıda Azure Resource Manager sanal makineye sahip olduğunuzdan emin olun. Azure Resource Manager ' de mevcut vCPU sayısını denetlemek için aşağıdaki PowerShell komutunu kullanabilirsiniz. VCPU kotaları hakkında daha fazla bilgi için bkz. [sınırlara ve Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
-This example checks the availability in the **West US** region. Replace the example region name with your own.
+Bu örnek **Batı ABD** bölgesindeki kullanılabilirliği denetler. Örnek bölge adını kendi adınızla değiştirin.
 
 ```powershell
 Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Step 6: Run commands to migrate your IaaS resources
-* [Migrate VMs in a cloud service (not in a virtual network)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [Migrate VMs in a virtual network](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [Migrate a storage account](#step-62-migrate-a-storage-account)
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6\. Adım: IaaS kaynaklarınızı geçirmek için komutları çalıştırın
+* [VM 'Leri bir bulut hizmetinde geçirme (Sanal ağda değil)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Sanal ağdaki VM 'Leri geçirme](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Depolama hesabını geçirme](#step-62-migrate-a-storage-account)
 
 > [!NOTE]
-> All the operations described here are idempotent. If you have a problem other than an unsupported feature or a configuration error, we recommend that you retry the prepare, abort, or commit operation. The platform then tries the action again.
+> Burada açıklanan tüm işlemler ıdempotent. Desteklenmeyen bir özellik veya yapılandırma hatası dışında bir sorununuz varsa, hazırlama, durdurma veya işleme işlemini yeniden denemeniz önerilir. Platform daha sonra eylemi yeniden dener.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Step 6.1: Option 1 - Migrate virtual machines in a cloud service (not in a virtual network)
-Get the list of cloud services by using the following command. Then pick the cloud service that you want to migrate. If the VMs in the cloud service are in a virtual network or if they have web or worker roles, the command returns an error message.
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Adım 6,1: seçenek 1-sanal makineleri bir bulut hizmetinde geçirme (Sanal ağda değil)
+Aşağıdaki komutu kullanarak bulut hizmetleri listesini alın. Ardından, geçirmek istediğiniz bulut hizmetini seçin. Bulut hizmetindeki VM 'Ler bir sanal ağda yer alıyorsa veya Web veya çalışan rolleri varsa, komut bir hata mesajı döndürür.
 
 ```powershell
     Get-AzureService | ft Servicename
 ```
 
-Get the deployment name for the cloud service. In this example, the service name is **My Service**. Replace the example service name with your own service name.
+Bulut hizmeti için dağıtım adını alın. Bu örnekte hizmet adı **hizmetim**. Örnek hizmet adını kendi hizmet adınızla değiştirin.
 
 ```powershell
     $serviceName = "My Service"
@@ -157,11 +157,11 @@ Get the deployment name for the cloud service. In this example, the service name
     $deploymentName = $deployment.DeploymentName
 ```
 
-Prepare the virtual machines in the cloud service for migration. You have two options to choose from.
+Bulut hizmetindeki sanal makineleri geçiş için hazırlayın. Aralarından seçim yapabileceğiniz iki seçeneğiniz vardır.
 
-* **Option 1: Migrate the VMs to a platform-created virtual network.**
+* **Seçenek 1: VM 'Leri platform tarafından oluşturulan bir sanal ağa geçirin.**
 
-    First, validate that you can migrate the cloud service by using the following commands:
+    İlk olarak, aşağıdaki komutları kullanarak bulut hizmetini geçirebileceğiniz doğrulayın:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -169,15 +169,15 @@ Prepare the virtual machines in the cloud service for migration. You have two op
     $validate.ValidationMessages
     ```
 
-    The following command displays any warnings and errors that block migration. If validation is successful, you can move on to the Prepare step.
+    Aşağıdaki komut, geçişi engelleyen tüm uyarıları ve hataları görüntüler. Doğrulama başarılı olursa, hazırla adımına geçebilirsiniz.
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **Option 2: Migrate to an existing virtual network in the Resource Manager deployment model.**
+* **2. seçenek: Kaynak Yöneticisi dağıtım modelinde var olan bir sanal ağa geçiş yapın.**
 
-    This example sets the resource group name to **myResourceGroup**, the virtual network name to **myVirtualNetwork**, and the subnet name to **mySubNet**. Replace the names in the example with the names of your own resources.
+    Bu örnekte kaynak grubu adı **Myresourcegroup**, sanal ağ adı **myVirtualNetwork**ve alt ağ adı **mysubnet**olarak ayarlanır. Örnekteki adları kendi kaynaklarınızın adlarıyla değiştirin.
 
     ```powershell
     $existingVnetRGName = "myResourceGroup"
@@ -185,7 +185,7 @@ Prepare the virtual machines in the cloud service for migration. You have two op
     $subnetName = "mySubNet"
     ```
 
-    First, validate that you can migrate the virtual network by using the following command:
+    İlk olarak, aşağıdaki komutu kullanarak sanal ağı geçirebileceğiniz doğrulayın:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -193,7 +193,7 @@ Prepare the virtual machines in the cloud service for migration. You have two op
     $validate.ValidationMessages
     ```
 
-    The following command displays any warnings and errors that block migration. If validation is successful, you can proceed with the following Prepare step:
+    Aşağıdaki komut, geçişi engelleyen tüm uyarıları ve hataları görüntüler. Doğrulama başarılı olursa, aşağıdaki hazırlama adımıyla devam edebilirsiniz:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -201,9 +201,9 @@ Prepare the virtual machines in the cloud service for migration. You have two op
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-After the Prepare operation succeeds with either of the preceding options, query the migration state of the VMs. Ensure that they're in the `Prepared` state.
+Hazırlama işlemi önceki seçeneklerden biriyle başarılı olduktan sonra, VM 'lerin geçiş durumunu sorgulayın. `Prepared` durumunda olduklarından emin olun.
 
-This example sets the VM name to **myVM**. Replace the example name with your own VM name.
+Bu örnekte VM adı **myvm**olarak ayarlanır. Örnek adı kendi VM adınızla değiştirin.
 
 ```powershell
     $vmName = "myVM"
@@ -211,142 +211,142 @@ This example sets the VM name to **myVM**. Replace the example name with your ow
     $vm.VM.MigrationState
 ```
 
-Check the configuration for the prepared resources by using either PowerShell or the Azure portal. If you're not ready for migration and you want to go back to the old state, use the following command:
+PowerShell veya Azure portal kullanarak hazırlanan kaynaklar için yapılandırmayı denetleyin. Geçişe hazırsanız ve eski durumuna geri dönmek istiyorsanız aşağıdaki komutu kullanın:
 
 ```powershell
     Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+Hazırlanan yapılandırma iyi görünüyorsa, aşağıdaki komutu kullanarak kaynakları ileriye doğru taşıyabilir ve kaydedebilirsiniz:
 
 ```powershell
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Step 6.1: Option 2 - Migrate virtual machines in a virtual network
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Adım 6,1: seçenek 2-sanal ağdaki sanal makineleri geçirme
 
-To migrate virtual machines in a virtual network, you migrate the virtual network. The virtual machines automatically migrate with the virtual network. Pick the virtual network that you want to migrate.
+Sanal bir ağdaki sanal makineleri geçirmek için, sanal ağı geçirolursunuz. Sanal makineler sanal ağla otomatik olarak geçirilir. Geçirmek istediğiniz sanal ağı seçin.
 > [!NOTE]
-> [Migrate a single virtual machine](migrate-single-classic-to-resource-manager.md) created using the classic deployment model by creating a new Resource Manager virtual machine with Managed Disks by using the VHD (OS and data) files of the virtual machine.
+> Klasik dağıtım modeli kullanılarak oluşturulan [tek bir sanal makineyi](migrate-single-classic-to-resource-manager.md) , sanal makinenin VHD (OS ve veri) dosyalarını kullanarak yönetilen disklerle yeni bir kaynak yöneticisi sanal makine oluşturarak geçirin.
 <br>
 
 > [!NOTE]
-> The virtual network name might be different from what is shown in the new portal. The new Azure portal displays the name as `[vnet-name]`, but the actual virtual network name is of type `Group [resource-group-name] [vnet-name]`. Before you start the migration, look up the actual virtual network name by using the command `Get-AzureVnetSite | Select -Property Name` or view it in the old Azure portal. 
+> Sanal ağ adı, yeni portalda gösterilenden farklı olabilir. Yeni Azure portal adı `[vnet-name]`olarak görüntüler, ancak gerçek sanal ağ adı `Group [resource-group-name] [vnet-name]`türündedir. Geçişe başlamadan önce, komut `Get-AzureVnetSite | Select -Property Name` kullanarak gerçek sanal ağ adını arayabilir veya eski Azure portal görüntüleyin. 
 
-This example sets the virtual network name to **myVnet**. Replace the example virtual network name with your own.
+Bu örnek, sanal ağ adını **Myvnet**olarak ayarlar. Örnek sanal ağ adını kendi adınızla değiştirin.
 
 ```powershell
     $vnetName = "myVnet"
 ```
 
 > [!NOTE]
-> If the virtual network contains web or worker roles, or VMs with unsupported configurations, you get a validation error message.
+> Sanal ağ web veya çalışan rolleri ya da desteklenmeyen yapılandırmalara sahip VM 'Ler içeriyorsa, bir doğrulama hata iletisi alırsınız.
 
-First, validate that you can migrate the virtual network by using the following command:
+İlk olarak, aşağıdaki komutu kullanarak sanal ağı geçirebileceğiniz doğrulayın:
 
 ```powershell
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-The following command displays any warnings and errors that block migration. If validation is successful, you can proceed with the following Prepare step:
+Aşağıdaki komut, geçişi engelleyen tüm uyarıları ve hataları görüntüler. Doğrulama başarılı olursa, aşağıdaki hazırlama adımıyla devam edebilirsiniz:
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 ```
 
-Check the configuration for the prepared virtual machines by using either Azure PowerShell or the Azure portal. If you're not ready for migration and you want to go back to the old state, use the following command:
+Azure PowerShell veya Azure portal kullanarak hazırlanan sanal makinelerin yapılandırmasını denetleyin. Geçişe hazırsanız ve eski durumuna geri dönmek istiyorsanız aşağıdaki komutu kullanın:
 
 ```powershell
     Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName
 ```
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+Hazırlanan yapılandırma iyi görünüyorsa, aşağıdaki komutu kullanarak kaynakları ileriye doğru taşıyabilir ve kaydedebilirsiniz:
 
 ```powershell
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>Step 6.2: Migrate a storage account
-After you're done migrating the virtual machines, perform the following prerequisite checks before you migrate the storage accounts.
+### <a name="step-62-migrate-a-storage-account"></a>Adım 6,2: depolama hesabını geçirme
+Sanal makineleri geçirmeyi tamamladıktan sonra, depolama hesaplarını geçirmeden önce aşağıdaki önkoşul denetimlerini gerçekleştirin.
 
 > [!NOTE]
-> If your storage account has no associated disks or VM data, you can skip directly to the "Validate storage accounts and start migration" section.
+> Depolama hesabınızda ilişkili disk veya VM verisi yoksa, doğrudan "depolama hesaplarını doğrula ve geçişe başla" bölümüne atlayabilirsiniz.
 
-* Prerequisite checks if you migrated any VMs or your storage account has disk resources:
-    * Migrate virtual machines whose disks are stored in the storage account.
+* Tüm VM 'Leri geçirdiyseniz veya depolama hesabınızda disk kaynakları varsa önkoşul denetimleri:
+    * Diskleri depolama hesabında depolanan sanal makineleri geçirin.
 
-        The following command returns RoleName and DiskName properties of all the VM disks in the storage account. RoleName is the name of the virtual machine to which a disk is attached. If this command returns disks, then ensure that virtual machines to which these disks are attached are migrated before you migrate the storage account.
+        Aşağıdaki komut, depolama hesabındaki tüm VM disklerinin RoleName ve DiskName özelliklerini döndürür. RoleName, bir diskin eklendiği sanal makinenin adıdır. Bu komut diskler döndürürse, depolama hesabını geçirmeden önce bu disklerin eklendiği sanal makinelerin geçirildiğinden emin olun.
         ```powershell
          $storageAccountName = 'yourStorageAccountName'
           Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
           DiskName | Format-List -Property RoleName, DiskName
 
         ```
-    * Delete unattached VM disks stored in the storage account.
+    * Depolama hesabında depolanan eklenmemiş VM disklerini silin.
 
-        Find unattached VM disks in the storage account by using the following command:
+        Aşağıdaki komutu kullanarak, depolama hesabında eklenmemiş VM disklerini bulun:
 
         ```powershell
             $storageAccountName = 'yourStorageAccountName'
             Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
 
         ```
-        If the previous command returns disks, delete these disks by using the following command:
+        Önceki komut diskleri döndürürse, aşağıdaki komutu kullanarak bu diskleri silin:
 
         ```powershell
            Remove-AzureDisk -DiskName 'yourDiskName'
         ```
-    * Delete VM images stored in the storage account.
+    * Depolama hesabında depolanan VM görüntülerini silin.
 
-        The following command returns all the VM images with OS disks stored in the storage account.
+        Aşağıdaki komut, depolama hesabında depolanan işletim sistemi disklerinin bulunduğu tüm VM görüntülerini döndürür.
          ```powershell
             Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
                                     } | Select-Object -Property ImageName, ImageLabel
          ```
-         The following command returns all the VM images with data disks stored in the storage account.
+         Aşağıdaki komut, depolama hesabında depolanan veri disklerine sahip tüm VM görüntülerini döndürür.
          ```powershell
 
             Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
                                              -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
                                             } | Select-Object -Property ImageName, ImageLabel
          ```
-        Delete all the VM images returned by the previous commands by using this command:
+        Önceki komutlar tarafından döndürülen tüm VM görüntülerini şu komutu kullanarak silin:
         ```powershell
         Remove-AzureVMImage -ImageName 'yourImageName'
         ```
-* Validate storage accounts and start migration.
+* Depolama hesaplarını doğrulayın ve geçişi başlatın.
 
-    Validate each storage account for migration by using the following command. In this example, the storage account name is **myStorageAccount**. Replace the example name with the name of your own storage account.
+    Aşağıdaki komutu kullanarak her bir depolama hesabını geçiş için doğrulayın. Bu örnekte, depolama hesabı adı **Mystorageaccount**' dır. Örnek adı kendi depolama hesabınızın adıyla değiştirin.
 
     ```powershell
         $storageAccountName = "myStorageAccount"
         Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
     ```
 
-    The next step is to prepare the storage account for migration.
+    Sonraki adım, depolama hesabını geçiş için hazırlamaktır.
 
     ```powershell
         $storageAccountName = "myStorageAccount"
         Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
     ```
 
-    Check the configuration for the prepared storage account by using either Azure PowerShell or the Azure portal. If you're not ready for migration and you want to go back to the old state, use the following command:
+    Azure PowerShell ya da Azure portal kullanarak hazırlanan depolama hesabının yapılandırmasını denetleyin. Geçişe hazırsanız ve eski durumuna geri dönmek istiyorsanız aşağıdaki komutu kullanın:
 
     ```powershell
         Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
     ```
 
-    If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+    Hazırlanan yapılandırma iyi görünüyorsa, aşağıdaki komutu kullanarak kaynakları ileriye doğru taşıyabilir ve kaydedebilirsiniz:
 
     ```powershell
         Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Overview of platform-supported migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Use CLI to migrate IaaS resources from classic to Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Community tools for assisting with migration of IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için CLı kullanma](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişine yardımcı olacak topluluk araçları](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [En sık karşılaşılan geçiş hatalarını gözden geçirme](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Review the most frequently asked questions about migrating IaaS resources from classic to Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [IaaS kaynaklarını klasik konumundan Azure Resource Manager geçirme hakkında en sık sorulan soruları gözden geçirin](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

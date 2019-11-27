@@ -14,14 +14,14 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230443"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure İşlevleri'ne giriş  
-Azure İşlevleri, küçük kod parçalarını veya "işlevleri" bulutta kolayca çalıştırmaya yönelik bir çözümdür. Tüm uygulama veya bunu çalıştıracak altyapı hakkında endişelenmeden elinizdeki sorun için ihtiyacınız olan kodu yazabilirsiniz. Functions can make development even more productive, and you can use your development language of choice, such as C#, Java, JavaScript, PowerShell, and Python. Yalnızca kodunuzun çalıştığı zaman için ödeme yapın ve ihtiyaca göre ölçekleme konusunda Azure'a güvenin. Azure İşlevleri, Microsoft Azure'da [sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar geliştirmenizi sağlar.
+Azure İşlevleri, küçük kod parçalarını veya "işlevleri" bulutta kolayca çalıştırmaya yönelik bir çözümdür. Tüm uygulama veya bunu çalıştıracak altyapı hakkında endişelenmeden elinizdeki sorun için ihtiyacınız olan kodu yazabilirsiniz. İşlevler, geliştirmeyi daha da üretken hale getirir ve tercih C#ettiğiniz geliştirme dilini (Java, JavaScript, PowerShell ve Python gibi) kullanabilirsiniz. Yalnızca kodunuzun çalıştığı zaman için ödeme yapın ve ihtiyaca göre ölçekleme konusunda Azure'a güvenin. Azure İşlevleri, Microsoft Azure'da [sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar geliştirmenizi sağlar.
 
 Bu konu başlığında, Azure İşlevlerine üst düzey bir genel bakış sağlanmıştır. İşlevleri kullanmaya hemen başlamak isterseniz [İlk Azure İşlevinizi oluşturma](functions-create-first-azure-function.md) ile başlayın. İşlevler hakkında daha teknik bilgi arıyorsanız bkz. [geliştirici başvurusu](functions-reference.md).
 
 ## <a name="features"></a>Özellikler
 İşlevlerin önemli özelliklerinden bazıları şunlardır:
 
-* **Choice of language** - Write functions using your choice of C#, Java, Javascript, Python, and other languages. See [Supported languages](supported-languages.md) for the complete list.
+* **Dil seçimi** -tercih ettiğiniz C#, Java, JavaScript, Python ve diğer dilleri kullanarak işlevleri yazın. Listenin tamamı için [desteklenen diller](supported-languages.md) bölümüne bakın.
 * **Kullandıkça ödeme fiyatlandırma modeli** - Yalnızca kodunuzu çalıştırmaya harcanan zaman için ödeme yapın. [Fiyatlandırma bölümünde](#pricing) Tüketim barındırma planı seçeneğine bakın.  
 * **Kendi bağımlılıklarınızı getirin** - İşlevler NuGet ve NPM'yi desteklediğinden, sık kullandığınız kitaplıklarınızı kullanabilirsiniz.  
 * **Tümleşik güvenlik** - Azure Active Directory, Facebook, Google, Twitter ve Microsoft Hesabı gibi OAuth sağlayıcılarıyla HTTP tetiklemeli işlevleri koruyun.  
@@ -40,7 +40,7 @@ Bu konu başlığında, Azure İşlevlerine üst düzey bir genel bakış sağla
 * **BlobTrigger** - Azure Storage bloblarını kapsayıcılara eklendiklerinde eşler. Görüntüyü yeniden boyutlandırmak için bu işlevi kullanabilirsiniz. Daha fazla bilgi için bkz. [Blob depolama bağlamaları](functions-bindings-storage-blob.md).
 * **QueueTrigger** - Bir Azure Storage kuyruğuna geldiklerinde iletilere yanıt verir. Daha fazla bilgi için bkz. [Azure Kuyruk Depolama bağlamaları](functions-bindings-storage-queue.md).
 * **EventGridTrigger** - Azure Event Grid’deki bir aboneliğe teslim edilen olaylara yanıt verir. Filtreleme içeren olayları almak için abonelik tabanlı bir model destekler. Olay tabanlı mimariler oluşturmak için iyi bir çözümdür. Örnek için, bkz. [Yüklenen görüntülerin yeniden boyutlandırılmasını Event Grid kullanarak otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md).
-* **EventHubTrigger** - Bir Azure Event Hub'ına teslim edilen olaylara yanıt verir. Particularly useful in application instrumentation, user experience or workflow processing, and internet-of-things (IoT) scenarios. Daha fazla bilgi için bkz. [Event Hubs bağlamaları](functions-bindings-event-hubs.md).
+* **EventHubTrigger** - Bir Azure Event Hub'ına teslim edilen olaylara yanıt verir. Özellikle uygulama izleme, Kullanıcı deneyimi veya iş akışı işleme ve Nesnelerin İnterneti (IoT) senaryolarında yararlı olur. Daha fazla bilgi için bkz. [Event Hubs bağlamaları](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger** - İleti kuyruklarını dinleyerek kodunuzu diğer Azure hizmetlerine veya şirket içi hizmetlere bağlar. Daha fazla bilgi için, bkz. [Service Bus bağlamaları](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger** - Konu başlıklarına abone olarak kodunuzu diğer Azure hizmetlerine veya şirket içi hizmetlere bağlar. Daha fazla bilgi için, bkz. [Service Bus bağlamaları](functions-bindings-service-bus.md).
 

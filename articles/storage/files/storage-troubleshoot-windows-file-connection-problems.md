@@ -266,7 +266,7 @@ Ağ üzerinden bir dosya kopyalandığında, dosya, düz metin olarak iletilir v
 ### <a name="cause"></a>Nedeni
 Şifreleme dosya sistemi (EFS) kullanıyorsanız, bu sorun oluşabilir. BitLocker ile şifrelenen dosyalar Azure dosyalarına kopyalanabilir. Ancak, Azure dosyaları NTFS EFS 'yi desteklemez.
 
-### <a name="workaround"></a>Geçici çözüm
+### <a name="workaround"></a>Geçici Çözüm
 Ağ üzerinden bir dosyayı kopyalamak için, önce onu çözmelisiniz. Aşağıdaki yöntemlerden birini kullanın:
 
 - **Copy/d** komutunu kullanın. Şifrelenmiş dosyaların hedefte şifresi çözülmüş dosyalar olarak kaydedilmesine izin verir.
@@ -307,5 +307,5 @@ Depolama hesabınızın dağıtıldığı aboneliğin AAD kiracısında AAD DS '
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

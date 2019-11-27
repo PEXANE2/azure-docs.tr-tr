@@ -1,5 +1,5 @@
 ---
-title: PowerShell example - Update SQL Data Sync sync schema
+title: PowerShell örneği-SQL Data Sync eşitleme şemasını Güncelleştir
 description: SQL Data Sync için eşitleme şemasını güncelleştirmek için Azure PowerShell örnek betiği
 services: sql-database
 ms.service: sql-database
@@ -20,22 +20,22 @@ ms.locfileid: "74421612"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>Mevcut bir eşitleme grubunda eşitleme şemasını güncelleştirmek için PowerShell kullanma
 
-Bu PowerShell örneği, mevcut bir SQL Data Sync eşitleme grubundaki eşitleme şemasını güncelleştirir. Birden çok tabloyu eşitlerken bu betik, eşitleme şemasını verimli bir şekilde güncelleştirmenize yardımcı olur. Bu örnek, GitHub’da [UpdateSyncSchema.ps1](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-data-sync/UpdateSyncSchema.ps1) olarak kullanılabilir olan **UpdateSyncSchema** betiğinin kullanımını göstermektedir.
+Bu PowerShell örneği, mevcut bir SQL Data Sync eşitleme grubundaki eşitleme şemasını güncelleştirir. Birden çok tabloyu eşitlerken bu betik, eşitleme şemasını verimli bir şekilde güncelleştirmenize yardımcı olur. Bu örnek, GitHub’da **UpdateSyncSchema.ps1** olarak kullanılabilir olan [UpdateSyncSchema](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-data-sync/UpdateSyncSchema.ps1) betiğinin kullanımını göstermektedir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the PowerShell locally, this tutorial requires AZ PowerShell 1.4.0 or later. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden fazla bulut ve şirket içi veritabanı arasında veri eşitleme](../sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL database managed instance at this time.
+> Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen örneğini desteklemez.
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="add-all-tables-to-the-sync-schema"></a>Add all tables to the sync schema
+### <a name="add-all-tables-to-the-sync-schema"></a>Tüm tabloları eşitleme şemasına Ekle
 
 Aşağıdaki örnek, veritabanı şemasını yeniler ve eşitleme şemasının hub veritabanındaki tüm geçerli tabloları ekler.
 
@@ -44,7 +44,7 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
     -SyncGroupName <syncGroupName> -RefreshDatabaseSchema $true -AddAllTables $true
 ```
 
-### <a name="add-and-remove-tables-and-columns"></a>Add and remove tables and columns
+### <a name="add-and-remove-tables-and-columns"></a>Tablo ve sütun ekleme ve kaldırma
 
 Aşağıdaki örnek, eşitleme şemasına `[dbo].[Table1]` ve `[dbo].[Table2].[Column1]` ekler ve `[dbo].[Table3]` öğesini kaldırır.
 
@@ -87,22 +87,22 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
 
-Additional SQL database PowerShell script samples can be found in [Azure SQL database PowerShell scripts](../sql-database-powershell-samples.md).
+Ek SQL veritabanı PowerShell betiği örnekleri, [Azure SQL veritabanı PowerShell betikleri](../sql-database-powershell-samples.md)içinde bulunabilir.
 
 SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
-- Overview - [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](../sql-database-sync-data.md)
-- Set up Data Sync
-    - In the portal - [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](../sql-database-get-started-sql-data-sync.md)
+- Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](../sql-database-sync-data.md)
+- Veri eşitlemesini ayarlama
+    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](../sql-database-get-started-sql-data-sync.md)
     - PowerShell ile
         - [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](sql-database-sync-data-between-sql-databases.md)
         - [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](sql-database-sync-data-between-azure-onprem.md)
-- Data Sync Agent - [Data Sync Agent for Azure SQL Data Sync](../sql-database-data-sync-agent.md)
-- Best practices - [Best practices for Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
-- Monitor - [Monitor SQL Data Sync with Azure Monitor logs](../sql-database-sync-monitor-oms.md)
-- Troubleshoot - [Troubleshoot issues with Azure SQL Data Sync](../sql-database-troubleshoot-data-sync.md)
-- Update the sync schema
-    - With Transact-SQL - [Automate the replication of schema changes in Azure SQL Data Sync](../sql-database-update-sync-schema.md)
+- Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](../sql-database-data-sync-agent.md)
+- En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](../sql-database-best-practices-data-sync.md)
+- İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](../sql-database-sync-monitor-oms.md)
+- Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](../sql-database-troubleshoot-data-sync.md)
+- Eşitleme şemasını güncelleştirme
+    - Transact-SQL- [Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](../sql-database-update-sync-schema.md)
 
 SQL Veritabanı hakkında daha fazla bilgi için bkz.:
 

@@ -1,6 +1,6 @@
 ---
-title: Install on-premises data gateway - Azure Logic Apps
-description: Before you can access data on premises from Azure Logic Apps, download and install the on-premises data gateway
+title: Şirket içi veri ağ geçidini (Azure Logic Apps) yükler
+description: Şirket içindeki verilere Azure Logic Apps erişmeden önce şirket içi veri ağ geçidini indirip yükleyin
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -16,268 +16,268 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326369"
 ---
-# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Install on-premises data gateway for Azure Logic Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
-Before you can [connect to on-premises data sources from Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), download and install the [on-premises data gateway](https://aka.ms/on-premises-data-gateway-installer) on a local computer. The gateway works as a bridge that provides quick data transfer and encryption between data sources on premises and your logic apps. You can use the same gateway installation with other cloud services, such as Power BI, Power Automate, Power Apps, and Azure Analysis Services. For information about how to use the gateway with these services, see these articles:
+[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ Geçidi, şirket içi ve mantıksal uygulamalarınızın veri kaynakları arasında hızlı veri aktarımı ve şifreleme sağlayan bir köprü olarak çalışmaktadır. Aynı ağ geçidi yüklemesini Power BI, güç otomatikleştirme, Power Apps ve Azure Analysis Services gibi diğer bulut hizmetleriyle kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Microsoft Power Automate on-premises data gateway](/power-automate/gateway-reference)
-* [Microsoft Power BI on-premises data gateway](/power-bi/service-gateway-onprem)
-* [Microsoft Power Apps on-premises data gateway](/powerapps/maker/canvas-apps/gateway-reference)
-* [Azure Analysis Services on-premises data gateway](../analysis-services/analysis-services-gateway.md)
+* [Microsoft Power otomatikleştirir şirket içi veri ağ geçidi](/power-automate/gateway-reference)
+* [Microsoft Power BI şirket içi veri ağ geçidi](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps şirket içi veri ağ geçidi](/powerapps/maker/canvas-apps/gateway-reference)
+* [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
-This article shows how to download, install, and set up your on-premises data gateway so that you can access on-premises data sources from Azure Logic Apps. You can also learn more about [how the data gateway works](#gateway-cloud-service) later in this topic. For more information about the gateway, see [What is an on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
+Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işlemlerinin yanı sıra Azure Logic Apps ' dan şirket içi veri kaynaklarına erişebilirsiniz. Bu konunun ilerleyen kısımlarında [Data Gateway 'in nasıl çalıştığı](#gateway-cloud-service) hakkında daha fazla bilgi edinebilirsiniz. Ağ Geçidi hakkında daha fazla bilgi için bkz. [Şirket içi ağ geçidi](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)nedir?
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure hesabı ve aboneliği If you don't have an Azure account with a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-  * Your Azure account must belong to a single [Azure Active Directory (Azure AD) tenant or directory](../active-directory/fundamentals/active-directory-whatis.md#terminology). You must use the same Azure account for installing and administering the gateway on your local computer.
+  * Azure hesabınız tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır. Yerel bilgisayarınızda ağ geçidini yüklemek ve yönetmek için aynı Azure hesabını kullanmanız gerekir.
 
-  * During gateway installation, you sign in with your Azure account, which links your gateway installation to your Azure account and only that account. Later, in the Azure portal, you must use the same Azure account and Azure AD tenant when you create an Azure gateway resource that registers and claims your gateway installation. In Azure Logic Apps, on-premises triggers and actions then use the gateway resource for connecting to on-premises data sources.
+  * Ağ geçidi yüklemesi sırasında, ağ geçidi yüklemenizi Azure hesabınıza ve yalnızca bu hesaba bağlayan Azure hesabınızla oturum açın. Daha sonra Azure portal, ağ geçidi yüklemenizi kaydeden ve talep eden bir Azure ağ geçidi kaynağı oluştururken aynı Azure hesabı ve Azure AD kiracısını kullanmanız gerekir. Azure Logic Apps, şirket içi Tetikleyiciler ve Eylemler ' de şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır.
 
     > [!NOTE]
-    > You can link only one gateway installation and one Azure gateway resource to each other. You can't link the same gateway installation to multiple Azure accounts or Azure gateway resources. However, an Azure account can link to multiple gateway installations and Azure gateway resources. In an on-premises trigger or action, you can select from your various Azure subscriptions, and then select an associated gateway resource.
+    > Yalnızca bir ağ geçidi yüklemesini ve bir Azure Gateway kaynağını birbirlerine bağlayabilirsiniz. Aynı ağ geçidi yüklemesini birden çok Azure hesabına veya Azure Gateway kaynaklarına bağlayamazsınız. Bununla birlikte, bir Azure hesabı birden çok ağ geçidi yüklemelerine ve Azure Gateway kaynaklarına bağlanabilir. Şirket içi bir tetikleyici veya eylemde, çeşitli Azure aboneliklerinizden seçim yapabilir ve ardından ilişkili bir ağ geçidi kaynağı seçebilirsiniz.
 
-  * You need to sign in with either a work account or school account, also known as an *organization* account, which looks like `username@contoso.com`. You can't use Azure B2B (guest) accounts or personal Microsoft accounts, such as @hotmail.com or @outlook.com.
+  * `username@contoso.com`gibi *görünen bir iş* hesabı veya okul hesabıyla oturum açmanız gerekir. Azure B2B (konuk) hesaplarını veya @hotmail.com veya @outlook.comgibi kişisel Microsoft hesaplarını kullanamazsınız.
 
     > [!TIP]
-    > If you signed up for an Office 365 offering and didn't provide your work email address, your address might look like `username@domain.onmicrosoft.com`. Your account is stored within a tenant in an Azure Active Directory (Azure AD). In most cases, the User Principal Name (UPN) for your Azure AD account is the same as your email address.
+    > Office 365 teklifi için kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz `username@domain.onmicrosoft.com`gibi görünebilir. Hesabınız bir Azure Active Directory kiracı içinde depolanır (Azure AD). Çoğu durumda, Azure AD hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
     >
-    > To use a [Visual Studio Standard subscription](https://visualstudio.microsoft.com/vs/pricing/) that's linked to a Microsoft account, first [create a tenant in Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) or use the default directory. Add a user with a password to the directory, and then give that user access to your Azure subscription. You can then sign in during gateway installation with this username and password.
+    > Bir Microsoft hesabı bağlantılı [Visual Studio standart aboneliğini](https://visualstudio.microsoft.com/vs/pricing/) kullanmak için, önce [Azure AD 'de bir kiracı oluşturun](../active-directory/develop/quickstart-create-new-tenant.md) veya varsayılan dizini kullanın. Dizine bir parolası olan bir kullanıcı ekleyin ve bu kullanıcıya Azure aboneliğinize erişim izni verin. Daha sonra bu Kullanıcı adı ve parolayla ağ geçidi yüklemesi sırasında oturum açabilirsiniz.
 
-* Here are requirements for your local computer:
+* Yerel bilgisayarınız için gereksinimler şunlardır:
 
-  **Minimum requirements**
+  **Minimum gereksinimler**
 
   * .NET Framework 4.7.2
-  * 64-bit version of Windows 7 or Windows Server 2008 R2 (or later)
+  * Windows 7 veya Windows Server 2008 R2 64-bit sürümü (veya üzeri)
 
-  **Recommended requirements**
+  **Önerilen gereksinimler**
 
-  * 8-core CPU
-  * 8 GB memory
-  * 64-bit version of Windows Server 2012 R2 or later
-  * Solid-state drive (SSD) storage for spooling
+  * 8 çekirdekli CPU
+  * 8 GB bellek
+  * Windows Server 2012 R2 veya üzeri 64 bit sürümü
+  * Biriktirme için katı hal sürücüsü (SSD) depolaması
 
   > [!NOTE]
-  > The gateway doesn't support Windows Server Core.
+  > Ağ Geçidi, Windows Server çekirdeğini desteklemez.
 
-* **Related considerations**
+* **İlgili konular**
 
-  * Install the on-premises data gateway only on a local computer, not a domain controller. You don't have to install the gateway on the same computer as your data source. You need only one gateway for all your data sources, so you don't need to install the gateway for each data source.
+  * Şirket içi veri ağ geçidini, etki alanı denetleyicisi değil yalnızca yerel bir bilgisayara yükler. Ağ geçidini, veri kaynağınız ile aynı bilgisayara yüklemenize gerek yoktur. Tüm veri kaynaklarınız için yalnızca bir ağ geçidine ihtiyacınız vardır. bu nedenle, her veri kaynağı için ağ geçidini yüklemeniz gerekmez.
 
     > [!TIP]
-    > To minimize latency, you can install the gateway as close as possible to your data source, or on the same computer, assuming that you have permissions.
+    > Gecikme süresini en aza indirmek için, ağ geçidini veri kaynağınıza veya aynı bilgisayara mümkün olduğunca yakın bir şekilde yükleyebilirsiniz.
 
-  * Install the gateway on a computer that's on a wired network, connected to the internet, always turned on, and doesn't go to sleep. Otherwise, the gateway can't run, and performance might suffer over a wireless network.
+  * Ağ geçidini kablolu ağ üzerinde bulunan, internet 'e bağlı, her zaman açık olan ve uyku moduna geçmeyen bir bilgisayara yükler. Aksi takdirde, ağ geçidi çalıştırılamaz ve performans kablosuz bir ağdan düşebilir.
 
-  * If you plan to use Windows authentication, make sure that you install the gateway on a computer that's a member of the same Active Directory environment as your data sources.
+  * Windows kimlik doğrulamasını kullanmayı planlıyorsanız, ağ geçidini, veri kaynaklarınızla aynı Active Directory ortamına üye olan bir bilgisayara yüklediğinizden emin olun.
 
-  * The region that you select for your gateway installation is the same location that you must select when you later create the Azure gateway resource for your logic app. By default, this region is the same location as your Azure AD tenant that manages your Azure account. However, you can change the location during gateway installation.
+  * Ağ geçidinizin yüklemeniz için seçtiğiniz bölge, daha sonra mantıksal uygulamanız için Azure Gateway kaynağını oluştururken seçmeniz gereken konumdur. Bu bölge, varsayılan olarak Azure hesabınızı yöneten Azure AD kiracınızla aynı konumdadır. Ancak, ağ geçidi yüklemesi sırasında konumu değiştirebilirsiniz.
 
-  * If you're updating your gateway installation to the latest version, uninstall your current gateway first for a cleaner experience.
+  * Ağ Geçidi yüklemenizi en son sürüme güncelleştiriyorsanız, temizleyici bir deneyim için önce geçerli ağ geçidinizi kaldırın.
 
-  * The gateway has two modes: standard mode and personal mode, which applies only to Power BI. You can't have more than one gateway running in the same mode on the same computer.
+  * Ağ geçidinde iki mod vardır: yalnızca Power BI için geçerli olan standart mod ve kişisel mod. Aynı bilgisayarda aynı modda çalışan birden fazla ağ geçidi olamaz.
 
-  * Azure Logic Apps supports read and write operations through the gateway. However, these operations have [limits on their payload size](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır.
 
 <a name="install-gateway"></a>
 
 ## <a name="install-data-gateway"></a>Veri ağ geçidi yükleme
 
-1. [Download and run the gateway installer on a local computer](https://aka.ms/on-premises-data-gateway-installer).
+1. [Ağ geçidi yükleyicisini yerel bir bilgisayarda indirip çalıştırın](https://aka.ms/on-premises-data-gateway-installer).
 
-1. After the installer opens, select **Next**.
+1. Yükleyici açıldıktan sonra **İleri**' yi seçin.
 
-   ![Intro screen for gateway installer](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Ağ Geçidi yükleyicisi için giriş ekranı](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
-1. Select **On-premises data gateway (recommended)** , which is standard mode, and then select **Next**.
+1. Standart mod olan **Şirket içi veri ağ geçidini (önerilen)** seçin ve ardından **İleri**' yi seçin.
 
-   ![Select run mode for data gateway](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
+   ![Veri ağ geçidi için çalıştırma modunu seçin](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
-1. Review the minimum requirements, keep the default installation path, accept the terms of use, and then select **Install**.
+1. En düşük gereksinimleri gözden geçirin, varsayılan yükleme yolunu koruyun, kullanım koşullarını kabul edin ve ardından **yükleme**' yi seçin.
 
-   ![Review requirements and accept terms of use](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
+   ![Gereksinimleri gözden geçirin ve kullanım koşullarını kabul edin](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. After the gateway successfully installs, provide the email address for your Azure account, and then select **Sign in**, for example:
+1. Ağ Geçidi başarıyla yüklendikten sonra, Azure hesabınızın e-posta adresini girin ve **oturum aç**' ı seçin, örneğin:
 
-   ![Sign in with work or school account](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
+   ![İş veya okul hesabıyla oturum açın](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   Your gateway installation can link to only one Azure account.
+   Ağ Geçidi yüklemeniz yalnızca bir Azure hesabına bağlanabilir.
 
-1. Select **Register a new gateway on this computer** > **Next**. This step registers your gateway installation with the [gateway cloud service](#gateway-cloud-service).
+1. **İleri** > **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
 
-   ![Register gateway on local computer](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
+   ![Ağ geçidini yerel bilgisayara kaydet](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
-1. Provide this information for your gateway installation:
+1. Ağ Geçidi yüklemeniz için şu bilgileri sağlayın:
 
-   * A gateway name that's unique across your Azure AD tenant
-   * The recovery key, which must have at least eight characters, that you want to use
-   * Confirmation for your recovery key
+   * Azure AD kiracınız genelinde benzersiz olan bir ağ geçidi adı
+   * Kullanmak istediğiniz en az sekiz karakter olması gereken kurtarma anahtarı
+   * Kurtarma anahtarınız için onay
 
-   ![Provide information for gateway installation](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
+   ![Ağ geçidi yüklemesi için bilgi sağlama](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
-   > Save and keep your recovery key in a safe place. You need this key if you ever want to change the location, move, recover, or take over a gateway installation.
+   > Kurtarma Anahtarınızı güvenli bir yerde kaydedin ve saklayın. Konumu değiştirmek, taşımak, kurtarmak veya bir ağ geçidi yüklemesini almak istiyorsanız bu anahtara ihtiyacınız vardır.
 
-   Note the option to **Add to an existing gateway cluster**, which you select when you install additional gateways for [high-availability scenarios](#high-availability).
+   [Yüksek kullanılabilirlik senaryoları](#high-availability)için ek ağ geçitleri yüklerken seçtiğiniz **mevcut bir ağ geçidi kümesine ekleme**seçeneğini göz önünde bulabilirsiniz.
 
-1. Check the region for the gateway cloud service and [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) that's used by your gateway installation. By default, this region is the same location as the Azure AD tenant for your Azure account.
+1. Ağ Geçidi Bulut hizmeti için bölgeyi ve ağ geçidi yüklemeniz tarafından kullanılan [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) denetleyin. Bu bölge, varsayılan olarak Azure hesabınız için Azure AD kiracısı ile aynı konumdadır.
 
-   ![Confirm region for gateway service and service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
+   ![Ağ geçidi hizmeti ve hizmet veri yolu için bölgeyi Onayla](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. To accept the default region, select **Configure**. However, if the default region isn't the one that's closest to you, you can change the region.
+1. Varsayılan bölgeyi kabul etmek için **Yapılandır**' ı seçin. Bununla birlikte, varsayılan bölge size en yakın olan bölge değilse, bölgeyi değiştirebilirsiniz.
 
-   *Why change the region for your gateway installation?*
+   *Ağ Geçidi yüklemenizin bölgesi neden değiştirilsin?*
 
-   For example, to reduce latency, you might change your gateway's region to the same region as your logic app. Or, you might select the region closest to your on-premises data source. Your *gateway resource in Azure* and your logic app can have different locations.
+   Örneğin, gecikme süresini azaltmak için ağ geçidinizin bölgenizi mantıksal uygulamanızla aynı bölgeye göre değiştirebilirsiniz. Ya da şirket içi veri kaynağınıza en yakın bölgeyi seçebilirsiniz. *Azure 'daki ağ geçidi kaynağınızın* ve mantıksal uygulamanızın farklı konumları olabilir.
 
-   1. Next to the current region, select **Change Region**.
+   1. Geçerli bölgenin yanındaki **bölgeyi değiştir**' i seçin.
 
-      ![Change the current gateway region](./media/logic-apps-gateway-install/change-gateway-service-region.png)
+      ![Geçerli ağ geçidi bölgesini değiştirme](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. On the next page, open the **Select Region** list, select the region you want, and select **Done**.
+   1. Sonraki sayfada **Bölge seç** listesini açın, istediğiniz bölgeyi seçin ve **bitti**' yi seçin.
 
-      ![Select another region for gateway service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Ağ geçidi hizmeti için başka bir bölge seçin](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Review the information in the final confirmation window. This example uses the same account for Logic Apps, Power BI, Power Apps, and Power Automate, so the gateway is available for all these services. When you're ready, select **Close**.
+1. Son onay penceresindeki bilgileri gözden geçirin. Bu örnek, Logic Apps, Power BI, Power Apps ve güç otomatikleştirme için aynı hesabı kullanır, bu nedenle ağ geçidi tüm bu hizmetler için kullanılabilir. Hazırsanız, **Kapat**' ı seçin.
 
-   ![Confirm data gateway information](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Veri ağ geçidi bilgilerini onaylama](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-1. Now [create the Azure resource for your gateway installation](../logic-apps/logic-apps-gateway-connection.md).
+1. Şimdi [ağ geçidi yüklemeniz Için Azure kaynağını oluşturun](../logic-apps/logic-apps-gateway-connection.md).
 
-## <a name="check-or-adjust-communication-settings"></a>Check or adjust communication settings
+## <a name="check-or-adjust-communication-settings"></a>İletişim ayarlarını denetle veya ayarla
 
-The on-premises data gateway depends on [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) for cloud connectivity and establishes the corresponding outbound connections to the gateway's associated Azure region. If your work environment requires that traffic goes through a proxy or firewall to access the internet, this restriction might prevent the on-premises data gateway from connecting to the gateway cloud service and Azure Service Bus. The gateway has several communication settings, which you can adjust. For more information, see these topics:
+Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) bağımlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını engelleyebilir ve Azure Service Bus. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır. Daha fazla bilgi için şu konulara bakın:
 
-* [Adjust communication settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Configure proxy settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Şirket içi veri ağ geçidi için iletişim ayarlarını ayarla](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
+* [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
-## <a name="high-availability-support"></a>High availability support
+## <a name="high-availability-support"></a>Yüksek kullanılabilirlik desteği
 
-To avoid single points of failure for on-premises data access, you can have multiple gateway installations (standard mode only) with each on a different computer, and set them up as a cluster or group. That way, if the primary gateway is unavailable, data requests are routed to the second gateway, and so on. Because you can install only one standard gateway on a computer, you must install each additional gateway that's in the cluster on a different computer. All the connectors that work with the on-premises data gateway support high availability.
+Şirket içi veri erişimi için tek hata noktalarından kaçınmak için, farklı bir bilgisayarda birden çok ağ geçidi yüklemesi (yalnızca standart mod) olabilir ve bunları bir küme veya grup olarak ayarlayabilirsiniz. Bu şekilde, birincil ağ geçidi kullanılamıyorsa, veri istekleri ikinci ağ geçidine yönlendirilir ve bu şekilde devam eder. Bir bilgisayara yalnızca bir standart ağ geçidi yükleyebildiğinden, kümedeki her ek ağ geçidini farklı bir bilgisayara yüklemelisiniz. Şirket içi veri ağ geçidiyle çalışan tüm bağlayıcılar yüksek kullanılabilirliği destekler.
 
-* You must already have at least one gateway installation with the same Azure account as the primary gateway and the recovery key for that installation.
+* Birincil ağ geçidi ile aynı Azure hesabına sahip en az bir ağ geçidi yüklemeniz ve ilgili yükleme için kurtarma anahtarı olmalıdır.
 
-* Your primary gateway must be running the gateway update from November 2017 or later.
+* Birincil ağ geçidinizin, Kasım 2017 veya sonraki bir sürümünün ağ geçidi güncelleştirmesini çalıştırmalıdır.
 
-After you set up your primary gateway, when you go to install another gateway, select **Add to an existing gateway cluster**, select the primary gateway, which is the first gateway that you installed, and provide the recovery key for that gateway. For more information, see [High availability clusters for on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Birincil ağ geçidinizi ayarladıktan sonra, başka bir ağ geçidi yüklemeye gittiğinizde, **mevcut bir ağ geçidi kümesine ekle**' yi seçin, yüklediğiniz ilk ağ geçidi olan birincil ağ geçidini seçin ve bu ağ geçidi için kurtarma anahtarını sağlayın. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidi Için yüksek kullanılabilirlik kümeleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
-## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Change location, migrate, restore, or take over existing gateway
+## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Konum değiştirme, geçirme, geri yükleme veya mevcut ağ geçidini alma
 
-If you must change your gateway's location, move your gateway installation to a new computer, recover a damaged gateway, or take ownership for an existing gateway, you need the recovery key that was provided during gateway installation.
+Ağ geçidinizin konumunu değiştirmeniz gerekiyorsa, ağ geçidi yüklemenizi yeni bir bilgisayara taşıyın, hasarlı bir ağ geçidini kurtarmanız veya mevcut bir ağ geçidi için sahiplik almanız gerekiyorsa, ağ geçidi yüklemesi sırasında sağlanmış olan kurtarma anahtarına ihtiyacınız vardır.
 
-1. Run the gateway installer on the computer that has the existing gateway. If you don't have the latest gateway installer, [download the latest gateway version](https://aka.ms/on-premises-data-gateway-installer).
+1. Ağ Geçidi yükleyicisini mevcut ağ geçidine sahip olan bilgisayarda çalıştırın. En son ağ geçidi yükleyiciniz yoksa, [en son ağ geçidi sürümünü indirin](https://aka.ms/on-premises-data-gateway-installer).
 
    > [!NOTE]
-   > Before you restore the gateway on the computer that has the original gateway installation, you must first uninstall the gateway on that computer. This action disconnects the original gateway.
-   > If you remove or delete a gateway cluster for any cloud service, you can't restore that cluster.
+   > Ağ geçidini özgün ağ geçidi yüklemesi olan bilgisayara geri yüklemeden önce, önce o bilgisayardaki ağ geçidini kaldırmanız gerekir. Bu eylem, özgün ağ geçidinin bağlantısını keser.
+   > Herhangi bir bulut hizmeti için bir ağ geçidi kümesini kaldırır veya silerseniz, bu kümeyi geri alamazsınız.
 
-1. After the installer opens, sign in with the same Azure account that was used to install the gateway.
+1. Yükleyici açıldıktan sonra, ağ geçidini yüklemek için kullanılan Azure hesabıyla oturum açın.
 
-1. Select **Migrate, restore, or takeover an existing gateway** > **Next**, for example:
+1. **Var olan bir ağ geçidini geçir, geri yükle veya** > **İleri**' yi seçin, örneğin:
 
-   ![Select "Migrate, restore, or takeover an existing gateway"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
+   !["Var olan bir ağ geçidini geçir, geri yükle veya getir" i seçin](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-1. Select from the available clusters and gateways, and enter the recovery key for the selected gateway, for example:
+1. Kullanılabilir kümeler ve ağ geçitleri arasından seçim yapın ve seçilen ağ geçidi için kurtarma anahtarını girin, örneğin:
 
-   ![Select gateway and provide recovery key](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Ağ geçidi seçin ve kurtarma anahtarı sağlayın](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. To change the region, select **Change Region**, and select the new region.
+1. Bölgeyi değiştirmek için **bölgeyi değiştir**' i seçin ve yeni bölgeyi seçin.
 
-1. When you're ready, select **Configure** so that you can finish your task.
+1. Hazırsanız, görevinizi tamamlayabilmeniz için **Yapılandır** ' ı seçin.
 
-## <a name="tenant-level-administration"></a>Tenant-level administration
+## <a name="tenant-level-administration"></a>Kiracı düzeyinde yönetim
 
-To get visibility into all the on-premises data gateways in an Azure AD tenant, global administrators in that tenant can sign in to the [Power Platform Admin center](https://powerplatform.microsoft.com) as a tenant administrator and select the **Data Gateways** option. For more information, see [Tenant-level administration for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Bir Azure AD kiracısındaki tüm şirket içi veri ağ geçitlerine ilişkin görünürlük almak için, söz konusu Kiracıdaki Genel Yöneticiler, [Power Platform Yönetim merkezinde](https://powerplatform.microsoft.com) kiracı yöneticisi olarak oturum açabilir ve **veri ağ geçitleri** seçeneğini seçebilir. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidi Için kiracı düzeyinde yönetim](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Restart gateway
+## <a name="restart-gateway"></a>Ağ geçidini yeniden Başlat
 
-By default, the gateway installation on your local computer runs as a Windows service account named "On-premises data gateway service". However, the gateway installation uses the `NT SERVICE\PBIEgwService` name for its "Log On As" account credentials and has "Log on as a service" permissions.
+Varsayılan olarak, yerel bilgisayarınızdaki ağ geçidi yüklemesi "Şirket içi veri ağ geçidi hizmeti" adlı bir Windows hizmet hesabı olarak çalışır. Ancak ağ geçidi yüklemesi, "oturum aç" hesabı kimlik bilgileri için `NT SERVICE\PBIEgwService` adını kullanır ve "hizmet olarak oturum aç" izinlerine sahiptir.
 
 > [!NOTE]
-> Your Windows service account differs from the account used for connecting to on-premises data sources and from the Azure account that you use when you sign in to cloud services.
+> Windows hizmet hesabınız, şirket içi veri kaynaklarına bağlanmak için kullanılan hesaptan ve bulut hizmetlerinde oturum açarken kullandığınız Azure hesabından farklılık gösterir.
 
-Like any other Windows service, you can start and stop the gateway in various ways. For more information, see [Restart an on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+Diğer herhangi bir Windows hizmeti gibi, ağ geçidini çeşitli yollarla başlatabilir ve durdurabilirsiniz. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidini yeniden başlatma](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>How the gateway works
+## <a name="how-the-gateway-works"></a>Ağ geçidinin çalışması
 
-Users in your organization can access on-premises data for which they already have authorized access. However, before these users can connect to your on-premises data source, you need to install and set up an on-premises data gateway. Usually, an admin is the person who installs and sets up a gateway. These actions might require Server Administrator permissions or special knowledge about your on-premises servers.
+Kuruluşunuzdaki kullanıcılar, erişim izni olan şirket içi verilere erişebilir. Ancak, bu kullanıcıların şirket içi veri kaynağınıza bağlanabilmesi için bir şirket içi veri ağ geçidini yüklemeniz ve ayarlamanız gerekir. Genellikle yönetici, bir ağ geçidini yükleyen ve ayarlayan kişidir. Bu eylemler, Sunucu Yöneticisi izinleri veya şirket içi sunucularınız hakkında özel bilgi gerektirebilir.
 
-The gateway facilitates quick and secure communication behind-the-scenes-communication. This communication flows between a user in the cloud, the gateway cloud service, and your on-premises data source. The gateway cloud service encrypts and stores your data source credentials and gateway details. The service also routes queries and their results between the user, the gateway, and your on-premises data source.
+Ağ Geçidi, arka planda iletişime sahip hızlı ve güvenli iletişimi kolaylaştırır. Bu iletişim, buluttaki bir Kullanıcı, ağ geçidi bulut hizmeti ve şirket içi veri kaynağınız arasında akar. Ağ Geçidi bulutu hizmeti, veri kaynağı kimlik bilgilerinizi ve ağ geçidi ayrıntılarını şifreler ve depolar. Hizmet Ayrıca sorguları ve sonuçlarını Kullanıcı, ağ geçidi ve şirket içi veri kaynağınız arasında yönlendirir.
 
-The gateway works with firewalls and uses only outbound connections. All traffic originates as secure outbound traffic from the gateway agent. The gateway relays data from on-premises sources on encrypted channels through [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). This service bus creates a channel between the gateway and the calling service, but doesn't store any data. All data that travels through the gateway is encrypted.
+Ağ Geçidi, güvenlik duvarları ile birlikte çalışarak yalnızca giden bağlantıları kullanır. Tüm trafik ağ geçidi aracısından güvenli giden trafik olarak gelir. Ağ Geçidi, şifreli kanallardaki şirket içi kaynaklardaki verileri [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)aracılığıyla geçirir. Bu hizmet veri yolu, ağ geçidi ile çağıran hizmet arasında bir kanal oluşturur, ancak herhangi bir veri depolamaz. Ağ Geçidi üzerinden taşınan tüm veriler şifrelenir.
 
-![Architecture for on-premises data gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
+![Şirket içi veri ağ geçidi mimarisi](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
 > [!NOTE]
-> Depending on the cloud service, you might need to set up a data source for the gateway.
+> Bulut hizmetine bağlı olarak, ağ geçidi için bir veri kaynağı ayarlamanız gerekebilir.
 
-These steps describe what happens when you interact with an element that's connected to an on-premises data source:
+Bu adımlarda, şirket içi veri kaynağına bağlı bir öğeyle etkileşim kurarken ne olacağı açıklanır:
 
-1. The cloud service creates a query, along with the encrypted credentials for the data source. The service then sends the query and credentials to the gateway queue for processing.
+1. Bulut hizmeti, veri kaynağı için şifrelenmiş kimlik bilgileriyle birlikte bir sorgu oluşturur. Hizmet daha sonra işlem için ağ geçidi kuyruğuna sorgu ve kimlik bilgilerini gönderir.
 
-1. The gateway cloud service analyzes the query and pushes the request to Azure Service Bus.
+1. Ağ Geçidi Bulut hizmeti sorguyu analiz eder ve isteği Azure Service Bus gönderir.
 
-1. Azure Service Bus sends the pending requests to the gateway.
+1. Azure Service Bus bekleyen istekleri ağ geçidine gönderir.
 
-1. The gateway gets the query, decrypts the credentials, and connects to one or more data sources with those credentials.
+1. Ağ Geçidi sorguyu alır, kimlik bilgilerinin şifresini çözer ve bu kimlik bilgileriyle bir veya daha fazla veri kaynağına bağlanır.
 
-1. The gateway sends the query to the data source for running.
+1. Ağ Geçidi, çalıştırmak için sorguyu veri kaynağına gönderir.
 
-1. The results are sent from the data source back to the gateway, and then to the gateway cloud service. The gateway cloud service then uses the results.
+1. Sonuçlar veri kaynağından ağ geçidine ve sonra ağ geçidi bulut hizmetine gönderilir. Daha sonra ağ geçidi bulutu hizmeti sonuçları kullanır.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Authentication to on-premises data sources
+### <a name="authentication-to-on-premises-data-sources"></a>Şirket içi veri kaynaklarına yönelik kimlik doğrulaması
 
-A stored credential is used to connect from the gateway to on-premises data sources. Regardless of the user, the gateway uses the stored credential to connect. There might be authentication exceptions for specific services, such as DirectQuery and LiveConnect for Analysis Services in Power BI.
+Ağ geçidinden şirket içi veri kaynaklarına bağlanmak için depolanan bir kimlik bilgisi kullanılır. Kullanıcıdan bağımsız olarak ağ geçidi, bağlanmak için depolanan kimlik bilgilerini kullanır. Power BI Analysis Services için DirectQuery ve LiveConnect gibi belirli hizmetler için kimlik doğrulama özel durumları olabilir.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Microsoft cloud services use [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) to authenticate users. An Azure AD tenant contains usernames and security groups. Typically, the email address that you use for sign-in is the same as the User Principal Name (UPN) for your account.
+Microsoft bulut Hizmetleri, kullanıcıların kimliğini doğrulamak için [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) 'yi kullanır. Bir Azure AD kiracısı, Kullanıcı adları ve güvenlik grupları içerir. Genellikle, oturum açma için kullandığınız e-posta adresi, hesabınız için Kullanıcı asıl adı (UPN) ile aynıdır.
 
-### <a name="what-is-my-upn"></a>What is my UPN?
+### <a name="what-is-my-upn"></a>UPN nedir?
 
-If you're not a domain admin, you might not know your UPN. To find the UPN for your account, run the `whoami /upn` command from your workstation. Although the result looks like an email address, the result is the UPN for your local domain account.
+Bir etki alanı yöneticisi değilseniz, UPN 'nizi bilmiyor olabilirsiniz. Hesabınızın UPN 'sini bulmak için iş istasyonunuzdan `whoami /upn` komutunu çalıştırın. Sonuç bir e-posta adresi gibi görünse de sonuç, yerel etki alanı hesabınızın UPN 'si olur.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronize an on-premises Active Directory with Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Şirket içi Active Directory Azure AD ile eşitlemeyi
 
-The UPN for your on-premises Active Directory accounts and Azure AD accounts must be the same. So, make sure that each on-premises Active Directory account matches your Azure AD account. The cloud services know only about accounts within Azure AD. So, you don't need to add an account to your on-premises Active Directory. If the account doesn't exist in Azure AD, you can't use that account.
+Şirket içi Active Directory hesaplarınız ve Azure AD hesaplarınız için UPN aynı olmalıdır. Bu nedenle, her şirket içi Active Directory hesabının Azure AD hesabınızla eşleştiğinden emin olun. Bulut hizmetleri yalnızca Azure AD içindeki hesaplar hakkında bilgi sahibi. Bu nedenle, şirket içi Active Directory hesap eklemeniz gerekmez. Hesap Azure AD 'de yoksa, bu hesabı kullanamazsınız.
 
-Here are ways that you can match your on-premises Active Directory accounts with Azure AD.
+Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolları aşağıda verilmiştir.
 
-* Add accounts manually to Azure AD.
+* Hesapları Azure AD 'ye el ile ekleyin.
 
-  Create an account in the Azure portal or in the Microsoft 365 admin center. Make sure that the account name matches the UPN for the on-premises Active Directory account.
+  Azure portal veya Microsoft 365 Yönetim merkezinde bir hesap oluşturun. Hesap adının şirket içi Active Directory hesap için UPN ile eşleştiğinden emin olun.
 
-* Synchronize local accounts to your Azure AD tenant by using the Azure Active Directory Connect tool.
+* Azure Active Directory Connect aracını kullanarak yerel hesapları Azure AD kiracınızla eşitler.
 
-  The Azure AD Connect tool provides options for directory synchronization and authentication setup. These options include password hash sync, pass-through authentication, and federation. If you're not a tenant admin or a local domain admin, contact your IT admin to get Azure AD Connect set up. Azure AD Connect ensures that your Azure AD UPN matches your local Active Directory UPN. This matching helps if you're using Analysis Services live connections with Power BI or single sign-on (SSO) capabilities.
+  Azure AD Connect Aracı, Dizin eşitleme ve kimlik doğrulama kurulumu için seçenekler sağlar. Bu seçenekler arasında Parola karması eşitleme, geçişli kimlik doğrulama ve Federasyon bulunur. Kiracı Yöneticisi veya yerel etki alanı yöneticisi değilseniz, Azure AD Connect kurmak için BT yöneticinize başvurun. Azure AD Connect, Azure AD UPN 'nizin yerel Active Directory UPN 'nize eşleşmesini sağlar. Bu eşleştirme, Power BI veya çoklu oturum açma (SSO) özellikleri ile Analysis Services canlı bağlantılar kullanıyor olmanıza yardımcı olur.
 
   > [!NOTE]
-  > Synchronizing accounts with the Azure AD Connect tool creates new accounts in your Azure AD tenant.
+  > Azure AD Connect aracı ile hesapların eşitlenmesi, Azure AD kiracınızda yeni hesaplar oluşturur.
 
 <a name="faq"></a>
 
-## <a name="faq-and-troubleshooting"></a>FAQ and troubleshooting
+## <a name="faq-and-troubleshooting"></a>SSS ve sorun giderme
 
-For more information, see these topics:
+Daha fazla bilgi için şu konulara bakın:
 
 * [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Troubleshoot the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Monitor and optimize gateway performance](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Ağ Geçidi performansını izleme ve iyileştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Connect to on-premises data from logic apps](../logic-apps/logic-apps-gateway-connection.md)
-* [Enterprise integration features](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* [Logic Apps 'ten şirket içi verilere bağlanma](../logic-apps/logic-apps-gateway-connection.md)
+* [Kurumsal tümleştirme özellikleri](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Azure Logic Apps için Bağlayıcılar](../connectors/apis-list.md)

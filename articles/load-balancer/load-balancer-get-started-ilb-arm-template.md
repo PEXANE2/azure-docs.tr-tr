@@ -1,5 +1,5 @@
 ---
-title: Create an Internal Load Balancer - Azure template
+title: Bir iç yük dengeleyici - Azure şablonu oluşturma
 titleSuffix: Azure Load Balancer
 description: Resource Manager’da şablon kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
@@ -42,10 +42,10 @@ Genel depoda yer alan örnek şablonda, yukarıdaki senaryoyu oluşturmak için 
 
 PowerShell kullanarak yüklediğiniz şablonu dağıtmak için aşağıdaki adımları izleyin.
 
-1. Azure PowerShell’i hiç kullanmadıysanız bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview) ve Azure'a giriş yapıp aboneliğinizi seçene kadar da tüm bu süreç boyunca tüm talimatları uygulayın.
+1. Daha önce Azure PowerShell kullanmadıysanız, [Azure PowerShell’i Yükleme ve Yapılandırma](/powershell/azure/overview) sayfasına gidin ve Azure’da oturum açıp aboneliğinizi seçmek için talimatları sonuna kadar uygulayın.
 2. Parametre dosyasını yerel diskinize indirin.
 3. Dosyayı düzenleyin ve kaydedin.
-4. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
+4. Şablonu kullanarak bir kaynak grubu oluşturmak için **New-AzResourceGroupDeployment** cmdlet 'ini çalıştırın.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -81,4 +81,4 @@ Azure CLI’yi kullanarak şablonu dağıtmak için aşağıdaki adımları uygu
 
 [Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)
 
-For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Bir şablondaki yük dengeleyicinin JSON sözdizimi ve özellikleri için bkz. [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

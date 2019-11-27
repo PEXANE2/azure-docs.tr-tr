@@ -55,19 +55,19 @@ Bu senaryoya başlamadan önce, aşağıdaki önkoşulların olması gerekir:
 
 Örneği yapılandırmanın ilk adımı, runbook 'u oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı Çalıştır hesapları hakkında bilgi edinmek için bkz. [Azure farklı çalıştır hesabı Ile runbook 'Ları kimlik doğrulama](../automation/automation-create-runas-account.md)
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 [Azure Portal](https://portal.azure.com) Azure Otomasyonu ' na gidin ve **runbook 'lar** ' a tıklayın.
 
 ![Otomasyon hesabına genel bakış][1]
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Runbook oluşturma işlemini başlatmak için **runbook Ekle** ' ye tıklayın.
 
 ![Runbook 'lar dikey penceresi][2]
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Runbook 'u oluşturmak için **hızlı oluştur**' un altında **yeni runbook oluştur ' a** tıklayın.
 
@@ -157,13 +157,13 @@ Yeni bir zamanlamanın oluşturulması gerekir. **Runbook 'a bir zamanlama bağl
 
 ![7\. Adım][7]
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 **Zamanlama** dikey penceresinde **Yeni Zamanlama Oluştur ' a** tıklayın.
 
 ![8\. Adım][8]
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 **Yeni zamanlama** dikey penceresinde zamanlama bilgilerini doldurun. Ayarlanacak değerler aşağıdaki listede yer alabilir:
 
@@ -179,7 +179,7 @@ Yeni bir zamanlamanın oluşturulması gerekir. **Runbook 'a bir zamanlama bağl
 
 ![9\. Adım][9]
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Zamanlamayı runbook 'a kaydetmek için Kaydet ' e tıklayın.
 

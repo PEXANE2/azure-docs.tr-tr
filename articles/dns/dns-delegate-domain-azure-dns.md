@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Host your domain and subdomain - Azure DNS'
-description: In this article, learn how to configure Azure DNS to host your DNS zones.
+title: 'Öğretici: etki alanınızı ve alt etki alanınızı barındırma-Azure DNS'
+description: Bu makalede, DNS Bölgelerinizi barındırmak için Azure DNS yapılandırmayı öğrenin.
 services: dns
 author: asudbring
 ms.service: dns
@@ -18,47 +18,47 @@ ms.locfileid: "74212220"
 
 Azure DNS'yi DNS etki alanınızı barındırmak ve DNS kayıtlarınızı yönetmek için kullanabilirsiniz. Etki alanlarınızı Azure'da barındırarak DNS kayıtlarınızı diğer Azure hizmetlerinde kullandığınız kimlik bilgileri, API’ler, araçlar ve faturalarla yönetebilirsiniz.
 
-Örneğin, contoso.net etki alanını bir etki alanı adı kayıt şirketinden satın aldığınızı ve Azure DNS'de contoso.net adlı bir bölge oluşturduğunuzu varsayalım. Etki alanının sahibi olduğunuzdan, kayıt şirketiniz size etki alanınız için ad sunucusu (NS) kayıtlarını yapılandırma seçeneğini sunar. Kayıt kuruluşu bu NS kayıtlarını .net üst alanında depolar. Internet users around the world are then directed to your domain in your Azure DNS zone when they try to resolve DNS records in contoso.net.
+Örneğin, contoso.net etki alanını bir etki alanı adı kayıt şirketinden satın aldığınızı ve Azure DNS'de contoso.net adlı bir bölge oluşturduğunuzu varsayalım. Etki alanının sahibi olduğunuzdan, kayıt şirketiniz size etki alanınız için ad sunucusu (NS) kayıtlarını yapılandırma seçeneğini sunar. Kayıt kuruluşu bu NS kayıtlarını .net üst alanında depolar. Dünyanın her yerindeki Internet kullanıcıları, contoso.net 'deki DNS kayıtlarını çözümlemeye çalıştıklarında Azure DNS bölgesindeki etki alanına yönlendirilir.
 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Create a DNS zone.
-> * Retrieve a list of name servers.
-> * Delegate the domain.
-> * Verify the delegation is working.
+> * Bir DNS bölgesi oluşturun.
+> * Ad sunucularının bir listesini alın.
+> * Etki alanını devredebilirsiniz.
+> * Temsilinin çalıştığını doğrulayın.
 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-You must have a domain name available to test with that you can host in Azure DNS . Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
+Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
-The example domain used for this tutorial is contoso.net, but use your own domain name.
+Bu öğretici için kullanılan örnek etki alanı contoso.net ' dir, ancak kendi etki alanı adınızı kullanır.
 
 ## <a name="create-a-dns-zone"></a>DNS bölgesi oluşturma
 
-1. Go to the [Azure portal](https://portal.azure.com/) to create a DNS zone. Search for and select **DNS zones**.
+1. Bir DNS bölgesi oluşturmak için [Azure Portal](https://portal.azure.com/) gidin. **DNS bölgelerini**arayın ve seçin.
 
    ![DNS bölgesi](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Select **Create DNS zone**.
+1. **DNS bölgesi oluştur**' u seçin.
 1. **DNS bölgesi oluştur** sayfasında aşağıdaki değerleri girin ve **Oluştur**’u seçin:
 
    | **Ayar** | **Değer** | **Ayrıntılar** |
    |---|---|---|
    |**Adı**|[etki alanı adınız] |Satın aldığınız etki alanı adı. Bu öğreticide örnek olarak contoso.net kullanılmıştır.|
    |**Abonelik**|[Aboneliğiniz]|Bölgenin oluşturulacağı bir abonelik seçin.|
-   |**Kaynak grubu**|**Yeni oluştur:** contosoRG|Bir kaynak grubu oluşturun. Kaynak grubu adı, seçtiğiniz abonelik içinde benzersiz olmalıdır.<br>Kaynak grubunun konumunu ifade eder ve DNS bölgesini etkilemez. The DNS zone location is always "global," and isn't shown.|
+   |**Kaynak grubu**|**Yeni oluştur:** contosoRG|Bir kaynak grubu oluşturun. Kaynak grubu adı, seçtiğiniz abonelik içinde benzersiz olmalıdır.<br>Kaynak grubunun konumunu ifade eder ve DNS bölgesini etkilemez. DNS bölgesi konumu her zaman "geneldir" olur ve gösterilmez.|
    |**Konum**|Doğu ABD||
 
 ## <a name="retrieve-name-servers"></a>Ad sunucularını alma
 
 DNS bölgenizi Azure DNS'ye devretmeden önce, bölgenizin ad sunucularını bilmeniz gerekir. Azure DNS, her bölge oluşturmada bir havuzdan ad sunucuları ayırır.
 
-1. Oluşturulan DNS bölgesiyle, Azure Portal **Sık Kullanılanlar** bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasında DNS bölgenizi seçin. If the subscription that you selected already has several resources in it, you can enter your domain name in the **Filter by name** box to easily access the application gateway. 
+1. Oluşturulan DNS bölgesiyle, Azure Portal **Sık Kullanılanlar** bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasında DNS bölgenizi seçin. Seçtiğiniz abonelikte zaten çeşitli kaynaklar varsa, uygulama ağ geçidine kolayca erişebilmek için etki alanı adınızı **ada göre filtrele** kutusuna girebilirsiniz. 
 
 1. DNS bölgesi sayfasından ad sunucularını alın. Bu örnekte, contoso.net bölgesine *ns1-01.azure-dns.com*, *ns2-01.azure-dns.net*, *ns3-01.azure-dns.org* ve *ns4-01.azure-dns.info* ad sunucuları atanmıştır:
 
@@ -72,26 +72,26 @@ Artık DNS bölgesi oluşturulduğuna ve ad sunucularınız olduğuna göre, üs
 
 1. Kayıt şirketinin DNS yönetim sayfasında NS kayıtlarını düzenleyin ve NS kayıtlarını Azure DNS ad sunucularıyla değiştirin.
 
-1. When you delegate a domain to Azure DNS, you must use the name servers that Azure DNS provides. Use all four name servers, regardless of the name of your domain. Domain delegation doesn't require a name server to use the same top-level domain as your domain.
+1. Azure DNS için bir etki alanı temsilcisi seçtiğinizde, Azure DNS tarafından sağlanan ad sunucularını kullanmanız gerekir. Etki alanınız adının ne olursa olsun, tüm dört ad sunucularını kullanın. Etki alanı temsili, etki alanınız ile aynı üst düzey etki alanını kullanmak için bir ad sunucusu gerektirmez.
 
 > [!NOTE]
-> Ad sunucusu adreslerini kopyalarken adresinin sonundaki noktayı da kopyaladığınızdan emin olun. Sondaki nokta bir tam etki alanı adının sonuna gösterir. Some registrars append the period if the NS name doesn't have it at the end. To be compliant with the DNS RFC, include the trailing period.
+> Ad sunucusu adreslerini kopyalarken adresinin sonundaki noktayı da kopyaladığınızdan emin olun. Sondaki nokta bir tam etki alanı adının sonuna gösterir. NS adı sonunda yoksa, bazı kayıt şirketlerinde dönemi ekler. DNS RFC ile uyumlu olmak için sondaki dönemi dahil edin.
 
-Delegations that use name servers in your own zone, sometimes called *vanity name servers*, aren't currently supported in Azure DNS.
+Kendi bölgenizdeki ad sunucularını kullanan Temsilciler (bazen *Gösterim ad sunucuları*olarak adlandırılır) Azure DNS 'de Şu anda desteklenmemektedir.
 
-## <a name="verify-the-delegation"></a>Verify the delegation
+## <a name="verify-the-delegation"></a>Temsilciyi doğrulama
 
-After you complete the delegation, you can verify that it's working by using a tool such as *nslookup* to query the Start of Authority (SOA) record for your zone. SOA kaydı, bölge oluşturulurken otomatik olarak oluşturulur. You might need to wait 10 minutes or more after you complete the delegation, before you can successfully verify that it's working. Değişikliklerin DNS sisteminde yayılması daha uzun sürebilir.
+Temsilciyi tamamladıktan sonra, bölgeniz için yetki başlangıcı (SOA) kaydını sorgulamak üzere *nslookup* gibi bir araç kullanarak çalıştığını doğrulayabilirsiniz. SOA kaydı, bölge oluşturulurken otomatik olarak oluşturulur. Çalışıp çalışmadığını başarıyla doğrulayabilmeniz için, temsilciyi tamamladıktan sonra 10 dakika veya daha fazla beklemeniz gerekebilir. Değişikliklerin DNS sisteminde yayılması daha uzun sürebilir.
 
-You don't have to specify the Azure DNS name servers. Temsilci seçimi doğru ayarlanmışsa normal DNS çözümleme işlemi ad sunucularını otomatik olarak bulur.
+Azure DNS ad sunucularını belirtmeniz gerekmez. Temsilci seçimi doğru ayarlanmışsa normal DNS çözümleme işlemi ad sunucularını otomatik olarak bulur.
 
-1. From a command prompt, enter an nslookup command similar to the following example:
+1. Bir komut isteminden, aşağıdaki örneğe benzer bir Nslookup komutu girin:
 
    ```
    nslookup -type=SOA contoso.net
    ```
 
-1. Verify that your response looks similar to the following nslookup output:
+1. Yanıtlarınızın aşağıdaki nslookup çıktısına benzer göründüğünü doğrulayın:
 
    ```
    Server: ns1-04.azure-dns.com
@@ -111,11 +111,11 @@ You don't have to specify the Azure DNS name servers. Temsilci seçimi doğru ay
 
 Bir sonraki öğreticiye geçmeyi düşünüyorsanız **contosoRG** kaynak grubunu tutabilirsiniz. Aksi halde **contosoRG** kaynak grubunu silerek bu öğreticide oluşturulan kaynakları silebilirsiniz.
 
-- Select the **contosoRG** resource group, and then select **Delete resource group**. 
+- **ContosoRG** kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you created a DNS zone for your domain and delegated it to Azure DNS. Azure DNS ve web uygulamaları hakkında daha fazla bilgi için web uygulaması öğreticileriyle devam edebilirsiniz.
+Bu öğreticide, etki alanınız için bir DNS bölgesi oluşturdunuz ve Azure DNS için temsilciniz. Azure DNS ve web uygulamaları hakkında daha fazla bilgi için web uygulaması öğreticileriyle devam edebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Özel etki alanında bir web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)
+> [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

@@ -37,11 +37,11 @@ Cloudyn, zaman içindeki kullanımınızı temel alarak harcama tahmini yapmanı
 
 Geçerli Ay Öngörülen Maliyet raporu, hizmetlerinizin maliyetini gösterir. Ayın başlangıcına ve önceki aya ait maliyetleri kullanarak tahmini maliyeti gösterir. Portalın üstündeki raporlar menüsünde **Maliyetler** > **Öngörü ve Bütçe** > **Geçerli Ay Öngörülen Maliyet** seçeneklerine tıklayın. Aşağıdaki resimde bir örnek gösterilir.
 
-![Example information shown in the Current month projected cost report](./media/tutorial-forecast-spending/project-month01.png)
+![Geçerli ay öngörülen maliyet raporu gösterilen örnek bilgileri](./media/tutorial-forecast-spending/project-month01.png)
 
 Örnekte, en fazla harcama yapılan hizmetleri görebilirsiniz. Azure maliyetleri, AWS maliyetlerinden daha düşüktü. Azure VM'ler için maliyet öngörü ayrıntılarını görmek istiyorsanız, **Filtre** listesinde **Azure/VM**’i seçin.
 
-![Example showing the Azure VM current month projected cost](./media/tutorial-forecast-spending/project-month02.png)
+![Azure VM geçerli ay öngörülen maliyet gösteren örnek](./media/tutorial-forecast-spending/project-month02.png)
 
 İlgilendiğiniz diğer hizmetlere yönelik aylık maliyeti öngörülerine bakmak için önceki temel adımların aynılarını izleyin.
 
@@ -49,11 +49,11 @@ Yıllık Öngörülen Maliyet raporu, hizmetlerinizin sonraki 12 ay boyunca orta
 
 Portalın üstündeki raporlar menüsünde **Maliyetler** > **Öngörü ve Bütçe** > **Yıllık Öngörülen Maliyet** seçeneklerine tıklayın. Aşağıdaki resimde bir örnek gösterilir.
 
-![Example showing the Annual projected cost report](./media/tutorial-forecast-spending/project-annual01.png)
+![Yıllık öngörülen maliyet raporu gösteren örnek](./media/tutorial-forecast-spending/project-annual01.png)
 
 Örnekte, en fazla harcama yapılan hizmetleri görebilirsiniz. Aylık örnekteki gibi, Azure maliyetleri AWS maliyetlerinden daha düşüktü. Azure VM'ler için maliyet öngörü ayrıntılarını görmek istiyorsanız, **Filtre** listesinde **Azure/VM**’i seçin.
 
-![Example showing the Annual projected cost of VMs](./media/tutorial-forecast-spending/project-annual02.png)
+![VM'lerin yıllık öngörülen maliyeti gösteren örnek](./media/tutorial-forecast-spending/project-annual02.png)
 
 Yukarıdaki resimde, Azure VM’lerinin yıllık öngörülen maliyeti 28.374 ABD dolarıdır.
 

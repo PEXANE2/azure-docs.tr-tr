@@ -1,7 +1,7 @@
 ---
-title: Always Encrypted - Azure Key Vault
-description: This article shows you how to secure sensitive data in a SQL database with data encryption using the Always Encrypted Wizard in SQL Server Management Studio.
-keywords: data encryption, encryption key, cloud encryption
+title: Always Encrypted Azure Key Vault
+description: Bu makalede, SQL Server Management Studio ' de Always Encrypted Sihirbazı kullanılarak bir SQL veritabanında hassas verilerin nasıl güvenli hale kullanılacağı gösterilir.
+keywords: veri şifreleme, şifreleme anahtarı, bulut şifreleme
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -19,48 +19,48 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421702"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: hassas verileri koruma ve şifreleme anahtarlarını Azure Key Vault içinde depolama
 
-This article shows you how to secure sensitive data in a SQL database with data encryption using the [Always Encrypted Wizard](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). It also includes instructions that will show you how to store each encryption key in Azure Key Vault.
+Bu makalede, [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)' de [Always Encrypted SIHIRBAZı](https://msdn.microsoft.com/library/mt459280.aspx) kullanılarak bir SQL veritabanında hassas verilerin nasıl güvenli hale kullanılacağı gösterilir. Ayrıca, her şifreleme anahtarını Azure Key Vault nasıl depolayacağınız hakkında yönergeler de içerir.
 
-Always Encrypted is a new data encryption technology in Azure SQL Database and SQL Server that helps protect sensitive data at rest on the server, during movement between client and server, and while the data is in use. Always Encrypted ensures that sensitive data never appears as plaintext inside the database system. After you configure data encryption, only client applications or app servers that have access to the keys can access plaintext data. For detailed information, see [Always Encrypted (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
+Always Encrypted, Azure SQL veritabanı 'ndaki yeni bir veri şifreleme teknolojisidir ve SQL Server, istemci ve sunucu arasındaki taşıma sırasında ve veriler kullanımda olduğunda, sunucudaki bekleyen hassas verileri korumaya yardımcı olur. Always Encrypted, gizli verilerin veritabanı sisteminde hiçbir şekilde düz metin olarak görünmemesini sağlar. Veri şifrelemesini yapılandırdıktan sonra, yalnızca anahtarlara erişimi olan istemci uygulamaları veya uygulama sunucuları düz metin verilerine erişebilir. Ayrıntılı bilgi için bkz. [Always Encrypted (veritabanı altyapısı)](https://msdn.microsoft.com/library/mt163865.aspx).
 
-After you configure the database to use Always Encrypted, you will create a client application in C# with Visual Studio to work with the encrypted data.
+Veritabanını Always Encrypted kullanacak şekilde yapılandırdıktan sonra, şifrelenen verilerle çalışmak için Visual Studio C# ile birlikte bir istemci uygulaması oluşturacaksınız.
 
-Follow the steps in this article and learn how to set up Always Encrypted for an Azure SQL database. In this article you will learn how to perform the following tasks:
+Bu makaledeki adımları izleyin ve bir Azure SQL veritabanı için Always Encrypted ayarlamayı öğrenin. Bu makalede, aşağıdaki görevlerin nasıl gerçekleştirileceğini öğreneceksiniz:
 
-- Use the Always Encrypted wizard in SSMS to create [Always Encrypted keys](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
-  - Create a [column master key (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
-  - Create a [column encryption key (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
-- Create a database table and encrypt columns.
-- Create an application that inserts, selects, and displays data from the encrypted columns.
+- [Always Encrypted anahtarlar](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3)oluşturmak için SSMS 'deki Always Encrypted Sihirbazı 'nı kullanın.
+  - Bir [sütun ana anahtarı (CMK)](https://msdn.microsoft.com/library/mt146393.aspx)oluşturun.
+  - Bir [sütun şifreleme anahtarı (cek)](https://msdn.microsoft.com/library/mt146372.aspx)oluşturun.
+- Veritabanı tablosu oluşturun ve sütunları şifreleyin.
+- Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-For this tutorial, you'll need:
+Bu öğreticide şunlar gerekir:
 
-- Bir Azure hesabı ve aboneliği If you don't have one, sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
-- [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) version 13.0.700.242 or later.
-- [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) or later (on the client computer).
+- Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
+- [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) sürüm 13.0.700.242 veya üzeri.
+- [.NET Framework 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) veya üzeri (istemci bilgisayarda).
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-- [Azure PowerShell](/powershell/azure/overview) or [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure PowerShell](/powershell/azure/overview) veya [Azure CLI](/cli/azure/install-azure-cli)
 
-## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Enable your client application to access the SQL Database service
+## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>İstemci uygulamanızın SQL veritabanı hizmetine erişmesini sağlama
 
-You must enable your client application to access the SQL Database service by setting up an Azure Active Directory (AAD) application and copying the *Application ID* and *key* that you will need to authenticate your application.
+Azure Active Directory (AAD) uygulaması ayarlayıp uygulamanızın kimliğini doğrulamak için gereken *uygulama kimliğini* ve *anahtarını* kopyalayarak, istemci uygulamanızın SQL veritabanı hizmetine erişmesini etkinleştirmeniz gerekir.
 
-To get the *Application ID* and *key*, follow the steps in [create an Azure Active Directory application and service principal that can access resources](../active-directory/develop/howto-create-service-principal-portal.md).
+*Uygulama kimliğini* ve *anahtarını*almak için, [kaynaklara erişebilen Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md)bölümündeki adımları izleyin.
 
-## <a name="create-a-key-vault-to-store-your-keys"></a>Create a key vault to store your keys
+## <a name="create-a-key-vault-to-store-your-keys"></a>Anahtarlarınızı depolamak için bir Anahtar Kasası oluşturma
 
-Now that your client app is configured and you have your application ID, it's time to create a key vault and configure its access policy so you and your application can access the vault's secrets (the Always Encrypted keys). The *create*, *get*, *list*, *sign*, *verify*, *wrapKey*, and *unwrapKey* permissions are required for creating a new column master key and for setting up encryption with SQL Server Management Studio.
+Artık istemci uygulamanız yapılandırıldıktan ve uygulama KIMLIĞINIZE sahip olduğunuza göre, bir Anahtar Kasası oluşturup kendi erişim ilkesini yapılandırarak uygulamanızın kasaların gizli dizilerini (Always Encrypted anahtarlarına) erişebileceği bir zaman vardır. Yeni bir sütun ana anahtarı oluşturmak ve SQL Server Management Studio ile şifrelemeyi ayarlamak için *Create*, *Get*, *list*, *imzala*, *Verify*, *wrapKey*ve *unwrapKey* izinleri gereklidir.
 
-You can quickly create a key vault by running the following script. For a detailed explanation of these commands and more information about creating and configuring a key vault, see [What is Azure Key Vault?](../key-vault/key-vault-overview.md).
+Aşağıdaki betiği çalıştırarak hızlı bir şekilde Anahtar Kasası oluşturabilirsiniz. Bu komutların ayrıntılı açıklaması ve bir Anahtar Kasası oluşturma ve yapılandırma hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/key-vault-overview.md).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 $subscriptionName = '<subscriptionName>'
@@ -106,38 +106,38 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>Boş bir SQL veritabanı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. Go to **Create a resource** > **Databases** > **SQL Database**.
-3. Create a **Blank** database named **Clinic** on a new or existing server. For detailed directions about how to create a database in the Azure portal, see [Your first Azure SQL database](sql-database-single-database-get-started.md).
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. **SQL veritabanı** > kaynak > **veritabanları** **oluşturma** bölümüne gidin.
+3. Yeni veya var olan bir sunucuda **Clinic** adlı **boş** bir veritabanı oluşturun. Azure portal veritabanı oluşturma hakkında ayrıntılı yönergeler için [Ilk Azure SQL veritabanınıza](sql-database-single-database-get-started.md)bakın.
 
     ![Boş veritabanı oluşturma](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
-You will need the connection string later in the tutorial, so after you create the database, browse to the new  Clinic database and copy the connection string. You can get the connection string at any time, but it's easy to copy it in the Azure portal.
+Bağlantı dizesine öğreticide daha sonra ihtiyacınız olacaktır, bu nedenle veritabanını oluşturduktan sonra yeni Clinic veritabanına gidin ve bağlantı dizesini kopyalayın. Bağlantı dizesini istediğiniz zaman alabilirsiniz, ancak Azure portal kopyalamak kolaydır.
 
-1. Go to **SQL databases** > **Clinic** > **Show database connection strings**.
-2. Copy the connection string for **ADO.NET**.
+1. **Veritabanı bağlantı dizelerini göstermek** > **SQL veritabanlarına** > **Clinic** gidin.
+2. **ADO.net**için bağlantı dizesini kopyalayın.
 
     ![Bağlantı dizesini kopyalayın](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>SSMS ile veritabanına bağlanma
 
-Open SSMS and connect to the server with the Clinic database.
+SSMS 'yi açın ve Clinic veritabanıyla sunucuya bağlanın.
 
-1. SSMS’i açın. (Go to **Connect** > **Database Engine** to open the **Connect to Server** window if it isn't open.)
+1. SSMS’i açın. (Açık değilse **sunucuya Bağlan** penceresini açmak Için > **veritabanı altyapısına** **Bağlan** bölümüne gidin.)
 
-2. Enter your server name and credentials. The server name can be found on the SQL database blade and in the connection string you copied earlier. Type the complete server name, including *database.windows.net*.
+2. Sunucu adınızı ve kimlik bilgilerinizi girin. Sunucu adı, SQL veritabanı dikey penceresinde ve daha önce kopyaladığınız bağlantı dizesinde bulunabilir. *Database.Windows.net*dahil olmak üzere tüm sunucu adını yazın.
 
     ![Bağlantı dizesini kopyalayın](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-If the **New Firewall Rule** window opens, sign in to Azure and let SSMS create a new firewall rule for you.
+**Yeni güvenlik duvarı kuralı** penceresi açılırsa Azure 'da oturum açın ve SSMS 'nin sizin için yeni bir güvenlik duvarı kuralı oluşturmasına izin verin.
 
 ## <a name="create-a-table"></a>Bir tablo oluşturma
 
-In this section, you will create a table to hold patient data. It's not initially encrypted--you will configure encryption in the next section.
+Bu bölümde, hasta verilerini tutacak bir tablo oluşturacaksınız. Başlangıçta şifrelenmemiştir; bir sonraki bölümde şifrelemeyi yapılandıracaksınız.
 
-1. Expand **Databases**.
-2. Right-click the **Clinic** database and click **New Query**.
-3. Paste the following Transact-SQL (T-SQL) into the new query window and **Execute** it.
+1. **Veritabanları**' nı genişletin.
+2. **Clinic** veritabanına sağ tıklayın ve **Yeni sorgu**' ya tıklayın.
+3. Aşağıdaki Transact-SQL (T-SQL) ' i yeni sorgu penceresine yapıştırın ve **yürütün** .
 
 ```sql
 CREATE TABLE [dbo].[Patients](
@@ -155,94 +155,94 @@ CREATE TABLE [dbo].[Patients](
 GO
 ```
 
-## <a name="encrypt-columns-configure-always-encrypted"></a>Encrypt columns (configure Always Encrypted)
+## <a name="encrypt-columns-configure-always-encrypted"></a>Sütunları şifreleyin (Always Encrypted Yapılandır)
 
-SSMS provides a wizard that helps you easily configure Always Encrypted by setting up the column master key, column encryption key, and encrypted columns for you.
+SSMS, sütun ana anahtarı, sütun şifreleme anahtarı ve şifreli sütunları sizin için ayarlayarak Always Encrypted kolayca yapılandırmanıza yardımcı olan bir sihirbaz sağlar.
 
-1. Expand **Databases** > **Clinic** > **Tables**.
-2. Right-click the **Patients** table and select **Encrypt Columns** to open the Always Encrypted wizard:
+1. **Veritabanları** > **Clinic** > **tabloları**' nı genişletin.
+2. **Hastalar** tablosuna sağ tıklayın ve Always Encrypted Sihirbazı 'nı açmak Için **sütunları şifreleyin** ' ı seçin:
 
-    ![Encrypt columns](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
+    ![Sütunları şifreleyin](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-The Always Encrypted wizard includes the following sections: **Column Selection**, **Master Key Configuration**, **Validation**, and **Summary**.
+Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**, **ana anahtar yapılandırması**, **doğrulama**ve **Özet**.
 
-### <a name="column-selection"></a>Column Selection
+### <a name="column-selection"></a>Sütun seçimi
 
-Click **Next** on the **Introduction** page to open the **Column Selection** page. On this page, you will select which columns you want to encrypt, [the type of encryption, and what column encryption key (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) to use.
+**Giriş** sayfasında, **sütun seçim** sayfasını açmak için **İleri** ' ye tıklayın. Bu sayfada, hangi sütunları şifrelemek istediğinizi, [şifreleme türünü ve kullanılacak sütun şifreleme anahtarını (cek)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) seçersiniz.
 
-Encrypt **SSN** and **BirthDate** information for each patient. The SSN column will use deterministic encryption, which supports equality lookups, joins, and group by. The BirthDate column will use randomized encryption, which does not support operations.
+Her hasta için **SSK** ve **Doğum tarihi** bilgilerini şifreleyin. SSK sütunu, eşitlik aramalarını, birleştirmeleri ve gruplama tarafından desteklenen belirleyici şifrelemeyi kullanır. Doğum tarihi sütunu, işlemleri desteklemeyen rastgele şifrelemeyi kullanır.
 
-Set the **Encryption Type** for the SSN column to **Deterministic** and the BirthDate column to **Randomized**. **İleri**’ye tıklayın.
+SSN sütunu için **şifreleme türünü** **belirleyici** ve Doğum tarihi sütununu **rastgele**olarak ayarlayın. **İleri**’ye tıklayın.
 
-![Encrypt columns](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
+![Sütunları şifreleyin](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
-### <a name="master-key-configuration"></a>Master Key Configuration
+### <a name="master-key-configuration"></a>Ana anahtar yapılandırması
 
-The **Master Key Configuration** page is where you set up your CMK and select the key store provider where the CMK will be stored. Currently, you can store a CMK in the Windows certificate store, Azure Key Vault, or a hardware security module (HSM).
+**Ana anahtar yapılandırma** sayfası, CMK 'nizi ayarladığınız ve CMK 'ın depolanacağı anahtar deposu sağlayıcısını seçtiğiniz yerdir. Şu anda, bir CMK 'yi Windows sertifika deposunda, Azure Key Vault veya bir donanım güvenlik modülünde (HSM) depolayabilmeniz gerekir.
 
-This tutorial shows how to store your keys in Azure Key Vault.
+Bu öğreticide, anahtarlarınızı Azure Key Vault nasıl depolayabileceği gösterilmektedir.
 
-1. Select **Azure Key Vault**.
-2. Select the desired key vault from the drop-down list.
+1. **Azure Key Vault**seçin.
+2. Açılan listeden istenen anahtar kasasını seçin.
 3. **İleri**’ye tıklayın.
 
-![Master key configuration](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
+![Ana anahtar yapılandırması](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
 ### <a name="validation"></a>Doğrulama
 
-You can encrypt the columns now or save a PowerShell script to run later. For this tutorial, select **Proceed to finish now** and click **Next**.
+Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir PowerShell betiği kaydedebilirsiniz. Bu öğreticide **Şimdi sona ermesini sağlamak Için devam** 'ı seçin ve **İleri**' ye tıklayın.
 
 ### <a name="summary"></a>Özet
 
-Verify that the settings are all correct and click **Finish** to complete the setup for Always Encrypted.
+Ayarların doğru olduğundan emin olun ve Always Encrypted kurulumunu gerçekleştirmek için **son** ' a tıklayın.
 
 ![Özet](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
-### <a name="verify-the-wizards-actions"></a>Verify the wizard's actions
+### <a name="verify-the-wizards-actions"></a>Sihirbazın eylemlerini doğrulama
 
-After the wizard is finished, your database is set up for Always Encrypted. The wizard performed the following actions:
+Sihirbaz tamamlandıktan sonra veritabanınız Always Encrypted ayarlanır. Sihirbaz aşağıdaki eylemleri gerçekleştirdi:
 
-- Created a column master key and stored it in Azure Key Vault.
-- Created a column encryption key and stored it in Azure Key Vault.
-- Configured the selected columns for encryption. The Patients table currently has no data, but any existing data in the selected columns is now encrypted.
+- Bir sütun ana anahtarı oluşturup Azure Key Vault depolandı.
+- Bir sütun şifreleme anahtarı oluşturup Azure Key Vault depolandı.
+- Şifreleme için seçili sütunlar yapılandırıldı. Hastalar tablosunda Şu anda hiç veri yok, ancak seçili sütunlardaki tüm mevcut veriler artık şifrelendi.
 
-You can verify the creation of the keys in SSMS by expanding **Clinic** > **Security** > **Always Encrypted Keys**.
+**Clinic** > **güvenlik** > **Always Encrypted anahtarlarını**genişleterek SSMS 'de anahtarların oluşturulmasını doğrulayabilirsiniz.
 
-## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Create a client application that works with the encrypted data
+## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Şifrelenmiş verilerle birlikte çalışarak bir istemci uygulaması oluşturma
 
-Now that Always Encrypted is set up, you can build an application that performs *inserts* and *selects* on the encrypted columns.  
+Always Encrypted ayarlandığına *göre,* şifrelenmiş sütunlarda *eklemeleri* ve seçimi gerçekleştiren bir uygulama oluşturabilirsiniz.  
 
 > [!IMPORTANT]
-> Your application must use [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) objects when passing plaintext data to the server with Always Encrypted columns. Passing literal values without using SqlParameter objects will result in an exception.
+> Uygulamanızın, Always Encrypted sütunları ile sunucuya düz metin verileri geçirirken [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) nesneleri kullanması gerekir. SqlParameter nesneleri kullanılmadan değişmez değerler geçirilmesi bir özel durumla sonuçlanır.
 
-1. Open Visual Studio and create a new C# **Console Application** (Visual Studio 2015 and earlier) or **Console App (.NET Framework)** (Visual Studio 2017 and later). Make sure your project is set to **.NET Framework 4.6** or later.
-2. Name the project **AlwaysEncryptedConsoleAKVApp** and click **OK**.
-3. Install the following NuGet packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console**.
+1. Visual Studio 'yu açın ve yeni C# bir **konsol uygulaması** (Visual Studio 2015 ve öncesi) ya da **konsol uygulaması (.NET Framework)** (Visual Studio 2017 ve üzeri) oluşturun. Projenizin **.NET Framework 4,6** veya üzeri bir sürüme ayarlandığından emin olun.
+2. Projeyi **Alwaysencryptedconsoleakvapp** olarak adlandırın ve **Tamam**' a tıklayın.
+3. **Araçlar** > **nuget Paket Yöneticisi** > **Paket Yöneticisi konsolu**' na giderek aşağıdaki NuGet paketlerini yükler.
 
-Run these two lines of code in the Package Manager Console:
+Bu iki kod satırını Paket Yöneticisi konsolunda çalıştırın:
 
    ```powershell
    Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
 
-## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Modify your connection string to enable Always Encrypted
+## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Always Encrypted etkinleştirmek için Bağlantı dizenizi değiştirin
 
-This section  explains how to enable Always Encrypted in your database connection string.
+Bu bölümde, veritabanı bağlantı dizeniz Always Encrypted nasıl etkinleştirileceği açıklanmaktadır.
 
-To enable Always Encrypted, you need to add the **Column Encryption Setting** keyword to your connection string and set it to **Enabled**.
+Always Encrypted etkinleştirmek için, bağlantı dizeniz için **sütun şifreleme ayarı** anahtar sözcüğünü eklemeniz ve **etkin**olarak ayarlamanız gerekir.
 
-You can set this directly in the connection string, or you can set it by using [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). The sample application in the next section shows how to use **SqlConnectionStringBuilder**.
+Bunu doğrudan bağlantı dizesinde ayarlayabilir veya [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx)kullanarak ayarlayabilirsiniz. Sonraki bölümde bulunan örnek uygulama, **SqlConnectionStringBuilder**'ın nasıl kullanılacağını gösterir.
 
-### <a name="enable-always-encrypted-in-the-connection-string"></a>Enable Always Encrypted in the connection string
+### <a name="enable-always-encrypted-in-the-connection-string"></a>Bağlantı dizesinde Always Encrypted etkinleştir
 
-Add the following keyword to your connection string.
+Bağlantı dizeniz için aşağıdaki anahtar sözcüğü ekleyin.
 
    `Column Encryption Setting=Enabled`
 
-### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Enable Always Encrypted with SqlConnectionStringBuilder
+### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>SqlConnectionStringBuilder ile Always Encrypted etkinleştirme
 
-The following code shows how to enable Always Encrypted by setting [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) to [Enabled](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+Aşağıdaki kod, [SqlConnectionStringBuilder. ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) ayarının [etkin](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx)olarak ayarlanarak Always Encrypted nasıl etkinleştirileceğini gösterir.
 
 ```csharp
 // Instantiate a SqlConnectionStringBuilder.
@@ -252,8 +252,8 @@ SqlConnectionStringBuilder connStringBuilder = new SqlConnectionStringBuilder("r
 connStringBuilder.ColumnEncryptionSetting = SqlConnectionColumnEncryptionSetting.Enabled;
 ```
 
-## <a name="register-the-azure-key-vault-provider"></a>Register the Azure Key Vault provider
-The following code shows how to register the Azure Key Vault provider with the ADO.NET driver.
+## <a name="register-the-azure-key-vault-provider"></a>Azure Key Vault sağlayıcıyı kaydetme
+Aşağıdaki kod, Azure Key Vault sağlayıcısının ADO.NET sürücüsüyle nasıl kaydedileceği gösterilmektedir.
 
 ```csharp
 private static ClientCredential _clientCredential;
@@ -270,18 +270,18 @@ static void InitializeAzureKeyVaultProvider() {
 }
 ```
 
-## <a name="always-encrypted-sample-console-application"></a>Always Encrypted sample console application
+## <a name="always-encrypted-sample-console-application"></a>Always Encrypted örnek konsol uygulaması
 
-This sample demonstrates how to:
+Bu örnekte nasıl yapılacağı gösterilmektedir:
 
-- Modify your connection string to enable Always Encrypted.
-- Register Azure Key Vault as the application's key store provider.  
-- Insert data into the encrypted columns.
-- Select a record by filtering for a specific value in an encrypted column.
+- Always Encrypted sağlamak için Bağlantı dizenizi değiştirin.
+- Uygulamanın anahtar deposu sağlayıcısı olarak Azure Key Vault kaydolun.  
+- Şifrelenmiş sütunlara veri ekleyin.
+- Şifrelenmiş bir sütunda belirli bir değeri filtreleyerek bir kayıt seçin.
 
-Replace the contents of *Program.cs* with the following code. Replace the connection string for the global connectionString variable in the line that directly precedes the Main method with your valid connection string from the Azure portal. This is the only change you need to make to this code.
+*Program.cs* içeriğini aşağıdaki kodla değiştirin. Ana yöntemin Azure portal geçerli bağlantı dizeniz ile doğrudan önündeki satırdaki Global connectionString değişkeni için bağlantı dizesini değiştirin. Bu kodda yapmanız gereken tek değişiklik budur.
 
-Run the app to see Always Encrypted in action.
+Always Encrypted eylemi görmek için uygulamayı çalıştırın.
 
 ```csharp
 using System;
@@ -575,50 +575,50 @@ namespace AlwaysEncryptedConsoleAKVApp {
 }
 ```
 
-## <a name="verify-that-the-data-is-encrypted"></a>Verify that the data is encrypted
+## <a name="verify-that-the-data-is-encrypted"></a>Verilerin şifrelendiğini doğrulama
 
-You can quickly check that the actual data on the server is encrypted by querying the Patients data with SSMS (using your current connection where **Column Encryption Setting** is not yet enabled).
+Sunucu üzerindeki gerçek verilerin, SSMS ile ( **sütun şifreleme ayarının** henüz etkinleştirilmediği geçerli bağlantıyı kullanarak), sstalar ile verileri sorgulayarak şifrelendiğini kolayca kontrol edebilirsiniz.
 
-Run the following query on the Clinic database.
+Clinic veritabanında aşağıdaki sorguyu çalıştırın.
 
 ```sql
 SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 ```
 
-You can see that the encrypted columns do not contain any plaintext data.
+Şifrelenmiş sütunlarda herhangi bir düz metin verisi içermediğini görebilirsiniz.
 
-   ![New console application](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
+   ![Yeni konsol uygulaması](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-To use SSMS to access the plaintext data, you first need to ensure that the user has proper permissions to the Azure Key Vault: *get*, *unwrapKey*, and *verify*. For detailed information, see [Create and Store Column Master Keys (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıcının Azure Key Vault uygun izinlere sahip olduğundan emin olmanız gerekir: *Get*, *unwrapKey*ve *Verify*. Ayrıntılı bilgi için bkz. [sütun ana anahtarları oluşturma ve depolama (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
-Then add the *Column Encryption Setting=enabled* parameter during your connection.
+Ardından, bağlantınız sırasında *şifreleme ayarı = etkin* parametresini ekleyin.
 
-1. In SSMS, right-click your server in **Object Explorer** and choose **Disconnect**.
-2. Click **Connect** > **Database Engine** to open the **Connect to Server** window and click **Options**.
-3. Click **Additional Connection Parameters** and type **Column Encryption Setting=enabled**.
+1. SSMS 'de sunucunuza **Nesne Gezgini** sağ tıklayın ve **bağlantıyı kes**' i seçin.
+2. **Sunucuya Bağlan** penceresini açmak Için > **veritabanı altyapısına** **Bağlan** ' a tıklayın ve **Seçenekler**' e tıklayın.
+3. **Ek bağlantı parametreleri** ve tür **sütunu şifreleme ayarı = etkin**öğesine tıklayın.
 
-    ![New console application](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
+    ![Yeni konsol uygulaması](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
 
-4. Run the following query on the Clinic database.
+4. Clinic veritabanında aşağıdaki sorguyu çalıştırın.
 
    ```sql
    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     You can now see the plaintext data in the encrypted columns.
-     ![New console application](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
+     Artık şifrelenmiş sütunlarda düz metin verileri görebilirsiniz.
+     Yeni konsol uygulaması ![](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-After you create a database that uses Always Encrypted, you may want to do the following:
+Always Encrypted kullanan bir veritabanı oluşturduktan sonra şunları yapmak isteyebilirsiniz:
 
-- [Rotate and clean up your keys](https://msdn.microsoft.com/library/mt607048.aspx).
-- [Migrate data that is already encrypted with Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
+- [Anahtarlarınızı döndürün ve temizleyin](https://msdn.microsoft.com/library/mt607048.aspx).
+- [Always encrypted ile zaten şifrelenmiş olan verileri geçirin](https://msdn.microsoft.com/library/mt621539.aspx).
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-- [Always Encrypted (client development)](https://msdn.microsoft.com/library/mt147923.aspx)
+- [Always Encrypted (istemci geliştirme)](https://msdn.microsoft.com/library/mt147923.aspx)
 - [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx)
-- [SQL Server encryption](https://msdn.microsoft.com/library/bb510663.aspx)
-- [Always Encrypted wizard](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Always Encrypted blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [SQL Server şifreleme](https://msdn.microsoft.com/library/bb510663.aspx)
+- [Always Encrypted Sihirbazı](https://msdn.microsoft.com/library/mt459280.aspx)
+- [Always Encrypted blogu](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)

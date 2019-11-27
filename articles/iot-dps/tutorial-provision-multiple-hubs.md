@@ -1,6 +1,6 @@
 ---
-title: Provision devices across load balanced hubs using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Device Provisioning Service automatic device provisioning across load balanced IoT hubs in Azure Portal
+title: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak yük dengeli hub 'larda cihaz sağlama
+description: Öğretici-cihaz sağlama hizmeti Azure portalındaki yük dengeli IoT Hub 'ları genelinde otomatik cihaz sağlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229443"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Provision devices across load-balanced IoT hubs
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Öğretici: yük dengeli IoT Hub 'larda cihaz sağlama
 
 Bu öğreticide, Cihaz Sağlama Hizmeti kullanılarak birden çok yük dengeli IoT Hub'ı için cihazları sağlama işlemi gösterilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -55,7 +55,7 @@ Ayırma ilkesini ayarlamak için şu adımları izleyin:
 
 1. Ayırma ilkesini ayarlamak için Cihaz Sağlama Hizmeti sayfasında **Ayırma ilkesini yönetme** seçeneğine tıklayın.
 2. Ayırma ilkesi olarak **Eşit ağırlıklı dağılım**'ı ayarlayın.
-3. **Kaydet** düğmesine tıklayın.
+3. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Yeni IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 
@@ -65,7 +65,7 @@ Cihaz Sağlama Hizmetini ve IoT hub'ını, Cihaz Sağlama Hizmeti bu hub'a kaydo
 2. Cihaz Sağlama Hizmeti sayfasında **Bağlı IoT hub’lar** seçeneğine tıklayın.
 3. **Ekle**'ye tıklayın.
 4. **IoT hub'a bağlantı ekleme** sayfasında, bağlı IoT hub’ın geçerli abonelikte mi yoksa farklı bir abonelikte mi bulunduğunu belirtmek için radyo düğmelerini kullanın. Sonra **IoT hub** kutusunda IoT hub’ın adını seçin.
-5. **Kaydet** düğmesine tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Reverse DNS for Azure services - Azure DNS
-description: With this learning path, get started configuring reverse DNS lookups for services hosted in Azure.
+title: Azure hizmetleri için ters DNS-Azure DNS
+description: Bu öğrenme yoluyla, Azure 'da barındırılan hizmetler için ters DNS aramalarını yapılandırmaya başlayın.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,49 +19,49 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211224"
 ---
-# <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Configure reverse DNS for services hosted in Azure
+# <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure 'da barındırılan hizmetler için ters DNS yapılandırma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-This article explains how to configure reverse DNS lookups for services hosted in Azure.
+Bu makalede, Azure 'da barındırılan hizmetler için ters DNS aramalarının nasıl yapılandırılacağı açıklanmaktadır.
 
-Services in Azure use IP addresses assigned by Azure and owned by Microsoft. These reverse DNS records (PTR records) must be created in the corresponding Microsoft-owned reverse DNS lookup zones. This article explains how to do this.
+Azure 'daki hizmetler, Azure tarafından atanan ve Microsoft 'un sahip olduğu IP adreslerini kullanır. Bu ters DNS kayıtları (PTR kayıtları), Microsoft 'a ait ters DNS arama bölgelerinde oluşturulmalıdır. Bu makalede bunun nasıl yapılacağı açıklanır.
 
-This scenario should not be confused with the ability to [host the reverse DNS lookup zones for your assigned IP ranges in Azure DNS](dns-reverse-dns-hosting.md). In this case, the IP ranges represented by the reverse lookup zone must be assigned to your organization, typically by your ISP.
+Bu senaryo, [Azure DNS ' deki atanan IP aralıkları için ters DNS arama bölgelerini barındırabilme](dns-reverse-dns-hosting.md)özelliği ile karıştırılmamalıdır. Bu durumda, geriye doğru arama bölgesi tarafından temsil edilen IP aralıklarının kuruluşunuza genellikle ISS 'niz tarafından atanması gerekir.
 
-Before reading this article, you should be familiar with this [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
+Bu makaleyi okumadan önce, [Azure 'da ters DNS ve desteğe genel bakış](dns-reverse-dns-overview.md)hakkında bilgi sahibi olmanız gerekir.
 
-In Azure DNS, compute resources (such as virtual machines, virtual machine scale sets, or Service Fabric clusters) are exposed via a PublicIpAddress resource. Reverse DNS lookups are configured using the 'ReverseFqdn' property of the PublicIpAddress.
-
-
-Reverse DNS is not currently supported for the Azure App Service.
-
-## <a name="validation-of-reverse-dns-records"></a>Validation of reverse DNS records
-
-A third party should not be able to create reverse DNS records for their Azure service mapping to your DNS domains. To prevent this, Azure only allows the creation of a reverse DNS record where domain name specified in the reverse DNS record is the same as, or resolves to, the DNS name or IP address of a PublicIpAddress or Cloud Service in the same Azure subscription.
-
-This validation is only performed when the reverse DNS record is set or modified. Periodic re-validation is not performed.
-
-For example: suppose the PublicIpAddress resource has the DNS name contosoapp1.northus.cloudapp.azure.com and IP address 23.96.52.53. The ReverseFqdn for the PublicIpAddress can be specified as:
-* The DNS name for the PublicIpAddress, contosoapp1.northus.cloudapp.azure.com
-* The DNS name for a different PublicIpAddress in the same subscription, such as contosoapp2.westus.cloudapp.azure.com
-* A vanity DNS name, such as app1.contoso.com, so long as this name is *first* configured as a CNAME to contosoapp1.northus.cloudapp.azure.com, or to a different PublicIpAddress in the same subscription.
-* A vanity DNS name, such as app1.contoso.com, so long as this name is *first* configured as an A record to the IP address 23.96.52.53, or to the IP address of a different PublicIpAddress in the same subscription.
-
-The same constraints apply to reverse DNS for Cloud Services.
+Azure DNS, işlem kaynakları (sanal makineler, sanal makine ölçek kümeleri veya Service Fabric kümeler gibi) bir Publicıpaddress kaynağı aracılığıyla sunulur. Ters DNS aramaları, Publicıpaddress 'in ' Smarfqdn ' özelliği kullanılarak yapılandırılır.
 
 
-## <a name="reverse-dns-for-publicipaddress-resources"></a>Reverse DNS for PublicIpAddress resources
+Azure App Service için ters DNS şu anda desteklenmiyor.
 
-This section provides detailed instructions for how to configure reverse DNS for PublicIpAddress resources in the Resource Manager deployment model, using either Azure PowerShell, Azure classic CLI, or Azure CLI. Configuring reverse DNS for PublicIpAddress resources is not currently supported via the Azure portal.
+## <a name="validation-of-reverse-dns-records"></a>Ters DNS kayıtlarının doğrulanması
 
-Azure currently supports reverse DNS only for IPv4 PublicIpAddress resources. It is not supported for IPv6.
+Üçüncü taraf, DNS etki alanlarınıza yönelik Azure hizmeti eşlemesi için ters DNS kayıtları oluşturmamalıdır. Bunu engellemek için, Azure yalnızca ters DNS kaydında belirtilen etki alanı adının aynı Azure aboneliğindeki bir Publicıpaddress veya Cloud Service DNS adı veya IP adresi ile aynı olduğu veya olarak çözümlenme gibi bir ters DNS kaydı oluşturulmasına izin verir.
 
-### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>Add reverse DNS to an existing PublicIpAddresses
+Bu doğrulama yalnızca ters DNS kaydı ayarlandığında veya değiştirildiğinde gerçekleştirilir. Düzenli yeniden doğrulama yapılmaz.
+
+Örneğin: Publicıpaddress kaynağının DNS adı contosoapp1.northus.cloudapp.azure.com ve IP Address 23.96.52.53 olduğunu varsayalım. Publicıpaddress için Smarfqdn şu şekilde belirtilebilir:
+* Publicıpaddress, contosoapp1.northus.cloudapp.azure.com için DNS adı
+* Aynı abonelikte bulunan contosoapp2.westus.cloudapp.azure.com gibi farklı bir Publicıpaddress için DNS adı
+* App1.contoso.com gibi bir yol DNS adı, bu ad *ilk önce* ContosoApp1.northus.cloudapp.Azure.com IÇIN bir CNAME veya aynı abonelikte farklı bir publicıpaddress olarak yapılandırılmıştır.
+* App1.contoso.com gibi bir yol DNS adı, bu ad *ilk* olarak IP adresi 23.96.52.53 veya aynı abonelikte farklı bir PUBLICıPADDRESS 'in IP adresine bir kayıt olarak yapılandırılmıştır.
+
+Aynı kısıtlamalar Cloud Services için ters DNS için de geçerlidir.
+
+
+## <a name="reverse-dns-for-publicipaddress-resources"></a>Publicıpaddress kaynakları için ters DNS
+
+Bu bölümde, Kaynak Yöneticisi dağıtım modelindeki Publicıpaddress kaynakları için Azure PowerShell, Azure klasik CLı veya Azure CLı kullanarak ters DNS yapılandırma hakkında ayrıntılı yönergeler sağlanmaktadır. Publicıpaddress kaynakları için ters DNS yapılandırması, şu anda Azure portal aracılığıyla desteklenmemektedir.
+
+Azure Şu anda yalnızca IPv4 Publicıpaddress kaynakları için ters DNS 'i desteklemektedir. IPv6 için desteklenmez.
+
+### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>Mevcut bir Publicıpaddresses 'a ters DNS ekleme
 
 #### <a name="powershell"></a>PowerShell
 
-To update reverse DNS to an existing PublicIpAddress:
+Ters DNS 'yi mevcut bir Publicıpaddress ile güncelleştirmek için:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -69,7 +69,7 @@ $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-To add reverse DNS to an existing PublicIpAddress that doesn't already have a DNS name, you must also specify a DNS name:
+Zaten DNS adı olmayan mevcut bir Publicıpaddress 'e ters DNS eklemek için bir DNS adı da belirtmeniz gerekir:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -81,13 +81,13 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 
 #### <a name="azure-classic-cli"></a>Azure klasik CLI
 
-To add reverse DNS to an existing PublicIpAddress:
+Mevcut bir Publicıpaddress 'e ters DNS eklemek için:
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-To add reverse DNS to an existing PublicIpAddress that doesn't already have a DNS name, you must also specify a DNS name:
+Zaten DNS adı olmayan mevcut bir Publicıpaddress 'e ters DNS eklemek için bir DNS adı da belirtmeniz gerekir:
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
@@ -95,21 +95,21 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f con
 
 #### <a name="azure-cli"></a>Azure CLI
 
-To add reverse DNS to an existing PublicIpAddress:
+Mevcut bir Publicıpaddress 'e ters DNS eklemek için:
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com.
 ```
 
-To add reverse DNS to an existing PublicIpAddress that doesn't already have a DNS name, you must also specify a DNS name:
+Zaten DNS adı olmayan mevcut bir Publicıpaddress 'e ters DNS eklemek için bir DNS adı da belirtmeniz gerekir:
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com --dns-name contosoapp1
 ```
 
-### <a name="create-a-public-ip-address-with-reverse-dns"></a>Create a Public IP Address with reverse DNS
+### <a name="create-a-public-ip-address-with-reverse-dns"></a>Ters DNS ile genel IP adresi oluşturma
 
-To create a new PublicIpAddress with the reverse DNS property already specified:
+Ters DNS özelliği zaten belirtilmiş olan yeni bir Publicıpaddress oluşturmak için:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -129,9 +129,9 @@ azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d conto
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
 ```
 
-### <a name="view-reverse-dns-for-an-existing-publicipaddress"></a>View reverse DNS for an existing PublicIpAddress
+### <a name="view-reverse-dns-for-an-existing-publicipaddress"></a>Mevcut bir Publicıpaddress için ters DNS görüntüle
 
-To view the configured value for an existing PublicIpAddress:
+Mevcut bir Publicıpaddress için yapılandırılmış değeri görüntülemek için:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -151,9 +151,9 @@ azure network public-ip show -n PublicIp -g MyResourceGroup
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
 ```
 
-### <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Remove reverse DNS from existing Public IP Addresses
+### <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Mevcut Genel IP Adresleri ters DNS 'yi kaldır
 
-To remove a reverse DNS property from an existing PublicIpAddress:
+Mevcut bir Publicıpaddress öğesinden ters bir DNS özelliği kaldırmak için:
 
 #### <a name="powershell"></a>PowerShell
 
@@ -176,37 +176,37 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 ```
 
 
-## <a name="configure-reverse-dns-for-cloud-services"></a>Configure reverse DNS for Cloud Services
+## <a name="configure-reverse-dns-for-cloud-services"></a>Cloud Services için ters DNS yapılandırma
 
-This section provides detailed instructions for how to configure reverse DNS for Cloud Services in the Classic deployment model, using Azure PowerShell. Configuring reverse DNS for Cloud Services is not supported via the Azure portal, Azure classic CLI, or Azure CLI.
+Bu bölümde Azure PowerShell kullanılarak klasik dağıtım modelinde Cloud Services için ters DNS yapılandırma hakkında ayrıntılı yönergeler sağlanmaktadır. Cloud Services için ters DNS yapılandırması, Azure portal, Azure klasik CLı veya Azure CLı aracılığıyla desteklenmez.
 
-### <a name="add-reverse-dns-to-existing-cloud-services"></a>Add reverse DNS to existing Cloud Services
+### <a name="add-reverse-dns-to-existing-cloud-services"></a>Mevcut Cloud Services ters DNS ekleyin
 
-To add a reverse DNS record to an existing Cloud Service:
+Var olan bir bulut hizmetine ters DNS kaydı eklemek için:
 
 ```powershell
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
 ```
 
-### <a name="create-a-cloud-service-with-reverse-dns"></a>Create a Cloud Service with reverse DNS
+### <a name="create-a-cloud-service-with-reverse-dns"></a>Ters DNS ile bulut hizmeti oluşturma
 
-To create a new Cloud Service with the reverse DNS property already specified:
+Ters DNS özelliği zaten belirtilmiş yeni bir bulut hizmeti oluşturmak için:
 
 ```powershell
 New-AzureService –ServiceName "contosoapp1" –Location "West US" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
 ```
 
-### <a name="view-reverse-dns-for-existing-cloud-services"></a>View reverse DNS for existing Cloud Services
+### <a name="view-reverse-dns-for-existing-cloud-services"></a>Mevcut Cloud Services için ters DNS görüntüle
 
-To view the reverse DNS property for an existing Cloud Service:
+Mevcut bir bulut hizmeti için ters DNS özelliğini görüntülemek için:
 
 ```powershell
 Get-AzureService "contosoapp1"
 ```
 
-### <a name="remove-reverse-dns-from-existing-cloud-services"></a>Remove reverse DNS from existing Cloud Services
+### <a name="remove-reverse-dns-from-existing-cloud-services"></a>Mevcut Cloud Services ters DNS 'yi kaldır
 
-To remove a reverse DNS property from an existing Cloud Service:
+Bir ters DNS özelliğini var olan bir bulut hizmetinden kaldırmak için:
 
 ```powershell
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
@@ -214,45 +214,45 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 
 ## <a name="faq"></a>SSS
 
-### <a name="how-much-do-reverse-dns-records-cost"></a>How much do reverse DNS records cost?
+### <a name="how-much-do-reverse-dns-records-cost"></a>Geriye doğru DNS kaydı ne kadar maliyetlidir?
 
-They're free!  There is no additional cost for reverse DNS records or queries.
+Bunlar ücretsizdir!  Ters DNS kayıtları veya sorguları için ek maliyet yoktur.
 
-### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>Will my reverse DNS records resolve from the internet?
+### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>Ters DNS kayıtlarım Internet 'ten çözümlensin mi?
 
-Evet. Once you set the reverse DNS property for your Azure service, Azure manages all the DNS delegations and DNS zones required to ensure that reverse DNS record resolves for all Internet users.
+Evet. Azure hizmetiniz için ters DNS özelliğini ayarladıktan sonra Azure, tüm Internet kullanıcıları için ters DNS kaydının çözümlendiğinden emin olmak için gereken tüm DNS temsilcilerini ve DNS bölgelerini yönetir.
 
-### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Are default reverse DNS records created for my Azure services?
+### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Azure Hizmetlerim için varsayılan ters DNS kayıtları oluşturuldu mu?
 
-Hayır. Reverse DNS is an opt-in feature. No default reverse DNS records are created if you choose not to configure them.
+Hayır. Ters DNS, bir katılım özelliğidir. Yapılandırmayı seçerseniz, hiçbir varsayılan ters DNS kaydı oluşturulmaz.
 
-### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>What is the format for the fully-qualified domain name (FQDN)?
+### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>Tam etki alanı adının (FQDN) biçimi nedir?
 
-FQDNs are specified in forward order, and must be terminated by a dot (for example, "app1.contoso.com.").
+FQDN 'Ler ileri sırada belirtilmiştir ve bir nokta ile sonlandırılmalıdır (örneğin, "app1.contoso.com.").
 
-### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>What happens if the validation check for the reverse DNS I've specified fails?
+### <a name="what-happens-if-the-validation-check-for-the-reverse-dns-ive-specified-fails"></a>Belirtdiğim ters DNS için doğrulama denetimi başarısız olursa ne olur?
 
-Where the reverse DNS validation check fails, the operation to configure the reverse DNS record fails. Correct the reverse DNS value as required, and retry.
+Ters DNS doğrulama denetiminin başarısız olduğu durumlarda, ters DNS kaydını yapılandırma işlemi başarısız olur. Ters DNS değerini gereken şekilde düzeltip yeniden deneyin.
 
-### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Can I configure reverse DNS for Azure App Service?
+### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Azure App Service için ters DNS yapılandırabilir miyim?
 
-Hayır. Reverse DNS is not supported for the Azure App Service.
+Hayır. Azure App Service için ters DNS desteklenmez.
 
-### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Can I configure multiple reverse DNS records for my Azure service?
+### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Azure hizmetim için birden çok ters DNS kaydı yapılandırabilir miyim?
 
-Hayır. Azure supports a single reverse DNS record for each Azure Cloud Service or PublicIpAddress.
+Hayır. Azure, her Azure bulut hizmeti veya Publicıpaddress için tek bir ters DNS kaydını destekler.
 
-### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Can I configure reverse DNS for IPv6 PublicIpAddress resources?
+### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>IPv6 Publicıpaddress kaynakları için ters DNS yapılandırabilir miyim?
 
-Hayır. Azure currently supports reverse DNS only for IPv4 PublicIpAddress resources and Cloud Services.
+Hayır. Azure Şu anda yalnızca IPv4 Publicıpaddress kaynakları ve Cloud Services için ters DNS 'i desteklemektedir.
 
-### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Can I send emails to external domains from my Azure Compute services?
+### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure Işlem hizmetlerimin dış etki alanlarına e-posta gönderebilir miyim?
 
-The technical ability to send email directly from an Azure deployment depends on the subscription type. Regardless of subscription type, Microsoft recommends using trusted mail relay services to send outgoing mail. For further details, see [Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
+Doğrudan bir Azure dağıtımından e-posta göndermenin teknik özelliği abonelik türüne bağlıdır. Abonelik türünden bağımsız olarak, Microsoft, giden e-posta göndermek için güvenilen posta geçiş hizmetlerinin kullanılmasını önerir. Daha ayrıntılı bilgi için bkz. [e-posta göndermek Için gelişmiş Azure güvenliği – kasım 2017 güncelleştirmesi](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For more information on reverse DNS, see [reverse DNS lookup on Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Ters DNS hakkında daha fazla bilgi için bkz. [Vikipde ters DNS araması](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Learn how to [host the reverse lookup zone for your ISP-assigned IP range in Azure DNS](dns-reverse-dns-for-azure-services.md).
+[Azure DNS 'de ISS tarafından atanan IP aralığınızı geriye doğru arama bölgesini nasıl barındıracağınızı](dns-reverse-dns-for-azure-services.md)öğrenin.
 

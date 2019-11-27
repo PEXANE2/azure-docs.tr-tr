@@ -1,6 +1,6 @@
 ---
 title: Data Sync
-description: This overview introduces Azure SQL Data Sync
+description: Azure SQL Data Sync bu genel bakış sunar
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -18,227 +18,227 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422536"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Sync data across multiple cloud and on-premises databases with SQL Data Sync
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>SQL Data Sync ile birden fazla Bulut ve şirket içi veritabanı arasında veri eşitleme
 
-SQL Data Sync is a service built on Azure SQL Database that lets you synchronize the data you select bi-directionally across multiple SQL databases and SQL Server instances.
+SQL Data Sync, birden çok SQL veritabanları ve SQL Server örnekleri arasında çift seçin verileri eşitleyin olanak sağlayan Azure SQL veritabanı üzerinde oluşturulmuş bir hizmettir.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL Database Managed Instance at this time.
+> Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen örneğini desteklemez.
 
-## <a name="when-to-use-data-sync"></a>When to use Data Sync
+## <a name="when-to-use-data-sync"></a>Veri Eşitleme kullanıldığı durumlar
 
-Data Sync is useful in cases where data needs to be kept updated across several Azure SQL databases or SQL Server databases. Here are the main use cases for Data Sync:
+Veri eşitleme, verilerin birkaç Azure SQL veritabanı veya SQL Server veritabanı genelinde güncelleştirilmesi gereken durumlarda faydalıdır. Veri eşitleme için ana kullanım örnekleri şunlardır:
 
-- **Hybrid Data Synchronization:** With Data Sync, you can keep data synchronized between your on-premises databases and Azure SQL databases to enable hybrid applications. This capability may appeal to customers who are considering moving to the cloud and would like to put some of their application in Azure.
-- **Distributed Applications:** In many cases, it's beneficial to separate different workloads across different databases. For example, if you have a large production database, but you also need to run a reporting or analytics workload on this data, it's helpful to have a second database for this additional workload. This approach minimizes the performance impact on your production workload. You can use Data Sync to keep these two databases synchronized.
-- **Globally Distributed Applications:** Many businesses span several regions and even several countries/regions. To minimize network latency, it's best to have your data in a region close to you. With Data Sync, you can easily keep databases in regions around the world synchronized.
+- **Karma veri eşitleme:** Veri eşitleme ile, karma uygulamaları etkinleştirmek için verileri şirket içi veritabanlarınız ve Azure SQL veritabanları arasında eşitlenmiş halde tutabilirsiniz. Bu özellik, buluta geçiş düşünüyorsanız ve bazı uygulamalarını Azure'da koymak istediğiniz müşterileri itiraz.
+- **Dağıtılmış uygulamalar:** Birçok durumda, farklı veritabanları arasında farklı iş yüklerini ayırmak yararlı olur. Örneğin, bir büyük üretim veritabanına sahip, ancak Ayrıca bu veriler üzerinde raporlama veya Analiz iş yükü çalıştırmak gerekir, bu ek iş yükü için ikinci bir veritabanı yararlıdır. Bu yaklaşım, üretim iş yükünüz üzerindeki performans etkisini en aza indirir. Veri eşitleme, bu iki veritabanı eşitlenmiş tutmak için kullanabilirsiniz.
+- **Küresel olarak dağıtılan uygulamalar:** Birçok işletme birçok bölgeye ve hatta birkaç ülkeye/bölgeye yayılamaz. Ağ gecikmesini en aza indirmek için size yakın bir bölgede verilerinizin sağlamak en iyisidir. Data Sync ile eşitlenmiş dünyanın dört bir yanındaki bölgelerdeki veritabanlarına kolayca tutabilirsiniz.
 
-Data Sync isn't the preferred solution for the following scenarios:
+Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 
-| Senaryo | Some recommended solutions |
+| Senaryo | Bazı önerilen çözümler |
 |----------|----------------------------|
-| Olağanüstü Durum Kurtarma | [Azure geo-redundant backups](sql-database-automated-backups.md) |
-| Read Scale | [Use read-only replicas to load balance read-only query workloads (preview)](sql-database-read-scale-out.md) |
-| ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) or [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migration from on-premises SQL Server to Azure SQL Database | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
+| Olağanüstü Durum Kurtarma | [Azure coğrafi olarak yedekli yedeklemeler](sql-database-automated-backups.md) |
+| Okuma ölçeği | [Salt okunurdur ve salt okuma sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın (Önizleme)](sql-database-read-scale-out.md) |
+| ETL (OLTP OLAP için) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| Şirket içi SQL Server'dan Azure SQL veritabanına geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
 |||
 
-## <a name="overview-of-sql-data-sync"></a>Overview of SQL Data Sync
+## <a name="overview-of-sql-data-sync"></a>SQL Data Sync genel bakış
 
-Data Sync is based around the concept of a Sync Group. A Sync Group is a group of databases that you want to synchronize.
+Veri eşitleme, bir eşitleme grubu kavramını temel alır. Bir eşitleme grubu, eşitlemek istediğiniz veritabanlarını grubudur.
 
-Data Sync uses a hub and spoke topology to synchronize data. You define one of the databases in the sync group as the Hub Database. The rest of the databases are member databases. Sync occurs only between the Hub and individual members.
+Veri eşitleme, verileri eşitlemek için bir hub ve bağlı bileşen topolojisi kullanır. Veritabanlarından birini eşitleme grubunda Hub veritabanı tanımlarsınız. Veritabanlarını geri kalanını olan üye veritabanları. Yalnızca Hub ve tek tek üyeleri arasında eşitleme gerçekleşir.
 
-- The **Hub Database** must be an Azure SQL Database.
-- The **member databases** can be either SQL Databases, on-premises SQL Server databases, or SQL Server instances on Azure virtual machines.
-- The **Sync Database** contains the metadata and log for Data Sync. The Sync Database has to be an Azure SQL Database located in the same region as the Hub Database. The Sync Database is customer created and customer owned.
+- **Merkez veritabanı** BIR Azure SQL veritabanı olmalıdır.
+- **Üye VERITABANLARı** SQL veritabanları, şirket içi SQL Server veritabanları ya da Azure sanal makinelerinde SQL Server örnekleri olabilir.
+- **Eşitleme veritabanı** , veri eşitleme için meta verileri ve günlüğü içerir. Eşitleme veritabanı, hub veritabanıyla aynı bölgede bulunan bir Azure SQL veritabanı olmalıdır. Eşitleme müşteri oluşturuldu ve müşterinin sahip olduğu bir veritabanıdır.
 
 > [!NOTE]
-> If you're using an on premises database as a member database, you have to [install and configure a local sync agent](sql-database-get-started-sql-data-sync.md#add-on-prem).
+> Bir şirket içi veritabanını üye veritabanı olarak kullanıyorsanız, [yerel bir eşitleme Aracısı yükleyip yapılandırmanız](sql-database-get-started-sql-data-sync.md#add-on-prem)gerekir.
 
-![Sync data between databases](media/sql-database-sync-data/sync-data-overview.png)
+![Veritabanları arasında verileri eşitleme](media/sql-database-sync-data/sync-data-overview.png)
 
-A Sync Group has the following properties:
+Bir eşitleme grubu, aşağıdaki özelliklere sahiptir:
 
-- The **Sync Schema** describes which data is being synchronized.
-- The **Sync Direction** can be bi-directional or can flow in only one direction. That is, the Sync Direction can be *Hub to Member*, or *Member to Hub*, or both.
-- The **Sync Interval** describes how often synchronization occurs.
-- The **Conflict Resolution Policy** is a group level policy, which can be *Hub wins* or *Member wins*.
+- **Eşitleme şeması** hangi verilerin eşitlendiğini açıklar.
+- **Eşitleme yönü** iki yönlü olabilir veya yalnızca bir yönde akabilir. Diğer bir deyişle, eşitleme yönü *hub*veya *hub 'a üye*ya da her ikisi de olabilir.
+- Eşitleme **aralığı** , eşitlemenin ne sıklıkla oluştuğunu açıklar.
+- **Çakışma çözümleme ilkesi** , *hub WINS* veya *üye WINS*olabilen bir grup düzeyi ilkesidir.
 
-## <a name="how-does-data-sync-work"></a>How does Data Sync work
+## <a name="how-does-data-sync-work"></a>Veri eşitleme nasıl çalışır?
 
-- **Tracking data changes:** Data Sync tracks changes using insert, update, and delete triggers. The changes are recorded in a side table in the user database. Note that BULK INSERT doesn't fire triggers by default. If FIRE_TRIGGERS isn't specified, no insert triggers execute. Add the FIRE_TRIGGERS option so Data Sync can track those inserts. 
-- **Synchronizing data:** Data Sync is designed in a Hub and Spoke model. The Hub syncs with each member individually. Changes from the Hub are downloaded to the member and then changes from the member are uploaded to the Hub.
-- **Resolving conflicts:** Data Sync provides two options for conflict resolution, *Hub wins* or *Member wins*.
-  - If you select *Hub wins*, the changes in the hub always overwrite changes in the member.
-  - If you select *Member wins*, the changes in the member overwrite changes in the hub. If there's more than one member, the final value depends on which member syncs first.
+- **Veri değişikliklerini izleme:** Veri eşitleme, INSERT, Update ve DELETE tetikleyicilerini kullanarak değişiklikleri izler. Bir kullanıcı veritabanındaki bir yan tablodaki değişiklikler kaydedilir. BULK INSERT varsayılan olarak Tetikleyicileri tetikleyeceğini unutmayın. FIRE_TRIGGERS belirtilmemişse, hiçbir ekleme tetikleyicisi yürütülmez. Böylece Data Sync'i Bu eklemeleri izleyebilirsiniz fıre_trıggers seçeneğini ekleyin. 
+- **Veriler eşitleniyor:** Veri eşitleme, hub ve bağlı bileşen modelinde tasarlanmıştır. Hub'ı ayrı ayrı her bir üyeyi eşitler. Üye değişiklikleri Hub'ından indirilir ve hub'a üye değişikliklerden sonra yüklenir.
+- **Çakışmalar çözümleniyor:** Veri eşitleme, çakışma çözümü, *Merkez WINS* veya *üye WINS*için iki seçenek sunar.
+  - *Merkez WINS*' i seçerseniz, hub 'daki değişiklikler her zaman üyenin değişikliklerinin üzerine yazar.
+  - *Üye WINS*' i seçerseniz, üyedeki değişiklikler hub 'daki değişiklikler üzerine yazılır. Birden fazla üyesi ise, hangi üye eşitler son değeri bağlıdır.
 
-## <a name="compare-data-sync-with-transactional-replication"></a>Compare Data Sync with Transactional Replication
+## <a name="compare-data-sync-with-transactional-replication"></a>Veri eşitlemesini Işlemsel çoğaltma ile karşılaştırın
 
 | | Data Sync | İşlem Çoğaltması |
 |---|---|---|
-| Advantages | - Active-active support<br/>- Bi-directional between on-premises and Azure SQL Database | - Lower latency<br/>- Transactional consistency<br/>- Reuse existing topology after migration |
-| Disadvantages | - 5 min or more latency<br/>- No transactional consistency<br/>- Higher performance impact | - Can’t publish from Azure SQL Database single database or pooled database<br/>- High maintenance cost |
+| Yararları | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan |
+| Olumsuz | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanı tek veritabanı veya havuza alınmış veritabanından yayımlanamıyor<br/>-Yüksek bakım maliyeti |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL Data Sync'yi kullanmaya başlayın
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Set up Data Sync in the Azure portal
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portalında Data Sync'i Ayarla
 
 - [Azure SQL Data Sync’i ayarlama](sql-database-get-started-sql-data-sync.md)
-- Data Sync Agent - [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md)
+- Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 
-### <a name="set-up-data-sync-with-powershell"></a>Set up Data Sync with PowerShell
+### <a name="set-up-data-sync-with-powershell"></a>PowerShell ile Data Sync'i ayarlama
 
 - [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
 - [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Review the best practices for Data Sync
+### <a name="review-the-best-practices-for-data-sync"></a>Data Sync için en iyi uygulamaları gözden geçirin
 
 - [Azure SQL Data Sync için en iyi yöntemler](sql-database-best-practices-data-sync.md)
 
-### <a name="did-something-go-wrong"></a>Did something go wrong
+### <a name="did-something-go-wrong"></a>Bir sorun oluştu
 
 - [Azure SQL Data Sync ile ilgili sorun giderme](sql-database-troubleshoot-data-sync.md)
 
-## <a name="consistency-and-performance"></a>Consistency and performance
+## <a name="consistency-and-performance"></a>Tutarlılık ve performans
 
 ### <a name="eventual-consistency"></a>Nihai tutarlılık
 
-Since Data Sync is trigger-based, transactional consistency isn't guaranteed. Microsoft guarantees that all changes are made eventually and that Data Sync doesn't cause data loss.
+Veri eşitleme, tetikleyici tabanlı olduğundan, işlemsel tutarlılık garanti edilmez. Microsoft, tüm değişikliklerin sonunda yapıldığından ve veri eşitlemenin veri kaybına neden olmadığı garantisi verir.
 
-### <a name="performance-impact"></a>Performance impact
+### <a name="performance-impact"></a>Performans etkisi
 
-Data Sync uses insert, update, and delete triggers to track changes. It creates side tables in the user database for change tracking. These change tracking activities have an impact on your database workload. Assess your service tier and upgrade if needed.
+Veri Eşitleme kullanır ekleyin, güncelleştirin ve değişiklikleri izlemek için Tetikleyiciler silin. Değişiklik izleme için kullanıcı veritabanında tablolar oluşturur. Bu değişiklik izleme etkinliklerin veritabanı iş yükünüz etkisi. Hizmet katmanınızı değerlendirmek ve gerekirse yükseltme.
 
-Provisioning and deprovisioning during sync group creation, update, and deletion may also impact the database performance.
+Sağlama ve eşitleme grubu oluşturma, güncelleştirme ve silme işlemi sırasında sağlamayı kaldırma, veritabanı performansını da etkileyebilir.
 
-## <a name="sync-req-lim"></a> Requirements and limitations
+## <a name="sync-req-lim"></a>Gereksinimler ve sınırlamalar
 
 ### <a name="general-requirements"></a>Genel gereksinimler
 
-- Each table must have a primary key. Don't change the value of the primary key in any row. If you have to change a primary key value, delete the row and recreate it with the new primary key value.
+- Her tabloda bir birincil anahtarı olmalıdır. Herhangi bir satırın birincil anahtarı değerini değiştirmeyin. Bir birincil anahtar değerini değiştirmeniz gerekiyorsa, satır silin ve yeni birincil anahtar değeriyle yeniden oluşturun.
 
 > [!IMPORTANT]
-> Changing the value of an existing primary key will result in the following faulty behavior:
-> - Data between hub and member can be lost even though sync does not report any issue.
-> - Sync can fail because the tracking table has a non-existing row from source due to the primary key change.
+> Mevcut bir birincil anahtarın değerini değiştirmek aşağıdaki hatalı davranışa neden olur:
+> - Eşit bir sorun bildirmese de, hub ve üye arasındaki veriler kaybolabilir.
+> - Birincil anahtar değişikliği nedeniyle izleme tablosu kaynaktan mevcut olmayan bir satır içerdiğinden eşitleme başarısız olabilir.
 
-- Anlık görüntü yalıtımı etkinleştirilmelidir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Anlık görüntü yalıtımı etkinleştirilmiş olması gerekir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Genel sınırlamalar
 
-- A table can't have an identity column that isn't the primary key.
-- A primary key can't have the following data types: sql_variant, binary, varbinary, image, xml.
-- Be cautious when you use the following data types as a primary key, because the supported precision is only to the second: time, datetime, datetime2, datetimeoffset.
-- The names of objects (databases, tables, and columns) can't contain the printable characters period (.), left square bracket ([), or right square bracket (]).
-- Azure Active Directory authentication isn't supported.
-- Tables with same name but different schema (for example, dbo.customers and sales.customers) aren't supported.
-- Columns with User Defined Data Types aren't supported
+- Tablo, birincil anahtar olmayan bir kimlik sütununa sahip olamaz.
+- Birincil anahtar şu veri türlerine sahip olamaz: sql_variant, binary, varbinary, Image, XML.
+- Yalnızca desteklenen duyarlık olduğu için birincil anahtar olarak, aşağıdaki veri türleri kullanırken dikkatli olun: zaman, datetime, datetime2, datetimeoffset.
+- Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
+- Azure Active Directory kimlik doğrulaması desteklenmiyor.
+- Aynı ada ancak farklı şemaya (örneğin, dbo. Customers ve Sales. Customers) sahip tablolar desteklenmez.
+- Kullanıcı tanımlı veri türleri olan sütunlar desteklenmiyor
 
-#### <a name="unsupported-data-types"></a>Unsupported data types
+#### <a name="unsupported-data-types"></a>Desteklenmeyen veri türleri
 
-- FileStream
+- FILESTREAM
 - SQL/CLR UDT
-- XMLSchemaCollection (XML supported)
-- Cursor, RowVersion, Timestamp, Hierarchyid
+- XMLSchemaCollection (desteklenen XML)
+- İmleç, RowVersion, zaman damgası, Hierarchyid
 
-#### <a name="unsupported-column-types"></a>Unsupported column types
+#### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türü
 
-Data Sync can't sync read-only or system-generated columns. Örnek:
+Veri eşitleme, salt okunur veya sistem tarafından oluşturulan sütunları eşitleme yapılamıyor. Örneğin:
 
-- Computed columns.
-- System-generated columns for temporal tables.
+- Hesaplanan sütunlar.
+- Zamana bağlı tablolar için sistem tarafından oluşturulan sütunları.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>Limitations on service and database dimensions
+#### <a name="limitations-on-service-and-database-dimensions"></a>Hizmet ve veritabanı boyut sınırlamaları
 
-| **Dimensions**                                                  | **Sınır**              | **Geçici çözüm**              |
+| **Boyutlarına**                                                  | **Sınır**              | **Geçici çözüm**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Maximum number of sync groups any database can belong to.       | 5                      |                             |
-| Maximum number of endpoints in a single sync group              | 30                     |                             |
-| Maximum number of on-premises endpoints in a single sync group. | 5                      | Create multiple sync groups |
-| Database, table, schema, and column names                       | 50 characters per name |                             |
-| Tables in a sync group                                          | 500                    | Create multiple sync groups |
-| Columns in a table in a sync group                              | 1000                   |                             |
-| Data row size on a table                                        | 24 Mb                  |                             |
-| Minimum sync interval                                           | 5 Dakika              |                             |
+| Eşitleme grubu sayısı için herhangi bir veritabanına ait olabilir.       | 5                      |                             |
+| Bir tek eşitleme grubundaki uç noktaları sayısı              | 30                     |                             |
+| Şirket içi Uç noktalara tek bir eşitleme grubunda en fazla sayısı. | 5                      | Birden çok eşitleme grubu oluşturma |
+| Veritabanı, tablo, şema ve sütun adları                       | ad başına 50 karakter |                             |
+| Bir eşitleme grubunda tabloları                                          | 500                    | Birden çok eşitleme grubu oluşturma |
+| Bir eşitleme grubunda bir tablodaki sütunları                              | 1000                   |                             |
+| Bir tablodaki verileri satır boyutu                                        | 24 mb                  |                             |
+| En düşük eşitleme aralığı                                           | 5 Dakika              |                             |
 
 > [!NOTE]
-> There may be up to 30 endpoints in a single sync group if there is only one sync group. If there is more than one sync group, the total number of endpoints across all sync groups cannot exceed 30. If a database belongs to multiple sync groups, it is counted as multiple endpoints, not one.
+> Olabilir en fazla 30 uç noktaları bir tek eşitleme grubunda yoksa yalnızca bir eşitleme grubu. Birden fazla eşitleme grubu varsa, uç noktalar genelinde tüm eşitleme gruplarını toplam sayısı 30 aşamaz. Bir veritabanının birden çok eşitleme gruplarına ait birden fazla uç noktası, bir geçersiz sayılır.
 
-## <a name="faq-about-sql-data-sync"></a>FAQ about SQL Data Sync
+## <a name="faq-about-sql-data-sync"></a>SQL Data Sync hakkında SSS
 
-### <a name="how-much-does-the-sql-data-sync-service-cost"></a>How much does the SQL Data Sync service cost
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL Data Sync hizmeti maliyeti ne kadar sürer?
 
-There's no charge for the SQL Data Sync service itself. However, you still collect data transfer charges for data movement in and out of your SQL Database instance. For more info, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+SQL Data Sync hizmetin kendisi için ücret alınmaz. Ancak, SQL veritabanı örneğiniz için ve dışında veri taşıma ücretleri de toplaırsınız. Daha fazla bilgi için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
-### <a name="what-regions-support-data-sync"></a>What regions support Data Sync
+### <a name="what-regions-support-data-sync"></a>Veri eşitlemesini destekleyen bölgeler
 
-SQL Data Sync is available in all regions.
+SQL Data Sync tüm bölgelerde kullanılabilir.
 
-### <a name="is-a-sql-database-account-required"></a>Is a SQL Database account required
+### <a name="is-a-sql-database-account-required"></a>Bir SQL veritabanı hesabı gereklidir
 
-Evet. You must have a SQL Database account to host the Hub Database.
+Evet. Hub veritabanı barındırmak için bir SQL veritabanı hesabınızın olması gerekir.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Can I use Data Sync to sync between SQL Server on-premises databases only
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Yalnızca şirket içi SQL Server veritabanları arasında eşitleme yapmak için veri eşitlemeyi kullanabilir miyim
 
-Not directly. You can sync between SQL Server on-premises databases indirectly, however, by creating a Hub database in Azure, and then adding the on-premises databases to the sync group.
+Doğrudan yönetilemez. SQL Server şirket içi veritabanı arasında dolaylı olarak, ancak Azure Hub veritabanı oluşturarak ve sonra şirket içi veritabanları eşitleme grubuna ekleyerek eşitleyebilirsiniz.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Can I use Data Sync to sync between SQL Databases that belong to different subscriptions
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Farklı aboneliklere ait olan SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim
 
-Evet. You can sync between SQL Databases that belong to resource groups owned by different subscriptions.
+Evet. Kaynak grupları tarafından farklı aboneliklere ait ait bir SQL veritabanı arasında eşitleyebilirsiniz.
 
-- If the subscriptions belong to the same tenant, and you have permission to all subscriptions, you can configure the sync group in the Azure portal.
-- Otherwise, you have to use PowerShell to add the sync members that belong to different subscriptions.
+- Aboneliklerin aynı kiracıda ve tüm abonelikleri iznine sahip, eşitleme grubunun Azure portalında yapılandırabilirsiniz.
+- Aksi takdirde, farklı aboneliklere ait eşitleme üyesi ekleme için PowerShell kullanmanız gerekir.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Can I use Data Sync to sync between SQL Databases that belong to different clouds (like Azure Public Cloud and Azure China 21Vianet)
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Farklı bulutlara ait SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim (Azure genel bulutu ve Azure Çin 21Vianet gibi)
 
-Evet. You can sync between SQL Databases that belong to different clouds, you have to use PowerShell to add the sync members that belong to the different subscriptions.
+Evet. Farklı bulutlara ait bir SQL veritabanı arasında eşitleme, farklı aboneliklere ait eşitleme üyesi ekleme için PowerShell kullanmanız gerekir.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Can I use Data Sync to seed data from my production database to an empty database, and then sync them
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Veri eşitlemesini, üretim veritabanından boş bir veritabanına veri kaynağı için kullanabilir miyim ve sonra bunları eşitleyebilirsiniz
 
-Evet. Create the schema manually in the new database by scripting it from the original. After you create the schema, add the tables to a sync group to copy the data and keep it synced.
+Evet. Şema el ile özgün komut dosyası tarafından yeni veritabanı oluşturun. Şema oluşturduktan sonra tabloları, verileri kopyalayın ve eşitlenmiş kalmasını sağlamak için bir eşitleme grubuna ekleyin.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Should I use SQL Data Sync to back up and restore my databases
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Veritabanlarınızı yedeklemek ve geri yüklemek için SQL Data Sync kullanmalıyım
 
-It isn't recommended to use SQL Data Sync to create a backup of your data. You can't back up and restore to a specific point in time because SQL Data Sync synchronizations are not versioned. Furthermore, SQL Data Sync does not back up other SQL objects, such as stored procedures, and doesn't do the equivalent of a restore operation quickly.
+Verilerinizin yedeğini oluşturmak için SQL Data Sync kullanılması önerilmez. SQL Data Sync eşitlemeler sürümü oluşturulmadığından belirli bir zaman noktasına yedekleme ve geri yükleme yapamazsınız. Ayrıca, SQL Data Sync saklı yordamlar gibi diğer SQL nesnelerini de yedeklememesini ve geri yükleme işleminin hemen eşdeğerini yapmaz.
 
-For one recommended backup technique, see [Copy an Azure SQL database](sql-database-copy.md).
+Önerilen bir yedekleme tekniği için bkz. [Azure SQL veritabanını kopyalama](sql-database-copy.md).
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Can Data Sync sync encrypted tables and columns
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Veri eşitleme eşitleme şifrelenmiş tabloları ve sütunları
 
-- If a database uses Always Encrypted, you can sync only the tables and columns that are *not* encrypted. You can't sync the encrypted columns, because Data Sync can't decrypt the data.
-- If a column uses Column-Level Encryption (CLE), you can sync the column, as long as the row size is less than the maximum size of 24 Mb. Data Sync treats the column encrypted by key (CLE) as normal binary data. To decrypt the data on other sync members, you need to have the same certificate.
+- Bir veritabanı Always Encrypted kullanıyorsa, *yalnızca şifrelenmemiş tabloları* ve sütunları eşitleyebilirsiniz. Veri Eşitleme verilerin şifresini çözemez için şifrelenmiş sütunları eşitleyemiyor.
+- Bir sütun sütun düzeyinde şifrelemeyi (CLE) kullanıyorsa, satır boyutu 24 MB maksimum boyuttan daha az olduğu sürece sütun eşitleyebilirsiniz. Veri eşitleme, normal bir ikili veri olarak (CLE) anahtar ile şifrelenmiş sütun değerlendirir. Diğer eşitleme üyeler verilerin şifresini çözmek için aynı sertifika olması gerekir.
 
-### <a name="is-collation-supported-in-sql-data-sync"></a>Is collation supported in SQL Data Sync
+### <a name="is-collation-supported-in-sql-data-sync"></a>SQL Data Sync içinde harmanlama destekleniyor
 
-Evet. SQL Data Sync supports collation in the following scenarios:
+Evet. SQL Data Sync, aşağıdaki senaryolarda harmanlamasını destekler:
 
-- If the selected sync schema tables aren't already in your hub or member databases, then when you deploy the sync group, the service automatically creates the corresponding tables and columns with the collation settings selected in the empty destination databases.
-- If the tables to be synced already exist in both your hub and member databases, SQL Data Sync requires that the primary key columns have the same collation between hub and member databases to successfully deploy the sync group. There are no collation restrictions on columns other than the primary key columns.
+- Seçili eşitleme şeması tabloları hub 'ınızda veya üye veritabanlarında yoksa, eşitleme grubunu dağıttığınızda, hizmet otomatik olarak ilgili tabloları ve sütunları boş hedef veritabanlarında seçilen harmanlama ayarları ile birlikte oluşturur.
+- Zaten eşitlenmiş tabloları hub ve üye veritabanlarında varsa, SQL Data Sync birincil anahtar sütunlarını eşitleme grubu başarıyla dağıtmak için hub ve üye veritabanları arasında aynı harmanlamaya sahip olmasını gerektirir. Sütunlarda birincil anahtar sütunları dışındaki harmanlama kısıtlama yoktur.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>Is federation supported in SQL Data Sync
+### <a name="is-federation-supported-in-sql-data-sync"></a>SQL Data Sync sürümünde Federasyon destekleniyor
 
-Federation Root Database can be used in the SQL Data Sync Service without any limitation. You can't add the Federated Database endpoint to the current version of SQL Data Sync.
+Federasyon kök veritabanı, SQL veri eşitleme hizmetinde hiçbir sınırlama olmadan kullanılabilir. Federasyon veritabanı uç noktasını geçerli SQL Data Sync sürümüne ekleyemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="update-the-schema-of-a-synced-database"></a>Update the schema of a synced database
+### <a name="update-the-schema-of-a-synced-database"></a>Eşitlenen bir veritabanı şemasını güncelleştirme
 
-Do you have to update the schema of a database in a sync group? Schema changes aren't automatically replicated. For some solutions, see the following articles:
+Bir eşitleme grubunda bir veritabanının şemasını güncelleştirmek zorunda mıyım? Şema değişiklikleri otomatik olarak çoğaltılmaz. Bazı çözümler için aşağıdaki makalelere bakın:
 
-- [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md)
-- [Use PowerShell to update the sync schema in an existing sync group](scripts/sql-database-sync-update-schema.md)
+- [Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](sql-database-update-sync-schema.md)
+- [Mevcut bir eşitleme grubundaki eşitleme şemasını güncelleştirmek için PowerShell 'i kullanma](scripts/sql-database-sync-update-schema.md)
 
 ### <a name="monitor-and-troubleshoot"></a>İzleme ve sorun giderme
 
-Is SQL Data Sync doing as expected? To monitor activity and troubleshoot issues, see the following articles:
+SQL Data Sync beklendiği gibi yapılıyor mu? Etkinlik izleme ve sorunlarını gidermek için aşağıdaki makalelere bakın:
 
-- [Monitor Azure SQL Data Sync with Azure Monitor logs](sql-database-sync-monitor-oms.md)
+- [Azure Izleyici günlükleri ile Azure SQL Data Sync izleme](sql-database-sync-monitor-oms.md)
 - [Azure SQL Data Sync ile ilgili sorun giderme](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Azure SQL Veritabanı hakkında daha fazla bilgi edinin
 
-For more info about SQL Database, see the following articles:
+SQL veritabanı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [SQL Veritabanı'na Genel Bakış](sql-database-technical-overview.md)
 - [Veritabanı Yaşam Döngüsü Yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)

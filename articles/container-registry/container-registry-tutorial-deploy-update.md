@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Push update to geo-replicated registry
-description: Push an updated Docker image to your geo-replicated Azure container registry, then see the changes automatically deployed to web apps running in multiple regions. Üç bölümden oluşan bir serinin üçüncü bölümü.
+title: Öğretici-güncelleştirme, coğrafi olarak çoğaltılan kayıt defterine gönderim
+description: Coğrafi olarak çoğaltılan Azure Container Registry 'nize güncelleştirilmiş bir Docker görüntüsü gönderin, daha sonra birden çok bölgede çalışan Web uygulamalarına otomatik olarak dağıtılan değişikliklere bakın. Üç bölümden oluşan bir serinin üçüncü bölümü.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454698"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Tutorial: Push an updated container image to a geo-replicated container registry for regional web app deployments
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Öğretici: bölgesel Web uygulaması dağıtımları için coğrafi olarak çoğaltılan bir kapsayıcı kayıt defterine güncelleştirilmiş bir kapsayıcı görüntüsü gönderme
 
 Bu, üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür. [Önceki öğreticide](container-registry-tutorial-deploy-app.md) coğrafi çoğaltma, iki farklı bölgesel Web Uygulaması dağıtımı için yapılandırılmıştır. Bu öğreticide ilk olarak uygulamayı değiştirir, ardından yeni bir kapsayıcı görüntüsü derler ve bunu coğrafi olarak çoğaltılmış kayıt defterinize gönderirsiniz. Son olarak, her iki Web Uygulaması örneğinde, Azure Container Registry web kancaları tarafından otomatik olarak dağıtılan değişikliği görüntülersiniz.
 
@@ -29,7 +29,7 @@ Henüz iki *Kapsayıcılar için Web Uygulaması* bölgesel dağıtımını yap�
 
 Bu adımda, güncelleştirilmiş kapsayıcı görüntüsünü Azure Container Registry’ye göndermenizin ardından, web uygulaması üzerinde yüksek oranda görünür olacak bir değişiklik yapın.
 
-Önceki öğreticide [GitHub’dan kopyaladığınız](container-registry-tutorial-prepare-registry.md#get-application-code) uygulama kaynağında `AcrHelloworld/Views/Home/Index.cshtml` dosyasını bulun ve sık kullandığınız metin düzenleyicinizde açın. Mevcut `<h1>` satırının altına aşağıdaki satırı ekleyin:
+Önceki öğreticide `AcrHelloworld/Views/Home/Index.cshtml`GitHub’dan kopyaladığınız[ uygulama kaynağında ](container-registry-tutorial-prepare-registry.md#get-application-code) dosyasını bulun ve sık kullandığınız metin düzenleyicinizde açın. Mevcut `<h1>` satırının altına aşağıdaki satırı ekleyin:
 
 ```html
 <h1>MODIFIED</h1>
@@ -74,7 +74,7 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry’ye görüntü gönderme
 
-Şimdi güncelleştirilmiş *acr-helloworld* kapsayıcı görüntüsünü coğrafi olarak çoğaltılmış kayıt defterinize gönderin. Burada, güncelleştirilmiş görüntüyü hem *Batı ABD* hem de *Doğu ABD* bölgesindeki kayıt defteri çoğaltmalarına dağıtmak için tek bir `docker push` komutunu yürütüyorsunuz.
+Şimdi güncelleştirilmiş *acr-helloworld* kapsayıcı görüntüsünü coğrafi olarak çoğaltılmış kayıt defterinize gönderin. Burada, güncelleştirilmiş görüntüyü hem `docker push`Batı ABD*hem de*Doğu ABD*bölgesindeki kayıt defteri çoğaltmalarına dağıtmak için tek bir* komutunu yürütüyorsunuz.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -103,7 +103,7 @@ Görüntü çoğaltılırken, tetiklenen Azure Container Registry web kancaları
 
 ![Azure portalındaki kapsayıcı kayıt defteri web kancaları][tutorial-portal-01]
 
-Web kancasının çağrı ve yanıt geçmişini görmek için web kancasını seçin. Her iki Web Kancasının günlüklerinde **gönderme** eylemi için bir satır görmeniz gerekir. Burada, *Batı ABD* bölgesinde bulunan Web Kancasının günlüğü, önceki adımda `docker push` tarafından tetiklenen **gönderme** eylemini gösterir:
+Web kancasının çağrı ve yanıt geçmişini görmek için web kancasını seçin. Her iki Web Kancasının günlüklerinde **gönderme** eylemi için bir satır görmeniz gerekir. Burada, *Batı ABD* bölgesinde bulunan Web Kancasının günlüğü, önceki adımda **tarafından tetiklenen**gönderme`docker push` eylemini gösterir:
 
 ![Azure portalındaki kapsayıcı kayıt defteri Web Kancası (Batı ABD)][tutorial-portal-02]
 

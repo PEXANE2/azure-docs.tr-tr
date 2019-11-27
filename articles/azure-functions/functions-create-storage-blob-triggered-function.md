@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by Blob storage
+title: Azure 'da BLOB depolama tarafından tetiklenen bir işlev oluşturma
 description: Azure Blob depolamaya eklenen öğeler tarafından çağrılan sunucusuz bir işlev oluşturmak için Azure İşlevlerini kullanın.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
@@ -35,7 +35,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Blob depolama ile tetiklenen bir işlev oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 

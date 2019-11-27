@@ -18,20 +18,20 @@ ms.locfileid: "74228172"
 Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablon bildirimleri olarak yollarsınız.
 
 1. Visual Studio'da yeni bir Visual C# konsol uygulaması oluşturun:
-    1. On the menu, select **File** > **New** > **Project**.
-    1. In **Create a new project**, select **Console App (.NET Framework)** for C# in the list of templates, and select **Next**.
-    1. Enter a name for the app.
-    1. For **Solution**, choose **Add to solution**, and select **Create** to create the project.
+    1. Menüde **dosya** > **Yeni** > **Proje**' yi seçin.
+    1. **Yeni proje oluştur**' da, şablonlar listesinde Için C# **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+    1. Uygulama için bir ad girin.
+    1. **Çözüm**için, **çözüme Ekle**' yi seçin ve projeyi oluşturmak için **Oluştur** ' u seçin.
 
-1. Select **Tools** > **NuGet Package Manager** > **Package Manager Console** and then, in the console window, run the following command:
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu** ' nu seçin ve ardından konsol penceresinde aşağıdaki komutu çalıştırın:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
    ```
 
-   This action adds a reference to the Azure Notification Hubs SDK by using the [Microsoft.Azure.NotificationHubs] package.
+   Bu eylem, [Microsoft. Azure. Notificationhub 'Lar] paketini kullanarak Azure Notification Hubs SDK 'sına bir başvuru ekler.
 
-1. Open the *Program.cs* file, and add the following `using` statement:
+1. *Program.cs* dosyasını açın ve aşağıdaki `using` ifadesini ekleyin:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;
@@ -69,7 +69,7 @@ Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablo
 
 1. Önceki kodda, `<hub name>` ve `<connection string with full access>` yer tutucularını bildirim hub'ı adınız ve bildirim hub’ınızın panosundaki *DefaultFullSharedAccessSignature* bağlantı dizeniz ile değiştirin.
 
-1. In the `Main()` method, add the following lines:
+1. `Main()` yönteminde aşağıdaki satırları ekleyin:
 
    ```csharp
     SendTemplateNotificationAsync();
@@ -86,4 +86,4 @@ Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablo
 [Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Microsoft.Azure.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Microsoft. Azure. Notificationhub 'Lar]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

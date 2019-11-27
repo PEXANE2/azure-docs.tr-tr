@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network peering
+title: Azure sanal ağ eşlemesi
 titlesuffix: Azure Virtual Network
 description: Azure'daki sanal ağ eşlemesi hakkında bilgi edinin.
 services: virtual-network
@@ -21,94 +21,94 @@ ms.locfileid: "74328369"
 ---
 # <a name="virtual-network-peering"></a>Sanal ağ eşlemesi
 
-Virtual network peering enables you to seamlessly connect networks in [Azure Virtual Network](virtual-networks-overview.md). The virtual networks appear as one for connectivity purposes. The traffic between virtual machines uses the Microsoft backbone infrastructure. Like traffic between virtual machines in the same network, traffic is routed through Microsoft's *private* network only.
+Sanal ağ eşlemesi, [Azure sanal ağ](virtual-networks-overview.md)'da ağları sorunsuzca bağlamanıza olanak sağlar. Sanal ağlar, bağlantı amaçlarıyla bir tane olarak görünür. Sanal makineler arasındaki trafik, Microsoft omurga altyapısını kullanır. Aynı ağdaki sanal makineler arasındaki trafik gibi, trafik yalnızca Microsoft 'un *özel* ağı aracılığıyla yönlendirilir.
 
-Azure supports the following types of peering:
+Azure aşağıdaki eşleme türlerini destekler:
 
-* Virtual network peering: Connect virtual networks within the same Azure region.
-* Global virtual network peering: Connecting virtual networks across Azure regions.
+* Sanal ağ eşlemesi: aynı Azure bölgesindeki sanal ağları bağlayın.
+* Küresel sanal ağ eşlemesi: Azure bölgeleri arasında sanal ağları bağlama.
 
 Yerel veya genel sanal ağ eşlemesini kullanmanın avantajları şunlardır:
 
 * Farklı sanal ağlardaki kaynaklar arasında düşük gecikme süresi ve yüksek bant genişlikli bağlantı.
-* The ability for resources in one virtual network to communicate with resources in a different virtual network.
-* The ability to transfer data between virtual networks across Azure subscriptions, Azure Active Directory tenants, deployment models, and Azure regions.
-* The ability to peer virtual networks created through the Azure Resource Manager.
-* The ability to peer a virtual network created through Resource Manager to one created through the classic deployment model. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Bir sanal ağdaki kaynakların farklı bir sanal ağdaki kaynaklarla iletişim kurmasına olanak tanır.
+* Azure abonelikleri, Azure Active Directory kiracılar, dağıtım modelleri ve Azure bölgeleri arasında sanal ağlar arasında veri aktarma özelliği.
+* Azure Resource Manager aracılığıyla oluşturulmuş sanal ağları eşleyebilme özelliği.
+* Kaynak Yöneticisi aracılığıyla oluşturulan bir sanal ağı, klasik dağıtım modeliyle oluşturulan bir ağa eşleyebilme özelliği. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Eşleme oluştururken veya eşleme oluşturulduktan sonra iki sanal ağdaki kaynaklarda da kesinti süresi yaşanmaz.
 
 Eşlenen sanal ağlar arasındaki ağ trafiği gizlidir. Sanal ağlar arasındaki trafik Microsoft omurga ağı üzerinde tutulur. Sanal ağlar arasındaki iletişimde genel İnternet, ağ geçidi veya şifreleme gerekli değildir.
 
 ## <a name="connectivity"></a>Bağlantı
 
-For peered virtual networks, resources in either virtual network can directly connect with resources in the peered virtual network.
+Eşlenen sanal ağlar için, her iki sanal ağdaki kaynaklar eşlenen sanal ağdaki kaynaklarla doğrudan bağlantı sağlayabilir.
 
 Aynı bölgede yer alan eşlenmiş sanal ağlardaki sanal makineler arasındaki ağ gecikme süresi, tek bir sanal ağdaki gecikme süresiyle aynıdır. Ağ verimi, büyüklüğüne orantılı olarak sanal makine için izin verilen bant genişliğine bağlıdır. Eşleme içindeki bant genişliği ile ilgili herhangi bir ek kısıtlama yoktur.
 
 Eşlenmiş sanal ağlarda bulunan sanal makineler arasındaki trafik bir ağ geçidi veya genel İnternet üzerinden değil, doğrudan Microsoft omurga altyapısı aracılığıyla yönlendirilir.
 
-You can apply network security groups in either virtual network to block access to other virtual networks or subnets.
-When configuring virtual network peering, either open or close the network security group rules between the virtual networks. If you open full connectivity between peered virtual networks, you can apply network security groups to block or deny specific access. Full connectivity is the default option. To learn more about network security groups, see [Security groups](security-overview.md).
+Diğer sanal ağlara veya alt ağlara erişimi engellemek için, her iki sanal ağ üzerinde ağ güvenlik grupları uygulayabilirsiniz.
+Sanal Ağ eşlemesini yapılandırırken, sanal ağlar arasındaki ağ güvenlik grubu kurallarını açın veya kapatın. Eşlenen sanal ağlar arasında tam bağlantı açarsanız, belirli erişimi engellemek veya reddetmek için ağ güvenlik grupları uygulayabilirsiniz. Tam bağlantı varsayılan seçenektir. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek için bkz. [güvenlik grupları](security-overview.md).
 
 ## <a name="service-chaining"></a>Hizmet zinciri
 
-Service chaining enables you to direct traffic from one virtual network to a virtual appliance or gateway in a peered network through user-defined routes.
+Hizmet zincirleme, bir sanal ağdan gelen trafiği, Kullanıcı tanımlı yollar aracılığıyla eşlenmiş bir ağdaki sanal gereç veya ağ geçidine yönlendirmenizi sağlar.
 
-To enable service chaining, configure user-defined routes that point to virtual machines in peered virtual networks as the *next hop* IP address. User-defined routes could also point to virtual network gateways to enable service chaining.
+Hizmet zincirlemesini etkinleştirmek için, eşlenmiş sanal ağlardaki sanal makineleri *sonraki atlama* IP adresi olarak işaret eden Kullanıcı tanımlı yolları yapılandırın. Kullanıcı tanımlı yollar Ayrıca, hizmet zincirlemesini etkinleştirmek için sanal ağ geçitlerine işaret verebilir.
 
-You can deploy hub-and-spoke networks, where the hub virtual network hosts infrastructure components such as a network virtual appliance or VPN gateway. Daha sonra, tüm ağlı sanal ağlar merkezi sanal ağla eşlenebilir. Traffic flows through network virtual appliances or VPN gateways in the hub virtual network.
+Hub sanal ağının ağ sanal gereci veya VPN Gateway gibi altyapı bileşenlerini barındırdığı merkez ve bağlı ağ ağlarını dağıtabilirsiniz. Daha sonra, tüm ağlı sanal ağlar merkezi sanal ağla eşlenebilir. Trafik, hub sanal ağındaki ağ sanal gereçleri veya VPN ağ geçitleri aracılığıyla akar.
 
-Sanal ağ eşlemesi sayesinde, kullanıcı tanımlı yolda bir sonraki atlama, eşlenen sanal ağdaki veya bir VPN ağ geçidindeki bir sanal makinenin IP adresi olabilir. You can't route between virtual networks with a user-defined route that specifies an Azure ExpressRoute gateway as the next hop type. Kullanıcı tanımlı yollar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yollara genel bakış](virtual-networks-udr-overview.md#user-defined). To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Sanal ağ eşlemesi sayesinde, kullanıcı tanımlı yolda bir sonraki atlama, eşlenen sanal ağdaki veya bir VPN ağ geçidindeki bir sanal makinenin IP adresi olabilir. Sonraki atlama türü olarak bir Azure ExpressRoute ağ geçidini belirten Kullanıcı tanımlı bir yol ile sanal ağlar arasında yönlendirileyemiyorum. Kullanıcı tanımlı yollar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yollara genel bakış](virtual-networks-udr-overview.md#user-defined). Hub ve bağlı bileşen ağ topolojisi oluşturmayı öğrenmek için bkz. [Azure 'Da Merkez-uç ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Ağ geçitleri ve şirket içi bağlantı
 
-Each virtual network, including a peered virtual network, can have its own gateway. A virtual network can use its gateway to connect to an on-premises network. You can also configure [virtual network-to-virtual network connections](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) by using gateways, even for peered virtual networks.
+Eşlenen bir sanal ağ da dahil olmak üzere her sanal ağ kendi ağ geçidine sahip olabilir. Bir sanal ağ, ağ geçidini şirket içi bir ağa bağlanmak için kullanabilir. Ayrıca, eşlenen sanal ağlar için bile ağ geçitlerini kullanarak [sanal ağdan sanal ağ bağlantılarını](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırabilirsiniz.
 
-When you configure both options for virtual network interconnectivity, the traffic between the virtual networks flows through the peering configuration. The traffic uses the Azure backbone.
+Sanal ağ bağlantısı için her iki seçeneği de yapılandırdığınızda, sanal ağlar arasındaki trafik, eşleme yapılandırması üzerinden akar. Trafik Azure omurgasını kullanır.
 
-You can also configure the gateway in the peered virtual network as a transit point to an on-premises network. In this case, the virtual network that is using a remote gateway can't have its own gateway. A virtual network has only one gateway. The gateway is either a local or remote gateway in the peered virtual network, as shown in the following diagram:
+Eşlenen sanal ağdaki ağ geçidini şirket içi bir ağa geçiş noktası olarak da yapılandırabilirsiniz. Bu durumda, uzak ağ geçidi kullanan sanal ağın kendi ağ geçidi olamaz. Bir sanal ağın yalnızca bir ağ geçidi vardır. Ağ Geçidi, aşağıdaki diyagramda gösterildiği gibi, eşlenen sanal ağdaki yerel veya uzak bir ağ geçididir:
 
 ![Sanal ağ eşleme geçişi](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-Both virtual network peering and global virtual network peering support gateway transit.
+Hem sanal ağ eşlemesi hem de küresel sanal ağ eşlemesi, ağ geçidi geçişi destekler.
 
-Gateway transit between virtual networks created through different deployment models is supported. The gateway must be in the virtual network in the Resource Manager model. Geçiş için bir ağ geçidi kullanma hakkında daha fazla bilgi için bkz. [Sanal ağ eşlemesinde geçiş için bir VPN ağ geçidi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Farklı dağıtım modelleriyle oluşturulan sanal ağlar arasındaki ağ geçidi geçişi desteklenir. Ağ Geçidi, Kaynak Yöneticisi modelinde sanal ağda olmalıdır. Geçiş için bir ağ geçidi kullanma hakkında daha fazla bilgi için bkz. [Sanal ağ eşlemesinde geçiş için bir VPN ağ geçidi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-When you peer virtual networks that share a single Azure ExpressRoute connection, the traffic between them goes through the peering relationship. That traffic uses the Azure backbone network. Şirket içi devreye bağlanmak için her bir sanal ağ üzerindeki yerel ağ geçitlerini kullanmaya devam edebilirsiniz. Otherwise, you can use a shared gateway and configure transit for on-premises connectivity.
+Tek bir Azure ExpressRoute bağlantısını paylaşan sanal ağları eşaktardığınızda, aralarındaki trafik eşleme ilişkisine gider. Bu trafik Azure omurga ağını kullanır. Şirket içi devreye bağlanmak için her bir sanal ağ üzerindeki yerel ağ geçitlerini kullanmaya devam edebilirsiniz. Aksi takdirde, paylaşılan bir ağ geçidini kullanabilir ve şirket içi bağlantı için geçişi yapılandırabilirsiniz.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-To confirm that virtual networks are peered, you can check effective routes. Check routes for a network interface in any subnet in a virtual network. Bir sanal ağ eşlemesi zaten varsa, sanal ağ içindeki tüm alt ağlar, eşlenen her bir sanal ağdaki her bir adres alanı için sonraki atlama türü *VNet eşlemesi* olan yollara sahip olur. For more information, see [Diagnose a virtual machine routing problem](diagnose-network-routing-problem.md).
+Sanal ağların eşlendiğini onaylamak için, etkin yolları kontrol edebilirsiniz. Bir sanal ağ içindeki herhangi bir alt ağda bulunan bir ağ arabirimine yönelik yolları denetleyin. Bir sanal ağ eşlemesi zaten varsa, sanal ağ içindeki tüm alt ağlar, eşlenen her bir sanal ağdaki her bir adres alanı için sonraki atlama türü *VNet eşlemesi* olan yollara sahip olur. Daha fazla bilgi için bkz. [sanal makine yönlendirme sorununu tanılama](diagnose-network-routing-problem.md).
 
-You can also troubleshoot connectivity to a virtual machine in a peered virtual network using Azure Network Watcher. A connectivity check lets you see how traffic is routed from a source virtual machine's network interface to a destination virtual machine's network interface. For more information, see [Troubleshoot connections with Azure Network Watcher using the Azure portal](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+Ayrıca, Azure ağ Izleyicisi 'ni kullanarak eşlenmiş bir sanal ağdaki sanal makineye yönelik bağlantı sorunlarını giderebilirsiniz. Bağlantı denetimi, trafiğin bir kaynak sanal makinenin ağ arabiriminden hedef sanal makinenin ağ arabirimine nasıl yönlendirildiğini görmenizi sağlar. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Ağ İzleyicisi ile bağlantı sorunlarını giderme](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
 
-You can also try the [Troubleshoot virtual network peering issues](virtual-network-troubleshoot-peering-issues.md).
+Ayrıca, [sanal ağ eşleme sorunlarını giderin](virtual-network-troubleshoot-peering-issues.md)' i deneyebilirsiniz.
 
-## Constraints for peered virtual networks<a name="requirements-and-constraints"></a>
+## Eşlenen sanal ağlar için kısıtlamalar<a name="requirements-and-constraints"></a>
 
-The following constraints apply only when virtual networks are globally peered:
+Aşağıdaki kısıtlamalar yalnızca sanal ağlar genel olarak eşlendikten sonra geçerlidir:
 
-* Resources in one virtual network can't communicate with the front-end IP address of a Basic Internal Load Balancer (ILB)  in a globally peered virtual network.
-* Some services that use a Basic load balancer don't work over global virtual network peering. For more information, see [What are the constraints related to Global VNet Peering and Load Balancers?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Bir sanal ağdaki kaynaklar, genel olarak eşlenmiş bir sanal ağdaki temel bir Iç Load Balancer (ıLB) ön uç IP adresiyle iletişim kuramaz.
+* Temel yük dengeleyici kullanan bazı hizmetler genel sanal ağ eşlemesi üzerinde çalışmaz. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler ile ilgili kısıtlamalar nelerdir?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-For more information, see [Requirements and constraints](virtual-network-manage-peering.md#requirements-and-constraints). To learn more about the supported number of peerings, see [Networking limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Daha fazla bilgi için bkz. [gereksinimler ve kısıtlamalar](virtual-network-manage-peering.md#requirements-and-constraints). Desteklenen eşleme sayısı hakkında daha fazla bilgi edinmek için bkz. [ağ sınırları](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="permissions"></a>İzinler
 
-To learn about permissions required to create a virtual network peering, see [Permissions](virtual-network-manage-peering.md#permissions).
+Sanal ağ eşlemesi oluşturmak için gereken izinler hakkında bilgi edinmek için, bkz. [izinler](virtual-network-manage-peering.md#permissions).
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-There's a nominal charge for ingress and egress traffic that uses a virtual network peering connection. For more information, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network).
+Sanal ağ eşleme bağlantısı kullanan giriş ve çıkış trafiği için nominal bir ücret uygulanır. Daha fazla bilgi için bkz. [sanal ağ fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Gateway Transit is a peering property that enables a virtual network to utilize a VPN/ExpressRoute gateway in a peered virtual network. Gateway transit works for both cross premises and network-to-network connectivity. Traffic to the gateway (ingress or egress) in the peered virtual network incurs virtual network peering charges. For more information, see [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/) for VPN gateway charges and ExpressRoute Gateway pricing for ExpressRoute gateway charges.
+Ağ Geçidi geçişi, bir sanal ağın eşlenen bir sanal ağda VPN/ExpressRoute Gateway kullanmasını sağlayan bir eşleme özelliğidir. Ağ Geçidi geçişi, hem şirket içi hem de ağdan ağa bağlantı için kullanılır. Eşlenen sanal ağdaki ağ geçidine (giriş veya çıkış) giden trafik, sanal ağ eşleme ücretleri doğurur. Daha fazla bilgi için bkz. ExpressRoute ağ geçidi ücretleri için VPN Gateway ücretleri için fiyatlandırma ve ExpressRoute ağ geçidi fiyatlandırması [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) .
 
 >[!NOTE]
-> A previous version of this document stated that virtual network peering charges would not apply with Gateway Transit. It now reflects accurate pricing per the pricing page.
+> Bu belgenin önceki bir sürümü, sanal ağ eşleme ücretlerinin ağ geçidi aktarımına uygulanabileceğini ifade etmez. Artık fiyatlandırma sayfasına göre doğru fiyatlandırmayı yansıtır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* You can create a peering between two virtual networks. The networks can belong to the same subscription, different deployment models in the same subscription, or different subscriptions. Aşağıdaki senaryolardan biri için öğreticiyi tamamlayın:
+* İki sanal ağ arasında bir eşleme oluşturabilirsiniz. Ağlar aynı aboneliğe, aynı abonelikte farklı dağıtım modellerine veya farklı aboneliklere ait olabilir. Aşağıdaki senaryolardan biri için öğreticiyi tamamlayın:
 
     |Azure dağıtım modeli             | Abonelik  |
     |---------                          |---------|
@@ -117,6 +117,6 @@ Gateway Transit is a peering property that enables a virtual network to utilize 
     |Biri Resource Manager, diğeri klasik  |[Aynı](create-peering-different-deployment-models.md)|
     |                                   |[Farklı](create-peering-different-deployment-models-subscriptions.md)|
 
-* To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* To learn about all virtual network peering settings, see [Create, change, or delete a virtual network peering](virtual-network-manage-peering.md).
-* For answers to common virtual network peering and global virtual network peering questions, see [VNet Peering](virtual-networks-faq.md#vnet-peering).
+* Hub ve bağlı bileşen ağ topolojisi oluşturmayı öğrenmek için bkz. [Azure 'Da Merkez-uç ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Tüm sanal ağ eşleme ayarları hakkında bilgi edinmek için bkz. [sanal ağ eşlemesi oluşturma, değiştirme veya silme](virtual-network-manage-peering.md).
+* Ortak sanal ağ eşlemesi ve küresel sanal ağ eşlemesi sorularına yanıt almak için bkz. [VNET eşlemesi](virtual-networks-faq.md#vnet-peering).

@@ -1,6 +1,6 @@
 ---
-title: Create automatic deployments from Azure portal - Azure IoT Edge | Microsoft Docs
-description: Use the Azure portal to create automatic deployments for groups of IoT Edge devices
+title: Azure portalından - Azure IOT Edge otomatik dağıtımlar oluşturmayı | Microsoft Docs
+description: Cihazları IOT Edge grupları için otomatik dağıtımlar oluşturmak için Azure portalını kullanma
 keywords: ''
 author: kgremban
 manager: philmea
@@ -16,15 +16,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457355"
 ---
-# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Deploy and monitor IoT Edge modules at scale using the Azure portal
+# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Dağıtma ve Azure portalını kullanarak ölçekte IOT Edge modülleri izleme
 
-Create an **IoT Edge automatic deployment** in the Azure portal to manage ongoing deployments for many devices at once. Automatic deployments for IoT Edge are part of the [automatic device management](/azure/iot-hub/iot-hub-automatic-device-management) feature of IoT Hub. Deployments are dynamic processes that enable you to deploy multiple modules to multiple devices, track the status and health of the modules, and make changes when necessary. 
+Aynı anda birçok cihaz için devam eden dağıtımları yönetmek üzere Azure portal **Otomatik dağıtım IoT Edge** oluşturun. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](/azure/iot-hub/iot-hub-automatic-device-management) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı, modüllerin durumunu ve durumunu izlemenizi ve gerektiğinde değişiklik yapmayı sağlayan dinamik işlemlerdir. 
 
-For more information, see [Understand IoT Edge automatic deployments for single devices or at scale](module-deployment-monitoring.md).
+Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
 
-## <a name="identify-devices-using-tags"></a>Identify devices using tags
+## <a name="identify-devices-using-tags"></a>Etiketleri kullanarak cihazları belirleyin
 
-Before you can create a deployment, you have to be able to specify which devices you want to affect. Azure IoT Edge identifies devices using **tags** in the device twin. Each device can have multiple tags that you define in any way that makes sense for your solution. For example, if you manage a campus of smart buildings, you might add the following tags to a device:
+Bir dağıtımı oluşturmadan önce değiştirmek istediğiniz hangi cihazların belirtebilmek sahip. Azure IoT Edge cihaz ikizi **etiketleri** kullanarak cihazları tanımlar. Her cihazda, çözümünüz için anlamlı olacak şekilde tanımladığınız birden fazla etiket olabilir. Örneğin, bir akıllı binalar, kampüs yönetiyorsanız, bir cihaza aşağıdaki etiketler ekleyebilirsiniz:
 
 ```json
 "tags":{
@@ -37,178 +37,178 @@ Before you can create a deployment, you have to be able to specify which devices
 }
 ```
 
-For more information about device twins and tags, see [Understand and use device twins in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Cihaz ikgörüti ve etiketleri hakkında daha fazla bilgi için bkz. [IoT Hub 'da cihaz TWINS 'ı anlama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md).
 
-## <a name="create-a-deployment"></a>Create a deployment
+## <a name="create-a-deployment"></a>Bir dağıtım oluşturun
 
-1. In the [Azure portal](https://portal.azure.com), go to your IoT hub. 
-1. Select **IoT Edge**.
-1. Select **Add IoT Edge Deployment**.
+1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
+1. **IoT Edge**seçin.
+1. **IoT Edge dağıtım Ekle**' yi seçin.
 
-There are five steps to create a deployment. The following sections walk through each one. 
+Bir dağıtımı oluşturmak için beş adım vardır. Aşağıdaki bölümlerde, her birini yol. 
 
-### <a name="step-1-name-and-label"></a>Step 1: Name and Label
+### <a name="step-1-name-and-label"></a>1\. adım: Ad ve etiket
 
-1. Give your deployment a unique name that is up to 128 lowercase letters. Avoid spaces and the following invalid characters: `& ^ [ ] { } \ | " < > /`.
-1. You can add labels as key-value pairs to help track your deployments. For example, **HostPlatform** and **Linux**, or **Version** and **3.0.1**.
-1. Select **Next** to move to step two. 
+1. Dağıtımınızı en çok 128 küçük harf olan benzersiz bir ad verin. Boşluklardan ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+1. Dağıtımlarınızın izlenmesine yardımcı olmak için anahtar-değer çiftleri olarak Etiketler ekleyebilirsiniz. Örneğin, **Hostplatform** ve **Linux**veya **Version** ve **3.0.1**.
+1. İkinci adıma geçmek için **İleri ' yi** seçin. 
 
-### <a name="step-2-add-modules-optional"></a>Step 2: Add Modules (optional)
+### <a name="step-2-add-modules-optional"></a>2\. adım: (İsteğe bağlı) modülleri ekleme
 
-You can add up to 20 modules to a deployment. 
+Bir dağıtıma en fazla 20 modül ekleyebilirsiniz. 
 
-If you create a deployment with no modules, it removes any current modules from the target devices. 
+Modül olmadan bir dağıtım oluşturursanız, hedef cihazlardan tüm geçerli modüller kaldırılır. 
 
-To add a module from Azure Stream Analytics, follow these steps:
+Azure Stream Analytics'ten bir modül eklemek için aşağıdaki adımları izleyin:
 
-1. In the **Deployment Modules** section of the page, click **Add**.
-1. Select **Azure Stream Analytics module**.
-1. Choose your **Subscription** from the drop-down menu.
-1. Choose your IoT **Edge job** from the drop-down menu.
-1. Select **Save** to add your module to the deployment. 
+1. Sayfanın **dağıtım modülleri** bölümünde **Ekle**' ye tıklayın.
+1. **Azure Stream Analytics modülünü**seçin.
+1. Açılır menüden **aboneliğinizi** seçin.
+1. Aşağı açılan menüden IoT **Edge işinizi** seçin.
+1. Modülünüzü dağıtıma eklemek için **Kaydet** ' i seçin. 
 
-To add custom code as a module, or to manually add an Azure service module, follow these steps:
+Bir modül olarak özel kod ekleyin veya bir Azure hizmeti modülü el ile eklemek için şu adımları izleyin:
 
-1. In the **Container Registry Settings** section of the page, provide the names and credentials for any private container registries that contain the module images for this deployment. The IoT Edge Agent will report error 500 if it can't find the container registry credential for a Docker image.
-1. In the **Deployment Modules** section of the page, click **Add**.
-1. Select **IoT Edge Module**.
-1. Give your module a **Name**.
-1. For the **Image URI** field, enter the container image for your module. 
-1. Specify any **Container Create Options** that should be passed to the container. For more information, see [docker create](https://docs.docker.com/engine/reference/commandline/create/).
-1. Use the drop-down menu to select a **Restart policy**. Choose from the following options: 
-   * **Always** - The module always restarts if it shuts down for any reason.
-   * **never** - The module never restarts if it shuts down for any reason.
-   * **on-failure** - The module restarts if it crashes, but not if it shuts down cleanly. 
-   * **on-unhealthy** - The module restarts if it crashes or returns an unhealthy status. It's up to each module to implement the health status function. 
-1. Use the drop-down menu to select the **Desired Status** for the module. Choose from the following options:
-   * **running** - Running is the default option. The module will start running immediately after being deployed.
-   * **stopped** - After being deployed, the module will remain idle until called upon to start by you or another module.
-1. Select **Set module twin's desired properties** if you want to add tags or other properties to the module twin.
-1. Enter **Environment Variables** for this module. Environment variables provide configuration information to a module.
-1. Select **Save** to add your module to the deployment. 
+1. Sayfanın **Container Registry ayarları** bölümünde, bu dağıtımın modül görüntülerini içeren tüm özel kapsayıcı kayıt defterleri için adları ve kimlik bilgilerini belirtin. IoT Edge Aracısı bir Docker görüntüsü için kapsayıcı kayıt defteri kimlik bilgilerini bulamazsa hata 500 ' i raporlar.
+1. Sayfanın **dağıtım modülleri** bölümünde **Ekle**' ye tıklayın.
+1. **IoT Edge modülünü**seçin.
+1. Modülünüzü bir **ad**verin.
+1. **Görüntü URI 'si** alanı için modülünüzün kapsayıcı görüntüsünü girin. 
+1. Kapsayıcıya geçirilmesi gereken herhangi bir **kapsayıcı oluşturma seçeneğini** belirtin. Daha fazla bilgi için bkz. [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
+1. Bir **yeniden başlatma ilkesi**seçmek için açılan menüyü kullanın. Aşağıdaki seçeneklerden birini seçin: 
+   * **Her zaman** -bu, herhangi bir nedenle kapanırsa modül her zaman yeniden başlatılır.
+   * **hiçbir** sebeple, herhangi bir nedenle kapanmadıysa modül hiçbir şekilde yeniden başlatmaz.
+   * **hata** durumunda-modül kilitlenirse yeniden başlatılır, ancak temiz bir şekilde kapanmaz. 
+   * **sağlıksız** -sistem durumu kilitlenirse veya sağlıksız bir durum döndürürse modül yeniden başlatılır. Bu sistem durumu işlevi uygulamak için her modül aittir. 
+1. Modülün **Istenen durumunu** seçmek için açılan menüyü kullanın. Aşağıdaki seçeneklerden birini seçin:
+   * **çalıştırma,** varsayılan seçenektir. Modül hemen dağıtıldıktan sonra çalışan başlar.
+   * **durduruldu** -dağıtıldıktan sonra, siz veya başka bir modülle başlamak üzere çağrılana kadar modül boşta kalır.
+1. İkizi modülüne etiket veya diğer özellikler eklemek istiyorsanız **Modül ikizi 'nin istenen özelliklerini ayarla** ' yı seçin.
+1. Bu modülün **ortam değişkenlerini** girin. Ortam değişkenleri bir modüle yapılandırma bilgileri sağlar.
+1. Modülünüzü dağıtıma eklemek için **Kaydet** ' i seçin. 
 
-Once you have all the modules for a deployment configured, select **Next** to move to step three.
+Yapılandırılmış bir dağıtımın tüm modüllerine sahip olduğunuzda, üçüncü adıma geçmek için **İleri** ' yi seçin.
 
-### <a name="step-3-specify-routes-optional"></a>Step 3: Specify Routes (optional)
+### <a name="step-3-specify-routes-optional"></a>3\. adım: (İsteğe bağlı) bir yol belirtin.
 
-Routes define how modules communicate with each other within a deployment. By default the wizard gives you a route called **route** and defined as **FROM /* INTO $upstream**, which means that any messages output by any modules are sent to your IoT hub.  
+Modüller birbirleri ile dağıtımında iletişim kurma biçimini yolları tanımlayın. Varsayılan olarak, sihirbaz size **route** adlı bir yol sağlar ve **FROM/* to $upstream * * olarak tanımlanır, bu da herhangi bir modülle giden tüm iletilerin IoT Hub 'ınıza gönderilmesi anlamına gelir.  
 
-Add or update the routes with information from [Declare routes](module-composition.md#declare-routes), then select **Next** to continue to the review section.
+Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgilerle ekleyin veya güncelleştirin, ardından inceleme bölümüne devam etmek için **İleri** ' yi seçin.
 
-### <a name="step-4-specify-metrics-optional"></a>Step 4: Specify Metrics (optional)
+### <a name="step-4-specify-metrics-optional"></a>4\. Adım: ölçümleri belirtme (isteğe bağlı)
 
-Metrics provide summary counts of the various states that a device may report back as a result of applying configuration content.
+Ölçümler, bir cihazın yapılandırma içeriği uygulama sonucu olarak rapor sağlayabileceği çeşitli durumların Özet sayısını sağlar.
 
-1. Enter a name for **Metric Name**.
+1. **Ölçüm adı**için bir ad girin.
 
-1. Enter a query for **Metric Criteria**. The query is based on IoT Edge hub module twin [reported properties](module-edgeagent-edgehub.md#edgehub-reported-properties). The metric represents the number of rows returned by the query.
+1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örnek:
+   Örneğin:
 
    ```sql
    SELECT deviceId FROM devices
      WHERE properties.reported.lastDesiredStatus.code = 200
    ```
 
-### <a name="step-5-target-devices"></a>Step 5: Target Devices
+### <a name="step-5-target-devices"></a>5\. Adım: hedef cihazlar
 
-Use the tags property from your devices to target the specific devices that should receive this deployment. 
+Bu dağıtım alması gereken belirli cihazları hedeflemek için etiketler özelliği cihazlarınızdan kullanın. 
 
-Since multiple deployments may target the same device, you should give each deployment a priority number. If there's ever a conflict, the deployment with the highest priority (larger values indicate higher priority) wins. If two deployments have the same priority number, the one that was created most recently wins. 
+Birden çok dağıtım aynı cihazı hedefleyebilir olduğundan, her dağıtım öncelik numarası vermesi gerekir. Herhangi bir çakışma varsa, en yüksek önceliğe sahip dağıtım (daha büyük değerler daha yüksek öncelik gösterir) kazanır. İki dağıtım aynı öncelik numarasına sahip olmak, çoğu oluşturulmuş bir son kazanır. 
 
-1. Enter a positive integer for the deployment **Priority**.
-1. Enter a **Target condition** to determine which devices will be targeted with this deployment. The condition is based on device twin tags or device twin reported properties and should match the expression format. For example, `tags.environment='test'` or `properties.reported.devicemodel='4000x'`. 
-1. Select **Next** to move on to the final step.
+1. Dağıtım **önceliği**için pozitif bir tamsayı girin.
+1. Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir **hedef koşul** girin. Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin, `tags.environment='test'` veya `properties.reported.devicemodel='4000x'`. 
+1. Son adıma geçmek için **İleri ' yi** seçin.
 
-### <a name="step-6-review-deployment"></a>Step 6: Review Deployment
+### <a name="step-6-review-deployment"></a>6\. Adım: dağıtımı Inceleme
 
-Review your deployment information, then select **Submit**.
+Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Deploy modules from Azure Marketplace
+## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketi 'nden modüller dağıtma
 
-Azure Marketplace is an online applications and services marketplace where you can browse through a wide range of enterprise applications and solutions that are certified and optimized to run on Azure, including [IoT Edge modules](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Azure Marketplace can also be accessed through the Azure portal under **Create a Resource**.
+Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)dahil olmak üzere Azure 'da çalışmak üzere sertifikalı ve iyileştirilmiş çok sayıda kurumsal uygulama ve çözüm arasında dolaşabileceğiniz çevrimiçi bir uygulamalar ve hizmetler marketi. Azure Market 'Te **kaynak oluştur**altında Azure Portal aracılığıyla da erişilebilir.
 
-You can deploy an IoT Edge module from either Azure Marketplace or the Azure portal:
+IoT Edge modülünü Azure Marketi 'nden veya Azure portal dağıtabilirsiniz:
 
-1. Find a module and begin the deployment process.
+1. Bir modül bulun ve dağıtım işlemine başlayın.
 
-   * Azure portal: Find a module and select **Create**.
+   * Azure portal: bir modül bulun ve **Oluştur**' u seçin.
 
-   * Azure Marketplace:
+   * Azure Marketi:
 
-     1. Find a module and select **Get it now**.
-     1. Acknowledge the provider's terms of use and privacy policy by selecting **Continue**.
+     1. Bir modül bulun ve **Şimdi al**' ı seçin.
+     1. Devam ' i seçerek sağlayıcının kullanım koşullarını ve gizlilik ilkesini kabul **edin**.
 
-1. Choose your subscription and the IoT Hub to which the target device is attached.
+1. Aboneliğinizi ve hedef cihazın eklendiği IoT Hub seçin.
 
-1. Choose **Deploy at Scale**.
+1. **Ölçekte dağıt**' ı seçin.
 
-1. Choose whether to add the module to a new deployment or to a clone of an existing deployment; if cloning, select the existing deployment from the list.
+1. Modülün yeni bir dağıtıma mi yoksa mevcut bir dağıtımın kopyasına mı ekleneceğini seçin; kopyalama yapıyorsanız, listeden var olan dağıtımı seçin.
 
-1. Select **Create** to continue the process of creating a deployment at scale. You'll be able to specify the same details as you would for any deployment.
+1. Ölçekli bir dağıtım oluşturma işlemine devam etmek için **Oluştur** ' u seçin. Herhangi bir dağıtımda olduğu gibi aynı ayrıntıları belirleyebileceksiniz.
 
-## <a name="monitor-a-deployment"></a>Monitor a deployment
+## <a name="monitor-a-deployment"></a>Bir dağıtımını izleme
 
-To view the details of a deployment and monitor the devices running it, use the following steps:
+Bir dağıtımın ayrıntılarını görüntülemek ve onu çalıştıran cihazları izlemek için aşağıdaki adımları kullanın:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub. 
-1. Select **IoT Edge**.
-1. Select **IoT Edge deployments**. 
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin. 
+1. **IoT Edge**seçin.
+1. **IoT Edge dağıtımlarını**seçin. 
 
-   ![View IoT Edge deployments](./media/how-to-deploy-monitor/iot-edge-deployments.png)
+   ![IOT Edge dağıtımları görüntüle](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Inspect the deployment list. For each deployment, you can view the following details:
-   * **ID** - the name of the deployment.
-   * **Target condition** - the tag used to define targeted devices.
-   * **Priority** - the priority number assigned to the deployment.
-   * **System metrics** - **Targeted** specifies the number of device twins in IoT Hub that match the targeting condition, and **Applied** specifies the number of devices that have had the deployment content applied to their module twins in IoT Hub. 
-   * **Device metrics** - the number of IoT Edge devices in the deployment reporting success or errors from the IoT Edge client runtime.
-   * **Custom metrics** - the number of IoT Edge devices in the deployment reporting data for any metrics that you defined for the deployment.
-   * **Creation time** - the timestamp from when the deployment was created. This timestamp is used to break ties when two deployments have the same priority. 
-1. Select the deployment that you want to monitor.  
-1. Inspect the deployment details. You can use tabs to review the details of the deployment.
+1. Dağıtım listesini inceleyin. Her dağıtım için aşağıdaki ayrıntıları görebilirsiniz:
+   * **ID** -dağıtımın adı.
+   * **Hedef koşul** -hedeflenen cihazları tanımlamak için kullanılan etiket.
+   * **Öncelik** -dağıtıma atanan öncelik numarası.
+   * **Hedeflenen** - **sistem ölçümleri** , hedefleme koşuluyla eşleşen IoT Hub cihaz tiklerinin sayısını belirtir ve **uygulandı** , dağıtım içeriğinin IoT Hub kendi modül TWINS 'lerine uygulanmış olan cihazların sayısını belirtir. 
+   * **Cihaz ölçümleri** -dağıtımdaki IoT Edge cihazların sayısı, IoT Edge istemci çalışma zamanının başarısını veya hatalarını bildiriyor.
+   * **Özel ölçümler** -dağıtım için tanımladığınız tüm ölçümler için dağıtım raporlama verilerinde IoT Edge cihazların sayısı.
+   * **Oluşturma zamanı** -dağıtımın oluşturulduğu zaman damgası. Bu zaman damgasından iki dağıtım aynı önceliğe sahip olduğunuzda TIES ayırmak için kullanılır. 
+1. İzlemek istediğiniz dağıtımı seçin.  
+1. Dağıtım ayrıntılarını inceleyin. Dağıtım ayrıntılarını gözden geçirmek için sekmeleri kullanabilirsiniz.
 
-## <a name="modify-a-deployment"></a>Modify a deployment
+## <a name="modify-a-deployment"></a>Bir dağıtım değiştirme
 
-When you modify a deployment, the changes immediately replicate to all targeted devices. 
+Bir dağıtım değiştirdiğinizde değişiklikler hemen hedeflenen tüm cihazlara çoğaltın. 
 
-If you update the target condition, the following updates occur:
+Hedef koşul güncelleştirme aşağıdaki güncelleştirmeleri oluşur:
 
-* If a device didn't meet the old target condition, but meets the new target condition and this deployment is the highest priority for that device, then this deployment is applied to the device. 
-* If a device currently running this deployment no longer meets the target condition, it uninstalls this deployment and takes on the next highest priority deployment. 
-* If a device currently running this deployment no longer meets the target condition and doesn't meet the target condition of any other deployments, then no change occurs on the device. The device continues running its current modules in their current state, but is not managed as part of this deployment anymore. Once it meets the target condition of any other deployment, it uninstalls this deployment and takes on the new one. 
+* Ardından, bir cihaz, eski hedef koşul karşılanmadıysa, ancak yeni hedef koşulunu ve bu dağıtım bu cihaz için en yüksek öncelikli ise, bu dağıtım cihaza uygulanır. 
+* Şu anda bu dağıtım artık çalıştıran bir cihaza hedef koşulu karşılıyorsa, bu dağıtım kaldırır ve sonraki en yüksek öncelikli dağıtımı alır. 
+* Şu anda bu dağıtım artık çalıştıran bir cihaza hedef koşulu karşılayan ve diğer tüm dağıtımları, hedef koşulu yerine getirmeyen, hiçbir değişiklik cihazda gerçekleşir. Cihaz, geçerli alt modüller kendi geçerli durumunda çalışmaya devam eder ancak artık bu dağıtımın bir parçası olarak yönetilmez. Başka bir dağıtım hedef koşulu karşılayan sonra bu dağıtım kaldırır ve yeni alır. 
 
-To modify a deployment, use the following steps: 
+Bir dağıtım değiştirmek için aşağıdaki adımları kullanın: 
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub. 
-1. Select **IoT Edge**.
-1. Select **IoT Edge deployments**. 
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin. 
+1. **IoT Edge**seçin.
+1. **IoT Edge dağıtımlarını**seçin. 
 
-   ![View IoT Edge deployments](./media/how-to-deploy-monitor/iot-edge-deployments.png)
+   ![IOT Edge dağıtımları görüntüle](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Select the deployment that you want to modify. 
-1. Make updates to the following fields: 
-   * Target condition
-   * Metrics - you can modify or delete metrics you've defined, or add new ones.
+1. Değiştirmek istediğiniz dağıtımı seçin. 
+1. Aşağıdaki alanları güncelleştirmeleri yapın: 
+   * Hedef koşul
+   * Ölçümler-tanımladığınız ölçümleri değiştirebilir veya silebilir veya yenilerini ekleyebilirsiniz.
    * Etiketler
    * Öncelik
 1. **Kaydet**’i seçin.
-1. Follow the steps in [Monitor a deployment](#monitor-a-deployment) to watch the changes roll out. 
+1. Değişiklikleri izlemek için [bir dağıtımı izleme](#monitor-a-deployment) bölümündeki adımları izleyin. 
 
-## <a name="delete-a-deployment"></a>Delete a deployment
+## <a name="delete-a-deployment"></a>Dağıtımı Sil
 
-When you delete a deployment, any devices take on their next highest priority deployment. If your devices don't meet the target condition of any other deployment, then the modules are not removed when the deployment is deleted. 
+Bir dağıtım sildiğinizde, sonraki en yüksek öncelikli dağıtım üzerinde herhangi bir cihaza yararlanın. Daha sonra başka bir dağıtım hedef koşulu cihazlarınızı karşılamıyorsa, dağıtım silindiğinde modülleri kaldırılmaz. 
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub. 
-1. Select **IoT Edge**.
-1. Select **IoT Edge deployments**. 
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin. 
+1. **IoT Edge**seçin.
+1. **IoT Edge dağıtımlarını**seçin. 
 
-   ![View IoT Edge deployments](./media/how-to-deploy-monitor/iot-edge-deployments.png)
+   ![IOT Edge dağıtımları görüntüle](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Use the checkbox to select the deployment that you want to delete. 
+1. Silmek istediğiniz dağıtım seçmek için onay kutusunu kullanın. 
 1. **Sil**’i seçin.
-1. A prompt will inform you that this action will delete this deployment and revert to the previous state for all devices.  This means that a deployment with a lower priority will apply.  If no other deployment is targeted, no modules will be removed. If you want to remove all modules from your device, create a deployment with zero modules and deploy it to the same devices. Select **Yes** to continue. 
+1. Bir komut istemi Bu eylem bu dağıtımı silin ve tüm cihazlar için önceki duruma geri bildirir.  Bu, düşük önceliğe sahip bir dağıtımın uygulanacağı anlamına gelir.  Başka bir dağıtım hedeflendiyse hiçbir modül kaldırılmaz. Cihazınızın tüm modülleri kaldırmak istiyorsanız, sıfır modülleriyle bir dağıtımını oluşturun ve aynı cihazlara dağıtın. Devam etmek için **Evet** ' i seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about [Deploying modules to IoT Edge devices](module-deployment-monitoring.md).
+[IoT Edge cihazlara modül dağıtma](module-deployment-monitoring.md)hakkında daha fazla bilgi edinin.

@@ -29,7 +29,7 @@ ms.locfileid: "74196605"
 
 Statik bir özel IP adresi ile bir sanal makine (VM) oluşturabilirsiniz. Bir VM 'ye bir alt ağdan hangi adresin atandığını seçmek istiyorsanız, dinamik bir adres yerine statik bir özel IP adresi atayın. [Statik özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#allocation-method)hakkında daha fazla bilgi edinin. Var olan bir VM 'ye atanan özel IP adresini dinamik veya genel IP adresleriyle çalışacak şekilde değiştirmek için bkz. [IP adreslerini ekleme, değiştirme veya kaldırma](virtual-network-network-interface-addresses.md).
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
 Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullanarak tamamlayabilirsiniz. Yerel bilgisayarınızı kullanmak için [Azure PowerShell yüklü](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)olduğundan emin olun. Azure Cloud Shell kullanmak için, takip eden herhangi bir komut kutusunun sağ üst köşesinde bulunan **deneyin** ' i seçin. Cloud Shell sizi Azure 'da oturum açar.
 

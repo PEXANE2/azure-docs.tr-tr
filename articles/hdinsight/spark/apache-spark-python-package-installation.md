@@ -1,6 +1,6 @@
 ---
-title: Script action for Python packages with Jupyter on Azure HDInsight
-description: Step-by-step instructions on how to use script action to configure Jupyter notebooks available with HDInsight Spark clusters to use external python packages.
+title: Azure HDInsight üzerinde jupi ile Python paketleri için betik eylemi
+description: Betik eyleminin nasıl kullanılacağına ilişkin adım adım yönergeler, HDInsight Spark kümeleri ile birlikte sunulan jupi not defterlerini dış Python paketleri kullanacak şekilde yapılandırma.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,117 +14,117 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215627"
 ---
-# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Safely manage Python environment on Azure HDInsight using Script Action
+# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
 > [!div class="op_single_selector"]
-> * [Using cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Using Script Action](apache-spark-python-package-installation.md)
+> * [Hücre Magic 'i kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Betik eylemini kullanma](apache-spark-python-package-installation.md)
 
-HDInsight has two built-in Python installations in the Spark cluster, Anaconda Python 2.7 and Python 3.5. In some cases, customers need to customize the Python environment, like installing external Python packages or another Python version. In this article, we show the best practice of safely managing Python environments for an [Apache Spark](https://spark.apache.org/) cluster on HDInsight.
+HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Bazı durumlarda, müşterilerin, dış Python paketleri veya başka bir Python sürümü yükleme gibi Python ortamını özelleştirmesi gerekir. Bu makalede, HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesi için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]  
-   > If you do not already have a Spark cluster on HDInsight Linux, you can run script actions during cluster creation. Visit the documentation on [how to use custom script actions](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+   > HDInsight Linux üzerinde henüz bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)hakkındaki belgeleri ziyaret edin.
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Support for open-source software used on HDInsight clusters
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight kümelerinde kullanılan açık kaynaklı yazılım desteği
 
-The Microsoft Azure HDInsight service uses an ecosystem of open-source technologies formed around Apache Hadoop. Microsoft Azure provides a general level of support for open-source technologies. For more information, see [Azure Support FAQ website](https://azure.microsoft.com/support/faq/). The HDInsight service provides an additional level of support for built-in components.
+Microsoft Azure HDInsight hizmeti Apache Hadoop etrafında oluşturulmuş açık kaynaklı teknolojilerin ekosistemini kullanır. Microsoft Azure, açık kaynaklı teknolojiler için genel bir destek düzeyi sağlar. Daha fazla bilgi için bkz. [Azure DESTEĞI SSS Web sitesi](https://azure.microsoft.com/support/faq/). HDInsight hizmeti, yerleşik bileşenler için ek bir destek düzeyi sağlar.
 
-There are two types of open-source components that are available in the HDInsight service:
+HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
-* **Built-in components** - These components are pre-installed on HDInsight clusters and provide core functionality of the cluster. For example, Apache Hadoop YARN Resource Manager, the Apache Hive query language (HiveQL), and the Mahout library belong to this category. A full list of cluster components is available in [What's new in the Apache Hadoop cluster versions provided by HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
-* **Custom components** - You, as a user of the cluster, can install or use in your workload any component available in the community or created by you.
+* **Yerleşik bileşenler** -bu bileşenler HDInsight kümelerinde önceden yüklenir ve kümenin temel işlevlerini sağlar. Örneğin, Apache Hadoop YARN Kaynak Yöneticisi, Apache Hive sorgu dili (HiveQL) ve Mahout kitaplığı bu kategoriye aittir. Tüm küme bileşenleri listesi, [HDInsight tarafından sağlanan Apache Hadoop kümesi sürümlerindeki yenilikler](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)bölümünde bulunur.
+* **Özel bileşenler** -kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafınızdan oluşturulan herhangi bir bileşeni iş yükünüze yükleyebilir veya kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Components provided with the HDInsight cluster are fully supported. Microsoft Support helps to isolate and resolve issues related to these components.
+> HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenmektedir. Microsoft Desteği, bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Custom components receive commercially reasonable support to help you to further troubleshoot the issue. Microsoft support may be able to resolve the issue OR they may ask you to engage available channels for the open source technologies where deep expertise for that technology is found. For example, there are many community sites that can be used, like: [MSDN forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Also Apache projects have project sites on [https://apache.org](https://apache.org), for example: [Hadoop](https://hadoop.apache.org/).
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="understand-default-python-installation"></a>Understand default Python installation
+## <a name="understand-default-python-installation"></a>Varsayılan Python yüklemesini anlama
 
-HDInsight Spark cluster is created with Anaconda installation. There are two Python installations in the cluster, Anaconda Python 2.7 and Python 3.5. The table below shows the default Python settings for Spark, Livy, and Jupyter.
+HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda Python 2,7 ve Python 3,5 olmak üzere iki Python yüklemesi vardır. Aşağıdaki tabloda Spark, Livy ve Jupyıter için varsayılan Python ayarları gösterilmektedir.
 
-| |Python 2.7|Python 3.5|
+| |Python 2.7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Default set to 2.7|Yok|
-|Livy|Default set to 2.7|Yok|
-|Jupyter|PySpark kernel|PySpark3 kernel|
+|Spark|Varsayılan olarak 2,7 ayarlanır|Yok|
+|Livy|Varsayılan olarak 2,7 ayarlanır|Yok|
+|Jupyter|PySpark çekirdeği|PySpark3 çekirdeği|
 
-## <a name="safely-install-external-python-packages"></a>Safely install external Python packages
+## <a name="safely-install-external-python-packages"></a>Dış Python paketlerini güvenle yükler
 
-HDInsight cluster depends on the built-in Python environment, both Python 2.7 and Python 3.5. Directly installing custom packages in those default built-in environments may cause unexpected library version changes, and break the cluster further. In order to safely install custom external Python packages for your Spark applications, follow below steps.
+HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıdır. Özel paketleri bu varsayılan yerleşik ortamlara doğrudan yüklemek beklenmeyen kitaplık sürümü değişikliklerine neden olabilir ve kümeyi daha fazla kesebilir. Spark uygulamalarınız için özel dış Python paketlerini güvenli bir şekilde yüklemek için aşağıdaki adımları izleyin.
 
-1. Create Python virtual environment using conda. A virtual environment provides an isolated space for your projects without breaking others. When creating the Python virtual environment, you can specify python version that you want to use. Note that you still need to create virtual environment even though you would like to use Python 2.7 and 3.5. This is to make sure the cluster’s default environment not getting broke. Run script actions on your cluster for all nodes with below script to create a Python virtual environment. 
+1. Conda kullanarak Python sanal ortamı oluşturun. Sanal bir ortam, başka bir yere kırçıkmadan projeleriniz için yalıtılmış bir alan sağlar. Python sanal ortamını oluştururken, kullanmak istediğiniz Python sürümünü belirtebilirsiniz. Python 2,7 ve 3,5 ' i kullanmak istiyor olsanız bile yine de sanal ortam oluşturmanız gerektiğini unutmayın. Bu, kümenin varsayılan ortamının bromıyor olduğundan emin olmak için kullanılır. Python sanal ortamı oluşturmak için aşağıdaki betiği içeren tüm düğümler için kümenizde betik eylemleri çalıştırın. 
 
-    -   `--prefix` specifies a path where a conda virtual environment lives. There are several configs that need to be changed further based on the path specified here. In this example, we use the py35new, as the cluster has an existing virtual environment called py35 already.
-    -   `python=` specifies the Python version for the virtual environment. In this example, we use version 3.5, the same version as the cluster built in one. You can also use other Python versions to create the virtual environment.
-    -   `anaconda` specifies the package_spec as anaconda to install Anaconda packages in the virtual environment.
+    -   `--prefix` bir Conda sanal ortamının yaşadığı bir yolu belirtir. Burada belirtilen yola göre daha fazla değiştirilmesi gereken birkaç yapılandırma vardır. Bu örnekte, küme zaten py35 adlı mevcut bir sanal ortama sahip olduğu için py35new kullanıyoruz.
+    -   `python=` sanal ortam için Python sürümünü belirtir. Bu örnekte, içinde yerleşik olarak bulunan kümeyle aynı sürüme sahip sürüm 3,5 ' i kullanırız. Sanal ortam oluşturmak için diğer Python sürümlerini de kullanabilirsiniz.
+    -   `anaconda`, Anaconda paketlerinin sanal ortama yüklenmesi için package_spec belirtir.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes 
     ```
 
-2. Install external Python packages in the created virtual environment if needed. Run script actions on your cluster for all nodes with below script to install external Python packages. You need to have sudo privilege here in order to write files to the virtual environment folder.
+2. Gerekirse, oluşturulan sanal ortama dış Python paketleri yükler. Dış Python paketlerini yüklemek için aşağıdaki betiği içeren tüm düğümler için kümenizde betik eylemleri çalıştırın. Sanal ortam klasörüne dosya yazmak için burada sudo ayrıcalığına sahip olmanız gerekir.
 
-    You can search the [package index](https://pypi.python.org/pypi) for the complete list of packages that are available. You can also get a list of available packages from other sources. For example, you can install packages made available through [conda-forge](https://conda-forge.org/feedstocks/).
+    Kullanılabilir paketlerin tüm listesi için [paket dizininde](https://pypi.python.org/pypi) arama yapabilirsiniz. Ayrıca, diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, [Conda-Forge](https://conda-forge.org/feedstocks/)aracılığıyla kullanıma sunulan paketleri yükleyebilirsiniz.
 
-    -   `seaborn` is the package name that you would like to install.
-    -   `-n py35new` specify the virtual environment name that just gets created. Make sure to change the name correspondingly based on your virtual environment creation.
+    -   `seaborn` yüklemek istediğiniz paket adıdır.
+    -   `-n py35new` yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
 
     ```bash
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    if you don't know the virtual environment name, you can SSH to the header node of the cluster and run `/usr/bin/anaconda/bin/conda info -e` to show all virtual environments.
+    sanal ortam adını bilmiyorsanız, kümenin üstbilgi düğümüne SSH oluşturabilir ve tüm sanal ortamları göstermek için `/usr/bin/anaconda/bin/conda info -e` çalıştırabilirsiniz.
 
-3. Change Spark and Livy configs and point to the created virtual environment.
+3. Spark ve Livy yapılandırmalarını değiştirip oluşturulan sanal ortama işaret edin.
 
-    1. Open Ambari UI, go to Spark2 page, Configs tab.
+    1. Ambarı Kullanıcı arabirimini açın, Spark2 Page, configs sekmesine gidin.
     
-        ![Change Spark and Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        ![Spark ve Livy yapılandırmasını, ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
  
-    2. Expand Advanced livy2-env, add below statements at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+    2. Advanced livy2-env ' yi genişletin, altta aşağıdaki deyimleri ekleyin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu karşılık gelenle değiştirin.
 
         ```
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Change Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        ![Ambarı aracılığıyla Livy yapılandırmasını değiştirme](./media/apache-spark-python-package-installation/ambari-livy-config.png)
 
-    3. Expand Advanced spark2-env, replace the existing export PYSPARK_PYTHON statement at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+    3. Advanced spark2-env ' ı genişletin, en altta bulunan dışarı aktarma PYSPARK_PYTHON ifadesini değiştirin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu karşılık gelenle değiştirin.
 
         ```
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        ![Spark config 'i ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-spark-config.png)
 
-    4. Save the changes and restart affected services. These changes need a restart of Spark2 service. Ambari UI will prompt a required restart reminder, click Restart to restart all affected services.
+    4. Değişiklikleri kaydedin ve etkilenen hizmetleri yeniden başlatın. Bu değişikliklerin Spark2 hizmetinin yeniden başlatılması gerekir. Ambarı Kullanıcı arabirimi gerekli bir yeniden başlatma anımsatıcısı ister, tüm etkilenen hizmetleri yeniden başlatmak için yeniden Başlat 'a tıklayın.
 
-        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Spark config 'i ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-restart-services.png)
  
-4.  If you would like to use the new created virtual environment on Jupyter. You need to change Jupyter configs and restart Jupyter. Run script actions on all header nodes with below statement to point Jupyter to the new created virtual environment. Make sure to modify the path to the prefix you specified for your virtual environment. After running this script action, restart Jupyter service through Ambari UI to make this change available.
+4.  Jupyıter üzerinde yeni oluşturulan sanal ortamı kullanmak istiyorsanız. Jupi yapılandırmalarını öğesini değiştirmeniz ve jupyıter 'ı yeniden başlatmanız gerekir. Jupi 'yi yeni oluşturulan sanal ortama işaret etmek için aşağıdaki deyimle tüm üst bilgi düğümlerinde betik eylemlerini çalıştırın. Sanal ortamınız için belirttiğiniz önek için yolu değiştirdiğinizden emin olun. Bu betik eylemini çalıştırdıktan sonra, bu değişikliği kullanılabilir hale getirmek için ambarı Kullanıcı arabirimi aracılığıyla Jupyıter hizmetini yeniden başlatın.
 
     ```
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
     ```
 
-    You could double confirm the Python environment in Jupyter Notebook by running below code:
+    Aşağıdaki kodu çalıştırarak Jupyter Notebook Python ortamını iki kez doğrulayabilirsiniz:
 
-    ![Check Python version in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    ![Jupyter Notebook Python sürümünü denetle](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
 
 ## <a name="known-issue"></a>Bilinen sorun
 
-There is a known bug for Anaconda version 4.7.11 and 4.7.12. If you see your script actions hanging at `"Collecting package metadata (repodata.json): ...working..."` and failing with `"Python script has been killed due to timeout after waiting 3600 secs"`. You can download [this script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) and run it as script actions on all nodes to fix the issue.
+Anaconda Version 4.7.11 ve 4.7.12 için bilinen bir hata vardır. Betik eylemlerinizin `"Collecting package metadata (repodata.json): ...working..."` askıda olduğunu ve `"Python script has been killed due to timeout after waiting 3600 secs"`başarısız olduğunu görürseniz. Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
 
-To check your Anaconda version, you can SSH to the cluster header node and run `/usr/bin/anaconda/bin/conda --v`.
+Anaconda sürümünüzü denetlemek için, küme üst bilgisi düğümüne SSH verebilir ve `/usr/bin/anaconda/bin/conda --v`çalıştırabilirsiniz.
 
 ## <a name="seealso"></a>Ayrıca bkz.
 
@@ -132,23 +132,23 @@ To check your Anaconda version, you can SSH to the cluster header node and run `
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [Apache Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](apache-spark-use-bi-tools.md)
-* [Apache Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analysis using Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma
 
 * [Scala kullanarak tek başına uygulama oluşturma](apache-spark-create-standalone-application.md)
-* [Run jobs remotely on an Apache Spark cluster using Apache Livy](apache-spark-livy-rest-interface.md)
+* [Apache Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
 
-* [Use external packages with Jupyter notebooks in Apache Spark clusters on HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Apache Spark applications remotely](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Use Apache Zeppelin notebooks with an Apache Spark cluster on HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels available for Jupyter notebook in Apache Spark cluster for HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
+* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

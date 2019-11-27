@@ -1,6 +1,6 @@
 ---
-title: User migration approaches in Azure Active Directory B2C
-description: Discusses both core and advanced concepts on user migration using the Azure AD Graph API, and optionally using Azure AD B2C custom policies.
+title: Azure Active Directory B2C 'de Kullanıcı geçişi yaklaşımları
+description: Azure AD Graph API ve isteğe bağlı olarak Azure AD B2C özel ilkeleri kullanarak Kullanıcı geçişi üzerinde hem çekirdek hem de gelişmiş kavramları açıklar.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -17,70 +17,70 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74322925"
 ---
-# <a name="migrate-users-to-azure-active-directory-b2c"></a>Migrate users to Azure Active Directory B2C
+# <a name="migrate-users-to-azure-active-directory-b2c"></a>Kullanıcıları Azure Active Directory B2C geçir
 
-When you migrate your identity provider to Azure Active Directory B2C (Azure AD B2C), you might also need to migrate the user accounts. This article explains how to migrate existing user accounts from any identity provider to Azure AD B2C. The article is not meant to be prescriptive, but rather, it describes a few scenarios. The developer is responsible for the suitability of each approach.
+Kimlik sağlayıcınızı Azure Active Directory B2C (Azure AD B2C) olarak geçirdiğinizde, Kullanıcı hesaplarını da geçirmeniz gerekebilir. Bu makalede, mevcut kullanıcı hesaplarının herhangi bir kimlik sağlayıcısından Azure AD B2C ' ye nasıl geçirileceği açıklanır. Makalenin öngörücü olmaması gerekmez, ancak bunun yerine birkaç senaryo açıklanmaktadır. Geliştirici her yaklaşımın uygunluğunu sağlamaktan sorumludur.
 
-## <a name="user-migration-flows"></a>User migration flows
+## <a name="user-migration-flows"></a>Kullanıcı geçiş akışları
 
-With Azure AD B2C, you can migrate users through the [Azure AD Graph API][B2C-GraphQuickStart]. The user migration process falls into two flows:
+Azure AD B2C, [Azure AD Graph API][B2C-GraphQuickStart]aracılığıyla kullanıcıları geçirebilirsiniz. Kullanıcı geçiş işlemi iki akışa denk gelir:
 
-- **Pre-migration**: This flow applies when you either have clear access to a user's credentials (user name and password) or the credentials are encrypted, but you can decrypt them. The pre-migration process involves reading the users from the old identity provider and creating new accounts in the Azure AD B2C directory.
+- **Geçiş öncesi**: Bu akış, bir kullanıcının kimlik bilgilerine (Kullanıcı adı ve parola) açık erişime sahip olduğunuzda veya kimlik bilgileri şifrelendiğinde, ancak şifrelerini çözebilmeniz durumunda geçerlidir. Geçiş öncesi işlem, eski kimlik sağlayıcısından kullanıcıları okumayı ve Azure AD B2C dizininde yeni hesaplar oluşturmayı içerir.
 
-- **Pre-migration and password reset**: This flow applies when a user's password is not accessible. Örnek:
-  - The password is stored in HASH format.
-  - The password is stored in an identity provider that you can't access. Your old identity provider validates the user credential by calling a web service.
+- **Geçiş öncesi ve parola sıfırlama**: Bu akış, bir kullanıcının parolası erişilebilir olmadığında geçerlidir. Örneğin:
+  - Parola, karma biçiminde depolanır.
+  - Parola, erişemiyoruz bir kimlik sağlayıcısında depolanır. Eski kimlik sağlayıcınız bir Web hizmetini çağırarak kullanıcı kimlik bilgilerini doğrular.
 
-In both flows, you first run the pre-migration process, read the users from your old identity provider, and create new accounts in the Azure AD B2C directory. If you don't have the password, you create the account by using a password that's generated randomly. You then ask the user to change the password or, when the user signs in for the first time, Azure AD B2C asks the user to reset it.
+Her iki akışda, önce geçiş öncesi işlemi çalıştırın, eski kimlik sağlayıcınızdan kullanıcıları okuyun ve Azure AD B2C dizininde yeni hesaplar oluşturun. Parolanız yoksa, rastgele oluşturulan bir parolayı kullanarak hesabı oluşturursunuz. Ardından kullanıcıdan parolayı değiştirmesini ister veya Kullanıcı ilk kez oturum açtığında Azure AD B2C kullanıcıyı sıfırlamayı ister.
 
-## <a name="password-policy"></a>Password policy
+## <a name="password-policy"></a>Parola ilkesi
 
-The Azure AD B2C password policy (for local accounts) is based on Azure AD policy. The Azure AD B2C sign-up or sign-in and password reset policies use the "strong" password strength and don't expire any passwords. For more information, see [Azure AD password policy][AD-PasswordPolicies].
+Azure AD B2C parola ilkesi (yerel hesaplar için), Azure AD ilkesini temel alır. Azure AD B2C kaydolma veya oturum açma ve parola sıfırlama ilkeleri "güçlü" parola gücünü kullanır ve herhangi bir parolayı sona ermez. Daha fazla bilgi için bkz. [Azure AD parola ilkesi][AD-PasswordPolicies].
 
-If the accounts that you want to migrate use a weaker password strength than the [strong password strength enforced by Azure AD B2C][AD-PasswordPolicies], you can disable the strong password requirement. To change the default password policy, set the `passwordPolicies` property to `DisableStrongPassword`. For example, you can modify the create user request as follows:
+Geçirmek istediğiniz hesaplar [Azure AD B2C tarafından zorlanan güçlü parola kuvvetinden][AD-PasswordPolicies]daha zayıf bir parola gücü kullanıyorsa, güçlü parola gereksinimini devre dışı bırakabilirsiniz. Varsayılan parola ilkesini değiştirmek için `passwordPolicies` özelliğini `DisableStrongPassword`olarak ayarlayın. Örneğin, kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz:
 
 ```JSON
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
-## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>Step 1: Use Azure AD Graph API to migrate users
+## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>1\. Adım: kullanıcıları geçirmek için Azure AD Graph API kullanma
 
-You create the Azure AD B2C user account via Graph API (with the password or with a random password). This section describes the process of creating user accounts in the Azure AD B2C directory by using Graph API.
+Azure AD B2C Kullanıcı hesabını Graph API (parola ile veya rastgele bir parola ile) ile oluşturursunuz. Bu bölümde Graph API kullanarak Azure AD B2C dizininde kullanıcı hesapları oluşturma işlemi açıklanmaktadır.
 
-### <a name="step-11-register-your-application-in-your-tenant"></a>Step 1.1: Register your application in your tenant
+### <a name="step-11-register-your-application-in-your-tenant"></a>Adım 1,1: uygulamanızı kiracınıza kaydetme
 
-To communicate with the Graph API, you first must have a service account with administrative privileges. In Azure AD, you register an application and enable write access to the directory. The application credentials are the **Application ID** and **Application Secret**. The application acts as itself, not as a user, to call the Graph API.
+Graph API ile iletişim kurmak için, önce yönetici ayrıcalıklarına sahip bir hizmet hesabına sahip olmanız gerekir. Azure AD 'de, bir uygulamayı kaydeder ve dizine yazma erişimini etkinleştirirsiniz. Uygulama kimlik bilgileri uygulama **kimliği** ve **uygulama gizli**bilgileridir. Uygulama, Graph API çağırmak için Kullanıcı olarak değil, kendisi gibi davranır.
 
-First, register an application that you can use for management tasks like user migration.
+İlk olarak, Kullanıcı Geçişi gibi yönetim görevleri için kullanabileceğiniz bir uygulamayı kaydedin.
 
 [!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
-### <a name="step-12-grant-administrative-permission-to-your-application"></a>Step 1.2: Grant administrative permission to your application
+### <a name="step-12-grant-administrative-permission-to-your-application"></a>Adım 1,2: uygulamanıza yönetici izni verme
 
-Next, grant the application the Azure AD Graph API permissions required for writing to the directory.
+Ardından, uygulamaya, dizine yazmak için gereken Azure AD Graph API izinlerini verin.
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="step-13-create-the-application-secret"></a>Step 1.3: Create the application secret
+### <a name="step-13-create-the-application-secret"></a>Adım 1,3: uygulama gizli anahtarını oluşturma
 
-Create a client secret (key) for use by the user migration application that you configure in a later step.
+Daha sonraki bir adımda yapılandırdığınız Kullanıcı geçiş uygulaması tarafından kullanılmak üzere bir istemci gizli anahtarı (anahtar) oluşturun.
 
 [!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-Now you have an application with permissions to create, read, and update users in your Azure AD B2C tenant.
+Artık Azure AD B2C kiracınızda Kullanıcı oluşturma, okuma ve güncelleştirme izinlerine sahip bir uygulamanız var.
 
-### <a name="step-14-optional-environment-cleanup"></a>Step 1.4: (Optional) Environment cleanup
+### <a name="step-14-optional-environment-cleanup"></a>Adım 1,4: (Isteğe bağlı) ortam temizleme
 
-The *Read and write directory data* permission does *not* include the right to delete users. To give your application the ability to delete users (to clean up your environment), you must perform an extra step, which involves running PowerShell to set User Account Administrator permissions. Otherwise, you can skip to the next section.
+*Dizin verilerini okuma ve yazma* *izni, kullanıcıları silme hakkını içermez.* Uygulamanıza kullanıcıları silme yeteneği vermek için (ortamınızı temizlemek için), PowerShell çalıştırmayı ve Kullanıcı hesabı yönetici izinlerini ayarlamayı içeren ek bir adım gerçekleştirmeniz gerekir. Aksi halde, bir sonraki bölüme atlayabilirsiniz.
 
 > [!IMPORTANT]
-> You must use a B2C tenant administrator account that is *local* to the B2C tenant. The account name syntax is *admin\@contosob2c.onmicrosoft.com*.
+> B2C kiracısında *Yerel* olan bir B2C kiracı yönetici hesabı kullanmanız gerekir. Hesap adı sözdizimi *admin\@contosob2c.onmicrosoft.com*.
 
-In this PowerShell script, which requires the [Azure AD PowerShell V2 module][AD-Powershell], do the following:
+[Azure AD PowerShell V2 modülünü][AD-Powershell]gerektiren bu PowerShell betiğinden şunları yapın:
 
-1. Connect to your online service. To do so, run the `Connect-AzureAD` cmdlet at the Windows PowerShell command prompt, and provide your credentials.
+1. Çevrimiçi hizmetinize bağlanın. Bunu yapmak için, Windows PowerShell komut isteminde `Connect-AzureAD` cmdlet 'ini çalıştırın ve kimlik bilgilerinizi sağlayın.
 
-1. Use the **Application ID** to assign the application the user account administrator role. These roles have well-known identifiers, so all you need to do is enter your **Application ID** in the script.
+1. Uygulamanın kullanıcı hesabı yöneticisi rolünü atamak için **uygulama kimliği** ' ni kullanın. Bu roller iyi bilinen tanımlayıcılara sahiptir, bu nedenle tüm yapmanız gereken **uygulama kimliğinizi** betiğe girer.
 
 ```powershell
 # NOTE: This script REQUIRES the Azure AD PowerShell V2 module
@@ -113,36 +113,36 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ```
 
-Change the `$AppId` value with your Azure AD **Application ID**.
+`$AppId` değerini Azure AD **Uygulama Kimliğiniz**ile değiştirin.
 
-## <a name="step-2-pre-migration-application-sample"></a>Step 2: Pre-migration application sample
+## <a name="step-2-pre-migration-application-sample"></a>2\. Adım: geçiş öncesi uygulama örneği
 
-You can find the pre-migration code sample in the community-maintained `azure-ad-b2c/user-migration` GitHub repository:
+Geçiş öncesi kod örneğini, topluluk tarafından tutulan `azure-ad-b2c/user-migration` GitHub deposunda bulabilirsiniz:
 
-[azure-ad-b2c/user-migration/pre-migration][UserMigrationSample-code] (GitHub)
+[Azure-AD-B2C/Kullanıcı geçişi/geçiş öncesi][UserMigrationSample-code] (GitHub)
 
-### <a name="step-21-edit-the-migration-data-file"></a>Step 2.1: Edit the migration data file
+### <a name="step-21-edit-the-migration-data-file"></a>Adım 2,1: geçiş veri dosyasını düzenleme
 
-The sample app uses a JSON file that contains dummy user data. After you successfully run the sample, you can change the code to consume the data from your own database. Or you can export the user profile to a JSON file, and then set the app to use that file.
+Örnek uygulama, kukla Kullanıcı verisi içeren bir JSON dosyası kullanır. Örneği başarıyla çalıştırdıktan sonra, kodu kendi veritabanınızdaki verileri kullanmak üzere değiştirebilirsiniz. Ya da kullanıcı profilini bir JSON dosyasına aktarabilir ve ardından uygulamayı bu dosyayı kullanacak şekilde ayarlayabilirsiniz.
 
-To edit the JSON file, open the `AADB2C.UserMigration.sln` Visual Studio solution. In the `AADB2C.UserMigration` project, open the `UsersData.json` file.
+JSON dosyasını düzenlemek için `AADB2C.UserMigration.sln` Visual Studio çözümünü açın. `AADB2C.UserMigration` projesinde, `UsersData.json` dosyasını açın.
 
-![Portion of UsersData.json file showing JSON blocks of two users](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
+![UsersData. json dosyasının iki kullanıcının JSON bloklarını gösteren bölümü](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
-As you can see, the file contains a list of user entities. Each user entity has the following properties:
+Gördüğünüz gibi, dosya Kullanıcı varlıklarının bir listesini içerir. Her kullanıcı varlığı aşağıdaki özelliklere sahiptir:
 
-- e-posta
+- email
 - displayName
 - firstName
 - lastName
-- password (can be empty)
+- parola (boş olabilir)
 
 > [!NOTE]
-> At compile time, Visual Studio copies the file to the `bin` directory.
+> Derleme zamanında, Visual Studio dosyayı `bin` dizinine kopyalar.
 
-### <a name="step-22-configure-the-application-settings"></a>Step 2.2: Configure the application settings
+### <a name="step-22-configure-the-application-settings"></a>Adım 2,2: uygulama ayarlarını yapılandırma
 
-Under the `AADB2C.UserMigration` project, open the *App.config* file. Replace the following app settings with your own values:
+`AADB2C.UserMigration` projesi altında *app. config* dosyasını açın. Aşağıdaki uygulama ayarlarını kendi değerlerinizle değiştirin:
 
 ```XML
 <appSettings>
@@ -155,29 +155,29 @@ Under the `AADB2C.UserMigration` project, open the *App.config* file. Replace th
 ```
 
 > [!NOTE]
-> - The use of an Azure table connection string is described in the next sections.
-> - Your B2C tenant name is the domain that you entered during tenant creation, and it is displayed in the Azure portal. The tenant name usually ends with the suffix *.onmicrosoft.com* (for example, *contosob2c.onmicrosoft.com*).
+> - Bir Azure Tablo bağlantı dizesinin kullanımı, sonraki bölümlerde açıklanmıştır.
+> - B2C kiracı adınız, kiracı oluşturma sırasında girdiğiniz etki alanıdır ve Azure portal görüntülenir. Kiracı adı genellikle suffix *. onmicrosoft.com* ile biter (örneğin, *contosob2c.onmicrosoft.com*).
 
-### <a name="step-23-run-the-pre-migration-process"></a>Step 2.3: Run the pre-migration process
+### <a name="step-23-run-the-pre-migration-process"></a>Adım 2,3: geçiş öncesi işlemi çalıştırma
 
-Right-click the `AADB2C.UserMigration` solution, and then rebuild the sample. If you are successful, you should now have a `UserMigration.exe` executable file located in `AADB2C.UserMigration\bin\Debug\net461`. To run the migration process, use one of the following command-line parameters:
+`AADB2C.UserMigration` çözümüne sağ tıklayın ve ardından örneği yeniden derleyin. Başarılı olursanız, artık `AADB2C.UserMigration\bin\Debug\net461`bulunan `UserMigration.exe` çalıştırılabilir bir dosyanız olmalıdır. Geçiş işlemini çalıştırmak için aşağıdaki komut satırı parametrelerinden birini kullanın:
 
-- To **migrate users with password**, use the `UserMigration.exe 1` command.
+- **Kullanıcıları parolayla geçirmek**için `UserMigration.exe 1` komutunu kullanın.
 
-- To **migrate users with random password**, use the `UserMigration.exe 2` command. This operation also creates an Azure table entity. Later, you configure the policy to call the REST API service. The service uses an Azure table to track and manage the migration process.
+- **Kullanıcıları rastgele parola ile geçirmek**için `UserMigration.exe 2` komutunu kullanın. Bu işlem bir Azure Tablo varlığı da oluşturur. Daha sonra, REST API hizmetini çağırmak için ilkeyi yapılandırırsınız. Hizmet, geçiş işlemini izlemek ve yönetmek için bir Azure tablosu kullanır.
 
-![Command Prompt window showing output of UserMigration.exe command](media/active-directory-b2c-user-migration/pre-migration-demo.png)
+![UserMigration. exe komutunun çıkışını gösteren komut Istemi penceresi](media/active-directory-b2c-user-migration/pre-migration-demo.png)
 
-### <a name="step-24-check-the-pre-migration-process"></a>Step 2.4: Check the pre-migration process
+### <a name="step-24-check-the-pre-migration-process"></a>Adım 2,4: geçiş öncesi işlemini denetleyin
 
-To validate the migration, use one of the following two methods:
+Geçişi doğrulamak için aşağıdaki iki yöntemden birini kullanın:
 
-- To search for a user by display name, use the Azure portal:
+- Bir kullanıcıyı görünen ada göre aramak için Azure portal kullanın:
 
-   1. Open **Azure AD B2C**, and then select **Users**.
-   1. In the search box, type the user's display name, and then view the user's profile.
+   1. **Azure AD B2C**açın ve ardından **Kullanıcılar**' ı seçin.
+   1. Arama kutusuna kullanıcının görünen adını yazın ve ardından kullanıcının profilini görüntüleyin.
 
-- To retrieve a user by sign-in email address, use the sample application:
+- Bir kullanıcıyı oturum açma e-posta adresi ile almak için örnek uygulamayı kullanın:
 
    1. Şu komutu çalıştırın:
 
@@ -186,69 +186,69 @@ To validate the migration, use one of the following two methods:
       ```
 
       > [!TIP]
-      > You can also retrieve a user by display name by using the following command: `UserMigration.exe 4 "<Display name>"`.
+      > Ayrıca, aşağıdaki komutu kullanarak Kullanıcı görünen ada göre de alabilirsiniz: `UserMigration.exe 4 "<Display name>"`.
 
-   1. Open the UserProfile.json file in a JSON editor to see user's information.
+   1. Kullanıcının bilgilerini görmek için, bir JSON düzenleyicisinde USERPROFILE. json dosyasını açın.
 
-      ![UserProfile.json file open in the Visual Studio Code editor](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
+      ![Visual Studio Code düzenleyicisinde açık olan UserProfile. JSON dosyası](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
 
-### <a name="step-25-optional-environment-cleanup"></a>Step 2.5: (Optional) Environment cleanup
+### <a name="step-25-optional-environment-cleanup"></a>Adım 2,5: (Isteğe bağlı) ortam temizleme
 
-If you want to clean up your Azure AD tenant and remove users from the Azure AD directory, run the `UserMigration.exe 5` command.
+Azure AD kiracınızı temizlemek ve Azure AD dizininden kullanıcıları kaldırmak istiyorsanız, `UserMigration.exe 5` komutunu çalıştırın.
 
 > [!NOTE]
-> * To clean up your tenant, configure User Account Administrator permissions for your application.
-> * The sample migration app cleans up all users who are listed in the JSON file.
+> * Kiracınızı temizlemek için, uygulamanız için Kullanıcı hesabı yönetici izinlerini yapılandırın.
+> * Örnek geçiş uygulaması, JSON dosyasında listelenen tüm kullanıcıları temizler.
 
-### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Step 2.6: Sign in with migrated users (with password)
+### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Adım 2,6: geçirilen kullanıcılarla oturum açın (parola ile)
 
-After you run the pre-migration process with user passwords, the accounts are ready to use, and users can sign in to your application by using Azure AD B2C. If you don't have access to user passwords, continue to the next section.
+Geçiş öncesi işlemi Kullanıcı parolalarıyla çalıştırdıktan sonra, hesaplar kullanıma hazırsa ve kullanıcılar Azure AD B2C kullanarak uygulamanızda oturum açabilirler. Kullanıcı parolalara erişiminiz yoksa, sonraki bölüme geçin.
 
-## <a name="step-3-help-users-reset-their-password"></a>Step 3: Help users reset their password
+## <a name="step-3-help-users-reset-their-password"></a>3\. Adım: kullanıcıların parolalarını sıfırlamasına yardımcı olun
 
-If you migrate users with a random password, they must reset their password. To help them reset the password, send a welcome email with a link to reset the password.
+Kullanıcıları rastgele bir parolayla geçirirseniz, parolalarını sıfırlamalıdır. Parolayı sıfırlamasına yardımcı olmak için, parolayı sıfırlamak üzere bağlantı içeren bir hoş geldiniz e-postası gönderin.
 
-To get the link to your password reset policy, follow these steps. This procedure assumes you've previously created a password reset [custom policy](active-directory-b2c-get-started-custom.md).
+Parola sıfırlama ilkenizin bağlantısını almak için aşağıdaki adımları izleyin. Bu yordamda daha önce bir parola sıfırlama [özel ilkesi](active-directory-b2c-get-started-custom.md)oluşturmuş olduğunuz varsayılmaktadır.
 
-1. Select the directory containing your Azure AD B2C tenant by using the **Directory + subscription** filter in the upper-right section of the [Azure portal](https://portal.azure.com).
-1. Select **Azure AD B2C** in the left-hand menu (or from within **All services**).
-1. Under **Policies**, select **Identity Experience Framework**.
-1. Select your password reset policy. For example, *B2C_1A_PasswordReset*.
-1. Select your application in the **Select application** drop-down.
+1. [Azure Portal](https://portal.azure.com)sağ üst bölümündeki **Dizin + abonelik** filtresini kullanarak Azure AD B2C kiracınızı içeren dizini seçin.
+1. Sol taraftaki menüden (veya **tüm hizmetler**içinden) **Azure AD B2C** ' yi seçin.
+1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Parola sıfırlama ilkenizi seçin. Örneğin, *B2C_1A_PasswordReset*.
+1. **Uygulama Seç** açılır penceresinde uygulamanızı seçin.
 
     > [!NOTE]
-    > **Run now** requires at least one application to be registered in your tenant. To learn how to register applications, see [Tutorial: Register an application in Azure Active Directory B2C][B2C-AppRegister].
+    > **Şimdi Çalıştır** , kiracınızda en az bir uygulamanın kaydedilmesini gerektirir. Uygulamaları nasıl kaydedeceğinizi öğrenmek için bkz. [öğretici: uygulamayı Azure Active Directory B2C kaydetme][B2C-AppRegister].
 
-1. Copy the URL shown in the **Run now endpoint** text box, and then send it to your users.
+1. **Şimdi Çalıştır uç noktası** metin kutusunda gösterilen URL 'yi kopyalayın ve sonra kullanıcılarınıza gönderin.
 
-    ![Password reset policy page with Run now endpoint highlighted](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
+    ![Şimdi Çalıştır uç noktası vurgulanmış şekilde parola sıfırlama ilkesi sayfası](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
 
-## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>Step 4: (Optional) Change your policy to check and set the user migration status
-
-> [!NOTE]
-> To check and change the user migration status, you must use a custom policy. The set-up instructions from [Get started with custom policies][B2C-GetStartedCustom] must be completed.
-
-When users try to sign in without resetting the password first, your policy should return a friendly error message. Örnek:
-
-> *Your password has expired. To reset it, select the Reset Password link.*
-
-This optional step requires the use of Azure AD B2C custom policies, as described in the [Getting started with custom policies][B2C-GetStartedCustom] article.
-
-In this section, you change the policy to check the user migration status on sign-in. If the user didn't change the password, return an HTTP 409 error message that asks the user to select the **Forgot your password?** link.
-
-To track the password change, you use an Azure table. When you run the pre-migration process with the command-line parameter `2`, you create a user entity in an Azure table. Your service does the following:
-
-- On sign-in, the Azure AD B2C policy invokes your migration RESTful service, sending an email message as an input claim. The service searches for the email address in the Azure table. If the address exists, the service throws an error message: *You must change password*.
-
-- After the user successfully changes the password, remove the entity from the Azure table.
+## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>4\. Adım: (Isteğe bağlı) Kullanıcı geçiş durumunu denetlemek ve ayarlamak için ilkenizi değiştirin
 
 > [!NOTE]
-> We use an Azure table to simplify the sample. You can store the migration status in any database or as a custom property in the Azure AD B2C account.
+> Kullanıcı geçiş durumunu denetlemek ve değiştirmek için özel bir ilke kullanmanız gerekir. [Özel ilkelerle çalışmaya başlama][B2C-GetStartedCustom] bölümündeki kurulum yönergelerinin tamamlanması gerekir.
 
-### <a name="41-update-your-application-setting"></a>4.1: Update your application setting
+Kullanıcılar ilk olarak parolayı sıfırlamadan oturum açmaya çalıştığında, ilkenizin kolay bir hata iletisi döndürmelidir. Örneğin:
 
-1. To test the RESTful API demo, open `AADB2C.UserMigration.sln` in Visual Studio.
-1. In the `AADB2C.UserMigration.API` project, open the *Web.config* file. Replace the setting with the one configured in [Step 2.2](#step-22-configure-the-application-settings):
+> *Parolanızın süresi doldu. Sıfırlamak için parola sıfırlama bağlantısını seçin.*
+
+Bu isteğe bağlı adım, [özel Ilkelerle Başlarken][B2C-GetStartedCustom] makalesinde açıklandığı gibi Azure AD B2C özel ilkelerin kullanılmasını gerektirir.
+
+Bu bölümde, oturum açma sırasında kullanıcı geçiş durumunu denetlemek için ilkeyi değiştirirsiniz. Kullanıcı parolayı değiştirmediyse, kullanıcıdan **parolanızı unuttum?** bağlantısını seçmesini ısteyen bir http 409 hata iletisi döndürür.
+
+Parola değişikliğini izlemek için bir Azure tablosu kullanırsınız. `2`komut satırı parametresiyle geçiş öncesi işlemi çalıştırdığınızda, bir Azure tablosunda bir kullanıcı varlığı oluşturursunuz. Hizmetiniz şunları yapar:
+
+- Oturum açma sırasında, Azure AD B2C ilkesi geçiş yeniden hizmeti 'ni çağırır ve giriş talebi olarak bir e-posta iletisi gönderir. Hizmet, Azure tablosundaki e-posta adresini arar. Adres varsa, hizmet bir hata iletisi atar: *parolayı değiştirmeniz gerekir*.
+
+- Kullanıcı parolayı başarıyla değiştirdikten sonra, varlığı Azure tablosundan kaldırın.
+
+> [!NOTE]
+> Örneği basitleştirmek için bir Azure tablosu kullanıyoruz. Geçiş durumunu herhangi bir veritabanında veya Azure AD B2C hesapta özel bir özellik olarak saklayabilirsiniz.
+
+### <a name="41-update-your-application-setting"></a>4,1: uygulama ayarınızı güncelleştirin
+
+1. Yeniden takip eden API tanıtımına test etmek için `AADB2C.UserMigration.sln` Visual Studio 'da açın.
+1. `AADB2C.UserMigration.API` projesinde *Web. config* dosyasını açın. Ayarı, [2,2. adımdaki](#step-22-configure-the-application-settings)bir yapılandırma ile değiştirin:
 
     ```json
     {
@@ -257,16 +257,16 @@ To track the password change, you use an Azure table. When you run the pre-migra
     }
     ```
 
-### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Step 4.2: Deploy your web application to Azure App Service
+### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Adım 4,2: Web uygulamanızı Azure App Service dağıtma
 
-In Solution Explorer, right-click on the `AADB2C.UserMigration.API`, select "Publish...". Follow the instructions to publish to Azure App Service. For more information, see [Deploy your app to Azure App Service][AppService-Deploy].
+Çözüm Gezgini ' de, `AADB2C.UserMigration.API`sağ tıklayın, "Yayımla..." öğesini seçin. Azure App Service yayımlamak için yönergeleri izleyin. Daha fazla bilgi için bkz. [Azure App Service uygulamanızı dağıtma][AppService-Deploy].
 
-### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Step 4.3: Add a technical profile and technical profile validation to your policy
+### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Adım 4,3: ilkenize teknik profil ve teknik profil doğrulama ekleme
 
-1. In Solution Explorer, expand "Solution Items", and open the *TrustFrameworkExtensions.xml* policy file.
-1. Change `TenantId`, `PublicPolicyUri` and `<TenantId>` fields from `yourtenant.onmicrosoft.com` to the name of your tenant.
-1. Under the `<TechnicalProfile Id="login-NonInteractive">` element, replace all instances of `ProxyIdentityExperienceFrameworkAppId` and `IdentityExperienceFrameworkAppId` with the Application IDs configured in [Getting started with custom policies][B2C-GetStartedCustom].
-1. Under the `<ClaimsProviders>` node, find the following XML snippet. Change the value of `ServiceUrl` to point to your Azure App Service URL.
+1. Çözüm Gezgini ' de, "çözüm öğeleri" ni genişletin ve *TrustFrameworkExtensions. xml* ilke dosyasını açın.
+1. `yourtenant.onmicrosoft.com` `TenantId`, `PublicPolicyUri` ve `<TenantId>` alanları kiracınızın adına değiştirin.
+1. `<TechnicalProfile Id="login-NonInteractive">` öğesi altında, tüm `ProxyIdentityExperienceFrameworkAppId` ve `IdentityExperienceFrameworkAppId` örneklerini [özel Ilkelerle Başlarken][B2C-GetStartedCustom]bölümünde yapılandırılan uygulama kimlikleriyle değiştirin.
+1. `<ClaimsProviders>` düğümü altında aşağıdaki XML kod parçacığını bulun. `ServiceUrl` değerini Azure App Service URL 'nize işaret etmek üzere değiştirin.
 
     ```XML
     <ClaimsProvider>
@@ -304,9 +304,9 @@ In Solution Explorer, right-click on the `AADB2C.UserMigration.API`, select "Pub
     </ClaimsProvider>
     ```
 
-The preceding technical profile defines one input claim: `signInName` (send as email). On sign-in, the claim is sent to your RESTful endpoint.
+Önceki teknik profil bir giriş talebini tanımlar: `signInName` (e-posta olarak gönder). Oturum açma sırasında talep, yeniden deneme uç noktanıza gönderilir.
 
-After you define the technical profile for your RESTful API, configure the existing `SelfAsserted-LocalAccountSignin-Email` technical profile to additionally call your REST API technical profile by overriding it within your *TrustFrameworkExtensions.xml* file:
+Yeniden deneme API 'niz için teknik profili tanımladıktan sonra, *TrustFrameworkExtensions. xml* dosyanızda geçersiz kılarak REST API teknik profilinizi ek olarak çağırmak için mevcut `SelfAsserted-LocalAccountSignin-Email` teknik profilini yapılandırın:
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -316,45 +316,45 @@ After you define the technical profile for your RESTful API, configure the exist
 </TechnicalProfile>
 ```
 
-Then, change the `Id` of the `LocalAccountSignIn` technical profile to `LocalAccountUserMigration`.
+Sonra, `LocalAccountSignIn` teknik profilinin `Id` `LocalAccountUserMigration`olarak değiştirin.
 
-### <a name="step-44-upload-the-policy-to-your-tenant"></a>Step 4.4: Upload the policy to your tenant
+### <a name="step-44-upload-the-policy-to-your-tenant"></a>Adım 4,4: ilkeyi kiracınıza yükleme
 
-1. In the [Azure portal][Portal], switch to the [context of your Azure AD B2C tenant][B2C-NavContext], and then select **Azure AD B2C**.
-1. Select **Identity Experience Framework**.
-1. Select **All Policies**.
-1. Select **Upload Policy**.
-1. Select the **Overwrite the policy if it exists** check box.
-1. Upload the *TrustFrameworkExtensions.xml* file, and ensure that it passes validation.
+1. [Azure Portal][Portal], [Azure AD B2C kiracınızın bağlamına][B2C-NavContext]geçin ve ardından **Azure AD B2C**' yı seçin.
+1. **Kimlik deneyimi çerçevesini**seçin.
+1. **Tüm ilkeler**' i seçin.
+1. **Ilkeyi karşıya yükle**' yi seçin.
+1. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+1. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve doğrulamayı geçirdiğinizden emin olun.
 
-### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Step 4.5: Test the custom policy by using Run Now
+### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Adım 4,5: Şimdi Çalıştır 'ı kullanarak özel ilkeyi test etme
 
-1. Select **Azure AD B2C**, and then select **Identity Experience Framework**.
-1. Open *B2C_1A_signup_signin*, the relying party (RP) custom policy that you uploaded, and then select **Run now**.
-1. Enter the credentials of one of the migrated users, and then select **Sign In**. Your REST API should throw the following error message:
+1. **Azure AD B2C**' yi ve ardından **kimlik deneyimi çerçevesi**' ni seçin.
+1. Karşıya yüklediğiniz bağlı olan taraf (RP) özel ilkesini *B2C_1A_signup_signin*açın ve **Şimdi Çalıştır**' ı seçin.
+1. Geçirilmiş kullanıcılardan birinin kimlik bilgilerini girin ve **oturum aç**' ı seçin. REST API aşağıdaki hata iletisini oluşturması gerekir:
 
-    ![Sign-in Sign-up page showing the change password error message](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
+    ![Parolayı değiştirme hata iletisini gösteren oturum açma sayfası](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
 
-### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Step 4.6: (Optional) Troubleshoot your REST API
+### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Adım 4,6: (Isteğe bağlı) REST API sorunlarını giderme
 
-You can view and monitor logging information in near-real time.
+Günlük bilgilerini neredeyse gerçek zamanlı olarak görüntüleyebilir ve izleyebilirsiniz.
 
-1. On your RESTful application's settings menu, under **Monitoring**, select **Diagnostic logs**.
-1. Set **Application Logging (Filesystem)** to **On**.
-1. Set the **Level** to **Verbose**.
+1. Yeniden Izlenen uygulamanızın ayarlar menüsünde, **izleme**altında **tanılama günlükleri**' ni seçin.
+1. **Uygulama günlüğünü (FileSystem)** **Açık**olarak ayarlayın.
+1. **Düzeyi** **verbose**olarak ayarlayın.
 1. **Kaydet**’i seçin
 
-    ![Diagnostics logs configuration page in Azure portal](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
+    ![Azure portal 'de tanılama günlükleri yapılandırma sayfası](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
 
-1. On the **Settings** menu, select **Log stream**.
-1. Check the output of the RESTful API.
+1. **Ayarlar** menüsünde **günlük akışı**' nı seçin.
+1. Yeniden takip eden API 'nin çıkışını kontrol edin.
 
 > [!IMPORTANT]
-> Use the diagnostics logs only during development and testing. The RESTful API output might contain confidential information that should not be exposed in production.
+> Tanılama günlüklerini yalnızca geliştirme ve test sırasında kullanın. Yeniden sunulan API çıktısı, üretimde gösterilmemesi gereken gizli bilgiler içerebilir.
 
-## <a name="optional-download-the-complete-policy-files"></a>(Optional) Download the complete policy files
+## <a name="optional-download-the-complete-policy-files"></a>Seçim Tüm ilke dosyalarını indirin
 
-After you complete the [Get started with custom policies][B2C-GetStartedCustom] walk-through, we recommend that you build your scenario by using your own custom policy files. For your reference, we have provided [sample policy files][UserMigrationSample-policy].
+[Özel ilkeleri kullanmaya başlama][B2C-GetStartedCustom] Kılavuzu ' nu tamamladıktan sonra, kendi özel ilke dosyalarınızı kullanarak senaryonuzu oluşturmanızı öneririz. Başvurunuz için [örnek ilke dosyaları][UserMigrationSample-policy]sağladık.
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2

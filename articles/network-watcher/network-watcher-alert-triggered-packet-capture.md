@@ -349,7 +349,7 @@ Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yap
   |**Adı**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
   |**Açıklama**|Gönderilen TCP kesimleri eşiği aştı|Uyarı kuralının açıklaması.|
   |**Ölçüm**|Gönderilen TCP kesimleri| Uyarıyı tetiklemek için kullanılacak ölçüm. |
-  |**Koşul**|Büyüktür| Ölçüm değerlendirilirken kullanılacak koşul.|
+  |**Koşul**|Şu değerden fazla:| Ölçüm değerlendirilirken kullanılacak koşul.|
   |**Eşiği**|100| Uyarıyı tetikleyen ölçümün değeri. Bu değer, ortamınız için geçerli bir değer olarak ayarlanmalıdır.|
   |**Dönemini**|Son beş dakika boyunca| Ölçüm üzerindeki eşiğin aranacağı süreyi belirler.|
   |**Web kancası**|[işlev uygulamasından Web kancası URL 'SI]| Önceki adımlarda oluşturulan işlev uygulamasındaki Web kancası URL 'SI.|

@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by queue messages
+title: Azure 'da kuyruk iletileri tarafından tetiklenen bir işlev oluşturma
 description: Bir Azure Depolama kuyruğuna gönderilmiş iletiler tarafından çağrılan sunucusuz işlev oluşturmak için Azure İşlevlerini kullanın.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
@@ -36,7 +36,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-a-queue-triggered-function"></a>Kuyruk ile tetiklenen bir işlev oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -108,7 +108,7 @@ Artık bir depolama kuyruğunuz var ve kuyruğa ileti ekleyerek işlevi test ede
 
 Depolama kuyruğuna bir ileti eklendiğinde çalışacak bir işlev oluşturdunuz. Kuyruk depolama tetikleyicileri hakkında daha fazla bilgi için bkz. [Azure İşlevleri Kuyruk depolama bağlamaları](functions-bindings-storage-queue.md).
 
-Now that you have a created your first function, let's add an output binding to the function that writes a message back to another queue.
+İlk işlevinizi oluşturdığınıza göre, işleve başka bir kuyruğa ileti yazan bir çıkış bağlaması ekleyelim.
 
 > [!div class="nextstepaction"]
 > [İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme](functions-integrate-storage-queue-output-binding.md)

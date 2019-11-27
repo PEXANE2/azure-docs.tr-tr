@@ -1,6 +1,6 @@
 ---
-title: Migrate existing databases to scale out | Microsoft Docs
-description: Convert sharded databases to use elastic database tools by creating a shard map manager
+title: Ölçeği genişletmek için mevcut veritabanlarını geçirin | Microsoft Docs
+description: Parçalı veritabanlarını bir parça eşleme Yöneticisi oluşturarak elastik veritabanı araçlarını kullanacak şekilde dönüştürme
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -18,28 +18,28 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421212"
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>Migrate existing databases to scale out
+# <a name="migrate-existing-databases-to-scale-out"></a>Ölçeği genişletmek için mevcut veritabanlarını geçirme
 
-Easily manage your existing scaled-out sharded databases using Azure SQL Database database tools (such as the [Elastic Database client library](sql-database-elastic-database-client-library.md)). First convert an existing set of databases to use the [shard map manager](sql-database-elastic-scale-shard-map-management.md).
+Azure SQL veritabanı veritabanı araçları 'nı ( [elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)gibi) kullanarak, ölçeği oluşturulmuş mevcut veritabanlarını kolayca yönetin. Önce var olan bir veritabanı kümesini parça [eşleme yöneticisini](sql-database-elastic-scale-shard-map-management.md)kullanacak şekilde dönüştürün.
 
 ## <a name="overview"></a>Genel Bakış
 
-To migrate an existing sharded database:
+Var olan bir veritabanının geçişini yapmak için:
 
-1. Prepare the [shard map manager database](sql-database-elastic-scale-shard-map-management.md).
-2. Create the shard map.
-3. Prepare the individual shards.  
-4. Add mappings to the shard map.
+1. Parça [eşleme Yöneticisi veritabanını](sql-database-elastic-scale-shard-map-management.md)hazırlayın.
+2. Parça haritasını oluşturun.
+3. Bireysel parçaları hazırlayın.  
+4. Parça eşlemesine eşlemeler ekleyin.
 
-These techniques can be implemented using either the [.NET Framework client library](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), or the PowerShell scripts found at [Azure SQL DB - Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). The examples here use the PowerShell scripts.
+Bu teknikler [.NET Framework istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)veya [Azure SQL DB-elastik veritabanı araçları betikleriyle](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)bulunan PowerShell betikleri kullanılarak uygulanabilir. Buradaki örnekler PowerShell betiklerini kullanır.
 
-For more information about the ShardMapManager, see [Shard map management](sql-database-elastic-scale-shard-map-management.md). For an overview of the elastic database tools, see [Elastic Database features overview](sql-database-elastic-scale-introduction.md).
+ShardMapManager hakkında daha fazla bilgi için bkz. parça [eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md). Elastik veritabanı araçlarına genel bakış için bkz. [elastik veritabanı özelliklerine genel bakış](sql-database-elastic-scale-introduction.md).
 
-## <a name="prepare-the-shard-map-manager-database"></a>Prepare the shard map manager database
+## <a name="prepare-the-shard-map-manager-database"></a>Parça eşleme Yöneticisi veritabanını hazırlama
 
-The shard map manager is a special database that contains the data to manage scaled-out databases. You can use an existing database, or create a new database. A database acting as shard map manager should not be the same database as a shard. The PowerShell script does not create the database for you.
+Parça eşleme Yöneticisi, ölçeği genişletilmiş veritabanlarını yönetmek için verileri içeren özel bir veritabanıdır. Var olan bir veritabanını kullanabilir veya yeni bir veritabanı oluşturabilirsiniz. Parça eşleme Yöneticisi olarak davranan bir veritabanı, parça ile aynı veritabanı olmamalıdır. PowerShell betiği sizin için veritabanını oluşturmaz.
 
-## <a name="step-1-create-a-shard-map-manager"></a>Step 1: create a shard map manager
+## <a name="step-1-create-a-shard-map-manager"></a>1\. Adım: parça eşleme Yöneticisi oluşturma
 
 ```powershell
 # Create a shard map manager
@@ -49,50 +49,50 @@ New-ShardMapManager -UserName '<user_name>' -Password '<password>' -SqlServerNam
 # tenant-database mapping information.
 ```
 
-### <a name="to-retrieve-the-shard-map-manager"></a>To retrieve the shard map manager
+### <a name="to-retrieve-the-shard-map-manager"></a>Parça eşleme yöneticisini almak için
 
-After creation, you can retrieve the shard map manager with this cmdlet. This step is needed every time you need to use the ShardMapManager object.
+Oluşturulduktan sonra, bu cmdlet ile parça eşleme yöneticisini alabilirsiniz. ShardMapManager nesnesini her kullanmanız gerektiğinde bu adım gereklidir.
 
 ```powershell
 # Try to get a reference to the Shard Map Manager  
 $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<password>' -SqlServerName '<server_name>' -SqlDatabaseName '<smm_db_name>'
 ```
 
-## <a name="step-2-create-the-shard-map"></a>Step 2: create the shard map
+## <a name="step-2-create-the-shard-map"></a>2\. Adım: parça haritasını oluşturma
 
-Select the type of shard map to create. The choice depends on the database architecture:
+Oluşturulacak parça haritasının türünü seçin. Seçim veritabanı mimarisine bağlıdır:
 
-1. Single tenant per database (For terms, see the [glossary](sql-database-elastic-scale-glossary.md).)
-2. Multiple tenants per database (two types):
-   1. List mapping
-   2. Range mapping
+1. Veritabanı başına tek kiracı (koşullar Için bkz. [Sözlük](sql-database-elastic-scale-glossary.md).)
+2. Veritabanı başına birden çok kiracı (iki tür):
+   1. Liste eşleme
+   2. Aralık eşleme
 
-For a single-tenant model, create a **list mapping** shard map. The single-tenant model assigns one database per tenant. This is an effective model for SaaS developers as it simplifies management.
+Tek kiracılı bir model için bir **liste eşleme** parça haritası oluşturun. Tek kiracılı model, kiracı başına bir veritabanı atar. Bu, yönetim basitleştirdiği için SaaS geliştiricileri için etkili bir modeldir.
 
-![List mapping][1]
+![Liste eşleme][1]
 
-The multi-tenant model assigns several tenants to an individual database (and you can distribute groups of tenants across multiple databases). Use this model when you expect each tenant to have small data needs. In this model, assign a range of tenants to a database using **range mapping**.
+Çok kiracılı model tek bir veritabanına birkaç kiracı atar (ve kiracılar gruplarını birden çok veritabanı arasında dağıtabilirsiniz). Her kiracının küçük veri ihtiyaçlarına sahip olmasını beklediğinde bu modeli kullanın. Bu modelde, **Aralık eşleme**kullanarak bir veritabanına kiracı aralığı atayın.
 
-![Range mapping][2]
+![Aralık eşleme][2]
 
-Or you can implement a multi-tenant database model using a *list mapping* to assign multiple tenants to an individual database. For example, DB1 is used to store information about tenant ID 1 and 5, and DB2 stores data for tenant 7 and tenant 10.
+Ya da birden çok kiracıyı tek bir veritabanına atamak için bir *liste eşlemesi* kullanarak çok kiracılı bir veritabanı modeli uygulayabilirsiniz. Örneğin, DB1 kiracı KIMLIĞI 1 ve 5 ile ilgili bilgileri depolamak için kullanılır ve DB2, kiracı 7 ve kiracı 10 için veri depolar.
 
-![Multiple tenants on single DB][3]
+![Tek VERITABANıNDA birden çok kiracı][3]
 
-**Based on your choice, choose one of these options:**
+**Seçtiğiniz seçeneğe göre şu seçeneklerden birini seçin:**
 
-### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Option 1: create a shard map for a list mapping
+### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Seçenek 1: bir liste eşlemesi için parça haritası oluşturma
 
-Create a shard map using the ShardMapManager object.
+ShardMapManager nesnesini kullanarak bir parça haritası oluşturun.
 
 ```powershell
 # $ShardMapManager is the shard map manager object
 $ShardMap = New-ListShardMap -KeyType $([int]) -ListShardMapName 'ListShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Option 2: create a shard map for a range mapping
+### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>2\. seçenek: bir Aralık eşlemesi için parça haritası oluşturma
 
-To utilize this mapping pattern, tenant ID values needs to be continuous ranges, and it is acceptable to have gap in the ranges by skipping the range when creating the databases.
+Bu eşleme modelini kullanmak için kiracı KIMLIĞI değerlerinin sürekli aralıklar olması gerekir ve veritabanlarını oluştururken aralığı atlayarak aralıklarda boşluk olması kabul edilebilir.
 
 ```powershell
 # $ShardMapManager is the shard map manager object
@@ -100,48 +100,48 @@ To utilize this mapping pattern, tenant ID values needs to be continuous ranges,
 $ShardMap = New-RangeShardMap -KeyType $([int]) -RangeShardMapName 'RangeShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Option 3: List mappings on an individual database
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Seçenek 3: ayrı bir veritabanında eşleştirmeleri listeleme
 
-Setting up this pattern also requires creation of a list map as shown in step 2, option 1.
+Bu düzenin ayarlanması ayrıca adım 2, seçenek 1 ' de gösterildiği gibi bir liste eşlemesinin oluşturulmasını gerektirir.
 
-## <a name="step-3-prepare-individual-shards"></a>Step 3: Prepare individual shards
+## <a name="step-3-prepare-individual-shards"></a>3\. Adım: tek tek parçaları hazırlama
 
-Add each shard (database) to the shard map manager. This prepares the individual databases for storing mapping information. Execute this method on each shard.
+Parça eşleme Yöneticisi 'ne her parça (veritabanı) ekleyin. Bu, eşleme bilgilerini depolamak için ayrı veritabanlarını hazırlar. Her parça üzerinde bu yöntemi yürütün.
 
 ```powershell
 Add-Shard -ShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
 # The $ShardMap is the shard map created in step 2.
 ```
 
-## <a name="step-4-add-mappings"></a>Step 4: Add mappings
+## <a name="step-4-add-mappings"></a>4\. Adım: eşlemeler ekleme
 
-The addition of mappings depends on the kind of shard map you created. If you created a list map, you add list mappings. If you created a range map, you add range mappings.
+Eşlemelerin eklenmesi, oluşturduğunuz parça haritasının türüne bağlıdır. Bir liste eşlemesi oluşturduysanız, liste eşlemeleri eklersiniz. Bir Aralık eşlemesi oluşturduysanız, Aralık eşlemeleri eklersiniz.
 
-### <a name="option-1-map-the-data-for-a-list-mapping"></a>Option 1: map the data for a list mapping
+### <a name="option-1-map-the-data-for-a-list-mapping"></a>Seçenek 1: bir liste eşlemesi için verileri eşleme
 
-Map the data by adding a list mapping for each tenant.  
+Her kiracı için bir liste eşlemesi ekleyerek verileri eşleyin.  
 
 ```powershell
 # Create the mappings and associate it with the new shards
 Add-ListMapping -KeyType $([int]) -ListPoint '<tenant_id>' -ListShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
 ```
 
-### <a name="option-2-map-the-data-for-a-range-mapping"></a>Option 2: map the data for a range mapping
+### <a name="option-2-map-the-data-for-a-range-mapping"></a>Seçenek 2: bir Aralık eşleme için verileri eşleme
 
-Add the range mappings for all the tenant ID range - database associations:
+Tüm kiracı KIMLIĞI aralığı-veritabanı ilişkilendirmeleri için Aralık eşlemelerini ekleyin:
 
 ```powershell
 # Create the mappings and associate it with the new shards
 Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
 ```
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Step 4 option 3: map the data for multiple tenants on an individual database
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>4\. Adım 3: tek bir veritabanındaki birden çok kiracının verilerini eşleme
 
-For each tenant, run the Add-ListMapping (option 1).
+Her kiracı için Add-ListMapping (1. seçenek) öğesini çalıştırın.
 
-## <a name="checking-the-mappings"></a>Checking the mappings
+## <a name="checking-the-mappings"></a>Eşlemeler denetleniyor
 
-Information about the existing shards and the mappings associated with them can be queried using following commands:  
+Mevcut parçalar ve bunlarla ilişkili eşlemeler hakkında bilgiler aşağıdaki komutlar kullanılarak sorgulanabilecek:  
 
 ```powershell
 # List the shards and mappings
@@ -151,23 +151,23 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="summary"></a>Özet
 
-Once you have completed the setup, you can begin to use the Elastic Database client library. You can also use [data-dependent routing](sql-database-elastic-scale-data-dependent-routing.md) and [multi-shard query](sql-database-elastic-scale-multishard-querying.md).
+Kurulumu tamamladıktan sonra elastik veritabanı istemci kitaplığını kullanmaya başlayabilirsiniz. Ayrıca [veriye bağımlı yönlendirme](sql-database-elastic-scale-data-dependent-routing.md) ve [çok parçalı sorgu](sql-database-elastic-scale-multishard-querying.md)kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Get the PowerShell scripts from [Azure SQL DB-Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+[Azure SQL DB-elastik veritabanı araçları betiklerinden](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)PowerShell betikleri alın.
 
-The tools are also on GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+Araçlar ayrıca GitHub üzerinde de bulunur: [Azure/elastik-DB-Tools](https://github.com/Azure/elastic-db-tools).
 
-Use the split-merge tool to move data to or from a multi-tenant model to a single tenant model. See [Split merge tool](sql-database-elastic-scale-get-started.md).
+Verileri çok kiracılı bir modelden tek bir kiracı modeline taşımak için bölünmüş birleştirme aracını kullanın. Bkz. [bölünmüş birleştirme aracı](sql-database-elastic-scale-get-started.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 Çok kiracılı hizmet olarak yazılım (SaaS) veritabanı uygulamalarının ortak veri mimarisi düzenlerine ilişkin bilgi için bkz. [Azure SQL Veritabanı ile Çok Kiracılı SaaS Uygulamaları için Tasarım Düzenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-## <a name="questions-and-feature-requests"></a>Questions and Feature Requests
+## <a name="questions-and-feature-requests"></a>Sorular ve özellik Istekleri
 
-For questions, use the [SQL Database forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) and for feature requests, add them to the [SQL Database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
+Sorular için, [SQL veritabanı Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) ' nu kullanın ve özellik istekleri Için bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

@@ -1,6 +1,6 @@
 ---
-title: Mobile Apps bindings for Azure Functions
-description: Understand how to use Azure Mobile Apps bindings in Azure Functions.
+title: Azure Işlevleri için Mobile Apps bağlamaları
+description: Azure Işlevleri 'nde Azure Mobile Apps bağlamalarını nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
@@ -12,39 +12,39 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231124"
 ---
-# <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindings for Azure Functions 
+# <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Işlevleri için Mobile Apps bağlamaları 
 
 > [!NOTE]
-> Azure Mobile Apps bindings are only available to Azure Functions 1.x. They are not supported in Azure Functions 2.x.
+> Azure Mobile Apps bağlamaları yalnızca Azure Işlevleri 1. x ile kullanılabilir. Azure Işlevleri 2. x içinde desteklenmez.
 
-This article explains how to work with [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bindings in Azure Functions. Azure Functions supports input and output bindings for Mobile Apps.
+Bu makalede Azure Işlevleri 'nde [azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Azure Işlevleri Mobile Apps için giriş ve çıkış bağlamalarını destekler.
 
-The Mobile Apps bindings let you read and update data tables in mobile apps.
+Mobile Apps bağlamaları, Mobil uygulamalardaki veri tablolarını okumanızı ve güncelleştirmenizi sağlar.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-Mobile Apps bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub repository.
+Mobile Apps bağlamaları [Microsoft. Azure. WebJobs. Extensions. MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet paketi, sürüm 1. x içinde sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub deposunda bulunur.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="input"></a>Girdi
+## <a name="input"></a>Giriş
 
-The Mobile Apps input binding loads a record from a mobile table endpoint and passes it into your function. In C# and F# functions, any changes made to the record are automatically sent back to the table when the function exits successfully.
+Mobile Apps giriş bağlaması bir mobil tablo uç noktasından bir kayıt yükler ve bunu işlevinizden geçirir. Ve C# F# işlevleri içinde, işlev başarıyla çıktığında kayıtta yapılan tüm değişiklikler otomatik olarak tabloya geri gönderilir.
 
-## <a name="input---example"></a>Input - example
+## <a name="input---example"></a>Giriş-örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
-* [C# script (.csx)](#input---c-script-example)
+* [C#betik (. CSX)](#input---c-script-example)
 * JavaScript
 
-### <a name="input---c-script-example"></a>Input - C# script example
+### <a name="input---c-script-example"></a>Giriş C# betiği örneği
 
-The following example shows a Mobile Apps input binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function is triggered by a queue message that has a record identifier. The function reads the specified record and modifies its `Text` property.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps girişi bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev, kayıt tanımlayıcısı olan bir kuyruk iletisi tarafından tetiklenir. İşlevi belirtilen kaydı okur ve `Text` özelliğini değiştirir.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -68,9 +68,9 @@ Here's the binding data in the *function.json* file:
 ]
 }
 ```
-The [configuration](#input---configuration) section explains these properties.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the C# script code:
+C# betik kodunu şu şekildedir:
 
 ```cs
 #r "Newtonsoft.Json"    
@@ -85,11 +85,11 @@ public static void Run(string myQueueItem, JObject record)
 }
 ```
 
-### <a name="input---javascript"></a>Input - JavaScript
+### <a name="input---javascript"></a>Giriş-JavaScript
 
-The following example shows a Mobile Apps input binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function is triggered by a queue message that has a record identifier. The function reads the specified record and modifies its `Text` property.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps girişi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, kayıt tanımlayıcısı olan bir kuyruk iletisi tarafından tetiklenir. İşlevi belirtilen kaydı okur ve `Text` özelliğini değiştirir.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -113,9 +113,9 @@ Here's the binding data in the *function.json* file:
 ]
 }
 ```
-The [configuration](#input---configuration) section explains these properties.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = function (context, myQueueItem) {    
@@ -124,54 +124,54 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="input---attributes"></a>Input - attributes
+## <a name="input---attributes"></a>Giriş - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribute.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [mobiletable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) özniteliğini kullanın.
 
-For information about attribute properties that you can configure, see [the following configuration section](#input---configuration).
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için [aşağıdaki yapılandırma bölümüne](#input---configuration)bakın.
 
-## <a name="input---configuration"></a>Input - configuration
+## <a name="input---configuration"></a>Giriş - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `MobileTable` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `MobileTable` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type**|| Must be set to "mobileTable"|
-| **direction**||Must be set to "in"|
-| **name**|| Name of input parameter in function signature.|
-|**tableName** |**TableName**|Name of the mobile app's data table|
-| **id**| **Kimlik** | The identifier of the record to retrieve. Can be static or based on the trigger that invokes the function. For example, if you use a queue trigger for your function, then `"id": "{queueTrigger}"` uses the string value of the queue message as the record ID to retrieve.|
-|**connection**|**Connection**|The name of an app setting that has the mobile app's URL. The function uses this URL to construct the required REST operations against your mobile app. Create an app setting in your function app that contains the mobile app's URL, then specify the name of the app setting in the `connection` property in your input binding. The URL looks like `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|The name of an app setting that has your mobile app's API key. Provide the API key if you [implement an API key in your Node.js mobile app](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), or [implement an API key in your .NET mobile app](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). To provide the key, create an app setting in your function app that contains the API key, then add the `apiKey` property in your input binding with the name of the app setting. |
+| **type**|| "MobileTable" olarak ayarlanmalıdır|
+| **direction**||"In" olarak ayarlanmalıdır|
+| **ada**|| İşlev imzasında giriş parametresinin adı.|
+|**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
+| **numarasını**| **Kimlik** | Alınacak kaydın tanımlayıcısı. İşlevi çağıran tetikleyicisine statik veya bağlı olabilir. Örneğin, işleviniz için bir kuyruk tetikleyicisi kullanıyorsanız, `"id": "{queueTrigger}"` alınacak kayıt KIMLIĞI olarak Kuyruk iletisinin dize değerini kullanır.|
+|**bağlanma**|**Bağlanma**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
+|**apiKey**|**ApiKey**|Mobil uygulamanızın API anahtarına sahip bir uygulama ayarının adı. [Node. js mobil uygulamanıza BIR API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)veya [.net MOBIL uygulamanızda bir API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)API anahtarını sağlayın. Anahtarı sağlamak için, işlev uygulamanızda API anahtarını içeren bir uygulama ayarı oluşturun ve ardından giriş bağlamaınıza `apiKey` özelliğini uygulama ayarı adı ile ekleyin. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Don't share the API key with your mobile app clients. It should only be distributed securely to service-side clients, like Azure Functions. Azure Functions stores your connection information and API keys as app settings so that they are not checked into your source control repository. This safeguards your sensitive information.
+> API anahtarını mobil uygulama istemcileriniz ile paylaşmayın. Yalnızca Azure Işlevleri gibi hizmet tarafı istemcilerine güvenli bir şekilde dağıtılmalıdır. Azure Işlevleri, bağlantı bilgilerinizi ve API anahtarlarınızı, uygulama ayarları olarak depolar, böylece bunlar kaynak denetimi deponuza iade edilmez. Bu, hassas bilgilerinizi korur.
 
-## <a name="input---usage"></a>Input - usage
+## <a name="input---usage"></a>Giriş - kullanım
 
-In C# functions, when the record with the specified ID is found, it is passed into the named [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parameter. When the record is not found, the parameter value is `null`. 
+C# İşlevlerde, belirtilen kimliğe sahip kayıt bulunduğunda, adlandırılmış [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parametresine geçirilir. Kayıt bulunamadığında parametre değeri `null`. 
 
-In JavaScript functions, the record is passed into the `context.bindings.<name>` object. When the record is not found, the parameter value is `null`. 
+JavaScript işlevlerinde, kayıt `context.bindings.<name>` nesnesine geçirilir. Kayıt bulunamadığında parametre değeri `null`. 
 
-In C# and F# functions, any changes you make to the input record (input parameter) are automatically sent back to the table when the function exits successfully. You can't modify a record in JavaScript functions.
+Ve C# F# işlevleri içinde, işlev başarıyla çıktığında giriş kaydında (giriş parametresi) yaptığınız tüm değişiklikler otomatik olarak tabloya geri gönderilir. JavaScript işlevlerinde bir kaydı değiştiremezsiniz.
 
 ## <a name="output"></a>Çıktı
 
-Use the Mobile Apps output binding to write a new record to a Mobile Apps table.  
+Bir Mobile Apps tablosuna yeni bir kayıt yazmak için Mobile Apps çıkış bağlamasını kullanın.  
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Çıkış - örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#betik (. CSX)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Çıkış - C# örneği
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that is triggered by a queue message and creates a record in a mobile app table.
+Aşağıdaki örnek, bir kuyruk iletisi tarafından tetiklenen ve bir mobil uygulama tablosunda bir kayıt oluşturan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -184,11 +184,11 @@ public static object Run(
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Çıkış - C# betiği örneği
 
-The following example shows a Mobile Apps output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function is triggered by a queue message and creates a new record with hard-coded value for the `Text` property.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps çıktı bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev bir kuyruk iletisi tarafından tetiklenir ve `Text` özelliği için sabit kodlanmış değere sahip yeni bir kayıt oluşturur.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -212,9 +212,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the C# script code:
+C# betik kodunu şu şekildedir:
 
 ```cs
 public static void Run(string myQueueItem, out object record)
@@ -225,11 +225,11 @@ public static void Run(string myQueueItem, out object record)
 }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Çıkış - JavaScript örneği
 
-The following example shows a Mobile Apps output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function is triggered by a queue message and creates a new record with hard-coded value for the `Text` property.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps çıktı bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev bir kuyruk iletisi tarafından tetiklenir ve `Text` özelliği için sabit kodlanmış değere sahip yeni bir kayıt oluşturur.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -254,9 +254,9 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -269,11 +269,11 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Çıkış - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribute.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [mobiletable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) özniteliğini kullanın.
 
-For information about attribute properties that you can configure, see [Output - configuration](#output---configuration). Here's a `MobileTable` attribute example in a method signature:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [çıkış-yapılandırma](#output---configuration). Yöntem imzasında bir `MobileTable` özniteliği örneği aşağıda verilmiştir:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -286,37 +286,37 @@ public static object Run(
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output---c-example).
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `MobileTable` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `MobileTable` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type**|| Must be set to "mobileTable"|
-| **direction**||Must be set to "out"|
-| **name**|| Name of output parameter in function signature.|
-|**tableName** |**TableName**|Name of the mobile app's data table|
-|**connection**|**MobileAppUriSetting**|The name of an app setting that has the mobile app's URL. The function uses this URL to construct the required REST operations against your mobile app. Create an app setting in your function app that contains the mobile app's URL, then specify the name of the app setting in the `connection` property in your input binding. The URL looks like `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKeySetting**|The name of an app setting that has your mobile app's API key. Provide the API key if you [implement an API key in your Node.js mobile app backend](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), or [implement an API key in your .NET mobile app backend](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). To provide the key, create an app setting in your function app that contains the API key, then add the `apiKey` property in your input binding with the name of the app setting. |
+| **type**|| "MobileTable" olarak ayarlanmalıdır|
+| **direction**||"Out" olarak ayarlanmalıdır|
+| **ada**|| İşlev imzasında çıkış parametresinin adı.|
+|**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
+|**bağlanma**|**MobileAppUriSetting**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
+|**apiKey**|**ApiKeySetting**|Mobil uygulamanızın API anahtarına sahip bir uygulama ayarının adı. [Node. js mobil uygulama arka ucunuza BIR API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)veya [.NET mobil uygulamanızın arka UCUNUZA bir API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)API anahtarını sağlayın. Anahtarı sağlamak için, işlev uygulamanızda API anahtarını içeren bir uygulama ayarı oluşturun ve ardından giriş bağlamaınıza `apiKey` özelliğini uygulama ayarı adı ile ekleyin. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Don't share the API key with your mobile app clients. It should only be distributed securely to service-side clients, like Azure Functions. Azure Functions stores your connection information and API keys as app settings so that they are not checked into your source control repository. This safeguards your sensitive information.
+> API anahtarını mobil uygulama istemcileriniz ile paylaşmayın. Yalnızca Azure Işlevleri gibi hizmet tarafı istemcilerine güvenli bir şekilde dağıtılmalıdır. Azure Işlevleri, bağlantı bilgilerinizi ve API anahtarlarınızı, uygulama ayarları olarak depolar, böylece bunlar kaynak denetimi deponuza iade edilmez. Bu, hassas bilgilerinizi korur.
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Çıkış - kullanım
 
-In C# script functions, use a named output parameter of type `out object` to access the output record. In C# class libraries, the `MobileTable` attribute can be used with any of the following types:
+Betik C# işlevleri ' nde, çıkış kaydına erişmek için `out object` türünde bir adlandırılmış çıkış parametresi kullanın. C# Sınıf kitaplıklarında `MobileTable` özniteliği aşağıdaki türlerden biriyle kullanılabilir:
 
-* `ICollector<T>` or `IAsyncCollector<T>`, where `T` is either `JObject` or any type with a `public string Id` property.
+* `ICollector<T>` veya `IAsyncCollector<T>`, `T` `JObject` veya `public string Id` özelliği olan herhangi bir tür.
 * `out JObject`
-* `out T` or `out T[]`, where `T` is any Type with a `public string Id` property.
+* `out T` veya `out T[]`, burada `T` `public string Id` özelliği olan herhangi bir tür.
 
-In Node.js functions, use `context.bindings.<name>` to access the output record.
+Node. js işlevlerinde, çıkış kaydına erişmek için `context.bindings.<name>` kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

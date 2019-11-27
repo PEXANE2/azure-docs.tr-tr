@@ -16,7 +16,7 @@ ms.locfileid: "74211214"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
 
-Azure DNS'yi web uygulamalarınız için özel etki alanı barındıracak şekilde yapılandırabilirsiniz. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
+Azure DNS'yi web uygulamalarınız için özel etki alanı barındıracak şekilde yapılandırabilirsiniz. Örneğin, bir Azure Web uygulaması oluşturabilir ve kullanıcılarınızın bir tam etki alanı adı (FQDN) olarak www\.contoso.com veya contoso.com kullanarak erişmesini sağlayabilirsiniz.
 
 > [!NOTE]
 > contoso.com bu öğreticide örnek etki alanı olarak kullanılmıştır. contoso.com yerine kendi etki alanı adınızı yazın.
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* You must have a domain name available to test with that you can host in Azure DNS . Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
+* Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 * [Bir App Service uygulaması oluşturun](../app-service/app-service-web-get-started-html.md) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
 
 * Azure DNS'de bir DNS bölgesi oluşturun ve bölgeyi kayıt kuruluşunuzda Azure DNS'ye devredin.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Uygulama Hizmetleri, bu kaydı yalnızca yapılandırma sırasında, özel etki alanının sahibi olduğunuzu doğrulamak için kullanır. Özel etki alanınız doğrulandıktan ve Uygulama Hizmetleri'nde yapılandırıldıktan sonra, bu TXT kaydını silebilirsiniz.
 
 > [!NOTE]
-> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
+> Üretim trafiğini Web uygulamasına yönlendirmenize rağmen etki alanı adını doğrulamak istiyorsanız, yalnızca doğrulama adımı için TXT kaydını belirtmeniz gerekir.  Doğrulama, TXT kaydına ek olarak bir veya CNAME kaydı gerektirmez.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Bir tarayıcı açıp `http://www.<your domainname>` ve `http://<you domain name>` adreslerine gidin.
 
 > [!NOTE]
-> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
+> `http://` önekini eklediğinizden emin olun, aksi takdirde tarayıcınız sizin için bir URL 'YI tahmin etmeye çalışabilir!
 
-İki URL'de de aynı sayfayı görmeniz gerekir. Örnek:
+İki URL'de de aynı sayfayı görmeniz gerekir. Örneğin:
 
 ![Contoso uygulama hizmeti](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

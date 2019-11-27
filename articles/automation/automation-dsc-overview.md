@@ -1,7 +1,7 @@
 ---
-title: Azure Automation State Configuration Overview
-description: An Overview of Azure Automation State Configuration (DSC), its terms, and known issues
-keywords: powershell dsc, desired state configuration, powershell dsc azure
+title: Azure Otomasyonu durum yapılandırmasına genel bakış
+description: Azure Otomasyonu durum yapılandırması (DSC), koşullarına ve bilinen sorunlara genel bakış
+keywords: PowerShell DSC, istenen durum yapılandırması, PowerShell DSC Azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -17,37 +17,37 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231639"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration Overview
+# <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
-Azure Automation State Configuration is an Azure service that allows you to write, manage, and compile PowerShell Desired State Configuration (DSC) [configurations](/powershell/scripting/dsc/configurations/configurations), import [DSC Resources](/powershell/scripting/dsc/resources/resources), and assign configurations to target nodes, all in the cloud.
+Azure Otomasyonu durum yapılandırması, PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations)yazmanızı, yönetmenizi ve derlemenize, [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarmanızı ve hedef düğümlere yapılandırma atamanızı sağlayan bir Azure hizmetidir.
 
-## <a name="why-use-azure-automation-state-configuration"></a>Why use Azure Automation State Configuration
+## <a name="why-use-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması neden kullanılmalıdır?
 
-Azure Automation State Configuration provides several advantages over using DSC outside of Azure.
+Azure Otomasyonu durum yapılandırması, Azure dışında DSC kullanmaya kıyasla çeşitli avantajlar sağlar.
 
-### <a name="built-in-pull-server"></a>Built-in pull server
+### <a name="built-in-pull-server"></a>Yerleşik çekme sunucusu
 
-Azure Automation State Configuration provides a DSC pull server similar to the [Windows Feature DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) so that target nodes automatically receive configurations, conform to the desired state, and report back on their compliance. The built-in pull server in Azure Automation eliminates the need to set up and maintain your own pull server. Azure Automation can target virtual or physical Windows or Linux machines, in the cloud or on-premises.
+Azure Otomasyonu durum yapılandırması, [Windows ÖZELLIĞI DSC hizmetine](/powershell/scripting/dsc/pull-server/pullserver) benzer bir DSC çekme sunucusu sağlar. böylece hedef düğümler yapılandırmaları otomatik olarak alır, istenen duruma uymalıdır ve uyumluluğuna geri rapor verir. Azure Otomasyonu 'ndaki yerleşik çekme sunucusu, kendi çekme sunucunuzu ayarlama ve sürdürme gereksinimini ortadan kaldırır. Azure Otomasyonu, sanal veya fiziksel Windows veya Linux makinelerini bulutta veya şirket içinde hedefleyebilir.
 
-### <a name="management-of-all-your-dsc-artifacts"></a>Management of all your DSC artifacts
+### <a name="management-of-all-your-dsc-artifacts"></a>Tüm DSC yapıtlarınızın yönetimi
 
-Azure Automation State Configuration brings the same management layer to [PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) as Azure Automation offers for PowerShell scripting.
+Azure Otomasyonu durum yapılandırması, PowerShell komut dosyası oluşturma için Azure Otomasyonu teklifleri olarak [PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) için aynı yönetim katmanını getirir.
 
-From the Azure portal, or from PowerShell, you can manage all your DSC configurations, resources, and target nodes.
+Azure portal veya PowerShell 'den, tüm DSC yapılandırmalarınızı, kaynaklarınızı ve hedef düğümlerinizi yönetebilirsiniz.
 
-![Screenshot of the Azure Automation page](./media/automation-dsc-overview/azure-automation-blade.png)
+![Azure Otomasyonu sayfasının ekran görüntüsü](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-azure-monitor-logs"></a>Import reporting data into Azure Monitor logs
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Raporlama verilerini Azure Izleyici günlüklerine aktarma
 
-Nodes that are managed with Azure Automation State Configuration send detailed reporting status data to the built-in pull server. You can configure Azure Automation State Configuration to send this data to your Log Analytics workspace. To learn how to send State Configuration status data to your Log Analytics workspace, see [Forward Azure Automation State Configuration reporting data to Azure Monitor logs](automation-dsc-diagnostics.md).
+Azure Otomasyonu durum yapılandırması ile yönetilen düğümler, yerleşik çekme sunucusuna ayrıntılı raporlama durum verileri gönderir. Azure Otomasyonu durum yapılandırması 'nı, bu verileri Log Analytics çalışma alanınıza gönderecek şekilde yapılandırabilirsiniz. Log Analytics çalışma alanınıza durum yapılandırma durumu verileri gönderme hakkında bilgi edinmek için bkz. Azure [Otomasyonu durum yapılandırması raporlama verilerini Azure izleyici günlüklerine iletme](automation-dsc-diagnostics.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Please consider the following requirements when using Azure Automation State Configuration (DSC).
+Lütfen Azure Otomasyonu durum yapılandırması 'nı (DSC) kullanırken aşağıdaki gereksinimleri göz önünde bulundurun.
 
-### <a name="operating-system-requirements"></a>Operating System Requirements
+### <a name="operating-system-requirements"></a>İşletim sistemi gereksinimleri
 
-For nodes running Windows, the following versions are supported:
+Windows çalıştıran düğümler için aşağıdaki sürümler desteklenir:
 
 - Windows Server 2019
 - Windows Server 2016
@@ -58,49 +58,49 @@ For nodes running Windows, the following versions are supported:
 - Windows 8.1
 - Windows 7
 
-The [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) standalone product sku does not contain an implementation of Desired State Configuraion so it cannot be managed by PowerShell DSC or Azure Automation State Configuration.
+[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) tek başına Ürün SKU 'Su Istenen durum yapılandırması, PowerShell DSC veya Azure Otomasyonu durum yapılandırması tarafından yönetilebilmesi için bu uygulamayı içermiyor.
 
-For nodes running Linux, the following distros/versions are supported:
+Linux çalıştıran düğümler için aşağıdaki distrolar/sürümler desteklenir:
 
-The DSC Linux extension supports all the Linux distributions listed under [Supported Linux Distributions](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
+DSC Linux uzantısı, [desteklenen Linux dağıtımları](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)altında listelenen tüm Linux dağıtımlarını destekler.
 
-### <a name="dsc-requirements"></a>DSC requirements
+### <a name="dsc-requirements"></a>DSC gereksinimleri
 
-For all Windows nodes running in Azure, [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) will be installed during onboarding.  For nodes running Windows Server 2012 and Windows 7, [WinRM will be enabled](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Azure 'da çalışan tüm Windows düğümleri için, [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) ekleme sırasında yüklenecektir.  Windows Server 2012 ve Windows 7 çalıştıran düğümler için [WinRM etkinleştirilecek](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
-For all Linux nodes running in Azure, [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) will be installed during onboarding.
+Azure 'da çalışan tüm Linux düğümleri için ekleme sırasında [Linux Için POWERSHELL DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) yüklenir.
 
-### <a name="network-planning"></a>Configure private networks
+### <a name="network-planning"></a>Özel ağları yapılandırma
 
-If your nodes are located within a private network, the following port and URLs are required for State Configuration (DSC) to communicate with Automation:
+Düğümleriniz özel bir ağda bulunuyorsa, otomasyon ile iletişim kurmak için durum yapılandırması (DSC) için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
 
-* Port: Only TCP 443 is required for outbound internet access.
-* Global URL: *.azure-automation.net
-* Global URL of US Gov Virginia: *.azure-automation.us
-* Agent service: https://\<workspaceId\>.agentsvc.azure-automation.net
+* Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gereklidir.
+* Genel URL: *. azure-automation.net
+* US Gov Virginia genel URL 'SI: *. azure-automation.us
+* Aracı hizmeti: https://\<çalışma alanı kimliği\>. agentsvc.azure-automation.net
 
-This provides network connectivity for the managed node to communicate with Azure Automation.
-If you are using DSC resources that communicate between nodes, such as the [WaitFor* resources](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), you will also need to allow traffic between nodes.
-See the documentation for each DSC resource to understand those network requirements.
+Bu, yönetilen düğüm için Azure Otomasyonu ile iletişim kurmak üzere ağ bağlantısı sağlar.
+[Waitfor * kaynakları](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)gibi düğümler arasında ILETIŞIM kuran DSC kaynakları kullanıyorsanız, düğümler arasında trafiğe de izin vermeniz gerekir.
+Bu ağ gereksinimlerini anlamak için her DSC kaynağına yönelik belgelere bakın.
 
-#### <a name="proxy-support"></a>Proxy Support
+#### <a name="proxy-support"></a>Proxy desteği
 
-Proxy support for the DSC agent is available in Windows version 1809 and later.
-To configure this option, set the value for **ProxyURL** and **ProxyCredential** in the [metaconfiguration script](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) used to register nodes.
-Proxy is not available in DSC for previous versions of Windows.
+DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir.
+Bu seçeneği yapılandırmak için, **ProxyURL** ve **proxycredential** değerlerini, düğümleri kaydetmek için kullanılan [metaconfiguration betiğine](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) ayarlayın.
+Windows 'un önceki sürümleri için DSC 'de ara sunucu kullanılamaz.
 
-For Linux nodes, the DSC agent supports proxy and will utilize the http_proxy variable to determine the url.
+Linux düğümleri için DSC Aracısı proxy 'yi destekler ve URL 'yi belirlemekte http_proxy değişkenini kullanır.
 
-#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure State Configuration network ranges and namespace
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure Durum Yapılandırması ağ aralıkları ve ad alanı
 
-It's recommended to use the addresses listed when defining exceptions. For IP addresses you can download the [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653). This file is updated weekly, and has the currently deployed ranges and any upcoming changes to the IP ranges.
+Özel durumları tanımlarken listelenen adreslerin kullanılması önerilir. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıklar ve IP aralıklarında yaklaşan değişiklikler vardır.
 
-If you have an Automation account that's defined for a specific region, you can restrict communication to that regional datacenter. The following table provides the DNS record for each region:
+Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, bu bölgesel veri merkezi ile iletişimi kısıtlayabilirsiniz. Aşağıdaki tabloda her bölge için DNS kaydı verilmiştir:
 
-| **Bölge** | **DNS record** |
+| **Bölge** | **DNS kaydı** |
 | --- | --- |
 | Orta Batı ABD | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Güney Orta ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Orta Güney ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Doğu ABD   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | Doğu ABD 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada Orta |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
@@ -108,25 +108,25 @@ If you have an Automation account that's defined for a specific region, you can 
 | Kuzey Avrupa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Güneydoğu Asya |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Orta Hindistan |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Doğu Japonya |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Japonya Doğu |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Avustralya Güneydoğu |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | Birleşik Krallık, Güney | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | ABD Hükümeti Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-For a list of region IP addresses instead of region names, download the [Azure Datacenter IP address](https://www.microsoft.com/download/details.aspx?id=41653) XML file from the Microsoft Download Center.
+Bölge adları yerine bölge IP adresleri listesi için, Microsoft Indirme Merkezi ' nden [Azure veri MERKEZI IP adresi](https://www.microsoft.com/download/details.aspx?id=41653) XML dosyasını indirin.
 
 > [!NOTE]
-> The Azure Datacenter IP address XML file lists the IP address ranges that are used in the Microsoft Azure datacenters. The file includes compute, SQL, and storage ranges.
+> Azure veri merkezi IP adresi XML dosyası Microsoft Azure veri merkezlerinde kullanılan IP adresi aralıklarını listeler. Dosya işlem, SQL ve depolama aralıklarını içerir.
 >
->An updated file is posted weekly. The file reflects the currently deployed ranges and any upcoming changes to the IP ranges. New ranges that appear in the file aren't used in the datacenters for at least one week.
+>Güncelleştirilmiş bir dosya haftalık olarak gönderilir. Dosya, şu anda dağıtılmış aralıkları ve IP aralıklarında yaklaşan değişiklikleri yansıtır. Dosyada görüntülenen yeni aralıklar, en az bir hafta için veri merkezlerinde kullanılmıyor.
 >
-> It's a good idea to download the new XML file every week. Then, update your site to correctly identify services running in Azure. Azure ExpressRoute users should note that this file is used to update the Border Gateway Protocol (BGP) advertisement of Azure space in the first week of each month.
+> Her hafta yeni XML dosyasını indirmek iyi bir fikirdir. Daha sonra, sitenizi Azure 'da çalışan hizmetleri doğru şekilde belirlemek için güncelleştirin. Azure ExpressRoute kullanıcıları bu dosyanın, her ayın ilk haftasında Azure Space Sınır Ağ Geçidi Protokolü (BGP) tanıtımını güncelleştirmek için kullanıldığını unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- To get started, see [Getting started with Azure Automation State Configuration](automation-dsc-getting-started.md)
-- To learn how to onboard nodes, see [Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md)
-- To learn about compiling DSC configurations so that you can assign them to target nodes, see [Compiling configurations in Azure Automation State Configuration](automation-dsc-compile.md)
-- For PowerShell cmdlet reference, see [Azure Automation State Configuration cmdlets](/powershell/module/azurerm.automation/#automation)
-- For pricing information, see [Azure Automation State Configuration pricing](https://azure.microsoft.com/pricing/details/automation/)
-- To see an example of using Azure Automation State Configuration in a continuous deployment pipeline, see [Continuous Deployment Using Azure Automation State Configuration and Chocolatey](automation-dsc-cd-chocolatey.md)
+- Başlamak için bkz. [Azure Otomasyonu durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md) başlama
+- Düğümlerin nasıl ekleneceğini öğrenmek için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makineleri ekleme](automation-dsc-onboarding.md)
+- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md)
+- PowerShell cmdlet başvurusu için bkz. [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/azurerm.automation/#automation)
+- Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/)
+- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Azure Otomasyonu durum yapılandırması ve Chocolatey kullanarak sürekli dağıtım](automation-dsc-cd-chocolatey.md)

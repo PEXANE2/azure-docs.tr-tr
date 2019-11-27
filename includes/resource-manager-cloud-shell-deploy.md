@@ -13,9 +13,9 @@ ms.locfileid: "74451513"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell'den şablon dağıtma
 
-Şablonunuzu dağıtmak için [Cloud Shell](../articles/cloud-shell/overview.md) kullanabilirsiniz. To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
+Şablonunuzu dağıtmak için [Cloud Shell](../articles/cloud-shell/overview.md) kullanabilirsiniz. Dış şablon dağıtmak için, şablon URI 'sini tam olarak herhangi bir dış dağıtım için yaptığınız gibi sağlayın. Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell depolama hesabına yüklemeniz gerekir. Bu bölümde, şablonun Cloud Shell hesabınıza yüklenmesi ve yerel bir dosya olarak dağıtılması açıklanmaktadır. Cloud Shell kullanmadıysanız, ayarlama hakkında bilgi için bkz. [Azure Cloud Shell Genel Bakış](../articles/cloud-shell/overview.md) .
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Cloud Shell kaynak grubunuzu seçin. Ad deseni `cloud-shell-storage-<region>` şeklindedir.
 
@@ -33,29 +33,29 @@ ms.locfileid: "74451513"
 
    ![Kapsayıcı ekleme](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. **Tamam**’ı seçin.
+1. Kapsayıcınıza bir ad ve erişim düzeyi verin. Bu makaledeki örnek şablon gizli bilgiler içermez, bu nedenle anonim okuma erişimine izin verin. **Tamam**’ı seçin.
 
-   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Kapsayıcı değerlerini sağla](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Select the container you created.
+1. Oluşturduğunuz kapsayıcıyı seçin.
 
-   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Yeni kapsayıcı Seç](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. **Karşıya Yükle**’yi seçin.
 
-   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![Blobu karşıya yükle](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Şablonunuzu bulup karşıya yükleyin.
 
    ![Dosya yükleme](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. After it has uploaded, select the template.
+1. Karşıya yüklendikten sonra şablonu seçin.
 
-   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Yeni şablon seç](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Copy the URL.
+1. URL'yi kopyalayın.
 
-   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![URL 'YI Kopyala](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. İstemi açın.
 

@@ -15,108 +15,108 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485553"
 ---
-General purpose VM sizes provide balanced CPU-to-memory ratio. Test ve geliştirme, küçük - orta boyutlu veritabanları, düşük - orta yoğunluklu trafiğe sahip web sunucuları için idealdir. This article provides information about the number of vCPUs, data disks and NICs as well as storage throughput for sizes in this grouping.
+Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geliştirme, küçük - orta boyutlu veritabanları, düşük - orta yoğunluklu trafiğe sahip web sunucuları için idealdir. Bu makalede, bu gruplandırmadaki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı hakkında bilgi sağlanır.
 
-- The [DC-series](#dc-series) is a family of virtual machines in Azure that can help protect the confidentiality and integrity of your data and code while it’s processed in the public cloud. Bu makineler SGX teknolojisine sahip en son nesil 3,7 GHz Intel XEON E-2176G İşlemci ile donatılmıştır. Bu makineler Intel Turbo Boost Technology sayesinde 4,7 GHz’e kadar ulaşabilir. DC serisi örnekler, müşterilerin kod ve verilerini kullanım sırasında korumak için güvenli yalıtılmış alan tabanlı uygulamalar oluşturmasına imkan tanır.
+- [DC Serisi](#dc-series) , Azure 'daki bir sanal makine ailesidir ve bu, genel bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumanıza yardımcı olabilir. Bu makineler SGX teknolojisine sahip en son nesil 3,7 GHz Intel XEON E-2176G İşlemci ile donatılmıştır. Bu makineler Intel Turbo Boost Technology sayesinde 4,7 GHz’e kadar ulaşabilir. DC serisi örnekler, müşterilerin kod ve verilerini kullanım sırasında korumak için güvenli yalıtılmış alan tabanlı uygulamalar oluşturmasına imkan tanır.
 
-- The Av2-series VMs can be deployed on a variety of hardware types and processors. A serisi VM'ler, geliştirme ve test gibi giriş düzeyinde iş yüküne en uygun CPU performansına ve bellek yapılandırmasına sahiptir. Dağıtıldığı donanımdan bağımsız olarak, çalışan örneğe tutarlı işlemci performansı sunmak için boyut donanıma göre genişletilir. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın.
+- AV2 serisi VM 'Ler, çeşitli donanım türlerinde ve işlemcilerde dağıtılabilir. A serisi VM'ler, geliştirme ve test gibi giriş düzeyinde iş yüküne en uygun CPU performansına ve bellek yapılandırmasına sahiptir. Dağıtıldığı donanımdan bağımsız olarak, çalışan örneğe tutarlı işlemci performansı sunmak için boyut donanıma göre genişletilir. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın.
 
-  Example use cases include development and test servers, low traffic web servers, small to medium databases, proof-of-concepts, and code repositories.
+  Örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları, kavram kanıtı ve kod depoları bulunur.
 
-- Dv2-series, a follow-on to the original D-series, features a more powerful CPU and optimal CPU-to-memory configuration making them suitable for most production workloads. The Dv2-series is about 35% faster than the D-series. Dv2-series runs on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with the Intel Turbo Boost Technology 2.0. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- Özgün D serisi için bir takip olan Dv2 serisi, daha güçlü bir CPU ve en iyi CPU-bellek yapılandırmasına sahiptir ve bu da üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-- The Dv3-series runs on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors in a hyper-threaded configuration, providing a better value proposition for most general purpose workloads.  Memory has been expanded (from ~3.5 GiB/vCPU to 4 GiB/vCPU) while disk and network limits have been adjusted on a per core basis to align with the move to hyperthreading.  The Dv3-series no longer has the high memory VM sizes of the D/Dv2-series, those have been moved to the memory optimized Ev3-series for [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) and [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series).
+- Dv3 serisi Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya bir hiper iş parçacıklı yapılandırmadaki Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve en genel için daha iyi bir değer teklifi sağlar Amaç iş yükleri.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlanırken, bellek (~ 3,5 GiB/vCPU 'dan 4 GiB/vCPU 'ya) genişletildi.  Dv3 serisi artık D/dv2-Series ' in yüksek bellek sanal makine boyutlarına sahip değildir; bunlar [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series)Için bellek için iyileştirilmiş Ev3 serisine taşınmıştır.
 
-  Example D-series use cases include enterprise-grade applications, relational databases, in-memory caching, and analytics.
+  Örnek D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz vardır.
 
-- The Dav4-series and Dasv4-series are new sizes utilizing AMD’s 2.35Ghz EPYC<sup>TM</sup> 7452 processor in a multi-threaded configuration with up to 256 GB L3 cache dedicating 8 GB of that L3 cache to every 8 cores increasing customer options for running their general purpose workloads. The Dav4-series and Dasv4-series have the same memory and disk configurations as the D & Dsv3-series.
+- Dav4-Series ve Dasv4-Series, 128 GB L3 önbellek kullanan çok iş parçacıklı bir yapılandırmada, en 256 fazla 128 GB L3 önbellek kullanan<sup>yeni 7452</sup> boyutlardır. bu L3 önbelleğinin her 8 çekirdeğe kadar, genel olarak çalıştırılmasına yönelik müşteri seçeneklerini artıran Amaç iş yükleri. Dav4-Series ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
   
 ## <a name="b-series"></a>B serisi
 
-Premium Storage:  Supported
+Premium Depolama: desteklenir
 
-Premium Storage caching:  Not Supported
+Premium depolama önbelleği: desteklenmiyor
 
-The B-series burstable VMs are ideal for workloads that do not need the full performance of the CPU continuously, like web servers, small databases and development and test environments. These workloads typically have burstable performance requirements. The B-Series provides these customers the ability to purchase a VM size with a price conscious baseline performance that allows the VM instance to build up credits when the VM is utilizing less than its base performance. When the VM has accumulated credit, the VM can burst above the VM’s baseline using up to 100% of the CPU when your application requires the higher CPU performance.
+B serisi Burstable VM 'Ler, Web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi her zaman CPU 'nun tam performansına gerek olmayan iş yükleri için idealdir. Bu iş yükleri genellikle ani performans gereksinimlerine sahiptir. B serisi, bu müşterilere VM 'nin temel performansından daha küçük bir performans üzerinden sanal makine örneğinin krediler oluşturmasını sağlayan bir fiyat bilincine sahip bir VM boyutu satın alma olanağı sağlar. VM 'nin birikmiş kredisi olduğunda, uygulamanız daha yüksek CPU performansı gerektirdiğinde CPU 'nun en fazla %100 ' ü kullanarak VM 'nin ana hat üzerinde veri bloğu oluşturabilir.
 
-Example use cases include development and test servers, low-traffic web servers, small databases, micro services, servers for proof-of-concepts, build servers.
+Örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük veritabanları, mikro hizmetler, kavram kanıtı için sunucular, derleme sunucuları bulunur.
 
 
-| Boyut             | vCPU  | Bellek: GiB | Geçici depolama (SSD) GiB | Base CPU Perf of VM | Max CPU Perf of VM | Initial Credits | Credits banked / hour | Max Banked Credits | En fazla veri diski | Max cached and temp storage throughput: IOPS / MBps | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |          
+| Boyut             | vCPU  | Bellek: GiB | Geçici depolama (SSD) GiB | VM 'nin temel CPU performansı | VM 'nin en yüksek CPU performansı | İlk krediler | Bankaya açık/saat | Maksimum bankaya ait krediler | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | %5                   | %100                   | 30                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | %5                   | %100                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | %10                   | %100                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
 | Standard_B1ms | 1           | 2              | 4                          | %20                   | %100                   | 30                   | 12                 | 288           | 2                         | 800 / 10                                  | 640 / 10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | %40                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
 | Standard_B2ms | 2           | 8              | 16                         | %60                   | 200%                   | 60                   | 36                 | 864            | 4                                      | 2400 / 22.5                               | 1920 / 22.5                               | 3  |
 | Standard_B4ms | 4           | 16             | 32                         | %90                   | 400%                   | 120                   | 54                 | 1296           | 8                                      | 3600 / 35                                 | 2880 / 35                                 | 4  |
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800%                   | 240                   | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
-| Standard_B12ms | 12           | 48             | 6400/96                         | %202                  | %1200                   | 360                   | 121                 | 2909           | 16                                     | 6480 / 75                                 | 4320 / 50                                 | 6  |
-| Standard_B16ms | 16           | 64             | 128                         | %270                  | %1600                   | 480                   | 162                 | 3888           | 32                                     | 8640 / 100                                 | 4320 / 50                                 | 8  |
-| Standard_B20ms | 20           | 80             | 160                         | %337                  | %2000                   | 600                   | 203                 | 4860           | 32                                     | 10800 / 125                                 | 4320 / 50                                 | 8  |
+| Standard_B12ms | 12           | 48             | 6400/96                         | %202                  | %1200                   | 360                   | 121                 | 2909           | 16                                     | 6480/75                                 | 4320 / 50                                 | 6  |
+| Standard_B16ms | 16           | 64             | 128                         | %270                  | %1600                   | 480                   | 162                 | 3888           | 32                                     | 8640/100                                 | 4320 / 50                                 | 8  |
+| Standard_B20ms | 20           | 80             | 160                         | %337                  | %2000                   | 600                   | 203                 | 4860           | 32                                     | 10800/125                                 | 4320 / 50                                 | 8  |
 
-<sup>1</sup> B1ls is supported only on Linux
+<sup>1</sup> B1ls yalnızca Linux üzerinde desteklenir
 
-## <a name="dsv3-series-sup1sup"></a>Dsv3-series <sup>1</sup>
+## <a name="dsv3-series-sup1sup"></a>Dsv3-serisi <sup>1</sup>
 
 ACU: 160-190
 
-Premium Storage:  Supported
+Premium Depolama: desteklenir
 
-Premium Storage caching:  Supported
+Premium depolama önbelleği: desteklenir
 
-Dsv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage. Dsv3 serisi boyutlarındaki sanal makineler, üretim iş yüklerinin çoğuna uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
+Dsv3 serisi boyutlar Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel 2,0 Turbo 2.1® E5-2673 v3 2,4 GHz (Haswell) işlemcilerinde çalışır ve Premium depolama kullanır. Dsv3 serisi boyutlarındaki sanal makineler, üretim iş yüklerinin çoğuna uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
 
 
-| Boyut             | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Max NICs / Expected network bandwidth (Mbps) |
+| Boyut             | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
-| Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000 / 32 (50)                                                       | 3200 / 48                                | 2 / 1000                                   |
-| Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000 / 64 (100)                                                      | 6400 / 96                                | 2 / 2000                                   |
-| Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16000 / 128 (200)                                                    | 12800 / 192                              | 4 / 4000                                      |
-| Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000 / 256 (400)                                                    | 25600 / 384                              | 8 / 8000                                      |
-| Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64000 / 512 (800)                                                    | 51200 / 768                              | 8 / 16000                                               |
-| Standard_D48s_v3 | 48     | 192          | 384            | 32             | 96000 / 768 (1200)                                                    | 76800 / 1152                               | 8 / 24000                                               |
-| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000 / 1024 (1600)                                                    | 80000 / 1200                              | 8 / 30000                                               |
+| Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1000                                   |
+| Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
+| Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16000/128 (200)                                                    | 12800/192                              | 4 / 4000                                      |
+| Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                      |
+| Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8 / 16000                                               |
+| Standard_D48s_v3 | 48     | 192          | 384            | 32             | 96000/768 (1200)                                                    | 76800/1152                               | 8 / 24000                                               |
+| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000/1024 (1600)                                                    | 80000/1200                              | 8 / 30000                                               |
 
-<sup>1</sup> Dsv3-series VM’s feature Intel® Hyper-Threading Technology
+<sup>1</sup> DSV3 serisi VM 'Nin özellik Intel® Hiper Iş parçacığı teknolojisi
 
 ## <a name="dasv4-series"></a>Dasv4 serisi
 
-ACU:  230-260
+ACU: 230-260
 
-Premium Storage: Supported
+Premium Depolama: desteklenir
 
-Premium Storage caching: Supported
+Premium depolama önbelleği: desteklenir
 
-Dasv4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor that can achieve a boosted maximum frequency of 3.35GHz and use premium SSD. The Dasv4-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads.
+Dasv4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Dasv4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve geçici depolama alanı birleşimini sunar.
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Max NICs / Expected network bandwidth (MBps) |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|-----|
-| Standard_D2as_v4|2|8|16|4|4000 / 32 (50)|3200 / 48|2 / 1000 |
-| Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400 / 96|2 / 2000 |
-| Standard_D8as_v4|8|32|64|16|16000 / 128 (200)|12800 / 192|4 / 4000 |
-| Standard_D16as_v4|16|64|128|32|32000 / 255 (400)|25600 / 384|8 / 8000 |
-| Standard_D32as_v4|32|128|256|32|64000 / 510 (800)|51200 / 768|8 / 16000 |
+| Standard_D2as_v4|2|8|16|4|4000/32 (50)|3200/48|2 / 1000 |
+| Standard_D4as_v4|4|16|32|8|8000/64 (100)|6400/96|2 / 2000 |
+| Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4 / 4000 |
+| Standard_D16as_v4|16|64|128|32|32000/255 (400)|25600/384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64000/510 (800)|51200/768|8 / 16000 |
 | Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
 | Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
 | Standard_D96as_v4 <sup>**</sup>|6400/96|384|768|32| | | 
 
-<sup>**</sup> These sizes are in Preview.  If you are interested in trying out these larger sizes, sign up at [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+<sup>**</sup> Bu boyutlar önizlemededir.  Bu büyük boyutları denemek istiyorsanız [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview)' de kaydolun.
 
-## <a name="dv3-series-sup1sup"></a>Dv3-series <sup>1</sup>
+## <a name="dv3-series-sup1sup"></a>Dv3-serisi <sup>1</sup>
 
 ACU: 160-190
 
-Premium Storage:  Not Supported
+Premium Depolama: desteklenmiyor
 
-Premium Storage caching:  Not Supported
+Premium depolama önbelleği: desteklenmiyor
 
-Dv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0. Dv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
+Dv3 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
 
 Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium depolama disklerini kullanmak için Dsv3 boyutlarını kullanın. Dsv3 boyutları için fiyatlandırma ve faturalandırma oranları Dv3 serisi ile aynıdır. 
 
 
-| Boyut            | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Max NICs / Network bandwidth (Mbps) |
+| Boyut            | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | En fazla NIC/ağ bant genişliği (MB/sn) |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2000                    |
@@ -126,19 +126,19 @@ Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Prem
 | Standard_D48_v3 | 48        | 192          | 1200            | 32             | 96000/1000/500                                            | 8 / 24000                             |
 | Standard_D64_v3 | 64        | 256         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000                   |
 
-<sup>1</sup> Dv3-series VM’s feature Intel® Hyper-Threading Technology
+<sup>1</sup> dv3 serisi VM 'Nin özellik Intel® Hiper Iş parçacığı teknolojisi
 
 ## <a name="dav4-series"></a>Dav4 serisi
 
 ACU: 230-260
 
-Premium Storage: Not Supported
+Premium Depolama: desteklenmiyor
 
-Premium Storage caching: Not Supported
+Premium depolama önbelleği: desteklenmiyor
 
-Dav4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor that can achieve a boosted maximum frequency of 3.35GHz. The Dav4-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. To use premium SSD, use the Dasv4 sizes. The pricing and billing meters for Dasv4 sizes are the same as the Dav4-series.
+Dav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını elde etmeye yönelik 2.35 GHz AMD EPıC<sup>TM</sup> 7452 işlemcisini temel alır. Dav4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve geçici depolama alanı birleşimini sunar. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium SSD 'yi kullanmak için Dasv4 boyutlarını kullanın. Dasv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Dav4 serisi ile aynıdır.
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Max NICs / Expected network bandwidth (MBps) |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | En fazla NIC/beklenen ağ bant genişliği (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000/46/23   | 2 / 1000 |
 | Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000/93/46   | 2 / 2000 |
@@ -149,37 +149,37 @@ Dav4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor 
 | Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
 | Standard_D96a_v4 <sup>**</sup> | 6400/96 | 384 | 2400 | 32 | | |
 
-<sup>**</sup> These sizes are in Preview.  If you are interested in trying out these larger sizes, sign up at [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+<sup>**</sup> Bu boyutlar önizlemededir.  Bu büyük boyutları denemek istiyorsanız [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview)' de kaydolun.
 
 ## <a name="dsv2-series"></a>DSv2 serisi
 
 ACU: 210-250
 
-Premium Storage:  Supported
+Premium Depolama: desteklenir
 
-Premium Storage caching:  Supported
+Premium depolama önbelleği: desteklenir
 
-DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage.
+DSv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (2,3®® ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Premium depolama kullanır.
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Max NICs / Expected network bandwidth (Mbps) |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1_v2 |1 |3,5 |7 |4 |4000 / 32 (43) |3200 / 48 |2 / 750 |
-| Standard_DS2_v2 |2 |7 |14 |8 |8000 / 64 (86) |6400 / 96 |2 / 1500 |
-| Standard_DS3_v2 |4 |14 |28 |16 |16000 / 128 (172) |12800 / 192 |4 / 3000 |
-| Standard_DS4_v2 |8 |28 |56 |32 |32000 / 256 (344) |25600 / 384 |8 / 6000 |
-| Standard_DS5_v2 |16 |56 |112 |64 |64000 / 512 (688) |51200 / 768 |8 / 12000 |
+| Standard_DS1_v2 |1 |3,5 |7 |4 |4000/32 (43) |3200/48 |2 / 750 |
+| Standard_DS2_v2 |2 |7 |14 |8 |8000/64 (86) |6400/96 |2 / 1500 |
+| Standard_DS3_v2 |4 |14 |28 |16 |16000/128 (172) |12800/192 |4 / 3000 |
+| Standard_DS4_v2 |8 |28 |56 |32 |32000/256 (344) |25600/384 |8 / 6000 |
+| Standard_DS5_v2 |16 |56 |112 |64 |64000/512 (688) |51200/768 |8 / 12000 |
 
 ## <a name="dv2-series"></a>Dv2 serisi
 
 ACU: 210-250
 
-Premium Storage:  Not Supported
+Premium Depolama: desteklenmiyor
 
-Premium Storage caching:  Not Supported
+Premium depolama önbelleği: desteklenmiyor
 
-DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0.
+DSv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü)® veya Intel® 2,4 Xeon® E5-2673 v4 2,3 GHz (Haswell) işlemcileri üzerinde çalışır.
 
-| Boyut           | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | En fazla veri diski | Throughput: IOPS | Max NICs / Expected network bandwidth (Mbps) |
+| Boyut           | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | En fazla veri diski | Aktarım hızı: ıOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 4              | 4x500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 8              | 8x500            | 2 / 1500                                     |
@@ -191,13 +191,13 @@ DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the In
 
 ACU: 100
 
-Premium Storage:  Not Supported
+Premium Depolama: desteklenmiyor
 
-Premium Storage caching:  Not Supported
+Premium depolama önbelleği: desteklenmiyor
 
-Av2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage.
+AV2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (2,3®® ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Premium depolama kullanır.
 
-| Boyut            | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | Max NICs / Expected network bandwidth (Mbps) | 
+| Boyut            | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2x500               | 2 / 250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4/4x500               | 2 / 500                 |
@@ -209,13 +209,13 @@ Av2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Int
 
 ## <a name="dc-series"></a>DC serisi
 
-Premium Storage: Supported
+Premium Depolama: desteklenir
 
-Premium Storage caching: Supported
+Premium depolama önbelleği: desteklenir
 
 
 
-| Boyut          | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Max NICs / Expected network bandwidth (Mbps) |
+| Boyut          | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
-| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
-| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |

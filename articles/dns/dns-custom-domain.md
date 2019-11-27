@@ -1,6 +1,6 @@
 ---
-title: Integrate Azure DNS with your Azure resources - Azure DNS
-description: In this article, learn how to use Azure DNS along to provide DNS for your Azure resources.
+title: Azure DNS Azure kaynaklarınızla tümleştirin-Azure DNS
+description: Bu makalede, Azure kaynaklarınız için DNS sağlamak üzere Azure DNS nasıl kullanacağınızı öğrenin.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,158 +14,158 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212413"
 ---
-# <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Use Azure DNS to provide custom domain settings for an Azure service
+# <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS kullanma
 
-Azure DNS provides DNS for a custom domain for any of your Azure resources that support custom domains or that have a fully qualified domain name (FQDN). An example is you have an Azure web app and you want your users to access it by either using contoso.com, or www\.contoso.com as an FQDN. This article walks you through configuring your Azure service with Azure DNS for using custom domains.
+Azure DNS, özel etki alanlarını destekleyen veya tam etki alanı adı (FQDN) olan Azure kaynaklarınızın herhangi biri için özel bir etki alanı için DNS sağlar. Örneğin, bir Azure Web uygulamanız var ve kullanıcılarınızın buna bir FQDN olarak contoso.com ya da www\.contoso.com kullanarak erişmesini istiyorsunuz. Bu makalede, Azure hizmetinizi özel etki alanlarının kullanımı için Azure DNS yapılandırma adımları gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-In order to use Azure DNS for your custom domain, you must first delegate your domain to Azure DNS. Visit [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you are able to configure the DNS records needed.
+Özel etki alanınız için Azure DNS kullanabilmeniz için öncelikle etki alanınızı Azure DNS için temsilci olarak vermelisiniz. Ad sunucularınızı temsilci olarak yapılandırmayla ilgili yönergeler için [Azure DNS için bir etki alanı temsilcisini](./dns-delegate-domain-azure-dns.md) ziyaret edin. Etki alanınız Azure DNS bölgenize atandıktan sonra, gereken DNS kayıtlarını yapılandırabilirsiniz.
 
-You can configure a vanity or custom domain for [Azure Function Apps](#azure-function-app), [Public IP addresses](#public-ip-address), [App Service (Web Apps)](#app-service-web-apps), [Blob storage](#blob-storage), and [Azure CDN](#azure-cdn).
+[Azure işlev uygulamaları](#azure-function-app), [genel IP adresleri](#public-ip-address), [App Service (Web Apps)](#app-service-web-apps), [BLOB depolama](#blob-storage)ve [Azure CDN](#azure-cdn)için bir gösterim veya özel etki alanı yapılandırabilirsiniz.
 
-## <a name="azure-function-app"></a>Azure Function App
+## <a name="azure-function-app"></a>Azure İşlev Uygulaması
 
-To configure a custom domain for Azure function apps, a CNAME record is created as well as configuration on the function app itself.
+Azure işlev uygulamaları için özel bir etki alanı yapılandırmak üzere, bir CNAME kaydının ve işlev uygulamasının kendisi üzerinde yapılandırma olarak oluşturulması gerekir.
  
-Navigate to **Function App** and select your function app. Click **Platform features** and under **Networking** click **Custom domains**.
+**İşlev uygulaması** gidin ve işlev uygulamanızı seçin. **Platform özellikleri** ' ne ve **ağ** altında **özel etki alanları**' na tıklayın.
 
-![function app blade](./media/dns-custom-domain/functionapp.png)
+![işlev uygulaması dikey penceresi](./media/dns-custom-domain/functionapp.png)
 
-Note the current url on the **Custom domains** blade, this address is used as the alias for the DNS record created.
+**Özel etki alanları** dikey penceresindeki geçerli URL 'yi aklınızda, bu adres oluşturulan DNS kaydı için diğer ad olarak kullanılır.
 
-![custom domain blade](./media/dns-custom-domain/functionshostname.png)
+![Özel etki alanı dikey penceresi](./media/dns-custom-domain/functionshostname.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Adı     | myfunctionapp        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Tür     | CNAME        | Use a CNAME record is using an alias.        |
-|TTL     | 1        | 1 is used for 1 hour        |
-|TTL unit     | Saat        | Hours are used as the time measurement         |
-|Diğer ad     | adatumfunction.azurewebsites.net        | The DNS name you are creating the alias for, in this example it is the adatumfunction.azurewebsites.net DNS name provided by default to the function app.        |
+|Ad     | myfunctionapp        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
+|TTL     | 1        | 1 saat için 1 kullanılır        |
+|TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
+|Alias     | adatumfunction.azurewebsites.net        | Diğer adı oluşturmakta olduğunuz DNS adı, bu örnekte, işlev uygulaması için varsayılan olarak sağlanmış olan adatumfunction.azurewebsites.net DNS adıdır.        |
 
-Navigate back to your function app, click **Platform features**, and under **Networking** click **Custom domains**, then under **Custom Hostnames** click **+ Add hostname**.
+İşlev uygulamanıza geri gidin, **platform özellikleri**' ne tıklayın ve **ağ** ' ın altında **özel etki alanları**' na tıklayın, ardından **özel ana bilgisayar adları** ' na tıklayarak **+ konak**
 
-On the **Add hostname** blade, enter the CNAME record in the **hostname** text field and click **Validate**. If the record is found, the **Add hostname** button appears. Click **Add hostname** to add the alias.
+**Konak adı Ekle** dikey penceresinde, **hostname** metin alanına CNAME kaydını girin ve **Doğrula**' ya tıklayın. Kayıt bulunursa, **ana bilgisayar adı Ekle** düğmesi görüntülenir. Diğer adı eklemek için **konak adı Ekle** ' ye tıklayın.
 
-![function apps add host name blade](./media/dns-custom-domain/functionaddhostname.png)
+![işlev uygulamaları konak adı Ekle dikey penceresi](./media/dns-custom-domain/functionaddhostname.png)
 
 ## <a name="public-ip-address"></a>Genel IP adresi
 
-To configure a custom domain for services that use a public IP address resource such as Application Gateway, Load Balancer, Cloud Service, Resource Manager VMs, and, Classic VMs, an A record is used.
+Application Gateway, Load Balancer, bulut hizmeti, Kaynak Yöneticisi VM 'Ler ve klasik VM 'Ler gibi genel bir IP adresi kaynağı kullanan hizmetler için özel bir etki alanı yapılandırmak için bir kayıt kullanılır.
 
-Navigate to **Networking** > **Public IP address**, select the Public IP resource and click **Configuration**. Notate the IP address shown.
+**Ağ** > **genel IP adresi**' ne gidin, genel IP kaynağını seçin ve **yapılandırma**' ya tıklayın. Gösterilen IP adresini önemli bir şekilde ekleyin.
 
-![public ip blade](./media/dns-custom-domain/publicip.png)
+![Genel IP dikey penceresi](./media/dns-custom-domain/publicip.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Adı     | mywebserver        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Tür     | A        | Use an A record as the resource is an IP address.        |
-|TTL     | 1        | 1 is used for 1 hour        |
-|TTL unit     | Saat        | Hours are used as the time measurement         |
-|IP Adresi     | `<your ip address>`       | The public IP address.|
+|Ad     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Tür     | A        | Kaynak bir IP adresi olduğu için bir kayıt kullanın.        |
+|TTL     | 1        | 1 saat için 1 kullanılır        |
+|TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
+|IP Adresi     | `<your ip address>`       | Genel IP adresi.|
 
-![create an A record](./media/dns-custom-domain/arecord.png)
+![Bir kayıt oluştur](./media/dns-custom-domain/arecord.png)
 
-Once the A record is created, run `nslookup` to validate the record resolves.
+Kayıt oluşturulduktan sonra, kaydın çözümlendiğini doğrulamak için `nslookup` çalıştırın.
 
-![public ip dns lookup](./media/dns-custom-domain/publicipnslookup.png)
+![Genel IP DNS araması](./media/dns-custom-domain/publicipnslookup.png)
 
 ## <a name="app-service-web-apps"></a>App Service (Web Apps)
 
-The following steps take you through configuring a custom domain for an app service web app.
+Aşağıdaki adımlarda, bir App Service Web uygulaması için özel bir etki alanı yapılandırma işlemleri yapılır.
 
-Navigate to **App Service** and select the resource you are configuring a custom domain name, and click **Custom domains**.
+**App Service** gidin ve özel bir etki alanı adı yapılandırdığınız kaynağı seçin ve **özel etki alanları**' na tıklayın.
 
-Note the current url on the **Custom domains** blade, this address is used as the alias for the DNS record created.
+**Özel etki alanları** dikey penceresindeki geçerli URL 'yi aklınızda, bu adres oluşturulan DNS kaydı için diğer ad olarak kullanılır.
 
-![custom domains blade](./media/dns-custom-domain/url.png)
+![Özel etki alanları dikey penceresi](./media/dns-custom-domain/url.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Adı     | mywebserver        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Tür     | CNAME        | Use a CNAME record is using an alias. If the resource used an IP address, an A record would be used.        |
-|TTL     | 1        | 1 is used for 1 hour        |
-|TTL unit     | Saat        | Hours are used as the time measurement         |
-|Diğer ad     | webserver.azurewebsites.net        | The DNS name you are creating the alias for, in this example it is the webserver.azurewebsites.net DNS name provided by default to the web app.        |
+|Ad     | MyWebServer        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor. Kaynak bir IP adresi kullansaydı bir kayıt kullanılır.        |
+|TTL     | 1        | 1 saat için 1 kullanılır        |
+|TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
+|Alias     | webserver.azurewebsites.net        | Diğer adı oluşturmakta olduğunuz DNS adı, bu örnekte varsayılan olarak Web uygulamasına sunulan webserver.azurewebsites.net DNS adıdır.        |
 
 
-![create a CNAME record](./media/dns-custom-domain/createcnamerecord.png)
+![CNAME kaydı oluşturma](./media/dns-custom-domain/createcnamerecord.png)
 
-Navigate back to the app service that is configured for the custom domain name. Click **Custom domains**, then click **Hostnames**. To add the CNAME record you created, click **+ Add hostname**.
+Özel etki alanı adı için yapılandırılmış olan App Service 'e geri gidin. **Özel etki alanları**' na ve ardından **konak adları**' na tıklayın Oluşturduğunuz CNAME kaydını eklemek için **+ konak adı Ekle**' ye tıklayın.
 
 ![Şekil 1](./media/dns-custom-domain/figure1.png)
 
-Once the process is complete, run **nslookup** to validate name resolution is working.
+İşlem tamamlandıktan sonra, ad çözümlemenin çalıştığını doğrulamak için **nslookup** ' ı çalıştırın.
 
 ![Şekil 1](./media/dns-custom-domain/finalnslookup.png)
 
-To learn more about mapping a custom domain to App Service, visit [Map an existing custom DNS name to Azure Web Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
+Özel bir etki alanını App Service eşleme hakkında daha fazla bilgi edinmek için, [mevcut bir özel DNS adını Azure Web Apps eşleme](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)adresini ziyaret edin.
 
-To learn how to migrate an active DNS name, see [Migrate an active DNS name to Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).
+Etkin bir DNS adını nasıl geçirebileceğinizi öğrenmek için bkz. [Azure App Service için etkin BIR DNS adı geçirme](../app-service/manage-custom-dns-migrate-domain.md).
 
-If you need to purchase a custom domain, visit [Buy a custom domain name for Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md) to learn more about App Service domains.
+Özel bir etki alanı satın almanız gerekiyorsa, App Service etki alanları hakkında daha fazla bilgi edinmek için [Azure Web Apps için özel etki alanı adı satın alma](../app-service/manage-custom-dns-buy-domain.md) sayfasını ziyaret edin.
 
-## <a name="blob-storage"></a>Blob depolaması
+## <a name="blob-storage"></a>Blob depolama
 
-The following steps take you through configuring a CNAME record for a blob storage account using the asverify method. This method ensures there is no downtime.
+Aşağıdaki adımlar, asverify metodunu kullanarak bir BLOB depolama hesabı için bir CNAME kaydı yapılandırmanıza yardımcı olacak. Bu yöntem, kapalı kalma süresi olmamasını sağlar.
 
-Navigate to **Storage** > **Storage Accounts**, select your storage account, and click **Custom domain**. Notate the FQDN under step 2, this value is used to create the first CNAME record
+**Depolama > ** **depolama hesapları**' na gidin, depolama hesabınızı seçin ve **özel etki alanı**' na tıklayın. 2\. adım altında FQDN 'yi oluşturma, bu değer ilk CNAME kaydını oluşturmak için kullanılır
 
-![blob storage custom domain](./media/dns-custom-domain/blobcustomdomain.png)
+![BLOB depolama özel etki alanı](./media/dns-custom-domain/blobcustomdomain.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Adı     | asverify.mystorageaccount        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Tür     | CNAME        | Use a CNAME record is using an alias.        |
-|TTL     | 1        | 1 is used for 1 hour        |
-|TTL unit     | Saat        | Hours are used as the time measurement         |
-|Diğer ad     | asverify.adatumfunctiona9ed.blob.core.windows.net        | The DNS name you are creating the alias for, in this example it is the asverify.adatumfunctiona9ed.blob.core.windows.net DNS name provided by default to the storage account.        |
+|Ad     | asverify. mystorageaccount        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
+|TTL     | 1        | 1 saat için 1 kullanılır        |
+|TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
+|Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Diğer adı oluşturmakta olduğunuz DNS adı, bu örnekte varsayılan olarak depolama hesabına sağlanmış olan asverify.adatumfunctiona9ed.blob.core.windows.net DNS adıdır.        |
 
-Navigate back to your storage account by clicking **Storage** > **Storage Accounts**, select your storage account and click **Custom domain**. Type in the alias you created without the asverify prefix in the text box, check **Use indirect CNAME validation, and click **Save**. Once this step is complete, return to your DNS zone and create a CNAME record without the asverify prefix.  After that point, you are safe to delete the CNAME record with the cdnverify prefix.
+**Depolama > ** **depolama hesapları**' na tıklayarak depolama hesabınıza geri gidin, depolama hesabınızı seçin ve **özel etki alanı**' na tıklayın. Metin kutusunda asverify öneki olmadan oluşturduğunuz diğer adı yazın, * * dolaylı CNAME doğrulaması kullan ' ı işaretleyin ve **Kaydet**' e tıklayın. Bu adım tamamlandıktan sonra DNS bölgenize dönün ve asverify öneki olmadan bir CNAME kaydı oluşturun.  Bu noktadan sonra, CNAME kaydını cdnverify önekiyle silmeniz güvenlidir.
 
-![blob storage custom domain](./media/dns-custom-domain/indirectvalidate.png)
+![BLOB depolama özel etki alanı](./media/dns-custom-domain/indirectvalidate.png)
 
-Validate DNS resolution by running `nslookup`
+`nslookup` çalıştırarak DNS çözümlemesini doğrulama
 
-To learn more about mapping a custom domain to a blob storage endpoint visit [Configure a custom domain name for your Blob storage endpoint](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
+Özel bir etki alanını BLOB depolama uç noktası ile eşleme hakkında daha fazla bilgi edinmek için [bkz. blob depolama uç noktanız için özel etki alanı adı yapılandırma](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
 
 ## <a name="azure-cdn"></a>Azure CDN
 
-The following steps take you through configuring a CNAME record for a CDN endpoint using the cdnverify method. This method ensures there is no downtime.
+Aşağıdaki adımlar, cdnverify metodunu kullanarak bir CDN uç noktası için CNAME kaydı yapılandırmaya kılavuzluk eden bir yöntemdir. Bu yöntem, kapalı kalma süresi olmamasını sağlar.
 
-Navigate to **Networking** > **CDN Profiles**, select your CDN profile.
+**Ağ** > **CDN profilleri**' ne gidin, CDN profilinizi seçin.
 
-Select the endpoint you are working with and click **+ Custom domain**. Note the **Endpoint hostname** as this value is the record that the CNAME record points to.
+Çalıştığınız uç noktayı seçin ve **+ özel etki alanı**' na tıklayın. Bu değer olarak, CNAME kaydının işaret ettiği kayıt olan **bitiş noktası ana bilgisayar adını** unutmayın.
 
-![CDN custom domain](./media/dns-custom-domain/endpointcustomdomain.png)
+![CDN özel etki alanı](./media/dns-custom-domain/endpointcustomdomain.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ekle** dikey penceresinde aşağıdaki bilgileri doldurun ve oluşturmak için **Tamam** ' ı tıklatın.
 
 |Özellik  |Değer  |Açıklama  |
 |---------|---------|---------|
-|Adı     | cdnverify.mycdnendpoint        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Tür     | CNAME        | Use a CNAME record is using an alias.        |
-|TTL     | 1        | 1 is used for 1 hour        |
-|TTL unit     | Saat        | Hours are used as the time measurement         |
-|Diğer ad     | cdnverify.adatumcdnendpoint.azureedge.net        | The DNS name you are creating the alias for, in this example it is the cdnverify.adatumcdnendpoint.azureedge.net DNS name provided by default to the storage account.        |
+|Ad     | cdnverify. mycdnendpoint        | Bu değer, etki alanı adı etiketiyle birlikte özel etki alanı adı için FQDN 'dir.        |
+|Tür     | CNAME        | CNAME kaydı kullanmak bir diğer ad kullanıyor.        |
+|TTL     | 1        | 1 saat için 1 kullanılır        |
+|TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
+|Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Diğer adı oluşturmakta olduğunuz DNS adı, bu örnekte varsayılan olarak depolama hesabına sağlanmış olan cdnverify.adatumcdnendpoint.azureedge.net DNS adıdır.        |
 
-Navigate back to your CDN endpoint by clicking **Networking** > **CDN Profiles**, and select your CDN profile. Click **+ Custom domain** and enter your CNAME record alias without the cdnverify prefix and click **Add**.
+**Ağ** > **CDN profilleri**' ne tıklayarak CDN uç noktanıza geri gidin ve CDN profilinizi seçin. **+ Özel etki alanı** ' na tıklayın ve cdnverify ÖNEKI olmadan CNAME kaydı diğer adınızı girip **Ekle**' ye tıklayın.
 
-Once this step is complete, return to your DNS zone and create a CNAME record without the cdnverify prefix.  After that point, you are safe to delete the CNAME record with the cdnverify prefix. For more information on CDN and how to configure a custom domain without the intermediate registration step visit [Map Azure CDN content to a custom domain](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
+Bu adım tamamlandıktan sonra DNS bölgenize dönün ve cdnverify öneki olmadan bir CNAME kaydı oluşturun.  Bu noktadan sonra, CNAME kaydını cdnverify önekiyle silmeniz güvenlidir. CDN hakkında daha fazla bilgi ve ara kayıt adımı olmadan özel bir etki alanını yapılandırma hakkında daha fazla bilgi için [harita Azure CDN içeriğini özel bir etki alanına](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
+[Azure 'da barındırılan hizmetler için ters DNS yapılandırmayı](dns-reverse-dns-for-azure-services.md)öğrenin.

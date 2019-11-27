@@ -1,6 +1,6 @@
 ---
-title: Manage DNS record sets and records with Azure DNS
-description: Azure DNS provides the capability to manage DNS record sets and records when hosting your domain.
+title: Azure DNS ile DNS kayıt kümelerini ve kayıtlarını yönetme
+description: Azure DNS, etki alanınızı barındırırken DNS kayıt kümelerini ve kayıtlarını yönetme yeteneği sağlar.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,102 +14,102 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211792"
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Manage DNS records and record sets by using the Azure portal
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme
 
-This article shows you how to manage record sets and records for your DNS zone by using the Azure portal.
+Bu makalede, Azure portal kullanarak DNS bölgeniz için kayıt kümelerini ve kayıtları nasıl yöneteceğiniz gösterilmektedir.
 
-It's important to understand the difference between DNS record sets and individual DNS records. A record set is a collection of records in a zone that have the same name and are the same type. For more information, see [Create DNS record sets and records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
+DNS kayıt kümeleri ve bireysel DNS kayıtları arasındaki farkı anlamak önemlidir. Kayıt kümesi, aynı ada sahip ve aynı türde olan bir bölgedeki kayıt koleksiyonudur. Daha fazla bilgi için, bkz. [Azure Portal kullanarak DNS kayıt kümeleri ve kayıtları oluşturma](dns-getstarted-create-recordset-portal.md).
 
-## <a name="create-a-new-record-set-and-record"></a>Create a new record set and record
+## <a name="create-a-new-record-set-and-record"></a>Yeni bir kayıt kümesi ve kayıt oluştur
 
-To create a record set in the Azure portal, see [Create DNS records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
+Azure portal bir kayıt kümesi oluşturmak için, bkz. [Azure Portal kullanarak DNS kayıtları oluşturma](dns-getstarted-create-recordset-portal.md).
 
-## <a name="view-a-record-set"></a>View a record set
+## <a name="view-a-record-set"></a>Kayıt kümesini görüntüleme
 
-1. In the Azure portal, go to the **DNS zone** blade.
-2. Search for the record set and select it. This opens the record set properties.
+1. Azure portal, **DNS bölgesi** dikey penceresine gidin.
+2. Kayıt kümesini arayın ve seçin. Bu, kayıt kümesi özelliklerini açar.
 
-    ![Search for a record set](./media/dns-operations-recordsets-portal/searchset500.png)
+    ![Kayıt kümesi ara](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-to-a-record-set"></a>Add a new record to a record set
+## <a name="add-a-new-record-to-a-record-set"></a>Kayıt kümesine yeni bir kayıt ekleyin
 
-You can add up to 20 records to any record set. A record set cannot contain two identical records. Empty record sets (with zero records) can be created, but do not appear on the Azure DNS name servers. Record sets of type CNAME can contain one record at most.
+Herhangi bir kayıt kümesine 20 ' ye kadar kayıt ekleyebilirsiniz. Kayıt kümesi iki özdeş kayıt içeremez. Boş kayıt kümeleri (sıfır kayıtla birlikte) oluşturulabilir, ancak Azure DNS ad sunucularında görünmez. CNAME türündeki kayıt kümeleri, en çok bir kayıt içerebilir.
 
-1. On the **Record set properties** blade for your DNS zone, click the record set that you want to add a record to.
+1. DNS bölgeniz için **kayıt kümesi özellikleri** dikey penceresinde, kayıt eklemek istediğiniz kayıt kümesine tıklayın.
 
-    ![Select a record set](./media/dns-operations-recordsets-portal/selectset500.png)
+    ![Bir kayıt kümesi seçin](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Specify the record set properties by filling in the fields.
+2. Alanları doldurarak kayıt kümesi özelliklerini belirtin.
 
-    ![Add a record](./media/dns-operations-recordsets-portal/addrecord500.png)
+    ![Kayıt ekleme](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings. Then close the blade.
-4. In the corner, you will see that the record is saving.
+3. Ayarlarınızı kaydetmek için dikey pencerenin en üstündeki **Kaydet** ' e tıklayın. Ardından dikey pencereyi kapatın.
+4. Köşede kaydın kaydedilmesini görürsünüz.
 
-    ![Saving record set](./media/dns-operations-recordsets-portal/saving150.png)
+    ![Kayıt kümesi kaydediliyor](./media/dns-operations-recordsets-portal/saving150.png)
 
-After the record has been saved, the values on the **DNS zone** blade will reflect the new record.
+Kayıt kaydedildikten sonra, **DNS bölgesi** dikey penceresindeki değerler yeni kaydı yansıtır.
 
-## <a name="update-a-record"></a>Update a record
+## <a name="update-a-record"></a>Kayıt güncelleştirme
 
-When you update a record in an existing record set, the fields you can update depend on the type of record you're working with.
+Varolan bir kayıt kümesindeki bir kaydı güncelleştirdiğinizde, güncelleştirebilmeniz için kullanabileceğiniz alanlar, üzerinde çalıştığınız kaydın türüne bağlıdır.
 
-1. On the **Record set properties** blade for your record set, search for the record.
-2. Modify the record. When you modify a record, you can change the available settings for the record. In the following example, the **IP address** field is selected, and the IP address is in the process of being modified.
+1. Kayıt kümesi için **kayıt kümesi özellikleri** dikey penceresinde kaydı arayın.
+2. Kaydı değiştirin. Bir kaydı değiştirdiğinizde, kayıt için kullanılabilir ayarları değiştirebilirsiniz. Aşağıdaki örnekte, **IP adresi** alanı SEÇILIDIR ve IP adresi değiştirilme sürecinde olur.
 
-    ![Modify a record](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+    ![Kayıt değiştirme](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings. In the upper right corner, you'll see the notification that the record has been saved.
+3. Ayarlarınızı kaydetmek için dikey pencerenin en üstündeki **Kaydet** ' e tıklayın. Sağ üst köşede, kaydın kaydedildiğini belirten bildirimi görürsünüz.
 
-    ![Saved record set](./media/dns-operations-recordsets-portal/saved150.png)
+    ![Kayıt kümesi kaydedildi](./media/dns-operations-recordsets-portal/saved150.png)
 
-After the record has been saved, the values for the record set on the **DNS zone** blade will reflect the updated record.
+Kayıt kaydedildikten sonra, **DNS bölgesi** dikey penceresindeki kayıt kümesine ilişkin değerler güncelleştirilmiş kaydı yansıtır.
 
-## <a name="remove-a-record-from-a-record-set"></a>Remove a record from a record set
+## <a name="remove-a-record-from-a-record-set"></a>Kayıt kümesinden kayıt kaldırma
 
-You can use the Azure portal to remove records from a record set. Note that removing the last record from a record set does not delete the record set.
+Kayıt kümesinden kayıtları kaldırmak için Azure portal kullanabilirsiniz. Kayıt kümesinden son kaydı kaldırmanın kayıt kümesini silmediğini unutmayın.
 
-1. On the **Record set properties** blade for your record set, search for the record.
-2. Click the record that you want to remove. Then select **Remove**.
+1. Kayıt kümesi için **kayıt kümesi özellikleri** dikey penceresinde kaydı arayın.
+2. Kaldırmak istediğiniz kayda tıklayın. Ardından **Kaldır**' ı seçin.
 
-    ![Remove a record](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Kayıt kaldırma](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Click **Save** at the top of the blade to save your settings.
-4. After the record has been removed, the values for the record on the **DNS zone** blade will reflect the removal.
+3. Ayarlarınızı kaydetmek için dikey pencerenin en üstündeki **Kaydet** ' e tıklayın.
+4. Kayıt kaldırıldıktan sonra, **DNS bölgesi** dikey penceresindeki kaydın değerleri kaldırma işleminin yansıtılacaktır.
 
-## <a name="delete"></a>Delete a record set
+## <a name="delete"></a>Kayıt kümesini silme
 
-1. On the **Record set properties** blade for your record set, click **Delete**.
+1. Kayıt kümesi için **kayıt kümesi özellikleri** dikey penceresinde **Sil**' e tıklayın.
 
-    ![Delete a record set](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
+    ![Kayıt kümesini silme](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
-2. A message appears asking if you want to delete the record set.
-3. Verify that the name matches the record set that you want to delete, and then click **Yes**.
-4. On the **DNS zone** blade, verify that the record set is no longer visible.
+2. Kayıt kümesini silmek isteyip istemediğinizi soran bir ileti görüntülenir.
+3. Adın, silmek istediğiniz kayıt kümesiyle eşleştiğinden emin olun ve ardından **Evet**' e tıklayın.
+4. **DNS bölgesi** dikey penceresinde, kayıt kümesinin artık görünür olmadığını doğrulayın.
 
-## <a name="work-with-ns-and-soa-records"></a>Work with NS and SOA records
+## <a name="work-with-ns-and-soa-records"></a>NS ve SOA kayıtlarıyla çalışma
 
-NS and SOA records that are automatically created are managed differently from other record types.
+Otomatik olarak oluşturulan NS ve SOA kayıtları, diğer kayıt türlerinden farklı şekilde yönetilir.
 
-### <a name="modify-soa-records"></a>Modify SOA records
+### <a name="modify-soa-records"></a>SOA kayıtlarını değiştirme
 
-You cannot add or remove records from the automatically created SOA record set at the zone apex (name = "\@"). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
+Tepesinde bölgesinde otomatik olarak oluşturulan SOA kayıt kümesine kayıt ekleyemez veya buradan kayıt kaldıramazsınız (ad = "\@"). Bununla birlikte, SOA kaydındaki parametrelerden herhangi birini ("ana bilgisayar" hariç) ve kayıt kümesi TTL 'sini de değiştirebilirsiniz.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>Modify NS records at the zone apex
+### <a name="modify-ns-records-at-the-zone-apex"></a>Tepesinde bölgesinde NS kayıtlarını değiştirme
 
-The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
+Tepesinde bölgesinde ayarlanan NS kaydı, her DNS bölgesiyle otomatik olarak oluşturulur. Bu, bölgeye atanan Azure DNS ad sunucularının adlarını içerir.
 
-You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
+Birden fazla DNS sağlayıcısıyla ortak barındırma etki alanlarını desteklemek için bu NS kayıt kümesine ek ad sunucuları ekleyebilirsiniz. Bu kayıt kümesi için TTL ve meta verileri de değiştirebilirsiniz. Ancak, önceden doldurulmuş Azure DNS adı sunucularını kaldıramaz veya değiştiremezsiniz.
 
-Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
+Bunun yalnızca tepesinde bölgesindeki NS kayıt kümesi için geçerli olduğunu unutmayın. Bölgesindeki diğer NS kayıt kümeleri (alt alanları temsilci atamak için kullanılan), kısıtlama olmadan değiştirilebilir.
 
-### <a name="delete-soa-or-ns-record-sets"></a>Delete SOA or NS record sets
+### <a name="delete-soa-or-ns-record-sets"></a>SOA veya NS kayıt kümelerini silme
 
-You cannot delete the SOA and NS record sets at the zone apex (name = "\@") that are created automatically when the zone is created. They are deleted automatically when you delete the zone.
+Bölge oluşturulduğunda otomatik olarak oluşturulan bölge tepesinde (ad = "\@") konumundaki SOA ve NS kayıt kümelerini silemezsiniz. Bölgeyi sildiğinizde otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* For more information about Azure DNS, see the [Azure DNS overview](dns-overview.md).
-* For more information about automating DNS, see [Creating DNS zones and record sets using the .NET SDK](dns-sdk.md).
-* For more information about reverse DNS records, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
-* For more information about Azure DNS alias records, see [Azure DNS alias records overview](dns-alias.md).
+* Azure DNS hakkında daha fazla bilgi için bkz. [Azure DNS genel bakış](dns-overview.md).
+* DNS 'yi otomatikleştirme hakkında daha fazla bilgi için bkz. [.NET SDK kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma](dns-sdk.md).
+* Ters DNS kayıtları hakkında daha fazla bilgi için bkz. [Azure 'da ters DNS ve desteğe genel bakış](dns-reverse-dns-overview.md).
+* Azure DNS diğer ad kayıtları hakkında daha fazla bilgi için bkz. [Azure DNS diğer ad kayıtlarına genel bakış](dns-alias.md).

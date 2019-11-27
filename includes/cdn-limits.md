@@ -13,10 +13,10 @@ ms.locfileid: "74224400"
 ---
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Azure Content Delivery Network profiles |25 |
-| Content Delivery Network endpoints per profile |25 |
-| Custom domains per endpoint |25 |
+| Azure Content Delivery Network profilleri |25 |
+| Profil başına Content Delivery Network uç noktalar |25 |
+| Uç nokta başına özel etki alanları |25 |
 
-A Content Delivery Network subscription can contain one or more Content Delivery Network profiles. A Content Delivery Network profile can contain one or more Content Delivery Network endpoints. You might want to use multiple profiles to organize your Content Delivery Network endpoints by internet domain, web application, or some other criteria. 
+Content Delivery Network abonelik, bir veya daha fazla Content Delivery Network profili içerebilir. Bir Content Delivery Network profil, bir veya daha fazla Content Delivery Network uç noktası içerebilir. Content Delivery Network uç noktalarınızı İnternet etki alanı, Web uygulaması veya diğer ölçütlere göre düzenlemek için birden çok profil kullanmak isteyebilirsiniz. 
 
 

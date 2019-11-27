@@ -1,6 +1,6 @@
 ---
-title: Azure Queue storage bindings for Azure Functions
-description: Understand how to use the Azure Queue storage trigger and output binding in Azure Functions.
+title: Azure Işlevleri için Azure kuyruk depolama bağlamaları
+description: Azure 'da Azure kuyruk depolama tetikleyicisi ve çıkış bağlamayı nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
@@ -13,46 +13,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231011"
 ---
-# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage bindings for Azure Functions
+# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama bağlamaları
 
-This article explains how to work with Azure Queue storage bindings in Azure Functions. Azure Functions supports trigger and output bindings for queues.
+Bu makalede Azure Işlevleri 'nde Azure kuyruk depolama bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Azure Işlevleri, kuyruklar için tetikleyici ve çıkış bağlamalarını destekler.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-The Queue storage bindings are provided in the [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet package, version 2.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub repository.
+Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2. x ' de verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub deposundadır.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
-The Queue storage bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub repository.
+Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub deposundadır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="encoding"></a>Encoding
-Functions expect a *base64* encoded string. Any adjustments to the encoding type (in order to prepare data as a *base64* encoded string) need to be implemented in the calling service.
+İşlevler bir *Base64* kodlamalı dize bekler. Kodlama türünde yapılan ayarlamaların (verileri *Base64* kodlamalı bir dize olarak hazırlamak için), çağıran hizmette uygulanması gerekir.
 
 ## <a name="trigger"></a>Tetikleyici
 
-Use the queue trigger to start a function when a new item is received on a queue. The queue message is provided as input to the function.
+Kuyruktaki yeni bir öğe alındığında bir işlev başlatmak için kuyruk tetikleyicisini kullanın. Kuyruk iletisi işleve giriş olarak sağlanır.
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Tetikleyici - örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#betik (. CSX)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Trigger - C# example
+### <a name="trigger---c-example"></a>Tetikleyici - C# örneği
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that polls the `myqueue-items` queue and writes a log each time a queue item is processed.
+Aşağıdaki örnek, `myqueue-items` kuyruğu yoklayan ve kuyruk öğesi her işlendiğinde bir günlük yazan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
 
 ```csharp
 public static class QueueFunctions
@@ -67,11 +67,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - C# script example
+### <a name="trigger---c-script-example"></a>Tetikleyici - C# betiği örneği
 
-The following example shows a queue trigger binding in a *function.json* file and [C# script (.csx)](functions-reference-csharp.md) code that uses the binding. The function polls the `myqueue-items` queue and writes a log each time a queue item is processed.
+Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# betik (. CSX)](functions-reference-csharp.md) kodunda bir sıra tetikleyicisi bağlamasını gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -88,9 +88,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the C# script code:
+C# betik kodunu şu şekildedir:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -120,13 +120,13 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-The [usage](#trigger---usage) section explains `myQueueItem`, which is named by the `name` property in function.json.  The [message metadata section](#trigger---message-metadata) explains all of the other variables shown.
+[Kullanım](#trigger---usage) bölümü, function. json içinde `name` özelliği tarafından adlandırılan `myQueueItem`açıklar.  [İleti meta verileri bölümü](#trigger---message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript example
+### <a name="trigger---javascript-example"></a>Tetikleyici - JavaScript örneği
 
-The following example shows a queue trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function polls the `myqueue-items` queue and writes a log each time a queue item is processed.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir kuyruk tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -143,12 +143,12 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 > [!NOTE]
-> The name parameter reflects as `context.bindings.<name>` in the JavaScript code which contains the queue item payload. This payload is also passed as the second parameter to the function.
+> Ad parametresi, kuyruk öğesi yükünü içeren JavaScript kodunda `context.bindings.<name>` olarak yansıtır. Bu yük aynı zamanda işleve ikinci parametre olarak geçirilir.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, message) {
@@ -165,11 +165,11 @@ module.exports = async function (context, message) {
 };
 ```
 
-The [usage](#trigger---usage) section explains `myQueueItem`, which is named by the `name` property in function.json.  The [message metadata section](#trigger---message-metadata) explains all of the other variables shown.
+[Kullanım](#trigger---usage) bölümü, function. json içinde `name` özelliği tarafından adlandırılan `myQueueItem`açıklar.  [İleti meta verileri bölümü](#trigger---message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
-### <a name="trigger---java-example"></a>Trigger - Java example
+### <a name="trigger---java-example"></a>Tetikleyici - Java örnek
 
-The following Java example shows a storage queue trigger functions which logs the triggered message placed into queue `myqueuename`.
+Aşağıdaki Java örneği, tetiklenen iletiyi sıraya `myqueuename`kaydeden bir depolama kuyruğu tetikleyici işlevleri gösterir.
 
  ```java
  @FunctionName("queueprocessor")
@@ -183,11 +183,11 @@ The following Java example shows a storage queue trigger functions which logs th
  }
  ```
 
-### <a name="trigger---python-example"></a>Trigger - Python example
+### <a name="trigger---python-example"></a>Trigger-Python örneği
 
-The following example demonstrates how to read a queue message passed to a function via a trigger.
+Aşağıdaki örnek, bir tetikleyici aracılığıyla işleve geçirilen bir sıra iletisinin nasıl okunacağını gösterir.
 
-A Storage queue trigger is defined in *function.json* where *type* is set to `queueTrigger`.
+Bir depolama kuyruğu tetikleyicisi, *Type* 'ın `queueTrigger`olarak ayarlandığı *function. JSON* içinde tanımlanır.
 
 ```json
 {
@@ -204,7 +204,7 @@ A Storage queue trigger is defined in *function.json* where *type* is set to `qu
 }
 ```
 
-The code *_\_init_\_.py* declares a parameter as `func.ServiceBusMessage` which allows you to read the queue message in your function.
+*_İnit_\_. Kopyala\_* , işlevinizdeki sıra iletisini okumanızı sağlayan bir parametreyi `func.ServiceBusMessage` olarak bildirir.
 
 ```python
 import logging
@@ -231,13 +231,13 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Tetikleyici - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the following attributes to configure a queue trigger:
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda, bir kuyruk tetikleyicisi yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
-  The attribute's constructor takes the name of the queue to monitor, as shown in the following example:
+  Aşağıdaki örnekte gösterildiği gibi özniteliğin Oluşturucusu, izlenecek sıranın adını alır:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -249,7 +249,7 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  You can set the `Connection` property to specify the storage account to use, as shown in the following example:
+  Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -261,11 +261,11 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  For a complete example, see [Trigger - C# example](#trigger---c-example).
+  Tam bir örnek için bkz. [tetikleyici- C# örnek](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Provides another way to specify the storage account to use. The constructor takes the name of an app setting that contains a storage connection string. The attribute can be applied at the parameter, method, or class level. The following example shows class level and method level:
+  Kullanılacak depolama hesabını belirtmek için başka bir yol sağlar. Oluşturucu, depolama bağlantı dizesi içeren bir uygulama ayarının adını alır. Öznitelik parametre, yöntemi veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf ve yöntem düzeyindeki gösterir:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -279,94 +279,94 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-The storage account to use is determined in the following order:
+Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
-* The `QueueTrigger` attribute's `Connection` property.
-* The `StorageAccount` attribute applied to the same parameter as the `QueueTrigger` attribute.
-* The `StorageAccount` attribute applied to the function.
-* The `StorageAccount` attribute applied to the class.
-* The "AzureWebJobsStorage" app setting.
+* `QueueTrigger` özniteliğin `Connection` özelliği.
+* `StorageAccount` özniteliği `QueueTrigger` özniteliğiyle aynı parametreye uygulandı.
+* İşleve uygulanan `StorageAccount` özniteliği.
+* Sınıfına uygulanan `StorageAccount` özniteliği.
+* "AzureWebJobsStorage" uygulama ayarı.
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `QueueTrigger` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `QueueTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok| Must be set to `queueTrigger`. This property is set automatically when you create the trigger in the Azure portal.|
-|**direction**| Yok | In the *function.json* file only. Must be set to `in`. This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | Yok |The name of the variable that contains the queue item payload in the function code.  |
-|**queueName** | **QueueName**| The name of the queue to poll. |
-|**connection** | **Connection** |The name of an app setting that contains the Storage connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name here. For example, if you set `connection` to "MyStorage", the Functions runtime looks for an app setting that is named "AzureWebJobsMyStorage." If you leave `connection` empty, the Functions runtime uses the default Storage connection string in the app setting that is named `AzureWebJobsStorage`.|
+|**type** | Yok| `queueTrigger`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction**| Yok | Yalnızca *function. JSON* dosyasında. `in`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | Yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
+|**Adı** | **Adı**| Yoklamaya yönelik kuyruğun adı. |
+|**bağlanma** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Tetikleyici - kullanım
 
-In C# and C# script, access the message data by using a method parameter such as `string paramName`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. You can bind to any of the following types:
+C# Ve C# komut dosyasında, `string paramName`gibi bir yöntem parametresi kullanarak ileti verilerine erişin. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
-* Object - The Functions runtime deserializes a JSON payload into an instance of an arbitrary class defined in your code. 
+* Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
-If you try to bind to `CloudQueueMessage` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+`CloudQueueMessage` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-In JavaScript, use `context.bindings.<name>` to access the queue item payload. If the payload is JSON, it's deserialized into an object.
+JavaScript 'te, kuyruk öğesi yüküne erişmek için `context.bindings.<name>` kullanın. Yük JSON ise, bir nesne için seri hale gelir.
 
-## <a name="trigger---message-metadata"></a>Trigger - message metadata
+## <a name="trigger---message-metadata"></a>Tetikleyici - ileti meta verileri
 
-The queue trigger provides several [metadata properties](./functions-bindings-expressions-patterns.md#trigger-metadata). These properties can be used as part of binding expressions in other bindings or as parameters in your code. These are properties of the [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) class.
+Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalar bağlama ifadelerinde parçası olarak veya kodunuzu parametreler olarak kullanılabilir. Bunlar [Cloudqueuemessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının özellikleridir.
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Queue payload (if a valid string). If the queue message payload as a string, `QueueTrigger` has the same value as the variable named by the `name` property in *function.json*.|
-|`DequeueCount`|`int`|The number of times this message has been dequeued.|
-|`ExpirationTime`|`DateTimeOffset`|The time that the message expires.|
-|`Id`|`string`|Queue message ID.|
-|`InsertionTime`|`DateTimeOffset`|The time that the message was added to the queue.|
-|`NextVisibleTime`|`DateTimeOffset`|The time that the message will next be visible.|
-|`PopReceipt`|`string`|The message's pop receipt.|
+|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). İletiyi bir dize olarak sıraya alıyorsa `QueueTrigger`, *function. JSON*içindeki `name` özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
+|`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
+|`ExpirationTime`|`DateTimeOffset`|İletinin süre sonu.|
+|`Id`|`string`|Kuyruk ileti KIMLIĞI.|
+|`InsertionTime`|`DateTimeOffset`|İletinin sıraya eklendiği zaman.|
+|`NextVisibleTime`|`DateTimeOffset`|İletinin bir sonraki görünür olacağı zaman.|
+|`PopReceipt`|`string`|İletinin pop makbuzu.|
 
-## <a name="trigger---poison-messages"></a>Trigger - poison messages
+## <a name="trigger---poison-messages"></a>Tetikleyici - zehirli iletiler
 
-When a queue trigger function fails, Azure Functions retries the function up to five times for a given queue message, including the first try. If all five attempts fail, the functions runtime adds a message to a queue named *&lt;originalqueuename>-poison*. You can write a function to process messages from the poison queue by logging them or sending a  notification that manual attention is needed.
+Bir kuyruk tetikleyicisi işlevi başarısız olduğunda, Azure Işlevleri, ilk deneme dahil olmak üzere belirli bir kuyruk iletisi için işlevi en fazla beş kez yeniden dener. Beş deneme başarısız olursa, işlevler çalışma zamanı *&lt;originalsıraadı >-Poison*adlı bir kuyruğa ileti ekler. Onları günlüğe kaydederek veya el ile ilgilenilmesi gereken bir bildirim göndererek, zarar kuyruğundan iletileri işlemek için bir işlev yazabilirsiniz.
 
-To handle poison messages manually, check the [dequeueCount](#trigger---message-metadata) of the queue message.
+Zarar iletilerini el ile işlemek için kuyruk iletisinin [Dequeuecount](#trigger---message-metadata) değerini kontrol edin.
 
-## <a name="trigger---polling-algorithm"></a>Trigger - polling algorithm
+## <a name="trigger---polling-algorithm"></a>Tetikleyici-yoklama algoritması
 
-The queue trigger implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs.  When a message is found, the runtime waits two seconds and then checks for another message; when no message is found, it waits about four seconds before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to one minute. The maximum wait time is configurable via the `maxPollingInterval` property in the [host.json file](functions-host-json.md#queues).
+Sıra tetikleyicisi, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular.  Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti olup olmadığını denetler; hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler. Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder. En uzun bekleme süresi, [Host. JSON dosyasındaki](functions-host-json.md#queues)`maxPollingInterval` özelliği aracılığıyla yapılandırılabilir.
 
-## <a name="trigger---concurrency"></a>Trigger - concurrency
+## <a name="trigger---concurrency"></a>Tetikleyici-eşzamanlılık
 
-When there are multiple queue messages waiting, the queue trigger retrieves a batch of messages and invokes function instances concurrently to process them. By default, the batch size is 16. When the number being processed gets down to 8, the runtime gets another batch and starts processing those messages. So the maximum number of concurrent messages being processed per function on one virtual machine (VM) is 24. This limit applies separately to each queue-triggered function on each VM. If your function app scales out to multiple VMs, each VM will wait for triggers and attempt to run functions. For example, if a function app scales out to 3 VMs, the default maximum number of concurrent instances of one queue-triggered function is 72.
+Bekleyen birden çok kuyruk iletisi olduğunda, kuyruk tetikleyicisi bir toplu ileti alır ve işlev örneklerini işlemek için eşzamanlı olarak çağırır. Varsayılan olarak, toplu iş boyutu 16 ' dır. İşlenen sayı 8 ' e iniyorsa, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, bir sanal makinede (VM) işlev başına işlenen en fazla eşzamanlı ileti sayısı 24 ' dir. Bu sınır, her bir sanal makinenin her bir sıraya göre tetiklenen işleve ayrı olarak uygulanır. İşlev uygulamanız birden çok VM 'ye ölçeklenirken, her sanal makine Tetikleyicileri bekler ve işlevleri çalıştırmaya çalışır. Örneğin, bir işlev uygulaması 3 VM 'ye ölçekleniyorsa, bir sıra tetiklenen işlevin varsayılan en fazla eşzamanlı örneği 72 ' dir.
 
-The batch size and the threshold for getting a new batch are configurable in the [host.json file](functions-host-json.md#queues). If you want to minimize parallel execution for queue-triggered functions in a function app, you can set the batch size to 1. This setting eliminates concurrency only so long as your function app runs on a single virtual machine (VM). 
+Toplu iş boyutu ve yeni bir toplu işlem alma eşiği, [Host. json dosyasında](functions-host-json.md#queues)yapılandırılabilir. Bir işlev uygulamasındaki Queue-tetiklenen işlevler için paralel yürütmeyi en aza indirmek isterseniz, toplu iş boyutunu 1 olarak ayarlayabilirsiniz. Bu ayar, yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. 
 
-The queue trigger automatically prevents a function from processing a queue message multiple times; functions do not have to be written to be idempotent.
+Sıra tetikleyicisi, bir işlevin bir sıra iletisini birden çok kez işlemesini otomatik olarak önler; işlevlerin ıdempotent olarak yazılması gerekmez.
 
-## <a name="trigger---hostjson-properties"></a>Trigger - host.json properties
+## <a name="trigger---hostjson-properties"></a>Tetikleyici - host.json özellikleri
 
-The [host.json](functions-host-json.md#queues) file contains settings that control queue trigger behavior. See the [host.json settings](#hostjson-settings) section for details regarding available settings.
+[Host. JSON](functions-host-json.md#queues) dosyası, sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [Host. JSON ayarları](#hostjson-settings) bölümüne bakın.
 
 ## <a name="output"></a>Çıktı
 
-Use the Azure Queue storage output binding to write messages to a queue.
+Bir kuyruğa ileti yazmak için Azure kuyruk depolama çıkış bağlamasını kullanın.
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Çıkış - örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#betik (. CSX)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Çıkış - C# örneği
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that creates a queue message for each HTTP request received.
+Aşağıdaki örnek, alınan her http isteği için bir kuyruk iletisi oluşturan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -382,11 +382,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Çıkış - C# betiği örneği
 
-The following example shows an HTTP trigger binding in a *function.json* file and [C# script (.csx)](functions-reference-csharp.md) code that uses the binding. The function creates a queue item with a **CustomQueueMessage** object payload for each HTTP request received.
+Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# betik (. CSX)](functions-reference-csharp.md) kodunda bir http tetikleyici bağlamasını gösterir. İşlevi, alınan her HTTP isteği için bir **Customqueuemessage** nesne yüküne sahip bir kuyruk öğesi oluşturur.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -413,9 +413,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's C# script code that creates a single queue message:
+Tek bir C# sıra iletisi oluşturan betik kodu aşağıda verilmiştir:
 
 ```cs
 public class CustomQueueMessage
@@ -430,7 +430,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
 }
 ```
 
-You can send multiple messages at once by using an `ICollector` or `IAsyncCollector` parameter. Here's C# script code that sends multiple messages, one with the HTTP request data and one with hard-coded values:
+Bir `ICollector` veya `IAsyncCollector` parametresini kullanarak birden fazla iletiyi aynı anda gönderebilirsiniz. Aşağıda, C# biri http istek verileriyle, diğeri ise sabit kodlanmış değerlerle birden çok ileti gönderen betik kodu verilmiştir:
 
 ```cs
 public static void Run(
@@ -443,11 +443,11 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Çıkış - JavaScript örneği
 
-The following example shows an HTTP trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function creates a queue item for each HTTP request received.
+Aşağıdaki örnek, bir *function. JSON* DOSYASıNDAKI bir http tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, alınan her HTTP isteği için bir kuyruk öğesi oluşturur.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -474,9 +474,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = function (context, input) {
@@ -484,7 +484,7 @@ module.exports = function (context, input) {
 };
 ```
 
-You can send multiple messages at once by defining a message array for the `myQueueItem` output binding. The following JavaScript code sends two queue messages with hard-coded values for each HTTP request received.
+`myQueueItem` çıkış bağlaması için bir ileti dizisi tanımlayarak bir kerede birden çok ileti gönderebilirsiniz. Aşağıdaki JavaScript kodu, alınan her HTTP isteği için sabit kodlanmış değerler içeren iki kuyruk iletisi gönderir.
 
 ```javascript
 module.exports = function(context) {
@@ -493,9 +493,9 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Output - Java example
+### <a name="output---java-example"></a>Çıkış - Java örnek
 
- The following example shows a Java function that creates a queue message for when triggered by a  HTTP request.
+ Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendikleri sırada bir kuyruk iletisi oluşturan Java işlevini gösterir.
 
 ```java
 @FunctionName("httpToQueue")
@@ -509,13 +509,13 @@ module.exports = function(context) {
  }
 ```
 
-In the [Java functions runtime library](/java/api/overview/azure/functions/runtime), use the `@QueueOutput` annotation on parameters whose value would be written to Queue storage.  The parameter type should be `OutputBinding<T>`, where T is any native Java type of a POJO.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri kuyruk depolamaya yazılacak olan parametrelerde `@QueueOutput` ek açıklamasını kullanın.  Parametre türü `OutputBinding<T>`olmalıdır; burada T bir POJO 'nın herhangi bir yerel Java türüdür.
 
-### <a name="output---python-example"></a>Output - Python example
+### <a name="output---python-example"></a>Output-Python örneği
 
-The following example demonstrates how to output single and multiple values to storage queues. The configuration needed for *function.json* is the same either way.
+Aşağıdaki örnek, Depolama kuyruklarına tek ve birden çok değerin nasıl alınacağını gösterir. *Function. JSON* için gereken yapılandırma her iki yoldan de aynıdır.
 
-A Storage queue binding is defined in *function.json* where *type* is set to `queue`.
+Bir depolama kuyruğu bağlama, *türü* `queue`olarak ayarlandığı *function. JSON* içinde tanımlanır.
 
 ```json
 {
@@ -547,7 +547,7 @@ A Storage queue binding is defined in *function.json* where *type* is set to `qu
 }
 ```
 
-To set a individual message on the queue, you pass a single value to the `set` method.
+Kuyrukta tek bir ileti ayarlamak için `set` yöntemine tek bir değer geçirirsiniz.
 
 ```python
 import azure.functions as func
@@ -561,7 +561,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-To create multiple messages on the queue, declare a parameter as the appropriate list type and pass an array of values (that match the list type) to the `set` method.
+Kuyrukta birden çok ileti oluşturmak için, uygun liste türü olarak bir parametre bildirin ve `set` yöntemine bir değer dizisi geçirin (liste türüyle eşleşen).
 
 ```python
 import azure.functions as func
@@ -574,11 +574,11 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Çıkış - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)' ı kullanın.
 
-The attribute applies to an `out` parameter or the return value of the function. The attribute's constructor takes the name of the queue, as shown in the following example:
+Özniteliği bir `out` parametresi veya işlevin dönüş değeri için geçerlidir. Aşağıdaki örnekte gösterildiği gibi özniteliğin Oluşturucusu sıranın adını alır:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -589,7 +589,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-You can set the `Connection` property to specify the storage account to use, as shown in the following example:
+Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -600,59 +600,59 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output---c-example).
 
-You can use the `StorageAccount` attribute to specify the storage account at class, method, or parameter level. For more information, see Trigger - attributes.
+Sınıf, yöntem veya parametre düzeyinde depolama hesabını belirtmek için `StorageAccount` özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. tetikleyici-öznitelikler.
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `Queue` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Queue` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Must be set to `queue`. This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | Yok | Must be set to `out`. This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | Yok | The name of the variable that represents the queue in function code. Set to `$return` to reference the function return value.|
-|**queueName** |**QueueName** | The name of the queue. |
-|**connection** | **Connection** |The name of an app setting that contains the Storage connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name here. For example, if you set `connection` to "MyStorage", the Functions runtime looks for an app setting that is named "AzureWebJobsMyStorage." If you leave `connection` empty, the Functions runtime uses the default Storage connection string in the app setting that is named `AzureWebJobsStorage`.|
+|**type** | Yok | `queue`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | Yok | `out`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | Yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.|
+|**Adı** |**Adı** | Kuyruğun adı. |
+|**bağlanma** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Çıkış - kullanım
 
-In C# and C# script, write a single queue message by using a method parameter such as `out T paramName`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. You can use the method return type instead of an `out` parameter, and `T` can be any of the following types:
+Ve C# C# betikte, `out T paramName`gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. `out` parametresi yerine yöntem dönüş türünü kullanabilirsiniz ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
-* An object serializable as JSON
+* JSON olarak seri hale getirilebilir bir nesne
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-If you try to bind to `CloudQueueMessage` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+`CloudQueueMessage` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-In C# and C# script, write multiple queue messages by using one of the following types: 
+C# Ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden çok kuyruk iletisi yazın: 
 
 * `ICollector<T>` veya `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-In JavaScript functions, use `context.bindings.<name>` to access the output queue message. You can use a string or a JSON-serializable object for the queue item payload.
+JavaScript işlevlerinde, çıkış kuyruğu iletisine erişmek için `context.bindings.<name>` kullanın. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
 
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
 
-| Binding |  Başvuru |
+| Bağlama |  Başvuru |
 |---|---|
-| Kuyruk | [Queue Error Codes](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Blob, Table, Queue | [Storage Error Codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Table, Queue |  [Sorun giderme](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Kuyruk | [Sıra hata kodları](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
+| Blob, tablo, kuyruk | [Depolama hatası kodları](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, tablo, kuyruk |  [Sorun giderme](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Host.JSON ayarları
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+Bu bölümde sürümünde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır 2.x. Aşağıdaki örnek host.json dosyasını yalnızca bu bağlama için sürüm 2.x ayarları içerir. Sürüm 2. x içindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürüm 2. x için Host. JSON başvurusu](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -672,15 +672,15 @@ This section describes the global configuration settings available for this bind
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|The maximum interval between queue polls. Minimum is 00:00:00.100 (100 ms) and increments up to 00:01:00 (1 min).  In 1.x the data type is milliseconds, and in 2.x it is a TimeSpan.|
-|visibilityTimeout|00:00:00|The time interval between retries when processing of a message fails. |
-|batchSize|16|The number of queue messages that the Functions runtime retrieves simultaneously and processes in parallel. When the number being processed gets down to the `newBatchThreshold`, the runtime gets another batch and starts processing those messages. So the maximum number of concurrent messages being processed per function is `batchSize` plus `newBatchThreshold`. This limit applies separately to each queue-triggered function. <br><br>If you want to avoid parallel execution for messages received on one queue, you can set `batchSize` to 1. However, this setting eliminates concurrency only so long as your function app runs on a single virtual machine (VM). If the function app scales out to multiple VMs, each VM could run one instance of each queue-triggered function.<br><br>The maximum `batchSize` is 32. |
-|maxDequeueCount|5|The number of times to try processing a message before moving it to the poison queue.|
-|newBatchThreshold|batchSize/2|Whenever the number of messages being processed concurrently gets down to this number, the runtime retrieves another batch.|
+|maxPollingInterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1\. x içinde veri türü milisaniyedir ve 2. x içinde bir TimeSpan değeri vardır.|
+|visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |
+|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı `newBatchThreshold`dolduğunda, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` ve `newBatchThreshold`. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>En büyük `batchSize` 32 ' dir. |
+|maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.|
+|newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+* [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)
 
 <!--
 > [!div class="nextstepaction"]
@@ -688,7 +688,7 @@ This section describes the global configuration settings available for this bind
 -->
 
 > [!div class="nextstepaction"]
-> [Go to a tutorial that uses a Queue storage output binding](functions-integrate-storage-queue-output-binding.md)
+> [Kuyruk depolama çıkış bağlaması kullanan bir öğreticiye gitme](functions-integrate-storage-queue-output-binding.md)
 
 <!-- LINKS -->
 

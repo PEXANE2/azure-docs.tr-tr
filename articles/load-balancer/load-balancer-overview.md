@@ -25,31 +25,31 @@ ms.locfileid: "74423899"
 
 Azure Load Balancer ile uygulamalarınızı ölçeklendirebilir ve hizmetleriniz için yüksek kullanılabilirlik sunabilirsiniz. Load Balancer gelen senaryoların yanı sıra giden senaryoları da destekler, hem düşük gecikme süresi hem de yüksek aktarım hızı sağlar, tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçekleme yapar.
 
-Load Balancer distributes new inbound flows that arrive at the Load Balancer's front end to back-end pool instances, according to specified rules and health probes.
+Load Balancer, Load Balancer ön ucuna, belirtilen kurallara ve sistem durumu araştırmalara göre arka uç havuz örneklerine gelen yeni gelen akışları dağıtır.
 
-A public Load Balancer can provide outbound connections for virtual machines (VMs) inside your virtual network by translating their private IP addresses to public IP addresses.
+Ortak Load Balancer, özel IP adreslerini genel IP adreslerine çevirerek sanal ağınızdaki sanal makineler (VM) için giden bağlantılar sağlayabilir.
 
-Azure Load Balancer is available in two pricing tiers or *SKUs*: Basic and Standard. Bu iki SKU arasında ölçek, özellik ve fiyatlandırma açısından farklar vardır. Any scenario that's possible with Basic Load Balancer can also be created with Standard Load Balancer, although the approaches differ slightly. As you learn about Load Balancer, familiarize yourself with the fundamentals and the SKU-specific differences.
+Azure Load Balancer iki fiyatlandırma katmanında veya *SKU 'larda*kullanılabilir: temel ve standart. Bu iki SKU arasında ölçek, özellik ve fiyatlandırma açısından farklar vardır. Temel Load Balancer olabilecek herhangi bir senaryo Standart Load Balancer ile de oluşturulabilir, ancak yaklaşımlar biraz farklı olur. Load Balancer hakkında bilgi edinirsiniz, temel bilgileri ve SKU 'ya özgü farklılıkları öğrenmeye çalışın.
 
 ## <a name="why-use-load-balancer"></a>Neden Azure Load Balancer'ı kullanmalısınız?
 
 Azure Load Balancer’ı aşağıdaki görevler için kullanabilirsiniz:
 
-* Load balance incoming internet traffic to your VMs. This configuration is known as a [public Load Balancer](#publicloadbalancer).
-* Load balance traffic across VMs inside a virtual network. Karma senaryolarda yük dengeleyici ön ucuna şirket içi ağdan da erişebilirsiniz. Both of these scenarios use a configuration that is known as an [internal Load Balancer](#internalloadbalancer).
+* Sanal makinelerinize gelen internet trafiğinin yükünü dengeleyin. Bu yapılandırma [ortak Load Balancer](#publicloadbalancer)olarak bilinir.
+* Bir sanal ağ içindeki VM 'lerde Yük Dengeleme trafiği. Karma senaryolarda yük dengeleyici ön ucuna şirket içi ağdan da erişebilirsiniz. Bu senaryoların her ikisi de [dahili Load Balancer](#internalloadbalancer)olarak bilinen bir yapılandırma kullanır.
 * Gelen ağ adresi çevirisi (NAT) kurallarıyla trafiği belirli VM'ler üzerindeki belirli bir bağlantı noktasına yönlendirme.
 * Genel Yük Dengeleyici kullanarak sanal ağınızın içindeki VM'ler için [giden bağlantı](load-balancer-outbound-connections.md) sağlama.
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. If you're looking for Transport Layer Security (TLS) protocol termination ("SSL offload") or per-HTTP/HTTPS request, application-layer processing, see [What is Azure Application Gateway?](../application-gateway/overview.md) If you're looking for global DNS load balancing, see [What is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Your end-to-end scenarios may benefit from combining these solutions.
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL boşaltması") veya HTTP/HTTPS isteği, uygulama katmanı işleme için arıyorsanız bkz. [Azure Application Gateway nedir?](../application-gateway/overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
 >
-> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="what-are-load-balancer-resources"></a>Load Balancer kaynakları nelerdir?
 
-Load Balancer resources are objects specifying how Azure should program its multi-tenant infrastructure to achieve the scenario that you want to create. There's no direct relationship between Load Balancer resources and actual infrastructure. Load Balancer oluşturmak bir örnek oluşturmaz ve kapasite her zaman kullanılabilir durumdadır.
+Load Balancer kaynaklar, Azure 'un oluşturmak istediğiniz senaryoya ulaşmak için çok kiracılı altyapısını nasıl programtabilmelidir belirleyen nesnelerdir. Load Balancer kaynakları ile gerçek altyapı arasında doğrudan ilişki yoktur. Load Balancer oluşturmak bir örnek oluşturmaz ve kapasite her zaman kullanılabilir durumdadır.
 
-A Load Balancer resource can be either a public Load Balancer or an internal Load Balancer. The Load Balancer resource's functions are defined by a front end, a rule, a health probe, and a back-end pool definition. You place VMs in the back-end pool by specifying the back-end pool from the VM.
+Bir Load Balancer kaynak, ortak bir Load Balancer ya da bir iç Load Balancer olabilir. Load Balancer kaynağının işlevleri bir ön uç, bir kural, bir sistem durumu araştırması ve arka uç havuzu tanımı tarafından tanımlanır. VM 'den arka uç havuzunu belirterek VM 'Leri arka uç havuzuna yerleştirebilirsiniz.
 
 ## <a name="fundamental-load-balancer-features"></a>Temel Load Balancer özellikleri
 
@@ -57,11 +57,11 @@ Load Balancer, TCP ve UDP uygulamaları için aşağıdaki temel özellikleri su
 
 * **Yük dengeleme**
 
-  With Azure Load Balancer, you can create a load-balancing rule to distribute traffic that arrives at the front end to back-end pool instances. Load Balancer uses a hashing algorithm for distribution of inbound flows and rewrites the headers of flows to back-end pool instances. A server is available to receive new flows when a health probe indicates a healthy back-end endpoint.
+  Azure Load Balancer ile, ön uç ile arka uç havuzu örneklerine ulaşan trafiği dağıtmak için bir yük dengeleme kuralı oluşturabilirsiniz. Load Balancer, gelen akışların dağıtılması için bir karma algoritması kullanır ve akışların üst bilgilerini arka uç havuz örneklerine yeniden yazar. Bir sistem durumu araştırması sağlıklı bir arka uç bitiş noktasını gösterdiğinde yeni akışlar almak için bir sunucu kullanılabilir.
 
-  By default, Load Balancer uses a 5-tuple hash. The hash includes source IP address, source port, destination IP address, destination port, and IP protocol number to map flows to available servers. You can create affinity to a source IP address by using a 2- or 3-tuple hash for a given rule. Aynı paket akışının tüm paketleri, yük dengeleme uygulanan ön ucun arkasındaki aynı örneğe ulaşır. When the client initiates a new flow from the same source IP, the source port is changed. As a result, the 5-tuple hash might cause the traffic to go to a different back-end endpoint.
+  Varsayılan olarak, Load Balancer 5 demet karma kullanır. Karma, akışları kullanılabilir sunucularla eşlemek için kaynak IP adresi, kaynak bağlantı noktası, hedef IP adresi, hedef bağlantı noktası ve IP protokol numarası içerir. Belirli bir kural için 2 veya 3 demet karma kullanarak bir kaynak IP adresine benzeşim oluşturabilirsiniz. Aynı paket akışının tüm paketleri, yük dengeleme uygulanan ön ucun arkasındaki aynı örneğe ulaşır. İstemci aynı kaynak IP 'den yeni bir akış başlattığında, kaynak bağlantı noktası değiştirilir. Sonuç olarak, 5 demet karma, trafiğin farklı bir arka uç uç noktasına geçmesine neden olabilir.
 
-  For more information, see [Configure the distribution mode for Azure Load Balancer](load-balancer-distribution-mode.md). Aşağıdaki görüntüde karma tabanlı dağıtım gösterilmiştir:
+  Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırma](load-balancer-distribution-mode.md). Aşağıdaki görüntüde karma tabanlı dağıtım gösterilmiştir:
 
   ![Karma tabanlı dağıtım](./media/load-balancer-overview/load-balancer-distribution.png)
 
@@ -69,130 +69,130 @@ Load Balancer, TCP ve UDP uygulamaları için aşağıdaki temel özellikleri su
 
 * **Bağlantı noktası iletme**
 
-  With Load Balancer, you can create an inbound NAT rule. This NAT rule forwards traffic from a specific port of a specific front-end IP address to a specific port of a specific back-end instance inside the virtual network. This forwarding is done by the same hash-based distribution as load balancing. Common scenarios for this capability are Remote Desktop Protocol (RDP) or Secure Shell (SSH) sessions to individual VM instances inside an Azure Virtual Network.
+  Load Balancer, bir gelen NAT kuralı oluşturabilirsiniz. Bu NAT kuralı belirli bir ön uç IP adresinin belirli bir bağlantı noktasından gelen trafiği, sanal ağ içindeki belirli bir arka uç örneğinin belirli bir bağlantı noktasına iletir. Bu iletme, Yük Dengeleme ile aynı karma tabanlı dağıtım tarafından yapılır. Bu özelliğe ilişkin yaygın senaryolar, bir Azure sanal ağı içindeki tek tek sanal makine örneklerine Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) oturumlardır.
   
-  You can map multiple internal endpoints to ports on the same front-end IP address. You can use the front-end IP addresses to remotely administer your VMs without an additional jump box.
+  Aynı ön uç IP adresindeki bağlantı noktalarında birden çok iç uç noktası eşleyebilirsiniz. Ön uç IP adreslerini ek bir sıçrama kutusu olmadan sanal makinelerinizi uzaktan yönetmek için kullanabilirsiniz.
 
-* **Application independence and transparency**
+* **Uygulama bağımsızlık ve saydamlığı**
 
-  Load Balancer doesn't directly interact with TCP or UDP or the application layer. Any TCP or UDP application scenario can be supported. Load Balancer doesn't terminate or originate flows, interact with the payload of the flow, or provide any application layer gateway function. Protocol handshakes always occur directly between the client and the back-end pool instance. Gelen akışa verilen yanıt her zaman sanal makineden gelen yanıttır. Akış sanal makineye ulaştığında özgün kaynak IP adresi de korunur.
+  Load Balancer, TCP veya UDP veya uygulama katmanıyla doğrudan etkileşime girmez. Herhangi bir TCP veya UDP uygulama senaryosu desteklenebilir. Load Balancer, akışların sonlandırılması veya kaynaklanmaz, akışın yüküyle etkileşime geçebilir veya herhangi bir uygulama katmanı ağ geçidi işlevi sağlar. Protokol el sıkışmaları her zaman doğrudan istemci ile arka uç havuzu örneği arasında gerçekleşir. Gelen akışa verilen yanıt her zaman sanal makineden gelen yanıttır. Akış sanal makineye ulaştığında özgün kaynak IP adresi de korunur.
 
-  * Her uç noktaya yalnızca bir VM tarafından yanıt verilir. For example, a TCP handshake always occurs between the client and the selected back-end VM. A response to a request to a front end is a response generated by a back-end VM. When you successfully validate connectivity to a front end, you're validating the end-to-end connectivity to at least one back-end virtual machine.
-  * Application payloads are transparent to Load Balancer. Any UDP or TCP application can be supported. For workloads that require per HTTP request processing or manipulation of application layer payloads, like parsing of HTTP URLs, you should use a layer 7 load balancer like [Application Gateway](https://azure.microsoft.com/services/application-gateway).
-  * Because Load Balancer doesn't interact with the TCP payload and provide TLS offload, you can build end-to-end encrypted scenarios. Using Load Balancer gains large scale-out for TLS applications by terminating the TLS connection on the VM itself. For example, your TLS session keying capacity is only limited by the type and number of VMs you add to the back-end pool. If you require SSL offloading, application layer treatment, or want to delegate certificate management to Azure, use Azure's layer 7 load balancer [Application Gateway](https://azure.microsoft.com/services/application-gateway) instead.
+  * Her uç noktaya yalnızca bir VM tarafından yanıt verilir. Örneğin, istemci ve seçilen arka uç VM arasında her zaman bir TCP el sıkışması meydana gelir. Ön uca bir istek yanıtı, arka uç VM tarafından oluşturulan bir yanıttır. Bir ön uca bağlantıyı başarıyla doğruladığınızda, en az bir adet arka uç sanal makinesine uçtan uca bağlantıyı doğrularsınız.
+  * Uygulama yükleri Load Balancer için saydamdır. Herhangi bir UDP veya TCP uygulaması desteklenebilir. Http url 'Lerinin çözümlenmesi gibi, HTTP istek işleme veya uygulama katmanı yüklerini işleme gerektiren iş yükleri için, [Application Gateway](https://azure.microsoft.com/services/application-gateway)gibi bir katman 7 yük dengeleyici kullanmanız gerekir.
+  * Load Balancer TCP yükü ile etkileşimde olmadığından ve TLS yük boşaltma sağladığından uçtan uca şifrelenmiş senaryolar oluşturabilirsiniz. Load Balancer kullanmak, sanal makinenin kendisinde TLS bağlantısını sonlandırarak TLS uygulamaları için büyük ölçekte genişleme sağlar. Örneğin, TLS oturum anahtar kapasiteniz yalnızca, arka uç havuzuna eklediğiniz VM 'lerin türü ve sayısıyla sınırlıdır. SSL boşaltma, uygulama katmanı işleme veya Azure 'a sertifika yönetimi atamak istiyorsanız, bunun yerine Azure 'un katman 7 yük dengeleyici [Application Gateway](https://azure.microsoft.com/services/application-gateway) kullanın.
 
 * **Otomatik yeniden yapılandırma**
 
-  Örneklerin ölçeğini artırdığınızda veya azalttığınızda Load Balancer kendisini anında yeniden yapılandırır. Adding or removing VMs from the back-end pool reconfigures the Load Balancer without additional operations on the Load Balancer resource.
+  Örneklerin ölçeğini artırdığınızda veya azalttığınızda Load Balancer kendisini anında yeniden yapılandırır. Arka uç havuzundan VM 'Lerin eklenmesi veya kaldırılması, Load Balancer kaynağında ek işlem yapılmadan Load Balancer yeniden yapılandırır.
 
 * **Sistem durumu yoklamaları**
 
-  To determine the health of instances in the back-end pool, Load Balancer uses health probes that you define. Bir yoklama yanıt veremediğinde, Load Balancer iyi durumda olmayan örneklere yeni bağlantı göndermeyi durdurur. A probe failure doesn't affect existing connections. The connection continues until the application terminates the flow, an idle timeout occurs, or the VM shuts down.
+  Arka uç havuzundaki örneklerin sistem durumunu belirlemek için, Load Balancer tanımladığınız sistem durumu araştırmalarını kullanır. Bir yoklama yanıt veremediğinde, Load Balancer iyi durumda olmayan örneklere yeni bağlantı göndermeyi durdurur. Bir araştırma hatası varolan bağlantıları etkilemez. Bağlantı, uygulama akışı sonlandırana kadar devam eder, boşta kalma zaman aşımı oluşur veya VM kapanır.
 
-  Load Balancer provides different health probe types for TCP, HTTP, and HTTPS endpoints. For more information, see [Probe types](load-balancer-custom-probe-overview.md#types).
+  Load Balancer, TCP, HTTP ve HTTPS uç noktaları için farklı durum araştırma türleri sağlar. Daha fazla bilgi için bkz. [araştırma türleri](load-balancer-custom-probe-overview.md#types).
 
-  When using Classic cloud services, an additional type is allowed: [Guest agent](load-balancer-custom-probe-overview.md#guestagent). A guest agent should be considered to be a health probe of last resort. Microsoft doesn't recommend them if other options are available.
+  Klasik bulut Hizmetleri kullanılırken ek bir türe izin verilir: [Konuk aracı](load-balancer-custom-probe-overview.md#guestagent). Konuk aracısının, son çare durum araştırması olması düşünülmelidir. Diğer seçenekler kullanılabilir olduğunda Microsoft bunları önermez.
 
 * **Giden bağlantılar (SNAT)**
 
-  All outbound flows from private IP addresses inside your virtual network to public IP addresses on the internet can be translated to a front-end IP address of the Load Balancer. When a public front end is tied to a back-end VM by way of a load-balancing rule, Azure translates outbound connections to the public front-end IP address. This configuration has the following advantages:
+  Sanal ağınız içindeki özel IP adreslerinden gelen tüm giden akışlar, Load Balancer ön uç IP adresine çevrilebilir. Bir genel ön uç, bir yük dengeleme kuralı aracılığıyla arka uç VM 'sine bağlı olduğunda, Azure giden bağlantıları genel ön uç IP adresine çevirir. Bu yapılandırmanın avantajları şunlardır:
 
-  * Easy upgrade and disaster recovery of services, because the front end can be dynamically mapped to another instance of the service.
-  * Easier access control list (ACL) management. ACLs expressed as front-end IPs don't change as services scale up or down or get redeployed. Translating outbound connections to a smaller number of IP addresses than machines reduces the burden of implementing safe recipient lists.
+  * Basit yükseltme ve olağanüstü durum kurtarma, ön uç, hizmetin başka bir örneğine dinamik olarak eşlenmeye olanak sağlar.
+  * Daha kolay erişim denetim listesi (ACL) yönetimi. Hizmet ölçeği artırma veya azaltma ya da yeniden dağıtım gibi, ön uç IP 'ler olarak ifade edilen ACL 'Ler değişmez. Giden bağlantıların makinelerden daha az sayıda IP adresine dönüştürülmesi, güvenli alıcı listelerinin uygulanması yükünü azaltır.
 
-  For more information, see [Outbound connections in Azure](load-balancer-outbound-connections.md).
+  Daha fazla bilgi için bkz. [Azure 'Da giden bağlantılar](load-balancer-outbound-connections.md).
 
-Standard Load Balancer has additional SKU-specific capabilities beyond these fundamentals, as described below.
+Standart Load Balancer, aşağıda açıklandığı gibi bu temellerin ötesinde ek SKU 'ya özgü yetenekler içerir.
 
 ## <a name="skus"></a> Load Balancer SKU karşılaştırması
 
-Load Balancer supports both Basic and Standard SKUs. These SKUs differ in scenario scale, features, and pricing. Any scenario that's possible with Basic Load Balancer can be created with Standard Load Balancer. The APIs for both SKUs are similar and are invoked through the specification of a SKU. The API for supporting SKUs for Load Balancer and the public IP is available starting with the `2017-08-01` API. Both SKUs share the same general API and structure.
+Load Balancer hem temel hem de standart SKU 'Ları destekler. Bu SKU 'Lar senaryo ölçeğinde, özelliklerde ve fiyatlandırmaya göre farklılık gösterir. Temel Load Balancer olabilecek herhangi bir senaryo, Standart Load Balancer ile oluşturulabilir. Her iki SKU için de API 'Ler benzerdir ve bir SKU 'nun belirtimine göre çağrılır. Load Balancer için SKU 'Ları destekleme API 'SI ve genel IP, `2017-08-01` API 'siyle başlayarak kullanılabilir. Her iki SKU da aynı genel API ve yapıyı paylaşır.
 
-The complete scenario configuration might differ slightly depending on SKU. Load Balancer belgelerinde yalnızca belirli bir SKU için geçerli olan makaleler belirtilmiştir. Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. For more information, see [Azure Standard Load Balancer overview](load-balancer-standard-overview.md).
+Tüm senaryo yapılandırması, SKU 'ya bağlı olarak biraz farklı görünebilir. Load Balancer belgelerinde yalnızca belirli bir SKU için geçerli olan makaleler belirtilmiştir. Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. Daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
 
 >[!NOTE]
 > Yeni tasarımlarda Standart Load Balancer kullanılmalıdır.
 
-Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri yalnızca tek bir SKU'ya bağlanabilir, ikisine birden bağlanamaz. Load Balancer and the public IP address SKU must match when you use them with public IP addresses. Load Balancer and public IP SKUs aren't mutable.
+Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri yalnızca tek bir SKU'ya bağlanabilir, ikisine birden bağlanamaz. Load Balancer ve genel IP adresi SKU 'SU ortak IP adresleriyle kullandığınızda aynı olmalıdır. Load Balancer ve genel IP SKU 'Ları değişebilir değildir.
 
-The best practice is to specify the SKUs explicitly. Şu an için gerekli değişiklikler minimum düzeyde tutulmaktadır. If a SKU isn't specified, the default is the `2017-08-01` API version of the Basic SKU.
+En iyi yöntem, SKU 'Ları açıkça belirtmektir. Şu an için gerekli değişiklikler minimum düzeyde tutulmaktadır. Bir SKU belirtilmezse, varsayılan olarak temel SKU 'nun `2017-08-01` API sürümüdür.
 
 >[!IMPORTANT]
->Standard Load Balancer is a new Load Balancer product. It is largely a superset of Basic Load Balancer, but there are important differences between the two products. Temel Load Balancer ile gerçekleştirilebilen tüm uçtan uca senaryolar Standart Load Balancer ile de oluşturulabilir. If you're already used to Basic Load Balancer, compare it with Standard Load Balancer to understand the latest changes in their behavior.
+>Standart Load Balancer yeni bir Load Balancer ürünüdür. Büyük ölçüde temel Load Balancer bir üst kümesidir, ancak iki ürün arasında önemli farklılıklar vardır. Temel Load Balancer ile gerçekleştirilebilen tüm uçtan uca senaryolar Standart Load Balancer ile de oluşturulabilir. Zaten temel Load Balancer kullanıyorsanız, davranışlarındaki en son değişiklikleri anlamak için Standart Load Balancer ile karşılaştırın.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
-For more information, see [Load balancer limits](https://aka.ms/lblimits). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
+Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://aka.ms/lblimits). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
 
 ## <a name="concepts"></a>Kavramlar
 
 ### <a name = "publicloadbalancer"></a>Genel Load Balancer
 
-A public Load Balancer maps the public IP address and port of incoming traffic to the private IP address and port of the VM. Load Balancer maps traffic the other way around for the response traffic from the VM. You can distribute specific types of traffic across multiple VMs or services by applying load-balancing rules. Örneğin web isteği trafiğinin yükünü birden fazla web sunucusuna dağıtabilirsiniz.
+Ortak Load Balancer, gelen trafiğin genel IP adresini ve bağlantı noktasını, sanal makinenin özel IP adresine ve bağlantı noktasına eşler. Load Balancer trafiği VM 'den gelen yanıt trafiği için başka bir şekilde eşler. Yük Dengeleme kuralları uygulayarak, belirli trafik türlerini birden çok VM veya hizmet arasında dağıtabilirsiniz. Örneğin web isteği trafiğinin yükünü birden fazla web sunucusuna dağıtabilirsiniz.
 
 >[!NOTE]
->You can implement only one public Load Balancer and one internal Load Balancer per availability set.
+>Her kullanılabilirlik kümesi için yalnızca bir ortak Load Balancer ve bir iç Load Balancer uygulayabilirsiniz.
 
-The following figure shows a load-balanced endpoint for web traffic that is shared among three VMs for the public and TCP port 80. Bu üç VM, bir yük dengeleme kümesinde bulunur.
+Aşağıdaki şekilde, genel ve TCP bağlantı noktası 80 için üç VM arasında paylaşılan web trafiği için yük dengeli bir uç nokta gösterilmektedir. Bu üç VM, bir yük dengeleme kümesinde bulunur.
 
 ![Genel Load Balancer örneği](./media/load-balancer-overview/IC727496.png)
 
-*Figure: Balancing web traffic by using a public Load Balancer*
+*Şekil: genel Load Balancer kullanarak Web trafiğini Dengeleme*
 
-Internet clients send webpage requests to the public IP address of a web app on TCP port 80. Azure Load Balancer distributes the requests across the three VMs in the load-balanced set. For more information about Load Balancer algorithms, see [Fundamental Load Balancer features](load-balancer-overview.md##fundamental-load-balancer-features).
+Internet istemcileri, 80 numaralı TCP bağlantı noktasındaki bir Web uygulamasının genel IP adresine Web sayfası istekleri gönderir. Azure Load Balancer, istekleri yük dengeli küme içindeki üç sanal makineye dağıtır. Load Balancer algoritmaları hakkında daha fazla bilgi için bkz. [temel Load Balancer özellikleri](load-balancer-overview.md##fundamental-load-balancer-features).
 
-Azure Load Balancer distributes network traffic equally among multiple VM instances by default. Oturum benzeşimini de yapılandırabilirsiniz. For more information, see [Configure the distribution mode for Azure Load Balancer](load-balancer-distribution-mode.md).
+Azure Load Balancer, ağ trafiğini varsayılan olarak birden çok VM örneği arasında eşit olarak dağıtır. Oturum benzeşimini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırma](load-balancer-distribution-mode.md).
 
 ### <a name = "internalloadbalancer"></a> İç Load Balancer
 
-An internal Load Balancer directs traffic only to resources that are inside a virtual network or that use a VPN to access Azure infrastructure, in contrast to a public Load Balancer. Azure infrastructure restricts access to the load-balanced front-end IP addresses of a virtual network. Front-end IP addresses and virtual networks are never directly exposed to an internet endpoint. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır.
+Bir iç Load Balancer, trafiği yalnızca bir sanal ağ içinde olan veya Azure altyapısına erişmek için bir VPN kullanan veya ortak bir Load Balancer karşılık gelen kaynaklara yönlendirir. Azure altyapısı, bir sanal ağın yük dengeli ön uç IP adreslerine erişimi kısıtlar. Ön uç IP adresleri ve sanal ağlar hiçbir şekilde doğrudan bir internet uç noktasına gösterilmez. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır.
 
 İç Load Balancer, aşağıdaki yük dengeleme türlerini destekler:
 
-* **Within a virtual network**: Load balancing from VMs in the virtual network to a set of VMs that are in the same virtual network.
-* **For a cross-premises virtual network**: Load balancing from on-premises computers to a set of VMs that are in the same virtual network.
-* **For multi-tier applications**: Load balancing for internet-facing multi-tier applications where the back-end tiers aren't internet-facing. The back-end tiers require traffic load balancing from the internet-facing tier. See the next figure.
-* **İş kolu uygulamaları için**: Ek yük dengeleyici donanım veya yazılım olmadan Azure'da barındırılan iş kolu uygulamaları için yük dengeleme. This scenario includes on-premises servers that are in the set of computers whose traffic is load balanced.
+* **Bir sanal ağ içinde**: sanal ağdaki VM 'lerden, aynı sanal ağda bulunan bir VM kümesine yük dengeleme.
+* **Şirketler arası sanal ağ için**: şirket içi bilgisayarlardan aynı sanal ağdaki bir VM kümesine yük dengeleme.
+* **Çok katmanlı uygulamalar için**: arka uç katmanlarının internet 'e açık olmadığı internet 'e yönelik çok katmanlı uygulamalar için yük dengeleme. Arka uç katmanları, internet 'e yönelik katmandan trafik yük dengelemesi gerektirir. Sonraki şekle bakın.
+* **İş kolu uygulamaları için**: Ek yük dengeleyici donanım veya yazılım olmadan Azure'da barındırılan iş kolu uygulamaları için yük dengeleme. Bu senaryo, trafiği yük dengeli olan bilgisayar kümesinde bulunan şirket içi sunucuları içerir.
 
 ![İç Load Balancer örneği](./media/load-balancer-overview/IC744147.png)
 
-*Figure: Balancing multi-tier applications by using both public and internal Load Balancer*
+*Şekil: çok katmanlı uygulamaları hem genel hem de dahili Load Balancer kullanarak Dengeleme*
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Standard Load Balancer usage is charged.
+Standart Load Balancer kullanım ücretlendirilir.
 
-* Number of configured load-balancing and outbound rules. Inbound NAT rules don't count in the total number of rules.
-* Amount of data processed inbound and outbound independent of rules.
+* Yapılandırılmış yük dengeleme ve giden kural sayısı. Gelen NAT kuralları toplam kural sayısı içinde sayılmaz.
+* Gelen ve giden kurallardan bağımsız olarak işlenen veri miktarı.
 
-For Standard Load Balancer pricing information, see [Load Balancer pricing](https://azure.microsoft.com/pricing/details/load-balancer/).
+Standart Load Balancer fiyatlandırma bilgileri için bkz. [Load Balancer fiyatlandırması](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 Temel Load Balancer ücretsiz olarak sunulur.
 
 ## <a name="sla"></a>SLA
 
-For information about the Standard Load Balancer SLA, see [SLA for Load Balancer](https://aka.ms/lbsla).
+SLA Standart Load Balancer hakkında daha fazla bilgi için bkz. [Load Balancer Için SLA](https://aka.ms/lbsla).
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Load Balancer provides load balancing and port forwarding for specific TCP or UDP protocols. Load-balancing rules and inbound NAT rules support TCP and UDP, but not other IP protocols including ICMP.
+* Load Balancer, belirli TCP veya UDP protokolleri için yük dengeleme ve bağlantı noktası iletme sağlar. Yük Dengeleme kuralları ve gelen NAT kuralları TCP ve UDP 'yi destekler, ancak ıCMP dahil diğer IP protokollerini desteklemez.
 
-  Load Balancer doesn't terminate, respond, or otherwise interact with the payload of a UDP or TCP flow. It's not a proxy. Successful validation of connectivity to a front end must take place in-band with the same protocol used in a load balancing or inbound NAT rule. At least one of your virtual machines must generate a response for a client to see a response from a front end.
+  Load Balancer, bir UDP veya TCP akışının yüküyle sonlanmaz, yanıt vermez veya başka bir şekilde etkileşime geçmez. Bu bir proxy değildir. Ön uç bağlantısının başarıyla doğrulanması, Yük Dengeleme veya gelen NAT kuralında kullanılan aynı protokolle bant içinde yer almalıdır. Sanal makinelerinizden en az birinin bir istemcinin ön ucundan yanıt görmesini sağlamak için bir yanıt oluşturması gerekir.
 
-  Not receiving an in-band response from the Load Balancer front end indicates no virtual machines could respond. Nothing can interact with a Load Balancer front end without a virtual machine able to respond. This principle also applies to outbound connections where port masquerade SNAT is only supported for TCP and UDP. Any other IP protocols, including ICMP, fail. Assign an instance-level public IP address to mitigate this issue. For more information, see [Understanding SNAT and PAT](load-balancer-outbound-connections.md#snat).
+  Load Balancer ön ucundan bir bant içi yanıt alınmıyor sanal makinelerin yanıt veremediğini belirtir. Bir sanal makine yanıt veremeden bir Load Balancer ön ucuna hiçbir şey etkileşime giremez. Bu ilke, bağlantı noktası maskesi SNAT 'nin yalnızca TCP ve UDP için desteklendiği giden bağlantılar için de geçerlidir. ICMP dahil olmak üzere diğer IP protokolleri de başarısız olur. Bu sorunu azaltmak için örnek düzeyi genel bir IP adresi atayın. Daha fazla bilgi için bkz. [SNAT ve Pat 'Yi anlama](load-balancer-outbound-connections.md#snat).
 
-* Internal Load Balancers don't translate outbound originated connections to the front end of an internal Load Balancer because both are in private IP address space. Public Load Balancers provide [outbound connections](load-balancer-outbound-connections.md) from private IP addresses inside the virtual network to public IP addresses. For internal Load Balancers, this approach avoids potential SNAT port exhaustion inside a unique internal IP address space, where translation isn't required.
+* İç yük dengeleyiciler, giden kaynaklı bağlantıları iç Load Balancer ön ucuna çevirmez çünkü her ikisi de özel IP adresi alanında bulunur. Ortak yük dengeleyiciler, sanal ağ içindeki özel IP adreslerinden genel IP adreslerine [giden bağlantılar](load-balancer-outbound-connections.md) sağlar. Bu yaklaşım, iç yük dengeleyiciler için, çeviri gerekli olmadığı, benzersiz bir iç IP adresi alanı içinde olası SNAT bağlantı noktası tükenmesi önler.
 
-  A side effect is that if an outbound flow from a VM in the back-end pool attempts a flow to front end of the internal Load Balancer in its pool _and_ is mapped back to itself, the two legs of the flow don't match. Because they don't match, the flow fails. The flow succeeds if the flow didn't map back to the same VM in the back-end pool that created the flow to the front end.
+  Bir yan etkisi, arka uç havuzundaki bir VM 'den giden bir akış, havuzundaki iç Load Balancer ön uca bir akışı denerse _ve_ kendisine geri eşleniyorsa, akışın iki sanal makinesi eşleşmez. Eşleşmediği için akış başarısız olur. Akış, akışı ön uca oluşturan arka uç havuzundaki aynı VM 'ye geri eşlenmediyse akış başarılı olur.
 
-  When the flow maps back to itself, the outbound flow appears to originate from the VM to the front end and the corresponding inbound flow appears to originate from the VM to itself. From the guest operating system's point of view, the inbound and outbound parts of the same flow don't match inside the virtual machine. The TCP stack won't recognize these halves of the same flow as being part of the same flow. The source and destination don't match. When the flow maps to any other VM in the back-end pool, the halves of the flow do match and the VM can respond to the flow.
+  Akış kendisiyle eşleniyorsa, giden akış VM 'den ön uca, buna karşılık gelen gelen akış ise VM 'den kendisine doğru şekilde görünür. Konuk işletim sisteminin görünüm noktasından, aynı akışın gelen ve giden parçaları sanal makine içinde eşleşmez. TCP yığını aynı akışın parçası olarak aynı akışın bu halcüleri tanımıyor. Kaynak ve hedef eşleşmiyor. Akış, arka uç havuzundaki diğer herhangi bir sanal makineye eşleniyorsa, akışın kilitlenme miktarı eşleşir ve VM akışa yanıt verebilir.
 
-  The symptom for this scenario is intermittent connection timeouts when the flow returns to the same back end that originated the flow. Common workarounds include insertion of a proxy layer behind the internal Load Balancer and using Direct Server Return (DSR) style rules. For more information, see [Multiple Front ends for Azure Load Balancer](load-balancer-multivip-overview.md).
+  Bu senaryonun belirtisi, akış kaynaklı aynı arka uca döndüğünde zaman aralıklı bağlantı zaman aşımları olur. Yaygın geçici çözümler, iç Load Balancer arkasında bir proxy katmanının eklenmesini ve doğrudan sunucu dönüşü (DSR) stil kurallarını kullanmayı içerir. Daha fazla bilgi için bkz. [Azure Load Balancer Için birden çok ön](load-balancer-multivip-overview.md)uç.
 
-  You can combine an internal Load Balancer with any third-party proxy or use internal [Application Gateway](../application-gateway/application-gateway-introduction.md) for proxy scenarios with HTTP/HTTPS. While you could use a public Load Balancer to mitigate this issue, the resulting scenario is prone to [SNAT exhaustion](load-balancer-outbound-connections.md#snat). Avoid this second approach unless carefully managed.
+  Bir iç Load Balancer herhangi bir üçüncü taraf proxy ile birleştirebilir veya HTTP/HTTPS ile proxy senaryolarında iç [Application Gateway](../application-gateway/application-gateway-introduction.md) kullanabilirsiniz. Bu sorunu gidermek için genel Load Balancer kullanabilmeniz sırasında, sonuçta elde edilen senaryo [SNAT tükenmesine](load-balancer-outbound-connections.md#snat)açıktır. Dikkatle yönetilene kadar bu ikinci yaklaşımdan kaçının.
 
-* In general, forwarding IP fragments isn't supported on load-balancing rules. IP fragmentation of UDP and TCP packets isn't supported on load-balancing rules. High availability ports load-balancing rules can be used to forward existing IP fragments. For more information, see [High availability ports overview](load-balancer-ha-ports-overview.md).
+* Genel olarak, iletme IP parçaları yük dengeleme kurallarında desteklenmez. UDP ve TCP paketlerinin IP parçalanması, Yük Dengeleme kurallarında desteklenmez. Yüksek kullanılabilirlik bağlantı noktaları Yük Dengeleme kuralları, var olan IP parçalarını iletmek için kullanılabilir. Daha fazla bilgi için bkz. [yüksek kullanılabilirlik bağlantı noktalarına genel bakış](load-balancer-ha-ports-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-See [Create a Basic Load Balancer](quickstart-create-basic-load-balancer-portal.md) to get started with using a Load Balancer: create one, create VMs with a custom IIS extension installed, and load balance the web app between the VMs.
+Load Balancer kullanmaya başlamak için bkz. [temel Load Balancer oluşturma](quickstart-create-basic-load-balancer-portal.md) : oluşturma, özel bir IIS uzantısı olan VM oluşturma ve VM 'ler arasında Web uygulamasının yükünü dengeleme.

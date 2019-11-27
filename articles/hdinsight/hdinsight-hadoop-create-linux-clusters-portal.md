@@ -1,6 +1,6 @@
 ---
-title: Create Apache Hadoop clusters using web browser, Azure HDInsight
-description: Learn how to create Apache Hadoop, Apache HBase, Apache Storm, or Apache Spark clusters on Linux for HDInsight by using a web browser and the Azure portal.
+title: Web tarayıcısı, Azure HDInsight kullanarak Apache Hadoop kümeleri oluşturma
+description: Bir Web tarayıcısı ve Azure portal kullanarak HDInsight için Linux 'ta Apache Hadoop, Apache HBase, Apache Storm veya Apache Spark kümeleri oluşturmayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,128 +15,128 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215898"
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Create Linux-based clusters in HDInsight by using the Azure portal
+# <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-The Azure portal is a web-based management tool for services and resources hosted in the Microsoft Azure cloud. In this article, you learn how to create Linux-based Azure HDInsight clusters by using the portal.
+Azure portal, Microsoft Azure bulutta barındırılan hizmetler ve kaynaklar için Web tabanlı bir yönetim aracıdır. Bu makalede, portalı kullanarak Linux tabanlı Azure HDInsight kümeleri oluşturmayı öğreneceksiniz.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. See [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **A modern web browser**. The Azure portal uses HTML5 and JavaScript. It might not function correctly in older web browsers.
+* **Azure aboneliği**. [HDInsight 'Ta Hadoop test Için Azure Ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)konusuna bakın.
+* **Modern bir Web tarayıcısı**. Azure portal HTML5 ve JavaScript kullanır. Daha eski web tarayıcılarında düzgün çalışmayabilir.
 
 ## <a name="create-clusters"></a>Küme oluşturma
 
-The Azure portal exposes most of the cluster properties. By using Azure Resource Manager templates, you can hide many details. For more information, see [Create Apache Hadoop clusters in HDInsight by using Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+Azure portal, küme özelliklerinin çoğunu gösterir. Azure Resource Manager şablonları kullanarak, birçok ayrıntıyı gizleyebilirsiniz. Daha fazla bilgi için bkz. [HDInsight 'ta Kaynak Yöneticisi şablonları kullanarak Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. From the left menu, navigate to **+ Create a resource** >  **Analytics** > **Azure HDInsight**.
+1. Sol menüden + **Azure hdınsight** > kaynak >  **Analizi** **Oluştur ' a** gidin.
 
-    ![Create a new cluster in the Azure portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Creating a new cluster in the Azure portal")
+    ![Azure portal yeni bir küme oluşturun](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Azure portal yeni bir küme oluşturma")
 
-1. From the **Create HDInsight cluster** page, select **Go to classic create experience**.
+1. **HDInsight kümesi oluştur** sayfasında, **Klasik oluşturma deneyimine git**' i seçin.
 
-    ![Go to classic create experience](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
+    ![Klasik oluşturma deneyimine gidin](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
 
-1. On the **HDInsight** page, select **Custom (size, settings, apps)** .
+1. **HDInsight** sayfasında **özel (boyut, ayarlar, uygulamalar)** öğesini seçin.
 
-1. Select **1 Basics**. Then enter the following information:
+1. **1 temel bilgiler**' i seçin. Ardından aşağıdaki bilgileri girin:
 
     |Özellik |Açıklama |
     |---|---|
     |Küme adı|Bu adın küresel olarak benzersiz olması gerekir.|
-    |Abonelik|From the drop-down list, select the Azure subscription that's used for the cluster.|
-    |Küme türü|Select the type of cluster you want to create. Examples are Hadoop and Apache Spark. The **Operating system** will be **Linux**. Next, select a cluster type version. Use the default version if you don't know what to choose. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
-    |Küme oturum açma kullanıcı adı|Provide the username, default is **admin**.|
-    |Küme oturum açma parolası|Provide the password.|
-    |Secure Shell (SSH) kullanıcı adı|Default is **sshuser**. If you want the same SSH password as the admin password you specified earlier, select the **Use cluster login password for SSH** check box. If not, provide either a **PASSWORD** or **PUBLIC KEY** to authenticate the SSH user. A public key is the approach we recommend. Choose **Select** at the bottom to save the credentials configuration.  For more information, see [Connect to HDInsight (Apache Hadoop) by using SSH](hdinsight-hadoop-linux-use-ssh-unix.md).|
+    |Abonelik|Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin.|
+    |Küme türü|Oluşturmak istediğiniz küme türünü seçin. Hadoop ve Apache Spark örnekler aşağıda verilmiştir. **İşletim sistemi** **Linux**olur. Sonra bir küme türü sürümü seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
+    |Küme oturum açma kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **admin**' dir.|
+    |Küme oturum açma parolası|Parolayı girin.|
+    |Secure Shell (SSH) kullanıcı adı|Varsayılan olarak **sshuser**. Daha önce belirttiğiniz yönetici parolasıyla aynı SSH parolasını istiyorsanız **SSH için küme oturum açma parolasını kullan** onay kutusunu işaretleyin. Aksi durumda, SSH kullanıcısının kimliğini doğrulamak için bir **parola** veya **ortak anahtar** sağlayın. Ortak anahtar, önerdiğimiz yaklaşımdır. Kimlik bilgileri yapılandırmasını kaydetmek için en altta **Seç ' i** seçin.  Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'a (Apache Hadoop) bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md).|
     |Kaynak grubu|Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin.|
-    |Konum|Specify a datacenter where the cluster is created.|
+    |Konum|Kümenin oluşturulduğu bir veri merkezi belirtin.|
 
-    ![HDInsight create cluster basics](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Creating a new cluster in the Azure portal")
+    ![HDInsight küme oluşturma temelleri](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Azure portal yeni bir küme oluşturma")
 
     > [!IMPORTANT]  
-    > HDInsight clusters come in a variety of types. They correspond to the workload or technology that the cluster is tuned for. There's no supported method to create a cluster that combines multiple types. Examples are Storm and HBase on one cluster.
+    > HDInsight kümeleri çeşitli türlerde gelir. Bunlar, kümenin ayarlanmış olduğu iş yüküne veya teknolojiye karşılık gelir. Birden çok türü birleştiren bir küme oluşturmak için desteklenen bir yöntem yoktur. Örnekler, bir kümede fırtınası ve HBase örnekleridir.
 
-    Select **Next** to move to the next page.
+    Sonraki sayfaya geçmek için **İleri ' yi** seçin.
 
-1. From **2 Security + networking**, you can connect your cluster to a virtual network by using the provided drop-down menu. Select an Azure virtual network and the subnet if you want to place the cluster into a virtual network. For information on using HDInsight with a virtual network, see [Plan a virtual network deployment for Azure HDInsight clusters](hdinsight-plan-virtual-network-deployment.md). The article includes specific configuration requirements for the virtual network.
+1. **2 güvenlik + ağ**üzerinden, belirtilen açılan menüyü kullanarak kümenizi bir sanal ağa bağlayabilirsiniz. Kümeyi bir sanal ağa yerleştirmek istiyorsanız bir Azure sanal ağı ve alt ağı seçin. Bir sanal ağla HDInsight kullanma hakkında daha fazla bilgi için bkz. [Azure HDInsight kümeleri için sanal ağ dağıtımı planlaması](hdinsight-plan-virtual-network-deployment.md). Bu makale, sanal ağ için belirli yapılandırma gereksinimlerini içerir.
 
-    If you want to use the **Enterprise Security Package**, follow these instructions: [Configure a HDInsight cluster with Enterprise Security Package by using Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+    **Kurumsal güvenlik paketi**kullanmak istiyorsanız şu yönergeleri izleyin: [Azure Active Directory Domain Services kullanarak kurumsal güvenlik paketi bir HDInsight kümesi yapılandırma](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
-    Select **Next** to move to the next page.
+    Sonraki sayfaya geçmek için **İleri ' yi** seçin.
 
-1. From **3 Storage**, for **Storage Account Settings**, specify whether you want Azure Storage or Azure Data Lake Storage as your default storage. For more information, see the following table.
+1. **Depolama hesabı ayarları**Için **3 depolama**alanından Azure Storage veya Azure Data Lake Storage varsayılan depolama alanı olarak isteyip istemediğinizi belirtin. Daha fazla bilgi için aşağıdaki tabloya bakın.
 
-    | Primary Storage type | Açıklama |
+    | Birincil depolama türü | Açıklama |
     |------------------|-------------|
-    | Azure Depolama   |  * For **Selection method**, choose **My subscriptions** if you want to specify a storage account that's part of your Azure subscription. Then select the storage account. Otherwise, select **Access key**. Then provide the information for the storage account that you want to choose from outside your Azure subscription.</br></br> * For **Default container**, choose the default container name suggested by the portal or specify your own.</br></br> * If Azure Blob storage is your default storage, you can also select **Additional Storage Accounts** to specify additional storage accounts to associate with the cluster. For **Azure Storage Keys**, select **Add a storage key**. Then you can provide a storage account from your Azure subscriptions or from other subscriptions. Provide the storage account access key.</br></br> * If Blob storage is your default storage, you can also select **Data Lake Storage access** to specify Azure Data Lake Storage as additional storage. For more information, see [Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
-    | Azure Data Lake Storage | Select **Azure Data Lake Storage Gen1** or **Azure Data Lake Storage Gen2**. Then refer to the article [Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) for instructions. |
+    | Azure Depolama   |  * **Seçim yöntemi**Için, Azure aboneliğinizin bir parçası olan bir depolama hesabı belirtmek Istiyorsanız **Aboneliklerim** ' i seçin. Ardından Depolama hesabını seçin. Aksi takdirde, **erişim anahtarı**' nı seçin. Ardından, Azure aboneliğinizin dışından seçim yapmak istediğiniz depolama hesabı için bilgileri sağlayın.</br></br> * **Varsayılan kapsayıcı**için Portal tarafından önerilen varsayılan kapsayıcı adını seçin ya da kendinizinkini belirtin.</br></br> * Azure Blob depolama alanı varsayılan depolarınızda, kümeyle ilişkilendirilecek ek depolama hesapları belirtmek için **ek depolama hesapları** da seçebilirsiniz. **Azure depolama anahtarları**için **depolama anahtarı Ekle**' yi seçin. Daha sonra, Azure aboneliklerinizden veya diğer aboneliklerden bir depolama hesabı sağlayabilirsiniz. Depolama hesabı erişim anahtarı sağlayın.</br></br> * BLOB depolama alanı varsayılan depolarınız ise, ek depolama alanı olarak Azure Data Lake Storage belirtmek için **Data Lake Storage erişim** ' i de seçebilirsiniz. Daha fazla bilgi için bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+    | Azure Data Lake Storage | **Azure Data Lake Storage 1.** veya **Azure Data Lake Storage 2.** seçin. Daha sonra yönergeler için [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) makalesine başvurun. |
 
-    **Metastore Settings (optional)**
+    **Meta veri deposu ayarları (isteğe bağlı)**
 
-    As an option, specify a SQL database to save Apache Hive and Apache Oozie metadata associated with the cluster. For **Select a SQL database for Hive**, select a SQL database. Then provide the username and password for the database. Repeat these steps for Oozie metadata.
+    Bir seçenek olarak, Apache Hive kaydedilecek bir SQL veritabanı ve kümeyle ilişkili Apache Oozie meta verilerini belirtin. **Hive için BIR SQL veritabanı seçin**IÇIN bir SQL veritabanı seçin. Ardından veritabanı için Kullanıcı adını ve parolayı belirtin. Oozie meta verileri için bu adımları tekrarlayın.
 
-    Some considerations about using Azure SQL database for metastores are as follows:
-    * The Azure SQL database that's used for the metastore must allow connectivity to other Azure services, including Azure HDInsight. On the right side of the Azure SQL database dashboard, select the server name. This server is the one that the SQL database instance runs on. After you're in server view, select **Configure**. Then for **Azure Services**, select **Yes**. Daha sonra **Kaydet**’e tıklayın.
-    * When you create a metastore, don't name a database with dashes or hyphens. These characters can cause the cluster creation process to fail.
+    Meta depolar için Azure SQL veritabanı 'nı kullanmayla ilgili bazı noktalar şunlardır:
+    * Meta veri deposu için kullanılan Azure SQL veritabanı, Azure HDInsight da dahil olmak üzere diğer Azure hizmetleriyle bağlantı kurulmasına izin vermelidir. Azure SQL veritabanı panosunun sağ tarafında sunucu adını seçin. Bu sunucu, SQL veritabanı örneğinin üzerinde çalıştığı bir veritabanıdır. Sunucu Görünümü ' nde olduktan sonra **Yapılandır**' ı seçin. Ardından **Azure hizmetleri**için **Evet**' i seçin. Daha sonra **Kaydet**’e tıklayın.
+    * Bir meta veri deposu oluşturduğunuzda bir veritabanını tireler veya kısa çizgilerden adlandırma. Bu karakterler, küme oluşturma işleminin başarısız olmasına neden olabilir.
 
-    ![HDInsight create cluster storage](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Creating a new cluster in the Azure portal")
+    ![HDInsight küme depolaması oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Azure portal yeni bir küme oluşturma")
 
     > [!WARNING]  
-    > Using an additional storage account in a different location than the HDInsight cluster isn't supported.
+    > HDInsight kümesinden farklı bir konumda ek depolama hesabı kullanılması desteklenmez.
 
-    Select **Next** to move to the next page.
+    Sonraki sayfaya geçmek için **İleri ' yi** seçin.
 
-1. From **4 Applications (optional)** , select any applications that you want. Microsoft, independent software vendors (ISVs), or you can develop these applications. For more information, see [Install applications during cluster creation](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+1. **4 uygulamadan (isteğe bağlı)** istediğiniz uygulamaları seçin. Microsoft, bağımsız yazılım satıcıları (ISV) veya bu uygulamaları geliştirebilirsiniz. Daha fazla bilgi için bkz. [küme oluşturma sırasında uygulamaları yüklemeyi](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
-    Select **Next** to move to the next page.
+    Sonraki sayfaya geçmek için **İleri ' yi** seçin.
 
-1. **5 Cluster size** displays information about the nodes that are used for this cluster. Set the number of worker nodes that you need for the cluster. The estimated cost of running the cluster is also shown.
+1. **5 küme boyutu** , bu küme için kullanılan düğümlerle ilgili bilgileri görüntüler. Küme için gereken çalışan düğümlerinin sayısını ayarlayın. Küme çalıştırmanın tahmini maliyeti de gösterilir.
 
-    ![HDInsight create cluster nodes](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Specify number of cluster nodes")
+    ![HDInsight küme düğümleri oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Küme düğümlerinin sayısını belirtin")
 
    > [!IMPORTANT]  
-   > If you plan on more than 32 worker nodes, select a head node size with at least eight cores and 14 GB RAM. Plan the nodes either at cluster creation or by scaling the cluster after creation.
+   > 32 ' den fazla çalışan düğümünü planlıyorsanız en az sekiz çekirdek ve 14 GB RAM içeren bir baş düğüm boyutu seçin. Düğümleri küme oluşturma sırasında veya oluşturulduktan sonra kümeyi ölçeklendirerek planlayın.
    >
-   > For more information on node sizes and associated costs, see [Azure HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).
+   > Düğüm boyutları ve ilişkili maliyetler hakkında daha fazla bilgi için bkz. [Azure HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-    Select **Next** to move to the next page.
+    Sonraki sayfaya geçmek için **İleri ' yi** seçin.
 
-1. From **6 Script actions**, you can customize a cluster to install custom components. This option works if you want to use a custom script to customize a cluster, as the cluster is being created. For more information about script actions, see [Customize Linux-based HDInsight clusters by using script actions](hdinsight-hadoop-customize-cluster-linux.md).
+1. **6 betik eylemleriyle**, özel bileşenleri yüklemek için bir kümeyi özelleştirebilirsiniz. Küme oluşturulurken bir kümeyi özelleştirmek için özel bir komut dosyası kullanmak istiyorsanız bu seçenek kullanılır. Betik eylemleri hakkında daha fazla bilgi için bkz. [betik eylemlerini kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
 
-   Select **Next** to move to the next page.
+   Sonraki sayfaya geçmek için **İleri ' yi** seçin.
 
-1. From **7 Summary**, verify the information you entered earlier. Ardından **Oluştur**’u seçin.
+1. **7 özetinden**, daha önce girdiğiniz bilgileri doğrulayın. Ardından **Oluştur**’u seçin.
 
-    ![HDInsight create cluster summary](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Specify number of cluster nodes")
+    ![HDInsight küme Özeti oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Küme düğümlerinin sayısını belirtin")
 
     > [!NOTE]  
-    > Kümenin oluşturulması genellikle yaklaşık 20 dakika sürer. Monitor **Notifications** to check on the provisioning process.
+    > Kümenin oluşturulması genellikle yaklaşık 20 dakika sürer. Sağlama işlemini denetlemek için **bildirimleri** izleyin.
 
-1. After the creation process finishes, select **Go to Resource** from the **Deployment succeeded** notification. The cluster window provides the following information.
+1. Oluşturma işlemi bittikten sonra **dağıtım başarılı** bildiriminde **Kaynağa Git** ' i seçin. Küme penceresi aşağıdaki bilgileri sağlar.
 
-    ![HDI Azure portal cluster overview](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Cluster properties")
+    ![HDI Azure portal kümesine genel bakış](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Küme özellikleri")
 
-    Some of the icons in the window are explained as follows:
+    Penceredeki simgelerden bazıları şu şekilde açıklanmıştır:
 
     |Özellik | Açıklama |
     |---|---|
-    |Genel Bakış|Provides all the essential information about the cluster. Examples are the name, the resource group it belongs to, the location, the operating system, and the URL for the cluster dashboard.|
-    |Cluster dashboards|Directs you to the Ambari portal associated with the cluster.|
-    |SSH + Cluster login|Provides information needed to access the cluster by using SSH.|
-    |Sil|Deletes the HDInsight cluster.|
+    |Genel Bakış|Kümeyle ilgili tüm gerekli bilgileri sağlar. Örnek olarak ad, ait olduğu kaynak grubu, konum, işletim sistemi ve küme panosunun URL 'SI verilebilir.|
+    |Küme panoları|Sizi kümeyle ilişkili olan ambarı portalına yönlendirir.|
+    |SSH + küme oturumu açma|SSH kullanarak kümeye erişmek için gereken bilgileri sağlar.|
+    |Sil|HDInsight kümesini siler.|
 
 ## <a name="customize-clusters"></a>Kümeleri özelleştirme
 
-* [Customize HDInsight clusters by using Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md)
-* [Customize Linux-based HDInsight clusters by using script actions](hdinsight-hadoop-customize-cluster-linux.md)
+* [Önyükleme kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-bootstrap.md)
+* [Betik eylemlerini kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="delete-the-cluster"></a>Küme silme
 
@@ -148,27 +148,27 @@ HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gere
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You've successfully created an HDInsight cluster. Now learn how to work with your cluster.
+Bir HDInsight kümesini başarıyla oluşturdunuz. Şimdi kümenizle nasıl çalışacağınızı öğrenin.
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop clusters
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop kümeleri
 
-* [Use Apache Hive with HDInsight](hadoop/hdinsight-use-hive.md)
-* [Use MapReduce with HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
+* [HDInsight ile MapReduce kullanma](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="apache-hbase-clusters"></a>Apache HBase clusters
+### <a name="apache-hbase-clusters"></a>Apache HBase kümeleri
 
-* [Get started with Apache HBase on HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Develop Java applications for Apache HBase on HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [HDInsight 'ta Apache HBase ile çalışmaya başlama](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight 'ta Apache HBase için Java uygulamaları geliştirme](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Apache Storm clusters
+### <a name="apache-storm-clusters"></a>Apache Storm kümeleri
 
-* [Develop Java topologies for Apache Storm on HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Use Python components in Apache Storm on HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Deploy and monitor topologies with Apache Storm on HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [HDInsight üzerinde Apache Storm için Java topolojileri geliştirme](storm/apache-storm-develop-java-topology.md)
+* [HDInsight üzerinde Apache Storm Python bileşenlerini kullanma](storm/apache-storm-develop-python-topology.md)
+* [HDInsight üzerinde Apache Storm topolojilerini dağıtma ve izleme](storm/apache-storm-deploy-monitor-topology-linux.md)
 
-### <a name="apache-spark-clusters"></a>Apache Spark clusters
+### <a name="apache-spark-clusters"></a>Apache Spark kümeleri
 
-* [Create a standalone application by using Scala](spark/apache-spark-create-standalone-application.md)
-* [Run jobs remotely on an Apache Spark cluster by using Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark with BI: Perform interactive data analysis by using Spark in HDInsight with BI tools](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Scala kullanarak tek başına uygulama oluşturma](spark/apache-spark-create-standalone-application.md)
+* [Apache Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](spark/apache-spark-livy-rest-interface.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](spark/apache-spark-use-bi-tools.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](spark/apache-spark-machine-learning-mllib-ipython.md)

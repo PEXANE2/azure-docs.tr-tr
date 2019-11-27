@@ -1,6 +1,6 @@
 ---
-title: DNS Zones and Records overview - Azure DNS | Microsoft Docs
-description: Overview of support for hosting DNS zones and records in Microsoft Azure DNS.
+title: DNS Bölgeleri ve kayıtlara genel bakış-Azure DNS | Microsoft Docs
+description: Microsoft Azure DNS 'de DNS bölgelerini ve kayıtlarını barındırma desteğine genel bakış.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -22,132 +22,132 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210985"
 ---
-# <a name="overview-of-dns-zones-and-records"></a>Overview of DNS zones and records
+# <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
 
-This page explains the key concepts of domains, DNS zones, and DNS records and record sets, and how they are supported in Azure DNS.
+Bu sayfada etki alanları, DNS bölgeleri ve DNS kayıtları ve kayıt kümelerinin temel kavramları ve bunların Azure DNS nasıl desteklendiği açıklanmaktadır.
 
-## <a name="domain-names"></a>Domain names
+## <a name="domain-names"></a>Etki alanı adları
 
-Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı yalnızca " **.** " olan "kök" etki alanından başlar.  Bunun altında "com", "net", "org", "uk" veya "jp" gibi en üst düzey etki alanları bulunur.  Bunların altında "org.uk" veya "co.jp" gibi ikinci düzey etki alanları bulunur. The domains in the DNS hierarchy are globally distributed, hosted by DNS name servers around the world.
+Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı yalnızca " **.** " olan "kök" etki alanından başlar.  Bunun altında "com", "net", "org", "uk" veya "jp" gibi en üst düzey etki alanları bulunur.  Bunların altında "org.uk" veya "co.jp" gibi ikinci düzey etki alanları bulunur. DNS hiyerarşisindeki etki alanları, dünyanın dört bir yanındaki DNS ad sunucuları tarafından barındırılan küresel olarak dağıtılır.
 
-A domain name registrar is an organization that allows you to purchase a domain name, such as `contoso.com`.  Purchasing a domain name gives you the right to control the DNS hierarchy under that name, for example allowing you to direct the name `www.contoso.com` to your company web site. The registrar may host the domain in its own name servers on your behalf, or allow you to specify alternative name servers.
+Etki alanı adı kaydedici, `contoso.com`gibi bir etki alanı adı satın almanızı sağlayan bir kuruluştur.  Bir etki alanı adı satın alma, bu ad altında DNS hiyerarşisini denetleme hakkını sağlar, örneğin adı `www.contoso.com` şirketinizin Web sitenize yönlendirmenize olanak tanır. Kaydedici, etki alanını sizin adınıza kendi ad sunucularında barındırabilir veya alternatif ad sunucuları belirtmenize izin verebilir.
 
-Azure DNS provides a globally distributed, high-availability name server infrastructure, which you can use to host your domain. By hosting your domains in Azure DNS, you can manage your DNS records with the same credentials, APIs, tools, billing, and support as your other Azure services.
+Azure DNS, etki alanınızı barındırmak için kullanabileceğiniz, küresel olarak dağıtılmış, yüksek kullanılabilirliğe sahip bir ad sunucu altyapısı sağlar. Etki alanlarınızı Azure DNS barındırarak DNS kayıtlarınızı, diğer Azure hizmetlerinizle aynı kimlik bilgileri, API, araç, faturalandırma ve destek ile yönetebilirsiniz.
 
-Azure DNS does not currently support purchasing of domain names. If you want to purchase a domain name, you need to use a third-party domain name registrar. The registrar typically charges a small annual fee. The domains can then be hosted in Azure DNS for management of DNS records. Ayrıntılar için bkz. [Azure DNS'ye bir etki alanı devretme](dns-domain-delegation.md).
+Azure DNS, şu anda etki alanı adlarının satın alınmasını desteklememektedir. Bir etki alanı adı satın almak istiyorsanız, üçüncü taraf etki alanı adı kaydedicisi kullanmanız gerekir. Kaydedici genellikle küçük bir yıllık ücreti ücretlendirir. Etki alanları daha sonra DNS kayıtlarının yönetimi için Azure DNS içinde barındırılabilir. Ayrıntılar için bkz. [Azure DNS'ye bir etki alanı devretme](dns-domain-delegation.md).
 
-## <a name="dns-zones"></a>DNS zones
+## <a name="dns-zones"></a>DNS bölgeleri
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>DNS records
+## <a name="dns-records"></a>DNS kayıtları
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-### <a name="time-to-live"></a>Time-to-live
+### <a name="time-to-live"></a>Yaşam süresi
 
-The time to live, or TTL, specifies how long each record is cached by clients before being requeried. In the above example, the TTL is 3600 seconds or 1 hour.
+Yaşam süresi veya TTL, her kaydın yeniden sorgulama yapılmadan önce istemciler tarafından ne kadar süre önbelleğe alınacağını belirtir. Yukarıdaki örnekte, TTL 3600 saniye veya 1 saattir.
 
-In Azure DNS, the TTL is specified for the record set, not for each record, so the same value is used for all records within that record set.  You can specify any TTL value between 1 and 2,147,483,647 seconds.
+Azure DNS, TTL, her kayıt için değil kayıt kümesi için belirtilir, bu nedenle bu kayıt kümesi içindeki tüm kayıtlar için aynı değer kullanılır.  1 ila 2.147.483.647 saniye arasında herhangi bir TTL değeri belirtebilirsiniz.
 
-### <a name="wildcard-records"></a>Wildcard records
+### <a name="wildcard-records"></a>Joker karakter kayıtları
 
-Azure DNS [joker kayıtlarını](https://en.wikipedia.org/wiki/Wildcard_DNS_record) destekler. Wildcard records are returned in response to any query with a matching name (unless there is a closer match from a non-wildcard record set). Azure DNS supports wildcard record sets for all record types except NS and SOA.
+Azure DNS [joker kayıtlarını](https://en.wikipedia.org/wiki/Wildcard_DNS_record) destekler. Joker karakter kayıtları, eşleşen ada sahip herhangi bir sorguya yanıt olarak döndürülür (joker karakter olmayan bir kayıt kümesinden daha yakından eşleşme yoksa). Azure DNS, NS ve SOA hariç tüm kayıt türleri için joker karakter kayıt kümelerini destekler.
 
-To create a wildcard record set, use the record set name '\*'. Alternatively, you can also use a name with '\*' as its left-most label, for example, '\*.foo'.
+Joker karakter kayıt kümesi oluşturmak için, '\*' kayıt kümesi adını kullanın. Alternatif olarak, en sol etiketi olarak '\*' ile bir ad da kullanabilirsiniz; Örneğin, '\*. foo '.
 
-### <a name="caa-records"></a>CAA records
+### <a name="caa-records"></a>CAA kayıtları
 
-CAA records allow domain owners to specify which Certificate Authorities (CAs) are authorized to issue certificates for their domain. This allows CAs to avoid mis-issuing certificates in some circumstances. CAA records have three properties:
-* **Flags**: This is an integer between 0 and 255, used to represent the critical flag that has special meaning per the [RFC](https://tools.ietf.org/html/rfc6844#section-3)
-* **Tag**: an ASCII string that can be one of the following:
-    * **issue**: use this if you want to specify CAs that are permitted to issue certs (all types)
-    * **issuewild**: use this if you want to specify CAs that are permitted to issue certs (wildcard certs only)
-    * **iodef**: specify an email address or hostname to which CAs can notify for unauthorized cert issue requests
-* **Value**: the value for the specific Tag chosen
+CAA kayıtları, etki alanı sahiplerinin, etki alanı için sertifika verme yetkisine sahip olan sertifika yetkililerini (CA 'Lar) belirtmesini sağlar. Bu, CA 'Ların bazı koşullarda yanlış bir şekilde sertifika verilmesine engel olmasını sağlar. CAA kayıtlarının üç özelliği vardır:
+* **Bayraklar**: Bu, [RFC](https://tools.ietf.org/html/rfc6844#section-3) başına özel anlamı olan kritik bayrağını temsil etmek için kullanılan 0 ile 255 arasında bir tamsayıdır
+* **Etiket**: aşağıdakilerden biri olabılecek bir ASCII dizesi:
+    * **sorun**: sertifika verme Izni verilen CA 'ları belirtmek istiyorsanız bunu kullanın (tüm türler)
+    * **ıssuewildcard**: sertifika verme Izni verilen CA 'ları belirtmek istiyorsanız bunu kullanın (yalnızca Joker sertifikaları)
+    * **iodef**: CA 'ların yetkisiz sertifika verme isteklerini bildirebileceği bir e-posta adresi veya ana bilgisayar adı belirtin
+* **Değer**: seçilen belirli bir etiketin değeri
 
-### <a name="cname-records"></a>CNAME records
+### <a name="cname-records"></a>CNAME kayıtları
 
-CNAME kaydı kümeleri aynı ada sahip diğer kayıt kümeleriyle birlikte olamaz. For example, you cannot create a CNAME record set with the relative name 'www' and an A record with the relative name 'www' at the same time.
+CNAME kaydı kümeleri aynı ada sahip diğer kayıt kümeleriyle birlikte olamaz. Örneğin, göreli adı ' www ' olan bir CNAME kayıt kümesi ve aynı anda göreli adı ' www ' olan bir kayıt oluşturamazsınız.
 
-Because the zone apex (name = '\@') always contains the NS and SOA record sets that were created when the zone was created, you can't create a CNAME record set at the zone apex.
+Bölge tepesinde (Name = '\@') her zaman bölgenin oluşturulduğu sırada oluşturulan NS ve SOA kayıt kümelerini içerdiğinden, tepesinde bölgesinde bir CNAME kayıt kümesi oluşturamazsınız.
 
-These constraints arise from the DNS standards and are not limitations of Azure DNS.
+Bu kısıtlamalar DNS standartlarından oluşur ve Azure DNS kısıtlamalarıdır.
 
-### <a name="ns-records"></a>NS records
+### <a name="ns-records"></a>NS kayıtları
 
-The NS record set at the zone apex (name '\@') is created automatically with each DNS zone, and is deleted automatically when the zone is deleted (it cannot be deleted separately).
+Bölge tepesinde (adı '\@') konumundaki NS kaydı, her DNS bölgesiyle otomatik olarak oluşturulur ve bölge silindiğinde otomatik olarak silinir (Ayrıca silinemez).
 
-This record set contains the names of the Azure DNS name servers assigned to the zone. You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers. 
+Bu kayıt kümesi, bölgeye atanan Azure DNS ad sunucularının adlarını içerir. Birden fazla DNS sağlayıcısıyla ortak barındırma etki alanlarını desteklemek için bu NS kayıt kümesine ek ad sunucuları ekleyebilirsiniz. Bu kayıt kümesi için TTL ve meta verileri de değiştirebilirsiniz. Ancak, önceden doldurulmuş Azure DNS adı sunucularını kaldıramaz veya değiştiremezsiniz. 
 
-This applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be created, modified, and deleted without constraint.
+Bu, yalnızca tepesinde bölgesindeki NS kayıt kümesi için geçerlidir. Bölgesindeki diğer NS kayıt kümeleri (alt bölgeleri temsilci atamak için kullanılan), kısıtlama olmadan oluşturulabilir, değiştirilebilir ve silinebilir.
 
-### <a name="soa-records"></a>SOA records
+### <a name="soa-records"></a>SOA kayıtları
 
-A SOA record set is created automatically at the apex of each zone (name = '\@'), and is deleted automatically when the zone is deleted.  SOA records cannot be created or deleted separately.
+SOA kayıt kümesi, her bölgenin tepesinde (ad = '\@') üzerinde otomatik olarak oluşturulur ve bölge silindiğinde otomatik olarak silinir.  SOA kayıtları ayrı olarak oluşturulamaz veya silinemez.
 
-You can modify all properties of the SOA record except for the 'host' property, which is pre-configured to refer to the primary name server name provided by Azure DNS.
+Azure DNS tarafından belirtilen birincil ad sunucu adına başvurmak üzere önceden yapılandırılmış olan ' host ' özelliği dışında SOA kaydının tüm özelliklerini değiştirebilirsiniz.
 
-The zone serial number in the SOA record is not updated automatically when changes are made to the records in the zone. It can be updated manually by editing the SOA record, if necessary.
+Bölgede kayıtlar üzerinde değişiklik yapıldığında SOA kaydındaki bölge seri numarası otomatik olarak güncellenmez. Gerekirse, SOA kaydı düzenlenerek el ile güncelleştirilebilen bir şekilde yapılandırılabilir.
 
-### <a name="spf-records"></a>SPF records
+### <a name="spf-records"></a>SPF kayıtları
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="srv-records"></a>SRV records
+### <a name="srv-records"></a>SRV kayıtları
 
-[SRV records](https://en.wikipedia.org/wiki/SRV_record) are used by various services to specify server locations. When specifying an SRV record in Azure DNS:
+[SRV kayıtları](https://en.wikipedia.org/wiki/SRV_record) , çeşitli hizmetler tarafından sunucu konumlarını belirtmek için kullanılır. Azure DNS içinde bir SRV kaydı belirtirken:
 
-* The *service* and *protocol* must be specified as part of the record set name, prefixed with underscores.  For example, '\_sip.\_tcp.name'.  For a record at the zone apex, there is no need to specify '\@' in the record name, simply use the service and protocol, for example '\_sip.\_tcp'.
-* The *priority*, *weight*, *port*, and *target* are specified as parameters of each record in the record set.
+* *Hizmet* ve *protokol* , kayıt kümesi adının bir parçası olarak belirtilmelidir, alt çizgi öneki.  Örneğin, '\_SIP.\_tcp.name '.  Tepesinde bölgesindeki bir kayıt için, kayıt adında '\@' belirtmeniz gerekmez, örneğin '\_SIP gibi hizmet ve protokolü kullanmanız yeterlidir.\_TCP '.
+* *Öncelik*, *Ağırlık*, *bağlantı noktası*ve *hedef* , kayıt kümesindeki her bir kaydın parametresi olarak belirtilir.
 
-### <a name="txt-records"></a>TXT records
+### <a name="txt-records"></a>TXT kayıtları
 
-TXT records are used to map domain names to arbitrary text strings. They are used in multiple applications, in particular related to email configuration, such as the [Sender Policy Framework (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
+TXT kayıtları, etki alanı adlarını rastgele metin dizeleriyle eşlemek için kullanılır. Bunlar, [Gönderen Ilke çerçevesi (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) ve [DomainKeys tarafından tanımlanan posta (dkim)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail)gibi, e-posta yapılandırmasıyla ilgili birden çok uygulamada kullanılır.
 
-The DNS standards permit a single TXT record to contain multiple strings, each of which may be up to 254 characters in length. Where multiple strings are used, they are concatenated by clients and treated as a single string.
+DNS standartları tek bir TXT kaydına, her birinin en fazla 254 karakter uzunluğunda olabilen birden çok dize içermesine izin verir. Birden çok dize kullanıldığında, istemciler tarafından birleştirilir ve tek bir dize olarak kabul edilir.
 
-When calling the Azure DNS REST API, you need to specify each TXT string separately.  When using the Azure portal, PowerShell or CLI interfaces you should specify a single string per record, which is automatically divided into 254-character segments if necessary.
+Azure DNS REST API çağrılırken her bir TXT dizesini ayrı ayrı belirtmeniz gerekir.  Azure portal, PowerShell veya CLı arabirimlerini kullanırken, her kayıt için tek bir dize belirtmelisiniz, bu, gerekirse otomatik olarak 254 karakter segmentlerine bölünmüştür.
 
-The multiple strings in a DNS record should not be confused with the multiple TXT records in a TXT record set.  A TXT record set can contain multiple records, *each of which* can contain multiple strings.  Azure DNS supports a total string length of up to 1024 characters in each TXT record set (across all records combined).
+Bir DNS kaydındaki birden çok dize, bir TXT kayıt kümesindeki birden çok TXT kaydıyla karıştırılmamalıdır.  Bir TXT kayıt kümesi, *her biri* birden çok dize içerebilen birden çok kayıt içerebilir.  Azure DNS, her bir TXT kayıt kümesinde en fazla 1024 karakterden oluşan toplam dize uzunluğunu destekler (Birleşik tüm kayıtlar arasında).
 
-## <a name="tags-and-metadata"></a>Tags and metadata
+## <a name="tags-and-metadata"></a>Etiketler ve meta veriler
 
 ### <a name="tags"></a>Etiketler
 
-Tags are a list of name-value pairs and are used by Azure Resource Manager to label resources.  Azure Resource Manager uses tags to enable filtered views of your Azure bill, and also enables you to set a policy on which tags are required. Etiketler hakkında daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/resource-group-using-tags.md).
+Etiketler, ad-değer çiftleri listesidir ve kaynakları etiketlemek için Azure Resource Manager tarafından kullanılır.  Azure Resource Manager, Azure faturanızda Filtrelenmiş görünümleri etkinleştirmek için Etiketler kullanır ve ayrıca etiketlerin gerekli olduğu bir ilke ayarlamanıza olanak sağlar. Etiketler hakkında daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/resource-group-using-tags.md).
 
-Azure DNS supports using Azure Resource Manager tags on DNS zone resources.  It does not support tags on DNS record sets, although as an alternative 'metadata' is supported on DNS record sets as explained below.
+Azure DNS, DNS bölge kaynaklarında Azure Resource Manager etiketlerin kullanılmasını destekler.  DNS kayıt kümelerinde etiketleri desteklemez, ancak aşağıda açıklandığı gibi DNS kayıt kümelerinde alternatif bir ' Metadata ' desteklenir.
 
 ### <a name="metadata"></a>Meta Veriler
 
-As an alternative to record set tags, Azure DNS supports annotating record sets using 'metadata'.  Similar to tags, metadata enables you to associate name-value pairs with each record set.  This can be useful, for example to record the purpose of each record set.  Unlike tags, metadata cannot be used to provide a filtered view of your Azure bill and cannot be specified in an Azure Resource Manager policy.
+Kayıt kümesi etiketlerinin bir alternatifi olarak Azure DNS, ' Metadata ' kullanarak kayıt kümelerine açıklama eklemeyi destekler.  Etiketlere benzer şekilde meta veriler, ad-değer çiftlerini her bir kayıt kümesiyle ilişkilendirmenizi sağlar.  Bu, örneğin, her bir kayıt kümesinin amacını kaydetmek yararlı olabilir.  Etiketlerin aksine, meta veriler Azure faturanızda filtrelenmiş bir görünüm sağlamak için kullanılamaz ve bir Azure Resource Manager ilkesinde belirtilemez.
 
-## <a name="etags"></a>Etags
+## <a name="etags"></a>ETag 'ler
 
-Suppose two people or two processes try to modify a DNS record at the same time. Which one wins? And does the winner know that they've overwritten changes created by someone else?
+İki kişinin veya iki işlemin aynı anda bir DNS kaydını değiştirmeyi deneydiğini varsayalım. Tek bir WINS mi? Ayrıca, başka biri tarafından oluşturulan değişikliklerin üzerine yazıldıklarından emin misiniz?
 
-Azure DNS uses Etags to handle concurrent changes to the same resource safely. Etags are separate from [Azure Resource Manager 'Tags'](#tags). Each DNS resource (zone or record set) has an Etag associated with it. Whenever a resource is retrieved, its Etag is also retrieved. When updating a resource, you can choose to pass back the Etag so Azure DNS can verify that the Etag on the server matches. Since each update to a resource results in the Etag being regenerated, an Etag mismatch indicates a concurrent change has occurred. Etags can also be used when creating a new resource to ensure that the resource does not already exist.
+Azure DNS, aynı kaynaktaki eşzamanlı değişiklikleri güvenli bir şekilde işlemek için ETags kullanır. ETags [Azure Resource Manager ' Tags '](#tags)öğesinden ayrıdır. Her DNS kaynağına (bölge veya kayıt kümesi) ilişkili bir ETag öğesi vardır. Her kaynak alındığında ETag de alınır. Bir kaynağı güncelleştirirken, Azure DNS sunucu üzerindeki ETag 'in eşleştiğini doğrulayabilmesi için ETag 'i geri geçirmeye tercih edebilirsiniz. Bir kaynaktaki her güncelleştirme ETag 'in yeniden üretildiğinden dolayı bir ETag uyumsuzluğu, eşzamanlı bir değişikliğin gerçekleştiğini gösterir. ETags, kaynağın zaten mevcut olmamasını sağlamak için yeni bir kaynak oluştururken de kullanılabilir.
 
-By default, Azure DNS PowerShell uses Etags to block concurrent changes to zones and record sets. The optional *-Overwrite* switch can be used to suppress Etag checks, in which case any concurrent changes that have occurred are overwritten.
+Varsayılan olarak, Azure DNS PowerShell, bölgelerde ve kayıt kümelerinde eşzamanlı değişiklikleri engellemek için ETags kullanır. İsteğe bağlı *-üzerine yazma* anahtarı ETag denetimlerini bastırmak için kullanılabilir, bu durumda gerçekleşen eşzamanlı değişiklikler üzerine yazılır.
 
-At the level of the Azure DNS REST API, Etags are specified using HTTP headers.  Their behavior is given in the following table:
+Azure DNS REST API düzeyinde ETags, HTTP üstbilgileri kullanılarak belirtilir.  Davranışları aşağıdaki tabloda verilmiştir:
 
 | Üst bilgi | Davranış |
 | --- | --- |
-| Hiçbiri |PUT always succeeds (no Etag checks) |
-| If-match \<etag> |PUT only succeeds if resource exists and Etag matches |
-| If-match * |PUT only succeeds if resource exists |
-| If-none-match * |PUT only succeeds if resource does not exist |
+| Hiçbiri |PUT her zaman başarılı olur (ETag denetimi yok) |
+| IF-Match \<ETag > |PUT yalnızca kaynak varsa ve ETag eşleştirmelerinde başarılı olur |
+| IF-Match * |PUT yalnızca kaynak mevcutsa başarılı olur |
+| If-None-Match * |PUT yalnızca kaynak yoksa başarılı olur |
 
 
 ## <a name="limits"></a>Sınırlar
 
-The following default limits apply when using Azure DNS:
+Azure DNS kullanırken aşağıdaki varsayılan sınırlar geçerlidir:
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* To start using Azure DNS, learn how to [create a DNS zone](dns-getstarted-create-dnszone-portal.md) and [create DNS records](dns-getstarted-create-recordset-portal.md).
-* To migrate an existing DNS zone, learn how to [import and export a DNS zone file](dns-import-export.md).
+* Azure DNS kullanmaya başlamak için, [DNS bölgesi oluşturmayı](dns-getstarted-create-dnszone-portal.md) ve [DNS kayıtları oluşturmayı](dns-getstarted-create-recordset-portal.md)öğrenin.
+* Var olan bir DNS bölgesini geçirmek için [BIR DNS bölge dosyasını içeri ve dışarı aktarmayı](dns-import-export.md)öğrenin.

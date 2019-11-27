@@ -1,5 +1,5 @@
 ---
-title: Create your first serverless function from the Azure portal
+title: Azure portal ilk sunucusuz işlevinizi oluşturun
 description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İşlevinizi oluşturma hakkında bilgi edinin.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: quickstart
@@ -14,14 +14,14 @@ ms.locfileid: "74230820"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure portalında ilk işlevinizi oluşturun
 
-Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda yürütmenize olanak tanır. In this article, learn how to use Functions to create a "hello world" function in the Azure portal.
+Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda yürütmenize olanak tanır. Bu makalede, Azure portal bir "Merhaba Dünya" işlevi oluşturmak için Işlevleri nasıl kullanacağınızı öğrenin.
 
 ![Azure portalında işlev uygulaması oluşturma](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C# developers should consider [creating your first function in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) instead of in the portal. 
+> C#geliştiriciler Portal yerine [Visual Studio 2019 ' de ilk işlevinizi oluşturmayı](functions-create-your-first-function-visual-studio.md) düşünmelidir. 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -37,9 +37,9 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-function"></a>HTTP ile tetiklenen bir işlev oluşturma
 
-1. Yeni işlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesini, **Portalda**'yı ve **Devam**'ı seçin.
+1. Yeni işlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesini, **Portalda**'yı ve **Devam**'ı seçin.
 
-    ![Functions quickstart for choosing a platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Platform seçme için hızlı başlangıç işlevleri.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. **Web Kancası + API**'yi ve ardından **Oluştur**'u seçin.
 
@@ -73,7 +73,7 @@ Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You've created a function app with a simple HTTP triggered function.  
+Basit bir HTTP ile tetiklenen işlevi olan bir işlev uygulaması oluşturdunuz.  
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

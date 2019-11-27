@@ -159,7 +159,7 @@ Azure portal esnek havuz oluşturabileceğiniz iki yol vardır.
 2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek elastik havuzlarla ilgili ek bilgileri görüntüleyebilirsiniz.
 3. **Veritabanları** kutucuğunda **kaynak türü** açılan listesinde **Esnek havuz** ' ı seçin ve ardından **Oluştur**' u seçin.
 
-   ![Elastik havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
+   ![Esnek havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
 1. Alternatif olarak, var olan bir Azure SQL sunucusuna gidip **+ yeni havuz** ' a tıklayarak bir elastik havuz oluşturarak bu sunucuya doğrudan bir havuz oluşturabilirsiniz.

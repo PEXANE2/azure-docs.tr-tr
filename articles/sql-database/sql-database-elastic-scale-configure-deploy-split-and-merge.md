@@ -1,6 +1,6 @@
 ---
 title: Ayırma-birleştirme hizmetini dağıtma
-description: Use the split-merge too to move data between sharded databases.
+description: Verileri parçalı veritabanları arasında taşımak için bölünmüş birleştirme işlemini de kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -18,64 +18,64 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421040"
 ---
-# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Deploy a split-merge service to move data between sharded databases
+# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
 
-The split-merge tool lets you move data between sharded databases. See [Moving data between scaled-out cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)
+Bölünmüş birleştirme aracı, verileri parçalı veritabanları arasında taşımanızı sağlar. Bkz. [ölçekli bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md)
 
-## <a name="download-the-split-merge-packages"></a>Download the Split-Merge packages
+## <a name="download-the-split-merge-packages"></a>Bölünmüş birleştirme paketlerini indirme
 
-1. Download the latest NuGet version from [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
+1. [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)'den en son NuGet sürümünü indirin.
 
-1. Open a command prompt and navigate to the directory where you downloaded nuget.exe. The download includes PowerShell commands.
+1. Bir komut istemi açın ve NuGet. exe dosyasını indirdiğiniz dizine gidin. İndirme, PowerShell komutlarını içerir.
 
-1. Download the latest Split-Merge package into the current directory with the below command:
+1. En son bölünmüş birleştirme paketini şu komutla güncel dizine indirin:
 
    ```cmd
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-The files are placed in a directory named **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** where *x.x.xxx.x* reflects the version number. Find the split-merge Service files in the **content\splitmerge\service** sub-directory, and the Split-Merge PowerShell scripts (and required client dlls) in the **content\splitmerge\powershell** sub-directory.
+Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. x. xxx. x** adlı bir dizine yerleştirilir; burada *x. x. xxx.* x sürüm numarasını yansıtır. Content\splitmerge\service alt dizinindeki bölünmüş birleştirme hizmeti dosyalarını ve, **content\splitmerge\powershell** alt dizinindeki bölünmüş birleştirme PowerShell betiklerini (ve gerekli istemci dll 'leri) bulun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. Create an Azure SQL DB database that will be used as the split-merge status database. [Azure Portal](https://portal.azure.com) gidin. Create a new **SQL Database**. Give the database a name and create a new administrator and password. Be sure to record the name and password for later use.
+1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL DB veritabanı oluşturun. [Azure portalına](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı**oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
 
-1. Ensure that your Azure SQL DB server allows Azure Services to connect to it. In the portal, in the **Firewall Settings**, ensure the **Allow access to Azure Services** setting is set to **On**. Click the "save" icon.
+1. Azure SQL DB sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Portalda, **güvenlik duvarı ayarları**' nda, **Azure hizmetlerine erişime Izin ver** ayarının **Açık**olarak ayarlandığından emin olun. "Kaydet" simgesine tıklayın.
 
-1. Create an Azure Storage account for diagnostics output.
+1. Tanılama çıktısı için bir Azure depolama hesabı oluşturun.
 
-1. Create an Azure Cloud Service for your Split-Merge service.
+1. Bölünmüş birleştirme hizmetiniz için bir Azure bulut hizmeti oluşturun.
 
-## <a name="configure-your-split-merge-service"></a>Configure your Split-Merge service
+## <a name="configure-your-split-merge-service"></a>Bölünmüş birleştirme hizmetinizi yapılandırma
 
-### <a name="split-merge-service-configuration"></a>Split-Merge service configuration
+### <a name="split-merge-service-configuration"></a>Bölünmüş birleştirme hizmeti yapılandırması
 
-1. In the folder into which you downloaded the Split-Merge assemblies, create a copy of the *ServiceConfiguration.Template.cscfg* file that shipped alongside *SplitMergeService.cspkg* and rename it *ServiceConfiguration.cscfg*.
+1. Bölünmüş birleştirme derlemelerini indirdiğiniz klasörde, *Splitmergeservice. cspkg* ile birlikte gelen *ServiceConfiguration. Template. cscfg* dosyasının bir kopyasını oluşturun ve *ServiceConfiguration. cscfg*olarak yeniden adlandırın.
 
-1. Open *ServiceConfiguration.cscfg* in a text editor such as Visual Studio that validates inputs such as the format of certificate thumbprints.
+1. Visual Studio gibi bir metin düzenleyicisinde *ServiceConfiguration. cscfg* ' i açarak sertifika parmak izlerinin biçimi gibi girdileri doğrular.
 
-1. Create a new database or choose an existing database to serve as the status database for Split-Merge operations and retrieve the connection string of that database.
+1. Yeni bir veritabanı oluşturun veya bölünmüş birleştirme işlemlerine yönelik durum veritabanı olarak kullanılacak mevcut bir veritabanını seçin ve bu veritabanının bağlantı dizesini alın.
 
    > [!IMPORTANT]
-   > At this time, the status database must use the Latin  collation (SQL\_Latin1\_General\_CP1\_CI\_AS). For more information, see [Windows Collation Name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Şu anda, durum veritabanının Latin harmanlaması (SQL\_Latin1\_genel\_CP1\_CI\_AS) kullanması gerekir. Daha fazla bilgi için bkz. [Windows harmanlama adı (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
 
-   With Azure SQL DB, the connection string typically is of the form:
+   Azure SQL DB ile bağlantı dizesi genellikle şu biçimdedir:
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. Enter this connection string in the *.cscfg* file in both the **SplitMergeWeb** and **SplitMergeWorker** role sections in the ElasticScaleMetadata setting.
+1. Bu bağlantı dizesini *. cscfg* dosyasında, Elaun Scalemetadata ayarının hem **Splitmergeweb** hem de **splitmergeworker** rol bölümlerinde girin.
 
-1. For the **SplitMergeWorker** role, enter a valid connection string to Azure storage for the **WorkerRoleSynchronizationStorageAccountConnectionString** setting.
+1. **Splitmergeworker** rolü Için, **Workerrolesynchronizationstorageaccountconnectionstring** ayarı için Azure depolama 'ya geçerli bir bağlantı dizesi girin.
 
 ### <a name="configure-security"></a>Güvenliği yapılandırma
 
-For detailed instructions to configure the security of the service, refer to the [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+Hizmetin güvenliğini yapılandırmaya yönelik ayrıntılı yönergeler için, [bölünmüş birleştirme güvenlik yapılandırması](sql-database-elastic-scale-split-merge-security-configuration.md)' na bakın.
 
-For the purposes of a simple test deployment for this tutorial, a minimal set of configuration steps will be performed to get the service up and running. These steps enable only the one machine/account executing them to communicate with the service.
+Bu öğreticide basit bir test dağıtımının amaçları doğrultusunda hizmeti çalışır duruma getirmek için en az bir yapılandırma adımları kümesi gerçekleştirilecek. Bu adımlar, hizmet ile iletişim kurmak için yalnızca bir makine/hesap yürüten hesabı etkinleştirir.
 
 ### <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
-Create a new directory and from this directory execute the following command using a [Developer Command Prompt for Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) window:
+Yeni bir dizin oluşturun ve bu dizinden, [Visual Studio için bir geliştirici komut istemi](https://msdn.microsoft.com/library/ms229859.aspx) kullanarak aşağıdaki komutu yürütün:
 
    ```cmd
    makecert ^
@@ -86,46 +86,46 @@ Create a new directory and from this directory execute the following command usi
     -sv MyCert.pvk MyCert.cer
    ```
 
-You are asked for a password to protect the private key. Enter a strong password and confirm it. You are then prompted for the password to be used once more after that. Click **Yes** at the end to import it to the Trusted Certification Authorities Root store.
+Özel anahtarı korumak için bir parola istenir. Güçlü bir parola girin ve onaylayın. Bundan sonra parolanın daha sonra kullanılması istenir. Güvenilen sertifika yetkilileri kök deposuna içeri aktarmak için sonda **Evet** ' e tıklayın.
 
-### <a name="create-a-pfx-file"></a>Create a PFX file
+### <a name="create-a-pfx-file"></a>PFX dosyası oluşturma
 
-Execute the following command from the same window where makecert was executed; use the same password that you used to create the certificate:
+MakeCert 'ın yürütüldüğü pencerede aşağıdaki komutu yürütün; sertifikayı oluşturmak için kullandığınız parolayı kullanın:
 
    ```cmd
    pvk2pfx -pvk MyCert.pvk -spc MyCert.cer -pfx MyCert.pfx -pi <password>
    ```
 
-### <a name="import-the-client-certificate-into-the-personal-store"></a>Import the client certificate into the personal store
+### <a name="import-the-client-certificate-into-the-personal-store"></a>İstemci sertifikasını Kişisel depoya aktarma
 
-1. In Windows Explorer, double-click *MyCert.pfx*.
-2. In the **Certificate Import Wizard** select **Current User** and click **Next**.
-3. Confirm the file path and click **Next**.
-4. Type the password, leave **Include all extended properties** checked and click **Next**.
-5. Leave **Automatically select the certificate store[…]** checked and click **Next**.
-6. Click **Finish** and **OK**.
+1. Windows Gezgini 'nde *mycert. pfx*dosyasına çift tıklayın.
+2. **Sertifika Içeri aktarma sihirbazında** **Geçerli Kullanıcı** ' yı seçin ve **İleri**' ye tıklayın.
+3. Dosya yolunu doğrulayın ve **İleri**' ye tıklayın.
+4. Parolayı yazın, **Tüm genişletilmiş özellikleri içer** işaretli bırakın ve **İleri**' ye tıklayın.
+5. **[...] Sertifika deposunu otomatik olarak seçin** ve **İleri**' ye tıklayın.
+6. **Son** ve **Tamam**' a tıklayın.
 
-### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Upload the PFX file to the cloud service
+### <a name="upload-the-pfx-file-to-the-cloud-service"></a>PFX dosyasını bulut hizmetine yükle
 
-1. [Azure Portal](https://portal.azure.com) gidin.
-2. Select **Cloud Services**.
-3. Select the cloud service you created above for the Split/Merge service.
-4. Click **Certificates** on the top menu.
-5. Click **Upload** in the bottom bar.
-6. Select the PFX file and enter the same password as above.
-7. Once completed, copy the certificate thumbprint from the new entry in the list.
+1. [Azure portalına](https://portal.azure.com) gidin.
+2. **Cloud Services**seçin.
+3. Bölünmüş/birleştirme hizmeti için yukarıda oluşturduğunuz bulut hizmetini seçin.
+4. Üst menüdeki **Sertifikalar** ' a tıklayın.
+5. Alt çubukta **karşıya yükle** ' ye tıklayın.
+6. PFX dosyasını seçin ve yukarıdaki parolayla aynı parolayı girin.
+7. Tamamlandıktan sonra, listedeki yeni girdiden sertifika parmak izini kopyalayın.
 
-### <a name="update-the-service-configuration-file"></a>Update the service configuration file
+### <a name="update-the-service-configuration-file"></a>Hizmet yapılandırma dosyasını güncelleştirme
 
-Paste the certificate thumbprint copied above into the thumbprint/value attribute of these settings.
-For the worker role:
+Yukarıda kopyalanmış sertifika parmak izini bu ayarların parmak izi/değer özniteliğine yapıştırın.
+Çalışan rolü için:
 
    ```xml
     <Setting name="DataEncryptionPrimaryCertificateThumbprint" value="" />
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-For the web role:
+Web rolü için:
 
    ```xml
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
@@ -136,127 +136,127 @@ For the web role:
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-Please note that for production deployments separate certificates should be used for the CA, for encryption, the Server certificate and client certificates. For detailed instructions on this, see [Security Configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+CA için ayrı sertifikaların üretim dağıtımları, şifreleme, sunucu sertifikası ve istemci sertifikaları için kullanılması gerektiğini lütfen unutmayın. Bunun hakkında ayrıntılı yönergeler için bkz. [Güvenlik Yapılandırması](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-## <a name="deploy-your-service"></a>Deploy your service
+## <a name="deploy-your-service"></a>Hizmetinizi dağıtın
 
 1. [Azure portal](https://portal.azure.com)'a gidin
-2. Select the cloud service that you created earlier.
+2. Daha önce oluşturduğunuz bulut hizmetini seçin.
 3. **Genel Bakış**'a tıklayın.
-4. Choose the staging environment, then click **Upload**.
-5. In the dialog box, enter a deployment label. For both 'Package' and 'Configuration', click 'From Local' and choose the *SplitMergeService.cspkg* file and your cscfg file that you configured earlier.
-6. Ensure that the checkbox labeled **Deploy even if one or more roles contain a single instance** is checked.
-7. Hit the tick button in the bottom right to begin the deployment. Expect it to take a few minutes to complete.
+4. Hazırlama ortamını seçin ve ardından **karşıya yükle**' ye tıklayın.
+5. İletişim kutusunda bir dağıtım etiketi girin. Hem ' paket ' hem de ' yapılandırma ' için ' yerelden ' seçeneğine tıklayın ve *Splitmergeservice. cspkg* dosyasını ve daha önce yapılandırdığınız cscfg dosyanızı seçin.
+6. **Bir veya daha fazla rol tek bir örnek içeriyorsa bile dağıt** onay kutusunun işaretli olduğundan emin olun.
+7. Dağıtıma başlamak için sağ alt köşedeki değer düğmesine basın. Tamamlanması için birkaç dakika sürer.
 
-## <a name="troubleshoot-the-deployment"></a>Troubleshoot the deployment
+## <a name="troubleshoot-the-deployment"></a>Dağıtım sorunlarını giderme
 
-If your web role fails to come online, it is likely a problem with the security configuration. Check that the SSL is configured as described above.
+Web rolünüzün çevrimiçi olması başarısız olursa, güvenlik yapılandırması ile ilgili bir sorun olabilir. SSL 'nin yukarıda açıklanan şekilde yapılandırılıp yapılandırılmadığını denetleyin.
 
-If your worker role fails to come online, but your web role succeeds, it is most likely a problem connecting to the status database that you created earlier.
+Çalışan rolünüzün çevrimiçi olması, ancak Web rolünüzün başarılı olması durumunda, büyük olasılıkla daha önce oluşturduğunuz durum veritabanına bağlanmada bir sorun olabilir.
 
-- Make sure that the connection string in your cscfg is accurate.
-- Check that the server and database exist, and that the user id and password are correct.
-- For Azure SQL DB, the connection string should be of the form:
+- Cscfg 'inizdeki bağlantı dizesinin doğru olduğundan emin olun.
+- Sunucu ve veritabanının var olduğunu ve Kullanıcı kimliği ve parolasının doğru olduğundan emin olun.
+- Azure SQL DB için bağlantı dizesi şu biçimde olmalıdır:
 
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-- Ensure that the server name does not begin with **https://** .
-- Ensure that your Azure SQL DB server allows Azure Services to connect to it. To do this, open your database in the portal and ensure that the **Allow access to Azure Services** setting is set to **On****.
+- Sunucu adının **https://** ile başlamadığından emin olun.
+- Azure SQL DB sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Bunu yapmak için, veritabanınızı portalda açın ve **Azure hizmetlerine erişime Izin ver** ayarının * * * * * * * * olarak ayarlandığından emin olun.
 
-## <a name="test-the-service-deployment"></a>Test the service deployment
+## <a name="test-the-service-deployment"></a>Hizmet dağıtımını test etme
 
-### <a name="connect-with-a-web-browser"></a>Connect with a web browser
+### <a name="connect-with-a-web-browser"></a>Bir Web tarayıcısı ile bağlanma
 
-Determine the web endpoint of your Split-Merge service. You can find this in the portal by going to the **Overview** of your cloud service and looking under **Site URL** on the right side. Replace **http://** with **https://** since the default security settings disable the HTTP endpoint. Load the page for this URL into your browser.
+Bölünmüş birleştirme hizmetinizin Web uç noktasını belirleme. Bunu portalda, bulut hizmetinize **genel bakış** bölümüne giderek ve sağ taraftaki **site URL 'sini** arayarak bulabilirsiniz. Varsayılan güvenlik ayarları HTTP uç noktasını devre dışı bıraktıktan sonra **http://** değerini **https://** ile değiştirin. Bu URL için sayfayı tarayıcınıza yükleyin.
 
-### <a name="test-with-powershell-scripts"></a>Test with PowerShell scripts
+### <a name="test-with-powershell-scripts"></a>PowerShell betikleri ile test etme
 
-The deployment and your environment can be tested by running the included sample PowerShell scripts.
+Dağıtım ve ortamınız, eklenen örnek PowerShell betikleri çalıştırılarak test edilebilir.
 
-The script files included are:
+Dahil edilen betik dosyaları şunlardır:
 
-1. *SetupSampleSplitMergeEnvironment.ps1* - sets up a test data tier for Split/Merge (see table below for detailed description)
-2. *ExecuteSampleSplitMerge.ps1* - executes test operations on the test data tier (see table below for detailed description)
-3. *GetMappings.ps1* - top-level sample script that prints out the current state of the shard mappings.
-4. *ShardManagement.psm1*  - helper script that wraps the ShardManagement API
-5. *SqlDatabaseHelpers.psm1* - helper script for creating and managing SQL databases
+1. *Setupsamplesplitmergeenvironment. ps1* -bir test veri katmanını bölünmüş/birleştirme için ayarlar (ayrıntılı açıklama için aşağıdaki tabloya bakın)
+2. *Executesamplesplitmerge. ps1* -test işlemlerini test veri katmanında yürütür (ayrıntılı açıklama için aşağıdaki tabloya bakın)
+3. *GetMappings. ps1* -parça eşlemelerinin geçerli durumunu yazdıran en üst düzey örnek komut dosyası.
+4. Shardmanagement *. psm1* -SHARDMANAGEMENT API 'sini sarmalayan yardım betiği
+5. SQL veritabanlarını oluşturmak ve yönetmek için *Sqldatabaseyardımcıları. psm1* -yardımcı betiği
    
    <table style="width:100%">
      <tr>
-       <th>PowerShell file</th>
+       <th>PowerShell dosyası</th>
        <th>Adımlar</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
-       <td>1. Creates a shard map manager database</td>
+       <td>1. Parça eşleme Yöneticisi veritabanı oluşturur</td>
      </tr>
      <tr>
-       <td>2. Creates 2 shard databases.
+       <td>2. 2 parçalı veritabanları oluşturur.
      </tr>
      <tr>
-       <td>3. Creates a shard map for those databases (deletes any existing shard maps on those databases). </td>
+       <td>3. Bu veritabanları için bir parça haritası oluşturur (bu veritabanlarında var olan parça haritalarını siler). </td>
      </tr>
      <tr>
-       <td>4. Creates a small sample table in both the shards, and populates the table in one of the shards.</td>
+       <td>4. Her iki parça için de küçük bir örnek tablosu oluşturur ve tabloyu parçaların birindeki bir satıra doldurur.</td>
      </tr>
      <tr>
-       <td>5. Declares the SchemaInfo for the sharded table.</td>
+       <td>5. Parçalı tablo için düzeni bildirir.</td>
      </tr>
    </table>
    <table style="width:100%">
      <tr>
-       <th>PowerShell file</th>
+       <th>PowerShell dosyası</th>
        <th>Adımlar</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-       <td>1. Sends a split request to the Split-Merge Service web frontend, which splits half the data from the first shard to the second shard.</td>
+       <td>1. Bölünmüş birleştirme hizmeti Web ön ucu için bölünmüş bir istek gönderir ve bu, verileri ilk parçadan ikinci parçaya böler.</td>
      </tr>
      <tr>
-       <td>2. Polls the web frontend for the split request status and waits until the request completes.</td>
+       <td>2. Bölünen istek durumu için Web ön uç öğesini yoklar ve istek tamamlanana kadar bekler.</td>
      </tr>
      <tr>
-       <td>3. Sends a merge request to the Split-Merge Service web frontend, which moves the data from the second shard back to the first shard.</td>
+       <td>3. Bölünmüş birleştirme hizmeti Web ön ucu için birleştirme isteği gönderir ve bu, verileri ikinci parçadan ilk parçaya geri kaydırır.</td>
      </tr>
      <tr>
-       <td>4. Polls the web frontend for the merge request status and waits until the request completes.</td>
+       <td>4. Birleştirme isteği durumu için Web ön uç öğesini yoklar ve istek tamamlanana kadar bekler.</td>
      </tr>
    </table>
    
-## <a name="use-powershell-to-verify-your-deployment"></a>Use PowerShell to verify your deployment
+## <a name="use-powershell-to-verify-your-deployment"></a>Dağıtımınızı doğrulamak için PowerShell 'i kullanma
 
-1. Open a new PowerShell window and navigate to the directory where you downloaded the Split-Merge package, and then navigate into the “powershell” directory.
+1. Yeni bir PowerShell penceresi açın ve bölünmüş birleştirme paketini indirdiğiniz dizine gidin ve "PowerShell" dizinine gidin.
 
-2. Create an Azure SQL Database server (or choose an existing server) where the shard map manager and shards will be created.
+2. Parça eşleme Yöneticisi ve parçaları oluşturulacak bir Azure SQL veritabanı sunucusu (veya var olan bir sunucu seçin) oluşturun.
 
    > [!NOTE]
-   > The *SetupSampleSplitMergeEnvironment.ps1* script creates all these databases on the same server by default to keep the script simple. This is not a restriction of the Split-Merge Service itself.
+   > *Setupsamplesplitmergeenvironment. ps1* betiği, betiği basit tutmak için bu veritabanlarını varsayılan olarak aynı sunucuda oluşturur. Bu, bölünmüş birleştirme hizmetinin kendisi için bir kısıtlamadır.
 
-   A SQL authentication login with read/write access to the DBs will be needed for the Split-Merge service to move data and update the shard map. Since the Split-Merge Service runs in the cloud, it does not currently support Integrated Authentication.
+   Bölünmüş birleştirme hizmetinin verileri taşıması ve parça haritasını güncelleştirmesi için, DBs 'ye okuma/yazma erişimiyle birlikte bir SQL kimlik doğrulaması oturum açma gerekir. Bölünmüş birleştirme hizmeti bulutta çalıştığından, bu, şu anda tümleşik kimlik doğrulamasını desteklememektedir.
 
-   Make sure the Azure SQL server is configured to allow access from the IP address of the machine running these scripts. You can find this setting under the Azure SQL server / configuration / allowed IP addresses.
+   Azure SQL Server 'ın, bu betikleri çalıştıran makinenin IP adresinden erişime izin verecek şekilde yapılandırıldığından emin olun. Bu ayarı Azure SQL Server/yapılandırma/izin verilen IP adresleri altında bulabilirsiniz.
 
-3. Execute the *SetupSampleSplitMergeEnvironment.ps1* script to create the sample environment.
+3. Örnek ortamı oluşturmak için *Setupsamplesplitmergeenvironment. ps1* betiğini yürütün.
 
-   Running this script will wipe out any existing shard map management data structures on the shard map manager database and the shards. It may be useful to rerun the script if you wish to re-initialize the shard map or shards.
+   Bu betiği çalıştırmak, parça eşleme Yöneticisi veritabanında ve parçalardaki tüm mevcut parça eşleme yönetimi veri yapılarını temizler. Parça haritasını veya parçaları yeniden başlatmak isterseniz betiği yeniden çalıştırmak yararlı olabilir.
 
-   Sample command line:
+   Örnek komut satırı:
 
    ```cmd
    .\SetupSampleSplitMergeEnvironment.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Execute the Getmappings.ps1 script to view the mappings that currently exist in the sample environment.
+4. Örnek ortamda mevcut olan eşlemeleri görüntülemek için GetMappings. ps1 betiğini yürütün.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Execute the *ExecuteSampleSplitMerge.ps1* script to execute a split operation (moving half the data on the first shard to the second shard) and then a merge operation (moving the data back onto the first shard). If you configured SSL and left the http endpoint disabled, ensure that you use the https:// endpoint instead.
+5. Bölünmüş bir işlem yürütmek için *Executesamplesplitmerge. ps1* betiğini yürütün (ilk parça üzerindeki verilerin ikinci parçaya taşınması) ve ardından bir birleştirme işlemi (verileri ilk parça üzerine geri taşıyarak). SSL 'yi yapılandırdıysanız ve HTTP uç noktasını devre dışı bıraktıysanız, bunun yerine https://uç noktasını kullandığınızdan emin olun.
 
-   Sample command line:
+   Örnek komut satırı:
 
    ```cmd
    .\ExecuteSampleSplitMerge.ps1
@@ -266,11 +266,11 @@ The script files included are:
     -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
    ```
 
-   If you receive the below error, it is most likely a problem with your Web endpoint’s certificate. Try connecting to the Web endpoint with your favorite Web browser and check if there is a certificate error.
+   Aşağıdaki hatayı alıyorsanız, büyük olasılıkla web uç noktasının sertifikasıyla ilgili bir sorun olabilir. Web uç noktasına en sevdiğiniz Web tarayıcınızla bağlanmayı deneyin ve bir sertifika hatası olup olmadığını denetleyin.
 
      `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.`
 
-   If it succeeded, the output should look like the below:
+   Başarılı olursa, çıkış aşağıdaki gibi görünmelidir:
 
    ```output
    > .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' -CertificateThumbprint 0123456789abcdef0123456789abcdef01234567
@@ -307,39 +307,39 @@ The script files included are:
    > 
    ```
 
-6. Experiment with other data types! All of these scripts take an optional -ShardKeyType parameter that allows you to specify the key type. The default is Int32, but you can also specify Int64, Guid, or Binary.
+6. Diğer veri türleriyle denemeler yapın! Bu betiklerin hepsi, anahtar türünü belirtmenizi sağlayan isteğe bağlı bir-ShardKeyType parametresi alır. Varsayılan değer Int32 'dir, ancak aynı zamanda Int64, GUID veya binary de belirtebilirsiniz.
 
 ## <a name="create-requests"></a>Oluşturma istekleri
 
-The service can be used either by using the web UI or by importing and using the SplitMerge.psm1 PowerShell module which will submit your requests through the web role.
+Hizmet, Web Kullanıcı arabirimi kullanılarak veya Web rolü aracılığıyla isteklerinizi gönderecek olan SplitMerge. psm1 PowerShell modülünü içeri aktararak veya kullanarak kullanılabilir.
 
-The service can move data in both sharded tables and reference tables. A sharded table has a sharding key column and has different row data on each shard. A reference table is not sharded so it contains the same row data on every shard. Reference tables are useful for data that does not change often and is used to JOIN with sharded tables in queries.
+Hizmet, verileri parçalı tablolarda ve başvuru tablolarında taşıyabilir. Parçalı bir tabloda parçalı anahtar sütunu bulunur ve her parça üzerinde farklı satır verileri vardır. Başvuru tablosu, her parça için aynı satır verilerini içerecek şekilde parçalara ayrılmış değildir. Başvuru tabloları, sık değişolmayan ve sorgularda parçalı tablolarla BIRLEŞTIRMEK için kullanılan veriler için yararlıdır.
 
-In order to perform a split-merge operation, you must declare the sharded tables and reference tables that you want to have moved. This is accomplished with the **SchemaInfo** API. This API is in the **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** namespace.
+Bölünmüş birleştirme işlemi gerçekleştirmek için, taşınmasını istediğiniz parçalı tabloları ve başvuru tablolarını bildirmeniz gerekir. Bu, **Fermainınfo** API 'si ile gerçekleştirilir. Bu API, **Microsoft. Azure. SQLDatabase. Elakscale. ShardManagement. Schema** ad alanıdır.
 
-1. For each sharded table, create a **ShardedTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”), the table name, and the column name in that table that contains the sharding key.
-2. For each reference table, create a **ReferenceTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”) and the table name.
-3. Add the above TableInfo objects to a new **SchemaInfo** object.
-4. Get a reference to a **ShardMapManager** object, and call **GetSchemaInfoCollection**.
-5. Add the **SchemaInfo** to the **SchemaInfoCollection**, providing the shard map name.
+1. Parçalı her tablo için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo"), tablo adını ve parça anahtarını içeren tablodaki sütun adını açıklayan bir **Shardedtableınfo** nesnesi oluşturun.
+2. Her başvuru tablosu için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo") ve tablo adını açıklayan bir **Referencetableınfo** nesnesi oluşturun.
+3. Yukarıdaki Tableınfo **nesnelerini yeni bir** nesne tablosu nesnesine ekleyin.
+4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection**' ı çağırın.
+5. Parça eşleme adını sağlayarak, **Fermainınfo** ' ı bir **Fermainfocollection**öğesine ekleyin.
 
-An example of this can be seen in the SetupSampleSplitMergeEnvironment.ps1 script.
+SetupSampleSplitMergeEnvironment. ps1 betiğiyle buna örnek olarak görünebilirler.
 
-The Split-Merge service does not create the target database (or schema for any tables in the database) for you. They must be pre-created before sending a request to the service.
+Bölünmüş birleştirme hizmeti, sizin için hedef veritabanını (veya veritabanındaki herhangi bir tablo için şemayı) oluşturmaz. Hizmete bir istek gönderilmeden önce bunların önceden oluşturulması gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-You may see the below message when running the sample powershell scripts:
+Örnek PowerShell betiklerini çalıştırırken aşağıdaki iletiyi görebilirsiniz:
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-This error means that your SSL certificate is not configured correctly. Please follow the instructions in section 'Connecting with a web browser'.
+Bu hata, SSL sertifikanızın doğru yapılandırılmadığı anlamına gelir. Lütfen ' bir Web tarayıcısı ile bağlanma ' bölümündeki yönergeleri izleyin.
 
-If you cannot submit requests you may see this:
+İstek gönderemeyebilirsiniz şunu görebilirsiniz:
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-In this case, check your configuration file, in particular the setting for **WorkerRoleSynchronizationStorageAccountConnectionString**. This error typically indicates that the worker role could not successfully initialize the metadata database on first use.
+Bu durumda, özellikle **Workerrolesynchronizationstorageaccountconnectionstring**ayarında yapılandırma dosyanızı denetleyin. Bu hata genellikle çalışan rolünün ilk kullanımda olan meta veri veritabanını başarıyla başlatamadığını gösterir.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

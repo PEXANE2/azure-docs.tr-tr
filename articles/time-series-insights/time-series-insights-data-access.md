@@ -1,6 +1,6 @@
 ---
-title: Configure security to grant data access - Azure Time Series Insights Preview | Microsoft Docs
-description: Learn how to configure security, permissions, and manage data access policies in your Azure Time Series Insights Preview environment.
+title: Veri erişimi sağlamak için güvenliği Yapılandırma-Azure Time Series Insights önizlemesi | Microsoft Docs
+description: Azure Time Series Insights önizleme ortamınızda güvenlik, izinleri yapılandırma ve veri erişimi ilkelerini yönetme hakkında bilgi edinin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -18,116 +18,116 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328150"
 ---
-# <a name="grant-data-access-to-an-environment"></a>Grant data access to an environment
+# <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
-This article discusses the two types of Azure Time Series Insights Preview access policies.
+Bu makalede, Azure Time Series Insights önizleme erişim ilkelerinin iki türü açıklanmaktadır.
 
 > [!TIP]
-> Read [Authentication and Authorization](time-series-insights-authentication-and-authorization.md) for Azure Active Directory app registration steps.
+> Azure Active Directory uygulama kaydı adımları için [kimlik doğrulaması ve yetkilendirmeyi](time-series-insights-authentication-and-authorization.md) okuyun.
 
-## <a name="sign-in-to-time-series-insights"></a>Sign in to Time Series Insights
+## <a name="sign-in-to-time-series-insights"></a>Time Series Insights oturum açın
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-1. Locate your Time Series Insights environment. Enter `Time Series` in the **Search** box. Select **Time Series Environment** in the search results.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. Time Series Insights ortamınızı bulun. **Arama** kutusuna `Time Series` girin. Arama sonuçlarında **zaman serisi ortamını** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 
 ## <a name="grant-data-access"></a>Veri erişim izni verme
 
-Follow these steps to grant data access for a user principal.
+Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izleyin.
 
-1. Select **Data Access Policies**, and then select **+ Add**.
+1. **Veri erişim ilkeleri**' ni seçin ve **+ Ekle**' yi seçin.
 
-    [![Select and add a Data Access Policy](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
+    [![bir veri erişim Ilkesi seçin ve ekleyin](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
-1. Choose **Select user**. Search for the user name or email address to locate the user you want to add. Select **Select** to confirm the selection.
+1. **Kullanıcı Seç ' i**seçin. Eklemek istediğiniz kullanıcıyı bulmak için Kullanıcı adını veya e-posta adresini arayın. Seçimi onaylamak için **Seç** ' i seçin.
 
-    [![Select a user to add](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
+    [![eklenecek bir kullanıcı seçin](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
-1. Choose **Select role**. Choose the appropriate access role for the user:
+1. **Rol Seç ' i**seçin. Kullanıcı için uygun erişim rolünü seçin:
 
-    * Select **Contributor** if you want to allow the user to change reference data and share saved queries and perspectives with other users of the environment.
+    * Kullanıcının başvuru verilerini değiştirmesine ve kaydedilmiş sorguları ve perspektifleri ortamın diğer kullanıcılarıyla paylaşmasına izin vermek istiyorsanız **katılımcı** ' ı seçin.
 
-    * Otherwise, select **Reader** to allow the user to query data in the environment and save personal, not shared, queries in the environment.
+    * Aksi takdirde, kullanıcının ortamdaki verileri sorgulayave kişisel, paylaşılmayan sorguları ortamda kaydetmesine izin vermek için **okuyucu** ' ı seçin.
 
-   Select **OK** to confirm the role choice.
+   Rol seçimini onaylamak için **Tamam ' ı** seçin.
 
-    [![Confirm the selected role](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
+    [Seçili rolü ![onaylayın](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
 
-1. Select **OK** on the **Select User Role** page.
+1. **Kullanıcı rolü Seç** sayfasında **Tamam ' ı** seçin.
 
-    [![Select OK on the Select User Role page](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
+    [![Kullanıcı rolü Seç sayfasında Tamam ' ı seçin.](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
-1. Confirm that the **Data Access Policies** page lists the users and the roles for each user.
+1. **Veri erişim ilkeleri** sayfasının, her kullanıcı için kullanıcıları ve rolleri listelediğinden emin olun.
 
-    [![Verify the correct users and roles](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
+    [doğru Kullanıcı ve rolleri doğrulamak ![](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
-## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Provide guest access from another Azure AD tenant
+## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Başka bir Azure AD kiracısından konuk erişimi sağlama
 
-The `Guest` role isn’t a management role. It’s a term used for an account that’s invited from one tenant to another. After the guest account is invited into the tenant’s directory, it can have the same access control applied to it like any other account. You can grant management access to a Time Series Insights Environment by using the Access Control (IAM) blade. Or you can grant access to the data in the environment through the Data Access Policies blade. For more information on Azure Active Directory (Azure AD) tenant guest access, read [Add Azure Active Directory B2B collaboration users in the Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+`Guest` rolü bir yönetim rolü değil. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)' nı okuyun.
 
-Follow these steps to grant guest access to a Time Series Insights environment to an Azure AD user from another tenant.
+Başka bir kiracıdan bir Azure AD kullanıcısına Time Series Insights ortamına konuk erişimi sağlamak için aşağıdaki adımları izleyin.
 
-1. Select **Data Access Policies**, and then select **+ Invite**.
+1. **Veri erişim ilkeleri**' ni seçin ve **+ davet et**' i seçin.
 
-    [![Select Data Access Polices, then + Invite](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
+    [Veri erişimi Ilkelerini seçin ![ve + davet et](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
-1. Enter the email address for the user you want to invite. This email address must be associated with Azure AD. You can optionally include a personal message with the invitation.
+1. Davet etmek istediğiniz kullanıcının e-posta adresini girin. Bu e-posta adresinin Azure AD ile ilişkilendirilmesi gerekir. İsteğe bağlı olarak davete kişisel bir ileti ekleyebilirsiniz.
 
-    [![Enter the email address to find the selected user](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
+    [![Seçili kullanıcıyı bulmak için e-posta adresini girin](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
-1. Look for the confirmation bubble that appears on the screen.
+1. Ekranda görünen onay balonu olup olmadığına bakın.
 
-    [![Look for the confirmation bubble to appear](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
+    [![onay kabarcığun görünmesini ara](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. Choose **Select user**. Search for the email address of the guest user you invited to locate the user you want to add. Then, **Select** to confirm the selection.
+1. **Kullanıcı Seç ' i**seçin. Eklemek istediğiniz kullanıcıyı bulmak için davet ettiğiniz Konuk kullanıcının e-posta adresini arayın. Sonra, seçimi onaylamak için öğesini **seçin** .
 
-    [![Select the user and confirm the selection](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
+    [![kullanıcıyı seçip seçimi onaylayın](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
-1. Choose **Select role**. Choose the appropriate access role for the guest user:
+1. **Rol Seç ' i**seçin. Konuk Kullanıcı için uygun erişim rolünü seçin:
 
-    * Select **Contributor** if you want to allow the user to change reference data and share saved queries and perspectives with other users of the environment.
+    * Kullanıcının başvuru verilerini değiştirmesine ve kaydedilmiş sorguları ve perspektifleri ortamın diğer kullanıcılarıyla paylaşmasına izin vermek istiyorsanız **katılımcı** ' ı seçin.
 
-    * Otherwise, select **Reader** to allow the user to query data in the environment and save personal, not shared, queries in the environment.
+    * Aksi takdirde, kullanıcının ortamdaki verileri sorgulayave kişisel, paylaşılmayan sorguları ortamda kaydetmesine izin vermek için **okuyucu** ' ı seçin.
 
-   Select **OK** to confirm the role choice.
+   Rol seçimini onaylamak için **Tamam ' ı** seçin.
 
-    [![Confirm the role choice](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
+    [rol seçimini onaylamak ![](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
-1. Select **OK** on the **Select User Role** page.
+1. **Kullanıcı rolü Seç** sayfasında **Tamam ' ı** seçin.
 
-1. Confirm that the **Data Access Policies** page lists the guest user and the roles for each guest user.
+1. **Veri erişim ilkeleri** sayfasının Konuk kullanıcıyı ve her Konuk Kullanıcı için rolleri listelediğinden emin olun.
 
-    [![Verify that users and roles are correctly assigned](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
+    [![kullanıcıların ve rollerin doğru şekilde atandığını doğrulama](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
-1. Now, the guest user will receive an invitation email at the email address specified above. The guest user will select **Get Started** to confirm their acceptance and connect to Azure Cloud.
+1. Artık Konuk Kullanıcı, yukarıda belirtilen e-posta adresinde bir davet e-postası alacak. Konuk Kullanıcı, kabul edip etmediklerini doğrulamak ve Azure bulutuna bağlanmak için **kullanmaya başlayın** ' ı seçer.
 
-    [![Guest selects Get Started to accept](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
+    [![konuk kabul etmek için kullanmaya başlayın seçimini seçer](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. After selecting **Get Started** the guest user will be presented with a permissions box associated with the administrator's organization. Upon granting permission by selecting **Accept**, they will be signed in.
+1. **Kullanmaya başlama** ' yı seçtikten sonra, Konuk kullanıcı yönetici kuruluşla ilişkili bir izinler kutusuyla birlikte sunulur. **Kabul et**' i seçerek izin verildiklerinde oturum açılır.
 
-    [![Guest reviews permissions and accepts](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
+    [![Konuk gözden geçirme izinleri ve kabul eder](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
-1. The administrator [shares the environment URL](time-series-insights-parameterized-urls.md) with their guest.
+1. Yönetici, [ortam URL](time-series-insights-parameterized-urls.md) 'sini konularıyla paylaşır.
 
-1. After the guest user is signed in to the email address you used to invite them, and they accept the invitation, they will be directed to Azure portal. 
+1. Konuk Kullanıcı, davet etmek için kullandığınız e-posta adresine kaydolduktan sonra daveti kabul ettiğinde, Azure portal yönlendirilir. 
 
-1. The guest can now access the shared environment using the environment URL provided by the administrator. They can enter that URL into their web browser for immediate access.
+1. Konuk artık yönetici tarafından belirtilen ortam URL 'sini kullanarak paylaşılan ortama erişebilir. Anında erişim için bu URL 'YI Web tarayıcısına girebilirler.
 
-1. The guest user will see the administrator's tenant by selecting their profile icon in the upper-right corner of the Time Series explorer.
+1. Konuk Kullanıcı, zaman serisi Gezgini 'nin sağ üst köşesindeki profil simgesini seçerek yöneticinin kiracısına sahip olur.
 
-    [![Avatar selection on insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+    [insights.azure.com üzerinde avatar seçimi ![](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
 
-    After the guest user selects the administrator's tenant, they will have the ability to select the shared Time Series Insights environment. 
+    Konuk kullanıcı yönetici kiracısını seçtikten sonra, paylaşılan Time Series Insights ortamını seçme olanağına sahip olur. 
     
-    They now have all the capabilities associated with the role that you provided them with in **step 5**.
+    Artık, **Adım 5**' te size sağladıkları rolle ilişkili tüm yetenekler vardır.
 
-    [![Guest user selects your Azure tenant from drop-down](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+    [![Konuk Kullanıcı, açılır listeden Azure kiracınızı seçer](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Learn [how to add an Azure Event Hubs event source](./time-series-insights-how-to-add-an-event-source-eventhub.md) to your Time Series Insights environment.
+* Time Series Insights ortamınıza [Azure Event Hubs olay kaynağı eklemeyi](./time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin.
 
-* Send [events to the event source](./time-series-insights-send-events.md).
+* [Olayları olay kaynağına](./time-series-insights-send-events.md)gönderin.
 
-* View [your environment in the Time Series Insights Preview explorer](./time-series-insights-update-explorer.md).
+* [Time Series Insights önizleme Gezgini ' nde ortamınızı](./time-series-insights-update-explorer.md)görüntüleyin.

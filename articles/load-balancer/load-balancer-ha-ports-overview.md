@@ -32,7 +32,7 @@ HA bağlantı noktaları Yük Dengeleme kuralları, ön uç ve arka uç bağlant
 
 ## <a name="why-use-ha-ports"></a>HA bağlantı noktaları neden kullanmalısınız?
 
-### <a name="nva"></a>Ağ sanal Gereçleri
+### <a name="nva"></a>Ağ sanal cihazları
 
 Azure İş yükünüzün güvenlik tehditlerini birden çok tür güvenliğini sağlamaya yardımcı olmak için nva'ları kullanabilirsiniz. Bu senaryolarda nva'ları kullandığınızda, güvenilir ve yüksek oranda kullanılabilir olması gerekir ve bunlar için isteğe bağlı ölçeği gerekir.
 
@@ -40,8 +40,8 @@ Azure İş yükünüzün güvenlik tehditlerini birden çok tür güvenliğini s
 
 NVA HA senaryoları için HA bağlantı noktaları aşağıdaki avantajları sağlar:
 - Hızlı yük devretmeyi sağlıklı örnekleri için örnek başına sistem durumu araştırmaları ile sağlayın
-- Ölçek genişletme ile daha yüksek performans sağlamak *n*-etkin örnekler
-- Sağlamak *n*-etkin ve Aktif-Pasif senaryoları
+- *N*etkin örneklere genişleme ile daha yüksek performans sağlayın
+- *N*-aktif ve aktif-pasif senaryolar sağlama
 - Cihazları izleme için Apache ZooKeeper düğümleri gibi karmaşık çözümleri gerekmemesi
 
 Aşağıdaki diyagramda bir merkez ve uç sanal ağ dağıtımı sunar. Uçlar zorlamalı tünel hub sanal ağa ve güvenilen alanı çıkmadan önce NVA aracılığıyla trafiği. HA bağlantı noktaları yapılandırmaya sahip bir iç standart yük dengeleyici arkasında nva'ları var. Tüm trafiği, işlenen ve buna göre iletilir. Aşağıdaki diyagramda göster olarak yapılandırıldığında, bir HA bağlantı noktaları Yük Dengeleme kuralı ek olarak giriş ve çıkış trafiği için Flow simetri sağlar.
@@ -54,9 +54,9 @@ Aşağıdaki diyagramda bir merkez ve uç sanal ağ dağıtımı sunar. Uçlar z
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Bağlantı noktalarını çok sayıda Yük Dengeleme
 
-HA bağlantı noktalarını bağlantı noktalarının çok sayıda Yük Dengeleme gerektiren uygulamalar için de kullanabilirsiniz. Bir iç kullanarak bu senaryolar basit hale getirebileceğinizi [Standard Load Balancer](load-balancer-standard-overview.md) HA bağlantı noktaları. Tek bir yük dengeleyici kuralı, birden fazla bireysel Yük Dengeleme kuralları, her bağlantı noktası için bir tane yerine geçer.
+HA bağlantı noktalarını bağlantı noktalarının çok sayıda Yük Dengeleme gerektiren uygulamalar için de kullanabilirsiniz. Bu senaryoları, HA bağlantı noktalarıyla bir iç [Standart Load Balancer](load-balancer-standard-overview.md) kullanarak basitleştirebilirsiniz. Tek bir yük dengeleyici kuralı, birden fazla bireysel Yük Dengeleme kuralları, her bağlantı noktası için bir tane yerine geçer.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
+## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
 
 HA bağlantı noktaları özelliğini tüm genel Azure bölgelerinde kullanılabilir.
 
@@ -65,8 +65,8 @@ HA bağlantı noktaları özelliğini tüm genel Azure bölgelerinde kullanılab
 ### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Standart bir iç yük dengeleyici üzerindeki tek, değişken olmayan bir IP (olmayan - doğrudan sunucu dönüşü) HA bağlantı noktaları yapılandırma
 
 Bu yapılandırma bir temel HA bağlantı noktaları yapılandırmadır. Yapılandırabileceğiniz bir HA bağlantı noktaları Yük Dengeleme kuralı üzerinde tek bir ön uç IP adresi aşağıdakileri yaparak:
-1. Standard Load Balancer'ı yapılandırırken, seçin **HA bağlantı noktaları** onay kutusuna yük dengeleyici kuralı yapılandırması.
-2. İçin **kayan IP**seçin **devre dışı bırakılmış**.
+1. Standart Load Balancer yapılandırılırken, Load Balancer kuralı yapılandırmasındaki **ha bağlantı noktaları** onay kutusunu seçin.
+2. **Kayan IP**Için **devre dışı**' yı seçin.
 
 Bu yapılandırma diğer Yük Dengeleme kuralı yapılandırma geçerli yük dengeleyici kaynağına izin vermez. İç yük dengeleyici kaynağı için başka bir yapılandırma arka uç örneklerinin verilen kümesine izin verir.
 
@@ -74,7 +74,7 @@ Ancak, genel bir Standard Load Balancer arka uç örneklerinin HA bağlantı nok
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Standart bir iç yük dengeleyici üzerindeki bir tek, kayan IP (doğrudan sunucu dönüşü) HA bağlantı noktaları yapılandırma
 
-Benzer şekilde, bir Yük Dengeleme kuralı ile kullanmak için yük dengeleyici yapılandırabilirsiniz **HA bağlantı noktası** ayarlayarak, tek bir ön uç ile **kayan IP** için **etkin**. 
+Benzer şekilde, **kayan IP** 'yi **etkin**olarak ayarlayarak, yük dengeleyicinizi tek bir ön uç ile **ha bağlantı noktasıyla** bir yük dengeleme kuralı kullanacak şekilde yapılandırabilirsiniz. 
 
 Bu yapılandırmayı kullanarak kayan IP yük dengeleyici kuralları ve/veya herkese açık yük dengeleyici ekleyebilirsiniz. Ancak, HA bağlantı noktaları bir değişken olmayan IP kullanamazsınız. Bu yapılandırma üzerinde Yük Dengeleme yapılandırma.
 
@@ -83,11 +83,11 @@ Bu yapılandırmayı kullanarak kayan IP yük dengeleyici kuralları ve/veya her
 Birden fazla HA bağlantı noktası ön uç için aynı arka uç havuzunu yapılandırma senaryonuz gerektiriyorsa, bunu yapabilirsiniz: 
 - Birden fazla ön uç özel IP adresi tek bir iç standart yük dengeleyici kaynağı için yapılandırın.
 - Her kural seçilen tek benzersiz bir ön uç IP adresine sahip olduğu birden çok Yük Dengeleme kuralları yapılandırın.
-- Seçin **HA bağlantı noktaları** seçeneğini ve ardından **kayan IP** için **etkin** tüm Yük Dengeleme kuralları.
+- **Ha bağlantı noktaları** seçeneğini belirleyin ve ardından tüm yük dengeleme kuralları IÇIN **kayan IP** 'yi **etkin** olarak ayarlayın.
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>HA bağlantı noktaları ve aynı arka uç örneğinde bir genel yük dengeleyici ile iç yük dengeleyici
 
-Yapılandırabileceğiniz *bir* tek iç standart yük dengeleyici HA bağlantı noktaları ile birlikte arka uç kaynakları için genel bir Standard Load Balancer kaynağı.
+Arka uç kaynakları için *bir* genel standart Load Balancer KAYNAĞıNı, ha bağlantı noktalarıyla tek bir iç standart Load Balancer birlikte yapılandırabilirsiniz.
 
 >[!NOTE]
 >Bu özellik şu anda Azure Resource Manager şablonları kullanılabilir, ancak Azure portalı üzerinden kullanılabilir değil.
@@ -98,10 +98,10 @@ Yapılandırabileceğiniz *bir* tek iç standart yük dengeleyici HA bağlantı 
 - Birleştirme, bir HA bağlantı noktaları Yük Dengeleme kuralı ve bir HA olmayan bağlantı noktaları Yük Dengeleme kuralı desteklenmiyor.
 - Mevcut IP parçaları, ilk paket ile aynı hedefe HA bağlantı noktaları Yük Dengeleme kuralları tarafından iletilir.  IP fragmenting bir UDP veya TCP paketi desteklenmez.
 - HA bağlantı noktaları Yük Dengeleme kuralları IPv6 için kullanılamaz.
-- Akış simetrileri (öncelikli olarak NVA senaryolarında), yalnızca Yukarıdaki diyagramda gösterildiği gibi kullanıldığında ve HA bağlantı noktaları Yük Dengeleme kuralları kullanıldığında, arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir. Başka hiçbir senaryoda sağlanmaz. Bu, iki veya daha fazla Load Balancer kaynağı ve ilgili kuralları bağımsız kararlar verirken ve hiçbir şekilde koordine etmediği anlamına gelir. Açıklamasına bakın ve için diyagram [ağ sanal Gereçleri](#nva). Birden çok NIC kullandığınızda veya bir ortak ve dahili Load Balancer arasında NVA 'yı kullanarak, Flow simetri kullanılamıyor.  Yanıtların aynı NVA 'ya ulaşmasına izin vermek için, giriş akışını gereç IP 'si ile çözmek için kaynak tarafından geçici bir çözüm bulabilirsiniz.  Ancak, tek bir NIC kullanmanız ve Yukarıdaki diyagramda gösterilen başvuru mimarisini kullanmanız önemle önerilir.
+- Akış simetrileri (öncelikli olarak NVA senaryolarında), yalnızca Yukarıdaki diyagramda gösterildiği gibi kullanıldığında ve HA bağlantı noktaları Yük Dengeleme kuralları kullanıldığında, arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir. Başka hiçbir senaryoda sağlanmaz. Bu, iki veya daha fazla Load Balancer kaynağı ve ilgili kuralları bağımsız kararlar verirken ve hiçbir şekilde koordine etmediği anlamına gelir. Bkz. [ağ sanal cihazları](#nva)için açıklama ve diyagram. Birden çok NIC kullandığınızda veya bir ortak ve dahili Load Balancer arasında NVA 'yı kullanarak, Flow simetri kullanılamıyor.  Yanıtların aynı NVA 'ya ulaşmasına izin vermek için, giriş akışını gereç IP 'si ile çözmek için kaynak tarafından geçici bir çözüm bulabilirsiniz.  Ancak, tek bir NIC kullanmanız ve Yukarıdaki diyagramda gösterilen başvuru mimarisini kullanmanız önemle önerilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HA bağlantı noktaları üzerinde iç standart Load Balancer yapılandırma](load-balancer-configure-ha-ports.md)
+- [Bir iç Standart Load Balancer HA bağlantı noktalarını yapılandırma](load-balancer-configure-ha-ports.md)
 - [Standart Load Balancer hakkında bilgi edinin](load-balancer-standard-overview.md)

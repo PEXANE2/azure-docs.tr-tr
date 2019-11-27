@@ -8,7 +8,7 @@ ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230909"
@@ -19,7 +19,7 @@ Aşağıdaki tablo, Azure CLI kullanan Azure İşlevleri için bash betiklerine 
 
 <a id="create"></a>
 
-| Create app | Açıklama |
+| Uygulama oluştur | Açıklama |
 |---|---|
 | [Sunucusuz yürütme için bir işlev uygulaması oluşturma](scripts/functions-cli-create-serverless.md) | Tüketim planında bir işlev uygulaması oluşturur.  |
 | [App Service planında bir işlev uygulaması oluşturma](scripts/functions-cli-create-app-service-plan.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
@@ -32,7 +32,7 @@ Aşağıdaki tablo, Azure CLI kullanan Azure İşlevleri için bash betiklerine 
 | Sürekli dağıtım | Açıklama|
 |---|---|
 | [GitHub’dan dağıtım](scripts/functions-cli-create-function-app-github-continuous.md) | GitHub deposundan dağıtım yapan bir işlev uygulaması oluşturur.  |
-| [Azure DevOps'tan dağıtım](scripts/functions-cli-create-function-app-vsts-continuous.md) | Create a function app that deploys from an Azure DevOps repository.  |
+| [Azure DevOps'tan dağıtım](scripts/functions-cli-create-function-app-vsts-continuous.md) | Azure DevOps deposundan dağıtan bir işlev uygulaması oluşturun.  |
 
 | Uygulama yapılandırma | Açıklama |
 |---|---|

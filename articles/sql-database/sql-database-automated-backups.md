@@ -1,6 +1,6 @@
 ---
-title: automatic, geo-redundant backups
-description: SQL Database automatically creates a local database backup every few minutes and uses Azure read-access geo-redundant storage for geo-redundancy.
+title: Otomatik, coğrafi olarak yedekli yedeklemeler
+description: SQL veritabanı, her birkaç dakikada bir yerel veritabanı yedeklemesi oluşturur ve coğrafi yedeklilik için Azure Okuma Erişimli Coğrafi olarak yedekli depolama kullanır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -21,137 +21,137 @@ ms.locfileid: "74421427"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
-SQL Database automatically creates the database backups that are kept between 7 and 35 days, and uses Azure [read-access geo-redundant storage (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) to ensure that they are preserved even if the data center is unavailable. These backups are created automatically. Database backups are an essential part of any business continuity and disaster recovery strategy because they protect your data from accidental corruption or deletion. If your security rules require that your backups are available for an extended period of time (up to 10 years), you can configure a [long-term retention](sql-database-long-term-retention.md) on Singleton databases and Elastic pools.
+SQL veritabanı, 7 ila 35 gün arasında tutulan veritabanı yedeklerini otomatik olarak oluşturur ve veri merkezi kullanılamaz olsa bile korundıklarından emin olmak için Azure [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) kullanır. Bu yedeklemeler otomatik olarak oluşturulur. Veritabanı yedeklemeleri, verilerinizin yanlışlıkla bozulma veya silme işlemlerini korumasından dolayı, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır. Güvenlik kurallarınız, yedeklemelerinizin uzun bir süre (10 yıla kadar) kullanılabilmesini gerektiriyorsa, tek bir veritabanı ve elastik havuzlarda [uzun süreli bir bekletme](sql-database-long-term-retention.md) yapılandırabilirsiniz.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-is-a-sql-database-backup"></a>What is a SQL Database backup
+## <a name="what-is-a-sql-database-backup"></a>SQL veritabanı yedeklemesi nedir?
 
-SQL Database uses SQL Server technology to create [full backups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) every week, [differential backups](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) every 12 hours, and [transaction log backups](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) every 5-10 minutes. The backups are stored in [RA-GRS storage blobs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) that are replicated to a [paired data center](../best-practices-availability-paired-regions.md) for protection against a data center outage. When you restore a database, the service figures out which full, differential, and transaction log backups need to be restored.
+SQL veritabanı her hafta [tam yedeklemeler](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) oluşturmak için SQL Server teknolojisini kullanır, her 12 saatte bir [fark yedeklemeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) ve 5-10 dakikada bir [işlem günlüğü yedeklemesi](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) . Yedeklemeler, veri merkezi kesintisine karşı koruma için [eşleştirilmiş bir veri merkezine](../best-practices-availability-paired-regions.md) çoğaltılan [RA-GRS depolama Blobları](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) 'nda depolanır. Bir veritabanını geri yüklerken, hizmet hangi tam, fark ve işlem günlüğü yedeklemelerinin geri yüklenmesi gerektiğini belirler.
 
-You can use these backups to:
+Bu yedeklemeleri kullanarak şunları yapabilirsiniz:
 
-- **Restore an existing database to a point-in-time in the past** within the retention period using the Azure portal, Azure PowerShell, Azure CLI, or REST API. In Single database and Elastic pools, this operation will create a new database in the same server as the original database. In Managed Instance, this operation can create a copy of the database or same or different Managed Instance under the same subscription.
-  - **[Change Backup Retention Period](#how-to-change-the-pitr-backup-retention-period)** between 7 to 35 days to configure your backup policy.
-  - **Change long-term retention policy up to 10 years** on Single Database and Elastic Pools using [the Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) or [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell).
-- **Restore a deleted database to the time it was deleted** or anytime within the retention period. The deleted database can only be restored in the same logical server or Managed Instance where the original database was created.
-- **Restore a database to another geographical region**. Geo-restore allows you to recover from a geographic disaster when you cannot access your server and database. It creates a new database in any existing server anywhere in the world.
-- **Restore a database from a specific long-term backup** on Single Database or Elastic Pool if the database has been configured with a long-term retention policy (LTR). LTR allows you to restore an old version of the database using [the Azure portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) or [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) to satisfy a compliance request or to run an old version of the application. Daha fazla bilgi için bkz. [Uzun süreli saklama](sql-database-long-term-retention.md).
-- To perform a restore, see [restore database from backups](sql-database-recovery-using-backups.md).
+- Mevcut bir veritabanını, Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak saklama süresi içinde **geçmiş bir noktaya geri yükleyin** . Tek veritabanı ve elastik havuzlarda bu işlem, özgün veritabanıyla aynı sunucuda yeni bir veritabanı oluşturur. Yönetilen örnekte bu işlem, aynı abonelik kapsamında veritabanının veya aynı ya da farklı yönetilen örneğin bir kopyasını oluşturabilir.
+  - Yedekleme ilkenizi yapılandırmak için **[yedekleme saklama süresini](#how-to-change-the-pitr-backup-retention-period)** 7 ila 35 gün arasında değiştirin.
+  - [Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) veya [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell)kullanarak tek veritabanı ve elastik havuzlarda **uzun süreli saklama ilkesini 10 yıla kadar değiştirin** .
+- **Silinen bir veritabanını silindiği zamana** veya saklama dönemi içinde herhangi bir zamanda geri yükleyin. Silinen veritabanı yalnızca özgün veritabanının oluşturulduğu mantıksal sunucuya veya yönetilen örneğe geri yüklenebilir.
+- **Veritabanını başka bir coğrafi bölgeye geri yükleyin**. Coğrafi geri yükleme, sunucunuza ve veritabanınıza erişene zaman coğrafi bir olağanüstü durumdan kurtulmanızı sağlar. Dünyanın her yerindeki var olan herhangi bir sunucuda yeni bir veritabanı oluşturur.
+- Veritabanı uzun süreli bir bekletme ilkesiyle (LTR) yapılandırılmışsa, Tek Veritabanı veya Elastik Havuz **belirli bir uzun süreli yedekten bir veritabanını geri yükleyin** . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) veya [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [Uzun süreli saklama](sql-database-long-term-retention.md).
+- Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri yükleme](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
-> In Azure storage, the term *replication* refers to copying files from one location to another. SQL's *database replication* refers to keeping multiple secondary databases synchronized with a primary database.
+> Azure depolama 'da, *çoğaltma* terimi dosyaları bir konumdan diğerine kopyalamayı belirtir. SQL *veritabanının veritabanı çoğaltması* , birden çok ikincil veritabanının birincil veritabanıyla eşitlenmiş kalmasını sağlar.
 
-You can try some of these operations using the following examples:
+Aşağıdaki örnekleri kullanarak bu işlemlerden bazılarını deneyebilirsiniz:
 
 | | Azure portal | Azure PowerShell |
 |---|---|---|
-| Change backup retention | [Single Database](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Managed Instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Change Long-term backup retention | [Single database](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Managed Instance - N/A  | [Single Database](sql-database-long-term-backup-retention-configure.md)<br/>Managed Instance - N/A  |
-| Restore database from point-in-time | [Single database](sql-database-recovery-using-backups.md#point-in-time-restore) | [Single database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Silinen veritabanını geri yükleme | [Single database](sql-database-recovery-using-backups.md) | [Single database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| Restore database from Azure Blob Storage | Single database - N/A <br/>Managed Instance - N/A  | Single database - N/A <br/>[Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| Yedekleme bekletmesini değiştirme | [Tek Veritabanı](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Yönetilen örnek](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Tek Veritabanı](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Uzun süreli yedekleme bekletmesini değiştirme | [Tek veritabanı](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Yönetilen örnek-yok  | [Tek Veritabanı](sql-database-long-term-backup-retention-configure.md)<br/>Yönetilen örnek-yok  |
+| Veritabanını zaman noktasından geri yükle | [Tek veritabanı](sql-database-recovery-using-backups.md#point-in-time-restore) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| Silinen veritabanını geri yükleme | [Tek veritabanı](sql-database-recovery-using-backups.md) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Veritabanını Azure Blob depolamadan geri yükleme | Tek veritabanı-yok <br/>Yönetilen örnek-yok  | Tek veritabanı-yok <br/>[Yönetilen örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="how-long-are-backups-kept"></a>How long are backups kept
+## <a name="how-long-are-backups-kept"></a>Yedeklemeler ne kadar tutuldu
 
-All Azure SQL databases (single, pooled, and managed instance databases) have a default backup retention period of  **seven** days. You can [change backup retention period up to 35 days](#how-to-change-the-pitr-backup-retention-period).
+Tüm Azure SQL veritabanlarının (tek, havuza alınmış ve yönetilen örnek veritabanlarının) **yedi** günlük bir varsayılan yedekleme saklama süresi vardır. [Yedekleme saklama süresini 35 güne kadar değiştirebilirsiniz](#how-to-change-the-pitr-backup-retention-period).
 
-If you delete a database, SQL Database will keep the backups in the same way it would for an online database. For example, if you delete a Basic database that has a retention period of seven days, a backup that is four days old is saved for three more days.
+Bir veritabanını silerseniz, SQL veritabanı yedeklemeleri çevrimiçi bir veritabanı ile aynı şekilde tutacaktır. Örneğin, bir saklama süresi yedi güne sahip olan temel bir veritabanını silerseniz, dört günden eski bir yedekleme üç gün boyunca kaydedilir.
 
-If you need to keep the backups for longer than the maximum retention period, you can modify the backup properties to add one or more long-term retention periods to your database. Daha fazla bilgi için bkz. [Uzun süreli saklama](sql-database-long-term-retention.md).
+Yedeklemeleri maksimum saklama süresinden daha uzun süre tutmanız gerekiyorsa, veritabanınıza bir veya daha fazla uzun süreli bekletme dönemi eklemek için yedekleme özelliklerini değiştirebilirsiniz. Daha fazla bilgi için bkz. [Uzun süreli saklama](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
-> If you delete the Azure SQL server that hosts SQL databases, all elastic pools and databases that belong to the server are also deleted and cannot be recovered. You cannot restore a deleted server. But if you configured long-term retention, the backups for the databases with LTR will not be deleted and these databases can be restored.
+> SQL veritabanlarını barındıran Azure SQL Server 'ı silerseniz, sunucuya ait olan tüm elastik havuzlar ve veritabanları da silinir ve kurtarılamaz. Silinen bir sunucuyu geri yükleyemezsiniz. Ancak uzun süreli saklama yapılandırdıysanız, LTR içeren veritabanlarının yedeklemeleri silinmez ve bu veritabanları geri yüklenebilir.
 
-## <a name="how-often-do-backups-happen"></a>How often do backups happen
+## <a name="how-often-do-backups-happen"></a>Yedeklemeler ne sıklıkla gerçekleşir?
 
-### <a name="backups-for-point-in-time-restore"></a>Backups for point-in-time restore
+### <a name="backups-for-point-in-time-restore"></a>Zaman içinde bir noktaya geri yükleme için yedeklemeler
 
-SQL Database supports self-service for point-in-time restore (PITR) by automatically creating full backup, differential backups, and transaction log backups. Full database backups are created weekly, differential database backups are generally created every 12 hours, and transaction log backups are generally created every 5 - 10 minutes, with the frequency based on the compute size and amount of database activity. The first full backup is scheduled immediately after a database is created. It usually completes within 30 minutes, but it can take longer when the database is of a significant size. For example, the initial backup can take longer on a restored database or a database copy. After the first full backup, all further backups are scheduled automatically and managed silently in the background. The exact timing of all database backups is determined by the SQL Database service as it balances the overall system workload. You cannot change or disable the backup jobs. 
+SQL veritabanı, tam yedekleme, değişiklik yedeklemeleri ve işlem günlüğü yedeklemeleri otomatik olarak oluşturarak, zaman içinde nokta geri yükleme (ıNR) için self servis hizmetini destekler. Tam veritabanı yedeklemeleri haftalık olarak oluşturulur, fark veritabanı yedeklemeleri genellikle 12 saatte bir oluşturulur ve işlem günlüğü yedeklemeleri genellikle işlem boyutu ve veritabanı etkinliğinin miktarına göre sıklık ile her 5-10 dakikada bir oluşturulur. İlk tam yedekleme, bir veritabanı oluşturulduktan hemen sonra zamanlanır. Genellikle 30 dakika içinde tamamlanır, ancak veritabanı önemli boyutta olduğunda daha uzun sürebilir. Örneğin, ilk yedekleme geri yüklenen bir veritabanında veya bir veritabanı kopyasında daha uzun sürebilir. İlk tam yedeklemeden sonra, diğer tüm yedeklemeler otomatik olarak zamanlanır ve arka planda sessizce yönetilir. Tüm veritabanı yedeklerinin tam zamanlaması, genel sistem iş yükünü dengeleyerek SQL veritabanı hizmeti tarafından belirlenir. Yedekleme işlerini değiştiremez veya devre dışı bırakamezsiniz. 
 
-The PITR backups are geo-redundant and protected by [Azure Storage cross-regional replication](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+INR yedeklemeleri coğrafi olarak yedekli ve [Azure Storage çapraz bölgesel çoğaltma](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) tarafından korunuyor
 
-For more information, see [Point-in-time restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+Daha fazla bilgi için bkz. [Noktadan noktaya geri yükleme](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-### <a name="backups-for-long-term-retention"></a>Backups for long-term retention
+### <a name="backups-for-long-term-retention"></a>Uzun süreli saklama için yedeklemeler
 
-Single and pooled databases offer the option of configuring long-term retention (LTR) of full backups for up to 10 years in Azure Blob storage. If LTR policy is enabled, the weekly full backups are automatically copied to a different RA-GRS storage container. To meet different compliance requirement, you can select different retention periods for weekly, monthly and/or yearly backups. The storage consumption depends on the selected frequency of backups and the retention period(s). You can use the [LTR pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) to estimate the cost of LTR storage.
+Tek ve havuza alınmış veritabanları, Azure Blob depolamada en fazla 10 yıla kadar uzun süreli saklama (LTR) tam yedeklemeler yapılandırma seçeneği sunar. LTR ilkesi etkinse, haftalık tam yedeklemeler otomatik olarak farklı bir RA-GRS depolama kapsayıcısına kopyalanır. Farklı uyumluluk gereksinimini karşılamak için haftalık, aylık ve/veya yıllık yedeklemeler için farklı saklama süreleri seçebilirsiniz. Depolama alanı tüketimi, seçilen yedekleme sıklığına ve bekletme dönemine bağlıdır. LTR depolama maliyetini tahmin etmek için [LTR Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=sql-database) ' yı kullanabilirsiniz.
 
-Like PITR, the LTR backups are geo-redundant and protected by [Azure Storage cross-regional replication](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
+Invr gibi, LTR yedeklemeler coğrafi olarak yedekli ve [Azure Storage çapraz bölgesel çoğaltma](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)tarafından korunur.
 
-For more information, see [Long-term backup retention](sql-database-long-term-retention.md).
+Daha fazla bilgi için bkz. [uzun süreli yedek saklama](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
-For single databases and managed instances, a minimum backup storage amount equal to 100% of database size is provided at no extra charge. For elastic pools, a minimum backup storage amount equal to 100% of the allocated data storage for the pool is provided at no extra charge. Ek yedekleme alanı kullanımı, GB/ay üzerinden ücretlendirilir. This additional consumption will depend on the workload and size of the individual databases.
+Tek veritabanları ve yönetilen örnekler için, veritabanı boyutunun %100 ' ına eşit olan en düşük yedekleme depolama miktarı ek bir ücret ödemeden sunulmaktadır. Elastik havuzlar için, havuz için ayrılan veri depolamanın %100 ' ına eşit olan en düşük yedekleme depolama miktarı ek ücret ödemeden sunulmaktadır. Ek yedekleme alanı kullanımı, GB/ay üzerinden ücretlendirilir. Bu ek tüketim, bireysel veritabanlarının iş yüküne ve boyutuna bağlı olarak değişir.
 
-You can use Azure subscription cost analysis to determine your current spending on backup storage.
+Azure abonelik maliyeti analizini, yedekleme depolamada geçerli harcamalarınızı öğrenmek için kullanabilirsiniz.
 
-![Backup storage cost analysis](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+![Yedekleme depolama maliyeti Analizi](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-If you go to your subscription and open Cost Analysis blade, you can select meter subcategory **mi pitr backup storage** to see your current backup cost and charge forecast. You can also include other meter subcategories such as **managed instance general purpose - storage** or **managed instance general purpose - compute gen5** to compare backup storage cost with other cost categories.
+Aboneliğiniz varsa ve maliyet analizi dikey penceresini açarsanız, geçerli yedekleme maliyetinizi ve ücretlendirmesini görmek için ölçüm alt kategorisi **mi \ yedekleme depolama alanı** ' nı seçebilirsiniz. Ayrıca, yedekleme depolama maliyetini diğer maliyet kategorilerine göre karşılaştırmak için, **yönetilen örnek genel amaçlı depolama alanı** veya **yönetilen örnek genel amaçlı işlem 5. nesil** gibi diğer ölçüm alt kategorilerini da dahil edebilirsiniz.
 
 > [!Note]
-> You can [change retention period to 7 days](#change-pitr-backup-retention-period-using-azure-portal) to reduce the backup storage cost.
+> Yedekleme depolama maliyetini azaltmak için [bekletme süresini 7 gün olarak değiştirebilirsiniz](#change-pitr-backup-retention-period-using-azure-portal) .
 
-For more information about storage prices, see the [pricing](https://azure.microsoft.com/pricing/details/sql-database/single/) page. 
+Depolama fiyatları hakkında daha fazla bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası. 
 
-## <a name="are-backups-encrypted"></a>Are backups encrypted
+## <a name="are-backups-encrypted"></a>Yedeklemeler şifreli
 
-If your database is encrypted with TDE, the backups are automatically encrypted at rest, including LTR backups. When TDE is enabled for an Azure SQL database, backups are also encrypted. All new Azure SQL databases are configured with TDE enabled by default. For more information on TDE, see  [Transparent Data Encryption with Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil olmak üzere Rest 'de otomatik olarak şifrelenir. TDE bir Azure SQL veritabanı için etkinleştirildiğinde yedeklemeler de şifrelenir. Tüm yeni Azure SQL veritabanları, varsayılan olarak TDE etkin ile yapılandırılır. TDE hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı ile saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
-## <a name="how-does-microsoft-ensure-backup-integrity"></a>How does Microsoft ensure backup integrity
+## <a name="how-does-microsoft-ensure-backup-integrity"></a>Microsoft, yedekleme bütünlüğünü nasıl güvence altına
 
-On an ongoing basis, the Azure SQL Database engineering team automatically tests the restore of automated database backups of databases placed in Logical servers and Elastic pools (this is not available in Managed Instance). Upon point-in-time restore, databases also receive integrity checks using DBCC CHECKDB.
+Azure SQL veritabanı Mühendisliği ekibi, sürekli olarak mantıksal sunuculara ve elastik havuzlara yerleştirilmiş veritabanlarının otomatik veritabanı yedeklerinin geri yüklenmesini otomatik olarak sınar (yönetilen örnekte kullanılamaz). Bir noktadan sonra geri yükleme sonrasında veritabanları DBCC CHECKDB kullanarak bütünlük denetimleri de alır.
 
-Managed Instance takes automatic initial backup with `CHECKSUM` of the databases restored using native `RESTORE` command or Data Migration Service once the migration is completed.
+Yönetilen örnek, geçiş tamamlandıktan sonra yerel `RESTORE` komutu veya veri geçiş hizmeti kullanılarak geri yüklenen veritabanlarının `CHECKSUM` otomatik olarak ilk yedeklemesini alır.
 
-Any issues found during the integrity check will result in an alert to the engineering team. For more information about data integrity in Azure SQL Database, see [Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
+Bütünlük denetimi sırasında bulunan tüm sorunlar, mühendislik ekibine bir uyarıya neden olur. Azure SQL veritabanı 'nda veri bütünlüğü hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda veri bütünlüğü](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-compliance"></a>How do automated backups impact compliance
+## <a name="how-do-automated-backups-impact-compliance"></a>Otomatik yedeklemeler uyumluluğu nasıl etkiler
 
-When you migrate your database from a DTU-based service tier with the default PITR retention of 35 days, to a vCore-based service tier, the PITR retention is preserved to ensure that your application's data recovery policy is not compromised. If the default retention doesn't meet your compliance requirements, you can change the PITR retention period using PowerShell or REST API. For more information, see [Change Backup Retention Period](#how-to-change-the-pitr-backup-retention-period).
+Veritabanınızı bir DTU tabanlı hizmet katmanından 35 güne ait varsayılan bir vCore tabanlı hizmet katmanına geçirdiğinizde, uygulamanızın veri kurtarma ilkesinin güvenliğinin aşılmadığından emin olmak için, sür bekletme korunur. Varsayılan saklama, uyumluluk gereksinimlerinizi karşılamıyorsa, PowerShell veya REST API kullanarak elde tutma süresini değiştirebilirsiniz. Daha fazla bilgi için bkz. [yedekleme saklama süresini değiştirme](#how-to-change-the-pitr-backup-retention-period).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-the-pitr-backup-retention-period"></a>How to change the PITR backup retention period
+## <a name="how-to-change-the-pitr-backup-retention-period"></a>Yedek yedekleme saklama süresini değiştirme
 
-You can change the default PITR backup retention period using the Azure portal, PowerShell, or the REST API. The supported values are: 7, 14, 21, 28 or 35 days. The following examples illustrate how to change PITR retention to 28 days.
+Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kullanarak değiştirebilirsiniz. Desteklenen değerler şunlardır: 7, 14, 21, 28 veya 35 gün. Aşağıdaki örneklerde, fr bekletmenin 28 güne nasıl değiştirileceği gösterilmektedir.
 
 > [!WARNING]
-> If you reduce the current retention period, all existing backups older than the new retention period are no longer available. If you increase the current retention period, SQL Database will keep the existing backups until the longer retention period is reached.
+> Geçerli saklama süresini azaldıysanız, yeni saklama süresinden eski olan tüm mevcut yedeklemeler artık kullanılamaz. Geçerli saklama süresini artırırsanız, daha uzun süreli saklama süresine ulaşılana kadar SQL veritabanı mevcut yedekleri tutacaktır.
 
 > [!NOTE]
-> These APIs will only impact the PITR retention period. If you configured LTR for your database, it will not be impacted. For more information about how to change the LTR retention period(s), see [Long-term retention](sql-database-long-term-retention.md).
+> Bu API 'Ler yalnızca sür saklama süresini etkiler. Veritabanınız için LTR yapılandırdıysanız, bu, etkilenmeyecektir. LTR bekletme süresinin nasıl değiştirileceği hakkında daha fazla bilgi için bkz. [uzun süreli saklama](sql-database-long-term-retention.md).
 
-### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Change PITR backup retention period using Azure portal
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Azure portal kullanarak yedek saklama süresini değiştirme
 
-To change the PITR backup retention period using the Azure portal, navigate to the server object whose retention period you wish to change within the portal and then select the appropriate option based on which server object you're modifying.
+Azure portal kullanarak yedek saklama süresini değiştirmek için, saklama süresini portalda değiştirmek istediğiniz sunucu nesnesine gidin ve ardından değiştirmekte olduğunuz sunucu nesnesine göre uygun seçeneği belirleyin.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Single database & Elastic pools](#tab/single-database)
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[Tek veritabanı & elastik havuzlar](#tab/single-database)
 
-Change of PITR backup retention for single Azure SQL Databases is performed at the server level. Change made at the server level applies to databases on that server. To change PITR for Azure SQL Database server from Azure portal, navigate to the server overview blade, click on Manage Backups on the navigation menu, and then click on Configure retention at the navigation bar.
+Tek Azure SQL veritabanı için yedek saklama bekletme değişikliği, sunucu düzeyinde gerçekleştirilir. Sunucu düzeyinde yapılan değişiklik, bu sunucudaki veritabanları için geçerlidir. Azure SQL veritabanı sunucusu için veri Azure portal ' dan değiştirmek için, sunucuya genel bakış dikey penceresine gidin, gezinti menüsünde Yedeklemeleri Yönet ' e tıklayın ve ardından Gezinti çubuğunda bekletme yapılandırması ' na tıklayın.
 
-![Change PITR Azure portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
+![Azure portal Değiştir](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
+#### <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
-Change of PITR backup retention for SQL Database managed instance is performed at an individual database level. To change PITR backup retention for an instance database from Azure portal, navigate to the individual database overview blade, and then click on Configure backup retention at the navigation bar.
+SQL veritabanı yönetilen örneği için ara yedek saklama 'nın değiştirilmesi, tek bir veritabanı düzeyinde gerçekleştirilir. Azure portal bir örnek veritabanının ara veritabanı yedekleme bekletmesini değiştirmek için, tek tek veritabanına genel bakış dikey penceresine gidin ve ardından Gezinti çubuğunda yedekleme bekletmesini yapılandır seçeneğine tıklayın.
 
-![Change PITR Azure portal](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+![Azure portal Değiştir](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 
 ---
 
-### <a name="change-pitr-backup-retention-period-using-powershell"></a>Change PITR backup retention period using PowerShell
+### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell kullanarak yedek saklama süresini değiştirme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 ```powershell
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
 
-### <a name="change-pitr-retention-period-using-rest-api"></a>Change PITR retention period using REST API
+### <a name="change-pitr-retention-period-using-rest-api"></a>REST API kullanarak elde tutma süresini değiştirme
 
 #### <a name="sample-request"></a>Örnek İsteği
 
@@ -171,7 +171,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 #### <a name="sample-response"></a>Örnek Yanıtı
 
-Status code: 200
+Durum kodu: 200
 
 ```json
 {
@@ -184,12 +184,12 @@ Status code: 200
 }
 ```
 
-For more information, see [Backup Retention REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+Daha fazla bilgi için bkz. [yedekleme bekletme REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Database backups are an essential part of any business continuity and disaster recovery strategy because they protect your data from accidental corruption or deletion. To learn about the other Azure SQL Database business continuity solutions, see [Business continuity overview](sql-database-business-continuity.md).
-- To restore to a point in time using the Azure portal, see [restore database to a point in time using the Azure portal](sql-database-recovery-using-backups.md).
-- To restore to a point in time using PowerShell, see [restore database to a point in time using PowerShell](scripts/sql-database-restore-database-powershell.md).
-- To configure, manage, and restore from long-term retention of automated backups in Azure Blob storage using the Azure portal, see [Manage long-term backup retention using the Azure portal](sql-database-long-term-backup-retention-configure.md).
-- To configure, manage, and restore from long-term retention of automated backups in Azure Blob storage using PowerShell, see [Manage long-term backup retention using PowerShell](sql-database-long-term-backup-retention-configure.md).
+- Veritabanı yedeklemeleri, verilerinizin yanlışlıkla bozulma veya silme işlemlerini korumasından dolayı, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır. Diğer Azure SQL veritabanı iş sürekliliği çözümleri hakkında bilgi edinmek için bkz. [iş sürekliliği genel bakış](sql-database-business-continuity.md).
+- Azure portal kullanarak bir noktaya geri yüklemek için, bkz. [Azure Portal kullanarak veritabanını zaman noktasına geri yükleme](sql-database-recovery-using-backups.md).
+- PowerShell 'i kullanarak zaman noktasına geri yüklemek için bkz. [PowerShell kullanarak veritabanını zaman noktasına geri yükleme](scripts/sql-database-restore-database-powershell.md).
+- Azure Blob depolama alanında Azure portal kullanarak otomatik yedeklemelerin uzun süreli bekletmesini yapılandırmak, yönetmek ve geri yüklemek için, bkz. [Azure Portal kullanarak uzun süreli yedek saklama 'Yı yönetme](sql-database-long-term-backup-retention-configure.md).
+- PowerShell kullanarak Azure Blob Storage 'da otomatik yedeklemelerin uzun süreli bekletmesini yapılandırmak, yönetmek ve geri yüklemek için, bkz. [PowerShell kullanarak uzun süreli yedekleme bekletmeyi yönetme](sql-database-long-term-backup-retention-configure.md).

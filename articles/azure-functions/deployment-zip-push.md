@@ -1,6 +1,6 @@
 ---
-title: Zip push deployment for Azure Functions
-description: Use the .zip file deployment facilities of the Kudu deployment service to publish your Azure Functions.
+title: Azure Işlevleri için ZIP Push dağıtımı
+description: Azure Işlevlerinizi yayımlamak için kudu dağıtım hizmetinin. zip dosya dağıtım olanaklarını kullanın.
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: 88455e85607c608757067cea9d54b60e30cacb50
@@ -10,80 +10,80 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233056"
 ---
-# <a name="zip-deployment-for-azure-functions"></a>Zip deployment for Azure Functions
+# <a name="zip-deployment-for-azure-functions"></a>Azure Işlevleri için zip dağıtımı
 
-This article describes how to deploy your function app project files to Azure from a .zip (compressed) file. You learn how to do a push deployment, both by using Azure CLI and by using the REST APIs. [Azure Functions Core Tools](functions-run-local.md) also uses these deployment APIs when publishing a local project to Azure.
+Bu makalede, işlev uygulaması proje dosyalarınızın bir. zip (sıkıştırılmış) dosyasından Azure 'a nasıl dağıtılacağı açıklanır. Azure CLı kullanarak ve REST API 'Lerini kullanarak bir anında iletme dağıtımı yapmayı öğrenirsiniz. [Azure Functions Core Tools](functions-run-local.md) Ayrıca, Azure 'da yerel bir proje yayımlarken bu dağıtım API 'lerini kullanır.
 
-Azure Functions has the full range of continuous deployment and integration options that are provided by Azure App Service. For more information, see [Continuous deployment for Azure Functions](functions-continuous-deployment.md).
+Azure Işlevleri, Azure App Service tarafından sunulan sürekli dağıtım ve tümleştirme seçeneklerinin eksiksiz aralığıdır. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md).
 
-To speed development, you may find it easier to deploy your function app project files directly from a .zip file. The .zip deployment API takes the contents of a .zip file and extracts the contents into the `wwwroot` folder of your function app. This .zip file deployment uses the same Kudu service that powers continuous integration-based deployments, including:
+Geliştirme sürecini hızlandırmak için, işlev uygulaması proje dosyalarınızı doğrudan bir. zip dosyasından dağıtmayı daha kolay bulabilirsiniz. . Zip dağıtım API 'SI bir. zip dosyasının içeriğini alır ve içeriği işlev uygulamanızın `wwwroot` klasörüne ayıklar. Bu. zip dosya dağıtımı, aşağıdakiler de dahil olmak üzere sürekli tümleştirme tabanlı dağıtımları destekleyen kudu hizmetini kullanır:
 
-+ Deletion of files that were left over from earlier deployments.
-+ Deployment customization, including running deployment scripts.
-+ Deployment logs.
-+ Syncing function triggers in a [Consumption plan](functions-scale.md) function app.
++ Önceki dağıtımlardan bırakılmış dosyaların silinmesi.
++ Dağıtım komut dosyalarını çalıştırma dahil dağıtım özelleştirmesi.
++ Dağıtım günlükleri.
++ [Tüketim planı](functions-scale.md) işlev uygulamasındaki işlev Tetikleyicileri eşitleniyor.
 
-For more information, see the [.zip deployment reference](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+Daha fazla bilgi için bkz [. zip dağıtım başvurusu](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 
-## <a name="deployment-zip-file-requirements"></a>Deployment .zip file requirements
+## <a name="deployment-zip-file-requirements"></a>Dağıtım. zip dosya gereksinimleri
 
-The .zip file that you use for push deployment must contain all of the files needed to run your function.
+Gönderme dağıtımı için kullandığınız. zip dosyası, işlevinizi çalıştırmak için gereken tüm dosyaları içermelidir.
 
 >[!IMPORTANT]
-> When you use .zip deployment, any files from an existing deployment that aren't found in the .zip file are deleted from your function app.  
+> . Zip dağıtımını kullandığınızda, var olan bir dağıtımdan. zip dosyasında bulunmayan tüm dosyalar, işlev uygulamanızdan silinir.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-A function app includes all of the files and folders in the `wwwroot` directory. A .zip file deployment includes the contents of the `wwwroot` directory, but not the directory itself. When deploying a C# class library project, you must include the compiled library files and dependencies in a `bin` subfolder in your .zip package.
+Bir işlev uygulaması, `wwwroot` dizinindeki tüm dosya ve klasörleri içerir. Bir. zip dosyası dağıtımı, `wwwroot` dizininin içeriğini içerir ancak dizinin kendisi değildir. Bir C# sınıf kitaplığı projesi dağıttığınızda, derlenmiş kitaplık dosyalarını ve bağımlılıklarını. zip paketinizin bir `bin` alt klasörüne eklemeniz gerekir.
 
-## <a name="download-your-function-app-files"></a>Download your function app files
+## <a name="download-your-function-app-files"></a>İşlev uygulaması dosyalarınızı indirin
 
-When you are developing on a local computer, it's easy to create a .zip file of the function app project folder on your development computer.
+Yerel bir bilgisayar üzerinde geliştirme yaparken, geliştirme bilgisayarınızda App Project klasörünün bir. zip dosyasını oluşturmak kolaydır.
 
-However, you might have created your functions by using the editor in the Azure portal. You can download an existing function app project in one of these ways:
+Ancak, Azure portal düzenleyiciyi kullanarak işlevlerinizi oluşturmuş olabilirsiniz. Varolan bir işlev uygulaması projesini şu yollarla indirebilirsiniz:
 
-+ **From the Azure portal:**
++ **Azure portal:**
 
-  1. Sign in to the [Azure portal](https://portal.azure.com), and then go to your function app.
+  1. [Azure Portal](https://portal.azure.com)oturum açın ve ardından işlev uygulamanıza gidin.
 
-  2. On the **Overview** tab, select **Download app content**. Select your download options, and then select **Download**.
+  2. **Genel bakış** sekmesinde **uygulama içeriğini indir**' i seçin. İndirme seçeneklerinizi belirleyin ve ardından **İndir**' i seçin.
 
-      ![Download the function app project](./media/deployment-zip-push/download-project.png)
+      ![İşlev uygulaması projesini indirin](./media/deployment-zip-push/download-project.png)
 
-     The downloaded .zip file is in the correct format to be republished to your function app by using .zip push deployment. The portal download can also add the files needed to open your function app directly in Visual Studio.
+     İndirilen. zip dosyası,. zip Push dağıtımı kullanılarak işlev uygulamanıza yeniden yayımlanmak için doğru biçimde. Portal indirme işlemi, işlev uygulamanızı doğrudan Visual Studio 'da açmak için gereken dosyaları da ekleyebilir.
 
-+ **Using REST APIs:**
++ **REST API 'Leri kullanma:**
 
-    Use the following deployment GET API to download the files from your `<function_app>` project: 
+    `<function_app>` projenizden dosyaları indirmek için aşağıdaki dağıtımı al API 'sini kullanın: 
 
         https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
 
-    Including `/site/wwwroot/` makes sure your zip file includes only the function app project files and not the entire site. If you are not already signed in to Azure, you will be asked to do so.  
+    `/site/wwwroot/` dahil olmak üzere, ZIP dosyanızın tüm siteyi değil yalnızca uygulama proje dosyalarını içerdiğinden emin olur. Zaten Azure 'da oturum açmadıysanız bunu yapmanız istenir.  
 
-You can also download a .zip file from a GitHub repository. When you download a GitHub repository as a .zip file, GitHub adds an extra folder level for the branch. This extra folder level means that you can't deploy the .zip file directly as you downloaded it from GitHub. If you're using a GitHub repository to maintain your function app, you should use [continuous integration](functions-continuous-deployment.md) to deploy your app.  
+Ayrıca, bir GitHub deposundan bir. zip dosyası indirebilirsiniz. Bir GitHub deposunu. zip dosyası olarak indirdiğinizde GitHub, dal için ek bir klasör düzeyi ekler. Bu ek klasör düzeyi, GitHub 'dan indirdiğiniz. zip dosyasını doğrudan dağıtabileceğiniz anlamına gelir. İşlev uygulamanızı sürdürmek için bir GitHub deposu kullanıyorsanız, uygulamanızı dağıtmak için [sürekli tümleştirme](functions-continuous-deployment.md) kullanmanız gerekir.  
 
-## <a name="cli"></a>Deploy by using Azure CLI
+## <a name="cli"></a>Azure CLı kullanarak dağıtma
 
-You can use Azure CLI to trigger a push deployment. Push deploy a .zip file to your function app by using the [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) command. To use this command, you must use Azure CLI version 2.0.21 or later. To see what Azure CLI version you are using, use the `az --version` command.
+Azure CLı 'yi bir anında iletme dağıtımı tetikleyebilmeniz için kullanabilirsiniz. [Az functionapp Deployment Source config-ZIP](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) komutunu kullanarak bir. zip dosyasını işlev uygulamanıza dağıtın. Bu komutu kullanmak için Azure CLı sürüm 2.0.21 veya sonraki bir sürümünü kullanmanız gerekir. Kullanmakta olduğunuz Azure CLı sürümünü görmek için `az --version` komutunu kullanın.
 
-In the following command, replace the `<zip_file_path>` placeholder with the path to the location of your .zip file. Also, replace `<app_name>` with the unique name of your function app. 
+Aşağıdaki komutta `<zip_file_path>` yer tutucusunu,. zip dosyanızın konumunun yolu ile değiştirin. Ayrıca, `<app_name>` işlev uygulamanızın benzersiz adıyla değiştirin. 
 
 ```azurecli-interactive
 az functionapp deployment source config-zip  -g myResourceGroup -n \
 <app_name> --src <zip_file_path>
 ```
 
-This command deploys project files from the downloaded .zip file to your function app in Azure. It then restarts the app. To view the list of deployments for this function app, you must use the REST APIs.
+Bu komut, indirilen. zip dosyasındaki proje dosyalarını Azure 'daki işlev uygulamanıza dağıtır. Ardından uygulamayı yeniden başlatır. Bu işlev uygulaması için dağıtımların listesini görüntülemek için REST API 'Lerini kullanmanız gerekir.
 
-When you're using Azure CLI on your local computer, `<zip_file_path>` is the path to the .zip file on your computer. You can also run Azure CLI in [Azure Cloud Shell](../cloud-shell/overview.md). When you use Cloud Shell, you must first upload your deployment .zip file to the Azure Files account that's associated with your Cloud Shell. In that case, `<zip_file_path>` is the storage location that your Cloud Shell account uses. For more information, see [Persist files in Azure Cloud Shell](../cloud-shell/persisting-shell-storage.md).
+Yerel bilgisayarınızda Azure CLı kullanırken, `<zip_file_path>` bilgisayarınızdaki. zip dosyasının yoludur. Azure CLı [Azure Cloud Shell](../cloud-shell/overview.md)de çalıştırabilirsiniz. Cloud Shell kullandığınızda, önce Deployment. zip dosyanızı Cloud Shell ilişkili Azure dosyaları hesabına yüklemeniz gerekir. Bu durumda, `<zip_file_path>` Cloud Shell hesabınızın kullandığı depolama konumudur. Daha fazla bilgi için bkz. [Azure Cloud Shell dosyaları kalıcı hale](../cloud-shell/persisting-shell-storage.md)getirme.
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]
 
-## <a name="run-functions-from-the-deployment-package"></a>Run functions from the deployment package
+## <a name="run-functions-from-the-deployment-package"></a>Dağıtım paketinden işlevleri Çalıştır
 
-You can also choose to run your functions directly from the deployment package file. This method skips the deployment step of copying files from the package to the `wwwroot` directory of your function app. Instead, the package file is mounted by the Functions runtime, and the contents of the `wwwroot` directory become read-only.  
+İşlevlerinizi doğrudan dağıtım paketi dosyasından çalıştırmayı da tercih edebilirsiniz. Bu yöntem, paketten, işlev uygulamanızın `wwwroot` dizinine dosya kopyalama dağıtım adımını atlar. Bunun yerine, paket dosyası Işlevler çalışma zamanına göre bağlanır ve `wwwroot` dizininin içerikleri salt okunurdur.  
 
-Zip deployment integrates with this feature, which you can enable by setting the function app setting `WEBSITE_RUN_FROM_PACKAGE` to a value of `1`. For more information, see [Run your functions from a deployment package file](run-functions-from-deployment-package.md).
+ZIP dağıtımı, `WEBSITE_RUN_FROM_PACKAGE` işlev uygulaması ayarını `1`bir değere ayarlayarak etkinleştirebileceğiniz bu özellikle tümleştirilir. Daha fazla bilgi için bkz. [bir dağıtım paketi dosyasından Işlevlerinizi çalıştırma](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

@@ -45,7 +45,7 @@ Kafka REST API proxy, güvenli AAD yetkilendirmesi ve OAuth protokolü aracılı
 
 Azure HDInsight için otomatik ölçeklendirme artık Apache Spark ve Hadoop kümesi türleri için tüm bölgelerde genel kullanıma sunulmuştur. Bu özellik, büyük veri analizi iş yüklerinin daha uygun maliyetli ve üretken bir şekilde yönetilmesini sağlar. Artık HDInsight kümelerinizin kullanımını iyileştirebilmeniz ve yalnızca ihtiyacınız olan şeyler için ödeme yapabilirsiniz.
 
-Gereksinimlerinize bağlı olarak, yük tabanlı ve zamanlama tabanlı otomatik ölçeklendirme arasında seçim yapabilirsiniz. Zamanlama tabanlı otomatik ölçeklendirme, küme boyutunu önceden tanımlanmış bir zamanlamaya göre değiştirebilmesini sağlarken, yük tabanlı otomatik ölçeklendirme, geçerli kaynak gereksinimlerine bağlı olarak küme boyutunu yukarı ve aşağı ölçeklendirebilir. 
+Gereksinimlerinize bağlı olarak, yük tabanlı ve zamanlama tabanlı otomatik ölçeklendirme arasından seçim yapabilirsiniz. Zamanlama tabanlı otomatik ölçeklendirme, küme boyutunu önceden tanımlanmış bir zamanlamaya göre değiştirebilmesini sağlarken, yük tabanlı otomatik ölçeklendirme, geçerli kaynak gereksinimlerine bağlı olarak küme boyutunu yukarı ve aşağı ölçeklendirebilir. 
 
 HBase ve LLAP iş yükünün otomatik ölçeklendirme desteği de genel önizlemeye sunuldu. Daha fazla bilgi için bkz. [Azure HDInsight kümelerini otomatik olarak ölçeklendirme](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
 

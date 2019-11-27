@@ -470,7 +470,7 @@ Microsoft, Azure sanal makine Hizmetleri ile IaaS örnekleri olarak Azure 'a öz
 Azure sanal makine hizmeti, işlemsel bir perspektiften, şirket içinde dağıtılan sanal makineler gibi benzer deneyimler sağlar. Ancak, altyapıyı temin etmeniz, yönetmeniz ve yönetmeniz önemli ölçüde avantajlıdır. Geliştiriciler ve Yöneticiler, bu sanal makineler içindeki işletim sistemi görüntüsü üzerinde tam denetime sahiptir. Yöneticiler, yazılım dağıtım görevlerinin yanı sıra bakım ve sorun giderme görevlerini gerçekleştirmek için bu sanal makinelerde uzaktan oturum açabilir. Dağıtımın yanı sıra, Azure VM 'lerinin boyutları ve becerileri tek kısıtlamalardır. Bu boyutlar, şirket içinde yapıladıkça yapılandırmada ince bir ayrıntılı olmayabilir. Bir bileşimini temsil eden bir sanal makine türleri seçeneği vardır:
 
 * VCPU sayısı
-* Bellek
+* Hafıza
 * İliştirilebilecek VHD sayısı
 * Ağ ve depolama bant genişlikleri
 
@@ -770,7 +770,7 @@ Ayrıca bkz. Azure 'da SAP boyutlandırma için bu blog ve ekli belge: <https://
 
 ## <a name="managing-azure-assets"></a>Azure varlıklarını yönetme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Azure VM dağıtımlarını yönetmek için üç arabirimden biridir. Görüntülerden VM dağıtımı gibi temel yönetim görevleri, Azure portal aracılığıyla yapılabilir. Ayrıca, depolama hesapları, sanal ağlar ve diğer Azure bileşenlerinin oluşturulması de Azure portal görevlerdir. Ancak, VHD 'leri Şirket içinden Azure 'a yükleme veya Azure 'da bir VHD kopyalama gibi işlevler, üçüncü taraf araçlar ya da PowerShell veya CLı aracılığıyla yönetim gerektiren görevlerdir.
 
@@ -1001,7 +1001,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
 
 İndirme sırasında VHD 'ler veya yönetilen diskler etkin olamaz. VM 'lere bağlanan diskler indirilirken bile, sanal makinenin kapatılması ve serbest bırakılmasının olması gerekir. Yalnızca bir veritabanı içeriğini indirmek istiyorsanız, şirket içinde yeni bir sistem kurmak ve indirme sırasında ve Azure 'daki sistemin sistemde hala çalışır durumda olduğu kabul edilebilir olması durumunda kullanılması gerekir , bir diskte sıkıştırılmış bir veritabanı yedeklemesi gerçekleştirerek ve işletim sistemi temel VM 'yi indirmek yerine yalnızca o diski indirerek uzun bir kesinti yaşamadan kaçınabilirsiniz.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Powershell
 
 * Yönetilen disk indiriliyor  
   Önce yönetilen diskin temel blobuna erişim almanız gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
@@ -1061,7 +1061,7 @@ Veri diskleri, bir Azure depolama hesabında VHD dosyaları olarak depolanabilir
 
 Veri diskleri de yönetilen diskler olabilir. Bu durumda, yönetilen disk, sanal makineye iliştirilmeden önce yeni bir yönetilen disk oluşturmak için kullanılır. Yönetilen diskin adı bir kaynak grubu içinde benzersiz olmalıdır.
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Powershell
 
 Azure PowerShell cmdlet 'lerini, [Bu makalede][storage-powershell-guide-full-copy-vhd]gösterildiği gibi bir VHD 'yi kopyalamak için kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi New-AzDiskConfig ve New-AzDisk ' i kullanın.
 
@@ -1089,7 +1089,7 @@ Azure depolama gezginlerine yönelik profesyonel sürümler şurada bulunabilir:
 
 Bir VHD 'nin bir depolama hesabı içindeki kopyası bir işlemdir. Bu işlem yalnızca birkaç saniye sürer (SAN donanımına benzer bir şekilde, yavaş kopyalama ve yazma sırasında kopyalama ile anlık görüntü oluşturma). VHD dosyasının bir kopyasına sahip olduktan sonra, VHD 'nin kopyalarını sanal makinelere eklemek için bir sanal makineye ekleyebilir veya bir görüntü olarak kullanabilirsiniz.
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Powershell
 
 ```powershell
 # attach a vhd to a vm
@@ -1135,7 +1135,7 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 #### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Azure depolama hesapları arasında diskleri kopyalama
 Bu görev Azure portal gerçekleştirilemiyor. Azure PowerShell cmdlet 'lerini, Azure CLı 'yi veya bir üçüncü taraf depolama tarayıcısını kullanabilirsiniz. PowerShell cmdlet 'leri veya CLı komutları, blob 'ları depolama hesapları arasında ve Azure aboneliğindeki bölgeler arasında zaman uyumsuz olarak kopyalamak için blob 'lar oluşturabilir ve yönetebilir.
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Powershell
 Ayrıca, VHD 'leri abonelikler arasında kopyalayabilirsiniz. Daha fazla bilgi için [Bu makaleyi][storage-powershell-guide-full-copy-vhd]okuyun.
 
 PS cmdlet mantığının temel akışı şöyle görünür:
@@ -1374,7 +1374,7 @@ Bu belgede, bu belgede [Azure IÇIN SAP Ile VM 'Leri hazırlama][planning-guide-
 
 Senaryoyu uygulamak için olayların sırası şuna benzer:
 
-##### <a name="powershell"></a>PowerShell
+##### <a name="powershell"></a>Powershell
 
 * Her eğitim/tanıtım dünyası için yeni bir kaynak grubu oluşturun
 
@@ -1629,7 +1629,7 @@ Aşağıdaki tabloda, Genel SAP iletişim bağlantı noktaları listelenir. Teme
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Hizmet | Bağlantı noktası adı | Örnek `<nn`> = 01 | Varsayılan Aralık (en düşük) | Açıklama |
+| Hizmet | Bağlantı noktası adı | Örnek `<nn`> = 01 | Varsayılan Aralık (en düşük) | Yorum |
 | --- | --- | --- | --- | --- |
 | Dağıtıcı |sapdp`<nn>` bkz. * |3201 |3200 - 3299 |Windows ve Java için SAP GUI tarafından kullanılan SAP dağıtıcısı |
 | İleti sunucusu |sapms`<sid`> bkz. * * |3600 |Ücretsiz sapms`<anySID`> |SID = SAP-sistem KIMLIĞI |

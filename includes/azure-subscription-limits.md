@@ -17,17 +17,17 @@ ms.locfileid: "74224367"
 ---
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| vCPUs per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10,000 |
-| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |200 |200 |
-| [Storage accounts](../articles/storage/common/storage-create-storage-account.md) per subscription<sup>2</sup> |100 |100 |
+| [abonelik](../articles/billing-buy-sign-up-azure-subscription.md)başına vCPU sayısı<sup>1</sup> |20 |10,000 |
+| Abonelik başına [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) |200 |200 |
+| Abonelik başına [depolama hesapları](../articles/storage/common/storage-create-storage-account.md) <sup>2</sup> |100 |100 |
 | Abonelik başına [bulut hizmeti](../articles/cloud-services/cloud-services-choose-me.md) sayısı |20 |200 |
-| [Local networks](/previous-versions/azure/reference/jj157100(v=azure.100)) per subscription |10 |500 |
-| DNS servers per subscription |9 |100 |
-| Reserved IPs per subscription |20 |100 |
+| Abonelik başına [yerel ağlar](/previous-versions/azure/reference/jj157100(v=azure.100)) |10 |500 |
+| Abonelik başına DNS sunucuları |9 |100 |
+| Abonelik başına ayrılmış IP 'Ler |20 |100 |
 | Abonelik başına [benzeşim grubu](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) sayısı |256 |256 |
-| Subscription name length (characters) | 64 | 64 |
+| Abonelik adı uzunluğu (karakter) | 64 | 64 |
 
-<sup>1</sup>Extra small instances count as one vCPU toward the vCPU limit despite using a partial CPU core.
+<sup>1</sup> Kısmi bir CPU çekirdeği kullanılmasına karşın, çok küçük örnekler vCPU sınırına doğru bir vCPU olarak sayılır.
 
-<sup>2</sup>The storage account limit includes both Standard and Premium storage accounts. 
+<sup>2</sup> Depolama hesabı sınırı hem standart hem de Premium Depolama hesaplarını içerir. 
 

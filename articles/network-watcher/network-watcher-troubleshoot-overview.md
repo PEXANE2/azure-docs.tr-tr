@@ -52,7 +52,7 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| Nofatoult | Hiçbir hata algılanmadığında |Yes|
+| Nofatoult | Hiçbir hata algılanmadığında |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
 | PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata, bir Kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
@@ -60,26 +60,26 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | PlatformInActive | Platformda bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
 | NoConnectionsFoundForGateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
+| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Evet|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Evet |
 
 ### <a name="connection"></a>Bağlantı
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| Nofatoult | Hiçbir hata algılanmadığında |Yes|
+| Nofatoult | Hiçbir hata algılanmadığında |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
 | PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata, bir Kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
 | Canlı yanıt verme | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu araştırma hatası nedeniyle ulaşılamadığından oluşur. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
-| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
+| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Evet|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
+| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="supported-gateway-types"></a>Desteklenen ağ geçidi türleri
 
@@ -88,14 +88,14 @@ Aşağıdaki tabloda ağ Izleyicisi sorunlarını gidermek için hangi ağ geçi
 |  |  |
 |---------|---------|
 |**Ağ geçidi türleri**   |         |
-|VPN      | Destekleniyor        |
+|VPN      | Desteklenen        |
 |ExpressRoute | Desteklenmiyor |
 |**VPN türleri** | |
-|Rota tabanlı | Destekleniyor|
+|Rota tabanlı | Desteklenen|
 |İlke tabanlı | Desteklenmiyor|
 |**Bağlantı türleri**||
-|Bkz| Destekleniyor|
-|VNet2Vnet| Destekleniyor|
+|Bkz| Desteklenen|
+|VNet2Vnet| Desteklenen|
 |ExpressRoute| Desteklenmiyor|
 |VPNClient| Desteklenmiyor|
 

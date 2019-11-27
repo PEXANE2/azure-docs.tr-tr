@@ -55,13 +55,13 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 
 ## <a name="install-vm-extension"></a>VM uzantıları yükleme
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Aşağıdaki örnek, `Set-AzVMExtension` cmdlet 'ini çalıştırmak için gereken uzantı bilgilerini alır. Bu cmdlet, paket yakalama aracısını Konuk sanal makinesine kurar.
 
@@ -92,7 +92,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK   
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Aracının yüklü olduğundan emin olmak için `Get-AzVMExtension` cmdlet 'ini çalıştırın ve sanal makine adı ve uzantı adı geçirin.
 
@@ -126,7 +126,7 @@ ForceUpdateTag          :
 
 Yukarıdaki adımlar tamamlandıktan sonra, paket yakalama Aracısı sanal makineye yüklenir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken, 4. adımdaki `New-AzNetworkWatcherPacketCapture` cmdlet 'ine geçirilir.
 
@@ -134,7 +134,7 @@ Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Bir depolama hesabı alın. Bu depolama hesabı, paket yakalama dosyasını depolamak için kullanılır.
 
@@ -142,7 +142,7 @@ Bir depolama hesabı alın. Bu depolama hesabı, paket yakalama dosyasını depo
 $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Filtreler, paket yakalama tarafından depolanan verileri sınırlamak için kullanılabilir. Aşağıdaki örnek iki filtre ayarlar.  Tek bir filtre giden TCP trafiğini yalnızca yerel IP 10.0.0.3 'ten 20, 80 ve 443 hedef bağlantı noktalarına toplar.  İkinci filtre yalnızca UDP trafiğini toplar.
 

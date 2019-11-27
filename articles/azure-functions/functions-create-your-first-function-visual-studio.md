@@ -16,15 +16,15 @@ ms.locfileid: "74230704"
 
 Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda yürütmenize olanak tanır.
 
-In this article, you learn how to use Visual Studio 2019 to locally create and test a "hello world" function and then publish it to Azure. This quickstart is designed for Visual Studio 2019. When creating a Functions project using Visual Studio 2017, you must first install the [latest Azure Functions tools](functions-develop-vs.md#check-your-tools-version).
+Bu makalede, "Hello World" işlevini yerel olarak oluşturmak ve test etmek ve sonra Azure 'Da yayımlamak için Visual Studio 2019 ' i nasıl kullanacağınızı öğreneceksiniz. Bu hızlı başlangıç, Visual Studio 2019 için tasarlanmıştır. Visual Studio 2017 kullanarak bir Işlevler projesi oluştururken, önce [en son Azure işlevleri araçlarını](functions-develop-vs.md#check-your-tools-version)yüklemeniz gerekir.
 
 ![Tarayıcıdaki işlev localhost yanıtı](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To complete this tutorial, you must first install [Visual Studio 2019](https://azure.microsoft.com/downloads/). Make sure that the **Azure development** workload is also installed.
+Bu öğreticiyi tamamlayabilmeniz için öncelikle [Visual Studio 2019](https://azure.microsoft.com/downloads/)' i yüklemeniz gerekir. **Azure geliştirme** iş yükünün de yüklü olduğundan emin olun.
 
-![Install Visual Studio with the Azure development workload](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Azure geliştirme iş yüküyle Visual Studio 'Yu yükler](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,15 +32,15 @@ To complete this tutorial, you must first install [Visual Studio 2019](https://a
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio creates a project and class that contains boilerplate code for the HTTP trigger function type. The `FunctionName` attribute on the method sets the name of the function, which by default is `HttpTrigger`. The `HttpTrigger` attribute specifies that the function is triggered by an HTTP request. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
+Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. Yöntemi üzerindeki `FunctionName` özniteliği, varsayılan olarak `HttpTrigger`olan işlevin adını ayarlar. `HttpTrigger` özniteliği, işlevin bir HTTP isteği tarafından tetiklendiğini belirtir. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
 
-You can expand the capabilities of your function using input and output bindings by applying the appropriate attributes to the method. Daha fazla bilgi için, [Azure İşlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md) konusunun [Tetikleyiciler ve bağlayıcılar](functions-dotnet-class-library.md#triggers-and-bindings) bölümüne göz atın.
+Yöntemine uygun öznitelikleri uygulayarak giriş ve çıkış bağlamalarını kullanarak işlevinizin yeteneklerini genişletebilirsiniz. Daha fazla bilgi için, [Azure İşlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md#triggers-and-bindings) konusunun [Tetikleyiciler ve bağlayıcılar](functions-dotnet-class-library.md) bölümüne göz atın.
 
 İşlev projenizi ve HTTP ile tetiklenen işlev oluşturduğunuza göre, artık bunu yerel bilgisayarınızda test edebilirsiniz.
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
-Visual Studio integrates with Azure Functions Core Tools so that you can test your functions locally using the full Functions runtime.  
+Visual Studio, tüm Işlevler çalışma zamanını kullanarak işlevlerinizi yerel olarak test edebilmeniz için Azure Functions Core Tools ile tümleşir.  
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
@@ -48,7 +48,7 @@ Visual Studio integrates with Azure Functions Core Tools so that you can test yo
 
 ## <a name="publish-the-project-to-azure"></a>Projeyi Azure'da yayımlama
 
-Projenizi yayımlayabilmeniz için önce Azure aboneliğinizde bir işlev uygulamanızın olması gerekir. Visual Studio publishing creates a function app for you the first time you publish your project.
+Projenizi yayımlayabilmeniz için önce Azure aboneliğinizde bir işlev uygulamanızın olması gerekir. Visual Studio yayımlama, projenizi ilk kez yayımladığınızda sizin için bir işlev uygulaması oluşturur.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
@@ -66,7 +66,7 @@ Projenizi yayımlayabilmeniz için önce Azure aboneliğinizde bir işlev uygula
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You have used Visual Studio to create and publish a C# function app in Azure with a simple HTTP triggered function. To learn more about developing functions as .NET class libraries, see [Azure Functions C# developer reference](functions-dotnet-class-library.md).
+Azure 'da basit bir HTTP tetiklemeli işlevle bir C# işlev uygulaması oluşturmak ve yayımlamak Için Visual Studio 'yu kullandınız. .NET sınıf kitaplıkları olarak işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure C# işlevleri geliştirici başvurusu](functions-dotnet-class-library.md).
 
 > [!div class="nextstepaction"]
-> [Add an Azure Storage queue binding to your function](functions-add-output-binding-storage-queue-vs.md)
+> [İşleviniz için bir Azure depolama kuyruğu bağlama ekleme](functions-add-output-binding-storage-queue-vs.md)

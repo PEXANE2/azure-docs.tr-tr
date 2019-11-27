@@ -28,7 +28,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Azure Service Fabric uygulamas�
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
-> * Create a cluster.
+> * Bir küme oluşturun.
 > * Visual Studio kullanarak uygulamayı uzak bir kümeye dağıtma.
 
 Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
@@ -44,75 +44,75 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-* [Install Visual Studio 2019](https://www.visualstudio.com/), and install the **Azure development** and **ASP.NET and web development** workloads.
+* [Visual Studio 2019](https://www.visualstudio.com/)' i yükledikten sonra **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
 * [Service Fabric SDK'yı yükleyin](service-fabric-get-started.md).
 
 > [!NOTE]
-> A free account may not meet the requirements to create a virtual machine. This will prevent the completion of the tutorial. In addition, a non-work or non-school account may encounter permission issues while creating the certificate on the keyvault associated with the cluster. If you experience an error related to certificate creation use the Portal to create the cluster instead. 
+> Ücretsiz bir hesap, sanal makine oluşturma gereksinimlerini karşılamayabilir. Bu, öğreticinin tamamlanmasına engel olur. Ayrıca, iş dışı veya okul olmayan bir hesap, kümeyle ilişkili anahtar kasasında sertifika oluştururken izin sorunlarıyla karşılaşabilir. Sertifika oluşturma ile ilgili bir hatayla karşılaşırsanız, kümeyi oluşturmak için portalı kullanın. 
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
-[Bu öğretici serisinin birinci kısmında](service-fabric-tutorial-create-dotnet-app.md) Voting örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. In a command window, run the following code to clone the sample application repository to your local machine.
+[Bu öğretici serisinin birinci kısmında](service-fabric-tutorial-create-dotnet-app.md) Voting örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki kodu çalıştırın.
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart 
 ```
 
-Open the application in Visual Studio, running as administrator, and build the application.
+Uygulamayı Visual Studio 'da açın, yönetici olarak çalıştırın ve uygulamayı oluşturun.
 
 ## <a name="create-a-cluster"></a>Küme oluşturma
 
-Now that the application is ready, you create a Service Fabric cluster and then deploy the application to the cluster. [Service Fabric kümesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere), mikro hizmetlerin dağıtılıp yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir.
+Artık uygulama hazır olduğuna göre, bir Service Fabric kümesi oluşturup uygulamayı kümeye dağıtırsınız. [Service Fabric kümesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere), mikro hizmetlerin dağıtılıp yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir.
 
-In this tutorial, you create a new three node test cluster in the Visual Studio IDE and then publish the application to that cluster. See the [Create and manage a cluster tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md) for information on creating a production cluster. You can also deploy the application to an existing cluster that you previously created through the [Azure portal](https://portal.azure.com), by using [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) or [Azure CLI](./scripts/cli-create-cluster.md) scripts, or from an [Azure Resource Manager template](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Bu öğreticide, Visual Studio IDE 'de yeni üç düğümlü test kümesi oluşturur ve uygulamayı bu kümeye yayımlayabilirsiniz. Üretim kümesi oluşturma hakkında bilgi için bkz. [küme oluşturma ve yönetme öğreticisi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Uygulamayı, [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) veya [Azure CLI](./scripts/cli-create-cluster.md) betikleri kullanarak ya da bir [Azure Resource Manager şablonundan](service-fabric-tutorial-create-vnet-and-windows-cluster.md)daha önce [Azure Portal](https://portal.azure.com)aracılığıyla oluşturduğunuz var olan bir kümeye dağıtabilirsiniz.
 
 > [!NOTE]
-> The Voting application, and many other applications, use the Service Fabric reverse proxy to communicate between services. Clusters created from Visual Studio have the reverse proxy enabled by default. If you're deploying to an existing cluster, you must [enable the reverse proxy in the cluster](service-fabric-reverseproxy-setup.md) for the Voting application to work.
+> Oylama uygulaması ve diğer birçok uygulama, hizmetler arasında iletişim kurmak için Service Fabric ters proxy 'yi kullanır. Visual Studio 'dan oluşturulan kümeler için ters proxy varsayılan olarak etkindir. Var olan bir kümeye dağıtım yapıyorsanız, oylama uygulamasının çalışması için [kümedeki ters proxy 'yi etkinleştirmeniz](service-fabric-reverseproxy-setup.md) gerekir.
 
 
 ### <a name="find-the-votingweb-service-endpoint"></a>VotingWeb hizmet uç noktasını bulun
 
-The front-end web service of the Voting application is listening on a specific port (8080 if you in followed the steps in [part one of this tutorial series](service-fabric-tutorial-create-dotnet-app.md). Uygulama Azure'daki bir kümeye dağıtıldığında hem küme hem de uygulama bir Azure yük dengeleyicinin arkasında çalışır. The application port must be opened in the Azure load balancer by using a rule. The rule sends inbound traffic through the load balancer to the web service. Bağlantı noktası **VotingWeb/PackageRoot/ServiceManifest.xml** dosyasının **Endpoint** öğesinde bulunur. 
+Oylama uygulamasının ön uç Web hizmeti belirli bir bağlantı noktasını dinler (8080, [Bu öğretici serisinin birinci](service-fabric-tutorial-create-dotnet-app.md)kısmında yer alan adımları izlemektedir. Uygulama Azure'daki bir kümeye dağıtıldığında hem küme hem de uygulama bir Azure yük dengeleyicinin arkasında çalışır. Uygulama bağlantı noktası, bir kural kullanılarak Azure Yük dengeleyicisinde açılmalıdır. Kural, Web hizmetine yük dengeleyici aracılığıyla gelen trafiği gönderir. Bağlantı noktası **VotingWeb/PackageRoot/ServiceManifest.xml** dosyasının **Endpoint** öğesinde bulunur. 
 
 ```xml
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Take note of the service endpoint, which is needed in a later step.  If you're deploying to an existing cluster, open this port by creating a load-balancing rule and probe in the Azure load balancer using a [PowerShell script](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) or via the load balancer for this cluster in the [Azure portal](https://portal.azure.com).
+Daha sonraki bir adımda gereken hizmet uç noktası ' nı bir yere göz atın.  Var olan bir kümeye dağıtım yapıyorsanız, bir [PowerShell betiği](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) veya [Azure Portal](https://portal.azure.com)bu kümenin yük dengeleyici aracılığıyla Azure Yük dengeleyicisinde bir yük dengeleme kuralı ve araştırması oluşturarak bu bağlantı noktasını açın.
 
-### <a name="create-a-test-cluster-in-azure"></a>Create a test cluster in Azure
+### <a name="create-a-test-cluster-in-azure"></a>Azure 'da bir test kümesi oluşturma
 Çözüm Gezgini’nde **Oylama**’ya sağ tıklayın ve **Yayımla**’yı seçin.
 
-In **Connection Endpoint**, select **Create New Cluster**.  If you're deploying to an existing cluster, select the cluster endpoint from the list.  The Create Service Fabric Cluster dialog opens.
+**Bağlantı uç noktası**' nda **Yeni küme oluştur**' u seçin.  Var olan bir kümeye dağıtım yapıyorsanız, listeden küme uç noktasını seçin.  Service Fabric kümesi oluştur iletişim kutusu açılır.
 
-In the **Cluster** tab, enter the **Cluster name** (for example, "mytestcluster"), select your subscription, select a region for the cluster (such as South Central US), enter the number of cluster nodes (we recommend three nodes for a test cluster), and enter a resource group (such as "mytestclustergroup"). **İleri**’ye tıklayın.
+**Küme** sekmesinde, **küme adını** girin (örneğin, "mytestcluster"), aboneliğinizi seçin, küme için bir bölge seçin (örneğin, Orta Güney ABD), küme düğümlerinin sayısını girin (bir test kümesi için üç düğüm önerilir) ve bir kaynak grubu (örneğin, "mytestclustergroup") girin. **İleri**’ye tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-In the **Certificate** tab, enter the password and output path for the cluster certificate. A self-signed certificate is created as a PFX file and saved to the specified output path.  The certificate is used for both node-to-node and client-to-node security.  Don't use a self-signed certificate for production clusters.  This certificate is used by Visual Studio to authenticate with the cluster and deploy applications. Select **Import certificate** to install the PFX in the CurrentUser\My certificate store of your computer.  **İleri**’ye tıklayın.
+**Sertifika** sekmesinde, küme sertifikası için parola ve çıkış yolunu girin. Otomatik olarak imzalanan bir sertifika PFX dosyası olarak oluşturulur ve belirtilen çıkış yoluna kaydedilir.  Sertifika, düğümden düğüme ve istemciden düğüme güvenlik için kullanılır.  Üretim kümeleri için kendinden imzalı bir sertifika kullanmayın.  Bu sertifika, Visual Studio tarafından, küme ve uygulama dağıtımı ile kimlik doğrulamak için kullanılır. PFX 'yi bilgisayarınızın Currentuser\certificate deposuna yüklemek için **sertifikayı Içeri aktar** ' ı seçin.  **İleri**’ye tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-In the **VM Detail** tab, enter the **User name** and **Password** for the cluster admin account.  Select the **Virtual machine image** for the cluster nodes and the **Virtual machine size** for each cluster node.  Click the **Advanced** tab.
+**VM ayrıntısı** sekmesinde, Küme Yöneticisi hesabı için **Kullanıcı adını** ve **parolayı** girin.  Küme düğümleri için **sanal makine görüntüsünü** ve her küme düğümünün **sanal makine boyutunu** seçin.  **Gelişmiş** sekmesine tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
-In **Ports**, enter the VotingWeb service endpoint from the previous step (for example, 8080).  When the cluster is created, these application ports are opened in the Azure load balancer to forward traffic to the cluster.  Click **Create** to create the cluster, which takes several minutes.
+**Bağlantı noktaları**' nda, önceki adımdan VotingWeb hizmeti uç noktasını girin (örneğin, 8080).  Küme oluşturulduğunda, trafiği kümeye iletmek için bu uygulama bağlantı noktaları Azure Yük dengeleyicide açılır.  Birkaç dakika süren kümeyi oluşturmak için **Oluştur** ' a tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
-## <a name="publish-the-application-to-the-cluster"></a>Publish the application to the cluster
+## <a name="publish-the-application-to-the-cluster"></a>Uygulamayı kümede yayımlayın
 
-When the new cluster is ready, you can deploy the Voting application directly from Visual Studio.
+Yeni küme hazırsanız, oylama uygulamasını doğrudan Visual Studio 'dan dağıtabilirsiniz.
 
 Çözüm Gezgini’nde **Oylama**’ya sağ tıklayın ve **Yayımla**’yı seçin. **Yayımla** iletişim kutusu görüntülenir.
 
-In **Connection Endpoint**, select the endpoint for the cluster you created in the previous step.  For example, "mytestcluster.southcentral.cloudapp.azure.com:19000". If you select **Advanced Connection Parameters**, the certificate information should be auto-filled.  
-![Publish a Service Fabric application](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+**Bağlantı uç noktası**' nda, önceki adımda oluşturduğunuz kümenin uç noktasını seçin.  Örneğin, "mytestcluster.southcentral.cloudapp.azure.com:19000". **Gelişmiş bağlantı parametreleri**' ni seçerseniz, sertifika bilgileri otomatik olarak doldurulmalıdır.  
+![Service Fabric uygulaması yayımlama](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
 **Yayımla**’yı seçin.
 
-Once the application is deployed, open a browser and enter the cluster address followed by **:8080**. Veya başka bir bağlantı noktası yapılandırdıysanız onu girin. `http://mytestcluster.southcentral.cloudapp.azure.com:8080` bunun bir örneğidir. Artık Azure'da kümede çalıştırılan uygulamayı görüyor olmalısınız. Voting web sayfasında, oylama seçeneklerini ve bu seçeneklerden en az biri için oylama ekleyip silmeyi deneyin.
+Uygulama dağıtıldıktan sonra bir tarayıcı açın ve ardından küme adresini girin **: 8080**. Veya başka bir bağlantı noktası yapılandırdıysanız onu girin. `http://mytestcluster.southcentral.cloudapp.azure.com:8080` bunun bir örneğidir. Artık Azure'da kümede çalıştırılan uygulamayı görüyor olmalısınız. Voting web sayfasında, oylama seçeneklerini ve bu seçeneklerden en az biri için oylama ekleyip silmeyi deneyin.
 
 ![Service Fabric Voting örneği](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
@@ -121,7 +121,7 @@ Once the application is deployed, open a browser and enter the cluster address f
 Öğreticinin bu bölümünde, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Create a cluster.
+> * Bir küme oluşturun.
 > * Visual Studio kullanarak uygulamayı uzak bir kümeye dağıtma.
 
 Sonraki öğreticiye ilerleyin:

@@ -11,29 +11,29 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224490"
 ---
-The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
+Aşağıdaki tabloda, Azure IoT Hub cihaz sağlama hizmeti kaynakları için uygulanan sınırlar listelenmektedir.
 
 | Kaynak | Sınır |
 | --- | --- |
-| Maximum device provisioning services per Azure subscription | 10 |
-| Maximum number of enrollments | 1\.000.000 |
-| Maximum number of registrations | 1\.000.000 |
-| Maximum number of enrollment groups | 100 |
-| Maximum number of CAs | 25 |
-| Maximum number of linked IoT hubs | 50 |
-| Maximum size of message | 96 KB|
+| Azure aboneliği başına maksimum cihaz sağlama hizmeti | 10 |
+| En fazla kayıt sayısı | 1\.000.000 |
+| En fazla kayıt sayısı | 1\.000.000 |
+| En fazla kayıt grubu sayısı | 100 |
+| CA sayısı üst sınırı | 25 |
+| En fazla bağlantılı IoT Hub sayısı | 50 |
+| En büyük ileti boyutu | 96 KB|
 
 
 > [!NOTE]
-> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Aboneliğinizdeki örneklerin sayısını artırmak için [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
 
 > [!NOTE]
-> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Sağlama hizmetinizdeki kayıt ve kayıt sayısını artırmak için [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
 
-The Device Provisioning Service throttles requests when the following quotas are exceeded.
+Cihaz sağlama hizmeti, aşağıdaki kotalar aşıldığında istekleri kısıtlar.
 
-| Kısıtlama | Per-unit value |
+| Kısıtlama | Birim başına değer |
 | --- | --- |
-| Operations | 200/min/service |
-| Cihaz kayıtları | 200/min/service |
-| Device polling operation | 5/10 sec/device |
+| Operations | 200/dk/hizmet |
+| Cihaz kayıtları | 200/dk/hizmet |
+| Cihaz yoklama işlemi | 5/10 sn/cihaz |

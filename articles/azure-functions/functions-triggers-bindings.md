@@ -1,6 +1,6 @@
 ---
-title: Triggers and bindings in Azure Functions
-description: Learn to use triggers and bindings to connect your Azure Function to online events and cloud-based services.
+title: Azure Işlevlerinde Tetikleyiciler ve bağlamalar
+description: Azure işlevinizi çevrimiçi olaylara ve bulut tabanlı hizmetlere bağlamak için Tetikleyicileri ve bağlamaları kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,45 +12,45 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226556"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggers and bindings concepts
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Işlevleri Tetikleyicileri ve bağlamaları kavramları
 
-In this article you learn the high-level concepts surrounding functions triggers and bindings.
+Bu makalede, işlev Tetikleyicileri ve bağlamaları çevreleyen üst düzey kavramlar öğrenirsiniz.
 
-Triggers are what cause a function to run. A trigger defines how a function is invoked and a function must have exactly one trigger. Triggers have associated data, which is often provided as the payload of the function. 
+Tetikleyiciler, bir işlevin çalışmasına neden olur. Bir tetikleyici, bir işlevin nasıl çağrılacağını ve bir işlevin tam olarak bir tetikleyicisine sahip olması gerektiğini tanımlar. Tetikleyiciler, genellikle işlevin yükü olarak belirtilen ilişkili verilere sahiptir. 
 
-Binding to a function is a way of declaratively connecting another resource to the function; bindings may be connected as *input bindings*, *output bindings*, or both. Data from bindings is provided to the function as parameters.
+İşleve bağlama, başka bir kaynağı işleve bildirimli olarak bağlama yöntemidir; bağlamalar, *Giriş bağlamaları*, *Çıkış bağlamaları*veya her ikisi için de bağlanabilir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır.
 
-You can mix and match different bindings to suit your needs. Bindings are optional and a function might have one or multiple input and/or output bindings.
+Farklı bağlamaları, gereksinimlerinize uyacak şekilde karıştırabilir ve eşleştirebilirsiniz. Bağlamalar isteğe bağlıdır ve bir işlevde bir veya daha fazla giriş ve/veya çıkış bağlaması olabilir.
 
-Triggers and bindings let you avoid hardcoding access to other services. Your function receives data (for example, the content of a queue message) in function parameters. You send data (for example, to create a queue message) by using the return value of the function. 
+Tetikleyiciler ve bağlamalar, diğer hizmetlere erişimi bir şekilde kodlamadan kaçınmanızı sağlar. İşleviniz, işlev parametrelerinde verileri (örneğin, bir kuyruk iletisinin içeriği) alır. İşlevin dönüş değerini kullanarak verileri (örneğin, kuyruk iletisi oluşturmak için) gönderirsiniz. 
 
-Consider the following examples of how you could implement different functions.
+Farklı işlevleri nasıl uygulayabileceğinizi gösteren aşağıdaki örnekleri göz önünde bulundurun.
 
-| Örnek senaryo | Tetikleyici | Input binding | Output binding |
+| Örnek senaryo | Tetikleyici | Giriş bağlama | Çıkış bağlama |
 |-------------|---------|---------------|----------------|
-| A new queue message arrives which runs a function to write to another queue. | Queue<sup>*</sup> | *None* | Queue<sup>*</sup> |
-|A scheduled job reads Blob Storage contents and creates a new Cosmos DB document. | Zamanlayıcı | Blob Depolama | Cosmos DB |
-|The Event Grid is used to read an image from Blob Storage and a document from Cosmos DB to send an email. | Event Grid | Blob Storage and  Cosmos DB | SendGrid |
-| A webhook that uses Microsoft Graph to update an Excel sheet. | HTTP | *None* | Microsoft Graph |
+| Başka bir kuyruğa yazmak için bir işlev çalıştıran yeni bir kuyruk iletisi ulaştı. | Sıra<sup>*</sup> | *Seçim* | Sıra<sup>*</sup> |
+|Zamanlanan bir iş BLOB depolama içeriğini okur ve yeni bir Cosmos DB belgesi oluşturur. | Zamanlayıcı | Blob Depolama | Cosmos DB |
+|Event Grid, blob depolamadan bir görüntüyü okumak için ve Cosmos DB bir e-posta göndermek için kullanılır. | Event Grid | BLOB depolama ve Cosmos DB | SendGrid |
+| Excel sayfasını güncelleştirmek için Microsoft Graph kullanan bir Web kancası. | HTTP | *Seçim* | Microsoft Graph |
 
-<sup>\*</sup> Represents different queues
+<sup>\*</sup> Farklı kuyrukları temsil eder
 
-These examples are not meant to be exhaustive, but are provided to illustrate how you can use triggers and bindings together.
+Bu örneklerin kapsamlı olması amaçlıyordu, ancak Tetikleyicileri ve bağlamaları birlikte nasıl kullanabileceğinizi göstermek için sağlanmıştır.
 
-###  <a name="trigger-and-binding-definitions"></a>Trigger and binding definitions
+###  <a name="trigger-and-binding-definitions"></a>Tanımları tetikleme ve bağlama
 
-Triggers and bindings are defined differently depending on the development approach.
+Tetikleyiciler ve bağlamalar, geliştirme yaklaşımına göre farklı şekilde tanımlanır.
 
-| Platform | Triggers and bindings are configured by... |
+| Platform | Tetikleyiciler ve bağlamalar tarafından yapılandırılır... |
 |-------------|--------------------------------------------|
-| C# class library | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decorating methods and parameters with C# attributes |
-| All others (including Azure portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updating [function.json](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
+| C#sınıf kitaplığı | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# öznitelikleri ve parametreleri özniteliklerle dekoratlaştırıyor |
+| Diğerlerinin tümü (Azure portal dahil) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;güncelleştirme [işlevi. JSON](./functions-reference.md) ([şema](http://json.schemastore.org/function)) |
 
-The portal provides a UI for this configuration, but you can edit the file directly by opening the **Advanced editor** available via the **Integrate** tab of your function.
+Portal bu yapılandırma için bir kullanıcı arabirimi sağlar, ancak işlevinizin **tümleştirin** sekmesi aracılığıyla bulunan **Gelişmiş düzenleyiciyi** açarak dosyayı doğrudan düzenleyebilirsiniz.
 
-In .NET, the parameter type defines the data type for input data. For instance, use `string` to bind to the text of a queue trigger, a byte array to read as binary and a custom type to de-serialize to an object.
+.NET ' te, parametre türü giriş verileri için veri türünü tanımlar. Örneğin, bir kuyruk tetikleyicisinin metnine bağlamak için `string` kullanın, ikili olarak okunacak bir bayt dizisi ve bir nesneye serbest bırakmak için özel bir tür.
 
-For languages that are dynamically typed such as JavaScript, use the `dataType` property in the *function.json* file. For example, to read the content of an HTTP request in binary format, set `dataType` to `binary`:
+JavaScript gibi dinamik olarak yazılan diller için, *function. JSON* dosyasındaki `dataType` özelliğini kullanın. Örneğin, bir HTTP isteğinin içeriğini ikili biçimde okumak için `dataType` `binary`olarak ayarlayın:
 
 ```json
 {
@@ -61,33 +61,33 @@ For languages that are dynamically typed such as JavaScript, use the `dataType` 
 }
 ```
 
-Other options for `dataType` are `stream` and `string`.
+`dataType` diğer seçenekler `stream` ve `string`.
 
-## <a name="binding-direction"></a>Binding direction
+## <a name="binding-direction"></a>Bağlama yönü
 
-All triggers and bindings have a `direction` property in the [function.json](./functions-reference.md) file:
+Tüm tetikleyiciler ve bağlamalar, [function. JSON](./functions-reference.md) dosyasında bir `direction` özelliğine sahiptir:
 
-- For triggers, the direction is always `in`
-- Input and output bindings use `in` and `out`
-- Some bindings support a special direction `inout`. If you use `inout`, only the **Advanced editor** is available via the **Integrate** tab in the portal.
+- Tetikleyiciler için, yön her zaman `in`
+- Giriş ve çıkış bağlamaları `in` ve `out` kullanır
+- Bazı bağlamalar `inout`özel bir yön destekler. `inout`kullanıyorsanız, portalda **tümleştir** sekmesi aracılığıyla yalnızca **Gelişmiş Düzenleyici** kullanılabilir.
 
-When you use [attributes in a class library](functions-dotnet-class-library.md) to configure triggers and bindings, the direction is provided in an attribute constructor or inferred from the parameter type.
+Tetikleyicileri ve bağlamaları yapılandırmak için [bir sınıf kitaplığındaki öznitelikleri](functions-dotnet-class-library.md) kullandığınızda, yön bir öznitelik oluşturucusunda sağlanır veya parametre türünden çıkartılan olur.
 
-## <a name="supported-bindings"></a>Supported bindings
+## <a name="supported-bindings"></a>Desteklenen bağlamalar
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-For information about which bindings are in preview or are approved for production use, see [Supported languages](supported-languages.md).
+Önizleme aşamasında olan veya üretim kullanımı için onaylanan bağlamalar hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md).
 
 ## <a name="resources"></a>Kaynaklar
-- [Binding expressions and patterns](./functions-bindings-expressions-patterns.md)
-- [Using the Azure Function return value](./functions-bindings-return-value.md)
-- [How to register a binding expression](./functions-bindings-register.md)
-- Testing:
-  - [Strategies for testing your code in Azure Functions](functions-test-a-function.md)
-  - [Manually run a non HTTP-triggered function](functions-manually-run-non-http.md)
-- [Handling binding errors](./functions-bindings-errors.md)
+- [Bağlama ifadeleri ve desenleri](./functions-bindings-expressions-patterns.md)
+- [Azure Işlevi dönüş değerini kullanma](./functions-bindings-return-value.md)
+- [Bağlama ifadesi kaydetme](./functions-bindings-register.md)
+- Edici
+  - [Azure Işlevlerinde kodunuzu test etme stratejileri](functions-test-a-function.md)
+  - [HTTP ile tetiklenen bir işlevi el ile çalıştırma](functions-manually-run-non-http.md)
+- [Bağlama hatalarını işleme](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Register Azure Functions binding extensions](./functions-bindings-register.md)
+> [Azure Işlevleri bağlama uzantılarını kaydetme](./functions-bindings-register.md)

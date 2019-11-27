@@ -1,5 +1,5 @@
 ---
-title: Create an OpenAPI definition for a serverless API using Azure API Management
+title: Azure API Management kullanarak sunucusuz bir API için Openapı tanımı oluşturma
 description: Azure’da diğer uygulama ve hizmetlerin işlevinize çağrı yapmasına imkan tanıyan bir OpenAPI tanımı oluşturun.
 ms.topic: tutorial
 ms.date: 05/08/2019
@@ -12,44 +12,44 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226811"
 ---
-# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Create an OpenAPI definition for a serverless API using Azure API Management
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management kullanarak sunucusuz bir API için Openapı tanımı oluşturma
 
-REST APIs are often described using an OpenAPI definition. Bu tanım, bir API’de hangi işlemlerin kullanılabildiğinin yanı sıra API için istek ve yanıt verilerinin nasıl yapılandırılması gerektiğiyle ilgili bilgileri içerir.
+REST API 'Ler genellikle bir Openapı tanımı kullanılarak açıklanır. Bu tanım, bir API’de hangi işlemlerin kullanılabildiğinin yanı sıra API için istek ve yanıt verilerinin nasıl yapılandırılması gerektiğiyle ilgili bilgileri içerir.
 
-Bu öğreticide, bir rüzgar türbini için acil onarımın uygun maliyetli olup olmadığını belirleyen bir işlev oluşturursunuz. You then create an OpenAPI definition for the function app using [Azure API Management](../api-management/api-management-key-concepts.md) so that the function can be called from other apps and services.
+Bu öğreticide, bir rüzgar türbini için acil onarımın uygun maliyetli olup olmadığını belirleyen bir işlev oluşturursunuz. Daha sonra, işlevin diğer uygulamalardan ve hizmetlerden çağrılabilmesi için [Azure API Management](../api-management/api-management-key-concepts.md) kullanarak işlev uygulaması Için bir openapı tanımı oluşturursunuz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da işlev oluşturma
-> * Generate an OpenAPI definition using Azure API Management
+> * Azure API Management kullanarak bir Openapı tanımı oluşturma
 > * İşleve çağrı yaparak tanımı test etme
-> * Download the OpenAPI definition
+> * Openapı tanımını indirin
 
 ## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-İşlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. A function app lets you group functions as a logical unit for easier management, deployment, scaling, and sharing of resources.
+İşlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 ## <a name="create-the-function"></a>İşlevi oluşturma
 
-This tutorial uses an HTTP triggered function that takes two parameters:
+Bu öğretici, iki parametre alan HTTP ile tetiklenen bir işlev kullanır:
 
-* The estimated time to make a turbine repair, in hours.
-* The capacity of the turbine, in kilowatts. 
+* Bir türbin onarımı için saat cinsinden tahmini süre.
+* Kilowatts cinsinden türbin kapasitesi. 
 
-Daha sonra, işlev tarafından onarım maliyetinin ne olacağı ve türbinin 24 saatlik bir dönemde ne kadar gelir kazandırabileceği hesaplanır. TO create the HTTP triggered function in the [Azure portal](https://portal.azure.com).
+Daha sonra, işlev tarafından onarım maliyetinin ne olacağı ve türbinin 24 saatlik bir dönemde ne kadar gelir kazandırabileceği hesaplanır. [Azure Portal](https://portal.azure.com)http ile tetiklenen işlevi oluşturmak için.
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesini seçin. Select **In-portal** > **Continue**.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesini seçin. **Portal içi** > **devam et**' i seçin.
 
-1. Select **More templates...** , then select **Finish and view templates**
+1. **Daha fazla şablon seçin...** , ardından son ' u seçin **ve şablonları görüntüleyin**
 
-1. Select HTTP trigger, type `TurbineRepair` for the function **Name**, choose `Function` for **[Authentication level](functions-bindings-http-webhook.md#http-auth)** , and then select **Create**.  
+1. HTTP tetikleyicisi ' ni seçin, işlev **adı**için `TurbineRepair` yazın, **[kimlik doğrulama düzeyi](functions-bindings-http-webhook.md#http-auth)** için `Function` seçin ve ardından **Oluştur**' u seçin.  
 
-    ![Create HTTP function for OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
+    ![Openapı için HTTP işlevi oluşturma](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
-1. Replace the contents of the run.csx C# script file with the following code, then choose **Save**:
+1. Run. CSX C# betik dosyasının içeriğini aşağıdaki kodla değiştirin ve ardından **Kaydet**' i seçin:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -104,7 +104,7 @@ Daha sonra, işlev tarafından onarım maliyetinin ne olacağı ve türbinin 24 
 
     Bu işlev kodu, acil onarımın uygun maliyetli olup olmadığının yanı sıra türbinin temsil ettiği gelir fırsatını ve türbin onarımının maliyetini gösteren `Yes` veya `No` şeklinde bir ileti döndürür.
 
-1. To test the function, click **Test** at the far right to expand the test tab. Enter the following value for the **Request body**, and then click **Run**.
+1. İşlevi test etmek için sağ taraftaki **Test** ' e tıklayarak test sekmesini genişletin. **İstek gövdesi**için aşağıdaki değeri girin ve **Çalıştır**' a tıklayın.
 
     ```json
     {
@@ -121,51 +121,51 @@ Daha sonra, işlev tarafından onarım maliyetinin ne olacağı ve türbinin 24 
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-Acil onarımların maliyet açısından uygunluğunu belirleyen bir işleviniz oldu. Next, you generate an OpenAPI definition for the function app.
+Acil onarımların maliyet açısından uygunluğunu belirleyen bir işleviniz oldu. Sonra, işlev uygulaması için bir Openapı tanımı oluşturursunuz.
 
 ## <a name="generate-the-openapi-definition"></a>OpenAPI tanımını oluşturma
 
 Artık OpenAPI tanımını oluşturmaya hazırsınız.
 
-1. Select the function app, then in **Platform features**, choose **API Management** and select **Create new** under **API Management**.
+1. İşlev uygulamasını seçin, ardından **platform özellikleri**' nde **API Management** ' yi seçin ve **API Management**altında **Yeni oluştur** ' u seçin.
 
-    ![Choose API Management in Platform Features](media/functions-openapi-definition/select-all-settings-openapi.png)
+    ![Platform özelliklerinde API Management seçin](media/functions-openapi-definition/select-all-settings-openapi.png)
 
-1. Use the API Management settings as specified in the table below the image.
+1. Görüntünün altındaki tabloda belirtilen API Management ayarlarını kullanın.
 
-    ![Create new API Management service](media/functions-openapi-definition/new-apim-service-openapi.png)
+    ![Yeni API Management hizmeti oluştur](media/functions-openapi-definition/new-apim-service-openapi.png)
 
     | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Adı** | Genel olarak benzersiz bir ad | A name is generated based on the name of your function app. |
-    | **Abonelik** | Aboneliğiniz | The subscription under which this new resource is created. |  
-    | **[Kaynak Grubu](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | The same resource as your function app, which should get set for you. |
-    | **Konum** | Batı ABD | Choose the West US location. |
-    | **Kuruluş adı** | Contoso | The name of the organization used in the developer portal and for email notifications. |
-    | **Yönetici e-postası** | your email | Email that received system notifications from API Management. |
-    | **Fiyatlandırma katmanı** | Consumption (preview) | Consumption tier is in preview and isn't available in all regions. For complete pricing details, see the [API Management pricing page](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **Adı** | Genel olarak benzersiz bir ad | İşlev uygulamanızın adı temel alınarak bir ad oluşturulur. |
+    | **Abonelik** | Aboneliğiniz | Bu yeni kaynağın altında oluşturulduğu abonelik. |  
+    | **[Kaynak Grubu](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Sizin için ayarlanmış olması gereken işlev uygulamanız ile aynı kaynak. |
+    | **Konum** | Batı ABD | Batı ABD konumunu seçin. |
+    | **Kuruluş adı** | Contoso | Geliştirici portalında kullanılan kuruluşun adı ve e-posta bildirimleri için. |
+    | **Yönetici e-postası** | e-postanız | API Management 'den sistem bildirimleri alan e-posta. |
+    | **Fiyatlandırma katmanı** | Tüketim (Önizleme) | Tüketim katmanı önizleme aşamasındadır ve tüm bölgelerde kullanılamaz. Tüm fiyatlandırma ayrıntıları için [API Management fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/api-management/) bakın |
 
-1. Choose **Create** to create the API Management instance, which may take several minutes.
+1. API Management örneğini oluşturmak için **Oluştur** ' u seçin ve bu işlem birkaç dakika sürebilir.
 
-1. Select **Enable Application Insights** to send logs to the same place as the function application, then accept the remaining defaults and select **Link API**.
+1. Günlükleri işlev uygulamasıyla aynı yere göndermek için **Application Insights etkinleştir** ' i seçin, ardından kalan Varsayılanları kabul edin ve **bağlantı API 'si**' ni seçin.
 
-1. The **Import Azure Functions** opens with the **TurbineRepair** function highlighted. Choose **Select** to continue.
+1. **Içeri aktarma Azure işlevleri** , **Turbinerepair** işlevi vurgulanmış şekilde açılır. Devam etmek için **Seç ' i** seçin.
 
-    ![Import Azure Functions into API Management](media/functions-openapi-definition/import-function-openapi.png)
+    ![Azure Işlevlerini API Management içine aktarın](media/functions-openapi-definition/import-function-openapi.png)
 
-1. In the **Create from Function App** page, accept the defaults and select **Create**
+1. **İşlev uygulaması oluştur** sayfasında, Varsayılanları kabul edin ve **Oluştur** ' u seçin.
 
-    ![Create from Function App](media/functions-openapi-definition/create-function-openapi.png)
+    ![İşlev Uygulaması Oluştur](media/functions-openapi-definition/create-function-openapi.png)
 
-The API is now created for the function.
+API artık işlev için oluşturulmuştur.
 
-## <a name="test-the-api"></a>Test the API
+## <a name="test-the-api"></a>API'yi test etme
 
-Before you use the OpenAPI definition, you should verify that the API works.
+Openapı tanımını kullanmadan önce API 'nin çalıştığını doğrulamanız gerekir.
 
-1. On the **Test** tab of your function, select **POST** operation.
+1. İşlevinizin **Test** sekmesinde, **Post** işlemi ' ni seçin.
 
-1. Enter values for **hours** and **capacity**
+1. **Saatlerin** ve **kapasitenin** değerlerini girin
 
     ```json
     {
@@ -174,25 +174,25 @@ Before you use the OpenAPI definition, you should verify that the API works.
     }
     ```
 
-1. Click **Send**, then view the HTTP response.
+1. **Gönder**' e tıklayın, ardından HTTP yanıtını görüntüleyin.
 
-    ![Test function API](media/functions-openapi-definition/test-function-api-openapi.png)
+    ![Test işlevi API 'SI](media/functions-openapi-definition/test-function-api-openapi.png)
 
-## <a name="download-the-openapi-definition"></a>Download the OpenAPI definition
+## <a name="download-the-openapi-definition"></a>Openapı tanımını indirin
 
-If your API works as expected, you can download the OpenAPI definition.
+API 'niz beklendiği gibi çalışıyorsa, Openapı tanımını indirebilirsiniz.
 
-1. Select **Download OpenAPI definition** at the top of the page.
+1. Sayfanın üst kısmında **Openapı tanımını indir** ' i seçin.
    
    ![OpenAPI tanımını indirin](media/functions-openapi-definition/download-definition.png)
 
-2. Open the downloaded JSON file and review the definition.
+2. İndirilen JSON dosyasını açın ve tanımı gözden geçirin.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-You have used API Management integration to generate an OpenAPI definition of your functions. You can now edit the definition in API Management in the portal. You can also [learn more about API Management](../api-management/api-management-key-concepts.md).
+İşlevlerinizin bir Openapı tanımını oluşturmak için API Management tümleştirme kullandınız. Tanımı artık portalda API Management düzenleyebilirsiniz. Ayrıca [API Management hakkında daha fazla bilgi](../api-management/api-management-key-concepts.md)edinebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Edit the OpenAPI definition in API Management](../api-management/edit-api.md)
+> [API Management 'de Openapı tanımını düzenleme](../api-management/edit-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Create registry - Powershell
-description: Quickly learn to create a private Docker registry in Azure Container Registry with PowerShell
+title: Hızlı başlangıç-kayıt defteri oluşturma-PowerShell
+description: PowerShell ile Azure Container Registry 'de özel bir Docker kayıt defteri oluşturmayı hızlı bir şekilde öğrenin
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
@@ -11,23 +11,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456380"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Quickstart: Create a private container registry using Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak özel kapsayıcı kayıt defteri oluşturma
 
-Azure Container Registry, Docker kapsayıcı görüntülerini oluşturmak, depolamak ve sunmak için kullanılan özel bir yönetilen Docker kapsayıcı kayıt defteridir. Bu hızlı başlangıçta PowerShell kullanarak Azure Container Registry oluşturmayı öğreneceksiniz. Then, use Docker commands to push a container image into the registry, and finally pull and run the image from your registry.
+Azure Container Registry, Docker kapsayıcı görüntülerini oluşturmak, depolamak ve sunmak için kullanılan özel bir yönetilen Docker kapsayıcı kayıt defteridir. Bu hızlı başlangıçta PowerShell kullanarak Azure Container Registry oluşturmayı öğreneceksiniz. Ardından, Docker komutlarını kullanarak kayıt defterine bir kapsayıcı görüntüsü gönderin ve son olarak görüntüyü Kayıt defterinizden çekin ve çalıştırın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-This quickstart requires Azure PowerShell module. Yüklü sürümünüzü belirlemek için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
+Bu hızlı başlangıç Azure PowerShell modülünü gerektiriyor. Yüklü sürümünüzü belirlemek için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
 
-Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker provides packages for [macOS][docker-mac], [Windows][docker-windows], and [Linux][docker-linux] systems.
+Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker, [MacOS][docker-mac], [Windows][docker-windows]ve [Linux][docker-linux] sistemleri için paketler sağlar.
 
 Azure Cloud Shell gerekli tüm Docker bileşenlerini (`dockerd` daemon) içermediğinden, bu hızlı başlangıçta Cloud Shell’i kullanamazsınız.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-Sign in to your Azure subscription with the [Connect-AzAccount][Connect-AzAccount] command, and follow the on-screen directions.
+[Connect-AzAccount][Connect-AzAccount] komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
@@ -35,7 +35,7 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Once you're authenticated with Azure, create a resource group with [New-AzResourceGroup][New-AzResourceGroup]. Kaynak grubu, Azure kaynaklarınızın dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Azure ile kimlik doğrulaması yaptıktan sonra [New-AzResourceGroup][New-AzResourceGroup]ile bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarınızın dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Next, create a container registry in your new resource group with the [New-AzContainerRegistry][New-AzContainerRegistry] command.
+Ardından, yeni [-AzContainerRegistry][New-AzContainerRegistry] komutuyla yeni kaynak grubunuzda bir kapsayıcı kayıt defteri oluşturun.
 
 Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnek, "myContainerRegistry007" adlı bir kayıt defteri oluşturur. Aşağıdaki komutta *myContainerRegistry007* değerini değiştirin ve kayıt defterini oluşturmak için komutu çalıştırın:
 
@@ -51,17 +51,17 @@ Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal kar
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-In this quickstart you create a *Basic* registry, which is a cost-optimized option for developers learning about Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+Bu hızlı başlangıçta, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt defteri oluşturursunuz. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri SKU 'ları][container-registry-skus].
 
 ## <a name="log-in-to-registry"></a>Kayıt defterinde oturum açma
 
-Kapsayıcı görüntülerini gönderip çekmeden önce kayıt defterinizde oturum açmalısınız. In production scenarios you should use an individual identity or service principal for container registry access, but to keep this quickstart brief, enable the admin user on your registry with the [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] command:
+Kapsayıcı görüntülerini gönderip çekmeden önce kayıt defterinizde oturum açmalısınız. Üretim senaryolarında, kapsayıcı kayıt defteri erişimi için tek bir kimlik veya hizmet sorumlusu kullanmanız gerekir, ancak bu hızlı başlangıcı kısa tutmak için, [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] komutuyla kayıt defterinizde yönetici kullanıcıyı etkinleştirin:
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
 ```
 
-Next, run [docker login][docker-login] to log in:
+Ardından, oturum açmak için [Docker oturum açma][docker-login] çalıştırın:
 
 ```powershell
 $creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
@@ -75,7 +75,7 @@ Bu komut tamamlandığında `Login Succeeded` döndürülür.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Once you're done working with the resources you created in this quickstart, use the [Remove-AzResourceGroup][Remove-AzResourceGroup] command to remove the resource group, the container registry, and the container images stored there:
+Bu hızlı başlangıçta oluşturduğunuz kaynaklarla çalışmayı tamamladıktan sonra, burada depolanan kaynak grubunu, kapsayıcı kayıt defterini ve kapsayıcı görüntülerini kaldırmak için [Remove-AzResourceGroup][Remove-AzResourceGroup] komutunu kullanın:
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup
@@ -83,10 +83,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you created an Azure Container Registry with Azure PowerShell, pushed a container image, and pulled and ran the image from the registry. Continue to the Azure Container Registry tutorials for a deeper look at ACR.
+Bu hızlı başlangıçta, Azure PowerShell bir Azure Container Registry oluşturdunuz, kapsayıcı görüntüsünü gönderdi ve görüntüyü kayıt defterinden çekmiş ve çalıştırdınız. ACR 'ye daha ayrıntılı bir bakış için Azure Container Registry öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Azure Container Registry öğreticileri][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

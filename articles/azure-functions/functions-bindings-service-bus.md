@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus bindings for Azure Functions
-description: Understand how to use Azure Service Bus triggers and bindings in Azure Functions.
+title: Azure işlevleri için Azure Service Bus bağlamaları
+description: Azure işlevleri'nde, Azure Service Bus Tetikleyicileri ve bağlamaları kullanma hakkında bilgi edinin.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
@@ -13,45 +13,45 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231057"
 ---
-# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindings for Azure Functions
+# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure işlevleri için Azure Service Bus bağlamaları
 
-This article explains how to work with Azure Service Bus bindings in Azure Functions. Azure Functions supports trigger and output bindings for Service Bus queues and topics.
+Bu makalede, Azure işlevleri'nde Azure Service Bus bağlamaları ile nasıl çalışılacağı açıklanmaktadır. Tetikleme ve çıkış bağlamaları Service Bus kuyrukları ve konuları için Azure işlevleri destekler.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-The Service Bus bindings are provided in the [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet package, version 2.x. 
+Service Bus bağlamaları [Microsoft. Azure. WebJobs. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet paketi, sürüm 2. x içinde verilmiştir. 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
-The Service Bus bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet package, version 3.x. Source code for the package is in the [azure-functions-servicebus-extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub repository.
+Service Bus bağlamaları [Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-Functions-ServiceBus-Extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub deposunda bulunur.
 
 > [!NOTE]
-> Version 2.x does not create the topic or subscription configured in the `ServiceBusTrigger` instance. Version 2.x is based on [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) and does not handle queue management.
+> Sürüm 2. x, `ServiceBusTrigger` örneğinde yapılandırılmış konuyu veya aboneliği oluşturmaz. Sürüm 2. x, [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) tabanlıdır ve sıra yönetimini işlemez.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Tetikleyici
 
-Use the Service Bus trigger to respond to messages from a Service Bus queue or topic. 
+Service Bus tetikleyicisi, bir Service Bus kuyruğuna veya konusuna iletilere yanıt vermek için kullanın. 
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Tetikleyici - örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#betik (. CSX)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Trigger - C# example
+### <a name="trigger---c-example"></a>Tetikleyici - C# örneği
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message:
+Aşağıdaki örnek, [ileti meta verilerini](#trigger---message-metadata) okuyan ve bir Service Bus kuyruğu iletisi kaydeden bir [ C# işlevi](functions-dotnet-class-library.md) gösterir:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -70,11 +70,11 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - C# script example
+### <a name="trigger---c-script-example"></a>Tetikleyici - C# betiği örneği
 
-The following example shows a Service Bus trigger binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus tetikleyicisi bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi [ileti meta verilerini](#trigger---message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -91,7 +91,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the C# script code:
+C# betik kodunu şu şekildedir:
 
 ```cs
 using System;
@@ -110,11 +110,11 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Trigger - F# example
+### <a name="trigger---f-example"></a>Tetikleyici - F# örneği
 
-The following example shows a Service Bus trigger binding in a *function.json* file and an [F# function](functions-reference-fsharp.md) that uses the binding. The function logs a Service Bus queue message. 
+Aşağıdaki örnek, bir *function. JSON* dosyasında ve bağlamayı kullanan bir [ F# işlevde](functions-reference-fsharp.md) Service Bus tetikleyici bağlamayı gösterir. İşlevi, bir Service Bus kuyruk iletisi günlüğe kaydeder. 
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -131,16 +131,16 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the F# script code:
+İşte F# betik kodu:
 
 ```fsharp
 let Run(myQueueItem: string, log: ILogger) =
     log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
-### <a name="trigger---java-example"></a>Trigger - Java example
+### <a name="trigger---java-example"></a>Tetikleyici - Java örnek
 
-The following Java function uses the `@ServiceBusQueueTrigger` annotation from the [Java functions runtime library](/java/api/overview/azure/functions/runtime) to describe the configuration for a Service Bus queue trigger. The  function grabs the message placed on the queue and adds it to the logs.
+Aşağıdaki Java işlevi, bir Service Bus kuyruğu tetikleyicisinin yapılandırmasını belirtmek için [Java işlevleri çalışma zamanı kitaplığındaki](/java/api/overview/azure/functions/runtime) `@ServiceBusQueueTrigger` ek açıklamasını kullanır. İşlev, iletiyi kuyruğa yerleştirir ve günlüklere ekler.
 
 ```java
 @FunctionName("sbprocessor")
@@ -154,7 +154,7 @@ The following Java function uses the `@ServiceBusQueueTrigger` annotation from t
  }
 ```
 
-Java functions can also be triggered when a message is added to a Service Bus topic. The following example uses the `@ServiceBusTopicTrigger` annotation to describe the trigger configuration.
+Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. Aşağıdaki örnek, tetikleyici yapılandırmasını anlatmak için `@ServiceBusTopicTrigger` ek açıklamasını kullanır.
 
 ```java
 @FunctionName("sbtopicprocessor")
@@ -171,11 +171,11 @@ Java functions can also be triggered when a message is added to a Service Bus to
     }
 ```
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript example
+### <a name="trigger---javascript-example"></a>Tetikleyici - JavaScript örneği
 
-The following example shows a Service Bus trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message. 
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi [ileti meta verilerini](#trigger---message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder. 
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -192,7 +192,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the JavaScript script code:
+JavaScript kodu şu şekildedir:
 
 ```javascript
 module.exports = function(context, myQueueItem) {
@@ -204,11 +204,11 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger - Python example
+### <a name="trigger---python-example"></a>Trigger-Python örneği
 
-The following example demonstrates how to read a ServiceBus queue message via a trigger.
+Aşağıdaki örnek, bir hizmet veri yolu kuyruğu iletisinin bir tetikleyici aracılığıyla nasıl okunacağını gösterir.
 
-A ServiceBus binding is defined in *function.json* where *type* is set to `serviceBusTrigger`.
+ServiceBus bağlaması, *type* `serviceBusTrigger`olarak ayarlandığı *function. JSON* içinde tanımlanır.
 
 ```json
 {
@@ -225,7 +225,7 @@ A ServiceBus binding is defined in *function.json* where *type* is set to `servi
 }
 ```
 
-The code in *_\_init_\_.py* declares a parameter as `func.ServiceBusMessage` which allows you to read the queue message in your function.
+*_\_init_\_. Kopyala* içindeki kod, işlevinizdeki sıra iletisini okumanızı sağlayan `func.ServiceBusMessage` olarak bir parametre bildiriyor.
 
 ```python
 import azure.functions as func
@@ -255,15 +255,15 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Tetikleyici - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the following attributes to configure a Service Bus trigger:
+Sınıf kitaplıklarında, bir Service Bus tetikleyiciyi yapılandırmak için aşağıdaki öznitelikleri kullanın: [ C# ](functions-dotnet-class-library.md)
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  The attribute's constructor takes the name of the queue or the topic and subscription. In Azure Functions version 1.x, you can also specify the connection's access rights. If you don't specify access rights, the default is `Manage`. For more information, see the [Trigger - configuration](#trigger---configuration) section.
+  Özniteliğin oluşturucusu, kuyruk veya konu ve abonelik adını alır. Azure işlevleri sürüm 1.x, bağlantının erişim hakları da belirtebilirsiniz. Erişim hakları belirtmezseniz, varsayılan `Manage`. Daha fazla bilgi için [tetikleyici-yapılandırma](#trigger---configuration) bölümüne bakın.
 
-  Here's an example that shows the attribute used with a string parameter:
+  Bir dize parametresi ile kullanılan öznitelik gösteren bir örnek aşağıda verilmiştir:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -274,7 +274,7 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  You can set the `Connection` property to specify the Service Bus account to use, as shown in the following example:
+  Aşağıdaki örnekte gösterildiği gibi, kullanılacak Service Bus hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -286,11 +286,11 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  For a complete example, see [Trigger - C# example](#trigger---c-example).
+  Tam bir örnek için bkz. [tetikleyici- C# örnek](#trigger---c-example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
-  Provides another way to specify the Service Bus account to use. The constructor takes the name of an app setting that contains a Service Bus connection string. The attribute can be applied at the parameter, method, or class level. The following example shows class level and method level:
+  Kullanılacak hizmet veri yolu hesabı belirtmek için başka bir yol sağlar. Oluşturucusu bir Service Bus bağlantı dizesi içeren bir uygulama ayarı adı alır. Öznitelik parametre, yöntemi veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf ve yöntem düzeyindeki gösterir:
 
   ```csharp
   [ServiceBusAccount("ClassLevelServiceBusAppSetting")]
@@ -306,95 +306,95 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-The Service Bus account to use is determined in the following order:
+Service Bus hesabını kullanacak şekilde aşağıdaki sırada belirlenir:
 
-* The `ServiceBusTrigger` attribute's `Connection` property.
-* The `ServiceBusAccount` attribute applied to the same parameter as the `ServiceBusTrigger` attribute.
-* The `ServiceBusAccount` attribute applied to the function.
-* The `ServiceBusAccount` attribute applied to the class.
-* The "AzureWebJobsServiceBus" app setting.
+* `ServiceBusTrigger` özniteliğin `Connection` özelliği.
+* `ServiceBusAccount` özniteliği `ServiceBusTrigger` özniteliğiyle aynı parametreye uygulandı.
+* İşleve uygulanan `ServiceBusAccount` özniteliği.
+* Sınıfına uygulanan `ServiceBusAccount` özniteliği.
+* "AzureWebJobsServiceBus" uygulama ayarı.
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `ServiceBusTrigger` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `ServiceBusTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Must be set to "serviceBusTrigger". This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | Yok | Must be set to "in". This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | Yok | The name of the variable that represents the queue or topic message in function code. Set to "$return" to reference the function return value. |
-|**queueName**|**QueueName**|Name of the queue to monitor.  Set only if monitoring a queue, not for a topic.
-|**topicName**|**TopicName**|Name of the topic to monitor. Set only if monitoring a topic, not for a queue.|
-|**subscriptionName**|**SubscriptionName**|Name of the subscription to monitor. Set only if monitoring a topic, not for a queue.|
-|**connection**|**Connection**|The name of an app setting that contains the Service Bus connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name. For example, if you set `connection` to "MyServiceBus", the Functions runtime looks for an app setting that is named "AzureWebJobsMyServiceBus." If you leave `connection` empty, the Functions runtime uses the default Service Bus connection string in the app setting that is named "AzureWebJobsServiceBus".<br><br>To obtain a connection string, follow the steps shown at [Get the management credentials](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). The connection string must be for a Service Bus namespace, not limited to a specific queue or topic. |
-|**accessRights**|**Erişim**|Access rights for the connection string. Available values are `manage` and `listen`. The default is `manage`, which indicates that the `connection` has the **Manage** permission. If you use a connection string that does not have the **Manage** permission, set `accessRights` to "listen". Otherwise, the Functions runtime might fail trying to do operations that require manage rights. In Azure Functions version 2.x, this property is not available because the latest version of the Storage SDK doesn't support manage operations.|
+|**type** | Yok | "ServiceBusTrigger için" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | Yok | "İçin" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | Yok | İşlev kodu, kuyruk veya konuda ileti temsil eden değişken adı. İşlev dönüş değeri başvurmak için "$return için" ayarlayın. |
+|**Adı**|**Adı**|İzlemek için Kuyruğun adı.  Yalnızca bir konu için bir kuyruk izleme ayarlayın.
+|**topicName**|**TopicName**|İzlemek için konunun adı. Bir kuyruk için bir konu, yalnızca izleme ayarlayın.|
+|**subscriptionName**|**SubscriptionName**|İzlemek için Abonelik adı. Bir kuyruk için bir konu, yalnızca izleme ayarlayın.|
+|**bağlanma**|**Bağlanma**|Bu bağlama için kullanılacak hizmet veri yolu bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, yalnızca kalanı adını belirtebilirsiniz. Örneğin, `connection` "MyServiceBus" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Service Bus ad alanı bir belirli bir kuyruğa veya konuya sınırlı olmayan bir bağlantı dizesi olmalıdır. |
+|**accessRights**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve `listen`. Varsayılan değer `manage`, `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, `accessRights` "Dinle" olarak ayarlayın. Aksi takdirde, İşlevler çalışma zamanı gerektiren işlemler yapmaya başarısız olabilir, hakları yönetin. Azure işlevleri sürüm 2.x, bu özellik kullanılabilir değil depolama SDK'sı en son sürümünü desteklemediğinden işlemleri yönetin.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Tetikleyici - kullanım
 
-In C# and C# script, you can use the following parameter types for the queue or topic message:
+C# ve C# betiği aşağıdaki parametre türleri için kuyruk veya konuda ileti kullanabilirsiniz:
 
-* `string` - If the message is text.
-* `byte[]` - Useful for binary data.
-* A custom type - If the message contains JSON, Azure Functions tries to deserialize the JSON data.
-* `BrokeredMessage` - Gives you the deserialized message with the [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) method.
+* `string`-ileti metin ise.
+* `byte[]`-ikili veriler için kullanışlıdır.
+* İleti, JSON içeriyorsa bir özel tür - Azure işlevleri JSON verileri seri durumdan çalışır.
+* `BrokeredMessage`-' de, [aracılı edmessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
-These parameters are for Azure Functions version 1.x; for 2.x, use [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) instead of `BrokeredMessage`.
+Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x için `BrokeredMessage`yerine [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) kullanın.
 
-In JavaScript, access the queue or topic message by using `context.bindings.<name from function.json>`. The Service Bus message is passed into the function as either a string or JSON object.
+JavaScript 'te `context.bindings.<name from function.json>`kullanarak kuyruk veya konu iletisine erişin. Service Bus iletiyi bir dize veya bir JSON nesnesi olarak işleve geçirilir.
 
-## <a name="trigger---poison-messages"></a>Trigger - poison messages
+## <a name="trigger---poison-messages"></a>Tetikleyici - zehirli iletiler
 
-Poison message handling can't be controlled or configured in Azure Functions. Service Bus handles poison messages itself.
+Zehirli ileti işleme denetlenen veya Azure işlevleri'nde yapılandırılır. Service Bus kendisini zehirli iletileri işler.
 
-## <a name="trigger---peeklock-behavior"></a>Trigger - PeekLock behavior
+## <a name="trigger---peeklock-behavior"></a>Tetikleyici - PeekLock davranışı
 
-The Functions runtime receives a message in [PeekLock mode](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). It calls `Complete` on the message if the function finishes successfully, or calls `Abandon` if the function fails. If the function runs longer than the `PeekLock` timeout, the lock is automatically renewed as long as the function is running. 
+Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. İşlev başarıyla tamamlandığında ileti üzerinde `Complete` çağırır veya işlev başarısız olursa `Abandon` çağırır. İşlev `PeekLock` zaman aşımından daha uzun süre çalışırsa, işlev çalıştığı sürece kilit otomatik olarak yenilenir. 
 
-The `maxAutoRenewDuration` is configurable in *host.json*, which maps to [OnMessageOptions.MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). The maximum allowed for this setting is 5 minutes according to the Service Bus documentation, whereas you can increase the Functions time limit from the default of 5 minutes to 10 minutes. For Service Bus functions you wouldn’t want to do that then, because you’d exceed the Service Bus renewal limit.
+`maxAutoRenewDuration`, [Onmessageoptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *Host. JSON*' da yapılandırılabilir. Bu ayar için izin verilen en fazla 10 dakika, 5 dakikalık varsayılan işlevler zaman sınırı artırabilirsiniz ancak Service Bus belgeleri göre 5 dakikadır. Service Bus yenileme sınırı aşacağından için Service Bus işlevleri, daha sonra bunu istemezsiniz.
 
-## <a name="trigger---message-metadata"></a>Trigger - message metadata
+## <a name="trigger---message-metadata"></a>Tetikleyici - ileti meta verileri
 
-The Service Bus trigger provides several [metadata properties](./functions-bindings-expressions-patterns.md#trigger-metadata). These properties can be used as part of binding expressions in other bindings or as parameters in your code. These are properties of the [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) class.
+Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalar bağlama ifadelerinde parçası olarak veya kodunuzu parametreler olarak kullanılabilir. Bunlar, [Brokeredmessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sınıfının özellikleridir.
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|The number of deliveries.|
-|`DeadLetterSource`|`string`|The dead letter source.|
-|`ExpiresAtUtc`|`DateTime`|The expiration time in UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|The enqueued time in UTC.|
-|`MessageId`|`string`|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
-|`ContentType`|`string`|A content type identifier utilized by the sender and receiver for application specific logic.|
-|`ReplyTo`|`string`|The reply to queue address.|
-|`SequenceNumber`|`Int64`|The unique number assigned to a message by the Service Bus.|
-|`To`|`string`|The send to address.|
-|`Label`|`string`|The application specific label.|
-|`CorrelationId`|`string`|The correlation ID.|
+|`DeliveryCount`|`Int32`|Teslimat sayısı.|
+|`DeadLetterSource`|`string`|Atılacak Mektubu kaynağı.|
+|`ExpiresAtUtc`|`DateTime`|Sona erme saati UTC diliminde saat.|
+|`EnqueuedTimeUtc`|`DateTime`|Sıraya alınan saati UTC diliminde saat.|
+|`MessageId`|`string`|Service Bus yinelenen iletileri tanımlamak için etkinleştirilirse kullanabileceğiniz bir kullanıcı tanımlı bir değer.|
+|`ContentType`|`string`|Belirli mantıksal uygulama için alıcı ve gönderen tarafından kullanılan bir içerik türü tanımlayıcısı.|
+|`ReplyTo`|`string`|Kuyruk adresine yanıt.|
+|`SequenceNumber`|`Int64`|Bir ileti için Service Bus tarafından atanmış benzersiz sayı.|
+|`To`|`string`|Adresine gönderin.|
+|`Label`|`string`|Uygulamaya özgü etiket.|
+|`CorrelationId`|`string`|Bağıntı Kimliği|
 
 > [!NOTE]
-> Currently, Service bus trigger that works with session enabled queues and subscriptions is in preview. Please track [this item](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) for any further updates regarding this. 
+> Şu anda oturum etkinleştirilmiş kuyruklar ve abonelikler ile birlikte çalışarak Service Bus tetikleyicisi önizlemededir. Bu sorun hakkında daha fazla güncelleştirme için lütfen [Bu öğeyi](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) izleyin. 
 
-See [code examples](#trigger---example) that use these properties earlier in this article.
+Bu makalenin önceki kısımlarında bu özellikleri kullanan [kod örneklerine](#trigger---example) bakın.
 
 ## <a name="output"></a>Çıktı
 
-Use Azure Service Bus output binding to send queue or topic messages.
+Kuyruk veya konuda ileti göndermek için Azure Service Bus'ı çıkışı bağlama kullanın.
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Çıkış - örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#betik (. CSX)](#output---c-script-example)
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Çıkış - C# örneği
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that sends a Service Bus queue message:
+Aşağıdaki örnek, Service Bus kuyruğu iletisi gönderen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir:
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -406,11 +406,11 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Çıkış - C# betiği örneği
 
-The following example shows a Service Bus output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus çıktı bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev, her 15 saniyede bir kuyruğa ileti göndermek için zamanlama tetikleyicisini kullanır.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -434,7 +434,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's C# script code that creates a single message:
+Tek bir ileti oluşturan C# betik kodunu şu şekildedir:
 
 ```cs
 public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
@@ -445,7 +445,7 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 }
 ```
 
-Here's C# script code that creates multiple messages:
+Birden çok ileti oluşturan aşağıda verilmiştir; C# betik kodu:
 
 ```cs
 public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
@@ -457,11 +457,11 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Output - F# example
+### <a name="output---f-example"></a>Çıkış - F# örneği
 
-The following example shows a Service Bus output binding in a *function.json* file and an [F# script function](functions-reference-fsharp.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus çıktı bağlamasını ve bağlamayı kullanan bir [ F# betik işlevini](functions-reference-fsharp.md) gösterir. İşlev, her 15 saniyede bir kuyruğa ileti göndermek için zamanlama tetikleyicisini kullanır.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -485,7 +485,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's F# script code that creates a single message:
+İşte F# betik kodu, tek bir ileti oluşturur:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
@@ -494,9 +494,9 @@ let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
-### <a name="output---java-example"></a>Output - Java example
+### <a name="output---java-example"></a>Çıkış - Java örnek
 
-The following example shows a Java function that sends a message to a Service Bus queue `myqueue` when triggered by a HTTP request.
+Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendiğinde Service Bus kuyruğu `myqueue` bir ileti gönderen Java işlevini gösterir.
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -510,9 +510,9 @@ public String pushToQueue(
  }
 ```
 
- In the [Java functions runtime library](/java/api/overview/azure/functions/runtime), use the `@QueueOutput` annotation on function parameters whose value would be written to a Service Bus queue.  The parameter type should be `OutputBinding<T>`, where T is any native Java type of a POJO.
+ [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri bir Service Bus kuyruğuna yazılacak olan işlev parametrelerinde `@QueueOutput` ek açıklamayı kullanın.  Parametre türü `OutputBinding<T>`olmalıdır; burada T bir POJO 'nın herhangi bir yerel Java türüdür.
 
-Java functions can also write to a Service Bus topic. The following example uses the `@ServiceBusTopicOutput` annotation to describe the configuration for the output binding. 
+Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, çıkış bağlamasının yapılandırmasını anlatmak için `@ServiceBusTopicOutput` ek açıklamasını kullanır. 
 
 ```java
 @FunctionName("sbtopicsend")
@@ -529,11 +529,11 @@ Java functions can also write to a Service Bus topic. The following example uses
     }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Çıkış - JavaScript örneği
 
-The following example shows a Service Bus output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus çıktı bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, her 15 saniyede bir kuyruğa ileti göndermek için zamanlama tetikleyicisini kullanır.
 
-Here's the binding data in the *function.json* file:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -557,7 +557,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's JavaScript script code that creates a single message:
+Tek bir ileti oluşturur JavaScript betik kodunu şu şekildedir:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -568,7 +568,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Here's JavaScript script code that creates multiple messages:
+Birden çok ileti oluşturur JavaScript betik kodunu şu şekildedir:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -581,11 +581,11 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Output - Python example
+### <a name="output---python-example"></a>Output-Python örneği
 
-The following example demonstrates how to write out to a ServiceBus queue in Python.
+Aşağıdaki örnek, Python 'da ServiceBus kuyruğuna nasıl yazılacağını gösterir.
 
-A ServiceBue binding definition is defined in *function.json* where *type* is set to `serviceBus`.
+Bir ServiceBue bağlama tanımı, *Type* 'ın `serviceBus`olarak ayarlandığı *function. JSON* içinde tanımlanmıştır.
 
 ```json
 {
@@ -617,7 +617,7 @@ A ServiceBue binding definition is defined in *function.json* where *type* is se
 }
 ```
 
-In *_\_init_\_.py*, you can write out a message to the queue by passing a value to the `set` method.
+*_\_init_\_. kopyala*'da, `set` yöntemine bir değer geçirerek bir ileti yazabilirsiniz.
 
 ```python
 import azure.functions as func
@@ -631,11 +631,11 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Çıkış - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [servicebusattribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs)' u kullanın.
 
-The attribute's constructor takes the name of the queue or the topic and subscription. You can also specify the connection's access rights. How to choose the access rights setting is explained in the [Output - configuration](#output---configuration) section. Here's an example that shows the attribute applied to the return value of the function:
+Özniteliğin oluşturucusu, kuyruk veya konu ve abonelik adını alır. Bağlantının erişim hakları de belirtebilirsiniz. Erişim hakları ayarını seçme, [çıkış-yapılandırma](#output---configuration) bölümünde açıklanmaktadır. İşlev dönüş değeri için uygulanan öznitelik gösteren bir örnek aşağıda verilmiştir:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -646,7 +646,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-You can set the `Connection` property to specify the Service Bus account to use, as shown in the following example:
+Aşağıdaki örnekte gösterildiği gibi, kullanılacak Service Bus hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -657,64 +657,64 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output---c-example).
 
-You can use the `ServiceBusAccount` attribute to specify the Service Bus account to use at class, method, or parameter level.  For more information, see [Trigger - attributes](#trigger---attributes).
+Sınıf, yöntem veya parametre düzeyinde kullanılacak Service Bus hesabını belirtmek için `ServiceBusAccount` özniteliğini kullanabilirsiniz.  Daha fazla bilgi için bkz. [tetikleyici-öznitelikler](#trigger---attributes).
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `ServiceBus` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `ServiceBus` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Must be set to "serviceBus". This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | Yok | Must be set to "out". This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | Yok | The name of the variable that represents the queue or topic in function code. Set to "$return" to reference the function return value. |
-|**queueName**|**QueueName**|Name of the queue.  Set only if sending queue messages, not for a topic.
-|**topicName**|**TopicName**|Name of the topic to monitor. Set only if sending topic messages, not for a queue.|
-|**connection**|**Connection**|The name of an app setting that contains the Service Bus connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name. For example, if you set `connection` to "MyServiceBus", the Functions runtime looks for an app setting that is named "AzureWebJobsMyServiceBus." If you leave `connection` empty, the Functions runtime uses the default Service Bus connection string in the app setting that is named "AzureWebJobsServiceBus".<br><br>To obtain a connection string, follow the steps shown at [Get the management credentials](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). The connection string must be for a Service Bus namespace, not limited to a specific queue or topic.|
-|**accessRights**|**Erişim**|Access rights for the connection string. Available values are `manage` and `listen`. The default is `manage`, which indicates that the `connection` has the **Manage** permission. If you use a connection string that does not have the **Manage** permission, set `accessRights` to "listen". Otherwise, the Functions runtime might fail trying to do operations that require manage rights. In Azure Functions version 2.x, this property is not available because the latest version of the Storage SDK doesn't support manage operations.|
+|**type** | Yok | "Service Bus" için ayarlanmış olması gerekir. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | Yok | "Out" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | Yok | Kuyruk veya konuda işlev kodunu temsil eden değişken adı. İşlev dönüş değeri başvurmak için "$return için" ayarlayın. |
+|**Adı**|**Adı**|Kuyruğun adı.  Yalnızca bir konu için kuyruk iletileri gönderme ayarlayın.
+|**topicName**|**TopicName**|İzlemek için konunun adı. Yalnızca bir kuyruk için konu iletileri gönderme ayarlayın.|
+|**bağlanma**|**Bağlanma**|Bu bağlama için kullanılacak hizmet veri yolu bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, yalnızca kalanı adını belirtebilirsiniz. Örneğin, `connection` "MyServiceBus" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Service Bus ad alanı bir belirli bir kuyruğa veya konuya sınırlı olmayan bir bağlantı dizesi olmalıdır.|
+|**accessRights**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve `listen`. Varsayılan değer `manage`, `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, `accessRights` "Dinle" olarak ayarlayın. Aksi takdirde, İşlevler çalışma zamanı gerektiren işlemler yapmaya başarısız olabilir, hakları yönetin. Azure işlevleri sürüm 2.x, bu özellik kullanılabilir değil depolama SDK'sı en son sürümünü desteklemediğinden işlemleri yönetin.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Çıkış - kullanım
 
-In Azure Functions 1.x, the runtime creates the queue if it doesn't exist and you have set `accessRights` to `manage`. In Functions version 2.x, the queue or topic must already exist; if you specify a queue or topic that doesn't exist, the function will fail. 
+Azure Işlevleri 1. x içinde, çalışma zamanı yoksa kuyruğu oluşturur ve `manage`olarak `accessRights` ayarlamış olursunuz. İşlevleri sürüm 2.x, kuyruk veya konuda zaten bulunmalıdır; bir kuyruk veya konu yok belirtirseniz işlev başarısız olur. 
 
-In C# and C# script, you can use the following parameter types for the output binding:
+C# ve C# betiği aşağıdaki parametre türleri için çıkış bağlaması kullanabilirsiniz:
 
-* `out T paramName` - `T` can be any JSON-serializable type. If the parameter value is null when the function exits, Functions creates the message with a null object.
-* `out string` - If the parameter value is null when the function exits, Functions does not create a message.
-* `out byte[]` - If the parameter value is null when the function exits, Functions does not create a message.
-* `out BrokeredMessage` - If the parameter value is null when the function exits, Functions does not create a message (for Functions 1.x)
-* `out Message` - If the parameter value is null when the function exits, Functions does not create a message (for Functions 2.x)
-* `ICollector<T>` or `IAsyncCollector<T>` - For creating multiple messages. A message is created when you call the `Add` method.
+* `out T paramName` - `T` herhangi bir JSON-Serializable türü olabilir. Parametre değeri null ise, işlev işlevleri ileti ile null bir nesne oluşturur.
+* `out string`-işlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
+* `out byte[]`-işlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
+* `out BrokeredMessage`-işlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
+* `out Message`-işlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x Işlevleri için)
+* `ICollector<T>` veya `IAsyncCollector<T>`-birden çok ileti oluşturmak Için. `Add` yöntemini çağırdığınızda bir ileti oluşturulur.
 
-When working with C# functions:
+C# İşlevlerle çalışırken:
 
-* Async functions need a return value or `IAsyncCollector` instead of an `out` parameter.
+* Zaman uyumsuz işlevlerin bir `out` parametresi yerine bir dönüş değeri veya `IAsyncCollector` olması gerekir.
 
-* To access the session ID, bind to a [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type and use the `sessionId` property.
+* Oturum KIMLIĞINE erişmek için [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türüne bağlayın ve `sessionId` özelliğini kullanın.
 
-In JavaScript, access the queue or topic by using `context.bindings.<name from function.json>`. You can assign a string, a byte array, or a JavaScript object (deserialized into JSON) to `context.binding.<name>`.
+JavaScript 'te `context.bindings.<name from function.json>`kullanarak kuyruğa veya konuya erişin. `context.binding.<name>`için bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON 'a serisi) atayabilirsiniz.
 
-To send a message to a session-enabled queue in non-C# languages, use the [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) rather than the built-in output binding.
+C# Diller dışında, oturum etkin bir kuyruğa ileti göndermek için yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
 
-| Binding | Başvuru |
+| Bağlama | Başvuru |
 |---|---|
-| Service Bus | [Service Bus Error Codes](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| Service Bus | [Service Bus Limits](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [Service Bus hata kodları](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| Service Bus | [Service Bus sınırları](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Host.JSON ayarları
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+Bu bölümde sürümünde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır 2.x. Aşağıdaki örnek host.json dosyasını yalnızca bu bağlama için sürüm 2.x ayarları içerir. Sürüm 2. x içindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürüm 2. x için Host. JSON başvurusu](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -734,13 +734,13 @@ This section describes the global configuration settings available for this bind
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|maxAutoRenewDuration|00:05:00|The maximum duration within which the message lock will be renewed automatically.|
-|autoComplete|doğru|Whether the trigger should immediately mark as complete (autocomplete) or wait for processing to call complete.|
-|maxConcurrentCalls|16|The maximum number of concurrent calls to the callback that the message pump should initiate. By default, the Functions runtime processes multiple messages concurrently. To direct the runtime to process only a single queue or topic message at a time, set `maxConcurrentCalls` to 1. |
-|prefetchCount|Yok|The default PrefetchCount that will be used by the underlying MessageReceiver.|
+|maxAutoRenewDuration|00:05:00|En uzun süre içinde otomatik olarak ileti kilidi yenilenir.|
+|Otomatik Tamamlama|doğru|Tetikleyici hemen tam (Otomatik Tamamlama) işaretlemek olup tam çağrı işlemenin tamamlanmasını bekleyin.|
+|maxConcurrentCalls|16|İleti pompası başlatmalıdır geri çağırma eş zamanlı çağrı sayısı. Varsayılan olarak, İşlevler çalışma zamanı aynı anda birden çok ileti işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` ayarlayın. |
+|prefetchCount|Yok|Varsayılan temel alınan MessageReceiver tarafından kullanılacak PrefetchCount.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

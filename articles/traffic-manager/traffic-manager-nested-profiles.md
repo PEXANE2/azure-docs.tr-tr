@@ -1,7 +1,7 @@
 ---
-title: Nested Traffic Manager Profiles in Azure
+title: Azure 'da iç içe Traffic Manager profilleri
 titleSuffix: Azure Traffic Manager
-description: This article explains the 'Nested Profiles' feature of Azure Traffic Manager
+description: Bu makalede, Azure Traffic Manager ' Iç Içe profil ' özelliği açıklanmaktadır
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -22,98 +22,98 @@ ms.locfileid: "74227744"
 ---
 # <a name="nested-traffic-manager-profiles"></a>İç İçe Traffic Manager profilleri
 
-Traffic Manager includes a range of traffic-routing methods that allow you to control how Traffic Manager chooses which endpoint should receive traffic from each end user. For more information, see [Traffic Manager traffic-routing methods](traffic-manager-routing-methods.md).
+Traffic Manager, her bir son kullanıcıdan gelen trafiği hangi uç noktanın alacağını Traffic Manager denetlemenize olanak tanıyan bir dizi trafik yönlendirme yöntemini içerir. Daha fazla bilgi için bkz. [Traffic Manager trafik-yönlendirme yöntemleri](traffic-manager-routing-methods.md).
 
-Each Traffic Manager profile specifies a single traffic-routing method. However, there are scenarios that require more sophisticated traffic routing than the routing provided by a single Traffic Manager profile. You can nest Traffic Manager profiles to combine the benefits of more than one traffic-routing method. Nested profiles allow you to override the default Traffic Manager behavior to support larger and more complex application deployments.
+Her Traffic Manager profili tek bir trafik yönlendirme yöntemini belirtir. Ancak, tek bir Traffic Manager profili tarafından sağlanmış olan yönlendirmeden daha karmaşık trafik yönlendirmesi gerektiren senaryolar vardır. Birden fazla trafik yönlendirme yönteminin avantajlarını birleştirmek için Traffic Manager profillerini iç içe geçirebilirsiniz. İç içe geçmiş profiller, daha büyük ve daha karmaşık uygulama dağıtımlarını desteklemek için varsayılan Traffic Manager davranışını geçersiz kılmanızı sağlar.
 
-The following examples illustrate how to use nested Traffic Manager profiles in various scenarios.
+Aşağıdaki örneklerde, çeşitli senaryolarda iç içe geçmiş Traffic Manager profillerinin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Example 1: Combining 'Performance' and 'Weighted' traffic routing
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Örnek 1: ' Performance ' ve ' ağırlıklı ' trafik yönlendirmeyi birleştirme
 
-Suppose that you deployed an application in the following Azure regions: West US, West Europe, and East Asia. You use Traffic Manager's 'Performance' traffic-routing method to distribute traffic to the region closest to the user.
+Bir uygulamayı şu Azure bölgelerinde dağıttığınızı varsayalım: Batı ABD, Batı Avrupa ve Doğu Asya. Trafiği kullanıcıya en yakın bölgeye dağıtmak için Traffic Manager ' Performance ' trafik yönlendirme yöntemini kullanırsınız.
 
-![Single Traffic Manager profile][4]
+![Tek Traffic Manager profili][4]
 
-Now, suppose you wish to test an update to your service before rolling it out more widely. You want to use the 'weighted' traffic-routing method to direct a small percentage of traffic to your test deployment. You set up the test deployment alongside the existing production deployment in West Europe.
+Şimdi, daha kapsamlı bir şekilde kullanıma sunulmadan önce hizmetinize bir güncelleştirmeyi test etmek istediğinizi varsayalım. Test dağıtımınıza küçük bir trafik yüzdesini yönlendirmek için ' ağırlıklı ' trafik-yönlendirme yöntemini kullanmak istiyorsunuz. Test dağıtımını, Batı Avrupa içindeki mevcut üretim dağıtımıyla birlikte ayarlarsınız.
 
-You cannot combine both 'Weighted' and 'Performance traffic-routing in a single profile. To support this scenario, you create a Traffic Manager profile using the two West Europe endpoints and the 'Weighted' traffic-routing method. Next, you add this 'child' profile as an endpoint to the 'parent' profile. The parent profile still uses the Performance traffic-routing method and contains the other global deployments as endpoints.
+Tek bir profilde hem ' ağırlıklı ' hem de ' performans trafiği-yönlendirmeyi birleştiremezsiniz. Bu senaryoyu desteklemek için, iki Batı Avrupa uç noktasını ve ' ağırlıklı ' trafik-yönlendirme yöntemini kullanarak bir Traffic Manager profili oluşturursunuz. Sonra, bu ' alt ' profilini ' üst ' profiline bir uç nokta olarak eklersiniz. Üst profil hala performans trafiği-yönlendirme yöntemini kullanır ve diğer genel dağıtımları uç noktalar olarak içerir.
 
-The following diagram illustrates this example:
+Aşağıdaki diyagramda Bu örnek gösterilmektedir:
 
 ![İç İçe Traffic Manager profilleri][2]
 
-In this configuration, traffic directed via the parent profile distributes traffic across regions normally. Within West Europe, the nested profile distributes traffic to the production and test endpoints according to the weights assigned.
+Bu yapılandırmada, üst profille yönlendirilen trafik, trafiği normal şekilde bölgeler arasında dağıtır. Batı Avrupa içinde, iç içe profil, atanan ağırlığa göre trafiği üretim ve test uç noktalarına dağıtır.
 
-When the parent profile uses the 'Performance' traffic-routing method, each endpoint must be assigned a location. The location is assigned when you configure the endpoint. Choose the Azure region closest to your deployment. The Azure regions are the location values supported by the Internet Latency Table. For more information, see [Traffic Manager 'Performance' traffic-routing method](traffic-manager-routing-methods.md#performance).
+Üst profil ' Performance ' trafik-yönlendirme yöntemini kullandığında, her bir uç noktaya bir konum atanması gerekir. Uç noktasını yapılandırdığınızda konum atanır. Dağıtımınıza en yakın Azure bölgesini seçin. Azure bölgeleri, Internet gecikme süresi tablosu tarafından desteklenen konum değerleridir. Daha fazla bilgi için bkz. [' Performance ' trafik-yönlendirme yöntemi Traffic Manager](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Example 2: Endpoint monitoring in Nested Profiles
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Örnek 2: Iç Içe profillerde uç nokta izleme
 
-Traffic Manager actively monitors the health of each service endpoint. If an endpoint is unhealthy, Traffic Manager directs users to alternative endpoints to preserve the availability of your service. This endpoint monitoring and failover behavior applies to all traffic-routing methods. For more information, see [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md). Endpoint monitoring works differently for nested profiles. With nested profiles, the parent profile doesn't perform health checks on the child directly. Instead, the health of the child profile's endpoints is used to calculate the overall health of the child profile. This health information is propagated up the nested profile hierarchy. The parent profile uses this aggregated health to determine whether to direct traffic to the child profile. See the [FAQ](traffic-manager-FAQs.md#traffic-manager-nested-profiles) for full details on health monitoring of nested profiles.
+Traffic Manager her bir hizmet uç noktasının durumunu etkin bir şekilde izler. Bir uç nokta sağlıksız ise, Traffic Manager hizmetinizin kullanılabilirliğini korumak için kullanıcıları alternatif uç noktalara yönlendirir. Bu uç nokta izleme ve yük devretme davranışı tüm trafik yönlendirme yöntemleri için geçerlidir. Daha fazla bilgi için bkz. [Traffic Manager uç nokta izleme](traffic-manager-monitoring.md). Uç nokta izleme, iç içe profiller için farklı şekilde çalışır. İç içe profiller sayesinde, üst profil doğrudan alt üzerinde sistem durumu denetimleri gerçekleştirmez. Bunun yerine, alt profilin genel durumunu hesaplamak için alt profilin uç noktalarının sistem durumu kullanılır. Bu durum bilgileri, iç içe geçmiş profil hiyerarşisinin yayılmıştır. Üst profil, trafiğin alt profile yönlendirip yönlendirmeyeceğini anlamak için bu toplanmış sistem durumunu kullanır. İç içe geçmiş profillerin sistem durumu izlemeyle ilgili ayrıntılı bilgi için [SSS](traffic-manager-FAQs.md#traffic-manager-nested-profiles) bölümüne bakın.
 
-Returning to the previous example, suppose the production deployment in West Europe fails. By default, the 'child' profile directs all traffic to the test deployment. If the test deployment also fails, the parent profile determines that the child profile should not receive traffic since all child endpoints are unhealthy. Then, the parent profile distributes traffic to the other regions.
+Önceki örneğe dönerek Batı Avrupa içindeki üretim dağıtımının başarısız olduğunu varsayalım. Varsayılan olarak, ' alt ' profili tüm trafiği test dağıtımına yönlendirir. Test dağıtımı da başarısız olursa, üst profil tüm alt uç noktaları sağlıksız olduğundan alt profilin trafik almamalı olduğunu belirler. Daha sonra, üst profil trafiği diğer bölgelere dağıtır.
 
-![Nested Profile failover (default behavior)][3]
+![İç içe profil yük devretme (varsayılan davranış)][3]
 
-You might be happy with this arrangement. Or you might be concerned that all traffic for West Europe is now going to the test deployment instead of a limited subset traffic. Regardless of the health of the test deployment, you want to fail over to the other regions when the production deployment in West Europe fails. To enable this failover, you can specify the 'MinChildEndpoints' parameter when configuring the child profile as an endpoint in the parent profile. The parameter determines the minimum number of available endpoints in the child profile. The default value is '1'. For this scenario, you set the MinChildEndpoints value to 2. Below this threshold, the parent profile considers the entire child profile to be unavailable and directs traffic to the other endpoints.
+Bu düzenleme ile memnun olabilirsiniz. Ya da Batı Avrupa için tüm trafiğin artık sınırlı bir alt küme trafiği yerine test dağıtımına gittiğinin endişeniz olabilir. Test dağıtımının sistem durumu ne olursa olsun, Batı Avrupa ' deki üretim dağıtımı başarısız olduğunda diğer bölgelere yük devretmek istersiniz. Bu yük devretmeyi etkinleştirmek için alt profili üst profilde bir uç nokta olarak yapılandırırken ' MinChildEndpoints ' parametresini belirtebilirsiniz. Parametresi, alt profildeki kullanılabilir uç noktaların minimum sayısını belirler. Varsayılan değer ' 1 '. Bu senaryo için MinChildEndpoints değerini 2 olarak ayarlarsınız. Bu eşiğin altında, üst profil tüm alt profilin kullanılamaz olduğunu varsayar ve trafiği diğer uç noktalara yönlendirir.
 
-The following figure illustrates this configuration:
+Aşağıdaki şekilde bu yapılandırma gösterilmektedir:
 
-![Nested Profile failover with 'MinChildEndpoints' = 2][4]
+![' MinChildEndpoints ' ile iç içe profil yük devretmesi = 2][4]
 
 > [!NOTE]
-> The 'Priority' traffic-routing method distributes all traffic to a single endpoint. Thus there is little purpose in a MinChildEndpoints setting other than '1' for a child profile.
+> ' Priority ' trafik-yönlendirme yöntemi tüm trafiği tek bir uç noktaya dağıtır. Bu nedenle, alt profil için ' 1 ' dışındaki bir MinChildEndpoints ayarında çok az amaç vardır.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Example 3: Prioritized failover regions in 'Performance' traffic routing
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Örnek 3: ' performans ' trafiği yönlendirmesinde öncelikli yük devretme bölgeleri
 
-The default behavior for the 'Performance' traffic-routing method is when you have endpoints in different geographic locations the end users are routed to the "closest" endpoint in terms of the lowest network latency.
+' Performance ' trafik-yönlendirme yönteminin varsayılan davranışı, farklı coğrafi konumlarda uç noktalarınız olduğunda, son kullanıcıların en düşük ağ gecikmesi açısından "en yakın" uç noktaya yönlendirilmesidir.
 
-However, suppose you prefer the West Europe traffic failover to West US, and only direct traffic to other regions when both endpoints are unavailable. You can create this solution using a child profile with the 'Priority' traffic-routing method.
+Ancak, Batı ABD için Batı Avrupa trafiği yük devretmesini tercih ettiğinizi ve her iki uç nokta de kullanılamadığı zaman yalnızca diğer bölgelere doğrudan trafik yönlendirdiğini varsayalım. Bu çözümü, ' Priority ' trafik yönlendirme yöntemiyle bir alt profil kullanarak oluşturabilirsiniz.
 
-!['Performance' traffic routing with preferential failover][6]
+![Tercihe bağlı yük devretme ile ' performans ' trafiği yönlendirme][6]
 
-Since the West Europe endpoint has higher priority than the West US endpoint, all traffic is sent to the West Europe endpoint when both endpoints are online. If West Europe fails, its traffic is directed to West US. With the nested profile, traffic is directed to East Asia only when both West Europe and West US fail.
+Batı Avrupa uç noktası Batı ABD uç noktasından daha yüksek önceliğe sahip olduğundan, her iki uç nokta de çevrimiçi olduğunda tüm trafik Batı Avrupa uç noktasına gönderilir. Batı Avrupa başarısız olursa, trafiği Batı ABD yönlendirilir. İç içe geçmiş profille, trafik yalnızca Batı Avrupa ve Batı ABD başarısız olduğunda Doğu Asya yönlendirilir.
 
-You can repeat this pattern for all regions. Replace all three endpoints in the parent profile with three child profiles, each providing a prioritized failover sequence.
+Bu kalıbı tüm bölgeler için tekrarlayabilirsiniz. Üst profildeki üç bitiş noktasını, her biri öncelikli bir yük devretme sırası sağlayan üç alt profille değiştirin.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Example 4: Controlling 'Performance' traffic routing between multiple endpoints in the same region
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Örnek 4: aynı bölgedeki birden fazla uç nokta arasında ' performans ' trafiği yönlendirmeyi denetleme
 
-Suppose the 'Performance' traffic-routing method is used in a profile that has more than one endpoint in a particular region. By default, traffic directed to that region is distributed evenly across all available endpoints in that region.
+Belirli bir bölgede birden fazla uç noktaya sahip bir profilde ' Performance ' trafik-yönlendirme yönteminin kullanıldığını varsayın. Varsayılan olarak, bu bölgeye yöneltilen trafik bu bölgedeki tüm kullanılabilir uç noktalar arasında eşit olarak dağıtılır.
 
-!['Performance' traffic routing in-region traffic distribution (default behavior)][7]
+![' Performans ' trafik yönlendirme-bölge içi trafik dağıtımı (varsayılan davranış)][7]
 
-Instead of adding multiple endpoints in West Europe, those endpoints are enclosed in a separate child profile. The child profile is added to the parent as the only endpoint in West Europe. The settings on the child profile can control the traffic distribution with West Europe by enabling priority-based or weighted traffic routing within that region.
+Batı Avrupa birden fazla uç nokta eklemek yerine, bu uç noktalar ayrı bir alt profile alınır. Alt profil, Batı Avrupa ' deki tek uç nokta olarak üst öğeye eklenir. Alt profildeki ayarlar, bu bölge içinde öncelik tabanlı veya ağırlıklı trafik yönlendirmeyi etkinleştirerek Batı Avrupa ile trafik dağılımını denetleyebilir.
 
-!['Performance' traffic routing with custom in-region traffic distribution][8]
+![Özel bölge içi trafik dağıtımı ile ' performans ' trafiği yönlendirme][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Example 5: Per-endpoint monitoring settings
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Örnek 5: uç nokta başına izleme ayarları
 
-Suppose you are using Traffic Manager to smoothly migrate traffic from a legacy on-premises web site to a new Cloud-based version hosted in Azure. For the legacy site, you want to use the home page URI to monitor site health. But for the new Cloud-based version, you are implementing a custom monitoring page (path '/monitor.aspx') that includes additional checks.
+Eski şirket içi bir Web sitesinden gelen trafiği Azure 'da barındırılan yeni bir bulut tabanlı sürüme sorunsuz bir şekilde geçirmek için Traffic Manager kullandığınızı varsayalım. Eski site için, site durumunu izlemek üzere giriş sayfası URI 'sini kullanmak istersiniz. Ancak bulut tabanlı yeni sürüm için, ek denetimler içeren özel bir izleme sayfası (yol '/Monitor.aspx ') uyguız.
 
-![Traffic Manager endpoint monitoring (default behavior)][9]
+![Uç nokta izleme Traffic Manager (varsayılan davranış)][9]
 
-The monitoring settings in a Traffic Manager profile apply to all endpoints within a single profile. With nested profiles, you use a different child profile per site to define different monitoring settings.
+Bir Traffic Manager profilindeki izleme ayarları, tek bir profildeki tüm uç noktalar için geçerlidir. İç içe profiller sayesinde, farklı izleme ayarlarını tanımlamak için her site için farklı bir alt profil kullanırsınız.
 
-![Traffic Manager endpoint monitoring with per-endpoint settings][10]
+![Uç nokta başına ayarlarla uç nokta izleme Traffic Manager][10]
 
 ## <a name="faqs"></a>SSS
 
-* [How do I configure nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [İç içe geçmiş profilleri yapılandırmak Nasıl yaparım??](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
 
-* [How many layers of nesting does Traffic Manger support?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Trafik Yöneticisi kaç tane iç içe geçme katmansın destekler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Can I mix other endpoint types with nested child profiles, in the same Traffic Manager profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Aynı Traffic Manager profilinde, iç içe geçmiş alt profillerle diğer uç nokta türlerini karışık yapabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [How does the billing model apply for Nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Fatura modeli, Iç Içe geçmiş profiller için nasıl uygulanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Is there a performance impact for nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [İç içe geçmiş profiller için bir performans etkisi var mı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
 
-* [How does Traffic Manager compute the health of a nested endpoint in a parent profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Traffic Manager bir üst profilde iç içe geçmiş bir uç noktanın durumunu nasıl hesaplamıştır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about [Traffic Manager profiles](traffic-manager-overview.md)
+[Traffic Manager profilleri](traffic-manager-overview.md) hakkında daha fazla bilgi edinin
 
-Learn how to [create a Traffic Manager profile](traffic-manager-create-profile.md)
+[Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

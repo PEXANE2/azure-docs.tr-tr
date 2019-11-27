@@ -1,6 +1,6 @@
 ---
-title: Azure Storage security guide | Microsoft Docs
-description: Details methods for securing Azure Storage accounts, including management plane security, authorization, network security, encryption, etc.
+title: Azure depolama Güvenlik Kılavuzu | Microsoft Docs
+description: Yönetim düzlemi güvenlik, yetkilendirme, ağ güvenliği, şifreleme vb. dahil olmak üzere Azure depolama hesaplarının güvenliğini sağlamaya yönelik ayrıntılar yöntemleri.
 services: storage
 author: tamram
 ms.service: storage
@@ -16,85 +16,85 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "72926716"
 ---
-# <a name="azure-storage-security-guide"></a>Azure Storage security guide
+# <a name="azure-storage-security-guide"></a>Azure depolama Güvenlik Kılavuzu
 
-Azure Storage provides a comprehensive set of security capabilities that together enable organizations to build and deploy secure applications:
+Azure depolama, kuruluşların güvenli uygulamalar oluşturup dağıtmalarına olanak tanıyan kapsamlı bir dizi güvenlik özelliği sağlar:
 
-- All data (including metadata) written to Azure Storage is automatically encrypted using [Storage Service Encryption (SSE)](storage-service-encryption.md). For more information, see [Announcing Default Encryption for Azure Blobs, Files, Tables, and Queues Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Azure Active Directory (Azure AD) and Role-Based Access Control (RBAC) are supported for both resource management operations and data plane operations:   
-    - You can assign RBAC roles scoped to the storage account to security principals and use Azure AD to authorize resource management operations such as key management.
-    - Azure AD integration is supported for blob and queue data operations. RBAC roles can be scoped to a subscription, resource group, storage account, individual container or queue. Roles can be assigned to a security principal or a managed identity for Azure resources. For more information, see [Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md).
-- Data can be secured in transit between an application and Azure using [Client-Side Encryption](../storage-client-side-encryption.md), HTTPS, or SMB 3.0.  
-- OS and data disks used by Azure virtual machines can be encrypted using [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).
-- Delegated access to the data objects in Azure Storage can be granted using a shared access signature. For more information, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](storage-sas-overview.md).
-- Network-layer security between your application components and storage can be enabled using the storage firewall, service endpoints or private endpoints.
+- Azure depolama 'ya yazılan tüm veriler (meta veriler dahil) [depolama hizmeti şifrelemesi (SSE)](storage-service-encryption.md)kullanılarak otomatik olarak şifrelenir. Daha fazla bilgi için bkz. [Azure Blobları, dosyalar, tablolar ve kuyruklar depolama Için varsayılan şifrelemeyi bildirme](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- Azure Active Directory (Azure AD) ve rol tabanlı Access Control (RBAC) hem kaynak yönetimi işlemleri hem de veri düzlemi işlemleri için desteklenir:   
+    - Depolama hesabına kapsamlı RBAC rollerini güvenlik sorumlularına atayabilir ve anahtar yönetimi gibi kaynak yönetimi işlemlerini yetkilendirmek için Azure AD 'yi kullanabilirsiniz.
+    - Azure AD tümleştirmesi, blob ve kuyruk verileri işlemleri için desteklenir. RBAC rolleri bir abonelik, kaynak grubu, depolama hesabı, tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Roller, bir güvenlik sorumlusuna veya Azure kaynakları için yönetilen kimliğe atanabilir. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
+- Veriler, [Istemci tarafı şifreleme](../storage-client-side-encryption.md), https veya SMB 3,0 kullanarak bir uygulama ile Azure arasında geçiş için güvenli hale getirilir.  
+- Azure sanal makineleri tarafından kullanılan işletim sistemi ve veri diskleri, [Azure disk şifrelemesi](../../security/fundamentals/encryption-overview.md)kullanılarak şifrelenebilir.
+- Azure Storage 'da veri nesnelerine temsilci erişimi, paylaşılan erişim imzası kullanılarak verilebilir. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md).
+- Uygulama bileşenleriniz ve depolama alanı arasındaki ağ katmanı güvenliği, depolama güvenlik duvarı, hizmet uç noktaları veya özel uç noktalar kullanılarak etkinleştirilebilir.
 
-This article provides an overview of each of these security features that can be used with Azure Storage. Links are provided to articles provide additional details on each capability.
+Bu makalede, Azure depolama ile kullanılabilecek olan bu güvenlik özelliklerinin her biri için bir genel bakış sunulmaktadır. Makalelere bağlantılar sağlandığında her bir özellik hakkında ek ayrıntılar sağlar.
 
-Here are the areas covered in this article:
+Bu makalede ele alınan bölgeler şunlardır:
 
-* [Management Plane Security](#management-plane-security) – Securing resource-level access to your Storage Account
+* [Yönetim düzlemi güvenliği](#management-plane-security) – depolama hesabınıza kaynak düzeyinde erişimin güvenliğini sağlama
 
-  The management plane consists of the operations used to manage your storage account. This section covers the Azure Resource Manager deployment model and how to use Role-Based Access Control (RBAC) to control access to your storage accounts. It also addresses managing your storage account keys and how to regenerate them.
+  Yönetim düzlemi, depolama hesabınızı yönetmek için kullanılan işlemlerden oluşur. Bu bölümde Azure Resource Manager dağıtım modeli ve depolama hesaplarınıza erişimi denetlemek için rol tabanlı Access Control (RBAC) nasıl kullanılacağı ele alınmaktadır. Ayrıca, depolama hesabı anahtarlarınızı yönetme ve bunları yeniden oluşturma da ele alınmaktadır.
 
-* [Network Security](#network-security) - Securing network-level access to your Storage Account
+* [Ağ güvenliği](#network-security) -depolama hesabınıza ağ düzeyinde erişimin güvenliğini sağlama
 
-  This section covers how you can secure the network-level access to the storage services endpoints. It discusses how you can use the storage firewall to allow access to your data from specific virtual networks or IP address ranges. It also covers the use of service endpoints and private endpoints with storage accounts.
+  Bu bölüm, depolama hizmetleri uç noktalarına ağ düzeyinde erişimin nasıl güvence altına alınacağını anlatmaktadır. Belirli sanal ağlardan veya IP adresi aralıklarından verilerinize erişim sağlamak için depolama güvenlik duvarını nasıl kullanabileceğinizi anlatır. Ayrıca, hizmet uç noktalarının ve depolama hesaplarıyla özel uç noktaların kullanımını da ele alır.
 
-* [Authorization](#authorization) – Authorizing access to your data
+* [Yetkilendirme](#authorization) – verilerinize erişimi yetkilendirme
 
-  This section describes access to the data objects in your Storage account, such as blobs, files, queues, and tables, using Shared Access Signatures and Stored Access Policies. We will cover both service-level SAS and account-level SAS. We'll also see how to limit access to a specific IP address (or range of IP addresses), how to limit the protocol used to HTTPS, and how to revoke a Shared Access Signature without waiting for it to expire.
+  Bu bölümde, paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanarak Depolama hesabınızdaki Bloblar, dosyalar, kuyruklar ve tablolar gibi veri nesnelerine yönelik erişim açıklanmaktadır. Hem hizmet düzeyi SAS hem de hesap düzeyi SAS 'ları ele alınacaktır. Ayrıca, erişimi belirli bir IP adresine (veya IP adresi aralığına) sınırlamayı, HTTPS için kullanılan protokolü sınırlamayı ve paylaşılan erişim Imzasının süre sonu beklemeden nasıl iptal edileceği de görüyoruz.
 
 * [Aktarım Sırasında Şifreleme](#encryption-in-transit)
 
-  This section discusses how to secure data when you transfer it into or out of Azure Storage. We'll talk about the recommended use of HTTPS and the encryption used by SMB 3.0 for Azure file shares. We will also discuss Client-side Encryption, which enables you to encrypt data before transfer into Storage, and to decrypt the data after it is transferred out of Storage.
+  Bu bölümde, Azure depolama alanına veya dışına aktarırken verilerin nasıl güvenliği anlatılmaktadır. Azure dosya paylaşımları için SMB 3,0 tarafından önerilen HTTPS ve şifrelemenin kullanılması hakkında konuşacağız. Ayrıca, depolama alanına aktarmadan önce verileri şifrelemenizi ve depolama dışına aktarıldıktan sonra verilerin şifresini çözmeyi sağlayan Istemci tarafı şifrelemesini de tartışacağız.
 
 * [Bekleme Sırasında Şifreleme](#encryption-at-rest)
 
-  We will talk about Storage Service Encryption (SSE), which is now automatically enabled for new and existing storage accounts. We will also look at how you can use Azure Disk Encryption and explore the basic differences and cases of Disk Encryption versus SSE versus Client-Side Encryption. We will briefly look at FIPS compliance for U.S. Government computers.
+  Artık yeni ve var olan depolama hesapları için otomatik olarak etkinleştirilen Depolama Hizmeti Şifrelemesi (SSE) hakkında konuşacağız. Ayrıca, Azure disk şifrelemesi 'ni nasıl kullanabileceğinizi ve disk şifrelemesi ile Istemci tarafı şifrelemeye karşı temel farklılıkları ve durumları nasıl keşfededeceğiz. ABD devlet bilgisayarları için FIPS uyumluluğuna kısaca bakacağız.
 
-* Using [Storage Analytics](#storage-analytics) to audit access of Azure Storage
+* Azure Storage erişimini denetlemek için [depolama Analizi](#storage-analytics) kullanma
 
-  This section discusses how to find information in the storage analytics logs for a request. We'll take a look at real storage analytics log data and see how to discern whether a request is made with the Storage account key, with a Shared Access signature, or anonymously, and whether it succeeded or failed.
+  Bu bölümde, bir istek için depolama Analizi günlüklerinde bilgi bulma açıklanmaktadır. Gerçek depolama analiz günlüğü verilerine göz atacağız ve depolama hesabı anahtarıyla bir isteğin, paylaşılan erişim imzası ile mi yoksa anonim olarak mı yoksa başarısız mı olduğunu ve başarılı olup olmadığını nasıl ayırt ettireceğiz.
 
-* [Enabling Browser-Based Clients using CORS](#cross-origin-resource-sharing-cors)
+* [CORS kullanarak tarayıcı tabanlı Istemcileri etkinleştirme](#cross-origin-resource-sharing-cors)
 
-  This section talks about how to allow cross-origin resource sharing (CORS). We'll talk about cross-domain access, and how to handle it with the CORS capabilities built into Azure Storage.
+  Bu bölüm, çıkış noktaları arası kaynak paylaşımına (CORS) izin verme hakkında bilgi verir. Etki alanları arası erişim hakkında konuşacak ve Azure depolama 'da yerleşik CORS özellikleri ile nasıl işleneceğini inceleyeceğiz.
 
-## <a name="management-plane-security"></a>Management Plane Security
-The management plane consists of operations that affect the storage account itself. For example, you can create or delete a storage account, get a list of storage accounts in a subscription, retrieve the storage account keys, or regenerate the storage account keys.
+## <a name="management-plane-security"></a>Yönetim düzlemi güvenliği
+Yönetim düzlemi, depolama hesabının kendisini etkileyen işlemlerden oluşur. Örneğin, bir depolama hesabı oluşturabilir veya silebilir, bir abonelikte depolama hesaplarının bir listesini alabilir, depolama hesabı anahtarlarını alabilir veya depolama hesabı anahtarlarını yeniden oluşturabilirsiniz.
 
-When you create a new storage account, you select a deployment model of Classic or Resource Manager. The Classic model of creating resources in Azure only allows all-or-nothing access to the subscription, and in turn, the storage account.
+Yeni bir depolama hesabı oluşturduğunuzda, klasik veya Kaynak Yöneticisi dağıtım modelini seçersiniz. Azure 'da kaynak oluşturmak için klasik model, yalnızca aboneliğe hiçbir şey erişimi ve depolama hesabını sırayla sağlar.
 
-This guide focuses on the Resource Manager model that is the recommended means for creating storage accounts. With the Resource Manager storage accounts, rather than giving access to the entire subscription, you can control access on a more finite level to the management plane using Role-Based Access Control (RBAC).
+Bu kılavuz, depolama hesapları oluşturmak için önerilen yollarla Kaynak Yöneticisi modeline odaklanır. Kaynak Yöneticisi depolama hesapları ile aboneliğin tamamına erişim vermek yerine, rol tabanlı Access Control (RBAC) kullanarak yönetim düzlemine erişimi daha sınırlı bir düzeyde denetleyebilirsiniz.
 
-### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>How to secure your storage account with Role-Based Access Control (RBAC)
-Let's talk about what RBAC is, and how you can use it. Her Azure aboneliği bir Azure Active Directory’ye sahiptir. Users, groups, and applications from that directory can be granted access to manage resources in the Azure subscription that use the Resource Manager deployment model. This type of security is referred to as Role-Based Access Control (RBAC). To manage this access, you can use the [Azure portal](https://portal.azure.com/), the [Azure CLI tools](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), or the [Azure Storage Resource Provider REST APIs](https://msdn.microsoft.com/library/azure/mt163683.aspx).
+### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>Rol tabanlı Access Control (RBAC) ile depolama hesabınızı güvenli hale getirme
+RBAC 'in ne olduğu ve nasıl kullanılacağı hakkında konuşalım. Her Azure aboneliği bir Azure Active Directory’ye sahiptir. Bu dizindeki kullanıcılara, gruplara ve uygulamalara, Kaynak Yöneticisi dağıtım modelini kullanan Azure aboneliğindeki kaynakları yönetmek için erişim izni verilebilir. Bu tür bir güvenlik, rol tabanlı Access Control (RBAC) olarak adlandırılır. Bu erişimi yönetmek için [Azure Portal](https://portal.azure.com/), [Azure CLI araçları](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs)veya [Azure depolama kaynak sağlayıcısı REST API 'lerini](https://msdn.microsoft.com/library/azure/mt163683.aspx)kullanabilirsiniz.
 
-With the Resource Manager model, you put the storage account in a resource group and control access to the management plane of that specific storage account using Azure Active Directory. For example, you can give specific users the ability to access the storage account keys, while other users can view information about the storage account, but cannot access the storage account keys.
+Kaynak Yöneticisi modeliyle, depolama hesabını bir kaynak grubuna yerleştirip, bu belirli depolama hesabının yönetim düzlemine erişimi Azure Active Directory kullanarak kontrol edersiniz. Örneğin, belirli kullanıcılara depolama hesabı anahtarlarına erişme özelliği verebilirsiniz, ancak diğer kullanıcılar depolama hesabı hakkındaki bilgileri görüntüleyebilir, ancak depolama hesabı anahtarlarına erişemez.
 
-#### <a name="granting-access"></a>Granting Access
-Access is granted by assigning the appropriate RBAC role to users, groups, and applications, at the right scope. To grant access to the entire subscription, you assign a role at the subscription level. You can grant access to all of the resources in a resource group by granting permissions to the resource group itself. You can also assign specific roles to specific resources, such as storage accounts.
+#### <a name="granting-access"></a>Erişim verme
+Kullanıcılara, gruplara ve uygulamalara uygun RBAC rolü doğru kapsamda atanarak erişim verilir. Tüm aboneliğe erişim vermek için abonelik düzeyinde bir rol atarsınız. Kaynak grubunun kendisine izinler vererek bir kaynak grubundaki tüm kaynaklara erişim izni verebilirsiniz. Depolama hesapları gibi belirli kaynaklara belirli roller de atayabilirsiniz.
 
-Here are the main points that you need to know about using RBAC to access the management operations of an Azure Storage account:
+Azure depolama hesabının yönetim işlemlerine erişmek için RBAC kullanma hakkında bilmeniz gereken ana noktaları burada bulabilirsiniz:
 
-* When you assign access, you basically assign a role to the account that you want to have access. You can control access to the operations used to manage that storage account, but not to the data objects in the account. For example, you can grant permission to retrieve the properties of the storage account (such as redundancy), but not to a container or data within a container inside Blob Storage.
-* For someone to have permission to access the data objects in the storage account, you can give them permission to read the storage account keys, and that user can then use those keys to access the blobs, queues, tables, and files.
-* Roles can be assigned to a specific user account, a group of users, or to a specific application.
-* Each role has a list of Actions and Not Actions. For example, the Virtual Machine Contributor role has an Action of "listKeys" that allows the storage account keys to be read. The Contributor has "Not Actions" such as updating the access for users in the Active Directory.
-* Roles for storage include (but are not limited to) the following roles:
+* Erişim atadığınızda, temelde erişimi olmasını istediğiniz hesaba bir rol atarsınız. Bu depolama hesabını yönetmek için kullanılan işlemlere erişimi denetleyebilir, ancak hesaptaki veri nesnelerine erişemezsiniz. Örneğin, depolama hesabının (artıklık gibi) özelliklerini alma izni verebilir, ancak BLOB depolama alanı içindeki bir kapsayıcı içindeki bir kapsayıcıya veya verilere uygulanmaz.
+* Birisinin depolama hesabındaki veri nesnelerine erişim izni olması için, depolama hesabı anahtarlarını okumaya izin verebilir ve bu kullanıcı bu anahtarları blob, kuyruk, tablo ve dosyalara erişmek için kullanabilir.
+* Roller belirli bir kullanıcı hesabına, bir kullanıcı grubuna veya belirli bir uygulamaya atanabilir.
+* Her rol, eylemlerin bir listesini içerir. Örneğin, sanal makine katılımcısı rolü, depolama hesabı anahtarlarının okunmasını sağlayan bir "listKeys" eylemine sahiptir. Katkıda bulunan, Active Directory kullanıcıların erişimini güncelleştirme gibi "eylem değil".
+* Depolama için roller şunları içerir (ancak bunlarla sınırlı değildir):
 
-  * Owner – They can manage everything, including access.
-  * Contributor – They can do anything the owner can do except assign access. Someone with this role can view and regenerate the storage account keys. With the storage account keys, they can access the data objects.
-  * Reader – They can view information about the storage account, except secrets. For example, if you assign a role with reader permissions on the storage account to someone, they can view the properties of the storage account, but they can't make any changes to the properties or view the storage account keys.
-  * Storage Account Contributor – They can manage the storage account – they can read the subscription's resource groups and resources, and create and manage subscription resource group deployments. They can also access the storage account keys, which in turn means they can access the data plane.
-  * User Access Administrator – They can manage user access to the storage account. For example, they can grant Reader access to a specific user.
-  * Virtual Machine Contributor – They can manage virtual machines but not the storage account to which they are connected. This role can list the storage account keys, which means that the user to whom you assign this role can update the data plane.
+  * Sahip – erişim dahil her şeyi yönetebilir.
+  * Katkıda bulunan: atama erişimi hariç, sahibinin yapabilecekleri her şeyi gerçekleştirebilir. Bu role sahip birisi depolama hesabı anahtarlarını görüntüleyebilir ve yeniden oluşturabilir. Depolama hesabı anahtarlarıyla, veri nesnelerine erişebilirler.
+  * Okuyucu: parolalar dışında depolama hesabı hakkındaki bilgileri görüntüleyebilirler. Örneğin, depolama hesabı üzerinde başka birine okuyucu izinleri olan bir rol atarsanız, depolama hesabının özelliklerini görüntüleyebilirler, ancak Özellikler üzerinde herhangi bir değişiklik yapamaz veya depolama hesabı anahtarlarını görüntüleyemez.
+  * Depolama hesabı katılımcısı – depolama hesabını yönetebilir, aboneliğin kaynak gruplarını ve kaynaklarını okuyabilir ve abonelik kaynak grubu dağıtımlarını oluşturabilir ve yönetebilir. Ayrıca, depolama hesabı anahtarlarına erişebilir, bu da veri düzlemine erişebileceği anlamına gelir.
+  * Kullanıcı erişimi Yöneticisi – depolama hesabına Kullanıcı erişimini yönetebilirler. Örneğin, belirli bir kullanıcıya okuyucu erişimi verebilir.
+  * Sanal makine katılımcısı: sanal makineleri yönetebilir, ancak bağlı oldukları depolama hesabını yönetemez. Bu rol, depolama hesabı anahtarlarını listeleyebilir, bu da bu rolü atadığınız kullanıcının veri düzlemini güncelleştirebileceği anlamına gelir.
 
-    In order for a user to create a virtual machine, they have to be able to create the corresponding VHD file in a storage account. To do that, they need to be able to retrieve the storage account key and pass it to the API creating the VM. Therefore, they must have this permission so they can list the storage account keys.
-* The ability to define custom roles is a feature that allows you to compose a set of actions from a list of available actions that can be performed on Azure resources.
-* The user must be set up in your Azure Active Directory before you can assign a role to them.
-* You can create a report of who granted/revoked what kind of access to/from whom and on what scope using PowerShell or the Azure CLI.
+    Bir kullanıcının bir sanal makine oluşturması için bir depolama hesabında karşılık gelen VHD dosyasını oluşturabilmeleri gerekir. Bunu yapmak için, depolama hesabı anahtarını alıp VM 'yi oluşturma API 'sine geçirebilmeleri gerekir. Bu nedenle, depolama hesabı anahtarlarını listelemek için bu izne sahip olmaları gerekir.
+* Özel rolleri tanımlama yeteneği, Azure kaynaklarında gerçekleştirilebilecek kullanılabilir Eylemler listesinden bir dizi eylem oluşturmanıza olanak sağlayan bir özelliktir.
+* Kullanıcılara bir rol atayabilmeniz için önce Azure Active Directory ayarlanmalıdır.
+* PowerShell veya Azure CLı kullanarak ne tür erişimi hangilerinin ve ne kadar erişim izni verildiğini/hangilerinin iptal edildiğini bir rapor oluşturabilirsiniz.
 
 #### <a name="resources"></a>Kaynaklar
 * [Azure Active Directory Rol Tabanlı Erişim Denetimi](../../role-based-access-control/role-assignments-portal.md)
@@ -102,127 +102,127 @@ Here are the main points that you need to know about using RBAC to access the ma
   Bu makalede Azure Active Directory Rol Tabanlı Access Control ve nasıl çalıştığı açıklanmaktadır.
 * [RBAC: Yerleşik Roller](../../role-based-access-control/built-in-roles.md)
 
-  This article details all of the built-in roles available in RBAC.
+  Bu makalede RBAC 'de kullanılabilen tüm yerleşik roller ayrıntılı olarak anlatılmaktadır.
 * [Resource Manager dağıtımını ve klasik dağıtımı anlama](../../azure-resource-manager/resource-manager-deployment-model.md)
 
-  This article explains the Resource Manager deployment and classic deployment models, and explains the benefits of using the Resource Manager and resource groups. It explains how the Azure Compute, Network, and Storage Providers work under the Resource Manager model.
+  Bu makalede, Kaynak Yöneticisi dağıtımı ve klasik dağıtım modelleri açıklanmakta ve Kaynak Yöneticisi ve kaynak gruplarını kullanmanın avantajları açıklanmaktadır. Azure Işlem, ağ ve depolama sağlayıcılarının Kaynak Yöneticisi modeli altında nasıl çalıştığını açıklar.
 * [Rol Tabanlı Erişim Denetimini REST API’si ile Yönetme](../../role-based-access-control/role-assignments-rest.md)
 
   Bu makalede RBAC yönetimi için REST API’sinin nasıl kullanılacağı gösterilmektedir.
 * [Azure Depolama Kaynak Sağlayıcısı REST API Başvurusu](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
-  This API reference describes the APIs you can use to manage your storage account programmatically.
+  Bu API başvurusu, depolama hesabınızı programlama yoluyla yönetmek için kullanabileceğiniz API 'Leri açıklar.
 
 * [Ignite’tan Microsoft Azure için Rol Tabanlı Erişim Denetimi](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   Bu bağlantı 2015 MS Ignite konferansının 9. Kanalındaki videoya aittir. Bu oturumda, Azure’daki erişim yönetimi ve raporlama özellikleri konuşulmakta ve Azure Active Directory'yi kullanarak Azure aboneliklerine erişimin güvenliğini sağlama konusundaki en iyi uygulamalar keşfedilmektedir.
 
-### <a name="managing-your-storage-account-keys"></a>Managing Your Storage Account Keys
-Storage account keys are 512-bit strings created by Azure that, along with the storage account name, can be used to access the data objects stored in the storage account, for example, blobs, entities within a table, queue messages, and files on an Azure file share. Controlling access to the storage account keys controls access to the data plane for that storage account.
+### <a name="managing-your-storage-account-keys"></a>Depolama hesabı anahtarlarınızı yönetme
+Depolama hesabı anahtarları, depolama hesabında depolanan 512 bitlik dizelerdir; Örneğin, blob 'lar, bir tablo içindeki varlıklar, kuyruk iletileri ve bir Azure dosya paylaşımında bulunan dosyalar gibi depolama hesabında depolanan veri nesnelerine erişmek için kullanılabilir. Depolama hesabı anahtarlarına erişimin denetlenmesi, bu depolama hesabı için veri düzlemine erişimi denetler.
 
-Each storage account has two keys referred to as "Key 1" and "Key 2" in the [Azure portal](https://portal.azure.com/) and in the PowerShell cmdlets. These can be regenerated manually using one of several methods, including, but not limited to using the [Azure portal](https://portal.azure.com/), PowerShell, the Azure CLI, or programmatically using the .NET Storage Client Library or the Azure Storage Services REST API.
+Her depolama hesabının, [Azure Portal](https://portal.azure.com/) ve PowerShell cmdlet 'Lerinde "anahtar 1" ve "anahtar 2" olarak adlandırılan iki anahtarı vardır. Bunlar, [Azure Portal](https://portal.azure.com/), PowerShell, Azure CLI veya .net depolama istemci kitaplığı 'nı ya da Azure depolama hizmetleri REST API kullanarak programlı bir şekilde, ancak bunlarla sınırlı olmamak üzere çeşitli yöntemlerden birini kullanarak el ile oluşturulabilir.
 
-There are various reasons to regenerate your storage account keys.
+Depolama hesabı anahtarlarınızı yeniden oluşturmak için çeşitli nedenler vardır.
 
-* You may regenerate them periodically for security.
-* You might regenerate your storage account keys if your application or network security is compromised.
-* Another instance for key regeneration is when team members with access to the keys leave. Shared Access Signatures were designed primarily to address this scenario – you should share an account-level SAS connection string or token, instead of sharing access keys, with most individuals or applications.
+* Güvenliği için düzenli aralıklarla yeniden oluşturabilirsiniz.
+* Uygulamanızın veya ağ güvenliğinin tehlikeye düşmesi durumunda depolama hesabı anahtarlarınızı yeniden oluşturabilirsiniz.
+* Anahtar yeniden oluşturma için başka bir örnek ise, anahtarlara erişimi olan takım üyelerinin ne zaman çıkış olduğunu. Paylaşılan erişim Imzaları öncelikle bu senaryoya yönelik olarak tasarlanmıştır. erişim anahtarlarını paylaşmak yerine, en çok bireyler veya uygulamalarla bir hesap düzeyi SAS bağlantı dizesi veya belirteci paylaşmanız gerekir.
 
-#### <a name="key-regeneration-plan"></a>Key regeneration plan
-You should not regenerate an access key in use without planning. Abrupt key regeneration can block access to a storage account for existing applications, causing major disruption. Azure Storage accounts provide two keys, so that you can regenerate one key at a time.
+#### <a name="key-regeneration-plan"></a>Anahtar yeniden oluşturma planı
+Bir erişim anahtarı 'nı planlamadan gerek olmadan yeniden oluşturmanız gerekmez. Ani anahtar yeniden oluşturma, mevcut uygulamalar için bir depolama hesabına erişimi engelleyebilir ve bu da büyük kesintiye yol açabilir. Azure depolama hesapları iki anahtar sağlar, böylece bir seferde bir anahtarı yeniden oluşturmanız için.
 
-Before you regenerate your keys, be sure you have a list of all applications dependent on the storage account, as well as any other services you are using in Azure. For example, if you are using Azure Media Services use your storage account, you must resync the access keys with your media service after you regenerate the key. If you are using an application such as a storage explorer, you will need to provide new keys to those applications as well. If you have VMs whose VHD files are stored in the storage account, they will not be affected by regenerating the storage account keys.
+Anahtarlarınızı yeniden oluşturmadan önce, depolama hesabına bağımlı tüm uygulamaların bir listesini ve Azure 'da kullandığınız diğer hizmetleri de kullandığınızdan emin olun. Örneğin, depolama hesabınızı kullanmak Azure Media Services kullanıyorsanız, anahtarı yeniden oluşturduktan sonra erişim anahtarlarını medya hizmetinize yeniden eşitlemeniz gerekir. Depolama Gezgini gibi bir uygulama kullanıyorsanız, bu uygulamalara da yeni anahtarlar sağlamanız gerekir. VHD dosyaları depolama hesabında depolanan sanal makinelere sahipseniz, depolama hesabı anahtarlarını yeniden oluşturma işleminden etkilenmeyecektir.
 
-You can regenerate your keys in the Azure portal. Once keys are regenerated, they can take up to 10 minutes to be synchronized across Storage Services.
+Azure portal anahtarlarınızı yeniden oluşturabilirsiniz. Anahtarlar yeniden üretildikten sonra, depolama hizmetleri arasında eşitlenmesi 10 dakika kadar sürebilir.
 
-When you're ready, here's the general process detailing how you should change your key. In this case, the assumption is that you are currently using Key 1 and you are going to change everything to use Key 2 instead.
+Hazır olduğunuzda, anahtarınızı nasıl değiştirmeniz gerektiğine ilişkin genel süreç aşağıda verilmiştir. Bu durumda, şu anda Key 1 kullanıyor olmanız ve bunun yerine her şeyi anahtar 2 kullanacak şekilde değiştirmeniz gerekir.
 
-1. Regenerate Key 2 to ensure that it is secure. You can do this in the Azure portal.
-2. In all of the applications where the storage key is stored, change the storage key to use Key 2's new value. Test and publish the application.
-3. After all of the applications and services are up and running successfully, regenerate Key 1. This ensures that anybody to whom you have not expressly given the new key will no longer have access to the storage account.
+1. Güvenli olduğundan emin olmak için anahtar 2 ' ye yeniden oluşturun. Bunu Azure portal yapabilirsiniz.
+2. Depolama anahtarının depolandığı tüm uygulamalarda, anahtar 2 ' nin yeni değerini kullanmak için depolama anahtarını değiştirin. Uygulamayı test edin ve yayımlayın.
+3. Tüm uygulama ve hizmetler başarıyla çalışmaya başladıktan sonra anahtar 1 ' i yeniden oluşturun. Bu, yeni anahtarı açıkça vermiş olduğunuz herhangi bir gövdenin artık depolama hesabına erişememesini sağlar.
 
-If you are currently using Key 2, you can use the same process, but reverse the key names.
+Şu anda Key 2 kullanıyorsanız, aynı işlemi kullanabilirsiniz, ancak anahtar adlarını ters çevirebilirsiniz.
 
-You can migrate over a couple of days, changing each application to use the new key and publishing it. After all of them are done, you should then go back and regenerate the old key so it no longer works.
+Her bir uygulamayı yeni anahtarı kullanmak ve yayımlamak üzere değiştirerek birkaç gün boyunca geçiş yapabilirsiniz. Bunların tümü yapıldıktan sonra geri dönüp eski anahtarı yeniden oluşturmanız gerekir, böylece artık çalışmaz.
 
-Another option is to put the storage account key in an [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) as a secret and have your applications retrieve the key from there. Then when you regenerate the key and update the Azure Key Vault, the applications will not need to be redeployed because they will pick up the new key from the Azure Key Vault automatically. You can have the application read the key each time it needs it, or the application can cache it in memory and if it fails when using it, retrieve the key again from the Azure Key Vault.
+Diğer bir seçenek de, depolama hesabı anahtarını bir [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) gizli olarak koymak ve uygulamalarınızın anahtarı buradan alması gerekir. Anahtarı yeniden oluşturup Azure Key Vault güncelleştirdiğinizde uygulamaların yeniden dağıtılması gerekmez, çünkü yeni anahtarı otomatik olarak Azure Key Vault alırlar. Uygulamanın her ihtiyaç duyduğunda anahtarı okumasını sağlayabilir veya uygulama onu bellekte önbelleğe alabilir ve kullanırken başarısız olursa, anahtarı Azure Key Vault yeniden alın.
 
-Using Azure Key Vault also adds another level of security for your storage keys. Using the Key Vault, enables you to avoid writing storage keys in application configuration files. It also prevents exposure of keys to everyone with access to those configuration files.
+Azure Key Vault kullanmak, depolama anahtarlarınız için başka bir güvenlik düzeyi de ekler. Key Vault kullanarak, uygulama yapılandırma dosyalarında depolama anahtarları yazılmasını önlemenize olanak sağlar. Ayrıca, anahtarların bu yapılandırma dosyalarına erişimi olan herkese maruz kalmalarına engel olur.
 
-Azure Key Vault also has the advantage of using Azure AD to control access to your keys. You can grant access to the specific applications that need to retrieve the keys from Key Vault, without exposing them to other applications that do not need access to the keys.
+Azure Key Vault, Anahtarlarınıza erişimi denetlemek için Azure AD kullanmanın avantajlarından de yararlanır. Anahtarları Key Vault ' den alması gereken belirli uygulamalara erişim verebilirsiniz. bu uygulamalar, anahtarları erişmesi gerekmeyen diğer uygulamalar için bunları ortaya çıkarmaz.
 
 > [!NOTE]
-> Microsoft recommends using only one of the keys in all of your applications at the same time. If you use Key 1 in some places and Key 2 in others, you will not be able to rotate your keys without some application losing access.
+> Microsoft, tüm uygulamalarınızda aynı anda yalnızca bir tane anahtar kullanılmasını önerir. Anahtar 1 ' i bazı yerlerde ve anahtar 2 ' de kullanırsanız, bazı uygulama erişimi kaybetmeksizin anahtarlarınızı döndüremezsiniz.
 
 #### <a name="resources"></a>Kaynaklar
 
-* [Azure Portalında depolama hesabı ayarlarını yönetme](storage-account-manage.md)
+* [Azure portalında depolama hesabı ayarlarını yönetme](storage-account-manage.md)
 * [Azure Depolama Kaynak Sağlayıcısı REST API Başvurusu](https://msdn.microsoft.com/library/mt163683.aspx)
 
 ## <a name="network-security"></a>Ağ Güvenliği
-Network Security enables you to restrict access to the data in an Azure Storage Account from select networks. You can use the Azure Storage firewall to restrict access to clients from specific public IP address ranges, select virtual networks (VNets) on Azure, or to specific Azure resources. You also have the option to create a Private Endpoint for your storage account in the VNet that needs access, and blocking all access through the public endpoint.
+Ağ güvenliği, bir Azure depolama hesabındaki verilere erişimi, select Networks 'tan kısıtlamanıza olanak sağlar. Belirli genel IP adresi aralıklarından istemcilere erişimi kısıtlamak için Azure Storage güvenlik duvarı 'nı kullanabilir, Azure 'da sanal ağları (VNet) veya belirli Azure kaynaklarını seçebilirsiniz. Ayrıca, erişmesi gereken VNet 'te depolama hesabınız için özel bir uç nokta oluşturma ve genel uç nokta aracılığıyla tüm erişimi engelleme seçeneğiniz de vardır.
 
-You can configure the network access rules for your storage account through the [Firewalls and Virtual Networks](storage-network-security.md) tab in the Azure portal. Using the storage firewall, you can deny access for public internet traffic, and grant access to select clients based on the configured network rules.
+Depolama hesabınız için ağ erişim kurallarını, Azure portal [güvenlik duvarları ve sanal ağlar](storage-network-security.md) sekmesinden yapılandırabilirsiniz. Depolama güvenlik duvarını kullanarak, genel İnternet trafiği için erişimi reddedebilir ve yapılandırılmış ağ kurallarına göre istemcileri Seç erişimine izin verebilirsiniz.
 
-You can also use [Private Endpoints](../../private-link/private-endpoint-overview.md) to privately and securely connect to a storage account from a VNet using [Private Links](../../private-link/private-link-overview.md).
+Özel [bağlantıları](../../private-link/private-link-overview.md)kullanarak bir VNET 'ten bir depolama hesabına özel olarak ve güvenli bir şekilde bağlanmak Için [Özel uç noktaları](../../private-link/private-endpoint-overview.md) da kullanabilirsiniz.
 
-Storage firewall rules only apply to the public endpoint for the storage account. The subnet that hosts a private endpoint for a storage account gets implicit access to the account when you approve the creation of that private endpoint.
+Depolama güvenlik duvarı kuralları yalnızca depolama hesabı için genel uç nokta için geçerlidir. Bir depolama hesabı için özel bir uç nokta barındıran alt ağ, bu özel uç noktanın oluşturulmasını onayladığınızda hesaba örtülü erişimi alır.
 
 > [!NOTE]
-> The storage firewall rules are not applicable to storage management operations conducted through the Azure portal and the Azure Storage Management API.
+> Depolama güvenlik duvarı kuralları, Azure portal ve Azure depolama yönetim API 'SI aracılığıyla gerçekleştirilen depolama yönetimi işlemlerine uygulanamaz.
 
-### <a name="access-rules-for-public-ip-address-ranges"></a>Access rules for public IP address ranges
-The Azure Storage firewall can be used to restrict access to a storage account from specific public IP address ranges. You can use IP address rules to restrict access to specific internet-based services communicating on a fixed public IP endpoint, or to select on-premises networks.
+### <a name="access-rules-for-public-ip-address-ranges"></a>Genel IP adresi aralıkları için erişim kuralları
+Azure depolama güvenlik duvarı, belirli genel IP adresi aralıklarından bir depolama hesabına erişimi kısıtlamak için kullanılabilir. IP adresi kurallarını, sabit bir genel IP uç noktası ile iletişim kuran belirli internet tabanlı hizmetlere erişimi kısıtlamak veya şirket içi ağları seçmek için kullanabilirsiniz.
 
-### <a name="access-rules-for-azure-virtual-networks"></a>Access rules for Azure virtual networks
-Storage accounts, by default, accept connections from clients on any network. You can restrict the client access to the data in a storage account to selected networks using the storage firewall. [Service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md) enable routing of traffic from an Azure virtual network to the storage account. 
+### <a name="access-rules-for-azure-virtual-networks"></a>Azure sanal ağları için erişim kuralları
+Depolama hesapları varsayılan olarak herhangi bir ağdaki istemcilerden gelen bağlantıları kabul eder. Depolama hesabındaki verilere yönelik istemci erişimini, depolama güvenlik duvarını kullanarak seçili ağlarla sınırlayabilirsiniz. [Hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) bir Azure sanal ağından depolama hesabına trafik yönlendirmeyi etkinleştirir. 
 
-### <a name="granting-access-to-specific-trusted-resource-instances"></a>Granting access to specific trusted resource instances
-You can allow a [subset of Azure trusted services](storage-network-security.md#trusted-microsoft-services) to access the storage account through the firewall with strong authentication based on the service resource type, or a resource instance.
+### <a name="granting-access-to-specific-trusted-resource-instances"></a>Belirli güvenilir kaynak örneklerine erişim verme
+[Azure güvenilir Hizmetleri 'nin bir alt kümesinin](storage-network-security.md#trusted-microsoft-services) , hizmet kaynak türüne veya bir kaynak örneğine göre güçlü kimlik doğrulaması ile güvenlik duvarı aracılığıyla depolama hesabına erişmesine izin verebilirsiniz.
 
-For the services that support resource instance-based access through the storage firewall, only the selected instance can access the data in the storage account. In this case, the service must support resource-instance authentication using system-assigned [managed identities](../../active-directory/managed-identities-azure-resources/overview.md).
+Depolama güvenlik duvarı aracılığıyla kaynak örneği tabanlı erişimi destekleyen hizmetler için, depolama hesabındaki verilere yalnızca seçili örnek erişebilir. Bu durumda, hizmet, sistem tarafından atanan [yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak kaynak örneği kimlik doğrulamasını desteklemelidir.
 
-### <a name="using-private-endpoints-for-securing-connections"></a>Using private endpoints for securing connections
-Azure Storage supports private endpoints, which enable secure access of storage account from an Azure virtual network. Private endpoints assign a private IP address from your VNet's address space to the storage service. When using private endpoints, the storage connection string redirects traffic destined for the storage account to the private IP address. The connection between the private endpoint and the storage account uses a private link. Using private endpoints you can block exfiltration of data from your VNet.
+### <a name="using-private-endpoints-for-securing-connections"></a>Bağlantıları güvenli hale getirmek için özel uç noktaları kullanma
+Azure depolama, Azure sanal ağından depolama hesabına güvenli erişim sağlayan özel uç noktaları destekler. Özel uç noktalar, sanal ağınızın adres alanından depolama hizmetine özel bir IP adresi atar. Özel uç noktalar kullanılırken, depolama bağlantı dizesi depolama hesabı için hedeflenen trafiği özel IP adresine yönlendirir. Özel uç nokta ve depolama hesabı arasındaki bağlantı özel bir bağlantı kullanır. Özel uç noktaları kullanarak sanal ağınızdan veri alımını engelleyebilirsiniz.
 
-On-premises networks connected over VPN or [ExpressRoutes](../../expressroute/expressroute-locations.md) private peering and other peered virtual networks can also access the storage account over the private endpoint. Private endpoint for your storage accounts can be created in a VNet in any region, enabling a secure global reach. You may also create private endpoints for storage accounts in other [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) tenants.
+VPN veya [ExpressRoute](../../expressroute/expressroute-locations.md) özel eşlemesi ve diğer eşlenmiş sanal ağlar üzerinde bağlanmış şirket içi ağlar, depolama hesabına özel uç nokta üzerinden da erişebilir. Depolama hesaplarınız için özel uç nokta, her bölgedeki bir sanal ağda oluşturulabilir ve güvenli küresel bir erişim olanağı tanır. Diğer [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) kiracılarda, depolama hesapları için özel uç noktalar da oluşturabilirsiniz.
 
 ## <a name="authorization"></a>Yetkilendirme
-Data Plane Security refers to the methods used to secure the data objects stored in Azure Storage – the blobs, queues, tables, and files. We've seen methods to encrypt the data and security during transit of the data, but how do you go about controlling access to the objects?
+Veri düzlemi güvenliği, Azure depolama 'da depolanan veri nesnelerinin güvenliğini sağlamak için kullanılan yöntemleri belirtir: Bloblar, kuyruklar, tablolar ve dosyalar. Verileri aktarma sırasında verileri ve güvenliği şifrelemek için yöntemler görüldü, ancak nesnelere erişimi denetleme hakkında nasıl devam edersiniz?
 
-You have three options for authorizing access to data objects in Azure Storage, including:
+Azure Storage 'da veri nesnelerine erişimi yetkilendirmek için kullanabileceğiniz üç seçenek vardır:
 
-- Using Azure AD to authorize access to containers and queues. Azure AD provides advantages over other approaches to authorization, including removing the need to store secrets in your code. For more information, see [Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md). 
-- Using your storage account keys to authorize access via Shared Key. Authorizing via Shared Key requires storing your storage account keys in your application, so Microsoft recommends using Azure AD instead where possible.
-- Using Shared Access Signatures to grant controlled permissions to specific data objects for a specific amount of time.
+- Kapsayıcılara ve kuyruklara erişim yetkisi vermek için Azure AD kullanma. Azure AD, kodunuza gizli dizileri depolama gereksinimini kaldırma dahil olmak üzere, yetkilendirme için diğer yaklaşımlardan daha fazla avantaj sağlar. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md). 
+- Paylaşılan anahtar aracılığıyla erişim yetkisi vermek için depolama hesabı anahtarlarınızı kullanma. Paylaşılan anahtar aracılığıyla yetkilendirmek, depolama hesabı anahtarlarınızın uygulamanızda depolanmasını gerektirir, bu nedenle Microsoft Azure AD 'yi mümkün olduğunca kullanmanızı önerir.
+- Belirli bir süre boyunca belirli veri nesnelerine denetimli izinler vermek için paylaşılan erişim Imzalarını kullanma.
 
-In addition, for Blob Storage, you can allow public access to your blobs by setting the access level for the container that holds the blobs accordingly. If you set access for a container to Blob or Container, it will allow public read access for the blobs in that container. This means anyone with a URL pointing to a blob in that container can open it in a browser without using a Shared Access Signature or having the storage account keys.
+Bunlara ek olarak, BLOB depolama için Blobları uygun şekilde tutan kapsayıcının erişim düzeyini ayarlayarak bloblarınıza genel erişime izin verebilirsiniz. Blob veya kapsayıcıya bir kapsayıcı için erişim ayarlarsanız, bu kapsayıcıdaki Bloblar için genel okuma erişimine izin verir. Bu, söz konusu kapsayıcıdaki bir blobu işaret eden bir URL 'ye sahip olan herkes, paylaşılan erişim Imzası kullanmadan veya depolama hesabı anahtarlarına sahip olmayan bir tarayıcıda açabilme anlamına gelir.
 
 ### <a name="storage-account-keys"></a>Depolama Hesabı Anahtarları
-Storage account keys are 512-bit strings created by Azure that, along with the storage account name, can be used to access the data objects stored in the storage account.
+Depolama hesabı anahtarları, depolama hesabı adı ile birlikte Azure tarafından oluşturulan 512 bitlik dizelerdir ve depolama hesabında depolanan veri nesnelerine erişim için kullanılabilir.
 
-For example, you can read blobs, write to queues, create tables, and modify files. Many of these actions can be performed through the Azure portal, or using one of many Storage Explorer applications. You can also write code to use the REST API or one of the Storage Client Libraries to perform these operations.
+Örneğin, Blobları okuyabilir, kuyruklara yazabilir, tablolar oluşturabilir ve dosyaları değiştirebilirsiniz. Bu eylemlerin birçoğu Azure portal aracılığıyla veya birçok Depolama Gezgini uygulamadan biri kullanılarak gerçekleştirilebilir. Ayrıca, bu işlemleri gerçekleştirmek için REST API veya depolama Istemci kitaplıklarından birini kullanmak üzere kod yazabilirsiniz.
 
-As discussed in the section on the [Management Plane Security](#management-plane-security), access to the storage keys for a Classic storage account can be granted by giving full access to the Azure subscription. Access to the storage keys for a storage account using the Azure Resource Manager model can be controlled through Role-Based Access Control (RBAC).
+[Yönetim düzlemi güvenlik](#management-plane-security)bölümünde açıklandığı gibi, Azure aboneliğine tam erişim Izni vererek klasik bir depolama hesabı için depolama anahtarlarına erişim sağlayabilirsiniz. Azure Resource Manager modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, rol tabanlı Access Control (RBAC) aracılığıyla denetlenebilir.
 
-### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>How to delegate access to objects in your account using Shared Access Signatures and Stored Access Policies
-A Shared Access Signature is a string containing a security token that can be attached to a URI that allows you to delegate access to storage objects and specify constraints such as the permissions and the date/time range of access.
+### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>Paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanarak hesabınızdaki nesnelere erişim yetkisi verme
+Paylaşılan erişim Imzası, depolama nesnelerine erişim atamanıza ve izinler ve erişim tarih/saat aralığı gibi kısıtlamaları belirtmenize olanak tanıyan bir URI 'ye iliştirilebilecek bir güvenlik belirteci içeren bir dizedir.
 
-You can grant access to blobs, containers, queue messages, files, and tables. With tables, you can actually grant permission to access a range of entities in the table by specifying the partition and row key ranges to which you want the user to have access. For example, if you have data stored with a partition key of geographical state, you could give someone access to just the data for California.
+Bloblar, kapsayıcılar, kuyruk iletileri, dosyalar ve tablolar için erişim izni verebilirsiniz. Tablolar sayesinde, aslında kullanıcının erişmesini istediğiniz bölüm ve satır anahtar aralıklarını belirterek tablodaki bir dizi varlığa erişme izni verebilirsiniz. Örneğin, coğrafi durum bölüm anahtarıyla depolanan verileriniz varsa, birine yalnızca California için verilere erişim izni verebilirsiniz.
 
-In another example, you might give a web application a SAS token that enables it to write entries to a queue, and give a worker role application a SAS token to get messages from the queue and process them. Or you could give one customer a SAS token they can use to upload pictures to a container in Blob Storage, and give a web application permission to read those pictures. In both cases, there is a separation of concerns – each application can be given just the access that they require in order to perform their task. This is possible through the use of Shared Access Signatures.
+Başka bir örnekte, bir Web uygulamasına bir kuyruğa girdi yazmasına ve bir çalışan rolü uygulamasına bir SAS belirteci vererek kuyruktan ileti almasını ve bunları işlemesini sağlayan bir SAS belirteci verebilirsiniz. Ya da bir müşteriye, BLOB depolama alanındaki bir kapsayıcıya resim yüklemek ve bu resimleri okumak için bir Web uygulamasına izin vermek üzere kullanabilecekleri bir SAS belirteci verebilirsiniz. Her iki durumda da bir sorun ayrımı vardır: her bir uygulamaya, yalnızca görevlerini gerçekleştirmek için ihtiyaç duydukları erişim verilebilir. Bu, paylaşılan erişim Imzaları kullanılarak yapılabilir.
 
-#### <a name="why-you-want-to-use-shared-access-signatures"></a>Why you want to use Shared Access Signatures
-Why would you want to use an SAS instead of just giving out your storage account key, which is so much easier? Giving out your storage account key is like sharing the keys of your storage kingdom. It grants complete access. Someone could use your keys and upload their entire music library to your storage account. They could also replace your files with virus-infected versions, or steal your data. Giving away unlimited access to your storage account is something that should not be taken lightly.
+#### <a name="why-you-want-to-use-shared-access-signatures"></a>Paylaşılan erişim Imzalarını neden kullanmak istiyorsunuz?
+Neden çok daha kolay olan depolama hesabı anahtarınızı vermek yerine SAS kullanmak istersiniz? Depolama hesabı anahtarınızı verme, depolama alanı anahtarlarınızın anahtarlarını paylaşma gibidir. Tüm erişim verir. Birisi anahtarlarınızı kullanabilir ve tüm müzik kütüphanesini depolama hesabınıza yükleyebilir. Ayrıca, dosyalarınızı virüs bulaşmış sürümlerle değiştirebilir veya verilerinizi çalabilir. Depolama hesabınıza sınırsız erişim verilmesi, güvenle alınmamalıdır.
 
-With Shared Access Signatures, you can give a client just the permissions required for a limited amount of time. For example, if someone is uploading a blob to your account, you can grant them write access for just enough time to upload the blob (depending on the size of the blob, of course). And if you change your mind, you can revoke that access.
+Paylaşılan erişim Imzaları ile bir istemciye yalnızca sınırlı bir süre için gerekli izinleri verebilirsiniz. Örneğin, hesabınız hesabınıza bir blob yüklürsa, blob 'u karşıya yüklemek için (örneğin, Blobun boyutuna bağlı olarak) yazma erişimi verebilirsiniz. Fikrinizi değiştirirseniz, bu erişimi iptal edebilirsiniz.
 
-Additionally, you can specify that requests made using a SAS are restricted to a certain IP address or IP address range external to Azure. You can also require that requests are made using a specific protocol (HTTPS or HTTP/HTTPS). This means if you only want to allow HTTPS traffic, you can set the required protocol to HTTPS only, and HTTP traffic will be blocked.
+Ayrıca, SAS kullanılarak yapılan isteklerin belirli bir IP adresi veya Azure dış IP adresi aralığıyla sınırlandırılacağını belirtebilirsiniz. Ayrıca, isteklerin belirli bir protokol (HTTPS veya HTTP/HTTPS) kullanılarak yapılmasını isteyebilirsiniz. Bu, yalnızca HTTPS trafiğine izin vermek istiyorsanız, gerekli protokolü yalnızca HTTPS olarak ayarlayabilirsiniz ve HTTP trafiği engellenir.
 
-#### <a name="definition-of-a-shared-access-signature"></a>Definition of a Shared Access Signature
-A Shared Access Signature is a set of query parameters appended to the URL pointing at the resource
+#### <a name="definition-of-a-shared-access-signature"></a>Paylaşılan erişim Imzasının tanımı
+Paylaşılan erişim Imzası, kaynağı işaret eden URL 'ye eklenen bir sorgu parametreleri kümesidir
 
-that provides information about the access allowed and the length of time for which the access is permitted. Here is an example; this URI provides read access to a blob for five minutes. Note that SAS query parameters must be URL Encoded, such as %3A for colon (:) or %20 for a space.
+Bu, izin verilen erişim ve erişim izni verilen sürenin uzunluğu hakkında bilgi sağlar. İşte bir örnek; Bu URI, beş dakikalık bir bloba okuma erişimi sağlar. SAS sorgu parametrelerinin, iki nokta için% 3A gibi URL kodlamalı olması gerektiğini unutmayın (:) ya da bir boşluk için %20.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -236,253 +236,253 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>How the Shared Access Signature is authorized by the Azure Storage Service
-When the storage service receives the request, it takes the input query parameters and creates a signature using the same method as the calling program. It then compares the two signatures. If they agree, then the storage service can check the storage service version to make sure it's valid, verify that the current date and time are within the specified window, make sure the access requested corresponds to the request made, etc.
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Paylaşılan erişim Imzasının Azure depolama hizmeti tarafından nasıl yetkilendirildiği
+Depolama hizmeti isteği aldığında, giriş sorgusu parametrelerini alır ve çağıran programla aynı yöntemi kullanarak bir imza oluşturur. Daha sonra iki imzayı karşılaştırır. Bu durumda, depolama hizmeti, geçerli olduğundan emin olmak için depolama hizmeti sürümünü denetleyebilir, geçerli tarih ve saatin belirtilen pencerede olduğundan emin olun, istenen erişimin, yapılan isteğe karşılık geldiğini doğrulayın.
 
-For example, with our URL above, if the URL was pointing to a file instead of a blob, this request would fail because it specifies that the Shared Access Signature is for a blob. If the REST command being called was to update a blob, it would fail because the Shared Access Signature specifies that only read access is permitted.
+Örneğin, yukarıdaki URL 'imizde, URL bir blob yerine bir dosyayı işaret ettiğinden, bu istek başarısız olur çünkü paylaşılan erişim Imzasının bir blob için olduğunu belirtir. Çağrılan REST komutu bir blobu güncelleştiriyorsa, paylaşılan erişim Imzası yalnızca okuma erişimine izin verildiğini belirttiğinden başarısız olur.
 
-#### <a name="types-of-shared-access-signatures"></a>Types of Shared Access Signatures
-* A service-level SAS can be used to access specific resources in a storage account. Some examples of this are retrieving a list of blobs in a container, downloading a blob, updating an entity in a table, adding messages to a queue, or uploading a file to a file share.
-* An account-level SAS can be used to access anything that a service-level SAS can be used for. Additionally, it can give options to resources that are not permitted with a service-level SAS, such as the ability to create containers, tables, queues, and file shares. You can also specify access to multiple services at once. For example, you might give someone access to both blobs and files in your storage account.
+#### <a name="types-of-shared-access-signatures"></a>Paylaşılan erişim Imzası türleri
+* Hizmet düzeyi SAS, bir depolama hesabındaki belirli kaynaklara erişmek için kullanılabilir. Buna örnek olarak, bir kapsayıcıdaki Blobların listesini alma, blob indirme, bir tablodaki varlığı güncelleştirme, bir kuyruğa ileti ekleme veya dosya paylaşımının dosya yükleme.
+* Hesap düzeyi SAS, hizmet düzeyi SAS 'nin kullanılabileceği her şeye erişmek için kullanılabilir. Ayrıca, kapsayıcı, tablo, kuyruk ve dosya paylaşımları oluşturma gibi hizmet düzeyi SAS ile izin verilmeyen kaynaklara seçenek verebilir. Aynı zamanda birden çok hizmete erişimi de belirtebilirsiniz. Örneğin, bir kişiye Depolama hesabınızdaki her iki blob ve dosya erişimi verebilirsiniz.
 
-#### <a name="creating-a-sas-uri"></a>Creating a SAS URI
-1. You can create a URI on demand, defining all of the query parameters each time.
+#### <a name="creating-a-sas-uri"></a>SAS URI 'SI oluşturma
+1. Her seferinde sorgu parametrelerinin tümünü tanımlayarak isteğe bağlı bir URI oluşturabilirsiniz.
 
-   This approach is flexible, but if you have a logical set of parameters that are similar each time, using a Stored Access Policy is a better idea.
-2. You can create a Stored Access Policy for an entire container, file share, table, or queue. Then you can use this as the basis for the SAS URIs you create. Permissions based on Stored Access Policies can be easily revoked. You can have up to five policies defined on each container, queue, table, or file share.
+   Bu yaklaşım esnektir, ancak her seferinde benzer bir mantıksal parametre kümesine sahipseniz, depolanan erişim Ilkesini kullanmak daha iyi bir fikirdir.
+2. Tüm kapsayıcı, dosya paylaşma, tablo veya kuyruk için depolanan bir erişim Ilkesi oluşturabilirsiniz. Daha sonra bunu, oluşturduğunuz SAS URI 'Leri için temel olarak kullanabilirsiniz. Depolanan erişim Ilkelerine dayalı izinler kolayca iptal edilebilir. Her kapsayıcı, kuyruk, tablo veya dosya paylaşımında tanımlanmış en fazla beş ilke olabilir.
 
-   For example, if you were going to have many people read the blobs in a specific container, you could create a Stored Access Policy that says "give read access" and any other settings that will be the same each time. Then you can create an SAS URI using the settings of the Stored Access Policy and specifying the expiration date/time. The advantage of this is that you don't have to specify all of the query parameters every time.
+   Örneğin, belirli bir kapsayıcıdaki Blobları okuduğunuzdan çok sayıda kişi varsa, "okuma erişimi ver" i ve her seferinde aynı olacak diğer ayarları belirten bir saklı erişim Ilkesi oluşturabilirsiniz. Ardından, depolanan erişim Ilkesinin ayarlarını kullanarak bir SAS URI 'SI oluşturabilir ve sona erme tarihi/saati belirtebilirsiniz. Bunun avantajı, her seferinde sorgu parametrelerinin tümünü belirtmeniz gerekmez.
 
-#### <a name="revocation"></a>Revocation
-Suppose your SAS has been compromised, or you want to change it because of corporate security or regulatory compliance requirements. How do you revoke access to a resource using that SAS? It depends on how you created the SAS URI.
+#### <a name="revocation"></a>Sayılabilir
+SAS güvenliğinin aşıldığını veya kurumsal güvenlik ya da yasal uyumluluk gereksinimleri nedeniyle değiştirmek istediğinizi varsayalım. Bu SAS kullanarak bir kaynağa erişimi nasıl iptal edersiniz? SAS URI 'sini nasıl oluşturduğunuza bağlıdır.
 
-If you are using ad hoc URIs, you have three options. You can issue SAS tokens with short expiration policies and wait for the SAS to expire. You can rename or delete the resource (assuming the token was scoped to a single object). You can change the storage account keys. This last option can have a significant impact, depending on how many services are using that storage account, and probably isn't something you want to do without some planning.
+Geçici URI 'Ler kullanıyorsanız, üç seçeneğiniz vardır. Kısa süre sonu ilkeleriyle SAS belirteçleri verebilir ve SAS süresinin dolmasını bekleyebilirsiniz. Kaynağı yeniden adlandırabilir veya silebilirsiniz (belirtecin tek bir nesne kapsamında olduğu varsayılarak). Depolama hesabı anahtarlarını değiştirebilirsiniz. Bu son seçenek, bu depolama hesabını kaç hizmetin kullandığını bağlı olarak önemli bir etkiye sahip olabilir ve muhtemelen bir planlama yapmadan yapmak istediğiniz bir şey değildir.
 
-If you are using a SAS derived from a Stored Access Policy, you can remove access by revoking the Stored Access Policy – you can just change it so it has already expired, or you can remove it altogether. This takes effect immediately, and invalidates every SAS created using that Stored Access Policy. Updating or removing the Stored Access Policy may impact people accessing that specific container, file share, table, or queue via SAS, but if the clients are written so they request a new SAS when the old one becomes invalid, this will work fine.
+Depolanan erişim Ilkesinden türetilmiş bir SAS kullanıyorsanız, depolanan erişim Ilkesini iptal ederek erişimi kaldırabilirsiniz. bu işlemi, zaten süresi sona ermiş olacak şekilde değiştirebilirsiniz veya tamamen kaldırabilirsiniz. Bu, hemen etkili olur ve bu saklı erişim Ilkesi kullanılarak oluşturulan her sa 'yı geçersiz kılar. Saklı erişim Ilkesini güncelleştirme veya kaldırma, bu belirli kapsayıcıya, dosya paylaşımıyla, tabloya veya kuyruğa erişen kişileri SAS aracılığıyla etkileyebilir, ancak istemciler yeni bir SAS isteyecek şekilde yazılmışsa, bu durum sorunsuz bir şekilde çalışır.
 
-Because using a SAS derived from a Stored Access Policy gives you the ability to revoke that SAS immediately, it is the recommended best practice to always use Stored Access Policies when possible.
+Depolanan bir erişim Ilkesinden türetilmiş bir SAS kullanılması, bu SAS 'ı hemen iptal etmenizi sağlar. Bu, mümkün olduğunda her zaman depolanan erişim Ilkelerini kullanmak için önerilen en iyi uygulamadır.
 
 #### <a name="resources"></a>Kaynaklar
-For more detailed information on using Shared Access Signatures and Stored Access Policies, complete with examples, refer to the following articles:
+Paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanma hakkında daha ayrıntılı bilgi için örneklerle birlikte aşağıdaki makalelere bakın:
 
-* These are the reference articles.
+* Bunlar başvuru makaleleridir.
 
-  * [Service SAS](https://msdn.microsoft.com/library/dn140256.aspx)
+  * [Hizmet SAS](https://msdn.microsoft.com/library/dn140256.aspx)
 
-    This article provides examples of using a service-level SAS with blobs, queue messages, table ranges, and files.
-  * [Constructing a service SAS](https://msdn.microsoft.com/library/dn140255.aspx)
-  * [Constructing an account SAS](https://msdn.microsoft.com/library/mt584140.aspx)
+    Bu makalede, Bloblar, kuyruk iletileri, tablo aralıkları ve dosyalarla hizmet düzeyi SAS kullanma örnekleri verilmektedir.
+  * [Hizmet SAS oluşturma](https://msdn.microsoft.com/library/dn140255.aspx)
+  * [Hesap SAS oluşturma](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* This is a tutorial for using the .NET client library to create Shared Access Signatures and Stored Access Policies.
-  * [Using Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
+* Bu, paylaşılan erişim Imzaları ve depolanan erişim Ilkeleri oluşturmak için .NET istemci kitaplığını kullanmaya yönelik bir öğreticidir.
+  * [Paylaşılan erişim Imzalarını kullanma (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
 
-    This article includes an explanation of the SAS model, examples of Shared Access Signatures, and recommendations for the best practice use of SAS. Also discussed is the revocation of the permission granted.
+    Bu makale SAS modeli hakkında bir açıklama, paylaşılan erişim Imzaları örnekleri ve SAS 'ın en iyi uygulama kullanımı için öneriler içerir. Ayrıca, verilen iznin iptali de ele alınmıştır.
 
 * Kimlik Doğrulaması
 
-  * [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-* Shared Access Signatures Getting Started Tutorial
+  * [Azure depolama hizmetleri için kimlik doğrulaması](https://msdn.microsoft.com/library/azure/dd179428.aspx)
+* Paylaşılan erişim Imzaları Başlangıç Öğreticisi
 
-  * [SAS Getting Started Tutorial](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
+  * [SAS Başlangıç Öğreticisi](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
 
-## <a name="encryption-in-transit"></a>Encryption in Transit
-### <a name="transport-level-encryption--using-https"></a>Transport-Level Encryption – Using HTTPS
-Another step you should take to ensure the security of your Azure Storage data is to encrypt the data between the client and Azure Storage. The first recommendation is to always use the [HTTPS](https://en.wikipedia.org/wiki/HTTPS) protocol, which ensures secure communication over the public Internet.
+## <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+### <a name="transport-level-encryption--using-https"></a>Aktarım düzeyi şifreleme – HTTPS kullanarak
+Azure depolama verilerinizin güvenliğinin, istemci ile Azure depolama arasındaki verileri şifrelediğinden emin olmak için gerçekleştirmeniz gereken başka bir adım. İlk öneri, genel Internet üzerinden güvenli iletişim sağlayan [https](https://en.wikipedia.org/wiki/HTTPS) protokolünü her zaman kullanmaktır.
 
-To have a secure communication channel, you should always use HTTPS when calling the REST APIs or accessing objects in storage. Also, **Shared Access Signatures**, which can be used to delegate access to Azure Storage objects, include an option to specify that only the HTTPS protocol can be used when using Shared Access Signatures, ensuring that anybody sending out links with SAS tokens will use the proper protocol.
+Güvenli bir iletişim kanalına sahip olmak için REST API 'Lerini çağırırken veya depolama alanındaki nesnelere erişirken her zaman HTTPS kullanmanız gerekir. Ayrıca, Azure Storage nesnelerine erişim yetkisi vermek için kullanılabilen **paylaşılan erişim imzaları**, paylaşılan erişim imzaları KULLANıLıRKEN yalnızca HTTPS protokolünün kullanılabileceğini belirtmek için bir seçenek içerir. bu sayede, SAS belirteçleriyle bağlantı göndermek için herhangi bir gövdenin doğru protokolü kullanmasını sağlayabilirsiniz.
 
-You can enforce the use of HTTPS when calling the REST APIs to access objects in storage accounts by enabling [Secure transfer required](../storage-require-secure-transfer.md) for the storage account. Connections using HTTP will be refused once this is enabled.
+Depolama hesabı için [gerekli olan güvenli aktarımı](../storage-require-secure-transfer.md) etkinleştirerek depolama hesaplarındaki nesnelere erışmek Için REST API 'LERINI çağırırken https kullanımını zorunlu kılabilirsiniz. HTTP kullanan bağlantılar, bu etkinleştirildikten sonra reddedilir.
 
-### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Using encryption during transit with Azure file shares
-[Azure Files](../files/storage-files-introduction.md) supports encryption via SMB 3.0 and with HTTPS when using the File REST API. When mounting outside of the Azure region the Azure file share is located in, such as on-premises or in another Azure region, SMB 3.0 with encryption is always required. SMB 2.1 does not support encryption, so by default connections are only allowed within the same region in Azure, but SMB 3.0 with encryption can be enforced by [requiring secure transfer](../storage-require-secure-transfer.md) for the storage account.
+### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Azure dosya paylaşımları ile aktarım sırasında şifrelemeyi kullanma
+[Azure dosyaları](../files/storage-files-introduction.md) , Dosya REST API KULLANıLıRKEN, SMB 3,0 ve https ile şifrelemeyi destekler. Azure dosya paylaşımının şirket içi veya başka bir Azure bölgesinde bulunduğu Azure bölgesinin dışına bağlanırken, şifreleme ile SMB 3,0 her zaman gereklidir. SMB 2,1 şifrelemeyi desteklemez, bu nedenle varsayılan bağlantılara yalnızca Azure 'daki aynı bölgede izin verilir, ancak depolama hesabı için [Güvenli aktarım gerektirerek](../storage-require-secure-transfer.md) ŞIFRELEME ile SMB 3,0 de zorlanabilir.
 
-SMB 3.0 with encryption is available in [all supported Windows and Windows Server operating systems](../files/storage-how-to-use-files-windows.md) except Windows 7 and Windows Server 2008 R2, which only support SMB 2.1. SMB 3.0 is also supported on [macOS](../files/storage-how-to-use-files-mac.md) and on distributions of [Linux](../files/storage-how-to-use-files-linux.md) using Linux kernel 4.11 and above. Encryption support for SMB 3.0 has also been backported to older versions of the Linux kernel by several Linux distributions, consult [Understanding SMB client requirements](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
+Şifreleme ile SMB 3,0, Windows 7 ve Windows Server 2008 R2 dışındaki [tüm desteklenen Windows ve Windows Server işletim sistemlerinde](../files/storage-how-to-use-files-windows.md) kullanılabilir ve yalnızca SMB 2,1 desteklenir. SMB 3,0, [MacOS](../files/storage-how-to-use-files-mac.md) 'ta ve linux çekirdek 4,11 ve üzeri kullanılarak [Linux](../files/storage-how-to-use-files-linux.md) dağıtımları üzerinde de desteklenir. SMB 3,0 için şifreleme desteği, Linux çekirdeğinin birkaç Linux dağıtımı tarafından daha eski sürümlerine de eklenmiştir, [SMB istemci gereksinimlerini anlama](../files/storage-how-to-use-files-linux.md#smb-client-reqs)bölümüne bakın.
 
-### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Using Client-side encryption to secure data that you send to storage
-Another option that helps you ensure that your data is secure while being transferred between a client application and Storage is Client-side Encryption. The data is encrypted before being transferred into Azure Storage. When retrieving the data from Azure Storage, the data is decrypted after it is received on the client side. Even though the data is encrypted going across the wire, we recommend that you also use HTTPS, as it has data integrity checks built in which help mitigate network errors affecting the integrity of the data.
+### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Depolamaya göndereceğiniz verileri güvenli hale getirmek için Istemci tarafı şifrelemeyi kullanma
+Bir istemci uygulaması ve depolama alanı arasında aktarılırken verilerinizin güvende olduğundan emin olmanıza yardımcı olan başka bir seçenek de Istemci tarafı şifrelemedir. Veriler, Azure depolama alanına aktarılmadan önce şifrelenir. Azure depolama 'dan verileri alırken, verilerin şifresi istemci tarafında alındıktan sonra çözülür. Veriler hat genelinde şifrelense de, verilerin bütünlüğünü etkileyen ağ hatalarını azaltmaya yardımcı olan veri bütünlüğü denetimleri içerdiğinden HTTPS kullanmanızı öneririz.
 
-Client-side encryption is also a method for encrypting your data at rest, as the data is stored in its encrypted form. We'll talk about this in more detail in the section on [Encryption at Rest](#encryption-at-rest).
+Veriler şifreli biçimde depolandığından, istemci tarafı şifreleme, bekleyen verileri şifrelemek için de bir yöntemdir. Bu konuda, [bekleyen şifreleme](#encryption-at-rest)bölümündeki bölümünde daha ayrıntılı konuşacağız.
 
-## <a name="encryption-at-rest"></a>Encryption at Rest
-There are three Azure features that provide encryption at rest. Azure Disk Encryption is used to encrypt the OS and data disks in IaaS Virtual Machines. Client-side Encryption and SSE are both used to encrypt data in Azure Storage. 
+## <a name="encryption-at-rest"></a>Bekleyen şifreleme
+Bekleyen şifreleme sağlayan üç Azure özelliği vardır. IaaS sanal makinelerinde işletim sistemi ve veri disklerini şifrelemek için Azure disk şifrelemesi kullanılır. İstemci tarafı şifreleme ve SSE her ikisi de Azure Storage 'daki verileri şifrelemek için kullanılır. 
 
-While you can use Client-side Encryption to encrypt the data in transit (which is also stored in its encrypted form in Storage), you may prefer to use HTTPS during the transfer, and have some way for the data to be automatically encrypted when it is stored. There are two ways to do this -- Azure Disk Encryption and SSE. One is used to directly encrypt the data on OS and data disks used by VMs, and the other is used to encrypt data written to Azure Blob Storage.
+Istemci tarafı şifrelemeyi, yoldaki verileri şifrelemek için (aynı zamanda şifreli biçimde depolamada da depolanır) kullandığınızda, aktarım sırasında HTTPS kullanmayı tercih edebilir ve verilerin depolandığı zaman otomatik olarak şifrelenmesi için bir yol kullanabilirsiniz. Bunu yapmak için iki yol vardır--Azure disk şifrelemesi ve SSE. Bunlardan biri, VM 'Ler tarafından kullanılan işletim sistemi ve veri disklerindeki verileri doğrudan şifrelemek için, diğeri ise Azure Blob depolama alanına yazılan verileri şifrelemek için kullanılır.
 
-### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+### <a name="storage-service-encryption-sse"></a>Depolama Hizmeti Şifrelemesi (SSE)
 
-SSE is enabled for all storage accounts and cannot be disabled. SSE automatically encrypts your data when writing it to Azure Storage. When you read data from Azure Storage, it is decrypted by Azure Storage before being returned. SSE enables you to secure your data without having to modify code or add code to any applications.
+SSE tüm depolama hesapları için etkinleştirildi ve devre dışı bırakılamaz. SSE, verileri Azure depolama 'ya yazarken otomatik olarak şifreler. Azure depolama 'dan verileri okurken, döndürülmeden önce Azure Storage tarafından şifresi çözülür. SSE, kodu değiştirmek veya herhangi bir uygulamaya kod eklemek zorunda kalmadan verilerinizin güvenliğini sağlamanıza olanak sağlar.
 
-You can use either Microsoft-managed keys or your own custom keys. Microsoft generates managed keys and handles their secure storage as well as their regular rotation, as defined by internal Microsoft policy. For more information about using custom keys, see [Storage Service Encryption using customer-managed keys in Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Microsoft tarafından yönetilen anahtarları ya da kendi özel anahtarlarınızı kullanabilirsiniz. Microsoft, iç Microsoft ilkesi tarafından tanımlandığı şekilde, yönetilen anahtarlar oluşturur ve bunların güvenli depolama alanını ve normal yönlerini işler. Özel anahtarları kullanma hakkında daha fazla bilgi için, [Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](storage-service-encryption-customer-managed-keys.md)konusuna bakın.
 
 SSE tüm performans katmanları (Standart ve Premium), tüm dağıtım modelleri (Azure Resource Manager ve Klasik) ve tüm Azure Depolama hizmetlerinde (Blob, Kuyruk, Tablo ve Dosya) verileri otomatik olarak şifreler. 
 
-### <a name="client-side-encryption"></a>Client-side Encryption
-We mentioned client-side encryption when discussing the encryption of the data in transit. This feature allows you to programmatically encrypt your data in a client application before sending it across the wire to be written to Azure Storage, and to programmatically decrypt your data after retrieving it from Azure Storage.
+### <a name="client-side-encryption"></a>İstemci tarafı şifreleme
+İletim sırasında verilerin şifrelenmesini ele alırken istemci tarafı şifrelemesini belirttik. Bu özellik, verileri Azure depolama alanına yazılacak şekilde göndermeden önce bir istemci uygulamasındaki verilerinizi, Azure depolama alanından aldıktan sonra programlı bir şekilde şifrelemenizi sağlar.
 
-This does provide encryption in transit, but it also provides the feature of Encryption at Rest. Although the data is encrypted in transit, we still recommend using HTTPS to take advantage of the built-in data integrity checks that help mitigate network errors affecting the integrity of the data.
+Bu, aktarım sırasında şifreleme sağlar, ancak bekleyen şifreleme özelliğini de sağlar. Veriler aktarım sırasında şifrelense de, verilerin bütünlüğünü etkileyen ağ hatalarının azaltılmasına yardımcı olan yerleşik veri bütünlüğü denetimlerinden yararlanmak için HTTPS kullanılmasını öneririz.
 
-An example of where you might use this is if you have a web application that stores blobs and retrieves blobs, and you want the application and data to be as secure as possible. In that case, you would use client-side encryption. The traffic between the client and the Azure Blob Service contains the encrypted resource, and nobody can interpret the data in transit and reconstitute it into your private blobs.
+Bunu nerede kullanacağınızı gösteren bir örnek, Blobları depolayan ve BLOB 'ları alan bir Web uygulamanız varsa ve uygulama ve verilerin mümkün olduğunca güvenli olmasını istiyorsanız. Bu durumda, istemci tarafı şifrelemeyi kullanırsınız. İstemci ile Azure Blob hizmeti arasındaki trafik, şifrelenmiş kaynağı içerir ve hiçbir kimse iletimde verileri yorumlayıp özel bloblarınıza edilmeyen.
 
-Client-side encryption is built into the Java and the .NET storage client libraries, which in turn use the Azure Key Vault APIs, making it easy for you to implement. The process of encrypting and decrypting the data uses the envelope technique, and stores metadata used by the encryption in each storage object. For example, for blobs, it stores it in the blob metadata, while for queues, it adds it to each queue message.
+İstemci tarafı şifreleme, Java ve .NET depolama istemci kitaplıklarında yerleşik olarak bulunur ve bu da Azure Key Vault API 'Lerini kullanarak, uygulamanızı kolay hale getirir. Verilerin şifrelenmesi ve şifresinin çözülmesi, zarf tekniğini kullanır ve her bir depolama nesnesindeki şifreleme tarafından kullanılan meta verileri depolar. Örneğin, Bloblar için blob meta verilerinde depolar, ancak kuyruklar için her bir kuyruk iletisine eklenir.
 
-For the encryption itself, you can generate and manage your own encryption keys. You can also use keys generated by the Azure Storage Client Library, or you can have the Azure Key Vault generate the keys. You can store your encryption keys in your on-premises key storage, or you can store them in an Azure Key Vault. Azure Key Vault allows you to grant access to the secrets in Azure Key Vault to specific users using Azure Active Directory. This means that not just anybody can read the Azure Key Vault and retrieve the keys you're using for client-side encryption.
+Şifrelemenin kendisi için kendi şifreleme anahtarlarınızı oluşturabilir ve yönetebilirsiniz. Ayrıca, Azure Storage Istemci kitaplığı tarafından oluşturulan anahtarları kullanabilir veya Azure Key Vault anahtarları oluşturabilir. Şifreleme anahtarlarınızı şirket içi anahtar depoağınızda saklayabilir veya bir Azure Key Vault kaydedebilirsiniz. Azure Key Vault, Azure Active Directory kullanarak belirli kullanıcılara Azure Key Vault gizli dizi erişimine izin vermenizi sağlar. Bu, yalnızca herhangi bir gövdenin Azure Key Vault okuyamayacağı ve istemci tarafı şifreleme için kullandığınız anahtarları alabileceği anlamına gelir.
 
 #### <a name="resources"></a>Kaynaklar
-* [Encrypt and decrypt blobs in Microsoft Azure Storage using Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [Azure Key Vault kullanarak Microsoft Azure Depolama Blobları şifreleme ve şifre çözme](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
-  This article shows how to use client-side encryption with Azure Key Vault, including how to create the KEK and store it in the vault using PowerShell.
-* [Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage](../storage-client-side-encryption.md)
+  Bu makalede, KEK oluşturma ve PowerShell kullanarak kasada depolama gibi Azure Key Vault ile istemci tarafı şifrelemenin nasıl kullanılacağı gösterilmektedir.
+* [Microsoft Azure Depolama için istemci tarafı şifreleme ve Azure Key Vault](../storage-client-side-encryption.md)
 
-  This article gives an explanation of client-side encryption, and provides examples of using the storage client library to encrypt and decrypt resources from the four storage services. It also talks about Azure Key Vault.
+  Bu makale, istemci tarafı şifreleme hakkında bir açıklama sağlar ve depolama istemci kitaplığını kullanarak dört depolama hizmetinden kaynakları şifrelemek ve şifrelerini çözmek için örnekler sağlar. Ayrıca Azure Key Vault de konuşuyor.
 
-### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Using Azure Disk Encryption to encrypt disks used by your virtual machines
-Azure Disk Encryption allows you to encrypt the OS disks and Data disks used by an IaaS Virtual Machine. For Windows, the drives are encrypted using industry-standard BitLocker encryption technology. For Linux, the disks are encrypted using the DM-Crypt technology. This is integrated with Azure Key Vault to allow you to control and manage the disk encryption keys.
+### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Sanal makineleriniz tarafından kullanılan diskleri şifrelemek için Azure disk şifrelemesini kullanma
+Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar. Windows için Sürücüler, sektör standardı BitLocker şifreleme teknolojisi kullanılarak şifrelenir. Linux için diskler DM-Crypt teknolojisi kullanılarak şifrelenir. Bu, disk şifreleme anahtarlarını denetlemenize ve yönetmenize olanak tanımak için Azure Key Vault ile tümleşiktir.
 
-The solution supports the following scenarios for IaaS VMs when they are enabled in Microsoft Azure:
+Çözüm, Microsoft Azure ' de etkinleştirildiklerinde IaaS VM 'Leri için aşağıdaki senaryoları destekler:
 
-* Integration with Azure Key Vault
-* Standard tier VMs: [A, D, DS, G, GS, and so forth series IaaS VMs](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Enabling encryption on Windows and Linux IaaS VMs
-* Disabling encryption on OS and data drives for Windows IaaS VMs
-* Disabling encryption on data drives for Linux IaaS VMs
-* Enabling encryption on IaaS VMs that are running Windows client OS
-* Enabling encryption on volumes with mount paths
-* Enabling encryption on Linux VMs that are configured with disk striping (RAID) by using mdadm
-* Enabling encryption on Linux VMs by using LVM for data disks
-* Enabling encryption on Windows VMs that are configured by using storage spaces
-* All Azure public regions are supported
+* Azure Key Vault ile tümleştirme
+* Standart katman VM 'Leri: [A, D, DS, G, GS, vb. seri IaaS VM 'leri](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Windows ve Linux IaaS VM 'lerinde şifrelemeyi etkinleştirme
+* Windows IaaS VM 'Leri için işletim sistemi ve veri sürücülerinde şifrelemeyi devre dışı bırakma
+* Linux IaaS VM 'Leri için veri sürücülerinde şifrelemeyi devre dışı bırakma
+* Windows istemci işletim sistemi çalıştıran IaaS sanal makinelerinde şifrelemeyi etkinleştirme
+* Bağlama yollarındaki birimlerde şifrelemeyi etkinleştirme
+* Mdaddm kullanılarak disk şeridi (RAID) ile yapılandırılmış Linux VM 'lerinde şifrelemeyi etkinleştirme
+* Veri diskleri için LVM 'yi kullanarak Linux sanal makinelerinde şifrelemeyi etkinleştirme
+* Depolama alanları kullanılarak yapılandırılan Windows VM 'lerinde şifrelemeyi etkinleştirme
+* Tüm Azure ortak bölgeleri desteklenir
 
-The solution does not support the following scenarios, features, and technology in the release:
+Çözüm, sürümde aşağıdaki senaryoları, özellikleri ve teknolojiyi desteklemez:
 
-* Basic tier IaaS VMs
-* Disabling encryption on an OS drive for Linux IaaS VMs
-* IaaS VMs that are created by using the classic VM creation method
-* Integration with your on-premises Key Management Service
-* Azure Files (shared file system), Network File System (NFS), dynamic volumes, and Windows VMs that are configured with software-based RAID systems
+* Temel katman IaaS VM 'Leri
+* Linux IaaS VM 'Leri için bir işletim sistemi sürücüsünde şifrelemeyi devre dışı bırakma
+* Klasik VM oluşturma yöntemi kullanılarak oluşturulan IaaS VM 'Leri
+* Şirket içi anahtar yönetim hizmetiniz ile tümleştirme
+* Azure dosyaları (paylaşılan dosya sistemi), ağ dosya sistemi (NFS), dinamik birimler ve yazılım tabanlı RAID sistemleriyle yapılandırılmış Windows VM 'Leri
 
 
 > [!NOTE]
-> Linux OS disk encryption is currently supported on the following Linux distributions: RHEL 7.2, CentOS 7.2n, and Ubuntu 16.04.
+> Linux işletim sistemi disk şifrelemesi Şu anda şu Linux dağıtımları üzerinde destekleniyor: RHEL 7,2, CentOS 7.2 n ve Ubuntu 16,04.
 >
 >
 
-This feature ensures that all data on your virtual machine disks is encrypted at rest in Azure Storage.
+Bu özellik, sanal makine disklerinizdeki tüm verilerin Azure Storage 'da bekleyen olarak şifrelenmesini sağlar.
 
 #### <a name="resources"></a>Kaynaklar
-* [Azure Disk Encryption for Windows and Linux IaaS VMs](../../security/fundamentals/encryption-overview.md)
+* [Windows ve Linux IaaS VM 'Leri için Azure disk şifrelemesi](../../security/fundamentals/encryption-overview.md)
 
-### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Comparison of Azure Disk Encryption, SSE, and Client-Side Encryption
+### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure disk şifrelemesi, SSE ve Istemci tarafı şifreleme karşılaştırması
 
-#### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VMs and their VHD files
+#### <a name="iaas-vms-and-their-vhd-files"></a>IaaS sanal makineleri ve bunların VHD dosyaları
 
-For data disks used by IaaS VMs, Azure Disk Encryption is recommended. If you create a VM with unmanaged disks using an image from the Azure Marketplace, Azure performs a [shallow copy](https://en.wikipedia.org/wiki/Object_copying) of the image to your storage account in Azure Storage, and it is not encrypted even if you have SSE enabled. After it creates the VM and starts updating the image, SSE will start encrypting the data. For this reason, it's best to use Azure Disk Encryption on VMs with unmanaged disks created from images in the Azure Marketplace if you want them fully encrypted. If you create a VM with Managed Disks, SSE encrypts all the data by default using platform managed keys. 
+IaaS VM 'Leri tarafından kullanılan veri diskleri için Azure disk şifrelemesi önerilir. Azure Marketi 'nden bir görüntü kullanarak yönetilmeyen diskler içeren bir sanal makine oluşturursanız, Azure, Azure depolama 'daki depolama hesabınıza görüntünün [basit bir kopyasını](https://en.wikipedia.org/wiki/Object_copying) uygular ve bu, SSE etkin olsa bile şifrelenmez. VM 'yi oluşturup görüntüyü güncelleştirmeye başladıktan sonra, SSE verileri şifrelemeye başlayacaktır. Bu nedenle, tam olarak şifrelenmesini istiyorsanız Azure Marketi 'ndeki görüntülerden oluşturulan yönetilmeyen disklere sahip VM 'lerde Azure disk şifrelemesi 'ni kullanmak en iyisidir. Yönetilen diskler içeren bir sanal makine oluşturursanız, SSE, platform tarafından yönetilen anahtarları kullanarak tüm verileri varsayılan olarak şifreler. 
 
-If you bring a pre-encrypted VM into Azure from on-premises, you will be able to upload the encryption keys to Azure Key Vault, and continue using the encryption for that VM that you were using on-premises. Azure Disk Encryption is enabled to handle this scenario.
+Şirket içinden Azure 'a önceden şifrelenen bir VM 'yi yüklerseniz, şifreleme anahtarlarını Azure Key Vault karşıya yükleyebilir ve şirket içinde kullandığınız VM 'nin şifrelemesini kullanmaya devam edebilirsiniz. Azure disk şifrelemesi bu senaryoyu işleyecek şekilde etkinleştirildi.
 
-If you have non-encrypted VHD from on-premises, you can upload it into the gallery as a custom image and provision a VM from it. If you do this using the Resource Manager templates, you can ask it to turn on Azure Disk Encryption when it boots up the VM.
+Şirket içinde şifrelenmemiş VHD 'SI varsa, bunu özel bir görüntü olarak galeriye yükleyebilir ve bundan bir VM sağlayabilirsiniz. Bunu Kaynak Yöneticisi şablonları kullanarak yaparsanız, VM 'yi önyüklediğinde Azure disk şifrelemesi 'ni açmayı isteyebilirsiniz.
 
-When you add a data disk and mount it on the VM, you can turn on Azure Disk Encryption on that data disk. It will encrypt that data disk locally first, and then the classic deployment model layer will do a lazy write against storage so the storage content is encrypted.
+Bir veri diski ekleyip VM 'ye bağladığınızda, bu veri diskinde Azure disk şifrelemesi 'ni açabilirsiniz. Önce bu veri diskini yerel olarak şifreler ve ardından klasik dağıtım modeli katmanı, depolama içeriğinin şifrelenmesi için depolamaya karşı bir geç yazma işlemi kullanacaktır.
 
 #### <a name="client-side-encryption"></a>İstemci Tarafında Şifreleme
-Client-side encryption is the most secure method of encrypting your data, because it encrypts data prior to transit.  However, it does require that you add code to your applications using storage, which you may not want to do. In those cases, you can use HTTPS to secure your data in transit. Once data reaches Azure Storage, it is encrypted by SSE.
+İstemci tarafı şifreleme, verileri aktarma işleminden önce şifreleyen için en güvenli yöntemdir.  Ancak, depolama kullanarak uygulamalarınıza kod eklemenizi gerektirir. Bu işlem yapmak istemeyebilirsiniz. Bu durumlarda, iletim sırasında verilerinizin güvenliğini sağlamak için HTTPS kullanabilirsiniz. Veriler Azure Storage 'a ulaştığında, SSE tarafından şifrelenir.
 
-With client-side encryption, you can encrypt table entities, queue messages, and blobs. 
+İstemci tarafı şifreleme ile tablo varlıklarını, kuyruk iletilerini ve Blobları şifreleyebilirsiniz. 
 
-Client-side encryption is managed entirely by the application. This is the most secure approach, but does require you to make programmatic changes to your application and put key management processes in place. You would use this when you want the extra security during transit, and you want your stored data to be encrypted.
+İstemci tarafı şifreleme, tamamen uygulama tarafından yönetilir. Bu en güvenli yaklaşımdır, ancak uygulamanızda programlı değişiklikler yapmanız ve anahtar yönetim süreçlerini yerinde yerleştirmeniz gerekir. Bu, geçiş sırasında ek güvenlik istediğinizde ve depolanan verilerin şifrelenmesini istediğinizde kullanırsınız.
 
-Client-side encryption is more load on the client, and you have to account for this in your scalability plans, especially if you are encrypting and transferring a large amount of data.
+İstemci tarafı şifreleme, istemci üzerinde daha fazla yüke ve özellikle büyük miktarda veri şifrelerken ve aktarıyorsanız, ölçeklenebilirlik planlarınızda bunu hesaba geçirmeniz gerekir.
 
-#### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+#### <a name="storage-service-encryption-sse"></a>Depolama Hizmeti Şifrelemesi (SSE)
 
-SSE is managed by Azure Storage. SSE does not provide for the security of the data in transit, but it does encrypt the data as it is written to Azure Storage. SSE, Azure Depolama performansını etkilemez.
+SSE, Azure depolama tarafından yönetiliyor. SSE, yoldaki verilerin güvenliğini sağlamaz, ancak verileri Azure depolama 'ya yazıldığı şekilde şifreler. SSE, Azure Depolama performansını etkilemez.
 
-You can encrypt any kind of data of the storage account using SSE (block blobs, append blobs, page blobs, table data, queue data, and files).
+SSE (blok Blobları, ekleme Blobları, sayfa Blobları, tablo verileri, kuyruk verileri ve dosyalar) kullanarak depolama hesabı türlerini şifreleyebilirsiniz.
 
-If you have an archive or library of VHD files that you use as a basis for creating new virtual machines, you can create a new storage account and then upload the VHD files to that account. Those VHD files will be encrypted by Azure Storage.
+Yeni sanal makineler oluşturmak için temel olarak kullandığınız bir arşiv veya VHD dosyaları kitaplığınız varsa, yeni bir depolama hesabı oluşturabilir ve sonra bu hesaba VHD dosyalarını karşıya yükleyebilirsiniz. Bu VHD dosyaları, Azure depolama tarafından şifrelenir.
 
-If you have Azure Disk Encryption enabled for the disks in a VM, then any newly written data is encrypted both by SSE and by Azure Disk Encryption.
+Bir VM 'deki diskler için Azure disk şifrelemesi etkinse, yeni yazılmış tüm veriler, SSE ve Azure Disk Şifrelemesi tarafından şifrelenir.
 
 ## <a name="storage-analytics"></a>Depolama Analizi
-### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Using Storage Analytics to monitor authorization type
-For each storage account, you can enable Azure Storage Analytics to perform logging and store metrics data. This is a great tool to use when you want to check the performance metrics of a storage account, or need to troubleshoot a storage account because you are having performance problems.
+### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Yetkilendirme türünü izlemek için Depolama Analizi kullanma
+Her depolama hesabı için Azure Depolama Analizi, günlüğe kaydetme ve ölçüm verilerini depolama işlemleri gerçekleştirmesini sağlayabilirsiniz. Bu, bir depolama hesabının performans ölçümlerini denetlemek istediğinizde kullanabileceğiniz harika bir araçtır veya performans sorunlarınız olduğundan bir depolama hesabında sorun gidermeniz gerekir.
 
-Another piece of data you can see in the storage analytics logs is the authentication method used by someone when they access storage. For example, with Blob Storage, you can see if they used a Shared Access Signature or the storage account keys, or if the blob accessed was public.
+Depolama Analizi günlüklerinde görebileceğiniz başka bir veri parçası, depolama erişimi olduğunda birisi tarafından kullanılan kimlik doğrulama yöntemidir. Örneğin, BLOB depolama ile, paylaşılan erişim Imzası veya depolama hesabı anahtarları kullandıklarından ya da erişim varsa blob 'un genel olup olmadığını görebilirsiniz.
 
-This can be helpful if you are tightly guarding access to storage. For example, in Blob Storage you can set all of the containers to private and implement the use of an SAS service throughout your applications. Then you can check the logs regularly to see if your blobs are accessed using the storage account keys, which may indicate a breach of security, or if the blobs are public but they shouldn't be.
+Bu, depolama erişimini sıkı bir şekilde koruyarak yararlı olabilir. Örneğin, BLOB depolama alanında tüm kapsayıcıları özel olarak ayarlayabilir ve uygulamalarınızın tamamında bir SAS hizmetinin kullanımını uygulayabilirsiniz. Daha sonra, bloblarınızın depolama hesabı anahtarları kullanılarak erişilip erişilmeyeceğini, güvenliğin ihlal olabileceğini veya Blobların genel olduğunu, ancak bunların olmaması gerektiğini görmek için günlükleri düzenli olarak kontrol edebilirsiniz.
 
-#### <a name="what-do-the-logs-look-like"></a>What do the logs look like?
-After you enable the storage account metrics and logging through the Azure portal, analytics data will start to accumulate quickly. The logging and metrics for each service is separate; the logging is only written when there is activity in that storage account, while the metrics will be logged every minute, every hour, or every day, depending on how you configure it.
+#### <a name="what-do-the-logs-look-like"></a>Günlükler nasıl görünür?
+Depolama hesabı ölçümlerini etkinleştirdikten ve Azure portal aracılığıyla oturum açtıktan sonra, analiz verileri hızlı bir şekilde birikme başlar. Her hizmet için günlüğe kaydetme ve ölçümler ayrıdır; günlüğe kaydetme, bu depolama hesabında yalnızca bir etkinlik olduğunda yazılır, ancak ölçümler her saatte, her saat veya her gün, nasıl yapılandırdığınıza bağlı olarak günlüğe kaydedilir.
 
-The logs are stored in block blobs in a container named $logs in the storage account. This container is automatically created when Storage Analytics is enabled. Once this container is created, you can't delete it, although you can delete its contents.
+Günlükler, depolama hesabındaki $logs adlı kapsayıcıda Blok Bloblarında depolanır. Bu kapsayıcı Depolama Analizi etkinleştirildiğinde otomatik olarak oluşturulur. Bu kapsayıcı oluşturulduktan sonra, içeriğini silebilseniz de onu silemezsiniz.
 
-Under the $logs container, there is a folder for each service, and then there are subfolders for the year/month/day/hour. Under hour, the logs are numbered. This is what the directory structure will look like:
+$Logs kapsayıcısı altında, her hizmet için bir klasör vardır ve sonra yıl/ay/gün/saat için alt klasörler bulunur. Saat altında Günlükler numaralandırılır. Dizin yapısı şöyle görünür:
 
-![View of log files](./media/storage-security-guide/image1.png)
+![Günlük dosyalarının görünümü](./media/storage-security-guide/image1.png)
 
-Every request to Azure Storage is logged. Here's a snapshot of a log file, showing the first few fields.
+Azure depolama 'ya yönelik her istek günlüğe kaydedilir. İlk birkaç alanı gösteren bir günlük dosyasının anlık görüntüsü aşağıda verilmiştir.
 
-![Snapshot of a log file](./media/storage-security-guide/image2.png)
+![Günlük dosyasının anlık görüntüsü](./media/storage-security-guide/image2.png)
 
-You can see that you can use the logs to track any kind of calls to a storage account.
+Günlükleri bir depolama hesabına yönelik her türlü çağrı izlemek için kullanacağınızı görebilirsiniz.
 
-#### <a name="what-are-all-of-those-fields-for"></a>What are all of those fields for?
-There is an article listed in the resources below that provides the list of the many fields in the logs and what they are used for. Here is the list of fields in order:
+#### <a name="what-are-all-of-those-fields-for"></a>Bu alanların tümü ne için?
+Aşağıdaki kaynaklarda listelenen, günlüklerdeki birçok alanın listesini ve ne için kullanıldıklarınızı sağlayan bir makale vardır. Şu sırada alanların listesi aşağıdadır:
 
-![Snapshot of fields in a log file](./media/storage-security-guide/image3.png)
+![Günlük dosyasındaki alanların anlık görüntüsü](./media/storage-security-guide/image3.png)
 
-We're interested in the entries for GetBlob, and how they are authorized, so we need to look for entries with operation-type "Get-Blob", and check the request-status (fourth</sup> column) and the authorization-type (eighth</sup> column).
+GetBlob girişleri ve bunların nasıl yetkilendirildikleri ile ilgileniyor, bu nedenle işlem türü "Get-blob" olan girdileri aramanız ve istek durumu (dördüncü</sup> sütunu) ve yetkilendirme türü (sekizinci</sup> sütunu) kontrol etmeniz gerekir.
 
-For example, in the first few rows in the listing above, the request-status is "Success" and the authorization-type is "authenticated". This means the request was authorized using the storage account key.
+Örneğin, yukarıdaki listede yer aldığı ilk birkaç satırda, istek durumu "başarılı" ve yetkilendirme türü "kimliği doğrulandı" olur. Bu, isteğin depolama hesabı anahtarı kullanılarak yetkilendirildiği anlamına gelir.
 
-#### <a name="how-is-access-to-my-blobs-being-authorized"></a>How is access to my blobs being authorized?
-We have three cases that we are interested in.
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>Bloblarıma yetkilendirme erişimi nasıl sağlanır?
+İlgilendiğimiz üç durum var.
 
-1. The blob is public and it is accessed using a URL without a Shared Access Signature. In this case, the request-status is "AnonymousSuccess" and the authorization-type is "anonymous".
+1. Blob geneldir ve paylaşılan erişim Imzası olmadan bir URL kullanılarak erişilir. Bu durumda, istek durumu "AnonymousSuccess" ve yetkilendirme türü "anonim" olur.
 
-   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
-2. The blob is private and was used with a Shared Access Signature. In this case, the request-status is "SASSuccess" and the authorization-type is "sas".
+   1.0; 2015-11-17T02:01:29.0488963 Z; GetBlob **Anonymoussuccess**; 200; 124; 37; **anonim**;; depolamam...
+2. Blob özeldir ve paylaşılan erişim Imzasıyla birlikte kullanılır. Bu durumda, istek durumu "SASSuccess" ve yetkilendirme türü "SAS" olur.
 
-   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
-3. The blob is private and the storage key was used to access it. In this case, the request-status is "**Success**" and the authorization-type is "**authenticated**".
+   1.0; 2015-11-16T18:30:05.6556115 Z; GetBlob **Sassuccess**; 200; 416; 64; **SAS**;; depolamam...
+3. Blob özeldir ve depolama anahtarı ona erişmek için kullanılır. Bu durumda, istek durumu "**başarılı**" ve yetkilendirme türü "**kimliği doğrulandı**" dır.
 
-   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
+   1.0; 2015-11-16T18:32:24.3174537 Z; GetBlob **Başarılı**; 206; 59; 22; **kimliği doğrulandı**; depolamam...
 
-You can use the Microsoft Message Analyzer to view and analyze these logs. It includes search and filter capabilities. For example, you might want to search for instances of GetBlob to see if the usage is what you expect, that is, to make sure someone is not accessing your storage account inappropriately.
+Bu günlükleri görüntülemek ve analiz etmek için Microsoft Ileti Çözümleyicisi 'ni kullanabilirsiniz. Arama ve filtreleme özelliklerini içerir. Örneğin, bir kullanıcının depolama hesabınıza uygun bir şekilde erişmediğinden emin olmak için, kullanımın beklediğiniz gibi olup olmadığını görmek için GetBlob örnekleri aramak isteyebilirsiniz.
 
 #### <a name="resources"></a>Kaynaklar
 * [Depolama Analizi](../storage-analytics.md)
 
-  This article is an overview of storage analytics and how to enable them.
-* [Storage Analytics Log Format](https://msdn.microsoft.com/library/azure/hh343259.aspx)
+  Bu makalede, depolama analizine genel bakış ve bunların nasıl etkinleştirileceği açıklanır.
+* [Depolama Analizi günlük biçimi](https://msdn.microsoft.com/library/azure/hh343259.aspx)
 
-  This article illustrates the Storage Analytics Log Format, and details the fields available therein, including authentication-type, which indicates the type of authentication used for the request.
-* [Monitor a Storage Account in the Azure portal](../storage-monitor-storage-account.md)
+  Bu makalede, Depolama Analizi günlük biçimi gösterilmektedir ve istek için kullanılan kimlik doğrulaması türünü gösteren kimlik doğrulama türü de dahil olmak üzere, içinde bulunan alanların ayrıntıları verilmektedir.
+* [Azure portal bir depolama hesabını izleme](../storage-monitor-storage-account.md)
 
-  This article shows how to configure monitoring of metrics and logging for a storage account.
-* [End-to-End Troubleshooting using Azure Storage Metrics and Logging, AzCopy, and Message Analyzer](../storage-e2e-troubleshooting.md)
+  Bu makalede, bir depolama hesabı için ölçüm izlemenin ve günlüğe kaydetmenin nasıl yapılandırılacağı gösterilir.
+* [Azure depolama ölçümlerini ve günlüğe kaydetme, AzCopy ve Ileti Çözümleyicisi kullanarak uçtan uca sorun giderme](../storage-e2e-troubleshooting.md)
 
-  This article talks about troubleshooting using the Storage Analytics and shows how to use the Microsoft Message Analyzer.
-* [Microsoft Message Analyzer Operating Guide](https://technet.microsoft.com/library/jj649776.aspx)
+  Bu makale, Depolama Analizi ile sorun giderme hakkında bilgi sağlar ve Microsoft Message Analyzer 'ın nasıl kullanılacağını gösterir.
+* [Microsoft Ileti Çözümleyicisi Işletim kılavuzu](https://technet.microsoft.com/library/jj649776.aspx)
 
-  This article is the reference for the Microsoft Message Analyzer and includes links to a tutorial, quickstart, and feature summary.
+  Bu makale, Microsoft Ileti Çözümleyicisi 'nin başvurusudur ve bir öğretici, hızlı başlangıç ve özellik özetine bağlantılar içerir.
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Çıkış Noktaları Arası Kaynak Paylaşımı (CORS)
-### <a name="cross-domain-access-of-resources"></a>Cross-domain access of resources
-When a web browser running in one domain makes an HTTP request for a resource from a different domain, this is called a cross-origin HTTP request. For example, an HTML page served from contoso.com makes a request for a jpeg hosted on fabrikam.blob.core.windows.net. For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts, such as JavaScript. This means that when some JavaScript code on a web page on contoso.com requests that jpeg on fabrikam.blob.core.windows.net, the browser will not allow the request.
+### <a name="cross-domain-access-of-resources"></a>Kaynaklara etki alanları arası erişim
+Bir etki alanında çalışan bir Web tarayıcısı, farklı bir etki alanından bir kaynak için HTTP isteği yaptığında, bu durum, çıkış noktaları arası HTTP isteği olarak adlandırılır. Örneğin, contoso.com ' dan sunulan bir HTML sayfası, fabrikam.blob.core.windows.net üzerinde barındırılan bir JPEG isteği oluşturur. Tarayıcılar, güvenlik nedenleriyle, JavaScript gibi betikler içinden başlatılan çıkış noktaları arası HTTP isteklerini kısıtlar. Yani, contoso.com üzerindeki bir Web sayfasındaki bazı JavaScript kodu, bu, tarayıcının isteğe izin vermeyeceği anlamına gelir.
 
-What does this have to do with Azure Storage? Well, if you are storing static assets such as JSON or XML data files in Blob Storage using a storage account called Fabrikam, the domain for the assets will be fabrikam.blob.core.windows.net, and the contoso.com web application will not be able to access them using JavaScript because the domains are different. This is also true if you're trying to call one of the Azure Storage Services – such as Table Storage – that return JSON data to be processed by the JavaScript client.
+Azure depolama ile bunun ne yapması gerekir? Ayrıca, Fabrikam adlı bir depolama hesabı kullanarak BLOB depolama alanında JSON veya XML veri dosyaları gibi statik varlıkları depoluyorsanız, varlıkların etki alanı fabrikam.blob.core.windows.net olur ve contoso.com Web uygulaması bunları kullanarak bunlara erişemez Etki alanları farklı olduğundan JavaScript. Bu aynı zamanda, JavaScript istemcisi tarafından işlenecek JSON verilerini döndüren tablo depolaması gibi Azure depolama hizmetlerinden birini çağırmaya çalışıyorsanız de geçerlidir.
 
-#### <a name="possible-solutions"></a>Possible solutions
-One way to resolve this is to assign a custom domain like "storage.contoso.com" to fabrikam.blob.core.windows.net. The problem is that you can only assign that custom domain to one storage account. What if the assets are stored in multiple storage accounts?
+#### <a name="possible-solutions"></a>Olası çözümler
+Bunu çözmenin bir yolu, fabrikam.blob.core.windows.net ' a "storage.contoso.com" gibi özel bir etki alanı atacaktır. Bu sorun yalnızca özel etki alanını tek bir depolama hesabına atayabilmenizi sağlar. Varlıklar birden çok depolama hesabında depolanıyorsa ne olursa?
 
-Another way to resolve this is to have the web application act as a proxy for the storage calls. This means if you are uploading a file to Blob Storage, the web application would either write it locally and then copy it to Blob Storage, or it would read all of it into memory and then write it to Blob Storage. Alternately, you could write a dedicated web application (such as a Web API) that uploads the files locally and writes them to Blob Storage. Either way, you have to account for that function when determining the scalability needs.
+Bunu çözmenin bir diğer yolu, Web uygulamasının depolama çağrılarına yönelik bir ara sunucu görevi görmesini sağlar. Bu, blob depolamaya bir dosya yüklüyorsanız, Web uygulamasının bunu yerel olarak yazıp BLOB depolama alanına kopyalayacağından ya da tümünü bellekten okuyup blob depolamaya yazacak anlamına gelir. Alternatif olarak, dosyaları yerel olarak yükleyen ve BLOB depolamaya yazan özel bir Web uygulaması (örneğin, bir Web API 'SI) yazabilirsiniz. Her iki durumda da ölçeklenebilirlik ihtiyaçlarını belirlerken bu işlevi hesaba çıkarmanız gerekir.
 
-#### <a name="how-can-cors-help"></a>How can CORS help?
-Azure Storage allows you to enable CORS – Cross Origin Resource Sharing. For each storage account, you can specify domains that can access the resources in that storage account. For example, in our case outlined above, we can enable CORS on the fabrikam.blob.core.windows.net storage account and configure it to allow access to contoso.com. Then the web application contoso.com can directly access the resources in fabrikam.blob.core.windows.net.
+#### <a name="how-can-cors-help"></a>CORS nasıl yardımcı olabilir?
+Azure depolama, CORS-Cross-Origin kaynak paylaşımını etkinleştirmenizi sağlar. Her depolama hesabı için, bu depolama hesabındaki kaynaklara erişebilen etki alanlarını belirtebilirsiniz. Örneğin, yukarıda özetlenen örnekte, fabrikam.blob.core.windows.net depolama hesabında CORS 'yi etkinleştirebiliriz ve contoso.com öğesine erişime izin verecek şekilde yapılandırabiliriz. Daha sonra Web uygulaması contoso.com, fabrikam.blob.core.windows.net içindeki kaynaklara doğrudan erişebilir.
 
-One thing to note is that CORS allows access, but it does not provide authentication, which is required for all non-public access of storage resources. This means you can only access blobs if they are public or you include a Shared Access Signature giving you the appropriate permission. Tables, queues, and files have no public access, and require a SAS.
+Bir şey, CORS 'nin erişime izin verdiğinden, ancak depolama kaynaklarına genel olmayan tüm erişim için gerekli olan kimlik doğrulaması sağlamadığına bir şeydir. Bu, bloblara yalnızca ortak olmaları durumunda erişebildikleri veya size uygun izinleri sunan bir paylaşılan erişim Imzası dahil ettiğiniz anlamına gelir. Tablolar, kuyruklar ve dosyalar ortak erişime sahip değildir ve SAS gerektirir.
 
-By default, CORS is disabled on all services. You can enable CORS by using the REST API or the storage client library to call one of the methods to set the service policies. When you do that, you include a CORS rule, which is in XML. Here's an example of a CORS rule that has been set using the Set Service Properties operation for the Blob Service for a storage account. You can perform that operation using the storage client library or the REST APIs for Azure Storage.
+Varsayılan olarak, CORS tüm hizmetlerde devre dışıdır. Hizmet ilkelerini ayarlamak için yöntemlerden birini çağırmak üzere REST API veya depolama istemci kitaplığını kullanarak CORS 'yi etkinleştirebilirsiniz. Bunu yaptığınızda, XML içinde olan bir CORS kuralı dahil edersiniz. Bir depolama hesabı için blob hizmeti için hizmet özelliklerini ayarla işlemini kullanarak ayarlanmış bir CORS kuralına örnek aşağıda verilmiştir. Bu işlemi depolama istemci kitaplığını veya Azure depolama için REST API 'Lerini kullanarak gerçekleştirebilirsiniz.
 
 ```xml
 <Cors>    
@@ -496,48 +496,48 @@ By default, CORS is disabled on all services. You can enable CORS by using the R
 <Cors>
 ```
 
-Here's what each row means:
+Her satırın anlamı şöyledir:
 
-* **AllowedOrigins** This tells which non-matching domains can request and receive data from the storage service. This says that both contoso.com and fabrikam.com can request data from Blob Storage for a specific storage account. You can also set this to a wildcard (\*) to allow all domains to access requests.
-* **AllowedMethods** This is the list of methods (HTTP request verbs) that can be used when making the request. In this example, only PUT and GET are allowed. You can set this to a wildcard (\*) to allow all methods to be used.
-* **AllowedHeaders** This is the request headers that the origin domain can specify when making the request. In this example, all metadata headers starting with x-ms-meta-data, x-ms-meta-target, and x-ms-meta-abc are permitted. The wildcard character (\*) indicates that any header beginning with the specified prefix is allowed.
-* **ExposedHeaders** This tells which response headers should be exposed by the browser to the request issuer. In this example, any header starting with "x-ms-meta-" will be exposed.
-* **MaxAgeInSeconds** This is the maximum amount of time that a browser will cache the preflight OPTIONS request. (For more information about the preflight request, check the first article below.)
+* **Allowedkaynakları** Bu, eşleşen olmayan etki alanlarının depolama hizmetinden veri isteyebilecekleri ve alabileceği anlamına gelir. Bu, hem contoso.com hem de fabrikam.com 'in belirli bir depolama hesabı için blob depolamadan veri isteyediğini söyler. Ayrıca, tüm etki alanlarının isteklere erişmesine izin vermek için bunu bir joker (\*) olarak ayarlayabilirsiniz.
+* **AllowedMethods** Bu, isteği yaparken kullanılabilecek yöntemlerin listesidir (HTTP istek fiilleri). Bu örnekte yalnızca PUT ve GET değerlerine izin verilir. Tüm yöntemlerin kullanılmasına izin vermek için bunu bir joker (\*) olarak ayarlayabilirsiniz.
+* **Allowedheaders** Bu, isteği yaparken kaynak etki alanının belirtebileceğiniz istek üst bilgileri. Bu örnekte, x-MS-Meta-Data, x-MS-meta-Target ve x-MS-meta-ABC ile başlayan tüm meta veri üst bilgilerine izin verilir. Joker karakter (\*), belirtilen önekle başlayan herhangi bir üstbilgiye izin verildiğini gösterir.
+* **ExposedHeaders** Bu, hangi yanıt üst bilgilerinin tarayıcı tarafından istek veren tarafından sunulduğunu belirtir. Bu örnekte, "x-MS-meta-" ile başlayan herhangi bir başlık açığa alınacaktır.
+* **Maxageınseconds** Bu, bir tarayıcının ön kontrol SEÇENEKLERI isteğini önbelleğe alacak en uzun süredir. (Ön kontrol isteği hakkında daha fazla bilgi için aşağıdaki ilk makaleyi kontrol edin.)
 
 #### <a name="resources"></a>Kaynaklar
-For more information about CORS and how to enable it, check out these resources.
+CORS ve nasıl etkinleştirileceği hakkında daha fazla bilgi için bu kaynaklara göz atın.
 
-* [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on Azure.com](../storage-cors-support.md)
+* [Azure.com üzerinde Azure depolama hizmetleri için çıkış noktaları arası kaynak paylaşımı (CORS) desteği](../storage-cors-support.md)
 
-  This article provides an overview of CORS and how to set the rules for the different storage services.
-* [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)
+  Bu makalede CORS 'ye genel bir bakış ve farklı depolama hizmetleri için kuralların nasıl ayarlanacağı sunulmaktadır.
+* [MSDN 'de Azure depolama hizmetleri için çıkış noktaları arası kaynak paylaşımı (CORS) desteği](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
-  This is the reference documentation for CORS support for the Azure Storage Services. This has links to articles applying to each storage service, and shows an example and explains each element in the CORS file.
-* [Microsoft Azure Storage: Introducing CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+  Bu, Azure depolama hizmetleri için CORS desteğine yönelik başvuru belgesidir. Bu, her depolama hizmetine uygulanan makalelerin bağlantılarını içerir ve bir örnek gösterir ve CORS dosyasındaki her bir öğeyi açıklar.
+* [Microsoft Azure Depolama: CORS 'ye giriş](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
-  This is a link to the initial blog article announcing CORS and showing how to use it.
+  Bu, CORS duyurduğunu ve nasıl kullanılacağını gösteren ilk blog makalesinin bir bağlantıdır.
 
-## <a name="frequently-asked-questions-about-azure-storage-security"></a>Frequently asked questions about Azure Storage security
-1. **How can I verify the integrity of the blobs I'm transferring into or out of Azure Storage if I can't use the HTTPS protocol?**
+## <a name="frequently-asked-questions-about-azure-storage-security"></a>Azure Depolama güvenliği hakkında sık sorulan sorular
+1. **HTTPS protokolünü kullanmazsam Azure Storage 'a veya dışarı aktardığım Blobların bütünlüğünü nasıl doğrulayabilirim?**
 
-   If for any reason you need to use HTTP instead of HTTPS and you are working with block blobs, you can use MD5 checking to help verify the integrity of the blobs being transferred. This will help with protection from network/transport layer errors, but not necessarily with intermediary attacks.
+   HTTPS yerine HTTP kullanmanız gerekirse ve blok Blobları ile çalışıyorsanız, aktarılmakta olan Blobların bütünlüğünü doğrulamaya yardımcı olması için MD5 denetimini kullanabilirsiniz. Bu, ağ/aktarım katmanı hatalarından koruma sağlanmasına yardımcı olur, ancak aracı saldırılarına gerek kalmaz.
 
-   If you can use HTTPS, which provides transport level security, then using MD5 checking is redundant and unnecessary.
+   Aktarım düzeyi güvenliği sağlayan HTTPS 'yi kullanacaksanız, MD5 denetimini kullanmak gereksizdir ve gereksizdir.
 
-   For more information, please check out the [Azure Blob MD5 Overview](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
-2. **What about FIPS-Compliance for the U.S. Government?**
+   Daha fazla bilgi için lütfen [Azure Blob MD5 genel bakış ' a](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)bakın.
+2. **ABD hükümeti için FIPS uyumluluğu ne kadar?**
 
-   The United States Federal Information Processing Standard (FIPS) defines cryptographic algorithms approved for use by U.S. Federal government computer systems for the protection of sensitive data. Enabling FIPS mode on a Windows server or desktop tells the OS that only FIPS-validated cryptographic algorithms should be used. If an application uses non-compliant algorithms, the applications will break. With.NET Framework versions 4.5.2 or higher, the application automatically switches the cryptography algorithms to use FIPS-compliant algorithms when the computer is in FIPS mode.
+   Birleşik Devletler Federal bilgi Işleme standardı (FIPS), ABD Federal Kamu bilgisayar sistemleri tarafından hassas verilerin korunması için kullanılmak üzere onaylanan şifreleme algoritmalarını tanımlar. Windows Server veya masaüstü üzerinde FIPS modunu etkinleştirmek, işletim sistemine yalnızca FIPS tarafından doğrulanan şifreleme algoritmalarının kullanılması gerektiğini söyler. Bir uygulama uyumlu olmayan algoritmalar kullanıyorsa, uygulamalar kesilir. With.NET Framework sürümleri 4.5.2 veya üzeri olduğunda, uygulama otomatik olarak şifreleme algoritmalarından bilgisayar FIPS modundayken FIPS uyumlu algoritmalar kullanacak şekilde geçiş yapar.
 
-   Microsoft leaves it up to each customer to decide whether to enable FIPS mode. We believe there is no compelling reason for customers who are not subject to government regulations to enable FIPS mode by default.
+   Microsoft, FIPS modunu etkinleştirip etkinleştirmeyeceğine karar vermek için sizi her müşteriye bırakır. Kamu düzenlemelerine tabi olmayan müşterilerin varsayılan olarak FIPS modunu etkinleştirmek için etkileyici bir neden olmadığını düşünmüyoruz.
 
 ### <a name="resources"></a>Kaynaklar
-* [Why We're Not Recommending "FIPS Mode" Anymore](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
+* [Neden "FIPS modunu" önermediğimiz](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
-  This blog article gives an overview of FIPS and explains why they don't enable FIPS mode by default.
-* [FIPS 140 Validation](https://technet.microsoft.com/library/cc750357.aspx)
+  Bu blog makalesi FIPS 'ye genel bakış sağlar ve varsayılan olarak FIPS modunu etkinleştirmedikleri açıklanmaktadır.
+* [FIPS 140 doğrulaması](https://technet.microsoft.com/library/cc750357.aspx)
 
-  This article provides information on how Microsoft products and cryptographic modules comply with the FIPS standard for the U.S. Federal government.
-* ["System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing" security settings effects in Windows XP and in later versions of Windows](https://support.microsoft.com/kb/811833)
+  Bu makalede, Microsoft ürünlerinin ve şifreleme modüllerinin ABD Federal Kamu kamu için FIPS standardına uygun olduğu hakkında bilgi verilmektedir.
+* ["Sistem şifrelemesi: Windows XP ve sonraki Windows sürümlerinde şifreleme, karma ve imzalama için FIPS uyumlu algoritmalar kullanın" güvenlik ayarları etkileri](https://support.microsoft.com/kb/811833)
 
-  This article talks about the use of FIPS mode in older Windows computers.
+  Bu makalede, daha eski Windows bilgisayarlarda FIPS modunun kullanımı hakkında bilgi oluşur.

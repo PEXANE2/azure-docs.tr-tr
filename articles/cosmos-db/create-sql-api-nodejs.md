@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Use Node.js to query from Azure Cosmos DB SQL API account'
-description: How to use Node.js to create an app that connects to Azure Cosmos DB SQL API account and queries data.
+title: 'Hızlı başlangıç: Azure Cosmos DB SQL API hesabından sorgulamak için Node. js kullanma'
+description: Azure Cosmos DB SQL API hesabına ve sorgu verilerine bağlanan bir uygulama oluşturmak için Node. js kullanma.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220532"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Quickstart: Use Node.js to connect and query data from Azure Cosmos DB SQL API account
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabına bağlanmak ve veri sorgulamak için Node. js kullanma
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "74220532"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-This quickstart demonstrates how to use a Node.js app to connect to the [SQL API](sql-api-introduction.md) account in Azure Cosmos DB. You can then use Azure Cosmos DB SQL queries to query and manage data. The Node.js app you build in this article uses the [SQL JavaScript SDK](sql-api-sdk-node.md). Bu hızlı başlangıçta [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 2.0 sürümü kullanılmaktadır.
+Bu hızlı başlangıçta, Azure Cosmos DB 'de [SQL API](sql-api-introduction.md) hesabına bağlanmak için Node. js uygulamasının nasıl kullanılacağı gösterilmektedir. Daha sonra verileri sorgulamak ve yönetmek için SQL sorguları Azure Cosmos DB kullanabilirsiniz. Bu makalede oluşturduğunuz Node. js uygulaması [SQL JavaScript SDK 'sını](sql-api-sdk-node.md)kullanır. Bu hızlı başlangıçta [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 2.0 sürümü kullanılmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +40,7 @@ This quickstart demonstrates how to use a Node.js app to connect to the [SQL API
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Add a container
+## <a name="add-a-container"></a>Kapsayıcı ekleme
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -54,7 +54,7 @@ This quickstart demonstrates how to use a Node.js app to connect to the [SQL API
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Now let's clone a Node.js app from GitHub, set the connection string, and run it.
+Şimdi GitHub 'dan bir Node. js uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım.
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -76,25 +76,25 @@ Now let's clone a Node.js app from GitHub, set the connection string, and run it
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. If you're interested in learning how the Azure Cosmos database resources are created in the code, you can review the following snippets. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmeye ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
 JavaScript SDK'sının eski sürümlerini kullandıysanız 'koleksiyon' ve 'belge' terimlerine aşina olabilirsiniz. Azure Cosmos DB [birden fazla API modelini](https://docs.microsoft.com/azure/cosmos-db/introduction) desteklediğinden JavaScript SDK'sının 2.0 ve üzeri sürümlerinde kapsayıcının içeriğini tanımlamak için koleksiyon, grafik veya tablo olabilen 'kapsayıcı' ile 'öğe' terimleri kullanılmaktadır.
 
 Aşağıdaki kod parçacıklarının tamamı, **app.js** dosyasından alınmıştır.
 
-* The `CosmosClient` object is initialized.
+* `CosmosClient` nesnesi başlatıldı.
 
     ```javascript
     const client = new CosmosClient({ endpoint, key });
     ```
 
-* Create a new Azure Cosmos database.
+* Yeni bir Azure Cosmos veritabanı oluşturun.
 
     ```javascript
     const { database } = await client.databases.createIfNotExists({ id: databaseId });
     ```
 
-* A new container (collection) is created within the database.
+* Veritabanı içinde yeni bir kapsayıcı (koleksiyon) oluşturulur.
 
     ```javascript
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
@@ -106,7 +106,7 @@ Aşağıdaki kod parçacıklarının tamamı, **app.js** dosyasından alınmış
     const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
     ```
 
-* A SQL query over JSON is performed on the family database. The query returns all the children of the "Anderson" family. 
+* Aile veritabanında JSON üzerinden bir SQL sorgusu gerçekleştirilir. Sorgu "Anderson" ailesinin tüm alt öğelerini döndürür. 
 
     ```javascript
       const querySpec = {
@@ -132,9 +132,9 @@ Aşağıdaki kod parçacıklarının tamamı, **app.js** dosyasından alınmış
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 
-Now go back to the Azure portal to get the connection string details of your Azure Cosmos account. Copy the connection string into the app so that it can connect to your database.
+Şimdi Azure Cosmos hesabınızın bağlantı dizesi ayrıntılarını almak için Azure portal geri dönün. Veritabanınıza bağlanabilmeleri için bağlantı dizesini uygulamaya kopyalayın.
 
-1. In the [Azure portal](https://portal.azure.com/), in your Azure Cosmos account, in the left navigation click **Keys**, and then click **Read-write Keys**. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda `config.js` dosyasına yapıştırın.
+1. [Azure Portal](https://portal.azure.com/)Azure Cosmos hesabınızda, sol gezinti bölmesinde **anahtarlar**' a ve ardından **okuma-yazma anahtarları**' na tıklayın. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda `config.js` dosyasına yapıştırın.
 
     ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi](./media/create-sql-api-dotnet/keys.png)
 
@@ -144,7 +144,7 @@ Now go back to the Azure portal to get the connection string details of your Azu
 
     `config.endpoint = "https://FILLME.documents.azure.com"`
 
-4. Ardından portaldaki BİRİNCİL ANAHTAR değerinizi kopyalayıp `config.js` dosyasına `config.key` değeri olarak yapıştırın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
+4. Ardından portaldaki BİRİNCİL ANAHTAR değerinizi kopyalayıp `config.key` dosyasına `config.js` değeri olarak yapıştırın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
 
     `config.key = "FILLME"`
     
@@ -154,7 +154,7 @@ Now go back to the Azure portal to get the connection string details of your Azu
 
 2. Node.js uygulamanızı başlatmak için bir terminalde `node app.js` komutunu çalıştırın.
 
-You can now go back to Data Explorer, modify, and work with this new data.
+Artık Veri Gezgini, değiştirebilir ve bu yeni verilerle çalışabilirsiniz.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 
@@ -166,7 +166,7 @@ You can now go back to Data Explorer, modify, and work with this new data.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this quickstart, you've learned how to create an Azure Cosmos account, create a container using the data explorer, and run an app. You can now import additional data to your Azure Cosmos database. 
+Bu hızlı başlangıçta, bir Azure Cosmos hesabı oluşturmayı, Veri Gezgini 'ni kullanarak bir kapsayıcı oluşturmayı ve bir uygulamayı çalıştırmayı öğrendiniz. Artık Azure Cosmos veritabanınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB hesabınıza veri aktarma](import-data.md)

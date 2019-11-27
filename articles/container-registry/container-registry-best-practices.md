@@ -42,7 +42,7 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Ayrılmış kaynak grubu
 
-Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.
+Kapsayıcı kayıt defterleri birden çok kapsayıcı ana bilgisayar genelinde kullanılan kaynaklar olduğundan, kayıt defteri kendi kaynak grubunda yer almalıdır.
 
 Azure Container Instances gibi belirli bir konak türüyle denemeler yapabilecek olsanız da muhtemelen işiniz bittiğinde kapsayıcı örneğini silmek isteyeceksinizdir. Bununla birlikte, Azure Container Registry’ye gönderdiğiniz görüntü koleksiyonunu korumak da isteyebilirsiniz. Kayıt defterinizi kendi kaynak grubuna yerleştirerek, kapsayıcı örneğinin kaynak grubunu silerken yanlışlıkla kayıt defterindeki görüntü koleksiyonunu da silme riskini en aza indirirsiniz.
 
@@ -59,9 +59,9 @@ Azure Container Registry kimlik doğrulaması hakkında ayrıntılı bilgi edinm
 
 ## <a name="manage-registry-size"></a>Kayıt defteri boyutunu yönetme
 
-The storage constraints of each [container registry SKU][container-registry-skus] are intended to align with a typical scenario: **Basic** for getting started, **Standard** for the majority of production applications, and **Premium** for hyper-scale performance and [geo-replication][container-registry-geo-replication]. Kayıt defterinizin kullanım ömrü boyunca kullanılmayan içerikleri düzenli olarak silerek boyutunu yönetmeniz gerekir.
+Her [kapsayıcı kayıt DEFTERI SKU][container-registry-skus] 'sunun depolama kısıtlamaları tipik bir senaryoya göre hizalanmaya yöneliktir: başlangıç için **temel** , üretim uygulamalarının çoğunluğu için **Standart** ve Hyper-ölçek performansı ve [coğrafi çoğaltma][container-registry-geo-replication]için **Premium** . Kayıt defterinizin kullanım ömrü boyunca kullanılmayan içerikleri düzenli olarak silerek boyutunu yönetmeniz gerekir.
 
-Use the Azure CLI command [az acr show-usage][az-acr-show-usage] to display the current size of your registry:
+Kayıt defterinizin geçerli boyutunu görüntülemek için [az ACR Show-Usage][az-acr-show-usage] Azure CLI komutunu kullanın:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -71,15 +71,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-You can also find the current storage used in the **Overview** of your registry in the Azure portal:
+Azure portal Kayıt defterinize **genel bakış** bölümünde kullanılan geçerli depolamayı da bulabilirsiniz:
 
 ![Azure portalındaki kayıt defteri kullanım bilgileri][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Delete image data
+### <a name="delete-image-data"></a>Görüntü verilerini sil
 
-Azure Container Registry supports several methods for deleting image data from your container registry. You can delete images by tag or manifest digest, or delete a whole repository.
+Azure Container Registry, kapsayıcı Kayıt defterinizden görüntü verilerini silmeye yönelik çeşitli yöntemleri destekler. Resimleri etiketle veya bildirim özetine göre silebilir veya bir depoyu tümüyle silebilirsiniz.
 
-For details on deleting image data from your registry, including untagged (sometimes called "dangling" or "orphaned") images, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+Etiketsiz (bazen "Dangling" veya "yalnız bırakılmış" olarak adlandırılır) görüntü verilerini kayıt defterinizden silme hakkında daha fazla bilgi için, bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

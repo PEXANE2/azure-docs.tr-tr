@@ -15,7 +15,7 @@ ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74280657"
@@ -32,7 +32,7 @@ Aşağıdaki işlev Denetim akışında mevcuttur:
 - Doğrulama gerçekleştirmek için koşullu ifadelerde meta verileri al etkinliğinden çıktıyı kullanabilirsiniz.
 - Döngüye göre do aracılığıyla bir koşul karşılandığında bir işlem hattı tetikleyebilirsiniz.
 
-## <a name="capabilities"></a>Özellikler
+## <a name="capabilities"></a>Yetenekler
 
 Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgilerini çıkış olarak döndürür. Şu anda, aşağıdaki bağlayıcılar ve karşılık gelen alınabilir meta veriler desteklenir. Döndürülen meta verilerin en büyük boyutu 1 MB 'tır.
 
@@ -135,10 +135,10 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 Şu anda meta verileri Al etkinliği şu tür meta veri bilgilerini döndürebilir:
 
-Özellik | Açıklama | Gerekli
+Özellik | Açıklama | Gereklidir
 -------- | ----------- | --------
-fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
-veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
+fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
+veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
 formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 

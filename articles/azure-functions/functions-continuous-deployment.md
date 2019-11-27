@@ -1,6 +1,6 @@
 ---
 title: Azure İşlevleri için sürekli dağıtım
-description: Use the continuous deployment features of Azure App Service to publish your functions.
+description: İşlevlerinizi yayımlamak için Azure App Service sürekli dağıtım özelliklerini kullanın.
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
@@ -13,72 +13,72 @@ ms.locfileid: "74230893"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure İşlevleri için sürekli dağıtım
 
-You can use Azure Functions to deploy your code continuously by using [source control integration](functions-deployment-technologies.md#source-control). Source control integration enables a workflow in which a code update triggers deployment to Azure. If you're new to Azure Functions, get started by reviewing the [Azure Functions overview](functions-overview.md).
+[Kaynak denetimi tümleştirmesini](functions-deployment-technologies.md#source-control)kullanarak kodunuzu sürekli olarak dağıtmak Için Azure işlevleri 'ni kullanabilirsiniz. Kaynak denetimi tümleştirmesi, bir kod güncelleştirmesinin Azure 'a dağıtımı tetiklediği bir iş akışını sağlar. Azure Işlevleri 'ne yeni başladıysanız, [Azure işlevlerine genel bakış](functions-overview.md)' ı inceleyerek başlayın.
 
-Continuous deployment is a good option for projects where you integrate multiple and frequent contributions. When you use continuous deployment, you maintain a single source of truth for your code, which allows teams to easily collaborate. You can configure continuous deployment in Azure Functions from the following source code locations:
+Sürekli dağıtım, birden çok ve sık katkılarınızı tümleştiren projeler için iyi bir seçenektir. Sürekli dağıtım kullandığınızda, kodunuz için tek bir Truth kaynağı tuttuğunuz için ekiplerin kolayca işbirliği yapmasına olanak tanır. Azure Işlevlerinde sürekli dağıtımı aşağıdaki kaynak kodu konumlarından yapılandırabilirsiniz:
 
 * [Azure Repos](https://azure.microsoft.com/services/devops/repos/)
 * [GitHub](https://github.com)
 * [Bitbucket](https://bitbucket.org/)
 
-The unit of deployment for functions in Azure is the function app. All functions in a function app are deployed at the same time. After you enable continuous deployment, access to function code in the Azure portal is configured as *read-only* because the source of truth is set to be elsewhere.
+Azure 'daki işlevlerin dağıtım birimi, işlev uygulamasıdır. Bir işlev uygulamasındaki tüm işlevler aynı zamanda dağıtılır. Sürekli dağıtımı etkinleştirdikten sonra, Azure portal işlev koduna erişim salt *okunurdur* , çünkü gerçeği kaynağı başka bir yerde olacak şekilde ayarlanmıştır.
 
-## <a name="requirements-for-continuous-deployment"></a>Requirements for continuous deployment
+## <a name="requirements-for-continuous-deployment"></a>Sürekli dağıtım için gereksinimler
 
-For continuous deployment to succeed, your directory structure must be compatible with the basic folder structure that Azure Functions expects.
+Sürekli dağıtımın başarılı olması için dizin yapınız, Azure Işlevlerinin beklediği temel klasör yapısıyla uyumlu olmalıdır.
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 >[!NOTE]  
-> Continuous deployment is not yet supported for Linux apps running on a Consumption plan. 
+> Sürekli dağıtım henüz bir tüketim planında çalışan Linux uygulamaları için desteklenmemektedir. 
 
-## <a name="credentials"></a>Set up continuous deployment
+## <a name="credentials"></a>Sürekli dağıtımı ayarlama
 
-To configure continuous deployment for an existing function app, complete these steps. The steps demonstrate integration with a GitHub repository, but similar steps apply for Azure Repos or other source code repositories.
+Mevcut bir işlev uygulaması için sürekli dağıtımı yapılandırmak üzere, bu adımları izleyin. Adımlarda bir GitHub deposu ile tümleştirme gösterilmektedir, ancak Azure Repos veya diğer kaynak kodu depoları için de benzer adımlar geçerlidir.
 
-1. In your function app in the [Azure portal](https://portal.azure.com), select **Platform features** > **Deployment Center**.
+1. [Azure Portal](https://portal.azure.com)işlev uygulamanızda, **Dağıtım Merkezi** > **platform özellikleri** ' ni seçin.
 
-    ![Open Deployment Center](./media/functions-continuous-deployment/platform-features.png)
+    ![Dağıtım merkezini aç](./media/functions-continuous-deployment/platform-features.png)
 
-2. In **Deployment Center**, select **GitHub**, and then select **Authorize**. If you've already authorized GitHub, select **Continue**. 
+2. **Dağıtım Merkezi**'nde **GitHub**' ı seçin ve ardından **Yetkilendir**' i seçin. GitHub yetkiniz zaten varsa **devam**' ı seçin. 
 
-    ![Azure App Service Deployment Center](./media/functions-continuous-deployment/github.png)
+    ![Azure App Service dağıtım merkezi](./media/functions-continuous-deployment/github.png)
 
-3. In GitHub, select the **Authorize AzureAppService** button. 
+3. GitHub 'da **Yetkilendir azureuygulamahizmeti** düğmesini seçin. 
 
-    ![Authorize Azure App Service](./media/functions-continuous-deployment/authorize.png)
+    ![Azure App Service yetkilendir](./media/functions-continuous-deployment/authorize.png)
     
-    In **Deployment Center** in the Azure portal, select **Continue**.
+    Azure portal **Dağıtım Merkezi** 'nde **devam**' ı seçin.
 
-4. Select one of the following build providers:
+4. Aşağıdaki derleme sağlayıcılarından birini seçin:
 
-    * **App Service build service**: Best when you don't need a build or if you need a generic build.
-    * **Azure Pipelines (Preview)** : Best when you need more control over the build. This provider currently is in preview.
+    * **App Service derleme hizmeti**: bir yapıya ihtiyacınız olmadığında veya genel bir yapıya ihtiyacınız varsa en iyi seçenektir.
+    * **Azure Pipelines (Önizleme)** : yapı üzerinde daha fazla denetime ihtiyacınız olduğunda en iyi seçenektir. Bu sağlayıcı Şu anda önizlemededir.
 
-    ![Select a build provider](./media/functions-continuous-deployment/build.png)
+    ![Yapı sağlayıcısı seçin](./media/functions-continuous-deployment/build.png)
 
-5. Configure information specific to the source control option you specified. For GitHub, you must enter or select values for **Organization**, **Repository**, and **Branch**. The values are based on the location of your code. Then, select **Continue**.
+5. Belirttiğiniz kaynak denetimi seçeneğine özgü bilgileri yapılandırın. GitHub için **kuruluş**, **Depo**ve **dal**değerlerini girmeniz veya seçmeniz gerekir. Değerler, kodunuzun konumunu temel alır. Sonra **devam**' ı seçin.
 
-    ![Configure GitHub](./media/functions-continuous-deployment/github-specifics.png)
+    ![GitHub 'ı yapılandırma](./media/functions-continuous-deployment/github-specifics.png)
 
-6. Review all details, and then select **Finish** to complete your deployment configuration.
+6. Tüm ayrıntıları gözden geçirin ve ardından **son** ' u seçerek dağıtım yapılandırmanızı doldurun.
 
     ![Özet](./media/functions-continuous-deployment/summary.png)
 
-When the process is finished, all code from the specified source is deployed to your app. At that point, changes in the deployment source trigger a deployment of those changes to your function app in Azure.
+İşlem tamamlandığında, belirtilen kaynaktaki tüm kodlar uygulamanıza dağıtılır. Bu noktada, dağıtım kaynağındaki değişiklikler Azure 'daki işlev uygulamanızda bu değişikliklerin dağıtımını tetikler.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
 <a name="existing"></a>
 
-### <a name="move-existing-functions-to-continuous-deployment"></a>Move existing functions to continuous deployment
+### <a name="move-existing-functions-to-continuous-deployment"></a>Mevcut işlevleri sürekli dağıtıma taşı
 
-If you've already written functions in the [Azure portal](https://portal.azure.com) and you want to download the contents of your app before you switch to continuous deployment, go to the **Overview** tab of your function app. Select the **Download app content** button.
+[Azure Portal](https://portal.azure.com) işlevleri zaten yazdıysanız ve sürekli dağıtıma geçiş yapmadan önce uygulamanızın içeriğini indirmek istiyorsanız, Işlev uygulamanızın **genel bakış** sekmesine gidin. **Uygulama Içeriğini indir** düğmesini seçin.
 
-![Download app content](./media/functions-continuous-deployment/download.png)
+![Uygulama içeriğini indir](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
-> After you configure continuous integration, you can no longer edit your source files in the Functions portal.
+> Sürekli tümleştirmeyi yapılandırdıktan sonra, kaynak dosyalarınızı artık Işlevler portalında düzenleyemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

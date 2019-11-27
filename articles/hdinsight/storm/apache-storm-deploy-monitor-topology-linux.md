@@ -1,6 +1,6 @@
 ---
-title: Deploy and manage Apache Storm topologies on Azure HDInsight
-description: Learn how to deploy, monitor, and manage Apache Storm topologies using the Storm Dashboard on Linux-based HDInsight. Use Hadoop tools for Visual Studio.
+title: Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
+description: Linux tabanlı HDInsight 'ta fırtınası panosunu kullanarak Apache Storm topolojilerini dağıtmayı, izlemeyi ve yönetmeyi öğrenin. Visual Studio için Hadoop araçları 'nı kullanın.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -15,110 +15,110 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228880"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Deploy and manage Apache Storm topologies on Azure HDInsight 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme 
 
-In this document, learn the basics of managing and monitoring [Apache Storm](https://storm.apache.org/) topologies running on Storm on HDInsight clusters.
+Bu belgede, HDInsight kümelerinde fırtınası üzerinde çalışan [Apache Storm](https://storm.apache.org/) topolojilerinin yönetilmesi ve izlenmesi hakkında temel bilgileri öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* An Apache Storm cluster on HDInsight. See [Create Apache Hadoop clusters using the Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) and select **Storm** for **Cluster type**.
+* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 
-* (Optional) Familiarity with Secure Shell (SSH) and Secure Copy (SCP). For more information, see [Connect to HDInsight (Apache Hadoop) using SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Seçim Secure Shell (SSH) ve güvenli kopya (SCP) ile benzerlik. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Optional) Visual Studio, Azure SDK 2.5.1 or newer, and the Data Lake Tools for Visual Studio. For more information, see [Apache Hadoop & Visual Studio Data Lake Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* Seçim Visual Studio, Azure SDK 2.5.1 veya daha yeni bir sürümü ve Visual Studio için Data Lake araçları. Daha fazla bilgi için bkz. [Visual Studio Data Lake araçları & Apache Hadoop](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-## <a name="submit-a-topology-using-visual-studio"></a>Submit a topology using Visual Studio
+## <a name="submit-a-topology-using-visual-studio"></a>Visual Studio kullanarak bir topoloji gönderme
 
-You can use the Data Lake Tools for Visual Studio to submit C# or hybrid topologies to your Storm cluster. The following steps use a sample application. For information about topology creation using the Data Lake Tools, see [Apache Storm topologies with Visual Studio and C#](apache-storm-develop-csharp-visual-studio-topology.md).
+Visual Studio için Data Lake araçları 'nı kullanarak, fırtınası kümenize veya C# hibrit topolojilerinizi karma Topolojilerine gönderebilirsiniz. Aşağıdaki adımlarda örnek bir uygulama kullanılır. Data Lake araçlarını kullanarak topoloji oluşturma hakkında daha fazla bilgi için bkz. [Visual Studio ile Apache Storm topolojileri C#ve ](apache-storm-develop-csharp-visual-studio-topology.md).
 
-1. If you haven't already installed the latest version of the Data Lake tools for Visual Studio, see [Use Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+1. Visual Studio için Data Lake araçları 'nın en son sürümünü henüz yüklemediyseniz bkz. [Visual Studio için Data Lake araçları kullanma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > The Data Lake Tools for Visual Studio were formerly called the HDInsight Tools for Visual Studio.
+    > Visual Studio için Data Lake araçları, daha önce Visual Studio için HDInsight araçları olarak adlandırılmıştı.
     >
-    > Data Lake Tools for Visual Studio are included in the **Azure Workload** for Visual Studio 2019.
+    > Visual Studio için Data Lake araçları, Visual Studio 2019 için **Azure Iş yüküne** eklenmiştir.
 
 2. Visual Studio'yu açın.
 
-3. In the **Start** window, select **Create a new project**.
+3. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 
-4. In the **Create a new project** window, select the search box, and enter *Storm*. Then choose **Storm Sample** from the result list and select **Next**.
+4. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve *fırtınası*girin. Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
 
-5. In the **Configure your new project** window, enter a **Project name**, and go to or create a **Location** to save the new project in. Ardından **Oluştur**’u seçin.
+5. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
 
-    ![Configure your new project window, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+    ![Yeni proje pencerenizi, Visual Studio 'yu yapılandırın](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. In **Solution Explorer**, right-click the project, and choose **Submit to Storm on HDInsight**.
+6. **Çözüm Gezgini**, projeye sağ tıklayın ve **HDInsight 'Ta fırtınası 'ya gönder**' i seçin.
 
     > [!NOTE]  
-    > If prompted, enter the login credentials for your Azure subscription. If you have more than one subscription, sign in to the one that contains your Storm on HDInsight cluster.
+    > İstenirse, Azure aboneliğinizin oturum açma kimlik bilgilerini girin. Birden fazla aboneliğiniz varsa, HDInsight kümesi için bir fırtınası içeren bir oturum açın.
 
-7. In the **Submit Topology** dialog box, under the **Storm Cluster** drop-down list, choose your Storm on HDInsight cluster, and then select **Submit**. You can monitor whether the submission is successful by viewing the **Output** pane.
+7. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümesi** aşağı açılan listesinde, HDInsight kümesinde fırtınası ' ı seçin ve ardından **Gönder**' i seçin. **Çıkış** bölmesini görüntüleyerek gönderimin başarılı olup olmadığını izleyebilirsiniz.
 
-## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Submit a topology using SSH and the Storm command
+## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>SSH ve fırtınası komutunu kullanarak bir topoloji gönderme
 
-To submit a topology to Storm using SSH:
+SSH kullanarak fırtınası için bir topoloji göndermek için:
 
-1. Use SSH to connect to the HDInsight cluster. Replace `USERNAME` with the name of your SSH user name (such as *sshuser*). Replace `CLUSTERNAME` with your HDInsight cluster name.
+1. HDInsight kümesine bağlanmak için SSH kullanın. `USERNAME`, SSH kullanıcı adınızın adı ( *sshuser*gibi) ile değiştirin. `CLUSTERNAME`, HDInsight kümenizin adıyla değiştirin.
 
     ```shell
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    For more information on using SSH to connect to your HDInsight cluster, see [Connect to HDInsight (Apache Hadoop) using SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    HDInsight kümenize bağlanmak için SSH kullanma hakkında daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Use the following command to start the *WordCount* example topology:
+2. *WORDCOUNT* örnek topolojisini başlatmak için aşağıdaki komutu kullanın:
 
     ```ssh
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
-    Bu komut, kümede örnek WordCount topolojisini başlatır. This topology randomly generates sentences, and then counts the occurrence of each word in the sentences.
+    Bu komut, kümede örnek WordCount topolojisini başlatır. Bu topoloji rastgele cümleler oluşturur ve cümlelerde her sözcüğün geçtiği yeri sayar.
 
     > [!NOTE]  
-    > When submitting topology to the cluster, you must first copy the .jar file containing the cluster before using the `storm` command. To copy the file to the cluster, you can use the `scp` command. Örneğin, `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` girin.
+    > Kümeye topoloji gönderirken öncelikle `storm` komutunu kullanmadan önce kümeyi içeren. jar dosyasını kopyalamanız gerekir. Dosyayı kümeye kopyalamak için `scp` komutunu kullanabilirsiniz. Örneğin, `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` girin.
     >
-    > The *WordCount* example, and other storm starter examples, are already included on your cluster at `/usr/hdp/current/storm-client/contrib/storm-starter/`.
+    > *WORDCOUNT* örneği ve diğer fırtınası başlangıç örnekleri, `/usr/hdp/current/storm-client/contrib/storm-starter/`kümenizdeki kümenize zaten dahil edilmiştir.
 
-## <a name="submit-a-topology-programmatically"></a>Submit a topology programmatically
+## <a name="submit-a-topology-programmatically"></a>Bir topolojiyi programlı olarak gönderme
 
-You can programmatically deploy a topology using the Nimbus service. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) provides an example Java application that demonstrates how to deploy and start a topology through the Nimbus service.
+Nimbus hizmetini kullanarak bir topolojiyi programlı bir şekilde dağıtabilirsiniz. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) , Nimbus hizmeti aracılığıyla bir topolojinin nasıl dağıtılacağını ve başlatılacağını gösteren örnek bir Java uygulaması sağlar.
 
-## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Monitor and manage a topology in Visual Studio
+## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Visual Studio 'da topolojiyi izleme ve yönetme
 
-When you submit a topology using Visual Studio, the **Storm Topologies View** window appears. Select the topology from the list to view information about the running topology.
+Visual Studio kullanarak bir topoloji gönderdiğinizde, **fırtınası topolojileri görünümü** penceresi görüntülenir. Çalışan topoloji hakkındaki bilgileri görüntülemek için listeden topolojiyi seçin.
 
-![Monitor topology, Storm Topologies View window, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+![İzleyici topolojisi, fırtınası topolojileri Görünüm penceresi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> You can also view **Storm Topologies** from **Server Explorer**. Expand **Azure** > **HDInsight**, right-click a Storm on HDInsight cluster, and then select **View Storm Topologies**.
+> Ayrıca, **Sunucu Gezgini**karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure** > **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
 
-Select the shape for the spouts or bolts to view information about these components. A tooltip with component information appears for the item selected.
+Bu bileşenler hakkındaki bilgileri görüntülemek için spomalar veya cıvatları şeklini seçin. Seçilen öğe için bileşen bilgileri içeren bir araç ipucu görüntülenir.
 
-### <a name="deactivate-and-reactivate-a-topology"></a>Deactivate and reactivate a topology
+### <a name="deactivate-and-reactivate-a-topology"></a>Topolojiyi devre dışı bırakma ve yeniden etkinleştirme
 
-Deactivating a topology pauses it until the topology is killed or reactivated. To do these operations, use the **Deactivate** and **Reactivate** buttons in the **Actions** area at the top of the **Storm Topologies View** window.
+Topolojiyi devre dışı bırakmak topoloji sonlandırana veya yeniden etkinleştirilinceye kadar duraklatılır. Bu işlemleri yapmak için, **fırtınası topolojileri görünümü** penceresinin en üstündeki **Eylemler** alanında **devre dışı bırak** ve **yeniden etkinleştir** düğmelerini kullanın.
 
-### <a name="rebalance-a-topology"></a>Rebalance a topology
+### <a name="rebalance-a-topology"></a>Topolojiyi yeniden dengeleme
 
-Rebalancing a topology allows the system to revise the parallelism of the topology. For example, if you've resized the cluster to add more notes, rebalancing allows a topology to see the new nodes.
+Bir topolojinin yeniden dengelenmesi sistemin, topolojinin paralelliğini değiştirmesine olanak tanır. Örneğin, daha fazla not eklemek için kümeyi yeniden boyutlandırdıysanız, yeniden dengeleme bir topolojinin yeni düğümleri görmesini sağlar.
 
-To rebalance a topology, use the **Rebalance** button in the **Actions** area of the **Storm Topologies View** window.
+Bir topolojiyi yeniden dengelemek için, **fırtınası topolojileri görünümü** penceresinin **Eylemler** alanındaki yeniden **Dengeleme** düğmesini kullanın.
 
 > [!WARNING]  
-> Rebalancing a topology deactivates the topology, redistributes workers evenly across the cluster, and then returns the topology to the state it was in before rebalancing occurred. If the topology was active, it becomes active again. If the topology was deactivated, it remains deactivated.
+> Bir topolojinin yeniden dengelenmesi, topolojiyi devre dışı bırakır, çalışanları küme genelinde eşit olarak yeniden dağıtır ve sonra yeniden dengeleme gerçekleştirilmeden önce içinde olduğu duruma geri döner. Topoloji etkin ise, tekrar etkin hale gelir. Topoloji devre dışı bırakıldıysa devre dışı kalır.
 
-### <a name="kill-a-running-topology"></a>Kill a running topology
+### <a name="kill-a-running-topology"></a>Çalışan bir topolojiyi Sonlandır
 
-Storm topologies continue running until they're stopped or the cluster is deleted. To stop a topology, use the **Kill** button in the **Actions** area.
+Fırtınası topolojileri durduruluncaya veya küme silinene kadar çalışmaya devam eder. Bir topolojiyi durdurmak için, **Eylemler** alanındaki **Sonlandır** düğmesini kullanın.
 
-## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>Monitor and manage a topology using SSH and the Storm command
+## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>SSH ve fırtınası komutunu kullanarak topolojiyi izleme ve yönetme
 
-The `storm` utility allows you to work with running topologies from the command line. Use `storm -h` for a full list of commands.
+`storm` yardımcı programı, çalışan topolojilerle komut satırından çalışmanıza olanak sağlar. Komutların tam listesi için `storm -h` kullanın.
 
-### <a name="list-topologies"></a>List topologies
+### <a name="list-topologies"></a>Topolojileri Listele
 
-Use the following command to list all running topologies:
+Çalışan tüm topolojileri listelemek için aşağıdaki komutu kullanın:
 
 ```shell
 storm list
@@ -132,9 +132,9 @@ Topology_name        Status     Num_tasks  Num_workers  Uptime_secs
 WordCount            ACTIVE     29         2            263
 ```
 
-### <a name="deactivate-and-reactivate-a-topology"></a>Deactivate and reactivate a topology
+### <a name="deactivate-and-reactivate-a-topology"></a>Topolojiyi devre dışı bırakma ve yeniden etkinleştirme
 
-Deactivating a topology pauses it until the topology is killed or reactivated. Use the following commands to deactivate or reactivate:
+Topolojiyi devre dışı bırakmak topoloji sonlandırana veya yeniden etkinleştirilinceye kadar duraklatılır. Devre dışı bırakmak veya yeniden etkinleştirmek için aşağıdaki komutları kullanın:
 
 ```shell
 storm Deactivate TOPOLOGYNAME
@@ -144,132 +144,132 @@ storm Deactivate TOPOLOGYNAME
 storm Activate TOPOLOGYNAME
 ```
 
-### <a name="kill-a-running-topology"></a>Kill a running topology
+### <a name="kill-a-running-topology"></a>Çalışan bir topolojiyi Sonlandır
 
-Storm topologies, once started, continue running until stopped. To stop a topology, use the following command:
+Fırtınası topolojileri, başlatıldıktan sonra durduruluncaya kadar çalışmaya devam eder. Bir topolojiyi durdurmak için aşağıdaki komutu kullanın:
 
 ```shell
 storm kill TOPOLOGYNAME
 ```
 
-### <a name="rebalance-a-topology"></a>Rebalance a topology
+### <a name="rebalance-a-topology"></a>Topolojiyi yeniden dengeleme
 
-Rebalancing a topology allows the system to revise the parallelism of the topology. For example, if you've resized the cluster to add more notes, rebalancing allows a topology to see the new nodes.
+Bir topolojinin yeniden dengelenmesi sistemin, topolojinin paralelliğini değiştirmesine olanak tanır. Örneğin, daha fazla not eklemek için kümeyi yeniden boyutlandırdıysanız, yeniden dengeleme bir topolojinin yeni düğümleri görmesini sağlar.
 
 > [!WARNING]  
-> Rebalancing a topology deactivates the topology, redistributes workers evenly across the cluster, and then returns the topology to the state it was in before rebalancing occurred. If the topology was active, it becomes active again. If it was deactivated, it remains deactivated.
+> Bir topolojinin yeniden dengelenmesi, topolojiyi devre dışı bırakır, çalışanları küme genelinde eşit olarak yeniden dağıtır ve sonra yeniden dengeleme gerçekleştirilmeden önce içinde olduğu duruma geri döner. Topoloji etkin ise, tekrar etkin hale gelir. Devre dışı bırakılmışsa, devre dışı kalır.
 
 ```shell
 storm rebalance TOPOLOGYNAME
 ```
 
-## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Monitor and manage a topology using the Storm UI
+## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Bir topolojiyi, fırtınası Kullanıcı arabirimini kullanarak izleme ve yönetme
 
-The Storm UI provides a web interface for working with running topologies, and it's included on your HDInsight cluster. To view the Storm UI, use a web browser to open `https://CLUSTERNAME.azurehdinsight.net/stormui`, where *CLUSTERNAME* is the name of your cluster.
+Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönelik bir Web arabirimi sağlar ve HDInsight kümenize eklenmiştir. Fırtınası Kullanıcı arabirimini görüntülemek için bir Web tarayıcısı kullanarak `https://CLUSTERNAME.azurehdinsight.net/stormui`açın, burada *clustername* kümenizin adıdır.
 
 > [!NOTE]  
-> If you're asked to provide a user name and password, enter the cluster administrator username and password that you used when creating the cluster.
+> Bir Kullanıcı adı ve parola sağlamanız isteniyorsa, kümeyi oluştururken kullandığınız küme yönetici kullanıcı adını ve parolasını girin.
 
-### <a name="storm-ui-main-page"></a>Storm UI main page
+### <a name="storm-ui-main-page"></a>Fırtınası Kullanıcı arabirimi ana sayfası
 
-The main page of the Storm UI provides the following information:
-
-| Section | Açıklama |
-| --- | --- |
-| **Cluster summary** | Basic information about the Storm cluster. |
-| **Nimbus summary** | A list of basic Nimbus information. |
-| **Topology summary** | A list of running topologies. To view more information about a specific topology, select its link in the **Name** column. |
-| **Supervisor summary** | Information about the Storm supervisor. To see the worker resources associated with a specific supervisor, select its link in the **Host** or **Id** column. |
-| **Nimbus configuration** | Nimbus configuration for the cluster. |
-
-The Storm UI main page looks similar to this web page:
-
-![Main page, Storm UI, Apache Storm topologies, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
-
-#### <a name="topology-summary"></a>Topology summary
-
-Selecting a link from the **Topology summary** section displays the following information about the topology:
+Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağlar:
 
 | Section | Açıklama |
 | --- | --- |
-| **Topology summary** | Basic information about the topology. |
-| **Topology actions** | Management actions that you can do for the topology. The available actions are described later in this section. |
-| **Topology stats** | Statistics about the topology. To set the time frame for an entry in this section, select its link in the **Window** column. |
-| **Spouts** *(time frame)* | The spouts used by the topology. To view more information about a specific spout, select its link in the **Id** column. |
-| **Bolts** *(time frame)* | The bolts used by the topology. To view more information about a specific bolt, select its link in the **Id** column. |
-| **Worker resources** | A list of worker resources. To view more information about a specific worker resource, select its link in the **Host** column. |
-| **Topology visualization** | A **Show Visualization** button that displays a visualization of the topology. |
-| **Topology configuration** | The configuration of the selected topology. |
+| **Küme Özeti** | Fırtınası kümesiyle ilgili temel bilgiler. |
+| **Nimbus Özeti** | Temel Nimbus bilgilerinin listesi. |
+| **Topoloji Özeti** | Çalışan topolojilerden oluşan bir liste. Belirli bir topoloji hakkında daha fazla bilgi görüntülemek için **ad** sütununda bağlantısını seçin. |
+| **Gözetmen Özeti** | Fırtınası hakkında bilgi. Belirli bir gözetmen ile ilişkili çalışan kaynaklarını görmek için **konak** veya **kimlik** sütunundaki bağlantısını seçin. |
+| **Nimbus yapılandırması** | Küme için Nimbus yapılandırması. |
 
-The Storm topology summary page looks similar to this web page:
+Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekilde görünür:
 
-![Topology summary page, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Ana sayfa, fırtınası Kullanıcı arabirimi, Apache Storm topolojileri, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
-In the **Topology actions** section, you can select the following buttons to do an action:
+#### <a name="topology-summary"></a>Topoloji Özeti
 
-| Button | Açıklama |
-| --- | --- |
-| **Etkinleştir** | Resumes processing of a deactivated topology. |
-| **Deactivate** | Pauses a running topology. |
-| **Rebalance** | Adjusts the parallelism of the topology. You should rebalance running topologies after you've changed the number of nodes in the cluster. This operation allows the topology to adjust parallelism to compensate for the additional or reduced number of nodes in the cluster.<br/><br/>For more information, see <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of an Apache Storm topology</a>.
-| **Kill** | Terminates a Storm topology after the specified timeout. |
-| **Hata ayıklama** | Begins a debugging session for the running topology. |
-| **Stop Debug** | Ends the debugging session for the running topology. |
-| **Change Log Level** | Modifies the debugging log level. |
-
-##### <a name="spout-and-bolt-summary"></a>Spout and bolt summary
-
-Selecting a spout from the **Spouts** or **Bolts** sections displays the following information about the selected item:
+**Topoloji Özeti** bölümünden bir bağlantı seçmek topolojiyle ilgili aşağıdaki bilgileri görüntüler:
 
 | Section | Açıklama |
 | --- | --- |
-| **Component summary** | Basic information about the spout or bolt. |
-| **Component actions** | **Debug** and **Stop Debug** buttons. |
-| **Spout stats** or **Bolt stats** | Statistics about the spout or bolt. To set the time frame for an entry in this section, select its link in the **Window** column. |
-| (Bolt-only)<br/>**Input stats** *(time frame)* | Information about the input streams consumed by the bolt. |
-| **Output stats** *(time frame)* | Information about the streams emitted by the spout or bolt. |
-| **Profiling and debugging** | Controls for profiling and debugging the components on this page. You can set the **Status / Timeout (Minutes)** value, and you can select buttons for **JStack**, **Restart Worker**, and **Heap**. |
-| **Executors** *(time frame)* | Information about the instances of the spout or bolt. To view a log of diagnostic information produced for this instance, select the **Port** entry for a specific executor. You can also see the worker resources associated with a specific executor by selecting its link in the **Host** column. |
-| **Errors** | Any error information for the spout or bolt. |
+| **Topoloji Özeti** | Topolojiyle ilgili temel bilgiler. |
+| **Topoloji eylemleri** | Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
+| **Topoloji istatistikleri** | Topoloji hakkında istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
+| **Spout** *(zaman dilimi)* | Topoloji tarafından kullanılan spomalar. Belirli bir Spout hakkında daha fazla bilgi görüntülemek için **kimlik** sütunundaki bağlantısını seçin. |
+| **Cıvatalar** *(zaman dilimi)* | Topoloji tarafından kullanılan cıvatları. Belirli bir cıvata ilişkin daha fazla bilgi görüntülemek için **kimlik** sütunundaki bağlantısını seçin. |
+| **Çalışan kaynakları** | Çalışan kaynaklarının bir listesi. Belirli bir çalışan kaynağı hakkında daha fazla bilgi görüntülemek için **konak** sütunundaki bağlantısını seçin. |
+| **Topoloji görselleştirme** | Topoloji görselleştirmesini görüntüleyen bir **görselleştirmeyi göster** düğmesi. |
+| **Topoloji yapılandırması** | Seçilen topoloji yapılandırması. |
 
-The Storm bolt summary page looks similar to this web page:
+Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görünür:
 
-![Bolt summary page, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![Topoloji Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
-## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Monitor and manage the topology using the REST API
+**Topoloji eylemleri** bölümünde, bir eylem yapmak için aşağıdaki düğmeleri seçebilirsiniz:
 
-The Storm UI is built on top of the REST API, so you can do similar management and monitoring tasks by using the REST API. You can use the REST API to create custom tools for managing and monitoring Storm topologies.
+| Düğme | Açıklama |
+| --- | --- |
+| **Etkinleştir** | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
+| **Çıkarma** | Çalışan bir topolojiyi duraklatır. |
+| **Dengeleme** | Topolojinin paralelliğini ayarlar. Kümedeki düğüm sayısını değiştirdikten sonra çalışan topolojileri yeniden dengelemeniz gerekir. Bu işlem, topolojinin kümedeki ek veya azaltılan düğüm sayısını dengelemek üzere paralellik ayarlamasını sağlar.<br/><br/>Daha fazla bilgi için bkz. <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topolojisinin paralelliğini anlama</a>.
+| **Kapatmayın** | Belirtilen zaman aşımından sonra bir fırtınası topolojisini sonlandırır. |
+| **Hata ayıklama** | Çalışan topoloji için bir hata ayıklama oturumu başlatır. |
+| **Hata ayıklamayı Durdur** | Çalışan topoloji için hata ayıklama oturumunu sonlandırır. |
+| **Günlük düzeyini Değiştir** | Hata ayıklama günlüğü düzeyini değiştirir. |
 
-For more information, see [Apache Storm UI REST API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). The following information is specific to using the REST API with Apache Storm on HDInsight.
+##### <a name="spout-and-bolt-summary"></a>Spout ve cıvata Özeti
+
+**Spout** veya **cıvatalar** bölümlerinden bir biriktirmede seçim yapmak seçili öğeyle ilgili aşağıdaki bilgileri görüntüler:
+
+| Section | Açıklama |
+| --- | --- |
+| **Bileşen Özeti** | Spout veya cıvam hakkındaki temel bilgiler. |
+| **Bileşen eylemleri** | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
+| **Spout istatistikleri** veya **cıvatlar istatistikleri** | Spout veya cıvata ilişkin istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
+| (Yalnızca cıvata)<br/>**Giriş İstatistikleri** *(zaman dilimi)* | Sürgüsü tarafından tüketilen giriş akışları hakkında bilgi. |
+| **Çıkış istatistikleri** *(zaman dilimi)* | Spout veya cıvata yayılan akışlar hakkında bilgiler. |
+| **Profil oluşturma ve hata ayıklama** | Bu sayfadaki bileşenlerin profilini oluşturma ve hata ayıklama için denetimler. **Durum/zaman aşımı (dakika)** değerini ayarlayabilir ve **jstack**için düğmeler, **çalışan**ve **yığın**' ı seçebilirsiniz. |
+| **Yürüticileri** *(zaman dilimi)* | Spout veya cıvatanın örnekleri hakkında bilgi. Bu örnek için üretilen tanılama bilgilerinin günlüğünü görüntülemek için, belirli bir yürütücü için **bağlantı noktası** girişini seçin. Ayrıca, **konak** sütunundaki bağlantısını seçerek belirli bir yürütücü ile ilişkili çalışan kaynaklarını da görebilirsiniz. |
+| **Hatası** | Spout veya cıvata ilgili tüm hata bilgileri. |
+
+Fırtınası Özeti sayfası, bu Web sayfasına benzer şekilde görünür:
+
+![Cıvata Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+
+## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>REST API kullanarak topolojiyi izleyin ve yönetin
+
+Fırtınası Kullanıcı arabirimi REST API üzerine kurulmuştur, bu sayede REST API kullanarak benzer yönetim ve izleme görevleri gerçekleştirebilirsiniz. REST API, fırtınası topolojilerini yönetmek ve izlemek için özel araçlar oluşturmak üzere kullanabilirsiniz.
+
+Daha fazla bilgi için bkz. [Apache Storm uı REST API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). Aşağıdaki bilgiler, HDInsight üzerinde Apache Storm REST API kullanımı için özeldir.
 
 > [!IMPORTANT]  
-> The Storm REST API is not publicly available over the internet. It must be accessed using an SSH tunnel to the HDInsight cluster head node. For information on creating and using an SSH tunnel, see [Use SSH tunneling to access Azure HDInsight](../hdinsight-linux-ambari-ssh-tunnel.md).
+> REST API fırtınası internet üzerinden genel kullanıma açık değildir. HDInsight kümesi baş düğümüne SSH tüneli kullanılarak erişilmelidir. SSH tüneli oluşturma ve kullanma hakkında bilgi için bkz. [Azure HDInsight 'a erişmek IÇIN SSH tüneli kullanma](../hdinsight-linux-ambari-ssh-tunnel.md).
 
-### <a name="base-uri"></a>Base URI
+### <a name="base-uri"></a>Taban URI 'SI
 
-The base URI for the REST API on Linux-based HDInsight clusters is available at URL address `https://HEADNODEFQDN:8744/api/v1/`, where you replace *HEADNODEFQDN* with the head node. The domain name of the head node is generated during cluster creation and isn't static.
+Linux tabanlı HDInsight kümelerinde REST API için temel URI, *Headnodefqdn* 'yi baş DÜĞÜMLE değiştirdiğiniz URL adresi `https://HEADNODEFQDN:8744/api/v1/`adresinde bulunur. Baş düğümün etki alanı adı, küme oluşturma sırasında oluşturulur ve statik değildir.
 
-You can find the fully qualified domain name (FQDN) for the cluster head node in several ways:
+Küme baş düğümü için tam etki alanı adını (FQDN) çeşitli yollarla bulabilirsiniz:
 
-| FQDN discovery method | Açıklama |
+| FQDN bulma yöntemi | Açıklama |
 | --- | --- |
-| SSH session | Use the command `headnode -f` from an SSH session to the cluster. |
-| Ambari Web | On the Ambari cluster web page (`https://CLUSTERNAME.azurehdinsight.net`), select **Services** from the top of the page, then select **Storm**. From the **Summary** tab, select **Storm UI Server**. The FQDN of the node that hosts the Storm UI and REST API is displayed at the top of the page. |
-| Ambari REST API | Use the command `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` to retrieve information about the node that the Storm UI and REST API are running on. Replace the two instances of *CLUSTERNAME* with the cluster name. When you're prompted, enter the password for the user (admin) account. In the response, the "host_name" entry of the JSON output contains the FQDN of the node. |
+| SSH oturumu | Bir SSH oturumundan kümeye `headnode -f` komutunu kullanın. |
+| Ambarı web | Ambarı küme Web sayfasında (`https://CLUSTERNAME.azurehdinsight.net`), sayfanın üst kısmından **Hizmetler** ' i seçin, sonra da **fırtınası**' yi seçin. **Özet** sekmesinden, **fırtınası Kullanıcı arabirimi sunucusu**' nu seçin. Fırtınası Kullanıcı arabirimini barındıran düğümün FQDN 'SI ve REST API sayfanın en üstünde görüntülenir. |
+| Ambarı REST API | `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`, fırtınası Kullanıcı arabiriminin ve REST API üzerinde çalıştığı düğüm hakkında bilgi almak için komutunu kullanın. *Clustername* öğesinin iki örneğini küme adıyla değiştirin. İstendiğinde, Kullanıcı (yönetici) hesabının parolasını girin. Yanıtta, JSON çıktısının "host_name" girdisi düğümün FQDN 'sini içerir. |
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-Requests to the REST API must use *basic authentication*, so you have to use the administrator name and password for the HDInsight cluster.
+REST API istekleri *temel kimlik doğrulaması*kullanmalıdır, bu nedenle HDInsight kümesi için yönetici adını ve parolasını kullanmanız gerekir.
 
 > [!NOTE]  
-> Because basic authentication is sent by using clear text, you should *always* use HTTPS to secure communications with the cluster.
+> Temel kimlik doğrulaması şifresiz metin kullanılarak gönderildiğinden, kümeyle iletişimleri güvenli hale getirmek için *her zaman* HTTPS kullanmanız gerekir.
 
-### <a name="return-values"></a>Return values
+### <a name="return-values"></a>Döndürülen değerler
 
-Information that is returned from the REST API may only be usable from within the cluster. For example, the fully qualified domain name (FQDN) returned for [Apache ZooKeeper](https://zookeeper.apache.org/) servers isn't accessible from the internet.
+REST API döndürülen bilgiler yalnızca küme içinden kullanılabilir olabilir. Örneğin, [Apache ZooKeeper](https://zookeeper.apache.org/) sunucuları için döndürülen tam etki alanı ADıNA (FQDN) internet 'ten erişilemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn how to [Develop Java-based topologies using Apache Maven](apache-storm-develop-java-topology.md).
+[Apache Maven kullanarak Java tabanlı topolojiler geliştirmeyi](apache-storm-develop-java-topology.md)öğrenin.
 
-For a list of more example topologies, see [Example Apache Storm topologies in Azure HDInsight](apache-storm-example-topology.md).
+Daha fazla örnek topolojilerden oluşan bir liste için bkz. [Azure HDInsight 'Ta örnek Apache Storm topolojileri](apache-storm-example-topology.md).

@@ -15,59 +15,59 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451581"
 ---
-1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Daha önce etiket uygulamadıysanız liste boştur.
+1. Bir kaynağın veya kaynak grubunun etiketlerini görüntülemek için genel bakışta var olan etiketlere bakar. Daha önce etiket uygulamadıysanız liste boştur.
    
-     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
-1. To add a tag, select **Click here to add tags**.
+     ![Kaynak veya kaynak grubu için etiketleri görüntüle](./media/resource-manager-tag-resources/view-tags.png)
+1. Etiket eklemek için, **etiketleri eklemek üzere buraya tıklayın ' ı**seçin.
 
-1. Provide a name and value. Select **+** to add the tag.
+1. Bir ad ve değer belirtin. Etiketi eklemek için **+** seçin.
    
-     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
-1. Continue adding tags as needed. İşiniz bittiğinde **Kaydet**’i seçin.
+     ![Etiket ekle](./media/resource-manager-tag-resources/add-tag.png)
+1. Gerektiğinde Etiketler eklemeye devam edin. İşiniz bittiğinde **Kaydet**’i seçin.
    
-     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
-1. The tags are now displayed in the overview.
+     ![Etiketleri Kaydet](./media/resource-manager-tag-resources/save-tags.png)
+1. Etiketler artık genel bakışta görüntülenir.
    
-     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
-1. To add or delete a tag, select **change**.
+     ![Etiketleri göster](./media/resource-manager-tag-resources/view-new-tags.png)
+1. Etiket eklemek veya silmek için **Değiştir**' i seçin.
    
-1. To delete a tag, select the trash icon. Ardından **Kaydet**’i seçin.
+1. Bir etiketi silmek için çöp kutusu simgesini seçin. Ardından **Kaydet**’i seçin.
 
-     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Etiketi Sil](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-To bulk assign tags to multiple resources:
+Birden çok kaynağa etiketleri toplu atamak için:
 
-1. From any list of resources, select the checkbox for the resources you want to assign the tag.
+1. Herhangi bir kaynak listesinden etiketi atamak istediğiniz kaynakların onay kutusunu seçin.
 
-     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Birden çok kaynak seçin](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Select **Assign tags**
+1. **Etiket ata** ' yı seçin
 
-     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Etiket Ata](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. After each name and value, select **+** . When done, select **Assign**.
+1. Her ad ve değerden sonra **+** ' yi seçin. İşiniz bittiğinde **ata**' yı seçin.
 
-     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
+     ![Ata seçin](./media/resource-manager-tag-resources/select-assign.png)
 
-To view all resources with a tag:
+Etiketi olan tüm kaynakları görüntülemek için:
 
-1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
+1. Azure portal menüsünde **tüm hizmetler**' i seçin. **Genel**' i ve ardından **Etiketler**' i seçin.
 
-     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
+     ![Etikete göre bul](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Select the tag for viewing resources.
+1. Kaynakları görüntülemek için etiketi seçin.
 
-     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
+     ![Etiket Seç](./media/resource-manager-tag-resources/select-tag.png)
 
-1. All resources with that tag are displayed.
+1. Bu etikete sahip tüm kaynaklar görüntülenir.
 
-     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![Kaynakları etikete göre görüntüle](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. For quick access, pin the view to the dashboard.
+1. Hızlı erişim için görünümü panoya sabitleyin.
 
      ![Panoya sabitle](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. The view is available from the dashboard.
+1. Görünüm panodan kullanılabilir.
 
      ![Pano](./media/resource-manager-tag-resources/dashboard-with-view.png)

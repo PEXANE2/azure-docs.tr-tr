@@ -29,7 +29,7 @@ Bu makalede, HDInsight Spark kümesinde bir Spark işi göndermek ve sonra masa�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Bir Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
+* **Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
 * **HDInsight 'Ta bir Apache Spark kümesi**. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 * **Oracle Java geliştirme seti**. [Oracle Web sitesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
 * **IntelliJ fikri**. Bu makalede 2017,1 sürümü kullanılmaktadır. Bunu, [JetBrains Web sitesinden](https://www.jetbrains.com/idea/download/)yükleyebilirsiniz.
@@ -259,7 +259,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![IntelliJ fıkır uzak yapılandırma oluşturma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
-1. **RemoteClusterDebugging yapılandırması oluştur** iletişim kutusunda yapılandırma için bir ad girin **ve test** **türü olarak test türü** ' nü seçin. Diğer tüm değerleri varsayılan ayarlar olarak bırakın. Seçin **Uygula**ve ardından **Tamam**.
+1. **RemoteClusterDebugging yapılandırması oluştur** iletişim kutusunda yapılandırma için bir ad girin **ve test** **türü olarak test türü** ' nü seçin. Diğer tüm değerleri varsayılan ayarlar olarak bırakın. **Uygula**’yı ve sonra **Tamam**’ı seçin.
 
     ![RemoteClusterDebugging yapılandırması oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
 

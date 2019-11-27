@@ -1,6 +1,6 @@
 ---
-title: Azure Functions runtime versions overview
-description: Azure Functions supports multiple versions of the runtime. Learn the differences between them and how to choose the one that's right for you.
+title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
+description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 53da5869b4768c95fd225fb15db60f4301e537d4
@@ -10,122 +10,122 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226546"
 ---
-# <a name="azure-functions-runtime-versions-overview"></a>Azure Functions runtime versions overview
+# <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
-The major versions of the Azure Functions runtime are related to the version of .NET on which the runtime is based. The following table indicates the current version of the runtime, the release level, and the related .NET version. 
+Azure Işlevleri çalışma zamanının ana sürümleri, çalışma zamanının temel aldığı .NET sürümü ile ilgilidir. Aşağıdaki tabloda, çalışma zamanının geçerli sürümü, sürüm düzeyi ve ilgili .NET sürümü gösterilmektedir. 
 
-| Runtime version | Release level<sup>1</sup> | .NET version | 
+| Çalışma zamanı sürümü | Yayın düzeyi<sup>1</sup> | .NET sürüm | 
 | --------------- | ------------- | ------------ |
-| 3.x  | önizleme | .NET Core 3.x | 
+| 3.x  | önizleme | .NET Core 3. x | 
 | 2.x | Genel Kullanım | .NET Core 2.2 |
-| 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
+| 'in | GA<sup>2</sup> | .NET Framework 4,6<sup>3</sup> |
 
-<sup>1</sup>GA releases are supported for production scenarios.   
-<sup>2</sup>Version 1.x is in maintenance mode. Enhancements are provided only in later versions.   
-<sup>3</sup>Only supports development in the Azure portal or locally on Windows computers.
+<sup>1</sup> GA sürümleri, üretim senaryolarında desteklenir.   
+<sup>2</sup> Sürüm 1. x bakım modunda. Geliştirmeler yalnızca sonraki sürümlerde sağlanır.   
+<sup>3</sup> Yalnızca Azure portal veya Windows bilgisayarlarda yerel olarak geliştirme desteklenir.
 
 >[!NOTE]  
-> Version 3.x of the Functions runtime is in preview and isn't supported for production environments. For more information about trying out version 3.x, see [this announcement](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
+> Işlevler çalışma zamanının 3. x sürümü önizlemededir ve üretim ortamlarında desteklenmez. Sürüm 3. x ' i denemek hakkında daha fazla bilgi için [bu duyuruya](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm)bakın.
 
-This article details some of the differences between the various versions, how you can create each version, and how to change versions.
+Bu makalede çeşitli sürümler, her sürümü nasıl oluşturabileceğiniz ve sürümlerin nasıl değiştirileceği hakkında bazı farklılıklar açıklanır.
 
 ## <a name="languages"></a>Diller
 
-Starting with version 2.x, the runtime uses a language extensibility model, and all functions in a function app must share the same language. The language of functions in a function app is chosen when creating the app and is maintained in the [FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) setting. 
+Sürüm 2. x ile başlayarak, çalışma zamanı bir dil genişletilebilirlik modeli kullanır ve bir işlev uygulamasındaki tüm işlevler aynı dili paylaşmalıdır. İşlev uygulamasındaki işlevlerin dili, uygulama oluşturulurken seçilir ve [işlevler\_çalışan\_çalışma zamanı](functions-app-settings.md#functions_worker_runtime) ayarında saklanır. 
 
-Azure Functions 1.x experimental languages can't use the new model, so they aren't supported in 2.x. The following table indicates which programming languages are currently supported in each runtime version.
+Azure Işlevleri 1. x deneysel dilleri yeni modeli kullanamaz, bu nedenle 2. x içinde desteklenmez. Aşağıdaki tablo, her çalışma zamanı sürümünde hangi programlama dillerinin desteklendiğini gösterir.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 Daha fazla bilgi için bkz. [Desteklenen diller](supported-languages.md).
 
-## <a name="creating-1x-apps"></a>Run on a specific version
+## <a name="creating-1x-apps"></a>Belirli bir sürümde Çalıştır
 
-By default, function apps created in the Azure portal and by the Azure CLI are set to version 2.x. When possible, you should use this runtime version. If you need to, you can still run a function app on the version 1.x runtime. You can only change the runtime version after you create your function app but before you add any functions. To learn how to pin the runtime version to 1.x, see [View and update the current runtime version](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Varsayılan olarak, Azure portal oluşturulan işlev uygulamaları ve Azure CLı tarafından sürüm 2. x olarak ayarlanır. Mümkün olduğunda, bu çalışma zamanı sürümünü kullanmanız gerekir. Gerekirse, sürüm 1. x çalışma zamanında bir işlev uygulamasını çalıştırmaya devam edebilirsiniz. Çalışma zamanı sürümünü yalnızca işlev uygulamanızı oluşturduktan sonra değiştirebilirsiniz, ancak herhangi bir işlev eklemeden önce. Çalışma zamanı sürümünü 1. x 'e nasıl sabitleyeceğinizi öğrenmek için bkz. [geçerli çalışma zamanı sürümünü görüntüleme ve güncelleştirme](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-You can also upgrade to version 3.x of the runtime, which is in preview. Do this if you need to be able to run your functions on .NET Core 3.x. To learn how to upgrade to 3.x, see [View and update the current runtime version](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Ayrıca, önizleme aşamasında olan çalışma zamanının 3. x sürümüne de yükseltebilirsiniz. İşlevlerinizi .NET Core 3. x üzerinde çalıştırabilmeniz gerekiyorsa bunu yapın. 3\. x sürümüne yükseltmeyi öğrenmek için bkz. [geçerli çalışma zamanı sürümünü görüntüleme ve güncelleştirme](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-## <a name="migrating-from-1x-to-later-versions"></a>Migrating from 1.x to later versions
+## <a name="migrating-from-1x-to-later-versions"></a>1\. x 'den sonraki sürümlere geçiş
 
-You may choose to migrate an existing app written to use the version 1.x runtime to instead use version 2.x. Most of the changes you need to make are related to changes in the language runtime, such as C# API changes between .NET Framework 4.7 and .NET Core 2. You'll also need to make sure your code and libraries are compatible with the language runtime you choose. Finally, be sure to note any changes in trigger, bindings, and features highlighted below. For the best migration results, you should create a new function app for version 2.x and port your existing version 1.x function code to the new app.  
+Sürüm 1. x çalışma zamanını kullanmak üzere yazılmış mevcut bir uygulamayı bunun yerine 2. x sürümünü kullanacak şekilde geçirmeyi tercih edebilirsiniz. Yapmanız gereken değişikliklerin çoğu, dil çalışma zamanındaki değişikliklerle ilgilidir, örneğin .NET Framework 4,7 ile .NET Core 2 arasındaki C# API değişiklikleri. Ayrıca, kodunuzun ve kitaplıklarınızın seçtiğiniz dil çalışma zamanıyla uyumlu olduğundan emin olmanız gerekir. Son olarak, aşağıda vurgulanan tetikleyici, bağlamalar ve özelliklerde değişiklik yaptığınızdan emin olun. En iyi geçiş sonuçları için, sürüm 2. x için yeni bir işlev uygulaması oluşturmanız ve var olan sürüm 1. x işlev kodunuzun yeni uygulamaya bağlantı noktası oluşturmanız gerekir.  
 
-### <a name="changes-in-triggers-and-bindings"></a>Changes in triggers and bindings
+### <a name="changes-in-triggers-and-bindings"></a>Tetikleyiciler ve bağlamalardaki değişiklikler
 
-Version 2.x requires you to install the extensions for specific triggers and bindings used by the functions in your app. The only exception for this HTTP and timer triggers, which don't require an extension.  For more information, see [Register and install binding extensions](./functions-bindings-register.md).
+Sürüm 2. x, uygulamanızdaki işlevler tarafından kullanılan belirli Tetikleyiciler ve bağlamalar için uzantıları yüklemenizi gerektirir. Bu HTTP ve Zamanlayıcı Tetikleyicileri için uzantı gerektirmeyen tek özel durum.  Daha fazla bilgi için bkz. [bağlama uzantılarını kaydetme ve yüklemeyi bağlama](./functions-bindings-register.md).
 
-There have also been a few changes in the `function.json` or attributes of the function between versions. For example, the Event Hub `path` property is now `eventHubName`. See the [existing binding table](#bindings) for links to documentation for each binding.
+Ayrıca, sürümler arasında işlevin `function.json` veya özniteliklerinde birkaç değişiklik de vardır. Örneğin, Event hub `path` özelliği artık `eventHubName`. Her bağlamaya yönelik belgelerin bağlantıları için [mevcut bağlama tablosuna](#bindings) bakın.
 
-### <a name="changes-in-features-and-functionality"></a>Changes in features and functionality
+### <a name="changes-in-features-and-functionality"></a>Özelliklerde ve işlevlerde yapılan değişiklikler
 
-A few features that have also been removed, updated, or replaced in the new version. This section details the changes you see in version 2.x after having used version 1.x.
+Yeni sürümde kaldırılan, güncellenen veya değiştirilmiş birkaç özellik. Bu bölümde, sürüm 1. x kullandıktan sonra 2. x sürümünde gördüğünüz değişikliklerin ayrıntıları yer aldığı bir ayrıntılardır.
 
-In version 2.x, the following changes were made:
+2\. x sürümünde aşağıdaki değişiklikler yapılmıştır:
 
-* Keys for calling HTTP endpoints are always stored encrypted in Azure Blob storage. In version 1.x, keys were stored in Azure File storage be default. When upgrading an app from version 1.x to version 2.x, existing secrets that are in file storage are reset.
+* HTTP uç noktalarını çağırma anahtarları, her zaman Azure Blob depolamada şifrelenir. 1\. x sürümünde anahtarlar Azure dosya depolama alanında depolanır. Bir uygulamayı 1. x sürümünden sürüm 2. x ' e yükseltirken, dosya depolamada bulunan mevcut gizlilikler sıfırlanır.
 
-* The version 2.x runtime doesn't include built-in support for webhook providers. This change was made to improve performance. You can still use HTTP triggers as endpoints for webhooks.
+* Sürüm 2. x çalışma zamanı, Web kancası sağlayıcıları için yerleşik destek içermez. Bu değişiklik performansı artırmak için yapılmıştır. HTTP tetikleyicilerini Web kancaları için uç nokta olarak kullanmaya devam edebilirsiniz.
 
-* The host configuration file (host.json) should be empty or have the string `"version": "2.0"`.
+* Ana bilgisayar yapılandırma dosyası (Host. JSON) boş olmalıdır veya `"version": "2.0"`dize olmalıdır.
 
-* To improve monitoring, the WebJobs dashboard in the portal, which used the [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) setting is replaced with Azure Application Insights, which uses the [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) setting. For more information, see [Monitor Azure Functions](functions-monitoring.md).
+* İzlemeyi geliştirmek için, portalda [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) ayarının kullanıldığı Web işleri panosu, [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) ayarını kullanan Azure Application Insights ile değiştirilmiştir. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
-* All functions in a function app must share the same language. When you create a function app, you must choose a runtime stack for the app. The runtime stack is specified by the [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) value in application settings. This requirement was added to improve footprint and startup time. When developing locally, you must also include this setting in the [local.settings.json file](functions-run-local.md#local-settings-file).
+* Bir işlev uygulamasındaki tüm işlevler aynı dili paylaşmalıdır. Bir işlev uygulaması oluşturduğunuzda, uygulama için bir çalışma zamanı yığını seçmeniz gerekir. Çalışma zamanı yığını, uygulama ayarlarındaki [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) değeriyle belirtilir. Bu gereksinim, parmak izini ve başlangıç süresini artırmak için eklenmiştir. Yerel olarak geliştirilirken, bu ayarı [Local. Settings. JSON dosyasına](functions-run-local.md#local-settings-file)da dahil etmeniz gerekir.
 
-* The default timeout for functions in an App Service plan is changed to 30 minutes. You can manually change the timeout back to unlimited by using the [functionTimeout](functions-host-json.md#functiontimeout) setting in host.json.
+* Bir App Service planındaki işlevler için varsayılan zaman aşımı 30 dakikaya dönüştürülür. Host. json ' daki [functiontimeout](functions-host-json.md#functiontimeout) ayarını kullanarak, zaman aşımını tekrar sınırsız olarak değiştirebilirsiniz.
 
-* HTTP concurrency throttles are implemented by default for consumption plan functions, with a default of 100 concurrent requests per instance. You can change this in the [`maxConcurrentRequests`](functions-host-json.md#http) setting in the host.json file.
+* HTTP eşzamanlılık kısıtlılığı, örnek başına 100 eşzamanlı istek içeren tüketim planı işlevleri için varsayılan olarak uygulanır. Bunu, Host. JSON dosyasındaki [`maxConcurrentRequests`](functions-host-json.md#http) ayarında değiştirebilirsiniz.
 
-* Because of [.NET core limitations](https://github.com/Azure/azure-functions-host/issues/3414), support for F# script (.fsx) functions has been removed. Compiled F# functions (.fs) are still supported.
+* [.NET Core sınırlamaları](https://github.com/Azure/azure-functions-host/issues/3414)nedeniyle, komut dosyası ( F# . FSX) işlevleri için destek kaldırılmıştır. Derlenen F# işlevler (. FS) hala desteklenmektedir.
 
-* The URL format of Event Grid trigger webhooks has been changed to `https://{app}/runtime/webhooks/{triggerName}`.
+* Event Grid tetikleyici Web kancalarının URL biçimi `https://{app}/runtime/webhooks/{triggerName}`olarak değiştirildi.
 
-### <a name="migrating-a-locally-developed-application"></a>Migrating a locally developed application
+### <a name="migrating-a-locally-developed-application"></a>Yerel olarak geliştirilmiş bir uygulamayı geçirme
 
-You may have existing function app projects that you developed locally using the version 1.x runtime. To upgrade to version 2.x, you should create a local function app project against version 2.x and port your existing code into the new app. You could manually update the existing project and code, a sort of "in-place" upgrade. However, there are a number of other improvements between version 1.x and version 2.x that you may still need to make. For example, in C# the debugging object was changed from `TraceWriter` to `ILogger`. By creating a new version 2.x project, you start off with updated functions based on the latest version 2.x templates.
+1\. x çalışma zamanı sürümünü kullanarak yerel olarak geliştirmiş olduğunuz işlev uygulaması projelerine sahip olabilirsiniz. Sürüm 2. x ' e yükseltmek için, sürüm 2. x sürümüne ve mevcut kodunuzun bağlantı noktasına karşı yeni uygulamaya yönelik bir yerel işlev uygulama projesi oluşturmanız gerekir. Mevcut projeyi ve kodu, "yerinde" yükseltme için el ile güncelleştirebilirsiniz. Ancak, 1. x ve sürüm 2. x arasında hala yapmanız gerekebilecek bazı diğer geliştirmeler vardır. Örneğin, hata ayıklama C# nesnesi `TraceWriter`, `ILogger`olarak değiştirilmiştir. Yeni bir sürüm 2. x projesi oluşturarak, en son sürüm 2. x şablonlarına göre güncelleştirilmiş işlevlerle başlayabilirsiniz.
 
-#### <a name="visual-studio-runtime-versions"></a>Visual Studio runtime versions
+#### <a name="visual-studio-runtime-versions"></a>Visual Studio çalışma zamanı sürümleri
 
-In Visual Studio, you select the runtime version when you create a project. Azure Functions tools for Visual Studio supports both major runtime versions. The correct version is used when debugging and publishing based on project settings. The version settings are defined in the `.csproj` file in the following properties:
+Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçersiniz. Visual Studio için Azure Işlevleri araçları, hem önemli çalışma zamanı sürümlerini destekler. Hata ayıklama sırasında ve proje ayarlarına bağlı olarak yayımlandığında doğru sürüm kullanılır. Sürüm ayarları, aşağıdaki özelliklerde `.csproj` dosyasında tanımlanır:
 
-##### <a name="version-1x"></a>Version 1.x
+##### <a name="version-1x"></a>Sürüm 1. x
 
 ```xml
 <TargetFramework>net461</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 
-##### <a name="version-2x"></a>Version 2.x
+##### <a name="version-2x"></a>Sürüm 2. x
 
 ```xml
 <TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-When you debug or publish your project, the correct version of the runtime is used.
+Projenizi hata ayıkladığınızda veya yayımladığınızda, çalışma zamanının doğru sürümü kullanılır.
 
-#### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code and Azure Functions Core Tools
+#### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code ve Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) is used for command line development and also by the [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) for Visual Studio Code. To develop against  version 2.x, install version 2.x of the Core Tools. Version 1.x development requires version 1.x of the Core Tools. For more information, see [Install the Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
+[Azure Functions Core Tools](functions-run-local.md) , komut satırı geliştirme ve ayrıca Visual Studio Code Için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) tarafından kullanılır. Sürüm 2. x ' i geliştirmek için çekirdek araçların 2. x sürümünü yüklemelisiniz. Sürüm 1. x geliştirme, çekirdek araçların 1. x sürümünü gerektirir. Daha fazla bilgi için bkz. [Azure Functions Core Tools yüklemesi](functions-run-local.md#install-the-azure-functions-core-tools).
 
-For Visual Studio Code development, you may also need to update the user setting for the `azureFunctions.projectRuntime` to match the version of the tools installed.  This setting also updates the templates and languages used during function app creation.
+Visual Studio Code geliştirme için, Ayrıca, `azureFunctions.projectRuntime` için Kullanıcı ayarını, yüklü araçların sürümüyle eşleşecek şekilde güncelleştirmeniz gerekebilir.  Bu ayar, işlev uygulaması oluşturma sırasında kullanılan şablonları ve dilleri de güncelleştirir.
 
-### <a name="changing-version-of-apps-in-azure"></a>Changing version of apps in Azure
+### <a name="changing-version-of-apps-in-azure"></a>Azure 'da uygulamaların sürümünü değiştirme
 
-The version of the Functions runtime used by published apps in Azure is dictated by the [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) application setting. A value of `~2` targets the version 2.x runtime and `~1` targets the version 1.x runtime. Don't arbitrarily change this setting, because other app setting changes and code changes in your functions are likely required. To learn about the recommended way to migrate your function app to a different runtime version, see [How to target Azure Functions runtime versions](set-runtime-version.md).
+Azure 'da yayımlanan uygulamalar tarafından kullanılan Işlevlerin çalışma zamanının sürümü [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) uygulama ayarı tarafından belirlenir. `~2` değeri sürüm 2. x çalışma zamanına ve `~1` sürüm 1. x çalışma zamanını hedefliyor. Bu ayarı rastgele değiştirmeyin, çünkü işlevinizdeki diğer uygulama ayarı değişiklikleri ve kod değişiklikleri muhtemelen gereklidir. İşlev uygulamanızı farklı bir çalışma zamanı sürümüne geçirmek için önerilen yöntem hakkında bilgi edinmek için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
 
 ## <a name="bindings"></a>Bağlamalar
 
-Starting with version 2.x, the runtime uses a new [binding extensibility model](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) that offers these advantages:
+Çalışma zamanı, sürüm 2. x ile başlayarak bu avantajları sunan yeni bir [bağlama genişletilebilirlik modeli](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) kullanır:
 
-* Support for third-party binding extensions.
+* Üçüncü taraf bağlama uzantıları için destek.
 
-* Decoupling of runtime and bindings. This change allows binding extensions to be versioned and released independently. You can, for example, opt to upgrade to a version of an extension that relies on a newer version of an underlying SDK.
+* Çalışma zamanının ve bağlamaların ayrılması. Bu değişiklik, bağlama uzantılarının bağımsız olarak yayınlanabilmesini ve serbest bırakılacağını sağlar. Örneğin, temel bir SDK 'nın daha yeni bir sürümüne bağımlı olan bir uzantının sürümüne yükseltmeyi tercih edebilirsiniz.
 
-* A lighter execution environment, where only the bindings in use are known and loaded by the runtime.
+* Yalnızca kullanımdaki bağlamaların bilinen ve çalışma zamanı tarafından yüklendiği, daha hafif bir yürütme ortamıdır.
 
-With the exception of HTTP and timer triggers, all bindings must be explicitly added to the function app project, or registered in the portal. For more information, see [Register binding extensions](./functions-bindings-expressions-patterns.md).
+HTTP ve Zamanlayıcı Tetikleyicileri hariç olmak üzere tüm bağlamalar, işlev uygulaması projesine açıkça eklenmelidir veya portalda kayıtlı olmalıdır. Daha fazla bilgi için bkz. [bağlama uzantılarını kaydetme](./functions-bindings-expressions-patterns.md).
 
-The following table shows which bindings are supported in each runtime version.
+Aşağıdaki tabloda, her çalışma zamanı sürümünde hangi bağlamaların desteklendiği gösterilmektedir.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
@@ -136,5 +136,5 @@ The following table shows which bindings are supported in each runtime version.
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure İşlevleri’ni yerel olarak kodlama ve test etme](functions-run-local.md)
-* [How to target Azure Functions runtime versions](set-runtime-version.md)
+* [Azure Işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md)
 * [Sürüm notları](https://github.com/Azure/azure-functions-host/releases)

@@ -12,7 +12,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230849"
 ---
-# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Quickstart: Create your first function from the command line using Azure CLI
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak komut satırından ilk işlevinizi oluşturma
 
 Bu hızlı başlangıç konusu, komut satırından veya terminalden ilk işlevinizi oluşturma hakkında bilgi vermektedir. İşlev uygulaması oluşturmak için, işlevinizi barındıran [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir altyapı olan Azure CLI’yi kullanın. İşlev kodu projesi, bir uygulamadan, işlev uygulaması projesini Azure’ye dağıtmak için de kullanılan [Azure Functions Core Tools](functions-run-local.md) kullanılarak bir şablondan oluşturulur.
 
@@ -22,9 +22,9 @@ Mac, Windows veya Linux bilgisayar kullanarak aşağıdaki adımları izleyebili
 
 Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
-+ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or later.
++ [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üstünü yükler.
 
-+ [Azure CLI](/cli/azure/install-azure-cli)’yi yükleyin. This     article requires the Azure CLI version 2.0 or later. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. [Azure Cloud Shell](https://shell.azure.com/bash)’i de kullanabilirsiniz.
++ [Azure CLI](/cli/azure/install-azure-cli)’yi yükleyin. Bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. [Azure Cloud Shell](https://shell.azure.com/bash)’i de kullanabilirsiniz.
 
 + Etkin bir Azure aboneliği.
 
@@ -32,7 +32,7 @@ Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
 [!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Enable extension bundles
+## <a name="enable-extension-bundles"></a>Uzantı paketlerini etkinleştir
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -48,7 +48,7 @@ Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
 İşlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, işlev kodunuzun sunucusuz yürütülmesine yönelik bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak bir işlev uygulaması oluşturun. 
 
-Aşağıdaki komutta benzersiz bir işlev uygulamasının adını `<APP_NAME>` yer tutucusunun ve `<STORAGE_NAME>` depolama hesabı adının yerine ekleyin. `<APP_NAME>`, işlev uygulamasının varsayılan DNS etki alanı olarak kullanılacağı için adın Azure’daki tüm uygulamalarda benzersiz olması gerekir. You should also set the `<language>` runtime for your function app, from `dotnet` (C#) or `node` (JavaScript).
+Aşağıdaki komutta benzersiz bir işlev uygulamasının adını `<APP_NAME>` yer tutucusunun ve `<STORAGE_NAME>` depolama hesabı adının yerine ekleyin. `<APP_NAME>`, işlev uygulamasının varsayılan DNS etki alanı olarak kullanılacağı için adın Azure’daki tüm uygulamalarda benzersiz olması gerekir. Ayrıca, işlev uygulamanız için `dotnet` (C#) veya `node` (JavaScript) `<language>` çalışma zamanını da ayarlamanız gerekir.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \

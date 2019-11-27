@@ -1,5 +1,5 @@
 ---
-title: Store unstructured data using Azure Cosmos DB and Functions
+title: Azure Cosmos DB ve Işlevleri kullanarak yapılandırılmamış verileri depolama
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 ms.topic: quickstart
 ms.date: 10/01/2018

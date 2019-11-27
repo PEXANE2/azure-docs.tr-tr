@@ -1,6 +1,6 @@
 ---
-title: Gateways for downstream devices - Azure IoT Edge | Microsoft Docs
-description: Use Azure IoT Edge to create a transparent, opaque, or proxy gateway device that sends data from multiple downstream devices to the cloud or processes it locally.
+title: Ağ geçitleri için aşağı akış cihazları - Azure IOT Edge | Microsoft Docs
+description: Azure IOT Edge, verileri birden çok akış CİHAZDAN buluta gönderiyor veya yerel olarak işleyen bir saydam, opak ya da proxy ağ geçidi cihazı oluşturmak için kullanın.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,46 +15,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456647"
 ---
-# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge cihazını ağ geçidi olarak kullanma
+# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Bir ağ geçidi olarak IOT Edge cihazının nasıl kullanılabileceğini
 
-Gateways in IoT Edge solutions provide device connectivity and edge analytics to IoT devices that otherwise wouldn't have those capabilities. Azure IoT Edge can be used to satisfy all needs for an IoT gateway regardless of whether they are related to connectivity, identity, or edge analytics. Gateway patterns in this article only refer to characteristics of downstream device connectivity and device identity, not how device data is processed on the gateway.
+IoT Edge çözümlerinde ağ geçitleri, bu yeteneklere sahip olmayan IoT cihazlarına cihaz bağlantısı ve uç analizi sağlar. Azure IOT Edge, bir IOT ağ geçidi bağlantısı, kimlik veya uç analizi ilişkili oldukları bağımsız olarak tüm ihtiyaçlarınızı karşılamak için kullanılabilir. Bu makalede bir ağ geçidi desenleri özellikleri aşağı akış cihaz bağlantısı ve cihaz kimliği için cihaz verilerini ağ geçidi üzerinde nasıl işleneceğini değil yalnızca bakın.
 
 ## <a name="patterns"></a>Desenler
 
-There are three patterns for using an IoT Edge device as a gateway: transparent, protocol translation, and identity translation:
-* **Transparent** – Devices that theoretically could connect to IoT Hub can connect to a gateway device instead. The downstream devices have their own IoT Hub identities and are using any of the MQTT, AMQP, or HTTP protocols. The gateway simply passes communications between the devices and IoT Hub. The devices are unaware that they are communicating with the cloud via a gateway, and a user interacting with the devices in IoT Hub is unaware of the intermediate gateway device. Thus, the gateway is transparent. Refer to [Create a transparent gateway](how-to-create-transparent-gateway.md) for specifics on using an IoT Edge device as a transparent gateway.
-* **Protocol translation** – Also known as an opaque gateway pattern, devices that do not support MQTT, AMQP, or HTTP can use a gateway device to send data to IoT Hub on their behalf. The gateway understands the protocol used by the downstream devices, and is the only device that has an identity in IoT Hub. All information looks like it is coming from one device, the gateway. Downstream devices must embed additional identifying information in their messages if cloud applications want to analyze the data on a per-device basis. Additionally, IoT Hub primitives like twins and methods are only available for the gateway device, not downstream devices.
-* **Identity translation** - Devices that cannot connect to IoT Hub can connect to a gateway device, instead. The gateway provides IoT Hub identity and protocol translation on behalf of the downstream devices. The gateway is smart enough to understand the protocol used by the downstream devices, provide them identity, and translate IoT Hub primitives. Downstream devices appear in IoT Hub as first-class devices with twins and methods. A user can interact with the devices in IoT Hub and is unaware of the intermediate gateway device.
+Bir ağ geçidi olarak IOT Edge cihazı kullanmak için üç desen vardır: saydam, protokol çevirisi ve kimlik çeviri:
+* **Saydam** – teorik olarak IoT Hub bağlantı kurmak için bir ağ geçidi cihazına bağlanabilir cihazlar. Aşağı Akış cihazlar IOT hub'ı kimliklerinin ve MQTT, AMQP veya HTTP protokolünü kullanarak. Ağ geçidi, yalnızca IOT hub'ı ve cihazlar arasında iletişim geçirir. Cihazlar, bulut ile bir ağ geçidi üzerinden iletişim kurdukları farkında değildir ve IoT Hub içindeki cihazlarla etkileşim kuran bir kullanıcı ara ağ geçidi cihazından haberdar değildir. Bu nedenle, ağ geçidi saydamdır. IoT Edge bir cihazı saydam bir ağ geçidi olarak kullanma hakkında daha fazla ayrıntı için [bkz. saydam bir ağ geçidi oluşturma](how-to-create-transparent-gateway.md) .
+* **Protokol çevirisi** – donuk ağ geçidi alanı olarak da BILINEN, MQTT, AMQP veya HTTP desteği olmayan cihazlar, verileri adına IoT Hub veri göndermek için bir ağ geçidi cihazı kullanabilir. Ağ Geçidi, aşağı akış cihazları tarafından kullanılan protokolü anlamıştır ve IoT Hub kimliği olan tek cihazdır. Tüm bilgiler, bir CİHAZDAN bir ağ geçidi geliyor gibi görünüyor. Aşağı Akış cihazları ek kimlik bilgileri, bulut uygulamalarını cihaz başına temelinde verileri çözümlemek istiyorsanız, iletilerinde katıştırmanız gerekir. Buna ek olarak, IOT hub'ı temelleri ikizlerini ve gibi yöntemler yalnızca olmayan aşağı akış cihazların ağ geçidi cihazı için kullanılabilir.
+* **Kimlik çevirisi** -IoT Hub bağlantı olmayan cihazlar, bunun yerine bir ağ geçidi cihazına bağlanabilir. Ağ geçidi, IOT Hub adına aşağı akış cihazları kimlik ve protokol çevirisi sağlar. Aşağı Akış cihazlar tarafından kullanılan protokol anlamanıza, bunları kimlik sağlama ve IOT hub'ı temelleri çevirmek akıllı geçididir. Aşağı Akış cihazlar IOT Hub'ında birinci sınıf cihaz ikizleri ve yöntemler olarak görünür. Bir kullanıcı, cihazlar IOT hub'ında etkileşim kurabilir ve ara ağ geçidi cihazı farkında değildir.
 
-![Diagram - Transparent, protocol, and identity gateway patterns](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![Diyagram - saydam, protokolü ve kimlik ağ geçidi desenleri](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>Uygulama alanları
-All gateway patterns provide the following benefits:
-* **Analytics at the edge** – Use AI services locally to process data coming from downstream devices without sending full-fidelity telemetry to the cloud. Find and react to insights locally and only send a subset of data to IoT Hub. 
-* **Downstream device isolation** – The gateway device can shield all downstream devices from exposure to the internet. It can sit in between an OT network that does not have connectivity and an IT network that provides access to the web. 
-* **Connection multiplexing** - All devices connecting to IoT Hub through an IoT Edge gateway use the same underlying connection.
-* **Traffic smoothing** - The IoT Edge device will automatically implement exponential backoff if IoT Hub throttles traffic, while persisting the messages locally. This benefit makes your solution resilient to spikes in traffic.
-* **Offline support** - The gateway device stores messages and twin updates that cannot be delivered to IoT Hub.
+Tüm ağ geçidi desenler aşağıdaki avantajları sağlar:
+* **Kenarda analiz** : buluta tam uygunlukta telemetri göndermeden aşağı akış cihazlarından gelen verileri işlemek için yerel olarak AI hizmetlerini kullanın. Bul ve yerel olarak ınsights'a react ve yalnızca IOT Hub'ına verilerin bir alt kümesini göndermek. 
+* **Aşağı akış cihaz yalıtımı** – ağ geçidi cihazı, tüm aşağı akış cihazlarının internet üzerinden etkilenmasını sağlayabilir. Bağlantı yok. bir OT ağ ile web erişim sağlayan bir BT ağ aralığındaki yerleştirilebilir. 
+* **Bağlantı çoğullama** -IoT Edge bir ağ geçidi üzerinden IoT Hub bağlanan tüm cihazlar aynı temel bağlantıyı kullanır.
+* **Trafik yumuşatma** -IoT Edge cihaz, trafiği yerel olarak kalıcı hale getiren IoT Hub trafiği kısıtlıyorsa üstel geri alma otomatik olarak uygulanır. Bu Avantajdan çözümünüzü karşı dayanıklı trafiğindeki ani artışları getirir.
+* **Çevrimdışı destek** -ağ geçidi cihazı, IoT Hub teslim edilmemiş iletileri ve ikizi güncelleştirmelerini depolar.
 
-A gateway that does protocol translation can also perform edge analytics, device isolation, traffic smoothing, and offline support to existing devices and new devices that are resource constrained. Many existing devices are producing data that can power business insights; however they were not designed with cloud connectivity in mind. Opaque gateways allow this data to be unlocked and used in an IoT solution.
+Çeviri protokol ağ geçidi, uç analizi, cihaz yalıtımı, trafik düzeltmesi ve var olan cihazların ve kısıtlı kaynak yeni cihazları için çevrimdışı desteği de gerçekleştirebilirsiniz. Birçok mevcut cihaz iş öngörüleri genome veri oluşturduğunu; ancak bunlar bulut bağlantısı aklınızda tasarlanmamıştır. Donuk ağ geçitleri, bu verilerin bir IoT çözümünde kilidinin açık ve kullanılabilir olmasını sağlar.
 
-A gateway that does identity translation provides the benefits of protocol translation and additionally allows for full manageability of downstream devices from the cloud. All devices in your IoT solution show up in IoT Hub regardless of the protocol they use.
+Kimlik çeviri yapan ağ geçidi protokol çevirisi avantajlarını sağlar ve ayrıca aşağı akış cihazları buluttan tam yönetilebilirlik sağlar. Kullandıkları protokolün bağımsız olarak IOT Hub, IOT çözümünüzün tüm cihazlar gösterilir.
 
 ## <a name="cheat-sheet"></a>Kopya kağıdı
-Here is a quick cheat sheet that compares IoT Hub primitives when using transparent, opaque (protocol), and proxy gateways.
+IOT hub'ı temelleri saydam kullanırken karşılaştıran bir hızlı bilgi sayfası İşte opak (Protokolü) ve proxy ağ geçitleri.
 
-| &nbsp; | Transparent gateway | Protocol translation | Identity translation |
+| &nbsp; | Saydam bir ağ geçidi | Protokol çevirisi | Kimlik çeviri |
 |--------|-------------|--------|--------|
-| Identities stored in the IoT Hub identity registry | Identities of all connected devices | Only the identity of the gateway device | Identities of all connected devices |
-| Cihaz çifti | Each connected device has its own device twin | Only the gateway has a device and module twins | Each connected device has its own device twin |
-| Direct methods and cloud-to-device messages | The cloud can address each connected device individually | The cloud can only address the gateway device | The cloud can address each connected device individually |
-| [IoT Hub throttles and quotas](../iot-hub/iot-hub-devguide-quotas-throttling.md) | Apply to each device | Apply to the gateway device | Apply to each device |
+| IOT Hub kimlik kayıt defterinde depolanan kimlikleri | Tüm bağlı cihazlarda kimlikleri | Yalnızca ağ geçidi cihazı kimliği | Tüm bağlı cihazlarda kimlikleri |
+| Cihaz çifti | Kendi cihaz ikizi bağlı her cihaza sahip | Yalnızca ağ geçidi cihazı ve modül ikizlerini sahiptir. | Kendi cihaz ikizi bağlı her cihaza sahip |
+| Doğrudan yöntemler ve bulut-cihaz iletilerini | Buluta bağlı her cihaz tek tek ele | Bulutta yalnızca ağ geçidi cihazı adres | Buluta bağlı her cihaz tek tek ele |
+| [IoT Hub kısıtlar ve kotaları](../iot-hub/iot-hub-devguide-quotas-throttling.md) | Her cihaz için geçerlidir | Ağ geçidi cihazı için geçerlidir | Her cihaz için geçerlidir |
 
-When using an opaque gateway (protocol translation) pattern, all devices connecting through that gateway share the same cloud-to-device queue, which can contain at most 50 messages. It follows that the opaque gateway pattern should be used only when few devices are connecting through each field gateway, and their cloud-to-device traffic is low.
+Donuk ağ geçidi (Protokol çevirisi) deseni kullanılırken, bu ağ geçidi üzerinden bağlanan tüm cihazlar en fazla 50 iletileri içerebilir aynı bulut-cihaz kuyruk paylaşın. Donuk ağ geçidi düzeni yalnızca birkaç cihaz her alan ağ geçidi üzerinden bağlanıyorsanız ve bunların bulut-cihaz trafiğinin düşük olduğu durumlarda kullanılmalıdır, takip eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn how to set up a transparent gateway: 
+Saydam ağ geçidini ayarlamayı öğrenin: 
 
 * [IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)
 * [Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama](how-to-authenticate-downstream-device.md)

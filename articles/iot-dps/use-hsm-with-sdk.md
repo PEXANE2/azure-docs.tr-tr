@@ -1,5 +1,5 @@
 ---
-title: Use different attestation mechanisms with the Azure IoT Hub Device Provisioning Service Client SDK
+title: Azure IoT Hub cihaz sağlama hizmeti Istemci SDK 'Sı ile farklı kanıtlama mekanizmaları kullanma
 description: Azure ile Nasıl Yapılır? - Azure’da Cihaz Sağlama Hizmeti İstemci SDK'sı ile farklı kanıtlama mekanizmaları kullanma
 author: robinsh
 ms.author: robinsh
@@ -17,7 +17,7 @@ ms.locfileid: "74228280"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Azure’da Cihaz Sağlama Hizmeti İstemci SDK'sı ile farklı kanıtlama mekanizmaları kullanma
 
-Bu makalede, C için Cihaz Sağlama Hizmeti İstemci SDK’sı ile farklı [kanıtlama mekanizmalarının](concepts-security.md#attestation-mechanism) nasıl kullanılacağı gösterilmektedir. Fiziksel bir cihaz veya simülatör kullanabilirsiniz. The provisioning service supports authentication for two types of attestation mechanisms: X.509 and Trusted Platform Module (TPM).
+Bu makalede, C için Cihaz Sağlama Hizmeti İstemci SDK’sı ile farklı [kanıtlama mekanizmalarının](concepts-security.md#attestation-mechanism) nasıl kullanılacağı gösterilmektedir. Fiziksel bir cihaz veya simülatör kullanabilirsiniz. Sağlama Hizmeti, iki tür kanıtlama mekanizması için kimlik doğrulamasını destekler: X. 509.440 ve Güvenilir Platform Modülü (TPM).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -35,11 +35,11 @@ Daha fazla bilgi için IoT Hub Cihazı Sağlama Hizmeti [güvenlik kavramları](
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Desteklenen kanıtlama mekanizmaları için kimlik doğrulamasını etkinleştirme
 
-The SDK authentication mode (X.509 or TPM) must be enabled for the physical device or simulator before they can be enrolled in the Azure portal. İlk olarak azure-iot-sdk-c kök klasörüne gidin. Ardından, seçtiğiniz kimlik doğrulaması moduna bağlı olarak belirtilen komutu çalıştırın:
+Fiziksel cihaz veya Benzetici için SDK kimlik doğrulama modunun (X. 509.440 veya TPM) Azure portal kaydedilmeden önce etkinleştirilmesi gerekir. İlk olarak azure-iot-sdk-c kök klasörüne gidin. Ardından, seçtiğiniz kimlik doğrulaması moduna bağlı olarak belirtilen komutu çalıştırın:
 
-### <a name="use-x509-with-simulator"></a>Use X.509 with simulator
+### <a name="use-x509-with-simulator"></a>Simülatör ile X. 509.440 kullanma
 
-The provisioning service ships with a Device Identity Composition Engine (DICE) emulator that generates an **X.509** certificate for authenticating the device. To enable **X.509** authentication, run the following command: 
+Sağlama Hizmeti, cihazın kimliğini doğrulamak için bir **X. 509.440** sertifikası üreten bir cihaz kimliği bileşim ALTYAPıSı (zar) öykünücüsü ile birlikte gelir. **X. 509.952** kimlik doğrulamasını etkinleştirmek için aşağıdaki komutu çalıştırın: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -47,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 DICE özellikli donanım hakkında bilgiler [burada](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) bulunabilir.
 
-### <a name="use-x509-with-hardware"></a>Use X.509 with hardware
+### <a name="use-x509-with-hardware"></a>Donanımla birlikte X. 509.440 kullanın
 
-The provisioning service can be used with **X.509** on other hardware. Bağlantı kurmak için donanım ile SDK arasında bir arabirim bulunması gerekir. Arabirim hakkında bilgi almak için HSM üreticinizle iletişime geçin.
+Sağlama Hizmeti, diğer donanımlar üzerinde **X. 509.440** ile kullanılabilir. Bağlantı kurmak için donanım ile SDK arasında bir arabirim bulunması gerekir. Arabirim hakkında bilgi almak için HSM üreticinizle iletişime geçin.
 
 ### <a name="use-tpm"></a>TPM kullanma
 
@@ -148,8 +148,8 @@ TPM kullanıyorsanız [“IoT Hub Cihazı Sağlama Hizmetini kullanarak simülas
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Azure portalında oturum açın, sol taraftaki menüden **Tüm kaynaklar** düğmesine tıklayın ve Cihaz Sağlama hizmetinizi açın.
-   - **X.509 Individual Enrollment**: On the provisioning service summary blade, select **Manage enrollments**. **Tek Tek Kayıtlar** sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Select **X.509** as the identity attestation *Mechanism*, upload the leaf certificate as required by the blade. Tamamlandığında **Kaydet** düğmesine tıklayın. 
-   - **X.509 Group Enrollment**: On the provisioning service  summary blade, select **Manage enrollments**. **Grup Kayıtları** sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Select **X.509** as the identity attestation *Mechanism*, enter a group name and certification name, upload the CA/Intermediate certificate as required by the blade. Tamamlandığında **Kaydet** düğmesine tıklayın. 
+   - **X. 509.440 bireysel kayıt**: sağlama hizmeti Özeti dikey penceresinde kayıtları **Yönet**' i seçin. **Tek Tek Kayıtlar** sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Kimlik kanıtlama *mekanizması*olarak **X. 509.952** ' i seçin, yaprak sertifikayı dikey pencerenin gerektirdiği şekilde karşıya yükleyin. Tamamlandığında **Kaydet** düğmesine tıklayın. 
+   - **X. 509.440 grup kaydı**: sağlama hizmeti Özeti dikey penceresinde kayıtları **Yönet**' i seçin. **Grup Kayıtları** sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Kimlik kanıtlama *mekanizması*olarak **X. 509.952** ' ı seçin, bir grup adı ve SERTIFIKA adı girin, CA/ara sertifikayı dikey pencerenin gerektirdiği şekilde karşıya yükleyin. Tamamlandığında **Kaydet** düğmesine tıklayın. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Özel bir kanıtlama mekanizması kullanarak cihazlar için kimlik doğrulamasını etkinleştirme (isteğe bağlı)
 
@@ -181,7 +181,7 @@ Kitaplığınız başarıyla oluşturulduktan sonra, kitaplığınıza yönelik 
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Sağlama sonrasında IoT Hub'a bağlanma
 
-Once the device has been provisioned with the provisioning service, this API uses the specified authentication mode (**X.509** or TPM) to connect with IoT Hub: 
+Cihaz sağlama hizmeti ile sağlandıktan sonra, bu API IoT Hub bağlanmak için belirtilen kimlik doğrulama modunu (**X. 509.440** veya TPM) kullanır: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

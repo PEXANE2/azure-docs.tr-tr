@@ -1,6 +1,6 @@
 ---
-title: Monitor and Tune in Azure Database for PostgreSQL - Single Server
-description: This article describes monitoring and tuning features in Azure Database for PostgreSQL - Single Server.
+title: PostgreSQL için Azure veritabanı 'nda izleme ve ayarlama-tek sunucu
+description: Bu makalede PostgreSQL için Azure veritabanı-tek sunucu 'da izleme ve ayarlama özellikleri açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -13,55 +13,55 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384033"
 ---
-# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitor and tune Azure Database for PostgreSQL - Single Server
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure Database for PostgreSQL provides various monitoring options to provide insight into the behavior of your server.
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nı izleme ve ayarlama-tek sunucu
+Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. PostgreSQL için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlamak üzere çeşitli izleme seçenekleri sunar.
 
 ## <a name="metrics"></a>Ölçümler
-Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources supporting the PostgreSQL server. Each metric is emitted at a one-minute frequency, and has up to 30 days of history. You can configure alerts on the metrics. For step by step guidance, see [How to set up alerts](howto-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+PostgreSQL için Azure veritabanı, PostgreSQL sunucusunu destekleyen kaynakların davranışına fikir veren çeşitli ölçümler sağlar. Her ölçüm bir dakikalık sıklıkta yayılır ve 30 güne kadar geçmiş olur. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="list-of-metrics"></a>List of metrics
-These metrics are available for Azure Database for PostgreSQL:
+### <a name="list-of-metrics"></a>Ölçüm listesi
+Bu ölçümler PostgreSQL için Azure veritabanı 'nda kullanılabilir:
 
-|Ölçüm|Metric Display Name|Birim|Açıklama|
+|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
 |---|---|---|---|
-|cpu_percent|CPU percent|Yüzde|The percentage of CPU in use.|
-|memory_percent|Memory percent|Yüzde|The percentage of memory in use.|
-|io_consumption_percent|IO percent|Yüzde|The percentage of IO in use.|
-|storage_percent|Storage percentage|Yüzde|The percentage of storage used out of the server's maximum.|
-|storage_used|Kullanılan depolama|Bytes|The amount of storage in use. The storage used by the service may include the database files, transaction logs, and the server logs.|
-|storage_limit|Storage limit|Bytes|The maximum storage for this server.|
-|serverlog_storage_percent|Server Log storage percent|Yüzde|The percentage of server log storage used out of the server's maximum server log storage.|
-|serverlog_storage_usage|Server Log storage used|Bytes|The amount of server log storage in use.|
-|serverlog_storage_limit|Server Log storage limit|Bytes|The maximum server log storage for this server.|
-|active_connections|Active Connections|Sayı|The number of active connections to the server.|
-|connections_failed|Başarısız Bağlantılar|Sayı|The number of failed connections to the server.|
-|network_bytes_egress|Ağ Çıkışı|Bytes|Network Out across active connections.|
-|network_bytes_ingress|Ağ Girişi|Bytes|Network In across active connections.|
-|backup_storage_used|Backup Storage Used|Bytes|The amount of backup storage used.|
-|pg_replica_log_delay_in_bytes|Max Lag Across Replicas|Bytes|The lag in bytes between the master and the most-lagging replica. This metric is available on the master server only.|
-|pg_replica_log_delay_in_seconds|Replica Lag|Saniye|The time since the last replayed transaction. This metric is available for replica servers only.|
+|cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
+|memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
+|io_consumption_percent|GÇ yüzdesi|Yüzde|Kullanımdaki GÇ yüzdesi.|
+|storage_percent|Depolama yüzdesi|Yüzde|Sunucunun en yüksek sınırının dışında kullanılan depolama alanı yüzdesi.|
+|storage_used|Kullanılan depolama|Bayt|Kullanımdaki depolama miktarı. Hizmet tarafından kullanılan depolama alanı, veritabanı dosyalarını, işlem günlüklerini ve sunucu günlüklerini içerebilir.|
+|storage_limit|Depolama sınırı|Bayt|Bu sunucu için en fazla depolama alanı.|
+|serverlog_storage_percent|Sunucu günlüğü depolama yüzdesi|Yüzde|Sunucunun en yüksek sunucu günlük depolama alanı dışında kullanılan sunucu günlük depolama alanı yüzdesi.|
+|serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Kullanımdaki sunucu günlüğü depolama miktarı.|
+|serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Bu sunucu için en fazla sunucu günlük depolama alanı.|
+|active_connections|Etkin bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
+|connections_failed|Başarısız Bağlantılar|Sayı|Sunucuya yönelik başarısız bağlantı sayısı.|
+|network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|
+|network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
+|backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Kullanılan yedekleme depolama alanı miktarı.|
+|pg_replica_log_delay_in_bytes|Çoğaltmalar genelinde en fazla gecikme|Bayt|Ana ve en fazla çoğaltma çoğaltması arasındaki bayt cinsinden gecikme. Bu ölçüm yalnızca ana sunucuda kullanılabilir.|
+|pg_replica_log_delay_in_seconds|Çoğaltma gecikmesi|Saniye|Son yeniden yürütülmüş işlemden bu yana geçen süre. Bu ölçüm yalnızca çoğaltma sunucuları için kullanılabilir.|
 
 ## <a name="server-logs"></a>Sunucu günlükleri
-You can enable logging on your server. These logs are also available through Azure Diagnostic Logs in [Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md), Event Hubs, and Storage Account. To learn more about logging, visit the [server logs](concepts-server-logs.md) page.
+Sunucunuzda günlük kaydını etkinleştirebilirsiniz. Bu Günlükler [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md), Event Hubs ve depolama hesabı 'Ndaki Azure tanılama günlükleri aracılığıyla da kullanılabilir. Günlüğe kaydetme hakkında daha fazla bilgi için [sunucu günlükleri](concepts-server-logs.md) sayfasını ziyaret edin.
 
 ## <a name="query-store"></a>Sorgu Deposu
-[Query Store](concepts-query-store.md) keeps track of query performance over time including query runtime statistics and wait events. The feature persists query runtime performance information in a system database named **azure_sys** under the query_store schema. You can control the collection and storage of data via various configuration knobs.
+Sorgu [deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri ve bekleme olayları dahil olmak üzere zaman içinde sorgu performansını izler. Bu özellik, query_store şeması altında **azure_sys** adlı bir sistem veritabanında çalışma zamanı performans bilgilerini sorgular. Verilerin toplanmasını ve depolanmasını çeşitli yapılandırma düğmelerini kullanarak denetleyebilirsiniz.
 
 ## <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri
-[Query Performance Insight](concepts-query-performance-insight.md) works in conjunction with Query Store to provide visualizations accessible from the Azure portal. These charts enable you to identify key queries that impact performance. Query Performance Insightis accessible from the **Support + troubleshooting** section of your Azure Database for PostgreSQL server's portal page.
+[Sorgu performansı içgörüleri](concepts-query-performance-insight.md) , Azure Portal erişilebilir görselleştirmeler sağlamak üzere sorgu deposuyla birlikte çalışarak. Bu grafikler, performansı etkileyen anahtar sorgularını tanımlamanızı sağlar. PostgreSQL için Azure veritabanı sunucunuzun portal sayfasındaki **destek + sorun giderme** bölümünden erişilen sorgu performansı öngörülü.
 
 ## <a name="performance-recommendations"></a>Performans Önerileri
-The [Performance Recommendations](concepts-performance-recommendations.md) feature identifies opportunities to improve workload performance. Performance Recommendations provides you with recommendations for creating new indexes that have the potential to improve the performance of your workloads. To produce index recommendations, the feature takes into consideration various database characteristics, including its schema and the workload as reported by Query Store. After implementing any performance recommendation, customers should test performance to evaluate the impact of those changes. 
+[Performans önerileri](concepts-performance-recommendations.md) özelliği, iş yükü performansını artırmaya yönelik fırsatları tanımlar. Performans önerileri, iş yüklerinizin performansını geliştirmek için potansiyel olarak yeni dizinler oluşturmaya yönelik öneriler sağlar. Dizin önerileri oluşturmak için, özelliği şema ve sorgu deposu tarafından bildirilen iş yükü dahil çeşitli veritabanı özelliklerini dikkate alır. Herhangi bir performans önerisi uygulandıktan sonra, müşteriler bu değişikliklerin etkisini değerlendirmek için performansı test etmelidir. 
 
 ## <a name="service-health"></a>Hizmet durumu
-[Azure Service health](../service-health/overview.md) provides a view of all service health notifications in your subscription. You can set up Service Health alerts to notify you via your preferred communication channels when there are issues or changes that may affect the Azure services and regions you use.
+[Azure hizmet durumu](../service-health/overview.md) , aboneliğinizdeki tüm hizmet durumu bildirimlerinin bir görünümünü sağlar. Kullandığınız Azure hizmetlerini ve bölgelerini etkileyebilecek sorunlar veya değişiklikler olduğunda tercih ettiğiniz iletişim kanallarınız aracılığıyla sizi bilgilendirmek üzere hizmet durumu uyarıları ayarlayabilirsiniz.
 
-You can view scheduled maintenance events for Azure Database for PostgreSQL - Single Server by using the **planned maintenance** event type. To learn how to create **service health alerts**, visit the [Create activity log alerts on service notifications](../service-health/alerts-activity-log-service-notifications.md) article.
+PostgreSQL için Azure veritabanı için zamanlanmış bakım olaylarını, **Planlı bakım** olay türünü kullanarak görüntüleyebilirsiniz. **Hizmet durumu uyarıları**oluşturma hakkında bilgi edinmek için [hizmet bildirimleri üzerinde etkinlik günlüğü uyarıları oluştur](../service-health/alerts-activity-log-service-notifications.md) makalesini ziyaret edin.
 
 > [!IMPORTANT]
-> The planned maintenance notifications is available in preview for EAST US and UK South only.
+> Planlı bakım bildirimleri yalnızca Doğu ABD ve UK Güney önizleme sürümünde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- See [how to set up alerts](howto-alert-on-metric.md) for guidance on creating an alert on a metric.
-- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-- Read our blog on [best practices for monitoring your server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).
+- Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
+- Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- [Sunucunuzu izlemek için en iyi uygulamalardan](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)blogumuzu okuyun.

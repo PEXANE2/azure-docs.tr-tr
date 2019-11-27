@@ -220,7 +220,7 @@ Kafa ölçeğini genişletmek için, uygulama Yöneticisi veya CF CLı kullanara
 Loggregator, günlüğe kaydetme işlemiyle ilgili sorunları göstermek için bir **LGR** günlüğü iletisi gönderir. Günlüğe loggregator 'in ölçeğini ayarlamak için uyarıyı izleyebilirsiniz.
 Loggregator 'ın ölçeğini artırmak için, Doppler arabellek boyutunu artırın ya da CF bildiriminde ek Doppler sunucu örnekleri ekleyin. Daha fazla bilgi için bkz. [loggregator ölçeklendirme Kılavuzu](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
-## <a name="update"></a>Güncelleştirme
+## <a name="update"></a>Güncelleştir
 
 Kafa başlığı 'nı daha yeni bir sürümle güncelleştirmek için yeni kafa başlığı sürümünü indirin, yukarıdaki "başlık dağıtma" bölümündeki adımları izleyin ve uygulamayı yeniden gönderin.
 

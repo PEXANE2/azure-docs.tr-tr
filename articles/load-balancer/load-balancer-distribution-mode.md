@@ -1,7 +1,7 @@
 ---
-title: Configure Azure Load Balancer distribution mode
+title: Azure yük dengeleyici dağıtım modunu yapılandırma
 titleSuffix: Azure Load Balancer
-description: In this article, get started configuring the distribution mode for Azure Load Balancer to support source IP affinity.
+description: Bu makalede, kaynak IP benzeşimini desteklemek üzere Azure Load Balancer için Dağıtım modunu yapılandırmaya başlayın.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -20,63 +20,63 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225367"
 ---
-# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Configure the distribution mode for Azure Load Balancer
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer için dağıtım modunu yapılandırma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="hash-based-distribution-mode"></a>Hash-based distribution mode
+## <a name="hash-based-distribution-mode"></a>Karma tabanlı bir dağıtım modu
 
-The default distribution mode for Azure Load Balancer is a five-tuple hash. 
+Azure Load Balancer için varsayılan dağıtım modu, beş demet bir karmadır. 
 
-The tuple is composed of the:
-* **Source IP**
-* **Source port**
-* **Destination IP**
-* **Destination port**
-* **Protocol type**
+Tanımlama grubu şunlardan oluşur:
+* **Kaynak IP 'si**
+* **Kaynak bağlantı noktası**
+* **Hedef IP**
+* **Hedef bağlantı noktası**
+* **Protokol türü**
 
-The hash is used to map traffic to the available servers. The algorithm provides stickiness only within a transport session. Packets that are in the same session are directed to the same datacenter IP behind the load-balanced endpoint. When the client starts a new session from the same source IP, the source port changes and causes the traffic to go to a different datacenter endpoint.
+Karma, trafiği kullanılabilir sunucularla eşlemek için kullanılır. Algoritma yalnızca bir aktarım oturumunda bir veya daha fazla sürekliliği sağlar. Aynı oturumdaki paketler, yük dengeli uç noktanın arkasındaki veri merkezi IP 'ye yönlendirilir. İstemci aynı kaynak IP 'den yeni bir oturum başlattığında, kaynak bağlantı noktası değişir ve trafiğin farklı bir veri merkezi uç noktasına geçmesine neden olur.
 
-![Five-tuple hash-based distribution mode](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+![Beş demet temelli karma tabanlı dağıtım modu](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
-## <a name="source-ip-affinity-mode"></a>Source IP affinity mode
+## <a name="source-ip-affinity-mode"></a>Kaynak IP benzeşimi modu
 
-The load balancer can also be configured by using the source IP affinity distribution mode. This distribution mode is also known as session affinity or client IP affinity. The mode uses a two-tuple (source IP and destination IP) or three-tuple (source IP, destination IP, and protocol type) hash to map traffic to the available servers. By using source IP affinity, connections that are started from the same client computer go to the same datacenter endpoint.
+Yük dengeleyici, kaynak IP benzeşimi dağıtım modu kullanılarak da yapılandırılabilir. Bu dağıtım olarak da bilinen oturum benzeşimi veya istemci IP benzeşimi modudur. Bu mod, trafiği kullanılabilir sunucularla eşlemek için iki demet (kaynak IP ve hedef IP) ya da üç demet (kaynak IP, hedef IP ve protokol türü) karmasını kullanır. Kaynak IP benzeşimini kullanarak, aynı istemci bilgisayarından başlatılan bağlantılar aynı veri merkezi uç noktasına gider.
 
-The following figure illustrates a two-tuple configuration. Notice how the two-tuple runs through the load balancer to virtual machine 1 (VM1). VM1 is then backed up by VM2 and VM3.
+Aşağıdaki şekilde iki demet yapılandırması gösterilmektedir. İki demet, yük dengeleyici üzerinden sanal makine 1 ' e (VM1) nasıl çalışdığına dikkat edin. VM1, ardından VM2 ve VM3 tarafından yedeklenir.
 
-![Two-tuple session affinity distribution mode](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![İki demet oturum benzeşimi dağıtım modu](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-Source IP affinity mode solves an incompatibility between Azure Load Balancer and Remote Desktop Gateway (RD Gateway). By using this mode, you can build an RD Gateway farm in a single cloud service.
+Kaynak IP benzeşimi modu, Azure Load Balancer ve Uzak Masaüstü Ağ Geçidi (RD Ağ Geçidi) arasında bir uyumsuzluk çözer. Bu mod kullanarak, bir tek bulut hizmetinde bir RD Ağ Geçidi grubu oluşturabilirsiniz.
 
-Another use case scenario is media upload. The data upload happens through UDP, but the control plane is achieved through TCP:
+Başka bir kullanım örneği senaryosu medya karşıya yükleme ' dir. UDP karşıya veri yükleme olur, ancak denetim düzlemi TCP elde edilir:
 
-* A client starts a TCP session to the load-balanced public address and is directed to a specific DIP. The channel is left active to monitor the connection health.
-* A new UDP session from the same client computer is started to the same load-balanced public endpoint. The connection is directed to the same DIP endpoint as the previous TCP connection. The media upload can be executed at high throughput while maintaining a control channel through TCP.
+* İstemci, yük dengeli ortak adrese bir TCP oturumu başlatır ve belirli bir DIP 'ye yönlendirilir. Kanal, bağlantı durumunu izlemek için etkin kalır.
+* Aynı istemci bilgisayardan gelen yeni bir UDP oturumu aynı yük dengeli ortak uç noktaya başlatılır. Bağlantı, önceki TCP bağlantı olarak aynı DIP uç noktasına yönlendirilir. Medya karşıya yükleme, bir denetim kanalı üzerinden TCP korurken yüksek aktarım hızını çalıştırılabilir.
 
 > [!NOTE]
-> When a load-balanced set changes by removing or adding a virtual machine, the distribution of client requests is recomputed. You can't depend on new connections from existing clients to end up at the same server. Additionally, using source IP affinity distribution mode can cause an unequal distribution of traffic. Clients that run behind proxies might be seen as one unique client application.
+> Yük dengeli bir kümedeki bir sanal makineye ekleyerek veya çıkararak değiştiğinde, istemci istekleri dağıtımını değeri yeniden hesaplanır. Aynı sunucuda sonuna var olan istemcilerden gelen yeni bağlantıları bağlı olamaz. Ayrıca, kaynak IP benzeşimi dağıtım modunu trafik eşit olmayan bir dağıtım neden olabilir. Proxy çalıştıran istemciler bir benzersiz istemci uygulaması olarak görülebilir.
 
-## <a name="configure-source-ip-affinity-settings"></a>Configure source IP affinity settings
+## <a name="configure-source-ip-affinity-settings"></a>Kaynak IP benzeşimi ayarlarını yapılandırma
 
 ### <a name="azure-portal"></a>Azure portalı
 
-You can change the configuration of the distribution mode by modifying the load-balancing rule in the portal.
+Portalda Yük Dengeleme kuralını değiştirerek dağıtım modunun yapılandırmasını değiştirebilirsiniz.
 
-1. Sign in to the Azure portal and locate the Resource Group containing the load balancer you wish to change by clicking on **Resource Groups**.
-2. In the load balancer overview screen, click on **Load-balancing rules** under **Settings**.
-3. In the load-balancing rules screen, click on the load-balancing rule that you wish to change the distribution mode.
-4. Under the rule, the distribution mode is changed by changing the **Session persistence** drop down box.  The following options are available:
+1. Azure portal oturum açın ve **kaynak grupları**' na tıklayarak değiştirmek istediğiniz yük dengeleyiciyi Içeren kaynak grubunu bulun.
+2. Yük Dengeleyiciye genel bakış ekranında **Ayarlar**' ın altındaki **Yük Dengeleme kuralları** ' na tıklayın.
+3. Yük Dengeleme kuralları ekranında, Dağıtım modunu değiştirmek istediğiniz yük dengeleme kuralına tıklayın.
+4. Kural altında, **oturum kalıcılığı** açılan kutusu değiştirilerek dağıtım modu değiştirilir.  Aşağıdaki seçenekler mevcuttur:
     
-    * **None (hash-based)** - Specifies that successive requests from the same client may be handled by any virtual machine.
-    * **Client IP (source IP affinity 2-tuple)** - Specifies that successive requests from the same client IP address will be handled by the same virtual machine.
-    * **Client IP and protocol (source IP affinity 3-tuple)** - Specifies that successive requests from the same client IP address and protocol combination will be handled by the same virtual machine.
+    * **Hiçbiri (karma tabanlı)** -aynı istemciden gelen ardışık isteklerin herhangi bir sanal makine tarafından işlenebileceğini belirtir.
+    * **ISTEMCI IP (kaynak IP benzeşimi 2-kayıt düzeni)** -aynı istemci IP adresinden gelen isteklerin aynı sanal makine tarafından işleneceğini belirtir.
+    * **İstemci IP 'si ve Protokolü (kaynak IP benzeşimi 3-kayıt)** -aynı istemci IP adresi ve protokol birleşimlerinden gelen ardışık isteklerin aynı sanal makine tarafından işleneceğini belirtir.
 
-5. Choose the distribution mode and then click **Save**.
+5. Dağıtım modunu seçin ve ardından **Kaydet**' e tıklayın.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-For virtual machines deployed with Resource Manager, use PowerShell to change the load-balancer distribution settings on an existing load-balancing rule. The following command updates the distribution mode: 
+Kaynak Yöneticisi ile dağıtılan sanal makineler için, var olan bir yük dengeleme kuralında yük dengeleyici dağıtım ayarlarını değiştirmek için PowerShell kullanın. Aşağıdaki komut Dağıtım modunu güncelleştirir: 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -84,15 +84,15 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-For classic virtual machines, use Azure PowerShell to change the distribution settings. Add an Azure endpoint to a virtual machine and configure the load balancer distribution mode:
+Klasik sanal makineler için dağıtım ayarlarını değiştirmek için Azure PowerShell kullanırsınız. Bir sanal makineye Azure uç nokta ekleyin ve yük dengeleyici dağıtım modunu yapılandırın:
 
 ```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Set the value of the `LoadBalancerDistribution` element for the amount of load balancing required. Specify sourceIP for two-tuple (source IP and destination IP) load balancing. Specify sourceIPProtocol for three-tuple (source IP, destination IP, and protocol type) load balancing. Specify none for the default behavior of five-tuple load balancing.
+`LoadBalancerDistribution` öğesinin değerini gerekli Yük Dengeleme miktarı için ayarlayın. İki demet (kaynak IP ve hedef IP) yük dengelemesi için SourceIP 'yi belirtin. Üç demet için Sourceıpprotocol (kaynak IP, hedef IP ve protokol türü) yük dengelemesi belirleyin. Beş demet yük dengelemenin varsayılan davranışı için hiçbiri ' ni belirtin.
 
-Retrieve an endpoint load balancer distribution mode configuration by using these settings:
+Bir uç nokta yük dengeleyici dağıtım modu yapılandırma, bu ayarları kullanarak alın:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -114,21 +114,21 @@ Retrieve an endpoint load balancer distribution mode configuration by using thes
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-When the `LoadBalancerDistribution` element isn't present, Azure Load Balancer uses the default five-tuple algorithm.
+`LoadBalancerDistribution` öğesi mevcut olmadığında, Azure Load Balancer varsayılan beş demet algoritmasını kullanır.
 
-### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Configure distribution mode on load-balanced endpoint set
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Yük dengeli uç nokta kümesine dağıtım modunu yapılandırma
 
-When endpoints are part of a load-balanced endpoint set, the distribution mode must be configured on the load-balanced endpoint set:
+Uç noktaları yük dengeli uç nokta kümesinin bir parçası olduğunda dağıtım modunu yük dengeli uç nokta kümesinde yapılandırılması gerekir:
 
 ```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Configure distribution mode for Cloud Services endpoints
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Bulut Hizmetleri uç noktaları için dağıtım modunu yapılandırma
 
-Use the Azure SDK for .NET 2.5 to update your cloud service. The endpoint settings for Cloud Services are made in the .csdef file. To update the load balancer distribution mode for a Cloud Services deployment, a deployment upgrade is required.
+Bulut hizmetinizi güncelleştirme için .NET 2.5 için Azure SDK'sını kullanın. Bulut Hizmetleri için uç nokta ayarları .csdef dosyasında yapılır. Bulut Hizmetleri dağıtımı için yük dengeleyici dağıtım modu güncelleştirmek için bir dağıtım yükseltmesi gerekiyor.
 
-Here is an example of .csdef changes for endpoint settings:
+.Csdef değişikliklerinin uç noktası için ayarların bir örnek aşağıda verilmiştir:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -148,13 +148,13 @@ Here is an example of .csdef changes for endpoint settings:
 </NetworkConfiguration>
 ```
 
-## <a name="api-example"></a>API example
+## <a name="api-example"></a>API örneği
 
-The following example shows how to reconfigure the load balancer distribution mode for a specified load-balanced set in a deployment. 
+Aşağıdaki örnek, bir dağıtımda, belirtilen bir yük dengeli küme için yük dengeleyici dağıtım modunu yapılandırmak gösterilmektedir. 
 
-### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Change distribution mode for deployed load-balanced set
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Dağıtılmış yük dengeli küme için dağıtım modunu değiştirme
 
-Use the Azure classic deployment model to change an existing deployment configuration. Add the `x-ms-version` header and set the value to version 2014-09-01 or later.
+Azure Klasik dağıtım modeli, var olan bir dağıtım yapılandırmasını değiştirmek için kullanın. `x-ms-version` başlığını ekleyin ve değeri sürüm 2014-09-01 veya üzeri olarak ayarlayın.
 
 #### <a name="request"></a>İste
 
@@ -179,7 +179,7 @@ Use the Azure classic deployment model to change an existing deployment configur
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-As previously described, set the `LoadBalancerDistribution` element to sourceIP for two-tuple affinity, sourceIPProtocol for three-tuple affinity, or none for no affinity (five-tuple affinity).
+Daha önce açıklandığı gibi, `LoadBalancerDistribution` öğesini iki demet benzeşim için SourceIP, üç demet benzeşim için Sourceıpprotocol veya benzeşim olmaması için hiçbiri (beş demet olmayan benzeşim) için SourceIP olarak ayarlayın.
 
 #### <a name="response"></a>Yanıt
 
@@ -193,6 +193,6 @@ As previously described, set the `LoadBalancerDistribution` element to sourceIP 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Internal Load Balancer overview](load-balancer-internal-overview.md)
-* [Get started with configuring an internet-facing load balancer](load-balancer-get-started-internet-arm-ps.md)
+* [Azure Iç Load Balancer genel bakış](load-balancer-internal-overview.md)
+* [İnternet 'e yönelik yük dengeleyici yapılandırma ile çalışmaya başlama](load-balancer-get-started-internet-arm-ps.md)
 * [Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)

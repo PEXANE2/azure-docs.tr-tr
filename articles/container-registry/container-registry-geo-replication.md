@@ -1,6 +1,6 @@
 ---
 title: Kayıt defterini coğrafi olarak çoğaltma
-description: Get started creating and managing a geo-replicated Azure container registry, which enables the registry to serve multiple regions with multi-master regional replicas.
+description: Kayıt defterinin çoklu ana bölge çoğaltmalarıyla birden çok bölgeye erişmesini sağlayan coğrafi olarak çoğaltılan bir Azure Container Registry oluşturmaya ve yönetmeye başlayın.
 author: stevelas
 ms.topic: article
 ms.date: 08/16/2019
@@ -14,117 +14,117 @@ ms.locfileid: "74456450"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry’de coğrafi çoğaltma
 
-Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions. As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries. 
+Yerel bir varlık ya da etkin bir yedekleme isteyen şirketler, birden çok Azure bölgesinden Hizmetleri çalıştırmayı seçin. En iyi uygulama olarak, resimlerin çalıştırıldığı her bölgeye bir kapsayıcı kayıt defteri yerleştirmek, ağ kapatma işlemlerine izin vererek, hızlı ve güvenilir görüntü katmanı aktarımlarını etkinleştirir. Coğrafi çoğaltma, Azure Container Registry 'nin tek bir kayıt defteri olarak çalışmasını sağlar ve çoklu ana bölge kayıt defterlerine sahip birden çok bölgeye hizmet verebilir. 
 
-A geo-replicated registry provides the following benefits:
+Coğrafi olarak çoğaltılan bir kayıt defteri aşağıdaki avantajları sağlar:
 
-* Single registry/image/tag names can be used across multiple regions
-* Network-close registry access from regional deployments
-* No additional egress fees, as images are pulled from a local, replicated registry in the same region as your container host
-* Single management of a registry across multiple regions
+* Tek kayıt defteri/görüntü/etiket adları birden çok bölgede kullanılabilir
+* Ağ-bölgesel dağıtımlardan kayıt defteri erişimini kapat
+* Başka çıkış ücretleri yoktur, çünkü görüntü, kapsayıcı konağınız ile aynı bölgedeki yerel, çoğaltılan bir kayıt defterinden alınır
+* Birden çok bölgede bir kayıt defterinin tek yönetimi
 
 > [!NOTE]
-> If you need to maintain copies of container images in more than one Azure container registry, Azure Container Registry also supports [image import](container-registry-import-images.md). For example, in a DevOps workflow, you can import an image from a development registry to a production registry, without needing to use Docker commands.
+> Birden fazla Azure Container Registry 'de kapsayıcı görüntülerinin kopyalarını korumanız gerekiyorsa Azure Container Registry de [görüntü içeri aktarmayı](container-registry-import-images.md)destekler. Örneğin, bir DevOps iş akışında, Docker komutlarını kullanmaya gerek kalmadan bir geliştirme kayıt defterindeki bir görüntüyü üretim kayıt defterine aktarabilirsiniz.
 >
 
-## <a name="example-use-case"></a>Example use case
-Contoso runs a public presence website located across the US, Canada, and Europe. To serve these markets with local and network-close content, Contoso runs [Azure Kubernetes Service](/azure/aks/) (AKS) clusters in West US, East US, Canada Central, and West Europe. The website application, deployed as a Docker image, utilizes the same code and image across all regions. Content, local to that region, is retrieved from a database, which is provisioned uniquely in each region. Each regional deployment has its unique configuration for resources like the local database.
+## <a name="example-use-case"></a>Örnek kullanım örneği
+Contoso, ABD, Kanada ve Avrupa 'Da bulunan bir genel varlık Web sitesi çalıştırır. Contoso, yerel ve ağ-kapatma içeriğiyle bu pazarlara hizmet vermek için Batı ABD, Doğu ABD, Kanada Orta ve Batı Avrupa [Azure Kubernetes hizmeti](/azure/aks/) (aks) kümelerini çalıştırır. Docker görüntüsü olarak dağıtılan Web sitesi uygulaması, tüm bölgelerde aynı kod ve görüntüyü kullanır. Bu bölgeye yerel olan içerik, her bölgede benzersiz olarak sağlanan bir veritabanından alınır. Her bölgesel dağıtımın, yerel veritabanı gibi kaynaklar için benzersiz yapılandırması vardır.
 
-The development team is located in Seattle WA, utilizing the West US data center.
+Geliştirme ekibi, Batı ABD veri merkezini kullanarak Seattle WA 'da bulunur.
 
-![Pushing to multiple registries](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Pushing to multiple registries*
+birden çok kayıt defterlerine ![](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Birden çok kayıt defterlerine iletme*
 
-Prior to using the geo-replication features, Contoso had a US-based registry in West US, with an additional registry in West Europe. To serve these different regions, the development team pushed images to two different registries.
+Contoso, coğrafi çoğaltma özelliklerini kullanmadan önce Batı Avrupa ek bir kayıt defteriyle Batı ABD içinde ABD tabanlı kayıt defterine sahipti. Bu farklı bölgelere hizmeti sağlamak için, geliştirme ekibi görüntüleri iki farklı kayıt defterine gönderdi.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2
 docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
-![Pulling from multiple registries](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Pulling from multiple registries*
+![birden çok kayıt defterlerinden çekiliyor](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Birden çok kayıt defterlerinden çekme*
 
-Typical challenges of multiple registries include:
+Birden çok kayıt defterlerinin tipik sorunları şunlardır:
 
-* The East US, West US, and Canada Central clusters all pull from the West US registry, incurring egress fees as each of these remote container hosts pull images from West US data centers.
-* The development team must push images to West US and West Europe registries.
-* The development team must configure and maintain each regional deployment with image names referencing the local registry.
-* Registry access must be configured for each region.
+* Doğu ABD, Batı ABD ve Kanada Orta kümeleri, bu uzak kapsayıcının her biri için çıkış ücretlerini, Batı ABD veri merkezlerinden çekme görüntüleri barındırarak, tüm Batı ABD kayıt defterinden çeker.
+* Geliştirme ekibinin görüntüleri Batı ABD ve Batı Avrupa kayıt defterlerine itmesi gerekir.
+* Geliştirme ekibinin her bölgesel dağıtımı, yerel kayıt defterine başvuran görüntü adlarıyla yapılandırması ve koruması gerekir.
+* Her bölge için kayıt defteri erişiminin yapılandırılması gerekir.
 
-## <a name="benefits-of-geo-replication"></a>Benefits of geo-replication
+## <a name="benefits-of-geo-replication"></a>Coğrafi çoğaltmanın avantajları
 
-![Pulling from a geo-replicated registry](media/container-registry-geo-replication/after-geo-replicate-pull.png)
+![Coğrafi olarak çoğaltılan bir kayıt defterinden çekme](media/container-registry-geo-replication/after-geo-replicate-pull.png)
 
-Using the geo-replication feature of Azure Container Registry, these benefits are realized:
+Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajlar gerçekleştirilir:
 
-* Manage a single registry across all regions: `contoso.azurecr.io`
-* Manage a single configuration of image deployments as all regions used the same image URL: `contoso.azurecr.io/public/products/web:1.2`
-* Push to a single registry, while ACR manages the geo-replication. You can configure regional [webhooks](container-registry-webhook.md) to notify you of events in specific replicas.
+* Tüm bölgelerde tek bir kayıt defterini yönetme: `contoso.azurecr.io`
+* Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetme: `contoso.azurecr.io/public/products/web:1.2`
+* Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. Bölgesel [Web kancalarını](container-registry-webhook.md) belirli çoğaltmalarda olayları bilgilendirmek üzere yapılandırabilirsiniz.
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
 
-Configuring geo-replication is as easy as clicking regions on a map. You can also manage geo-replication using tools including the [az acr replication](/cli/azure/acr/replication) commands in the Azure CLI, or deploy a registry enabled for geo-replication with an [Azure Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication).
+Coğrafi çoğaltmanın yapılandırılması, bir haritadaki bölgelere tıklanması kadar kolaydır. Azure CLı 'de [az ACR çoğaltma](/cli/azure/acr/replication) komutları dahil olmak üzere Coğrafi çoğaltmayı yönetebilir veya bir [Azure Resource Manager şablonuyla](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)coğrafi çoğaltma için etkinleştirilmiş bir kayıt defteri dağıtabilirsiniz.
 
-Geo-replication is a feature of [Premium registries](container-registry-skus.md) only. If your registry isn't yet Premium, you can change from Basic and Standard to Premium in the [Azure portal](https://portal.azure.com):
+Coğrafi çoğaltma yalnızca [Premium kayıt defterlerinin](container-registry-skus.md) bir özelliğidir. Kayıt defteriniz henüz Premium değilse, [Azure Portal](https://portal.azure.com)temel ve standart 'den Premium 'a geçiş yapabilirsiniz:
 
-![Switching SKUs in the Azure portal](media/container-registry-skus/update-registry-sku.png)
+![Azure portal SKU 'Ları değiştirme](media/container-registry-skus/update-registry-sku.png)
 
-To configure geo-replication for your Premium registry, log in to the Azure portal at https://portal.azure.com.
+Premium kayıt defteriniz için Coğrafi çoğaltmayı yapılandırmak üzere https://portal.azure.comAzure portal oturum açın.
 
-Navigate to your Azure Container Registry, and select **Replications**:
+Azure Container Registry gidin ve **çoğaltmalar**' ı seçin:
 
 ![Azure portalı kapsayıcı kayıt defteri kullanıcı arabirimindeki Çoğaltmalar](media/container-registry-geo-replication/registry-services.png)
 
-A map is displayed showing all current Azure Regions:
+Geçerli tüm Azure bölgelerini gösteren bir harita görüntülenir:
 
  ![Azure portalındaki bölge haritası](media/container-registry-geo-replication/registry-geo-map.png)
 
-* Blue hexagons represent current replicas
-* Green hexagons represent possible replica regions
-* Gray hexagons represent Azure regions not yet available for replication
+* Mavi altıgenler geçerli çoğaltmaları temsil eder
+* Yeşil altıgenler olası çoğaltma bölgelerini temsil eder
+* Gri altıgenler, henüz çoğaltma için kullanılamayan Azure bölgelerini temsil eder
 
-To configure a replica, select a green hexagon, then select **Create**:
+Bir çoğaltma yapılandırmak için yeşil bir altıon seçin, sonra **Oluştur**' u seçin.
 
  ![Azure portalında çoğaltma oluşturmaya yönelik kullanıcı arabirimi](media/container-registry-geo-replication/create-replication.png)
 
-To configure additional replicas, select the green hexagons for other regions, then click **Create**.
+Ek çoğaltmalar yapılandırmak için, diğer bölgelerin yeşil altılarını seçin ve ardından **Oluştur**' a tıklayın.
 
-ACR begins syncing images across the configured replicas. Once complete, the portal reflects *Ready*. The replica status in the portal doesn't automatically update. Use the refresh button to see the updated status.
+ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye başlar. Tamamlandıktan sonra Portal, *Ready*olarak yansıtır. Portaldaki çoğaltma durumu otomatik olarak güncelleştirmez. Güncelleştirilmiş durumu görmek için Yenile düğmesini kullanın.
 
-## <a name="considerations-for-using-a-geo-replicated-registry"></a>Considerations for using a geo-replicated registry
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>Coğrafi olarak çoğaltılan kayıt defteri kullanma konuları
 
-* Each region in a geo-replicated registry is independent once set up. Azure Container Registry SLAs apply to each geo-replicated region.
-* When you push or pull images from a geo-replicated registry, Azure Traffic Manager in the background sends the request to the registry located in the region closest to you.
-* After you push an image or tag update to the closest region, it takes some time for Azure Container Registry to replicate the manifests and layers to the remaining regions you opted into. Larger images take longer to replicate than smaller ones. Images and tags are synchronized across the replication regions with an eventual consistency model.
-* To manage workflows that depend on push updates to a geo-replicated , we recommend that you configure [webhooks](container-registry-webhook.md) to respond to the push events. You can set up regional webhooks within a geo-replicated registry to track push events as they complete across the geo-replicated regions.
+* Coğrafi olarak çoğaltılan bir kayıt defterindeki her bölge, ayarlandıktan sonra bağımsızdır. Azure Container Registry SLA 'Lar, coğrafi olarak çoğaltılan her bölge için geçerlidir.
+* Coğrafi olarak çoğaltılan bir kayıt defterinden görüntü gönderdiğinizde veya çektiğinizde, arka planda Azure Traffic Manager, isteği size en yakın bölgede bulunan kayıt defterine gönderir.
+* En yakın bölgeye bir görüntü veya etiket güncelleştirmesi gönderdikten sonra, Azure Container Registry bildirimlerin ve katmanların seçtiğiniz kalan bölgelere çoğaltılması biraz zaman alır. Daha büyük resimler daha küçük olanlara çoğaltılmak için daha uzun sürer. Görüntüler ve Etiketler, son tutarlılık modeliyle çoğaltma bölgeleri arasında eşitlenir.
+* Coğrafi olarak çoğaltılan bir çekme güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
 
-## <a name="delete-a-replica"></a>Delete a replica
+## <a name="delete-a-replica"></a>Bir çoğaltmayı silme
 
-After you've configured a replica for your registry, you can delete it at any time if it's no longer needed. Delete a replica using the Azure portal or other tools such as the [az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) command in the Azure CLI.
+Kayıt defteriniz için bir çoğaltma yapılandırdıktan sonra, artık gerekmiyorsa, istediğiniz zaman silebilirsiniz. Azure CLı 'deki [az ACR çoğaltma Delete](/cli/azure/acr/replication#az-acr-replication-delete) komutu gibi Azure Portal veya diğer araçları kullanarak bir çoğaltmayı silin.
 
-To delete a replica in the Azure portal:
+Azure portal bir çoğaltmayı silmek için:
 
-1. Navigate to your Azure Container Registry, and select **Replications**.
-1. Select the name of a replica, and select **Delete**. Confirm that you want to delete the replica.
+1. Azure Container Registry gidin ve **çoğaltmalar**' ı seçin.
+1. Bir çoğaltmanın adını seçin ve **Sil**' i seçin. Çoğaltmayı silmek istediğinizi onaylayın.
 
 > [!NOTE]
-> You can't delete the registry replica in the *home region* of the registry, that is, the location where you created the registry. You can only delete the home replica by deleting the registry itself.
+> Kayıt defterinin *giriş bölgesindeki* kayıt defteri çoğaltmasını silemezsiniz, yani kayıt defterini oluşturduğunuz konum. Yalnızca kayıt defterinin kendisini silerek giriş çoğaltmasını silebilirsiniz.
 
-## <a name="geo-replication-pricing"></a>Geo-replication pricing
+## <a name="geo-replication-pricing"></a>Coğrafi çoğaltma fiyatlandırması
 
-Geo-replication is a feature of the [Premium SKU](container-registry-skus.md) of Azure Container Registry. When you replicate a registry to your desired regions, you incur Premium registry fees for each region.
+Coğrafi çoğaltma, Azure Container Registry [PREMIUM SKU](container-registry-skus.md) 'sunun bir özelliğidir. İstediğiniz bölgelere bir kayıt defteri çoğalttığınızda, her bölge için Premium kayıt defteri ücretlerine tabi olursunuz.
 
-In the preceding example, Contoso consolidated two registries down to one, adding replicas to East US, Canada Central, and West Europe. Contoso would pay four times Premium per month, with no additional configuration or management. Each region now pulls their images locally, improving performance, reliability without network egress fees from West US to Canada and East US.
+Yukarıdaki örnekte, contoso iki kayıt, Doğu ABD, Kanada Orta ve Batı Avrupa çoğaltmaları ekleyerek bir yukarı Birleşik olarak birleştirilmiş. Contoso, ek yapılandırma veya yönetim olmadan ayda dört kat Premium ödemenizi ister. Her bölge artık görüntülerini yerel olarak çeker, performansı, Batı ABD ağ çıkış ücretleri olmadan Kanada ve Doğu ABD artırır.
 
-## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Troubleshoot push operations with geo-replicated registries
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Coğrafi olarak çoğaltılan kayıt defterlerine gönderim işlemleri sorunlarını giderme
  
-A Docker client that pushes an image to a geo-replicated registry may not push all image layers and its manifest to a single replicated region. This may occur because Azure Traffic Manager routes registry requests to the network-closest replicated registry. If the registry has two *nearby* replication regions, image layers and the manifest could be distributed to the two sites, and the push operation fails when the manifest is validated. This problem occurs because of the way the DNS name of the registry is resolved on some Linux hosts. This issue doesn't occur on Windows, which provides a client-side DNS cache.
+Bir görüntüyü coğrafi olarak çoğaltılan bir kayıt defterine ileten bir Docker istemcisi, tüm görüntü katmanlarını ve bildirimini tek bir çoğaltılan bölgeye gönderemeyebilir. Azure Traffic Manager kayıt defteri isteklerini ağa en yakın çoğaltılan kayıt defterine yönlendirtiğinden bu durum oluşabilir. Kayıt defterinde *yakın* iki çoğaltma bölgesi varsa, görüntü katmanları ve bildirim iki siteye dağıtılabilir ve bildirim doğrulandığında gönderme işlemi başarısız olur. Bu sorun, bazı Linux konaklarındaki kayıt defteri DNS adının çözümlenme yöntemi nedeniyle oluşur. Bu sorun, istemci tarafı DNS önbelleği sağlayan Windows üzerinde oluşmaz.
  
-If this problem occurs, one solution is to apply a client-side DNS cache such as `dnsmasq` on the Linux host. This helps ensure that the registry's name is resolved consistently. If you're using a Linux VM in Azure to push to a registry, see options in [DNS Name Resolution options for Linux virtual machines in Azure](../virtual-machines/linux/azure-dns.md).
+Bu sorun oluşursa, bir çözüm, Linux ana bilgisayarında `dnsmasq` gibi bir istemci tarafı DNS önbelleğinin uygulanmasından biridir. Bu, kayıt defteri adının tutarlı bir şekilde çözümlendiğinden emin olmanıza yardımcı olur. Azure 'da bir kayıt defterine göndermek için bir Linux VM kullanıyorsanız, bkz. [Azure 'Da Linux sanal makineleri Için DNS ad çözümleme seçenekleri](../virtual-machines/linux/azure-dns.md)seçenekleri.
 
-To optimize DNS resolution to the closest replica when pushing images, configure a geo-replicated registry in the same Azure regions as the source of the push operations, or the closest region when working outside of Azure.
+Görüntüleri gönderirken en yakın çoğaltma ile DNS çözümlemesini iyileştirmek için, çekme işlemlerinin kaynağıyla aynı Azure bölgelerinde coğrafi olarak çoğaltılan bir kayıt defteri veya Azure dışında çalışırken en yakın bölgeyi yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Check out the three-part tutorial series, [Geo-replication in Azure Container Registry](container-registry-tutorial-prepare-registry.md). Walk through creating a geo-replicated registry, building a container, and then deploying it with a single `docker push` command to multiple regional Web Apps for Containers instances.
+[Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)olmak üzere üç parçalı öğretici serisine göz atın. Coğrafi olarak çoğaltılan bir kayıt defteri oluşturma, kapsayıcı oluşturma ve ardından kapsayıcı örnekleri için birden çok bölgesel Web Apps ile tek bir `docker push` komutuyla dağıtma adımları.
 
 > [!div class="nextstepaction"]
-> [Geo-replication in Azure Container Registry](container-registry-tutorial-prepare-registry.md)
+> [Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)
