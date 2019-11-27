@@ -1,6 +1,6 @@
 ---
-title: Automatic deployment for device groups - Azure IoT Edge | Microsoft Docs
-description: Use automatic deployments in Azure IoT Edge to manage groups of devices based on shared tags
+title: Cihaz grupları - Azure IOT Edge için otomatik dağıtım | Microsoft Docs
+description: Otomatik dağıtımlar, paylaşılan etiketlere göre cihaz grupları yönetmek için Azure IOT Edge'de kullanın.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,119 +15,119 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456736"
 ---
-# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Understand IoT Edge automatic deployments for single devices or at scale
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>IOT Edge otomatik dağıtımlar tek tek cihazlarda veya uygun ölçekte anlama
 
-Azure IoT Edge devices follow a [device lifecycle](../iot-hub/iot-hub-device-management-overview.md) that is similar to other types of IoT devices:
+Azure IoT Edge cihazlar diğer IoT cihazları türlerine benzer bir [cihaz yaşam döngüsünü](../iot-hub/iot-hub-device-management-overview.md) izler:
 
-1. Provision new IoT Edge devices by imaging a device with an OS and installing the [IoT Edge runtime](iot-edge-runtime.md).
-2. Configure the devices to run [IoT Edge modules](iot-edge-modules.md), and then monitor their health. 
-3. Finally, retire devices when they are replaced or become obsolete.  
+1. Bir cihazı bir işletim sistemi ile Imaging ve [IoT Edge çalışma zamanını](iot-edge-runtime.md)yükleyerek yeni IoT Edge cihazları sağlayın.
+2. Cihazları [IoT Edge modülleri](iot-edge-modules.md)çalıştıracak şekilde yapılandırın ve sonra durumlarını izleyin. 
+3. Son olarak, değiştirilen veya kalkacak cihazları devre dışı bırakın.  
 
-Azure IoT Edge provides two ways to configure the modules to run on IoT Edge devices: one for development and fast iterations on a single device (you used this method in the Azure IoT Edge [tutorials](tutorial-deploy-function.md)), and one for managing large fleets of IoT Edge devices. Both of these approaches are available in the Azure portal and programmatically. For targeting groups or a large number of devices, you can specify which devices you'd like to deploy your modules to using [tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) in the device twin. The following steps talk about a deployment to a Washington State device group identified through the tags property. 
+Azure IoT Edge, modülleri IoT Edge cihazlarda çalışacak şekilde yapılandırmak için iki yol sunar: tek bir cihazdaki geliştirme ve hızlı yinelemeler (bu yöntemi Azure IoT Edge [öğreticilerde](tutorial-deploy-function.md)kullandınız) ve bir tane de IoT Edge cihazlarının büyük bir bölümünü yönetmek için kullanılır. Bu yaklaşımların her ikisi de Azure portalında hem de programsal olarak kullanılabilir. Grupları veya çok sayıda cihazı hedeflemek için, bir cihaz ikizi [etiketlerini](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) kullanmak üzere modüllerinizi dağıtmak istediğiniz cihazları belirtebilirsiniz. Aşağıdaki adımlarda tanımlanan etiketler özelliği aracılığıyla bir Washington eyaletinde cihaz grubuna bir dağıtım bahsedeceğiz. 
 
-This article focuses on the configuration and monitoring stages for fleets of devices, collectively referred to as IoT Edge automatic deployments. The overall deployment steps are as follows: 
+Bu makalede yapılandırmasına odaklanılmıştır ve cihazların filolarına aşamaları izleme için IOT Edge otomatik dağıtımlar anılan. Genel dağıtım adımları aşağıdaki gibidir: 
 
-1. An operator defines a deployment that describes a set of modules as well as the target devices. Each deployment has a deployment manifest that reflects this information. 
-2. The IoT Hub service communicates with all targeted devices to configure them with the desired modules. 
-3. The IoT Hub service retrieves status from the IoT Edge devices and makes them available to the operator.  For example, an operator can see when an Edge device is not configured successfully or if a module fails during runtime. 
-4. At any time, new IoT Edge devices that meet the targeting conditions are configured for the deployment. For example, a deployment that targets all IoT Edge devices in Washington State automatically configures a new IoT Edge device once it is provisioned and added to the Washington State device group. 
+1. Bir işleç modülleri, hem de hedef cihazlar kümesini tanımlayan bir dağıtım tanımlar. Her dağıtımda bu bilgileri yansıtan bir dağıtım bildirimi vardır. 
+2. IOT Hub hizmeti, tüm hedeflenen cihazların istenen modülleriyle yapılandırılacakları ile iletişim kurar. 
+3. IOT Hub hizmeti, IOT Edge cihazları alır ve işleci için kullanılabilir hale getirir.  Örneğin, bir operatör, bir sınır cihazının başarıyla yapılandırılmadığını veya çalışma zamanı sırasında bir modülün başarısız olup olmadığını görebilir. 
+4. Herhangi bir zamanda hedefleme koşullara uyan IOT Edge cihazları yeni dağıtım için yapılandırılmış. Örneğin, Washington Eyaleti 'nde tüm IoT Edge cihazlarını hedefleyen bir dağıtım, kaynak ve Washington durum cihaz grubuna eklendikten sonra otomatik olarak yeni bir IoT Edge cihazı yapılandırır. 
  
-This article describes each component involved in configuring and monitoring a deployment. For a walkthrough of creating and updating a deployment, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
+Bu makalede, yapılandırma ve dağıtım izleme alan her bir bileşeni açıklar. Dağıtım oluşturma ve güncelleştirme hakkında yönergeler için bkz. [IoT Edge modüllerini ölçekli olarak dağıtma ve izleme](how-to-deploy-monitor.md).
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
-An IoT Edge automatic deployment assigns IoT Edge module images to run as instances on a targeted set of IoT Edge devices. It works by configuring an IoT Edge deployment manifest to include a list of modules with the corresponding initialization parameters. A deployment can be assigned to a single device (based on Device ID) or to a group of devices (based on tags). Once an IoT Edge device receives a deployment manifest, it downloads and installs the container images from the respective container repositories, and configures them accordingly. Once a deployment is created, an operator can monitor the deployment status to see whether targeted devices are correctly configured.
+IOT Edge otomatik dağıtım, IOT Edge modül görüntüleri hedeflenen bir IOT Edge cihazlarının örnekler olarak çalıştırmak için atar. Karşılık gelen başlatma parametreleri ile modüllerin listesini dahil etmek için bir IOT Edge dağıtımı bildirimi yapılandırarak çalışır. Bir dağıtım, tek bir cihaza (cihaz KIMLIĞINE göre) veya bir cihaz grubuna (etiketlere göre) atanabilir. Bir IoT Edge cihaz bir dağıtım bildirimi aldıktan sonra, kapsayıcı görüntülerini ilgili kapsayıcı depolarından indirir ve yükler ve bunları uygun şekilde yapılandırır. Dağıtım oluşturulduktan sonra, bir operatör hedeflenen cihazların doğru yapılandırılıp yapılandırılmadığını görmek için dağıtım durumunu izleyebilir.
 
-Only IoT Edge devices can be configured with a deployment. The following prerequisites must be on the device before it can receive the deployment:
+IOT Edge cihazları yalnızca bir dağıtım ile yapılandırılabilir. Dağıtımı almadan önce aşağıdaki önkoşulların cihazda olmalıdır:
 
-* The base operating system
-* A container management system, like Moby or Docker
-* Provisioning of the IoT Edge runtime 
+* Temel işletim sistemi
+* Moby ya da Docker gibi bir kapsayıcı yönetim sistemi
+* IOT Edge çalışma zamanı sağlama 
 
 ### <a name="deployment-manifest"></a>Dağıtım bildirimi
 
-A deployment manifest is a JSON document that describes the modules to be configured on the targeted IoT Edge devices. It contains the configuration metadata for all the modules, including the required system modules (specifically the IoT Edge agent and IoT Edge hub).  
+Bir dağıtım bildirimi hedeflenen IOT Edge cihazlarında yapılandırılması için modülleri açıklayan bir JSON belgesidir. Gerekli sistem modüllerine (özellikle IOT Edge aracısı ve IOT Edge hub'ı) dahil olmak üzere tüm modüller için yapılandırma meta verilerini içeriyor.  
 
-The configuration metadata for each module includes: 
+Her bir modül için yapılandırma meta verilerini içerir: 
 
 * Sürüm 
 * Tür 
-* Status (for example, running or stopped) 
-* Restart policy 
-* Image and container registry
-* Routes for data input and output 
+* Durum (örneğin, çalışıyor veya durduruldu) 
+* Yeniden başlatma ilkesi 
+* Görüntü ve kapsayıcı kayıt defteri
+* Giriş ve çıkış veri yolları 
 
-If the module image is stored in a private container registry, the IoT Edge agent holds the registry credentials. 
+Bir özel kapsayıcı kayıt defteri modülü görüntüsü depolanırsa, IOT Edge aracısı kayıt defteri kimlik bilgilerini tutar. 
 
-### <a name="target-condition"></a>Target condition
+### <a name="target-condition"></a>Hedef koşul
 
-The target condition is continuously evaluated throughout the lifetime of the deployment. Any new devices that meet the requirements are included, and any existing devices that no longer do are removed. The deployment is reactivated if the service detects any target condition change. 
+Hedef koşul, dağıtımın kullanım ömrü boyunca sürekli olarak değerlendirilir. Gereksinimleri karşılayan yeni cihazları dahil edin ve artık yapan herhangi bir mevcut cihaza kaldırılır. Dağıtım Hizmeti herhangi bir hedef koşulu değişiklik algılarsa yeniden başlatılır. 
 
-For instance, you have a deployment A with a target condition tags.environment = 'prod'. When you kick off the deployment, there are 10 production devices. The modules are successfully installed in these 10 devices. The IoT Edge Agent Status is shown as 10 total devices, 10 successful responses, 0 failure responses, and 0 pending responses. Now you add five more devices with tags.environment = 'prod'. The service detects the change and the IoT Edge Agent Status becomes 15 total devices, 10 successful responses, 0 failure responses, and 5 pending responses when it tries to deploy to the five new devices.
+Örneğin, bir A hedef koşulu tags.environment dağıtımınız = 'prod'. Dağıtımı devre dışı yaslanıp, 10 üretim cihaz bulunur. Modüller, bu 10 cihazları başarıyla yüklenir. IOT Edge aracı durumu, toplam cihaz sayısı 10, 10 başarılı yanıtlar, 0 hata yanıtları ve 0 bekleyen yanıtlar gösterilir. Şimdi tags.environment ile beş daha fazla cihaz Ekle 'prod' =. Hizmet değişikliği algılar ve beş yeni cihazlara dağıtmak çalıştığında, IOT Edge aracı durumu 15 toplam cihaz sayısı, 10 başarılı yanıtlar, 0 hata yanıtları ve 5 bekleyen yanıtlar olur.
 
-Use any Boolean condition on device twins tags or deviceId to select the target devices. If you want to use condition with tags, you need to add "tags":{} section in the device twin under the same level as properties. [Learn more about tags in device twin](../iot-hub/iot-hub-devguide-device-twins.md)
+Herhangi bir Boolean koşul, hedef cihazları seçmek için cihaz ikizlerini etiketleri veya DeviceID kullanın. Koşulu etiketleriyle birlikte kullanmak istiyorsanız, Device ikizi 'ın özellikler ile aynı düzey altında "Etiketler":{} bölümüne eklemeniz gerekir. [Cihaz ikizi Etiketler hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Target condition examples:
+Hedef koşul örnekleri:
 
-* deviceId ='linuxprod1'
-* tags.environment ='prod'
-* tags.environment = 'prod' AND tags.location = 'westus'
-* tags.environment = 'prod' OR tags.location = 'westus'
-* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* DeviceID = 'linuxprod1'
+* Tags.Environment = 'prod'
+* Tags.Environment = 'prod' AND tags.location = 'westus'
+* Tags.Environment = 'prod' veya tags.location = 'westus'
+* Tags.operator 'John' = ve tags.environment = 'prod' değil DeviceID = 'linuxprod1'
 
-Here are some constrains when you construct a target condition:
+Hedef koşul oluştururken bazı kısıtlar şunlardır:
 
-* In device twin, you can only build a target condition using tags or deviceId.
-* Double quotes aren't allowed in any portion of the target condition. Use single quotes.
-* Single quotes represent the values of the target condition. Therefore, you must escape the single quote with another single quote if it's part of the device name. For example, to target a device called `operator'sDevice`, write `deviceId='operator''sDevice'`.
-* Numbers, letters, and the following characters are allowed in target condition values: `-:.+%_#*?!(),=@;$`.
+* Cihaz ikizinde etiketleri veya DeviceID kullanarak bir hedef koşulu yalnızca oluşturabilirsiniz.
+* Çift tırnak işareti, herhangi bir bölümünü hedef koşulu izin verilmez. Tek tırnak işareti kullanın.
+* Tek tırnak, hedef koşulu değerlerini temsil eder. Bu nedenle, cihaz adı bir parçası ise tek tırnak işareti ile başka bir tek tırnak işareti kaçış gerekir. Örneğin, `operator'sDevice`adlı bir cihazı hedeflemek için `deviceId='operator''sDevice'`yazın.
+* Hedef koşul değerlerinde sayılar, harfler ve aşağıdaki karakterlere izin verilir: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Öncelik
 
-A priority defines whether a deployment should be applied to a targeted device relative to other deployments. A deployment priority is a positive integer, with larger numbers denoting higher priority. If an IoT Edge device is targeted by more than one deployment, the deployment with the highest priority applies.  Deployments with lower priorities are not applied, nor are they merged.  If a device is targeted with two or more deployments with equal priority, the most recently created deployment (determined by the creation timestamp) applies.
+Öncelikli bir dağıtım hedeflenen cihaza göre diğer dağıtımlar uygulanması gerektiğini tanımlar. Dağıtım ile daha büyük sayılar daha yüksek öncelikli belirten pozitif bir tamsayı önceliktir. IOT Edge cihazı birden fazla dağıtım tarafından hedeflendiğinde, en yüksek önceliğe sahip dağıtım uygulanır.  Düşük önceliklere sahip dağıtımlar uygulanmaz ve birleştirilirler.  Bir cihaz eşit önceliğe sahip iki veya daha fazla dağıtıma hedefleniyorsa, en son oluşturulan dağıtım (oluşturma zaman damgasıyla belirlenir) geçerlidir.
 
 ### <a name="labels"></a>Etiketler 
 
-Labels are string key/value pairs that you can use to filter and group of deployments. A deployment may have multiple labels. Labels are optional and do no impact the actual configuration of IoT Edge devices. 
+Etiketleri filtresi ve dağıtım grubu için kullanabileceğiniz dize anahtar/değer çiftleridir. Bir dağıtımda birden fazla etiket olabilir. Etiket isteğe bağlıdır ve herhangi bir etkisi IOT Edge cihazları gerçek yapılandırmasını yapın. 
 
 ### <a name="deployment-status"></a>Dağıtım durumu
 
-A deployment can be monitored to determine whether it applied successfully for any targeted IoT Edge device.  A targeted Edge device will appear in one or more of the following status categories: 
+Bir dağıtım için hedeflenen tüm IOT Edge cihazı başarıyla uygulanmış olup olmadığını belirlemek için de izlenebilir.  Hedeflenen bir sınır aygıtı aşağıdaki durum kategorilerindeki bir veya daha fazla şekilde görünür: 
 
-* **Target** shows the IoT Edge devices that match the Deployment targeting condition.
-* **Actual** shows the targeted IoT Edge devices that are not targeted by another deployment of higher priority.
-* **Healthy** shows the IoT Edge devices that have reported back to the service that the modules have been deployed successfully. 
-* **Unhealthy** shows the IoT Edge devices have reported back to the service that one or modules have not been deployed successfully. To further investigate the error, connect remotely to those devices and view the log files.
-* **Unknown** shows the IoT Edge devices that did not report any status pertaining this deployment. To further investigate, view service info and log files.
+* **Hedef** , dağıtım hedefleme durumuyla eşleşen IoT Edge cihazları gösterir.
+* **Gerçek** , daha yüksek bir öncelik dağıtımı tarafından hedeflenilmemiş hedeflenen IoT Edge cihazları gösterir.
+* **Sağlıklı** , modüllerin başarıyla dağıtıldığını hizmete geri rapor veren IoT Edge cihazları gösterir. 
+* **Sağlıksız** durum, cihazların bir veya modüllerin başarıyla dağıtılmadığını hizmete geri bildirdiği IoT Edge gösterir. Daha fazla hata araştırmak, bu cihazlar için uzaktan bağlanma ve günlük dosyalarını görüntülemek için.
+* **Bilinmiyor** , bu dağıtım ile ilgili herhangi bir durumu bildirmeyen IoT Edge cihazları gösterir. Daha fazla araştırmak için hizmet bilgileri ve günlük dosyalarını görüntüleyin.
 
-## <a name="phased-rollout"></a>Phased rollout 
+## <a name="phased-rollout"></a>Aşamalı dağıtımı 
 
-A phased rollout is an overall process whereby an operator deploys changes to a broadening set of IoT Edge devices. The goal is to make changes gradually to reduce the risk of making wide scale breaking changes.  
+Aşamalı yapabildiği değişiklikleri operatörün insanın ufkunu genişleten bir IOT Edge cihazları kümesine dağıtır, genel bir işlemdir. Aşamalı olarak geniş ölçek bozucu değişiklikler yapma riskini azaltmak için değişiklik olmaktır.  
 
-A phased rollout is executed in the following phases and steps: 
+Aşamalı aşağıdaki aşamaları ve adımları çalıştırılır: 
 
-1. Establish a test environment of IoT Edge devices by provisioning them and setting a device twin tag like `tag.environment='test'`. The test environment should mirror the production environment that the deployment will eventually target. 
-2. Create a deployment including the desired modules and configurations. The targeting condition should target the test IoT Edge device environment.   
-3. Validate the new module configuration in the test environment.
-4. Update the deployment to include a subset of production IoT Edge devices by adding a new tag to the targeting condition. Also, ensure that the priority for the deployment is higher than other deployments currently targeted to those devices 
-5. Verify that the deployment succeeded on the targeted IoT Devices by viewing the deployment status.
-6. Update the deployment to target all remaining production IoT Edge devices.
+1. IoT Edge cihazların bir test ortamı oluşturun ve `tag.environment='test'`gibi bir cihaz ikizi etiketi ayarlayarak. Test ortamı, dağıtımın sonunda hedeflenecek üretim ortamını yansıtmalıdır. 
+2. İstenen modülleri ve yapılandırmaları da dahil olmak üzere bir dağıtım oluşturun. IOT Edge cihazı ortam test hedefleme koşul hedeflemelidir.   
+3. Yeni modül yapılandırması test ortamında doğrulayın.
+4. Dağıtım hedefleme koşula yeni bir etiket ekleyerek bir alt kümesini üretim IOT Edge cihazları içerecek şekilde güncelleştirin. Ayrıca, dağıtım önceliğini şu anda bu cihazları hedefleyen diğer dağıtımlar daha yüksek olduğundan emin olun 
+5. Dağıtım durumu görüntüleyerek dağıtım hedeflenen IOT Cihazlarında başarılı olduğunu doğrulayın.
+6. Kalan tüm üretim IOT Edge cihazları hedeflemek için dağıtım güncelleştirin.
 
 ## <a name="rollback"></a>Geri alma
 
-Deployments can be rolled back if you receive errors or misconfigurations.  Because a deployment defines the absolute module configuration for an IoT Edge device, an additional deployment must also be targeted to the same device at a lower priority even if the goal is to remove all modules.  
+Bir hata veya yanlış yapılandırmalarını geri alırsanız, dağıtımları alınabilir.  Bir dağıtım, bir IoT Edge cihazının mutlak modül yapılandırmasını tanımladığından, hedef tüm modülleri kaldırsa bile, ek bir dağıtımın aynı cihaza daha düşük bir önceliğe de hedeflenmiş olması gerekir.  
 
-Perform rollbacks in the following sequence: 
+Geri alma işlemleri, aşağıdaki sırayla gerçekleştirin: 
 
-1. Confirm that a second deployment is also targeted at the same device set. If the goal of the rollback is to remove all modules, the second deployment should not include any modules. 
-2. Modify or remove the target condition expression of the deployment you wish to roll back so that the devices no longer meet the targeting condition.
-3. Verify that the rollback succeeded by viewing the deployment status.
-   * The rolled-back deployment should no longer show status for the devices that were rolled back.
-   * The second deployment should now include deployment status for the devices that were rolled back.
+1. İkinci bir dağıtım aynı cihazı kümesinin hedeflenir onaylayın. Geri alma amacı, tüm modülleri kaldırmak için ise, ikinci dağıtımı modüllerin içermemelidir. 
+2. Değiştirin veya hedef koşul ifadesi, böylece cihazlar artık hedefleme koşula uyan geri almak istediğiniz dağıtımın kaldırın.
+3. Dağıtım durumunu görüntüleyerek geri alma başarılı olduğunu doğrulayın.
+   * Toplu geri dağıtım durumu geri alındı cihazlar için artık göstermelidir.
+   * İkinci dağıtımı artık geri alındı cihazlar için dağıtım durumunu içermelidir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Walk through the steps to create, update, or delete a deployment in [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
-* Learn more about other IoT Edge concepts like the [IoT Edge runtime](iot-edge-runtime.md) and [IoT Edge modules](iot-edge-modules.md).
+* Dağıtım [ve izleme IoT Edge modüllerindeki](how-to-deploy-monitor.md)bir dağıtımı oluşturma, güncelleştirme veya silme adımlarını gözden geçir.
+* [IoT Edge çalışma zamanı](iot-edge-runtime.md) ve [IoT Edge modülleri](iot-edge-modules.md)gibi diğer IoT Edge kavramları hakkında daha fazla bilgi edinin.
 
