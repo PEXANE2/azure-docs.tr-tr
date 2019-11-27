@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Normal ifade varlığı-LUSıS'
+title: 'Öğretici: normal ifade varlığı-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Normal İfade varlığını kullanarak bir konuşmadaki tutarlı olarak biçimlendirilmiş verileri ayıklayın.
 services: cognitive-services
@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0f24721272c85d658a46ab1319e6f4af79b29364
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465158"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Öğretici: Utterlik 'ten iyi biçimlendirilmiş veriler alın
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Öğretici: söylenişi 'ten iyi biçimlendirilmiş veriler alın
 Bu öğreticide, **normal ifade** varlığını kullanarak, düzenli olarak biçimlendirilen verileri bir noktadan ayıklamak için bir uygulama oluşturun.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
@@ -30,7 +32,7 @@ Bu öğreticide, **normal ifade** varlığını kullanarak, düzenli olarak biç
 > * Normal ifade varlığı ekleme 
 > * Eğitim
 > * Yayımlama
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -82,7 +84,7 @@ Normal bir ifade, şu durumlarda bu tür veri için iyi bir seçimdir:
     |author of hrf-546234? (hrf-546234 numaralı formun yazarı kim?)|
     |title of hrf-456234? (hrf-456234 numaralı formun başlığı nedir?)|
 
-    [![Yeni utlaslar vurgulanacak amaç sayfasının ekran görüntüsü](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [Yeni dıklarla vurgulanan amaç sayfasının ekran görüntüsünü ![](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -99,7 +101,7 @@ Aşağıdaki adımları izleyerek LUIS uygulamasına HRF-numara biçimini bildir
 
 1. Entities (Varlıklar) sayfasında **Create new entity** (Yeni varlık oluştur) düğmesini seçin. 
 
-1. Açılan iletişim kutusuna yeni varlık adı olarak `HRF-number` girin, varlık türü olarak **RegEx**'i seçin, **Normal İfade** değeri olarak `hrf-[0-9]{6}` girin ve ardından **Bitti** düğmesini seçin.
+1. Açılan iletişim kutusuna yeni varlık adı olarak `HRF-number` girin, varlık türü olarak **RegEx**'i seçin, `hrf-[0-9]** `Normal İfade**değeri olarak** girin ve ardından **Bitti** düğmesini seçin.
 
     ![Yeni varlık özelliklerinin ayarlandığı açılan iletişim kutusunun ekran görüntüsü](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
@@ -129,7 +131,7 @@ Aşağıdaki adımları izleyerek LUIS uygulamasına HRF-numara biçimini bildir
 
     `When were HRF-123456 and hrf-234567 published in the last year?`
 
-    Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `FindForm` amacını `HRF-123456` ile `hrf-234567` olmak üzere iki form numarasını döndürmelidir.
+    Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `FindForm` amacını `HRF-123456` ile `hrf-234567` olmak üzere iki form numarasını döndürmelidir.
 
     ```json
     {

@@ -1,25 +1,26 @@
 ---
-title: Azure Resource Manager Test Sürüşü | Azure Market
-description: Azure Resource Manager kullanarak bir Market Test Sürüşü oluşturun
+title: Test sürücüsüne Azure Resource Manager | Azure Marketi
+description: Azure Resource Manager kullanarak Market test sürücüsü oluşturma
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Patrick .Butler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606443"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838071"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager Test Sürüşü
 
 Bu makalede, Azure Market veya Appsource'ta kim teklifini sahip olan ancak kendi Test Sürüşü yalnızca Azure kaynakları ile oluşturmak istediğiniz yayımcılar içindir.
 
-Bir Azure Resource Manager (Resource Manager) şablonu, Azure kaynaklarınızın en iyi temsil etmek için çözümünüzün tasarım kodlanmış bir kapsayıcıdır. Bir Resource Manager şablonu durumdayken alışkın değilseniz, okumaya [Resource Manager şablonları anlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ve [Resource Manager şablonları yazma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) derleyip test etmeye nasıl bildiğinizden emin olmak için kendi şablonlarınızı.
+Azure Resource Manager (Kaynak Yöneticisi) şablonu, çözümünüzü en iyi şekilde temsil edecek şekilde tasarlamanızı sağlayan, Azure kaynakları 'nın kodlanmış bir kapsayıcısıdır. Kaynak Yöneticisi şablonun ne olduğunu bilmiyorsanız, kendi şablonlarınızı nasıl derleyip test etmek için [Kaynak Yöneticisi şablonları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ve [yazma Kaynak Yöneticisi şablonları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) hakkında bilgi edinin.
 
 Test Sürüşü yapar, sağlanan Resource Manager şablonu alır ve bir kaynak grubunda bu Resource Manager şablonundan gerekli tüm kaynakların dağıtımını yapar olduğu.
 
@@ -31,25 +32,25 @@ Bir Azure Resource Manager Test Sürüşü oluşturmak isterseniz, sizin için g
 
 ## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Bir Azure Resource Manager Test Sürüşü oluşturma
 
-Bir Azure Resource Manager Test Sürüşü oluşturma işlemi şu şekildedir:
+Azure Resource Manager test sürücüsü oluşturma işlemi aşağıda verilmiştir:
 
-1. Bir Akış Diyagramı içinde yapmak için müşterilerinizin ne istediğini tasarlayın.
-1. Hangi deneyimleri müşterilerinizin oluşturmak istediğiniz tanımlayın.
-1. Yukarıdaki tanımlarını temel alarak, hangi parçaları ve kaynakları gibi deneyimi gerçekleştirmek, müşteriler için gerekli olan karar verin: Örneğin, D365 örneği veya bir veritabanı ile Web sitesi.
-1. Tasarım yerel olarak oluşturun ve deneyimi test edin.
-1. Paketi bir ARM şablon dağıtımı ve buradan deneyimi:
-    1. Kaynakları hangi bölümlerinin giriş parametreleridir tanımlayın.
-    1. Hangi değişkenlerdir;
-    1. Hangi çıkışları için Müşteri Deneyimi verilmiştir.
-1. Yayımlama, test edin ve yayınlayın.
+1. Müşterilerinizin akış diyagramında ne olmasını istediğinizi tasarlayın.
+1. Müşterilerinizin hangi deneyimleri oluşturmasını istediğinizi tanımlayın.
+1. Yukarıdaki tanımları temel alarak, müşteriler için bu tür deneyimleri yerine getirmek için hangi parçaların ve kaynakların gerekli olduğuna karar verin: Örneğin, D365 örneği veya veritabanı içeren bir Web sitesi.
+1. Tasarımı yerel olarak derleyin ve deneyimi test edin.
+1. Deneyimi bir ARM şablon dağıtımında ve buradan paketleyin:
+    1. Kaynakların hangi bölümlerinin giriş parametreleri olduğunu tanımlayın;
+    1. Hangi değişkenler vardır?
+    1. Müşteri deneyimine hangi çıktılar verilir.
+1. Yayımlayın, test edin ve canlı olun.
 
 Bir Azure Resource Manager Test Sürüşü oluşturma konusunda en önemli kısmı, müşterilerinizin deneyimini istediğiniz hangi senaryoları tanımlamaktır. Bir güvenlik duvarı ürünü ve tanıtım ne kadar iyi, betik ekleme saldırılarını işlemek istiyorsanız misiniz? Depolama ürün ve ne kadar hızlı ve kolay bir şekilde çözümünüzü tanıtım istiyorsanız dosyaları sıkıştırır misiniz?
 
-Ürününüzü göstermek için en iyi yollarından nelerdir değerlendirme süresi yeterli miktarda harcayabileceğiniz emin olun. Resource Manager şablonu yeterince daha kolay paketleme getirir özellikle tüm gerekli kaynakları geçici olarak ihtiyacınız.
+Ürününüzü görüntülemenin en iyi yollarını değerlendirmek için yeterli miktarda süre harcadığınızdan emin olun. Özellikle ihtiyaç duyduğunuz tüm gerekli kaynakları, Kaynak Yöneticisi şablonu paketlemeyi yeterince daha kolay hale getirir.
 
 Güvenlik Duvarı Örneğimizdeki ile devam etmek için mimarisi, güvenlik duvarınızı koruyan bir Web sitesi için hizmetinizin genel bir IP URL'sini ve başka bir genel IP URL gerekiyor olabilir. Her IP bir sanal makinede dağıtılan ve bağlı bir ağ güvenlik grubu + ağ arabirimi ile birlikte.
 
-İstenen paket kaynakları tasarladıktan sonra artık Test sürücü Resource Manager şablonu oluşturma ve yazma içermektedir.
+İstenen kaynak paketini tasarladıktan sonra, şimdi test sürücüsü Kaynak Yöneticisi şablonu yazma ve oluşturma.
 
 ## <a name="writing-test-drive-resource-manager-templates"></a>Test sürücü Resource Manager şablonları yazma
 
@@ -84,10 +85,10 @@ Dikkat etmeniz önemlidir **tüm parametreler isteğe bağlıdır**, bu nedenle 
 
 | Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
 |---|---|---|---|
-| **BaseUri**     | dize          | Taban URI, dağıtım paketi| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
-| **Kullanıcı adı**    | dize          | Yeni rastgele kullanıcı adı.| admin68876      |
+| **BaseUri**     | string          | Taban URI, dağıtım paketi| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
+| **Kullanıcı adı**    | string          | Yeni rastgele kullanıcı adı.| admin68876      |
 | **Parola**    | güvenli dize    | Yeni rastgele bir parola | LP! ACS\^2kh     |
-| **Oturum kimliği**   | dize          | Benzersiz Test Sürüşü oturum Kimliğini (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **Oturum kimliği**   | string          | Benzersiz Test Sürüşü oturum Kimliğini (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>kullanıcı adı
 
@@ -207,7 +208,7 @@ Parametre/değişkeni dizelerinizi birleştirme emin olun (\'contosovm\') benzer
 
 Örneğin, çoğu kaynak adları bir rakamla başlayamaz, ancak bir rakam ile başlayan bir dize benzersiz bir dize işlevi döndürebilir. Bu nedenle, benzersiz bir ham dize çıkış kullanırsanız, dağıtımlar başarısız olur. 
 
-Kaynak adlandırma kuralları ve kısıtlamaları hakkında daha fazla bilgi bulabilirsiniz [bu makalede](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Kaynak adlandırma kuralları ve kısıtlamaları hakkında daha fazla bilgi bulabilirsiniz [bu makalede](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="deployment-location"></a>Dağıtım konumu
 
@@ -300,9 +301,9 @@ Yayımlama sertifika sırasında Test Sürüşü dağıtım paketinizi unzips ve
 
 | Package.zip                       | Test sürücü blob kapsayıcısı         |
 |---|---|
-| Ana template.json                | https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/main-template.json  |
-| Templates/Solution.JSON           | https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/templates/solution.json |
-| scripts/warmup.ps1                | https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1  |
+| Ana template.json                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Main-Template.exe  |
+| Templates/Solution.JSON           | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Templates/Solution.exe |
+| scripts/warmup.ps1                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Scripts/Warmup.exe  |
 
 
 Bu blob kapsayıcısında URI temel URI'sini diyoruz. Blob kapsayıcısı laboratuvarınızın her değişiklik vardır ve bu nedenle, her değişiklik laboratuvarınızın kendi taban URI'sine sahip. Test Sürüşü sıkıştırması dağıtım paketinizi temel URI'sini şablonunuzu şablon parametreleri aracılığıyla içine geçirebilirsiniz.
@@ -317,9 +318,9 @@ Oluşturulan Test Sürüşünüz olduğuna göre bu bölümde, başarılı bir �
 
 ![Test Sürüşü kullanıcı arabiriminde etkinleştirme](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-İlk ve en önemli alan teklifiniz için Etkin Test Sürüşü isteyip istemediğinizi geçiş yapmak için kullanılır. Seçtiğinizde, **Evet,** formun tüm gerekli alanları ile geri kalanı doldurmak size sunulur. Seçtiğinizde, **Hayır** form devre dışı kalır ve devre dışı Test Sürüşü ile yeniden yayımlarsanız, Test Sürüşünüz üretimden kaldırılır.
+İlk ve en önemli alan teklifiniz için Etkin Test Sürüşü isteyip istemediğinizi geçiş yapmak için kullanılır. **Evet ' i seçtiğinizde,** tüm gerekli alanları içeren formun geri kalanı, doldurmanız için sunulur. **Hayır ' ı seçtiğinizde,** form devre dışı bırakılır ve test sürücüsü devre dışı olarak yeniden yayımlarsanız, test sürücünüz üretimden kaldırılır.
 
-Not: Etkin kullanıcılar tarafından kullanılan sürücüleri tüm testleri vardır, bu Test Sürüşleri oturumun süresi dolana kadar çalışmaya devam eder.
+Not: etkin bir şekilde kullanıcı tarafından kullanılan sürücüleri tüm testleri vardır, bu Test Sürüşleri oturumun süresi dolana kadar çalışmaya devam eder.
 
 ### <a name="details"></a>Ayrıntılar
 
@@ -372,7 +373,7 @@ Doldurmak için son bölümü, Test sürücüleri otomatik olarak Azure aboneli�
 
 **Azure abonelik kimliği -** *gerekli* bu Azure hizmetlerini ve Azure portalına erişim verir. Burada kullanım raporlama ve Hizmetleri faturalandırılır aboneliktir. Zaten yoksa bir **ayrı** Azure aboneliği için Test Sürüşleri yalnızca bir tane biri olun. Azure abonelik kimlikleri, Azure portalında oturum açıyorsanız ve sol taraftaki menüyü Aboneliklerde giderek bulabilirsiniz. (Örnek: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
-![Azure abonelikleri](./media/azure-resource-manager-test-drive/subdetails2.png)
+![Azure Abonelikleri](./media/azure-resource-manager-test-drive/subdetails2.png)
 
 **Azure AD Kiracı kimliği -** *gerekli* bir kiracı bulabilirsiniz altındaki özellikler - kimliği zaten mevcut varsa\> dizin kimliği
 
@@ -382,7 +383,7 @@ Aksi takdirde, Azure Active Directory'de yeni bir kiracı oluşturun.
 
 ![Azure Active Directory listesi Kiracı](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Azure AD kiracınız için kuruluş, etki alanı ve ülke/bölge tanımlayın](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Azure AD kiracısı için kuruluş, etki alanı ve ülke/bölge tanımlama](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![Seçimi onaylayın](./media/azure-resource-manager-test-drive/subdetails6.png)
 
@@ -403,8 +404,8 @@ Kaydet’e tıklayın. Son adım, bu kayıtlı uygulama için uygulama Kimliğin
 Verilen kullanıyoruz uygulamayı aboneliğinize dağıtmak için biz uygulamanın abonelik üzerinde katkıda bulunan olarak eklemeniz gerekir. Bu yönergeleri olarak olan aşağıda:
 
 1. Abonelikler dikey penceresine gidin ve yalnızca Test Sürüşü için kullanmakta olduğunuz uygun aboneliği seçin.
-1. Tıklayın **erişim denetimi (IAM)** .
-1. Tıklayın **rol atamaları** sekmesi.  ![Yeni bir erişim denetimi sorumlusu ekleme](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
+1. **Rol atamaları** sekmesine tıklayın.  Yeni bir Access Control sorumlusu eklemek ![](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Tıklayın **rol ataması Ekle**.
 1. Rol olarak ayarla **katkıda bulunan**.
 1. Azure AD uygulama adını yazın ve rol atamak için uygulamayı seçin.

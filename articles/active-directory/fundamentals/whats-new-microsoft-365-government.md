@@ -1,6 +1,6 @@
 ---
-title: Microsoft 365 kamu - Azure Active Directory Azure Active Directory'deki yenilikler | Microsoft Docs
-description: Azure Active Directory (Azure AD), etkileyebilecek Microsoft 365 kamu bulut örneği bazı değişiklikler hakkında bilgi edinin.
+title: Microsoft 365 Kamu 'daki Azure AD yenilikleri nelerdir? | Microsoft Belgeleri
+description: Microsoft 365 Kamu bulut örneğindeki Azure Active Directory (Azure AD) üzerinde yapılan bazı değişiklikler hakkında bilgi edinin.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,54 +13,54 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258902"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805278"
 ---
-# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 kamu Azure Active Directory'deki yenilikler
+# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Kamu 'daki Azure Active Directory yenilikleri
 
-Aşağıdaki hizmetler kullanan müşteriler için geçerlidir Microsoft 365 kamu bulut örneğindeki size Azure Active Directory (Azure AD) bazı değişiklikler yaptık:
+Aşağıdaki hizmetleri kullanan müşteriler için geçerli olan Microsoft 365 Kamu Bulutu örneğinde Azure Active Directory (Azure AD) üzerinde bazı değişiklikler yaptık:
 
-- Microsoft Azure Kamu
+- Microsoft Azure Government
 
-- Microsoft 365 kamu – GCC yüksek
+- Microsoft 365 Kamu – GCC High
 
-- Microsoft 365 kamu – DoD
+- Microsoft 365 Kamu – DoD
 
-Bu makalede, Microsoft 365 kamu – GCC müşterileri için geçerli değildir.
+Bu makale Microsoft 365 Kamu – GCC müşterileri için geçerlidir.
 
-## <a name="changes-to-the-initial-domain-name"></a>İlk etki alanı adında yapılan değişiklikler
+## <a name="changes-to-the-initial-domain-name"></a>İlk etki alanı adına yapılan değişiklikler
 
-Kuruluşunuzun ilk kurulum sırasında Microsoft 365 kamu çevrimiçi hizmet için kuruluşunuzun etki alanı adı seçmeniz istendiğinde `<your-domain-name>.onmicrosoft.com`. .Com sonekine sahip bir etki alanı adı zaten varsa, hiçbir şey değişecektir.
+Kuruluşunuzun Microsoft 365 Kamu çevrimiçi hizmeti için ilk kayıt sırasında, kuruluşunuzun etki alanı adını `<your-domain-name>.onmicrosoft.com`seçmeniz istenir. . Com sonekine sahip bir etki alanı adınız varsa, hiçbir şey değişmeyecektir.
 
-Yeni bir Microsoft 365 kamu hizmete kaydolan, ancak, bir etki alanı adını kullanarak seçin istenir `.us` soneki. Bu nedenle, olur `<your-domain-name>.onmicrosoft.us`.
+Ancak, yeni bir Microsoft 365 kamu hizmeti için kaydoluyorsanız `.us` sonekini kullanarak bir etki alanı adı seçmeniz istenir. Bu nedenle `<your-domain-name>.onmicrosoft.us`olacaktır.
 
 >[!Note]
->Bu değişiklik, bulut hizmeti sağlayıcıları (CSP'ler) tarafından yönetilen tüm müşteriler için geçerli değildir.
+>Bu değişiklik, bulut hizmeti sağlayıcıları (CSP 'Ler) tarafından yönetilen tüm müşteriler için geçerlidir.
 
-## <a name="changes-to-portal-access"></a>Portal erişimi değişiklikleri
+## <a name="changes-to-portal-access"></a>Portal erişiminde yapılan değişiklikler
 
-Portal uç noktaları için Microsoft Azure kamu, Microsoft 365 kamu – GCC yüksek ve Microsoft 365 kamu – DoD, gösterildiği şekilde güncelleştirdik [uç noktası eşleme tablosu](#endpoint-mapping).
+Microsoft Azure Kamu, Microsoft 365 Kamu-GCC High ve Microsoft 365 Kamu – DoD için, [uç nokta eşleme tablosunda](#endpoint-mapping)gösterildiği gibi portal uç noktalarını güncelleştirdik.
 
-Müşteriler dünya çapındaki Azure (portal.azure.com) ve (portal.office.com) Office 365 portallarını kullanarak daha önce oturum açılamadı. Bu güncelleştirme ile müşteriler artık belirli Microsoft Azure kamu, Microsoft 365 kamu - GCC yüksek ve Microsoft 365 kamu - DoD portalı kullanarak oturum açmanız gerekir.
+Daha önce müşteriler Dünya çapındaki Azure (portal.azure.com) ve Office 365 (portal.office.com) portallarını kullanarak oturum açabilecektir. Bu güncelleştirmeyle, müşteriler artık belirli Microsoft Azure Kamu Microsoft 365 Kamu-GCC High ve Microsoft 365 devlet-DoD portallarını kullanarak oturum açması gerekir.
 
-## <a name="endpoint-mapping"></a>Uç noktası eşleme
+## <a name="endpoint-mapping"></a>Uç nokta eşleme
 
-Aşağıdaki tablo, tüm müşteriler için uç noktalar gösterir:
+Aşağıdaki tabloda tüm müşterilerin uç noktaları gösterilmektedir:
 
-| Ad | uç noktası ayrıntıları |
+| Ad | Uç nokta ayrıntıları |
 |------|------------------|
-| Portallar |Microsoft Azure kamu: https://portal.azure.us<p>Microsoft 365 kamu – GCC yüksek: https://portal.office365.us<p>Microsoft 365 kamu – DoD: https://portal.apps.mil |
-| Azure Active Directory yetkili uç noktası | https://login.microsoftonline.us |
+| Portallar |Microsoft Azure Kamu: https://portal.azure.us<p>Microsoft 365 Kamu – GCC yüksek: https://portal.office365.us<p>Microsoft 365 Kamu – DoD: https://portal.apps.mil |
+| Azure Active Directory yetkilisi uç noktası | https://login.microsoftonline.us |
 | Azure Active Directory Graph API'si | https://graph.windows.net |
-| Microsoft 365 kamu - GCC için Microsoft Graph API'si yüksek | https://graph.microsoft.us |
-| Microsoft 365 kamu - DoD için Microsoft Graph API'si | https://dod-graph.microsoft.us |
-| Uç noktalar Azure kamu hizmetleri | Ayrıntılar için bkz [Azure kamu Geliştirici Kılavuzu](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 kamu - GCC yüksek uç noktaları | Ayrıntılar için bkz [Office 365 ABD Kamu GCC yüksek uç noktaları](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 kamu - DoD | Ayrıntılar için bkz [Office 365 ABD Kamu Savunma Bakanlığı uç noktaları](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Microsoft 365 kamu için Microsoft Graph API-GCC High | https://graph.microsoft.us |
+| Microsoft 365 kamu için Microsoft Graph API-DoD | https://dod-graph.microsoft.us |
+| Azure Kamu hizmetleri uç noktaları | Ayrıntılar için bkz. [Azure Kamu Geliştirici Kılavuzu](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
+| Microsoft 365 Kamu-GCC yüksek uç noktaları | Ayrıntılar için bkz. [Office 365 ABD devlet GCC yüksek uç noktaları](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 Kamu-DoD | Ayrıntılar için bkz. [Office 365 ABD kamu DOD uç noktaları](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -68,8 +68,8 @@ Daha fazla bilgi için şu makalelere bakın:
 
 - [Azure Government nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
-- [Azure kamu AAD yetkili uç noktasını güncelleştirme işlemi](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
+- [Azure Kamu AAD yetkilisi uç noktası güncelleştirmesi](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
-- [ABD kamu bulutunda Microsoft Graph uç noktaları](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
+- [ABD devlet bulutu 'nda Microsoft Graph uç noktalar](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 US Government GCC yüksek ve DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 ABD kamu GCC High ve DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
