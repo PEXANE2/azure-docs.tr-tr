@@ -4,19 +4,19 @@ description: Azure faturanızda beklenmeyen ücretleri nasıl önleyeceğinizi �
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375609"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223904"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure faturasında beklenmeyen ücretlendirmeleri önleme ve maliyet yönetimi
 
@@ -68,11 +68,11 @@ Maliyetleri aşağıdaki araçlarla izleyebilirsiniz:
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>Bütçeleri ve maliyet uyarılarını izleme
 
-Maliyetleri yönetmek için [bütçeler](../cost-management/tutorial-acm-create-budgets.md) oluşturun ve paydaşların harcama anormalliklerini ve fazla harcamalarını size otomatik olarak bildiren [uyarılar](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) oluşturun. 
+Maliyetleri yönetmek için [bütçeler](../cost-management/tutorial-acm-create-budgets.md) oluşturun ve paydaşların harcama anormalliklerini ve fazla harcamalarını size otomatik olarak bildiren [uyarılar](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) oluşturun.
 
 ### <a name="costs"></a> Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
-Azure hizmetlerinizi çalışır duruma getirdikten sonra Azure harcamanızı izlemek için maliyetleri düzenli olarak denetleyin. Maliyet analizini, Azure kullanımınıza ilişkin maliyetlerin nereden kaynaklandığını anlamak için kullanabilirsiniz. 
+Azure hizmetlerinizi çalışır duruma getirdikten sonra Azure harcamanızı izlemek için maliyetleri düzenli olarak denetleyin. Maliyet analizini, Azure kullanımınıza ilişkin maliyetlerin nereden kaynaklandığını anlamak için kullanabilirsiniz.
 
 1. [Azure portalında Maliyet Yönetimi + Faturalama sayfasını](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade) ziyaret edin.
 
@@ -166,7 +166,7 @@ Hizmet Düzeyi Sözleşmeleri (SLA), Microsoft’un çalışma süresi ve bağla
 
 Kredi istemek için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın. Birden çok hesabınız varsa, Azure’un kapalı kaldığı süreden etkilenen bir hesabı kullandığınızdan emin olun. 
+1. [Azure Portal](https://portal.azure.com/) oturum açın. Birden çok hesabınız varsa, Azure’un kapalı kaldığı süreden etkilenen bir hesabı kullandığınızdan emin olun.
 2. Yeni bir destek isteği oluşturun.
 3. **Sorun türü** altında **Faturalandırma**’yı seçin.
 4. **Sorun türü** altında **Para İadesi İsteği**’ni seçin.

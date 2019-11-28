@@ -5,19 +5,19 @@ keywords: fatura, fatura indirme, azure faturası, azure kullanımı
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375753"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224036"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure faturanızı görüntüleme ve indirme
 
@@ -32,7 +32,7 @@ Microsoft Müşteri Sözleşmeniz (MCA) varsa faturalarınızı almak için aşa
 - Okuyucu
 - Fatura yöneticisi
 
-Microsoft İş ortağı Sözleşmeniz (MPA) varsa, Azure faturalarını görüntüleyip indirmek için iş ortağı kuruluşunda Genel Yönetici ve Yönetici Aracısı rolüne sahip olmanız gerekir. Gerekli izinleri öğrenmek için [Ödeme hesabınızın türünü denetleyin](#check-your-billing-account-type). 
+Microsoft İş ortağı Sözleşmeniz (MPA) varsa, Azure faturalarını görüntüleyip indirmek için iş ortağı kuruluşunda Genel Yönetici ve Yönetici Aracısı rolüne sahip olmanız gerekir. Gerekli izinleri öğrenmek için [Ödeme hesabınızın türünü denetleyin](#check-your-billing-account-type).
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ Bir faturayı görmemenizin birden fazla nedeni olabilir:
 
 - Faturaları görüntüleme izniniz yoktur. MCA veya MPA’nız varsa faturalama profilinin Sahibi, Katkıda Bulunanı, Okuyucusu veya Fatura yöneticisi olmanız gerekir. Diğer abonelikler için Hesap Yöneticisi değilseniz eski faturaları göremeyebilirsiniz. Faturalama bilgilerine erişme hakkında daha fazla bilgi için bkz. [Rolleri kullanarak Azure faturalamasına erişimi yönetme](billing-manage-access.md).
 
-- Aboneliğinizde Ücretsiz Deneme veya aylık kredi miktarı varsa, yalnızca aylık kredi miktarını aştığınızda faturalandırılırsınız. Microsoft Müşteri Sözleşmeniz veya Microsoft İş Ortağı Sözleşmeniz varsa her zaman fatura alırsınız. 
+- Aboneliğinizde Ücretsiz Deneme veya aylık kredi miktarı varsa, yalnızca aylık kredi miktarını aştığınızda faturalandırılırsınız. Microsoft Müşteri Sözleşmeniz veya Microsoft İş Ortağı Sözleşmeniz varsa her zaman fatura alırsınız.
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Azure portalında fatura indirme
 

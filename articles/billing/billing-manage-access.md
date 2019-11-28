@@ -8,7 +8,7 @@ manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c1f9ef78431b6b293972d4adbc0f64dc49d5c4b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709612"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223837"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Azure için faturalama bilgilerine erişimi yönetme
 
 Diğer kullanıcılara Azure portalında hesabınız için faturalama bilgilerine erişme yetkisi sağlayabilirsiniz. Faturalama bilgilerine erişim sağlama yönergeleri ve faturalama rollerinin türü, ödeme hesabınızın türüne göre değişiklik gösterir. Ödeme hesabınızın türünü belirlemek için bkz. [Ödeme hesabınızın türünü denetleme](#check-the-type-of-your-billing-account).
 
-Bu makale, Microsoft Online Service program hesapları olan müşteriler için geçerlidir. Kurumsal Anlaşması (EA) olan bir Azure müşterisi ve Kuruluş Yöneticisiyseniz, Enterprise Portal’da Bölüm Yöneticilerine ve Hesap Sahiplerine izin verebilirsiniz. Daha fazla bilgi için bkz. [Azure’daki Azure Kurumsal Anlaşma yönetici rollerini anlama](billing-understand-ea-roles.md). Microsoft Müşteri Sözleşmesi müşterisiyseniz bkz. [Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama](billing-understand-mca-roles.md). 
+Bu makale, Microsoft Online Service program hesapları olan müşteriler için geçerlidir. Kurumsal Anlaşması (EA) olan bir Azure müşterisi ve Kuruluş Yöneticisiyseniz, Enterprise Portal’da Bölüm Yöneticilerine ve Hesap Sahiplerine izin verebilirsiniz. Daha fazla bilgi için bkz. [Azure’daki Azure Kurumsal Anlaşma yönetici rollerini anlama](billing-understand-ea-roles.md). Microsoft Müşteri Sözleşmesi müşterisiyseniz bkz. [Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama](billing-understand-mca-roles.md).
 
 ## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Microsoft Online Service program hesapları için hesap yöneticileri
 
@@ -60,9 +60,9 @@ Bir Hesap Yöneticisi, diğer kullanıcılara uygun rolleri atadıktan sonra Azu
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-manage-access/billing-search-cost-management-billing.png)
- 
+
 1. Sol bölmeden **Abonelikler**’i seçin. Erişiminize bağlı olarak, bir faturalama kapsamı ve ardından **Abonelikler**’i seçmeniz gerekebilir.
- 
+
     ![Aboneliklerin seçilmesini gösteren ekran görüntüsü](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. **Faturalar**’ı ve ardından **Faturalara erişim**’i seçin.
@@ -88,7 +88,7 @@ Faturalama Okuyucusu özelliği önizleme aşamasındadır ve henüz genel olmay
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
 1. Sol bölmeden **Abonelikler**’i seçin. Erişiminize bağlı olarak, bir faturalama kapsamı ve ardından **Abonelikler**’i seçmeniz gerekebilir.
- 
+
     ![Aboneliklerin seçilmesini gösteren ekran görüntüsü](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. **Erişim denetimi (IAM)** öğesini seçin.

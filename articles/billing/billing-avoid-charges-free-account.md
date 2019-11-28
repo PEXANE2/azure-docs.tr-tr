@@ -4,23 +4,23 @@ description: Ücretsiz Azure hesabınız için neden size ücret yansıtıldığ
 author: amberbhargava
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ca685e70fea8d02a16485b135d82575069889bfa
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375890"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226449"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Ücretsiz Azure hesabınızla ücretlerden kaçının
 
-[Ücretsiz Azure hesabı](https://azure.microsoft.com/free/) ile ilk 30 gün için 200 ABD doları Azure kredisi alırsınız ve 12 ay boyunca sınırlı sayıda ücretsiz hizmete erişebilirsiniz. Ücretsiz hizmet limitleri hakkında daha fazla bilgi için bkz. [Ücretsiz Azure hesabı ile ilgili SSS](https://azure.microsoft.com/free/free-account-faq/). Süresi dolmamış kredileriniz varsa veya yalnızca limitler dahilindeki ücretsiz hizmetleri kullanıyorsanız siz ücret yansıtılmaz. 
+[Ücretsiz Azure hesabı](https://azure.microsoft.com/free/) ile ilk 30 gün için 200 ABD doları Azure kredisi alırsınız ve 12 ay boyunca sınırlı sayıda ücretsiz hizmete erişebilirsiniz. Ücretsiz hizmet limitleri hakkında daha fazla bilgi için bkz. [Ücretsiz Azure hesabı ile ilgili SSS](https://azure.microsoft.com/free/free-account-faq/). Süresi dolmamış kredileriniz varsa veya yalnızca limitler dahilindeki ücretsiz hizmetleri kullanıyorsanız siz ücret yansıtılmaz.
 
 Ücretsiz Azure hesabınızda size ücret uygulanmasının birkaç nedenine göz atalım.
 

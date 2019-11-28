@@ -3,19 +3,19 @@ title: Microsoft Müşteri Sözleşmeleri için faturalama yönetimi rollerini a
 description: Azure'da Microsoft Müşteri Sözleşmeleri için ödeme hesaplarının faturalama rollerini öğrenin.
 author: amberbhargava
 manager: amberbhargava
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8b4aeaa885b18f433c366788af350a7fe9c064e4
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: f143297ce3a3e41174cbd6cf59ca3df29f8ebc63
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709476"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223520"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama
 

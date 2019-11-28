@@ -5,22 +5,20 @@ services: billing
 documentationcenter: ''
 author: bandersmsft
 manager: dougeby
-editor: ''
 tags: billing
-ms.assetid: 204b15b2-6667-4b6c-8ea4-f32c06f287fd
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6a2cb3df5bf8a67c7b79a24fd8328267bf6c4dd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718844"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224056"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Faturalama ve maliyet yönetimi için otomasyon senaryoları
 
@@ -70,7 +68,7 @@ Web Direct ve Enterprise müşterileri tersi belirtilmediği sürece aşağıdak
 
 -   [Market Ücretleri API'si](https://docs.microsoft.com/rest/api/consumption/marketplaces): Tüm Azure Market kaynakları (Azure iş ortağı teklifleri) ile ilgili ücret ve kullanım verileri alın. Bu verileri kullanarak tüm Market kaynaklarının maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
 
--   [Fiyat Listesi API'si](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Yalnızca Enterprise müşterileri*): Tüm ölçümler için özel fiyatlandırmayı alın. Kuruluşlar bu verileri kullanım ayrıntılarıyla ve market kullanım bilgileriyle birlikte kullanarak, kullanım ve market verileri aracılığıyla maliyetleri hesaplayabilir. 
+-   [Fiyat Listesi API'si](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Yalnızca Enterprise müşterileri*): Tüm ölçümler için özel fiyatlandırmayı alın. Kuruluşlar bu verileri kullanım ayrıntılarıyla ve market kullanım bilgileriyle birlikte kullanarak, kullanım ve market verileri aracılığıyla maliyetleri hesaplayabilir.
 
 -   [Rezervasyon Önerileri API'si](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): Ayrılmış VM Örnekleri satın alma önerileri alın. Öneriler beklenen maliyet tasarruflarını ve satın alma tutarlarını analiz etmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](billing-reservation-apis.md).
 
@@ -80,14 +78,14 @@ Web Direct ve Enterprise müşterileri tersi belirtilmediği sürece aşağıdak
 
 -   [Kullanım Ayrıntıları API'si](https://docs.microsoft.com/rest/api/consumption/usagedetails): Microsoft'un sağladığı tüm Azure kaynaklarıyla ilgili ücret ve kullanım bilgilerini alın. Bilgiler şu anda ölçüm başına günde bir kez gösterilen kullanım ayrıntısı kayıtları biçimindedir. Bilgileri kullanarak tüm kaynakların maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
 
--   [RateCard API'si](/previous-versions/azure/reference/mt219005(v=azure.100)): Web Direct müşterisiyseniz ölçüm ücretlerini alın. Ardından döndürülen bilgileri kaynak kullanım bilgilerinizle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz. 
+-   [RateCard API'si](/previous-versions/azure/reference/mt219005(v=azure.100)): Web Direct müşterisiyseniz ölçüm ücretlerini alın. Ardından döndürülen bilgileri kaynak kullanım bilgilerinizle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
 
 -   [Derecelendirilmemiş Kullanım API'si](/previous-versions/azure/reference/mt219003(v=azure.100)): Azure herhangi bir ölçüm/ücretlendirme yapmadan önce ham kullanım bilgilerini alın.
 
 ### <a name="billing"></a>Faturalandırma
 -   [Fatura Dönemleri API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Analiz edilecek faturalama dönemini ve bu döneme ait fatura kimliklerini belirleyin. Fatura kimliklerini Faturalar API'siyle kullanabilirsiniz.
 
--   [Faturalar API'si](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Faturalama dönemine ait PDF biçiminde bir fatura için indirme URL'sini alın.
+-   [Faturalar API'si](/rest/api/billing/2019-10-01-preview/invoices): Faturalama dönemine ait PDF biçiminde bir fatura için indirme URL'sini alın.
 
 ### <a name="enterprise-consumption"></a>Kuruluş tüketimi
 Aşağıdaki API'ler yalnızca Kuruluş içindir:
@@ -107,11 +105,11 @@ Aşağıdaki API'ler yalnızca Kuruluş içindir:
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Kurumsal Raporlama API'leriyle Tüketim API'leri arasında ne fark vardır? Bunların her birini hangi durumlarda kullanmalıyım?
-Bu API'lerin benzer bir işlev kümesi vardır ve faturalama ve maliyet yönetimi alanında aynı kapsamlı soruları yanıtlayabilirler. Ama hedef kitleleri farklıdır: 
+Bu API'lerin benzer bir işlev kümesi vardır ve faturalama ve maliyet yönetimi alanında aynı kapsamlı soruları yanıtlayabilirler. Ama hedef kitleleri farklıdır:
 
 - Kurumsal Raporlama API'leri, Microsoft'la kendilerine anlaşmalı parasal taahhütler ve özel fiyatlandırma getiren bir Kurumsal Anlaşma imzalamış müşterilere yöneliktir. API'ler için [Enterprise Portal](https://ea.azure.com)'dan alabileceğiniz bir anahtar gerekir. Bu API'lerin açıklaması için bkz. [Enterprise müşterileri için Raporlama API'lerine genel bakış](billing-enterprise-api.md).
 
-- Tüketim API'leri birkaç özel durum dışında tüm müşteriler tarafından kullanılabilir. Daha fazla bilgi için bkz. [Azure tüketim API'sine genel bakış](billing-consumption-api-overview.md) ve [Azure Tüketim API'si başvurusu](https://docs.microsoft.com/rest/api/consumption/). En son geliştirme senaryolarına çözüm olarak sağlanan API'lerin kullanılmasını öneririz. 
+- Tüketim API'leri birkaç özel durum dışında tüm müşteriler tarafından kullanılabilir. Daha fazla bilgi için bkz. [Azure tüketim API'sine genel bakış](billing-consumption-api-overview.md) ve [Azure Tüketim API'si başvurusu](https://docs.microsoft.com/rest/api/consumption/). En son geliştirme senaryolarına çözüm olarak sağlanan API'lerin kullanılmasını öneririz.
 
 ### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Kullanım Ayrıntıları API'siyle Kullanım API'si arasında ne fark vardır?
 Bu API'ler temelde farklı veriler sağlar:
@@ -126,7 +124,7 @@ Bu API'ler temelde farklı veriler sağlar:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Fatura API'siyle Kullanım Ayrıntıları API'si arasında ne fark vardır?
 Bu API'ler aynı verilerin farklı görünümünü sağlar:
 
-- [Fatura API'si](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) yalnızca Web Direct müşterilerine yöneliktir. Her ölçüm türü için toplanan ücretlere dayanarak faturanızın aylık toplamını sağlar. 
+- [Fatura API'si](/rest/api/billing/2019-10-01-preview/invoices) yalnızca Web Direct müşterilerine yöneliktir. Her ölçüm türü için toplanan ücretlere dayanarak faturanızın aylık toplamını sağlar.
 
 - [Kullanım Ayrıntıları API'si](https://docs.microsoft.com/rest/api/consumption/usagedetails) her gün için kullanım/maliyet kayıtlarının ayrıntılı görünümünü sağlar. Hem Enterprise hem de Web Direct müşterileri bunu kullanabilir.
 

@@ -1,51 +1,47 @@
 ---
-title: Azure tüketim API'sine genel bakış | Microsoft Docs
+title: Azure tüketim API'sine genel bakış
 description: Azure Tüketim API'lerinin Azure kaynaklarınızla ilgili maliyet ve kullanım verilerinize program aracılığıyla erişmenizi nasıl sağladığını öğrenin.
-services: billing
-documentationcenter: ''
 author: bandersmsft
 manager: dougeby
-editor: ''
 tags: billing
-ms.assetid: 68825e85-de64-466d-b11a-8baffde836b5
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f867cc954bcdf8cb2fc7ebf37ff19e52db485376
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 3a8d043a0d583c35898ab10e9e5cc50b01b01d72
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719768"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226385"
 ---
-# <a name="azure-consumption-api-overview"></a>Azure tüketim API'sine genel bakış 
+# <a name="azure-consumption-api-overview"></a>Azure tüketim API'sine genel bakış
 
 Azure Tüketim API'leri, Azure kaynaklarınızla ilgili maliyet ve kullanım verilerinize program aracılığıyla erişmenizi sağlar. Bu API'ler şu anda yalnızca Enterprise Kayıtlarını ve Web Direct Aboneliklerini (birkaç özel durum dışında) desteklemektedir. API'ler diğer Azure abonelik türlerini desteklemek için sürekli güncelleştirilir.
 
 Azure Tüketim API'leri şu verilere erişim sunar:
-- Kurumsal ve Doğrudan Web Müşterileri 
-    - Kullanım Ayrıntıları 
-    - Market Ücretleri 
-    - Rezervasyon Önerileri 
-    - Rezervasyon Ayrıntıları 
-    - Rezervasyon Özetleri 
-- Yalnızca Kurumsal Müşteriler 
-    - Fiyat listesi 
-    - Bütçeler 
-    - Bakiyeler 
+- Kurumsal ve Doğrudan Web Müşterileri
+    - Kullanım Ayrıntıları
+    - Market Ücretleri
+    - Rezervasyon Önerileri
+    - Rezervasyon Ayrıntıları
+    - Rezervasyon Özetleri
+- Yalnızca Kurumsal Müşteriler
+    - Fiyat listesi
+    - Bütçeler
+    - Bakiyeler
 
 ## <a name="usage-details-api"></a>Kullanım Ayrıntıları API'si
 
-Tüm Azure birinci taraf kaynaklarının ücret ve kullanım verilerini almak için Kullanım Ayrıntıları API'sini kullanın. Bilgiler şu anda her kaynak için ölçüm başına günde bir kez gösterilen kullanım ayrıntısı kayıtları biçimindedir. Bilgiler tüm kaynakların maliyetlerini toplamak veya belirli kaynakların maliyet / kullanım durumunu araştırmak için kullanılabilir. 
+Tüm Azure birinci taraf kaynaklarının ücret ve kullanım verilerini almak için Kullanım Ayrıntıları API'sini kullanın. Bilgiler şu anda her kaynak için ölçüm başına günde bir kez gösterilen kullanım ayrıntısı kayıtları biçimindedir. Bilgiler tüm kaynakların maliyetlerini toplamak veya belirli kaynakların maliyet / kullanım durumunu araştırmak için kullanılabilir.
 
 API şunları içerir:
 
 -   **Ölçüm Düzeyi Tüketim Verileri**: Kullanım maliyeti, ücreti yayan ölçüm ve bu ücretin ait olduğu Azure kaynağı gibi verilere bakın. Tüm kullanım ayrıntısı kayıtları günlük bir demete eşlenir.
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 -   **Filtreleme**: Aşağıdaki filtreleri kullanarak API yanıt kümenizi daha küçük bir kullanım ayrıntısı kayıtları kümesine daraltın:
     - Kullanım sonu / Kullanım başlangıcı
     - Kaynak Grubu
@@ -57,12 +53,12 @@ Daha fazla bilgi için [Kullanım Ayrıntıları API'sinin](https://docs.microso
 
 ## <a name="marketplace-charges-api"></a>Market Ücretleri API'si
 
-Tüm Market kaynaklarıyla (Azure üçüncü taraf teklifleri) ilgili ücret ve kullanım verilerini almak için Market Ücretleri API'sini kullanın. Bu veriler tüm Market kaynaklarının maliyetlerini toplamak veya belirli kaynakların maliyet / kullanım durumunu araştırmak için kullanılabilir. 
+Tüm Market kaynaklarıyla (Azure üçüncü taraf teklifleri) ilgili ücret ve kullanım verilerini almak için Market Ücretleri API'sini kullanın. Bu veriler tüm Market kaynaklarının maliyetlerini toplamak veya belirli kaynakların maliyet / kullanım durumunu araştırmak için kullanılabilir.
 
 API şunları içerir:
 
 -   **Ölçüm Düzeyi Tüketim Verileri**: Market kullanım maliyeti, ücreti yayan ölçüm ve bu ücretin ait olduğu kaynak gibi verilere bakın. Tüm kullanım ayrıntısı kayıtları günlük bir demete eşlenir.
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 -   **Filtreleme**: Aşağıdaki filtreleri kullanarak API yanıt kümenizi daha küçük bir market kayıtları kümesine daraltın:
     - Kullanım başlangıcı / Kullanım sonu
     - Kaynak Grubu
@@ -73,23 +69,23 @@ Daha fazla bilgi için [Market Ücretleri API'sinin](https://docs.microsoft.com/
 
 ## <a name="balances-api"></a>Bakiyeler API'si
 
-Enterprise müşterileri bakiyeler, yeni satın almalar, Azure Market hizmeti ücretleri, düzeltmeler ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini almak için Bakiyeler API'sini kullanabilir. Bu bilgileri geçerli faturalama dönemi veya geçmişe ait bir dönem için alabilirsiniz. Kuruluşlar el ile hesaplanan özet ücretleriyle karşılaştırma yapmak için bu verileri kullanabilir. Bu API kaynağa özgü bilgileri ve maliyetlerin toplam görünümünü sağlamaz. 
+Enterprise müşterileri bakiyeler, yeni satın almalar, Azure Market hizmeti ücretleri, düzeltmeler ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini almak için Bakiyeler API'sini kullanabilir. Bu bilgileri geçerli faturalama dönemi veya geçmişe ait bir dönem için alabilirsiniz. Kuruluşlar el ile hesaplanan özet ücretleriyle karşılaştırma yapmak için bu verileri kullanabilir. Bu API kaynağa özgü bilgileri ve maliyetlerin toplam görünümünü sağlamaz.
 
 API şunları içerir:
 
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
--   **Yalnızca Enterprise Müşterileri** Bu API yalnızca EA müşterilerine sağlanır. 
-    - Bu API'yi çağırmak için müşterilerin Kuruluş Yöneticisi izinleri olmalıdır 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
+-   **Yalnızca Enterprise Müşterileri** Bu API yalnızca EA müşterilerine sağlanır.
+    - Bu API'yi çağırmak için müşterilerin Kuruluş Yöneticisi izinleri olmalıdır
 
 Daha fazla bilgi için [Bakiyeler API'sinin](https://docs.microsoft.com/rest/api/consumption/balances) teknik belirtimlerine bakın.
 
 ## <a name="budgets-api"></a>Bütçeler API'si
 
-Enterprise müşterileri bu API'yi kullanarak kaynaklar, kaynak grupları veya faturalama ölçümleri için maliyet veya kullanım bütçeleri oluşturabilir. Bu bilgiler belirlendikten sonra, kullanıcı tanımlı bütçe eşikleri aşıldığında bildirim almak için uyarılar yapılandırılabilir. 
+Enterprise müşterileri bu API'yi kullanarak kaynaklar, kaynak grupları veya faturalama ölçümleri için maliyet veya kullanım bütçeleri oluşturabilir. Bu bilgiler belirlendikten sonra, kullanıcı tanımlı bütçe eşikleri aşıldığında bildirim almak için uyarılar yapılandırılabilir.
 
 API şunları içerir:
 
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 -   **Yalnızca Enterprise Müşterileri**: Bu API yalnızca EA müşterilerine sağlanır.
 -   **Yapılandırılabilir Bildirimler**: Bütçeye uyulmadığında bildirilecek kullanıcıları belirtin.
 -   **Kullanım ve Maliyet Tabanlı Bütçeler** - Senaryonuzun gereksinimlerine göre tüketime veya maliyete dayalı olarak bütçenizi oluşturun.
@@ -103,11 +99,11 @@ Daha fazla bilgi için [Bütçeler API'sinin](https://docs.microsoft.com/rest/ap
 
 ## <a name="reservation-recommendations-api"></a>Rezervasyon Önerileri API'si
 
-Ayrılmış VM Örnekleri satın alma önerileri almak için bu API'yi kullanın. Öneriler, müşterilerin beklenen maliyet tasarruflarını ve satın alma tutarlarını analiz etmesine olanak tanıyacak şekilde tasarlanmıştır. 
+Ayrılmış VM Örnekleri satın alma önerileri almak için bu API'yi kullanın. Öneriler, müşterilerin beklenen maliyet tasarruflarını ve satın alma tutarlarını analiz etmesine olanak tanıyacak şekilde tasarlanmıştır.
 
 API şunları içerir:
 
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 -   **Filtreleme**: Öneri sonuçlarınızı ihtiyaçlarınıza uyarlamak için aşağıdaki filtreleri kullanın:
     - Kapsam
     - Geriye dönük zaman aralığı
@@ -117,11 +113,11 @@ Daha fazla bilgi için [Rezervasyon Önerileri API'sinin](https://docs.microsoft
 
 ## <a name="reservation-details-api"></a>Rezervasyon Ayrıntıları API'si
 
-Daha önce satın alınmış VM rezervasyonlarıyla ilgili ayrılan tüketimle gerçekten kullanılan tüketim karşılaştırması gibi bilgileri görmek için Rezervasyon Ayrıntıları API'sini kullanın. Verileri VM ayrıntı düzeyinde görebilirsiniz. 
+Daha önce satın alınmış VM rezervasyonlarıyla ilgili ayrılan tüketimle gerçekten kullanılan tüketim karşılaştırması gibi bilgileri görmek için Rezervasyon Ayrıntıları API'sini kullanın. Verileri VM ayrıntı düzeyinde görebilirsiniz.
 
 API şunları içerir:
 
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 -   **Filtreleme**: Aşağıdaki filtreleri kullanarak API yanıt kümenizi daha küçük bir rezervasyon kümesine daraltın:
     - Tarih aralığı
 -   **Farklı teklif türleri için rezervasyon bilgileri**: Rezervasyon bilgileri şu anda Enterprise ve Web Direct müşterilerine sağlanmaktadır.
@@ -130,11 +126,11 @@ Daha fazla bilgi için [Rezervasyon Ayrıntıları API'sinin](https://docs.micro
 
 ## <a name="reservation-summaries-api"></a>Rezervasyon Özetleri API'si
 
-Daha önce satın alınmış VM rezervasyonlarıyla ilgili toplamda ayrılan tüketimle gerçekten kullanılan tüketim karşılaştırması gibi toplam bilgilerini görmek için Rezervasyon Özetleri API'sini kullanın. 
+Daha önce satın alınmış VM rezervasyonlarıyla ilgili toplamda ayrılan tüketimle gerçekten kullanılan tüketim karşılaştırması gibi toplam bilgilerini görmek için Rezervasyon Özetleri API'sini kullanın.
 
 API şunları içerir:
 
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 -   **Filtreleme**: Günlük ayrıntı düzeyini kullanırken sonuçları ihtiyaçlarınıza uyarlamak için aşağıdaki filtreyi kullanın:
     - Kullanım Tarihi
 -   **Farklı teklif türleri için rezervasyon bilgileri**: Rezervasyon bilgileri şu anda Enterprise ve Web Direct müşterilerine sağlanmaktadır.
@@ -143,12 +139,12 @@ API şunları içerir:
 Daha fazla bilgi için [Rezervasyon Özetleri API'sinin](https://docs.microsoft.com/rest/api/consumption/reservationssummaries) teknik belirtimlerine bakın.
 
 ## <a name="price-sheet-api"></a>Fiyat Listesi API'si
-Enterprise müşterileri tüm ölçümlere ilişkin özel fiyatlandırmalarını almak için bu API'yi kullanabilir. Kuruluşlar bu verileri kullanım ayrıntılarıyla ve market kullanım bilgileriyle birlikte kullanarak, kullanım ve market verileri aracılığıyla maliyet hesaplamaları yapabilir. 
+Enterprise müşterileri tüm ölçümlere ilişkin özel fiyatlandırmalarını almak için bu API'yi kullanabilir. Kuruluşlar bu verileri kullanım ayrıntılarıyla ve market kullanım bilgileriyle birlikte kullanarak, kullanım ve market verileri aracılığıyla maliyet hesaplamaları yapabilir.
 
 API şunları içerir:
 
--   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin. 
--   **Yalnızca Enterprise Müşterileri**: Bu API yalnızca EA müşterilerine sağlanır. Web Direct müşterilerinin fiyatlandırmayı almak için RateCard API'sini kullanmaları gerekir. 
+-   **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalında](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)'da veya [Azure PowerShell cmdlet’lerinde](https://docs.microsoft.com/powershell/azure/overview) erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
+-   **Yalnızca Enterprise Müşterileri**: Bu API yalnızca EA müşterilerine sağlanır. Web Direct müşterilerinin fiyatlandırmayı almak için RateCard API'sini kullanmaları gerekir.
 
 Daha fazla bilgi için [Fiyat Listesi API'sinin](https://docs.microsoft.com/rest/api/consumption/pricesheet) teknik belirtimlerine bakın.
 
@@ -166,6 +162,3 @@ Burada tüketim API'leriyle mümkün kılınan bazı senaryolar verilmiştir:
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - Azure Faturalama API'lerini kullanarak program aracılığıyla Azure kullanımınızla ilgili içgörü elde etme hakkında bilgi için bkz. [Azure Faturalama API'sine Genel Bakış](billing-usage-rate-card-overview.md).
-
-
-
