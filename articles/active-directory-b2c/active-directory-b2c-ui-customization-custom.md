@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374221"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209440"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme
 
@@ -37,7 +37,7 @@ Sayfa UI özelleştirmesi özelliğini kullanarak, herhangi bir özel ilkenin g�
 
 Başlığında ürününüzün marka adıyla HTML içeriği oluşturun.
 
-1. Aşağıdaki HTML kod parçacığını kopyalayın. *@No__t-1div ID = "api" \> @ no__t-3/div @ no__t-4* adlı *\<body @ no__t-7* etiketleri içinde bulunan boş bir öğe ile iyi biçimlendirilmiş HTML5. Bu öğe Azure AD B2C içeriğin nereye ekleneceğini gösterir.
+1. Aşağıdaki HTML kod parçacığını kopyalayın. *\<div ID = "api"\>\</div\>* *\<gövde\>* etiketlerinde bulunan boş bir öğe ile iyi biçimlendirilmiş HTML5. Bu öğe Azure AD B2C içeriğin nereye ekleneceğini gösterir.
 
    ```html
    <!DOCTYPE html>
@@ -56,15 +56,15 @@ Başlığında ürününüzün marka adıyla HTML içeriği oluşturun.
 > [!NOTE]
 > Login.microsoftonline.com kullanırsanız, güvenlik kısıtlamaları nedeniyle HTML form öğeleri kaldırılır. Özel HTML içerikinizdeki HTML form öğelerini kullanmak istiyorsanız lütfen b2clogin.com kullanın. Diğer avantajlar için bkz. [B2clogin.com kullanma](b2clogin.md) .
 
-## <a name="create-an-azure-blob-storage-account"></a>Azure Blob depolama hesabı oluşturma
+## <a name="create-an-azure-blob-storage-account"></a>Bir Azure Blob Depolama hesabı oluşturma
 
 >[!NOTE]
 > Bu makalede, içeriğimizi barındırmak için Azure Blob depolamayı kullanırız. İçeriğinizi bir Web sunucusunda barındırabilirsiniz, ancak [Web SUNUCUNUZDA CORS 'yi etkinleştirmeniz](https://enable-cors.org/server.html)gerekir.
 
 Bu HTML içeriğini blob depolamada barındırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. **Hub** menüsünde **Yeni** > **depolama** > **depolama hesabı**' nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Hub** menüsünde **yeni** > **depolama** > **depolama hesabı**' nı seçin.
 1. Depolama hesabınız için bir **abonelik** seçin.
 1. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
 1. Depolama hesabınız için benzersiz bir **ad** girin.
@@ -93,19 +93,19 @@ Blob depolamada ortak bir kapsayıcı oluşturmak için aşağıdaki adımları 
 1. **Karşıya Yükle**’yi seçin.
 1. Karşıya yüklediğiniz **Customize-ui. html** blobu seçin.
 1. **URL metin kutusunun** SAĞıNDA, URL 'yi panonuza kopyalamak Için **Panoya Kopyala** simgesini seçin.
-1. Web tarayıcısında, karşıya yüklediğiniz Blobun erişilebilir olduğunu doğrulamak için kopyaladığınız URL 'ye gidin. Erişilemezse, örneğin, `ResourceNotFound` hatasıyla karşılaşırsanız, kapsayıcı erişim türünün **BLOB**olarak ayarlandığından emin olun.
+1. Web tarayıcısında, karşıya yüklediğiniz Blobun erişilebilir olduğunu doğrulamak için kopyaladığınız URL 'ye gidin. Erişilemezse, örneğin `ResourceNotFound` bir hatayla karşılaşırsanız, kapsayıcı erişim türünün **BLOB**olarak ayarlandığından emin olun.
 
 ## <a name="configure-cors"></a>CORS Yapılandırma
 
 Aşağıdaki adımları gerçekleştirerek, çıkış noktaları arası kaynak paylaşımı için blob depolamayı yapılandırın:
 
 1. Menüsünde **CORS**' yi seçin.
-1. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com` girin. @No__t-0 ' yı Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-1. **Izin verilen Yöntemler**için `GET` ve `OPTIONS` ' yi seçin.
+1. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+1. **Izin verilen Yöntemler**için hem `GET` hem de `OPTIONS`seçin.
 1. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 1. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
 1. **Maksimum yaş**için 200 girin.
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="test-cors"></a>Test CORS
 
@@ -119,7 +119,7 @@ Aşağıdaki adımları gerçekleştirerek hazırlandığınızı doğrulayın:
 
 UI özelleştirmesini yapılandırmak için, **ContentDefinition** ve onun alt öğelerini temel dosyadan uzantılar dosyasına kopyalayın.
 
-1. İlkenizin temel dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Bu, önkoşullu olarak elde etmeniz gereken özel ilke başlangıç paketine eklenen ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
+1. İlkenizin temel dosyasını açın. Örneğin, <em> **`TrustFrameworkBase.xml`** `SocialAndLocalAccounts/`</em>. Bu, önkoşullu olarak elde etmeniz gereken özel ilke başlangıç paketine eklenen ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
 1. **ContentDefinitions** öğesinin tüm içeriğini arayın ve kopyalayın.
 1. Uzantı dosyasını açın. Örneğin, *TrustFrameworkExtensions. xml*. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. **Buildingblocks** öğesinin bir alt öğesi olarak kopyaladığınız **ContentDefinitions** öğesinin tüm içeriğini yapıştırın.
@@ -181,16 +181,16 @@ Sample_templates/Wingtip klasörü aşağıdaki HTML dosyalarını içerir:
 
 Aşağıda, örneği kullanma adımları verilmiştir:
 
-1. Yerel makinenizde depoyu kopyalayın. Sample_templates altında bir şablon klasörü seçin. @No__t-0 veya `contoso` ' i kullanabilirsiniz.
-1. @No__t-0, `fonts` ve `images` klasörlerinin altındaki tüm dosyaları önceki bölümlerde açıklandığı gibi BLOB depolamaya yükleyin.
-1. Ardından, her bir @no__t -0. html dosyasını `wingtip` veya `contoso` ' nin kökünde açın (ilk adımda seçtiğinizden) ve "http://localhost" öğesinin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'Leriyle değiştirin.
-1. @No__t -0. html dosyalarını kaydedin ve BLOB depolamaya yükleyin.
+1. Yerel makinenizde depoyu kopyalayın. Sample_templates altında bir şablon klasörü seçin. `wingtip` veya `contoso`kullanabilirsiniz.
+1. `css`, `fonts`ve `images` klasörlerinin altındaki tüm dosyaları önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
+1. Ardından, her bir \*. html dosyasını `wingtip` veya `contoso` (ilk adımda seçtiğiniz) kök dizininde açın ve tüm "http://localhost" örneklerini 2. adımda karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'Leriyle değiştirin.
+1. \*. html dosyalarını kaydedin ve BLOB depolamaya yükleyin.
 1. Şimdi uzantılar dosyasını [değiştirme](#modify-the-extensions-file)bölümünde belirtildiği gibi uzantılar dosyasını değiştirin.
-1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesi ve @no__t -0. html dosyaları içindeki başvurularınızı kontrol edin.
+1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesinde veya \*. html dosyalarında başvurularınızı kontrol edin.
 
 ### <a name="content-definition-ids"></a>İçerik tanımı kimlikleri
 
-Kaydolma veya oturum açma özel ilkesini değiştirme bölümünde, `api.idpselections` için içerik tanımını yapılandırdınız. Azure AD B2C Identity Experience Framework ve açıklamaları tarafından tanınan içerik tanımı kimliklerinin tam kümesi aşağıdaki tabloda verilmiştir:
+Kaydolma veya oturum açma özel ilkesini değiştirme bölümünde, `api.idpselections`için içerik tanımını yapılandırdınız. Azure AD B2C Identity Experience Framework ve açıklamaları tarafından tanınan içerik tanımı kimliklerinin tam kümesi aşağıdaki tabloda verilmiştir:
 
 | İçerik tanımı KIMLIĞI | Açıklama |
 |-----------------------|-------------|
@@ -207,4 +207,4 @@ Kaydolma veya oturum açma özel ilkesini değiştirme bölümünde, `api.idpsel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özelleştirilebilecek Kullanıcı arabirimi öğeleri hakkında daha fazla bilgi için bkz. [Yerleşik ilkeler IÇIN UI özelleştirmesi için başvuru kılavuzu](active-directory-b2c-reference-ui-customization.md).
+Özelleştirilebilecek kullanıcı ARABIRIMI öğeleri hakkında daha fazla bilgi için bkz. [Kullanıcı akışları IÇIN UI özelleştirmesi başvuru kılavuzu](active-directory-b2c-reference-ui-customization.md).

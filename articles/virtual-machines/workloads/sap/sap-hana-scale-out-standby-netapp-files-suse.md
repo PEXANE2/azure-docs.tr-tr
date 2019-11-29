@@ -570,7 +570,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * **Sistem kullanımını Seç/dizini girin [4]** : **4** girin (özel için)
      * **Veri birimlerinin konumu** için [/Hana/Data/hn1]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Günlük birimlerinin konumu** için [/Hana/log/hn1]: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **Maksimum bellek ayırmayı kısıtlamak için?** [n]: **n** girin
+     * **Maksimum bellek ayırmayı kısıtlamak için?** [n]\: **n** girin
      * Host hanadb1 [hanadb1] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb2 [hanadb2] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb3 [hanadb3] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın

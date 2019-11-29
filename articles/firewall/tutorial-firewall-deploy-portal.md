@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma"
+title: "Öğretici: Azure portal kullanarak Azure Güvenlik Duvarı 'Nı dağıtma & yapılandırma"
 description: Bu öğreticide Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468456"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195786"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Test amaçlı ağ ortamı oluşturma
 > * Güvenlik duvarı dağıtma
 > * Varsayılan rota oluşturma
-> * Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
+> * www.google.com erişmesine izin vermek için bir uygulama kuralı yapılandırma
 > * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
 > * Güvenlik duvarını test etme
 
@@ -102,13 +102,13 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 2. **İşlem**’i ve sonra Öne Çıkanlar listesinde **Windows Server 2016 Datacenter**’ı seçin.
 3. Sanal makine için şu değerleri girin:
 
-   |Ayar  |Değer  |
+   |Ayar  |Value  |
    |---------|---------|
    |Kaynak grubu     |**Test-ILT-RG**|
    |Sanal makine adı     |**SRV-zıplama**|
    |Bölge     |Öncekiyle aynı|
    |Yönetici Kullanıcı adı     |**azureuser**|
-   |Parola     |**Azure123456!**|
+   |istemcisiyle yönetilen bir cihaz için)     |**Azure123456!**|
 
 4. **Gelen bağlantı noktası kuralları**altında, **Genel gelen bağlantı noktaları**Için **Seçili bağlantı noktalarına izin ver**' i seçin
 5. **Gelen bağlantı noktaları Seç**için **RDP (3389)** seçeneğini belirleyin.
@@ -123,9 +123,9 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 
 **SRV-Work**adlı başka bir sanal makineyi yapılandırmak için aşağıdaki tablodaki bilgileri kullanın. Yapılandırmanın geri kalanı Srv-Jump sanal makinesiyle aynıdır.
 
-|Ayar  |Değer  |
+|Ayar  |Value  |
 |---------|---------|
-|Alt ağ|**İş yükü-SN**|
+|Subnet|**İş yükü-SN**|
 |Genel IP|**Seçim**|
 |Ortak gelen bağlantı noktaları|**Seçim**|
 
@@ -138,11 +138,11 @@ Güvenlik duvarını sanal ağa dağıtın.
 3. **Güvenlik duvarı** ' nı seçip **Oluştur**' u seçin.
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
-   |Ayar  |Değer  |
+   |Ayar  |Value  |
    |---------|---------|
    |Abonelik     |\<aboneliğiniz\>|
    |Kaynak grubu     |**Test-ILT-RG** |
-   |Ad     |**Test-FW01**|
+   |Name     |**Test-FW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**: **Test-FW-vn**|
    |Genel IP adresi     |**Yeni oluşturun**. Genel IP adresinin türü Standart SKU olmalıdır.|
