@@ -103,6 +103,20 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: Sorun giderme hataları
           href: logic-apps-diagnosing-failures.md
+    - name: Azure sanal ağlarına erişme
+      items:
+        - name: Tümleştirme hizmeti ortamlarıyla sanal ağlara bağlanma
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Birden çok tümleştirme hizmeti ortamına erişim ayarlama
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: Tümleştirme hizmeti ortamlarına yapıtlar ekleme
+          href: add-artifacts-integration-service-environment-ise.md
+    - name: Şirket içi verilere erişim
+      items:
+        - name: Veri ağ geçidi yükleme
+          href: logic-apps-gateway-install.md
+        - name: Şirket içi verilere bağlanma
+          href: logic-apps-gateway-connection.md
     - name: B2B senaryoları için geliştirme
       items:
         - name: Tümleştirme hesabı oluşturma
@@ -159,16 +173,6 @@
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Olağanüstü durum kurtarma planı oluşturma
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: Yalıtılmış ortamlarla sanal ağlara bağlanma
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: Tümleştirme hizmeti ortamlarına yapıtlar ekleme
-      href: add-artifacts-integration-service-environment-ise.md
-    - name: Şirket içi verilere erişim
-      items:
-        - name: Veri ağ geçidi yükleme
-          href: logic-apps-gateway-install.md
-        - name: Şirket içi verilere bağlanma
-          href: logic-apps-gateway-connection.md
     - name: 'Bağlayıcılar: Ayrıntılı konular'
       items:
         - name: AS2

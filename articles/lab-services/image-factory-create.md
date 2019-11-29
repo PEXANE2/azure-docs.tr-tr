@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'de bir görüntü fabrikası oluşturma | Microsoft Docs
-description: Azure DevTest Labs'de bir özel görüntü fabrikası oluşturma hakkında bilgi edinin.
+title: Azure DevTest Labs bir görüntü fabrikası oluşturun | Microsoft Docs
+description: Git deposunda bulunan örnek betikleri kullanarak özel bir görüntü fabrikası ayarlamayı öğrenin.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,52 +10,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7779914d9681d0f80cab9568da6a20b15e3a2eb1
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622655"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560013"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs'de bir özel görüntü fabrikası oluşturma
-Bu makalede bulunan örnek betikler kullanarak bir özel görüntü Fabrika ayarlanacağı gösterilmektedir [Git deposu](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs özel görüntü fabrikası oluşturma
+Bu makalede, [Git deposunda](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)bulunan örnek betikleri kullanarak özel bir görüntü fabrikası ayarlama gösterilmektedir.
 
-## <a name="whats-an-image-factory"></a>Bir görüntü fabrikası nedir?
-Bir görüntü factory oluşturan ve dağıtan tüm istenen yapılandırmaları ile düzenli aralıklarla otomatik olarak görüntülerinde yapılandırma olarak kodu bir çözümdür. Görüntü Fabrika görüntüleri her zaman güncel olduğundan ve bu işlem otomatik olarak devam eden bakım neredeyse sıfır olarak ayarlanır. Ve tüm gerekli yapılandırmaları görüntüde zaten olduğu için temel işletim sistemi ile bir VM oluşturulduktan sonra el ile sistem yapılandırmasını zaman kazandırır.
+## <a name="whats-an-image-factory"></a>Görüntü fabrikası nedir?
+Görüntü fabrikası, istenen tüm yapılandırmalara göre düzenli olarak görüntü oluşturup dağıtan bir yapılandırma olarak yapılandırma çözümüdür. Görüntü fabrikasındaki görüntüler her zaman güncel değildir ve işlemin tamamı otomatikleştirildiğinde devam eden bakım neredeyse sıfırdır. Ayrıca, gerekli tüm yapılandırmaların görüntüde zaten bulunduğu için, temel işletim sistemi ile bir VM oluşturulduktan sonra sistemi el ile yapılandırarak saati kaydeder.
 
-DevTest Labs hazır durumda bir geliştirici Masaüstü almak için önemli Hızlandırıcı, özel görüntüleri kullanıyor. Özel görüntüleri dezavantajı, laboratuvarda korumak için ek bir sorun olmadığını ' dir. Örneğin, zamanla ürünleri deneme sürümleri sona (veya) yeni kullanıma sunulan güvenlik güncelleştirmeleri, düzenli aralıklarla özel görüntüyü yenilemek için bize zorla uygulanmaz. Görüntü factory ile otomatik bir işlem tanımına dayalı olarak özel görüntüleri oluşturmak için kaynak kodu denetimi ve iade görüntü tanımı sahip.
+Geliştirici masaüstlerini DevTest Labs 'de hazırlama durumuna getirmek için önemli Hızlandırıcı, özel görüntüler kullanmaktır. Özel görüntülerin downi, laboratuvarda devam etmek için ek bir şeydir. Örneğin, ürünlerin deneme sürümleri zaman içinde sona erer (veya) yeni yayınlanan güvenlik güncelleştirmeleri uygulanmaz ve bu, özel görüntüyü düzenli aralıklarla yenilemeye zorlar. Bir görüntü fabrikası ile, kaynak kodu denetimine iade edilen görüntünün bir tanımına sahip olursunuz ve tanımı temel alan özel görüntüler oluşturmak için otomatik bir işlemdir.
 
-Çözüm ek devam eden bakım maliyetlerini sorununu ortadan kaldırırken özel görüntülerden sanal makineler oluşturma hızı sağlar. Bu çözüm ile otomatik olarak özel görüntüleri oluşturabilir, bunları dağıtmak için diğer DevTest Labs ve eski görüntülerin devre dışı bırakma. Aşağıdaki videoda, görüntü Fabrika ve DevTest Labs'i kullanmaya nasıl uygulandığı hakkında bilgi edinin.  Ücretsiz olarak kullanılabilir ve bulunan tüm Azure Powershell betikleri aşağıda verilmiştir: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
+Çözüm, diğer devam eden bakım maliyetlerini ortadan kaldırarak özel görüntülerden sanal makine oluşturma hızını sunar. Bu çözümle, otomatik olarak özel görüntüler oluşturabilir, bunları diğer DevTest Labs 'e dağıtabilir ve eski görüntüleri devre dışı bırakabilirsiniz. Aşağıdaki videoda, görüntü fabrikası ve DevTest Labs ile nasıl uygulandığı hakkında bilgi edineceksiniz.  Tüm Azure PowerShell betikleri serbestçe kullanılabilir ve burada yer alır: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory).
 
 <br/>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Custom-Image-Factory-with-Azure-DevTest-Labs/player]
 
 
-## <a name="high-level-view-of-the-solution"></a>Çözüme üst düzey görünümü
-Çözüm ek devam eden bakım maliyetlerini sorununu ortadan kaldırırken özel görüntülerden sanal makineler oluşturma hızı sağlar. Bu çözüm ile otomatik olarak özel görüntüleri oluşturma ve diğer DevTest Labs kullanarak dağıtın. Azure DevOps (eski adıyla Visual Studio Team Services), tüm işlemler DevTest labs'deki otomatikleştirmek için düzenleme altyapısı olarak kullanın.
+## <a name="high-level-view-of-the-solution"></a>Çözümün üst düzey görünümü
+Çözüm, diğer devam eden bakım maliyetlerini ortadan kaldırarak özel görüntülerden sanal makine oluşturma hızını sunar. Bu çözümle, otomatik olarak özel görüntüler oluşturabilir ve bunları diğer DevTest Labs 'e dağıtabilirsiniz. DevTest Labs içindeki tüm işlemleri otomatik hale getirmek için düzenleme motoru olarak Azure DevOps (eski adıyla Visual Studio Team Services) kullanın.
 
-![Çözüme üst düzey görünümü](./media/create-image-factory/high-level-view-of-solution.png)
+![Çözümün üst düzey görünümü](./media/create-image-factory/high-level-view-of-solution.png)
 
-Var olan bir [VSTS uzantısı için DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) tek tek adımları yürütmesine olanak sağlar:
+[DevTest Labs için](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) bu bireysel adımları yürütmenizi sağlayan bir VSTS uzantısı vardır:
 
 - Özel görüntü oluşturma
 - VM oluşturma
-- VM silme
-- Ortam oluşturma
-- Ortamı Sil
-- Ortam Doldur
+- VM 'yi silme
+- Ortam Oluştur
+- Ortamı sil
+- Ortamı doldur
 
-DevTest Labs uzantısını kullanarak, özel görüntüleri DevTest Labs'de otomatik olarak oluşturmaya başlamak için kolay bir yoludur.
+DevTest Labs uzantısının kullanılması, DevTest Labs 'de otomatik olarak özel görüntüler oluşturmaya başlamak için kolay bir yoldur.
 
-PowerShell betiğini kullanarak daha karmaşık bir senaryo için alternatif bir uygulama yok. PowerShell kullanarak DevTest Labs, sürekli tümleştirme ve sürekli teslim (CI/CD) araç zinciri kullanılan temel bir görüntü fabrikası tamamen otomatikleştirebilirsiniz. Bu alternatif bir çözüm izleyen ilkeler şunlardır:
+Daha karmaşık bir senaryo için PowerShell betiği kullanan alternatif bir uygulama vardır. PowerShell kullanarak, sürekli tümleştirme ve sürekli teslim (CI/CD) araç zincirinde kullanılabilen DevTest Labs tabanlı bir görüntü fabrikasını tamamen otomatikleştirebileceğinizi unutmayın. Bu alternatif çözümün ardından aşağıdaki ilkeler şunlardır:
 
-- Yaygın güncelleştirmelerin görüntü Fabrika herhangi bir değişiklik istemeniz gerekir. (yeni bir otomatik olarak eski görüntüler, devre dışı bırakma, özel bir görüntü türü ekleme örnek için yeni bir 'uç noktası' DevTest Labs, özel görüntüleri alabilir ve benzeri ekleniyor.)
-- Ortak değişiklikleri kaynak kodu denetimi (kod olarak altyapı) tarafından desteklenir
-- DevTest Labs özel görüntüleri alma (laboratuvarlar abonelikleri span) aynı Azure aboneliğinde olmayabilir
-- Biz gerektiği gibi ek oluşturucuları çalıştırabileceğinizi için PowerShell betikleri yeniden kullanılabilir olmalıdır
+- Ortak güncelleştirmelerin görüntü fabrikası üzerinde hiçbir değişiklik gerektirmemelidir. (örneğin, yeni bir özel görüntü türü eklemek, eski görüntüleri devre dışı bırakmak, özel görüntüler almak için yeni bir ' Endpoint ' DevTest Labs eklemek vb.)
+- Ortak değişiklikler kaynak kodu denetimiyle desteklenir (kod olarak altyapı)
+- Özel görüntüler alan DevTest Labs aynı Azure aboneliğinde (Labs 'in yayma abonelikleri) bulunmayabilir
+- Gerektiğinde ek fabrikaları çalıştırabilmemiz için PowerShell betikleri yeniden kullanılabilir olmalıdır
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu bölümün sonraki makaleye geçin: [Azure DevOps bir görüntü fabrikası çalıştırma](image-factory-set-up-devops-lab.md)
+Bu bölümdeki bir sonraki makaleye geçin: [Azure DevOps 'dan bir görüntü fabrikası çalıştırma](image-factory-set-up-devops-lab.md)

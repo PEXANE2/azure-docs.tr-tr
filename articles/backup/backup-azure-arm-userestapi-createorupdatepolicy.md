@@ -4,16 +4,16 @@ description: Bu makalede, REST API kullanarak yedekleme ilkeleri (zamanlama ve b
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173430"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554899"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
 
-Azure kurtarma hizmetleri Kasası için yedekleme ilkesi oluşturma adımları, [ilke REST API belgesinde](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)özetlenmiştir. Bu belgeyi, Azure VM yedeklemesi için bir ilke oluşturmak üzere bir başvuru olarak kullanmamıza izin verin.
+Azure kurtarma hizmetleri Kasası için yedekleme ilkesi oluşturma adımları, [ilke REST API belgesinde](/rest/api/backup/protectionpolicies/createorupdate)özetlenmiştir. Bu belgeyi, Azure VM yedeklemesi için bir ilke oluşturmak üzere bir başvuru olarak kullanmamıza izin verin.
 
 ## <a name="backup-policy-essentials"></a>Yedekleme ilkesi temelleri
 
@@ -44,12 +44,12 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak üzere, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Gerekli  |Tür  |Açıklama  |
+|Adı  |Gereklidir  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
+|properties     |   Doğru      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
 |etiketler     |         | Nesne        |  Kaynak etiketleri       |
 
-İstek gövdesindeki tanımlarının tüm listesi için, [yedekleme ilkesi REST API belgesine](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)bakın.
+İstek gövdesindeki tanımlarının tüm listesi için, [yedekleme ilkesi REST API belgesine](/rest/api/backup/protectionpolicies/createorupdate)bakın.
 
 ### <a name="example-request-body"></a>Örnek istek gövdesi
 
@@ -146,15 +146,15 @@ Aşağıdaki istek gövdesi, Azure VM yedeklemeleri için bir yedekleme ilkesi t
 > [!IMPORTANT]
 > Zamanlama ve bekletme için zaman biçimleri yalnızca TarihSaat ' i destekler. Yalnızca zaman biçimini desteklemez.
 
-## <a name="responses"></a>Responses
+## <a name="responses"></a>Yanıtlar
 
 Yedekleme ilkesi oluşturma/güncelleştirme [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve ardından bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     |    [Koruma PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  Tamam       |
+|200 TAMAM     |    [Koruma PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  TAMAM       |
 |202 kabul edildi     |         |     Eden    |
 
 ### <a name="example-responses"></a>Örnek yanıtlar

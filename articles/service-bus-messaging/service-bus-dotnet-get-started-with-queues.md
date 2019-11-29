@@ -12,20 +12,20 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: cecd37c16d34c0cd6cf7a4d98732762d16073864
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884143"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561611"
 ---
-# <a name="get-started-with-service-bus-queues"></a>Service Bus kuyrukları ile çalışmaya başlama
+# <a name="get-started-with-service-bus-queues"></a>Service Bus kuyruklarını kullanmaya başlama
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
@@ -74,17 +74,11 @@ Visual Studio 'Yu başlatın ve için C#yeni bir **konsol uygulaması (.NET Core
 
     Ad alanı için Bağlantı dizenizi `ServiceBusConnectionString` değişkeni olarak girin. Sıra adınızı girin.
 
-1. `Main()` öğesinin varsayılan içeriklerini aşağıdaki kod satırıyla değiştirin:
+1. `Main()` yöntemini aşağıdaki **async** `Main` yöntemiyle değiştirin. Kuyruğa ileti göndermek için bir sonraki adımda ekleyeceğiniz SendMessagesAsync yöntemini çağırır. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. `Main()` öğesinden hemen sonra, gönderme iletilerini metoda çağıran aşağıdaki zaman uyumsuz `MainAsync()` metodunu ekleyin:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         const int numberOfMessages = 10;
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
@@ -100,7 +94,6 @@ Visual Studio 'Yu başlatın ve için C#yeni bir **konsol uygulaması (.NET Core
         await queueClient.CloseAsync();
     }
     ```
-
 1. `MainAsync()` yönteminden hemen sonra, `numberOfMessagesToSend` tarafından belirtilen ileti sayısını gönderme işini yapan aşağıdaki `SendMessagesAsync()` yöntemini ekleyin (Şu anda 10 ' a ayarlanmıştır):
 
     ```csharp
@@ -147,25 +140,20 @@ namespace CoreSenderApp
         const string QueueName = "<your_queue_name>";
         static IQueueClient queueClient;
 
-        static void Main(string[] args)
-        {
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task MainAsync()
-        {
+        public static async Task Main(string[] args)
+        {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
+    
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-
-            // Send Messages
+    
+            // Send messages.
             await SendMessagesAsync(numberOfMessages);
-
+    
             Console.ReadKey();
-
+    
             await queueClient.CloseAsync();
         }
 
@@ -235,14 +223,8 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
 1. `Main()` öğesinin varsayılan içeriklerini aşağıdaki kod satırıyla değiştirin:
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. `Main()` öğesinden hemen sonra, `MainAsync()` metoduna çağrı yapan aşağıdaki zaman uyumsuz `RegisterOnMessageHandlerAndReceiveMessages()` metodunu ekleyin:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: HT
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544620"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555463"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
 
@@ -22,9 +22,9 @@ ms.locfileid: "74544620"
 
 ## <a name="support-coverage-and-regional-availability"></a>Destek kapsamı ve bölgesel kullanılabilirlik
 
-ZRS Şu anda standart genel amaçlı v2 ve FileStorage depolama hesabı türlerini desteklemektedir. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
+ZRS Şu anda standart genel amaçlı v2, FileStorage ve BlockBlobStorage depolama hesabı türlerini desteklemektedir. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
-ZRS, blok Blobları, disk olmayan sayfa Blobları, standart dosya paylaşımları, tablolar ve kuyruklar için kullanılabilir.
+Genel amaçlı v2 ZRS hesapları blok bloblarını, disk dışı sayfa bloblarını, standart dosya paylaşımlarını, tabloları ve kuyrukları destekler.
 
 Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 

@@ -3,16 +3,16 @@ title: Azure Ayırmaları nedir?
 description: Sanal makineleriniz, SQL veritabanlarınız, Azure Cosmos DB ve diğer kaynak maliyetlerinde tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri ve fiyatlandırma hakkında bilgi edinin.
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: df15bcc0e4a3ef7629abf7b62f8ff36caf732150
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580086"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420136"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -36,6 +36,12 @@ Hizmet planları:
 - **SQL veritabanı ayrılmış sanal çekirdeği** - Rezervasyona yalnızca işlem maliyetleri dahildir. Lisans ayrı olarak faturalandırılır.
 - **SQL Veri Ambarı** - Rezervasyon cDWU kullanımını kapsar. SQL Veri Ambarı’nın kullanımıyla ilişkili depolama ve ağ ücretlerini kapsamaz.
 - **App Service taban fiyatı** - Rezervasyon, damga pulu kullanımını kapsar. Çalışanlara uygulanmaz, bu nedenle damga puluyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.
+- MySQL için Azure Veritabanı
+- PostgreSQL için Azure Veritabanı
+- MariaDB için Azure Veritabanı
+- Azure Veri Gezgini
+- Premium SSD Yönetilen Diskler
+
 
 Windows sanal makineleri ve SQL veritabanı için [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile lisanslama maliyetlerini de kapsama alabilirsiniz.
 

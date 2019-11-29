@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs altyapı İdaresi
-description: Bu makalede, Azure DevTest Labs altyapısının İdaresi için yönergeler sağlar.
+title: Azure DevTest Labs 'de uygulama geçişi ve Tümleştirme
+description: Bu makalede, uygulama geçişi ve tümleştirme bağlamında Azure DevTest Labs altyapısını idare etmek için rehberlik sunulmaktadır.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,127 +10,127 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193008"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560640"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs altyapı - uygulama geçiş ve tümleştirme İdaresi
-Geliştirme/test Laboratuvar ortamınız oluşturulduktan sonra aşağıdaki sorular hakkında düşünmek gerekir:
+# <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs altyapısını idare edin-uygulama geçişi ve Tümleştirme
+Geliştirme/test laboratuvarı ortamınız kurulduktan sonra, aşağıdaki soruları düşünmeniz gerekir:
 
-- Nasıl ortamı içinde proje ekibinizin yazılımınız?
-- Nasıl gerekli Kurumsal ilkelerle izleyin ve değer uygulamanıza eklemek için çevikliği korumak emin olabilirim?
+- Projeyi Proje takımınızda nasıl kullanacağınızı nasıl kullanıyorsunuz?
+- Gerekli tüm kurumsal ilkeleri izlediğinizden ve uygulamanıza değer eklemek için çevikliği korumanıza nasıl emin olabilirsiniz?
 
-## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Market görüntüleri özel görüntüler karşılaştırması
-
-### <a name="question"></a>Soru
-Azure Market görüntüsü kendi özel kuruluş görüntü veya ne zaman kullanmalıyım?
-
-### <a name="answer"></a>Yanıt
-Azure Market, belirli kaygıları veya kuruluş gereksinimlerine sahip olmadığınız sürece varsayılan olarak kullanılmalıdır. Ortak örnek verilebilir;
-
-- Bir uygulamayı temel görüntüsü bir parçası olarak dahil olacak şekilde gerektiren karmaşık yazılım kurulumu.
-- Yükleme ve Kurulum bir uygulamanın Azure Market görüntüsü üzerinde eklenecek işlem süresi verimli bir kullanım olmayan saatler sürebilir.
-- Geliştiriciler ve test ediciler bir sanal makineyi hızlı bir şekilde erişmesi ve yeni bir sanal makine hazırlık süresini en aza indirmek istiyorsunuz.
-- Uyumluluk veya tüm makineler için yapılması gerekenleri yasal koşullar (örneğin, güvenlik ilkeleri).
-
-Özel görüntüleri kullanarak hafifçe kabul edilmemelidir. Şimdi bu temel alınan temel görüntüleri için VHD dosyaları yönetmek sahip oldukları fazladan karmaşıklık tanıtır. Düzenli olarak bu temel görüntüleri yazılım güncelleştirmeleri ile düzeltmeniz gerekir. Bu güncelleştirmeler, yeni işletim sistemi (OS) güncelleştirmeler ve güncelleştirmeleri ya da yazılım paketi kendisi için gerekli yapılandırma değişikliklerini içerir.
-
-## <a name="formula-vs-custom-image"></a>Özel görüntü veya formül
+## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Market görüntüleri ile özel görüntüler
 
 ### <a name="question"></a>Soru
-Özel görüntü veya formül ne zaman kullanmalıyım?
+Ne zaman bir Azure Market görüntüsü kullanmalıyım? kendi özel kurumsal görüntümi?
 
 ### <a name="answer"></a>Yanıt
-Genellikle, bu senaryoda faktör, ekonomik ve yeniden kullanabilirsiniz.
+Belirli endişeleriniz veya kuruluş gereksinimleriniz yoksa, Azure Marketi varsayılan olarak kullanılmalıdır. Bazı yaygın örnekler şunlardır;
 
-Burada birçok kullanıcıları/labs temel görüntünün üstüne yazılım çok sayıda görüntü gerektiren bir senaryo varsa, özel bir görüntü oluşturarak maliyetini azaltabilir. Başka bir deyişle, görüntü bir kez oluşturulur. Bu sanal makine ve Kurulum meydana geldiğinde çalışan sanal makinenin nedeniyle sonucunda oluşan maliyet hazırlık süresini azaltır.
+- Temel görüntünün bir parçası olarak bir uygulamanın eklenmesini gerektiren karmaşık yazılım kurulumu.
+- Bir uygulamanın yüklenmesi ve kurulumu, bir Azure Marketi görüntüsüne eklenmek üzere işlem zamanının etkili bir şekilde kullanılması için birkaç saat sürebilir.
+- Geliştiriciler ve test ediciler, bir sanal makineye hızlı bir şekilde erişim gerektirir ve yeni bir sanal makinenin kurulum süresini en aza indirmek ister.
+- Tüm makineler için yerinde olması gereken uyumluluk veya yasal koşullar (örneğin, güvenlik ilkeleri).
 
-Ancak, ek bir faktörü unutmayın yazılım değişiklikleri sıklığıdır. Çalıştırırsanız günlük oluşturur ve kullanıcılarınızın sanal makinelerde gereken yazılım bir formül yerine özel bir görüntü kullanarak geçirmeniz gerekir.
+Özel görüntülerin kullanılması, hafif olarak düşünülmemelidir. Artık bu temel görüntüler için VHD dosyalarını yönetmeniz gerektiği için daha fazla karmaşıklık sağlar. Ayrıca, bu temel görüntülerin yazılım güncelleştirmeleriyle düzenli olarak yayama yapmanız gerekir. Bu güncelleştirmeler yeni işletim sistemi (OS) güncelleştirmelerini ve yazılım paketinin kendisi için gereken güncelleştirme veya yapılandırma değişikliklerini içerir.
 
-## <a name="use-custom-organizational-images"></a>Kuruluş özel görüntülerinizi kullanın
+## <a name="formula-vs-custom-image"></a>Formül ve özel görüntü
 
 ### <a name="question"></a>Soru
-DevTest Labs ortamına özel kuruluş görüntülerim getirmek için bir kolayca yinelenebilir işlemini nasıl ayarlayabilirim?
+Ne zaman özel görüntüden bir formül kullanmalıyım?
 
 ### <a name="answer"></a>Yanıt
-Bkz: [bu video görüntü Fabrika desenini](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Bu senaryo Gelişmiş bir senaryodur ve sağlanan örnek betikler yalnızca betiklerdir. Herhangi bir değişikliğe ihtiyaç olup, yönetmek ve ortamınızda kullanılan komut dosyaları korumak gerekir.
+Genellikle, Bu senaryodaki karar verme faktörü maliyetlidir ve yeniden kullanılır.
 
-Azure işlem hatlarında özel resim bir işlem hattı oluşturmak için DevTest Labs'i kullanarak:
+Birçok kullanıcının/laboratuvarın temel görüntünün en üstünde çok fazla yazılım gerektiren bir senaryonuz varsa, özel bir görüntü oluşturarak maliyeti azaltabilirsiniz. Bu, görüntünün bir kez oluşturulduğu anlamına gelir. Bu, sanal makinenin kurulum süresini ve kurulum gerçekleştiğinde çalışan sanal makine nedeniyle oluşan maliyeti azaltır.
 
-- [Giriş: Azure DevTest labs'deki bir görüntü fabrikası ayarlayarak sanal makineye dakikalar içinde hazır olun](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Fabrika – bölüm 2 görüntü! Sanal makineler oluşturmak için Azure işlem hatları ve Fabrika Laboratuvar Kurulumu](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Görüntü Factory – bölüm 3: Özel görüntüleri kaydetmek ve dağıtmak için birden çok Laboratuvarları](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: Azure DevTest Labs ile özel görüntü üretici](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+Ancak, ek bir faktör yazılım paketinizdeki değişikliklerin sıklığıdır. Günlük derlemeler çalıştırır ve bu yazılımın kullanıcılarınızın sanal makinelerinde olması gerekiyorsa, özel bir görüntü yerine bir formül kullanmayı düşünün.
 
-## <a name="patterns-to-set-up-network-configuration"></a>Ağ Yapılandırması'kurmak için desenler
+## <a name="use-custom-organizational-images"></a>Özel kuruluş görüntülerini kullanma
 
 ### <a name="question"></a>Soru
-Nasıl sağlamak, geliştirme ve test sanal makineleri genel internet ulaşamıyor? Ağ Yapılandırması'kurmak için herhangi bir önerilen Düzen var mı?
+Özel kurumsal görüntülerimi DevTest Labs ortamına getirmek için kolayca tekrarlanabilir bir işlem ayarlayabilirim?
 
 ### <a name="answer"></a>Yanıt
-Evet. Dikkate alınması gereken – gelen ve giden trafiği iki unsur vardır.
+[Bu videoya görüntü fabrikası düzenine](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)bakın. Bu senaryo gelişmiş bir senaryodur ve sunulan betikler yalnızca örnek betiklerdir. Herhangi bir değişiklik gerekliyse, ortamınızda kullanılan betikleri yönetmeniz ve korumanız gerekir.
 
-**Gelen trafik** – internet ulaşılamıyor sonra sanal makinenin genel IP adresi yok. Kullanıcı bir genel IP adresi oluşturabilir, bir abonelik düzeyi ilkesi ayarlanmış olduğundan emin olun. yaygın bir yaklaşımdır.
+Azure Pipelines içinde özel bir görüntü işlem hattı oluşturmak için DevTest Labs kullanma:
 
-**Giden trafik** – sanal makineleri doğrudan genel internet'e giderek önlemek ve kurumsal bir güvenlik duvarı aracılığıyla trafiği zorlamak istiyorsanız sonra şirket içi trafiği expressroute üzerinden yönlendirebilir veya VPN kullanarak zorlamalı yönlendirme.
+- [Giriş: Azure DevTest Labs bir görüntü fabrikası ayarlayarak dakikalar içinde kullanıma hazırlamış VM 'Leri alın](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
+- [Görüntü fabrikası – Bölüm 2! VM oluşturmak için Azure Pipelines ve fabrika Laboratuvarı ayarlama](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [Görüntü fabrikası – Bölüm 3: özel görüntüleri kaydetme ve birden çok laboratuvara dağıtma](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
+- [Video: Azure DevTest Labs ile özel görüntü fabrikası](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+
+## <a name="patterns-to-set-up-network-configuration"></a>Ağ yapılandırmasını ayarlama desenleri
+
+### <a name="question"></a>Soru
+Geliştirme ve test sanal makinelerinin herkese açık internet 'e ulaşamıyor Nasıl yaparım? emin misiniz? Ağ yapılandırmasını kurmak için önerilen desenler var mı?
+
+### <a name="answer"></a>Yanıt
+Evet. Dikkate alınması gereken iki nokta vardır: gelen ve giden trafik.
+
+**Gelen trafik** : sanal makınenın genel IP adresi yoksa, İnternet tarafından erişilemez. Yaygın bir yaklaşım, bir kullanıcının genel IP adresi oluşturamayacak şekilde bir abonelik düzeyi ilkesinin ayarlanmış olmasını sağlamaktır.
+
+**Giden trafik** : sanal makinelerin doğrudan ortak internet 'e gitmesini ve trafiği bir kurumsal güvenlik duvarı üzerinden zorunlu kılmak istiyorsanız, zorlamalı yönlendirme kullanarak trafiği Express Route veya VPN aracılığıyla yönlendirme sağlayabilirsiniz.
 
 > [!NOTE]
-> Proxy ayarları olmadan trafiği engelleyen bir proxy sunucunuz varsa, özel durumlar için laboratuvar yapıt depolama hesabı eklemek unutmayın.
+> Proxy ayarları olmayan trafiği engelleyen bir ara sunucunuz varsa, laboratuvarın yapıt depolama hesabına özel durum eklemeyi unutmayın.
 
-Ağ güvenlik grupları, sanal makine ya da alt ağlar için de kullanabilirsiniz. Bu adım, ek bir izin ver / trafiği engellemek için koruma katmanı ekler.
+Sanal makineler veya alt ağlar için ağ güvenlik grupları da kullanabilirsiniz. Bu adım trafiğe izin vermek/engellemek için ek bir koruma katmanı ekler.
 
-## <a name="new-vs-existing-virtual-network"></a>Yeni var olan sanal ağı
+## <a name="new-vs-existing-virtual-network"></a>Yeni ve var olan sanal ağ karşılaştırması
 
 ### <a name="question"></a>Soru
-Yeni bir sanal ağ ve var olan bir sanal ağ kullanarak DevTest Labs ortamım için ne zaman oluşturmalıyım?
+DevTest Labs ortamım için yeni bir sanal ağ oluşturmalı ve var olan bir sanal ağı kullanıyor mıyım?
 
 ### <a name="answer"></a>Yanıt
-Ardından Vm'lerinizi mevcut altyapısıyla etkileşim kurmak gerekiyorsa, DevTest Labs ortamınız içinde mevcut bir sanal ağ kullanmayı düşünmeniz gerekir. Ayrıca, ExpressRoute kullanıyorsanız, sanal ağlar en aza indirmek isteyebilirsiniz / alt ağlar Aboneliklerde kullanılmak üzere atanan, IP adres alanı parçalara böylece. Ayrıca, sanal ağ eşleme düzeni burada (merkez-uç model) kullanmayı da düşünmelisiniz. Bir Azure ağı yukarı gelen özelliğinde bölgeler arasında eşleme olmasına rağmen bu yaklaşım, belirli bir bölge içinde abonelikler arasında vnet/alt ağ iletişimi sağlar.
+Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurmanız gerekir. Ayrıca, ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz. Ayrıca, burada VNet eşleme modelini (hub-ışınsal-uç modeli) kullanmayı göz önünde bulundurmanız gerekir. Bu yaklaşım, belirli bir bölgedeki abonelikler arasında VNET/alt ağ iletişimini mümkün olmakla birlikte bölgeler arasında eşleme, Azure ağ iletişimi için bir güncel özelliktir.
 
-Aksi takdirde, DevTest Labs her ortamın kendi sanal ağı olabilir. Ancak, bulunduğuna dikkat edin [sınırları](../azure-subscription-service-limits.md) abonelik başına sanal ağ sayısı. Bu sınır 100 olarak oluşturulabilir olsa varsayılan süreyi 50 ' dir.
+Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir. Ancak, abonelik başına sanal ağ sayısında [sınırlar](../azure-subscription-service-limits.md) olduğunu unutmayın. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
 
 ## <a name="shared-public-or-private-ip"></a>Paylaşılan, genel veya özel IP
 
 ### <a name="question"></a>Soru
-Özel IP ve genel IP ile paylaşılan bir IP ne zaman kullanmalıyım?
+Paylaşılan IP ile genel IP ve özel IP 'yi ne zaman kullanmalıyım?
 
 ### <a name="answer"></a>Yanıt
-Bir siteden siteye VPN veya Express Route kullandığınız makinelerinizi genel internet üzerinden erişilebilir, iç ağ aracılığıyla ve erişilemez olacak şekilde özel IP'ler kullanmayı düşünün.
+Siteden siteye VPN veya Express Route kullanıyorsanız, makinelerinizin iç ağınız aracılığıyla erişilebilir olması ve genel İnternet üzerinden erişilemez olması için özel IP 'Ler kullanmayı düşünün.
 
 > [!NOTE]
-> Laboratuvar sahibi yanlışlıkla, VM'ler için genel IP adresleri hiç oluşturmasını sağlamak için bu alt ağ ilkesi değiştirebilirsiniz. Abonelik sahibi, genel IP'ler oluşturulmasını önleyen bir abonelik İlkesi oluşturmanız gerekir.
+> Laboratuvar sahipleri bu alt ağ ilkesini, yanlışlıkla VM 'Ler için genel IP adresleri oluşturmadığından emin olmak için değiştirebilir. Abonelik sahibinin ortak IP 'Lerin oluşturulmasını önleyecek bir abonelik ilkesi oluşturması gerekir.
 
-Paylaşılan genel IP'ler kullanırken bir laboratuvarındaki sanal makinelerde bir genel IP adresi paylaşın. Bu yaklaşım, belirli bir aboneliği için genel IP adresleri barındırabileceğiniz ihlal önlemek gerektiğinde yararlı olabilir.
+Paylaşılan genel IP 'Leri kullanırken bir laboratuvardaki sanal makineler ortak bir IP adresi paylaşır. Bu yaklaşım, belirli bir abonelik için genel IP adresleri sınırlarına ulaşmaktan kaçınmak gerektiğinde yararlı olabilir.
 
-## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>Kullanıcı veya Laboratuvar başına sanal makine sayısı sınırlamaları
+## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>Kullanıcı veya laboratuvar başına sanal makine sayısı sınırları
 
 ### <a name="question"></a>Soru
-Kullanıcı başına veya Laboratuvar başına ayarlamalısınız kural kaç tane sanal makineyi bakımından var mı?
+Kullanıcı başına veya laboratuvar başına kaç sanal makine ayarlayabilirim?
 
 ### <a name="answer"></a>Yanıt
-Kullanıcı başına veya Laboratuvar başına sanal makine sayısını düşünürken, üç temel sorun vardır:
+Kullanıcı başına veya laboratuvar başına sanal makine sayısını göz önünde bulundurarak, başlıca üç sorun vardır:
 
-- **Genel maliyet** , takım Laboratuvardaki kaynaklardaki ayırabilirsiniz. Birçok makineleri dönmesi kolay bir işlemdir. Maliyetleri denetlemek için kullanıcı başına ve/veya Laboratuvar başına sanal makinelerin sayısını sınırlamak için bir mekanizma olan
-- Bir laboratuvar sanal makinelerin toplam sayısı tarafından etkilenen [abonelik düzeyi kotaları](../azure-subscription-service-limits.md) kullanılabilir. Üst sınırları 800 kaynak grupları, abonelik başına biridir. (Paylaşılan genel IP'ler kullanılır sürece) DevTest Labs her VM için şu anda yeni bir kaynak grubu oluşturur. Bir abonelikte 10 labs varsa, laboratuvarlar yaklaşık 79 sanal makineler (800 üst sınırı – 10 kaynak grupları 10 laboratuvarlar için) her Laboratuvardaki uygun olabilecek Laboratuvar başına 79 sanal makine =.
-- Laboratuvar şirket Express Route üzerinden (örneğin) bağlı olduğunda **IP adresi alanları tanımlanan** VNet/alt ağ için. Vm'leri Laboratuvardaki oluşturulması başarısız olmayan emin olmak için (hata: IP adresi alınamıyor), IP adres alanı kullanılabilir hizalı Laboratuvar başına en fazla VM Laboratuvar sahipleri belirtebilirsiniz.
+- Ekibin laboratuvardaki kaynaklar üzerinde harcayacağı **genel maliyet** . Birçok makine çalıştırmak kolaydır. Maliyetleri denetlemek için, bir mekanizma Kullanıcı başına ve/veya laboratuvar başına sanal makine sayısını sınırlandırmanız
+- Bir laboratuvardaki sanal makinelerin toplam sayısı, kullanılabilir [abonelik düzeyi kotalarıyla](../azure-subscription-service-limits.md) etkilendi. Üst limitlerden biri, abonelik başına 800 kaynak gruplarıdır. DevTest Labs Şu anda her VM için yeni bir kaynak grubu oluşturuyor (paylaşılan genel IP 'Ler kullanılmamışsa). Bir abonelikte 10 laboratuvar varsa, laboratuvarlar her laboratuvarda yaklaşık 79 sanal makineye (10 laboratuvarın kendisi için 800 üst sınırı – 10 kaynak grubu 79) uygun olabilir.
+- Laboratuvar, Express Route aracılığıyla şirket içi ağa bağlıysa (örneğin), VNet/alt ağ için **TANıMLANMıŞ IP adresi alanları** mevcuttur. Laboratuvardaki VM 'Lerin oluşturulmasının başarısız olmamasını sağlamak için (hata: IP adresi alınamıyor), laboratuvar sahipleri, kullanılabilir IP adresi alanı ile birlikte Laboratuvar başına en fazla VM 'Leri belirtebilir.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
 
 ### <a name="question"></a>Soru
-DevTest Labs Ortamımın Resource Manager şablonlarını nasıl kullanabilirim?
+DevTest Labs Ortamumdaki Kaynak Yöneticisi şablonlarını nasıl kullanabilirim?
 
 ### <a name="answer"></a>Yanıt
-Bölümünde anlatılan adımları kullanarak DevTest Labs ortamına Resource Manager şablonlarınızı dağıtmak [ortamları özellik DevTest labs'deki](devtest-lab-test-env.md) makalesi. Aslında, Resource Manager şablonlarınızı bir Git deposuna (Azure depoları veya GitHub) denetleyin ve ekleme bir [şablonlarınızın özel depoya](devtest-lab-test-env.md) Laboratuvar için.
+Kaynak Yöneticisi şablonlarınızı [DevTest Labs makalesindeki ortamlar özelliğinde](devtest-lab-test-env.md) bahsedilen adımları kullanarak bir DevTest Labs ortamına dağıtırsınız. Temel olarak, Kaynak Yöneticisi şablonlarınızı bir git deposuna (Azure Repos veya GitHub) kontrol edersiniz ve [şablonlarınıza yönelik özel bir depoyu](devtest-lab-test-env.md) laboratuvara eklersiniz.
 
-Bu senaryo, konak geliştirme makineler için DevTest Labs'i kullanarak faydalı olmayabilir ancak üretim temsilcisi bir hazırlık ortamı oluşturuyorsanız yararlı olabilir.
+Geliştirme makinelerini barındırmak için DevTest Labs kullanıyorsanız bu senaryo yararlı olmayabilir, ancak üretim temsilcisi olan bir hazırlama ortamı oluşturuyorsanız faydalı olabilir.
 
-Ayrıca, kaç kullanıcı seçeneği veya Laboratuvar başına sanal makineler yalnızca Laboratuvar ve tüm ortamları (Resource Manager şablonlarını) tarafından yerel olarak oluşturulan sanal makinelerde sayısını sınırlayan hatalarının ayıklanabileceğini belirtmekte yarar.
+Ayrıca, laboratuvar başına veya Kullanıcı başına sanal makine sayısının yalnızca laboratuvarda yerel olarak oluşturulan ve herhangi bir ortamda (Kaynak Yöneticisi şablonları) değil, yalnızca laboratuvar üzerinde oluşturulmuş makine sayısını sınırlayan bir değer de vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bkz: [DevTest Labs'de ortamları kullanma](devtest-lab-test-env.md).
+Bkz. [DevTest Labs 'de ortamları kullanma](devtest-lab-test-env.md).

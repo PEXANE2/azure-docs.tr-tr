@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083642"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555484"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV’leri kullanarak iş yükünüzü izleme
 Bu makalede, iş yükünüzü izlemek için dinamik yönetim görünümlerinin (DMVs) nasıl kullanılacağı açıklanır. Bu, Azure SQL veri ambarı 'nda sorgu yürütmeyi araştırmanın de içerir.
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 Yukarıdaki sorgu sonuçlarından, araştırmak istediğiniz sorgunun **Istek kimliğini unutmayın** .
 
-**Askıya alınmış** durumdaki sorgular, çok sayıda etkin çalışan sorgu nedeniyle sıraya alınabilir. Bu sorgular sys içinde de görünür [. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) bir UserConcurrencyResourceType türü ile bekler. Eşzamanlılık limitleri hakkında bilgi için bkz. [iş yükü yönetimi Için](resource-classes-for-workload-management.md) [performans katmanları](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) veya kaynak sınıfları. Sorgular, nesne kilitleri gibi diğer nedenleri de bekleyebilir.  Sorgunuz bir kaynağı bekliyorsa, bu makalede daha fazla kaynak [için bekleyen sorguları araştırma][Investigating queries waiting for resources] bölümüne bakın.
+**Askıya alınmış** durumdaki sorgular, çok sayıda etkin çalışan sorgu nedeniyle sıraya alınabilir. Bu sorgular sys içinde de görünür [. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) bir UserConcurrencyResourceType türü ile bekler. Eşzamanlılık limitleri hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md) veya [iş yükü yönetimi için kaynak sınıfları](resource-classes-for-workload-management.md). Sorgular, nesne kilitleri gibi diğer nedenleri de bekleyebilir.  Sorgunuz bir kaynağı bekliyorsa, bu makalede daha fazla kaynak [için bekleyen sorguları araştırma][Investigating queries waiting for resources] bölümüne bakın.
 
 [Sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tablosunda bir sorgunun aramasını basitleştirmek için, sorgunuza, sys. dm_pdw_exec_requests görünümünde Aranan bir açıklama atamak için [etiketini][LABEL] kullanın.
 
@@ -206,7 +206,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Büyük miktarda bellek kullanan bir sorgunuz varsa veya tempdb ayırla ilgili bir hata iletisi aldıysanız, [Select (CTAS) olarak](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) çok büyük bir create table veya çalışan [Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) ifadesinin son veri taşıma işlemi. Bu, genellikle son ekleme seçmeden önce dağıtılmış sorgu planında bir karıştırılmış Lemove işlemi olarak tanımlanabilir.  Karışık taşıma işlemlerini izlemek için [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) kullanın. 
+Büyük miktarda bellek kullanan veya tempdb 'nin ayrılmasına ilişkin bir hata mesajı almış bir sorgunuz varsa, bu, [Select (CTAS) olarak](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) çok büyük bir create table veya son veri taşıma işleminde başarısız olan [Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) ifadesini çalıştıran bir hata nedeniyle olabilir. Bu, genellikle son ekleme seçmeden önce dağıtılmış sorgu planında bir karıştırılmış Lemove işlemi olarak tanımlanabilir.  Karışık taşıma işlemlerini izlemek için [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) kullanın. 
 
 En yaygın risk azaltma, CTAS 'larınızı bölmek veya SELECT deyimini birden çok yük ifadesine eklemek için veri hacmi, düğüm başına 1 TB 'lık sınırı aşmayacak. Ayrıca, her bir düğümdeki tempdb 'yi azaltan daha fazla düğüm üzerinde tempdb boyutunu yayabilecek daha büyük bir boyuta ölçeklendirebilirsiniz.
 

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 88ff026ea56e5f41b3b124c2d5594822ffeb6830
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3f37f0f3fe57015cc733d67f16e64bdf58a8a6b7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529260"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561000"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları C# için IoT Edge modülü geliştirme
 
@@ -80,7 +80,7 @@ Azure IoT Edge araçları, Visual Studio 'da desteklenen tüm IoT Edge modül di
    | ----- | ----- |
    | Şablon seçin | **C# Modül**seçin. | 
    | Modül proje adı | Modülünüze **CSharpModule** adını verin. | 
-   | Docker görüntü deposu | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu \<registry name\>.azurecr.io/ckeskinmodulegibi görünüyor. |
+   | Docker görüntü deposu | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, \<kayıt defteri adı\>. azurecr.io/csharpmodule gibi görünüyor. |
 
    ![Projenizi hedef cihaz, modül türü ve kapsayıcı kayıt defteri için yapılandırma](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
@@ -112,7 +112,7 @@ Dağıtım bildirimi, IoT Edge çalışma zamanına sahip kapsayıcı kayıt def
 
 Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir çıkış kuyruğu aracılığıyla geçirir. Modülün iletileri IoT Hub iletmek için önce, daha fazla kod ekleyelim. Her iletideki sıcaklık verilerini analiz etmek için modülünü güncelleştirin ve yalnızca sıcaklığın belirli bir eşiği aşması durumunda iletiyi IoT Hub gönderir. 
 
-1. Visual Studio 'da,  > **program.cs** **csharpmodule**' ü açın.
+1. Visual Studio 'da, **Program.cs** > **csharpmodule** 'ü açın.
 
 2. **CSharpModule** ad alanının en üst kısmına daha sonra kullanılan türler için üç **using** deyimi yazın:
 
@@ -297,13 +297,13 @@ Bir önceki bölümde bir IoT Edge çözümü oluşturdunuz ve **CSharpModule** 
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   @No__t_0 kullanımını öneren bir güvenlik uyarısı alabilirsiniz. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
+   `--password-stdin`kullanımını öneren bir güvenlik uyarısı alabilirsiniz. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
 2. Visual Studio Çözüm Gezgini ' nde, derlemek istediğiniz proje adına sağ tıklayın. Varsayılan ad **AzureIotEdgeApp1** ' dir ve bir Windows modülü oluştururken, uzantı **Windows. amd64**olmalıdır. 
 
 3. **Derleme ve gönderme IoT Edge modüllerini**seçin. 
 
-   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkinci olarak, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için `docker build` ' ı çalıştırır. Sonra, görüntü deposunu kapsayıcı Kayıt defterinize göndermek için `docker push` ' ı çalıştırır. 
+   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkinci olarak, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için `docker build` çalıştırır. Sonra, görüntü deposunu kapsayıcı Kayıt defterinize göndermek için `docker push` çalıştırır. 
 
 ## <a name="deploy-modules-to-device"></a>Modülleri cihaza dağıt
 
@@ -359,7 +359,10 @@ Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtreleme kodunu içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio ile modül geliştirme](how-to-visual-studio-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
+Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtreleme kodunu içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio ile modül geliştirme](how-to-visual-studio-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Sanal sıcaklık modülü de dahil olmak üzere IoT Edge modülleriyle ilgili örnekler için, bkz. [IoT Edge modül örnekleri](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+
+Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [İşlevler](tutorial-deploy-function.md)

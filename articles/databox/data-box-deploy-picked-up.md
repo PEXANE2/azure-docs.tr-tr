@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172631"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407035"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 2. Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işleminin başarılı olduğundan emin olun.
 3. Cihazı kapatın ve kabloları çıkarın.
 4. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-5. Kargo toplama isteğinde bulunmak için Quantium Solutions şirketine e-posta gönderin. Azure portalında belirtilen hizmet başvuru numarasını referans gösterin. Şu e-posta şablonunu kullanın: - *TAU kodu ile ters gönderim etiketi isteyin*. E-postaya aşağıdaki ayrıntıları eklediğinizden emin olun: 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. Quantium Solutions Australia size e-posta ile bir iade gönderim etiketi gönderecektir.
-7. İade etiketini yazdırıp gönderi kutusuna yapıştırın.
-8. Paketi kargoya verin.
-
-Gerekirse, Quantium Solution Desteği’ne Azure@quantiumsolutions.com adresinden e-posta ile veya telefonla ulaşabilirsiniz.
-
-Telefonla siparişiniz hakkında soru sormak için:
-
-- Öncelikle kargo toplama için bir e-posta gönderin.
-- Telefonda siparişinizin adını verin.
+5. [DHL Bağlantısından](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference) çevrimiçi olarak bir teslim alma rezervasyonu yapın.
 
 ::: zone target="chromeless"
 

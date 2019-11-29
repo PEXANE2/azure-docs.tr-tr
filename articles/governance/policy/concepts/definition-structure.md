@@ -1,33 +1,33 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: afb06771422b2f8117383b0bde711dc3e1a4d238
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279467"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555188"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
-Kaynak ilke tanımları, Azure İlkesi, kaynaklar için kuralları oluşturmak için kullanılır. Her tanımı kaynak uyumluluğu ve uyumlu olmayan bir kaynak olduğunda gerçekleştirilecek ne efekt açıklar.
-Kuralları tanımlayarak daha kolayca kaynaklarınızı yönetmek ve maliyetleri denetleyebilirsiniz. Örneğin, yalnızca belirli türlerdeki sanal makinelere izin verildiğini belirtebilirsiniz. Veya tüm kaynakların belirli bir etikete sahip gerektirebilir. İlkeleri, tüm alt kaynaklar tarafından devralınır. Bir kaynak grubu için bir ilke uygulanırsa, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
+Kaynak ilkesi tanımları, Azure Ilkesi tarafından kaynak kuralları oluşturmak için kullanılır. Her tanım, kaynak uyumluluğunu ve bir kaynak uyumsuz olduğunda yapılacak etkiyi açıklar.
+Kuralları tanımlayarak, maliyetlerinizi denetleyebilir ve kaynaklarınızı daha kolay yönetebilirsiniz. Örneğin, yalnızca belirli türlerdeki sanal makinelere izin verileceğini belirtebilirsiniz. Ya da, tüm kaynakların belirli bir etikete sahip olmasını zorunlu kılabilirsiniz. İlkeler tüm alt kaynaklar tarafından devralınır. Bir ilke bir kaynak grubuna uygulanmışsa, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
 
 İlke tanımı şeması şurada bulunur: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
-Bir ilke tanımı oluşturmak için JSON kullanın. İlke tanımı yönelik öğeleri içerir:
+Bir ilke tanımı oluşturmak için JSON kullanırsınız. İlke tanımı öğeleri içerir:
 
-- mode
-- parameters
-- Görünen ad
-- description
+- modundaysa
+- parametreler
+- görünen ad
+- açıklama
 - ilke kuralı
   - mantıksal değerlendirme
-  - Etkin
+  - etkinleşmesi
 
-Örneğin, aşağıdaki JSON kaynakların dağıtıldığı sınırlayan ilke gösterilmektedir:
+Örneğin, aşağıdaki JSON kaynakların dağıtıldığı yeri sınırlayan bir ilke gösterir:
 
 ```json
 {
@@ -69,7 +69,7 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 ### <a name="resource-manager-modes"></a>Kaynak Yöneticisi modları
 
-**Mod** , ilke için hangi kaynak türlerinin değerlendirileceğini belirler. İlişkin desteklenen modları şunlardır:
+**Mod** , ilke için hangi kaynak türlerinin değerlendirileceğini belirler. Desteklenen modlar şunlardır:
 
 - `all`: kaynak gruplarını ve tüm kaynak türlerini değerlendir
 - `indexed`: yalnızca etiketleri ve konumu destekleyen kaynak türlerini değerlendir
@@ -92,11 +92,11 @@ Etiketler veya konumlar uygulayan ilkeler oluşturulurken `indexed` kullanılmal
 
 ## <a name="parameters"></a>Parametreler
 
-Parametreleri, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Parametreleri, `name`, `address`, `city``state`alanları gibi düşünün. Bu parametreleri her zaman aynı kalır, tek tek formu dolduran üzerinde tabanlı ancak bunların değerlerini değiştirin.
-Parametreler, ilkeleri oluştururken aynı şekilde çalışır. İlke tanımında parametreler ekleyerek, farklı değerler kullanarak farklı senaryolar için bu ilkeyi yeniden kullanabilirsiniz.
+Parametreler, ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. Parametreleri, `name`, `address`, `city``state`alanları gibi düşünün. Bu parametreler her zaman aynı kalır, ancak değerleri formu dolduran kişiye göre değişir.
+Parametreler, ilke oluştururken de aynı şekilde çalışır. Bir ilke tanımına parametreler ekleyerek, farklı değerler kullanarak bu ilkeyi farklı senaryolar için yeniden kullanabilirsiniz.
 
 > [!NOTE]
-> Parametreler, var olan ve atanmış bir tanıma eklenebilir. Yeni parametre **DefaultValue** özelliğini içermelidir. Bu, ilke veya girişim mevcut atamaları dolaylı olarak geçersiz yapılmasını önler.
+> Parametreler, var olan ve atanmış bir tanıma eklenebilir. Yeni parametre **DefaultValue** özelliğini içermelidir. Bu, ilke veya girişim için mevcut atamaların dolaylı olarak geçersiz hale getirilmelerini engeller.
 
 ### <a name="parameter-properties"></a>Parametre özellikleri
 
@@ -165,12 +165,12 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **allow
 
 ## <a name="definition-location"></a>Tanım konumu
 
-Oluşturulurken bir girişim veya tanımını konumu belirtmek gereklidir. Tanım konumu, bir yönetim grubu veya abonelik olmalıdır. Bu konum için girişim veya atanabilir kapsamı belirler. Kaynaklar doğrudan üyesi veya tanım konumunu hiyerarşi içinde alt atamanın hedef olmalıdır.
+Bir girişim veya ilke oluştururken, tanım konumunu belirtmeniz gerekir. Tanım konumu bir yönetim grubu veya abonelik olmalıdır. Bu konum, girişim veya ilkenin atanabileceği kapsamı belirler. Kaynaklar, atama için hedeflemek üzere tanım konumunun hiyerarşisinde doğrudan veya alt üyeleri olmalıdır.
 
-Tanım konumu c: ise
+Tanım konumu bir ise:
 
 - Yalnızca **abonelik** kapsamındaki kaynaklara ilke atanabilir.
-- **Yönetim grubu** -yalnızca alt yönetim grupları ve alt abonelikler içindeki kaynaklara ilke atanabilir. Konum, ilke tanımı birden fazla aboneliğe uygulayın planlıyorsanız, bu Aboneliklerdeki içeren yönetim grubu olması gerekir.
+- **Yönetim grubu** -yalnızca alt yönetim grupları ve alt abonelikler içindeki kaynaklara ilke atanabilir. İlke tanımını birkaç aboneliğe uygulamayı planlıyorsanız, konumun bu abonelikleri içeren bir yönetim grubu olması gerekir.
 
 ## <a name="display-name-and-description"></a>Görünen ad ve açıklama
 
@@ -178,7 +178,7 @@ Tanım konumu c: ise
 
 ## <a name="policy-rule"></a>İlke kuralı
 
-İlke kuralı **IF** ve **then** bloklarından oluşur. **IF** bloğunda, ilkenin ne zaman uygulanacağını belirten bir veya daha fazla koşul tanımlarsınız. Senaryo ilkesi için tam olarak tanımlamak için bu koşullar için mantıksal işleçler uygulayabilirsiniz.
+İlke kuralı **IF** ve **then** bloklarından oluşur. **IF** bloğunda, ilkenin ne zaman uygulanacağını belirten bir veya daha fazla koşul tanımlarsınız. Bir ilke için senaryoyu tam olarak tanımlamak üzere bu koşullara mantıksal işleçler uygulayabilirsiniz.
 
 **Sonra** bloğunda, **IF** koşulları yerine geldiğinde gerçekleşen etkiyi tanımlarsınız.
 
@@ -203,7 +203,7 @@ Desteklenen mantıksal işleçler şunlardır:
 
 **Not** söz dizimi koşulun sonucunu tersine çevirir. **Allof** söz dizimi (mantıksal **ve** işleme benzer şekilde) tüm koşulların doğru olmasını gerektirir. Söz dizimi (mantıksal **veya** işleme benzer şekilde **), bir** veya daha fazla koşulun doğru olmasını gerektirir.
 
-Mantıksal işleçler iç içe yerleştirebilirsiniz. Aşağıdaki örnek, **allof** işleminin içinde iç içe **geçmiş bir işlem** gösterir.
+Mantıksal işleçleri iç içe geçirebilirsiniz. Aşağıdaki örnek, **allof** işleminin içinde iç içe **geçmiş bir işlem** gösterir.
 
 ```json
 "if": {
@@ -253,13 +253,13 @@ Değerin birden fazla joker karakter `*`olamaz.
 
 ### <a name="fields"></a>Alanlar
 
-Koşullara alanları kullanılarak oluşturulur. Bir alan, kaynak isteği yükü özelliklerinde eşleştirir ve kaynak durumunu açıklar.
+Koşullar, alanları kullanılarak oluşturulur. Bir alan, kaynak isteği yükünde özelliklerle eşleşir ve kaynağın durumunu açıklar.
 
-Aşağıdaki alanları desteklenir:
+Aşağıdaki alanlar desteklenir:
 
 - `name`
 - `fullName`
-  - Kaynağın tam adını döndürür. Bir kaynağın tam adını, tüm üst kaynak adları (örneğin "myServer/Veritabanım") tarafından başına kaynak addır.
+  - Kaynağın tam adını döndürür. Kaynağın tam adı herhangi bir üst kaynak adı (örneğin, "sunucum/myDatabase") tarafından eklenmiş kaynak adıdır.
 - `kind`
 - `type`
 - `location`
@@ -308,7 +308,7 @@ Aşağıdaki örnekte `concat` **TagName** parametresinin değeri adlı etiket i
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>Değer
 
 Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametrelere](#parameters), [desteklenen şablon işlevlerine](#policy-functions)veya değişmez değerlere karşı koşulları denetler.
 **değer** , desteklenen herhangi bir [koşulla](#conditions)eşleştirildi.
@@ -394,6 +394,146 @@ Bunun yerine **, adın ilk** üç karakterinin bir hataya neden olmak üzere ü�
 
 Düzeltilen ilke kuralıyla `if()`, üç karakterden kısa bir değerde `substring()` almaya çalışmadan önce **adın** uzunluğunu denetler. **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
 
+### <a name="count"></a>Sayı
+
+Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını sayan **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' ' veya ' hiçbiri ' olan dizi üyelerinin koşulu karşılayıp karşılamadığını kontrol etmekte. **Count** , her dizi üyesini bir koşul ifadesi için değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _Gerçek_ sonuçları toplar.
+
+**Count** ifadesinin yapısı:
+
+```json
+{
+    "count": {
+        "field": "<[*] alias>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Şu Özellikler **sayısıyla**kullanılır:
+
+- **Count. Field** (zorunlu): dizinin yolunu içerir ve bir dizi diğer adı olmalıdır. Dizi eksikse, ifade koşul ifadesi düşünülmeden _false_ olarak değerlendirilir.
+- **Count. where** (isteğe bağlı): her bir\[\***count. Field** [\] diğer ad](#understanding-the--alias) dizisi üyesini ayrı ayrı değerlendirmek için koşul ifadesi. Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
+  [Mantıksal işleçler](#logical-operators) , bu özelliğin içinde karmaşık değerlendirme gereksinimleri oluşturmak için kullanılabilir.
+- **\<koşul\>** (zorunlu): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
+
+#### <a name="count-examples"></a>Sayı örnekleri
+
+Örnek 1: bir dizinin boş olup olmadığını denetleyin
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]"
+    },
+    "equals": 0
+}
+```
+
+Örnek 2: koşul ifadesini karşılamak için yalnızca bir dizi üyesi olup olmadığını denetleyin
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My unique description"
+        }
+    },
+    "equals": 1
+}
+```
+
+Örnek 3: koşul ifadesini karşılamak için en az bir dizi üyesini denetleyin
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My common description"
+        }
+    },
+    "greaterOrEquals": 1
+}
+```
+
+Örnek 4: tüm nesne dizisi üyelerinin koşul ifadesini karşıladığından emin olun
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "description"
+        }
+    },
+    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+}
+```
+
+Örnek 5: tüm dize dizisi üyelerinin koşul ifadesini karşıladığından emin olun
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+            "like": "*@contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Örnek 6: tüm dizi üyelerinin koşul ifadesini karşılayıp karşılamadığını denetlemek için **değer** Içindeki **alanı** kullanın
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
+            "equals": "contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Örnek 7: en az bir dizi üyesinin koşul ifadesinde birden çok özelliklerle eşleştiğinden emin olun
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "allOf": [
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                    "equals": "Inbound"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                    "equals": "Allow"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                    "equals": "3389"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>Etki
 
 Azure Ilkesi aşağıdaki efekt türlerini destekler:
@@ -454,9 +594,9 @@ Bu ilke kuralı örneği, kaynak adının kaynak grubu adıyla başlamasını zo
 
 ## <a name="aliases"></a>Diğer adlar
 
-Bir kaynak türü için belirli özelliklerine erişmek için özelliği diğer adları kullanın. Diğer adlar, kaynak üzerinde bir özellik için hangi değerleri veya koşullara izin sınırlamak sağlar. Belirtilen kaynak türü için farklı bir API sürümlerinde yolları her diğer adın eşlenir. İlke değerlendirmesi sırasında ilke altyapısı bu API sürümü için özellik yolu alır.
+Bir kaynak türü için belirli özelliklere erişmek üzere özellik diğer adlarını kullanırsınız. Diğer adlar, bir kaynaktaki bir özellik için izin verilen değerleri veya koşulları kısıtlamanıza olanak sağlar. Her diğer ad, belirli bir kaynak türü için farklı API sürümlerindeki yollarla eşlenir. İlkesi değerlendirmesi sırasında, ilke altyapısı bu API sürümünün özellik yolunu alır.
 
-Diğer adlar listesini her zaman artmaktadır. Hangi diğer adlar şu anda Azure İlkesi tarafından desteklenen bulmak için aşağıdaki yöntemlerden birini kullanın:
+Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafından desteklenen diğer adları bulmak için aşağıdaki yöntemlerden birini kullanın:
 
 - Azure PowerShell
 
@@ -482,22 +622,23 @@ Diğer adlar listesini her zaman artmaktadır. Hangi diğer adlar şu anda Azure
   az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
-- REST API / ARMClient
+- REST API/ARMClient
 
   ```http
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-### <a name="understanding-the--alias"></a>[*] Diğer anlama
+### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların bazıları, ' normal ' ad olarak görünen bir sürüme ve buna ekli **[\*]** sahip. Örneğin:
+Kullanılabilir diğer adların bazıları, ' normal ' adı olarak görünen bir sürüme ve buna ekli **\]\[\*** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**[\*]** diğer adı dizideki her öğenin değerine ve her öğenin belirli özelliklerine göre karşılaştırma yapmayı mümkün kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. **Iprules [\*]** kullanarak, her _eylemin_ reddetme, ancak kaç kural var olduğunu veya IP _değerinin_ ne olduğunu _endişelenmeyi_doğrulayan bir örnektir. Bu örnek kural, **ıprules [\*].** **10.0.4.1** değerine ait tüm eşleşmeleri denetler **ve yalnızca en** az bir eşleşme bulmazsa, bu değeri uygular:
+**\[\*\]** diğer adı dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma yapmayı olanaklı kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. Daha karmaşık senaryolar için, [sayı](#count) koşulu ifadesini kullanın. **Iprules\[\*\]** kullanarak, her _eylemin_ _reddetme_, ancak kaç kuralın var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir.
+Bu örnek kural, **\[\*\]. değer olan ıprules** ile eşleşen tüm eşleşmeleri **denetler ve yalnızca** en az bir eşleşme bulmazsa **, bu** değeri uygular:
 
 ```json
 "policyRule": {
@@ -519,13 +660,15 @@ Kullanılabilir diğer adların bazıları, ' normal ' ad olarak görünen bir s
 }
 ```
 
+
+
 Daha fazla bilgi için bkz. [[\*] diğer adını değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Girişimler
 
-Girişim atamaları ve yönetim grubu tek bir öğe olarak çalışmak için basitleştirmek için çeşitli ilgili ilke tanımlarını olanak sağlar. Örneğin, tek bir girişim etiketleme ilgili ilke tanımlarını gruplandırabilirsiniz. Tek tek her ilke atamak yerine, girişim uygulayın.
+Girişimler, tek bir öğe olarak bir grupla birlikte çalışırken atamaları ve yönetimi basitleştirmek için çeşitli ilgili ilke tanımlarını gruplandırmaya olanak sağlar. Örneğin, ilgili etiketleme ilkesi tanımlarını tek bir girişimde gruplandırabilirsiniz. Her ilkeyi ayrı ayrı atamak yerine girişim uygularsınız.
 
-Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı gösterir: `costCenter` ve `productName`. Varsayılan etiket değeri uygulamak için iki yerleşik ilkeleri kullanır.
+Aşağıdaki örnek, iki etiket işlemek için bir girişim oluşturmayı gösterir: `costCenter` ve `productName`. Varsayılan etiket değerini uygulamak için iki yerleşik ilke kullanır.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi 'nde izlenen Azure ilke tanımları | Microsoft Docs
-description: Azure Güvenlik Merkezi 'nde izlenen Azure ilke tanımları.
+description: Bu makale, Azure Güvenlik Merkezi 'nde izleyebilmeniz için Azure Ilke tanımlarının bir listesini sağlar.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 8/22/2019
 ms.author: memildin
-ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 07d45f7cafa09ef6c5341acd5ffd0914cc56e4fd
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201671"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559257"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Güvenlik Merkezi tarafından izlenen Azure Güvenlik ilkeleri
 Bu makale, Azure Güvenlik Merkezi 'nde izleyebilmeniz için Azure Ilke tanımlarının bir listesini sağlar. Güvenlik ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
@@ -34,7 +34,7 @@ Güvenlik Merkezi tarafından izlenen yerleşik ilkeler hakkında bilgi edinmek 
 |SQL Server için Azure AD yöneticisi sağlanmalı|Azure AD kimlik doğrulamasını etkinleştirmek için SQL Server için bir Azure Active Directory (Azure AD) yöneticisinin sağlanmasına yönelik denetim. Azure AD kimlik doğrulaması, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin Basitleştirilmiş izin yönetimini ve merkezi kimlik yönetimini destekler.|
 |RootManageSharedAccessKey hariç tüm yetkilendirme kuralları Service Bus ad alanından kaldırılmalıdır|Azure Service Bus istemcileri, bir ad alanındaki tüm kuyruklara ve konulara erişim sağlayan bir ad alanı düzeyinde erişim ilkesi kullanmamalıdır. En az ayrıcalıklı güvenlik modeliyle uyum sağlamak için, yalnızca belirli varlığa erişim sağlamak üzere kuyruklar ve konular için varlık düzeyinde erişim ilkeleri oluşturun.|
 |Service Bus tanılama günlükleri etkinleştirilmelidir|Günlüklerin etkinleştirilmesi için denetim yapın ve bunları yıllık olarak tutun. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma için etkinlik izleri oluşturur.|
-|ClusterProtectionLevel özelliği EncryptAndSign içinde Service Fabric ayarlanmalıdır|Service Fabric, birincil küme sertifikası kullanan düğümden düğüme iletişim için üç koruma düzeyi sağlar: None, Sign ve EncryptAndSign. Tüm düğümler için iletileri şifrelenir ve dijital olarak imzalanmış emin olmak için koruma düzeyini ayarlayın.|
+|ClusterProtectionLevel özelliği EncryptAndSign içinde Service Fabric ayarlanmalıdır|Service Fabric, birincil küme sertifikası kullanan düğümden düğüme iletişim için üç koruma düzeyi sağlar: None, Sign ve EncryptAndSign. Tüm düğümden düğüme mesajların şifrelendiğinden ve dijital olarak imzalandığından emin olmak için koruma düzeyini ayarlayın.|
 |İstemci kimlik doğrulaması Azure Active Directory kullanmalıdır|Service Fabric 'de yalnızca Azure AD aracılığıyla istemci kimlik doğrulamasının kullanımını denetleyin.|
 |Arama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir|Günlüklerin etkinleştirilmesi için denetim yapın ve bunları bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma için etkinlik izleri oluşturur.|
 |Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir|Redin için yalnızca SSL ile SSL üzerinden bağlantı kurulmasını sağlayan denetim. Güvenli bağlantı kullanımı, sunucu ve hizmet arasında kimlik doğrulaması sağlar. Ayrıca, ortadaki adam, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı aktarım halindeki verileri de korur.|
@@ -51,29 +51,29 @@ Güvenlik Merkezi tarafından izlenen yerleşik ilkeler hakkında bilgi edinmek 
 |Uygulama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir|Uygulamada tanılama günlüklerinin etkinleştirilmesini denetleme. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma için etkinlik izleri oluşturur.|
 |SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir|SQL veritabanları için saydam veri şifreleme durumunu denetleyin.|
 |SQL Server denetimi etkinleştirilmelidir|Sunucu düzeyinde SQL denetiminin varlığını denetleyin.|
-|\[Önizleme]: Azure Güvenlik Merkezi 'nde şifrelenmemiş SQL veritabanını izleme|Azure Güvenlik Merkezi, şifrelenmemiş SQL sunucularını veya veritabanlarını önerilen şekilde izler.|
-|\[Önizleme]: Azure Güvenlik Merkezi 'nde denetlenen SQL veritabanını izleme|Azure Güvenlik Merkezi, SQL Server ve SQL denetimi 'nin açık olmadığı veritabanlarını izler.|
-|\[Önizleme]: Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir|Azure Güvenlik Merkezi, sunucularınızda eksik olan güvenlik sistemi güncelleştirmelerini izler.|
-|\[Önizleme]: Depolama hesapları için eksik blob şifrelemesini denetle|Blob şifrelemesi kullanmayan depolama hesaplarını denetleme. Bu, diğer sağlayıcılardan depolama için değil, yalnızca Microsoft depolama kaynak türleri için geçerlidir. Azure Güvenlik Merkezi, olası ağ, tam zamanında erişimi önerilen şekilde izler.|
-|\[Önizleme]: Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır|Azure Güvenlik Merkezi, olası ağ, tam zamanında erişimi önerilen şekilde izler.|
-|\[Önizleme]: Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir|Azure Güvenlik Merkezi, olası uygulama beyaz listesi yapılandırmasını izler.|
-|\[Önizleme]: Sanal makineler için eksik ağ güvenlik grupları yapılandırılmalıdır|Azure Güvenlik Merkezi, çok fazla izin veren kurallara göre önerilen ağ güvenlik gruplarını izler.|
-|\[Önizleme]: Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir|Azure Güvenlik Merkezi, önerilen temeli uygun şekilde karşılamadığı sunucuları izler.| 
-|\[Önizleme]: Endpoint Protection 'ın sanal makinelere yüklenmesi gerekir|Azure Güvenlik Merkezi, yüklü bir Microsoft System Center Endpoint Protection aracısına sahip olmayan sunucuları, önerilen şekilde izler.|
-|\[Önizleme]: Disk şifrelemesi sanal makinelere uygulanmalıdır|Azure Güvenlik Merkezi, kullanılması gereken disk şifrelemesi etkinleştirilmemiş sanal makineleri izler.|
-|\[Önizleme]: Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir|Güvenlik açığı değerlendirme çözümü tarafından algılanan güvenlik açıklarını izleyin ve Azure Güvenlik Merkezi 'nde güvenlik açığı değerlendirmesi çözümü olmayan VM 'Ler önerilir.|
-|\[Önizleme]: Azure Güvenlik Merkezi 'nde korumasız Web uygulamasını izleme|Azure Güvenlik Merkezi, önerilen Web uygulaması güvenlik duvarı koruması olmayan Web uygulamalarını izler.|
-|\[Önizleme]: Uç nokta koruma çözümünün sanal makinelere yüklenmesi gerekir|Azure Güvenlik Merkezi, önerilen yeni nesil güvenlik duvarı koruması olmayan ağ uç noktalarını izler.|
-|\[Önizleme]: SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir|Güvenlik açığı değerlendirmesi tarama sonuçlarını izleyin ve veritabanı güvenlik açıklarını nasıl düzeltebileceğiniz önerilir.|
-|\[Önizleme]: Aboneliğiniz için en fazla 3 sahip belirtilmelidir|Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için en fazla üç abonelik sahibi belirlemeniz önerilir.|
-|\[Önizleme]: Aboneliğinize birden fazla sahip atanmalıdır|Yönetici erişiminin artıklığını sağlamak için birden fazla abonelik sahibi belirlemeniz önerilir.|
-|\[Önizleme]: MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir |Hesapların veya kaynakların ihlal oluşmasını engellemek için sahip izinlerine sahip tüm abonelik hesaplarında Multi-Factor Authentication (MFA) etkinleştirilmelidir.|
-|\[Önizleme]: MFA, abonelik hesaplarınız üzerinde yazma izinlerine sahip olmalıdır|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma izinlerine sahip tüm abonelik hesaplarında Multi-Factor Authentication etkinleştirilmelidir.|
-|\[Önizleme]: MFA, okuma izinlerine sahip abonelik hesaplarınız üzerinde etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma iznine sahip tüm abonelik hesaplarında Multi-Factor Authentication etkinleştirilmelidir.|
-|\[Önizleme]: Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır|Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır. Kullanım dışı bırakılan hesapların oturum açması engellendi.|
-|\[Önizleme]: Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır|Kullanım dışı bırakılan hesaplar aboneliklerinizden kaldırılmalıdır. Kullanım dışı bırakılan hesapların oturum açması engellendi.|
-|\[Önizleme]: Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır|İzin erişimini engellemek için, sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır.|
-|\[Önizleme]: Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir|İzlenmeyen erişimi engellemek için, yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir.|
+|\[Preview]: Azure Güvenlik Merkezi 'nde şifrelenmemiş SQL veritabanını Izleme|Azure Güvenlik Merkezi, şifrelenmemiş SQL sunucularını veya veritabanlarını önerilen şekilde izler.|
+|\[Preview]: Azure Güvenlik Merkezi 'nde denetlenen SQL veritabanını Izleme|Azure Güvenlik Merkezi, SQL Server ve SQL denetimi 'nin açık olmadığı veritabanlarını izler.|
+|\[önizlemesi]: sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir|Azure Güvenlik Merkezi, sunucularınızda eksik olan güvenlik sistemi güncelleştirmelerini izler.|
+|\[önizlemesi]: depolama hesapları için eksik blob şifrelemesini denetle|Blob şifrelemesi kullanmayan depolama hesaplarını denetleme. Bu, diğer sağlayıcılardan depolama için değil, yalnızca Microsoft depolama kaynak türleri için geçerlidir. Azure Güvenlik Merkezi, olası ağ, tam zamanında erişimi önerilen şekilde izler.|
+|\[Önizleme]: sanal makinelere tam zamanında ağ erişim denetimi uygulanmalıdır|Azure Güvenlik Merkezi, olası ağ, tam zamanında erişimi önerilen şekilde izler.|
+|\[Preview]: sanal makinelerde Uyarlamalı uygulama denetimleri etkinleştirilmelidir|Azure Güvenlik Merkezi, olası uygulama beyaz listesi yapılandırmasını izler.|
+|\[önizlemesi]: sanal makineler için eksik ağ güvenlik grupları yapılandırılmalıdır|Azure Güvenlik Merkezi, çok fazla izin veren kurallara göre önerilen ağ güvenlik gruplarını izler.|
+|\[Önizleme]: makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir|Azure Güvenlik Merkezi, önerilen temeli uygun şekilde karşılamadığı sunucuları izler.| 
+|\[önizlemesi]: Endpoint Protection 'ın sanal makinelere yüklenmesi gerekir|Azure Güvenlik Merkezi, yüklü bir Microsoft System Center Endpoint Protection aracısına sahip olmayan sunucuları, önerilen şekilde izler.|
+|\[Preview]: disk şifrelemesi sanal makinelere uygulanmalıdır|Azure Güvenlik Merkezi, kullanılması gereken disk şifrelemesi etkinleştirilmemiş sanal makineleri izler.|
+|\[Önizleme]: güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir|Güvenlik açığı değerlendirme çözümü tarafından algılanan güvenlik açıklarını izleyin ve Azure Güvenlik Merkezi 'nde güvenlik açığı değerlendirmesi çözümü olmayan VM 'Ler önerilir.|
+|\[Preview]: Azure Güvenlik Merkezi 'nde korumasız Web uygulamasını Izleme|Azure Güvenlik Merkezi, önerilen Web uygulaması güvenlik duvarı koruması olmayan Web uygulamalarını izler.|
+|\[önizlemesi]: Endpoint Protection çözümünün sanal makinelere yüklenmesi gerekir|Azure Güvenlik Merkezi, önerilen yeni nesil güvenlik duvarı koruması olmayan ağ uç noktalarını izler.|
+|\[Preview]: SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir|Güvenlik açığı değerlendirmesi tarama sonuçlarını izleyin ve veritabanı güvenlik açıklarını nasıl düzeltebileceğiniz önerilir.|
+|\[Preview]: aboneliğiniz için en fazla 3 sahip atanmalıdır|Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için en fazla üç abonelik sahibi belirlemeniz önerilir.|
+|\[Önizleme]: aboneliğinize birden fazla sahip atanmalıdır|Yönetici erişiminin artıklığını sağlamak için birden fazla abonelik sahibi belirlemeniz önerilir.|
+|\[önizlemesi]: MFA 'nın aboneliğinizde sahip olan hesaplarda etkinleştirilmesi gerekir |Hesapların veya kaynakların ihlal oluşmasını engellemek için sahip izinlerine sahip tüm abonelik hesaplarında Multi-Factor Authentication (MFA) etkinleştirilmelidir.|
+|\[önizlemesi]: MFA 'nın, yazma izinlerine sahip abonelik hesaplarınız üzerinde etkinleştirilmesi gerekir|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma izinlerine sahip tüm abonelik hesaplarında Multi-Factor Authentication etkinleştirilmelidir.|
+|\[önizlemesi]: MFA, abonelik hesaplarınız üzerinde okuma izinlerine sahip olmalıdır|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma iznine sahip tüm abonelik hesaplarında Multi-Factor Authentication etkinleştirilmelidir.|
+|\[önizlemesi]: sahip olduğu kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır|Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır. Kullanım dışı bırakılan hesapların oturum açması engellendi.|
+|\[Önizleme]: kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır|Kullanım dışı bırakılan hesaplar aboneliklerinizden kaldırılmalıdır. Kullanım dışı bırakılan hesapların oturum açması engellendi.|
+|\[önizlemesi]: sahip dış hesapların aboneliğinizden kaldırılması gerekir|İzin erişimini engellemek için, sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır.|
+|\[Preview]: yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir|İzlenmeyen erişimi engellemek için, yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir.|
 |\[Önizleme]: Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir|İzlenmeyen erişimi engellemek için okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir.|
 
 
@@ -82,11 +82,11 @@ Güvenlik Merkezi tarafından izlenen yerleşik ilkeler hakkında bilgi edinmek 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Güvenlik Merkezi'nde güvenlik ilkelerinin nasıl yapılandırılacağını öğrendiniz. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın.
 
-* [Azure Güvenlik Merkezi planlama ve işlemler Kılavuzu](security-center-planning-and-operations-guide.md): Azure Güvenlik Merkezi 'nde tasarım konularını nasıl planlayacağınızı ve anlayacağınızı öğrenin.
-* [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md): Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md): İş ortağı çözümlerinizin sistem durumunu izleme hakkında bilgi edinin.
-* [Azure Güvenlik MERKEZI SSS](security-center-faq.md): Hizmet kullanımı ile ilgili sık sorulan soruların yanıtlarını alın.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/): Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulun.
+* [Azure Güvenlik Merkezi planlama ve işlemler Kılavuzu](security-center-planning-and-operations-guide.md): Azure Güvenlik Merkezi 'nde tasarım konularını planlama ve anlama hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md): Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve ele alma](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve ele alma hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md): İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md): Hizmet kullanımı ile ilgili sık sorulan soruların yanıtlarını alın.
+* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/): Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulabilirsiniz.
 
 Azure Ilkesi hakkında daha fazla bilgi edinmek için bkz. [Azure ilkesi nedir?](../governance/policy/overview.md).

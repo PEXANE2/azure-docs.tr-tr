@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab4b57513f90a5cbe80724d4937f8d0f87b5517
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381776"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558547"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama
 
@@ -240,7 +240,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
     * **Seç**'e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 
@@ -277,7 +277,7 @@ Dağıtılmış ve kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS altya
 
 MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. Özellik davranışını denetlemek için kayıt defteri yolu `HKLM\Software\Microsoft\AzureMFA` `REQUIRE_USER_MATCH` kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
 
-| Anahtar | Value | Varsayılan |
+| Anahtar | Değer | Varsayılan |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | DOĞRU/YANLıŞ | Ayarlanmadı (TRUE değerine denktir) |
 

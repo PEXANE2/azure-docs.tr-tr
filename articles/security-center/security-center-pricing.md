@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi katmanlarının fiyatlandırması
-description: Bu makalede, Azure Güvenlik Merkezi fiyatlandırması hakkında bilgi sağlanır.
+description: Azure Güvenlik Merkezi, ücretsiz ve standart olmak üzere iki katmanda sunulur. Bu sayfada, ücretsiz 'ten standart sürümüne yükseltme gösterilmektedir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffb571d13270ced80426aee3575197cf95d3805
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664254"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559239"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Gelişmiş güvenlik için Güvenlik Merkezi 'nin standart katmanına yükseltme
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber saldırılarına karşı hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.

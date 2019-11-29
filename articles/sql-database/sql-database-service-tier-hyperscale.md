@@ -11,18 +11,18 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: c71fb8a7e18439817023874146e22c29a5af3b12
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123695"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559334"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
 Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanılabilirlik sağlamak için bulut ortamı için ayarlanmış SQL Server veritabanı motoru mimarisini temel alır. Azure SQL veritabanı 'nda kullanılan üç mimari modeli vardır:
 - Genel Amaçlı/standart 
--  Hiper Ölçek
+-  Hiper ölçeklendirme
 -  İş Açısından Kritik/Premium
 
 Azure SQL veritabanı 'nda bulunan hiper ölçekli hizmet katmanı, sanal çekirdek tabanlı satın alma modelindeki en yeni hizmet katmandır. Bu hizmet katmanı, bir Azure SQL veritabanı için depolama ve işlem kaynaklarının, Genel Amaçlı ve Iş için kullanılabilen limitlerin büyük ölçüde ötesinde ölçeğini genişletmek için Azure mimarisinden yararlanan, yüksek düzeyde ölçeklenebilir bir depolama ve bilgi işlem performans katmanından yararlanır Kritik hizmet katmanları.
@@ -86,7 +86,7 @@ Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm tü
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
-### <a name="compute"></a>Bilgi İşlem
+### <a name="compute"></a>İşlem
 
 İşlem düğümü, ilişkisel altyapının bulunduğu yerdir, bu nedenle tüm dil öğeleri, sorgu işleme vb. oluşur. Hiper ölçekli veritabanı olan tüm kullanıcı etkileşimleri, bu işlem düğümleri aracılığıyla gerçekleşir. İşlem düğümlerinde, veri sayfasını getirmek için gereken ağ gidiş dönüşlerin sayısını en aza indirmek için SSD tabanlı önbellekler (önceki diyagramda RBPEX-dayanıklı arabellek havuzu uzantısı olarak etiketlenir) vardır. Tüm okuma/yazma iş yüklerinin ve işlemlerinin işlendiği bir birincil işlem düğümü vardır. Yük devretme amaçlarıyla etkin bekleme düğümleri görevi gören bir veya daha fazla ikincil işlem düğümü vardır ve okuma iş yüklerini boşaltma için salt okunurdur işlem düğümleri görevi görür (Bu işlev isteniyorsa).
 
@@ -166,10 +166,10 @@ Bir Azure SQL veritabanı hiper ölçek veritabanını, bir olağanüstü durum 
 
 Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde kullanılabilir:
 
-- Avustralya Doğu
-- Avustralya Güneydoğu
-- Güney Brezilya
-- Orta Kanada
+- Doğu Avustralya
+- Güneydoğu Avustralya
+- Brezilya Güney
+- Kanada Orta
 - Orta ABD
 - Çin Doğu 2
 - Çin Kuzey 2
@@ -177,17 +177,17 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Doğu ABD
 - Doğu ABD 2
 - Fransa Orta
-- Japonya Doğu
-- Japonya Batı
+- Doğu Japonya
+- Batı Japonya
 - Kore Orta
 - Kore Güney
 - Orta Kuzey ABD
 - Kuzey Avrupa
 - Güney Afrika Kuzey
-- Orta Güney ABD
+- Güney Orta ABD
 - Güneydoğu Asya
-- Birleşik Krallık Güney
-- Birleşik Krallık Batı
+- Birleşik Krallık, Güney
+- Birleşik Krallık, Batı
 - Batı Avrupa
 - Batı ABD
 - Batı ABD 2
@@ -251,6 +251,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır), Azure SQL veritabanı Hyperscale için henüz desteklenmemiştir, ancak hizmet tarafından yönetilen anahtarlarla birlikte TDE desteklenir. |
 |Akıllı veritabanı özellikleri | "Plan zorla" seçeneğinin dışında, diğer tüm otomatik ayarlama seçenekleri hiper ölçekte henüz desteklenmemiştir: seçenekler etkin gibi görünebilir, ancak hiçbir öneri veya eylem yapılmaz. |
+| Veritabanını Küçült | DBCC SHRINKDATABASE veya DBCC SHRINKFILE Şu anda Azure SQL Hyperscale veritabanları ile desteklenmiyor. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/28/2019
+ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007731"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559086"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -40,7 +40,7 @@ Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen
 
 ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede beş olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
 
-Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, [](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) [ASP.net, ASP.NET Core ve Java için sabit bir veri yüzdesine göre Application Insights tarafından verilerin ne zaman alındığını gösteren alma örnekleme örneğini kullanabilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
+Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak üzere [ASP.net, ASP.NET Core ve Java Web siteleri için](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) , tutulacak verilerin yüzdesine göre Application Insights tarafından alındığı zaman örnekleri veren alma [örnekleme](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)kullanabilirsiniz
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
@@ -69,7 +69,7 @@ Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın 
 ### <a name="using-data-volume-metrics"></a>Veri hacmi ölçümlerini kullanma
 <a id="understanding-ingested-data-volume"></a>
 
-Veri birimleriniz hakkında daha fazla bilgi edinmek için Application Insights kaynağınız için **ölçümleri** seçin, yeni bir grafik ekleyin. Grafik ölçümü için, **günlük tabanlı ölçümler**altında, **veri noktası birimi**' ni seçin. **Bölmeyi Uygula**' ya tıklayın ve Group By **Telemetryitem Type**' ı seçin.
+Veri birimleriniz hakkında daha fazla bilgi edinmek için Application Insights kaynağınız için **ölçümleri** seçin, yeni bir grafik ekleyin. Grafik ölçümü için, **günlük tabanlı ölçümler**altında, **veri noktası birimi**' ni seçin. **Bölmeyi Uygula**' ya tıklayın ve **`Telemetryitem` türüne**göre Gruplandır ' ı seçin.
 
 ![Veri hacmine bakmak için ölçümleri kullanma](./media/pricing/10-billing.png)
 
@@ -157,9 +157,9 @@ Toplanan verileri sınırlandırmak için günlük hacim ucunu kullanabilirsiniz
 
 Günlük birim Cap 'i kullanmak yerine, veri hacmi istediğiniz düzeye ayarlamak için [örnekleme](../../azure-monitor/app/sampling.md) 'yı kullanın. Daha sonra, uygulamanızın çok daha yüksek sayıda telemetri göndermek için beklenmedik şekilde başlaması durumunda günlük ucunu yalnızca "son çare" olarak kullanın.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Tanımlamak için hangi günlük veri sınırınızın tanımlayın
+### <a name="identify-what-daily-data-limit-to-define"></a>Hangi günlük veri sınırının tanımlanacağını belirleyin
 
-Veri alma eğilimi ve tanımlanacak günlük hacim üst sınırı olduğunu anlamak için Application Insights kullanımı ve tahmini maliyetleri gözden geçirin. Sınıra ulaşıldıktan sonra kaynaklarınızı izleyin mümkün olmayacaktır beri dikkatlice değerlendirilmelidir. 
+Veri alma eğilimi ve tanımlanacak günlük hacim üst sınırı olduğunu anlamak için Application Insights kullanımı ve tahmini maliyetleri gözden geçirin. Sınıra ulaşıldıktan sonra kaynaklarınızı izleyemeyeceksiniz, bu, dikkatli olarak düşünülmelidir. 
 
 ### <a name="set-the-daily-cap"></a>Günlük ucunu ayarla
 
@@ -203,7 +203,7 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-005.png)
 
-Saklama Ayrıca, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak program aracılığıyla de ayarlanabilir](powershell.md#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, uyumluluk ile ilgili senaryolar için faydalı olabilecek `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
+Saklama Ayrıca, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak program aracılığıyla de ayarlanabilir](powershell.md#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, uyumluluk ile ilgili senaryolar için faydalı olabilecek `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. Veri hacmi üst sınırı için günlük sıfırlama süresi, `dailyQuotaResetTime` parametresini ayarlamak için Azure Resource Manager kullanılarak yapılandırılabilir. 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights kullanarak veri aktarımı ücretleri
 
@@ -259,7 +259,7 @@ Bu katman yalnızca Operations Management Suite aboneliği olan müşterilere uy
 |:---------------------------------------|:----------------:|
 | 3 Azure App Service örnekleri ve 1 sanal sunucu kullanan 1 uygulama | 4 |
 | 2 VM 'de çalışan 3 uygulama; Bu uygulamalar için Application Insights kaynakları aynı abonelikte ve düğüm başına katmanda bulunur | 2 | 
-| Uygulama öngörüleri kaynakları aynı abonelikte olan 4 uygulama; 2 örnek çalıştıran her uygulama 16 yoğun saatler sırasında 2 örnek çalıştıran her uygulama ve 8 yoğun saat boyunca 4 örnek | 13.33 | 
+| Uygulama öngörüleri kaynakları aynı abonelikte olan 4 uygulama; 2 örnek çalıştıran her uygulama 16 yoğun saatler sırasında 2 örnek çalıştıran her uygulama ve 8 yoğun saat boyunca 4 örnek | 13,33 | 
 | 1 çalışan rolü ve 1 Web rolü olan bulut Hizmetleri, her biri 2 örnek çalıştırıyor | 4 | 
 | 50 mikro hizmet çalıştıran 5 düğümlü Azure Service Fabric kümesi; 3 örnek çalıştıran her bir mikro hizmet | 5|
 

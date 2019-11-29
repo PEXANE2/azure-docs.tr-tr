@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173691"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554068"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketine erişim isteme
 
@@ -35,7 +35,7 @@ Erişim paketi Yöneticisi, kullanıcıların paketlere erişim sahibi olması i
 
 **Önkoşul rolü:** Sahibinin
 
-1. Çalıştığınız proje veya iş Yöneticisi için bir e-posta veya bir ileti arayın. E-posta, erişmeniz gereken erişim paketine bir bağlantı içermelidir. Bağlantı `myaccess` ile başlar, bir dizin ipucu içerir ve bir erişim paketi KIMLIĞIYLE biter.
+1. Çalıştığınız proje veya iş Yöneticisi için bir e-posta veya bir ileti arayın. E-posta, erişmeniz gereken erişim paketine bir bağlantı içermelidir. Bağlantı `myaccess`başlar, bir dizin ipucu içerir ve bir erişim paketi KIMLIĞIYLE biter.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -80,6 +80,30 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 Uygulanan birden çok ilkeye sahip bir erişim paketine erişim isteğinde karşılaşırsanız, bir ilke seçmeniz istenebilir. Örneğin, bir erişim paketi Yöneticisi iki dahili çalışan grubu için iki ilkeye sahip bir erişim paketi yapılandırabilir. İlk ilke 60 gün boyunca erişime izin verebilir ve onay gerektirebilir. İkinci ilke 2 gün boyunca erişime izin verebilir ve onay gerektirmez. Bu senaryoyla karşılaşırsanız, kullanmak istediğiniz ilkeyi seçmeniz gerekir.
 
 ![Erişim Portalı-erişim ıste-birden çok ilke](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>İsteği yeniden gönder
+
+Bir erişim paketine erişim istediğinizde isteğiniz reddedilebilir veya onaylayanlar zaman yanıt vermezse isteğiniz zaman alabilir. Erişmeniz gerekiyorsa, tekrar deneyebilir ve isteğinizi yeniden gönderebilirsiniz. Aşağıdaki yordamda bir erişim isteğinin nasıl yeniden başlatılacağını açıklanmaktadır:
+
+**Önkoşul rolü:** Sahibinin
+
+1. **Erişim** Portalı ' nda oturum açın.
+
+1. Gezinti menüsünden sol taraftaki **istek geçmişi** ' ne tıklayın.
+
+1. Bir isteği yeniden dağıttığınız erişim paketini bulun.
+
+1. Erişim paketini seçmek için onay işaretine tıklayın.
+
+1. Seçili erişim paketinin sağ tarafındaki mavi **Görünüm** bağlantısına tıklayın.
+    
+    ![Erişim paketi ve görünüm bağlantısını seçin](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    Bir bölme, erişim paketinin istek geçmişiyle sağ tarafta açılır.
+    
+    ![Yeniden Gönder düğmesini seçin](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. Bölmenin alt kısmındaki yeniden **Gönder** düğmesine tıklayın.
 
 ## <a name="cancel-a-request"></a>İsteği iptal et
 

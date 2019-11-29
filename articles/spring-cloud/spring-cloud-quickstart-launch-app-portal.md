@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133231"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560060"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -92,20 +92,6 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-
-1. Azure CLı 'da oturum açın ve etkin aboneliğinizi ayarlayın.
-
-    ```azurecli
-    # Login to Azure CLI
-    az login
-
-    # List all subscriptions
-    az account list -o table
-
-    # Set active subscription
-    az account set --subscription <target subscription ID>
-    ```
-
 1. Kaynak grubunuza ve hizmetinize ad atayın. Aşağıdaki yer tutucuları, bu öğreticide daha önce sağladığınız kaynak grubu adı ve hizmet adı ile değiştirdiğinizden emin olun.
 
     ```azurecli

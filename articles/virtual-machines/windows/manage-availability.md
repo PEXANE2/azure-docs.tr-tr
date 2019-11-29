@@ -12,15 +12,15 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44db2b0b42175f7968852ad9a0f7769b05e2c008
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1f9914b84b63f271c7dd7d1b8f7dbc3b69511605
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038171"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561182"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Azure 'da Windows sanal makinelerinin kullanılabilirliğini yönetme 
 
@@ -33,3 +33,7 @@ Klasik dağıtım modelini kullanırken kullanılabilirlik kümeleri oluşturma 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sanal makinelerinizin Yük Dengelemesi hakkında daha fazla bilgi edinmek için bkz. [Yük Dengeleme sanal makineleri](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
+IaaS 'de SQL Server N katmanlı uygulamaları çalıştırmaya yönelik başvuru mimarilerini görüntüleyin
+
+* [SQL Server ile Azure 'da Windows N katmanlı uygulama](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Yüksek kullanılabilirlik için birden fazla Azure bölgesinde N katmanlı bir uygulama çalıştırma](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

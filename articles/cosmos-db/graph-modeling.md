@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624222"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559122"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 
@@ -21,7 +21,7 @@ Aşağıdaki belge, grafik veri modelleme önerileri sağlamak için tasarlanmı
 ## <a name="requirements"></a>Gereksinimler
 
 Bu kılavuzda özetlenen işlem aşağıdaki varsayımlar temelinde olur:
- * Sorun-alanı içindeki **varlıklar** tanımlanır. Bu varlıkların her istek için otomatik olarak tüketilmesi amaçlanmıştır. Diğer bir deyişle, veritabanı sistemi birden çok sorgu isteğinde tek bir varlığın verilerini almak üzere tasarlanmamıştır.
+ * Sorun-alanı içindeki **varlıklar** tanımlanır. Bu varlıkların her istek için otomatik olarak _tüketilmesi_ amaçlanmıştır. Diğer bir deyişle, veritabanı sistemi birden çok sorgu isteğinde tek bir varlığın verilerini almak üzere tasarlanmamıştır.
  * Veritabanı sistemi için **okuma ve yazma gereksinimlerinin** anlaşılmasıdır. Bu gereksinimler, grafik veri modeli için gereken iyileştirmelere kılavuzluk eder.
  * [Apache Tinkerpop özelliği grafik standardının](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) ilkeleri iyi anlaşılmıştır.
 
@@ -45,15 +45,15 @@ Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılaca
 
 Grafik nesnelerindeki özellikler için en iyi uygulamalar şunlardır:
 
-| Object | Özellik | Type | Notlar |
+| Nesne | Özellik | Tür | Notlar |
 | --- | --- | --- |  --- |
-| Köşe | id | Dize | Bölüm başına benzersiz olarak uygulandı. Ekleme sırasında bir değer sağlanmazsa, otomatik üretilen GUID depolanır. |
-| Köşe | label | Dize | Bu özellik, köşeyi temsil eden varlık türünü tanımlamak için kullanılır. Değer sağlanmazsa, varsayılan "köşe" değeri kullanılacaktır. |
-| Köşe | properties | Dize, Boolean, sayısal | Her köşede anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
-| Köşe | bölüm anahtarı | Dize, Boolean, sayısal | Bu özellik, köşe ve giden kenarlarının depolanacağı yeri tanımlar. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. |
-| EDGE | id | Dize | Bölüm başına benzersiz olarak uygulandı. Varsayılan olarak otomatik oluşturulur. Kenarlar genellikle bir KIMLIK tarafından benzersiz bir şekilde alınması gereksinimini içermez. |
-| EDGE | label | Dize | Bu özellik, iki köşelerin sahip olduğu ilişkinin türünü tanımlamak için kullanılır. |
-| EDGE | properties | Dize, Boolean, sayısal | Her bir kenarda anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
+| İzdüşüm | Kimlik | Dize | Bölüm başına benzersiz olarak uygulandı. Ekleme sırasında bir değer sağlanmazsa, otomatik olarak oluşturulan bir GUID depolanır. |
+| İzdüşüm | etiket | Dize | Bu özellik, köşeyi temsil eden varlık türünü tanımlamak için kullanılır. Değer sağlanmazsa, varsayılan "köşe" değeri kullanılacaktır. |
+| İzdüşüm | properties | Dize, Boolean, sayısal | Her köşede anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
+| İzdüşüm | bölüm anahtarı | Dize, Boolean, sayısal | Bu özellik, köşe ve giden kenarlarının depolanacağı yeri tanımlar. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. |
+| Edge | Kimlik | Dize | Bölüm başına benzersiz olarak uygulandı. Varsayılan olarak otomatik oluşturulur. Kenarlar genellikle bir KIMLIK tarafından benzersiz bir şekilde alınması gereksinimini içermez. |
+| Edge | etiket | Dize | Bu özellik, iki köşelerin sahip olduğu ilişkinin türünü tanımlamak için kullanılır. |
+| Edge | properties | Dize, Boolean, sayısal | Her bir kenarda anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
 
 > [!NOTE]
 > Kenarları, kendi değeri kaynak köşelerine göre otomatik olarak atandığından bölüm anahtarı değeri gerektirmez. [Grafik bölümlendirme](graph-partitioning.md) makalesinde daha fazla bilgi edinin.
@@ -75,7 +75,7 @@ Bir ortak giriş, tek bir varlığın özelliklerini ayrı köşeler olarak eşm
 
 ![Özellikler için köşeleri olan varlık modeli.](./media/graph-modeling/graph-modeling-1.png)
 
-* **Özellik katıştırılmış**köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
+* **Özelliğe gömülü**köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
 
 ![Özellikler için köşeleri olan varlık modeli.](./media/graph-modeling/graph-modeling-2.png)
 
@@ -92,9 +92,9 @@ Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarl
 
 Edge nesnelerinin, `out()` veya `outE()` işlevi kullanılırken bir çapraz geçiş tarafından izlenen varsayılan bir yönü vardır. Tüm köşeler giden kenarlarıyla depolandığından, bu doğal yönün kullanılması verimli bir işlem ile sonuçlanır. 
 
-Ancak, `in()` işlevi kullanılarak bir kenarın ters yönünde geçiş yapmak, her zaman bir çapraz bölüm sorgusuna neden olur. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. `in()` İşlevi kullanarak sürekli geçiş yapmanız gerekiyorsa, her iki yönde de kenar eklenmesi önerilir.
+Ancak, `in()` işlevini kullanarak bir kenarın ters yönünde geçiş yapmak, her zaman bir çapraz bölüm sorgusuna neden olur. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. `in()` işlevini kullanarak sürekli geçiş yapmanız gerekiyorsa, her iki yönde de kenar eklenmesi önerilir.
 
-Gremlin adımında `.to()` veya `.from()` koşullarını kullanarak kenar yönünü belirleyebilirsiniz. `.addE()` Ya da [Gremlin API için toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)'nı kullanarak.
+`.addE()` Gremlin adımında `.to()` veya `.from()` koşullarını kullanarak kenar yönünü belirleyebilirsiniz. Ya da [Gremlin API için toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)'nı kullanarak.
 
 > [!NOTE]
 > Edge nesnelerinin varsayılan olarak bir yönü vardır.

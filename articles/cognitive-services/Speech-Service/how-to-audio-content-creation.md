@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579639"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554986"
 ---
-# <a name="audio-content-creation"></a>Ses Içeriği oluşturma
+# <a name="audio-content-creation"></a>Ses İçeriği Oluşturma
 
 [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation) , Microsoft 'un Uygulamalarınız ve ürünleriniz için kendi metin okuma çıktısını özelleştirmenizi ve ayarlamanıza olanak tanıyan bir çevrimiçi araçtır. Bu aracı, daha doğru doğal ifadeler için genel ve özel seslere ince ayar yapmak ve çıktunuzu bulutta yönetmek için kullanabilirsiniz.
 
@@ -43,7 +43,7 @@ Bu diyagramda, özelleştirilmiş konuşmaya metin çıkışlarını ayarlama ve
 
 Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımları izleyin.
 
-1. [Azure hesabına kaydolmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) ve [bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
+1. [Azure hesabına kaydolmak](get-started.md#try-the-speech-service-using-a-new-azure-account) ve [bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
 2. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açın.
 3. Mevcut bir projeyi seçin veya **Yeni oluştur**' a tıklayın.
 4. Aboneliğinizi istediğiniz zaman, üst gezinti bölmesinde bulunan **Ayarlar** seçeneğiyle değiştirebilirsiniz.

@@ -1,7 +1,7 @@
 ---
 title: App-LUSıS Yayımla
 titleSuffix: Azure Cognitive Services
-description: Oluşturma ve etkin LUIS uygulamanızı test etme bitirdikten sonra istemci uygulamanız için kullanılabilir uç noktaya yayımlayarak kolaylaştırır.
+description: Etkin LUSıS uygulamanızı oluşturma ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f213c1d43930075c78cf81de345f612e46bbfb1c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221715"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554837"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
 
@@ -45,7 +45,7 @@ Bu, yayımlama yuvalarını iki farklı uç noktada veya aynı sürüme sahip ol
 
 ### <a name="publishing-regions"></a>Yayımlama bölgeleri
 
-Uygulama, ->  **[Azure kaynaklarını](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **Yönet** sayfasından LUO portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır. 
+Uygulama, ->  **[Azure kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **Yönet** sayfasından LUO portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır. 
 
 Örneğin, [www.Luis.ai](https://www.luis.ai)üzerinde oluşturulan bir uygulama için, iki bölgede bir Luo kaynağı oluşturursanız, **westus** ve **eastus**ve bunları uygulamaya kaynak olarak eklerseniz, uygulama her iki bölgede da yayımlanır. LUO bölgeleri hakkında daha fazla bilgi için bkz. [bölgeler](luis-reference-regions.md).
 
@@ -57,7 +57,7 @@ Uygulama, ->  **[Azure kaynaklarını](/luis-how-to-azure-subscription.md#assign
 
 Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
 
-* Yaklaşım analizi
+* Duygu analizi
 * Yazım denetimi-yalnızca v2 tahmin uç noktası
 * Konuşma primi 
 
@@ -67,17 +67,17 @@ Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yöne
 
 Uygulamanız başarıyla yayımlandığında, tarayıcının en üstünde bir başarı bildirimi görüntülenir. Bildirim Ayrıca uç noktalara bir bağlantı içerir. 
 
-Uç nokta URL'sini gerekiyorsa, bağlantıyı seçin. Üst menüden **Yönet** ' i seçip sol menüden **Azure kaynakları** ' nı seçerek uç nokta URL 'lerine de ulaşabilirsiniz. 
+Uç nokta URL 'sine ihtiyacınız varsa bağlantıyı seçin. Üst menüden **Yönet** ' i seçip sol menüden **Azure kaynakları** ' nı seçerek uç nokta URL 'lerine de ulaşabilirsiniz. 
 
-## <a name="sentiment-analysis"></a>Yaklaşım analizi
+## <a name="sentiment-analysis"></a>Duygu analizi
 
 <a name="enable-sentiment-analysis"></a>
 
 Yaklaşım analizi, LUTO 'NıN yaklaşım ve anahtar tümceciği analizi sağlamak için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ile tümleştirilemesine olanak tanır. 
 
-Metin analizi anahtarı belirtmeniz gerekmez ve Azure hesabınızda bu hizmet için fatura ücret alınmaz. 
+Bir Metin Analizi anahtarı sağlamanız gerekmez ve Azure hesabınızda bu hizmet için faturalandırma ücreti yoktur. 
 
-Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri. `positive`, `neutral`ve `negative` 'nin yaklaşım etiketi desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler. 
+Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır. `positive`, `neutral`ve `negative` 'nin yaklaşım etiketi desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler. 
 
 Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-concept-data-extraction.md#sentiment-analysis)
 

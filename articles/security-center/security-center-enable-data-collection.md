@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi 'nde veri koleksiyonu | Microsoft Docs
-description: " Azure Güvenlik Merkezi 'nde veri toplamayı etkinleştirmeyi öğrenin. "
+description: Bu makalede, bir Log Analytics aracısının nasıl yükleneceği ve toplanan verilerin depolandığı bir Log Analytics çalışma alanının nasıl ayarlanacağı açıklanır.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4b67e7a2ee9f2d734d927b3488cc15ca310f4295
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162680"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559052"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı. Log Analytics Aracısı Ayrıca kilitlenme bilgi döküm dosyalarını çalışma alanınıza kopyalar.
 
-Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, yanlış yapılandırılmış işletim sistemi güvenlik ayarları, uç nokta koruma etkinleştirme ve sistem durumu ve tehdit algılamaları. 
+Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, yanlış yapılandırılmış işletim sistemi güvenlik ayarları, uç nokta koruma durumu ve sistem durumu ve tehdit algılamaları. 
 
 Bu makalede, bir Log Analytics aracısının nasıl yükleneceği ve toplanan verilerin depolandığı bir Log Analytics çalışma alanının nasıl ayarlanacağı açıklanır. Veri toplamayı etkinleştirmek için her iki işlem de gereklidir. 
 

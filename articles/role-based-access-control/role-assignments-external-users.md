@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802678"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555558"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>RBAC kullanarak dış Konuk kullanıcılar için Azure kaynaklarına erişimi yönetme
 
@@ -203,7 +203,7 @@ Bir konuk kullanıcıya bir dizin erişimi verildiyse, ancak Azure portal erişi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalında Azure Active Directory B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md)
+- [Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin](../active-directory/b2b/add-users-administrator.md)
 - [Azure Active Directory B2B işbirliği kullanıcısının özellikleri](../active-directory/b2b/user-properties.md)
 - [B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
-- [Konuk kullanıcıyı ortak yönetici olarak ekleme](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)
+- [Konuk kullanıcıyı ortak yönetici olarak ekleme](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

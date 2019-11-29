@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 2133819ce7c298e2f73fdc5a68b80b64f9e72ea7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c86df7c50e59309f921c60738870407e74a23219
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480414"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555209"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
@@ -41,7 +41,7 @@ Arama sonuçlarındaki **uygulama satırı IoT Central** öğesini seçin.
 
 Formdaki tüm alanları doldurur. Bu form, [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde uygulama oluşturmak için doldurduğunuz forma benzer. Daha fazla bilgi için [IoT Central uygulaması oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı bölümüne bakın.
 
-**Örnek contoso**, **özel uygulama** ve **örnek devsetleri** uygulama şablonları olarak seçerek genel özelliklerle IoT Central uygulama oluşturabilirsiniz, diğer tüm uygulama şablonları genel önizleme özelliklerini kullanır.
+Uygulama şablonları olarak **örnek contoso**, **özel uygulama** ve **örnek devkits** ' i seçerek genel kullanıma sunulan özelliklerle IoT Central uygulama oluşturabilirsiniz, diğer tüm uygulama şablonları genel önizleme özelliklerini kullanır.
 
 ![IoT Central form oluştur](media/howto-manage-iot-central-from-portal/image6a.png)
 

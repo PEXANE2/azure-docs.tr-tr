@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269370"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560141"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows 'da Azure dosyaları sorunlarını giderme
 
@@ -146,7 +146,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
 Portalda bir Azure dosya paylaşımınıza gözattığınızda, şu hatayı alabilirsiniz:
 
 Yetkilendirme hatası  
-Erişim izniniz yok 
+Erişiminiz yok 
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Neden 1: Kullanıcı hesabınızın depolama hesabına erişimi yok
 
@@ -266,7 +266,7 @@ Ağ üzerinden bir dosya kopyalandığında, dosya, düz metin olarak iletilir v
 ### <a name="cause"></a>Nedeni
 Şifreleme dosya sistemi (EFS) kullanıyorsanız, bu sorun oluşabilir. BitLocker ile şifrelenen dosyalar Azure dosyalarına kopyalanabilir. Ancak, Azure dosyaları NTFS EFS 'yi desteklemez.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 Ağ üzerinden bir dosyayı kopyalamak için, önce onu çözmelisiniz. Aşağıdaki yöntemlerden birini kullanın:
 
 - **Copy/d** komutunu kullanın. Şifrelenmiş dosyaların hedefte şifresi çözülmüş dosyalar olarak kaydedilmesine izin verir.
@@ -295,17 +295,29 @@ Bu sorunu çözmek için **DirectoryCacheEntrySizeMax** kayıt defteri değerini
  
 Örneğin, bunu 0x100000 olarak ayarlayabilir ve performansın daha iyi olup olmadığını görebilirsiniz.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hata AadDsTenantNotFound Azure dosyaları için Azure Active Directory kimlik doğrulamasını etkinleştirme "Kiracı kimliği AAD-Tenant-ID" olan etkin kiracılar bulunamıyor
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hata AadDsTenantNotFound, Azure dosyaları için Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulamasını etkinleştirme "Kiracı kimliği AAD-Tenant-ID" olan etkin kiracılar bulunamıyor
 
 ### <a name="cause"></a>Nedeni
 
-[Azure dosyaları için Azure Active Directory (AAD) kimlik doğrulamasını](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) , [AAD etki alanı HIZMETI 'nın (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) ilişkili aboneliğin AAD kiracısında oluşturulabileceği bir depolama hesabında etkinleştirmeye çalıştığınızda hata AadDsTenantNotFound olur.  
+[Azure dosyaları için Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulamasını](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) , [AAD etki alanı HIZMETI 'nın (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) ilişkili aboneliğin AAD kiracısında oluşturulabileceği bir depolama hesabında etkinleştirmeye çalıştığınızda hata AadDsTenantNotFound olur.  
 
 ### <a name="solution"></a>Çözüm
 
 Depolama hesabınızın dağıtıldığı aboneliğin AAD kiracısında AAD DS 'yi etkinleştirin. Yönetilen bir etki alanı oluşturmak için AAD kiracısının yönetici ayrıcalıklarına sahip olmanız gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirmek](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)için adım adım yönergeleri izleyin.
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Hata ' sistem hatası 1359 oluştu. Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulaması etkinken dosya paylaşımlarına SMB erişimi üzerinden alınan bir iç hata '
+
+### <a name="cause"></a>Nedeni
+
+Hata ' sistem hatası 1359 oluştu. Bir iç hata ', bir sayısal karakterle başlayan etki alanı DNS adına sahip bir AAD DS kimlik doğrulaması ile dosya paylaşımınıza bağlanmaya çalıştığınızda oluşur. Örneğin, AAD DS etki alanı DNS adınız "1domain" ise, AAD kimlik bilgilerini kullanarak dosya paylaşımının bağlamaya çalışırken bu hatayı alırsınız. 
+
+### <a name="solution"></a>Çözüm
+
+Şu anda, aşağıdaki kurallarla geçerli olan yeni bir etki alanı DNS adı kullanarak AAD DS 'nizi yeniden dağıtmaya göz önüne alabilirsiniz:
+- Adlar sayısal bir karakterle başlayamaz.
+- Adların uzunluğu 3 ile 63 karakter arasında olmalıdır.
 
 ## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

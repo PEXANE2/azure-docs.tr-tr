@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000464"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555528"
 ---
 # <a name="get-started-with-device-management-python"></a>Cihaz yönetimini kullanmaya başlama (Python)
 
@@ -29,9 +29,9 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Bu öğreticinin sonunda iki Python konsol uygulamanız vardır:
 
-* daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan **dmpatterns_getstarted_device. Kopyala**, bir yeniden başlatma doğrudan yöntemi alır, fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
+* daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan **dmpatterns_getstarted_device. Kopyala**, bir yeniden başlatma doğrudan yöntemi alır, bir fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
 
-* **dmpatterns_getstarted_service. Kopyala**, sanal cihaz uygulamasında doğrudan bir yöntemi çağırır, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
+* sanal cihaz uygulamasında doğrudan bir yöntemi çağıran **dmpatterns_getstarted_service. Kopyala**, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -39,7 +39,7 @@ Bu öğreticinin sonunda iki Python konsol uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -63,13 +63,9 @@ Bu bölümde şunları yapacaksınız:
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Azure-ıothub-Service-Client için PIP paketleri yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
-   >
-
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde **dmpatterns_getstarted_device. Kopyala** adlı bir dosya oluşturun.
 
-3. `import` **Dmpatterns_getstarted_device. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin.
+3. **Dmpatterns_getstarted_device. Kopyala** dosyasının başlangıcına aşağıdaki `import` deyimlerini ekleyin.
 
     ```python
     import threading
@@ -78,7 +74,7 @@ Bu bölümde şunları yapacaksınız:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. **CONNECTION_STRING** değişkenini ekleyin. Yer tutucu `{deviceConnectionString}` değerini, cihaz bağlantı dizeniz ile değiştirin. Daha önce Bu bağlantı dizesini [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)bölümünde kopyaladınız.  
+4. **CONNECTION_STRING** değişkenini ekleyin. `{deviceConnectionString}` yer tutucu değerini cihaz bağlantı dizeniz ile değiştirin. Daha önce Bu bağlantı dizesini [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)bölümünde kopyaladınız.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -161,12 +157,12 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     ```
 
    > [!NOTE]
-   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   > Azure-ıothub-Service-Client için PIP paketi şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
    >
 
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde **dmpatterns_getstarted_service. Kopyala** adlı bir dosya oluşturun.
 
-3. `import` **Dmpatterns_getstarted_service. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin.
+3. **Dmpatterns_getstarted_service. Kopyala** dosyasının başlangıcına aşağıdaki `import` deyimlerini ekleyin.
 
     ```python
     import sys, time
@@ -175,7 +171,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-4. Aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu `{IoTHubConnectionString}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. Yer tutucu `{deviceId}` değerini, [IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde kaydettiğiniz cihaz kimliğiyle değiştirin.
+4. Aşağıdaki değişken bildirimlerini ekleyin. `{IoTHubConnectionString}` yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `{deviceId}` yer tutucu değerini, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)KAYDETTIĞINIZ cihaz kimliği ile değiştirin.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

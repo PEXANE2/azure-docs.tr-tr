@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84cb2b465735532ff44e35ab7a2fe4e9bb224e61
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150008"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559077"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub 'ına akış
 Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede, farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.
@@ -57,7 +57,7 @@ Bir olay hub 'ına doğrudan akış yapamazsınız, Azure depolama 'ya yazabilir
 | SumoLogic | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
 | ArcSight | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
 | Syslog sunucusu | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
-| Logrhythd | Bir olay hub 'ından günlükleri toplamak için Logrhythd 'yi ayarlama yönergeleri [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+| Logrhythd | Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 2844b48b3d832e8d9ec659ba657879d683016aee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217667"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555094"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -156,7 +156,7 @@ Bu, iki saat içinde Azure 'a yüklenemediğinde ve şirket içinde barındırı
 
 Şirket içinde barındırılan IR makinesinde CPU ve bellek kullanımını izlemeye devam edin ve CPU ve belleğin tam olarak kullanıldığını gördüğünüzde makinenin ölçeğini ölçeklendirmeye veya birden çok makineye ölçeğe hazır olun. 
 
-Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaştığınızda, Azure Data Factory eşzamanlılık veya `parallelCopies` ayarını küçültün ya da ağ ve verilerin bant genişliği veya g/ç işlem/saniye (ıOPS) sınırlarını artırmayı deneyin depolaya. 
+Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaştığınızda, Azure Data Factory eşzamanlılık veya `parallelCopies` ayarını küçültün ya da ağ ve veri depolarındaki bant genişliği veya g/ç işlem/sn (ıOPS) sınırlarını artırmayı deneyin. 
 
 
 ### <a name="estimate-your-pricing"></a>Fiyatlandırmanızı tahmin etme 
@@ -190,7 +190,7 @@ Aşağıdaki deyimlerin doğru olduğunu varsayalım:
 
 Daha fazla bilgi için aşağıdaki makalelere ve kılavuzlara bakın:
 
-- [Azure Data Factory kullanarak şirket içi ilişkisel veri ambarı veritabanından Azure 'a veri geçirme](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Azure Data Factory kullanarak şirket içi ilişkisel veri ambarı veritabanından Azure 'a veri geçirme](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439750"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561420"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -60,8 +60,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="supported-versions-of-jira"></a>Desteklenen JIRA sürümleri
 
-* JIRA Core ve Software: 6,4 ile 8.2.4
-* JIRA Service Desk 3.0.0 to 4.2.1
+* JIRA Core ve Software: 6,4 ile 8.5.1
+* JIRA Service Desk 3.0.0 to 4.5.1
 * JIRA Ayrıca 5,2 'yi destekler. Daha fazla ayrıntı için [Microsoft Azure Active Directory JIRA 5,2 için çoklu oturum açma](jira52microsoft-tutorial.md) 'yı tıklatın
 
 > [!NOTE]
@@ -111,7 +111,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. **Tanımlayıcı** kutusuna şu kalıbı kullanarak bir URL yazın: `https://<domain:port>/`
+    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<domain:port>/`
 
     c. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<domain:port>/plugins/servlet/saml/auth`
 
@@ -130,7 +130,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
 
@@ -246,11 +246,11 @@ Azure AD kullanıcılarının JIRA şirket içi sunucusunda oturum açmasını s
 
     ![Çalışan Ekle](./media/jiramicrosoft-tutorial/user4.png) 
 
-    a. E- **posta adresi** metin kutusuna B.simon@contoso.com gibi kullanıcının e-posta adresini yazın.
+    a. **E-posta adresi** metin kutusuna, B.simon@contoso.comgibi kullanıcının e-posta adresini yazın.
 
     b. **Tam ad** metin kutusuna B. Simon gibi kullanıcının tam adını yazın.
 
-    c. Kullanıcı **adı** metin kutusuna B.simon@contoso.com gibi kullanıcının e-postasını yazın.
+    c. Kullanıcı **adı** metin kutusuna B.simon@contoso.comgibi kullanıcının e-postasını yazın.
 
     d. **Parola** metin kutusuna kullanıcının parolasını yazın.
 

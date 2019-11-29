@@ -276,6 +276,8 @@
               href: storage-blob-containers-list.md
             - name: Özellikleri ve meta verileri yönetme (.NET)
               href: storage-blob-container-properties-metadata.md
+            - name: Değiştirilemezlik ilkelerini ayarlama ve yönetme
+              href: storage-blob-immutability-policies-manage.md
         - name: Blobları oluşturma ve yönetme
           items:
             - name: Blobları listeleme (.NET)

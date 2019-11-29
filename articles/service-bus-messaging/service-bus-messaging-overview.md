@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: e2460ab760811a3db39058eac74d519ca09046c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889825"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561593"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
-Microsoft Azure Service Bus tam olarak yönetilen bir kurumsal tümleştirme ileti aracısıdır. Service Bus, uygulamaları ve Hizmetleri ayrışırlar. Service Bus, zaman uyumsuz veriler ve durum aktarımı için güvenilir ve güvenli bir platform sunar.
+Microsoft Azure Service Bus tam olarak yönetilen bir kurumsal tümleştirme ileti aracısıdır. Service Bus, uygulamaları ve Hizmetleri ayrışırlar. Service Bus, verilerin ve durumun zaman uyumsuz aktarımı için güvenilir ve güvenli bir platform sunar.
 
 Veriler, farklı uygulamalar ve hizmetler arasında *iletiler* kullanılarak aktarılır. Bir ileti ikili biçimdedir ve JSON, XML veya yalnızca metin içerebilir. Daha fazla bilgi için bkz. [Integration Services](https://azure.com/integration).
 
@@ -43,7 +43,7 @@ Ad alanı, tüm mesajlaşma bileşenleri için bir kapsayıcıdır. Tek bir ad a
 
 Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalanır. Kabul edildikten sonra ileti yedekli depolama alanında güvenli bir şekilde tutulur. İletiler *çekme* moduna alınır ve yalnızca istendiğinde iletileri teslim edilir.
 
-## <a name="topics"></a>Konu başlıkları
+## <a name="topics"></a>Konular
 
 İleti göndermek ve almak için *konu başlıklarını* da kullanabilirsiniz. Bir kuyruk genellikle noktadan noktaya iletişim için kullanılır, buna karşın konu başlıkları yayımlama/abone olma senaryolarında yararlıdır.
 

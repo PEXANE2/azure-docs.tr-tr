@@ -9,18 +9,21 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: f26bde0aca1cc1af9c4533724394f6e5e9c7249f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0bd47de8862be4e66914b9748a00ce907acda526
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423274"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555497"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Python cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Bu adımlar, Windows işletim sistemi çalıştıran geliştirme makinenizde X.509 cihazının simülasyonunu yapmayı ve örnek Python kodu kullanarak bu sanal cihazı Cihaz Sağlama Hizmeti ve IoT hub’ınızla bağlamayı gösterir. 
+
+> [!IMPORTANT]
+> Bu makale yalnızca kullanım dışı v1 Python SDK 'Sı için geçerlidir. IoT Hub cihazı sağlama hizmeti için cihaz ve hizmet istemcileri henüz v2 sürümünde kullanılamaz. Takım şu anda v2 'yi Özellik eşliği 'na getirmek için çalışıyoruz.
 
 Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
 
@@ -32,16 +35,13 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
-> [!NOTE]
-> Bu kılavuz yalnızca artık kullanımdan kaldırılan v1 Python SDK için geçerlidir. Sanal X. 509.440 cihazları henüz v2 sürümünde desteklenmemektedir. Ekip şu anda iş başında v2 özelliğini Özellik eşliği olarak getiriyor.
-
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama 
 
 1. Visual Studio 'Yu yüklemeniz için Visual [studio](https://visualstudio.microsoft.com/vs/) 2015 veya sonraki bir sürümünü C++yüklediğinizden emin olun.
 
 2. [CMake derleme sistemini](https://cmake.org/download/) indirin ve yükleyin.
 
-3. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek [ araçlarının son sürümleri için ](https://git-scm.com/download/)Software Freedom Conservancy’nin Git istemci araçlarına`git` bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
+3. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 4. Bir komut istemi veya Git Bash’i açın. Cihaz benzetim kod örneği için GitHub deposunu kopyalayın.
     
@@ -73,9 +73,9 @@ Bu bölümde otomatik imzalanan bir X.509 sertifikası kullanacaksınız. Aşağ
 
 Benzetim cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturmak için Azure IoT C SDK'sından örnek kodu kullanacaksınız.
 
-1. *adlı*cmake`azure_iot_sdks.sln` klasöründe oluşturulan çözümü açın ve Visual Studio'da derleyin.
+1. `azure_iot_sdks.sln` adlı *cmake* klasöründe oluşturulan çözümü açın ve Visual Studio'da derleyin.
 
-2. **Sağlama\_Araçlar\_ klasörünün altında** dice**device\_enrollment** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**'yı seçin. Çözümü çalıştırın. 
+2. **Sağlama\_Araçlar** klasörünün altında **dice\_device\_enrollment** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**'yı seçin. Çözümü çalıştırın. 
 
 3. Çıktı penceresinde, istendiğinde tek kayıt için `i` girin. Çıktı penceresi, sanal cihazınız için yerel olarak oluşturulmuş X.509 sertifikasını görüntüler. 
     
@@ -98,7 +98,7 @@ Benzetim cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturma
 6. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 7. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *X.509*'u seçin.
+   - Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
    - *Birincil sertifika. pek veya. cer dosyası*' nın altında, önceki adımlarda oluşturulmuş **X509testcertificate. ped** sertifika dosyasını seçmek için *Dosya Seç* ' i seçin.
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
      - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
@@ -119,9 +119,9 @@ Benzetim cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturma
 2. [Python 2.x veya 3.x](https://www.python.org/downloads/) sürümünü indirip yükleyin. Kurulumunuzun gereksinimine uygun olarak 32 bit veya 64 bit yüklemeyi kullanmaya dikkat edin. Yükleme sırasında istendiğinde, platforma özgü ortam değişkeninize Python'u eklediğinizden emin olun. Python 2.x kullanıyorsanız, [Python paket yönetim sistemi *pip*'yi yüklemeniz veya yükseltmeniz](https://pip.pypa.io/en/stable/installing/) gerekebilir.
     
     > [!NOTE] 
-    > Windows kullanıyorsanız, ayrıca [Visual Studio 2015 için Visual C++ Yeniden Dağıtılabilir](https://www.microsoft.com/download/confirmation.aspx?id=48145)‘i yükleyin. pip paketleri, C DLL’lerini yüklemek/yürütmek için yeniden dağıtılabilir gerektirir.
+    > Windows kullanıyorsanız, ayrıca [Visual Studio 2015 için Visual C++ Yeniden Dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)‘i yükleyin. pip paketleri, C DLL’lerini yüklemek/yürütmek için yeniden dağıtılabilir gerektirir.
 
-3. Python paketlerini derlemek için [bu yönergeleri](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) uygulayın.
+3. Python paketlerini derlemek için [bu yönergeleri](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) uygulayın.
 
    > [!NOTE]
    > `pip` kullanıyorsanız `azure-iot-provisioning-device-client` paketini de yüklemeyi unutmayın.

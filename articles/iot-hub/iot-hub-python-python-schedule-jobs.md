@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c424c18538a4e428c0e713bb814c2febe28d2d04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999506"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555569"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>İşleri zamanlama ve yayınlama (Python)
 
@@ -29,9 +29,9 @@ Kavramsal olarak, bir iş bu eylemlerden birini sarmalar ve yürütmenin ilerlem
 
 Bu makalelerdeki her bir özellik hakkında daha fazla bilgi edinin:
 
-* Cihaz ikizi ve özellikleri: [Cihaz](iot-hub-python-twin-getstarted.md) ikizlerini ve [öğreticisini kullanmaya başlayın: Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
+* Cihaz ikizi ve özellikleri: [cihaz](iot-hub-python-twin-getstarted.md) Ikizlerini ve [öğreticisini kullanmaya başlama: cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
 
-* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: doğrudan Yöntemler](quickstart-control-device-python.md)
+* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan](iot-hub-devguide-direct-methods.md) Yöntemler ve [öğretici: doğrudan Yöntemler](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -57,7 +57,7 @@ Bu öğreticinin sonunda iki Python uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -75,13 +75,9 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Azure-ıothub-Service-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
-   >
-
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde yeni bir **simDevice.py** dosyası oluşturun.
 
-3. **SimDevice.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin. Yukarıda `deviceConnectionString` oluşturduğunuz cihazın bağlantı dizesiyle değiştirin:
+3. **SimDevice.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenlerini ekleyin. `deviceConnectionString`, yukarıda oluşturduğunuz cihazın bağlantı dizesiyle değiştirin:
 
     ```python
     import threading
@@ -117,7 +113,7 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
             print (patch)
     ```
 
-6. **Kilit kapısı** yöntemi için işleyiciyi kaydetmek üzere aşağıdaki kodu ekleyin. Ayrıca, `main` yordamını da dahil edin:
+6. **Kilit kapısı** yöntemi için işleyiciyi kaydetmek üzere aşağıdaki kodu ekleyin. Ayrıca `main` yordamını da dahil edin:
 
     ```python
     def iothub_jobs_sample_run():
@@ -189,12 +185,12 @@ Bu bölümde, doğrudan yöntem kullanan bir cihazda uzak **Lockkapısı** Başl
     ```
 
    > [!NOTE]
-   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   > Azure-ıothub-Service-Client için PIP paketi şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
    >
 
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde yeni bir **scheduleJobService.py** dosyası oluşturun.
 
-3. **ScheduleJobService.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin. Yer tutucusunu `{IoTHubConnectionString}` , [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. Yer tutucusunu `{deviceId}` , [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kaydettiğiniz cihaz kimliğiyle değiştirin:
+3. **ScheduleJobService.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenlerini ekleyin. `{IoTHubConnectionString}` yer tutucusunu, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `{deviceId}` yer tutucusunu, [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de KAYDETTIĞINIZ cihaz kimliğiyle değiştirin:
 
     ```python
     import sys
@@ -263,7 +259,7 @@ Bu bölümde, doğrudan yöntem kullanan bir cihazda uzak **Lockkapısı** Başl
             print ( "Device twin updated." )
     ```
 
-6. İşleri zamanlamak ve iş durumunu güncelleştirmek için aşağıdaki kodu ekleyin. Ayrıca, `main` yordamını da dahil edin:
+6. İşleri zamanlamak ve iş durumunu güncelleştirmek için aşağıdaki kodu ekleyin. Ayrıca `main` yordamını da dahil edin:
 
     ```python
     def iothub_jobs_sample_run():

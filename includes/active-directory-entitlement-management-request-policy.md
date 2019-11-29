@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260899"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566380"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
@@ -25,7 +25,7 @@ Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak is
 
     ![Erişim paketi Istekleri-dizininizdeki kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Aşağıdaki seçeneklerden birini seçin:
+1. Aşağıdaki seçeneklerden birini belirleyin:
 
     |  |  |
     | --- | --- |
@@ -60,7 +60,7 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 
     ![Erişim paketi Istekleri-dizininizde olmayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Aşağıdaki seçeneklerden birini seçin:
+1. Aşağıdaki seçeneklerden birini belirleyin:
 
     |  |  |
     | --- | --- |
@@ -106,6 +106,14 @@ Onay bölümünde, kullanıcılar bu erişim paketini istemesi durumunda bir ona
 - Tek veya 2 aşamalı onay için seçili her Onaylayandan onay gerekli değildir.
 - Onay kararı, onaylayan kullanıcının isteği gözden geçirmelerine göre belirlenir.
 
+Bir istek ilkesine onaylayanlar ekleme hakkında bir gösterim için aşağıdaki videoyu izleyin:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
+
+Bir istek ilkesine çok aşamalı onay ekleme hakkında bir gösterim için aşağıdaki videoyu izleyin:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
+
 Erişim paketine yönelik isteklerin onay ayarlarını belirtmek için şu adımları izleyin:
 
 1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet**olarak ayarlayın. Ya da isteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır**olarak ayarlayın.
@@ -115,7 +123,6 @@ Erişim paketine yönelik isteklerin onay ayarlarını belirtmek için şu adım
 1. Şimdi isteklerin tek veya 2 aşamalı onay gerektirmesine göre belirlenir. Tek aşamalı onay için **1** ' e geçiş yapma veya 2 aşamalı onay için **2** ' **ye geçişi ayarlama** .
 
     ![Erişim paketi Istekleri-onay ayarları](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 
 Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için aşağıdaki adımları kullanın: 
 

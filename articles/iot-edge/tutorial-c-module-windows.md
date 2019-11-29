@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c098b67ab2782fa3cf29b5b19aa198f899ba69c0
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 332229dbcb35a209721fc9b457ebf1e804eaca5f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890608"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561027"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları için C IoT Edge modülü geliştirme
 
@@ -42,7 +42,7 @@ Windows cihazlarına C modülleri geliştirme ve dağıtmaya yönelik seçenekle
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![Visual Studio 'da WinAMD64 için C modülleri geliştirme](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Windows kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Windows cihazları için IoT Edge modüller](tutorial-develop-for-windows.md)geliştirme. Bu Öğreticiyi tamamladıktan sonra, aşağıdaki önkoşulların yerine gelmelidir: 
 
@@ -383,10 +383,12 @@ Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtreleme kodunu içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio ile modül geliştirme](how-to-visual-studio-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
+Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtreleme kodunu içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio ile modül geliştirme](how-to-visual-studio-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Sanal sıcaklık modülü dahil olmak üzere IoT Edge modülleriyle ilgili örnekler için, bkz. [IoT Edge modül örnekleri](https://github.com/Azure/iotedge/tree/master/edge-modules) ve [IoT C SDK örnekleri](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples). 
+
+Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Functions](tutorial-deploy-function.md)
+> [İşlevler](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [özel görüntü işleme hizmeti](tutorial-deploy-custom-vision.md)

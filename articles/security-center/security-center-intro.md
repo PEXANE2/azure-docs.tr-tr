@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi nedir?| Microsoft Docs
-description: Azure Güvenlik Merkezi, önemli işlevleri ve nasıl çalıştığı hakkında bilgi edinin.
+description: Bu sayfada Güvenlik Merkezi 'nin başlıca avantajları açıklanır. güvenlik durumunuzun keşfedilmesinin yanı sıra bulut ve şirket içi kaynakların kapsamı ile geliştiriyoruz.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202099"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558627"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -37,11 +37,11 @@ Azure Güvenlik Merkezi, en çok üç acil güvenlik sorunlarını giderir:
 
 Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, güvenlik merkezi şunları yapmak üzere araçlar sağlar:
 
--   **Güvenlik sonrası güvenliği güçlendir**: Güvenlik Merkezi ortamınızı değerlendirir ve kaynaklarınızın durumunu anlamanıza ve güvenli olup olmadıkları konusunda bilgi sağlamanıza olanak sağlar.
+-   **Güvenliği güçlendirin**: Güvenlik Merkezi ortamınıza değerlendirir ve kaynaklarınızın durumunu anlamanıza ve güvenli olup olmadığınıza olanak sağlar.
 
--   **Tehditlere karşı koruma**: Güvenlik Merkezi, iş yüklerinizi değerlendirir ve tehdit önleme önerileri ve tehdit algılama uyarıları oluşturur.
+-   **Tehditlere karşı koruma**: güvenlik merkezi iş yüklerinizi değerlendirir ve tehdit önleme önerilerini ve tehdit algılama uyarılarını yayınlar.
 
--   **Daha hızlı**sağlayın: Güvenlik Merkezi 'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, güvenlik merkezi 'nin dağıtımı kolay hale getirilmiştir ve Azure hizmetleri ile kolayca sağlama ve koruma sağlar.
+-   **Daha hızlı ulaşın**: Güvenlik Merkezi 'nde, her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, güvenlik merkezi 'nin dağıtımı kolay hale getirilmiştir ve Azure hizmetleri ile kolayca sağlama ve koruma sağlar.
 
 ## <a name="architecture"></a>Mimari
 
@@ -145,5 +145,5 @@ Kapsamlı günlük koleksiyonu-Windows ve Linux 'daki Günlükler, güvenlik Ana
 
 - Güvenlik Merkezi ile çalışmaya başlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 - Güvenlik Merkezi’nin Ücretsiz fiyatlandırma katmanı, Azure aboneliğiniz ile etkinleştirilir. Gelişmiş güvenlik yönetimi ve tehdit algılama yeteneklerinden yararlanmak için Standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman ücretsiz olarak denenolabilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
-- Güvenlik Merkezi standardını şimdi [etkinleştirmek için hazır olduğunuzda hızlı başlangıç: Azure aboneliğinizi Güvenlik Merkezi standardına](security-center-get-started.md) eklemek, adımlarda size yol gösterir.
+- Şimdi Güvenlik Merkezi Standart katmanını etkinleştirmeye hazırsanız, [Hızlı Başlangıç: Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md) başlıklı konuda işlem adım adım açıklanmıştır.
 

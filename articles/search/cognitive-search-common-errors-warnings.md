@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286991"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555038"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -34,10 +34,10 @@ API sürümü `2019-05-06`başlayarak, öğe düzeyinde Dizin Oluşturucu hatala
 
 | Özellik | Açıklama | Örnek |
 | --- | --- | --- |
-| anahtar | Hatanın veya uyarıdan etkilenen belge kimliği. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| anahtar | Hatanın veya uyarıdan etkilenen belge KIMLIĞI. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | ad | Hatanın veya uyarının nerede oluştuğunu açıklayan işlem adı. Bu, şu yapı tarafından oluşturulur: [Kategori]. [alt kategori]. [resourceType]. Kaynak | Belgetextraction. azureblob. myBlobContainerName Enrichment. WebApiSkill. mySkillName Projection. Searchındex. OutputFieldMapping. mbir Putfieldname Projection. Searchındex. MergeOrUpload. Myındexname Projection. KnowledgeStore. Table. myTableName |
 | message | Hatanın veya uyarının üst düzey bir açıklaması. | Web API isteği başarısız olduğundan yetenek yürütülemedi. |
-| details | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... yığın izlemenin geri kalanı... |
+| bilgileri | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... yığın izlemenin geri kalanı... |
 | Belgetationlink | Hata ayıklama ve sorunu çözme hakkında ayrıntılı bilgiler içeren ilgili belgelere bir bağlantı. Bu bağlantı genellikle bu sayfada aşağıdaki bölümlerden birini işaret eder. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ API sürümü `2019-05-06`başlayarak, öğe düzeyinde Dizin Oluşturucu hatala
 
 Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. `'{47.6,-122.1}'` yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih Tariheyse ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
@@ -57,7 +57,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 ## <a name="error-could-not-extract-document-content"></a>Hata: belge içeriği ayıklanamadı
 Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir PDF dosyası) ayıklayamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | blob boyut sınırının üzerinde | Belge, geçerli hizmet katmanınız için belge ayıklama için en büyük boyut `'134217728'` baytı aşan `'150441598'` bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob desteklenmeyen içerik türüne sahip | Belge desteklenmeyen içerik türüne sahip `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir P
 ## <a name="error-could-not-parse-document"></a>Hata: belge ayrıştırılamadı
 Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirtilen alan eşleme şemasına dönüştürülürken bir sorun oluştu. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
@@ -81,7 +81,7 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 ## <a name="error-could-not-execute-skill"></a>Hata: yetenek yürütülemedi
 Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | Geçici bağlantı sorunları | Geçici bir hata oluştu. Lütfen daha sonra tekrar deneyin. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 | Olası ürün hatası | Beklenmeyen bir hata oluştu. | Bu, bilinmeyen bir hata sınıfını gösterir ve bir ürün hatası olduğu anlamına gelebilir. Yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) girin. |
@@ -140,7 +140,7 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
 | Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
@@ -195,7 +195,7 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 }
 ```
 
-| Neden | Ayrıntılar/örnek | Çözüm |
+| Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | Beceri girişi yanlış türde | Gerekli yetenek girişi `X` `String`beklenen türde değil. Gerekli yetenek girişi `X` beklenen biçimde değil. | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
 | Yetenek girişi eksik | Gerekli yetenek girişi `X` eksik. | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve özellik adının büyük küçük harf, ek veya eksik `*` ve veri kaynağından alınan belgeler gerekli girdileri tanımlar. |
@@ -208,7 +208,7 @@ Aşağı akış beceriye yönelik isteğe bağlı `languageCode` girişi için g
 
 Veri ayarlamış olduğunuz tek bir dilde olduğunu biliyorsanız, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` yetenek girişini kaldırmalı ve bu beceri için dilin desteklendiğini varsayarak bunun yerine bu beceri için `defaultLanguageCode` yetenek parametresini kullanmanız gerekir.
 
-Veri ayarlamış olduğunuz dilin birden çok dil içerdiğini ve bu nedenle [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` girdisine ihtiyacınız olduğunu biliyorsanız, şunu içine geçirmeden önce desteklenmeyen dillerle metni filtrelemek Için bir [conditionalbeceri](cognitive-search-skill-conditional.md) eklemeyi göz önünde bulundurun. aşağı akış beceriye metin.  İşte bunun Entityrecognitionbeceri için nasıl görünebileceğini bir örnek:
+Veri ayarlamış olduğunuz birden çok dil içerdiğini ve bu nedenle [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` girdisine ihtiyacınız olduğunu biliyorsanız, metni aşağı akış yeteneklerine geçirmeden önce desteklenmeyen dillerle metni filtrelemek Için bir [conditionalbeceri](cognitive-search-skill-conditional.md) eklemeyi göz önünde bulundurun.  İşte bunun Entityrecognitionbeceri için nasıl görünebileceğini bir örnek:
 
 ```json
 {

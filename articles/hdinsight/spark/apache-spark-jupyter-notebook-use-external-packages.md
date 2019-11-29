@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494554"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561716"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494554"
 > * [Hücre Magic 'i kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Betik eylemini kullanma](apache-spark-python-package-installation.md)
 
-HDInsight 'ta Apache Spark kümesindeki bir [Jupyter Notebook](https://jupyter.org/) , kümede kullanıma hazır olmayan, topluluk tarafından katkıda bulunulan Apache **Maven** paketlerini kullanmak üzere nasıl yapılandıracağınızı öğrenin. 
+HDInsight 'ta Apache Spark kümesindeki bir [Jupyter Notebook](https://jupyter.org/) , kümede kullanıma hazır olmayan, topluluk tarafından katkıda bulunulan Apache **Maven** paketlerini kullanmak üzere nasıl yapılandıracağınızı öğrenin.
 
 [Maven deposunda](https://search.maven.org/) kullanılabilen paketlerin tüm listesini arayabilirsiniz. Ayrıca, diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, topluluk tarafından katkıda bulunulan paketlerin tam bir listesi [Spark paketlerinde](https://spark-packages.org/)bulunabilir.
 
@@ -29,61 +29,56 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdakilere sahip olmanız gerekir:
-
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
+
+* HDInsight üzerinde Spark ile Jupyter Notebook kullanma bilgisi. Daha fazla bilgi için bkz. [HDInsight üzerinde verileri yükleme ve sorguları çalıştırma Apache Spark](./apache-spark-load-data-run-query.md).
+
+* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure depolama için `wasb://`, Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya `adl://` `abfs://`. Azure depolama veya Data Lake Storage 2. için güvenli aktarım etkinse, URI `wasbs://` veya `abfss://`sırasıyla, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md)' i de görür.
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter not defterleri ile dış paketleri kullanma
 
-1. [Azure Portal](https://portal.azure.com/)’daki başlangıç panosunda Spark kümenizin kutucuğuna tıklayın (başlangıç panosuna sabitlediyseniz). Ayrıca **Tüm** > **HDInsight Kümelerine Gözat** altından kümenize gidebilirsiniz.
+1. Spark Kümenizin adı `CLUSTERNAME` `https://CLUSTERNAME.azurehdinsight.net/jupyter` gidin.
 
-1. Spark kümesi dikey penceresinden **Hızlı Bağlantılar**’a ve sonra **Küme Panosu** dikey penceresinden **Jupyter Not Defteri**’ne tıklayın. İstenirse, küme için yönetici kimlik bilgilerini girin.
+1. Yeni bir not defteri oluşturun. **Yeni**' yi ve ardından **Spark**' ı seçin.
 
-    > [!NOTE]  
-    > Aşağıdaki URL’yi tarayıcınızda açarak da Jupyter Notebook’a ulaşabilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
-    > 
-    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-
-1. Yeni bir not defteri oluşturun. **Yeni**' ye ve ardından **Spark**' a tıklayın.
-   
     ![Yeni bir Spark Jupyter Not defteri oluşturun](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Yeni bir Jupyter not defteri oluşturma")
 
-1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki not defteri adına tıklayın ve kolay bir ad girin.
-   
+1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki Not defteri adını seçin ve kolay bir ad girin.
+
     ![Not defteri için bir ad girin](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Not defteri adını belirtme")
 
-1. Not defterini harici bir paket kullanacak şekilde yapılandırmak için `%%configure` Magic kullanacaksınız. Dış paketleri kullanan not defterlerinde, ilk kod hücresinde `%%configure` Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
+1. Not defterini harici bir paket kullanacak şekilde yapılandırmak için `%%configure` Magic 'i kullanacaksınız. Dış paketleri kullanan not defterlerinde, ilk kod hücresinde `%%configure` Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
 
     >[!IMPORTANT]  
     >İlk hücrede çekirdeği yapılandırmayı unutursanız, `%%configure` `-f` parametresiyle kullanabilirsiniz, ancak bu oturum oturumunu yeniden başlatır ve tüm ilerleme kaybedilir.
 
     | HDInsight sürümü | Komut |
     |-------------------|---------|
+    | HDInsight 3,5 ve HDInsight için 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |HDInsight 3,3 ve HDInsight için 3,4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
-    | HDInsight 3,5 ve HDInsight için 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-1. Yukarıdaki kod parçacığı, Maven merkezi deposundaki Dış paketin Maven koordinatlarını bekler. Bu kod parçacığında, `com.databricks:spark-csv_2.10:1.4.0` **Spark-CSV** paketi için Maven koordinatı ' dir. Bir paket için koordinatları nasıl oluşturabileceğiniz aşağıda açıklanmaktadır.
-   
-    a. Maven deposundaki paketi bulun. Bu makalede [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)kullanırız.
-   
-    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,10 ve Spark 1.4.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. Spark Jupyıter çekirdeğinde veya Spark gönderme üzerinde `scala.util.Properties.versionString` çalıştırarak, kümeinizdeki Scala sürümünü bulabilirsiniz. Jupyıter Not defterlerindeki `sc.version` çalıştırarak, kümelerinizde Spark sürümünü bulabilirsiniz.
-   
+1. Yukarıdaki kod parçacığı, Maven merkezi deposundaki Dış paketin Maven koordinatlarını bekler. Bu kod parçacığında, `com.databricks:spark-csv_2.11:1.5.0` **Spark-CSV** paketi için Maven koordinatı ' dir. Bir paket için koordinatları nasıl oluşturabileceğiniz aşağıda açıklanmaktadır.
+
+    a. Maven deposundaki paketi bulun. Bu makalede [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv)kullanırız.
+
+    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,11 ve Spark 1.5.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. Spark Jupyıter çekirdeğinde veya Spark gönderme üzerinde `scala.util.Properties.versionString` çalıştırarak, kümeinizdeki Scala sürümünü bulabilirsiniz. Jupyıter Not defterlerindeki `sc.version` çalıştırarak, kümelerinizde Spark sürümünü bulabilirsiniz.
+
     ![Jupyter Not defteri ile dış paketleri kullanma](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Not defteri ile dış paketleri kullanma")
-   
+
     c. İki nokta üst üste ( **:** ) ayırarak üç değeri birleştirir.
-   
-        com.databricks:spark-csv_2.10:1.4.0
+
+        com.databricks:spark-csv_2.11:1.5.0
 
 1. Kod hücresini `%%configure` Magic ile çalıştırın. Bu, temel alınan Livy oturumu verdiğiniz paketi kullanacak şekilde yapılandırır. Not defterindeki sonraki hücrelerde, artık paketini aşağıda gösterildiği gibi kullanabilirsiniz.
-   
-        val df = sqlContext.read.format("com.databricks.spark.csv").
+
+        val df = spark.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-    HDInsight 3,6 için aşağıdaki kod parçacığını kullanmanız gerekir.
+    HDInsight 3,4 ve sonraki bir için aşağıdaki kod parçacığını kullanmanız gerekir.
 
-        val df = spark.read.format("com.databricks.spark.csv").
+        val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")

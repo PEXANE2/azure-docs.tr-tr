@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012608"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561242"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights bekletme yapılandırma
 
@@ -34,11 +34,11 @@ Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Ins
 
 ## <a name="configure-data-retention"></a>Veri saklamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Mevcut Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 
-1. **Ayarlar** başlığı altında **Yapılandır**' ı seçin.
+1. **Ayarlar** başlığı altında **depolama yapılandırması**' nı seçin.
 
     [![ayarları seçin ve ardından yapılandırın](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
@@ -50,7 +50,7 @@ Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Ins
 
     [![veri bekletme-kabul edin ve kaydedin.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
-1. Belgeleri gözden geçirdiğinizi ve veri kaybını karşılayan olası riskleri anladığınızı belirten onay kutusunu kabul edin. Değişiklikleri yapılandırmak için **Kaydet** ' i seçin.
+1. Veri kaybından oluşan olası riskleri anlamak için belgeleri gözden geçirin. Değişiklikleri yapılandırmak için **Kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

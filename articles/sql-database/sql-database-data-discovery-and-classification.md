@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: HT
+ms.openlocfilehash: 7a8fe0f21ea8b31fb26727e2220f7395e2d71c2c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548413"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555368"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 
@@ -128,7 +128,15 @@ Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izlem
 
 ![Denetim günlüğü](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-### <a name="manage-classifications"></a>Sınıflandırmaları Yönet
+## <a id="subheading-4"></a>İzinler
+
+Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını okuyabilir: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` ve `User Access Administrator`.
+
+Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını değiştirebilir: `Owner`, `Contributor``SQL Security Manager`.
+
+[Azure kaynakları Için RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) hakkında daha fazla bilgi edinin
+
+## <a id="subheading-5"></a>Sınıflandırmaları Yönet
 
 # <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanının tüm sınıflandırmalarını almak için kullanabilirsiniz.
@@ -152,8 +160,10 @@ Sınıflandırmaları programlı bir şekilde yönetmek için REST API 'Lerini d
 
 - [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -belirli bir veritabanının önerilen duyarlılık etiketlerini alır
 
-# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Azure SQL için PowerShell cmdlet 'ı](#tab/azure-portal-sqldb)
-Bir Azure SQL veritabanında tüm önerilen sütunları almak için PowerShell 'i kullanabilirsiniz.
+# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell cmdlet 'ı](#tab/azure-powelshell)
+Bir Azure SQL veritabanında ve yönetilen bir örnekte, önerilen tüm sütunları almak için PowerShell 'i kullanabilirsiniz.
+
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>Azure SQL veritabanı için PowerShell cmdlet 'ı
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -161,8 +171,7 @@ Bir Azure SQL veritabanında tüm önerilen sütunları almak için PowerShell '
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Yönetilen örnek için PowerShell cmdlet 'Leri](#tab/azure-powershell-mi)
-Yönetilen bir örnekteki tüm önerilen sütunları almak için PowerShell kullanabilirsiniz.
+### <a name="powershell-cmdlets-for-managed-instance"></a>Yönetilen örnek için PowerShell cmdlet 'Leri
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
@@ -170,22 +179,17 @@ Yönetilen bir örnekteki tüm önerilen sütunları almak için PowerShell kull
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
-## <a name="permissions"></a>İzinler
+---
 
-Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını okuyabilir: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` ve `User Access Administrator`.
-
-Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırmasını değiştirebilir: `Owner`, `Contributor``SQL Security Manager`.
-
-[Azure kaynakları Için RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) hakkında daha fazla bilgi edinin
-
-## <a id="subheading-5"></a>Sonraki adımlar
+## <a id="subheading-6"></a>Sonraki adımlar
 
 - [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md)hakkında daha fazla bilgi edinin.
 - Sınıflandırılan gizli verilerinize erişimi izlemek ve denetlemek için [Azure SQL veritabanı denetimini](sql-database-auditing.md) yapılandırmayı düşünün.
 
 <!--Anchors-->
-[SQL data discovery & classification overview]: #subheading-1
+[What is data discovery & classification]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
-[Automated/Programmatic classification]: #subheading-4
-[Next Steps]: #subheading-5
+[Permissions]: #subheading-4
+[Manage classifications]: #subheading-5
+[Next Steps]: #subheading-6

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: 5de28055a1b573b3326b717614f481b0e1158f1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064690"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555308"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -78,8 +78,8 @@ Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor. Azure [san
 * SAP Note [662452](https://launchpad.support.sap.com/#/notes/662452) , veri erişimi sırasında zayıf dosya sistemi performansına/hatalarına yönelik öneriye sahiptir (8,3 ad oluşturmayı devre dışı bırakma).
 * [SAP NetWeaver yüksek kullanılabilirliği 'ni bir Windows Yük devretme kümesine ve Azure 'daki SAP Ass/SCS örnekleri için dosya paylaşımında yükler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share) 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-* [ASCS küme yapılandırmasında araştırma bağlantı noktası ekle](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share#create-a-new-sap-service-and-sap-instance-resources)
-* [Bir yük devretme kümesine (A) SCS örneği yükleme](https:\www.sap.com\documents\2017\07\f453332f-c97c-0010-82c7-eda71af511fa.html) 
+* [ASCS küme yapılandırmasında araştırma bağlantı noktası ekle](sap-high-availability-installation-wsfc-file-share.md)
+* [Bir yük devretme kümesine (A) SCS örneği yükleme](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [Azure NetApp Files için SMB birimi oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 
@@ -162,7 +162,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>İkinci yoks/SCS küme düğümüne bir ASCS/SCS örneği yükler
 
-1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP SWPM yükleme aracı 'nı başlatın, daha sonra > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümüne **> > .**  
+1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP SWPM yükleme aracı 'nı başlatın, daha sonra > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümüne ** > .**  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Bir DBMS örneği ve SAP uygulama sunucuları yükler
 

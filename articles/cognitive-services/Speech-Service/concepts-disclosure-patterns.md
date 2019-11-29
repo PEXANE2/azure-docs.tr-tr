@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836990"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558998"
 ---
-# <a name="disclosure-design-patterns"></a>Açıklama tasarım desenleri
+# <a name="disclosure-design-patterns"></a>Tasarım desenlerini açıklama
 Artık yapay sesli&#39;deneyiminize yönelik doğru [Açıklama düzeyini](concepts-disclosure-guidelines.md#disclosure-assessment) saptadığınıza göre,&#39;olası tasarım düzenlerini araştırmak için iyi bir zaman vardır.
 ## <a name="overview"></a>Genel Bakış
 Yapay sesli deneyiminize uygulayabileceğiniz bir dizi açıklama tasarım deseni vardır. Açıklama değerlendirmeinizin sonucu ' yüksek açığa çıkması ' ise [**açık bir açıklama**](#explicit-disclosure)önerilir, bu da yapay ses çıkış sağlarının kaynaklarına iletişim kurmasıdır. [**Örtük açığa çıkması**](#implicit-disclosure) , gerekli bir açıklama düzeyi yüksek veya düşük olup olmadığına bakılmaksızın sesli deneyimlere yönelik ipuçları ve etkileşim desenleri içerir.
@@ -167,7 +167,7 @@ Tutarlılık, Kullanıcı yolculuğu boyunca örtülü olarak açıklanmaya yön
 
 ![Örtük ipuçları tutarlılığı](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>Örtük Ipuçları &amp; geri bildirim
+### <a name="implicit-cues--feedback"></a>Örtük Ipuçları & geri bildirim
 
 Anthropomorphism, aracının gerçek görsel gösteriminden ses, ses, ışık desenleri, sıçrama şekilleri, hatta bir cihazın titreşimi gibi farklı yollarla bildirim alabilir. Kişiyi tanımlarken, çok insan benzeri bir avatar için amacı yerine örtük ipuçları ve geri bildirim desenlerinden yararlanın. Bu, daha belirgin bir açıklama gereksinimini en aza indirmek için bir yoldur.
 

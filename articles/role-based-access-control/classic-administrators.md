@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/01/2019
+ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802307"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554234"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
@@ -32,7 +32,7 @@ Bu makalede, ortak yönetici ve hizmet yöneticisi rollerinin nasıl ekleneceği
 > [!TIP]
 > Yalnızca kullanıcının [Azure hizmet yönetimi PowerShell modülünü](https://docs.microsoft.com/powershell/module/servicemanagement/azure)kullanarak klasik Azure dağıtımlarını yönetmesi gerekiyorsa bir ortak yönetici eklemeniz gerekir. Kullanıcı yalnızca klasik kaynakları yönetmek için Azure portal kullanıyorsa, Kullanıcı için klasik yönetici eklemeniz gerekmez.
 
-1. [Azure Portal](https://portal.azure.com) hizmet yöneticisi olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com) bir hizmet yöneticisi veya ortak yönetici olarak oturum açın.
 
 1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
 
@@ -44,7 +44,7 @@ Bu makalede, ortak yönetici ve hizmet yöneticisi rollerinin nasıl ekleneceği
 
     ![Klasik yöneticileri açan ekran görüntüsü](./media/classic-administrators/classic-administrators.png)
 
-1. @No__t **Ekle**' ye tıklayın-1 ortak**yönetici Ekle** ' ye tıklayarak ortak yönetici Ekle bölmesini açın.
+1. **Ekle** ' ye tıklayın > ortak **yönetici Ekle** ' ye tıklayarak ortak yöneticiler Ekle bölmesini açın.
 
     Ortak yönetici Ekle seçeneği devre dışıysa, izinleriniz yoktur.
 
@@ -52,9 +52,17 @@ Bu makalede, ortak yönetici ve hizmet yöneticisi rollerinin nasıl ekleneceği
 
     ![Ortak yönetici ekleyen ekran görüntüsü](./media/classic-administrators/add-coadmin.png)
 
-### <a name="adding-a-guest-user-as-a-co-administrator"></a>Konuk kullanıcıyı ortak yönetici olarak ekleme
+## <a name="add-a-guest-user-as-a-co-administrator"></a>Konuk kullanıcıyı ortak yönetici olarak ekleme
 
-Ortak yönetici rolüne atanan [Konuk kullanıcılar](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) , ortak yönetici rolüne sahip üye kullanıcılarla karşılaştırıldığında bazı farklılıklar görebilirler. Aşağıdaki senaryoyu göz önünde bulundurun:
+Konuk kullanıcıyı ortak yönetici olarak eklemek için, önceki [ortak yönetici ekleme](#add-a-co-administrator) bölümünde ile aynı adımları izleyin. Konuk kullanıcının aşağıdaki ölçütlere uyması gerekir:
+
+- Konuk kullanıcının dizininizde bir varlık olması gerekir. Bu, kullanıcının dizininize davet edildiği ve daveti kabul ettiği anlamına gelir.
+
+Dizininize Konuk Kullanıcı ekleme hakkında daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md).
+
+### <a name="differences-for-guest-users"></a>Konuk kullanıcılar için farklılıklar
+
+Ortak yönetici rolüne atanan Konuk kullanıcılar, ortak yönetici rolüne sahip üye kullanıcılarla karşılaştırıldığında bazı farklılıklar görebilirler. Aşağıdaki senaryoyu göz önünde bulundurun:
 
 - Bir Azure AD hesabı (iş veya okul hesabı) olan A kullanıcısı, bir Azure aboneliği için hizmet yöneticisidir.
 - B kullanıcısının bir Microsoft hesabı vardır.
@@ -63,13 +71,15 @@ Ortak yönetici rolüne atanan [Konuk kullanıcılar](../active-directory/b2b/b2
 
 B kullanıcısının her şeyi yönetebileceğini beklemeniz gerekir. Bu farkın nedeni, Microsoft hesabı aboneliğe üye kullanıcı yerine Konuk Kullanıcı olarak eklendiğine yöneliktir. Konuk kullanıcıların Azure AD 'de üye kullanıcılarla karşılaştırıldığında farklı varsayılan izinleri vardır. Örneğin, üye kullanıcılar Azure AD 'de diğer kullanıcıları okuyabilir ve Konuk kullanıcılar tarafından kullanılamaz. Üye kullanıcılar, Azure AD 'de yeni hizmet sorumlularını kaydedebilir ve Konuk kullanıcılar bu hizmetleri kullanamaz.
 
-Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk kullanıcının ihtiyacı olan belirli Azure AD yönetici rollerini atamanız olası bir çözümdür. Örneğin, önceki senaryoda, diğer kullanıcıları okumak için [Dizin okuyucuları](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) rolünü atayabilir ve hizmet sorumlularını oluşturabilmeniz Için [uygulama geliştirici](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) rolünü atayabilirsiniz. Üye ve Konuk kullanıcılar ve bunların izinleri hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../active-directory/fundamentals/users-default-permissions.md).
+Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk kullanıcının ihtiyacı olan belirli Azure AD yönetici rollerini atamanız olası bir çözümdür. Örneğin, önceki senaryoda, diğer kullanıcıları okumak için [Dizin okuyucuları](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) rolünü atayabilir ve hizmet sorumlularını oluşturabilmeniz Için [uygulama geliştirici](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) rolünü atayabilirsiniz. Üye ve Konuk kullanıcılar ve bunların izinleri hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../active-directory/fundamentals/users-default-permissions.md). Konuk kullanıcılar için erişim verme hakkında daha fazla bilgi için bkz. [RBAC kullanarak dış Konuk kullanıcılar Için Azure kaynaklarına erişimi yönetme](role-assignments-external-users.md).
 
 [Azure kaynakları için yerleşik rollerin](../role-based-access-control/built-in-roles.md) [Azure AD yönetici rollerinden](../active-directory/users-groups-roles/directory-assign-admin-roles.md)farklı olduğunu unutmayın. Yerleşik roller Azure AD 'ye hiçbir erişim vermez. Daha fazla bilgi için bkz. [farklı rolleri anlama](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
+Üye kullanıcıları ve konuk kullanıcıları karşılaştıran bilgiler için, bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../active-directory/fundamentals/users-default-permissions.md).
+
 ## <a name="remove-a-co-administrator"></a>Ortak yöneticiyi kaldırma
 
-1. [Azure Portal](https://portal.azure.com) hizmet yöneticisi olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com) bir hizmet yöneticisi veya ortak yönetici olarak oturum açın.
 
 1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
 
@@ -136,7 +146,7 @@ Azure aboneliği başına yalnızca bir hizmet yöneticisi olabilir. Hizmet yön
 | Microsoft hesabı | Yes | Hayır | Hayır |
 | Azure AD hesabı | Yes | Yes | Hayır |
 
-Hesap Yöneticisi bir Azure AD hesabı ise, hizmet yöneticisini aynı dizinde bir Azure AD hesabı olarak değiştirebilirsiniz, ancak farklı bir dizinde kullanamazsınız. Örneğin, abby@contoso.com, hizmet yöneticisini bob@contoso.com olarak değiştirebilir, ancak john@notcontoso.com ' i contoso.com dizininde bir varlık yoksa hizmet yöneticisini john@notcontoso.com olarak değiştiremezsiniz.
+Hesap Yöneticisi bir Azure AD hesabı ise, hizmet yöneticisini aynı dizinde bir Azure AD hesabı olarak değiştirebilirsiniz, ancak farklı bir dizinde kullanamazsınız. Örneğin abby@contoso.com, hizmet yöneticisini bob@contoso.comolarak değiştirebilir, ancak john@notcontoso.com contoso.com dizininde bir varlık olmadığı müddetçe hizmet yöneticisini john@notcontoso.com olarak değiştiremezler.
 
 Microsoft hesapları ve Azure AD hesapları hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?](../active-directory/fundamentals/active-directory-whatis.md).
 

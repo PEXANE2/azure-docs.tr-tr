@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473286"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558521"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -81,14 +81,14 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 | [Parola Karması Eşitleme için ADFS](https://aka.ms/deploymentplans/adfs2phs)| Parola karması eşitlemeyle, kullanıcı parolalarının karmaları şirket içi Active Directory Azure AD 'ye eşitlenir, bu da Azure AD 'nin kullanıcıların şirket içi bir etkileşim olmadan kimlik doğrulaması yapmasına olanak sağlar Active Directory |
 | [Doğrudan Geçiş Kimlik Doğrulaması için ADFS](https://aka.ms/deploymentplans/adfs2pta)| Azure AD geçişli kimlik doğrulaması, kullanıcılarınızın aynı parolaları kullanarak hem şirket içi hem de bulut tabanlı uygulamalarda oturum açmasını sağlar. Bu özellik, kullanıcılara daha fazla deneyim sağlamak için daha az bir parola sağlar ve kullanıcılar oturum açmayı unutmamak daha az olabileceğinden BT yardım masası maliyetlerini azaltır. Kullanıcılar Azure AD'de oturum açtığında bu özellik parolaları doğrudan şirket için Active Directory dizininizde doğrular. |
 | [Azure AD Uygulama Ara Sunucusu](https://aka.ms/deploymentplans/appproxy)| Günümüzde çalışanlar her yerden, her zaman ve tüm cihazlardan çalışmak istemektedir. Bulut ve şirket içi uygulamalarda SaaS uygulamalarına erişmesi gerekir. Azure AD uygulama proxy 'si, pahalı ve karmaşık sanal özel ağlar (VPN) veya sivil bölgeler (DMZs) olmadan bu güçlü erişimi mümkün hale getirmenizi sunar. |
-| [Sorunsuz çoklu oturum açma](https://aka.ms/SeamlessSSODPDownload)| Azure Active Directory Sorunsuz Çoklu Oturum Açma (Azure AD Sorunsuz SSO) özelliği, kurumsal ağınıza bağlı kuruluş cihazlarını kullanan kullanıcıların otomatik olarak oturum açmasını sağlar. Bu özellikle, kullanıcıların Azure AD 'de oturum açması için parolalarını girmesi gerekmez ve genellikle kullanıcı adlarını girmesi gerekmez. Bu özellik, yetkili kullanıcılara ek şirket içi bileşenlere gerek duymadan bulut tabanlı uygulamalarınıza kolay erişim sağlar. |
+| [Sorunsuz çoklu oturum açma](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory Sorunsuz Çoklu Oturum Açma (Azure AD Sorunsuz SSO) özelliği, kurumsal ağınıza bağlı kuruluş cihazlarını kullanan kullanıcıların otomatik olarak oturum açmasını sağlar. Bu özellikle, kullanıcıların Azure AD 'de oturum açması için parolalarını girmesi gerekmez ve genellikle kullanıcı adlarını girmesi gerekmez. Bu özellik, yetkili kullanıcılara ek şirket içi bileşenlere gerek duymadan bulut tabanlı uygulamalarınıza kolay erişim sağlar. |
 
 ## <a name="deploy-user-provisioning"></a>Kullanıcı sağlamayı dağıtma
 
 | Özellik | Açıklama|
 | -| -|
 | [Kullanıcı sağlama](https://aka.ms/deploymentplans/userprovisioning)| Azure AD; Dropbox, Salesforce ve ServiceNow gibi bulut (SaaS) uygulamalarında kullanıcı oluşturma, bakım ve kaldırma adımlarını otomatikleştirmenize yardımcı olur. |
-| [Workday odaklı gelen Kullanıcı sağlama](https://aka.ms/WorkdayDeploymentPlan)| Active Directory iş günü odaklı gelen Kullanıcı sağlama, devam eden kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir. Bu özelliği kullanarak, bu çalışanların ve contentik çalışanların kimlik yaşam döngüsünü, birleştirici-Mover-Leaver işlemlerini (örneğin, yeni Işe alma, sonlandırma, aktarım), BT sağlama eylemlerine (örneğin, oluşturma, etkinleştirme) eşleştiren kuralları yapılandırarak sorunsuzca yönetebilirsiniz. Dıı |
+| [Bulut HR Kullanıcı sağlama](https://aka.ms/deploymentplans/cloudhr)| Active Directory için bulut HR Kullanıcı sağlama, devam eden kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir. Bu özelliği, iş günü veya başarılı etmenler gibi bulut ık ürününüzle birlikte kullanarak, birleştirici-Mover-Leaver süreçlerini (yeni Işe alma, sonlandırma, Oluşturma, etkinleştirme, devre dışı bırak gibi) BT sağlama eylemlerine |
 
 ## <a name="deploy-governance-and-reporting"></a>İdare ve raporlama dağıtma
 

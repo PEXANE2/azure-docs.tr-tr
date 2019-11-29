@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 9c6e4c66d96b02c2d5b4b4fe70fe6e6798c4e2c6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285927"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554853"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -20,16 +20,61 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 ## <a name="common-user-errors"></a>Ortak Kullanıcı hataları
 
-| Hata                                | Hata iletisi                    | Olası nedenler                                              | Önerilen eylem                                           |
-| ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Usererrorınopeninghanaodbcconnection | HANA sistemine bağlanılamadı | SAP HANA örneği çalışmıyor olabilir. <br> Azure Backup 'ın HANA veritabanıyla etkileşim kurması için gerekli izinler ayarlanmamış. | SAP HANA veritabanının çalışır olup olmadığını denetleyin. Veritabanı çalışır duruma kullanıyorsa, tüm gerekli izinlerin ayarlanmış olup olmadığını denetleyin. İzinlerden herhangi biri eksikse eksik izinleri eklemek için [preregistration betiğini](https://aka.ms/scriptforpermsonhana) çalıştırın. |
-| Usererrorhanaınstancenamegeçersiz | Belirtilen SAP HANA örneği geçersiz ya da bulunamıyor | Tek bir Azure VM üzerindeki birden çok SAP HANA örneği yedeklenebilir. | Yedeklemek istediğiniz SAP HANA örneğinde [preregistration betiğini](https://aka.ms/scriptforpermsonhana) çalıştırın. Sorun devam ederse, Microsoft destek 'e başvurun. |
-| UserErrorHanaUnsupportedOperation | Belirtilen SAP HANA işlemi desteklenmiyor | SAP HANA için Azure Backup, SAP HANA yerel istemcilerde (Studio/kokpit/DBA kokpiti) gerçekleştirilen artımlı yedeklemeyi ve eylemleri desteklemez | Daha fazla bilgi için [buraya](sap-hana-backup-support-matrix.md#scenario-support)bakın. |
-| Usererrorhanapoya Notsupportbackuptype | Bu SAP HANA veritabanı istenen yedekleme türünü desteklemiyor | Azure Backup, anlık görüntüleri kullanarak artımlı yedekleme ve yedeklemeyi desteklemez | Daha fazla bilgi için [buraya](sap-hana-backup-support-matrix.md#scenario-support)bakın. |
-| UserErrorHANALSNValidationFailure | Yedekleme günlük zinciri bozuk | Günlük yedekleme hedefi, backint 'ten dosya sistemine güncelleştirilmiş olabilir veya backınt yürütülebilir dosyası değiştirilmiş olabilir | Sorunu çözmek için bir tam yedekleme tetikleyin |
-| Usererrorıncomaptıblesrctargetsystsemsforrestore | Geri yükleme için kaynak ve hedef sistemler uyumsuz | Geri yükleme için hedef sistem kaynakla uyumsuz | Günümüzde desteklenen geri yükleme türleri hakkında bilgi edinmek için bkz. SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) |
-| Usererrorsdctomdcupgradealgılandı | SDC 'den MDC 'ye yükseltme algılandı | SAP HANA örneği SDC 'den MDC 'ye yükseltildi. Güncelleştirme sonrasında yedeklemeler başarısız olur. | Sorunu çözmek için [SAP HANA 1,0 ' den 2,0 ' ye yükseltme bölümünde](#upgrading-from-sap-hana-10-to-20) listelenen adımları izleyin. |
-| Usererrorınvalidbackintconfiguration | Geçersiz backınt yapılandırması algılandı | Azure Backup için yedekleme parametreleri yanlış belirtildi | Aşağıdaki (backınt) parametrelerinin ayarlanmış olup olmadığını denetleyin: <br> * [catalog_backup_using_backint: true] <br>  * [enable_accumulated_catalog_backup: false] <br> * [parallel_data_backup_backint_channels: 1] <br>* [log_backup_timeout_s: 900)] <br> * [backint_response_timeout: 7200] <br> KONAKTA backınt tabanlı parametreler varsa, bunları kaldırın. Parametreler, ana bilgisayar düzeyinde mevcut değilse ancak bir veritabanı düzeyinde el ile değiştirilmişse, bunları daha önce açıklandığı gibi uygun değerlere dönüştürmeniz gerekir. Ya da, [korumayı durdurun ve Azure Portal yedekleme verilerini koruyun](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) ve sonra **yedeklemeyi devam ettirir**' ı seçin. |
+###  <a name="usererrorinopeninghanaodbcconnection"></a>Usererrorınopeninghanaodbcconnection 
+
+| Hata İletisi      | HANA sistemine bağlanılamadı                             |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | SAP HANA örneği çalışmıyor olabilir.<br/>Azure Backup 'ın HANA veritabanıyla etkileşim kurması için gerekli izinler ayarlanmamış. |
+| Önerilen eylem | SAP HANA veritabanının çalışır olup olmadığını denetleyin. Veritabanı çalışır duruma kullanıyorsa, tüm gerekli izinlerin ayarlanmış olup olmadığını denetleyin. İzinlerden herhangi biri eksikse eksik izinleri eklemek için [preregistration betiğini](https://aka.ms/scriptforpermsonhana) çalıştırın. |
+
+###  <a name="usererrorhanainstancenameinvalid"></a>Usererrorhanaınstancenamegeçersiz 
+
+| Hata İletisi      | Belirtilen SAP HANA örneği geçersiz ya da bulunamıyor |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | Tek bir Azure VM üzerindeki birden çok SAP HANA örneği yedeklenebilir. |
+| Önerilen eylem | Yedeklemek istediğiniz SAP HANA örneğinde [preregistration betiğini](https://aka.ms/scriptforpermsonhana) çalıştırın. Sorun devam ederse, Microsoft destek 'e başvurun. |
+
+###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+
+| Hata İletisi      | Belirtilen SAP HANA işlemi desteklenmiyor             |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | SAP HANA için Azure Backup, SAP HANA yerel istemcilerde (Studio/kokpit/DBA kokpiti) gerçekleştirilen artımlı yedeklemeyi ve eylemleri desteklemez |
+| Önerilen eylem | Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)bakın. |
+
+###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>Usererrorhanapoya Notsupportbackuptype 
+
+| Hata İletisi      | Bu SAP HANA veritabanı istenen yedekleme türünü desteklemiyor |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | Azure Backup, anlık görüntüleri kullanarak artımlı yedekleme ve yedeklemeyi desteklemez |
+| Önerilen eylem | Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)bakın. |
+
+###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+
+| Hata İletisi      | Yedekleme günlük zinciri bozuk                                   |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | Günlük yedekleme hedefi, backint 'ten dosya sistemine güncelleştirilmiş olabilir veya backınt yürütülebilir dosyası değiştirilmiş olabilir |
+| Önerilen eylem | Sorunu çözmek için bir tam yedekleme tetikleyin                   |
+
+###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>Usererrorıncomaptıblesrctargetsystsemsforrestore 
+
+| Hata İletisi      | Geri yükleme için kaynak ve hedef sistemler uyumsuz   |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | Geri yükleme için hedef sistem kaynakla uyumsuz |
+| Önerilen eylem | Günümüzde desteklenen geri yükleme türleri hakkında bilgi edinmek için bkz. SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) |
+
+###  <a name="usererrorsdctomdcupgradedetected"></a>Usererrorsdctomdcupgradealgılandı 
+
+| Hata İletisi      | SDC 'den MDC 'ye yükseltme algılandı                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | SAP HANA örneği SDC 'den MDC 'ye yükseltildi. Güncelleştirme sonrasında yedeklemeler başarısız olur. |
+| Önerilen eylem | Sorunu çözmek için [SAP HANA 1,0 ' den 2,0 ' ye yükseltme bölümünde](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) listelenen adımları izleyin. |
+
+###  <a name="usererrorinvalidbackintconfiguration"></a>Usererrorınvalidbackintconfiguration 
+
+| Hata İletisi      | Geçersiz backınt yapılandırması algılandı                       |
+| ------------------ | ------------------------------------------------------------ |
+| Olası nedenler    | Azure Backup için yedekleme parametreleri yanlış belirtildi |
+| Önerilen eylem | Aşağıdaki (backınt) parametrelerinin ayarlanmış olup olmadığını denetleyin:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>KONAKTA backınt tabanlı parametreler varsa, bunları kaldırın. Parametreler, ana bilgisayar düzeyinde mevcut değilse ancak bir veritabanı düzeyinde el ile değiştirilmişse, bunları daha önce açıklandığı gibi uygun değerlere dönüştürmeniz gerekir. Ya da, [korumayı durdurun ve Azure Portal yedekleme verilerini koruyun](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) ve sonra **yedeklemeyi devam ettirir**' ı seçin. |
 
 ## <a name="restore-checks"></a>Geri yükleme denetimleri
 

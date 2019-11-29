@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311567"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561874"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Değişiklik talebini karşılamak için Azure Veri Gezgini küme yatay ölçeklendirmeyi (genişleme) yönetme
 
@@ -33,7 +33,7 @@ Yatay ölçeklendirmeyi kullanarak, önceden tanımlanmış kurallara ve zamanla
 
 1. Azure portal Azure Veri Gezgini küme kaynağına gidin. **Ayarlar**altında **ölçeği Genişlet**' i seçin. 
 
-2. **Genişleme** penceresinde, istediğiniz otomatik ölçeklendirme yöntemini seçin: **El ile ölçeklendirme**, **iyileştirilmiş otomatik**ölçeklendirme veya **özel otomatik ölçeklendirme**.
+2. **Genişleme** penceresinde istediğiniz otomatik ölçeklendirme yöntemini seçin: **el ile ölçeklendirme**, **iyileştirilmiş otomatik**ölçeklendirme veya **özel otomatik ölçeklendirme**.
 
 ### <a name="manual-scale"></a>El ile ölçeklendirme
 
@@ -41,7 +41,7 @@ El ile ölçeklendirme, küme oluşturma sırasında varsayılan ayardır. Küme
 
    ![El ile ölçeklendirme yöntemi](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>İyileştirilmiş otomatik ölçeklendirme
+### <a name="optimized-autoscale-preview"></a>İyileştirilmiş otomatik ölçeklendirme (Önizleme)
 
 İyileştirilmiş otomatik ölçeklendirme önerilen otomatik ölçeklendirme yöntemidir. Bu yöntem, küme performansını ve maliyetlerini iyileştirir. Küme, kullanım kapsamında bir duruma yaklaşırsa, bu, içinde ölçeklendirilir. Bu eylem maliyetleri düşürür, ancak performans düzeyini korur. Küme, aşırı kullanım durumuna yaklaşırsa, en iyi performansı elde etmek için bu durum ayarlanır. En Iyileştirilmiş otomatik ölçeklendirmeyi yapılandırmak için:
 
@@ -76,7 +76,7 @@ El ile ölçeklendirme, küme oluşturma sırasında varsayılan ayardır. Küme
     | **Zaman toplama** | **Ortalama**gibi bir toplama ölçütü seçin. |
     | **Ölçüm adı** | Ölçek işleminin, **önbellek kullanımı**gibi temel alarak olmasını istediğiniz ölçümü seçin. |
     | **Zaman dilimi istatistiği** | **Ortalama**, **En düşük**, **en yüksek**ve **Toplam**arasında seçim yapın. |
-    | **İşleci** | **Büyük veya eşittir**gibi uygun seçeneği belirleyin. |
+    | **İşlecinde** | **Büyük veya eşittir**gibi uygun seçeneği belirleyin. |
     | **Eşiği** | Uygun bir değer seçin. Örneğin, önbellek kullanımı için yüzde 80 iyi bir başlangıç noktasıdır. |
     | **Süre (dakika cinsinden)** | Sistemin ölçümleri hesaplarken geri araması için uygun bir süre seçin. Varsayılan 10 dakikalık ile başlayın. |
     |  |  |

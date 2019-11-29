@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 846fd92bce3056dc119f38ac253a0a937e8c56a4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74309835"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566373"
 ---
 Artımlı anlık görüntüler (Önizleme), alınan yönetilen diskler için zaman içinde son anlık görüntüden bu yana yapılan tüm değişikliklerden oluşur. Artımlı bir anlık görüntüyü indirmeye veya başka bir şekilde kullanmaya çalıştığınızda, tam VHD kullanılır. Yönetilen disk anlık görüntülerinin bu yeni özelliği, siz tercih etmediğiniz müddetçe her bir anlık görüntü ile tüm diski depolamak için artık gerekli olmadığından daha fazla maliyetli olabilir. Düzenli anlık görüntülerle olduğu gibi, artımlı anlık görüntüler tam yönetilen disk oluşturmak için veya düzenli bir anlık görüntü oluşturmak için kullanılabilir.
 
@@ -25,7 +25,7 @@ Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanm
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-- Artımlı anlık görüntüler şu anda yalnızca Orta Batı ABD ve Kuzey Avrupa kullanılabilir.
+- Artımlı anlık görüntüler şu anda yalnızca Doğu ABD, Orta ABD, Kanada Orta, Orta Batı ABD ve Kuzey Avrupa içinde kullanılabilir.
 - Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz.
 - Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
 - Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.

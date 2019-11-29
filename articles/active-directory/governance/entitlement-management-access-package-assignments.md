@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174903"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74553983"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma
 
@@ -76,6 +76,24 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 1. Seçili kullanıcıları doğrudan erişim paketine atamak için **Ekle** ' ye tıklayın.
 
     Birkaç dakika sonra, atamalar listesinde kullanıcıları görmek için **Yenile** ' ye tıklayın.
+
+## <a name="remove-an-assignment"></a>Atama kaldırma
+
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
+
+1. Sol taraftaki menüde **atamalar**' a tıklayın.
+ 
+1. Atamasını erişim paketinden kaldırmak istediğiniz kullanıcının yanındaki onay kutusuna tıklayın. 
+
+1. Sol bölmenin üst kısmındaki **Kaldır** düğmesine tıklayın. 
+ 
+    ![Atamalar-kullanıcıları erişim paketinden kaldır](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    Atamanın kaldırıldığını bildiren bir bildirim görüntülenir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

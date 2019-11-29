@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: eb8110c953787d1ebf7f01037808ee77db2eb8b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934154"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561885"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ SQL API Java SDK 'Sı zaman uyumlu işlemleri destekler. Zaman uyumsuz destek i�
 |**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* Kullanıcı Prangeıd sağlıyorsa geçersiz bölüm anahtar aralığı hatası durumunda yeniden denemeyi önleme.
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
 * İyileştirilmiş bölüm anahtar aralığı önbelleği yenilemeleri.
@@ -160,7 +163,7 @@ SQL API Java SDK 'Sı zaman uyumlu işlemleri destekler. Zaman uyumsuz destek i�
 * ConnectionPolicy. setProxy () API 'si ile basit istemci örneği tabanlı proxy desteği eklendi.
 * DocumentClient örneğini düzgün şekilde kapatmak için DocumentClient. Close () API 'SI eklendi.
 * Sorgu planını ağ geçidi yerine yerel derlemeden türeterek doğrudan bağlantı modunda sorgu performansı geliştirildi.
-* Kullanıcıların POJO 'da Jsonıgnoreproperties tanımlamasına gerek kalmaması için FAIL_ON_UNKNOWN_PROPERTIES = false değerini ayarlayın.
+* Kullanıcıların POJO 'da Jsonıgnoreproperties tanımlamasına gerek kalmaması için FAIL_ON_UNKNOWN_PROPERTIES = false olarak ayarlayın.
 * DOLAYıSıYLA SLF4J kullanmak için yeniden düzenlenmiş günlüğe kaydetme.
 * Tutarlılık okuyucusunda diğer birkaç hata düzeltildi.
 

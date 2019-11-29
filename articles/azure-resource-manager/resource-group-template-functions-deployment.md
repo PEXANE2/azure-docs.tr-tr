@@ -2,17 +2,17 @@
 title: Şablon işlevleri-dağıtım
 description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230229"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561463"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonlar için dağıtım işlevleri 
 
-Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin değerlerini almak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, geçerli dağıtımla ilgili değerleri almak için aşağıdaki işlevleri sağlar:
 
 * [dağıtmak](#deployment)
 * [ortamınızın](#environment)
@@ -21,7 +21,7 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 
 Kaynaklardan, kaynak gruplarından veya aboneliklerden değerler almak için bkz. [kaynak işlevleri](resource-group-template-functions-resource.md).
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>dağıtım
 
 `deployment()`
 
@@ -141,7 +141,7 @@ Dağıtım için kullanılan Azure ortamı hakkındaki bilgileri döndürür.
 
 ### <a name="return-value"></a>Dönüş değeri
 
-Bu işlev, geçerli Azure ortamı için özellikleri döndürür.
+Bu işlev, geçerli Azure ortamı için özellikleri döndürür. Aşağıdaki örnekte genel Azure özellikleri gösterilmektedir. Sovereign bulutları biraz farklı özellikler döndürebilir.
 
 ```json
 {
@@ -231,7 +231,7 @@ Yukarıdaki örnekte, genel Azure 'a dağıtıldığında aşağıdaki nesne dö
 }
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>parametreler
 
 `parameters(parameterName)`
 
@@ -241,7 +241,7 @@ Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametr
 
 | Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Evet |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -324,12 +324,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | stringOutput | Dize | Seçenek 1 |
-| ıntoutput | Int | 1 |
+| ıntoutput | 'Tir | 1 |
 | objectOutput | Nesne | {"One": "a", "iki": "b"} |
 | arrayOutput | Dizi | [1, 2, 3] |
 | Çapraz Soutput | Dize | Seçenek 1 |
@@ -346,7 +346,7 @@ Değişkenin değerini döndürür. Belirtilen değişken adının şablonun de�
 
 | Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| variableName |Evet |Dize |Döndürülecek değişkenin adı. |
+| variableName |Yes |Dize |Döndürülecek değişkenin adı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -416,9 +416,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | exampleOutput1 | Dize | myVariable & lt |
 | exampleOutput2 | Dizi | [1, 2, 3, 4] |

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d1a1a610c5cb198bd4df47033f4b8359b3d93007
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: cabe30c08d13f0ebeb8e0ce784ea29a0b5d61bec
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452544"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560964"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları C# için IoT Edge modülü geliştirme
 
@@ -23,7 +23,7 @@ Kodu geliştirmek C# ve Azure IoT Edge çalıştıran bir Linux cihazına dağı
 İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. [Windows](quickstart.md)'da veya [Linux](quickstart-linux.md)'ta sanal bir cihaza Azure IoT Edge dağıtma hızlı başlangıçlarında oluşturduğunuz sanal IoT Edge cihazınızı kullanacaksınız. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:    
 
 > [!div class="checklist"]
-> * Visual Studio Code, üzerinde .NET Core 2.1 SDK dayalı bir IOT Edge modülünüzü oluşturmak için kullanın.
+> * .NET Core 2,1 SDK 'sını temel alan bir IoT Edge modülü oluşturmak için Visual Studio Code kullanın.
 > * Visual Studio Code ve Docker kullanarak bir Docker görüntüsü oluşturma ve bunu kayıt defterinizde yayımlama.
 > * Modülü IoT Edge cihazınıza dağıtma.
 > * Oluşturulan verileri görüntüleme.
@@ -260,7 +260,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
        }
     ```
 
-    ![Modül ikizi için dağıtım şablonu Ekle](./media/tutorial-csharp-module/module-twin.png)
+    ![Dağıtım şablonuna modül ikizi Ekle](./media/tutorial-csharp-module/module-twin.png)
 
 11. Deployment. Template. json dosyasını kaydedin.
 
@@ -336,7 +336,9 @@ Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
+Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Sanal sıcaklık modülü de dahil olmak üzere IoT Edge modülleriyle ilgili örnekler için, bkz. [IoT Edge modül örnekleri](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [İşlevler](tutorial-deploy-function.md)

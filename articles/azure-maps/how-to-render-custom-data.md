@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar 'da bir raster eşlemesinde özel verileri işleme | Microsoft Docs
-description: Azure haritalar 'da bir raster eşlemesinde özel verileri işleme.
+description: Bu makalede, Azure Maps statik görüntü hizmeti 'ni kullanarak bir raster eşlemesinde özel verileri nasıl işleyebileceğinizi öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915751"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559990"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
@@ -35,7 +35,7 @@ Bu makaledeki yordamları tamamlayabilmeniz için öncelikle [Hesabı Yönet](ht
 > [!Note]
 > Bu bölümdeki yordam, S0 veya S1 fiyatlandırma katmanında bir Azure Maps hesabı gerektirir.
 
-Azure haritalar hesabı S0 katmanı, `pins` parametrenin yalnızca tek bir örneğini destekler. URL isteğinde belirtilen en fazla beş Pushpin (özel bir görüntüyle) oluşturmanızı sağlar.
+Azure haritalar hesabı S0 katmanı, `pins` parametresinin yalnızca tek bir örneğini destekler. URL isteğinde belirtilen en fazla beş Pushpin (özel bir görüntüyle) oluşturmanızı sağlar.
 
 Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımları izleyin:
 
@@ -48,7 +48,7 @@ Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımla
 3. Oluşturucu sekmesinde HTTP Al metodunu seçin ve bir GET isteği oluşturmak için aşağıdaki URL 'YI girin.
 
     ```HTTP
-    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
+    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
     Sonuçta elde edilen görüntü:
 
@@ -68,7 +68,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. Params ( **Parametreler** ) SEKMESINDE, post isteği URL 'si için kullanılan aşağıdaki anahtar/değer çiftlerini girin. `subscription-key` Değeri Azure Maps abonelik anahtarınızla değiştirin.
+2. Params ( **Parametreler** ) SEKMESINDE, post isteği URL 'si için kullanılan aşağıdaki anahtar/değer çiftlerini girin. `subscription-key` değerini Azure Maps abonelik anahtarınızla değiştirin.
     
     ![Postman 'daki anahtar/değer parametreleri](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -154,7 +154,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
    }
    ```
 
-7. Haritadaki özellikleri işlemek için veri yükleme API 'sinden alınan değerikullanın.`udId` Bunu yapmak için, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al metodunu seçin ve bir GET isteği yapmak için bu URL 'YI girin:
+7. Haritadaki özellikleri işlemek için veri yükleme API 'sinden alınan `udId` değerini kullanın. Bunu yapmak için, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al metodunu seçin ve bir GET isteği yapmak için bu URL 'YI girin:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -190,7 +190,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
 > Bu bölümdeki yordam, fiyatlandırma katmanı S1 ' te bir Azure Maps hesabı gerektirir.
 
 
-`sc` Ölçek stili değiştiricisini kullanarak Pushpin ve etiketlerini daha büyük veya daha küçük hale getirebilirsiniz. Bu değiştirici sıfırdan büyük bir değer alır. 1 değeri standart ölçeğe sahiptir. 1 ' den büyük değerler, PIN 'leri daha büyük yapar ve 1 ' den küçük değerler bunları daha küçük hale getirir. Stil değiştiriciler hakkında daha fazla bilgi için bkz. [statik görüntü hizmeti yol parametreleri](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+`sc` ölçek stili değiştiricisini kullanarak Pushpin ve etiketlerini daha büyük ya da daha küçük hale getirebilirsiniz. Bu değiştirici sıfırdan büyük bir değer alır. 1 değeri standart ölçeğe sahiptir. 1 ' den büyük değerler, PIN 'leri daha büyük yapar ve 1 ' den küçük değerler bunları daha küçük hale getirir. Stil değiştiriciler hakkında daha fazla bilgi için bkz. [statik görüntü hizmeti yol parametreleri](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Özel etiketlerle bir daire ve Pushpin işlemek için aşağıdaki adımları izleyin:

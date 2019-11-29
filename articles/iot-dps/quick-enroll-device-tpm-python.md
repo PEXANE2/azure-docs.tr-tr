@@ -9,18 +9,21 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: ac65758f69fc827e36f734f9dee3117d519dca6a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 9774ba9ba94bdaf4f9219a65be2a223ff00ff489
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423097"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554028"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Hızlı başlangıç: Python sağlama hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti 'ne IoT Hub TPM cihazı kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-Bu adımlar, [Python Sağlama Hizmeti SDK'sını](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) ve örnek Python uygulamasını kullanarak bir TPM cihazı için Azure IoT Hub Cihazı Sağlama Hizmeti'nde programlı bireysel kayıt oluşturmayı gösterir. Python Hizmeti SDK'sı hem Windows hem de Linux makinelerinde çalışır, ancak bu makalede, kayıt işlemlerinin gösterilmesi için Windows geliştirme makinesi kullanılır.
+Bu adımlarda, örnek Python uygulamasının yardımıyla [v1 Python sağlama hizmeti SDK 'sını](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) kullanarak Azure IoT Hub cihaz sağlama hizmeti 'NDE bir TPM cihazı için tek bir kayıt oluşturma işlemi gösterilmektedir. Python Hizmeti SDK'sı hem Windows hem de Linux makinelerinde çalışır, ancak bu makalede, kayıt işlemlerinin gösterilmesi için Windows geliştirme makinesi kullanılır.
+
+> [!IMPORTANT]
+> Bu makale yalnızca kullanım dışı v1 Python SDK 'Sı için geçerlidir. IoT Hub cihazı sağlama hizmeti için cihaz ve hizmet istemcileri henüz v2 sürümünde kullanılamaz. Takım şu anda v2 'yi Özellik eşliği 'na getirmek için çalışıyoruz.
 
 Devam etmeden önce [IoT Hub Cihaz Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) adımlarını tamamladığınızdan emin olun.
 
@@ -33,7 +36,7 @@ Devam etmeden önce [IoT Hub Cihaz Sağlama Hizmetini Azure portalıyla ayarlama
 
 1. Aşağıdaki seçeneklerden birini belirleyin:
 
-    - **Azure IoT Python SDK'sını** oluşturup derleyin. Python paketlerini derlemek için [bu yönergeleri](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) uygulayın. Windows işletim sistemi kullanıyorsanız, Python’dan yerel DLL’lerin kullanımına olanak tanımak için [Visual C++ yeniden dağıtılabilir paketini](https://www.microsoft.com/download/confirmation.aspx?id=48145) ayrıca yükleyin.
+    - **Azure IoT Python SDK'sını** oluşturup derleyin. Python paketlerini derlemek için [bu yönergeleri](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) uygulayın. Windows işletim sistemi kullanıyorsanız, Python’dan yerel DLL’lerin kullanımına olanak tanımak için [Visual C++ yeniden dağıtılabilir paketini](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) ayrıca yükleyin.
 
     - [Python paket yönetim sistemi olan *pip*’i yükleyin](https://pip.pypa.io/en/stable/installing/) veya yükseltin ve şu komut aracılığıyla paketi yükleyin:
 
@@ -99,7 +102,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
 
 1. Kaydın başarılı olup olmadığını görmek için çıktıyı gözlemleyin.
 
-1. Azure portalında sağlama hizmetinize gidin. **Kayıtları yönetme**'yi seçin. TPM cihazınızın, daha önce oluşturulmuş **adıyla**Bireysel Kayıtlar`registrationid` sekmesi altında göründüğüne dikkat edin. 
+1. Azure portalında sağlama hizmetinize gidin. **Kayıtları yönetme**'yi seçin. TPM cihazınızın, daha önce oluşturulmuş `registrationid` adıyla **Bireysel Kayıtlar** sekmesi altında göründüğüne dikkat edin. 
 
     ![Portalda TPM kaydının başarılı olup olmadığını doğrulama](./media/quick-enroll-device-tpm-python/1.png)  
 

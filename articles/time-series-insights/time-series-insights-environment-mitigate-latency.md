@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012650"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561344"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
 
@@ -42,13 +42,13 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde y
 
 Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve azaltmanıza yardımcı olabilir.
 
-1. Azure portal, **Uyarılar**' ı seçin.
+1. Azure portal, Time Series Insights ortamınızı seçin. Ardından **Uyarılar**' ı seçin.
 
-   [![uyarılar](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![Time Series Insights ortamınıza uyarı ekleme](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
 
-   [uyarı eklemek ![](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [Uyarı bölmesi Ekle ![](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. Sonra, sinyal mantığı için tam koşulları yapılandırın.
 
@@ -70,7 +70,7 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 1. İstenen sinyal mantığını yapılandırdıktan sonra, seçilen uyarı kuralını görsel olarak gözden geçirin.
 
-   [![giriş](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![gecikme görünümü ve grafik oluşturma](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Daraltma ve giriş yönetimi
 

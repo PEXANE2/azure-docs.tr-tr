@@ -4,12 +4,12 @@ description: Azure Izleyici 'yi kullanarak Azure Backup iş yüklerini izleyin v
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278294"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554871"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -37,7 +37,7 @@ Kurtarma Hizmetleri kasası gibi kaynaklar Azure Resource Manager, zamanlanmış
 
 ![Kurtarma Hizmetleri kasasının tanılama ayarı, hedefleme Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-Bir Log Analytics çalışma alanını başka bir abonelikten hedefleyebilirsiniz. Tek bir yerde abonelikler arasında kasa izlemek için, birden çok kurtarma hizmeti Kasası için aynı Log Analytics çalışma alanını seçin. Log Analytics çalışma alanına Azure Backup ilgili tüm bilgileri kanala eklemek için, görüntülenen geçiş sırasında **kaynak özel** ' i seçin ve aşağıdaki olayları seçin- **Coreazurebackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. LA tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için lütfen [Bu makaleye](https://aka.ms/AA6jkus) bakın.
+Bir Log Analytics çalışma alanını başka bir abonelikten hedefleyebilirsiniz. Tek bir yerde abonelikler arasında kasa izlemek için, birden çok kurtarma hizmeti Kasası için aynı Log Analytics çalışma alanını seçin. Log Analytics çalışma alanına Azure Backup ilgili tüm bilgileri kanala eklemek için, görüntülenen geçiş sırasında **kaynak özel** ' i seçin ve aşağıdaki olayları seçin- **Coreazurebackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. LA tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için lütfen [Bu makaleye](backup-azure-diagnostic-events.md) bakın.
 
 > [!IMPORTANT]
 > Yapılandırmayı tamamladıktan sonra, ilk veri gönderimi işleminin tamamlanabilmesi için 24 saat beklemeniz gerekir. İlk veri gönderdikten sonra, tüm olaylar bu makalede daha sonra açıklanan [Sıklık bölümünde](#diagnostic-data-update-frequency)açıklandığı gibi gönderilir.

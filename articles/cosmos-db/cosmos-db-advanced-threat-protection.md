@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57303c41d90f6205c284c7de67bb8643aa3cd368
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888062"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555025"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için Gelişmiş tehdit koruması
 
@@ -101,5 +101,5 @@ Uyarı ayrıntıları ve önerilen eylemlerle birlikte bir e-posta bildirimi de 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tanılama günlüğü](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal) hakkında daha fazla bilgi edinin Azure Cosmos DB
+* [Tanılama günlüğü](monitor-cosmos-db.md#diagnostic-settings) hakkında daha fazla bilgi edinin Azure Cosmos DB
 * [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin

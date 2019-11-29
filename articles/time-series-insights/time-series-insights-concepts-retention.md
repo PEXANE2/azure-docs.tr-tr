@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012709"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561289"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights veri saklama süresini anlama
 
-Bu makalede, Azure Time Series Insights ortamınızda veri saklama işlemini etkileyen iki ayar açıklanmaktadır.
+Bu makalede, Azure Time Series Insights ortamınızda veri bekletmeyi etkileyen iki birincil ayar açıklanmaktadır.
 
 ## <a name="video"></a>Video
 
@@ -88,7 +88,7 @@ Giriş devam ettiğinde:
 
 Etkilenen Event Hubs, Time Series Insights ' de duraklatma girişi gerçekleştiğinde veri kaybını en aza indirmek için **Ileti bekletme** özelliğini ayarlamayı göz önünde bulundurun.
 
-[Olay Hub 'ı ileti bekletmesini ![.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[Olay Hub 'ı ileti bekletmesini ![.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
 Olay kaynağında (`timeStampPropertyName`) bir özellik yapılandırılmamışsa, Time Series Insights varsayılan olarak, X ekseni olarak olay hub 'ındaki gelişün zaman damgasına sahip olur. `timeStampPropertyName` başka bir şey olacak şekilde yapılandırıldıysa, ortam, olaylar ayrıştırıldığında veri paketinde yapılandırılan `timeStampPropertyName` arar.
 

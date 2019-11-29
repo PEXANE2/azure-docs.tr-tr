@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: 6ef8d49ba7c9ac2c3c60197c11b9bf5936171f9e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420736"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555379"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE korumalı veritabanının sertifikasını Azure SQL veritabanı yönetilen örneği 'ne geçirme
 
@@ -37,7 +37,7 @@ Tam yönetilen hizmet kullanılarak hem TDE korumalı veritabanının hem de ilg
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
 - Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx aracı, tek başına kendi içinde bir komut satırı ortamı olan [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)'in bir parçasıdır.
-- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
+- [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -60,7 +60,7 @@ Update-Module -Name Az.Sql
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 title: Olay yanıtı öğreticisi-Azure Güvenlik Merkezi
-description: Azure Güvenlik Merkezi Öğreticisi - Güvenlik olaylarına yanıt verme
+description: Bu öğreticide, güvenlik uyarılarını önceliklendirme, bir olayın kök neden & kapsamını belirleme ve güvenlik verilerini arama hakkında bilgi edineceksiniz.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663634"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559193"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Öğretici: Güvenlik olaylarına yanıt verme
 Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analiz ve tehdit zekasından yararlanarak hibrit bulut iş yüklerinizi sürekli olarak analiz eder. Buna ek olarak, diğer güvenlik ürünleri ve hizmetleri tarafından sağlanan uyarıları Güvenlik Merkezi ile tümleştirebilir ve kendi göstergelerinizi ya da zeka kaynaklarınızı temel alan özel uyarılar oluşturabilirsiniz. Bir uyarı oluşturulduktan sonra sorunun incelenip düzeltilmesi için hemen harekete geçilmesi gerekir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -31,7 +31,7 @@ Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için geli
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide ele alınan özellikleri adım adım görmek için Güvenlik Merkezi’nin Standart fiyatlandırma katmanında olmanız gerekir. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md) başlıklı hızlı başlangıçta Standart katmanına nasıl yükseltebileceğiniz adım adım açıklanmıştır.
 
 ## <a name="scenario"></a>Senaryo

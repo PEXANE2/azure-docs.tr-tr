@@ -1,6 +1,6 @@
 ---
-title: HDInsight - Azure üzerinde WebHCat hatalarını anlama ve çözme
-description: Nasıl üzere sık karşılaşılan WebHCat tarafından HDInsight üzerinde döndürdü ve bunların nasıl çözüleceğine öğrenin.
+title: HDInsight 'ta WebHCat hatalarını anlama ve çözme-Azure
+description: HDInsight 'ta WebHCat tarafından döndürülen yaygın hataları ve bunların nasıl çözümleneceğini öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,79 +8,79 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067981"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555007"
 ---
-# <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight üzerinde WebHCat alınan hatalarını anlama ve çözme
+# <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight üzerinde WebHCat 'den alınan hataları anlama ve çözme
 
-WebHCat HDInsight ve bunların nasıl çözüleceğine kullanırken alınan hatalar hakkında bilgi edinin. WebHCat dahili olarak Visual Studio için Azure PowerShell gibi istemci tarafı araçları ve Data Lake araçları tarafından kullanılır.
+HDInsight ile WebHCat kullanırken alınan hatalar ve bunları çözme hakkında bilgi edinin. WebHCat, Azure PowerShell gibi istemci tarafı araçları ve Visual Studio için Data Lake araçları tarafından dahili olarak kullanılır.
 
-## <a name="what-is-webhcat"></a>WebHCat nedir
+## <a name="what-is-webhcat"></a>WebHCat nedir?
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) bir REST API için [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tablo ve Apache Hadoop için Depolama Yönetimi katmanı. WebHCat HDInsight kümelerinde varsayılan olarak etkindir ve çeşitli araçlarla işleri göndermek, küme oturum açmadan vb. iş durumunu almak için kullanılır.
+[Webhcat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) , Apache Hadoop Için bir [hcatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tablo ve depolama yönetimi katmanı REST API. WebHCat, HDInsight kümelerinde varsayılan olarak etkindir ve kümede oturum açmadan işleri göndermek, iş durumunu almak vb. için çeşitli araçlar tarafından kullanılır.
 
-## <a name="modifying-configuration"></a>Yapılandırmasını değiştirme
+## <a name="modifying-configuration"></a>Yapılandırmayı değiştirme
 
 > [!IMPORTANT]  
-> Bu belgede listelenen hataların bazıları, yapılandırılan en fazla aşıldığından oluşur. Bir değeri değiştirebilirsiniz. çözüm adım bahsetmeleri, aşağıdakilerden birini değişiklik yapmak için kullanmanız gerekir:
+> Yapılandırılan en büyük değer aşıldığından bu belgede listelenen hataların birkaçı meydana gelir. Çözüm adımı bir değeri değiştirebilmeniz durumunda, değişikliği gerçekleştirmek için aşağıdakilerden birini kullanmanız gerekir:
 
-* İçin **Windows** kümeleri: Küme oluşturma sırasında değerini yapılandırmak için betik eylemi kullanın. Daha fazla bilgi için [betik eylemleri geliştirme](hdinsight-hadoop-script-actions-linux.md).
+* **Windows** kümeleri için: küme oluşturma sırasında değeri yapılandırmak için bir betik eylemi kullanın. Daha fazla bilgi için bkz. [betik eylemleri geliştirme](hdinsight-hadoop-script-actions-linux.md).
 
-* İçin **Linux** kümeleri: Apache Ambari (web veya REST API) değerini değiştirmek için kullanın. Daha fazla bilgi için [Apache Ambari kullanarak HDInsight yönetme](hdinsight-hadoop-manage-ambari.md)
+* **Linux** kümeleri için: değeri değiştirmek Için Apache ambarı (web veya REST API) kullanın. Daha fazla bilgi için bkz. [Apache ambarı kullanarak HDInsight 'ı yönetme](hdinsight-hadoop-manage-ambari.md)
 
 
 ### <a name="default-configuration"></a>Varsayılan yapılandırma
 
-Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansı düşebilir veya hatalara neden:
+Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşürebilir veya hatalara neden olabilir:
 
-| Ayar | Ne yapar? | Varsayılan değer |
+| Ayar | Neler yapar? | Varsayılan değer |
 | --- | --- | --- |
-| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Aynı anda etkin olabilen işlerin sayısı (Bekleyen veya çalışıyor) |10,000 |
-| [templeton.exec.max-procs][max-procs] |Aynı anda hizmet isteklerinin sayısı |20 |
-| [mapreduce.jobhistory.max-age-ms][max-age-ms] |İş geçmişini gün sayısını korunur |7 gün |
+| [Yarn. Scheduler. kapasite. maksimum-uygulamalar][maximum-applications] |Aynı anda etkin olabilen en fazla iş sayısı (bekliyor veya çalışıyor) |10,000 |
+| [temptaton. Exec. Max-procs][max-procs] |Eşzamanlı olarak sunulabilecek en fazla istek sayısı |20 |
+| [MapReduce. jobhistory. max-age-MS][max-age-ms] |İş geçmişinin tutulacağı gün sayısı |7 gün |
 
 ## <a name="too-many-requests"></a>Çok fazla istek
 
-**HTTP durum kodu**: 429
+**Http durum kodu**: 429
 
-| Nedeni | Çözüm |
+| Nedeni | Çözünürlük |
 | --- | --- |
-| Dakika başına (varsayılan 20) WebHCat tarafından sunulan en fazla eşzamanlı istek sınırı aşıldı |En fazla eş zamanlı istek sayısını birden çok değil gönderdiğiniz emin olmak için iş yükünüzü azaltmak veya değiştirerek eşzamanlı istek sınırı artırmak `templeton.exec.max-procs`. Daha fazla bilgi için [değiştirme yapılandırma](#modifying-configuration) |
+| Web Hcat tarafından dakikada sunulan en fazla eşzamanlı istek sayısını aştınız (varsayılan 20) |En fazla eşzamanlı istek sayısından daha fazla bilgi göndermemesini sağlamak için iş yükünüzü azaltın veya `templeton.exec.max-procs`değiştirerek eşzamanlı istek sınırını artırın. Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>Sunucu kullanılamıyor
 
-**HTTP durum kodu**: 503
+**Http durum kodu**: 503
 
-| Nedeni | Çözüm |
+| Nedeni | Çözünürlük |
 | --- | --- |
-| Bu durum kodu küme için birincil ve ikincil baş düğümüne arasında yük devretme sırasında genellikle gerçekleşir. |İki dakika bekleyin. ardından işlemi yeniden deneyin |
+| Bu durum kodu genellikle küme için birincil ve ikincil HeadNode arasında yük devretme sırasında oluşur |İki dakika bekleyip işlemi yeniden deneyin |
 
-## <a name="bad-request-content-could-not-find-job"></a>Hatalı istek içeriği: İş bulunamadı
+## <a name="bad-request-content-could-not-find-job"></a>Hatalı istek Içeriği: iş bulunamadı
 
-**HTTP durum kodu**: 400
+**Http durum kodu**: 400
 
-| Nedeni | Çözüm |
+| Nedeni | Çözünürlük |
 | --- | --- |
-| İş ayrıntılarını iş geçmişine göre Temizleyicisi temizlendi |İş geçmişi için varsayılan saklama süresi 7 gündür. Varsayılan saklama süresi değiştirerek değiştirilebilir `mapreduce.jobhistory.max-age-ms`. Daha fazla bilgi için [değiştirme yapılandırma](#modifying-configuration) |
-| İş yük devretmesi nedeniyle sonlandırıldı |İş gönderme için iki dakikaya kadar yeniden dene |
-| Geçersiz iş kimliği kullanıldı |İş Kimliğini doğru olup olmadığını denetleyin |
+| İş ayrıntıları, iş geçmişi temizleyici tarafından temizlendi |İş geçmişi için varsayılan saklama süresi 7 gündür. Varsayılan saklama süresi `mapreduce.jobhistory.max-age-ms`değiştirilerek değiştirilebilir. Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
+| İş, yük devretme nedeniyle sonlandırıldı |İş gönderimini iki dakikaya kadar yeniden deneyin |
+| Geçersiz bir iş KIMLIĞI kullanıldı |İş KIMLIĞININ doğru olup olmadığını denetle |
 
 ## <a name="bad-gateway"></a>Hatalı ağ geçidi
 
-**HTTP durum kodu**: 502
+**Http durum kodu**: 502
 
-| Nedeni | Çözüm |
+| Nedeni | Çözünürlük |
 | --- | --- |
-| WebHCat işlem içinde iç atık toplama gerçekleşiyor |WebHCat hizmeti yeniden başlatın ya da son Çöp toplamayı beklemeniz |
-| Zaman aşımı ResourceManager hizmetinden gelen yanıt bekleniyor. Etkin uygulama sayısı yapılandırılan üst sınırı (varsayılan 10.000) olduğunda bu hata oluşabilir |Şu anda çalışan işi tamamlamak ya da değiştirerek eş zamanlı iş sınırını artırmak için bekleyin `yarn.scheduler.capacity.maximum-applications`. Daha fazla bilgi için [değiştirme yapılandırma](#modifying-configuration) bölümü. |
-| Tüm işleri aracılığıyla almaya çalışırken [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) çağrısı sırasında `Fields` ayarlanır `*` |Alamadı *tüm* iş ayrıntıları. Bunun yerine kullanın `jobid` yalnızca belirli iş kimliği büyük iş ayrıntılarını almak için Ya da kullanmayın `Fields` |
-| Baş düğüm yük devretme sırasında WebHCat hizmeti çalışmıyor |İki dakika bekleyin ve işlemi yeniden deneyin |
-| WebHCat gönderilen 500'den fazla bekleyen iş yok |Daha fazla iş göndermeden önce şu anda bekleyen işler tamamlanana kadar bekleyin |
+| Web Hcat işleminde iç çöp toplama işlemi yapılıyor |Çöp toplamanın bitmesini bekleyin veya WebHCat hizmetini yeniden başlatın |
+| ResourceManager hizmetinden yanıt beklerken zaman aşımı. Etkin uygulama sayısı yapılandırılmış en yüksek değeri geçtiğinde bu hata oluşabilir (varsayılan 10.000) |Çalışmakta olan işlerin tamamlanmasını bekleyin veya `yarn.scheduler.capacity.maximum-applications`değiştirerek eşzamanlı iş sınırını artırın. Daha fazla bilgi için [yapılandırma değiştirme](#modifying-configuration) bölümüne bakın. |
+| `Fields` `*` olarak ayarlandığında [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) çağrısı aracılığıyla tüm işler alınmaya çalışılıyor |*Tüm* iş ayrıntılarını alma. Bunun yerine, yalnızca belirli iş KIMLIĞINDEN daha büyük işlerin ayrıntılarını almak için `jobid` kullanın. Veya `Fields` kullanmayın |
+| WebHCat hizmeti, yayın düğümü yük devretmesi sırasında çalışmıyor |İki dakika bekleyip işlemi yeniden deneyin |
+| WebHCat aracılığıyla en çok 500 bekleyen iş gönderildi |Daha fazla iş göndermeden önce Şu anda bekleyen işlerin tamamlanmasını bekleyin |
 
-[maximum-applications]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
+[maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration
 [max-age-ms]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml

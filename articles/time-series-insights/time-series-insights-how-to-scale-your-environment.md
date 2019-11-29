@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bc6c33762fa572e971fff9dee8988a100e50b07c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006797"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561135"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights ortamınızı ölçeklendirme
 
@@ -34,13 +34,13 @@ Ancak, fiyatlandırma katmanı SKU 'sunda değişiklik yapılmasına izin verilm
 
 1. Azure portal, Time Series Insights ortamınızı bulun ve seçin.
 
-1. Time Series Insights ortamınızın menüsünde **Yapılandır**' ı seçin.
+1. Time Series Insights ortamınızın menüsünde **depolama yapılandırması**' nı seçin.
 
-   [![. png 'yi yapılandırma](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![Time Series Insights kapasitesini yapılandırın](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. Giriş hızlarınız ve depolama kapasiteniz için gereksinimleri karşılayan kapasiteyi seçmek için **Kapasite** kaydırıcısını ayarlayın. Değişikliğin etkisini göstermek için, giriş **oranına**, **depolama kapasitesine**ve **Tahmini maliyet** güncelleştirmesine dinamik olarak dikkat edin.
 
-   [![kaydırıcı](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [Kapasite kaydırıcısını kullanarak ortamınızı yapılandırma ![](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    Alternatif olarak, kaydırıcının sağ tarafındaki metin kutusuna kapasite çarpanı sayısını yazabilirsiniz.
 

@@ -72,8 +72,14 @@
       items:
         - name: Otomatik kullanıcı sağlama dağıtımı planlama
           href: plan-auto-user-provisioning.md
+        - name: SCIM etkin uygulamalar için otomatik sağlama
+          href: use-scim-to-provision-users-and-groups.md
         - name: El ile - otomatik sağlama karşılaştırması
           href: application-provisioning-config-how-to.md
+    - name: Bulutta İK sağlama
+      items:
+        - name: Bulutta İK kullanıcı sağlama dağıtımı planlama
+          href: plan-cloud-hr-provision.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Ara Sunucusu

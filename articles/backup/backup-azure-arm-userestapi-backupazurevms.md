@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: c929f820862f5d041b4a63a1ca9c083abf1a1e4c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173454"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554903"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -35,13 +35,13 @@ POST URI 'sinin `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}``{f
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Yanıtlar
 
 ' Refresh ' işlemi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |204 Içerik yok     |         |  Hiçbir içerik döndürülmeden Tamam      |
 |202 kabul edildi     |         |     Eden    |
@@ -104,9 +104,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-1"></a>Lerinde
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       Tamam |
+|200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       TAMAM |
 
 #### <a name="example-responses-1"></a>Örnek yanıtlar
 
@@ -158,11 +158,11 @@ Yanıt, tüm korumasız Azure VM 'lerinin listesini içerir ve her `{value}`, Az
 Örnekte yukarıdaki değerler şu şekilde çeviri yapar:
 
 - containerName = "ıaasvmcontainer; iaasvmcontainerv2; testRG; testVM"
-- protectedItemName = "vm;iaasvmcontainerv2;testRG;testVM"
+- Korunabilir bir Dıtemname = "VM; iaasvmcontainerv2; testRG; testVM"
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM için korumayı etkinleştirme
 
-İlgili VM "Önbelleğe alındı" ve "tanımlı" olduktan sonra, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](backup-azure-arm-userestapi-createorupdatepolicy.md)' ne bakın. Aşağıdaki örnekte "DefaultPolicy" seçilidir.
+İlgili VM "Önbelleğe alındı" ve "tanımlı" olduktan sonra, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](/rest/api/backup/protectionpolicies/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](backup-azure-arm-userestapi-createorupdatepolicy.md)' ne bakın. Aşağıdaki örnekte "DefaultPolicy" seçilidir.
 
 Korumayı etkinleştirme, ' Protected Item ' oluşturan zaman uyumsuz bir *PUT* işlemidir.
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Korumalı bir öğe oluşturmak için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Korunabilir kaynak özellikleri         |
 
@@ -202,15 +202,15 @@ Aşağıdaki istek gövdesi, korumalı bir öğe oluşturmak için gereken özel
 
 `{sourceResourceId}` [korunabilir öğelerin listesinin yanıtından](#example-responses-1)yukarıda bahsedilen `{virtualMachineId}`.
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Yanıtlar
 
 Korumalı bir öğenin oluşturulması [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     |    [Korunabilir kaynak](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  Tamam       |
+|200 TAMAM     |    [Korunabilir kaynak](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  TAMAM       |
 |202 kabul edildi     |         |     Eden    |
 
 ##### <a name="example-responses"></a>Örnek yanıtlar
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | [Iaasvmbackuprequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource özellikleri         |
 
@@ -313,13 +313,13 @@ Aşağıdaki istek gövdesi, korumalı bir öğe için bir yedeklemeyi tetikleme
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Yanıtlar
 
 İsteğe bağlı yedekleme tetiklenmesi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |202 kabul edildi     |         |     Eden    |
 
@@ -439,7 +439,7 @@ Korumayı *silme* [işlemi zaman uyumsuz bir işlemdir](https://docs.microsoft.c
 
 Bu, başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 204 (NoContent) olarak iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 kabul edildi     |         |     Eden    |

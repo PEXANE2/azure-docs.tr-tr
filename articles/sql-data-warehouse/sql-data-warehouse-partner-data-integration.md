@@ -11,18 +11,18 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2d0f92f7bf5b015a30e431354edb0c29f5e103f6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046444"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555454"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL veri ambarı veri tümleştirme iş ortakları
 Veri ambarı çözümünüzü oluşturmak için çok çeşitli sektör lideri araçlardan birini seçin. Bu makalede, Azure SQL veri ambarı 'nı destekleyen resmi veri tümleştirme çözümleriyle Microsoft iş ortağı şirketleri vurgulanmıştır.
 
 ## <a name="data-integration-partners"></a>Veri tümleştirme iş ortakları
-| Partner | Açıklama | Web sitesi/ürün bağlantısı |
+| İş ortağı | Açıklama | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Alooma][7] |**Alooma**<br> Alooma, veri ekiplerinin çeşitli veri silolarını gerçek zamanlı olarak tek bir SQL veri ambarına tümleştirmesini, zenginleştirmesini ve akışını sağlayan bir ETL çözümüdür. |[Ürün sayfası][alooma_website] |
 | ![Alteryx][1] |**Alteryx**<br> Alteryx Designer, geleneksel yaklaşımlardan tipik olarak değil, saatlerde daha derin Öngörüler elde eden, self servis veri analizine yönelik yinelenebilir bir iş akışı sağlar! Alteryx Designer, aynı sezgisel kullanıcı arabirimini kullanarak veri hazırlama, veri karıştırma ve analitik – tahmine dayalı, istatistiksel ve uzamsal bir şekilde veri analistlerine yardımcı olur. |[Ürün sayfası][alteryx_designer_website]<br>[Azure Market][alteryx_marketplace]<br>|
@@ -32,13 +32,14 @@ Veri ambarı çözümünüzü oluşturmak için çok çeşitli sektör lideri ar
 | ![Informatica][4] |**1. Cloud Services Azure için bilgiler**<br> Biltika bulutu, self servis veri geçişi, tümleştirme ve yönetim özellikleri için en iyi sınıf bir çözüm sunar. Müşteriler, farklı kaynak türlerindeki verileri hızlıca ve güvenilir bir şekilde içeri aktarabilir ve Azure 'a aktarabilir. Azure için Cloud Services, Azure SQL veri ambarı, SQL veritabanı, BLOB depolama, Data Lake Store ve Azure Cosmos DB için yerel, yüksek hacimli ve yüksek performanslı bağlantı sağlar. <br><br> **2. BT TİKA PowerCenter** PowerCenter, verileri el ile kodlamadan daha hızlı bir şekilde iletmek için veri tümleştirme projelerini hızlandıran ve hızlandıran meta veri odaklı bir veri tümleştirme platformudur. Veri tümleştirme yatırımlarınız için temel görevi görür |**Azure için bilgiler, bulut Hizmetleri**<br>[Ürün sayfası][informatica_Cloud_Services_website]<br>[Azure Market][informatica_Cloud_Services_marketplace]<br><br> **BT TİKA PowerCenter**<br>[Ürün sayfası][informatica_PowerCenter_website]<br> [Azure Market][informatica_PowerCenter_byol]<br>|
 | ![Bilgi oluşturucuları][5] |**Bilgi oluşturucuları (OMNI-gen Veri Yönetimi)**<br>Bilgi oluşturucunun OMNI-gen veri yönetimi platformu veri tümleştirme, veri kalitesi ve ana veri yönetimi çözümleri sağlar. Biçim, konum, birim veya gecikme süresi ne olduğuna bakılmaksızın tüm verilerin kolayca erişmesini, taşınmasını ve karışmasını kolaylaştırır.|[Ürün sayfası][omnifocus_website]<br> [Azure Market][omnigen_marketplace] |
 | ![Qubole][9] |**Qubole**<br>Qubole, kullanıcıların ETL, Analytics ve AI/ML iş yüklerini gerçekleştirmesine olanak tanıyan bir bulutta yerel platform sağlar. Farklı türlerde açık kaynaklı altyapıları destekler-Apache Spark, TensorFlow, Presto, Airflow, Hadoop, Hive ve daha fazlası. SQL sorgu araçları, dizüstü bilgisayarlar ve güçlü açık kaynaklı altyapılardan yararlanan panolar için veri işlemeye yönelik kullanımı kolay Son Kullanıcı araçları sağlar.|[Ürün sayfası][qubole_website]<br> [Azure Market][qubole_marketplace] |
-| ![deki][10] |**Deki**<br>Segment, çeşitli kaynaklardan gelen müşteri verilerinin anlamlı olmasını sağlamanıza yardımcı olan bir veri yönetimi ve analiz çözümüdür. Daha iyi kararlar, ürünler ve deneyimler oluşturmak için verilerinizi 200 ' den fazla araca bağlamanıza olanak tanır. Segment, yerleşik veri bağlayıcılarını kullanarak birden çok veri kaynağını sizin için ambarınıza dönüştürür ve yükler|[Ürün sayfası][segment_website]<br> |
+| ![Deki][10] |**Deki**<br>Segment, çeşitli kaynaklardan gelen müşteri verilerinin anlamlı olmasını sağlamanıza yardımcı olan bir veri yönetimi ve analiz çözümüdür. Daha iyi kararlar, ürünler ve deneyimler oluşturmak için verilerinizi 200 ' den fazla araca bağlamanıza olanak tanır. Segment, yerleşik veri bağlayıcılarını kullanarak birden çok veri kaynağını sizin için ambarınıza dönüştürür ve yükler|[Ürün sayfası][segment_website]<br> |
 | ![İle ufuk][11] |**Ufuk aracılığıyla (veri tümleştirme)**<br>Veri tümleştirmesi aracılığıyla kullanılan, veri içeri aktarmaları otomatikleştiren bir sihirbaz sağlar. Bu sihirbaz, farklı kaynak türleri (CRMs, uygulama veritabanı, CSV dosyaları vb.) arasında veri geçirmenize olanak sağlar. |[Ürün sayfası][segment_website]<br> |
 | ![Anlık görüntü mantığı][6] |**Anlık görüntü mantığı**<br>Anlık görüntü mantığı platformu müşterilerin verileri Microsoft Azure SQL Veri Ambarı içine ve dışına hızla aktarmasına olanak sağlar. Tek bir çözümde yüzlerce uygulama, hizmet ve IoT senaryosunu tümleştirmenize olanak sağlar.|[Ürün sayfası][snaplogic_website]<br>[Azure Market][snaplogic_marketplace]<br> |
 | ![StreamSets][15] |**StreamSets**<br>StreamSets, DataOps için bir veri tümleştirme platformu sağlar. BT, verilerin Azure SQL veri ambarı ile tümleştirilmesine yönelik tam tasarım-Dağıtım çalışma yaşam döngüsünü sonlandırır. Verileri yalnızca ambara ve ambarınızdan, akış, toplu iş veya değişiklik verilerini yakalama veri teslimi yöntemleriyle hızlı bir şekilde alıp tümleştirmezsiniz, Ayrıca, uçtan uca veri akışı görünürlüğü sağlayan akıllı veri işlem hatları ile sürekli işlemler elde edin ve Resiliency.|[Ürün sayfası][streamsets_website]|
-| ![Talend][12] |**Taödünç bulutu**<br>Taödünç bulutu, bulutta veya şirket içinde herhangi bir veriyi bağlamak, erişmek ve dönüştürmek için bir kurumsal veri tümleştirme platformudur. Bu, geniş bağlantı, yerleşik veri kalitesi ve en son büyük veri ve bulut teknolojileri için yerel destek sağlayan bir hizmet olarak platform (ıpaas) sunumudur |[Ürün sayfası][talend_website]<br> [Azure Market][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta, kişilerin ve kuruluşların analizler ve analiz edilmek üzere çeşitli verileri keşfetmesine yardımcı olur. Trifacta Wrangler, ölçeklendirmekte olan verileri ve çok sayıda son kullanıcıyı desteklemek için gereken veri denetimi iş yüklerini işlemek üzere tasarlanmıştır.|[Ürün sayfası][trifacta_website]<br> [Azure Market][trifacta_marketplace] |
-| ![WhereScape][14] |**Wherescape RED**<br> WhereScape RED, ETL iş akışlarını kolaylaştırmak için Otomasyon araçlarıyla takımlar sağlayan bir IDE 'dir. IDE, popüler veri hedefleri için en iyi uygulama, iyileştirilmiş yerel kod sağlar. Veri altyapınızı geliştirme, dağıtma ve çalıştırma süresini kesmek için WhereScape RED kullanın.|[Ürün sayfası][wherescape_website]<br> [Azure Market][wherescape_marketplace] |
+| ![Talend][12] |**Taödünç bulutu**<br>Taödünç bulutu, bulutta veya şirket içinde herhangi bir veriyi bağlamak, erişmek ve dönüştürmek için bir kurumsal veri tümleştirme platformudur. Bu, geniş bağlantı, yerleşik veri kalitesi ve en son büyük veri ve bulut teknolojileri için yerel destek sağlayan bir hizmet olarak platform (ıpaas) sunumudur. |[Ürün sayfası][talend_website]<br> [Azure Market][talend_marketplace] |
+| ![Timexödeme][13] |**Timexödeme**<br>Timexmenkul, bulma Merkezi, şirketlerin veri içgörülerini 10 kata kadar hızlandıran tümleşik bir veri yönetimi platformu sunarak modern bir veri merkezi oluşturmasına yardımcı olur. Günlük ayıklama, dönüştürme ve yükleme (ETL) veya ayıklama, yükleme ve dönüştürme (ELT), veri erişimi, veri modelleme ve uyumluluk için tek bir platformda Otomasyon ve yetenekler sağlayarak daha fazla. Keşif Merkezi, bulut ölçek analizi için birlikte bulunan bir veri dokusunu sağlar ve analiz ve AI için çeşitli veri siloları, katalog, model, taşıma ve belge verilerini bağlayabilir ve tümleştirmenize olanak tanır. | [Ürün sayfası][timextender_website] |
+| ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta, kişilerin ve kuruluşların analizler ve analiz edilmek üzere çeşitli verileri keşfetmesine yardımcı olur. Trifacta Wrangler, ölçeklendirmekte olan verileri ve çok sayıda son kullanıcıyı desteklemek için gereken veri denetimi iş yüklerini işlemek üzere tasarlanmıştır.|[Ürün sayfası][trifacta_website]<br> [Azure Market][trifacta_marketplace] |
+| ![WhereScape][15] |**Wherescape RED**<br> WhereScape RED, ETL iş akışlarını kolaylaştırmak için Otomasyon araçlarıyla takımlar sağlayan bir IDE 'dir. IDE, popüler veri hedefleri için en iyi uygulama, iyileştirilmiş yerel kod sağlar. Veri altyapınızı geliştirme, dağıtma ve çalıştırma süresini kesmek için WhereScape RED kullanın.|[Ürün sayfası][wherescape_website]<br> [Azure Market][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -64,9 +65,10 @@ Diğer iş ortakları hakkında daha fazla bilgi edinmek için bkz. [Iş zekası
 [10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
 [11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
-[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
-[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
-[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/timextender-logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[16]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
 
 
 
@@ -86,6 +88,7 @@ Diğer iş ortakları hakkında daha fazla bilgi edinmek için bkz. [Iş zekası
 [segment_website]:https://segment.com/
 [skyvia_website]:https://skyvia.com/
 [talend_website]:https://www.talend.com/
+[timextender_website]:https://www.timextender.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
 [streamsets_website]:https://streamsets.com/partners/microsoft

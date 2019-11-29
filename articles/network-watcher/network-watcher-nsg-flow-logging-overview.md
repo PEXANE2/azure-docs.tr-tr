@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 490f2e7bb394d6593e51438c1e484a4677c963a3
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539342"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559183"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -93,6 +93,7 @@ Aşağıdaki metin akış günlüğüne bir örnektir. Gördüğünüz gibi, ön
 1. Konum: kullanılan depolama hesabı NSG ile aynı bölgede olmalıdır.
 2. Güvenlik duvarı yok: NSG akış günlükleri, [Azure depolama için güvenilir bir Microsoft hizmeti](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)olarak eklendi değildir. Güvenlik duvarını devre dışı bırakmak Nasıl yaparım? bkz. [depolama hesabmda güvenlik duvarını devre dışı bırakma](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) . 
 3. Hizmet uç noktası yok: geçerli bir sınırlama nedeniyle Günlükler, hizmet uç noktaları aracılığıyla değil, yalnızca depolama hesaplarına doğrudan dağıtılabilir. Mevcut hizmet uç noktalarını kaldırmayla ilgili yardım için bkz. [hizmet uç noktaları Ile NSG akış günlüklerini kullanma nasıl yaparım?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) .
+4. Kendi kendine Yönetim anahtar döndürme: erişim anahtarlarını depolama hesabınıza değiştirirseniz/döndürdüğünüzde NSG akış günlükleri çalışmayı durdurur. Bunu onarmak için NSG akış günlüklerini devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
 **Bir kaynağa bağlı olan tüm NSG 'ler için NSG akış günlüğünü etkinleştirme**: NSG kaynağında Azure 'da akış günlüğü yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm trafiğin kaydedildiğinden emin olmak için bir kaynağın alt ağını veya ağ arabirimini uygulayan NSG akış günlüğü 'nün etkinleştirilmiş olması önerilir. Ağ güvenlik grupları hakkında daha fazla bilgi için [trafiğin nasıl değerlendirildiğini](../virtual-network/security-overview.md#how-traffic-is-evaluated) görün. 
 

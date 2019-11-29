@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961489"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561497"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -91,8 +91,8 @@ NSG kullanıyorsanız, kaynak bölge için bir depolama hizmeti etiketi NSG kura
 
 Çoğaltmak istediğiniz VM 'Lerin en son kök sertifikalara sahip olup olmadığını denetleyin. Bunlar, güvenlik kısıtlamaları nedeniyle Site Recovery sanal makine tarafından kaydedilmemişse.
 
-- Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
-- Linux VM’ler için, sanal makinedeki en son güvenilir kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri izleyin.
+- Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
+- Linux VM'lerde, VM’deki en son güvenilen kök sertifikalarını ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri uygulayın.
 
 ## <a name="set-permissions-on-the-account"></a>Hesapta izinleri ayarlama
 
@@ -123,7 +123,7 @@ Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için üç y
 Site Recovery, abonelik ve kaynak grup/bulut hizmeti ile ilişkili VM’lerin listesini alır.
 
 1. **Sanal Makineler** bölümünde çoğaltmak istediğiniz VM’leri seçin.
-2. **OK (Tamam)** düğmesine tıklayın.
+2. **Tamam**’a tıklayın.
 
 ### <a name="configure-replication-settings"></a>Çoğaltma ayarlarını yapılandırma
 
@@ -143,7 +143,7 @@ Site Recovery, hedef bölge için varsayılan ayarları ve çoğaltma ilkesini o
     **Hedef konum** | Olağanüstü durum kurtarma için kullanılan hedef bölge.<br/><br/> Hedef konumun Site Recovery kasasının konumuyla eşleşmesini öneririz.
     **Hedef kaynak grubu** | Yük devretmeden sonra Azure VM 'Leri tutan hedef bölgedeki kaynak grubu.<br/><br/> Site Recovery, varsayılan olarak hedef bölgede "asr" sonekine sahip yeni bir kaynak grup oluşturur. Hedef kaynak grubunun konumu, kaynak sanal makinelerinizin barındırıldığı bölge dışında herhangi bir bölge olabilir.
     **Hedef sanal ağ** | Hedef bölgedeki sanal makineler, yük devretmeden sonra bulunur.<br/><br/> Site Recovery varsayılan olarak hedef bölgede "asr" sonekine sahip yeni bir sanal ağ (ve alt ağlarını) oluşturur.
-    **Önbellek depolama hesapları** | Site Recovery, kaynak bölgedeki bir depolama hesabını kullanır. Kaynak VM’lere yönelik değişiklikler, hedef konuma çoğaltılmadan önce bu hesaba gönderilir.<br/><br/> Güvenlik Duvarı etkinleştirilmiş önbellek depolama hesabı kullanıyorsanız, **Güvenilen Microsoft hizmetlerine Izin ver**' i etkinleştirdiğinizden emin olun. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **Önbellek depolama hesapları** | Site Recovery, kaynak bölgedeki bir depolama hesabını kullanır. Kaynak VM’lere yönelik değişiklikler, hedef konuma çoğaltılmadan önce bu hesaba gönderilir.<br/><br/> Güvenlik Duvarı etkinleştirilmiş önbellek depolama hesabı kullanıyorsanız, **Güvenilen Microsoft hizmetlerine Izin ver**' i etkinleştirdiğinizden emin olun. [Daha fazla bilgi.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions). Ayrıca, kaynak VNET 'in en az bir alt ağına erişime izin verdiğinizden emin olun.
     **Hedef depolama hesapları (kaynak VM, yönetilmeyen diskler kullanır)** | Varsayılan olarak Site Recovery, kaynak VM depolama hesabını yansıtmak için hedef bölgede yeni bir depolama hesabı oluşturur.<br/><br/> Güvenlik Duvarı etkinleştirilmiş önbellek depolama hesabı kullanıyorsanız **Güvenilen Microsoft hizmetlerine Izin ver** ' i etkinleştirin.
     **Yönetilen çoğaltma diskleri (kaynak VM yönetilen diskleri kullanıyorsa)** | Varsayılan olarak Site Recovery, kaynak VM 'nin yönetilen diskiyle aynı depolama türüyle (Standart veya Premium) kaynak sanal makinenin yönetilen disklerini yansıtmak için hedef bölgede çoğaltma tarafından yönetilen diskler oluşturur. Yalnızca disk türünü özelleştirebilirsiniz 
     **Hedef kullanılabilirlik kümeleri** | Varsayılan olarak, Azure Site Recovery hedef bölgede, kaynak bölgedeki bir kullanılabilirlik kümesinin VM 'Leri bölümünde "ASR" sonekine sahip olan yeni bir kullanılabilirlik kümesi oluşturur. Azure Site Recovery tarafından oluşturulan kullanılabilirlik kümesi zaten mevcut olduğunda, yeniden kullanılır.

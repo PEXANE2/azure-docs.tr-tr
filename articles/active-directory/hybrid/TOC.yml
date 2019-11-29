@@ -322,6 +322,8 @@
       href: reference-connect-version-history.md
     - name: Azure AD Connect Health sürüm geçmişi
       href: reference-connect-health-version-history.md
+    - name: Azure AD Geçişli Kimlik Doğrulama aracısı sürüm geçmişi
+      href: reference-connect-pta-version-history.md
     - name: Bağlayıcı sürüm geçmişi
       href: reference-connect-sync-connector-version-history.md
     - name: Hesaplar ve izinler

@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006949"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561549"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA ortamınızı planlayın
 
@@ -53,7 +53,7 @@ Azure Time Series Insights ortamınızda **veri saklama süresi** ayarını değ
 Azure Time Series Insights iki mod vardır:
 
 * En güncel veriler için bir mod en iyi duruma getirir. Örnek ile kullanılabilir son verileri bırakarak **eski verileri temizlemeye** yönelik bir ilke uygular. Bu mod, varsayılan olarak açık olur. 
-* Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldığı**sırada seçili olduğunda yeni verilerin görüntülenmesini önler. 
+* Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldı davranışı**olarak seçildiğinde yeni verilerin görüntülenmesini önler. 
 
 Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasındaki iki mod arasında geçiş yapabilirsiniz.
 
@@ -64,11 +64,11 @@ Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasında
 
 1. [Azure Portal](https://portal.azure.com), Time Series Insights ortamınızı seçin.
 
-1. **Time Series Insights ortamı** bölmesinde, **Ayarlar**altında **Yapılandır**' ı seçin.
+1. **Time Series Insights ortamı** bölmesinde, **Ayarlar**altında **depolama yapılandırması**' nı seçin.
 
 1. **Veri saklama süresi (gün cinsinden)** kutusuna 1 ile 400 arasında bir değer girin.
 
-   [![bekletmeyi yapılandırma](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![bekletmeyi yapılandırma](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Uygun veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [saklama nasıl yapılandırılır](./time-series-insights-how-to-configure-retention.md).

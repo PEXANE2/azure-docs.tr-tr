@@ -11,15 +11,15 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2018
+ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 855bd64bc8beb86a1bc62c65f71254f43c7a722a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 00b4647815d8330152ca2dd0b5e137e337e80210
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101966"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561110"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Sanal Makinelerinde SQL Server nedir? (Windows)
 
@@ -57,7 +57,7 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 ### <a id="payasyougo"></a> Kullandıkça ödeyin
 Şu tabloda, kullandıkça öde SQL Server resimlerinin bir matrisi verilmektedir.
 
-| Version | İşletim Sistemi | Sürüm |
+| Sürüm | İşletim Sistemi | Sürüm |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
@@ -75,7 +75,7 @@ Ayrıca kendi lisansınızı getirebilirsiniz (KLG). Bu senaryoda, SQL Server Li
 
 Kendi lisansınızı getirmek için, var olan bir ödeme başına SQL VM 'yi dönüştürebilir ya da **{KLG}** önekli bir görüntüyü dağıtabilirsiniz. Lisans modelinizi kullanım başına ödeme ve KLG arasında değiştirme hakkında daha fazla bilgi için bkz. [BIR SQL VM için lisans modelini değiştirme](virtual-machines-windows-sql-ahb.md). 
 
-| Version | İşletim sistemi | Sürüm |
+| Sürüm | İşletim sistemi | Sürüm |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise KLG](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard KLG](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise KLG](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard KLG](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
@@ -94,7 +94,7 @@ PowerShell kullanarak SQL Server VM 'Leri dağıtma hakkında daha fazla bilgi i
 ### <a name="connect-to-the-vm"></a>VM’ye bağlanma
 SQL Server sanal makinenizi oluşturduktan sonra, SQL Server Management Studio (SSMS) gibi uygulamalar veya araçlardan bu makineye bağlanın. Yönergeler için bkz. [Azure’da SQL Server Sanal Makinesine Bağlanma](virtual-machines-windows-sql-connect.md).
 
-### <a name="migrate-your-data"></a>Verilerinizi geçirme
+### <a name="migrate-your-data"></a>Verilerinizin geçişini yapın
 Varolan bir veritabanınız varsa, bunu yeni sağlanan SQL VM'ye taşımak istersiniz. Geçiş seçenekleri ve kılavuzların listesi için bkz. [Azure VM’de bir Veritabanını SQL Server’a Geçirme](virtual-machines-windows-migrate-sql.md).
 
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure portal ile Azure SQL kaynakları oluşturma ve yönetme
@@ -134,7 +134,7 @@ Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. B
 ### <a name="storage"></a>Depolama
 * [Microsoft Azure Depolama'ya Giriş](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Ağ
+### <a name="networking"></a>Networking (Ağ İletişimi)
 * [Sanal Ağ’a genel bakış](../../../virtual-network/virtual-networks-overview.md)
 * [Azure’da IP adresleri](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure Portal'da Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)
@@ -152,3 +152,8 @@ Azure sanal makinelerinde SQL Server kullanmaya başlayın:
 SQL VM'ler hakkında sık sorulan soruların yanıtlarını alın:
 
 * [Azure Sanal Makineler’de SQL Server ile ilgili SSS](virtual-machines-windows-sql-server-iaas-faq.md)
+
+IaaS 'de SQL Server N katmanlı uygulamaları çalıştırmaya yönelik başvuru mimarilerini görüntüleyin
+
+* [SQL Server ile Azure 'da Windows N katmanlı uygulama](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Yüksek kullanılabilirlik için birden fazla Azure bölgesinde N katmanlı bir uygulama çalıştırma](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

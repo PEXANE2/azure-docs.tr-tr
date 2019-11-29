@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376799"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561047"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
-Yönetilen hizmetler ve Azure kullanımı için tek bir birleşik fatura sağlamak amacıyla, Bulut Çözümü Sağlayıcısı (CSP) Azure aboneliklerinin fatura sahipliğini Kurumsal Anlaşma’ya (EA) sahip müşterilerinden devralabilir.
+Yönetilen hizmetler ve Azure kullanımı için tek bir birleşik fatura sağlamak amacıyla, Bulut Çözümü Sağlayıcısı (CSP) Azure aboneliklerinin fatura sahipliğini Doğrudan Kurumsal Anlaşma’ya (EA) sahip müşterilerinden devralabilir.
 
 Bu özellik yalnızca [Azure Uzmanı MSP](https://partner.microsoft.com/membership/azure-expert-msp) olduğu onaylanmış CSP Doğrudan Fatura İş Ortakları tarafından kullanılabilir. Microsoft idare ve ilkelerine tabidir ve belirli müşteriler için gözden geçirme ve onay gerekebilir.
 

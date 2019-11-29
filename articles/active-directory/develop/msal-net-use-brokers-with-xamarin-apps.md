@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd144f1922456520075c1863ec347e85eb3889db
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379867"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554034"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Microsoft Intune Şirket Portalı kullanma
 
@@ -182,7 +182,7 @@ Portalda aracılı yanıt URI 'sini paket KIMLIĞINDEN hesaplamanıza yardımcı
 
 MSAL.NET, yalnızca şu anda Xamarin. iOS platformunu destekler. Bu, Xamarin. Android platformu için aracıları henüz desteklememektedir.
 
-MSAL Android yerel kitaplığı zaten destekler. Ayrıntılar için bkz. [Android 'de aracılı kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth.md)
+MSAL Android yerel kitaplığı zaten destekler. Ayrıntılar için bkz. [Android 'de aracılı kimlik doğrulaması](brokered-auth.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

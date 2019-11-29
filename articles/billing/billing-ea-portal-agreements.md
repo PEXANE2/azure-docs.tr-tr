@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/06/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 8a49221a4b45161e562569535b9aac596a41fb98
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 35c12118cb906b312114ee7e99e299714e397914
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888434"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223978"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -263,7 +263,7 @@ Doğru kayıt altında dağıtım yapıldığını doğrulamak için fiyat liste
 
 Fiyat listesinin dahil edilen birimler sütununda OMS planınızın listelendiğinden emin olun. Kaydınıza dahil edilmiş OMS planı birimi yoksa OMS planınız başka bir kaydın altında olabilir. Lütfen [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) üzerinden Azure Enterprise Portal Desteği ile iletişime geçin.
 
-Fiyat listesindeki hizmetler için dahil edilen birim sayısı dağıttığınız birim sayısıyla eşleşmiyorsa (Operasyonel İçgörüler Premium Analiz Edilen Veri yerine Operasyonel İçgörüler Standart Analiz Edilen Veri gibi) plan kapsamında olmayan hizmetleri dağıtmış olabilirsiniz. Size yardımcı olabilmemiz için lütfen [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) üzerinden Azure Enterprise Portal Desteği ile iletişime geçin.
+Fiyat listesindeki hizmetlere dahil edilen birimlerle dağıttıklarınız eşleşmiyorsa, ör. Operasyonel İçgörüler ile Analiz Edilen Premium Veriler vb. Operasyonel İçgörüler ile Analiz Edilen Standart Veriler, plan kapsamında olmayan hizmetleri dağıtmış olabileceğiniz anlamına gelir. Size daha ayrıntılı bir şekilde yardımcı olabilmemiz için lütfen şuradan Azure Enterprise Portal Desteğine başvurun: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)
 
 **Plan SKU hizmetleri yanlış kayda sağlanmış**
 

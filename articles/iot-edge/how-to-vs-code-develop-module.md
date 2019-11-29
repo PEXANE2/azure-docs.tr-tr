@@ -8,16 +8,16 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 5b37ea92869468001581c9299b1633869671886a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457070"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561024"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
 
-İçin Azure IOT Edge modülleri, iş mantığınızı kapatabilirsiniz. Bu makalede, modülleri geliştirme ve hata ayıklama için ana araç olarak Visual Studio Code nasıl kullanacağınız gösterilmektedir.
+İş mantığınızı Azure IoT Edge için modüllere dönüştürebilirsiniz. Bu makalede, modülleri geliştirme ve hata ayıklama için ana araç olarak Visual Studio Code nasıl kullanacağınız gösterilmektedir.
 
 Visual Studio Code ' de, Node. js veya Java C#'da yazılan modüllerde hata ayıklamanın iki yolu vardır: bir işlemi bir modül kapsayıcısına iliştirebilir veya hata ayıklama modunda modül kodunu başlatabilirsiniz. Python veya C 'de yazılan modüllerde hata ayıklamak için yalnızca Linux AMD64 kapsayıcılarındaki bir işleme ekleyebilirsiniz.
 
@@ -28,7 +28,7 @@ Bu makalede birden çok mimaride birden çok dilde modül geliştirme ve hata ay
 >[!NOTE]
 >Linux ARM64 cihazları için geliştirme ve hata ayıklama desteği [genel önizlemeye](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)sunuldu. Daha fazla bilgi için bkz. [Visual Studio Code IoT Edge modüllerini geliştirme ve hata ayıklama (Önizleme)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makineniz olarak Windows, macOS veya Linux çalıştıran bir bilgisayar veya sanal makine kullanabilirsiniz. Windows bilgisayarlarda, Windows veya Linux modülleri geliştirebilirsiniz. Windows modülleri geliştirmek için 1809/Build 17763 veya daha yeni sürümünü çalıştıran bir Windows bilgisayarı kullanın. Linux modülleri geliştirmek için, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan bir Windows bilgisayarı kullanın. 
 
@@ -59,7 +59,7 @@ Modül görüntünüzü derlemek ve dağıtmak için, modül görüntüsünü ve
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) veya [Docker Hub 'ı](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
-    > Prototip ve test etme amacıyla bir bulut kayıt defteri yerine yerel bir Docker kayıt defteri kullanabilirsiniz.
+    > Yerel bir Docker kayıt defteri 'ni, bir bulut kayıt defteri yerine prototip ve test amacıyla kullanabilirsiniz.
 
 Modülünüzü C 'de geliştirmediğiniz takdirde, IoT Edge çözümünüzü hata ayıklamak, çalıştırmak ve test etmek üzere yerel geliştirme ortamınızı ayarlamak için Python tabanlı [Azure IoT EdgeHub geliştirme aracına](https://pypi.org/project/iotedgehubdev/) da ihtiyacınız vardır. Daha önce yapmadıysanız, [Python (2.7/3.6/3.7) ve PIP](https://www.python.org/) 'yi yükleyip bu komutu terminalinizde çalıştırarak **ıotedgehubdev** ' i yükleyebilirsiniz.
 
@@ -91,7 +91,7 @@ Aşağıdaki adımlarda, Visual Studio Code ve Azure IoT araçları kullanarak t
 
 1. Modülünüzün adını girin. Kapsayıcı kayıt defteriniz dahilinde benzersiz olan bir ad seçin.
 
-1. Modülün görüntü deposunun adını belirtin. Visual Studio Code, modül adını **localhost: 5000/< modülünüzün adı\>** olarak doldurur. Kayıt defteri kendi bilgilerinizle değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, oturum açma sunucusu defterinizin ayarlarından'ni kullanın. Oturum açma sunucusu,  **_\<\>. azurecr.io kayıt defteri adı_** gibi görünür. Yalnızca dizenin **localhost: 5000** kısmını, son sonucun **\<*kayıt defteri adı*\>. azurecr.io/ _\<modülünüzün adı\>_** gibi görünmesi için değiştirin.
+1. Modülün görüntü deposunun adını belirtin. Visual Studio Code, modül adını **localhost: 5000/< modülünüzün adı\>** olarak doldurur. Kendi kayıt defteri bilgileriniz ile değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, kayıt defterinizin ayarlarından oturum açma sunucusunu kullanın. Oturum açma sunucusu,  **_\<\>. azurecr.io kayıt defteri adı_** gibi görünür. Yalnızca dizenin **localhost: 5000** kısmını, son sonucun **\<*kayıt defteri adı*\>. azurecr.io/ _\<modülünüzün adı\>_** gibi görünmesi için değiştirin.
 
    ![Docker görüntü deposunu sağlama](./media/how-to-develop-csharp-module/repository.png)
 
@@ -110,22 +110,24 @@ Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluştur
 
 - Bir **Deployment. Template. JSON** dosyası yeni modülünüzü, test için kullanabileceğiniz verileri taklit eden örnek bir **SimulatedTemperatureSensor** modülüyle birlikte listeler. Dağıtım bildirimlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [dağıtım bildirimlerini kullanarak modül dağıtma ve rotalar oluşturma](module-composition.md)hakkında bilgi edinin.
 
+Sanal sıcaklık modülünün nasıl çalıştığını görmek için [SimulatedTemperatureSensor. csproj kaynak kodunu](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)görüntüleyin.
+
 ## <a name="add-additional-modules"></a>Ek modüller ekleme
 
 Çözümünüze ek modüller eklemek için, komut paletinden **Azure IoT Edge: IoT Edge modülü Ekle** komutunu çalıştırın. Ayrıca, Visual Studio Code Gezgini görünümündeki **modüller** klasörüne veya `deployment.template.json` dosyasına sağ tıklayıp **IoT Edge modülü Ekle**' yi seçebilirsiniz.
 
-## <a name="develop-your-module"></a>Modülü geliştirme
+## <a name="develop-your-module"></a>Modülünüzü geliştirme
 
 Çözümle birlikte gelen varsayılan modül kodu şu konumda bulunur:
 
-- Azure işlevi (C#): **modüller *&lt;* modül adınızı&gt; > modülünüzün *adı* &lt;>. cs**&gt;
+- Azure işlevi (C#): **modüller *&lt;* modül adınızı&gt; > modülünüzün *adı* &lt;>. cs**
 - C#: **modüller > *&lt;modül adınızı&gt;* > program.cs**
 - Python: **modüller > *&lt;modül adınızı&gt;* > Main.py**
 - Node. js: **modüller > *&lt;modül adınızı&gt;* app. js >**
 - Java: **modüller > *&lt;&gt;modül adınızı* > src > main > java > com > edgemodulemodules > App. Java**
 - C: **modüller > *&lt;modül adınızı&gt;* > Main. c**
 
-Çözümü derleyin, kapsayıcı kayıt defterinize itme ve herhangi bir kod dokunmadan testi başlatmak için bir aygıta dağıtmak modülü ve deployment.template.json dosya ayarlanır. Modül, bir kaynaktan giriş yapmak için oluşturulmuştur (Bu durumda, verileri taklit eden SimulatedTemperatureSensor modülü) ve IoT Hub için kanal oluşturma.
+Modül ve Deployment. Template. JSON dosyası, çözümü derlemenize, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül, bir kaynaktan giriş yapmak için oluşturulmuştur (Bu durumda, verileri taklit eden SimulatedTemperatureSensor modülü) ve IoT Hub için kanal oluşturma.
 
 Şablonu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
 
@@ -318,7 +320,7 @@ Modülleriniz Visual Studio Code ile aynı makinede çalışıyorsa, kapsayıcı
 
   - Hata ayıklamakta olan makinedeki modülün çalışır durumda olduğundan ve hata ayıklayıcılarına eklemek için, bağlantı noktası 9229 ' nin dışarıdan erişilebilir olduğundan emin olun. Bunu, hata ayıklayıcı makinesinde `http://<target-machine-IP>:9229/json` açarak doğrulayabilirsiniz. Bu URL, Ayıklanacak Node. js modülüyle ilgili bilgileri göstermelidir.
   
-  - Geliştirme makinenizde Visual Studio Code açın ve `launch.json` düzenleyin; böylece modül  ***adı&lt;&gt;* uzak hata ayıklama (node. js)** profili (ya da modül  ***adı&lt;* uzak hata ayıklama (Windows kapsayıcısında Node. js** ) profili, hata ayıklanmakta olan makinenin IP 'si olur.&gt;
+  - Geliştirme makinenizde Visual Studio Code açın ve `launch.json` düzenleyin; böylece modül  ***adı&lt;&gt;* uzak hata ayıklama (node. js)** profili (ya da modül  ***adı&lt;* uzak hata ayıklama (Windows kapsayıcısında Node. js** ) profili, hata ayıklanmakta olan makinenin IP 'si olur.
 
 - **Java**
 

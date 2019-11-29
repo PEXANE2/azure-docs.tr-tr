@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930571"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554954"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Hızlı başlangıç: Python 'da uzun biçimli ses için zaman uyumsuz birleştirme (Önizleme)
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 * Python 2.7. x veya 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)veya sık kullandığınız metin düzenleyiciniz.
-* Bir Azure aboneliği ve bir konuşma hizmeti abonelik anahtarı. Anahtarı almak için bir [Azure hesabı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) ve [bir konuşma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) . Konuşma kaynağını oluştururken, fiyatlandırma katmanınızın **S0**olarak ayarlandığından ve konumun [desteklenen bir bölgeye](../../regions.md#standard-and-neural-voices)ayarlandığından emin olun.
+* Bir Azure aboneliği ve bir konuşma hizmeti abonelik anahtarı. Anahtarı almak için bir [Azure hesabı oluşturun](../../get-started.md#try-the-speech-service-using-a-new-azure-account) ve [bir konuşma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) . Konuşma kaynağını oluştururken, fiyatlandırma katmanınızın **S0**olarak ayarlandığından ve konumun [desteklenen bir bölgeye](../../regions.md#standard-and-neural-voices)ayarlandığından emin olun.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 

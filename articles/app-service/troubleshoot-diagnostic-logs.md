@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958028"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558562"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -66,9 +66,9 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
-|**Devre dışı** | None |
-|**Hata:** | Hata, kritik |
-|**Uyarı** | Uyarı, hata, kritik|
+|**Devre dışı** | Hiçbiri |
+|**Hatayla** | Hata, kritik |
+|**Warning** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -112,9 +112,9 @@ Her iki günlük türü de App Service dosya sisteminde depolanır. 50 ' e kadar
 
 ## <a name="add-log-messages-in-code"></a>Koda günlük iletileri ekleme
 
-Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örneğin:
+Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örnek:
 
-- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örneğin:
+- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örnek:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -142,12 +142,12 @@ Günlükleri gerçek zamanlı olarak akışa almadan önce istediğiniz günlük
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örneğin:
+Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örneğin:
+HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -189,14 +189,14 @@ Yeni [Azure izleyici tümleştirmesiyle](https://aka.ms/appsvcblog-azmon), günl
 
 Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilmektedir: 
 
-| Günlük türü | Windows desteği | Linux desteği | Açıklama |
+| Günlük türü | Windows desteği | Linux (Docker) desteği | Açıklama |
 |-|-|-|
-| AppServiceConsoleLogs | TBA dili | Yes | Standart çıkış ve standart hata |
+| AppServiceConsoleLogs | TBA | Yes | Standart çıkış ve standart hata |
 | AppServiceHTTPLogs | Yes | Yes | Web sunucusu günlükleri |
 | AppServiceEnvironmentPlatformLogs | Yes | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
 | AppServiceAuditLogs | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
-| AppServiceFileAuditLogs | TBA dili | TBA dili | FTP ve kudu aracılığıyla dosya değişiklikleri |
-| AppServiceAppLogs | TBA dili | Java & & Tomcat | Uygulama günlükleri |
+| AppServiceFileAuditLogs | TBA | TBA | FTP ve kudu aracılığıyla dosya değişiklikleri |
+| AppServiceAppLogs | TBA | Java & & Tomcat | Uygulama günlükleri |
 
 ## <a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

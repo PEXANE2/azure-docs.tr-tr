@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: HT
+ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547517"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554128"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -185,7 +185,7 @@ Bu rol, yalnızca [cihaz ayarları](https://aad.portal.azure.com/#blade/Microsof
 
 Bu roldeki kullanıcılar, temel dizin bilgilerini okuyabilir. Bu rol için kullanılmalıdır:
 * Belirli bir konuk kullanıcıları kümesine, tüm konuk kullanıcılara vermek yerine okuma erişimi verme.
-* "Azure AD portalına erişimi yalnızca yöneticilerle kısıtla" seçeneği "Evet" olarak ayarlandığında, yönetici olmayan kullanıcıların belirli bir kümesini Azure portalına verme.
+* "Azure AD portalına erişimi yalnızca yöneticilerle kısıtla" olarak ayarlarsanız, yönetici olmayan kullanıcıların belirli bir kümesini Azure portal erişimine izin vermek "Evet" olarak ayarlanır.
 * Dizin. Read. All 'un bir seçenek olmadığı dizine hizmet sorumlusu erişimi veriliyor.
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Dizin eşitleme hesapları](#directory-synchronization-accounts-permissions)
@@ -238,7 +238,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 >- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
 >- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >- [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
->- [Office güvenlik ve Uyumluluk Merkezi](https://protection.microsoft.com) -genel okuyucu SCC denetim günlüklerini okuyamıyor veya içerik araması yapamıyor.
+>- [Office güvenlik ve Uyumluluk Merkezi](https://sip.protection.office.com/homepage) -genel okuyucu SCC denetim günlüklerini okuyamıyor veya içerik araması yapamıyor.
 >- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
 >- [Privileged Access Management (Pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu yalnızca [merkezi raporlama Için](https://docs.microsoft.com/azure/information-protection/reports-aip) desteklenir ve Azure AD Kuruluşunuz [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)ne zaman değildir.
@@ -248,7 +248,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 
 ### <a name="group-administratorgroup-administrator"></a>[Grup Yöneticisi](#group-administrator)
 
-Bu roldeki kullanıcılar, adlandırma ve süre sonu ilkeleri gibi grupları ve ayarlarını oluşturabilir/yönetebilir. Bu role bir Kullanıcı atamanın, bu kullanıcılara Kiracıdaki tüm grupları ekipler, SharePoint, Yammer gibi çeşitli iş yükleri arasında Outlook 'a ek olarak yönetme olanağı sağladığını anlamak önemlidir. Ayrıca, Kullanıcı Microsoft Yönetim Merkezi, Azure Portal gibi çeşitli yönetim portallarında ve takımlar ve SharePoint yönetim merkezleri gibi iş yüklerinin yanı sıra çeşitli gruplar ayarlarını yönetebilecektir.
+Bu roldeki kullanıcılar, adlandırma ve süre sonu ilkeleri gibi grupları ve ayarlarını oluşturabilir/yönetebilir. Bu role bir Kullanıcı atamanın, bu kullanıcılara Kiracıdaki tüm grupları ekipler, SharePoint, Yammer gibi çeşitli iş yükleri arasında Outlook 'a ek olarak yönetme olanağı sağladığını anlamak önemlidir. Ayrıca, Kullanıcı, çeşitli grup ayarlarını Microsoft Yönetim Merkezi, Azure portal gibi çeşitli yönetim portallarında ve takımlar ve SharePoint yönetim merkezleri gibi iş yüklerinin yanı sıra iş yüküne göre yönetebilecektir.
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Konuk davetci](#guest-inviter-permissions)
 

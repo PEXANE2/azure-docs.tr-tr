@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: fff5ad379aa11a0aae14b33f9f82f6da9c794517
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643689"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561745"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
@@ -28,12 +28,12 @@ Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türleri
 
 | Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| ESP olmadan HDInsight 3,6 | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
-| ESP olmadan HDInsight 4,0 | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
-| HDInsight 4,0, ESP ile | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 3,6 | Yalnızca Evet 2,3| Yes | Hayır | Hayır | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 4,0 | Yes | Yes | Hayır | Hayır | Hayır | Hayır | Hayır |
+| HDInsight 3,6, ESP ile | Yalnızca Evet 2,3 | Yes | Hayır | Hayır | Hayır | Hayır | Hayır |
+| HDInsight 4,0, ESP ile | Yes | Yes | Hayır | Hayır | Hayır | Hayır | Hayır |
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 HDInsight kümeniz için yük tabanlı ölçeklendirmeyi veya zamanlama tabanlı ölçeklendirmeyi seçebilirsiniz. Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek amacıyla kümenizdeki düğüm sayısını, ayarladığınız bir Aralık içinde değiştirir.
 
@@ -70,7 +70,7 @@ Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek a
 
 Düğüm başına har kapsayıcı sayısına ve geçerli CPU ve bellek gereksinimlerine bağlı olarak, otomatik ölçeklendirme belirli sayıda düğümü kaldırma isteği verir. Hizmet ayrıca hangi düğümlerin geçerli iş yürütmeye göre kaldırılması gerektiğini de algılar. Ölçeği azaltma işlemi, önce düğümleri yeniden komisyonlar ve sonra kümeden kaldırır.
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Yük tabanlı otomatik ölçeklendirme ile küme oluşturma
 

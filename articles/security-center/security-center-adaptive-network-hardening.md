@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma | Microsoft Docs
-description: " Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma özelliğini etkinleştirmeyi öğrenin. "
+description: Gerçek trafik desenlerine, ağ güvenlik grupları (NSG) kurallarınızı temel alarak ve güvenlik durunuzu daha fazla geliştirerek daha fazla bilgi edinin.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255259"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559271"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma
 Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkında bilgi edinin.
@@ -47,7 +47,7 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
 
      ![sağlıksız kaynaklar](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. **Sağlıksız kaynaklar** sekmesinden, uyarıları ve uygulanacak önerilen sağlamlaştırma kurallarını görüntülemek IÇIN bir VM seçin.
+2. **Sağlıksız kaynaklar** sekmesinden, uyarılarını ve uygulanacak önerilen sağlamlaştırma kurallarını görüntülemek IÇIN bir VM seçin.
 
     ![uyarıları sağlamlaştırma](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
@@ -83,7 +83,7 @@ Uyarlamalı ağ sağlamlaştırma kuralını değiştirmek için bazı önemli y
 * "İzin ver" kurallarının "reddetme" kuralları haline gelmesini değiştiremezsiniz. 
 
   > [!NOTE]
-  > "Reddetme" kuralları oluşturma ve değiştirme daha fazla ayrıntı Için doğrudan NSG 'de yapılır, bkz. [ağ güvenlik grubu oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > "Reddetme" kuralları oluşturma ve değiştirme doğrudan NSG 'de yapılır. Daha fazla bilgi için bkz. [ağ güvenlik grubu oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 * **Tüm trafiği reddet** kuralı, burada listelenecek olan tek tür "reddetme" kuralıdır ve değiştirilemez. Ancak, bunu silebilirsiniz (bkz. [bir kuralı silme](#delete-rule)).
   > [!NOTE]
@@ -111,7 +111,7 @@ Uyarlamalı ağ sağlamlaştırma kuralını değiştirmek için bazı önemli y
 Güvenlik Merkezi 'nin önerilmeyen bir "izin verme" kuralı ekleyebilirsiniz.
 
 > [!NOTE]
-> Buraya yalnızca "izin ver" kuralları eklenebilir. "Reddetme" kuralları eklemek istiyorsanız, bunu doğrudan NSG üzerinde yapabilirsiniz. Daha ayrıntılı bilgi için bkz. [ağ güvenlik grubu oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Buraya yalnızca "izin ver" kuralları eklenebilir. "Reddetme" kuralları eklemek istiyorsanız, bunu doğrudan NSG üzerinde yapabilirsiniz. Daha fazla bilgi için bkz. [ağ güvenlik grubu oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 *Uyarlamalı ağ sağlamlaştırma kuralı eklemek için:*
 

@@ -1,14 +1,14 @@
 ---
-title: CIS Microsoft Azure Foundations Benchmark şema örneği - Genel Bakış
+title: CIS Microsoft Azure Foundations Benchmark şema örneğine genel bakış
 description: CIS Microsoft Azure Foundations Benchmark şeması örneğine genel bakış. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
 ms.date: 08/09/2019
 ms.topic: sample
-ms.openlocfilehash: 89b7396b39ed6d308240316bbb5e718922d5e156
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 414c6d5a38821767dd43e62aa9f42edd8633dbe2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032418"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544571"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark şeması örneğine genel bakış
 

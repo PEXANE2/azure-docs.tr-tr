@@ -7,13 +7,13 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/22/2019
+ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076238"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561765"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma
 
@@ -21,11 +21,11 @@ Genellikle gelen verileri analiz için uygun bir hedefe yüklemeden önce temizl
 
 ## <a name="use-case-and-model-overview"></a>Kullanım örneği ve modele genel bakış
 
-Aşağıdaki şekilde, ETL otomasyonu için kullanım örneğine ve modele ilişkin bir genel bakış gösterilmektedir. Giriş verileri, uygun çıktıyı oluşturmak için dönüştürülür.  Bu dönüştürme sırasında veriler şekil, veri türü ve hatta dili değiştirebilir.  ETL işlemlerinde, kusurdan ölçüm 'e dönüştürülebilir, saat dilimlerini değiştirebilir ve hedefteki mevcut verilerle doğru şekilde uyum sağlamak için duyarlık geliştirebilirsiniz.  ETL işlemi, raporlamayı güncel tutmak veya mevcut veriler hakkında daha fazla öngörü sağlamak için mevcut verilerle yeni verileri de birleştirebilir.  Raporlama araçları ve hizmetleri gibi uygulamalar, bu verileri istenen biçimde tüketebilir.
+Aşağıdaki şekilde, ETL otomasyonu için kullanım örneğine ve modele ilişkin bir genel bakış gösterilmektedir. Giriş verileri, uygun çıktıyı oluşturmak için dönüştürülür.  Bu dönüştürme sırasında veriler şekil, veri türü ve hatta dili değiştirebilir.  ETL işlemlerinde, kusurdan ölçüm 'e dönüştürülebilir, saat dilimlerini değiştirebilir ve hedefteki mevcut verilerle doğru şekilde uyum sağlamak için duyarlık geliştirebilirsiniz.  ETL süreçler Ayrıca yeni verileri, raporlamayı güncel tutmak veya mevcut veriler hakkında daha fazla öngörü sağlamak için mevcut verilerle birleştirebilir.  Raporlama araçları ve hizmetleri gibi uygulamalar, bu verileri istenen biçimde tüketebilir.
 
 ![ETL mimarisi olarak Apache Hive](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop genellikle çok sayıda metin dosyasını (CSV 'ler gibi) veya daha küçük ancak sık değişen metin dosyası sayısını veya her ikisini birden içe alan ETL işlemlerinde kullanılır.  Hive, verileri veri hedefine yüklemeden önce hazırlamak için kullanılan harika bir araçtır.  Hive, CSV üzerinde bir şema oluşturmanıza ve verilerle etkileşime geçen MapReduce programları oluşturmak için SQL benzeri bir dil kullanmanıza olanak sağlar. 
+Hadoop genellikle çok sayıda metin dosyasını (CSV 'ler gibi) veya daha küçük ancak sık değişen metin dosyası sayısını veya her ikisini birden içe alan ETL işlemlerinde kullanılır.  Hive, verileri veri hedefine yüklemeden önce hazırlamak için kullanılan harika bir araçtır.  Hive, CSV üzerinde bir şema oluşturmanıza ve verilerle etkileşime geçen MapReduce programları oluşturmak için SQL benzeri bir dil kullanmanıza olanak sağlar.
 
 ETL gerçekleştirmek için Hive kullanmanın tipik adımları aşağıdaki gibidir:
 
@@ -38,14 +38,14 @@ ETL gerçekleştirmek için Hive kullanmanın tipik adımları aşağıdaki gibi
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
-    
+
     CREATE EXTERNAL TABLE hvac(`date` STRING, time STRING, targettemp BIGINT,
-        actualtemp BIGINT, 
-        system BIGINT, 
-        systemage BIGINT, 
+        actualtemp BIGINT,
+        system BIGINT,
+        systemage BIGINT,
         buildingid BIGINT)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-    STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
 5. Verileri dönüştürün ve hedefe yükleyin.  Dönüştürme ve yükleme sırasında Hive kullanmanın birkaç yolu vardır:
@@ -73,7 +73,7 @@ Hive 'yi aşağıdakiler dahil çeşitli hedeflere veri çıktısı için kullan
 * Excel.
 * Azure tablosu ve BLOB depolama.
 * Verilerin belirli biçimlerde işlenmesini gerektiren uygulamalar veya hizmetler veya belirli bilgi yapısı türlerini içeren dosyalar.
-* <a href="https://azure.microsoft.com/services/cosmos-db/">Cosmosdb</a>gıbı bir JSON belge deposu.
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)gıbı bir JSON belge deposu.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 

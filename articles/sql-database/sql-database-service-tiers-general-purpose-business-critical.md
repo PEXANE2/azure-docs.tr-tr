@@ -1,5 +1,5 @@
 ---
-title: GGenel amaçlı ve iş açısından kritik
+title: Genel amaçlı ve iş açısından kritik
 description: Bu makalede, sanal çekirdek tabanlı satın alma modelindeki genel amaçlı ve iş açısından kritik hizmet katmanları ele alınmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: 85b610969f9e5e85d014f89b90cfd862731aaf0c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5e3cc12351313b8fb1dedf795031202070ac7cf7
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821072"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558981"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL veritabanı hizmet katmanları
 
@@ -32,7 +32,7 @@ Bu makalede, sanal çekirdek tabanlı satın alma modelindeki genel amaçlı ve 
 
 Aşağıdaki tabloda, en son nesil (5. nesil) için hizmet katmanları arasındaki temel farklılıklar açıklanmaktadır. Hizmet katmanı özelliklerinin Tek Veritabanı ve yönetilen örnekte farklı olabileceğini unutmayın.
 
-| | Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
+| | Kaynak türü | Genel Amaçlı |  Hiper ölçeklendirme | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
 | **En iyisi** | |  Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar. | Birçok iş yükü. Depolama boyutunu 100 TB 'a kadar otomatik ölçeklendirme, sıvı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme. | Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türünde kullanılabilir:** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, en son nesil (5. nesil) için hizmet katmanları arasında
 || Yönetilen Örnek | [sanal çekirdek ve ayrılmış depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) ücretlendirilir. <br/>IOPS ücretlendirilmez.<br/>Yedekleme depolaması henüz ücretlendirilmez. | Yok | [sanal çekirdek ve ayrılmış depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) ücretlendirilir. <br/>IOPS ücretlendirilmez.<br/>Yedekleme depolaması henüz ücretlendirilmez. | 
 |**İndirim modelleri**| | [Ayrılmış örnekler](sql-database-reserved-capacity.md)<br/>[Azure hibrit avantajı](sql-database-azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Azure hibrit avantajı](sql-database-azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Ayrılmış örnekler](sql-database-reserved-capacity.md)<br/>[Azure hibrit avantajı](sql-database-azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri|
 
-Daha fazla bilgi için [tek veritabanındaki hizmet katmanları (sanal çekirdek)](sql-database-vcore-resource-limits-single-databases.md), [tek veritabanı havuzları (sanal çekirdek)](sql-database-dtu-resource-limits-single-databases.md), [tek veritabanı (DTU)](sql-database-dtu-resource-limits-single-databases.md), [tek veritabanı havuzları (DTU)](sql-database-dtu-resource-limits-single-databases.md)ve [yönetilen örnek](sql-database-managed-instance-resource-limits.md) arasındaki ayrıntılı farklar bölümüne bakın sayfaları.
+Daha fazla bilgi için [tek veritabanındaki hizmet katmanları (sanal çekirdek)](sql-database-vcore-resource-limits-single-databases.md), [tek veritabanı havuzları (sanal çekirdek)](sql-database-dtu-resource-limits-single-databases.md), [tek veritabanı (DTU)](sql-database-dtu-resource-limits-single-databases.md), [tek veritabanı havuzları (DTU)](sql-database-dtu-resource-limits-single-databases.md)ve [yönetilen örnek](sql-database-managed-instance-resource-limits.md) sayfaları arasındaki ayrıntılı farklılıklar bölümüne bakın.
 
 > [!NOTE]
 > Sanal çekirdek tabanlı satın alma modelindeki hiper ölçek hizmet katmanı hakkında bilgi için bkz. [hiper ölçekli hizmet katmanı](sql-database-service-tier-hyperscale.md). DTU tabanlı satın alma modeliyle sanal çekirdek tabanlı satın alma modeli karşılaştırması için bkz. [Azure SQL veritabanı satın alma modelleri ve kaynakları](sql-database-purchase-models.md).

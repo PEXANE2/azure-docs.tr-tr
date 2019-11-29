@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819692"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559017"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux’ta Azure App Service’e Giriş
 
@@ -67,7 +67,12 @@ Aynı kaynak grubu için geçerli bir sınırlamaya bağlı olarak, aynı bölge
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. `stdout` ve `stderr` kapsayıcısından günlüğe kaydetmek için **App Service günlükleri**altında **Docker kapsayıcı günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
+> [!NOTE]
+> [Azure izleme (Önizleme)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) ile birlikte yeni tümleşik günlüğe kaydetme özelliği vardır. 
+>
+>
+
+Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. `stdout` ve `stderr` kapsayıcınızdan günlüğe kaydetmek için **App Service günlükleri**altında **Uygulama günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
 
 SCM sitesine **Geliştirme Araçları** menüsündeki **Gelişmiş Araçlar**’dan erişebilirsiniz.
 
