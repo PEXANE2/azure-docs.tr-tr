@@ -1,25 +1,17 @@
 ---
-title: Azure mobil uygulamanız (Cordova) için çevrimdışı eşitlemeyi etkinleştirme | Microsoft Docs
-description: Cordova uygulamanızdaki çevrimdışı verileri önbelleğe almak ve eşitlemek için App Service mobil uygulamayı nasıl kullanacağınızı öğrenin
-documentationcenter: cordova
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
+title: Çevrimdışı eşitlemeyi etkinleştir (Cordova)
+description: App Service mobil uygulamayı kullanarak Cordova uygulamanızdaki çevrimdışı verileri önbelleğe alma ve eşitleme hakkında bilgi edinin.
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: c5fcc98bf3da79d1978da6e67535a5a93a8fe321
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: aae78285b5ed13031275b4969befa2e1d67bf5b7
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388843"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668536"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova mobil uygulamanız için çevrimdışı eşitlemeyi etkinleştirme
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -44,7 +36,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
 
-    Bu kod ile:
+    Şu kodla:
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable,      // Reference to a table endpoint on backend
@@ -54,7 +46,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
-    Bu kod ile:
+    Şu kodla:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
         var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
@@ -82,7 +74,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
-    Bu kod ile:
+    Şu kodla:
 
         // Initialize the sync context with the store
         syncContext.initialize(store).then(function () {

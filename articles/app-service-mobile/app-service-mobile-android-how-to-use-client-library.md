@@ -1,24 +1,17 @@
 ---
-title: Android için Azure Mobile Apps SDK 'sını kullanma | Microsoft Docs
+title: Android için SDK 'Yı kullanma
 description: Android için Azure Mobile Apps SDK 'sını kullanma
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 991f3c8939c0f9e270423ff30282b02f110eb39e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388911"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668903"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Android için Azure Mobile Apps SDK 'sını kullanma
 
@@ -113,7 +106,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 İstemci Ayrıca, etkinliğe veya Içeriğe erişim gerektirir-örnekteki `this` parametresi.  MobileServiceClient oluşturma, `AndroidManifest.xml` dosyasında başvurulan etkinliğin `onCreate()` yöntemi içinde gerçekleşmelidir.
 
-En iyi uygulama olarak, sunucu iletişimini kendi (Singleton-model) sınıfına soyutmalısınız.  Bu durumda, hizmeti uygun şekilde yapılandırmak için etkinliğini Oluşturucu içinde geçirmeniz gerekir.  Örneğin:
+En iyi uygulama olarak, sunucu iletişimini kendi (Singleton-model) sınıfına soyutmalısınız.  Bu durumda, hizmeti uygun şekilde yapılandırmak için etkinliğini Oluşturucu içinde geçirmeniz gerekir.  Örnek:
 
 ```java
 package com.example.appname.services;
@@ -212,7 +205,7 @@ Azure Mobile Apps arka uç tablosu, istemcilerinin dördü olan beş özel alan�
 * `byte[] version`: normalde bir dize olarak temsil edildiğinde, sürüm sunucu tarafından da ayarlanır.
 * `boolean deleted`: kaydın silindiğini ancak henüz temizlenmediğini belirtir.  `deleted` sınıfınızın bir özelliği olarak kullanmayın.
 
-`id` alanı gereklidir.  `updatedAt` alanı ve `version` alanı, çevrimdışı eşitleme için kullanılır (sırasıyla artımlı eşitleme ve çakışma çözümü için).  `createdAt` alanı bir başvuru alanıdır ve istemci tarafından kullanılmaz.  Adlar, özelliklerin "hat genelinde" adlarıdır ve ayarlanamaz.  Ancak, [gson][3] kitaplığını kullanarak nesneniz ve "hat genelinde" adları arasında bir eşleme oluşturabilirsiniz.  Örneğin:
+`id` alanı gereklidir.  `updatedAt` alanı ve `version` alanı, çevrimdışı eşitleme için kullanılır (sırasıyla artımlı eşitleme ve çakışma çözümü için).  `createdAt` alanı bir başvuru alanıdır ve istemci tarafından kullanılmaz.  Adlar, özelliklerin "hat genelinde" adlarıdır ve ayarlanamaz.  Ancak, [gson][3] kitaplığını kullanarak nesneniz ve "hat genelinde" adları arasında bir eşleme oluşturabilirsiniz.  Örnek:
 
 ```java
 package com.example.zumoappname;
@@ -461,7 +454,7 @@ Bu yöntemi kullanan tüm kayıtlar için bir istek, Mobile Apps arka uca en az 
 
 ### <a name="chaining"></a>Nasıl yapılır: sorgu yöntemlerini birleştirme
 
-Arka uç tablolarını sorgulamak için kullanılan yöntemler birleştirilebilir. Sorgu yöntemleri zincirleme, sıralanmış ve disk belleğine alınmış filtrelenmiş satırlardaki belirli sütunları seçmenizi sağlar. Karmaşık mantıksal filtreler oluşturabilirsiniz.  Her sorgu yöntemi bir sorgu nesnesi döndürür. Yöntem dizisini sonlandırmak ve sorguyu çalıştırmak için **Execute** metodunu çağırın. Örneğin:
+Arka uç tablolarını sorgulamak için kullanılan yöntemler birleştirilebilir. Sorgu yöntemleri zincirleme, sıralanmış ve disk belleğine alınmış filtrelenmiş satırlardaki belirli sütunları seçmenizi sağlar. Karmaşık mantıksal filtreler oluşturabilirsiniz.  Her sorgu yöntemi bir sorgu nesnesi döndürür. Yöntem dizisini sonlandırmak ve sorguyu çalıştırmak için **Execute** metodunu çağırın. Örnek:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -531,7 +524,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Bağdaştırıcıları **GetView** metodunu geçersiz kılın. Örneğin:
+Bağdaştırıcıları **GetView** metodunu geçersiz kılın. Örnek:
 
 ```java
     @Override
@@ -1114,7 +1107,7 @@ Azure Active Directory kullanarak uygulamanızdaki kullanıcıları imzalamak i�
 
 3. Aşağıdaki kodu uygulamanıza ekleyin ve aşağıdaki değişiklikleri yapın:
 
-    * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır.
+    * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.com olmalıdır.
     * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
     * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
     * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.

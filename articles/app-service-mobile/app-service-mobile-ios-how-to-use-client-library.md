@@ -1,24 +1,17 @@
 ---
-title: Azure için iOS SDK 'Yı kullanma Mobile Apps
+title: İOS SDK 'sını kullanma
 description: Azure için iOS SDK 'Yı kullanma Mobile Apps
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9860ab6b16c6639581d0bcd1783d43f420f88d74
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435383"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668436"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure için iOS Istemci kitaplığı 'Nı kullanma Mobile Apps
 
@@ -568,7 +561,7 @@ Azure Active Directory kullanarak uygulamanızdaki kullanıcıları imzalamak i�
 3. Terminal kullanarak, projenizi içeren dizinden `pod install` çalıştırın ve ardından oluşturulan Xcode çalışma alanını (proje değil) açın.
 4. Aşağıdaki kodu, kullanmakta olduğunuz dile göre uygulamanıza ekleyin. Her birinde şu değişiklikleri yapın:
 
-   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portal]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
+   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.com olmalıdır. Bu değer, [Azure portalda]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
    * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
    * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
    * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.
@@ -904,7 +897,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-[Azure Portal]: https://portal.azure.com/
+[Azure portalda]: https://portal.azure.com/
 [Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx

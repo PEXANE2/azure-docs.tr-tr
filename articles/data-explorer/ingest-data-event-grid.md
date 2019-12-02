@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881558"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667492"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid bildirimlerine abone olarak Azure Veri Gezgini blob alma
 
@@ -20,6 +20,7 @@ ms.locfileid: "72881558"
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Azure Resource Manager şablonu](data-connection-event-grid-resource-manager.md)
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve ölçeklenebilir bir veri araştırma hizmetidir. Blob kapsayıcılarına yazılan bloblardan sürekli alma (veri yükleme) sağlar. 
 
@@ -86,7 +87,7 @@ Bundan sonra blob kapsayıcısına akan verilerin test tablosuna akışı için 
 
 1. Olay hub'ı dağıtımının başarılı olduğundan emin olmak için araç çubuğunda **Bildirimler**'i seçin.
 
-1. Oluşturduğunuz küme altında **veritabanları** > **TestDatabase**' i seçin.
+1. Oluşturduğunuz kümenin altında, **TestDatabase** > **veritabanları** ' nı seçin.
 
     ![Test veritabanını seçme](media/ingest-data-event-grid/select-test-database.png)
 

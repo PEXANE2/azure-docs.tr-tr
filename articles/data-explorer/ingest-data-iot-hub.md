@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028475"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667418"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub verileri Azure Veri Gezgini 'a alma (Önizleme)
 
@@ -20,17 +20,15 @@ ms.locfileid: "72028475"
 > * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager şablonu](data-connection-iot-hub-resource-manager.md)
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük bir veri akışı platformu ve IoT alma hizmeti olan IoT Hub alma (veri yükleme) sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-
 * *TestDB*veritabanı adıyla [bir test kümesi ve veritabanı](create-cluster-database-portal.md) oluşturun.
-
 * Bir cihazın benzetimini yapmak için [örnek bir uygulama](https://github.com/Azure-Samples/azure-iot-samples-csharp) ve belgeler.
-
 * Örnek uygulamayı çalıştırmak için [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) .
 
 ## <a name="create-an-iot-hub"></a>IoT Hub 'ı oluşturma
@@ -116,7 +114,7 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
 
 1. **SimulatedDevice.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t-0 değişkeninin değerini, cihaz bağlantı dizesiyle [bir cihazı IoT Hub kaydet](#register-a-device-to-the-iot-hub)öğesinden değiştirin. Daha sonra **SimulatedDevice.cs** dosyasına değişikliklerinizi kaydedin.
+    `s_connectionString` değişkeninin değerini cihaz bağlantı [IoT Hub](#register-a-device-to-the-iot-hub)dizesi ile değiştirin. Daha sonra **SimulatedDevice.cs** dosyasına değişikliklerinizi kaydedin.
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
 

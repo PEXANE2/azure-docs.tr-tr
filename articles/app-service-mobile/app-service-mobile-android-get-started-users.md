@@ -1,25 +1,17 @@
 ---
-title: Android 'de Mobile Apps kimlik doğrulaması ekleme | Microsoft Docs
-description: Google, Facebook, Twitter ve Microsoft gibi çeşitli kimlik sağlayıcıları aracılığıyla Android uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure App Service Mobile Apps özelliğini nasıl kullanacağınızı öğrenin.
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
-editor: ''
+title: Android üzerinde kimlik doğrulaması ekleme
+description: Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Android uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure App Service nasıl kullanacağınızı öğrenin.
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: b520f6129e7d7fa1a4800143d5987d3eba625e98
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f68b4f8477d5b21a7107270370af387a7e88756e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388943"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668943"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Android uygulamanıza kimlik doğrulaması ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -39,15 +31,15 @@ Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak Android 'de T
 
 Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar. Bu öğreticide, üzerinde URL şeması _uygulamamız_ kullanırız. Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz. Bu, mobil uygulamanız için benzersiz olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
 
-1. [Azure portal]App Service seçin.
+1. [Azure portalda]App Service seçin.
 
 2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
 
 3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`appname://easyauth.callback`girin.  Bu dizedeki _appname_ , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
 
-4. **OK (Tamam)** düğmesine tıklayın.
+4. **Tamam**’a tıklayın.
 
-5. **Kaydet**’e tıklayın.
+5. **Kaydet** düğmesine tıklayın.
 
 ## <a name="permissions"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -85,4 +77,4 @@ Bu temel kimlik doğrulama öğreticisini tamamladığınıza göre, aşağıdak
 
 <!-- URLs. -->
 [Mobile Apps kullanmaya başlayın]: app-service-mobile-android-get-started.md
-[Azure Portal]: https://portal.azure.com/
+[Azure portalda]: https://portal.azure.com/

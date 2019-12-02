@@ -1,26 +1,19 @@
 ---
-title: Mobile Apps için .NET arka uç sunucu SDK 'Sı ile çalışma | Microsoft Docs
+title: .NET arka uç sunucu SDK 'Sı ile çalışma
 description: Azure App Service Mobile Apps için .NET arka uç sunucu SDK ile nasıl çalışacağınızı öğrenin.
 keywords: App Service, Azure App Service, mobil uygulama, mobil hizmet, ölçek, ölçeklenebilir, uygulama dağıtımı, Azure uygulama dağıtımı
-services: app-service\mobile
-documentationcenter: ''
 author: conceptdev
-manager: crdun
-editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 5372385bd4de0f5592a7fff3e4a78fbb5e1648dc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388787"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668870"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps için .NET arka uç sunucu SDK’sı ile çalışma
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -41,7 +34,7 @@ Bu konu başlığında, .NET arka uç sunucu SDK 'sının anahtar Azure App Serv
 Sunucu SDK 'Sı için başvuru belgeleri şurada bulunur: [Azure Mobile Apps .net başvurusu][1].
 
 ## <a name="create-app"></a>Nasıl yapılır: .NET mobil uygulaması arka ucu oluşturma
-Yeni bir proje başlatıyorsanız, [Azure Portal] ya da Visual Studio kullanarak bir App Service uygulaması oluşturabilirsiniz. App Service uygulamayı yerel olarak çalıştırabilir veya projeyi bulut tabanlı App Service mobil uygulamanızda yayımlayabilirsiniz.
+Yeni bir proje başlatıyorsanız, [Azure portalda] ya da Visual Studio kullanarak bir App Service uygulaması oluşturabilirsiniz. App Service uygulamayı yerel olarak çalıştırabilir veya projeyi bulut tabanlı App Service mobil uygulamanızda yayımlayabilirsiniz.
 
 Mevcut bir projeye mobil özellikleri ekliyorsanız, [SDK 'Yı indirme ve başlatma](#install-sdk) bölümüne bakın.
 
@@ -74,13 +67,13 @@ Visual Studio 'da bir Azure Mobile Apps projesi oluşturmak için [.net Için Az
 3. **ASP.NET Web Uygulaması**'nı seçin.
 4. Proje adını girin. Daha sonra, **Tamam**'a tıklayın.
 5. *ASP.NET 4.5.2 şablonları*altında **Azure mobil uygulaması**' nı seçin. Bulutta bulunan **Konağı** denetleyerek bu projeyi yayımlayacağınız bulutta bir mobil arka uç oluşturun.
-6. **OK (Tamam)** düğmesine tıklayın.
+6. **Tamam**’a tıklayın.
 
 ## <a name="install-sdk"></a>Nasıl yapılır: SDK 'Yı Indirme ve başlatma
 SDK [NuGet.org]' de kullanılabilir. Bu paket, SDK 'Yı kullanmaya başlamak için gereken temel işlevselliği içerir. SDK 'yı başlatmak için **HttpConfiguration** nesnesi üzerinde eylemler gerçekleştirmeniz gerekir.
 
 ### <a name="install-the-sdk"></a>SDK yükle
-SDK 'yı yüklemek için, Visual Studio 'da sunucu projesine sağ tıklayın, **NuGet Paketlerini Yönet**' i seçin, [Microsoft.Azure.Mobile.Server] paketini arayın ve ardından **Install**' a tıklayın.
+SDK 'yı yüklemek için, Visual Studio 'da sunucu projesine sağ tıklayın, **NuGet Paketlerini Yönet**' i seçin, [Microsoft. Azure. Mobile. Server] paketini arayın ve ardından **Install**' a tıklayın.
 
 ### <a name="server-project-setup"></a>Sunucu projesini Başlat
 .NET arka uç sunucu projesi, OWıN başlangıç sınıfı ekleyerek diğer ASP.NET projelerine benzer şekilde başlatılır. `Microsoft.Owin.Host.SystemWeb`NuGet paketine başvurultığınızdan emin olun. Visual Studio 'ya bu sınıfı eklemek için, sunucu projenize sağ tıklayın ve >
@@ -141,7 +134,7 @@ Aşağıdaki NuGet tabanlı uzantı paketleri, uygulamanız tarafından kullanı
 * [Microsoft. Azure. Mobile. Server. Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) , Entity Framework SQL veritabanındaki verilere erişmesine olanak sağlar. **Addtableswithentityframework** genişletme yöntemini çağırarak yapılandırmaya ekleyin.
 * [Microsoft. Azure. Mobile. Server. Authentication] , belirteçleri doğrulamak için kullanılan owın ara yazılımı için kimlik doğrulaması ve ayar sağlar. **Addappserviceauthentication** ve **ıappbuilder**çağırarak yapılandırmaya ekleyin. **Useappserviceauthentication** uzantı yöntemleri.
 * [Microsoft. Azure. Mobile. Server. Notifications] anında iletme bildirimleri sunar ve bir anında kayıt uç noktası tanımlar. **Addpushnotifications** genişletme yöntemini çağırarak yapılandırmaya ekleyin.
-* [Microsoft.Azure.Mobile.Server.CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) Creates a controller that serves data to legacy web browsers from your Mobile App. **MapLegacyCrossDomainController** Extension metodunu çağırarak yapılandırmaya ekleyin.
+* [Microsoft. Azure. Mobile. Server. CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) , mobil uygulamanızdan eski Web tarayıcılarına veri sunan bir denetleyici oluşturur. **MapLegacyCrossDomainController** Extension metodunu çağırarak yapılandırmaya ekleyin.
 * [Microsoft. Azure. Mobile. Server. Login] , özel kimlik doğrulama senaryolarında kullanılan bir statik yöntem olan AppServiceLoginHandler. CreateToken () yöntemini sağlar.
 
 ## <a name="publish-server-project"></a>Nasıl yapılır: sunucu projesini yayımlama
@@ -171,7 +164,7 @@ Mobil istemcilere bir SQL tablosu göstermek için bir tablo denetleyicisi tanı
 2. Mobil DbContext sınıfında bir tablo başvurusu yapılandırın.
 3. Tablo denetleyicisi oluşturun.
 
-Veri Aktarımı nesnesi (DTO), `EntityData`devralan düz C# bir nesnedir.  Örneğin:
+Veri Aktarımı nesnesi (DTO), `EntityData`devralan düz C# bir nesnedir.  Örnek:
 
     public class TodoItem : EntityData
     {
@@ -474,7 +467,7 @@ Mobil arka ucunuzun [Microsoft. Azure. Mobile. Server. Authentication] 'ın yük
 Yukarıdaki örnekte, HTTPS şemasını kullanarak Web. config dosyanızdaki *Authaudience* ve *authıssuer* uygulama ayarlarını uygulama köklerinizin URL 'si olacak şekilde yapılandırmanız gerekir. Benzer şekilde, *Authsigningkey* ' i uygulamanızın İmzalama anahtarının değeri olacak şekilde ayarlamanız gerekir.
 İmzalama anahtarını almak için:
 
-1. [Azure Portal] içinde uygulamanıza gidin
+1. [Azure portalda] içinde uygulamanıza gidin
 2. **Araçlar**, **kudu**, **Git**öğesine tıklayın.
 3. Kudu yönetim sitesinde **ortam**' a tıklayın.
 4. *Web sitesi\_kimlik doğrulaması\_imzalama\_anahtarı*için değeri bulur.
@@ -487,9 +480,9 @@ Yerel uygulama yapılandırma uygulamanızda *Authsigningkey* parametresi için 
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure Portal]: https://portal.azure.com
+[Azure portalda]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
-[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Microsoft. Azure. Mobile. Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft. Azure. Mobile. Server. QuickStart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
 [Microsoft. Azure. Mobile. Server. Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft. Azure. Mobile. Server. Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/

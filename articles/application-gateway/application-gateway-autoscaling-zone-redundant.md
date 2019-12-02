@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847265"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668143"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -35,7 +35,7 @@ Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Standard_v2 ve WAF_v2 SKU 'SU şu bölgelerde kullanılabilir: Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, UK Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu , Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Orta, Kore Güney, Güney Hindistan, UK Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
+Standard_v2 ve WAF_v2 SKU 'SU şu bölgelerde kullanılabilir: Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, UK Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu , Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Orta, Kore Güney, UK Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

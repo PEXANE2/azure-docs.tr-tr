@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838206"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668566"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Sanal ağınıza Azure Veri Gezgini dağıtma (Önizleme)
 
@@ -64,6 +64,9 @@ Toplam IP adresi sayısı:
 [Azure hizmet uç noktaları](/azure/virtual-network/virtual-network-service-endpoints-overview) , Azure çok kiracılı kaynaklarınızı sanal ağınıza güvenli hale getirmenizi sağlar.
 Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı için temel alınan kaynakları kısıtlayarak [Olay Hub 'ı](/azure/event-hubs/event-hubs-about) veya [Event Grid](/azure/event-grid/overview) veri bağlantıları ayarlamanıza olanak sağlar.
 
+> [!NOTE]
+> [Depolama](/azure/storage/common/storage-introduction) ve [Event Hub] Ile eventgrid kurulumu kullanılırken, abonelikte kullanılan depolama hesabı, [güvenlik duvarı yapılandırmasında](/azure/storage/common/storage-network-security)güvenilen Azure platformu Hizmetleri 'ne izin verirken Azure Veri Gezgini 'nin alt ağı Ile kilitlenebilir, ancak olay hub 'ı güvenilen [Azure platform hizmetleri](/azure/event-hubs/event-hubs-service-endpoints)'ni desteklemediğinden hizmet uç noktasını etkinleştiremez.
+
 ## <a name="dependencies-for-vnet-deployment"></a>VNet dağıtımı için bağımlılıklar
 
 ### <a name="network-security-groups-configuration"></a>Ağ güvenlik grupları yapılandırması
@@ -101,11 +104,11 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | --- | --- |
 | Avustralya Orta | 20.37.26.134 |
 | Avustralya Central2 | 20.39.99.177 |
-| Avustralya Doğu | 40.82.217.84 |
-| Avustralya Güneydoğu | 20.40.161.39 |
+| Doğu Avustralya | 40.82.217.84 |
+| Güneydoğu Avustralya | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
-| Orta Kanada | 40.82.188.208 |
-| Doğu Kanada | 40.80.255.12 |
+| Kanada Orta | 40.82.188.208 |
+| Kanada Doğu | 40.80.255.12 |
 | Orta Hindistan | 40.81.249.251 |
 | Orta ABD | 40.67.188.68 |
 | EUAP Orta ABD | 40.89.56.69 |
@@ -115,20 +118,20 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Doğu ABD2 EUAP | 52.253.226.110 |
 | Fransa Orta | 40.66.57.91 |
 | Fransa Güney | 40.82.236.24 |
-| Japonya Doğu | 20.43.89.90 |
-| Japonya Batı | 40.81.184.86 |
+| Doğu Japonya | 20.43.89.90 |
+| Batı Japonya | 40.81.184.86 |
 | Kore Orta | 40.82.156.149 |
 | Kore Güney | 40.80.234.9 |
 | Orta Kuzey ABD | 40.81.45.254 |
 | Kuzey Avrupa | 52.142.91.221 |
 | Güney Afrika Kuzey | 102.133.129.138 |
 | Güney Afrika Batı | 102.133.0.97 |
-| Orta Güney ABD | 20.45.3.60 |
+| Güney Orta ABD | 20.45.3.60 |
 | Güneydoğu Asya | 40.119.203.252 |
 | Güney Hindistan | 40.81.72.110 |
-| Birleşik Krallık Güney | 40.81.154.254 |
-| Birleşik Krallık Batı | 40.81.122.39 |
-| Batı Orta ABD | 52.159.55.120 |
+| Birleşik Krallık, Güney | 40.81.154.254 |
+| Birleşik Krallık, Batı | 40.81.122.39 |
+| Orta Batı ABD | 52.159.55.120 |
 | Batı Avrupa | 51.145.176.215 |
 | Batı Hindistan | 40.81.88.112 |
 | Batı ABD | 13.64.38.225 |
@@ -140,11 +143,11 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | --- | --- |
 | Avustralya Orta | 191.239.64.128 |
 | Avustralya Orta 2 | 191.239.64.128 |
-| Avustralya Doğu | 191.239.64.128 |
-| Avustralya Güneydoğu | 191.239.160.47 |
-| Güney Brezilya | 23.98.145.105 |
-| Orta Kanada | 168.61.212.201 |
-| Doğu Kanada | 168.61.212.201 |
+| Doğu Avustralya | 191.239.64.128 |
+| Güneydoğu Avustralya | 191.239.160.47 |
+| Brezilya Güney | 23.98.145.105 |
+| Kanada Orta | 168.61.212.201 |
+| Kanada Doğu | 168.61.212.201 |
 | Orta Hindistan | 23.99.5.162 |
 | Orta ABD | 168.61.212.201 |
 | EUAP Orta ABD | 168.61.212.201 |
@@ -154,20 +157,20 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | EUAP Doğu ABD 2 | 137.116.81.189 |
 | Fransa Orta | 23.97.212.5 |
 | Fransa Güney | 23.97.212.5 |
-| Japonya Doğu | 138.91.19.129 |
-| Japonya Batı | 138.91.19.129 |
+| Doğu Japonya | 138.91.19.129 |
+| Batı Japonya | 138.91.19.129 |
 | Kore Orta | 138.91.19.129 |
 | Kore Güney | 138.91.19.129 |
 | Orta Kuzey ABD | 23.96.212.108 |
 | Kuzey Avrupa | 191.235.212.69 
 | Güney Afrika Kuzey | 104.211.224.189 |
 | Güney Afrika Batı | 104.211.224.189 |
-| Orta Güney ABD | 23.98.145.105 |
+| Güney Orta ABD | 23.98.145.105 |
 | Güney Hindistan | 23.99.5.162 |
 | Güneydoğu Asya | 168.63.173.234 |
-| Birleşik Krallık Güney | 23.97.212.5 |
-| Birleşik Krallık Batı | 23.97.212.5 |
-| Batı Orta ABD | 168.61.212.201 |
+| Birleşik Krallık, Güney | 23.97.212.5 |
+| Birleşik Krallık, Batı | 23.97.212.5 |
+| Orta Batı ABD | 168.61.212.201 |
 | Batı Avrupa | 23.97.212.5 |
 | Batı Hindistan | 23.99.5.162 |
 | Batı ABD | 23.99.5.162 |
@@ -206,7 +209,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Güneydoğu Asya | 52.148.86.165 |
 | UK Güney | 52.174.4.112 |
 | UK Batı | 52.169.237.246 |
-| Batı Orta ABD | 52.161.31.69 |
+| Orta Batı ABD | 52.161.31.69 |
 | Batı Avrupa | 52.174.4.112 |
 | Batı Hindistan | 13.71.25.187 |
 | Batı ABD | 40.78.70.148 |
@@ -251,7 +254,7 @@ Ayrıca, asimetrik yolların sorunlarını engellemek için [Yönetim adresleri]
 
 Örneğin, **Batı ABD** bölge Için aşağıdaki udrs tanımlanmalıdır:
 
-| Ad | Adres Ön Eki | Sonraki atlama |
+| Adı | Adres Ön Eki | Sonraki atlama |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 741232bb7ed6ecf3d20711c1f6248f8e6d6215e8
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cf2a274b4f48b31739d6abba5cf87fa2a10d4ca1
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031688"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667687"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>Kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturmaC#
 
@@ -20,21 +20,17 @@ ms.locfileid: "72031688"
 > * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede kullanarak C#Azure Veri Gezgini Için bir olay hub 'ı veri bağlantısı oluşturacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
-
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-
 * [Küme ve veritabanı](create-cluster-database-csharp.md) oluşturma
-
 * [Tablo ve sütun eşlemesi](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) oluştur
-
 * [Veritabanı ve tablo ilkelerini](database-table-policies-csharp.md) ayarlama (isteğe bağlı)
-
 * Alma [için verilerle bir olay hub 'ı](ingest-data-event-hub.md#create-an-event-hub)oluşturun. 
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]

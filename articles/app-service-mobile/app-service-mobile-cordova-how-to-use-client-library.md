@@ -1,25 +1,17 @@
 ---
-title: Azure için Apache Cordova eklentisi 'ni kullanma Mobile Apps
+title: Apache Cordova eklentisi kullanma
 description: Azure için Apache Cordova eklentisi 'ni kullanma Mobile Apps
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 25bff77da6c2bd89916fe40ebb153ff9631e62eb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ecca8f719a01abe68b368987fce4ea883193e844
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388799"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668501"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure için Apache Cordova istemci kitaplığı 'nı kullanma Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388799"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuz, [Azure Mobile Apps Apache Cordova eklentisi]kullanarak genel senaryoları gerçekleştirmenizi öğretir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun, tablo oluşturun ve önceden oluşturulmuş bir Apache Cordova projesini indirin. Bu kılavuzda, istemci tarafı Apache Cordova eklentisine odaklanıyoruz.
@@ -59,7 +51,7 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-İstemci nesnesini oluşturmak için `app.component.ts` ' a aşağıdaki satırları ekleyin:
+İstemci nesnesini oluşturmak için aşağıdaki satırları `app.component.ts` ekleyin:
 
 ```typescript
 declare var WindowsAzure: any;
@@ -130,7 +122,7 @@ Ayrıca, bu geri döngü URL 'Lerini App Service CORS ayarlarına ekleyin:
 Yeni ayarların etkili olması yaklaşık 10-15 saniye sürer.
 
 ## <a name="register-for-push"></a>Nasıl yapılır: anında iletme bildirimleri için kaydolma
-Anında iletme bildirimlerini işlemek için [PhoneGap-eklenti-gönderim] ' i yükleme.  Bu eklenti, komut satırında `cordova plugin add` komutu kullanılarak veya Visual Studio içindeki Git eklentisi yükleyicisi aracılığıyla kolayca eklenebilir.  Apache Cordova uygulamanızda aşağıdaki kod, cihazınızı anında iletme bildirimleri için kaydeder:
+Anında iletme bildirimlerini işlemek için [PhoneGap-eklenti-gönderim] ' i yükleme.  Bu eklenti, komut satırındaki `cordova plugin add` komutu kullanılarak veya Visual Studio içindeki Git eklentisi yükleyicisi aracılığıyla kolayca eklenebilir.  Apache Cordova uygulamanızda aşağıdaki kod, cihazınızı anında iletme bildirimleri için kaydeder:
 
 ```javascript
 var pushOptions = {

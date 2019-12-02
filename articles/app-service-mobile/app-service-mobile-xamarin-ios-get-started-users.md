@@ -1,25 +1,17 @@
 ---
-title: Xamarin iOS 'ta Mobile Apps kimlik doğrulaması ile çalışmaya başlama
-description: AAD, Google, Facebook, Twitter ve Microsoft gibi çeşitli kimlik sağlayıcıları aracılığıyla Xamarin iOS uygulamanızın kullanıcılarının kimliğini doğrulamak için Mobile Apps nasıl kullanacağınızı öğrenin.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Xamarin iOS 'da kimlik doğrulamaya başlayın
+description: Mobile Apps kullanarak, Xamarin iOS uygulamanızın kullanıcılarına AAD, Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcıları ile kimlik doğrulaması yapma hakkında bilgi edinin.
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 859c2d4cc1c2be7b4e96a955e78dc0339875c96f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f2c78c3d4b18e7c662c4f7345938ddab377229b
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388334"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668274"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Xamarin.iOS uygulamanıza kimlik doğrulaması ekleyin
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388334"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -46,7 +38,7 @@ Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımla
 
 2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
 
-3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`url_scheme_of_your_app://easyauth.callback` girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
+3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`url_scheme_of_your_app://easyauth.callback`girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
 
 4. **Tamam**’a tıklayın.
 
@@ -64,7 +56,7 @@ Daha sonra, istemci uygulamasını, kimliği doğrulanmış bir kullanıcıyla m
 ## <a name="add-authentication-to-the-app"></a>Uygulamaya kimlik doğrulaması ekleme
 Bu bölümde, verileri görüntülemeden önce uygulamayı bir oturum açma ekranı görüntüleyecek şekilde değiştirirsiniz. Uygulama başlatıldığında, App Service bağlanmayacak ve herhangi bir veri görüntülemecektir. Kullanıcı yenileme hareketini ilk kez gerçekleştirdikten sonra oturum açma ekranı görünür; başarılı oturum açma işleminden sonra Todo öğeleri listesi görüntülenir.
 
-1. İstemci projesinde, **QSTodoService.cs** dosyasını açın ve aşağıdaki using ifadesini ve `MobileServiceUser` değerini QSTodoService sınıfına ekleyin:
+1. İstemci projesinde, **QSTodoService.cs** dosyasını açın ve aşağıdaki using ifadesini ekleyin ve QSTodoService sınıfına erişimci ile `MobileServiceUser`:
 
     ```csharp
     using UIKit;

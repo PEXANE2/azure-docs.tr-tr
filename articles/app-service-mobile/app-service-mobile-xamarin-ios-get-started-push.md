@@ -1,25 +1,17 @@
 ---
-title: Azure App Service ile Xamarin. iOS uygulamanıza anında iletme bildirimleri ekleme
-description: Xamarin. iOS uygulamanıza anında iletme bildirimleri göndermek için Azure App Service kullanmayı öğrenin
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Xamarin. iOS uygulamanıza anında iletme bildirimleri ekleme
+description: Xamarin. iOS uygulamanıza anında iletme bildirimleri göndermek için Azure App Service kullanmayı öğrenin.
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 5f968de25226528cb7aa016a4c301d07e53f2695
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 39e06587e48f30ce099eafaf7cfdb2fb2269d24f
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388382"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668635"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin. iOS uygulamanıza anında iletme bildirimleri ekleme
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388382"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 

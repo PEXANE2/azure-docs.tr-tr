@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b69cdb1ee04e3824bf5fd20a7db2401161fdf6e7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 113c039c9b7f0319bb724bcde1432044c0770672
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031675"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667666"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Python kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturma
 
@@ -20,19 +20,16 @@ ms.locfileid: "72031675"
 > * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede, Python kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-
 * [Küme ve veritabanı](create-cluster-database-csharp.md) oluşturma
-
 * [Tablo ve sütun eşlemesi](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) oluştur
-
 * [Veritabanı ve tablo ilkelerini](database-table-policies-csharp.md) ayarlama (isteğe bağlı)
-
 * Alma [için verilerle bir olay hub 'ı](ingest-data-event-hub.md#create-an-event-hub)oluşturun. 
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
@@ -89,9 +86,9 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | client_secret | *xxxxxxxxxxxxxx* | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci gizli anahtarı. |
 | resource_group_name | *testrg* | Kümenizi içeren kaynak grubunun adı.|
 | cluster_name | *mykustocluster* | Kümenizin adı.|
-| veritabanı | *mykustodatabase* | Kümenizdeki hedef veritabanının adı.|
+| database_name | *mykustodatabase* | Kümenizdeki hedef veritabanının adı.|
 | data_connection_name | *myeventhubconnect* | Veri bağlantınızın istenen adı.|
-| 'in | *StormEvents* | Hedef veritabanındaki hedef tablonun adı.|
+| table_name | *StormEvents* | Hedef veritabanındaki hedef tablonun adı.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | Hedef tabloyla ilişkili sütun eşlemenin adı.|
 | data_format | *CSV* | İletinin veri biçimi.|
 | event_hub_resource_id | *Kaynak KIMLIĞI* | Alma için verileri tutan Olay Hub 'ınızın kaynak KIMLIĞI. |

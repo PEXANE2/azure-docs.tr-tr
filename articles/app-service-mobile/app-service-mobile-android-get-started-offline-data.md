@@ -1,24 +1,17 @@
 ---
-title: Azure mobil uygulamanız için çevrimdışı eşitlemeyi etkinleştirme (Android)
-description: Android uygulamanızda çevrimdışı verileri önbelleğe almak ve eşitlemek için App Service Mobile Apps kullanmayı öğrenin
-documentationcenter: android
-author: elamalani
-manager: crdun
-services: app-service\mobile
+title: Çevrimdışı eşitlemeyi etkinleştir (Android)
+description: Android uygulamanızda çevrimdışı verileri önbelleğe almak ve eşitlemek için App Service Mobile Apps kullanmayı öğrenin.
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 9c845c09c6b05436017f98323dfa78185cd58aa6
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8449b4f92636a7b73d07c34515f33dc9dc6816ab
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388993"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668926"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android mobil uygulamanız için çevrimdışı eşitlemeyi etkinleştirme
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

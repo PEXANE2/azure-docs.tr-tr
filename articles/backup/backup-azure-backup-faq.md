@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173221"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668086"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup-sık sorulan sorular
 
@@ -118,7 +118,7 @@ Aşağıdaki tabloda, her bir veri kaynağı boyutunun nasıl belirlendiği aç�
 Birim |Yedeklenen tek bir birim VM 'den yedeklenen veri miktarı.
 SQL Server veritabanı |Yedeklenen tek SQL veritabanı boyutunun boyutu.
 SharePoint | Yedeklenmekte olan bir SharePoint grubu içindeki içerik ve yapılandırma veritabanlarının toplamı.
-Exchange |Yedeklenmekte olan bir Exchange sunucusundaki tüm Exchange veritabanlarının toplamı.
+Değiştirin |Yedeklenmekte olan bir Exchange sunucusundaki tüm Exchange veritabanlarının toplamı.
 BMR/sistem durumu |Yedeklenmekte olan makinenin her bir BMR veya sistem durumunun tek bir kopyası.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası kullanılarak yedeklenen veri miktarı için bir sınır var mı?
@@ -176,7 +176,7 @@ Azure Backup alanı mimarisi, hızlı geri yükleme özelliğiyle optimum veri d
 
 Korumalı bir örnek için en çok 9999 kurtarma noktası oluşturabilirsiniz. Korumalı örnek, Azure 'a yedekleyen bir bilgisayar, sunucu (fiziksel veya sanal) veya iş yüküdür.
 
-- [Yedekleme ve bekletme](./backup-overview.md#backup-and-retention)hakkında daha fazla bilgi edinin.
+- [Yedekleme ve bekletme](./backup-support-matrix.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Azure 'a yedeklenen verileri kaç kez kurtarabilirim?
 

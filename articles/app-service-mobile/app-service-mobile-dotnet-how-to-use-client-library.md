@@ -1,25 +1,17 @@
 ---
-title: App Service Mobile Apps yönetilen istemci kitaplığı ile çalışma | Microsoft Docs
+title: Yönetilen istemci kitaplığıyla çalışma
 description: .NET istemci kitaplığı 'nı Windows ve Xamarin uygulamalarıyla Azure App Service Mobile Apps nasıl kullanacağınızı öğrenin.
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 1a56c6eed8b6a78587ea272c44f01d16e8a2b88d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388712"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668478"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps için yönetilen istemci kullanma
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -42,7 +34,7 @@ Bu kılavuzda, Windows ve Xamarin uygulamaları için Azure App Service Mobile A
 * API 19 ile 24 arasında Xamarin Android sürümleri (KitKat ile Nougat)
 * İOS sürümleri 8,0 ve üzeri için Xamarin iOS sürümleri
 * Evrensel Windows Platformu
-* Windows Phone 8.1
+* Windows Phone 8,1
 * Silverlight uygulamaları hariç Windows Phone 8,0
 
 "Sunucu-akışı" kimlik doğrulaması, sunulan kullanıcı arabirimi için bir WebView kullanır.  Cihaz bir WebView Kullanıcı arabirimini sunmıyorsa, diğer kimlik doğrulama yöntemleri gereklidir.  Bu SDK bu nedenle, Izleme türü veya benzer kısıtlanmış cihazlar için uygun değildir.
@@ -67,7 +59,7 @@ public class TodoItem
 
 [Jsonpropertyattribute][6] , istemci alanı ve tablo alanı arasındaki *PropertyName* eşlemesini tanımlamak için kullanılır.
 
-Mobile Apps arka ucunuzdaki tablo oluşturmayı öğrenmek için [.NET Server SDK konusuna][7] veya [Node. js sunucu SDK][8]konusuna bakın. Mobil uygulama arka ucunuzu hızlı başlangıç kullanarak Azure portal oluşturduysanız, [Azure Portal] **kolay tablolar** ayarını da kullanabilirsiniz.
+Mobile Apps arka ucunuzdaki tablo oluşturmayı öğrenmek için [.NET Server SDK konusuna][7] veya [Node. js sunucu SDK][8]konusuna bakın. Mobil uygulama arka ucunuzu hızlı başlangıç kullanarak Azure portal oluşturduysanız, [Azure portalda] **kolay tablolar** ayarını da kullanabilirsiniz.
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Nasıl yapılır: yönetilen istemci SDK paketini yüklemek
 [NuGet][9]'den Mobile Apps için YÖNETILEN istemci SDK paketini yüklemek için aşağıdaki yöntemlerden birini kullanın:
@@ -94,7 +86,7 @@ Aşağıdaki kod, mobil uygulama arka ucunuza erişmek için kullanılan [Mobile
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Yukarıdaki kodda `MOBILE_APP_URL`, [Azure Portal]mobil uygulamanızın arka ucunuzun dikey penceresinde bulunan mobil uygulama arka ucunun URL 'siyle değiştirin. MobileServiceClient nesnesi tek bir olmalıdır.
+Yukarıdaki kodda `MOBILE_APP_URL`, [Azure portalda]mobil uygulamanızın arka ucunuzun dikey penceresinde bulunan mobil uygulama arka ucunun URL 'siyle değiştirin. MobileServiceClient nesnesi tek bir olmalıdır.
 
 ## <a name="work-with-tables"></a>Tablolarla çalışma
 Aşağıdaki bölümde kayıtları arama ve alma ve tablodaki verileri değiştirme ayrıntıları yer alır.  Aşağıdaki konular ele alınmıştır:
@@ -383,7 +375,7 @@ Silme isteği yaptığınızda bir KIMLIK belirtilmelidir. Diğer özellikler hi
 
 Mobile Apps, mobil uygulama arka ucunuzdaki her tablo için tanımlanan `version` sistem özelliği sütununu kullanarak her bir öğedeki değişiklikleri izleyerek iyimser eşzamanlılık denetimini destekler. Kayıt her güncelleştirildiği zaman, Mobile Apps bu kayıt için `version` özelliğini yeni bir değere ayarlar. Her güncelleştirme isteği sırasında, isteğe eklenen kaydın `version` özelliği, sunucudaki kayıt için aynı özellik ile karşılaştırılır. İstekle geçilen sürüm arka uca eşleşmiyorsa, istemci kitaplığı `MobileServicePreconditionFailedException<T>` bir özel durum oluşturur. Özel duruma dahil edilen tür, kaydın sunucular sürümünü içeren arka ucun kaydıdır. Uygulama daha sonra bu bilgileri kullanarak, değişiklikleri kaydetmek için arka uçta doğru `version` değeri ile güncelleştirme isteğinin yeniden yürütülüp yürütülmeyeceğine karar verebilir.
 
-İyimser eşzamanlılığı etkinleştirmek üzere `version` sistemi özelliği için tablo sınıfında bir sütun tanımlayın. Örneğin:
+İyimser eşzamanlılığı etkinleştirmek üzere `version` sistemi özelliği için tablo sınıfında bir sütun tanımlayın. Örnek:
 
 ```csharp
 public class TodoItem
@@ -621,7 +613,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 Bu form, yazılı bir yöntem çağrıdır ve **Markallresult** dönüş türünün tanımlanmasını gerektirir. Hem yazılan hem de türsüz yöntemler desteklenir.
 
 Invokeapiasync () yöntemi, API '/' ile başlanmadığı takdirde çağırmak istediğiniz API 'ye '/api/' öğesine eklenir.
-Örneğin:
+Örnek:
 
 * `InvokeApiAsync("completeAll",...)` arka uçta/api/completeAll çağrısı
 * `InvokeApiAsync("/.auth/me",...)`, arka uçta/.exe auth/Me 'yi çağırır
@@ -636,7 +628,7 @@ Mobile Apps, farklı dış kimlik sağlayıcıları kullanarak uygulama kullanı
 > [!NOTE]
 > Üretim uygulamalarınızda istemci tarafından yönetilen bir akış kullanmanızı öneririz.
 
-Kimlik doğrulaması ayarlamak için uygulamanızı bir veya daha fazla kimlik sağlayıcısıyla kaydetmeniz gerekir.  Kimlik sağlayıcısı, uygulamanız için bir istemci KIMLIĞI ve bir istemci gizli anahtarı oluşturur.  Bu değerler daha sonra Azure App Service Kimlik Doğrulaması/Yetkilendirmeyi etkinleştirmek için arka ucunuza ayarlanır.  Daha fazla bilgi için aşağıdaki ayrıntılı yönergeleri öğreticide izleyin [Uygulamanıza kimlik doğrulaması ekleme].
+Kimlik doğrulaması ayarlamak için uygulamanızı bir veya daha fazla kimlik sağlayıcısıyla kaydetmeniz gerekir.  Kimlik sağlayıcısı, uygulamanız için bir istemci KIMLIĞI ve bir istemci gizli anahtarı oluşturur.  Bu değerler daha sonra Azure App Service Kimlik Doğrulaması/Yetkilendirmeyi etkinleştirmek için arka ucunuza ayarlanır.  Daha fazla bilgi için, [uygulamanıza kimlik doğrulaması ekleme]öğreticisindeki ayrıntılı yönergeleri izleyin.
 
 Bu bölümde aşağıdaki konular ele alınmıştır:
 
@@ -659,7 +651,7 @@ Azure Active Directory kimlik doğrulaması kullanarak istemciden kullanıcı ki
 2. Visual Studio veya Xamarin Studio içinde projenizi açın ve `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet paketine bir başvuru ekleyin. Arama sırasında yayın öncesi sürümleri dahil edin.
 3. Aşağıdaki kodu, kullandığınız platforma göre uygulamanıza ekleyin. Her birinde aşağıdaki değişiklikleri yapın:
 
-   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portal]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
+   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.com olmalıdır. Bu değer, [Azure portalda]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
    * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
    * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
    * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.
@@ -904,7 +896,7 @@ private async void InitNotificationsAsync()
 }
 ```
 
-WNS ' a itiediyorsanız [bir Microsoft Store paketi SID 'si EDINMENIZ](#package-sid)gerekir.  Şablon kayıtlar için nasıl dahil olmak üzere Windows uygulamaları hakkında daha fazla bilgi için bkz: [Uygulamanıza anında iletme bildirimleri ekleme].
+WNS ' a itiediyorsanız [bir Microsoft Store paketi SID 'si EDINMENIZ](#package-sid)gerekir.  Şablon kayıtlarına kaydolma da dahil olmak üzere Windows uygulamaları hakkında daha fazla bilgi için bkz. [uygulamanıza anında iletme bildirimleri ekleme].
 
 İstemciden etiket isteme desteklenmiyor.  Etiket Istekleri kayıttan sessizce kesilir.
 Cihazınızı etiketlere kaydetmek isterseniz, kayıt işlemini gerçekleştirmek için Notification Hubs API 'sini kullanan özel bir API oluşturun.  `RegisterNativeAsync()` yöntemi yerine özel API 'YI çağırın.
@@ -1073,7 +1065,7 @@ public class MyHandler : DelegatingHandler
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Olmadığı]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure Portal]: https://portal.azure.com/
+[Azure portalda]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

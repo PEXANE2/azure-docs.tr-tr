@@ -1,25 +1,17 @@
 ---
-title: Evrensel Windows Platformu (UWP) uygulamanıza kimlik doğrulaması ekleme | Microsoft Docs
-description: 'Azure App Service Mobile Apps kullanarak Evrensel Windows Platformu (UWP) uygulamanızın kullanıcılarının kimliğini doğrulamak için: AAD, Google, Facebook, Twitter ve Microsoft gibi çeşitli kimlik sağlayıcıları kullanarak kimlik doğrulaması yapmayı öğrenin.'
-services: app-service\mobile
-documentationcenter: windows
-author: elamalani
-manager: panarasi
-editor: ''
+title: UWP uygulamanıza kimlik doğrulaması ekleme
+description: AAD, Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Evrensel Windows Platformu (UWP) uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure App Service Mobile Apps nasıl kullanacağınızı öğrenin.
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d5012ccc503e48785e23ff00564bbc9f6735eea8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 23d3c897f227dd49253abfcc6d3a84d477341c13
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388546"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668393"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Windows uygulamanıza kimlik doğrulaması ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388546"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu konuda, mobil uygulamanıza bulut tabanlı kimlik doğrulaması ekleme konusu gösterilmektedir. Bu öğreticide, Azure App Service tarafından desteklenen bir kimlik sağlayıcısı kullanarak Mobile Apps için Evrensel Windows Platformu (UWP) hızlı başlangıç projesine kimlik doğrulaması eklersiniz. Mobil uygulama arka ucunuz tarafından başarıyla kimlik doğrulamasından ve yetkilendirdikten sonra, Kullanıcı KIMLIĞI değeri görüntülenir.
@@ -45,7 +37,7 @@ Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımla
 
 2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
 
-3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`url_scheme_of_your_app://easyauth.callback` girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
+3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`url_scheme_of_your_app://easyauth.callback`girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
 
 4. **Kaydet** düğmesine tıklayın.
 
@@ -147,7 +139,7 @@ Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliği
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Package. appxmanifest dosyasını açın, **Bildirimler**' e gidin, **kullanılabilir bildirimler** açılan listesinde **protokol** ' ü seçin ve düğme **Ekle** ' ye tıklayın. Şimdi **protokol** bildiriminin **özelliklerini** yapılandırın. **Görünen ad**' ta, uygulamanızın kullanıcılarına göstermek istediğiniz adı ekleyin. **Ad**alanına {url_scheme_of_your_app} uygulamanızı ekleyin.
+6. Package. appxmanifest dosyasını açın, **Bildirimler**' e gidin, **kullanılabilir bildirimler** açılan listesinde **protokol** ' ü seçin ve düğme **Ekle** ' ye tıklayın. Şimdi **protokol** bildiriminin **özelliklerini** yapılandırın. **Görünen ad**' ta, uygulamanızın kullanıcılarına göstermek istediğiniz adı ekleyin. **Ad**alanına {url_scheme_of_your_app} 'nizi ekleyin.
 7. Uygulamayı çalıştırmak için F5 tuşuna basın, **oturum aç** düğmesine tıklayın ve seçtiğiniz kimlik sağlayıcınızla birlikte uygulamada oturum açın. Oturum açma işlemi başarılı olduktan sonra, uygulama hatasız çalışır ve arka ucunuzu sorgulayabilir ve verilerde güncelleştirmeler yapabilirsiniz.
 
 ## <a name="tokens"></a>Kimlik doğrulama belirtecini istemcide depolayın

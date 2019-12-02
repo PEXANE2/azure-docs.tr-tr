@@ -7,23 +7,26 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 2afe3da8b4d4bee31b17320ad976e795e91d410a
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997247"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667287"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturma
+
+> [!div class="op_single_selector"]
+> * [C#](database-table-policies-csharp.md)
+> * [Python](database-table-policies-python.md)
+>
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Python kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-
 * [Test kümesi ve veritabanı](create-cluster-database-python.md)
-
 * [Bir sınama tablosu](python-ingest-data.md#create-a-table-on-your-cluster)
 
 ## <a name="install-the-data-libraries"></a>Veri kitaplıklarını yükler
@@ -35,7 +38,7 @@ pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
-Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu olması gerekir. Aynı Azure AD uygulamasını [bir test kümesinden ve veritabanından](create-cluster-database-csharp.md#authentication)kimlik doğrulaması için kullanabilirsiniz. Farklı bir Azure AD uygulaması kullanmak istiyorsanız, ücretsiz bir Azure AD uygulaması oluşturmak ve abonelik kapsamında rol ataması eklemek için bkz. [Azure AD uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Ayrıca, `Directory (tenant) ID`, `Application ID` ve `Client Secret` ' nin nasıl alınacağını gösterir. Yeni Azure AD uygulamasını veritabanına asıl olarak eklemeniz gerekebilir, bkz. [azure Veri Gezgini veritabanı Izinlerini yönetme](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
+Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu olması gerekir. Aynı Azure AD uygulamasını [bir test kümesinden ve veritabanından](create-cluster-database-csharp.md#authentication)kimlik doğrulaması için kullanabilirsiniz. Farklı bir Azure AD uygulaması kullanmak istiyorsanız, ücretsiz bir Azure AD uygulaması oluşturmak ve abonelik kapsamında rol ataması eklemek için bkz. [Azure AD uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Ayrıca, `Directory (tenant) ID`, `Application ID`ve `Client Secret`nasıl alınacağını da gösterir. Yeni Azure AD uygulamasını veritabanına asıl olarak eklemeniz gerekebilir, bkz. [azure Veri Gezgini veritabanı Izinlerini yönetme](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
 
 ## <a name="alter-database-retention-policy"></a>Alter database bekletme ilkesi
 10 günlük geçici silme dönemi ile bir bekletme ilkesi ayarlar.

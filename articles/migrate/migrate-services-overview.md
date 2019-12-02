@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 04e6eddb86d34089db0243ff102d5ebd5ee77e43
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666129"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669140"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -49,7 +49,7 @@ Azure geçişi, yerel Azure araçlarına ek olarak çeşitli ISV teklifleri ile 
 [Corent teknolojisi](https://www.corenttech.com/AzureMigrate/) | Sunucuları değerlendirin ve geçirin
 [Cihaz 42](https://docs.device42.com/) | Sunucuları değerlendir
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDı 'yi değerlendir
-[RackWare](https://www.rackwareinc.com/cloud-migration) | Sunucuları geçirme
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Sunucuları geçirme
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Sunucuları değerlendir
 [Unifrivcloud](https://www.cloudatlasinc.com/cloudrecon/) | Sunucuları ve veritabanlarını değerlendir
 

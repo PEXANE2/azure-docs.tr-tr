@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: raynew
-ms.openlocfilehash: 13a4fbb119ae9aceb8731e53f7123375a6e5c106
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666282"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669145"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -54,7 +54,7 @@ Azure geçiş sunucusu geçişi | Yok | [VMware VM 'leri](tutorial-migrate-vmwar
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Yok | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | Yok
 [Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | Yok
-[RackWare](https://www.rackwareinc.com/cloud-migration) | Yok | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Yok | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | Yok
 [Unifrivcloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri ve SQL Server veritabanlarını değerlendirin. | Yok
 [WEBAPP Geçiş Yardımcısı](https://appmigration.microsoft.com/) | Web uygulamalarını değerlendirme | Web uygulamalarını geçirme.

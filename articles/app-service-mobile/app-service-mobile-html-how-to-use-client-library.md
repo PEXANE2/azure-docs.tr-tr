@@ -1,25 +1,17 @@
 ---
-title: Azure için JavaScript SDK 'sını kullanma Mobile Apps
+title: JavaScript SDK 'sını kullanma
 description: Azure Mobile Apps için v kullanma
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 8a22de6b3e518bb3c9392d7fd64411969b32f33f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388726"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668823"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Azure için JavaScript istemci kitaplığı 'nı kullanma Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388726"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuz, [Azure Mobile Apps için JavaScript SDK 'Sı]kullanarak genel senaryolar gerçekleştirmenizi öğretir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun ve bir tablo oluşturun. Bu kılavuzda, HTML/JavaScript Web uygulamalarında mobil arka ucunu kullanmaya odaklanıyoruz.
@@ -83,7 +75,7 @@ Varsayılan olarak, App Service kimlik doğrulaması yalnızca mobil uygulama ar
 2. Mobil uygulama arka ucunuza gidin.
 3. **GELIŞTIRME araçları** menüsünde **Kaynak Gezgini** ' ni seçin.
 4. Yeni bir sekmede veya penceresinde mobil uygulama arka ucunuzun kaynak Gezginini açmak için **Git** ' e tıklayın.
-5. Uygulamanız için **config** > **authsettings öğesine tıklayın** düğümünü genişletin.
+5. Uygulamanızın **config** > **authsettings öğesine tıklayın** düğümünü genişletin.
 6. Kaynağı düzenlemeyi etkinleştirmek için **Düzenle** düğmesine tıklayın.
 7. Null olması gereken **Allowedexternalredirecturls** öğesini bulun. URL 'nizi bir diziye ekleyin:
 
@@ -92,7 +84,7 @@ Varsayılan olarak, App Service kimlik doğrulaması yalnızca mobil uygulama ar
              "https://localhost:3000"
          ],
 
-    Dizideki URL 'leri hizmetinizin URL 'Leriyle değiştirin, bu örnekte yerel Node. js örnek hizmeti için `http://localhost:3000` kullanılır. Ayrıca, uygulamanızın nasıl yapılandırıldığına bağlı olarak Ripple hizmeti veya diğer bir URL için `http://localhost:4400` ' ı da kullanabilirsiniz.
+    Dizideki URL 'leri hizmetinizin URL 'Leriyle değiştirin, bu örnekte yerel Node. js örnek hizmeti için `http://localhost:3000`. Ayrıca, uygulamanızın nasıl yapılandırıldığına bağlı olarak Ripple hizmeti veya diğer bir URL için `http://localhost:4400` de kullanabilirsiniz.
 8. Sayfanın üst kısmında **oku/yaz**' a tıklayın ve ardından değişikliklerinizi kaydetmek için **Yerleştir** ' e tıklayın.
 
 CORS beyaz listesi ayarlarına aynı geri döngü URL 'Lerini de eklemeniz gerekir:
