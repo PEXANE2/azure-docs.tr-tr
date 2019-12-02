@@ -141,6 +141,8 @@
           href: storage-sync-offline-data-transfer.md
         - name: Azure Depolamadan/Depolamaya veri taşıma
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: StorSimple’dan Azure Dosya Eşitleme’ye geçiş
+          href: storage-sync-files-storsimple-migration.md
         - name: AzCopy ile verileri taşıma
           items:
             - name: Başlarken
