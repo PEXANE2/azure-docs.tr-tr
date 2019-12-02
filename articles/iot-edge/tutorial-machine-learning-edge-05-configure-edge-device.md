@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure IoT Edge IoT Edge cihaz Machine Learning yapılandırma'
+title: 'Öğretici: IoT Edge cihaz Yapılandırma-Azure IoT Edge & Machine Learning'
 description: 'Öğretici: Linux çalıştıran bir Azure sanal makinesini, saydam bir ağ geçidi olarak davranan Azure IoT Edge bir cihaz olarak yapılandırın.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 714f0c335e2871fa1afe2f99d08870f0e39c488e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 510580dff575d60d9071667f6be28b525bc05d88
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113975"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665670"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -26,7 +26,7 @@ Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekle
 
 ## <a name="generate-certificates"></a>İstemci sertifikaları oluşturma
 
-Bir cihazın bir ağ geçidi olarak çalışması için, aşağı akış cihazlarına güvenli bir şekilde bağlanabilme ihtiyacı vardır. Azure IOT Edge cihazları arasında güvenli bağlantılar kurmak için bir ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, biz saydam bir ağ geçidi olarak görev yapan bir IOT Edge cihazına bağlamak için bir aşağı akış cihazı vermiş olursunuz. Makul güvenliği korumak için aşağı akış cihazı IoT Edge cihazının kimliğini onaylamasını sağlamalıdır. IoT Edge cihazların sertifikaları kullanma hakkında daha fazla bilgi için bkz. [Azure IoT Edge sertifikası kullanım ayrıntıları](iot-edge-certs.md).
+Bir cihazın bir ağ geçidi olarak çalışması için, aşağı akış cihazlarına güvenli bir şekilde bağlanabilme ihtiyacı vardır. Azure IoT Edge, cihazlar arasında güvenli bağlantı kurmak için ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, bir aşağı akış cihazının saydam bir ağ geçidi görevi gören bir IoT Edge cihazına bağlanmasına izin veriyoruz. Makul güvenliği korumak için aşağı akış cihazı IoT Edge cihazının kimliğini onaylamasını sağlamalıdır. IoT Edge cihazların sertifikaları kullanma hakkında daha fazla bilgi için bkz. [Azure IoT Edge sertifikası kullanım ayrıntıları](iot-edge-certs.md).
 
 Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullanarak otomatik olarak imzalanan sertifikalar oluşturacağız. Windows geliştirme makinesinde sertifikaların oluşturulması için gereken adım sayısını önemli ölçüde azaldığından, bu adımı tamamlamaya yönelik bir Docker görüntüsü kullanmayı seçtik. Bir kapsayıcı kullanmadan sertifikaların nasıl Üretienizle ilgili ayrıntılı bilgi için bkz. [Windows ile sertifika oluşturma](how-to-create-transparent-gateway.md#generate-certificates-with-windows) . [Linux ile sertifika oluşturma](how-to-create-transparent-gateway.md#generate-certificates-with-linux) , Docker görüntüsü ile otomatikleştirdiğimiz yönergeler kümesine sahiptir.
 
@@ -174,7 +174,7 @@ Sonra, IoT Edge cihazınız için sanal makineyi oluşturmak üzere betiği çal
 
     ![VM için SSH bağlantı dizesini Kopyala](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
-## <a name="connect-to-your-iot-edge-device"></a>IOT Edge Cihazınızı bağlama
+## <a name="connect-to-your-iot-edge-device"></a>IoT Edge cihazınıza bağlanma
 
 Sonraki birkaç bölüm oluşturduğumuz Azure sanal makinesini yapılandırır. İlk adım, sanal makineye bağlandır.
 

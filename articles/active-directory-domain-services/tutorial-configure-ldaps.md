@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 56283c1e07ec55c753701e86ff8c7c00078cffa2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172752"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664111"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -208,7 +208,7 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
 
 1. Azure portal sol taraftaki gezinmede *kaynak grupları* ' nı seçin.
 1. Kaynak grubunu, *Myresourcegroup*gibi seçin ve ardından *aaads-NSG*gibi ağ güvenlik grubunuzu seçin.
-1. Mevcut gelen ve giden güvenlik kurallarının listesi görüntülenir. Ağ güvenlik grubu pencerelerinin sol tarafında **güvenlik > gelen güvenlik kuralları**' nı seçin.
+1. Mevcut gelen ve giden güvenlik kurallarının listesi görüntülenir. Ağ güvenlik grubu pencerelerinin sol tarafında, **ayarlar > gelen güvenlik kuralları**' nı seçin.
 1. **Ekle**' yi seçin ve *TCP* bağlantı noktası *636*' e izin vermek için bir kural oluşturun Gelişmiş güvenlik için, kaynağı *IP adresleri* olarak seçin ve ardından KURULUŞUNUZUN geçerli IP adresini veya aralığını belirtin.
 
     | Ayar                           | Değer        |
@@ -243,7 +243,7 @@ Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar 
 
 ## <a name="test-queries-to-the-managed-domain"></a>Yönetilen etki alanına sorguları test etme
 
-Azure AD DS yönetilen etki alanınızı bağlamak ve bağlanmak ve LDAP üzerinden aramak için *Ldp. exe* ' yi de kullanabilirsiniz. Bu araç Uzak Sunucu Yönetim Araçları (RSAT) paketine dahildir. Daha fazla bilgi için bkz. [ınstall uzak sunucu yönetim araçları][rsat].
+Azure AD DS yönetilen etki alanınızı bağlamak ve bağlanmak ve LDAP üzerinden aramak için *Ldp. exe* aracını kullanın. Bu araç Uzak Sunucu Yönetim Araçları (RSAT) paketine dahildir. Daha fazla bilgi için bkz. [ınstall uzak sunucu yönetim araçları][rsat].
 
 1. *Ldp. exe* ' yi açın ve yönetilen etki alanına bağlanın. **Bağlantı**' yı ve ardından **Bağlan...** seçeneğini belirleyin.
 1. Önceki adımda oluşturulan, *LDAPS.contoso.com*gibi yönetilen etki ALANıNıN GÜVENLI LDAP DNS etki alanı adını girin. Güvenli LDAP kullanmak için, **bağlantı noktasını** *636*olarak ayarlayın ve ardından **SSL**kutusunu işaretleyin.

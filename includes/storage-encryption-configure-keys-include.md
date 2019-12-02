@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
-ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f846d75833b3a796e24fd23c5f841ea24a8d1876
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188586"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665924"
 ---
-Azure depolama, bekleyen şifreleme Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlar ile destekler. Müşteri tarafından yönetilen anahtarlar oluşturun, döndürme, devre dışı bırakın ve erişim denetimleri iptal olanak sağlar.
+Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, depolama hesabı düzeyinde müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz.
 
-Azure Key Vault, anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için kullanın. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında depolama veya Azure anahtar kasası API'leri, anahtarlar oluşturmak için kullanabilirsiniz. Depolama hesabı ve anahtar kasasının aynı bölgede olması gerekir, ancak bunlar farklı Aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure anahtar kasası nedir?](../articles/key-vault/key-vault-overview.md)
+Müşteri tarafından yönetilen anahtarların bir Azure Key Vault depolanması gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Depolama hesabı ve Anahtar Kasası aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure depolama şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../articles/storage/common/storage-service-encryption.md). Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../articles/key-vault/key-vault-overview.md)

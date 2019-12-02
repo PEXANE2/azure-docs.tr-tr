@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 8ab0d61e2c7ec23b7c3ed82d460cbb53711d5c7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8c90e39cef1420ec06b7f62ebf9982720ffebf94
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790492"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664140"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>PowerShell ile Bir Azure aboneliği için olaylara abone olma
 
 Bu betik, bir Azure aboneliği için olaylara bir Event Grid aboneliği oluşturur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-Önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` çalıştırın
 
 ## <a name="sample-script---stable"></a>Örnek betik - kararlı
 
@@ -33,6 +31,8 @@ Bu betik, bir Azure aboneliği için olaylara bir Event Grid aboneliği oluştur
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.ps1 "Subscribe to Azure subscription")]
 
 ## <a name="sample-script---preview-module"></a>Örnek betik-önizleme modülü
+
+Bu önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` çalıştırın
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

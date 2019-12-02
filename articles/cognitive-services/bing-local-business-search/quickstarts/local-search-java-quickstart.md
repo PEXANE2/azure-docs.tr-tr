@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326739"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665194"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Hızlı başlangıç: Java kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
 
@@ -23,7 +23,7 @@ Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye ba
 
 Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -35,7 +35,7 @@ Bu örnek uygulama, *Bellevue içindeki bir otel*için sorgudan yerel yanıt ver
 
 Aşağıdaki kod bir `WebRequest`oluşturur, erişim anahtarı üst bilgisini ayarlar ve "Bellevue içinde otel" için bir sorgu dizesi ekler.  Ardından isteği gönderir ve yanıtı JSON metnini içeren bir dizeye atar.
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -53,12 +53,12 @@ Aşağıdaki kod bir `WebRequest`oluşturur, erişim anahtarı üst bilgisini ay
 
 Bing yerel Iş Arama API 'SI, Bing arama altyapısından sonuçlar döndürür.
 1. gson kitaplığını indirip yükleyin.
-2. Tercih ettiğiniz IDE veya düzenleyicide bir Java projesi oluşturun.
+2. Sık kullandığınız IDE veya düzenleyicide yeni bir Java projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
 4. subscriptionKey değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
 5. Programı çalıştırın.
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;

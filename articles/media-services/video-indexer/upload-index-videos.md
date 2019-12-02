@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/29/2019
 ms.author: juliako
-ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d06be1b5301889a1fcb8ff1390d8618bbb88c03f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839152"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666486"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -61,7 +61,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özelliklerinin    
     
-        |Ad|Açıklama|
+        |Adı|Açıklama|
         |---|---|
         |id|Video KIMLIĞI|
         |durum|Video durumu|  
@@ -69,7 +69,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Ad|Açıklama|
+      |Adı|Açıklama|
       |---|---|
       |id| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
@@ -87,9 +87,10 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 
 Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kullanın. Bu parametre, dizinleme işlemini yapılandırmak için kullanılır. Aşağıdaki değerleri belirtebilirsiniz:
 
-- `Default`: Ses ve videoyu kullanarak öngörüler ayıklayın ve bunları dizinleyin
 - `AudioOnly`: Yalnızca ses kullanarak (videoyu yok sayarak) öngörüler ayıklayın ve bunları dizinleyin
+- `Default`: Ses ve videoyu kullanarak öngörüler ayıklayın ve bunları dizinleyin
 - `DefaultWithNoiseReduction`: Ses akışına gürültü azaltma algoritmaları uygulayarak ses ve videodan öngörüler ayıklayın ve bunları dizinleyin
+- `VideoOnly`-yalnızca video kullanarak öngörüleri dizine al ve Ayıkla 
 
 Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
 

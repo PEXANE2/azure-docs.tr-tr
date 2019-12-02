@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229429"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666384"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Trafik Analizi şema ve veri toplama
 
@@ -106,7 +106,7 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | FlowIntervalEndTime_t | UTC olarak tarih ve saat | Akış günlüğü işleme aralığının bitiş saati |
 | FlowStartTime_t | UTC olarak tarih ve saat |  Akış günlüğü işleme aralığında "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki ilk akışın ilk oluşumu (toplanacak). Bu akış toplama mantığına göre toplanmış |
 | FlowEndTime_t | UTC olarak tarih ve saat | Akış günlüğü işleme aralığında "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki son olay (toplanacak). Akış günlüğü v2 ' de, bu alan, en son akışın aynı dört demet ile başladığı saati (ham akış kaydında "B" olarak işaretlenir) içerir |
-| FlowType_s |  * IntraVNet <br> * Intervnet <br> * S2S <br> * P2S <br> * Azucumhuriyeti <br> * ExternalPublic <br> * MaliciousFlow <br> * Bilinmeyen özel <br> * Bilinmiyor | Tablonun altındaki notlardaki tanım |
+| FlowType_s |  * VNET <br> * Intervnet <br> * S2S <br> * P2S <br> * Azucumhuriyeti <br> * ExternalPublic <br> * MaliciousFlow <br> * Bilinmeyen özel <br> * Bilinmiyor | Tablonun altındaki notlardaki tanım |
 | SrcIP_s | Kaynak IP adresi | Azucumhuriyeti ve ExternalPublic akışlar söz konusu olduğunda boş olacaktır |
 | DestIP_s | Hedef IP adresi | Azucumhuriyeti ve ExternalPublic akışlar söz konusu olduğunda boş olacaktır |
 | VMIP_s | VM 'nin IP 'si | Azucumhuriyeti ve ExternalPublic akışları için kullanılır |
@@ -143,7 +143,7 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | LocalNetworkGateway1_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Akıştaki kaynak IP ile ilişkili yerel ağ geçidi |
 | LocalNetworkGateway2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Akıştaki hedef IP ile ilişkili yerel ağ geçidi |
 | ConnectionType_s | Olası değerler Vneteşleme, VpnGateway ve ExpressRoute şeklindedir |    Bağlantı türü |
-| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<ConnectionName > | Bağlantı Adı |
+| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<ConnectionName > | Bağlantı adı. FlowType P2S için, bu <gateway name>_<VPN Client IP> olarak biçimlendirilir |
 | ConnectingVNets_s | Sanal ağ adlarının boşlukla ayrılmış listesi | Hub ve bağlı bileşen topolojisi söz konusu olduğunda, hub sanal ağları buraya doldurulacak |
 | Country_s | İki harfli ülke kodu (ISO 3166-1 Alpha-2) | ExternalPublic akış türü için dolduruldu. PublicIPs_s alanındaki tüm IP adresleri aynı ülke kodunu paylaşacaktır |
 | AzureRegion_s | Azure bölge konumları | Akış türü Azucumhuriyet için dolduruldu. PublicIPs_s alanındaki tüm IP adresleri Azure bölgesini paylaşacaktır |

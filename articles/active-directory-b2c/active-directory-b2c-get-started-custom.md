@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643631"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664072"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "73643631"
 
 [Özel ilkeler](active-directory-b2c-overview-custom.md) , Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. Bu makalede, bir e-posta adresi ve parola kullanarak yerel hesap kaydolma veya oturum açma 'yı destekleyen özel bir ilke oluşturacaksınız. Ayrıca, ortamınızı kimlik sağlayıcıları eklemek için hazırlarsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Henüz bir tane yoksa, Azure aboneliğinize bağlı [bir Azure AD B2C kiracı oluşturun](tutorial-create-tenant.md) .
 - [Uygulamanızı](tutorial-register-applications.md) , Azure AD B2C ile iletişim kurabilmesi için oluşturduğunuz kiracıya kaydedin.
@@ -34,7 +34,7 @@ ms.locfileid: "73643631"
 1. [Azure portalda](https://portal.azure.com) oturum açma
 1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Genel Bakış sayfasında, **ilkeler** bölmesinden **kimlik deneyimi çerçevesi** ' ni seçin.
 
 ### <a name="create-the-signing-key"></a>İmzalama anahtarını oluşturma
 
@@ -67,7 +67,7 @@ Facebook uygulamanızın [uygulama gizli](active-directory-b2c-setup-fb-app.md) 
 
 ## <a name="register-identity-experience-framework-applications"></a>Kimlik deneyimi çerçevesi uygulamalarını kaydetme
 
-Azure AD B2C, yerel hesaplarla kullanıcılara kaydolmak ve oturum açmak için kullandığı iki uygulamayı kaydetmenizi gerektirir: *IdentityExperienceFramework*, BIR Web API 'Si ve *ProxyIdentityExperienceFramework*, IdentityExperienceFramework uygulaması. Kullanıcılarınız bir e-posta adresi veya Kullanıcı adı ile kaydolabilir ve bir "yerel hesap" oluşturan kiracınızın kayıtlı uygulamalarına erişmek için bir parolayla kaydolabilirsiniz. Yerel hesaplar yalnızca Azure AD B2C kiracınızda bulunur.
+Azure AD B2C, yerel hesaplarla kullanıcılara kaydolmak ve oturum açmak için kullandığı iki uygulamayı kaydetmenizi gerektirir: *IdentityExperienceFramework*, BIR Web API 'Si ve *ProxyIdentityExperienceFramework*, IdentityExperienceFramework uygulaması için temsilci izni olan yerel bir uygulama. Kullanıcılarınız bir e-posta adresi veya Kullanıcı adı ile kaydolabilir ve bir "yerel hesap" oluşturan kiracınızın kayıtlı uygulamalarına erişmek için bir parolayla kaydolabilirsiniz. Yerel hesaplar yalnızca Azure AD B2C kiracınızda bulunur.
 
 Bu iki uygulamayı Azure AD B2C kiracınızda yalnızca bir kez kaydetmeniz gerekir.
 
@@ -93,7 +93,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 1. **Ad**için `IdentityExperienceFramework`girin.
 1. **Desteklenen hesap türleri**altında **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`girin; burada `your-tenant-name` Azure AD B2C kiracı etki alanı adıdır.
-1. **İzinler**altında, *OpenID ve offline_access Permissions Için yönetici izni ver* onay kutusunu seçin.
+1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
 1. **Kaydol**’u seçin.
 1. Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
@@ -130,7 +130,7 @@ Ardından, bir kapsam ekleyerek API 'YI kullanıma sunun:
 1. **Desteklenen hesap türleri**altında **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si**altında, **genel istemci/yerel ' i (mobil & Masaüstü)** seçmek için açılan eklentiyi kullanın.
 1. **Yeniden yönlendirme URI 'si**için, `your-tenant-name` Azure AD B2C kiracınız `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`girin.
-1. **İzinler**altında, *OpenID ve offline_access Permissions Için yönetici izni ver* onay kutusunu seçin.
+1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
 1. **Kaydol**’u seçin.
 1. Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
@@ -213,7 +213,7 @@ Dosyaları karşıya yüklerken, Azure her birine `B2C_1A_` ön eki ekler.
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. **Özel ilkeler**altında **B2C_1A_signup_signin**öğesini seçin.
+1. **Özel ilkeler**altında **B2C_1A_signup_signin**' yi seçin.
 1. Özel ilkenin genel bakış sayfasında **Uygulama Seç** için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin.
 1. **Yanıt URL 'sinin** `https://jwt.ms`olduğundan emin olun.
 1. **Şimdi Çalıştır**' ı seçin.
@@ -233,7 +233,7 @@ Dosyaları karşıya yüklerken, Azure her birine `B2C_1A_` ön eki ekler.
    ```
 
 1. *TrustFrameworkExtensions. xml* dosyasını kiracınıza yükleyin.
-1. **Özel ilkeler**altında **B2C_1A_signup_signin**öğesini seçin.
+1. **Özel ilkeler**altında **B2C_1A_signup_signin**' yi seçin.
 1. **Şimdi Çalıştır** ' ı seçin ve Facebook ile oturum açmak ve özel ilkeyi test etmek için Facebook ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

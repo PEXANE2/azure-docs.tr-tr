@@ -1,6 +1,6 @@
 ---
 title: IoT güvenlik aracıları için Azure Güvenlik Merkezi 'ni kullanmaya başlama | Microsoft Docs
-description: IoT güvenlik aracıları için Azure Güvenlik Merkezi 'Ni kullanmaya başlayın.
+description: IoT cihazlarınızdaki IoT güvenlik hizmeti aracıları için Azure Güvenlik Merkezi 'ni kavramaya, yapılandırmaya, dağıtmaya ve kullanmaya başlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 6e790c125c59aea85f1ac34240c5a1d1969544ae
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ed890d9d3602de24e6f85f6f0ae7f59849f3df2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600598"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664206"
 ---
 # <a name="get-started-with-azure-security-center-for-iot-device-security-agents"></a>IoT cihaz güvenlik aracıları için Azure Güvenlik Merkezi 'Ni kullanmaya başlama
 

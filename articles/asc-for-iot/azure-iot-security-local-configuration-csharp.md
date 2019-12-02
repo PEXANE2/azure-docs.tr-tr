@@ -1,6 +1,6 @@
 ---
-title: Aracı yerel yapılandırma dosyası için Azure Güvenlik Merkezi 'ni anlama C# | Microsoft Docs
-description: İçin C#aracı yerel yapılandırma dosyası Için Azure Güvenlik Merkezi hakkında bilgi edinin.
+title: IoT güvenlik aracısının yerel yapılandırma dosyası için Azure Güvenlik Merkezi 'ni anlama C# | Microsoft Docs
+description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi, güvenlik Aracısı yerel yapılandırma dosyası hakkında daha fazla bilgi edinin C#.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cc7b9f0b6e537ca3bdcbb82a357b2f2b9451fab0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600637"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664208"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Yerel yapılandırma dosyasını anlama (C# aracı)
 
@@ -39,26 +39,26 @@ Yapılandırma dosyaları varsayılan yapılandırmayı içerir. Kimlik doğrula
 
 ## <a name="configuration-file-location"></a>Yapılandırma dosyası konumu
 Linux için:
-- İşletim sistemi yapılandırma dosyaları konumunda `/var/ASCIoTAgent`bulunur.
+- İşletim sistemi yapılandırma dosyaları `/var/ASCIoTAgent`' de bulunur.
 
 Windows için:
 - İşletim sistemi yapılandırma dosyaları, güvenlik aracısının dizininde bulunur. 
 
 ### <a name="generalconfig-configurations"></a>Genel. config yapılandırması
 
-| Yapılandırma Adı | Olası değerler | Ayrıntılar | 
+| Yapılandırma adı | Olası değerler | Ayrıntılar | 
 |:-----------|:---------------|:--------|
-| agentId | GUID | Aracı benzersiz tanımlayıcısı |
+| AgentId | 'INI | Aracı benzersiz tanımlayıcısı |
 | readRemoteConfigurationTimeout | TimeSpan | IoT Hub uzak yapılandırmayı getirmeye yönelik zaman aralığı. Aracı belirtilen süre içinde yapılandırmayı getiremez, işlem zaman aşımına uğrar.|
 | schedulerInterval | TimeSpan | İç Zamanlayıcı aralığı. |
 | producerInterval | TimeSpan | Olay üreticisi çalışan aralığı. |
-| consumerınterval | TimeSpan | Olay tüketicisi çalışan aralığı. |
+| Consumerınterval | TimeSpan | Olay tüketicisi çalışan aralığı. |
 | highPriorityQueueSizePercentage | 0 < numarası < 1 | Yüksek öncelikli iletiler için ayrılan toplam önbelleğin bölümü. |
-| logLevel | "Off", "Fatal", "Error", "Warning", "Information", "Debug"  | Bu önem derecesine sahip ve yukarıdaki günlük iletileri hata ayıklama konsolunda günlüğe kaydedilir (Linux 'ta syslog). |
-| fileLogLevel |  "Off", "Fatal", "Error", "Warning", "Information", "Debug"| Bu önem derecesine sahip olan ve yukarıdaki günlük iletileri, dosyaya (Linux 'ta syslog) kaydedilir. |
-| diagnosticVerbosityLevel | "None", "Some", "All", | Tanılama olaylarının ayrıntı düzeyi. Hiçbiri-tanılama olayları gönderilmez, yüksek önem taşıyan bazı tanılama olayları gönderilir, tüm Günlükler de tanılama olayları olarak gönderilir. |
+| LogLevel | "Off", "önemli", "Error", "Warning", "Information", "Debug"  | Bu önem derecesine sahip ve yukarıdaki günlük iletileri hata ayıklama konsolunda günlüğe kaydedilir (Linux 'ta syslog). |
+| Dosya LogLevel |  "Off", "önemli", "Error", "Warning", "Information", "Debug"| Bu önem derecesine sahip olan ve yukarıdaki günlük iletileri, dosyaya (Linux 'ta syslog) kaydedilir. |
+| diagnosticVerbosityLevel | "None", "Some", "tümü", | Tanılama olaylarının ayrıntı düzeyi. Hiçbiri-tanılama olayları gönderilmez, yüksek önem taşıyan bazı tanılama olayları gönderilir, tüm Günlükler de tanılama olayları olarak gönderilir. |
 | logFilePath | Dosya yolu | FileLogLevel > kapalıysa Günlükler bu dosyaya yazılır. |
-| defaultEventPriority | "High", "Low", "Off" | Varsayılan olay önceliği. |
+| defaultEventPriority | "Yüksek", "düşük", "kapalı" | Varsayılan olay önceliği. |
 
 ### <a name="generalconfig-example"></a>General. config örneği
 ```XML
@@ -82,15 +82,15 @@ Windows için:
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar | 
 |:-----------|:---------------|:--------|
-| moduleName | string | Güvenlik modülü kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
+| Ladı | string | Güvenlik modülü kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
 | deviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). || schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
 | gatewayHostname | string | Azure IoT Hub 'ının konak adı. Genellikle <-Hub >. Azure-devices.net |
-| filePath | string - dosyanın yolu | Kimlik doğrulama parolasını içeren dosyanın yolu.|
+| Null | dize-dosyanın yolu | Kimlik doğrulama parolasını içeren dosyanın yolu.|
 | type | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifikadır, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
-| identity | "DPS", "Module", "Device" | Kimlik doğrulaması kimliği-kimlik doğrulama, DPS aracılığıyla yapılırsa, modül kimlik bilgileri kullanılarak kimlik doğrulaması yapıldığında modül veya cihaz kimlik bilgileri kullanılarak kimlik doğrulaması yapılmışsa kullanılır.
-| certificateLocationKind |  "LocalFile", "Store" | YerelDosya sertifika bir dosyada depolanıyorsa, sertifika bir sertifika deposunda bulunuyorsa mağaza. |
+| kimlik | "DPS", "Module", "cihaz" | Kimlik doğrulaması kimliği-kimlik doğrulama, DPS aracılığıyla yapılırsa, modül kimlik bilgileri kullanılarak kimlik doğrulaması yapıldığında modül veya cihaz kimlik bilgileri kullanılarak kimlik doğrulaması yapılmışsa kullanılır.
+| certificateLocationKind |  "YerelDosya", "Mağaza" | YerelDosya sertifika bir dosyada depolanıyorsa, sertifika bir sertifika deposunda bulunuyorsa mağaza. |
 | idScope | string | DPS KIMLIK kapsamı |
-| registrationId | string  | DPS cihaz kayıt KIMLIĞI. |
+| RegistrationId | string  | DPS cihaz kayıt KIMLIĞI. |
 |
 
 ### <a name="authenticationconfig-example"></a>Authentication. config örneği
@@ -110,7 +110,7 @@ Windows için:
 ```
 ### <a name="securityiotinterfaceconfig"></a>Securityıotınterface. config
 
-| Yapılandırma Adı | Olası değerler | Ayrıntılar | 
+| Yapılandırma adı | Olası değerler | Ayrıntılar | 
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "MQTT" | IoT Hub taşıma türü. |
 |

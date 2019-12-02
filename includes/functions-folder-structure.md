@@ -9,37 +9,34 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: aad66a91f7de8380ac7e87f0ce8e35ed43cac4a6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4460d19de1859a8a3c51d91d418b948b5d3532a6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594552"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666724"
 ---
-Belirli bir işlev uygulamasında tüm işlevleri için kod ana bilgisayar yapılandırma dosyası içeren bir kök proje klasörü ve bir veya daha fazla alt klasörleri içinde yer alır. Her bir alt klasör için ayrı bir işlev kodunu içerir. Klasör yapısı'nda aşağıdaki gösterimi gösterilmektedir:
+Belirli bir işlev uygulamasındaki tüm işlevlerin kodu, ana bilgisayar yapılandırma dosyası ve bir veya daha fazla alt klasör içeren bir kök proje klasöründe bulunur. Her alt klasör ayrı bir işlevin kodunu içerir. Klasör yapısı aşağıdaki gösterimde gösterilmiştir:
 
 ```
 FunctionApp
  | - host.json
- | - Myfirstfunction
+ | - MyFirstFunction
  | | - function.json
  | | - ...  
- | - mysecondfunction
+ | - MySecondFunction
  | | - function.json
  | | - ...  
  | - SharedCode
  | - bin
 ```
 
-İçinde sürüm 2.x işlev uygulamasında tüm işlevleri işlevler çalışma zamanının aynı dil yığını paylaşım gerekir.  
+Işlevler çalışma zamanının 2. x sürümünde, işlev uygulamasındaki tüm işlevler aynı dil yığınını paylaşmalıdır.  
 
-[Host.json](../articles/azure-functions/functions-host-json.md) dosya çalışma zamanı özel yapılandırmaları içerir ve işlev uygulaması kök klasöründe bulunur. A *bin* klasörü paketler ve işlev uygulamasını gerektiren diğer kitaplık dosyalarını içerir. İşlev uygulaması projesi için dile özgü gereksinimleri bölümünü inceleyin:
+[Host. JSON](../articles/azure-functions/functions-host-json.md) dosyası çalışma zamanına özgü yapılandırmalara sahiptir ve işlev uygulamasının kök klasöründedir. Bir *bin* klasörü, işlev uygulamasının gerektirdiği paketleri ve diğer kitaplık dosyalarını içerir. Bir işlev uygulaması projesi için dile özgü gereksinimlere bakın:
 
-* [C# sınıf kitaplığı (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
-* [C# betiği (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
-* [F#komut dosyası](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [C#sınıf kitaplığı (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C#betik (. CSX)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [F#SCRIPT](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
-
-
-

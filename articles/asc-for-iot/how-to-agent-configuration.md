@@ -1,6 +1,6 @@
 ---
 title: IoT Aracısı için Azure Güvenlik Merkezi 'Ni yapılandırma | Microsoft Docs
-description: IoT için Azure Güvenlik Merkezi ile kullanım için aracıların nasıl yapılandırılacağını öğrenin.
+description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi ile kullanmak üzere IoT güvenlik aracıları için Azure Güvenlik Merkezi 'ni nasıl yapılandıracağınızı öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933876"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664864"
 ---
-# <a name="tutorial-configure-security-agents"></a>Öğretici: Güvenlik aracılarını yapılandırma
+# <a name="tutorial-configure-security-agents"></a>Öğretici: güvenlik aracılarını yapılandırma
 
 Bu makalede IoT güvenlik aracıları için Azure Güvenlik Merkezi açıklanmakta ve bunların nasıl değiştirileceği ve yapılandırılacağı açıklanmaktadır. 
 
@@ -108,7 +108,7 @@ Varsayılan özellik değerini kullanmak için yapılandırma nesnesinden özell
     }
     ```
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ### <a name="using-a-default-value"></a>Varsayılan değer kullanma
 
@@ -120,31 +120,31 @@ Aşağıdaki tablo IoT güvenlik aracıları için Azure Güvenlik Merkezi 'nin 
 
 Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da uygun şemada mevcuttur.
 
-| Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
+| Adı| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |lowPriorityMessageFrequency |Gerekli: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT5H |Düşük öncelikli iletiler gönderilmeden önce geçen en uzun süre.| 
 |Anlık görüntüyle |Gerektir: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer PT13H |Cihaz durumu anlık görüntülerinin oluşturulmasına yönelik zaman aralığı.| 
 |Maxlocalcachesizeınbytes |Gerekli: false |Geçerli değerler: |Varsayılan değer: 2560000, 8192 ' den büyük | Bir aracının ileti önbelleği için izin verilen en fazla depolama alanı (bayt cinsinden). İletiler gönderilmeden önce cihazda iletileri depolamaya izin verilen en fazla alan miktarı.| 
-|Maxiletiizeınbytes |Gerekli: false |Geçerli değerler: 8192 ' den büyük pozitif bir sayı, 262144 ' den az |Varsayılan değer: 204800 |Bir aracının bulut iletisine izin verilen en büyük boyutu. Bu ayar, her iletide gönderilen en fazla veri miktarını denetler. |
-|eventPriority $ {EventName} |Gerekli: false |Geçerli değerler: Yüksek, düşük, kapalı |Varsayılan değerler: |Aracılı oluşturulan her olayın önceliği | 
+|Maxiletiizeınbytes |Gerekli: false |Geçerli değerler: 8192 'den büyük pozitif bir sayı, 262144 ' den az |Varsayılan değer: 204800 |Bir aracının bulut iletisine izin verilen en büyük boyutu. Bu ayar, her iletide gönderilen en fazla veri miktarını denetler. |
+|eventPriority $ {EventName} |Gerekli: false |Geçerli değerler: yüksek, düşük, kapalı |Varsayılan değerler: |Aracılı oluşturulan her olayın önceliği | 
 
 ### <a name="supported-security-events"></a>Desteklenen güvenlik olayları
 
-|Olay adı| ÖzellikAdı | Default Value| Anlık görüntü olayı| Ayrıntılar durumu  |
+|Olay adı| Başlaması | Varsayılan değer| Anlık görüntü olayı| Ayrıntılar durumu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Tanılama olayı|eventPriorityDiagnostic| Kapalı| False| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.| 
-|Yapılandırma hatası |eventPriorityConfigurationError |Düşük |False |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.| 
+|Tanılama olayı|eventPriorityDiagnostic| Kapalı| Yanlış| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.| 
+|Yapılandırma hatası |eventPriorityConfigurationError |Düşük |Yanlış |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.| 
 |Bırakılan olay istatistikleri |eventPriorityDroppedEventsStatistics |Düşük |Doğru|Aracıyla ilgili olay istatistikleri. |
 |İleti istatistikleri|Eventpriorityiletilü |Düşük |Doğru |Aracıyla ilgili ileti istatistikleri. |
 |Bağlı donanım|eventPriorityConnectedHardware |Düşük |Doğru |Cihaza bağlı tüm donanımların anlık görüntüsü.|
 |Dinleme bağlantı noktaları|eventPriorityListeningPorts |Yüksek |Doğru |Cihazdaki tüm açık dinleme bağlantı noktalarının anlık görüntüsü.|
-|İşlem oluşturma |eventPriorityProcessCreate |Düşük |False |Cihazda oluşturma işlemini denetler.|
-|İşlem sonlandır|eventPriorityProcessTerminate |Düşük |False |Cihazdaki işlem sonlandırmasını denetler.| 
-|Sistem bilgileri |Eventprioritysystemınformation |Düşük |Doğru |Sistem bilgilerinin bir anlık görüntüsü (örneğin: İşletim sistemi veya CPU).| 
+|İşlem oluşturma |eventPriorityProcessCreate |Düşük |Yanlış |Cihazda oluşturma işlemini denetler.|
+|İşlem sonlandır|eventPriorityProcessTerminate |Düşük |Yanlış |Cihazdaki işlem sonlandırmasını denetler.| 
+|Sistem bilgileri |Eventprioritysystemınformation |Düşük |Doğru |Sistem bilgilerinin bir anlık görüntüsü (örneğin: OS veya CPU).| 
 |Yerel kullanıcılar| eventPriorityLocalUsers |Yüksek |Doğru|Sistem içindeki kayıtlı yerel kullanıcıların anlık görüntüsü. |
-|Oturum aç|  eventPriorityLogin |Yüksek|False|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
-|Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|False|Cihaza ve cihazdan oluşturulan TCP bağlantılarını denetler. |
+|Oturum aç|  eventPriorityLogin |Yüksek|Yanlış|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
+|Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|Yanlış|Cihaza ve cihazdan oluşturulan TCP bağlantılarını denetler. |
 |Güvenlik duvarı yapılandırması| eventPriorityFirewallConfiguration|Düşük|Doğru|Cihaz Güvenlik Duvarı yapılandırmasının (güvenlik duvarı kuralları) anlık görüntüsü. |
 |İşletim sistemi temeli| eventPriorityOSBaseline| Düşük|Doğru|Cihaz işletim sistemi taban çizgisi denetiminin anlık görüntüsü.|
 |

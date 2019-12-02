@@ -7,7 +7,7 @@ author: Brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/28/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113613"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666316"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine Puanlama profilleri ekleme
 
@@ -37,7 +37,7 @@ ms.locfileid: "74113613"
  Bir Puanlama profilinin nasıl görüneceğine ilişkin bir fikir vermek için aşağıdaki örnekte ' coğrafi ' adlı basit bir profil gösterilmektedir. Bu bir tane, **Hotelname** alanında arama terimi olan öğeleri alır. Ayrıca, geçerli konumun on kiloters içindeki öğeleri tercih etmek için `distance` işlevini kullanır. Birisi ' Inn ' terimini aradığında ve ' inn ', otel adının bir parçası olduğunda, geçerli konumun 10 KM yarıçapı içindeki ' Inn ' ile oteller içeren belgeler, arama sonuçlarında daha yüksek görünür.  
 
 
-```  
+```json
 "scoringProfiles": [
   {  
     "name":"geo",
@@ -92,7 +92,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
  Bu örnekte, iki Puanlama profiliyle bir dizinin şeması gösterilmektedir (`boostGenre`, `newAndHighlyRated`). Bir sorgu parametresi olarak profil içeren bu dizine yönelik herhangi bir sorgu, sonuç kümesini Puanlama için profili kullanır.  
 
-```  
+```json
 {  
   "name": "musicstoreindex",  
   "fields": [  
@@ -157,7 +157,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 }  
 ```  
 
-## <a name="workflow"></a>İş akışı  
+## <a name="workflow"></a>İş Akışı  
  Özel Puanlama davranışı uygulamak için, dizini tanımlayan şemaya bir Puanlama profili ekleyin. Bir dizin içinde en fazla 100 Puanlama profiline sahip olabilirsiniz (bkz. [hizmet limitleri](search-limits-quotas-capacity.md)), ancak belirli bir sorguda zaman içinde yalnızca bir profil belirtebilirsiniz.  
 
  Bu konuda belirtilen [şablonla](#bkmk_template) başlayın.  
@@ -234,14 +234,14 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 |Öznitelik|Açıklama|  
 |---------------|-----------------|  
-|`Name`|Gereklidir. Bu, Puanlama profilinin adıdır. Bir alanın adlandırma kurallarına uyar. Harf ile başlaması gerekir, nokta, iki nokta üst üste veya @ sembolleri içeremez ve ' azureSearch ' (büyük/küçük harfe duyarlı) tümcesiyle başlayamaz.|  
-|`Text`|Ağırlıklar özelliğini içerir.|  
-|`Weights`|İsteğe bağlı. Bir alan adı ve göreli ağırlığı belirten bir ad-değer çifti. Göreli ağırlık pozitif bir tamsayı veya kayan noktalı sayı olmalıdır. En büyük değer Int32 'dir. Değerini.<br /><br /> Alan adını karşılık gelen bir ağırlığa gerek kalmadan belirtebilirsiniz. Ağırlıklar, bir alanın diğerine göre önemini göstermek için kullanılır.|  
-|`Functions`|İsteğe bağlı. Puanlama işlevi yalnızca filtrelenebilir alanlara uygulanabilir.|  
-|`Type`|Puanlama işlevleri için gereklidir. Kullanılacak işlevin türünü gösterir. Geçerli değerler arasında büyüklük, yenilik, uzaklık ve etiket bulunur. Her Puanlama profiline birden fazla işlev ekleyebilirsiniz. İşlev adı küçük harf olmalıdır.|  
-|`Boost`|Puanlama işlevleri için gereklidir. Ham puan çarpanı olarak kullanılan pozitif bir sayı. 1 değerine eşit olamaz.|  
-|`Fieldname`|Puanlama işlevleri için gereklidir. Puanlama işlevi yalnızca dizinin alan koleksiyonunun parçası olan ve filtrelenebilir olan alanlara uygulanabilir. Bunlara ek olarak, her bir işlev türü ek kısıtlamalar getirir (yeniliği DateTime alanları, tamsayı veya çift alanlarla büyüklüğü ve konum alanlarıyla mesafe) sağlar. Her işlev tanımı için yalnızca tek bir alan belirtebilirsiniz. Örneğin, aynı profilde iki kez büyüklük kullanmak için, her bir alan için bir tane olmak üzere iki tanım büyüklüğü dahil etmeniz gerekir.|  
-|`Interpolation`|Puanlama işlevleri için gereklidir. Aralığın başından aralığın sonuna kadar olan puanının arttığı eğimi tanımlar. Geçerli değerler doğrusal (varsayılan), sabit, Ikinci dereceden ve Logaritmik ' i içerir. Ayrıntılar için bkz. [enterpolasyonlarını ayarlama](#bkmk_interpolation) .|  
+|`name`|Gereklidir. Bu, Puanlama profilinin adıdır. Bir alanın adlandırma kurallarına uyar. Harf ile başlaması gerekir, nokta, iki nokta üst üste veya @ sembolleri içeremez ve ' azureSearch ' (büyük/küçük harfe duyarlı) tümcesiyle başlayamaz.|  
+|`text`|Ağırlıklar özelliğini içerir.|  
+|`weights`|İsteğe bağlı. Her biri bir alan adı ve göreli ağırlık belirten ad-değer çiftleri içerir. Göreli ağırlık pozitif bir tamsayı veya kayan noktalı sayı olmalıdır.<br /><br /> Ağırlıklar, bir aranabilir alanın diğerine göre önemini göstermek için kullanılır.|  
+|`functions`|İsteğe bağlı. Puanlama işlevi yalnızca filtrelenebilir alanlara uygulanabilir.|  
+|`type`|Puanlama işlevleri için gereklidir. Kullanılacak işlevin türünü gösterir. Geçerli değerler arasında büyüklük, yenilik, uzaklık ve etiket bulunur. Her Puanlama profiline birden fazla işlev ekleyebilirsiniz. İşlev adı küçük harf olmalıdır.|  
+|`boost`|Puanlama işlevleri için gereklidir. Ham puan çarpanı olarak kullanılan pozitif bir sayı. 1 değerine eşit olamaz.|  
+|`fieldname`|Puanlama işlevleri için gereklidir. Puanlama işlevi yalnızca dizinin alan koleksiyonunun parçası olan ve filtrelenebilir olan alanlara uygulanabilir. Bunlara ek olarak, her bir işlev türü ek kısıtlamalar getirir (yeniliği DateTime alanları, tamsayı veya çift alanlarla büyüklüğü ve konum alanlarıyla mesafe) sağlar. Her işlev tanımı için yalnızca tek bir alan belirtebilirsiniz. Örneğin, aynı profilde iki kez büyüklük kullanmak için, her bir alan için bir tane olmak üzere iki tanım büyüklüğü dahil etmeniz gerekir.|  
+|`interpolation`|Puanlama işlevleri için gereklidir. Aralığın başından aralığın sonuna kadar olan puanının arttığı eğimi tanımlar. Geçerli değerler doğrusal (varsayılan), sabit, Ikinci dereceden ve Logaritmik ' i içerir. Ayrıntılar için bkz. [enterpolasyonlarını ayarlama](#bkmk_interpolation) .|  
 |`magnitude`|Büyüklük Puanlama işlevi, sayısal bir alan için değer aralığına göre rantısallar değiştirmek için kullanılır. Bunun en yaygın kullanım örneklerinden bazıları şunlardır:<br /><br /> -   **yıldızlı derecelendirmeler:** "yıldız derecelendirmesi" alanı içindeki değere göre Puanlama değiştirin. İki öğe ilgili olduğunda, öncelikle daha yüksek derecelendirme olan öğe görüntülenir.<br />-   **kenar boşluğu:** iki belge ilgili olduğunda, bir satıcı önce daha yüksek kenar boşluklarına sahip olan belgeleri artırmak isteyebilir.<br />-   **tıklama sayısı:** ürünlere veya sayfalara yönelik eylemleri takip eden uygulamalar için, en fazla trafiği almak için kullanılan öğeleri artırmak üzere büyüklük kullanabilirsiniz.<br />**indirme sayılarını -   :** büyüklük işlevi, İndirmeleri izleyen uygulamalar için en çok indirmelere sahip öğeleri artırmanıza olanak tanır.|  
 |`magnitude` &#124; `boostingRangeStart`|Aralığın puanlanması için başlangıç değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 1 olur. %50 üzerindeki kenar boşlukları için bu 50 olacaktır.|  
 |`magnitude` &#124; `boostingRangeEnd`|Büyüklük puanlanması gereken aralığın bitiş değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 4 olur.|  
@@ -261,10 +261,10 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 |||  
 |-|-|  
-|`Linear`|En büyük ve en düşük aralıktaki öğeler için, öğeye uygulanan arttırma sürekli azalan bir miktarda yapılır. Doğrusal, bir Puanlama profili için varsayılan enterpolasyon.|  
-|`Constant`|Başlangıç ve bitiş aralığı içinde olan öğeler için, derece sonuçlarına sabit bir artırma uygulanır.|  
-|`Quadratic`|Sürekli azalmış bir yükseği olan doğrusal bir ilişkilendirme ile karşılaştırıldığında, karesel olarak daha küçük bir hızda azaltılır ve ardından bitiş aralığına yaklaşıyorsa, çok daha yüksek bir aralığa yaklaşacaktır. Etiket Puanlama işlevlerinde Bu enterpolasyon seçeneğine izin verilmez.|  
-|`Logarithmic`|Sürekli azalmış bir yükseği olan doğrusal bir ilişkilendirme ile karşılaştırıldığında, logaritmik bir süre önce daha yüksek bir hızda azaltılır ve sonra son aralığa yaklaşırsa, çok daha küçük bir aralığa yaklaşacaktır. Etiket Puanlama işlevlerinde Bu enterpolasyon seçeneğine izin verilmez.|  
+|`linear`|En büyük ve en düşük aralıktaki öğeler için, öğeye uygulanan arttırma sürekli azalan bir miktarda yapılır. Doğrusal, bir Puanlama profili için varsayılan enterpolasyon.|  
+|`constant`|Başlangıç ve bitiş aralığı içinde olan öğeler için, derece sonuçlarına sabit bir artırma uygulanır.|  
+|`quadratic`|Sürekli azalmış bir yükseği olan doğrusal bir ilişkilendirme ile karşılaştırıldığında, karesel olarak daha küçük bir hızda azaltılır ve ardından bitiş aralığına yaklaşıyorsa, çok daha yüksek bir aralığa yaklaşacaktır. Etiket Puanlama işlevlerinde Bu enterpolasyon seçeneğine izin verilmez.|  
+|`logarithmic`|Sürekli azalmış bir yükseği olan doğrusal bir ilişkilendirme ile karşılaştırıldığında, logaritmik bir süre önce daha yüksek bir hızda azaltılır ve sonra son aralığa yaklaşırsa, çok daha küçük bir aralığa yaklaşacaktır. Etiket Puanlama işlevlerinde Bu enterpolasyon seçeneğine izin verilmez.|  
 
  ![Grafik üzerinde sabit, doğrusal, karesel, log10 çizgileri](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 

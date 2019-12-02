@@ -1,26 +1,26 @@
 ---
-title: Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları PowerShell 'den yapılandırma
+title: PowerShell-Azure Storage kullanarak Azure Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırma
 description: Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırmak üzere PowerShell 'in nasıl kullanılacağını öğrenin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal edebilmesini sağlar.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/09/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: bd723787d9cea2d3b9d81ae9db63c70a21190854
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249281"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666231"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları PowerShell 'den yapılandırma
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-powershell"></a>PowerShell kullanarak Azure depolama için müşteri tarafından yönetilen anahtarları yapılandırma
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, PowerShell kullanarak müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir.
+Bu makalede, PowerShell kullanarak müşteri tarafından yönetilen anahtarlarla bir Azure Key Vault nasıl yapılandırılacağı gösterilmektedir. Azure CLı kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: PowerShell kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](../../key-vault/quick-create-powershell.md).
 
 > [!IMPORTANT]
 > Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasında iki özellik ayarlanmasını, **geçici silme** ve **Temizleme işlemi**yapılmasını gerektirir. Bu özellikler varsayılan olarak etkinleştirilmemiştir. Bu özellikleri etkinleştirmek için PowerShell veya Azure CLı kullanın.
@@ -96,5 +96,5 @@ Bir anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md) 
+- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md)
 - [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

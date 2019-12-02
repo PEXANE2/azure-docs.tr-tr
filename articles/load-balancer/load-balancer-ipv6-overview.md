@@ -4,7 +4,7 @@ description: Bu öğrenme yoluyla, Azure Load Balancer ve yük dengeli VM 'Ler i
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, azure yük dengeleyici, ikili yığın, genel IP, yerel IPv6, mobil veya IOT
+keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mobil, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077017"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666214"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer için IPv6 'ya genel bakış
 
 
 >[!NOTE] 
->Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standard Load Balancer hakkında daha fazla bilgi için bkz. [Standard Load Balancer’a genel bakış](load-balancer-standard-overview.md).
+>Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
 
 Temel SKU Internet 'e yönelik yük dengeleyiciler bir IPv6 adresi ile dağıtılabilir. IPv4 bağlantısına ek olarak, bu özellik aşağıdaki özellikleri sağlar:
 
@@ -78,7 +78,6 @@ Sınırlamalar
 * IPv6 için loadDistributionMethod parametresini değiştirme **Şu anda desteklenmiyor**.
 * Ayrılmış IPv6 IP 'Leri (ıpallocationmethod = static) **Şu anda desteklenmiyor**.
 * NAT64 (IPv6 ile IPv4 çevirisi) desteklenmez.
-* Standart SKU yük dengeleyiciler Şu anda IPv6 adreslerini desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

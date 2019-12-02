@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: raynew
-ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13a4fbb119ae9aceb8731e53f7123375a6e5c106
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747987"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666282"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -45,18 +45,18 @@ Belirli araç desteği tabloda özetlenmiştir.
 **Araç** | **Lamayı** | **Geçirme** 
 --- | --- | ---
 Azure geçişi sunucu değerlendirmesi | [VMware VM](tutorial-prepare-vmware.md)'lerini, [Hyper-V VM](tutorial-prepare-hyper-v.md)'lerini ve [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirin. |  Kullanılamıyor (yok)
-Azure geçiş sunucusu geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.md), [Hyper-V VM 'leri](tutorial-migrate-hyper-v.md)ve [fiziksel sunucuları](tutorial-migrate-physical-virtual-machines.md)geçirin.
-[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin. 
-[Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
+Azure geçiş sunucusu geçişi | Yok | [VMware VM 'leri](tutorial-migrate-vmware.md), [Hyper-V VM 'leri](tutorial-migrate-hyper-v.md)ve [fiziksel sunucuları](tutorial-migrate-physical-virtual-machines.md)geçirin.
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | Yok | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | Yok
 [Corent teknolojisi](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin ve geçirin. |  VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin.
-[Cihaz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin.| NA
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Şirket içi SQL Server veritabanlarını değerlendirin. | NA
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | NA
-[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
-[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
-[Unifrivcloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri ve SQL Server veritabanlarını değerlendirin. | NA
+[Cihaz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin.| Yok
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Şirket içi SQL Server veritabanlarını değerlendirin. | Yok
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Yok | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | Yok
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | Yok
+[RackWare](https://www.rackwareinc.com/cloud-migration) | Yok | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | Yok
+[Unifrivcloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri ve SQL Server veritabanlarını değerlendirin. | Yok
 [WEBAPP Geçiş Yardımcısı](https://appmigration.microsoft.com/) | Web uygulamalarını değerlendirme | Web uygulamalarını geçirme.
 
 
@@ -77,10 +77,10 @@ Bir dizi coğrafi bölgedeki Azure geçişi projesi oluşturabilirsiniz. Yalnız
 
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
-Azure Kamu | ABD Devleti Virginia
+Azure Devlet Kurumları | ABD Hükümeti Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-Brezilya | Güney Brezilya
+Brezilya | Brezilya Güney
 Kanada | Kanada Orta veya Kanada Doğu
 Avrupa | Kuzey Avrupa veya Batı Avrupa
 Fransa | Fransa Orta
@@ -88,7 +88,7 @@ Hindistan | Orta Hindistan veya Güney Hindistan
 Japonya |  Japonya Doğu veya Japonya Batı
 Güney Kore | Kore Orta veya Kore Güney
 Birleşik Krallık | UK Güney veya UK Batı
-Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
+Birleşik Devletler | Orta ABD veya Batı ABD 2
 
 
  > [!NOTE]

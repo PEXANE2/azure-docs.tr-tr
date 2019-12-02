@@ -1,0 +1,75 @@
+---
+title: Depolama hesabı için hangi şifreleme anahtarı modelinin kullanımda olduğunu belirleme-Azure depolama
+description: Depolama hesabı için şifreleme anahtarlarının nasıl yönetildiğini denetlemek için Azure portal, PowerShell veya Azure CLı kullanın. Anahtarlar Microsoft tarafından (varsayılan) veya müşteri tarafından yönetilebilir. Müşteri tarafından yönetilen anahtarların Azure Key Vault içinde depolanması gerekir.
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: how-to
+ms.date: 11/26/2019
+ms.author: tamram
+ms.reviewer: cbrooks
+ms.subservice: common
+ms.openlocfilehash: 967e6f278008a59721d8d0c74e34c0252eeb1138
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666604"
+---
+# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Depolama hesabı için hangi Azure depolama şifreleme anahtarı modelinin kullanımda olduğunu belirleme
+
+Depolama hesabınızdaki veriler Azure depolama tarafından otomatik olarak şifrelenir. Azure depolama şifrelemesi, depolama hesabı düzeyinde şifreleme anahtarlarını yönetmeye yönelik iki seçenek sunar:
+
+- **Microsoft tarafından yönetilen anahtarlar.** Varsayılan olarak, Microsoft, depolama hesabınızı şifrelemek için kullanılan anahtarları yönetir.
+- **Müşteri tarafından yönetilen anahtarlar.** İsteğe bağlı olarak, depolama hesabınız için şifreleme anahtarlarını yönetmeyi seçebilirsiniz. Müşteri tarafından yönetilen anahtarların Azure Key Vault içinde depolanması gerekir.
+
+Ayrıca, bazı BLOB depolama işlemleri için tek bir istek düzeyinde bir şifreleme anahtarı sağlayabilirsiniz. İstekte bir şifreleme anahtarı belirtildiğinde, bu anahtar depolama hesabında etkin olan şifreleme anahtarını geçersiz kılar. Daha fazla bilgi için bkz. [BLOB depolama için istekte müşteri tarafından sağlanmış anahtar belirtme](../blobs/storage-blob-customer-provided-key.md).
+
+Şifreleme anahtarları hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](storage-service-encryption.md).
+
+## <a name="check-the-encryption-key-model-for-the-storage-account"></a>Depolama hesabı için şifreleme anahtarı modelini denetleyin
+
+Bir depolama hesabının şifreleme için Microsoft tarafından yönetilen anahtarları veya müşteri tarafından yönetilen anahtarları kullanıp kullanmadığını öğrenmek için aşağıdaki yaklaşımlardan birini kullanın.
+
+# <a name="azure-portaltabportal"></a>[Azure portalda](#tab/portal)
+
+Azure portal kullanarak depolama hesabının şifreleme modelini denetlemek için şu adımları izleyin:
+
+1. Azure portalında depolama hesabınıza gidin.
+1. **Şifreleme** ayarını seçin ve ayarı göz önünde edin.
+
+Aşağıdaki görüntüde, müşteri tarafından yönetilen anahtarların şifreleme için kullanıldığı bir depolama hesabı gösterilmektedir:
+
+![Azure portal 'de şifreleme anahtarı ayarını gösteren ekran görüntüsü](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell kullanarak depolama hesabının şifreleme modelini denetlemek için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) komutunu çağırın, sonra hesabın **KeySource** özelliğini denetleyin.
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account>
+$account.Encryption.KeySource
+```
+
+**KeySource** özelliğinin değeri `Microsoft.Storage`ise, hesap Microsoft tarafından yönetilen anahtarlarla şifrelenir. **KeySource** özelliğinin değeri `Microsoft.Keyvault`ise hesap, müşteri tarafından yönetilen anahtarlarla şifrelenir.
+
+# <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+
+Azure CLı kullanarak depolama hesabının şifreleme modelini denetlemek için [az Storage Account Show](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın, sonra hesabın **KeySource** özelliğini denetleyin.
+
+```azurecli-interactive
+key_source=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query encryption.keySource \
+    --output tsv)
+```
+
+**KeySource** özelliğinin değeri `Microsoft.Storage`ise, hesap Microsoft tarafından yönetilen anahtarlarla şifrelenir. **KeySource** özelliğinin değeri `Microsoft.Keyvault`ise hesap, müşteri tarafından yönetilen anahtarlarla şifrelenir.
+
+---
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md)

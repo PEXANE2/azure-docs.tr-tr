@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3b011d3d7dc881d44fdcafb29efacf9548866d7a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3f50c94dafd01c6493f4765270c53c7903360c44
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747738"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665177"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -53,7 +53,11 @@ Azure App Service dağıtım işlemi, Azure CLı 'den hesap kimlik bilgilerini k
 az login
 ```
 
-Ardından, dağıtımı yapılandırabilir, komut Isteminde Maven komutunu `mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config` çalıştırabilir ve **Onayla (Y/N)** istemi görüntüleninceye ve ardından **' Y '** tuşuna basarak ve yapılandırma yapıldıktan sonra **ENTER** tuşuna basarak varsayılan yapılandırmaları kullanabilirsiniz.
+Ardından, dağıtımı yapılandırabilir, komut Isteminde Maven komutunu çalıştırabilir ve **Onayla (Y/N)** istemi görüntüleninceye ve ardından **' Y '** tuşuna basarak ve yapılandırma yapıldıktan sonra **ENTER** tuşuna basarak varsayılan yapılandırmaları kullanabilirsiniz. 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+```
+Örnek bir işlem şöyle görünür:
 
 ```cmd
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
@@ -95,15 +99,18 @@ Confirm (Y/N)? : Y
 
 Eklenti yapılandırmasının güncelleştirildiğini görmek için `pom.xml` tekrar gidin, gerekirse doğrudan Pod dosyanızda App Service için diğer yapılandırmaları değiştirebilirsiniz, bazı yaygın olanlar aşağıda listelenmiştir:
 
- Özellik | Gerekli | Açıklama | Sürüm
+ Özellik | Gereklidir | Açıklama | Sürüm
 ---|---|---|---
-`<schemaVersion>` | false | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2 planlama
+`<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2 planlama
 `<resourceGroup>` | doğru | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | doğru | Web uygulamanızın adı. | 0.1.0 +
 [`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | doğru | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) tüm geçerli bölgeler bölümü. | 0.1.0 +
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer **P1V2**' dir.| 0.1.0 +
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | yanlış | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer **P1V2**' dir.| 0.1.0 +
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | doğru | Çalışma zamanı ortamı yapılandırması, [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)ayrıntıları görebilirsiniz. | 0.1.0 +
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | doğru | Dağıtım yapılandırması, ayrıntıları [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)görebilirsiniz. | 0.1.0 +
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
 
 ## <a name="deploy-the-app"></a>Uygulamayı dağıtma
 
@@ -119,9 +126,12 @@ Dağıtım tamamlandıktan sonra, web tarayıcınızda aşağıdaki URL’yi kul
 
 **Tebrikler!** Linux üzerinde App Service’e ilk Java uygulamanızı dağıttınız.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Bu kaynakların gelecekte gerekli olacağını düşünmüyorsanız, Cloud Shell’de aşağıdaki komutu çalıştırarak kaynak grubunu silin:
+Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, kaynak grubunu portaldan silin veya Cloud Shell aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -142,3 +152,6 @@ Bu komutun çalıştırılması bir dakika sürebilir.
 
 > [!div class="nextstepaction"]
 > [Diğer Java geliştiricileri için Azure kaynakları](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugins)

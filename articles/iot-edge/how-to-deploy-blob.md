@@ -1,6 +1,6 @@
 ---
-title: Azure Blob Storage modülünü cihazlara dağıtma-Azure IoT Edge | Microsoft Docs
-description: IOT Edge cihazınıza uçta veri depolamak için bir Azure Blob Depolama modülü dağıtın.
+title: Modül üzerinde blob Storage 'ı cihazınıza dağıtma-Azure IoT Edge
+description: Verileri kenarda depolamak için IoT Edge cihazınıza bir Azure Blob depolama modülü dağıtın.
 author: arduppal
 ms.author: arduppal
 ms.date: 08/07/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: e5241e078cd8d36a9e43b4b55a649c1e24c85345
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b89532038b00e28eb7c43232683349652af6bc3f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456872"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665874"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge modülünde Azure Blob Storage 'ı cihazınıza dağıtma
 
-IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi IoT Edge modüllerde Azure Blob depolama için çalışır. Visual Studio kod şablonları ve Azure Portalı'nı kullanmak için iki basit yöntemler şunlardır.
+IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi IoT Edge modüllerde Azure Blob depolama için çalışır. En basit iki yöntem Azure portal veya Visual Studio Code şablonlarını kullanmaktır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -33,12 +33,12 @@ Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihaz
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
 1. Menüden **IoT Edge** seçin.
-1. Hedef cihazın cihazlar listesinden numarasını tıklayın.
+1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın.
 1. **Modülleri Ayarlama**'yı seçin.
 
-### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
+### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
 
 #### <a name="add-modules"></a>Modül Ekle
 
@@ -126,13 +126,13 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
 
 1. Rotalar bölümüne devam etmek için **İleri ' yi** seçin.
 
-#### <a name="specify-routes"></a>Rota belirtme
+#### <a name="specify-routes"></a>Rotaları belirtin
 
 Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
 
-#### <a name="review-deployment"></a>Dağıtım gözden geçirin
+#### <a name="review-deployment"></a>Dağıtımı gözden geçir
 
-Oluşturulan gözden geçirme bölümü gösterir, JSON dağıtım bildirimi önceki iki bölümlerde seçimlerinize göre. Ayrıca, eklemediğiniz iki modül de vardır: **$edgeAgent** ve **$edgeHub**. Bu iki modül [IoT Edge çalışma zamanını](iot-edge-runtime.md) yapar ve her dağıtımda gerekli varsayılanlar olur.
+İnceleme Bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. Ayrıca, eklemediğiniz iki modül de vardır: **$edgeAgent** ve **$edgeHub**. Bu iki modül [IoT Edge çalışma zamanını](iot-edge-runtime.md) yapar ve her dağıtımda gerekli varsayılanlar olur.
 
 Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
 
@@ -147,7 +147,7 @@ Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dak
 
 ## <a name="deploy-from-visual-studio-code"></a>Visual Studio Code dağıtma
 
-Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual Studio code'da şablonları sağlar. Blob Storage modülü ile yeni bir IoT Edge çözümü oluşturmak ve dağıtım bildirimini yapılandırmak için aşağıdaki adımları kullanın.
+Azure IoT Edge, Edge çözümleri geliştirmenize yardımcı olmak için Visual Studio Code şablonlar sağlar. Blob Storage modülü ile yeni bir IoT Edge çözümü oluşturmak ve dağıtım bildirimini yapılandırmak için aşağıdaki adımları kullanın.
 
 1.  > **komut paletini** **görüntüle** ' yi seçin.
 
@@ -157,7 +157,7 @@ Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual
 
    Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
 
-   | Alan | Value |
+   | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Çözüm dosyalarını oluşturmak için Visual Studio Code geliştirme makinenizdeki konumunu seçin. |
    | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
@@ -165,7 +165,7 @@ Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual
    | Modül adı sağlayın | Modülünüzün **azureblobstorageoniotedge**gibi bir tam küçük harf adı girin.<br /><br />IoT Edge modülünde Azure Blob depolama için küçük harfli bir ad kullanılması önemlidir. IoT Edge modüllerle ilgili olarak büyük/küçük harfe duyarlıdır ve depolama SDK varsayılan olarak küçük harfe duyarlıdır. |
    | Modül için Docker görüntüsü sağlama | Görüntü URI 'sini sağlayın: **MCR.Microsoft.com/Azure-Blob-Storage:latest** |
 
-   Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluşturur ve sonra yeni bir pencerede yükler. Çözüm şablonu, blob depolama modülü görüntüsünü içeren bir dağıtım bildirimi şablonu oluşturur, ancak yapılandırmanız gerekir modülün oluşturma seçenekleri.
+   Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluşturur ve sonra yeni bir pencerede yükler. Çözüm şablonu, BLOB depolama modülü görüntünüzü içeren bir dağıtım bildirim şablonu oluşturur, ancak modülün oluşturma seçeneklerini yapılandırmanız gerekir.
 
 1. Yeni çözüm çalışma alanınızda *Deployment. Template. JSON* ' i açın ve **modüller** bölümünü bulun. Aşağıdaki yapılandırma değişikliklerini yapın:
 
@@ -243,7 +243,7 @@ Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual
 
 ## <a name="deploy-multiple-module-instances"></a>Birden çok modül örneği dağıtma
 
-IoT Edge modülünde Azure Blob Storage 'ın birden fazla örneğini dağıtmak istiyorsanız, farklı bir depolama yolu sağlamanız ve modülün bağlandığı `HostPort` değerini değiştirmeniz gerekir. Blob depolama modülleri, bağlantı noktasını 11002 kapsayıcıdaki her zaman kullanıma sunma, ancak konakta bağlı hangi bağlantı noktası bildirebilirsiniz.
+IoT Edge modülünde Azure Blob Storage 'ın birden fazla örneğini dağıtmak istiyorsanız, farklı bir depolama yolu sağlamanız ve modülün bağlandığı `HostPort` değerini değiştirmeniz gerekir. BLOB depolama modülleri her zaman kapsayıcıda 11002 numaralı bağlantı noktasını kullanıma sunar, ancak konakta hangi bağlantı noktasını bağladığına ilişkin bildirimi de belirtebilirsiniz.
 
 `HostPort` değerini değiştirmek için **kapsayıcı oluşturma seçeneklerini** (Azure Portal) veya **createoptions** alanını (Visual Studio Code içindeki *Deployment. Template. JSON* dosyasında) düzenleyin:
 
@@ -253,7 +253,7 @@ IoT Edge modülünde Azure Blob Storage 'ın birden fazla örneğini dağıtmak 
 }
 ```
 
-Ek blob depolama modüllerini bağladığınızda, uç nokta güncel ana bilgisayar bağlantı noktasına işaret edecek şekilde değiştirin.
+Ek BLOB depolama modüllerine bağlandığınızda, uç noktayı güncelleştirilmiş konak bağlantı noktasını işaret etmek üzere değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [IoT Edge Azure Blob depolama](how-to-store-data-blob.md) hakkında daha fazla bilgi edinin

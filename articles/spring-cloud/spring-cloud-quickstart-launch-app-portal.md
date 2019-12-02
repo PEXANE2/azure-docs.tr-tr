@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560060"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666265"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -72,13 +72,17 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu**' nu seçin.
 
-1. **Varsayılan depo** bölümünde, **URI** 'yi "https\://GitHub.com/Azure-Samples/piggymetrics" olarak ayarlayın, **etiketi** "config" olarak ayarlayın ve değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+1. **Varsayılan depo** bölümünde, **URI** 'yi "https\://GitHub.com/Azure-Samples/piggymetrics" olarak ayarlayın.
+
+1. **Etiketi** "config" olarak ayarlayın.
+
+1. Değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Mikro hizmet uygulamaları oluşturma ve dağıtma
 
-1. Bir [Azure Cloudshell](https://shell.azure.com) açın ve örnek uygulama deposunu yerel makinenize kopyalayın.  Burada, önce uygulamayı kopyalamadan önce `source-code` adlı geçici bir dizin oluşturacağız.
+1. Bir [Azure Cloud Shell](https://shell.azure.com) açın ve örnek uygulama deposunu yerel makinenize kopyalayın.  Burada, önce uygulamayı kopyalamadan önce `source-code` adlı geçici bir dizin oluşturacağız.
 
     ```azurecli
     mkdir source-code
@@ -123,7 +127,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. **Genel bakış** sayfasını göstermek için `gateway` uygulamayı seçin.
 
-1. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu birkaç dakika sürebilir.
+1. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu işlem birkaç dakika sürebilir.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

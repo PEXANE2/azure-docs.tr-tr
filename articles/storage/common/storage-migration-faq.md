@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090811"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666435"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure depolama geçişi hakkında sık sorulan sorular
 
@@ -47,7 +47,7 @@ Tüm depolama hesabını doğrudan yedekleme seçeneği yoktur. Ancak, bu depola
 
 1.  [AzCopy](storage-use-azcopy.md) komut satırı aracını yükler. Bu araç, VHD dosyasını depolama hesapları arasında taşımanızı sağlar.
 
-2.  Yükleyiciyi kullanarak Windows 'a AzCopy yükledikten sonra, bir komut Istemi penceresi açın ve bilgisayarınızdaki AzCopy yükleme klasörüne gidin. AzCopy varsayılan olarak, yüklü **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** veya **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Yükleyiciyi kullanarak Windows 'a AzCopy yükledikten sonra, bir komut Istemi penceresi açın ve bilgisayarınızdaki AzCopy yükleme klasörüne gidin. AzCopy, varsayılan olarak **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** veya **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**'e yüklenir.
 
 3.  Kapsayıcıyı taşımak için aşağıdaki komutu çalıştırın. Metni gerçek değerlerle değiştirmeniz gerekir.   
      
@@ -55,10 +55,10 @@ Tüm depolama hesabını doğrudan yedekleme seçeneği yoktur. Ancak, bu depola
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`: Kaynak depolama hesabı için URI 'yi sağlayın (kapsayıcıya kadar).  
-    - `/Dest`: Hedef depolama hesabı için URI 'yi sağlayın (kapsayıcıya kadar).  
-    - `/SourceKey`: Kaynak depolama hesabı için birincil anahtarı sağlayın. Depolama hesabını seçerek bu anahtarı Azure portal kopyalayabilirsiniz.  
-    - `/DestKey`: Hedef depolama hesabı için birincil anahtarı sağlayın. Depolama hesabını seçerek bu anahtarı portaldan kopyalayabilirsiniz.
+    - `/Source`: kaynak depolama hesabı için URI (kapsayıcıya kadar) sağlayın.  
+    - `/Dest`: hedef depolama hesabının URI 'sini sağlayın (kapsayıcıya kadar).  
+    - `/SourceKey`: kaynak depolama hesabı için birincil anahtarı belirtin. Depolama hesabını seçerek bu anahtarı Azure portal kopyalayabilirsiniz.  
+    - `/DestKey`: hedef depolama hesabı için birincil anahtarı belirtin. Depolama hesabını seçerek bu anahtarı portaldan kopyalayabilirsiniz.
 
 Bu komutu çalıştırdıktan sonra kapsayıcı dosyaları hedef depolama hesabına taşınır.
 
@@ -167,7 +167,7 @@ Verileri indirmek için AzCopy kullanın. Daha fazla bilgi için bkz. [Windows �
 
 **Nasıl yaparım?, ikincil konumu bir depolama hesabı için Avrupa bölgesine değiştirmek istiyor musunuz?**
 
-Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersiniz. İkincil bölgenin seçimi birincil bölgeye dayalıdır ve değiştirilemez. Daha fazla bilgi için bkz [. coğrafi olarak yedekli depolama (GRS): Azure depolama](storage-redundancy.md)için çapraz bölgesel çoğaltma.
+Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersiniz. İkincil bölgenin seçimi birincil bölgeye dayalıdır ve değiştirilemez. Daha fazla bilgi için bkz. [coğrafi olarak yedekli depolama (GRS): Azure depolama Için çapraz bölgesel çoğaltma](storage-redundancy.md).
 
 **Azure Depolama Hizmeti Şifrelemesi (SSE) hakkında daha fazla bilgiyi nereden edinebilirim?**  
   
@@ -237,7 +237,7 @@ Sanal makineleriniz varsa, depolama hesabı verilerini geçirmeden önce ek adı
 
 **Nasıl yaparım?, klasik bir depolama hesabından Azure Resource Manager depolama hesabına taşımak istiyor musunuz?**
 
-**Move-AzStorageAccount** cmdlet 'ini kullanabilirsiniz. Bu cmdlet 'in birden çok adımı vardır (doğrulama, hazırlama, tamamlama). Bunu yapmadan önce taşımayı doğrulayabilirsiniz.
+**Move-Azurestoraygeaccount** cmdlet 'ini kullanabilirsiniz. Bu cmdlet 'in birden çok adımı vardır (doğrulama, hazırlama, tamamlama). Bunu yapmadan önce taşımayı doğrulayabilirsiniz.
 
 Sanal makineleriniz varsa, depolama hesabı verilerini geçirmeden önce ek adımlar gerçekleştirmeniz gerekir. Daha fazla bilgi için [Azure PowerShell kullanarak IaaS kaynaklarını klasik 'dan Azure Resource Manager geçirme](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)konusuna bakın.
 
@@ -267,9 +267,9 @@ Diğer kişilere depolama kaynaklarına erişim sağlamak için:
 
 -   AzCopy komutunu Microsoft Azure Depolama komut satırından eriştiğinizde **AzCopy**yazın. Komut satırı AzCopy ile birlikte yüklenir.
 
--   32 bitlik sürümü yüklediyseniz şu konumda bulunur: **%\\ProgramFiles (x86)% Microsoft SDK 'ları\\Azure\\AzCopy**.
+-   32 bit sürümünü yüklediyseniz, burada bulunur: **% ProgramFiles (x86)%\\Microsoft SDK 'Ları Azure\\AzCopy\\** .
 
--   64 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles%\\Microsoft SDK 'ları\\\\Azure AzCopy**.
+-   64 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles%\\Microsoft SDK 'Ları Azure\\AzCopy\\** .
 
 **Çoğaltılan depolama hesabı için (bölgesel olarak yedekli depolama, coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama gibi), ikincil bölgede depolanan verilere nasıl erişebilirim?**
 
@@ -277,13 +277,13 @@ Diğer kişilere depolama kaynaklarına erişim sağlamak için:
 
 -   Okuma Erişimli Coğrafi olarak yedekli depolama kullanıyorsanız, verileri istediğiniz zaman ikincil bölgeden erişebilirsiniz. Aşağıdaki yöntemlerden birini kullanın:  
       
-    - **AzCopy**: İkincil uç noktaya erişmek için URL 'deki depolama hesabı adına **İkincil** ekleyin. Örneğin:  
+    - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örnek:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS belirteci**: Uç noktadan veriye erişmek için bir SAS belirteci kullanın. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](storage-sas-overview.md).
+    - **SAS belirteci**: uç noktadan veriye erişmek IÇIN bir SAS belirteci kullanın. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](storage-sas-overview.md).
 
-**Depolama hesabımın bulunduğu HTTPS özel etki alanını kullanmak Nasıl yaparım? mı? Örneğin, "https:\//mystorageaccountname.blob.Core.Windows.net/images/image.gif" nasıl "https:\//www.contoso.com/images/image.gif" olarak görünirim?**
+**Depolama hesabımın bulunduğu HTTPS özel etki alanını kullanmak Nasıl yaparım? mı? Örneğin, "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" nasıl "https:\//www.contoso.com/images/image.gif" olarak görünirim?**
 
 SSL Şu anda özel etki alanları olan depolama hesaplarında desteklenmemektedir.
 Ancak HTTPS olmayan özel etki alanlarını kullanabilirsiniz. Daha fazla bilgi için bkz. [BLOB depolama uç noktanız için özel bir etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).

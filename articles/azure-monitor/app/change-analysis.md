@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885055"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665366"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -52,7 +52,7 @@ Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her
 Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunlara neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
 Şu anda aşağıdaki bağımlılıklar desteklenir:
 - Web Apps
-- Azure Storage
+- Azure Depolama
 - Azure SQL
 
 ### <a name="enablement"></a>Etkinleştirme
@@ -73,7 +73,7 @@ Değişiklikleri görüntülemeye başlamak için kaynak grubu ve kaynaklar ' ı
 Uygulamanızı barındıran öngörüleri ve ilgili bağımlılıklar kaynaklarını görebilirsiniz. Bu görünüm, geliştiricilerin sorunları gidermelerine yönelik uygulama odaklı olacak şekilde tasarlanmıştır.
 
 Şu anda desteklenen kaynaklar şunlardır:
-- Virtual Machines
+- Virtual Machines (Sanal Makineler)
 - Sanal makine ölçek kümesi
 - Azure ağ kaynakları
 - Konuk içi dosya izleme ve ortam değişkenleri değişiklikleri içeren Web uygulaması
@@ -102,7 +102,7 @@ Azure Izleyici 'de, değişiklik Analizi Ayrıca self servis **Tanılama ve soru
 
    !["Uygulama kilitlenmeler" seçeneklerinin ekran görüntüsü](./media/change-analysis/enable-changeanalysis.png)
 
-1. **Değişiklik analizini** açın ve **Kaydet**' i seçin. Araç, tüm Web uygulamalarını bir App Services planı altında görüntüler. Plan düzeyi anahtarını, bir plandaki tüm Web uygulamalarının değişiklik analizini açmak için kullanabilirsiniz.
+1. **Değişiklik analizini** açın ve **Kaydet**' i seçin. Araç, tüm Web uygulamalarını bir App Service planı altında görüntüler. Plan düzeyi anahtarını, bir plandaki tüm Web uygulamalarının değişiklik analizini açmak için kullanabilirsiniz.
 
     !["Değişiklik analizini etkinleştir" Kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
 

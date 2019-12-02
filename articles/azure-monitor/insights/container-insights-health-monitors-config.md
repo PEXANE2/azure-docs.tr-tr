@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279704"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664956"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Kapsayıcılar için Azure Izleyici durum izleyici yapılandırma kılavuzu
 
@@ -35,7 +35,7 @@ Belirli bir nesnenin genel sistem durumu, izleyicilerinin her birinin sistem dur
 
 ## <a name="types-of-monitors"></a>İzleyici türleri
 
-|İzleme | Açıklama | 
+|İzleyin | Açıklama | 
 |--------|-------------|
 | Birim izleyicisi |Birim izleyicisi bir kaynağın veya uygulamanın bazı yönlerini ölçer. Bu, kaynağın performansını veya kullanılabilirliğini belirlemede bir performans sayacı denetleniyor olabilir. |
 |Toplam Izleyici | Toplama izleyicileri, tek bir sistem durumu toplu sistem durumu sağlamak için birden çok monitörü gruplar. Birim izleyicileri genellikle belirli bir toplam izleyici altında yapılandırılır. Örneğin, bir düğüm toplama izleyicisi, düğüm CPU kullanımı, bellek kullanımı ve düğüm durumunun durumunu toplar.
@@ -77,12 +77,12 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki gibi yapılandırılmış bir 
 
 |**İzleyici adı** | **Açıklama** | **Algoritma** |
 |-----------------|-----------------|---------------|
-|Node |Bu izleyici, tüm düğüm izlemelerinin bir toplamasından oluşur. En kötü sistem durumu ile alt izleyicinin durumuyla eşleşir:<br> Düğüm CPU kullanımı<br> Düğüm bellek kullanımı<br> Düğüm durumu | En kötü|
+|Düğüm |Bu izleyici, tüm düğüm izlemelerinin bir toplamasından oluşur. En kötü sistem durumu ile alt izleyicinin durumuyla eşleşir:<br> Düğüm CPU kullanımı<br> Düğüm bellek kullanımı<br> Düğüm durumu | En kötü|
 |Düğüm havuzu |Bu izleyici, düğüm havuzu *agentpool*içindeki tüm düğümlerin Birleşik sistem durumunu bildirir. Bu üç durum izleyicisine sahiptir ve bu durum, düğüm havuzundaki düğümlerin %80 ' üne ait olan, düğüm durumlarının önem derecesine göre azalan düzende (yani, kritik, uyarı, sağlıklı) sıralanmıştır.|Yüzde |
 |Düğümler (düğüm havuzunun üst öğesi) |Bu, tüm düğüm havuzlarının bir toplam izleyicisine sahiptir. Durumu, alt izlemelerinin (yani kümede bulunan düğüm havuzlarının) en kötü durumuna bağlıdır. |En kötü |
 |Küme (düğümlerin üst öğesi/<br> Kubernetes altyapısı) |Bu, Kubernetes altyapısı ve düğümleri olan en kötü sistem durumu ile alt izleyicinin durumuyla eşleşen ana izleyicidir. |En kötü |
 |Kubernetes altyapısı |Bu izleyici, kümenin yönetilen altyapı bileşenlerinin Birleşik sistem durumunu bildirir. durumu, kendi alt izleme durumları olan ' en kötü ', kuas sistem iş yükleri ve API sunucusu durumu olarak hesaplanır. |En kötü|
-|Sistem iş yükü |Bu izleyici, bir KUIN sistem iş yükünün sistem durumunu bildirir. Bu izleyici, en kötü sistem durumu ile alt izleyicinin durumuyla eşleşir, bu, **Ready durum** izleyicisinde ve iş yükünde yer alan kapsayıcılardır. |En kötü |
+|Sistem iş yükü |Bu izleyici, bir KUIN sistem iş yükünün sistem durumunu bildirir. Bu izleyici, en kötü sistem durumu ile alt izleyicinin durumuyla eşleşir, bu durum, hazırlama **durumunda** (izleyici ve iş yükünde kapsayıcılar). |En kötü |
 |Kapsayıcı |Bu izleyici, belirli bir iş yükünde bir kapsayıcının genel sistem durumunu bildirir. Bu izleyici, **CPU kullanımı** ve **bellek kullanımı** izleyicileri olan en kötü sistem durumu ile alt izleyicinin durumuyla eşleşir. |En kötü |
 
 ## <a name="next-steps"></a>Sonraki adımlar

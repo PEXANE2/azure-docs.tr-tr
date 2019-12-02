@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: db9132936604e8eed17bbdf173ce1b766fb1b334
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: beab594126ce292ea1fc47e399a12274dbb31aa3
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326700"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665704"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
 
@@ -23,7 +23,7 @@ Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye ba
 
 Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
 
@@ -43,7 +43,7 @@ Aşağıdaki kod, isteği tanımlar ve gönderir. Aşağıdaki adımları izler:
 
 Bu tanıtımda kullanılan kodun tamamı aşağıda verilmiştir:
 
-```
+```javascript
 'use strict';
 
 let https = require('https');

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure IoT Edge üzerinde özel modüller oluşturma ve dağıtma-Machine Learning'
+title: 'Öğretici: eğitim & dağıtım modeli Azure IoT Edge & Machine Learning'
 description: 'Öğretici: bir makine öğrenimi modeli aracılığıyla yaprak cihazlardan verileri işleyen IoT Edge modülleri oluşturun ve dağıtın ve ardından öngörüleri IoT Hub gönderin.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106556"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664225"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 
@@ -22,7 +22,7 @@ ms.locfileid: "74106556"
 
 Bu makalede, yaprak cihazlardan ileti alan üç IoT Edge modülü oluşturacağız, verileri Machine Learning modelinize aracılığıyla çalıştırır ve ardından öngörüleri IoT Hub iletebilirsiniz.
 
-IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bir ileti Aracısı olarak kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca üzerinde iletileri ve bunlar iletileri yazma çıkışları kabul girişleri belirtmeniz gerekir.
+IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bir ileti Aracısı olarak kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca iletileri kabul ettikleri girişleri ve ileti yazdıkları çıkışları belirtmeleri gerekir.
 
 IoT Edge cihazının bizimle ilgili dört şeyi yerine getirebilmemiz istiyoruz:
 
@@ -639,7 +639,7 @@ Yönlendirici ve sınıflandırıcıda, yalnızca cihaz KIMLIĞI ve cihaz için 
 
 13. **Test rotası**seçin. Sınama başarılı olursa "ileti sorguyla eşleşti." iletisini görürsünüz.
 
-14. **Kaydet**’e tıklayın.
+14. **Kaydet** düğmesine tıklayın.
 
 #### <a name="update-turbofandevicetostorage-route"></a>TurbofanDeviceToStorage yolunu Güncelleştir
 
@@ -714,7 +714,7 @@ Dosya yazıcı modülünün depolama alanına dosya yüklemesine izin vermek iç
 
 Artık yapılandırma değişikliklerini yaptığımız için, görüntüleri oluşturmaya ve bunları Azure Container Registry 'imizde yayımlamaya hazırız. Yapı işlemi, hangi modüllerin oluşturulması gerektiğini belirleyen Deployment. Template. json dosyasını kullanır. Sürümü de dahil olmak üzere her modülün ayarları modül klasöründeki Module. json dosyasında bulunur. Yapı işlemi önce, bir görüntü oluşturmak için Module. json dosyasında bulunan geçerli yapılandırmayla eşleşen Dockerfiles üzerinde bir Docker derlemesini çalıştırır. Daha sonra, Module. JSON dosyasındaki modül. JSON dosyası ile eşleşen bir sürüm etiketiyle görüntüyü kayıt defterine yayınlar. Son olarak, IoT Edge cihaza dağıtacağınız yapılandırmaya özgü bir dağıtım bildirimi (örneğin, Deployment. AMD64. JSON) oluşturur. IoT Edge cihaz, dağıtım bildiriminden bilgileri okur ve yönergeleri temel alarak modülleri indirir, yolları yapılandırır ve istediğiniz özellikleri ayarlar. Bu dağıtım yönteminde dikkat etmeniz gereken iki yan etkisi vardır:
 
-* **Dağıtım gecikmesi:** IoT Edge çalışma zamanının, yeniden yapılandırma işlemine başlamadan önce istenen özelliklerine yapılan değişikliği tanıması gerektiğinden, çalışma zamanı onları bulana ve IoT Edge güncelleştirilmeye başladıktan sonra modüllerinizi dağıttıktan sonra zaman alabilir aygıtların.
+* **Dağıtım gecikmesi:** IoT Edge çalışma zamanının, yeniden yapılandırmadan önce istenen özelliklerine yapılan değişikliği tanıması gerektiğinden, çalışma zamanı tarafından sunuluncaya ve IoT Edge cihazı güncelleştirilmeye başladıktan sonra modüllerinizi dağıttıktan sonra biraz zaman alabilir.
 
 * **Modül sürümleri:** önceki modülle aynı sürüm etiketlerini kullanarak bir modülün kapsayıcısının kapsayıcı Kayıt defterinize yeni bir sürümünü yayımlarsanız, çalışma zamanı modülün yeni sürümünü indirmeyecektir. Yerel görüntünün sürüm etiketinin ve dağıtım bildiriminden istenen görüntünün bir karşılaştırmasını yapar. Bu sürümler eşleşiyorsa, çalışma zamanı hiçbir eylemde bulunmaz. Bu nedenle, yeni değişiklikler dağıtmak istediğiniz her seferinde modülünüzün sürümünü artırmak önemlidir. Değiştirdiğiniz modülün Module. JSON dosyasındaki **Tag** özelliği altındaki **Version** özelliğini değiştirerek sürümü artırın. Ardından modülü derleyin ve yayımlayın.
 
