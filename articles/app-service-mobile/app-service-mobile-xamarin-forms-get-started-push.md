@@ -1,25 +1,17 @@
 ---
-title: Xamarin. Forms uygulamanıza anında iletme bildirimleri ekleme | Microsoft Docs
+title: Xamarin. Forms uygulamanıza anında iletme bildirimleri ekleme
 description: Azure hizmetlerini kullanarak Xamarin. Forms uygulamalarınıza çok platformlu anında iletme bildirimleri gönderme hakkında bilgi edinin.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: ce5750a5071ee0dfc257498f83f41b6d59c99a8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f8aab2c5e942944f6251eef0aaaec204ce5ad076
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388526"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668770"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin. Forms uygulamanıza anında iletme bildirimleri ekleme
 
@@ -67,7 +59,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
 1. **DROID** projesinde,, **NuGet Paketlerini Yönet > başvurular**' a sağ tıklayın....
 1. NuGet Paket Yöneticisi penceresinde, **Xamarin. Firebase. Messaging** paketini arayın ve projeye ekleyin.
 1. **DROID** projesinin proje özellikleri ' nde, uygulamayı Android sürüm 7,0 veya üstünü kullanarak derlemek üzere ayarlayın.
-1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için [Google Hizmetleri JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için bkz. [Google SERVICES JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Firebase Cloud Messaging ile kaydolma
 
@@ -84,7 +76,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Firebase örnek kimlik hizmetinin uygulama
+#### <a name="implementing-the-firebase-instance-id-service"></a>Firebase örnek KIMLIĞI hizmetini uygulama
 
 1. `FirebaseRegistrationService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
 
@@ -123,11 +115,11 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    `FirebaseRegistrationService` sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. `OnTokenRefresh` Yöntemi uygulama FCM kayıt belirtecinizi aldığında çağrılır. Belirteçten yöntemi alır `FirebaseInstanceId.Instance.Token` özelliği FCM ile zaman uyumsuz olarak güncelleştirilir. `OnTokenRefresh` Yöntemi nadiren çağrılır, uygulamanın yüklenmesi veya kaldırılması, kullanıcı uygulama verileri sildiğinde uygulamanın örnek kimliği vuruşunu sildiğinde, belirteç yalnızca güncelleştirildiğinden veya güvenlik belirtecinin olduğunda gizliliği. Ayrıca, uygulama, belirteci düzenli olarak, genellikle her 6 ayda bir yenileme FCM örnek kimliği hizmeti ister.
+    `FirebaseRegistrationService` sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. Uygulama FCM 'den bir kayıt belirteci aldığında `OnTokenRefresh` yöntemi çağrılır. Yöntemi, FCM tarafından zaman uyumsuz olarak güncellenen `FirebaseInstanceId.Instance.Token` özelliğinden belirteci alır. `OnTokenRefresh` yöntemi nadiren çağrılır, çünkü belirteç yalnızca uygulama yüklendiğinde veya kaldırıldığında, Kullanıcı uygulama verilerini sildiğinde, uygulama örnek KIMLIĞINI sildiğinde veya belirtecin güvenliği tehlikeye atıldığında güncelleştirilir. Ayrıca, FCM örnek KIMLIĞI hizmeti uygulamanın belirtecini düzenli aralıklarla ve genellikle 6 ayda bir yenilemelerini ister.
 
-    `OnTokenRefresh` Yöntemini de çağırır `SendRegistrationTokenToAzureNotificationHub` Azure bildirim Hub'ınızla kullanıcının kayıt belirtecini ilişkilendirmek için kullanılan yöntem.
+    `OnTokenRefresh` yöntemi, kullanıcının kayıt belirtecini Azure Bildirim Hub 'ı ile ilişkilendirmek için kullanılan `SendRegistrationTokenToAzureNotificationHub` yöntemini de çağırır.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Azure bildirim Hub'ıyla
+#### <a name="registering-with-the-azure-notification-hub"></a>Azure Notification Hub 'ına kaydolma
 
 1. `AzureNotificationHubService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
 
@@ -168,9 +160,9 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    `RegisterAsync` yöntemi, JSON olarak basit bir bildirim iletisi şablonu oluşturur ve Firebase kayıt belirtecini kullanarak Bildirim Hub 'ından şablon bildirimleri almak için kayıt yapar. Bu, Azure bildirim Hub'ından gönderilen tüm bildirimler kayıt belirtecinizi tarafından temsil edilen cihaz hedeflediğiniz sağlar.
+    `RegisterAsync` yöntemi, JSON olarak basit bir bildirim iletisi şablonu oluşturur ve Firebase kayıt belirtecini kullanarak Bildirim Hub 'ından şablon bildirimleri almak için kayıt yapar. Bu, Azure Bildirim Hub 'ından gönderilen tüm bildirimlerin kayıt belirteci tarafından temsil edilen cihazı hedeflemesini sağlar.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Anında iletme bildirimi içeriğini görüntüleme
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Anında Iletme bildiriminin Içeriğini görüntüleme
 
 1. `FirebaseNotificationService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
 
@@ -225,7 +217,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    Bir uygulama FCM 'den bildirim aldığında çağrılan `OnMessageReceived` yöntemi, ileti içeriğini ayıklar ve `SendNotification` yöntemini çağırır. Bu yöntem, uygulama çalışırken bildirim alanında görüntülenen bildirim ile başlatılan bir yerel bildirim iletisi içeriği dönüştürür.
+    Bir uygulama FCM 'den bildirim aldığında çağrılan `OnMessageReceived` yöntemi, ileti içeriğini ayıklar ve `SendNotification` yöntemini çağırır. Bu yöntem ileti içeriğini, bildirim alanında görüntülenen bildirim ile uygulama çalışırken başlatılan bir yerel bildirime dönüştürür.
 
 Şimdi, Android cihazda veya Öykünücüde çalışan uygulamada test anında iletme bildirimleri hazır olursunuz.
 
@@ -411,7 +403,7 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
 Anında iletme bildirimleri hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Azure Mobile Apps anında Iletme bildirimleri gönderme](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase bulut mesajlaşma](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Firebase Cloud Messaging ile uzak bildirimler](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Anında iletme bildirimi sorunlarını tanılama](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Bildirimlerin bırakılmış olmasının çeşitli nedenleri vardır veya cihazlar üzerinde bitmeyebilir. Bu konuda, anında iletme bildirimi hatalarının asıl nedenini çözümleme ve oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
