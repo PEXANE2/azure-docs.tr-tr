@@ -1,23 +1,20 @@
 ---
-title: Linux 'ta Azure depolama 'dan içerik sunma-App Service
-description: Linux üzerinde Azure App Service Azure Storage 'dan içerik yapılandırma ve hizmeti sunma.
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: Linux 'ta özel depolama kapsayıcısı iliştirme
+description: Azure App Service ' de Linux kapsayıcınıza özel ağ paylaşımının nasıl ekleneceğini öğrenin. Uygulamalar arasında dosya paylaşma, statik içeriği uzaktan yönetme ve yerel olarak erişme, vb.
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018270"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671781"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux üzerinde App Service Azure Storage 'tan içerik sunma
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>Linux kapsayıcılarına Azure Storage kapsayıcıları iliştirme
 
-Bu kılavuzda, [Azure Storage](/azure/storage/common/storage-introduction)kullanılarak Linux üzerinde App Service statik içerik sunma gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
+Bu kılavuzda, [Azure Storage](/azure/storage/common/storage-introduction)kullanılarak Linux üzerinde App Service ağ paylaşımlarının nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -64,7 +61,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 Bunu, bir depolama hesabına bağlanmasını istediğiniz diğer dizinler için yapmanız gerekir.
 
-## <a name="verify"></a>Doğrula
+## <a name="verify"></a>Doğrulama
 
 Bir depolama kapsayıcısı bir Web uygulamasına bağlandıktan sonra, aşağıdaki komutu çalıştırarak bunu doğrulayabilirsiniz:
 
@@ -74,9 +71,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-custom-storage-in-docker-compose"></a>Docker Compose özel depolama kullan
 
-Azure depolama, özel kimlik kullanarak çok Kapsayıcılı uygulamalarla bağlanabilir. Özel kimlik adını görüntülemek için çalıştırın [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+Azure depolama, özel kimlik kullanarak çok Kapsayıcılı uygulamalarla bağlanabilir. Özel kimlik adını görüntülemek için [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)çalıştırın.
 
-*Docker-Compose. yıml* dosyanızda, `volumes` seçeneğini ile `custom-id`eşleyin. Örneğin:
+*Docker-Compose. yıml* dosyanızda `volumes` seçeneğini `custom-id`eşleyin. Örnek:
 
 ```yaml
 wordpress:

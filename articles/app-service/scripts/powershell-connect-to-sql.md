@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell betik örneği-bir uygulamayı SQL veritabanına bağlama | Microsoft Docs
-description: Azure PowerShell betik örneği-bir App Service uygulamasını SQL veritabanına bağlama
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: "PowerShell: SQL veritabanı 'na bağlanma"
+description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamanın bir SQL veritabanına nasıl bağlanacağını gösterir.
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 799fb67b20c45653ec741a92ec7a75aff2f8c509
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087824"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685394"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>App Service uygulamasını SQL veritabanına bağlama
 

@@ -1,25 +1,18 @@
 ---
-title: Karma bağlantılar-Azure App Service | Microsoft Docs
-description: Farklı ağlardaki kaynaklara erişmek için Karma Bağlantılar oluşturma ve kullanma
-services: app-service
-documentationcenter: ''
+title: Karma bağlantılar
+description: Farklı ağlardaki kaynaklara erişmek için Azure App Service ' de karma bağlantıları oluşturma ve kullanma hakkında bilgi edinin.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082389"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671519"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Karma Bağlantılar #
 
@@ -28,7 +21,7 @@ Karma Bağlantılar hem Azure 'daki bir hizmettir hem de Azure App Service bir �
 App Service içinde Karma Bağlantılar, diğer ağlardaki uygulama kaynaklarına erişmek için kullanılabilir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için alternatif bir özellik etkinleştirmez. App Service için kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, karma bağlantı uç noktasının bir TCP dinleme bağlantı noktasına eriştiğiniz herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişeceğimizi bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.  
 
 
-## <a name="how-it-works"></a>Nasıl çalışır? ##
+## <a name="how-it-works"></a>Nasıl çalışır ##
 Karma Bağlantılar özelliği Azure Service Bus geçişine yönelik iki giden çağrının oluşur. Uygulamanızın App Service çalıştığı konaktaki bir kitaplıktan bağlantı vardır. Ayrıca, Karma Bağlantı Yöneticisi (HCM) ile Service Bus geçişine bir bağlantı vardır. HCM, erişmeye çalıştığınız kaynağı barındıran ağ içinde dağıttığınız bir geçiş hizmetidir. 
 
 İki Birleşik bağlantıyla, uygulamanızın bir sabit ana bilgisayara TCP tüneli vardır: HCM 'nin diğer tarafındaki bağlantı noktası birleşimi. Bağlantı, kimlik doğrulama ve yetkilendirme için güvenlik ve paylaşılan erişim imzası (SAS) anahtarları için TLS 1,2 kullanır.    
@@ -162,7 +155,7 @@ Artık eklediğiniz Karma Bağlantılar görebilirsiniz. Ayrıca, ayrıntıları
 > Azure Relay bağlantı için Web soketlerine bağımlıdır. Bu özellik yalnızca Windows Server 2012 veya üzeri sürümlerde kullanılabilir. Bu nedenle, HCM Windows Server 2012 ' den önceki bir şeye göre desteklenmez.
 >
 
-### <a name="redundancy"></a>Yedeklilik ###
+### <a name="redundancy"></a>Yedekleme ###
 
 Her HCM birden çok Karma Bağlantılar destekleyebilir. Ayrıca, belirli karma bağlantılar birden çok HCMs tarafından desteklenebilir. Varsayılan davranış, trafiği, belirli bir uç nokta için yapılandırılmış HCMs genelinde yönlendirmenize yöneliktir. Karma Bağlantılar ağınızdan yüksek kullanılabilirlik istiyorsanız, ayrı makinelerde birden çok HCMs çalıştırın. Trafiği HCMs 'ye dağıtmak için geçiş hizmeti tarafından kullanılan yük dağıtım algoritması rastgele atamadır. 
 
@@ -172,7 +165,7 @@ Aboneliğiniz dışındaki birinin belirli bir karma bağlantı için bir HCM ö
 
 ![Karma bağlantı el ile ekleme][11]
 
-### <a name="upgrade"></a>Yükseltme ###
+### <a name="upgrade"></a>Yükseltin ###
 
 Sorunları gidermek veya iyileştirmeler sağlamak için Karma Bağlantı Yöneticisi düzenli güncelleştirmeler vardır. Yükseltmeler yayınlandığında, HCM Kullanıcı arabiriminde bir açılan pencere görünür. Yükseltmenin uygulanması değişiklikleri uygular ve HCM 'yi yeniden başlatır. 
 

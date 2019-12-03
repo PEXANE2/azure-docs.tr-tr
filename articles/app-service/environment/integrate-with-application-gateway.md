@@ -1,24 +1,18 @@
 ---
-title: ILB App Service Ortamı Application Gateway ile tümleştirme-Azure
-description: ILB App Service Ortamı bir uygulamayı Application Gateway ile tümleştirme hakkında izlenecek yol
-services: app-service
-documentationcenter: na
+title: Application Gateway ile tümleştirme
+description: ILB App Service Ortamı bir uygulamayı bu uçtan uca izlenecek Application Gateway ile tümleştirme hakkında bilgi edinin.
 author: ccompy
-manager: stefsch
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069478"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687146"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Ortamı Azure Application Gateway tümleştirin #
 
@@ -46,7 +40,7 @@ Application Gateway ıLB App Service Ortamı ile tümleştirmek için şunlar ge
 * ILB App Service Ortamı.
 * ILB App Service Ortamı çalışan bir uygulama.
 * ILB App Service Ortamı uygulamanızdaki uygulamanızla birlikte kullanılacak internet yönlendirilebilir etki alanı adı.
-* ILB App Service Ortamı kullandığı ıLB adresi. Bu bilgiler, **Ayarlar** > **IP adresleri**altındaki App Service ortamı portalında bulunur:
+* ILB App Service Ortamı kullandığı ıLB adresi. Bu bilgiler App Service Ortamı portalında, **ayarlar** > **IP adresleri**:
 
     ![ILB App Service Ortamı tarafından kullanılan IP adreslerinin örnek listesi][9]
     
@@ -62,7 +56,7 @@ Ayrıca, ağ geçidini ıLB App Service Ortamı tarafından kullanılan alt ağa
 
 ## <a name="configuration-steps"></a>Yapılandırma adımları ##
 
-1. Azure Portal **Yeni** > ağApplicationGateway > ' e gidin.
+1. Azure portal **yeni** > **ağ** > **Application Gateway**gidin.
 
 2. **Temel bilgiler** alanında:
 
@@ -116,7 +110,7 @@ Ayrıca, ağ geçidini ıLB App Service Ortamı tarafından kullanılan alt ağa
 
    ![Uygulamada özel etki alanı adı ayarla][8]
 
-Web uygulamalarınız için özel etki alanı adları ayarlama makalesindeki Web uygulamanız için özel etki alanı [][custom-domain]adları ayarlama hakkında bilgi vardır. Ancak, ıLB App Service Ortamı bir uygulama için etki alanı adında herhangi bir doğrulama yoktur. Uygulama uç noktalarını yöneten DNS sahibi olduğunuzdan istediğiniz her şeyi dilediğiniz gibi yerleştirebilirsiniz. Bu durumda eklediğiniz özel etki alanı adının DNS 'niz içinde olması gerekmez, ancak yine de uygulamanız ile yapılandırılması gerekir. 
+Web uygulamalarınız için özel etki alanı adları [ayarlama makalesindeki Web uygulamanız için][custom-domain]özel etki alanı adları ayarlama hakkında bilgi vardır. Ancak, ıLB App Service Ortamı bir uygulama için etki alanı adında herhangi bir doğrulama yoktur. Uygulama uç noktalarını yöneten DNS sahibi olduğunuzdan istediğiniz her şeyi dilediğiniz gibi yerleştirebilirsiniz. Bu durumda eklediğiniz özel etki alanı adının DNS 'niz içinde olması gerekmez, ancak yine de uygulamanız ile yapılandırılması gerekir. 
 
 Kurulum tamamlandıktan ve DNS değişikliklerinizin yaymaya yönelik kısa bir süre için izin verdikten sonra, oluşturduğunuz özel etki alanı adını kullanarak uygulamanıza erişebilirsiniz. 
 

@@ -2,13 +2,13 @@
 title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d4cf4364b2e835db3d53fa64682a99710ceb2b29
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150305"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689109"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager şablonu en iyi uygulamaları
 
@@ -276,23 +276,6 @@ Ayarlanacak [bağımlılıklara](resource-group-define-dependencies.md) karar ve
    > VM 'Ler ve uzantılara parametre olarak geçirildiğinde gizli dizileri şifrelendiğinden emin olmak için ilgili uzantıların **Protectedsettings** özelliğini kullanın.
    > 
    > 
-
-## <a name="outputs"></a>Çıkışlar
-
-Genel IP adresleri oluşturmak için bir şablon kullanırsanız, IP adresi ayrıntılarını ve tam etki alanı adını (FQDN) döndüren bir [çıktılar bölümü](template-outputs.md) ekleyin. Çıkış değerleri, bir kolayca dağıtımdan sonra genel IP adresleri ve FQDN'ler hakkında ayrıntıları almak için kullanabilirsiniz.
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

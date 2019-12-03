@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 02095a307e5227f477f51e857ee423d22a8edf8f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880639"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689169"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Görsel Arama tek sayfalı Web uygulaması oluşturma
 
 Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir görüntüyü karşıya yükleyebilir veya bir URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntü içeren Web sayfaları ve daha fazlasını içerir. Bing Görsel Arama API'si tarafından döndürülen Öngörüler, Bing.com/images 'de gösterilenlere benzerdir.
 
-Bu öğreticide, Bing Resim Arama API'si için tek sayfalı bir Web uygulamasının nasıl genişletileceği açıklanmaktadır. Bu öğreticiyi görüntülemek veya burada kullanılan kaynak kodu almak için bkz [. Öğretici: Bing Resim Arama API'si](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)için tek sayfalı bir uygulama oluşturun.
+Bu öğreticide, Bing Resim Arama API'si için tek sayfalı bir Web uygulamasının nasıl genişletileceği açıklanmaktadır. Bu öğreticiyi görüntülemek veya burada kullanılan kaynak kodu almak için bkz. [öğretici: Bing resim arama API'si için tek sayfalı uygulama oluşturma](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
 
 Bu uygulama için tam kaynak kodu (Bing Görsel Arama API'si kullanmak üzere genişlettikten sonra), [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html)' da kullanılabilir.
 
@@ -31,7 +31,7 @@ Bu uygulama için tam kaynak kodu (Bing Görsel Arama API'si kullanmak üzere ge
 
 ## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Bing Görsel Arama API'si çağırın ve yanıtı işleyin
 
-Bing resim arama öğreticisini düzenleyin ve aşağıdaki kodu `<script>` öğenin sonuna (ve kapanış `</script>` etiketinden önce) ekleyin. Aşağıdaki kod, API 'den bir görsel arama yanıtı işler, sonuçlar boyunca yinelenir ve bunları görüntüler:
+Bing Resim Arama öğreticisini düzenleyin ve aşağıdaki kodu `<script>` öğesinin sonuna ekleyin (kapanış `</script>` etiketinden önce). Aşağıdaki kod, API 'den bir görsel arama yanıtı işler, sonuçlar boyunca yinelenir ve bunları görüntüler:
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,7 +63,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-Aşağıdaki kod, çağırmak `handleVisualSearchResponse()`için bir olay dinleyicisi kullanarak API 'ye bir arama isteği gönderir:
+Aşağıdaki kod, `handleVisualSearchResponse()`çağırmak için bir olay dinleyicisi kullanarak API 'ye bir arama isteği gönderir:
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -101,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>İçgörü elde etme belirteci
 
-`searchItemsRenderer` Nesnesine aşağıdaki kodu ekleyin. Bu kod, tıklandığında `bingVisualSearch` işlevini çağıran bir **benzerlerini bulma** bağlantısı ekler. İşlevi bir bağımsız değişken `imageInsightsToken` olarak alır.
+`searchItemsRenderer` nesnesine aşağıdaki kodu ekleyin. Bu kod, tıklandığında `bingVisualSearch` işlevini çağıran bir **benzerlerini bulma** bağlantısı ekler. İşlevi, `imageInsightsToken` bağımsız değişken olarak alır.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -123,4 +123,4 @@ Yeni JavaScript kodu ve HTML öğeleri yerleştirildikten sonra arama sonuçlar�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: İçin Bing Görsel Arama SDK ile görüntü kırpmaC#](tutorial-visual-search-crop-area-results.md)
+> [Öğretici: bir görüntüyü Bing Görsel Arama SDK 'Sı ile kırpınC#](tutorial-visual-search-crop-area-results.md)

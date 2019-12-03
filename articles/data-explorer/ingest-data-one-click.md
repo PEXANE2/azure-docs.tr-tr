@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644588"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688189"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Verileri Azure 'a almak için tek tıklamayla alma 'yı kullanın Veri Gezgini
 
-Bu makalede, Azure Veri Gezgini JSON veya CSV biçimlerinde yeni bir tablonun hızlı alımı için tek tıklamayla alma işlemlerinin nasıl kullanılacağı gösterilmektedir. Veriler alındıktan sonra, tabloyu düzenleyebilir ve sorguları Web Kullanıcı arabirimini kullanarak çalıştırabilirsiniz.
+Bu makalede, JSON veya CSV biçimlerinde depolama ya da yerel dosyadan mevcut bir tabloya veya Azure Veri Gezgini yeni bir tabloya hızlı bir şekilde giriş yapmak için tek tıklamayla alma 'nın nasıl kullanılacağı gösterilmektedir. Sezgisel Sihirbazı kullanın ve birkaç dakika içinde verileriniz alınır, tabloyu düzenleyebilir ve Web Kullanıcı arabirimini kullanarak sorguları çalıştırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Uygulamada](https://dataexplorer.azure.com/) oturum açın.

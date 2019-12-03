@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: f11d23207a21af5c73831d0edd5ffc9eaa59c119
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 027e6ec829e9de9956451e48e5f9e1cdd749f9f7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280667"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689328"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Metin Analizi API'si için örnek kullanıcı senaryoları
 
@@ -29,7 +29,7 @@ Yaklaşım Analizi kullanarak ham metin yanıtlarını işleyerek müşteri ve �
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Kayıtlı gelen müşteri çağrılarını çözümle
 
-Metin Okuma, Yaklaşım Analizi ve Anahtar İfade Ayıklama kullanarak müşteri hizmetleri çağrılarından Öngörüler ayıklayın. Müşterileri daha iyi anlamak, müşteri hizmeti eğilimlerini vurgulamak ve müşteri katılımı sağlamak için Power BI panoda veya portalda sonuçları görüntüleyin. API isteklerini raporlama için bir toplu iş olarak veya müdahale için gerçek zamanlı olarak gönderin. [Örnek koda](https://github.com/rlagh2/callcenteranalytics)bakın.
+Metin Okuma, Yaklaşım Analizi ve Anahtar İfade Ayıklama kullanarak müşteri hizmetleri çağrılarından Öngörüler ayıklayın. Müşterileri daha iyi anlamak, müşteri hizmeti eğilimlerini vurgulamak ve müşteri katılımı sağlamak için Power BI panoda veya portalda sonuçları görüntüleyin. API isteklerini raporlama için bir toplu iş olarak veya müdahale için gerçek zamanlı olarak gönderin. [GitHub 'daki](https://github.com/rlagh2/callcenteranalytics)örnek koda bakın.
 
 ![Yaklaşım analizini kullanarak müşteri hizmetleri çağrılarından Öngörüler elde etme işlemini otomatik hale getirmeyi açıklayan bir görüntü](media/use-cases/azure-inbound.svg)
 

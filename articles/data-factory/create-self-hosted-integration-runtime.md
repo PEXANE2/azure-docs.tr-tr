@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4662e5047e981c74d2422830bc5b152dae738337
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559307"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672305"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
 
@@ -105,6 +105,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 | Özellik                                                    | Açıklama                                                  | Gereklidir |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **Registernewnode** "`<AuthenticationKey>`"                     | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü belirtilen kimlik doğrulama anahtarıyla kaydedin. | Hayır       |
+| **Registernewnode** "`<AuthenticationKey>`" "`<NodeName>`"      | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü belirtilen kimlik doğrulama anahtarı ve düğüm adıyla kaydedin. | Hayır       |
 | **Enableremoteaccess** "`<port>`" ["`<thumbprint>`"]            | Yüksek kullanılabilirlik kümesi ayarlamak için geçerli düğümde uzaktan erişimi etkinleştirin. Ya da Azure Data Factory aracılığıyla doğrudan şirket içinde barındırılan IR 'ye karşı kimlik bilgileri ayarlamayı etkinleştirin. İkinci olarak, aynı ağdaki bir uzak makineden **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 'ini kullanarak bunu yapabilirsiniz. | Hayır       |
 | **Enableremoteaccessıncontainer** "`<port>`" ["`<thumbprint>`"] | Düğüm bir kapsayıcıda çalıştırıldığında geçerli düğüme uzaktan erişimi etkinleştirin. | Hayır       |
 | **DisableRemoteAccess**                                         | Geçerli düğüme uzaktan erişimi devre dışı bırakın. Çok düğümlü kurulum için uzaktan erişim gerekir. **Yeni-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 'i, uzaktan erişim devre dışı bırakıldığında bile hala çalışıyor. Bu davranış, cmdlet 'in şirket içinde barındırılan IR düğümüyle aynı makinede yürütüldüğü sürece doğrudur. | Hayır       |
@@ -119,7 +120,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 | **Turnonotomatik güncelleştirme**                                            | Şirket içinde barındırılan tümleştirme çalışma zamanı otomatik güncelleştirmesini açın.        | Hayır       |
 | **TurnOffAutoUpdate**                                           | Şirket içinde barındırılan tümleştirme çalışma zamanı otomatik güncelleştirmesini devre dışı bırakın.       | Hayır       |
 | **Switchserviceaccount** "`<domain\user>`" ["`<password>`"]           | DIAHostService ' i yeni bir hesap olarak çalışacak şekilde ayarlayın. Sistem hesapları ve sanal hesaplar için "" boş parolasını kullanın. | Hayır       |
-| **Loglevel** `<logLevel>`                                       | Windows için olay Izleme (ETW) günlük düzeyini **kapalı**, **hata**, **ayrıntılı**veya **Tümü**olarak ayarlayın. Bu özellik, yüklemenizde hata ayıklarken Microsoft Desteği mühendisler tarafından kullanılır. | Hayır       |
+
 
 ## <a name="command-flow-and-data-flow"></a>Komut akışı ve veri akışı
 

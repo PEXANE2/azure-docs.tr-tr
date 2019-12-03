@@ -1,19 +1,16 @@
 ---
-title: Azure dosyalarını kullanarak depolamayı yapılandırma
-description: App Service Windows kapsayıcısında Azure dosyalarını yapılandırma ve bu dosyalara bağlanma.
+title: Özel depolama ekleme (Windows kapsayıcı)
+description: Azure App Service özel bir Windows kapsayıcısında özel ağ paylaşımının nasıl iliştirileyeceğinizi öğrenin. Uygulamalar arasında dosya paylaşma, statik içeriği uzaktan yönetme ve yerel olarak erişme, vb.
 author: msangapu-msft
-manager: gwallace
-ms.service: app-service
-ms.workload: web
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: 2c12bf45c033fea185d976f1e9d644183407b5ac
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297220"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671004"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>App Service bir Windows kapsayıcısında Azure dosyalarını yapılandırma
 

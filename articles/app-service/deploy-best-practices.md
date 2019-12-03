@@ -1,26 +1,18 @@
 ---
-title: Dağıtım en iyi uygulamaları-Azure App Service | Microsoft Docs
-description: Azure App Service dağıtmaya yönelik temel bileşenler hakkında bilgi edinin.
+title: Dağıtım en iyi uygulamaları
+description: Azure App Service dağıtmaya yönelik anahtar mekanizmaları hakkında bilgi edinin. Dile özgü önerileri ve diğer uyarıları bulun.
 keywords: Azure App Service, Web uygulaması, dağıtma, dağıtım, işlem hatları, derleme
-services: app-service
-documentationcenter: ''
 author: jasonfreeberg
-manager: ''
-editor: ''
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.custom: ''
-ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199481"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670080"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
 

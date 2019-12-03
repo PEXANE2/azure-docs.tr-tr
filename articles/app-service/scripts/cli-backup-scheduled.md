@@ -1,25 +1,20 @@
 ---
-title: Azure CLı betik örneği-bir uygulama için zamanlanmış yedekleme oluşturma | Microsoft Docs
-description: Azure CLı betik örneği-bir uygulama için zamanlanmış yedekleme oluşturma
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLı: zamanlanmış yedekleme oluşturma'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulama için zamanlanmış yedeklemenin nasıl oluşturulacağını gösterir.
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c16a5c3cb51ab8ca571eb99acbe6a3034cb8ee21
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e301b5503cee939846bdcfd1d0c4e755f3debe21
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088118"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74686767"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLı kullanarak bir App Service uygulaması için zamanlanmış yedekleme oluşturma
 
@@ -29,7 +24,7 @@ Bu örnek betik, App Service içinde ilgili kaynakları içeren bir uygulama olu
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Örnek betik
 

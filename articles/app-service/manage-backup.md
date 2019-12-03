@@ -1,24 +1,16 @@
 ---
-title: Uygulama yedekleme-Azure App Service
-description: Azure App Service ' de uygulamalarınızın yedeklerini oluşturmayı öğrenin.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Uygulama yedekleme
+description: Azure App Service ' de uygulamalarınızın yedeklerini oluşturmayı öğrenin. El ile veya zamanlanmış yedeklemeler çalıştırın. Ekli veritabanını ekleyerek yedeklemeleri özelleştirin.
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886060"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671651"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure App Service](overview.md) yedekleme ve geri yükleme özelliği, uygulama yedeklemelerini el ile veya bir zamanlamaya göre kolayca oluşturmanızı sağlar. Yedeklemeleri sınırsız bir zaman miktarına kadar tutulacak şekilde yapılandırabilirsiniz. Mevcut uygulamanın üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir anlık görüntüye geri yükleyebilirsiniz.
@@ -36,7 +28,7 @@ App Service, uygulamanızı kullanacak şekilde yapılandırdığınız bir Azur
 
 Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir: 
 
-- [SQL Veritabanı](https://azure.microsoft.com/services/sql-database/)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [MySQL için Azure Veritabanı](https://azure.microsoft.com/services/mysql)
 - [PostgreSQL için Azure Veritabanı](https://azure.microsoft.com/services/postgresql)
 - [uygulama içi MySQL](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)

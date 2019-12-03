@@ -1,26 +1,19 @@
 ---
-title: Linux üzerinde App Service için SSH desteği-Azure | Microsoft Docs
-description: Linux üzerinde Azure App Service SSH kullanma hakkında bilgi edinin.
+title: Linux kapsayıcıları için SSH erişimi
+description: Azure App Service bir Linux kapsayıcısına SSH oturumu açabilirsiniz. Özel Linux kapsayıcıları, özel görüntinizdeki bazı değişikliklerle desteklenir.
 keywords: Azure App Service, Web uygulaması, Linux, OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fef8a17de4539a1427c269cdc512063d07df195c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066875"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687587"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service için SSH desteği
 
@@ -50,14 +43,14 @@ TCP tünelini kullanarak, geliştirme makineniz ile kimliği doğrulanmış bir 
 
 Başlamak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yi yüklemeniz gerekir. Azure CLı yüklemeden nasıl çalıştığını görmek için [Azure Cloud Shell](../../cloud-shell/overview.md)açın. 
 
-[Az WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) komutunu kullanarak uygulamanıza uzak bir bağlantı açın. Uygulamanız için  _\<abonelik kimliği >_ ,  _\<grup adı >_ ve \_ \<app-name > _ belirtin.
+[Az WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) komutunu kullanarak uygulamanıza uzak bir bağlantı açın. Uygulamanız için _\<abonelik kimliği >_ , _\<grup adı >_ ve \_\<app-name > _ belirtin.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&`komutun sonunda Cloud Shell kullanıyorsanız kolaylık sağlamak yeterlidir. Bir sonraki komutu aynı kabukta çalıştırabilmeniz için işlemi arka planda çalıştırır.
+> komutun sonundaki `&`, Cloud Shell kullanıyorsanız yalnızca kolaylık sağlaması içindir. Bir sonraki komutu aynı kabukta çalıştırabilmeniz için işlemi arka planda çalıştırır.
 
 Komut çıktısı size bir SSH oturumu açmak için gereken bilgileri sağlar.
 
@@ -73,7 +66,7 @@ Yerel bağlantı noktasını kullanarak, istediğiniz istemcisiyle kapsayıcın�
 ssh root@127.0.0.1 -p <port>
 ```
 
-İstendiğinde, bağlanmaya devam etmek `yes` için yazın. Bundan sonra parola istenir. Daha `Docker!`önce gösterilen ' i kullanın.
+İstendiğinde, bağlanmaya devam etmek için `yes` yazın. Bundan sonra parola istenir. Daha önce gösterilen `Docker!`kullanın.
 
 ```
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -96,7 +89,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 Artık bağlayıcınıza bağlısınız.  
 
-[En üstteki](https://ss64.com/bash/top.html) komutu çalıştırmayı deneyin. Uygulamanızın işlemini işlem listesinde görebilmeniz gerekir. Aşağıdaki örnek çıktıda, ile olan `PID 263`.
+[En üstteki](https://ss64.com/bash/top.html) komutu çalıştırmayı deneyin. Uygulamanızın işlemini işlem listesinde görebilmeniz gerekir. Aşağıdaki örnek çıktıda, `PID 263`.
 
 ```
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached

@@ -1,31 +1,22 @@
 ---
-title: Azure CLI betik örneği - özel bir SSL sertifikasını bir uygulamasına bağlama | Microsoft Docs
-description: Azure CLI betik örneği - bir uygulamanın özel bir SSL sertifikası bağlama
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'CLı: bir uygulamaya SSL sertifikası yükleme ve bağlama'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnekte, özel bir SSL sertifikasının bir uygulamaya nasıl bağlanacağı gösterilmektedir.
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 89483c6396ea344a035ec22bf79e2f90dada4c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ef07cb55af4b9fe9f54d58bbd496789928c1cec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136907"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74686679"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>CLI kullanarak bir App Service uygulamasına özel bir SSL sertifikası bağlama
+# <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>CLı kullanarak özel bir SSL sertifikasını App Service uygulamasına bağlama
 
-Bu örnek betik, bir uygulamayı App Service'te ilgili kaynaklarıyla birlikte oluşturur. ardından özel etki alanı adının SSL sertifikasını bağlar. Bu örnekte şunlar gereklidir:
+Bu örnek betik, ilgili kaynaklarıyla birlikte App Service bir uygulama oluşturur, ardından özel bir etki alanı adının SSL sertifikasını buna bağlar. Bu örnekte şunlar gereklidir:
 
 * Etki alanı kayıt şirketinizin DNS yapılandırma sayfasına erişim.
 * Geçerli bir .PFX dosyası ve karşıya yükleyip bağlamak istediğiniz SSL sertifikası için parolası.
@@ -34,7 +25,7 @@ Bu örnek betik, bir uygulamayı App Service'te ilgili kaynaklarıyla birlikte o
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -50,10 +41,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir App Service uygulaması oluşturur. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Özel bir etki alanı, bir App Service uygulaması ile eşler. |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | SSL sertifikasını bir App Service uygulamasına yükler. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Karşıya yüklenmiş SSL sertifikasını bir App Service uygulamasına bağlar. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Özel bir etki alanını App Service uygulamasına eşler. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Bir App Service uygulamasına SSL sertifikası yükler. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Karşıya yüklenen bir SSL sertifikasını App Service uygulamasına bağlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

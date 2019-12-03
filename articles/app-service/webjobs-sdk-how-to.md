@@ -1,24 +1,17 @@
 ---
-title: Web Işleri SDK 'sını kullanma-Azure
-description: Web Işleri SDK 'Sı için kod yazma hakkında daha fazla bilgi edinin. Azure hizmetleri ve üçüncü taraf hizmetlerindeki verilere erişen olay odaklı arka plan işleme işleri oluşturun.
-services: app-service\web, storage
-documentationcenter: .net
+title: WebJobs SDK 'sını kullanma
+description: Web Işleri SDK 'Sı için kod yazma hakkında daha fazla bilgi edinin. Azure ve üçüncü taraf hizmetlerindeki verilere erişen olay odaklı arka plan işleme işleri oluşturun.
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815735"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684011"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay odaklı arka plan işleme için Azure Web Işleri SDK 'sını kullanma
 
@@ -284,9 +277,9 @@ static void Main()
 
 Bu tetikleyici ve bağlama türleri sürüm 2 ' ye dahildir. `Microsoft.Azure.WebJobs` paketinin *x* 'i:
 
-* Blob depolama
+* Blob depolaması
 * Kuyruk depolama
-* Table Storage
+* Tablo depolaması
 
 Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren NuGet paketini yükleyip `JobHostConfiguration` nesnesinde bir `Use<binding>` yöntemi çağırın. Örneğin, bir Zamanlayıcı tetikleyicisi kullanmak istiyorsanız, aşağıda gösterildiği gibi `Microsoft.Azure.WebJobs.Extensions` yükleyip `Main` yönteminde `UseTimers` çağırın:
 
@@ -302,7 +295,7 @@ static void Main()
 
 Dosya bağlamayı kullanmak için `Microsoft.Azure.WebJobs.Extensions` yükleyip `UseFiles`çağırın.
 
-### <a name="executioncontext"></a>executionContext
+### <a name="executioncontext"></a>ExecutionContext
 
 Web Işleri bir [`ExecutionContext`]bağlamanıza olanak tanır. Bu bağlama ile, [`ExecutionContext`] işlev İmzadaki bir parametre olarak erişebilirsiniz. Örneğin, aşağıdaki kod, belirli bir işlev çağrısı tarafından üretilen tüm günlükleri ilişkilendirmek için kullanabileceğiniz, çağırma KIMLIĞINE erişmek için bağlam nesnesini kullanır.  
 
@@ -834,7 +827,7 @@ ASP.NET için geliştirilen günlük çerçevesini öneririz. [Başlarken](webjo
 
 Bir `ILogger` örneği tarafından oluşturulan her günlüğün ilişkili bir `Category` ve `Level`vardır. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) bir numaralandırmadır ve tamsayı kodu göreli önemi gösterir:
 
-|LogLevel    |Kod|
+|LogLevel    |Kodlayın|
 |------------|---|
 |İzleme       | 0 |
 |Hata ayıklama       | 1 |
@@ -842,7 +835,7 @@ Bir `ILogger` örneği tarafından oluşturulan her günlüğün ilişkili bir `
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|None        | 6 |
+|Hiçbiri        | 6 |
 
 Her kategoriyi bağımsız olarak belirli bir [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)filtreleyebilirsiniz. Örneğin, blob tetikleyicisi işleme için tüm günlükleri görmek isteyebilirsiniz, ancak diğer her şey için yalnızca `Error` ve üzeri.
 

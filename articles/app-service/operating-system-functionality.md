@@ -1,25 +1,16 @@
 ---
-title: App Service işletim sistemi işlevselliği-Azure
-description: Azure App Service Web Apps, mobil uygulama arka uçları ve API Apps için kullanılabilen işletim sistemi işlevleri hakkında bilgi edinin
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: İşletim sistemi işlevi
+description: Windows üzerinde Azure App Service işletim sistemi işlevselliği hakkında bilgi edinin. Uygulamanızın ne tür dosya, ağ ve kayıt defteri erişimi olduğunu öğrenin.
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066777"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671618"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service işletim sistemi işlevselliği
 Bu makalede, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)üzerinde çalışan tüm Windows uygulamaları için kullanılabilen ortak temel işletim sistemi işlevleri açıklanmaktadır. Bu işlevsellik dosya, ağ ve kayıt defteri erişimini ve tanılama günlüklerini ve olaylarını içerir. 
@@ -31,7 +22,7 @@ Bu makalede, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service plan katmanları
-App Service, müşteri uygulamalarını çok kiracılı bir barındırma ortamında çalıştırır. **Ücretsiz** ve **paylaşılan** katmanlarda dağıtılan uygulamalar, paylaşılan sanal makinelerde çalışan Işlemlerde çalışır, ancak **Standart** ve **Premium** katmanlarda dağıtılan uygulamalar, özellikle ilişkilendirilen uygulamalar için ayrılmış sanal makinelerde çalışır. tek bir müşteriyle.
+App Service, müşteri uygulamalarını çok kiracılı bir barındırma ortamında çalıştırır. **Ücretsiz** ve **paylaşılan** katmanlarda dağıtılan uygulamalar, paylaşılan sanal makinelerde çalışan Işlemlerde çalışır, ancak **Standart** ve **Premium** katmanlarda dağıtılan uygulamalar, özel olarak tek bir müşteriyle ilişkili uygulamalar için ayrılmış sanal makinelerde çalışır.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -60,11 +51,11 @@ App Service, Azure PaaS (hizmet olarak platform) altyapısının üstünde çal�
 - Yalnızca App Service (ve müşterilerle erişilemeyen) tarafından kullanılan Azure paketi cspkg dosyalarını içeren bir uygulama sürücüsü
 - "Kullanıcı" sürücüsü (C:\ sürücü), boyutu VM 'nin boyutuna bağlı olarak değişir. 
 
-Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örneğin: 
+Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örnek: 
 
 - Uygulama, diskte yeterli alan olmadığını belirten bir hata oluşturabilir.
 - Kudu konsoluna gözatarken disk hataları görebilirsiniz.
-- Azure DevOps veya Visual Studio 'dan dağıtım ile `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`başarısız olabilir.
+- Azure DevOps veya Visual Studio 'dan dağıtım `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`ile başarısız olabilir.
 - Uygulamanız performansı düşürebilir.
 
 <a id="NetworkDrives"></a>
@@ -124,7 +115,7 @@ Uygulamalar için kullanılamayan tanılama günlüğü ve izleme alanlarının 
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Kayıt defteri erişimi
-Uygulamalar üzerinde çalıştıkları sanal makinenin kayıt defterine çok (hiç olmasa da) salt okuma erişimi vardır. Bu uygulamada, bu, yerel kullanıcılar grubuna salt okuma erişimine izin veren kayıt defteri anahtarlarının uygulamalar tarafından erişilebilmesini sağlar. Kayıt defterinin, şu anda okuma veya yazma erişimi için desteklenmeyen bir alanı HKEY\_geçerli\_Kullanıcı kovanına ait.
+Uygulamalar üzerinde çalıştıkları sanal makinenin kayıt defterine çok (hiç olmasa da) salt okuma erişimi vardır. Bu uygulamada, bu, yerel kullanıcılar grubuna salt okuma erişimine izin veren kayıt defteri anahtarlarının uygulamalar tarafından erişilebilmesini sağlar. Kayıt defterinin, okuma veya yazma erişimi için şu anda desteklenmeyen bir alanı, HKEY\_GEÇERLI\_Kullanıcı kovanına ait.
 
 Kullanıcı başına kayıt defteri anahtarlarına erişim de dahil olmak üzere kayıt defterine yazma erişimi engellenir. Uygulama açısından, uygulamaların farklı sanal makinelere geçirilmesi (ve yapması) için, uygulamanın perspektifinden, kayıt defterine yazma erişimi hiçbir şekilde Azure ortamında hiçbir şekilde güvenilmemelidir. Bir uygulama tarafından bağımlılaşabilecek tek kalıcı yazılabilir depolama, App Service UNC paylaşımlarında depolanan uygulama başına içerik dizini yapısıdır. 
 

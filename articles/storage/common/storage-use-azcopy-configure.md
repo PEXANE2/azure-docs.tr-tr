@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7097faa64319a46b1efc91233e30ea992d064246
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595137"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687648"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -65,12 +65,12 @@ Bu komuta ilişkin ayrıntılı yardım kılavuzunu görüntülemek için `azcop
 Verimlilik veri hızına bir tavan koymak için `cap-mbps` bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut, saniye başına `10` megabit (MB) olarak büyük/küçük harf işleme sağlar.
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy --cap-mbps 10
 ```
 
-Küçük dosyalar aktarılırken üretilen iş azalabilir. @No__t_0 ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
+Küçük dosyalar aktarılırken üretilen iş azalabilir. `AZCOPY_CONCURRENCY_VALUE` ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
 
-Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri `32` olarak ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000` ' dır, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
+Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri `32`olarak ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000`, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
@@ -80,7 +80,7 @@ Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri `32` olarak aya
 
 Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın. Değer boşsa, herhangi bir AzCopy günlük dosyasının başlangıcına bakarak hangi değerin kullanıldığını okuyabilirsiniz. Seçili değer ve seçildiği neden burada raporlanır.
 
-Bu değişkeni ayarlamadan önce, bir kıyaslama testi çalıştırmanızı öneririz. Kıyaslama test süreci, önerilen eşzamanlılık değerini rapor eder. Alternatif olarak, ağ koşullarınız ve yüklerinizin farklılık göstermesi durumunda, bu değişkeni belirli bir sayı yerine `AUTO` sözcüğüne ayarlayın. Bu, AzCopy 'in kıyaslama testlerinde kullandığı otomatik ayarlama işlemini her zaman çalıştırmasına neden olur.
+Bu değişkeni ayarlamadan önce, bir kıyaslama testi çalıştırmanızı öneririz. Kıyaslama test süreci, önerilen eşzamanlılık değerini rapor eder. Alternatif olarak, ağ koşullarınız ve yüklerinizin farklılık göstermesi durumunda, bu değişkeni belirli bir sayı yerine `AUTO` sözcük olarak ayarlayın. Bu, AzCopy 'in kıyaslama testlerinde kullandığı otomatik ayarlama işlemini her zaman çalıştırmasına neden olur.
 
 ### <a name="optimize-memory-use"></a>Bellek kullanımını iyileştirme
 
@@ -97,7 +97,7 @@ Bu değeri gigabayt (GB) cinsinden ifade edin.
 
 AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları araştırmak ve sorunlarını gidermek için günlükleri kullanabilirsiniz. 
 
-Günlüklerde hata durumu (`UPLOADFAILED`, `COPYFAILED` ve `DOWNLOADFAILED`), tam yol ve hatanın nedeni yer alacak.
+Günlükler başarısızlık durumunu (`UPLOADFAILED`, `COPYFAILED`ve `DOWNLOADFAILED`), tam yolu ve hatanın nedenini içerir.
 
 Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE$\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
 
@@ -106,7 +106,7 @@ Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows
 
 ### <a name="review-the-logs-for-errors"></a>Günlükleri hatalara karşı gözden geçirin
 
-Aşağıdaki komut, `04dc9ca9-158f-7945-5933-564021086c79` günlüğünden `UPLOADFAILED` durumundaki tüm hataları alacak:
+Aşağıdaki komut, `04dc9ca9-158f-7945-5933-564021086c79` günlüğünden `UPLOADFAILED` durum ile ilgili tüm hataları alacak:
 
 **Windows (PowerShell)**
 
@@ -179,14 +179,14 @@ Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın. Değ
 
 ## <a name="change-the-default-log-level"></a>Varsayılan günlük düzeyini değiştirme
 
-Varsayılan olarak, AzCopy günlük düzeyi `INFO` olarak ayarlanır. Disk alanını kaydetmek için günlük ayrıntı düzeyini azaltmak isterseniz, ``--log-level`` seçeneğini kullanarak bu ayarın üzerine yazın. 
+Varsayılan olarak, AzCopy günlük düzeyi `INFO`olarak ayarlanır. Disk alanını kaydetmek için günlük ayrıntı düzeyini azaltmak isterseniz, ``--log-level`` seçeneğini kullanarak bu ayarın üzerine yazın. 
 
-Kullanılabilir günlük düzeyleri şunlardır: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` ve `FATAL`.
+Kullanılabilir günlük düzeyleri şunlardır: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`ve `FATAL`.
 
 ## <a name="remove-plan-and-log-files"></a>Planı ve günlük dosyalarını kaldır
 
 Disk alanını kazanmak için yerel makinenizden tüm planı ve günlük dosyalarını kaldırmak istiyorsanız, `azcopy jobs clean` komutunu kullanın.
 
-Yalnızca bir işle ilişkili planı ve günlük dosyalarını kaldırmak için `azcopy jobs rm <job-id>` kullanın. Bu örnekteki `<job-id>` yer tutucusunu işin iş kimliğiyle değiştirin.
+Yalnızca bir işle ilişkili planı ve günlük dosyalarını kaldırmak için `azcopy jobs rm <job-id>`kullanın. Bu örnekteki `<job-id>` yer tutucusunu işin iş kimliğiyle değiştirin.
 
 

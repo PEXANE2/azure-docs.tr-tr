@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664174"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684141"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
@@ -211,6 +211,29 @@ Gerekirse **çekirdek**
 ### <a name="example-3---enable-serial-console"></a>Örnek 3-seri konsolu etkinleştir
 Azure seri konsoluna erişim mümkün değilse, Linux VM 'niz için GRUB yapılandırma parametrelerini doğrulayın ve bunları düzeltin. Ayrıntılı bilgiler [Bu belgede](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) bulunabilir
 
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Örnek 4-sorunlu LVM takas birimi ile çekirdek yükleme
+
+Bir VM tam olarak önyüklenemeyebilir ve **Drakes** istemine düşmez.
+Hatanın daha fazla ayrıntıları Azure seri konsolundan bulunabilir veya Azure portal-> önyükleme tanılaması-> seri günlüğüne gidebilir
+
+
+Buna benzer bir hata var olabilir:
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+Grub. cfg, bu örnekte **RD. LVM. lv = VG/SwapVol** ADLı bir LV yüklemek için YAPıLANDıRıLıR ve VM bunu bulamıyor. Bu satır, çekirdeğin, LV değiştirme hattına başvurmak için nasıl yüklendiğini gösterir
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ /Etc/default/grub yapılandırmasından sorunlu LV 'yi kaldırın ve GRUB2. cfg dosyasını yeniden derleyin
+
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>Chroot 'tan çıkın ve işletim sistemi diskini değiştirin
 
@@ -247,4 +270,8 @@ VM çalışıyorsa disk değiştirme işlemini kapatır, disk değiştirme işle
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure seri konsolu]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) hakkında daha fazla bilgi edinin
+Şu konular hakkında daha fazla bilgi edinin:
+
+ [Azure seri konsol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[Tek Kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

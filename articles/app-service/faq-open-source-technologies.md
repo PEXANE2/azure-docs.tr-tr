@@ -1,26 +1,20 @@
 ---
-title: Açık kaynaklı teknolojiler SSS-Azure App Service | Microsoft Docs
-description: Azure App Service Web Apps özelliğindeki açık kaynaklı teknolojiler hakkında sık sorulan soruların yanıtlarını alın.
-services: app-service\web
-documentationcenter: ''
+title: Açık kaynaklı teknolojiler SSS
+description: Azure App Service 'de açık kaynaklı teknolojiler hakkında sık sorulan soruların yanıtlarını alın.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169679"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672437"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps yönelik açık kaynaklı teknolojiler SSS
 
@@ -33,10 +27,10 @@ Bu makalede, [Azure App Service Web Apps özelliğine](https://azure.microsoft.c
 PHP günlüğünü açmak için:
 
 1. [Kudu Web sitenizde](https://*yourwebsitename*.scm.azurewebsites.net)oturum açın.
-2. Üstteki menüden **Hata Ayıkla konsol** > **cmd**' yi seçin.
+2. Üstteki menüden **Hata Ayıkla konsolu** > **cmd**' yi seçin.
 3. **Site** klasörünü seçin.
 4. **Wwwroot** klasörünü seçin.
-5. **@No__t-1** simgesini ve ardından **yeni dosya**' yı seçin.
+5. **+** simgesini ve ardından **yeni dosya**' yı seçin.
 6. Dosya adını **. User. ini**olarak ayarlayın.
 7. **. User. ini dosyasının**yanındaki kurşun kalem simgesini seçin.
 8. Dosyada şu kodu ekleyin: `log_errors=on`
@@ -78,7 +72,7 @@ Node. js uygulamasının sürümünü değiştirmek için aşağıdaki seçenekl
   Azure Kaynak denetimi dağıtım işlemi aşağıdaki adımları içerir:
   1. İçeriği Azure Web uygulamasına taşıın.
   2. Web uygulaması kök klasöründe bir tane (Deploy. cmd,. Deployment Files) yoksa varsayılan bir dağıtım betiği oluşturur.
-  3. Package. JSON dosyası > altyapıda Node. js ' den bahsetmeniz halinde bir iisnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Package. JSON Dosya > altyapıda Node. js sürümünü bahsettiğinizde bir iisnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Iısnode. yml dosyası aşağıdaki kod satırına sahiptir:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -93,13 +87,13 @@ Günlükler etkinleştirildiğinde, hata yeniden oluşturun ve sonra bağlantı 
 [09-Oct-2015 00:03:13 UTC] PHP Warning: mysqli_real_connect(): (HY000/1226): User ‘abcdefghijk79' has exceeded the ‘max_user_connections’ resource (current value: 4) in D:\home\site\wwwroot\wp-includes\wp-db.php on line 1454
 ```
 
-Debug. log veya php_errors. log dosyalarınızda bu hatayı görürseniz, uygulamanız bağlantı sayısını aşıyorsunuz. ClearDB üzerinde barındırıyorsanız, [hizmet planınızda](https://www.cleardb.com/pricing.view)bulunan bağlantı sayısını doğrulayın.
+Debug. log veya php_errors. log dosyalarında bu hatayı görürseniz, uygulamanız bağlantı sayısını aşıyorsunuz. ClearDB üzerinde barındırıyorsanız, [hizmet planınızda](https://www.cleardb.com/pricing.view)bulunan bağlantı sayısını doğrulayın.
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>App Service barındırılan bir Node. js uygulamasında hata ayıklayın Nasıl yaparım??
 
 1.  [Kudu konsolunuza](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)gidin.
 2.  Uygulama günlükleri klasörünüze gidin (D:\home\LogFiles\Application).
-3.  Logging_errors. txt dosyasında içeriği denetleyin.
+3.  Logging_errors. txt dosyasında içerik ' i kontrol edin.
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Yerel Python modüllerini bir App Service Web uygulamasına veya API uygulamasına Nasıl yaparım?.
 
@@ -175,7 +169,7 @@ Başka bir çözüm de bir zamanlamaya göre çalışan bir WebJob yazmak ve bu 
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Jetty için günlük dosyalarını nerede bulabilirim?
 
-Market ve özel dağıtımlar için günlük dosyası D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs klasöründedir. Klasör konumunun, kullanmakta olduğunuz Jetty sürümüne bağlı olduğunu unutmayın. Örneğin, burada belirtilen yol Jetty 9.1.2 içindir. Jetty_*YYYY_MM_DD*. stderrout. log dosyasına bakın.
+Market ve özel dağıtımlar için günlük dosyası D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs klasöründedir. Klasör konumunun, kullanmakta olduğunuz Jetty sürümüne bağlı olduğunu unutmayın. Örneğin, burada belirtilen yol Jetty 9.1.2 içindir. Jetty_*YYYY_MM_DD*. stderrout. log ' a bakın.
 
 Portal uygulama ayarı dağıtımları için günlük dosyası D:\home\logfilesyolunda bulunur. Jetty_*YYYY_MM_DD*. stderrout. log dosyasına bakın
 

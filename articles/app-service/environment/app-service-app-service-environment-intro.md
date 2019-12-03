@@ -1,25 +1,18 @@
 ---
-title: App Service Ortamı v1 'ye giriş-Azure
-description: Tüm uygulamalarınızı çalıştırmak için güvenli, VNet 'e katılmış ve ayrılmış ölçek birimleri sağlayan App Service Ortamı v1 özelliği hakkında bilgi edinin.
-services: app-service
-documentationcenter: ''
+title: Ao v1 'ye giriş
+description: App Service Ortamı v1 özellikleri hakkında bilgi edinin. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070148"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687372"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Ortamı v1 'ye giriş
 
@@ -67,7 +60,7 @@ App Service Ortamı desteklenen kullanılabilir işlem kaynağı boyutlarına il
 
 ## <a name="virtual-network-support"></a>Sanal ağ desteği
 
-App Service Ortamı bir Azure Resource Manager Sanal ağda **veya** klasik dağıtım modeli sanal ağında ([sanal ağlarda daha fazla bilgi][MoreInfoOnVirtualNetworks]) oluşturulabilir.  Bir sanal ağda App Service Ortamı her zaman ve bir sanal ağın alt ağı içinde daha kesin bir şekilde bulunduğundan, hem gelen hem de giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerinden yararlanabilirsiniz.  
+App Service Ortamı **bir Azure Resource Manager** sanal ağda **veya** klasik dağıtım modeli sanal ağında ([sanal ağlarda daha fazla bilgi][MoreInfoOnVirtualNetworks]) oluşturulabilir.  Bir sanal ağda App Service Ortamı her zaman ve bir sanal ağın alt ağı içinde daha kesin bir şekilde bulunduğundan, hem gelen hem de giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerinden yararlanabilirsiniz.  
 
 Bir App Service Ortamı, bir genel IP adresi veya yalnızca bir Azure Iç Load Balancer (ıLB) adresiyle birlikte sunulan bir Internet ile karşılıklı olabilir.
 
@@ -77,7 +70,7 @@ Uygulamalar, iç veritabanları ve web hizmetleri gibi şirket kaynaklarına da 
 
 App Service ortamlarının sanal ağlarla ve şirket içi ağlarda nasıl çalıştığı hakkında daha fazla bilgi için, [ağ mimarisi][NetworkArchitectureOverview]üzerinde aşağıdaki makalelere bakın, [gelen trafiği kontrol][ControllingInboundTraffic]edin ve arka [uçlara güvenli][SecurelyConnectingToBackends]bir şekilde bağlanma. 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 App Service ortamları ile çalışmaya başlamak için bkz. [nasıl App Service ortamı oluşturma][HowToCreateAnAppServiceEnvironment]
 

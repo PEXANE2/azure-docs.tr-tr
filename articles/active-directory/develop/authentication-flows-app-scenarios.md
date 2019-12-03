@@ -17,12 +17,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c859c7f2d1b3d7c4cd2e64b2c9a42eb878241856
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 24c891c3de9126de6b833dea30c78c14b709384d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664157"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687745"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -267,8 +267,8 @@ Belirteçleri alma ile ilgili senaryolar, [Microsoft Identity platform protokoll
  </tr>
 
   <tr>
-   <td><a href=scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
-   <td><a href=scenario-web-api-call-api-overview.md">Web API 'Lerini çağıran bir Web API 'SI</a></td>
+   <td><a href="scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
+   <td><a href="scenario-web-api-call-api-overview.md">Web API 'Lerini çağıran bir Web API 'SI</a></td>
    <td><a href="v2-oauth2-on-behalf-of-flow.md">Adına</a></td>
    <td>İş veya okul hesapları ve kişisel hesaplar</td>
  </tr>

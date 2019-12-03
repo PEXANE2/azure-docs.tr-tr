@@ -1,20 +1,16 @@
 ---
-title: Azure App Service için güvenlik denetimleri
-description: Azure App Service değerlendirmek için güvenlik denetimlerinin denetim listesi
-services: app-service
-documentationcenter: ''
+title: Güvenlik denetimleri
+description: Kuruluşunuz için Azure App Service değerlendirmek üzere güvenlik denetimlerinin denetim listesini bulun.
 author: msmbaldwin
-manager: rkarlin
-ms.service: app-service
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a1889def8d177c312618f12b3fa0480cc4b849b3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046859"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671444"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure App Service için güvenlik denetimleri
 
@@ -46,7 +42,7 @@ Bu makalede, Azure App Service yerleşik olarak bulunan güvenlik denetimleri Be
 | Kimlik Doğrulaması| Yes | Müşteriler, [Azure Active Directory (Azure AD)](../active-directory/index.yml) ile otomatik olarak tümleştirilen ve App Service varlıklara yönetim erişimi Için diğer OAuth uyumlu kimlik sağlayıcılarının App Service uygulamalar oluşturabilir; tüm erişim, Azure ad kimliği doğrulanmış sorumlu ve Azure Resource Manager RBAC rollerinin bir birleşimiyle denetlenir. | [Azure App Service’de kimlik doğrulaması ve yetkilendirme](overview-authentication-authorization.md)
 | Yetkilendirme| Yes | App Service varlıklara yönetim erişimi için tüm erişim, Azure AD kimlik doğrulamalı sorumlu ve Azure Resource Manager RBAC rollerinin bir birleşimiyle denetlenir.  | [Azure App Service’de kimlik doğrulaması ve yetkilendirme](overview-authentication-authorization.md)
 
-## <a name="data-protection"></a>Veri koruma
+## <a name="data-protection"></a>Veri koruması
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler
 |---|---|--|

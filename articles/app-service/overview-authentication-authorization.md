@@ -1,26 +1,17 @@
 ---
-title: Kimlik doğrulama ve yetkilendirme-Azure App Service | Microsoft Docs
-description: Azure App Service için kimlik doğrulama/yetkilendirme özelliğine kavramsal başvuru ve genel bakış
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Kimlik doğrulama ve yetkilendirme
+description: Azure App Service 'de yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve bu, uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808758"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672254"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure Uygulama Hizmeti’nde kimlik doğrulaması ve yetkilendirme
 
@@ -32,8 +23,10 @@ Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sunarak
 
 Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web belirteçleri (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) yönetimi, [izin verme](https://oauth.net/2/grant-types/)vb. gibi güvenlik konusunda ayrıntılı bilgiler gerektirir. App Service, müşterinize iş değeri sağlamaya yönelik daha fazla zaman ve enerji harcayabilmeniz için bu yardımcı programları sağlar.
 
-> [!NOTE]
-> Kimlik doğrulama ve yetkilendirme için App Service kullanmanız gerekli değildir. Birçok Web çerçevesi güvenlik özellikleriyle birlikte paketlenmiştir ve isterseniz bunları kullanabilirsiniz. App Service sağladığından daha fazla esneklik gerekiyorsa kendi yardımcı programlarını da yazabilirsiniz.  
+> [!IMPORTANT]
+> AuthN/AuthO için App Service kullanmanız gerekli değildir. Birçok Web çerçevesi güvenlik özellikleriyle birlikte paketlenmiştir ve isterseniz bunları kullanabilirsiniz. App Service sağladığından daha fazla esneklik gerekiyorsa kendi yardımcı programlarını da yazabilirsiniz.  
+>
+> Ancak, uzaktan kimlik doğrulaması için App Service olmayan seçeneklerden herhangi biriyle karşılaşırsanız, Chrome 80 ' in, [tanımlama bilgileri Için SameSite uygulamasında önemli değişiklikler](https://www.chromestatus.com/feature/5088147346030592) (2020 Mart 'ta Yayın tarihi) ve istemci tarayıcıları güncelleştirilirken uygulamanızın kimlik doğrulama mekanizması kesintiye uğrayacağını unutmayın. ASP.NET Core belge, uygulamanızda bu bilgilerin nasıl ele alınacağını öğrenmek için, [http: Browser SameSite değiştiğinde kimlik doğrulamasını etkiler](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). ASP.NET Core kullanıyor olmanız durumunda önemli tarayıcılarda bu son değişiklik için nasıl test ettiğinize ilişkin yararlı yönergeler içerir.
 >
 
 Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](../app-service-mobile/app-service-mobile-auth.md).

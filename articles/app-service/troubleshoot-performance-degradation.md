@@ -1,27 +1,18 @@
 ---
-title: Performans düşüşü sorunlarını giderme-Azure App Service | Microsoft Docs
-description: Bu makale, Azure App Service ' deki yavaş uygulama performansı sorunlarını gidermenize yardımcı olur.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Performans düşüşüne sorun giderme
+description: Uygulama davranışını izleme, veri toplama ve sorunu azaltma dahil Azure App Service yavaş uygulama performansı sorunlarını giderme hakkında bilgi edinin.
 tags: top-support-issue
 keywords: Web uygulaması performansı, yavaş uygulama, uygulama yavaş
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066537"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688309"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service 'de yavaş uygulama performansı sorunlarını giderme
 Bu makale, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)' deki yavaş uygulama performansı sorunlarını gidermenize yardımcı olur.
@@ -50,7 +41,7 @@ Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Uygulama davranışını gözlemleyin ve izleyin
+### <a name="1-observe-and-monitor-application-behavior"></a>1. uygulama davranışını gözlemleyin ve izleyin
 #### <a name="track-service-health"></a>Hizmet durumunu izleme
 Her bir hizmet kesintisi veya performans düşüşü olduğunda Microsoft Azure publicleştirir. [Azure Portal](https://portal.azure.com/)hizmetin sistem durumunu izleyebilirsiniz. Daha fazla bilgi için bkz. [hizmet durumunu izleme](../monitoring-and-diagnostics/insights-service-health.md).
 
@@ -95,7 +86,7 @@ Her App Service uygulaması, site uzantıları olarak dağıtılan güçlü bir 
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Veri toplama
+### <a name="2-collect-data"></a>2. veri topla
 App Service, hem Web sunucusundan hem de Web uygulamasından günlüğe bilgi günlüğü için tanılama işlevselliği sağlar. Bilgiler, Web sunucusu tanılama ve Uygulama Tanılama ile ayrılmıştır.
 
 #### <a name="enable-web-server-diagnostics"></a>Web sunucusu tanılamayı etkinleştir
@@ -123,7 +114,7 @@ Uzaktan profil oluşturma işlemi, işlemin CPU kullanımı yüksekse ve işlemi
 Daha fazla bilgi için bkz. [Azure App Service uzaktan profil oluşturma desteği](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>Tanılama izlemelerini el ile ayarlama
-Web uygulaması kaynak koduna erişiminiz varsa, Application Diagnostics bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, uygulama tanılama `System.Diagnostics.Trace` günlüğüne bilgi kaydetmek için sınıfını kullanabilir. Ancak, kodu değiştirmeniz ve uygulamanızı yeniden dağıtmanız gerekir. Uygulamanız bir sınama ortamında çalışıyorsa bu yöntem önerilir.
+Web uygulaması kaynak koduna erişiminiz varsa, Application Diagnostics bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgi kaydetmek için `System.Diagnostics.Trace` sınıfını kullanabilir. Ancak, kodu değiştirmeniz ve uygulamanızı yeniden dağıtmanız gerekir. Uygulamanız bir sınama ortamında çalışıyorsa bu yöntem önerilir.
 
 Uygulamanızı günlüğe kaydetmeye yönelik yapılandırma hakkında ayrıntılı yönergeler için, bkz. [Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme](troubleshoot-diagnostic-logs.md).
 
@@ -135,7 +126,7 @@ App Service tanılama 'ya erişmek için App Service uygulamanıza veya [Azure p
 #### <a name="use-the-kudu-debug-console"></a>Kudu hata ayıklama konsolunu kullanma
 App Service, hata ayıklama, keşfetme, yükleme dosyaları ve ortamınız hakkında bilgi almak için JSON uç noktaları için kullanabileceğiniz bir hata ayıklama konsoluyla birlikte gelir. Bu konsola *kudu konsolu* veya uygulamanız Için *SCM panosu* adı verilir.
 
-Bu panoya, **>. scm. azurewebsites. net/&lt;adlı uygulamanızın adını https://** bağlantısına giderek erişebilirsiniz.
+Bu panoya, **uygulamanızın adı >. scm. azurewebsites. net/&lt;** bağlantısına giderek erişebilirsiniz.
 
 Kudu 'nin sağladığı işlemlerden bazıları şunlardır:
 
@@ -150,7 +141,7 @@ Kudu 'de kullanılabilen özellikler hakkında daha fazla bilgi için, bkz. [bil
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Sorunu azaltma
+### <a name="3-mitigate-the-issue"></a>3. sorunu azaltma
 #### <a name="scale-the-app"></a>Uygulamayı ölçeklendirme
 Azure App Service, daha fazla performans ve verimlilik için uygulamanızı çalıştırdığınız ölçeği ayarlayabilirsiniz. Bir uygulamanın ölçeğini değiştirmek, iki ilgili eylemi içerir: App Service planınızı daha yüksek bir fiyatlandırma katmanına değiştirme ve belirli ayarları daha yüksek fiyatlandırma katmanına geçtikten sonra yapılandırma.
 

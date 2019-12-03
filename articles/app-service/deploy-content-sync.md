@@ -1,25 +1,17 @@
 ---
-title: Bir bulut klasöründen içerik eşitleme-Azure App Service
-description: Bir bulut klasöründen içerik eşitlemesi aracılığıyla Azure App Service uygulamanızı nasıl dağıtacağınızı öğrenin.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
+title: İçeriği bir bulut klasöründen Eşitle
+description: OneDrive veya Dropbox dahil olmak üzere bir bulut klasöründen içerik eşitlemesi aracılığıyla Azure App Service uygulamanızı nasıl dağıtacağınızı öğrenin.
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/03/2018
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 033a9adfd81dc52858ab58e3170e69af6f56c323
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c55894bff9501d3ffb9aa843a9eaa240a213180e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070623"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671744"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Bir bulut klasöründen içerik eşitleme Azure App Service
 Bu makalede, içeriğinizi Dropbox ve OneDrive 'dan [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) eşitlenecek. 
@@ -30,7 +22,7 @@ Bu makalede, içeriğinizi Dropbox ve OneDrive 'dan [Azure App Service](https://
 
 İçerik eşitlemesini etkinleştirmek için [Azure portal](https://portal.azure.com)App Service uygulama sayfanıza gidin.
 
-Sol taraftaki menüden **Deployment Center** > **OneDrive** veya **Dropbox** > **Yetkilendir**' e tıklayın. Yetkilendirme istemlerini izleyin. 
+Sol taraftaki menüde, **dağıtım merkezi** > **OneDrive** veya **Dropbox** > **Yetkilendir**' e tıklayın. Yetkilendirme istemlerini izleyin. 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
@@ -40,8 +32,8 @@ Yalnızca OneDrive veya Dropbox ile bir kez yetkilendirme yapmanız gerekir. Zat
 
 **Yapılandır** sayfasında, eşitlenmesini istediğiniz klasörü seçin. Bu klasör, OneDrive veya Dropbox 'ta aşağıdaki belirtilen içerik yolu altında oluşturulur. 
    
-* **OneDrive**:`Apps\Azure Web Apps`
-* **Dropbox**:`Apps\Azure`
+* **OneDrive**: `Apps\Azure Web Apps`
+* **Dropbox**: `Apps\Azure`
 
 İşiniz bittiğinde **devam**' a tıklayın.
 
@@ -62,7 +54,7 @@ Bulut klasörünüzdeki içerikleri App Service eşitlemek istediğinizde, **Da�
 
 İçerik eşitlemesini devre dışı bırakmak için [Azure portal](https://portal.azure.com)App Service uygulama sayfanıza gidin.
 
-Sol menüde **Dağıtım Merkezi** > **bağlantısı kes**' e tıklayın.
+Sol taraftaki menüden **dağıtım merkezi** > **bağlantısını kes**' e tıklayın.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

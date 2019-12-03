@@ -1,25 +1,19 @@
 ---
-title: Etki alanı ve SSL sertifikalarının sorunlarını giderme-Azure App Service | Microsoft Docs
-description: Azure App Service etki alanı ve SSL sertifikası sorunlarını giderme
-services: app-service\web
-documentationcenter: ''
+title: Etki alanı ve SSL sertifikalarının sorunlarını giderme
+description: Azure App Service ' de bir etki alanı veya SSL sertifikası yapılandırdığınızda karşılaşabileceğiniz yaygın sorunların çözümlerini bulun.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470138"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688336"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Service etki alanı ve SSL sertifikası sorunlarını giderme
 
@@ -94,7 +88,7 @@ Bu sorun, aşağıdakilerden herhangi biri nedeniyle oluşabilir:
 
     **Çözüm**: sertifika sahtekarlık olarak işaretlenmişse ve 24 saat sonra çözümlenmiyorsa, şu adımları izleyin:
 
-    1. [Azure portalında](https://portal.azure.com) oturum açın.
+    1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
     2. **App Service sertifikalar**' a gidin ve sertifikayı seçin.
     3. **Sertifika yapılandırması** ' nı seçin > **2. Adım:**  > **etki alanı doğrulamasını**doğrulayın. Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
 
@@ -196,7 +190,7 @@ App Service, sertifikanızı 48 saat içinde otomatik olarak eşitler. Bir serti
 
 Sertifikanın eşitlenmesini zorunlu hale getirebilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **App Service sertifikaları**' nı seçin ve ardından sertifikayı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **App Service sertifikaları**' nı seçin ve ardından sertifikayı seçin.
 2. Yeniden **anahtarlama ve eşitleme**' yi seçin ve ardından **Eşitle**' yi seçin. Eşitlemenin tamamlaması biraz zaman alır. 
 3. Eşitleme tamamlandığında, şu bildirimi görürsünüz: "tüm kaynaklar en son sertifika ile başarıyla güncelleştirildi."
 
@@ -235,17 +229,17 @@ Azure portal bir App Service etki alanı satın alamazsınız.
 
 Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
-- Azure aboneliğinde kredi kartı yok veya kredi kartı geçersiz.
+- Azure aboneliğinde kredi kartı yoktur veya kredi kartı geçersizdir.
 
     **Çözüm**: aboneliğinize geçerli bir kredi kartı ekleyin.
 
-- Abonelik sahibi olmadığınızdan, bir etki alanı satın alma izniniz yok.
+- Abonelik sahibi değilsiniz, dolayısıyla etki alanı satın alma izniniz yok.
 
     **Çözüm**: [sahibi rolünü hesabınıza atayın](../role-based-access-control/role-assignments-portal.md) . Ya da bir etki alanı satın alma izni almak için abonelik yöneticisine başvurun.
-- Aboneliğinizdeki etki alanı satın alma sınırına ulaştınız. Geçerli sınır 20 ' dir.
+- Aboneliğinizde etki alanı satın alma sınırına ulaştınız. Geçerli sınır 20 etki alanıdır.
 
     **Çözüm**: sınıra bir artış Istemek için [Azure desteğine](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
-- Azure abonelik türü App Service bir etki alanının satın alınmasını desteklemez.
+- Azure aboneliğinizin türü App Service etki alanı satın almayı desteklemiyor.
 
     **Çözüm**: Azure aboneliğinizi, Kullandıkça Öde aboneliği gibi başka bir abonelik türüne yükseltin.
 
@@ -266,7 +260,7 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
     **Çözüm**: CNAME veya bir kaydın doğru yapılandırıldığını doğrulayın. Özel bir etki alanını bir uygulamayla eşlemek için bir CNAME kaydı veya bir kayıt oluşturun. Kök etki alanı kullanmak istiyorsanız, ve TXT kayıtlarını kullanmanız gerekir:
 
-    |Kayıt türü|Host|Üzerine gelin|
+    |Kayıt türü|Ana bilgisayar|Üzerine gelin|
     |------|------|-----|
     |A|@|Bir uygulama için IP adresi|
     |TXT|@|`<app-name>.azurewebsites.net`|

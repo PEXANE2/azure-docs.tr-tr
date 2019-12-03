@@ -1,26 +1,17 @@
 ---
-title: PremiumV2 katmanını Yapılandırma-Azure App Service | Microsoft Docs
+title: PremiumV2 katmanını yapılandırma
 description: Yeni PremiumV2 fiyatlandırma katmanına ölçeklenerek Azure App Service Web, mobil ve API uygulamanız için daha iyi performans hakkında bilgi edinin.
 keywords: app service, azure app service, ölçek, ölçeklenebilir, app service planı, app service maliyeti
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa1e522e395f869f73c0b250623665a9b175384e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067226"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672221"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service için PremiumV2 katmanını yapılandırma
 
@@ -87,7 +78,7 @@ Temel App Service dağıtımı PremiumV2 ' i desteklemiyorsa bazı App Service p
 
 Uygulamanız **PremiumV2** ' nin kullanılamadığı bir App Service dağıtımında çalışıyorsa veya uygulamanız Şu anda **PremiumV2**' yi desteklemeyen bir bölgede çalışıyorsa, **PremiumV2**'in avantajlarından yararlanmak için uygulamanızı yeniden dağıtmanız gerekir.  İki seçeneğiniz vardır:
 
-- Yeni bir kaynak grubu oluşturun ve yeni bir uygulama oluşturun ve **Yeni** kaynak grubunda planı App Service, oluşturma işlemi sırasında istediğiniz Azure bölgenizi seçin.  Yeni App Service planının oluşturulduğu sırada **PremiumV2** planını seçmelisiniz.  Bu, kaynak grubu, App Service planı ve Azure bölgesinin birleşimini, **PremiumV2**destekleyen bir App Service dağıtımında oluşturulan App Service planının oluşmasına neden olur.  Ardından uygulama kodunuzu yeni oluşturulan uygulama ve App Service planına yeniden dağıtın. İsterseniz, maliyetleri kaydetmek için App Service planını daha sonra **PremiumV2** ' dan ölçeklendirebilirsiniz ve yine de **PremiumV2**kullanarak yeniden daha sonra tekrar tekrar ölçeklendirirsiniz.
+- **Yeni bir kaynak grubu** oluşturun **ve yeni bir uygulama oluşturun** ve **Yeni** kaynak grubunda planı App Service, oluşturma işlemi sırasında istediğiniz Azure bölgenizi seçin.  Yeni App Service planının oluşturulduğu sırada **PremiumV2** **planını seçmelisiniz.**  Bu, kaynak grubu, App Service planı ve Azure bölgesinin birleşimini, **PremiumV2**destekleyen bir App Service dağıtımında oluşturulan App Service planının oluşmasına neden olur.  Ardından uygulama kodunuzu yeni oluşturulan uygulama ve App Service planına yeniden dağıtın. İsterseniz, maliyetleri kaydetmek için App Service planını daha sonra **PremiumV2** ' dan ölçeklendirebilirsiniz ve yine de **PremiumV2**kullanarak yeniden daha sonra tekrar tekrar ölçeklendirirsiniz.
 - Uygulamanız zaten mevcut bir **Premium** katmanda çalıştırılıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla **PremiumV2**kullanan yeni bir App Service planına kopyalayabilirsiniz.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
@@ -100,7 +91,7 @@ Uygulamanız **PremiumV2** ' nin kullanılamadığı bir App Service dağıtım�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri `--sku` P1V2, _P2V2_ve _P3V2_' dir.
+Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. `--sku` seçenekleri P1V2, _P2V2_ve _P3V2_' dir.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -113,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Seçenekleri `-WorkerSize` _küçük_, _Orta_ve _büyük_.
+Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. `-WorkerSize` seçenekleri _küçük_, _Orta_ve _büyük_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/16/2019
-ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 12/02/2019
+ms.openlocfilehash: 11b581649e6d7a048899394d69e574e8f9a4d22c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677496"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689205"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -30,9 +30,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
+   | **Adı**      | Benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
    | **Konum** | Doğu ABD | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
+
+> [!NOTE]
+> Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) planlıyorsanız yararlı olabilir.
 
 Gerekli alanlara uygun değerleri girin ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -103,7 +106,7 @@ Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle
  az extension add -n application-insights
 ```
 
-@No__t_0 komutunu çalıştırmazsanız, şu durumu belirten bir hata iletisi görürsünüz: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+`az extension add` komutunu çalıştırmazsanız, şu durumu belirten bir hata iletisi görürsünüz: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Artık Application Insights kaynağınız oluşturmak için aşağıdakileri çalıştırabilirsiniz:
 

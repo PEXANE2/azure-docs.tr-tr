@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB Azure Cosmos DB değişiklik akışına erişme
 description: Bu makalede, Azure Cosmos DB Azure Cosmos DB ' de değişiklik akışını okuma ve erişme için kullanabileceğiniz farklı seçenekler açıklanmaktadır.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 11/25/2019
+ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754879"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688123"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışı okunuyor
 
@@ -31,7 +31,13 @@ Değişiklik akışı işlemci kitaplığı karmaşıklığı gizler ve yine de 
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Azure Cosmos DB SQL API SDK 'sını kullanma
 
-SDK ile, değişiklik akışında düşük düzey bir denetim edinirsiniz. Denetim noktasını yönetebilir, belirli bir mantıksal bölüm anahtarına erişebilir, vb. Birden çok okuyucularınız varsa, okuma yükünü farklı iş parçacıklarına veya farklı istemcilere dağıtmak için `ChangeFeedOptions` kullanabilirsiniz. 
+SDK ile, değişiklik akışında düşük düzey bir denetim edinirsiniz. Denetim noktasını yönetebilir, belirli bir mantıksal bölüm anahtarına erişebilir, vb. Birden çok okuyucularınız varsa, okuma yükünü farklı iş parçacıklarına veya farklı istemcilere dağıtmak için `ChangeFeedOptions` kullanabilirsiniz.
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra ve MongoDB API 'Lerinde akışı değiştirme
+
+Değişiklik akışı işlevselliği, MongoDB API 'sinde değişiklik akışı olarak ve Cassandra API ' de koşul ile sorgulama olarak ortaya çıkmış. MongoDB API 'SI için uygulama ayrıntıları hakkında daha fazla bilgi edinmek için bkz. [MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme](mongodb-change-streams.md).
+
+Native Apache Cassandra değişiklik verilerini yakalama (CDC), belirli tabloları arşivleme için bayrakla işaretleme ve CDC günlüğü için yapılandırılabilir bir diske ulaşıldığında bu tablolara yazmaları reddetme mekanizması sağlar. Cassandra için Azure Cosmos DB API 'sindeki akış değiştirme özelliği, değişiklikleri CQL aracılığıyla koşullu olarak sorgulama yeteneğini geliştirir. Uygulama ayrıntıları hakkında daha fazla bilgi edinmek için bkz. [Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

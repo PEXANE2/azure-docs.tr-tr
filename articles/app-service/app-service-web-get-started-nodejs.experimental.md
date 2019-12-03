@@ -1,25 +1,18 @@
 ---
-title: Node. js web uygulaması oluşturma-Azure App Service | Microsoft Docs
-description: Azure App Service Web Uygulamalarında ilk Node.js Hello World uygulamanızı birkaç dakika içinde dağıtın.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Hızlı başlangıç: node. js web uygulaması oluşturma'
+description: İlk Node. js Merhaba Dünya Azure App Service dakikalar içinde dağıtın. App Service dağıtmanın birçok yolu olan bir ZIP paketi kullanarak dağıtın.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7d81dae25b793144bfe044f8434a6df181dbcd1b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: a231f2b4-2625-4d
+ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067397"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671416"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma
 
@@ -107,13 +100,13 @@ Düğüm çalışma zamanını 10.14.1 olarak ayarlayın. Desteklenen tüm çal�
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
 ```
 
-Yeni oluşturduğunuz web uygulamasına göz atın. Değiştirin `<app_name>` benzersiz bir uygulama adına sahip.
+Yeni oluşturduğunuz web uygulamasına göz atın. `<app_name>` benzersiz bir uygulama adıyla değiştirin.
 
 ```
 http://<app_name>.azurewebsites.net
 ```
 
-Yeni web uygulamanız aşağıdaki gibi görünmelidir: ![Boş Web uygulaması sayfası](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+Yeni Web uygulamanızın şöyle görünmesi gerekir: boş Web uygulaması sayfası ![](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>ZIP dosyası dağıtma
 
@@ -152,7 +145,7 @@ Node.js örnek kodu bir Azure App Service web uygulamasında çalışıyor.
 
 ## <a name="update-and-redeploy-the-code"></a>Kodu güncelleştirme ve yeniden dağıtma
 
-Cloud Shell, Cloud Shell düzenleyiciyi açmak `code index.js` için yazın.
+Cloud Shell, Cloud Shell düzenleyicisini açmak için `code index.js` yazın.
 
 ![Kod dizini. js](media/app-service-web-get-started-nodejs-poc/code-indexjs.png)
 

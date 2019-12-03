@@ -1,25 +1,16 @@
 ---
-title: PHP Web uygulaması oluşturma-Azure App Service | Microsoft Docs
-description: Azure App Service Web Uygulamalarında ilk PHP Hello World uygulamanızı birkaç dakika içinde dağıtın.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Hızlı başlangıç: PHP Web uygulaması oluşturma'
+description: İlk PHP Merhaba Dünya Azure App Service dakikalar içinde dağıtın. App Service dağıtmak için birçok yol olan git kullanarak dağıtın.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 386229bc272a520ec8093c95bc861704ce9ea7eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fb6451ce5e1e00bffc9195410125eb61b34555e4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471391"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672090"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure’da PHP web uygulaması oluşturma
 
@@ -77,7 +68,7 @@ Terminal pencerenizde **Ctrl+C** tuşlarına basarak web sunucusundan çıkın.
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-Cloud Shell’de, `myAppServicePlan`[`az webapp create` komutuyla ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service planında bir web uygulaması oluşturun. 
+Cloud Shell’de, [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutuyla `myAppServicePlan` App Service planında bir web uygulaması oluşturun. 
 
 Aşağıdaki örnekte `<app_name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `PHP|7.0` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanları görmek için [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) komutunu çalıştırın. 
 
@@ -149,7 +140,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
-Web tarayıcınızı kullanarak dağıtılan uygulamaya göz atın.
+Web tarayıcınızı kullanarak, dağıtılan uygulamanın konumuna gidin.
 
 ```
 http://<app_name>.azurewebsites.net

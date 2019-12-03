@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681543"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671583"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -120,6 +120,14 @@ Kaynak dönüştürme her etkinlik Için kullanarak döngü yerine birden çok d
 ```DateFiles/*_201907*.txt```
 
 Joker karakter kullanımı ' nı kullanarak, işlem hattınız yalnızca bir veri akışı etkinliği içerir. Bu, içinde bir veri akışı yürütme etkinliği içeren bir ForEach kullanarak tüm eşleşen dosyalarda yineleme yapan blob deposuna karşı bir aramanın daha iyi bir şekilde gerçekleştirilir.
+
+### <a name="optimizing-for-cosmosdb"></a>CosmosDB için iyileştiriliyor
+
+CosmosDB havuzları üzerinde üretilen iş ve Batch özelliklerinin ayarlanması yalnızca bu veri akışının işlem hattı veri akışı etkinliğinden yürütülmesi sırasında etkili olur. Özgün koleksiyon ayarları, veri akışı yürütmeden sonra CosmosDB tarafından kabul edilir.
+
+* Toplu iş boyutu: verilerinizin kaba satır boyutunu hesaplayın ve rowSize * toplu iş boyutunun 2.000.000 ' den küçük olduğundan emin olun. Varsa, daha iyi aktarım hızı sağlamak için toplu iş boyutunu artırın
+* Througput: belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir üretilen iş ayarı ayarlayın. Lütfen yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
+*   Yazma aktarım hızı bütçesi: dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark partitiongs içeren bir veri akışınız varsa, bir bütçe verimlilik ayarı bu bölümlerde daha fazla dengelemek için izin verir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,26 +1,19 @@
 ---
-title: 'Öğretici: Linux üzerinde PostgreSQL ile Python (Docgo) Web uygulaması-Azure App Service'
-description: Azure 'da bir PostgreSQL veritabanıyla bağlantı ile veri odaklı bir Python (Docgo) Web uygulamasını çalıştırmayı öğrenin.
-services: app-service\web
-documentationcenter: python
-author: cephalin
-manager: gwallace
-ms.service: app-service-web
-ms.workload: web
+title: 'Öğretici: postgre ile Linux Python uygulaması'
+description: Azure 'da bir PostgreSQL veritabanına bağlantı ile Azure App Service çalışan bir Linux Python uygulamasını nasıl alabileceğinizi öğrenin. Bu öğreticide docgo kullanılır.
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d23097c9674d2b7e60e779304a2d08c734bd614d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439460"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688873"
 ---
 # <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması derleme
 
@@ -175,7 +168,7 @@ Aşağıdaki örnek komutta, *\<PostgreSQL-name >* öğesini benzersiz bir sunuc
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
 ```
 
-PostgreSQL için Azure Veritabanı sunucusu oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
+PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
 
 ```json
 {
@@ -280,7 +273,7 @@ Yeniden `http://localhost:8000` gidin. İletiyi yeniden `No polls are available.
 
 `http://localhost:8000` tekrar gidin ve görünen yoklama sorusunu görüntüleyin. Uygulamanız artık Azure 'da veritabanına veri yazıyor.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure'a Dağıt
 
 Bu adımda, Postgres’e bağlı Python uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -337,9 +330,9 @@ git commit -am "configure for App Service"
 
 ### <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Öğreticide daha önce PostgreSQL veritabanınıza bağlanmak için ortam değişkenleri tanımladınız.
+Öğreticinin önceki bölümlerinde, PostgreSQL veritabanınıza bağlanmak üzere ortam değişkenleri tanımladınız.
 
-App Service’te, Cloud Shell'de[ komutunu kullanarak ortam değişkenlerini `az webapp config appsettings set`uygulama ayarları](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) olarak ayarlayabilirsiniz.
+App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
 
 Şu örnek, veritabanı bağlantı ayrıntılarını uygulama ayarları olarak belirtir. 
 

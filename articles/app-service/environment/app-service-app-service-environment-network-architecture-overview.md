@@ -1,28 +1,20 @@
 ---
-title: App Service ortamlara yönelik ağ mimarisine genel bakış-Azure
-description: Uygulama hizmeti ortamlarının ağ topolojisine yönelik mimari genel bakış.
-services: app-service
-documentationcenter: ''
+title: Ağ mimarisi v1
+description: App Service ortamlarının ağ topolojisine yönelik mimari genel bakış. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070060"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687342"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service Ortamlarının Ağ Mimarisine Genel Bakış
-## <a name="introduction"></a>Giriş
 App Service ortamları her zaman bir [sanal ağ][virtualnetwork] alt ağı içinde oluşturulur; bir App Service ortamı çalıştıran uygulamalar aynı sanal ağ topolojisinde bulunan özel uç noktalarla iletişim kurabilir.  Müşteriler sanal ağ altyapısının parçalarını kilitleyebileceğinizden, bir App Service Ortamı oluşan ağ iletişim akışlarının türlerini anlamak önemlidir.
 
 ## <a name="general-network-flow"></a>Genel ağ akışı
@@ -72,7 +64,7 @@ Yukarıdaki diyagramda:
 ## <a name="calls-between-app-service-environments"></a>App Service ortamları arasındaki çağrılar
 Aynı sanal ağda birden çok App Service ortamı dağıtırsanız ve bir App Service Ortamı giden çağrıları başka bir App Service Ortamı yaparsanız daha karmaşık bir senaryo meydana gelebilir.  Bu tür çapraz App Service Ortamı aramalar Ayrıca "Internet" çağrıları olarak kabul edilir.
 
-Aşağıdaki diyagramda, tek bir App Service Ortamı uygulamalarla katmanlı mimari bir örnek gösterilmektedir (ör. Uygulamaları ikinci bir App Service Ortamı arayan "ön kapı" Web uygulamaları) (örneğin, Internet 'ten erişilebilmesi amaçlanan iç arka uç API Apps). 
+Aşağıdaki diyagramda, bir App Service Ortamı uygulamalar içeren katmanlı mimari bir örnek gösterilmektedir (örn. "ön kapı" Web uygulamaları), uygulamaları ikinci bir App Service Ortamı arayan (örneğin, Internet 'ten erişilebilmesi amaçlanan iç arka uç API Apps). 
 
 ![App Service ortamları arasındaki çağrılar][CallsBetweenAppServiceEnvironments] 
 

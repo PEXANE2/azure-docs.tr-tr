@@ -1,25 +1,16 @@
 ---
-title: Microsoft hesabı kimlik doğrulamasını Yapılandırma-Azure App Service
-description: App Service uygulamanız için Microsoft hesabı kimlik doğrulamasını yapılandırma hakkında bilgi edinin.
-author: mattchenderson
-services: app-service
-documentationcenter: ''
-manager: syntaxc4
-editor: ''
+title: Microsoft kimlik doğrulamasını yapılandırma
+description: Microsoft hesabı kimlik doğrulamasını App Service uygulamanız için bir kimlik sağlayıcısı olarak yapılandırmayı öğrenin.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/08/2019
-ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 70af534e6bcd0039dbc602a5ebc3fc35fb145e79
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176945"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671932"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>App Service uygulamanızı Microsoft hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -31,11 +22,11 @@ Bu konuda, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Micros
 
 1. Azure portal [**uygulama kayıtları**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) gidin. Gerekirse Microsoft hesabı oturum açın.
 1. **Yeni kayıt**' ı seçin ve ardından bir uygulama adı girin.
-1. **Yeniden yönlendirme URI 'Lerinde** **Web**' i seçin ve ardından `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application` yazın. *@No__t-1APP-domain-name >* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
+1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`girin. *\<App-domain-name >* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
 
-1. **Kaydol**' u seçin.
-1. **Uygulama (istemci) kimliğini**kopyalayın. Daha sonra ihtiyacınız olacak.
-1. Sol bölmeden **sertifikalar & gizlilikler** > **yeni istemci parolası**' nı seçin. Bir açıklama girin, geçerlilik süresini seçin ve **Ekle**' yi seçin.
+1. **Kaydol**’u seçin.
+1. **Uygulama (istemci) kimliğini**kopyalayın. Buna daha sonra ihtiyacınız olacak.
+1. Sol bölmeden **sertifikalar & gizli** dizileri > **yeni istemci parolası**' nı seçin. Bir açıklama girin, geçerlilik süresini seçin ve **Ekle**' yi seçin.
 1. **Sertifikalar & gizlilikler** sayfasında görüntülenen değeri kopyalayın. Sayfadan ayrıldıktan sonra yeniden görüntülenmezler.
 
     > [!IMPORTANT]
@@ -43,8 +34,8 @@ Bu konuda, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Micros
 
 ## <a name="secrets"> </a>App Service uygulamanıza Microsoft hesabı bilgilerini ekleme
 
-1. [Azure portalı]uygulamanıza gidin.
-1. @No__t **ayarları**-1**kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. [Azure portalda]uygulamanıza gidin.
+1. **Kimlik doğrulama ve yetkilendirme** > **ayarları** seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
 1. **Kimlik doğrulama sağlayıcıları**altında **Microsoft hesabı**' nı seçin. Daha önce edindiğiniz uygulama (istemci) KIMLIĞINI ve istemci gizli anahtarını yapıştırın. Uygulamanız için gereken tüm kapsamları etkinleştirin.
 1. **Tamam**’ı seçin.
 
@@ -66,4 +57,4 @@ Artık uygulamanızda kimlik doğrulaması için Microsoft hesabı 'nı kullanma
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure portalı]: https://portal.azure.com/
+[Azure portalda]: https://portal.azure.com/

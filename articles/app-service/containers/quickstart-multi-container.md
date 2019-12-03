@@ -1,25 +1,18 @@
 ---
-title: Docker Compose kullanarak çok Kapsayıcılı uygulama oluşturma Azure App Service
-description: Azure Kapsayıcılar için Web App'te ilk çok kapsayıcılı uygulamanızı birkaç dakikada dağıtın
+title: 'Hızlı başlangıç: çok kapsayıcılı bir uygulama oluşturma'
+description: İlk çok Kapsayıcılı uygulamanızı dağıtarak Azure App Service çok Kapsayıcılı uygulamalarla çalışmaya başlayın.
 keywords: Azure App Service, Web uygulaması, Linux, Docker, Compose, çok Kapsayıcılı, çok Kapsayıcılı, kapsayıcılar için Web App, birden çok kapsayıcı, kapsayıcı, WordPress, MySQL için Azure DB, kapsayıcılarla üretim veritabanı
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 89cf13fd4405b9ddcbc5b31fad9f0c945aef64aa
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0fdba3afe7e0977496af105e39fb5d7e657df2f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071117"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687521"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırma kullanarak çok Kapsayıcılı (Önizleme) uygulama oluşturma
 
@@ -101,7 +94,7 @@ App Service planı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bi
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose uygulaması oluşturma
 
-Cloud Shell terminalinde [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutunu kullanarak `myAppServicePlan` App Service planında çok kapsayıcılı bir [web uygulaması](app-service-linux-intro.md) oluşturun. _\<App_name >_ `a-z`, benzersiz bir uygulama adıyla değiştirmeyi unutmayın (geçerli karakterler, `0-9`ve `-`).
+Cloud Shell terminalinde [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutunu kullanarak `myAppServicePlan` App Service planında çok kapsayıcılı bir [web uygulaması](app-service-linux-intro.md) oluşturun. _\<app_name >_ benzersiz bir uygulama adıyla değiştirmeyi unutmayın (geçerli karakterler `a-z`, `0-9`ve `-`).
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -137,7 +130,7 @@ Dağıtılan uygulamaya göz atmak için (`http://<app_name>.azurewebsites.net`)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)
+> [Öğretici: çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
 > [Özel kapsayıcı yapılandırma](configure-custom-container.md)

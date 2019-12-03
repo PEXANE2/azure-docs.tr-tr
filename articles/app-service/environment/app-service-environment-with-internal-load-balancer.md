@@ -1,25 +1,18 @@
 ---
-title: App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma-Azure | Microsoft Docs
-description: ILB ile ATıCı oluşturma ve kullanma
-services: app-service
-documentationcenter: ''
+title: ILB Ao v1 oluşturma
+description: ILB ile ATıCı oluşturma ve kullanma. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069889"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688734"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Ortamı ile Iç Load Balancer kullanma
 
@@ -75,7 +68,7 @@ ILB Ao 'da bir uygulama oluşturmak, genellikle bir uygulama oluşturmak için d
 3. Aboneliğinizi seçin.
 4. Kaynak grubunu seçin veya oluşturun.
 5. App Service planı (ASP) seçin veya oluşturun. Yeni bir ASP oluşturuyorsanız, konum olarak ATıCı ' ı seçin ve ASP 'nizin oluşturulmasını istediğiniz çalışan havuzunu seçin. ASP 'yi oluşturduğunuzda, konum ve çalışan havuzu olarak ATıCı 'nizi seçersiniz. Uygulamanın adını belirttiğinizde, uygulama adınızın altındaki alt etki alanının, Ao 'nizin alt etki alanı ile değiştirildiğini görürsünüz. 
-6. **Oluştur**’u seçin. Uygulamanın panonuzda gösterilmesini istiyorsanız **panoya sabitle** onay kutusunu seçtiğinizden emin olun. 
+6. **Oluştur**'u seçin. Uygulamanın panonuzda gösterilmesini istiyorsanız **panoya sabitle** onay kutusunu seçtiğinizden emin olun. 
 
 ![][2]
 
@@ -99,15 +92,15 @@ Akışı kendi sertifikalarınız ile denemek ve ASE 'nize hem HTTP hem de HTTPS
 3. AIN (**Ao-> özellikleri-> sanal IP adresi**) IÇIN ILB adresini alın.
 4. Oluşturulduktan sonra Ao 'da bir Web uygulaması oluşturun. 
 5. O VNET 'te (ASE veya nesnelerin sonuyla aynı alt ağda değil) bir tane yoksa bir VM oluşturun.
-6. Alt etki alanınızın DNS 'i ayarlayın. DNS 'inizdeki alt etki alanı ile bir joker karakter kullanabilirsiniz veya bazı basit sınamalar yapmak istiyorsanız, Web uygulaması adını VIP IP adresine ayarlamak için VM 'nizin ana bilgisayar dosyasını düzenleyin. Ao, ilbase.com alt etki alanı adını içeriyorsa ve mytestapp.ilbase.com adresinde giderilebilmesi için Web App mytestapp ' ı yaptıysanız, ana bilgisayar dosyanızda bu ayarı belirleyin. (Windows 'da, Hosts dosyası C:\Windows\System32\drivers\etc\)
-7. Bu VM 'de bir tarayıcı kullanın ve adresine gidin https://mytestapp.ilbase.com (veya Web uygulamanızın adı alt etki alanınızın bulunduğu her ne olursa olsun).
+6. Alt etki alanınızın DNS 'i ayarlayın. DNS 'inizdeki alt etki alanı ile bir joker karakter kullanabilirsiniz veya bazı basit sınamalar yapmak istiyorsanız, Web uygulaması adını VIP IP adresine ayarlamak için VM 'nizin ana bilgisayar dosyasını düzenleyin. Ao, ilbase.com alt etki alanı adını içeriyorsa ve mytestapp.ilbase.com adresinde giderilebilmesi için Web App mytestapp ' ı yaptıysanız, ana bilgisayar dosyanızda bu ayarı belirleyin. (Windows 'da, Hosts dosyası C:\Windows\System32\drivers\etc ' dir\)
+7. Bu VM 'de bir tarayıcı kullanın ve https://mytestapp.ilbase.com gidin (veya Web uygulamanızın adı, alt etki alanınızın bulunduğu her ne olursa olsun).
 8. Veya bu sanal makinedeki bir tarayıcıyı kullanıp https://mytestapp.ilbase.com sayfasına gidin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik olmaması gerekir. 
 
 ILB 'nizin IP adresi, sanal IP adresi olarak özelliklerinde listelenir.
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>ILB ASE kullanır
+## <a name="using-an-ilb-ase"></a>ILB Ao kullanma
 #### <a name="network-security-groups"></a>Ağ Güvenlik Grupları
 ILB Ao, uygulamalarınız için ağ yalıtımına izin vermez. Uygulamalar erişilebilir değildir ve internet tarafından da bilinir. Bu yaklaşım, iş kolu uygulamaları gibi intranet sitelerini barındırmak için idealdir. Erişimi daha da kısıtlamanız gerektiğinde ağ düzeyinde erişimi denetlemek için ağ güvenlik gruplarını (NSG 'ler) kullanmaya devam edebilirsiniz. 
 
@@ -129,7 +122,7 @@ Dış VIP kullanılırken DNS, Azure tarafından yönetilir. ASE’nizde oluştu
     *. SCM FTP Yayımlama 
 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 App Service ortamları ile çalışmaya başlamak için bkz. [App Service ortamlarına giriş][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

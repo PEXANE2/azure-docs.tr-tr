@@ -1,25 +1,16 @@
 ---
-title: ASP.NET Core C# Web uygulaması oluşturma-Azure App Service | Microsoft Docs
-description: Varsayılan C# ASP.NET Core Web uygulamasını dağıtarak Azure App Service Web Apps 'i nasıl çalıştıracağınızı öğrenin.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 'Hızlı başlangıç: C# ASP.NET Core uygulaması oluşturma'
+description: Visual Studio 'dan varsayılan C# ASP.NET Core Web uygulaması şablonunu dağıtarak Azure App Service Web Apps 'i nasıl çalıştıracağınızı öğrenin.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471604"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672105"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure’da ASP.NET Core web uygulaması oluşturma
 
@@ -78,7 +69,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Core Web uygulaması oluşturun:
    > Zaten oturum açtıysanız **Oluştur** öğesini henüz seçmeyin.
    >
 
-   ![Azure'da oturum açma](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
+   ![Azure'da oturum açın](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 

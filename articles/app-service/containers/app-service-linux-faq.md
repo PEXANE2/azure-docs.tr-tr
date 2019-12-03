@@ -1,26 +1,18 @@
 ---
-title: Linux üzerinde App Service SSS-Azure | Microsoft Docs
-description: Linux SSS üzerinde Azure App Service.
+title: Yerleşik kapsayıcıları Çalıştır SSS
+description: Azure App Service içindeki yerleşik Linux kapsayıcıları hakkında sık sorulan soruların yanıtlarını bulun.
 keywords: Azure App Service, Web uygulaması, SSS, Linux, Oss, kapsayıcılar için Web App, çok Kapsayıcılı, çok kapsayıcı
-services: app-service
-documentationCenter: ''
 author: msangapu-msft
-manager: stefsch
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066897"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687590"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 'ta Azure App Service SSS
 
@@ -40,10 +32,10 @@ Tüm Docker dosyalarını [GitHub](https://github.com/azure-app-service)üzerind
 
 | Yığın           | Beklenen değer                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java &AMP;         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar my-app.jar --server.port=80`) |
+| Java &         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar my-app.jar --server.port=80`) |
 | Tomcat, Yavaya | gerekli yapılandırmaların gerçekleştirileceği bir betiğin konumu (örneğin, `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | PM2 yapılandırma dosyası veya betik dosyanız                                |
-| .Net Core       | derlenmiş DLL adı olarak`dotnet <myapp>.dll`                                 |
+| .Net Core       | `dotnet <myapp>.dll` olarak derlenmiş DLL adı                                 |
 | Ruby            | uygulamanızı başlatmak istediğiniz Ruby betiği                     |
 
 Bu komutlar veya betikler, yerleşik Docker kapsayıcısı başlatıldıktan sonra, ancak uygulama kodunuz başlatılmadan önce yürütülür.
@@ -78,27 +70,27 @@ Evet.
 
 **Web uygulamamı dağıtmak için *WebDeploy/MSDeploy* kullanabilir miyim?**
 
-Evet, `WEBSITE_WEBDEPLOY_USE_SCM` *yanlış*olarak çağrılan bir uygulama ayarı ayarlamanız gerekir.
+Evet, `WEBSITE_WEBDEPLOY_USE_SCM` adlı bir uygulama ayarını *false*olarak ayarlamanız gerekir.
 
 **Linux Web uygulaması kullanılırken uygulamamın git dağıtımı başarısız oluyor. Sorunu geçici olarak nasıl çözebilirim?**
 
 Git dağıtımı Linux Web uygulamanıza başarısız olursa, uygulama kodunuzu dağıtmak için aşağıdaki seçeneklerden birini belirleyin:
 
-- Sürekli teslim (Önizleme) özelliğini kullanın: Azure sürekli teslimi kullanabilmeniz için, uygulamanızın kaynak kodunu bir Azure DevOps git deposunda veya GitHub deposunda saklayabilirsiniz. Daha fazla bilgi için bkz. [Linux Web uygulaması Için sürekli teslimi yapılandırma](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Sürekli teslim (Önizleme) özelliğini kullanın: Azure sürekli teslimi kullanabilmeniz için uygulamanızın kaynak kodunu bir Azure DevOps git deposunda veya GitHub deposunda saklayabilirsiniz. Daha fazla bilgi için bkz. [Linux Web uygulaması Için sürekli teslimi yapılandırma](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- [ZIP DAĞıTıM API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)'sini kullanın: Bu API 'yi kullanarak [Web uygulamanıza SSH ekleyin](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) ve kodunuzu dağıtmak istediğiniz klasöre gidin. Aşağıdaki kodu çalıştırın:
+- [ZIP Deploy API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)'sini kullanın: Bu API 'yi kullanarak [Web uygulamanıza SSH ekleyin](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) ve kodunuzu dağıtmak istediğiniz klasöre gidin. Aşağıdaki kodu çalıştırın:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   `curl` Komutun bulunamadığını belirten bir hata alırsanız, önceki `curl` komutu çalıştırmadan önce kullanarak `apt-get install curl` kıvrımlı yüklediğinizden emin olun.
+   `curl` komutunun bulunamadığını belirten bir hata alırsanız, önceki `curl` komutunu çalıştırmadan önce `apt-get install curl` kullanarak kıvrımlı yüklediğinizden emin olun.
 
 ## <a name="language-support"></a>Dil desteği
 
 **Node. js uygulamamda Web yuvalarını, tüm özel ayarları veya ayarlanacak konfigürasyonları kullanmak istiyorum?**
 
-Evet, sunucu `perMessageDeflate` tarafı Node. js kodunuzda devre dışı bırakın. Örneğin, socket.io kullanıyorsanız aşağıdaki kodu kullanın:
+Evet, sunucu tarafı Node. js kodunuzda `perMessageDeflate` devre dışı bırakın. Örneğin, socket.io kullanıyorsanız aşağıdaki kodu kullanın:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -116,21 +108,21 @@ Evet, bir git dağıtımı sırasında kudu, bir PHP uygulaması dağıttığın
 
 ## <a name="custom-containers"></a>Özel kapsayıcılar
 
-**Kendi özel kapsayıcınızı kullanıyorum. Platformun bir SMB `/home/` dizinini dizine bağlamak istiyorum.**
+**Kendi özel kapsayıcınızı kullanıyorum. Platformun `/home/` dizinine bir SMB paylaşımından bağlama istiyorum.**
 
-`/home/` Ayar belirtilmemişse veya true olarak ayarlanırsa, Dizin ölçek örnekleri arasında paylaşılır ve yazılan dosyalar yeniden başlatmalar arasında kalır. `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false* olarak ayarlandığında bağlama devre dışı bırakılır.
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE` ayar **belirtilmemişse** veya *true*olarak ayarlanırsa, `/home/` Dizin ölçek örnekleri arasında **paylaşılır** ve yazılan dosyalar yeniden başlatmalar arasında **kalır** . Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false* olarak ayarlamak, bağlama devre dışı bırakılır.
 
 **Özel kapsayıcımın başlaması uzun sürer ve platformun başlaması bitmeden önce kapsayıcıyı yeniden başlatır.**
 
-Platformun kapsayıcınızı yeniden başlatmadan önce bekleyeceği süreyi yapılandırabilirsiniz. Bunu yapmak için, `WEBSITES_CONTAINER_START_TIME_LIMIT` uygulama ayarını istediğiniz değere ayarlayın. Varsayılan değer 230 saniyedir ve en yüksek değer 1800 saniyedir.
+Platformun kapsayıcınızı yeniden başlatmadan önce bekleyeceği süreyi yapılandırabilirsiniz. Bunu yapmak için `WEBSITES_CONTAINER_START_TIME_LIMIT` uygulama ayarını istediğiniz değere ayarlayın. Varsayılan değer 230 saniyedir ve en yüksek değer 1800 saniyedir.
 
 **Özel kayıt defteri sunucu URL 'sinin biçimi nedir?**
 
-`http://` Veya`https://`dahil olmak üzere tam kayıt defteri URL 'sini sağlayın.
+`http://` veya `https://`dahil olmak üzere tam kayıt defteri URL 'sini sağlayın.
 
 **Özel kayıt defteri seçeneğinde görüntü adının biçimi nedir?**
 
-Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak `docker-custom-image-name` [için `az` komut satırı aracını](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
+Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`ayarlamak için [`az` komut satırı aracını](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
 
 **Özel kapsayıcı Görüntümdeki birden fazla bağlantı noktasını kullanıma alabilir miyim?**
 
@@ -146,7 +138,7 @@ SCM sitesi ayrı bir kapsayıcıda çalışır. Dosya sistemini veya uygulama ka
 
 **Özel kapsayıcım bağlantı noktası 80 dışında bir bağlantı noktasını dinler. Uygulamamı istekleri bu bağlantı noktasına yönlendirmek için nasıl yapılandırabilirim?**
 
-Otomatik bağlantı noktası algılıyoruz. Ayrıca, *WEBSITES_PORT* adlı bir uygulama ayarı da belirtebilir ve bu değere beklenen bağlantı noktası numarasının değerini verebilirsiniz. Daha önce, Platform, *bağlantı noktası* uygulama ayarını kullandı. Bu uygulama ayarını kullanımdan kaldırmayı ve özel olarak *WEBSITES_PORT* kullanmayı planlıyoruz.
+Otomatik bağlantı noktası algılıyoruz. Ayrıca, *WEBSITES_PORT* adlı bir uygulama ayarı da belirtebilir ve bu değere beklenen bağlantı noktası numarası değerini verebilirsiniz. Daha önce, Platform, *bağlantı noktası* uygulama ayarını kullandı. Bu uygulama ayarını kullanımdan kaldırmayı ve *WEBSITES_PORT* özel olarak kullanmayı planlıyoruz.
 
 **Özel kapsayıcımda HTTPS uygulamam gerekiyor mu?**
 
@@ -177,7 +169,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 Öncelik sırasına göre hangi kapsayıcının erişilebilir olduğunu belirlemek için kurallar aşağıda verilmiştir:
 
-- Kapsayıcı adına `WEBSITES_WEB_CONTAINER_NAME` ayarlanan uygulama ayarı
+- Kapsayıcı adına ayarlanan `WEBSITES_WEB_CONTAINER_NAME` uygulama ayarı
 - 80 veya 8080 numaralı bağlantı noktasını tanımlamak için ilk kapsayıcı
 - Yukarıdakilerin hiçbiri true ise, dosyada tanımlanan ilk kapsayıcı erişilebilir olur (gösterilir)
 
@@ -200,5 +192,5 @@ Uygulama ayarları için yalnızca harfler (A-Z, a-z), rakamlar (0-9) ve alt çi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Linux üzerinde Azure App Service nedir?](app-service-linux-intro.md)
-- [Azure App Service ortamlarında hazırlık ayarlama](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Azure App Service’te hazırlık ortamları ayarlama](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Kapsayıcılar için Web App ile sürekli dağıtım](./app-service-linux-ci-cd.md)

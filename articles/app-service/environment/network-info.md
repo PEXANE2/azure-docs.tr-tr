@@ -1,24 +1,18 @@
 ---
-title: App Service Ortamı-Azure ile ağ oluşturma konuları
-description: Ao ağ trafiğini ve NSG 'ler ile UDRs 'yi Ao ile ayarlama hakkında bilgiler
-services: app-service
-documentationcenter: na
+title: Ağ konusunda dikkat edilmesi gerekenler
+description: Ao ağ trafiği ve ağ güvenlik grupları ve Kullanıcı tanımlı yolların AP 'niz ile nasıl ayarlanacağı hakkında bilgi edinin.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470648"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687133"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamı için ağ değerlendirmeleri #
 
@@ -59,7 +53,7 @@ Atıcı 'yi barındırmak için kullanılan alt ağın boyutu Ao dağıtıldıkt
 
 ASE 'nin çalışması için, ASE 'nin şu bağlantı noktalarının açık olması gerekir:
 
-| Kullanım | Başlangıç fiyatı | Alıcı |
+| Kullanım | Başlangıç fiyatı | Bitiş |
 |-----|------|----|
 | Yönetim | Yönetim adreslerini App Service | Ao alt ağı: 454, 455 |
 |  ATıCı iç iletişimi | Ao alt ağı: tüm bağlantı noktaları | Ao alt ağı: tüm bağlantı noktaları
@@ -120,7 +114,7 @@ Ao işlevsel bağımlılıklara ek olarak, Portal deneyimiyle ilgili birkaç ek 
 -   Kudu
 -   Uzantılar
 -   İşlem Gezgini
--   Konsol
+-   Console
 
 ILB ASE kullandığınızda, SCM sitesinin VNet dışından erişilebilir olmaması gerekir. Bazı yetenekler, uygulamanın SCM sitesine erişmesi gerektiğinden uygulama portalından çalışmayacaktır. Portalı kullanmak yerine doğrudan SCM sitesine bağlanabilirsiniz. 
 

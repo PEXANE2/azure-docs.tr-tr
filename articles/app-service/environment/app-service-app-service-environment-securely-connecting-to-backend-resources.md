@@ -1,29 +1,21 @@
 ---
-title: App Service ortamından Azure ile arka uç kaynaklarına güvenli bağlanma-Azure
-description: App Service Ortamı arka uç kaynaklarına güvenli bir şekilde bağlanma hakkında bilgi edinin.
-services: app-service
-documentationcenter: ''
+title: Arka uç v1 'ye bağlanma
+description: App Service Ortamı arka uç kaynaklarına güvenli bir şekilde bağlanma hakkında bilgi edinin. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069973"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687304"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service ortamından arka uç kaynaklarına güvenli bir şekilde bağlanma
-## <a name="overview"></a>Genel Bakış
-Bir App Service Ortamı her zaman bir Azure Resource Manager sanal ağda **veya** klasik dağıtım modeli [sanal ağında][virtualnetwork]oluşturulduğundan, bir App Service ortamı giden bağlantıları diğer arka uç kaynaklarına sanal ağ üzerinden özel olarak akabilir.  Haziran 2016 ' de yapılan son değişikliklerle birlikte, ASE 'ler ortak adres aralıkları veya RFC1918 adres alanları (örn. özel adresler) kullanan sanal ağlara da dağıtılabilir.  
+Bir App Service Ortamı her **zaman bir Azure Resource Manager** sanal ağda **veya** klasik dağıtım modeli [sanal ağında][virtualnetwork]oluşturulduğundan, bir App Service ortamı giden bağlantılar sanal ağ üzerinden özel olarak akabilir.  Haziran 2016 ' de yapılan son değişikliklerle birlikte, ASE 'ler ortak adres aralıkları veya RFC1918 adres alanları (örn. özel adresler) kullanan sanal ağlara da dağıtılabilir.  
 
 Örneğin, 1433 numaralı bağlantı noktasına sahip bir sanal makine kümesinde çalışan bir SQL Server olabilir.  Uç nokta, yalnızca aynı sanal ağdaki diğer kaynaklardan erişime izin vermek için ACLd olabilir.  
 
@@ -49,7 +41,7 @@ Ortak bir SQL Server yapılandırmasında 1433 numaralı bağlantı noktasında 
 
 Bu uç noktayla trafiği kısıtlamak için iki yaklaşım vardır:
 
-* [Ağ Access Control listeleri][NetworkAccessControlLists] (Ağ ACL 'Leri)
+* [Ağ Access Control listeleri][NetworkAccessControlLists] (ağ ACL 'leri)
 * [Ağ güvenlik grupları][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Ağ ACL 'SI Ile erişimi kısıtlama
@@ -84,7 +76,7 @@ Nihai sonuç, dış erişimi engelleyen bir güvenlik kuralları kümesidir ve V
 
 ![Varsayılan ağ güvenlik kuralları][DefaultNetworkSecurityRules]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 App Service ortamlarıyla çalışmaya başlamak için bkz. [giriş App Service ortamı][IntroToAppServiceEnvironment]
 
 App Service Ortamı gelen trafiği denetleme hakkında daha fazla bilgi için bkz. [bir App Service ortamı gelen trafiği denetleme][ControlInboundASE]

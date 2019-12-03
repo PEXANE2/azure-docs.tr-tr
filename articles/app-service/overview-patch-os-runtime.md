@@ -1,24 +1,15 @@
 ---
-title: İşletim sistemi ve çalışma zamanı düzeltme temposunda-Azure App Service | Microsoft Docs
-description: Azure App Service işletim sistemi ve çalışma zamanlarını güncelleştirme ve güncelleştirme duyurularını nasıl alabileceğiniz açıklanmaktadır.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: İşletim sistemi ve çalışma zamanı düzeltme temposunda
+description: Azure App Service işletim sistemi ve çalışma zamanlarını, uygulamalarınızın hangi çalışma zamanlarını ve düzeltme eki düzeyini ve güncelleştirme duyurularını nasıl alabileceğinizi öğrenin.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074125"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688580"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
 
@@ -64,7 +55,7 @@ Desteklenen dil çalışma zamanlarının (ana, ikincil veya düzeltme ekinin) y
 
 ### <a name="new-major-and-minor-versions"></a>Yeni birincil ve ikincil sürümler
 
-Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında ( `web.config` ve `package.json`gibi) yapılandırdıysanız, aynı yöntemle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
+Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında yapılandırdıysanız (`web.config` ve `package.json`gibi), aynı yöntemiyle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -84,21 +75,21 @@ Kritik IŞLETIM sistemi bilgileri Access 'ten kilitlenirken (bkz. [Azure App Ser
 
 Aşağıdaki tabloda, uygulamalarınızı çalıştıran Windows ve dil çalışma zamanının sürümlerinin nasıl yapılacağı gösterilmektedir:
 
-| Information | Nerede bulunacak | 
+| Bilgi | Nerede bulunacak | 
 |-|-|
-| Windows sürümü | Bkz `https://<appname>.scm.azurewebsites.net/Env.cshtml` . (sistem bilgisi altında) |
-| .NET sürüm | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET Core sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `dotnet --version` |
-| PHP sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `php --version` |
+| Windows sürümü | Bkz. `https://<appname>.scm.azurewebsites.net/Env.cshtml` (sistem bilgisi altında) |
+| .NET sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut isteminde aşağıdaki komutu çalıştırın: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET Core sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut isteminde aşağıdaki komutu çalıştırın: <br> `dotnet --version` |
+| PHP sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut isteminde aşağıdaki komutu çalıştırın: <br> `php --version` |
 | Varsayılan Node. js sürümü | [Cloud Shell](../cloud-shell/overview.md), aşağıdaki komutu çalıştırın: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `python --version` |  
+| Python sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut isteminde aşağıdaki komutu çalıştırın: <br> `python --version` |  
 
 > [!NOTE]  
-> `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` ["KB" yamaları](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) üzerindeki bilgilerin depolandığı kayıt defteri konumuna erişim, kilitlenir.
+> ["KB" yamaları](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) üzerindeki bilgilerin depolandığı kayıt defteri konumuna `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`erişimi, kilitlenir.
 >
 >
 
 ## <a name="more-resources"></a>Daha fazla kaynak
 
-[Güven Merkezi: Güvenlik](https://www.microsoft.com/en-us/trustcenter/security)  
+[Güven Merkezi: güvenlik](https://www.microsoft.com/en-us/trustcenter/security)  
 [Azure App Service üzerinde 64 bit ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

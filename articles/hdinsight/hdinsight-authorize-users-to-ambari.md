@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720027"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688001"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
 
@@ -28,7 +28,7 @@ Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeler
 
 ## <a name="access-the-ambari-management-page"></a>Ambarı yönetim sayfasına erişin
 
-[Apache ambarı Web Kullanıcı arabirimindeki](hdinsight-hadoop-manage-ambari.md) **ambarı yönetim sayfasına** ulaşmak için **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** gidin. Kümeyi oluştururken tanımladığınız küme yönetici kullanıcı adını ve parolasını girin. Ardından, ambarı panosundan **Yönetim** menüsünün altındaki **ambarı Yönet** ' i seçin:
+[Apache ambarı Web Kullanıcı arabirimindeki](hdinsight-hadoop-manage-ambari.md) **ambarı yönetim sayfasına** ulaşmak için `https://CLUSTERNAME.azurehdinsight.net`gidin. Kümeyi oluştururken tanımladığınız küme yönetici kullanıcı adını ve parolasını girin. Ardından, ambarı panosundan **Yönetim** menüsünün altındaki **ambarı Yönet** ' i seçin:
 
 ![Apache ambarı Pano Yönetimi](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -230,7 +230,7 @@ Rolleri yönetmek için, **ambarı yönetimi sayfasına**gidin, ardından sol ta
 
 Her role verilen izinlerin listesini görmek için Roller sayfasındaki **Roller** tablosu üst bilgisinin yanındaki mavi soru işaretine tıklayın.
 
-![Apache ambarı rolleri menü bağlantısı izinleri](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache ambarı rolleri menü bağlantısı izinleri")
+![Apache ambarı roller menü bağlantısı izinleri](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache ambarı roller menü bağlantısı izinleri")
 
 Bu sayfada, kullanıcılar ve gruplar için rolleri yönetmek için kullanabileceğiniz iki farklı görünüm vardır: blok ve liste.
 
@@ -248,7 +248,7 @@ Liste görünümü iki kategoride Hızlı Düzenle özellikleri sağlar: kullan�
 
     ![Apache ambarı rol listesi görünümü-kullanıcılar](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-*  Liste görünümünün gruplar kategorisi, tüm grupları ve her gruba atanan rolü görüntüler. Örneğimizde, grupların listesi, kümenin etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarından eşitlenir. Bkz. [ESP özellikli HDInsight kümesi oluşturma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
+* Liste görünümünün gruplar kategorisi, tüm grupları ve her gruba atanan rolü görüntüler. Örneğimizde, grupların listesi, kümenin etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarından eşitlenir. Bkz. [ESP özellikli HDInsight kümesi oluşturma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
     ![Apache ambarı rol listesi görünümü-gruplar](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

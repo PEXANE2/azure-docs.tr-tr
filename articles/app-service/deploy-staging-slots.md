@@ -1,26 +1,16 @@
 ---
-title: Azure App Service Web Apps için hazırlama ortamlarını ayarlama | Microsoft Docs
-description: Azure App Service 'de Web uygulamaları için hazırlanmış yayımlamayı nasıl kullanacağınızı öğrenin.
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: Hazırlama ortamlarını ayarlama
+description: Uygulamaları üretim dışı bir yuvaya dağıtmayı ve üretime nasıl bir şekilde takacağınızı öğrenin. Güvenilirliği artırın ve dağıtımlardan uygulama kesinti süresini ortadan kaldırın.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382279"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671751"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service 'de hazırlama ortamlarını ayarlama
 <a name="Overview"></a>
@@ -278,7 +268,7 @@ Varsayılan olarak, yeni yuvalara gri olarak gösterilen `0%`bir yönlendirme ku
 
 ## <a name="delete-a-slot"></a>Yuva silme
 
-Uygulamanızın kaynak sayfasına gidin. > > **Genel Bakış ' ı** *silmek için\<yuvasını* > **dağıtım yuvaları** seçin. Komut çubuğunda **Sil** ' i seçin.  
+Uygulamanızın kaynak sayfasına gidin.  > **Genel Bakış ' ı** *silmek için\<yuvasını* > **dağıtım yuvaları** seçin. Komut çubuğunda **Sil** ' i seçin.  
 
 ![Dağıtım yuvasını silme](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

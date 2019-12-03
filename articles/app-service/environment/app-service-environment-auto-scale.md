@@ -1,25 +1,18 @@
 ---
-title: Otomatik ölçeklendirme ve App Service Ortamı v1-Azure
-description: Otomatik ölçeklendirme ve App Service Ortamı
-services: app-service
-documentationcenter: ''
+title: Otomatik ölçeklendirme v1
+description: Otomatik ölçeklendirme ve App Service Ortamı v1. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070079"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687291"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Otomatik ölçeklendirme ve App Service Ortamı v1
 
@@ -81,32 +74,32 @@ Filiz, uygulamaya çok tanıdık gelecektir. Bunlar, çalışanların ofis ofisi
 
 | **Otomatik ölçeklendirme profili – iş günleri – App Service planı** | **Otomatik ölçeklendirme profili – hafta sonları – App Service plan** |
 | --- | --- |
-| **Ada** Hafta içi profil |**Ada** Hafta sonu profili |
+| **Ad:** Hafta içi profil |**Ad:** Hafta sonu profili |
 | **Ölçek ölçütü:** Zamanlama ve performans kuralları |**Ölçek ölçütü:** Zamanlama ve performans kuralları |
-| **Profilinizi** Ları |**Profilinizi** Hafta |
-| **Türüyle** Yinelenme |**Türüyle** Yinelenme |
-| **Hedef Aralık:** 5 ila 20 örnek |**Hedef Aralık:** 3 ila 10 örnek |
-| **Miş** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Miş** Cumartesi, Pazar |
+| **Profil:** Ları |**Profil:** Hafta |
+| **Şunu yazın:** Yinelemeyi |**Şunu yazın:** Yinelemeyi |
+| **Hedef aralığı:** 5 ila 20 örnek |**Hedef aralığı:** 3 ila 10 örnek |
+| **Gün sayısı:** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Gün sayısı:** Cumartesi, Pazar |
 | **Başlangıç Zamanı:** 9:00 |**Başlangıç Zamanı:** 9:00 |
 | **Saat dilimi:** UTC-08 |**Saat dilimi:** UTC-08 |
 |  | |
 | **Otomatik ölçeklendirme kuralı (ölçek artırma)** |**Otomatik ölçeklendirme kuralı (ölçek artırma)** |
-| **Kaynak** Üretim (App Service Ortamı) |**Kaynak** Üretim (App Service Ortamı) |
-| **Ölçüt** 'SUNA |**Ölçüt** 'SUNA |
-| **Çalışmasını** % 60 ' den büyük |**Çalışmasını** % 80 ' den büyük |
-| **Sürenin** 5 Dakika |**Sürenin** 10 dakika |
-| **Zaman toplama:** Average |**Zaman toplama:** Average |
-| **Ön** Sayıyı 2 ' ye kadar artır |**Ön** Sayıyı 1 artır |
-| **Seyrek Erişimli (dakika):** 15 |**Seyrek Erişimli (dakika):** 20 |
+| **Kaynak:** Üretim (App Service Ortamı) |**Kaynak:** Üretim (App Service Ortamı) |
+| **Ölçüm:** 'SUNA |**Ölçüm:** 'SUNA |
+| **İşlem:** %60 ' den büyük |**İşlem:** %80 ' den büyük |
+| **Süre:** 5 dakika |**Süre:** 10 dakika |
+| **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
+| **Eylem:** Sayıyı 2 ' ye kadar artır |**Eylem:** Sayıyı 1 artır |
+| Seyrek Erişimli **(dakika):** 15 |Seyrek Erişimli **(dakika):** 20 |
 |  | |
 | **Otomatik ölçeklendirme kuralı (ölçek azaltma)** |**Otomatik ölçeklendirme kuralı (ölçek azaltma)** |
-| **Kaynak** Üretim (App Service Ortamı) |**Kaynak** Üretim (App Service Ortamı) |
-| **Ölçüt** 'SUNA |**Ölçüt** 'SUNA |
-| **Çalışmasını** % 30 ' dan az |**Çalışmasını** % 20 ' den az |
-| **Sürenin** 10 dakika |**Sürenin** 15 dakika |
-| **Zaman toplama:** Average |**Zaman toplama:** Average |
-| **Ön** Sayıyı 1 azaltma |**Ön** Sayıyı 1 azaltma |
-| **Seyrek Erişimli (dakika):** 20 |**Seyrek Erişimli (dakika):** 10 |
+| **Kaynak:** Üretim (App Service Ortamı) |**Kaynak:** Üretim (App Service Ortamı) |
+| **Ölçüm:** 'SUNA |**Ölçüm:** 'SUNA |
+| **İşlem:** %30 ' dan az |**İşlem:** %20 ' den az |
+| **Süre:** 10 dakika |**Süre:** 15 dakika |
+| **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
+| **Eylem:** Sayıyı 1 azaltma |**Eylem:** Sayıyı 1 azaltma |
+| Seyrek Erişimli **(dakika):** 20 |Seyrek Erişimli **(dakika):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>App Service planı enflasyon oranı
 Otomatik ölçeklendirme için yapılandırılan App Service planlar, saat başına en fazla hızda yapılır. Bu fiyat, otomatik ölçeklendirme kuralında belirtilen değerlere göre hesaplanabilir.
@@ -152,32 +145,32 @@ Bu bilgilerle, filiz aşağıdaki otomatik ölçeklendirme profilini ve kurallar
 
 | **Otomatik ölçeklendirme profili – hafta Içi** | **Otomatik ölçeklendirme profili – hafta sonları** |
 | --- | --- |
-| **Ada** Hafta içi profil |**Ada** Hafta sonu profili |
+| **Ad:** Hafta içi profil |**Ad:** Hafta sonu profili |
 | **Ölçek ölçütü:** Zamanlama ve performans kuralları |**Ölçek ölçütü:** Zamanlama ve performans kuralları |
-| **Profilinizi** Ları |**Profilinizi** Hafta |
-| **Türüyle** Yinelenme |**Türüyle** Yinelenme |
-| **Hedef Aralık:** 13-25 örnek |**Hedef Aralık:** 6-15 örnek |
-| **Miş** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Miş** Cumartesi, Pazar |
+| **Profil:** Ları |**Profil:** Hafta |
+| **Şunu yazın:** Yinelemeyi |**Şunu yazın:** Yinelemeyi |
+| **Hedef Aralık:** 13-25 örnek |**Hedef aralığı:** 6-15 örnek |
+| **Gün sayısı:** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Gün sayısı:** Cumartesi, Pazar |
 | **Başlangıç Zamanı:** 7:00 |**Başlangıç Zamanı:** 9:00 |
 | **Saat dilimi:** UTC-08 |**Saat dilimi:** UTC-08 |
 |  | |
 | **Otomatik ölçeklendirme kuralı (ölçek artırma)** |**Otomatik ölçeklendirme kuralı (ölçek artırma)** |
-| **Kaynak** Çalışan havuzu 1 |**Kaynak** Çalışan havuzu 1 |
-| **Ölçüt** WorkersAvailable |**Ölçüt** WorkersAvailable |
-| **Çalışmasını** 8 ' den az |**Çalışmasını** 3 ' ten az |
-| **Sürenin** 20 dakika |**Sürenin** 30 dakika |
-| **Zaman toplama:** Average |**Zaman toplama:** Average |
-| **Ön** Sayıyı 8 olarak artır |**Ön** Sayıyı 3 olarak artır |
-| **Seyrek Erişimli (dakika):** 180 |**Seyrek Erişimli (dakika):** 180 |
+| **Kaynak:** Çalışan havuzu 1 |**Kaynak:** Çalışan havuzu 1 |
+| **Ölçüm:** WorkersAvailable |**Ölçüm:** WorkersAvailable |
+| **İşlem:** 8 ' den az |**İşlem:** 3 ' ten az |
+| **Süre:** 20 dakika |**Süre:** 30 dakika |
+| **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
+| **Eylem:** Sayıyı 8 olarak artır |**Eylem:** Sayıyı 3 olarak artır |
+| Seyrek Erişimli **(dakika):** 180 |Seyrek Erişimli **(dakika):** 180 |
 |  | |
 | **Otomatik ölçeklendirme kuralı (ölçek azaltma)** |**Otomatik ölçeklendirme kuralı (ölçek azaltma)** |
-| **Kaynak** Çalışan havuzu 1 |**Kaynak** Çalışan havuzu 1 |
-| **Ölçüt** WorkersAvailable |**Ölçüt** WorkersAvailable |
-| **Çalışmasını** 8 ' den büyük |**Çalışmasını** 3 ' ten büyük |
-| **Sürenin** 20 dakika |**Sürenin** 15 dakika |
-| **Zaman toplama:** Average |**Zaman toplama:** Average |
-| **Ön** Sayıyı 2 ' ye kadar azalt |**Ön** Sayıyı 3 olarak azalt |
-| **Seyrek Erişimli (dakika):** 120 |**Seyrek Erişimli (dakika):** 120 |
+| **Kaynak:** Çalışan havuzu 1 |**Kaynak:** Çalışan havuzu 1 |
+| **Ölçüm:** WorkersAvailable |**Ölçüm:** WorkersAvailable |
+| **İşlem:** 8 ' den büyük |**İşlem:** 3 ' ten büyük |
+| **Süre:** 20 dakika |**Süre:** 15 dakika |
+| **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
+| **Eylem:** Sayıyı 2 ' ye kadar azalt |**Eylem:** Sayıyı 3 olarak azalt |
+| Seyrek Erişimli **(dakika):** 120 |Seyrek Erişimli **(dakika):** 120 |
 
 Profilde tanımlanan hedef aralığı, App Service planı + arabelleği için profilde tanımlanan minimum örneklerle hesaplanır.
 
@@ -191,38 +184,38 @@ Azaltma sayısı, ölçek azaltma için App Service planı enflasyon oranını 1
 Ön uç otomatik ölçeklendirme kuralları, çalışan havuzlarından daha basittir. Öncelikle,  
 ölçüm süresinin ve coolazaltma zamanlayıcıları App Service planındaki Ölçek işlemlerinin anlık olmadığından emin olun.
 
-Bu senaryoda, Filiz, ön uçlar% 80 CPU kullanımına ulaştığında hata oranının arttığı ve örnekleri aşağıdaki gibi artıracak şekilde otomatik ölçeklendirme kuralını ayarlıyor:
+Bu senaryoda, Filiz, ön uçlar %80 CPU kullanımına ulaştığında hata oranının arttığı ve örnekleri aşağıdaki gibi artıracak şekilde otomatik ölçeklendirme kuralını ayarlıyor:
 
 ![Ön uç havuzu için otomatik ölçeklendirme ayarları.][Front-End-Scale]
 
 | **Otomatik ölçeklendirme profili – ön uçlar** |
 | --- |
-| **Ada** Otomatik ölçeklendirme – ön uçlar |
+| **Ad:** Otomatik ölçeklendirme – ön uçlar |
 | **Ölçek ölçütü:** Zamanlama ve performans kuralları |
-| **Profilinizi** Her gün |
-| **Türüyle** Yinelenme |
-| **Hedef Aralık:** 3 ila 10 örnek |
-| **Miş** Her gün |
+| **Profil:** Her |
+| **Şunu yazın:** Yinelemeyi |
+| **Hedef aralığı:** 3 ila 10 örnek |
+| **Gün sayısı:** Her |
 | **Başlangıç Zamanı:** 9:00 |
 | **Saat dilimi:** UTC-08 |
 |  |
 | **Otomatik ölçeklendirme kuralı (ölçek artırma)** |
-| **Kaynak** Ön uç havuzu |
-| **Ölçüt** 'SUNA |
-| **Çalışmasını** % 60 ' den büyük |
-| **Sürenin** 20 dakika |
-| **Zaman toplama:** Average |
-| **Ön** Sayıyı 3 olarak artır |
-| **Seyrek Erişimli (dakika):** 120 |
+| **Kaynak:** Ön uç havuzu |
+| **Ölçüm:** 'SUNA |
+| **İşlem:** %60 ' den büyük |
+| **Süre:** 20 dakika |
+| **Zaman toplama:** Ortalama |
+| **Eylem:** Sayıyı 3 olarak artır |
+| Seyrek Erişimli **(dakika):** 120 |
 |  |
 | **Otomatik ölçeklendirme kuralı (ölçek azaltma)** |
-| **Kaynak** Çalışan havuzu 1 |
-| **Ölçüt** 'SUNA |
-| **Çalışmasını** % 30 ' dan az |
-| **Sürenin** 20 dakika |
-| **Zaman toplama:** Average |
-| **Ön** Sayıyı 3 olarak azalt |
-| **Seyrek Erişimli (dakika):** 120 |
+| **Kaynak:** Çalışan havuzu 1 |
+| **Ölçüm:** 'SUNA |
+| **İşlem:** %30 ' dan az |
+| **Süre:** 20 dakika |
+| **Zaman toplama:** Ortalama |
+| **Eylem:** Sayıyı 3 olarak azalt |
+| Seyrek Erişimli **(dakika):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

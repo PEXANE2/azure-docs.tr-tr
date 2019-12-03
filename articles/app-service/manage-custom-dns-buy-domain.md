@@ -1,25 +1,16 @@
 ---
-title: Azure 'da özel etki alanı adı satın alma-App Service
-description: Azure App Service ' de bir Web uygulamasıyla özel bir etki alanı adı satın almayı öğrenin.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: Özel bir etki alanı adı satın alın
+description: App Service etki alanı satın almayı ve uygulama Azure App Service için özel etki alanı olarak kullanmayı öğrenin.
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1354f48843f8006b4a6180a2cea60e735413e446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470423"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672389"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için özel etki alanı adı satın alma
 
@@ -40,7 +31,7 @@ Bu öğreticiyi tamamlamak için:
 
 Azure App Service özel etki alanlarını kullanmak için uygulamanızın [App Service planı](https://azure.microsoft.com/pricing/details/app-service/) ücretli bir katman (**paylaşılan**, **temel**, **Standart**veya **Premium**) olmalıdır. Bu adımda, uygulamanın desteklenen fiyatlandırma katmanında olduğundan emin olursunuz.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [Azure Portal](https://portal.azure.com)'ı açın ve Azure hesabınızla oturum açın.
 
@@ -81,7 +72,7 @@ Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmışt
 ### <a name="pricing-information"></a>Fiyatlandırma bilgileri
 Azure App Service etki alanları hakkında fiyatlandırma bilgileri için [App Service fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/app-service/windows/) ziyaret edin ve aşağı kaydırın App Service etki alanı.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 [Azure Portal](https://portal.azure.com/)'ı açın ve Azure hesabınızla oturum açın.
 
 ### <a name="launch-buy-domains"></a>Satın alma etki alanlarını Başlat
@@ -177,7 +168,7 @@ Satın alınan etki alanının **App Service etki alanları** bölümünde liste
 **Konak adı ekle**'yi seçin.
 
 ### <a name="configure-hostname"></a>Ana bilgisayar adını Yapılandır
-Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örneğin:
+Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örnek:
 
 - kontoso.net
 - www\.kontoso.net

@@ -1,24 +1,17 @@
 ---
-title: GitHub eylemleri ile bir CI/CD işlem hattından kapsayıcınızı dağıtma-Azure App Service | Microsoft Docs
-description: App Service kapsayıcınızı dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: GitHub eylemlerinden özel kapsayıcı CI/CD 'si
+description: Özel Linux kapsayıcınızı bir CI/CD işlem hattından App Service dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620222"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671800"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 

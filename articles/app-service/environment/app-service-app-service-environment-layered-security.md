@@ -1,28 +1,20 @@
 ---
-title: App Service ortamları olan katmanlı güvenlik mimarisi-Azure
-description: App Service ortamlarıyla katmanlı bir güvenlik mimarisi uygulama.
-services: app-service
-documentationcenter: ''
+title: Katmanlı güvenlik v1
+description: App Service ortamınızda katmanlı güvenlik mimarisini nasıl uygulayacağınızı öğrenin. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070137"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688793"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>App Service ortamları ile katmanlı güvenlik mimarisi uygulama
-## <a name="overview"></a>Genel Bakış
 App Service ortamları bir sanal ağa dağıtılan yalıtılmış bir çalışma zamanı ortamı sağladığından, geliştiriciler her fiziksel uygulama katmanı için farklı düzeylerde ağ erişimi sağlayan katmanlı bir güvenlik mimarisi oluşturabilir.
 
 API arka uçlarını genel Internet erişimi 'nden gizlemek ve yalnızca API 'Lerin yukarı akış Web uygulamaları tarafından çağrılmasına izin vermek yaygın bir uygulamadır.  [Ağ güvenlik grupları (NSG 'ler)][NetworkSecurityGroups] , API uygulamalarına genel erişimi kısıtlamak Için App Service ortamları içeren alt ağlarda kullanılabilir.
@@ -40,7 +32,7 @@ Hangi ağ güvenlik kurallarının gerekli olduğunu bilmek için, hangi ağ ist
 
 [Ağ güvenlik grupları (NSG 'ler)][NetworkSecurityGroups] alt ağlara uygulandığından ve App Service ortamları alt ağlara dağıtıldığından, BIR NSG 'de bulunan kurallar, bir App Service ortamı çalıştıran **Tüm** uygulamalar için geçerlidir.  Bu makale için örnek mimariyi kullanarak, "apıai" içeren alt ağa bir ağ güvenlik grubu uygulandıktan sonra, "apıai" App Service Ortamı üzerinde çalışan tüm uygulamalar aynı güvenlik kuralları kümesiyle korunacaktır. 
 
-* **Yukarı akış çağıranlarının giden IP adresini belirleme:**  Yukarı akış çağıranlarının IP adresi veya adresleri nedir?  Bu adreslerin NSG 'de açıkça erişime izin verilmesi gerekir.  App Service ortamları arasındaki çağrılar "Internet" çağrıları olarak kabul edildiği için, üç yukarı akış App Service ortamının her birine atanan giden IP adresinin "apıai" alt ağı için NSG 'de erişime izin verilmesi gerekir.   Bir App Service Ortamı çalışan uygulamalar için giden IP adresini belirleme hakkında daha fazla bilgi için, bkz. [ağ mimarisine][NetworkArchitecture] genel bakış makalesi.
+* **Yukarı akış çağıranlarının gıden IP adresini belirleme:**  Yukarı akış çağıranlarının IP adresi veya adresleri nedir?  Bu adreslerin NSG 'de açıkça erişime izin verilmesi gerekir.  App Service ortamları arasındaki çağrılar "Internet" çağrıları olarak kabul edildiği için, üç yukarı akış App Service ortamının her birine atanan giden IP adresinin "apıai" alt ağı için NSG 'de erişime izin verilmesi gerekir.   Bir App Service Ortamı çalışan uygulamalar için giden IP adresini belirleme hakkında daha fazla bilgi için, bkz. [ağ mimarisine][NetworkArchitecture] genel bakış makalesi.
 * **Arka uç API 'SI uygulamasının kendisini çağırması gerekir mi?**  Bazen daha fazla ve hafif bir nokta, arka uç uygulamasının kendisini çağırması gereken senaryosudur.  Bir App Service Ortamı arka uç API uygulamasının kendisini çağırması gerekiyorsa, ayrıca "Internet" çağrısı olarak kabul edilir.  Örnek mimaride, "apıai" App Service Ortamı giden IP adresinden da erişime izin vermeyi gerektirir.
 
 ## <a name="setting-up-the-network-security-group"></a>Ağ güvenlik grubu ayarlanıyor

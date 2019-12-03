@@ -1,24 +1,18 @@
 ---
-title: Giden trafik App Service Ortamı kilitleme-Azure
-description: Giden trafiğin güvenliğini sağlamak için Azure Güvenlik Duvarı ile nasıl tümleştirileceğini açıklar
-services: app-service
-documentationcenter: na
+title: Giden trafiği kilitle
+description: App Service ortamından giden trafiğin güvenliğini sağlamak için Azure Güvenlik Duvarı ile tümleştirmeyi öğrenin.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 936fd797786d05edd7cf0f729af33c95ad3b3c56
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405667"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687223"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
@@ -96,7 +90,7 @@ Azure Güvenlik Duvarı, Azure depolama, Olay Hub 'ı veya Azure Izleyici günl�
  
 Azure Güvenlik duvarını Azure Izleyici günlükleriyle tümleştirmek, uygulama bağımlılıklarının tümünün farkında olmadığında ilk olarak bir uygulama çalışırken yararlıdır. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için [Azure izleyici 'de günlük verilerini analiz](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)edebilirsiniz.
  
-## <a name="dependencies"></a>Bağımlılıkları
+## <a name="dependencies"></a>Bağımlılıklar
 
 Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik duvarı gereci yapılandırmak istiyorsanız gereklidir. 
 
@@ -108,15 +102,15 @@ Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik
 
 #### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar 
 
-| Uç Nokta |
+| Uç nokta |
 |----------|
 | Azure SQL |
-| Azure Storage |
-| Azure Olay Hub'ı |
+| Azure Depolama |
+| Azure Olay Hub’ı |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
 
-| Uç Nokta | Ayrıntılar |
+| Uç nokta | Ayrıntılar |
 |----------| ----- |
 | \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
 | \*: 12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Engellenirse, bazı sorunlar önceliklendirme daha zor olacaktır, ancak ASE 'niz çalışmaya devam edecektir |
@@ -133,7 +127,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları 
 
-| Uç Nokta |
+| Uç nokta |
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
@@ -214,7 +208,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="wildcard-httphttps-dependencies"></a>Joker karakter HTTP/HTTPS bağımlılıkları 
 
-| Uç Nokta |
+| Uç nokta |
 |----------|
 |gr-prod-\*. cloudapp.net:443 |
 | \*. management.azure.com:443 |
@@ -224,7 +218,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="linux-dependencies"></a>Linux bağımlılıkları 
 
-| Uç Nokta |
+| Uç nokta |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -256,7 +250,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 US Gov için hala depolama, SQL ve Olay Hub 'ı için hizmet uç noktaları ayarlamanız gerekir.  Ayrıca, bu belgenin önceki yönergeleriyle birlikte Azure Güvenlik Duvarı 'nı kullanabilirsiniz. Kendi çıkış güvenlik duvarı cihazınızı kullanmanız gerekiyorsa, uç noktalar aşağıda listelenmiştir.
 
-| Uç Nokta |
+| Uç nokta |
 |----------|
 | \*. ctldl.windowsupdate.com:80 |
 | \*. management.usgovcloudapi.net:80 |

@@ -1,32 +1,22 @@
 ---
-title: Python uygulamalarını Yapılandırma-Azure App Service
-description: Bu öğreticide Linux'ta Azure App Service için Python uygulamalarını yazma ve yapılandırma seçenekleri anlatılmaktadır.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Linux Python uygulamalarını yapılandırma
+description: Uygulamanız için önceden oluşturulmuş bir Python kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071081"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670472"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
 Bu makalede, [Azure App Service](app-service-linux-intro.md) Python uygulamalarının nasıl çalıştığı ve gerektiğinde App Service davranışının nasıl özelleştirileceği açıklanır. Python uygulamalarının tüm gerekli [PIP](https://pypi.org/project/pip/) modülleri ile dağıtılması gerekir.
 
-App Service dağıtım altyapısı sanal bir ortamı otomatik olarak etkinleştirir ve bir `pip install -r requirements.txt` [Git deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)dağıtırken sizin için çalışır veya derleme işlemlerine sahip bir [ZIP paketi](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) üzerinde geçiş yapar.
+App Service dağıtım altyapısı bir sanal ortamı otomatik olarak etkinleştirir ve bir [Git deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)dağıtırken sizin için `pip install -r requirements.txt` çalıştırır veya derleme işlemlerine sahip bir [ZIP paketi](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) üzerinde geçiş yapar.
 
 Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Python geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, ilk olarak [Python hızlı](quickstart-python.md) başlangıcı ve [Python 'U PostgreSQL öğreticisiyle](tutorial-python-postgresql-app.md) izlemelisiniz.
 
@@ -119,7 +109,7 @@ App Service özel komut dosyası, Django uygulaması veya Flask uygulaması bula
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Örneğin, ana modülü *Hello.py* olan bir Flask uygulaması varsa ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp`,  *\<özel-komut >* aşağıdaki gibidir:
+Örneğin, ana modülü *Hello.py* olan bir Flask uygulaması varsa ve bu dosyadaki Flask uygulama nesnesi `myapp`olarak adlandırılmışsa, *\<özel komut >* aşağıdaki gibidir:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +121,9 @@ Ana modülünüz `website` gibi bir alt klasör ise bu klasörü `--chdir` bağ�
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Ayrıca, gunic, `--workers=4`  *\<gibi özel komut >* için ek bağımsız değişkenleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [Gunicorn'u Çalıştırma](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Ayrıca, `--workers=4`gibi *özel komut >\<* , gunic, için ek bağımsız değişkenler de ekleyebilirsiniz. Daha fazla bilgi için bkz. [Gunicorn'u Çalıştırma](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-[Aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi gunicbir Server kullanmak için,  *\<özel komut >* aşağıdaki gibi bir şekilde değiştirebilirsiniz:
+[Aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi gunicbir Server kullanmak için, *\<özel komut >* aşağıdaki gibi bir şekilde değiştirebilirsiniz:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -144,7 +134,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Ortam değişkenlerine erişin
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı `WEBSITE_SITE_NAME`bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
+App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin, `WEBSITE_SITE_NAME`adlı bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -152,14 +142,14 @@ os.environ['WEBSITE_SITE_NAME']
 
 ## <a name="detect-https-session"></a>HTTPS oturumunu Algıla
 
-App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa, `X-Forwarded-Proto` üstbilgiyi inceleyin.
+App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa `X-Forwarded-Proto` üst bilgisini inceleyin.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
 # Do something when HTTPS is used
 ```
 
-Popüler Web çerçeveleri standart uygulama hiyerarşinizdeki `X-Forwarded-*` bilgilere erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) varsayılan `X_FORWARDED_PROTO` olarak değerini denetler.
+Popüler Web çerçeveleri, standart uygulama hiyerarşinizdeki `X-Forwarded-*` bilgilerine erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) varsayılan olarak `X_FORWARDED_PROTO` değerini denetler.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
@@ -187,7 +177,7 @@ Popüler Web çerçeveleri standart uygulama hiyerarşinizdeki `X-Forwarded-*` b
 > [Öğretici: PostgreSQL ile Python uygulaması](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: Özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)
+> [Öğretici: özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
 > [App Service Linux SSS](app-service-linux-faq.md)

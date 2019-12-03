@@ -1,51 +1,44 @@
 ---
-title: Giden IP adresi değişikliği için - Azure App Service'ı hazırlama
-description: Giden IP adresiniz, değiştirilecek olacaksa, böylece uygulamanız için değişiklik sonrasında çalışmaya devam yapmanız gerekenler öğrenin.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
+title: Giden IP adresi değişikliğine hazırlanma
+description: Giden IP adresiniz değiştirilebiliyorsa, uygulamanızın değişiklikten sonra çalışmaya devam etmesi için ne yapılacağını öğrenin.
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269800"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671676"
 ---
-# <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Giden IP adresi değişikliği için hazırlama
+# <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Giden IP adresi değişikliğine hazırlanma
 
-Azure App Service uygulamanızı giden IP adreslerini değiştirerek bir bildirim aldıysanız, bu makaledeki yönergeleri izleyin.
+Azure App Service uygulamanızın giden IP adreslerinin değiştiğini belirten bir bildirim aldıysanız, bu makaledeki yönergeleri izleyin.
 
-## <a name="determine-if-you-have-to-do-anything"></a>Herhangi bir şey gerekip gerekmediğini belirleme
+## <a name="determine-if-you-have-to-do-anything"></a>Herhangi bir şey yapmanız gerekip gerekmediğini belirleme
 
-* 1\. seçenek: App Service uygulamanızı IP filtreleme, açık ekleme listesi ya da özel işleme giden trafik yönlendirme veya güvenlik duvarı gibi kullanmıyorsa, hiçbir eylem gerekmiyor.
+* Seçenek 1: App Service uygulamanız IP filtreleme, açık bir ekleme listesi veya yönlendirme veya güvenlik duvarı gibi giden trafiğin özel bir işlemesini kullanmıyorsa, hiçbir eylem gerekmez.
 
-* 2\. seçenek: Uygulamanızı (aşağıdaki örneklere bakın) giden IP adresleri için özel işlem varsa, mevcut görünen yeni giden IP adresleri ekleyin. Mevcut IP adreslerini değiştirin yok. Sonraki bölümde yönergeleri takip ederek yeni giden IP adresleri bulabilirsiniz.
+* Seçenek 2: uygulamanızın giden IP adresleri için özel işleme varsa (aşağıdaki örneklere bakın), mevcut olanların her yerde yeni giden IP adreslerini ekleyin. Mevcut IP adreslerini değiştirme. Sonraki bölümdeki yönergeleri izleyerek yeni giden IP adreslerini bulabilirsiniz.
 
-  Örneğin, bir giden IP adresi açıkça uygulamanızı dışında bir güvenlik duvarı eklenebilir veya bir dış ödeme hizmet uygulamanız için giden IP adresi içeren bir izin verilenler olabilir. Giden adresinizi uygulamanızı dışında herhangi bir yeri listesindeki yapılandırılmışsa, değiştirmesi gerekir.
+  Örneğin, bir giden IP adresi uygulamanızın dışında bir güvenlik duvarına açık bir şekilde dahil edilebilir veya bir dış ödeme hizmeti, uygulamanızın giden IP adresini içeren izin verilen bir listeye sahip olabilir. Giden adresiniz, uygulamanızın dışında herhangi bir yerde bir listede yapılandırılmışsa, bunun değişmesi gerekir.
 
-## <a name="find-the-outbound-ip-addresses-in-the-azure-portal"></a>Giden IP adresleri, Azure portalında bulun
+## <a name="find-the-outbound-ip-addresses-in-the-azure-portal"></a>Azure portal giden IP adreslerini bulma
 
-Etkili olmadan önce portalda yeni giden IP adresleri gösterilir. Eskileri, artık Azure yenilerini kullanılarak başlatıldığında kullanılacaktır. Aynı anda yalnızca bir küme kullanılır, bu nedenle ekleme listeleri girişleri anahtarı meydana geldiğinde kesinti önlemek için eski ve yeni IP adresleri olması gerekir. 
+Yeni giden IP adresleri, portalda etkili olmadan önce görüntülenir. Azure yeni olanları kullanmaya başladığında, eski olanlar artık kullanılmaz. Tek seferde yalnızca bir küme kullanılır, bu nedenle ekleme listelerindeki girişlerin, anahtar gerçekleştiğinde kesinti oluşmasını engellemek için hem eski hem de yeni IP adreslerine sahip olması gerekir. 
 
 1.  [Azure portalı](https://portal.azure.com) açın.
 
-2.  Sol taraftaki gezinti menüsünde seçin **uygulama hizmetleri**.
+2.  Sol taraftaki gezinti menüsünde **uygulama hizmetleri**' ni seçin.
 
-3.  App Service uygulamanızı listeden seçin.
+3.  Listeden App Service uygulamanızı seçin.
 
-1.  Uygulamayı bir işlev uygulaması, bakın [işlev uygulaması giden IP adresleri](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
+1.  Uygulama bir işlev uygulamadır, bkz. [işlev uygulaması gıden IP adresleri](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
-4.  Altında **ayarları** başlık tıklayın **özellikleri** sol gezinti ve Bul etiketlenmiş bölümü **giden IP adresleri**.
+4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **Özellikler** ' e tıklayın ve **giden IP adresleri**etiketli bölümü bulun.
 
-5. IP adreslerini kopyalayıp giden trafik bir filtre gibi özel işlem eklemek veya izin verilen listesi. Listenin mevcut IP adreslerini silmeyin.
+5. IP adreslerini kopyalayın ve bir filtre veya izin verilenler listesi gibi giden trafiğinizi özel işleme ekleyin. Listedeki mevcut IP adreslerini silmeyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure tarafından başlatılan bir IP adresi değişikliği hazırlama açıklanmıştır. Azure App Service'te IP adresleri hakkında daha fazla bilgi için bkz. [gelen ve giden IP adresleri, Azure App Service'te](overview-inbound-outbound-ips.md).
+Bu makalede, Azure tarafından başlatılan bir IP adresi değişikliğine hazırlanma konusu açıklanmaktadır. Azure App Service IP adresleri hakkında daha fazla bilgi için, bkz. [Azure App Service gelen ve gıden IP adresleri](overview-inbound-outbound-ips.md).

@@ -1,25 +1,16 @@
 ---
-title: Mikro hizmetleri sağlama ve dağıtma Azure App Service öngörülebilir-
-description: Azure App Service, mikro hizmetlerden oluşan bir uygulamayı tek bir birim olarak ve JSON kaynak grubu şablonlarını ve PowerShell komut dosyasını kullanarak öngörülebilir bir şekilde dağıtmayı öğrenin.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: ARM ile uygulamaları öngörülebilir bir şekilde dağıtın
+description: Birden çok Azure App Service uygulamayı tek bir birim olarak ve Azure Kaynak Yönetimi şablonlarını ve PowerShell komut dosyasını kullanarak öngörülebilir bir şekilde dağıtmayı öğrenin.
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b13bc43595c09b3700798935f70c401c9311651c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070890"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671817"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure 'da mikro hizmetleri öngörülebilir bir şekilde sağlayın ve dağıtın
 Bu öğreticide, tek bir birim olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) [mikro hizmetlerden](https://en.wikipedia.org/wiki/Microservices) oluşan bir uygulamanın nasıl SAĞLANACAĞı ve dağıtılacağı ve JSON kaynak grubu şablonlarının ve PowerShell betiği kullanılarak öngörülebilir bir şekilde dağıtılması gösterilmektedir. 
@@ -61,10 +52,10 @@ Kaynak denetimi için GitHub kullanıyorsanız, BENIOKU 'nize bir [Azure 'A dağ
 
 1. [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service örneğine gidin.
 2. Readme.md ' de **Azure 'A dağıt**' a tıklayın.
-3. Dağıtım parametrelerine yönlendirilirsiniz ve dağıtım [](https://deploy.azure.com) parametrelerini oluşturmanız istenir. Alanların çoğunun Depo adı ve sizin için bazı rastgele dizeler doldurulduğuna dikkat edin. İsterseniz tüm alanları değiştirebilirsiniz, ancak girmeniz gereken tek şey SQL Server yönetici oturum açma ve parola ' **nun ardından İleri**' ye tıklayın.
+3. [Dağıtım parametrelerine](https://deploy.azure.com) yönlendirilirsiniz ve dağıtım parametrelerini oluşturmanız istenir. Alanların çoğunun Depo adı ve sizin için bazı rastgele dizeler doldurulduğuna dikkat edin. İsterseniz tüm alanları değiştirebilirsiniz, ancak girmeniz gereken tek şey SQL Server yönetici oturum açma ve parola ' **nun ardından İleri**' ye tıklayın.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
-4. Sonra dağıtım işlemini başlatmak için **Dağıt** ' a tıklayın. İşlem tamamlanana kadar çalıştıktan sonra, dağıtılan uygulamaya gitmek http://todoapp için *xxxx*. azurewebsites.net bağlantısına tıklayın. 
+4. Sonra dağıtım işlemini başlatmak için **Dağıt** ' a tıklayın. İşlem tamamlanana kadar çalıştıktan sonra, dağıtılan uygulamaya gitmek için http://todoapp*xxxx*. azurewebsites.net bağlantısına tıklayın. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
@@ -107,10 +98,10 @@ JSON içinde basit bir kök düzeyi kaynakla başlayalım. JSON ana hattının k
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
-`type` Öğesinin bir App Service planı için dizeyi (bir sunucu grubu uzun, uzun bir süre önce denir) belirtir ve diğer öğeler ve Özellikler json dosyasında tanımlanan parametreleri kullanarak doldurulmuştur ve bu kaynak hiç iç içe geçmiş bir kaynakların.
+`type` öğesinin bir App Service planı için dizeyi (bir sunucu grubu uzun, uzun bir süre önce denir) belirtir ve diğer öğeler ve Özellikler JSON dosyasında tanımlanan parametreleri kullanarak doldurulmuştur ve bu kaynak, iç içe kaynak içermez.
 
 > [!NOTE]
-> Ayrıca değeri, Azure 'un `apiVersion` hangi REST API sürümünün ile JSON kaynak tanımını kullandığını söyler ve kaynağın `{}`içinde nasıl biçimlendirilmesi gerektiğini etkileyebilir. 
+> Ayrıca `apiVersion` değerinin, Azure 'un hangi REST API sürümünün ile JSON kaynak tanımını kullandığını ve kaynağın `{}`içinde nasıl biçimlendirilmesi gerektiğini de etkilediğini unutmayın. 
 > 
 > 
 
@@ -122,14 +113,14 @@ Ardından, JSON ana hattından **SqlServer** adlı SQL Server kaynağına tıkla
 Vurgulanan JSON kodu hakkında aşağıdakilere dikkat edin:
 
 * Parametrelerin kullanımı, oluşturulan kaynakların bir diğeri ile tutarlı hale gelmesini sağlamak için adlandırılmış ve yapılandırılmış olmasını sağlar.
-* SQLServer kaynağında iki iç içe kaynak bulunur, her biri için `type`farklı bir değere sahiptir.
-* Veritabanının ve güvenlik duvarı `“resources”: […]`kurallarının tanımlandığı iç içe geçmiş kaynaklar, kök düzeyindeki SqlServer kaynağının kaynak kimliğini `dependsOn` belirten bir öğesi vardır. Bu, "Bu kaynağı oluşturmadan önce diğer kaynağın zaten mevcut olması gerektiğini Azure Resource Manager söyler. daha sonra bu diğer kaynak şablonda tanımlanmazsa, önce bunu oluşturun.
+* SQLServer kaynağında iki iç içe kaynak bulunur, her biri `type`için farklı bir değere sahiptir.
+* Veritabanı ve Güvenlik Duvarı kurallarının tanımlandığı `“resources”: […]`içinde iç içe geçmiş kaynaklar, kök düzeyindeki SQLServer kaynağının kaynak KIMLIĞINI belirten bir `dependsOn` öğesi vardır. Bu, "Bu kaynağı oluşturmadan önce diğer kaynağın zaten mevcut olması gerektiğini Azure Resource Manager söyler. daha sonra bu diğer kaynak şablonda tanımlanmazsa, önce bunu oluşturun.
   
   > [!NOTE]
-  > `resourceId()` İşlevini kullanma hakkında ayrıntılı bilgi için bkz. [Azure Resource Manager şablon işlevleri](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
+  > `resourceId()` işlevini kullanma hakkında ayrıntılı bilgi için bkz. [Azure Resource Manager şablon işlevleri](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
   > 
   > 
-* `dependsOn` Öğesinin etkisi Azure Resource Manager paralel olarak hangi kaynakların oluşturulabileceklerini ve hangi kaynakların sırayla oluşturulması gerektiğini bilmez. 
+* `dependsOn` öğesinin etkisi, Azure Resource Manager hangi kaynakların paralel olarak oluşturulabileceklerini ve hangi kaynakların ardışık olarak oluşturulması gerektiğini bilmesini sağlayabilir. 
 
 #### <a name="app-service-app"></a>App Service uygulaması
 Şimdi de gerçek uygulamaların kendisine geçelim, daha karmaşıktır. JSON ana hattından JSON kodunu vurgulamak için [Variables (' apiSiteName ')] uygulamasına tıklayın. İşlerin çok daha ilgi çekici olduğunu fark edeceksiniz. Bu amaçla, tek tek özellikler hakkında konuşacağız:
@@ -144,34 +135,34 @@ Uygulama ayarları, iç içe geçmiş bir kaynak olarak da tanımlanır.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-`properties` İçin `"<name>" : "<value>"`öğesinde, biçiminde iki uygulama ayarı vardır. `config/appsettings`
+`config/appsettings`için `properties` öğesinde, `"<name>" : "<value>"`biçiminde iki uygulama ayarı vardır.
 
 * `PROJECT`, Azure dağıtımına bir çoklu proje Visual Studio çözümünde hangi projenin kullanılacağını söyleyen bir [kudu ayarıdır](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) . Kaynak denetiminin nasıl yapılandırıldığını daha sonra göstereceğiz, ancak ToDoApp kodu çok projeli bir Visual Studio çözümünde olduğundan, bu ayara ihtiyacımız var.
-* `clientUrl`yalnızca uygulama kodunun kullandığı bir uygulama ayarıdır.
+* `clientUrl` yalnızca uygulama kodunun kullandığı bir uygulama ayarıdır.
 
 ##### <a name="connection-strings"></a>Bağlantı dizeleri
 Bağlantı dizeleri de iç içe geçmiş bir kaynak olarak tanımlanır.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-`"<name>" : {"value": "…", "type": "…"}`İçin `properties` öğesinde,herbağlantıdizesi,belirlibiçimiylebirad:değerçiftiolarakdatanımlanır.`config/connectionstrings` `MySql` `SQLServer`Öğesi için olası değerler ,`SQLAzure`, ve`Custom`'dir. `type`
+`config/connectionstrings`için `properties` öğesinde, her bağlantı dizesi, belirli bir `"<name>" : {"value": "…", "type": "…"}`biçimiyle bir ad: değer çifti olarak da tanımlanır. `type` öğesi için, olası değerler `MySql`, `SQLServer`, `SQLAzure`ve `Custom`.
 
 > [!TIP]
-> Bağlantı dizesi türlerinin kesin bir listesi için Azure PowerShell ' de aşağıdaki komutu çalıştırın: \[Enum]:: GetNames ("Microsoft. WindowsAzure. Commands. Utilities. Web siteleri. Services. WebEntities. DatabaseType")
+> Bağlantı dizesi türlerinin kesin bir listesi için Azure PowerShell: \[enum]:: GetNames ("Microsoft. WindowsAzure. Commands. Utilities. Web siteleri. Services. WebEntities. DatabaseType") içinde aşağıdaki komutu çalıştırın
 > 
 > 
 
 ##### <a name="source-control"></a>Kaynak denetimi
-Kaynak denetimi ayarları, iç içe geçmiş kaynak olarak da tanımlanır. Azure Resource Manager, sürekli yayımlamayı yapılandırmak için bu kaynağı kullanır ( `IsManualIntegration` daha sonra bkz. desteklenmediği uyarısıyla) ve ayrıca, JSON dosyasının işlenmesi sırasında uygulama kodu dağıtımını otomatik olarak başlatma.
+Kaynak denetimi ayarları, iç içe geçmiş kaynak olarak da tanımlanır. Azure Resource Manager, sürekli yayımlamayı yapılandırmak için bu kaynağı kullanır (`IsManualIntegration` daha sonra bkz. desteklenmediği uyarısıyla) ve ayrıca JSON dosyasının işlenmesi sırasında uygulama kodu dağıtımını otomatik olarak başlatma.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl`ve `branch` oldukça sezgisel olmalıdır ve git deposuna ve yayımlanacak dalın adına işaret etmelidir. Bunlar, giriş parametrelerine göre tanımlanır. 
+`RepoUrl` ve `branch` oldukça sezgisel olmalıdır ve git deposuna ve yayımlanacak dalın adına işaret etmelidir. Bunlar, giriş parametrelerine göre tanımlanır. 
 
-Öğesinde, uygulama kaynağının `sourcecontrols/web` yanı sıra `config/appsettings` ve `config/connectionstrings`' a bağlı olarak da değişir. `dependsOn` Bunun nedeni, bir `sourcecontrols/web` kez yapılandırıldıktan sonra Azure dağıtım işleminin uygulama kodunu otomatik olarak dağıtmayı, derlemeyi ve başlatmasını deneyecektir. Bu nedenle, bu bağımlılığı eklemek uygulamanın, uygulama kodu çalıştırılmadan önce gerekli uygulama ayarlarına ve bağlantı dizelerine erişimi olduğundan emin olmanıza yardımcı olur. 
+`dependsOn` öğesinde, uygulama kaynağının yanı sıra `sourcecontrols/web` `config/appsettings` ve `config/connectionstrings`de bağlı olduğunu unutmayın. Bunun nedeni, `sourcecontrols/web` yapılandırıldıktan sonra Azure dağıtım işleminin uygulama kodunu otomatik olarak dağıtmayı, derlemeyi ve başlatmasını deneyecektir. Bu nedenle, bu bağımlılığı eklemek uygulamanın, uygulama kodu çalıştırılmadan önce gerekli uygulama ayarlarına ve bağlantı dizelerine erişimi olduğundan emin olmanıza yardımcı olur. 
 
 > [!NOTE]
-> Ayrıca `IsManualIntegration` , olarak `true`ayarlanır. Bu öğreticide, GitHub deposuna sahip olmadığınız ve bu nedenle [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 'den sürekli yayımlamayı yapılandırmak üzere Azure 'a izin vermediği için bu özellik gereklidir (yani, Azure 'a otomatik depo güncelleştirmeleri gönderin). Belirtilen depo için varsayılan değeri `false` , daha önce [Azure Portal](https://portal.azure.com/) sahibinin GitHub kimlik bilgilerini yapılandırdıysanız kullanabilirsiniz. Diğer bir deyişle, [Azure portalında](https://portal.azure.com/) daha önce Kullanıcı kimlik bilgilerinizi kullanarak herhangi bir uygulama için GitHub veya Bitbucket 'a kaynak denetimi ayarladıysanız, Azure kimlik bilgilerini hatırlayacaktır ve bir uygulamayı GitHub 'Dan veya Bitbucket 'ten her dağıtırken kullanır yayımlanacak. Bununla birlikte, bunu yapmadıysanız, Azure Resource Manager uygulamanın kaynak denetimi ayarlarını yapılandırmayı denediğinde, depolama sahibinin kimlik bilgileriyle GitHub veya BitBucket 'ta oturum açabildiğinden JSON şablonunun dağıtılması başarısız olur.
+> Ayrıca `IsManualIntegration` `true`olarak ayarlandığını unutmayın. Bu öğreticide, GitHub deposuna sahip olmadığınız ve bu nedenle [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 'den sürekli yayımlamayı yapılandırmak üzere Azure 'a izin vermediği için bu özellik gereklidir (yani, Azure 'a otomatik depo güncelleştirmeleri gönderin). Belirtilen depo için `false` varsayılan değeri, yalnızca [Azure Portal](https://portal.azure.com/) daha önce olan sahibin GitHub kimlik bilgilerini yapılandırdıysanız kullanabilirsiniz. Diğer bir deyişle, [Azure portalında](https://portal.azure.com/) daha önce Kullanıcı kimlik bilgilerinizi kullanarak herhangi bir uygulama için GitHub veya Bitbucket 'a kaynak denetimi ayarladıysanız, Azure kimlik bilgilerini hatırlayacaksınız ve gelecekte herhangi bir uygulamayı GitHub veya Bitbucket 'ten dağıttığınızda kullanacaktır. Bununla birlikte, bunu yapmadıysanız, Azure Resource Manager uygulamanın kaynak denetimi ayarlarını yapılandırmayı denediğinde, depolama sahibinin kimlik bilgileriyle GitHub veya BitBucket 'ta oturum açabildiğinden JSON şablonunun dağıtılması başarısız olur.
 > 
 > 
 
@@ -192,7 +183,7 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
 **Azure 'A dağıt** düğmesi harika, ancak azuredeploy. JSON dosyasındaki kaynak grubu şablonunu yalnızca GitHub ' a zaten itilmiş olmanız durumunda dağıtmanıza izin verir. Azure .NET SDK 'Sı Ayrıca, tüm JSON şablon dosyalarını doğrudan yerel makinenizden dağıtmanıza yönelik araçlar da sağlar. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. Visual Studio’da, **Dosya** > **Yeni** > **Proje**’ye tıklayın.
-2. **C#Visual**Cloud Azure Kaynak grubu ' na tıklayın ve ardından Tamam ' a tıklayın. >   > 
+2. **Visual C#**  > **Cloud** > **Azure Kaynak grubu**' na tıklayın ve ardından **Tamam**' a tıklayın.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. **Azure şablonu seç**' te **boş şablon** ' u seçin ve **Tamam**' ı tıklatın.
@@ -211,14 +202,14 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
 8. JSON ana hattından, JSON kodunu vurgulamak için **Appınsights otomatik ölçeklendirme** ' ye tıklayın. Bu, App Service planınız için ölçeklendirme ayarıdır.
-9. Vurgulanan JSON kodunda, `location` ve `enabled` özelliklerini bulun ve aşağıda gösterildiği gibi ayarlayın.
+9. Vurgulanan JSON kodunda `location` ve `enabled` özelliklerini bulun ve aşağıda gösterildiği gibi ayarlayın.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 10. JSON ana hattından, JSON kodunu vurgulamak için **Cpuhigh Appınsights** ' a tıklayın. Bu bir uyarıdır.
-11. `location` Ve`isEnabled` özelliklerini bulun ve aşağıda gösterildiği gibi ayarlayın. Diğer üç uyarı (mor bulbs) için de aynısını yapın.
+11. `location` ve `isEnabled` özelliklerini bulun ve aşağıda gösterildiği gibi ayarlayın. Diğer üç uyarı (mor bulbs) için de aynısını yapın.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. Şimdi dağıtıma hazırsınız. Projeye sağ tıklayın ve**yeni dağıtım** **Dağıt** > ' ı seçin.
+12. Şimdi dağıtıma hazırsınız. Projeye sağ tıklayın ve **yeni dağıtım** > **Dağıt** ' ı seçin.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Henüz yapmadıysanız Azure hesabınızda oturum açın.
@@ -234,10 +225,10 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
-    > Otomatik ölçeklendirme, **Standart** katmanda veya daha yüksek bir özelliktir ve plan düzeyi uyarılar **temel** katmanda veya daha yüksek sürümlerde sunulan özelliklerdir, tüm yeni bilgilerinizi görmek için **SKU** parametresini **Standart** veya **Premium** olarak ayarlamanız gerekir. App Insights kaynakları hafif.
+    > Otomatik ölçeklendirme, **Standart** katmanda veya daha yüksek bir özelliktir ve plan düzeyi uyarılar **temel** katmanda veya daha yüksek sürümlerde sunulan özelliklerdir, tüm yeni App Insights kaynaklarınızın açık olduğunu görmek için **SKU** parametresini **Standart** veya **Premium** olarak ayarlamanız gerekir.
     > 
     > 
-16. Tıklayın **dağıtma**. **Parolaları kaydet**' i seçtiyseniz, parola parametre dosyasına **düz metin olarak**kaydedilir. Aksi takdirde, dağıtım işlemi sırasında veritabanı parolasını girmek isteyip istemediğiniz sorulur.
+16. **Dağıt**' a tıklayın. **Parolaları kaydet**' i seçtiyseniz, parola parametre dosyasına **düz metin olarak**kaydedilir. Aksi takdirde, dağıtım işlemi sırasında veritabanı parolasını girmek isteyip istemediğiniz sorulur.
 
 Bu kadar! Şimdi, JSON dağıtılan uygulamanıza eklenen yeni uyarıları ve otomatik ölçeklendirme ayarlarını görmek için [Azure portalına](https://portal.azure.com/) ve [Azure Kaynak Gezgini](https://resources.azure.com) aracına gitmeniz yeterlidir.
 
@@ -251,7 +242,7 @@ Son adım bir PowerShell cmdlet 'i tarafından kolayca yapılır. Uygulamanızı
 
 ![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
-Son cmdlet `New-AzureResourceGroup`'i, eylemi gerçekten gerçekleştiren bir şeydir. Bu, araç yardımıyla, bulut uygulamanızı öngörülebilir şekilde dağıtmak için oldukça basittir. Cmdlet 'i aynı şablonda aynı parametre dosyası ile her çalıştırdığınızda aynı sonucu elde edersiniz.
+Son cmdlet 'i `New-AzureResourceGroup`, eylemi gerçekten gerçekleştiren bir şeydir. Bu, araç yardımıyla, bulut uygulamanızı öngörülebilir şekilde dağıtmak için oldukça basittir. Cmdlet 'i aynı şablonda aynı parametre dosyası ile her çalıştırdığınızda aynı sonucu elde edersiniz.
 
 ## <a name="summary"></a>Özet
 DevOps 'da, yinelenebilirlik ve öngörülebilirlik, mikro hizmetlerden oluşan yüksek ölçekli bir uygulamanın başarılı bir dağıtımına yönelik anahtarlardır. Bu öğreticide, Azure 'da Azure Resource Manager şablonunu kullanarak tek bir kaynak grubu olarak iki mikro bir hizmet uygulaması dağıttı. Azure 'da uygulamanızı bir şablona dönüştürmeye başlamak için ihtiyacınız olan bilgileri size vermiş ve tahmin edilebilir hale getirmek ve dağıtabilir. 

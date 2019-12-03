@@ -1,24 +1,15 @@
 ---
-title: Özel Windows kapsayıcısını (Önizleme) Çalıştır-Azure App Service | Microsoft Docs
-description: Azure App Service'e özel bir Windows kapsayıcısı dağıtmayı öğrenin.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Hızlı başlangıç: Windows kapsayıcı (Önizleme)'
+description: Azure App Service için ilk özel Windows kapsayıcınızı dağıtın. Kapsayıcılarından yararlanın, Windows kapsayıcısını istediğiniz gibi özelleştirin.
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241863"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671341"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure'da özel Windows kapsayıcısı çalıştırma (Önizleme)
 
@@ -35,8 +26,8 @@ Bu öğreticiyi tamamlamak için:
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
 
-    - **Güncelleştirmeler için** **Yardım** > denetimi ' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
-    - **Araçlar** > **Al araçlar ve Özellikler ' i**seçerek iş yüklerini Visual Studio 'da ekleyin.
+    - **Güncelleştirmeler Için** **Yardım** > denetle ' i seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+    - Araçlar **ve Özellikler al** > **Araçlar** ' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET web uygulaması oluşturma
 
@@ -52,7 +43,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. Azure’a herhangi bir türde ASP.NET web uygulaması dağıtabilirsiniz. Bu hızlı başlangıç için **MVC** şablonunu seçin.
 
-1. **Docker desteği**' ni seçin ve kimlik doğrulamasının **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**’u seçin.
+1. **Docker desteği**' ni seçin ve kimlik doğrulamasının **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**'u seçin.
 
    ![ASP.NET Web uygulaması oluşturma](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
@@ -64,7 +55,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. Web uygulamasını yerel olarak çalıştırmak için Visual Studio **menüsünden hata ayıklama** > **olmadan Başlat** ' ı seçin.
+1. Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden **hata ayıkla** > **Başlat** ' ı seçin.
 
    ![Uygulamayı yerel olarak çalıştırma](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
@@ -88,7 +79,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 ## <a name="create-a-windows-container-app"></a>Windows kapsayıcı uygulaması oluşturma
 
-1. [Azure Portal]( https://portal.azure.com) oturum açın.
+1. [Azure Portal]( https://portal.azure.com)’ında oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 
@@ -96,7 +87,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. **Web uygulaması oluştur**bölümünde aboneliğinizi ve bir **kaynak grubunu**seçin. Gerekirse yeni bir kaynak grubu oluşturabilirsiniz.
 
-1. *Win-Container-demo* gibi bir uygulama adı sağlayın ve **Işletim sistemi**için **Windows** 'u seçin. İleri **' yi seçin: Devam etmek** için Docker.
+1. *Win-Container-demo* gibi bir uygulama adı sağlayın ve **Işletim sistemi**için **Windows** 'u seçin. Ileri ' yi seçin: devam etmek için **Docker** .
 
    ![Kapsayıcılar için Web App oluşturma](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
@@ -147,7 +138,7 @@ Akışı yapılan günlükler şuna benzer:
 
 ## <a name="update-locally-and-redeploy"></a>Yerel olarak güncelleştirme ve yeniden dağıtma
 
-1. Visual Studio 'da, **Çözüm Gezgini**, **Görünümler** > **ana** > **Dizin. cshtml**dosyasını açın.
+1. Visual Studio 'da, **Çözüm Gezgini**' **de > ** **Home** > **Index. cshtml**' yi açın.
 
 1. Üst kısımda `<div class="jumbotron">` HTML etiketini bulun ve tüm öğeyi aşağıdaki kodla değiştirin:
 

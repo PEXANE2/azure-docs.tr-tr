@@ -1,24 +1,18 @@
 ---
-title: Dış App Service ortamı oluşturma-Azure
-description: Uygulama oluştururken veya tek başına bir App Service ortamı oluşturmayı açıklar
-services: app-service
-documentationcenter: na
+title: Dış Ao oluştur
+description: İçindeki bir uygulamayla App Service ortam oluşturmayı veya tek başına (boş) Ao oluşturmayı öğrenin.
 author: ccompy
-manager: stefsch
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 19d58ed90de4bdbd3cd7606d15c115bb1633770a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5ec9a99f55c2c9a3cb487ad7d69610a512d5b8bd
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069700"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687237"
 ---
 # <a name="create-an-external-app-service-environment"></a>Dış App Service ortamı oluşturma
 
@@ -38,15 +32,15 @@ Bu makalede, dış Ao 'nın nasıl oluşturulacağı gösterilmektedir. Ao 'ya g
 
 ATıCı 'nizi oluşturduktan sonra, aşağıdakileri değiştiremezsiniz:
 
-- Location
-- Subscription
-- Resource group
+- Konum
+- Abonelik
+- Kaynak grubu
 - Kullanılan VNet
 - Kullanılan alt ağ
 - Alt ağ boyutu
 
 > [!NOTE]
-> VNet seçtiğinizde ve bir alt ağ belirttiğinizde, gelecekteki büyüme ve ölçekleme ihtiyaçlarına uyum sağlayacak kadar büyük olduğundan emin olun. 256 adres `/24` içeren bir boyut önerilir.
+> VNet seçtiğinizde ve bir alt ağ belirttiğinizde, gelecekteki büyüme ve ölçekleme ihtiyaçlarına uyum sağlayacak kadar büyük olduğundan emin olun. 256 adres içeren `/24` boyutunu öneririz.
 >
 
 ## <a name="three-ways-to-create-an-ase"></a>ATıCı oluşturmanın üç yolu
@@ -65,7 +59,7 @@ App Service planı, uygulamaların bir kapsayıcısıdır. App Service bir uygul
 
 Bir App Service planı oluştururken Ao oluşturmak için:
 
-1.  >  [Azure Portal](https://portal.azure.com/),**Web uygulaması** **Web ve mobil** >  **kaynak oluştur**' u seçin.
+1. [Azure Portal](https://portal.azure.com/), **Web uygulaması** **Web ve mobil** > **kaynak oluştur** > seçin.
 
     ![Web uygulaması oluşturma][1]
 
@@ -89,13 +83,13 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
     ![Yeni App Service plan adı][4]
 
-9. Azure sanal ağ ayrıntılarınızı belirtin. **Yeni oluştur** ' u seçin veya mevcut ' ı **seçin**. Mevcut bir VNet seçme seçeneği yalnızca seçili bölgede bir sanal ağ varsa kullanılabilir. **Yeni oluştur**' u seçerseniz VNET için bir ad girin. Bu ada sahip yeni bir Kaynak Yöneticisi VNet oluşturulur. Seçili bölgedeki adres alanını `192.168.250.0/23` kullanır. **Varolanı Seç**' i seçerseniz şunları yapmanız gerekir:
+9. Azure sanal ağ ayrıntılarınızı belirtin. **Yeni oluştur** ' u seçin veya mevcut ' ı **seçin**. Mevcut bir VNet seçme seçeneği yalnızca seçili bölgede bir sanal ağ varsa kullanılabilir. **Yeni oluştur**' u seçerseniz VNET için bir ad girin. Bu ada sahip yeni bir Kaynak Yöneticisi VNet oluşturulur. Seçili bölgede `192.168.250.0/23` adres alanını kullanır. **Varolanı Seç**' i seçerseniz şunları yapmanız gerekir:
 
     a. Birden fazla tane varsa VNet adres bloğunu seçin.
 
     b. Yeni bir alt ağ adı girin.
 
-    c. Alt ağın boyutunu seçin. *Ao 'nizin gelecekteki büyümesini karşılayacak büyüklükte bir boyut seçip seçmeyi unutmayın.* 128 adresine `/24`sahip ve en yüksek boyutlu bir abi 'yi işleyebilen için önerilir. Örneğin, yalnızca `/28`16 adres kullanılabildiği için bu önerilmez. Altyapı en az yedi adres kullanır ve Azure ağı başka bir 5 kullanır. Bir `/28` alt ağda, bir dış ay için App Service plan örnekleri ve bir ILB ay için yalnızca 3 App Service plan örneği olan 4 en yüksek ölçeklendirmeyle birlikte kalır.
+    c. Alt ağın boyutunu seçin. *Ao 'nizin gelecekteki büyümesini karşılayacak büyüklükte bir boyut seçip seçmeyi unutmayın.* 128 adresi olan ve en yüksek boyutlu bir ABI 'yi işleyebilen `/24`önerilir. Örneğin yalnızca 16 adres kullanılabildiği için `/28`önerilmez. Altyapı en az yedi adres kullanır ve Azure ağı başka bir 5 kullanır. Bir `/28` alt ağında, bir dış ay için en fazla 4 App Service planı örneği ve bir ıLB Ao 'nun yalnızca 3 App Service plan örneği ile birlikte ayrıldınız.
 
     d. Alt ağ IP aralığını seçin.
 
@@ -103,7 +97,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Özel bir Docker görüntüsünü birlikte kullanarak asa ve Linux Web uygulaması oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) **bir kaynak** > **kapsayıcılar için web app**Webvemobil > oluşturun. 
+1. [Azure Portal](https://portal.azure.com/), **Web ve mobil** > kapsayıcılar için Web App **bir kaynak > oluşturun** **.** 
 
     ![Web uygulaması oluşturma][7]
 
@@ -125,13 +119,13 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
     ![Yeni App Service plan adı][4]
 
-1. Azure sanal ağ ayrıntılarınızı belirtin. **Yeni oluştur** ' u seçin veya mevcut ' ı **seçin**. Mevcut bir VNet seçme seçeneği yalnızca seçili bölgede bir sanal ağ varsa kullanılabilir. **Yeni oluştur**' u seçerseniz VNET için bir ad girin. Bu ada sahip yeni bir Kaynak Yöneticisi VNet oluşturulur. Seçili bölgedeki adres alanını `192.168.250.0/23` kullanır. **Varolanı Seç**' i seçerseniz şunları yapmanız gerekir:
+1. Azure sanal ağ ayrıntılarınızı belirtin. **Yeni oluştur** ' u seçin veya mevcut ' ı **seçin**. Mevcut bir VNet seçme seçeneği yalnızca seçili bölgede bir sanal ağ varsa kullanılabilir. **Yeni oluştur**' u seçerseniz VNET için bir ad girin. Bu ada sahip yeni bir Kaynak Yöneticisi VNet oluşturulur. Seçili bölgede `192.168.250.0/23` adres alanını kullanır. **Varolanı Seç**' i seçerseniz şunları yapmanız gerekir:
 
     a. Birden fazla tane varsa VNet adres bloğunu seçin.
 
     b. Yeni bir alt ağ adı girin.
 
-    c. Alt ağın boyutunu seçin. *Ao 'nizin gelecekteki büyümesini karşılayacak büyüklükte bir boyut seçip seçmeyi unutmayın.* 128 adresine `/24`sahip ve en yüksek boyutlu bir abi 'yi işleyebilen için önerilir. Örneğin, yalnızca `/28`16 adres kullanılabildiği için bu önerilmez. Altyapı en az yedi adres kullanır ve Azure ağı başka bir 5 kullanır. Bir `/28` alt ağda, bir dış ay için App Service plan örnekleri ve bir ILB ay için yalnızca 3 App Service plan örneği olan 4 en yüksek ölçeklendirmeyle birlikte kalır.
+    c. Alt ağın boyutunu seçin. *Ao 'nizin gelecekteki büyümesini karşılayacak büyüklükte bir boyut seçip seçmeyi unutmayın.* 128 adresi olan ve en yüksek boyutlu bir ABI 'yi işleyebilen `/24`önerilir. Örneğin yalnızca 16 adres kullanılabildiği için `/28`önerilmez. Altyapı en az yedi adres kullanır ve Azure ağı başka bir 5 kullanır. Bir `/28` alt ağında, bir dış ay için en fazla 4 App Service planı örneği ve bir ıLB Ao 'nun yalnızca 3 App Service plan örneği ile birlikte ayrıldınız.
 
     d. Alt ağ IP aralığını seçin.
 
@@ -147,7 +141,7 @@ Bir App Service planı oluştururken Ao oluşturmak için:
 
 Tek başına bir bağımsız oluşturursanız, içinde hiç bir şey yoktur. Boş bir Ao, altyapı için hala aylık bir ücret doğurur. Bir ıLB ile ATıCı oluşturmak veya kendi kaynak grubunda Ao oluşturmak için bu adımları izleyin. Ace 'nizi oluşturduktan sonra, normal işlemi kullanarak bu uygulamalarda uygulamalar oluşturabilirsiniz. Konum olarak yeni ATıCı 'nizi seçin.
 
-1. **App Service ortamı**için Azure Marketi 'nde arama yapın veya **kaynak** > oluştur**Web mobil** > **App Service ortamı**' i seçin. 
+1. **App Service ortamı**Için Azure Marketi 'nde arama yapın veya > **Web Mobile** > **App Service ortamı** **kaynak oluştur** ' u seçin. 
 
 1. ATıCı 'nizin adını girin. Bu ad, Ao 'da oluşturulan uygulamalar için kullanılır. Ad *yenematıcı*ise, alt etki alanı adı *. mynewdemoase.p.azurewebsites.net*olur. *Mytestapp*adlı bir uygulama oluşturursanız, mytestapp.mynewdemoase.p.azurewebsites.net adresinde adreslenebilir. Adda boşluk kullanamazsınız. Büyük harfli karakterler kullanırsanız, etki alanı adı, adın toplam küçük harfli sürümüdür. ILB kullanıyorsanız, Ao adınız alt etki alanında kullanılmaz, ancak bunun yerine ama oluşturma sırasında açıkça belirtilir.
 

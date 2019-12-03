@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 715f891484458f3bf3febc6807c3490b88062d50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9b4a15cd6cbae80d80407ba929bfbfa1402eeb5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229101"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689229"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Fivetran ve SQL veri ambarı ile hızlıca çalışmaya başlayın
 
@@ -81,5 +81,5 @@ Fivetran 'da oturum açmak için SQL veri ambarı 'na erişmek üzere kullandı�
 * Ana bilgisayar (sunucunuzun adı).
 * Bağ.
 * Veritabanı.
-* Kullanıcı ( *SERVER_NAME* Azure ana bilgisayar URI 'nizin bir parçası olduğu için, Kullanıcı adı **fivetran\@_server_name_**  olmalıdır: ***SERVER_NAME *. Database. Windows. net**).
+* Kullanıcı ( *SERVER_NAME* Azure ana bilgisayar URI 'nizin parçası olan  **_SERVER_NAME_\@fivetran** olmalıdır:  **_sunucu\_Name_. Database.Windows.net**).
 * Parolayı.

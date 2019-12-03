@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128769"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672567"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -21,6 +21,7 @@ Cihazlar ve algılayıcılar gibi kaynaklar için Nesnelerin İnterneti (IoT) ge
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu makaleye devam etmeden önce, Farmtts 'yi yüklediğinizden ve IoT 'den geçmiş verileri topladığınızdan emin olun.
+Ayrıca, aşağıdaki adımlarda belirtildiği gibi iş ortağı erişimini de etkinleştirmeniz gerekir.
 
 ## <a name="enable-partner-access"></a>İş ortağı erişimini etkinleştir
 
@@ -29,7 +30,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 - API uç noktası – bu veri merkezi URL 'sidir, örneğin, https://<datahub>. azurewebsites.net
 - Kiracı Kimliği
 - İstemci Kimliği
-- İstemci Gizli Anahtarı
+- İstemci parolası
 - EventHub bağlantı dizesi
 
 Bunları oluşturmak için aşağıdaki adımları izleyin:
@@ -80,16 +81,16 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 |          Üretici            |         2 Yıldız     |
 |  ProductCode                    |  Cihaz ürün kodu veya model adı/numarası. Örneğin, EnviroMonitor # 6800.  |
 |            Bağlantı Noktaları          |     Bağlantı noktası adı ve türü (dijital/analog)
-|     Ad                 |  Kaynağı tanımlamak için ad. Örneğin, model adı/ürün adı.
+|     Adı                 |  Kaynağı tanımlamak için ad. Örneğin, model adı/ürün adı.
       Açıklama     | Modelin anlamlı bir açıklamasını sağlayın
 |    Özellikler          |    Üreticiden ek özellikler   |
-|    **cihaz**             |                      |
+|    **Aygıtların**             |                      |
 |   Devicemodelıd     |     İlişkili cihaz modelinin KIMLIĞI  |
 |  Donanım kimliği          | Cihazın MAC adresi vb. gibi benzersiz KIMLIĞI.
 |  Reportingınterval        |   Saniye cinsinden raporlama aralığı
 |  Konum            |  Cihaz Latitude (-90 ila + 90)/Boylam (-180 ila 180)/yükseltme (metre)   
 |Parentdeviceıd       |    Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Düğüm, ağ geçidi olarak Parentdeviceıd 'ye sahip olacaktır.  |
-|    Ad            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
+|    Adı            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
 |     Açıklama       |      Anlamlı bir açıklama sağlayın  |
 |     Özellikler    |  Üreticiden ek özellikler
 |     **Algılayıcı modeli**        |          |
@@ -101,7 +102,7 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 |    Sensorölçüleri > türü    |Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler şunlardır: AmbientTemperature, CO2, Depth, elektrik Icaldistributionctivity, Leafwetity, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, Pointınıltıma, Potassium, basınç, RainGauge, Relativenem, Salınity, SoilMoisture, Soilsıcaklık, SolarRadiation, durum, TimeDuration, UVRadiation, Uıvindex, hacim, WIN Direction, WIN Run, Wıngıı, Evapotranspiration, PAR. Daha fazla bilgi için/ExtendedType API 'sine bakın.|
 |        Sensorölçüleri > birimi              | Algılayıcı telemetri verileri birimi. Sistem tanımlı birimler şunlardır: NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIO, Ukrayna, mil ölçüm, Santimeter, ölçüm, Inç, fit, mil, kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla ekleme Için bkz./ ExtendedType API 'SI.|
 |    Sensorölçüleri > aggregationType    |  Değerler None, Average, maksimum, minimum veya Standardsapması olabilir  |
-|          Ad            | Kaynağı tanımlamak için ad. Örneğin, model adı/ürün adı.  |
+|          Adı            | Kaynağı tanımlamak için ad. Örneğin, model adı/ürün adı.  |
 |    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın  |
 |   Özellikler       |  Üreticiden ek özellikler  |
 |    **Algılayıcısı**      |          |
@@ -110,7 +111,7 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 | location          |  Algılayıcı Enlem (-90 ila + 90)/Boylam (-180 ila 180)/yükseltme (metre)|
 |   Bağlantı noktası > adı        |  Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir. |
 |    DeviceID  |    Algılayıcıdan bağlı olduğu cihazın KIMLIĞI     |
-| Ad            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı/ürün adı ve model numarası/ürün kodu.|
+| Adı            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı/ürün adı ve model numarası/ürün kodu.|
 |    Açıklama      | Anlamlı bir açıklama sağlayın |
 |    Özellikler        |Üreticiden ek özellikler |
 
@@ -125,7 +126,7 @@ Bir API isteği oluşturmak için HTTP (POST) yöntemini, API hizmetinin URL 'si
 Farmtts veri hub 'ı, yukarıdaki bölümde oluşturduğumuz aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır.
 
 - İstemci Kimliği
-- İstemci Gizli Anahtarı
+- İstemci parolası
 - Kiracı Kimliği  
 
 Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üstbilgi bölümündeki sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteğinde bulunabilir:

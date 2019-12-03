@@ -1,24 +1,15 @@
 ---
-title: Kimlik doğrulama ve yetkilendirme gelişmiş kullanımı-Azure App Service | Microsoft Docs
-description: App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirmeyi ve Kullanıcı taleplerini ve farklı belirteçleri almayı gösterir.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: AuthN/AuthO 'ın gelişmiş kullanımı
+description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkilendirme özelliğini özelleştirmeyi ve Kullanıcı taleplerini ve farklı belirteçleri almayı öğrenin.
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f453a0276a3448273964a589112e21ca5665c2d2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900129"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672228"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -42,7 +33,7 @@ Portal Yapılandırması, kullanıcılarınıza birden çok oturum açma sağlay
 
 **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem Için** **anonim isteklere izin ver (eylem yok)** seçeneğini belirleyin.
 
-Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz sağlayıcıların her birine bir oturum açma bağlantısı ekleyin (`/.auth/login/<provider>`). Örneğin:
+Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz sağlayıcıların her birine bir oturum açma bağlantısı ekleyin (`/.auth/login/<provider>`). Örnek:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -64,7 +55,7 @@ Kullanıcı oturum açma sonrası eklentisini özel bir URL 'ye yönlendirmek i�
 
 İstemci ile yönlendirilen bir oturum açma bölümünde, uygulama kullanıcıdan sağlayıcıya el ile oturum açar ve ardından kimlik doğrulama belirtecini doğrulama için App Service (bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow)) gönderir. Bu doğrulamanın kendisi, istenen uygulama kaynaklarına erişim hakkı vermez, ancak başarılı bir doğrulama size uygulama kaynaklarına erişmek için kullanabileceğiniz bir oturum belirteci verecektir. 
 
-Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, doğrulama için `/.auth/login/<provider>` belirteç gönderin. Örneğin: 
+Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, doğrulama için `/.auth/login/<provider>` belirteç gönderin. Örnek: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -95,7 +86,7 @@ Sağlayıcı belirteci başarıyla doğrulandıktan sonra, API, yanıt gövdesin
 }
 ```
 
-Bu oturum belirtecine sahip olduğunuzda, HTTP isteklerinize `X-ZUMO-AUTH` üst bilgisini ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örneğin: 
+Bu oturum belirtecine sahip olduğunuzda, HTTP isteklerinize `X-ZUMO-AUTH` üst bilgisini ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örnek: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -116,7 +107,7 @@ Bir Web sayfasındaki basit bir oturum açma bağlantısı aşağıda verilmişt
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done`. `post_logout_redirect_uri` sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz. Örneğin:
+Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done`. `post_logout_redirect_uri` sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz. Örnek:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -151,7 +142,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 App Service, özel üstbilgiler kullanarak Kullanıcı taleplerini uygulamanıza geçirir. Dış isteklerin bu üst bilgileri ayarlama izni yoktur, bu nedenle yalnızca App Service tarafından ayarlandıysa mevcut olmaları gerekir. Bazı örnek üstbilgileri şunlardır:
 
 * X-MS-CLIENT-PRINCIPAL-NAME
-* X-MS-CLIENT-PRINCIPAL-ID
+* X-MS-CLIENT-PRINCIPAL-ıD
 
 Herhangi bir dilde veya çerçevede yazılan kod, bu üst bilgilerden ihtiyaç duymakta olan bilgileri alabilir. ASP.NET 4,6 uygulamaları için, **ClaimsPrincipal** otomatik olarak uygun değerlerle ayarlanır. Ancak ASP.NET Core, App Service Kullanıcı taleplerini tümleştiren bir kimlik doğrulama ara yazılımı sağlamaz. Geçici bir çözüm için bkz. [Maximerouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
@@ -185,8 +176,8 @@ Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-to
 - **Microsoft hesabı**: [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md)`wl.offline_access` kapsamını seçin.
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com)aşağıdaki adımları uygulayın:
     1. Sayfanın üst kısmında **oku/yaz**' ı seçin.
-    2. Sol tarayıcıda > **abonelikler** ' e gidin **_\<abonelik\_adı_**  > **ResourceGroups** **_ > \<\__** **Configuration**\_**authsettings öğesine tıklayın**> >  **_app_**  >  > siteleri ** > ** **\<\_** . >  >  
-    3. **Düzenle**‘ye tıklayın.
+    2. Sol tarayıcıda > **abonelikler** ' e gidin **_\<abonelik\_adı_**  > **ResourceGroups** **_ > \<\__** **Configuration**\_**authsettings öğesine tıklayın** >  **_app_**  >  > siteleri ** > ** **\<\_** . 
+    3. **Düzenle**’ye tıklayın.
     4. Aşağıdaki özelliği değiştirin. _\<app\_ıd >_ , erişmek istediğiniz hizmetin Azure ACTIVE DIRECTORY uygulama kimliğiyle değiştirin.
 
         ```json
@@ -232,7 +223,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_, _Live.com_ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanız (örneğin, `contoso.com`) için doğrudan hızlandırmayı isteyebilirsiniz. Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
 
-[https://resources.azure.com](https://resources.azure.com)' de, **_\<abonelik\_adı_**  > **ResourceGroups** > \< **_kaynak\__** ** > \_** > > **Configuration** > **authsettings öğesine tıklayın** >  >  **_App_** **\<\_** **siteleri** > >  >  
+[https://resources.azure.com](https://resources.azure.com)' de, **_\< abonelik\_ adı_**  > **ResourceGroups** > \< **_kaynak\__** ** > \_** > > **Configuration** > **authsettings öğesine tıklayın** >  >  **_App_** **\<\_** **siteleri** > 
 
 **Düzenle**' ye tıklayın, aşağıdaki özelliği değiştirin ve ardından **Yerleştir**' e tıklayın. _\<etki alanı\_adı >_ istediğiniz etki alanıyla değiştirdiğinizden emin olun.
 
@@ -258,7 +249,7 @@ App Service en basit yetkilendirme durumu (yani, kimliği doğrulanmamış istek
 
 Herhangi bir Windows uygulaması için, *Web. config* dosyasını düzenleyerek IIS Web sunucusunun yetkilendirme davranışını tanımlayabilirsiniz. Linux uygulamaları IIS kullanmaz ve *Web. config*üzerinden yapılandırılamaz.
 
-1. Gidin `https://<app-name>.scm.azurewebsites.net/DebugConsole`
+1. `https://<app-name>.scm.azurewebsites.net/DebugConsole` git
 
 1. App Service dosyalarınızın tarayıcı Gezgini ' nde, *site/Wwwroot ' ya*gidin. Bir *Web. config* yoksa, **+**  > **yeni dosya**' yı seçerek oluşturun. 
 
@@ -278,7 +269,7 @@ Herhangi bir Windows uygulaması için, *Web. config* dosyasını düzenleyerek 
 
 ### <a name="identity-provider-level"></a>Kimlik sağlayıcısı düzeyi
 
-Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örneğin:
+Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örnek:
 
 - [Azure App Service](configure-authentication-provider-aad.md)için, [Kurumsal düzeyde ERIŞIMI](../active-directory/manage-apps/what-is-access-management.md) doğrudan Azure AD 'de yönetebilirsiniz. Yönergeler için bkz. [kullanıcının bir uygulamaya erişimini kaldırma](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - [Google](configure-authentication-provider-google.md)için, bir [kuruluşa](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) ait Google API projeleri yalnızca kuruluşunuzdaki kullanıcılara erişime izin verecek şekilde yapılandırılabilir (bkz. [Google 'ın **OAuth 2,0** destek sayfasını ayarlama](https://support.google.com/cloud/answer/6158849?hl=en)).

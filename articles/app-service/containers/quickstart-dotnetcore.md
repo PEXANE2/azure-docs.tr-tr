@@ -1,26 +1,18 @@
 ---
-title: Linux üzerinde ASP.NET Core uygulama oluşturma-Azure App Service | Microsoft Docs
-description: Linux’ta ilk .NET Core Merhaba Dünya uygulamanızı App Service’e birkaç dakika içinde dağıtın.
+title: 'Hızlı başlangıç: Linux ASP.NET Core uygulaması çalıştırma'
+description: İlk ASP.NET Core uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
 keywords: azure app service, web uygulaması, dotnet, core, linux, oss
-services: app-service
-documentationCenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
-ms.service: app-service
-ms.workload: web
 ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43771392adcbf49c9103ee7ebc4b3febbac11b05
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ea9449a89bcfbdb1378f0cceb31a07a288661bf7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071227"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687569"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Linux üzerinde App Service ASP.NET Core uygulama oluşturma
 
@@ -94,7 +86,7 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Yeni oluşturduğunuz uygulamanıza gidin. _&lt;App-name >_ değerini uygulamanızın adıyla değiştirin.
+Yeni oluşturduğunuz uygulamanıza gidin. _&lt;app-name >_ adını uygulamanızın adıyla değiştirin.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -131,7 +123,7 @@ remote:   ...
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
@@ -187,7 +179,7 @@ Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: SQL veritabanı ile ASP.NET Core uygulaması](tutorial-dotnetcore-sqldb-app.md)
+> [Öğretici: SQL veritabanı ile uygulama ASP.NET Core](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core uygulamasını yapılandırma](configure-language-dotnetcore.md)

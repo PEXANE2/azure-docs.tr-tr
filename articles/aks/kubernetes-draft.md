@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9338f0e26595c1ab25ab51578880daf8c0c5bbc4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "67303537"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672447"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Hızlı Başlangıç: Azure Kubernetes hizmeti (AKS) üzerinde taslak ile geliştirme
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Hızlı başlangıç: taslak ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
 
 Taslak, bir Kubernetes kümesinde paket oluşturma ve uygulama kapsayıcılarının çalıştırılmasına yardımcı olan açık kaynaklı bir araçtır. Taslak sayesinde, değişiklikleri sürüm denetimine kaydetmeye gerek kalmadan, kod değişiklikleri gerçekleştiğinden, bir uygulamayı Kubernetes 'e hızlıca yeniden dağıtabilirsiniz. Taslak hakkında daha fazla bilgi için [GitHub 'Daki taslak belgelerine][draft-documentation]bakın.
 
@@ -26,7 +26,7 @@ Bu makalede taslak paketin nasıl kullanılacağı ve AKS üzerinde bir uygulama
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Docker yüklendi ve yapılandırıldı. Docker, bir [Mac][docker-for-mac], [Windows][docker-for-windows]veya [Linux][docker-for-linux] sisteminde Docker 'ı yapılandıran paketler sağlar.
-* [Held yüklendi](https://github.com/helm/helm/blob/master/docs/install.md).
+* [Held yüklendi](https://github.com/helm/helm#install).
 * [Taslak yüklendi][draft-documentation].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
@@ -80,7 +80,7 @@ Komut tamamlandığında bir *Oturum Başarıyla Açıldı* iletisi döndürür.
 
 ## <a name="create-trust-between-aks-cluster-and-acr"></a>AKS kümesi ve ACR arasında güven oluşturma
 
-AKS kümenizin Ayrıca, kapsayıcı görüntülerini çekmek ve çalıştırmak için ACR 'nize erişmesi gerekir. Güven kurarak AKS 'ten ACR 'ye erişime izin veriyorsunuz. AKS kümesi ve ACR kayıt defteri arasında güven oluşturmak için, AKS kümesi tarafından ACR kayıt defterine erişmek üzere kullanılan Azure Active Directory hizmet sorumlusu için izin verin. Aşağıdaki komutlar myresourcegroup içindeki *Myaks* kümesinin hizmet sorumlusu Için *Myresourcegroup*Içindeki *mydraftacr* ACR *öğesine izinler* verir.
+AKS kümenizin Ayrıca, kapsayıcı görüntülerini çekmek ve çalıştırmak için ACR 'nize erişmesi gerekir. Güven kurarak AKS 'ten ACR 'ye erişime izin veriyorsunuz. AKS kümesi ve ACR kayıt defteri arasında güven oluşturmak için, AKS kümesi tarafından ACR kayıt defterine erişmek üzere kullanılan Azure Active Directory hizmet sorumlusu için izin verin. Aşağıdaki komutlar *myresourcegroup Içindeki* *myaks* kümesinin hizmet sorumlusu için *Myresourcegroup*içindeki *mydraftacr* ACR öğesine izinler verir.
 
 ```azurecli
 # Get the service principal ID of your AKS cluster
@@ -103,7 +103,7 @@ Azure Cloud Shell'i kullanıyorsanız `kubectl` zaten yüklüdür. [az aks insta
 az aks install-cli
 ```
 
-Kubernetes kümenize bağlanacak şekilde yapılandırmak `kubectl` için [az aks Get-Credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *myaks* adlı aks kümesi için kimlik bilgilerini alır:
+Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *myaks* adlı aks kümesi için kimlik bilgilerini alır:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -113,7 +113,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 Helm 'yi RBAC özellikli bir AKS kümesinde dağıtabilmeniz için, Tiller hizmeti için bir hizmet hesabı ve rol bağlaması olması gerekir. RBAC etkin bir kümede Held/Tiller güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Tiller, namespaces ve RBAC][tiller-rbac]. AKS kümeniz RBAC etkinleştirilmemişse, bu adımı atlayın.
 
-Aşağıdaki YAML 'de `helm-rbac.yaml` adlı bir dosya oluşturun ve kopyalayın:
+`helm-rbac.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML 'de kopyalayın:
 
 ```yaml
 apiVersion: v1
@@ -136,14 +136,14 @@ subjects:
     namespace: kube-system
 ```
 
-`kubectl apply` Komutuyla hizmet hesabı ve rol bağlamayı oluşturun:
+`kubectl apply` komutuyla hizmet hesabı ve rol bağlama oluşturun:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="configure-helm"></a>Held 'yi yapılandırma
-Bir AKS kümesine temel bir Tiller dağıtmak için [helk init][helm-init] komutunu kullanın. Kümeniz RBAC etkinleştirilmemişse, `--service-account` bağımsız değişkeni ve değeri kaldırın.
+Bir AKS kümesine temel bir Tiller dağıtmak için [helk init][helm-init] komutunu kullanın. Kümeniz RBAC etkinleştirilmemişse, `--service-account` bağımsız değişkenini ve değerini kaldırın.
 
 ```console
 helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
@@ -151,7 +151,7 @@ helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="lin
 
 ## <a name="configure-draft"></a>Taslağı yapılandırma
 
-Yerel makinenizde taslak yapılandırmadıysanız şunu çalıştırın `draft init`:
+Yerel makinenizde taslak yapılandırmadıysanız `draft init`çalıştırın:
 
 ```console
 $ draft init
@@ -162,7 +162,7 @@ Installing default pack repositories...
 Happy Sailing!
 ```
 
-Ayrıca, taslağı, ACR 'nizin *Loginserver* 'ı kullanacak şekilde yapılandırmanız gerekir. Aşağıdaki komut, kayıt `draft config set` defteri olarak `mydraftacr.azurecr.io` kullanmak için kullanır.
+Ayrıca, taslağı, ACR 'nizin *Loginserver* 'ı kullanacak şekilde yapılandırmanız gerekir. Aşağıdaki komut, kayıt defteri olarak `mydraftacr.azurecr.io` kullanmak için `draft config set` kullanır.
 
 ```console
 draft config set registry mydraftacr.azurecr.io
@@ -172,7 +172,7 @@ Taslağını ACR 'nizi kullanacak şekilde yapılandırdınız ve taslak kapsay�
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
-Bu hızlı başlangıçta [taslak GitHub deposundan örnek bir Java uygulaması][example-java]kullanılmaktadır. Uygulamayı GitHub 'dan kopyalayın ve `draft/examples/example-java/` dizine gidin.
+Bu hızlı başlangıçta [taslak GitHub deposundan örnek bir Java uygulaması][example-java]kullanılmaktadır. Uygulamayı GitHub 'dan kopyalayın ve `draft/examples/example-java/` dizinine gidin.
 
 ```console
 git clone https://github.com/Azure/draft
@@ -181,7 +181,7 @@ cd draft/examples/example-java/
 
 ## <a name="run-the-sample-application-with-draft"></a>Örnek uygulamayı taslak ile çalıştırma
 
-Uygulamayı hazırlamak için komutunu kullanın. `draft create`
+Uygulamayı hazırlamak için `draft create` komutunu kullanın.
 
 ```console
 draft create
@@ -196,7 +196,7 @@ $ draft create
 --> Ready to sail
 ```
 
-Örnek uygulamayı aks kümenizde çalıştırmak için `draft up` komutunu kullanın.
+Örnek uygulamayı AKS kümenizde çalıştırmak için `draft up` komutunu kullanın.
 
 ```console
 draft up
@@ -235,13 +235,13 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Örnek uygulamayı görmek için `localhost` URL 'yi kullanarak bir tarayıcıda uygulamaya gidin. Yukarıdaki örnekte, URL olur `http://localhost:49804`. Kullanarak `Ctrl+c`bağlantıyı durdurun.
+Örnek uygulamayı görmek için `localhost` URL 'sini kullanarak bir tarayıcıda uygulamaya gidin. Yukarıdaki örnekte URL `http://localhost:49804`. `Ctrl+c`kullanarak bağlantıyı durdurun.
 
 ## <a name="access-the-application-on-the-internet"></a>Uygulamaya internet üzerinden erişin
 
 Önceki adım, AKS kümenizdeki uygulama Pod 'sine bir ara sunucu bağlantısı oluşturdu. Uygulamanızı geliştirirken ve test etmeniz sırasında, uygulamayı Internet 'te kullanılabilir hale getirmek isteyebilirsiniz. Bir uygulamayı Internet 'te kullanıma sunmak için bir [yük dengeleyici][kubernetes-service-loadbalancer]türü Ile bir Kubernetes hizmeti oluşturabilirsiniz.
 
-Bir `charts/example-java/values.yaml` *LoadBalancer* hizmeti oluşturmak için güncelleştirme. *Service. Type* değerini *ClusterIP* 'den *LoadBalancer*değerine değiştirin.
+Bir *LoadBalancer* hizmeti oluşturmak için `charts/example-java/values.yaml` güncelleştirin. *Service. Type* değerini *ClusterIP* 'den *LoadBalancer*değerine değiştirin.
 
 ```yaml
 ...
@@ -259,7 +259,7 @@ Değişikliklerinizi kaydedin, dosyayı kapatın ve uygulamayı yeniden çalış
 draft up
 ```
 
-Hizmetin genel bir IP adresi döndürmesi birkaç dakika sürer. İlerlemeyi izlemek için, `kubectl get service` *Gözcü* parametresiyle komutunu kullanın:
+Hizmetin genel bir IP adresi döndürmesi birkaç dakika sürer. İlerlemeyi izlemek için, *izleme* parametresiyle birlikte `kubectl get service` komutunu kullanın:
 
 ```console
 $ kubectl get service --watch
@@ -270,11 +270,11 @@ example-java-java   LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 example-java-java   LoadBalancer   10.0.141.72   52.175.224.118  80:32150/TCP   7m
 ```
 
-Örnek uygulamayı görmek için *dış IP* 'yi kullanarak bir tarayıcıda uygulamanızın yük dengeleyicisine gidin. Yukarıdaki örnekte, IP olur `52.175.224.118`.
+Örnek uygulamayı görmek için *dış IP* 'yi kullanarak bir tarayıcıda uygulamanızın yük dengeleyicisine gidin. Yukarıdaki örnekte IP `52.175.224.118`.
 
 ## <a name="iterate-on-the-application"></a>Uygulama üzerinde yineleme
 
-Değişiklikleri yerel olarak yaparak ve yeniden çalıştırarak `draft up`uygulamanızı yineleyebilirsiniz.
+Değişiklikleri yerel olarak yapıp `draft up`yeniden çalıştırarak uygulamanızı yineleyebilirsiniz.
 
 [Src/Main/Java/HelloWorld/Hello. Java için 7. satırda][example-java-hello-l7] döndürülen iletiyi güncelleştirin
 
@@ -284,7 +284,7 @@ Değişiklikleri yerel olarak yaparak ve yeniden çalıştırarak `draft up`uygu
     }
 ```
 
-Uygulamayı yeniden dağıtmak için komutunuçalıştırın:`draft up`
+Uygulamayı yeniden dağıtmak için `draft up` komutunu çalıştırın:
 
 ```console
 $ draft up

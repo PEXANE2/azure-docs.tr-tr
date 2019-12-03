@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: 229216ee873ade9418574141017aaf88235ba9e4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820703"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689071"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
@@ -139,7 +139,7 @@ Diğer telemetri gibi, **PerformanceCounters** da uygulamanızın üzerinde çal
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Azure Web Apps çalışan uygulamalar için performans sayaçları
 
-Hem ASP.NET hem de Azure Web Apps dağıtılan ASP.NET Core uygulamaları özel bir korumalı ortamda çalışır. Bu ortam sistem performans sayaçlarına doğrudan erişime izin vermez. Ancak, sayaçların sınırlı bir alt kümesi [burada](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)açıklandığı gibi ortam değişkenleri olarak sunulur. ASP.NET için SDK Application Insights ve ASP.NET Core, bu özel ortam değişkenlerinden Azure Web Apps performans sayaçlarını toplar. Bu ortamda yalnızca bir sayaç alt kümesi kullanılabilir ve tam liste [burada bulunabilir.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
+Hem ASP.NET hem de Azure Web Apps dağıtılan ASP.NET Core uygulamaları özel bir korumalı ortamda çalışır. Bu ortam sistem performans sayaçlarına doğrudan erişime izin vermez. Ancak, sayaçların sınırlı bir alt kümesi [burada](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)açıklandığı gibi ortam değişkenleri olarak sunulur. ASP.NET için SDK Application Insights ve ASP.NET Core, bu özel ortam değişkenlerinden Azure Web Apps performans sayaçlarını toplar. Bu ortamda yalnızca bir sayaç alt kümesi kullanılabilir ve tam liste [burada bulunabilir.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core uygulamalarında performans sayaçları
 

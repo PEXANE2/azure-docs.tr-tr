@@ -1,21 +1,19 @@
 ---
-title: Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure
-description: Visual Studio 'Yu kullanarak Azure App Service Azure Web Işleri geliştirmeyi ve dağıtmayı öğrenin.
+title: VS kullanarak Web Işleri geliştirin ve dağıtın
+description: Visual Studio 'da Azure Web Işleri geliştirmeyi ve zamanlanan bir görev oluşturma da dahil olmak üzere Azure App Service ' ye dağıtmayı öğrenin.
 author: ggailey777
-manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
-ms.service: app-service
 ms.topic: conceptual
 ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303557"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684162"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service
 
@@ -66,7 +64,7 @@ Azure 'da her zaman açık etkinleştirildiğinde WebJob 'u sürekli çalışaca
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>Web Işleri .NET Framework konsol uygulamaları olarak  
 
-Visual Studio, bir WebJobs özellikli .NET Framework konsol uygulama projesi dağıttığında, çalışma zamanı dosyalarını Web uygulamasındaki uygun klasöre (*App_Data/işler/* sürekli Web işleri için sürekli ve *App_Data/işler/tetiklenen* planlanmış veya isteğe bağlı Web Işleri).
+Visual Studio, Web Işleri etkinleştirilmiş bir .NET Framework konsol uygulama projesi dağıttığında, çalışma zamanı dosyalarını Web uygulamasındaki uygun klasöre (*App_Data/Jobs/sürekli* ve zamanlanan ya da isteğe bağlı Web işleri için *tetiklenen App_Data/Jobs/)* kopyalar.
 
 Web Işleri etkin bir proje, öğesine eklenen aşağıdaki öğeleri içerir:
 
@@ -101,7 +99,7 @@ Visual Studio 2017 kullanıyorsanız, [Azure geliştirme iş yükünü](https://
 
 #### <a id="convertlink"></a>Web projesi ile otomatik Web Işleri dağıtımını etkinleştirme
 
-1. **Çözüm Gezgini**web projesine sağ tıklayın ve ardından  > **mevcut projeyi Azure WebJob olarak** **Ekle**' ye tıklayın.
+1. **Çözüm Gezgini**' de web projesine sağ tıklayın ve ardından **mevcut projeyi > Azure WebJob olarak** **Ekle** ' ye tıklayın.
    
     ![Azure WebJob olarak mevcut proje](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -137,13 +135,13 @@ Yeni bir Web Işleri etkin proje oluşturmak için konsol uygulaması proje şab
 > 
 
 #### <a id="createnolink"></a>Bağımsız bir WebJob için WebJobs yeni-proje şablonunu kullanın
-1. **Dosya** > **Yeni proje**' ye tıklayın ve ardından **yeni proje** Iletişim kutusunda **bulut** > **Azure WebJob (.NET Framework)** seçeneğine tıklayın.
+1. **Dosya** > **Yeni proje**' ye tıklayın ve ardından **yeni proje** iletişim kutusunda **Cloud** > **Azure WebJob (.NET Framework)** seçeneğine tıklayın.
    
     ![WebJob şablonunu gösteren yeni proje iletişim kutusu](./media/webjobs-dotnet-deploy-vs/np.png)
 2. [Konsol uygulaması projesini bağımsız bir WebJobs projesi haline getirmek](#convertnolink)için daha önce gösterilen yönergeleri izleyin.
 
 #### <a id="createlink"></a>Web projesine bağlı bir WebJob için WebJobs yeni-proje şablonunu kullanın
-1. **Çözüm Gezgini**web projesine sağ tıklayın ve ardından  > **yeni Azure WebJob projesi** **Ekle**' ye tıklayın.
+1. **Çözüm Gezgini**web projesine sağ tıklayın ve ardından **Yeni > Azure WebJob projesi** **Ekle** ' ye tıklayın.
    
     ![Yeni Azure WebJob projesi menü girdisi](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -165,7 +163,7 @@ Bu iletişim kutusundaki alanlar, Azure portal **WebJob Ekle** iletişim kutusun
 > 
 
 ### <a id="publishsettings"></a>WebJob-Publish-Settings. JSON
-Web Işleri dağıtımı için bir konsol uygulaması yapılandırdığınızda, Visual Studio [Microsoft. Web. WebJobs.](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet paketini yayımlar ve zamanlama bilgilerini projedeki *WebJob-Publish-Settings. json dosyasında depolar* WebJobs projesinin Özellikler klasörü. Bu dosyaya bir örnek aşağıda verilmiştir:
+Web Işleri dağıtımı için bir konsol uygulaması yapılandırdığınızda, Visual Studio [Microsoft. Web. WebJobs.](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet paketini yayımlar ve zamanlama bilgilerini WebJobs projesinin proje *özellikleri* klasöründeki bir *WebJob-Publish-Settings. JSON* dosyasında depolar. Bu dosyaya bir örnek aşağıda verilmiştir:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -177,7 +175,7 @@ Web Işleri dağıtımı için bir konsol uygulaması yapılandırdığınızda,
           "runMode": "Continuous"
         }
 
-Bu dosyayı doğrudan düzenleyebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) ' de depolanır ve burada görüntülenebilir.  
+Bu dosyayı doğrudan düzenleyebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) depolanır ve burada görüntülenebilir.  
 
 ### <a id="webjobslist"></a>WebJobs-List. JSON
 WebJobs özellikli bir projeyi bir web projesine bağladığınızda, Visual Studio WebJobs projesinin adını Web projesinin *Özellikler* klasöründeki bir *WebJobs-List. JSON* dosyasında depolar. Listede, aşağıdaki örnekte gösterildiği gibi birden çok WebJobs projesi bulunabilir:
@@ -194,10 +192,10 @@ WebJobs özellikli bir projeyi bir web projesine bağladığınızda, Visual Stu
           ]
         }
 
-Bu dosyayı doğrudan düzenleyebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) ' de depolanır ve burada görüntülenebilir.
+Bu dosyayı doğrudan düzenleyebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) depolanır ve burada görüntülenebilir.
 
 ### <a id="deploy"></a>WebJobs projesi dağıtma
-Web projesine bağladığınız bir WebJobs projesi, Web projesi ile otomatik olarak dağıtılır. Web projesi dağıtımı hakkında daha fazla bilgi için bkz. **nasıl yapılır kılavuzu** >  uygulamayı sol gezinmede**dağıtma** .
+Web projesine bağladığınız bir WebJobs projesi, Web projesi ile otomatik olarak dağıtılır. Web projesi dağıtımı hakkında daha fazla bilgi için bkz. **nasıl yapılır kılavuzu** > sol gezinmede **uygulama dağıtma** .
 
 Bir WebJobs projesini kendi kendine dağıtmak için **Çözüm Gezgini** ' de projeye sağ tıklayın ve **Azure WebJob olarak Yayımla...** öğesine tıklayın. 
 
@@ -215,7 +213,7 @@ Web Işleri bir WebJob 'un ne zaman çalıştırılacağını anlamak için bir 
 }
 ```
 
-Bu dosya, Web işi klasörünün kökünde, örneğin `wwwroot\app_data\jobs\triggered\{job name}` veya `wwwroot\app_data\jobs\continuous\{job name}` gibi. Visual Studio 'dan bir WebJob dağıttığınızda, `settings.job` dosya özelliklerinizi **daha yeniyse kopyala**olarak işaretleyin. 
+Bu dosya, WebJob 'ın `wwwroot\app_data\jobs\triggered\{job name}` veya `wwwroot\app_data\jobs\continuous\{job name}`gibi betiklerinin yanı da WebJobs klasörünün kökünde bulunmalıdır. Visual Studio 'dan bir WebJob dağıtırken, `settings.job` dosya özelliklerinizi **daha yeniyse kopyala**olarak işaretleyin. 
 
 [Azure Portal bir WebJob oluşturduğunuzda](webjobs-create.md), Settings. job dosyası sizin için oluşturulur.
 

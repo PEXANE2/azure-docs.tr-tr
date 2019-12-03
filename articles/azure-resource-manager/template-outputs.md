@@ -3,12 +3,12 @@ title: Şablonlarda çıkış çıkışları
 description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149173"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689140"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki çıktılar
 
@@ -16,7 +16,7 @@ Bu makalede, Azure Resource Manager şablonunuzda çıkış değerlerinin nasıl
 
 ## <a name="define-output-values"></a>Çıkış değerlerini tanımla
 
-Aşağıdaki örnek, kaynak kimliği için bir genel IP adresi döndürülecek gösterilmektedir:
+Aşağıdaki örnek, bir genel IP adresi için kaynak KIMLIĞININ nasıl dönegösterdiğini göstermektedir:
 
 ```json
 "outputs": {
@@ -51,7 +51,7 @@ Bağlı bir şablondan çıkış değerini almak için, üst şablondaki [başvu
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Bir çıkış özelliği bağlı şablonundan alınırken, özellik adı bir tire içeremez.
+Bağlantılı şablondan çıkış özelliği alınırken, özellik adı bir tire içeremez.
 
 Aşağıdaki örnek, bir yük dengeleyicide, bağlantılı şablondan bir değer alarak IP adresinin nasıl ayarlanacağını gösterir.
 
@@ -61,7 +61,7 @@ Aşağıdaki örnek, bir yük dengeleyicide, bağlantılı şablondan bir değer
 }
 ```
 
-Kullanamazsınız `reference` çıktılar bölümünü işlevinde bir [iç içe geçmiş şablon](resource-group-linked-templates.md#nested-template). Dönüş değerleri dağıtılan kaynağın içinde iç içe geçmiş bir şablon için iç içe geçmiş şablon bağlantılı şablona dönüştürebilirsiniz.
+[İç içe geçmiş bir şablonun](resource-group-linked-templates.md#nested-template)çıktılar bölümünde `reference` işlevini kullanamazsınız. Dağıtılan bir kaynağın değerlerini iç içe yerleştirilmiş bir şablonda döndürmek için, iç içe geçmiş şablonunuzu bağlı bir şablona dönüştürün.
 
 ## <a name="get-output-values"></a>Çıkış değerlerini al
 
@@ -88,17 +88,16 @@ az group deployment show \
 
 ---
 
-## <a name="example-templates"></a>Örnek şablonları
+## <a name="example-templates"></a>Örnek Şablonlar
 
 Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösterilmektedir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
-|[Değişkenleri kopyalayın](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri çıkarır. Tüm kaynakları dağıtmaz. |
-|[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak kimliği çıkarır |
-|[Yük Dengeleyici](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Yukarıdaki şablonu bağlar. Kaynak Kimliği, yük dengeleyici oluştururken çıktısında kullanır. |
+|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri verir. Hiçbir kaynak dağıtmaz. |
+|[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak KIMLIĞINI verir. |
+|[Yük Dengeleyici](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Önceki şablonun bağlantıları. Yük dengeleyiciyi oluştururken çıktıda kaynak KIMLIĞINI kullanır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Çıktılar için kullanılabilen özellikler hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](resource-group-authoring-templates.md).
-* Çıktılar oluşturma hakkında öneriler için bkz. [en iyi yöntemler-çıktılar](template-best-practices.md#outputs).

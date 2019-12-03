@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB değişiklik akışı desteğiyle çalışma
 description: Belgelerdeki değişiklikleri izlemek ve Tetikleyiciler ve analiz sistemlerini güncel tutmak gibi olay tabanlı işleme gerçekleştirmek için Azure Cosmos DB akış desteğini değiştirin.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e6bd3dadd636127f212db0ea0c0755a6b52a087
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757018"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689101"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB akışı değiştirme-genel bakış
 
@@ -33,12 +33,12 @@ Azure Cosmos DB değişiklik akışı, aşağıdaki görüntüde gösterildiği 
 
 Bu özellik şu anda aşağıdaki Azure Cosmos DB API 'Leri ve istemci SDK 'Ları tarafından desteklenmektedir.
 
-| **İstemci sürücüleri** | **Azure CLI** | **SQL APı 'SI** | **Cassandra API** | **MongoDB için Azure Cosmos DB API 'SI** | **Gremlin API 'SI**|**Tablo API’si** |
+| **İstemci sürücüleri** | **Azure CLI** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API 'SI** | **Gremlin API 'SI**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Yok | Yes | Hayır | Hayır | Yes | Hayır |
-|Java|Yok|Yes|Hayır|Hayır|Yes|Hayır|
-|Python|Yok|Yes|Hayır|Hayır|Yes|Hayır|
-|Node/JS|Yok|Yes|Hayır|Hayır|Yes|Hayır|
+| .NET | Yok | Yes | Yes | Yes | Yes | Hayır |
+|Java|Yok|Yes|Yes|Yes|Yes|Hayır|
+|Python|Yok|Yes|Yes|Yes|Yes|Hayır|
+|Node/JS|Yok|Yes|Yes|Yes|Yes|Hayır|
 
 ## <a name="change-feed-and-different-operations"></a>Akışı ve farklı işlemleri değiştirme
 
@@ -56,9 +56,9 @@ Değişiklik akışı öğeleri değiştirme zamanının sırasıyla gelir. Bu s
 
 Bir öğede TTL (yaşam süresi) özelliği ayarlanırsa, değişiklik akışı süresiz olarak kalır. Veriler silinmediği takdirde değişiklik akışında kalır.  
 
-### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Akış ve _etag, _lsn veya _ts 'yi Değiştir
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Akışı ve _etag _lsn veya _ts değiştirme
 
-_Etag biçimi iç, her zaman değiştirebildiğinden, buna bağımlılığı almanız gerekir. _ts bir değiştirme veya oluşturma zaman damgasıdır. Kronolojik karşılaştırma için _ts kullanabilirsiniz. _lsn yalnızca değişiklik akışı için eklenen bir toplu iş KIMLIĞIDIR; işlem KIMLIĞINI temsil eder. Birçok öğe aynı _lsn 'ye sahip olabilir. FeedResponse üzerinde ETag, öğede gördüğünüz _etag öğesinden farklı. _etag bir iç tanımlayıcıdır ve eşzamanlılık denetimi, öğenin sürümü hakkında bilgi için kullanılır, ancak ETag, akışı sıralama için kullanılır.
+_Etag biçimi dahili olur ve herhangi bir zamanda değiştirebileceğinden buna bağımlılığı almanız gerekir. _ts bir değiştirme veya oluşturma zaman damgası. Kronolojik karşılaştırma için _ts kullanabilirsiniz. _lsn yalnızca değişiklik akışı için eklenen bir toplu iş KIMLIĞIDIR; işlem KIMLIĞINI temsil eder. Birçok öğe aynı _lsn sahip olabilir. FeedResponse üzerinde ETag, öğede gördüğünüz _etag farklıdır. _etag bir iç tanımlayıcıdır ve eşzamanlılık denetimi öğenin sürümü hakkında bilgi için kullanılır, ancak ETag, akışı sıralama için kullanılır.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Akış kullanım örneklerini ve senaryolarını değiştirme
 
@@ -84,7 +84,7 @@ Değişiklik akışı, büyük veri kümelerinin yüksek miktarda yazma hacimiyl
 
 Değişiklik akışı ile kolayca uygulayabileceğiniz bazı senaryolar aşağıda verilmiştir:
 
-* [Sunucusuz](https://azure.microsoft.com/solutions/serverless/) Web veya mobil uygulamalarınız içinde, müşterinizin profilinde, tercihlerinde veya konumlarından yapılan tüm değişiklikler gibi olayları izleyebilir ve örneğin Azure kullanarak cihazlarına anında iletme bildirimleri göndererek belirli eylemleri tetikleyebilirsiniz. [ İşlevler](change-feed-functions.md).
+* [Sunucusuz](https://azure.microsoft.com/solutions/serverless/) Web veya mobil uygulamalarınız içinde, müşterinizin profilinde, tercihlerinde veya konumlarından yapılan tüm değişiklikler gibi olayları izleyebilir ve örneğin [Azure işlevleri](change-feed-functions.md)'ni kullanarak cihazlarına anında iletme bildirimleri gönderebilirsiniz.
 
 * Bir oyun oluşturmak için Azure Cosmos DB kullanıyorsanız, örneğin, tamamlanmış oyunlardan puanları temel alarak gerçek zamanlı öncü panolar uygulamak için değişiklik akışı ' nı kullanabilirsiniz.
 
@@ -119,6 +119,12 @@ Değişiklik akışı, kapsayıcı içindeki her mantıksal bölüm anahtarı i�
 * Değişiklikler, bir Azure Cosmos kapsayıcısının tüm mantıksal bölüm anahtarları için paralel olarak kullanılabilir. Bu yetenek, büyük kapsayıcılardaki değişikliklerin birden çok tüketici tarafından paralel olarak işlenmesine izin verir.
 
 * Uygulamalar aynı kapsayıcıda aynı anda birden fazla değişiklik akışı talep edebilir. Changefeedoçen. StartTime, ilk başlangıç noktası sağlamak için kullanılabilir. Örneğin, belirli bir saat saatine karşılık gelen devamlılık belirtecini bulmak için. Belirtilmişse, StartTime ve Startfromstarted değerleri üzerinden WINS. Changefeedo,. StartTime duyarlık değeri ~ 5 saniye. 
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra ve MongoDB API 'Lerinde akışı değiştirme
+
+Değişiklik akışı işlevselliği, MongoDB API 'sinde değişiklik akışı olarak ve Cassandra API ' de koşul ile sorgulama olarak ortaya çıkmış. MongoDB API 'SI için uygulama ayrıntıları hakkında daha fazla bilgi edinmek için bkz. [MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme](mongodb-change-streams.md).
+
+Native Apache Cassandra değişiklik verilerini yakalama (CDC), belirli tabloları arşivleme için bayrakla işaretleme ve CDC günlüğü için yapılandırılabilir bir diske ulaşıldığında bu tablolara yazmaları reddetme mekanizması sağlar. Cassandra için Azure Cosmos DB API 'sindeki akış değiştirme özelliği, değişiklikleri CQL aracılığıyla koşullu olarak sorgulama yeteneğini geliştirir. Uygulama ayrıntıları hakkında daha fazla bilgi edinmek için bkz. [Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

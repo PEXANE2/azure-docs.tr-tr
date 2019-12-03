@@ -1,24 +1,16 @@
 ---
-title: Dağıtım kimlik bilgilerini Yapılandırma-Azure App Service | Microsoft Docs
-description: Azure App Service dağıtım kimlik bilgilerini nasıl kullanacağınızı öğrenin.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnoc
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Dağıtım kimlik bilgilerini yapılandırma
+description: Azure App Service dağıtım kimlik bilgileri türlerini ve bunların nasıl yapılandırılacağını ve kullanılacağını öğrenin.
 ms.topic: article
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: fc9445b64baae0e625b62356fee381329b01e8fd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098491"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669964"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
@@ -33,7 +25,7 @@ Kullanıcı düzeyi kimlik bilgilerinizi, herhangi bir uygulamanın [kaynak sayf
 
 ### <a name="in-the-cloud-shell"></a>Cloud Shell
 
-[Cloud Shell](https://shell.azure.com)dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) komutunu çalıştırın. Kullanıcı \<adı > ve \<parola > bir dağıtım kullanıcısı Kullanıcı adı ve parolasıyla değiştirin. 
+[Cloud Shell](https://shell.azure.com)dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) komutunu çalıştırın. \<username > ve \<Password > bir dağıtım Kullanıcı Kullanıcı adı ve parolasıyla değiştirin. 
 
 - Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. 
 - Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller. 
@@ -42,17 +34,17 @@ Kullanıcı düzeyi kimlik bilgilerinizi, herhangi bir uygulamanın [kaynak sayf
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-JSON çıktısı parolayı olarak `null`gösterir. `'Conflict'. Details: 409` hatası alırsanız kullanıcı adını değiştirin. `'Bad Request'. Details: 400` hatası alırsanız daha güçlü bir parola kullanın. 
+JSON çıktısı parolayı `null`olarak gösterir. `'Conflict'. Details: 409` hatası alırsanız kullanıcı adını değiştirin. `'Bad Request'. Details: 400` hatası alırsanız daha güçlü bir parola kullanın. 
 
 ### <a name="in-the-portal"></a>Portalda
 
 Azure portal, dağıtım kimlik bilgileri sayfasına erişebilmek için en az bir uygulamanız olması gerekir. Kullanıcı düzeyi kimlik bilgilerinizi yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **\<any_app >**  > **Deployment Center** > FTPpanosu > ' nu seçin.
+1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **\<Any_app** > **Dağıtım Merkezi** > **FTP** > **panosu**' nu seçin.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Ya da git dağıtımını zaten yapılandırdıysanız **App Services** >  >  **&lt;any_app >** **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin.
+    Ya da git dağıtımını zaten yapılandırdıysanız **App Services** >  **&lt;Any_app >**  > **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -71,14 +63,14 @@ Git dağıtımı yapılandırılırsa, sayfada bir **Git/dağıtım Kullanıcı 
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>FTP/FTPS ile Kullanıcı düzeyi kimlik bilgilerini kullanma
 
-Kullanıcı düzeyindeki kimlik bilgilerini kullanarak bir FTP/FTPS uç noktası için kimlik doğrulaması, aşağıdaki biçimde bir Kullanıcı adı talep ediyor:`<app-name>\<user-name>`
+Kullanıcı düzeyindeki kimlik bilgileri kullanılarak bir FTP/FTPS uç noktası için kimlik doğrulaması, şu biçimde bir Kullanıcı adı talep ediyor: `<app-name>\<user-name>`
 
 Kullanıcı düzeyi kimlik bilgileri, belirli bir kaynak değil kullanıcıya bağlı olduğundan, oturum açma işlemini doğru uygulama uç noktasına yönlendirmek için Kullanıcı adının bu biçimde olması gerekir.
 
 ## <a name="appscope"></a>Uygulama düzeyi kimlik bilgilerini edinme ve sıfırlama
 Uygulama düzeyi kimlik bilgilerini almak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **App Services** >  **&lt;any_app >**  > **Deployment Center** > **FTP/Credentials**' ı seçin.
+1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **&lt;Any_app** > **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin.
 
 2. **Uygulama kimlik bilgilerini**seçin ve Kullanıcı adını veya parolayı kopyalamak için **Kopyala** bağlantısını seçin.
 

@@ -3,19 +3,19 @@ title: Visual Studio 'da bağlı hizmetlerle Bing Haber Arama API'si bağlanın 
 titleSuffix: Azure Cognitive Services
 description: Bing Haber Arama hizmetini kullanarak uygulamaların ve hizmetlerin web ölçeğindeki reklamsız bir arama motorunun gücünden faydalanmasını sağlayabilirsiniz.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111503"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689376"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Öğretici: Visual Studio 'da bağlı hizmetlerle Bing Haber Arama API'si bağlanın veC#
 

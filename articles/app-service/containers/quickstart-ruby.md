@@ -1,26 +1,17 @@
 ---
-title: Linux 'ta Ruby Web uygulaması oluşturma-Azure App Service | Microsoft Docs
-description: Linux üzerinde App Service ile Ruby on Rails uygulaması oluşturmayı öğrenin.
+title: 'Hızlı başlangıç: Linux Ruby uygulaması oluşturma'
+description: İlk Ruby uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
 keywords: azure app service, linux, oss, ruby, rails
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cfcea4c4450ea806b36d1d46c17c6676f7d92893
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 17c81ab71352f57731d9b36138c88c34421e374c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071077"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689025"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Linux üzerinde App Service'te Ruby on Rails uygulaması oluşturma
 
@@ -50,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Azure'a dağıttığınızda nasıl görüneceğini görmek için uygulamayı yerel olarak çalıştırın. Bir terminal penceresi açın, `hello-world` dizinine geçiş yapın ve sunucuyu başlatmak için `rails server` komutunu kullanın.
 
-İlk adım, gerekli gem'leri yüklemektir. `Gemfile` Örneğe dahil edilmiştir, bu nedenle yalnızca aşağıdaki komutu çalıştırın:
+İlk adım, gerekli gem'leri yüklemektir. Örneğe eklenen bir `Gemfile` var, bu nedenle yalnızca aşağıdaki komutu çalıştırın:
 
 ```bash
 bundle install
@@ -125,7 +116,7 @@ http://<app-name>.azurewebsites.net
 ![güncelleştirilen web uygulaması](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Uygulama yeniden başlatılırken, tarayıcıda http durum kodunu `Error 503 Server unavailable` `Hey, Ruby developers!` veya varsayılan sayfayı gözlemleyebilirsiniz. Uygulamanın tam olarak yeniden başlatılması birkaç dakika sürebilir.
+> Uygulama yeniden başlatılırken, tarayıcıda `Error 503 Server unavailable` HTTP durum kodunu veya varsayılan `Hey, Ruby developers!` sayfasını gözlemleyebilirsiniz. Uygulamanın tam olarak yeniden başlatılması birkaç dakika sürebilir.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]

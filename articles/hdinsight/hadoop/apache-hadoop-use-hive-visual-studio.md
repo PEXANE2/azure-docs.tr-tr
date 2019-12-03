@@ -2,18 +2,18 @@
 title: Visual Studio için Apache Hive & Data Lake araçları-Azure HDInsight
 description: Azure HDInsight üzerinde Apache Hadoop ile Apache Hive sorguları çalıştırmak üzere Visual Studio için Data Lake araçları 'nı nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5b10cc5a8b7468b222fec3f2e66a8258470047ae
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931866"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687797"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio Data Lake araçlarını kullanarak Apache Hive sorguları çalıştırma
 
@@ -36,11 +36,11 @@ Hive sorguları oluşturmak ve çalıştırmak için iki seçeneğiniz vardır:
 
 ### <a name="create-an-ad-hoc-hive-query"></a>Geçici Hive sorgusu oluşturma
 
-Geçici sorgular, **Batch** veya **etkileşimli** modda çalıştırılabilir.
+Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
-1. **Visual Studio 'yu**açın.
+1. **Visual Studio 'yu** başlatın ve **kod olmadan devam et**' i seçin.
 
-2. **Sunucu Gezgini** **Azure** > **HDInsight**' a gidin.
+2. **Sunucu Gezgini**, **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
 
 3. **HDInsight**' ı genişletin, sorguyu çalıştırmak istediğiniz kümeye sağ tıklayın ve ardından **Hive sorgusu yaz**' ı seçin.
 
@@ -99,7 +99,7 @@ Hive uygulaması oluşturarak Hive sorgusu çalıştırmak için aşağıdaki ad
         > Dış tablolar, temel verilerin bir MapReduce işi veya bir Azure hizmeti gibi bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır.
         >
         > Dış tablonun atılması, yalnızca tablo tanımı olan **verileri silmez.**
-    
+
     * `ROW FORMAT`: Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
 
     * `STORED AS TEXTFILE LOCATION`: Hive, verilerin *örnek/veri* dizininde depolandığını ve metin olarak depolandığını söyler.
@@ -138,7 +138,7 @@ Aşağıdaki örnek, önceki yordamda oluşturulan `log4jLogs` tabloya dayanır,
         > `EXTERNAL` tablolarının aksine, iç tablo bırakılırken temel alınan veriler de silinir.
 
     * `STORED AS ORC`: verileri *en iyileştirilmiş satır sütunlu* (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.
-    
+
     * `INSERT OVERWRITE ... SELECT`: `[ERROR]`içeren `log4jLogs` tablosundan satırları seçer ve ardından verileri `errorLogs` tablosuna ekler.
 
 3. Gerekirse, **etkileşimli** olarak **Batch** 'e değiştirip **Gönder**' i seçin.
@@ -149,14 +149,8 @@ Aşağıdaki örnek, önceki yordamda oluşturulan `log4jLogs` tabloya dayanır,
 
 Gördüğünüz gibi, Visual Studio için HDInsight araçları, HDInsight 'ta Hive sorguları ile çalışmanın kolay bir yolunu sunar.
 
-HDInsight 'ta Hive hakkında genel bilgi için:
+* HDInsight 'ta Hive hakkında genel bilgi için bkz. [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](hdinsight-use-hive.md)
 
-* [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](hdinsight-use-hive.md)
+* HDInsight 'ta Hadoop ile çalışmanın diğer yolları hakkında bilgi için bkz. [HDInsight üzerinde MapReduce kullanma Apache Hadoop](hdinsight-use-mapreduce.md)
 
-HDInsight 'ta Hadoop ile birlikte çalışmak için kullanabileceğiniz diğer yollar hakkında daha fazla bilgi için:
-
-* [HDInsight üzerinde Apache Hadoop ile MapReduce'u kullanma](hdinsight-use-mapreduce.md)
-
-Visual Studio için HDInsight araçları hakkında daha fazla bilgi için:
-
-* [Visual Studio için Data Lake araçları 'nı kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma](apache-hadoop-visual-studio-tools-get-started.md)
+* Visual Studio için HDInsight araçları hakkında daha fazla bilgi için bkz.[Visual Studio için Data Lake araçları 'Nı kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma](apache-hadoop-visual-studio-tools-get-started.md)

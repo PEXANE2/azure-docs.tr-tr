@@ -1,17 +1,16 @@
 ---
-title: Silinen App Service uygulamalarını geri yükleme-Azure App Service
-description: Silinen App Service uygulamasını PowerShell kullanarak geri yüklemeyi öğrenin.
+title: Silinen uygulamaları geri yükleme
+description: Azure App Service silinen bir uygulamayı nasıl geri yükleyeceğinizi öğrenin. Yanlışlıkla silinen bir uygulamanın zahmetli kullanmaktan kaçının.
 author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.service: app-service
-ms.openlocfilehash: 6a3a62053a488f95e22cae13ef9d0714a7b5dd05
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a30ac638422f99134ebe9cc26e4b418f5de079b9
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173733"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672139"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinen App Service uygulamasını geri yükleme
 

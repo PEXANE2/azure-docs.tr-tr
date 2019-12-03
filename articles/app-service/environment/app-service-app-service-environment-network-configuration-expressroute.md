@@ -1,25 +1,18 @@
 ---
-title: Azure ExpressRoute için ağ yapılandırması ayrıntıları-App Service
-description: Azure ExpressRoute bağlantı hattına bağlı sanal ağlarda PowerApps için App Service Ortamı ağ yapılandırması ayrıntıları.
-services: app-service
-documentationcenter: ''
+title: Azure ExpressRoute v1 'yi yapılandırma
+description: Azure ExpressRoute ile PowerApps için App Service Ortamı ağ yapılandırması. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070033"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688739"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute ile PowerApps için App Service Ortamı ağ yapılandırması ayrıntıları
 
@@ -94,20 +87,20 @@ Bu bölümde App Service Ortamı için bir örnek UDR yapılandırması gösteri
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-* [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. En son PowerShell cmdlet 'lerini yüklemek için **komut satırı araçları** > **Windows PowerShell**altında, **yüklemek** ' ı seçin.
+* [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. **Windows powershell** > **komut satırı araçları** ' nın altında, en son PowerShell cmdlet 'lerini yüklemek için **Install** ' ı seçin.
 
 * App Service Ortamı tarafından özel kullanım için benzersiz bir alt ağ oluşturun. Benzersiz alt ağ, alt ağa uygulanan UDRs 'nin yalnızca App Service Ortamı için giden trafiği açmasını sağlar.
 
 > [!IMPORTANT]
 > Yapılandırma adımlarını tamamladıktan sonra yalnızca App Service Ortamı dağıtın. Adımları App Service Ortamı dağıtmayı denemeden önce giden ağ bağlantısının kullanılabilir olmasını sağlar.
 
-### <a name="step-1-create-a-route-table"></a>1\. adım: Yönlendirme tablosu oluşturma
+### <a name="step-1-create-a-route-table"></a>1\. Adım: yol tablosu oluşturma
 
 Batı ABD Azure bölgesinde, bu kod parçacığında gösterildiği gibi **Directınternetroutetable** adlı bir yol tablosu oluşturun:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>2\. adım: Tabloda rotalar oluşturma
+### <a name="step-2-create-routes-in-the-table"></a>2\. Adım: tabloda yollar oluşturma
 
 Giden internet erişimini etkinleştirmek için yol tablosuna yollar ekleyin.  
 
@@ -126,19 +119,19 @@ Alternatif olarak, Azure tarafından kullanılan geçerli ve kapsamlı bir CıDR
 > Tek bir UDR 'nin varsayılan 100 rotasıyla üst limiti vardır. 100 yol sınırına sığacak şekilde Azure IP adresi aralıklarını "özetleyin". UDR tanımlı yolların, ExpressRoute bağlantınızın tanıtıldığı rotalardan daha belirgin olması gerekir.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>3\. adım: Tabloyu alt ağla ilişkilendir
+### <a name="step-3-associate-the-table-to-the-subnet"></a>3\. Adım: tabloyu alt ağla Ilişkilendirme
 
 Yol tablosunu App Service Ortamı dağıtmayı planladığınız alt ağ ile ilişkilendirin. Bu komut **Directınternetroutetable** tablosunu App Service ortamı Içerecek **asesubnet** alt ağıyla ilişkilendirir.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>4\. Adım: Rotayı test edin ve onaylayın
+### <a name="step-4-test-and-confirm-the-route"></a>4\. Adım: rotayı test etme ve onaylama
 
 Yol tablosu alt ağa bağlandıktan sonra, yolu test edin ve onaylayın.
 
 Bir sanal makineyi alt ağa dağıtın ve şu koşulları onaylayın:
 
-* Bu makalede açıklanan Azure ve Azure dışı uç noktalara giden trafik, ExpressRoute bağlantı hattını göstermez. Alt ağdan giden trafiğe Zorlamalı tünel uygulandığında App Service Ortamı oluşturma işlemi her zaman başarısız olur.
+* Bu makalede açıklanan Azure ve Azure dışı uç noktalara giden trafik, ExpressRoute bağlantı **hattını göstermez.** Alt ağdan giden trafiğe Zorlamalı tünel uygulandığında App Service Ortamı oluşturma işlemi her zaman başarısız olur.
 * Bu makalede açıklanan uç noktalar için DNS aramaları düzgün şekilde çözümlenir. 
 
 Yapılandırma adımlarını tamamladıktan ve yolu doğruladıktan sonra, sanal makineyi silin. App Service Ortamı oluşturulduğunda alt ağın "boş" olması gerekir.

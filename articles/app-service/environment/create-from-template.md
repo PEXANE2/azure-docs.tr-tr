@@ -1,24 +1,18 @@
 ---
-title: Kaynak Yöneticisi şablonuyla App Service ortam oluşturma-Azure
-description: Bir Kaynak Yöneticisi şablonu kullanarak dış veya ıLB Azure App Service ortamının nasıl oluşturulduğunu açıklar.
-services: app-service
-documentationcenter: na
+title: ARM ile ATıCı oluşturma
+description: Bir Azure Resource Manager şablonu kullanarak dış veya ıLB App Service ortamı oluşturmayı öğrenin.
 author: ccompy
-manager: stefsch
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 60c9d89bc0ab7c63e779a7cadece863540e827aa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dccefa47789b4658a7bca828b5a820db0d448e5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470592"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688665"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak ATıCı oluşturma
 
@@ -44,7 +38,7 @@ ATıCı oluşturma işlemini otomatikleştirmek için:
 
 2. ILB ASE 'niz oluşturulduktan sonra, ıLB ASE etki alanınız ile eşleşen bir SSL sertifikası karşıya yüklenir.
 
-3. Karşıya yüklenen SSL sertifikası, "varsayılan" SSL sertifikası olarak ıLB AŞIRE atanır.  Bu sertifika, Ao 'ya atanan ortak kök etki alanını (örneğin, https://someapp.mycustomrootdomain.com)) kullandıklarında ıLB Ao üzerindeki uygulamalara SSL trafiği için kullanılır.
+3. Karşıya yüklenen SSL sertifikası, "varsayılan" SSL sertifikası olarak ıLB AŞIRE atanır.  Bu sertifika, Ao 'ya atanan ortak kök etki alanını (örneğin, https://someapp.mycustomrootdomain.com) ) kullandıklarında ıLB Ao üzerindeki uygulamalara SSL trafiği için kullanılır.
 
 
 ## <a name="create-the-ase"></a>ATıCı oluşturma
@@ -111,7 +105,7 @@ SSL sertifikası başarılı bir şekilde oluşturulup Base64 kodlamalı bir diz
 * *Pfxblobstring*:. pfx dosyasının based64 kodlu dize temsili. Daha önce gösterilen kod parçacığını kullanın ve "exportedcert. pfx. B64" içinde bulunan dizeyi kopyalayın. Öğesini *Pfxblobstring* özniteliğinin değeri olarak yapıştırın.
 * *parola*:. pfx dosyasının güvenliğini sağlamak için kullanılan parola.
 * *certificateThumbprint*: sertifikanın parmak izi. Bu değeri PowerShell 'den alırsanız (örneğin, *$Certificate.* Önceki kod parçacığındaki parmak izi), değeri olduğu gibi kullanabilirsiniz. Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın. *CertificateThumbprint* , AF3143EB61D43F6727842115BB7F17BBCECAECAE gibi görünmelidir.
-* *CertificateName*: sertifikayı belirlemek için kullanılan seçtiğiniz kolay bir dize tanımlayıcısı. Ad, SSL sertifikasını temsil eden *Microsoft. Web/sertifikaları* varlığı için benzersiz kaynak yöneticisi tanımlayıcısının bir parçası olarak kullanılır. *Ad şu soneke bitmelidir:* \_yourASENameHere_InternalLoadBalancingASE. Azure portal, bu son eki sertifikanın ıLB özellikli bir AO 'nun güvenliğini sağlamak için kullanılan bir gösterge olarak kullanır.
+* *CertificateName*: sertifikayı belirlemek için kullanılan seçtiğiniz kolay bir dize tanımlayıcısı. Ad, SSL sertifikasını temsil eden *Microsoft. Web/sertifikaları* varlığı için benzersiz kaynak yöneticisi tanımlayıcısının bir parçası olarak kullanılır. *Ad şu sonek ile bitmelidir:* \_yourASENameHere_InternalLoadBalancingASE. Azure portal, bu son eki sertifikanın ıLB özellikli bir AO 'nun güvenliğini sağlamak için kullanılan bir gösterge olarak kullanır.
 
 Kısaltılmış bir *azuredeploy. Parameters. JSON* örneği burada gösterilmektedir:
 

@@ -1,27 +1,18 @@
 ---
-title: 502 hatalı ağ geçidini çözme, 503 hizmeti kullanılamıyor hatası-Azure App Service | Microsoft Docs
+title: HTTP 502 ve HTTP 503 hatalarını çözme
 description: Azure App Service 'de barındırılan uygulamanızda 502 hatalı ağ geçidi ve 503 hizmeti kullanılamayan hata sorunlarını giderin.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: 502 hatalı ağ geçidi, 503 Hizmet kullanılamıyor, hata 503, hata 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066676"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688320"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service 'de "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" HTTP hatalarında sorun giderme
 "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" uygulamanızda [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)barındırılan yaygın hatalardır. Bu makale, bu hataları gidermenize yardımcı olur.
@@ -49,7 +40,7 @@ Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Uygulama davranışını gözlemleyin ve izleyin
+### <a name="1-observe-and-monitor-application-behavior"></a>1. uygulama davranışını gözlemleyin ve izleyin
 #### <a name="track-service-health"></a>Hizmet durumunu izleme
 Her bir hizmet kesintisi veya performans düşüşü olduğunda Microsoft Azure publicleştirir. Hizmetin sistem durumunu [Azure portalında](https://portal.azure.com/)izleyebilirsiniz. Daha fazla bilgi için bkz. [hizmet durumunu izleme](../monitoring-and-diagnostics/insights-service-health.md).
 
@@ -73,7 +64,7 @@ Daha fazla bilgi için bkz.
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Veri toplama
+### <a name="2-collect-data"></a>2. veri topla
 #### <a name="use-the-diagnostics-tool"></a>Tanılama aracını kullanma
 App Service, yapılandırma gerekmeden uygulamanızdaki sorunları gidermenize yardımcı olacak akıllı ve etkileşimli bir deneyim sağlar. Uygulamanız ile ilgili sorunlar yaşıyorsanız, Tanılama Aracı, sorunu daha kolay ve hızlı bir şekilde gidermeye ve çözmeye yönelik doğru bilgilere kılavuzluk etmek için nelerin yanlış olduğunu gösterir.
 
@@ -82,7 +73,7 @@ App Service tanılama 'ya erişmek için App Service uygulamanıza veya [Azure p
 #### <a name="use-the-kudu-debug-console"></a>Kudu hata ayıklama konsolunu kullanma
 App Service, hata ayıklama, keşfetme, yükleme dosyaları ve ortamınız hakkında bilgi almak için JSON uç noktaları için kullanabileceğiniz bir hata ayıklama konsoluyla birlikte gelir. Bu, *kudu konsolu* veya uygulamanız Için *SCM panosu* olarak adlandırılır.
 
-Bu panoya, **>. scm. azurewebsites. net/&lt;adlı uygulamanızın adını https://** bağlantısına giderek erişebilirsiniz.
+Bu panoya, **uygulamanızın adı >. scm. azurewebsites. net/&lt;** bağlantısına giderek erişebilirsiniz.
 
 Kudu 'nin sağladığı işlemlerden bazıları şunlardır:
 
@@ -97,7 +88,7 @@ Kudu 'de kullanılabilen özellikler hakkında daha fazla bilgi için, bkz. [Azu
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Sorunu azaltma
+### <a name="3-mitigate-the-issue"></a>3. sorunu azaltma
 #### <a name="scale-the-app"></a>Uygulamayı ölçeklendirme
 Azure App Service, daha fazla performans ve verimlilik için uygulamanızı çalıştırdığınız ölçeği ayarlayabilirsiniz. Bir uygulamanın ölçeğini değiştirmek, iki ilgili eylemi içerir: App Service planınızı daha yüksek bir fiyatlandırma katmanına değiştirme ve belirli ayarları daha yüksek fiyatlandırma katmanına geçtikten sonra yapılandırma.
 

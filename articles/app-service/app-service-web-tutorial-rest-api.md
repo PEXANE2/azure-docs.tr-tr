@@ -1,26 +1,17 @@
 ---
-title: "Öğretici: CORS ile Restizsiz API 'YI barındırma Azure App Service"
-description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle barındırmanıza nasıl yardımcı olduğunu öğrenin.
-services: app-service\api
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
+title: 'Öğretici: CORS ile Restuz API barındırma'
+description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle barındırmanıza nasıl yardımcı olduğunu öğrenin. App Service, hem ön uç Web uygulamalarını hem de arka uç API 'Lerini barındırabilir.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/21/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f13b390047ea4d8280b106f3b02a8f18944a6f99
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: e2eca624fabf30eae86c480ede6c4bdffc2226bc
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255111"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671119"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service’te CORS ile RESTful API barındırma
 
@@ -138,7 +129,7 @@ Tarayıcıda `http://<app_name>.azurewebsites.net/swagger` adresine gidin ve Swa
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
-Dağıtılan API'nizin `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json`swagger.json_dosyasını görmek için_ adresine gidin.
+Dağıtılan API'nizin _swagger.json_ dosyasını görmek için `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` adresine gidin.
 
 Dağıtılan API'nizin çalıştığını görmek için `http://<app_name>.azurewebsites.net/api/todo` adresine gidin.
 

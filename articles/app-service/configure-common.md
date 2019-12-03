@@ -1,26 +1,17 @@
 ---
-title: Portalda Uygulama Yapılandırma-Azure App Service
-description: Azure portal bir App Service uygulamasının ortak ayarlarını yapılandırmayı öğrenin.
+title: Portalda uygulama yapılandırma
+description: Azure portal bir App Service uygulamasının ortak ayarlarını yapılandırmayı öğrenin. Uygulama ayarları, bağlantı dizeleri, Platform, dil yığını, kapsayıcı vb.
 keywords: Azure App Service, Web uygulaması, uygulama ayarları, ortam değişkenleri
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470946"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671958"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -34,7 +25,7 @@ App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak ge�
 
 ![Uygulama ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarlarının ayarlanması, *Web. config* veya *appSettings. JSON*içinde `<appSettings>` ayarlama gibidir, ancak App Service içindeki değerler *Web. config* veya *appSettings. JSON içinde olanları geçersiz kılar* . *Web. config* veya *appSettings. JSON*içinde geliştirme ayarlarını (örneğin, yerel MySQL parolası) tutabilir, ancak üretim gizli dizileri (örneğin, Azure MySQL veritabanı parolası) App Service güvenlidir. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarlarının ayarlanması, *Web. config* veya *appSettings. JSON*içinde `<appSettings>` ayarlamak gibidir, ancak App Service içindeki değerler *Web. config* veya *appSettings. JSON*içinde olanları geçersiz kılar. *Web. config* veya *appSettings. JSON*içinde geliştirme ayarlarını (örneğin, yerel MySQL parolası) tutabilir, ancak üretim gizli dizileri (örneğin, Azure MySQL veritabanı parolası) App Service güvenlidir. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
 Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
 
@@ -89,7 +80,7 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
 ]
 ```
 
-## <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
+## <a name="configure-connection-strings"></a>Bağlantı ayarlarını yapılandırma
 
 [Azure Portalı], uygulamanın yönetim sayfasına gidin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' na tıklayın.
 
@@ -251,7 +242,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 
 - [Azure App Service'te özel etki alanı adını yapılandırma]
 - [Azure App Service’te hazırlık ortamları ayarlama]
-- [Azure App Service 'de SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
+- [Azure App Service'de SSL bağlamasıyla özel DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 - [Tanılama günlüklerini etkinleştir](troubleshoot-diagnostic-logs.md)
 - [Azure App Service bir uygulamayı ölçeklendirme]
 - [Azure App Service temel bilgileri izleme]

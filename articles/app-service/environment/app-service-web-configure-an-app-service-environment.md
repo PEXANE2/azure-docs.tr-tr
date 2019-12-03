@@ -1,25 +1,18 @@
 ---
-title: App Service Ortamı v1 'yi Yapılandırma-Azure
-description: App Service Ortamı v1 yapılandırma, yönetim ve izleme
-services: app-service
-documentationcenter: ''
+title: ALV1 'yi yapılandırma
+description: App Service Ortamı v1 yapılandırma, yönetim ve izleme. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069944"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687252"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Ortamı v1 yapılandırma
 
@@ -44,14 +37,14 @@ Kaynak havuzlarındaki (ön uçlar ve çalışanlar) konaklar, kiracıların do�
 Kaynak havuzu miktarını ve boyutunu ayarlayabilirsiniz. Ao 'da, P4 ile P1 etiketli dört boyutlu seçenekleriniz vardır. Bu boyutlar ve fiyatlandırmasıyla ilgili ayrıntılar için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
 Miktar veya boyutun değiştirilmesi, ölçek işlemi olarak adlandırılır.  Tek seferde yalnızca bir ölçeklendirme işlemi devam edebilir.
 
-**Ön uçlar**: Ön uçlar, ASE 'niz içinde tutulan uygulamalarınız için HTTP/HTTPS uç noktalardır. Ön uçlarında iş yüklerini çalıştırmazsınız.
+**Ön uçlar**: ön uçlar, ASE 'niz içinde tutulan uygulamalarınızın http/https uç noktalardır. Ön uçlarında iş yüklerini çalıştırmazsınız.
 
 * ATıCı, geliştirme/test iş yükleri ve düşük düzeyli üretim iş yükleri için yeterli olan iki P2s ile başlar. Orta ila ağır üretim iş yükleri için P3S önemle önerilir.
 * Orta ila ağır üretim iş yükleri için, zamanlanmış bakım gerçekleştiğinde çalışan yeterli ön uç olduğundan emin olmak için en az dört P3S olmasını öneririz. Zamanlanan bakım etkinlikleri, bir anda bir ön uç getirecek. Bu, bakım etkinlikleri sırasında genel kullanıma açık ön uç kapasitesini azaltır.
 * Ön uçların sağlanması bir saate kadar sürebilir. 
-* Daha fazla ölçek ince ayarlama için, ön uç havuzu için CPU yüzdesini, bellek yüzdesini ve etkin Istek ölçümlerini izlemeniz gerekir. P3S çalıştırılırken CPU veya bellek yüzdeleri yüzde 70 ' luk üstündeyse, daha fazla ön uç ekleyin. Etkin Istekler değeri ön uç başına 15.000 ile 20.000 arasında bir değere ortaalıyorsa, daha ön uçlar da eklemeniz gerekir. Genel amaç, CPU ve bellek yüzdelerini% 70 ' ın altında tutmaktır ve etkin Istekler, P3S çalıştırırken ön uç başına 15.000 istekten daha düşük bir değer sağlar.  
+* Daha fazla ölçek ince ayarlama için, ön uç havuzu için CPU yüzdesini, bellek yüzdesini ve etkin Istek ölçümlerini izlemeniz gerekir. P3S çalıştırılırken CPU veya bellek yüzdeleri yüzde 70 ' luk üstündeyse, daha fazla ön uç ekleyin. Etkin Istekler değeri ön uç başına 15.000 ile 20.000 arasında bir değere ortaalıyorsa, daha ön uçlar da eklemeniz gerekir. Genel amaç, CPU ve bellek yüzdelerini %70 ' ın altında tutmaktır ve etkin Istekler, P3S çalıştırırken ön uç başına 15.000 istekten daha düşük bir değer sağlar.  
 
-**Çalışanlar**: Çalışanlar, uygulamalarınızın aslında çalıştırıldığı yerdir. App Service planlarınızı ölçeklendirirseniz, bu, ilişkili çalışan havuzundaki çalışanları kullanır.
+**Çalışanlar**: uygulamalarınızın gerçekten çalıştırıldığı çalışanlar. App Service planlarınızı ölçeklendirirseniz, bu, ilişkili çalışan havuzundaki çalışanları kullanır.
 
 * Çalışanları anında ekleyemezsiniz. Sağlanması bir saate kadar zaman alabilir.
 * Herhangi bir havuz için bir işlem kaynağının boyutunun ölçeklendirilmesi, güncelleştirme etki alanı başına < 1 saat sürer. Ao 'da 20 güncelleştirme etki alanı vardır. Bir çalışan havuzunun işlem boyutunu 10 örnek ile ölçeklendirdiyseniz tamamlanması en fazla 10 saat sürebilir.
@@ -68,7 +61,7 @@ Uygulamalarınız daha büyük bir işlem kaynağı boyutu gerektiriyorsa, önce
 * Yeni yapılandırılan çalışan havuzuna daha büyük bir boyut gerektiren uygulamaları barındıran App Service planlarınızı yeniden atayın. Bu işlemin tamamlanması bir dakikadan kısa sürer.  
 * Kullanılmayan örneklere artık ihtiyacınız yoksa ilk çalışan havuzunu ölçeklendirin. Bu işlemin tamamlanabilmesi birkaç dakika sürer.
 
-**Otomatik ölçeklendirme**: İşlem kaynağı tüketiminizi yönetmenize yardımcı olabilecek araçlardan biri otomatik ölçeklendiriliyor. Ön uç veya çalışan havuzları için otomatik ölçeklendirmeyi kullanabilirsiniz. Sabah herhangi bir havuz türünün örneklerinizi artırma ve akşam de azaltma gibi işlemleri yapabilirsiniz. Ya da bir çalışan havuzunda kullanılabilir çalışan sayısı belirli bir eşiğin altına düştüğünde örnek ekleyebilirsiniz.
+**Otomatik ölçeklendirme**: işlem kaynağı tüketiminizi yönetmenize yardımcı olabilecek araçlardan biri otomatik ölçeklendiriliyor. Ön uç veya çalışan havuzları için otomatik ölçeklendirmeyi kullanabilirsiniz. Sabah herhangi bir havuz türünün örneklerinizi artırma ve akşam de azaltma gibi işlemleri yapabilirsiniz. Ya da bir çalışan havuzunda kullanılabilir çalışan sayısı belirli bir eşiğin altına düştüğünde örnek ekleyebilirsiniz.
 
 İşlem kaynak havuzu ölçümlerinin etrafında otomatik ölçeklendirme kuralları ayarlamak istiyorsanız, sağlama zamanının gerektirdiği süreyi aklınızda bulundurun. App Service ortamları otomatik ölçeklendirme hakkında daha fazla ayrıntı için bkz. [App Service ortamı otomatik ölçeklendirmeyi yapılandırma][ASEAutoscale].
 
@@ -132,11 +125,11 @@ Bir Ao 'da, tüm App Service planları adanmış App Service planlardır. Diğer
 ### <a name="settings"></a>Ayarlar
 ATıCı dikey penceresinde, birkaç önemli özelliği içeren bir **Ayarlar** bölümü vardır:
 
-Ayar > **özellikleri**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel**Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin**yanı sıra **giden IP adreslerinden**çok yararlı olan birçok öğe vardır.
+**Ayarlar** > **Özellikler**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel**Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin**yanı sıra **giden IP adreslerinden**çok yararlı olan birçok öğe vardır.
 
 ![Ayarlar dikey penceresi ve özellikleri][4]
 
-Ayarlar > **IP adresleri**: Ao 'da bir IP Güvenli Yuva Katmanı (SSL) uygulaması oluşturduğunuzda, bir IP SSL adresiniz olması gerekir. Bir tane elde etmek için, Ao 'un ayrılabileceği, sahip olduğu adreslere IP SSL gerekir. Bir Ao oluşturulduğunda, bu amaç için bir IP SSL adresi vardır, ancak daha fazla bilgi ekleyebilirsiniz. [App Service fiyatlandırması][AppServicePricing] (SSL bağlantıları üzerindeki bölümde) gösterildiği gibi ek IP SSL adresler için ücretlendirilir. Ek fiyat IP SSL fiyatıdır.
+**Ayarlar** > **IP adresleri**: ao uygulamanızda BIR IP Güvenli Yuva Katmanı (SSL) uygulaması oluşturduğunuzda, bir IP SSL adresine ihtiyacınız vardır. Bir tane elde etmek için, Ao 'un ayrılabileceği, sahip olduğu adreslere IP SSL gerekir. Bir Ao oluşturulduğunda, bu amaç için bir IP SSL adresi vardır, ancak daha fazla bilgi ekleyebilirsiniz. [App Service fiyatlandırması][AppServicePricing] (SSL bağlantıları üzerindeki bölümde) gösterildiği gibi ek IP SSL adresler için ücretlendirilir. Ek fiyat IP SSL fiyatıdır.
 
 **Ayarlar** > **ön uç havuzu** / **çalışan havuzları**: Bu kaynak havuzu dikey pencerelerinin her biri, kaynak havuzunu tamamen ölçeklendirmeye yönelik denetimler sağlamaya ek olarak, yalnızca o kaynak havuzundaki bilgileri görmenizi sağlar.  
 
@@ -161,7 +154,7 @@ AI dikey penceresinde ölçek işlemini kullanmak için kaydırıcıyı istediğ
 
 ![Ölçek Kullanıcı arabirimi][6]
 
-Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **Ayarlar** > **ön uç havuzu** / **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ayarlar**ölçeği genişletme veyaayarların > ölçeğini genişletme bölümüne gidin. >  **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
+Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **ayarlar** > **ön uç havuzu** / **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ölçek büyütme veya** **Ayarlar** > **ölçeği yukarı** ** > ayarlar '** a gidin. **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
 
 ![Ölçek ayarları kullanıcı arabirimi][7]
 
@@ -191,7 +184,7 @@ Bir App Service Ortamı silmek istiyorsanız, App Service Ortamı dikey penceren
 
 ![App Service Ortamı Kullanıcı arabirimini silme][9]  
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 App Service ortamları ile çalışmaya başlamak için bkz. [nasıl App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md).
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

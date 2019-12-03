@@ -1,19 +1,18 @@
 ---
-title: Linux 'ta Docker uygulaması dağıtma-Azure App Service
-description: Linux için Azure Uygulama Hizmetleri 'ne Docker görüntüsü dağıtma
-author: msangapu
+title: 'Hızlı başlangıç: özel bir Linux kapsayıcısını çalıştırma'
+description: Azure Container Registry kullanarak ilk özel kapsayıcınızı dağıtarak Azure App Service Linux kapsayıcıları ile çalışmaya başlayın.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.service: app-service
-ms.openlocfilehash: 2a7dc477b4cd0be0c50569d84e10cfe1d666eac9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392117"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688957"
 ---
-# <a name="deploy-to-azure-using-docker"></a>Docker kullanarak Azure 'a dağıtma
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı dağıtın
 
 Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node. js ve diğerleri gibi diller desteğiyle önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta, bir [Azure Container Registry](/azure/container-registry) (ACR) App Service bir görüntünün nasıl dağıtılacağı gösterilir.
 
@@ -25,9 +24,9 @@ Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node. js ve diğerleri g
 * [Vs Code için Azure App Service uzantısı](vscode:extension/ms-azuretools.vscode-azureappservice). Bu uzantıyı Azure platformunda bir hizmet olarak (PaaS) Linux Web Apps oluşturmak, yönetmek ve dağıtmak için kullanabilirsiniz.
 * [Vs Code Için Docker uzantısı](vscode:extension/ms-azuretools.vscode-docker). Bu uzantıyı, yerel Docker görüntüleri ve komutlarının yönetimini basitleştirmek ve oluşturulan uygulama görüntülerini Azure 'a dağıtmak için kullanabilirsiniz.
 
-## <a name="create-an-image"></a>Görüntü oluştur
+## <a name="create-an-image"></a>Görüntü oluşturma
 
-Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/azure/container-registry)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. Hızlı Başlangıç bölümündeki [yönergeleri izleyin: Azure Portal](/azure/container-registry/container-registry-get-started-portal)kullanarak bir özel kapsayıcı kayıt defteri oluşturun, ancak görüntü yerine `mcr.microsoft.com/azuredocs/go` `hello-world` görüntüyü kullanın.
+Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/azure/container-registry)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. [Hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](/azure/container-registry/container-registry-get-started-portal)' daki yönergeleri izleyin, ancak `hello-world` görüntüsü yerine `mcr.microsoft.com/azuredocs/go` görüntüsünü kullanın.
 
 > [!IMPORTANT]
 > Kapsayıcı kayıt defterini oluştururken **Yönetici Kullanıcı** seçeneğini **etkinleştirmek** için ayarladığınızdan emin olun. Ayrıca, Azure portal kayıt defteri sayfanızın **erişim tuşları** bölümünden de ayarlayabilirsiniz. App Service erişim için bu ayar gereklidir.
@@ -62,13 +61,13 @@ Artık her şey yapılandırıldığına göre, görüntünüzü doğrudan Docke
 
 Buradan bir abonelik, genel olarak benzersiz bir uygulama adı, kaynak grubu ve bir App Service planı seçmek için istemleri izleyin. Fiyatlandırma Katmanı ve bir bölge için **B1 Basic** ' i seçin.
 
-Dağıtımdan sonra uygulamanız ' de kullanılabilir `http://<app name>.azurewebsites.net`.
+Dağıtımdan sonra uygulamanız `http://<app name>.azurewebsites.net`kullanılabilir.
 
 **Kaynak grubu** , Azure 'daki tüm uygulamanızın kaynaklarının adlandırılmış bir koleksiyonudur. Örneğin, bir kaynak grubu bir Web sitesi, bir veritabanı ve bir Azure Işlevi için başvuru içerebilir.
 
 **App Service planı** , Web sitenizi barındırmak için kullanılacak fiziksel kaynakları tanımlar. Bu hızlı başlangıç, **Linux** altyapısında **temel** bir barındırma planı kullanır. Bu, sitenin diğer Web sitelerinden daha farklı bir Linux makinesinde barındırılması anlamına gelir. **Temel** planla başlatırsanız, bir makinede çalışan tek site olmak üzere ölçeğini ölçeklendirmek için Azure Portal kullanabilirsiniz.
 
-## <a name="browse-the-website"></a>Web sitesine Gözat
+## <a name="browse-the-website"></a>Web sitesine gidin
 
 İşlemin durumunu göstermek için dağıtım sırasında **Çıkış** paneli açılır. İşlem tamamlandığında, **App SERVICE** Explorer 'da oluşturduğunuz uygulamayı bulun, sağ tıklayın ve siteyi tarayıcınızda açmak Için **Web sitesine gidin** ' i seçin.
 

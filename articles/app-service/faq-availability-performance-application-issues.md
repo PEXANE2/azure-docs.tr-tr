@@ -1,26 +1,20 @@
 ---
-title: Uygulama performansı SSS-Azure App Service | Microsoft Docs
-description: Azure App Service Web Apps özelliğindeki kullanılabilirlik, performans ve uygulama sorunları hakkında sık sorulan soruların yanıtlarını alın.
-services: app-service\web
-documentationcenter: ''
+title: Uygulama performansı SSS
+description: Azure App Service kullanılabilirlik, performans ve uygulama sorunları hakkında sık sorulan soruların yanıtlarını alın.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122062"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671704"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için uygulama performansı SSS
 
@@ -53,10 +47,10 @@ App Service Web uygulamalarını yönetmek ve korumak için PowerShell cmdlet 'l
 Web uygulamanızın olay günlüklerini görüntülemek için:
 
 1. [Kudu Web sitenizde](https://*yourwebsitename*.scm.azurewebsites.net)oturum açın.
-2. Menüsünde, **Hata Ayıkla konsol** > **cmd**' yi seçin.
+2. Menüsünde, **Hata Ayıkla konsolu** > **cmd**' yi seçin.
 3. **LogFiles** klasörünü seçin.
 4. Olay günlüklerini görüntülemek için **EventLog. xml**' nin yanındaki kurşun kalem simgesini seçin.
-5. Günlükleri indirmek için PowerShell cmdlet 'ini `Save-AzureWebSiteLog -Name webappname`çalıştırın.
+5. Günlükleri indirmek için `Save-AzureWebSiteLog -Name webappname`PowerShell cmdlet 'ini çalıştırın.
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Web uygulamamın Kullanıcı modu bellek dökümünü Nasıl yaparım? yakalayın mi?
 
@@ -65,7 +59,7 @@ Web uygulamanızın kullanıcı modu bellek dökümünü yakalamak için:
 1. [Kudu Web sitenizde](https://*yourwebsitename*.scm.azurewebsites.net)oturum açın.
 2. **Işlem Gezgini** menüsünü seçin.
 3. **W3wp. exe** Işlemini veya WebJob işleminizi sağ tıklatın.
-4. **Bellek dökümünü** > Yükle**tam dökümünü**Seç ' i seçin.
+4. **Tam döküm** > **bellek dökümünü indir** ' i seçin.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Web uygulamamın işlem düzeyi bilgisini Nasıl yaparım? görüntüle?
 
@@ -87,7 +81,7 @@ Web uygulamanız için işlem düzeyi bilgileri görüntülemek üzere iki seçe
 * Web uygulaması portalda durduruldu.
 * Web uygulaması, ücretsiz veya paylaşılan bir ölçek hizmeti planına uygulanabilecek bir kaynak kotası sınırına ulaştı.
 
-Hataya neyin neden olduğunu görmek ve sorunu çözmek için Web Apps içindeki [adımları izleyin: "Hata 403 – Bu Web uygulaması durduruldu"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Hataya neyin neden olduğunu görmek ve sorunu çözmek için [Web Apps: "hata 403 – Bu Web uygulaması durduruldu"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)bölümündeki adımları izleyin.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Çeşitli App Service planlarına yönelik kotalar ve sınırlar hakkında nereden daha fazla bilgi edinebilirim?
 
@@ -106,7 +100,7 @@ Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırı
 Başarısız istek izlemeyi açmak için:
 
 1. Azure portal web uygulamanıza gidin.
-3. **Tüm ayarlar** > **tanılama günlükleri**' ni seçin.
+3. **Tanılama günlükleri** > **Tüm ayarlar** ' ı seçin.
 4. **Başarısız Istek izleme**için **Açık**' ı seçin.
 5. **Kaydet**’i seçin.
 6. Web uygulaması dikey penceresinde **Araçlar**' ı seçin.
@@ -147,8 +141,8 @@ Başarısız istek izlemeyi açmak için:
     </tracing>
     ```
 13. Başarısız istek izlemelerini indirmek için, [portalda](https://portal.azure.com)Web sitenize gidin.
-15. **Araçlar** > kuduGit > ' i seçin.
-18. Menüsünde, **Hata Ayıkla konsol** > **cmd**' yi seçin.
+15.  > **kudu** > **Go** **araçları** ' nı seçin.
+18. Menüsünde, **Hata Ayıkla konsolu** > **cmd**' yi seçin.
 19. **LogFiles** klasörünü seçin ve ardından **W3SVC**ile başlayan bir adı olan klasörü seçin.
 20. XML dosyasını görmek için kalem simgesini seçin.
 
@@ -170,7 +164,7 @@ WebJobs, arka plan işlemesi için tasarlanmıştır. WebJob 'ta istediğiniz ka
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>App Service barındırılan ASP.NET Core uygulamalar bazen yanıt vermeyi durdurabilir. Nasıl yaparım? bu sorun düzeltilsin mi?
 
-Önceki bir [Kestrel sürümü](https://github.com/aspnet/KestrelHttpServer/issues/1182) ile ilgili bilinen bir sorun, App Service içinde barındırılan ASP.NET Core 1,0 uygulamasının zaman zaman yanıt vermeyi durdurmasına neden olabilir. Şu iletiyi de görebilirsiniz: "Belirtilen CGI uygulaması bir hatayla karşılaştı ve sunucu işlemi sonlandırdı."
+Önceki bir [Kestrel sürümü](https://github.com/aspnet/KestrelHttpServer/issues/1182) ile ilgili bilinen bir sorun, App Service içinde barındırılan ASP.NET Core 1,0 uygulamasının zaman zaman yanıt vermeyi durdurmasına neden olabilir. Şu iletiyi de görebilirsiniz: "belirtilen CGI uygulaması bir hatayla karşılaştı ve sunucu işlemi sonlandırdı."
 
 Bu sorun Kestrel Version 1.0.2 içinde düzeltilmiştir. Bu sürüm ASP.NET Core 1.0.3 güncelleştirmesine dahildir. Bu sorunu çözmek için, Kestrel 1.0.2 kullanmak üzere uygulama bağımlılıklarınızı güncelleştirdiğinizden emin olun. Alternatif olarak, [App Service Web Apps 'te 1,0 yavaş performans sorunları ASP.NET Core](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)blog postasında açıklanan iki geçici çözüm de kullanabilirsiniz.
 
@@ -179,7 +173,7 @@ Bu sorun Kestrel Version 1.0.2 içinde düzeltilmiştir. Bu sürüm ASP.NET Core
 
 App Service yerel önbellek özelliğini kullanıyorsanız, App Service örneğiniz için LogFiles ve veri klasörlerinin klasör yapısı etkilenir. Yerel önbellek kullanıldığında, alt klasörler depolama günlük dosyaları ve veri klasörlerinde oluşturulur. Alt klasörler "benzersiz tanımlayıcı" ve zaman damgasını adlandırma düzenlerini kullanır. Her alt klasör, Web uygulamasının çalıştığı veya çalıştırıldığı bir VM örneğine karşılık gelir.
 
-Yerel önbellek kullanıp kullanmayacağınızı anlamak için App Service **uygulama ayarları** sekmesini kontrol edin. Yerel önbellek kullanılıyorsa, uygulama ayarı `WEBSITE_LOCAL_CACHE_OPTION` olarak `Always`ayarlanır.
+Yerel önbellek kullanıp kullanmayacağınızı anlamak için App Service **uygulama ayarları** sekmesini kontrol edin. Yerel önbellek kullanılıyorsa `WEBSITE_LOCAL_CACHE_OPTION` uygulama ayarı `Always`olarak ayarlanır.
 
 Yerel önbellek kullanmıyorsanız ve bu sorunla karşılaşıyorsanız, bir destek isteği gönderin.
 

@@ -1,27 +1,19 @@
 ---
-title: Linux 'ta Java Web uygulaması oluşturma-Azure App Service
-description: Bu hızlı başlangıçta, Linux üzerindeki Azure App Service’te ilk Java Merhaba Dünya uygulamanızı birkaç dakika içinde dağıtacaksınız.
+title: 'Hızlı başlangıç: Linux Java uygulaması oluşturma'
+description: İlk Java uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
 keywords: Azure, App Service, Web uygulaması, Linux, Java, Maven, hızlı başlangıç
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3f50c94dafd01c6493f4765270c53c7903360c44
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665177"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689010"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 

@@ -1,27 +1,20 @@
 ---
-title: En iyi yöntemler-Azure App Service
-description: Azure App Service için en iyi uygulamaları ve sorun gidermeyi öğrenin.
-services: app-service
-documentationcenter: ''
+title: En İyi Uygulamalar
+description: Azure App Service 'de çalışan uygulamanız için en iyi uygulamaları ve genel sorun giderme senaryolarını öğrenin.
 author: dariagrigoriu
-manager: erikre
-editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071611"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671503"
 ---
-# <a name="best-practices-for-azure-app-service"></a>Azure Uygulama Hizmeti için En İyi Uygulamalar
+# <a name="best-practices-for-azure-app-service"></a>Azure App Service için En İyi Yöntemler
 Bu makalede [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)kullanımı için en iyi yöntemler özetlenmektedir. 
 
 ## <a name="colocation"></a>Birlikte bulundurma
@@ -38,15 +31,15 @@ Bir uygulamanın, izleme veya hizmet önerileri aracılığıyla beklendiği gib
 ## <a name="CPUresources"></a>Uygulamalar beklenenden daha fazla CPU tüketir
 Bir uygulamanın beklenenden daha fazla CPU tükettiğini veya izleme ya da hizmet önerileri aracılığıyla gösterildiği gibi yinelenen CPU artışlarına yönelik olduğunu fark ettiğinizde, App Service planını ölçeklendirin veya ölçeklendirerek ölçeği değerlendirin. Uygulamanızın durum bilgisi varsa yalnızca ölçeği artırma tek seçenektir, ancak uygulamanız durum bilgisiz ise ölçeği genişletme, daha fazla esneklik ve daha yüksek ölçekli potansiyel bir değer sağlar. 
 
-"Durum bilgisi olan" vs "durum bilgisiz" uygulamaları hakkında daha fazla bilgi için bu videoyu izleyebilirsiniz: [Azure App Service üzerinde ölçeklenebilir uçtan uca çok katmanlı bir uygulama planlama](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service ölçeklendirme ve otomatik ölçeklendirme seçenekleri hakkında daha fazla bilgi için bkz. [Azure App Service bir Web uygulamasını ölçeklendirme](manage-scale-up.md).  
+"Durum bilgisi olan" vs "durum bilgisiz" uygulamaları hakkında daha fazla bilgi için, bu videoyu izleyebilirsiniz: [Azure App Service üzerinde ölçeklenebilir uçtan uca çok katmanlı bir uygulama planlama](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service ölçeklendirme ve otomatik ölçeklendirme seçenekleri hakkında daha fazla bilgi için bkz. [Azure App Service bir Web uygulamasını ölçeklendirme](manage-scale-up.md).  
 
 ## <a name="socketresources"></a>Yuva kaynakları tükendiğinde
 Giden TCP bağlantılarının tüketilmesinin yaygın bir nedeni, TCP bağlantılarını yeniden kullanmak için uygulanmayan veya HTTP-Keep-LIAS gibi daha yüksek düzey bir protokol kullanılmayan istemci kitaplıklarının kullanılmasının yaygın bir nedenidir. Dışarı giden bağlantıların verimli bir şekilde yeniden kullanılması için kodunuzda yapılandırılmış veya erişilebilir olduklarından emin olmak için App Service planınızdaki uygulamalar tarafından başvurulan her bir kitaplıkların belgelerini gözden geçirin. Ayrıca, bağlantı sızıntısına engel olmak için uygun oluşturma ve yayınlama ya da temizleme için kitaplık belge kılavuzunu izleyin. Bu tür istemci kitaplıkları araştırmalar devam ederken, etki çok örneğe ölçeklendirerek etki azaltılabilir.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node. js ve giden http istekleri
-Node. js ve çok sayıda giden http isteği ile çalışırken, HTTP-canlı tutma ile ilgilenirken önemli olur. Kodunuzu daha kolay hale getirmek için [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` paketini kullanabilirsiniz.
+Node. js ve çok sayıda giden http isteği ile çalışırken, HTTP-canlı tutma ile ilgilenirken önemli olur. Kodunuzda daha kolay hale getirmek için [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` paketini kullanabilirsiniz.
 
-İşleyicide hiçbir `http` şey yapsanız bile her zaman yanıtı işleyin. Yanıtı doğru bir şekilde işlemezseniz, daha fazla yuva kullanılamadığından uygulamanız sonunda takılmalıdır.
+İşleyicide hiçbir şey yapsanız bile `http` yanıtını her zaman işleyin. Yanıtı doğru bir şekilde işlemezseniz, daha fazla yuva kullanılamadığından uygulamanız sonunda takılmalıdır.
 
 Örneğin, `http` veya `https` paketiyle çalışırken:
 

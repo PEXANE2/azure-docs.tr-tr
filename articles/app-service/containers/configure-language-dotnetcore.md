@@ -1,24 +1,15 @@
 ---
-title: ASP.NET Core uygulamalarını Yapılandırma-Azure App Service | Microsoft Docs
-description: ASP.NET Core uygulamalarını Azure App Service içinde çalışacak şekilde nasıl yapılandıracağınızı öğrenin
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Linux ASP.NET Core uygulamalarını yapılandırma
+description: Uygulamanız için önceden oluşturulmuş bir ASP.NET Core kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
-ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990254"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670463"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir Linux ASP.NET Core uygulaması yapılandırma
 
@@ -81,7 +72,7 @@ App Service ve *appSettings. JSON*' de aynı ada sahip bir uygulama ayarı yapı
 
 ## <a name="get-detailed-exceptions-page"></a>Ayrıntılı özel durumlar sayfası al
 
-ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel **HTTP 500** hatası ile değiştirilirken veya **isteğiniz işlenirken bir hata oluştu.** İleti. Ayrıntılı özel durum sayfasını App Service göstermek için, <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>aşağıdaki komutu `ASPNETCORE_ENVIRONMENT` çalıştırarak uygulama ayarını uygulamanıza ekleyin.
+ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel **HTTP 500** hatası ile **değiştirilirken veya isteğiniz işlenirken bir hata oluştu.** İleti. Ayrıntılı özel durum sayfasını App Service göstermek için, <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>aşağıdaki komutu çalıştırarak uygulamanıza `ASPNETCORE_ENVIRONMENT` uygulama ayarını ekleyin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -91,9 +82,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini bilmeleri gerekiyorsa, Iletilen üstbilgiler ara yazılımını *Startup.cs*içinde yapılandırın:
 
-- İçindeki `X-Forwarded-For` veüst`X-Forwarded-Proto` bilgilerini iletmek için, yazılım yazılımını [forwardedheadersoptions ile](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) yapılandırın`Startup.ConfigureServices`.
+- `Startup.ConfigureServices`' deki `X-Forwarded-For` ve `X-Forwarded-Proto` üstbilgilerini iletmek için, ara yazılımı [Forwardedheadersoptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın.
 - Bilinen ağlara özel IP adresi aralıkları ekleyin, böylece ara yazılım App Service yük dengeleyiciye güvenebilirler.
-- Diğer middlewares çağrılmadan önce içinde `Startup.Configure` [useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın.
+- Diğer middlewares çağrılmadan önce `Startup.Configure` [Useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın.
 
 Üç öğeyi birlikte koymak, kodunuz aşağıdaki örneğe benzer şekilde görünür:
 
@@ -122,7 +113,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Daha fazla bilgi için [proxy sunucuları ile çalışma ve yük Dengeleyiciler için ASP.NET Core yapılandırma](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çalışacak ASP.NET Core yapılandırma](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ## <a name="deploy-multi-project-solutions"></a>Çoklu proje çözümlerini dağıtma
 
@@ -141,7 +132,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Uygulama ayarlarını kullanma
 
-<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>, aşağıdaki CLI komutunu çalıştırarak App Service uygulamanıza bir uygulama ayarı ekleyin. *\<App-name >* ,  *\<Resource-Group-name >* ve  *\<proje-name >* uygun değerlerle değiştirin.
+<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>, aşağıdaki CLI komutunu çalıştırarak App Service uygulamanıza bir uygulama ayarı ekleyin. *\<app-name >* , *\<Resource-group-name >* ve *\<Project-name >* değerlerini uygun değerlerle değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -158,7 +149,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: SQL veritabanı ile ASP.NET Core uygulaması](tutorial-dotnetcore-sqldb-app.md)
+> [Öğretici: SQL veritabanı ile uygulama ASP.NET Core](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [App Service Linux SSS](app-service-linux-faq.md)

@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227893"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672514"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Azure depolama için özel uç noktaları kullanma (Önizleme)
 
@@ -32,7 +32,9 @@ Depolama hesabınız için özel uç noktalar kullanmak şunları yapmanızı sa
 
 VNet 'teki uygulamalar, **diğer durumlarda kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak**, Özel uç nokta üzerinden depolama hizmetine sorunsuz bir şekilde bağlanabilir. Özel uç noktalar, REST ve SMB dahil olmak üzere depolama hesabı tarafından desteklenen tüm protokollerle kullanılabilir.
 
-VNet 'iniz içindeki bir depolama hizmeti için özel bir uç nokta oluşturduğunuzda, depolama hesabı sahibine onay için bir izin isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda depolama hesabının sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
+Özel uç noktalar, [hizmet uç noktaları](/azure/virtual-network/virtual-network-service-endpoints-overview.md)kullanan alt ağlarda oluşturulabilir. Bu nedenle, bir alt ağdaki istemciler, hizmet uç noktalarını kullanarak diğerlerine erişmek için özel uç nokta kullanarak bir depolama hesabına bağlanabilir.
+
+Sanal ağınızda depolama hizmeti için bir özel uç nokta oluşturduğunuzda depolama hesabı sahibine onaylaması için bir onay isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda depolama hesabının sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
 
 Depolama hesabı sahipleri, [Azure Portal](https://portal.azure.com)depolama hesabı Için '*Özel uç noktalar*' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
 
@@ -70,13 +72,13 @@ Varsayılan olarak, Özel uç noktalara yönelik gerekli güncelleştirmelerle V
 
 ## <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
-Özel uç noktası olan bir depolama hesabı için DNS CNAME kaynak kaydı, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, '*Privatelink*' ön ekine sahip alt etki alanına karşılık gelen VNET 'e iliştirilmiş [özel bir DNS bölgesi](../../dns/private-dns-overview.md) oluşturacağız ve özel uç noktalar için DNS a kaynak kayıtlarını içerir.
+Özel bir uç nokta oluşturduğunuzda, depolama hesabı için DNS CNAME kaynak kaydı, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile '*Privatelink*' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../../dns/private-dns-overview.md)de oluşturacağız.
 
 Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğünde, depolama hizmetinin genel uç noktasına dönüşür. Özel uç noktayı barındıran VNet 'ten çözümlendiğinde, depolama uç noktası URL 'SI özel uç noktanın IP adresine çözümlenir.
 
 Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' StorageAccountA ' depolama hesabı için DNS kaynak kayıtları şu şekilde olur:
 
-| Name                                                  | Type  | Value                                                 |
+| Adı                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<depolama hizmeti genel uç noktası\>                   |
@@ -86,14 +88,14 @@ Daha önce belirtildiği gibi, depolama güvenlik duvarını kullanarak genel u�
 
 Özel uç noktasını barındıran VNet 'teki bir istemci tarafından çözümlendiğinde StorageAccountA için DNS kaynak kayıtları şu şekilde olur:
 
-| Name                                                  | Type  | Value                                                 |
+| Adı                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
 Bu yaklaşım, Özel uç noktaları barındıran VNet 'teki istemciler ve VNet dışındaki istemciler için **aynı bağlantı dizesini kullanarak** depolama hesabına erişim sağlar.
 
-Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler depolama hesabı uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilmelidir. Bunun için, DNS sunucunuzu özel bağlantı alt etki alanınızı sanal ağın özel DNS bölgesine devretmek üzere yapılandırmanız veya '*StorageAccountA.Privatelink.blob.Core.Windows.net*' için bir kayıtları özel uç nokta IP adresi ile yapılandırmanız gerekir. 
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler depolama hesabı uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek üzere yapılandırmanız veya '*StorageAccountA.Privatelink.blob.Core.Windows.net*' için bir kayıtları özel uç nokta IP adresi ile yapılandırmanız gerekir.
 
 > [!TIP]
 > Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, ' Privatelink ' alt etki alanındaki depolama hesabı adını özel uç nokta IP adresine çözümlemek üzere yapılandırmanız gerekir. Bunu, sanal ağın özel DNS bölgesine ' Privatelink ' alt etki alanı temsilcisi seçerek veya DNS sunucunuzda DNS bölgesi yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
@@ -111,7 +113,7 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 
 #### <a name="resources"></a>Kaynaklar
 
-Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında ek yönergeler için aşağıdaki makalelere bakın:
+Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [Özel uç noktalar için DNS yapılandırması](/private-link/private-endpoint-overview#dns-configuration)
@@ -125,9 +127,6 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 ### <a name="copy-blob-support"></a>Blob 'U kopyalama desteği
 
 Önizleme sırasında, kaynak depolama hesabı bir güvenlik duvarı tarafından korunduğunda özel uç noktalar aracılığıyla erişilen depolama hesaplarına verilen [kopyalama blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) komutlarını desteklemiyoruz.
-
-### <a name="subnets-with-service-endpoints"></a>Hizmet uç noktaları içeren alt ağlar
-Şu anda, hizmet uç noktalarına sahip bir alt ağda özel bir uç nokta oluşturamazsınız. Geçici bir çözüm olarak, hizmet uç noktaları ve özel uç noktalar için aynı VNet 'te ayrı alt ağlar oluşturabilirsiniz.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Özel uç noktalarla VNET 'lerdeki istemciler için depolama erişimi kısıtlamaları
 
