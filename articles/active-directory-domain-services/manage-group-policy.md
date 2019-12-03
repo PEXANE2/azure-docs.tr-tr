@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474528"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705092"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında grup ilkesi yönetme
 
@@ -53,7 +53,7 @@ Grup ilkesi nesnesi (GPO) oluşturmak ve yapılandırmak için grup ilkesi yöne
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
 1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
-1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
+1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDS.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
 1. **Sunucu rolleri** sayfasında, **İleri**' ye tıklayın.
 1. **Özellikler** sayfasında **Grup İlkesi Yönetimi** özelliğini seçin.
 
@@ -76,7 +76,7 @@ Azure AD DS yönetilen bir etki alanındaki kullanıcılar ve bilgisayarlar içi
 
 *Aaddc bilgisayarları* kapsayıcısı Için bir Azure AD DS yönetilen etki alanında iki yerleşik Grup İlkesi nesnesi (GPO) vardır ve bir diğeri *Aaddc kullanıcıları* kapsayıcısı için bir tane vardır. Bu GPO 'Ları, Azure AD DS yönetilen etki alanında gerektiğinde grup ilkesini yapılandırmak için özelleştirebilirsiniz.
 
-1. **Grup İlkesi Yönetim** konsolunda, **Orman: contoso.com** düğümünü genişletin. Sonra, **etki alanı** düğümlerini genişletin.
+1. **Grup İlkesi Yönetim** konsolunda, **Orman: aadds.contoso.com** düğümünü genişletin. Sonra, **etki alanı** düğümlerini genişletin.
 
     *Aaddc bilgisayarları* ve *Aaddc kullanıcıları*için iki yerleşik kapsayıcı bulunur. Bu kapsayıcıların her birine, uygulanan varsayılan bir GPO vardır.
 

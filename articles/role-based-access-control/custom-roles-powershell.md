@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell kullanarak Azure kaynakları için özel roller oluşturma | Microsoft Docs
-description: Azure PowerShell kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel roller oluşturma konusunda bilgi edinin. Bu liste, oluşturma, güncelleştirme ve özel roller silme nasıl içerir.
+title: Azure PowerShell kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme | Microsoft Docs
+description: Azure PowerShell kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel rolleri listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,31 +14,31 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fa4ff5f35df0f541d8a7e633df024af81676e58b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158462"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703105"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynakları için özel roller oluşturma
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme
 
-Varsa [Azure kaynakları için yerleşik roller](built-in-roles.md) kuruluşunuzun belirli gereksinimlerine uymayan, kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure PowerShell kullanarak özel roller oluşturmak ve yönetmek açıklar.
+[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure PowerShell kullanarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
 
-Özel rol oluşturma hakkında adım adım bir öğretici için bkz: [Öğreticisi: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturun](tutorial-custom-role-powershell.md).
+Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [öğretici: Azure kaynakları için Azure PowerShell kullanarak özel rol oluşturma](tutorial-custom-role-powershell.md).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Özel roller oluşturmanızı da ihtiyacınız vardır:
+Özel Roller oluşturmak için şunlar gerekir:
 
 - [Sahip](built-in-roles.md#owner) veya [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi özel rol oluşturma izni
-- [Azure Cloud Shell'i](../cloud-shell/overview.md) veya [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell](../cloud-shell/overview.md) veya [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-custom-roles"></a>Özel rolleri listeleme
 
-Bir kapsamda atama için uygun rolü listelemek için kullanın [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutu. Aşağıdaki örnek, seçili Abonelikteki atama için uygun olan tüm rolleri listeler.
+Bir kapsamda atanmak üzere kullanılabilen rolleri listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın. Aşağıdaki örnek seçili abonelikte atama için kullanılabilen tüm rolleri listeler.
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, IsCustom
@@ -55,7 +55,7 @@ API Management Service Contributor                   False
 ...
 ```
 
-Aşağıdaki örnek yalnızca seçili Abonelikteki atama için uygun olan özel rolleri listeler.
+Aşağıdaki örnekte yalnızca seçili abonelikte atama için kullanılabilen özel roller listelenmektedir.
 
 ```azurepowershell
 Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
@@ -67,11 +67,11 @@ Name                     IsCustom
 Virtual Machine Operator     True
 ```
 
-Seçili abonelik içinde değilse `AssignableScopes` rolünü, özel rol listelenmez.
+Seçilen abonelik rolün `AssignableScopes` değilse, özel rol listelenmez.
 
-## <a name="list-a-custom-role-definition"></a>Özel rol tanımını listeleme
+## <a name="list-a-custom-role-definition"></a>Özel bir rol tanımı listeleme
 
-Özel bir rol tanımı listelemek için kullanın [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition). Yerleşik bir rol için kullandığınız aynı komutu budur.
+Özel bir rol tanımı listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)komutunu kullanın. Bu, yerleşik bir rol için kullandığınız komutla aynıdır.
 
 ```azurepowershell
 Get-AzRoleDefinition <role name> | ConvertTo-Json
@@ -106,7 +106,7 @@ PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
 }
 ```
 
-Aşağıdaki örnekte, yalnızca eylemleri rolünün listelenmiştir:
+Aşağıdaki örnek yalnızca rolün eylemlerini listeler:
 
 ```azurepowershell
 (Get-AzRoleDefinition <role name>).Actions
@@ -130,13 +130,13 @@ PS C:\> (Get-AzRoleDefinition "Virtual Machine Operator").Actions
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
-Özel bir rol oluşturmak için kullanın [yeni AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) komutu. Rol yapılandırma için iki yöntem vardır kullanarak `PSRoleDefinition` nesnesi veya bir JSON şablonu. 
+Özel bir rol oluşturmak için [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) komutunu kullanın. `PSRoleDefinition` nesnesi veya JSON şablonu kullanarak rolü yapılandırmak için iki yöntem vardır. 
 
-### <a name="get-operations-for-a-resource-provider"></a>Bir kaynak sağlayıcısı işlemleri Al
+### <a name="get-operations-for-a-resource-provider"></a>Bir kaynak sağlayıcısı için işlemleri al
 
-Özel rol oluşturduğunuzda, olası tüm işlemler kaynak sağlayıcılarından bilmeniz önemlidir.
-Listesini görüntüleyebileceğiniz [kaynak sağlayıcısı işlemleri](resource-provider-operations.md) veya kullanabilirsiniz [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) bu bilgileri almak için komutu.
-Örneğin, sanal makineler için kullanılabilir tüm işlemleri denetlemek istiyorsanız, bu komutu kullanın:
+Özel roller oluşturduğunuzda, kaynak sağlayıcılardan tüm olası işlemleri bilmeniz önemlidir.
+[Kaynak sağlayıcısı işlemlerinin](resource-provider-operations.md) listesini görüntüleyebilir veya bu bilgileri almak için [Get-azprovideroperation](/powershell/module/az.resources/get-azprovideroperation) komutunu kullanabilirsiniz.
+Örneğin, sanal makineler için tüm kullanılabilir işlemleri denetlemek istiyorsanız şu komutu kullanın:
 
 ```azurepowershell
 Get-AzProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
@@ -154,11 +154,11 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 ...
 ```
 
-### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Özel bir rol ile PSRoleDefinition nesnesi oluşturun
+### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>PSRoleDefinition nesnesiyle özel bir rol oluşturma
 
-Özel bir rol oluşturmak için PowerShell kullanırken, aşağıdakilerden birini kullanabilirsiniz [yerleşik roller](built-in-roles.md) gibi bir başlangıç noktası veya sıfırdan başlayabilirsiniz. Bu bölümdeki ilk örnekte, yerleşik bir rol ile başlar ve ardından daha fazla izinlerle özelleştirir. Öznitelikleri eklemek için Düzenle `Actions`, `NotActions`, veya `AssignableScopes` ve sonra değişiklikleri yeni bir rolü olarak kaydedebilirsiniz.
+Özel bir rol oluşturmak için PowerShell kullandığınızda, [yerleşik rollerden](built-in-roles.md) birini başlangıç noktası olarak kullanabilir veya sıfırdan başlayabilirsiniz. Bu bölümdeki ilk örnek, yerleşik bir rolle başlar ve daha sonra daha fazla izinle özelleştirir. İstediğiniz `Actions`, `NotActions`veya `AssignableScopes` eklemek için öznitelikleri düzenleyin ve ardından değişiklikleri yeni bir rol olarak kaydedin.
 
-Aşağıdaki örnek ile başlayan [sanal makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) adlı özel bir rol oluşturmak için yerleşik rol *sanal makine işleci*. Yeni rol tüm okuma işlemleri için erişim verir *Microsoft.Compute*, *Microsoft.Storage*, ve *Microsoft.Network* başlatmak için kaynak sağlayıcıları ve izinler erişimi , yeniden başlatın ve sanal makineleri izleyin. Özel rolü iki abonelik kullanılabilir.
+Aşağıdaki örnek, sanal makine [katılımcısı](built-in-roles.md#virtual-machine-contributor) adlı yerleşik rol ile başlar ve *sanal makine operatörü*adlı özel bir rol oluşturulur. Yeni rol, *Microsoft. COMPUTE*, *Microsoft. Storage*ve *Microsoft. Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim verir ve sanal makineleri başlatma, yeniden başlatma ve izleme erişimi verir. Özel rol iki abonelik için kullanılabilir.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -182,7 +182,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-Aşağıdaki örnek oluşturmak için başka bir yolunu gösterir *sanal makine işleci* özel rol. Yeni bir oluşturarak başlar `PSRoleDefinition` nesne. Belirtilen eylem işlemleri `perms` değişken ve ayarlanmış `Actions` özelliği. `NotActions` Özelliği ayarlanmış okuyarak `NotActions` gelen [sanal makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) yerleşik rolü. Bu yana [sanal makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) yok `NotActions`, bu satırı gerekli değildir, ancak başka bir rolden bilgiler nasıl alınabilir gösterir.
+Aşağıdaki örnek, *sanal makine operatörü* özel rolünü oluşturmak için başka bir yol göstermektedir. Yeni bir `PSRoleDefinition` nesnesi oluşturularak başlatılır. Eylem işlemleri `perms` değişkeninde belirtilir ve `Actions` özelliğine ayarlanır. `NotActions` özelliği, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) yerleşik rolü `NotActions` okunarak ayarlanır. [Sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) `NotActions`olmadığından, bu satır gerekli değildir, ancak bilgilerin başka bir rolden nasıl alınamayacağını gösterir.
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -202,9 +202,9 @@ $role.AssignableScopes = $subs
 New-AzRoleDefinition -Role $role
 ```
 
-### <a name="create-a-custom-role-with-json-template"></a>JSON şablonu ile bir özel rol oluşturma
+### <a name="create-a-custom-role-with-json-template"></a>JSON şablonuyla özel bir rol oluşturma
 
-Bir JSON şablonu kaynak tanımını özel rolü için kullanılabilir. Aşağıdaki örnek, depolama ve işlem kaynaklarına erişimi desteklemek için okuma erişimine izin veren özel bir rol oluşturur ve bu rol için iki abonelik ekler. Yeni bir dosya oluşturun `C:\CustomRoles\customrole1.json` aşağıdaki örnekle. Kimliği ayarlanmalıdır `null` yeni bir kimliği olarak ilk rol oluşturma sırasında otomatik olarak oluşturulur. 
+JSON şablonu, özel rol için kaynak tanımı olarak kullanılabilir. Aşağıdaki örnek, depolama ve işlem kaynaklarına okuma erişimi, desteğe erişim ve bu rolü iki aboneliğe ekleme izni veren özel bir rol oluşturur. Aşağıdaki örnekle `C:\CustomRoles\customrole1.json` yeni bir dosya oluşturun. Otomatik olarak yeni bir KIMLIK oluşturulduğundan, kimlik ilk rol oluşturma sırasında `null` olarak ayarlanmalıdır. 
 
 ```json
 {
@@ -225,7 +225,7 @@ Bir JSON şablonu kaynak tanımını özel rolü için kullanılabilir. Aşağı
 }
 ```
 
-Abonelikleri rolü eklemek için aşağıdaki PowerShell komutunu çalıştırın:
+Rolü aboneliklere eklemek için aşağıdaki PowerShell komutunu çalıştırın:
 
 ```azurepowershell
 New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
@@ -233,13 +233,13 @@ New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ## <a name="update-a-custom-role"></a>Özel rolü güncelleştirme
 
-Kullanarak mevcut bir özel rol değiştirebilirsiniz benzer şekilde, özel bir rol oluşturmadan, `PSRoleDefinition` nesnesi veya bir JSON şablonu.
+Özel bir rol oluşturmaya benzer şekilde, `PSRoleDefinition` nesnesini veya bir JSON şablonunu kullanarak var olan bir özel rolü de değiştirebilirsiniz.
 
-### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>Özel bir rol PSRoleDefinition nesnesi ile güncelleştirme
+### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>PSRoleDefinition nesnesiyle özel bir rol güncelleştirme
 
-Özel bir rol değiştirmek için önce kullanın [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) rol tanımı almak için komutu. İkinci olarak, rol tanımı için istediğiniz değişiklikleri yapın. Son olarak, [kümesi AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) değiştirilmiş rol tanımı kaydetmek için komutu.
+Özel bir rolü değiştirmek için önce [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanarak rol tanımını alın. İkinci olarak, rol tanımında istenen değişiklikleri yapın. Son olarak, değiştirilen rol tanımını kaydetmek için [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) komutunu kullanın.
 
-Aşağıdaki örnek ekler `Microsoft.Insights/diagnosticSettings/*` işlemi *sanal makine işleci* özel rol.
+Aşağıdaki örnek, `Microsoft.Insights/diagnosticSettings/*` işlemini *sanal makine işleci* özel rolüne ekler.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Operator"
@@ -263,7 +263,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/11111111-1111-1111-1111-111111111111}
 ```
 
-Aşağıdaki örnek, bir Azure aboneliğine atanabilir kapsamlar ekler *sanal makine işleci* özel rol.
+Aşağıdaki örnek, *sanal makine operatörü* özel rolünün atanabilir kapsamlarına bir Azure aboneliği ekler.
 
 ```azurepowershell
 Get-AzSubscription -SubscriptionName Production3
@@ -297,9 +297,9 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
-### <a name="update-a-custom-role-with-a-json-template"></a>Özel bir rol ile bir JSON şablonunu güncelleştirme
+### <a name="update-a-custom-role-with-a-json-template"></a>JSON şablonuyla özel bir rol güncelleştirme
 
-Önceki JSON şablonunu kullanarak, mevcut bir özel rolü ekleme veya kaldırma eylemleri kolayca değiştirebilirsiniz. JSON şablonunu güncelleştirin ve aşağıdaki örnekte gösterildiği gibi ağ okuma eylemi ekleyin. Şablonda listelenen tanımları, şablonda tam olarak belirttiğiniz şekilde rol göründüğünü anlamına gelir, mevcut bir tanımı için üst üste uygulanmaz. Ayrıca, rol kimliği ile kimlik alanı güncelleştirmeniz gerekiyor. Bu değer nedir emin değilseniz, kullanabileceğiniz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) bu bilgileri almak için cmdlet.
+Önceki JSON şablonunu kullanarak, eylemleri eklemek veya kaldırmak için mevcut bir özel rolü kolayca değiştirebilirsiniz. JSON şablonunu güncelleştirin ve aşağıdaki örnekte gösterildiği gibi ağ için okuma eylemi ekleyin. Şablonda listelenen tanımlar, var olan bir tanıma göre tamamen uygulanmaz, bu da rolün şablonda belirttiğiniz şekilde tam olarak göründüğü anlamına gelir. Ayrıca, kimlik alanını rolün KIMLIĞIYLE güncelleştirmeniz gerekir. Bu değerin ne olduğundan emin değilseniz, bu bilgileri almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) cmdlet 'ini kullanabilirsiniz.
 
 ```json
 {
@@ -321,7 +321,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
 }
 ```
 
-Mevcut rol güncelleştirmek için aşağıdaki PowerShell komutunu çalıştırın:
+Mevcut rolü güncelleştirmek için aşağıdaki PowerShell komutunu çalıştırın:
 
 ```azurepowershell
 Set-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
@@ -329,9 +329,9 @@ Set-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ## <a name="delete-a-custom-role"></a>Özel rolü silme
 
-Bir özel rolü silmek için kullanın [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) komutu.
+Özel bir rolü silmek için [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) komutunu kullanın.
 
-Aşağıdaki örnek kaldırır *sanal makine işleci* özel rol.
+Aşağıdaki örnek, *sanal makine operatörü* özel rolünü kaldırır.
 
 ```azurepowershell
 Get-AzRoleDefinition "Virtual Machine Operator"
@@ -360,6 +360,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturun](tutorial-custom-role-powershell.md)
+- [Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturma](tutorial-custom-role-powershell.md)
 - [Azure kaynakları için özel roller](custom-roles.md)
 - [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

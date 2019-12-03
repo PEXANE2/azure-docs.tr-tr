@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager ile Azure Databricks çalışma alanı oluşturma
-description: Bu hızlı başlangıçta, Azure Resource Manager şablonunu kullanarak bir Azure Databricks çalışma alanı oluşturma, ardından bir Apache Spark kümesi oluşturma ve bir Spark işi çalıştırma işlemi gösterilmektedir.
+title: Hızlı başlangıç-Azure Resource Manager ile Azure Databricks çalışma alanı oluşturma
+description: Bu hızlı başlangıçta, bir Azure Databricks çalışma alanı oluşturmak, ardından bir Apache Spark kümesi oluşturmak ve bir Spark işi çalıştırmak için Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 83dc18424bc8606eff9a735b76cdaa09e381d588
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2fbe1e91204df7901b4ac3ccfdcd323304b2ce3c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129361"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706180"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Hızlı Başlangıç: Azure Resource Manager şablonunu kullanarak Azure Databricks’te Spark işini çalıştırma
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalış
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın. 
+[Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -101,7 +101,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
 
    ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
-   **Oluştur**'a tıklayın.
+   **Oluştur**’a tıklayın.
 
 3. Bu adımda Azure Depolama hesabını Databricks Spark kümesiyle ilişkilendirin. Bu ilişkilendirmeyi gerçekleştirmenin iki yolu vardır. Azure Depolama hesabını Databricks Dosya Sistemine (DBFS) bağlayabilir veya Azure Depolama hesabına doğrudan oluşturduğunuz uygulamadan erişebilirsiniz.
 
@@ -170,7 +170,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
    * **Değerler**’ı **düzey** olarak ayarlayın.
    * **Toplama**’yı **SAYI** olarak ayarlayın.
 
-   **Uygula**'ya tıklayın.
+   **Apply (Uygula)** düğmesine tıklayın.
 
 9. Çıktı aşağıdaki ekran görüntüsünde gösterildiği gibi görsel açıklamayı gösterir:
 
@@ -182,7 +182,7 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

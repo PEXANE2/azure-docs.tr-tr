@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure temel geçişleri kıyaslama şeması örnek denetimleri
 description: CIS, kıyaslama şeması örneğini Azure Ilkesine göre Microsoft Azure.
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544539"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707424"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
@@ -40,6 +40,12 @@ Bu şema, kaldırılması gerekebilecek Konuk hesaplarını izlemenize yardımc�
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 - Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 özel abonelik sahibi rollerinin oluşturulmadığından emin olun
+
+Bu şema, kaldırılması gerekebilecek özel abonelik sahibi rollerini izlemenize yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- Özel abonelik sahibi rolleri mevcut olmamalıdır
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2,1 Standart fiyatlandırma katmanının seçili olduğundan emin olun
 
@@ -243,11 +249,35 @@ Bu şema, MySQL veritabanı sunucularının SSL bağlantılarını zorunlu tutma
 
 - MySQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4,12 ' log_checkpoints ' sunucu parametresinin PostgreSQL veritabanı sunucusu için ' ON ' olarak ayarlandığından emin olun
+
+Bu şema, PostgreSQL veritabanı sunucularının günlük denetim noktalarını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- PostgreSQL veritabanı sunucuları için günlük denetim noktaları etkinleştirilmelidir
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4,13 PostgreSQL veritabanı sunucusu için ' SSL bağlantısını zorla ' özelliğinin ' ENABLED ' olarak ayarlandığından emin olun
 
 Bu şema, PostgreSQL veritabanı sunucularının SSL bağlantılarını zorlayabilmenizi sağlayan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - PostgreSQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4,14 ' log_connections ' sunucu parametresinin PostgreSQL veritabanı sunucusu için ' ON ' olarak ayarlandığından emin olun
+
+Bu şema, PostgreSQL veritabanı sunucularının günlük bağlantılarını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- PostgreSQL veritabanı sunucuları için günlük bağlantıları etkinleştirilmelidir
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4,15 ' log_disconnections ' sunucu parametresinin PostgreSQL veritabanı sunucusu için ' ON ' olarak ayarlandığından emin olun
+
+Bu şema, PostgreSQL veritabanı sunucularının bağlantıları günlüğe açmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- PostgreSQL veritabanı sunucuları için bağlantılar günlüğe kaydedilmez.
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4,16 ' log_duration ' sunucu parametresinin PostgreSQL veritabanı sunucusu için ' ON ' olarak ayarlandığından emin olun
+
+Bu şema, PostgreSQL veritabanı sunucularının tamamlanan deyimlerin süresini günlüğe yazmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- PostgreSQL veritabanı sunucuları için günlük süresi etkinleştirilmelidir
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 ' connection_throttling ' sunucu parametresinin PostgreSQL veritabanı sunucusu için ' ON ' olarak ayarlandığından emin olun
 
@@ -350,6 +380,71 @@ Bu şema, Kubernetes hizmet kümelerinde yönetilen izinler için rol tabanlı e
 Bu şema, Web uygulamalarına yalnızca güvenli bağlantılar üzerinden erişilebilir olmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9,3 Web uygulamasının en son TLS şifreleme sürümünü kullandığından emin olun
+
+Bu şema, Web uygulamalarının en son TLS sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamanızda en son TLS sürümü kullanılmalıdır
+- İşlev Uygulaması en son TLS sürümü kullanılmalıdır
+- Web uygulamanızda en son TLS sürümü kullanılmalıdır
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9,4 Web uygulamasının ' Istemci sertifikaları (gelen istemci sertifikaları) ' olarak ' on ' olarak ayarlandığından emin olun
+
+Bu şema, yalnızca geçerli sertifikalara sahip istemcilerin bir Web uygulamasına erişebildiğinden emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamasında ' Istemci sertifikaları (gelen istemci sertifikaları) ', ' on ' olarak ayarlanmış olduğundan emin olun
+- Işlev uygulamasında ' Istemci sertifikaları (gelen istemci sertifikaları) ', ' on ' olarak ayarlanmış olduğundan emin olun
+- WEB uygulamasının ' Istemci sertifikaları (gelen istemci sertifikaları) ' olarak ' on ' olarak ayarlandığından emin olun
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9,5 App Service üzerinde Azure Active Directory kaydolma özelliğinin etkinleştirildiğinden emin olun
+
+Bu şema, Web uygulamalarının yönetilen bir kimlik kullandığından emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- Azure Active Directory ile kaydolma özelliğinin API uygulamasında etkinleştirildiğinden emin olun
+- Azure Active Directory kayıt İşlev Uygulaması etkinleştirildiğinden emin olun
+- Azure Active Directory kaydetme özelliğinin WEB uygulamasında etkinleştirildiğinden emin olun
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9,6 Web uygulamasının bir parçası olarak kullanılıyorsa ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
+
+Bu şema, Web uygulamalarının .NET Framework 'ün en son sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamasının bir parçası olarak kullanılıyorsa, ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
+- İşlev Uygulaması bir parçası olarak kullanılıyorsa, ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
+- Web uygulamasının bir parçası olarak kullanılıyorsa, ' .NET Framework ' sürümünün en son sürümü olduğundan emin olun
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9,7 Web uygulamasını çalıştırmak için kullanıldıysa, ' PHP Version ' nin en son sürümü olduğundan emin olun
+
+Bu şema, Web uygulamalarının en son PHP sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamasının bir parçası olarak kullanılıyorsa ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
+- Işlev uygulamasının bir parçası olarak kullanılıyorsa, ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
+- WEB uygulamasının bir parçası olarak kullanılıyorsa, ' PHP Version ' öğesinin en son sürümü olduğundan emin olun
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9,8 Web uygulamasını çalıştırmak için kullanıldıysa, ' Python sürümü ' nin en son sürümü olduğundan emin olun
+
+Bu şema, Web uygulamalarının Python 'un en son sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun
+- Işlev uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun
+- Web uygulamasının bir parçası olarak kullanılıyorsa ' Python sürümü 'nin en son bir sürüm olduğundan emin olun
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9,9 Web uygulamasını çalıştırmak için kullanılıyorsa ' Java sürümü ' nin en son sürümü olduğundan emin olun
+
+Bu şema, Web uygulamalarının en son Java sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü ' nin en son sürümü olduğundan emin olun
+- "Java sürümü" nin, Funın uygulamasının bir parçası olarak kullanılıyorsa en son sürüm olduğundan emin olun
+- Web uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü 'nin en son sürümü olduğundan emin olun
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 Web uygulamasını çalıştırmak için kullanılıyorsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
+
+Bu şema, Web uygulamalarının en son http sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
+
+- API uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
+- Işlev uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
+- Web uygulamasını çalıştırmak için kullanılıyorsa, ' HTTP Version ' ' ın en son sürümü olduğundan emin olun
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

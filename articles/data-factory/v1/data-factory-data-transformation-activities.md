@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3af01ef76421e95f74a65fe597cafff5fa9ef39e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b3e2db9b9769dee7599a2446b272e04cc0bedf7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682620"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703384"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory verileri dönüştürme
 > [!div class="op_single_selector"]
@@ -73,7 +73,7 @@ Data Lake Analytics U-SQL etkinliği Azure Data Lake Analytics kümesinde bir U-
 ## <a name="net-custom-activity"></a>.NET özel etkinliği
 Data Factory tarafından desteklenmeyen bir şekilde veri dönüştürmeniz gerekiyorsa, kendi veri işleme mantığınızla özel bir etkinlik oluşturabilir ve etkinliği ardışık düzende kullanabilirsiniz. Özel .NET etkinliğini bir Azure Batch hizmeti veya Azure HDInsight kümesi kullanarak çalışacak şekilde yapılandırabilirsiniz. Ayrıntılar için bkz. [özel etkinlikleri kullanma](data-factory-use-custom-activities.md) makalesi. 
 
-R yüklü HDInsight kümenizde R betiklerini çalıştırmak için özel bir etkinlik oluşturabilirsiniz. Bkz. [Azure Data Factory kullanarak R Betiği çalıştırma](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). 
+R yüklü HDInsight kümenizde R betiklerini çalıştırmak için özel bir etkinlik oluşturabilirsiniz. Bkz. [Azure Data Factory kullanarak R Betiği çalıştırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). 
 
 ## <a name="compute-environments"></a>İşlem ortamları
 İşlem ortamı için bağlı bir hizmet oluşturun ve ardından bir dönüştürme etkinliği tanımlarken bağlı hizmeti kullanın. Data Factory tarafından desteklenen iki tür işlem ortamı vardır. 

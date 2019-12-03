@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: naF
 ms.topic: conceptual
 ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484459"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703828"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 
@@ -71,7 +71,7 @@ Her iki yöntem de depo ayarları yapılandırma bölmesini açar.
 
 Yapılandırma bölmesinde aşağıdaki Azure Repos kod deposu ayarları gösterilmektedir:
 
-| Ayar | Açıklama | Value |
+| Ayar | Açıklama | Değer |
 |:--- |:--- |:--- |
 | **Depo türü** | Azure Repos kod deposunun türü.<br/> | Azure DevOps git veya GitHub |
 | **Azure Active Directory** | Azure AD kiracı adınız. | `<your tenant name>` |
@@ -145,7 +145,7 @@ Yapılandırma bölmesinde aşağıdaki GitHub deposu ayarları gösterilmektedi
 | **GitHub Enterprise URL 'SI** | GitHub Enterprise root URL 'SI. Örneğin: https://github.mydomain.com. Yalnızca **GitHub Enterprise kullan** seçilirse gereklidir | `<your GitHub enterprise url>` |                                                           
 | **GitHub hesabı** | GitHub hesabınızın adı. Bu ad https 'den bulunabilir:\//GitHub.exe com/{Account Name}/{Repository Name}. Bu sayfaya gidildiğinde GitHub hesabınıza GitHub OAuth kimlik bilgilerini girmeniz istenir. | `<your GitHub account name>` |
 | **Depo adı**  | GitHub kod deposu adınız. GitHub hesapları, kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya hesabınızda zaten var olan bir depoyu kullanabilirsiniz. | `<your repository name>` |
-| **İşbirliği dalı** | Yayımlamak için kullanılan GitHub işbirliği dalınız. Varsayılan olarak, ana. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
+| **İşbirliği dalı** | Yayımlamak için kullanılan GitHub işbirliği dalınız. Varsayılan olarak, yöneticisidir. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
 | **Kök klasör** | GitHub işbirliği dalınızdaki kök klasörünüz. |`<your root folder name>` |
 | **Mevcut Data Factory kaynaklarını depoya aktar** | UX yazma tuvalinden bir GitHub deposuna var olan veri fabrikası kaynaklarının içeri aktarılmayacağını belirtir. Veri Fabrikası kaynaklarınızı JSON biçiminde ilişkili git deposuna aktarmak için kutuyu seçin. Bu eylem, her kaynağı ayrı ayrı dışarı aktarır (yani, bağlı hizmetler ve veri kümeleri ayrı Jdönemleri içine aktarılır). Bu kutu seçili olmadığında, mevcut kaynaklar içeri aktarılmaz. | Seçili (varsayılan) |
 | **Kaynağı içeri aktarma dalı** | Veri Fabrikası kaynaklarının (işlem hatları, veri kümeleri, bağlı hizmetler vs.) içe aktarıldığı dalı belirtir. Kaynakları şu dallardan birine içeri aktarabilirsiniz: a. İşbirliği b. Yeni c oluştur. Mevcut olanı kullan |  |
@@ -186,7 +186,7 @@ Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği
 
 ### <a name="configure-publishing-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örneğin:
+Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
 
 ```json
 {
@@ -236,7 +236,7 @@ Genellikle, her bir takım üyesinin fabrikası güncelleştirme izinlerine sahi
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault parolaları kullanma
 
-Data Factory bağlı hizmetler için bağlantı dizelerini veya parolaları depolamak üzere Azure Key Vault kullanılması önerilir. Güvenlik nedenleriyle, bu tür gizli bilgileri git 'te depolamadığımızda, bağlantılı hizmetlerde yapılan tüm değişiklikler Azure Data Factory hizmetine anında yayımlanır.
+Data Factory bağlı hizmetler için bağlantı dizelerini veya parolaları depolamak üzere Azure Key Vault kullanmanız önerilir. Güvenlik nedenleriyle, bu tür gizli bilgileri git 'te depolamadığımızda, bağlantılı hizmetlerde yapılan tüm değişiklikler Azure Data Factory hizmetine anında yayımlanır.
 
 Key Vault kullanmak, Kaynak Yöneticisi Şablon dağıtımı sırasında bu gizli dizileri sağlamanız gerektiği için sürekli tümleştirme ve dağıtımı kolaylaştırır.
 
@@ -251,7 +251,7 @@ Yayımla dalı ana Dalla eşitlenmemiş ve son bir yayımlamaya rağmen güncel 
 1. İşbirliği dalınızdan tüm kaynakları silme
 1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme isteği oluşturun 
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 Özellikler hakkında yorum yapmak veya araçla ilgili sorunları bildirmek için **geri bildirim** ' ı seçin:
 
 ![Geri Bildirim](media/author-visually/provide-feedback.png)

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Stream Analytics uç Azure IoT Edge'
+title: Öğretici-Azure IoT Edge kullanarak uç Stream Analytics
 description: Bu öğreticide, Azure Stream Analytics bir IoT Edge cihazına modül olarak dağıtırsınız
 author: kgremban
 ms.author: kgremban
@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7fbbe32efcedd4fa2635db1cc21f7ce98557515b
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b4c4415819ba614bb584f1bc5cb0acfe136c174c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452538"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707057"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
 
@@ -69,7 +69,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | ----- | ----- |
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin. |
    | Kaynak grubu | IoT Edge hızlı başlangıçlarında ve öğreticilerinde oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
-   | Ad | Depolama hesabınıza benzersiz bir ad verin. | 
+   | Adı | Depolama hesabınıza benzersiz bir ad verin. | 
    | Konum | Size yakın bir konum seçin. |
 
 
@@ -244,7 +244,7 @@ Artık Azure Stream Analytics modülü ve SimulatedTemperatureSensor modülü ar
 
    Makinenin sıcaklığını 30 saniye boyunca 70 derece ulaşana kadar yavaş bir şekilde izleyebilirsiniz. Bu noktada Stream Analytics modülü bir sıfırlama işlemini tetikler ve makine sıcaklığı 21'e düşer. 
 
-   ![Komut çıktısı modülü oturum açtığı Sıfırla](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![Komut çıkışını modül günlüklerine Sıfırla](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 

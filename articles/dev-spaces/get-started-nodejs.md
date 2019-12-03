@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 32ff7554ca599b7d50a4c815083b97eda8b4e57e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327310"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708591"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve Node. js
 
@@ -40,9 +40,10 @@ az login
 Şunu çalıştırarak aboneliklerinizi görüntüleyebilirsiniz: 
 
 ```cmd
-az account list
+az account list --output table
 ```
-JSON çıkışında `isDefault: true` bulunan aboneliği bulun.
+
+*IsDefault*Için *true değerine* sahip aboneliği bulun.
 Kullanmak istediğiniz abonelik bu değilse, varsayılan aboneliği değiştirebilirsiniz:
 
 ```cmd
@@ -102,11 +103,11 @@ GitHub deposunu yerel ortamınıza indirmek için https://github.com/Azure/dev-s
 
 Azure CLI’nin `azds prep` komutu varsayılan ayarlarla Docker ve Kubernetes varlıklarını oluşturur:
 * `./Dockerfile`, uygulamanın kapsayıcı görüntüsünü açıklar, kaynak kodunun nasıl derlendiğini ve kapsayıcının içinde çalıştırıldığını belirtir.
-* [ altındaki ](https://docs.helm.sh)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+* `./charts/webfrontend` altındaki [Helm grafiği](https://docs.helm.sh), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
 
 Şimdilik bu dosyaların tüm içeriğini anlamanız gerekli değildir. Bununla birlikte, **geliştirme aşamasından üretim aşamasına kadar aynı Kubernetes ve Docker kod yapılandırmalı varlıklarının kullanılabildiğini, bu şekilde farklı ortamlarda daha tutarlı sonuçlar sağlanabildiğini** belirtmek gerekir.
  
-`./azds.yaml` komutuyla `prep` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
+`prep` komutuyla `./azds.yaml` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
 Şimdi kodumuzu çalıştıralım! Terminal penceresinde, bu komutu webfrontend **kök kod klasöründen** çalıştırın:
@@ -272,7 +273,7 @@ Bu yapılandırmada, kapsayıcı *nodemon* başlatacak şekilde yapılandırılm
 1. `server.js` içindeki karşılama iletisini yeniden düzenleyin ve dosyayı kaydedin.
 1. Değişikliklerinizin uygulandığını görmek için tarayıcıyı yenileyin veya *Tekrar Söyleyin* düğmesine tıklayın!
 
-**Artık kod üzerinde hızlıca yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
+**Artık kod üzerinde hızla yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

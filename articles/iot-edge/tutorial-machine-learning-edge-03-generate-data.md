@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: cihaz verilerinin benzetimini yapın-Azure IoT Edge & Machine Learning'
-description: 'Öğretici: bir makine öğrenimi modelini eğitebilmek için daha sonra kullanılabilecek sanal cihazlar oluşturun.'
+title: 'Öğretici: Azure IoT Edge üzerinde sanal cihaz verileri oluşturma-Machine Learning'
+description: Bu öğreticide, daha sonra makine öğrenimi modelini eğitebilmek için kullanılabilecek sanal cihazlar oluşturacaksınız.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9b3b36cf5a0f426f2081179d08cf2f093a233fff
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665942"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707739"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
 

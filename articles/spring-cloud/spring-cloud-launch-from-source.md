@@ -1,19 +1,19 @@
 ---
-title: 'Hızlı başlangıç: kaynak kodundan Spring Cloud uygulamanızı başlatın'
-description: Azure Spring Cloud uygulamanızı doğrudan kaynak kodınızdan nasıl başlatacağınızı öğrenin
+title: Hızlı başlangıç-kaynak kodundan Spring Cloud uygulamanızı başlatın
+description: Bu hızlı başlangıçta, Azure Spring Cloud uygulamanızı doğrudan kaynak kodınızdan nasıl başlatacağınızı öğrenin
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721280"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708883"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>Kaynak kodundan Spring Cloud uygulamanızı başlatın
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Hızlı başlangıç: kaynak kodundan Spring Cloud uygulamanızı başlatın
 
 Azure Spring Cloud, Azure 'da Spring Cloud tabanlı mikro hizmet uygulamalarını kolayca çalıştırmanıza olanak sağlar.
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.

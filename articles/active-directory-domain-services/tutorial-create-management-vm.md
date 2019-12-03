@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172346"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703641"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -105,7 +105,7 @@ Etki alanına katılmış bir VM 'ye Active Directory Yönetim Araçları 'nı y
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
 1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
-1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
+1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDS.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
 1. **Sunucu rolleri** sayfasında, **İleri**' ye tıklayın.
 1. **Özellikler** sayfasında, **uzak sunucu yönetim araçları** düğümünü genişletin ve ardından **rol yönetim araçları** düğümünü genişletin.
 
@@ -125,7 +125,7 @@ Yönetim Araçları yüklüyken Azure AD DS yönetilen etki alanını yönetmek 
     ![Sunucuda yüklü yönetim araçlarının listesi](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. **Active Directory Yönetim Merkezi**seçin.
-1. Azure AD DS yönetilen etki alanını araştırmak için sol bölmedeki *contoso.com*gibi etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
+1. Azure AD DS yönetilen etki alanını araştırmak için sol bölmedeki *aadds.contoso.com*gibi etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
 
     ![Azure AD DS yönetilen etki alanının kullanılabilir kapsayıcılar bölümünü listeleyin](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

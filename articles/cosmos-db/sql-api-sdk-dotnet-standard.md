@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 07/12/2019
 ms.author: dech
-ms.openlocfilehash: b907ad3206f26ee73a41bf98f349107e0431c802
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 7471544e920266c8d23ccc18f4370bbdf66c11a2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129474"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707279"
 ---
-# <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>SQL API için .NET Standard SDK Azure Cosmos DB: Notları indir ve serbest bırak
+# <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>SQL API için Azure Cosmos DB .NET Standard SDK: Indirme ve sürüm notları
 > [!div class="op_single_selector"]
 > * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -33,12 +33,12 @@ ms.locfileid: "71129474"
 
 | |  |
 |---|---|
-|**SDK'sını indirme**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
+|**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Örnekler**|[.NET kodu örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples)|
-|**Kullanmaya başlama**|[Azure Cosmos DB .NET SDK ile çalışmaya başlama](sql-api-get-started.md)|
-|**Web uygulaması Öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
-|**Geçerli desteklenen çerçevesi**|[Microsoft .NET Standart 2,0](/dotnet/standard/net-standard)|
+|**Örnekler**|[.NET kod örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
+|**Başlarken**|[Azure Cosmos DB .NET SDK ile çalışmaya başlama](sql-api-get-started.md)|
+|**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
+|**Desteklenen geçerli çerçeve**|[Microsoft .NET Standart 2,0](/dotnet/standard/net-standard)|
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]
 
@@ -46,4 +46,4 @@ ms.locfileid: "71129474"
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Cosmos DB hakkında daha fazla bilgi için bkz: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfası. 
+Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası. 

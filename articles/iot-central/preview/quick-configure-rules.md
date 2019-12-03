@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central’da kural ve eylem yapılandırma | Microsoft Docs
+title: Hızlı başlangıç-Azure IoT Central kuralları ve eylemleri yapılandırma
 description: Bu hızlı başlangıçta, Azure IoT Central uygulamanızda telemetri tabanlı kuralların ve eylemlerin nasıl yapılandırılacağı hakkında bir Oluşturucu olarak gösterilir.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7e2047ee824c3dc8b6387f7879757a1e7be7a4a9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894078"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706716"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Hızlı başlangıç: Azure IoT Central cihazınız için kuralları ve eylemleri yapılandırma (Önizleme özellikleri)
 
@@ -24,7 +24,7 @@ ms.locfileid: "73894078"
 
 Bu hızlı başlangıçta, bir ortam algılayıcısı cihazındaki sıcaklık 90&deg; F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bir önceki hızlı başlangıç [oluşturma Azure IoT Central uygulaması oluşturmanız](./quick-deploy-iot-central.md) ve birlikte çalışmak üzere **ortam algılayıcısı** cihaz şablonu oluşturmak için [IoT Central uygulamanıza sanal bir cihaz eklemeniz](./quick-create-pnp-device.md) gerekir.
 
@@ -57,7 +57,7 @@ Başlamadan önce, bir önceki hızlı başlangıç [oluşturma Azure IoT Centra
     | Ayar   | Değer                                             |
     | --------- | ------------------------------------------------- |
     | Görünen ad | İşleç e-posta eylemi                          |
-    | Alıcı        | E-posta adresiniz                                |
+    | Bitiş        | E-posta adresiniz                                |
     | Notlar     | Çevresel sıcaklık eşiği aştı. |
 
     > [!NOTE]

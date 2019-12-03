@@ -1,5 +1,5 @@
 ---
-title: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma
+title: Hızlı Başlangıç-Visual Studio kullanarak Azure Stream Analytics işi oluşturma
 description: Bu hızlı başlangıçta Visual Studio ile bir Stream Analytics işi oluşturma, girdileri ve çıktıları yapılandırma ve bir sorgu tanımlama yoluyla çalışmaya nasıl başlayacağınız gösterilmektedir.
 services: stream-analytics
 author: mamccrea
@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 834447d15336fcd6d56f2979113aaef7e22ecb8f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ec3318201fd3fe8f7daf78d05bf316fb88914daf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934307"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707345"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma
 

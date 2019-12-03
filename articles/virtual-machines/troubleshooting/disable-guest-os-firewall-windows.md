@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030592"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705543"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
 
@@ -27,7 +27,7 @@ Bu makalede, Konuk işletim sistemi güvenlik duvarının bir sanal makineye (VM
 
 ## <a name="solution"></a>Çözüm
 
-Bu makalede açıklanan işlem, bir geçici çözüm olarak kullanılmak üzere tasarlanmıştır. böylece, güvenlik duvarı kurallarını doğru bir şekilde ayarlama işlemi, gerçek sorununuzu gidermeye odaklanabilmenizi sağlar. I\rquote, Windows Güvenlik Duvarı bileşeninin etkin olması için En Iyi Microsoft uygulamasıdır. Güvenlik duvarı kurallarını yapılandırma \ CF3, \rquote 'un gerektirdiği sanal makineye erişim düzeyine bağlıdır.
+Bu makalede açıklanan işlem, bir geçici çözüm olarak kullanılmak üzere tasarlanmıştır. böylece, güvenlik duvarı kurallarını doğru bir şekilde ayarlama işlemi, gerçek sorununuzu gidermeye odaklanabilmenizi sağlar. Windows Güvenlik Duvarı bileşeninin etkin olması için En Iyi Microsoft uygulamasıdır. Güvenlik duvarı kurallarını yapılandırma, gereken sanal makineye erişim düzeyine bağlıdır.
 
 ### <a name="online-solutions"></a>Çevrimiçi çözümler 
 
@@ -90,7 +90,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 [Uzak kayıt defteri](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)kullanmak için bu adımları izleyin.
 
-1.  Sorun giderme sanal makinesinde, kayıt defteri Düzenleyicisi 'ni başlatın ve ardından **dosya** > **ağ kayıt defteri**'ne gidin.
+1.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın ve ardından **dosya** > **ağ kayıt defterine Bağlan ' a**gidin.
 
 2.  *Hedef makine*\System dalını açın ve aşağıdaki değerleri belirtin:
 
@@ -130,7 +130,7 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
 
 6.  Bu sorun giderme yordamı için, kovanları BROKENSYSTEM ve BROKENSOFTWARE olarak takıyoruz.
 
-7.  HKEY_LOCAL_MACHINE anahtarını vurgulayın ve menüden > dosya Hive Yükle ' yi seçin.
+7.  HKEY_LOCAL_MACHINE anahtarını vurgulayın ve menüden > dosyayı Hive Yükle ' yi seçin.
 
 8.  Eklenmiş sistem diskinde \windows\system32\config\SYSTEM dosyasını bulun.
 

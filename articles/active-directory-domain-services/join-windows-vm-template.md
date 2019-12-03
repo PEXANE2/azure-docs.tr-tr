@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755698"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704990"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -93,7 +93,7 @@ Bir Windows Server sanal makinesi oluşturup Azure AD DS yönetilen bir etki ala
     | Mevcut alt ağ adı      | Var olan sanal ağ alt ağının adı (örneğin, *Iş yükleri*). |
     | DNS etiketi öneki          | VM için kullanmak üzere *myvm*gıbı bir DNS adı girin. |
     | VM boyutu                   | *Standard_DS2_v2*gıbı bir VM boyutu belirtin. |
-    | Katılacak etki alanı            | Azure AD DS yönetilen etki alanı DNS adı, örneğin *contoso.com*. |
+    | Katılacak etki alanı            | Azure AD DS yönetilen etki alanı DNS adı, örneğin *aadds.contoso.com*. |
     | Etki alanı Kullanıcı adı           | Azure AD DS yönetilen etki alanındaki, VM 'yi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, *Azure AD DC Administrators* grubunun bir üyesi olmalıdır. |
     | Etki alanı parolası           | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
     | İsteğe bağlı OU yolu          | VM 'nin ekleneceği özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC bilgisayarları* OU 'ya eklenir. |

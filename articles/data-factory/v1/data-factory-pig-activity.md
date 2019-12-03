@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682388"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703202"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -82,14 +82,14 @@ Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsigh
 
 ## <a name="syntax-details"></a>Söz dizimi ayrıntıları
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| ad |Etkinliğin adı |Evet |
+| ad |Etkinliğin adı |Yes |
 | açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
-| type |HDinsightPig |Evet |
+| type |HDinsightPig |Yes |
 | girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |Hayır |
-| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Evet |
-| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
+| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Yes |
+| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
 | betiğini çalıştırın |Pig betiğini satır içi olarak belirt |Hayır |
 | scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
 | tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
@@ -224,4 +224,4 @@ Parametreli Pig betiğini kullanmak için şunları yapın:
 * [MapReduce etkinliği](data-factory-map-reduce.md)
 * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
 * [Spark programlarını çağırma](data-factory-spark.md)
-* [R betiklerini çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R betiklerini çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

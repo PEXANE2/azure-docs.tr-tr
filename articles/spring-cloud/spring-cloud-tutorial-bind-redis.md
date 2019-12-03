@@ -1,23 +1,23 @@
 ---
-title: Redsıs için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlama | Microsoft Docs
-description: Reda için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlamayı öğrenin
+title: Öğretici-Reda için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlama
+description: Bu öğreticide, Reda için Azure önbelleğini Azure Spring Cloud uygulamanıza nasıl bağlayacağınız gösterilmektedir.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607566"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708776"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Öğretici: Azure hizmetlerini Azure Spring Cloud uygulamanıza bağlama: Redsıs için Azure önbelleği
 
 Azure yay bulutu, Spring Boot uygulamanızı el ile yapılandırmak yerine, Azure hizmetlerini uygulamalarınıza otomatik olarak bağlamanıza olanak tanır. Bu makalede, redin için uygulamanızı Azure önbelleğine bağlama işlemi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Dağıtılan bir Azure yay bulutu örneği
 * Redsıs hizmet örneği için bir Azure önbelleği

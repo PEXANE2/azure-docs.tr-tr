@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 961b54a4d7c9caee98497e5d2b8db86284084d15
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: dddbc15a80fe741b9ad1634aac18cb13819dc235
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023873"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704423"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
 
@@ -128,7 +128,7 @@ $Vnet= New-AzVirtualNetwork `
 
 ## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS yönetilen etki alanı oluşturma
 
-Şimdi Azure AD DS yönetilen bir etki alanı oluşturalım. Azure abonelik KIMLIĞINIZI ayarlayın ve ardından yönetilen etki alanı için *contoso.com*gibi bir ad sağlayın. [Get-AzSubscription][Get-AzSubscription] cmdlet 'ini kullanarak abonelik kimliğinizi alabilirsiniz.
+Şimdi Azure AD DS yönetilen bir etki alanı oluşturalım. Azure abonelik KIMLIĞINIZI ayarlayın ve ardından yönetilen etki alanı için *aadds.contoso.com*gibi bir ad sağlayın. [Get-AzSubscription][Get-AzSubscription] cmdlet 'ini kullanarak abonelik kimliğinizi alabilirsiniz.
 
 Kullanılabilirlik Alanları destekleyen bir bölge seçerseniz, Azure AD DS kaynakları daha fazla artıklık için bölgelere dağıtılır.
 
@@ -138,7 +138,7 @@ Azure AD DS bölgeler arasında dağıtılacak şekilde yapılandırmanız için
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso.com"
+$ManagedDomainName = "aadds.contoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
@@ -172,7 +172,7 @@ $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso.com"
+$ManagedDomainName = "aadds.contoso.com"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak cihaz sağlama
-description: Öğretici-Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak cihazınızı tek bir IoT Hub 'ına sağlama
+title: Öğretici-Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak cihaz sağlama
+description: Bu öğreticide, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak cihazınızı tek bir IoT Hub 'ına nasıl sağlayabileceğiniz gösterilmektedir.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6be3832163d4aa857b15f73671985b96d864b730
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358fa1fdc767919720ecb26497c818f4945badb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228303"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702471"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir IoT Hub 'ına cihaz sağlama
 
@@ -42,7 +42,7 @@ Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’n
       [![Portalda TPM için kayıt bilgileri](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509 tabanlı cihazlar için şunlar gerekir:
-    - [.pem](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) veya *.cer* dosyası şeklinde *X.509 yongasına ya da simülasyonuna düzenlenen sertifika*. Bireysel kayıt için, X. 509.952 sisteminiz için cihaz başına *imzalı sertifikayı* kullanmanız gerekir, ancak kayıt grupları için *kök sertifikayı*kullanmanız gerekir. 
+    - *.pem* veya *.cer* dosyası şeklinde [X.509 yongasına ya da simülasyonuna düzenlenen sertifika](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx). Bireysel kayıt için, X. 509.952 sisteminiz için cihaz başına *imzalı sertifikayı* kullanmanız gerekir, ancak kayıt grupları için *kök sertifikayı*kullanmanız gerekir. 
 
       [![Portalda X.509 kanıtı için tek kayıt ekleme](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -58,7 +58,7 @@ Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
 
 1. Azure portalında oturum açın, sol taraftaki menüden **Tüm kaynaklar** düğmesine tıklayın ve Cihaz Sağlama hizmetinizi açın.
 
-2. Cihaz Sağlama Hizmeti özet dikey penceresinde, **Kayıtları yönet**’i seçin. Cihaz kurulumunuza göre **Bireysel Kayıtlar** sekmesini veya **Kayıt Grupları** sekmesini seçin. Üstteki **Ekle** düğmesine tıklayın. Kimlik kanıtlama **Mekanizması** olarak **TPM** veya *X.509* seçeneğini belirleyin ve önceden açıklandığı şekilde uygun güvenlik yapılarını girin. Yeni bir **IoT Hub cihaz kimliği** girebilirsiniz. Tamamlandığında **Kaydet** düğmesine tıklayın. 
+2. Cihaz Sağlama Hizmeti özet dikey penceresinde, **Kayıtları yönet**’i seçin. Cihaz kurulumunuza göre **Bireysel Kayıtlar** sekmesini veya **Kayıt Grupları** sekmesini seçin. Üstteki **Ekle** düğmesine tıklayın. Kimlik kanıtlama *Mekanizması* olarak **TPM** veya **X.509** seçeneğini belirleyin ve önceden açıklandığı şekilde uygun güvenlik yapılarını girin. Yeni bir **IoT Hub cihaz kimliği** girebilirsiniz. Tamamlandığında **Kaydet** düğmesine tıklayın. 
 
 3. Cihaz başarıyla kaydedildiğinde cihazın portalda şu şekilde görüntülendiğini görmeniz gerekir:
 

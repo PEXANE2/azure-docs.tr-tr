@@ -14,18 +14,18 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185052"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707444"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla .NET Framework uygulaması oluşturma
 
 Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını .NET Framework tabanlı bir konsol uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -49,7 +49,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’ tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -112,7 +112,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. `AppSettings` değeri `ConfiguratoinManager` uygulama başlatıldıktan sonra değişmez. Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı kitaplığı, ancak aynı zamanda bir .NET Framework uygulamasında da kullanılabilir. Yapılandırma ayarlarını dinamik olarak yenilemek üzere .NET Framework uygulamanızın nasıl etkinleştirileceğini öğrenmek için bir sonraki öğreticiye geçin.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bir .NET Framework konsol uygulamasıyla kullandınız. `AppSettings` değeri `ConfigurationManager` uygulama başlatıldıktan sonra değişmez. Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı kitaplığı, ancak aynı zamanda bir .NET Framework uygulamasında da kullanılabilir. Yapılandırma ayarlarını dinamik olarak yenilemek üzere .NET Framework uygulamanızın nasıl etkinleştirileceğini öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-dotnet.md)

@@ -12,14 +12,14 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473333"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706207"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik Kullanıcı sağlama dağıtımı planlayın
+# <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
 Birçok kuruluş, hizmet olarak yazılım (SaaS) uygulamalarını (ServiceNow, Zscaler ve son kullanıcı üretkenliği için bolluk) kullanır. Tarihsel BT personeli, CSV dosyalarını karşıya yükleme ya da her bir SaaS uygulamasındaki Kullanıcı kimliklerini güvenli bir şekilde yönetmek için özel betikler kullanma gibi el ile sağlama yöntemlerine güvendi. Bu süreçler hataya açık, güvensiz ve yönetimi zor bir hatadır.
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) otomatik Kullanıcı sağlama, iş kuralların
 
 İşlevselliği daha iyi anlamak için, bkz. [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemlerini otomatik hale getirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) .
 
-## <a name="learn"></a>Öğrenin
+## <a name="learn"></a>Öğrenme
 
 Kullanıcı hazırlama, sürekli kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
@@ -98,7 +98,7 @@ Bu örnekte, kullanıcılar ve veya gruplar, şirket içi bir dizine bağlı bir
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Yalnızca bulutta bulunan kuruluşlar için otomatik Kullanıcı hazırlama
 
-Bu örnekte, Azure AD 'de Kullanıcı oluşturma oluşur ve Azure AD sağlama hizmeti, hedef (SaaS) uygulamalarına otomatik Kullanıcı sağlamasını yönetir:
+Bu örnekte, Azure AD 'de Kullanıcı oluşturma oluşur ve Azure AD sağlama hizmeti, hedef (SaaS) uygulamalarına otomatik Kullanıcı sağlamasını yönetir.
 
 ![Resim 2](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -112,16 +112,17 @@ Bu örnekte, Azure AD 'de Kullanıcı oluşturma oluşur ve Azure AD sağlama hi
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Cloud ık uygulamaları için otomatik Kullanıcı hazırlama 
 
-Bu örnekte, kullanıcılar ve veya grupları Workday gibi bir bulut HR uygulamasında oluşturulur.
+Bu örnekte, kullanıcılar ve veya gruplar, Workday ve başarılı etmenler gibi bir bulut HR uygulamasında oluşturulur. Azure AD sağlama hizmeti ve Azure AD Connect sağlama Aracısı, bulut HR uygulama kiracısından AD 'ye Kullanıcı verilerini sağlar. Hesap AD 'de güncelleştirildikten sonra, Azure AD Connect aracılığıyla Azure AD ile eşitlenir ve e-posta adresleri ve Kullanıcı adı öznitelikleri Cloud HR App kiracısına geri yazılabilir.
 
 ![Resim 2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. Bulut HR sisteminde oluşturulan hesaplar
-1. Veriler, Azure AD sağlama hizmeti ve sağlama Aracısı aracılığıyla şirket içi AD 'ye akar.
-1. Azure AD Connect verileri Azure AD 'ye eşitler
-1. E-posta ve Kullanıcı adı özniteliği, bulut HR uygulamasına geri yazılabilir.
-
-Çözüm mimarisi ve dağıtımı hakkında daha fazla bilgi için bkz. [öğretici: otomatik Kullanıcı sağlama Için Workday 'ı yapılandırma](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+1.  **HR ekibi** , bulut HR uygulama kiracısında işlemleri gerçekleştirir.
+2.  **Azure AD sağlama hizmeti** , bulut HR App kiracısından zamanlanan döngüleri ÇALıŞTıRıR ve ad ile eşitleme için işlenmesi gereken değişiklikleri belirler.
+3.  **Azure AD sağlama hizmeti** , ad hesabı oluşturma/güncelleştirme/etkinleştirme/devre dışı bırakma işlemlerini içeren bir istek yüküne sahip Azure AD Connect sağlama aracısını çağırır.
+4.  **Azure AD Connect sağlama Aracısı** , ad hesabı verilerini yönetmek için bir hizmet hesabı kullanır.
+5.  **Azure AD Connect** , ad 'de güncelleştirmeleri çekmek için Delta eşitlemesi çalıştırır.
+6.  **Ad** GÜNCELLEŞTIRMELERI Azure AD ile eşitlenir. 
+7.  **Azure AD sağlama hizmeti** , Azure AD 'den e-posta özniteliği ve Kullanıcı adı ' nı bulut HR App kiracısına geri yedekler
 
 ## <a name="plan-the-deployment-project"></a>Dağıtım projesini planlayın
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics işlerinde Azure Işlevleri çalıştırma
+title: Öğretici-Azure Stream Analytics işlerinde Azure Işlevleri çalıştırma
 description: Bu öğreticide, Stream Analytics işlerine bir çıktı havuzu olarak Azure İşlevlerini yapılandırma hakkında bilgi edineceksiniz.
 services: stream-analytics
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 06/05/2019
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 1ea454f82232fdae17544efc2f0bdfd4601c497e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 189f38c075c5faa91295633d1e4cbde1f7e573a2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934209"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707303"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
 

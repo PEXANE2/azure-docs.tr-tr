@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240877"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707215"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -95,7 +95,7 @@ Microsoft ve müşterileri, Kubernetes çalışan düğümlerinin sorumluluğunu
   * Docker veya Moby Daemon
 
 > [!NOTE]
-> Bir çalışan düğümünde, bir denetim düzlemi bileşeni çalışır durumda değilse, AKS ekibinin tek tek bileşenleri veya tüm çalışan düğümünü yeniden başlatması gerekebilir. Bu yeniden başlatma işlemleri otomatikleştirilir ve genel sorunlar için otomatik düzeltme sağlar. Bu önyüklemeler, bir acil bakım veya kesinti olmadığı durumlar dışında yalnızca _düğüm_ düzeyinde oluşur.
+> Bir çalışan düğümünde, bir denetim düzlemi bileşeni çalışır durumda değilse, AKS ekibinin tek tek bileşenleri veya tüm çalışan düğümünü yeniden başlatması gerekebilir. Bu yeniden başlatma işlemleri otomatikleştirilir ve genel sorunlar için otomatik düzeltme sağlar. Bu önyüklemeler, acil bir bakım veya kesinti olmadığı takdirde küme değil yalnızca _düğüm_ düzeyinde gerçekleşir.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>AKS çalışan düğümleri için müşteri sorumlulukları
 

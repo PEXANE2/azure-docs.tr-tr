@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9aeef3a2f6a43346a7637c3e2497979632b04762
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5ef9774e63995e00e2a193f3d97b3bbe181f07c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683269"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703903"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanına veya buradan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -48,9 +48,9 @@ Aşağıdaki veri depolarındaki verileri **Azure Blob depolama alanına**kopyal
 > [!IMPORTANT]
 > Kopyalama etkinliği, genel amaçlı Azure depolama hesaplarından ve sık/seyrek erişimli blob depolamadaki verilerin kopyalanmasını destekler. Etkinlik, **blok, ekleme veya sayfa Bloblarından okumayı**destekler, ancak **yalnızca blok bloblarına yazmayı**destekler. Azure Premium Storage, sayfa Blobları tarafından desteklenen bir havuz olarak desteklenmez.
 >
-> Veri başarıyla hedefe kopyalandıktan sonra kopyalama etkinliği kaynaktaki verileri silmez. Başarılı bir kopyadan sonra kaynak verileri silmeniz gerekiyorsa, verileri silmek ve işlem hattındaki etkinliği kullanmak için [özel bir etkinlik](data-factory-use-custom-activities.md) oluşturun. Bir örnek için [GitHub 'da blob veya klasör silme örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity)bakın.
+> Veri başarıyla hedefe kopyalandıktan sonra kopyalama etkinliği kaynaktaki verileri silmez. Başarılı bir kopyadan sonra kaynak verileri silmeniz gerekiyorsa, verileri silmek ve işlem hattındaki etkinliği kullanmak için [özel bir etkinlik](data-factory-use-custom-activities.md) oluşturun. Bir örnek için [GitHub 'da blob veya klasör silme örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity)bakın.
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 Farklı araçlar/API 'Ler kullanarak bir Azure Blob depolama alanına/kaynağından veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Bu makalede, verileri bir Azure Blob depolama konumundan başka bir Azure Blob depolama konumuna kopyalamak için bir işlem hattı oluşturmaya yönelik bir [yönerge](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) bulunur. Azure Blob depolama alanından Azure SQL veritabanına veri kopyalamak için bir işlem hattı oluşturmaya yönelik bir öğretici için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
@@ -82,9 +82,9 @@ Data Factory, Azure blob: Int16, Int32, Int64, Single, Double, Decimal, Byte [],
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu, biçimi vb. hakkında bilgi sağlar. **AzureBlob** DataSet türündeki veri kümesi Için typeproperties bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| folderPath |BLOB depolama alanındaki kapsayıcının ve klasörün yolu. Örnek: myblobcontainer\myblobfolder\ |Evet |
+| folderPath |BLOB depolama alanındaki kapsayıcının ve klasörün yolu. Örnek: myblobcontainer\myblobfolder\ |Yes |
 | fileName |Blobun adı. Dosya adı isteğe bağlıdır ve büyük/küçük harfe duyarlıdır.<br/><br/>Bir dosya adı belirtirseniz, etkinlik (kopyalama dahil) belirli bir Blobun üzerinde kullanılır.<br/><br/>Dosya adı belirtilmediğinde, Copy, giriş veri kümesi için folderPath içindeki tüm Blobları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimde olacaktır: `Data.<Guid>.txt` (örneğin:: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Hayır |
 | partitionedBy |partitionedBy, isteğe bağlı bir özelliktir. Bu uygulamayı, zaman serisi verileri için dinamik bir folderPath ve filename belirtmek üzere kullanabilirsiniz. Örneğin, folderPath her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için [partitionedBy özelliğini kullanma bölümüne](#using-partitionedby-property) bakın. |Hayır |
 | formatını | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
@@ -128,13 +128,13 @@ Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, 
 
 **Blobsource** , **typeproperties** bölümünde aşağıdaki özellikleri destekler:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
 | öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |Hayır |
 
 **Blobsink** , aşağıdaki özellikleri **typeproperties** bölümünü destekler:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
 | copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak üretilen adı var. <br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya/BLOB adı belirtilmişse, birleştirilmiş dosya adı belirtilen ad olur; Aksi takdirde, otomatik olarak oluşturulan dosya adı olacaktır. |Hayır |
 
@@ -164,17 +164,17 @@ Bu bölümde, özyinelemeli ve copyBehavior değerlerinin farklı birleşimleri 
 
 | öz | copyBehavior | Sonuç davranışı |
 | --- | --- | --- |
-| doğru |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef klasör Klasör1, kaynak ile aynı yapıyla oluşturulmuştur<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| doğru |DÜZEDEN hiyerarşisi |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Folder1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>file3 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File4 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File5 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp; |
-| doğru |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 + File3 + File4 + dosya 5 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir |
-| false |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/><br/><br/>Subfolder1, File3, File4 ve File5 ile birlikte alınmaz. |
-| false |DÜZEDEN hiyerarşisi |Aşağıdaki yapıyla Klasör1 kaynak klasörü için:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Folder1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/><br/><br/>Subfolder1, File3, File4 ve File5 ile birlikte alınmaz. |
-| false |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir. Fıle1 için otomatik olarak oluşturulan ad<br/><br/>Subfolder1, File3, File4 ve File5 ile birlikte alınmaz. |
+| doğru |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef klasör Klasör1, kaynak ile aynı yapıyla oluşturulmuştur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| doğru |DÜZEDEN hiyerarşisi |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>file3 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File4 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File5 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp; |
+| doğru |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 + File3 + File4 + dosya 5 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir |
+| yanlış |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/><br/><br/>Subfolder1, File3, File4 ve File5 ile birlikte alınmaz. |
+| yanlış |DÜZEDEN hiyerarşisi |Aşağıdaki yapıyla Klasör1 kaynak klasörü için:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Klasör1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/><br/><br/>Subfolder1, File3, File4 ve File5 ile birlikte alınmaz. |
+| yanlış |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir. Fıle1 için otomatik olarak oluşturulan ad<br/><br/>Subfolder1, File3, File4 ve File5 ile birlikte alınmaz. |
 
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>İzlenecek yol: blob depolamadan veri kopyalamak için kopyalama Sihirbazı 'nı kullanma
 Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama bölümüne bakalım. Bu kılavuzda, hem kaynak hem de hedef veri deposu türü: Azure Blob depolama. Bu izlenecek işlem hattı, verileri bir klasörden aynı blob kapsayıcısındaki başka bir klasöre kopyalar. Bu izlenecek yol, blob depolamayı kaynak veya havuz olarak kullanırken ayarları veya özellikleri göstermek kasıtlı olarak basittir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 1. Henüz bir tane yoksa, genel amaçlı bir **Azure depolama hesabı** oluşturun. Blob depolamayı bu kılavuzda hem **kaynak** hem de **hedef** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın.
 2. Depolama hesabında **adfblobconnector** adlı bir blob kapsayıcısı oluşturun.
 4. **Adfblobconnector** kapsayıcısında **Input** adlı bir klasör oluşturun.
@@ -185,7 +185,7 @@ Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama b�
     ```
 
 ### <a name="create-the-data-factory"></a>Veri Fabrikası oluşturma
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Sol üst köşedeki **kaynak oluştur ' a** tıklayın, **Intelligence + Analytics**' e tıklayın ve **Data Factory**' ye tıklayın.
 3. **Yeni Data Factory** bölmesinde:  
     1. **Ad**Için **Adfblobconnectordf** girin. Azure veri fabrikasının adı genel olarak benzersiz olmalıdır. Şu hatayı alırsanız: `*Data factory name “ADFBlobConnectorDF” is not available`, veri fabrikasının adını değiştirin (örneğin, yournameADFBlobConnectorDF) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.
@@ -193,7 +193,7 @@ Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama b�
     3. Kaynak grubu için mevcut bir kaynak grubunu seçmek için **Varolanı kullan** ' ı seçin (veya) kaynak grubu için bir ad girmek üzere **Yeni oluştur** ' u seçin.
     4. Veri fabrikası için bir **konum** seçin.
     5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.
-    6. **Oluştur**'a tıklayın.
+    6. **Oluştur**’a tıklayın.
 3. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz: ![Data Factory giriş sayfası](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kopyalama Sihirbazı

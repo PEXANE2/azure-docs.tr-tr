@@ -10,22 +10,22 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 9e64d184ef0fd120d1bc64ce274ee882b7938df0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645599"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708643"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
 ## <a name="general"></a>Genel
 
-S. Azure SYNAPSE nedir?
+S. Azure Synapse nedir?
 
-A. Azure SYNAPSE, veri depolama ve büyük veri analizlerini birlikte getiren sınırsız bir analiz hizmetidir. Aynı zamanda sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü sunar. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
+A. Azure SYNAPSE, veri depolama ve büyük veri analizlerini birlikte getiren sınırsız bir analiz hizmetidir. Aynı zamanda sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü sunar. Azure Synapse, anlık iş zekası ve makine öğrenmesi ihtiyaçları için veri alma, hazırlama, yönetme ve sunmaya yönelik birleştirilmiş deneyim ile bu iki dünyayı bir araya getirir. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
 
-S. Azure SQL veri ambarı 'na ne oldu?
+S. Azure SQL Veri Ambarı’na ne oldu?
 
 A. Azure SYNAPSE, Azure SQL veri ambarı (SQL DW) gelişmiştir. Aynı sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyinin tamamına gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile bugün çalıştırmaya devam edebilir ve önizleme aşamasında olan yeni yeteneklerden otomatik olarak yararlanabilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
 
@@ -83,10 +83,6 @@ A. Birçok özellik desteklenir, desteklenenler desteklenmez ve [Desteklenmeyen 
 
 ## <a name="tooling-and-administration"></a>Araç ve yönetim
 
-S. Visual Studio 'da veritabanı projelerini destekliyoruz.
-
-A. Şu anda Visual Studio 'da veritabanı projelerini desteklemiyoruz. Bu özelliği almak için oy dönüştürmek isterseniz, kullanıcı sesli [Veritabanı projeleri özellik isteği]ziyaret edin.
-
 S. SQL Analytics REST API 'Leri destekliyor mu?
 
 A. Evet. SQL veritabanıyla birlikte kullanılabilecek çoğu REST işlevi de SQL Analytics ile kullanılabilir. API bilgilerini, REST belge sayfaları veya [MSDN]içinde bulabilirsiniz.
@@ -130,6 +126,6 @@ Azure SYNAPSE hakkında bir bütün olarak daha fazla bilgi için bkz. [genel ba
 [Desteklenmeyen tablo özellikleri]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Azure depolama Blobları]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Veritabanı projeleri özellik isteği]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[Database projects feature request]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Genel Bakış]: ./sql-data-warehouse-overview-faq.md

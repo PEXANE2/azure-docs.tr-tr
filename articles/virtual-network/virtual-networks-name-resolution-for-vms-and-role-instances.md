@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176045"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707581"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarında kaynaklar için ad çözümlemesi
 
@@ -127,7 +127,7 @@ Resolv. conf dosyası genellikle otomatik olarak oluşturulur ve düzenlenmemeli
   1. *Options* satırını **/etc/resolvconf/resolv.exe**' ye ekleyin.
   2. Güncelleştirmek için `resolvconf -u` çalıştırın.
 * **SUSE** (netconf kullanır):
-  1. *Zaman aşımı: 1 deneme: 5* ' i **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametresine **/Etc/sysconfig/Network/config**ekleyin.
+  1. *Zaman aşımı: 1 deneme: 5* ' e, **/Etc/sysconfig/Network/config**içindeki **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametresine ekleyin.
   2. Güncelleştirmek için `netconfig update` çalıştırın.
 * **CentOS** (NetworkManager kullanır):
   1. **/Etc/NetworkManager/Dispatcher,d/11-dhclient**için *echo "Options timeout: 1 deneme: 5"* ekleyin.
@@ -149,7 +149,7 @@ DNS iletimi, sanal ağlar arasında DNS çözümlemesi de sağlar ve şirket iç
 > Rol örneği aynı sanal ağ içinde VM 'lerin ad çözümlemesini gerçekleştirebilir. Bunu, VM 'nin ana bilgisayar adı ve **Internal.cloudapp.net** DNS SONEKINI içeren FQDN 'yi kullanarak yapar. Ancak, bu durumda, ad çözümlemesi yalnızca rol örneği [rol şemasında (. cscfg dosyası)](https://msdn.microsoft.com/library/azure/jj156212.aspx)tanımlanmış VM adına sahipse başarılı olur.
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
-> Başka bir sanal ağdaki VM 'Lerde ad çözümlemesi gerçekleştirmesi gereken rol örnekleri ( **internal.cloudapp.net** SONEKI kullanılarak FQDN) Bu bölümde açıklanan yöntemi kullanarak bunu gerçekleştirmelidir (iki sanal ağ arasında özel DNS sunucuları iletme ağlar).
+> Başka bir sanal ağdaki VM 'Lerde ad çözümlemesi gerçekleştirmesi gereken rol örnekleri ( **internal.cloudapp.net** SONEKI kullanılarak FQDN) Bu bölümde açıklanan yöntemi (iki sanal ağ arasında iletme) kullanarak bunu gerçekleştirmelidir.
 >
 
 ![Sanal ağlar arasındaki DNS diyagramı](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
@@ -206,7 +206,7 @@ Azure Resource Manager dağıtım modelini kullanırken, bir sanal ağ ve bir a�
 Klasik dağıtım modelini kullanırken, Azure portal veya [ağ yapılandırma dosyasında](https://msdn.microsoft.com/library/azure/jj157100)sanal ağ için DNS sunucuları belirtebilirsiniz. Bulut hizmetleri için, [hizmet yapılandırma dosyası](https://msdn.microsoft.com/library/azure/ee758710) aracılığıyla veya PowerShell kullanarak [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)ile DNS sunucuları belirtebilirsiniz.
 
 > [!NOTE]
-> Zaten dağıtılmış bir sanal ağ veya sanal makine için DNS ayarlarını değiştirirseniz değişikliklerin etkili olması için etkilenen her VM 'yi yeniden başlatmanız gerekir.
+> Zaten dağıtılmış bir sanal ağ veya sanal makine için DNS ayarlarını değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, sanal ağdaki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemini çalıştıran VM 'Ler için, `ipconfig /renew` doğrudan VM 'ye yazarak bunu yapabilirsiniz. Adımlar, işletim sistemine bağlı olarak değişir. İşletim sistemi türü için ilgili belgelere bakın. 
 >
 >
 

@@ -1,6 +1,6 @@
 ---
-title: RBAC kullanarak dış Konuk kullanıcılar için Azure kaynaklarına erişimi yönetme | Microsoft Docs
-description: Rol tabanlı erişim denetimi (RBAC) kullanarak bir kuruluşa dış kullanıcılar için Azure kaynaklarına erişimi yönetmeyi öğrenin.
+title: Azure RBAC ve Azure portal kullanarak dış Konuk kullanıcıları için rol atamaları ekleme veya kaldırma
+description: Azure rol tabanlı erişim denetimi (RBAC) kullanarak bir kuruluşa dış kullanıcılar için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555558"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707879"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>RBAC kullanarak dış Konuk kullanıcılar için Azure kaynaklarına erişimi yönetme
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak dış Konuk kullanıcıları için rol atamaları ekleme veya kaldırma
 
-Rol tabanlı erişim denetimi (RBAC), büyük kuruluşlar için daha iyi güvenlik yönetimine olanak tanır. böylece, ortamınızda belirli kaynaklara erişmesi gereken harici ortak çalışanlar, satıcılar veya freelancers ile çalışan küçük ve orta ölçekli işletmeler, ancak tüm altyapının veya faturalandırmayla ilgili kapsamların olması gerekmez. Dış Konuk kullanıcılarıyla işbirliği yapmak için [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) içindeki özellikleri kullanabilirsiniz ve yalnızca konuk kullanıcıların ortamınızda ihtiyaç duyduğu izinleri vermek için RBAC 'yi kullanabilirsiniz.
+[Azure rol tabanlı erişim denetimi (RBAC)](overview.md) , büyük kuruluşlar için daha iyi güvenlik yönetimine olanak tanır, ortamınızda belirli kaynaklara erişmesi gereken, ancak tüm altyapıya da faturalandırma ile ilgili kapsamlar olması gereken, dış ortak, satıcı veya freelancers ile çalışan küçük ve orta ölçekli işletmeler için daha iyi güvenlik yönetimi sağlar. Dış Konuk kullanıcılarıyla işbirliği yapmak için [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) içindeki özellikleri kullanabilirsiniz ve yalnızca konuk kullanıcıların ortamınızda ihtiyaç duyduğu izinleri vermek için RBAC 'yi kullanabilirsiniz.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
+
+- `Microsoft.Authorization/roleAssignments/write` ve `Microsoft.Authorization/roleAssignments/delete` izinleri ( [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi)
 
 ## <a name="when-would-you-invite-guest-users"></a>Konuk kullanıcıları ne zaman davet edebilir?
 
@@ -61,9 +67,9 @@ Konuk kullanıcının dizininize erişebilmesi için davet işlemini tamamlamas�
 
 Davet işlemi hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B işbirliği daveti](../active-directory/b2b/redemption-experience.md)kullanım.
 
-## <a name="grant-access-to-a-guest-user"></a>Konuk kullanıcıya erişim izni verme
+## <a name="add-a-role-assignment-for-a-guest-user"></a>Konuk Kullanıcı için rol ataması ekleme
 
-RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya erişim vermek için üye Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ile [aynı adımları](role-assignments-portal.md#add-a-role-assignment) takip edersiniz. Farklı kapsamlarda Konuk kullanıcıya erişim sağlamak için bu adımları izleyin.
+RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya bir rol ataması eklemek için, bir üye Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ile [aynı adımları](role-assignments-portal.md#add-a-role-assignment) izlüyordu. Bu adımları izleyerek, farklı kapsamlardaki Konuk Kullanıcı için rol ataması ekleyin.
 
 1. Azure portalında **Tüm hizmetler**’e tıklayın.
 
@@ -95,9 +101,9 @@ RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya eri
 
     ![Sanal makine katılımcısı için rol ataması](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Henüz dizininizde olmayan bir konuk kullanıcısına erişim izni verin
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Henüz dizininizde olmayan bir Konuk Kullanıcı için rol ataması ekleme
 
-RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya erişim vermek için üye Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ile [aynı adımları](role-assignments-portal.md#add-a-role-assignment) takip edersiniz.
+Konuk kullanıcıya bir rol ataması eklemek için, bir üye Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ile [aynı adımları](role-assignments-portal.md#add-a-role-assignment) izlüyordu.
 
 Konuk Kullanıcı henüz dizininizde değilse, kullanıcıyı doğrudan rol ataması Ekle bölmesinden davet edebilirsiniz.
 
@@ -179,7 +185,7 @@ Konuk kullanıcının dizinde ek ayrıcalıkları olması gerekiyorsa, Konuk kul
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Konuk Kullanıcı, rol atamak için kullanıcılara, gruplara veya hizmet sorumlularına gözatamez
 
-Konuk kullanıcıların kısıtlı dizin izinleri vardır. Konuk Kullanıcı bir kapsamda [sahip](built-in-roles.md#owner) olsa bile, başka birine erişim vermek üzere bir rol ataması oluşturmaya çalıştıklarında Kullanıcı, Grup veya hizmet sorumlusu listesine gözatamazsınız.
+Konuk kullanıcıların kısıtlı dizin izinleri vardır. Konuk Kullanıcı bir kapsamda [sahip](built-in-roles.md#owner) olsa bile, başka birinin erişimini sağlamak üzere bir rol ataması eklemeye çalışırlarsa, kullanıcılar, gruplar veya hizmet sorumluları listesine gözatamazsınız.
 
 ![Konuk Kullanıcı, rol atamak için güvenlik sorumlularına gözatamez](./media/role-assignments-external-users/directory-no-browse.png)
 

@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990661"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703317"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -100,7 +100,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
 ### <a name="procedure"></a>Yordam
 1. **.NET sınıf kitaplığı** projesi oluşturun.
    <ol type="a">
-     <li>Visual Studio'yu başlatın.</li>
+     <li>Visual Studio 'Yu başlatın.</li>
      <li><b>Dosya</b>’ya tıklayın, <b>Yeni</b>’nin üzerine gelin ve <b>Proje</b>’ye tıklayın.</li>
      <li><b>Şablonlar</b>’ı genişletin ve <b>Visual C#</b> seçeneğini belirleyin. Bu kılavuzda kullanın C#, ancak özel etkinlik geliştirmek için herhangi bir .net dili kullanabilirsiniz.</li>
      <li>Sağ taraftaki proje türleri listesinden <b>sınıf kitaplığı</b> ' nı seçin. Visual Studio 'da <b>Sınıf Kitaplığı ' nı (.NET Framework)</b> seçin </li>
@@ -722,7 +722,7 @@ Sorun giderme birkaç temel teknikten oluşur:
 Özel etkinlik için kodu güncelleştirirseniz, derleyin ve yeni ikili dosyaları içeren zip dosyasını blob depolamaya yükleyin.
 
 ## <a name="appdomain-isolation"></a>AppDomain yalıtımı
-Data Factory başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir etkinlik oluşturmayı gösteren [çapraz AppDomain örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) bakın (örnek: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x, vb.).
+Data Factory başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir etkinlik oluşturmayı gösteren [çapraz AppDomain örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) bakın (örnek: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x, vb.).
 
 ## <a name="access-extended-properties"></a>Genişletilmiş özelliklere erişin
 Aşağıdaki örnekte gösterildiği gibi, etkinlik JSON içinde genişletilmiş özellikler bildirebilirsiniz:

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d0efbaec6905d0d24d9dc1c310d472958011960
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228491"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702064"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -43,7 +43,7 @@ Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale 
 
 Azure Machine Learning işlem hatları, birden çok, bağımlı makine öğrenimi ve veri işleme adımlarını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza yardımcı olur. Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
 
-### <a name="create-a-new-workspace"></a>Yeni bir çalışma alanı oluşturma
+### <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluştur
 
 Enterprise sürümü olan bir Azure Machine Learning çalışma alanınız varsa, [sonraki bölüme atlayın](#create-the-pipeline).
 
@@ -55,7 +55,7 @@ Enterprise sürümü olan bir Azure Machine Learning çalışma alanınız varsa
 
 1. **Tasarımcı**' yı seçin.
 
-    ![Tasarımcıya nasıl erişediğinin gösterildiği görsel çalışma alanının ekran görüntüsü](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![Tasarımcıya nasıl erişediğinin gösterildiği görsel çalışma alanının ekran görüntüsü](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
 1. Kullanımı **kolay önceden oluşturulmuş modüller**' i seçin.
 
@@ -127,7 +127,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. Özellikler bölmesinde **parametreler** > **Açıklama** ' yı seçin ve *normalleştirilmiş zararları hariç tut*' u girin.
 
-### <a name="clean-missing-data"></a>Eksik verileri temizleme
+### <a name="clean-missing-data"></a>Eksik verileri temizle
 
 **Normalleştirilmiş zararlar** sütununu kaldırdıktan sonra Veri kümeniz hala eksik değerler içeriyor. **Eksik verileri temizle** modülünü kullanarak kalan eksik verileri kaldırabilirsiniz.
 

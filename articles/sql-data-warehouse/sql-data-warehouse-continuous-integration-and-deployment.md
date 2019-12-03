@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646143"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708660"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için sürekli tümleştirme ve dağıtım
 
@@ -25,12 +25,8 @@ Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi A
 
 - [Kaynak denetimi tümleştirme öğreticisine](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration) gidin
 
-- SQL veri ambarı (Önizleme) için SSDT önizleme bitleri (16,3 Preview 2 ve üzeri) yüklü olan [Şirket içinde barındırılan bir aracı](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) oluşturun
-
 - Azure DevOps 'ı ayarlama ve bu sunucuya bağlanma
 
-  > [!NOTE]
-  > SSDT Şu anda, şirket içinde barındırılan bir aracının kullanmanız gereken önizleme aşamasındadır. Microsoft tarafından barındırılan aracılar önümüzdeki birkaç ay içinde güncelleştirilecektir.
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Visual Studio derlemesi ile sürekli tümleştirme
 
@@ -49,13 +45,13 @@ Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi A
 Bu noktada, kaynak denetimi depo ana dalınızdaki tüm iadelerinizin, veritabanı projenizin başarılı bir Visual Studio derlemesini otomatik olarak tetiklemesi gereken basit bir ortamınız vardır. Yerel veritabanı projenizde bir değişiklik yaparak ve bu değişikliği ana dalınıza iade ederek Otomasyon 'un uçtan uca çalıştığını doğrulayın.
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Azure SQL veritabanı dağıtım göreviyle sürekli dağıtım
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL veri ambarı (veya veritabanı) dağıtım göreviyle sürekli dağıtım
 
-1. [Azure SQL veritabanı dağıtım görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları girin. Bu görev çalıştırıldığında, önceki derleme işleminden oluşturulan DACPAC, hedef veri ambarına dağıtılır.
+1. [Azure SQL veritabanı dağıtım görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları girin. Bu görev çalıştırıldığında, önceki derleme işleminden oluşturulan DACPAC, hedef veri ambarına dağıtılır. [Azure SQL DataWarehouse dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) de kullanabilirsiniz 
 
       ![Dağıtım görevi](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Dağıtım görevi")
 
-2. Kendi kendine barındırılan bir aracı kullanırken, ortam değişkeninizi SQL veri ambarı için doğru SqlPackage. exe ' yi kullanacak şekilde ayarladığınızdan emin olun. Yol şuna benzemelidir:
+2. Kendi kendine barındırılan bir aracı kullanıyorsanız, ortam değişkeninizi SQL veri ambarı için doğru SqlPackage. exe ' yi kullanacak şekilde ayarladığınızdan emin olun. Yol şuna benzemelidir:
 
       ![Ortam değişkeni](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Ortam değişkeni")
 

@@ -6,20 +6,20 @@ author: bmitchell287
 manager: barbkess
 ms.devlang: java
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a3e0bbb414dd1f47e70de6b7a25a84a2b27c0dc7
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: HT
+ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671850"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705946"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
-Linux üzerinde Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Linux tabanlı hizmette Tomcat veya Java Standard Edition (SE) paketlenmiş Web uygulamalarını hızlıca oluşturmasına, dağıtmasına ve ölçeklendirmesine olanak tanır. Maven eklentilerine sahip uygulamaları, komut satırından veya IntelliJ, tutulma veya Visual Studio Code gibi düzenleyicilerde dağıtın.
+Linux üzerinde Azure App Service, Java geliştiricilerinin, tam olarak yönetilen bir Linux tabanlı hizmette Tomcat, yayana veya Java standart sürüm (SE) paketlenmiş Web uygulamalarını hızlıca oluşturmasına, dağıtmasına ve ölçeklendirmesine olanak tanır. Maven eklentilerine sahip uygulamaları, komut satırından veya IntelliJ, tutulma veya Visual Studio Code gibi düzenleyicilerde dağıtın.
 
 Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Java geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [PostgreSQL öğreticisiyle](tutorial-java-enterprise-postgresql-app.md) [Java hızlı başlangıç](quickstart-java.md) ve Java 'yı izleyin.
 
@@ -50,7 +50,7 @@ Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](../troubleshoot-di
 
 ### <a name="app-logging"></a>Uygulama günlüğü
 
-Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */Home/LogFiles/Application/* dizininde bulabilirsiniz.
+Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */Home/LogFiles/Application/* dizininde bulabilirsiniz.
 
 Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için [Application Insights Java izleme günlüklerini keşfet](/azure/application-insights/app-insights-java-trace-logs)' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights iletebilirsiniz.
 
@@ -105,15 +105,15 @@ JFR dosyanızı yerel makinenize indirmek için [FTPS](../deploy-ftp.md) 'yi kul
 
 Linux için Azure App Service, Azure portal ve CLı aracılığıyla kullanıma hazır ayarlama ve özelleştirmeyi destekler. Java 'a özgü olmayan Web uygulaması yapılandırması için aşağıdaki makaleleri gözden geçirin:
 
-- [Uygulama ayarlarını yapılandır](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
-- [Özel etki alanı ayarlama](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [SSL bağlamalarını yapılandırma](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [CDN ekleme](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Uygulama ayarlarını yapılandır](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings)
+- [Özel etki alanı ayarlama](../app-service-web-tutorial-custom-domain.md?toc=/azure/app-service/containers/toc.json)
+- [SSL bağlamalarını yapılandırma](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json)
+- [CDN ekleme](../../cdn/cdn-add-to-web-app.md?toc=/azure/app-service/containers/toc.json)
 - [Kudu sitesini yapılandırma](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Java çalışma zamanı seçeneklerini ayarla
 
-Hem Tomcat hem de Java örneği ortamlarında ayrılan belleği veya diğer JVM çalışma zamanı seçeneklerini ayarlamak için, seçeneklerle `JAVA_OPTS` adlı bir [uygulama ayarı](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) oluşturun. App Service Linux bu ayarı, başlatıldığında Java çalışma zamanına bir ortam değişkeni olarak geçirir.
+Hem Tomcat hem de Java örneği ortamlarında ayrılan belleği veya diğer JVM çalışma zamanı seçeneklerini ayarlamak için, seçeneklerle `JAVA_OPTS` adlı bir [uygulama ayarı](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) oluşturun. App Service Linux bu ayarı, başlatıldığında Java çalışma zamanına bir ortam değişkeni olarak geçirir.
 
 Azure portal, Web uygulaması için **uygulama ayarları** altında, `-Xms512m -Xmx1204m`gibi ek ayarları içeren `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun.
 
@@ -184,7 +184,7 @@ Linux için App Service çalıştıran Java uygulamaları, diğer uygulamalarla 
 
 ### <a name="authenticate-users-easy-auth"></a>Kullanıcıların kimliğini doğrulama (kolay kimlik doğrulaması)
 
-**Kimlik doğrulama ve yetkilendirme** seçeneğiyle Azure Portal uygulama kimlik doğrulamasını ayarlayın. Buradan, Facebook, Google veya GitHub gibi Azure Active Directory veya sosyal oturum açma bilgilerini kullanarak kimlik doğrulamasını etkinleştirebilirsiniz. Azure portal yapılandırma yalnızca tek bir kimlik doğrulama sağlayıcısı yapılandırılırken kullanılabilir. Daha fazla bilgi için bkz. [App Service uygulamanızı Azure Active Directory oturum açma](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) bilgilerini ve diğer kimlik sağlayıcılarının ilgili makalelerini kullanacak şekilde yapılandırma. Birden çok oturum açma sağlayıcısını etkinleştirmeniz gerekiyorsa, [App Service kimlik doğrulamasını özelleştirme](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) makalesindeki yönergeleri izleyin.
+**Kimlik doğrulama ve yetkilendirme** seçeneğiyle Azure Portal uygulama kimlik doğrulamasını ayarlayın. Buradan, Facebook, Google veya GitHub gibi Azure Active Directory veya sosyal oturum açma bilgilerini kullanarak kimlik doğrulamasını etkinleştirebilirsiniz. Azure portal yapılandırma yalnızca tek bir kimlik doğrulama sağlayıcısı yapılandırılırken kullanılabilir. Daha fazla bilgi için bkz. [App Service uygulamanızı Azure Active Directory oturum açma](../configure-authentication-provider-aad.md?toc=/azure/app-service/containers/toc.json) bilgilerini ve diğer kimlik sağlayıcılarının ilgili makalelerini kullanacak şekilde yapılandırma. Birden çok oturum açma sağlayıcısını etkinleştirmeniz gerekiyorsa, [App Service kimlik doğrulamasını özelleştirme](../app-service-authentication-how-to.md?toc=/azure/app-service/containers/toc.json) makalesindeki yönergeleri izleyin.
 
 #### <a name="tomcat-and-wildfly"></a>Tomcat ve Yavaya
 
@@ -226,7 +226,7 @@ Spring Boot geliştiricileri tanıdık yay güvenlik ek açıklamalarını ve AP
 
 ### <a name="configure-tlsssl"></a>TLS/SSL 'yi yapılandırma
 
-Var olan bir SSL sertifikasını karşıya yüklemek ve uygulamanızın etki alanı adına bağlamak için, [Özel BIR DNS adını Azure App Service BIR SSL bağlamasıyla güvenli hale](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) getirin. Varsayılan olarak, uygulamanız HTTP bağlantılarına hala izin verir-SSL ve TLS 'yi zorlamak için öğreticideki belirli adımları izleyin.
+Var olan bir SSL sertifikasını karşıya yüklemek ve uygulamanızın etki alanı adına bağlamak için, [Özel BIR DNS adını Azure App Service BIR SSL bağlamasıyla güvenli hale](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json) getirin. Varsayılan olarak, uygulamanız HTTP bağlantılarına hala izin verir-SSL ve TLS 'yi zorlamak için öğreticideki belirli adımları izleyin.
 
 ### <a name="use-keyvault-references"></a>Keykasası başvurularını kullanma
 
@@ -250,7 +250,7 @@ JDBC bağlantınızı şifrelemek için ek yapılandırma gerekebilir. Lütfen s
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>Anahtar deposunu el ile başlatma ve yükleme
 
-Anahtar deposunu başlatabilir ve sertifikaları el ile ekleyebilirsiniz. App Service sertifikaları anahtar deposuna otomatik olarak yüklemesini devre dışı bırakmak için `1` değeri ile `SKIP_JAVA_KEYSTORE_LOAD`bir uygulama ayarı oluşturun. Azure Portal üzerinden App Service yüklenen tüm genel sertifikalar `/var/ssl/certs/`altında depolanır. Özel sertifikalar `/var/ssl/private/`altında depolanır.
+Anahtar deposunu başlatabilir ve sertifikaları el ile ekleyebilirsiniz. App Service sertifikaları anahtar deposuna otomatik olarak yüklemesini devre dışı bırakmak için `1` değeri ile `SKIP_JAVA_KEYSTORE_LOAD`bir uygulama ayarı oluşturun. Azure portal üzerinden App Service yüklenen tüm genel sertifikalar `/var/ssl/certs/`altında depolanır. Özel sertifikalar `/var/ssl/private/`altında depolanır.
 
 KeyStore API 'SI hakkında daha fazla bilgi için lütfen [resmi belgelere](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)başvurun.
 
@@ -282,7 +282,8 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
     - **Tomcat**kullanıyorsanız, `CATALINA_OPTS` adında bir ortam değişkeni oluşturun; burada `<app-name>` App Service adınız `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`.
     - KıI kullanıyorsanız,Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics belgelerine bakın.
 
->  `JAVA_OPTS` veya `CATALINA_OPTS`için bir ortam değişkeni zaten varsa, `-javaagent:/...` seçeneğini geçerli değerin sonuna ekleyin.
+> [!NOTE]
+> `JAVA_OPTS` veya `CATALINA_OPTS`için bir ortam değişkeni zaten varsa, `-javaagent:/...` seçeneğini geçerli değerin sonuna ekleyin.
 
 ## <a name="configure-jar-applications"></a>JAR uygulamalarını yapılandırma
 
@@ -454,7 +455,7 @@ Son olarak, sürücü JARs ' ı Tomcat Sınıfyoluna yerleştirip App Service ye
 
     3. SFTP istemcinizdeki yerel tünel oluşturma bağlantı noktasına bağlanın ve dosyaları */Home/Tomcat/lib* klasörüne yükleyin.
 
-    Alternatif olarak, bir FTP istemcisini kullanarak JDBC sürücüsünü karşıya yükleyebilirsiniz. [FTP kimlik bilgilerinizi almak için bu yönergeleri](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)izleyin.
+    Alternatif olarak, bir FTP istemcisini kullanarak JDBC sürücüsünü karşıya yükleyebilirsiniz. [FTP kimlik bilgilerinizi almak için bu yönergeleri](../deploy-configure-credentials.md?toc=/azure/app-service/containers/toc.json)izleyin.
 
 2. Sunucu düzeyinde bir veri kaynağı oluşturduysanız App Service Linux uygulamasını yeniden başlatın. Tomcat, `CATALINA_BASE` `/home/tomcat` sıfırlar ve güncelleştirilmiş yapılandırmayı kullanır.
 
@@ -487,13 +488,13 @@ Bu bölüm aşağıdaki alt bölümleri içerir:
 - [Uygulama sunucusu yapılandırmasını özelleştirme](#customize-application-server-configuration)
 - [Modülleri ve bağımlılıkları yükler](#install-modules-and-dependencies)
 - [Veri kaynaklarını yapılandırma](#configure-data-sources)
-- [Mesajlaşma sağlayıcılarını etkinleştir](#enable-messaging-providers)
+- [İleti Aracısı olarak Service Bus kullanma](#use-service-bus-as-a-message-broker)
 
 ### <a name="scale-with-app-service"></a>App Service ile ölçeklendirme
 
 Linux üzerinde App Service çalışan uygulama sunucusu, etki alanı yapılandırmasında değil tek başına modda çalışır. App Service planını ölçeklendirirseniz, her bir Yavama örneği tek başına sunucu olarak yapılandırılır.
 
-[Ölçek kuralları](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) ile uygulamanızı dikey veya yatay olarak ölçeklendirin ve [örnek sayınız arttırın](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+[Ölçek kuralları](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) ile uygulamanızı dikey veya yatay olarak ölçeklendirin ve [örnek sayınız arttırın](../manage-scale-up.md?toc=/azure/app-service/containers/toc.json).
 
 ### <a name="customize-application-server-configuration"></a>Uygulama sunucusu yapılandırmasını özelleştirme
 
@@ -516,7 +517,7 @@ Başlangıç betiğini */Home/site/Deployments/Tools*gibi, */Home* dizininiz alt
 
 Azure portal **Başlangıç betiği** alanını başlangıç kabuğu betiğinizin konumuna ayarlayın, örneğin */Home/site/Deployments/Tools/Your-Startup-Script.exe*.
 
-Komut dosyasında kullanmak üzere ortam değişkenlerini geçirmek için uygulama yapılandırmasında uygulama [ayarları](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) sağlayın. Uygulama ayarları, uygulamanızı sürüm denetiminden yapılandırmak için gereken bağlantı dizelerini ve diğer gizli dizileri saklar.
+Komut dosyasında kullanmak üzere ortam değişkenlerini geçirmek için uygulama yapılandırmasında uygulama [ayarları](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) sağlayın. Uygulama ayarları, uygulamanızı sürüm denetiminden yapılandırmak için gereken bağlantı dizelerini ve diğer gizli dizileri saklar.
 
 ### <a name="install-modules-and-dependencies"></a>Modülleri ve bağımlılıkları yükler
 
@@ -693,36 +694,323 @@ App Service örneğiniz artık veritabanınıza erişecek şekilde yapılandır�
 
 Veritabanı bağlantısını, yavalar ile yapılandırma hakkında daha fazla bilgi için bkz. [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)veya [SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898).
 
-### <a name="enable-messaging-providers"></a>Mesajlaşma sağlayıcılarını etkinleştir
+### <a name="use-service-bus-as-a-message-broker"></a>İleti Aracısı olarak Service Bus kullanma
 
-İleti temelli Beans iletilerini mesajlaşma mekanizması olarak Service Bus kullanarak etkinleştirmek için:
+, Bir ileti Aracısı olarak [Azure Service Bus](/azure/service-bus-messaging) kullanmak için, yavaların ve ileti odaklı beden yapılandırabilirsiniz. Yapılandırma sonrasında, Java Ileti hizmeti (JMS) istemciniz olarak [Apache Qpid](https://qpid.apache.org) kullanarak ileti gönderebilir ve alabilirsiniz. Bir JMS kaynak bağdaştırıcısı (JMS RA) yapılandırmak için birkaç adım vardır. Bu, Kurumsal Java Beans (EJBs) ile uzak bir JMS bağlantı fabrikası ve kuyruğu yapılandırır. Bu uzaktan kurulum Azure Service Bus işaret eder ve AMQP protokolü için Apache Qpid JMS sağlayıcısını kullanır.
 
-1. [Apache QPId JMS ileti kitaplığını](https://qpid.apache.org/proton/index.html)kullanın. Bu bağımlılığı, uygulamanın Pod. xml dosyanıza (veya diğer derleme dosyasına) ekleyin.
+Aşağıdaki adımlarda gereken yapılandırma ve kod açıklanır. Bu adımlarda, çekirdeklere, bir Service Bus ad alanı, bir kuyruk ve abonelikle ilgili bir konuyla ilgili App Service bir örnek oluşturmuş olduğunuz varsayılır. Bu kaynakları oluşturma hakkında daha fazla bilgi için bkz.:
 
-2. [Service Bus kaynaklarını](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp)oluşturun. Bu ad alanı içinde bir Azure Service Bus ad alanı ve kuyruk ve gönderme ve alma özelliklerine sahip bir paylaşılan erişim Ilkesi oluşturun.
+- [Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma](/azure/app-service/containers/quickstart-java)
+- [Hızlı başlangıç: Azure CLı kullanarak Service Bus kuyruğu oluşturma](/azure/service-bus-messaging/service-bus-quickstart-cli)
+- [Hızlı başlangıç: konuya bir Service Bus konu ve abonelik oluşturmak için Azure portal kullanın](/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)
 
-3. Paylaşılan erişim ilkesi anahtarını URL 'ye göre kodunuza geçirin-ilkenizin birincil anahtarını kodlayarak veya [Service Bus SDK 'Yı kullanın](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp#setup-jndi-context-and-configure-the-connectionfactory).
+1. Bir bash terminali açın ve Azure Kaynak bilgilerinizi ortam değişkenlerine kaydetmek için aşağıdaki komutları kullanın. Yer tutucuları (açılı ayraçlar dahil) belirtilen değerlerle değiştirin.
 
-4. Modül XML tanımlayıcısı,. jar bağımlılıkları, Jpatron CLı komutları ve JMS sağlayıcısı için başlangıç betiği ile birlikte modüller ve bağımlılıklar yükleme bölümünde özetlenen adımları izleyin. Dört dosyanın yanı sıra, JMS kuyruğu ve konusu için JNDı adını tanımlayan bir XML dosyası da oluşturmanız gerekir. Başvuru yapılandırma dosyaları için [Bu depoya](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) bakın.
+    | Değişken            | Değer                                                                      |
+    |---------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME  | App Service örneğinizi içeren kaynak grubunun adı.       |
+    | WEBAPP_NAME         | App Service örneğinizin adı.                                     |
+    | BÖLGE              | Uygulamanızın barındırıldığı bölgenin adı.                           |
+    | DEFAULT_SBNAMESPACE | Service Bus ad alanının adı.                                    |
+    | SB_SAS_POLICY       | Ad alanınız için paylaşılan erişim imzası (SAS) ilkesinin adı.   |
+    | SB_SAS_KEY          | Kuyruğunuzun SAS ilkesi için birincil veya ikincil anahtar.                  |
+    | SB_QUEUE            | Service Bus kuyruğunun adı.                                        |
+    | SB_TOPIC            | Service Bus konusunun adı.                                        |
+    | SB_SUBSCRIPTION     | Konunun abonelik adı.                                |
+
+    ```bash
+    RESOURCEGROUP_NAME=<resource group>
+    WEBAPP_NAME=<web app>
+    WEBAPP_PLAN_NAME=${WEBAPP_NAME}-appservice-plan
+    REGION=<region>
+    DEFAULT_SBNAMESPACE=<namespace>
+    SB_SAS_POLICY=<SAS policy>
+    SB_SAS_KEY=<SAS key>
+    SB_QUEUE=<queue>
+    SB_TOPIC=<topic>
+    SB_SUBSCRIPTION=<subscription>
+    PROVIDER_URL=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000
+    ```
+
+    Bu bilgileri Azure portal bulabilirsiniz. SAS ilkesi ve anahtarı için, uygulamanızın hem kuyruğunuza hem de konu aboneliğinize erişebilmesi için ad alanının değerlerini kullandığınızdan emin olun. Bu değerleri Azure portal bulmak için, ad alanı kaynağınız ' ne gidin, **paylaşılan erişim ilkeleri**' ni seçin ve ardından **RootManageSharedAccessKey** ilkesini seçin.
+
+2. [Apache Qpid JMS sağlayıcısını](https://qpid.apache.org/components/jms/index.html)indirin. *LIB* ve *lib/optional* dizinlerindeki. jar dosyalarını bulun.
+
+3. *Module. xml* adlı bir dosya oluşturun ve aşağıdaki biçimlendirmeyi ekleyin. `<version>` yer tutucunun her örneğini (açılı ayraçlar dahil) her. jar dosyası için doğru sürüm ile değiştirin; böylece dosya adları, 1. Adımda ayıkladığınız dosyalarla eşleşir.
+
+    ```xml
+    <module xmlns="urn:jboss:module:1.1" name="org.jboss.genericjms.provider">
+        <resources>
+            <resource-root path="proton-j-<version>.jar"/>
+            <resource-root path="qpid-jms-client-<version>.jar"/>
+            <resource-root path="slf4j-log4j12-<version>.jar"/>
+            <resource-root path="slf4j-api-<version>.jar"/>
+            <resource-root path="log4j-<version>.jar"/>
+            <resource-root path="netty-buffer-<version>.jar" />
+            <resource-root path="netty-codec-<version>.jar" />
+            <resource-root path="netty-codec-http-<version>.jar" />
+            <resource-root path="netty-common-<version>.jar" />
+            <resource-root path="netty-handler-<version>.jar" />
+            <resource-root path="netty-resolver-<version>.jar" />
+            <resource-root path="netty-transport-<version>.jar" />
+            <resource-root path="netty-transport-native-epoll-<version>-linux-x86_64.jar" />
+            <resource-root path="netty-transport-native-kqueue-<version>-osx-x86_64.jar" />
+            <resource-root path="netty-transport-native-unix-common-<version>.jar" />
+            <resource-root path="qpid-jms-discovery-<version>jar" />
+        </resources>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.jms.api"/>
+        </dependencies>
+    </module>
+    ```
+
+4. *Startup.sh* adlı bir dosya oluşturun ve aşağıdaki kodu ekleyin.
+
+    ```bash
+    echo "Generating jndi.properties file in /home/site/deployments/tools directory"
+    echo "connectionfactory.mymdbconnection=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000&jms.username=${SB_SAS_POLICY}&jms.password=${SB_SAS_KEY}" > /home/site/deployments/tools/jndi.properties
+    echo "queue.mymdbqueue=${SB_QUEUE}" >> /home/site/deployments/tools/jndi.properties
+    echo "topic.mymdbtopic=${SB_TOPIC}" >> /home/site/deployments/tools/jndi.properties
+    echo "queue.mymdbsubscription=${SB_TOPIC}/Subscriptions/${SB_SUBSCRIPTION}" >> /home/site/deployments/tools/jndi.properties
+    echo "====== contents of /home/site/deployments/tools/jndi.properties ======"
+    cat /home/site/deployments/tools/jndi.properties
+    echo "====== EOF /home/site/deployments/tools/jndi.properties ======"
+    echo "Generating commands.cli file for /home/site/deployments/tools directory"
+    echo "# Start batching commands" > /home/site/deployments/tools/commands.cli
+    echo "batch" >> /home/site/deployments/tools/commands.cli
+    echo "# Configure the ee subsystem to enable MDB annotation property substitution" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ee:write-attribute(name=annotation-property-replacement,value=true)" >> /home/site/deployments/tools/commands.cli
+    echo "# Define system properties to be used in the substititution" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.mymdb.queue:add(value=java:global/remoteJMS/mymdbqueue})" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.mymdb.topic:add(value=java:global/remoteJMS/mymdbsubscription)" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.connection.factory:add(value=java:global/remoteJMS/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ee:list-add(name=global-modules, value={\"name\" => \"org.jboss.genericjms.provider\", \"slot\" =>\"main\"}" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=naming/binding=\"java:global/remoteJMS\":add(binding-type=external-context,module=org.jboss.genericjms.provider,class=javax.naming.InitialContext,environment=[java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory,org.jboss.as.naming.lookup.by.string=true,java.naming.provider.url=/home/site/deployments/tools/jndi.properties])" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra:add(module=org.jboss.genericjms,transaction-support=XATransaction)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:add(class-name=org.jboss.resource.adapter.jms.JmsManagedConnectionFactory, jndi-name=java:/jms/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=ConnectionFactory:add(value=mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=JndiParameters:add(value=\"java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;java.naming.provider.url=/home/site/deployments/tools/jndi.properties\")" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:write-attribute(name=security-application,value=true)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ejb3:write-attribute(name=default-resource-adapter-name, value=generic-ra)" >> /home/site/deployments/tools/commands.cli
+    echo "# Run the batch commands" >> /home/site/deployments/tools/commands.cli
+    echo "run-batch" >> /home/site/deployments/tools/commands.cli
+    echo "reload" >> /home/site/deployments/tools/commands.cli
+    echo "====== contents of /home/site/deployments/tools/commands.cli ======"
+    cat /home/site/deployments/tools/commands.cli
+    echo "======= EOF /home/site/deployments/tools/commands.cli ========"
+    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider
+    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main
+    cp  /home/site/deployments/tools/*.jar /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
+    cp /home/site/deployments/tools/module.xml /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
+    cp /home/site/deployments/tools/jndi.properties /opt/jboss/wildfly/standalone/configuration/
+    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/home/site/deployments/tools/commands.cli
+    echo "Startup Run done"
+    ```
+
+    App Service örneğiniz her başlatıldığında bu betiği çalıştırır ve bu kod, Yavalara gereken ek yapılandırma sağlar. Bu betik, uygulamanızın bağımlılıklarını gereken konumlara kopyalar. Ayrıca, adım 1 ' de gösterilen ortam değişkenlerini kullanan *jndi. Properties* ve *Commands. cli* dosyalarını oluşturur. Bu değerler, daha sonraki bir adımda App Service örneğinize de geçirilir.
+
+    *Commands. cli* dosyası, başlangıç betiği tarafından başlatılan bir [YAVAMA CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) betiğine sahiptir. Bu dosyadaki komutlar JMS ve JNDI 'yi yapılandırarak *JNDI. Properties* dosyasını kullanır. Bu komutlar, uygulamanız ile Service Bus kuyruğu veya konusu arasında bir bağlantı oluşturur.
+
+5. . Jar dosyalarını, *Module. xml* dosyasını ve *Startup.sh* dosyasını App SERVICE örneğine yüklemek için FTP 'yi kullanın. *Startup.sh* 'i */Home* dizinine koyun ve diğer dosyaları */Home/site/Deployments/Tools* dizinine yerleştirin. Bağımlılıkların geçişli olarak kapatılmasını sağlamak için *Module. xml* dosyasında listelenen her. jar dosyasını karşıya yüklediğinizden emin olun. FTP hakkında daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+6. Aşağıdaki `import` deyimlerini eklemek için MessageListener uygulamanızı güncelleştirin:
+
+    ```java
+    import javax.ejb.ActivationConfigProperty;
+    import javax.ejb.MessageDriven;
+    import javax.ejb.TransactionAttribute;
+    import javax.ejb.TransactionAttributeType;
+    import javax.ejb.TransactionManagement;
+    import javax.ejb.TransactionManagementType;
+    import javax.jms.JMSException;
+    import javax.jms.Message;
+    import javax.jms.MessageListener;
+    import javax.jms.TextMessage;
+    ```
+
+7. Ardından, aşağıdaki örnekle eşleşecek şekilde dinleyici sınıfı ek açıklamalarınızı güncelleştirin. Bu sınıf, ileti alındığını günlüğe kaydeden örnek bir uygulama sağlar.
+
+    ```java
+    @TransactionManagement(TransactionManagementType.BEAN)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @MessageDriven(name = "MyQueueListener", activationConfig = {
+            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
+            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.queue}"),
+            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+    public class MyQueueListener implements MessageListener {
+
+        private static final Logger LOGGER = Logger.getLogger(TopicListener.class.toString());
+
+        public void onMessage(Message rcvMessage) {
+            TextMessage msg = null;
+            try {
+                if (rcvMessage instanceof TextMessage) {
+                    msg = (TextMessage) rcvMessage;
+                    LOGGER.info("Received Message from topic: " + msg.getText());
+                } else {
+                    LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());
+                }
+            } catch (JMSException e) {
+                LOGGER.warning("Exception on message : " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    ```
+
+    `connectionFactory` ve `destinationLookup` değerleri, *Startup.sh* betiği tarafından yapılandırılan yavaya ve sistem özelliği değerlerini ifade eder. `destinationType` değeri, bir Service Bus Queue örneğine bağlanmakta olduğunuzu belirten `javax.jms.Queue`. Bu değer, aşağıda gösterildiği gibi bir Service Bus konusuna bağlandığınızda `javax.jms.Topic` olmalıdır:
+
+    ```java
+    @TransactionManagement(TransactionManagementType.BEAN)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @MessageDriven(name = "MyTopicListener", activationConfig = {
+            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
+            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.topic}"),
+            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+        public class MyTopicListener implements MessageListener {
+        // ...
+    }
+    ```
+
+8. Aşağıdaki bağımlılıkları eklemek için *pom. xml* dosyanızın `dependencies` bölümünü güncelleştirin:
+
+    ```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>qpid-jms-client</artifactId>
+            <version>0.40.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>proton-j</artifactId>
+            <version>0.31.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.jms</groupId>
+            <artifactId>jboss-jms-api_2.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    ```
+
+9. *Poe. xml* dosyanızdaki `azure-webapp-maven-plugin` yapılandırmasını, Service Bus hesabı bilgilerinize başvuracak şekilde güncelleştirin. Gerekirse, [Azure App Service Için Maven eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)güncel sürümüne `1.7.0` değiştirin.
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
+            <appName>${WEBAPP_NAME}</appName>
+            <region>${REGION}</region>
+
+            <!-- Java Runtime Stack for Web App on Linux-->
+            <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>DEFAULT_SBNAMESPACE</name>
+                    <value>${DEFAULT_SBNAMESPACE}</value>
+                </property>
+                <property>
+                    <name>SB_SAS_POLICY</name>
+                    <value>${SB_SAS_POLICY}</value>
+                </property>
+                <property>
+                    <name>SB_SAS_KEY</name>
+                    <value>${SB_SAS_KEY}</value>
+                </property>
+                <property>
+                    <name>PROVIDER_URL</name>
+                    <value>${PROVIDER_URL}</value>
+                </property>
+                <property>
+                    <name>SB_QUEUE</name>
+                    <value>${SB_QUEUE}</value>
+                </property>
+                <property>
+                    <name>SB_TOPIC</name>
+                    <value>${SB_TOPIC}</value>
+                </property>
+                <property>
+                    <name>SB_SUBSCRIPTION</name>
+                    <value>${SB_SUBSCRIPTION}</value>
+                </property>
+            </appSettings>
+        </configuration>
+    </plugin>
+    ```
+
+    Bu ayarlar, App Service örneğinizi yerel olarak ayarlamış olduğunuz ortam değişkenlerine sahip olacak şekilde yapılandırır. Hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlamak için ortam değişkenlerini kullanır.
+
+10. Uygulamanızı yeniden derleyin ve dağıtın.
+
+    ```bash
+    mvn package -DskipTests azure-webapp:deploy
+    ```
+
+İleti temelli çekirdeklere artık ileti mekanizması olarak Service Bus kullanacak şekilde yapılandırılmıştır.
+
+App Service bir sonraki sefer yeniden başlatıldığında, başlangıç betiğini çalıştırır ve gerekli yapılandırma adımlarını gerçekleştirir. Bu yapılandırmanın doğru şekilde gerçekleştiğinin test olması için SSH kullanarak App Service erişebilir ve sonra başlangıç betiğini Bash isteminden kendiniz çalıştırabilirsiniz. App Service günlüklerini de inceleyebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [uygulamaları günlüğe kaydetme ve hata ayıklama](#logging-and-debugging-apps).
+
+Bu yönergeleri test etmek için kullanabileceğiniz bir örnek için GitHub 'da [Migrate-Java-EE-App-to-Azure-2](https://github.com/Azure-Samples/migrate-java-ee-app-to-azure-2) deposuna bakın ve `helloworld-mdb-propertysubstitution` örneğe bakın.
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Redin 'i Tomcat ile oturum önbelleği olarak kullanma
 
 Tomcat 'i [redsıs Için Azure önbelleği](/azure/azure-cache-for-redis/)gibi bir dış oturum deposu kullanacak şekilde yapılandırabilirsiniz. Bu, bir kullanıcı uygulamanızın başka bir örneğine aktarıldığında (örneğin, otomatik ölçeklendirme, yeniden başlatma veya yük devretme gerçekleştiğinde) Kullanıcı oturumu durumunu korumanıza olanak sağlar.
 
-Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) uygulaması kullanacak şekilde yapılandırmanız gerekir. Aşağıdaki adımlarda bu işlem Özet [oturum Yöneticisi kullanılarak açıklanmıştır: redin-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) örnek olarak.
+Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) uygulaması kullanacak şekilde yapılandırmanız gerekir. Aşağıdaki adımlarda bu işlem Özet [oturum Yöneticisi kullanılarak açıklanmıştır: redin-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) örnek olarak.
 
-1. Bir bash terminali açın ve aşağıdaki ortam değişkenlerinin her birini ayarlamak için `export <variable>=<value>` kullanın.
+1. Bir bash terminali açın ve aşağıdaki ortam değişkenlerinin her birini ayarlamak için `<variable>=<value>` kullanın.
 
     | Değişken                 | Değer                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | App Service örneğinizi içeren kaynak grubunun adı.       |
     | WEBAPP_NAME              | App Service örneğinizin adı.                                     |
-    | WEBAPP_PLAN_NAME         | App Service planınızın adı                                          |
+    | WEBAPP_PLAN_NAME         | App Service planınızın adı.                                         |
     | BÖLGE                   | Uygulamanızın barındırıldığı bölgenin adı.                           |
     | REDIS_CACHE_NAME         | Redsıs örneği için Azure önbelleğinizin adı.                           |
     | REDIS_PORT               | Redsıs önbelleğinizin dinlediği SSL bağlantı noktası.                             |
     | REDIS_PASSWORD           | Örneğiniz için birincil erişim anahtarı.                                  |
     | REDIS_SESSION_KEY_PREFIX | Uygulamanızdan gelen oturum anahtarlarını tanımlamak için belirttiğiniz bir değer. |
+
+    ```bash
+    RESOURCEGROUP_NAME=<resource group>
+    WEBAPP_NAME=<web app>
+    WEBAPP_PLAN_NAME=<App Service plan>
+    REGION=<region>
+    REDIS_CACHE_NAME=<cache>
+    REDIS_PORT=<port>
+    REDIS_PASSWORD=<access key>
+    REDIS_SESSION_KEY_PREFIX=<prefix>
+    ```
 
     Hizmet örneğinizin **Özellikler** veya **erişim anahtarları** bölümlerine bakarak Azure Portal ad, bağlantı noktası ve erişim anahtarı bilgilerini bulabilirsiniz.
 
@@ -813,8 +1101,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
 9. Uygulamanızı yeniden derleyin ve dağıtın.
 
     ```bash
-    mvn package
-    mvn azure-webapp:deploy
+    mvn package -DskipTests azure-webapp:deploy
     ```
 
 Uygulamanız artık, oturum yönetimi için Redsıs önbelleğinizi kullanacaktır.

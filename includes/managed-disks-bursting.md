@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c2ce39c40ad535b4a66349fcbb4529333218555a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512671"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705519"
 ---
-Premium SSD 'Ler < = 512 GiB (P20 veya below) herhangi bir disk boyutunda patlama desteği. Bu disk boyutları, en iyi çaba temelinde patlaması destekler ve burdıya yönetimi için bir kredi sistemi kullanır. Krediler disk boyutu için sağlanan performans hedefinin altında olduğunda, bir patlama demetini birikir ve trafik hedeften fazla olduğunda krediler tüketir. Disk trafiği, sağlanan hedefteki ıOPS ve bant genişliğine göre izlenir.
+Disk patlaması Şu anda Premium SSD 'Ler için bir önizleme özelliğidir. Patlama, tüm Premium SSD disk boyutlarında desteklenir < = 512 GiB (P20 veya below). Bu disk boyutları, en iyi çaba temelinde patlaması destekler ve burdıya yönetimi için bir kredi sistemi kullanır. Krediler disk boyutu için sağlanan performans hedefinin altında olduğunda, bir patlama demetini birikir ve trafik hedeften fazla olduğunda krediler tüketir. Disk trafiği, sağlanan hedefteki ıOPS ve bant genişliğine göre izlenir.
 
 Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir:
 

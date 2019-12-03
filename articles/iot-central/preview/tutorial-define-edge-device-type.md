@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central yeni bir Azure IoT Edge cihaz türü tanımlayın | Microsoft Docs
+title: Öğretici-Azure IoT Central yeni bir Azure IoT Edge cihaz türü tanımlama
 description: Bu öğreticide, Azure IoT Central uygulamanızda yeni bir Azure IoT Edge cihaz oluşturma, Oluşturucu olarak gösterilir. Türü için telemetri, durum, özellik ve komutları tanımlarsınız.
 author: rangv
 ms.author: rangv
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406473"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702799"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir Azure IoT Edge cihaz türü tanımlama (Önizleme özellikleri)
 
@@ -103,7 +103,7 @@ Yeni bir cihaz şablonu oluşturmaya başlamak için **+ Yeni** ' yi seçin.
 
 IoT Edge, iş mantığını modül biçiminde dağıtabilir ve yönetebilirsiniz. IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure Hizmetleri (Azure Stream Analytics gibi) veya kendi çözüme özgü kodunuzla bulunabilir. Modüllerin nasıl geliştirildiğini, dağıtıldığını ve yapıldığını anlamak için bkz. [IoT Edge modüller](../../iot-edge/iot-edge-modules.md).
 
-Yüksek düzeyde, bir dağıtım bildirimi, istenen özellikleri ile yapılandırılan modül ikizlerini bir listesidir. Dağıtım bildirimi, hangi modüllerin yükleneceğini ve bunların nasıl yapılandırılacağını bir IoT Edge cihazına (veya bir cihaz grubuna) bildirir. Dağıtım bildirimleri, her modül için istenen özellikleri içerir ikizi. IoT Edge cihazlar her bir modülün bildirilen özelliklerini geri bildirir.
+Yüksek düzeyde bir dağıtım bildirimi, istenen özellikleriyle yapılandırılmış bir modül TWINS listesidir. Dağıtım bildirimi, hangi modüllerin yükleneceğini ve bunların nasıl yapılandırılacağını bir IoT Edge cihazına (veya bir cihaz grubuna) bildirir. Dağıtım bildirimleri, her modül için istenen özellikleri içerir ikizi. IoT Edge cihazlar her bir modülün bildirilen özelliklerini geri bildirir.
 
 Dağıtım bildirimi oluşturmak için Visual Studio Code kullanın. Daha fazla bilgi için bkz. [Visual Studio Code Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
@@ -293,8 +293,8 @@ Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca
 
     | Görünen ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Yok.          | Date   |
-    | Müşteri adı     | Yok.          | Dize |
+    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
+    | Müşteri adı     | Hiçbiri          | Dize |
 
 2. **Kaydet**’i seçin.
 

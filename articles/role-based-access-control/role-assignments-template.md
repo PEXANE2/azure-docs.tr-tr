@@ -1,6 +1,6 @@
 ---
-title: RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme | Microsoft Docs
-description: Rol tabanlı erişim denetimi (RBAC) ve Azure Resource Manager şablonları kullanarak kullanıcılar, gruplar ve uygulamalar için Azure kaynaklarına erişimi yönetmeyi öğrenin.
+title: Azure RBAC ve Azure Resource Manager şablonlarını kullanarak rol atamaları ekleme
+description: Azure rol tabanlı erişim denetimi (RBAC) ve Azure Resource Manager şablonları kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383986"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707817"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Azure RBAC ve Azure Resource Manager şablonlarını kullanarak rol atamaları ekleme
 
-[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Azure PowerShell veya Azure CLı kullanmanın yanı sıra, [Azure Resource Manager şablonlarını](../azure-resource-manager/resource-group-authoring-templates.md)kullanarak Azure kaynaklarına erişimi de yönetebilirsiniz. Kaynakları sürekli ve sürekli olarak dağıtmanız gerektiğinde şablonlar yararlı olabilir. Bu makalede, RBAC ve şablonlar kullanarak erişimi nasıl yönetebileceğinizi anlatmaktadır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)], Azure PowerShell veya Azure CLı kullanmaya ek olarak, [Azure Resource Manager şablonları](../azure-resource-manager/resource-group-authoring-templates.md)kullanarak roller atayabilirsiniz. Kaynakları sürekli ve sürekli olarak dağıtmanız gerektiğinde şablonlar yararlı olabilir. Bu makalede, şablonlar kullanılarak rollerin nasıl atanacağı açıklanır.
 
 ## <a name="get-object-ids"></a>Nesne kimliklerini al
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Kaynak grubu kapsamında (parametresiz) bir rol ataması oluşturma
+## <a name="add-a-role-assignment"></a>Rol ataması ekleme
 
-RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir. Aşağıdaki şablonda rol ataması oluşturmanın temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
+RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
+
+### <a name="resource-group-without-parameters"></a>Kaynak grubu (Parametreler olmadan)
+
+Aşağıdaki şablonda rol ataması eklemenin temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
 
 -  Bir kaynak grubu kapsamındaki Kullanıcı, Grup veya uygulamaya [okuyucu](built-in-roles.md#reader) rolü atama
 
@@ -107,7 +111,7 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 
 ![Kaynak grubu kapsamında rol ataması](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Kaynak grubunda veya abonelik kapsamında rol ataması oluşturma
+### <a name="resource-group-or-subscription"></a>Kaynak grubu veya abonelik
 
 Önceki şablon çok esnek değildir. Aşağıdaki şablon parametreleri kullanır ve farklı kapsamlarda kullanılabilir. Aşağıdaki şablonda şunları gösterilmektedir:
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>Kaynak kapsamında rol ataması oluşturma
+### <a name="resource"></a>Kaynak
 
-Bir kaynak düzeyinde bir rol ataması oluşturmanız gerekiyorsa, rol atamasının biçimi farklıdır. Rolün atanacağı kaynağın kaynak sağlayıcısı ad alanını ve kaynak türünü sağlarsınız. Ayrıca, rol atamasının adına kaynağın adını da dahil edersiniz.
+Bir kaynak düzeyinde bir rol ataması eklemeniz gerekiyorsa, rol atamasının biçimi farklıdır. Rolün atanacağı kaynağın kaynak sağlayıcısı ad alanını ve kaynak türünü sağlarsınız. Ayrıca, rol atamasının adına kaynağın adını da dahil edersiniz.
 
 Rol atamasının türü ve adı için aşağıdaki biçimi kullanın:
 
@@ -287,7 +291,7 @@ Aşağıda, şablonu dağıttıktan sonra bir depolama hesabı için kullanıcı
 
 ![Kaynak kapsamında rol ataması](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Yeni hizmet sorumlusu için rol ataması oluşturma
+### <a name="new-service-principal"></a>Yeni hizmet sorumlusu
 
 Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, rol atamasını oluştururken `principalType` özelliğini `ServicePrincipal` olarak ayarlamanız gerekir.
 

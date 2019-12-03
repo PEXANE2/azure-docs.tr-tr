@@ -1,6 +1,6 @@
 ---
-title: Java ve kayıt grupları kullanarak sanal bir X. 509.952 cihazını Azure IoT Hub sağlama
-description: Öğretici-IoT Hub cihaz sağlama hizmeti için Java cihaz ve hizmet SDK 'Sı ve kayıt grupları kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
+title: Öğretici-Java ve kayıt grupları kullanarak sanal bir X. 509.440 cihazını Azure IoT Hub sağlama
+description: Bu öğreticide, IoT Hub cihaz sağlama hizmeti için Java cihaz ve hizmet SDK 'Sı ve kayıt grupları kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a903997c6548aad3638ba5785d23ee7642d403fc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 28cb37ad4fcd41818c3dfc18925ec65b04dddd00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228325"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702448"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Öğretici: IoT Hub cihaz sağlama hizmeti için Java cihaz ve hizmet SDK 'Sı ve grup kayıtlarını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -29,7 +29,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
 
 1. [Maven](https://maven.apache.org/install.html)'ı indirip yükleyin.
 
-1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek [ araçlarının son sürümleri için ](https://git-scm.com/download/)Software Freedom Conservancy’nin Git istemci araçlarına`git` bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
+1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 1. Test sertifikalarınızı oluşturmak için aşağıdaki [sertifikaya genel bakış ' ı](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) kullanın.
 

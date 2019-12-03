@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546281"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705272"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
 
@@ -56,7 +56,7 @@ Kaynak tabanlı KCD, PowerShell kullanılarak yapılandırılır. Kimliğe bür�
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Bilgisayar hesabı için kaynak tabanlı KCD 'YI yapılandırma
 
-Bu senaryoda, *contoso-WebApp.contoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.contoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
+Bu senaryoda, *contoso-WebApp.aadds.contoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aadds.contoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
 
 1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu Azure AD DS yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
 1. [Etki alanı-][create-join-windows-vm]hem Web uygulamasını çalıştıran hem de Web API 'sini çalıştıran sanal makineleri Azure AD DS tarafından yönetilen etki alanına ekleyin. Önceki adımda özel OU 'da bu bilgisayar hesaplarını oluşturun.
@@ -67,8 +67,8 @@ Bu senaryoda, *contoso-WebApp.contoso.com*adlı bilgisayarda çalışan bir Web 
 1. Son olarak, [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi bilgisayar adlarınızı sağlayın:
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
+    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Bir kullanıcı hesabı için kaynak tabanlı KCD 'YI yapılandırma

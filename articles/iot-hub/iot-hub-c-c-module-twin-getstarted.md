@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4443d1117d0dd08cbe2fe89b8ca8465c0c7083f8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954219"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706948"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT Hub Module kimliği ve modülü ikizi (C) ile çalışmaya başlama
 
@@ -37,7 +37,7 @@ Bu öğreticinin sonunda iki C uygulamanız vardır:
 
 * En son [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -190,7 +190,9 @@ Bu bölümde, sanal cihazınızda modül ikizi bildirilen özelliklerini güncel
 
     ![Azure portalı modül ayrıntısı](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Updatemodületwinreportedproperties uygulaması oluşturma** Aşağıdaki `using` deyimlerini **program.cs** dosyasının üst kısmına ekleyin:
+2. **Updatemodületwinreportedproperties uygulaması oluşturma**
+   
+   C dosyanıza aşağıdakileri ekleyin:
 
     ```C
     #include <stdio.h>

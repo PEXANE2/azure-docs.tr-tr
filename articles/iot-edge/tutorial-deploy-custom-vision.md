@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: görüntüler & Özel Görüntü İşleme Hizmeti-Azure IoT Edge'
+title: Öğretici-Azure IoT Edge kullanarak bir cihaza Özel Görüntü İşleme Sınıflandırıcısı dağıtma
 description: Bu öğreticide, Özel Görüntü İşleme ve IoT Edge kullanarak bir bilgisayar vizyonu modelinin kapsayıcı olarak nasıl çalıştırılacağını öğrenin.
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2303b4f4b639d015e9322e167ffbd956446c5061
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665959"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701868"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Öğretici: Özel Görüntü İşleme Hizmeti ile uçta görüntü sınıflandırması gerçekleştirme
 

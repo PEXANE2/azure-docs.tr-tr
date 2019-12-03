@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell kullanarak Stream Analytics işi oluşturma
-description: Bu hızlı başlangıçta, dağıtmak ve Azure Stream Analytics işi çalıştırmak için Azure PowerShell modülünü nasıl yapılacağı açıklanır.
+title: Hızlı başlangıç-Azure PowerShell kullanarak Stream Analytics işi oluşturma
+description: Bu hızlı başlangıçta, bir Azure Stream Analytics işini dağıtmak ve çalıştırmak için Azure PowerShell modülünün nasıl kullanılacağı gösterilmektedir.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,18 +8,18 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44fe16caf6805819b0d942a02f5138fe766ae99c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66116975"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707317"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
 
-Azure PowerShell modülü, PowerShell cmdlet'leri veya betikleri kullanarak Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak bir Azure Stream Analytics işi dağıtma ve çalıştırma işleminin ayrıntıları verilmektedir.
+Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak bir Azure Stream Analytics işi dağıtma ve çalıştırma işleminin ayrıntıları verilmektedir.
 
-Örnek Proje bir IOT Hub CİHAZDAN akış verilerini okur. Giriş verilerini bir Raspberry Pi çevrimiçi simülatör tarafından oluşturulur. Ardından, Stream Analytics işi 27 ° büyük bir sıcaklık iletilerine filtre uygulamak için Stream Analytics sorgu dili kullanarak verileri dönüştürür. Son olarak, blob depolama alanındaki bir dosyaya elde edilen çıkış olayları yazar.
+Örnek iş, bir IoT Hub cihazından akış verilerini okur. Giriş verileri bir Raspberry PI Çevrimiçi simülatör tarafından oluşturulur. Sonra Stream Analytics işi, verileri 27 ° ' dan büyük bir sıcaklığa sahip iletileri filtrelemek için Stream Analytics sorgu dilini kullanarak dönüştürür. Son olarak, sonuç çıktı olaylarını BLOB depolama alanındaki bir dosyaya yazar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -27,21 +27,21 @@ Azure PowerShell modülü, PowerShell cmdlet'leri veya betikleri kullanarak Azur
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* Bu hızlı başlangıçta, Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Bazı IOT Hub eylemleri Azure PowerShell tarafından desteklenmez ve tamamlanan kullanarak Azure CLI sürümünü 2.0.24 veya sonraki bir sürümü gerekir ve Azure CLI için IOT uzantısı. [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve `az extension add --name azure-cli-iot-ext` IOT uzantısını yüklemek için.
+* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.24 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) `az extension add --name azure-cli-iot-ext` IoT uzantısını yüklemek için kullanın.
 
 
-## <a name="sign-in-to-azure"></a>Oturum açın: Azure
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-Azure aboneliğinizde oturum açın `Connect-AzAccount` komutunu ve açılır tarayıcı penceresine Azure kimlik bilgilerinizi girin:
+`Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve açılır tarayıcıda Azure kimlik bilgilerinizi girin:
 
 ```powershell
 # Connect to your Azure account
 Connect-AzAccount
 ```
 
-Birden fazla aboneliğiniz varsa aşağıdaki cmdlet'leri çalıştırarak bu hızlı başlangıç için kullanmak istediğiniz aboneliği seçin. `<your subscription name>` değerini aboneliğinizin adıyla değiştirdiğinizden emin olun:
+Birden fazla aboneliğiniz varsa, aşağıdaki cmdlet 'leri çalıştırarak bu hızlı başlangıç için kullanmak istediğiniz aboneliği seçin. `<your subscription name>` değerini aboneliğinizin adıyla değiştirdiğinizden emin olun:
 
 ```powershell
 # List all available subscriptions.
@@ -51,9 +51,9 @@ Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bir Azure kaynak grubu oluşturun [yeni AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
@@ -67,11 +67,11 @@ New-AzResourceGroup `
 
 Stream Analytics işini tanımlamadan önce, işe girdi olarak yapılandırılan verileri hazırlayın.
 
-Aşağıdaki Azure CLI kod bloğu, iş için gereken girdi verilerini hazırlamak için birçok komutları yapar. Kodu anlamak için bölümleri gözden geçirin.
+Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırlamak için birçok komut yapar. Kodu anlamak için bölümleri gözden geçirin.
 
-1. PowerShell penceresinde çalıştırın [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) Azure hesabınızda oturum açmak için komutu.
+1. PowerShell pencerenizde, Azure hesabınızda oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) komutunu çalıştırın.
 
-    Başarıyla oturum açtığınızda, Azure CLI, aboneliklerinizin listesini döndürür. Bu hızlı başlangıcı ve çalıştırma için kullanmakta olduğunuz aboneliği kopyalama [az hesabı kümesi](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) bu aboneliği seçmek için komutu. PowerShell ile bir önceki bölümdeki seçtiğiniz aynı aboneliği seçin. Değiştirdiğinizden emin olun `<your subscription name>` aboneliğinizin adıyla.
+    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. `<your subscription name>`, aboneliğinizin adıyla değiştirdiğinizden emin olun.
 
     ```azurecli
     az login
@@ -79,47 +79,47 @@ Aşağıdaki Azure CLI kod bloğu, iş için gereken girdi verilerini hazırlama
     az account set --subscription "<your subscription>"
     ```
 
-2. Kullanarak IOT Hub oluşturma [az IOT hub oluşturma](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) komutu. Bu örnek adlı bir IOT Hub oluşturulur **MyASAIoTHub**. IOT hub'ı adlarının benzersiz olduğundan, kendi IOT hub'ı adınızla görünmesi gerekir. SKU aboneliğinizle varsa ücretsiz katmanı kullanmak için F1'e ayarlayın. Aksi halde, sonraki en düşük katmanlı seçin.
+2. [Az IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) komutunu kullanarak bir IoT Hub oluşturun. Bu örnek, **MyASAIoTHub**adlı bir IoT Hub oluşturur. IoT Hub adları benzersiz olduğundan, kendi IoT Hub adınızla birlikte getirmeniz gerekir. Aboneliğiniz ile kullanılabilirse ücretsiz katmanı kullanmak için SKU 'YU F1 olarak ayarlayın. Aksi takdirde, sonraki en düşük katmanı seçin.
 
     ```azurecli
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    IOT Hub bağlantı dizesini kullanarak IOT hub'ı oluşturulduktan sonra alma [az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) komutu. Tüm bağlantı dizesini kopyalayın ve IOT Hub, Stream Analytics işinin girdisi olarak eklediğinizde için kaydedin.
+    IoT Hub 'ı oluşturulduktan sonra, [az IoT Hub Show-Connection-String](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) komutunu kullanarak IoT Hub bağlantı dizesini alın. IoT Hub, Stream Analytics işinize girdi olarak eklediğinizde, tüm bağlantı dizesini kopyalayın ve kaydedin.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. Kullanarak IOT hub'a bir cihaz eklemek [az ıothub cihaz kimliği oluşturma](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) komutu. Bu örnek adlı bir cihaz oluşturur **MyASAIoTDevice**.
+3. [Az ıothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) komutunu kullanarak IoT Hub bir cihaz ekleyin. Bu örnek, **MyASAIoTDevice**adlı bir cihaz oluşturur.
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. Cihaz bağlantı dizesi kullanarak [az IOT hub cihaz kimliği show-connection-string](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) komutu. Tüm bağlantı dizesini kopyalayın ve Raspberry Pi simülatör oluştururken için kaydedin.
+4. [Az IoT Hub cihazı-Identity Show-Connection-String](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) komutunu kullanarak cihaz bağlantı dizesini alın. Tüm bağlantı dizesini kopyalayın ve Raspberry PI simülatörü oluştururken kaydedin.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
     ```
 
-    **Örnek çıktı:**
+    **Çıkış örneği:**
 
     ```azurecli
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
-## <a name="create-blob-storage"></a>BLOB Depolama oluşturma
+## <a name="create-blob-storage"></a>BLOB depolama oluştur
 
-Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob depolama alanı oluşturmak için komutları kullanır. Kodu anlamak için bölümleri gözden geçirin.
+Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob depolaması oluşturmak için komutları kullanır. Kodu anlamak için bölümleri gözden geçirin.
 
-1. Genel amaçlı standart depolama hesabı kullanarak oluşturduğunuz [yeni AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) cmdlet'i.  Bu örnek adlı bir depolama hesabı oluşturur **myasaquickstartstorage** ile yerel olarak yedekli depolama(lrs) ve blob şifrelemesi (varsayılan olarak etkindir).
+1. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) cmdlet 'ini kullanarak standart bir genel amaçlı depolama hesabı oluşturun.  Bu örnek, yerel olarak yedekli depolama (LRS) ve BLOB şifrelemesi (varsayılan olarak etkindir) ile **myasaquickstartstorage** adlı bir depolama hesabı oluşturur.
 
 2. Kullanılacak depolama hesabını tanımlayan `$storageAccount.Context` depolama hesabı bağlamını alın. Depolama hesaplarıyla çalışırken kimlik bilgilerini tekrar tekrar sağlamak yerine bağlama başvurursunuz.
 
-3. Kullanarak bir depolama kapsayıcısı oluşturma [yeni AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer).
+3. [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer)kullanarak bir depolama kapsayıcısı oluşturun.
 
-4. Kod tarafından yüzdelik depolama anahtarı kopyalayın ve daha sonra akış işin çıktı oluşturmak için bu anahtara kaydedin.
+4. Kod tarafından çıkarılan depolama anahtarını kopyalayın ve akış işinin çıkışını daha sonra oluşturmak için bu anahtarı kaydedin.
 
     ```powershell
     $storageAccountName = "myasaquickstartstorage"
@@ -147,7 +147,7 @@ Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob
 
 ## <a name="create-a-stream-analytics-job"></a>Akış Analizi işi oluşturma
 
-İle bir Stream Analytics işi oluşturma [yeni AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) cmdlet'i. Bu cmdlet iş adı, kaynak grubu adı ve iş tanımını parametre olarak alır. İş adı, işinizi tanımlayan herhangi bir kolay ad olabilir. Alfasayısal karakterler, tire, olabilir ve alt çizgi ve 3 ila 63 karakter uzunluğunda olmalıdır. İş tanımı bir iş oluşturmak için gereken özellikleri içeren bir JSON dosyasıdır. Yerel makinenizde `JobDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin:
+[New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) cmdlet 'i ile Stream Analytics işi oluşturun. Bu cmdlet, iş adı, kaynak grubu adı ve iş tanımını parametre olarak alır. İş adı, işinizi tanımlayan herhangi bir kolay ad olabilir. Yalnızca alfasayısal karakter, kısa çizgi ve alt çizgi içerebilir ve 3 ila 63 karakter uzunluğunda olmalıdır. İş tanımı bir iş oluşturmak için gereken özellikleri içeren bir JSON dosyasıdır. Yerel makinenizde `JobDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin:
 
 ```json
 {
@@ -163,7 +163,7 @@ Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob
 }
 ```
 
-Ardından, `New-AzStreamAnalyticsJob` cmdlet'ini çalıştırın. Değiştirin `jobDefinitionFile` iş tanımı JSON dosyasını sakladığınız yoluyla değişken.
+Ardından, `New-AzStreamAnalyticsJob` cmdlet'ini çalıştırın. `jobDefinitionFile` değişkenin değerini, iş tanımı JSON dosyasını depoladığınız yol ile değiştirin.
 
 ```powershell
 $jobName = "MyStreamingJob"
@@ -177,9 +177,9 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>İş girdisini yapılandırma
 
-Kullanarak işinize bir girdi ekleyin [yeni AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet'i. Bu cmdlet iş adı, iş girdisi adı, kaynak grubu adı ve iş girdisi tanımını parametre olarak alır. İş girdisi tanımı işin girdisini yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnekte, giriş olarak bir blob depolama alanı oluşturacaksınız.
+[New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet 'ini kullanarak işinize bir giriş ekleyin. Bu cmdlet iş adı, iş girdisi adı, kaynak grubu adı ve iş girdisi tanımını parametre olarak alır. İş girdisi tanımı işin girdisini yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnekte, giriş olarak bir BLOB depolama alanı oluşturacaksınız.
 
-Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. Değerini değiştirdiğinizden emin olun `accesspolicykey` ile `SharedAccessKey` önceki bölümde kaydettiğiniz IOT Hub bağlantı dizesine kısmı.
+Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. `accesspolicykey` değerini, önceki bir bölümde kaydettiğiniz IoT Hub bağlantı dizesinin `SharedAccessKey` bölümü ile değiştirdiğinizden emin olun.
 
 ```json
 {
@@ -210,7 +210,7 @@ Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine
 }
 ```
 
-Ardından, çalıştırma `New-AzStreamAnalyticsInput` cmdlet'ini değerini değiştirdiğinizden emin olun `jobDefinitionFile` iş girdisi tanımı JSON dosyasını sakladığınız yoluyla değişken.
+Sonra, `New-AzStreamAnalyticsInput` cmdlet 'ini çalıştırın, `jobDefinitionFile` değişkeninin değerini, iş giriş tanımı JSON dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
 
 ```powershell
 $jobInputName = "IoTHubInput"
@@ -224,7 +224,7 @@ New-AzStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>İş çıktısını yapılandırma
 
-Kullanarak işinize bir çıktı eklemek [yeni AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) cmdlet'i. Bu cmdlet iş adı, iş çıktısı adı, kaynak grubu adı ve iş çıktısı tanımını parametre olarak alır. İş çıktısı tanımı işin çıktısını yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnek, çıktı olarak blob depolama kullanır.
+[New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) cmdlet 'ini kullanarak işinize bir çıktı ekleyin. Bu cmdlet iş adı, iş çıktısı adı, kaynak grubu adı ve iş çıktısı tanımını parametre olarak alır. İş çıktısı tanımı işin çıktısını yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnek, çıktı olarak blob depolama kullanır.
 
 Yerel makinenizde `JobOutputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. `accountKey` değerini, depolama hesabınızın $storageAccountKey değerinde depolanmış değeri olan erişim anahtarıyla değiştirdiğinizden emin olun.
 
@@ -273,7 +273,7 @@ New-AzStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>Dönüşüm sorgusunu tanımlama
 
-Kullanarak işinize bir dönüşüm ekleyin [yeni AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) cmdlet'i. Bu cmdlet iş adı, iş dönüşümü adı, kaynak grubu adı ve iş dönüşümü tanımını parametre olarak alır. Yerel makinenizde `JobTransformationDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. JSON dosyası, dönüşüm sorgusunu tanımlayan bir sorgu parametresi içerir:
+[New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) cmdlet 'ini kullanarak işiniz için bir dönüşüm ekleyin. Bu cmdlet iş adı, iş dönüşümü adı, kaynak grubu adı ve iş dönüşümü tanımını parametre olarak alır. Yerel makinenizde `JobTransformationDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. JSON dosyası, dönüşüm sorgusunu tanımlayan bir sorgu parametresi içerir:
 
 ```json
 {
@@ -287,7 +287,7 @@ Kullanarak işinize bir dönüşüm ekleyin [yeni AzStreamAnalyticsTransformatio
 }
 ```
 
-Ardından, `New-AzStreamAnalyticsTransformation` cmdlet'ini çalıştırın. Değerini değiştirdiğinizden emin olun `jobTransformationDefinitionFile` iş dönüşüm tanımı JSON dosyasını sakladığınız yoluyla değişken.
+Ardından, `New-AzStreamAnalyticsTransformation` cmdlet'ini çalıştırın. `jobTransformationDefinitionFile` değişkeninin değerini, iş dönüştürme tanımı JSON dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
@@ -298,19 +298,19 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
-## <a name="run-the-iot-simulator"></a>IOT simülatör'ü çalıştırma
+## <a name="run-the-iot-simulator"></a>IoT simülatörü çalıştırma
 
-1. Açık [Raspberry Pi Azure IOT çevrimiçi simülatör](https://azure-samples.github.io/raspberry-pi-web-simulator/).
+1. [Raspberry PI Azure IoT çevrimiçi simülatörünü](https://azure-samples.github.io/raspberry-pi-web-simulator/)açın.
 
-2. Satır 15 yer tutucunun bir önceki bölümde kaydettiğiniz tüm Azure IOT Hub cihaz bağlantı dizesiyle değiştirin.
+2. 15. satırdaki yer tutucusunu, önceki bölümde kaydettiğiniz tüm Azure IoT Hub cihaz bağlantı dizesi ile değiştirin.
 
-3. **Çalıştır**’a tıklayın. Çıktı, IOT Hub'ına gönderilen iletileri ve sensör verilerini göstermelidir.
+3. **Çalıştır**’a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
-    ![Raspberry Pi Azure IOT çevrimiçi simülatör](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
+    ![Raspberry PI Azure IoT Çevrimiçi simülatör](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics işini başlatıp çıktıyı denetleyin
 
-Kullanarak işi başlatın [başlangıç AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) cmdlet'i. Bu cmdlet iş adı, kaynak grubu adı, çıktı başlangıç modu ve başlangıç saatini parametre olarak alır. `OutputStartMode`; `JobStartTime`, `CustomTime` veya `LastOutputEventTime` değerlerini kabul eder. Bu değerlerin her birinin ne anlama geldiği hakkında daha fazla bilgi için PowerShell belgelerindeki [parametreler](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) bölümüne bakın.
+[Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) cmdlet 'ini kullanarak işi başlatın. Bu cmdlet iş adı, kaynak grubu adı, çıktı başlangıç modu ve başlangıç saatini parametre olarak alır. `OutputStartMode`; `JobStartTime`, `CustomTime` veya `LastOutputEventTime` değerlerini kabul eder. Bu değerlerin her birinin ne anlama geldiği hakkında daha fazla bilgi için PowerShell belgelerindeki [parametreler](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) bölümüne bakın.
 
 Aşağıdaki cmdlet’i çalıştırdıktan sonra iş başlarsa çıktı olarak `True` değeri döndürülür. Depolama kapsayıcısında, dönüştürülmüş verilerle birlikte bir çıktı klasörü oluşturulur.
 
@@ -323,7 +323,7 @@ Start-AzStreamAnalyticsJob `
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşin silinmesi, iş tarafından kullanılan akış birimlerinin faturalanmasını önler. İşi gelecekte kullanmayı planlıyorsanız, silme işlemini atlayıp işi şimdilik durdurabilirsiniz. Bu işi kullanmaya devam edecek değilseniz, aşağıdaki cmdlet'i çalıştırarak bu hızlı başlangıç ile oluşturulan tüm kaynakları silin:
+Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşin silinmesi, iş tarafından kullanılan akış birimlerinin faturalanmasını önler. İşi gelecekte kullanmayı planlıyorsanız, silme işlemini atlayıp işi şimdilik durdurabilirsiniz. Bu işi kullanmaya devam edemeyecekecekseniz, aşağıdaki cmdlet 'i çalıştırarak bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silin:
 
 ```powershell
 Remove-AzResourceGroup `

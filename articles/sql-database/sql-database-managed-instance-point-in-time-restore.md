@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821754"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707660"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Yönetilen bir örnekteki SQL veritabanını önceki zaman noktasına geri yükleme
 
@@ -48,9 +48,9 @@ Aşağıdaki tabloda, yönetilen örnekler için zaman içinde geri yükleme sen
 
 |           |Mevcut VERITABANıNı aynı yönetilen örneğe geri yükle| Varolan VERITABANıNı başka bir yönetilen örneğe geri yükleme|Bırakılan VERITABANıNı aynı yönetilen örneğe geri yükle|Bırakılan VERITABANıNı başka bir yönetilen örneğe geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Evet|Hayır |Hayır|Hayır|
-|**Azure CLI**|Evet |Evet |Hayır|Hayır|
-|**PowerShell**| Evet|Evet |Evet|Evet|
+|**Azure portalda**| Yes|Hayır |Hayır|Hayır|
+|**Azure CLI**|Yes |Yes |Hayır|Hayır|
+|**PowerShell**| Yes|Yes |Yes|Yes|
 
 ## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
 
@@ -58,7 +58,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 2. Yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
 3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 
@@ -230,7 +230,7 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 Doğrudan yönetilen örneğe bağlanın ve SQL Server Management Studio başlatın. Ardından, aşağıdaki Transact-SQL (T-SQL) sorgusunu çalıştırın. Sorgu, geri yüklenen veritabanının adını üzerine yazmak istediğiniz bırakılmış veritabanının adını değiştirecek.
 
 ```sql
-ALTER WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
+ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
 Yönetilen örnekteki veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:

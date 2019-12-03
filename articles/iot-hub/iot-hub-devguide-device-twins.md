@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209709"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706839"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub cihaz ikizlerini anlama ve kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "74209709"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu makalede açıklanır:
+Bu makalede şunları açıklanmaktadır:
 
 * Cihaz ikizi yapısı: *Etiketler*, *istenen* ve *bildirilen özellikler*.
 * Cihaz uygulamalarının ve arka uçlarından oluşan işlemler cihaz ikikilerinde gerçekleştirilebilir.
@@ -119,7 +119,7 @@ Kök nesnede, cihaz kimliği özellikleri ve `tags` için kapsayıcı nesneler v
 
 ### <a name="desired-property-example"></a>İstenen özellik örneği
 
-Önceki örnekte, `telemetryConfig` cihaz ikizi istenen ve bildirilen özellikler, çözüm arka ucu ve cihaz uygulaması tarafından bu cihazın telemetri yapılandırmasını eşitleyecek şekilde kullanılır. Örneğin:
+Önceki örnekte, `telemetryConfig` cihaz ikizi istenen ve bildirilen özellikler, çözüm arka ucu ve cihaz uygulaması tarafından bu cihazın telemetri yapılandırmasını eşitleyecek şekilde kullanılır. Örnek:
 
 1. Çözüm arka ucu istenen özelliği istenen yapılandırma değeriyle ayarlar. Belge, istenen özellik kümesine sahip olan bölümüdür:
 
@@ -182,7 +182,7 @@ Kök nesnede, cihaz kimliği özellikleri ve `tags` için kapsayıcı nesneler v
 
   - Özellikler
 
-    | Ad | Değer |
+    | Adı | Değer |
     | --- | --- |
     $content türü | uygulama/json |
     $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -196,7 +196,7 @@ Kök nesnede, cihaz kimliği özellikleri ve `tags` için kapsayıcı nesneler v
 
     İleti sistemi özelliklerine `$` simgesiyle ön ek uygulanır.
 
-  - Body
+  - Gövde
         
     Bu bölüm bir JSON biçimindeki tüm ikizi değişikliklerini içerir. Bir düzeltme ekiyle aynı biçimi kullanır ve tüm ikizi bölümlerini içerebileceği fark vardır: Etiketler, Özellikler. bildirilen, Özellikler. istenen ve "$metadata" öğelerini içerir. Örneğin,
 
@@ -285,7 +285,7 @@ Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve a
 
 ## <a name="device-twin-size"></a>Cihaz ikizi boyutu
 
-IoT Hub, salt okuma öğeleri hariç `tags`, `properties/desired`ve `properties/reported`karşılık gelen toplam değerlerin her birinde 8KB 'lik boyut sınırlaması uygular.
+IoT Hub, `tags`değerinde 8 KB boyutunda bir boyut sınırı ve `properties/desired` ve `properties/reported`değeri üzerinde her biri 32 KB boyutunda bir boyut sınırlaması uygular. Bu toplamlar salt okunurdur öğeleri dışlıyor.
 
 Boyut, UNICODE denetim karakterleri (segment C0 ve C1) ve dize sabitleri dışında kalan boşluklar hariç olmak üzere tüm karakterlerin sayılarak hesaplanır.
 
@@ -295,7 +295,7 @@ IoT Hub, sınırın üzerinde bu belgelerin boyutunu arttırabilecek tüm işlem
 
 IoT Hub, cihazdaki her bir JSON nesnesi için son güncelleştirme zaman damgasını korur, ikizi istenen ve raporlanan Özellikler. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde kodlanır `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Örneğin:
+Örnek:
 
 ```json
 {

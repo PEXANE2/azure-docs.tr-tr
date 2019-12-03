@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528006"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707558"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimiyle ve Azure ile çalışma
 
@@ -58,7 +58,7 @@ Azure savunma, özellikle AzureBastionSubnet 'e dağıtılır.
 * **Tanılama günlüğü ve diğerleri:** 443 ile Azurecyüksek arasındaki trafik. Bu hizmet etiketi içindeki bölgesel Etiketler henüz desteklenmiyor.
 * **Hedef VM:** 3389 ve 22-VirtualNetwork için giden
 
-Bu [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)başvuru için bir NSG kuralı örneği mevcuttur.
+Bu [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)başvuru için bir NSG kuralı örneği mevcuttur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

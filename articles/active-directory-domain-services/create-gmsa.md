@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546305"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705311"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services içinde bir grup yönetilen hizmet hesabı (gMSA) oluşturun
 
@@ -65,7 +65,7 @@ Azure AD DS yönetilen etki alanları Microsoft tarafından kilitlendiğinden ve
 > [!TIP]
 > Bir gMSA oluşturmak için bu adımları gerçekleştirmek üzere [YÖNETIM sanal bilgisayarınızı kullanın][tutorial-create-management-vm]. Bu yönetim VM 'sinin gerekli AD PowerShell cmdlet 'leri ve yönetilen etki alanına bağlantısı olması gerekir.
 
-Aşağıdaki örnekte, *contoso.com*adlı Azure AD DS yönetilen etki alanında *Mynewou* adlı özel bir OU oluşturulur. Kendi OU ve yönetilen etki alanı adınızı kullanın:
+Aşağıdaki örnekte, *aadds.contoso.com*adlı Azure AD DS yönetilen etki alanında *Mynewou* adlı özel bir OU oluşturulur. Kendi OU ve yönetilen etki alanı adınızı kullanın:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
@@ -75,20 +75,20 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
 
 * **-Ad** *WebFarmSvc* olarak ayarlandı
 * **-Path** parametresi, önceki adımda oluşturulan gMSA için özel OU 'yu belirtir.
-* DNS girdileri ve hizmet sorumlusu adları *WebFarmSvc.contoso.com* için ayarlanır
+* DNS girdileri ve hizmet sorumlusu adları *WebFarmSvc.aadds.contoso.com* için ayarlanır
 * *Contoso-sunucu $* ' daki sorumlular, parolayı almasına izin verilir.
 
 Kendi adlarınızı ve etki alanı adlarınızı belirtin.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.contoso.com `
+    -DNSHostName WebFarmSvc.aadds.contoso.com `
     -Path "OU=MYNEWOU,DC=contoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-        http/WebFarmSvc.contoso.com/contoso, `
-        http/WebFarmSvc/contoso.com, `
+    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
+        http/WebFarmSvc.aadds.contoso.com/contoso, `
+        http/WebFarmSvc/aadds.contoso.com, `
         http/WebFarmSvc/contoso `
     -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
 ```

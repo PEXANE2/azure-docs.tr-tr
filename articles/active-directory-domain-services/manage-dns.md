@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f47f112991a4fe2e5b245920db98e5ae7617161a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474576"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704942"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında DNS 'yi yönetme
 
@@ -52,7 +52,7 @@ Azure AD DS 'de DNS kayıtları oluşturmak ve değiştirmek için, DNS sunucusu
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
 1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
-1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
+1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDS.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
 1. **Sunucu rolleri** sayfasında, **İleri**' ye tıklayın.
 1. **Özellikler** sayfasında, **uzak sunucu yönetim araçları** düğümünü genişletin ve ardından **rol yönetim araçları** düğümünü genişletin. Rol yönetim araçları listesinden **DNS sunucusu araçları** özelliğini seçin.
 
@@ -69,7 +69,7 @@ DNS sunucusu araçları yüklüyken Azure AD DS yönetilen etki alanında DNS ka
 > Azure AD DS yönetilen bir etki alanında DNS 'yi yönetmek için *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
 
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. Önceki bölümde yüklü olan **DNS** de dahil olmak üzere kullanılabilir yönetim araçlarının bir listesi gösterilir. DNS Yönetim konsolunu başlatmak için **DNS** ' yi seçin.
-1. **DNS sunucusuna bağlan** iletişim kutusunda **aşağıdaki bilgisayarı**seçin ve *contoso.com*gibi yönetilen etki alanının DNS etki alanı adını girin:
+1. **DNS sunucusuna bağlan** iletişim kutusunda **aşağıdaki bilgisayarı**seçin ve *AADDS.contoso.com*gibi yönetilen etki alanının DNS etki alanı adını girin:
 
     ![DNS konsolundaki Azure AD DS yönetilen etki alanına bağlanma](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 

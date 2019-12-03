@@ -1,5 +1,5 @@
 ---
-title: Azure portal kullanarak Stream Analytics işi oluşturma ve yönetme
+title: Öğretici-Azure portal kullanarak Stream Analytics işi oluşturma ve yönetme
 description: Bu öğreticide, telefon araması akışındaki sahte aramaların analiz edilmesi için Azure Stream Analytics’in nasıl kullanılacağını gösteren kapsamlı bir örnek sunulmaktadır.
 services: stream-analytics
 author: mamccrea
@@ -9,14 +9,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 128859a00402c3381edfa65918a7135c9fd775de
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925287"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707391"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
 
 Bu öğreticide Azure Stream Analytics'i kullanarak telefon araması verilerini analiz etme adımları gösterilmektedir. Bir istemci uygulaması tarafından oluşturulan telefon araması verileri, Stream Analytics işi tarafından filtrelenecektir bazı sahte çağrılar içerir.
 
@@ -212,7 +212,7 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Sahte aramaları denetlemek için `CallRecTime` değerine göre akış verilerinde iç birleşim uygulayabilirsiniz. Daha sonra `CallingIMSI` değerinin (kaynak numarası) aynı olduğu, ancak `SwitchNum` değeri (kaynak ülke/bölge) farklı olan çağrı kayıtlarını arayabilirsiniz. Akış verileriyle bir JOIN işlemi kullandığınızda birleştirme, eşleşen satırların zaman içinde ne kadar ayrılabildiğine ilişkin bazı sınırlar sağlamalıdır. Veri akışı sonsuz olduğundan ilişki için zaman sınırları, birleştirme işleminin **ON** yan tümcesi içinde [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) işlevi kullanılarak belirtilir.
+   Sahte aramaları denetlemek için `CallRecTime` değerine göre akış verilerinde iç birleşim uygulayabilirsiniz. Ardından `CallingIMSI` değerinin (kaynak numarası) aynı olduğu, ancak `SwitchNum` değeri (kaynak ülke/bölge) farklı olan çağrı kayıtlarını arayabilirsiniz. Akış verileriyle bir JOIN işlemi kullandığınızda birleştirme, eşleşen satırların zaman içinde ne kadar ayrılabildiğine ilişkin bazı sınırlar sağlamalıdır. Veri akışı sonsuz olduğundan ilişki için zaman sınırları, birleştirme işleminin **ON** yan tümcesi içinde [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) işlevi kullanılarak belirtilir.
 
    Bu sorgu, **DATEDIFF** işlevi dışında yalnızca normal bir SQL birleştirme işlemi gibidir. Bu sorguda kullanılan **DATEDIFF** işlevi Stream Analytics’e özeldir ve `ON...BETWEEN` yan tümcesi içinde görünmelidir.
 

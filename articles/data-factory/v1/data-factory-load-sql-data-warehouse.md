@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 47ee1682118fd761d55625428e3522de92b9e38a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682541"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703397"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB 'yi, 15 dakikadan kısa bir süre içinde Azure SQL veri ambarı 'na yükleyin Data Factory
 > [!NOTE]
@@ -45,9 +45,9 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
 >
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure Blob depolama: Bu deneme TPC-H test veri kümesini depolamak için Azure Blob depolama (GRS) kullanır.  Azure depolama hesabınız yoksa [depolama hesabı oluşturma hakkında](../../storage/common/storage-quickstart-create-account.md)bilgi edinin.
-* [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, veri kümesini oluşturmanıza yardımcı olan TPC-H araç seti `dbgen` kullanmanız gerekir.  [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) `dbgen` kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş Ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools)'dan indirebilirsiniz.  10 dosya genelindeki `lineitem` tablo için 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen. exe ' yi çalıştırın:
+* [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, veri kümesini oluşturmanıza yardımcı olan TPC-H araç seti `dbgen` kullanmanız gerekir.  [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) `dbgen` kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş Ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools)'dan indirebilirsiniz.  10 dosya genelindeki `lineitem` tablo için 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen. exe ' yi çalıştırın:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -124,7 +124,7 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
       2. Bir kaynak grubunun adını girmek için **Yeni oluştur**’u seçin.
    4. Veri fabrikası için bir **konum** seçin.
    5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.  
-   6. **Oluştur**'a tıklayın.
+   6. **Oluştur**’a tıklayın.
 4. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:
 
    ![Data factory giriş sayfası](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)

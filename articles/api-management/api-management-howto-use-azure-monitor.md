@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072352"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707194"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
@@ -39,8 +39,8 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 ## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
-+ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
-+ Ayrıca, aşağıdaki öğreticiyi de tamamlayabilirsiniz: [Ilk API 'Nizi Içeri aktarın ve yayımlayın](import-and-publish.md).
++ Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
++ Ayrıca, şu öğreticiyi tamamlayın: [İlk API'nizi içeri aktarma ve yayımlama](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -61,7 +61,7 @@ API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu ha
 
 1. Sayfanın alt kısmındaki menüden **Ölçümler**’i seçin.
 
-    ![ölçümler](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
 1. Açılan listeden ilgilendiğiniz ölçümleri seçin. Örneğin, **istekler**. 
 1. Grafikte, API çağrılarının toplam sayısı gösterilmektedir.
@@ -182,44 +182,44 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 
 | Özellik  | Tür | Açıklama |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | boolean | HTTP isteği, 2xx veya 3xx aralığı içinde yanıt durum koduyla tamamlandıysa true olur |
-| time | date-time | Ağ geçidi tarafından HTTP isteğini almaya ilişkin zaman damgası |
-| operationName | dize | 'Microsoft.ApiManagement/GatewayLogs' sabit değeri |
-| category | dize | 'GatewayLogs' sabit değeri |
-| durationMs | integer | Ağ geçidinin isteği aldığı andan, yanıtın tamamen gönderildiği ana kadar geçen milisaniye cinsinden süre |
-| callerIpAddress | dize | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
-| correlationId | dize | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
-| location | dize | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
-| httpStatusCodeCategory | dize | Http yanıt durum kodu kategorisi: Başarılı (301 veya daha az ya da 304 ya da 307), yetkisiz (401, 403, 429), hatalı (400, 500 ve 600 arasında), diğer |
-| resourceId | dize | /Subscriptions/\<aboneliğinin >/ResourceGroups/\<Resource-Group >/Providers/microsoftAPI Management kaynağının kimliği. Iclaimana/hizmet/\<ad > |
+| isRequestSuccess | boole | HTTP isteği, 2xx veya 3xx aralığı içinde yanıt durum koduyla tamamlandıysa true olur |
+| time | date-time | Ağ geçidinin başladığı zaman zaman damgası isteği işleme |
+| operationName | string | 'Microsoft.ApiManagement/GatewayLogs' sabit değeri |
+| category | string | 'GatewayLogs' sabit değeri |
+| durationMs | integer | Kısa süre sonra gönderilen istek sayısı dolduğunda, ağ geçidi tarafından alınan istek süresi (milisaniye). ClienTime, cacheTime ve backendTime bilgilerini içerir. |
+| callerIpAddress | string | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
+| correlationId | string | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
+| location | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
+| httpStatusCodeCategory | string | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
+| resourceId | string | /SUBSCRIPTIONS/\<aboneliğinin KIMLIĞI >/RESOURCEGROUPS/\<kaynak-grubu >/PROVIDERS/MICROSOFTAPI Management kaynağı. ICLAIMANA/HIZMET/\<adı > |
 | properties | object | Geçerli isteğin özellikleri |
-| yöntemi | dize | Gelen isteğin HTTP yöntemi |
-| url | dize | Gelen isteğin URL’si |
-| clientProtocol | dize | Gelen isteğin HTTP protokolü sürümü |
+| method | string | Gelen isteğin HTTP yöntemi |
+| url | string | Gelen isteğin URL’si |
+| clientProtocol | string | Gelen isteğin HTTP protokolü sürümü |
 | responseCode | integer | Bir istemciye gönderilen HTTP yanıtının durum kodu |
-| backendMethod | dize | Arka uca gönderilen isteğin HTTP yöntemi |
-| backendUrl | dize | Arka uca gönderilen isteğin URL’si |
+| backendMethod | string | Arka uca gönderilen isteğin HTTP yöntemi |
+| backendUrl | string | Arka uca gönderilen isteğin URL’si |
 | backendResponseCode | integer | Arka uçtan alınan HTTP yanıtının kodu |
-| backendProtocol | dize | Arka uca gönderilen isteğin HTTP protokolü sürümü | 
+| backendProtocol | string | Arka uca gönderilen isteğin HTTP protokolü sürümü | 
 | requestSize | integer | İstek işlenirken bir istemciden alınan bayt sayısı | 
 | responseSize | integer | İstek işlenirken bir istemciye gönderilen bayt sayısı | 
-| cache | dize | API Management önbelleğinin istek işlemeye katılım durumu (örn. hit, miss, none) | 
+| cache | string | API Management önbelleğinin istek işlemeye katılım durumu (örn. hit, miss, none) | 
 | cacheTime | integer | Genel API Management önbelleği GÇ (bağlanma, gönderme ve alma bayt’ları) için harcanan milisaniye sayısı | 
 | backendTime | integer | Genel arka uç GÇ (bağlanma, gönderme ve alma bayt’ları) için harcanan milisaniye sayısı | 
 | clientTime | integer | Genel istemci G/Ç (bağlanma, gönderme ve alma bayt’ları) için harcanan milisaniye sayısı | 
-| apiId | dize | Geçerli istek için API varlığı tanımlayıcısı | 
-| operationId | dize | Geçerli istek için işlem varlığı tanımlayıcısı | 
-| productId | dize | Geçerli istek için ürün varlığı tanımlayıcısı | 
-| userId | dize | Geçerli istek için kullanıcı varlığı tanımlayıcısı | 
-| apimSubscriptionId | dize | Geçerli istek için abonelik varlığı tanımlayıcısı | 
-| backendId | dize | Geçerli istek için arka uç varlığı tanımlayıcısı | 
+| apiId | string | Geçerli istek için API varlığı tanımlayıcısı | 
+| operationId | string | Geçerli istek için işlem varlığı tanımlayıcısı | 
+| productId | string | Geçerli istek için ürün varlığı tanımlayıcısı | 
+| userId | string | Geçerli istek için kullanıcı varlığı tanımlayıcısı | 
+| apimSubscriptionId | string | Geçerli istek için abonelik varlığı tanımlayıcısı | 
+| backendId | string | Geçerli istek için arka uç varlığı tanımlayıcısı | 
 | LastError | object | Son istek işleme hatası | 
-| elapsed | integer | Ağ Geçidinin isteği aldığı andan, hatanın oluştuğu ana kadar geçen milisaniye cinsinden süre | 
-| source | dize | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
-| scope | dize | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
-| section | dize | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
-| reason | dize | Hata nedeni | 
-| message | dize | Hata iletisi | 
+| elapsed | integer | Ağ geçidinin isteği aldığı ve hatanın gerçekleştiği sırada geçen milisaniye sayısı | 
+| source | string | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
+| scope | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
+| section | string | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
+| reason | string | Hata nedeni | 
+| message | string | Hata iletisi | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 87179cbce9fa99d4c3422ce88b630312b5080481
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270142"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706249"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
 
@@ -495,7 +495,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Azure uzamsal bağlantıları yalnızca listedeki Bluetooth işaretlerini izler. Beyaz listelenmiş UUID 'ler için programlı olarak programlanmış kötü amaçlı işaretleri, hizmetin kalitesini de olumsuz yönde etkileyebilir. Bu nedenle, işaretlerini yalnızca, dağıtımını denetleyebileceğiniz, yalnızca seçkin alanlarda kullanmanız gerekir.
+Azure uzamsal bağlantıları yalnızca listedeki Bluetooth işaretlerini izler. Allow-listelenmiş UUID 'ler olarak programlanmış kötü amaçlı işaretleri hizmetin kalitesini de olumsuz yönde etkileyebilir. Bu nedenle, işaretlerini yalnızca, dağıtımını denetleyebileceğiniz, yalnızca seçkin alanlarda kullanmanız gerekir.
 
 ## <a name="querying-with-sensor-data"></a>Algılayıcı verileriyle sorgulama
 

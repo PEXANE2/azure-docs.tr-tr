@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217740"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702048"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Eşleme veri akışı için kaynak dönüşümü 
 
@@ -31,7 +31,7 @@ Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını i
 * Azure Data Lake Storage 1. (JSON, avro, metin, Parquet)
 * Azure Data Lake Storage 2. (JSON, avro, metin, Parquet)
 * Azure SQL Veri Ambarı
-* Azure SQL Database
+* Azure SQL Veritabanı
 * Azure CosmosDB
 
 Azure Data Factory, 80 yerel bağlayıcı üzerinde erişime sahiptir. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
@@ -156,7 +156,7 @@ Sütun veri türlerini bir aşağı akış türetilmiş sütunlu dönüşümde d
 
 ### <a name="import-schema"></a>Şemayı içeri aktar
 
-Karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümeleri, şema tanımlarının veri kümesinde mevcut olmasını gerektirmez. Bu nedenle, bu tür kaynaklar için Izdüşüm sekmesine "şemayı Içeri aktar" düğmesine tıklayabilirsiniz.
+Karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümeleri, şema tanımlarının veri kümesinde mevcut olmasını gerektirmez. Bu nedenle, bu tür kaynaklar için **İzdüşüm** sekmesindeki **şemayı içeri aktar** düğmesine tıklayabilirsiniz.
 
 ## <a name="cosmosdb-specific-settings"></a>CosmosDB 'ye özgü ayarlar
 

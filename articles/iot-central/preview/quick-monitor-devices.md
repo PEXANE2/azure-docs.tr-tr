@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central'da cihazlarınızı izleme | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanızı cihazlarınızı izlemek için kullanın.
+title: Hızlı başlangıç-Azure IoT Central cihazlarınızı Izleyin
+description: Bir operatör olarak, bu hızlı başlangıçta cihazlarınızı izlemek için Azure IoT Central uygulamanızı kullanın.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: de83315f38766bc1e2f37ac82452bb023930f241
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893777"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706737"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>Hızlı başlangıç: cihazlarınızı izlemek için Azure IoT Central kullanma (Önizleme özellikleri)
 
@@ -24,7 +24,7 @@ ms.locfileid: "73893777"
 
 Bu hızlı başlangıçta, cihazlarınızı izlemek ve ayarları değiştirmek için Microsoft Azure IoT Central uygulamanızı nasıl kullanacağınızı bir operatör olarak gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, önceki üç hızlı başlangıç [Oluştur Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md), [IoT Central uygulamanıza sanal bir cihaz ekleme](./quick-create-pnp-device.md) ve [cihazınız için kuralları ve eylemleri yapılandırma işlemleri](quick-configure-rules.md)gerçekleştirmeniz gerekir.
 

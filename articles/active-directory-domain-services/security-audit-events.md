@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569834"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704286"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir (Önizleme)
 
@@ -51,10 +51,10 @@ Aşağıdaki denetim olayı kategorileri kullanılabilir:
 |:---|:---|
 |Hesap oturum açma güvenliği|4767, 4774, 4775, 4776, 4777|
 |Hesap yönetimi güvenliği|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
-|Ayrıntı Izleme güvenliği|None|
+|Ayrıntı Izleme güvenliği|Hiçbiri|
 |DS erişim güvenliği|5136, 5137, 5138, 5139, 5141|
 |Oturum açma-oturumu kapatma güvenliği|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Nesne erişim güvenliği|None|
+|Nesne erişim güvenliği|Hiçbiri|
 |İlke değişikliği güvenliği|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Ayrıcalık kullanım güvenliği|4985|
 |Sistem güvenliği|4612, 4621|
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, her bir hedef kaynak türü için senaryolar özetlenmekte
 
 | Hedef kaynak | Senaryo |
 |:---|:---|
-|Azure Storage| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Depolama| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
 |Azure Event Hubs| Bu hedef, birincil ihtiyacınız olduğunda, veri analizi yazılımı veya güvenlik bilgileri & olay yönetimi (SıEM) yazılımları gibi ek yazılımlarla güvenlik denetim olaylarını paylaşmak gerektiğinde kullanılmalıdır. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [Azure Portal kullanarak bir olay hub 'ı oluşturun](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
@@ -82,7 +82,7 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
 > Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları geçmişteki bir şekilde almak veya olayları geçmişteki bir şekilde yeniden oynatmak mümkün değildir. Azure AD DS, yalnızca etkinleştirildikten sonra oluşan olayları gönderebilir.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Contoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aadds.contoso.com*gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS penceresinde, sol taraftaki **Tanılama ayarları (Önizleme)** öğesini seçin.
 1. Hiçbir Tanılama varsayılan olarak yapılandırılmaz. Başlamak için **Tanılama ayarı Ekle**' yi seçin.
 

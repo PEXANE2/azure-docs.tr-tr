@@ -10,14 +10,14 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f8a83fccefe3310fe1a582ef44d72cfbef7e9469
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133078"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707674"
 ---
-# <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
+# <a name="what-is-automated-machine-learning"></a>Otomatik makine öğrenimi nedir?
 
 Otomatik ML olarak da adlandırılan otomatik makine öğrenimi, Machine Learning modeli geliştirmenin zaman alıcı, yinelemeli görevlerini otomatikleştirme işlemidir. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML, [Microsoft Research](https://arxiv.org/abs/1705.05355)bölümümüzden bir kesimme dayanır.
 
@@ -98,7 +98,7 @@ Eksik değerler imputation, kodlama ve dönüşümler gibi ek gelişmiş ön iş
 
 + Azure Machine Learning Studio: **yapılandırma çalıştırması** bölümünde [Bu adımlarla](how-to-create-portal-experiments.md) **Görünüm özellik ayarlarını** seçme.
 
-+ Python SDK: [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)Için `"feauturization": auto' / 'off' / FeaturizationConfig` belirtme.
++ Python SDK: [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)Için `"feauturization": auto' / 'off' / FeaturizationConfig` belirtme.
 
 
 ## <a name="time-series-forecasting"></a>Zaman serisi tahmin etme
@@ -167,7 +167,7 @@ Otomatikleştirilmiş ML, gibi diğer Microsoft çözümlerinde de kullanılabil
 |Tümleştirmeler|Açıklama|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio ve ML.NET otomatik ML (Önizleme) ile Visual Studio Code .NET uygulamalarında otomatik model seçme ve eğitim.|
-|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|HDInsight kümelerinde Spark üzerinde otomatik ML eğitim işlerinizi paralel olarak ölçeklendirin.|
+|['Tan](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|HDInsight kümelerinde Spark üzerinde otomatik ML eğitim işlerinizi paralel olarak ölçeklendirin.|
 |[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Makine öğrenimi modellerini doğrudan Power BI (Önizleme) içinde çağırın.|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 büyük veri kümelerinde verileriniz üzerinde yeni makine öğrenimi modelleri oluşturun.|
 

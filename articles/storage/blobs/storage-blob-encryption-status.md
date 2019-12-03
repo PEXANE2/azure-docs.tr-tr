@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 28a387b77c9a4db4be151dffc853617c426c6927
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666565"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707589"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Bir Blobun şifreleme durumunu denetleme
 
@@ -72,7 +72,7 @@ Blobun ne zaman oluşturulduğunu öğrenmek için **oluşturulan** özelliğin 
 
 ---
 
-### <a name="force-encryption-of-a-blob"></a>Blob şifrelemeyi zorlama
+## <a name="force-encryption-of-a-blob"></a>Blob şifrelemeyi zorlama
 
 20 Ekim 2017 ' den önce oluşturulan bir blob, arka plan işlemi tarafından henüz şifrelenmemişse, blobu indirip yeniden karşıya yükleyerek şifrelemeyi hemen gerçekleştirebilirsiniz. Bunu yapmanın basit bir yolu AzCopy kullanmaktır.
 

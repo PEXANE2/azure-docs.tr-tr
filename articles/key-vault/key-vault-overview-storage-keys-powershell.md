@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204220"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707095"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Depolama hesabı anahtarlarını Key Vault ve Azure PowerShell yönetme
 
@@ -44,9 +44,9 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 
 | Kira | Bulut | Uygulama Kimliği |
 | --- | --- | --- |
-| Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Devlet Kurumları | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Diğer  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Diğer  | Herhangi biri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -74,7 +74,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Değişkenleri ayarla
 
-İlk olarak, aşağıdaki adımlarda PowerShell cmdlet 'leri tarafından kullanılacak değişkenleri ayarlayın. <YourResourceGroupName> `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` , ,<YourStorageAccountName> Ve<YourKeyVaultName> yer tutucuları güncelleştirdiğinizden emin olun ve $keyVaultSpAppId (Yukarıdaki [hizmet sorumlusu uygulama kimliği](#service-principal-application-id)'nde belirtildiği gibi) olarak ayarlayın.
+İlk olarak, aşağıdaki adımlarda PowerShell cmdlet 'leri tarafından kullanılacak değişkenleri ayarlayın. <YourResourceGroupName>, <YourStorageAccountName>ve <YourKeyVaultName> yer tutucuları güncelleştirdiğinizden emin olun ve $keyVaultSpAppId (Yukarıdaki [hizmet sorumlusu uygulama kimliği](#service-principal-application-id)'nde belirtildiği gibi) `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` olarak ayarlayın.
 
 Ayrıca Azure PowerShell, Kullanıcı KIMLIĞINIZI ve Azure depolama hesabınızın bağlamını almak için [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) ve [Get-azstorageaccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) cmdlet 'lerini de kullanacağız.
 
@@ -133,7 +133,7 @@ Depolama hesapları için izinler, Azure portal depolama hesabı "erişim ilkele
 
 ### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault örneğinize yönetilen bir depolama hesabı ekleyin
 
-Key Vault örneğiniz içinde yönetilen bir depolama hesabı oluşturmak için Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 'ini kullanın. `-DisableAutoRegenerateKey` Anahtar, depolama hesabı anahtarlarını yeniden üretmemelidir.
+Key Vault örneğiniz içinde yönetilen bir depolama hesabı oluşturmak için Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 'ini kullanın. `-DisableAutoRegenerateKey` anahtarı depolama hesabı anahtarlarını yeniden üretmemelidir.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
@@ -185,18 +185,18 @@ Tags                :
 
 ## <a name="shared-access-signature-tokens"></a>Paylaşılan erişim imza belirteçleri
 
-Ayrıca, Key Vault paylaşılan erişim imzası belirteçleri oluşturmasını isteyebilirsiniz. Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. İstemci, hesap anahtarlarınızı paylaşmadan Depolama hesabınızdaki kaynaklara erişim izni verebilirsiniz. Paylaşılan erişim imzası, hesap anahtarlarınızla ödün vermeden depolama kaynaklarınızı paylaşmak için güvenli bir yol sağlar.
+Ayrıca, Key Vault paylaşılan erişim imzası belirteçleri oluşturmasını isteyebilirsiniz. Paylaşılan erişim imzası, Depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. İstemci, hesap anahtarlarınızı paylaşmadan Depolama hesabınızdaki kaynaklara erişim izni verebilirsiniz. Paylaşılan erişim imzası, hesap anahtarlarınızla ödün vermeden depolama kaynaklarınızı paylaşmak için güvenli bir yol sağlar.
 
 Bu bölümdeki komutlar aşağıdaki eylemleri tamamlar:
 
 - Hesap paylaşılan erişim imzası tanımı ayarlayın. 
 - Blob, dosya, tablo ve kuyruk Hizmetleri için bir hesap paylaşılan erişim imza belirteci oluşturun. Belirteç, kaynak türleri hizmeti, kapsayıcısı ve nesnesi için oluşturulur. Belirteç, https üzerinden ve belirtilen başlangıç ve bitiş tarihleriyle birlikte tüm izinlerle oluşturulur.
-- Kasada Key Vault yönetilen bir depolama paylaşılan erişim imzası tanımı ayarlayın. Tanım, oluşturulan paylaşılan erişim imzası belirtecinin şablon URI 'sine sahiptir. Tanım, paylaşılan erişim imzası türüne `account` sahiptir ve N gün için geçerlidir.
+- Kasada Key Vault yönetilen bir depolama paylaşılan erişim imzası tanımı ayarlayın. Tanım, oluşturulan paylaşılan erişim imzası belirtecinin şablon URI 'sine sahiptir. Tanım `account` paylaşılan erişim imzası türüne sahiptir ve N gün için geçerlidir.
 - Paylaşılan erişim imzasının anahtar kasanıza gizli dizi olarak kaydedildiğini doğrulayın.
 - 
 ### <a name="set-variables"></a>Değişkenleri ayarla
 
-İlk olarak, aşağıdaki adımlarda PowerShell cmdlet 'leri tarafından kullanılacak değişkenleri ayarlayın. <YourStorageAccountName> Ve<YourKeyVaultName> yer tutucuları güncelleştirdiğinizden emin olun.
+İlk olarak, aşağıdaki adımlarda PowerShell cmdlet 'leri tarafından kullanılacak değişkenleri ayarlayın. <YourStorageAccountName> ve <YourKeyVaultName> yer tutucuları güncelleştirdiğinizden emin olun.
 
 Ayrıca, Azure depolama hesabınızın bağlamını almak için Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) cmdlet 'lerini de kullanacağız.
 
@@ -225,7 +225,7 @@ $SasToken değeri şuna benzer olacaktır.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Paylaşılan erişim imzası tanımı oluştur
 
-Paylaşılan erişim imzası tanımı oluşturmak için Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet 'ini kullanın.  `-Name` Parametresi için tercih ettiğiniz adı sağlayabilirsiniz.
+Paylaşılan erişim imzası tanımı oluşturmak için Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet 'ini kullanın.  Tercih ettiğiniz adı `-Name` parametresine sağlayabilirsiniz.
 
 ```azurepowershell-interactive
 Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
@@ -238,7 +238,7 @@ Azure PowerShell [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkey
 İlk olarak, Anahtar Kasanızda paylaşılan erişim imzası tanımını bulun.
 
 ```azurepowershell-interactive
-Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+Get-AzKeyVaultSecret -VaultName <YourKeyVaultName>
 ```
 
 SAS tanımınıza karşılık gelen gizli dizi şu özelliklere sahip olacaktır:
@@ -251,7 +251,7 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-Artık bu gizli dizi içeriğini görüntülemek için [Get-azkeyvaultsecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) cmdlet 'ini `Name` ve Secret özelliğini kullanabilirsiniz.
+Artık bu gizli dizi içeriğini görüntülemek için [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) cmdlet 'ini ve gizli `Name` özelliğini kullanabilirsiniz.
 
 ```azurepowershell-interactive
 $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6209d899131a91754c200da831b3739833ade22c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132231"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706605"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -97,7 +97,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. `instrumentationKey`dışında tüm alanlar isteğe bağlıdır.
 
-| Ad | Varsayılan | Açıklama |
+| Adı | Varsayılan | Açıklama |
 |------|---------|-------------|
 | ınstrumentationkey | değer | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | Accoun | değer | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -114,20 +114,20 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | samplingPercentage | 100 | Gönderilecek olayların yüzdesi. Varsayılan değer 100 ' dir, yani tüm olaylar gönderilir. Büyük ölçekli uygulamalar için veri ucunu korumak isterseniz bunu ayarlayın. |
 | Oto Trackpagevisittime | yanlış | True ise, bir PageView üzerinde, önceki belgelenmiş sayfanın görünüm süresi izlenir ve telemetri olarak gönderilir ve geçerli PageView için yeni bir Zamanlayıcı başlatılır. Varsayılan değer false’tur. |
 | disableAjaxTracking | yanlış | True ise, Ajax çağrıları tekrar toplanmamıştır. Varsayılan değer false’tur. |
-| disableFetchTracking | true | True ise, Fetch istekleri tekrar toplanmaz. Varsayılan değer true 'dur |
+| disableFetchTracking | doğru | True ise, Fetch istekleri tekrar toplanmaz. Varsayılan değer true 'dur |
 | overridePageViewDuration | yanlış | True ise trackPageView 'ın varsayılan davranışı sayfa görüntüleme süresi aralığının sonuna, trackPageView çağrıldığında bir kayıt olarak değiştirilmiştir. Yanlış olursa ve trackPageView için özel süre sağlanmamışsa, sayfa görünümü performansı, gezinti zamanlaması API 'SI kullanılarak hesaplanır. Varsayılan değer false’tur. |
 | maxAjaxCallsPerView | 500 | Varsayılan 500-sayfa görünümü başına kaç Ajax çağrısının izleneceğini denetler. Sayfadaki tüm (sınırsız) AJAX çağrılarını izlemek için-1 olarak ayarlayın. |
-| disableDataLossAnalysis | true | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. |
+| disableDataLossAnalysis | doğru | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. |
 | disableCorrelationHeaders | yanlış | Yanlış ise, SDK, sunucu tarafındaki ilgili isteklerle ilişkilendirmek üzere tüm bağımlılık isteklerine iki üst bilgi (' Istek-kimlik ' ve ' Istek-bağlam ') ekler. Varsayılan değer false’tur. |
 | correlationHeaderExcludedDomains |  | Belirli etki alanları için bağıntı üstbilgilerini devre dışı bırak |
 | correlationHeaderDomains |  | Belirli etki alanları için bağıntı üstbilgilerini etkinleştir |
 | disableFlushOnBeforeUnload | yanlış | Varsayılan yanlış. True ise, onBeforeUnload olay tetikleyicileri sırasında temizleme yöntemi çağrılmayacak |
-| enableSessionStorageBuffer | true | Varsayılan değer. Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi |
+| enableSessionStorageBuffer | doğru | Varsayılan değer. Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi |
 | Idite ıeusedisabled | yanlış | Varsayılan yanlış. True ise SDK, tanımlama bilgilerinden herhangi bir veriyi depolamaz veya okummaz.|
 | Pişirme etki alanı | değer | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur. |
 | ıretrydisabled | yanlış | Varsayılan yanlış. Yanlışsa, 206 (kısmi başarı), 408 (zaman aşımı), 429 (çok fazla istek), 500 (iç sunucu hatası), 503 (hizmet kullanılamıyor) ve 0 (yalnızca algılanırsa) üzerinde yeniden deneyin |
 | ıstorageusedisabled | yanlış | True ise, SDK yerel ve oturum depolamadan hiçbir veriyi depolamaz veya okummaz. Varsayılan değer false’tur. |
-| ıconlanapidisabled | true | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
+| ıconlanapidisabled | doğru | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
 | Onunloaddisableişaret | yanlış | Varsayılan yanlış. sekme kapatıldığında SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak kalan tüm telemetrileri gönderir |
 | SDK uzantısı | değer | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). Varsayılan değer null. |
 | isBrowserLinkTrackingEnabled | yanlış | Varsayılan değer false’tur. Doğru ise, SDK tüm [tarayıcı bağlantısı](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) isteklerini izler. |
@@ -168,7 +168,7 @@ Ayrıca, portaldaki tarayıcı deneyimi aracılığıyla JavaScript SDK 'sindeki
 
 ![](./media/javascript/performance-operations.png)
 
-### <a name="dependencies"></a>Bağımlılıkları
+### <a name="dependencies"></a>Bağımlılıklar
 
 ![](./media/javascript/performance-dependencies.png)
 
@@ -251,7 +251,7 @@ Betik CDN 'den indirilirken, sayfanızın tüm izlenmesi sıraya alınır. İndi
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | !['U](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-En son ✔ | En son ✔ | 9 + ✔ | En son ✔ | En son ✔ |
+Chrome en son ✔ |  Firefox en son ✔ | IE 9 + & Edge ✔ | Opera en son ✔ | Safari en son ✔ |
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 

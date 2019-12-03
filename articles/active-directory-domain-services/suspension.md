@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693310"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704269"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki sistem durumlarını anlayın ve askıya alınmış etki alanlarını çözün
 
@@ -35,7 +35,7 @@ Azure AD DS yönetilen bir etki alanı aşağıdaki durumlardan birinde olabilir
 * [Çalıştıran](#running-state)
 * [İlgilenilmesi gerekiyor](#needs-attention-state)
 * [Alın](#suspended-state)
-* [Miyor](#deleted-state)
+* [Silindi](#deleted-state)
 
 ## <a name="running-state"></a>Çalışma durumu
 
@@ -96,7 +96,7 @@ Azure AD DS sistem durumu sayfasında, etki alanının askıya alındığını N
 *Askıya alınmış* durumda olan Azure AD DS yönetilen bir etki alanının durumunu geri yüklemek için aşağıdaki adımları izleyin:
 
 1. Azure portal **etki alanı Hizmetleri**' ni arayıp seçin.
-1. Listeden Azure AD DS yönetilen etki alanınızı ( *contoso.com*gibi) seçin ve ardından **sistem durumu**' nu seçin.
+1. Listeden Azure AD DS yönetilen etki alanınızı ( *aadds.contoso.com*gibi) seçin ve ardından **sistem durumu**' nu seçin.
 1. Askıya alma nedenine bağlı olarak, *AADDS503* veya *AADDS504*gibi bir uyarı seçin.
 1. Uyarıda belirtilen çözümleme bağlantısını seçin ve sorunu gidermek için adımları izleyin.
 

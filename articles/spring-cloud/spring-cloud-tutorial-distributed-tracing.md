@@ -1,17 +1,17 @@
 ---
-title: 'Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma | Microsoft Docs'
-description: Spring Cloud 'ın dağıtılmış Izlemesini Azure 'da nasıl kullanacağınızı öğrenin Application Insights
+title: Öğretici-Azure Spring Cloud ile dağıtılmış Izleme kullanma
+description: Bu öğreticide, Spring Cloud 'ın dağıtılmış Izlemenin Azure 'da nasıl kullanılacağı gösterilmektedir Application Insights
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607560"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708766"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma
 
@@ -25,7 +25,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 > * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin
 > * Farklı filtrelerle izleme verilerini ara
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 

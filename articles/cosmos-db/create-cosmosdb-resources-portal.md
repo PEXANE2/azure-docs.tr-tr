@@ -1,6 +1,6 @@
 ---
-title: Azure portal bir Azure Cosmos veritabanı oluşturun.
-description: Azure portal kullanarak bir Azure Cosmos veritabanı, kapsayıcı ve öğe oluşturun.
+title: Hızlı başlangıç-Azure portal Azure Cosmos veritabanı oluşturma
+description: Bu hızlı başlangıçta Azure portal kullanarak bir Azure Cosmos veritabanı, kapsayıcı ve öğeleri oluşturma gösterilmektedir.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/01/2019
-ms.openlocfilehash: b42a442564812f4386eb94b9bd7b7c9aff9e9f29
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0f7102081d5ccd29507917068893b484902a4fb3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220724"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708194"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure Cosmos hesabı, veritabanı, kapsayıcı ve öğe oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cosmosdb-resources-portal.md)
+> * [Azure portalda](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)

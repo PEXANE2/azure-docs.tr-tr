@@ -1,6 +1,6 @@
 ---
-title: Portal 'da Azure IoT Hub cihaz sağlama hizmeti için bulutu ayarlama
-description: Öğretici-IoT Hub cihaz sağlama hizmetini kullanarak [Azure Portal](https://portal.azure.com) cihaz sağlama için bulut kaynakları ayarlama
+title: Öğretici-portalda Azure IoT Hub cihaz sağlama hizmeti için bulut ayarlama
+description: Bu öğreticide, IoT Hub cihaz sağlama hizmeti kullanılarak [Azure Portal](https://portal.azure.com) cihaz sağlama için bulut kaynaklarını nasıl ayarlayabileceğinizi gösterir.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: bdfe851532383e5a051f43cc4b20772f8053dbfc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ad7ccf9dd91d635cfaab30a51e1b145a98117079
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228305"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702479"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Öğretici: IoT Hub cihaz sağlama hizmeti ile cihaz sağlama için bulut kaynaklarını yapılandırma
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Cihaz Sağlama Hizmeti örneği oluşturma ve kimlik kapsamını alma
 
@@ -52,7 +52,7 @@ Yeni bir Cihaz Sağlama Hizmeti örneği oluşturmak için şu adımları izleyi
 
    ![Portalda Cihaz Sağlama hizmeti ile ilgili temel bilgileri girin](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. **Oluştur**'a tıklayın. Birkaç dakika sonra Cihaz Sağlama Hizmeti örneği oluşturulur ve **Genel bakış** sayfası görüntülenir.
+5. **Oluştur**’a tıklayın. Birkaç dakika sonra Cihaz Sağlama Hizmeti örneği oluşturulur ve **Genel bakış** sayfası görüntülenir.
 
 6. Yeni hizmet örneğinin **Genel bakış** sayfasındaki **Kimlik kapsamı** değerini daha sonra kullanmak üzere kopyalayın. Bu değer, kayıt kimliklerini belirlemek için kullanılır ve kayıt kimliğinin benzersiz olduğuna dair bir garanti sağlar.
 

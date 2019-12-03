@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10445aba9c52c5367a8ea03729462d14e2d51085
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467167"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707190"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -220,6 +220,7 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 
 Son olarak, Azure CLı [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu veya Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet 'ini kullanarak anahtar kasanıza ad grubu izinleri verin. Örnekler için yukarıdaki [uygulama, Azure AD grubu veya Kullanıcı erişimi](#give-the-principal-access-to-your-key-vault) bölümüne bakın.
 
+Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yönetimi (ıAM) rolü olması gerekir. Aksi takdirde, oturum açamayacak ve aboneliğe erişmek için yetersiz haklarla başarısız olacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

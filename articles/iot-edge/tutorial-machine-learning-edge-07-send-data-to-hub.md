@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: ağ geçidi Azure IoT Edge & aracılığıyla veri gönderme Machine Learning'
-description: 'Öğretici: saydam bir ağ geçidi olarak yapılandırılmış bir cihaz aracılığıyla IoT Hub verileri göndermek için geliştirme makinenizi sanal bir IoT Edge cihazı olarak kullanın.'
+title: 'Öğretici: Azure IoT Edge üzerinde Machine Learning saydam ağ geçidi aracılığıyla cihaz verileri gönderme'
+description: Bu öğreticide, saydam bir ağ geçidi olarak yapılandırılmış bir cihaz aracılığıyla IoT Hub verileri göndermek için geliştirme makinenizi sanal bir IoT Edge cihazı olarak nasıl kullanabileceğiniz gösterilmektedir.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cdd1e1d83b1d184e6a904fc64e9c2395c2896d54
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665636"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706902"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 

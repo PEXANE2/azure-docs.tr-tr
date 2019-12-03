@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 8b1c3184ada743fddb78e1a3d0ce8d67f1f1a94f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693340"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704539"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Mevcut Azure AD Domain Services yönetilen etki alanları için eşleşmeyen Dizin hatalarını çözümle
 
@@ -26,7 +26,7 @@ Bu makalede hatanın neden oluştuğu ve nasıl çözümleneceği açıklanmakta
 
 ## <a name="what-causes-this-error"></a>Bu hataya neden olur?
 
-Azure AD DS yönetilen etki alanı ve sanal ağ iki farklı Azure AD kiracılarına ait olduğunda, eşleşmeyen bir dizin hatası oluşur. Örneğin, contoso Azure AD kiracısında çalışan *contoso.com* adlı bir Azure AD DS yönetilen etki alanınız olabilir. Ancak, yönetilen etki alanı için Azure sanal ağı fabrikam Azure AD kiracısının bir parçasıdır.
+Azure AD DS yönetilen etki alanı ve sanal ağ iki farklı Azure AD kiracılarına ait olduğunda, eşleşmeyen bir dizin hatası oluşur. Örneğin, contoso Azure AD kiracısında çalışan *aadds.contoso.com* adlı bir Azure AD DS yönetilen etki alanınız olabilir. Ancak, yönetilen etki alanı için Azure sanal ağı fabrikam Azure AD kiracısının bir parçasıdır.
 
 Azure, kaynaklarla erişimi sınırlandırmak için rol tabanlı erişim denetimi (RBAC) kullanır. Azure AD kiracısında Azure AD DS etkinleştirdiğinizde, kimlik bilgisi karmaları yönetilen etki alanıyla eşitlenir. Bu işlem, Azure AD dizini için bir kiracı yöneticisi olmanızı ve kimlik bilgilerine erişimin denetlenmelidir. Azure sanal ağına kaynak dağıtmak ve trafiği denetlemek için, Azure AD DS dağıttığınız sanal ağ üzerinde yönetici ayrıcalıklarına sahip olmanız gerekir.
 

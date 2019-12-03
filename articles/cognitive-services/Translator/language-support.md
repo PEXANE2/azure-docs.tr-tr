@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 06/04/2019
+ms.date: 12/02/2019
 ms.author: swmachan
-ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 62c101751e07d8ee31789191ad45fbdd33a1bc4b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286628"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707974"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Metin Çevirisi API'si için dil ve bölge desteği
 
@@ -42,20 +42,20 @@ Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri des
 
 |Dil|  Dil kodu|  V2 APı 'SI| V3 APı 'SI|
 |:-----|:-----:|:-----|:-----|
-|Afrikaner dili| `af`    |Yalnızca istatistiksel|  Nöral|
+|Afrikaner| `af`    |Yalnızca istatistiksel|  Nöral|
 |Arapça|    `ar`    |Sinir kullanılabilir|  Nöral|
 |Bangla|    `bn`    |Sinir kullanılabilir|  Nöral|
 |Boşnakça (Latin)|   `bs`    |Sinir kullanılabilir|  Nöral|
 |Bulgarca| `bg`    |Sinir kullanılabilir|  Nöral|
-|Kanton (Geleneksel)|   `yue`   |Yalnızca istatistiksel|  Ki|
+|Cantonetıcı (Geleneksel)|   `yue`   |Yalnızca istatistiksel|  Ki|
 |Katalanca|   `ca`    |Yalnızca istatistiksel|  Ki|
 |Basitleştirilmiş Çince|    `zh-Hans`   |Sinir varsayılan |Nöral|
 |Geleneksel Çince|   `zh-Hant`   |Sinir varsayılan |Nöral|
 |Hırvatça|  `hr`    |Sinir kullanılabilir|  Nöral|
 |Çekçe| `cs`    |Sinir kullanılabilir|  Nöral|
 |Danca|    `da`    |Sinir kullanılabilir   |Nöral|
-|Felemenkçe| `nl`    |Sinir kullanılabilir|  Nöral|
-|İngilizce|   `en`    |Sinir kullanılabilir|  Nöral|
+|Hollanda dili| `nl`    |Sinir kullanılabilir|  Nöral|
+|Türkçe|   `en`    |Sinir kullanılabilir|  Nöral|
 |Estonca|  `et`    |Sinir kullanılabilir|  Nöral|
 |Fiji Adaları dili|    `fj`    |Yalnızca istatistiksel|  Ki|
 |Filipin dili|  `fil`   |Yalnızca istatistiksel|  Ki|
@@ -63,10 +63,10 @@ Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri des
 |Fransızca|    `fr`    |Sinir kullanılabilir|  Nöral|
 |Almanca|    `de`    |Sinir kullanılabilir|  Nöral|
 |Yunanca| `el`    |Sinir kullanılabilir|  Nöral|
-|Haiti Kreyolu|    `ht`    |Yalnızca istatistiksel   |Ki|
+|Haian Creole|    `ht`    |Yalnızca istatistiksel   |Ki|
 |İbranice |`he`   |Sinir kullanılabilir   |Nöral|
 |Hintçe| `hi`    |Sinir varsayılan|    Nöral|
-|Hmong Daw| `mww`   |Yalnızca istatistiksel|  Ki|
+|Hmong DAW| `mww`   |Yalnızca istatistiksel|  Ki|
 |Macarca| `hu`    |Sinir kullanılabilir|  Nöral|
 |İzlanda dili| `is`    |Yalnızca sinir|   Nöral|
 |Endonezya dili|    `id`    |Yalnızca istatistiksel|  Ki|
@@ -89,37 +89,37 @@ Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri des
 |Queretaro Otomi|   `otq`   |Yalnızca istatistiksel|  Ki|
 |Rumence|  `ro`    |Sinir kullanılabilir|  Nöral|
 |Rusça|   `ru`    |Sinir kullanılabilir|  Nöral|
-|Samoaca|    `sm`    |Yalnızca istatistiksel|  Ki|
+|Samoan|    `sm`    |Yalnızca istatistiksel|  Ki|
 |Sırpça (Kiril)|    `sr-Cyrl`   |Yalnızca istatistiksel|  Ki|
 |Sırpça (Latin)|   `sr-Latn`   |Yalnızca istatistiksel   |Ki|
 |Slovakça|    `sk`    |Sinir kullanılabilir|  Nöral|
 |Slovence| `sl`    |Sinir kullanılabilir|  Nöral|
 |İspanyolca|   `es`    |Sinir kullanılabilir|  Nöral|
 |İsveççe|   `sv`    |Sinir kullanılabilir   |Nöral|
-|Tahitian|  `ty`    |Yalnızca istatistiksel|  Ki|
-|Tamil dili| `ta`    |Yalnızca istatistiksel|  Ki|
+|Tahiti dili|  `ty`    |Yalnızca istatistiksel|  Ki|
+|Tamil dili| `ta`    |Sinir kullanılabilir | Nöral|
 |Telugu dili|    `te`    |Yalnızca sinir|   Nöral|
-|Tay Dili|  `th`    |Sinir kullanılabilir|  Nöral|
-|Tonga Dili|    `to`    |Yalnızca istatistiksel|  Ki|
+|Tay dili|  `th`    |Sinir kullanılabilir|  Nöral|
+|Tonga dili|    `to`    |Yalnızca istatistiksel|  Ki|
 |Türkçe|   `tr`    |Sinir kullanılabilir   |Nöral|
 |Ukrayna dili| `uk`    |Sinir kullanılabilir|  Nöral|
 |Urduca|  `ur`    |Yalnızca istatistiksel|  Ki|
 |Vietnam dili|    `vi`    |Sinir kullanılabilir|  Nöral|
-|Gaelce| `cy`    |Sinir kullanılabilir|  Nöral|
+|Galce| `cy`    |Sinir kullanılabilir|  Nöral|
 |Yucatec Maya|  `yua`   |Yalnızca istatistiksel|  Ki|
 
 ## <a name="transliteration"></a>Alfabe çevirisi
 
 Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dilin listelenen betiklerden veya bunlardan herhangi birine dönüştürülmüş olduğunu gösterir. "-->", Dilin yalnızca bir betikten diğerine dönüştürülmüş olduğunu gösterir.
 
-| Dil    | Dil kodu | Betik | /Kimden | Betik|
+| Dil    | Dil kodu | Komut Dosyası | /Kimden | Komut Dosyası|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça `Arab` | <--> | Latin `Latn` |
 |Bangla  | `bn` | Bangla `Beng` | <--> | Latin `Latn` |
 | Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Latin `Latn` |
 | Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Geleneksel Çince `Hant`|
-| seçenekleri yerine | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Latin `Latn` |
-| seçenekleri yerine | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Basitleştirilmiş Çince `Hans` |
+| Çince (Geleneksel) | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Latin `Latn` |
+| Çince (Geleneksel) | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Basitleştirilmiş Çince `Hans` |
 | Gucerat dili | `gu`  | Gucerat dili `Gujr` | --> | Latin `Latn` |
 | İbranice | `he` | İbranice `Hebr` | <--> | Latin `Latn` |
 | Hintçe | `hi` | Devanagari `Deva` | <--> | Latin `Latn` |
@@ -133,7 +133,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Sırpça (Latin) | `sr-Latn` | Latin `Latn` | --> | Kiril `Cyrl`|
 | Tamil dili | `ta` | Tamil dili `Taml` | --> | Latin `Latn` |
 | Telugu dili | `te` | Telugu dili `Telu` | --> | Latin `Latn` |
-| Tay Dili | `th` | Tay dili `Thai` | <--> | Latin `Latn` |
+| Tay dili | `th` | Tay dili `Thai` | <--> | Latin `Latn` |
 
 ## <a name="dictionary"></a>Sözlük
 
@@ -141,7 +141,7 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 
 | Dil    | Dil kodu |
 |:----------- |:-------------:|
-| Afrikaner dili      | `af`          |
+| Afrikaner      | `af`          |
 | Arapça       | `ar`          |
 | Bangla      | `bn`          |
 | Boşnakça (Latin)      | `bs`          |
@@ -151,16 +151,16 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 | Hırvatça      | `hr`          |
 | Çekçe      | `cs`          |
 | Danca      | `da`          |
-| Felemenkçe      | `nl`          |
+| Hollanda dili      | `nl`          |
 | Estonca      | `et`          |
 | Fince      | `fi`          |
 | Fransızca      | `fr`          |
 | Almanca      | `de`          |
 | Yunanca      | `el`          |
-| Haiti Kreyolu      | `ht`          |
+| Haian Creole      | `ht`          |
 | İbranice      | `he`          |
 | Hintçe      | `hi`          |
-| Hmong Daw      | `mww`          |
+| Hmong DAW      | `mww`          |
 | Macarca      | `hu`          |
 | İzlanda dili    | `is`  |
 | Endonezya dili      | `id`          |
@@ -185,12 +185,12 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 | İspanyolca      | `es`          |
 | İsveççe      | `sv`          |
 | Tamil dili      | `ta`          |
-| Tay Dili      | `th`          |
+| Tay dili      | `th`          |
 | Türkçe      | `tr`          |
 | Ukrayna dili      | `uk`          |
 | Urduca      | `ur`          |
 | Vietnam dili      | `vi`          |
-| Gaelce      | `cy`          |
+| Galce      | `cy`          |
 
 ## <a name="detect"></a>Algılama
 
@@ -218,8 +218,8 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Hırvatça      | `hr`          |
 | Çekçe      | `cs`          |
 | Danca      | `da`          |
-| Felemenkçe      | `nl`          |
-| İngilizce    | `en`     |
+| Hollanda dili      | `nl`          |
+| Türkçe    | `en`     |
 | Estonca      | `et`          |
 | Fince      | `fi`          |
 | Fransızca      | `fr`          |
@@ -245,17 +245,17 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Portekizce      | `pt`          |
 | Rumence      | `ro`          |
 | Rusça      | `ru`          |
-|Samoaca|    `sm`    |
+|Samoan|    `sm`    |
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |
 | İspanyolca      | `es`          |
 | İsveççe      | `sv`          |
-| Tay Dili      | `th`          |
+| Tay dili      | `th`          |
 | Türkçe      | `tr`          |
 | Ukrayna dili      | `uk`          |
 | Vietnam dili      | `vi`          |
-| Gaelce | `cy` |
+| Galce | `cy` |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web sitesindeki listeye erişin
 

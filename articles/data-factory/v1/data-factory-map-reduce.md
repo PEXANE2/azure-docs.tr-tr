@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139289"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703146"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory 'den MapReduce programlarını çağırma
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -36,12 +36,12 @@ ms.locfileid: "70139289"
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory MapReduce etkinliğini kullanarak verileri dönüştürme](../transform-data-using-hadoop-map-reduce.md).
 
 
-Bir Data Factory işlem hattındaki HDInsight MapReduce [](data-factory-create-pipelines.md) etkinliği, MapReduce programlarını [kendi kendinize](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizde yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
+Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsight MapReduce etkinliği, MapReduce programlarını [kendi kendinize](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizde yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
 
 > [!NOTE] 
-> Azure Data Factory yeni kullanıyorsanız, Azure Data Factory ve Öğreticiyi bir [şekilde](data-factory-introduction.md) okuyun: Bu makaleyi okumadan önce [ilk veri işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) .  
+> Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) .  
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 Azure Data Factory 'deki bir işlem hattı bağlı işlem hizmetlerini kullanarak bağlı depolama hizmetlerindeki verileri işler. Her etkinliğin belirli bir işleme işlemi gerçekleştirdiği bir etkinlik dizisi içerir. Bu makalede, HDInsight MapReduce etkinliğinin kullanımı açıklanmaktadır.
 
 HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından Windows/Linux tabanlı HDInsight kümesinde Pig/Hive betikleri çalıştırmaya ilişkin ayrıntılar için bkz. [Pig](data-factory-pig-activity.md) and [Hive](data-factory-hive-activity.md) . 
@@ -112,7 +112,7 @@ HDInsight etkinliğinin JSON tanımında:
    HDInsight MapReduce etkinliğini bir HDInsight kümesinde herhangi bir MapReduce jar dosyası çalıştırmak için kullanabilirsiniz. Aşağıdaki örnek bir işlem hattının JSON tanımında, HDInsight etkinliği Mahout JAR dosyasını çalıştıracak şekilde yapılandırılmıştır.
 
 ## <a name="sample-on-github"></a>GitHub üzerinde örnek
-HDInsight MapReduce etkinliğinin kullanılması için bir örnek indirebilirsiniz: [GitHub 'Daki örnekleri Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+HDInsight MapReduce etkinliğinin, [GitHub 'daki Data Factory örnekleri](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample)kullanılarak kullanılması için bir örnek indirebilirsiniz.  
 
 ## <a name="running-the-word-count-program"></a>Sözcük sayısı programını çalıştırma
 Bu örnekteki işlem hattı, Azure HDInsight kümenizdeki Word Count Map/azaltma programını çalıştırır.   
@@ -187,7 +187,7 @@ Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: HDI
 | Sınıf |Sınıfın adı: **WORDCOUNT** |
 | jarFilePath |Sınıfını içeren jar dosyasının yolu. Aşağıdaki kodu kopyalayıp yapıştırırsanız, kümenin adını değiştirmeyi unutmayın. |
 | jarLinkedService |Jar dosyasını içeren Azure depolama bağlı hizmeti. Bu bağlı hizmet, HDInsight kümesiyle ilişkili depolamayı ifade eder. |
-| arguments |WORDCOUNT programı iki bağımsız değişken alır, bir giriş ve çıkış. Giriş dosyası DaVinci. txt dosyasıdır. |
+| değişkenlerinden |WORDCOUNT programı iki bağımsız değişken alır, bir giriş ve çıkış. Giriş dosyası DaVinci. txt dosyasıdır. |
 | frequency/interval |Bu özelliklerin değerleri, çıkış veri kümesiyle eşleşir. |
 | linkedServiceName |daha önce oluşturduğunuz HDInsight bağlı hizmetini ifade eder. |
 
@@ -250,5 +250,5 @@ MapReduce etkinliğini kullanarak HDInsight Spark kümenizde Spark programları 
 * [Pig etkinliği](data-factory-pig-activity.md)
 * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
 * [Spark programlarını çağırma](data-factory-spark.md)
-* [R betiklerini çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R betiklerini çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

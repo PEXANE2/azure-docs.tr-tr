@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama | Microsoft Docs
-description: Bu makalede, MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza nasıl bağlayacağınız gösterilir.
+title: Öğretici-MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama
+description: Bu öğreticide, MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza nasıl bağlayacağınız gösterilmektedir
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c5cd4ac384affaedbd813f9395f997f92eb69c4
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a9911798e42db55d5aaae90c933cfb64945b244c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708823"
 ---
 # <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Öğretici: MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama 
 
@@ -65,4 +65,3 @@ Bu öğreticide, Azure Spring Cloud uygulamanızı bir MySQL için Azure veritab
 
 > [!div class="nextstepaction"]
 > [Spring Cloud Service kayıt defteri 'ni kullanarak hizmet bulmayı ve kaydını etkinleştirme](spring-cloud-service-registration.md)
-

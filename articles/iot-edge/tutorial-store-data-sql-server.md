@@ -1,6 +1,6 @@
 ---
-title: Öğretici deposu veri SQL modülü - Azure IOT Edge ile | Microsoft Docs
-description: Bir SQL Server modülüyle IoT Edge cihazınızda yerel veri depolamayı öğrenin
+title: Öğretici-Azure IoT Edge kullanarak SQL modülüyle veri depolama
+description: Bu öğreticide, SQL Server bir modülle IoT Edge cihazınızda yerel olarak nasıl veri depolayabileceği gösterilmektedir
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,18 +9,18 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5a3133100621cee2e786c4001df02f2316b1e4ec
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dc8e3e92a9b843291643fe3a43092a6ac9b9c7cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457057"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701904"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Öğretici: SQL Server veritabanları ile uç cihazlarda veri depolama
 
 Azure IoT Edge çalıştıran bir Linux cihazında veri depolamak için SQL Server modülünü dağıtın.
 
-Uç cihazlarda veri depolamak ve sorgulamak için Azure IoT Edge ve SQL Server işlevlerini kullanın. Azure IOT Edge cihaz çevrimdışı olduğunda iletileri önbelleğe alınması ve bağlantı yeniden kurulduğunda bunları iletmek için temel depolama özellikleri vardır. Ancak sorgu verilerini yerel ortamda sorgulayabilme gibi daha gelişmiş depolama özelliklerine ihtiyaç duyabilirsiniz. IoT Edge cihazlarınız, IoT Hub bir bağlantı sürdürmenize gerek kalmadan daha karmaşık bilgi işlem gerçekleştirmek için yerel veritabanlarını kullanabilir. 
+Uç cihazlarda veri depolamak ve sorgulamak için Azure IoT Edge ve SQL Server işlevlerini kullanın. Azure IoT Edge, bir cihaz çevrimdışı olduğunda iletileri önbelleğe almak için temel depolama yeteneklerine sahiptir ve sonra bağlantı yeniden kurulduğunda onları iletir. Ancak sorgu verilerini yerel ortamda sorgulayabilme gibi daha gelişmiş depolama özelliklerine ihtiyaç duyabilirsiniz. IoT Edge cihazlarınız, IoT Hub bir bağlantı sürdürmenize gerek kalmadan daha karmaşık bilgi işlem gerçekleştirmek için yerel veritabanlarını kullanabilir. 
 
 Bu makalede bir IoT Edge cihazına SQL Server veritabanı dağıtma yönergeleri yer almaktadır. IoT Edge cihazında çalışan Azure İşlevleri, gelen verileri yapılandırıp veritabanına gönderir. Bu makaledeki adımlar MySQL veya PostgreSQL gibi kapsayıcılarda çalışan diğer veritabanlarına da uygulanabilir.
 
@@ -63,7 +63,7 @@ Aşağıdaki adımlarda, Visual Studio Code ve Azure IoT araçlarını kullanara
 
 3. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu yazıp çalıştırın. Komut paletinde çözümünüzü oluşturmak için aşağıdaki bilgileri girin: 
 
-   | Alan | Value |
+   | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
    | Çözüm adı sağlayın | Çözümünüz için **Sqlsolution**gibi açıklayıcı bir ad girin veya varsayılan değeri kabul edin. |
@@ -208,7 +208,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
 
 2. Komut paletinde yazın ve **Azure IoT Edge: Add IoT Edge Module**komutunu çalıştırın. Komut paletinde, yeni bir modül eklemek için aşağıdaki bilgileri sağlayın: 
 
-   | Alan | Value | 
+   | Alan | Değer | 
    | ----- | ----- |
    | Dağıtım şablonu dosyasını seçin | Komut paleti geçerli çözüm klasörünüzdeki Deployment. Template. json dosyasını vurgular. Bu dosyayı seçin.  |
    | Modül şablonunu seçin | **Azure Marketi 'Nden modül**seçin. |
@@ -244,7 +244,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
 
 2. VS Code gezgininde **deployment.template.json** dosyasına sağ tıklayıp **Build and Push IoT Edge solution** (IoT Edge Çözümü Oluştur ve Gönder) öğesini seçin. 
 
-Çözümünüzü derlemek için Visual Studio Code söyleirken öncelikle dağıtım şablonundaki bilgileri alır ve **config**adlı yeni klasörde bir Deployment. JSON dosyası oluşturur. Ardından, tümleşik terminalde iki komut çalıştırır: `docker build` ve `docker push`. Bu iki komut, kodunuzu derlemek, modül kapsayıcılı hale getirme ve ardından kod çözümü hazırlarken belirttiğiniz kapsayıcı kayıt defterine gönderin. 
+Çözümünüzü derlemek için Visual Studio Code söyleirken öncelikle dağıtım şablonundaki bilgileri alır ve **config**adlı yeni klasörde bir Deployment. JSON dosyası oluşturur. Ardından, tümleşik terminalde iki komut çalıştırır: `docker build` ve `docker push`. Bu iki komut kodunuzu derler, modülü kapsayıtır ve sonra kodu çözümü başlattığınızda belirttiğiniz kapsayıcı kayıt defterine gönderir. 
 
 SqlFunction modülünün kapsayıcı Kayıt defterinize başarıyla gönderildiği doğrulayabilirsiniz. Azure portal, kapsayıcı Kayıt defterinize gidin. **Depolar** ' ı seçin ve **SqlFunction**araması yapın. Diğer iki modül olan SimulatedTemperatureSensor ve SQL, Microsoft kayıt defterlerine ait depolarından zaten işaret ettiğiniz için kapsayıcı Kayıt defterinize itilmez.
 
@@ -262,7 +262,7 @@ IoT Hub üzerinden bir cihazda modül ayarlayabilirsiniz ancak IoT Hub ve cihazl
 
 Dağıtım başarılı olursa VS Code çıkışında onay iletisi yazdırılır. 
 
-Cihazınızı Azure IOT Hub cihazları bölümünde VS Code durumunu yenileyin. Yeni modüller listelenir ve kapsayıcılar yüklendiği ve başlatıldığı sürece bir sonraki birkaç dakikada çalışıyor olarak rapor alınacaktır. Tüm modüllerin cihazınızda çalışıp çalışmadığını da kontrol edebilirsiniz. IoT Edge cihazında modüllerin durumunu görmek için aşağıdaki komutu çalıştırın. 
+Cihazınızın durumunu VS Code Azure IoT Hub Devices bölümünde yenileyin. Yeni modüller listelenir ve kapsayıcılar yüklendiği ve başlatıldığı sürece bir sonraki birkaç dakikada çalışıyor olarak rapor alınacaktır. Tüm modüllerin cihazınızda çalışıp çalışmadığını da kontrol edebilirsiniz. IoT Edge cihazında modüllerin durumunu görmek için aşağıdaki komutu çalıştırın. 
 
    ```cmd/sh
    iotedge list
@@ -272,9 +272,9 @@ Cihazınızı Azure IOT Hub cihazları bölümünde VS Code durumunu yenileyin. 
 
 Dağıtım bildirimini cihazınıza uyguladığınızda üç modül çalışmaya başlar. SimulatedTemperatureSensor modülü, sanal ortam verileri oluşturur. sqlFunction modülü verileri alır ve veritabanı için biçimlendirir. Bu bölüm, sıcaklık verilerini depolamak için kullanılacak SQL veritabanını ayarlama sürecinde size yardımcı olacaktır. 
 
-IOT Edge Cihazınızda aşağıdaki komutları çalıştırın. Bu komutlar, cihazınızda çalışan **SQL** modülüne bağlanır ve kendisine gönderilen sıcaklık verilerini tutmak için bir veritabanı ve tablo oluşturur. 
+IoT Edge cihazınızda aşağıdaki komutları çalıştırın. Bu komutlar, cihazınızda çalışan **SQL** modülüne bağlanır ve kendisine gönderilen sıcaklık verilerini tutmak için bir veritabanı ve tablo oluşturur. 
 
-1. IOT Edge Cihazınızda bir komut satırı aracı veritabanınıza bağlanın. 
+1. IoT Edge cihazınızda bir komut satırı aracında veritabanınıza bağlanın. 
       ```bash
       sudo docker exec -it sql bash
       ```
@@ -312,7 +312,7 @@ SQL komut aracında biçimlendirilmiş tablo verilerinizi görüntülemek için 
    GO
    ```
 
-   ![Yerel veritabanı içeriğini görüntüleyin](./media/tutorial-store-data-sql-server/view-data.png)
+   ![Yerel veritabanının içeriğini görüntüleme](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

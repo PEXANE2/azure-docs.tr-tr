@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 84272336a9f70f663e134e16fe88c7e43bb73548
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208582"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703687"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Yönetilen bir etki alanı için DNS gereksinimlerini anlama
 > * Azure AD DS örneği oluşturma
-> * Parola karma eşitlemesini etkinleştirme
+> * Parola karması eşitlemeyi etkinleştirme
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
@@ -72,7 +72,7 @@ Azure AD DS örneği oluşturduğunuzda bir DNS adı belirlersiniz. Bu DNS adın
 >
 > Azure AD DS yönetilen etki alanınız için kök DNS adını kullanabilirsiniz, ancak ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir Web sunucusu çalıştırırsanız, ek DNS girişleri gerektiren adlandırma çakışmaları olabilir.
 >
-> Bu öğreticiler ve nasıl yapılır makalelerinde, *contoso.com* özel etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda, benzersiz bir ön ek içerebilen kendi etki alanı adınızı belirtin.
+> Bu öğreticiler ve nasıl yapılır makalelerinde, *aadds.contoso.com* özel etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda, benzersiz bir ön ek içerebilen kendi etki alanı adınızı belirtin.
 >
 > Daha fazla bilgi için bkz. [etki alanı için bir adlandırma ön eki seçme][naming-prefix].
 
@@ -89,7 +89,7 @@ Azure AD DS örneği oluşturmak için Azure portal *temel bilgiler* penceresind
 1. Yönetilen etki alanınız için bir **DNS etki alanı adı** girin, önceki noktaları dikkate alarak.
 1. Yönetilen etki alanının oluşturulması gereken Azure **konumunu** seçin. Kullanılabilirlik Alanları destekleyen bir bölge seçerseniz, Azure AD DS kaynakları daha fazla artıklık için bölgelere dağıtılır.
 
-    Kullanılabilirlik, bir Azure bölgesi içinde benzersiz fiziksel konumlara bölgeleridir. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır.
+    Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır.
 
     Azure AD DS bölgeler arasında dağıtılacak şekilde yapılandırmanız için bir şey yoktur. Azure platformu, kaynakların bölge dağılımını otomatik olarak işler. Daha fazla bilgi edinmek ve bölge kullanılabilirliğini görmek için bkz. [Azure 'da kullanılabilirlik alanları nedir?][availability-zones]
 
@@ -117,7 +117,7 @@ Sihirbazın **Özet** sayfasında, yönetilen etki alanının yapılandırma aya
     ![Dağıtımın Azure portal bildirim devam ediyor](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Bu sayfa, dizininizde yeni kaynakların oluşturulması dahil olmak üzere dağıtım işlemindeki güncelleştirmelerle yüklenir.
-1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve Azure kaynakları listesinden Azure AD DS örneğinizi seçin (örneğin, *contoso.com*). **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta*olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
+1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve Azure kaynakları listesinden Azure AD DS örneğinizi seçin (örneğin, *aadds.contoso.com*). **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta*olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
 
     ![Sağlama durumu sırasında etki alanı Hizmetleri durumu](./media/tutorial-create-instance/provisioning-in-progress.png)
 

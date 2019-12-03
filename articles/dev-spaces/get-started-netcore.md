@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 2d863fbb5cb14d3a5e61d7b493bca45f21c597db
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa7b4b4dcd1883c7619faa6fcfe014f4fc8c036f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325808"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708570"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve .NET Core
 
@@ -40,9 +40,10 @@ az login
 Şunu çalıştırarak aboneliklerinizi görüntüleyebilirsiniz: 
 
 ```cmd
-az account list
+az account list --output table
 ```
-JSON çıkışında `isDefault: true` bulunan aboneliği bulun.
+
+*IsDefault*Için *true değerine* sahip aboneliği bulun.
 Kullanmak istediğiniz abonelik bu değilse, varsayılan aboneliği değiştirebilirsiniz:
 
 ```cmd
@@ -102,11 +103,11 @@ Bu bölümde, bir ASP.NET Core Web uygulaması oluşturacak ve Kubernetes içind
 
 Azure CLI’nin `azds prep` komutu varsayılan ayarlarla Docker ve Kubernetes varlıklarını oluşturur:
 * `./Dockerfile`, uygulamanın kapsayıcı görüntüsünü açıklar, kaynak kodunun nasıl derlendiğini ve kapsayıcının içinde çalıştırıldığını belirtir.
-* [ altındaki ](https://docs.helm.sh)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+* `./charts/webfrontend` altındaki [Helm grafiği](https://docs.helm.sh), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
 
 Şimdilik bu dosyaların tüm içeriğini anlamanız gerekli değildir. Bununla birlikte, **geliştirme aşamasından üretim aşamasına kadar aynı Kubernetes ve Docker kod yapılandırmalı varlıklarının kullanılabildiğini, bu şekilde farklı ortamlarda daha tutarlı sonuçlar sağlanabildiğini** belirtmek gerekir.
  
-`./azds.yaml` komutuyla `prep` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
+`prep` komutuyla `./azds.yaml` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
 Şimdi kodumuzu çalıştıralım! Terminal penceresinde, bu komutu webfrontend **kök kod klasöründen** çalıştırın:
@@ -222,7 +223,7 @@ Kubernetes’te kodunuzun hatalarını ayıklamak için **F5**’e basın.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Sunucu tarafı kod dosyasında (örneğin `About()` kaynak dosyasındaki `Controllers/HomeController.cs` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
+Sunucu tarafı kod dosyasında (örneğin `Controllers/HomeController.cs` kaynak dosyasındaki `About()` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
 
 Kodun yerel olarak yürütülmesi durumunda olduğu gibi, çağrı yığını, yerel değişkenler, özel durum bilgileri vb. hata ayıklama bilgilerine tam erişiminiz vardır.
 
@@ -245,7 +246,7 @@ Azure Dev Spaces, her kod düzenlemesi yapıldığında yeni bir kapsayıcı gö
 
 Tarayıcıda web uygulamasını yenileyin ve Hakkında sayfasına gidin. Özel iletinizin kullanıcı arabiriminde görüntülendiğini görürsünüz.
 
-**Artık kod üzerinde hızlıca yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
+**Artık kod üzerinde hızla yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

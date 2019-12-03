@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 9fc7ccb1d619e36990fbc1b654a2b7be36a287e1
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273586"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705992"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Öğretici: IDC ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -82,18 +82,18 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`urn:idc:authentication:saml2:entity:cas:prod-2016:<ClientCode>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `urn:idc:authentication:saml2:entity:cas:prod-2016:<ClientCode>`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://cas.idc.com:443/login?client_name=<ClientName>`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://cas.idc.com:443/login?client_name=<ClientName>`
 
-    c. **Geçiş durumu** metin kutusuna bir URL yazın:`https://www.idc.com/j_spring_cas_security_check`
+    c. **Geçiş durumu** metin kutusuna bir URL yazın: `https://www.idc.com/j_spring_cas_security_check`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [IDC istemci destek ekibine](mailto:webchanneldev@idc.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için IDC Istemci destek ekibine başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -103,19 +103,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, IDC 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -123,7 +123,7 @@ Bu bölümde, IDC 'e erişim vererek Azure çoklu oturum açma özelliğini kull
 1. Uygulamalar listesinde, **IDC**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -135,7 +135,7 @@ Bu bölümde, IDC 'e erişim vererek Azure çoklu oturum açma özelliğini kull
 
 ## <a name="configure-idc-sso"></a>IDC SSO 'yu yapılandırma
 
-**IDC** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [IDC destek ekibine](mailto:webchanneldev@idc.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**IDC** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun KOPYALANMıŞ URL 'leri Azure Portal IDC destek ekibine gönderin. IDC bu ayarı, SAML SSO bağlantısı her iki tarafta da düzgün şekilde ayarlanmış şekilde yapılandırır.
 
 ### <a name="create-idc-test-user"></a>IDC test kullanıcısı oluşturma
 
@@ -143,7 +143,7 @@ Kullanıcının IDC 'de önceden oluşturulması gerekmez. Kullanıcı ilk kez �
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde IDC kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız IDC 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

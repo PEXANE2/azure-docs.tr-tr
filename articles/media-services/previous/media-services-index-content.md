@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: b72d1483201c9c25a420d3ede0558f10229cf47c
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: dea31e350ddf4b9dbebfa6a9f802edd256adf2ce
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464090"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706412"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
 
@@ -151,7 +151,7 @@ Birden fazla giriş medyası dosyası olduğunda, Dizin Oluşturucu, ' JobResult
 | --- | --- |
 | **Inputfilename. ttml**<br/>**Inputfilename. VTT** |TTML ve WebVTT biçimlerinde kapalı açıklamalı altyazı (CC) dosyaları.<br/><br/>Ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilirler.<br/><br/>Kapalı açıklamalı altyazı dosyaları, kaynak videodaki konuşmanın ne kadar tanındığını temel alarak bir dizin oluşturma işi gösteren <b>Recognizbilme</b> adlı bir etiket içerir.  Kullanılabilirlik için çıkış dosyalarını ekran için, <b>tanınan</b> bir değer kullanabilirsiniz. Düşük puan, ses kalitesi nedeniyle yetersiz dizin oluşturma sonuçları anlamına gelir. |
 | **Inputfilename. kW. xml<br/>InputFileName.info** |Anahtar sözcük ve bilgi dosyaları. <br/><br/>Anahtar sözcük dosyası, sıklık ve konum bilgileri ile konuşma içeriğinden ayıklanan anahtar sözcükleri içeren bir XML dosyasıdır. <br/><br/>Bilgi dosyası, tanınan her terim hakkında ayrıntılı bilgiler içeren bir düz metin dosyasıdır. İlk satır özeldir ve recognizme Puanını içerir. Sonraki her satır, şu verilerin sekmeyle ayrılmış bir listesidir: başlangıç zamanı, bitiş zamanı, sözcük/tümcecik, güven. Süreler saniye cinsinden verilir ve güven 0-1 ' dan bir sayı olarak verilir. <br/><br/>Örnek satır: "1,20 1,45 Word 0,67" <br/><br/>Bu dosyalar, konuşma analizlerini gerçekleştirmek için veya Bing, Google ya da Microsoft SharePoint gibi arama altyapılarına açık hale getirmek veya daha fazla ilgili reklamları sunmak için kullanılması gibi çeşitli amaçlarla kullanılabilir. |
-| **JobResult. txt** |Çıkış bildirimi, yalnızca birden çok dosya dizinlenirken bulunur ve aşağıdaki bilgileri içerir:<br/><br/><table border="1"><tr><th>Giriş</th><th>Alias</th><th>Ortam uzunluğu</th><th>Hata</th></tr><tr><td>a. mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b. mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **JobResult. txt** |Çıkış bildirimi, yalnızca birden çok dosya dizinlenirken bulunur ve aşağıdaki bilgileri içerir:<br/><br/><table border="1"><tr><th>Giriş</th><th>Diğer ad</th><th>Ortam uzunluğu</th><th>Hata</th></tr><tr><td>a. mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b. mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 Tüm giriş medyası dosyaları başarıyla dizinlenmezse, dizin oluşturma işi 4000 hata koduyla başarısız olur. Daha fazla bilgi için bkz. [hata kodları](#error_codes).
 
@@ -243,16 +243,16 @@ Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değer
 ### <a id="preset"></a>Azure Media Indexer için görev önayarı
 Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
 
-| Name | Gerektirme | Açıklama |
+| Adı | Gerektirme | Açıklama |
 | --- | --- | --- |
-| **girişinin** |false |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
-| **veriyi** |false |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **özelliklerinde** <br/><br/> Sürüm 1,2 ' ye eklenmiştir. Şu anda desteklenen tek özellik konuşma tanıma ("ASR") ' dir. |false |Konuşma tanıma özelliği aşağıdaki ayarlar anahtarlarına sahiptir:<table><tr><th><p>Anahtar</p></th>        <th><p>Açıklama</p></th><th><p>Örnek değer</p></th></tr><tr><td><p>Dil</p></td><td><p>Çoklu ortam dosyasında tanınmak için doğal dil.</p></td><td><p>İngilizce, Ispanyolca</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>istenen çıkış resim yazısı biçimlerinin noktalı virgülle ayrılmış listesi (varsa)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Değeri Yanlýþ</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Anahtar sözcüğünün XML dosyası gerekip gerekmediğini belirten bir Boole bayrağı.</p></td><td><p>Değeri Yanlýþ. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Tam açıklamalı alt yazıların zorlanıp zorlanmayacağını belirten bir Boole bayrağı (güven düzeyinden bağımsız olarak).  </p><p>Varsayılan değer false şeklindedir; bu durumda %50 ' den az güvenilirlik düzeyi olan kelimeler ve deyimler son açıklamalı alt yazı çıktılarından çıkarılır ve üç nokta ("...") ile değiştirilmiştir.  Üç nokta üst yazı kalitesi denetimi ve denetimi için faydalıdır.</p></td><td><p>Değeri Yanlýþ. </p></td></tr></table> |
+| **girişinin** |yanlış |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
+| **veriyi** |yanlış |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **özelliklerinde** <br/><br/> Sürüm 1,2 ' ye eklenmiştir. Şu anda desteklenen tek özellik konuşma tanıma ("ASR") ' dir. |yanlış |Konuşma tanıma özelliği aşağıdaki ayarlar anahtarlarına sahiptir:<table><tr><th><p>Anahtar</p></th>        <th><p>Açıklama</p></th><th><p>Örnek değer</p></th></tr><tr><td><p>Dil</p></td><td><p>Çoklu ortam dosyasında tanınmak için doğal dil.</p></td><td><p>İngilizce, Ispanyolca</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>istenen çıkış resim yazısı biçimlerinin noktalı virgülle ayrılmış listesi (varsa)</p></td><td><p>ttml; WEBVTT</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Değeri Yanlýþ</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Anahtar sözcüğünün XML dosyası gerekip gerekmediğini belirten bir Boole bayrağı.</p></td><td><p>Değeri Yanlýþ. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Tam açıklamalı alt yazıların zorlanıp zorlanmayacağını belirten bir Boole bayrağı (güven düzeyinden bağımsız olarak).  </p><p>Varsayılan değer false şeklindedir; bu durumda %50 ' den az güvenilirlik düzeyi olan kelimeler ve deyimler son açıklamalı alt yazı çıktılarından çıkarılır ve üç nokta ("...") ile değiştirilmiştir.  Üç nokta üst yazı kalitesi denetimi ve denetimi için faydalıdır.</p></td><td><p>Değeri Yanlýþ. </p></td></tr></table> |
 
 ### <a id="error_codes"></a>Hata kodları
 Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini yeniden raporlemelidir:
 
-| Kod | Name | Olası nedenler |
+| Kodlayın | Adı | Olası nedenler |
 | --- | --- | --- |
 | 2000 |Geçersiz yapılandırma |Geçersiz yapılandırma |
 | 2001 |Geçersiz giriş varlıkları |Eksik giriş varlıkları veya boş varlık. |
@@ -261,7 +261,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 | 2004 |Desteklenmeyen protokol |Medya URL 'SI protokolü desteklenmiyor. |
 | 2005 |Desteklenmeyen dosya türü |Giriş medya dosyası türü desteklenmiyor. |
 | 2006 |Çok fazla giriş dosyası |Giriş bildiriminde 10 ' dan fazla dosya vardır. |
-| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>veya<br/> Bozuk medya dosyası <br/>veya<br/> Giriş medyasında ses akışı yok. |
+| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>or<br/> Bozuk medya dosyası <br/>or<br/> Giriş medyasında ses akışı yok. |
 | 4000 |Toplu dizin oluşturma kısmen başarılı oldu |Bazı giriş medya dosyalarından dizin oluşturulamadı. Daha fazla bilgi için bkz. <a href="#output_files">çıkış dosyaları</a>. |
 | other |İç hatalar |Lütfen destek ekibine başvurun. indexer@microsoft.com |
 
@@ -271,7 +271,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

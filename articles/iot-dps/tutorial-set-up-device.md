@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure IoT Hub cihaz sağlama hizmeti için cihazı ayarlama'
-description: 'Öğretici: cihaz üretim işlemi sırasında cihaz sağlama hizmeti IoT Hub ile sağlama için cihazı ayarlama'
+title: Öğretici-Azure IoT Hub cihaz sağlama hizmeti için cihazı ayarlama
+description: Bu öğreticide cihaz üretim işlemi sırasında cihaz sağlama hizmeti aracılığıyla IoT Hub cihazı nasıl ayarlayabileceğiniz gösterilmektedir
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdda46a89fc2bcf8b16b2ce771c6540c9ceaa3e0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112763"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701974"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak sağlama için bir cihaz ayarlama
 
@@ -47,7 +47,7 @@ Cihaz Sağlama Hizmeti İstemci SDK’sı, cihaz kaydı yazılımınızı uygula
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    **yüklemesine başlamadan**önce`CMake` makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 1. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
     
@@ -116,7 +116,7 @@ SDK'yı kanıtlama için fiziksel TPM veya X.509 sertifikası kullanacak şekild
       > [!NOTE]
       > Bu adım için Git Bash komut istemini kullanıyorsanız ters eğik çizgileri eğik çizgi olarak değiştirmeniz gerekir: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   1. Visual Studio kullanarak, *adlı*cmake`azure_iot_sdks.sln` klasöründe oluşturulan çözümü açın ve "Derleme" menüsündeki "Çözümü derle" komutunu kullanarak bunu derleyin.
+   1. Visual Studio kullanarak, `azure_iot_sdks.sln` adlı *cmake* klasöründe oluşturulan çözümü açın ve "Derleme" menüsündeki "Çözümü derle" komutunu kullanarak bunu derleyin.
 
    1. Visual Studio'nın *Çözüm Gezgini* bölmesinde **Sağlama\_Araçlar** klasörüne gidin. **tpm_device_provision** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
@@ -124,7 +124,7 @@ SDK'yı kanıtlama için fiziksel TPM veya X.509 sertifikası kullanacak şekild
 
 - Sanal X.509 cihazı için:
 
-  1. Visual Studio kullanarak, *adlı*cmake`azure_iot_sdks.sln` klasöründe oluşturulan çözümü açın ve "Derleme" menüsündeki "Çözümü derle" komutunu kullanarak bunu derleyin.
+  1. Visual Studio kullanarak, `azure_iot_sdks.sln` adlı *cmake* klasöründe oluşturulan çözümü açın ve "Derleme" menüsündeki "Çözümü derle" komutunu kullanarak bunu derleyin.
 
   1. Visual Studio'nın *Çözüm Gezgini* bölmesinde **Sağlama\_Araçlar** klasörüne gidin. **dice\_device\_enrollment** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
   
@@ -154,7 +154,7 @@ Son adım, cihazı IoT Hub hizmetine kaydetmek için Cihaz Sağlama Hizmeti iste
     static const char* id_scope = "[ID Scope]";
     ```
 
-    Başvuru için, `global_prov_uri` IoT Hub istemci kaydı API’sinin, belirlenen Cihaz Sağlama Hizmeti örneğine bağlanmasına olanak sağlayan `IoTHubClient_LL_CreateFromDeviceAuth` değişkeni.
+    Başvuru için, `IoTHubClient_LL_CreateFromDeviceAuth` IoT Hub istemci kaydı API’sinin, belirlenen Cihaz Sağlama Hizmeti örneğine bağlanmasına olanak sağlayan `global_prov_uri` değişkeni.
 
 1. Aynı dosyadaki **main()** işlevinde, cihazınızın kayıt yazılımı (TPM veya X.509) tarafından kullanılmakta olan kanıtlama mekanizmasıyla eşleşen `hsm_type` değişkenine açıklama ekleyin veya bu değişkenin açıklamasını kaldırın: 
 
@@ -165,7 +165,7 @@ Son adım, cihazı IoT Hub hizmetine kaydetmek için Cihaz Sağlama Hizmeti iste
 
 1. Değişikliklerinizi kaydedin ve "Derleme" menüsünden "Çözümü derle" seçeneğini belirleyerek **prov\_dev\_client\_sample** örneğini yeniden derleyin. 
 
-1. **Sağlama\_Örnekler\_ klasörünün altında \_prov**dev**client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. Henüz örnek uygulamayı ÇALIŞTIRMAYIN.
+1. **Sağlama\_Örnekler** klasörünün altında **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. Henüz örnek uygulamayı ÇALIŞTIRMAYIN.
 
 > [!IMPORTANT]
 > Henüz cihazı çalıştırmayın/başlatmayın! Cihazı başlatmadan önce ilk olarak Cihaz Sağlama Hizmeti’ne cihazı kaydederek işlemi tamamlamanız gerekir. Aşağıda yer alan Sonraki adımlar, sonraki makale için size yol gösterecektir.
@@ -212,4 +212,3 @@ Otomatik sağlama için cihazı Azure IoT Hub Cihazı Sağlama Hizmeti’ne kayd
 
 > [!div class="nextstepaction"]
 > [IoT hub’ınıza cihazı sağlama](tutorial-provision-device-to-hub.md)
-

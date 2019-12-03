@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: ee4c41ca3179eead0e4fd470a02a5cdfa4a6d43a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546290"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705248"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Azure Active Directory Domain Services yönetilen bir etki alanını Azure portal kullanarak silme
 
@@ -35,7 +35,7 @@ Artık yönetilen bir etki alanına ihtiyacınız yoksa bir Azure Active Directo
 Azure AD DS yönetilen bir etki alanını silmek için aşağıdaki adımları izleyin:
 
 1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin.
-1. Azure AD DS yönetilen etki alanının adını (örneğin, *contoso.com*) seçin.
+1. Azure AD DS yönetilen etki alanının adını (örneğin, *aadds.contoso.com*) seçin.
 1. **Genel Bakış** sayfasında **Sil**’i seçin. Silmeyi onaylamak için, yönetilen etki alanının etki alanı adını yeniden yazın ve **Sil**' i seçin.
 
 Azure AD DS yönetilen etki alanını silmek için 15-20 dakika veya daha fazla sürebilir.

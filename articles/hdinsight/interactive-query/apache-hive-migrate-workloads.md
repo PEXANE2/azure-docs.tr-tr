@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 3d55e0e7ecbd52b6d96c657e333c5557388f2721
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406504"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706031"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -73,12 +73,12 @@ Meta veri **kopyalama** işlemi tamamlandıktan sonra, yeni meta veri deposunu H
 
 Aşağıdaki tablodaki değerleri daha fazla kullanın. `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`, **kopyalanmış** Hive meta veri deposu için boşluklarla ayırarak uygun değerlerle değiştirin. SQL Server adını belirtirken ". database.windows.net" eklemeyin.
 
-|Özellik | Value |
+|Özellik | Değer |
 |---|---|
 |Betik türü|-Özel|
-|Name|Hive yükseltmesi|
+|Adı|Hive yükseltmesi|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Düğüm türleri|Head|
+|Düğüm türleri|Baş|
 |Parametreler|SQLSERVERNAME DATABASENAME KULLANıCı ADı PAROLASı|
 
 > [!Warning]  
@@ -118,7 +118,7 @@ HDInsight 3,6 ve HDInsight 4,0 ACID tabloları ACID değişimleri 'ı farklı ş
 
 Meta veri geçişini ve düzenleme adımlarını tamamladıktan sonra, gerçek ambarı geçirebilirsiniz. Hive ambarı geçişini tamamladıktan sonra, HDInsight 4,0 ambarı aşağıdaki özelliklere sahip olur:
 
-|3.6 |4.0 |
+|3,6 |4,0 |
 |---|---|
 |Dış tablolar|Dış tablolar|
 |İşlem dışı yönetilen tablolar|Dış tablolar|
@@ -174,14 +174,14 @@ HDInsight 3,6 kümesi içinde Hive/LLAP sorgularını yürütmenin ve hata ayık
 
 HDInsight 4,0 ' de HiveCLI, Beeline ile değiştirilmiştir. HiveCLI, Hiveserver 1 için bir Thrift istemcsahiptir ve Beeline, Hiveserver 2 ' ye erişim sağlayan bir JDBC istemcidedir. Diğer bir JDBC uyumlu veritabanı uç noktasına bağlanmak için Beeline de kullanılabilir. Beline, herhangi bir yükleme gerekmeden HDInsight 4,0 ' de kullanıma sunulmuştur.
 
-HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hive görünümüdür. HDInsight 4,0, Hive görünümünü Hortonçalışmadata Analytics Studio (DAS) ile değiştirir. DAS, HDInsight kümeleriyle teslim etmez ve resmi olarak desteklenen bir paket değildir. Bununla birlikte, aşağıdaki gibi bir [betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md) KULLANıLARAK kümeye das yüklenebilir:
+HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hive görünümüdür. HDInsight 4,0, ambarı görünümüyle birlikte gelmez. Müşterilerimizin, temel bir HDInsight hizmeti olmayan Data Analytics Studio 'Yu (DAS) kullanması için bir yol sağladık. DAS, HDInsight kümeleri ile kullanıma hazır değildir ve resmi olarak desteklenen bir paket değildir. Bununla birlikte, aşağıdaki gibi bir [betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md) KULLANıLARAK kümeye das yüklenebilir:
 
-|Özellik | Value |
+|Özellik | Değer |
 |---|---|
 |Betik türü|-Özel|
-|Name|LARı|
+|Adı|LARı|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Düğüm türleri|Head|
+|Düğüm türleri|Baş|
 
 5 ila 10 dakika bekleyin, sonra şu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın: `https://CLUSTERNAME.azurehdinsight.net/das/`.
 

@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483726"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707975"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
 
@@ -45,13 +45,13 @@ Azure SQL veritabanı, SQL veritabanı sunucusunun bağlantı ilkesi ayarı içi
 
 - **Proxy:** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla, artan gecikme süresine ve azaltmak için önde gelen bir şekilde kullanılır. Bu modu kullanmak için istemciler, istemciden gelen ve giden iletişimin bağlantı noktası 1433 ' deki Azure SQL veritabanı ağ geçidi IP adreslerine izin vermek için gerekir.
 
-- **Varsayılan:** Bu, bağlantı ilkesini açıkça `Proxy` veya `Redirect`olarak değiştirmediğiniz takdirde, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. Varsayılan ilke, Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) kaynaklanan tüm istemci bağlantıları için`Redirect` ve içindeki tüm istemci bağlantıları için `Proxy`(örneğin, yerel iş istasyonunuzdan gelen bağlantılar)
+- **Varsayılan:** Bu, bağlantı ilkesini açıkça `Proxy` veya `Redirect`olarak değiştirmediğiniz takdirde, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. Varsayılan ilke, Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) kaynaklanan tüm istemci bağlantıları için`Redirect` ve dış kaynaklı tüm istemci bağlantıları için `Proxy`(örneğin, yerel iş istasyonunuzdan gelen bağlantılar).
 
  En düşük gecikme süresi ve en yüksek aktarım hızı için `Proxy` bağlantı ilkesi üzerinde `Redirect` bağlantı ilkesini kesinlikle öneririz. Ancak, yukarıda özetlenen ağ trafiğine izin vermek için ek gereksinimleri karşılamanız gerekecektir. İstemci bir Azure sanal makinedir, bunu [hizmet etiketleriyle](../virtual-network/security-overview.md#service-tags)ağ güvenlik grupları (NSG) kullanarak gerçekleştirebilirsiniz. İstemci Şirket içindeki bir iş istasyonundan bağlanıyorsa, şirket güvenlik duvarınız üzerinden ağ trafiğine izin vermek için ağ yöneticinizle birlikte çalışmanız gerekebilir.
 
 ## <a name="connectivity-from-within-azure"></a>Azure içinden bağlantı
 
-Azure içinden bağlanıyorsanız bağlantılarınız, varsayılan olarak `Redirect` bağlantı ilkesine sahiptir. `Redirect` ilkesi, TCP oturumu Azure SQL veritabanı 'na kurulduktan sonra, istemci oturumu doğru veritabanı kümesine Azure SQL veritabanı ağ geçidindeki hedef sanal IP 'ye yapılan bir değişikliğe yeniden yönlendirilir. içi. Bundan sonra, Azure SQL veritabanı ağ geçidini atlayarak sonraki tüm paketler doğrudan kümeye akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
+Azure içinden bağlanıyorsanız bağlantılarınız, varsayılan olarak `Redirect` bağlantı ilkesine sahiptir. `Redirect` ilkesi, TCP oturumu Azure SQL veritabanı 'na kurulduktan sonra, istemci oturumu daha sonra doğru veritabanı kümesine yeniden yönlendirilir ve bu, Azure SQL veritabanı ağ geçidindeki hedef sanal IP 'ye yapılan bir değişikliğe göre kümeye yönlendirilir. Bundan sonra, Azure SQL veritabanı ağ geçidini atlayarak sonraki tüm paketler doğrudan kümeye akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
 ![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
@@ -95,15 +95,15 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Hindistan Orta        | 104.211.96.159     |
 | Hindistan Güney          | 104.211.224.146    |
 | Hindistan Batı           | 104.211.160.80     |
-| Japonya Doğu           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
-| Japonya Batı           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
+| Doğu Japonya           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
+| Batı Japonya           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Kore Orta        | 52.231.32.42       |
 | Kore Güney          | 52.231.200.86      |
 | Orta Kuzey ABD     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Kuzey Avrupa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Güney Afrika Kuzey   | 102.133.152.0      |
 | Güney Afrika Batı    | 102.133.24.0       |
-| Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Güney Orta ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Güneydoğu Asya      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | BAE Orta          | 20.37.72.64        |
 | BAE Kuzey            | 65.52.248.0        |

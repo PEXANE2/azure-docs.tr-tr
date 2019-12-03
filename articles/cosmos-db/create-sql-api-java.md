@@ -1,6 +1,6 @@
 ---
-title: Bir belge veritabanı oluşturmak için Java kullanma-Azure Cosmos DB
-description: Azure Cosmos DB SQL API'sine bağlanmak ve sorgu göndermek için kullanabileceğiniz bir Java kodu örneği sunar
+title: Hızlı başlangıç-Azure Cosmos DB kullanarak bir belge veritabanı oluşturmak için Java kullanma
+description: Bu hızlı başlangıçta, SQL API 'sine bağlanmak ve sorgu Azure Cosmos DB sorgulamak için kullanabileceğiniz bir Java kod örneği sunulmaktadır
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d5a32780f8598c0843958b99f02cd18aa33bea2e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a4a8990b3da534acb39ff87c9f7665fb3b08ef06
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582838"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708176"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -29,16 +29,16 @@ ms.locfileid: "73582838"
 
 Bu hızlı başlangıçta, Azure Cosmos DB SQL API hesabınızdan bir belge veritabanı oluşturmak ve yönetmek için bir Java uygulamasının nasıl kullanılacağı gösterilmektedir. İlk olarak, Azure portal kullanarak bir Azure Cosmos DB SQL API hesabı oluşturun, SQL Java SDK 'sını kullanarak bir Java uygulaması oluşturun ve ardından Java uygulamasını kullanarak Cosmos DB hesabınıza kaynak eklersiniz. Bu hızlı başlangıçtaki yönergeler Java çalıştırabilen tüm işletim sistemlerinde izlenebilir. Bu hızlı başlangıcı tamamladıktan sonra Cosmos DB veritabanlarını oluşturma ve değiştirme hakkında bilgi sahibi olmanız, Kullanıcı arabiriminde veya program aracılığıyla kapsayıcılarınız hangisi olursa
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Buna ek olarak: 
+Ek olarak: 
 
 * [Java Development Kit (JDK) sürüm 8](https://aka.ms/azure-jdks)
     * JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
-* Bir [Maven](https://maven.apache.org/download.cgi) ikili arşivi [indirin](https://maven.apache.org/install.html) ve [yükleyin](https://maven.apache.org/)
+* Bir [Maven](https://maven.apache.org/) ikili arşivi [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html)
     * Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz.
 * [Git](https://www.git-scm.com/)
     * Ubuntu’da Git’i yüklemek için `sudo apt-get install git` komutunu çalıştırabilirsiniz.
@@ -74,7 +74,7 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir SQL API hesab�
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
 
 * `CosmosClient` başlatma. `CosmosClient`, Azure Cosmos veritabanı hizmeti için istemci tarafı mantıksal temsili sağlar. Bu istemci, istekleri hizmete göre yapılandırmak ve çalıştırmak için kullanılır.
     

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186436"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707635"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -26,19 +26,19 @@ Bu makalede, Azure SQL veritabanı yönetilen örneği ve şirket içi SQL Serve
 
 Yönetilen örnekte tanıtılan bazı PaaS sınırlamaları ve SQL Server karşılaştırıldığında bazı davranış değişiklikleri vardır. Farklar aşağıdaki kategorilere ayrılmıştır:<a name="Differences"></a>
 
-- [Kullanılabilirlik](#availability) , [her zaman açık](#always-on-availability) ve [yedeklemelerdeki](#backup)farkları içerir.
+- [Kullanılabilirlik](#availability) , [her zaman açık kullanılabilirlik grupları](#always-on-availability-groups) ve [yedeklemelerdeki](#backup)farkları içerir.
 - [Güvenlik](#security) , [Denetim](#auditing), [sertifika](#certificates), [kimlik bilgileri](#credential), [şifreleme sağlayıcıları](#cryptographic-providers), [oturum açmalar ve kullanıcılar](#logins-and-users)ve [hizmet anahtarı ile hizmet ana anahtarı](#service-key-and-service-master-key)arasındaki farkları içerir.
 - [Yapılandırma](#configuration) , [arabellek havuzu genişletme](#buffer-pool-extension), [harmanlama](#collation), [Uyumluluk düzeyleri](#compatibility-levels), [veritabanı yansıtma](#database-mirroring), [veritabanı seçenekleri](#database-options), [SQL Server Agent](#sql-server-agent)ve [tablo seçeneklerindeki](#tables)farklılıkları içerir.
-- [İşlevler](#functionalities) şunlardır [bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [clr](#clr), [DBCC](#dbcc), [Dağıtılmış işlemler](#distributed-transactions), [genişletilmiş olaylar](#extended-events), [dış kitaplıklar](#external-libraries), [FILESTREAM ve FileTable](#filestream-and-filetable), [tam metin Anlamsal arama](#full-text-semantic-search), [bağlı sunucular](#linked-servers), [PolyBase](#polybase), [çoğaltma](#replication), [geri yükleme](#restore-statement), [Hizmet Aracısı](#service-broker), [saklı yordamlar, işlevler ve Tetikleyiciler](#stored-procedures-functions-and-triggers).
+- [İşlevler](#functionalities) şunlardır [bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [clr](#clr), [DBCC](#dbcc), [Dağıtılmış işlemler](#distributed-transactions), [genişletilmiş olaylar](#extended-events), [dış kitaplıklar](#external-libraries), [FILESTREAM ve FileTable](#filestream-and-filetable), [tam metin anlam arama](#full-text-semantic-search), [bağlı sunucular](#linked-servers), [PolyBase](#polybase), [çoğaltma](#replication), [geri yükleme](#restore-statement), [Hizmet Aracısı](#service-broker), [saklı yordamlar, işlevler ve Tetikleyiciler](#stored-procedures-functions-and-triggers).
 - Sanal ağlar ve alt ağ yapılandırması gibi [ortam ayarları](#Environment) .
 
 Bu özelliklerin çoğu mimari kısıtlamalardır ve hizmet özelliklerini temsil eder.
 
 Bu sayfada Ayrıca, gelecekte çözümlenecek olan yönetilen örnekte bulunan [bilinen geçici sorunlar](#Issues) açıklanmaktadır.
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
-### <a name="always-on-availability"></a>Her zaman açık
+### <a name="always-on-availability-groups"></a>Always on kullanılabilirlik grupları
 
 [Yüksek kullanılabilirlik](sql-database-high-availability.md) yönetilen örnekte yerleşiktir ve kullanıcılar tarafından denetlenemez. Aşağıdaki deyimler desteklenmez:
 
@@ -95,7 +95,7 @@ Azure Blob depolamaya denetim için `CREATE AUDIT` sözdiziminde önemli farklı
 - `.xel` dosyalarının yerleştirildiği Azure Blob depolama kapsayıcısının URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi `TO URL` sağlanır.
 - Yönetilen bir örnek Windows dosya paylaşımlarına erişemediği için `TO FILE` sözdizimi desteklenmez.
 
-Daha fazla bilgi için bkz.: 
+Daha fazla bilgi için bkz. 
 
 - [SUNUCU DENETIMI OLUŞTUR](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [SUNUCU DENETIMINI DEĞIŞTIR](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -163,7 +163,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
     - Yönetilen örnekten bir veritabanını dışarı aktarın ve SQL Server (sürüm 2012 veya üzeri) içeri aktarın.
       - Bu yapılandırmada tüm Azure AD kullanıcıları, oturum açma bilgileri olmayan SQL veritabanı sorumluları (kullanıcılar) olarak oluşturulur. Kullanıcıların türü SQL olarak listelenir (sys. database_principals içinde SQL_USER olarak görünür). İzinleri ve rolleri SQL Server veritabanı meta verilerinde kalır ve kimliğe bürünme için kullanılabilir. Ancak, kimlik bilgilerini kullanarak SQL Server erişmek ve oturum açmak için kullanılamaz.
 
-- Yalnızca yönetilen örnek sağlama işlemi tarafından oluşturulan sunucu düzeyi asıl oturum açma, `securityadmin` veya `sysadmin`gibi sunucu rollerinin üyeleri veya sunucu düzeyinde herhangi bir oturum açma iznini DEĞIŞTIR ile diğer oturumlar Azure AD sunucusu oluşturabilir Yönetilen örnek için ana veritabanındaki sorumlular (oturumlar).
+- Yalnızca yönetilen örnek sağlama işlemi tarafından oluşturulan sunucu düzeyi asıl oturum açma, `securityadmin` veya `sysadmin`gibi sunucu rollerinin üyeleri veya sunucu düzeyinde herhangi bir oturum açma iznini DEĞIŞTIR ile diğer oturumlar, yönetilen örnek için ana veritabanında Azure AD Server sorumlularını (oturum açma) oluşturabilir.
 - Oturum açma bir SQL sorumlusu ise, yalnızca `sysadmin` rolünün parçası olan oturumlar, bir Azure AD hesabı için oturum açma bilgileri oluşturmak üzere Oluştur komutunu kullanabilir.
 - Azure AD oturum açma, Azure SQL veritabanı yönetilen örneği için kullanılan aynı dizin içinde bir Azure AD 'nin üyesi olmalıdır.
 - Azure AD Server sorumluları (oturum açmalar), SQL Server Management Studio 18,0 Preview 5 ' te başlayan Nesne Gezgini görünür.
@@ -191,7 +191,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - [Arabellek havuzu uzantısı](/sql/database-engine/configure-windows/buffer-pool-extension) desteklenmiyor.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` desteklenmez. Bkz. [Alter Server CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Harmanlama
+### <a name="collation"></a>Mediğinden
 
 Varsayılan örnek harmanlama `SQL_Latin1_General_CP1_CI_AS` ve oluşturma parametresi olarak belirtilebilir. Bkz. [harmanlamalar](/sql/t-sql/statements/collations).
 
@@ -276,7 +276,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 
 - SQL Server Agent etkinleştirme ve devre dışı bırakma Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
 - SQL Server Agent ayarları salt okunurdur. `sp_set_agent_properties` yordamı yönetilen örnekte desteklenmez. 
-- İşler
+- İş
   - T-SQL iş adımları desteklenir.
   - Aşağıdaki çoğaltma işleri desteklenir:
     - İşlem-günlük okuyucu
@@ -299,7 +299,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 
 Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 
-- Proxy'ler
+- Kullanıldığı
 - Boştaki bir CPU 'da iş planlama
 - Aracıyı etkinleştirme veya devre dışı bırakma
 - Uyarılar
@@ -389,7 +389,7 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
 - Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. Dosya içeri aktarma için alternatif olarak `BULK INSERT` veya `OPENROWSET` kullanarak Azure Blob depolamadan yerel CSV içeri aktarmayı kullanmayı deneyin.
 
-İşlemler
+Operations
 
 - Çapraz örnek yazma işlemleri desteklenmez.
 - `sp_dropserver`, bağlantılı bir sunucuyu bırakma için desteklenir. Bkz. [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
@@ -519,17 +519,17 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ## <a name="Environment"></a>Ortam kısıtlamaları
 
-### <a name="subnet"></a>Subnet
+### <a name="subnet"></a>Alt ağ
 -  Yönetilen örneğinizi dağıttığınız alt ağa başka herhangi bir kaynak (örneğin, sanal makineler) yerleştirebilirsiniz. Bu kaynakları farklı bir alt ağ kullanarak dağıtın.
 - Alt ağda yeterli sayıda kullanılabilir [IP adresi](sql-database-managed-instance-connectivity-architecture.md#network-requirements)olmalıdır. En az 16, ancak öneri alt ağda en az 32 IP adresine sahip olur.
 - [Hizmet uç noktaları, yönetilen örneğin alt ağıyla ilişkilendirilemez](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Sanal ağı oluştururken hizmet uç noktaları seçeneğinin devre dışı olduğundan emin olun.
 - Bir bölgede dağıtabileceğiniz sanal çekirdek sayısı ve örnek türleri bazı [kısıtlamalar ve sınırlara](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)sahiptir.
 - [Alt ağda uygulanması gereken bazı güvenlik kuralları](sql-database-managed-instance-connectivity-architecture.md#network-requirements)vardır.
 
-### <a name="vnet"></a>VNET
+### <a name="vnet"></a>ADLı
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
-- App Service ortamları, Logic Apps ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları küresel olarak bağlandığında farklı bölgelerdeki yönetilen örneklere erişemez [ eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
+- App Service ortamları, mantıksal uygulamalar ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki yönetilen örneklere erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
 ### <a name="tempdb"></a>'Nın
 
@@ -569,7 +569,7 @@ Devam eden `RESTORE` ekstresi, veri geçiş hizmeti geçiş işlemi ve yerleşik
 
 **Tarih:** Eyl 2019
 
-Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) özelliği, yük devretmeden sonra bazı Kullanıcı iş yükünü yanlış sınıflandırabilir veya hizmet katmanının Kullanıcı tarafından başlatılan değişikliğini (örneğin, en fazla sanal çekirdek veya en büyük örnek değişikliği) depolama boyutu).
+Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) özellik, yük devretme veya Kullanıcı tarafından başlatılan hizmet katmanı değişikliği sonrasında bazı Kullanıcı iş yükünü yanlış sınıflandırabilir (örneğin, en büyük Vcore veya en büyük örnek depolama boyutu değişikliği).
 
 **Geçici çözüm**: [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)KULLANıYORSANıZ, örnek başladığında SQL aracısını yürüten SQL Aracısı işinin bir parçası olarak veya `ALTER RESOURCE GOVERNOR RECONFIGURE` çalıştırın.
 

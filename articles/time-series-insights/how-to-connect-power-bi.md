@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114740"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705968"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI Time Series Insights verileri görselleştirme
 
@@ -32,7 +32,10 @@ Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/fre
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Power BI Desktop](https://powerbi.microsoft.com/downloads/) en son sürümünü indirin ve yükleyin
-* [Azure TIME SERIES INSIGHTS GA örneği](time-series-insights-get-started.md) veya [Azure Time Series Insights önizleme örneği](time-series-insights-update-how-to-manage.md) oluşturun
+* [Azure Time Series Insights Preview örneği](time-series-insights-update-how-to-manage.md) oluşturun veya oluşturun
+
+> [!IMPORTANT]
+> Power BI Bağlayıcısı, **Isınma mağazalarında**yapılandırılmış olan *kullandıkça öde* ortamlarında Time Series Insights önizleme sürümünde desteklenmektedir.
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Time Series Insights verileri Power BI 'ye bağlama
 
@@ -45,7 +48,7 @@ Time Series Insights ortamınızı Power BI bağlamak için şu adımları izley
 
 ### <a name="export-data-into-power-bi-desktop"></a>Power BI Desktop 'a veri aktarma
 
-Başlamak için:
+Kullanmaya başlamak için:
 
 1. Time Series Insights önizleme Gezginini açın ve verilerinizi seçin.
 1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' a tıklayın. 
@@ -65,12 +68,12 @@ Başlamak için:
 
        [![Bağlan](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Time Series Insights örneğinizi ısınma deposu için yapılandırmadıysanız, bir uyarı alırsınız.
+   1. Time Series Insights örneğinizi **Isınma deposu**için yapılandırmadıysanız, bir uyarı alırsınız.
 
        [![Bağlan](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Var olan örneğinizi Azure portal yarı bir depolama için yapılandırabilirsiniz.
+       > Var olan örneğinizi Azure portal **yarı bir depolama** için yapılandırabilirsiniz.
 
 1. **Sorguyu panoya kopyala**' yı seçin.
 1. Şimdi Power BI Desktop başlatın.

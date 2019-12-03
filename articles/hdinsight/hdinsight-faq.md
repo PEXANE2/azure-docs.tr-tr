@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052505"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706254"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: sık sorulan sorular
 
@@ -90,7 +90,7 @@ Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek i
 
 Ancak, Microsoft Desteği ekipler yalnızca aşağıdaki durumlar için destek sunabilir:
 
-- Betiği yüklerken oluşan sorunlar veya hatalar. Özel betiklerin yürütülmesi sırasında oluşan hatalar bir destek bileti kapsamı dışındadır.
+- Betiği yüklerken oluşan sorunlar veya hatalar. Özel betiklerin yürütülmesi sırasında oluşan tüm hatalar destek biletinin kapsamı dışındadır.
 
 - Küme oluşturma işleminin parçası olan ek uygulamalar. 
 
@@ -180,6 +180,11 @@ Evet, bir HDInsight kümesiyle aynı alt ağ içinde ek bir sanal makine dağıt
 - Kenar düğümleri: [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md)bölümünde açıklandığı gibi, kümeye başka bir kenar düğümü ekleyebilirsiniz.
 
 - Tek başına düğümler: tek başına bir sanal makineyi aynı alt ağa ekleyebilir ve bu sanal makineden kümeye, Özel uç noktası `https://<CLUSTERNAME>-int.azurehdinsight.net`kullanarak erişebilirsiniz. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Verileri bir kenar düğümünün yerel diskine depolamam gerekir mi?
+
+Hayır, verileri yerel bir diskte depolamak iyi bir fikir değildir. Düğüm başarısız olursa, yerel olarak depolanan tüm veriler kaybedilir. Verileri Azure Data Lake Storage 2. veya Azure Blob depolamada depolamanızı veya verileri depolamak için bir Azure dosya paylaşımının bağlanmasını öneririz.
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Var olan bir HDInsight kümesini başka bir sanal ağa ekleyebilir miyim?
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 90d728ceee0b9a4ed5e5e33805de9358aca6530c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a24ff1d5f94a50dc30819e6ab86318592da72e45
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996321"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705204"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server için Kullanıcı profili eşitlemesini desteklemek üzere Azure Active Directory Domain Services yapılandırma
 
@@ -45,7 +45,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 Azure AD DS yönetilen bir etki alanında, *Kullanıcılar* kuruluş BIRIMININ (OU) bir parçası olarak **AAD DC hizmet hesapları** adlı bir güvenlik grubu bulunur. Bu güvenlik grubunun üyelerine aşağıdaki ayrıcalıklar atanır:
 
 - Kök do 'da **Dizin değişikliklerini çoğaltma** ayrıcalığı.
-- *Yapılandırma* adlandırma bağlamında (`cn=configuration` kapsayıcı) **Dizin değişikliklerini çoğaltma** ayrıcalığı.
+- *Yapılandırma* adlandırma bağlamında (`cn=configuration` kapsayıcısı) **Dizin değişikliklerini çoğaltma** ayrıcalığı.
 
 **AAD DC hizmet hesapları** güvenlik grubu, yerleşik grup **öncesi Windows 2000 ile uyumlu erişim**'in de bir üyesidir.
 
@@ -62,7 +62,7 @@ Azure AD DS Yönetim sanal makinenizde aşağıdaki adımları izleyin:
 
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. Grup üyeliğini yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Mevcut OU 'ların ve kaynakların bir listesi gösterilir.
+1. Sol bölmede, *aadds.contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Mevcut OU 'ların ve kaynakların bir listesi gösterilir.
 1. **Kullanıcılar** OU 'sunu seçin, ardından *AAD DC hizmet hesapları* güvenlik grubunu seçin.
 1. **Üyeler**' i ve ardından **Ekle...** öğesini seçin.
 1. SharePoint hizmet hesabının adını girip **Tamam**' ı seçin. Aşağıdaki örnekte, SharePoint hizmet hesabının adı *SPAdmin*şeklindedir:

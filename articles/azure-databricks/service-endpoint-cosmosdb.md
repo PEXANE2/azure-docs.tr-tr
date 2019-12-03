@@ -1,134 +1,134 @@
 ---
-title: Bir Cosmos DB uç noktası ile Azure Databricks uygulayın
-description: Bu öğreticide, Azure Databricks, Cosmos DB için etkin bir hizmet uç noktası ile bir sanal ağda uygulamak açıklar.
+title: Öğretici-Azure Databricks bir Cosmos DB uç noktası ile uygulama
+description: Bu öğreticide, Cosmos DB için etkin bir hizmet uç noktası ile sanal bir ağda Azure Databricks nasıl uygulanacağı açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: d1268ea2cfc22e6350edb32230588a497be8bc79
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054611"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706157"
 ---
-# <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Öğretici: Bir Cosmos DB uç noktası ile Azure Databricks uygulayın
+# <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Öğretici: Cosmos DB uç noktası ile Azure Databricks uygulama
 
-Bu öğreticide, Cosmos DB için eklenen Databricks ortamı bir hizmet uç noktası ile etkinleştirilmiş bir sanal ağa ekleme açıklanmaktadır.
+Bu öğreticide, Cosmos DB için etkinleştirilmiş bir hizmet uç noktası ile VNet 'e eklenmiş Databricks ortamının nasıl uygulanacağı açıklanmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Sanal ağ içinde bir Azure Databricks çalışma alanı oluşturma
-> * Bir Cosmos DB hizmet uç noktası oluşturma
-> * Bir Cosmos DB hesabı oluşturmayı ve verileri içeri aktarın
+> * Sanal ağda Azure Databricks çalışma alanı oluşturma
+> * Cosmos DB hizmeti uç noktası oluşturma
+> * Cosmos DB hesabı oluşturma ve verileri içeri aktarma
 > * Azure Databricks kümesi oluşturma
-> * Bir Azure Databricks not defterinden Cosmos DB'yi sorgulama
+> * Azure Databricks bir not defterinden sorgu Cosmos DB
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakileri yapın:
 
-* Oluşturma bir [Azure Databricks çalışma alanı bir sanal ağdaki](quickstart-create-databricks-workspace-vnet-injection.md).
+* [Bir sanal ağda Azure Databricks çalışma alanı](quickstart-create-databricks-workspace-vnet-injection.md)oluşturun.
 
-* İndirme [Spark Bağlayıcısı](https://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.4/azure-cosmosdb-spark_2.4.0_2.11-1.3.4-uber.jar).
+* [Spark bağlayıcısını](https://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.4/azure-cosmosdb-spark_2.4.0_2.11-1.3.4-uber.jar)indirin.
 
-* Örnek verileri indirme [ortam bilgilerini NOAA Ulusal merkezine](https://www.ncdc.noaa.gov/stormevents/). Durum veya alanı seçip **arama**. Sonraki sayfada seçme ve varsayılan değerleri kabul **arama**. Ardından **CSV indirme** sonuçları indirmek için sayfanın sol tarafındaki.
+* [Çevresel bilgiler Için NOAA National Centers](https://www.ncdc.noaa.gov/stormevents/)örnek verileri indirin. Bir durum veya alan seçin ve **Ara**' yı seçin. Sonraki sayfada, Varsayılanları kabul edin ve **Ara**' yı seçin. Ardından, sonuçları indirmek için sayfanın sol tarafındaki **CSV indir** ' i seçin.
 
-* İndirme [önceden derlenmiş bir ikilidir](https://aka.ms/csdmtool) Azure Cosmos DB veri geçiş aracı.
+* Azure Cosmos DB Data Migration aracının [önceden derlenmiş ikilisini](https://aka.ms/csdmtool) indirin.
 
-## <a name="create-a-cosmos-db-service-endpoint"></a>Bir Cosmos DB hizmet uç noktası oluşturma
+## <a name="create-a-cosmos-db-service-endpoint"></a>Cosmos DB hizmeti uç noktası oluşturma
 
-1. Bir sanal ağ için bir Azure Databricks çalışma alanı dağıttıktan sonra sanal ağa gidin [Azure portalında](https://portal.azure.com). Databricks dağıtım oluşturulan genel ve özel alt ağları dikkat edin.
+1. Bir sanal ağa Azure Databricks çalışma alanı dağıttıktan sonra, [Azure Portal](https://portal.azure.com)sanal ağa gidin. Databricks dağıtımı aracılığıyla oluşturulmuş ortak ve özel alt ağlara dikkat edin.
 
    ![Sanal ağ alt ağları](./media/service-endpoint-cosmosdb/virtual-network-subnets.png)
 
-2. Seçin *Genel alt* ve Cosmos DB hizmet uç noktası oluşturun. Ardından **Kaydet**.
+2. *Ortak alt ağı* seçin ve bir Cosmos DB hizmeti uç noktası oluşturun. Sonra **kaydedin**.
    
-   ![Bir Cosmos DB hizmet uç noktası ekleme](./media/service-endpoint-cosmosdb/add-cosmosdb-service-endpoint.png)
+   ![Cosmos DB hizmeti uç noktası ekleme](./media/service-endpoint-cosmosdb/add-cosmosdb-service-endpoint.png)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB hesabı oluşturma
 
-1. Azure portalı açın. Ekranın sol üst tarafında seçin **kaynak Oluştur > veritabanları > Azure Cosmos DB**.
+1. Azure portalı açın. Ekranın sol üst tarafında **Azure Cosmos DB > veritabanları > oluştur**' u seçin.
 
-2. Doldurun **örnek ayrıntıları** üzerinde **Temelleri** aşağıdaki ayarlar ile sekmesindeki:
+2. **Temel bilgiler** sekmesinde aşağıdaki ayarlarla **örnek ayrıntılarını** doldurun:
 
    |Ayar|Değer|
    |-------|-----|
    |Abonelik|*aboneliğiniz*|
    |Kaynak Grubu|*Kaynak grubunuz*|
-   |Hesap Adı|DB-vnet-hizmet uç noktası|
-   |API|Çekirdek (SQL)|
-   |Location|Batı ABD|
-   |Coğrafi Yedeklilik|Devre Dışı Bırak|
-   |Çok bölgeli yazma|Etkinleştirme|
+   |Hesap Adı|DB-VNET-hizmet uç noktası|
+   |eklentisi|Çekirdek (SQL)|
+   |Konum|Batı ABD|
+   |Coğrafi yedeklilik|Devre dışı bırakma|
+   |Çok bölgeli yazma Işlemleri|Etkinleştirme|
 
-   ![Bir Cosmos DB hizmet uç noktası ekleme](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
+   ![Cosmos DB hizmeti uç noktası ekleme](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
-3. Seçin **ağ** sekme ve sanal ağ yapılandırın. 
+3. **Ağ** sekmesini seçin ve Sanal ağınızı yapılandırın. 
 
-   a. Bir önkoşul olarak oluşturduğunuz sanal ağı seçin ve ardından *Genel alt*. Dikkat *özel alt* Not *'Microsoft AzureCosmosDB' uç noktası eksik '* . Cosmos DB hizmet uç noktası üzerinde etkinleştirilebilmesi olmasıdır *Genel alt*.
+   a. Bir önkoşul olarak oluşturduğunuz sanal ağı seçin ve ardından *genel alt ağ*' ı seçin. *Özel-alt ağın* *' Microsoft Azuversmosdb ' uç noktası eksik '* notuna sahip olduğuna dikkat edin. Bunun nedeni, *genel alt ağda*yalnızca Cosmos DB hizmet uç noktasını etkinleştirmiş olmanız.
 
-   b. Olduğundan emin olun **Azure portalından erişim izni** etkin. Bu ayar, Azure portalından Cosmos DB hesabınıza erişmenize olanak sağlar. Bu seçenek ayarlanırsa **Reddet**, hesabınıza erişmeye çalışırken hataları alırsınız. 
+   b. **Azure Portal etkin erişime Izin verin** . Bu ayar, Azure portal Cosmos DB hesabınıza erişmenizi sağlar. Bu seçenek **Reddet**olarak ayarlandıysa, hesabınıza erişmeye çalışırken hatalarla karşılaşırsınız. 
 
    > [!NOTE]
-   > Bu öğretici için gerekli değildir, ancak ayrıca etkinleştirebilirsiniz *IP'mi erişime izin* yerel makinenizden Cosmos DB hesabınızın erişim olanağı istiyorsanız. Örneğin, hesabınıza Cosmos DB SDK'sını kullanarak bağlanıyorsanız, bu ayarın etkinleştirilmesi gerekir. Etkinleştirilirse, "Erişim reddedildi" hata alırsınız.
+   > Bu öğretici için gerekli değildir, ancak Cosmos DB hesabınıza yerel makinenizden erişme olanağına sahip olmak istiyorsanız *IP 'den erişime Izin ver* ' i de etkinleştirebilirsiniz. Örneğin, Cosmos DB SDK kullanarak hesabınıza bağlanıyorsanız, bu ayarı etkinleştirmeniz gerekir. Devre dışıysa, "erişim engellendi" hataları alırsınız.
 
    ![Cosmos DB hesabı ağ ayarları](./media/service-endpoint-cosmosdb/create-cosmosdb-account-network.png)
 
-4. Seçin **gözden geçir + Oluştur**, ardından **Oluştur** sanal ağ içindeki Cosmos DB hesabınızı oluşturmak için.
+4. Bir sanal ağ içinde Cosmos DB hesabınızı oluşturmak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin.
 
-5. Cosmos DB hesabınız oluşturulduktan sonra gidin **anahtarları** altında **ayarları**. Birincil bağlantı dizesini kopyalayın ve daha sonra kullanmak için bir metin düzenleyicisinde kaydedin.
+5. Cosmos DB Hesabınız oluşturulduktan sonra **Ayarlar**' ın altındaki **anahtarlar** ' a gidin. Birincil bağlantı dizesini kopyalayın ve daha sonra kullanmak üzere bir metin düzenleyicisinde kaydedin.
 
-    ![Cosmos DB hesabı anahtarları sayfası](./media/service-endpoint-cosmosdb/cosmos-keys.png)
+    ![Cosmos DB hesap anahtarları sayfası](./media/service-endpoint-cosmosdb/cosmos-keys.png)
 
-6. Seçin **Veri Gezgini** ve **yeni koleksiyon** yeni veritabanını ve koleksiyonu Cosmos DB hesabınıza eklemek için.
+6. Cosmos DB hesabınıza yeni bir veritabanı ve koleksiyon eklemek için **Veri Gezgini** ve **Yeni koleksiyon** ' ı seçin.
 
-    ![Cosmos DB yeni koleksiyon](./media/service-endpoint-cosmosdb/new-collection.png)
+    ![Yeni koleksiyon Cosmos DB](./media/service-endpoint-cosmosdb/new-collection.png)
 
-## <a name="upload-data-to-cosmos-db"></a>Cosmos DB'ye veri yükleme
+## <a name="upload-data-to-cosmos-db"></a>Cosmos DB verileri karşıya yükleme
 
-1. Grafik arabirim sürümünü açın [Cosmos DB için veri geçiş aracı](https://aka.ms/csdmtool), **Dtui.exe**.
+1. Cosmos DB, **dtuı. exe** [için veri taşıma aracının](https://aka.ms/csdmtool)grafik arabirim sürümünü açın.
 
-    ![Cosmos DB veri geçiş aracı](./media/service-endpoint-cosmosdb/cosmos-data-migration-tool.png)
+    ![Cosmos DB Veri Geçişi Aracı](./media/service-endpoint-cosmosdb/cosmos-data-migration-tool.png)
 
-2. Üzerinde **kaynak bilgileri** sekmesinde **CSV dosyaları** içinde **içe** açılır. Ardından **Add Files** ve storm verileri CSV indirdiğiniz önkoşul olarak ekleyin.
+2. **Kaynak bilgileri** sekmesinde, açılan **listeden Içeri aktarma** bölümünde **CSV dosyaları** ' nı seçin. Ardından, **Dosya Ekle** ' yi seçin ve bir önkoşul olarak indirmiş olduğunuz FıRTıNASı verisi CSV 'yi ekleyin.
 
     ![Cosmos DB veri geçiş aracı kaynak bilgileri](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
 
-3. Üzerinde **hedef bilgileri** sekmesinde, bağlantı dizenizi girin. Bağlantı dizesi biçimi `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. Önceki bölümde kaydettiğiniz birincil bağlantı dizesi AccountEndpoint ve AccountKey dahil edilmiştir. Append `Database=<your database name>` bağlantı dizesini ve select sonuna **doğrulama**. Ardından koleksiyon adını ve bölüm anahtarını ekleyin.
+3. **Hedef bilgileri** sekmesinde, Bağlantı dizenizi girin. Bağlantı dizesi biçimi `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. AccountEndpoint ve AccountKey, önceki bölümde kaydettiğiniz birincil bağlantı dizesine dahildir. Bağlantı dizesinin sonuna `Database=<your database name>` ekleyin ve **Doğrula**' yı seçin. Ardından, koleksiyon adını ve bölüm anahtarını ekleyin.
 
     ![Cosmos DB veri geçiş aracı hedef bilgileri](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
 
-4. Seçin **sonraki** Özet sayfasına ulaşana kadar. Ardından, **alma**.
+4. Özet sayfasına ulaşana kadar **İleri ' yi** seçin. Ardından **Içeri aktar**' ı seçin.
 
-## <a name="create-a-cluster-and-add-library"></a>Küme oluşturma ve kitaplık Ekle
+## <a name="create-a-cluster-and-add-library"></a>Küme oluşturma ve kitaplık ekleme
 
-1. Azure Databricks hizmetinize gidin [Azure portalında](https://portal.azure.com) seçip **çalışma alanını Başlat**.
+1. [Azure portal](https://portal.azure.com) Azure Databricks hizmetinize gidin ve **çalışma alanını Başlat**' ı seçin.
 
-   ![Databricks çalışma alanını başlatma](./media/service-endpoint-cosmosdb/launch-workspace.png)
+   ![Databricks çalışma alanını Başlat](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
-2. Yeni bir küme oluşturun. Bir küme adı seçin ve geri kalan varsayılan ayarları kabul edin.
+2. Yeni bir küme oluşturun. Bir küme adı seçin ve kalan varsayılan ayarları kabul edin.
 
    ![Yeni küme ayarları](./media/service-endpoint-cosmosdb/create-cluster.png)
 
-3. Kümeniz oluşturulduktan sonra küme sayfasına gidin ve seçin **kitaplıkları** sekmesi. Seçin **yükleme yeni** ve kitaplığını yüklemek için Spark Bağlayıcısı jar dosyasını karşıya yükleyin.
+3. Kümeniz oluşturulduktan sonra, küme sayfasına gidin ve **Kitaplıklar** sekmesini seçin. kitaplığı yüklemek Için **Yeni Yükle ' yi** seçin ve Spark Bağlayıcısı jar dosyasını karşıya yükleyin.
 
-    ![Spark Bağlayıcısı Kitaplığı yükleyin](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
+    ![Spark bağlayıcı kitaplığı 'nı yükler](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
 
-    Kitaplık üzerinde yüklendiğini doğrulayabilirsiniz **kitaplıkları** sekmesi.
+    Kitaplığın **Kitaplıklar** sekmesinde yüklü olduğunu doğrulayabilirsiniz.
 
-    ![Databricks kümesini kitaplıkları sekmesi](./media/service-endpoint-cosmosdb/installed-library.png)
+    ![Databricks küme kitaplıkları sekmesi](./media/service-endpoint-cosmosdb/installed-library.png)
 
-## <a name="query-cosmos-db-from-a-databricks-notebook"></a>Bir Databricks not defterinden Cosmos DB'yi sorgulama
+## <a name="query-cosmos-db-from-a-databricks-notebook"></a>Databricks Not defterinden sorgu Cosmos DB
 
-1. Azure Databricks çalışma alanınıza gidin ve yeni bir python not defteri oluşturun.
+1. Azure Databricks çalışma alanınıza gidin ve yeni bir Python Not defteri oluşturun.
 
-    ![Yeni bir Databricks not defteri oluşturma](./media/service-endpoint-cosmosdb/new-python-notebook.png)
+    ![Yeni Databricks Not Defteri Oluştur](./media/service-endpoint-cosmosdb/new-python-notebook.png)
 
-2. Aşağıdaki python Cosmos DB bağlantı yapılandırmasını ayarlamak üzere kod çalıştırın. Değişiklik **uç nokta**, **Masterkey**, **veritabanı**, ve **koleksiyon** uygun şekilde.
+2. Cosmos DB bağlantı yapılandırmasını ayarlamak için aşağıdaki python kodunu çalıştırın. **Endpoint**, **MasterKey**, **Database**ve **Collection** 'ı uygun şekilde değiştirin.
 
     ```python
     connectionConfig = {
@@ -143,33 +143,33 @@ Başlamadan önce aşağıdakileri yapın:
     }
     ```
 
-3. Verileri yüklemek ve geçici bir görünüm oluşturmak için aşağıdaki python kodu kullanın.
+3. Verileri yüklemek ve geçici bir görünüm oluşturmak için aşağıdaki python kodunu kullanın.
 
     ```python
     users = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**connectionConfig).load()
     users.createOrReplaceTempView("storm")
     ```
 
-4. Veri döndüren bir SQL deyimi yürütmek için aşağıdaki Sihirli komutu kullanın.
+4. Veri döndüren bir SQL ifadesini yürütmek için aşağıdaki Magic komutunu kullanın.
 
     ```python
     %sql
     select * from storm
     ```
 
-    Bir hizmet uç noktası etkin Cosmos DB kaynak VNet eklenen Databricks çalışma alanınız başarıyla bağlandınız. Okunacak Cosmos DB'ye bağlanma hakkında daha fazla bilgi bkz [Apache Spark için Azure Cosmos DB Bağlayıcısı](https://github.com/Azure/azure-cosmosdb-spark).
+    VNet 'e eklenmiş Databricks çalışma alanınızı bir hizmet uç noktası etkinleştirilmiş Cosmos DB kaynağına başarıyla bağladınız. Cosmos DB bağlanma hakkında daha fazla bilgi edinmek için [Apache Spark için Azure Cosmos DB Bağlayıcısı](https://github.com/Azure/azure-cosmosdb-spark)' na bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu, Azure Databricks çalışma ve tüm ilgili kaynakları silin. İşin silinmesi, gereksiz faturalandırma önler. Azure Databricks çalışma gelecekte kullanmayı planlıyorsanız, kümeyi durdurun ve daha sonra yeniden başlatın. Size bu Azure Databricks çalışma alanını kullanmaya devam etmeyecekseniz, aşağıdaki adımları kullanarak bu öğreticide oluşturulan tüm kaynakları silin:
+Artık gerekli değilse, kaynak grubunu, Azure Databricks çalışma alanını ve tüm ilgili kaynakları silin. İşin silinmesi gereksiz faturalandırmayı önler. Azure Databricks çalışma alanını gelecekte kullanmayı planlıyorsanız kümeyi durdurup daha sonra yeniden başlatabilirsiniz. Bu Azure Databricks çalışma alanını kullanmaya devam edemeyecekecekseniz, aşağıdaki adımları kullanarak bu öğreticide oluşturduğunuz tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden **kaynak grupları** ve ardından oluşturduğunuz kaynak grubunun adına tıklayın.
+1. Azure portal sol taraftaki menüden **kaynak grupları** ' na ve ardından oluşturduğunuz kaynak grubunun adına tıklayın.
 
-2. Kaynak grubu sayfanızda seçin **Sil**, adını, metin kutusuna silinecek ve ardından kaynak **Sil** yeniden.
+2. Kaynak grubu sayfanızda **Sil**' i seçin, metin kutusuna silinecek kaynağın adını yazın ve ardından yeniden **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure Databricks çalışma alanı dağıtılan bir sanal ağa ve Cosmos DB Spark Bağlayıcısı Databricks'ten Cosmos DB veri sorgu için kullanılan. Bir sanal ağda Azure Databricks ile çalışma hakkında daha fazla bilgi için SQL Server ile Azure Databricks kullanarak öğreticisiyle devam edin.
+Bu öğreticide, bir sanal ağa Azure Databricks çalışma alanı dağıttık ve Databricks 'ten Cosmos DB verileri sorgulamak için Cosmos DB Spark bağlayıcısını kullandınız. Bir sanal ağda Azure Databricks ile çalışma hakkında daha fazla bilgi edinmek için Azure Databricks ile SQL Server kullanmaya yönelik öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Sorgu bir SQL Server Linux Docker kapsayıcısı içinde bir sanal ağdan bir Azure Databricks not defteri](vnet-injection-sql-server.md)
+> [Öğretici: bir Azure Databricks not defteriyle sanal ağda SQL Server Linux Docker kapsayıcısını sorgulama](vnet-injection-sql-server.md)

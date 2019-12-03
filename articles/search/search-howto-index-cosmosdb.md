@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530994"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707768"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure 'da Dizin Oluşturucu kullanarak Cosmos DB verilerini dizin oluşturma Bilişsel Arama 
 
@@ -246,7 +246,7 @@ Hedef dizininizin şemasının, kaynak JSON belgelerinin şemasıyla veya özel 
 > [!NOTE]
 > Bölümlenmiş koleksiyonlar için, varsayılan belge anahtarı Azure Cosmos DB `_rid` özelliktir. alan adları bir alt çizgi karakteriyle başlamadığı için Azure Bilişsel Arama otomatik olarak `rid` olarak yeniden adlandırılır. Ayrıca, Azure Cosmos DB `_rid` değerler Azure Bilişsel Arama anahtarlarında geçersiz karakterler içeriyor. Bu nedenle `_rid` değerleri Base64 kodlandı.
 > 
-> MongoDB koleksiyonları için Azure Bilişsel Arama `_id` özelliğini otomatik olarak `doc_id`olarak yeniden adlandırır.  
+> MongoDB koleksiyonları için Azure Bilişsel Arama `_id` özelliğini otomatik olarak `id`olarak yeniden adlandırır.  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>JSON veri türleri ve Azure Bilişsel Arama veri türleri arasında eşleme
 | JSON veri türü | Uyumlu hedef dizin alanı türleri |

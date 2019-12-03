@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: eğitim & dağıtım modeli Azure IoT Edge & Machine Learning'
-description: 'Öğretici: bir makine öğrenimi modeli aracılığıyla yaprak cihazlardan verileri işleyen IoT Edge modülleri oluşturun ve dağıtın ve ardından öngörüleri IoT Hub gönderin.'
+title: 'Öğretici: Azure IoT Edge üzerinde özel modüller oluşturma ve dağıtma-Machine Learning'
+description: Bu öğreticide, bir makine öğrenimi modeli aracılığıyla yaprak cihazlardan verileri işleyen IoT Edge modüllerinin nasıl oluşturulacağı ve dağıtılacağı gösterilmektedir ve sonra öngörüleri IoT Hub gönderebilirsiniz.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664225"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701841"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196165"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707716"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcı (Önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Tasarımcı, makine öğrenimi modellerini derlemek, test etmek ve dağıtmak i�
     + Daha önce eğitilen bir modeli kullanarak yeni verilerde tahmine dayalı hale getirmek için bir **toplu çıkarım işlem hattı** yayımlayın.
 + Gerçek zamanlı bir zaman noktasına gerçek zamanlı bir **çıkarım işlem hattı** [dağıtın](#deploy) ve yeni verilerde gerçek zamanlı olarak tahmine dayalı hale getirin.
 
-![Tasarımcıda eğitim, toplu çıkarım ve gerçek zamanlı çıkarım için iş akışı diyagramı](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![Tasarımcıda eğitim, toplu çıkarım ve gerçek zamanlı çıkarım için iş akışı diyagramı](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>İşlem hattı
 
@@ -80,7 +80,7 @@ Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarı
 
 Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir. Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz. Tasarımcıda bireysel modüller için işlem kaynaklarını ayarlayabilirsiniz. 
 
-![Modül özellikleri](media/ui-concept-visual-interface/properties.png)
+![Modül özellikleri](media/concept-designer/properties.png)
 
 Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](../algorithm-module-reference/module-reference.md)
 
@@ -88,14 +88,14 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili baz
 
 İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
-| Hedef işlem | Eğitim | Dağıtım |
+| İşlem hedefi | Eğitim | Kurulum |
 | ---- |:----:|:----:|
 | Azure Machine Learning işlem | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 İşlem hedefleri Machine Learning [çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda yönetirsiniz.
 
-## <a name="deploy"></a>Dağıt
+## <a name="deploy"></a>Kurulum
 
 Gerçek zamanlı bir işlem hattı gerçekleştirmek için, bir işlem hattını **gerçek zamanlı uç nokta**olarak dağıtmanız gerekir. Gerçek zamanlı uç nokta, bir dış uygulama ve Puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bir uç noktaya yapılan çağrı, uygulamaya gerçek zamanlı olarak tahmin sonuçları döndürür. Gerçek zamanlı bir uç noktaya çağrı yapmak için, uç noktasını dağıtırken oluşturulan API anahtarını geçirirsiniz. Uç nokta, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
@@ -107,7 +107,7 @@ Modelinizi dağıtmayı öğrenmek için bkz. [öğretici: tasarımcı ile makin
 
 Ardışık Düzen **uç noktasına**bir işlem hattı da yayımlayabilirsiniz. Gerçek zamanlı bir uç noktaya benzer şekilde, bir ardışık düzen uç noktası, REST çağrılarını kullanarak dış uygulamalardan yeni işlem hattı çalıştırmaları göndermenize olanak tanır. Ancak, bir ardışık düzen uç noktası kullanarak gerçek zamanlı olarak veri gönderemez veya alamazsınız.
 
-Yayınlanan işlem hatları esnektir, modelleri eğitme veya yeniden eğitme, toplu iş için bilgi işlem gerçekleştirme, yeni verileri işleme ve çok daha fazlasını yapmak için kullanılabilirler. Çoklu işlem hatlarını tek bir ardışık düzen uç noktasına yayımlayabilir ve hangi ardışık düzen sürümünün çalıştırılacağını belirtebilirsiniz.
+Yayınlanan işlem hatları esnektir, modelleri eğitme veya yeniden eğitme, [toplu iş](how-to-run-batch-predictions-designer.md)için bilgi işlem gerçekleştirme, yeni verileri işleme ve çok daha fazlasını yapmak için kullanılabilirler. Çoklu işlem hatlarını tek bir ardışık düzen uç noktasına yayımlayabilir ve hangi ardışık düzen sürümünün çalıştırılacağını belirtebilirsiniz.
 
 Yayımlanan bir işlem hattı, her modülün ardışık düzen taslağı içinde tanımladığınız işlem kaynakları üzerinde çalışır.
 
@@ -122,7 +122,7 @@ Bu güncelleştirmelerin sonucunda, görsel arabirim için bazı kavramlar ve te
 
 | Tasarımcıda kavram | Daha önce görsel arabirimde |
 | ---- |:----:|
-| Ardışık düzen taslağı | Deneme |
+| Ardışık düzen taslağı | Deneyin |
 | Gerçek zamanlı uç nokta | Web hizmeti |
 
 ### <a name="migrating-to-the-designer"></a>Tasarımcıya geçme

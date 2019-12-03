@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8b31a5ab716b58d167a0d16579b44aa7df95a0ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232839"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706134"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -22,8 +22,8 @@ ms.locfileid: "74232839"
 Dayanıklı İşlevler Şu anda aşağıdaki dilleri desteklemektedir:
 
 * **C#** : hem [önceden derlenmiş sınıf kitaplıkları](../functions-dotnet-class-library.md) hem [ C# de betiği](../functions-reference-csharp.md).
-* **F#** : önceden derlenmiş sınıf kitaplıkları F# ve betiği. F#betik yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
 * **JavaScript**: yalnızca Azure işlevleri çalışma zamanının 2. x sürümü için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.7.0 gerektirir. 
+* **F#** : önceden derlenmiş sınıf kitaplıkları F# ve betiği. F#betik yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
 
 Dayanıklı İşlevler tüm [Azure işlevleri dillerini](../supported-languages.md)destekleme amacını içerir. Ek dilleri desteklemek için işin en son durumunun [dayanıklı işlevler sorunlar listesine](https://github.com/Azure/azure-functions-durable-extension/issues) bakın.
 
@@ -38,7 +38,7 @@ Dayanıklı İşlevler için birincil kullanım örneği sunucusuz uygulamalarda
 * [Zaman uyumsuz HTTP API 'Leri](#async-http)
 * [İzleme](#monitoring)
 * [İnsan etkileşimi](#human)
-* ['Yı](#aggregator)
+* [Toplayıcı (durum bilgisi olan varlıklar)](#aggregator)
 
 ### <a name="chaining"></a>Model #1: Işlev zinciri oluşturma
 
@@ -46,9 +46,11 @@ Dayanıklı İşlevler için birincil kullanım örneği sunucusuz uygulamalarda
 
 ![İşlev zincirleme deseninin diyagramı](./media/durable-functions-concepts/function-chaining.png)
 
-Aşağıdaki örnekte gösterildiği gibi, öz işlev zincirleme modelini uygulamak için Dayanıklı İşlevler kullanabilirsiniz:
+Aşağıdaki örnekte gösterildiği gibi, öz işlev zincirleme modelini uygulamak için Dayanıklı İşlevler kullanabilirsiniz.
 
-#### <a name="c"></a>C#
+Bu örnekte, `F1`, `F2`, `F3`ve `F4` değerleri, işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. `try`/`catch`/`finally` bloklarına hata işleme mantığını dahil edebilirsiniz.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -69,25 +71,31 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için `context` parametresini kullanabilirsiniz. Kod `await`her çağırdığında, Dayanıklı İşlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki `await` çağrısından devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
-    const x = yield context.df.callActivity("F1");
-    const y = yield context.df.callActivity("F2", x);
-    const z = yield context.df.callActivity("F3", y);
-    return    yield context.df.callActivity("F4", z);
+    try {
+        const x = yield context.df.callActivity("F1");
+        const y = yield context.df.callActivity("F2", x);
+        const z = yield context.df.callActivity("F3", y);
+        return    yield context.df.callActivity("F4", z);
+    } catch (error) {
+        // Error handling or compensation goes here.
+    }
 });
 ```
 
-Bu örnekte, `F1`, `F2`, `F3`ve `F4` değerleri, işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. `try`/`catch`/`finally` bloklarına hata işleme mantığını dahil edebilirsiniz.
-
-[Idurableorchestrationcontext] \(.NET\) `context` parametresini ve `context.df` nesnesini (JavaScript) kullanarak diğer işlevleri ada, geçirerek parametrelere ve işlev çıkışını döndürecek şekilde çalıştırabilirsiniz. Kod `await` (C#) veya `yield` (JavaScript) her çağırdığında dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya VM, yürütme üzerinden geri dönüştürüldüğünde, işlev örneği önceki `await` veya `yield` çağrısından devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için `context.df` nesnesini kullanabilirsiniz. Kod `yield`her çağırdığında, Dayanıklı İşlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki `yield` çağrısından devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
 
 > [!NOTE]
-> JavaScript 'teki `context` nesnesi, yalnızca [ıdurableorchestrationcontext] parametresini değil, tüm [işlev bağlamını](../functions-reference-node.md#context-object)temsil eder.
+> JavaScript 'teki `context` nesnesi tüm [işlev bağlamını](../functions-reference-node.md#context-object)temsil eder. Ana bağlamdaki `df` özelliğini kullanarak Dayanıklı İşlevler bağlamına erişin.
+
+---
 
 ### <a name="fan-in-out"></a>#2 desenli desenler: fan çıkış/fan
 
@@ -99,7 +107,7 @@ Normal işlevlerle, işlevi bir sıraya birden çok ileti göndermesini sağlaya
 
 Dayanıklı İşlevler uzantısı görece basit kodla bu düzene sahiptir:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -124,7 +132,11 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+Fanı-Out işi `F2` işlevinin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. çağrılan tüm işlevlerin bitmesini beklemek için `Task.WhenAll` çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işlevine geçirilir.
+
+`Task.WhenAll` üzerinde `await` çağrısında gerçekleşen otomatik checkişaretleyici, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -146,9 +158,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Fanı-Out işi `F2` işlevinin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. Çağrılan tüm işlevlerin bitmesini beklemek için .NET `Task.WhenAll` API veya JavaScript `context.df.Task.all` API 'SI çağrılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işlevine geçirilir.
+Fanı-Out işi `F2` işlevinin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. çağrılan tüm işlevlerin bitmesini beklemek için `context.df.Task.all` API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işlevine geçirilir.
 
-`await` veya `yield` `Task.WhenAll` ya da `context.df.Task.all` çağrısında gerçekleşen otomatik onay işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın, zaten tamamlanmış bir görevin yeniden başlatılmasına gerek kalmamasını sağlar.
+`context.df.Task.all` üzerinde `yield` çağrısında gerçekleşen otomatik checkişaretleyici, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
+
+---
 
 > [!NOTE]
 > Nadir koşullarda, bir etkinlik işlevi tamamlandıktan sonra ancak tamamlanma alanı düzenleme geçmişine kaydedilmeden önce, bir kilitlenme olması mümkündür. Bu durumda, etkinlik işlevi işlem kurtardıktan sonra baştan sonra yeniden çalıştırılır.
@@ -200,11 +214,11 @@ Daha fazla bilgi için, Dayanıklı İşlevler uzantısını kullanarak HTTP üz
 
 ![İzleyici deseninin diyagramı](./media/durable-functions-concepts/monitor.png)
 
-Birkaç kod satırı içinde, rastgele uç noktaları gözlemleyecek birden çok izleyici oluşturmak için Dayanıklı İşlevler kullanabilirsiniz. İzleyiciler, bir koşul karşılandığında veya `IDurableOrchestrationClient` izleyicileri sonlandırabileceği zaman yürütmeyi sonlandırabilir. Bir izleyicinin `wait` aralığını belirli bir koşula göre değiştirebilirsiniz (örneğin üstel geri alma) 
+Birkaç kod satırı içinde, rastgele uç noktaları gözlemleyecek birden çok izleyici oluşturmak için Dayanıklı İşlevler kullanabilirsiniz. İzleyiciler, bir koşul karşılandığında çalışmayı sonlandırabilir veya başka bir işlev, izleyicileri sonlandırmak için dayanıklı düzenleme istemcisini kullanabilir. Bir izleyicinin `wait` aralığını belirli bir koşula göre değiştirebilirsiniz (örneğin üstel geri alma) 
 
 Aşağıdaki kod temel bir izleyiciyi uygular:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -234,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -262,7 +276,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Bir istek alındığında, bu iş KIMLIĞI için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngünün çıkış yapılıncaya kadar bir durumu yoklar. Dayanıklı bir Zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş gerçekleştirilebilir veya düzenleme sona erdirmek üzere. `context.CurrentUtcDateTime` (.NET) veya `context.df.currentUtcDateTime` (JavaScript) `expiryTime` değeri aştığında, izleyici sona erer.
+---
+
+Bir istek alındığında, bu iş KIMLIĞI için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngünün çıkış yapılıncaya kadar bir durumu yoklar. Dayanıklı bir Zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş gerçekleştirilebilir veya düzenleme sona erdirmek üzere. `nextCheck` `expiryTime`aştığında izleyici sona erer.
 
 ### <a name="human"></a>#5 model: Insan etkileşimi
 
@@ -276,7 +292,7 @@ Bu örnekte, bir Orchestrator işlevi kullanarak bir stili uygulayabilirsiniz. O
 
 Bu örnekler insan etkileşimi modelini göstermek için bir onay işlemi oluşturur:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -303,7 +319,9 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+Dayanıklı Zamanlayıcı oluşturmak için `context.CreateTimer`çağırın. Bildirim `context.WaitForExternalEvent`tarafından alınır. Ardından `Task.WhenAny`, ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -325,9 +343,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Dayanıklı Zamanlayıcı oluşturmak için `context.CreateTimer` (.NET) veya `context.df.createTimer` (JavaScript) çağırın. Bildirim `context.WaitForExternalEvent` (.NET) veya `context.df.waitForExternalEvent` (JavaScript) tarafından alınır. Ardından, `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript), (ilk zaman aşımı) mi yoksa onay mi (onay zaman aşımından önce alındı) olarak mı yapılacağını belirlemek için çağrılır.
+Dayanıklı Zamanlayıcı oluşturmak için `context.df.createTimer`çağırın. Bildirim `context.df.waitForExternalEvent`tarafından alınır. Ardından `context.df.Task.any`, ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
 
-Dış istemci, [YERLEŞIK HTTP API 'lerini](durable-functions-http-api.md#raise-event) kullanarak veya başka bir işlevden `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript) metodunu kullanarak, olay bildirimini bekleyen bir Orchestrator işlevine teslim edebilir:
+---
+
+Dış istemci, [YERLEŞIK HTTP API 'lerini](durable-functions-http-api.md#raise-event)kullanarak olay bildirimini bekleyen bir Orchestrator işlevine teslim edebilir:
+
+```bash
+curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
+```
+
+Bir olay, başka bir işlevden dayanıklı düzenleme istemcisi kullanılarak da oluşturulabilir:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -340,6 +368,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -350,11 +380,9 @@ module.exports = async function (context) {
 };
 ```
 
-```bash
-curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
-```
+---
 
-### <a name="aggregator"></a>#6 örüntüme: toplayıcı
+### <a name="aggregator"></a>#6 Model: toplayıcı (durum bilgisi olan varlıklar)
 
 Altıncı model, olay verilerini bir süre içinde tek bir adreslenebilir *varlığa*toplamak üzere kullanılır. Bu düzende, toplanan veriler birden çok kaynaktan gelebilir, toplu olarak teslim edilebilir veya uzun sürelerle dağılmış olabilir. Toplayıcı, ulaşan olay verileri üzerinde işlem yapması gerekebilir ve dış istemcilerin toplanan verileri sorgulaması gerekebilir.
 
@@ -363,6 +391,8 @@ Altıncı model, olay verilerini bir süre içinde tek bir adreslenebilir *varl�
 Bu düzenin normal, durum bilgisiz işlevlerle uygulamaya çalışılması, eşzamanlılık denetiminin çok büyük bir zorluk haline gelmesi. Aynı anda aynı verileri değiştiren birden çok iş parçacığı hakkında endişelenmeniz gerekmez, ayrıca toplayıcı 'nın aynı anda yalnızca tek bir VM üzerinde çalışmasını sağlamaya de endişelenmeniz gerekir.
 
 Bu kalıbı tek bir işlev olarak kolayca uygulamak için [dayanıklı varlıkları](durable-functions-entities.md) kullanabilirsiniz.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -385,26 +415,6 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.entity(function(context) {
-    const currentValue = context.df.getState(() => 0);
-    switch (context.df.operationName) {
-        case "add":
-            const amount = context.df.getInput();
-            context.df.setState(currentValue + amount);
-            break;
-        case "reset":
-            context.df.setState(0);
-            break;
-        case "get":
-            context.df.return(currentValue);
-            break;
-    }
-});
-```
-
 Dayanıklı varlıklar, .NET ' de sınıflar olarak modellenebilir. Bu model, işlem listesi düzeltildiğinde ve büyük olursa yararlı olabilir. Aşağıdaki örnek, .NET sınıfları ve yöntemleri kullanılarak `Counter` varlığının eşdeğer bir uygulamasıdır.
 
 ```csharp
@@ -425,7 +435,33 @@ public class Counter
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+---
+
 İstemciler, [varlık istemci bağlamasını](durable-functions-bindings.md#entity-client)kullanarak bir varlık işlevi için ("sinyal" olarak da bilinir) *işlemleri* sıraya alabilir.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -445,6 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > Dinamik olarak oluşturulan proxy 'ler, sinyal varlıkları için tür açısından güvenli bir şekilde .NET içinde de kullanılabilir. Ayrıca, istemciler, düzenleme istemci bağlamasında [tür kullanımı uyumlu yöntemler](durable-functions-bindings.md#entity-client-usage) kullanarak bir varlık işlevinin durumunu da sorgulayabilir.
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -456,6 +493,8 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Varlık işlevleri [Dayanıklı İşlevler 2,0](durable-functions-versions.md) ve üzeri sürümlerde kullanılabilir.
 
 ## <a name="the-technology"></a>Teknoloji
@@ -466,7 +505,7 @@ Arka planda Dayanıklı İşlevler uzantısı, GitHub 'daki açık kaynaklı ve 
 
 Güvenilir ve uzun süreli yürütme garantisi sağlamak için, Orchestrator işlevlerinin izlenmesi gereken bir dizi kodlama kuralı vardır. Daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesi.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
 
@@ -479,7 +518,7 @@ Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 daki
 
 Her iki hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazla bilgi
 
 Aşağıdaki videoda Dayanıklı İşlevler avantajları vurgulanmıştır:
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827232"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703667"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanı ile etki alanı ekleme sorunlarını giderme
 
@@ -32,10 +32,10 @@ VM Azure AD DS yönetilen etki alanını bulamazsa, genellikle bir ağ bağlant�
 
 1. VM 'nin aynı veya Azure AD DS için etkinleştirilmiş eşlenmiş bir sanal ağa bağlı olduğundan emin olun. Aksi takdirde, VM, katılabilmek için etki alanını bulup bağlanamaz.
     * VM aynı sanal ağa bağlı değilse, sanal ağ eşleme veya VPN bağlantısının *etkin* olduğunu veya trafiğin doğru şekilde akmasını sağlamak için *bağlı* olduğunu doğrulayın.
-1. @No__t-0 gibi Azure AD DS yönetilen etki alanının etki alanı adını kullanarak etki alanına ping işlemi yapmayı deneyin.
-    * Ping yanıtı başarısız olursa, Azure AD DS yönetilen etki alanınız için Portal 'daki Genel Bakış sayfasında (`ping 10.0.0.4` gibi) görüntülenecek etki alanının IP adreslerini ping yapmayı deneyin.
+1. `ping aadds.contoso.com`gibi Azure AD DS yönetilen etki alanının etki alanı adını kullanarak etki alanına ping işlemi yapmayı deneyin.
+    * Ping yanıtı başarısız olursa, Azure AD DS yönetilen etki alanınız için portaldaki Genel Bakış sayfasında görüntülenecek etki alanının IP adreslerini ping yapmayı deneyin, örneğin `ping 10.0.0.4`.
     * IP adresine başarılı bir şekilde ping işlemi yapabiliyorsanız, DNS yanlış yapılandırılmış olabilir. Sanal ağ için Azure AD DS yönetilen etki alanı DNS sunucularını yapılandırdığınızdan emin olun.
-1. Sanal makinede DNS çözümleyici önbelleğini (`ipconfig /flushdns`) temizlemeye çalışın.
+1. `ipconfig /flushdns`gibi, sanal makinede DNS çözümleyici önbelleğini temizlemeye çalışın.
 
 ### <a name="network-security-group-nsg-configuration"></a>Ağ güvenlik grubu (NSG) yapılandırması
 
@@ -53,7 +53,7 @@ Azure AD DS yönetilen etki alanına katılması için kimlik bilgileri isteyen 
 
 Kimlik bilgileriyle ilgili sorunları gidermek için aşağıdaki sorun giderme adımlarını gözden geçirin:
 
-1. @No__t-0 gibi kimlik bilgilerini belirtmek için UPN biçimini kullanmayı deneyin. Azure AD 'de bu UPN 'nin doğru yapılandırıldığından emin olun.
+1. `dee@contoso.onmicrosoft.com`gibi kimlik bilgilerini belirtmek için UPN biçimini kullanmayı deneyin. Azure AD 'de bu UPN 'nin doğru yapılandırıldığından emin olun.
     * Kiracınızda aynı UPN ön ekine sahip birden fazla kullanıcı varsa veya UPN önekiniz aşırı uzunsa, hesabınız için *sAMAccountName* otomatik olarak oluşturulabilir. Bu nedenle, hesabınız için *sAMAccountName* biçimi, şirket içi etki alanında beklediğiniz veya kullandığınız verilerden farklı olabilir.
 1. VM 'Leri Azure AD DS tarafından yönetilen etki alanına katmak için *AAD DC yöneticileri* grubuna ait bir kullanıcı hesabının kimlik bilgilerini kullanmayı deneyin.
 1. [Parola eşitlemesini][enable-password-sync] etkinleştirdiğinizden ve ilk parola eşitlemenin tamamlanabilmesi için yeterince uzun süre beklediğinizden emin olun.

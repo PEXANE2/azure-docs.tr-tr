@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Linux cihazları için modül geliştirme-Azure IoT Edge'
+title: Öğretici-Azure IoT Edge kullanarak Linux cihazları için modül geliştirme
 description: Bu öğretici, Linux cihazları için Linux kapsayıcıları kullanarak IoT Edge modülleri geliştirmek üzere geliştirme makinenizi ve bulut kaynaklarınızı ayarlamayı adım adım göstermektedir
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4291c5dcea27699de72b72c52a832a7dc86b97b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114045"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701895"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="key-concepts"></a>Önemli kavramlar
+## <a name="key-concepts"></a>Temel kavramlar
 
 Bu öğreticide IoT Edge modülünün geliştirilmesi gösterilmektedir. Bir *IoT Edge modülü*veya bazen yalnızca Short için bir *Modül* , yürütülebilir kod içeren bir kapsayıcıdır. Bir IoT Edge cihazına bir veya daha fazla modül dağıtabilirsiniz. Modüller, algılayıcılardan veri almak, veri analizi veya veri temizleme işlemleri gerçekleştirmek veya bir IoT Hub 'ına ileti göndermek gibi belirli görevleri gerçekleştirir. Daha fazla bilgi için bkz. [Azure IoT Edge modüllerini anlama](iot-edge-modules.md).
 
@@ -131,8 +131,8 @@ Visual Studio Code komut paletinde arama yapın ve **Azure IoT Edge: yeni IoT Ed
    | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
-   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan değerleri kabul **EdgeSolution**. |
-   | Modül şablonunu seçin | Seçin  **C# Modülü**. |
+   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
+   | Modül şablonunu seçin | **C# Modül**seçin. |
    | Modül adı sağlayın | Varsayılan **sampleModule**'ü kabul edin. |
    | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, \<kayıt defteri adı\>. azurecr.io/samplemodule gibi görünüyor. |
  
@@ -168,7 +168,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64**'yi tutacağız. 
 
-### <a name="review-the-sample-code"></a>Örnek kodu gözden geçirin
+### <a name="review-the-sample-code"></a>Örnek kodu gözden geçirme
 
 Oluşturduğunuz çözüm şablonu, bir IoT Edge modülü için örnek kod içerir. Bu örnek modül yalnızca iletileri alır ve ardından üzerine geçirir. Ardışık düzen işlevselliği, modüllerin birbirleriyle iletişim kurduğu IoT Edge önemli bir kavramı gösterir.
 
@@ -202,7 +202,7 @@ Proje şablonuyla C# birlikte gelen örnek kod, .net için IoT Hub SDK 'Sının 
 
    ![Dağıtım. Template. JSON içindeki yolları gözden geçirin](./media/tutorial-develop-for-linux/deployment-routes.png)
 
-## <a name="build-and-push-your-solution"></a>Oluşturun ve çözümünüzü gönderin
+## <a name="build-and-push-your-solution"></a>Çözümünüzü derleyin ve gönderin
 
 Bazı önemli dağıtım kavramlarını anlamak için modül kodunu ve Dağıtım şablonunu gözden geçirdiniz. Şimdi SampleModule kapsayıcı görüntüsünü oluşturmak ve kapsayıcı Kayıt defterinize göndermek için hazır olursunuz. Visual Studio Code için IoT araçları uzantısı ile bu adım, şablon dosyasındaki bilgileri ve çözüm dosyalarından modül bilgilerini temel alan dağıtım bildirimini de oluşturur. 
 
@@ -330,5 +330,5 @@ Bu öğreticide, geliştirme makinenizde Visual Studio Code ayarlarsınız ve il
 > [C](tutorial-c-module.md)
 > [C#](tutorial-csharp-module.md)
 > [Java](tutorial-java-module.md)
-> [Node.js](tutorial-node-module.md)
+> [Node. js](tutorial-node-module.md)
 > [Python](tutorial-python-module.md)

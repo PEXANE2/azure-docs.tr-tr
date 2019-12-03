@@ -1,18 +1,18 @@
 ---
 title: Öğretici-tetiklenecek IoT Hub olaylarını kullanın Azure Logic Apps
-description: Öğretici-Azure Event Grid olay yönlendirme hizmetini kullanarak IoT Hub olaylarına göre Azure Logic Apps eylemleri gerçekleştirmek için otomatikleştirilmiş işlemler oluşturun.
+description: Bu öğreticide, IoT Hub olaylara göre Azure Logic Apps eylemleri gerçekleştirmek üzere otomatik işlemler oluşturmak için Azure Event Grid olay yönlendirme hizmetinin nasıl kullanılacağı gösterilmektedir.
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 70ad74715446a54605a23a049ebc92a81d7ee673
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423642"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706427"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderin
 

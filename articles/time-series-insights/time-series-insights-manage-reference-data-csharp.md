@@ -1,5 +1,5 @@
 ---
-title: -Azure Time Series Insights | kullanarak C# GA ortamınızda başvuru verilerini yönetme Microsoft Docs
+title: -Azure Time Series Insights kullanarak C# GA ortamlarında başvuru verilerini yönetme | Microsoft Docs
 description: İçinde C#yazılmış özel bir uygulama oluşturarak GA ortamınız için başvuru verilerini yönetmeyi öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ebc616d07c24a02b71010e315f288543dfd92b74
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705957"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Kullanarak bir Azure Time Series Insights ortamı için GA başvuru verilerini yönetmeC#
 

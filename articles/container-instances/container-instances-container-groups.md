@@ -4,12 +4,12 @@ description: Azure Container Instances içinde kapsayıcı grupları hakkında b
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482106"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706322"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
@@ -34,7 +34,7 @@ Bu örnek kapsayıcı grubu:
 > [!NOTE]
 > Çoklu kapsayıcı grupları Şu anda yalnızca Linux kapsayıcılarını destekliyor. Windows kapsayıcıları için Azure Container Instances yalnızca tek bir örnek dağıtımını destekler. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklılıklarını hizmete [genel bakış](container-instances-overview.md#linux-and-windows-containers)bölümünde bulabilirsiniz.
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 Çok kapsayıcılı bir grubu dağıtmanın iki yaygın yolu aşağıda verilmiştir: bir [Kaynak Yöneticisi şablonu][resource-manager template] veya [YAML dosyası][yaml-file]kullanın. Kapsayıcı örneklerini dağıtırken ek Azure hizmet kaynakları (örneğin, bir [Azure dosyaları paylaşma][azure-files]) dağıtmanız gerektiğinde, bir kaynak yöneticisi şablonu önerilir. YAML biçiminin daha kısa olmasından dolayı, dağıtımınız yalnızca kapsayıcı örnekleri içerdiğinde YAML dosyası önerilir. Ayarlayabileceğiniz özelliklerle ilgili ayrıntılar için [Kaynak Yöneticisi Şablon başvurusu](/azure/templates/microsoft.containerinstance/containergroups) veya [YAML başvuru](container-instances-reference-yaml.md) belgelerine bakın.
 
@@ -48,15 +48,15 @@ Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-re
 
 ### <a name="resource-usage-by-instances"></a>Örneklere göre kaynak kullanımı
 
-Her kapsayıcı örneğine, kaynak isteğinde belirtilen kaynaklar ayrılır. Ancak, bir gruptaki bir kapsayıcı örneği tarafından kaynak kullanımı, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini nasıl yapılandırdığınıza bağlıdır.
+Her kapsayıcı örneğine, kaynak isteğinde belirtilen kaynaklar ayrılır. Ancak, bir gruptaki bir kapsayıcı örneği tarafından kaynak kullanımı, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini nasıl yapılandırdığınıza bağlıdır. Kaynak sınırı, zorunlu [kaynak isteği][resource-requests] özelliğinden küçük olmalıdır.
 
 * Kaynak sınırı belirtmezseniz, örneğin en büyük kaynak kullanımı kaynak isteğiyle aynı olur.
 
 * Bir örnek için bir kaynak sınırı belirtirseniz, kaynak isteğine göre kullanımı azaltarak veya artırarak, örneğin kaynak kullanımını iş yükü için ayarlayabilirsiniz. Ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
     
-    Örneğin, iki örneği 1 CPU isteyen bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
+Örneğin, iki örneği 1 CPU isteyen bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
 
-    Bu senaryoda, bir örnek için 0,5 CPU kaynak sınırı ve ikincisi için 2 CPU sınırı ayarlayabilirsiniz. Bu yapılandırma, ilk kapsayıcının kaynak kullanımını 0,5 CPU olarak sınırlandırır ve ikinci kapsayıcının varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
+Bu senaryoda, bir örnek için 0,5 CPU kaynak sınırı ve ikincisi için 2 CPU sınırı ayarlayabilirsiniz. Bu yapılandırma, ilk kapsayıcının kaynak kullanımını 0,5 CPU olarak sınırlandırır ve ikinci kapsayıcının varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
 
 Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][resource-requirements] özelliği REST API.
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][re
 
 * Bir kapsayıcı grubundaki **en fazla** kaynak için, dağıtım bölgesindeki Azure Container Instances [kaynak kullanılabilirliğine][region-availability] bakın.
 
-## <a name="networking"></a>Ağ İletişimi
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 Kapsayıcı grupları bir IP adresini ve bu IP adresinde bir bağlantı noktası ad alanını paylaşır. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Bir grup içindeki kapsayıcılar, bu bağlantı noktaları grubun IP adresinde dışarıdan sunulmasa bile, açığa çıkarılan bağlantı noktalarında localhost aracılığıyla birbirlerine erişebilir.
 

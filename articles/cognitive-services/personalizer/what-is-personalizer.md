@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467195"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707943"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
-Azure kişiselleştirici, kendi gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
+Azure kişiselleştirici, uygulamanızın, kendi gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmesini sağlayan bulut tabanlı bir API hizmetidir.
 
 * Kullanıcılarınız ve içeriğiniz hakkında bilgi sağlayın ve kullanıcılarınızı göstermek için en iyi eylemi alın. 
 * Kişiselleştirici kullanılmadan önce verilerin temizlenmesi ve etiketlenmesi gerekmez.
@@ -60,8 +60,8 @@ Kişiselleştirici Kullanıcı profili bilgilerini kalıcı hale getirmek ve yö
 
 Kişiselleştirici hizmeti iki API 'ye sahiptir:
 
-* Kullanıcılarınız ve kişiselleştirilmesi için içerik (_Eylemler_) hakkındaki bilgileri (_özellikleri_) gönderin. Kişiselleştirici, en üstteki eylemle yanıt verir.
-* Derecelendirmenin bir [geri alma puanı](concept-rewards.md)olarak ne kadar iyi çalıştığı hakkında kişiselleştiriciye geri bildirim gönderin. 
+* *Derece*: geçerli _bağlamda_hangi _EYLEMIN_ gösterileceğini öğrenmek için sıralama API 'sini kullanın. Eylemler, her biri hakkında bir KIMLIK ve bilgi (_Özellikler_) Ile birlikte JSON nesneleri dizisi olarak gönderilir; bağlam başka bir JSON nesnesi olarak gönderilir. API, uygulamanızın kullanıcıya işlemesi gereken ActionId değerini döndürür.
+* *Ödül*: kullanıcılarınız uygulamanızla etkileşime geçtiğinde, kişiselleştirmenin 0 ile 1 arasında bir sayı olarak ne kadar iyi çalıştığını ölçecek ve bir [ödül puanı](concept-rewards.md)olarak gönderirsiniz. 
 
 ![Kişiselleştirmeye yönelik temel olay sırası](media/what-is-personalizer/personalization-intro.png)
 

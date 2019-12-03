@@ -6,17 +6,20 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809373"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705458"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Azure portal (Önizleme) kullanarak bekleyen Azure Event Hubs verilerini şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
+
+>[!NOTE]
+> Bu özellik şu anda önizleme sürümündedir. ' De bir üretim ortamında kullanmanızı öneririz.
 
 ## <a name="overview"></a>Genel Bakış
 Azure Event Hubs artık, Microsoft tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (Kendi Anahtarını Getir – BYOK), bekleyen verileri şifreleme seçeneğini desteklemektedir. Bu özellik, Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal etmenize olanak sağlar.
@@ -110,11 +113,11 @@ Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her g
 | Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
 | category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
 | resourceId | Azure Resource Manager kaynak KIMLIĞI |
-| KeyVault | Anahtar kasasının tam adı. |
+| keyVault | Anahtar kasasının tam adı. |
 | anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | version | Kullanılan anahtarın sürümü. |
-| Çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
-| Kodudur | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
+| çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
+| kodudur | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
 
 Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda verilmiştir:

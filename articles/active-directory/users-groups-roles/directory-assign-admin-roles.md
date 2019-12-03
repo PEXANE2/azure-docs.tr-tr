@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5d4bdd554fb7c8817ada80a294f3ecb1c6c85b00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554128"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707025"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -246,7 +246,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > Bu özellikler Şu anda geliştirme aşamasındadır.
 >
 
-### <a name="group-administratorgroup-administrator"></a>[Grup Yöneticisi](#group-administrator)
+### <a name="group-administratorgroup-administrator-permissions"></a>[Grup Yöneticisi](#group-administrator-permissions)
 
 Bu roldeki kullanıcılar, adlandırma ve süre sonu ilkeleri gibi grupları ve ayarlarını oluşturabilir/yönetebilir. Bu role bir Kullanıcı atamanın, bu kullanıcılara Kiracıdaki tüm grupları ekipler, SharePoint, Yammer gibi çeşitli iş yükleri arasında Outlook 'a ek olarak yönetme olanağı sağladığını anlamak önemlidir. Ayrıca, Kullanıcı, çeşitli grup ayarlarını Microsoft Yönetim Merkezi, Azure portal gibi çeşitli yönetim portallarında ve takımlar ve SharePoint yönetim merkezleri gibi iş yüklerinin yanı sıra iş yüküne göre yönetebilecektir.
 
@@ -279,7 +279,9 @@ Bu rol daha önce [Azure Portal](https://portal.azure.com/)"parola Yöneticisi" 
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune Yöneticisi](#intune-service-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Intune çevrimiçi olarak genel izinlere sahiptir. Ayrıca, bu rol, ilkeyi ilişkilendirmek ve grupları oluşturmak ve yönetmek için kullanıcıları ve cihazları yönetme özelliğini içerir. [Microsoft Intune Ile rol tabanlı yönetim denetimi (RBAC)](https://docs.microsoft.com/intune/role-based-access-control) hakkında daha fazla bilgi
+Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda Microsoft Intune çevrimiçi olarak genel izinlere sahiptir. Ayrıca, bu rol, ilkeyi ilişkilendirmek ve grupları oluşturmak ve yönetmek için kullanıcıları ve cihazları yönetme özelliğini içerir. [Microsoft Intune Ile rol tabanlı yönetim denetimi (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)hakkında daha fazla bilgi.
+
+Bu rol, tüm güvenlik gruplarını oluşturabilir ve yönetebilir. Ancak, Intune yöneticisinin Office grupları üzerinde yönetici hakları yoktur. Bu, yöneticinin Kiracıdaki tüm Office gruplarının sahiplerini veya üyeliklerini güncelleştiremediği anlamına gelir. Bununla birlikte, oluşturduğu Office grubunu kendi son kullanıcı ayrıcalıklarının bir parçası olarak da yönetebilir. Bu nedenle, oluşturduğu herhangi bir Office grubu (güvenlik grubu değil), 250 kotasına göre sayılır.
 
 > [!NOTE]
 > Microsoft Graph API, Azure AD Graph API ve Azure AD PowerShell 'de, bu rol "Intune Hizmet Yöneticisi" olarak tanımlanır. Bu, [Azure Portal](https://portal.azure.com)"Intune Yöneticisi" dir.
@@ -1081,8 +1083,8 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. webPortal/allEntities/standart/okuma   | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
 
-### <a name="group-administrator"></a>Grup Yöneticisi
-, Adlandırma ve süre sonu ilkeleri gibi grupların ve Grup ayarlarının tüm yönlerini yönetebilir
+### <a name="group-administrator-permissions"></a>Grup Yöneticisi izinleri
+, Adlandırma ve süre sonu ilkeleri gibi grupların ve Grup ayarlarının tüm yönlerini yönetebilir.
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 06d7b7abe7741c465f3d40a90340e03b2c24f258
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900685"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707508"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
@@ -37,16 +37,17 @@ Bir Azure sanal makinesinde SQL Server için Azure Hibrit Avantajı kullanımın
 
 - Azure Marketi 'nden kendi lisansını getir SQL Server görüntüsünü kullanarak bir sanal makine sağlayın. Bu seçenek yalnızca Kurumsal Anlaşma olan müşteriler için kullanılabilir.
 - Azure Marketi 'nden Kullandıkça Öde SQL Server görüntüsünü kullanarak bir sanal makine sağlayın ve Azure Hibrit Avantajı etkinleştirin.
-- Azure VM 'de kendi kendine SQL Server, SQL Server VM el ile [kaydedin](virtual-machines-windows-sql-register-with-resource-provider.md)ve Azure hibrit avantajı etkinleştirin.
+- Azure VM 'de kendi kendine SQL Server, [SQL VM kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)el ile kaydolun ve Azure hibrit avantajı etkinleştirin.
 
-SQL Server lisans türü, VM sağlandığında ayarlanır. Daha sonra istediğiniz zaman değiştirebilirsiniz. Lisans modelleri arasında geçiş kapalı kalma süresi yoktur, VM 'yi yeniden başlatmaz, ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
+SQL Server lisans türü, VM sağlandığında ayarlanır. Daha sonra istediğiniz zaman değiştirebilirsiniz. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-SQL VM kaynak sağlayıcısı 'nın kullanımı, SQL Server IaaS uzantısını gerektirir. Bu nedenle, şunlar gerekir:
+SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere sahiptir: 
+
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
 - [SQL VM kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kayıtlı bir [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanmak için bir gereksinimdir. 
 
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Kaynak sağlayıcısıyla zaten kayıtlı olan VM 'Lerin lisansını değiştirme 

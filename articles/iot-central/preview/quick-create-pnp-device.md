@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central sanal cihaz ekleme | Microsoft Docs
-description: Bir cihaz şablonu oluşturun ve IoT Central uygulamanıza sanal bir cihaz ekleyin.
+title: Hızlı başlangıç-Azure IoT Central sanal cihaz ekleme
+description: Bu hızlı başlangıçta bir cihaz şablonu oluşturma ve IoT Central uygulamanıza sanal cihaz ekleme işlemleri gösterilmektedir.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 8b6720af6328242a1fe297e60c9d413d0b83f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893826"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706706"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Hızlı başlangıç: IoT Central uygulamanıza sanal cihaz ekleme (Önizleme özellikleri)
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta bir **ortam algılayıcı** cihaz şablonu oluşturup 
 * Açma ve kapatma gibi komutlara yanıt verir.
 * Bellenim sürümü ve seri numarası gibi genel cihaz özelliklerini raporlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 **Özel uygulama > önizleme uygulaması** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma (Önizleme özellikleri)](./quick-deploy-iot-central.md) hızlı başlangıcını doldurun.
 
@@ -72,8 +72,8 @@ Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca
 
     | Görünen Ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | None          | Tarih   |
-    | Müşteri adı     | None          | Dize |
+    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
+    | Müşteri adı     | Hiçbiri          | Dize |
 
 1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin:
 

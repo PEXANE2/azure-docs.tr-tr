@@ -1,17 +1,17 @@
 ---
-title: Azure yay bulutu 'nda yapılandırma sunucusu örneğinizi ayarlama | Microsoft Docs
+title: Öğretici-Azure yay bulutu 'nda yapılandırma sunucusu örneğinizi ayarlama
 description: Bu öğreticide, Azure Spring Cloud için Azure portal bir Spring Cloud config Server örneği ayarlamayı öğreneceksiniz.
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 7589a3a750e2fe04736bb3c8fc072c7a2c0a7358
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147544"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708793"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Öğretici: hizmetiniz için bir Spring Cloud config Server örneği ayarlama
 
@@ -53,7 +53,7 @@ Genel Git deposunu kurmak için kullanılan yapılandırılabilir tüm özellikl
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil, *varsayılan etiketini*kullanabilirsiniz.
 
-| Özellik        | Gerekli | Özellik                                                      |
+| Özellik        | Gereklidir | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlar. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
@@ -68,7 +68,7 @@ SSH ile özel Git deposunu kurmak için kullanılan yapılandırılabilir tüm �
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil, *varsayılan etiketini*kullanabilirsiniz.
 
-| Özellik                   | Gerekli | Özellik                                                      |
+| Özellik                   | Gereklidir | Özellik                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
 | `default-label`            | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
@@ -87,7 +87,7 @@ Temel kimlik doğrulaması ile özel Git deposunu kurmak için kullanılan tüm 
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil *varsayılan etiketini*kullanın.
 
-| Özellik        | Gerekli | Özellik                                                      |
+| Özellik        | Gereklidir | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmalıdır. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
@@ -105,7 +105,7 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil *varsayılan etiketini*kullanın.
 
-| Özellik                           | Gerekli         | Özellik                                                      |
+| Özellik                           | Gereklidir         | Özellik                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | Hayır             | Verilen bir ada sahip git deposu ayarlarından oluşan bir harita. |
 | `repos."uri"`                      | `repos` Evet | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmalıdır. |
@@ -124,7 +124,7 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 
 Yapılandırma dosyalarınız bir depoya kaydedildiğinden artık Azure Spring Cloud 'ı buna bağlamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 

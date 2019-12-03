@@ -3,12 +3,12 @@ title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: reference
 ms.date: 10/24/2019
-ms.openlocfilehash: 182e5fdd081126500c04f44776c9e9b8fad61843
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b4a6f448807dd82b2c81cc207070d30a823151c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149774"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707010"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
@@ -142,13 +142,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights)
 > - [Microsoft. Token](#microsofttoken)
 > - [Microsoft. Virtualmachineımages](#microsoftvirtualmachineimages)
-> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [Microsoft. VisualStudio](#microsoftvisualstudio)
 > - [Microsoft. Vmwarechoparlör basit](#microsoftvmwarecloudsimple)
 > - [Microsoft. Web](#microsoftweb)
 > - [Microsoft. Windowsıot](#microsoftwindowsiot)
 > - [Microsoft. WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
-## <a name="microsoftaad"></a>Microsoft.AAD
+## <a name="microsoftaad"></a>Microsoft. AAD
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -156,28 +156,28 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | DomainServices | Hayır | Hayır |
 > | DomainServices/replicasets | Hayır | Hayır |
 
-## <a name="microsoftaadiam"></a>microsoft.aadiam
+## <a name="microsoftaadiam"></a>Microsoft. aadihar
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | Kira | Hayır | Hayır |
 
-## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | actionrules | Yes | Yes |
 
-## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
+## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | sunucular | Yes | Yes |
 
-## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
+## <a name="microsoftapimanagement"></a>Microsoft. Apimanane
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -222,7 +222,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Runbook 'lar Otomasyon hesabıyla aynı kaynak grubunda bulunmalıdır.
 
-## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
+## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -236,7 +236,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | sqlserverkayıtları | Hayır | Hayır |
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -250,7 +250,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | batchaccounts | Yes | Yes |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
+## <a name="microsoftbatchai"></a>Microsoft. Batchaı
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -260,7 +260,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Çizelge | Hayır | Hayır |
 > | Onlarla | Hayır | Hayır |
 
-## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
+## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -296,7 +296,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | botservices | Yes | Yes |
 
-## <a name="microsoftcache"></a>Microsoft.Cache
+## <a name="microsoftcache"></a>Microsoft. Cache
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -306,16 +306,16 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Redsıs örneği için Azure önbelleği bir sanal ağla yapılandırıldıysa, örnek farklı bir aboneliğe taşınamaz. Bkz. [ağ taşıma sınırlamaları](./move-limitations/networking-move-limitations.md).
 
-## <a name="microsoftcdn"></a>Microsoft.Cdn
+## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | Hayır | Hayır |
-> | profiles | Yes | Yes |
+> | lerinize | Yes | Yes |
 > | Profiller/uç noktalar | Yes | Yes |
 
-## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
+## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -336,7 +336,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Bkz. [klasik dağıtım taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md). Klasik dağıtım kaynakları, bu senaryoya özel bir işlemle abonelikler arasında taşınabilir.
 
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -348,7 +348,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Bkz. [klasik dağıtım taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md). Klasik dağıtım kaynakları, bu senaryoya özel bir işlemle abonelikler arasında taşınabilir.
 
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -358,7 +358,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Bkz. [klasik dağıtım taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md). Klasik dağıtım kaynakları, bu senaryoya özel bir işlemle abonelikler arasında taşınabilir.
 
-## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+## <a name="microsoftcognitiveservices"></a>Microsoft. Biliveservices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -398,14 +398,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | kapsayıcı grupları | Hayır | Hayır |
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | kapsayıcı grupları | Hayır | Hayır |
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -416,7 +416,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | kayıt defterleri/görevler | Yes | Yes |
 > | kayıt defterleri/Web kancaları | Yes | Yes |
 
-## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
+## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -425,12 +425,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | managedkümeler | Hayır | Hayır |
 > | openshiftmanagedclusters | Hayır | Hayır |
 
-## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
+## <a name="microsoftcontentmoderator"></a>Microsoft. Contentmoderatör
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Yes | Yes |
+> | uygulama | Yes | Yes |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. Cortanaanalizi
 
@@ -446,7 +446,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | bağlayıcılar | Yes | Yes |
 
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
+## <a name="microsoftcustomerinsights"></a>Microsoft. Customerınsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -481,7 +481,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | Onlarla | Hayır | Hayır |
 
-## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
+## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -504,7 +504,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | paketlerle | Hayır | Hayır |
 > | Planlama | Hayır | Hayır |
 
-## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
+## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -519,14 +519,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | datalakeaccounts | Hayır | Hayır |
 
-## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
+## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | accounts | Yes | Yes |
 
-## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+## <a name="microsoftdatalakestore"></a>Microsoft. DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -556,14 +556,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | sunucular | Yes | Yes |
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft. Dbformyısql
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | sunucular | Yes | Yes |
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -601,7 +601,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | örleri | Yes | Yes |
 
-## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -613,14 +613,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Labs/virtualmachines | Yes | Hayır |
 > | cağını | Yes | Yes |
 
-## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | veritabanı hesapları | Yes | Yes |
 
-## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
+## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -634,7 +634,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | services | Yes | Yes |
 
-## <a name="microsofteventgrid"></a>Microsoft.EventGrid
+## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -642,7 +642,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | etki alanları | Yes | Yes |
 > | konularıyla | Yes | Yes |
 
-## <a name="microsofteventhub"></a>Microsoft.EventHub
+## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -665,7 +665,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | hanaınstances | Hayır | Hayır |
 > | sapizleyicileri | Yes | Yes |
 
-## <a name="microsofthdinsight"></a>Microsoft.HDInsight
+## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -673,9 +673,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | leriniz | Yes | Yes |
 
 > [!IMPORTANT]
-> HDInsight kümeleri, yeni bir abonelik veya kaynak grubuna taşıyabilirsiniz. Ancak, ağ kaynaklarını (örneğin, sanal ağ, NIC veya yük dengeleyici) HDInsight kümesine bağlı abonelikler arasında taşınamaz. Ayrıca, küme için bir sanal makineye ekli NIC yeni bir kaynak grubuna taşınamıyor.
+> HDInsight kümelerini yeni bir aboneliğe veya kaynak grubuna taşıyabilirsiniz. Bununla birlikte, HDInsight kümesiyle bağlantılı ağ kaynakları (sanal ağ, NIC veya yük dengeleyici gibi) için abonelikler arasında geçiş yapamazsınız. Ayrıca, küme için bir sanal makineye bağlı bir NIC 'ye yeni bir kaynak grubuna taşıyamazsınız.
 >
-> Bir HDInsight kümesi için yeni bir abonelik taşırken, önce diğer kaynakları (örneğin, depolama hesabı) taşıyın. Ardından, HDInsight kümesi, tek başına taşıyın.
+> HDInsight kümesini yeni bir aboneliğe taşırken, önce diğer kaynakları (depolama hesabı gibi) taşıyın. Ardından, HDInsight kümesini kendi kendine taşıyın.
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. Healthgelişme API 'leri
 
@@ -698,7 +698,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | veri yöneticileri | Yes | Yes |
 
-## <a name="microsoftimportexport"></a>Microsoft.ImportExport
+## <a name="microsoftimportexport"></a>Microsoft. ımportexport
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -722,7 +722,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | notificationrules | Hayır | Hayır |
 > | scheduledqueryrules | Yes | Yes |
 > | Web testleri | Yes | Yes |
-> | kitabı | Yes | Yes |
+> | Kitabı | Yes | Yes |
 
 > [!IMPORTANT]
 > Yeni aboneliğe taşınmasının [abonelik kotalarını](../azure-subscription-service-limits.md#azure-monitor-limits)aşmadığından emin olun.
@@ -740,9 +740,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | checknameavaılabılıty | Yes | Yes |
-> | graph | Yes | Yes |
+> | çıkarılamıyor | Yes | Yes |
 
-## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
+## <a name="microsoftkeyvault"></a>Microsoft. Keykasası
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -767,7 +767,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | labaccounts | Hayır | Hayır |
 
-## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
+## <a name="microsoftlocationbasedservices"></a>Microsoft. LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -781,7 +781,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | accounts | Hayır | Hayır |
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -792,7 +792,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ısotedenvironments | Hayır | Hayır |
 > | sürdürülen | Yes | Yes |
 
-## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+## <a name="microsoftmachinelearning"></a>Microsoft. Machinöğrenim
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -801,7 +801,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Hizmetleri | Yes | Hayır |
 > | Onlarla | Yes | Yes |
 
-## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
+## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -820,7 +820,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | teamaccounts/çalışma alanları | Hayır | Hayır |
 > | teamaccounts/çalışma alanları/projeler | Hayır | Hayır |
 
-## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
+## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft. MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -952,7 +952,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Bkz. [ağ taşıma Kılavuzu](./move-limitations/networking-move-limitations.md).
 
-## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
+## <a name="microsoftnotificationhubs"></a>Microsoft. Notificationhub 'Lar
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -960,7 +960,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | öznitelikleri | Yes | Yes |
 > | ad alanları/notificationhub 'lar | Yes | Yes |
 
-## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
+## <a name="microsoftoperationalinsights"></a>Microsoft. Operationalınsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -970,7 +970,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Yeni aboneliğe taşınmasının [abonelik kotalarını](../azure-subscription-service-limits.md#azure-monitor-limits)aşmadığından emin olun.
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1007,7 +1007,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | workspacecollections | Yes | Yes |
 
-## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+## <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1050,7 +1050,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Yes | Hayır |
+> | uygulama | Yes | Hayır |
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
@@ -1060,7 +1060,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | var | Yes | Yes |
 > | işlere | Yes | Yes |
 
-## <a name="microsoftsearch"></a>Microsoft.Search
+## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1070,7 +1070,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!IMPORTANT]
 > Farklı bölgelerde çeşitli arama kaynaklarını tek bir işlemde taşıyamazsınız. Bunun yerine, bunları ayrı işlemlerde taşıyın.
 
-## <a name="microsoftsecurity"></a>Microsoft.Security
+## <a name="microsoftsecurity"></a>Microsoft. Security
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1093,12 +1093,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | öznitelikleri | Yes | Yes |
 
-## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
+## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Hayır | Hayır |
+> | uygulama | Hayır | Hayır |
 > | leriniz | Yes | Yes |
 > | kümeler/uygulamalar | Hayır | Hayır |
 > | kapsayıcı grupları | Hayır | Hayır |
@@ -1113,7 +1113,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Yes | Yes |
+> | uygulama | Yes | Yes |
 > | kapsayıcı grupları | Hayır | Hayır |
 > | geçidinin | Yes | Yes |
 > | Mamak | Yes | Yes |
@@ -1135,7 +1135,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | appliancedefinitions | Hayır | Hayır |
 > | yaptı | Hayır | Hayır |
 > | applicationdefinitions | Hayır | Hayır |
-> | uygulamalar | Hayır | Hayır |
+> | uygulama | Hayır | Hayır |
 > | jistekleri | Hayır | Hayır |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -1152,7 +1152,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | virtualkümeler | Yes | Yes |
 
 > [!IMPORTANT]
-> Bir veritabanı ve sunucu aynı kaynak grubunda olmalıdır. Bir SQL server taşıdığınızda, tüm veritabanlarını da taşınır. Bu davranış, Azure SQL veritabanı ve Azure SQL veri ambarı veritabanları için geçerlidir.
+> Bir veritabanı ve sunucu aynı kaynak grubunda olmalıdır. Bir SQL sunucusunu taşıdığınızda, tüm veritabanları da taşınır. Bu davranış, Azure SQL veritabanı ve Azure SQL veri ambarı veritabanları için geçerlidir.
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
@@ -1183,7 +1183,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | önbelleklerinde | Hayır | Hayır |
 
-## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
+## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1204,14 +1204,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | storagesyncservices | Hayır | Hayır |
 
-## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
+## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | ilerinde | Hayır | Hayır |
 
-## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1238,9 +1238,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | providerkayıtları | Hayır | Hayır |
-> | resources | Hayır | Hayır |
+> | kaynakların | Hayır | Hayır |
 
-## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+## <a name="microsofttimeseriesinsights"></a>Microsoft. Timeseriesınsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -1268,9 +1268,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | account | Yes | Yes |
-> | Hesap/uzantı | Yes | Yes |
-> | hesap/proje | Yes | Yes |
+> | account | Hayır | Hayır |
+> | Hesap/uzantı | Hayır | Hayır |
+> | hesap/proje | Hayır | Hayır |
 
 > [!IMPORTANT]
 > Azure DevOps aboneliğini değiştirmek için, bkz. [faturalandırma için kullanılan Azure aboneliğini değiştirme](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).

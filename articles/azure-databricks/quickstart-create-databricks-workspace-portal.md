@@ -1,6 +1,6 @@
 ---
-title: Azure portal kullanarak Azure Databricks Spark işi çalıştırma
-description: Bu hızlı başlangıçta Azure portalını kullanarak bir Azure Databricks çalışma alanı, bir Apache Spark kümesi oluşturma ve bir Spark işi çalıştırma işlemi gösterilmektedir.
+title: Hızlı başlangıç-Azure portal kullanarak Azure Databricks Spark işi çalıştırma
+description: Bu hızlı başlangıçta Azure portal kullanarak Azure Databricks çalışma alanı, Apache Spark kümesi oluşturma ve Spark işi çalıştırma işlemi gösterilmektedir.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 004557ab3eb73f3f793b0514913260a414645d40
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 23d04062d5db7c944b7734f5e8339342548062fa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129378"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706190"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Databricks üzerinde bir Spark işi çalıştırma
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalış
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalış
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks** seçeneklerini belirleyin.
+1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
 
     ![Azure portal databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -152,7 +152,7 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
    * **Toplama**’yı **SAYI** olarak ayarlayın.
    * **Görüntü türünü** **pasta grafik**olarak ayarlayın.
 
-     **Uygula**'ya tıklayın.
+     **Apply (Uygula)** düğmesine tıklayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -160,7 +160,7 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

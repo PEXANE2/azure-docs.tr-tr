@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844401"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706081"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Bölümlendirilmemiş kapsayıcıları bölümlenmiş kapsayıcılara geçirme
 
@@ -38,7 +38,7 @@ Azure Cosmos DB geçişi desteklemek için, bölüm anahtarı olmayan tüm kapsa
 }
 ```
 
-Kapsayıcı geçirildikten sonra, `_partitionKey` özelliğini belgenin diğer özellikleriyle birlikte doldurarak belgeler oluşturabilirsiniz. @No__t-0 özelliği, belgelerinizin bölüm anahtarını temsil eder.
+Kapsayıcı geçirildikten sonra, `_partitionKey` özelliğini belgenin diğer özellikleriyle birlikte doldurarak belgeler oluşturabilirsiniz. `_partitionKey` özelliği, belgelerinizin bölüm anahtarını temsil eder.
 
 Doğru bölüm anahtarının seçilmesi, sağlanan aktarım hızını en iyi şekilde kullanmak için önemlidir. Daha fazla bilgi için bkz. [bölüm anahtarını seçme](partitioning-overview.md) makalesi.
 
@@ -91,11 +91,11 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-Tüm örnek için bkz. [.NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub deposu.
+Tüm örnek için bkz. [.NET örnekleri][1] GitHub deposu.
                       
 ## <a name="migrate-the-documents"></a>Belgeleri geçirme
 
-Kapsayıcı tanımı bir bölüm anahtarı özelliği ile geliştirirken, kapsayıcıdaki belgeler otomatik olarak geçirilmez. Yani, sistem bölümü anahtar özelliği `/_partitionKey` yolu varolan belgelere otomatik olarak eklenmez. Bölüm anahtarı olmadan oluşturulan belgeleri okuyarak mevcut belgeleri yeniden bölümlemeniz ve belgelerde `_partitionKey` özelliği ile geri yazmanız gerekir.
+Kapsayıcı tanımı bir bölüm anahtarı özelliği ile geliştirirken, kapsayıcıdaki belgeler otomatik olarak geçirilmez. Yani, sistem bölümü anahtar özelliği `/_partitionKey` yolu varolan belgelere otomatik olarak eklenmez. Bir bölüm anahtarı olmadan oluşturulan belgeleri okuyarak mevcut belgeleri yeniden bölümlemeniz ve bunları belgelerdeki `_partitionKey` özelliği ile yeniden yazmanız gerekir.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Bölüm anahtarı olmayan belgelere erişin
 
@@ -110,7 +110,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-Belgeleri yeniden bölümleme hakkında tüm örnek için bkz. [.net Samples](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub deposu. 
+Belgeleri yeniden bölümleme hakkında tüm örnek için bkz. [.net Samples][1] GitHub deposu. 
 
 ## <a name="compatibility-with-sdks"></a>SDK 'lar ile uyumluluk
 
@@ -120,7 +120,9 @@ Geçirilen bir kapsayıcı SDK 'nın en son/v3 sürümü tarafından tüketiledi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB bölümleniyor](partitioning-overview.md)
-* [Azure Cosmos DB istek birimleri](request-units.md)
-* [Kapsayıcılar ve veritabanları üzerinde üretilen iş sağlama](set-throughput.md)
+* [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
+* [Azure Cosmos DB'de İstek Birimleri](request-units.md)
+* [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)
+
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak yük dengeli hub 'larda cihaz sağlama
-description: Öğretici-cihaz sağlama hizmeti Azure portalındaki yük dengeli IoT Hub 'ları genelinde otomatik cihaz sağlama
+title: Öğretici-Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak yük dengeli hub 'larda cihaz sağlama
+description: Bu öğreticide cihaz sağlama hizmeti 'nin Azure portalındaki yük dengeli IoT Hub 'ları arasında otomatik cihaz sağlamayı nasıl etkinleştirdiğini gösterir
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: fb3002e5f195bd3dca32a3500c6789f90e9ea0d6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cf1246862a455cfa71f3e170478736e5e07ee6f7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229443"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701967"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Öğretici: yük dengeli IoT Hub 'larda cihaz sağlama
 
@@ -55,7 +55,7 @@ Ayırma ilkesini ayarlamak için şu adımları izleyin:
 
 1. Ayırma ilkesini ayarlamak için Cihaz Sağlama Hizmeti sayfasında **Ayırma ilkesini yönetme** seçeneğine tıklayın.
 2. Ayırma ilkesi olarak **Eşit ağırlıklı dağılım**'ı ayarlayın.
-3. **Save (Kaydet)** düğmesine tıklayın.
+3. **Kaydet** düğmesine tıklayın.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Yeni IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 
@@ -65,7 +65,7 @@ Cihaz Sağlama Hizmetini ve IoT hub'ını, Cihaz Sağlama Hizmeti bu hub'a kaydo
 2. Cihaz Sağlama Hizmeti sayfasında **Bağlı IoT hub’lar** seçeneğine tıklayın.
 3. **Ekle**'ye tıklayın.
 4. **IoT hub'a bağlantı ekleme** sayfasında, bağlı IoT hub’ın geçerli abonelikte mi yoksa farklı bir abonelikte mi bulunduğunu belirtmek için radyo düğmelerini kullanın. Sonra **IoT hub** kutusunda IoT hub’ın adını seçin.
-5. **Save (Kaydet)** düğmesine tıklayın.
+5. **Kaydet** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

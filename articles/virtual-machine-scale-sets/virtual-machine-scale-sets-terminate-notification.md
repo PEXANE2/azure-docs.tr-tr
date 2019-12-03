@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264670"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705914"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure sanal makine ölçek kümesi örnekleri (Önizleme) için sonlandırma bildirimi
 Ölçek kümesi örnekleri, örnek sonlandırma bildirimleri almak için kabul edebilir ve Sonlandırma işlemine önceden tanımlanmış bir gecikme zaman aşımı kümesi ayarlayabilir. Sonlandırma bildirimi, yeniden başlatmalar ve yeniden dağıtım gibi kesin işlemleri bildirimleri ve ertelerini sağlayan Azure Metadata Service – [zamanlanan olaylar](../virtual-machines/windows/scheduled-events.md)aracılığıyla gönderilir. Önizleme çözümü başka bir olay – Terminate – Zamanlanan Olaylar listesine ekler ve Terminate olayının ilişkili gecikmesi, kullanıcılar tarafından ölçek kümesi modeli yapılandırmalarında belirtilen gecikme sınırına bağlıdır.
@@ -67,7 +67,7 @@ Yukarıdaki blok, ölçek kümesindeki tüm örneklerde herhangi bir sonlandırm
 >Ölçek kümesi örneklerinde sonlandırma bildirimleri yalnızca API sürüm 2019-03-01 ve üstü ile etkinleştirilebilir
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Yeni bir ölçek kümesi oluştururken, [New-AzVmssVM](/powershell/module/az.compute/new-azvmss) cmdlet 'ini kullanarak ölçek kümesinde sonlandırma bildirimlerini etkinleştirebilirsiniz.
+Yeni bir ölçek kümesi oluştururken, [New-AzVmss](/powershell/module/az.compute/new-azvmss) cmdlet 'ini kullanarak ölçek kümesinde sonlandırma bildirimlerini etkinleştirebilirsiniz.
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 Yukarıdaki örnekte, 5 dakikalık varsayılan zaman aşımı ile sonlandırma bildirimleri etkin olan yeni bir ölçek kümesi oluşturulur. Yeni bir ölçek kümesi oluştururken, *Terminatescheduledevents* parametresi bir değer gerektirmez. Zaman aşımı değerini değiştirmek için, *TerminateScheduledEventNotBeforeTimeoutInMinutes* parametresi aracılığıyla istenen zaman aşımını belirtin.
 
-Mevcut bir ölçek kümesinde sonlandırma bildirimlerini etkinleştirmek için [Update-AzVmssVM](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın.
+Var olan bir ölçek kümesinde sonlandırma bildirimlerini etkinleştirmek için [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -152,13 +152,13 @@ POST isteği gövdesinde beklenen JSON aşağıdadır. İstek bir StartRequests 
 
 Ayrıca, [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample) ve [Python](../virtual-machines/linux/scheduled-events.md#python-sample)kullanarak olaylara sorgulama ve yanıt verme için örnekler betiklerine başvurabilirsiniz.
 
-## <a name="tips-and-best-practices"></a>İpuçları ve en iyi uygulamalar
+## <a name="tips-and-best-practices"></a>İpuçları ve en iyi yöntemler
 -   Yalnızca ' silme ' işlemlerinde bildirimleri Sonlandır – ölçek kümesinde *scheduledEventsProfile* etkinse, tüm silme işlemleri (el ile silme veya otomatik ölçeklendirme ile başlatılan ölçek), sonlandırma olayları oluşturur. Yeniden başlatma, yeniden görüntü, yeniden dağıtma ve durdurma/serbest bırakma gibi diğer işlemler sonlandırma olayları oluşturmaz. Düşük öncelikli VM 'Ler için sonlandırma bildirimleri etkinleştirilemez.
 -   Zaman aşımı için zorunlu bekleme yok – sonlandırma işlemini, olay alındıktan sonra ve olayın *NotBefore* süre dolmadan önce herhangi bir zamanda başlatabilirsiniz.
 -   Zaman aşımında zorunlu silme – önizleme, bir olay oluşturulduktan sonra zaman aşımı değerini genişletme yeteneği sağlamaz. Zaman aşımı süresi dolduğunda, bekleyen sonlandırma olayı işlenir ve VM silinir.
 -   Değiştirilebilir zaman aşımı değeri – bir örnek silinmeden önce, ölçek kümesi modelinde *Notbeforetimeout* özelliğini değiştirerek ve sanal makine örneklerini en son modele güncelleştirerek zaman aşımı değerini değiştirebilirsiniz.
--   Tüm bekleyen silmeleri Onayla – VM_1 üzerinde bir bekleyen silme işlemi varsa ve VM_2 üzerinde başka bir Terminate olayını onayladıysanız, VM_1 için terminate olayı onaylanana veya zaman aşımı süresi geçene kadar VM_2 silinmez. VM_1 için sonlandırma olayını onayladıktan sonra, hem VM_1 hem de VM_2 silinir.
--   Tüm eşzamanlı silmeleri Onayla – yukarıdaki örneği genişleterek, VM_1 ve VM_2 aynı *NotBefore* saatine sahipseniz, her iki sonlandırma olayı da onaylanmalı veya zaman aşımı süresi dolmadan önce VM silinmemelidir.
+-   Tüm bekleyen silmeleri Onayla – onaylanmamış VM_1 üzerinde bekleyen bir silme işlemi varsa ve VM_2 başka bir sonlandırma olayını onayladıysanız, VM_1 için sonlandırma olayı onaylanana veya zaman aşımı süresi geçene kadar VM_2 silinmez. VM_1 için sonlandırma olayını onayladıktan sonra, VM_1 ve VM_2 her ikisi de silinir.
+-   Tüm eşzamanlı silmeleri Onayla – yukarıdaki örneği genişleterek VM_1 ve VM_2 aynı *NotBefore* zamanına sahip olursa, sonlandırma olaylarının her ikisi de onaylanmalı veya zaman aşımı süresi dolmadan önce VM silinmemelidir.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>ScheduledEventsProfile etkinleştirme hatası

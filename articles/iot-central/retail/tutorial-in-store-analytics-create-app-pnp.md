@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central"
+title: Öğretici-Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 description: Bu öğreticide, IoT Central ' de bir mağaza Analizi perakende uygulamasının nasıl oluşturulacağı gösterilmektedir. Bunu oluşturacak, özelleştirecek ve algılayıcı cihazları ekleyeceğiz.
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 071d432ba2769705213cb98cee644b64e9e81b6e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112892"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702034"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -186,7 +186,7 @@ Aşağıdaki adımlarda, RuuviTag sensörlerinden `humidity` telemetri türünü
 
 1. **Anlamsal tür** seçeneğini *none* iken *nem*olarak değiştirin.  İsteğe bağlı olarak, genişletilmiş şema görünümünde nem telemetri türü için şema değerlerini ayarlayın. Şema ayarları, sensörlerinizin izlediğiniz veriler için ayrıntılı doğrulama gereksinimleri oluşturmanıza imkan tanır. Örneğin, belirli bir arabirim için en düşük ve en yüksek işletim aralığı değerlerini ayarlayabilirsiniz.
 
-1. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.
+1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
     ![Azure IoT Central RuuviTag cihaz şablonu özelleştirmesi](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 
@@ -214,7 +214,7 @@ Her bir cihazın konumunu depolamak üzere özel bir özellik oluşturmak için 
 
     Bir cihaz şablonu yayımlandığında uygulama işleçleri görünür hale gelir. Bir şablon yayımladıktan sonra, test etmek için sanal cihazlar oluşturmak veya gerçek cihazları uygulamanıza bağlamak için kullanın. Uygulamanıza bağlı cihazlarınız zaten varsa, özelleştirilmiş bir şablon yayımlandığında bu değişiklikler cihazlara bağlanır.
 
-## <a name="add-devices"></a>Cihazları ekleme
+## <a name="add-devices"></a>Cihaz Ekle
 Cihaz şablonlarını oluşturup özelleştirdikten sonra cihaz ekleme zamanı. 
 
 Bu öğreticide, uygulamayı derlemek için aşağıdaki gerçek ve sanal cihaz kümesini kullanacaksınız:

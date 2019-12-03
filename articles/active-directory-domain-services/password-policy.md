@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893427"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704520"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
@@ -87,7 +87,7 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
+1. Sol bölmede, *aadds.contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
 1. **Sistem** kapsayıcısını ve sonra **parola ayarları kapsayıcısı**açın.
 
     Azure AD DS yönetilen etki alanı için yerleşik bir parola ilkesi gösterilir. Bu yerleşik ilkeyi değiştiremezsiniz. Bunun yerine, varsayılan ilkeyi geçersiz kılmak için özel bir parola ilkesi oluşturun.
@@ -112,7 +112,7 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 
     ![Parola ilkesinin uygulanacağı kullanıcıları ve grupları seçin](./media/how-to/fgpp-applies-to.png)
 
-1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *contoso.com*gibi etki alanı adını genişletin ve ardından **aaddc kullanıcıları**gibi bir OU seçin. Uygulamak istediğiniz kullanıcı grubunu içeren özel bir OU varsa, bu OU 'yu seçin.
+1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *aadds.contoso.com*gibi etki alanı adını genişletin ve ardından **aaddc kullanıcıları**gibi bir OU seçin. Uygulamak istediğiniz kullanıcı grubunu içeren özel bir OU varsa, bu OU 'yu seçin.
 
     ![Grubun ait olduğu OU 'yu seçin](./media/how-to/fgpp-container.png)
 
