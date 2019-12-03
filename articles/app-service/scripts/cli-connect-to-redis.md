@@ -1,31 +1,24 @@
 ---
-title: Azure CLI betik örneği - bir uygulama için bir Azure önbelleği için Redis bağlanın. | Microsoft Docs
-description: Azure CLI betik örneği - bir uygulama için bir Azure önbelleği için Redis bağlanın.
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: "CLı: bir uygulamayı Redsıs 'e bağlama"
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulamanın Redsıs için bir Azure önbelleğine nasıl bağlanacağını gösterir.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 87e4e56e429039d943d85fe74003edb8cb148cac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5654ea8c0333e21421e0f9c55cc00d70a7be567
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136857"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688423"
 ---
-# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Bir App Service uygulaması için bir Azure önbelleği için Redis CLI kullanarak bağlanın.
+# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>CLı kullanarak bir App Service uygulamasını Redsıs için Azure önbelleğine bağlama
 
-Bu örnek betik bir Azure Cache, Redis ve bir App Service uygulaması için oluşturur. Ardından uygulama ayarlarını kullanarak uygulamayı Azure önbelleği için Redis bağlanır.
+Bu örnek betik, Redsıs ve App Service uygulaması için bir Azure önbelleği oluşturur. Daha sonra uygulama ayarlarını kullanarak Redsıs için Azure önbelleğini uygulamaya bağlar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -41,16 +34,16 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya so
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu betik bir kaynak grubu, App Service uygulaması, Azure önbelleği için Redis oluşturmak için aşağıdaki komutları kullanır ve tüm ilgili kaynakları. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, bir kaynak grubu, App Service uygulaması, redin için Azure önbelleği ve tüm ilgili kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir App Service uygulaması oluşturur. |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Yeni Azure önbelleği için Redis örneği oluşturun. |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Azure önbelleği için Redis örneği için erişim anahtarlarını listeler. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Oluşturur veya bir App Service uygulaması için uygulama ayarı güncelleştirir. Uygulama ayarları, uygulamanız için ortam değişkenleri olarak kullanıma sunulur. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Redsıs örneği için yeni Azure önbelleği oluşturun. |
+| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Redsıs örneği için Azure önbelleği erişim anahtarlarını listeler. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | App Service uygulaması için bir uygulama ayarı oluşturur veya güncelleştirir. Uygulama ayarları, uygulamanız için ortam değişkenleri olarak kullanıma sunulur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

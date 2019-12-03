@@ -1,26 +1,17 @@
 ---
-title: Kullanıcıların kimliğini doğrulama ve yetkilendirme ile uçtan uca Azure App Service | Microsoft Docs
+title: 'Öğretici: AuthN/AuthO uçtan uca'
 description: Uzak API’lere erişim de dahil olmak üzere App Service uygulamalarınızın güvenliğini sağlamak için App Service kimlik doğrulama ve yetkilendirmesini nasıl kullanacağınızı öğrenin.
 keywords: app service, azure app service, authN, authZ, güvenli, güvenlik, çok katmanlı, azure active directory, azure ad
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6c243839e59038d439e177847df4427d253dbe98
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961949"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672062"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Öğretici: Azure App Service'te kullanıcıların kimliğini doğrulama ve kullanıcıları uçtan uca yetkilendirme
 
@@ -80,7 +71,7 @@ ASP.NET Core’u dilediğiniz zaman durdurmak için, terminalde `Ctrl+C` tuşlar
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-apps-to-azure"></a>Uygulamaları Azure'a dağıtma
+## <a name="deploy-apps-to-azure"></a>Uygulamaları Azure'a Dağıtma
 
 Bu adımda projeyi iki App Service uygulamasına dağıtacaksınız. Bunlardan biri ön uç uygulama, diğeri ise arka uç uygulamadır.
 
@@ -281,7 +272,7 @@ Her iki uygulamanızda da kimlik doğrulaması ve yetkilendirmeyi etkinleştirdi
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-Sol tarayıcıda **abonelikler** ' e tıklayın >  **_abonelik\<>_**  > **ResourceGroups** > **Myauthresourcegroup** > **providers** > **Microsoft. Web** > **siteler** **_ön uç uygulama adı >_**  > **config** > **authsettings öğesine tıklayın** > \<.
+Sol tarayıcıda > **abonelikler** ' e tıklayın\<. **Microsoft. Web** > **siteleri** > , **_ön uç uygulama adı_** ** >  > ** **_>_**  > **config** > **authsettings öğesine tıklayın**\<.
 
 **authsettings** görünümünde **Düzenle**’ye tıklayın. Kopyaladığınız istemci KIMLIĞINI kullanarak aşağıdaki JSON dizesine `additionalLoginParams` ayarlayın. 
 
@@ -401,7 +392,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Yeni değişiklik, `resolve` çağrısını yapıp erişim belirtecini ayarlayan `/.auth/me` eşlemesini ekler. `todoListCtrl` denetleyicisinin örneğini oluşturmadan önce erişim belirtecine sahip olduğunuzdan emin olur. Bu şekilde, denetleyicinin yaptığı tüm API çağrıları belirteci içerir.
+Yeni değişiklik, `/.auth/me` çağrısını yapıp erişim belirtecini ayarlayan `resolve` eşlemesini ekler. `todoListCtrl` denetleyicisinin örneğini oluşturmadan önce erişim belirtecine sahip olduğunuzdan emin olur. Bu şekilde, denetleyicinin yaptığı tüm API çağrıları belirteci içerir.
 
 ### <a name="deploy-updates-and-test"></a>Güncelleştirmeleri dağıtma ve test etme
 

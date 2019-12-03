@@ -1,26 +1,17 @@
 ---
-title: SQL veritabanı ile ASP.NET uygulaması derleme-Azure App Service | Microsoft Docs
+title: 'Öğretici: SQL veritabanı ile ASP.NET uygulaması'
 description: Azure'a SQL Server veritabanı ile C# ASP.NET uygulaması dağıtmayı öğrenin.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471237"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671372"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Öğretici: Azure’da SQL Veritabanı ile ASP.NET uygulaması derleme
 
@@ -53,7 +44,7 @@ Visual Studio’yu önceden yüklediyseniz, **Araçlar** > **Araçları ve Özel
 - [Örnek projeyi indirin](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
 - *Dotnet-sqldb-tutorial-master.zip* dosyasını ayıklayın (sıkıştırmasını açın).
 
-Örnek proje, [Entity Framework Code First](https://www.asp.net/mvc) kullanan temel bir [ASP.NET MVC](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) oluşturma-okuma-güncelleştirme-silme (CRUD) uygulaması içerir.
+Örnek proje, [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) kullanan temel bir [ASP.NET MVC](https://www.asp.net/mvc) oluşturma-okuma-güncelleştirme-silme (CRUD) uygulaması içerir.
 
 ### <a name="run-the-app"></a>Uygulamayı çalıştırma
 
@@ -79,7 +70,7 @@ Uygulama, veritabanıyla bağlantı kurmak için bir veritabanı bağlamı kulla
 
 Yayımlama, ASP.NET uygulamanızı Azure 'da çalıştırmak için gereken tüm Azure kaynaklarını oluşturmanıza yardımcı olan **oluştur App Service** iletişim kutusunu açar.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 **App Service Oluştur** iletişim kutusunda **Hesap ekle**’ye tıklayın ve ardından Azure aboneliğinizde oturum açın. Bir Microsoft hesabında zaten oturum açtıysanız hesabın Azure aboneliğinizi barındırdığından emin olun. Oturum açtığınız Microsoft hesabında Azure aboneliğiniz yoksa, doğru hesabı eklemek için tıklayın. 
 
@@ -88,7 +79,7 @@ Yayımlama, ASP.NET uygulamanızı Azure 'da çalıştırmak için gereken tüm 
 >
 >
    
-![Azure'da oturum açma](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+![Azure'da oturum açın](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Web uygulaması adını yapılandırma
 
@@ -128,7 +119,7 @@ Veritabanı oluşturmadan önce, bir [Azure SQL Veritabanı mantıksal sunucusun
 
 **SQL Veritabanı oluştur**'a tıklayın.
 
-![SQL Veritabanı oluşturma](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
+![SQL Veritabanı Oluşturma](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 **SQL Veritabanını Yapılandır** iletişim kutusunda, **SQL Server**'ın yanındaki **Yeni**'ye tıklayın. 
 
@@ -143,9 +134,9 @@ Bu kullanıcı adını ve parolayı unutmayın. Daha sonra mantıksal sunucu ör
 
 ![SQL Server örneği oluşturma](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-**Tamam** düğmesine tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
+**Tamam**’a tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
 
-### <a name="create-a-sql-database"></a>SQL Veritabanı oluşturma
+### <a name="create-a-sql-database"></a>SQL Veritabanı Oluşturma
 
 **SQL Veritabanını Yapılandır** iletişim kutusunda: 
 
@@ -155,13 +146,13 @@ Bu kullanıcı adını ve parolayı unutmayın. Daha sonra mantıksal sunucu ör
 
 ![SQL Veritabanı'nı yapılandırma](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-**App Service Oluştur** iletişim kutusunda, yapılandırdığınız kaynaklar gösterilir. **Oluştur**'a tıklayın. 
+**App Service Oluştur** iletişim kutusunda, yapılandırdığınız kaynaklar gösterilir. **Oluştur**’a tıklayın. 
 
 ![oluşturduğunuz kaynaklar](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
 Sihirbaz Azure kaynaklarını oluşturmayı tamamladığında, ASP.NET uygulamanızı Azure'a yayımlar. Varsayılan tarayıcınız dağıtılan uygulamanın URL'siyle başlatılır. 
 
-Yapılacak birkaç işlem ekleyin.
+Yapılacak birkaç iş ekleyin.
 
 ![Azure uygulaması 'nda yayınlanan ASP.NET uygulaması](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -261,7 +252,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 _Views\Todos\Create.cshtml_ dosyasını açın.
 
-Razor kodunda, `<div class="form-group">` kullanan bir `model.Description` öğesi ve `<div class="form-group">` kullanan başka bir `model.CreatedDate` öğesi görürsünüz. Bu iki öğenin hemen arkasına `<div class="form-group">` kullanan başka bir `model.Done` öğesi ekleyin:
+Razor kodunda, `model.Description` kullanan bir `<div class="form-group">` öğesi ve `model.CreatedDate` kullanan başka bir `<div class="form-group">` öğesi görürsünüz. Bu iki öğenin hemen arkasına `model.Done` kullanan başka bir `<div class="form-group">` öğesi ekleyin:
 
 ```csharp
 <div class="form-group">
@@ -285,7 +276,7 @@ Boş `<th></th>` öğesini arayın. Bu öğenin hemen üstüne aşağıdaki Razo
 </th>
 ```
 
-`<td>` yardımcı yöntemlerini içeren `Html.ActionLink()` öğesini bulun. Bu _yönteminin_üst kısmına`<td>`, aşağıdaki Razor koduyla başka bir `<td>` öğesi ekleyin:
+`<td>` yardımcı yöntemlerini içeren `Html.ActionLink()` öğesini bulun. Bu `<td>` yönteminin _üst kısmına_, aşağıdaki Razor koduyla başka bir `<td>` öğesi ekleyin:
 
 ```csharp
 <td>
@@ -297,7 +288,7 @@ Boş `<th></th>` öğesini arayın. Bu öğenin hemen üstüne aşağıdaki Razo
 
 Uygulamayı çalıştırmak için `Ctrl+F5` tuşlarına basın.
 
-Artık yapılacak bir öğe ekleyip öğeyi **Bitti** olarak işaretleyebilirsiniz. Daha sonra öğe, ana sayfanızda tamamlanmış bir öğe olarak görünmelidir. `Edit` görünümünü değiştirmediğinizden, `Done` görünümünün `Edit` alanında görünmediğini göz önünde bulundurun.
+Artık yapılacak bir öğe ekleyip öğeyi **Bitti** olarak işaretleyebilirsiniz. Daha sonra öğe, ana sayfanızda tamamlanmış bir öğe olarak görünmelidir. `Edit` görünümünü değiştirmediğinizden, `Edit` görünümünün `Done` alanında görünmediğini göz önünde bulundurun.
 
 ### <a name="enable-code-first-migrations-in-azure"></a>Azure'da Code First Migrations’ı etkinleştirme
 

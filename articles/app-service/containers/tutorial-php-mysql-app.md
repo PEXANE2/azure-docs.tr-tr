@@ -1,22 +1,16 @@
 ---
-title: Linux üzerinde MySQL ile PHP (Laralevel)-Azure App Service | Microsoft Docs
-description: Azure 'daki bir MySQL veritabanına bağlantı ile Linux üzerinde Azure App Service çalışan bir PHP uygulamasını nasıl alabileceğinizi öğrenin. Laralevel, öğreticide kullanılır.
-services: app-service\web
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: 'Öğretici: MySQL ile Linux PHP uygulaması'
+description: Azure 'daki bir MySQL veritabanına bağlantı ile Azure App Service çalışan Linux Node. js uygulamasını nasıl alabileceğinizi öğrenin. Bu öğreticide laralevel kullanılır.
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4fade03d798096e250cb5b56fbb2003ea4b58e1b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: be8bbfde7e9873f9cef3a85cacc2dfcf4db9039b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481325"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687424"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir PHP ve MySQL uygulaması derleme
 
@@ -33,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure’da MySQL veritabanı oluşturma
 > * PHP uygulamasını MySQL’e bağlama
-> * Uygulamayı Azure'a dağıtma
+> * Uygulamayı Azure’da dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme
@@ -48,7 +42,7 @@ Bu öğreticiyi tamamlamak için:
 * [PHP 5.6.4 veya sonraki sürümü yükleme](https://php.net/downloads.php)
 * [Oluşturucu Yükleme](https://getcomposer.org/doc/00-intro.md)
 * Laravel için gereken şu PHP uzantılarını etkinleştirin: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
-* [MySQL yükleme ve başlatma](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
+* [MySQL'i yükleyin ve başlatın](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Yerel MySQL hazırlama
 
@@ -85,7 +79,7 @@ quit
 ## <a name="create-a-php-app-locally"></a>Yerel olarak PHP uygulaması oluşturma
 Bu adımda bir Laravel örnek uygulaması edinir, veritabanı bağlantısını yapılandırır ve yerel olarak çalıştırırsınız. 
 
-### <a name="clone-the-sample"></a>Örneği kopyalama
+### <a name="clone-the-sample"></a>Örneği
 
 Terminal penceresinde, `cd` ile bir çalışma dizinine gidin.
 
@@ -339,7 +333,7 @@ Daha fazla bilgi için bkz. [site kökünü değiştirme](configure-language-php
 
 ### <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma
 
-App Service’te[ komutunu kullanarak ortam değişkenlerini `az webapp config appsettings set`uygulama ayarları](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) olarak ayarlayabilirsiniz.
+App Service’te [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
 
 Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _&lt;appname >_ ve _MySQL-server-name >&lt;_ yer tutucuları değiştirin.
 
@@ -364,7 +358,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Laravel, App Service'te bir uygulama anahtarı gerektirir. Uygulama anahtarını uygulama ayarları ile yapılandırabilirsiniz.
 
-Uygulama anahtarını `php artisan`.env_dosyasına kaydetmeden yeni bir uygulama anahtarı oluşturmak için_ seçeneğini kullanın.
+Uygulama anahtarını _.env_ dosyasına kaydetmeden yeni bir uygulama anahtarı oluşturmak için `php artisan` seçeneğini kullanın.
 
 ```bash
 php artisan key:generate --show
@@ -413,7 +407,7 @@ remote: Running deployment command...
 > Dağıtım işleminin sonunda [Composer](https://getcomposer.org/) paketleri yüklediğini fark edebilirsiniz. App Service, varsayılan dağıtım sırasında bu otomasyonları çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde üç ek dosya bulunur:
 >
 > - `.deployment` - Bu dosya, App Service’ten özel dağıtım betiği olarak `bash deploy.sh` komutunu çalıştırmasını ister.
-> - `deploy.sh` - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `php composer.phar install` komutundan sonra `npm install` çalıştırdığını görürsünüz.
+> - `deploy.sh` - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `npm install` komutundan sonra `php composer.phar install` çalıştırdığını görürsünüz.
 > - `composer.phar` - Composer paket yöneticisi.
 >
 > App Service’e Git tabanlı dağıtımınıza herhangi bir adım eklemek için bu yaklaşımı kullanabilirsiniz. Daha fazla bilgi için bkz. [besteci Çalıştır](configure-language-php.md#run-composer).
@@ -598,7 +592,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * Azure’da MySQL veritabanı oluşturma
 > * PHP uygulamasını MySQL’e bağlama
-> * Uygulamayı Azure'a dağıtma
+> * Uygulamayı Azure’da dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme

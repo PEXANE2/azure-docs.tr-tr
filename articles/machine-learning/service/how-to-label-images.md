@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc7eaeefcef042417b29eb7c887cc19acf8c5c02
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838950"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688226"
 ---
-# <a name="how-to-tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme
+# <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme
 
-Proje yöneticiniz Azure Machine Learning bir etiketleme projesi oluşturduktan sonra, bir makine öğrenimi projesi için hızlı bir şekilde veri hazırlamak üzere etiketleme aracını kullanabilirsiniz. 
+Proje yöneticiniz Azure Machine Learning ' de bir etiketleme projesi oluşturduktan sonra etiketleme aracını kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
 
 > [!div class="checklist"]
 > * Etiketleme projelerinize erişme
@@ -26,97 +26,93 @@ Proje yöneticiniz Azure Machine Learning bir etiketleme projesi oluşturduktan 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Çalışan bir veri etiketleme projesi için etiketleme portalı URL 'SI
-* Bir [Microsoft hesabı](https://account.microsoft.com/account) veya
-* Kuruluş ve proje için Azure Active Directory hesabı
+* Kuruluş ve proje için bir [Microsoft hesabı](https://account.microsoft.com/account) veya Azure Active Directory hesabı
 
-> [!Note]
-> Proje Yöneticisi etiketleme portalı URL 'sini, **proje ayrıntıları** sayfasındaki **Ayrıntılar** sekmesinde bulabilir. 
+> [!NOTE]
+> Proje Yöneticisi etiketleme portalı URL 'sini, **proje ayrıntıları** sayfasının **Ayrıntılar** sekmesinde bulabilir.
 
-## <a name="logging-in-to-the-projects-labeling-portal"></a>Projenin etiketleme portalında oturum açma
+## <a name="sign-in-to-the-projects-labeling-portal"></a>Projenin etiketleme portalında oturum açın
 
-Proje Yöneticisi tarafından size sunulan etiketleme portalı URL 'sine gidin. 
+Proje Yöneticisi tarafından sunulan etiketleme portalı URL 'sine gidin. Yöneticinin sizi takıma eklemek için kullandığı e-posta hesabını kullanarak oturum açın. Çoğu kullanıcı için Microsoft hesabı olacaktır. Etiketleme projesi Azure Active Directory kullanıyorsa, oturum açacaksınız.
 
-Yönetici tarafından takıma eklemek için kullanılan e-posta hesabını kullanarak oturum açın. Çoğu kullanıcı için Microsoft hesabı oturum açma işlemi, yapılır. Etiketleme projesi Azure Active Directory kullanıyorsa, oturum açma yöntemi bu şekilde yapılır. 
+## <a name="understand-the-labeling-task"></a>Etiketleme görevini anlayın
 
-## <a name="understanding-the-labeling-task"></a>Etiketleme görevini anlama
+Oturum açtıktan sonra projenin genel bakış sayfasını görürsünüz.
 
-Oturum açtıktan sonra projenin genel bakış sayfasına yönlendirilirsiniz. 
-
-Yapmanız gereken ilk şey **ayrıntılı yönergeleri görüntüler**. Bu yönergeler projenize özeldir ve size, kararlarınızı ve diğer ilgili bilgileri nasıl yapmanız gerektiğini, sizin de ilgilendiğiniz verilerin türünü açıklayacak. İşiniz bittiğinde proje sayfasına dönüp **etiketlemeyi Başlat**' ı seçin.
+**Ayrıntılı yönergeleri görüntüle**' ye gidin. Bu yönergeler projenize özeldir. Bunlar, söz konusu verilerin türünü, kararlarınızı nasıl yapmanız gerektiğini ve diğer ilgili bilgileri açıklar. Bu bilgileri okuduktan sonra proje sayfasına dönüp **etiketlemeyi Başlat**' ı seçin.
 
 ## <a name="common-features-of-the-labeling-task"></a>Etiketleme görevinin ortak özellikleri
 
-Tüm görüntü etiketleme görevleri, proje yöneticisi tarafından belirtilen bir kümeden uygun bir etiketi veya etiketleri seçmeyi içerir. Klavyenizdeki sayı tuşlarını kullanarak ilk dokuz etiket arasından seçim yapabilirsiniz.  
+Tüm görüntü etiketleme görevlerinde, proje yöneticisi tarafından belirtilen bir kümeden uygun bir etiketi veya etiketleri seçersiniz. Klavyenizdeki sayı tuşlarını kullanarak ilk dokuz etiketi seçebilirsiniz.  
 
-Görüntü sınıflandırma görevleri birden çok görüntüyü aynı anda sunmanıza olanak tanır. Görüntü alanının üzerindeki simgeler kullanılarak farklı düzenler seçilebilir. **Tümünü Seç** düğmesine basarak, görüntülenmiş tüm görüntüleri eşzamanlı olarak seçebilirsiniz. Görüntü alanının sağ üst köşesindeki dairesel seçim düğmesini kullanarak tek tek fotoğrafları seçin. Etiket uygulamak için en az bir görüntü seçmelisiniz. Birden çok görüntü seçiliyse, bir etiket seçilmesi, bu etiketi Seçilen fotoğrafların her birine uygular.
+Görüntü sınıflandırma görevlerinde birden çok görüntüyü aynı anda görüntülemeyi seçebilirsiniz. Düzeni seçmek için görüntü alanının üzerindeki simgeleri kullanın. Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç**' i kullanın. Tek tek görüntüleri seçmek için görüntünün sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir görüntü seçmelisiniz. Birden çok görüntü seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm görüntülere uygulanır.
 
-Burada, bir 2x2 düzeni seçtik ve "Mammal" etiketini, ve Orca 'nın görüntülerine uygulamak üzeresiniz. Parça içeren görüntü zaten "Cartilaginou balığı" olarak etiketlendi ve Iguana henüz etiketlendi.
+Burada iki-by iki düzen seçtik ve "Mammal" etiketini, ve Orca 'nın görüntülerine uygulamak üzeresiniz. Parça görüntüsü zaten "Cartilaginou balığı" olarak etiketlendi ve Iguana henüz etiketlendi.
 
 ![Birden çok resim düzeni ve seçimi](media/how-to-label-images/layouts.png)
 
 > [!Important] 
-> Yalnızca etiketli verilerin yeni bir sayfasına sahip olduğunuzda mizanpajları değiştirin. Mizanpajları değiştirmek sayfanın devam eden etiketleme işini temizler. 
+> Yalnızca etiketli verilerin yeni bir sayfasına sahip olduğunuzda mizanpajları değiştirin. Mizanpajları değiştirmek sayfanın devam eden etiketleme işini temizler.
 
-Sayfadaki tüm görüntüleri etiketlediyseniz Azure, **Gönder** düğmesine izin vermez. Çalışmanızı kaydetmek için **Gönder** ' e basın. 
+Sayfadaki tüm görüntüleri etiketlediyseniz Azure, **Gönder** düğmesine izin vermez. Çalışmanızı kaydetmek için **Gönder** ' i seçin.
 
-Her seferinde veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyruğundan yeni bir görüntü kümesiyle yenileyecek.  
+Bir yandan veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyruğundan yeni bir görüntü kümesiyle yeniler.
 
-## <a name="tagging-images-for-multi-class-classification"></a>Birden çok sınıf sınıflandırması için resimleri etiketleme
+## <a name="tag-images-for-multi-class-classification"></a>Birden çok sınıf sınıflandırması için resimleri etiketleme
 
-Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. İstediğiniz zaman **yönergeler** sayfasını seçin ve projeye özgü Kılavuzu görmek için **ayrıntılı yönergeleri görüntüleyin** . 
+Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle**' yi seçin.
 
-Daha önce anlatıldığı gibi, görüntüleri sunmak için birkaç düzen arasından seçim yapabilirsiniz. Bir görüntü seçip etiketi atadıktan sonra bir hata yaptığını fark etmiş olursunuz. Resmin altında gösterildiği etikette, `X` hedefine tıkladığınızda, etiketini temizleyemezsiniz. Ya da, görüntüyü seçip başka bir sınıf seçerseniz, etiket yeni seçilen değere geçiş yapar.
+Bir resme etiket atadıktan sonra bir hata yaptık, bu hatayı çözebilirsiniz. Etiketi temizlemek için görüntünün altında görüntülenen etikette "**X**" işaretini seçin. Veya resmi seçip başka bir sınıf seçin. Yeni seçilen değer, daha önce uygulanan etiketin yerine geçecek.
 
-## <a name="tagging-images-for-multi-label-classification"></a>Çok etiketli sınıflandırmayla ilgili görüntüleri etiketleme
+## <a name="tag-images-for-multi-label-classification"></a>Çok etiketli sınıflandırmanın resimlerini etiketleme
 
-"Görüntü sınıflandırması çoklu etiketi" türünde bir proje üzerinde çalışıyorsanız, bir görüntüye bir _veya daha fazla_ etiket uygularsınız. İstediğiniz zaman **yönergeler** sayfasını seçin ve projeye özgü Kılavuzu görmek için **ayrıntılı yönergeleri görüntüleyin** . 
+"Görüntü sınıflandırması çoklu etiketi" türünde bir proje üzerinde çalışıyorsanız, bir görüntüye bir *veya daha fazla* etiket uygularsınız. Projeye özgü yönleri görmek için **yönergeler** ' i seçin ve **ayrıntılı yönergeleri görüntüleyin**.
 
-Etiketlemek istediğiniz görüntüyü seçin ve ardından etikete tıklayın. Etiketi seçmek, seçilen tüm görüntülere uygular ve bunları kaldırır. Daha fazla etiket uygulamak için görüntüleri yeniden seçmeniz gerekir. Bu animasyon çok etiketli etiketleme sayfasını gösterir:
+Etiketlemek istediğiniz görüntüyü seçin ve ardından etiketi seçin. Etiket tüm seçili görüntülere uygulanır ve ardından görüntülerin seçimi kaldırılır. Daha fazla etiket uygulamak için görüntüleri yeniden seçmeniz gerekir. Aşağıdaki animasyon çok etiketli etiketlemesini göstermektedir:
 
-* "Okyanus" etiketini uygulamak için **Tümünü Seç** seçeneği kullanılır
-* Tek bir görüntü seçilir ve "closeup" olarak etiketlendi
-* Üç görüntü seçilir ve "geniş açılı" olarak etiketlendi
+1. "Okyanus" etiketini uygulamak için **Tümünü Seç** kullanılır.
+1. Tek bir görüntü seçilir ve "closeup" olarak etiketlenir.
+1. Üç görüntü seçilir ve "geniş açılı" olarak etiketlenir.
 
-![MultiLabel akışını gösteren animasyon](media/how-to-label-images/multilabel.gif)
+![Animasyon MultiLabel akışını gösterir](media/how-to-label-images/multilabel.gif)
 
-Bir hata düzeltmek için, tek tek etiketleri temizlemek için `X` tıklayabilir ya da görüntüleri seçebilir ve etiketi seçerek seçili tüm görüntülerden etiketi temizler. Bu senaryo burada gösterilmektedir; burada "Land" tıklanması, seçilen iki görüntüden bu etiketi temizler.
+Bir hata düzeltmek için "**X**" düğmesine tıklayarak tek bir etiketi temizleyin veya görüntüleri seçin ve ardından etiketi seçerek seçili tüm görüntülerden etiketi temizler. Bu senaryo burada gösterilmiştir. "Land" tıklanması, seçili iki görüntüden bu etiketi temizler.
 
-![Birden çok seçimi gösteren ekran görüntüsü](media/how-to-label-images/multiple-deselection.png)
+![Bir ekran görüntüsü birden çok seçimi gösterir](media/how-to-label-images/multiple-deselection.png)
 
-Azure yalnızca, her görüntüye en az bir etiket uyguladıktan sonra **Gönder** düğmesini etkinleştirir. Çalışmanız için **Gönder** ' e basın.
+Azure yalnızca, her görüntüye en az bir etiket uyguladıktan sonra **Gönder** düğmesini etkinleştirir. Çalışmanızı kaydetmek için **Gönder** ' i seçin.
 
-## <a name="tagging-images-and-bounding-boxes-for-object-detection"></a>Nesne algılama için resimleri ve sınırlayıcı kutuları etiketleme
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Resimleri etiketleme ve nesne algılaması için sınırlayıcı kutuları belirtme
 
-Projeniz "nesne kimliği (sınırlayıcı kutular)" türündedir, görüntüde bir veya daha fazla sınırlayıcı kutu belirtirsiniz ve bu kutuya bir etiket uygularsınız. Her görüntüde, her birinin tek etiketli birden çok sınırlayıcı kutusu olabilir. Birden çok sınırlayıcı kutu eklemenin projenize uygun olup olmadığını anlamak için **ayrıntılı yönergeleri görüntüle** ' i kullanın.
+Projeniz "nesne kimliği (sınırlayıcı kutular)" türündedir, görüntüde bir veya daha fazla sınırlayıcı kutu belirtip her kutuya bir etiket uygularsınız. Görüntülerde, her biri tek etiketli birden çok sınırlayıcı kutusu olabilir. Projenizde birden fazla sınırlayıcı kutunun kullanıldığını öğrenmek için **ayrıntılı yönergeleri görüntüle** ' i kullanın.
 
-1. Oluşturmak istediğiniz sınırlayıcı kutu için bir etiket seçin
-1. Dikdörtgen kutu aracı **![dikdörtgen kutusu** aracını seçin](media/how-to-label-images/rectangular-box-tool.png) veya ' R ' tuşuna basın 
-1. Kaba bir sınırlayıcı kutu oluşturmak için, Hedefinizdeki çapraz doğrultuda tıklayın ve sürükleyin
-    * Kutunun kenarlarını veya köşelerini tıklatıp sürükleyerek sınırlayıcı kutuyu ayarlayın
+1. Oluşturmayı planladığınız sınırlama kutusu için bir etiket seçin.
+1. Dikdörtgen kutu **aracı** ![dikdörtgen kutu aracını seçin](media/how-to-label-images/rectangular-box-tool.png) veya "R" seçeneğini belirleyin.
+3. Kaba bir sınırlayıcı kutu oluşturmak için, Hedefinizdeki çapraz doğrultuda tıklayın ve sürükleyin. Sınırlayıcı kutuyu ayarlamak için kenarları veya köşeleri sürükleyin.
 
-![Temel sınırlama kutusu oluşturma ekranının ekran görüntüsü](media/how-to-label-images/bounding-box-sequence.png)
+![Bir ekran görüntüsü temel sınırlayıcı kutusu oluşturmayı gösterir.](media/how-to-label-images/bounding-box-sequence.png)
 
-Sınırlayıcı kutuyu silmek isterseniz, oluşturulduktan sonra sınırlayıcı kutunun yanında görünen X şeklindeki hedefe tıklayın.
+Bir sınırlayıcı kutuyu silmek için, oluşturulduktan sonra sınırlayıcı kutunun yanında görünen X şeklindeki hedefe tıklayın.
 
-Varolan bir sınırlayıcı kutunun etiketini yeniden atayamazsınız. Etiket atamasıyla bir hata yaparsanız, sınırlayıcı kutuyu silmeniz ve doğru etiketle yeni bir tane oluşturmanız gerekir.
+Varolan bir sınırlayıcı kutunun etiketini değiştiremezsiniz. Etiket atama hatası yaparsanız, sınırlayıcı kutuyu silmeniz ve doğru etiketle yeni bir tane oluşturmanız gerekir.
 
-Varsayılan olarak, varolan sınırlayıcı kutular düzenlenebilir. Kilit **/kilit açma** bölgeleri aracı ![kilit/kilit açma aracı](media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir sınırlayıcı kutunun şeklini veya konumunu değiştirebilirsiniz.
+Varsayılan olarak, varolan sınırlayıcı kutuları düzenleyebilirsiniz. Kilit **/kilit açma** bölgeleri aracı ![kilit/kilit açma aracı](media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir sınırlayıcı kutunun şeklini veya konumunu değiştirebilirsiniz.
 
-Mevcut bir sınırlayıcı kutuyu ayarlamak **için bölge işleme aracı ![** bölgeleri işleme aracı](media/how-to-label-images/regions-tool.png) veya "d" kullanın. Şekli ayarlamak için kenarları veya köşeleri tıklatıp sürükleyebilirsiniz. İç kısma tıkladığınızda, tüm sınırlayıcı kutusunu sürükleyebilirsiniz. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz. 
+Mevcut bir sınırlayıcı kutuyu ayarlamak **için bölge işleme aracı ![** bölgeleri işleme aracı](media/how-to-label-images/regions-tool.png) veya "d" kullanın. Şekli ayarlamak için kenarları veya köşeleri sürükleyin. Tüm sınırlayıcı kutusunu sürüklemek için iç öğesine tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
 
-Şablon-kutusu aracı](media/how-to-label-images/template-box-tool.png) veya "T" ![**şablon tabanlı Box** aracını kullanarak aynı boyutta birden fazla sınırlayıcı kutu oluşturun. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz araç 5 0x50 piksel kutu üretir. Bir sınırlayıcı kutu oluşturduysanız ve sonra şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlayıcı kutular en son yaptığınız son bir boyut olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır. 
+Şablon-kutusu aracı](media/how-to-label-images/template-box-tool.png) veya "T" ![**şablon tabanlı Box** aracını kullanarak aynı boyutta birden fazla sınırlayıcı kutu oluşturun. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz, araç 50-50 piksel kutu üretir. Bir sınırlayıcı kutusu oluşturup şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlama kutuları oluşturduğunuz son kutunun boyutu olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır.
 
-Geçerli görüntüdeki _Tüm_ sınırlayıcı kutuları silmek isterseniz, **tüm bölgeleri** Sil aracını ![bölgeleri Sil aracını](media/how-to-label-images/delete-regions-tool.png)seçebilirsiniz. 
+Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için, **tüm bölgeleri** Sil aracını ![bölgeleri sil araç](media/how-to-label-images/delete-regions-tool.png)seçin.
 
-Görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' e basın. **Gönder** düğmesine basmadığınız takdirde devam eden çalışmanız kaydedilmez. 
+Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
 
-## <a name="finishing-up"></a>Tamamlanıyor 
+## <a name="finish-up"></a>Bitiş
 
-Etiketli verilerin bir sayfasını gönderdiğinizde Azure, bir iş sırasından etiketlendirmede yeni olmayan veriler atar. Etiketi olmayan daha fazla veri yoksa, Portal giriş sayfasına geri bir bağlantı ile bu efekte bir ileti görürsünüz. 
+Etiketli verilerin bir sayfasını gönderdiğinizde, Azure 'un bir iş kuyruğundan bu verileri etiketledi. Etiketli daha fazla veri yoksa, bunu portal giriş sayfasının bağlantısı ile birlikte gösteren bir ileti alırsınız.
 
-Daha fazla etiketleme yapabildiğinizi biliyorsanız, etiketleme portalının sağ üst köşesinde adınızı seçin ve **SignOut**' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır. 
+Etiketleme tamamlandığında, etiketleme portalının sağ üst köşesindeki adınızı seçin ve ardından **Oturumu Kapat**' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure 'da görüntü sınıflandırma modellerini eğitme](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml) hakkında bilgi edinin
-* [Azure kullanarak nesne algılama hakkında bilgi edinin ve daha hızlı R-CNN tekniği](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)
+* [Azure kullanarak nesne algılama hakkında bilgi edinin ve "daha hızlı R-CNN" tekniği](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)

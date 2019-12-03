@@ -1,26 +1,17 @@
 ---
-title: Linux 'ta MongoDB ile Node. js (ortalama. js)-Azure App Service | Microsoft Docs
-description: Linux üzerinde Azure App Service'te MongoDB bağlantı dizesine sahip Cosmos DB veritabanı bağlantısıyla bir Node.js uygulamasının nasıl çalıştırılacağı hakkında bilgi edinin. Ortalama. js öğreticide kullanılır.
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Öğretici: MongoDB ile Linux Node. js uygulaması'
+description: Azure 'daki bir MongoDB veritabanına bağlantı ile Azure App Service çalışan Linux Node. js uygulamasını nasıl alabileceğinizi öğrenin (Cosmos DB). Ortalama. js öğreticide kullanılır.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cf145e04ca0e0ddf336521e72f6dc230dc8fc86b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024960"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688883"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Node. js ve MongoDB uygulaması oluşturma
 
@@ -259,13 +250,13 @@ Varsayılan olarak, MEAN.js projesi _config/env/local-production.js_ öğesini G
 
 Uygulama ayarlarını belirlemek için Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanın.
 
-Aşağıdaki örnek, Azure uygulamanızda bir `MONGODB_URI` uygulama ayarı yapılandırır. *@No__t-1APP-name >* , *\<cosmosdb-name >* ve *\< birincil-ana anahtar >* yer tutucularını değiştirin.
+Aşağıdaki örnek, Azure uygulamanızda bir `MONGODB_URI` uygulama ayarı yapılandırır. *\<app-name >* , *\<cosmosdb-name >* ve *\<birincil-ana anahtar >* yer tutucularını değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-Node. js kodunda, [Bu uygulama ayarına](configure-language-nodejs.md#access-environment-variables) , tıpkı herhangi bir ortam değişkenine erişim gibi `process.env.MONGODB_URI` ile erişirsiniz.
+Node. js kodunda, [Bu uygulama ayarına](configure-language-nodejs.md#access-environment-variables) , tıpkı herhangi bir ortam değişkenine erişecekle benzer şekilde `process.env.MONGODB_URI`erişirsiniz.
 
 Yerel MEAN.js deponuzda, üretim ortamına özel yapılandırma içeren _config/env/production.js_ (_config/env/local-production.js_ değil) dosyasını açın. Varsayılan MEAN.js uygulaması, zaten `MONGODB_URI` ortam değişkenini kullanmak üzere yapılandırılmıştır.
 
@@ -445,7 +436,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-@No__t-0 ' ı tamamladıktan sonra, Azure uygulamanıza gidin ve yeni işlevleri deneyin.
+`git push` tamamlandıktan sonra Azure uygulamanıza gidin ve yeni işlevleri deneyin.
 
 ![Azure’da yayımlanan model ve veritabanı değişiklikleri](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 

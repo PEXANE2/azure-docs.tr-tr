@@ -1,24 +1,17 @@
 ---
-title: SSL sertifikaları ekleme ve yönetme-Azure App Service | Microsoft Docs
-description: App Service sertifikasını satın almayı ve App Service uygulamanıza bağlamayı öğrenin
-services: app-service
-author: cephalin
-manager: gwallace
+title: SSL sertifikaları ekleme ve yönetme
+description: Azure App Service 'de ücretsiz bir sertifika oluşturun, App Service sertifikayı içeri aktarın, Key Vault sertifikasını içeri aktarın veya App Service sertifikası satın alın.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907131"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670729"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -118,7 +111,7 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 
 | Ayar | Açıklama |
 |-|-|
-| Ad | App Service sertifikanız için kolay bir ad. |
+| Adı | App Service sertifikanız için kolay bir ad. |
 | Naked etki alanı konak adı | Kök etki alanını burada belirtin. Verilen sertifika hem kök etki alanının hem *de* `www` alt etki alanının güvenliğini sağlar. Verilen sertifikada, ortak ad alanı kök etki alanını içerir ve konu alternatif adı alanı `www` etki alanını içerir. Yalnızca herhangi bir alt etki alanının güvenliğini sağlamak için burada alt etki alanının tam etki alanı adını belirtin (örneğin, `mysubdomain.contoso.com`).|
 | Abonelik | Web uygulamasının barındırıldığı veri merkezi. |
 | Kaynak grubu | Sertifikayı içeren kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
@@ -139,7 +132,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 | Ayar | Açıklama |
 |-|-|
-| Ad | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
+| Adı | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
 | Kaynak grubu | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -372,7 +365,7 @@ Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Diğer kaynaklar
+## <a name="more-resources"></a>Daha fazla kaynak
 
 * [SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS zorlama](configure-ssl-bindings.md#enforce-https)

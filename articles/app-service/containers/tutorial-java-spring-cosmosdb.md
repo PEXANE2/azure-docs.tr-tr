@@ -1,20 +1,18 @@
 ---
-title: Linux 'ta Java Web uygulaması oluşturma-Azure App Service
-description: Linux ve Azure Cosmos DB üzerinde Azure App Service Spring Boot Java Web uygulamaları oluşturun, dağıtın ve ölçeklendirin.
+title: 'Öğretici: MongoDB ile Linux Java uygulaması'
+description: Azure 'da çalışan bir MongoDB bağlantısı ile Azure App Service çalışan veri odaklı bir Linux Java uygulamasını nasıl alabileceğinizi öğrenin (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 077c9b22dbb629c8408d431de3e2e621b79c9c48
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747683"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688823"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
@@ -238,7 +236,7 @@ Uygulama başlatıldıktan sonra Spring TODO uygulamasına bu bağlantıyı kull
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service'e dağıtma
+## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service dağıtma
 
 `azure-webapp:deploy` Maven hedefini kullanarak, TODO uygulamasını Linux üzerinde Azure App Service için dağıtın.
 
