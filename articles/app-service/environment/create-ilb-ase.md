@@ -1,24 +1,18 @@
 ---
-title: App Service Ortamı-Azure ile iç yük dengeleyici oluşturma
-description: İnternet’ten yalıtılmış bir Azure App Service Ortamı oluşturma ve kullanma ayrıntıları
-services: app-service
-documentationcenter: na
+title: ARM ile ıLB ATıCı oluşturma
+description: Azure Resource Manager şablonları kullanarak iç yük dengeleyiciye (ıLB Ao) App Service ortam oluşturmayı öğrenin. Uygulamalarınızı internet 'ten tamamen yalıtın.
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ae1d04043c740456368b0831bee84490778f0171
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470559"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687204"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Iç Load Balancer App Service Ortamı oluşturma ve kullanma 
 
@@ -120,7 +114,7 @@ SCM site adı sizi Azure portalı içinde **Gelişmiş portal** olarak adlandır
 
 GitHub ve Azure DevOps gibi İnternet tabanlı CI sistemleri, derleme aracısına İnternet’ten erişilebiliyorsa ve aracı ILB ASE ile aynı ağdaysa ILB ASE ile çalışmaya devam eder. Bu nedenle, Azure DevOps örneğinde derleme aracısı ILB ASE ile aynı sanal ağda (alt ağın farklı olması sorun yaratmaz) oluşturulursa Azure DevOps git’ten kod çekip ILB ASE’ye dağıtabilir. Kendi derleme aracınızı oluşturmak istemiyorsanız çekme modeli kullanan bir CI sistemi (Dropbox gibi) kullanmanız gerekir.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın portal dikey penceresinde görünür (**Genel Bakış** > **Temel Bilgiler** ve ayrıca **Özellikler**). Etki alanı sonekine sahip bir ıLB Ao *adı&gt;. appserviceenvironment.net&lt;* ve *MyTest*adlı bir uygulama varsa, *MyTest.&lt;ao adı&gt;. appserviceenvironment.net* for FTP veWeb dağıtımı için MyTest.scm.contoso.net.
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın portal dikey penceresinde görünür (**Genel Bakış** > **Temel Bilgiler** ve ayrıca **Özellikler**). Etki alanı&lt;sonekine sahip bir ıLB Ao *adı&gt;. appserviceenvironment.net*ve *MyTest*adlı BIR uygulama varsa, FTP için *MyTest.&lt;ao adı&gt;. appserviceenvironment.net* ve Web dağıtımı için *MyTest.scm.contoso.net* kullanın.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Bir ıDB ATıCı 'yi WAF cihazından yapılandırma ##
 
@@ -132,7 +126,7 @@ ILB ATıCı 'nizi bir WAF cihazından yapılandırma hakkında daha fazla bilgi 
 
 2019 tarihinden önce yapılan ıLB 'ler, ASE oluşturma sırasında etki alanı sonekini ayarlamanıza gerek yoktur. Ayrıca, bu etki alanı sonekine dayalı bir varsayılan sertifikayı karşıya yüklemeniz gerekir. Ayrıca, daha eski bir ıLB ASE ile kudu konsolunda o ıLB ASE 'deki uygulamalarla çoklu oturum açma işlemleri gerçekleştiremezsiniz. Daha eski bir ıLB ASE için DNS yapılandırırken, etki alanı sonekinden eşleşen bir bölgede bir kayıt joker karakterini ayarlamanız gerekir. 
 
-## <a name="get-started"></a>Kullanmaya başlayın ##
+## <a name="get-started"></a>Kullanmaya Başlayın ##
 
 * ASE 'yi kullanmaya başlamak için bkz. [App Service ortamlara giriş][Intro]. 
 

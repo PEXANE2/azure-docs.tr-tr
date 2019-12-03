@@ -1,24 +1,14 @@
 ---
-title: Özel kapsayıcıyı Yapılandırma-Azure App Service | Microsoft Docs
-description: Node. js uygulamalarını Azure App Service içinde çalışacak şekilde yapılandırmayı öğrenin
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+title: Özel bir Linux kapsayıcısı yapılandırma
+description: Azure App Service bir özel Linux kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: 7290e2b09c316a97bfb88744307e185aef72852a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668980"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671873"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı yapılandırma
 
@@ -28,7 +18,7 @@ Bu kılavuzda, App Service Linux uygulamalarının kapsayıcılama için temel k
 
 ## <a name="configure-port-number"></a>Bağlantı noktası numarasını Yapılandır
 
-Özel görüntinizdeki Web sunucusu 80 dışında bir bağlantı noktası kullanabilir. Azure 'a özel kapsayıcının kullandığı bağlantı noktasını `WEBSITES_PORT` uygulama ayarını kullanarak söylemiş olursunuz. [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir. Bunu, Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu çalıştırarak ayarlayabilirsiniz. Örneğin:
+Özel görüntinizdeki Web sunucusu 80 dışında bir bağlantı noktası kullanabilir. Azure 'a özel kapsayıcının kullandığı bağlantı noktasını `WEBSITES_PORT` uygulama ayarını kullanarak söylemiş olursunuz. [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir. Bunu, Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu çalıştırarak ayarlayabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -36,7 +26,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Özel Kapsayıcınız, dışarıdan sağlanması gereken ortam değişkenlerini kullanabilir. Bu dosyaları, Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu çalıştırarak geçirebilirsiniz. Örneğin:
+Özel Kapsayıcınız, dışarıdan sağlanması gereken ortam değişkenlerini kullanabilir. Bu dosyaları, Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu çalıştırarak geçirebilirsiniz. Örnek:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -50,7 +40,7 @@ Dosyaları yeniden başlatmalar arasında kalıcı hale getirmek ve örnekleri a
 
 Kalıcı depolama devre dışı bırakıldığında, `/home` dizinine yazma işlemi, uygulama yeniden başlatmaları veya birden çok örnek arasında kalıcı olmaz. Tek istisna, Docker ve kapsayıcı günlüklerini depolamak için kullanılan `/home/LogFiles` dizinidir. Kalıcı depolama etkinleştirildiğinde, `/home` dizinine yapılan tüm yazmaları kalıcı hale getirilir ve genişleme uygulamasının tüm örnekleri tarafından erişilebilir.
 
-Varsayılan olarak, kalıcı depolama *etkindir* ve ayar uygulama ayarları 'nda gösterilmez. Devre dışı bırakmak için, Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu çalıştırarak `WEBSITES_ENABLE_APP_SERVICE_STORAGE` uygulama ayarını belirleyin. Örneğin:
+Varsayılan olarak, kalıcı depolama *etkindir* ve ayar uygulama ayarları 'nda gösterilmez. Devre dışı bırakmak için, Cloud Shell [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu çalıştırarak `WEBSITES_ENABLE_APP_SERVICE_STORAGE` uygulama ayarını belirleyin. Örnek:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -122,7 +112,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 *Docker-Compose. yıml* dosyanızda `volumes` seçeneğini `${WEBAPP_STORAGE_HOME}`eşleyin. 
 
-`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örneğin:
+`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örnek:
 
 ```yaml
 wordpress:

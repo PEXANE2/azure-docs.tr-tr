@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine e
 description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 88e75b92ca09f3c6671fe4399c4672240f863f66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463942"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689270"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -36,7 +36,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu bilgileri zaten yoksa, aşağıdaki yollarla alabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -106,7 +106,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > Bir müşteriyi eklerken [yönetilen hizmetler kayıt ataması silme rolünü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) atamanız önerilir, böylece kiracınızdaki kullanıcılar gerekirse daha sonra [temsilciye erişimi kaldırabilirler](#remove-access-to-a-delegation) . Bu rol atanmamışsa, atanan kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
 
-## <a name="create-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonu oluşturma
+## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu oluşturma
 
 Müşterinize eklemek için aşağıdaki bilgilerle teklifiniz için bir [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) şablonu oluşturmanız gerekir. Azure portal [hizmet sağlayıcıları sayfasında](view-manage-service-providers.md) teklif ayrıntılarını görüntülerken, **Mspoffername** ve **mspofferdescription** değerleri müşteri tarafından görülebilir.
 
@@ -115,7 +115,7 @@ Müşterinize eklemek için aşağıdaki bilgilerle teklifiniz için bir [Azure 
 |**mspOfferName**     |Bu tanımı açıklayan bir ad. Bu değer, müşteriye teklifin başlığı olarak gösterilir.         |
 |**mspOfferDescription**     |Teklifinizin kısa bir açıklaması (örneğin, "contoso VM yönetimi teklifi")      |
 |**Managedbytenantıd**     |Kiracı KIMLIĞINIZ         |
-|**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için **PrincipalId** değerleri, müşterinizin yetkilendirmesinin amacını anlamasına **ve bir yerleşik** **roledefinitionıd** değeriyle eşleştirilmesine yardımcı olacak şekilde erişim düzeyi         |
+|**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için PrincipalId değerleri, müşterinizin yetkilendirmesinin amacını anlamasına ve erişim düzeyini belirtmek için yerleşik bir **Roledefinitionıd** değeriyle **eşlenmelerine** yardımcı **olacak şekilde**         |
 
 Bir müşterinin aboneliğini eklemek için, [örneklerimizde](https://github.com/Azure/Azure-Lighthouse-samples/)sağladığımız uygun Azure Resource Manager şablonunu, yapılandırmanızla eşleşecek şekilde değiştirdiğiniz karşılık gelen bir parametre dosyası ile birlikte kullanın ve yetkilendirmeleri tanımlayın. Ayrı şablonlar, abonelik içindeki bir aboneliğin, bir kaynak grubunun veya birden çok kaynak grubunun tamamını ekleme yönteminize bağlı olarak sağlanır. Ayrıca, aboneliklerini bu şekilde eklemek isterseniz, Azure Marketi 'Nde yayımladığınız yönetilen hizmet teklifini satın alan müşteriler için kullanılabilecek bir şablon sunuyoruz.
 
@@ -238,7 +238,7 @@ az deployment create –-name <deploymentName \
 
 Bir müşteri aboneliği Azure tarafından atanan kaynak yönetimine başarıyla eklendi, hizmet sağlayıcı kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (Yukarıdaki işlem aracılığıyla bu hizmete erişim verildiyse, ayrı ayrı veya bir Azure AD grubunun üyesi olarak uygun izinlere sahip olmalıdır). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -247,7 +247,7 @@ Hizmet sağlayıcısının kiracısında:
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!IMPORTANT]
-> [Müşterilerimde](view-manage-customers.md)Temsilcili abonelik görmek için, hizmet sağlayıcının kiracısındaki kullanıcılara, abonelik Azure için eklendi olduğunda [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir atanan kaynak yönetimi.
+> [Müşterilerimde](view-manage-customers.md)Temsilcili abonelik görmek için, hizmet sağlayıcının kiracısındaki kullanıcılara, abonelik Azure tarafından atanan kaynak yönetimi için eklendi olduğunda [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir.
 
 Müşterinin kiracısında:
 
@@ -335,7 +335,7 @@ az managedservices assignment list
 
 # Delete the registration assignment
 
-az managedservices assignment delete –assignment <id or full resourceId>
+az managedservices assignment delete --assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,27 +1,18 @@
 ---
-title: Varolan özel DNS adını eşle-Azure App Service | Microsoft Docs
+title: 'Öğretici: var olan özel DNS adını eşle'
 description: Mevcut özel DNS etki alanı adını (gösterim etki alanı) web uygulamasına, mobil uygulama arka ucuna veya Azure App Service'te API uygulamasına eklemeyi öğrenin.
 keywords: uygulama hizmeti, azure app service, etki alanı eşlemesi, etki alanı adı, mevcut etki alanı, konak adı
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835866"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672070"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -56,7 +47,7 @@ Bu öğreticiyi tamamlamak için:
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [Azure Portal](https://portal.azure.com)'ı açın ve Azure hesabınızla oturum açın.
 
@@ -199,7 +190,7 @@ A kaydını bir uygulamaya eşlemek için, App Service **iki** DNS kaydı gerekt
 
 `contoso.com` etki alanı örneğinde, A ve TXT kayıtlarını aşağıdaki tabloda gösterildiği gibi oluşturun (`@` normalde kök etki alanını temsil eder).
 
-| Kayıt türü | Host | Değer |
+| Kayıt türü | Ana bilgisayar | Değer |
 | - | - | - |
 | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
@@ -207,7 +198,7 @@ A kaydını bir uygulamaya eşlemek için, App Service **iki** DNS kaydı gerekt
 > [!NOTE]
 > Önerilen [CNAME kaydı](#map-a-cname-record)yerine bir kayıt kullanarak bir alt etki alanı (`www.contoso.com`gibi) eklemek Için, bir KAYDıNıZ ve txt kaydınız bunun yerine aşağıdaki tablo gibi görünmelidir:
 >
-> | Kayıt türü | Host | Değer |
+> | Kayıt türü | Ana bilgisayar | Değer |
 > | - | - | - |
 > | A | `www` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
 > | TXT | `www` | `<app_name>.azurewebsites.net` |
@@ -378,4 +369,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Web uygulamasına özel bir SSL sertifikası bağlamayla ilgili bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Azure App Service 'de SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
+> [Azure App Service'de SSL bağlamasıyla özel DNS adının güvenliğini sağlama](configure-ssl-bindings.md)

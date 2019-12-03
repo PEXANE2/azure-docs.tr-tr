@@ -1,26 +1,19 @@
 ---
-title: Node. js için en iyi uygulamalar ve sorun giderme-Azure App Service
-description: Azure App Service üzerindeki düğüm uygulamaları için en iyi uygulamaları ve sorun giderme adımlarını öğrenin.
-services: app-service\web
-documentationcenter: nodejs
+title: Node. js en iyi uygulamaları ve sorun giderme
+description: Azure App Service ' de çalışan Node. js uygulamaları için en iyi uygulamaları ve sorun giderme adımlarını öğrenin.
 author: ranjithr
-manager: wadeh
-editor: ''
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024236"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672038"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -36,7 +29,7 @@ Bu [şema dosyası](https://github.com/Azure/iisnode/blob/master/src/config/iisn
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Bu ayar, IIS uygulaması başına başlatılan düğüm işlemlerinin sayısını denetler. Varsayılan değer 1'dir. Değeri 0 olarak değiştirerek VM vCPU sayısı olarak çok sayıda Node. exe ' de başlatabilirsiniz. Makinenizde tüm vCPU 'Ları kullanabilmeniz için önerilen değer çoğu uygulama için 0 ' dır. Node. exe tek iş parçacıklı olduğundan, tek bir Node. exe en fazla 1 vCPU tüketir. Düğüm uygulamanızdan en yüksek performansı almak için tüm vCPU 'Ları kullanmak istersiniz.
+Bu ayar, IIS uygulaması başına başlatılan düğüm işlemlerinin sayısını denetler. Varsayılan değer 1 ' dir. Değeri 0 olarak değiştirerek VM vCPU sayısı olarak çok sayıda Node. exe ' de başlatabilirsiniz. Makinenizde tüm vCPU 'Ları kullanabilmeniz için önerilen değer çoğu uygulama için 0 ' dır. Node. exe tek iş parçacıklı olduğundan, tek bir Node. exe en fazla 1 vCPU tüketir. Düğüm uygulamanızdan en yüksek performansı almak için tüm vCPU 'Ları kullanmak istersiniz.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -94,7 +87,7 @@ Değişiklikler için izlenen dosyaların noktalı virgülle ayrılmış listesi
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Varsayılan değer false'tur. Etkinleştirilirse, düğüm uygulamanız adlandırılmış bir kanala bağlanarak (ııSNODE\_DENETIM\_kanal) ve "geri dönüşüm" iletisi gönderebilir. Bu, W3wp 'in düzgün şekilde geri dönüştürülmesine neden olur.
+Varsayılan değer false 'dur. Etkinleştirilirse, düğüm uygulamanız adlandırılmış bir kanala bağlanarak (ııSNODE\_DENETIM\_kanal) ve "geri dönüşüm" iletisi gönderebilir. Bu, W3wp 'in düzgün şekilde geri dönüştürülmesine neden olur.
 
 ### <a name="idlepageouttimeperiod"></a>ıdlepageouttimeperiod
 
@@ -106,7 +99,7 @@ Varsayılan değer 0 ' dır, bu özelliğin devre dışı bırakıldığı anlam
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Varsayılan değer false'tur. True olarak ayarlanırsa, ıısnode, `iisnode-debug` üst bilgi değeri bir URL olduğu her HTTP yanıtına bir HTTP yanıt üst bilgisi `iisnode-debug` ekler. Tek tek tanılama bilgileri parçaları URL parçasına bakarak elde edilebilir, ancak URL bir tarayıcıda açılarak görselleştirme kullanılabilir.
+Varsayılan değer false 'dur. True olarak ayarlanırsa, ıısnode, `iisnode-debug` üst bilgi değeri bir URL olduğu her HTTP yanıtına bir HTTP yanıt üst bilgisi `iisnode-debug` ekler. Tek tek tanılama bilgileri parçaları URL parçasına bakarak elde edilebilir, ancak URL bir tarayıcıda açılarak görselleştirme kullanılabilir.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -114,7 +107,7 @@ Bu ayar, ıisnode tarafından stdout ve stderr 'in günlüğe kaydedilmesini den
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Varsayılan değer false'tur. True olarak ayarlandığında, ıısnode, tarayıcınızda HTTP durum kodunu ve Win32 hata kodunu görüntüler. Win32 kodu, bazı sorun türlerinde hata ayıklamaya yardımcı olur.
+Varsayılan değer false 'dur. True olarak ayarlandığında, ıısnode, tarayıcınızda HTTP durum kodunu ve Win32 hata kodunu görüntüler. Win32 kodu, bazı sorun türlerinde hata ayıklamaya yardımcı olur.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>hata ayıklama Ggingenabled (canlı üretim sitesinde etkinleştirmeyin)
 
@@ -179,7 +172,7 @@ Sitenize/Wwwroot dizinine gidin. Aşağıdaki örnekte gösterildiği gibi bir k
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-Komutunu çalıştırın `npm install v8-profiler`.
+`npm install v8-profiler`komutunu çalıştırın.
 
 Bu komut, düğüm\_modüller dizini ve tüm bağımlılıklarını V8-Profiler ' ın altına yüklenir.
 Şimdi, uygulamanızı profilinize yönelik Server. js ' yi düzenleyin.
@@ -276,7 +269,7 @@ Win32 hata kodunu görmek için uygulamanızın FREB 'sini etkinleştirin (perfo
 
 NODE. exe `NODE_PENDING_PIPE_INSTANCES`adlı bir ayara sahiptir. Azure App Service, bu değer 5000 olarak ayarlanır. Node. exe ' nin, adlandırılmış kanalda her seferinde 5000 isteği kabul edebileceği anlamına gelir. Bu değer, Azure App Service üzerinde çalışan düğüm uygulamalarının çoğu için yeterince iyi olmalıdır. `NODE_PENDING_PIPE_INSTANCES` için yüksek değer Azure App Service için 503,1003 ' i görmemelisiniz
 
-## <a name="more-resources"></a>Diğer kaynaklar
+## <a name="more-resources"></a>Daha fazla kaynak
 
 Azure App Service üzerindeki Node. js uygulamaları hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
 

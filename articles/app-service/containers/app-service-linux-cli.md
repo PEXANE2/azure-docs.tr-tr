@@ -1,26 +1,18 @@
 ---
-title: Azure CLı kullanarak Kapsayıcılar için Web App yönetme-Azure App Service | Microsoft Docs
-description: Azure CLı kullanarak Kapsayıcılar için Web App yönetin.
+title: CLı ile özel Linux kapsayıcılarını yönetme
+description: Komut satırından Azure App Service içindeki özel Linux kapsayıcılarını yönetmeyi öğrenin. Uygulama sağlamayı veya bakımını otomatikleştirin.
 keywords: Azure App Service, Web uygulaması, CLI, Linux, OSS
-services: app-service
-documentationCenter: ''
 author: ahmedelnably
-manager: cfowler
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071303"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689053"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLı kullanarak Kapsayıcılar için Web App yönetme
 
@@ -107,5 +99,5 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [Linux üzerinde Azure App Service nedir?](app-service-linux-intro.md)
 * [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (Önizleme)](../../cloud-shell/overview.md)
-* [Azure App Service ortamlarında hazırlık ayarlama](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Azure App Service’te hazırlık ortamları ayarlama](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Kapsayıcılar için Web App ile sürekli dağıtım](app-service-linux-ci-cd.md)

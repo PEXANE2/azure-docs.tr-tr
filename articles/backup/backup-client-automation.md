@@ -2,19 +2,19 @@
 title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
 description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172437"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689201"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
 Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="install-azure-powershell"></a>Azure PowerShell'i yükleme
+## <a name="install-azure-powershell"></a>Azure PowerShell’i yükleme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -114,8 +114,8 @@ Mevcut seçenekler şunlardır:
 | Seçenek | Ayrıntılar | Varsayılan |
 | --- | --- | --- |
 | anahtarın |Sessiz yükleme |- |
-| /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure kurtarma hizmetleri Aracısı |
+| /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure kurtarma hizmetleri, çalışma |
 | /m |Microsoft Update için kabul etme |- |
 | /nu |Yükleme tamamlandıktan sonra güncelleştirmeleri denetleme |- |
 | belirtilmediyse |Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı kaldırır |- |
@@ -411,7 +411,7 @@ Bu bölüm, MABS aracısında sistem durumunu ayarlamak için PowerShell komutun
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>Bekletme
+### <a name="retention"></a>Saklama
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -569,7 +569,7 @@ Bu bölüm, Azure Backup verilerin kurtarılmasını otomatikleştirme adımlar�
 
 1. Kaynak birimini seçme
 2. Geri yüklenecek bir yedekleme noktası seçin
-3. Geri yüklenecek bir öğe seçin
+3. Geri yüklenecek bir öğe belirtin
 4. Geri yükleme işlemini tetikleme
 
 ### <a name="picking-the-source-volume"></a>Kaynak birim seçme
@@ -593,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Geri yüklenecek bir yedekleme noktası seçme
 
-[Get-Obrecoverableıtem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 'ini uygun parametrelerle yürüterek bir yedekleme noktaları listesi alırsınız. Bizim örneğimizde, *D:* kaynak birimi için en son yedekleme noktasını seçeceğiz ve belirli bir dosyayı kurtarmak için kullanacaksınız.
+[Get-Obrecoverableıtem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 'ini uygun parametrelerle yürüterek bir yedekleme noktaları listesi alırsınız. Bizim örneğimizde, *C:* kaynak birimi için en son yedekleme noktasını seçeceğiz ve belirli bir dosyayı kurtarmak için kullanacaksınız.
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 Nesne `$Rps`, yedekleme noktalarının bir dizisidir. İlk öğe en son noktasıdır ve nth öğesi en eski noktasıdır. En son noktayı seçmek için `$Rps[0]`kullanacağız.
 
-### <a name="choosing-an-item-to-restore"></a>Geri yüklenecek bir öğe seçme
+### <a name="specifying-an-item-to-restore"></a>Geri yüklenecek bir öğe belirtme
 
-Geri yüklenecek tam dosyayı veya klasörü belirlemek için, [Get-Obrecoverableıtem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 'ini yinelemeli olarak kullanın. Bu şekilde, klasör hiyerarşisi yalnızca `Get-OBRecoverableItem`ile gözatılabilir.
-
-Bu örnekte, *finans. xls* dosyasını geri yüklemek istiyoruz, nesne `$FilesFolders[1]`kullanarak başvuru yapabilir.
+Belirli bir dosyayı geri yüklemek için, kök birimle ilişkili dosya adını belirtin. Örneğin, C:\test\cat.exe işi için aşağıdaki komutu yürütün. 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-Ayrıca, ```Get-OBRecoverableItem``` cmdlet 'ini kullanarak geri yüklenecek öğeler için arama yapabilirsiniz. Bizim örneğimizde, *finans. xls* ' i aramak için bu komutu çalıştırarak dosyada bir tanıtıcı edinebilirsiniz:
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>Geri yükleme işlemi tetikleniyor

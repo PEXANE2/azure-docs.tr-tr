@@ -1,27 +1,17 @@
 ---
-title: Yerel önbelleğe genel bakış-Azure App Service | Microsoft Docs
-description: Bu makalede, yerel önbellek özelliğinin Azure App Service durumunu etkinleştirme, yeniden boyutlandırma ve sorgulama açıklanmaktadır
-services: app-service
-documentationcenter: app-service
-author: cephalin
-manager: jpconnock
-editor: ''
+title: Yerel önbellek
+description: Yerel önbelleğin Azure App Service nasıl çalıştığını ve uygulamanızın yerel önbelleğinin durumunu etkinleştirme, yeniden boyutlandırma ve sorgulama hakkında bilgi edinin.
 tags: optional
-keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
-ms.service: app-service
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/04/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819673"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687070"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 

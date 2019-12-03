@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell betik örneği-bir uygulamayı depolama hesabına bağlama | Microsoft Docs
-description: Azure PowerShell betik örneği-bir App Service uygulamasını depolama hesabına bağlama
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'PowerShell: bir depolama hesabına bağlanma'
+description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamanın depolama hesabına nasıl bağlanacağını gösterir.
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1eae5c4b94a59b09e73454fdfcea4e9f041652f2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098352"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685324"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>Bir App Service uygulamasını depolama hesabına bağlama
 

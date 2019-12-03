@@ -1,27 +1,18 @@
 ---
-title: Linux 'ta Python uygulaması oluşturma-Azure App Service | Microsoft Docs
-description: Linux üzerinde Azure App Service'te ilk Python merhaba dünya uygulamanızı birkaç dakika içinde dağıtın.
-services: app-service\web
-documentationcenter: ''
+title: 'Hızlı başlangıç: Linux Python uygulaması oluşturma'
+description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
 author: msangapu-msft
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7905b086ac390243f2fe02697f68c9b1c05ca28e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024934"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688989"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -136,7 +127,7 @@ return "Hello Azure!"
 
 Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` ve çıkmak için `^Q` komutunu kullanın.
 
-Şimdi uygulamayı yeniden dağıtacaksınız. @No__t-0 ' yı uygulamanız ile değiştirin.
+Şimdi uygulamayı yeniden dağıtacaksınız. `<app_name>` uygulama ile değiştirin.
 
 ```bash
 az webapp up -n <app_name>

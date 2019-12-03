@@ -1,29 +1,20 @@
 ---
-title: Uygulamayı geri yükleme-Azure App Service
-description: Uygulamanızı bir yedekten geri yüklemeyi öğrenin.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: Uygulamayı yedekten geri yükle
+description: Uygulamanızı bir yedekten geri yüklemeyi öğrenin. Belirli bağlı veritabanları, tek bir işlemde uygulamayla birlikte geri yüklenebilir.
 ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 519cf5388b095c7ca6e0ae7d978608f0824dc3a2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066509"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689239"
 ---
 # <a name="restore-an-app-in-azure"></a>Uygulamanızı Azure’a geri yükleme
 Bu makalede, daha önce yedeklediğiniz [Azure App Service](../app-service/overview.md) bir uygulamayı nasıl geri yükleyeceğiniz gösterilmektedir (bkz. [Azure 'da uygulamanızı yedekleme](manage-backup.md)). Uygulamanızı bağlı veritabanları ile önceki bir duruma geri yükleyebilir veya orijinal uygulamanızın yedeklemelerinden birini temel alan yeni bir uygulama oluşturabilirsiniz. Azure App Service yedekleme ve geri yükleme için aşağıdaki veritabanlarını destekler:
-- [SQL Veritabanı](https://azure.microsoft.com/services/sql-database/)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [MySQL için Azure Veritabanı](https://azure.microsoft.com/services/mysql)
 - [PostgreSQL için Azure Veritabanı](https://azure.microsoft.com/services/postgresql)
 - [uygulama içi MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
@@ -33,7 +24,7 @@ Yedeklerden geri yükleme, **Standart** ve **Premium** katmanda çalışan uygul
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>Mevcut bir yedekten uygulama geri yükleme
-1. Azure portal uygulamanızın **Ayarlar** sayfasında yedeklemeler sayfasını göstermek için **yedeklemeler** ' e tıklayın. Sonra **geri yükle**' ye tıklayın.
+1. Azure portal uygulamanızın **Ayarlar** **sayfasında yedeklemeler sayfasını göstermek** için **yedeklemeler** ' e tıklayın. Sonra **geri yükle**' ye tıklayın.
    
     ![Şimdi geri yükle ' yi seçin][ChooseRestoreNow]
 2. **Geri yükle** sayfasında, önce yedekleme kaynağını seçin.
@@ -59,7 +50,7 @@ Yedeklerden geri yükleme, **Standart** ve **Premium** katmanda çalışan uygul
    
     Aynı kaynak grubundaki başka bir uygulamaya uygulama yedeklemesini geri yüklemek için **var olan uygulamayı** seçebilirsiniz. Bu seçeneği kullanmadan önce, kaynak grubunuzda zaten uygulama yedeklemesiyle tanımlanmış olan yansıtma veritabanı yapılandırması ile başka bir uygulama oluşturmuş olmanız gerekir. İçeriğinizi uygulamasına geri yüklemek için **Yeni** bir uygulama da oluşturabilirsiniz.
 
-4. **Tamam**'ı tıklatın.
+4. **Tamam**’a tıklayın.
 
 <a name="StorageAccount"></a>
 

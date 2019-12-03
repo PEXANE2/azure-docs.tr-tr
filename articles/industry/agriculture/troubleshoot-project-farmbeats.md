@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131966"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672594"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -39,7 +39,17 @@ Daha fazla yardım için, bu e-postada dağıtıcı. log dosyasını farmbeatssu
 3. **Gelen Ileti olmaması**durumunda cihaz iş ortağınızla iletişim kurun.  
 4. **Gelen iletiler**söz konusu olduğunda, veri merkezi ve Hızlandırıcı günlükleri ve yakalanan telemetri ile farmbeatssupport@microsoft.com başvurun.
 
-Günlüklerin nasıl indirileceği anlamak için belgenin [Günlükler bölümüne](#collect-logs-manually) bakın.    
+Günlüklerin nasıl indirileceği anlamak için belgenin [Günlükler bölümüne](#collect-logs-manually) bakın.  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>Eventhub bağlantı dizesine sahip değil
+
+**Düzeltici eylem**: Datahub Swagger 'u ziyaret edin ve şu adımları izleyin:
+1. Iş ortağı API 'sine gidin
+2. GET-> ' a tıklayın > yürütmeyi deneyin
+3. İlgilendiğiniz algılayıcı ortağının iş ortağı kimliğini bir yere iade edin
+4. Iş ortağı API 'sine dönün ve Al/{id} öğesine tıklayın
+5. Adım 3 ' ten kimliği belirtin ve Yürüt ' e tıklayın.
+6. API yanıtı EventHub bağlantı dizesine sahip olmalıdır
 
 ### <a name="device-appears-offline"></a>Cihaz çevrimdışı görünüyor
 
@@ -84,7 +94,7 @@ Bir cihaz silinirken yaygın olarak karşılaşılan hata senaryolarından bazı
 
 ## <a name="accelerator-troubleshooting"></a>Hızlandırıcı sorunlarını giderme
 
-### <a name="access-control"></a>Erişim Denetimi
+### <a name="access-control"></a>Access Control
 
 **Rol ataması eklenirken hata oluştu**
 
