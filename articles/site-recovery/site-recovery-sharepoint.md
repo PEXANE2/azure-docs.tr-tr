@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622420"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706375"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery kullanarak olağanüstü durum kurtarma için çok katmanlı bir SharePoint uygulaması için olağanüstü durum kurtarmayı ayarlama
 
@@ -34,7 +34,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak bir Shar
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakileri anladığınızdan emin olun:
 
@@ -62,10 +62,10 @@ Site Recovery, uygulama belirsiz ve desteklenen bir makinede çalışan herhangi
 
 **Senaryo** | **İkincil bir siteye** | **Azure’a**
 --- | --- | ---
-**Hyper-V** | Evet | Evet
-**VMware** | Evet | Evet
-**Fiziksel sunucu** | Evet | Evet
-**Azure** | NA | Evet
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fiziksel sunucu** | Yes | Yes
+**Azure** | Yok | Yes
 
 
 ### <a name="things-to-keep-in-mind"></a>Göz önünde bulundurmanız gerekenler
@@ -82,7 +82,7 @@ Sanal makineyi Azure 'a Çoğaltmaya başlamak için [Bu kılavuzu](site-recover
 
 * Active Directory ve DNS 'yi koruma hakkında yönergeler için bkz. [koruma Active Directory ve DNS](site-recovery-active-directory.md) belgesi.
 
-* SQL Server üzerinde çalışan veritabanı katmanını koruma hakkında yönergeler için bkz. [koruma SQL Server](site-recovery-active-directory.md) belgesi.
+* SQL Server üzerinde çalışan veritabanı katmanını koruma hakkında yönergeler için bkz. [koruma SQL Server](site-recovery-sql.md) belgesi.
 
 ## <a name="networking-configuration"></a>Ağ yapılandırması
 
@@ -170,7 +170,7 @@ En yaygın olarak kullanılan Azure Site Recovery betikleri aşağıdaki ' Azure
 
     * Bu yöntem, DR sitesinde "arama yönetimi" veritabanının bir yedeğinin bulunduğunu varsayar.
     * Diğer Arama Hizmeti uygulama veritabanları çoğaltılmadığından, yeniden oluşturulması gerekir. Bunu yapmak için, Merkezi Yönetim ' e gidin ve Arama Hizmeti uygulamasını silin. Arama dizinini barındıran tüm sunucularda dizin dosyalarını silin.
-    * Arama Hizmeti uygulamasını yeniden oluşturun ve bu veritabanlarını yeniden oluşturur. Tüm eylemleri GUI aracılığıyla gerçekleştirmek mümkün olmadığından, bu hizmet uygulamasını yeniden oluşturan hazırlanmış bir betiğin olması önerilir. Örneğin, Dizin sürücüsü konumunu ayarlama ve arama topolojisini yapılandırma yalnızca SharePoint PowerShell cmdlet 'leri kullanılarak yapılabilir. Windows PowerShell cmdlet 'ini geri yükleme-SPEnterpriseSearchServiceApplication kullanın ve günlük ile gönderilen ve çoğaltılan arama Yönetim veritabanını Search_Service__DB. Bu cmdlet, arama yapılandırmasını, şemayı, yönetilen özellikleri, kuralları ve kaynakları verir ve diğer bileşenlerin varsayılan bir kümesini oluşturur.
+    * Arama Hizmeti uygulamasını yeniden oluşturun ve bu veritabanlarını yeniden oluşturur. Tüm eylemleri GUI aracılığıyla gerçekleştirmek mümkün olmadığından, bu hizmet uygulamasını yeniden oluşturan hazırlanmış bir betiğin olması önerilir. Örneğin, Dizin sürücüsü konumunu ayarlama ve arama topolojisini yapılandırma yalnızca SharePoint PowerShell cmdlet 'leri kullanılarak yapılabilir. Windows PowerShell cmdlet 'i geri yükleme-SPEnterpriseSearchServiceApplication kullanın ve günlük ve çoğaltılan arama Yönetim veritabanını Search_Service__DB belirtin. Bu cmdlet, arama yapılandırmasını, şemayı, yönetilen özellikleri, kuralları ve kaynakları verir ve diğer bileşenlerin varsayılan bir kümesini oluşturur.
     * Arama Hizmeti uygulama yeniden oluşturulduktan sonra, Arama Hizmeti geri yüklemek için her bir içerik kaynağı için tam bir gezinme başlatmanız gerekir. Arama önerileri gibi şirket içi gruptaki bazı analiz bilgilerini kaybedersiniz.
 
 7. Tüm adımlar tamamlandıktan sonra kurtarma planını kaydedin ve son kurtarma planı aşağıdaki gibi görünür.

@@ -150,9 +150,9 @@
         - name: .NET özel etkinliği
           href: data-factory-use-custom-activities.md
         - name: R betikleri çağırma
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: Azure Analysis Services’de modelleri yeniden işleme
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: İşlem Bağlı Hizmetleri
           href: data-factory-compute-linked-services.md
     - name: Geliştirme

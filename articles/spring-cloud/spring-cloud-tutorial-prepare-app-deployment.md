@@ -1,17 +1,17 @@
 ---
-title: Azure yay bulutu 'nda dağıtım için bir yay uygulaması hazırlama | Microsoft Docs
-description: Bu hızlı başlangıçta, bir Java Spring uygulamasını dağıtım için hazırlarsınız.
+title: Öğretici-Azure yay bulutu 'nda dağıtım için bir yay uygulaması hazırlama
+description: Bu öğreticide, bir Java Spring uygulamasını dağıtım için hazırlarsınız.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721242"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708725"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Öğretici: Azure yay bulutu 'nda dağıtım için bir Java Spring uygulaması hazırlama
 
@@ -176,4 +176,3 @@ Bu öğreticide, Java Spring uygulamanızı Azure Spring Cloud 'a dağıtmak üz
 
 > [!div class="nextstepaction"]
 > [Yapılandırma sunucunuzu ayarlamayı öğrenin](spring-cloud-tutorial-config-server.md).
-
