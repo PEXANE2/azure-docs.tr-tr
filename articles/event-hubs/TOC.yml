@@ -168,7 +168,7 @@
           href: configure-customer-managed-key.md
     - name: Sorun giderme
       items:
-        - name: Özel durumlar
+        - name: Sorun giderme kılavuzu
           href: event-hubs-messaging-exceptions.md
 - name: Başvuru
   items:

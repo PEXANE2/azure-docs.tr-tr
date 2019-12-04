@@ -46,10 +46,10 @@
         - name: 2. Kullanıcı verilerini ayıklama
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. Kullanıcı sözlerinden yaklaşımı alma
+          href: tutorial-publish-settings.md
     - name: Uygulama oluşturma
       items:
-        - name: Kullanıcı sözlerinden yaklaşımı alma
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Normal ifadelerle düzgün biçimlendirilmiş veriler alma
           href: luis-quickstart-intents-regex-entity.md
         - name: Listelerle tam metin eşleşmelerini alma

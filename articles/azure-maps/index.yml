@@ -45,7 +45,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Bölge sınırı ayarlama</a>
-          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Uzamsal analiz</a>
+          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">Uzamsal analiz</a>
           - html: <a href=/azure/azure-maps/tutorial-ev-routing">Azure Notebooks kullanarak EV yönlendirme (Python)</a>
   - title: Başvuru
     items:
