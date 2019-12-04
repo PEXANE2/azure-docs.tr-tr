@@ -1,0 +1,66 @@
+- name: Bulut sağlama
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Kimlik sağlama nedir?
+      href: what-is-provisioning.md
+    - name: Azure AD Connect bulut sağlama nedir?
+      href: what-is-cloud-provisioning.md
+      maintainContext: true
+- name: Öğreticiler
+  expanded: true
+  items:
+    - name: Tek bir AD ormanını tek bir Azure AD kiracısı ile tümleştirme
+      href: tutorial-single-forest.md
+    - name: Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
+      href: tutorial-existing-forest.md
+    - name: Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Kavramlar
+  items:
+    - name: Parola karması eşitleme nedir?
+      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+    - name: 'Azure AD şemasını, özniteliklerini ve ifadelerini anlama'
+      href: concept-attributes.md
+    - name: Azure Active Directory’de Öznitelik Eşlemeleri için İfadeler Yazma
+      href: reference-expressions.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Yükleme ve yükseltme
+      items:
+        - name: Yükleme Önkoşulları
+          href: how-to-prerequisites.md
+        - name: Azure AD Connect bulut sağlama aracısını yükleme
+          href: how-to-install.md
+        - name: Bulut sağlama yapılandırması
+          href: how-to-configure.md
+    - name: Planlama ve tasarım
+      items:
+        - name: Azure AD Connect bulut sağlama için topolojiler ve senaryolar
+          href: plan-cloud-provisioning-topologies.md
+    - name: Yönetme
+      items:
+        - name: Aracıyı otomatik yükseltme
+          href: how-to-automatic-upgrade.md
+    - name: Geliştirme
+      items:
+        - name: Dönüşümler
+          href: how-to-transformation.md
+        - name: Azure AD eşitleme API’si
+          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+    - name: Sorun giderme
+      items:
+        - name: Bulut sağlama sorunlarını giderme
+          href: how-to-troubleshoot.md
+        - name: Yinelenen öznitelikler
+          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+- name: Başvuru
+  items:
+    - name: Azure AD Connect bulut sağlama aracısı sürüm geçmişi
+      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Azure AD Connect bulut sağlama hakkında SSS
+      href: reference-cloud-provisioning-faq.md
+    - name: Eşitlenen öznitelikler
+      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Temel Active Directory ve Azure AD ortamı
+      href: tutorial-basic-ad-azure.md

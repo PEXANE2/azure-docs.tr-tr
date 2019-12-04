@@ -1,24 +1,42 @@
 - name: IoT çözüm hızlandırıcısı belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
-  expanded: true
   items:
     - name: IoT çözüm hızlandırıcıları nedir?
       href: about-iot-accelerators.md
-    - name: AzureIoTSolution.com
+    - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-- name: Uzaktan İzleme
-  items:
-    - name: Genel Bakış
+    - name: Uzaktan izleme
       href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    - name: Endüstriyel IoT
+      href: overview-iot-industrial.md
       items:
-        - name: Mimari seçenekleri
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Uzaktan izleme çözümü deneyin
-          href: quickstart-remote-monitoring-deploy.md
-    - name: Öğreticiler
+        - name: OPC Twin nedir?
+          href: overview-opc-twin.md
+        - name: OPC Vault nedir?
+          href: overview-opc-vault.md
+        - name: OPC Yayımcısı nedir?
+          href: overview-opc-publisher.md
+        - name: Bağlı Fabrika nedir?
+          href: iot-accelerators-connected-factory-features.md
+    - name: Cihaz benzetimi
+      href: iot-accelerators-device-simulation-overview.md
+    - name: Tahmine dayalı bakım
+      href: iot-accelerators-predictive-walkthrough.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Uzaktan izleme çözümü deneyin
+      href: quickstart-remote-monitoring-deploy.md
+    - name: Bağlı fabrika çözümünü deneyin
+      href: quickstart-connected-factory-deploy.md
+    - name: Cihaz benzetimi çözümünü deneyin
+      href: quickstart-device-simulation-deploy.md
+    - name: Tahmine dayalı bakım çözümünü deneyin
+      href: quickstart-predictive-maintenance-deploy.md
+- name: Öğreticiler
+  items:
+    - name: Uzaktan izleme
       items:
         - name: IoT cihazlarını izleme
           href: iot-accelerators-remote-monitoring-monitor.md
@@ -34,7 +52,31 @@
           href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
         - name: Uç cihazlarda anomalileri algılama
           href: iot-accelerators-remote-monitoring-edge.md
-    - name: Nasıl yapılır kılavuzları
+    - name: Cihaz benzetimi
+      items:
+        - name: Simülasyon oluşturma ve çalıştırma
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: Özel simülasyon cihazı oluşturma
+          href: iot-accelerators-device-simulation-create-custom-device.md
+- name: Kavramlar
+  items:
+    - name: Uzaktan izleme
+      items:
+        - name: Mimari
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: Cihaz modeli şeması
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: Cihaz modeli davranışı
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: Endüstriyel IoT
+      items:
+        - name: OPC Twin Mimarisi
+          href: overview-opc-twin-architecture.md
+        - name: OPC Vault Mimarisi
+          href: overview-opc-vault-architecture.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Uzaktan izleme
       items:
         - name: Çözümü dağıtma
           items:
@@ -107,51 +149,7 @@
               href: iot-accelerators-remote-monitoring-rbac-tsi.md
         - name: SIM verilerini tümleştirme
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: Başvuru
-      items:
-        - name: Cihaz modeli şeması
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: Cihaz modeli davranışı
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: Kaynaklar
-      items:
-        - name: Geliştirici başvuru kılavuzu (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: Geliştirici başvuru kılavuzu (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: Geliştirici sorun giderme kılavuzu
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: GitHub deposu (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: GitHub deposu (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: Uzaktan İzleme hakkında SSS
-          href: iot-accelerators-faq-rm-v2.md
-- name: Endüstriyel IoT
-  items:
-    - name: Genel Bakış
-      items:
-        - name: Endüstriyel IoT nedir?
-          href: overview-iot-industrial.md
-        - name: OPC Twin nedir?
-          href: overview-opc-twin.md
-        - name: OPC Vault nedir?
-          href: overview-opc-vault.md
-        - name: OPC Yayımcısı nedir?
-          href: overview-opc-publisher.md
-        - name: Bağlı Fabrika nedir?
-          href: iot-accelerators-connected-factory-features.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Bağlı fabrika çözümünü deneyin
-          href: quickstart-connected-factory-deploy.md
-    - name: Kavramlar
-      items:
-        - name: OPC Twin Mimarisi
-          href: overview-opc-twin-architecture.md
-        - name: OPC Vault Mimarisi
-          href: overview-opc-vault-architecture.md
-    - name: Nasıl yapılır kılavuzları
+    - name: Endüstriyel IoT
       items:
         - name: Bağlı Fabrika
           items:
@@ -185,27 +183,7 @@
               href: howto-opc-publisher-configure.md
             - name: OPC Yayımcısını Çalıştırma
               href: howto-opc-publisher-run.md
-    - name: Kaynaklar
-      items:
-        - name: GitHub deposu
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Bağlı Fabrika hakkında SSS
-          href: iot-accelerators-faq-cf.md
-- name: Cihaz Benzetimi
-  items:
-    - name: Genel Bakış
-      href: iot-accelerators-device-simulation-overview.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Cihaz benzetimi çözümünü deneyin
-          href: quickstart-device-simulation-deploy.md
-    - name: Öğreticiler
-      items:
-        - name: Simülasyon oluşturma ve çalıştırma
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: Özel simülasyon cihazı oluşturma
-          href: iot-accelerators-device-simulation-create-custom-device.md
-    - name: Nasıl yapılır kılavuzları
+    - name: Cihaz benzetimi
       items:
         - name: Mevcut bir IoT Hub’ı kullanma
           href: iot-accelerators-device-simulation-choose-hub.md
@@ -217,44 +195,10 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Özel Docker görüntüsü dağıtma
           href: iot-accelerators-device-simulation-deploy-image.md
-    - name: Kaynaklar
-      items:
-        - name: Geliştirici başvuru kılavuzu
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub deposu
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-- name: Tahmine Dayalı Bakım
-  items:
-    - name: Genel Bakış
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Tahmine dayalı bakım çözümünü deneyin
-          href: quickstart-predictive-maintenance-deploy.md
-    - name: Kaynaklar
-      items:
-        - name: GitHub deposu
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-- name: Başvuru Mimarisi
-  items:
-    - name: Genel Bakış
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
-    - name: İş ortağı uygulamaları
-      items:
-        - name: Intel Connected Logistics Platform
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-        - name: Edge Dynamometer Analysis
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-        - name: Dijital Tabela Çözümü
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: İlgili
   items:
-    - name: Çözümler
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT çözüm hızlandırıcıları
-          href: /azure/iot-accelerators
+    - name: IoT Central
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
     - name: Platform Hizmetleri
       items:
         - name: IoT Hub
@@ -277,8 +221,47 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Kaynaklar
   items:
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Uzaktan izleme
+      items:
+        - name: Geliştirici başvuru kılavuzu (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Geliştirici başvuru kılavuzu (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: Geliştirici sorun giderme kılavuzu
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub deposu (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub deposu (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: Uzaktan İzleme hakkında SSS
+          href: iot-accelerators-faq-rm-v2.md
+    - name: Endüstriyel IoT
+      items:
+        - name: GitHub deposu
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: Bağlı Fabrika hakkında SSS
+          href: iot-accelerators-faq-cf.md
+    - name: Cihaz benzetimi
+      items:
+        - name: Geliştirici başvuru kılavuzu
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub deposu
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+    - name: Tahmine dayalı bakım GitHub deposu
+      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+    - name: Başvuru Mimarisi
+      href: iot-accelerators-architecture-overview.md
+      items:
+        - name: İndirme
+          href: 'https://aka.ms/iotrefarchitecture'
+        - name: İş ortağı uygulamaları
+          items:
+            - name: Intel Connected Logistics Platform
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+            - name: Edge Dynamometer Analysis
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+            - name: Dijital Tabela Çözümü
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: SSS
       href: iot-accelerators-faq.md
     - name: Stack Overflow

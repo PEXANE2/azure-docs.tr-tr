@@ -28,15 +28,31 @@
       href: tutorial-custom-role-cli.md
 - name: Kavramlar
   items:
-    - name: Rol tanımlarını anlama
-      href: role-definitions.md
     - name: Azure kaynakları için PIM
       href: pim-azure-resource.md
     - name: Azure yönetimi için Koşullu Erişim
       href: conditional-access-azure-management.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Erişimi yönetme
+    - name: Rol tanımlarını listeleme
+      items:
+        - name: Genel Bakış
+          href: role-definitions.md
+        - name: Rol tanımlarını listeleme
+          href: role-definitions-list.md
+        - name: Yerleşik roller
+          href: built-in-roles.md
+    - name: Rol atamalarını listeleme
+      items:
+        - name: Portal
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: CLI
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: Rol atamalarını ekleme veya kaldırma
       items:
         - name: Portal
           href: role-assignments-portal.md
@@ -50,9 +66,9 @@
           href: role-assignments-rest.md
         - name: Şablon
           href: role-assignments-template.md
-    - name: Erişimi engelleme
+    - name: Ret atamalarını listeleme
       items:
-        - name: Reddetme atamaları
+        - name: Genel Bakış
           href: deny-assignments.md
         - name: Portal
           href: deny-assignments-portal.md
@@ -60,7 +76,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Özel roller
+    - name: Özel roller oluşturma
       items:
         - name: Genel Bakış
           href: custom-roles.md
@@ -72,7 +88,7 @@
           href: custom-roles-rest.md
     - name: Etkinlik günlüklerini görüntüleme
       href: change-history-report.md
-    - name: Tüm abonelikleri yönetmek için erişimi yükseltme
+    - name: Erişimi yükseltme
       href: elevate-access-global-admin.md
     - name: Klasik yöneticiler
       href: classic-administrators.md
@@ -80,8 +96,6 @@
       href: troubleshooting.md
 - name: Başvuru
   items:
-    - name: Yerleşik roller
-      href: built-in-roles.md
     - name: Kaynak sağlayıcısı işlemleri
       href: resource-provider-operations.md
     - name: RBAC sınırları

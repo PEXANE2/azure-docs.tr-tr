@@ -40,6 +40,8 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: Kullanıcı VPN'si (noktadan siteye) için sertifikaları yapılandırma
       href: certificates-point-to-site.md
+    - name: Kullanıcı VPN’i için Azure AD kimlik doğrulamasını yapılandırma
+      href: virtual-wan-point-to-site-azure-ad.md
     - name: Otomasyon yapılandırma (Sanal WAN iş ortakları)
       href: virtual-wan-configure-automation-providers.md
     - name: Yönlendirmeyi yapılandırma

@@ -127,8 +127,12 @@
           href: security-center-monitoring.md
         - name: Makinelerinizi ve uygulamalarınızı koruma
           href: security-center-virtual-machine-protection.md
+        - name: Makinelere ve uygulamalara yönelik öneriler başvurusu
+          href: recommendations-compute-and-apps.md
         - name: Ağ kaynaklarını koruma
           href: security-center-network-recommendations.md
+        - name: Ağ önerileri başvurusu
+          href: recommendations-network.md
         - name: Verileri ve depolama hizmetlerini koruma
           href: security-center-sql-service-recommendations.md
         - name: Kimliği ve erişimi koruma

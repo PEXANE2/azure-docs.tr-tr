@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 15a89528ce53eabe7ed70ca66a514b71ef5e5307
-  ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74554950"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74775532"
 highlightedContent:
   items:
   - title: Bilişsel Hizmetler nedir?
@@ -111,34 +111,37 @@ conceptualContent:
   - title: Arama
     summary: Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.
     links:
-    - url: ./Bing-Autosuggest/index.yml
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: Bing Arama API’leri hub sayfası
+    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
       itemType: overview
       text: Otomatik Öneri Arama
-    - url: ./bing-custom-search/index.yml
+    - url: ./bing-custom-search/overview.md
       itemType: overview
       text: Özel Arama
-    - url: ./bing-entities-search/index.yml
+    - url: ./bing-entities-search/overview.md
       itemType: overview
       text: Varlık Arama
-    - url: ./bing-image-search/index.yml
+    - url: ./bing-image-search/overview.md
       itemType: overview
       text: Resim Arama
-    - url: ./bing-local-business-search/index.yml
+    - url: ./bing-local-business-search/overview.md
       itemType: overview
       text: Yerel İşletme Arama (Önizleme)
-    - url: ./bing-news-search/index.yml
+    - url: ./bing-news-search/search-the-web.md
       itemType: overview
       text: Haber Arama
-    - url: ./bing-spell-check/index.yml
+    - url: ./bing-spell-check/overview.md
       itemType: overview
       text: Yazım Denetimi
-    - url: ./Bing-Video-Search/index.yml
+    - url: ./Bing-Video-Search/overview.md
       itemType: overview
       text: Video Arama
-    - url: ./bing-visual-search/index.yml
+    - url: ./bing-visual-search/overview.md
       itemType: overview
       text: Görsel Arama
-    - url: ./bing-web-search/index.yml
+    - url: ./bing-web-search/overview.md
       itemType: overview
       text: Web Araması
   - title: Bilişsel Hizmet Kapsayıcıları
@@ -159,9 +162,6 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: Docker Compose kullanarak birden çok kapsayıcı dağıtma
-    - url: ./containers/container-image-tags.md
-      itemType: reference
-      text: Bilişsel Hizmetler kapsayıcı görüntüsü etiketleri
     - url: ./containers/container-faq.md
       itemType: reference
       text: Bilişsel Hizmetler kapsayıcıları hakkında SSS
@@ -170,12 +170,10 @@ additionalContent:
   - items:
     - title: Ek kaynaklar
       links:
-      - text: Destek ve yardım seçenekleri
-        url: cognitive-services-support-options.md
       - text: Azure CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: REST API'leri
       links:
       - text: Bilişsel Hizmetler Yönetimi

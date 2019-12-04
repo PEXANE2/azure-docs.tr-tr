@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Azure IoT çözüm hızlandırıcısı belgeleri
+summary: Azure IoT çözüm hızlandırıcıları uzaktan izleme gibi sık kullanılan IoT senaryolarını uygulayan tam kapsamlı ve dağıtıma hazır IoT çözümleridir.
+metadata:
+  title: Azure IoT Çözüm hızlandırıcısı belgeleri
+  description: IoT çözüm hızlandırıcıları sık kullanılan IoT senaryolarını uygulayan tam kapsamlı ve dağıtıma hazır IoT çözümleridir. Senaryolar uzaktan izleme, bağlı fabrika, tahmine dayalı bakım ve cihaz benzetimini içerir. Bir çözüm hızlandırıcısını dağıttığınızda gerekli tüm bulut tabanlı hizmetler ve gerekli uygulama kodları dağıtılır.
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781635"
+landingContent:
+- title: IoT çözüm hızlandırıcıları hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT çözüm hızlandırıcıları nedir?
+      url: about-iot-accelerators.md
+    - text: AzureIoTSolutions.com sitesi
+      url: iot-accelerators-permissions.md
+- title: Uzaktan izleme ile çalışmaya başlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Uzaktan İzleme çözümü hızlandırıcısına genel bakış
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Bulut tabanlı uzaktan izleme çözümünü deneyin
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Cihazlarınızı izleme
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: Cihazlarla ilgili sorunları algılama
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: Endüstriyel IoT ile çalışmaya başlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Endüstriyel IoT’ye genel bakış
+      url: overview-iot-industrial.md
+    - text: OPC İkizi’ne Genel Bakış
+      url: overview-opc-twin.md
+    - text: OPC Kasası’na Genel Bakış
+      url: overview-opc-vault.md
+    - text: OPC Yayımcısı’na Genel Bakış
+      url: overview-opc-publisher.md
+    - text: Endüstriyel IoT nedir?
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: Bulut tabanlı bağlı fabrika çözümünü deneyin
+      url: quickstart-connected-factory-deploy.md
+- title: Cihaz simülasyonunu kullanmaya başlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cihaz Simülasyonu çözüm hızlandırıcısına genel bakış
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Cihaz benzetimi çözümünü deneyin
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: IoT cihaz simülasyonu oluşturma ve çalıştırma
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: Özel simülasyon cihazı oluşturma
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: Tahmine dayalı bakım ile çalışmaya başlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Tahmine dayalı bakım çözümünü deneyin
+      url: quickstart-predictive-maintenance-deploy.md

@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Event Hubs Ad Alanında Sanal Ağ Tümleştirmesi ve Güvenlik Duvarları
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma
+        - name: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma (Önizleme)
           href: configure-customer-managed-key.md
     - name: Sorun giderme
       items:

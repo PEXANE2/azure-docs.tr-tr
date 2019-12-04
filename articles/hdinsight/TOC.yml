@@ -49,6 +49,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Küme kapasitesi planlama
           href: ./hdinsight-capacity-planning.md
+        - name: Küme yönetimi için en iyi yöntemler
+          href: ./cluster-management-best-practices.md
         - name: Kullanılabilirlik ve güvenilirlik
           href: ./hdinsight-high-availability-linux.md
         - name: Depolama seçeneklerini karşılaştırın

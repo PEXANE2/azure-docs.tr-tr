@@ -231,8 +231,8 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Yönetilen disk kullanmak üzere bir ölçek kümesi şablonu dönüştürme
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Düşük önceliği kullanma
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: Spot örneği kullanma
+          href: use-spot.md
     - name: Yönetme
       items:
         - name: Genel yönetim görevleri

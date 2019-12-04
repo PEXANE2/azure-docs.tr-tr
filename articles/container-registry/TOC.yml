@@ -190,6 +190,8 @@
       href: /javascript/api/overview/azure/container-registry
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: Görevler YAML
+      href: container-registry-tasks-reference-yaml.md
     - name: Web kancası şeması
       href: container-registry-webhook-reference.md
     - name: Olay Kılavuz şeması
