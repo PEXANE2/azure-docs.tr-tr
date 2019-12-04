@@ -1,85 +1,146 @@
 ---
 title: Apache Hadoop-Azure HDInsight ile Apache Sqoop
 description: HDInsight ve Azure SQL veritabanı arasında Apache Hadoop içeri aktarmak ve dışarı aktarmak için Apache Sqoop 'yi nasıl kullanacağınızı öğrenin.
-keywords: Hadoop Sqoop, Sqoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c839aeae77d7e75fb30d82c410c331d21f5868ae
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/28/2019
+ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406033"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769396"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>HDInsight ve SQL veritabanı Apache Hadoop arasında veri içeri ve dışarı aktarmak için Apache Sqoop kullanın
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Azure HDInsight ve Azure SQL veritabanı veya Microsoft SQL Server veritabanında bir Apache Hadoop kümesi arasında içeri ve dışarı aktarmak için Apache Sqoop 'yi nasıl kullanacağınızı öğrenin. Bu belgedeki adımlar, doğrudan Hadoop kümesinin `sqoop` baş düğümüne öğesinden komutunu kullanır. Baş düğüme bağlanmak ve bu belgedeki komutları çalıştırmak için SSH 'yi kullanırsınız. Bu makalede, [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanma](./hdinsight-use-sqoop.md)işlemi devam ediyor.
+Azure HDInsight ve Azure SQL veritabanı veya Microsoft SQL Server veritabanında bir Apache Hadoop kümesi arasında içeri ve dışarı aktarmak için Apache Sqoop 'yi nasıl kullanacağınızı öğrenin. Bu belgedeki adımlar, doğrudan Hadoop kümesinin baş düğümüne öğesinden `sqoop` komutunu kullanır. Baş düğüme bağlanmak ve bu belgedeki komutları çalıştırmak için SSH 'yi kullanırsınız. Bu makalede, [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanma](./hdinsight-use-sqoop.md)işlemi devam ediyor.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Test ortamını ayarlama](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) , [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanın](./hdinsight-use-sqoop.md).
 
-* Azure SQL veritabanını sorgulamak için bir istemci. [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) veya [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)kullanmayı düşünün.
-
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="sqoop-export"></a>Sqoop dışarı aktarma
+* Sqoop ile benzerlik. Daha fazla bilgi için bkz. [Sqoop Kullanıcı Kılavuzu](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
-Hive 'dan SQL Server.
+## <a name="set-up"></a>Kurulum
 
-1. HDInsight kümesine bağlanmak için SSH kullanın. Kümenizin `CLUSTERNAME` adıyla değiştirin, sonra şu komutu girin:
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. SQL Server `MYSQLSERVER` adıyla değiştirin. Sqoop 'nin SQL veritabanınızı görebildiğini doğrulamak için, Open SSH bağlantınızda aşağıdaki komutu girin. İstendiğinde SQL Server oturum açma parolasını girin. Bu komut, veritabanlarının bir listesini döndürür.
+1. Kullanım kolaylığı için değişkenleri ayarlayın. `PASSWORD`, `MYSQLSERVER`ve `MYDATABASE` ilgili değerlerle değiştirin ve ardından aşağıdaki komutları girin:
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433 --username sqluser -P
+    export password='PASSWORD'
+    export sqlserver="MYSQLSERVER"
+    export database="MYDATABASE"
+
+
+    export serverConnect="jdbc:sqlserver://$sqlserver.database.windows.net:1433;user=sqluser;password=$password"
+    export serverDbConnect="jdbc:sqlserver://$sqlserver.database.windows.net:1433;user=sqluser;password=$password;database=$database"
     ```
 
-3. Öğesini `MYSQLSERVER` SQL Server adıyla ve `MYDATABASE` SQL veritabanınızın adıyla değiştirin. Hive `hivesampletable` tablosundan`mobiledata` SQL veritabanındaki tabloya veri aktarmak için, Open SSH bağlantınızda aşağıdaki komutu girin. İstendiğinde SQL Server oturum açma parolasını girin
+## <a name="sqoop-export"></a>Sqoop dışarı aktarma
+
+Hive 'dan SQL Server.
+
+1. Sqoop 'nin SQL veritabanınızı görebildiğini doğrulamak için, Open SSH bağlantınızda aşağıdaki komutu girin. Bu komut, veritabanlarının bir listesini döndürür.
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433;database=MYDATABASE' --username sqluser -P -table 'mobiledata' --hcatalog-table hivesampletable
+    sqoop list-databases --connect $serverConnect
     ```
 
-4. Verilerin verildiğini doğrulamak için, SQL istemcinizden aşağıdaki sorguları kullanarak aktarılmış verileri görüntüleyin:
+1. Belirtilen veritabanı için Tablo listesini görmek için aşağıdaki komutu girin:
 
-    ```sql
-    SELECT COUNT(*) FROM [dbo].[mobiledata] WITH (NOLOCK);
-    SELECT TOP(25) * FROM [dbo].[mobiledata] WITH (NOLOCK);
+    ```bash
+    sqoop list-tables --connect $serverDbConnect
+    ```
+
+1. Hive `hivesampletable` tablosundan verileri SQL veritabanı 'ndaki `mobiledata` tablosuna aktarmak için, Open SSH bağlantınızda aşağıdaki komutu girin:
+
+    ```bash
+    sqoop export --connect $serverDbConnect \
+    -table mobiledata \
+    --hcatalog-table hivesampletable
+    ```
+
+1. Verilerin verildiğini doğrulamak için SSH bağlantınızdan aşağıdaki sorguları kullanarak içe aktarılmış verileri görüntüleyin:
+
+    ```bash
+    sqoop eval --connect $serverDbConnect \
+    --query "SELECT COUNT(*) from dbo.mobiledata WITH (NOLOCK)"
+
+
+    sqoop eval --connect $serverDbConnect \
+    --query "SELECT TOP(10) * from dbo.mobiledata WITH (NOLOCK)"
     ```
 
 ## <a name="sqoop-import"></a>Sqoop içeri aktarma
 
 SQL Server 'den Azure depolama 'ya.
 
-1. Öğesini `MYSQLSERVER` SQL Server adıyla ve `MYDATABASE` SQL veritabanınızın adıyla değiştirin. SQL veritabanındaki `mobiledata` `wasb:///tutorials/usesqoop/importeddata` tablodaki verileri HDInsight üzerindeki dizine aktarmak için Open SSH bağlantınızın aşağıdaki komutunu girin. İstendiğinde SQL Server oturum açma parolasını girin. Verilerdeki alanlar bir sekme karakteriyle ayrılır ve satırlar yeni satır karakteri ile sonlandırılır.
+1. SQL veritabanı 'ndaki `mobiledata` tablosundan verileri HDInsight üzerindeki `wasbs:///tutorials/usesqoop/importeddata` dizinine aktarmak için Open SSH bağlantınızın aşağıdaki komutunu girin. Verilerdeki alanlar bir sekme karakteriyle ayrılır ve satırlar yeni satır karakteri ile sonlandırılır.
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433;database=MYDATABASE' --username sqluser -P --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect $serverDbConnect \
+    --table mobiledata \
+    --target-dir 'wasb:///tutorials/usesqoop/importeddata' \
+    --fields-terminated-by '\t' \
+    --lines-terminated-by '\n' -m 1
     ```
 
-2. İçeri aktarma işlemi tamamlandıktan sonra, yeni dizindeki verileri listelemek için Open SSH bağlantısına aşağıdaki komutu girin:
+1. Alternatif olarak, bir Hive tablosu da belirtebilirsiniz:
 
     ```bash
-    hdfs dfs -text /tutorials/usesqoop/importeddata/part-m-00000
+    sqoop import --connect $serverDbConnect \
+    --table mobiledata \
+    --target-dir 'wasb:///tutorials/usesqoop/importeddata2' \
+    --fields-terminated-by '\t' \
+    --lines-terminated-by '\n' \
+    --create-hive-table \
+    --hive-table mobiledata_imported2 \
+    --hive-import -m 1
     ```
+
+1. İçeri aktarma işlemi tamamlandıktan sonra, yeni dizindeki verileri listelemek için Open SSH bağlantısına aşağıdaki komutu girin:
+
+    ```bash
+    hadoop fs -tail /tutorials/usesqoop/importeddata/part-m-00000
+    ```
+
+1. Tablonun Hive içinde oluşturulduğunu doğrulamak için [Beeline](./apache-hadoop-use-hive-beeline.md) ' yı kullanın.
+
+    1. Bağlayın
+
+        ```bash
+        beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
+        ```
+
+    1. Her sorguyu her seferinde bir kez yürütün ve çıktıyı gözden geçirin:
+
+        ```hql
+        show tables;
+        describe mobiledata_imported2;
+        SELECT COUNT(*) FROM mobiledata_imported2;
+        SELECT * FROM mobiledata_imported2 LIMIT 10;
+        ```
+
+    1. `!exit`Beeline çıkış.
 
 ## <a name="limitations"></a>Sınırlamalar
 
 * Toplu dışa aktarma-Linux tabanlı HDInsight Ile, Microsoft SQL Server veya Azure SQL veritabanı 'na veri aktarmak için kullanılan Sqoop Bağlayıcısı toplu eklemeleri desteklemez.
 
-* Toplu işleme-Linux tabanlı HDInsight ile, eklemeleri gerçekleştirirken `-batch` anahtarı kullanırken, ekleme işlemlerini toplu hale getirmek yerine Sqoop birden çok ekleme yapar.
+* Toplu işleme-Linux tabanlı HDInsight Ile, eklemeleri gerçekleştirirken `-batch` anahtarı kullanılırken Sqoop, ekleme işlemlerini toplu hale getirmek yerine birden çok ekleme yapar.
 
 ## <a name="important-considerations"></a>Önemli konular
 
@@ -97,6 +158,6 @@ SQL Server 'den Azure depolama 'ya.
 
 Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi için bkz:
 
-* [HDInsight Ile Apache Oozie kullanın](../hdinsight-use-oozie-linux-mac.md): Bir Oozie iş akışında Sqoop eylemini kullanın.
-* [HDInsight kullanarak Uçuş gecikmesi verilerini analiz edin](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): Uçuş gecikmesi verilerini çözümlemek için etkileşimli sorgu kullanın ve ardından verileri bir Azure SQL veritabanına aktarmak için Sqoop kullanın.
+* [HDInsight Ile Apache Oozie kullanma](../hdinsight-use-oozie-linux-mac.md): bir Oozie Iş akışında Sqoop eylemini kullanın.
+* [HDInsight kullanarak Uçuş gecikmesi verilerini çözümleme](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): Uçuş gecikmesi verilerini çözümlemek Için etkileşimli sorgu kullanın ve ardından verileri BIR Azure SQL veritabanına aktarmak Için Sqoop kullanın.
 * [HDInsight 'a veri yükleme](../hdinsight-upload-data.md): HDInsight/Azure Blob depolamaya veri yüklemek için diğer yöntemleri bulun.

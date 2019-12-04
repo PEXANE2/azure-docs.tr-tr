@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231013"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786342"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
 
@@ -18,14 +18,15 @@ Bu makalede, Azure Işlevleri 'nde SignalR hizmeti bağlamaları kullanılarak [
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
+## <a name="packages---functions-2x"></a>Paketler-Işlevler 2. x
 
 SignalR hizmeti bağlamaları [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet paketi, sürüm 1. * içinde verilmiştir. Paketin kaynak kodu, [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub deposunda bulunur.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
+SignalR hizmetini ve Azure Işlevlerini birlikte yapılandırma ve kullanma hakkında ayrıntılı bilgi için Azure [SignalR hizmeti Ile Azure işlevleri geliştirme ve yapılandırma](../azure-signalr/signalr-concept-serverless-development-config.md)konusuna bakın.
 
-### <a name="java-annotations"></a>Java ek açıklamaları
+### <a name="annotations-library-java-only"></a>Ek açıklamalar kitaplığı (yalnızca Java)
 
 Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, POM. xml dosyanıza *Azure-Functions-Java-Library-SignalR* yapıtı (sürüm 1,0 veya üzeri) bir bağımlılık eklemeniz gerekir.
 
@@ -37,26 +38,13 @@ Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, POM. x
 </dependency>
 ```
 
-> [!NOTE]
-> Java 'da SignalR hizmeti bağlamalarını kullanmak için Azure Functions Core Tools (ana bilgisayar sürümü 2.0.12332) sürüm 2.4.419 veya üstünü kullandığınızdan emin olun.
-
-## <a name="using-signalr-service-with-azure-functions"></a>Azure Işlevleri ile SignalR hizmetini kullanma
-
-SignalR hizmetini ve Azure Işlevlerini birlikte yapılandırma ve kullanma hakkında ayrıntılı bilgi için Azure [SignalR hizmeti Ile Azure işlevleri geliştirme ve yapılandırma](../azure-signalr/signalr-concept-serverless-development-config.md)konusuna bakın.
-
-## <a name="signalr-connection-info-input-binding"></a>SignalR bağlantı bilgileri giriş bağlama
+## <a name="input"></a>Girdi
 
 Bir istemcinin Azure SignalR hizmetine bağlanabilmesi için, hizmet uç noktası URL 'sini ve geçerli bir erişim belirtecini alması gerekir. *Signalrconnectionınfo* giriş bağlaması, SignalR hizmeti uç noktası URL 'sini ve hizmete bağlanmak için kullanılan geçerli bir belirteci üretir. Belirteç zaman sınırlı olduğundan ve belirli bir kullanıcının kimlik doğrulaması için kullanılabilir olduğundan, belirteci önbelleğe almalısınız veya istemciler arasında paylaşamazsınız. Bu bağlamayı kullanan bir HTTP tetikleyicisi, istemciler tarafından bağlantı bilgilerini almak için kullanılabilir.
 
-Dile özgü örneğe bakın:
-
-* [2.xC#](#2x-c-input-examples)
-* [2. x JavaScript](#2x-javascript-input-examples)
-* [2. x Java](#2x-java-input-examples)
-
 Bu bağlamanın bir SignalR istemci SDK 'Sı tarafından tüketilen bir "Negotiate" işlevi oluşturmak için nasıl kullanıldığı hakkında daha fazla bilgi için, SignalR hizmeti kavramları belgelerindeki [Azure işlevleri geliştirme ve yapılandırma makalesine](../azure-signalr/signalr-concept-serverless-development-config.md) bakın.
 
-### <a name="2x-c-input-examples"></a>2. x C# giriş örnekleri
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, giriş bağlamasını kullanarak SignalR bağlantı bilgilerini alan ve http üzerinden döndüren bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
 
@@ -70,26 +58,37 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
-İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir.
 
-App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar. Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `UserId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`. 
+İşte, *function. JSON* dosyasındaki veri bağlama:
+
+Örnek Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+C# Betik kodu aşağıda verilmiştir:
 
 ```cs
-[FunctionName("negotiate")]
-public static SignalRConnectionInfo Negotiate(
-    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
-    [SignalRConnectionInfo
-        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
-        SignalRConnectionInfo connectionInfo)
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
 {
-    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
     return connectionInfo;
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>2. x JavaScript girişi örnekleri
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
@@ -107,7 +106,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı b
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+JavaScript kodu aşağıda verilmiştir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -115,11 +114,11 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
 
-App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar. Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `userId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`. 
+İşte, *function. JSON* dosyasındaki veri bağlama:
 
 Örnek Function. JSON:
 
@@ -128,23 +127,25 @@ App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıc�
     "type": "signalRConnectionInfo",
     "name": "connectionInfo",
     "hubName": "chat",
-    "userId": "{headers.x-ms-client-principal-id}",
     "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
     "direction": "in"
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
-```javascript
-module.exports = async function (context, req, connectionInfo) {
-    // connectionInfo contains an access key token with a name identifier
-    // claim set to the authenticated user
-    context.res.body = connectionInfo;
-};
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
 ```
 
-### <a name="2x-java-input-examples"></a>2. x Java giriş örnekleri
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Aşağıdaki örnek, giriş bağlamayı kullanarak SignalR bağlantı bilgilerini alan ve HTTP üzerinden döndüren bir [Java işlevini](functions-reference-java.md) gösterir.
 
@@ -162,11 +163,124 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
+---
+
+### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
 
 İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
 
-App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar. Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `UserId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
+App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `UserId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
+
+```cs
+[FunctionName("negotiate")]
+public static SignalRConnectionInfo Negotiate(
+    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
+    [SignalRConnectionInfo
+        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
+        SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `userId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
+
+Örnek Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+C# Betik kodu aşağıda verilmiştir:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `userId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
+
+Örnek Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = async function (context, req, connectionInfo) {
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    context.res.body = connectionInfo;
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `userId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
+
+Örnek Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Python kodu aşağıda verilmiştir:
+
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    # connectionInfo contains an access key token with a name identifier
+    # claim set to the authenticated user
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `userId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -183,23 +297,19 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>SignalR çıkış bağlama
+---
+
+## <a name="output"></a>Çıktı
 
 Azure SignalR hizmetini kullanarak bir veya daha fazla ileti göndermek için *SignalR* çıkış bağlamasını kullanın. Tüm bağlı istemcilere bir ileti yayınlayabilirsiniz veya yalnızca belirli bir kullanıcıya kimliği doğrulanmış bağlı istemcilere yayınlayabilirsiniz.
 
 Ayrıca, bir kullanıcının ait olduğu grupları yönetmek için de kullanabilirsiniz.
 
-Dile özgü örneğe bakın:
+### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
 
-* [2.xC#](#2x-c-send-message-output-examples)
-* [2. x JavaScript](#2x-javascript-send-message-output-examples)
-* [2. x Java](#2x-java-send-message-output-examples)
+Aşağıdaki örnek, tüm bağlı istemcilere çıkış bağlamayı kullanarak bir ileti gönderen bir işlevi gösterir. *Hedef* , her istemcide çağrılacak yöntemin adıdır. *Bağımsız değişkenler* , istemci metoduna geçirilecek sıfır veya daha fazla nesne dizisidir.
 
-### <a name="2x-c-send-message-output-examples"></a>2. x C# ileti gönderme çıkışı örnekleri
-
-#### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
-
-Aşağıdaki örnek, tüm bağlı istemcilere çıkış bağlamayı kullanarak bir ileti gönderen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. `Target`, her istemcide çağrılacak yöntemin adıdır. `Arguments` özelliği, istemci metoduna geçirilecek sıfır veya daha fazla nesne dizisidir.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -216,9 +326,120 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Kullanıcıya gönder
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
-SignalR iletisinin `UserId` özelliğini ayarlayarak, yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
+İşte, *function. JSON* dosyasındaki veri bağlama:
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+C# Betik kodu aşağıda verilmiştir:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+İşte, *function. JSON* dosyasındaki veri bağlama:
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+İşte, *function. JSON* dosyasındaki veri bağlama:
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Python kodu aşağıda verilmiştir:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="send-to-a-user"></a>Kullanıcıya gönder
+
+SignalR iletisindeki *Kullanıcı kimliğini* ayarlayarak yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -237,9 +458,123 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Bir gruba gönder
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
-SignalR iletisinin `GroupName` özelliğini ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+C# Betik kodu aşağıda verilmiştir:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this user ID
+        "userId": "userId1",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+İşte, *function. JSON* dosyasındaki veri bağlama:
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Python kodu aşağıda verilmiştir:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this user ID
+        'userId': 'userId1',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.userId = "userId1";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="send-to-a-group"></a>Bir gruba gönder
+
+SignalR iletisindeki *Grup adını* ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -258,9 +593,123 @@ public static Task SendMessage(
 }
 ```
 
-### <a name="2x-c-group-management-output-examples"></a>2. x C# Grup yönetimi çıkış örnekleri
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
-SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Bir kullanıcının grup üyeliğini yönetmek için `SignalRGroupAction` sınıfını `SignalR` çıkış bağlamasıyla birlikte kullanabilirsiniz.
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+C# Betik kodu aşağıda verilmiştir:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this group
+        "groupName": "myGroup",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+İşte, *function. JSON* dosyasındaki veri bağlama:
+
+Örnek Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Python kodu aşağıda verilmiştir:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this group
+        'groupName': 'myGroup',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.groupName = "myGroup";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="group-management"></a>Grup Yönetimi
+
+SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Kullanıcının grup üyeliğini yönetmek için `SignalR` çıkış bağlamayı kullanabilirsiniz.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 #### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
@@ -311,107 +760,102 @@ public static Task RemoveFromGroup(
 > [!NOTE]
 > `ClaimsPrincipal` doğru bir şekilde bağlanmasını sağlamak için Azure Işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
 
-### <a name="2x-javascript-send-message-output-examples"></a>2. x JavaScript ileti çıkış örnekleri gönder
-
-#### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
-
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR çıkış bağlamasını ve Azure SignalR hizmeti ile ileti göndermek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. Çıkış bağlamayı bir veya daha fazla SignalR iletisi dizisine ayarlayın. Bir SignalR iletisi, her istemcide çağrılacak yöntemin adını belirten bir `target` özelliğinden oluşur ve istemci metoduna bağımsız değişken olarak geçirilecek bir nesne dizisi olan bir `arguments` özelliğidir.
-
-İşte, *function. JSON* dosyasındaki veri bağlama:
-
-Örnek Function. JSON:
-
-```json
-{
-  "type": "signalR",
-  "name": "signalRMessages",
-  "hubName": "<hub_name>",
-  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-  "direction": "out"
-}
-```
-
-JavaScript kod aşağıdaki gibidir:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-user"></a>Kullanıcıya gönder
-
-SignalR iletisinin `userId` özelliğini ayarlayarak, yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
-
-*function. JSON* aynı kalır. JavaScript kod aşağıdaki gibidir:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this user ID
-        "userId": "userId1",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-group"></a>Bir gruba gönder
-
-SignalR iletisinin `groupName` özelliğini ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
-
-*function. JSON* aynı kalır. JavaScript kod aşağıdaki gibidir:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this group
-        "groupName": "myGroup",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-### <a name="2x-javascript-group-management-output-examples"></a>2. x JavaScript Grup yönetimi çıkış örnekleri
-
-SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Kullanıcının grup üyeliğini yönetmek için `SignalR` çıkış bağlamayı kullanabilirsiniz.
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 #### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
 Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
-*function. JSON*
+Örnek *function. JSON*
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Run. CSX*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+#### <a name="remove-user-from-a-group"></a>Kullanıcıyı bir gruptan Kaldır
+
+Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
+
+Örnek *function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Run. CSX*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> `ClaimsPrincipal` doğru bir şekilde bağlanmasını sağlamak için Azure Işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
+
+Aşağıdaki örnek bir gruba bir kullanıcı ekler.
+
+Örnek *function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
@@ -431,34 +875,15 @@ module.exports = async function (context, req) {
 
 Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
-*function. JSON*
+Örnek *function. JSON*
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
@@ -474,73 +899,63 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-java-send-message-output-examples"></a>2. x Java ileti gönderme çıkışı örnekleri
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-#### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
+#### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
-Aşağıdaki örnekte, tüm bağlı istemcilere çıkış bağlamayı kullanarak bir ileti gönderen bir [Java işlevi](functions-reference-java.md) gösterilmektedir. `target`, her istemcide çağrılacak yöntemin adıdır. `arguments` özelliği, istemci metoduna geçirilecek sıfır veya daha fazla nesne dizisidir.
+Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+Örnek *function. JSON*
 
-    SignalRMessage message = new SignalRMessage();
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
-#### <a name="send-to-a-user"></a>Kullanıcıya gönder
+*\_\_init. py__*
 
-SignalR iletisinin `userId` özelliğini ayarlayarak, yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'add'
+    }))
+```
 
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+#### <a name="remove-user-from-a-group"></a>Kullanıcıyı bir gruptan Kaldır
 
-    SignalRMessage message = new SignalRMessage();
-    message.userId = "userId1";
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
+Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
+
+Örnek *function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
-#### <a name="send-to-a-group"></a>Bir gruba gönder
+*\_\_init. py__*
 
-SignalR iletisinin `groupName` özelliğini ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
-
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
-
-    SignalRMessage message = new SignalRMessage();
-    message.groupName = "myGroup";
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
-}
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'remove'
+    }))
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>2. x Java Grup yönetimi çıkış örnekleri
-
-SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Bir kullanıcının grup üyeliğini yönetmek için `SignalRGroupAction` sınıfını `SignalROutput` çıkış bağlamasıyla birlikte kullanabilirsiniz.
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 #### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
@@ -586,13 +1001,15 @@ public SignalRGroupAction removeFromGroup(
 }
 ```
 
+---
+
 ## <a name="configuration"></a>Yapılandırma
 
 ### <a name="signalrconnectioninfo"></a>Signalrconnectionınfo
 
 Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalRConnectionInfo` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**type**|| `signalRConnectionInfo`olarak ayarlanmalıdır.|
 |**direction**|| `in`olarak ayarlanmalıdır.|
@@ -605,7 +1022,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalRConnectionInfo` ö
 
 Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalR` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**type**|| `signalR`olarak ayarlanmalıdır.|
 |**direction**|| `out`olarak ayarlanmalıdır.|

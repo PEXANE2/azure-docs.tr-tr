@@ -1,44 +1,40 @@
 ---
-title: include dosyası
-description: include dosyası
-services: logic-apps
-author: MandiOhlinger
 ms.service: logic-apps
 ms.topic: include
+author: ecfan
+ms.author: estfan
 ms.date: 03/02/2018
-ms.author: mandia
-ms.custom: include file
-ms.openlocfilehash: 11280e1678f52ede928cb2a85ea83add222e15fa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1aabc1b33722c571c6519b6620fb62211a44c2e8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188634"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789742"
 ---
-1. İçinde [Azure portalında](https://portal.azure.com), boş bir mantıksal uygulama oluşturun. 
+1. [Azure Portal](https://portal.azure.com), boş bir mantıksal uygulama oluşturun. 
 
-2. Logic Apps Tasarımcısı'nda filtreniz olarak "github" girin. 
+2. Logic Apps tasarımcısında filtreniz olarak "GitHub" yazın. 
 
-3. GitHub Bağlayıcısı'nı ve kullanmak istediğiniz tetikleyiciyi seçin.
+3. GitHub bağlayıcısını ve kullanmak istediğiniz tetikleyiciyi seçin.
 
-   ![GitHub Bağlayıcısı'nı ve bir tetikleyici seçin](./media/connectors-create-api-github/github-connector.png)
+   ![GitHub bağlayıcısını ve bir tetikleyiciyi seçin](./media/connectors-create-api-github/github-connector.png)
 
    > [!NOTE]
-   > Tüm mantıksal uygulama iş akışlarını, bir tetikleyici ile başlamalıdır. Yalnızca mantıksal iş akışınızı bir tetikleyiciyle zaten başladığında eylemleri seçebilirsiniz. 
+   > Tüm mantıksal uygulama iş akışlarının bir tetikleyiciyle başlaması gerekir. Yalnızca mantık iş akışınız zaten bir tetikleyiciyle başlatıldığında Eylemler ' i seçebilirsiniz. 
 
-4. Daha önce bir bağlantı oluşturmadıysanız, seçin **oturum** istendiğinde GitHub kimlik bilgilerinizi sağlayabilir.  
+4. Daha önce bir bağlantı oluşturmadıysanız, istendiğinde GitHub kimlik bilgilerinizi sağlayabilmeniz için **oturum aç** ' ı seçin.  
 
    ![GitHub kimlik bilgilerinizle oturum açın](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 
-   Mantıksal uygulamanızı, bağlanma ve GitHub hesabınız için verilere erişim yetkisi vermek için bu kimlik bilgilerini kullanır. 
+   Mantıksal uygulamanız, GitHub hesabınıza yönelik verileri bağlamayı ve bunlara erişmeyi yetkilendirmek için bu kimlik bilgilerini kullanır. 
 
-5. GitHub kullanıcı adınızı ve parolanızı sağlayın ve ardından yetkinizi onaylayın.
+5. GitHub Kullanıcı adınızı ve parolanızı girip yetkilendirmeyi onaylayın.
 
-   ![Kimlik ve yetkilendirme onaylayın](./media/connectors-create-api-github/github-connector-authorize.png)   
+   ![Kimlik bilgilerini sağlayın ve yetkilendirmeyi onaylayın](./media/connectors-create-api-github/github-connector-authorize.png)   
 
-   Bağlantınız, artık Azure portalında oluşturulur ve kullanıma hazırdır.
+   Bağlantınız artık Azure portal oluşturulmuştur ve kullanıma hazırdır.
 
 6. Mantıksal uygulama iş akışınızı tanımlamaya devam edin.
 
-   ![Mantıksal uygulama iş akışınızı için daha fazla eylem ekleme](./media/connectors-create-api-github/github-connector-logic-app.png)
+   ![Mantıksal uygulama iş akışınıza daha fazla eylem ekleyin](./media/connectors-create-api-github/github-connector-logic-app.png)
 

@@ -1,115 +1,111 @@
 ---
-title: Sorun giderme ve tanılama hataları - Azure Logic Apps | Microsoft Docs
-description: Azure Logic apps'te iş akışı hatalarını tanılama ve giderme hakkında bilgi edinin
+title: Sorunları giderme ve tanılama hataları
+description: Azure Logic Apps iş akışı başarısızlıklarını nasıl giderebileceğinizi ve tanılamanıza öğrenin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60999823"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790771"
 ---
-# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic apps'te iş akışı hatalarını tanılama ve giderme
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps iş akışı hatalarının sorunlarını giderme ve tanılama
 
-Mantıksal uygulamanızı tanılayın ve sorunlarını uygulamanızda hata ayıklama yardımcı olabilecek bilgiler oluşturur. Mantıksal uygulama, Azure Portalı aracılığıyla iş akışındaki her adımı inceleyerek tanılayabilirsiniz. Veya bir iş akışı çalışma zamanı hata ayıklama için bazı adımlar ekleyebilirsiniz.
+Mantıksal uygulamanız uygulamanızdaki sorunları tanılamanıza ve hata ayıklamanıza yardımcı olabilecek bilgiler oluşturur. Azure portal aracılığıyla iş akışındaki her adımı inceleyerek bir mantıksal uygulamayı tanılayabilirsiniz. Ya da çalışma zamanı hata ayıklaması için bir iş akışına bazı adımlar ekleyebilirsiniz.
 
-## <a name="review-trigger-history"></a>Tetikleyici geçmişi gözden geçirme
+## <a name="review-trigger-history"></a>Tetikleyici geçmişini gözden geçirme
 
-Her mantıksal uygulama tetikleyicisi ile başlatılır. İlk tetikleyici etkinleşmez, tetikleyici geçmişini denetleyin. Bu geçmiş, tüm mantıksal uygulamanızı yapılan tetikleyici denemeleri ve giriş ve çıkışları tetikleyici girişimleri ayrıntılarını listeler.
+Her mantıksal uygulama tetikleyici ile başlar. Tetikleyici başlamazsa, önce tetikleyici geçmişini kontrol edin. Bu geçmiş, mantıksal uygulamanızın yaptığı tüm tetikleyici girişimlerini ve her tetikleyici denemesine yönelik girişler ve çıktılar hakkında ayrıntıları listeler.
 
-1. Tetikleyici, mantıksal uygulama menüsünde harekete olup olmadığını denetlemek için seçin **genel bakış**. Altında **tetikleyici geçmişi**, tetikleyicinin durumunu gözden geçirin.
+1. Tetikleyicinin tetikleyip tetiklenmediğini denetlemek için, mantıksal uygulama menüsünde **genel bakış**' ı seçin. **Tetikleyici geçmişi**altında, tetikleyicinin durumunu gözden geçirin.
 
    > [!TIP]
    > Mantıksal uygulama menüsü görünmüyorsa Azure panosuna dönüp mantıksal uygulamanızı yeniden açmayı deneyin.
 
-   ![Tetikleyici geçmişi gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![Tetikleyici geçmişini gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
 
    > [!TIP]
-   > * Beklediğiniz verileri bulamazsanız, seçmeyi deneyin **Yenile** araç.
-   > * Liste çok girişimleri tetikler ve girişi bulunamıyor gösterir, listeyi filtreleme deneyin.
+   > * Beklediğiniz verileri bulamazsanız, araç çubuğunda **Yenile** ' yi seçmeyi deneyin.
+   > * Listede çok sayıda tetikleme denemesi görünüyorsa ve istediğiniz girişi bulamazsanız, listeyi filtrelemeyi deneyin.
 
-   Bir tetikleyici girişimi için olası durumlar şunlardır:
+   Tetikleyici girişimi için olası durumlar şunlardır:
 
    | Durum | Açıklama | 
    | ------ | ----------- | 
-   | **Başarılı oldu** | Tetikleyici, uç noktayı kullanıma ve kullanılabilir veri bulunamadı. Genellikle, bir "Fired" durumu da yanı sıra bu durum görüntülenir. Tetikleyici tanımında bir koşula sahip olmayabilir, varsa veya `SplitOn` karşılanmadığı komutu. <p>Bu durum, el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyici uygulayabilirsiniz. Tetikleyici başarıyla çalıştırabilirsiniz, ancak çalışma eylemleri işlenmeyen bir hata oluşturduğunuzda yine de başarısız olabilir. | 
-   | **Atlandı** | Uç nokta tetikleyici işaretli, ancak hiçbir veri bulunamadı. | 
-   | **Başarısız** | Bir hata oluştu. Başarısız bir tetikleyicinin herhangi oluşturulan hata iletileri gözden geçirmek için Bu tetikleyici girişim seçip **çıkışları**. Örneğin, geçerli olmayan girişler bulabilirsiniz. | 
+   | **Baarı** | Tetikleyici bitiş noktasını denetledi ve kullanılabilir verileri buldu. Genellikle, bu durum yanında "tetiklenen" bir durum da görünür. Aksi takdirde, tetikleyici tanımında karşılanmayan bir koşul veya `SplitOn` komutu olabilir. <p>Bu durum el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyicisi için uygulanabilir. Bir tetikleyici başarıyla çalıştırılabilir, ancak eylemler işlenmeyen hatalar üretmediğinde, çalıştırma yine de başarısız olabilir. | 
+   | **Atlandı** | Tetikleyici bitiş noktasını denetledi ancak hiç veri bulmadı. | 
+   | **Başaramadı** | Bir hata oluştu. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar**' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. | 
    ||| 
 
-   Aynı saat ve tarihi mantıksal uygulamanız birden çok öğe bulduğunda gerçekleşen, birden çok tetikleyici girdilere sahip olabilir. 
-   Her zaman tetikleme tetiklendiğinde, Logic Apps altyapısı iş akışınızı çalıştırmak için bir mantıksal uygulama örneği oluşturur. Hiçbir iş akışı bir Farklı Çalıştır'ı başlatmadan önce beklenecek sahip olacak şekilde varsayılan olarak, her örneği paralel olarak çalışır.
+   Mantıksal uygulamanız birden çok öğe bulduğunda gerçekleşen aynı tarih ve saate sahip birden çok tetikleyici girişi olabilir. 
+   Tetikleyici her tetiklendiğinde Logic Apps altyapısı, iş akışınızı çalıştırmak için bir mantıksal uygulama örneği oluşturur. Varsayılan olarak, her örnek paralel olarak çalışır, böylece bir çalıştırması başlatmadan önce herhangi bir iş akışının beklemesi gerekmez.
 
    > [!TIP]
-   > Tetikleyici, sonraki yineleme için beklemenize gerek kalmadan yeniden denetlemek. Genel Bakış araç çubuğunda **tetikleyicisi**ve bir onay zorlar tetikleyicisini seçin. Ya da seçin **çalıştırma** Logic Apps Tasarımcısı araç çubuğunda.
+   > Bir sonraki tekrarmayı beklemeden Tetikleyiciyi yeniden denetleyebilirsiniz. Genel Bakış araç çubuğunda **tetikleyiciyi Çalıştır**' ı seçin ve sonra da bir denetimi zorlayan tetikleyiciyi seçin. Ya da Logic Apps Tasarımcı araç çubuğunda **Çalıştır** ' ı seçin.
 
-3. Altında bir tetikleyici girişimi ayrıntılarını incelemek için **tetikleyici geçmişi**, bu tetikleyici girişim seçin. 
+3. Tetikleyici denemesinin ayrıntılarını incelemek için tetikleyici **geçmişi**altında, bu tetikleyici denemesini seçin. 
 
-   ![Bir tetikleyici girişimi seçin](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+   ![Tetikleyici girişimi seçin](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-4. Giriş ve tetikleyici oluşturulan tüm çıkışları gözden geçirin. Çıkışlarına tetikleyiciden gelen verileri görüntüleyin. Bu çıkışları tüm özellikler beklenen şekilde döndürülüp döndürülmediğini belirlemenize yardımcı olabilir.
+4. , Tetikleyicinin oluşturduğu girişleri ve çıkışları gözden geçirin. Tetikleyici çıkışları, tetikleyiciden gelen verileri gösterir. Bu çıktılar, tüm özelliklerin beklenen şekilde döndürülüp döndürülmediğini belirlemenize yardımcı olabilir.
 
    > [!NOTE]
-   > Azure Logic Apps anlamadığınız herhangi bir içerik bulursanız, bilgi [farklı içerik türlerini işleme](../logic-apps/logic-apps-content-type.md).
+   > Anladığınızı bir içerik bulursanız Azure Logic Apps [farklı içerik türlerini nasıl işleyeceğinizi](../logic-apps/logic-apps-content-type.md)öğrenin.
 
-   ![Tetikleyici çıkışı](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![Tetikleme çıkışları](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
 
 ## <a name="review-run-history"></a>Çalıştırma geçmişini gözden geçirme
 
-Bir iş akışı çalıştırma her başlatılan bir tetikleyici başlatır. Çalışan, iş akışı yanı sıra giriş ve çıkışları her adım için her bir adımın durumunu da dahil olmak üzere sırasında ne olduğunu gözden geçirebilirsiniz.
+Tetiklenen her tetikleyici bir iş akışı çalıştırması başlatır. İş akışındaki her adımın durumu ve her adımın giriş ve çıkışları dahil olmak üzere, çalışma sırasında ne olduğunu inceleyebilirsiniz.
 
-1. Mantıksal uygulama menüsünden **Genel Bakış**'ı seçin. Altında **çalıştırma geçmişi**, başlatılan bir tetikleyici çalıştırmasını gözden geçirin.
+1. Mantıksal uygulama menüsünden **Genel Bakış**'ı seçin. Çalışma **geçmişi**altında, tetiklenen tetikleyici için çalıştırmayı gözden geçirin.
 
    > [!TIP]
    > Mantıksal uygulama menüsü görünmüyorsa Azure panosuna dönüp mantıksal uygulamanızı yeniden açmayı deneyin.
 
-   ![Çalıştırma geçmişi gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
+   ![Çalıştırma geçmişini gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
 
    > [!TIP]
-   > * Beklediğiniz verileri bulamazsanız, seçmeyi deneyin **Yenile** araç.
-   > * Birçok çalıştırmaları listesi gösterir ve girişi bulunamıyor, listeyi filtreleme deneyin.
+   > * Beklediğiniz verileri bulamazsanız, araç çubuğunda **Yenile** ' yi seçmeyi deneyin.
+   > * Listede birçok çalıştırma görünüyorsa ve istediğiniz girişi bulamazsanız, listeyi filtrelemeyi deneyin.
 
-   Bir çalıştırma için olası durumlar şunlardır:
+   İşte bir çalıştırma için olası durumlar şunlardır:
 
    | Durum | Açıklama | 
    | ------ | ----------- | 
-   | **Başarılı oldu** | Tüm eylemleri başarılı oldu. <p>Belirli bir eylem içinde herhangi bir hata oluştuysa, bu hata aşağıdaki bir eylem iş akışı içinde işlenir. | 
-   | **Başarısız** | En az bir eylem başarısız oldu ve iş akışındaki sonraki eylem yok hatayı işlemek için ayarlanmış. | 
-   | **İptal edildi** | İş akışının çalıştığı ancak bir iptal isteği aldı. | 
-   | **Çalıştıran** | İş akışı şu anda çalışıyor. <p>Bu durum, daraltılmış iş akışları için ya da geçerli fiyatlandırma planı nedeniyle gerçekleşebilir. Daha fazla bilgi için [eylem sınırları Fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/logic-apps/). Ayarlarsanız [tanılama günlüğünü](../logic-apps/logic-apps-monitor-your-logic-apps.md), aynı zamanda gerçekleşen herhangi bir kısıtlama olayları hakkında bilgi edinebilirsiniz. | 
+   | **Baarı** | Tüm eylemler başarılı oldu. <p>Belirli bir eylemde herhangi bir hata meydana gelirse, iş akışında aşağıdaki bir eylem bu hatayı işledi. | 
+   | **Başaramadı** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı. | 
+   | **Yürütüldükten** | İş akışı çalışıyor ancak iptal isteği alındı. | 
+   | **Çalıştıran** | İş akışı şu anda çalışıyor. <p>Bu durum, kısıtlanmış iş akışları veya geçerli fiyatlandırma planı nedeniyle gerçekleşebilir. Daha fazla bilgi için [fiyatlandırma sayfasındaki eylem sınırlarına](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. [Tanılama günlüğü](../logic-apps/logic-apps-monitor-your-logic-apps.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında da bilgi edinebilirsiniz. | 
    ||| 
 
-2. Her adımda belirli bir çalıştırma ayrıntılarını gözden geçirin. Altında **çalıştırma geçmişi**, incelemek istediğiniz Çalıştır'ı seçin.
+2. Belirli bir çalıştırmada her adımın ayrıntılarını gözden geçirin. Çalışma **geçmişi**altında, incelemek istediğiniz çalıştırmayı seçin.
 
-   ![Çalıştırma geçmişi gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
+   ![Çalıştırma geçmişini gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
 
-   Çalıştırmaya kendisini başarılı veya başarısız çalıştırma Ayrıntıları görünümünde her adım olup olmadığını gösterir ve olup bunların başarılı veya başarısız oldu.
+   Çalıştırmanın başarılı veya başarısız olup olmadığı, çalışma Ayrıntıları görünümü her adımı ve başarılı veya başarısız olup olmadığını gösterir.
 
    ![Bir mantıksal uygulama çalıştırmasının ayrıntılarını görüntüleme](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Girişler, çıkışlar ve belirli bir adıma herhangi bir hata iletisi incelemek için Şekil genişletir ve Ayrıntılar gösterilir böylece bu adımı seçin. Örneğin:
+3. Belirli bir adımla ilgili girişleri, çıkışları ve hata iletilerini incelemek için, şeklin genişleyeceği ve ayrıntıları gösterdiği şekilde bu adımı seçin. Örnek:
 
    ![Adım ayrıntıları görüntüleme](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
-## <a name="perform-runtime-debugging"></a>Çalışma zamanı hata ayıklama gerçekleştirin
+## <a name="perform-runtime-debugging"></a>Çalışma zamanı hatalarını ayıklamayı gerçekleştir
 
-Hata ayıklamaya yardımcı olmak için tanılama çalıştırma geçmişi ve tetikleyici gözden geçirme ile birlikte bir iş akışı adımlarını ekleyebilirsiniz. Örneğin, kullandığınız adımlar ekleyebilirsiniz [Web kancası Tester](https://webhook.site/) HTTP istekleri incelemek ve bunların tam bir boyut, Şekil ve biçimini belirler hizmet.
+Hata ayıklamaya yardımcı olmak için, tetikleyici ve çalıştırma geçmişini gözden geçirme ile birlikte bir iş akışına Tanılama adımları ekleyebilirsiniz. Örneğin, HTTP isteklerini incelemenize ve tam boyutunu, şeklini ve biçimini belirleyebilmeniz için [Web kancası Sınayıcısı](https://webhook.site/) hizmetini kullanan adımları ekleyebilirsiniz.
 
-1. Ziyaret [Web kancası Tester](https://webhook.site/) ve oluşturulan benzersiz URL'yi kopyalayın
+1. [Web kancası Sınayıcısı](https://webhook.site/) 'nı ziyaret edin ve oluşturulan benzersiz URL 'yi kopyalayın
 
-2. Mantıksal uygulamanızı, örneğin, test etmek istediğiniz gövde içeriği, bir ifade veya başka bir adım çıkış ile bir HTTP POST eylem ekleme.
+2. Mantıksal uygulamanızda, test etmek istediğiniz gövde içeriğiyle bir HTTP POST eylemi ekleyin, örneğin, bir ifade veya başka bir adım çıktısı.
 
-3. URL'yi, Web kancası test edici için HTTP POST eylemlere yapıştırın.
+3. Web kancası test eden URL 'sini HTTP POST eylemine yapıştırın.
 
-4. Logic Apps altyapısı oluşturulmuş bir istek nasıl biçimlendirildiğini gözden geçirmek için mantıksal uygulamayı çalıştırın ve Web kancası Tester Ayrıntılar için bkz.
+4. Logic Apps altyapısından oluşturulduğunda bir isteğin nasıl biçimlendirildiğini gözden geçirmek için mantıksal uygulamayı çalıştırın ve Ayrıntılar için Web kancası Sınayıcısı ' nı görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

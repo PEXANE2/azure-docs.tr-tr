@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2afe9a66d9f0ebecaef9626ef6caf9fc30f20841
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689376"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771079"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Öğretici: Visual Studio 'da bağlı hizmetlerle Bing Haber Arama API'si bağlanın veC#
 
@@ -268,4 +268,4 @@ Kaynak grubuna ihtiyacınız kalmadığında silebilirsiniz. Böylece bilişsel 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bing Haber Arama API'si hakkında daha fazla bilgi edinmek için bkz. [Bing Haber Arama nedir?](index.yml).
+Bing Haber Arama API'si hakkında daha fazla bilgi edinmek için bkz. [Bing Haber Arama nedir?](search-the-web.md).

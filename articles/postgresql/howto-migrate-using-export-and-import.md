@@ -1,20 +1,20 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda Içeri ve dışarı aktarma kullanarak bir veritabanını geçirme-tek sunucu
+title: Bir veritabanını geçirme-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bir PostgreSQL veritabanının bir betik dosyasına nasıl ayıklanacağını ve verilerin hedef veritabanına bu dosyadan nasıl aktarılacağını açıklar.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260356"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770212"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Dışarı aktarma ve içeri aktarma kullanarak PostgreSQL veritabanınızı geçirme
-Bir PostgreSQL veritabanını bir betik dosyasına ve [psql](https://www.postgresql.org/docs/current/static/app-psql.html) ' i bu dosyadaki hedef veritabanına aktarmak için [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
+Bir PostgreSQL veritabanını bir betik dosyasına ve [psql](https://www.postgresql.org/docs/current/static/app-psql.html) ' i bu dosyadaki hedef veritabanına aktarmak üzere bir komut dosyası dosyasına ayıklamak için [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821904"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767781"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için otomatik ayarlamayı etkinleştirin
 
@@ -34,7 +34,7 @@ Otomatik ayarlama, [Azure Portal](sql-database-automatic-tuning-enable.md#azure-
 
 Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanları" ndan devralmayı veya yapılandırmayı devralma seçeneğini belirleyebilirsiniz. Azure Varsayılanları FORCE_LAST_GOOD_PLAN etkindir, CREATE_INDEX etkinleştirilmiştir ve DROP_INDEX devre dışıdır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure SQL veritabanı mantıksal **sunucusunda**otomatik ayarlamayı etkinleştirmek için Azure Portal ' deki sunucuya gidin ve menüden **otomatik ayarlama** ' yı seçin.
 
@@ -60,7 +60,7 @@ Azure SQL veritabanı, her bir veritabanı için otomatik ayarlama yapılandırm
 > Genel öneri, otomatik ayarlama yapılandırmasını **sunucu düzeyinde** yönetmelidir, böylece aynı yapılandırma ayarları her veritabanına otomatik olarak uygulanabilir. Yalnızca veritabanının aynı sunucudan gelen ayarları devrallarından farklı ayarlara sahip olması gerekiyorsa, tek bir veritabanında otomatik ayarlamayı yapılandırın.
 >
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 **Tek bir veritabanında**otomatik ayarlamayı etkinleştirmek için Azure Portal veritabanında veritabanına gidin ve **otomatik ayarlama**' yı seçin.
 
@@ -92,7 +92,7 @@ Bireysel otomatik ayarlama seçeneklerini T-SQL aracılığıyla yapılandırmak
 ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
 ```
 
-Ayrı ayarlama seçeneğinin açık olarak ayarlanması, veritabanının Devralındığı tüm ayarları geçersiz kılar ve ayarlama seçeneğini etkinleştirir. Devre dışı olarak ayarlandığında, veritabanının Devralındığı tüm ayarlar da geçersiz kılınır ve ayarlama seçeneğini devre dışı bırakılır. Otomatik ayarlama seçeneği, varsayılan olarak belirtildiğinde yapılandırma, veritabanı düzeyi otomatik ayarlama ayarından devralınır.  
+Ayrı ayarlama seçeneğinin açık olarak ayarlanması, veritabanının Devralındığı tüm ayarları geçersiz kılar ve ayarlama seçeneğini etkinleştirir. Devre dışı olarak ayarlandığında, veritabanının Devralındığı tüm ayarlar da geçersiz kılınır ve ayarlama seçeneğini devre dışı bırakılır. Varsayılan olarak belirtilen otomatik ayarlama seçeneği, sunucu düzeyi ayarlarından otomatik ayarlama yapılandırmasını devralacak.  
 
 > [!IMPORTANT]
 > [Etkin coğrafi çoğaltma](sql-database-auto-failover-group.md)söz konusu olduğunda, otomatik ayarlamaya yalnızca birincil veritabanında yapılandırılması gerekir. Örneğin, dizin oluşturma veya silme gibi otomatik olarak uygulanan ayarlama eylemleri, salt okunurdur. Salt okunabilir ikincil üzerinde T-SQL aracılığıyla otomatik ayarlamayı etkinleştirmeye çalışmak, salt okunurdur ikincil üzerinde farklı bir ayarlama yapılandırması desteklenmediğinden hata oluşmasına neden olur.

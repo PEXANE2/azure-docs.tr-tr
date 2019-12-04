@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps 'ten SMTP 'ye Bağlan | Microsoft Docs
+title: Azure Logic Apps 'ten SMTP 'ye bağlanma
 description: Azure Logic Apps kullanarak SMTP (Basit Posta Aktarım Protokolü) hesabınız aracılığıyla e-posta gönderen görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050750"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789163"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps ile SMTP hesabınızdan e-posta gönderin
 
@@ -53,12 +49,12 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 
 1. İstendiğinde, bu bağlantı bilgilerini sağlayın:
 
-   | Özellik | Gerekli | Açıklama |
+   | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Bağlantı Adı** | Evet | SMTP sunucunuza bağlantı için bir ad | 
-   | **SMTP sunucu adresi** | Evet | SMTP sunucunuzun adresi | 
-   | **Kullanıcı adı** | Evet | SMTP hesabınız için Kullanıcı adınız | 
-   | **Parola** | Evet | SMTP hesabınız için parolanız | 
+   | **Bağlantı Adı** | Yes | SMTP sunucunuza bağlantı için bir ad | 
+   | **SMTP sunucu adresi** | Yes | SMTP sunucunuzun adresi | 
+   | **Kullanıcı adı** | Yes | SMTP hesabınız için Kullanıcı adınız | 
+   | **Parola** | Yes | SMTP hesabınız için parolanız | 
    | **SMTP sunucusu bağlantı noktası** | Hayır | SMTP sunucunuzda kullanmak istediğiniz belirli bir bağlantı noktası | 
    | **SSL etkinleştirilsin mi?** | Hayır | SSL şifrelemesini açın veya kapatın. | 
    |||| 

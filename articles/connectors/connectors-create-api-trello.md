@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps Trello 'a bağlanma | Microsoft Docs
+title: Azure Logic Apps Trello 'a bağlanma
 description: Azure Logic Apps kullanarak Trello projelerinizde listeleri, panoları ve kartları izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: ae77488df6ce58d8cab61933f50d24edec35b1ab
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 5c4fcb9b4fea1a4d982b5cf665564599d371b7cb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050735"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789146"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps Trello 'yi izleme ve yönetme
 

@@ -1,6 +1,6 @@
 ---
-title: Tek sayfalı uygulama (uygulama kaydı) - Microsoft kimlik platformu
-description: Tek sayfalı uygulama (uygulama kaydı) oluşturmayı öğrenin
+title: Tek sayfalı uygulama (uygulama kaydı)-Microsoft Identity platform
+description: Tek sayfalı uygulama oluşturmayı öğrenin (uygulama kaydı)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,38 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ef23b08beeee4cd7e82a5fc33a01b4988ddffb6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074838"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764704"
 ---
-# <a name="single-page-application---app-registration"></a>Tek sayfalı uygulama - uygulama kaydı
+# <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
-Bu sayfa, bir tek sayfalı uygulama (SPA) için uygulama kaydı özellikleri açıklanmaktadır.
+Bu sayfada, tek sayfalı uygulama (SPA) için uygulama kaydı özellikleri açıklanmaktadır.
 
-Adımlarını izleyin [Microsoft kimlik platformu ile yeni bir uygulama kaydetme](quickstart-register-app.md), uygulamanızın desteklenen hesaplar'ı seçin. SPA senaryo, kuruluşunuz veya tüm kuruluşlar ve kişisel Microsoft hesapları hesaplarla kimlik doğrulamasını destekler.
+[Microsoft Identity platformu ile yeni bir uygulama kaydetme](quickstart-register-app.md)ve uygulamanız için desteklenen hesapları seçme adımlarını izleyin. SPA senaryosu, kuruluşunuzdaki hesaplarla veya herhangi bir kuruluş ve kişisel Microsoft hesabında kimlik doğrulamayı destekleyebilir.
 
-Ardından, tek sayfalı uygulamalar için geçerli uygulama kaydı belirli yönleri hakkında bilgi edinin.
+Ardından, tek sayfalı uygulamalar için uygulanan uygulama kaydı 'nın belirli yönlerini öğrenin.
 
-## <a name="register-a-redirect-uri"></a>Yeniden yönlendirme URI'si kaydetme
+## <a name="register-a-redirect-uri"></a>Yeniden yönlendirme URI 'sini kaydetme
 
-Örtük akış, belirteçleri bir web tarayıcısında çalışan tek sayfalı uygulama içinde bir yeniden yönlendirme gönderir. Bu nedenle bir yeniden yönlendirme URI'si Burada, uygulamanızın belirteçleri alabilir kaydetmek için önemli bir gereksinim gereklidir. Lütfen yeniden yönlendirme URI'si uygulamanız için URI ile tam olarak eşleştiğinden emin olun.
+Örtük akış, belirteçleri bir Web tarayıcısında çalışan tek sayfalı uygulamaya yeniden yönlendirmeye gönderir. Bu nedenle, uygulamanızın belirteçleri alabileceği bir yeniden yönlendirme URI 'SI kaydedilmesi önemlidir. Yeniden yönlendirme URI 'sinin uygulamanızın URI 'siyle tam olarak eşleştiğinden emin olun.
 
-İçinde [Azure portalında](https://go.microsoft.com/fwlink/?linkid=2083908), kayıtlı uygulamanıza gidin **kimlik doğrulaması** seçin uygulama sayfasının **Web** platform ve değerini girin uygulamanıza yönelik yeniden yönlendirme URI'si **yeniden yönlendirme URI'si** alan.
+[Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)kayıtlı uygulamanıza gidin. Uygulamanın **kimlik doğrulaması** sayfasında **Web** platformu ' nu seçin. **Yeniden yönlendirme URI 'si** alanına uygulamanız için yeniden yönlendirme URI 'si değerini girin.
 
-## <a name="enable-the-implicit-flow"></a>Örtük akış etkinleştir
+## <a name="enable-the-implicit-flow"></a>Örtük akışı etkinleştir
 
-Aynı **kimlik doğrulaması** sayfasındaki **Gelişmiş ayarlar**, ayrıca etkinleştirmelisiniz **örtük vermeyi**. Uygulamanız yalnızca oturum açma kullanıcı ve kimlik belirteçlerini alma gerçekleştiriliyorsa etkinleştirmek yeterli **kimlik belirteçlerini** onay kutusu.
+Aynı **kimlik doğrulama** sayfasında, **Gelişmiş ayarlar**' ın altında, **örtük vermeyi**de etkinleştirmeniz gerekir. Uygulamanız yalnızca kullanıcılar için oturum açıp KIMLIK belirteçleri alıyorsanız, **Kimlik belirteçleri** onay kutusunu seçmeniz yeterlidir.
 
-Uygulamanız aynı zamanda API'leri çağırmak için erişim belirteçlerini almak gerekiyorsa, etkinleştirdiğinizden emin olun **erişim belirteçlerini** de onay kutusu. Daha fazla bilgi için [kimlik belirteçlerini](./id-tokens.md) ve [erişim belirteçlerini](./access-tokens.md).
+Uygulamanızın API 'Leri çağırmak için erişim belirteçleri alması gerekiyorsa, **erişim belirteçleri** onay kutusunu da seçtiğinizden emin olun. Daha fazla bilgi için bkz. [Kimlik belirteçleri](./id-tokens.md) ve [erişim belirteçleri](./access-tokens.md).
 
 ## <a name="api-permissions"></a>API izinleri
 
-Tek sayfa uygulamaları, oturum açmış kullanıcı adına API'leri çağırabilirsiniz. Temsilci izinleri istemek gerekir. Ayrıntılar için bkz [web API'lerine erişim izni ekleyin](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
+Tek sayfalı uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırabilir. Temsilci izinleri istemeleri gerekir. Ayrıntılar için bkz. [Web API 'lerine erişim Izinleri ekleme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Uygulama kodu yapılandırma](scenario-spa-app-configuration.md)
+> [Uygulamanın kod yapılandırması](scenario-spa-app-configuration.md)

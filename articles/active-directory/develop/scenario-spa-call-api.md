@@ -1,6 +1,6 @@
 ---
-title: Tek sayfalı uygulama (bir web API çağrısı) - Microsoft kimlik platformu
-description: Tek sayfalı uygulama (bir web API çağrısı) oluşturmayı öğrenin
+title: Tek sayfalı uygulama (Web API 'SI çağırma)-Microsoft Identity platform
+description: Tek sayfalı uygulama oluşturmayı öğrenin (Web API 'SI çağırma)
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,22 +15,22 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4170a6642d35802581b5d1ff28eb802a6eb3482b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545605"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766166"
 ---
-# <a name="single-page-application---call-a-web-api"></a>Tek sayfalı uygulama - bir web API çağrısı
+# <a name="single-page-application-call-a-web-api"></a>Tek sayfalı uygulama: Web API 'SI çağırma
 
-Çağırmanızı öneririz `acquireTokenSilent` almak veya bir web API'sine çağrı yapmadan önce bir erişim belirteci yenilemek için yöntemi. Bir belirteci aldıktan sonra korumalı web API'si çağırabilirsiniz.
+Web API 'sini çağırmak için bir erişim belirteci almak veya yenilemek üzere `acquireTokenSilent` yöntemini çağırmanız önerilir. Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz.
 
 ## <a name="call-a-web-api"></a>Web API çağrısı
 
 ### <a name="javascript"></a>JavaScript
 
-Alınan erişim belirteci Microsoft Graph API gibi bir web API'sini çağırmak için bir HTTP isteği bir taşıyıcı olarak kullanın. Örneğin:
+Microsoft Graph API gibi herhangi bir Web API 'sini çağırmak için bir HTTP isteğindeki alınan erişim belirtecini bir taşıyıcı olarak kullanın. Örnek:
 
 ```javascript
     var headers = new Headers();
@@ -50,9 +50,9 @@ Alınan erişim belirteci Microsoft Graph API gibi bir web API'sini çağırmak 
 
 ### <a name="angular"></a>Angular
 
-Belirtildiği gibi [belirteçleri Bölümü alınırken](scenario-spa-acquire-token.md), otomatik olarak erişim belirteçlerini sessiz bir şekilde almak ve bunları API'lerin HTTP isteklerine eklemek için HTTP dinleyiciyi MSAL Angular sarmalayıcı yararlanır.
+MSAL angular sarmalayıcısı, erişim belirteçlerini sessizce otomatik olarak almak ve bunları API 'lere HTTP isteklerine eklemek için HTTP yakalayıcısından yararlanır. Daha fazla bilgi için bkz. [API 'yi çağırmak için belirteç alma](scenario-spa-acquire-token.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretim aşamasına geçme](scenario-spa-production.md)
+> [Üretime taşı](scenario-spa-production.md)

@@ -1,101 +1,99 @@
 ---
-title: EDIFACT iletilerini - Azure Logic Apps kod çözme | Microsoft Docs
-description: EDI doğrulamak ve bildirimleri ile Azure Logic Apps Enterprise Integration Pack ile için EDIFACT message kod çözücü oluşturma
+title: EDIOLGU iletilerinin kodunu çözme
+description: EDI 'yi doğrulayın ve Enterprise Integration Pack Azure Logic Apps için EDIOLGU ileti kod çözücüsüyle bildirimleri oluşturun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790674"
 ---
-# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Azure Logic Apps Enterprise Integration Pack ile için EDIFACT iletileri kodunu çözme
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps için EDIOLGU iletilerinin kodunu çözün
 
-EDIFACT kodunu çözme ileti bağlayıcısıyla EDI ve iş ortağı özgü özellikleri doğrulamak, değişim işlemleri kümelerine bölme veya tüm etkileşimler korumak ve işlenen işlemler için bildirimler oluşturmak. Bu bağlayıcıyı kullanmak için bağlayıcıyı mantıksal uygulamanızda için var olan bir tetikleyici eklemeniz gerekir.
+DıBULGULAR ileti bağlayıcısıyla birlikte, EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, değişiklikleri işlem kümelerine bölebilir veya tüm değişiklikleri koruyabilir ve işlenen işlemler için bildirimler oluşturabilirsiniz. Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Gereksinim duyduğunuz öğeleri şu şekildedir:
+İhtiyacınız olan öğeler aşağıda verilmiştir:
 
-* Bir Azure hesabı; oluşturabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free)
-* Bir [tümleştirme hesabı](logic-apps-enterprise-integration-create-integration-account.md) zaten tanımlanmış ve Azure aboneliğinizle ilişkili. EDIFACT kodunu çözme ileti bağlayıcıyı kullanmak üzere bir tümleştirme hesabı olması gerekir. 
-* En az iki [iş ortakları](logic-apps-enterprise-integration-partners.md) , tümleştirme hesabında zaten tanımlanmış
-* Bir [EDIFACT sözleşmesi](logic-apps-enterprise-integration-edifact.md) , tümleştirme hesabında zaten tanımlı
+* Bir Azure hesabı; [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz
+* Zaten tanımlanmış ve Azure aboneliğinizle ilişkilendirilen bir [tümleştirme hesabı](logic-apps-enterprise-integration-create-integration-account.md) . Kod çözme EDIOLGU ileti bağlayıcısını kullanmak için bir tümleştirme hesabınız olmalıdır. 
+* Tümleştirme hesabınızda zaten tanımlanmış olan en az iki [iş ortağı](logic-apps-enterprise-integration-partners.md)
+* Tümleştirme hesabınızda zaten tanımlanmış olan bir [Ediolgu sözleşmesi](logic-apps-enterprise-integration-edifact.md)
 
-## <a name="decode-edifact-messages"></a>EDIFACT iletilerini kodunu çözme
+## <a name="decode-edifact-messages"></a>EDIOLGU iletilerinin kodunu çözme
 
-1. [Mantıksal uygulama oluşturma](quickstart-create-first-logic-app-workflow.md).
+1. [Mantıksal uygulama oluşturun](quickstart-create-first-logic-app-workflow.md).
 
-2. EDIFACT kod çözme ileti bağlayıcı tetikleyicileri, sahip değil. istek tetikleyicisi gibi mantıksal uygulamanızı başlatmak için bir tetikleyici eklemelisiniz. Mantıksal Uygulama Tasarımcısı'nda bir tetikleyici ekleme ve ardından mantıksal uygulamanız için bir eylem ekleyin.
+2. Kod çözme EDIOLGU ileti bağlayıcısının tetikleyicisi yok, bu nedenle bir Istek tetikleyicisi gibi mantıksal uygulamanızı başlatmak için bir tetikleyici eklemeniz gerekir. Mantıksal uygulama tasarımcısında bir tetikleyici ekleyin ve sonra mantıksal uygulamanıza bir eylem ekleyin.
 
-3. Arama kutusuna filtreniz olarak "EDIFACT" girin. Seçin **EDIFACT iletisinin kodunu çözün**.
+3. Arama kutusuna filtreniz olarak "EDIOLGU" yazın. **EDIOLGU Iletisinin kodunu çöz**' ü seçin.
    
-    ![EDIFACT arama](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
+    ![EDIOLGU ara](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. Daha önce tümleştirme hesabı için herhangi bir bağlantı oluşturmadıysanız, artık bu bağlantıyı oluşturmak için istenir. Bağlantınızı adlandırın ve bağlanmak istediğiniz tümleştirme hesabı seçin.
+3. Daha önce tümleştirme hesabınızla bağlantı oluşturmadıysanız, bu bağlantıyı şimdi oluşturmanız istenir. Bağlantınızı adlandırın ve bağlamak istediğiniz tümleştirme hesabını seçin.
    
-    ![Tümleştirme hesabı oluşturma](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
+    ![Tümleştirme hesabı oluştur](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
-    Bir yıldız işareti ile özellikleri gereklidir.
+    Yıldız işareti olan özellikler gereklidir.
 
     | Özellik | Ayrıntılar |
     | --- | --- |
-    | Bağlantı adı * |Bağlantınız için herhangi bir ad girin. |
-    | Tümleştirme hesabı * |Tümleştirme hesabı için bir ad girin. Tümleştirme hesabı ve mantıksal uygulamanızı aynı Azure konumda olduklarından emin olun. |
+    | Bağlantı adı * |Bağlantınız için bir ad girin. |
+    | Tümleştirme hesabı * |Tümleştirme hesabınız için bir ad girin. Tümleştirme hesabınızın ve mantıksal uygulamanızın aynı Azure konumunda olduğundan emin olun. |
 
-4. İşiniz bittiğinde, bağlantı oluşturmayı tamamlamak için seçin **Oluştur**. Bağlantı ayrıntılarınızı şu örneğe benzer olmalıdır:
+4. Bağlantınızı oluşturmayı bitirmeyi bitirdiğinizde **Oluştur**' u seçin. Bağlantı ayrıntılarınız Şu örneğe benzer görünmelidir:
 
     ![Tümleştirme hesabı ayrıntıları](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
-5. Bu örnekte gösterildiği gibi bağlantınızı oluşturulduktan sonra kodu çözülecek EDIFACT düz dosya iletisi seçin.
+5. Bağlantınız oluşturulduktan sonra, bu örnekte gösterildiği gibi, kodunun çözülmesi için EDIOLGU düz dosya iletisini seçin.
 
-    ![oluşturulan tümleştirme hesabı bağlantısı](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+    ![Tümleştirme hesabı bağlantısı oluşturuldu](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Örneğin:
+    Örnek:
 
-    ![Kod çözme için EDIFACT düz dosya iletisi seçin](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![Kod çözme için EDIOLGU düz dosya iletisini seçin](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>EDIFACT kod çözücü ayrıntıları
+## <a name="edifact-decoder-details"></a>EDIOLGU kod çözücü ayrıntıları
 
-EDIFACT kodunu çözme bağlayıcı, bu görevleri gerçekleştirir: 
+Kod çözme EDIOLGU Bağlayıcısı şu görevleri gerçekleştirir: 
 
-* Ticari ortak sözleşmesi karşı Zarf doğrular.
-* Gönderen niteleyicisi & tanımlayıcı ve alıcı niteleyicisi & tanımlayıcı eşleştirerek anlaşmayı çözümler.
-* Değişim ayarlarını yapılandırmayı alacağını anlaşmasına göre ait birden fazla işlem varken bir değişim birden çok işlem halinde böler.
-* Değişim ayrıştırır.
-* EDI ve iş ortağı özgü özellikler dahil olmak üzere doğrular:
-  * Doğrulama değişimi Zarf yapısı
-  * Denetim şemayla zarfının şema doğrulaması
-  * İleti şemayla işlem kümesi veri öğelerinin şema doğrulaması
-  * EDI doğrulaması işlem kümesi veri öğeleri üzerinde gerçekleştirilen
-* Değişim, Grup ve işlem kümesi denetim numaraları çoğaltmaları (yapılandırılmışsa) olmadığını doğrular 
-  * Değişim denetim numarası önceden alınmış değişim karşı denetler. 
-  * Grup denetim numarası diğer Grup denetim numaraları Değişimdeki karşı denetler. 
-  * Bu gruptaki diğer işlem kümesi denetim numaraları karşı işlem kümesi denetim numarası denetler.
-* Değişimi işlem kümeleri halinde ayırır veya tüm değişim korur:
-  * Bölünmüş değişimi işlem kümeleri - olarak işlem kümelerini Askıya Al hatası: Hareket halinde bölmelerini değişim ayarlar ve her işlem kümesi ayrıştırır. 
-  Kod çözme eylemi, bu işlem yalnızca ayarlar çıkarır X12 için doğrulama başarısız `badMessages`, kalan işlemler ayarlar çıkış `goodMessages`.
-  * Bölünmüş değişimi işlem kümeleri - olarak hata durumunda değişimi askıya: Hareket halinde bölmelerini değişim ayarlar ve her işlem kümesi ayrıştırır. 
-  Bir veya daha fazla işlem içinde değişim ayarlar doğrulama, kod çözme eylemi çıkarır, değişim için tüm işlem ayarlar X12 başarısız `badMessages`.
-  * Değişimi Koru - hata durumunda işlem kümelerini askıya: Değişimi Koru ve tüm toplu değişim işleyebilirsiniz. 
-  Kod çözme eylemi, bu işlem yalnızca ayarlar çıkarır X12 için doğrulama başarısız `badMessages`, kalan işlemler ayarlar çıkış `goodMessages`.
-  * Değişimi Koru - hata oluştuğunda değişimi Askıya Al: Değişimi Koru ve tüm toplu değişim işleyebilirsiniz. 
-  Bir veya daha fazla işlem içinde değişim ayarlar doğrulama, kod çözme eylemi çıkarır, değişim için tüm işlem ayarlar X12 başarısız `badMessages`.
-* Teknik (Denetim) ve/veya işlev bildirimi (yapılandırılmışsa) oluşturur.
-  * Teknik bir bildirim ya da kontrol ACK bir söz dizimi denetimini tam alınan değişim sonuçlarını raporlar.
-  * Bir işlev bildirimi kabul edin veya alınan Değişim veya bir grup Reddet bildirir
+* Zarfı, ticaret ortağı sözleşmesine karşı doğrular.
+* , Gönderici niteleyicisi & tanımlayıcı ve alıcı niteleyicisi & tanımlayıcısı ile eşleştirerek sözleşmeyi çözer.
+* Değişim, anlaşmanın alma ayarları yapılandırmasına göre birden fazla işlem olduğunda, bir değişimi birden çok işlem içine böler.
+* Değişimi ayrıştırır.
+* EDI ve ortağa özgü özellikleri doğrular, örneğin:
+  * Değişim zarfı yapısının doğrulanması
+  * Zarfın denetim şemasına karşı şema doğrulaması
+  * İleti şemasına karşı işlem kümesi veri öğeleri için şema doğrulaması
+  * EDI doğrulaması işlem kümesi veri öğelerinde gerçekleştirildi
+* Değişim, Grup ve işlem kümesi denetim numaralarının tekrarlanmadığını doğrular (yapılandırıldıysa) 
+  * Daha önce alınan karşılıklı değişikliklere karşı değişim denetim numarasını denetler. 
+  * Grup denetim numarasını, değişim içindeki diğer grup denetim numaralarına karşı denetler. 
+  * İşlem kümesi denetim numarasını bu gruptaki diğer işlem kümesi denetim numaralarına karşı denetler.
+* Değişimi işlem kümelerine böler veya tüm değişimi korur:
+  * Değişimi işlem kümeleri olarak Böl-hata durumunda işlem kümelerini askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
+  X12 kod çözme eylemi yalnızca doğrulamanın `badMessages`başarısız olan işlem kümelerini çıkarır ve kalan işlem kümelerini `goodMessages`olarak verir.
+  * Değişimi işlem kümeleri olarak Böl-hata durumunda değişimi askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini `badMessages`olarak verir.
+  * Değiş tokuş etme-işlem kümelerini askıya alma hata durumunda: değişimi koruma ve toplu tüm değişimi işleme. 
+  X12 kod çözme eylemi yalnızca doğrulamanın `badMessages`başarısız olan işlem kümelerini çıkarır ve kalan işlem kümelerini `goodMessages`olarak verir.
+  * Değişimi koru-hata durumunda değişimi askıya al: değişimi koruma ve toplu tüm değişimi işleme. 
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini `badMessages`olarak verir.
+* Teknik bir (denetim) ve/veya Işlevsel onay (yapılandırıldıysa) oluşturur.
+  * Teknik bir bildirim veya CONSI ACK, alınan tüm değiş tokuş için sözdizimsel bir denetim sonucunu raporlar.
+  * Bir işlevsel bildirim alınan bir değişimi veya grubu kabul eder veya reddeder
 
 ## <a name="view-swagger-file"></a>Swagger dosyasını görüntüle
-EDIFACT bağlayıcının Swagger ayrıntılarını görüntülemek için bkz: [EDIFACT](/connectors/edifact/).
+EDIOLGU bağlayıcısının Swagger ayrıntılarını görüntülemek için, bkz. [ediolgu](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Enterprise Integration Pack hakkında daha fazla bilgi](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin") 
+[Enterprise Integration Pack hakkında daha fazla bilgi edinin](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin") 
 

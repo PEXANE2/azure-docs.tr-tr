@@ -1,32 +1,29 @@
 ---
-title: Visual Studio ile mantıksal uygulamaları yönetme-Azure Logic Apps
+title: Visual Studio 'Yu kullanarak mantıksal uygulamaları yönetme
 description: Visual Studio 'Yu Cloud Explorer ile kullanarak mantıksal uygulamaları ve diğer Azure varlıklarını yönetme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: e10683bcd5612db788d6dd5675425fec4130ffeb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 29b1235ee319567e103267b9054b8c6b244e1ca7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796464"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790845"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
 
-[Azure Portal](https://portal.azure.com)Logic Apps oluşturabilir, düzenleyebilir, yönetebilir ve dağıtabileceğiniz halde, mantıksal uygulamalarınızı kaynak denetimine eklemek, farklı sürümler yayınlamak ve için [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) şablonları oluşturmak istediğinizde Visual Studio 'yu da kullanabilirsiniz. çeşitli dağıtım ortamları. Visual Studio Cloud Explorer ile mantıksal uygulamalarınızı diğer Azure kaynaklarıyla birlikte bulabilir ve yönetebilirsiniz. Örneğin, Azure portal zaten dağıtılmış olan Logic Apps 'i açabilir, indirebilir, düzenleyebilir, çalıştırabilir, çalıştırma geçmişini görüntüleyebilir, devre dışı bırakabilir ve etkinleştirebilirsiniz. Visual Studio 'da Azure Logic Apps ile çalışmaya yeni başladıysanız, [Visual Studio ile Logic Apps oluşturmayı](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)öğrenin.
+[Azure Portal](https://portal.azure.com)Logic Apps oluşturabilir, düzenleyebilir, yönetebilir ve dağıtabileceğiniz halde, mantıksal uygulamalarınızı kaynak denetimine eklemek, farklı sürümler yayınlamak ve çeşitli dağıtım ortamları için [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) şablonları oluşturmak istediğinizde Visual Studio 'yu da kullanabilirsiniz. Visual Studio Cloud Explorer ile mantıksal uygulamalarınızı diğer Azure kaynaklarıyla birlikte bulabilir ve yönetebilirsiniz. Örneğin, Azure portal zaten dağıtılmış olan Logic Apps 'i açabilir, indirebilir, düzenleyebilir, çalıştırabilir, çalıştırma geçmişini görüntüleyebilir, devre dışı bırakabilir ve etkinleştirebilirsiniz. Visual Studio 'da Azure Logic Apps ile çalışmaya yeni başladıysanız, [Visual Studio ile Logic Apps oluşturmayı](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)öğrenin.
 
 > [!IMPORTANT]
 > Visual Studio 'dan bir mantıksal uygulama dağıtmak veya yayımlamak, Azure portal o uygulamanın sürümünün üzerine yazar. Korumak istediğiniz Azure portal değişiklik yaparsanız, Visual Studio 'da bir dahaki sefer dağıtmadan veya yayımlamadan önce [Visual Studio 'daki mantıksal uygulamayı Azure Portal yenilediğinizden](#refresh) emin olun.
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -64,9 +61,9 @@ ms.locfileid: "73796464"
 
 Visual Studio 'da, Azure aboneliğinizle ilişkili olan ve bulut Gezgini kullanılarak Azure portal dağıtılan tüm mantık uygulamalarını bulabilirsiniz.
 
-1. Visual Studio’yu açın. **Görünüm** menüsünde **bulut Gezgini**' ni seçin.
+1. Visual Studio'yu açın. **Görünüm** menüsünde **bulut Gezgini**' ni seçin.
 
-1. Cloud Explorer 'da **Hesap yönetimi**' ni seçin. Logic Apps ile ilişkili Azure aboneliğini seçin ve ardından **Uygula**' yı seçin. Örneğin:
+1. Cloud Explorer 'da **Hesap yönetimi**' ni seçin. Logic Apps ile ilişkili Azure aboneliğini seçin ve ardından **Uygula**' yı seçin. Örnek:
 
    !["Hesap yönetimi" ni seçin](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -229,7 +226,7 @@ Mantıksal uygulama çalıştırmaları ile ilgili durumu denetlemek ve sorunlar
 
    ![Mantıksal uygulamanız için çalıştırma geçmişini açma](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmaya çift tıklayın. Örneğin:
+1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmaya çift tıklayın. Örnek:
 
    ![Belirli bir çalıştırma hakkındaki bilgileri görüntüleme](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

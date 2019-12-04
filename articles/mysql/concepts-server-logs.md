@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı için sunucu günlükleri
+title: Yavaş sorgu günlükleri-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nda kullanılabilen yavaş sorgu günlüklerini ve farklı günlük düzeylerini etkinleştirmek için kullanılabilen parametreleri açıklar.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434291"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770857"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -23,7 +23,7 @@ MySQL için Azure veritabanı 'nı, Azure portal ve Azure CLı kullanarak yavaş
 
 Azure portal, MySQL için Azure veritabanı sunucunuzu seçin. **İzleme** başlığı altında, **sunucu günlükleri** sayfasını seçin.
 
-Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak sunucu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-in-cli.md).
+Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak yavaş sorgu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-in-cli.md).
 
 ## <a name="log-retention"></a>Günlük tutma
 Günlükler, oluşumlarından yedi güne kadar kullanılabilir. Kullanılabilir günlüklerin toplam boyutu 7 GB 'yi aşarsa, alan kullanılabilir olana kadar en eski dosyalar silinir. 
@@ -31,17 +31,17 @@ Günlükler, oluşumlarından yedi güne kadar kullanılabilir. Kullanılabilir 
 Günlükler her 24 saatte bir veya 7 GB döndürülür, hangisi önce gelir.
 
 ## <a name="configure-slow-query-logging"></a>Yavaş sorgu günlüğünü yapılandırma 
-Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için slow_query_log olarak ayarlayın.
+Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için slow_query_log açık olarak ayarlayın.
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilir (saniye cinsinden). Varsayılan değer 10 saniyedir.
-- **log_slow_admin_statements**: varsa, slow_query_log 'e YAZıLAN DEYIMLERDE ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
-- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log 'e kaydedilip kaydedilmeyeceğini belirler
-- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre, log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
+- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
+- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
 
 > [!Note]
-> @No__t-0 için günlük, 2048 karakteri aşarsa kesilir.
+> `sql_text`için günlük 2048 karakteri aşarsa kesilir.
 
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [yavaş sorgu günlüğü belgelerini](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) inceleyin.
 

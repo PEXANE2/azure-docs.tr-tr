@@ -1,20 +1,17 @@
 ---
-title: Özel API 'lere kimlik doğrulaması ekleme-Azure Logic Apps | Microsoft Docs
+title: Özel API 'lere kimlik doğrulaması ekleme
 description: Azure Logic Apps özel API 'Leri çağırmak için kimlik doğrulamasını ayarlama
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039122"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793149"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'den özel API 'lere güvenli çağrılar
 
@@ -200,16 +197,16 @@ Mantıksal uygulama tanımınızı kod görünümünde açın, **http** eylem ta
 }
 ```
 
-| Özellik | Gerekli | Açıklama | 
+| Özellik | Gereklidir | Açıklama | 
 | -------- | -------- | ----------- | 
-| tenant | Yes | Azure AD kiracısı için GUID | 
-| audience | Yes | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
-| clientId | Yes | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
+| Kiracı | Yes | Azure AD kiracısı için GUID | 
+| grubu | Yes | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
+| ClientID | Yes | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
 | gizli dizi | Yes | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
 | type | Yes | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
 |||| 
 
-Örneğin:
+Örnek:
 
 ``` json
 {
@@ -251,7 +248,7 @@ Mantıksal uygulamanızdan gelen istekleri Web uygulamanıza veya API uygulaman�
 } 
 ```
 
-| Özellik | Gerekli | Açıklama |
+| Özellik | Gereklidir | Açıklama |
 | -------- | -------- | ----------- |
 | `type` | Yes | Kimlik doğrulama türü. SSL istemci sertifikaları için değerin `ClientCertificate`olması gerekir. |
 | `password` | Hayır | İstemci sertifikasına (PFX dosyası) erişim parolası |
@@ -274,7 +271,7 @@ Mantıksal uygulamanızdan Web uygulamanıza veya API uygulamanıza gelen istekl
 }
 ```
 
-| Özellik | Gerekli | Açıklama | 
+| Özellik | Gereklidir | Açıklama | 
 | -------- | -------- | ----------- | 
 | type | Yes | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
 | kullanıcı adı | Yes | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 

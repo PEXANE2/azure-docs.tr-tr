@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda sorgu deposu
+title: Sorgu deposu-MySQL için Azure veritabanı
 description: Zaman içinde performansı izlemenize yardımcı olması için MySQL için Azure veritabanı 'nda sorgu depolama özelliği hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603023"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770858"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Sorgu deposu ile MySQL için Azure veritabanı performansını izleme
 
@@ -87,7 +87,7 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık** |
+| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık** |
 |---|---|---|---|
 | query_store_capture_mode | Değer temelinde sorgu deposu özelliğini açın/kapatın. Note: performance_schema KAPALıYSA query_store_capture_mode açıldığında, bu özellik için gerekli olan performance_schema ve performans şeması gereçlerinin bir alt kümesini açmanız gerekir. | Bütün | HIÇBIRI, TÜMÜ |
 | query_store_capture_interval | Sorgu deposu yakalama aralığı dakika olarak. Sorgu ölçümlerinin toplanmış olduğu aralığın belirtilmesine izin verir | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık** |
+| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Bekleme istatistiklerinin açılmasını/KAPATıLMASıNı sağlar. | SEÇIM | HIÇBIRI, TÜMÜ |
 | query_store_wait_sampling_frequency | Saniye cinsinden bekleme örnekleme sıklığını değiştirir. 5-300 saniye. | 30 | 5-300 |
@@ -123,7 +123,7 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 | `timestamp_id` | timestamp| NO| Sorgunun yürütüldüğü zaman damgası. Bu, query_store_interval yapılandırmasına dayalıdır|
 | `query_digest_text`| LONGTEXT| NO| Tüm sabit değerleri kaldırdıktan sonra normalleştirilmiş sorgu metni|
 | `query_sample_text` | LONGTEXT| NO| Değişmez değer içeren gerçek sorgunun ilk görünümü|
-| `query_digest_truncated` | bit| YES| Sorgu metninin kesilip kesilmediğini belirtir. Sorgu 1 KB 'den uzunsa değer Evet olur|
+| `query_digest_truncated` | sürümleri| YES| Sorgu metninin kesilip kesilmediğini belirtir. Sorgu 1 KB 'den uzunsa değer Evet olur|
 | `execution_count` | büyük tamsayı (20)| NO| Sorgunun bu zaman damgası KIMLIĞI için kaç kez yürütüldüğü (yapılandırılmış Aralık dönemi sırasında)|
 | `warning_count` | büyük tamsayı (20)| NO| Bu sorgunun iç sırada oluşturduğu uyarı sayısı|
 | `error_count` | büyük tamsayı (20)| NO| Bu sorgunun Aralık sırasında oluşturduğu hata sayısı|

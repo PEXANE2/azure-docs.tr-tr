@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4d03c0f8e8aa387bae68dda6aeb974efe155366d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5b3bbbe635d2165044dc827a0cc9abcfc09a8cd1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504175"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795881"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -26,7 +26,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=linux)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
+
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `helloworld.cpp` adlı bir C++ kaynak dosyası oluşturun ve aşağıdaki kodu dosyaya yapıştırın.
 
@@ -76,9 +78,12 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Bu yeni dosyada, dize `YourSubscriptionKey`, konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Dize `whatstheweatherlike.wav` kendi dosya adıyla değiştirin.
+
+> [!NOTE]
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-the-app"></a>Uygulama oluşturma
 

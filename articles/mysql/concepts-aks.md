@@ -1,53 +1,53 @@
 ---
-title: Azure Kubernetes Service'i (AKS), MySQL için Azure veritabanı ile bağlanma
-description: MySQL için Azure veritabanı ile Azure Kubernetes hizmeti bağlama hakkında bilgi edinin
+title: Azure Kubernetes hizmetine bağlanma-MySQL için Azure veritabanı
+description: Azure Kubernetes hizmetini MySQL için Azure veritabanı ile bağlama hakkında bilgi edinin
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 71b266231b7ed3012e5ea7f65fe9487eeb5fb358
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790530"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773620"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>MySQL için Azure Kubernetes hizmeti ve Azure veritabanına bağlanma
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes hizmetini ve MySQL için Azure veritabanı 'nı bağlama
 
-Azure Kubernetes Service (AKS), Azure'da kullanabileceğiniz yönetilen bir Kubernetes kümesi sağlar. Bir uygulama oluşturmak için AKS ve MySQL için Azure veritabanı'nın birlikte kullanımı sırasında dikkate alınması gereken bazı seçenekler altındadır.
+Azure Kubernetes hizmeti (AKS), Azure 'da kullanabileceğiniz yönetilen bir Kubernetes kümesi sağlar. Aşağıda, bir uygulama oluşturmak için AKS ve MySQL için Azure veritabanı kullanılırken dikkate alınması gereken bazı seçenekler verilmiştir.
 
 
 ## <a name="accelerated-networking"></a>Hızlandırılmış ağ iletişimi
-Hızlandırılmış ağ etkin arka plandaki sanal makinelerinin AKS kümenizin kullanın. Bir VM'de hızlandırılmış ağ etkin olduğunda, daha düşük gecikme süresi, daha az değişim ve düşük CPU kullanımı VM'deki yoktur. Hızlandırılmış ağ çalışır, desteklenen bir işletim sistemi sürümleri ve sanal makine örnekleri için desteklenen nasıl hakkında daha fazla bilgi [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
+AKS kümenizde hızlandırılmış ağ özellikli, temel alınan VM 'Leri kullanın. Bir VM 'de hızlandırılmış ağ etkinleştirildiğinde, VM 'de daha düşük gecikme süresi, azaltılmış değişim ve CPU kullanımı azalır. Hızlandırılmış ağ oluşturma, desteklenen işletim sistemi sürümleri ve [Linux](../virtual-network/create-vm-accelerated-networking-cli.md)IÇIN desteklenen VM örnekleri hakkında daha fazla bilgi edinin.
 
-Kasım 2018 tarihinden sonra AKS bu desteklenen VM örneklerinde hızlandırılmış ağ iletişimi destekler. Hızlandırılmış ağ, bu sanal makineler kullanan yeni AKS kümelerde varsayılan olarak etkindir.
+AKS, Kasım 2018 ' den bu desteklenen sanal makine örneklerinde hızlandırılmış ağı destekler. Hızlandırılmış ağ, bu VM 'Leri kullanan yeni AKS kümelerinde varsayılan olarak etkindir.
 
-AKS kümenizi accelerated networking olup olmadığını doğrulayabilirsiniz:
-1. Azure portalına gidin ve AKS kümenizi seçin.
+AKS kümenizin hızlandırılmış ağa sahip olup olmadığını doğrulayabilirsiniz:
+1. Azure portal gidin ve AKS kümenizi seçin.
 2. Özellikler sekmesini seçin.
-3. Adı Kopyala **altyapı kaynak grubu**.
-4. Altyapı kaynak grubu bulup portal arama çubuğunu kullanın.
+3. **Altyapı kaynak grubunun**adını kopyalayın.
+4. Altyapı kaynak grubunu bulmak ve açmak için Portal arama çubuğunu kullanın.
 5. Bu kaynak grubunda bir VM seçin.
-6. Sanal makinenin Git **ağ** sekmesi.
-7. Onayla olmadığını **hızlandırılmış** 'Etkin.'
+6. VM 'nin **ağ** sekmesine gidin.
+7. **Hızlandırılmış ağın** ' etkin ' olup olmadığını onaylayın.
 
-Veya aşağıdaki iki komutu Azure CLI kullanarak:
+Ya da aşağıdaki iki komutu kullanarak Azure CLı aracılığıyla:
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
-Çıktı, AKS ağ arabirimi içeren oluşturduğu oluşturulan kaynak grubu olacaktır. "NodeResourceGroup" adını alın ve sonraki komutu kullanın. **EnableAcceleratedNetworking** true veya false olur:
+Çıktı, ağ arabirimini içeren AKS oluşturduğu kaynak grubu olacaktır. "NodeResourceGroup" adını alıp sonraki komutta kullanın. **Enableivme ağı** doğru veya yanlış olacaktır:
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 ## <a name="open-service-broker-for-azure"></a>Azure için Açık Hizmet Aracısı 
-[Azure için hizmet Aracısı'nı açın](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA), Azure hizmetlerinden doğrudan Kubernetes veya Cloud Foundry sağlama olanak sağlar. Bu bir [açık hizmet Aracısı API](https://www.openservicebrokerapi.org/) Azure için uygulama.
+[Azure Için açık hizmet Aracısı](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (osba), Azure hizmetlerini doğrudan Kubernetes veya Cloud Foundry üzerinden sağlamanıza olanak tanır. Azure için [açık bir HIZMET ARACıSı API](https://www.openservicebrokerapi.org/) uygulamasıdır.
 
-OSBA ile MySQL sunucusu için Azure veritabanı oluşturma ve AKS kümenizi Kubernetes doğal dil kullanarak bağlayın. OSBA ve Azure veritabanı için MySQL birlikte üzerinde nasıl kullanılacağı hakkında bilgi edinin [OSBA GitHub sayfasına](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
+OSBA ile, MySQL için Azure veritabanı sunucusu oluşturabilir ve Kubernetes 'in yerel dilini kullanarak AKS kümenize bağlayabilirsiniz. Osba [GitHub sayfasında](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md), MySQL Için Azure veritabanı 'nı kullanma hakkında bilgi edinin. 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Kubernetes Service kümesi oluşturma](../aks/kubernetes-walkthrough.md)
-- Bilgi edinmek için nasıl [MySQL için Azure veritabanını ve OSBA kullanarak bir Helm grafiği yükle Wordpress'ten](../aks/integrate-azure.md)
+- [Azure Kubernetes hizmet kümesi oluşturma](../aks/kubernetes-walkthrough.md)
+- [OSBA ve MySQL Için Azure veritabanı 'nı kullanarak bir hele grafiğinden WordPress yüklemeyi](../aks/integrate-azure.md) öğrenin

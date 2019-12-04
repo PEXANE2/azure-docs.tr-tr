@@ -1,21 +1,17 @@
 ---
-title: Veriler üzerinde işlem gerçekleştirme-Azure Logic Apps
+title: Veriler üzerinde işlem gerçekleştirme
 description: Azure Logic Apps veri çıktılarını ve biçimlerini dönüştürme, yönetme ve değiştirme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990547"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793123"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
 
@@ -80,7 +76,7 @@ ve bu çıktıyı oluşturur:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu adımları izleyin. Ya da kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, bu makaledeki örnek **oluşturma** ve **değişken** eylem tanımlarını, kendi mantıksal uygulamanızın temel alınan iş akışı tanımına kopyalayabilir ve kullanabilirsiniz: [veri işlemi kodu örnekleri- Oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu adımları izleyin. Ya da kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, bu makaledeki örnek **oluşturma** ve **değişken** eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına kopyalayabilirsiniz: [veri işlemi kodu örnekleri-oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -138,7 +134,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 Bir dizideki JavaScript Nesne Gösterimi (JSON) nesnelerinden Özellikler ve değerler içeren bir virgülle ayrılmış değer (CSV) tablosu oluşturmak için **CSV tablosu oluşturma** eylemini kullanın. Daha sonra, sonuç tablosunu **CSV tablosu oluşturma** eylemini izleyen eylemlerde kullanabilirsiniz.
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **CSV tablosu oluştur** ' u kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri- CSV tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **CSV tablosu oluştur** ' u kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [VERI işleme kodu örnekleri-CSV tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -289,7 +285,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 Bir dizideki JavaScript Nesne Gösterimi (JSON) nesnelerinden Özellikler ve değerler içeren bir HTML tablosu oluşturmak için **HTML tablosu oluştur** eylemini kullanın. Daha sonra, sonuç tablosunu **HTML tablosu oluştur** eylemini izleyen eylemlerde kullanabilirsiniz.
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **HTML tablosu oluştur** ' u kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri- HTML tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **HTML tablosu oluştur** ' u kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [VERI işleme kodu örnekleri-HTML tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -448,7 +444,7 @@ Belirli ölçütlere uyan öğeleri olan daha küçük bir dizi oluşturmak içi
 > 
 > Dizi çıktısını **filtre dizisi** eyleminde kullanmak için, bu eylemler dizileri girdi olarak kabul etmelidir ya da çıktı dizisini başka bir uyumlu biçime dönüştürmeniz gerekebilir.
 
-Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **filtre dizisini** kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri- Diziyi filtrele](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **filtre dizisini** kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri-filtre dizisi](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -497,7 +493,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    `@actionBody('Filter_array')`
 
-   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **Actionbody (' Filter_array ')** ifadesinden çıkışları içerir:
+   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **actionbody (' Filter_array ')** ifadesinden çıkışları içerir:
 
    !["Diziyi filtrele" eyleminden eylem çıkışları](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
@@ -573,7 +569,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 JavaScript Nesne Gösterimi (JSON) içeriğindeki özelliklere başvurmak veya erişmek için, **JSON 'U Ayrıştır** eylemini kullanarak bu özellikler için Kullanıcı dostu alanlar veya belirteçler oluşturabilirsiniz. Bu şekilde, mantıksal uygulamanız için giriş belirttiğinizde bu özellikleri dinamik içerik listesinden seçebilirsiniz. Bu eylem için, bir JSON şeması sağlayabilir veya örnek JSON içeriğinizi ya da yükünüzü bir JSON şeması oluşturabilirsiniz.
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **JSON ayrışını** kopyalayabilir ve değişken eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına **başlatabilirsiniz** : [veri işlemi kodu örnekleri-Parse JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **JSON ayrışını** kopyalayabilir ve değişken eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına **başlatabilirsiniz** : [VERI işlemi kodu örnekleri-JSON 'ı Ayrıştır](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -648,7 +644,7 @@ Varolan bir dizideki değerlerden oluşturulan JSON nesnelerine sahip bir dizi o
 > [!NOTE]
 > **Seçim** eyleminin dizi çıktısını kullanması için, bu eylemler dizileri girdi olarak kabul etmelidir ya da çıktı dizisini başka bir uyumlu biçime dönüştürmeniz gerekebilir. 
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örneği kopyalayabilir** ve bu makaledeki **değişken** eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına ekleyebilirsiniz: [veri işlemi kodu örnekleri-Seç ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örneği kopyalayabilir** ve bu makaledeki **değişken** eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına ekleyebilirsiniz: [veri işlemi kodu örnekleri-Seç](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -676,7 +672,7 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örne
 
 1. **Harita** kutusunun sol sütununda, kaynak dizide her bir değere atamak istediğiniz özellik adını sağlayın. Sağ sütunda, özelliği atamak istediğiniz değeri temsil eden bir ifade belirtin.
 
-   Bu örnek, her bir dizi öğesine erişen bir ifadede `item()` işlevini kullanarak tamsayı dizisindeki her bir değeri atamak için özellik adı olarak "Product_ID" değerini belirtir. 
+   Bu örnek, her bir dizi öğesine erişen bir ifadede `item()` işlevini kullanarak tamsayı dizisindeki her bir değeri atamak için özellik adı olarak "Product_ID" belirtir. 
 
    ![Dizi oluşturmak için JSON nesnesi özelliğini ve değerlerini belirtin](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 

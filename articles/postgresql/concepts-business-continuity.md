@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
+title: İş sürekliliği-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, PostgreSQL için Azure veritabanı kullanılırken iş sürekliliği (zaman içinde geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950089"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763887"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -25,8 +25,8 @@ Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaşt�
 
 | **Yapma** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Yedekten bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
-| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
+| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmiyor | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
 > Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucunuzun yanlışlıkla silinmesini önlemeye yardımcı olmak için [Azure Kaynak kilidini](../azure-resource-manager/resource-group-lock-resources.md) kullanın.
@@ -39,16 +39,16 @@ Sunucunuzun bir kopyasını zaman içinde bilinen iyi bir noktada oluşturmak i�
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Azure veri merkezi kesintisinden kurtarma
 
-Nadir bir Azure veri merkezinde kesinti olabilir. Bir kesinti oluştuğunda, en son birkaç dakika içinde bir iş kesintilerine neden olabilir, ancak saat için en son zaman alabilir.
+Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Bir kesinti oluştuğunda, en son birkaç dakika içinde bir iş kesintilerine neden olabilir, ancak saat için en son zaman alabilir.
 
 Bir seçenek, veri merkezi kesintisi olduğunda sunucunuzun çevrimiçi duruma gelmesini bekleyeyöneliktir. Bu, örneğin bir geliştirme ortamı gibi belirli bir süre için sunucunun çevrimdışı olmasını sağlayan uygulamalar için geçerlidir. Bir veri merkezinde kesinti olduğunda, kesintiden en son ne kadar süre sürdüğünü bilemezsiniz, bu nedenle bu seçenek yalnızca sunucunuza bir süredir ihtiyacınız yoksa işe yarar.
 
-## <a name="geo-restore"></a>Coğrafi geri yükleme
+## <a name="geo-restore"></a>Coğrafi Geri Yükleme
 
 Coğrafi geri yükleme özelliği, coğrafi olarak yedekli yedeklemeleri kullanarak sunucuyu geri yükler. Yedeklemeler, sunucunuzun [eşleştirilmiş bölgesinde](../best-practices-availability-paired-regions.md)barındırılır. Bu yedeklerden diğer bölgelere geri yükleme yapabilirsiniz. Coğrafi geri yükleme, yedeklemelerdeki verilerle yeni bir sunucu oluşturur. [Yedekleme ve geri yükleme kavramları makalesindeki](concepts-backup.md)coğrafi geri yükleme hakkında daha fazla bilgi edinin.
 
 > [!IMPORTANT]
-> Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür. Mevcut bir sunucu için yerel olarak yedekli yedekten coğrafi olarak yedekli yedeklemelere geçiş yapmak istiyorsanız, mevcut sunucunuzun pg_dump kullanarak bir döküm almanız ve coğrafi olarak yedekli yedeklemelerle yapılandırılmış yeni oluşturulan bir sunucuya geri yüklemeniz gerekir.
+> Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür. Var olan bir sunucu için yerel olarak yedekli yedekten coğrafi olarak yedekli yedeklemelere geçiş yapmak istiyorsanız, var olan sunucunuzun pg_dump kullanarak bir döküm almanız ve coğrafi olarak yedekli yedeklemelerle yapılandırılmış yeni oluşturulan bir sunucuya geri yüklemeniz gerekir.
 
 ## <a name="cross-region-read-replicas"></a>Bölgeler arası okuma çoğaltmaları
 İş sürekliliği ve olağanüstü durum kurtarma planlamasını iyileştirmek için bölgeler arası okuma çoğaltmalarını kullanabilirsiniz. Okuma çoğaltmaları PostgreSQL 'in fiziksel çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Okuma çoğaltmaları, kullanılabilir bölgeler ve [okuma çoğaltmaları kavramları makalesindeki](concepts-read-replicas.md)yük devretme hakkında daha fazla bilgi edinin. 

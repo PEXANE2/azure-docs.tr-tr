@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: 49bfa4a0dbf0adc498d545a2908c20f0ffa35b4b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075727"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774017"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -23,7 +23,7 @@ Azure konuşma hizmetlerinden konuşmaya metin olarak da bilinen konuşmadan met
 
 Varsayılan olarak, konuşma-metin hizmeti, evrensel dil modelini kullanır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz.
 
-Konuşmayı bir mikrofondan kolayca yakalayabilir, bir akıştan okuyabilir veya ses dosyalarına konuşma SDK 'Sı ve REST API 'Leri ile erişebilirsiniz. Konuşma SDK'sı WAV/PCM 16 bit, 16 kHz/8 kHz, tek kanallı sesten konuşma tanıma gerçekleştirebilir. [Konuşmayı metne dönüştürme REST uç noktası](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) veya [toplu transkripsiyon hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats) ile ek ses biçimleri için de destek sunulmaktadır.
+Konuşmayı bir mikrofondan kolayca yakalayabilir, bir akıştan okuyabilir veya ses dosyalarına konuşma SDK 'Sı ve REST API 'Leri ile erişebilirsiniz. Konuşma SDK'sı WAV/PCM 16 bit, 16 kHz/8 kHz, tek kanallı sesten konuşma tanıma gerçekleştirebilir. Ek ses biçimleri, [konuşmadan metne REST uç noktası](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) veya [toplu iş dökümü hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)kullanılarak desteklenir.
 
 ## <a name="core-features"></a>Temel Özellikler
 
@@ -31,18 +31,20 @@ Konuşma SDK 'Sı ve REST API 'Leri aracılığıyla kullanılabilen özellikler
 
 | Kullanım örneği | SDK | REST |
 |--------- | --- | ---- |
-| Kısa mesafeli (15 saniye <). Yalnızca son döküm sonucunu destekler. | Yes | Yes |
+| Kısa mesafeli (15 saniye <). Yalnızca bir son döküm sonucunu destekler. | Yes | Evet\* |
 | Uzun ifade ve akış sesinin sürekli olarak dökümünü alma (> 15 saniye). , Geçici ve son döküm sonuçlarını destekler. | Yes | Hayır |
-| [Lusıs](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)ile tanıma sonuçlarından hedefleri türetebilirsiniz. | Yes | Yok\* |
-| Ses dosyalarının zaman uyumsuz olarak toplu olarak dökümünü alma. | Hayır  | Evet\*\* |
-| Konuşma modellerini oluşturun ve yönetin. | Hayır | Evet\*\* |
-| Özel model dağıtımları oluşturun ve yönetin. | Hayır  | Evet\*\* |
-| Özel modellere karşı taban çizgisi modelinin doğruluğunu ölçmek için doğruluk testleri oluşturun. | Hayır  | Evet\*\* |
-| Abonelikleri yönetin. | Hayır  | Evet\*\* |
+| [Lusıs](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)ile tanıma sonuçlarından hedefleri türetebilirsiniz. | Yes | \*\* yok |
+| Ses dosyalarının zaman uyumsuz olarak toplu olarak dökümünü alma. | Hayır  | Evet\*\*\* |
+| Konuşma modellerini oluşturun ve yönetin. | Hayır | Evet\*\*\* |
+| Özel model dağıtımları oluşturun ve yönetin. | Hayır  | Evet\*\*\* |
+| Özel modellere karşı taban çizgisi modelinin doğruluğunu ölçmek için doğruluk testleri oluşturun. | Hayır  | Evet\*\*\* |
+| Abonelikleri yönetin. | Hayır  | Evet\*\*\* |
 
-\*_luya amaçları ve varlıkları ayrı bır Luo aboneliği kullanılarak türetilebilir. Bu abonelikle, SDK BASıS 'yi çağırabilir ve varlık ve amaç sonuçları sağlayabilir. REST API ile, LUSıS aboneliğiniz ile hedefleri ve varlıkları türetmek için LUSıS 'yi çağırabilirsiniz._
+_rest Işlevlerini kullanarak \*en fazla 60 saniyelik ses aktarabilirsiniz ve bir son geri alma sonucu elde edersiniz._
 
-_Bu hizmetlere \*\*, Cris.ai uç noktası kullanılarak kullanılabilir. Bkz. [Swagger başvurusu](https://westus.cris.ai/swagger/ui/index)._
+\*\*_Luo amaçları ve varlıkları ayrı bır Luo aboneliği kullanılarak türetilebilir. Bu abonelikle, SDK YAĞıNıZı çağırır ve varlık ve amaç sonuçları sağlar. REST API ile, LUSıS aboneliğiniz ile amaç ve varlık türetebilirsiniz._
+
+\*\*\*_Bu hizmetler Cris.ai uç noktası kullanılarak kullanılabilir. Bkz. [Swagger başvurusu](https://westus.cris.ai/swagger/ui/index)._
 
 ## <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
 

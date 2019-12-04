@@ -1,18 +1,18 @@
 ---
-title: MariaDB için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
+title: Yedekleme ve geri yükleme-Azure CLı-MariaDB için Azure veritabanı
 description: Azure CLı kullanarak MariaDB için Azure veritabanı 'nda bir sunucuyu yedeklemeyi ve geri yüklemeyi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 4564aff5e8fe2119a494af33e71ff927718646db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965221"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765894"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLı kullanarak MariaDB için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme
 
@@ -117,7 +117,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 |ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |source-server | mydemoserver | Coğrafi olarak yedekli yedeklemeleri kullanılan mevcut sunucunun adı. |
 |location | eastus | Yeni sunucunun konumu. |
-|sku-name| GP_Gen5_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen5_8, 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusuyla eşlenir.|
+|sku-name| GP_Gen5_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen5_8, 8 sanal çekirdekte bir Genel Amaçlı, Gen 5 sunucusuyla eşlenir.|
 
 Coğrafi geri yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı depolama boyutunu ve fiyatlandırma katmanını devralır. Bu değerler oluşturma sırasında değiştirilemez. Yeni sunucu oluşturulduktan sonra, depolama boyutu yukarı ölçeklendirilebilir.
 

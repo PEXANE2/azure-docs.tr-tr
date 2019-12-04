@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102103"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790639"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell ile SQL Server sanal makineler sağlama
 
@@ -171,7 +171,7 @@ Sanal alt ağ yapılandırmanızı oluşturmak için bu cmdlet 'i çalıştırı
 $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 ```
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 Sonra, [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) cmdlet 'ini kullanarak yeni kaynak grubunuzda Sanal ağınızı oluşturun. Ad, konum ve adres ön eki için daha önce oluşturduğunuz değişkenleri belirtin. Önceki adımda tanımladığınız alt ağ yapılandırmasını kullanın.
 
 Sanal ağınızı oluşturmak için bu cmdlet 'i çalıştırın.
@@ -337,12 +337,13 @@ Sanal makine oluşturulur.
 > Önyükleme tanılamaları hakkında bir hata alırsanız, bunu yoksayabilirsiniz. Sanal makinenin diski için belirtilen depolama hesabı bir Premium depolama hesabı olduğundan, önyükleme tanılaması için standart bir depolama hesabı oluşturulur.
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL Iaas Aracısı'nı yükleme
-SQL Server sanal makineler, [SQL Server IaaS Aracısı uzantısı](virtual-machines-windows-sql-server-agent-extension.md)ile otomatikleştirilmiş yönetim özelliklerini destekler. Aracıyı yeni VM 'ye yüklemek için, oluşturulduktan sonra aşağıdaki komutu çalıştırın.
+SQL Server sanal makineler, [SQL Server IaaS Aracısı uzantısı](virtual-machines-windows-sql-server-agent-extension.md)ile otomatikleştirilmiş yönetim özelliklerini destekler. Aracıyı yeni VM 'ye yüklemek ve kaynak sağlayıcısına kaydetmek için, sanal makine oluşturulduktan sonra [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) komutunu çalıştırın. SQL Server VM için lisans türünü belirtin, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)aracılığıyla Kullandıkça Öde veya kendi lisansını getir seçeneklerinden birini belirleyin. Lisanslama hakkında daha fazla bilgi için bkz. [lisans modeli](virtual-machines-windows-sql-ahb.md). 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>VM 'yi durdurma veya kaldırma
 
@@ -419,8 +420,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

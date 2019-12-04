@@ -1,17 +1,17 @@
 ---
-title: Ayrılmış kapasiteye sahip MariaDB işlem kaynakları için Azure veritabanı için ön ödeme
+title: Ayrılmış kapasiteye sahip işlem için ön ödeme-MariaDB için Azure veritabanı
 description: Ayrılmış kapasiteye sahip MariaDB işlem kaynakları için Azure veritabanı için ön ödeme
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 5821fb03dcf4331cbab5744f056521468a56d5d2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076862"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773116"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MariaDB işlem kaynakları için Azure veritabanı için ön ödeme
 
@@ -22,10 +22,10 @@ Bu ayırmayı, MariaDB sunucuları için belirli Azure veritabanına atamanız g
 MariaDB için Azure veritabanı ayrılmış kapasitesi [Azure Portal](https://portal.azure.com/)satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
 
 * Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
-* Kurumsal abonelikler için, **EA portal**’da [Ayrılmış Örnek Ekle](https://ea.azure.com/) seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
+* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
 * Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları, MariaDB için Azure veritabanı ayrılmış kapasitesi için satın alabilir. </br>
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde için Azure rezervasyon kullanımını anlama abonelik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Satın almadan önce doğru sunucu boyutunu belirle
@@ -37,7 +37,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış veritab
 
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>MariaDB için Azure veritabanı ayrılmış kapasitesi satın alın
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3.  **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde, MariaDB veritabanlarınızı Için **Azure veritabanı** ' nı seçin.
 4.  Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İndirimi alan MariaDB sunucuları için Azure veritabanınızın gerçek sayısı, seçilen kapsama ve miktara göre değişir.
@@ -66,7 +66,7 @@ Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya 
 
 vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performans katmanı ve bölgesi içinde ölçeği büyütme veya küçültme olanakları sağlar. 
 
-## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
+## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

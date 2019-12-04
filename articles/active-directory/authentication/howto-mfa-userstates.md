@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404204"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785866"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
@@ -41,11 +41,14 @@ Azure AD Kimlik Koruması tarafından etkinleştirildi-bu yöntem, yalnızca tü
 
 Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farklı duruma sahiptir:
 
+> [!IMPORTANT]
+> Azure MFA 'nın koşullu erişim ilkesi aracılığıyla etkinleştirilmesi kullanıcının durumunu değiştirmez. Uyarıda bulunulan kullanıcılar devre dışı görünür. Koşullu erişim durumu değiştirmez. **Kuruluşlar, koşullu erişim ilkeleri kullanıyorsa kullanıcıları etkinleştirmemelidir veya zorlamaz.**
+
 | Durum | Açıklama | Etkilenen tarayıcı olmayan uygulamalar | Etkilenen tarayıcı uygulamaları | Modern kimlik doğrulaması etkilendi |
-|:---:|:---:|:---:|:--:|:--:|
-| Devre dışı |Azure MFA 'da kayıtlı olan yeni bir kullanıcının varsayılan durumu. |Hayır |Hayır |Hayır |
-| Etkin |Kullanıcı Azure MFA 'ya kaydoldu, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. |Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra, Azure MFA kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra, Azure MFA kaydı gereklidir. |
-| Uygulandı |Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. |Evet. Uygulamalar uygulama parolaları gerektirir. |Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
+|:---:| --- |:---:|:--:|:--:|
+| Devre dışı | Azure MFA 'da kayıtlı olan yeni bir kullanıcının varsayılan durumu. | Hayır | Hayır | Hayır |
+| Etkin | Kullanıcı Azure MFA 'ya kaydoldu, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. | Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra, Azure MFA kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra, Azure MFA kaydı gereklidir. |
+| Uygulandı | Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. | Evet. Uygulamalar uygulama parolaları gerektirir. | Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
 
 Bir kullanıcının durumu, yöneticinin Azure MFA 'ya kaydolduğunu ve kayıt sürecini tamamlamadığını yansıtır.
 
@@ -78,7 +81,7 @@ Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz sayf
 
 Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Bunlara bir dahaki sefer oturum açtıklarında kaydolmaları istenir. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Kullanmaya başlamanıza yardımcı olması için [Azure MFA Son Kullanıcı Kılavuzu ' na](../user-help/multi-factor-authentication-end-user.md) de bir bağlantı ekleyebilirsiniz.
 
-### <a name="use-powershell"></a>PowerShell kullanma
+### <a name="use-powershell"></a>PowerShell'i kullanma
 
 [Azure AD PowerShell](/powershell/azure/overview)kullanarak Kullanıcı durumunu değiştirmek için `$st.State`değiştirin. Üç olası durum vardır:
 

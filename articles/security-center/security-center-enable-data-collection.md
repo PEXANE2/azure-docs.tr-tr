@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: ae645f15672693466ba87f2364c756ed164ce629
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669161"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766999"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı. Log Analytics Aracısı Ayrıca kilitlenme bilgi döküm dosyalarını çalışma alanınıza kopyalar.
@@ -304,7 +304,12 @@ Güvenlik Merkezi 'nin sanal makinelerinizden güvenlik verilerini toplayabilmes
 -  İzleme Aracısı ağ gereksinimlerini belirlemek için bkz. [İzleme Aracısı ağ gereksinimlerini giderme](security-center-troubleshooting-guide.md#mon-network-req).
 -   El ile ekleme sorunlarını belirlemek için bkz. [Operations Management Suite ekleme sorunlarını giderme](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- Izlenmeyen VM 'Leri ve bilgisayar sorunlarını belirlemek için bkz. [Izlenmeyen VM 'ler ve bilgisayarlar](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
+- Izlenmeyen VM 'Leri ve bilgisayar sorunlarını belirlemek için:
+
+    Makine Microsoft Monitoring Agent uzantısını çalıştırmadığından, bir VM veya bilgisayar Güvenlik Merkezi tarafından izlenmeyen. Bir makinede yerel bir aracı zaten yüklü olabilir, örneğin OMS doğrudan Aracısı veya System Center Operations Manager Aracısı. Bu aracılar Güvenlik Merkezi 'nde tam olarak desteklenmediğinden, bu aracıları içeren makineler izlenmeyen olarak tanımlanmıştır. Güvenlik Merkezi’nin tüm özelliklerinden tam olarak faydalanmak için, Microsoft Monitoring Agent uzantısı gereklidir.
+
+    Güvenlik Merkezi 'nin otomatik sağlama için başlatılan VM 'Leri ve bilgisayarları başarılı bir şekilde izleyememesinin nedenleri hakkında daha fazla bilgi için bkz. [Aracı sistem durumu sorunlarını izleme](security-center-troubleshooting-guide.md#mon-agent).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, güvenlik merkezi 'nde veri toplama ve otomatik sağlama işlemlerinin nasıl çalıştığı gösteriliyordu. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:

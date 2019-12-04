@@ -1,32 +1,33 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: b216de0a5094066977467b2899567122d585fb7e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 635a69fc8e75e3a6249728dc1df31cf839b345c6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188630"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789618"
 ---
-#### <a name="prerequisites"></a>Önkoşullar
-* Bir Azure hesabı; oluşturabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free)
-* Bir [Office 365](https://office365.com) hesabı  
+## <a name="prerequisites"></a>Önkoşullar
 
-Office 365 hesabınıza bir mantıksal uygulama çalıştırmasında kullanmadan önce mantıksal uygulama Office 365 hesabınıza bağlanmak için yetkilendirin. Kolayca Azure portalında mantıksal uygulama içinde bunu yapabilirsiniz.  
+* Bir Azure hesabı; [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz
+* [Office 365](https://office365.com) hesabı  
 
-Mantıksal uygulamanızı, aşağıdaki adımları kullanarak Office 365 hesabınıza bağlanmaya izin verirsiniz:
+Office 365 hesabınızı bir mantıksal uygulamada kullanmadan önce, mantıksal uygulamayı Office 365 hesabınıza bağlanmak üzere yetkilendirin. Bu, Azure portal mantıksal uygulamanız dahilinde kolayca yapabilirsiniz.  
 
-1. Mantıksal uygulama oluşturun. Logic Apps Tasarımcısı'nda seçin **yönetilen API'leri Göster Microsoft** açılan liste ve ardından arama kutusuna "office 365" girin. Tetikleyiciler veya Eylemler birini seçin:  
-    ![Office 365 bağlantı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-sendemail.png)  
-2. Daha önce Office 365 için herhangi bir bağlantı oluşturmadıysanız, Office 365 kimlik bilgilerinizi kullanarak oturum açmanız istenir:  
-    ![Office 365 bağlantı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-signin.png)  
-3. Seçin **oturum**, kullanıcı adı ve parolayı girin. Seçin **oturum**:  
-    ![Office 365 bağlantı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
+Aşağıdaki adımları kullanarak mantıksal uygulamanızı Office 365 hesabınıza bağlanmak üzere yetkilendirin:
+
+1. Mantıksal uygulama oluşturun. Logic Apps tasarımcısında, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin ve arama kutusuna "Office 365" yazın. Tetikleyiciler veya eylemlerden birini seçin:  
+    ![Office 365 bağlantısı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-sendemail.png)  
+2. Daha önce Office 365 bağlantısı oluşturmadıysanız, Office 365 kimlik bilgilerinizi kullanarak oturum açmanız istenir:  
+    ![Office 365 bağlantısı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-signin.png)  
+3. **Oturum aç**' ı seçin ve Kullanıcı adınızı ve parolanızı girin. **Oturum aç '** ı seçin:  
+    ![Office 365 bağlantısı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
    
-    Bu kimlik bilgileri, mantıksal uygulamanızı bağlayın ve Office 365 hesabınıza erişmek üzere yetkilendirmek için kullanılır. 
-4. Bağlantıyı oluşturan dikkat edin. Şimdi mantıksal uygulamanızı diğer adımlarla devam edin:   
-    ![Office 365 bağlantı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
+    Bu kimlik bilgileri, mantıksal uygulamanızı bağlanmak ve Office 365 hesabınıza erişmek üzere yetkilendirmek için kullanılır. 
+4. Bağlantının oluşturulduğuna dikkat edin. Şimdi mantıksal uygulamanızdaki diğer adımlara ilerleyin:   
+    ![Office 365 bağlantısı oluşturma adımı](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
 

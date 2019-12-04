@@ -1,20 +1,17 @@
 ---
-title: Tümleştirme hizmeti ortamına yapıt ekleme-Azure Logic Apps
+title: Tümleştirme hizmeti ortamına yapıt ekleme
 description: Azure sanal ağlarına (VNet) erişmek için tümleştirme hizmeti ortamınıza (ıSE) Logic Apps, tümleştirme hesapları ve özel bağlayıcılar ekleme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680522"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793297"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) yapıt ekleme
 
@@ -32,7 +29,7 @@ Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network
 
 Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde **Ayarlar**' ın altında,**Ekle** >  **Logic Apps** ' i seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde **Ayarlar**' ın altında, **Ekle** > **Logic Apps** ' i seçin.
 
    ![ISE 'ye yeni mantıksal uygulama ekleme](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -63,13 +60,13 @@ Oluşturma sırasında seçilen [ıSE SKU 'su](../logic-apps/connect-virtual-net
 
 ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında,**Ekle** >  **tümleştirme hesapları** ' nı seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında, **Ekle** > **tümleştirme hesapları** ' nı seçin.
 
    ![ISE 'ye yeni tümleştirme hesabı ekleme](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
    -veya-
 
-   Ana Azure menüsünden **kaynak oluştur**  > **tümleştirme**  > **tümleştirme hesabı**' nı seçin.
+   Ana Azure menüsünden **kaynak oluştur** > **tümleştirme** > **tümleştirme hesabı**' nı seçin.
 
 1. Tümleştirme hesabınız için kullanılacak ad, Azure aboneliği, Azure Kaynak grubu (yeni veya var olan) ve fiyatlandırma katmanını sağlayın.
 
@@ -105,7 +102,7 @@ Kullanım için kullanılabilen, ancak Ise 'de dağıtılmayan Microsoft tarafı
 
 ISE 'de özel bağlayıcılar kullanmak için, bu özel bağlayıcıları doğrudan ıSE içinden oluşturun.
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında,**Ekle** >  **özel bağlayıcılar** ' ı seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında, **Ekle** > **özel bağlayıcılar** ' ı seçin.
 
    ![Özel bağlayıcı oluşturma](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

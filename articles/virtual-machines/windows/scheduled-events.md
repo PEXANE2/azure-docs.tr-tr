@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 7889ee66ec80ee0b77b92efc5755e1a84a5cbf04
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f6e3e370201b49da149c09d87ed7cec63fef8ebf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073277"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792257"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -47,9 +47,9 @@ Zamanlanan Olaylar aşağıdaki kullanım durumlarında Olaylar sağlar:
 - [Platform tarafından başlatılan bakım](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (ÖRNEĞIN, VM yeniden başlatma, dinamik geçiş veya konak için güncelleştirmeleri koruma)
 - Azaltılmış donanım
 - Kullanıcı tarafından başlatılan bakım (ör. Kullanıcı bir VM 'yi yeniden başlatır veya yeniden dağıtır)
-- Ölçek kümelerinde [düşük öncelıklı VM çıkarma](https://azure.microsoft.com/blog/low-priority-scale-sets)
+- [Spot VM](spot-vms.md) ve [spot ölçek kümesi](../../virtual-machine-scale-sets/use-spot.md) örnek çıkarmaları
 
-## <a name="the-basics"></a>Temel bilgileri  
+## <a name="the-basics"></a>Temel bilgiler  
 
 Azure meta veri hizmeti, sanal makineleri VM içinden erişilebilen bir REST uç noktası kullanarak çalıştırmaya yönelik bilgiler sunar. Bilgiler, sanal makinenin dışında kullanıma sunulmaması için yönlendirilemeyen bir IP aracılığıyla kullanılabilir.
 
@@ -90,7 +90,7 @@ Metadata Service sorgulayıp, isteğin istem dışı yönlendirilmediğinden emi
 ### <a name="query-for-events"></a>Olayları sorgula
 Aşağıdaki çağrıyı yaparak Zamanlanan Olaylar için sorgulama yapabilirsiniz:
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Powershell
 ```
 curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
@@ -117,7 +117,7 @@ Documentınnation bir ETag ' dir ve olayların yükünün son sorgudan bu yana d
 ### <a name="event-properties"></a>Olay özellikleri
 |Özellik  |  Açıklama |
 | - | - |
-| EventID | Bu olay için genel benzersiz tanımlayıcı. <br><br> Örnek: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| Even | Bu olay için genel benzersiz tanımlayıcı. <br><br> Örnek: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur. <li>`Reboot`: sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: düşük öncelikli sanal makine siliniyor (kısa ömürlü diskler kaybolur).|
 | ResourceType | Bu olayın etkilediği kaynak türü. <br><br> Değerler: <ul><li>`VirtualMachine`|
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Bu, en çok bir [güncelleştirme etki alanındaki](manage-availability.md)makineler bulundur, ancak ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
@@ -158,7 +158,7 @@ Yaklaşan bir olayı öğrendikten ve düzgün kapanma için mantığınızı ta
 }
 ```
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Powershell
 ```
 curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```

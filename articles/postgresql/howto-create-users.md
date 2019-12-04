@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu
+title: Kullanıcı oluşturma-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, bir PostgreSQL için Azure veritabanı-tek sunucu ile etkileşim kurmak üzere nasıl yeni kullanıcı hesapları oluşturabileceğiniz açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
-ms.openlocfilehash: 91ba485347aeb19ce9b173bd4cec944a655a56dc
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8e4c95c4c6c653854864aa4996f926177d3d55c7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203504"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763614"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucusu içindeki kullanıcıları nasıl oluşturabileceğiniz açıklanmaktadır. 
@@ -21,14 +21,14 @@ Azure abonelik kullanıcıları ve bunların ayrıcalıklarını oluşturma ve y
 ## <a name="the-server-admin-account"></a>Sunucu yöneticisi hesabı
 PostgreSQL için Azure veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi Kullanıcı adı ve parolası sağladınız. Daha fazla bilgi için, adım adım yaklaşımı görmek üzere [hızlı](quickstart-create-server-database-portal.md) başlangıcı izleyebilirsiniz. Sunucu Yöneticisi Kullanıcı adı özel bir ad olduğundan, seçilen Sunucu Yöneticisi Kullanıcı adını Azure portal bulabilirsiniz.
 
-PostgreSQL için Azure veritabanı sunucusu, tanımlanan 3 varsayılan rolle oluşturulur. Şu komutu çalıştırarak bu rolleri görebilirsiniz:`SELECT rolname FROM pg_roles;`
+PostgreSQL için Azure veritabanı sunucusu, tanımlanan 3 varsayılan rolle oluşturulur. Şu komutu çalıştırarak bu rolleri görebilirsiniz: `SELECT rolname FROM pg_roles;`
 - azure_pg_admin
 - azure_superuser
 - Sunucu Yöneticisi kullanıcısı
 
 Sunucu Yöneticisi kullanıcısı, azure_pg_admin rolünün bir üyesidir. Ancak, sunucu yöneticisi hesabı azure_superuser rolünün bir parçası değildir. Bu hizmet yönetilen bir PaaS hizmeti olduğundan, yalnızca Microsoft süper kullanıcı rolünün bir parçasıdır. 
 
-PostgreSQL altyapısı, [PostgreSQL ürün belgelerinde](https://www.postgresql.org/docs/current/static/sql-createrole.html)açıklandığı gibi, veritabanı nesnelerine erişimi denetlemek için ayrıcalıkları kullanır. PostgreSQL için Azure veritabanı 'nda, Sunucu Yöneticisi kullanıcısına şu ayrıcalıklar verilir: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
+PostgreSQL altyapısı, [PostgreSQL ürün belgelerinde](https://www.postgresql.org/docs/current/static/sql-createrole.html)açıklandığı gibi, veritabanı nesnelerine erişimi denetlemek için ayrıcalıkları kullanır. PostgreSQL için Azure veritabanı 'nda, Sunucu Yöneticisi kullanıcısına şu ayrıcalıklar verilir: LOGIN, NOSUPERUSER, ıNHERIT, CREATEDB, CREATEROLE, NOREPLICATION
 
 Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kullanıcılara azure_pg_admin rolüne vermek için kullanılabilir. Ayrıca, sunucu yöneticisi hesabı, bireysel veritabanlarına ve şemalara erişimi olan daha az ayrıcalıklı kullanıcılar ve Roller oluşturmak için kullanılabilir.
 
@@ -39,7 +39,7 @@ Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kull
 2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. PgAdmin veya psql gibi tercih ettiğiniz istemci aracını kullanın.
    Nasıl bağlanacağınızdan emin değilseniz, bkz [. hızlı başlangıç](./quickstart-create-server-database-portal.md)
 
-3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. < New_user > yer tutucu değeri için yeni kullanıcı adınızı değiştirin ve yer tutucu parolasını kendi güçlü parolanızla değiştirin. 
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. < Yer tutucu değeri için yeni kullanıcı adınızı değiştirin > new_user ve yer tutucu parolasını kendi güçlü parolanızla değiştirin. 
 
    ```sql
    CREATE ROLE <new_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
@@ -54,7 +54,7 @@ Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kull
 
 2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. PgAdmin veya psql gibi tercih ettiğiniz istemci aracını kullanın.
 
-3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `<db_user>` amaçlanan Yeni Kullanıcı adınızla ve yer tutucu değerini `<newdb>` kendi veritabanı adınızla değiştirin. Yer tutucu parolasını kendi güçlü parolanızla değiştirin. 
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değeri `<db_user>`, hedeflenen yeni kullanıcı adınızla değiştirin ve yer tutucu değeri kendi veritabanı adınızla `<newdb>`. Yer tutucu parolasını kendi güçlü parolanızla değiştirin. 
 
    Bu SQL kod sözdizimi, örneğin, TestDB adlı yeni bir veritabanı oluşturur. Sonra PostgreSQL hizmetinde yeni bir kullanıcı oluşturur ve bu kullanıcı için yeni veritabanına bağlanma ayrıcalıkları verir. 
 
@@ -66,7 +66,7 @@ Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kull
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örneğin: 
+4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örnek: 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```

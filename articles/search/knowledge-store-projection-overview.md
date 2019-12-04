@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326606"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790010"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir bilgi deposunda projeksiyonlarla çalışma
 
@@ -28,11 +28,11 @@ Tahminler, Azure Tablo depolamada veya Azure Blob depolama alanında depolanan J
 
 Bilgi deposu üç tür projeksiyonları destekler:
 
-+ **Tablolar**: satır ve sütun olarak en iyi şekilde temsil edilen veriler için tablo projeksiyonları tablo depolamada şema veya projeksiyon tanımlamanızı sağlar.
++ **Tablolar**: satır ve sütun olarak en iyi şekilde temsil edilen veriler için tablo projeksiyonları tablo depolamada şema veya projeksiyon tanımlamanızı sağlar. Yalnızca geçerli JSON nesneleri tablo olarak yansıtılmışsa, zenginleştirilmiş belge JSON nesneleri adında olmayan düğümler içerebilir ve bu nesneleri yansıtırken, Beceri başına veya satır içi şekillendirme ile geçerli bir JSON nesnesi oluşturun.
 
-+ **Nesneler**: verileriniz ve zenginleştirme IÇIN bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir.
++ **Nesneler**: verileriniz ve zenginleştirme IÇIN bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir. Yalnızca geçerli JSON nesneleri nesneler olarak yansıtılmışsa, zenginleştirilmiş belge JSON nesneleri adında olmayan düğümler içerebilir ve bu nesneleri yansıtırken, Beceri başına veya satır içi şekillendirme ile geçerli bir JSON nesnesi oluşturun.
 
-+ **Dosyalar**: belgelerden ayıklanan görüntüleri kaydetmeniz gerektiğinde, dosya projeksiyonları, normalleştirilmiş görüntüleri kaydetmenizi sağlar.
++ **Dosyalar**: belgelerden ayıklanan görüntüleri kaydetmeniz gerektiğinde, dosya projeksiyonlar, normalleştirilmiş görüntüleri blob depolamaya kaydetmenizi sağlar.
 
 Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya](knowledge-store-howto.md)başlayın.
 
@@ -47,7 +47,7 @@ Bu bağımsızlık, aynı verilerin şekillendirilmiş bir şekilde farklı, anc
 
 ### <a name="relatedness"></a>Relatedlik
 
-Projeksiyon grupları artık, yansıtma türlerinde ilişkileri korurken belgelerinizi İzdüşüm türleri arasında projenize eklemenize olanak tanır. Tek bir projeksiyon grubu içinde yansıtılan tüm içerik, yansıtma türlerinde verilerin içindeki ilişkileri korur. Tablolar içinde, ilişkiler oluşturulan bir anahtarı temel alır ve her alt düğüm üst düğüme bir başvuru tutar. Türler arasında (tablolar, nesneler ve dosyalar), tek bir düğüm farklı türler arasında yansıtıldığınızda ilişkiler korunur. Örneğin, resim ve metin içeren bir belge olduğu bir senaryo düşünün. Metni tablolar veya nesneler ile resimlerin ya da nesnelerin dosya URL 'sini içeren bir özelliğe sahip olduğu dosyalara yansıt edebilirsiniz.
+Projeksiyon grupları artık, yansıtma türlerinde ilişkileri korurken belgelerinizi İzdüşüm türleri arasında projenize eklemenize olanak tanır. Tek bir projeksiyon grubu içinde yansıtılan tüm içerik, yansıtma türlerinde verilerin içindeki ilişkileri korur. Tablolar içinde, ilişkiler oluşturulan bir anahtarı temel alır ve her alt düğüm üst düğüme bir başvuru tutar. Türler arasında (tablolar, nesneler ve dosyalar), tek bir düğüm farklı türler arasında yansıtıldığınızda ilişkiler korunur. Örneğin, resim ve metin içeren bir belge olduğu bir senaryo düşünün. Metni tablo veya nesnelere ve resimlerin veya nesnelerin dosya URL 'sini içeren bir sütuna/özelliğe sahip olduğu dosyalara yansıt edebilirsiniz.
 
 ## <a name="input-shaping"></a>Giriş şekillendirme
 

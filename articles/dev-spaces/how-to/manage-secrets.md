@@ -1,22 +1,22 @@
 ---
 title: Azure dev Space ile çalışırken gizli dizileri yönetme
 services: azure-dev-spaces
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: 49f53683b2499e790414d139dcb0bc0833005647
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280001"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790180"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure dev Space ile çalışırken gizli dizileri yönetme
 
 Hizmetleriniz, veritabanları veya diğer güvenli Azure hizmetleri gibi belirli parolalar, bağlantı dizeleri ve diğer gizli dizileri gerektirebilir. Bu gizli dizi değerlerini yapılandırma dosyalarında ayarlayarak kodunuzda ortam değişkenleri olarak kullanılabilir hale getirebilirsiniz.  Bunların gizli dizi güvenliğinin tehlikeye uğramaması için dikkatli bir şekilde işlenmelidir.
 
-Azure Dev Spaces, Azure Dev Spaces istemci araçları tarafından oluşturulan Helu grafiklerde gizli dizileri depolamak için iki önerilen ve kolaylaştırılmış seçenek sunar: values. dev. YAML dosyası ve satır içi doğrudan azds. YAML. Gizli dizileri, values. YAML biçiminde depolamak önerilmez. Bu makalede tanımlanan istemci araçları tarafından oluşturulan Helu grafikleri için iki yaklaşımdan daha fazla, kendi hele grafiğinizi oluşturursanız, gizli dizileri yönetmek ve depolamak için HELI grafiğini doğrudan kullanabilirsiniz.
+Azure Dev Spaces, Azure Dev Spaces istemci araçları tarafından oluşturulan Helu grafiklerde gizli dizileri depolamak için önerilen iki ve kolay seçenek sunar: `values.dev.yaml` dosyası ve satır içi doğrudan `azds.yaml`. Gizli dizileri `values.yaml`depolamanız önerilmez. Bu makalede tanımlanan istemci araçları tarafından oluşturulan Helu grafikleri için iki yaklaşımdan daha fazla, kendi hele grafiğinizi oluşturursanız, gizli dizileri yönetmek ve depolamak için HELI grafiğini doğrudan kullanabilirsiniz.
 
 ## <a name="method-1-valuesdevyaml"></a>Yöntem 1: values. dev. YAML
 1. Azure Dev Spaces için etkinleştirilen VS Code açın.
@@ -62,7 +62,7 @@ Azure Dev Spaces, Azure Dev Spaces istemci araçları tarafından oluşturulan H
 7. Kaynak denetiminde gizli dizileri yürütmeyi önlemek için. _dev. YAML değerlerini_ _. gitignore_ dosyasına eklediğinizden emin olun.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>Yöntem 2: doğrudan AZD. YAML 'de satır Içi
+## <a name="method-2-azdsyaml"></a>Yöntem 2: azds. YAML
 1.  _AZD. YAML_'de, YAML bölümü yapılandırması/geliştirme/yüklemesi altındaki gizli dizileri ayarlayın. Gizli değerleri doğrudan girebilseniz de, _azds. YAML_ kaynak denetimine işaretlenmiş olduğundan bu önerilmez. Bunun yerine, "$PLACEHOLDER" sözdizimini kullanarak yer tutucuları ekleyin.
 
     ```yaml
@@ -104,6 +104,44 @@ Azure Dev Spaces, Azure Dev Spaces istemci araçları tarafından oluşturulan H
     ```
     kubectl get secret --namespace default -o yaml
     ```
+
+## <a name="passing-secrets-as-build-arguments"></a>Gizli dizileri derleme bağımsız değişkenleri olarak geçirme
+
+Önceki bölümlerde, kapsayıcının çalışma zamanında kullanılmak üzere parolaların nasıl geçirileceğini gösteriliyordu. Ayrıca, `azds.yaml`kullanarak özel bir NuGet parolası gibi kapsayıcı oluşturma zamanında gizli anahtar geçirebilirsiniz.
+
+`azds.yaml`içinde derleme zamanı gizli dizilerini *yapılandırma. geliştirme. Build. args* `<variable name>: ${secret.<secret name>.<secret key>}` sözdizimini kullanarak ayarlayın. Örnek:
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+Yukarıdaki örnekte, *mynugetsecret* var olan bir sır ve *pattoken* var olan bir anahtardır.
+
+>[!NOTE]
+> Gizli adlar ve anahtarlar `.` karakterini içerebilir. Gizli dizileri derleme bağımsız değişkenleri olarak geçirirken `.` atlamak için `\` kullanın. Örneğin *foo. Bar* adlı bir gizli anahtarı *belirteç*anahtarıyla (`MYTOKEN: ${secret.foo\.bar.token}`geçirmek için). Ayrıca, gizlilikler önek ve sonek metniyle değerlendirilebilir. Örneğin, `MYURL: eus-${secret.foo\.bar.token}-version1`. Ayrıca, üst ve alt üst alanlarda bulunan gizlilikler yapı bağımsız değişkenleri olarak geçirilebilir.
+
+Dockerfile 'da, parolayı kullanmak için *arg* yönergesini kullanın, daha sonra dockerfile içinde bu değişkeni kullanın. Örnek:
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+Kümenizde çalışan hizmetleri bu değişikliklerle güncelleştirin. Komut satırında komutunu çalıştırın:
+
+```
+azds up
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008591"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795657"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
-## <a name="managed-disks"></a>Yönetilen Diskler
+## <a name="managed-disks"></a>Managed Disks (Yönetilen Diskler)
 
 **Azure yönetilen diskler nedir?**
 
@@ -137,7 +137,9 @@ Yönetilen diskler için bunları yeniden adlandıramazsınız. Ancak, şu anda 
 
 **Bir Azure diskinde GPT bölümlendirme kullanabilir miyim?**
 
-GPT bölümlendirme, işletim sistemi disklerinde değil yalnızca veri disklerinde kullanılabilir. İşletim sistemi disklerinin MBR bölümleme stilini kullanması gerekir.
+1\. nesil görüntüler, işletim sistemi disklerinde değil yalnızca veri disklerinde GPT bölümlendirme kullanabilir. İşletim sistemi disklerinin MBR bölümleme stilini kullanması gerekir.
+
+[2. nesil görüntüler](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) , işletim sistemi diskinde ve VERI disklerinde GPT bölümlendirme kullanabilir.
 
 **Hangi disk türleri anlık görüntüleri destekliyor?**
 
@@ -149,7 +151,7 @@ Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu ü�
 Disk ayırma, toplam maliyetinizi azaltmak için önceden bir yıllık disk depolama alanı satın alma seçeneğidir.
 
 **Azure disk rezervasyonu hangi seçenekleri sunar?**
-Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca, tek, ön ödeme veya aylık ödemeler ile ödeme yapmayı tercih edebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur.
+Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca peşin ödeme, ön ödeme veya aylık ödeme seçeneklerinden birini belirleyebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur.
 
 Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske Divvy. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
 
@@ -263,7 +265,7 @@ Hayır, standart SSD diskler yalnızca yönetilen diskler olarak kullanılabilir
 **Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
 Hayır, standart SSD 'Lerin tek örnekli VM SLA 'Sı yoktur. Tek örnekli VM SLA 'Sı için Premium SSD diskleri kullanın.
 
-## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere geçme
+## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere Geçme
 
 **Yönetilen diskler performansında geçişin etkileri var mı?**
 

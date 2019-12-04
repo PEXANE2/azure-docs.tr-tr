@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: a01455da36e8ab573773fec2a6da1f7903b8ea20
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: eb2d663a56084fc625c95f1f1a6236385880180d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224372"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795634"
 ---
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | [Abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına VM |Bölge başına 25.000<sup>1</sup> . |Bölge başına 25.000. |
 | [Abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına toplam VM çekirdeği sayısı |Bölge başına 20<sup>1</sup> . | Desteğe başvurun. |
+| Azure spot VM [abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına toplam çekirdek |Bölge başına 20<sup>1</sup> . | Desteğe başvurun. |
 | Abonelik başına dv2 ve F gibi sanal makine, [abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına çekirdek |Bölge başına 20<sup>1</sup> . | Desteğe başvurun. |
 | Abonelik başına [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) |Sayısız. |Sayısız. |
 | Abonelik başına bölge başına [depolama hesapları](../articles/storage/common/storage-quickstart-create-account.md) |250 |250 |

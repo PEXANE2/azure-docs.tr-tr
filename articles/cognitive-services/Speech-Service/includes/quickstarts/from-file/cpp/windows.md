@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 09e0b6fbfcb8541a0756a855d4548e456a7b5c90
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a52ddd7bcf711f64860b6598cc982e961075ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504224"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795924"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -26,7 +26,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
+
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **helloworld.cpp** kaynak dosyasını açın.
 
@@ -76,13 +78,16 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
    ````
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Dize `whatstheweatherlike.wav` kendi dosya adıyla değiştirin.
 
 1. Menü çubuğundan **dosya** > **Tümünü Kaydet**' i seçin.
+
+> [!NOTE]
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 

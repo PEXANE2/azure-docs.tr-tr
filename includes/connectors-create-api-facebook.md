@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 8fe22f95c1dfc5171c41d6b3f0e00760fd9c9d69
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: c94e7d1fb5c42a0246b38c88eb097c75ec8ca4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188635"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789839"
 ---
-### <a name="prerequisites"></a>Önkoşullar
-* A [Facebook](https://www.facebook.com/) hesabı 
+## <a name="prerequisites"></a>Önkoşullar
 
-Facebook hesabınıza bağlanmak için mantıksal uygulama, bir mantıksal uygulama çalıştırmasında Facebook hesabınıza kullanabilmeniz için önce yetkilendirmeniz gerekir. Neyse ki, Azure Portalı'nda mantıksal uygulama içinde bunu kolayca yapabilirsiniz. 
+* [Facebook](https://www.facebook.com/) hesabı 
 
-Mantıksal uygulamanızı Facebook hesabınıza bağlanmak için yetki vermek için adımlar şunlardır:
+Bir mantıksal uygulamada Facebook hesabınızı kullanabilmeniz için önce mantıksal uygulamayı Facebook hesabınıza bağlanacak şekilde yetkilendirmelisiniz. Neyse ki bunu, Azure portalında mantıksal uygulamanızın içinden kolayca yapabilirsiniz. 
 
-1. Mantıksal Uygulama Tasarımcısı'nda Facebook, bağlantı oluşturmak için seçin **yönetilen API'leri Göster Microsoft** açılan liste enter *Facebook* arama kutusuna. Tetikleyici veya eylemi kullanmak ister seçin:  
-   ![facebook 1. adım](./media/connectors-create-api-facebook/facebook-1.png)
-2. Facebook önce herhangi bir bağlantı oluşturmadıysanız, Facebook kimlik bilgilerinizi sağlamanız girmem isteniyor. Bu kimlik bilgileri, mantıksal uygulamanızı bağlanmak için yetki vermek için kullanılan ve Facebook hesabınıza ait veri erişimi:  
-   ![facebook 2. adım](./media/connectors-create-api-facebook/facebook-2.png)
-3. Facebook kullanıcı adınızı ve parolanızı mantıksal uygulamanızı yetkilendirmek için sağlayın:  
-   ![facebook 3. adım](./media/connectors-create-api-facebook/facebook-3.png)   
-4. Bağlantı oluşturuldu ve artık mantıksal uygulamanızdaki diğer adımlarla devam etmek ücretsiz, dikkat edin:  
-   ![facebook 4. adım](./media/connectors-create-api-facebook/facebook-4.png)   
+Aşağıda, mantıksal uygulamanızı Facebook hesabınıza bağlamak için yetkilendirme adımları verilmiştir:
+
+1. Facebook bağlantısı oluşturmak için, mantıksal uygulama Tasarımcısı ' nda, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin ve arama kutusuna *Facebook* yazın. Kullanmak istediğiniz tetikleyiciyi veya eylemi seçin:  
+   ![Facebook adımı 1](./media/connectors-create-api-facebook/facebook-1.png)
+2. Daha önce Facebook bağlantısı oluşturmadıysanız, Facebook kimlik bilgilerinizi girmeniz istenir. Bu kimlik bilgileri, mantıksal uygulamanızı, Facebook hesabınızın verilerine bağlanmak ve bu verilere erişmek üzere yetkilendirmek için kullanılır:  
+   ![Facebook adım 2](./media/connectors-create-api-facebook/facebook-2.png)
+3. Mantıksal uygulamanızı yetkilendirmek için Facebook Kullanıcı adınızı ve parolanızı sağlayın:  
+   ![Facebook adım 3](./media/connectors-create-api-facebook/facebook-3.png)   
+4. Bağlantı oluşturulduğunu ve mantıksal uygulamanızdaki diğer adımlara devam etmek için artık ücretsiz olduğunu göreceksiniz:  
+   ![Facebook 4. adım](./media/connectors-create-api-facebook/facebook-4.png)   
 

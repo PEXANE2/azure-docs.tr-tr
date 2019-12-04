@@ -1,26 +1,23 @@
 ---
-title: Mantıksal uygulama şablonları dağıtma-Azure Logic Apps
+title: Mantıksal uygulama şablonları dağıtma
 description: Azure Logic Apps için oluşturulan Azure Resource Manager şablonlarını dağıtmayı öğrenin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 083c908609ebcf1bdc6dcad5e37ae03daa41758f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706498"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793055"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonları dağıtma
 
 Mantıksal uygulamanız için bir Azure Resource Manager şablonu oluşturduktan sonra, şablonunuzu şu yollarla dağıtabilirsiniz:
 
-* [Azure portal](#portal)
+* [Azure portalda](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
@@ -46,7 +43,7 @@ Mantıksal uygulama şablonunu Azure 'a otomatik olarak dağıtmak için, aşağ
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Bakýþ Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](logic-apps-azure-resource-manager-templates-overview.md)
+* [Genel Bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](logic-apps-azure-resource-manager-templates-overview.md)
 * [Kaynakları Azure Resource Manager şablonlarıyla ve Azure portal dağıtma](../azure-resource-manager/resource-group-template-deploy-portal.md)
 
 <a name="visual-studio"></a>
@@ -94,10 +91,10 @@ Mantıksal uygulama şablonları dağıtmak ve ortamları yönetmek için, ekipl
 Azure Pipelines olan Azure Resource Manager şablonlar için sürekli tümleştirme ve sürekli dağıtım (CI/CD) hakkında daha fazla bilgi için şu konulara ve örneklere bakın:
 
 * [Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştirme](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [Öğretici: Azure Pipelines olan Azure Resource Manager şablonlar için sürekli tümleştirme](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Öğretici: Azure Pipelines Azure Resource Manager şablonlar için sürekli tümleştirme](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
 * [Örnek: Azure DevOps 'da Azure Logic Apps Azure Service Bus kuyruklara bağlanma ve Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Örnek: Azure depolama hesaplarına Azure Logic Apps ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Örnek: Azure Logic Apps için bir işlev uygulaması eylemi ayarlama ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps 'den Azure Storage hesaplarına bağlanma ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps için bir işlev uygulama eylemi ayarlama ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps 'ten bir tümleştirme hesabına bağlanın ve Azure DevOps 'da Azure Pipelines ile dağıtın](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 Azure Pipelines kullanmaya yönelik genel üst düzey adımlar aşağıda verilmiştir:
@@ -114,11 +111,11 @@ Azure Pipelines kullanmaya yönelik genel üst düzey adımlar aşağıda verilm
 
 1. Mantıksal uygulama şablonunuz ve şablon parametreleri dosyalarınıza başvurular ekleyin.
 
-1. Diğer bir ortam, otomatikleştirilmiş test veya gerektiğinde onaylayanlar için yayın işlemindeki adımları oluşturmak için devam edin.
+1. Gerektiğinde başka herhangi bir ortam, otomatik test veya onaylayan için yayın işlemindeki adımları oluşturmaya devam edin.
 
 <a name="authorize-oauth-connections"></a>
 
-## <a name="authorize-oauth-connections"></a>OAuth bağlantıları yetkilendirin
+## <a name="authorize-oauth-connections"></a>OAuth bağlantılarını yetkilendir
 
 Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-scenarios.md)için geçerli erişim belirteçleri oluşturmak üzere herhangi bir OAuth bağlantısını yetkilendirmelisiniz. OAuth bağlantıları yetkilendirebileceğiniz yollar şunlardır:
 

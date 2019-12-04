@@ -1,17 +1,17 @@
 ---
-title: MariaDB sunucusu için Azure veritabanı güvenlik duvarı kuralları
+title: Güvenlik duvarı kuralları-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için Azure veritabanı 'na bağlantıları etkinleştirmek üzere güvenlik duvarı kurallarını kullanma hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5efde68469df1780214fee98cf2be44775acdc35
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965256"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772685"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>MariaDB sunucusu için Azure veritabanı güvenlik duvarı kuralları
 Güvenlik duvarları, hangi bilgisayarların izne sahip olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.

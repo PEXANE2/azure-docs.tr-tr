@@ -1,24 +1,21 @@
 ---
-title: Mantıksal uygulama tanımları oluşturma, düzenleme veya genişletme-Azure Logic Apps
+title: Mantıksal uygulama tanımları oluşturun, düzenleyin veya genişletin
 description: Azure Logic Apps mantıksal uygulama JSON tanımlarını yazma, düzenleme ve genişletme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680033"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792596"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps mantıksal uygulama tanımları için JSON oluşturun, düzenleyin veya genişletin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md)içinde otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, [Iş akışı Tanım Dili (WDL) ile birlikte basit ve bildirim TEMELLI JavaScript nesne gösterimi (JSON) kullanır ](../logic-apps/logic-apps-workflow-definition-language.md)açıklaması ve doğrulama için şema. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır. Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/template-deployment-overview.md)içinde [Azure kaynakları](../azure-resource-manager/resource-group-overview.md) olarak Logic App tanımlarını dahil edebilirsiniz. Mantıksal uygulamalar oluşturmak, yönetmek ve dağıtmak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)veya [Azure Logic Apps REST API 'lerini](https://docs.microsoft.com/rest/api/logic/)kullanabilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, tanımlama ve doğrulama Için [Iş akışı Tanım Dili (WDL) şeması](../logic-apps/logic-apps-workflow-definition-language.md) ile birlikte basit ve BILDIRIM temelli JavaScript nesne gösterimi (JSON) kullanır. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır. Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/template-deployment-overview.md)içinde [Azure kaynakları](../azure-resource-manager/resource-group-overview.md) olarak Logic App tanımlarını dahil edebilirsiniz. Mantıksal uygulamalar oluşturmak, yönetmek ve dağıtmak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)veya [Azure Logic Apps REST API 'lerini](https://docs.microsoft.com/rest/api/logic/)kullanabilirsiniz.
 
 JSON 'daki Logic App tanımlarıyla çalışmak için Azure portal veya Visual Studio 'da çalışırken kod görünümü düzenleyicisini açın veya tanımı istediğiniz düzenleyiciye kopyalayın. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)konusunu inceleyin.
 
@@ -61,7 +58,7 @@ Visual Studio 'da doğrudan Azure portal veya Visual Studio 'dan Azure Resource 
 
 ## <a name="parameters"></a>Parametreler
 
-Dağıtım yaşam döngüsü genellikle geliştirme, test, hazırlama ve üretim için farklı ortamlara sahiptir. Mantıksal uygulama genelinde yeniden kullanmak istediğiniz değerlere sahip olduğunuzda veya dağıtım gereksinimlerinize göre değişiklik yaparken, mantıksal uygulamayı otomatikleştirebilmeniz için iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabilirsiniz. dağıtmak. 
+Dağıtım yaşam döngüsü genellikle geliştirme, test, hazırlama ve üretim için farklı ortamlara sahiptir. Mantıksal uygulama genelinde yeniden kullanmak istediğiniz değerlere sahip olduğunuzda veya dağıtım gereksinimlerinize göre değişiklik yaparken, mantıksal uygulama dağıtımını otomatikleştirebilmeniz için iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabilirsiniz. 
 
 Bunun yerine bu değerleri *parametreleştirmek*veya parametreleri tanımlamak ve kullanmak için bu genel adımları izleyin. Daha sonra bu değerleri şablonunuza geçiren ayrı bir parametre dosyasında değerleri sağlayabilirsiniz. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Tam Ayrıntılar için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -122,9 +119,9 @@ Bu adımlar, bu örneğin içinden dış olarak çalışan bu dizeyi nasıl işl
 
 1. Şirket adı için [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) alın, böylece toplam karakter sayısını alırsınız.
 
-2. Daha kısa bir dize almak için `5` çıkarın.
+2. Daha kısa bir dize almak için `5`çıkarın.
 
-3. Şimdi bir [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)alın. @No__t_0 dizininden başlayın ve dizenin geri kalanına gidin.
+3. Şimdi bir [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)alın. `5`dizininden başlayın ve dizenin geri kalanına gidin.
 
 4. Bu alt dizeyi bir [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) dizesine dönüştürün.
 
@@ -138,7 +135,7 @@ Bir özelliğin değerini temel alan farklı sonuçlar almak için, her özellik
 
 Örneğin, bu iş akışı bazı kategorileri parametreler olarak tanımlar ve belirli bir URL ile bu kategorilerle eşleşen bir eşleme. İlk olarak, iş akışı makalelerin bir listesini alır. Daha sonra iş akışı, her makale kategorisi ile eşleşen URL 'YI bulmak için Haritayı kullanır.
 
-*   [@No__t_1](../logic-apps/logic-apps-workflow-definition-language.md) işlevi, kategorinin bilinen tanımlanmış bir kategori ile eşleşip eşleşmediğini denetler.
+*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) işlevi, kategorinin bilinen tanımlanmış bir kategori ile eşleşip eşleşmediğini denetler.
 
 *   Eşleşen bir kategori alındıktan sonra örnek köşeli ayraç kullanarak öğeyi eşlemden çeker: `parameters[...]`
 
@@ -218,13 +215,13 @@ Bir özelliğin değerini temel alan farklı sonuçlar almak için, her özellik
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. @No__t_0 eyleminden `startTime` ayıklayın.
-2. @No__t_0 ile geçerli zamanı alın.
+1. `order` eyleminden `startTime`ayıklayın.
+2. `utcNow()`ile geçerli zamanı alın.
 3. Bir saniye çıkar:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
-   @No__t_0 veya `hours` gibi başka bir zaman birimi de kullanabilirsiniz.
+   `minutes` veya `hours`gibi başka bir zaman birimi de kullanabilirsiniz.
 
 3. Şimdi, bu iki değeri karşılaştırabilirsiniz. 
 

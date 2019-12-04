@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157659"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786784"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR hizmeti ile Azure Işlevleri geliştirme ve yapılandırma
 
@@ -40,7 +40,7 @@ Azure Işlevleri ve Azure SignalR hizmeti ile oluşturulan sunucusuz gerçek zam
 
 Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin `/negotiate`biten bir HTTP yolu olması gerekir.
 
-Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#input).
 
 Kimliği doğrulanmış bir belirteç oluşturma hakkında bilgi edinmek için [App Service kimlik doğrulaması kullanma](#using-app-service-authentication)konusuna bakın.
 
@@ -50,7 +50,7 @@ Azure SignalR hizmetine bağlı istemcilere ileti göndermek için *SignalR* ç�
 
 Kullanıcılar, bir veya daha fazla gruba eklenebilir. Ayrıca, Grup gruplarına/gruplardan Kullanıcı eklemek veya kaldırmak için *SignalR* çıktı bağlamasını da kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [ *SignalR* çıkış bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Daha fazla bilgi için bkz. [ *SignalR* çıkış bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#output).
 
 ### <a name="signalr-hubs"></a>SignalR hub 'Ları
 

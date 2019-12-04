@@ -1,22 +1,18 @@
 ---
-title: SQL Server veya Azure SQL veritabanı 'na bağlanma-Azure Logic Apps
+title: SQL Server veya Azure SQL veritabanı 'na bağlanma
 description: Azure Logic Apps kullanarak şirket içinde veya bulutta SQL veritabanları için görevleri otomatikleştirin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam; LADocs
-manager: carmonm
+ms.reviewer: klam; logicappspm
 ms.topic: conceptual
-tags: connectors
 ms.date: 11/08/2019
-ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+tags: connectors
+ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826318"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789213"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server veya Azure SQL veritabanı için iş akışlarını Azure Logic Apps kullanarak otomatikleştirin
 
@@ -26,7 +22,7 @@ SQL veritabanınızda veya Dynamics CRM Online gibi diğer sistemlerde olaylar t
 
 Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin. Bağlayıcıya özgü teknik bilgiler, sınırlamalar ve bilinen sorunlar için, [SQL Server Bağlayıcısı başvuru sayfasına](https://docs.microsoft.com/connectors/sql/)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

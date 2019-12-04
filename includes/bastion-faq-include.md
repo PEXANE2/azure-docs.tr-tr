@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b4e479405a9606a8353785828d0c9c94ef8c32ed
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850516"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796200"
 ---
 ### <a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -55,3 +55,7 @@ Bir oturum yalnızca Azure portal başlatılmalıdır. Azure portal oturum açı
 
 Azure savunma Şu anda VM 'nin içindeki en-US-QWERTY klavye yerleşimini desteklemektedir.  Klavye düzeni için diğer yerel ayarlara yönelik destek, devam etmekte olan çalışmadır.
 
+### <a name="udr"></a>Kullanıcı tanımlı yönlendirme (UDR), bir Azure savunma alt ağında destekleniyor mu?
+
+Hayır. UDR, bir Azure savunma alt ağında desteklenmez.
+Aynı sanal ağda hem Azure savunma hem de Azure Güvenlik Duvarı/ağ sanal gereci (NVA) içeren senaryolarda, Azure savunma ve VM 'leriniz arasındaki iletişim özel olduğundan Azure savunma alt ağından Azure Güvenlik Duvarı 'na trafik zorlamaya gerek kalmaz. Daha fazla ayrıntı için bkz. [Azure Güvenlik duvarı arkasındaki VM 'lere savunma Ile erişme](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).

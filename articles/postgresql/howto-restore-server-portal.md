@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda bir sunucuyu geri yükleme-tek sunucu
+title: Yedekleme ve geri yükleme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, Azure portal kullanarak PostgreSQL için Azure veritabanı 'na yönelik bir sunucunun nasıl geri yükleneceği açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 22522a3f577e8d0533f7c8926de12bd464cc2d92
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965790"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765639"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal kullanarak, PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 

@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, Python-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Henüz belirlenmedi.
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f39ddc8a3460bc026bdac96c18b5bea4d6ecfc0f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0729bee2f01dbd230b6f4442fc8e429a4fef3e16
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280445"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796035"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,6 +43,7 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 Bir `IntentRecognizer` nesnesi başlatabilmeniz için, LUSıS uç noktası anahtarınızı ve bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Daha sonra bu kodu ekleyin.
 
 Bu örnek, LUSıS anahtar ve bölgesini kullanarak `SpeechConfig` nesnesini oluşturur. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
+Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 > [!NOTE]
 > Yalnızca uç nokta anahtarı konuşma amacı tanıma için geçerli olduğundan, HALME bitiş noktası anahtarını değil, başlangıç veya yazma anahtarlarını kullanmak önemlidir. Doğru anahtar alma hakkında yönergeler için bkz. [lusıs uygulaması oluşturma ve bir uç nokta anahtarı alma](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .

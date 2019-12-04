@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104391"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777609"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
 
@@ -30,10 +30,10 @@ Kümenizin düğümlerine ve bunların yüklenmesine ilişkin üst düzey bir g�
 | Renk | Açıklama |
 | --- | --- |
 | Kırmızı | Konaktaki en az bir ana bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
-| Turuncu | Konaktaki en az bir ikincil bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
+| Orange | Konaktaki en az bir ikincil bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
 | Sarı | Ambarı sunucusu ana bilgisayardan 3 dakikadan uzun bir sinyal almadı. |
 | Yeşil | Normal çalışma durumu. |
-
+ 
 Ayrıca, her konak için çekirdek sayısını ve RAM miktarını ve disk kullanımını ve yük ortalamasını gösteren sütunları görürsünüz.
 
 ![Apache ambarı ana bilgisayarları sekmesine genel bakış](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ YARN, JobTracker, kaynak yönetimi ve iş zamanlama/izlemenin iki sorumlulukın�
 
 Kaynak Yöneticisi, saf bir *Zamanlayıcı*olur ve yalnızca tüm rekabet eden uygulamalar arasında kullanılabilir kaynakları hızlar. Kaynak Yöneticisi, tüm kaynakların her zaman kullanıldığı, SLA 'Lar, kapasite garantisi vb. gibi çeşitli sabitler için optimize edilmesini sağlar. ApplicationMaster Kaynak Yöneticisi Kaynakları görüşür ve kapsayıcıları ve kaynak tüketimini yürütmek ve izlemek için NodeManager 'lar ile birlikte kullanılır.
 
-Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları için rekabet vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımında yardımcı olan takılabilir bir Zamanlayıcı 'dır. CapacityScheduler ayrıca kaynakların bir kuruluşun alt kuyrukları arasında paylaşıldığından, diğer uygulamaların sıralarının ücretsiz kaynakları kullanmasına izin verilmediğinden emin olmak için *hiyerarşik sıraları* destekler.
+Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları için yarışmaya yer vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımında yardımcı olan takılabilir bir Zamanlayıcı 'dır. CapacityScheduler ayrıca kaynakların bir kuruluşun alt kuyrukları arasında paylaşıldığından, diğer uygulamaların sıralarının ücretsiz kaynakları kullanmasına izin verilmediğinden emin olmak için *hiyerarşik sıraları* destekler.
 
 YARN bu sıralara kaynak ayırmamızı sağlar ve kullanılabilir kaynaklarınızın tümünün atanıp atanmadığını gösterir. Kuyruklarınız hakkındaki bilgileri görüntülemek için, ambarı Web Kullanıcı arabiriminde oturum açın ve sonra üstteki menüden **Yarn kuyruk yöneticisi** ' ni seçin.
 
@@ -72,11 +72,11 @@ Kaynak Yöneticisi Kullanıcı arabiriminde, sol taraftaki menüden **Zamanlayı
 
 ## <a name="storage-throttling"></a>Depolama alanı azaltma
 
-Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans sorunu genellikle, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelen giriş/çıkış (GÇ) işlemlerini *engelleme* nedeniyle oluşur. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel bir sınır olmayan *depolama alanı azaltmasından*kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure depolama için saniyedeki IOs (ıOPS) sayısını sınırlar; Ayrıntılar için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelmiş olan giriş/çıkış (g/ç) işlemlerini *engelleme* nedeniyle en sık kullanılan sorun sayısıdır. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel sınır olmayan *depolama alanı azaltmasından*kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure depolama için saniyedeki IOs (ıOPS) sayısını sınırlar; Ayrıntılar için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
 
 Azure Storage kullanıyorsanız, azaltma dahil olmak üzere depolama ile ilgili sorunları izleme hakkında bilgi için bkz. [izleyici, tanılama ve sorun giderme Microsoft Azure depolama](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Kümenizin yedekleme deposu Azure Data Lake Storage (ADLS) ise, azaltınızın büyük olasılıkla bant genişliği sınırları olması muhtemeldir. Bu durumda azaltma, görev günlüklerinde azaltma hataları gözlemleyerek belirlenebilir. ADLS için, bu makalelerde uygun hizmet için daraltma bölümüne bakın:
+Kümenizin yedekleme deposu Azure Data Lake Storage (ADLS) ise, azaltma bilgileriniz büyük olasılıkla bant genişliği limitlerinin nedenidir. Bu durumda azaltma, görev günlüklerinde azaltma hataları gözlemleyerek belirlenebilir. ADLS için, bu makalelerde uygun hizmet için daraltma bölümüne bakın:
 
 * [HDInsight ve Azure Data Lake Storage Apache Hive için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [HDInsight ve Azure Data Lake Storage MapReduce için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)

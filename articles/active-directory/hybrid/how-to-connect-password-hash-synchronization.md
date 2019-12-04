@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539015"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766625"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync ile parola karması eşitlemesini uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -123,13 +123,9 @@ Bir kullanıcıyı ilk oturum açma sırasında, özellikle de yönetici parolas
   
 Geçici parola işlevi, kimlik bilgisinin sahipliğinin bu kimlik bilgisi ile ilgili bilgi sahibi olduğu süreyi en aza indirmek için ilk kullanımda, kimlik bilgisinin sahipliğinin aktarılışında emin olmaya yardımcı olur.
 
-Eşitlenmiş kullanıcılar için Azure AD 'de geçici parolaları desteklemek üzere, Azure AD Connect sunucunuzda aşağıdaki komutu çalıştırarak *Forcepasswordresetonlogonfeature* özelliğini etkinleştirebilirsiniz. bu, <AAD Connector Name>, ortamınıza özgü bağlayıcı adı ile değiştirin:
+Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üzere, Azure AD Connect sunucunuzda aşağıdaki komutu çalıştırarak *Forcepasswordresetonlogonfeature* özelliğini etkinleştirebilirsiniz:
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
-
-Bağlayıcı adını öğrenmek için aşağıdaki komutu kullanabilirsiniz:
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
 Desteklenmediği uyarısıyla: bir kullanıcının bir sonraki oturum açışında parolasını değiştirmesini zorlamak aynı anda bir parola değişikliği gerektirir.  AD Connect, parola değişikliğini zorla bayrağını kendisi içermez, Parola karması eşitleme sırasında oluşan algılanan parola değişikliğine ek olarak görünür.
 

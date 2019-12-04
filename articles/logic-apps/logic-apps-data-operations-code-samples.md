@@ -1,27 +1,23 @@
 ---
-title: Veri işlemi örnekleri-Azure Logic Apps
+title: Veri işlemi örnekleri
 description: Azure Logic Apps veri işlemi eylemleri için kod örnekleri
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179157"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793075"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure Logic Apps için veri işlemi kodu örnekleri
 
 Makalede veri işlemi eylem tanımlarının kod örnekleri aşağıda verilmiştir, [veri Işlemleri gerçekleştirin](../logic-apps/logic-apps-perform-data-operations.md). Bu örnekleri, kendi mantıksal uygulamanızın temel alınan iş akışı tanımı, Azure aboneliği ve API bağlantıları ile örnekleri denemek istediğinizde kullanabilirsiniz. Bu eylem tanımlarını kopyalayın ve mantıksal uygulamanızın iş akışı tanımı için kod görünümü düzenleyicisine yapıştırın ve ardından belirli iş akışınız için tanımları değiştirin. 
 
-JavaScript Nesne Gösterimi (JSON) standartlarına dayalı olarak, bu eylem tanımları alfabetik sırada görünür. Ancak, mantıksal uygulama tasarımcısında her bir tanım iş akışınız dahilinde doğru sırada görünür, çünkü her bir eylem tanımının `runAfter` özelliği çalışma sırasını belirtir.
+JavaScript Nesne Gösterimi (JSON) standartlarına dayalı olarak, bu eylem tanımları alfabetik sırada görünür. Ancak, mantıksal uygulama tasarımcısında her bir tanım, iş akışınız dahilinde doğru sırada görünür, çünkü her bir eylem tanımının `runAfter` özelliği çalışma sırasını belirtir.
 
 <a name="compose-action-example"></a>
 
@@ -326,7 +322,7 @@ JavaScript Nesne Gösterimi (JSON) standartlarına dayalı olarak, bu eylem tan�
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Seçim
+## <a name="select"></a>Seçin
 
 [ **Seçim** eylemi örneğini](../logic-apps/logic-apps-perform-data-operations.md#select-action)denemek için kullanabileceğiniz eylem tanımları aşağıda verilmiştir:
 

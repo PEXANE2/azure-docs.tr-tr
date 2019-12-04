@@ -1,17 +1,17 @@
 ---
-title: Okuma çoğaltmaları oluşturma & yönetme-MySQL için Azure veritabanı
+title: Okuma çoğaltmalarını yönetme-Azure CLı, REST API-MySQL için Azure veritabanı
 description: Azure CLı veya REST API kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları ayarlamayı ve yönetmeyi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/14/2019
-ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 56ba530c4f684bf89db9c5b87306592fbfeee7fa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970317"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774103"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -36,7 +36,7 @@ Aşağıdaki komut kullanılarak bir okuma çoğaltması sunucusu oluşturulabil
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-@No__t-0 komutu aşağıdaki parametreleri gerektirir:
+`az mysql server replica create` komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 | ad | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
 | source-server | mydemoserver | Çoğaltılacak var olan ana sunucunun adı veya KIMLIĞI. |
 
-Bir çapraz bölge okuma çoğaltması oluşturmak için `--location` parametresini kullanın. Aşağıdaki CLı örneği Batı ABD içinde çoğaltmayı oluşturur.
+Çapraz bölge okuma çoğaltması oluşturmak için `--location` parametresini kullanın. Aşağıdaki CLı örneği Batı ABD içinde çoğaltmayı oluşturur.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -65,7 +65,7 @@ Belirli bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağı
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-@No__t-0 komutu aşağıdaki parametreleri gerektirir:
+`az mysql server replica list` komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
@@ -83,7 +83,7 @@ Bir okuma çoğaltması sunucusuna çoğaltma, aşağıdaki komut kullanılarak 
 az mysql server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-@No__t-0 komutu aşağıdaki parametreleri gerektirir:
+`az mysql server replica stop` komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
-@No__t-0 parametresini Genel Amaçlı veya bellek için Iyileştirilmiş ana sunucuda **çoğaltmaya** ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
+`azure.replication_support` parametresini Genel Amaçlı veya bellek için Iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
 
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 

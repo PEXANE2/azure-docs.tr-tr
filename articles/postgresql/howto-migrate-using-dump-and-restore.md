@@ -1,22 +1,22 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda dökümünü alma ve geri yükleme-tek sunucu
+title: Dökümünü al ve geri yükle-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bir PostgreSQL veritabanının bir döküm dosyasına nasıl ayıklanacağını ve PostgreSQL için Azure veritabanı 'nda pg_dump tarafından oluşturulan bir dosyadan geri yükleme işlemini açıklar-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796744"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770246"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Döküm ve geri yükleme kullanarak PostgreSQL veritabanınızı geçirme
 Bir PostgreSQL veritabanını bir döküm dosyasına ayıklamak ve pg_dump tarafından oluşturulan bir arşiv dosyasından PostgreSQL veritabanını geri yüklemek için [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Üzerinde erişime ve veritabanına izin vermek için güvenlik duvarı kuralları içeren bir [PostgreSQL sunucusu Için Azure veritabanı](quickstart-create-server-database-portal.md) .
 - [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) ve [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) komut satırı yardımcı programları yüklendi
@@ -61,7 +61,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 >
 
 ### <a name="for-the-backup"></a>Yedekleme için
-- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örneğin:
+- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örnek:
 
     ```
     pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
@@ -72,7 +72,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 
 - Varsayılan olarak zaten yapılmalıdır, ancak create INDEX deyimlerinin veri ekleme deyimlerinden sonra olduğunu doğrulamak için döküm dosyasını açın. Böyle değilse, veri eklendikten sonra CREATE INDEX deyimlerini taşıyın.
 
-- Restore paralel hale getirmek için-FC ve-j *#* anahtarlarıyla geri yükleyin. *#* , hedef sunucudaki çekirdekler sayısıdır. Etkiyi görmek için, hedef sunucunun çekirdekleri sayısını iki katına *#* de deneyebilirsiniz. Örneğin:
+- Restore paralel hale getirmek için-FC ve-j *#* anahtarlarıyla geri yükleyin. *#* , hedef sunucudaki çekirdekler sayısıdır. Etkiyi görmek için, hedef sunucunun çekirdekleri sayısını iki katına *#* de deneyebilirsiniz. Örnek:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

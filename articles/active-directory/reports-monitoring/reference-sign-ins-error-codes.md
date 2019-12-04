@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014306"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786376"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -181,7 +181,8 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |90051| Geçersiz temsili belirteci. Geçersiz National Cloud ID ({Cloudıd}) belirtildi.|
 |90072| Hesabın, önce kiracıya bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
 |90094| Verme yönetici izinleri gerektirir. Kiracı yöneticinizden bu uygulama için onay sağlamasını isteyin.|
-|500021|Kiracı, şirket proxy 'si ile kısıtlıdır. Kaynak erişimini reddetme.|
+|500011| <site address> adlı kaynak sorumlusu <tenant ID>adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulaması isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
+|500021| Kiracı, şirket proxy 'si ile kısıtlıdır. Kaynak erişimini reddetme.|
 |500121| Tanımlayıcı kimlik doğrulama isteği sırasında kimlik doğrulaması başarısız oldu.|
 |500133| Onaylama işlemi geçerli zaman aralığı içinde değil. Kullanıcı onayı için kullanılmadan önce erişim belirtecinin dolmadığından emin olun veya yeni bir belirteç isteyin.|
 |530021|Uygulama, koşullu erişim onaylı uygulama gereksinimlerini karşılamıyor.|

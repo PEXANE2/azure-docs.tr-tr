@@ -1,20 +1,17 @@
 ---
-title: Şirket içi Azure Logic Apps veri kaynaklarına erişin
+title: Şirket içindeki veri kaynaklarına erişin
 description: Azure şirket içi veri ağ geçidi kaynağı oluşturarak Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068903"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792057"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
@@ -96,7 +93,7 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
 
 <a name="connect-logic-app-gateway"></a>
 
-## <a name="connect-to-on-premises-data"></a>Şirket içi verilere bağlanma
+## <a name="connect-to-on-premises-data"></a>Şirket içi verilere bağlanın
 
 Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla ilişkilendirdikten sonra, ağ geçidini kullanarak mantıksal uygulamanız ve şirket içi veri kaynağınız arasında bir bağlantı oluşturabilirsiniz.
 
@@ -153,7 +150,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 
 1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
 
-   Örneğin:
+   Örnek:
 
    ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 

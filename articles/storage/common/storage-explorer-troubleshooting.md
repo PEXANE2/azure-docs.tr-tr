@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124013"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775842"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -93,9 +93,9 @@ Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri b
 
 ### <a name="blank-sign-in-dialog-box"></a>Boş oturum açma iletişim kutusu
 
-Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
+Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için şu adımları izleyin:
 
-1. Menüde **Önizleme** ' ye gidin > **cihaz kodu oturumu kullanın**.
+1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama** > **oturum aç**' a gidin. **Cihaz kod akışı oturum açma**özelliğini etkinleştir.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
 3. Oturum açmak istediğiniz ortamı seçin.
 4. **Oturum aç '** ı seçin.
@@ -353,7 +353,7 @@ Depolama Gezgini 1.7.0 veya daha önceki bir sürümü için Depolama Gezgini ta
 1. [NuGet 'Den](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)StreamJsonRpc 'nin 1.5.43 sürümünü indirin. Sayfanın sağ tarafındaki "paketi Indir" bağlantısını bulun.
 2. Paketi indirdikten sonra, `.nupkg` dosya uzantısını `.zip`olarak değiştirin.
 3. Paketi sıkıştırmayı açın.
-4. Açık `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasör.
+4. `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasörünü açın.
 5. `StreamJsonRpc.dll` Depolama Gezgini klasöründeki aşağıdaki konumlara kopyalayın:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`

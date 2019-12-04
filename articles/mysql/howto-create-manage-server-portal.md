@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nı yönetme-Azure portal
+title: Sunucu Yönetme-Azure portal-MySQL için Azure veritabanı
 description: Azure portal bir MySQL için Azure veritabanı sunucusunu yönetmeyi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534000"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770518"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yönetme
 Bu makalede MySQL sunucuları için Afire veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
@@ -79,7 +79,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
-   ![Sıfırlama-parola](./media/howto-create-manage-server-portal/reset-password.png)
+   ![sıfırlama-parola](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
 

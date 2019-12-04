@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672594"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793291"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -34,12 +34,12 @@ Daha fazla yardım için, bu e-postada dağıtıcı. log dosyasını farmbeatssu
 
 **Düzeltici eylem**: Azure Portal ziyaret edin ve şu adımları izleyin:
 
-1. Farmtts veri merkezi kaynak grubuna gidin.   
-2. **Olay Hub 'ını** seçin (datafeedeventhubnamespace....)  ve gelen Ileti sayısını kontrol edin.   
+1. Farmtts veri merkezi kaynak grubuna gidin.   
+2. **Olay Hub 'ını** (datafeedeventhubnamespace....) seçin ve gelen ileti sayısını kontrol edin.   
 3. **Gelen Ileti olmaması**durumunda cihaz iş ortağınızla iletişim kurun.  
 4. **Gelen iletiler**söz konusu olduğunda, veri merkezi ve Hızlandırıcı günlükleri ve yakalanan telemetri ile farmbeatssupport@microsoft.com başvurun.
 
-Günlüklerin nasıl indirileceği anlamak için belgenin [Günlükler bölümüne](#collect-logs-manually) bakın.  
+Günlüklerin nasıl indirileceği anlamak için belgenin [Günlükler bölümüne](#collect-logs-manually) bakın.  
 
 ### <a name="dont-have-the-eventhub-connection-string"></a>Eventhub bağlantı dizesine sahip değil
 
@@ -55,7 +55,7 @@ Günlüklerin nasıl indirileceği anlamak için belgenin [Günlükler bölümü
 
 **Belirtiler**: cihazlar yüklenir ve cihaz iş ortağınızla birlikte Farmtempts 'yi bağladınız. Cihazlar çevrimiçi ve telemetri verileri gönderiyor, ancak çevrimdışı görünüyor.
 
-**Düzeltici eylem**: Bu cihaz için Raporlama aralığı yapılandırılmadı. Raporlama aralığını ayarlamak için cihaz üreticinize başvurun. 
+**Düzeltici eylem**: Bu cihaz için Raporlama aralığı yapılandırılmadı. Raporlama aralığını ayarlamak için cihaz üreticinize başvurun. 
 
 ### <a name="error-deleting-a-resource"></a>Kaynak silme hatası
 
@@ -135,44 +135,44 @@ Hızlandırıcının açık olduğu ve tarayıcı penceresini kapatan tüm taray
 
 **Düzeltme eylemi**: 5-7 gün tarih aralığı için başarısız işi yeniden çalıştırın veya bir uydu endekslik işi çalıştırın ve işin başarılı olup olmadığını denetleyin.
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Sentinel hub 'ı yanlış URL veya erişilebilir değil 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Sentinel hub 'ı yanlış URL veya erişilebilir değil 
 
-**İş hatası iletisi**: bir sorun oluştu. Erişmeye çalıştığınız sayfa (geçici olarak) kullanılamıyor. 
+**İş hatası iletisi**: bir sorun oluştu. Erişmeye çalıştığınız sayfa (geçici olarak) kullanılamıyor. 
 
 **Düzeltici eylem**:
-1.  Sentinel URL 'YI (https://scihub.copernicus.eu/dhus/) tarayıcıda açın ve Web sitesinin erişilebilir olup olmadığını denetleyin. 
-2.  Web sitesi erişilebilir değilse, herhangi bir güvenlik duvarı/şirket ağı vb. Web sitesini engelleyip engellemediğini ve URL 'nin üstüne izin vermek için gerekli adımları uygulayın. 
+1.  Sentinel URL 'YI (https://scihub.copernicus.eu/dhus/) tarayıcıda açın ve Web sitesinin erişilebilir olup olmadığını denetleyin. 
+2.  Web sitesi erişilebilir değilse, herhangi bir güvenlik duvarı/şirket ağı vb. Web sitesini engelleyip engellemediğini ve URL 'nin üstüne izin vermek için gerekli adımları uygulayın. 
 3.  5-7 günlük bir tarih aralığı için başarısız işi yeniden çalıştırın veya bir uydu Endekslik işi çalıştırın ve işin başarılı olup olmadığını denetleyin.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Bakım için Sentinel sunucu
 
-**İş hatası iletisi**: Copernicus açık erişim merkezi yakında yeniden sunulacaktır! Ne yazık ki bu sırada bazı bakımda bakım yapıyoruz. Kısa süre içinde yeniden çevrimiçi olacak! 
+**İş hatası iletisi**: Copernicus açık erişim merkezi yakında yeniden sunulacaktır! Ne yazık ki bu sırada bazı bakımda bakım yapıyoruz. Kısa süre içinde yeniden çevrimiçi olacak! 
 
 **Düzeltici eylem**:
 
-1.  Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında meydana gelebilir. 
-2.  Herhangi bir iş/işlem hattı yukarıdaki nedenlerden dolayı başarısız olursa, işi bir süre sonra yeniden gönderin. 
-3.  Kullanıcı, planlı/planlanmamış Sentinel bakım etkinlikleriyle ilgili bilgileri denetlemek için https://scihub.copernicus.eu/news/ ziyaret edebilir.  
+1.  Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında meydana gelebilir. 
+2.  Herhangi bir iş/işlem hattı yukarıdaki nedenlerden dolayı başarısız olursa, işi bir süre sonra yeniden gönderin. 
+3.  Kullanıcı, planlı/planlanmamış Sentinel bakım etkinlikleriyle ilgili bilgileri denetlemek için https://scihub.copernicus.eu/news/ ziyaret edebilir.  
 4.  5-7 günlük bir tarih aralığı için başarısız işi yeniden çalıştırın veya bir uydu Endekslik işi çalıştırın ve işin başarılı olup olmadığını denetleyin.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel en fazla bağlantı sayısına ulaşıldı
 
-**İş hatası iletisi**: "<username>" kullanıcısı tarafından elde edilen iki eşzamanlı akış sayısı üst sınırı 
+**İş hatası iletisi**: "<username>" kullanıcısı tarafından elde edilen iki eşzamanlı akış sayısı üst sınırı 
 
 **Düzeltici eylem**
-1.  Yukarıdaki nedenle herhangi bir iş başarısız olursa, başka bir dağıtımda/yazılımda aynı Sentinel hesabı kullanılır. 
+1.  Yukarıdaki nedenle herhangi bir iş başarısız olursa, başka bir dağıtımda/yazılımda aynı Sentinel hesabı kullanılır. 
 2.  Kullanıcı yeni Sentinel hesabı oluşturabilir ve yeni Sentinel Kullanıcı adı ve parolasıyla veri hub 'ını yükseltmek için yükleyiciyi yeniden çalıştırabilir.  
 3.  Başarısız işi yeniden çalıştırın veya 5-7 gün tarih aralığı için bir uydu Endekslik işi çalıştırın ve işin başarılı olup olmadığını denetleyin.
 
-### <a name="sentinel-server-refused-connection"></a>Sentinel sunucu bağlantıyı reddetti 
+### <a name="sentinel-server-refused-connection"></a>Sentinel sunucu bağlantıyı reddetti 
 
 **İş hatası iletisi**:
 
-Sunucu bağlantıyı reddetti: http://172.30.175.69:8983/solr/dhus 
+Sunucu bağlantıyı reddetti: http://172.30.175.69:8983/solr/dhus 
 
-**Düzeltme eylemi**: Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında bu sorun oluşabilir. 
-1.  Herhangi bir iş/işlem hattı yukarıdaki nedenlerden dolayı başarısız olursa, işi bir süre sonra yeniden gönderin. 
-2.  Kullanıcı, planlı/planlanmamış Sentinel bakım etkinlikleriyle ilgili bilgileri denetlemek için https://scihub.copernicus.eu/news/ ziyaret edebilir.  
+**Düzeltme eylemi**: Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında bu sorun oluşabilir. 
+1.  Herhangi bir iş/işlem hattı yukarıdaki nedenlerden dolayı başarısız olursa, işi bir süre sonra yeniden gönderin. 
+2.  Kullanıcı, planlı/planlanmamış Sentinel bakım etkinlikleriyle ilgili bilgileri denetlemek için https://scihub.copernicus.eu/news/ ziyaret edebilir.  
 3.  Başarısız işi yeniden çalıştırın veya 5-7 gün tarih aralığı için bir uydu Endekslik işi çalıştırın ve işin başarılı olup olmadığını denetleyin.
 
 
@@ -281,11 +281,11 @@ Kaynak grubu panosunda (datahublogs....) depolama hesabı ' nı arayın. Örneğ
 
 ## <a name="high-cpu-usage"></a>Yüksek CPU kullanımı
 
-**Hata**: yüksek CPU kullanımı uyarısına başvuran bir e-posta uyarısı alırsınız. 
+**Hata**: yüksek CPU kullanımı uyarısına başvuran bir e-posta uyarısı alırsınız. 
 
-**Düzeltici eylem**: 
+**Düzeltici eylem**: 
 1.  Farmtts veri merkezi kaynak grubuna gidin.
-2.  App Service 'i seçin.  
+2.  App Service 'i seçin.  
 3.  Ölçek yukarı (App Service planı) git ve uygun bir [fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/windows/) seçin
 
 ## <a name="next-steps"></a>Sonraki adımlar

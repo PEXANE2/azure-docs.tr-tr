@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 420a046ddf66270f52001d4ff4f3ad49895d4c11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208388"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784569"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -77,7 +77,7 @@ Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir pr
 
 Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure portal 
+- Azure portalı 
 - Azure PowerShell 
 - Azure CLI
 
@@ -124,6 +124,20 @@ Dizininizde güvenlik varsayılanlarını etkinleştirmek için:
 1.  **Azure Active Directory** > **özelliklerine**gidin.
 1. **Güvenlik varsayılanlarını Yönet**' i seçin.
 1. **Güvenlik varsayılanlarını etkinleştir** ayarını **Evet**olarak ayarlayın.
+1. **Kaydet**’i seçin.
+
+## <a name="disabling-security-defaults"></a>Güvenlik varsayılanlarını devre dışı bırakma
+
+Güvenlik varsayılanlarını değiştirecek koşullu erişim ilkelerini uygulamayı tercih eden kuruluşlar, güvenlik varsayılanlarını devre dışı bırakmalıdır. 
+
+![Uyarı iletisi koşullu erişimi etkinleştirmek için güvenlik varsayılanlarını devre dışı bırak](./media/concept-conditional-access-security-defaults/security-defaults-disable-before-conditional-access.png)
+
+Dizininizde güvenlik varsayılanlarını devre dışı bırakmak için:
+
+1.  [Azure portal](https://portal.azure.com) bir güvenlik yöneticisi, koşullu erişim Yöneticisi veya genel yönetici olarak oturum açın.
+1.  **Azure Active Directory** > **özelliklerine**gidin.
+1. **Güvenlik varsayılanlarını Yönet**' i seçin.
+1. **Güvenlik varsayılanlarını etkinleştir** ' i ayarla **Hayır**olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

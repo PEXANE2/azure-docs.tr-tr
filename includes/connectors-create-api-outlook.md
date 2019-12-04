@@ -1,27 +1,27 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: e42292f7848eba0b4545b713f7bbc491f35fe4a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188625"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789384"
 ---
-1. Arama kutusuna filtreniz olarak "outlook.com" girin. Bu örnek için şu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde**
+1. Arama kutusuna filtreniz olarak "outlook.com" yazın. Bu örnek için şu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde**
 
-   ![Outlook.com Tetikleyiciler veya Eylemler bulun](./media/connectors-create-api-outlook/select-outlook.png)
+   ![Outlook.com Tetikleyicileri veya eylemleri bulun](./media/connectors-create-api-outlook/select-outlook.png)
 
-1. Tetikleyici (veya eylem) seçtikten sonra zaten oturum alamadık, Outlook.com hesabınızda oturum açın istenir. Seçin **oturum**.
+1. Tetikleyiciyi (veya eylemi) seçtikten sonra, zaten oturum açmadıysanız Outlook.com hesabınızda oturum açmanız istenir. **Oturum aç '** ı seçin.
 
    ![Outlook.com hesabınızda oturum açın](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
-3. Outlook.com hesabı kimlik bilgilerinizi seçin.
+1. Outlook.com hesabı kimlik bilgilerinizi seçin.
 
    ![Oturum açma hesabı seçin](./media/connectors-create-api-outlook/outlook-sign-in.png)  
 
-   Kimlik bilgileriniz, bağlanma ve Outlook.com hesabınızın verilere erişmek için kullanılır.
-   Azure aboneliğinizdeki herhangi bir mantıksal uygulama bu bağlantıyla yeniden kullanabilirsiniz. 
+   Kimlik bilgileriniz, Outlook.com hesabınızın verilerine bağlanmak ve bu verilere erişmek için kullanılır.
+   Bu bağlantıyı Azure aboneliğinizdeki herhangi bir mantıksal uygulamayla yeniden kullanabilirsiniz. 

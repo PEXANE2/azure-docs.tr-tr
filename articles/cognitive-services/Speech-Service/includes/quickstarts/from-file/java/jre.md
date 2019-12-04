@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ba76ed2bd7d6259307e2e8046c4695786ff3045
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dbfab9b1886b39f166b94447fed8dc6707404bd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504252"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795564"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -18,7 +18,9 @@ ms.locfileid: "73504252"
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=jre)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
+
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 
@@ -103,11 +105,14 @@ ms.locfileid: "73504252"
 
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Dize `whatstheweatherlike.wav` kendi dosya adıyla değiştirin.
 
 1. Değişiklikleri projeye kaydedin.
+
+> [!NOTE]
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 

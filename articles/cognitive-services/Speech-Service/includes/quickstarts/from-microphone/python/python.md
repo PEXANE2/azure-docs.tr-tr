@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 7fe11876a7ba20981f784bc41ce8094178591371
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 956dfc2765635091d105291015ba59b3bfa87162
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503692"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796085"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Bir LUSıS uygulaması oluşturma ve bir uç nokta anahtarı edinme](../../../../quickstarts/create-luis.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 ## <a name="support-and-updates"></a>Destek ve güncelleştirmeler
 
@@ -48,6 +48,9 @@ python quickstart.py
 Ya da bu hızlı başlangıç öğreticisini [konuşma SDK 'sı örnek deposundan](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) [Jupyter](https://jupyter.org) Not defteri olarak indirebilir ve Not defteri olarak çalıştırabilirsiniz.
 
 ### <a name="sample-code"></a>Örnek kod
+
+> [!NOTE]
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/from-microphone/quickstart.py#code)]
 

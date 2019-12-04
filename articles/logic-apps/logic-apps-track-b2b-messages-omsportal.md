@@ -1,20 +1,19 @@
 ---
-title: Azure Izleyici günlükleri ile B2B iletilerini izleme-Azure Logic Apps | Microsoft Docs
+title: Azure İzleyici günlükleri ile B2B iletilerini izleme
 description: Azure Log Analytics ile tümleştirme hesapları ve Azure Logic Apps için B2B iletişimini izleyin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997856"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792923"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Azure İzleyici günlükleri ile B2B iletilerini izleme
 
@@ -53,7 +52,7 @@ Azure Izleyici günlüklerine mantıksal uygulamanız için B2B iletilerini izle
 
    ![Log Analytics çalışma alanı seçin](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-1. **İzleme çözümlerini yapılandırma** >  **Log Analytics kullanmaya başlayın**altında, **çözümleri görüntüle**' yi seçin.
+1. **Log Analytics kullanmaya başlama** > **izleme çözümlerini yapılandırma**bölümünde, **çözümleri görüntüle**' yi seçin.
 
    !["Çözümleri görüntüle" yi seçin](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
@@ -150,13 +149,13 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | --- | --- |
 | Gönderen | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | Alıcı | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| Logic App | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
+| Mantıksal Uygulama | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
 | Durum | AS2 ileti durumu <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. Hiçbir MDN ayarlanmadı. <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanır ve alınır ya da MDN gönderilir. <br>Failed = geçersiz bir AS2 iletisi alındı. Hiçbir MDN ayarlanmadı. <br>Bekliyor = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanmış ve MDN bekleniyor. |
 | Onay | MDN ileti durumu <br>Kabul edilen = pozitif MDN alındı veya gönderildi. <br>Bekliyor = bir MDN alınması veya gönderilmesi bekleniyor. <br>Reddedildi = negatif MDN alındı veya gönderildi. <br>Gerekli değildir = MDN sözleşmede ayarlanmadı. |
-| Direction | AS2 ileti yönü |
+| Yön | AS2 ileti yönü |
 | Bağıntı Kimliği | Bir mantıksal uygulamadaki tüm Tetikleyicileri ve eylemleri karşılıklı yapan KIMLIK |
-| İleti kimliği | AS2 ileti başlıklarındaki AS2 ileti KIMLIĞI |
-| Timestamp | AS2 eyleminin iletiyi işleme zamanı |
+| İleti KIMLIĞI | AS2 ileti başlıklarındaki AS2 ileti KIMLIĞI |
+| Zaman damgası | AS2 eyleminin iletiyi işleme zamanı |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -167,8 +166,8 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 
 | Klasör veya dosya | Ad biçimi |
 | :------------- | :---------- |
-| İleti klasörü | Gönderen \_\_[alıcı]\_AS2\_[bağıntı-kimliği] [ileti-kimliği] [zaman damgası] \_ |
-| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [Gönderen]\_[alıcı]\_AS2\_[bağıntı-kimliği]\_input_payload. txt </p>**Çıkış yükü**: [Gönderen]\_[alıcı]\_AS2\_[bağıntı-kimliği]\_çıkış\_yükü. txt </p></p>**Girişler**: [Gönderen]\_[alıcı]\_AS2\_[bağıntı-kimliği]\_girişler. txt </p></p>**Çıktılar**: [Gönderen]\_[alıcı]\_AS2\_[bağıntı-kimliği]\_çıktılar. txt |
+| İleti klasörü | [sender]\_[alıcı]\_AS2\_[bağıntı-KIMLIĞI]\_[ileti-KIMLIĞI]\_[zaman damgası] |
+| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_çıkış\_yük. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_çıktılar. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -181,15 +180,15 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | --- | --- |
 | Gönderen | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | Alıcı | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| Logic App | X12 eylemlerinin ayarlandığı mantıksal uygulama |
+| Mantıksal Uygulama | X12 eylemlerinin ayarlandığı mantıksal uygulama |
 | Durum | X12 ileti durumu <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir x12 iletisi alındı veya gönderildi. <br>Bekliyor = geçerli bir x12 iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | Onay | İşlev ACK (997) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
-| Direction | X12 ileti yönü |
+| Yön | X12 ileti yönü |
 | Bağıntı Kimliği | Bir mantıksal uygulamadaki tüm Tetikleyicileri ve eylemleri karşılıklı yapan KIMLIK |
 | İleti türü | EDI x12 ileti türü |
 | ICN | X12 iletisi için değişim denetim numarası |
 | TSCN | X12 iletisi için Işlem kümesi denetim numarası |
-| Timestamp | X12 eyleminin iletiyi işleme zamanı |
+| Zaman damgası | X12 eyleminin iletiyi işleme zamanı |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -200,8 +199,8 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 
 | Klasör veya dosya | Ad biçimi |
 | :------------- | :---------- |
-| İleti klasörü | Gönderen \_\_\_[alıcı]\_x12\_[Interchange-Control-Number] [Genel-Control-Number] [işlem-Set-Control-Number] [zaman damgası] \_ |
-| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [Gönderen]\_[alıcı]\_x12\_[Interchange-Control-Number]\_input_payload. txt </p>**Çıkış yükü**: [Gönderen]\_[alıcı]\_x12\_[Interchange-Control-Number]\_çıkış\_yükü. txt </p></p>**Girişler**: [Gönderen]\_[alıcı]\_x12\_[Interchange-Control-Number]\_girişleri. txt </p></p>**Çıktılar**: [Gönderen]\_[alıcı]\_x12\_[Interchange-Control-Number]\_çıktılar. txt |
+| İleti klasörü | [sender]\_[alıcı]\_x12\_[Interchange-Control-Number]\_[Genel-Control-Number]\_[işlem-Set-Control-Number]\_[zaman damgası] |
+| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_çıkış\_payload. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_çıktılar. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -214,15 +213,15 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 | --- | --- |
 | Gönderen | **Alma ayarlarında**belirtilen Konuk iş ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | Alıcı | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| Logic App | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
+| Mantıksal Uygulama | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
 | Durum | EDIOLGU iletisi durumu <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir EDıOLGU iletisi alındı veya gönderildi <br>Bekliyor = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | Onay | İşlev ACK (conı) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
-| Direction | EDIOLGU iletisi yönü |
+| Yön | EDIOLGU iletisi yönü |
 | Bağıntı Kimliği | Bir mantıksal uygulamadaki tüm Tetikleyicileri ve eylemleri karşılıklı yapan KIMLIK |
 | İleti türü | EDIOLGU ileti türü |
 | ICN | EDIOLGU iletisi için değişim denetim numarası |
 | TSCN | EDIOLGU iletisi için Işlem kümesi denetim numarası |
-| Timestamp | EDIOLGU eyleminin iletiyi işleme zamanı |
+| Zaman damgası | EDIOLGU eyleminin iletiyi işleme zamanı |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
@@ -233,8 +232,8 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 
 | Klasör veya dosya | Ad biçimi |
 | :------------- | :---------- |
-| İleti klasörü | Gönderen \_\_\_\_\_[alıcı] ediolgu [Interchange-Control-Number] [Global-Control-Number] [işlem-Set-Control-Number] [zaman damgası] \_ |
-| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [Gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-Number]\_input_payload. txt </p>**Çıkış yükü**: [Gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-Number]\_çıkış\_yükü. txt </p></p>**Girişler**: [Gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-Number]\_girişleri. txt </p></p>**Çıktılar**: [Gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-Number]\_çıktılar. txt |
+| İleti klasörü | [sender]\_[alıcı]\_EDIOLGU\_[Interchange-Control-Number]\_[Genel-Control-Number]\_[işlem-Set-Control-Number]\_[zaman damgası] |
+| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_çıkış\_payload. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_çıktılar. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Sonraki adımlar

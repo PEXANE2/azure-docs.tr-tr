@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489067"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790542"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da SQL sanal makinelerini toplu kaydetme
 
@@ -39,7 +39,7 @@ SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir:
 - En son [az PowerShell](/powershell/azure/new-azureps-module-az)sürümü. 
 - En son [az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)sürümü.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 Devam etmeden önce, önce betiğin yerel bir kopyasını oluşturmanız, PowerShell modülü olarak içeri aktarmanız ve Azure 'a bağlanmanız gerekir. 
 
@@ -222,7 +222,7 @@ Hatalar, komut dosyasının başlatıldığı zaman damgasıdır `VMsNotRegister
 
 Kaynak sağlayıcısına SQL Server VM 'Leri, belirtilen betiği kullanarak kaydettiğinizde aşağıdakileri göz önünde bulundurun:
 
-- Kaynak sağlayıcısına kayıt, SQL Server VM çalışan bir Konuk Aracısı gerektirir. Windows Server 2008 görüntülerinin Konuk Aracısı yoktur, bu nedenle bu sanal makineler başarısız olur ve [Noagent yönetim modu](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)kullanılarak el ile kaydedilmelidir.
+- Kaynak sağlayıcısına kayıt, SQL Server VM çalışan bir Konuk Aracısı gerektirir. Windows Server 2008 görüntülerinin Konuk Aracısı yoktur, bu nedenle bu sanal makineler başarısız olur ve [Noagent yönetim modu](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)kullanılarak el ile kaydedilmelidir.
 - Saydam hataları aşmak için yeniden deneme mantığı yerleşik olarak bulunur. Sanal makine başarıyla kaydedilmişse, hızlı bir işlemdir. Ancak kayıt başarısız olursa, her sanal makine yeniden denenir.  Bu nedenle, kayıt işlemini tamamlamaya yönelik önemli bir zamana izin vermeniz gerekir; ancak gerçek zamanlı gereksinim, hataların türüne ve sayısına bağlıdır. 
 
 ## <a name="full-script"></a>Tam betik

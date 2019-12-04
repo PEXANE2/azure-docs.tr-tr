@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda çoğaltmaları okuyun.
+title: Çoğaltmaları oku-MySQL için Azure veritabanı.
 description: "MySQL için Azure veritabanı 'nda çoğaltmaları okuma hakkında bilgi edinin: bölge seçme, çoğaltmalar oluşturma, çoğaltmalara bağlanma, çoğaltmayı izleme ve çoğaltmayı durdurma."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158321"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790111"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -41,7 +41,9 @@ Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsin
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Ana sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2.
+Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD.
+
+\* Batı ABD 2 bir çapraz bölge çoğaltma konumu olarak geçici olarak kullanılamıyor.
 
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler

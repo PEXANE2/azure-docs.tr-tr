@@ -1,17 +1,17 @@
 ---
-title: Gelişmiş tehdit koruması-MariaDB için Azure veritabanı | Microsoft Docs
+title: Gelişmiş tehdit koruması-MariaDB için Azure veritabanı
 description: Gelişmiş tehdit koruması, veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: a96d8c3b9f9e3f9b1aedf269bce141da3e4ccf42
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 12/02/2019
+ms.openlocfilehash: 164457444fc097c0b1322909110f705726df1083
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869696"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772854"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>MariaDB Gelişmiş tehdit koruması için Azure veritabanı
 
@@ -23,7 +23,7 @@ MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, veritabanlar�
 Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birleşik bir paket olan gelişmiş veri güvenliği sunumunun bir parçasıdır. Gelişmiş tehdit korumasına [Azure Portal](https://portal.azure.com)aracılığıyla erişilebilir ve yönetebilirsiniz. Özelliği, Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için kullanılabilir.
 
 > [!NOTE]
-> Gelişmiş tehdit koruması özelliği, aşağıdaki Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US Gov Teksas, US Gov Arizona, US Gov Iowa, US, gov Virginia, US DoD Doğu, US DoD Orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
+> Gelişmiş tehdit koruması özelliği şu Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US gov Teksas, US gov Arizona, US gov Iowa, US, gov Virginia, US DOD Doğu, US DOD orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
 
 
 ## <a name="what-is-advanced-threat-protection"></a>Gelişmiş tehdit koruması nedir?
@@ -34,10 +34,10 @@ MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, müşterileri
 
 ## <a name="advanced-threat-protection-alerts"></a>Gelişmiş tehdit koruması uyarıları 
 MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar ve aşağıdaki uyarıları tetikleyebilirler:
-- **Olağan dışı konumdan erişim**: Bu uyarı, bir kullanıcı tarafından olağan dışı bir coğrafi konumdan MariaDB sunucusu için Azure veritabanı 'nda oturum açmış olan MariaDB sunucusu için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
-- **Olağandışı Azure veri merkezinden erişim**: Bu uyarı, en son dönemde bu sunucuda görülen olağan dışı bir Azure veri merkezinden sunucuda oturum açmış olan MariaDB sunucusu için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda, uyarı meşru bir eylem (Azure 'da yeni uygulamanız Power BI) algılar. Diğer durumlarda, uyarı Azure kaynağı/hizmetinden kaynaklanan kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
-- **Bilmediğiniz sorumludan erişim**: Bu uyarı, Kullanıcı olağan dışı bir sorumlu (MariaDB kullanıcısı için Azure veritabanı) kullanarak sunucuda oturum açmış olan MariaDB sunucusu için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda uyarı güvenli işlemleri (yeni uygulama ve geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
-- **Zararlı olabilecek bir uygulamadan erişim**: Bu uyarı, veritabanına erişmek için zararlı olabilecek bir uygulama kullanıldığında tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, yarı yaygın saldırı araçlarının kullandığı saldırıları algılar.
+- **Olağan olmayan konumdan erişim**: Bu uyarı, bir kişinin MariaDB sunucusu için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bu, bir kullanıcının, bir olağan dışı coğrafi konumdan MariaDB sunucusu Için Azure veritabanı 'nda oturum açtığı yerdir. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
+- **Olağan dışı Azure veri merkezi 'Nden erişim**: Bu uyarı, bir kullanıcının sunucuda en son dönemde görülen olağan dışı bir Azure veri merkezinden sunucuda oturum açtığı MariaDB sunucusu Için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda, uyarı meşru bir eylem (Azure 'da yeni uygulamanız Power BI) algılar. Diğer durumlarda, uyarı Azure kaynağı/hizmetinden kaynaklanan kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
+- **Bilmediğiniz sorumludan erişim**: Bu uyarı, Kullanıcı olağan dışı bir sorumlu (MariaDB kullanıcısı Için Azure veritabanı) kullanarak sunucuda oturum açmış olan MariaDB sunucusu Için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda uyarı güvenli işlemleri (yeni uygulama ve geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
+- **Zararlı olabilecek bir uygulamadan erişim**: Bu uyarı, zararlı olabilecek bir uygulama veritabanına erişmeye çalıştığında tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, yarı yaygın saldırı araçlarının kullandığı saldırıları algılar.
 - **Deneme yanılma Azure veritabanı 'Nı MariaDB kimlik bilgileri için zorlama**: Bu uyarı, farklı kimlik bilgileri ile olağan dışı yüksek sayıda başarısız oturum açma işlemi olduğunda tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı deneme yanılma saldırılarını algılar.
 
 ## <a name="next-steps"></a>Sonraki adımlar

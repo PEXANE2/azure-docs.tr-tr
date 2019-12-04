@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274072"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769226"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -34,7 +34,7 @@ Bu makalede, kapsayıcılarınızın ve uygulamalarının güvenliğini nasıl i
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama (Önizleme)
 Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
 
-Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin önerilerin ayrıntıları için, [sanal makine korumasında](security-center-virtual-machine-protection.md##compute-and-app-recs)önerilerin listesine bakın.
+Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi önerilerinin ayrıntıları için [buradaki](recommendations-compute-and-apps.md)önerilerin listesine bakın.
 
 ## <a name="environment-hardening"></a>Ortam sağlamlaştırma
 

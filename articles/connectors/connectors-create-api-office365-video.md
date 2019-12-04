@@ -1,44 +1,43 @@
 ---
-title: Office 365 Video - Azure Logic Apps'i bağlama | Microsoft Docs
-description: Office 365 Video REST API'lerini ve Azure Logic Apps ile videoları Yönet
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Office 365 video 'ya bağlanma
+description: Videoları Office 365 video REST API 'Leri ve Azure Logic Apps yönetme
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 05/18/2016
 tags: connectors
-ms.openlocfilehash: c10a2aa097b63fd3751be01bbfeb6097080bbb9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf3c7c4faac3fcd4dd0c3f368fbe18a224ed591b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105828"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789502"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Office365 Video Bağlayıcısı ile çalışmaya başlama
-Office 365 video bir Office 365 hakkında bilgi edinin, videoları ve daha fazlasını listesini almak için Video bağlanın. Office 365 Video ile şunları yapabilirsiniz:
+# <a name="get-started-with-the-office365-video-connector"></a>Office365 video bağlayıcısını kullanmaya başlama
 
-* Office 365 Video'dan alma verileri temel alan, iş akışınızı oluşturun. 
-* Video portalının durumunu kontrol edin, tüm video ve kanal listesini alma eylemlerini kullanın. Bu Eylemler, yanıt alın ve çıkış diğer eylemler için kullanılabilir yapın. Örneğin, Office 365 video aramak için Bing arama Bağlayıcısı'nı kullanın ve ardından o videonun hakkında bilgi almak için Office 365 video Bağlayıcısı'nı kullanın. Video gereksinimlerinizi karşılıyorsa, bu video FaceBook'ta gönderebilir. 
+Office 365 videosu hakkında bilgi almak, videoların listesini almak ve daha fazlası için Office 365 video 'ya bağlanın. Office 365 videosu ile şunları yapabilirsiniz:
 
-Şimdi mantıksal uygulama oluşturmaya başlama, bkz: [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Office 365 videolarından aldığınız verilere göre iş akışınızı oluşturun. 
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Office365 Video Bağlayıcısı bağlantı oluşturun
-Bu bağlayıcı için logic apps eklediğinizde, Office 365 Video hesabınızda oturum açın ve gerekir hesabınıza bağlanmak logic apps olanak tanır.
+* Video portalı durumunu kontrol eden eylemleri kullanın, bir kanaldaki tüm videonun bir listesini alın ve daha fazlasını yapın. Bu eylemler bir yanıt alır ve daha sonra çıktıyı diğer eylemler için kullanılabilir hale getirir. 
+
+Örneğin, Office 365 videolarını aramak için Bing Arama bağlayıcısını kullanabilir ve ardından bu video hakkında bilgi almak için Office 365 video bağlayıcısını kullanabilirsiniz. Video gereksinimlerinizi karşılıyorsa, bu videoyu Facebook 'ta gönderebilirsiniz.
+
+Şimdi bir mantıksal uygulama oluşturarak çalışmaya başlamak için bkz. [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+## <a name="create-a-connection-to-office365-video-connector"></a>Office365 video Bağlayıcısı bağlantısı oluşturma
+
+Bu bağlayıcıyı Logic Apps 'e eklediğinizde, Office 365 video hesabınızda oturum açmanız ve mantıksal uygulamaların hesabınıza bağlanmasına izin vermeniz gerekir.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
-> 
-> 
 
-Bağlantıyı oluşturduktan sonra Kiracı adı gibi Office 365 video özelliklerini girin veya kanal kimliği 
+Bağlantıyı oluşturduktan sonra, kiracı adı veya kanal KIMLIĞI gibi Office 365 video özelliklerini girersiniz. 
 
+## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 
-## <a name="connector-specific-details"></a>Özel bağlayıcı ayrıntıları
+Swagger 'da tanımlanan Tetikleyicileri ve eylemleri görüntüleyin ve ayrıca [bağlayıcı ayrıntılarında](/connectors/office365videoconnector/)tüm limitleri inceleyin.
 
-Tetikleyiciler ve eylemlerin swagger'da tanımlanan görüntüleyebilir ve ayrıca herhangi bir sınırlama Bkz [bağlayıcı ayrıntıları](/connectors/office365videoconnector/).
+## <a name="next-steps"></a>Sonraki adımlar
 
-## <a name="more-connectors"></a>Daha fazla bağlayıcı
-Geri Git [API listesi](apis-list.md).
+* Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

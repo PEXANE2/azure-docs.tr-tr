@@ -1,20 +1,19 @@
 ---
-title: Grup olarak toplu işlem iletileri Azure Logic Apps
+title: Grup olarak toplu işlem iletileri
 description: Azure Logic Apps iletileri toplu olarak gönderin ve alın
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, jonfan, LADocs
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: b56a50fceec8ac6be966c0c58a82e94e0c977143
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680436"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791565"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps iletileri gönderme, alma ve toplu işleme
 
@@ -84,11 +83,11 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
    2. Arama kutusuna filtreniz olarak "e-posta gönder" yazın.
    E-posta sağlayıcınıza bağlı olarak bir e-posta Bağlayıcısı seçin.
 
-      Örneğin, @outlook.com veya @hotmail.com gibi bir kişisel hesabınız varsa, Outlook.com bağlayıcısını seçin. 
+      Örneğin, @outlook.com veya @hotmail.comgibi bir kişisel hesabınız varsa, Outlook.com bağlayıcısını seçin. 
       Gmail hesabınız varsa Gmail bağlayıcısını seçin. 
       Bu örnekte Office 365 Outlook kullanılmaktadır. 
 
-   3. Şu eylemi seçin: **e-posta < e-posta*sağlayıcısı* gönder >**
+   3. Şu eylemi seçin: **e-posta < e-posta*sağlayıcısı* gönder>**
 
       Örnek:
 
@@ -163,9 +162,9 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
       > 
       > Visual Studio kullanıyorsanız ve seçilecek toplu iş alıcılarını görmüyorsanız, Batch alıcılarınızı Azure 'a dağıttığınızı kontrol edin. Yapmadıysanız, [Batch ahize mantıksal uygulamanızı Azure 'a dağıtmayı](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)öğrenin. 
 
-   4. Şu eylemi seçin: **Batch_messages-*Batch-alıcıdan* < >**
+   4. Şu eylemi seçin: **Batch_messages-*toplu iş alıcılarınız* <>**
 
-      ![Şu eylemi seçin: "Batch_messages-<-Logic-App >"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Şu eylemi seçin: "Batch_messages-<-mantıksal uygulama >"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 3. Batch göndericisinin özelliklerini ayarlayın:
 
@@ -181,7 +180,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
 
    2. Dinamik içerik listesi göründüğünde **ifade**' ı seçin. 
 
-   3. @No__t_0 ifadesini girin ve ardından **Tamam**' ı seçin. 
+   3. `utcnow()`ifadesini girin ve ardından **Tamam**' ı seçin. 
 
       !["Ileti Içeriği" içinde "Ifade" i seçin, "UtcNow ()" yazın ve "Tamam" ı seçin.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -199,7 +198,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
 
    2. Dinamik içerik listesinde **İfade**’yi seçin.
    
-   3. @No__t_0 ifadesini girin ve ardından **Tamam**' ı seçin.
+   3. `rand(1,6)`ifadesini girin ve ardından **Tamam**' ı seçin.
 
       ![Hedef Batch için bir bölüm ayarlama](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

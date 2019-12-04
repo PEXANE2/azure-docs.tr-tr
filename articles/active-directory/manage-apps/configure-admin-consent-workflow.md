@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180426"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786444"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Yönetici onayı iş akışını yapılandırma (Önizleme)
 
@@ -33,10 +33,10 @@ Yönetici onayı iş akışı yöneticilere yönetici onayı gerektiren uygulama
 
 Yönetici onayı iş akışını etkinleştirmek ve gözden geçirenler ' i seçmek için:
 
-1.  [Azure portal](https://portal.azure.com) genel yönetici olarak oturum açın.
-2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' a tıklayın.  **Azure Active Directory uzantısı** açılır.
-3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın. 
+1. [Azure portalında](https://portal.azure.com) genel yönetici olarak oturum açın.
+2. Sol taraftaki Gezinti menüsünün en üstünde bulunan **tüm hizmetler** ' e tıklayın. **Azure Active Directory uzantısı** açılır.
+3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
+4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın. 
 5. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 6. **Yönetici izin istekleri (Önizleme)** altında, kullanıcıları **Evet**olarak **kabul veremediği uygulamalara yönetici onayı isteyebilecekleri** şekilde ayarlayın.
 
@@ -74,10 +74,10 @@ Yönetici onayı iş akışı etkinleştirildikten sonra, kullanıcılar, izin v
 
 Yönetici izin isteklerini gözden geçirmek ve işlem yapmak için:
 
-1. Yönetici onayı iş akışının kayıtlı gözden geçirenlerden biri olarak [Azure portal](https://portal.azure.com) oturum açın.
-2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** seçin.  **Azure Active Directory uzantısı** açılır.
-3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın.
+1. Yönetici onayı iş akışının kayıtlı gözden geçirenlerden biri olarak [Azure Portal](https://portal.azure.com) oturum açın.
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçin. **Azure Active Directory uzantısı** açılır.
+3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
+4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın.
 5. **Etkinlik**' ın altında **Yönetici onay istekleri (Önizleme)** öğesini seçin.
 
    > [!NOTE]
@@ -120,12 +120,12 @@ Aşağıdaki tabloda, yönetici onayı iş akışı için kullanılabilen senary
 
 |Senaryo  |Denetim Hizmeti  |Denetim Kategorisi  |Denetim etkinliği  |Aktör denetimi  |Denetim günlüğü sınırlamaları  |
 |---------|---------|---------|---------|---------|---------|
-|İzin isteği iş akışını etkinleştirme Yöneticisi        |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İdare ilkesi şablonu oluşturma          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz            |
-|Yönetici onay isteği iş akışını devre dışı bırakma       |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İdare ilkesi şablonunu Sil          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz           |
-|İzin iş akışı yapılandırmasını yönetici olarak güncelleştirme        |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İdare ilkesi şablonunu Güncelleştir          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz           |
-|Son Kullanıcı bir uygulama için yönetici onay isteği oluşturma       |Erişim Gözden Geçirmeleri           |İlke         |İstek oluştur           |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz           |
-|Yönetici onay isteğini onaylayan gözden geçirenler       |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İş akışındaki tüm istekleri onaylama          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını veya yönetici onayı verilen uygulama KIMLIĞINI bulamıyoruz.           |
-|Yönetici onay isteğini reddeden gözden geçirenler       |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İş akışındaki tüm istekleri onaylama          |Uygulama bağlamı            | Şu anda yönetici onay isteğini reddeden aktörün kullanıcı bağlamını bulamıyoruz          |
+|İzin isteği iş akışını etkinleştirme Yöneticisi        |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İdare ilkesi şablonu oluşturma          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz            |
+|Yönetici onay isteği iş akışını devre dışı bırakma       |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İdare ilkesi şablonunu Sil          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz           |
+|İzin iş akışı yapılandırmasını yönetici olarak güncelleştirme        |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İdare ilkesi şablonunu Güncelleştir          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz           |
+|Son Kullanıcı bir uygulama için yönetici onay isteği oluşturma       |Erişim Gözden Geçirmeleri           |İlke         |İstek oluştur           |Uygulama bağlamı            |Şu anda kullanıcı bağlamını bulamıyoruz           |
+|Yönetici onay isteğini onaylayan gözden geçirenler       |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İş akışındaki tüm istekleri onaylama          |Uygulama bağlamı            |Şu anda kullanıcı bağlamını veya yönetici onayı verilen uygulama KIMLIĞINI bulamıyoruz.           |
+|Yönetici onay isteğini reddeden gözden geçirenler       |Erişim Gözden Geçirmeleri           |Kullanıcı Yönetimi           |İş akışındaki tüm istekleri onaylama          |Uygulama bağlamı            | Şu anda yönetici onay isteğini reddeden aktörün kullanıcı bağlamını bulamıyoruz          |
 
 ## <a name="faq"></a>SSS 
 

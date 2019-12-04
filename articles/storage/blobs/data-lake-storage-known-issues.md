@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548327"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793353"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -48,14 +48,12 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>SDK, PowerShell ve CLı için Data Lake Storage Istemci kitaplığı için API kapsamı
-
-### <a name="filesystem-support-in-sdks"></a>SDK 'larda dosya sistemi desteği
+## <a name="filesystem-support-in-sdks"></a>SDK 'larda dosya sistemi desteği
 
 - .NET, Java ve Python genel önizlemede. Diğer SDK 'lar Şu anda desteklenmiyor.
 - Get ve set ACL 'Leri işlemleri şu anda özyinelemeli değil.
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell ve Azure CLı 'de dosya sistemi desteği
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell ve Azure CLı 'de dosya sistemi desteği
 
 Get ve set ACL 'Leri işlemleri şu anda özyinelemeli değil.
 
@@ -77,7 +75,6 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 | **Tanılama günlüğüne kaydetme** |Tanılama günlükleri desteklenir (Önizleme).<br><br>Azure portal günlüklerin etkinleştirilmesi Şu anda desteklenmiyor. Günlükleri PowerShell kullanarak nasıl etkinleştireceğinizi gösteren bir örnek aşağıda verilmiştir. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Bu örnekte gösterildiği gibi, `-ServiceType` parametresinin değeri olarak `Blob` belirttiğinizden emin olun. <br><br>Şu anda Azure Depolama Gezgini tanılama günlüklerini görüntülemek için kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
 | **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
 | **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları desteklenir. Arşiv katmanı önizlemededir. Diğer tüm erişim katmanları henüz desteklenmiyor. <br><br> Şu anda arşiv erişim katmanını etkileyen hatalar var.  Arşiv erişim katmanının önizlemesine [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)kaydolun.|
-| **PowerShell ve CLı desteği** | Sınırlı işlevsellik <br><br>Blob işlemleri desteklenir. Dizinlerle çalışma ve erişim denetim listelerini (ACL 'Ler) ayarlama henüz desteklenmiyor. |
 | **Statik Web siteleri** |Henüz desteklenmiyor <br><br>Özellikle, dosyaları [statik Web sitelerine](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)sunma özelliği.|
 | **Üçüncü taraf uygulamalar** | Sınırlı destek <br><br>REST API 'Leri kullanan üçüncü taraf uygulamalar, Data Lake Storage 2. ile birlikte kullandığınızda çalışmaya devam edecektir. <br>Blob API 'Leri çağıran uygulamalar muhtemelen işe sunulacaktır.|
 |**Geçici Silme** |Henüz desteklenmiyor|

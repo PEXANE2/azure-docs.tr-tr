@@ -1,31 +1,31 @@
 ---
-title: Azure CLı kullanarak PostgreSQL için Azure veritabanı depolama-tek sunucu için otomatik büyüme
-description: Bu makalede, PostgreSQL için Azure veritabanı-tek sunucu 'da Azure CLı kullanarak otomatik büyüme depolamayı nasıl etkinleştirebileceğinizi açıklanmaktadır.
+title: Depolamayı otomatik büyütme-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, PostgreSQL için Azure veritabanı-tek sunucu 'da Azure CLı kullanarak depolama otomatik büyümenin nasıl yapılandırılacağı açıklanır.
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 8/7/2019
-ms.openlocfilehash: 272b26050288e63181c8d0c71dc2c1851f09f3c9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b0dc2fbb168d9325439ee18a227f71a3b88ef9c8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390840"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767968"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı depolama-tek sunucu için otomatik büyüme
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucu depolaması, iş yükünü etkilemeden nasıl büyütüleceği açıklanır.
 
-[Depolama sınırına ulaşan](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)sunucu, salt okunurdur olarak ayarlanmıştır. Depolama otomatik büyüme, 100 GB 'tan az kullanılabilir depolama alanı olan sunucular için etkinleştirildiyse, boş depolama alanı sağlanan depolamanın en fazla 1 GB veya% 10 ' u altındaysa, sağlanan depolama boyutu 5 GB artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun% 5 ' inden az olduğunda sağlanan depolama boyutu% 5 oranında artar. [Burada](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) belirtilen en fazla depolama sınırı geçerlidir.
+[Depolama sınırına ulaşan](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)sunucu, salt okunurdur olarak ayarlanmıştır. Depolama otomatik büyüme, 100 GB 'tan az kullanılabilir depolama alanı olan sunucular için etkinleştirildiyse, boş depolama alanı sağlanan depolamanın en fazla 1 GB veya %10 ' u altındaysa, sağlanan depolama boyutu 5 GB artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun %5 ' inden az olduğunda sağlanan depolama boyutu %5 oranında artar. [Burada](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) belirtilen en fazla depolama sınırı geçerlidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunda tamamlanması gerekir:
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [PostgreSQL Için Azure veritabanı sunucusu](quickstart-create-server-database-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Bu nasıl yapılır kılavuzunda, Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Azure CLI komut isteminde sürümünü onaylamak için girin `az --version`. Yüklemek veya yükseltmek için bkz: [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde `az --version`girin. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
 ## <a name="enable-postgresql-server-storage-auto-grow"></a>PostgreSQL Server depolama alanını otomatik büyümeye etkinleştir
 

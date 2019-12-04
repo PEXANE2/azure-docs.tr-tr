@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: ses dosyasından konuşmayı tanıma, C# (.net)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: fdb747212914769b8551d9cd12f1fbc8a01245dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a570ec7e7eaae13515edc268d465df18674fc22
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504196"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795676"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -25,6 +25,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
@@ -66,6 +68,7 @@ Bir `SpeechRecognizer` nesnesi başlatabilmeniz için önce abonelik anahtarın�
 
 > [!NOTE]
 > Bu örnek, `SpeechConfig`oluşturmak için `FromSubscription()` yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ````C#
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");

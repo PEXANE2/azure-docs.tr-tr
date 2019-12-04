@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823012"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791360"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Ticari Market işlem özellikleri ve konuları
 
@@ -66,7 +66,7 @@ Kullanılan işlem seçeneğine bağlı olarak, yayımcının yazılım lisansı
 
 * Kullandıkça öde: yazılım lisansı ücretleri, kullanılan Azure altyapısına bağlı olarak saat başına, çekirdek başına (vCPU) fiyatlandırma ücreti olarak sunulur. Bu yalnızca sanal makineler ve Azure uygulamaları için geçerlidir.
 
-* • Abonelik fiyatlandırması: yazılım lisansı ücretleri aylık veya yıllık olarak, sabit bir fiyat veya bilgisayar başına faturalandırılan yinelenen ücret olarak sunulur. Bu yalnızca SaaS uygulamaları ve Azure uygulamaları tarafından yönetilen uygulamalar için geçerlidir.
+* Abonelik fiyatlandırması: yazılım lisansı ücretleri aylık veya yıllık olarak, sabit bir fiyat veya bilgisayar başına faturalandırılan yinelenen ücret olarak sunulur. Bu yalnızca SaaS uygulamaları ve Azure uygulamaları tarafından yönetilen uygulamalar için geçerlidir.
 
 * Ücretsiz yazılım deneme sürümü: 30 günlük veya 90 gün için yazılım lisansları için ücret alınmaz.
 
@@ -182,7 +182,7 @@ Müşteri bir Kurumsal Anlaşma kullanarak satın alıyorsa:
 |Sipariş dönemi | 15 Ağu, 2018-30 Ağu, 2018 |
 |Dönem sonu (çeyrek) | 30 Eylül 2018 |
 |Faturalama tarihi | 15 Ekim 2018 |
-|Emanet dönemi (yalnızca kredi kartları, 30 gün) | yok |
+|Emanet dönemi (yalnızca kredi kartları, 30 gün) | Yok |
 |Toplama dönemi başlangıcı | 15 Ekim 2018 |
 |Toplama dönemi sonu (maksimum, 90 gün) | 15 Ocak 2019 |
 |Müşteri ödeme tarihi | 30 Aralık 2018 |

@@ -1,22 +1,18 @@
 ---
-title: GitHub 'a bağlanma-Azure Logic Apps
+title: GitHub 'a Bağlan
 description: GitHub REST API 'Leri ve Azure Logic Apps GitHub olaylarını izleme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 6a6e2a803ee2a272189abf0f21796b2305eea40b
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050897"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789765"
 ---
 # <a name="connect-to-github-from-azure-logic-apps"></a>Azure Logic Apps GitHub 'a bağlanma
 
@@ -28,9 +24,9 @@ GitHub bağlayıcısını kullanmaya başlamak için [önce bir mantıksal uygul
 
 Bir mantıksal uygulamada GitHub bağlayıcısını kullanmak için, önce bir *bağlantı* oluşturmanız ve ardından bu özelliklerin ayrıntılarını sağlamanız gerekir: 
 
-| Özellik | Gerekli | Açıklama | 
+| Özellik | Gereklidir | Açıklama | 
 | -------- | -------- | ----------- | 
-| Belirteç | Evet | GitHub kimlik bilgilerinizi sağlayın. |
+| Belirteç | Yes | GitHub kimlik bilgilerinizi sağlayın. |
 
 Bağlantıyı oluşturduktan sonra, eylemleri yürütebilir ve bu makalede açıklanan Tetikleyicileri dinleyebilirsiniz.
 

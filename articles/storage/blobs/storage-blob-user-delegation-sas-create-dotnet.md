@@ -1,32 +1,32 @@
 ---
 title: .NET (Önizleme) ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma-Azure depolama
-description: .NET istemci kitaplığını kullanarak Azure Storage 'da Azure Active Directory kimlik bilgilerini kullanarak bir Kullanıcı temsili SAS oluşturmayı öğrenin.
+description: .NET istemci kitaplığını kullanarak Azure Storage 'da Azure Active Directory kimlik bilgilerini kullanarak bir Kullanıcı temsili SAS (Önizleme) oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32bcb12f39d65d63af1c6595c0d57c695ce0533f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595222"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792223"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, .NET için Azure depolama istemci kitaplığı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
+Bu makalede, .NET için Azure depolama istemci kitaplığı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS (Önizleme) oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="authenticate-with-the-azure-identity-library-preview"></a>Azure kimlik kitaplığı ile kimlik doğrulama (Önizleme)
+## <a name="authenticate-with-the-azure-identity-library"></a>Azure kimlik kitaplığı ile kimlik doğrulama
 
-.NET için Azure Identity istemci kitaplığı (Önizleme) bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir.
+.NET için Azure Identity istemci kitaplığı, bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir.
 
 Kodunuz geliştirme ortamında çalışırken, kimlik doğrulaması otomatik olarak işlenebilir veya kullandığınız araçlara bağlı olarak bir tarayıcı oturum açma işlemi gerektirebilir. Microsoft Visual Studio çoklu oturum açmayı (SSO) destekler, böylece etkin Azure AD Kullanıcı hesabı kimlik doğrulaması için otomatik olarak kullanılır. SSO hakkında daha fazla bilgi için bkz. [uygulamalarda çoklu oturum açma](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
@@ -40,30 +40,30 @@ Azure Identity istemci kitaplığı hakkında daha fazla bilgi için bkz. [.net 
 
 Bir Azure AD güvenlik sorumlusu blob verilerine erişmeyi denediğinde, bu güvenlik sorumlusunun kaynak için izinleri olması gerekir. Güvenlik sorumlusunun Azure 'da yönetilen bir kimlik veya geliştirme ortamında kod çalıştıran bir Azure AD Kullanıcı hesabı olup olmadığı, güvenlik sorumlusu Azure Storage 'daki blob verilerine erişim izni veren bir RBAC rolü atanmalıdır. RBAC aracılığıyla izin atama hakkında daha fazla bilgi için, [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)konusundaki **ERIŞIM hakları Için RBAC rolleri atama** başlıklı bölüme bakın.
 
-## <a name="install-the-preview-packages"></a>Önizleme paketlerini yükler
+## <a name="install-the-packages"></a>Paketleri yükler
 
-Bu makaledeki örneklerde, [BLOB depolama Için Azure Storage istemci kitaplığı](https://www.nuget.org/packages/Azure.Storage.Blobs)'nın en son önizleme sürümü kullanılmaktadır. Önizleme paketini yüklemek için, NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+Bu makaledeki örneklerde, [BLOB depolama Için Azure Storage istemci kitaplığı](https://www.nuget.org/packages/Azure.Storage.Blobs)'nın en son sürümü kullanılır. Paketi yüklemek için NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
 
 ```powershell
-Install-Package Azure.Storage.Blobs -IncludePrerelease
+Install-Package Azure.Storage.Blobs
 ```
 
-Bu makaledeki örneklerde, Azure AD kimlik bilgileriyle kimlik doğrulaması yapmak için [.net Için Azure Identity istemci kitaplığı](https://www.nuget.org/packages/Azure.Identity/) 'nın en son önizleme sürümü de kullanılır. Önizleme paketini yüklemek için, NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+Bu makaledeki örneklerde, Azure AD kimlik bilgileriyle kimlik doğrulaması yapmak için [.net Için Azure Identity istemci kitaplığı](https://www.nuget.org/packages/Azure.Identity/) 'nın en son sürümünü de kullanabilirsiniz. Paketi yüklemek için NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
 
 ```powershell
-Install-Package Azure.Identity -IncludePrerelease
+Install-Package Azure.Identity
 ```
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
-Azure kimlik ve Azure depolama istemci kitaplıklarının önizleme sürümlerini kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
+Azure kimlik ve Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
 
 ```csharp
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Identity;
-using Azure.Storage;
 using Azure.Storage.Sas;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
@@ -76,8 +76,10 @@ Kodunuzun Azure depolama 'ya istekleri yetkilendirmek için kullanabileceği bir
 Aşağıdaki kod parçacığı kimliği doğrulanmış belirteç kimlik bilgisinin nasıl alınacağını ve BLOB depolaması için bir hizmet istemcisi oluşturmak için nasıl kullanılacağını gösterir:
 
 ```csharp
+// Construct the blob endpoint from the account name.
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);
 
+// Create a new Blob service client with Azure AD credentials.
 BlobServiceClient blobClient = new BlobServiceClient(new Uri(blobEndpoint),
                                                      new DefaultAzureCredential());
 ```
@@ -96,14 +98,17 @@ Kullanıcı temsili anahtarını istemek için aşağıdaki yöntemlerden birini
 Aşağıdaki kod parçacığı, Kullanıcı temsili anahtarını alır ve özelliklerini Yazar:
 
 ```csharp
+// Get a user delegation key for the Blob service that's valid for seven days.
+// You can use the key to generate any number of shared access signatures over the lifetime of the key.
 UserDelegationKey key = await blobClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow,
                                                                    DateTimeOffset.UtcNow.AddDays(7));
 
+// Read the key's properties.
 Console.WriteLine("User delegation key properties:");
-Console.WriteLine("Key signed start: {0}", key.SignedStart);
-Console.WriteLine("Key signed expiry: {0}", key.SignedExpiry);
-Console.WriteLine("Key signed object ID: {0}", key.SignedOid);
-Console.WriteLine("Key signed tenant ID: {0}", key.SignedTid);
+Console.WriteLine("Key signed start: {0}", key.SignedStartsOn);
+Console.WriteLine("Key signed expiry: {0}", key.SignedExpiresOn);
+Console.WriteLine("Key signed object ID: {0}", key.SignedObjectId);
+Console.WriteLine("Key signed tenant ID: {0}", key.SignedTenantId);
 Console.WriteLine("Key signed service: {0}", key.SignedService);
 Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 ```
@@ -113,18 +118,23 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 Aşağıdaki kod parçacığı, yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) oluşturma ve Kullanıcı temsili SAS için parametreler sağlama gösterilmektedir. Kod parçacığı daha sonra SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırır. Son olarak, kod kaynak adresi ve SAS belirteci dahil olmak üzere tüm URI 'yi oluşturur.
 
 ```csharp
-BlobSasBuilder builder = new BlobSasBuilder()
+// Create a SAS token that's valid for one hour.
+BlobSasBuilder sasBuilder = new BlobSasBuilder()
 {
-    ContainerName = containerName,
+    BlobContainerName = containerName,
     BlobName = blobName,
-    Permissions = "r",
     Resource = "b",
-    StartTime = DateTimeOffset.UtcNow,
-    ExpiryTime = DateTimeOffset.UtcNow.AddMinutes(5)
+    StartsOn = DateTimeOffset.UtcNow,
+    ExpiresOn = DateTimeOffset.UtcNow.AddHours(1)
 };
 
+// Specify read permissions for the SAS.
+sasBuilder.SetPermissions(BlobSasPermissions.Read);
+
+// Use the key to get the SAS token.
 string sasToken = sasBuilder.ToSasQueryParameters(key, accountName).ToString();
 
+// Construct the full URI, including the SAS token.
 UriBuilder fullUri = new UriBuilder()
 {
     Scheme = "https",
@@ -149,29 +159,32 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
                                                             new DefaultAzureCredential());
 
     // Get a user delegation key for the Blob service that's valid for seven days.
-    // Use the key to generate any number of shared access signatures over the lifetime of the key.
-    UserDelegationKey key = await blobClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow,
-                                                                       DateTimeOffset.UtcNow.AddDays(7));
+    // You can use the key to generate any number of shared access signatures over the lifetime of the key.
+    UserDelegationKey key = await blobClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow, 
+                                                                        DateTimeOffset.UtcNow.AddDays(7));
 
     // Read the key's properties.
     Console.WriteLine("User delegation key properties:");
-    Console.WriteLine("Key signed start: {0}", key.SignedStart);
-    Console.WriteLine("Key signed expiry: {0}", key.SignedExpiry);
-    Console.WriteLine("Key signed object ID: {0}", key.SignedOid);
-    Console.WriteLine("Key signed tenant ID: {0}", key.SignedTid);
+    Console.WriteLine("Key signed start: {0}", key.SignedStartsOn);
+    Console.WriteLine("Key signed expiry: {0}", key.SignedExpiresOn);
+    Console.WriteLine("Key signed object ID: {0}", key.SignedObjectId);
+    Console.WriteLine("Key signed tenant ID: {0}", key.SignedTenantId);
     Console.WriteLine("Key signed service: {0}", key.SignedService);
     Console.WriteLine("Key signed version: {0}", key.SignedVersion);
+    Console.WriteLine();
 
-    // Create a SAS token that's valid a short interval.
+    // Create a SAS token that's valid for one hour.
     BlobSasBuilder sasBuilder = new BlobSasBuilder()
     {
-        ContainerName = containerName,
+        BlobContainerName = containerName,
         BlobName = blobName,
-        Permissions = "r",
         Resource = "b",
-        StartTime = DateTimeOffset.UtcNow,
-        ExpiryTime = DateTimeOffset.UtcNow.AddMinutes(5)
+        StartsOn = DateTimeOffset.UtcNow,
+        ExpiresOn = DateTimeOffset.UtcNow.AddHours(1)
     };
+
+    // Specify read permissions for the SAS.
+    sasBuilder.SetPermissions(BlobSasPermissions.Read);
 
     // Use the key to get the SAS token.
     string sasToken = sasBuilder.ToSasQueryParameters(key, accountName).ToString();
@@ -186,6 +199,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
     };
 
     Console.WriteLine("User delegation SAS URI: {0}", fullUri);
+    Console.WriteLine();
     return fullUri.Uri;
 }
 ```
@@ -220,7 +234,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
         Console.WriteLine("Read operation succeeded for SAS {0}", sasUri);
         Console.WriteLine();
     }
-    catch (StorageRequestFailedException e)
+    catch (RequestFailedException e)
     {
         // Check for a 403 (Forbidden) error. If the SAS is invalid, 
         // Azure Storage returns this error.

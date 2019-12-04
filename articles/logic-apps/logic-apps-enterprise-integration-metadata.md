@@ -1,20 +1,19 @@
 ---
-title: Tümleştirme hesabı yapıt meta verilerini Yönet-Azure Logic Apps
+title: Tümleştirme hesabı yapıt meta verilerini Yönet
 description: Enterprise Integration Pack ile Azure Logic Apps tümleştirme hesaplarından yapıt meta verileri ekleyin veya alın
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
-ms.openlocfilehash: e8e2daf1de9223766c8cec835f7718007a8cf309
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679968"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792477"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack tümleştirme hesaplarında yapıt meta verilerini yönetme
 
@@ -54,7 +53,7 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
 
 1. Azure portal, istediğiniz tümleştirme hesabıyla bağlantılı mantıksal uygulamayı açın. 
 
-1. Mantıksal uygulama Tasarımcısı ' nda, iş akışındaki tetikleyici veya son eylem altında meta veri alma adımını ekliyorsanız **yeni adım**  > **Eylem Ekle**' yi seçin. 
+1. Mantıksal uygulama Tasarımcısı ' nda, iş akışındaki tetikleyici veya son eylem altında meta veri alma adımını ekliyorsanız **yeni adım** > **Eylem Ekle**' yi seçin. 
 
 1. Arama kutusuna "tümleştirme hesabı" yazın. Arama kutusunda **Tümü**' ni seçin. Eylemler listesinden şu eylemi seçin: **tümleştirme hesabı yapıt arama-tümleştirme hesabı**
 
@@ -65,7 +64,7 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
    | Özellik | Gereklidir | Değer | Açıklama | 
    |----------|---------|-------|-------------| 
    | **Yapıt türü** | Yes | **Şema**, **eşleme**, **iş ortağı**, **anlaşma**veya özel bir tür | İstediğiniz yapıtın türü | 
-   | **Yapıt adı** | Yes | <*yapıt-adı* > | İstediğiniz yapıt adı | 
+   | **Yapıt adı** | Yes | <*yapıt-adı*> | İstediğiniz yapıt adı | 
    ||| 
 
    Örneğin, bir ticaret ortağı yapıtı için meta verileri almak istediğinizi varsayalım:
@@ -86,10 +85,10 @@ Tümleştirme hesaplarında yapılar için özel meta veriler tanımlayabilir ve
 
       | Özellik | Gereklidir | Değer | Açıklama | 
       |----------|----------|-------|-------------| 
-      | **Yöntem** | Yes | <*işlemi çalıştırma* > | Yapıtın üzerinde çalıştırılacak HTTP işlemi. Örneğin, bu HTTP eylemi **Get** yöntemini kullanır. | 
-      | **KULLANıLMAMıŞSA** | Yes | <*meta veri-konum* > | Aldığınız yapıtın `routingUrl` meta veri değerine erişmek için bir ifade kullanabilirsiniz, örneğin: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Üst Bilgiler** | Hayır | <*üst bilgi-değerleri* > | HTTP eylemine geçirmek istediğiniz tetikleyiciden gelen üst bilgi çıkışları. Örneğin, tetikleyicinin `headers` özellik değerini geçirmek için: bir ifade kullanabilirsiniz, örneğin: <p>`@triggeroutputs()['headers']` | 
-      | **Gövde** | Hayır | <*gövdesi-içerik* > | HTTP eyleminin `body` özelliğinden geçirmek istediğiniz diğer içerikler. Bu örnek, yapıtın `properties` değerlerini HTTP eylemine geçirir: <p>1. **gövde** özelliğinin içine tıklayarak dinamik içerik listesi belirir. Hiçbir özellik görünmezse, **daha fazla göster**' i seçin. <br>2. dinamik içerik listesinden, **tümleştirme hesabı yapıt araması**altında **Özellikler**' i seçin. | 
+      | **Yöntem** | Yes | <*işlemi çalıştırma*> | Yapıtın üzerinde çalıştırılacak HTTP işlemi. Örneğin, bu HTTP eylemi **Get** yöntemini kullanır. | 
+      | **KULLANıLMAMıŞSA** | Yes | <*meta veri-konum*> | Aldığınız yapıtın `routingUrl` meta veri değerine erişmek için bir ifade kullanabilirsiniz, örneğin: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Üst Bilgiler** | Hayır | <*üst bilgi-değerleri*> | HTTP eylemine geçirmek istediğiniz tetikleyiciden gelen üst bilgi çıkışları. Örneğin, tetikleyicinin `headers` özellik değerini geçirmek için: bir ifade kullanabilirsiniz, örneğin: <p>`@triggeroutputs()['headers']` | 
+      | **Gövde** | Hayır | <*gövdesi-içerik*> | HTTP eyleminin `body` özelliğinden geçirmek istediğiniz diğer içerikler. Bu örnek, yapıtın `properties` değerlerini HTTP eylemine geçirir: <p>1. **gövde** özelliğinin içine tıklayarak dinamik içerik listesi belirir. Hiçbir özellik görünmezse, **daha fazla göster**' i seçin. <br>2. dinamik içerik listesinden, **tümleştirme hesabı yapıt araması**altında **Özellikler**' i seçin. | 
       |||| 
 
       Örnek:

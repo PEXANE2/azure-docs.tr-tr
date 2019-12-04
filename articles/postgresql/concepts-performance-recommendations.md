@@ -1,21 +1,21 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda performans önerileri-tek sunucu
+title: Performans önerileri-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı-tek sunucu ' da performans önerisi özelliği açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764678"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768478"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda performans önerileri-tek sunucu
 
-**Şunlara uygulanır:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
+**Uygulama hedefi:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
 
 Performans önerileri özelliği, gelişmiş performans için özel öneriler oluşturmak üzere veritabanlarınızı analiz edin. Bu önerileri oluşturmak için analiz, şema dahil çeşitli veritabanı özelliklerine bakar. Performans önerileri özelliğini tam olarak kullanmak için sunucunuzda [sorgu deposunu](concepts-query-store.md) etkinleştirin. Herhangi bir performans önerisi uygulandıktan sonra, bu değişikliklerin etkisini değerlendirmek için performansı sınamalısınız. 
 
@@ -39,7 +39,7 @@ PostgreSQL sunucunuz için Azure portal sayfasındaki menü çubuğunun **akıll
 
 ## <a name="recommendation-types"></a>Öneri türleri
 
-Şu anda iki tür öneri desteklenir: *Dizin* ve *bırakma dizini*oluşturun.
+Şu anda iki tür öneri desteklenir: Dizin ve *bırakma dizini* *oluşturun* .
 
 ### <a name="create-index-recommendations"></a>Dizin önerileri oluşturma
 *Dizin önerilerini oluşturma* , iş yükünde en sık çalıştırılan veya zaman alan sorguları hızlandırmak için yeni dizinler önerir. Bu öneri türü, [sorgu deposunun](concepts-query-store.md) etkinleştirilmesini gerektirir. Sorgu deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382018"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786003"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 'de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
 
@@ -36,13 +36,16 @@ Bu konu:
 
 Sertifika tabanlı kimlik doğrulamasını yapılandırmak için aşağıdaki deyimler doğru olmalıdır:
 
-- Sertifika tabanlı kimlik doğrulaması (CBA) yalnızca tarayıcı uygulamaları veya modern kimlik doğrulaması (ADAL) kullanan yerel istemciler için Federasyon ortamlarında desteklenir. Bir özel durum, Exchange Online (EXO) için Exchange Active Sync (EAS) ve Federasyon ve yönetilen hesaplar için kullanılabilir.
+- Sertifika tabanlı kimlik doğrulaması (CBA) yalnızca tarayıcı uygulamaları için Federasyon ortamları, modern kimlik doğrulaması (ADAL) kullanan yerel istemciler veya MSAL kitaplıkları için desteklenir. Bir özel durum, Exchange Online (EXO) için Exchange Active Sync (EAS) ve Federasyon ve yönetilen hesaplar için kullanılabilir.
 - Kök sertifika yetkilisi ve tüm ara sertifika yetkilileri Azure Active Directory ' de yapılandırılmış olmalıdır.
 - Her sertifika yetkilisinin, internet 'e yönelik bir URL aracılığıyla başvurulabilen bir sertifika iptal listesi 'ne (CRL) sahip olması gerekir.
 - Azure Active Directory en az bir sertifika yetkilinizin yapılandırılmış olması gerekir. [Sertifika yetkililerini yapılandırma](#step-2-configure-the-certificate-authorities) bölümünde ilgili adımları bulabilirsiniz.
 - Exchange ActiveSync istemcileri için, istemci sertifikasının asıl ad veya konu alternatif adı alanının RFC822 adı değeri içinde Exchange Online 'da kullanıcının yönlendirilebilir e-posta adresine sahip olması gerekir. Azure Active Directory, RFC822 değerini dizindeki proxy adresi özniteliğiyle eşler.
 - İstemci cihazınızın, istemci sertifikaları veren en az bir sertifika yetkilisine erişimi olmalıdır.
 - İstemciye istemci kimlik doğrulaması için bir istemci sertifikası verilmiş olmalıdır.
+
+>[!IMPORTANT]
+>Azure Active Directory için CRL 'nin başarıyla indirileceği ve önbelleğe aldığı en büyük boyut 20 MB 'tır ve CRL 'YI indirmek için gereken süre 10 saniye değerini aşmamalıdır.  Azure Active Directory CRL indiremez, karşılık gelen CA tarafından verilen sertifikaları kullanarak sertifika tabanlı kimlik doğrulamaları başarısız olur. CRL dosyalarının boyut kısıtlamalarına göre olduğundan emin olmak için en iyi yöntemler, sertifika ömrünü makul sınırlar içinde tutmalarıdır ve süresi dolmuþ sertifikaları temizler. 
 
 ## <a name="step-1-select-your-device-platform"></a>1\. Adım: cihaz platformunuzu seçin
 
@@ -96,7 +99,7 @@ Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/a
 
 İlk yapılandırma adımı olarak, kiracınızla bir bağlantı kurmanız gerekir. Kiracınızla bağlantı varsa, dizininizde tanımlı olan güvenilen sertifika yetkililerini gözden geçirebilir, ekleyebilir, silebilir ve değiştirebilirsiniz.
 
-### <a name="connect"></a>Bağlan
+### <a name="connect"></a>Bağlayın
 
 Kiracınızla bir bağlantı kurmak için [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet 'ini kullanın:
 

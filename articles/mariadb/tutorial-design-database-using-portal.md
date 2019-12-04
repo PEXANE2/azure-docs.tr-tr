@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Azure portalını kullanarak MariaDB için Azure veritabanı tasarlama'
+title: 'Öğretici: MariaDB için Azure veritabanı tasarlama-Azure portal'
 description: Bu öğreticide, Azure portalı kullanarak MariaDB için Azure Veritabanı sunucusunun ve veritabanının nasıl oluşturulup yönetileceği açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515642"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776717"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak MariaDB veritabanı için Azure veritabanı tasarlama
+# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak MariaDB için Azure Veritabanı tasarlama
 
 MariaDB için Azure Veritabanı, bulutta yüksek oranda kullanılabilir olan MySQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullanılan, yönetilen bir hizmettir. Azure portalı kullanarak, sunucunuzu kolayca yönetebilir ve bir veritabanı tasarlayabilirsiniz.
 
@@ -41,7 +41,7 @@ Tanımlı bir dizi [işlem ve depolama kaynağı](concepts-pricing-tiers.md) ile
 
 1. Portalın sol üst köşesinde bulunan **Kaynak oluştur** düğmesini (+) seçin.
 
-2. Seçin **veritabanları** > **MariaDB için Azure veritabanı**. Ayrıca **MariaDB** hizmeti bulmak için arama kutusuna.
+2. **MariaDB Için Azure veritabanı** > **veritabanları** ' nı seçin. Hizmeti bulmak için arama kutusuna **MariaDB** de yazabilirsiniz.
    
    ![MySQL'e gidin](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
@@ -56,18 +56,18 @@ Tanımlı bir dizi [işlem ve depolama kaynağı](concepts-pricing-tiers.md) ile
     Kaynak grubu | **myresourcegroup** | Yeni bir kaynak grubu adı girin veya var olan bir kaynak grubunu seçin.
     Kaynak seçme | **Boş** | Yeni bir sunucu oluşturmak için **Boş**’u seçin. (Mevcut bir MariaDB için Azure Veritabanı sunucusunun coğrafi yedeğinden bir sunucu oluşturuyorsanız, **Yedek**'i seçin.)
     Sunucu yöneticisi oturum açma | **myadmin** | Sunucuya bağlanırken kullanılacak kendi oturum açma hesabı. Yönetici oturum açma adı **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
-    Parola | *tercih ettiğiniz* | Sunucu yönetici hesabı için yeni bir parola girin. 8 ile 128 arasında karakter içermelidir. Parolanız şu kategorilerin üçünden karakterler içermelidir: İngilizce büyük harfler, İngilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #, % vb.).
+    Parola | *tercih ettiğiniz* | Sunucu yönetici hesabı için yeni bir parola girin. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #, %, vb.).
     Parolayı onayla | *tercih ettiğiniz*| Yönetici hesabı parolasını onaylayın.
-    Location | *kullanıcılarınıza en yakın bölge*| Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
-    Version | *en son sürüm*| En son sürüm (başka bir sürüm kullanmak için belirli gereksinimleriniz yoksa).
-    Fiyatlandırma katmanı | Açıklamaya bakın. | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Fiyatlandırma katmanı** > **Genel Amaçlı**'yı seçin. Aşağıdaki ayarlar için varsayılan değerleri kullanın:<br><ul><li>**İşlem Oluşturma** (Gen 5)</li><li>**Sanal çekirdek** (4 çekirdek)</li><li>**Depolama** (100 GB)</li><li>**Yedekleme Saklama Dönemi** (7 gün)</li></ul><br>Coğrafi olarak yedekli depolamada sunucu yedeklerinizi etkinleştirmek için **Fazladan Yedek Seçenekleri**’nde **Coğrafi Olarak Yedeklemeli**’yi seçin. <br><br>Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
+    Konum | *kullanıcılarınıza en yakın bölge*| Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
+    Sürüm | *en son sürüm*| En son sürüm (başka bir sürüm kullanmak için belirli gereksinimleriniz yoksa).
+    Fiyatlandırma katmanı | Açıklamaya bakın. | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Fiyatlandırma katmanı** > **Genel Amaçlı**'yı seçin. Aşağıdaki ayarlar için varsayılan değerleri kullanın:<br><ul><li>**İşlem Oluşturma** (Gen 5)</li><li>**sanal çekirdek** (4 sanal çekirdek)</li><li>**Depolama** (100 GB)</li><li>**Yedekleme Saklama Dönemi** (7 gün)</li></ul><br>Coğrafi olarak yedekli depolamada sunucu yedeklerinizi etkinleştirmek için **Fazladan Yedek Seçenekleri**’nde **Coğrafi Olarak Yedeklemeli**’yi seçin. <br><br>Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
     
    ![Fiyatlandırma katmanı](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > İle **otomatik büyüme** etkin iş yükünüzü etkilemeden, ayrılmış bir sınır yaklaştığı olduğunda depolama sunucunuzu artırır.
+   > **Otomatik büyüme** etkinken sunucunuz, ayrılan sınıra yaklaşdığınızda, iş yükünüzü etkilemeden depolama alanını arttırır.
 
-4. **Oluştur**’u seçin. Bir veya iki dakika içinde, bulutta yeni bir MariaDB için Azure Veritabanı sunucusu çalışmaya başlayacaktır. Dağıtım işlemini izlemek için araç çubuğunda **Bildirimler**’i seçin.
+4. **Oluştur**'u seçin. Bir veya iki dakika içinde, bulutta yeni bir MariaDB için Azure Veritabanı sunucusu çalışmaya başlayacaktır. Dağıtım işlemini izlemek için araç çubuğunda **Bildirimler**’i seçin.
 
 ## <a name="configure-the-firewall"></a>Güvenlik duvarını yapılandırma
 
@@ -93,7 +93,7 @@ Azure portalından MariaDB için Azure Veritabanı sunucunuz için tam **Sunucu 
 
    ![Sunucu özellikleri](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-Bu örnekte sunucu adı şöyledir **mydemoserver.mariadb.database.azure.com** ve Sunucu Yöneticisi oturum açma adını **myadmin\@demosunucum**.
+Bizim örneğimizde sunucu adı **mydemoserver.MariaDB.Database.Azure.com** ve Sunucu Yöneticisi oturum açma adı **myadmin\@demosunucum**' dır.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>mysql kullanarak sunucuya bağlanma
 
@@ -168,15 +168,15 @@ SELECT * FROM inventory;
 
 1. Azure portalında MariaDB için Azure Veritabanınızı bulun. **Genel Bakış** sayfasında **Geri yükle**'yi seçin.
 
-   ![Bir veritabanını geri yükleme](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
+   ![Veritabanını geri yükleme](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. **Geri yükle** sayfasında aşağıdaki bilgileri girin veya seçin:
    
    ![Geri yükleme formu](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **Geri yükleme noktası**: İçin listelenen zaman dilimi içinde geri yüklemek istediğiniz zamanda bir nokta seçin. Yerel saat diliminizi UTC'ye dönüştürdüğünüzden emin olun.
-   - **Yeni sunucuya geri**: Geri yüklemek için yeni bir sunucu adı girin.
-   - **Konum**: Bölge, kaynak sunucuyla aynıdır ve değiştirilemez.
+   - **Geri yükleme noktası**: Listelenen zaman dilimi içerisindeki geri yüklemek istediğiniz noktayı seçin. Yerel saat diliminizi UTC'ye dönüştürdüğünüzden emin olun.
+   - **Yeni sunucuyu geri yükle**: Geri yükleme için kullanılacak yeni sunucunun adını girin.
+   - **Konum**: Bölge, kaynak sunucu ile aynıdır ve değiştirilemez.
    - **Fiyatlandırma katmanı**: Fiyatlandırma katmanı, kaynak sunucu ile aynıdır ve değiştirilemez.
    
 3. Sunucuyu, tablo silinmeden önceki [belirli bir noktaya geri yüklemek](./howto-restore-server-portal.md) için **Tamam**’a tıklayın. Bir sunucuyu geri yüklemek, sunucunun seçtiğiniz zamanda yeni bir kopyasını oluşturur. 

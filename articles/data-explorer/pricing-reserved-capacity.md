@@ -1,18 +1,18 @@
 ---
 title: Para tasarrufu için Azure Veri Gezgini işaretleme için ön ödeme yapın
 description: Azure Veri Gezgini maliyetlerinizi kaydetmek için Azure Veri Gezgini ayrılmış kapasitesini nasıl satın alacağınızı öğrenin.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681633"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769107"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Azure Veri Gezgini ayrılmış kapasitesi ile Azure Veri Gezgini işaretleme birimleri için ön ödeme
 
@@ -23,7 +23,7 @@ Bir rezervasyon satın alarak, bir veya üç yılda bir dönem için işaretleme
 Azure Veri Gezgini ayrılmış kapasitesini [Azure Portal](https://portal.azure.com)satın alabilirsiniz. Azure Veri Gezgini ayrılmış kapasitesini satın almak için:
 
 * En az bir kurumsal veya Kullandıkça Öde aboneliğine sahip olmanız gerekir.
-* Kurumsal abonelikler için, **EA portal**’da [Ayrılmış Örnek Ekle](https://ea.azure.com) seçeneği etkinleştirilmelidir. Alternatif olarak, bu ayar devre dışıysa abonelikte bir EA yöneticisi olmanız gerekir.
+* Kurumsal abonelikler için, [EA portal](https://ea.azure.com)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Alternatif olarak, bu ayar devre dışıysa abonelikte bir EA yöneticisi olmanız gerekir.
 * Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları Azure Veri Gezgini ayrılmış kapasitesi satın alabilir.
 
 Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkında daha fazla bilgi için bkz.:
@@ -36,7 +36,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Veri Gezgini kümeleri t
 
 ## <a name="buy-azure-data-explorer-reserved-capacity"></a>Azure Veri Gezgini ayrılmış kapasitesi satın alın
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Şimdi satın al** > **tüm hizmetler** > **ayırmaları** ' i seçin. **Ekle**’yi seçin
 1. **Ürün türü seç** bölmesinde Azure **Veri Gezgini** ' yi seçerek Azure Veri Gezgini işaretleme birimleri için yeni bir ayırma satın alın. 
 1. **Satın al** 'ı seçin
@@ -52,7 +52,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Veri Gezgini kümeleri t
 
 Azure Veri Gezgini ayrılmış kapasite ayırmayı iptal etmeniz gerekirse, %12 erken sonlandırma ücreti olabilir. Para iadesi, satın alma fiyatının en düşük fiyatını veya rezervasyonun geçerli fiyatını temel alır. Para iadesi yıllık 50.000 ABD doları ile sınırlıdır. Yapılacak para iadesi, %12 erken sonlandırma ücreti kesildikten sonra kalan kullanım süresine göre hesaplanır. İptal istemek için Azure portal rezervasyonuna gidin ve bir destek isteği oluşturmak için **para iadesi** ' ni seçin.
 
-Azure Veri Gezgini ayrılmış kapasite ayırmayı başka bir terime değiştirmeniz gerekiyorsa, bu değeri eşit veya daha büyük bir değer olan başka bir rezervasyon için değiş tokuş edebilirsiniz. Yeni ayırma işleminin başlangıç tarihi değiştirilen ayırma işleminin başlangıç tarihiyle aynı olmaz. 1 veya 3 yıllık dönem, yeni ayırmayı oluştururken ' den başlar. Bir Exchange istemek için Azure portal ayırma bölümüne gidin ve bir destek isteği oluşturmak için **Exchange** ' i seçin.
+Azure Veri Gezgini ayrılmış kapasite ayırmayı başka bir terime değiştirmeniz gerekiyorsa, bu değeri eşit veya daha büyük bir değer olan başka bir rezervasyon için değiş tokuş edebilirsiniz. Yeni rezervasyonun başlangıç tarihi, değiştirilen rezervasyonun başlangıç tarihiyle aynı olmaz. 1 veya 3 yıllık dönem, yeni ayırmayı oluştururken ' den başlar. Bir Exchange istemek için Azure portal ayırma bölümüne gidin ve bir destek isteği oluşturmak için **Exchange** ' i seçin.
 
 Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)iadesi.
 
@@ -76,6 +76,6 @@ Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek iç
 * [Kurumsal kaydınız için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage-ea.md)
 * [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
+## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

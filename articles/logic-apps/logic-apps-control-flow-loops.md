@@ -1,20 +1,17 @@
 ---
-title: Yineleme eylemlerine döngüler ekleyin-Azure Logic Apps
+title: Yineleme eylemlerine döngüler ekleyin
 description: Azure Logic Apps iş akışı eylemlerini veya işlem dizilerini yinelemek için döngüler oluşturma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680459"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791754"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini veya işlem dizilerini yinelemek için döngüler oluşturma
 
@@ -235,9 +232,9 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       | Özellik | Değer | Açıklama |
       | -------- | ----- | ----------- | 
-      | **Alıcı** | *\<email adresi \@domain >* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
+      | **Alıcı** | *\<e-posta adresi\@etki alanı >* | alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
       | **Konu** | "Limit" için geçerli değer **limit** | E-posta konusunu belirtin. Bu örnekte, **sınır** değişkenini eklediğinizden emin olun. | 
-      | **Gövde** | <*e-posta-içerik* > | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
+      | **Gövde** | <*e-posta-içerik*> | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
       |||| 
 
 1. Mantıksal uygulamanızı kaydedin. Mantıksal uygulamanızı el ile test etmek için tasarımcı araç çubuğunda **Çalıştır**' ı seçin.

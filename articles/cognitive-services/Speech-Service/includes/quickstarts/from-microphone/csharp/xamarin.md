@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961188"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796129"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 Bunu zaten yaptıysanız harika. Şimdi devam edelim.
 

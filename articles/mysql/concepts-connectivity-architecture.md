@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda bağlantı mimarisi
+title: Bağlantı mimarisi-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı sunucunuza yönelik bağlantı mimarisini açıklar.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: 22c77bee95533606156ec6cc337af1d743018005
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213146"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765333"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -28,11 +28,11 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 
 | **Bölge adı** | **Birincil IP adresi** | **İkincil IP adresi** |
 |:----------------|:-------------|:------------------------|
-| Avustralya Doğu | 13.75.149.87 | 40.79.161.1 |
+| Doğu Avustralya | 13.75.149.87 | 40.79.161.1 |
 | Avustralya Güneydoğu | 191.239.192.109 | 13.73.109.251 |
-| Güney Brezilya | 104.41.11.5 | |
-| Orta Kanada | 40.85.224.249 | |
-| Doğu Kanada | 40.86.226.166 | |
+| Brezilya Güney | 104.41.11.5 | |
+| Kanada Orta | 40.85.224.249 | |
+| Kanada Doğu | 40.86.226.166 | |
 | Orta ABD | 23.99.160.139 | 13.67.215.62 |
 | Çin Doğu 1 | 139.219.130.35 | |
 | Çin Doğu 2 | 40.73.82.1 | |
@@ -46,19 +46,19 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 | Hindistan Orta | 104.211.96.159 | |
 | Hindistan Güney | 104.211.224.146 | |
 | Hindistan Batı | 104.211.160.80 | |
-| Japonya Doğu | 191.237.240.43 | 13.78.61.196 |
-| Japonya Batı | 191.238.68.11 | 104.214.148.156 |
+| Doğu Japonya | 191.237.240.43 | 13.78.61.196 |
+| Batı Japonya | 191.238.68.11 | 104.214.148.156 |
 | Kore Orta | 52.231.32.42 | |
 | Kore Güney | 52.231.200.86 |  |
 | Orta Kuzey ABD | 23.98.55.75 | 23.96.178.199 |
 | Kuzey Avrupa | 191.235.193.75 | 40.113.93.91 |
-| Orta Güney ABD | 23.98.162.75 | 13.66.62.124 |
+| Güney Orta ABD | 23.98.162.75 | 13.66.62.124 |
 | Güneydoğu Asya | 23.100.117.95 | 104.43.15.0 |
 | Güney Afrika Kuzey | 102.133.152.0 | |
 | Güney Afrika Batı | 102.133.24.0 | |
 | BAE Kuzey | 65.52.248.0 | |
-| Birleşik Krallık Güney | 51.140.184.11 | |
-| Birleşik Krallık Batı | 51.141.8.11| |
+| Birleşik Krallık, Güney | 51.140.184.11 | |
+| Birleşik Krallık, Batı | 51.141.8.11| |
 | Batı Avrupa | 191.237.232.75 | 40.68.37.158 |
 | Batı ABD 1 | 23.99.34.75 | 104.42.238.205 |
 | Batı ABD 2 | 13.66.226.202 | |
@@ -66,14 +66,6 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 
 > [!NOTE]
 > *Doğu ABD 2* Ayrıca `52.167.104.0`BIR üçüncül IP adresine sahiptir.
-
-## <a name="connection-redirection"></a>Bağlantı yeniden yönlendirme
-
-MySQL için Azure veritabanı, istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmaya yardımcı olan ek bir bağlantı ilkesini, **yeniden yönlendirmeyi**destekler. Bu özellik ile, ilk TCP oturumu MySQL sunucusu için Azure veritabanı 'na kurulduktan sonra sunucu, MySQL sunucusunu istemciye barındıran düğümün arka uç adresini döndürür. Bundan sonra, sonraki tüm paketler doğrudan sunucuya akar ve ağ geçidini atlar. Paketler doğrudan sunucuya akar, gecikme süresi ve aktarım hızı performansı artırılmıştır.
-
-Bu özellik, 5,6, 5,7 ve 8,0 Altyapı sürümleriyle MySQL sunucuları için Azure veritabanı 'nda desteklenir.
-
-Yeniden yönlendirme için Önizleme desteği, Microsoft tarafından geliştirilen [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısında mevcuttur ve [](https://pecl.php.net/package/mysqlnd_azure) Uygulamalarınızda yeniden yönlendirmeyi kullanma hakkında daha fazla bilgi için [yeniden yönlendirmeyi yapılandırma](./howto-redirection.md) makalesine bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

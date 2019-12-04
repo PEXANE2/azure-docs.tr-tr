@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240656"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777426"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 günlüklerinden veri bağlama
 
@@ -42,7 +42,7 @@ Denetim günlüklerini [Office 365](https://docs.microsoft.com/office365/admin/a
 
 1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Office 365** kutucuğuna tıklayın.
 
-2. Henüz etkinleştirmediyseniz, **bağlantı** altında Office 365 çözümünü etkinleştirmek için **Etkinleştir** düğmesini kullanın. Zaten etkinse, bağlantı ekranında zaten etkinleştirilmiş olarak belirtilir.
+2. Henüz etkinleştirmediyseniz, **veri bağlayıcıları** dikey penceresine gidip **Office 365** Bağlayıcısı ' nı seçerek bunu yapabilirsiniz. Burada, **bağlayıcı aç sayfasına** tıklayabilir ve yapılandırma bölümü altında **Office 365 çözümünü** etkinleştirmek için **çözümü yüklemeyi** etkinleştirebilirsiniz. Zaten etkinse, bağlantı ekranında zaten etkinleştirilmiş olarak belirtilir.
 1. Office 365, birden çok kiracıdan Azure Sentinel 'e veri akışı yapmanızı sağlar. Bağlanmak istediğiniz her kiracı için kiracıların **bağlantısını Azure Sentinel 'e**ekleyin. 
 1. Active Directory bir ekran açılır. Azure Sentinel 'e bağlanmak istediğiniz her kiracı üzerinde bir genel yönetici kullanıcıyla kimlik doğrulaması yapmanız istenir ve günlüklerini okumak için Azure Sentinel 'e izinler sağlayabilirsiniz. 
 5. Stream Office 365 etkinlik günlükleri altında, Azure Sentinel 'e hangi günlük türlerini aktarmak istediğinizi seçmek için **Seç** ' e tıklayın. Şu anda Azure Sentinel, Exchange ve SharePoint 'i destekliyor.

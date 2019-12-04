@@ -1,35 +1,37 @@
 ---
-title: Zaman serisi anomali algılama ve Azure veri Gezgini'nde tahmin
-description: Anomali algılama ve Azure Veri Gezgini'ni kullanarak tahmin için zaman serisi verilerini analiz etmeyi öğrenin.
+title: Azure Veri Gezgini zaman serisi anomali algılama ve tahmin etme
+description: Azure Veri Gezgini kullanarak anomali algılama ve tahmin için zaman serisi verilerini çözümlemeyi öğrenin.
 author: orspod
 ms.author: orspodek
-ms.reviewer: jasonh
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: f40350129a12c7865051bcae80b74b6f9c069179
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e06569a3a6948836201b333501bf2de0416d4ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233533"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766047"
 ---
-# <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Anomali algılama ve Azure veri Gezgini'nde tahmin
+# <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Azure Veri Gezgini anomali algılama ve tahmin etme
 
-Azure Veri Gezgini, bulut Hizmetleri veya IOT cihazlardan telemetri verileri koleksiyonu devam eden gerçekleştirir. Bu veriler, hizmet durumu, fiziksel üretim işlemleri, kullanım eğilimlerini ve yük tahmin izleme gibi çeşitli öngörüleri için analiz edilir. Analiz, zaman serisi tipik normal temel desenine göre ölçüm sapma desenini bulmak için seçilen ölçümleri üzerinde gerçekleştirilir. Azure Veri Gezgini, oluşturma, düzenleme ve birden çok zaman serisinin analiz için yerel destek içerir. Bunu oluşturabilir ve gerçek zamanlı izleme çözümleri ve iş akışları etkinleştirme saniye cinsinden zaman serisi binlerce analiz edin.
+Azure Veri Gezgini, bulut hizmetlerinden veya IoT cihazlarından Telemetri verilerinin üzerinde toplanmasını gerçekleştirir. Bu veriler, Service Health, fiziksel üretim süreçlerini, kullanım eğilimlerini ve yük tahminini izleme gibi çeşitli Öngörüler için çözümlenir. Analiz, ölçüm için tipik normal taban çizgisi düzenine göre bir sapma deseninin yerini bulmak için seçili ölçümlerin zaman serisinde yapılır. Azure Veri Gezgini, birden çok zaman dizisinin oluşturulması, işlenmesi ve çözümlenmesi için yerel destek içerir. Neredeyse gerçek zamanlı izleme çözümlerini ve iş akışlarını etkinleştirerek, saniyeler içinde binlerce zaman serisi oluşturabilir ve analiz edebilir.
 
-Bu makalede Azure Veri Gezgini zaman serisi anomali algılama ve tahmin özellikleri ayrıntılı olarak açıklanmaktadır. İlgili zaman serisi işlevleri, burada özgün her zaman serisi ayrılmış Dönemsel, eğilim, bir güçlü iyi bilinen ayrıştırma modeline dayanır ve kalan bileşenleri. Anomalileri, aykırı değerler kalan bileşende algılandığında, ancak tahmin dönemsel extrapolating tarafından gerçekleştirilir ve bileşenleri eğilim. Azure Veri Gezgini uygulamasını otomatik mevsimsellik algılama, aykırı güçlü analiz ve vektör haline getirilmiş uygulama binlerce işlem zaman serisinin saniyeler içinde temel ayrıştırma modeliyle önemli ölçüde geliştirir.
+Bu makalede Azure Veri Gezgini zaman serisi anomali algılama ve tahmin özelliklerine ilişkin ayrıntılar yer aldığı açıklanır. İlgili zaman serisi işlevleri, her orijinal zaman serisinin mevsimler, eğilim ve kalan bileşenlere dahil edildiği sağlam, iyi bilinen bir ayrıştırma modelini temel alır. Bu durumlar, kalan bileşen üzerinde aykırı durumlar tarafından algılanır, ancak tahmin, mevsimler ve eğilim bileşenleri tahmin edilirken tahmin yapılır. Azure Veri Gezgini uygulama, otomatik mevsimsellik algılama, güçlü aykırı değer analizi ve vektör haline getirilmiş uygulama için, saniyeler içinde binlerce zaman serisini işlemek üzere temel ayrıştırma modelini önemli ölçüde geliştirir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Okuma [zaman serisi analiz Azure veri Gezgini'nde](/azure/data-explorer/time-series-analysis) için zaman serisi özelliklerine genel bakış.
+Zaman serisi özelliklerine genel bir bakış için [Azure Veri Gezgini zaman serisi analizini](/azure/data-explorer/time-series-analysis) okuyun.
 
 ## <a name="time-series-decomposition-model"></a>Zaman serisi ayrıştırma modeli
 
-Zaman serisi tahmini ve anomali algılama için Azure Veri Gezgini yerel uygulama iyi bilinen ayrıştırma modeli kullanır. Bu model, düzenli ve eğilim davranışı, hizmet trafiği, bileşen sinyal ve gelecekteki ölçü değerleri tahmin ve anormal olanları algılamak için IOT düzenli ölçümler gibi bildirim beklenen ölçümlerinin zaman serisi için uygulanır. Bu regresyon işlemin, daha önce bilinen dışında varsayılır dönemsel ve eğilim davranışı, zaman serisi dağıtılan rastgele. Ardından, gelecekteki ölçüm değerleri dönemsel ve topluca temel adlı eğilim bileşenleri tahmin eder ve kalan bölümü yoksay. Yalnızca kalan bölümü kullanarak aykırı analize dayalı anormal değerleri de algılayabilir.
-Bir ayrıştırma model oluşturmak için işlev kullanın [ `series_decompose()` ](/azure/kusto/query/series-decomposefunction). `series_decompose()` İşlevi zaman serisi kümesini alır ve her zaman serisi, Dönemsel için eğilim, fazlalığı ve temel bileşenlerini otomatik olarak çözer. 
+Zaman serisi tahmini ve anomali algılama için Azure Veri Gezgini yerel uygulama, iyi bilinen bir ayrıştırma modeli kullanır. Bu model, gelecek ölçüm değerlerini tahmin etmek ve anormal olanları algılamak üzere hizmet trafiği, bileşen sinyalleri ve IoT düzenli ölçümleri gibi dönemsel ve eğilim davranışlarının bildirimde bulunması beklenen ölçüm dizisine uygulanır. Bu gerileme işleminin varsayımını, önceden bilinen mevsimlik ve eğilim davranışından başka, zaman serisinin rastgele dağıtıldığı bir işlemdir. Daha sonra, dönemsel olarak adlandırılmış taban çizgisi ve eğilim bileşenlerinden gelecek ölçüm değerlerini tahmin edebilir ve kalan parçayı yoksayabilirsiniz. Ayrıca, yalnızca fazlalık kısmını kullanarak aykırı değerleri temel alan anormal değerleri tespit edebilirsiniz.
+Ayrıştırma modeli oluşturmak için [`series_decompose()`](/azure/kusto/query/series-decomposefunction)işlevini kullanın. `series_decompose()` işlevi bir zaman serisi kümesi alır ve her bir zaman serisini dönemsel, eğilim, artıkya ve temel bileşenlere otomatik olarak kaldırır. 
 
-Örneğin, aşağıdaki sorguyu kullanarak trafik bir iç web hizmetinin bozabilir:
+Örneğin, aşağıdaki sorguyu kullanarak bir iç Web hizmetinin trafiğini parçalara ayırmayı seçebilirsiniz:
+
+[**sorguyu çalıştırmak için\[tıklayın**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -44,17 +46,19 @@ demo_make_series2
 
 ![Zaman serisi ayrıştırma](media/anomaly-detection/series-decompose-timechart.png)
 
-* Orijinal zaman serisi etiketli **num** (kırmızı içinde). 
-* İşlevi kullanarak tarafından mevsimsellik otomatik algılama işlemi başlatır [ `series_periods_detect()` ](/azure/kusto/query/series-periods-detectfunction) ve ayıklar **dönemsel** desende (mor).
-* Dönemsel desen orijinal zaman serisinden çıkarılır ve bir doğrusal regresyon işlevi kullanarak çalıştırılan [ `series_fit_line()` ](/azure/kusto/query/series-fit-linefunction) bulunacak **eğilim** (mavi) bileşeni.
-* Eğilim işlevi çıkarır ve kalan **kalan** (yeşil) bileşeni.
-* Son olarak, işlev dönemsel ekler ve eğilim oluşturmak için bileşenleri **temel** (mavi içinde).
+* Özgün zaman serisi **num** (kırmızı) olarak etiketlenir. 
+* İşlem, [`series_periods_detect()`](/azure/kusto/query/series-periods-detectfunction) işlevi kullanılarak mevsimsellik otomatik olarak algılanarak başlar ve **mevsimsel** düzende (mor) ayıklar.
+* Dönemsel model özgün zaman serisinden çıkarılır ve **eğilim** bileşenini bulmak için [`series_fit_line()`](/azure/kusto/query/series-fit-linefunction) işlevi kullanılarak doğrusal regresyon çalıştırılır (açık mavi).
+* İşlev eğilimi çıkarır ve **kalan bileşen (** yeşil renkte) olur.
+* Son olarak, işlev, **taban çizgisini** oluşturmak için mevsimlerini ve eğilim bileşenlerini ekler (mavi).
 
 ## <a name="time-series-anomaly-detection"></a>Zaman serisi anomali algılama
 
-İşlev [ `series_decompose_anomalies()` ](/azure/kusto/query/series-decompose-anomaliesfunction) anormal noktaları zaman serisi kümesine göre bulur. Bu işlev çağrıları `series_decompose()` ayrıştırma model ve ardından çalışmalarını oluşturmak için [ `series_outliers()` ](/azure/kusto/query/series-outliersfunction) kalan bileşen üzerindeki. `series_outliers()` anomali puanları kullanarak Tukey'nın dilimi test kalan bileşenin her noktası hesaplar. Anomali puanları 1.5 yukarıda veya aşağıda-1.5 hafif bir anomali ortaya çıkmasına neden belirtmek veya sırasıyla reddedebilirsiniz. Anomali 3.0 yukarıda veya aşağıda-3.0 güçlü bir anomali puanlar. 
+İşlev [`series_decompose_anomalies()`](/azure/kusto/query/series-decompose-anomaliesfunction) bir zaman serisi kümesi üzerinde anormal noktaları bulur. Bu işlev, ayrıştırma modelini derlemek için `series_decompose()` çağırır ve ardından fazlalık bileşeni üzerinde [`series_outliers()`](/azure/kusto/query/series-outliersfunction) çalıştırır. `series_outliers()`, Tukey 'in çit testini kullanarak fazlalık bileşenin her bir noktası için anomali puanları hesaplar. 1,5 veya altındaki anomali puanları-1,5 sırasıyla hafif bir anomali artış veya reddetme olduğunu gösterir. 3,0 veya altındaki anomali puanları-3,0 güçlü bir anomali olduğunu gösterir. 
 
-Aşağıdaki sorgu iç web hizmeti trafiğinin anormallikleri sağlar:
+Aşağıdaki sorgu, iç Web hizmeti trafiğinden bozuklukları tespit etmenizi sağlar:
+
+[**sorguyu çalıştırmak için\[tıklayın**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -69,15 +73,17 @@ demo_make_series2
 
 ![Zaman serisi anomali algılama](media/anomaly-detection/series-anomaly-detection.png)
 
-* Özgün zaman serisinde (kırmızı). 
-* Temel (dönemsel + eğilimi) (mavi) bileşeni.
-* Anormal noktaları (mor) özgün zaman serisi üstünde. Anormal noktaları beklenen temel düzey değerleri önemli ölçüde sapma.
+* Özgün zaman serisi (kırmızı). 
+* Taban çizgisi (mevsimli ve eğilim) bileşeni (mavi).
+* Özgün zaman serisinin en üstünde yer alan anormal noktaları (mor renkte). Anormal noktaları beklenen taban çizgisi değerlerinden önemli ölçüde farklılık gösterir.
 
-## <a name="time-series-forecasting"></a>Zaman serilerini tahmin etme
+## <a name="time-series-forecasting"></a>Zaman serisi tahmin
 
-İşlev [ `series_decompose_forecast()` ](/azure/kusto/query/series-decompose-forecastfunction) gelecekteki değerlerini bir dizi zaman serisi tahmin eder. Bu işlev çağrıları `series_decompose()` model ve daha sonra için her zaman serisi ayrıştırma oluşturmak için temel bileşen geleceğe extrapolates.
+İşlevi [`series_decompose_forecast()`](/azure/kusto/query/series-decompose-forecastfunction) bir zaman serisi kümesinin gelecek değerlerini tahmin eder. Bu işlev, ayrıştırma modelini oluşturmak için `series_decompose()` çağırır ve sonra her zaman serisi için temel bileşeni daha sonra bir şekilde tahmin edebilir.
 
-Aşağıdaki sorguda sonraki haftanın web hizmeti trafiğinin tahmin sağlar:
+Aşağıdaki sorgu, sonraki haftaki Web hizmeti trafiğini tahmin etmenizi sağlar:
+
+[**sorguyu çalıştırmak için\[tıklayın**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QzW6DMBCE73mKuQFqKISqitSIW98gkXpEDl5iK9hG9uanUR++dqE99YRGO8x845EYRtuO0UIKJtaG8qbebMt6U9avxW41Joe4/+doyvoFTfNW14tPJlOjZqGc1w9n263crSQZ1xlxpi6Q1xSa1ReSLGcJezGtuJ7y+C3gLA6xZM/CTBi8MwshuxnkaUlGYJpS5/ETQUvEzJsiTz+ibZEd9psMQFUBgUbqGSLe7GkkpBVYygfn46EfSVjyuOpwEaN+CNbOxki6M1mZTNSLkAbOv3WSemcmF6j7vSX8dcTUlvOFsZJcFDHFx4wYnmp7JTzjplnlrHmkNvugI8Q0PYO9GAbdww0RyDjLav1XHLnBimAjEG5E5zQ7vRP284x36hOOTtxZ8Q3The8P2QEAAA==) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -88,19 +94,21 @@ demo_make_series2
 | make-series num=avg(num) on TimeStamp from min_t to max_t+horizon step dt by sid 
 | where sid == 'TS1'   //  select a single time series for a cleaner visualization
 | extend forecast = series_decompose_forecast(num, toint(horizon/dt))
-| render timechart with(title='Web app. traffic of a month, forecasting the next week by Time Series Decmposition')
+| render timechart with(title='Web app. traffic of a month, forecasting the next week by Time Series Decomposition')
 ```
 
-![Zaman serilerini tahmin etme](media/anomaly-detection/series-forecasting.png)
+![Zaman serisi tahmin](media/anomaly-detection/series-forecasting.png)
 
-* Özgün ölçümü (kırmızı). Gelecekteki değerleri eksik ve varsayılan olarak 0 olarak ayarlayın.
-* Temel bileşeni (mavi), sonraki haftanın değerleri tahmin etmek için tahmin.
+* Özgün ölçüm (kırmızı). Varsayılan olarak, gelecekteki değerler eksiktir ve 0 olarak ayarlanır.
+* Sonraki haftanın değerlerini tahmin etmek için ana hat bileşenini (mavi olarak) extrapogeç.
 
 ## <a name="scalability"></a>Ölçeklenebilirlik
 
-Azure Veri Gezgini sorgu dili sözdizimi birden çok zaman serisi işlemek tek bir çağrı sağlar. Benzersiz en iyi duruma getirilmiş uygulanması etkili anomali algılama ve binlerce gerçek zamanlıya yakın senaryolar sayaçları izlerken tahmin için kritik olan hızlı performans sağlar.
+Azure Veri Gezgini sorgu dili sözdizimi, birden çok zaman serisini işlemek için tek bir çağrı sağlar. Benzersiz en iyi duruma getirilmiş uygulama, neredeyse gerçek zamanlı senaryolarda binlerce sayacı izlerken etkili anomali algılama ve tahmin için kritik önem taşıyan hızlı performansa izin verir.
 
-Aşağıdaki sorgu, aynı anda üç zaman serisi işlenmesini gösterir:
+Aşağıdaki sorguda, üç zaman serisinin eşzamanlı olarak işlenmesi gösterilmektedir:
+
+[**sorguyu çalıştırmak için\[tıklayın**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Qy26DMBC85yvmFlChcUirSI34ikTqETl4KVawjfDmqX587UCaHuqLtePxPLYjhtG2YpRQkom1oaQQy3Uulrl4TzezLjLk5T9GkYsViuJDiImnIqlox6F1g745W67VZqbIuMrIA1WeBk2+mH0jjvk4wh5NKU9fSbhTOItdMNmyND2awZkpIbsxyMukDM/UR8/9FV6rIEkXJqvgmsYTl7X0lISHspzvtqt5hjdxPxkeYBHA4gGKFMBiAUilIAfWja617CY1NG4ASX/FSfuj7PRNsg4ZXANz7Fj3HSGuBmOjZ5hYbcSqIBwbZpNk+iQFcQpx4/omrqLamd55qh5v41d22nIybWChOI0qQ9Cg4e5ftyE6zprbhDV3VM4/aQ/Z96/gQTahU4wsYZzlNvs11vYL3BJsCIQz0eHed/W30jz9AUEBI0ktAgAA) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -115,12 +123,12 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, forecasting the next week for 3 time series')
 ```
 
-![Zaman serisi ölçeklenebilirlik](media/anomaly-detection/series-scalability.png)
+![Zaman serisi ölçeklenebilirliği](media/anomaly-detection/series-scalability.png)
 
 ## <a name="summary"></a>Özet
 
-Bu belge, zaman serisi anomali algılama ve tahmin için yerel bir Azure Veri Gezgini işlevleri ayrıntıları. Özgün her zaman serisi, anomali algılama ve/veya tahmin Dönemsel, eğilim ve fazlalığı bileşenleri içinde ayrılmış. Bu işlevler için gerçek zamanlıya yakın izleme senaryolar, hata algılama, Tahmine dayalı Bakım ve isteğe bağlı gibi kullanılabilir ve tahmin yükleyin.
+Bu belge, zaman serisi anomali algılama ve tahmin için yerel Azure Veri Gezgini işlevlerini ayrıntılarına yöneliktir. Her bir orijinal zaman serisi, anormalileri ve/veya tahmin algılama için mevsimler, eğilim ve kalan bileşenlere göre belirlenir. Bu işlevler, hata algılama, tahmine dayalı bakım ve talep ve yük tahmini gibi neredeyse gerçek zamanlı izleme senaryoları için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [makine öğrenimi özellikleri](/azure/data-explorer/machine-learning-clustering) Azure veri Gezgini'nde.
+Azure Veri Gezgini 'de [makine öğrenimi özellikleri](/azure/data-explorer/machine-learning-clustering) hakkında bilgi edinin.

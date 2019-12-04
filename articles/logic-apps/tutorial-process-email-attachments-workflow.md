@@ -1,22 +1,18 @@
 ---
-title: Birden çok Azure hizmeti ile görevleri otomatikleştirme-Azure Logic Apps
+title: Birden çok Azure hizmeti ile görevleri otomatikleştirme
 description: Öğretici-e-postaları Azure Logic Apps, Azure depolama ve Azure Işlevleri ile işlemek için otomatik iş akışları oluşturma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 52c9a23e3e00075e934b9f9f22a835090e02f1b9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820215"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793474"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -62,8 +58,8 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
    |---------|-------|-------------|
    | **Abonelik** | <*Azure-subscription-name*> | Azure aboneliğinizin adı |  
    | **Kaynak grubu** | <*Azure-Resource-group*> | İlgili kaynakları düzenlemek ve yönetmek için kullanılan [Azure kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı. Bu örnekte "LA-öğretici-RG" kullanılmaktadır. <p>**Not:** Bir kaynak grubu, belirli bir bölgenin içinde bulunur. Bu öğreticideki öğeler tüm bölgelerde kullanılamasa da mümkün olduğunca aynı bölgeyi kullanmayı deneyin. |
-   | **Depolama hesabı adı** | <*Azure-depolama hesabı-adı* > | Depolama hesabınızın adı, 3-24 karakter içermeli ve yalnızca küçük harf ve rakam içermelidir. Bu örnek, "attachmentstorageacct" kullanır. |
-   | **Konum** | <*Azure-bölge*> | Depolama hesabınızla ilgili bilgilerin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
+   | **Depolama hesabı adı** | <*Azure-depolama hesabı-adı*> | Depolama hesabınızın adı, 3-24 karakter içermeli ve yalnızca küçük harf ve rakam içermelidir. Bu örnek, "attachmentstorageacct" kullanır. |
+   | **Konum** | *Azure-region*> < | Depolama hesabınızla ilgili bilgilerin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Performans** | Standart | Bu ayar, verileri depolamaya ilişkin medyayı ve desteklenen veri türlerini belirtir. Bkz. [Depolama hesabı türleri](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Hesap türü** | Genel amaç | [Depolama hesabı türü](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Çoğaltma** | Yerel olarak yedekli depolama (LRS) | Bu ayar, verilerinizin nasıl kopyalandığını, depolandığını, yönetildiğini ve eşitlendiğini belirtir. Bkz. [yerel olarak yedekli depolama (LRS): Azure depolama Için düşük maliyetli veri artıklığı](../storage/common/storage-redundancy-lrs.md). |
@@ -144,7 +140,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
    | Ayar | Değer | Açıklama |
    | ------- | ----- | ----------- |
-   | **Uygulama adı** | <*işlevi-uygulama adı* > | İşlev uygulamanızın adı, Azure genelinde genel olarak benzersiz olmalıdır. Bu örnek zaten "CleanTextFunctionApp" kullanıyor, bu nedenle "MyCleanTextFunctionApp-< *-name*>" gibi farklı bir ad sağlayın |
+   | **Uygulama adı** | <*işlevi-uygulama adı*> | İşlev uygulamanızın adı, Azure genelinde genel olarak benzersiz olmalıdır. Bu örnek zaten "CleanTextFunctionApp" kullanıyor, bu nedenle "MyCleanTextFunctionApp-< *-name*>" gibi farklı bir ad sağlayın |
    | **Abonelik** | <*your-Azure-subscription-name*> | Daha önce kullandığınız Azure aboneliği |
    | **Kaynak Grubu** | LA-Tutorial-RG | Daha önce kullandığınız Azure kaynak grubu |
    | **OS** | *işletim sisteminizi* <> | En sevdiğiniz işlev programlama dilinizi destekleyen işletim sistemini seçin. Bu örnek için **Windows**' u seçin. |

@@ -1,21 +1,18 @@
 ---
-title: Azure Service Bus Azure Logic Apps Exchange iletileri
+title: Azure Service Bus ile Exchange iletileri
 description: Azure Logic Apps Azure Service Bus kullanarak ileti gönderme ve alma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024301"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789418"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -48,7 +45,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu doğrulayın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Service Bus *ad alanına*gidin. Ad alanı sayfasında, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
 

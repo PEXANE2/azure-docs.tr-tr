@@ -1,20 +1,17 @@
 ---
-title: Iş akışı tanımlama dili için şema-Azure Logic Apps
+title: Iş akışı tanım dili için şema
 description: Azure Logic Apps Iş akışı tanım dili için şema başvurusu
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 64c01baf0852e7e09ce9ffed2d079b47e95f7190
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680074"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790799"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps Iş akışı tanım dili için şema başvurusu Kılavuzu
 
@@ -46,7 +43,7 @@ Bir iş akışı tanımı her zaman mantıksal uygulamanızı başlatmak için b
 | `contentVersion` | Hayır | Varsayılan olarak "1.0.0.0" olan iş akışı tanımınızın sürüm numarası. Bir iş akışını dağıtmada doğru tanımlamayı belirlemek ve doğrulamak için kullanılacak bir değer belirtin. |
 | `outputs` | Hayır | Bir iş akışı çalıştırağından döndürülecek çıktıların tanımları. Daha fazla bilgi için bkz. [çıktılar](#outputs). <p><p>Maksimum çıkış sayısı: 10 |
 | `parameters` | Hayır | Mantıksal uygulamanızın çalışma zamanında kullanılacak değerleri geçen bir veya daha fazla parametre için tanımlar. Daha fazla bilgi için bkz. [Parametreler](#parameters). <p><p>Maksimum Parametreler: 50 |
-| `staticResults` | Hayır | Eylemler tarafından, bir veya daha fazla statik sonucun tanımları, bu eylemlerde statik sonuçlar etkinleştirildiğinde, bir veya daha fazla statik sonuç tanımlar. Her eylem tanımında `runtimeConfiguration.staticResult.name` özniteliği, `staticResults` içindeki karşılık gelen tanımına başvurur. Daha fazla bilgi için bkz. [statik sonuçlar](#static-results). |
+| `staticResults` | Hayır | Eylemler tarafından, bir veya daha fazla statik sonucun tanımları, bu eylemlerde statik sonuçlar etkinleştirildiğinde, bir veya daha fazla statik sonuç tanımlar. Her eylem tanımında `runtimeConfiguration.staticResult.name` özniteliği, `staticResults`içindeki karşılık gelen tanımına başvurur. Daha fazla bilgi için bkz. [statik sonuçlar](#static-results). |
 | `triggers` | Hayır | İş akışınızı örnekleyip oluşturan bir veya daha fazla tetikleyici için tanımlar. Logic Apps Tasarımcısı aracılığıyla görsel olarak değil, yalnızca Iş akışı tanımlama dili ile birden fazla tetikleyici tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Tetikleyiciler ve eylemler](#triggers-actions). <p><p>En fazla Tetikleyiciler: 10 |
 ||||
 
@@ -79,20 +76,20 @@ Bir parametre tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*parametresi-adı* > | Yes | Dize | Tanımlamak istediğiniz parametrenin adı |
-| <*parametre türü* > | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizlilikler için, `GET` işlemi bu türleri döndürmediğinden `securestring` veya `secureobject` türlerini kullanın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
-| <*varsayılan parametre-değer* > | Yes | @No__t_0 ile aynı | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. Logic App Designer 'ın parametreyi doğru bir şekilde gösterebilmesi için `defaultValue` özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
-| <*dizi ile izin verilen-parametre değerleri* > | Hayır | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
-| <*parametresi-açıklama* > | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
+| <*parametresi-adı*> | Yes | Dize | Tanımlamak istediğiniz parametrenin adı |
+| <*parametre türü*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizlilikler için, `GET` işlemi bu türleri döndürmediğinden `securestring` veya `secureobject` türlerini kullanın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
+| <*varsayılan parametre-değer*> | Yes | `type` ile aynı | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. Logic App Designer 'ın parametreyi doğru bir şekilde gösterebilmesi için `defaultValue` özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
+| <*dizi ile izin verilen-parametre değerleri*> | Hayır | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
+| <*parametresi-açıklama*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
 ||||
 
-Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturun, dağıtımda istediğiniz değerleri kabul eden şablon parametrelerini tanımlayın, sabit kodlanmış değerleri şablon veya iş akışı Tanım parametrelerine göre değiştirin uygun ve dağıtımda kullanılacak değerleri ayrı bir [parametre dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)depolayın. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan parametre dosyası aracılığıyla bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizli bilgiler), bu değerleri Azure Key Vault saklayabilir ve parametre dosyanızın anahtar kasasından bu değerleri almasına sahip olursunuz. Şablon ve iş akışı Tanım düzeylerinde parametreleri tanımlama hakkında daha fazla bilgi ve örnekler için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturun, dağıtım sırasında istediğiniz değerleri kabul eden şablon parametrelerini tanımlayın, sabit kodlanmış değerleri şablon veya iş akışı Tanım parametrelerine başvurularla değiştirin ve ayrı bir [parametre dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)dağıtımda kullanılacak değerleri depolayın. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan parametre dosyası aracılığıyla bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizli bilgiler), bu değerleri Azure Key Vault saklayabilir ve parametre dosyanızın anahtar kasasından bu değerleri almasına sahip olursunuz. Şablon ve iş akışı Tanım düzeylerinde parametreleri tanımlama hakkında daha fazla bilgi ve örnekler için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
 ## <a name="static-results"></a>Statik sonuçlar
 
-@No__t_0 özniteliğinde, bir eylemin sahte `outputs` tanımlayın ve eylemin statik sonuç ayarı açıkken işlemin döndürdüğü `status`. Eylemin tanımında `runtimeConfiguration.staticResult.name` özniteliği, `staticResults` içindeki statik sonuç tanımının adına başvurur. [Statik sonuçlar ayarlayarak, sahte verilerle mantıksal uygulamaları nasıl test](../logic-apps/test-logic-apps-mock-data-static-results.md)kullanabileceğinizi öğrenin.
+`staticResults` özniteliğinde, bir eylemin sahte `outputs` tanımlayın ve eylemin statik sonuç ayarı açıkken işlemin döndürdüğü `status`. Eylemin tanımında `runtimeConfiguration.staticResult.name` özniteliği, `staticResults`içindeki statik sonuç tanımının adına başvurur. [Statik sonuçlar ayarlayarak, sahte verilerle mantıksal uygulamaları nasıl test](../logic-apps/test-logic-apps-mock-data-static-results.md)kullanabileceğinizi öğrenin.
 
 ```json
 "definition": {
@@ -117,14 +114,14 @@ Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu]
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*statik-sonuç tanımı-adı* > | Yes | Dize | Bir eylem tanımının bir `runtimeConfiguration.staticResult` nesnesi aracılığıyla başvurabileceğinden, statik sonuç tanımının adı. Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
-| <*çıkışı-ve-değerleri-döndürülen* > | Yes | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, `status` `Succeeded` olduğunda `outputs` özniteliği, eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. @No__t_0 `Failed`, `outputs` özniteliği hata bilgilerine sahip bir veya daha fazla hata `message` bir dizi olan `errors` özniteliğini içerir. |
-| <*üst bilgi-değerleri* > | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
-| <*durumu-kodu döndürülen* > | Yes | Dize | Eylem tarafından döndürülen durum kodu |
-| <*eylem-durum* > | Yes | Dize | Eylemin durumu, örneğin `Succeeded` veya `Failed` |
+| <*statik-sonuç tanımı-adı*> | Yes | Dize | Bir eylem tanımının bir `runtimeConfiguration.staticResult` nesnesi aracılığıyla başvurabileceğinden, statik sonuç tanımının adı. Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
+| <*çıkışı-ve-değerleri-döndürülen*> | Yes | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, `status` `Succeeded`olduğunda `outputs` özniteliği, eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. `status` `Failed`, `outputs` özniteliği hata bilgilerine sahip bir veya daha fazla hata `message` bir dizi olan `errors` özniteliğini içerir. |
+| <*üst bilgi-değerleri*> | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
+| <*durumu-kodu döndürülen*> | Yes | Dize | Eylem tarafından döndürülen durum kodu |
+| <*eylem-durum*> | Yes | Dize | Eylemin durumu, örneğin `Succeeded` veya `Failed` |
 |||||
 
-Örneğin, bu HTTP eylem tanımında `runtimeConfiguration.staticResult.name` özniteliği, eylem için olan sahte çıktıların tanımlandığı `staticResults` özniteliği içinde `HTTP0` başvurur. @No__t_0 özniteliği, statik sonuç ayarının HTTP eyleminde `Enabled` belirtir.
+Örneğin, bu HTTP eylem tanımında `runtimeConfiguration.staticResult.name` özniteliği, eylem için olan sahte çıktıların tanımlandığı `staticResults` özniteliği içinde `HTTP0` başvurur. `runtimeConfiguration.staticResult.staticResultOptions` özniteliği, statik sonuç ayarının HTTP eyleminde `Enabled` belirtir.
 
 ```json
 "actions": {
@@ -145,7 +142,7 @@ Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu]
 },
 ```
 
-HTTP eylemi, `staticResults` içindeki `HTTP0` tanımındaki çıkışları döndürür. Bu örnekte, durum kodu için, sahte çıkış `OK`. Üst bilgi değerleri için, sahte çıkış `"Content-Type": "application/JSON"`. Eylemin durumu için, sahte çıkış `Succeeded`.
+HTTP eylemi, `staticResults`içindeki `HTTP0` tanımındaki çıkışları döndürür. Bu örnekte, durum kodu için, sahte çıkış `OK`. Üst bilgi değerleri için, sahte çıkış `"Content-Type": "application/JSON"`. Eylemin durumu için, sahte çıkış `Succeeded`.
 
 ```json
 "definition": {
@@ -202,7 +199,7 @@ Sonuç her zaman bir dizedir ve bu özelliği `concat()` işlevine benzer hale g
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-@No__t_0 karakteriyle başlayan bir sabit dize varsa, \@ karakterini kaçış karakteri olarak başka bir \@ karakteriyle önek: \@ \@
+\@ karakteriyle başlayan bir sabit dize varsa, \@ karakterini kaçış karakteri olarak başka bir \@ karakteriyle önek: \@\@
 
 Bu örnekler, ifadelerin nasıl değerlendirildiğini gösterir:
 
@@ -210,8 +207,8 @@ Bu örnekler, ifadelerin nasıl değerlendirildiğini gösterir:
 |------------|--------|
 | "Sophia Owen" | Şu karakterleri Döndür: ' Sophia Owen ' |
 | "dizi [1]" | Şu karakterleri Döndür: ' Array [1] ' |
-| "\@ \@" | Bu karakterleri tek karakterli bir dize olarak Döndür: ' \@ ' |
-| "\@" | Bu karakterleri iki karakterli bir dize olarak Döndür: ' \@ ' |
+| "\@\@" | Bu karakterleri tek karakterli bir dize olarak Döndür: '\@' |
+| "\@" | Bu karakterleri iki karakterli bir dize olarak Döndür: ' \@' |
 |||
 
 Bu örnekler için, "Mydoğum ayı" ' nı "Ocak" ve "myAge" değerinden 42 numaraya eşit olarak tanımladığınızı varsayalım:
@@ -225,13 +222,13 @@ Bu örneklerde aşağıdaki ifadelerin nasıl değerlendirildiği gösterilmekte
 
 | JSON ifadesi | Sonuç |
 |-----------------|--------|
-| "\@parameters (' Mydoğum ayı ')" | Bu dizeyi Döndür: "Ocak" |
-| "\@ {Parameters (' Mydoğum ayı ')}" | Bu dizeyi Döndür: "Ocak" |
-| "\@parameters (' myAge ')" | Bu sayıyı Döndür: 42 |
-| "\@ {Parameters (' myAge ')}" | Bu sayıyı bir dize olarak Döndür: "42" |
-| "Yaş mi \@ {Parameters (' myAge ')}" | Bu dizeyi Döndür: "yaşımı 42" |
-| "\@concat (' yaşım ', dize (Parametreler (' myAge ')))" | Bu dizeyi Döndür: "yaşımı 42" |
-| "Yaşım \@ \@ {Parameters (' myAge ')}" | Şu ifadeyi içeren bu dizeyi döndürün: "yaşım \@ {Parameters (' myAge ')} ' |
+| "\@parametreleri (' Mydoğum ayı ')" | Bu dizeyi Döndür: "Ocak" |
+| "\@{Parameters (' Mydoğum ayı ')}" | Bu dizeyi Döndür: "Ocak" |
+| "\@parametreleri (' myAge ')" | Bu sayıyı Döndür: 42 |
+| "\@{Parameters (' myAge ')}" | Bu sayıyı bir dize olarak Döndür: "42" |
+| "Yaş mi \@{Parameters (' myAge ')}" | Bu dizeyi Döndür: "yaşımı 42" |
+| "\@Concat (' yaşımı ', dize (Parametreler (' myAge ')))" | Bu dizeyi Döndür: "yaşımı 42" |
+| "Yaşım \@\@{Parameters (' myAge ')}" | Şu ifadeyi içeren bu dizeyi döndürün: "yaşım \@{Parameters (' myAge ')} ' |
 |||
 
 Logic Apps tasarımcısında görsel olarak çalışırken, Ifade Oluşturucu aracılığıyla ifadeler oluşturabilirsiniz, örneğin:
@@ -262,10 +259,10 @@ Logic Apps tasarımcısında görsel olarak çalışırken, Ifade Oluşturucu ar
 
 ## <a name="outputs"></a>Çıkışlar
 
-@No__t_0 bölümünde, iş akışınızın, çalışmayı bitirdiğinde döndürebileceğinizi belirten verileri tanımlayın. Örneğin, her çalıştırmada belirli bir durumu veya değeri izlemek için, iş akışı çıktısının bu verileri döndürdüğünü belirtin.
+`outputs` bölümünde, iş akışınızın, çalışmayı bitirdiğinde döndürebileceğinizi belirten verileri tanımlayın. Örneğin, her çalıştırmada belirli bir durumu veya değeri izlemek için, iş akışı çıktısının bu verileri döndürdüğünü belirtin.
 
 > [!NOTE]
-> Bir hizmetin REST API gelen isteklere yanıt vermediğinde `outputs` kullanmayın. Bunun yerine `Response` eylem türünü kullanın. Daha fazla bilgi için bkz. [Iş akışı Tetikleyicileri ve eylemleri](../logic-apps/logic-apps-workflow-actions-triggers.md).
+> Bir hizmetin REST API gelen isteklere yanıt vermediğinde `outputs`kullanmayın. Bunun yerine `Response` eylem türünü kullanın. Daha fazla bilgi için bkz. [Iş akışı Tetikleyicileri ve eylemleri](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 Bir çıkış tanımının genel yapısı aşağıda verilmiştir:
 
@@ -280,9 +277,9 @@ Bir çıkış tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*anahtar adı* > | Yes | Dize | Çıkış dönüş değeri için anahtar adı |
-| <*anahtar türü* > | Yes | int, float, String, SecureString, bool, Array, JSON nesnesi | Çıkış dönüş değeri için tür |
-| *anahtar-değer* > < | Yes | *Anahtar türüyle* aynı > | Çıkış dönüş değeri |
+| <*anahtar adı*> | Yes | Dize | Çıkış dönüş değeri için anahtar adı |
+| <*anahtar türü*> | Yes | int, float, String, SecureString, bool, Array, JSON nesnesi | Çıkış dönüş değeri için tür |
+| *anahtar-değer*> < | Yes | *Anahtar türüyle* aynı> | Çıkış dönüş değeri |
 |||||
 
 Bir iş akışı çalıştırmasının çıkışını almak için Azure portal mantıksal uygulamanızın çalıştırma geçmişini ve ayrıntılarını gözden geçirin veya [Iş akışı REST API](https://docs.microsoft.com/rest/api/logic/workflows)kullanın. Ayrıca, panoları oluşturabilmeniz için çıktıyı dış sistemlere geçirebilirsiniz (örneğin, Power BI).

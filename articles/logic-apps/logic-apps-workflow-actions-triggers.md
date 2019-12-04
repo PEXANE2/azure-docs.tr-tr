@@ -1,20 +1,17 @@
 ---
-title: Tetikleyici ve eylem türleri için şema başvurusu-Azure Logic Apps
+title: Tetikleyici ve eylem türleri için şema başvurusu
 description: Azure Logic Apps Iş akışı tanımlama dili tetikleyicisi ve eylem türleri için şema başvuru kılavuzu
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 7b4267f672ab5ad902c0f96dd7ba7e377316e4f5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a847e08f0249bd968060d10f7686b0e04ba037ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839775"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790861"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -340,9 +337,9 @@ Bu tetikleyici belirtilen yineleme zamanlaması temelinde belirtilen HTTP veya H
 
 Mantıksal uygulamanızla iyi çalışmak için uç noktanın belirli bir tetikleyici düzenine veya sözleşmesine uyması ve bu özellikleri tanıması gerekir:  
   
-| Yanıt | Gerekli | Açıklama | 
+| Yanıt | Gereklidir | Açıklama | 
 |----------|----------|-------------| 
-| Durum kodu | Evet | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. | 
+| Durum kodu | Yes | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. | 
 | Retry-After üst bilgisi | Hayır | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı | 
 | Konum üst bilgisi | Hayır | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. | 
 |||| 
@@ -398,7 +395,7 @@ Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümler
 }
 ```
 
-<*Method-type*> gibi bazı değerler `"subscribe"` ve `"unsubscribe"` nesneleri için kullanılabilir.
+*Method-type*> gibi bazı değerler `"subscribe"` ve `"unsubscribe"` nesneleri için kullanılabilir.
 
 *Gerekli*
 
@@ -972,7 +969,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 }
 ```
 
-<*Method-type*> gibi bazı değerler `"subscribe"` ve `"unsubscribe"` nesneleri için kullanılabilir.
+*Method-type*> gibi bazı değerler `"subscribe"` ve `"unsubscribe"` nesneleri için kullanılabilir.
 
 *Gerekli*
 
@@ -1549,7 +1546,7 @@ Bu eylem, belirtilen haritaya göre başka bir diziden öğeleri dönüştürere
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
 | <*dizi*> | Dizi | Kaynak öğeleri sağlayan dizi veya ifade. Bir ifadeyi çift tırnak işareti içine aldığınızdan emin olun. <p>**Note**: Kaynak dizisi boşsa, eylem boş bir dizi oluşturur. | 
-| <*anahtar adı*> | Dize | <*İfadeden* sonuca atanan özellik adı> <p>Çıkış dizisindeki tüm nesneler arasında yeni bir özellik eklemek için, bu özellik için bir <*anahtar adı*> ve özellik değeri için > <*ifadesi*sağlayın. <p>Dizideki tüm nesnelerden bir özelliği kaldırmak için, bu özellik için <*anahtar adı*> atlayın. | 
+| <*anahtar adı*> | Dize | *İfadeden* sonuca atanan özellik adı> <p>Çıkış dizisindeki tüm nesneler arasında yeni bir özellik eklemek için, bu özellik için bir <*anahtar adı*> ve özellik değeri için > <*ifadesi*sağlayın. <p>Dizideki tüm nesnelerden bir özelliği kaldırmak için, bu özellik için <*anahtar adı*> atlayın. | 
 | <*ifade*> | Dize | Kaynak dizideki öğeyi dönüştüren ve <*anahtar adı*> sonucunu atayan ifade | 
 |||| 
 

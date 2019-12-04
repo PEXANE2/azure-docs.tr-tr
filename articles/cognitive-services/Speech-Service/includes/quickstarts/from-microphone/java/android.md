@@ -10,20 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f0d9a4d2a86b13d5e2d37a900f27d2977f63de14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e4045345f8dce54067aebf559bb2554b65f13b3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503699"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795846"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=android)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 ## <a name="create-a-user-interface"></a>Kullanıcı arabirimi oluşturma
 
@@ -45,7 +46,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/android/from-microphone/app/src/main/res/layout/activity_main.xml)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `MainActivity.java` kaynak dosyasını açın. Bu dosyadaki tüm kodu aşağıdaki kodla değiştirin:
 
@@ -55,7 +56,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
    * `onSpeechButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Bir düğme, konuşmadan metne dökümü tetiklemesini tetikler.
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
 1. Ayrıca dize `YourServiceRegion`, aboneliğiniz ile ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.
 

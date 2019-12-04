@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/05/2019
+ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 06d7b7abe7741c465f3d40a90340e03b2c24f258
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707508"
+ms.locfileid: "74790621"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
@@ -95,29 +95,16 @@ Aşağıdaki kod parçacığı, kendi lisansını getir (veya Azure Hibrit Avant
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="AHUB"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
 Aşağıdaki kod parçacığı, kendi lisans modelinizi Kullandıkça Öde için değiştirir:
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="PAYG"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
+
 ---
 
 ## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>Kaynak sağlayıcısına kayıtlı olmayan VM 'Lerin lisansını değiştirme
@@ -138,44 +125,29 @@ SQL Server VM lisans türünü, yalnızca SQL Server VM SQL VM kaynak sağlayıc
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Lisans modelinin değiştirilmesi yalnızca yazılım güvencesi olan müşteriler tarafından kullanılabilir.
-- Lisans modelinin değiştirilmesi yalnızca SQL Server Standard ve Enterprise sürümleri için desteklenir. Express, Web ve geliştirici için lisans değişiklikleri desteklenmez. 
-- Lisans modelinin değiştirilmesi yalnızca Azure Resource Manager modeli aracılığıyla dağıtılan sanal makineler için desteklenir. Klasik model aracılığıyla dağıtılan VM 'Ler desteklenmez. SANAL cihazınızı klasik bilgisayardan Kaynak Yöneticisi modeline geçirebilir ve SQL VM kaynak sağlayıcısına kaydedebilirsiniz. VM, SQL VM kaynak sağlayıcısına kaydedildikten sonra, VM 'de lisans modeli değişiklikleri kullanılabilir olacaktır.
-- Lisans modelinin değiştirilmesi yalnızca genel bulut yüklemeleri için etkinleştirilmiştir.
-- Lisans modelinin değiştirilmesi yalnızca tek bir NIC (ağ arabirimi) olan sanal makinelerde desteklenir. Birden fazla NIC içeren sanal makinelerde, yordamı denemeden önce önce NIC 'lerden birini kaldırmanız gerekir (Azure portal kullanarak). Aksi takdirde aşağıdakine benzer bir hata alırsınız: 
-   
-  `The virtual machine '\<vmname\>' has more than one NIC associated.` 
-   
-  Lisans modelini değiştirdikten sonra NIC 'i sanal makineye geri ekleyebiliyor olsanız da, Azure portal otomatik düzeltme eki uygulama ve yedekleme gibi SQL Server yapılandırma sayfasından gerçekleştirilen işlemler artık desteklenmeyecektir.
+Lisans modelinin değiştirilmesi:
+   - Yalnızca [yazılım güvencesi](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview)olan müşteriler tarafından kullanılabilir.
+   - Yalnızca SQL Server Standard ve Enterprise sürümleri için desteklenir. Express, Web ve Developer için lisans değişiklikleri desteklenmez. 
+   - Yalnızca Azure Resource Manager modeli aracılığıyla dağıtılan sanal makineler için desteklenir. Klasik model aracılığıyla dağıtılan sanal makineler desteklenmez. 
+   - Yalnızca genel bulut yüklemeleri için kullanılabilir. 
+   - Yalnızca tek bir ağ arabirimine (NIC) sahip sanal makinelerde desteklenir. 
+
 
 ## <a name="known-errors"></a>Bilinen hatalar
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>'\<Resource-Group > ' kaynak grubundaki ' Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<Resource-Group > ' kaynağı bulunamadı.
+
 Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lisans modelini değiştirmeye çalıştığınızda oluşur:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
 Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md)gerekir. 
 
-### <a name="cannot-validate-argument-on-parameter-sku"></a>' SKU ' parametresindeki bağımsız değişken doğrulanamıyor
-4,0 ' den sonraki Azure PowerShell sürümlerini kullanarak SQL Server VM lisans modelinizi değiştirmeye çalışırken bu hatayla karşılaşabilirsiniz:
 
-`Set-AzResource: Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>'\<VMName\>' adlı sanal makinede birden fazla NIC ilişkilendirilmiş
 
-Bu hatayı çözmek için, lisans modelinize geçiş yaparken, daha önce bahsedilen PowerShell kod parçacığındaki bu satırların açıklamasını kaldırın:
+Bu hata, birden fazla NIC içeren sanal makinelerde oluşur. Lisanslama modelini değiştirmeden önce NIC 'lerden birini kaldırın. Lisans modelini değiştirdikten sonra NIC 'i sanal makineye geri ekleyebilseniz de, otomatik yedekleme ve düzeltme eki uygulama gibi Azure portal işlemler artık desteklenmeyecektir. 
 
-  ```powershell-interactive
-  # the following code snippet is necessary if using Azure Powershell version > 4
-  $SqlVm.Kind= "LicenseChange"
-  $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-  $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
-  ```
-  
-Azure PowerShell sürümünüzü doğrulamak için aşağıdaki kodu kullanın:
-  
-  ```powershell-interactive
-  Get-Module -ListAvailable -Name Azure -Refresh
-  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: MySQL için Azure Veritabanı’na yönelik Azure CLI örnekleri
+title: Azure CLı örnekleri-MySQL için Azure veritabanı
 description: Bu makalede, MySQL için Azure Veritabanı’yla etkileşim kurmaya yönelik kullanılabilir Azure CLI kod örnekleri listelenir.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: c5ecaf5ba893cce38327d38236d593e06b31abb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61226394"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769770"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’na yönelik Azure CLI örnekleri 
 Aşağıdaki tablo, MySQL için Azure Veritabanı’na yönelik örnek Azure CLI betikleri bağlantılarını içerir.

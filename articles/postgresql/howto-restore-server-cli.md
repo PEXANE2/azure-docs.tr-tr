@@ -1,18 +1,18 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
-description: Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedeklemeyi ve geri yüklemeyi öğrenin-tek sunucu.
+title: Yedekleme ve geri yükleme-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
+description: Azure CLı kullanarak, PostgreSQL için Azure veritabanı 'nda yedekleme yapılandırmalarının nasıl ayarlanacağını ve bir sunucunun nasıl geri yükleneceğini öğrenin.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: c1706f72f894baa7d07c49880a82dc96ef03d7cf
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965796"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775713"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 
@@ -114,7 +114,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 |ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |source-server | mydemoserver | Coğrafi olarak yedekli yedeklemeleri kullanılan mevcut sunucunun adı. |
 |location | eastus | Yeni sunucunun konumu. |
-|sku-name| GP_Gen4_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen4_8, 8 sanal çekirdekle bir Genel Amaçlı, gen 4 sunucusuyla eşlenir.|
+|sku-name| GP_Gen4_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen4_8, 8 sanal çekirdeğe sahip bir Genel Amaçlı, gen 4 sunucusuyla eşlenir.|
 
 Coğrafi geri yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı depolama boyutunu ve fiyatlandırma katmanını devralır. Bu değerler oluşturma sırasında değiştirilemez. Yeni sunucu oluşturulduktan sonra, depolama boyutu yukarı ölçeklendirilebilir.
 

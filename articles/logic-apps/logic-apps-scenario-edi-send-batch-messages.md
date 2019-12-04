@@ -1,19 +1,18 @@
 ---
-title: Grup Azure Logic Apps EDI iletilerini toplu işleme
+title: Grup olarak EDI iletilerini toplu işleme
 description: EDI iletilerini Azure Logic Apps içinde toplu işlemler, gruplar veya koleksiyonlar olarak gönderin ve alın
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680175"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792991"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Azure Logic Apps ile EDI iletilerini toplu iş ortaklarına gönderin
 
@@ -168,7 +167,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
 
       !["Batch alıcısı" mantıksal uygulamasını seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Şu eylemi seçin: **Batch_messages-*Batch-alıcıdan* < >**
+   4. Şu eylemi seçin: **Batch_messages-*toplu iş alıcılarınız* <>**
 
       !["Batch_messages" eylemini seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

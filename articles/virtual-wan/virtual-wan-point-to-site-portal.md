@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: alzam
-ms.openlocfilehash: 0319e3aec71d37b49a094861fdcbb3b96b6def67
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0572a919675ab363c55938f8731c691cd8129826
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585428"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767662"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir kullanıcı VPN bağlantısı oluşturma
 
@@ -134,7 +134,7 @@ Uzak erişim istemcilerini yapılandırmak için indirilen profili kullanın. He
 1. Resmi web sitesinden OpenVPN istemcisini indirip yükleyin.
 2. Ağ geçidinin VPN profilini indirin. Bu, Azure portal veya PowerShell 'de New-AzureRmVpnClientConfiguration içindeki kullanıcı VPN yapılandırmaları sekmesinden yapılabilir.
 3. Profilin sıkıştırmasını açın. OpenVPN klasöründeki vpnconfig.ovpn yapılandırma dosyasını not defterinde açın.
-4. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEM biçimli bir sertifikada .cer dosyasını açıp base64 anahtarını sertifika üst bilgileri arasına kopyalamanız yeterlidir. Kodlanmış ortak anahtarı almak üzere sertifikayı dışarı aktarma işlemi için buraya bakın.
+4. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEM biçimli bir sertifikada .cer dosyasını açıp base64 anahtarını sertifika üst bilgileri arasına kopyalamanız yeterlidir. [Kodlanmış ortak anahtarı almak için sertifikayı dışarı aktarma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site) bölümüne bakın.
 5. Özel anahtar bölümünü, base64’teki P2S istemci sertifikası özel anahtarı ile doldurun. Özel anahtarın nasıl ayıklanacağını görmek için buraya bakın.
 6. Başka bir alanı değiştirmeyin. VPN’e bağlanmak için istemci girişinde doldurulmuş yapılandırmayı kullanın.
 7. vpnconfig.ovpn dosyasını C:\Program Files\OpenVPN\config klasörüne kopyalayın.
@@ -145,7 +145,7 @@ Uzak erişim istemcilerini yapılandırmak için indirilen profili kullanın. He
 1. Windows bilgisayarın mimarisine karşılık gelen VPN istemcisi yapılandırma dosyalarını seçin. 64 bit işlemci mimarisi için 'VpnClientSetupAmd64' yükleyici paketini seçin. 32 bit işlemci mimarisi için 'VpnClientSetupX86' yükleyici paketini seçin.
 2. Yüklemek için pakete çift tıklayın. Bir SmartScreen açılır penceresi görürseniz Daha fazla bilgi’ye ve ardından Yine de çalıştır’a tıklayın.
 3. İstemci bilgisayarda Ağ Ayarları’na gidin ve VPN öğesine tıklayın. VPN bağlantısı, bağlandığı sanal ağın adını gösterir.
-4. Bağlanmayı denemeden önce, istemci bilgisayara bir istemci sertifikası yüklediğinizi doğrulayın. Yerel Azure sertifika kimlik doğrulaması türü kullanılırken kimlik doğrulaması için bir istemci sertifikası gereklidir. Sertifika oluşturma hakkında daha fazla bilgi için bkz. Sertifika Oluşturma. Bir istemci sertifikasını yükleme hakkında daha fazla bilgi için bkz. İstemci sertifikası yükleme.
+4. Bağlanmayı denemeden önce, istemci bilgisayara bir istemci sertifikası yüklediğinizi doğrulayın. Yerel Azure sertifika kimlik doğrulaması türü kullanılırken kimlik doğrulaması için bir istemci sertifikası gereklidir. Sertifika oluşturma hakkında daha fazla bilgi için bkz. [sertifika oluşturma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site). Bir istemci sertifikasını yükleme hakkında daha fazla bilgi için bkz. İstemci sertifikası yükleme.
 
 ## <a name="viewwan"></a>Sanal WAN 'nizi görüntüleme
 

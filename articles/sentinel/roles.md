@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464117"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762728"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
@@ -30,9 +30,9 @@ RBAC kullanarak, Azure Sentinel 'e uygun erişim sağlamak için güvenlik işle
 
 Üç özel yerleşik Azure Sentinel rolü vardır.  
 **Tüm Azure Sentinel yerleşik rolleri, Azure Sentinel çalışma alanınızdaki verilere yönelik okuma erişimi verir.**
-- **Azure Sentinel okuyucusu**: daha fazla bilgi için bkz. [yerleşik roller](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
-- **Azure Sentinel Yanıtlayıcısı**: daha fazla bilgi için bkz. [yerleşik roller](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
-- **Azure Sentinel katılımcısı**: daha fazla bilgi için bkz. [yerleşik roller](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
+- [Azure Sentinel okuyucusu](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Azure Sentinel Yanıtlayıcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Azure Sentinel Katılımcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 Azure Sentinel adanmış RBAC rollerinin yanı sıra Azure ve Log Analytics RBAC rolleri, Azure Sentinel çalışma alanınıza ve diğer kaynaklara erişimi de içeren daha geniş bir izin kümesine izin verebilir:
 

@@ -1,25 +1,25 @@
 ---
-title: Sys_schema kullanarak, performansı ayarlama ve MySQL için Azure veritabanı 'nı sürdürme
-description: Sys_schema kullanarak, performans sorunlarını nasıl bulacağınızı ve MySQL için Azure veritabanı 'nda veritabanını nasıl koruyacağınızı öğrenin.
+title: Sys_schema kullanma-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanı 'nda performans sorunlarını bulmak ve veritabanını korumak için sys_schema kullanmayı öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 08/01/2018
-ms.openlocfilehash: 7dc6b4744c74c56803127f63a8a6f29ca5a15090
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972785"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775954"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda performans ayarlama ve veritabanı bakımı için sys_schema kullanma
 
-MySQL 5,5 ' de ilk olarak bulunan MySQL performance_schema, bellek ayırma, saklı programlar, meta veri kilitleme gibi birçok önemli sunucu kaynağı için izleme sağlar. Ancak, performance_schema 80 'den fazla tablo içerir ve gerekli bilgilerin alınması genellikle performance_schema içindeki tabloların yanı sıra information_schema içindeki tabloların katılmasını gerektirir. Hem performance_schema hem de information_schema üzerinde derleme yapmak için sys_schema, salt okunur bir veritabanında kolay bir şekilde [Kullanıcı dostu görünümler](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) koleksiyonu sağlar ve MySQL Için Azure veritabanı sürüm 5,7 ' de tam olarak etkinleştirilmiştir.
+MySQL 5,5 ' de bulunan MySQL performance_schema, bellek ayırma, saklı programlar, meta veri kilitleme vb. gibi birçok önemli sunucu kaynağı için izleme sağlar. Ancak, performance_schema 80 'den fazla tablo içerir ve gerekli bilgilerin alınması genellikle performance_schema içindeki tabloların yanı sıra information_schema tablolarının katılmasını gerektirir. Hem performance_schema hem de information_schema üzerinde oluşturma sys_schema, salt okunur bir veritabanında kolay bir şekilde [Kullanıcı dostu görünümler](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) koleksiyonu sağlar ve MySQL Için Azure veritabanı sürüm 5,7 ' de tam olarak etkinleştirilmiştir.
 
 ![sys_schema görünümleri](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
-Sys_schema 'de 52 görünüm vardır ve her görünüm aşağıdaki öneklerden birine sahiptir:
+Sys_schema 52 görünüm vardır ve her görünüm aşağıdaki öneklerden birine sahiptir:
 
 - Host_summary veya GÇ: g/ç ile ilgili gecikme süreleri.
 - InnoDB: InnoDB buffer durum ve kilitler.
@@ -29,7 +29,7 @@ Sys_schema 'de 52 görünüm vardır ve her görünüm aşağıdaki öneklerden 
 - Kullanıcı: kullanıcılara göre tüketilen ve gruplandırılan kaynaklar. Dosya g/ç, bağlantı ve bellek örnekleri örnektir.
 - Wait: bekleme olayları ana bilgisayara veya kullanıcıya göre gruplandırılır.
 
-Şimdi sys_schema 'in bazı yaygın kullanım düzenlerine göz atalım. Kullanmaya başlamak için kullanım desenlerini iki kategoride gruplarız: **performans ayarlama** ve **Veritabanı Bakımı**.
+Şimdi sys_schema bazı yaygın kullanım düzenlerine göz atalım. Kullanmaya başlamak için kullanım desenlerini iki kategoride gruplarız: **performans ayarlama** ve **Veritabanı Bakımı**.
 
 ## <a name="performance-tuning"></a>Performans ayarı
 
@@ -51,7 +51,7 @@ Dikkatli bir planlamaya rağmen çok sayıda sorgu yine de tam tablo taramasına
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
 
-Veritabanı performans sorunlarını gidermek için, veritabanınızın içinde gerçekleşen olayları belirlemek yararlı olabilir ve *sys. user_summary_by_statement_type* görünümünün kullanılması yalnızca eli olabilir.
+Veritabanı performans sorunlarını gidermek için veritabanınızın içinde oluşan olayları belirlemek yararlı olabilir ve *sys. user_summary_by_statement_type* görünümünün kullanılması yalnızca eli olabilir.
 
 ![deyime göre Özet](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
@@ -61,7 +61,7 @@ Bu örnekte, MySQL için Azure veritabanı, slog sorgu günlüğü 44579 kez tem
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
 
-InnoDB arabellek havuzu bellekte bulunur ve DBMS ile depolama arasındaki ana önbellek mekanizmasıdır. InnoDB arabellek havuzunun boyutu performans katmanına bağlıdır ve farklı bir Ürün SKU 'SU seçilmediği takdirde değiştirilemez. İşletim Sisteminizdeki bellekte olduğu gibi, fresher verileri için yer açmak üzere eski sayfalar takas edilir. En fazla InnoDB arabellek havuzu belleği tükettiği tabloları bulmak için *sys. innodb_buffer_stats_by_table* görünümünü sorgulayabilirsiniz.
+InnoDB arabellek havuzu bellekte bulunur ve DBMS ile depolama arasındaki ana önbellek mekanizmasıdır. InnoDB arabellek havuzunun boyutu performans katmanına bağlıdır ve farklı bir Ürün SKU 'SU seçilmediği takdirde değiştirilemez. İşletim Sisteminizdeki bellekte olduğu gibi, fresher verileri için yer açmak üzere eski sayfalar takas edilir. InnoDB arabellek havuzu belleğinin çoğunu hangi tabloların tükettiği hakkında bilgi edinmek için *sys. innodb_buffer_stats_by_table* görünümünde sorgulama yapabilirsiniz.
 
 ![InnoDB arabellek durumu](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0ba69715998f110d88015bdba2fbf340a6b64089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491653"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795947"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure sanal ağ geçidi (VPN Gateway) ve Azure sanal WAN VPN Gateway arasındaki fark nedir?
 
@@ -36,8 +36,6 @@ Sanal ağ geçidi VPN, 30 tünelle sınırlıdır. Bağlantılar için, büyük 
 Hayır. IKEv2/IKEv1 IPsec desteğinin Azure gereksinimlerini karşılayan, VPN özellikli herhangi bir cihaz kullanabilirsiniz.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Sanal WAN iş ortakları Azure Virtual WAN ile bağlantıyı nasıl otomatik hale getirir?
-
-Yazılım tanımlı bağlantı çözümleri normalde dal cihazlarını yönetmek için bir denetleyici veya cihaz sağlama merkezi kullanır. Denetleyici, Azure Sanal WAN'a otomatik bağlantı sağlamak için Azure API'lerini kullanabilir. Daha fazla bilgi için bkz. Sanal WAN iş ortağı otomasyonu.
 
 Yazılım tanımlı bağlantı çözümleri normalde dal cihazlarını yönetmek için bir denetleyici veya cihaz sağlama merkezi kullanır. Denetleyici, Azure Sanal WAN'a otomatik bağlantı sağlamak için Azure API'lerini kullanabilir. Otomasyon, şube bilgilerini karşıya yüklemeyi, Azure yapılandırmasını indirmeyi, Azure tünellerini Azure sanal hub 'lara ayarlamayı ve şube cihazını Azure sanal WAN 'a otomatik olarak kurmayı içerir. Yüzlerce dala sahipseniz, ekleme deneyiminin büyük ölçekli IPSec bağlantısı kurma, yapılandırma ve yönetme ihtiyacını ortadan oluşturduğundan, sanal WAN CPE Iş ortakları kullanarak bağlanmak kolaydır. Daha fazla bilgi için bkz. [Sanal WAN iş ortağı otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 

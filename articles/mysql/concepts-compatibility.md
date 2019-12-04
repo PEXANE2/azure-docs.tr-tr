@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı sürücüleri ve yönetim araçları uyumluluğu
+title: Sürücü ve araçlar uyumluluğu-MySQL için Azure veritabanı
 description: Bu makalede MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/02/2019
+ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720144"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765350"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları
 Bu makalede, MySQL için Azure veritabanı ile uyumlu olan sürücüler ve yönetim araçları açıklanmaktadır.
@@ -21,7 +21,7 @@ MySQL için Azure veritabanı, dünyanın en popüler MySQL veritabanı Communit
 
 | **Programlama dili** | **Aygıt** | **Köprü** | **Uyumlu sürümler** | **Uyumsuz sürümler** | **Notlar** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
-| PHP | mysqli, PDO_MYSQL, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | SSL ile PHP 7,0 bağlantısı için, bağlantı dizesinde MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT ekleyin. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO kümesi: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` seçeneği false.|
+| PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | SSL ile PHP 7,0 bağlantısı için, bağlantı dizesinde MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT ekleyin. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO kümesi: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` seçeneği false.|
 | .NET | .NET için Async MySQL Bağlayıcısı | https://github.com/mysql-net/MySqlConnector <br> [NuGet 'den yükleme paketi](https://www.nuget.org/packages/MySqlConnector/) | 0,27 ve sonrası | 0.26.5 ve öncesi | |
 | .NET | MySQL Bağlayıcısı/ağı | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | Bir kodlama hatası, bazı UTF8 olmayan Windows sistemlerinde bağlantıların başarısız olmasına neden olabilir. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> NPM 'den yükleme paketi:<br> NPM 'den `npm install mysql` Çalıştır | 2,15 | 2.14.1 ve öncesi | |

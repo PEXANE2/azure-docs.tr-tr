@@ -1,20 +1,19 @@
 ---
-title: JSON verilerini sıvı dönüştürmeleri ile Dönüştür-Azure Logic Apps | Microsoft Docs
+title: JSON verilerini sıvı dönüştürmeleri ile Dönüştür
 description: Logic Apps ve sıvı şablonu kullanarak gelişmiş JSON dönüştürmeleri için dönüşümler veya haritalar oluşturma
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900654"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792498"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps 'te likit şablonlar ile gelişmiş JSON dönüştürmeleri gerçekleştirin
 
@@ -58,7 +57,7 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
    }
    ```
 
-2. [Azure Portal](https://portal.azure.com) oturum açın. Ana Azure menüsünde **tüm kaynaklar**' ı seçin. Arama kutusunda, tümleştirme hesabınızı bulun ve seçin.
+2. [Azure Portal](https://portal.azure.com)’ında oturum açın. Ana Azure menüsünde **tüm kaynaklar**' ı seçin. Arama kutusunda, tümleştirme hesabınızı bulun ve seçin.
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -68,9 +67,9 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
 
 4. **Ekle** ' yi seçin ve Haritalarınız için bu ayrıntıları sağlayın:
 
-   | Özellik | Value | Açıklama | 
+   | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
-   | **Name** | JsonToJsonTemplate | Bu örnekteki "JsonToJsonTemplate" olan haritaınızın adı | 
+   | **Adı** | JsonToJsonTemplate | Bu örnekteki "JsonToJsonTemplate" olan haritaınızın adı | 
    | **Eşleme türü** | **sıvı** | Haritalarınızın türü. JSON-JSON dönüştürmesi için **likit**' i seçmeniz gerekir. | 
    | **Harita** | "SimpleJsonToJsonTemplate. sıvı" | Bu örnekte "SimpleJsonToJsonTemplate. sıvı" olan dönüştürme için kullanılacak mevcut bir likit şablon veya eşleme dosyası. Bu dosyayı bulmak için dosya seçiciyi kullanabilirsiniz. |
    ||| 
@@ -84,7 +83,7 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
 2. Mantıksal uygulama Tasarımcısı ' nda, mantıksal uygulamanıza [istek tetikleyiciyi](../connectors/connectors-native-reqres.md#add-request) ekleyin.
 
 3. Tetikleyici altında **yeni adım**' ı seçin. 
-   Arama kutusuna filtreniz olarak "likit" yazın ve şu eylemi seçin: **JSON 'ı JSON 'a Dönüştür-sıvı**
+   Arama kutusuna filtreniz olarak "sıvı" yazın ve şu eylemi seçin: **JSON 'U JSON 'A Dönüştür-sıvı**
 
    ![Sıvı eylemini bul ve Seç](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -125,7 +124,7 @@ Sıvı yalnızca JSON dönüşümlerine sınırlı değildir. Aşağıda, sıvı
   
    ![Örnek çıkış JSON-Text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* XML-JSON dönüştürmesi uygula
+* XML 'i JSON 'ye Dönüştür
   
   Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
    
@@ -152,6 +151,6 @@ Sıvı yalnızca JSON dönüşümlerine sınırlı değildir. Aşağıda, sıvı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Enterprise Integration Pack hakkında daha fazla bilgi edinin] (../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin")  
-* [Haritalar hakkında daha fazla bilgi edinin] (../logic-apps/logic-apps-enterprise-integration-maps.md "Kurumsal tümleştirme haritaları hakkında bilgi edinin")  
+* [Enterprise Integration Pack hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin")  
+* [Haritalar hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-maps.md "Kurumsal tümleştirme haritaları hakkında bilgi edinin")  
 

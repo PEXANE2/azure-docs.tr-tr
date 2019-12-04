@@ -1,22 +1,22 @@
 ---
-title: Azure CLı kullanarak MariaDB VNet hizmet uç noktaları ve kuralları için Azure veritabanı oluşturma ve yönetme | Microsoft Docs
+title: VNet uç noktalarını yönetme-Azure CLı-MariaDB için Azure veritabanı
 description: Bu makalede, Azure CLı komut satırını kullanarak MariaDB VNet hizmet uç noktaları ve kuralları için Azure veritabanı 'nın nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5e0f2bb19e5c753c5b327781774d3fd96ec58592
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: eea6f6751f7e7f6ded1b1c7004115d101f1dcc94
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609835"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764346"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure CLı kullanarak MariaDB VNet hizmet uç noktaları için Azure veritabanı oluşturma ve yönetme
 
-Sanal ağ (VNet) Hizmetleri uç noktaları ve kuralları, bir sanal ağın özel adres alanını MariaDB sunucusu için Azure veritabanınıza genişletir. Uygun Azure komut satırı arabirimi (CLı) komutlarını kullanarak sunucunuzu yönetmek için VNet hizmet uç noktalarını ve kurallarını oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. MariaDB VNet hizmet uç noktaları için Azure veritabanı 'nda sınırlamalar da dahil genel bir bakış için bkz. [MariaDB sunucu VNET hizmet uç noktaları Için Azure veritabanı](concepts-data-access-security-vnet.md). Sanal ağ hizmeti uç noktaları, MariaDB için Azure veritabanı için desteklenen tüm bölgelerde kullanılabilir.
+Sanal Ağ (VNet) hizmetleri uç noktaları ve kuralları, bir Sanal Ağın özel adres alanını MariaDB için Azure Veritabanı sunucunuza genişletir. Uygun Azure komut satırı arabirimi (CLı) komutlarını kullanarak sunucunuzu yönetmek için VNet hizmet uç noktalarını ve kurallarını oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. MariaDB VNet hizmet uç noktaları için Azure veritabanı 'nda sınırlamalar da dahil genel bir bakış için bkz. [MariaDB sunucu VNET hizmet uç noktaları Için Azure veritabanı](concepts-data-access-security-vnet.md). Sanal ağ hizmeti uç noktaları, MariaDB için Azure veritabanı için desteklenen tüm bölgelerde kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
@@ -24,7 +24,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [MariaDB sunucusu ve veritabanı Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
 > [!NOTE]
-> Yalnızca genel amaçlı ve bellek için iyileştirilmiş sunucuları için sanal ağ hizmet uç noktaları desteğidir.
+> VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 
 ## <a name="configure-vnet-service-endpoints"></a>VNet hizmet uç noktalarını yapılandırma
 [Az Network VNET](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) komutları, sanal ağları yapılandırmak için kullanılır.
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
 
 CLI’yi yerel olarak çalıştırıyorsanız, [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) komutunu kullanarak hesabınızda oturum açmanız gerekir. Komut çıktısındaki ilgili abonelik adına karşılık gelen **id** özelliğinin değerini not edin.
 ```azurecli-interactive
@@ -53,11 +53,11 @@ Azure hizmet kaynaklarını bir sanal ağa güvenli hale getirmek için, eklenme
 Sanal ağlar ve Azure hizmet kaynakları aynı ağda veya farklı aboneliklerde olabilir. VNet ve Azure hizmet kaynakları farklı aboneliklerdeyse, kaynakların aynı Active Directory (AD) kiracısı altında olması gerekir. Her iki aboneliğin de **Microsoft. SQL** kaynak sağlayıcısı 'nın kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
 
 > [!IMPORTANT]
-> Hizmet uç noktalarını yapılandırmadan önce hizmet uç noktası yapılandırmalarına ve noktalara ilişkin bu makalenin okunması kesinlikle önerilir. **Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. VNet Hizmetleri uç noktaları, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**hizmet türü adını kullanır. Bu hizmet etiketi, Azure SQL veritabanı, MariaDB için Azure veritabanı, PostgreSQL ve MySQL Hizmetleri için de geçerlidir. **Microsoft. SQL** hizmet etiketi bir sanal ağ hizmeti uç noktasına uygulandığında, Azure SQL veritabanı, PostgreSQL Için Azure veritabanı, Için Azure veritabanı dahil olmak üzere tüm Azure veritabanı hizmetleri için hizmet uç noktası trafiğini yapılandırır. MariaDB ve alt ağdaki MySQL sunucuları için Azure veritabanı.
+> Hizmet uç noktalarını yapılandırmadan önce hizmet uç noktası yapılandırmalarına ve noktalara ilişkin bu makalenin okunması kesinlikle önerilir. **Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. VNet Hizmetleri uç noktaları, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**hizmet türü adını kullanır. Bu hizmet etiketi, Azure SQL veritabanı, MariaDB için Azure veritabanı, PostgreSQL ve MySQL Hizmetleri için de geçerlidir. **Microsoft. SQL** hizmet etiketi bir sanal ağ hizmeti uç noktasına uygulandığında, Azure SQL veritabanı, PostgreSQL Için Azure veritabanı, MariaDB için Azure veritabanı ve alt ağdaki MySQL sunucuları Için Azure veritabanı gibi tüm Azure veritabanı hizmetleri için hizmet uç noktası trafiğini yapılandırır.
 
 ### <a name="sample-script"></a>Örnek betik
 
-Bu örnek betik, MariaDB sunucusu için Azure veritabanı oluşturmak, VNet, VNet hizmeti uç noktası oluşturmak ve sunucunun bir VNet kuralıyla alt ağa güvenliğini sağlamak için kullanılır. Bu örnek betikte yönetici kullanıcı adını ve parolasını değiştirin. `az account set --subscription` Komutta kullanılan SubscriptionID değerini kendi abonelik tanımlayıcıınızla değiştirin.
+Bu örnek betik, MariaDB sunucusu için Azure veritabanı oluşturmak, VNet, VNet hizmeti uç noktası oluşturmak ve sunucunun bir VNet kuralıyla alt ağa güvenliğini sağlamak için kullanılır. Bu örnek betikte yönetici kullanıcı adını ve parolasını değiştirin. `az account set --subscription` komutunda kullanılan SubscriptionID değerini kendi abonelik tanımlayıcıınızla değiştirin.
 
 ```azurecli-interactive
 # To find the name of an Azure region in the CLI run this command: az account list-locations

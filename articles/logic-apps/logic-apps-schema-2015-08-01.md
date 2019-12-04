@@ -1,49 +1,47 @@
 ---
-title: Ağustos 1 2015 Önizleme - Azure Logic Apps için şema güncelleştirmeleri | Microsoft Docs
-description: Güncelleştirilmiş şema sürümü 2015-08-01-Önizleme için Azure Logic apps'te mantıksal uygulama tanımları
+title: Ağustos 1-2015 Preview için şema güncelleştirmeleri
+description: Güncelleştirilmiş şema sürümü 2015-08-01-Azure Logic Apps içindeki Logic App tanımlarının önizlemesi
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: 92f522c72f69218e55b1ee4cfff74511a30288b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b6746baaede777eb8c2afcae9eb3fe80b669c468
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553768"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792850"
 ---
-# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure Logic Apps - 1 Ağustos 2015 önizlemesi için şema güncelleştirmeleri
+# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure Logic Apps için şema güncelleştirmeleri-1 Ağustos 2015 Preview
 
-Bu şema ve API sürümü için Azure Logic Apps, logic apps, daha güvenilir ve kullanmayı daha kolay hale anahtar iyileştirmeler içerir:
+Azure Logic Apps için bu şema ve API sürümü, mantıksal uygulamaları daha güvenilir ve kullanımı kolay hale getirmek için önemli geliştirmeler içerir:
 
-* **APIApp** eylem türü artık adlı [ **APIConnection**](#api-connections).
-* **Yineleyin** eylemi artık adlı [ **Foreach**](#foreach).
-* [ **HTTP dinleyicisi** API uygulaması](#http-listener) artık gerekli değildir.
-* Alt iş akışlarını çağırma kullanan bir [yeni şema](#child-workflows).
+* **Apiapp** eylem türü artık [**Apiconnection**](#api-connections)olarak adlandırılmıştır.
+* **Yinele** eylemi şimdi [**foreach**](#foreach)olarak adlandırılmıştır.
+* [ **Http dinleyicisi** API 'si uygulamasına](#http-listener) artık gerek yok.
+* Alt iş akışlarını çağırmak [Yeni bir şema](#child-workflows)kullanır.
 
 <a name="api-connections"></a>
 
-## <a name="move-to-api-connections"></a>API bağlantıları Taşı
+## <a name="move-to-api-connections"></a>API bağlantılarına taşı
 
-Büyük değişiklik, artık API'lerini kullanabilmesi için API uygulamaları Azure aboneliğinize dağıtmak olmasıdır. API'leri kullanabileceğiniz yollar şunlardır:
+En büyük değişiklik, API 'Leri kullanabilmeniz için artık Azure aboneliğinize API Apps dağıtmanız gerekmez. API 'Leri kullanabileceğiniz yollar şunlardır:
 
-* Yönetilen API'ler
-* Özel Web API'leri
+* Yönetilen API 'Ler
+* Özel Web API 'leriniz
 
-Bunların yönetimi ve barındırma modellerini farklı olduğu için her iki yöntemle biraz farklı şekilde ele alınır. Artık Azure kaynak grubunuzda dağıtılan kaynaklar için kısıtlı bu modelin avantajlarından biri. 
+Yönetim ve barındırma modelleri farklı olduğundan her bir yöntem biraz farklı işlenir. Bu modelin bir avantajı, artık Azure Kaynak grubunuzda dağıtılan kaynaklarla sınırlandırılırsınız. 
 
-### <a name="managed-apis"></a>Yönetilen API'ler
+### <a name="managed-apis"></a>Yönetilen API 'Ler
 
-Microsoft Office 365, Salesforce, Twitter ve FTP gibi sizin adınıza bazı API'leri yönetir. Bazı yönetilen API'ler olarak kullanabileceğiniz-Bing çeviri gibi diğerleri ise yapılandırma gerektirir, ancak olarak da adlandırılan bir *bağlantı*.
+Microsoft, sizin adınıza Office 365, Salesforce, Twitter ve FTP gibi bazı API 'Leri yönetir. Bazı yönetilen API 'Leri, örneğin, Bing çeviri gibi, diğer bir deyişle *bağlantı*olarak da adlandırılan yapılandırma için kullanabilirsiniz.
 
-Örneğin, Office 365'i kullandığınızda, Office 365 oturum açma belirteciniz içeren bir bağlantı oluşturmanız gerekir. Belirtecinizi güvenli bir şekilde depolanır ve mantıksal uygulamanızın her zaman Office 365 API çağırması yayımlanmadığını. SQL veya FTP sunucunuza bağlanmak istiyorsanız, bağlantı dizesi olan bir bağlantı oluşturmanız gerekir. 
+Örneğin, Office 365 kullandığınızda Office 365 oturum açma belirtecinizi içeren bir bağlantı oluşturmanız gerekir. Belirteciniz, mantıksal uygulamanızın Office 365 API 'sini her zaman çağırabilmesi için güvenli bir şekilde depolanır ve yenilenir. SQL veya FTP sunucunuza bağlanmak istiyorsanız bağlantı dizesine sahip bir bağlantı oluşturmanız gerekir. 
 
-Bu tanımında, bu eylemleri adlandırılır `APIConnection`. Office 365'e-posta göndermek için çağıran bağlantının bir örnek aşağıda verilmiştir:
+Bu tanımda, bu eylemler `APIConnection`olarak adlandırılır. Aşağıda, bir e-posta göndermek için Office 365 ' i çağıran bir bağlantı örneği verilmiştir:
 
 ``` json
 {
@@ -72,20 +70,20 @@ Bu tanımında, bu eylemleri adlandırılır `APIConnection`. Office 365'e-posta
 }
 ```
 
-`host` Nesnedir, API bağlantıları için benzersizdir ve bölümleri içeren bir parçası girişleri: `api` ve `connection`. `api` Nesne çalışma zamanı URL'si, API yönetildiği barındırıldığını belirtir. Bu yöntemi çağırarak tüm kullanılabilir yönetilen API'ler görebilirsiniz:
+`host` nesnesi, API bağlantıları için benzersiz olan girdilerin bir parçasıdır ve şu bölümleri içerir: `api` ve `connection`. `api` nesnesi, yönetilen API 'nin barındırıldığı çalışma zamanı URL 'sini belirtir. Bu yöntemi çağırarak, kullanılabilir tüm yönetilen API 'Leri görebilirsiniz:
 
 ```text
 GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
 ```
 
-Bir API'yi kullandığınızda, bu API olabilir veya tüm tanımlamış olabileceği değil *bağlantı parametrelerini*. Bu nedenle, bu parametreleri API tanımlamıyorsa, bağlantı gereklidir. API bu parametreleri tanımlarsanız, belirtilen bir ada sahip bir bağlantı oluşturmanız gerekir.  
-Ardından bu ada başvuru `connection` içine `host` nesne. Bir kaynak grubunda bir bağlantı oluşturmak için bu yöntemi çağırın:
+Bir API kullandığınızda, bu API herhangi bir *bağlantı parametresi*tanımlamış olabilir veya olmayabilir. Bu nedenle, API bu parametreleri tanımlamıyorsa bağlantı gerekmez. API bu parametreleri tanımlamıyorsa, belirtilen ada sahip bir bağlantı oluşturmanız gerekir.  
+Daha sonra bu ada `host` nesnesinin içindeki `connection` nesnesinde başvurulamıyor. Bir kaynak grubunda bağlantı oluşturmak için şu yöntemi çağırın:
 
 ```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
-Aşağıdaki gövdesi:
+Aşağıdaki gövdeden:
 
 ``` json
 {
@@ -101,10 +99,10 @@ Aşağıdaki gövdesi:
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonunda yönetilen API'ler dağıtın
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Yönetilen API 'Leri bir Azure Resource Manager şablonunda dağıtma
 
-Etkileşimli oturum açma gerekli olmadığı durumlarda, Resource Manager şablonu kullanarak tam bir uygulama oluşturabilirsiniz.
-Oturum açma gereklidir, Resource Manager şablonu kullanmaya devam edebilirsiniz, ancak Azure portalı üzerinden bağlantılarını yetkilendirmek zorunda. 
+Etkileşimli oturum açma gerekli olmadığında, bir Kaynak Yöneticisi şablonu kullanarak tam bir uygulama oluşturabilirsiniz.
+Oturum açma gerekliyse, Kaynak Yöneticisi şablonu kullanmaya devam edebilirsiniz, ancak bağlantıları Azure portal aracılığıyla yetkilendirebilirsiniz. 
 
 ``` json
 "resources": [ {
@@ -194,13 +192,13 @@ Oturum açma gereklidir, Resource Manager şablonu kullanmaya devam edebilirsini
 } ]
 ```
 
-Bu örnekte, bağlantılar, kaynak grubunuzda Canlı yalnızca kaynakların olduğunu görebilirsiniz. Aboneliğinizde kullanılabilen yönetilen API'ler başvuruyor.
+Bu örnekte, bağlantıların yalnızca kaynak grubunuzda yaşayan kaynaklar olduğunu görebilirsiniz. Bunlar, aboneliğinizde kullanabileceğiniz yönetilen API 'Lere başvurırlar.
 
-### <a name="your-custom-web-apis"></a>Özel Web API'leri
+### <a name="your-custom-web-apis"></a>Özel Web API 'leriniz
 
-Yerleşik olanları Microsoft tarafından yönetilen yerine kendi Apı'lerinize kullanırsanız kullanın **HTTP** Apı'lerinizi çağrılacak eylem. İdeal olarak, API'niz için bir Swagger uç noktası sağlamanız gerekir. Bu uç nokta, Logic Apps Tasarımcısı'nın, API'NİZİN giriş ve çıkışlarını görüntülemek yardımcı olur. Swagger uç nokta tasarımcıya yalnızca girişler ve çıkışlar donuk bir JSON nesnesi gösterebilirsiniz.
+Microsoft tarafından yönetilen bir yerine kendi API 'lerinizi kullanıyorsanız, API 'lerinizi çağırmak için yerleşik **http** eylemini kullanın. İdeal olarak, API 'niz için bir Swagger uç noktası sağlamalısınız. Bu uç nokta Logic App Designer 'ın API 'nizin girişlerini ve çıktılarını göstermesini sağlar. Swagger uç noktası olmadan, tasarımcı yalnızca girdileri ve çıkışları donuk JSON nesneleri olarak gösterebilir.
 
-İşte yeni gösteren bir örnek `metadata.apiDefinitionUrl` özelliği:
+Yeni `metadata.apiDefinitionUrl` özelliğini gösteren bir örnek aşağıda verilmiştir:
 
 ``` json
 "actions": {
@@ -217,12 +215,12 @@ Yerleşik olanları Microsoft tarafından yönetilen yerine kendi Apı'lerinize 
 }
 ```
 
-Azure App Service'te Web API'nizi barındırıyorsanız, Web API'niz Tasarımcısı'nda kullanılabilir eylemler listesinden otomatik olarak görünür. Aksi takdirde, URL'yi doğrudan yapıştırmak zorunda. Swagger'ı destekleyen tüm yöntemleri ile API kendisini güvenliğini sağlayabilirsiniz ancak Logic Apps Tasarımcısı'nda kullanılabilir olması için Swagger uç noktası kimliği doğrulanmamış gerekir.
+Web API 'nizi Azure App Service barındırdıysanız, Web API 'niz tasarımcıda bulunan Eylemler listesinde otomatik olarak görüntülenir. Aksi takdirde, URL 'ye doğrudan yapıştırmanız gerekir. Swagger uç noktasının, mantıksal uygulama tasarımcısında kullanılabilmesi için kimliği doğrulanmamış olmalıdır, ancak bu API 'YI Swagger tarafından desteklenen herhangi bir yöntemle güvenli hale getirebilirsiniz.
 
-### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>API apps 2015-08-01-preview ile çağrı dağıtılan
+### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>2015-08-01-Preview ile dağıtılan API Apps 'i çağırma
 
-API uygulaması, daha önce dağıttıysanız, bu uygulamayla çağırabilirsiniz **HTTP** eylem.
-Örneğin, Dropbox dosyaları listelemek için kullanırsanız, **2014-12-01-preview** şema sürüm tanımına aşağıdaki gibi olabilir:
+Daha önce bir API uygulaması dağıttıysanız, bu uygulamayı **http** eylemiyle çağırabilirsiniz.
+Örneğin, dosyaları listelemek için Dropbox kullanırsanız **2014-12-01-Preview** şema sürümü tanımınızda şöyle bir işlem olabilir:
 
 ``` json
 "definition": {
@@ -263,7 +261,7 @@ API uygulaması, daha önce dağıttıysanız, bu uygulamayla çağırabilirsini
 }
 ```
 
-Şimdi, artık derleme benzer bir HTTP eylemi ve mantıksal uygulama tanımının bırakın `parameters` bölüm değiştirmeden, örneğin:
+Artık benzer bir HTTP eylemi oluşturabilir ve mantıksal uygulama tanımının `parameters` bölümünü değiştirmeden bırakabilirsiniz, örneğin:
 
 ``` json
 "actions": {
@@ -288,24 +286,24 @@ API uygulaması, daha önce dağıttıysanız, bu uygulamayla çağırabilirsini
 }
 ```
 
-Bu özellikler tek tek yürüyen:
+Bu özelliklerden tek tek yürüme:
 
 | Action özelliği | Açıklama |
 | --- | --- |
-| `type` | `Http` Onun yerine `APIapp` |
-| `metadata.apiDefinitionUrl` | Mantıksal Uygulama Tasarımcısı'nda bu eylemi kullanabilmek için nesnesinden oluşturulan meta veri uç noktası şunlardır: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `type` | `APIapp` yerine `Http` |
+| `metadata.apiDefinitionUrl` | Bu eylemi Logic App Designer 'da kullanmak için, öğesinden oluşturulan meta veri uç noktasını ekleyin: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
 | `inputs.uri` | Oluşturulan: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` | Her zaman `POST` |
-| `inputs.body` | API uygulaması parametreleri aynı |
-| `inputs.authentication` | API uygulaması kimlik doğrulaması ile aynı |
+| `inputs.body` | API uygulaması parametreleriyle aynı |
+| `inputs.authentication` | API uygulaması kimlik doğrulamasıyla aynı |
 
-Bu yaklaşım, tüm API uygulaması eylemleri için çalışır. Ancak, bu önceki API Apps artık desteklenmeyen unutmayın. Bu nedenle, iki farklı önceki seçenek, yönetilen bir API veya özel Web API'niz barındırma birine taşımanız gerekir.
+Bu yaklaşım tüm API uygulama eylemleri için çalışmalıdır. Bununla birlikte, önceki API Apps artık desteklenmediğini unutmayın. Bu nedenle, yönetilen bir API veya özel Web API 'nizi barındırarak önceki iki seçenekten birine geçmeniz gerekir.
 
 <a name="foreach"></a>
 
-## <a name="renamed-repeat-to-foreach"></a>'Repeat' 'foreach' olarak yeniden adlandırıldı.
+## <a name="renamed-repeat-to-foreach"></a>' Yinele ' olarak yeniden adlandırıldı ' foreach '
 
-Önceki şema sürümü için çok müşteri geri bildirim aldık, **yineleyin** eylem adı kafa karıştırıcı ve düzgün şekilde yakalama yaramadı **yineleyin** gerçekten için-her bir döngü olup. Bu nedenle, biz olarak yeniden adlandırıldı `repeat` için `foreach`. Daha önce bu eylemi şu örnekteki gibi yazmalısınız:
+Önceki şema sürümü için, **yineleme** eylemi adının kafa karıştırıcı olduğunu ve bu **yinelemeyi** doğru bir For-Each döngüsü olduğunu çok fazla müşteri geri bildirimi aldık. Bu nedenle, `foreach``repeat` yeniden adlandırdık. Daha önce bu eylemi şu örnekte olduğu gibi yazarsınız:
 
 ``` json
 "actions": {
@@ -320,7 +318,7 @@ Bu yaklaşım, tüm API uygulaması eylemleri için çalışır. Ancak, bu önce
 }
 ```
 
-Artık bu sürümü yerine yazmalısınız:
+Bunun yerine şu sürümü yazarsınız:
 
 ``` json
 "actions": {
@@ -335,13 +333,13 @@ Artık bu sürümü yerine yazmalısınız:
 }
 ```
 
-Ayrıca, `repeatItem()` döngünün geçerli yineleme sırasında işleme öğesi başvurulan, işlevi artık yeniden adlandırılan `item()`. 
+Ayrıca, döngünün geçerli yineleme sırasında işlediği öğeye başvuran `repeatItem()` işlevi, artık `item()`olarak yeniden adlandırıldı. 
 
-### <a name="reference-outputs-from-foreach"></a>'Foreach' başvuru çıkışları
+### <a name="reference-outputs-from-foreach"></a>' Foreach ' öğesinden başvuru çıkışları
 
-Basitleştirme, çıkışları için `foreach` Eylemler artık adlı bir nesne içinde sarmalanmış `repeatItems`. Ayrıca, bu değişiklikler ile `repeatItem()`, `repeatBody()`, ve `repeatOutputs()` işlevleri kaldırılır.
+Basitme için `foreach` eylemleriyle ilgili çıktılar artık `repeatItems`adlı bir nesne içinde sarmalanır. Ayrıca, bu değişikliklerle `repeatItem()`, `repeatBody()`ve `repeatOutputs()` işlevleri de kaldırılır.
 
-Bu nedenle, önceki'yi kullanarak `repeat` örnek, bu çıkışları alın:
+Bu nedenle, önceki `repeat` örneği kullanılarak şu çıktılar alınır:
 
 ``` json
 "repeatItems": [ {
@@ -358,7 +356,7 @@ Bu nedenle, önceki'yi kullanarak `repeat` örnek, bu çıkışları alın:
 } ]
 ```
 
-Artık bu çıkışları yerine alın:
+Bu çıktıları artık bunun yerine alacaksınız:
 
 ``` json
 [ {
@@ -375,7 +373,7 @@ Artık bu çıkışları yerine alın:
 } ]
 ```
 
-Daha önce alınacak `body` bu çıkışları başvururken eylem:
+Daha önce, bu çıkışlara başvururken eylemden `body` almak için:
 
 ``` json
 "actions": {
@@ -391,7 +389,7 @@ Daha önce alınacak `body` bu çıkışları başvururken eylem:
 }
 ```
 
-Artık bu sürümü yerine kullanabilirsiniz:
+Artık bunun yerine bu sürümü kullanabilirsiniz:
 
 ``` json
 "actions": {
@@ -411,15 +409,15 @@ Artık bu sürümü yerine kullanabilirsiniz:
 
 ## <a name="native-http-listener"></a>Yerel HTTP dinleyicisi
 
-HTTP dinleyicisi özellikleri, artık bir HTTP dinleyicisi API uygulamasına dağıtmak zorunda kalmamak için yerleşiktir. Daha fazla bilgi için bilgi nasıl [mantıksal uygulama uç noktanızı çağrılabilir olun](../logic-apps/logic-apps-http-endpoint.md). 
+HTTP dinleyicisi özellikleri artık yerleşik olarak bulunur, bu nedenle bir HTTP dinleyicisi API uygulaması dağıtmanız gerekmez. Daha fazla bilgi için [mantıksal uygulama uç noktanızı çağrılabilir hale getirme](../logic-apps/logic-apps-http-endpoint.md)hakkında bilgi edinin. 
 
-Logic Apps bu değişikliklerle değiştirir `@accessKeys()` işleviyle `@listCallbackURL()` işlevin gerektiğinde uç noktasını alır. Ayrıca, mantıksal uygulamanız artık en az bir tetikleyici tanımlamanız gerekir. İsterseniz `/run` iş akışı tetikleyicisi bunlardan birini kullanmak zorunda: `Manual`, `ApiConnectionWebhook`, veya `HttpWebhook`
+Bu değişikliklerle Logic Apps, `@accessKeys()` işlevini `@listCallbackURL()` işlevi ile değiştirir ve bu, gerektiğinde uç noktasını alır. Ayrıca, artık mantıksal uygulamanızda en az bir tetikleyici tanımlamanız gerekir. İş akışını `/run` istiyorsanız, şu tetikleyici türlerinden birini kullanmanız gerekir: `Manual`, `ApiConnectionWebhook`veya `HttpWebhook`
 
 <a name="child-workflows"></a>
 
-## <a name="call-child-workflows"></a>Alt iş akışlarını çağırma
+## <a name="call-child-workflows"></a>Alt iş akışlarını çağır
 
-Daha önce alt iş akışlarını çağırarak iş akışına gidip erişim belirteci alma ve o alt iş akışını çağırmak istediğiniz mantıksal uygulama tanımında belirteç yapıştırma gereklidir. Herhangi bir gizli anahtar tanımında yapıştırmak zorunda kalmamak için bu şema ile Logic Apps altyapısı bir SAS alt iş akışı için çalışma zamanında otomatik olarak oluşturur. Örnek aşağıda verilmiştir:
+Daha önce, iş akışına gitmeleri gereken alt iş akışlarını çağırma, erişim belirtecini alma ve bu alt iş akışını çağırmak istediğiniz mantıksal uygulama tanımına belirteci yapıştırma. Bu şemayla, Logic Apps altyapısı alt iş akışı için çalışma zamanında otomatik olarak bir SAS oluşturur, bu sayede herhangi bir gizli dizi yapıştırmak zorunda kalmazsınız. Örnek aşağıda verilmiştir:
 
 ``` json
 "myNestedWorkflow": {
@@ -445,20 +443,20 @@ Daha önce alt iş akışlarını çağırarak iş akışına gidip erişim beli
 }
 ```
 
-Ayrıca, alt iş akışları, gelen istek tam erişim elde edin. Bu nedenle, parametrelere geçirebilirsiniz `queries` bölümü ve `headers` nesne. Tüm da tam olarak tanımlayabilirsiniz `body` bölümü.
+Ayrıca, alt iş akışları gelen isteğe tam erişim alır. Bu nedenle, parametreleri `queries` bölümünde ve `headers` nesnesinde geçirebilirsiniz. Ayrıca tüm `body` bölümünü tam olarak tanımlayabilirsiniz.
 
-Son olarak, alt iş akışları şu gerekli değişiklikler var. Daha önce verebilir ve doğrudan bir alt iş akışı arama çağırmak üst iş akışı şimdi bir tetikleyici uç noktası tanımlamanız gerekir. Genel olarak, sahip bir tetikleyici ekleme `Manual` yazın ve ardından üst tanımında tetikleyicisi. `host` Özellikle özelliğine sahip bir `triggerName` tetikleyici her zaman belirtmeniz gerekir çünkü arıyoruz.
+Son olarak, alt iş akışlarında bu gerekli değişiklikler vardır. Daha önce ve doğrudan bir alt iş akışını çağırabilir, ancak artık üst öğe çağrısı için iş akışında bir tetikleyici uç noktası tanımlamanız gerekir. Genellikle, `Manual` türüne sahip bir tetikleyici ekler ve sonra bu tetikleyiciyi üst tanımda kullanırsınız. `host` özelliği, çağıran tetikleyiciyi her zaman belirtmeniz gerektiğinden, özellikle bir `triggerName` sahiptir.
 
 ## <a name="other-changes"></a>Diğer değişiklikler
 
-### <a name="new-queries-property"></a>Yeni 'queries' özelliğini
+### <a name="new-queries-property"></a>Yeni ' Queries ' özelliği
 
-Tüm eylem türleri artık adlı yeni bir giriş Destek `queries`. Bu giriş, yapılandırılmış bir nesne yerine, dize el ile derlemek sahip olabilir.
+Tüm eylem türleri artık `queries`adlı yeni bir girişi desteklemektedir. Bu giriş, dizeyi el ile birleştirmek zorunda kalmak yerine, yapılandırılmış bir nesne olabilir.
 
-### <a name="renamed-parse-function-to-json"></a>'Json()' olarak yeniden adlandırıldı 'parse()' işlevi
+### <a name="renamed-parse-function-to-json"></a>' Parse () ' işlevi ' JSON () ' olarak yeniden adlandırıldı
 
-`parse()` İşlevi artık yeniden adlandırılan `json()` gelecekteki içerik türleri için işlevi.
+`parse()` işlevi artık gelecekteki içerik türleri için `json()` işlevini yeniden adlandırmıştır.
 
-## <a name="enterprise-integration-apis"></a>Kurumsal tümleştirme API'leri
+## <a name="enterprise-integration-apis"></a>Kurumsal Tümleştirme API 'Leri
 
-Bu şema gibi AS2 Kurumsal tümleştirme API'ler için yönetilen sürümler henüz desteklemiyor. Ancak, HTTP eylemi aracılığıyla dağıtılan mevcut BizTalk Apı'lerinize kullanabilirsiniz. Daha fazla bilgi için bkz: "içinde zaten dağıtılmış API uygulamalarınızı kullanma" [tümleştirme Haritası](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Bu şema, AS2 gibi Kurumsal Tümleştirme API 'Leri için yönetilen sürümleri henüz desteklememektedir. Ancak, mevcut dağıtılan BizTalk API 'Lerini HTTP eylemi aracılığıyla kullanabilirsiniz. Daha fazla bilgi için, [tümleştirme yol haritasında](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)"zaten dağıtılmış API uygulamalarınızı kullanma" konusuna bakın. 

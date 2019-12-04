@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C# , (Unity)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: babc6b1c0b6207d404091db3117f95f6d71c53ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503503"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795943"
 ---
 > [!NOTE]
 > Unity için konuşma SDK 'Sı, Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatör, ARM32 ve ARM64) destekler
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=unity) Bunu zaten yaptıysanız harika. Şimdi devam edelim.
+> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=unity)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
+
+Bunu zaten yaptıysanız harika. Şimdi devam edelim.
 
 ## <a name="create-a-unity-project"></a>Unity projesi oluşturma
 

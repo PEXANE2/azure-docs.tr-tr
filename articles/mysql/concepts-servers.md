@@ -1,57 +1,57 @@
 ---
-title: MySQL için Azure veritabanı sunucusu kavramları
-description: Bu konuda, MySQL Server için Azure veritabanı ile çalışmak için kurallar ve dikkat edilecek noktalar sunulmaktadır.
+title: Sunucu kavramları-MySQL için Azure veritabanı
+description: Bu konuda, MySQL sunucuları için Azure veritabanı ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 565e1bf7a4972e230b3cf56232ebd24519fcab5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: 9a2e2eb022d96af1437ea4189d11f5fa69339325
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525860"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770008"
 ---
-# <a name="server-concepts-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı sunucusu kavramları
+# <a name="server-concepts-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu kavramları
 
-Bu makalede, MySQL Server için Azure veritabanı ile çalışmaya yönelik kurallar ve dikkat edilecek noktalar sunulmaktadır.
+Bu makalede MySQL sunucuları için Azure veritabanı ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>MySQL sunucusu için Azure veritabanı nedir?
 
-MySQL sunucusu için Azure veritabanı, birden fazla veritabanı için merkezi bir yönetim noktası ' dir. Bu şirket içi dünyada alışkın olabileceğiniz MySQL server yapısı olur. Özellikle, MySQL hizmeti için Azure veritabanı, yönetilen, performans garantileri sağlar ve erişim ve Özellikler sunucu düzeyinde kullanıma sunar.
+MySQL için Azure veritabanı sunucusu, birden çok veritabanı için merkezi bir yönetim noktasıdır. Bu, şirket içi dünyada bildiğiniz aynı MySQL sunucu yapısıdır. Özellikle, MySQL için Azure veritabanı hizmeti yönetilir, performans garantisi sağlar ve sunucu düzeyinde erişim ve özellikler sunar.
 
-MySQL sunucusu için Azure veritabanı:
+MySQL için Azure veritabanı sunucusu:
 
 - Bir Azure aboneliği içinde oluşturulur.
-- Veritabanları için üst kaynaktır.
+- , Veritabanları için üst kaynaktır.
 - Veritabanları için bir ad alanı sağlar.
-- Bir kapsayıcı güçlü kullanım ömrü semantiğine sahip - bir sunucu silme ve kapsanan veritabanları siler.
-- Bir bölgedeki kaynakları birlikte bulundurur.
+- Güçlü yaşam süresi semantiğinin bulunduğu bir kapsayıcıdır; bir sunucuyu silin ve kapsanan veritabanlarını siler.
+- Bir bölgedeki kaynakları birlikte bulur.
 - Sunucu ve veritabanı erişimi için bir bağlantı uç noktası sağlar.
-- Veritabanlarını için uygulama yönetimi ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, yapılandırmaları, vb.
-- Birden çok sürümlerinde kullanılabilir. Daha fazla bilgi için [MySQL veritabanı sürümleri için desteklenen Azure veritabanı'na](./concepts-supported-versions.md).
+- Veritabanlarına uygulanan yönetim ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, konfigürasyonlar vb.
+- Birden çok sürümde kullanılabilir. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı veritabanı sürümleri](./concepts-supported-versions.md).
 
-MySQL sunucusu için Azure Veritabanı içinde bir veya birden fazla veritabanı oluşturabilirsiniz. Tüm kaynakları veya kaynakları paylaşmak için birden çok veritabanını oluşturmak için sunucu başına tek bir veritabanı oluşturmak için tercih edebilirsiniz. Fiyatlandırma yapılandırılmış başına-fiyatlandırma katmanı, sanal çekirdek ve depolama alanı (GB) yapılandırmasına bağlı olarak, sunucusudur. Daha fazla bilgi için [fiyatlandırma katmanları](./concepts-service-tiers.md).
+MySQL sunucusu için Azure Veritabanı içinde bir veya birden fazla veritabanı oluşturabilirsiniz. Tüm kaynakları kullanmak veya kaynakları paylaşmak için birden çok veritabanı oluşturmak üzere sunucu başına tek bir veritabanı oluşturmayı tercih edebilirsiniz. Fiyatlandırma Katmanı, sanal çekirdek ve depolama (GB) yapılandırmasına bağlı olarak, fiyatlandırma sunucu başına yapılandırılır. Daha fazla bilgi için bkz. [fiyatlandırma katmanları](./concepts-service-tiers.md).
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Nasıl bağlanmak ve MySQL için Azure veritabanı kimlik doğrulaması?
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Nasıl yaparım? bir MySQL sunucusu için Azure veritabanı 'na bağlanıp kimlik doğrulaması yapılsın mı?
 
-Aşağıdaki öğeleri veritabanınıza güvenli erişim sağlayın.
+Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardımcı olur.
 
 |     |     |
 | :-- | :-- |
-| **Kimlik doğrulama ve yetkilendirme** | MySQL sunucusu için Azure veritabanı, yerel MySQL kimlik doğrulamasını destekler. Bağlanın ve Sunucu Yöneticisi oturum açma sunucusuyla kimlik doğrulaması. |
-| **Protokolü** | Hizmet, MySQL tarafından kullanılan bir ileti tabanlı iletişim kuralı destekler. |
-| **TCP/IP** | Protokol, TCP/IP üzerinde ve UNIX etki alanı Yuva üzerinden desteklenir. |
-| **Güvenlik duvarı** | Hangi bilgisayarların izinli olduğunu belirtmenize kadar verilerinizi korumak için bir güvenlik duvarı kuralı tüm erişim veritabanı sunucunuza engeller. Bkz: [MySQL sunucusu güvenlik duvarı kuralları için Azure veritabanı](./concepts-firewall-rules.md). |
-| **SSL** | Hizmet, uygulamalarınız ve veritabanı sunucunuz arasında zorunlu SSL bağlantılarını destekler.  Bkz. [MySQL için Azure Veritabanına güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma](./howto-configure-ssl.md). |
+| **Kimlik doğrulama ve yetkilendirme** | MySQL için Azure veritabanı sunucusu yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
+| **Protokol** | Hizmet MySQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
+| **TCP/ıP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |
+| **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların iznine sahip olduğunu belirtene kadar bir güvenlik duvarı kuralı, veritabanı sunucunuza tüm erişimi engeller. Bkz. [MySQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](./concepts-firewall-rules.md). |
+| **SSL** | Hizmet, uygulamalarınız ve veritabanı sunucunuz arasında SSL bağlantısı uygulanmasını destekler.  Bkz. [MySQL için Azure Veritabanına güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma](./howto-configure-ssl.md). |
 
-## <a name="how-do-i-manage-a-server"></a>Bir sunucuya nasıl yönetebilirim?
+## <a name="how-do-i-manage-a-server"></a>Sunucu Nasıl yaparım? mi?
 
-Azure portalında veya Azure CLI kullanarak MySQL Server için Azure veritabanı yönetebilirsiniz.
+Azure portal veya Azure CLı kullanarak MySQL için Azure veritabanı sunucularını yönetebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmetine genel bakış için bkz. [MySQL genel bakış için Azure veritabanı](./overview.md)
-- Kotalar ve sınırlamalar temel alarak belirli bir kaynak hakkında bilgi için **hizmet katmanı**, bkz: [hizmet katmanları](./concepts-service-tiers.md)
-- Hizmete bağlanma hakkında daha fazla bilgi için bkz: [MySQL için Azure veritabanı için bağlantı kitaplıkları](./concepts-connection-libraries.md).
+- Hizmete genel bakış için bkz. [MySQL Için Azure veritabanı 'Na genel bakış](./overview.md)
+- **Hizmet katmanınıza**dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [hizmet katmanları](./concepts-service-tiers.md)
+- Hizmete bağlanma hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı bağlantı kitaplıkları](./concepts-connection-libraries.md).

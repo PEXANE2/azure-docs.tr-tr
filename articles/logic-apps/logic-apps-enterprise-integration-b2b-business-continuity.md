@@ -1,20 +1,19 @@
 ---
-title: Tümleştirme hesapları için olağanüstü durum kurtarma-Azure Logic Apps
+title: Tümleştirme hesapları için olağanüstü durum kurtarma
 description: Azure Logic Apps tümleştirme hesapları için çapraz bölge olağanüstü durum kurtarmayı ayarlama
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5ab0b14a190461d4dfba74e277f3d2ec30d9981a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680409"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793140"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hesapları için çapraz bölge olağanüstü durum kurtarmayı ayarlama
 
@@ -113,7 +112,7 @@ Gelen iletilerde olağanüstü durum kurtarmayı etkinleştirmek için x12 sözl
 
    ![Denetim numaraları ekleme veya güncelleştirme](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Bir eylemi ikincil bölge tümleştirme hesabına bağlamak için, kullanılabilir tümleştirme hesaplarının bir listesi için **bağlantıyı değiştir**  > **Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin. 
+7. Bir eylemi ikincil bölge tümleştirme hesabına bağlamak için, kullanılabilir tümleştirme hesaplarının bir listesi için **bağlantıyı değiştir** > **Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin. 
 
    ![İkincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -168,7 +167,7 @@ Gelen iletilerde olağanüstü durum kurtarmayı etkinleştirmek için, EDIOLGU 
 
    ![Denetim numaraları ekleme veya güncelleştirme](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Bir eylemi ikincil bölge tümleştirme hesabına bağlamak için, kullanılabilir tümleştirme hesaplarının bir listesi için **bağlantıyı değiştir**  > **Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.
+8. Bir eylemi ikincil bölge tümleştirme hesabına bağlamak için, kullanılabilir tümleştirme hesaplarının bir listesi için **bağlantıyı değiştir** > **Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.
 
    ![İkincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -220,7 +219,7 @@ AS2 protokolünü kullanan belgeler için iş sürekliliği ileti KIMLIĞI ve M�
 
    ![MıC ekleme veya güncelleştirme](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Bir eylemi ikincil tümleştirme hesabına bağlamak için, kullanılabilir tümleştirme hesaplarının bir listesi için **bağlantıyı değiştir**  > **Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.
+7. Bir eylemi ikincil tümleştirme hesabına bağlamak için, kullanılabilir tümleştirme hesaplarının bir listesi için **bağlantıyı değiştir** > **Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.
 
    ![İkincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda sanal ağ (VNet) Hizmetleri uç noktasına genel bakış-tek sunucu
-description: Sanal ağ (VNet) hizmet uç noktalarının PostgreSQL için Azure veritabanı-tek sunucu ile nasıl çalıştığını öğrenin.
-author: bolzmj
-ms.author: mbolz
+title: Sanal ağ kuralları-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı 'na bağlanmak üzere sanal ağ (VNet) hizmet uç noktalarını nasıl kullanacağınızı öğrenin-tek sunucu.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b03be62a634d04f41513e7cf27c3cb55f69da438
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 11ffd323c5f775a795899cc35706493cba6d933b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609978"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768665"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu için sanal ağ hizmet uç noktalarını ve kurallarını kullanın
 
@@ -31,7 +31,7 @@ Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için b
 
 **Sanal ağ:** Azure aboneliğinizle ilişkili sanal ağlarınız olabilir.
 
-**Alt ağ** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
+**Alt ağ:** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
 
 **Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası][vm-virtual-network-service-endpoints-overview-649d] , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz. Bu hizmet etiketi PostgreSQL için Azure veritabanı ve MySQL Hizmetleri için de geçerlidir. **Microsoft. SQL** hizmet etiketi bir sanal ağ hizmeti uç noktasına uygulanırken, tüm Azure SQL veritabanı, PostgreSQL Için Azure veritabanı ve alt ağdaki MySQL sunucuları Için Azure veritabanı için hizmet uç noktası trafiğini yapılandıracaksınız. 
 
@@ -89,8 +89,8 @@ Her bir sanal ağ kuralı, yalnızca sunucudaki belirli bir veritabanına değil
 
 Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrımı vardır. Aşağıdaki rollerden her biri için eylem gereklidir:
 
-- **Ağ Yöneticisi:** &nbsp;Uç noktasını açın.
-- **Veritabanı Yöneticisi:** &nbsp;Verilen alt ağı PostgreSQL için Azure veritabanı sunucusuna eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
+- **Ağ Yöneticisi:** uç noktayı açmak &nbsp;.
+- **Veritabanı Yöneticisi:** &nbsp; belirtilen alt ağı PostgreSQL Için Azure veritabanı sunucusuna eklemek üzere erişim denetim LISTESINI (ACL) güncelleştirin.
 
 *RBAC alternatifi:*
 
@@ -116,9 +116,9 @@ PostgreSQL için Azure veritabanı 'nda, sanal ağ kuralları özelliği aşağ�
 
 - Sanal ağ kuralları yalnızca Azure Resource Manager sanal ağlar için geçerlidir; [klasik dağıtım modeli][arm-deployment-model-568f] ağlarına değil.
 
-- **Microsoft. SQL** Service etiketi kullanılarak PostgreSQL Için Azure veritabanı 'na sanal ağ hizmeti uç noktaları açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı, Azure SQL veritabanı ve Azure SQL veri ambarı.
+- **Microsoft. SQL** Service etiketi kullanılarak PostgreSQL Için Azure veritabanı 'na sanal ağ hizmeti uç noktaları açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL Için Azure veritabanı, PostgreSQL Için Azure veritabanı, Azure SQL veritabanı ve Azure SQL veri ambarı.
 
-- Yalnızca genel amaçlı ve bellek için iyileştirilmiş sunucuları için sanal ağ hizmet uç noktaları desteğidir.
+- VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 
 - Güvenlik duvarında, IP adresi aralıkları aşağıdaki ağ öğelerine uygulanır, ancak sanal ağ kuralları şunları içermez:
     - [Siteden siteye (S2S) sanal özel ağ (VPN)][vpn-gateway-indexmd-608y]
@@ -132,7 +132,7 @@ Bağlantı hattınızdan PostgreSQL için Azure veritabanı 'na yönelik iletiş
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET hizmet uç noktalarını açmadan sunucunuza VNET güvenlik duvarı kuralı ekleme
 
-Yalnızca bir güvenlik duvarı kuralı ayarlandığında sunucunun VNet 'e güvenli hale getirilmesine yardımcı olmaz. Ayrıca güvenliğin etkili olabilmesi için VNet hizmet **uç noktalarını** açmanız gerekir. Hizmet uç noktalarını **Açık**olarak açtığınızda, VNET alt ağınız **kapalı** kalma süresini **Açık**olarak tamamlanana kadar kesinti yaşar. Bu, büyük sanal ağlar bağlamında özellikle doğrudur. Geçiş sırasında kesinti süresini azaltmak veya ortadan kaldırmak için **ıgnoremissingserviceendpoint** bayrağını kullanabilirsiniz.
+Yalnızca bir güvenlik duvarı kuralı ayarlandığında sunucunun VNet 'e güvenli hale getirilmesine yardımcı olmaz. Ayrıca güvenliğin etkili olabilmesi için VNet hizmet **uç noktalarını açmanız gerekir** . Hizmet uç noktalarını **Açık**olarak açtığınızda, VNET alt ağınız **kapalı** kalma süresini **Açık**olarak tamamlanana kadar kesinti yaşar. Bu, büyük sanal ağlar bağlamında özellikle doğrudur. Geçiş sırasında kesinti süresini azaltmak veya ortadan kaldırmak için **ıgnoremissingserviceendpoint** bayrağını kullanabilirsiniz.
 
 **Ignoremissingserviceendpoint** BAYRAĞıNı Azure CLI veya portalını kullanarak ayarlayabilirsiniz.
 

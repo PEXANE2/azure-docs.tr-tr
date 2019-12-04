@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda sunucu kavramları-tek sunucu
+title: Sunucular-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nın yapılandırılmasına ve yönetilmesine yönelik konular ve tek sunucu için yönergeler sağlanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029975"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768172"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu
 Bu makalede PostgreSQL için Azure veritabanı-tek sunucu ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
@@ -46,13 +46,13 @@ Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardım
 ## <a name="managing-your-server"></a>Sunucunuzu yönetme
 [Azure Portal](https://portal.azure.com) veya [Azure CLI](/cli/azure/postgres)kullanarak PostgreSQL için Azure veritabanı sunucularını yönetebilirsiniz.
 
-Sunucu oluştururken, yönetici kullanıcı için kimlik bilgilerini ayarlarsınız. Yönetici Kullanıcı, sunucuda sahip olduğunuz en yüksek ayrıcalıklı kullanıcı. Azure_pg_admin rolüne aittir. Bu rolün tam süper kullanıcı izinleri yok. 
+Sunucu oluştururken, yönetici kullanıcı için kimlik bilgilerini ayarlarsınız. Yönetici Kullanıcı, sunucuda sahip olduğunuz en yüksek ayrıcalıklı kullanıcı. Azure_pg_admin role aittir. Bu rolün tam süper kullanıcı izinleri yok. 
 
-PostgreSQL süper kullanıcı özniteliği, yönetilen hizmete ait olan azure_superuser öğesine atanır. Bu role erişiminiz yok.
+PostgreSQL süper kullanıcı özniteliği, yönetilen hizmete ait olan azure_superuser atanır. Bu role erişiminiz yok.
 
 PostgreSQL için Azure veritabanı sunucusu varsayılan veritabanlarına sahiptir: 
 - **Postgres** -sunucunuz oluşturulduktan sonra bağlanabilir bir varsayılan veritabanıdır.
-- **azure_maintenance** -bu veritabanı, yönetilen hizmet sağlayan işlemleri kullanıcı eylemlerine ayırmak için kullanılır. Bu veritabanına erişiminiz yok.
+- **azure_maintenance** -bu veritabanı, kullanıcı eylemlerinden yönetilen hizmet sağlayan işlemleri ayırmak için kullanılır. Bu veritabanına erişiminiz yok.
 - **azure_sys** -sorgu deposu için bir veritabanı. Bu veritabanı, sorgu deposu kapalıyken veri toplamaz; Bu, varsayılan ayardır. Daha fazla bilgi için bkz. [sorgu deposuna genel bakış](concepts-query-store.md).
 
 

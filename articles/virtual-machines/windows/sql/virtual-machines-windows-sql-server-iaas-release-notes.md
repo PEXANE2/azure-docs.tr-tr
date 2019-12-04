@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c122baa21c5d94b57f29cb0530f0a2655faa87d0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897253"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790383"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 
 Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıtmanıza olanak tanır. Bu makalede, [Azure sanal makinelerinde son SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)sürümlerindeki yeni özellikler ve geliştirmelerle ilişkili belge değişiklikleri özetlenmektedir. 
 
 
-## <a name="october-2019"></a>2019 Ekim
+## <a name="october-2019"></a>Ekim 2019
 
 | Değişikliklerine | Ayrıntılar |
 | --- | --- |
@@ -56,7 +56,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | --- | --- |
 | **Yeni SQL IaaS yükleme modları** | SQL Server hizmetinin yeniden başlatılmasını önlemek için SQL Server IaaS uzantısını [hafif modda](virtual-machines-windows-sql-server-agent-extension.md) yüklemek mümkündür.  |
 | **SQL Server sürümü değişikliği** | Artık SQL Server VM için [sürüm özelliğini](virtual-machines-windows-sql-change-edition.md) değiştirebilirsiniz. |
-| **SQL VM kaynak sağlayıcısında yapılan değişiklikler** | [SQL VM kaynak sağlayıcısı ile SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows 2008 görüntülerini](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)içerir.|
+| **SQL VM kaynak sağlayıcısında yapılan değişiklikler** | [SQL VM kaynak sağlayıcısı ile SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows Server 2008](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) görüntülerini içerir.|
 | **Azure Hibrit Avantajı kullanarak kendi lisans görüntülerini getirin** | Azure Marketi 'nden dağıtılan kendi lisans görüntülerini getir, şimdi de [Lisans türlerini Kullandıkça Öde olarak](virtual-machines-windows-sql-ahb.md#remarks)değiştirebilir.| 
 | &nbsp; | &nbsp; |
 

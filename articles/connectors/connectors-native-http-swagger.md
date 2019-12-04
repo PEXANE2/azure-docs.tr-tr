@@ -2,26 +2,23 @@
 title: Azure Logic Apps REST uç noktalarına Bağlan
 description: Azure Logic Apps kullanarak otomatik görevler, süreçler ve iş akışlarında REST uç noktalarını izleme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824813"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787378"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http + Swagger bağlayıcısıyla mantıksal uygulamalar oluşturarak bir [Swagger dosyası](https://swagger.io) aracılığıyla düzenlı olarak herhangi bir REST uç noktasını çağıran iş akışlarını otomatikleştirebilirsiniz. HTTP + Swagger tetikleyicisi ve eylemi, [http tetikleyicisi ve eylemiyle](connectors-native-http.md) aynı şekilde çalışır, ancak Swagger dosyası tarafından tanımlanan API yapısını ve çıkışları açığa çıkararak mantıksal uygulama tasarımcısında daha iyi bir deneyim sağlar. Bir yoklama tetikleyicisi uygulamak için, [mantıksal uygulamalardan diğer API 'leri, hizmetleri ve sistemleri çağırmak üzere özel API 'Ler oluşturma](../logic-apps/logic-apps-create-api-app.md#polling-triggers)bölümünde açıklanan yoklama modelini izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -33,7 +30,7 @@ ms.locfileid: "73824813"
 
   * Swagger dosyasında, çıkış noktaları [arası kaynak paylaşımı (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) etkin olmalıdır.
 
-  Barındırılmayan veya güvenlik ve çapraz kaynak gereksinimlerini karşılamayan bir Swagger dosyasına başvurmak için, [Swagger dosyasını bir Azure depolama hesabındaki blob kapsayıcısına yükleyebilir](#host-swagger)ve bu depolama hesabında CORS 'yi etkinleştirebilirsiniz; böylece dosya.
+  Barındırılmayan veya güvenlik ve çapraz kaynak gereksinimlerini karşılamayan bir Swagger dosyasına başvurmak için, [Swagger dosyasını bir Azure depolama hesabındaki blob kapsayıcısına yükleyebilir](#host-swagger)ve bu depolama hesabında CORS 'yi etkinleştirerek dosyaya başvurabilirsiniz.
 
   Bu konudaki örneklerde bilişsel Hizmetler [hesabı ve erişim anahtarı](../cognitive-services/cognitive-services-apis-create-account.md)gerektiren bilişsel [Hizmetler Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview)kullanılır.
 
@@ -45,7 +42,7 @@ ms.locfileid: "73824813"
 
 Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyası için bir URL 'ye HTTP isteği gönderir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Tetikleyiciler** listesinden **http + Swagger** tetikleyicisi ' ni seçin.
 
@@ -81,7 +78,7 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
 Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyasının URL 'sine bir HTTP isteği oluşturur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
@@ -157,10 +154,10 @@ HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha 
 
 | Durum kodu | Açıklama |
 |-------------|-------------|
-| 200 | Tamam |
+| 200 | TAMAM |
 | 202 | Eden |
 | 400 | Hatalı istek |
-| 401 | Yetkisiz |
+| 401 | Yetkilendirilmemiş |
 | 403 | Yasak |
 | 404 | Bulunamadı |
 | 500 | İç sunucu hatası. Bilinmeyen bir hata oluştu. |

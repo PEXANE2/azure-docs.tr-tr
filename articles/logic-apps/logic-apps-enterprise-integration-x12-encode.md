@@ -1,97 +1,95 @@
 ---
-title: X12 kodlama iletileri - Azure Logic Apps | Microsoft Docs
-description: EDI doğrulamak ve XML ile kodlanmış dönüştürme ileti Kodlayıcısı Azure Logic Apps ile Enterprise Integration Pack ile X12 ile iletiler
+title: X12 iletilerini kodla
+description: X12 ileti Kodlayıcısı ile EDI 'yı doğrula ve Enterprise Integration Pack ile Azure Logic Apps XML kodlu iletileri Dönüştür
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705687"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792355"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12 kodlama Azure Logic Apps Enterprise Integration Pack ile iletileri
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack iletileri Azure Logic Apps kodlama
 
-Encode X12 ileti bağlayıcısıyla EDI ve iş ortağı özgü özellikleri doğrulamak, XML olarak kodlanmış iletileri değişimi işlem kümeleri EDI dönüştürmek ve teknik bir bildirim, işlev bildirimi veya her ikisi de istek.
-Bu bağlayıcıyı kullanmak için bağlayıcıyı mantıksal uygulamanızda için var olan bir tetikleyici eklemeniz gerekir.
+Encode x12 ileti Bağlayıcısı ile EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, XML kodlu iletileri değişim içindeki EDI işlem kümelerine dönüştürebilir ve teknik bir onay, Işlevsel bildirim veya her ikisini de isteyebilirsiniz.
+Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Gereksinim duyduğunuz öğeleri şu şekildedir:
+İhtiyacınız olan öğeler aşağıda verilmiştir:
 
-* Bir Azure hesabı; oluşturabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free)
-* Bir [tümleştirme hesabı](logic-apps-enterprise-integration-create-integration-account.md) zaten tanımlanmış ve Azure aboneliğinizle ilişkili. Encode X12 ileti bağlayıcıyı kullanmak üzere bir tümleştirme hesabı olması gerekir.
-* En az iki [iş ortakları](logic-apps-enterprise-integration-partners.md) , tümleştirme hesabında zaten tanımlanmış
-* Bir [X12 sözleşmesi](logic-apps-enterprise-integration-x12.md) , tümleştirme hesabında zaten tanımlı
+* Bir Azure hesabı; [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz
+* Zaten tanımlanmış ve Azure aboneliğinizle ilişkilendirilen bir [tümleştirme hesabı](logic-apps-enterprise-integration-create-integration-account.md) . Encode x12 ileti bağlayıcısını kullanmak için bir tümleştirme hesabınız olmalıdır.
+* Tümleştirme hesabınızda zaten tanımlanmış olan en az iki [iş ortağı](logic-apps-enterprise-integration-partners.md)
+* Tümleştirme hesabınızda zaten tanımlanmış olan bir [x12 sözleşmesi](logic-apps-enterprise-integration-x12.md)
 
-## <a name="encode-x12-messages"></a>X12 kodlama iletileri
+## <a name="encode-x12-messages"></a>X12 iletilerini kodla
 
-1. [Mantıksal uygulama oluşturma](quickstart-create-first-logic-app-workflow.md).
+1. [Mantıksal uygulama oluşturun](quickstart-create-first-logic-app-workflow.md).
 
-2. İstek tetikleyicisi gibi mantıksal uygulamanızı başlatmak için bir tetikleyici eklemelisiniz tetikleyicileri, kodla X12 ileti Bağlayıcısı yok. Mantıksal Uygulama Tasarımcısı'nda bir tetikleyici ekleme ve ardından mantıksal uygulamanız için bir eylem ekleyin.
+2. Encode x12 Message bağlayıcısının tetikleyicisi yoktur, bu nedenle bir Istek tetikleyicisi gibi mantıksal uygulamanızı başlatmak için bir tetikleyici eklemeniz gerekir. Mantıksal uygulama tasarımcısında bir tetikleyici ekleyin ve sonra mantıksal uygulamanıza bir eylem ekleyin.
 
-3.  Arama kutusuna filtreniz için "x12" girin. Şunlardan birini seçin **X12-kodlamak için X12 sözleşme adına göre ileti** veya **X12-kodlamak için X12 kimliklere göre ileti**.
+3.  Arama kutusuna filtreniz için "x12" yazın. **X12-kodla, anlaşma adına göre x12** ya da **x12-encode ' i seçerek Iletileri kimliklere göre x12**.
    
-    !["X12" için arama](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
+    !["X12" araması yapın](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. Daha önce tümleştirme hesabı için herhangi bir bağlantı oluşturmadıysanız, artık bu bağlantıyı oluşturmak için istenir. Bağlantınızı adlandırın ve bağlanmak istediğiniz tümleştirme hesabı seçin. 
+3. Daha önce tümleştirme hesabınızla bağlantı oluşturmadıysanız, bu bağlantıyı şimdi oluşturmanız istenir. Bağlantınızı adlandırın ve bağlamak istediğiniz tümleştirme hesabını seçin. 
    
     ![Tümleştirme hesabı bağlantısı](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
-    Bir yıldız işareti ile özellikleri gereklidir.
+    Yıldız işareti olan özellikler gereklidir.
 
     | Özellik | Ayrıntılar |
     | --- | --- |
-    | Bağlantı adı * |Bağlantınız için herhangi bir ad girin. |
-    | Tümleştirme hesabı * |Tümleştirme hesabı için bir ad girin. Tümleştirme hesabı ve mantıksal uygulamanızı aynı Azure konumda olduklarından emin olun. |
+    | Bağlantı adı * |Bağlantınız için bir ad girin. |
+    | Tümleştirme hesabı * |Tümleştirme hesabınız için bir ad girin. Tümleştirme hesabınızın ve mantıksal uygulamanızın aynı Azure konumunda olduğundan emin olun. |
 
-5.  İşiniz bittiğinde, bağlantı ayrıntılarınızı şu örneğe benzemelidir. Bağlantınızı oluşturmayı tamamlamak için seçin **Oluştur**.
+5.  İşiniz bittiğinde, bağlantı ayrıntılarınız bu örneğe benzer görünmelidir. Bağlantınızın oluşturulmasını tamamlaması için **Oluştur**' u seçin.
 
-    ![oluşturulan tümleştirme hesabı bağlantısı](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
+    ![Tümleştirme hesabı bağlantısı oluşturuldu](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
-    Bağlantınızı artık oluşturulur.
+    Bağlantınız artık oluşturuldu.
 
     ![Tümleştirme hesabı bağlantı ayrıntıları](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
 
-#### <a name="encode-x12-messages-by-agreement-name"></a>X12 kodlama sözleşme adına göre iletiler
+#### <a name="encode-x12-messages-by-agreement-name"></a>Anlaşma adına göre x12 iletilerini kodla
 
-X12 kodlanacak seçerseniz, sözleşme adına göre iletilerini **X12 adını sözleşmesi** listesinde, girin veya seçin, mevcut X12 sözleşme. Kodlanacak XML iletisi girin.
+X12 iletilerini anlaşma adına göre kodlamayı seçtiyseniz, **x12 anlaşma listesinin adını** açın, var olan x12 sözleşmenizi girin veya seçin. Kodlanacak XML iletisini girin.
 
-![X12 girin anlaşma adı ve kodlanacak XML iletisi](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
+![Kodlamak için x12 anlaşma adı ve XML iletisi girin](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
-#### <a name="encode-x12-messages-by-identities"></a>X12 kodlama kimliklere göre iletiler
+#### <a name="encode-x12-messages-by-identities"></a>Kimliklere göre x12 iletilerini kodla
 
-X12 kodlanacak seçerseniz iletileri tarafından kimlik, gönderen tanımlayıcısı, gönderen niteleyicisi, alıcı tanımlayıcısı ve alıcı niteleyicisi, X12 içinde yapılandırılan girin sözleşme. Kodlanacak XML iletisi seçin.
+X12 iletilerini kimliklere göre kodlamayı seçerseniz, x12 sözleşmenizde yapılandırıldığı şekilde gönderen tanımlayıcı, gönderici niteleyicisi, alıcı kimliği ve alıcı niteleyicisi girin. Kodlanacak XML iletisini seçin.
    
-![Gönderen ve alıcı için kimlikleri sağlamak, kodlanacak XML iletisi seçin](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Gönderen ve alıcı için kimlikler sağlayın, kodlanacak XML iletisini seçin](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
 ## <a name="x12-encode-details"></a>X12 kodlama ayrıntıları
 
-X12 kodla bağlayıcı, bu görevleri gerçekleştirir:
+X12 encode Bağlayıcısı şu görevleri gerçekleştirir:
 
-* Eşleşen gönderen ve alıcı bağlam özellikleri tarafından sözleşme çözümleme.
-* Değişimi işlem kümeleri EDI XML olarak kodlanmış iletileri dönüştürme EDI değişim serileştirir.
-* İşlem kümesi üst bilgi ve tanıtım parçaları için geçerlidir
-* Bir değişim denetim numarası, bir grup denetim numarası ve her giden değişimine yönelik bir işlem kümesi denetim numarası oluşturur
-* Ayırıcı olarak yük verisi değiştirir
-* EDI ve iş ortağı özgü özellikleri doğrulama
-  * Şema ileti karşı işlem kümesi veri öğelerinin şema doğrulaması
-  * EDI doğrulaması işlem kümesi veri öğeleri üzerinde gerçekleştirilen.
-  * Genişletilmiş Doğrulama işlem kümesi veri öğeleri üzerinde gerçekleştirilen
-* Teknik ve/veya işlev bildirimi (yapılandırılmışsa) ister.
-  * Teknik bir bildirim başlığı doğrulama sonucu olarak oluşturur. Teknik bildirimi bir değişim üstbilgi ve tanıtım adresi alıcı tarafından işlenmesini durumu raporları
-  * Bir işlev bildirimi gövdesi doğrulama sonucu olarak oluşturur. İşlev bildirimi alınan belge işlerken bir hatayla karşılaştı her bir hata raporları
+* Gönderen ve alıcı bağlamı özellikleriyle eşleşen sözleşme çözümlemesi.
+* XML kodlu iletileri değişim içindeki EDI işlem kümelerine dönüştürerek EDI Interchange 'i seri hale getirir.
+* İşlem kümesi üst bilgisi ve treyler segmentlerini uygular
+* Her giden değişim için bir değişim denetim numarası, bir Grup denetim numarası ve bir işlem kümesi denetim numarası üretir
+* Yük verilerinde ayırıcıları değiştirir
+* EDI ve iş ortaklarına özgü özellikleri doğrular
+  * İleti şemasına karşı işlem kümesi veri öğeleri için şema doğrulaması
+  * EDI doğrulaması işlem kümesi veri öğelerinde gerçekleştirildi.
+  * İşlem kümesi veri öğelerinde Genişletilmiş Doğrulama gerçekleştirildi
+* Bir teknik ve/veya Işlevsel onay (yapılandırıldıysa) ister.
+  * Teknik bildirim, üst bilgi doğrulamanın sonucu olarak oluşturulur. Teknik bildirim, bir değişim üst bilgisinin ve adres alıcısının artmesinin durumunu bildirir
+  * Işlevsel bir bildirim, gövde doğrulamanın sonucu olarak oluşturulur. Alınan belgeyi işlerken işlevsel bildirim, karşılaşılan her hatayı raporlar
 
-## <a name="view-the-swagger"></a>Swagger görüntüleyin
-Bkz: [ayrıntıları swagger](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Swagger 'yi görüntüleme
+[Swagger ayrıntılarına](/connectors/x12/)bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Enterprise Integration Pack hakkında daha fazla bilgi](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin") 
+[Enterprise Integration Pack hakkında daha fazla bilgi edinin](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin") 
 

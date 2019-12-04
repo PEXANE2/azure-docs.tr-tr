@@ -1,20 +1,19 @@
 ---
-title: B2B iletileri için izleme sorguları oluşturma-Azure Logic Apps
+title: B2B iletileri için izleme sorguları oluşturma
 description: Azure Logic Apps için Azure Log Analytics 'de AS2, x12 ve EDIOLGU iletilerini izleyen sorgular oluşturun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 7d7bb53d24a113ea78b5bac3f9682fbb61ce2de9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 36cf45aa0f7d46b62caa586d1939ec52e67b1a3e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680090"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792868"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps için Azure Izleyici günlüklerinde B2B iletileri için izleme sorguları oluşturma
 
@@ -76,7 +75,7 @@ Belirli özelliklere veya değerlere göre iletileri bulmak için, filtreleri ku
    **Ekle**' yi seçtikten sonra, sorgunuz Seçili filtre olaylarınız ve değeri ile güncelleştirilir. 
    Önceki sonuçlarınız artık çok filtrelenmiştir. 
 
-   Örneğin, bu sorgu **Type = = "AzureDiagnostics"** öğesini arar ve **event_record_messageProperties_interchangeControlNumber_s** filtresini kullanarak bir değişim denetim numarası temelinde sonuçları bulur.
+   Örneğin, bu sorgu **Type = = "AzureDiagnostics"** arar ve **event_record_messageProperties_interchangeControlNumber_s** filtresini kullanarak bir değişim denetim numarasına göre sonuçları bulur.
 
    ![Filtrelenmiş sonuçlar](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filtered-results.png)
 

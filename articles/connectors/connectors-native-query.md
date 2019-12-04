@@ -1,27 +1,21 @@
 ---
-title: Logic Apps 'e sorgu eylemi ekleme | Microsoft Docs
-description: Filtre dizisi gibi eylemleri gerçekleştirmeye yönelik sorgu eylemine genel bakış.
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+title: Logic Apps 'te sorgu eylemi ekleme
+description: Filtre dizisi gibi eylemleri gerçekleştirmeye yönelik sorgu eylemine genel bakış
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973758"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787141"
 ---
 # <a name="get-started-with-the-query-action"></a>Sorgu eylemini kullanmaya başlayın
+
 Sorgu eylemini kullanarak, iş akışlarını gerçekleştirmek için toplu işlerle ve dizilerle çalışabilirsiniz:
 
 * Bir veritabanından tüm yüksek öncelikli kayıtlar için bir görev oluşturun.
@@ -30,6 +24,7 @@ Sorgu eylemini kullanarak, iş akışlarını gerçekleştirmek için toplu işl
 Bir mantıksal uygulamadaki sorgu eylemini kullanmaya başlamak için bkz. [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>Sorgu eylemini kullanma
+
 Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen bir işlemdir. 
 [Eylemler hakkında daha fazla bilgi edinin](../connectors/apis-list.md).  
 
@@ -50,7 +45,7 @@ Mantıksal uygulamada nasıl ekleyebileceğiniz aşağıda açıklanmıştır:
     Eylem, yalnızca filtre gereksinimlerini karşılayan sonuçları içeren yeni bir dizi çıktısı alınacaktır.
 6. Kaydetmek için araç çubuğunun sol üst köşesine tıklayın ve mantıksal uygulamanız hem kaydet hem de Yayımla (etkinleştir) olarak değişir.
 
-\* bir HTTP uç noktası arıyorsanız ve bir JSON yanıtı alıyorsanız JSON yanıtını ayrıştırmak için JSON 'u _ayrıştırma_ eylemini kullanın. Bu adımı uygulamadan, _filtre dizisi_ yalnızca gövde görür ve JSON yükünün yapısını anlamaz.
+\* bir HTTP uç noktası arıyorsanız ve bir JSON yanıtı alıyorsanız JSON yanıtını ayrıştırmak için JSON 'u _Ayrıştır_ eylemini kullanın. Bu adımı uygulamadan, _filtre dizisi_ yalnızca gövde görür ve JSON yükünün yapısını anlamaz.
 
 ## <a name="query-action"></a>Sorgu eylemi
 Bu, bağlayıcının desteklediği eylemin ayrıntılarını aşağıda bulabilirsiniz. Bağlayıcının olası bir eylemi vardır.

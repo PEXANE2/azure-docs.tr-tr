@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı 'nda Sorgu Performansı İçgörüleri
+title: Sorgu Performansı İçgörüleri-MariaDB için Azure veritabanı
 description: Bu makalede, MariaDB için Azure veritabanı 'nda Sorgu Performansı İçgörüleri özelliği açıklanmaktadır
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31aacfea7c68614add0229c3a9c494de4714fe16
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: eb124f40ff915b56011d5f16cd83a9358960621e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604030"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772311"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Sorgu Performansı İçgörüleri
 
@@ -35,7 +35,7 @@ Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, 
 
 Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sorgu Performansı İçgörüleri çalışması için, verilerin [sorgu deposunda](concepts-query-store.md)bulunması gerekir.
 

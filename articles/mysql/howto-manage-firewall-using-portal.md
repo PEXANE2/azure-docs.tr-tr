@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda MySQL güvenlik duvarı kuralları oluşturma ve yönetme
+title: Güvenlik duvarı kurallarını yönetme-Azure portal-MySQL için Azure veritabanı
 description: Azure portal kullanarak MySQL için Azure Güvenlik duvarı kuralları oluşturma ve yönetme
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 823226da671671eaf6380d48a35c20298ec6bf9d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 12/02/2019
+ms.openlocfilehash: b02bae528146a3f0c214b7fbb1d234c1a24b174f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933635"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774249"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure Güvenlik duvarı kuralları oluşturma ve yönetme
 Sunucu düzeyinde güvenlik duvarı kuralları, belirli bir IP adresinden veya bir IP adresi aralığından MySQL için Azure veritabanı sunucusuna erişimi yönetmek için kullanılabilir. 

@@ -1,17 +1,17 @@
 ---
-title: Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
+title: Ayrılmış kapasiteye sahip işlem için ön ödeme-MySQL için Azure veritabanı
 description: Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 595a96d07cc1804d3ee0830618a70557b768a3b5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 44bdd9a58bfe2f1a8d3a0102aa6652bb340ac719
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067101"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773840"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
 
@@ -22,10 +22,10 @@ Ayırmayı, MySQL için belirli Azure veritabanı sunucularına atamanız gerekm
 MySQL için Azure veritabanı ayrılmış kapasitesini [Azure Portal](https://portal.azure.com/)satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
 
 * Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
-* Kurumsal abonelikler için, **EA portal**’da [Ayrılmış Örnek Ekle](https://ea.azure.com/) seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
+* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
 * Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları, MySQL için Azure veritabanı ayrılmış kapasitesini satın alabilir. </br>
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde için Azure rezervasyon kullanımını anlama abonelik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
 
 
 ## <a name="determine-the-right-database-size-before-purchase"></a>Satın almadan önce doğru veritabanı boyutunu belirleme
@@ -37,7 +37,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan su
 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>MySQL için Azure veritabanı ayrılmış kapasitesi satın alın
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde MySQL **için Azure veritabanı** ' nı seçerek MySQL veritabanlarınız için yeni bir ayırma satın alabilirsiniz.
 4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İskontoyu alan MySQL için Azure veritabanı sunucularınızın gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
@@ -66,7 +66,7 @@ Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya 
 
 vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performans katmanı ve bölgesi içinde ölçeği büyütme veya küçültme olanakları sağlar. 
 
-## <a name="need-help--contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
+## <a name="need-help--contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

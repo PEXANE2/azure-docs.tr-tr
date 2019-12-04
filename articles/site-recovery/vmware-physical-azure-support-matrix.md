@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b75d9e9fc88cabacab912efa17938708eb061b99
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8c5b932a1b44169cc50c8c7214d3f3410c581f4e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232426"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792269"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -74,10 +74,10 @@ Makine iş yükü | Site Recovery, desteklenen bir makinede çalışan herhangi 
 Windows Server 2019 | [Güncelleştirme paketi 34](https://support.microsoft.com/help/4490016) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir.
 Windows Server 2016 64-bit | Sunucu çekirdeği için desteklenir, masaüstü deneyimi olan sunucu.
 Windows Server 2012 R2/Windows Server 2012 | Destekleniyor.
-Windows Server 2008 R2 SP1 ve sonraki sürümler. | Destekleniyor.<br/><br/> Mobility hizmeti aracısının 9.30. x. x sürümünden (2019 Kasım 'dan itibaren sürüm bekleniyor), SP1 veya sonraki sürümleriyle Windows 2008 R2 çalıştıran makinelere [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) gerekir. SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB) hakkında daha fazla bilgi edinin.
-Windows Server 2008 SP2 veya üzeri (64 bit/32 bit) |  Yalnızca geçiş için desteklenir. [Daha fazla bilgi edinin](migrate-tutorial-windows-server-2008.md).<br/><br/> Mobility hizmeti Aracısı 'nın 9.30. x. x sürümünden (2019 Kasım 'dan itibaren sürüm bekleniyor), Windows 2008 SP2 makinelerinde yüklü [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesi](h https://support.microsoft.com/help/4474419) gerekir. ISHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB) hakkında daha fazla bilgi edinin.
+Windows Server 2008 R2 SP1 ve sonraki sürümler. | Destekleniyor.<br/><br/> Mobility hizmeti aracısının 9.30. x. x sürümünden (2019 Kasım 'dan itibaren sürüm bekleniyor), SP1 veya sonraki sürümleriyle Windows 2008 R2 çalıştıran makinelere [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) gerekir. SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+Windows Server 2008 SP2 veya üzeri (64 bit/32 bit) |  Yalnızca geçiş için desteklenir. [Daha fazla bilgi edinin](migrate-tutorial-windows-server-2008.md).<br/><br/> Mobility hizmeti Aracısı 'nın 9.30. x. x sürümünden (2019 Kasım 'dan itibaren sürüm bekleniyor), Windows 2008 SP2 makinelerinde yüklü [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesi](h https://support.microsoft.com/help/4474419) gerekir. ISHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
 Windows 10, Windows 8.1, Windows 8 | Destekleniyor.
-Windows 7 SP1 64-bit | [Güncelleştirme paketi 36](https://support.microsoft.com/help/4503156) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir. </br></br> Mobility hizmeti Aracısı 'nın 9.30. x. x sürümünden (2019 Kasım 'dan itibaren sürüm bekleniyor), Windows 7 SP1 makinelerinde yüklü [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) gerekir.  SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB) hakkında daha fazla bilgi edinin.
+Windows 7 SP1 64-bit | [Güncelleştirme paketi 36](https://support.microsoft.com/help/4503156) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir. </br></br> Mobility hizmeti Aracısı 'nın 9.30. x. x sürümünden (2019 Kasım 'dan itibaren sürüm bekleniyor), Windows 7 SP1 makinelerinde yüklü [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) gerekir.  SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
 Linux | Yalnızca 64 bit sistem desteklenir. 32 bit sistem desteklenmez.<br/><br/>Her Linux sunucusunda [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklü olmalıdır. Yük devretme/yük devretme testi sonrasında Azure 'da sunucuyu önyüklemek gerekir. LIS bileşenleri eksikse, makinelerin Azure 'da önyüklemesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun. <br/><br/> Azure 'da Linux sunucularını çalıştırmak için yük devretmeyi Site Recovery. Ancak, Linux satıcıları, desteği yalnızca yaşam sonuna ulaşmamış olan dağıtım sürümleriyle sınırlayabilir.<br/><br/> Linux dağıtımları üzerinde yalnızca dağıtım alt sürüm sürümü/güncelleştirmesi 'nin bir parçası olan hisse senedi çekirdekleri desteklenir.<br/><br/> Korunan makinelerin birincil Linux dağıtım sürümleri arasında yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakın, işletim sistemini yükseltin ve sonra çoğaltmayı yeniden etkinleştirin.<br/><br/> Azure 'da Linux ve açık kaynaklı teknoloji desteği hakkında [daha fazla bilgi edinin](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
 Linux Red Hat Enterprise | 5,2</b> 5,11<br/> 6,1</b> 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Makinelerin Azure 'da önyüklemesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
 Linux: CentOS | 5,2</b> 5,11<br/> 6,1</b> 6,10<br/> 7,0 7,6<br/> <br/> CentOS 5.2-5.11 & 6.1-6.10 çalıştıran sunucularda [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Makinelerin Azure 'da önyüklemesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
@@ -86,6 +86,8 @@ Debian | 7\. ve 8. [(desteklenen çekirdek sürümlerini gözden geçirin)](#deb
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> SUSE Linux Enterprise Server 11 SP3 'den SP4 'e çoğaltılan makinelerin yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakıp yükseltmeden sonra yeniden etkinleştirin.
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor 
 
+> [!Note]
+> Windows sürümlerinin her biri için Azure Site Recovery yalnızca [uzun süreli bakım kanalı (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) derlemelerini destekler.  [Yarı yıllık kanal](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) yayınları Şu anda şu anda desteklenmiyor.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu çekirdek sürümleri
 
@@ -114,9 +116,9 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 --- | --- | --- |
 Deyi 7 | [9,25][9.25 UR],[9,26][9.26 UR], [9,27][9.27 UR], [9,28][9.28 UR]| 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
 |||
-Debian 8 | [9,28][9.28 UR] | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 9-AMD64 |
-Debian 8 | [9,27][9.27 UR] | 3.16.0-4-AMD64-3.16.0-9-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 9-AMD64 |
-Debian 8 | [9,25][9.25 UR], [9,26][9.26 UR] | 3.16.0-4-AMD64-3.16.0-8-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 8-AMD64 |
+Desek8 | [9,28][9.28 UR] | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 9-AMD64 |
+Desek8 | [9,27][9.27 UR] | 3.16.0-4-AMD64-3.16.0-9-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 9-AMD64 |
+Desek8 | [9,25][9.25 UR], [9,26][9.26 UR] | 3.16.0-4-AMD64-3.16.0-8-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 8-AMD64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 desteklenen çekirdek sürümü
 
@@ -134,8 +136,8 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.1
 Dosya sistemleri | ext3, ext4, XFS
 Birim Yöneticisi | -LVM destekleniyor.<br/> -LVM üzerinde-/Boot [güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/) ' den (Mobility hizmeti sürüm 9,20) ve sonraki sürümlerde desteklenir. Önceki Mobility hizmeti sürümlerinde desteklenmez.<br/> -Birden çok işletim sistemi diski desteklenmez.
 Parasanallaştırılmış depolama cihazları | Parasanallaştırılmış sürücüler tarafından dışarı aktarılan cihazlar desteklenmez.
-Çok kuyruğundaki blok GÇ cihazları | Desteklenmez.
-HP CCıS depolama denetleyicisi ile fiziksel sunucular | Desteklenmez.
+Çok kuyruğundaki blok GÇ cihazları | Desteklenmiyor.
+HP CCıS depolama denetleyicisi ile fiziksel sunucular | Desteklenmiyor.
 Cihaz/bağlama noktası adlandırma kuralı | Cihaz adı veya bağlama noktası adı benzersiz olmalıdır.<br/> İki cihazda/bağlama noktasında büyük/küçük harf duyarlı adlara sahip olmadığından emin olun. Örneğin, *Device1* ve *DEVICE1* ile aynı VM için cihaz adlandırma desteklenmez.
 Dizinler | Mobility hizmetinin sürüm 9,20 ' den önceki bir sürümünü çalıştırıyorsanız ( [güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/)' de yayımlanmıştır), bu kısıtlamalar uygulanır:<br/><br/> -Bu dizinler (ayrı bölümler/dosya sistemleri olarak ayarlandıysa) kaynak sunucudaki aynı işletim sistemi diskinde olmalıdır:/(kök),/Boot,/usr,/usr/local,/var,/etc.</br> -/Boot dizini bir disk bölümünde olmalı ve bir LVM birimi olmamalıdır.<br/><br/> Sürüm 9,20 ' den itibaren bu kısıtlamalar uygulanmaz. 
 Önyükleme dizini | -Önyükleme diskleri, GPT bölüm biçiminde olmamalıdır. Bu bir Azure mimarisi kısıtlamasıdır. GPT diskleri, veri diskleri olarak desteklenir.<br/><br/> Bir VM 'de birden çok önyükleme diski desteklenmez<br/><br/> -bir LVM biriminde birden fazla disk arasında-/Boot desteklenmez.<br/> -Önyükleme diski olmayan bir makine çoğaltılamıyor.
@@ -148,7 +150,7 @@ BTRFS | BTRFS, [güncelleştirme paketi 34](https://support.microsoft.com/help/4
 **Eylem** | **Ayrıntılar**
 --- | ---
 Çoğaltılan VM 'de diski yeniden boyutlandır | Destekleniyor.
-Çoğaltılan VM 'ye disk ekleme | Desteklenmez.<br/> VM için çoğaltmayı devre dışı bırakın, diski ekleyin ve ardından çoğaltmayı yeniden etkinleştirin.
+Çoğaltılan VM 'ye disk ekleme | Desteklenmiyor.<br/> VM için çoğaltmayı devre dışı bırakın, diski ekleyin ve ardından çoğaltmayı yeniden etkinleştirin.
 
 ## <a name="network"></a>Ağ
 
@@ -170,15 +172,15 @@ Konuk/sunucu ağı birden çok NIC | Evet.
 
 **Bileşen** | **Destekleniyor**
 --- | ---
-Azure ExpressRoute | Evet
-ILB | Evet
-ELB | Evet
-Azure Traffic Manager | Evet
-Çoklu NIC | Evet
-Ayrılmış IP adresi | Evet
-IPv4 | Evet
-Kaynak IP adresini sakla | Evet
-Azure sanal ağ hizmet uç noktaları<br/> | Evet
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Çoklu NIC | Yes
+Ayrılmış IP adresi | Yes
+IPv4 | Yes
+Kaynak IP adresini sakla | Yes
+Azure sanal ağ hizmet uç noktaları<br/> | Yes
 Hızlandırılmış ağ iletişimi | Hayır
 
 ## <a name="storage"></a>Depolama
@@ -187,24 +189,24 @@ Hızlandırılmış ağ iletişimi | Hayır
 Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
 Docker disk yapılandırması | Hayır
 Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
-Ana bilgisayar SAN (Iscsı/FC) | Evet
+Ana bilgisayar SAN (Iscsı/FC) | Yes
 Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
 Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
-Konuk/sunucu VMDK | Evet
+Konuk/sunucu VMDK | Yes
 Konuk/sunucu paylaşılan küme diski | Hayır
 Konuk/sunucu tarafından şifrelenen disk | Hayır
 Konuk/sunucu NFS | Hayır
 Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
 Konuk/sunucu SMB 3,0 | Hayır
-Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
 4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
 4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | Hayır
-Şeritli disk > 4 TB olan konuk/sunucu birimi <br/><br/>Mantıksal birim yönetimi (LVM)| Evet
+Şeritli disk > 4 TB olan konuk/sunucu birimi <br/><br/>Mantıksal birim yönetimi (LVM)| Yes
 Konuk/sunucu-depolama alanları | Hayır
 Konuk/sunucu Hot Add/Remove disk | Hayır
-Konuk/sunucu-diski hariç tut | Evet
+Konuk/sunucu-diski hariç tut | Yes
 Konuk/sunucu çok yollu (MPIO) | Hayır
 Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört bölüm destekleniyordu.
 ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
@@ -222,15 +224,15 @@ Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için d
 
 **Bileşen** | **Destekleniyor**
 --- | ---
-Yerel olarak yedekli depolama | Evet
-Coğrafi olarak yedekli depolama | Evet
-Okuma Erişimli Coğrafi olarak yedekli depolama | Evet
+Yerel olarak yedekli depolama | Yes
+Coğrafi Olarak Yedekli Depolama | Yes
+Okuma Erişimli Coğrafi olarak yedekli depolama | Yes
 Seyrek Erişimli Depolama | Hayır
 Sık erişimli depolama| Hayır
 Blok blobları | Hayır
-Bekleyen şifreleme (SSE)| Evet
+Bekleyen şifreleme (SSE)| Yes
 Bekleyen şifreleme (CMK)| Hayır
-Premium depolama | Evet
+Premium depolama | Yes
 İçeri/dışarı aktarma hizmeti | Hayır
 Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
 Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
@@ -239,10 +241,10 @@ Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katman
 
 **Özellik** | **Destekleniyor**
 --- | ---
-Kullanılabilirlik kümeleri | Evet
+Kullanılabilirlik kümeleri | Yes
 Kullanılabilirlik alanları | Hayır
-HUB | Evet
-Yönetilen Diskler | Evet
+HUB | Yes
+Yönetilen Diskler | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
@@ -253,13 +255,13 @@ Azure 'a çoğaltılan şirket içi VM 'Ler, bu tabloda özetlenen Azure VM gere
 Konuk işletim sistemi | Çoğaltılan makineler için [desteklenen işletim sistemlerini](#replicated-machines) doğrulayın. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk boyutu | 2\.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
-İşletim sistemi disk sayısı | 1\. | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | Yönetilen diske çoğaltma sırasında 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br>Depolama hesabına çoğaltılırken 4.095 GB 'a kadar| Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
-FC diski | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
-BitLocker | Desteklenmez. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır. |
+Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır. |
 VM adı | 1 ile 63 karakter arasında.<br/><br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
 
 ## <a name="resource-group-limits"></a>Kaynak grubu sınırları

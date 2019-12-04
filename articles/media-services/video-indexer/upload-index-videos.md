@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/29/2019
+ms.date: 12/03/2019
 ms.author: juliako
-ms.openlocfilehash: d06be1b5301889a1fcb8ff1390d8618bbb88c03f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a1fd37b65c3449e7000db6189c8c71def1f96b0a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666486"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790049"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -120,12 +120,28 @@ Dizinlenecek video/ses dosyasının URL'si. URL bir medya dosyasına yönlendirm
 
 Aşağıdaki C# kod parçacığı, tüm Video Indexer API'lerinin kullanımını bir arada göstermektedir.
 
+### <a name="instructions-for-running-this-code-sample"></a>Bu kod örneğini çalıştırmaya yönelik yönergeler
+
+Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanız gerekir: API Management kimlik doğrulama anahtarı ve video URL 'SI.
+
+* API anahtarı – API anahtarı, Video Indexer hesabınızda işlem gerçekleştirmek için bir erişim belirteci almanızı sağlayacak olan kişisel API Yönetimi abonelik anahtarınıza sahiptir. 
+
+    API anahtarınızı almak için şu akışa gidin:
+
+    * https://api-portal.videoindexer.ai/ git
+    * Oturum aç
+    *  -> **Yetkilendirme aboneliğine** yönelik **ürün** -> **Yetkilendirme** aboneliği ' ne gidin
+    * **Birincil anahtarı** Kopyala
+* Video URL 'SI: endekslenecek video/ses dosyasının URL 'SI. URL bir medya dosyasına yönlendirmelidir (HTML sayfaları desteklenmez). Dosya, URI'nin parçası olarak sunulan bir erişim belirteci tarafından korunabilir ve dosyayı sunan uç noktanın güvenliği TLS 1.2 veya üzeri bir sürümle sağlanmalıdır. URL’nin kodlanması gerekir.
+
+Kod örneğini başarıyla çalıştırmanın sonucu, sırasıyla karşıya yüklenen öngörüleri ve videoları incelemenize olanak sağlayacak bir öngörü pencere öğesi URL 'SI ve oynatıcı pencere öğesi URL 'SI içerir. 
+
+
 ```csharp
 public async Task Sample()
 {
     var apiUrl = "https://api.videoindexer.ai";
-    var location = "westus2";
-    var apiKey = "...";
+    var apiKey = "..."; // replace with API key taken from https://aka.ms/viapi
 
     System.Net.ServicePointManager.SecurityProtocol =
         System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;
@@ -146,7 +162,9 @@ public async Task Sample()
     HttpResponseMessage result = await client.GetAsync($"{apiUrl}/auth/trial/Accounts?{queryParams}");
     var json = await result.Content.ReadAsStringAsync();
     var accounts = JsonConvert.DeserializeObject<AccountContractSlim[]>(json);
-    // take the relevant account, here we simply take the first
+    
+    // take the relevant account, here we simply take the first, 
+    // you can also get the account via accounts.First(account => account.Id == <GUID>);
     var accountInfo = accounts.First();
 
     // we will use the access token from here on, no need for the apim key
@@ -154,7 +172,7 @@ public async Task Sample()
 
     // upload a video
     var content = new MultipartFormDataContent();
-    Debug.WriteLine("Uploading...");
+    Console.WriteLine("Uploading...");
     // get the video from URL
     var videoUrl = "VIDEO_URL"; // replace with the video URL
 
@@ -180,9 +198,9 @@ public async Task Sample()
 
     // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
-    Debug.WriteLine("Uploaded");
-    Debug.WriteLine("Video ID:");
-    Debug.WriteLine(videoId);
+    Console.WriteLine("Uploaded");
+    Console.WriteLine("Video ID:");
+    Console.WriteLine(videoId);
 
     // wait for the video index to finish
     while (true)
@@ -201,16 +219,16 @@ public async Task Sample()
 
         string processingState = JsonConvert.DeserializeObject<dynamic>(videoGetIndexResult)["state"];
 
-        Debug.WriteLine("");
-        Debug.WriteLine("State:");
-        Debug.WriteLine(processingState);
+        Console.WriteLine("");
+        Console.WriteLine("State:");
+        Console.WriteLine(processingState);
 
         // job is finished
         if (processingState != "Uploaded" && processingState != "Processing")
         {
-            Debug.WriteLine("");
-            Debug.WriteLine("Full JSON:");
-            Debug.WriteLine(videoGetIndexResult);
+            Console.WriteLine("");
+            Console.WriteLine("Full JSON:");
+            Console.WriteLine(videoGetIndexResult);
             break;
         }
     }
@@ -225,9 +243,9 @@ public async Task Sample()
 
     var searchRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/Search?{queryParams}");
     var searchResult = await searchRequestResult.Content.ReadAsStringAsync();
-    Debug.WriteLine("");
-    Debug.WriteLine("Search:");
-    Debug.WriteLine(searchResult);
+    Console.WriteLine("");
+    Console.WriteLine("Search:");
+    Console.WriteLine(searchResult);
 
     // Generate video access token (used for get widget calls)
     client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
@@ -245,8 +263,8 @@ public async Task Sample()
         });
     var insightsWidgetRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/{videoId}/InsightsWidget?{queryParams}");
     var insightsWidgetLink = insightsWidgetRequestResult.Headers.Location;
-    Debug.WriteLine("Insights Widget url:");
-    Debug.WriteLine(insightsWidgetLink);
+    Console.WriteLine("Insights Widget url:");
+    Console.WriteLine(insightsWidgetLink);
 
     // get player widget url
     queryParams = CreateQueryString(
@@ -256,9 +274,16 @@ public async Task Sample()
         });
     var playerWidgetRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/{videoId}/PlayerWidget?{queryParams}");
     var playerWidgetLink = playerWidgetRequestResult.Headers.Location;
-    Debug.WriteLine("");
-    Debug.WriteLine("Player Widget url:");
-    Debug.WriteLine(playerWidgetLink);
+     Console.WriteLine("");
+     Console.WriteLine("Player Widget url:");
+     Console.WriteLine(playerWidgetLink);
+     Console.WriteLine("\nPress Enter to exit...");
+     String line = Console.ReadLine();
+     if (line == "enter")
+     {
+         System.Environment.Exit(0);
+     }
+
 }
 
 private string CreateQueryString(IDictionary<string, string> parameters)

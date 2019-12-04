@@ -5,42 +5,43 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 0e80aa44652efbc58f8259944058aabe59ca5d1a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: hdinsightactive
+ms.date: 11/29/2019
+ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338474"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775342"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight üzerinde çalışan hata ayıklama Apache Spark işleri
 
-Bu makalede, HDInsight kümelerinde çalışan [Apache Spark](https://spark.apache.org/) işlerin [Apache Hadoop Yarn](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI, Spark Kullanıcı arabirimi ve Spark geçmiş sunucusunu kullanarak nasıl izleneceğini ve hata ayıklacağınızı öğreneceksiniz. Spark kümesi ile kullanılabilen bir not defteri kullanarak Spark işi başlatın, **makine öğrenimi: MLLib**kullanarak yiyecek İnceleme verilerinde tahmine dayalı analiz. Diğer herhangi bir yaklaşımı kullanarak gönderdiğiniz bir uygulamayı (örneğin **Spark-gönder**) izlemek için aşağıdaki adımları kullanabilirsiniz.
+Bu makalede, HDInsight kümelerinde çalışan [Apache Spark](https://spark.apache.org/) işlerin [Apache Hadoop Yarn](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI, Spark Kullanıcı arabirimi ve Spark geçmiş sunucusunu kullanarak nasıl izleneceğini ve hata ayıklacağınızı öğreneceksiniz. Spark kümesi ile kullanılabilen bir not defteri kullanarak Spark işi başlatın, **Machine Learning: bir öngörülü İnceleme verilerinde MLLib kullanarak**tahmine dayalı analiz. Diğer herhangi bir yaklaşımı kullanarak gönderdiğiniz bir uygulamayı (örneğin **Spark-gönder**) izlemek için aşağıdaki adımları kullanabilirsiniz.
+
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdakilere sahip olmanız gerekir:
-
-* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
-* Machine Learning ile  **[Not defterini çalıştırmaya başlamalısınız: ](apache-spark-machine-learning-mllib-ipython.md)Mllib**kullanarak yiyecek İnceleme verilerinde tahmine dayalı analiz. Bu Not defterini çalıştırmaya ilişkin yönergeler için bağlantıyı izleyin.  
+
+* **[Machine Learning: MLLib kullanarak yiyecek İnceleme verilerinde tahmine dayalı analiz](apache-spark-machine-learning-mllib-ipython.md)** olan Not defterini çalıştırmaya başlamalısınız. Bu Not defterini çalıştırmaya ilişkin yönergeler için bağlantıyı izleyin.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN Kullanıcı arabiriminde uygulama izleme
 
-1. YARN Kullanıcı arabirimini başlatın. **Küme panoları**altında **Yarn** ' ye tıklayın.
+1. YARN Kullanıcı arabirimini başlatın. **Küme panoları**altında **Yarn** ' yi seçin.
 
     ![Azure portal YARN Kullanıcı arabirimini başlatın](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için, **küme panoları**altında, **ambarı giriş** ' e tıklayın. Ambarı kullanıcı arabiriminden, **Yarn**' ye tıklayın, **hızlı bağlantılar**' a tıklayın, etkin kaynak yöneticisi ve ardından **Kaynak Yöneticisi Kullanıcı arabirimi**' ne tıklayın.
+   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için **küme panoları**altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden, etkin Kaynak Yöneticisi > **Kaynak Yöneticisi Kullanıcı arabirimine**> **Yarn** > **hızlı bağlantılara** gidin.
 
-2. Jupiter not defterlerini kullanarak Spark işini başlattığınız için, uygulama **remoteparlak mıknatıcs** adına sahiptir (Bu, not defterlerinden başlatılan tüm uygulamaların adıdır). İş hakkında daha fazla bilgi edinmek için uygulama adına karşı uygulama KIMLIĞI ' ne tıklayın. Bu, uygulama görünümünü başlatır.
+2. Jupiter not defterlerini kullanarak Spark işini başlattığınız için, uygulama **remoteparlak mıknatıcs** adına sahiptir (Bu, not defterlerinden başlatılan tüm uygulamaların adıdır). İş hakkında daha fazla bilgi edinmek için uygulama adına karşı uygulama KIMLIĞI ' ni seçin. Bu, uygulama görünümünü başlatır.
 
     ![Spark geçmiş sunucusu Spark uygulama KIMLIĞINI bul](./media/apache-spark-job-debugging/find-application-id1.png)
 
     Jupyter not defterlerinden başlatılan uygulamalar için, Not defterinizden çıkana kadar durum her zaman **çalışır** .
+
 3. Uygulama görünümünden, uygulamayla ve günlüklerle (stdout/stderr) ilişkili kapsayıcıları bulmak için daha fazla ayrıntıya gidebilirsiniz. Spark Kullanıcı arabirimini aşağıda gösterildiği gibi **Izleme URL**'sine karşılık gelen bağlamaya tıklayarak da başlatabilirsiniz.
 
     ![Spark geçmiş sunucusu kapsayıcı günlüklerini indirme](./media/apache-spark-job-debugging/download-container-logs.png)
@@ -49,21 +50,21 @@ Aşağıdakilere sahip olmanız gerekir:
 
 Spark Kullanıcı arabiriminde, daha önce başlattığınız uygulama tarafından oluşturulan Spark işlerinin detayına gidebilirsiniz.
 
-1. Spark Kullanıcı arabirimini başlatmak için, uygulama görünümünden, yukarıdaki ekran yakalama bölümünde gösterildiği gibi **izleme URL 'sine**karşı bağlantıya tıklayın. Jupyter not defterinde çalışan uygulama tarafından başlatılan Spark işlerinin tümünü görebilirsiniz.
+1. Spark Kullanıcı arabirimini başlatmak için, uygulama görünümünden, yukarıdaki ekran yakalama bölümünde gösterildiği gibi **izleme URL 'sine**karşı bağlantıyı seçin. Jupyter not defterinde çalışan uygulama tarafından başlatılan Spark işlerinin tümünü görebilirsiniz.
 
     ![Spark geçmiş sunucusu işleri sekmesi](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 
-2. Her bir yürütücü için işleme ve depolama bilgilerini görmek üzere **Yürüticileri** sekmesine tıklayın. Ayrıca, **Iş parçacığı dökümü** bağlantısına tıklayarak çağrı yığınını da alabilirsiniz.
+2. Her bir yürütücü için işleme ve depolama bilgilerini görmek üzere **Yürüticileri** sekmesini seçin. Ayrıca, **Iş parçacığı döküm** bağlantısını seçerek çağrı yığınını da alabilirsiniz.
 
     ![Spark geçmiş sunucu yürüticileri sekmesi](./media/apache-spark-job-debugging/view-spark-executors.png)
 
-3. Uygulamayla ilişkili aşamaları görmek için **aşamalar** sekmesine tıklayın.
+3. Uygulamayla ilişkili aşamaları görmek için **aşamalar** sekmesini seçin.
 
     ![Spark geçmiş sunucusu aşamaları sekmesi](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark aşamalarını görüntüle")
 
     Her aşamada, aşağıda gösterildiği gibi, yürütme istatistiklerini görüntüleyebileceğiniz birden fazla görev olabilir.
 
-    ![Spark geçmiş sunucusu aşamaları sekme ayrıntıları](./media/apache-spark-job-debugging/view-spark-stages-details.png "Görünüm Spark aşamaları ayrıntıları")
+    ![Spark geçmiş sunucusu aşamaları sekme ayrıntıları](./media/apache-spark-job-debugging/view-spark-stages-details.png "Spark aşamaları ayrıntılarını görüntüle")
 
 4. Aşama ayrıntıları sayfasında, DAG görselleştirmesini başlatabilirsiniz. Aşağıda gösterildiği gibi sayfanın üst kısmındaki **dag görselleştirme** bağlantısını genişletin.
 
@@ -82,8 +83,8 @@ Spark Kullanıcı arabiriminde, daha önce başlattığınız uygulama tarafınd
 
 6. Spark Kullanıcı arabirimindeki diğer sekmeler Spark örneği hakkında da yararlı bilgiler sağlar.
 
-   * Depolama sekmesi-uygulamanız bir RDDs oluşturursa, bunlar hakkında, depolama alanı sekmesinden bilgi edinebilirsiniz.
-   * Ortam sekmesi-Bu sekme, Spark örneğiniz hakkında çok yararlı bilgiler sağlar:
+   * Depolama sekmesi-uygulamanız bir RDD oluşturursa, bunlar hakkında bilgi edinmek için depolama sekmesinden bilgi edinebilirsiniz.
+   * Ortam sekmesi-Bu sekme, Spark örneğiniz hakkında şu şekilde yararlı bilgiler sağlar:
      * Scala sürümü
      * Kümeyle ilişkili olay günlüğü dizini
      * Uygulamanın yürütücü çekirdekleri sayısı
@@ -93,14 +94,14 @@ Spark Kullanıcı arabiriminde, daha önce başlattığınız uygulama tarafınd
 
 Bir iş tamamlandıktan sonra, işle ilgili bilgiler Spark geçmiş sunucusunda kalıcıdır.
 
-1. Spark geçmiş sunucusunu başlatmak için genel bakış dikey penceresinde, **küme panoları**altında **Spark geçmiş sunucusu** ' na tıklayın.
+1. Spark geçmiş sunucusunu başlatmak için, **genel bakış** sayfasında, **küme panoları**altında **Spark geçmiş sunucusu** ' nu seçin.
 
-    ![Spark geçmişi sunucusunu başlatmak Azure Portal](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark geçmişini Başlat Sunucu1")
+    ![Spark geçmiş sunucusu Azure portal Başlat](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark geçmişini Başlat Sunucu1")
 
    > [!TIP]  
-   > Alternatif olarak, aynı zamanda, ambarı kullanıcı arabiriminden Spark geçmiş sunucusu kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için genel bakış dikey penceresinden, **küme panoları**altında, **ambarı giriş** ' e tıklayın. Ambarı kullanıcı arabiriminden **Spark**' a, **hızlı bağlantılar**' a ve ardından **Spark geçmiş sunucusu kullanıcı arabirimi**' ne tıklayın.
+   > Alternatif olarak, aynı zamanda, ambarı kullanıcı arabiriminden Spark geçmiş sunucusu kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için genel bakış dikey penceresinden, **küme panoları**altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden, **Spark2** > **hızlı bağlantılar** > **Spark2 geçmiş sunucusu kullanıcı arabirimine**gidin.
 
-2. Listelenen tüm tamamlanmış uygulamaları görürsünüz. Daha fazla bilgi için bir uygulamanın ayrıntılarına gitmek üzere bir uygulama KIMLIĞINE tıklayın.
+2. Listelenen tüm tamamlanmış uygulamaları görürsünüz. Daha fazla bilgi için bir uygulamanın ayrıntısına gitmek üzere bir uygulama KIMLIĞI seçin.
 
     ![Spark geçmiş sunucusu tamamlanan uygulamalar](./media/apache-spark-job-debugging/view-completed-applications.png "Spark geçmişini Başlat Sunucu2")
 
@@ -111,8 +112,8 @@ Bir iş tamamlandıktan sonra, işle ilgili bilgiler Spark geçmiş sunucusunda 
 
 ### <a name="for-data-analysts"></a>Veri analistleri için
 
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: Yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight 'ta Apache Spark kullanarak Application Insight telemetri veri analizi](apache-spark-analyze-application-insight-logs.md)
 * [Dağıtılmış derin öğrenme için Azure HDInsight Spark Caffe kullanma](apache-spark-deep-learning-caffe.md)

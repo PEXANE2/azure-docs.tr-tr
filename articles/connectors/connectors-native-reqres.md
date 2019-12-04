@@ -1,23 +1,18 @@
 ---
-title: HTTPS çağrılarını alma ve yanıtlama-Azure Logic Apps
+title: HTTPS çağrılarını alma ve yanıtlama
 description: Azure Logic Apps kullanarak HTTPS isteklerini ve olaylarını gerçek zamanlı olarak işleyin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewers: klam, LADocs
-manager: carmonm
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264359"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787004"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak gelen HTTPS çağrılarını alma ve yanıtlama
 
@@ -108,7 +103,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
    }
    ```
 
-   Bir JSON şeması girdiğinizde tasarımcı, isteğinize `Content-Type` başlığını dahil etmek için bir anımsatıcı gösterir ve bu üst bilgi değerini `application/json` olarak ayarlar. Daha fazla bilgi için bkz. [içerik türlerini işleme](../logic-apps/logic-apps-content-type.md).
+   Bir JSON şeması girdiğinizde, tasarımcı, isteğinize `Content-Type` üst bilgisini dahil etmek için bir anımsatıcı gösterir ve bu üst bilgi değerini `application/json`olarak ayarlar. Daha fazla bilgi için bkz. [içerik türlerini işleme](../logic-apps/logic-apps-content-type.md).
 
    !["Content-Type" üst bilgisini dahil etmek için anımsatıcı](./media/connectors-native-reqres/include-content-type.png)
 
@@ -169,7 +164,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    Örneğin, özel bir yanıt döndürmek için kullanabileceğiniz ve bu konunun ilerleyen kısımlarında açıklanan [bir yanıt eylemi ekleyerek](#add-response)isteğe yanıt verebilirsiniz.
 
-   Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız çağırana `504 GATEWAY TIMEOUT` döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız çağrı yapana hemen `202 ACCEPTED` yanıtı döndürür.
+   Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız çağırana bir `504 GATEWAY TIMEOUT` döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen çağırana `202 ACCEPTED` bir yanıt döndürür.
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin. 
 
@@ -195,7 +190,7 @@ Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıd
 
 Yanıt eylemini, gelen HTTPS isteğine bir yük (veri) ile yanıt vermek için, ancak yalnızca HTTPS isteği tarafından tetiklenen bir mantıksal uygulamada kullanabilirsiniz. Yanıt eylemini iş akışınızın herhangi bir noktasına ekleyebilirsiniz. Bu tetikleyicinin temel alınan JSON tanımı hakkında daha fazla bilgi için bkz. [yanıt eylem türü](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız çağırana `504 GATEWAY TIMEOUT` döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız çağrı yapana hemen `202 ACCEPTED` yanıtı döndürür.
+Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız çağırana bir `504 GATEWAY TIMEOUT` döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen çağırana `202 ACCEPTED` bir yanıt döndürür.
 
 1. Mantıksal uygulama Tasarımcısı ' nda, yanıt eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
@@ -215,7 +210,7 @@ Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar.
 
    Bazı alanlarda, kutularının içine tıklanması dinamik içerik listesini açar. Daha sonra iş akışındaki önceki adımlardan bulunan mevcut çıkışları temsil eden belirteçleri seçebilirsiniz. Önceki örnekte belirtilen şemadan özellikler artık dinamik içerik listesinde görünür.
 
-   Örneğin, **üst bilgiler** kutusu için, anahtar adı olarak `Content-Type` ' i ekleyin ve anahtar değerini bu konunun önceki kısımlarında belirtildiği gibi `application/json` olarak ayarlayın. **Gövde** kutusu için dinamik içerik listesinden tetikleyiciyi ilet çıktısını seçebilirsiniz.
+   Örneğin, **üstbilgiler** kutusu için, anahtar adı olarak `Content-Type` ekleyin ve bu konuda daha önce belirtildiği gibi anahtar değerini `application/json` olarak ayarlayın. **Gövde** kutusu için dinamik içerik listesinden tetikleyiciyi ilet çıktısını seçebilirsiniz.
 
    ![Yanıt eylemi ayrıntıları](./media/connectors-native-reqres/response-details.png)
 

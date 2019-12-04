@@ -1,22 +1,18 @@
 ---
-title: Bing Arama bağlanma-Azure Logic Apps
+title: Bing Arama Bağlan
 description: Bing Arama REST API 'Leri ve Azure Logic Apps haberleri bulun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026777"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789955"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Arama ve Azure Logic Apps haberleri bulun
 
@@ -56,10 +52,10 @@ Ya da bağlantınız zaten varsa, tetikleyici için gerekli bilgileri sağlayın
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Arama sorgusu | Yes | <*arama-sözcük*> | Kullanmak istediğiniz arama anahtar sözcüklerini girin. |
+   | Arama sorgusu | Yes | *arama sözcüklerini* <> | Kullanmak istediğiniz arama anahtar sözcüklerini girin. |
    | Market | Yes | <*yerel ayar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
    | Güvenli Arama | Yes | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
-   | Sayı | Hayır | <*sonuç-sayı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
+   | Sayı | Hayır | <*sonuçları-say*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
    | Uzaklık | Hayır | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
    |||||
 
@@ -107,10 +103,10 @@ Eylemler listesinden istediğiniz eylemi seçin.
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Arama sorgusu | Yes | <*Arama ifadesi*> | Tetikleyici sonuçlarını sorgulamak için bir ifade girin. Dinamik içerik listesindeki alanlardan seçim yapabilir veya ifade Oluşturucusu ile bir ifade oluşturabilirsiniz. |
+   | Arama sorgusu | Yes | *Arama ifadesi*> < | Tetikleyici sonuçlarını sorgulamak için bir ifade girin. Dinamik içerik listesindeki alanlardan seçim yapabilir veya ifade Oluşturucusu ile bir ifade oluşturabilirsiniz. |
    | Market | Yes | <*yerel ayar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
    | Güvenli Arama | Yes | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
-   | Sayı | Hayır | <*sonuç-sayı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
+   | Sayı | Hayır | <*sonuçları-say*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
    | Uzaklık | Hayır | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
    |||||
 
@@ -154,8 +150,8 @@ Eylemler listesinden istediğiniz eylemi seçin.
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Bağlantı Adı | Yes | <*bağlantı-adı*> | Bağlantınız için oluşturulacak ad |
-   | API sürümü | Yes | <*API-version*> | Varsayılan olarak, Bing Arama API sürümü geçerli sürüme ayarlanır. Daha önceki bir sürümü gerektiği gibi seçebilirsiniz. |
+   | Bağlantı Adı | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | API sürümü | Yes | <*API sürümü*> | Varsayılan olarak, Bing Arama API sürümü geçerli sürüme ayarlanır. Daha önceki bir sürümü gerektiği gibi seçebilirsiniz. |
    | API anahtarı | Yes | <*API-key*> | Daha önce aldığınız Bing Arama API anahtarı. Anahtarınız yoksa [API anahtarınızı hemen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)alın. |  
    |||||  
 

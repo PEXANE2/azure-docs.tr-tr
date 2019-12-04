@@ -1,62 +1,62 @@
 ---
-title: -Tek bir sunucu PostgreSQL için Azure veritabanı bağlantı sorunlarını giderme
-description: -Tek bir sunucu PostgreSQL için Azure veritabanı bağlantı sorunlarını giderme hakkında bilgi edinin.
-keywords: postgresql bağlantı, bağlantı dizesi, bağlantı sorunları, geçici bir hata oluştu, bağlantı hatası
+title: Bağlantı sorunlarını giderme-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı-tek sunucu ile bağlantı sorunlarını giderme hakkında bilgi edinin.
+keywords: PostgreSQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 8a0fe87703c9fb471174c761a6e8296e6e7a37ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c74b819893133116b8ac6905988f3fe11220ed95
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952114"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770076"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>-Tek bir sunucu PostgreSQL için Azure veritabanı bağlantı sorunlarını giderme
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile ilgili bağlantı sorunlarını giderme-tek sunucu
 
-Çeşitli gibi çeşitli işlemler tarafından bağlantı sorunlara neden olabilir:
+Bağlantı sorunlarına aşağıdakiler de dahil olmak üzere çeşitli öğeler neden olmuş olabilir:
 
 * Güvenlik duvarı ayarları
 * Bağlantı zaman aşımı
 * Hatalı oturum açma bilgileri
-* Bazı kaynaklar PostgreSQL için Azure veritabanı üzerinde üst sınırına ulaştınız
-* Hizmet, altyapı ile ilgili sorunlar
-* Hizmet üzerinde gerçekleştirilen bakım
-* İşlem ayırma sunucusunun sanal çekirdekler veya farklı hizmet katmanına taşıyarak sayısında ölçeklendirme tarafından değiştirildi
+* Bazı PostgreSQL kaynakları için Azure veritabanı kaynaklarına maksimum sınıra ulaşıldı
+* Hizmetin altyapısıyla ilgili sorunlar
+* Hizmette gerçekleştirilen bakım
+* Sunucunun işlem ayırması, sanal çekirdek sayısı ölçeklenerek veya farklı bir hizmet katmanına taşınarak değiştirilir
 
-Genellikle, PostgreSQL için Azure veritabanı bağlantısı sorunları şu şekilde sınıflandırılabilir:
+Genellikle, PostgreSQL için Azure veritabanı bağlantı sorunları şu şekilde sınıflandırılabilir:
 
-* Geçici hatalar (kısa süreli veya aralıklı)
-* Kalıcı veya geçici olmayan hatalar (düzenli olarak yinele hatalar)
+* Geçici hatalar (kısa ömürlü veya aralıklı)
+* Kalıcı veya geçici olmayan hatalar (düzenli olarak yinelenen hatalar)
 
-## <a name="troubleshoot-transient-errors"></a>Geçici hataları giderme
+## <a name="troubleshoot-transient-errors"></a>Geçici hatalarda sorun giderme
 
-Bakım, sistem donanım veya yazılım bir hatayla karşılaştığında veya sanal çekirdekler veya hizmet katmanı sunucunuzun geçici hatalar oluşur. Hizmet PostgreSQL için Azure veritabanı, yerleşik yüksek kullanılabilirliğe sahip ve otomatik olarak bu tür sorunları azaltmak için tasarlanmıştır. Ancak, uygulamanızın en fazla süresi genellikle 60 saniyeden kısa bir süre için sunucu bağlantısını kaybeder. Bazı olaylar bazen azaltmak, büyük bir işlem bir uzun süre çalışan kurtarma sebep olduğunda gibi daha uzun sürebilir.
+Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım veya yazılımla ilgili bir hatayla karşılaştığında veya sunucunuzun sanal çekirdeklerini veya hizmet katmanını değiştirirsiniz. PostgreSQL için Azure veritabanı hizmeti yerleşik yüksek kullanılabilirliğe sahiptir ve bu tür sorunları otomatik olarak azaltmak için tasarlanmıştır. Bununla birlikte, uygulamanız, genellikle 60 saniyeden kısa bir süre boyunca sunucu bağlantısını kaybeder. Büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi bazı olayların hafifletmek daha uzun sürebilir.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını giderme adımları
 
-1. Denetleme [Microsoft Azure hizmet Panosu](https://azure.microsoft.com/status) , hataları rapor edilen uygulama tarafından süre boyunca gerçekleşen bilinen kesintiler için.
-2. PostgreSQL için Azure veritabanı geçici hatalar beklediğiniz ve uygulama gibi bir bulut hizmetine bağlanan uygulamaları, uygulama hataları olarak kullanıcılara kavrayış yerine bu hataları işlemek için mantığı yeniden deneyin. Gözden geçirme [geçici bağlantı hatalarının için PostgreSQL için Azure veritabanı işleme](concepts-connectivity.md) en iyi yöntemler ve geçici hataları işlemek için tasarım yönergeleri.
-3. Bir sunucu, kaynak sınırları yaklaştığında, hataları görünüyor geçici bir bağlantı sorunu. Bkz: [PostgreSQL için Azure veritabanı'nda sınırlamaları](concepts-limits.md).
-4. Bağlantı sorunları devam ya da uygulamanızın karşılaştığı hata süresi 60 saniye aşarsa veya belirli bir günde birden çok defa geçmelerine hata görürseniz Azure destek isteği seçerek dosya **alma desteği**üzerinde [Azure Destek](https://azure.microsoft.com/support/options) site.
+1. Uygulama tarafından hataların bildirildiği zaman içinde oluşan bilinen kesintiler için [Microsoft Azure hizmet panosunu](https://azure.microsoft.com/status) denetleyin.
+2. PostgreSQL için Azure veritabanı gibi bir bulut hizmetine bağlanan uygulamalar, bunları kullanıcılara uygulama hataları olarak eklemek yerine bu hataları işlemek için geçici hataları ve yeniden deneme mantığını uygulamalıdır. [PostgreSQL Için Azure veritabanı için geçici bağlantı hatalarının işlenmesini](concepts-connectivity.md) , en iyi uygulamalar ve geçici hataları işlemeye yönelik tasarım yönergeleri için gözden geçirin.
+3. Sunucu kaynak sınırlarına yaklaşıyorsa, hatalar geçici bağlantı sorunu olabilir. [PostgreSQL Için Azure veritabanı 'Ndaki sınırlamalara](concepts-limits.md)bakın.
+4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaştığı süre 60 saniye değerini aşarsa veya hatanın belirli bir gün içinde birden çok kez yinelendiğini görürseniz, [Azure](https://azure.microsoft.com/support/options) destek sitesinde **Destek Al** ' ı seçerek bir Azure destek isteği dosyası sağlayın.
 
-## <a name="troubleshoot-persistent-errors"></a>Kalıcı hatalarını giderme
+## <a name="troubleshoot-persistent-errors"></a>Kalıcı hatalarda sorun giderme
 
-PostgreSQL için Azure veritabanı'na bağlanmak uygulamayı kalıcı olarak başarısız olursa, genellikle aşağıdakilerden biri ile ilgili bir sorun gösterir:
+Uygulama, PostgreSQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, genellikle aşağıdakilerden biriyle ilgili bir sorun olduğunu gösterir:
 
-* Sunucu güvenlik duvarı yapılandırması: PostgreSQL sunucusu güvenlik duvarı için Azure veritabanı, proxy sunucuları ve ağ geçitleri dahil istemcinizden bağlantılarına izin verecek şekilde yapılandırıldığından emin olun.
-* İstemci güvenlik duvarı yapılandırması: İstemci üzerindeki güvenlik duvarı, veritabanı sunucunuza bağlantılar izin vermeniz gerekir. IP adresleri ve bağlantı noktaları için olamaz sunucunun PostgreSQL gibi bazı güvenlik duvarları uygulama adları hem de izin verilmelidir.
-* Kullanıcı hatası: Bağlantı dizesi veya eksik bir sunucu adı gibi bağlantı parametrelerini yazdığınızı  *\@servername* kullanıcı adı soneki.
+* Sunucu güvenlik duvarı yapılandırması: PostgreSQL için Azure veritabanı sunucu güvenlik duvarının, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
+* İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarlarındaki PostgreSQL gibi uygulama adlarının yanı sıra, izin verilmeyen sunucunun IP adreslerine ve bağlantı noktalarına izin verilmesi gerekir.
+* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik *\@ServerName* soneki gibi yanlış bağlantı parametrelerine sahip olabilirsiniz.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 
-1. Ayarlanan [güvenlik duvarı kuralları](howto-manage-firewall-using-portal.md) istemci IP adreslerine izin verecek şekilde. Geçici yalnızca test amaçlıdır için başlangıç IP adresi ve bitiş IP adresi 255.255.255.255 kullanarak 0.0.0.0 kullanarak güvenlik duvarı kuralı ayarlama. Bu, tüm IP adreslerinin sunucuya açar. Bu, bağlantı sorunu giderip, bu kuralı kaldırmak ve uygun şekilde sınırlı IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
-2. İstemci internet arasındaki tüm güvenlik duvarlarının üzerinde 5432 numaralı bağlantı noktasını giden bağlantılar için açık olduğundan emin olun.
+1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-manage-firewall-using-portal.md) ayarlayın. Yalnızca geçici test amacıyla, başlangıç IP adresi olarak 0.0.0.0 kullanarak bir güvenlik duvarı kuralı ayarlayın ve bitiş IP adresi olarak 255.255.255.255 kullanın. Bu, sunucuyu tüm IP adreslerine açar. Bu, bağlantı sorununuzu giderirse, bu kuralı kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
+2. İstemci ile İnternet arasındaki tüm güvenlik duvarlarında, bağlantı noktası 5432 ' ın giden bağlantılar için açık olduğundan emin olun.
 3. Bağlantı dizenizi ve diğer bağlantı ayarlarını doğrulayın.
-4. Hizmet durumu Panosu denetleyin. Bölgesel bir kesinti olduğunu düşünüyorsanız, bkz. [PostgreSQL için Azure veritabanı ile iş sürekliliğine genel bakış](concepts-business-continuity.md) için yeni bir bölgeye kurtarmak için adımlar.
+4. Panodaki hizmet durumunu denetleyin. Bölgesel bir kesinti olduğunu düşünüyorsanız, yeni bir bölgeye kurtarma adımları için [PostgreSQL Için Azure veritabanı ile iş sürekliliği 'Ne genel bakış](concepts-business-continuity.md) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Geçici bağlantı hatalarının için PostgreSQL için Azure veritabanı işleme](concepts-connectivity.md)
+* [PostgreSQL için Azure veritabanı geçici bağlantı hatalarının işlenmesi](concepts-connectivity.md)

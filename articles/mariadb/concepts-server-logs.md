@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı için sunucu günlükleri
+title: Yavaş sorgu günlükleri-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı 'nda kullanılabilen günlükleri ve farklı günlük düzeylerini etkinleştirmek için kullanılabilen parametreleri açıklar.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 12/02/2019
+ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259965"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772113"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yavaş sorgu günlükleri
 MariaDB için Azure veritabanı 'nda yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -31,14 +31,14 @@ Günlükler, oluşumlarından yedi güne kadar kullanılabilir. Kullanılabilir 
 Günlükler her 24 saatte bir veya 7 GB döndürülür, hangisi önce gelir.
 
 ## <a name="configure-slow-query-logging"></a>Yavaş sorgu günlüğünü yapılandırma
-Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için slow_query_log olarak ayarlayın.
+Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için slow_query_log açık olarak ayarlayın.
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilir (saniye cinsinden). Varsayılan değer 10 saniyedir.
-- **log_slow_admin_statements**: varsa, slow_query_log 'e YAZıLAN DEYIMLERDE ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
-- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log 'e kaydedilip kaydedilmeyeceğini belirler
-- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre, log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
+- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
+- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
 
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MariaDB [yavaş sorgu günlüğü belgelerine](https://mariadb.com/kb/en/library/slow-query-log-overview/) bakın.
 
@@ -54,7 +54,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 |---|---|
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Günlük kaydedildiği zaman damgası (UTC) |
+| `TimeGenerated` [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | `Type` | Günlüğün türü. Her zaman `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
@@ -65,16 +65,16 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Sunucunun adı |
-| `start_time_t`UTC | Sorgunun başladığı zaman |
+| `start_time_t` [UTC] | Sorgunun başladığı zaman |
 | `query_time_s` | Sorgunun yürütülmesi için geçen toplam süre |
 | `lock_time_s` | Sorgunun kilitlenme toplam süre |
-| `user_host_s` | Kullanıcı Adı |
+| `user_host_s` | Kullanıcı adı |
 | `rows_sent_s` | Gönderilen satır sayısı |
 | `rows_examined_s` | İncelenen satır sayısı |
 | `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
 | `insert_id_s` | KIMLIĞI Ekle |
 | `sql_text_s` | Tam sorgu |
-| `server_id_s` | Sunucu Kimliği |
+| `server_id_s` | Sunucu KIMLIĞI |
 | `thread_id_s` | İş parçacığı KIMLIĞI |
 | `\_ResourceId` | Kaynak URI 'SI |
 

@@ -1,59 +1,59 @@
 ---
-title: Oluşturma ve MariaDB için Azure veritabanı'nda MariaDB güvenlik duvarı kurallarını yönetme
-description: Oluşturma ve Azure veritabanı Azure portalını kullanarak MariaDB için güvenlik duvarı kurallarını yönetme
+title: Güvenlik duvarı kurallarını yönetme-Azure portal-MariaDB için Azure veritabanı
+description: Azure portal kullanarak MariaDB için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: e9ab243692f5a4a1ec7de25774f5bad867698fc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 70e6611cc3006424bcd1bc3a0f0838ad40c09634
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766030"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Oluşturma ve Azure portalını kullanarak Azure veritabanı MariaDB için güvenlik duvarı kurallarını yönetme
-Sunucu düzeyinde güvenlik duvarı kuralları, bir Azure veritabanı'na MariaDB sunucusu için belirtilen bir IP adresi veya bir IP adresi aralığı erişimi yönetmek için kullanılabilir.
+# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı güvenlik duvarı kuralları oluşturun ve yönetin
+Sunucu düzeyinde güvenlik duvarı kuralları, belirli bir IP adresinden veya bir IP adresi aralığından MariaDB sunucusu için Azure veritabanı 'na erişimi yönetmek için kullanılabilir.
 
-Sanal ağ (VNet) kuralları, sunucunuza erişim güvenliğini sağlamak için de kullanılabilir. Daha fazla bilgi edinin [oluşturma ve yönetme sanal ağ hizmet uç noktaları ve Azure portalını kullanarak kurallar](howto-manage-vnet-portal.md).
+Sanal ağ (VNet) kuralları, sunucunuza erişimi güvenli hale getirmek için de kullanılabilir. [Azure Portal kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturma ve yönetme](howto-manage-vnet-portal.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure portalında sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
-1. MariaDB sunucusu sayfasında, ayarları altındaki başlığı tıklayın **bağlantı güvenliği** için MariaDB için Azure veritabanı bağlantı güvenliği sayfasını açmak.
+1. MariaDB sunucusu sayfasında, ayarlar başlığı altında **bağlantı güvenliği** ' ne tıklayarak MariaDB Için Azure veritabanı bağlantı güvenliği sayfasını açın.
 
-   ![Azure portalı - bağlantı güvenliği](./media/howto-manage-firewall-portal/1-connection-security.png)
+   ![Azure portal-bağlantı güvenliği ' ne tıklayın](./media/howto-manage-firewall-portal/1-connection-security.png)
 
-2. Tıklayın **IP'mi Ekle** araç. Bu otomatik olarak bir güvenlik duvarı kuralı, bilgisayarınızın genel IP adresi ile Azure sistem tarafından algılandığı şekilde oluşturur.
+2. Araç çubuğunda **IP Ekle** ' ye tıklayın. Bu otomatik olarak, Azure sistemi tarafından algılanan şekilde bilgisayarınızın genel IP adresi ile bir güvenlik duvarı kuralı oluşturur.
 
-   ![Azure portalı - IP'mi Ekle seçeneğine tıklayın](./media/howto-manage-firewall-portal/2-add-my-ip.png)
+   ![Azure portal-IP Ekle 'ye tıklayın](./media/howto-manage-firewall-portal/2-add-my-ip.png)
 
-3. Yapılandırmayı kaydetmeden önce IP adresinizi doğrulayın. Bazı durumlarda, Azure portal tarafından gözlemlenen IP adresi, İnternet'e ve Azure sunucuları erişirken kullanılan IP adresi farklıdır. Bu nedenle, Başlangıç hem bitiş IP'si beklendiği gibi kuralı işlev yapmak için değiştirmeniz gerekebilir.
+3. Yapılandırmayı kaydetmeden önce IP adresinizi doğrulayın. Bazı durumlarda Azure portal tarafından gözlenen IP adresi, internet ve Azure sunucularına erişirken kullanılan IP adresinden farklıdır. Bu nedenle, kural işlevini beklendiği gibi yapmak için başlangıç IP 'sini ve bitiş IP 'sini değiştirmeniz gerekebilir.
 
-   Kendi IP adresinizi kontrol etmek için bir arama motoru veya çevrimiçi bir Aracı'nı kullanın. Örneğin, "IP Adresim nedir" aratın.
+   Kendi IP adresinizi denetlemek için bir arama altyapısı veya başka bir çevrimiçi araç kullanın. Örneğin, "IP adresim nedir?" ifadesini aratın.
 
-4. Ek adres aralıkları ekleyin. MariaDB için Azure veritabanı için güvenlik duvarı kurallarında, tek bir IP adresi veya adres aralığını belirtebilirsiniz. Tek bir IP adresi için kural sınırlandırmak istiyorsanız, Başlangıç hem bitiş IP'si alanları aynı adresini yazın. Güvenlik duvarını açmak, Yöneticiler, kullanıcılar ve geçerli kimlik bilgilerine sahip oldukları MariaDB sunucu üzerindeki herhangi bir veritabanına erişmek için uygulamayı etkinleştirir.
+4. Ek adres aralıkları ekleyin. MariaDB için Azure veritabanı güvenlik duvarı kurallarında tek bir IP adresi veya bir adres aralığı belirtebilirsiniz. Kuralı tek bir IP adresiyle sınırlandırmak istiyorsanız, başlangıç IP 'si ve bitiş IP alanlarına aynı adresi yazın. Güvenlik duvarının açılması, yöneticilerin, kullanıcıların ve uygulamanın, geçerli kimlik bilgilerine sahip oldukları MariaDB sunucusundaki herhangi bir veritabanına erişmesine olanak sağlar.
 
-   ![Azure portalı - güvenlik duvarı kuralları](./media/howto-manage-firewall-portal/4-specify-addresses.png)
+   ![Azure portal-güvenlik duvarı kuralları](./media/howto-manage-firewall-portal/4-specify-addresses.png)
 
-5. Tıklayın **Kaydet** bu sunucu düzeyinde güvenlik duvarı kuralını kaydetmek için araç çubuğunda. Güvenlik duvarı kurallarının güncelleştirmenin başarılı olduğunu onaylanmasını bekleyin.
+5. Bu sunucu düzeyinde güvenlik duvarı kuralını kaydetmek için araç çubuğunda **Kaydet** ' e tıklayın. Güvenlik duvarı kurallarına güncelleştirme işleminin başarılı olduğunu onaylayın.
 
-   ![Azure portalı - Kaydet'e tıklayın](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
+   ![Azure portal-kaydet 'e tıklayın](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Azure'dan bağlanma
-MariaDB için Azure veritabanı sunucunuza bağlanmak Azure uygulamalarından izin vermek için Azure bağlantılarının etkinleştirilmesi gerekir. Örneğin, bir Azure Web Apps uygulama veya bir Azure sanal Makinesinde çalışan bir uygulamayı barındırmak için veya bir Azure Data Factory veri yönetimi ağ geçidi bağlanmak için. Kaynakların bu bağlantıları etkinleştirmek için aynı sanal ağ (VNet) veya kaynak grubu için güvenlik duvarı kuralı olması gerekmez. Azure’dan bir uygulama, veritabanı sunucunuza bağlanmayı denediğinizde güvenlik duvarı Azure bağlantılarına izin verildiğini doğrular. Birkaç bu tür bağlantıları etkinleştirmek için yöntem vardır. Başlangıç ve bitiş adresi 0.0.0.0’a eşit olan bir güvenlik duvarı ayarı, bu bağlantılara izin verildiğini gösterir. Alternatif olarak, ayarlayabileceğiniz **Azure hizmetlerine erişime izin ver** seçeneğini **ON** Portalı'nda **bağlantı güvenliği** bölmesi ve tıklayın **Kaydet**. Bağlantı denemesi izin verilmiyorsa, istek MariaDB için Azure veritabanı ulaşmaz.
+Azure 'daki uygulamaların, MariaDB sunucusu için Azure veritabanınıza bağlanmasına izin vermek için Azure bağlantılarının etkinleştirilmesi gerekir. Örneğin, bir Azure Web Apps uygulamasını veya bir Azure VM 'de çalışan bir uygulamayı barındırmak ya da bir Azure Data Factory veri yönetimi ağ geçidinden bağlanmak için. Bu bağlantıları etkinleştirmek için kaynakların, güvenlik duvarı kuralı için aynı sanal ağ (VNet) veya kaynak grubunda olması gerekmez. Azure’dan bir uygulama, veritabanı sunucunuza bağlanmayı denediğinizde güvenlik duvarı Azure bağlantılarına izin verildiğini doğrular. Bu tür bağlantıları etkinleştirmek için birkaç yöntem vardır. Başlangıç ve bitiş adresi 0.0.0.0’a eşit olan bir güvenlik duvarı ayarı, bu bağlantılara izin verildiğini gösterir. Alternatif olarak, **bağlantı güvenliği** bölmesinden portalda **Azure hizmetlerine erişime izin ver** seçeneğini ayarlayabilir ve **Kaydet** **' e tıklayabilirsiniz** . Bağlantı girişimine izin verilmiyorsa, istek, MariaDB sunucusu için Azure veritabanına ulaşmaz.
 
 > [!IMPORTANT]
 > Bu seçenek, diğer müşterilerin aboneliklerinden gelen bağlantılar dahil Azure’dan tüm bağlantılara izin verecek şekilde güvenlik duvarınızı yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.
 > 
 
-## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Azure portalında mevcut güvenlik duvarı kurallarını yönetme
-Güvenlik duvarı kurallarını yönetme adımlarını yineleyin.
-* Kullanmakta olduğunuz bilgisayarı eklemek için tıklayın **+ IP'mi Ekle**. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Ek IP adresi eklemek için yazın **kural adı**, **başlangıç IP**, ve **bitiş IP**. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Mevcut bir kuralı değiştirmek için kuraldaki alanlardan tıklayın ve ardından değiştirin. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Mevcut bir kuralı silmek için […] üç noktaya tıklayın ve ardından **Sil**. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Azure portal mevcut güvenlik duvarı kurallarını yönetme
+Güvenlik duvarı kurallarını yönetmek için adımları yineleyin.
+* Geçerli bilgisayarı eklemek için **+ IP 'Mi Ekle**'ye tıklayın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+* Ek IP adresleri eklemek için **kural adı**, **Başlangıç IP**'si ve **bitiş IP 'si**yazın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+* Mevcut bir kuralı değiştirmek için kuraldaki alanlardan herhangi birine tıklayın ve ardından değiştirin. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+* Mevcut bir kuralı silmek için, üç nokta işaretine [...] ve sonra **Sil**' e tıklayın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
- - Benzer şekilde, yazabilirsiniz [oluşturun ve Azure veritabanı Azure CLI kullanarak MariaDB için güvenlik duvarı kurallarını yönetme](howto-manage-firewall-cli.md).
- - Daha fazla güvenli sunucunuz tarafından erişim [oluşturma ve yönetme sanal ağ hizmet uç noktaları ve Azure portalını kullanarak kurallar](howto-manage-vnet-portal.md).
+ - Benzer şekilde, [Azure CLI kullanarak MariaDB güvenlik duvarı kuralları Için Azure veritabanı oluşturmak ve yönetmek](howto-manage-firewall-cli.md)üzere komut dosyası oluşturabilirsiniz.
+ - [Azure Portal kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturup yöneterek](howto-manage-vnet-portal.md)sunucunuza daha güvenli bir şekilde erişin.

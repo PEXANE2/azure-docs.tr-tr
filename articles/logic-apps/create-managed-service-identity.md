@@ -1,24 +1,21 @@
 ---
-title: Yönetilen kimliklerle kimlik doğrulama-Azure Logic Apps
+title: Yönetilen kimliklerle kimlik doğrulaması
 description: Yönetilen bir kimlik kullanarak kimlik bilgileriyle veya gizli anahtarlarla oturum açmadan diğer Azure Active Directory kiracılardaki kaynaklara erişin
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200634"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792683"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulaması
 
-Diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişmek ve oturum açmadan kimliğinizi doğrulamak için mantıksal uygulamanız, sistem tarafından atanan [yönetilen kimliği](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir, örneğin kimlik bilgileri veya gizli diziler. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur. Bu makalede, mantıksal uygulamanızda sistem tarafından atanan yönetilen kimliğin nasıl ayarlanacağı ve kullanılacağı gösterilir. Şu anda yönetilen kimlikler yalnızca [belirli yerleşik Tetikleyiciler ve eylemlerle](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)birlikte çalışarak, yönetilmeyen bağlayıcılar veya bağlantılar değildir.
+Diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine sistem tarafından atanan [yönetilen kimliği](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur. Bu makalede, mantıksal uygulamanızda sistem tarafından atanan yönetilen kimliğin nasıl ayarlanacağı ve kullanılacağı gösterilir. Şu anda yönetilen kimlikler yalnızca [belirli yerleşik Tetikleyiciler ve eylemlerle](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)birlikte çalışarak, yönetilmeyen bağlayıcılar veya bağlantılar değildir.
 
 Daha fazla bilgi için şu konulara bakın:
 

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 04/30/2019
+ms.date: 11/25/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391817"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796210"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -37,7 +37,7 @@ Azure VM görüntü Oluşturucu (Azure görüntü Oluşturucu), bir Windows veya
 Azure görüntü Oluşturucu hizmeti bu bölgelerde önizleme için kullanılabilir olacak. Görüntüler, bu bölgelerin dışına dağıtılabilir.
 - Doğu ABD
 - Doğu ABD 2
-- Batı Orta ABD
+- Orta Batı ABD
 - Batı ABD
 - Batı ABD 2
 
@@ -58,7 +58,7 @@ AıB, için bir kaynak olarak RHEL ISO 'yu destekleyecektir:
 
 RHEL 7,6 ISOs desteklenmez, ancak test ediliyor.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 
 ![Azure Image Builder kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -73,7 +73,7 @@ Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından eriş
 
 1. Görüntü şablonunu bir. JSON dosyası olarak oluşturun. Bu. JSON dosyası, görüntü kaynağı, özelleştirmeler ve dağıtım hakkındaki bilgileri içerir. [Azure Image Builder GitHub deposunda](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)birden çok örnek vardır.
 1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır: IT_\<DestinationResourceGroup > _\<TemplateName >. 
-1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<DestinationResourceGroup > _\<TemplateName > kaynak grubundaki bir VM (D1v2), ağ, genel IP ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
+1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<DestinationResourceGroup > _\<TemplateName > kaynak grubundaki bir VM (varsayılan boyut: Standard_D1_v2), ağ, genel IP, NSG ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
 1. Görüntü oluşturma işleminin bir parçası olarak, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve ardından işlem için oluşturulan IT_\<DestinationResourceGroup > _\<TemplateName > kaynak grubundaki ek kaynakları siler.
 
 

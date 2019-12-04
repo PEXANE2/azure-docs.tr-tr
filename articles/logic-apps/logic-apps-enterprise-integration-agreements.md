@@ -1,20 +1,19 @@
 ---
-title: Ticari iş ortağı sözleşmeleri-Azure Logic Apps
+title: Ticari iş ortağı sözleşmeleri
 description: Azure Logic Apps ve Enterprise Integration Pack kullanarak ticari iş ortakları arasında anlaşmalar oluşturun ve yönetin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680412"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790728"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps 'de ticari iş ortağı sözleşmeleri oluşturun ve yönetin
 
@@ -41,7 +40,7 @@ RosettaNet iletilerini değiş tokuş eden anlaşmalar oluşturmak için bkz. [E
 
 ## <a name="create-agreements"></a>Anlaşma oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna filtreniz olarak "tümleştirme" yazın. Sonuçlardan şu kaynağı seçin: **tümleştirme hesapları**
 
    ![Tümleştirme hesabınızı bulun](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
@@ -58,7 +57,7 @@ Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna filtreniz ola
 
    !["Ekle" yi seçin](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Özellik | Gerekli | Değer | Açıklama |
+   | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Adı** | Yes | <*Sözleşmesi-adı*> | Sözleşmenizin adı |
    | **Anlaşma türü** | Yes | **AS2**, **x12**veya **ediolgu** | Anlaşmanızın protokol türü. Anlaşma dosyanızı oluşturduğunuzda, bu dosyadaki içeriğin anlaşma türüyle eşleşmesi gerekir. | |  

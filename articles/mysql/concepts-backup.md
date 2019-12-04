@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
+title: Yedekleme ve geri yükleme-MySQL için Azure veritabanı
 description: Otomatik yedeklemeler ve MySQL için Azure veritabanı sunucunuzu geri yükleme hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213130"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776299"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -23,7 +23,7 @@ MySQL için Azure veritabanı, veri dosyalarının ve işlem günlüğünün yed
 
 ### <a name="backup-frequency"></a>Yedekleme sıklığı
 
-Genellikle tam yedeklemeler haftalık olarak gerçekleşir, fark yedeklemeleri en fazla 4 TB depolama alanı olan sunucular için günde iki kez gerçekleşir. Anlık görüntü yedeklemeleri, 16 TB depolama alanını destekleyen sunucular için günde en az bir kez gerçekleşir. Her iki durumda da işlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. Tam yedeklemenin ilk anlık görüntüsü bir sunucu oluşturulduktan sonra hemen zamanlanır. İlk tam yedekleme, büyük bir geri yüklenen sunucuda daha uzun sürebilir. Yeni bir sunucunun geri yüklenebileceği en erken süre, ilk tam yedeklemenin tamamlandığı zamandır. Anlık görüntüler instantanious olduğundan, 16 TB 'a kadar depolamayı destekleyen sunucular, oluşturma saatine geri geri yüklenebilir.
+Genellikle tam yedeklemeler haftalık olarak gerçekleşir, fark yedeklemeleri en fazla 4 TB depolama alanı olan sunucular için günde iki kez gerçekleşir. 16 TB'a kadar depolama alanını destekleyen sunucularda anlık görüntü yedeklemeleri günde en az bir kere gerçekleştirilir. Her iki durumda da işlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. Tam yedeklemenin ilk anlık görüntüsü bir sunucu oluşturulduktan sonra hemen zamanlanır. İlk tam yedekleme, büyük bir geri yüklenen sunucuda daha uzun sürebilir. Yeni bir sunucunun geri yüklenebileceği en erken süre, ilk tam yedeklemenin tamamlandığı zamandır. Anlık görüntüler instantanious olduğundan, 16 TB 'a kadar depolamayı destekleyen sunucular, oluşturma saatine geri geri yüklenebilir.
 
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 

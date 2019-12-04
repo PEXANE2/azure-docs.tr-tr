@@ -1,18 +1,18 @@
 ---
-title: Azure CLı kullanarak PostgreSQL için sunucu günlüklerini yapılandırma ve erişme-tek sunucu
-description: Bu makalede, Azure CLı komut satırını kullanarak PostgreSQL için Azure veritabanı-tek sunucu 'da sunucu günlüklerine nasıl yapılandırılacağı ve erişebileceğiniz açıklanır.
+title: Günlükleri yönetme-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, Azure CLı kullanarak PostgreSQL için Azure veritabanı-tek sunucu içindeki sunucu günlüklerinin (. log dosyaları) nasıl yapılandırılacağı ve erişebileceği açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023633"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763581"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLı kullanarak sunucu günlüklerini yapılandırma ve erişme
 PostgreSQL sunucusu hata günlüklerini komut satırı arabirimi (Azure CLı) kullanarak indirebilirsiniz. Ancak, işlem günlüklerine erişim desteklenmez. 

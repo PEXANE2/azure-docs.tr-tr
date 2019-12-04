@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı 'nı yönetme-Azure portal
+title: Sunucu Yönetme-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için Azure veritabanı 'nı Azure portal yönetme hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 7e09db9308f9ecf623ce0ab0d948ed1056dd21b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: b70b4810f32941938b6afe217f94e18a0f2f3523
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534410"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767135"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure portal kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı yönetme
 Bu makalede, MariaDB sunucuları için Azure veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
@@ -79,7 +79,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
-   ![Sıfırlama-parola](./media/howto-create-manage-server-portal/reset-password.png)
+   ![sıfırlama-parola](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
 

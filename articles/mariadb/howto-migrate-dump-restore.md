@@ -1,17 +1,17 @@
 ---
-title: MariaDB veritabanınızı, MariaDB için Azure veritabanı 'nda dökümünü ve geri yüklemeyi kullanarak geçirme
+title: Döküm ve geri yükleme ile geçiş-MariaDB için Azure veritabanı
 description: Bu makalede, mysqldump, MySQL II ve PHPMyAdmin gibi araçları kullanarak MariaDB için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 12/02/2019
+ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845055"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776014"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>MariaDB veritabanınızı, döküm ve geri yükleme kullanarak MariaDB için Azure veritabanı 'na geçirme
 Bu makalede, MariaDB için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır
@@ -34,23 +34,23 @@ Veritabanlarının dökümünü yapmak ve veritabanlarını bir MariaDB sunucusu
 
 - Tüm veritabanını geçirirken veritabanı dökümlerini kullanın. Bu öneri, büyük miktarda veriyi taşırken veya canlı siteler veya uygulamalar için hizmet kesintisini en aza indirmek istediğinizde barındırır. 
 -  MariaDB için Azure Veritabanı'na veri yüklerken veritabanındaki tüm tabloların InnoDB depolama altyapısını kullandığından emin olun. MariaDB için Azure veritabanı yalnızca InnoDB depolama altyapısını destekler ve bu nedenle alternatif depolama altyapılarını desteklemez. Tablolarınız diğer depolama altyapılarıyla yapılandırıldıysa, MariaDB için Azure veritabanı 'na geçiş yapmadan önce InnoDB Engine biçimine dönüştürün.
-   Örneğin, MyISAM tablolarını kullanarak bir WordPress veya WebApp varsa, önce bu tabloları MariaDB için Azure veritabanı 'na geri yüklemeden önce InnoDB biçimine geçiş yaparak dönüştürmeniz gerekir. Yeni bir tablo `ENGINE=InnoDB` oluştururken kullanılan altyapıyı ayarlamak için yan tümcesini kullanın, ardından geri yüklemeden önce verileri uyumlu tabloya aktarın. 
+   Örneğin, MyISAM tablolarını kullanarak bir WordPress veya WebApp varsa, önce bu tabloları MariaDB için Azure veritabanı 'na geri yüklemeden önce InnoDB biçimine geçiş yaparak dönüştürmeniz gerekir. Yeni bir tablo oluştururken kullanılan altyapıyı ayarlamak için `ENGINE=InnoDB` yan tümcesini kullanın, ardından geri yüklemeden önce verileri uyumlu tabloya aktarın. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- Uyumluluk sorunlarından kaçınmak için veritabanlarının dökümünü alırken kaynak ve hedef sistemlerde aynı MariaDB sürümünün bulunduğundan emin olun. Örneğin, var olan MariaDB sunucunuz sürüm 10,2 ise, sürüm 10,2 ' yi çalıştırmak üzere, MariaDB için Azure veritabanı 'na geçiş yapmanız gerekir. `mysql_upgrade` Komut, MariaDB sunucusu için Azure veritabanı 'nda çalışmaz ve desteklenmez. MariaDB sürümleri arasında yükseltmeniz gerekiyorsa, ilk olarak daha düşük sürüm veritabanınızı, kendi ortamınızda MariaDB 'nin daha yüksek bir sürümüne aktarın. Ardından, `mysql_upgrade`MariaDB için Azure veritabanı 'na geçişi denemeden önce komutunu çalıştırın.
+- Uyumluluk sorunlarından kaçınmak için veritabanlarının dökümünü alırken kaynak ve hedef sistemlerde aynı MariaDB sürümünün bulunduğundan emin olun. Örneğin, var olan MariaDB sunucunuz sürüm 10,2 ise, sürüm 10,2 ' yi çalıştırmak üzere, MariaDB için Azure veritabanı 'na geçiş yapmanız gerekir. `mysql_upgrade` komutu, MariaDB sunucusu için Azure veritabanı 'nda çalışmaz ve desteklenmez. MariaDB sürümleri arasında yükseltmeniz gerekiyorsa, ilk olarak daha düşük sürüm veritabanınızı, kendi ortamınızda MariaDB 'nin daha yüksek bir sürümüne aktarın. Daha sonra, MariaDB için Azure veritabanı 'na geçişi denemeden önce `mysql_upgrade`çalıştırın.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 Performansı iyileştirmek için, büyük veritabanlarının dökümünü yaparken aşağıdaki noktalara dikkat edin:
--   Veritabanları dökümünü alırken mysqldump içindeki seçeneğinikullanın.`exclude-triggers` Veri geri yükleme sırasında tetikleyici komutlarının tetiklemesini önlemek için Tetikleyicileri döküm dosyalarından hariç tutun. 
--   Veri dökümünü yapmadan, işlem yalıtım modunu yinelenebilir okuma olarak ayarlama ve sunucuya bir başlangıç işlemi SQL açıklaması gönderme seçeneğinikullanın.`single-transaction` Tek bir işlem içindeki birçok tablo dökümünü almak, bazı ek depolamanın geri yükleme sırasında tüketilmesine neden olur. Kilitleme `single-transaction` tabloları bekleyen işlemlerin `lock-tables` örtük olarak kaydedilmesine neden olduğundan, seçeneği ve seçeneği birbirini dışlıyor. Büyük tabloların dökümünü yapmak için `single-transaction` seçeneğini `quick` seçeneğiyle birleştirin. 
--   Çeşitli değer listeleri içeren birdençoksatırlıksözdiziminikullanın.`extended-insert` Bu, daha küçük bir döküm dosyası ile sonuçlanır ve dosya yeniden yüklendiğinde daha fazla hızlanır.
--  Verileri birincil anahtar sırasıyla betikleştirilmiş hale getirmek için veritabanları dökümünü yaparken mysqldump içindeki seçeneğinikullanın.`order-by-primary`
--   Verileri dökümünde, yüklemeden önce yabancı anahtar kısıtlamalarını devre dışı bırakmak için mysqldump içindeki seçeneğinikullanın.`disable-keys` Yabancı anahtar denetimlerini devre dışı bırakmak, performans artışı sağlar. Kısıtlamaları etkinleştirin ve bilgi tutarlılığı sağlamak için yüklemeden sonra verileri doğrulayın.
+-   Veritabanları dökümünü yaparken mysqldump içindeki `exclude-triggers` seçeneğini kullanın. Veri geri yükleme sırasında tetikleyici komutlarının tetiklemesini önlemek için Tetikleyicileri döküm dosyalarından hariç tutun. 
+-   İşlem yalıtım modunu YINELENEBILIR okuma olarak ayarlamak ve veri dökümünü yapmadan sunucuya bir başlangıç IŞLEMI SQL açıklaması göndermesi için `single-transaction` seçeneğini kullanın. Tek bir işlem içindeki birçok tablo dökümünü almak, bazı ek depolamanın geri yükleme sırasında tüketilmesine neden olur. KILIT TABLOLARı, bekleyen işlemlerin örtük olarak kaydedilmesine neden olduğundan, `single-transaction` seçeneği ve `lock-tables` seçeneği birbirini dışlıyor. Büyük tabloların dökümünü yapmak için `single-transaction` seçeneğini `quick` seçeneğiyle birleştirin. 
+-   Birkaç değer listesi içeren `extended-insert` birden çok satırlık sözdizimini kullanın. Bu, daha küçük bir döküm dosyası ile sonuçlanır ve dosya yeniden yüklendiğinde daha fazla hızlanır.
+-  Veritabanları dökümünü yaparken mysqldump içindeki `order-by-primary` seçeneğini kullanın, böylece veriler birincil anahtar sırasıyla betikleştirilmiş olur.
+-   Yükleme işleminden önce yabancı anahtar kısıtlamalarını devre dışı bırakmak için verileri dökümünde mysqldump içindeki `disable-keys` seçeneğini kullanın. Yabancı anahtar denetimlerini devre dışı bırakmak, performans artışı sağlar. Kısıtlamaları etkinleştirin ve bilgi tutarlılığı sağlamak için yüklemeden sonra verileri doğrulayın.
 -   Uygun olduğunda bölümlenmiş tabloları kullanın.
 -   Verileri paralel olarak yükleyin. Kaynak sınırına ulaşmanıza ve Azure portal bulunan ölçümleri kullanarak kaynakları izlemenize neden olacak çok fazla paralellik yapmaktan kaçının. 
--   Tablo verileri yüklendikten sonra Dizin oluşturma işleminin gerçekleşmemesi için, veritabanları dökümünü alırken mysqlpump içindeki seçeneğinikullanın.`defer-table-indexes`
+-   Tablolar verileri yüklendikten sonra Dizin oluşturma işleminin gerçekleşmemesi için mysqlpump içindeki `defer-table-indexes` seçeneğini kullanın.
 -   Yedekleme dosyalarını bir Azure Blob 'una/deposuna kopyalayın ve geri yükleme işlemini Internet 'te gerçekleştirmekten daha hızlı bir şekilde gerçekleştirin.
 
 ## <a name="create-a-backup-file"></a>Yedekleme dosyası oluşturma
@@ -66,7 +66,7 @@ Sağlanacak parametreler şunlardır:
 - [BackupFile. SQL] veritabanı yedeklemenizin dosya adı 
 - [--opt] Mysqldump seçeneği 
 
-Örneğin, MariaDB sunucunuzdaki ' TestDB ' adlı bir veritabanını ' testuser ' Kullanıcı adı ile ve testdb_backup. SQL dosyasına parola olmadan yedeklemek için aşağıdaki komutu kullanın. Komutu, veritabanını yeniden oluşturmak `testdb` için gereken tüm SQL deyimlerini `testdb_backup.sql`içeren adlı bir dosyaya veritabanını yedekler. 
+Örneğin, MariaDB sunucunuzdaki ' TestDB ' adlı bir veritabanını ' testuser ' Kullanıcı adı ile ve testdb_backup. SQL dosyasına parola olmadan yedeklemek için aşağıdaki komutu kullanın. Komutu, veritabanını yeniden oluşturmak için gereken tüm SQL deyimlerini içeren `testdb` veritabanını `testdb_backup.sql`adlı bir dosyaya yedekler. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql

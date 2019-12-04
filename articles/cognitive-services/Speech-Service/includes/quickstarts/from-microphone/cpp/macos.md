@@ -10,23 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9b19cd1ff8340a22afb6713289bc3d7be42857ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6f937683490df29e39bd2dc0a39cfc76d64ef41d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503580"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795902"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=macos)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `helloworld.cpp` adlı bir C++ kaynak dosyası oluşturun ve aşağıdaki kodu dosyaya yapıştırın.
 
@@ -34,7 +35,10 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Bu yeni dosyada, dize `YourSubscriptionKey`, konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+
+> [!NOTE]
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-the-app"></a>Uygulama oluşturma
 

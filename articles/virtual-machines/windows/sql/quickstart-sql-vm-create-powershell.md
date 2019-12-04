@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100685"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790900"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile SQL Server Windows sanal makinesi oluşturma
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SQL Server Windows sanal makinesi oluşturma
 
 Bu hızlı başlangıç, Azure PowerShell ile SQL Server sanal makinesi oluşturma adımlarında yol gösterir.
 
@@ -120,7 +120,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-the-sql-vm"></a>SQL VM'sini oluşturma
 
-1. VM 'de oturum açmak için kimlik bilgilerinizi tanımlayın. Kullanıcı adı "azureadmin" dır. Komutu çalıştırmadan önce \<parolayı > değiştirdiğinizden emin olun.
+1. VM 'de oturum açmak için kimlik bilgilerinizi tanımlayın. Kullanıcı adı "azureadmin" dır. Komutu çalıştırmadan önce \<Password > değiştirdiğinizden emin olun.
 
    ``` PowerShell
    # Define a credential object
@@ -151,7 +151,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Portal tümleştirmesi ve SQL VM özelliklerini kullanabilmek için [SQL Server IaaS Aracısı Uzantısı](virtual-machines-windows-sql-server-agent-extension.md)'nı yükleyin. Aracıyı yeni VM 'ye yüklemek için VM oluşturulduktan sonra aşağıdaki komutu çalıştırın.
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
    ```
 
 ## <a name="remote-desktop-into-the-vm"></a>VM'ye uzak masaüstü bağlantısı kurma
@@ -168,7 +168,7 @@ Portal tümleştirmesi ve SQL VM özelliklerini kullanabilmek için [SQL Server 
    mstsc /v:<publicIpAddress>
    ```
 
-1. Kimlik bilgileri istendiğinde farklı bir hesabın kimlik bilgilerini girme seçeneğini belirleyin. Önceki ters eğik çizgiyle (örneğin, `\azureadmin`) Kullanıcı adını ve daha önce bu hızlı başlangıçta ayarladığınız parolayı girin.
+1. Kimlik bilgileri istendiğinde farklı bir hesabın kimlik bilgilerini girme seçeneğini belirleyin. Önceki ters eğik çizgiyle (örneğin, `\azureadmin`) ve daha önce bu hızlı başlangıçta ayarladığınız parolayı girin.
 
 ## <a name="connect-to-sql-server"></a>SQL Server'a bağlanma
 

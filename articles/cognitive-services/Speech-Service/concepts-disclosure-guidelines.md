@@ -3,21 +3,21 @@ title: Açıklama tasarımı yönergeleri
 titleSuffix: Azure Cognitive Services
 description: Açıklama tasarımı yönergelerine ve açıklama düzeyini değerlendirmeye giriş.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837388"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776394"
 ---
-# <a name="disclosure-design-guidelines"></a>Açıklama tasarımı yönergeleri
+# <a name="disclosure-design-guidelines"></a>Tasarım yönergelerini açıklama
 Sesli deneyiminizin yapay doğası hakkında saydam olacak şekilde müşterilerle nasıl güven oluşturacağınızı ve bakımının nasıl yapılacağını öğrenin.
 
 ## <a name="what-is-disclosure"></a>Nelerin açıklanması gerekiyor?

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099745"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775799"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -551,9 +551,11 @@ az group deployment create \
 >
 > Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Daha gelişmiş bir statik eşik ölçümü için şablon uyarısı
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Birden çok ölçütü izleyen statik eşik ölçüm uyarısı şablonu
 
-Daha yeni ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok ölçütü desteklemeyi destekler. Boyut ölçümleri üzerinde daha gelişmiş bir ölçüm uyarısı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
+Daha yeni ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok ölçütü desteklemeyi destekler. Boyut ölçümleri üzerinde daha gelişmiş bir ölçüm uyarısı kuralı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
+
+Uyarı kuralı birden çok ölçüt içerdiğinde, boyutların kullanımı her ölçüt içindeki boyut başına bir değerle sınırlıdır.
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert. JSON olarak kaydedin.
 
@@ -757,7 +759,7 @@ Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advancedstaticmetr
 ```
 
 
-Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyası kullanarak ölçüm uyarısı oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 ```powershell
@@ -784,13 +786,243 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
+> Bir uyarı kuralı birden çok ölçüt içerdiğinde, boyutların kullanımı her ölçüt içindeki boyut başına bir değerle sınırlıdır.
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Daha gelişmiş dinamik eşikler ölçüm uyarısı için şablon
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Birden çok boyutu izleyen statik ölçüm uyarısı şablonu
 
-Boyut ölçümlerinde daha gelişmiş dinamik eşikler ölçüm uyarısı oluşturmak için aşağıdaki şablonu kullanabilirsiniz. Birden çok ölçüt Şu anda desteklenmiyor.
+Boyut ölçümlerinde statik ölçüm uyarı kuralı oluşturmak için aşağıdaki şablonu kullanabilirsiniz.
 
-Dinamik eşik uyarıları kuralı, her seferinde yüzlerce ölçüm serisi (hatta farklı türler) için özel eşikler oluşturabilir ve bu da daha az uyarı kuralı elde edebilir.
+Tek bir uyarı kuralı birden çok ölçüm zaman serisini aynı anda izleyebilir, bu da daha az uyarı kuralına neden olur.
+
+Aşağıdaki örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **apiname** boyutlarının boyut değer birleşimlerini izler:
+1. **ResponsType** -"\*" joker karakteri kullanımı, gelecek değerler de dahil olmak üzere **responseType** boyutunun her bir değeri için ayrı ayrı bir zaman serisi izlenecek anlamına gelir.
+2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
+
+Örneğin, bu uyarı kuralı tarafından izlenecek olası zaman serisinin bir birkaçı şunlardır:
+- Ölçüm = *işlemler*, responseType = *başarılı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *başarılı*, Apiname = *PutBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
+
+Bu izlenecek yolun amacına uygun olarak JSON 'u multidimensionalstaticmetricalert. JSON olarak kaydedin.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+            }
+        },
+        "criterion":{
+            "type": "object",
+            "metadata": {
+                "description": "Criterion includes metric name, dimension values, threshold and an operator. The alert rule fires when ALL criteria are met"
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": { 
+        "criteria": "[array(parameters('criterion'))]"
+     },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": "[variables('criteria')]"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
+
+Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u multidimensionalstaticmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New multi-dimensional metric alert rule (replace with your alert name)"
+        },
+        "alertDescription": {
+            "value": "New multi-dimensional metric alert rule created via template (replace with your alert description)"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
+        },
+        "criterion": {
+            "value": {
+                    "name": "Criterion",
+                    "metricName": "Transactions",
+                    "dimensions": [
+                        {
+                            "name":"ResponseType",
+                            "operator": "Include",
+                            "values": ["*"]
+                        },
+                        {
+                "name":"ApiName",
+                            "operator": "Include",
+                            "values": ["GetBlob", "PutBlob"]    
+                        }
+                    ],
+                    "operator": "GreaterThan",
+                    "threshold": "5",
+                    "timeAggregation": "Total"
+                }
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
+        }
+    }
+}
+```
+
+
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
+
+Azure PowerShell’i kullanma
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile multidimensionalstaticmetricalert.json -TemplateParameterFile multidimensionalstaticmetricalert.parameters.json
+```
+
+
+
+Azure CLI’yı kullanma
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file multidimensionalstaticmetricalert.json \
+    --parameters @multidimensionalstaticmetricalert.parameters.json
+```
+
+
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Birden çok boyutu izleyen dinamik eşikler ölçüm uyarısı için şablon
+
+Boyut ölçümlerinde daha gelişmiş dinamik eşikler ölçüm uyarısı kuralı oluşturmak için aşağıdaki şablonu kullanabilirsiniz.
+
+Tek bir dinamik eşikler uyarı kuralı, yüzlerce ölçüm zaman serisi (hatta farklı türler) için aynı anda özel eşikler oluşturabilir ve bu da daha az uyarı kuralına neden olur.
+
+Aşağıdaki örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **apiname** boyutlarının boyut değer birleşimlerini izler:
+1. **ResponsType** -gelecek değerler de dahil olmak üzere **responseType** boyutunun her değeri için farklı bir zaman serisi tek tek izlenir.
+2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
+
+Örneğin, bu uyarı kuralı tarafından izlenecek olası zaman serisinin bir birkaçı şunlardır:
+- Ölçüm = *işlemler*, responseType = *başarılı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *başarılı*, Apiname = *PutBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u advanceddynamicmetricalert. JSON olarak kaydedin.
 
@@ -936,7 +1168,7 @@ Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advanceddynamicmet
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -945,12 +1177,12 @@ Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advanceddynamicmet
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -961,7 +1193,7 @@ Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advanceddynamicmet
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -970,7 +1202,7 @@ Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advanceddynamicmet
 ```
 
 
-Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyası kullanarak ölçüm uyarısı oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 ```powershell
@@ -997,11 +1229,11 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
+> Dinamik eşikleri kullanan ölçüm uyarısı kuralları için şu anda birden çok ölçüt desteklenmiyor.
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Birden çok kaynağı izleyen ölçüm uyarısı şablonu
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Birden çok kaynağı izleyen bir ölçüm uyarısı şablonu
 
-Önceki bölümlerde, tek bir kaynağı izleyen ölçüm uyarıları oluşturmak için örnek Azure Resource Manager şablonlar açıklanmıştır. Azure Izleyici artık tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın izlenmesini desteklemektedir. Bu özellik şu anda yalnızca Azure genel bulutunda ve yalnızca sanal makineler ve veri kutusu uç cihazları için desteklenir.
+Önceki bölümlerde, tek bir kaynağı izleyen ölçüm uyarıları oluşturmak için örnek Azure Resource Manager şablonlar açıklanmıştır. Azure Izleyici artık tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın izlenmesini desteklemektedir. Bu özellik şu anda yalnızca Azure genel bulutunda ve yalnızca sanal makineler, SQL veritabanları, SQL elastik havuzlar ve veri kutusu uç cihazları için desteklenir.
 
 Dinamik eşikler uyarıları kuralı, aynı anda yüzlerce ölçüm serisi (hatta farklı türler) için özel eşikler oluşturmaya da yardımcı olabilir. Bu, daha az uyarı kuralının yönetilmesine neden olur.
 
@@ -1836,6 +2068,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı tüm-VM--------------------
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",

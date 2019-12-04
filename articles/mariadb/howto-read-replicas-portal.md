@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
+title: Okuma çoğaltmalarını yönetme-Azure portal-MariaDB için Azure veritabanı
 description: Bu makalede Portal kullanılarak MariaDB için Azure veritabanı 'nda okuma çoğaltmalarının nasıl ayarlanacağı ve yönetileceği açıklanmaktadır
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 12/02/2019
+ms.openlocfilehash: 7e290e6d773485b84ef42c7a79abf084e3b0da9f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123606"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765945"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -22,15 +22,15 @@ Bu makalede, Azure portal kullanarak MariaDB hizmeti için Azure veritabanı 'nd
 - Ana sunucu olarak kullanılacak [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md) .
 
 > [!IMPORTANT]
-> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Bu fiyatlandırma katmanlarından birini ana sunucusu olduğundan emin olun.
+> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Ana sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
+## <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
 
 Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturulabilir:
 
 1. [Azure portal](https://portal.azure.com/) oturum açın.
 
-2. Ana sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem açar **genel bakış** sayfası.
+2. Ana sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem **genel bakış** sayfasını açar.
 
 3. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 
@@ -52,16 +52,16 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 7. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
 
 > [!NOTE]
-> Okuma çoğaltmaları aynı sunucu yapılandırma yöneticisi olarak oluşturulur. Çoğaltma sunucusu yapılandırması, oluşturulduktan sonra değiştirilebilir. Çoğaltma sunucusunun yapılandırmasını çoğaltma ana ayak olduğundan emin olmak için ana daha eşit veya daha fazla değerlerinde tutulması gereken önerilir.
+> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
 
 Çoğaltma sunucusu oluşturulduktan sonra **çoğaltma** dikey penceresinden görüntülenebilir.
 
    ![MariaDB için Azure veritabanı-çoğaltmaları listeleme](./media/howto-read-replica-portal/list-replica.png)
 
-## <a name="stop-replication-to-a-replica-server"></a>Bir çoğaltma sunucusu için çoğaltma durdurma
+## <a name="stop-replication-to-a-replica-server"></a>Çoğaltma sunucusuna çoğaltmayı durdur
 
 > [!IMPORTANT]
-> Bir sunucuya çoğaltma durdurma işlemi geri alınamaz. Bir ana ve çoğaltma arasında çoğaltmayı durdurdu sonra geri alınamaz. Çoğaltma sunucusu bir tek başına sunucu olur ve artık hem okuma hem de yazma işlemleri destekler. Bu sunucu bir yinelemeye yeniden yapılamıyor.
+> Bir sunucuya çoğaltma durdurulduğunda geri alınamaz. Bir ana ve çoğaltma arasında çoğaltma durdurulduktan sonra geri alınamaz. Çoğaltma sunucusu daha sonra tek başına bir sunucu olur ve artık hem okuma hem de yazma işlemlerini destekler. Bu sunucu tekrar bir çoğaltmaya yapılamaz.
 
 Azure portal ana ve çoğaltma sunucusu arasında çoğaltmayı durdurmak için aşağıdaki adımları kullanın:
 
@@ -81,7 +81,7 @@ Azure portal ana ve çoğaltma sunucusu arasında çoğaltmayı durdurmak için 
 
    ![MariaDB için Azure veritabanı-çoğaltmayı durdur Onayla](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
-## <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu Sil
+## <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu silme
 
 Azure portal bir okuma çoğaltması sunucusunu silmek için aşağıdaki adımları kullanın:
 
@@ -101,10 +101,10 @@ Azure portal bir okuma çoğaltması sunucusunu silmek için aşağıdaki adıml
 
    ![MariaDB için Azure veritabanı-çoğaltma silme onaylama](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Bir ana sunucu silme
+## <a name="delete-a-master-server"></a>Ana sunucuyu silme
 
 > [!IMPORTANT]
-> Ana sunucu silme tüm çoğaltma sunucuları için çoğaltma durdurulur ve ana sunucusunu siler. Artık hem okuma hem de yazma işlemleri destekleyen tek başına sunucular çoğaltma sunucusu olur.
+> Bir ana sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve ana sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 
 Azure portal bir ana sunucuyu silmek için aşağıdaki adımları kullanın:
 
@@ -138,4 +138,4 @@ Azure portal bir ana sunucuyu silmek için aşağıdaki adımları kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi edinin [çoğaltmaları okuyun](concepts-read-replicas.md)
+- [Okuma çoğaltmaları](concepts-read-replicas.md) hakkında daha fazla bilgi edinin

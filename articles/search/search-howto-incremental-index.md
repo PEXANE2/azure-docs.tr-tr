@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112580"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790491"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Azure Bilişsel Arama zenginleştirilmiş belgelerin artımlı dizin oluşturma özelliği nasıl ayarlanır
 
@@ -41,13 +41,32 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>2\. Adım: cache özelliğini ekleme
 
-`cache` özelliğini dizin oluşturucuya eklemek için GET isteğinden yanıtı düzenleyin. Cache nesnesi yalnızca tek bir özellik gerektirir ve bu bağlantı dizesi bir Azure depolama hesabına ait olur.
+< < < < < < < baş, `cache` özelliğini dizin oluşturucuya eklemek için GET isteğinden yanıtı düzenleyin. Önbellek nesnesi, depolama hesabına yönelik bağlantı dizesi olan `storageConnectionString` yalnızca tek bir özellik gerektirir. = = = = = = = GET isteğinden yanıtı düzenleyerek `cache` özelliğini Indexer öğesine ekleyin. Cache nesnesi yalnızca tek bir özellik gerektirir ve bu bağlantı dizesi bir Azure depolama hesabına ait olur.
+>>>>>>> 3519a330aa86b6827d31403690529105825b1b16
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>Reporocessing 'ı etkinleştir
+
+İsteğe bağlı olarak, varsayılan değeri true olarak ayarlanmış önbellek içinde `enableReprocessing` Boolean özelliğini ayarlayabilirsiniz. `enableReprocessing` bayrağı, Dizin oluşturucularınızın davranışını denetlemenize olanak tanır. Dizin oluşturucunun dizine yeni belgeler ekleme önceliğini belirlemek istediğiniz senaryolarda, bayrağını false olarak ayarlamanız gerekir. Dizin oluşturucunuz yeni belgelerle yakalandıktan sonra, bayrağını True olarak ayarlamak, dizin oluşturucunun mevcut belgeleri nihai tutarlılığa açmaya başlamasını sağlar. `enableReprocessing` bayrağı false olarak ayarlandığında, Dizin Oluşturucu yalnızca önbelleğe yazar, ancak herhangi bir mevcut belgeyi, zenginleştirme ardışık düzeninde yapılan değişiklikleri temel alarak işlemez.
 
 ### <a name="step-3-reset-the-indexer"></a>3\. Adım: Dizin oluşturucuyu sıfırlama
 

@@ -1,26 +1,26 @@
 ---
-title: MySQL için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere SSL bağlantısını yapılandırma
+title: SSL 'yi yapılandırma-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nı ve ilişkili uygulamaları doğru şekilde SSL bağlantıları kullanacak şekilde yapılandırma yönergeleri
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: 7a6c42da3fb92dc7dda014faa64fb8daa8c58774
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/02/2019
+ms.openlocfilehash: 590e2e7e735af55f8c7ad96f87f947115f8783fc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359453"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770569"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma
 MySQL için Azure veritabanı, MySQL Server için Azure veritabanı sunucunuzu Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
 
-## <a name="step-1-obtain-ssl-certificate"></a>1\. adım: SSL sertifikası al
-MySQL için Azure veritabanı sunucusu [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ile SSL üzerinden iletişim kurmak için gereken sertifikayı indirin ve sertifika dosyasını yerel sürücünüze kaydedin (Bu öğreticide c:\ssl kullanılır).
+## <a name="step-1-obtain-ssl-certificate"></a>1\. Adım: SSL sertifikası alma
+[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 'den MySQL Için Azure veritabanı sunucusu ile SSL üzerinden iletişim kurmak için gereken sertifikayı indirin ve sertifika dosyasını yerel sürücünüze kaydedin (Bu öğreticide c:\ssl kullanılır).
 **Microsoft Internet Explorer ve Microsoft Edge için:** İndirme tamamlandıktan sonra, sertifikayı BaltimoreCyberTrustRoot. CRT. ped olarak yeniden adlandırın.
 
-## <a name="step-2-bind-ssl"></a>2\. adım: SSL bağlama
+## <a name="step-2-bind-ssl"></a>2\. Adım: SSL bağlama
 
 Belirli programlama dili bağlantı dizeleri için lütfen aşağıdaki [örnek koda](howto-configure-ssl.md#sample-code) bakın.
 
@@ -45,9 +45,9 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ```
 
 > [!NOTE]
-> Windows üzerinde MySQL komut satırı arabirimini kullanırken bir hata `SSL connection error: Certificate signature check failed`alabilirsiniz. Bu gerçekleşirse, `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametreleri ile `--ssl`değiştirin.
+> Windows üzerinde MySQL komut satırı arabirimini kullanırken `SSL connection error: Certificate signature check failed`bir hata alabilirsiniz. Bu durumda `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametrelerini `--ssl`ile değiştirin.
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3\. adım:  Azure 'da SSL bağlantılarını zorunlu tutma 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3\. Adım: Azure 'da SSL bağlantıları zorlama 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 Azure portal kullanarak MySQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet**' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
 ![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
@@ -63,7 +63,7 @@ SSL kullanarak MySQL sunucunuza bağlandığınızı doğrulamak için MySQL **S
 ```dos
 mysql> status
 ```
-Çıktıyı inceleyerek bağlantının şifrelendiğini onaylayın ve şunları göstermelidir:  **SSL Kullanılan şifre AES256-SHA** 
+Çıktıyı inceleyerek bağlantının şifrelendiğini onaylayın; bu, şunu göstermelidir: **SSL: kullanımdaki ŞIFRE AES256-SHA** 
 
 ## <a name="sample-code"></a>Örnek kod
 Uygulamanızdan SSL üzerinden MySQL için Azure veritabanı 'na güvenli bir bağlantı kurmak için aşağıdaki kod örneklerine bakın:

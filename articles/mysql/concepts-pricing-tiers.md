@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı fiyatlandırma katmanları
+title: Fiyatlandırma katmanları-MySQL için Azure veritabanı
 description: Bilgi işlem oluşturmaları, depolama türleri, depolama boyutu, sanal çekirdek, bellek ve yedekleme bekletme dönemleri dahil olmak üzere MySQL için Azure veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: 62c5c338f9783c65a3907a706618f653eea5cd0d
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 12/02/2019
+ms.openlocfilehash: 9aed33b44bac16e2f6b0d801a6c26a2174043817
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904382"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770875"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL için Azure veritabanı fiyatlandırma katmanları
 

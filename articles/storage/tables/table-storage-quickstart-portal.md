@@ -1,19 +1,19 @@
 ---
-title: Hızlı başlangıç-Azure Tablo depolamaya genel bakış
+title: Hızlı başlangıç-Azure portal Azure Storage tablosu oluşturma
 description: Bu hızlı başlangıçta Azure portal bir Azure Depolama Tablo hizmeti tablosu oluşturun.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/23/2018
+ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5f397505c4b9d4b41353021fd9ab1f4d6a36ecfc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cfb44964b06c811d6d587f2a406cdcfb8048a42
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702387"
+ms.locfileid: "74793344"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalda bir Azure Depolama tablosu oluşturma 
 

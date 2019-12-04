@@ -2,19 +2,18 @@
 title: Genel Bakış-Azure sunucusuz
 description: Altyapı hakkında endişelenmeden bulutta güçlü çözümler oluşturun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 363002712bdd06e74360de9af186f5a458a4999d
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d658efd278425358a2a931fe976827c3bae4247d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68385364"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792834"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Genel Bakış: Azure Logic Apps ve Azure Işlevleri ile Azure sunucusuz
 
@@ -32,7 +31,7 @@ Sunucusuz için çekirdek Azure Hizmetleri [Azure Logic Apps](https://azure.micr
 
 Logic Apps kullanmaya başlamak için [ilk mantıksal uygulamanızı oluşturmaya](quickstart-create-first-logic-app-workflow.md)başlayın. Logic Apps hakkında daha fazla teknik bilgi için bkz. [Geliştirici başvurusu](logic-apps-workflow-definition-language.md).
 
-## <a name="what-is-azure-functions"></a>Azure Işlevleri nedir?
+## <a name="what-is-azure-functions"></a>Azure İşlevleri nedir?
 
 Azure Işlevleri, bulutta kod parçalarını veya "işlevleri" kolayca çalıştırmaya yönelik bir hizmettir. Tüm uygulama veya gerekli altyapı hakkında endişelenmeden yalnızca geçerli sorun için gerekli olan kodu yazabilirsiniz. İşlevler, geliştirmeyi daha da üretken hale getirir ve tercih C# F#ettiğiniz, Node. js, Python veya PHP gibi geliştirme dilinizi kullanabilirsiniz. Yalnızca kodunuzun çalıştırıldığı süre için ödeme yaparsınız ve gerektiğinde Azure ölçeklendiriyor olursunuz.
 

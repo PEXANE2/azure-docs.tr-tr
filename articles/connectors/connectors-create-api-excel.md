@@ -1,22 +1,18 @@
 ---
-title: Excel Online 'a bağlanma-Azure Logic Apps
+title: Excel Online 'a bağlanma
 description: Excel Online REST API 'Leri ve Azure Logic Apps verileri yönetme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859244"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789809"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online verilerini Azure Logic Apps yönetme
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0cfcbdaee5a39a947bd89c677f49214c8c3cb98a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162855"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790594"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 sanal makineleri için otomatik yedekleme (Kaynak Yöneticisi)
 
@@ -116,13 +116,12 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Aracısı uzantısı yüklüyse, "SqlIaaSAgent" veya "Sqliaasextenma" olarak listelenmiş olduğunu görmeniz gerekir. Uzantının **Provisioningstate** 'i de "başarılı" olarak gösterilmelidir.
 
-Yüklü değilse veya sağlanmadıysa, aşağıdaki komutla yükleyebilirsiniz. VM adı ve kaynak grubuna ek olarak, sanal makinenizin bulunduğu bölgeyi ( **$Region**) de belirtmeniz gerekir.
+Yüklü değilse veya sağlanmadıysa, aşağıdaki komutla yükleyebilirsiniz. VM adı ve kaynak grubuna ek olarak, sanal makinenizin bulunduğu bölgeyi ( **$Region**) de belirtmeniz gerekir. SQL Server VM için lisans türünü belirtin, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)aracılığıyla Kullandıkça Öde veya kendi lisansını getir seçeneklerinden birini belirleyin. Lisanslama hakkında daha fazla bilgi için bkz. [lisans modeli](virtual-machines-windows-sql-ahb.md). 
 
 ```powershell
-$region = "EASTUS2"
-Set-AzVMSqlServerExtension -VMName $vmname `
-    -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+New-AzSqlVM  -Name $vmname `
+    -ResourceGroupName $resourcegroupname `
+    -Location $region -LicenseType <PAYG/AHUB>
 ```
 
 > [!IMPORTANT]
@@ -191,7 +190,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 SQL Server IaaS aracısının yüklenmesi ve yapılandırılması birkaç dakika sürebilir.
 
 > [!NOTE]
-> **New-Azvmsqlserverotomatikbackupconfig** için yalnızca SQL Server 2016 ve otomatik yedekleme v2 için uygulanan başka ayarlar vardır. SQL Server 2014 şu ayarları desteklemez: **Backupsystemdbs**, **backupscheduletype**, **fullbackupfrequency**, **fullbackupstarthour**, **fullbackupwindowınhours**ve  **LogBackupFrequencyInMinutes**. Bu ayarları SQL Server 2014 sanal makinesinde yapılandırmaya çalışırsanız, bir hata yoktur, ancak ayarlar uygulanmaz. Bu ayarları SQL Server 2016 sanal makinesinde kullanmak istiyorsanız, [SQL Server 2016 Azure sanal makineleri Için otomatik yedekleme v2](virtual-machines-windows-sql-automated-backup-v2.md)bölümüne bakın.
+> **New-Azvmsqlserverotomatikbackupconfig** için yalnızca SQL Server 2016 ve otomatik yedekleme v2 için uygulanan başka ayarlar vardır. SQL Server 2014 şu ayarları desteklemez: **Backupsystemdbs**, **backupscheduletype**, **fullbackupfrequency**, **fullbackupstarthour**, **fullbackupwindowınhours**ve **LogBackupFrequencyInMinutes**. Bu ayarları SQL Server 2014 sanal makinesinde yapılandırmaya çalışırsanız, bir hata yoktur, ancak ayarlar uygulanmaz. Bu ayarları SQL Server 2016 sanal makinesinde kullanmak istiyorsanız, [SQL Server 2016 Azure sanal makineleri Için otomatik yedekleme v2](virtual-machines-windows-sql-automated-backup-v2.md)bölümüne bakın.
 
 Şifrelemeyi etkinleştirmek için, önceki betiği, **Enableencryption** parametresini **CertificatePassword** parametresi için bir parola (güvenli dize) ile birlikte geçecek şekilde değiştirin. Aşağıdaki betik, önceki örnekteki otomatik yedekleme ayarlarını sağlar ve şifreleme ekler.
 
@@ -237,7 +236,7 @@ $retentionperiod = 10
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 
@@ -263,10 +262,10 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 SQL Server 2014 ' de Otomatik yedeklemeyi izlemek için iki ana seçeneğiniz vardır. Otomatik yedekleme SQL Server yönetilen yedekleme özelliğini kullandığından, aynı izleme teknikleri her ikisi için de geçerlidir.
 
-İlk olarak, [msdb. smart_admin. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql)öğesini çağırarak durumu yoklayabilmeniz gerekir. Veya [msdb. smart_admin. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) tablo değerli işlevini sorgulayın.
+İlk olarak, [msdb. smart_admin. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql)çağırarak durumu yoklayabilmeniz gerekir. Veya [msdb. smart_admin. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) tablo değerli işlevini sorgulayın.
 
 > [!NOTE]
-> SQL Server 2014 ' deki yönetilen yedekleme şeması **msdb. smart_admin**' dir. SQL Server 2016 ' de **msdb. managed_backup**olarak değiştirilmiştir ve başvuru konuları bu yeni şemayı kullanır. Ancak SQL Server 2014 için, tüm yönetilen yedekleme nesneleri için **smart_admin** şemasını kullanmaya devam etmeniz gerekir.
+> SQL Server 2014 ' deki yönetilen yedekleme şeması **msdb. smart_admin**. SQL Server 2016 ' de **msdb. managed_backup**olarak değiştirilmiştir ve başvuru konuları bu yeni şemayı kullanır. Ancak SQL Server 2014 için, tüm yönetilen yedekleme nesneleri için **smart_admin** şemasını kullanmaya devam etmeniz gerekir.
 
 Diğer bir seçenek de bildirimler için yerleşik Veritabanı Postası özelliğinden yararlanabilmenizi sağlar.
 

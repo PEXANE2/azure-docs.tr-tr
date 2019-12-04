@@ -1,19 +1,19 @@
 ---
-title: Gelişmiş tehdit koruması-MySQL için Azure veritabanı
+title: Gelişmiş tehdit koruması-Azure portal-MySQL için Azure veritabanı
 description: Veritabanı için olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılamak için Gelişmiş tehdit koruması yapılandırma hakkında bilgi edinin.
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: fe058433cfe4c6c9f89f14d2c74e33ff1b8372ac
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 11ac05c710f7daf709ffbc29aebff706aea704d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970493"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765055"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için Gelişmiş tehdit koruması
+# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı için Gelişmiş Tehdit Koruması
 
 MySQL için Azure Veritabanı Gelişmiş Tehdit Koruması, veritabanlarınıza erişme veya bunları kullanma konusunda olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri tespit eder.
 
@@ -27,7 +27,7 @@ Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birle�
 > Bu özellik, MySQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.
 
 ## <a name="set-up-threat-detection"></a>Tehdit algılamayı ayarlama
-1. Azure portal [https://portal.azure.com](https://portal.azure.com)' de başlatın.
+1. [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
 2. Korumak istediğiniz MySQL için Azure veritabanı sunucusunun yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Gelişmiş tehdit koruması (Önizleme)** öğesini seçin.
 3. **Gelişmiş tehdit koruması (Önizleme)** yapılandırma sayfasında:
 

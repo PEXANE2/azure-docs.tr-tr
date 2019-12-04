@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083662"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793327"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLı kullanarak hızlandırılmış ağ ile Linux sanal makinesi oluşturma
 
@@ -62,6 +62,9 @@ Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya
 
 VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
+### <a name="custom-images"></a>Özel Görüntüler
+Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, lütfen Azure 'da Mellanox ConnectX-3 ve ConnectX-4 LX NIC 'lerle çalışmak için gerekli sürücülere sahip olduğunuzdan emin olun.
+
 ### <a name="regions"></a>Bölgeler
 Tüm genel Azure bölgelerinde ve Azure Kamu bulutlarında kullanılabilir.
 
@@ -82,7 +85,7 @@ Bu makalede, Azure CLı kullanarak hızlandırılmış ağ içeren bir sanal mak
 Sanal makine oluşturulduktan sonra, [hızlandırılmış ağ oluşturma özelliğinin etkinleştirildiğini onaylama](#confirm-that-accelerated-networking-is-enabled)' daki yönergeleri Izleyerek hızlandırılmış ağın etkinleştirildiğini doğrulayabilirsiniz.
 
 ## <a name="cli-creation"></a>CLı oluşturma
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
 En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC*ve *myvm*dahil olmak üzere örnek parametre adları.
 

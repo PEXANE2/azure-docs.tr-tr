@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: a858388a11cfdf36bacb1e5840f00fc6ef097867
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555711"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767696"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -22,7 +22,7 @@ Eylem kuralları herhangi bir Azure Resource Manager kapsamında (Azure aboneli�
 
 ### <a name="suppression-of-alerts"></a>Uyarıların gizlemesi
 
-Uyarıların oluşturduğu bildirimleri gizlemek için yararlı olduğu birçok senaryo vardır. Bu senaryolar, planlanan bir bakım penceresi sırasında, iş dışı saatlerde gizlemenin gizlenme sürecinde değişir. Örneğin, **contosovm** 'den sorumlu olan ekip, **contosovm** planlanmış bakımda olduğundan yaklaşan hafta sonu için uyarı bildirimlerini bastırmak istiyor. 
+Uyarıların oluşturduğu bildirimleri gizlemek için yararlı olduğu birçok senaryo vardır. Bu senaryolar, planlanan bir bakım penceresi sırasında çalışılmayan saatler sırasında gizlemenin gizlenme sürecinde değişir. Örneğin, **contosovm** 'den sorumlu olan ekip, **contosovm** planlanmış bakımda olduğundan yaklaşan hafta sonu için uyarı bildirimlerini bastırmak istiyor. 
 
 Ekip, **Contosovm** 'de yapılandırılmış olan her bir uyarı kuralını el ile devre dışı bırakabilse de (bakım sonrasında tekrar etkinleştirirseniz) basit bir işlem değildir. Eylem kuralları, göstermeme süresini esnek bir şekilde yapılandırma özelliği ile ölçeklendirerek uyarı gizleme tanımlamanıza yardımcı olur. Önceki örnekte, takım, **Contosovm** 'de, hafta sonu için tüm uyarı bildirimlerini gösteren bir eylem kuralı tanımlayabilir.
 

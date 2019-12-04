@@ -1,21 +1,21 @@
 ---
-title: Azure CLı kullanarak MariaDB için Azure veritabanı 'nda sunucu günlüklerine erişme
-description: Bu makalede, Azure CLı komut satırı yardımcı programı kullanılarak MariaDB için Azure veritabanı 'nda sunucu günlüklerine nasıl erişebileceğiniz açıklanır.
-author: rachel-msft
-ms.author: raagyema
+title: Yavaş sorgu günlüklerine erişme-Azure CLı-MariaDB için Azure veritabanı
+description: Bu makalede, Azure CLı komut satırı yardımcı programı kullanılarak MariaDB için Azure veritabanı 'ndaki yavaş günlüklere nasıl erişebileceğiniz açıklanır.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023604"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767390"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLı kullanarak sunucu günlüklerini yapılandırma ve erişme
-Azure komut satırı yardımcı programı olan Azure CLı 'yı kullanarak MariaDB sunucu günlükleri için Azure veritabanı 'nı indirebilirsiniz.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLı kullanarak yavaş sorgu günlüklerini yapılandırma ve erişme
+Azure komut satırı yardımcı programı olan Azure CLı 'yı kullanarak MariaDB yavaş sorgu günlükleri için Azure veritabanı 'nı indirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:

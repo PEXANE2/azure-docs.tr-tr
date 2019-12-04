@@ -1,71 +1,69 @@
 ---
-title: Kod çözme X12 iletileri - Azure Logic Apps | Microsoft Docs
-description: EDI doğrulamak ve bildirimleri X12 ile oluşturma, Azure Logic Apps Enterprise Integration Pack ile ileti kod çözücü
+title: X12 iletilerinin kodunu çözme
+description: Enterprise Integration Pack Azure Logic Apps için EDI doğrulama ve x12 ileti kod çözücüsü ile bildirimleri oluşturma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701441"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792361"
 ---
-# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kod çözme X12 Azure Logic Apps Enterprise Integration Pack ile iletileri
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack Azure Logic Apps içindeki x12 iletilerinin kodunu çözme
 
-Kod çözme X12 ileti bağlayıcısıyla, Zarf ticari ortak sözleşmesi karşı doğrulamak, EDI ve iş ortağı özgü özellikleri doğrulamak, değişim işlemleri kümelerine bölme veya tüm etkileşimler korumak ve bildirimler oluşturma işlenen işlemleri için. Bu bağlayıcıyı kullanmak için bağlayıcıyı mantıksal uygulamanızda için var olan bir tetikleyici eklemeniz gerekir.
+Kod çözme x12 ileti Bağlayıcısı ile, bir ticari ortak anlaşmasıyla ilgili zarfı doğrulayabilir, EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, değişiklikleri işlem kümelerine bölebilir veya tüm değişiklikleri koruyabilir ve bildirimler oluşturabilirsiniz işlenen işlemler için. Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Gereksinim duyduğunuz öğeleri şu şekildedir:
+İhtiyacınız olan öğeler aşağıda verilmiştir:
 
-* Bir Azure hesabı; oluşturabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free)
-* Bir [tümleştirme hesabı](logic-apps-enterprise-integration-create-integration-account.md) zaten tanımlanmış ve Azure aboneliğinizle ilişkili. Kod çözme X12 ileti bağlayıcıyı kullanmak üzere bir tümleştirme hesabı olması gerekir.
-* En az iki [iş ortakları](logic-apps-enterprise-integration-partners.md) , tümleştirme hesabında zaten tanımlanmış
-* Bir [X12 sözleşmesi](logic-apps-enterprise-integration-x12.md) , tümleştirme hesabında zaten tanımlı
+* Bir Azure hesabı; [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz
+* Zaten tanımlanmış ve Azure aboneliğinizle ilişkilendirilen bir [tümleştirme hesabı](logic-apps-enterprise-integration-create-integration-account.md) . Kod çözme x12 ileti bağlayıcısını kullanabilmeniz için bir tümleştirme hesabınız olmalıdır.
+* Tümleştirme hesabınızda zaten tanımlanmış olan en az iki [iş ortağı](logic-apps-enterprise-integration-partners.md)
+* Tümleştirme hesabınızda zaten tanımlanmış olan bir [x12 sözleşmesi](logic-apps-enterprise-integration-x12.md)
 
-## <a name="decode-x12-messages"></a>Kod çözme X12 iletileri
+## <a name="decode-x12-messages"></a>X12 iletilerinin kodunu çözme
 
-1. [Mantıksal uygulama oluşturma](quickstart-create-first-logic-app-workflow.md).
+1. [Mantıksal uygulama oluşturun](quickstart-create-first-logic-app-workflow.md).
 
-2. İstek tetikleyicisi gibi mantıksal uygulamanızı başlatmak için bir tetikleyici eklemelisiniz tetikleyicileri, kod çözme X12 ileti Bağlayıcısı yok. Mantıksal Uygulama Tasarımcısı'nda bir tetikleyici ekleme ve ardından mantıksal uygulamanız için bir eylem ekleyin.
+2. Kod çözme x12 ileti bağlayıcısının tetikleyicisi yoktur, bu nedenle mantıksal uygulamanızı başlatmak için bir Istek tetikleyicisi gibi bir tetikleyici eklemeniz gerekir. Mantıksal uygulama tasarımcısında bir tetikleyici ekleyin ve sonra mantıksal uygulamanıza bir eylem ekleyin.
 
-3.  Arama kutusuna filtreniz için "x12" girin. Seçin **X12-kod çözme X12 ileti**.
+3.  Arama kutusuna filtreniz için "x12" yazın. **X12-kodunu çöz x12 iletisini**seçin.
    
-    !["X12" için arama](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
+    !["X12" araması yapın](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
-3. Daha önce tümleştirme hesabı için herhangi bir bağlantı oluşturmadıysanız, artık bu bağlantıyı oluşturmak için istenir. Bağlantınızı adlandırın ve bağlanmak istediğiniz tümleştirme hesabı seçin. 
+3. Daha önce tümleştirme hesabınızla bağlantı oluşturmadıysanız, bu bağlantıyı şimdi oluşturmanız istenir. Bağlantınızı adlandırın ve bağlamak istediğiniz tümleştirme hesabını seçin. 
 
-    ![Tümleştirme hesabı bağlantı ayrıntılarını girin](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
+    ![Tümleştirme hesabı bağlantı ayrıntılarını sağlayın](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
 
-    Bir yıldız işareti ile özellikleri gereklidir.
+    Yıldız işareti olan özellikler gereklidir.
 
     | Özellik | Ayrıntılar |
     | --- | --- |
-    | Bağlantı adı * |Bağlantınız için herhangi bir ad girin. |
-    | Tümleştirme hesabı * |Tümleştirme hesabı için bir ad girin. Tümleştirme hesabı ve mantıksal uygulamanızı aynı Azure konumda olduklarından emin olun. |
+    | Bağlantı adı * |Bağlantınız için bir ad girin. |
+    | Tümleştirme hesabı * |Tümleştirme hesabınız için bir ad girin. Tümleştirme hesabınızın ve mantıksal uygulamanızın aynı Azure konumunda olduğundan emin olun. |
 
-5.  İşiniz bittiğinde, bağlantı ayrıntılarınızı şu örneğe benzemelidir. Bağlantınızı oluşturmayı tamamlamak için seçin **Oluştur**.
+5.  İşiniz bittiğinde, bağlantı ayrıntılarınız bu örneğe benzer görünmelidir. Bağlantınızın oluşturulmasını tamamlaması için **Oluştur**' u seçin.
    
     ![Tümleştirme hesabı bağlantı ayrıntıları](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
-6. Kodu çözülecek düz dosya iletisi seçin X12 Bu örnekte gösterildiği gibi bağlantınızı sonra oluşturulur.
+6. Bağlantınız oluşturulduktan sonra, bu örnekte gösterildiği gibi, kod çözmek için x12 düz dosya iletisini seçin.
 
-    ![oluşturulan tümleştirme hesabı bağlantısı](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
+    ![Tümleştirme hesabı bağlantısı oluşturuldu](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    Örneğin:
+    Örnek:
 
-    ![Select X12 düz dosya iletisi kod çözme](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+    ![Kod çözme için x12 düz dosya iletisi seçin](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
    > [!NOTE]
-   > Gerçek ileti içeriği veya iyi veya kötü, ileti dizisi için yükü base64 kodlu ' dir. Bu nedenle, bu içeriği işleyen bir ifade belirtmeniz gerekir.
-   > Kod görünümü veya Tasarımcısı'nda ifade oluşturucusu kullanarak girdiğiniz XML olarak içeriği işleyen bir örnek aşağıda verilmiştir.
+   > İleti dizisi için gerçek ileti içeriği veya yükü, iyi veya hatalı, Base64 kodlandı. Bu nedenle, bu içeriği işleyen bir ifade belirtmeniz gerekir.
+   > Aşağıda, içeriği kod görünümünde girebileceğiniz veya tasarımcıda ifade Oluşturucu kullanarak XML olarak işleyen bir örnek verilmiştir.
    > ``` json
    > "content": "@xml(base64ToBinary(item()?['Payload']))"
    > ```
@@ -73,37 +71,37 @@ Gereksinim duyduğunuz öğeleri şu şekildedir:
    >
 
 
-## <a name="x12-decode-details"></a>X12 ayrıntıları kodunu çözme
+## <a name="x12-decode-details"></a>X12 kod çözme ayrıntıları
 
-X12 kod çözme bağlayıcı, bu görevleri gerçekleştirir:
+X12 kod çözme Bağlayıcısı şu görevleri gerçekleştirir:
 
-* Ticari ortak sözleşmesi karşı Zarf doğrular
-* EDI ve iş ortağı özgü özellikleri doğrulama
-  * EDI yapısal doğrulama ve genişletilmiş şema doğrulaması
-  * Değişim Zarf yapısını doğrulama.
-  * Denetim şemayla zarfının şema doğrulaması.
-  * İleti şemayla işlem kümesi veri öğelerinin şema doğrulaması.
-  * EDI doğrulaması işlem kümesi veri öğeleri üzerinde gerçekleştirilen 
-* Değişim, Grup ve işlem kümesi denetim numaraları çoğaltmaları olmadığını doğrular
-  * Değişim denetim numarası önceden alınmış değişim karşı denetler.
-  * Grup denetim numarası diğer Grup denetim numaraları Değişimdeki karşı denetler.
-  * Bu gruptaki diğer işlem kümesi denetim numaraları karşı işlem kümesi denetim numarası denetler.
-* Değişimi işlem kümeleri halinde ayırır veya tüm değişim korur:
-  * Bölünmüş değişimi işlem kümeleri - olarak işlem kümelerini Askıya Al hatası: Hareket halinde bölmelerini değişim ayarlar ve her işlem kümesi ayrıştırır. 
-  Kod çözme eylemi, bu işlem yalnızca ayarlar çıkarır X12 için doğrulama başarısız `badMessages`, kalan işlemler ayarlar çıkış `goodMessages`.
-  * Bölünmüş değişimi işlem kümeleri - olarak hata durumunda değişimi askıya: Hareket halinde bölmelerini değişim ayarlar ve her işlem kümesi ayrıştırır. 
-  Bir veya daha fazla işlem içinde değişim ayarlar doğrulama, kod çözme eylemi çıkarır, değişim için tüm işlem ayarlar X12 başarısız `badMessages`.
-  * Değişimi Koru - hata durumunda işlem kümelerini askıya: Değişimi Koru ve tüm toplu değişim işleyebilirsiniz. 
-  Kod çözme eylemi, bu işlem yalnızca ayarlar çıkarır X12 için doğrulama başarısız `badMessages`, kalan işlemler ayarlar çıkış `goodMessages`.
-  * Değişimi Koru - hata oluştuğunda değişimi Askıya Al: Değişimi Koru ve tüm toplu değişim işleyebilirsiniz. 
-  Bir veya daha fazla işlem içinde değişim ayarlar doğrulama, kod çözme eylemi çıkarır, değişim için tüm işlem ayarlar X12 başarısız `badMessages`. 
-* Teknik ve/veya işlev bildirimi (yapılandırılmışsa) oluşturur.
-  * Teknik bir bildirim başlığı doğrulama sonucu olarak oluşturur. Teknik Bildirim, bir değişim üstbilgi ve tanıtım adresi alıcı tarafından işlenmesini durumunu raporlar.
-  * Bir işlev bildirimi gövdesi doğrulama sonucu olarak oluşturur. İşlev bildirimi alınan belge işlerken bir hatayla karşılaştı her bir hata raporları
+* Zarfı ticari iş ortağı sözleşmesine karşı doğrular
+* EDI ve iş ortaklarına özgü özellikleri doğrular
+  * EDI yapısal doğrulaması ve genişletilmiş şema doğrulaması
+  * Değişim zarfı yapısının doğrulanması.
+  * Zarfın denetim şemasına karşı şema doğrulaması.
+  * İleti şemasına karşı işlem kümesi veri öğeleri için şema doğrulaması.
+  * EDI doğrulaması işlem kümesi veri öğelerinde gerçekleştirildi 
+* Değişim, Grup ve işlem kümesi denetim numaralarının yinelendiğini doğrular
+  * Daha önce alınan karşılıklı değişikliklere karşı değişim denetim numarasını denetler.
+  * Grup denetim numarasını, değişim içindeki diğer grup denetim numaralarına karşı denetler.
+  * İşlem kümesi denetim numarasını bu gruptaki diğer işlem kümesi denetim numaralarına karşı denetler.
+* Değişimi işlem kümelerine böler veya tüm değişimi korur:
+  * Değişimi işlem kümeleri olarak Böl-hata durumunda işlem kümelerini askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
+  X12 kod çözme eylemi yalnızca doğrulamanın `badMessages`başarısız olan işlem kümelerini çıkarır ve kalan işlem kümelerini `goodMessages`olarak verir.
+  * Değişimi işlem kümeleri olarak Böl-hata durumunda değişimi askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini `badMessages`olarak verir.
+  * Değiş tokuş etme-işlem kümelerini askıya alma hata durumunda: değişimi koruma ve toplu tüm değişimi işleme. 
+  X12 kod çözme eylemi yalnızca doğrulamanın `badMessages`başarısız olan işlem kümelerini çıkarır ve kalan işlem kümelerini `goodMessages`olarak verir.
+  * Değişimi koru-hata durumunda değişimi askıya al: değişimi koruma ve toplu tüm değişimi işleme. 
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini `badMessages`olarak verir. 
+* Bir teknik ve/veya Işlevsel onay üretir (yapılandırıldıysa).
+  * Teknik bildirim, üst bilgi doğrulamanın sonucu olarak oluşturulur. Teknik bildirim, bir değişim üst bilgisinin işleme durumunu ve adres alıcısının artbilgisini bildirir.
+  * Işlevsel bir bildirim, gövde doğrulamanın sonucu olarak oluşturulur. Alınan belgeyi işlerken işlevsel bildirim, karşılaşılan her hatayı raporlar
 
-## <a name="view-the-swagger"></a>Swagger görüntüleyin
-Bkz: [ayrıntıları swagger](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Swagger 'yi görüntüleme
+[Swagger ayrıntılarına](/connectors/x12/)bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Enterprise Integration Pack hakkında daha fazla bilgi](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin") 
+[Enterprise Integration Pack hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin") 
 

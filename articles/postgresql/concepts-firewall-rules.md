@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-tek sunucu
-description: Bu makalede PostgreSQL için Azure veritabanı-tek sunucu güvenlik duvarı kuralları açıklanmaktadır.
+title: Güvenlik duvarı kuralları-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, PostgreSQL için Azure veritabanı 'na bağlanmak üzere Güvenlik Duvarı kurallarının nasıl kullanılacağı açıklanır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 6b4896d78bcc6e9fc1f5d9cd47e60e3df7eba325
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 28c8bccaf6be49b7220a32c781b79f106ad86e52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965275"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768648"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-tek sunucu
 PostgreSQL için Azure veritabanı sunucu güvenlik duvarı, hangi bilgisayarların izin olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.

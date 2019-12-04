@@ -1,21 +1,19 @@
 ---
-title: SFTP hesabına bağlanma-Azure Logic Apps
+title: SFTP hesabına Bağlan
 description: Azure Logic Apps kullanarak bir SFTP sunucusu için dosyaları izleyen, oluşturan, yöneten, gönderen ve alan görevleri ve işlemleri otomatikleştirin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: divswa, klam, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837104"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789282"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -35,7 +33,7 @@ SFTP sunucunuzdaki olayları izleyen ve çıktıyı diğer eylemler için kullan
 
 SFTP Bağlayıcısı yalnızca *50 MB veya daha küçük* olan dosyaları işler ve [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)'yi desteklemez. Daha büyük dosyalar için [SFTP-SSH bağlayıcısını](../connectors/connectors-sftp-ssh.md)kullanın. SFTP Bağlayıcısı ve SFTP-SSH Bağlayıcısı arasındaki farklar için SFTP-SSH makalesindeki SFTP [-SSH Ile SFTP karşılaştırması](../connectors/connectors-sftp-ssh.md#comparison) konusunu gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

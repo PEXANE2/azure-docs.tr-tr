@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4ed27009a3549757881c84d92b3b29b60ecbfbc1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707674"
+ms.locfileid: "74790569"
 ---
 # <a name="what-is-automated-machine-learning"></a>Otomatik makine öğrenimi nedir?
 
@@ -100,8 +100,58 @@ Eksik değerler imputation, kodlama ve dönüşümler gibi ek gelişmiş ön iş
 
 + Python SDK: [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)Için `"feauturization": auto' / 'off' / FeaturizationConfig` belirtme.
 
+## <a name="prevent-over-fitting"></a>Fazla sığdırmayı engelle
+
+Makine öğreniminde fazla sığdırma, bir model eğitim verilerine çok uygun olduğunda oluşur ve sonuç olarak, görünmeyen test verilerini doğru şekilde tahmin edemeyebilir. Diğer bir deyişle, model eğitim verilerinde yalnızca belirli desenleri ve paraziti daha kolay hale getirir, ancak gerçek verilere ilişkin tahminleri yapmak için yeterince esnek değildir. En egregious durumlarda, daha fazla olan bir model, eğitim sırasında görülen Özellik değeri birleşimlerinin her zaman hedef için aynı çıkışa neden olacağını varsayacaktır. 
+
+Fazla sığdırmayı önlemenin en iyi yolu, aşağıdakiler dahil olmak üzere ML en iyi yöntemlerini izlemelidir:
+
+* Daha fazla eğitim verisi kullanma ve istatistiksel farkı ortadan kaldırma
+* Hedef sızıntısı engelleniyor
+* Daha az özellik kullanma
+* **Düzenleme ve hyperparameter iyileştirmesi**
+* **Model karmaşıklık sınırlamaları**
+* **Çapraz doğrulama**
+
+Otomatikleştirilmiş ML bağlamında, yukarıdaki ilk üç öğe **en iyi uygulama uygulamalardır**. Son üç kalın öğe, **en iyi uygulamalar OTOMATIK ml** 'nin, aşırı sığdırma ile karşı koruma için varsayılan olarak uygular. Otomatik ML dışındaki ayarlarda, tüm altı en iyi uygulamalar, çok sığdırma modellerini kullanmaktan kaçınmak için aşağıda verilmiştir.
+
+### <a name="best-practices-you-implement"></a>Uyguladığınız en iyi uygulamalar
+
+**Daha fazla veri** kullanmak, aşırı sığdırmayı önlemenin en basit ve en iyi yoludur ve ek bir prim genellikle doğruluğu arttırır. Daha fazla veri kullandığınızda, modelin tam desenleri daha zor hale getirmek daha zordur ve daha fazla koşullara uyum sağlamak için daha esnek çözümlere ulaşmaya zorlanır. Eğitim verilerinizin canlı tahmin verilerinde mevcut olmayan yalıtılmış desenler içermediğinden emin olmak için **istatistiksel farkı**tanımak de önemlidir. Eğeceğiniz ve test kümleriniz arasında aşırı yerleştirme bulunmayabilir, ancak canlı test verileriyle karşılaştırıldığında çok fazla sığdırma söz konusu olabileceğinden, bu senaryoya çözüm daha zor olabilir.
+
+Hedef sızıntısı, eğitim/test kümeleri arasında fazla sığdırmayı görmeyebilirsiniz, ancak bunun yerine tahmin sırasında görünmesini mümkün bir sorundur. Hedef sızıntısı, modelinize "Cheats", normalde tahmin zamanında sahip olmadığı verilere erişim izni vererek oluşur. Örneğin, sorununuz Pazartesi günü ücretlendiriyor, ancak özelliklerden biri yanlışlıkla Perşembe ' dan veri içeriyordu, ancak bu veri, bu durum, gelecekte göremeyeceği için bir tahmin süresi değildir. Hedef sızıntısı, kaçırılması kolay bir hata olsa da, genellikle sorununuz için anormal derecede yüksek doğruluk ile ayırdedilir. Stok fiyatını tahmin etmeye ve %95 doğruluk oranında bir model eğitimeye çalışıyorsanız, özelliklerinizin bir yerinde çok büyük olasılıkla hedef sızıntısı vardır.
+
+Özelliklerin kaldırılması, modelin belirli desenleri kaldırmak için çok fazla alan kullanmasını önleyecek ve bu sayede daha esnek olmasına neden olabilir. Ölçüyü Tayana ölçmek zor olabilir, ancak özellikleri kaldırabilmeniz ve aynı doğruluğu koruuyorsanız, büyük olasılıkla modeli daha esnek hale yapmış ve fazla sığdırma riskini azaltacaksınız.
+
+### <a name="best-practices-automated-ml-implements"></a>En iyi uygulamalar otomatik ML uygular
+
+Düzenleme, karmaşık ve daha fazla olan modelleri sızmak için bir maliyet işlevini en aza indirmenizi sağlar. Farklı türlerde düzenleme işlevleri vardır, ancak genel olarak model katsayı boyutunu, varyansı ve karmaşıklığını tamamen penler. Otomatik ML, L1 (Kement), L2 (Ridge) ve Elaviznet (L1 ve L2 eşzamanlı) ' i, farklı birleşimlerde fazla sığdırmayı denetleyen farklı model hiper parametre ayarlarına sahip farklı bileşimlerde kullanır. Basit koşullarda, otomatik ML bir modelin ne kadarının düzenlenebilir olduğunu farklılık gösterecektir ve en iyi sonucu seçer.
+
+Otomatik ML, aşırı sığdırmayı engellemek için açık model karmaşıklığı kısıtlamalarını da uygular. Çoğu durumda bu, tek tek ağaç en yüksek derinliğinin sınırlı olduğu ve ormanda kullanılan toplam ağaç sayısı veya bağımsız teknikler sınırlı olduğu için özellikle karar ağacı veya orman algoritmaları içindir.
+
+Çapraz doğrulama (CV), tam eğitim verilerinizin çok sayıda alt kümesini alma ve her bir alt kümede bir modeli eğitme işlemidir. Bu, bir modelin "Lucky" alabilir ve bir alt küme ile harika bir doğruluk elde etmenizi sağlar, ancak birçok alt küme kullanarak modelin her seferinde bu yüksek doğruluğu elde edilmeyeceği. CV 'yi yaparken, bir doğrulama veri kümesi sağlarsınız, CV katlarınızı (alt küme sayısı) belirtin ve otomatik ML, doğrulama kümenizdeki hatayı en aza indirmek için modelinize eğitme ve hiper parametreleri ayarlamanıza yardımcı olur. Bir CV katlaması daha fazla olabilir, ancak bunların çoğunu kullanarak, son modelinizin daha fazla sığdırma olasılığını azaltır. Zorunluluğunu getirir, CV 'nin bir kez eğitim sağladığından, her *n* CV alt kümesi için bir kez eğitecaksınız.
+
+> [!NOTE]
+> Çapraz doğrulama varsayılan olarak etkinleştirilmemiştir; Otomatik ML ayarları ' nda yapılandırılması gerekir. Ancak, CV yapılandırıldıktan ve bir doğrulama veri kümesi sağlandıktan sonra, işlem sizin için otomatikleştirilir.
+
+### <a name="identifying-over-fitting"></a>Fazla sığdırmayı tanımlama
+
+Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accuracies göz önünde bulundurun.
+
+| Model | Tren doğruluğu | Test doğruluğu |
+|-------|----------------|---------------|
+| A | %99,9 | %95 |
+| B | %87 | %87 |
+| C | %99,9 | %45 |
+
+Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu eğitim doğruluğunun altındaysa, modelin daha fazla uydurulur. Ancak, test doğruluğu her zaman eğitim doğruluğunu azaltır ve fazla sığdırma ile *uygun şekilde ayrım, daha az doğru* olacaktır. 
+
+**A** ve **B**modellerini karşılaştırırken, **bir** model, daha yüksek test doğruluğu içerdiğinden daha iyi bir modeldir ve test doğruluğu %95 ' de biraz daha düşük olsa da, çok fazla sığdırma öneren önemli bir fark değildir. Tren ve test accuracies birlikte daha yakından olduğu için model **B** 'yi seçemezsiniz.
+
+Model **C** , aşırı sığdırma durumunu açık bir şekilde temsil eder; Eğitim doğruluğu çok yüksektir, ancak test doğruluğu yüksek olan her yerde değildir. Bu ayrım biraz öznel, ancak sorununuz ve verileriniz hakkında bilgi sahibi olmak ve hata magnitudes ne olduğunu kabul edilebilir. 
 
 ## <a name="time-series-forecasting"></a>Zaman serisi tahmin etme
+
 Tahminleri oluşturmak, her işletmenin, gelir, envanter, satış veya müşteri talebi gibi bir parçasıdır. Teknikleri ve yaklaşımları birleştirmek ve önerilen, yüksek kaliteli bir zaman serisi tahmin sağlamak için otomatik ML kullanabilirsiniz.
 
 Otomatik bir zaman serisi denemesi, çok sayıda gerileme sorunu olarak değerlendirilir. Geçen zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, klasik zaman serisi yöntemlerinin aksine, doğal olarak birden çok bağlamsal değişkeni ve bunların eğitim sırasında birbiriyle ilişkilerini bir başkasına dahil etme avantajına sahiptir. Otomatikleştirilmiş ML tek bir kez öğreniyor ve genellikle dahili olarak dallanan ve tahmin Horizons tüm öğeleri için dahili olarak dallanmış bir model. Bu nedenle, model parametrelerinin tahmin edilmesi için daha fazla veri ve görünmeyen serinin Genelleştirme olasılığı vardır.

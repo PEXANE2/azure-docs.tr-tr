@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nın doğru dağıtım türünü seçme
+title: Doğru dağıtım türünü seçme-MySQL için Azure veritabanı
 description: Bu makalede, MySQL için Azure veritabanı 'nı hizmet olarak altyapı (IaaS) veya hizmet olarak platform (PaaS) olarak dağıtmadan önce göz önünde bulundurmanız gereken faktörler açıklanmaktadır.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/02/2019
+ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132424"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770467"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure 'da doğru MySQL sunucusu seçeneğini belirleyin
 
@@ -34,8 +34,8 @@ Bu seçenekler arasındaki temel farklılıklar aşağıdaki tabloda listelenmi�
 |            | MySQL için Azure Veritabanı | Azure VM 'lerinde MySQL    |
 |:-------------------|:-----------------------------|:--------------------|
 | Hizmet düzeyi sözleşmesi (SLA)                | % 99,99 kullanılabilirlik için SLA sunar| Aynı Kullanılabilirlik kümesinde iki veya daha fazla örnek ile en fazla% 99,95 kullanılabilirlik vardır.<br/><br/>Premium depolama kullanan tek örnekli bir VM ile% 99,9 kullanılabilirlik.<br/><br/>birden çok kullanılabilirlik kümesindeki birden çok örneğe sahip Kullanılabilirlik Alanları kullanarak% 99,99.<br/><br/>Bkz. [sanal makineler SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
-| İşletim sistemi düzeltme eki uygulama        | Otomatik  | Müşteriler tarafından yönetiliyor |
-| MySQL düzeltme eki uygulama     | Otomatik  | Müşteriler tarafından yönetiliyor |
+| İşletim sistemi düzeltme eki uygulama        | Automatic  | Müşteriler tarafından yönetiliyor |
+| MySQL düzeltme eki uygulama     | Automatic  | Müşteriler tarafından yönetiliyor |
 | Yüksek kullanılabilirlik | Yüksek kullanılabilirlik (HA) modeli, düğüm düzeyinde bir kesinti oluştuğunda için yerleşik yük devretme mekanizmalarına dayanır. Bu gibi durumlarda, hizmet otomatik olarak yeni bir örnek oluşturur ve depolama alanını bu örneğe ekler. | Müşteriler yüksek kullanılabilirliği mimarileri, uygular, test edin ve bakımını yapın. Yetenekler her zaman açık yük devretme kümelemesi, her zaman açık grup çoğaltması, günlük aktarma veya işlemsel çoğaltma içerebilir.|
 | Bölge artıklığı | Şu anda desteklenmiyor | Azure VM 'Leri, farklı kullanılabilirlik bölgelerinde çalışacak şekilde ayarlanabilir. Şirket içi bir çözüm için müşterilerin kendi ikincil veri merkezini oluşturması, yönetmesi ve sürdürmeleri gerekir.|
 | Karma senaryolar | [Gelen verileri çoğaltma](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication), bir dış MySQL sunucusundan verileri MySQL Için Azure veritabanı hizmetine aktarabilirsiniz. Dış sunucu şirket içinde, sanal makinelerde veya diğer bulut sağlayıcıları tarafından barındırılan bir veritabanı hizmeti olabilir.<br/><br/> [Çoğaltma oku](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) özelliğini kullanarak MySQL ana sunucusu Için Azure veritabanı 'ndan en fazla beş salt okuma Çoğaltma sunucusuna veri çoğaltabilirsiniz. Çoğaltmalar aynı Azure bölgesinde ya da bölgeler arasında bulunur. Salt okuma çoğaltmaları, binlog çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir.| Müşteriler tarafından yönetiliyor
@@ -80,7 +80,7 @@ Aşağıdaki listede her bir seçeneğe ilişkin yönetim konuları açıklanmak
 
 * MySQL için Azure veritabanı ile veritabanınızı yönetmeye devam edebilirsiniz. Ancak artık veritabanı altyapısını, işletim sistemini veya donanımı yönetmeniz gerekmez. Yönetmeye devam edebilmeniz için öğelerin örnekleri şunlardır:
 
-  - Veritabanları
+  - Veri tabanları
   - Oturum açma
   - Dizin ayarlama
   - Sorgu ayarlama

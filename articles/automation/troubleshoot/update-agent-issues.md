@@ -1,44 +1,44 @@
 ---
-title: Azure Güncelleştirme Yönetimi Windows Agent denetim sonuçlarını anlayın
-description: Güncelleştirme yönetimi Aracısı ile ilgili sorunları giderme hakkında bilgi edinin.
+title: Azure Güncelleştirme Yönetimi Windows karma Runbook Worker sistem durumunu anlayın
+description: Windows 'da Güncelleştirme Yönetimi destekleyen karma Runbook Worker ile ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 72fdfe912a5560ce0c0e3886dd3c56cf9534dc22
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bb5b5214c96162147e1bd005e994ec04e0a1ddb7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480781"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763666"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Güncelleştirme Yönetimi Windows Agent denetim sonuçlarını anlayın
+# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Windows karma Runbook Worker sistem durumunu Güncelleştirme Yönetimi anlayın
 
-Güncelleştirme Yönetimi ' de makinenizin **Ready** olarak görünmemesinin pek çok nedeni olabilir. Ortamında güncelleştirme yönetimi, arka plandaki sorunu belirlemek için bir karma çalışanı aracı durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
+Güncelleştirme Yönetimi ' de makinenizin **Ready** olarak görünmemesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
 
 Aşağıdaki liste, bir makinenin içinde bulunabileceği üç hazırlık durumlarından oluşan bir durum olabilir:
 
-* **Ready** -Güncelleştirme Aracısı dağıtıldı ve en son 1 saatten daha önce görüldü.
-* **Bağlantısı kesik** -Güncelleştirme Aracısı dağıtıldı ve en son 1 saat önce görüldü.
-* **Yapılandırılmadı** -Güncelleştirme Aracısı bulunamadı veya ekleme bitmedi.
+* **Kullanıma hazırlanıyor** -karma Runbook Worker dağıtıldı ve en son 1 saatten daha önce görüldü.
+* **Bağlantısı kesik** -karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* **Yapılandırılmadı** -karma Runbook Worker bulunamadı veya ekleme bitmedi.
 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
 
-## <a name="start-the-troubleshooter"></a>Sorun Gidericisi
+## <a name="start-the-troubleshooter"></a>Sorun gidericiyi Başlat
 
 Azure makinelerinde, portalda **Güncelleştirme Aracısı hazırlığı** sütununda **sorun gider** bağlantısına tıkladığınızda **Güncelleştirme Aracısı sorunlarını gider** sayfası başlatılır. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermeye yönelik [çevrimdışı yönergelere](#troubleshoot-offline) bakın.
 
 ![Sanal makinelerin yönetim listesini güncelleştir](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> Bir aracının durumunu denetlemek için VM 'nin çalışıyor olması gerekir. VM çalışmıyorsa **VM 'Yi Başlat** düğmesi görüntülenir.
+> Karma Runbook Worker 'ın durumunu denetlemek için VM 'nin çalışıyor olması gerekir. VM çalışmıyorsa **VM 'Yi Başlat** düğmesi görüntülenir.
 
-**Güncelleştirme Aracısı sorunlarını giderme** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, aracı bağımlılıklarını doğrulamak üzere makinede bir betik çalıştırmak için [Run komutunu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+**Güncelleştirme Aracısı sorunlarını giderme** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
 
 ![Güncelleştirme Aracısı sayfasında sorun giderme](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -50,7 +50,7 @@ Sonuçlar, varsa sayfada gösterilir. Denetimler bölümünde her bir denetimin 
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-İşletim sistemi denetimi, karma Runbook Worker 'ın şu işletim sistemlerinden birini çalıştırıp çalıştırmadığını doğrular:
+İşletim sistemi denetimi, hibrit Runbook Worker 'ın şu işletim sistemlerinden birini çalıştırıp çalıştırmadığını doğrular:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
@@ -69,19 +69,19 @@ WMF Check, sistemin gerekli Windows Management Framework (WMF) sürümüne sahip
 
 Bu denetim, iletişimlerinizi şifrelemek için TLS 1,2 kullanıp kullanmayacağınızı belirler. TLS 1,0 artık platform tarafından desteklenmiyor. İstemcilerin Güncelleştirme Yönetimi ile iletişim kurmak için TLS 1,2 kullanmasını öneririz.
 
-## <a name="connectivity-checks"></a>Bağlantısı denetimleri
+## <a name="connectivity-checks"></a>Bağlantı denetimleri
 
 ### <a name="registration-endpoint"></a>Kayıt uç noktası
 
 Bu denetim aracının Aracı hizmetiyle düzgün şekilde iletişim kurup kuramayacağını belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı kayıt uç noktası ile iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracısının kayıt uç noktasıyla iletişim kurmasına izin verilmelidir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="operations-endpoint"></a>İşlemleri uç noktası
+### <a name="operations-endpoint"></a>İşlemler uç noktası
 
 Bu denetim, aracının Iş çalışma zamanı veri hizmetiyle düzgün şekilde iletişim kurup kuramayacağını belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı işi çalışma zamanı veri hizmetiyle iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracısının Iş çalışma zamanı veri hizmetiyle iletişim kurmasına izin verilmelidir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="vm-service-health-checks"></a>VM hizmeti durum denetimleri
 
@@ -206,4 +206,3 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Karma runbook çalışanlarınız hakkında daha fazla sorunu gidermek için bkz. [karma runbook çalışanları sorunlarını giderme](hybrid-runbook-worker.md).
-

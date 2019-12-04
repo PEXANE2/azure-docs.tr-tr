@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: -Azure CLI kullanarak tek bir sunucu PostgreSQL için Azure veritabanı tasarlama'
-description: Bu öğreticide, ilk Azure veritabanınızı PostgreSQL - Azure CLI kullanarak tek bir sunucu için sorgu oluşturma ve yapılandırma gösterilmektedir.
+title: 'Öğretici: PostgreSQL için Azure veritabanı tasarlama-tek sunucu-Azure CLı'
+description: Bu öğreticide, Azure CLı kullanarak ilk PostgreSQL için Azure veritabanı-tek sunucu oluşturma, yapılandırma ve sorgulama işlemlerinin nasıl yapılacağı gösterilir.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447234"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773702"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: -Azure CLI kullanarak tek bir sunucu PostgreSQL için Azure veritabanı tasarlama 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu 
 Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:
 > [!div class="checklist"]
 > * PostgreSQL için Azure Veritabanı sunucusu oluşturma
@@ -46,12 +46,12 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu oluşturma
 [az postgres server create](/cli/azure/postgres/server) komutunu kullanarak [PostgreSQL sunucusu için Azure SQL Veritabanı ](overview.md) oluşturun. Sunucu, grup olarak yönetilen bir veritabanı grubu içerir. 
 
-Aşağıdaki örnekte, `myresourcegroup` adlı kaynak grubunuzda `myadmin` sunucu yöneticisi oturum adına sahip `mydemoserver` adlı bir sunucu oluşturulur. Bir sunucunun adı DNS adıyla eşleşir ve bu nedenle sunucunun Azure’da genel olarak benzersiz olması gerekir. `<server_admin_password>` değerini kendi değerinizle değiştirin. Bu, genel amaçlı, 5. nesil 2 sanal çekirdek sunucusuyla olur.
+Aşağıdaki örnekte, `myresourcegroup` adlı kaynak grubunuzda `myadmin` sunucu yöneticisi oturum adına sahip `mydemoserver` adlı bir sunucu oluşturulur. Bir sunucunun adı DNS adıyla eşleşir ve bu nedenle sunucunun Azure’da genel olarak benzersiz olması gerekir. `<server_admin_password>` değerini kendi değerinizle değiştirin. 2 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
-+ `--sku-name B_Gen5_2` Temel ve 5. nesil 2 sanal çekirdek eşlenir.
++ `--sku-name B_Gen5_2` temel, Gen 5 ve 2 sanal çekirdekler ile eşlenir.
 + `--sku-name GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 + `--sku-name MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -67,7 +67,7 @@ Varsayılan olarak, **postgres** veritabanı sunucunuz altında oluşturulur. [P
 
 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) komutunu kullanarak Azure PostgreSQL sunucusu düzeyinde bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyindeki bir güvenlik duvarı kuralı, [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) veya [PgAdmin](https://www.pgadmin.org/) gibi bir dış uygulamanın Azure PostgreSQL hizmetinin güvenlik duvarı üzerinden sunucunuza bağlanmasına imkan tanır. 
 
-Ağınızdan bağlanabilmek için bir IP aralığını kapsayan güvenlik duvarı kuralı ayarlayabilirsiniz. Aşağıdaki örnekte, [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) komutu kullanılarak tek bir IP adresinden bağlantı kurulmasına imkan tanıyan `AllowMyIP` güvenlik duvarı kuralı oluşturulur.
+Ağınızdan bağlanabilmek için bir IP aralığını kapsayan bir güvenlik duvarı kuralı ayarlayabilirsiniz. Aşağıdaki örnekte, [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) komutu kullanılarak tek bir IP adresinden bağlantı kurulmasına imkan tanıyan `AllowMyIP` güvenlik duvarı kuralı oluşturulur.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -76,7 +76,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 Azure PostgreSQL sunucunuza erişimi yalnızca ağınızla sınırlı tutmak için güvenlik duvarı kuralını yalnızca kurumsal ağ IP adresi aralığınızı kapsayacak şekilde ayarlayabilirsiniz.
 
 > [!NOTE]
-> Azure PostgreSQL sunucusu, 5432 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanıyorsanız ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. BT departmanınızdan Azure SQL Veritabanı sunucunuzla bağlantı için 5432 numaralı bağlantı noktasını açmasını isteyin.
+> Azure PostgreSQL sunucusu, 5432 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanıyorsanız ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. BT departmanınızdan Azure SQL Veritabanı sunucunuzla bağlantı için 5432 numaralı bağlantı noktasını açmasını isteyin.
 >
 
 ## <a name="get-the-connection-information"></a>Bağlantı bilgilerini alma
@@ -132,7 +132,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    ```
 
    > [!TIP]
-   > Postgres için bağlanmak için bir URL yolu kullanmayı tercih ederseniz, URL kodlaması ile kullanıcı oturum @ `%40`. Örneğin, bağlantı dizesini psql olacaktır,
+   > Postgres 'e bağlanmak için bir URL yolu kullanmayı tercih ediyorsanız, URL, Kullanıcı adında @ işaretini `%40`ile kodlayın. Örneğin, psql için bağlantı dizesi,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -202,7 +202,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
-| name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Zaman içinde geri yüklenecek bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, `2017-04-13T05:59:00-08:00` şeklinde kendi yerel saat diliminizi ya da `2017-04-13T13:59:00Z` şeklindeki UTC Zulu biçimini kullanabilirsiniz. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
 
@@ -222,4 +222,4 @@ Bu öğreticide, Azure CLI (komut satırı arabirimi) ve diğer yardımcı progr
 > * Verileri güncelleştirme
 > * Verileri geri yükleme
 
-Ardından, Azure portalını kullanarak benzer görevleri yapmak için şu öğreticiyi gözden geçirin öğrenin: [PostgreSQL için Azure portalını kullanarak ilk Azure veritabanınızı tasarlama](tutorial-design-database-using-azure-portal.md)
+Daha sonra, Azure portalını kullanarak benzer görevleri nasıl yapabileceğinizi öğrenmek için şu öğreticiyi gözden geçirin: [Azure portalını kullanarak ilk PostgreSQL için Azure Veritabanınızı tasarlama](tutorial-design-database-using-azure-portal.md)

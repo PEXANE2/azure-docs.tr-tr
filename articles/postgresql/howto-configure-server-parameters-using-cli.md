@@ -1,54 +1,54 @@
 ---
-title: Hizmet parametreleri - tek bir sunucu PostgreSQL için Azure veritabanı'nda yapılandırma
-description: Bu makalede hizmet parametreleri - Azure CLI komut satırını kullanarak tek bir sunucu PostgreSQL için Azure veritabanı'nda yapılandırma açıklanır.
+title: Parametreleri yapılandırma-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, Azure CLı kullanarak PostgreSQL için Azure veritabanı-tek sunucu 'da Postgres parametrelerinin nasıl yapılandırılacağı açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: f276247076438a03973148b5cf65ddbeb409b024
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274765"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763632"
 ---
-# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>PostgreSQL - Azure CLI kullanarak tek bir sunucu için Azure veritabanı sunucu yapılandırma parametrelerini özelleştirme
-Liste göstermek ve komut satırı arabirimi (Azure CLI) kullanarak Azure PostgreSQL sunucusu için yapılandırma parametreleri güncelleştirin. Bir alt kümesini altyapısı yapılandırmaları, sunucu düzeyinde kullanıma sunulan ve değiştirilebilir. 
+# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için sunucu yapılandırma parametrelerini özelleştirme-tek sunucu
+Komut satırı arabirimi (Azure CLı) kullanarak bir Azure PostgreSQL sunucusu için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Altyapı yapılandırmalarının bir alt kümesi sunucu düzeyinde sunulur ve değiştirilebilir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunda adımlamak için ihtiyacınız vardır:
-- PostgreSQL sunucusu için Azure veritabanı ve veritabanı oluşturma [PostgreSQL için Azure veritabanı oluşturma](quickstart-create-server-database-azure-cli.md)
-- Yükleme [Azure CLI](/cli/azure/install-azure-cli) komut satırı arabirimini kullanın veya makine [Azure Cloud Shell](../cloud-shell/overview.md) tarayıcınızı kullanarak Azure portalında.
+Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
+- PostgreSQL için [Azure veritabanı oluşturma](quickstart-create-server-database-azure-cli.md) sunucusuna ve veritabanı için Azure veritabanı oluşturma
+- Makinenizde [Azure CLI](/cli/azure/install-azure-cli) komut satırı arabirimi ' ni yükleyip tarayıcınızı kullanarak Azure Portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Sunucu Yapılandırma parametreleri için PostgreSQL sunucusu için Azure veritabanı listesi
-Bir sunucu ve bunların değerlerini tüm değiştirilebilir parametreler listelemek için çalıştırma [az postgres server configuration listesi](/cli/azure/postgres/server/configuration) komutu.
+## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>PostgreSQL için Azure veritabanı sunucusu için sunucu yapılandırma parametrelerini listeleyin
+Bir sunucudaki tüm değiştirilebilir parametreleri ve değerlerini listelemek için [az Postgres Server Configuration List](/cli/azure/postgres/server/configuration) komutunu çalıştırın.
 
-Sunucusu için sunucu yapılandırma parametrelerini listeleyebilirsiniz **demosunucum.postgres.Database.Azure.com** kaynak grubu altında **myresourcegroup**.
+Sunucu **mydemoserver.Postgres.Database.Azure.com** için sunucu yapılandırma parametrelerini, **myresourcegroup**kaynak grubu altında listeleyebilirsiniz.
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="show-server-configuration-parameter-details"></a>Sunucu Yapılandırma parametresi ayrıntılarını göster
-Bir sunucu için belirli yapılandırma parametresi hakkındaki ayrıntıları göstermek için çalıştırma [az postgres server configuration show](/cli/azure/postgres/server/configuration) komutu.
+## <a name="show-server-configuration-parameter-details"></a>Sunucu yapılandırma parametresi ayrıntılarını göster
+Bir sunucu için belirli bir yapılandırma parametresi ayrıntılarını göstermek üzere [az Postgres Server Configuration Show](/cli/azure/postgres/server/configuration) komutunu çalıştırın.
 
-Bu örnekte ayrıntılarını gösterir **günlük\_min\_iletileri** sunucusu için sunucu yapılandırma parametresi **demosunucum.postgres.Database.Azure.com** kaynak grubu altında **myresourcegroup.**
+Bu örnekte, **myresourcegroup** kaynak grubu altında sunucu **mydemoserver.postgres.database.azure.com** için **günlük\_min\_messages** sunucu yapılandırma parametresi günlüğü ayrıntıları gösterilmektedir.
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="modify-server-configuration-parameter-value"></a>Sunucu Yapılandırma parametresi değerini değiştirin
-PostgreSQL server altyapısı için temel yapılandırma değerini güncelleştiren bir belirli sunucu yapılandırma parametresinin değerini de değiştirebilirsiniz. Yapılandırmayı güncelleştirmek için [az postgres server configuration set](/cli/azure/postgres/server/configuration) komutu. 
+## <a name="modify-server-configuration-parameter-value"></a>Sunucu yapılandırma parametre değerini değiştir
+Ayrıca, PostgreSQL sunucu altyapısının temel yapılandırma değerini güncelleştiren belirli bir sunucu yapılandırma parametresinin değerini de değiştirebilirsiniz. Yapılandırmayı güncelleştirmek için [az Postgres Server Configuration set](/cli/azure/postgres/server/configuration) komutunu kullanın. 
 
-Güncelleştirilecek **günlük\_min\_iletileri** sunucu yapılandırma parametresi sunucunun **demosunucum.postgres.Database.Azure.com** kaynak grubu altında  **myresourcegroup.**
+Günlük güncelleştirmek için, mydemoserver.postgres.database.azure.com kaynak grubu altında sunucu **\_min\_messages** sunucu yapılandırma parametresi **.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
-Bir yapılandırma parametresi değeri sıfırlamak istiyorsanız, yalnızca isteğe bağlı olarak bırakmak seçtiğiniz `--value` parametresini ve service için varsayılan değer geçerlidir. Yukarıdaki örnekte, bunun gibi görünür:
+Bir yapılandırma parametresinin değerini sıfırlamak istiyorsanız, isteğe bağlı `--value` parametresini bırakmayı seçmeniz yeterlidir ve hizmet varsayılan değeri uygular. Yukarıdaki örnekte, şöyle görünür:
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Bu komut sıfırlar **günlük\_min\_iletileri** varsayılan değerine yapılandırma **uyarı**. Sunucu Yapılandırması ve izin verilen değerler hakkında daha fazla bilgi için PostgreSQL belgeleri bakın [sunucu yapılandırması](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
+Bu komut, **günlük\_min\_ileti** yapılandırmasını varsayılan değer **uyarısı**olarak sıfırlar. Sunucu yapılandırması ve izin verilen değerler hakkında daha fazla bilgi için bkz. [sunucu yapılandırmasındaki](https://www.postgresql.org/docs/9.6/static/runtime-config.html)PostgreSQL belgeleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Sunucuyu yeniden öğrenin](howto-restart-server-cli.md)
-- Yapılandırma ve sunucu günlüklerine erişmek için bkz: [PostgreSQL için Azure veritabanı'nda sunucu günlükleri](concepts-server-logs.md)
+- [Bir sunucuyu yeniden başlatmayı öğrenin](howto-restart-server-cli.md)
+- Sunucu günlüklerini yapılandırmak ve erişmek için bkz. [PostgreSQL Için Azure veritabanı 'Nda sunucu günlükleri](concepts-server-logs.md)

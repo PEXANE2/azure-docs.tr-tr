@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı sunucu güvenlik duvarı kuralları
+title: Güvenlik duvarı kuralları-MySQL için Azure veritabanı
 description: MySQL sunucusu için Azure veritabanı 'na bağlantıları etkinleştirmek üzere güvenlik duvarı kurallarını kullanma hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 434ecbcf5158009b8e74ae392aeea95b5ea8b281
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 6b78c3ffa11d481c77f393bbbd156f2ba76f36e0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72963433"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770297"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>MySQL için Azure veritabanı sunucu güvenlik duvarı kuralları
 Güvenlik duvarları, hangi bilgisayarların izne sahip olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.

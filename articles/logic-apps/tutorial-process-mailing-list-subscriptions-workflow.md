@@ -1,22 +1,18 @@
 ---
-title: Onay tabanlı otomatik iş akışları oluşturun-Azure Logic Apps
+title: Onay tabanlı otomatik iş akışları oluşturun
 description: Öğretici-Azure Logic Apps kullanarak posta listesi aboneliklerini işleyen onay tabanlı bir otomatik iş akışı oluşturma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025574"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784672"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma
 
@@ -68,7 +64,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
 
-1. Azure 'un uygulamanızı dağıtmasından sonra Azure araç çubuğunda **bildirimler** >  dağıtılan mantıksal uygulamanız Için**Kaynağa Git** ' i seçin.
+1. Azure 'un uygulamanızı dağıtmasından sonra, Azure araç çubuğunda **bildirimler** > dağıtılan mantıksal uygulamanız Için **Kaynağa Git** ' i seçin.
 
    ![Yeni mantıksal uygulama kaynağına gidin](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
@@ -112,7 +108,7 @@ Sonra abonelik isteklerinin bulunduğu gelen e-postaları dinleyen bir [tetikley
 
       Bu tetikleyicinin özellikleri hakkında daha fazla bilgi için bkz. [Office 365 Outlook Bağlayıcısı başvurusu](https://docs.microsoft.com/connectors/office365/) veya [Outlook.com bağlayıcı başvurusu](https://docs.microsoft.com/connectors/outlook/).
 
-   1. Özellik tetikleyicide görüntülendikten sonra şu metni girin: `subscribe-test-members-ML`
+   1. Özelliği tetikleyicide göründükten sonra şu metni girin: `subscribe-test-members-ML`
 
       !["Konu filtresi" özelliği için metin girin](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
@@ -197,7 +193,7 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
 
 1. Koşulun **true ise** dalında **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında filtreniz olarak `mailchimp` girin ve **listeye üye Ekle** eylemini seçin.
+1. **Eylem seçin**altında, süzgecinizi `mailchimp` girin ve **listeye üye Ekle** eylemini seçin.
 
    !["Listeye üye Ekle" eylemini seçin](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -252,7 +248,7 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    !["Eğer true" dalında "Eylem Ekle" yi seçin.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-1. **Eylem seçin**altında, ara kutusuna filtreniz olarak `outlook send email` girin ve **e-posta gönder** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak `outlook send email` girin ve **e-posta gönder** eylemini seçin.
 
    !["E-posta gönder" eylemi Ekle](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
@@ -277,7 +273,7 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    !["If false" dalında "Eylem Ekle" yi seçin.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-1. **Eylem seçin**altında, ara kutusuna filtreniz olarak `outlook send email` girin ve **e-posta gönder** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak `outlook send email` girin ve **e-posta gönder** eylemini seçin.
 
    !["E-posta gönder" eylemini ekleme](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 

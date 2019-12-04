@@ -1,24 +1,21 @@
 ---
-title: Dağıtım için mantıksal uygulama şablonları oluşturma-Azure Logic Apps
+title: Dağıtım için mantıksal uygulama şablonları oluşturma
 description: Azure Logic Apps içinde dağıtımı otomatikleştirmek için Azure Resource Manager şablonları oluşturmayı öğrenin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845442"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793194"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun
 
-Mantıksal uygulamanızı oluşturma ve dağıtma işlemlerini otomatik hale getirmenize yardımcı olmak için, bu makalede mantıksal uygulamanız için [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabileceğiniz yollar açıklanmaktadır. İş akışı tanımınızı ve dağıtım için gereken diğer kaynakları içeren bir şablonun yapısı ve sözdizimi hakkında genel bakış için bkz [. genel bakış: Azure Resource Manager şablonlarıyla](logic-apps-azure-resource-manager-templates-overview.md)Logic Apps için dağıtımı otomatikleştirin.
+Mantıksal uygulamanızı oluşturma ve dağıtma işlemlerini otomatik hale getirmenize yardımcı olmak için, bu makalede mantıksal uygulamanız için [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabileceğiniz yollar açıklanmaktadır. İş akışı tanımınızı ve dağıtım için gereken diğer kaynakları içeren bir şablonun yapısı ve sözdizimi hakkında genel bakış için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps, yalnızca mantıksal uygulamalar oluşturmak için değil, yeniden kullanabileceğiniz [önceden oluşturulmuş bir mantıksal uygulama Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) sağlar, ancak dağıtım için kullanılacak kaynakları ve parametreleri de tanımlayabilir. Bu şablonu kendi iş senaryolarınız için kullanabilir veya şablonu gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
@@ -79,7 +76,7 @@ Veya el ile yüklemek için, [mantıksal uygulama şablonu Oluşturucu](https://
 
 LogicAppTemplate modülünün herhangi bir Azure kiracı ve abonelik erişim belirteciyle çalışması için, Azure Resource Manager API 'sini çağıran basit bir komut satırı aracı olan [Azure Resource Manager istemci aracını](https://github.com/projectkudu/ARMClient)yükleyebilirsiniz.
 
-Bu araçla `Get-LogicAppTemplate` komutunu çalıştırdığınızda, komut önce armclient aracı aracılığıyla bir erişim belirteci alır, belirteci PowerShell betiğine yönelttir ve şablonu bir JSON dosyası olarak oluşturur. Araç hakkında daha fazla bilgi için [Azure Resource Manager istemci aracıyla ilgili bu makaleye](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)bakın.
+Bu araçla `Get-LogicAppTemplate` komutunu çalıştırdığınızda, komut önce ARMClient aracı aracılığıyla bir erişim belirteci alır, belirteci PowerShell betiğine yönelttir ve şablonu bir JSON dosyası olarak oluşturur. Araç hakkında daha fazla bilgi için [Azure Resource Manager istemci aracıyla ilgili bu makaleye](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)bakın.
 
 ### <a name="generate-template-with-powershell"></a>PowerShell ile şablon oluşturma
 
@@ -89,7 +86,7 @@ LogicAppTemplate modülünü ve [Azure CLI](https://docs.microsoft.com/cli/azure
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-[Azure Resource Manager istemci aracından](https://github.com/projectkudu/ARMClient)bir belirteçte boru 'a yönelik öneriyi izlemek için Azure abonelik kimliğiniz `$SubscriptionId` olduğu yerine bu komutu çalıştırın:
+[Azure Resource Manager istemci aracından](https://github.com/projectkudu/ARMClient)bir belirteçte boru 'a yönelik öneriyi izlemek için, `$SubscriptionId` Azure abonelik kimliğiniz olduğu yerine bu komutu çalıştırın:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -107,10 +104,10 @@ Azure Key Vault başvurularla ayıklama için (yalnızca statik), şu komutu ça
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| Parametreler | Gerekli | Açıklama |
+| Parametreler | Gereklidir | Açıklama |
 |------------|----------|-------------|
-| TemplateFile | Evet | Şablon dosyanızın dosya yolu |
-| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan, `None` değeridir. |
+| TemplateFile | Yes | Şablon dosyanızın dosya yolu |
+| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

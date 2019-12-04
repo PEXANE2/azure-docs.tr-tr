@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607408"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791148"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -123,7 +123,7 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 1. Oturum Ana bilgisayar VM 'sinde aracının yeni bir sürümünü indirin.
 2. Görev Yöneticisi 'Ni başlatın ve hizmet sekmesinde Rdadgentönyükleme Yükleyicisi hizmetini durdurun.
 3. Windows sanal masaüstü aracısının yeni sürümü için yükleyiciyi çalıştırın.
-4. Kayıt belirteci sorulduğunda, INVALID_TOKEN girdisini kaldırın ve ileri 'ye basın (yeni bir belirteç gerekli değildir).
+4. Kayıt belirteci sorulduğunda INVALID_TOKEN girişi kaldırın ve ileri ' ye basın (yeni bir belirteç gerekli değildir).
 5. Yükleme sihirbazını doldurun.
 6. Görev Yöneticisi 'Ni açın ve Rdadgentönyükleme Yükleyicisi hizmetini başlatın.
 
@@ -233,7 +233,7 @@ Düzeltmeyi çalıştırmak için kullanılan VM 'nin, hatalı çalışan yan ya
 Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki yönergeleri izleyin:
 
 1. Standart Uzak Masaüstü Protokolü (RDP) ile, bu, düzeltmesinin uygulanacağı VM 'ye bağlanın.
-2. https://docs.microsoft.com/sysinternals/downloads/psexec'den PsExec 'yi indirin.
+2. https://docs.microsoft.com/sysinternals/downloads/psexec 'den PsExec 'yi indirin.
 3. İndirilen dosyayı sıkıştırmayı açın.
 4. Komut istemi 'ni yerel yönetici olarak başlatın.
 5. PsExec 'nin sıkıştırısaklandığı klasöre gidin.
@@ -309,7 +309,7 @@ Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleşti
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
 
-VM 'de grup ilkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** > ' na giderek Grup İlkesi ayarını kontrol edin **Uzak Masaüstü oturumu ana bilgisayarı** > **lisanslama** > **Uzak Masaüstü lisans modunu ayarlayın**. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
+VM 'de grup ilkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** ** > Uzak Masaüstü oturumu ana bilgisayarı > ** **lisanslama** > **Uzak Masaüstü lisans modunu ayarla**' ya giderek Grup İlkesi ayarını kontrol edin. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
 
 >[!NOTE]
 >Etki alanınız aracılığıyla Grup İlkesi ayarlarsanız, bu Windows 10 Kurumsal Çoklu oturum VM 'lerini hedefleyen ilkelerde bu ayarı devre dışı bırakın.
@@ -333,7 +333,7 @@ Sürüm numaranız "1809" ifadesini görürseniz, [KB4516077 güncelleştirmesin
 
 ### <a name="version-1903"></a>Sürüm 1903
 
-Sürüm numaranız "1903" ifadesini görürseniz, [KB4517211 güncelleştirmesini](https://support.microsoft.com/help/4517211)yükler.
+Azure galerisinden Windows 10, sürüm 1903 görüntüsünün en son sürümüyle konak işletim sistemini yeniden dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

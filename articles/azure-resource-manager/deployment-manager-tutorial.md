@@ -1,16 +1,16 @@
 ---
-title: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma | Microsoft Docs
-description: Azure kaynaklarını dağıtmak için Azure Deployment Manager ile Resource Manager şablonlarını kullanın.
+title: Şablonları dağıtmak için Azure Dağıtım Yöneticisi kullanma
+description: Azure kaynaklarını dağıtmak için Azure Dağıtım Yöneticisi ile Kaynak Yöneticisi şablonlarını nasıl kullanacağınızı öğrenin.
 author: mumian
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: f8091aedcf1f03ef83dbab3b27e9af6b2912d25a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307022"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789995"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Öğretici: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma (Genel önizleme)
 
@@ -43,11 +43,11 @@ Ek kaynaklar:
 * [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
 * [Öğretici: Azure dağıtım Yöneticisi 'da sistem durumu denetimi kullanın](./deployment-manager-tutorial-health-check.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -186,7 +186,7 @@ Kapsayıcıyı Azure portal açın ve **ikili** dosyaların ve **şablonların**
 
 Kullanıcı tarafından atanmış yönetilen bir kimlik oluşturmanız ve aboneliğiniz için erişim denetimini yapılandırmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’da oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. [Kullanıcı tarafından atanmış bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) oluşturun.
 3. Portalda sol menüden **Abonelikler**’i ve ardından aboneliğinizi seçin.
 4. **Erişim denetimi (IAM)** öğesini seçin ve ardından **rol ataması Ekle**' yi seçin.
@@ -427,7 +427,7 @@ Azure PowerShell şablonları dağıtmak için kullanılabilir.
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalını](https://portal.azure.com) açın.
+1. [Azure portalı](https://portal.azure.com) açın.
 2. Piyasaya çıkarma dağıtımı tarafından oluşturulan yeni kaynak gruplarındaki yeni oluşturulan web uygulamalarına gidin.
 3. Web uygulamasını bir web tarayıcıda açın. Index.html dosyasında konumu ve sürümü doğrulayın.
 

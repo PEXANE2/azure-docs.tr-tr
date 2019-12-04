@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819345"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784604"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
 İzleme için Logback veya Log4J (v 1.2 veya v 2.0) kullanıyorsanız, izleme günlüklerinizin otomatik olarak gönderilmesini ve bunları araştırıp araygeçirebileceğiniz Application Insights sağlayabilirsiniz.
@@ -22,27 +22,41 @@ ms.locfileid: "72819345"
 
 ## <a name="using-the-application-insights-java-agent"></a>Application Insights Java Aracısı 'nı kullanma
 
-Application Insights Java aracısını, `AI-Agent.xml` dosyasındaki özelliği etkinleştirerek günlüklerinizi otomatik olarak yakalayacak şekilde yapılandırabilirsiniz:
+Application Insights Java Aracısı, varsayılan olarak `WARN` düzeyinde ve üzerinde gerçekleştirilen günlüğü otomatik olarak yakalar.
+
+`AI-Agent.xml` dosyası kullanılarak yakalanan günlüğe kaydetme eşiğini değiştirebilirsiniz:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-Alternatif olarak, aşağıdaki yönergeleri izleyebilirsiniz.
+`AI-Agent.xml` dosyasını kullanarak Java aracısının günlüğe kaydetme yakalamasını devre dışı bırakabilirsiniz:
 
-## <a name="install-the-java-sdk"></a>Java SDK 'sını yükler
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Alternatif olarak (Java aracısını kullanmanın aksine) aşağıdaki yönergeleri izleyebilirsiniz
+
+### <a name="install-the-java-sdk"></a>Java SDK 'sını yükler
 
 Daha önce yapmadıysanız, [Java için APPLICATION INSIGHTS SDK][java]'yı yüklemek için yönergeleri izleyin.
 
-## <a name="add-logging-libraries-to-your-project"></a>Projenize günlük kitaplıklarını ekleme
+### <a name="add-logging-libraries-to-your-project"></a>Projenize günlük kitaplıklarını ekleme
 *Projeniz için uygun yolu seçin.*
 
 #### <a name="if-youre-using-maven"></a>Maven kullanıyorsanız...
@@ -123,7 +137,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
 | Log4J v 1.2 |[Log4J v 1.2 Ekleyici jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights-günlüğe kaydetme-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Günlüğe kaydetme çatısını appfıme ekleyin
+### <a name="add-the-appender-to-your-logging-framework"></a>Günlüğe kaydetme çatısını appfıme ekleyin
 İzlemeleri almaya başlamak için, ilgili kod parçacığını Log4J veya Logback yapılandırma dosyasına birleştirin: 
 
 *Logback*

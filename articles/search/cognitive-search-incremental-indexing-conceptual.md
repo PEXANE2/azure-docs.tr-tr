@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113594"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790938"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı dizin oluşturma nedir?
 
@@ -47,7 +47,7 @@ Dizin oluşturucudaki `cache` özelliğini, artımlı dizin oluşturma işlemind
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 
@@ -83,7 +83,7 @@ Dizin oluşturucular yalnızca ileri doğru hareket etmez ve yeni belgeler işle
 
 ### <a name="invalidating-changes"></a>Değişiklikler geçersiz kılın
 
-Geçersiz kılınmaz, ancak zenginleştirme işlem hattının durumu üzerinde önemli bir etkisi vardır. Geçersiz kılma değişikliği, önbelleğin tamamının artık geçerli olmadığı bir yerdir. Geçersiz kılma değişikliği örneği, veri kaynağınızın güncelleştirildiği bir örnektir. Değişikliğin önbelleği geçersiz kılanmadığından ve örneğin depolama hesabındaki anahtarı döndürmediğinden ilgili senaryolar için, `ignoreResetRequirement` QueryString parametresi, belirli bir kaynağın güncelleştirme işleminde `true` olarak ayarlanmalıdır, çünkü işlemin reddedildi.
+Geçersiz kılınmaz, ancak zenginleştirme işlem hattının durumu üzerinde önemli bir etkisi vardır. Geçersiz kılma değişikliği, önbelleğin tamamının artık geçerli olmadığı bir yerdir. Geçersiz kılma değişikliği örneği, veri kaynağınızın güncelleştirildiği bir örnektir. Değişikliğin önbelleği geçersiz kılanmadığından, örneğin depolama hesabındaki anahtarı döndürürken, `ignoreResetRequirement` QueryString parametresinin, işlemin reddedilmediğinden emin olmak için belirli bir kaynağın güncelleştirme işleminde `true` olarak ayarlanması gerekir.
 
 Önbelleğinizi geçersiz kılacak değişikliklerin tamamı aşağıda verilmiştir:
 

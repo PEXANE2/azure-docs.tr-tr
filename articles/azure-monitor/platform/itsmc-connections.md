@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: c7e102b6b8976f8caf7676fd456e6c23488c935a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd9f659589b222350fe688ee4da876801a65226a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932285"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769974"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ISM ürünlerini/hizmetlerini BT Hizmet Yönetimi Bağlayıcısı bağlama
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](../../azure-monitor/platform/itsmc-overview.md).
@@ -192,7 +192,7 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
     - [Istanbul için OAuth ayarlama](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Helsinki için OAuth ayarlama](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Genfiliz için OAuth ayarlama](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+    - [New York için OAuth ayarlama](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 
 - Microsoft Log Analytics Integration (ServiceNow uygulaması) için Kullanıcı uygulamasını yükler. [Daha fazla bilgi edinin](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Yüklü kullanıcı uygulaması için tümleştirme Kullanıcı rolü oluşturun. Tümleştirme Kullanıcı rolünü oluşturma hakkında bilgi [burada](#create-integration-user-role-in-servicenow-app)verilmiştir.
@@ -262,7 +262,7 @@ Yeni oluşturulan kullanıcı varsayılan rollerle birlikte görüntülenir.
 **Varsayılan roller**:
 - personalize_choices
 - import_transformer
--   x_mioms_microsoft. User
+-   x_mioms_microsoft. Kullanıcı
 -   ITIL
 -   template_editor
 -   view_changer

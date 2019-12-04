@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı için Azure AD ile yapılandırma ve oturum açma-tek sunucu
-description: PostgreSQL için Azure veritabanı-tek sunucu ile kimlik doğrulaması için Azure Active Directory ayarlama hakkında bilgi edinin
+title: Azure Active Directory kullanın-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı-tek sunucu ile kimlik doğrulaması için Azure Active Directory (AAD) ayarlama hakkında bilgi edinin
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5abfe4cc6aa0679d8009343fa24c1059700bb79
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516038"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763649"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -45,7 +45,7 @@ PostgreSQL için Azure veritabanı veritabanınıza bir Azure AD kullanıcısı 
 1. İlk olarak Azure AD Kullanıcı `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
 2. PostgreSQL için Azure veritabanı örneğiniz için Azure AD Yönetici kullanıcısı olarak oturum açın.
 3. PostgreSQL için Azure veritabanı 'nda rol `<user>@yourtenant.onmicrosoft.com` oluşturun.
-4. Azure_ad_user rolünün bir üyesini `<user>@yourtenant.onmicrosoft.com` yapın. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
+4. Rol azure_ad_user üyesi `<user>@yourtenant.onmicrosoft.com`. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
 
 **Örnek:**
 
@@ -193,7 +193,7 @@ Artık, daha önce yapılandırılmış olan PostgreSQL Kullanıcı parolasını
 
 ### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Durum 2: PostgreSQL Kullanıcı adı, Azure AD Kullanıcı asıl adından farklı
 
-Bir PostgreSQL kullanıcısı Azure AD 'de yoksa veya farklı bir kullanıcı adına sahipse, bu PostgreSQL kullanıcısı olarak kimlik doğrulaması yapmak için Azure AD gruplarını kullanabilirsiniz. PostgreSQL kullanıcısına eşleşen bir ada sahip bir Azure AD grubu oluşturarak ve ardından var olan PostgreSQL kullanıcısına rol azure_ad_user vererek PostgreSQL için mevcut Azure veritabanı kullanıcılarını Azure AD 'ye geçirebilirsiniz.
+Bir PostgreSQL kullanıcısı Azure AD 'de yoksa veya farklı bir kullanıcı adına sahipse, bu PostgreSQL kullanıcısı olarak kimlik doğrulaması yapmak için Azure AD gruplarını kullanabilirsiniz. PostgreSQL kullanıcısına eşleşen bir ada sahip bir Azure AD grubu oluşturarak ve ardından mevcut PostgreSQL kullanıcısına rol azure_ad_user vererek, PostgreSQL için mevcut Azure veritabanı kullanıcılarını Azure AD 'ye geçirebilirsiniz.
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";

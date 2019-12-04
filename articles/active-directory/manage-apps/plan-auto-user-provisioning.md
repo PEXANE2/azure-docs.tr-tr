@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706207"
+ms.locfileid: "74786427"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -90,11 +90,11 @@ Bu örnekte, kullanıcılar ve veya gruplar, şirket içi bir dizine bağlı bir
 
 1. Kullanıcılar/Gruplar, SAP gibi bir şirket içi ık uygulaması/sisteminde oluşturulur. 
 
-1. Azure AD Connect Aracısı, yerel AD 'den Azure AD 'ye olan kimlik (kullanıcılar ve gruplar) için zamanlanmış eşitlemeleri çalıştırır.
+1. **Azure AD Connect Aracısı** , yerel ad 'den Azure AD 'ye olan kimlik (kullanıcılar ve gruplar) için zamanlanmış eşitlemeleri çalıştırır.
 
-1. Azure AD sağlama hizmeti, kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) başlar. 
+1. **Azure AD sağlama hizmeti** , kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) başlar. 
 
-1. Azure AD sağlama hizmeti, ilk döngüden bu yana değiştirilen tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve [artımlı Döngülerde](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)değişiklikleri iter.
+1. **Azure AD sağlama hizmeti** , ilk döngüden bu yana değiştirilen tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve [artımlı Döngülerde](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)değişiklikleri iter.
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Yalnızca bulutta bulunan kuruluşlar için otomatik Kullanıcı hazırlama
 
@@ -106,9 +106,9 @@ Bu örnekte, Azure AD 'de Kullanıcı oluşturma oluşur ve Azure AD sağlama hi
 
 1. Azure AD 'de Kullanıcı/grup oluşturulur.
 
-1. Azure AD sağlama hizmeti, kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) başlar. 
+1. **Azure AD sağlama hizmeti** , kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) başlar. 
 
-1. Azure AD sağlama hizmeti, başlangıç döngüsünden bu yana güncelleştirilmiş tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve tüm [artımlı döngüleri](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)gerçekleştirir.
+1. **Azure AD sağlama hizmeti** , başlangıç döngüsünden bu yana güncelleştirilmiş tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve tüm [artımlı döngüleri](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)gerçekleştirir.
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Cloud ık uygulamaları için otomatik Kullanıcı hazırlama 
 

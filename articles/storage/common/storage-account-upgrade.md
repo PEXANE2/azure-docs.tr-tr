@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495974"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791694"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
-Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları çoğu depolama senaryosunda önerilir. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar.
+Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları çoğu depolama senaryosunda önerilir. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar. Genel-pupoz v2 hesapları, sık erişimli, seyrek erişimli veya Arşiv arasında sık erişimli veya seyrek erişimli ve BLOB düzeyinde katmanlama varsayılan hesap erişim katmanlarını destekler.
 
 Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolama hesabına yükseltme basittir. Azure portal, PowerShell veya Azure CLı kullanarak yükseltebilirsiniz.
 
@@ -25,7 +25,7 @@ Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolam
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Depolama hesabınıza gidin.
 3. **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
 4. **Hesap Türü** altında **Yükselt**’e tıklayın.
@@ -40,19 +40,19 @@ Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolam
 
 PowerShell kullanarak genel amaçlı bir v1 hesabını genel amaçlı v2 hesabına yükseltmek için, önce PowerShell 'i **az. Storage** modülünün en son sürümünü kullanacak şekilde güncelleştirin. PowerShell’i yükleme hakkında bilgi edinmek için bkz. [Azure PowerShell’i yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Ardından, hesabı yükseltmek için kaynak grubunuzun ve depolama hesabınızın adını değiştirerek aşağıdaki komutu çağırın:
+Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istediğiniz hesap erişim katmanı yerine aşağıdaki komutu çağırın.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Genel amaçlı v1 hesabını Azure CLı kullanarak genel amaçlı v2 hesabına yükseltmek için önce Azure CLı 'nın en son sürümünü yüklemeniz gerekir. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Ardından, hesabı yükseltmek için kaynak grubunuzun ve depolama hesabınızın adını değiştirerek aşağıdaki komutu çağırın:
+Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istediğiniz hesap erişim katmanı yerine aşağıdaki komutu çağırın.
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
@@ -72,7 +72,7 @@ Her iki durumda da ilk öncelik, genel amaçlı v2 depolama hesabında depolanan
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
-Bir v1 depolama hesabını genel amaçlı v2 hesabına yükseltmek ücretsizdir. Ancak, depolama erişim katmanını değiştirmek faturanızda değişikliklere neden olabilir. 
+Bir v1 depolama hesabını genel amaçlı v2 hesabına yükseltmek ücretsizdir. Yükseltme işlemi sırasında istenen hesap katmanını belirtebilirsiniz. Yükseltme sırasında bir hesap katmanı belirtilmemişse, yükseltilen hesabın varsayılan hesap katmanı `Hot`olacaktır. Bununla birlikte, yükseltme sonrasında depolama erişim katmanını değiştirmek faturanızda değişikliklere neden olabilir, böylece yükseltme sırasında yeni hesap katmanının belirtilmesi önerilir.
 
 Tüm depolama hesapları, blob depolama için her blobun katmanını temel alan bir fiyatlandırma modelini kullanır. Bir depolama hesabını kullanırken aşağıdaki fatura değerlendirmeleri geçerlidir:
 

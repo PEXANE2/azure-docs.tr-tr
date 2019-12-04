@@ -1,33 +1,33 @@
 ---
-title: Azure veritabanı Azure CLI kullanarak MySQL sunucusu için yeniden başlatın.
-description: Bu makalede, Azure CLI kullanarak MySQL için Azure veritabanı nasıl yeniden açıklanır.
+title: Sunucuyu yeniden başlatma-Azure CLı-MySQL için Azure veritabanı
+description: Bu makalede, Azure CLı kullanarak MySQL için Azure veritabanı sunucusunu nasıl yeniden başlatabileceğinizi açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: d00aa35437f93c010ce48f3036b4a684910702c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 146c531805ff22544797c44c8df32b0e5d1e83b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160421"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774232"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Azure veritabanı Azure CLI kullanarak MySQL sunucusu için yeniden başlatın.
-Bu konuda, MySQL için Azure veritabanı nasıl yeniden açıklanmaktadır. Sunucu işlemi gerçekleştirirken, kısa bir kesintiye neden sunucunuzun bakım nedeniyle yeniden başlatmanız gerekebilir.
+# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı sunucusunu yeniden başlatma
+Bu konuda, MySQL sunucusu için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi açıklanmaktadır. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.
 
-Sunucunun yeniden başlatılması, Hizmet meşgul olduğunda engellenir. Örneğin, hizmet sanal çekirdekler ölçeklendirme gibi daha önce istenen bir işlemin işliyor olabilir.
+Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sanal çekirdekleri ölçeklendirirken daha önce istenen bir işlemi işliyor olabilir.
 
-Yeniden başlatma tamamlamak için gereken süreyi MySQL kurtarma işlemi bağlıdır. Yeniden başlatma süresini azaltmak için yeniden başlatma öncesinde sunucusunda gerçekleşen etkinliği miktarını en aza öneririz.
+Yeniden başlatmayı tamamlaması için gereken süre MySQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunda tamamlanması gerekir:
-- Bir [MySQL sunucusu için Azure veritabanı](quickstart-create-server-up-azure-cli.md)
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
+- [MySQL Için Azure veritabanı sunucusu](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Bu nasıl yapılır kılavuzunda, Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Azure CLI komut isteminde sürümünü onaylamak için girin `az --version`. Yüklemek veya yükseltmek için bkz: [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde `az --version`girin. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
 
 ## <a name="restart-the-server"></a>Sunucuyu yeniden başlatın
@@ -40,4 +40,4 @@ az mysql server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [nasıl MySQL için Azure veritabanı'nda parametrelerini ayarla](howto-configure-server-parameters-using-cli.md)
+[MySQL Için Azure veritabanı 'nda parametreleri ayarlama](howto-configure-server-parameters-using-cli.md) hakkında bilgi edinin

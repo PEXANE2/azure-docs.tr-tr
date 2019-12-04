@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı 'nda iş sürekliliğini anlama
+title: İş sürekliliği-MariaDB için Azure veritabanı
 description: MariaDB hizmeti için Azure veritabanı kullanılırken iş sürekliliği (belirli bir noktaya geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d364c3a5fafaca514baade25cd3f5b4c0f10dc26
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 76e749b26be5a5204b247d294f26da169f84094c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973604"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773026"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda iş sürekliliğini anlama
 

@@ -1,20 +1,19 @@
 ---
-title: EDIOLGU iletilerinde UNH 2,5 segmentleri-Azure Logic Apps
+title: EDIOLGU iletilerindeki UNH 2,5 segmentleri
 description: Enterprise Integration Pack ile Azure Logic Apps içindeki UNH 2.5 kesimlerle EDIOLGU iletilerini çözümleyin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: c30c35375a45171c938f80e94dd7d9be4c3ee8b1
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679952"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792545"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Azure Logic Apps 'de UNH 2.5 segmentiyle EDIOLGU belgelerini işleme
 

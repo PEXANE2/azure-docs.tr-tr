@@ -1,20 +1,17 @@
 ---
-title: Azure Logic Apps kapsama göre eylemleri gruplandırma ve çalıştırma
+title: Eylemleri kapsama göre gruplandırın ve çalıştırın
 description: Azure Logic Apps grup durumuna göre çalışan kapsamlı eylemler oluşturun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680013"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791497"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
 
@@ -78,8 +75,8 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
 
       | Ayar | Değer | Açıklama |
       | ------- | ----- | ----------- |
-      | **Güzergah noktası 1** | < >*Başlat* | Yol başlangıcının kaynağını girin. | 
-      | **Güzergah noktası 2** | <*bitiş* > | Yolun hedefini girin. | 
+      | **Güzergah noktası 1** | <> *Başlat* | Yol başlangıcının kaynağını girin. | 
+      | **Güzergah noktası 2** | <*bitiş*> | Yolun hedefini girin. | 
       | **Kaçının** | Hiçbiri | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **İyileştir** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
       | **Mesafe birimi** | <*your-preference*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
@@ -150,7 +147,7 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
   
        **Body** alanınız Şu örneğe benzer şekilde görünür:
 
-       ![Finished "Body" alanı ](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![bitti "Body" alanı](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. Mantıksal uygulamanızı kaydedin.
@@ -199,8 +196,8 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
 
    1. Her iki satır için işleç olarak **eşittir** ' i seçin. 
    
-   1. Karşılaştırma değerleri için, ilk satırda `Failed` girin. 
-   İkinci satıra `Aborted` girin. 
+   1. Karşılaştırma değerleri için, ilk satırda `Failed`girin. 
+   İkinci satıra `Aborted`girin. 
 
       İşlem tamamlandığında koşulunuz şu örnekteki gibi görünür:
 

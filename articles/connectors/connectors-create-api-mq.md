@@ -1,142 +1,141 @@
 ---
-title: IBM MQ server - Azure Logic Apps ile bağlantı
-description: Gönder ve iletileri bir Azure veya şirket içinde IBM MQ server ve Azure Logic Apps ile alma
+title: IBM MQ sunucusuna bağlan
+description: Azure veya şirket içi IBM MQ Server ve Azure Logic Apps ileti gönderin ve alın
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: valrobb
 ms.author: valthom
-ms.reviewer: chrishou, LADocs
+ms.reviewer: chrishou, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: a2894799946d069916b27a4f5bcc7bd3244705b2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273129"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789580"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps'ten bir IBM MQ sunucuya bağlanın
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps bir IBM MQ sunucusuna bağlanma
 
-IBM MQ bağlayıcı gönderir ve bir IBM MQ server şirket içinde veya Azure'da depolanan iletilerini alır. Bu bağlayıcı bir TCP/IP ağı üzerinden uzak bir IBM MQ sunucusu ile iletişim kuran bir Microsoft MQ client içerir. Bu makalede MQ bağlayıcıyı kullanmak üzere bir başlangıç kılavuzu sağlanmaktadır. Bir iletinin kuyrukta göz atarak başlayın ve diğer eylemler deneyin.
+IBM MQ Bağlayıcısı, şirket içinde veya Azure 'da bir IBM MQ sunucusunda depolanan iletileri gönderir ve alır. Bu bağlayıcı bir TCP/IP ağı üzerinde uzak IBM MQ sunucusuyla iletişim kuran bir Microsoft MQ istemcisi içerir. Bu makale, MQ bağlayıcısını kullanmak için bir başlangıç kılavuzu sağlar. Bir kuyruktaki tek bir iletiye göz atarak başlayabilir ve ardından diğer eylemleri deneyebilirsiniz.
 
-IBM MQ Bağlayıcısı'nı bu eylemleri içerir, ancak hiçbir Tetikleyiciler sağlar:
+IBM MQ Bağlayıcısı bu eylemleri içerir, ancak hiçbir tetikleyici sağlamaz:
 
-- Tek bir ileti IBM MQ sunucudan ileti silmeden göz atın.
-- Toplu iletiler IBM MQ sunucudan iletileri silmeden göz atın.
-- Tek bir ileti alırsınız ve IBM MQ sunucudan ileti Sil
-- Toplu olarak mesaj alır ve IBM MQ sunucudan iletileri sil
-- IBM MQ sunucunun tek bir ileti gönderin
+- IBM MQ sunucusundan iletiyi silmeden tek bir iletiye gözatın
+- IBM MQ sunucusundan iletileri silmeden bir toplu işe gözatamıyorum
+- Tek bir ileti alın ve IBM MQ sunucusundan iletiyi silin
+- Bir toplu ileti alın ve IBM MQ sunucusundan iletileri silin
+- IBM MQ sunucusuna tek bir ileti gönderin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir şirket içi MQ server kullanıyorsanız, [şirket içi veri ağ geçidi yükleme](../logic-apps/logic-apps-gateway-install.md) ağınızdaki bir sunucuda. Ayrıca, şirket içi veri ağ geçidinin yüklü olduğu sunucunun çalışması için .NET Framework 4.6 MQ bağlayıcı için yüklü olması gerekir. Ayrıca, Azure'da şirket içi veri ağ geçidi için bir kaynak oluşturmalısınız. Daha fazla bilgi için [veri ağ geçidi bağlantısı kurma](../logic-apps/logic-apps-gateway-connection.md).
+* Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yükleyebilirsiniz. Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ bağlayıcısının çalışması için .NET Framework 4,6 yüklü olmalıdır. Ayrıca, şirket içi veri ağ geçidi için Azure 'da bir kaynak oluşturmanız gerekir. Daha fazla bilgi için bkz. [Data Gateway bağlantısını ayarlama](../logic-apps/logic-apps-gateway-connection.md).
 
-  Ancak, MQ server'ınıza Azure kapsamında sunulan veya genel olarak kullanılabilir, data gateway kullanın gerekmez.
+  Ancak, MQ sunucunuz Azure 'da herkese açık veya kullanılabilir ise, veri ağ geçidini kullanmanız gerekmez.
 
 * Resmi olarak desteklenen IBM WebSphere MQ sürümleri:
 
-  * MQ 7.5
-  * MQ 8.0
-  * MQ 9.0
+  * MQ 7,5
+  * MQ 8,0
+  * MQ 9,0
 
-* MQ eylem eklemek istediğiniz mantıksal uygulaması. Bu mantıksal uygulama, şirket içi veri ağ geçidi bağlantınızı konumun aynısını kullanmanız gerekir ve iş akışınızı başlatan bir tetikleyici zaten olması gerekir. 
+* MQ eylemini eklemek istediğiniz mantıksal uygulama. Bu mantıksal uygulama, şirket içi veri ağ geçidi bağlantınızla aynı konumu kullanmalıdır ve iş akışınızı Başlatan bir tetikleyicisine sahip olmalıdır. 
 
-  Mantıksal uygulamanızı ilk kez bir tetikleyici eklemelisiniz MQ Bağlayıcısı'nı hiçbir tetikleyici yok. Örneğin, yinelenme tetikleyicisini kullanabilirsiniz. Logic apps kullanmaya yeni başladıysanız, bu deneyin [ilk mantıksal uygulamanızı oluşturmak için Hızlı Başlangıç](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  MQ bağlayıcısının hiçbir tetikleyicisi yoktur, bu nedenle önce mantıksal uygulamanıza bir tetikleyici eklemeniz gerekir. Örneğin, yinelenme tetikleyicisini kullanabilirsiniz. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmak için bu hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin. 
 
-## <a name="browse-a-single-message"></a>Tek bir ileti Gözat
+## <a name="browse-a-single-message"></a>Tek bir iletiye gözatın
 
-1. Tetikleyici veya başka bir eylem altında mantıksal uygulamanızı seçin **yeni adım**. 
+1. Mantıksal uygulamanızda, tetikleyici veya başka bir eylem altında **yeni adım**' ı seçin. 
 
-1. Arama kutusuna "mq" yazın ve şu eylemi seçin: **İleti Gözat**
+1. Arama kutusuna "MQ" yazın ve şu eylemi seçin: **Iletiye gözatamazsınız**
 
-   ![İleti Gözat](media/connectors-create-api-mq/Browse_message.png)
+   ![İletiye gözatamıyorum](media/connectors-create-api-mq/Browse_message.png)
 
-1. Varolan MQ bağlantısı yoksa, bağlantıyı oluşturun:  
+1. Mevcut bir MQ bağlantınız yoksa bağlantıyı oluşturun:  
 
-   1. Eylem seçin **şirket içi veri ağ geçidi üzerinden Bağlan**.
+   1. Eylemde Şirket **içi veri ağ geçidi üzerinden Bağlan**' ı seçin.
    
-   1. MQ server'ınız için özelliklerini girin.  
+   1. MQ sunucunuzun özelliklerini girin.  
 
-      İçin **sunucu**, MQ server adını veya IP adresini bir iki nokta üst üste ve bağlantı noktası numarası girin.
+      **Sunucu**için MQ sunucu adını gırebılır veya IP adresini, ardından iki nokta üst üste ve bağlantı noktası numarası ile girebilirsiniz.
     
-   1. Açık **ağ geçidi** herhangi daha önce yapılandırılmış ağ geçidi bağlantıları gösteren bir liste. Ağ geçidi seçin.
+   1. Daha önce yapılandırılmış ağ geçidi bağlantılarını gösteren **ağ geçidi** listesini açın. Ağ geçidinizi seçin.
     
    1. İşiniz bittiğinde **Oluştur**’u seçin. 
    
-      Bağlantınız şu örnekteki gibi görünür:
+      Bağlantınız Şu örneğe benzer şekilde görünür:
 
       ![Bağlantı özellikleri](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. Eylemin özelliklerini ayarlayın:
 
-   * **Kuyruk**: Bağlantıyı farklı bir kuyruk belirtin.
+   * **Kuyruk**: bağlantıdan farklı bir sıra belirtin.
 
-   * **MessageID**, **Correlationıd**, **GroupID**ve diğer özellikleri: Farklı MQ ileti özelliklerine bağlı olarak bir ileti için Gözat
+   * **MessageID**, **bağıntıkimliği**, **GroupID**ve diğer özellikler: farklı MQ Ileti özelliklerine göre bir iletiye gözatamazsınız
 
-   * **IncludeInfo**: Belirtin **True** çıktısında ek ileti bilgileri içerecek şekilde. Ya da belirtin **False** ek ileti bilgileri çıktısında içermeyecek şekilde.
+   * **Includeınfo**: çıkışa ek ileti bilgilerini eklemek Için **true değerini** belirtin. Ya da, çıkışa ek ileti bilgileri dahil etmek için **false değerini** belirtin.
 
-   * **Zaman aşımı**: Bir ileti, boş bir kuyrukta gelmesi için beklenecek süreyi belirlemek için bir değer girin. Hiçbir şey girilirse, sıradaki ilk iletiye alınır ve görüntülenecek bir ileti için beklerken geçen hiçbir zaman yoktur.
+   * **Zaman aşımı**: bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez.
 
-     ![İleti özelliklerini göz atın](media/connectors-create-api-mq/Browse_message_Props.png)
+     ![Ileti özelliklerine gözatamıyorum](media/connectors-create-api-mq/Browse_message_Props.png)
 
-1. **Kaydet** yaptığınız değişiklikleri ve ardından **çalıştırma** mantıksal uygulamanızı.
+1. Değişikliklerinizi **kaydedin** ve mantıksal uygulamanızı **çalıştırın** .
 
    ![Kaydet ve Çalıştır](media/connectors-create-api-mq/Save_Run.png)
 
-   Çalıştırmanız tamamlandıktan sonra çalıştırma adımları gösterilir ve çıktıyı gözden geçirin.
+   Çalıştırma bittikten sonra, çalıştıralım adımları gösterilir ve çıktıyı gözden geçirebilirsiniz.
 
-1. Her bir adımın ayrıntılarını gözden geçirmek için yeşil onay işaretini seçin. Daha fazla bilgi için çıktı verilerini gözden geçirmek için seçin **ham çıkışları görüntüleyin**.
+1. Her adımın ayrıntılarını gözden geçirmek için yeşil onay işaretini seçin. Çıktı verileri hakkında daha fazla bilgi için **Ham çıkışları göster**' i seçin.
 
-   ![İleti çıkış Gözat](media/connectors-create-api-mq/Browse_message_output.png)  
+   ![İleti çıktısına gözatıp](media/connectors-create-api-mq/Browse_message_output.png)  
 
-   Bazı örnek ham çıktı aşağıdaki gibidir:
+   Örnek ham çıktı aşağıda verilmiştir:
 
-   ![İleti ham çıkış Gözat](media/connectors-create-api-mq/Browse_message_raw_output.png)
+   ![İletiye yönelik ham çıkışa gözatıp](media/connectors-create-api-mq/Browse_message_raw_output.png)
 
-1. Ayarlarsanız **IncludeInfo** true olarak, aşağıdaki çıkış görüntülenir:
+1. **Includeınfo** değerini true olarak ayarlarsanız aşağıdaki çıktı görüntülenir:
 
-   ![Göz atma iletiyi bilgisi Ekle](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+   ![İleti ekleme bilgisini görüntüle](media/connectors-create-api-mq/Browse_message_Include_Info.png)
 
-## <a name="browse-multiple-messages"></a>Birden çok ileti Gözat
+## <a name="browse-multiple-messages"></a>Birden çok iletiye gözatın
 
-**Gözat iletileri** eylemi içeren bir **BatchSize** kaç iletileri kuyruktan döndürülmesi gerektiğini belirtmek için seçeneği.  Varsa **BatchSize** herhangi bir giriş tüm iletileri döndürülür. Döndürülen çıkış iletileri dizisidir.
+**Iletileri gözden** geçirme eylemi, kuyruktan kaç tane ileti döndürüleceğini göstermek Için bir **BatchSize** seçeneği içerir.  **BatchSize** girişi yoksa, tüm iletiler döndürülür. Döndürülen çıktı bir ileti dizisidir.
 
-1. Eklediğinizde **Gözat iletileri** eylemi, önceden yapılandırılmış bağlantı varsayılan olarak seçilen ilk. Yeni bir bağlantı oluşturmak için seçin **Bağlantıyı Değiştir**. Ya da farklı bir bağlantı seçin.
+1. **Iletileri görüntüle** eylemini eklediğinizde, önceden yapılandırılmış ilk bağlantı varsayılan olarak seçilidir. Yeni bir bağlantı oluşturmak için **Bağlantıyı Değiştir**' i seçin. Ya da farklı bir bağlantı seçin.
 
-1. Mantık uygulaması Çalıştır bittikten sonra bazı örnek çıktısı şöyledir **Gözat iletileri** eylem:
+1. Mantıksal uygulama çalıştırıldıktan sonra, **Iletilere gözatamıyorum** eyleminin bazı örnek çıktıları aşağıda verilmiştir:
 
-   ![İletileri çıkış Gözat](media/connectors-create-api-mq/Browse_messages_output.png)
+   ![İletilere gitmek için çıkış](media/connectors-create-api-mq/Browse_messages_output.png)
 
-## <a name="receive-single-message"></a>Tek bir ileti alırsınız.
+## <a name="receive-single-message"></a>Tek ileti al
 
-**Alma ileti** eylem aynı giriş yapılmış ve olarak çıkaran **Gözat ileti** eylem. Kullanırken **alma ileti**, ileti kuyruktan silinir.
+**Ileti al** eylemi, **ileti görüntüle** eylemiyle aynı girişlere ve çıkışlara sahiptir. İleti **Al iletisi**kullanılırken ileti kuyruktan silinir.
 
 ## <a name="receive-multiple-messages"></a>Birden çok ileti alma
 
-**İletileri alma** eylem aynı giriş yapılmış ve olarak çıkaran **Gözat iletileri** eylem. Kullanırken **iletileri alma**, iletileri kuyruktan silinir.
+**Iletileri al** eylemi, **iletileri görüntüle** eylemiyle aynı giriş ve çıkışlara sahiptir. **Iletileri al**' ı kullanırken İletiler kuyruktan silinir.
 
-Adım varsa ileti kuyrukta bir göz atın veya alma işlemi yapılırken, bu Çıktıyı ile başarısız olur:  
+Kuyrukta bir gözatmanız veya alma işlemi yaparken herhangi bir ileti yoksa, adım bu çıktıda başarısız olur:  
 
-![MQ yok, hata iletisi](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
+![MQ Ileti hatası yok](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
 
-## <a name="send-message"></a>İleti Gönder
+## <a name="send-message"></a>İleti gönder
 
-Eklediğinizde **ileti gönderme** eylemi, önceden yapılandırılmış bağlantı varsayılan olarak seçilen ilk. Yeni bir bağlantı oluşturmak için seçin **Bağlantıyı Değiştir**. Ya da farklı bir bağlantı seçin.
+**Ileti gönder** eylemini eklediğinizde, önceden yapılandırılmış ilk bağlantı varsayılan olarak seçilidir. Yeni bir bağlantı oluşturmak için **Bağlantıyı Değiştir**' i seçin. Ya da farklı bir bağlantı seçin.
 
-1. Geçerli ileti türünü seçin: **Veri birimi**, **yanıt**, veya **iste**  
+1. Geçerli bir ileti türü seçin: **Datagram**, **Yanıt**veya **istek**  
 
-   ![Msg özellikler Gönder](media/connectors-create-api-mq/Send_Msg_Props.png)
+   ![Ileti props gönder](media/connectors-create-api-mq/Send_Msg_Props.png)
 
-1. Mantıksal uygulama çalışmayı tamamladıktan sonra bazı örnek çıktısı şöyledir **ileti gönder** eylem:
+1. Mantıksal uygulama çalışmayı bitirdikten sonra **Ileti gönder** eyleminden alınan bazı örnek çıktıları aşağıda verilmiştir:
 
-   ![Çıkış iletisi gönder](media/connectors-create-api-mq/Send_Msg_Output.png)
+   ![Ileti çıkışı gönder](media/connectors-create-api-mq/Send_Msg_Output.png)
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Eylemler ve sınırları hakkında teknik ayrıntılar için bağlayıcının Openapı'nin açıklanmıştır (önceki adıyla Swagger) açıklama, bağlayıcının gözden [başvuru sayfası](/connectors/mq/).
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan eylemler ve sınırlar hakkında teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/mq/)gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Diğer hakkında bilgi edinin [Logic Apps bağlayıcıları](../connectors/apis-list.md)
+* Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

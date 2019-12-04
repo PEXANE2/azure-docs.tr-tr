@@ -1,20 +1,19 @@
 ---
-title: Hata ve özel durum işleme-Azure Logic Apps
+title: Hata ve özel durum işleme
 description: Azure Logic Apps hata ve özel durum işleme desenleri hakkında bilgi edinin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208180"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792074"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps hataları ve özel durumları işleme
 
@@ -28,12 +27,12 @@ En temel özel durum ve hata işleme için, desteklenen yerlerde her türlü eyl
 
 Yeniden deneme ilkesi türleri şunlardır: 
 
-| Type | Açıklama | 
+| Tür | Açıklama | 
 |------|-------------| 
 | **Varsayılan** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . | 
 | **Üstel Aralık**  | Bu ilke, sonraki isteği göndermeden önce üstel olarak büyüyen bir aralıktan seçilen rastgele aralığı bekler. | 
 | **Sabit Aralık**  | Bu ilke, sonraki isteği göndermeden önce belirtilen aralığı bekler. | 
-| **Yok.**  | İsteği yeniden gönderin. | 
+| **Seçim**  | İsteği yeniden gönderin. | 
 ||| 
 
 Yeniden deneme ilkesi limitleri hakkında bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -70,19 +69,19 @@ Ya da yeniden deneme ilkelerini destekleyen bir eylem veya tetikleyici için `in
 
 *Gerekli*
 
-| Value | Type | Açıklama |
+| Değer | Tür | Açıklama |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default`, `none`, `fixed`veya`exponential` | 
-| <*retry-interval*> | String | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek `PT1D`Aralık. Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. | 
-| <*retry-attempts*> | Integer | 1 ile 90 arasında olması gereken yeniden deneme girişimi sayısı | 
+| <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default`, `none`, `fixed`veya `exponential` | 
+| <*yeniden deneme-aralık*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D`. Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. | 
+| <*yeniden deneme-deneme*> | Tamsayı | 1 ile 90 arasında olması gereken yeniden deneme girişimi sayısı | 
 ||||
 
 *Seçim*
 
-| Value | Type | Açıklama |
+| Değer | Tür | Açıklama |
 |-------|------|-------------|
-| <*minimum-interval*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık | 
-| <*maximum-interval*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık | 
+| <*Minimum aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık | 
+| *maksimum <aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık | 
 |||| 
 
 Farklı ilke türleri hakkında daha fazla bilgi aşağıda verilmiştir.
@@ -113,13 +112,13 @@ Eylemde veya tetikleyicide açıkça tanımlanmamışsa, örnek bir HTTP eylemin
 }
 ```
 
-### <a name="none"></a>Yok.
+### <a name="none"></a>Hiçbiri
 
-Eylem veya tetikleyicinin başarısız istekleri yeniden denemediğini belirtmek için <*retry-Policy-type*> olarak `none`ayarlayın.
+Eylem veya tetikleyicinin başarısız istekleri yeniden denemediğini belirtmek için <*retry-Policy-type*> `none`olarak ayarlayın.
 
 ### <a name="fixed-interval"></a>Sabit Aralık
 
-Bir sonraki isteği göndermeden önce eylemin veya tetikleyicinin belirtilen aralığı bekleyeceğini belirtmek için, <*retry-Policy-type*> olarak `fixed`ayarlayın.
+Bir sonraki isteği göndermeden önce eylemin veya tetikleyicinin belirtilen aralığı bekleyeceğini belirtmek için, <*retry-Policy-type*> `fixed`olarak ayarlayın.
 
 *Örnek*
 
@@ -144,7 +143,7 @@ Bu yeniden deneme ilkesi, her bir girişim arasında 30 saniyelik bir gecikmeyle
 
 ### <a name="exponential-interval"></a>Üstel Aralık
 
-Bir sonraki isteği göndermeden önce eylemin veya tetikleyicinin rastgele bir Aralık bekleyeceğini belirtmek için, <*retry-Policy-type*> olarak `exponential`ayarlayın. Rastgele Aralık, üstel olarak büyüyen bir aralıktan seçilir. İsteğe bağlı olarak, varsayılan en düşük ve en büyük aralıklarını, en az ve en fazla aralıklarını belirterek de geçersiz kılabilirsiniz.
+Bir sonraki isteği göndermeden önce eylemin veya tetikleyicinin rastgele bir Aralık bekleyeceğini belirtmek için, <*retry-Policy-type*> `exponential`olarak ayarlayın. Rastgele Aralık, üstel olarak büyüyen bir aralıktan seçilir. İsteğe bağlı olarak, varsayılan en düşük ve en büyük aralıklarını, en az ve en fazla aralıklarını belirterek de geçersiz kılabilirsiniz.
 
 **Rastgele değişken aralıkları**
 
@@ -152,7 +151,7 @@ Bu tabloda, Logic Apps her bir yeniden deneme için belirtilen aralıkta bulunan
 
 | Yeniden deneme numarası | Minimum Aralık | Maksimum Aralık |
 |--------------|------------------|------------------|
-| 1\. | en fazla (0, <*Minimum aralık*>) | Min (Interval, <*maksimum aralık*>) |
+| 1 | en fazla (0, <*Minimum aralık*>) | Min (Interval, <*maksimum aralık*>) |
 | 2 | maksimum (Aralık, <*Minimum aralık*>) | Min (2 * Aralık, <*maksimum aralık*>) |
 | 3 | en fazla (2 * Aralık, <*Minimum aralık*>) | Min (4 * Aralık, <*maksimum aralık*>) |
 | 4 | Max (4 * Aralık, <*Minimum aralık*>) | Min (8 * Aralık, <*maksimum aralık*>) |
@@ -163,7 +162,7 @@ Bu tabloda, Logic Apps her bir yeniden deneme için belirtilen aralıkta bulunan
 
 Her mantıksal uygulama eylemi, bu eylem başlamadan önce tamamlaması gereken eylemleri bildirir ve iş akışınızdaki adımların sırasını nasıl belirttiğine benzer. Bir eylem tanımında, **Runafter** özelliği bu sıralamayı tanımlar ve eylemi hangi eylemlerin ve eylem durumlarının yürütebileceğini açıklayan bir nesnedir.
 
-Varsayılan olarak, mantıksal uygulama tasarımcısında eklediğiniz tüm eylemler, önceki adımın sonucu **başarılı**olduğunda önceki adımdan sonra çalıştırılacak şekilde ayarlanır. Ancak, **Runafter** değerini özelleştirmek için, önceki eylemler neden **başarısız**, **atlandı**veya bu değerlerin bir birleşimi olduğunda eylemlerin tetiklenmesi gerekir. Örneğin, belirli bir **Insert_Row** eylemi başarısız olduktan sonra belirli bir Service Bus konusuna bir öğe eklemek için, bu örnek şu şekilde çalışma açıklamasını kullanabilirsiniz:
+Varsayılan olarak, mantıksal uygulama tasarımcısında eklediğiniz tüm eylemler, önceki adımın sonucu **başarılı**olduğunda önceki adımdan sonra çalıştırılacak şekilde ayarlanır. Ancak, **Runafter** değerini özelleştirmek için, önceki eylemler neden **başarısız**, **atlandı**veya bu değerlerin bir birleşimi olduğunda eylemlerin tetiklenmesi gerekir. Örneğin, belirli bir **Insert_Row** eylemi başarısız olduktan sonra belirli bir Service Bus konusuna bir öğe eklemek için, **Bu örnek şu** şekilde çalışma açıklamasını kullanabilirsiniz:
 
 ```json
 "Send_message": {
@@ -191,7 +190,7 @@ Varsayılan olarak, mantıksal uygulama tasarımcısında eklediğiniz tüm eyle
 }
 ```
 
-**Insert_Row** eylem durumu **başarısız**olduğunda **runafter** özelliği çalıştırılacak şekilde ayarlanır. Eylem durumu **başarılı**, **başarısız**veya atlandıysa eylemi çalıştırmak için şu sözdizimini kullanın:
+**Runafter** özelliği **Insert_Row** eylem durumu **başarısız**olduğunda çalıştırılacak şekilde ayarlanır. Eylem durumu **başarılı**, **başarısız**veya **atlandıysa**eylemi çalıştırmak için şu sözdizimini kullanın:
 
 ```json
 "runAfter": {
@@ -224,11 +223,11 @@ Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-a
 
 Bir kapsamdan hata yakalama yararlı olsa da, bağlamı tam olarak hangi eylemlerin başarısız olduğunu ve döndürülen hataları veya durum kodlarını anlamanıza yardımcı olmak isteyebilirsiniz.
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) İşlevi, bir kapsamdaki tüm eylemlerin sonuçları hakkında bağlam sağlar. `result()` İşlevi, kapsamın adı olan tek bir parametreyi kabul eder ve bu kapsam içindeki tüm eylem sonuçlarını içeren bir dizi döndürür. Bu eylem nesneleri, `@actions()` nesnenin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi nesneyle aynı öznitelikleri içerir. Kapsam içinde başarısız olan herhangi bir eylemin bağlamını göndermek için, `@result()` `runAfter` özelliği ile kolayca bir ifadeyi eşleştirin.
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) işlevi, bir kapsamdaki tüm eylemlerin sonuçları hakkında bağlam sağlar. `result()` işlevi, kapsamın adı olan tek bir parametreyi kabul eder ve bu kapsam içindeki tüm eylem sonuçlarını içeren bir dizi döndürür. Bu eylem nesneleri, eylemin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi `@actions()` nesneyle aynı öznitelikleri içerir. Kapsam içinde başarısız olan herhangi bir eylemin bağlamını göndermek için, `runAfter` özelliği ile `@result()` bir ifadeyi kolayca eşleştirin.
 
-**Başarısız** olan bir kapsamda her eylem için bir eylem çalıştırmak ve sonuçların dizisini başarısız eylemlere göre filtrelemek için, bir `@result()` ifadeyi bir [**filtre dizisi**](../connectors/connectors-native-query.md) eylemiyle ve [**her döngü için**](../logic-apps/logic-apps-control-flow-loops.md) bir ile eşleştirin. Her bir döngü **için** kullanarak filtrelenmiş sonuç dizisini alabilir ve her hata için bir eylem gerçekleştirebilirsiniz.
+**Başarısız** olan bir kapsamda her eylem için bir eylem çalıştırmak ve sonuçların dizisini başarısız eylemlere göre filtrelemek için bir `@result()` Ifadesini bir [**filtre dizisi**](../connectors/connectors-native-query.md) eylemiyle ve [**her döngü için**](../logic-apps/logic-apps-control-flow-loops.md) bir ile eşleştirin. Her bir döngü **için** kullanarak filtrelenmiş sonuç dizisini alabilir ve her hata için bir eylem gerçekleştirebilirsiniz.
 
-Aşağıda, "My_Scope" kapsamında başarısız olan herhangi bir eylem için yanıt gövdesi ile bir HTTP POST isteği gönderen ayrıntılı bir açıklama verilmiştir.
+Aşağıda, "My_Scope" kapsamında başarısız olan herhangi bir eylem için yanıt gövdesi ile bir HTTP POST isteği gönderen ayrıntılı bir açıklama tarafından izlenen bir örnek verilmiştir:
 
 ```json
 "Filter_array": {
@@ -271,22 +270,22 @@ Aşağıda, "My_Scope" kapsamında başarısız olan herhangi bir eylem için ya
 
 Bu örnekte neler olduğunu açıklayan ayrıntılı bir anlatım aşağıda verilmiştir:
 
-1. "My_Scope" içindeki tüm eylemlerin sonucunu almak için, **diziyi filtrele** eylemi bu filtre ifadesini kullanır:`@result('My_Scope')`
+1. "My_Scope" içindeki tüm eylemlerin sonucunu almak için, **diziyi filtrele** eylemi şu filtre ifadesini kullanır: `@result('My_Scope')`
 
-2. **Filtre dizisi** koşulu, durumu **başarısız**olan `@result()` herhangi bir öğedir. Bu koşul, "My_Scope" olan tüm eylem sonuçlarına sahip diziyi yalnızca başarısız eylem sonuçlarıyla bir diziye filtreler.
+2. **Filtre dizisinin** koşulu, durumu **başarısız**olan herhangi bir `@result()` öğesidir. Bu koşul, "My_Scope" olan tüm eylem sonuçlarına sahip diziyi yalnızca başarısız eylem sonuçlarıyla bir diziye filtreler.
 
 3. *Filtrelenen dizi* çıktılarında her döngü eylemi **için** bir gerçekleştirin. Bu adım, daha önce filtrelenen her başarısız eylem sonucu için bir eylem gerçekleştirir.
 
    Kapsamda tek bir eylem başarısız olduysa, **her** bir döngüdeki eylemler yalnızca bir kez çalışır. 
    Birden çok başarısız eylem hata başına bir eyleme neden olur.
 
-4. `@item()['outputs']['body']` İfadesi olan her öğe yanıt gövdesi **için** bir http gönderisi gönderin. 
+4. `@item()['outputs']['body']` ifadesi olan her öğe yanıt gövdesi **için** BIR http gönderisi gönderin. 
 
-   Öğe şekli `@actions()` şekille aynıdır ve aynı şekilde ayrıştırılabilir. `@result()`
+   `@result()` öğe şekli `@actions()` şekliyle aynıdır ve aynı şekilde ayrıştırılabilir.
 
-5. Başarısız eylem adı (`@item()['name']`) ve başarısız çalıştırma istemci izleme kimliği (`@item()['clientTrackingId']`) ile iki özel üst bilgi ekleyin.
+5. Başarısız eylem adı (`@item()['name']`) ve başarısız çalıştırma istemci izleme KIMLIĞI (`@item()['clientTrackingId']`) ile iki özel üst bilgi ekleyin.
 
-Başvuru için, önceki örnekte ayrıştırılmış **ad**, **gövde**ve `@result()` **clienttrackingıd** özelliklerini gösteren tek bir öğe örneği aşağıda verilmiştir. **Her** bir eylemin dışında, `@result()` bu nesnelerin bir dizisini döndürür.
+Başvuru için, bir önceki örnekte ayrıştırılmış **ad**, **gövde**ve **clienttrackingıd** özelliklerini gösteren tek bir `@result()` öğesine bir örnek aşağıda verilmiştir. **Her** bir eylemin dışında, `@result()` bu nesnelerin bir dizisini döndürür.
 
 ```json
 {
@@ -318,7 +317,7 @@ Başvuru için, önceki örnekte ayrıştırılmış **ad**, **gövde**ve `@resu
 }
 ```
 
-Farklı özel durum işleme desenleri gerçekleştirmek için, bu makalede daha önce açıklanan ifadeleri kullanabilirsiniz. Tüm filtrelenmiş hata dizisini kabul eden kapsam dışında tek bir özel durum işleme eylemini çalıştırmayı ve **her eylem için** öğesini kaldırmayı tercih edebilirsiniz. Daha önce açıklandığı gibi  **\@Result ()** yanıtından diğer yararlı özellikleri de ekleyebilirsiniz.
+Farklı özel durum işleme desenleri gerçekleştirmek için, bu makalede daha önce açıklanan ifadeleri kullanabilirsiniz. Tüm filtrelenmiş hata dizisini kabul eden kapsam dışında tek bir özel durum işleme eylemini çalıştırmayı ve **her eylem için** öğesini kaldırmayı tercih edebilirsiniz. Daha önce açıklanan **\@Result ()** yanıtından diğer yararlı özellikleri de ekleyebilirsiniz.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure Tanılama ve ölçümler
 

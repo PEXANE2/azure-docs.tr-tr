@@ -1,26 +1,25 @@
 ---
-title: BizTalk Services uygulamalarını Azure Logic Apps taşıyın | Microsoft Docs
+title: BizTalk Services uygulamalarını Azure Logic Apps taşıyın
 description: Azure BizTalk Services 'den (MABS) Azure Logic Apps 'ye geçiş
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jonfancey
 ms.author: jonfan
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273194"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791880"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services 'den Azure Logic Apps geçir
 
 Microsoft Azure BizTalk Services (MABS) devre dışı bırakılıyor. MABS tümleştirme çözümlerinizi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)taşımak için bu makaledeki yönergeleri izleyin. 
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 BizTalk Services iki alt hizmetten oluşur:
 
@@ -36,7 +35,7 @@ Bu tablo, Logic Apps BizTalk Services yeteneklerini eşler.
 | BizTalk Services   | Logic Apps            | Amaç                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Bağlayıcı          | Bağlayıcı             | Veri gönderme ve alma   |
-| Bridge             | Logic App             | Ardışık düzen işlemcisi           |
+| Bridge             | Mantıksal Uygulama             | Ardışık düzen işlemcisi           |
 | Aşamayı doğrula     | XML doğrulama eylemi | Bir XML belgesini bir şemaya göre doğrulama | 
 | Zenginleştirme aşaması       | Veri belirteçleri           | Özellikleri iletilere veya yönlendirme kararlarına yükseltme |
 | Dönüşüm aşaması    | Dönüştürme eylemi      | XML iletilerini bir biçimden diğerine dönüştürme |
@@ -100,7 +99,7 @@ Logic Apps, [koşullu deyimler](../logic-apps/logic-apps-control-flow-conditiona
 
 ### <a name="enrich"></a>Zenginleştirin
 
-BizTalk Services işleme içinde, zenginleştirme aşamasında, alınan verilerle ilişkili ileti bağlamına özellikler eklenir. Örneğin, bir veritabanı aramadan yönlendirme için kullanılacak bir özelliği yükseltme veya bir XPath ifadesi kullanarak bir değeri ayıklama. Logic Apps, önceki eylemlerden tüm bağlamsal veri çıktılarına erişim sağlar ve bu sayede aynı davranışın çoğaltılmasını basit hale getirir. Örneğin, `Get Row` SQL bağlantı eylemini kullanarak bir SQL Server veritabanından veri döndürür ve verileri yönlendirme için bir karar eylemi içinde kullanırsınız. Benzer şekilde, bir tetikleyiciden gelen Service Bus sıraya alınan iletilerin özellikleri, XPath iş akışı tanımlama dili ifadesi kullanılarak XPath olarak da adreslenebilir.
+BizTalk Services işleme içinde, zenginleştirme aşamasında, alınan verilerle ilişkili ileti bağlamına özellikler eklenir. Örneğin, bir veritabanı aramadan yönlendirme için kullanılacak bir özelliği yükseltme veya bir XPath ifadesi kullanarak bir değeri ayıklama. Logic Apps, önceki eylemlerden tüm bağlamsal veri çıktılarına erişim sağlar ve bu sayede aynı davranışın çoğaltılmasını basit hale getirir. Örneğin, `Get Row` SQL bağlantı eylemini kullanarak, verileri bir SQL Server veritabanından döndürür ve verileri yönlendirme için bir karar eyleminde kullanırsınız. Benzer şekilde, bir tetikleyiciden gelen Service Bus sıraya alınan iletilerin özellikleri, XPath iş akışı tanımlama dili ifadesi kullanılarak XPath olarak da adreslenebilir.
 
 ### <a name="run-custom-code"></a>Özel kod Çalıştır
 

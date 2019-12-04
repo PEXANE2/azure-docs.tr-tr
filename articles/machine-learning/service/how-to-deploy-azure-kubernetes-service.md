@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 8e4cc65ceb6e2a4f8093a094617cc7bb4f9e0c26
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 70fe64ac0d2c1211c1b6570a78746e080ba132ed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482705"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793410"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
 **Tahmini süre**: yaklaşık 20 dakika.
 
-AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeye birden çok dağıtımlar için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
+AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeyi birden çok dağıtım için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
 
 > [!TIP]
 > Azure sanal ağını kullanarak AKS kümenizi güvenli hale getirmek istiyorsanız, önce sanal ağı oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure sanal ağ Ile güvenli deneme ve çıkarım](how-to-enable-virtual-network.md#aksvnet).
@@ -92,7 +92,7 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)için, `agent_count` ve `vm_size`için özel değerler seçerseniz ve `cluster_purpose` `DEV_TEST`değilse, `agent_count` çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir.`vm_size` Örneğin, 4 sanal CPU içeren bir `vm_size` "Standard_D3_v2" kullanırsanız, 3 veya daha büyük bir `agent_count` seçmeniz gerekir.
+> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)için, `agent_count` ve `vm_size`için özel değerler seçerseniz ve `cluster_purpose` `DEV_TEST`değilse, `agent_count` çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir. Örneğin, 4 sanal CPU içeren bir `vm_size` "Standard_D3_v2" kullanırsanız, 3 veya daha büyük bir `agent_count` seçmeniz gerekir.
 >
 > Azure Machine Learning SDK, bir AKS kümesini ölçeklendirmeye yönelik destek sağlamaz. Kümedeki düğümleri ölçeklendirmek için Azure Machine Learning Studio 'daki AKS kümeniz için Kullanıcı arabirimini kullanın. Kümenin VM boyutunu değil, yalnızca düğüm sayısını değiştirebilirsiniz.
 
@@ -115,7 +115,7 @@ Daha fazla bilgi için bkz. [az ml computetarget Create ask](https://docs.micros
 
 **Tahmini süre:** Yaklaşık 5 dakika.
 
-Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1,14 ' den düşükse, görüntünüzü dağıtmak için kullanabilirsiniz.
+Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1,15 ' den düşükse, görüntünüzü dağıtmak için kullanabilirsiniz.
 
 > [!TIP]
 > Mevcut AKS kümesi, Azure Machine Learning çalışma alanınızın dışında bir Azure bölgesinde olabilir.
@@ -339,7 +339,7 @@ print(token)
 >
 > Microsoft, Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı kesinlikle önerir. Bir belirteçle kimlik doğrulaması yapmak için Web hizmeti, Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir çağrı yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgedeyse, Web hizmetiniz için de bir belirteç getirimeyeceksiniz. Bu, çalışma alanınızın bölgesi yeniden kullanılabilir olana kadar belirteç tabanlı kimlik doğrulamanın kullanılamamasına neden olur. Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe ne kadar fazlaysa bir belirteci getirmek için bu daha uzun sürer.
 
-## <a name="update-the-web-service"></a>Web hizmetini güncelleştirmek
+## <a name="update-the-web-service"></a>Web hizmetini güncelleştirme
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 

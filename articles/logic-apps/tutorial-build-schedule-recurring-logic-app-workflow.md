@@ -1,22 +1,18 @@
 ---
-title: Zamanlama tabanlı otomatik iş akışları oluşturun-Azure Logic Apps
+title: Zamanlama tabanlı otomatik iş akışları oluşturun
 description: Öğretici-Azure Logic Apps kullanarak zamanlamaya dayalı, yinelenen ve otomatikleştirilmiş iş akışı oluşturma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034684"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790294"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı ve yinelenen iş akışları oluşturma
 
@@ -60,14 +56,14 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | LA-TravelTime | Mantıksal uygulamanızın adı; yalnızca harfler, rakamlar, tireler (`-`), alt çizgiler (`_`), parantezler (`(`, `)`) ve noktalar (`.`) içerebilir. Bu örnekte "LA-Seyahatsaati" kullanılmaktadır. |
+   | **Adı** | LA-TravelTime | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnekte "LA-Seyahatsaati" kullanılmaktadır. |
    | **Abonelik** | <*your-Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | LA-TravelTime-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md)adı. Bu örnek "LA-Seyahattime-RG" kullanır. |
    | **Konum** | Batı ABD | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
 
-1. Azure 'un uygulamanızı dağıtmasından sonra Azure araç çubuğunda **bildirimler** >  dağıtılan mantıksal uygulamanız Için**Kaynağa Git** ' i seçin.
+1. Azure 'un uygulamanızı dağıtmasından sonra, Azure araç çubuğunda **bildirimler** > dağıtılan mantıksal uygulamanız Için **Kaynağa Git** ' i seçin.
 
    ![Yeni mantıksal uygulama kaynağına gidin](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 

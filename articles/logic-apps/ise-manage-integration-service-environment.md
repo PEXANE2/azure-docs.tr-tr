@@ -2,19 +2,16 @@
 title: Azure Logic Apps tümleştirme hizmeti ortamlarını yönetme
 description: Azure Logic Apps için tümleştirme hizmeti ortamınızda (ıSE) ağ durumunu kontrol edin ve Logic Apps, bağlantılar, özel bağlayıcılar ve tümleştirme hesaplarını yönetin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967801"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792626"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınızı (ıSE) yönetme
 
@@ -22,7 +19,7 @@ ms.locfileid: "70967801"
 
 ## <a name="view-your-ise"></a>ISE 'nizi görüntüleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Portalın arama kutusuna "tümleştirme hizmeti ortamları" yazın ve ardından **tümleştirme hizmeti ortamları**' nı seçin.
 
@@ -102,4 +99,4 @@ ISE 'nize dağıttığınız özel bağlayıcıları görüntüleyebilir ve yön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yalıtılmış Logic Apps 'Ten Azure sanal ağlarına](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) nasıl bağlanacağınızı öğrenin
+* [Yalıtılmış Logic Apps 'Ten Azure sanal ağlarına nasıl bağlanacağınızı](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) öğrenin

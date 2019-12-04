@@ -1,20 +1,19 @@
 ---
-title: Durumu denetleme, günlüğü ayarlama ve uyarıları alma-Azure Logic Apps
+title: Durumu denetleme, günlüğü ayarlama ve uyarı alma
 description: Durumu izleyin, tanılama verilerini günlüğe kaydedin ve Azure Logic Apps uyarılarını ayarlayın
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680291"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791923"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Durumu izleyin, tanılama günlüğünü ayarlayın ve Azure Logic Apps uyarılarını açın
 
@@ -85,7 +84,7 @@ Başlamadan önce bir Log Analytics çalışma alanına sahip olmanız gerekir. 
 
 3. **Tanılama ayarları**altında **Açık**' ı seçin.
 
-   ![tanılama günlüklerini aç](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![Tanılama günlüklerini aç](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Şimdi Log Analytics çalışma alanını ve günlüğe kaydetme için olay kategorisini gösterildiği gibi seçin:
 
@@ -136,7 +135,7 @@ Filtre ekleyerek sorgunuzu iyileştirmek için **+ Ekle**' yi seçin.
 6. Filtre **Ekle**' nin altında, istediğiniz filtreyi bulmak için filtre adını girin. Filtreyi seçin ve **+ Ekle**' yi seçin.
 
    Bu örnek, **AzureDiagnostics**altındaki başarısız olayları bulmak için "Status" sözcüğünü kullanır.
-   Burada **status_s** filtresi zaten seçilidir.
+   **Status_s** filtresi zaten seçilidir.
 
    ![Filtre Seç](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
@@ -179,7 +178,7 @@ Mantıksal uygulamanıza yönelik belirli ölçümleri izlemek veya eşikleri a�
 
 Uyarıları [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md)olmadan ayarlamak için aşağıdaki adımları izleyin. Daha gelişmiş uyarılar ölçütü ve eylemleri için [Azure izleyici günlüklerini de ayarlayın](#azure-diagnostics) .
 
-1. Mantıksal uygulama dikey penceresi menüsünde, **izleme**altında **tanılama**  > **Uyarı  >  kuralları** ' nı seçin ve burada gösterildiği gibi**uyarı ekleyin** :
+1. Mantıksal uygulama dikey penceresi menüsünde, **izleme**altında **tanılama** > **Uyarı > kuralları** ' nı seçin ve burada gösterildiği gibi **uyarı ekleyin** :
 
    ![Mantıksal uygulamanız için bir uyarı ekleyin](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 

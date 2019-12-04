@@ -1,21 +1,17 @@
 ---
-title: Azure Logic Apps için REST API 'Leri & Web API 'Leri oluşturun | Microsoft Docs
+title: Azure Logic Apps için REST API 'Leri & Web API 'Leri oluşturma
 description: API 'leri, hizmetlerinizi veya sistemlerinizi Azure Logic Apps içindeki Sistem tümleştirmeleri için çağırmak üzere Web API 'leri & REST API 'leri oluşturun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d73f40c77c1b73a52522eafdb3c093b691d3e14
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583465"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793216"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -176,7 +172,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 | İstek `triggerState`içeriyor mu? | API yanıtı | 
 | -------------------------------- | -------------| 
 | Hayır | `triggerState` geçerli saate ve `retry-after` aralığına 15 saniyeye ayarlanmış olan bir HTTP `202 ACCEPTED` durumu ve `location` üst bilgisi döndürün. | 
-| Evet | `triggerState`için `DateTime` sonra eklenen dosyalar için hizmetinizi denetleyin. | 
+| Yes | `triggerState`için `DateTime` sonra eklenen dosyalar için hizmetinizi denetleyin. | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 

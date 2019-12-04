@@ -1,19 +1,19 @@
 ---
-title: MySQL için Azure veritabanı 'nda güvenlik-tek sunucu
-description: MySQL için Azure veritabanı 'nın güvenlik özelliklerine genel bakış-tek sunucu.
+title: Güvenlik-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanı 'ndaki güvenlik özelliklerine genel bakış.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 06f895d2e8cd7936141c9f35c5ed0c81fb7e3e15
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485061"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764976"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda güvenlik-tek sunucu
+# <a name="security-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda güvenlik
 
 MySQL için Azure veritabanı sunucunuzdaki verileri korumak için kullanılabilen birden çok güvenlik katmanı vardır. Bu makalede bu güvenlik seçenekleri özetlenmektedir.
 

@@ -1,18 +1,18 @@
 ---
-title: Azure CLı kullanarak MySQL için Azure veritabanı 'nda yavaş sorgu günlüklerine erişin
+title: Yavaş sorgu günlüklerine erişme-Azure CLı-MySQL için Azure veritabanı
 description: Bu makalede, Azure CLı kullanarak MySQL için Azure veritabanı 'ndaki yavaş sorgu günlüklerine nasıl erişebileceğiniz açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 0ab4162d11642ec7df53040bd744711002227497
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 12/02/2019
+ms.openlocfilehash: 44c35d6e997b4a9a6d3dfcf3e7eba5328b125fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030626"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770603"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLı kullanarak yavaş sorgu günlüklerini yapılandırma ve erişme
 Azure komut satırı yardımcı programı olan Azure CLı 'yı kullanarak MySQL için Azure veritabanı yavaş sorgu günlüklerini indirebilirsiniz.

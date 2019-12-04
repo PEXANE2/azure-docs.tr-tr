@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda döküm ve geri yükleme kullanarak MySQL veritabanınızı geçirme
+title: Döküm ve geri yükleme kullanarak geçirme-MySQL için Azure veritabanı
 description: Bu makalede, mysqldump, MySQL II ve PHPMyAdmin gibi araçları kullanarak MySQL için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: a2a879ed677b981adcd50aea0468e0c5976c2a8a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390538"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770943"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL veritabanınızı, döküm ve geri yükleme kullanarak MySQL için Azure veritabanı 'na geçirme
 Bu makalede, MySQL için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır
@@ -32,24 +32,24 @@ Birçok yaygın senaryoda veritabanlarını bir Azure MySQL veritabanına dökme
 
 - Tüm veritabanını geçirirken veritabanı dökümlerini kullanın. Bu öneri, büyük miktarda MySQL verisi taşırken veya canlı siteler veya uygulamalar için hizmet kesintisini en aza indirmek istediğinizde geçerlidir. 
 -  MySQL için Azure Veritabanı'na veri yüklerken veritabanındaki tüm tabloların InnoDB depolama altyapısını kullandığından emin olun. MySQL için Azure veritabanı yalnızca InnoDB depolama altyapısını destekler ve bu nedenle alternatif depolama altyapılarını desteklemez. Tablolarınız diğer depolama altyapılarıyla yapılandırıldıysa, MySQL için Azure veritabanı 'na geçişten önce bunları InnoDB Engine biçimine dönüştürün.
-   Örneğin, MyISAM tablolarını kullanarak bir WordPress veya WebApp varsa, önce MySQL için Azure veritabanı 'na geri yüklemeden önce bu tabloları InnoDB biçimine geçirerek dönüştürün. Yeni bir tablo `ENGINE=InnoDB` oluştururken kullanılan altyapıyı ayarlamak için yan tümcesini kullanın, ardından geri yüklemeden önce verileri uyumlu tabloya aktarın. 
+   Örneğin, MyISAM tablolarını kullanarak bir WordPress veya WebApp varsa, önce MySQL için Azure veritabanı 'na geri yüklemeden önce bu tabloları InnoDB biçimine geçirerek dönüştürün. Yeni bir tablo oluştururken kullanılan altyapıyı ayarlamak için `ENGINE=InnoDB` yan tümcesini kullanın, ardından geri yüklemeden önce verileri uyumlu tabloya aktarın. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- Uyumluluk sorunlarından kaçınmak için veritabanlarının dökümünü alırken kaynak ve hedef sistemlerde aynı MySQL sürümünün bulunduğundan emin olun. Örneğin, var olan MySQL sunucunuz sürüm 5,7 ise, sürüm 5,7 ' yi çalıştırmak için yapılandırılmış MySQL için Azure veritabanı 'na geçiş yapmanız gerekir. `mysql_upgrade` Komut, MySQL için Azure veritabanı sunucusunda çalışmaz ve desteklenmez. MySQL sürümleri arasında yükseltmeniz gerekiyorsa, ilk olarak kendi ortamınızda daha yüksek bir MySQL sürümüne daha düşük sürüm dökümünü alın veya dışarı aktarın. Ardından, `mysql_upgrade`MySQL için Azure veritabanı 'na geçişi denemeden önce çalıştırın.
+- Uyumluluk sorunlarından kaçınmak için veritabanlarının dökümünü alırken kaynak ve hedef sistemlerde aynı MySQL sürümünün bulunduğundan emin olun. Örneğin, var olan MySQL sunucunuz sürüm 5,7 ise, sürüm 5,7 ' yi çalıştırmak için yapılandırılmış MySQL için Azure veritabanı 'na geçiş yapmanız gerekir. `mysql_upgrade` komutu MySQL için Azure veritabanı sunucusunda çalışmaz ve desteklenmez. MySQL sürümleri arasında yükseltmeniz gerekiyorsa, ilk olarak kendi ortamınızda daha yüksek bir MySQL sürümüne daha düşük sürüm dökümünü alın veya dışarı aktarın. Ardından, MySQL için Azure veritabanı 'na geçişi denemeden önce `mysql_upgrade`çalıştırın.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 Performansı iyileştirmek için, büyük veritabanlarının dökümünü yaparken aşağıdaki noktalara dikkat edin:
--   Veritabanları dökümünü alırken mysqldump içindeki seçeneğinikullanın.`exclude-triggers` Veri geri yükleme sırasında tetikleyici komutlarının tetiklemesini önlemek için Tetikleyicileri döküm dosyalarından hariç tutun. 
--   Veri dökümünü yapmadan, işlem yalıtım modunu yinelenebilir okuma olarak ayarlama ve sunucuya bir başlangıç işlemi SQL açıklaması gönderme seçeneğinikullanın.`single-transaction` Tek bir işlem içindeki birçok tablo dökümünü almak, bazı ek depolamanın geri yükleme sırasında tüketilmesine neden olur. Kilitleme `single-transaction` tabloları bekleyen işlemlerin `lock-tables` örtük olarak kaydedilmesine neden olduğundan, seçeneği ve seçeneği birbirini dışlıyor. Büyük tabloların dökümünü yapmak için `single-transaction` seçeneğini `quick` seçeneğiyle birleştirin. 
--   Çeşitli değer listeleri içeren birdençoksatırlıksözdiziminikullanın.`extended-insert` Bu, daha küçük bir döküm dosyası ile sonuçlanır ve dosya yeniden yüklendiğinde daha fazla hızlanır.
--  Verileri birincil anahtar sırasıyla betikleştirilmiş hale getirmek için veritabanları dökümünü yaparken mysqldump içindeki seçeneğinikullanın.`order-by-primary`
--   Verileri dökümünde, yüklemeden önce yabancı anahtar kısıtlamalarını devre dışı bırakmak için mysqldump içindeki seçeneğinikullanın.`disable-keys` Yabancı anahtar denetimlerini devre dışı bırakmak, performans artışı sağlar. Kısıtlamaları etkinleştirin ve bilgi tutarlılığı sağlamak için yüklemeden sonra verileri doğrulayın.
+-   Veritabanları dökümünü yaparken mysqldump içindeki `exclude-triggers` seçeneğini kullanın. Veri geri yükleme sırasında tetikleyici komutlarının tetiklemesini önlemek için Tetikleyicileri döküm dosyalarından hariç tutun. 
+-   İşlem yalıtım modunu YINELENEBILIR okuma olarak ayarlamak ve veri dökümünü yapmadan sunucuya bir başlangıç IŞLEMI SQL açıklaması göndermesi için `single-transaction` seçeneğini kullanın. Tek bir işlem içindeki birçok tablo dökümünü almak, bazı ek depolamanın geri yükleme sırasında tüketilmesine neden olur. KILIT TABLOLARı, bekleyen işlemlerin örtük olarak kaydedilmesine neden olduğundan, `single-transaction` seçeneği ve `lock-tables` seçeneği birbirini dışlıyor. Büyük tabloların dökümünü yapmak için `single-transaction` seçeneğini `quick` seçeneğiyle birleştirin. 
+-   Birkaç değer listesi içeren `extended-insert` birden çok satırlık sözdizimini kullanın. Bu, daha küçük bir döküm dosyası ile sonuçlanır ve dosya yeniden yüklendiğinde daha fazla hızlanır.
+-  Veritabanları dökümünü yaparken mysqldump içindeki `order-by-primary` seçeneğini kullanın, böylece veriler birincil anahtar sırasıyla betikleştirilmiş olur.
+-   Yükleme işleminden önce yabancı anahtar kısıtlamalarını devre dışı bırakmak için verileri dökümünde mysqldump içindeki `disable-keys` seçeneğini kullanın. Yabancı anahtar denetimlerini devre dışı bırakmak, performans artışı sağlar. Kısıtlamaları etkinleştirin ve bilgi tutarlılığı sağlamak için yüklemeden sonra verileri doğrulayın.
 -   Uygun olduğunda bölümlenmiş tabloları kullanın.
 -   Verileri paralel olarak yükleyin. Kaynak sınırına ulaşmanıza ve Azure portal bulunan ölçümleri kullanarak kaynakları izlemenize neden olacak çok fazla paralellik yapmaktan kaçının. 
--   Tablo verileri yüklendikten sonra Dizin oluşturma işleminin gerçekleşmemesi için, veritabanları dökümünü alırken mysqlpump içindeki seçeneğinikullanın.`defer-table-indexes`
--   Görünümler ve saklı yordamlar için oluşturma deyimlerinden definer ve SQL SECURITY yan tümcelerini atlamak için mysqlpump içindeki seçeneğinikullanın.`skip-definer`  Döküm dosyasını yeniden yüklediğinizde, varsayılan DEFINER ve SQL GÜVENLIK değerlerini kullanan nesneler oluşturulur.
+-   Tablolar verileri yüklendikten sonra Dizin oluşturma işleminin gerçekleşmemesi için mysqlpump içindeki `defer-table-indexes` seçeneğini kullanın.
+-   Görünümler ve saklı yordamlar için oluşturma deyimlerinden definer ve SQL SECURITY yan tümcelerini atlamak için mysqlpump içindeki `skip-definer` seçeneğini kullanın.  Döküm dosyasını yeniden yüklediğinizde, varsayılan DEFINER ve SQL GÜVENLIK değerlerini kullanan nesneler oluşturulur.
 -   Yedekleme dosyalarını bir Azure Blob 'una/deposuna kopyalayın ve geri yükleme işlemini Internet 'te gerçekleştirmekten daha hızlı bir şekilde gerçekleştirin.
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Mysqldump kullanarak komut satırından bir yedekleme dosyası oluşturma
@@ -65,7 +65,7 @@ Sağlanacak parametreler şunlardır:
 - [BackupFile. SQL] veritabanı yedeklemenizin dosya adı 
 - [--opt] Mysqldump seçeneği 
 
-Örneğin, MySQL sunucunuzdaki ' TestDB ' adlı bir veritabanını ' testuser ' Kullanıcı adı ile ve testdb_backup. SQL dosyasına parolasız yedeklemek için aşağıdaki komutu kullanın. Komutu, veritabanını yeniden oluşturmak `testdb` için gereken tüm SQL deyimlerini `testdb_backup.sql`içeren adlı bir dosyaya veritabanını yedekler. 
+Örneğin, MySQL sunucunuzdaki ' TestDB ' adlı bir veritabanını ' testuser ' Kullanıcı adı ile ve testdb_backup. SQL dosyasına parolasız yedeklemek için aşağıdaki komutu kullanın. Komutu, veritabanını yeniden oluşturmak için gereken tüm SQL deyimlerini içeren `testdb` veritabanını `testdb_backup.sql`adlı bir dosyaya yedekler. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql

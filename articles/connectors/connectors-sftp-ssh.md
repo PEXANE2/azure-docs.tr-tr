@@ -1,25 +1,23 @@
 ---
-title: SFTP sunucusuna SSH ile bağlanma-Azure Logic Apps
+title: SSH ile SFTP sunucusuna bağlanma
 description: SSH ve Azure Logic Apps kullanarak bir SFTP sunucusu için dosya izleme, oluşturma, yönetme, gönderme ve alma görevlerini otomatikleştirin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837145"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786902"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
-[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanarak [güvenli bir Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosyaları izleyen, oluşturan, gönderen ve alan görevleri otomatik hale getirmek için Azure Logic Apps ve SFTP-SSH kullanarak tümleştirme iş akışları oluşturabilir ve otomatikleştirebilirsiniz Bağlayıcısı. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür. Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
+[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanarak [güvenli bir Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosyaları izleyen, oluşturan, gönderen ve alan görevleri otomatik hale getirmek için Azure Logic Apps ve SFTP-SSH bağlayıcısını kullanarak tümleştirme iş akışları oluşturabilir ve otomatikleştirebilirsiniz. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür. Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
 
 * Dosya eklendiğinde veya değiştirildiğinde izleyin.
 * Dosyaları alın, oluşturun, kopyalayın, yeniden adlandırın, güncelleştirin, listeleyin ve silin.
@@ -59,7 +57,7 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * SFTP sunucusu bağlantısını, performansı artıran ve sunucuya bağlanma girişimlerinin sayısını azaltan *1 saate kadar*önbelleğe alır. Bu önbelleğe alma davranışının süresini ayarlamak için SFTP sunucunuzdaki SSH yapılandırmasındaki [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) özelliğini düzenleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -110,7 +108,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Örneğin:
+   Örnek:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 

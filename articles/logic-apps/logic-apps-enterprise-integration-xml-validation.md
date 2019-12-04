@@ -1,20 +1,19 @@
 ---
-title: B2B kurumsal tümleştirme için XML 'yi doğrulama-Azure Logic Apps
+title: B2B kurumsal tümleştirme için XML 'i doğrulama
 description: Enterprise Integration Pack ile Azure Logic Apps şemaları kullanarak XML doğrulama
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 7813dcb375ff4a123b1314f8f9db453b1f0b187e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680218"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792171"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için XML 'i doğrulama
 

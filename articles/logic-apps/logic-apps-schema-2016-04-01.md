@@ -1,21 +1,19 @@
 ---
-title: Şema güncelleştirmeleri Haziran 1-2016-Azure Logic Apps | Microsoft Docs
+title: Şema güncelleştirmeleri Haziran 1-2016
 description: Azure Logic Apps 'de Logic App tanımları için şema sürümü 2016-06-01 güncelleştirildi
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385384"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792881"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps için şema güncelleştirmeleri-1 Haziran 2016
 
@@ -23,7 +21,7 @@ Azure Logic Apps için [güncelleştirilmiş şema](https://schema.management.az
 
 * [Kapsamlar](#scopes) eylemleri bir dizi koleksiyon olarak gruplandırmasına veya yuvadeğiştirmenize olanak sağlar.
 * [Koşullar ve döngüler](#conditions-loops) artık birinci sınıf eylemlerdir.
-* `runAfter` Özelliği ile eylemleri çalıştırmaya yönelik daha kesin sıralama, değiştirme`dependsOn`
+* `runAfter` özelliği ile eylemleri çalıştırmaya yönelik daha kesin sıralama, `dependsOn` değiştirme
 
 Logic Apps 'i 1 Ağustos 2015 Preview şemasından 1 Haziran 2016 şemasına yükseltmek için [Yükseltme bölümüne bakın](#upgrade-your-schema).
 
@@ -87,7 +85,7 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 ## <a name="runafter-property"></a>' runAfter ' özelliği
 
-`runAfter` Özelliği,öncekieylemlerindurumunagöreeylemleriçinÇalıştırmasırasınıbelirttiğinizde`dependsOn`daha fazla duyarlık sağlar. `dependsOn` Özelliği, "eylem çalıştı ve başarılı oldu" olarak, önceki eylemin başarılı, başarısız ya da bu eylemi çalıştırmak istediğiniz kaç kez atlanıp atlanmadığını belirtti. `runAfter` Özelliği, nesnenin çalıştıktan sonra tüm eylem adlarını belirten bir nesne olarak esneklik sağlar. Bu özellik ayrıca tetikleyici olarak kabul edilebilir bir durumlar dizisini tanımlar. Örneğin, eylem başarılı olduktan sonra bir eylemin çalışmasını istiyorsanız ve ayrıca işlem başarılı veya başarısız olduktan sonra, bu `runAfter` özelliği ayarlayın:
+`runAfter` özelliği, önceki eylemlerin durumuna göre eylemler için Çalıştırma sırasını belirttiğinizde daha fazla duyarlık sağlayan `dependsOn`yerini alır. `dependsOn` özelliği, bir önceki eylemin başarılı, başarısız veya Atlanmasının, eylemi çalıştırmak istediğiniz kaç kez denenmediğini temel alarak "eylem çalıştı ve başarılı oldu" olarak belirtilmiştir. `runAfter` özelliği, nesnenin çalıştıktan sonra tüm eylem adlarını belirten bir nesne olarak esneklik sağlar. Bu özellik ayrıca tetikleyici olarak kabul edilebilir bir durumlar dizisini tanımlar. Örneğin, eylem başarılı olduktan sonra bir eylemin çalışmasını istiyorsanız ve ayrıca işlem başarılı veya başarısız olduktan sonra bu `runAfter` özelliğini ayarlayın:
 
 ```json
 {
@@ -129,7 +127,7 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 ### <a name="mapping-conditions"></a>Eşleme koşulları
 
-Yükseltilen tanımda araç, doğru ve yanlış dal eylemlerini bir kapsam olarak gruplandırmada en iyi çabayı yapar. Özellikle tasarımcı deseninin `@equals(actions('a').status, 'Skipped')` bir `else` eylem olarak görünmesi. Ancak araç tanınmayan desenler algılarsa, araç hem true hem de false dalı için ayrı koşullar oluşturabilir. Gerekirse, yükseltmeden sonra eylemleri yeniden eşleyebilirsiniz.
+Yükseltilen tanımda araç, doğru ve yanlış dal eylemlerini bir kapsam olarak gruplandırmada en iyi çabayı yapar. Özellikle, `@equals(actions('a').status, 'Skipped')` tasarımcı deseninin `else` eylem olarak görünmesi. Ancak araç tanınmayan desenler algılarsa, araç hem true hem de false dalı için ayrı koşullar oluşturabilir. Gerekirse, yükseltmeden sonra eylemleri yeniden eşleyebilirsiniz.
 
 #### <a name="foreach-loop-with-condition"></a>Condition ile ' foreach ' döngüsü
 
@@ -143,19 +141,19 @@ Yükseltmeden sonra kaynak etiketleri kaldırılır, bu nedenle bunları yüksel
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>' Manual ' tetikleyicisi ' Request ' tetikleyicisi olarak yeniden adlandırıldı
 
-Tetikleyici türü kullanımdan kaldırılmıştır ve türüyle `http`olarak `request` yeniden adlandırıldı. `manual` Bu değişiklik, tetikleyicinin derlemek için kullanılan model türü için daha fazla tutarlılık oluşturur.
+`manual` tetikleyici türü kullanımdan kaldırılmıştır ve tür `http`ile `request` olarak yeniden adlandırıldı. Bu değişiklik, tetikleyicinin derlemek için kullanılan model türü için daha fazla tutarlılık oluşturur.
 
 ### <a name="new-filter-action"></a>Yeni ' filtre ' eylemi
 
-Büyük bir diziyi daha küçük bir öğe kümesine filtrelemek için, yeni `filter` tür bir diziyi ve koşulu kabul eder, her öğe için koşulu değerlendirir ve koşulu karşılayan öğeleri içeren bir dizi döndürür.
+Büyük bir diziyi daha küçük bir öğe kümesine filtrelemek için, yeni `filter` türü bir diziyi ve koşulu kabul eder, her öğe için koşulu değerlendirir ve koşulu karşılayan öğeleri içeren bir dizi döndürür.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>' Foreach ' ve ' Until ' eylemlerine yönelik kısıtlamalar
 
-`foreach` Ve`until` döngüsü tek bir eylemle kısıtlıdır.
+`foreach` ve `until` döngüsü tek bir eylemle kısıtlıdır.
 
 ### <a name="new-trackedproperties-for-actions"></a>Eylemler için yeni ' trackedProperties '
 
-Eylemler artık `trackedProperties` `runAfter` ve özelliklerineeşdüzeyolanadlıekbirözelliğesahipolabilir.`type` Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örneğin:
+Eylemler artık `runAfter` ve `type` özelliklerine eşdüzey `trackedProperties`adlı ek bir özelliğe sahip olabilir. Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örnek:
 
 ``` json
 {

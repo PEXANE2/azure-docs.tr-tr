@@ -1,112 +1,111 @@
 ---
-title: Ticari ortaklar B2B tümleştirmeleri - Azure Logic Apps için ekleyin
-description: Azure Logic Apps ile kullanılacak ortaklarını tümleştirme hesabı oluşturma
+title: B2B tümleştirmeleri için ticari iş ortakları ekleyin
+description: Tümleştirme hesabınızda Azure Logic Apps ile kullanmak için ticari iş ortakları oluşturun
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 681f16132c1de2ec5f3b27f80633d32879b0746c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330207"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792430"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Ticari ortaklar tümleştirme hesapları için Azure Logic Apps ekleyin.
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps için tümleştirme hesaplarına ticari iş ortakları ekleyin
 
-İçinde [Azure Logic Apps](../logic-apps/logic-apps-overview.md), otomatik işletmeler arası (B2B) Tümleştirmesi iş akışlarınızı kullanarak oluşturabileceğiniz bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) logic apps ile. Kuruluşunuz ve diğer temsil etmek için oluşturma ve ortaklarını yapıtları tümleştirme hesabınıza ekleyin. Ortaklar B2B işlemlere katılmasına ve birbirleriyle mesaj alışverişi varlıklardır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de, mantıksal uygulamalarınızla bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanarak otomatikleştirilmiş IŞLETMEDEN işletmeye (B2B) tümleştirme iş akışları oluşturabilirsiniz. Kuruluşunuzu ve diğerlerini temsil etmek için, tümleştirme hesabınıza yapıt olarak ticaret ortakları oluşturup eklersiniz. İş ortakları, B2B işlemlerine katılan ve birbirleriyle Exchange iletileri olan varlıklardır.
 
-Bu iş ortakları oluşturmadan önce tartışın ve iş ortaklarınızı belirleme ve diğer gönderdiği iletileri doğrulamak hakkında bilgi paylaşmak emin olun. Bu ayrıntılar üzerinde mutabık kaldıktan sonra iş ortaklarının tümleştirme hesabı oluşturmaya hazırsınız.
+Bu iş ortaklarını oluşturmadan önce, diğer bilgilerin gönderdiği iletileri belirleme ve doğrulama hakkında iş ortaklarınız ile bilgileri tartışıp paylaştığınızdan emin olun. Bu ayrıntıları kabul ettikten sonra tümleştirme hesabınızda iş ortakları oluşturmaya hazırsınız demektir.
 
-## <a name="partner-roles-in-integration-accounts"></a>Tümleştirme hesabı iş ortağı rolü
+## <a name="partner-roles-in-integration-accounts"></a>Tümleştirme hesaplarındaki iş ortağı rolleri
 
-İş ortaklarınızla alınıp verilen iletileri hakkındaki ayrıntıları tanımlamak için oluşturma ve ekleme [sözleşmeleri](../logic-apps/logic-apps-enterprise-integration-agreements.md) tümleştirme hesabınıza yapıt olarak. Anlaşmaları en az iki iş ortaklarının tümleştirme hesabı gerektirir. Her zaman kuruluştur *konak iş ortağı* sözleşmesi. Kuruluşunuz iletileriyle birbiriyle değiştirir kuruluş *Konuk iş ortağı*. Konuk iş ortağı, başka bir şirket veya bir bölümü kendi kuruluşunuzda bile olabilir. Bu iş ortakları ekledikten sonra bir anlaşma oluşturabilirsiniz.
+İş ortaklarınızla değiştirilen iletilerle ilgili ayrıntıları tanımlamak için, tümleştirme hesabınıza [anlaşma olarak anlaşmalar](../logic-apps/logic-apps-enterprise-integration-agreements.md) oluşturup eklersiniz. Sözleşmeler, tümleştirme hesabınızda en az iki iş ortağı gerektirir. Kuruluşunuz her zaman sözleşmede bulunan *ana bilgisayar ortağıdır* . Kuruluşunuz ile ileti alışverişi yapan kuruluş, *Konuk iş ortağıdır*. Konuk iş ortağı başka bir şirket veya hatta kendi kuruluşunuzda bir departman olabilir. Bu iş ortaklarını ekledikten sonra bir anlaşma oluşturabilirsiniz.
 
-Bir sözleşmede ana iş ortağının açısından gelen ve giden iletileri işlemek için ayrıntıları belirtin. Gelen iletiler için **alma ayarı** nasıl konak iş ortağı Konuk iş ortağı Sözleşmesi'nin gelen iletileri alan belirtin. Giden iletiler için **gönderme ayarları** konak iş ortağı iletileri Konuk iş ortağı nasıl göndereceğini belirtin.
+Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden iletileri işlemeye ilişkin ayrıntıları belirtirsiniz. Gelen iletilerde, **alma ayarları** , konak ortağının anlaşmada Konuk ortağından gelen iletileri nasıl alacağını belirtir. Giden iletiler için **gönderme ayarları** , ana bilgisayar ortağının Konuk iş ortağına ileti gönderme şeklini belirtir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Henüz Azure aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , iş ortakları, sözleşmeler ve diğer B2B yapıtlarını depolamak için. Bu tümleştirme hesabı, Azure aboneliğinizle ilişkili olmalıdır.
+* İş ortaklarınızı, sözleşmeleri ve diğer B2B yapıtlarını depolamak için bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) . Bu tümleştirme hesabının Azure aboneliğinizle ilişkilendirilmesi gerekir.
 
-## <a name="create-partner"></a>İş ortağı oluşturun
+## <a name="create-partner"></a>İş ortağı oluştur
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-1. Ana Azure menüsünde **tüm hizmetleri**. Arama kutusuna "tümleştirme" girin ve seçin **tümleştirme hesapları**.
+1. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme" yazın ve **tümleştirme hesapları**' nı seçin.
 
-   !["Tümleştirme hesapları" seçin](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
+   !["Tümleştirme hesapları" nı seçin](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-1. Altında **tümleştirme hesapları**, iş ortaklarınızı eklemek istediğiniz tümleştirme hesabı'nı seçin.
+1. **Tümleştirme hesapları**altında, iş ortaklarınızı eklemek istediğiniz tümleştirme hesabını seçin.
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
-1. Seçin **iş ortakları** Döşe.
+1. **Iş ortakları** kutucuğunu seçin.
 
-   !["İş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   !["Iş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-1. Altında **iş ortakları**, seçin **Ekle**. Altında **ortak ekleme**, aşağıdaki tabloda açıklandığı gibi iş ortağı ayrıntıları sağlayın.
+1. **Iş ortakları**altında **Ekle**' yi seçin. **Iş ortağı Ekle**altında aşağıdaki tabloda açıklandığı gibi iş ortağının ayrıntılarını sağlayın.
 
-   !["Ekle" yi seçin ve iş ortağı ayrıntıları sağlayın](./media/logic-apps-enterprise-integration-partners/add-partners.png)
+   !["Ekle" yi seçin ve iş ortağı ayrıntılarını sağlayın](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
-   | Özellik | Gerekli | Açıklama |
+   | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Evet | İş ortağı adı |
-   | **Niteleyicisi** | Evet | Örneğin, kuruluş, benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi **D-U-N-S (Dun & Bradstreet)** . <p>İş ortakları için karşılıklı olarak tanımlanmış iş kimliği seçebilirsiniz. Bu senaryolar için seçin **karşılıklı olarak tanımlanan** EDIFACT için veya **(X12)'karşılıklı olarak tanımlanan** X12 için. <p>RosettaNet için yalnızca belirli **DUNS**, standart olduğu. |
-   | **Değer** | Evet | Logic apps alma belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer DUNS numarasına karşılık gelen bir dokuz basamaklı bir sayı olmalıdır. |
+   | **Adı** | Yes | Ortağın adı |
+   | **Leyicisini** | Yes | Kuruluşlara benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi (örneğin, **D-U-N-S (Dun & Bradstreet)** . <p>İş ortakları, karşılıklı tanımlanmış bir iş kimliğini kabul edebilir. Bu senaryolar için, x12 için **birlikte kullanılamayan** , ediolgu Için ve **karşılıklı tanımlanmış (x12)** seçeneğini belirleyin. <p>RosettaNet için, yalnızca standart olan **Dçalıştırır**' ı seçin. |
+   | **Değer** | Yes | Mantıksal uygulamalarınızın alacağı belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer, dı numarasına karşılık gelen dokuz basamaklı bir sayı olmalıdır. |
    ||||
 
    > [!NOTE]
-   > RosettaNet kullanan iş ortakları için bu iş ortakları oluşturarak ek bilgilerini belirtebilirsiniz ve ardından [sonradan düzenleme](#edit-partner).
+   > RosettaNet kullanan iş ortakları için, önce bu ortakları oluşturup daha sonra [düzenleyerek](#edit-partner)ek bilgileri belirtebilirsiniz.
 
-1. İşiniz bittiğinde seçin **Tamam**.
+1. İşiniz bittiğinde **Tamam**' ı seçin.
 
-   Yeni iş ortağınız artık görünür **iş ortakları** listesi. Ayrıca, **iş ortakları** kutucuğu, geçerli iş ortaklarının sayısını güncelleştirir.
+   Yeni iş ortağınız artık **Iş ortakları** listesinde görünür. Ayrıca, **Iş ortakları** kutucuğunun geçerli iş ortakları sayısını güncelleştirir.
 
    ![Yeni iş ortağı](./media/logic-apps-enterprise-integration-partners/new-partner.png)
 
 <a name="edit-partner"></a>
 
-## <a name="edit-partner"></a>İş ortağı Düzenle
+## <a name="edit-partner"></a>İş ortağını Düzenle
 
-1. İçinde [Azure portalında](https://portal.azure.com)bulup tümleştirme hesabınızı seçin.
-Seçin **iş ortakları** Döşe.
+1. [Azure Portal](https://portal.azure.com)tümleştirme hesabınızı bulun ve seçin.
+**Iş ortakları** kutucuğunu seçin.
 
-   !["İş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/edit.png)
+   !["Iş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-1. Altında **iş ortakları**, düzenlemek ve istediğiniz iş ortağını seçin **Düzenle**. Altında **Düzenle**, istediğiniz değişiklikleri yapın.
+1. **Iş ortakları**' nın altında, düzenlemek istediğiniz iş ortağını seçin ve **Düzenle**' yi seçin. **Düzenle**' nin altında, değişikliklerinizi yapın.
 
-   ![Yapın ve değişikliklerinizi kaydedin](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
+   ![Değişikliklerinizi yapın ve kaydedin](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
-   RosettaNet için altında **RosettaNet ortak özellikleri**, bu ek bilgileri belirtebilirsiniz:
+   RosettaNet için, **RosettaNet Iş ortağı özellikleri**altında bu ek bilgileri belirtebilirsiniz:
 
-   | Özellik | Gerekli | Açıklama |
+   | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **İş ortağı sınıflandırma** | Hayır | İş ortağı kuruluş türü |
-   | **Tedarik zinciri kod** | Hayır | İş ortağının ve tedarik zinciri kod, örneğin, "Bilgi teknolojisi" veya "Elektronik bileşenlerin" |
-   | **İlgili kişi adı** | Hayır | İş ortağının ilgili kişi adı |
-   | **E-posta** | Hayır | İş ortağının e-posta adresi |
-   | **Faks** | Hayır | İş ortağının faks numarası |
-   | **Telefon** | Hayır | İş ortağının telefon numarası |
+   | **İş ortağı sınıflandırması** | Hayır | Ortağın kuruluş türü |
+   | **Tedarik zinciri kodu** | Hayır | Ortağın tedarik zinciri kodu, örneğin "bilgi teknolojisi" veya "elektronik bileşenler" |
+   | **Kişi adı** | Hayır | Ortağın ilgili kişi adı |
+   | **E-posta** | Hayır | Ortağın e-posta adresi |
+   | **Faks** | Hayır | Ortağın Faks numarası |
+   | **Unuzdaki** | Hayır | Ortağın telefon numarası |
    ||||
 
-1. İşiniz bittiğinde seçin **Tamam** yaptığınız değişiklikleri kaydedin.
+1. İşiniz bittiğinde, değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.
 
 ## <a name="delete-partner"></a>İş ortağını Sil
 
-1. İçinde [Azure portalında](https://portal.azure.com)bulup tümleştirme hesabınızı seçin. Seçin **iş ortakları** Döşe.
+1. [Azure Portal](https://portal.azure.com)tümleştirme hesabınızı bulun ve seçin. **Iş ortakları** kutucuğunu seçin.
 
-   !["İş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   !["Iş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
-1. Altında **iş ortakları**, silmek istediğiniz iş ortağını seçin. Seçin **Sil**.
+1. **Iş ortakları**' nın altında, silmek istediğiniz iş ortağını seçin. **Sil**' i seçin.
 
    ![İş ortağını Sil](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla bilgi edinin [sözleşmeleri](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [Sözleşmeler](../logic-apps/logic-apps-enterprise-integration-agreements.md) hakkında daha fazla bilgi edinin

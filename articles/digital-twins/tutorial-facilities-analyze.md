@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383053"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790325"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS 'deki olayları görselleştirin ve çözümleyin
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure Event Hubs kullanarak veri akışı yapın.
 > * Time Series Insights ile çözümleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-facilities-setup.md) ve [sağlamış](tutorial-facilities-udf.md) olduğunuz kabul edilmektedir. Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -48,7 +48,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 ### <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’da oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol bölmede **Kaynak oluştur**'u seçin.
 
@@ -82,7 +82,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
     > [!TIP]
     > Ad alanınız yerine olay hub örneğiniz için bir SAS Ilkesi oluşturmadiğinizi doğrulayın.
 
-1. Oluşturduğunuz **ManageSend** ilkesini açın ve **Bağlantı dizesi--birincil anahtar** ile **Bağlantı dizesi--ikincil anahtar** değerlerini geçici bir dosyaya kopyalayın. Sonraki bölümde Olay Hub 'ı için bir uç nokta oluşturmak üzere bu değerlere ihtiyacınız olacak.
+1. Oluşturduğunuz **ManageSend** ilkesini açın ve **bağlantı dizesinin değerlerini — birincil anahtar** ve **bağlantı dizesi — ikincil anahtar** ' ı geçici bir dosyaya kopyalayın. Sonraki bölümde Olay Hub 'ı için bir uç nokta oluşturmak üzere bu değerlere ihtiyacınız olacak.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Olay Hub 'ı için bir uç nokta oluşturma
 
@@ -108,13 +108,13 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
       path: Name_of_your_Event_Hub
     ```
 
-1. Yer tutucuları `Primary_connection_string_for_your_event_hub`, Olay Hub 'ı için **birincil anahtar olan bağlantı dizesinin** değeri ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun:
+1. Yer tutucuları `Primary_connection_string_for_your_event_hub`, **bağlantı dizesinin değeri —** Olay Hub 'ı için birincil anahtar ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Yer tutucuları `Secondary_connection_string_for_your_event_hub`, Olay Hub 'ı için **İkincil anahtar olan bağlantı dizesinin** değeri ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun: 
+1. Yer tutucuları `Secondary_connection_string_for_your_event_hub` **bağlantı dizesinin değeri —** , Olay Hub 'ı için ikincil anahtar ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -145,7 +145,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
     [Time Series Insights örneği oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. **Olay kaynağı** sekmesinde, bir **ad**girin, **kaynak türü**olarak **Olay Hub** 'ı seçin ve diğer değerlerin doğru seçildiğinden emin olun. **Olay Hub 'ı erişim ilkesi adı**için **ManageSend** ' ı seçin ve ardından **Olay Hub 'ı Tüketici grubu**için önceki bölümde oluşturduğunuz tüketici grubunu seçin. **İncele ve oluştur**’u seçin.
+1. **Olay kaynağı** sekmesinde, bir **ad**girin, **kaynak türü**olarak **Olay Hub** 'ı seçin ve oluşturduğunuz Olay Hub 'ına başvurmak için diğer değerlerin doğru seçildiğinden emin olun. **Olay Hub 'ı erişim ilkesi adı**için **ManageSend** ' ı seçin ve ardından **Olay Hub 'ı Tüketici grubu**için önceki bölümde oluşturduğunuz tüketici grubunu seçin. **İncele ve oluştur**’u seçin.
 
     [Olay kaynağı oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
@@ -174,7 +174,7 @@ Bu noktanın ötesinde Azure dijital TWINS 'in araştırmalarını durdurmak ist
 1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
 
     > [!TIP]
-    > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
+    > Dijital TWINS örneğinizi silme konusunda sorun yaşıyorsanız, bu düzeltmeyle birlikte bir hizmet güncelleştirmesi kullanıma alındı. Lütfen örneğinizi silmeyi yeniden deneyin.
 
 2. Gerekirse, iş makinenizdeki örnek uygulamaları silin.
 

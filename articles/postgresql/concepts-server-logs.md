@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
-description: PostgreSQL için Azure veritabanı 'nda günlüğe kaydetme yapılandırması, depolama ve çözümleme kavramları-tek sunucu
+title: Günlükler-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı 'nda günlük yapılandırma, depolama ve çözümlemeyi açıklar-tek sunucu
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965941"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768223"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 PostgreSQL için Azure veritabanı, Postgres 'nin standart günlüklerine yapılandırma ve erişme olanağı sağlar. Günlükler, yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performans performansını düzeltmek için kullanılabilir. Yapılandırabileceğiniz ve erişebileceğiniz günlüğe kaydetme bilgileri hatalar, sorgu bilgileri, oto vakum kayıtları, bağlantılar ve kontrol noktaları içerir. (İşlem günlüklerine erişim kullanılamaz).
@@ -111,12 +111,12 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | Düzeyi | Günlüğe kaydetme düzeyi, örnek: günlük, hata, BILDIRIM |
 | İleti | Birincil günlük iletisi | 
 | Domain | Sunucu sürümü, örnek: Postgres-10 |
-| Ayrıntılarını | İkincil günlük iletisi (varsa) |
+| ayrıntılarını | İkincil günlük iletisi (varsa) |
 | Tation | Sütunun adı (varsa) |
 | SchemaName | Şemanın adı (varsa) |
 | DatatypeName | Veri türünün adı (varsa) |
 | LogicalServerName | Sunucunun adı | 
-| _Resourceıd | Kaynak URI 'SI |
+| _ResourceId | Kaynak URI 'SI |
 | Alan kodu | Günlük satırının öneki |
 
 

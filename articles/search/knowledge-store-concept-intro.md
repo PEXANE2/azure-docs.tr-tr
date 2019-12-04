@@ -1,19 +1,19 @@
 ---
 title: Bilgi deposuna giriş (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin. Bu özellik genel önizleme aşamasındadır.
+description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin. Bu özellik genel önizlemede.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720083"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790016"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi depolarına giriş
 
@@ -32,7 +32,7 @@ Bilgi deposu kullanmak için, bir dizin oluşturma işlem hattındaki adım teme
 
 ## <a name="benefits-of-knowledge-store"></a>Bilgi deposunun avantajları
 
-Bilgi deposu, yerleşik olarak yapılandırılmamış ve yarı yapılandırılmış veri dosyalarından, uygulanan Analize sahip görüntü dosyalarında veya hatta yeni formlara yeniden şekillenen yapılandırılmış verilere karşı bir yapı, bağlam ve gerçek içerik sağlar. [Adım adım](knowledge-store-howto.md)bir kılavuzda, yoğun bir JSON belgesinin alt yapılara nasıl bölümlendiğini, reconstituted yeni yapılara nasıl ve başka bir şekilde makine öğrenimi ve veri bilimi gibi aşağı akış işlemlerinde nasıl kullanılabilir yapıldığını görebilirsiniz. lerine.
+Bilgi deposu, yerleşik olarak yapılandırılmamış ve yarı yapılandırılmış veri dosyalarından, uygulanan Analize sahip görüntü dosyalarında veya hatta yeni formlara yeniden şekillenen yapılandırılmış verilere karşı bir yapı, bağlam ve gerçek içerik sağlar. [Adım adım](knowledge-store-howto.md)bir kılavuzda, en çok yoğun bir JSON belgesinin alt yapılara nasıl bölümlendiğini, yeni yapılara reconstituted ve makine öğrenimi ve veri bilimi iş yükleri gibi aşağı akış işlemlerinde nasıl kullanılabilir yapıldığını görebilirsiniz.
 
 Bir AI zenginleştirme ardışık düzeninin ne işe yarayabileceği görmek faydalı olsa da, bilgi deposunun gerçek gücü verileri yeniden şekillendirmeye olanak tanır. Temel bir beceri ile başlayabilir ve daha sonra yeni yapılar halinde birleştirebileceğiniz, daha sonra Azure Bilişsel Arama yanı sıra diğer uygulamalarda kullanabileceğiniz daha fazla yapı düzeyleri eklemek için bunu yineleyebilirsiniz.
 
@@ -61,7 +61,9 @@ Bir `knowledgeStore` bağlantı ve projeksiyonlar oluşur.
 
 + Bağlantı, Azure Bilişsel Arama ile aynı bölgedeki bir depolama hesabıdır. 
 
-+ Projeksiyonlar tablolar-nesneler çiftleridir. `Tables` Azure Tablo depolamada zenginleştirilmiş belgelerin fiziksel ifadesini tanımlayın. Azure Blob depolamada fiziksel nesneleri tanımlama `Objects`.
++ Projeksiyonlar tablosal, JSON nesneleri veya dosyalar olabilir. `Tables` Azure Tablo depolamada zenginleştirilmiş belgelerin fiziksel ifadesini tanımlayın. Azure Blob depolamada fiziksel JSON nesnelerini tanımlama `Objects`. `Files`, belgeyi kalıcı olacak şekilde ayıklamış resimler gibi ikili dosyalardır.
+
++ Projeksiyonlar, projeksiyon nesneleri koleksiyonudur, her projeksiyon nesnesi `tables`, `objects` ve `files`içerebilir. Tek bir projeksiyon dahilinde tasarlanan zenginler, türler arasında yansıtılsa bile (tablolar, nesneler veya dosyalar) ile ilgilidir. Projeksiyon nesneleri arasında projeksiyonlar birbiriyle ilişkili değildir ve bağımsızdır. Aynı şekil, birden çok yansıtma nesnesi olarak yansıtıldırılmış olabilir.
 
 ```json
 {
@@ -109,7 +111,10 @@ Bir `knowledgeStore` bağlantı ve projeksiyonlar oluşur.
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,13 +126,17 @@ Bir `knowledgeStore` bağlantı ve projeksiyonlar oluşur.
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+Bu örnek herhangi bir görüntü içermez; dosya projeksiyonlarını kullanma örneği için bkz. [projeksiyonlarla çalışma](knowledge-store-projection-overview.md).
 ### <a name="sources-of-data-for-a-knowledge-store"></a>Bilgi deposu için veri kaynakları
 
 Bilgi deposu bir AI zenginleştirme işlem hattının çıktımıdır, girişler nelerdir? Bir bilgi deposuna ayıklamak, zenginleştirmek ve son olarak kaydetmek istediğiniz özgün veriler, arama Dizin oluşturucular tarafından desteklenen herhangi bir Azure veri kaynağından kaynaklanabilmelidir: 
@@ -150,7 +159,7 @@ Yalnızca iki API, bilgi deposu oluşturmak için gereken uzantılara sahiptir (
 |--------|----------|-------------|
 | Veri kaynağı | [Veri Kaynağı Oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Zenginleştirilmiş belgeler oluşturmak için kullanılan kaynak verileri sağlayan bir dış Azure veri kaynağını tanımlayan kaynak.  |
 | Beceri | [Beceri oluşturma (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında bir zenginleştirme ardışık düzeninde kullanılan [yerleşik yeteneklerin](cognitive-search-predefined-skills.md) ve özel bilişsel [yeteneklerin](cognitive-search-custom-skill-interface.md) kullanımını koordine eden bir kaynak. Bir beceri, alt öğe olarak `knowledgeStore` tanımına sahiptir. |
-| index | [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Arama dizinini ifade eden bir şema. Dizindeki alanlar, kaynak verilerdeki alanlara veya zenginleştirme aşamasında üretilen alanlara (örneğin, varlık tanıma tarafından oluşturulan kuruluş adları için bir alan) eşlenir. |
+| indeks | [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Arama dizinini ifade eden bir şema. Dizindeki alanlar, kaynak verilerdeki alanlara veya zenginleştirme aşamasında üretilen alanlara (örneğin, varlık tanıma tarafından oluşturulan kuruluş adları için bir alan) eşlenir. |
 | dizinleyic | [Dizin Oluşturucu oluştur (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında kullanılan bileşenleri tanımlayan kaynak: veri kaynağı, Beceri, kaynak ve ara veri yapılarından hedef dizine ve dizinin kendisi de dahil olmak üzere. Dizin oluşturucuyu çalıştırmak, veri alımı ve zenginleştirme için tetikleyiciydi. Çıktı, kaynak verilerle doldurulan, becerileri aracılığıyla zenginleştirilmiş, Dizin şemasını temel alan bir arama dizinidir.  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>Bilgi deposunu fiziksel olarak oluşturma

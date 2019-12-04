@@ -1,20 +1,17 @@
 ---
-title: Çağrı, tetikleyici veya iç içe mantıksal uygulamalar-Azure Logic Apps
+title: Çağrı, tetikleyici veya iç içe mantıksal uygulamalar
 description: Azure Logic Apps içinde Logic App iş akışlarını çağırmak, tetiklemek veya iç içe aktarmak için HTTP uç noktalarını ayarlama
 services: logic-apps
-ms.service: logic-apps
 ms.workload: integration
-author: ecfan
-ms.author: klam
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833960"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792022"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP uç noktalarını kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar
 
@@ -31,7 +28,7 @@ Bir HTTP uç noktası ayarlamak için, mantıksal uygulamaların gelen istekleri
 
 Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -39,7 +36,7 @@ Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps
 
 ## <a name="create-a-callable-endpoint"></a>Çağrılabilir bir uç nokta oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun ve açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun ve açın.
 
    Bu örnek, Istek tetikleyicisini kullanır, ancak gelen HTTP isteklerini alabilen herhangi bir tetikleyiciyi kullanabilirsiniz. Tüm ilkeler bu Tetikleyiciler için aynı şekilde geçerlidir. Istek tetikleyicisi hakkında daha fazla bilgi için, bkz. [Azure Logic Apps kullanarak gelen https çağrılarını alma ve yanıtlama](../connectors/connectors-native-reqres.md).
 

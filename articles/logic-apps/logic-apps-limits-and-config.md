@@ -1,20 +1,17 @@
 ---
-title: Sınırlar ve Yapılandırma-Azure Logic Apps
+title: Limitler ve yapılandırma
 description: Süre, verimlilik ve kapasite gibi hizmet limitleri ve izin verilecek IP adresleri gibi yapılandırma değerleri, Azure Logic Apps için
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 89b4a08a3ecb85abd56f0b2ae852123ac2883364
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 13bced5cb692366f46032d51c3b635533110d781
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547541"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791966"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -71,7 +68,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
    > [!NOTE]
    > Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
-   > Bir tümleştirme hizmeti ortamındaki Logic Apps için, 90 günlük varsayılan sınırı decreause veya artırabilirsiniz.
+   > Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
 
 <a name="looping-debatching-limits"></a>
 

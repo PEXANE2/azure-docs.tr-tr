@@ -3,12 +3,12 @@ title: Kapsayıcı grubunda yönetilen kimliği etkinleştir
 description: Diğer Azure hizmetleriyle kimlik doğrulayabilecek Azure Container Instances yönetilen bir kimliği nasıl etkinleştirebileceğinizi öğrenin
 ms.topic: article
 ms.date: 10/22/2018
-ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ccf754fac0d884c8a2af9db01578f97b73d54ac4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533672"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776532"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances ile yönetilen kimlikler kullanma
 
@@ -31,7 +31,7 @@ Diğer Azure hizmetlerine erişmek için Azure Container Instances kimlikleri et
 Kapsayıcı kodunuzda kimlik bilgilerini yönetmeksizin [Azure AD kimlik doğrulamasını destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) herhangi bir hizmette kimlik doğrulaması yapmak için çalışan bir kapsayıcıda yönetilen bir kimlik kullanın. AD kimlik doğrulamasını desteklemeyen hizmetler için Azure Key Vault gizli dizileri saklayabilir ve kimlik bilgilerini almak için Key Vault erişmek üzere yönetilen kimliği kullanabilirsiniz. Yönetilen kimlik kullanma hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir. Şu anda yönetilen kimlikler yalnızca Linux kapsayıcı örneklerinde desteklenir.
+> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir. Şu anda Azure Container Instances Yönetilen kimlikler yalnızca Linux kapsayıcılarıyla desteklenir ve henüz Windows kapsayıcılarıyla desteklenmez.
 >  
 
 ### <a name="enable-a-managed-identity"></a>Yönetilen bir kimliği etkinleştirme

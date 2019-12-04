@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, C# -konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Henüz belirlenmedi.
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 599f59df1a18dfe77d66c497c52a05d7d2e3b6d6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 84b1712ac89751ca8eb5b1161221f511cf699374
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280405"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796097"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,7 +29,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
@@ -46,6 +46,7 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. `RecognizeInten
 Bir `IntentRecognizer` nesnesi başlatabilmeniz için, LUSıS uç noktası anahtarınızı ve bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. `RecognizeIntentAsync()` yöntemine bu kodu ekleyin.
 
 Bu örnek, `SpeechConfig`oluşturmak için `FromSubscription()` yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 > [!NOTE]
 > Yalnızca uç nokta anahtarı konuşma amacı tanıma için geçerli olduğundan, HALME bitiş noktası anahtarını değil, başlangıç veya yazma anahtarlarını kullanmak önemlidir. Doğru anahtar alma hakkında yönergeler için bkz. [lusıs uygulaması oluşturma ve bir uç nokta anahtarı alma](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .

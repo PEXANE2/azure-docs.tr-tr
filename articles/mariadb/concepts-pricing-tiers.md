@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı fiyatlandırma katmanları
+title: Fiyatlandırma katmanları-MariaDB için Azure veritabanı
 description: Bilgi işlem oluşturmaları, depolama türleri, depolama boyutu, sanal çekirdek, bellek ve yedekleme bekletme dönemleri dahil olmak üzere MariaDB için Azure veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: ca9552ee60237158bd570ede4a13dbc349b6d1d1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973573"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772406"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
@@ -72,7 +72,7 @@ Depolama otomatik büyümesini etkinleştirmenizi veya sunucu depoağınızın e
 
 ### <a name="storage-auto-grow"></a>Depolama otomatik büyüme
 
-Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale gelmesine engel olur. Depolama otomatik büyüme etkinleştirilirse, depolama alanı, iş yükünü etkilemeden otomatik olarak büyür. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, boş depolama sağlanan depolamanın% 10 ' u altındaysa, sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun% 10 ' u altındaysa, sağlanan depolama boyutu% 5 oranında artar. Yukarıda belirtilen en fazla depolama sınırı geçerlidir.
+Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale gelmesine engel olur. Depolama otomatik büyüme etkinleştirilirse, depolama alanı, iş yükünü etkilemeden otomatik olarak büyür. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, boş depolama sağlanan depolamanın %10 ' u altındaysa, sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun %10 ' u altındaysa, sağlanan depolama boyutu %5 oranında artar. Yukarıda belirtilen en fazla depolama sınırı geçerlidir.
 
 Örneğin, 1000 GB depolama alanı sağladıysanız ve gerçek kullanım 900 GB 'den fazla olursa, sunucu depolama boyutu 1050 GB 'a yükseltilir. Alternatif olarak, 10 GB depolama alanı sağladıysanız, 1 GB 'tan az depolama alanı boş olduğunda depolama boyutu 15 GB 'a artar.
 

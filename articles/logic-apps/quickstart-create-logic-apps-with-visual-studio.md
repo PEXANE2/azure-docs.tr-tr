@@ -1,23 +1,18 @@
 ---
-title: Visual Studio 'da görev iş akışlarını otomatikleştirin-Azure Logic Apps
+title: Visual Studio 'da görev iş akışlarını otomatikleştirin
 description: Azure Logic Apps ve Visual Studio kullanarak kurumsal tümleştirme için yinelenen iş akışları oluşturma, zamanlama ve çalıştırma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796848"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790816"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı başlangıç: Azure Logic Apps Visual Studio ile otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma
 
@@ -31,7 +26,7 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

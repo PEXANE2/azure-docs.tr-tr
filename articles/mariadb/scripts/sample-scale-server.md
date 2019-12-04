@@ -1,5 +1,5 @@
 ---
-title: Azure CLı betiği-MariaDB sunucusu için Azure veritabanı ölçeklendirme
+title: CLı betiği-ölçek sunucusu-MariaDB için Azure veritabanı
 description: Bu örnek CLı betiği, ölçümleri sorguladıktan sonra MariaDB sunucusu için Azure veritabanı 'nı farklı bir performans düzeyine ölçeklendirir.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/07/2019
-ms.openlocfilehash: 772c4de9c53f618d0c7c5d8b8d6acc2830595f55
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 12/02/2019
+ms.openlocfilehash: 562f265cccf444740c177a41e516f9066188613e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884140"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771644"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu için Azure veritabanını izleme ve ölçeklendirme
 Bu örnek CLı betiği, ölçümleri sorguladıktan sonra MariaDB sunucusu için tek bir Azure veritabanı için işlem ve depolamayı ölçeklendirir. İşlem ölçeği yukarı veya aşağı olabilir. Depolama alanı yalnızca ölçeği değiştirebilir.
@@ -33,7 +33,7 @@ Betik çalıştırıldıktan sonra aşağıdaki komutu kullanarak kaynak grubunu
 ## <a name="script-explanation"></a>Betik açıklaması
 Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 
-| **Komutu** | **Notlar** |
+| **Komut** | **Notlar** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az MariaDB sunucu oluştur](/cli/azure/mariadb/server#az-mariadb-server-create) | Veritabanlarını barındıran bir MariaDB sunucusu oluşturur. |
@@ -43,5 +43,5 @@ Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [MariaDB işlem ve depolama Için Azure veritabanı](../concepts-pricing-tiers.md) hakkında daha fazla bilgi edinin
-- Ek betikleri deneyin: [MariaDB için Azure veritabanı Azure CLı örnekleri](../sample-scripts-azure-cli.md)
+- Ek betikleri deneyin: [MariaDB Için Azure veritabanı Azure CLI örnekleri](../sample-scripts-azure-cli.md)
 - [Azure CLI](/cli/azure) hakkında daha fazla bilgi edinin

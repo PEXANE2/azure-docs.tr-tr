@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa63b1343fcc981629dd96e2209bf26ec2cc2bd5
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b820be5631d207a32cbf14aa1eec9f3f6de2af52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326233"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766064"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda yönetici onayı
 
 Bazı izinler, bir kiracı içinde verilebilmesi için önce bir yöneticiden izin gerektirir.  Bir kiracının tamamına izin vermek için yönetici onay uç noktasını da kullanabilirsiniz.  
 
-## <a name="recommended-sign-the-user-into-your-app"></a>Önerilen: Kullanıcıyı uygulamanızda imzalama
+## <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
 
 Genellikle, yönetici onay uç noktasını kullanan bir uygulama oluşturduğunuzda, uygulamanın, yöneticinin uygulamanın izinlerini onaylayabileceği bir sayfa veya görünüm gerekir. Bu sayfa, uygulamanın kaydolma akışının bir parçası, uygulamanın ayarlarının bir parçası olabilir veya adanmış bir "Connect" akışı olabilir. Çoğu durumda, uygulamanın bu "Bağlan" görünümünü yalnızca bir kullanıcı iş veya okul Microsoft hesabı oturum açtıktan sonra göstermesini mantıklı hale getirir.
 
@@ -53,14 +53,14 @@ Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı M
 
 | Parametre     | Koşul     | Açıklama                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü `common` gibi, GUID veya kolay ad biçiminde veya genel olarak başvuruda bulunulan şekilde belirtilebilir. |
-| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
+| `tenant` | Gereklidir | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi `organizations` GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. Kişisel hesaplar kiracı bağlamı haricinde yönetici onayı sağlayamadığından ' Common ' kullanmayın. Kiracıların yönetiminde kişisel hesaplarla en iyi uyumluluğu sağlamak için, mümkün olduğunda kiracı KIMLIĞINI kullanın. |
+| `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `redirect_uri` | Gereklidir |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
-|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. | 
+|`scope`        | Gereklidir      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. | 
 
 
-Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) değeri kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
+Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) bir değer kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
@@ -75,7 +75,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 | `tenant`| Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı.|
 | `state`           | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce.|
 | `scope`          | Uygulamasına erişim izni verilen izinler kümesi.|
-| `admin_consent`   | , Olarak `True`ayarlanır.|
+| `admin_consent`   | , `True`olarak ayarlanır.|
 
 ### <a name="error-response"></a>Hata yanıtı
 
@@ -89,7 +89,7 @@ Başarılı bir yanıtta görülen parametrelere ekleme, hata parametreleri aşa
 | `error_description`| Bir geliştiricinin hatanın kök nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi.|
 | `tenant`| Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı.|
 | `state`           | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce.|
-| `admin_consent`   | , Bu yanıtın yönetici `True` onay akışında oluştuğunu göstermek için olarak ayarlanır.|
+| `admin_consent`   | , Bu yanıtın yönetici onay akışında oluştuğunu göstermek için `True` olarak ayarlanır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bkz. [bir uygulamayı çok kiracılı olarak dönüştürme](howto-convert-app-to-be-multi-tenant.md)

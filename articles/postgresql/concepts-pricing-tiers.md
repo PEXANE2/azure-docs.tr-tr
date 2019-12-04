@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı fiyatlandırma katmanları-tek sunucu
-description: Bu makalede PostgreSQL için Azure veritabanı-tek sunucu fiyatlandırma katmanları açıklanmaktadır.
+title: Fiyatlandırma katmanları-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede PostgreSQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-tek sunucu açıklanır.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 4f8bbf22d1081948cf6effd5fdbd8b6a6b7d5332
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903290"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768376"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda fiyatlandırma katmanları-tek sunucu
 

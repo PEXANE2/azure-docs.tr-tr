@@ -1,17 +1,17 @@
 ---
-title: Gelişmiş tehdit koruması-MariaDB için Azure veritabanı | Microsoft Docs
+title: Gelişmiş tehdit koruması-Azure portal-MariaDB için Azure veritabanı
 description: Tehdit koruması, veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: f77d9f105d5c2ff10753f2b4b1ecc962c84eee6e
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 12/02/2019
+ms.openlocfilehash: 1d6eafd38d418066ddf5933139bd4caf6e69ddea
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869657"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766982"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için Gelişmiş tehdit koruması
 
@@ -23,10 +23,10 @@ Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birle�
 > Gelişmiş tehdit koruması genel önizlemede. Bu özellik, Azure 'un, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.
 
 > [!NOTE]
-> Gelişmiş tehdit koruması özelliği, aşağıdaki Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US Gov Teksas, US Gov Arizona, US Gov Iowa, US, gov Virginia, US DoD Doğu, US DoD Orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
+> Gelişmiş tehdit koruması özelliği şu Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US gov Teksas, US gov Arizona, US gov Iowa, US, gov Virginia, US DOD Doğu, US DOD orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
 
 ## <a name="set-up-threat-detection"></a>Tehdit algılamayı ayarlama
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
+1. [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
 2. Korumak istediğiniz MariaDB sunucusu için Azure veritabanı 'nın yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Gelişmiş tehdit koruması (Önizleme)** öğesini seçin.
 3. **Gelişmiş tehdit koruması (Önizleme)** yapılandırma sayfasında:
 

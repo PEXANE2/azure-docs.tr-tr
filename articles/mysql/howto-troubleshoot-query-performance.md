@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda sorgu performansı sorunlarını giderme
+title: Sorgu performansı sorunlarını giderme-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nda sorgu performansı sorunlarını gidermek için AÇıKLA ' yı kullanmayı öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 02/28/2018
-ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 5bfefe3215558a94396e729a318e0746a4fb3aec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972862"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764806"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sorgu performansını profil oluşturma hakkında açıklama kullanma
 **Açıkla** sorguları iyileştirmek için kullanışlı bir araçtır. AÇıKLA deyimi, SQL deyimlerinin nasıl yürütüldüğü hakkında bilgi almak için kullanılabilir. Aşağıdaki çıktıda bir açıklama ifadesinin yürütülmesi örneği gösterilmektedir.

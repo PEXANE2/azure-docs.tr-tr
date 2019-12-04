@@ -1,94 +1,91 @@
 ---
-title: İş akışlarında - Azure Logic Apps sonraki eylem gecikmesi
-description: Azure Logic Apps'te Gecikmeli veya Gecikmeli kadar eylemleri kullanarak mantıksal uygulama iş akışlarınızla sonraki eylem çalıştırılacak bekleyin
+title: İş akışlarında sonraki eylemi geciktir
+description: Azure Logic Apps eylemleri tamamlanana kadar geciktir veya Delay kullanarak Logic App iş akışlarında sonraki eylemi çalıştırmayı bekleyin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
-tags: connectors
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+tags: connectors
+ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297669"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787345"
 ---
-# <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps'te sonraki eylem çalıştırma gecikmesi
+# <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps sonraki eylemi çalıştırmayı geciktir
 
-Mantıksal uygulamanızı sonraki eylem çalıştırmadan önce bir süre beklemek için yerleşik ekleyebilirsiniz **gecikme - zamanlama** mantıksal uygulamanızın iş akışında önce bir eylemi. Yerleşik ekleyebilirsiniz **Geciktir: zamanlama** eylemi belirli bir tarih ve saat sonraki eylem çalıştırmadan önce kadar bekleyin. Yerleşik zamanlama eylemleri ve tetikleyicileri hakkında daha fazla bilgi için bkz. [zamanlama ve otomatik olarak yinelenen bir çalıştırma, görevleri ve Azure Logic Apps ile iş akışlarını](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Mantıksal uygulamanızın bir sonraki eylemi çalıştırmadan önce bir süre beklemesi için, mantıksal uygulamanızın iş akışındaki bir eylemden önce yerleşik **gecikme zamanlama** eylemini ekleyebilirsiniz. Ya da bir sonraki eylemi çalıştırmadan önce belirli bir tarih ve saate kadar beklemek üzere yerleşik gecikme süresi ( **zamanlama** ) eylemini ekleyebilirsiniz. Yerleşik zamanlama eylemleri ve Tetikleyicileri hakkında daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen otomatik, görev ve iş akışlarını zamanlama ve çalıştırma](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
-* **gecikme**: Belirtilen sayıda saniye, dakika, saat, gün, hafta veya sonraki eylemi çalıştırılmadan önce bir ay gibi zamanı birimleri bekleyin.
+* **Gecikme**: sonraki eylem çalıştırılmadan önce, saniye, dakika, saat, gün, hafta veya ay gibi belirtilen zaman birimi sayısını bekleyin.
 
-* **Geciktir:** : Belirtilen tarih ve saat sonraki eylemi çalıştırılmadan önce kadar bekleyin.
+* Şu **kadar geciktir**: sonraki eylem çalıştırılmadan önce belirtilen tarih ve saate kadar bekleyin.
 
-Bu eylemler için bazı örnek yöntemler şunlardır:
+Bu eylemleri kullanmanın bazı örnek yolları aşağıda verilmiştir:
 
-* Durum güncelleştirmesi e-posta göndermek için bir hafta kadar bekleyin.
+* Bir iş gününü e-posta üzerinden bir durum güncelleştirmesi göndermek için bekleyin.
 
-* Veri alma ve sürdürme önce HTTP çağrısı tamamlanana kadar iş akışınızı gecikme.
+* Verileri devam ettirmeden ve almadan önce bir HTTP çağrısı bitene kadar iş akışınızı erteleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Bir aboneliğiniz yoksa, şunları yapabilirsiniz [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
-* Hakkında temel bilgilere [logic apps](../logic-apps/logic-apps-overview.md). Bir eylem kullanabilmeniz için mantıksal uygulamanızı ilk bir tetikleyici ile başlamalıdır. Gecikme eylemi eklemeden önce diğer eylemler ekleyin ve istediğiniz herhangi bir tetikleyici kullanabilirsiniz. Bu konuda, bir Office 365 Outlook tetikleyicisini kullanır. Logic apps kullanmaya yeni başladıysanız öğrenin [ilk mantıksal uygulamanızı oluşturmak nasıl](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* [Logic Apps](../logic-apps/logic-apps-overview.md)hakkında temel bilgi. Bir eylemi kullanabilmeniz için öncelikle mantıksal uygulamanızın bir tetikleyiciyle başlaması gerekir. Bir gecikme eylemi eklemeden önce istediğiniz tetikleyiciyi kullanabilir ve başka eylemler ekleyebilirsiniz. Bu konu, bir Office 365 Outlook tetikleyicisi kullanır. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmayı](../logic-apps/quickstart-create-first-logic-app-workflow.md)öğrenin.
 
 <a name="add-delay"></a>
 
-## <a name="add-the-delay-action"></a>Gecikme eylemi ekleme
+## <a name="add-the-delay-action"></a>Gecikme eylemini ekleyin
 
-1. Mantıksal Uygulama Tasarımcısı gecikme eylemi, eklemek istediğiniz adımı altında seçin **yeni adım**.
+1. Mantıksal uygulama Tasarımcısı ' nda, gecikme eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Adımları arasındaki gecikme eylemi eklemek için adımları bağlanan okun üzerine işaretçiyi taşıyın. Görünen artı işaretini (+) tıklayın ve ardından seçin **Eylem Ekle**.
+   Adımlar arasındaki gecikme eylemini eklemek için, adımları bağlayan okun üzerine işaretçiyi taşıyın. Görüntülenen artı işaretini (+) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak "gecikme" girin. Eylem listesinden şu eylemi seçin: **gecikme**
+1. Arama kutusuna filtreniz olarak "Delay" yazın. Eylemler listesinden şu eylemi seçin: **gecikme**
 
-   !["Gecikme" Eylem Ekle](./media/connectors-native-delay/add-delay-action.png)
+   !["Gecikme" eylemi Ekle](./media/connectors-native-delay/add-delay-action.png)
 
-1. Sonraki eylem çalışmadan önce beklenecek süreyi belirtin.
+1. Sonraki eylem çalıştırılmadan önce beklenecek süreyi belirtin.
 
-   ![Gecikme süresini ayarlama](./media/connectors-native-delay/delay-time-intervals.png)
+   ![Gecikme için zaman miktarı ayarla](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Özellik | JSON adı | Gerekli | Tür | Açıklama |
+   | Özellik | JSON adı | Gereklidir | Tür | Açıklama |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Evet | Integer | Gecikme zaman birimlerinin sayısı |
-   | Birim | Birim | Evet | String | Örneğin, zaman birimi: `Second`, `Minute`, `Hour`, `Day`, `Week`, veya `Month` |
+   | Sayı | count | Yes | Tamsayı | Geciktirime zaman birimi sayısı |
+   | Birim | birim | Yes | Dize | Zaman birimi; örneğin: `Second`, `Minute`, `Hour`, `Day`, `Week`veya `Month` |
    ||||||
 
-1. İş akışınızı çalıştırmak istediğiniz diğer tüm eylemler ekleyin.
+1. İş akışınızda çalıştırmak istediğiniz herhangi bir eylemi ekleyin.
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
 
 <a name="add-delay-until"></a>
 
-## <a name="add-the-delay-until-action"></a>Gecikme ekleme-eylem kadar
+## <a name="add-the-delay-until-action"></a>Gecikme-Until eylemini ekleyin
 
-1. Mantıksal Uygulama Tasarımcısı gecikme eylemi, eklemek istediğiniz adımı altında seçin **yeni adım**.
+1. Mantıksal uygulama Tasarımcısı ' nda, gecikme eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Adımları arasındaki gecikme eylemi eklemek için adımları bağlanan okun üzerine işaretçiyi taşıyın. Görünen artı işaretini (+) tıklayın ve ardından seçin **Eylem Ekle**.
+   Adımlar arasındaki gecikme eylemini eklemek için, adımları bağlayan okun üzerine işaretçiyi taşıyın. Görüntülenen artı işaretini (+) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak "gecikme" girin. Eylem listesinden şu eylemi seçin: **Geciktir:**
+1. Arama kutusuna filtreniz olarak "Delay" yazın. Eylemler listesinden şu eylemi seçin: **gecikme tarihine kadar geciktir**
 
-   !["Geciktir" Eylem Ekle](./media/connectors-native-delay/add-delay-until-action.png)
+   !["Gecikme süresi" eylemini Ekle](./media/connectors-native-delay/add-delay-until-action.png)
 
-1. İş akışını sürdürmek istediğiniz zamanı bitiş tarihi ve saati belirtin.
+1. İş akışını ne zaman sürdürüleceği için bitiş tarihini ve saatini belirtin.
 
-   ![Gecikme süresini sona erdirmek ne zaman damgası belirtin](./media/connectors-native-delay/delay-until-timestamp.png)
+   ![Gecikmeye bitiş için zaman damgasını belirtin](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Özellik | JSON adı | Gerekli | Tür | Açıklama |
+   | Özellik | JSON adı | Gereklidir | Tür | Açıklama |
    |----------|-----------|----------|------|-------------|
-   | Zaman damgası | timestamp | Evet | String | Bitiş tarihi ve saati şu biçimi kullanarak iş akışını sürdürme için: <p>YYYY-AA-ssZ <p>Örneğin, 18 Eylül 2017 2: 00'da isterseniz belirtin "2017-09-18T14:00:00Z". <p>**Not:** Bu saat biçimi izlemelidir [ISO 8601 tarih saat belirtimi](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) içinde [UTC tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), olmadan bir [UTC farkı](https://en.wikipedia.org/wiki/UTC_offset). Bir saat dilimi en sonda boşluk olmadan "Z" harfi eklemeniz gerekir. Bu "Z" eş değeri başvuruyor [Denizcilik zaman](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Zaman damgası | timestamp | Yes | Dize | Şu biçimi kullanarak iş akışının sürdürülürken bitiş tarihi ve saati: <p>YYYY-MM-DDThh: mm: ssZ <p>Örneğin, 18 Eylül 2017, 2:00 PM 'de istiyorsanız, "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu zaman biçimi UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC boşluğu](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Saat dilimi olmadan sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. |
    ||||||
 
-1. İş akışınızı çalıştırmak istediğiniz diğer tüm eylemler ekleyin.
+1. İş akışınızda çalıştırmak istediğiniz herhangi bir eylemi ekleyin.
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Oluşturmanıza, zamanlamanıza ve yineleme tetikleyicisi ile yinelenen görevleri ve iş akışları çalıştırma](../connectors/connectors-native-recurrence.md)
+* [Yineleme tetikleyicisiyle yinelenen görevleri ve iş akışlarını oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-recurrence.md)
 * [Logic Apps için bağlayıcılar](../connectors/apis-list.md)

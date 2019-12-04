@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452934"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766370"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 cihazlarında passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
 
@@ -56,22 +56,22 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 Kuruluşlar, kuruluşunuzun gereksinimlerine bağlı olarak Windows oturum açma için güvenlik anahtarlarının kullanımını etkinleştirmek üzere aşağıdaki yöntemlerden birini veya daha fazlasını kullanmayı seçebilir.
 
 - [Intune ile etkinleştirme](#enable-with-intune)
-   - [Hedeflenen Intune dağıtımı](#targeted-intune-deployment)
+- [Hedeflenen Intune dağıtımı](#targeted-intune-deployment)
 - [Sağlama paketiyle etkinleştir](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Intune ile etkinleştirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Microsoft Intune** > **cihaz kaydına** gidin > **Windows kaydı** > **iş için Windows Hello** > **özellikleri**.
 1. **Ayarlar** ' ın altında **, oturum açma Için güvenlik anahtarlarını kullan '** ın altında **etkinleştirilmesi**.
 
 Oturum açma için güvenlik anahtarlarının yapılandırılması, Iş için Windows Hello 'Yu yapılandırmaya bağlı değildir.
 
-#### <a name="targeted-intune-deployment"></a>Hedeflenen Intune dağıtımı
+### <a name="targeted-intune-deployment"></a>Hedeflenen Intune dağıtımı
 
 Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz gruplarını hedeflemek için, Intune aracılığıyla aşağıdaki özel ayarları kullanın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Profil oluşturmak** >  > **cihaz yapılandırması** > **profillerine** gidin **Microsoft Intune** .
 1. Yeni profili aşağıdaki ayarlarla yapılandırın
    1. Ad: Windows oturum açma için güvenlik anahtarları

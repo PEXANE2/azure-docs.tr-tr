@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07426e096858dec61f501581be565dc4137d6316
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072571"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773375"
 ---
 # <a name="inspect-custom-speech-data"></a>Özel Konuşma Tanıma verilerini İnceleme
 
@@ -37,9 +37,11 @@ Bir test oluşturmak için aşağıdaki yönergeleri izleyin:
 3. **Test Ekle**' ye tıklayın.
 4. **İnceleme kalitesi (yalnızca ses verileri)** seçeneğini belirleyin. Teste bir ad, açıklama verin ve ses veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**’ tıklayın.
+6. **Oluştur**’a tıklayın.
 
 Bir test başarıyla oluşturulduktan sonra modelleri yan yana karşılaştırabilirsiniz.
+
+[!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>Yan yana model karşılaştırmaları
 

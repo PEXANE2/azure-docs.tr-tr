@@ -1,17 +1,17 @@
 ---
-title: Ayrılmış kapasiteye sahip PostgreSQL için Azure veritabanı işlem kaynakları için ön ödeme
+title: Ayrılmış işlem fiyatlandırması-PostgreSQL için Azure veritabanı-tek sunucu
 description: Ayrılmış kapasiteye sahip PostgreSQL için Azure veritabanı işlem kaynakları için ön ödeme
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 634ab645ea49c29bb5624afd82e549dfbc8d0fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123879"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769906"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip PostgreSQL için Azure veritabanı işlem kaynakları için ön ödeme
 
@@ -25,10 +25,10 @@ Ayırmayı, PostgreSQL için belirli Azure veritabanı sunucularına atamanız g
 PostgreSQL için Azure veritabanı 'nın [Azure Portal](https://portal.azure.com/)ayrılmış kapasitesini satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
 
 * Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
-* Kurumsal abonelikler için, **EA portal**’da [Ayrılmış Örnek Ekle](https://ea.azure.com/) seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
+* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
 * Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları, PostgreSQL için Azure veritabanı ayrılmış kapasitesini satın alabilir. </br>
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde için Azure rezervasyon kullanımını anlama abonelik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Satın almadan önce doğru sunucu boyutunu belirle
@@ -40,7 +40,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan su
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>PostgreSQL için Azure veritabanı ayrılmış kapasitesi satın alın
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde PostgreSQL **için Azure veritabanı** ' nı seçerek PostgreSQL veritabanlarınız için yeni bir ayırma satın alın.
 4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İskontoyu alan PostgreSQL için Azure veritabanı sunucularınızın gerçek sayısı, seçilen kapsama ve miktara göre değişir.
@@ -69,7 +69,7 @@ Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya 
 
 vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performans katmanı ve bölgesi içinde ölçeği büyütme veya küçültme olanakları sağlar. 
 
-## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
+## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

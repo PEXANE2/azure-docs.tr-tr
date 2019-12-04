@@ -1,98 +1,96 @@
 ---
-title: Azure Logic Apps B2B Kurumsal tümleştirmeleri - oluştur | Microsoft Docs
-description: Azure Logic Apps Enterprise Integration Pack ile B2B veri alır
+title: B2B kurumsal tümleştirmeleri oluşturma
+description: Enterprise Integration Pack ile Azure Logic Apps B2B verileri alma
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39966b8171296a8608b9436485f7682d114c8410
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60999186"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793106"
 ---
-# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack ile B2B veri alma
+# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack B2B verileri alma
 
-İş ortakları ve anlaşmalar olan tümleştirme hesabı oluşturduktan sonra mantıksal uygulamanız için işletmeler arası (B2B) iş akışı oluşturmak hazır olursunuz [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
+İş ortakları ve anlaşmaları olan bir tümleştirme hesabı oluşturduktan sonra, [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)mantıksal uygulamanız için bir iş kolu (B2B) iş akışı oluşturmaya hazırlanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-AS2 ve X12 kullanmak için Eylemler, Kurumsal tümleştirme hesabı olması gerekir. Bilgi [Kurumsal tümleştirme hesabı oluşturma](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+AS2 ve x12 eylemlerini kullanmak için bir Kurumsal Tümleştirme hesabınızın olması gerekir. [Kurumsal tümleştirme hesabı oluşturmayı](../logic-apps/logic-apps-enterprise-integration-accounts.md)öğrenin.
 
-## <a name="create-a-logic-app-with-b2b-connectors"></a>Mantıksal uygulama B2B Bağlayıcılarla oluşturma
+## <a name="create-a-logic-app-with-b2b-connectors"></a>B2B bağlayıcılarıyla mantıksal uygulama oluşturma
 
-AS2 ve X12 kullanan B2B mantıksal uygulama oluşturmak için bu adımları bir alım-satım ortağından veri almak için Eylemler:
+Bir ticaret ortağından veri almak için AS2 ve x12 eylemlerini kullanan bir B2B Logic uygulaması oluşturmak için aşağıdaki adımları izleyin:
 
-1. Bir mantıksal uygulama oluşturup [uygulamanızı tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+1. Bir mantıksal uygulama oluşturun, ardından [uygulamanızı tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-2. Ekleme bir **isteği - zaman bir HTTP isteği alındığında** mantıksal uygulamanızın tetikleyicisi.
+2. Bir Istek ekleyin-mantıksal uygulamanıza bir **http isteği alındığında** tetiklenir.
 
     ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
 
-3. Eklenecek **AS2 kod çözme** seçme eylemini **Eylem Ekle**.
+3. **Kod çözme AS2** eylemini eklemek Için **Eylem Ekle**' yi seçin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
 
-4. Tüm Eylemler, istediğiniz bir filtre uygulamak için sözcüğünü girin **as2** arama kutusuna.
+4. Tüm eylemleri istediğiniz bir şekilde filtrelemek için, arama kutusuna **AS2** sözcüğünü girin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)
 
-5. Seçin **AS2 - AS2 kod çözme ileti** eylem.
+5. **AS2-kodunu çöz AS2 Message** eylemini seçin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. Ekleme **gövdesi** giriş olarak kullanılmasını istediğiniz. 
-   Bu örnekte, mantıksal uygulama tetiklenir HTTP isteği gövdesinin seçin. Üst bilgilerinde girişlerinin bir ifade girin veya **ÜSTBİLGİLERİ** alan:
+6. Giriş olarak kullanmak istediğiniz **gövdesini** ekleyin. 
+   Bu örnekte, mantıksal uygulamayı tetikleyen HTTP isteği gövdesini seçin. Ya da **üstbilgiler** alanındaki üst bilgileri gösteren bir ifade girin:
 
-    @triggerOutputs() ['üst bilgileri']
+    @triggerOutputs() [' üstbilgiler ']
 
-7. Gerekli olanları Ekle **üstbilgileri** için AS2, HTTP istek üst bilgilerinde bulabilirsiniz. 
-   Bu örnekte, mantıksal uygulama tetikleyicisi üst bilgiler HTTP isteğinin seçin.
+7. HTTP istek üst bilgilerinde bulabileceğiniz, AS2 için gerekli **üst bilgileri** ekleyin. 
+   Bu örnekte, mantıksal uygulamayı tetikleyen HTTP isteğinin üst bilgilerini seçin.
 
-8. Artık kod çözme X12 ileti eylemi ekleyin. Seçin **Eylem Ekle**.
+8. Şimdi kod çözme x12 ileti eylemini ekleyin. **Eylem Ekle**' yi seçin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
 
-9. Tüm Eylemler, istediğiniz bir filtre uygulamak için sözcüğünü girin **x12** arama kutusuna.
+9. Tüm eylemleri istediğiniz bir şekilde filtrelemek için, arama kutusuna **x12** sözcüğünü girin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)
 
-10. Seçin **X12-kod çözme X12 ileti** eylem.
+10. **X12-kodunu çöz x12 Message** eylemini seçin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. Şimdi, bu eylem için giriş belirtmeniz gerekir. 
-    Bu giriş AS2 önceki eylem çıktısı bulunmaktadır.
+11. Şimdi bu eyleme yönelik girişi belirtmeniz gerekir. 
+    Bu giriş, önceki AS2 eyleminin çıktıdır.
 
-    Gerçek ileti içeriği bir JSON nesnesidir ve base64 ile kodlanmış, olduğundan bir ifade giriş olarak belirtmeniz gerekir. 
-    Aşağıdaki ifade girin **X12 DÜZ dosya iletisi için kod çözme** giriş alanı:
+    Gerçek ileti içeriği bir JSON nesnesi içinde ve Base64 kodlamalı olduğundan girdi olarak bir ifade belirtmeniz gerekir. 
+    Giriş alanının **kodunu çözmek Için x12 düz dosya iletisine** aşağıdaki ifadeyi girin:
     
-    @base64ToString(body('Decode_AS2_message')? ['AS2Message']? ['Content'])
+    @base64ToString(gövde (' Decode_AS2_message ')? [' AS2Message']? [' İçerik '])
 
-    Şimdi veri öğeleri bir JSON nesnesinde çıkış ve ticaret iş ortağı alınan X12 kodunu çözmek için adımları ekleyin. 
-    İş ortağı veri alındığını bildirmek için geri AS2 iletisi değerlendirme bildirim (MDN'de) bir HTTP yanıt eylemi içeren bir yanıt gönderebilir.
+    Şimdi, bir JSON nesnesindeki ticari iş ortağı ve çıkış öğelerinden alınan x12 verilerinin kodunu çözmeye yönelik adımları ekleyin. 
+    Verilerin alındığı iş ortağına bildirimde bulunmak için, bir HTTP yanıt eyleminde AS2 Message disposition bildirimini (MDN) içeren bir yanıtı geri gönderebilirsiniz.
 
-12. Eklenecek **yanıt** eylemi seçin **Eylem Ekle**.
+12. **Yanıt** eylemini eklemek Için **Eylem Ekle**' yi seçin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 
-13. Tüm Eylemler, istediğiniz bir filtre uygulamak için sözcüğünü girin **yanıt** arama kutusuna.
+13. Tüm eylemleri istediğiniz bir şekilde filtrelemek için, arama kutusuna **Yanıt** sözcüğünü girin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)
 
-14. Seçin **yanıt** eylem.
+14. **Yanıt** eylemini seçin.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)
 
-15. MDN çıktısından erişmeye **kod çözme X12 ileti** eylemi, yanıt olarak **GÖVDESİ** Bu ifade ile alan:
+15. **Kod çözme x12 iletisi** eyleminin çıktısından MDN 'ye erişmek için, yanıt **gövdesi** alanını şu ifadeyle ayarlayın:
 
-    @base64ToString(body('Decode_AS2_message')? ['OutgoingMdn']? ['Content'])
+    @base64ToString(gövde (' Decode_AS2_message ')? [' OutgoingMdn ']? [' İçerik '])
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
 
@@ -100,14 +98,14 @@ AS2 ve X12 kullanan B2B mantıksal uygulama oluşturmak için bu adımları bir 
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
 
-Artık B2B mantıksal uygulamanızı ayarlama. Gerçek bir uygulamada, kodu çözülmüş X12 saklamak isteyebilirsiniz satır iş kolu (LOB) uygulaması veya veri deposuna verileri. Kendi iş KOLU uygulamalarınızı bağlayın ve mantıksal uygulamanızda bu API'leri kullanmak için ek eylemler ekleyebilir veya özel API'ları yazma.
+Artık B2B mantıksal uygulamanızı ayarlamayı tamamladınız. Gerçek bir dünya uygulamasında, çözülmüş x12 verilerini iş kolu (LOB) uygulamasında veya veri deposunda depolamak isteyebilirsiniz. Kendi LOB uygulamalarınızı bağlamak ve mantıksal uygulamanızda bu API 'Leri kullanmak için, daha fazla eylem ekleyebilir veya özel API 'Ler yazabilirsiniz.
 
 ## <a name="features-and-use-cases"></a>Özellikler ve kullanım örnekleri
 
-* AS2 ve X12 eylemleri kodlanacağını ve logic apps içinde sektör standardı protokolleri kullanarak ticari ortaklar arasında veri alışverişi bırakın.
-* Ticari ortaklar ile veri değişimi için olan veya olmayan her AS2 ve X12 kullanabilirsiniz.
-* B2B eylemlerinin tümleştirme hesabınızdaki iş ortaklarının ve sözleşmelerin kolayca oluşturun ve bunları mantıksal uygulamada kullanma yardımcı olur.
-* Mantıksal uygulamanız diğer eylemler ile genişlettiğinizde, gönderebilir ve diğer uygulamalar ve SalesForce gibi hizmetler arasında veri alma.
+* AS2 ve x12 kod çözme ve kodlama eylemleri, mantıksal uygulamalarda sektör standardı protokollerini kullanarak ticari iş ortakları arasında veri alışverişi yapmanızı sağlar.
+* Ticari iş ortaklarıyla veri alışverişi yapmak için, AS2 ve x12 'yi birbirleriyle veya olmadan kullanabilirsiniz.
+* B2B eylemleri tümleştirme hesabınızda kolayca iş ortakları ve anlaşmalar oluşturmanıza ve bunları bir mantıksal uygulamada kullanmanıza yardımcı olur.
+* Mantıksal uygulamanızı diğer eylemlerle genişletmediğiniz zaman, SalesForce gibi diğer uygulamalar ve hizmetler arasında veri gönderebilir ve aktarabilirsiniz.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazla bilgi
 [Enterprise Integration Pack hakkında daha fazla bilgi edinin](logic-apps-enterprise-integration-overview.md)

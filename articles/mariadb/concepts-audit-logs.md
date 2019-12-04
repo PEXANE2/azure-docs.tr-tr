@@ -1,133 +1,133 @@
 ---
-title: MariaDB için Azure veritabanı için Denetim günlükleri
-description: MariaDB ve günlüğe kaydetme düzeylerini etkinleştirmek için kullanılabilir parametreleri için Azure veritabanı'nda kullanılabilir olan denetim günlüklerini açıklar.
+title: Denetim günlükleri-MariaDB için Azure veritabanı
+description: MariaDB için Azure veritabanı 'nda kullanılabilen Denetim günlüklerini ve günlük düzeylerini etkinleştirmek için kullanılabilen parametreleri açıklar.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 13ea60c62283db35ce4bf9fde6c3b36ba7f88013
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 12/02/2019
+ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439213"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773089"
 ---
-# <a name="audit-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı'nda denetim günlükleri
+# <a name="audit-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda denetim günlükleri
 
-MariaDB için Azure veritabanı'nda denetim günlüğü kullanıcılar tarafından kullanılabilir. Denetim günlüğü, veritabanı düzeyinde etkinliğini izlemek için kullanılabilir ve uyumluluk için yaygın olarak kullanılır.
+MariaDB için Azure veritabanı 'nda, denetim günlüğü kullanıcılar tarafından kullanılabilir. Denetim günlüğü, veritabanı düzeyindeki etkinlikleri izlemek için ve genellikle uyumluluk için kullanılır.
 
 > [!IMPORTANT]
-> Denetim günlüğü işlevselliği şu anda Önizleme aşamasındadır.
+> Denetim günlüğü işlevselliği Şu anda önizleme aşamasındadır.
 
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
-Denetim günlüğü varsayılan olarak devre dışıdır. Bunu etkinleştirmek için ayarlanmış `audit_log_enabled` açık.
+Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için `audit_log_enabled` açık olarak ayarlayın.
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- `audit_log_events`: olayları günlüğe kaydedilmesini denetler. Tablo belirli denetim olaylarını için aşağıya bakın.
-- `audit_log_exclude_users`: MariaDB kullanıcılar, günlük hariç tutulacak. En fazla dört kullanıcıya izin verir. Parametresinin en fazla uzunluk 256 karakterdir.
+- `audit_log_events`: günlüğe kaydedilecek olayları denetler. Belirli denetim olayları için aşağıdaki tabloya bakın.
+- `audit_log_exclude_users`: MariaDB kullanıcıları günlük kaydı dışında tutulacak. En fazla dört Kullanıcı için izin verir. Parametrenin uzunluk üst sınırı 256 karakterdir.
 
 | **Olay** | **Açıklama** |
 |---|---|
-| `CONNECTION` | -Bağlantı başlatma (başarılı veya başarısız) <br> -Oturumu sırasında farklı bir kullanıcı/parola ile yeniden kimlik kullanıcı <br> -Bağlantı sonlandırma |
-| `DML_SELECT`| SELECT sorgusu |
-| `DML_NONSELECT` | EKLEME/silme/güncelleme sorguları |
-| `DML` | DML DML_SELECT + DML_NONSELECT = |
-| `DDL` | "DROP DATABASE" gibi sorguları |
-| `DCL` | "İzin ver" gibi sorguları |
-| `ADMIN` | "Durumu göster" gibi sorguları |
-| `GENERAL` | Tüm DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetim |
+| `CONNECTION` | -Bağlantı başlatma (başarılı veya başarısız) <br> -Oturum sırasında farklı kullanıcı/parola ile Kullanıcı yeniden kimlik doğrulaması <br> -Bağlantı sonlandırma |
+| `DML_SELECT`| Sorguları Seç |
+| `DML_NONSELECT` | EKLEME/SILME/GÜNCELLEŞTIRME sorguları |
+| `DML` | DML = DML_SELECT + DML_NONSELECT |
+| `DDL` | "VERITABANıNı bırak" gibi sorgular |
+| `DCL` | "Izın ver" gibi sorgular |
+| `ADMIN` | "Durumu göster" gibi sorgular |
+| `GENERAL` | DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve ADMIN içinde tümü |
 
 ## <a name="access-audit-logs"></a>Denetim günlüklerine erişme
 
-Denetim günlükleri, Azure İzleyici tanılama günlükleri ile tümleştirilir. Denetim günlükleri MariaDB sunucunuzda etkinleştirdikten sonra bunları Azure İzleyici günlüklerine, Event Hubs veya Azure depolama gönderebilir. Azure portalında tanılama günlüklerini etkinleştirme hakkında daha fazla bilgi için bkz: [denetim günlüğü portal makale](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
+Denetim günlükleri Azure Izleyici tanılama günlükleriyle tümleşiktir. MariaDB sunucunuzda denetim günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Azure portal tanılama günlüklerinin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [Denetim günlüğü portalı makalesine](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)bakın.
 
 ## <a name="diagnostic-logs-schemas"></a>Tanılama günlükleri şemaları
 
-Aşağıdaki bölümlerde, çıktı tarafından MariaDB denetim günlüklerini Olay türüne göre nedir açıklanmaktadır. Yer alan alanlar ve göründükleri sırayla çıkış yöntemine bağlı olarak değişebilir.
+Aşağıdaki bölümlerde, olay türüne göre MariaDB denetim günlükleri tarafından yapılan çıktılar açıklanır. Çıkış yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
 
 ### <a name="connection"></a>Bağlantı
 
 | **Özellik** | **Açıklama** |
 |---|---|
-| `TenantId` | Kiracı Kimliğiniz |
+| `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Günlük UTC olarak kaydedildiği zaman damgası |
-| `Type` | Günlük türü. Her zaman `AzureDiagnostics` |
-| `SubscriptionId` | Sunucunun ait olduğu aboneliğin GUID |
-| `ResourceGroup` | Sunucunun ait olduğu kaynak grubu adı |
-| `ResourceProvider` | Kaynak sağlayıcı adı. Her zaman `MICROSOFT.DBFORMARIADB` |
+| `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
+| `Type` | Günlüğün türü. Her zaman `AzureDiagnostics` |
+| `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
+| `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Kaynak URI'si |
-| `Resource` | Sunucusunun adı |
+| `ResourceId` | Kaynak URI 'SI |
+| `Resource` | Sunucunun adı |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
 | `event_class_s` | `connection_log` |
 | `event_subclass_s` | `CONNECT`, `DISCONNECT` |
-| `connection_id_d` | MariaDB tarafından oluşturulan benzersiz bağlantı kimliği |
+| `connection_id_d` | MariaDB tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `host_s` | Boş |
-| `ip_s` | MariaDB için bağlanan istemci IP adresi |
+| `ip_s` | MariaDB 'ye bağlanan istemcinin IP adresi |
 | `user_s` | Sorguyu yürüten kullanıcının adı |
-| `db_s` | Bağlı veritabanının adı |
-| `\_ResourceId` | Kaynak URI'si |
+| `db_s` | Bağlanılan veritabanının adı |
+| `\_ResourceId` | Kaynak URI 'SI |
 
 ### <a name="general"></a>Genel
 
-Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetici olay türleri için geçerlidir.
+Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıcı olay türleri için geçerlidir.
 
 | **Özellik** | **Açıklama** |
 |---|---|
-| `TenantId` | Kiracı Kimliğiniz |
+| `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Günlük UTC olarak kaydedildiği zaman damgası |
-| `Type` | Günlük türü. Her zaman `AzureDiagnostics` |
-| `SubscriptionId` | Sunucunun ait olduğu aboneliğin GUID |
-| `ResourceGroup` | Sunucunun ait olduğu kaynak grubu adı |
-| `ResourceProvider` | Kaynak sağlayıcı adı. Her zaman `MICROSOFT.DBFORMARIADB` |
+| `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
+| `Type` | Günlüğün türü. Her zaman `AzureDiagnostics` |
+| `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
+| `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Kaynak URI'si |
-| `Resource` | Sunucusunun adı |
+| `ResourceId` | Kaynak URI 'SI |
+| `Resource` | Sunucunun adı |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `LogicalServerName_s` | Sunucusunun adı |
+| `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
-| `event_time` | Sorgu başlangıç saniye içinde UNIX zaman damgası |
-| `error_code_d` | Sorgu başarısız olursa hata kodu. `0` hiçbir hata anlamına gelir |
-| `thread_id_d` | Sorgu yürütülen iş parçacığının kimliği |
+| `event_time` | UNIX zaman damgasında sorgu başlangıç saniyesi |
+| `error_code_d` | Sorgu başarısız olduysa hata kodu. `0` hata olmadığı anlamına gelir |
+| `thread_id_d` | Sorguyu yürüten iş parçacığının KIMLIĞI |
 | `host_s` | Boş |
-| `ip_s` | MariaDB için bağlanan istemci IP adresi |
+| `ip_s` | MariaDB 'ye bağlanan istemcinin IP adresi |
 | `user_s` | Sorguyu yürüten kullanıcının adı |
 | `sql_text_s` | Tam sorgu metni |
-| `\_ResourceId` | Kaynak URI'si |
+| `\_ResourceId` | Kaynak URI 'SI |
 
-### <a name="table-access"></a>Tablo erişim
+### <a name="table-access"></a>Tablo erişimi
 
 | **Özellik** | **Açıklama** |
 |---|---|
-| `TenantId` | Kiracı Kimliğiniz |
+| `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Günlük UTC olarak kaydedildiği zaman damgası |
-| `Type` | Günlük türü. Her zaman `AzureDiagnostics` |
-| `SubscriptionId` | Sunucunun ait olduğu aboneliğin GUID |
-| `ResourceGroup` | Sunucunun ait olduğu kaynak grubu adı |
-| `ResourceProvider` | Kaynak sağlayıcı adı. Her zaman `MICROSOFT.DBFORMARIADB` |
+| `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
+| `Type` | Günlüğün türü. Her zaman `AzureDiagnostics` |
+| `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
+| `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Kaynak URI'si |
-| `Resource` | Sunucusunun adı |
+| `ResourceId` | Kaynak URI 'SI |
+| `Resource` | Sunucunun adı |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `LogicalServerName_s` | Sunucusunun adı |
+| `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, veya `DELETE` |
-| `connection_id_d` | MariaDB tarafından oluşturulan benzersiz bağlantı kimliği |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`veya `DELETE` |
+| `connection_id_d` | MariaDB tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `db_s` | Erişilen veritabanının adı |
-| `table_s` | Erişilen tablosunun adı |
+| `table_s` | Erişilen tablonun adı |
 | `sql_text_s` | Tam sorgu metni |
-| `\_ResourceId` | Kaynak URI'si |
+| `\_ResourceId` | Kaynak URI 'SI |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Denetim günlüklerinin Azure portalında yapılandırma](howto-configure-audit-logs-portal.md)
+- [Azure portal denetim günlüklerini yapılandırma](howto-configure-audit-logs-portal.md)

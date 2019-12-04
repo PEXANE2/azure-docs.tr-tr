@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda sorgu deposu-tek sunucu
+title: Sorgu deposu-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nda bulunan Query Store özelliği (tek sunucu) açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331312"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768274"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sorgu deposuyla performansı izleme
 
@@ -91,16 +91,16 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
+| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık**|
 |---|---|---|---|
 | pg_qs. query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
-| pg_qs.max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
-| pg_qs.retention_period_in_days | Saklama süresini ayarlar. | 7 | 1 - 30 |
-| pg_qs.track_utility | Yardımcı program komutlarının izlenip izlenmeyeceğini ayarlar | açık | açık, kapalı |
+| pg_qs. max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
+| pg_qs. retention_period_in_days | Saklama süresini ayarlar. | 7 | 1 - 30 |
+| pg_qs. track_utility | Yardımcı program komutlarının izlenip izlenmeyeceğini ayarlar | dayanır | açık, kapalı |
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
+| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık**|
 |---|---|---|---|
 | pgms_wait_sampling. query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
 | Pgms_wait_sampling. history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
@@ -122,8 +122,8 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 |**Adı**   |**Tür** | **Başvur**  | **Açıklama**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Runtime_stats_entries tablosundan KIMLIK|
-|user_id    |oid    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
-|db_id  |oid    |pg_database.oid    |Deyimin yürütüldüğü veritabanının OID 'si|
+|user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
+|db_id  |id    |pg_database. OID    |Deyimin yürütüldüğü veritabanının OID 'si|
 |query_id   |bigint  || Deyimin ayrıştırma ağacından hesaplanan iç karma kod|
 |query_sql_text |Varchar (10000)  || Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir.|
 |plan_id    |bigint |   |Bu sorguya karşılık gelen planın KIMLIĞI henüz kullanılamaz|
@@ -162,11 +162,11 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 |**Adı**|  **Tür**|   **Başvur**| **Açıklama**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
-|db_id  |oid    |pg_database.oid    |Deyimin yürütüldüğü veritabanının OID 'si|
+|user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
+|db_id  |id    |pg_database. OID    |Deyimin yürütüldüğü veritabanının OID 'si|
 |query_id   |bigint     ||Deyimin ayrıştırma ağacından hesaplanan iç karma kod|
 |event_type |metin       ||Arka ucun beklediği olay türü|
-|event  |metin       ||Arka uç Şu anda bekliyorsa bekleme olayı adı|
+|olay  |metin       ||Arka uç Şu anda bekliyorsa bekleme olayı adı|
 |aramalarda  |Tamsayı        ||Yakalanan aynı olay sayısı|
 
 

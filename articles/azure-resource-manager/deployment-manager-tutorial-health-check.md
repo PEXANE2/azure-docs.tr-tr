@@ -1,16 +1,16 @@
 ---
-title: Azure Dağıtım Yöneticisi şablonlar ile kullanma
-description: Azure kaynaklarını dağıtmak için Azure Deployment Manager ile Resource Manager şablonlarını kullanın.
+title: Azure Dağıtım Yöneticisi sistem durumu denetimini kullanma
+description: Azure Dağıtım Yöneticisi Azure kaynaklarını güvenli bir şekilde dağıtmak için sistem durumu denetimi kullanın.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 355a40db7714ddae39c4171aaa0ebe4b5e5f777e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149900"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784689"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Dağıtım Yöneticisi sistem durumu denetimi kullanma (Genel Önizleme)
 
@@ -38,7 +38,7 @@ Ek kaynaklar:
 * [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
 * [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

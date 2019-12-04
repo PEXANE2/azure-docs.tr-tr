@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286976"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784621"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -48,7 +48,7 @@ Aşağıdaki görüntüde nasıl yapılacağı gösterilmektedir: ![visulize-Dat
 
 **Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
-Python için Azure Machine Learning SDK: PyYAML olan yüklü distutils proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayma sırasında SDK'sı yüklemeye devam etmek için kullanın:
+Python için Azure Machine Learning SDK: PyYAML, yüklenmiş bir proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayarak SDK 'Yı yüklemeye devam etmek için şunu kullanın:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,23 +62,23 @@ conda create -n <env-name> python=3.7.3
 ```
 Bu, 3.7.4 içinde bir Install sorunu bulunmayan Python 3.7.3 kullanarak bir Conda ortamı oluşturur.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning işlem oluştururken sorun
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning Işlem oluşturma sorunu
 
-GA sürümü önce Azure portalından, Azure Machine Learning çalışma alanı oluşturan bazı kullanıcıların bu çalışma alanında Azure Machine Learning işlem oluşturmak mümkün olmayabilir nadir bir fırsat yoktur. Bir destek isteği hizmetinde yükseltmek veya Portal veya SDK'yı kendiniz hemen engelini kaldırmak için yeni bir çalışma alanı oluşturun.
+Azure Machine Learning çalışma alanını, GA sürümünden önce Azure portal oluşturan bazı kullanıcıların bu çalışma alanında Azure Machine Learning Işlem oluşturamayacak nadir bir şansınız vardır. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
 
 ## <a name="image-building-failure"></a>Görüntü oluşturma hatası
 
-Web hizmeti dağıtılırken hata oluşturma görüntüsü. Geçici çözüm olan eklemek için "pynacl 1.2.1 ==" Conda dosyasına görüntü yapılandırması için pip bağımlılık olarak.
+Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, görüntü yapılandırması için Conda dosyasına bir pynacl = = 1.2.1
 
 ## <a name="deployment-failure"></a>Dağıtım hatası
 
 `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`gözlemlerseniz, dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin.
 
-## <a name="fpgas"></a>FPGA
+## <a name="fpgas"></a>FPGA'lar
 
-İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
+FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
+## <a name="automated-machine-learning"></a>Otomatik makine öğrenmesi
 
 Tensor Flow otomatik makine öğrenimi Şu anda Tensor Flow sürüm 1,13 ' i desteklememektedir. Bu sürümün yüklenmesi paket bağımlılıklarının çalışmayı durdurmasına neden olur. Bu sorunu gelecekte yayımlanacak bir sürümde gidermeye çalışıyoruz. 
 
@@ -159,13 +159,13 @@ Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası gör�
 * `azureml-dataprep` Version 1.1.8 veya üstünü ekleyin.
 * `pyarrow` sürüm 0,11 veya üstünü ekleyin.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-Doğrudan paylaşım bağlantısı SDK veya portalından çalışma alanınızda görüntülemeye giderseniz, uzantı normal genel bakış sayfası ile abonelik bilgilerini görüntülemek mümkün olmayacaktır. Siz de başka bir çalışma alanına geçmeniz mümkün olmayacaktır. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidip çalışma alanı adını arayacak.
+Çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal genel bakış sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidip çalışma alanı adını arayacak.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Bazen Yardım isteme, tanılama bilgilerini sağlarsanız, yararlı olabilir. Bazı günlükleri görmek için [Azure Machine Learning Studio 'yu](https://ml.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  
+Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir. Bazı günlükleri görmek için [Azure Machine Learning Studio 'yu](https://ml.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  
 
 > [!NOTE]
 > Azure Machine Learning, eğitim sırasında (örneğin, oto ml) veya eğitim işini çalıştıran Docker kapsayıcısı gibi çeşitli kaynaklardan günlük bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
@@ -278,10 +278,10 @@ Bu, geçerli sürümün bilinen bir sınırlamasıdır.
 
 Sayfayı el ile yenileyin. Başlatma, saniyede yaklaşık 20 veri noktasında devam etmelidir. Bu, bilinen bir sorundur. 
 
-### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>Sınırlayıcı kutu, resmin sağ kenarına kadar çizilemez 
-
-Tarayıcı penceresini yeniden boyutlandırmayı deneyin. Bu davranışın nedenini belirlemeyi araştırıyoruz. 
-
 ### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Görüntüleri gözden geçirirken yeni etiketlenmiş görüntüler gösterilmez
 
 Etiketlenmiş tüm görüntüleri yüklemek için **ilk** düğmeyi seçin. **İlk** düğme, listenin önüne geri götürür, ancak etiketlenmiş tüm verileri yükler.
+
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Nesne algılama için etiketleme sırasında Esc tuşuna basmak, sol üst köşede Sıfır boyutlu bir etiket oluşturur. Etiketlerin bu durumda gönderilmesi başarısız oluyor.
+
+Yanındaki çapraz işaretine tıklayarak etiketi silin.

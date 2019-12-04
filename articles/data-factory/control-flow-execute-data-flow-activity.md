@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679940"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769584"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -49,10 +49,10 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gerekli
+Özellik | Açıklama | İzin verilen değerler | Gereklidir
 -------- | ----------- | -------------- | --------
-veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Evet
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı | IntegrationRuntimeReference | Evet
+veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı | IntegrationRuntimeReference | Yes
 hazırlama. linkedService | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabı | LinkedServiceReference | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 hazırlama. folderPath | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 
@@ -98,6 +98,43 @@ Hata ayıklama ardışık düzeni, veri akışı etkinlik ayarlarında belirtile
 ## <a name="monitoring-the-data-flow-activity"></a>Veri akışı etkinliğini izleme
 
 Veri akışı etkinliğinin bölümlemeyi, aşama süresini ve veri kökenini bilgilerini görüntüleyebileceğiniz özel bir izleme deneyimi vardır. **Eylemler**altında, gözlük simgesi aracılığıyla izleme bölmesini açın. Daha fazla bilgi için bkz. [veri akışlarını izleme](concepts-data-flow-monitoring.md).
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Sonraki bir etkinliğin veri akışı etkinlik sonuçlarını kullanma
+
+Veri akışı etkinliği, her bir kaynaktan okunan her bir havuza ve satıra yazılan satır sayısıyla ilgili ölçümleri çıktı olarak verir. Bu sonuçlar, etkinlik çalıştırma sonucunun `output` bölümünde döndürülür. Döndürülen ölçümler aşağıdaki JSON biçimindedir.
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+Örneğin, ' dataflowActivity ' adlı bir etkinlikte ' sink1 ' adlı bir havuza yazılan satır sayısına ulaşmak için `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`kullanın.
+
+Bu havuzda kullanılan ' source1 ' adlı bir kaynaktan okunan satır sayısını almak için `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`kullanın.
+
+> [!NOTE]
+> Bir havuzda yazılmış sıfır satır varsa, ölçümler ' de gösterilmez. Mevcut, `contains` işlevi kullanılarak doğrulanabilir. Örneğin `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')`, sink1 'e herhangi bir satırın yazılıp yazılmadığını kontrol eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

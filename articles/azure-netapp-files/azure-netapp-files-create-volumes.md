@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906245"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773560"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
@@ -32,9 +32,6 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 [Azure NetApp Files için bir alt ağ temsilcisi seçme](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
-
-> [!IMPORTANT] 
-> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
 
 * Hangi NFS sürümünün kullanılacağına karar verme  
   NFSv3, çok çeşitli kullanım durumlarını işleyebilir ve genellikle çoğu kurumsal uygulamalarda dağıtılır. Uygulamanızın gerektirdiği sürümü (NFSv3 veya NFSv 4.1) doğrulamanız ve uygun sürümü kullanarak biriminiz oluşturmanız gerekir. Örneğin, [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)kullanıyorsanız, NFSv 4.1 ile dosya kilitleme NFSv3 üzerinden önerilir. 
@@ -117,6 +114,6 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
 * [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırın](azure-netapp-files-configure-nfsv41-domain.md)
 * [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [NFS birimine yönelik dışarı aktarma ilkesini yapılandırma](azure-netapp-files-configure-export-policy.md)
+* [NFS Birimi için dışarı aktarma ilkesinin sorunlarını giderme ve çözme](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
 * [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

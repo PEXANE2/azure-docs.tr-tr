@@ -1,64 +1,64 @@
 ---
-title: Oluşturma ve PostgreSQL - tek bir sunucu için Azure veritabanı'nda güvenlik duvarı kurallarını yönetme
-description: Oluşturma ve PostgreSQL - Azure portalını kullanarak tek bir sunucu için Azure veritabanı güvenlik duvarı kurallarını yönetme
+title: Güvenlik duvarı kurallarını yönetme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı için güvenlik duvarı kuralları oluşturma ve yönetme-Azure portal kullanarak tek sunucu
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069018"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770314"
 ---
-# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Oluşturma ve PostgreSQL - Azure portalını kullanarak tek bir sunucu için Azure veritabanı güvenlik duvarı kurallarını yönetme
-Sunucu düzeyinde güvenlik duvarı kuralları, bir Azure veritabanı'na PostgreSQL sunucusu için belirtilen bir IP adresi veya IP adresi aralığı erişimi yönetmek için kullanılabilir.
+# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>PostgreSQL için Azure veritabanı için güvenlik duvarı kuralları oluşturma ve yönetme-Azure portal kullanarak tek sunucu
+Sunucu düzeyinde güvenlik duvarı kuralları, bir PostgreSQL için Azure veritabanı sunucusunun belirtilen IP adreslerinden veya IP adresi aralığından erişimini yönetmek için kullanılabilir.
 
-Sanal ağ (VNet) kuralları, sunucunuza erişim güvenliğini sağlamak için de kullanılabilir. Daha fazla bilgi edinin [oluşturma ve yönetme sanal ağ hizmet uç noktaları ve Azure portalını kullanarak kurallar](howto-manage-vnet-using-portal.md).
+Sanal ağ (VNet) kuralları, sunucunuza erişimi güvenli hale getirmek için de kullanılabilir. [Azure Portal kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturma ve yönetme](howto-manage-vnet-using-portal.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunda adımlamak için ihtiyacınız vardır:
-- Bir sunucu [PostgreSQL için Azure veritabanı oluşturma](quickstart-create-server-database-portal.md)
+Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
+- Bir sunucu [PostgreSQL Için Azure veritabanı oluşturma](quickstart-create-server-database-portal.md)
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure portalında sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
-1. PostgreSQL sunucusu sayfasında, ayarları altındaki başlığı tıklayın **bağlantı güvenliği** PostgreSQL için Azure veritabanı için bağlantı güvenliği sayfasına açmak.
+1. PostgreSQL sunucusu sayfasında, ayarlar başlığı altında **bağlantı güvenliği** ' ne tıklayarak PostgreSQL Için Azure veritabanı bağlantı güvenliği sayfasını açın.
 
-   ![Azure portalı - bağlantı güvenliği](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Azure portal-bağlantı güvenliği ' ne tıklayın](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. Tıklayın **IP'mi Ekle** araç. Bu otomatik olarak bir güvenlik duvarı kuralı, bilgisayarınızın genel IP adresi ile Azure sistem tarafından algılandığı şekilde oluşturur.
+2. Araç çubuğunda **IP Ekle** ' ye tıklayın. Bu otomatik olarak, Azure sistemi tarafından algılanan şekilde bilgisayarınızın genel IP adresi ile bir güvenlik duvarı kuralı oluşturur.
 
-   ![Azure portalı - IP'mi Ekle seçeneğine tıklayın](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   ![Azure portal-IP Ekle 'ye tıklayın](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. Yapılandırmayı kaydetmeden önce IP adresinizi doğrulayın. Bazı durumlarda, Azure portal tarafından gözlemlenen IP adresi, İnternet'e ve Azure sunucuları erişirken kullanılan IP adresi farklıdır. Bu nedenle, Başlangıç hem bitiş IP'si beklendiği gibi kuralı işlev yapmak için değiştirmeniz gerekebilir.
-   Kendi IP adresinizi kontrol etmek için bir arama motoru veya çevrimiçi bir Aracı'nı kullanın. Örneğin, arama "IP Adresim nedir?"
+3. Yapılandırmayı kaydetmeden önce IP adresinizi doğrulayın. Bazı durumlarda Azure portal tarafından gözlenen IP adresi, internet ve Azure sunucularına erişirken kullanılan IP adresinden farklıdır. Bu nedenle, kural işlevini beklendiği gibi yapmak için başlangıç IP 'sini ve bitiş IP 'sini değiştirmeniz gerekebilir.
+   Kendi IP adresinizi denetlemek için bir arama altyapısı veya başka bir çevrimiçi araç kullanın. Örneğin, "IP nedir?" ifadesini aratın.
 
-   ![Bing arama IP Adresim nedir](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   ![IP 'im nedir için Bing arama](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Ek adres aralıkları ekleyin. PostgreSQL için Azure veritabanı güvenlik duvarı kurallarında, tek bir IP adresi veya adres aralığını belirtebilirsiniz. Tek bir IP adresi için kural sınırlandırmak istiyorsanız, Başlangıç hem bitiş IP'si için aynı adres alanına yazın. Güvenlik duvarını açmak, Yöneticiler, kullanıcılar ve geçerli kimlik bilgilerine sahip oldukları PostgreSQL sunucusu üzerinde herhangi bir veritabanına erişmek için uygulamaları sağlar.
+4. Ek adres aralıkları ekleyin. PostgreSQL için Azure veritabanı güvenlik duvarı kurallarında, tek bir IP adresi veya bir adres aralığı belirtebilirsiniz. Kuralı tek bir IP adresiyle sınırlandırmak istiyorsanız, başlangıç IP 'si ve bitiş IP 'si için alana aynı adresi yazın. Güvenlik duvarının açılması, yöneticilerin, kullanıcıların ve uygulamaların geçerli kimlik bilgilerine sahip oldukları PostgreSQL sunucusundaki herhangi bir veritabanına erişmesine olanak sağlar.
 
-   ![Azure portalı - güvenlik duvarı kuralları](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Azure portal-güvenlik duvarı kuralları](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. Tıklayın **Kaydet** bu sunucu düzeyinde güvenlik duvarı kuralını kaydetmek için araç çubuğunda. Güvenlik duvarı kurallarının güncelleştirmenin başarılı olduğunu onaylanmasını bekleyin.
+5. Bu sunucu düzeyinde güvenlik duvarı kuralını kaydetmek için araç çubuğunda **Kaydet** ' e tıklayın. Güvenlik duvarı kuralları güncelleştirmesi başarılı oldu onay için bekleyin.
 
-   ![Azure portalı - Kaydet'e tıklayın](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   ![Azure portal-kaydet 'e tıklayın](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Azure'dan bağlanma
-PostgreSQL için Azure veritabanı sunucunuza bağlanmak Azure uygulamalarından izin vermek için Azure bağlantılarının etkinleştirilmesi gerekir. Örneğin, bir Azure Web Apps uygulama veya bir Azure sanal Makinesinde çalışan bir uygulamayı barındırmak için veya bir Azure Data Factory veri yönetimi ağ geçidi bağlanmak için. Kaynakların bu bağlantıları etkinleştirmek için aynı sanal ağ (VNet) veya kaynak grubu için güvenlik duvarı kuralı olması gerekmez. Azure’dan bir uygulama, veritabanı sunucunuza bağlanmayı denediğinizde güvenlik duvarı Azure bağlantılarına izin verildiğini doğrular. Birkaç bu tür bağlantıları etkinleştirmek için yöntem vardır. Başlangıç ve bitiş adresi 0.0.0.0’a eşit olan bir güvenlik duvarı ayarı, bu bağlantılara izin verildiğini gösterir. Alternatif olarak, ayarlayabileceğiniz **Azure hizmetlerine erişime izin ver** seçeneğini **ON** Portalı'nda **bağlantı güvenliği** bölmesi ve isabet **Kaydet**. Bağlantı denemesi izin verilmiyorsa, istek PostgreSQL sunucusu için Azure veritabanı ulaşmaz.
+Azure 'daki uygulamaların PostgreSQL için Azure veritabanı sunucusuna bağlanmasına izin vermek için, Azure bağlantılarının etkinleştirilmesi gerekir. Örneğin, bir Azure Web Apps uygulamasını veya bir Azure VM 'de çalışan bir uygulamayı barındırmak ya da bir Azure Data Factory veri yönetimi ağ geçidinden bağlanmak için. Bu bağlantıları etkinleştirmek için kaynakların, güvenlik duvarı kuralı için aynı sanal ağ (VNet) veya kaynak grubunda olması gerekmez. Azure’dan bir uygulama, veritabanı sunucunuza bağlanmayı denediğinizde güvenlik duvarı Azure bağlantılarına izin verildiğini doğrular. Bu tür bağlantıları etkinleştirmek için birkaç yöntem vardır. Başlangıç ve bitiş adresi 0.0.0.0’a eşit olan bir güvenlik duvarı ayarı, bu bağlantılara izin verildiğini gösterir. Alternatif olarak, **bağlantı güvenliği** bölmesinden portalda **Azure hizmetlerine erişime izin ver** seçeneğini ayarlayabilir ve **Kaydet** **' e basın** . Bağlantı girişimine izin verilmiyorsa, istek PostgreSQL için Azure veritabanı sunucusuna ulaşmaz.
 
 > [!IMPORTANT]
 > Bu seçenek, diğer müşterilerin aboneliklerinden gelen bağlantılar dahil Azure’dan tüm bağlantılara izin verecek şekilde güvenlik duvarınızı yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.
 > 
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Azure portalı aracılığıyla mevcut sunucu düzeyinde güvenlik duvarı kurallarını yönetme
-Güvenlik duvarı kurallarını yönetme adımlarını yineleyin.
-* Kullanmakta olduğunuz bilgisayarı eklemek için düğmeyi tıklatın + **IP'mi Ekle**. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+Güvenlik duvarı kurallarını yönetmek için adımları yineleyin.
+* Geçerli bilgisayarı eklemek için düğmeye tıklayarak **IP 'Umu ekleyin**. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 * Daha fazla IP adresi eklemek için Kural Adı, Başlangıç IP Adresi ve Bitiş IP Adresi’ni yazın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 * Mevcut bir kuralı değiştirmek için kuraldaki alanlardan dilediğinize tıklayıp değiştirin. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Mevcut bir kuralı silmek için üç nokta […] ve **Sil** kuralı kaldırmak için. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+* Mevcut bir kuralı silmek için, üç nokta (...] simgesine tıklayın ve **Sil** ' e tıklayarak kuralı kaldırın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Benzer şekilde, yazabilirsiniz [oluşturun ve Azure veritabanı Azure CLI kullanarak PostgreSQL için güvenlik duvarı kurallarını yönetme](howto-manage-firewall-using-cli.md).
-- Daha fazla güvenli sunucunuz tarafından erişim [oluşturma ve yönetme sanal ağ hizmet uç noktaları ve Azure portalını kullanarak kurallar](howto-manage-vnet-using-portal.md).
-- PostgreSQL sunucusu için Azure veritabanı bağlanma konusunda yardım için bkz. [PostgreSQL için Azure veritabanı için bağlantı kitaplıkları](concepts-connection-libraries.md).
+- Benzer şekilde, [Azure CLI kullanarak PostgreSQL Için Azure veritabanı güvenlik duvarı kuralları oluşturmak ve yönetmek](howto-manage-firewall-using-cli.md)üzere komut dosyası oluşturabilirsiniz.
+- [Azure Portal kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturup yöneterek](howto-manage-vnet-using-portal.md)sunucunuza daha güvenli bir şekilde erişin.
+- PostgreSQL için Azure veritabanı sunucusuna bağlanma konusunda yardım için bkz. [PostgreSQL Için Azure veritabanı bağlantı kitaplıkları](concepts-connection-libraries.md).

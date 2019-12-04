@@ -1,63 +1,63 @@
 ---
-title: SSL bağlantısı - tek bir sunucu PostgreSQL için Azure veritabanı'nda yapılandırma
-description: Yönergeler ve bilgiler tek sunucu ve SSL bağlantıları düzgün bir şekilde kullanmak için ilişkili uygulamalar - PostgreSQL için Azure veritabanı yapılandırılamadı.
+title: SSL-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı için SSL bağlantısının nasıl yapılandırılacağı hakkında yönergeler ve bilgiler-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 686adfb2998eff10ef4b9f378163b164ba970c56
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 21b4dffa135e1311be8c738c634de22304665695
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461836"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768155"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>SSL bağlantısı - tek bir sunucu PostgreSQL için Azure veritabanı'nda yapılandırma
-PostgreSQL için Azure veritabanı sunucunuzla istemci uygulamalarınız için Güvenli Yuva Katmanı (SSL) kullanarak PostgreSQL hizmetine bağlanma tercih eder. Veritabanı sunucunuz ve istemci uygulamalarınız arasında SSL bağlantılarının zorlanması sunucuya uygulamanız arasındaki veri akışını şifreleyerek "adam-in--middle" saldırılarına karşı korumaya yardımcı olur.
+# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda SSL bağlantısını yapılandırma-tek sunucu
+PostgreSQL için Azure veritabanı, Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarınızı PostgreSQL hizmetine bağlamayı tercih eder. Veritabanı sunucunuz ile istemci uygulamalarınız arasında SSL bağlantılarını zorunlu tutma, sunucu ve uygulamanız arasındaki veri akışını şifreleyerek "ortadaki adam" saldırılarına karşı korunmaya yardımcı olur.
 
-Varsayılan olarak, PostgreSQL veritabanı hizmeti SSL bağlantısını zorunlu tutacak şekilde yapılandırılır. İstemci uygulamanızın SSL bağlantısını desteklememesi durumunda SSL zorunluluğunu devre dışı seçebilirsiniz. 
+Varsayılan olarak, PostgreSQL veritabanı hizmeti SSL bağlantısı gerektirecek şekilde yapılandırılmıştır. İstemci uygulamanız SSL bağlantısını desteklemiyorsa SSL gerektirmeyi devre dışı bırakabilirsiniz. 
 
-## <a name="enforcing-ssl-connections"></a>SSL bağlantılarının zorlanması
-Azure portalı ve CLI sağlanan PostgreSQL sunucuları için tüm Azure veritabanı için zorlama SSL bağlantıları, varsayılan olarak etkindir. 
+## <a name="enforcing-ssl-connections"></a>SSL bağlantılarını zorlama
+Azure portal ve CLı aracılığıyla sağlanan PostgreSQL için tüm Azure veritabanı sunucularına yönelik olarak, SSL bağlantılarının zorlanması varsayılan olarak etkindir. 
 
-Benzer şekilde, Azure portalında sunucunuzu "Bağlantı dizeleri" ayarları önceden tanımlanan bağlantı dizelerini SSL kullanarak veritabanı sunucunuza bağlanmak yaygın diller için gerekli parametreleri içerir. SSL parametresi örneğin bağlayıcı göre değişir "ssl = true" veya "sslmode = gerektirir" veya "sslmode = gerekli" yükleyeceklerdir.
+Benzer şekilde, Azure portal sunucunuz altındaki "bağlantı dizeleri" ayarlarında önceden tanımlanmış olan bağlantı dizeleri, SSL kullanarak veritabanı sunucunuza bağlanmak için gereken ortak diller için gerekli parametreleri içerir. SSL parametresi bağlayıcıya göre değişir; Örneğin, "SSL = true" veya "sslmode = gerektir" veya "sslmode = Required" ve diğer Çeşitlemeler.
 
-## <a name="configure-enforcement-of-ssl"></a>SSL zorlama yapılandırın
-İsteğe bağlı olarak SSL bağlantısını zorunlu devre dışı bırakabilirsiniz. Her zaman etkinleştirmek için Microsoft Azure önerir **SSL'yi zorunlu bağlantı** için Gelişmiş güvenlik ayarı.
+## <a name="configure-enforcement-of-ssl"></a>SSL zorlamayı yapılandırma
+İsteğe bağlı olarak SSL bağlantısı zorlamayı devre dışı bırakabilirsiniz. Microsoft Azure, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
-PostgreSQL için Azure veritabanı sunucunuza gidin ve tıklayarak **bağlantı güvenliği**. İki durumlu düğmeyi etkinleştirme veya devre dışı kullanın **SSL'yi zorunlu bağlantı** ayarı. ' A tıklayarak **Kaydet**. 
+PostgreSQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın. Ardından **Kaydet**' e tıklayın. 
 
-![Bağlantı güvenliği - devre dışı bırakma SSL zorlama](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+![Bağlantı güvenliği-SSL zorlamayı devre dışı bırak](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-Ayar görüntüleyerek onaylayabilirsiniz **genel bakış** görmek için sayfayı **SSL zorlama durumu** göstergesi.
+**SSL zorlama durumu** göstergesini görmek Için **genel bakış** sayfasını görüntüleyerek ayarı doğrulayabilirsiniz.
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-Etkinleştirmek veya devre dışı bırakabileceğiniz **ssl zorlama** parametresini kullanarak `Enabled` veya `Disabled` değerlerini sırasıyla Azure CLI.
+Azure CLı 'de sırasıyla `Enabled` veya `Disabled` değerlerini kullanarak **SSL zorlama** parametresini etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>SSL bağlantıları, uygulama veya framework desteklediği olun
-PostgreSQL veritabanı hizmetlerini kullanan bazı uygulama çerçeveleri SSL yüklemesi sırasında varsayılan olarak etkinleştirmez. PostgreSQL sunucunuza SSL bağlantılarını zorlar, ancak uygulama SSL için yapılandırılmamış uygulama, veritabanı sunucunuza bağlanmak başarısız olabilir. SSL bağlantıları etkinleştirme hakkında bilgi için uygulamanızın belgelerine bakın.
+## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Uygulamanızın veya çerçevesinin SSL bağlantılarını desteklediğinden emin olun
+Veritabanı Hizmetleri için PostgreSQL kullanan bazı uygulama çerçeveleri, yükleme sırasında varsayılan olarak SSL 'yi etkinleştirmez. PostgreSQL sunucunuz SSL bağlantıları zorluyor, ancak uygulama SSL için yapılandırılmamışsa, uygulama veritabanı sunucunuza bağlanamadan başarısız olabilir. SSL bağlantılarını nasıl etkinleştireceğinizi öğrenmek için uygulamanızın belgelerine başvurun.
 
 
-## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>SSL bağlantısını için sertifika doğrulaması gerektiren uygulamalar
-Bazı durumlarda, uygulamaları güvenli bir şekilde bağlanmak için bir güvenilen sertifika yetkilisi (CA) sertifika dosyasından (.cer) oluşturulan bir yerel sertifika dosyası gerektirir. PostgreSQL sunucusu konumu için Azure veritabanı'na bağlanmak için sertifikayı https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem. Sertifika dosyasını indirin ve tercih edilen konumunuza kaydedin. 
+## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>SSL bağlantısı için sertifika doğrulaması gerektiren uygulamalar
+Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından (. cer) oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı sunucusuna bağlanma sertifikası https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem konumunda bulunur. Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin. 
 
-### <a name="connect-using-psql"></a>Psql kullanarak bağlan
-Aşağıdaki örnek, psql komut satırı yardımcı programını kullanarak PostgreSQL sunucunuza bağlanmak gösterilmektedir. Kullanım `sslmode=verify-full` SSL sertifika doğrulama zorlamak için bağlantı dizesi ayarı. Yerel sertifika dosyası yoluna geçirmeniz `sslrootcert` parametresi.
+### <a name="connect-using-psql"></a>Psql kullanarak bağlanma
+Aşağıdaki örnek, psql komut satırı yardımcı programını kullanarak PostgreSQL sunucunuza nasıl bağlanılacağını gösterir. SSL sertifikası doğrulamasını zorlamak için `sslmode=verify-full` bağlantı dizesi ayarını kullanın. Yerel sertifika dosya yolunu `sslrootcert` parametresine geçirin.
 
-Psql bağlantı dizesi örneği aşağıdadır:
+Psql bağlantı dizesinin bir örneği aşağıda verilmiştir:
 ```
 psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=myusern@mydemoserver"
 ```
 
 > [!TIP]
-> Onaylamak için geçirilen değer `sslrootcert` kaydettiğiniz sertifika dosyası yolu eşleşir.
+> `sslrootcert` geçirilen değerin, kaydettiğiniz sertifikanın dosya yoluyla eşleştiğinden emin olun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Çeşitli uygulama bağlantı seçenekleri gözden [PostgreSQL için Azure veritabanı için bağlantı kitaplıkları](concepts-connection-libraries.md).
+[PostgreSQL Için Azure veritabanı bağlantı kitaplıkları](concepts-connection-libraries.md)'ndaki çeşitli uygulama bağlantısı seçeneklerini gözden geçirin.

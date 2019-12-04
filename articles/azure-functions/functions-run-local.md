@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226692"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784723"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -109,11 +109,11 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 1. Aşağıda listelenen uygun Linux sürümü dizelerinden biri için `/etc/apt/sources.list.d/dotnetdev.list` dosyasını denetleyin:
 
-    | Linux dağıtım | Sürüm |
+    | Linux dağıtımı | Sürüm |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
-    | Debian 9 | `stretch` |
-    | Debian 8 | `jessie` |
+    | Borçlu 9 | `stretch` |
+    | Desek8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
@@ -133,7 +133,7 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 1. [Uzantı demeti]kullanmayı planlamıyorsanız, [Linux için .NET Core 2. x SDK](https://www.microsoft.com/net/download/linux)'yı yükleyebilirsiniz.
 
-## <a name="create-a-local-functions-project"></a>Bir yerel işlevler projesi oluşturma
+## <a name="create-a-local-functions-project"></a>Yerel Işlevler projesi oluşturma
 
 Bir işlevler proje dizini, [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](#local-settings-file)dosyalarını, tek tek işlevlerin kodunu içeren alt klasörlerle birlikte içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
 
@@ -211,7 +211,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 Geliştirme için depolama öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
-- [Azure Portal], **depolama hesaplarını**arayıp seçin. 
+- [Azure portalda], **depolama hesaplarını**arayıp seçin. 
   Azure portal ![Storagea hesaplarını seçin](./media/functions-run-local/select-storage-accounts.png)
   
   Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
@@ -517,13 +517,13 @@ Bu tür akış günlükleri, işlev uygulamanız için [Application Insights tü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Functions Core Tools [açık kaynaktır ve GitHub üzerinde barındırılır](https://github.com/azure/azure-functions-cli).  
+[Microsoft](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools kullanarak Azure işlevleri geliştirmeyi, test yapmayı ve yayımlamayı öğrenin Azure Functions Core Tools [açık kaynak ve GitHub üzerinde barındırılır](https://github.com/azure/azure-functions-cli).  
 Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure portalda]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

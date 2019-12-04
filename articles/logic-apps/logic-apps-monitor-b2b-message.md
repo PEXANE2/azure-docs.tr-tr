@@ -1,20 +1,19 @@
 ---
-title: Azure Izleyici ile B2B iletilerini izleme-Azure Logic Apps
+title: Azure Izleyici ile B2B iletilerini izleme
 description: Azure Izleyici 'yi kullanarak Azure Logic Apps AS2, x12 ve EDIOLGU iletileri için tanılama günlüğü ayarlama
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: cd96376f764ec3075b916bf2207ec6ee3dd3fcbd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680197"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791929"
 ---
 # <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Azure Logic Apps B2B iletileri için tanılama günlüğü ayarlama
 
@@ -51,7 +50,7 @@ Doğrudan tümleştirme hesabınızdan veya [Azure İzleyici hizmeti aracılığ
    | **Abonelik** | <*Azure-subscription-name*> | Tümleştirme hesabınızla ilişkili Azure aboneliği | 
    | **Kaynak grubu** | <*Azure-Resource-Group-name*> | Tümleştirme hesabınız için Azure Kaynak grubu | 
    | **Kaynak türü** | **Tümleştirme hesaplarına genel bakış** | Günlük kaydını açmak istediğiniz Azure kaynağının türü | 
-   | **Kaynak** | <*tümleştirme-hesap-adı* > | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
+   | **Kaynak** | <*tümleştirme-hesap-adı*> | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
    ||||  
 
    Örnek:
@@ -93,7 +92,7 @@ Doğrudan tümleştirme hesabınızdan veya [Azure İzleyici hizmeti aracılığ
    | **Abonelik** | <*Azure-subscription-name*> | Tümleştirme hesabınızla ilişkili Azure aboneliği | 
    | **Kaynak grubu** | <*Azure-Resource-Group-name*> | Tümleştirme hesabınız için Azure Kaynak grubu | 
    | **Kaynak türü** | **Tümleştirme hesaplarına genel bakış** | Günlük kaydını açmak istediğiniz Azure kaynağının türü | 
-   | **Kaynak** | <*tümleştirme-hesap-adı* > | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
+   | **Kaynak** | <*tümleştirme-hesap-adı*> | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
    ||||  
 
    Örnek:

@@ -1,17 +1,17 @@
 ---
-title: Azure portal MySQL için Azure veritabanı 'nda yavaş sorgu günlüklerini yapılandırma ve erişme
+title: Yavaş sorgu günlüklerine erişme-Azure portal-MySQL için Azure veritabanı
 description: Bu makalede, Azure portal MySQL için Azure veritabanı 'nda yavaş günlüklerin nasıl yapılandırılacağı ve erişebileceği açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 7eeeb729973e484e9acb26f3ac8cc42693f72eea
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 52d219a94676e0f1ce4ceac31b0b50c9d36665ba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841541"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770586"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal yavaş sorgu günlüklerini yapılandırma ve erişme
 
@@ -23,9 +23,9 @@ Bu makaledeki adımlarda, [MySQL Için Azure veritabanı sunucusu](quickstart-cr
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 MySQL yavaş sorgu günlüğüne erişimi yapılandırın. 
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
-2. MySQL sunucusu için Azure veritabanı'nı seçin.
+2. MySQL için Azure veritabanı sunucunuzu seçin.
 
 3. Kenar çubuğu 'ndaki **izleme** bölümünde **sunucu günlükleri**' ni seçin. 
    Sunucu günlüğü seçeneklerinin ekran görüntüsünü ![](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
@@ -45,7 +45,7 @@ Günlüğe kaydetme başladıktan sonra, kullanılabilir yavaş sorgu günlükle
 
 1. Azure portalı açın.
 
-2. MySQL sunucusu için Azure veritabanı'nı seçin.
+2. MySQL için Azure veritabanı sunucunuzu seçin.
 
 3. Kenar çubuğu 'ndaki **izleme** bölümünde **sunucu günlükleri**' ni seçin. Sayfa, günlük dosyalarınızın bir listesini gösterir.
 

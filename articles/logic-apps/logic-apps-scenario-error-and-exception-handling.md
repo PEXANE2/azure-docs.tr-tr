@@ -1,21 +1,18 @@
 ---
-title: Özel durum işleme & hata günlüğü senaryosu-Azure Logic Apps
+title: Hata günlüğü senaryosu & özel durum işleme
 description: Gelişmiş özel durum işleme ve hata günlüğü Azure Logic Apps için gerçek kullanım örneği ve senaryo
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: estfan
-ms.reviewer: LADocs
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680171"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792982"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Logic Apps için özel durum işleme ve hata günlüğü
 
@@ -432,7 +429,7 @@ Açık kaynaklı Azure Logic Apps özel durum yönetim API 'SI uygulamanız bura
 > Her iki denetleyici de `async Task<dynamic>` işlemler kullanır, bu nedenle işlem gövdesinde Azure Cosmos DB şeması oluşturuyoruz. 
 > 
 
-Azure Cosmos DB içindeki her belge benzersiz bir KIMLIĞE sahip olmalıdır. @No__t_0 kullanıyor ve bir Unix zaman damgası değerine (Double) dönüştürülen bir zaman damgası ekliyoruz. Kesirli değeri kaldırmak için değeri kestik.
+Azure Cosmos DB içindeki her belge benzersiz bir KIMLIĞE sahip olmalıdır. `PatientId` kullanıyor ve bir Unix zaman damgası değerine (Double) dönüştürülen bir zaman damgası ekliyoruz. Kesirli değeri kaldırmak için değeri kestik.
 
 [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs)'dan hata denetleyicisi API 'sinin kaynak kodunu görüntüleyebilirsiniz.
 
@@ -469,7 +466,7 @@ Aşağıdaki sözdizimini kullanarak bir mantıksal uygulamadan API 'YI çağır
  }
 ```
 
-Önceki kod örneğindeki ifade, **başarısız**olup olmadığını kontrol *Create_NewPatientRecord* durumunu denetler.
+Önceki kod örneğindeki ifade, **başarısız** *Create_NewPatientRecord* durumunu denetler.
 
 ## <a name="summary"></a>Özet
 

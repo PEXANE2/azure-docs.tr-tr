@@ -1,19 +1,19 @@
 ---
-title: 'Öğretici: Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucusu sağlama'
+title: 'Öğretici: MySQL için Azure veritabanı-Azure Resource Manager şablonu oluşturma'
 description: Bu öğreticide, Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucu dağıtımlarını sağlama ve otomatik hale getirme açıklanmaktadır.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163907"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771109"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucusu sağlama
 
@@ -88,11 +88,11 @@ Bu istekte, özelleştirilmesi gereken değerler şunlardır:
 +   `sku/tier`-dağıtım için temel, Generalamacını veya Memoryoptıılanmış katmanı belirleyin.
 +   `sku/capacity`-vCore kapasitesini belirtin. Olası değerler arasında 2, 4, 8, 16, 32 veya 64 vardır.
 +   `sku/family`-sunucu dağıtımı için donanım oluşturmayı seçmek üzere 5. nesil belirtin.
-+   `sku/name`-TierPrefix_family_capacity belirtin. Örneğin B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Her bölge ve katman için geçerli değerleri anlamak üzere [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgelerine bakın.
++   `sku/name` TierPrefix_family_capacity belirtin. Örneğin B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Her bölge ve katman için geçerli değerleri anlamak üzere [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgelerine bakın.
 +   `resources/properties/virtualNetworkSubnetId`-VNet 'teki Azure MySQL sunucusunun yerleştirilmesi gereken alt ağın Azure tanıtıcısını belirtin. 
 +   `tags(optional)`-isteğe bağlı Etiketler, faturalandırmayla ilgili kaynakları kategorize etmek için kullanacağınız anahtar değer çiftleridir.
 
-Kuruluşunuz için Azure veritabanı dağıtımlarını otomatik hale getirmek üzere bir Azure Resource Manager şablonu oluşturmak istiyorsanız, öneri Azure hızlı başlangıç GitHub galerisinde örnek [Azure Resource Manager şablonundan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) başlatılacak Birincisi ve en üstünde derleyin. 
+Kuruluşunuz için Azure veritabanı dağıtımlarını otomatik hale getirmek üzere bir Azure Resource Manager şablonu oluşturmak istiyorsanız, ilk olarak Azure hızlı başlangıç GitHub galerisinde örnek [Azure Resource Manager şablonundan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) başlayıp üzerine inşa edilecek. 
 
 Azure Resource Manager şablonlarına yeni başladıysanız ve denemek istiyorsanız aşağıdaki adımları izleyerek başlayabilirsiniz:
 +   Örnek [Azure Resource Manager şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) Azure hızlı başlangıç galerisinden kopyalayın veya indirin.  

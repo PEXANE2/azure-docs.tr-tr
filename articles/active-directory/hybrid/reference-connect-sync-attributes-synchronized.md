@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95b230d4f9699f15296ba94946c7063cabd0516
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847203"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766098"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Eşitleme Azure AD Connect: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitleme tarafından eşitlenen öznitelikleri listeler.  
@@ -61,7 +61,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | , |X |X | | |
 | , |X | |X | |
 | \ |X |X | | |
-| Şirketlerin |X |X | | |
+| şirketlerin |X |X | | |
 | countryCode |X |X | | |
 | bölüme |X |X | | |
 | açıklama | | |X | |
@@ -182,7 +182,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | , |X |X | | |
 | , |X | |X | |
 | \ |X |X | | |
-| Şirketlerin |X |X | | |
+| şirketlerin |X |X | | |
 | countryCode |X |X | | |
 | bölüme |X |X | | |
 | açıklama |X |X |X | |
@@ -209,7 +209,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | hideDLMembership | | |X | |
 | homePhone 'dur |X |X | | |
 | bilgisine |X |X |X | |
-| Harf |X |X | | |
+| harf |X |X | | |
 | IPPhone 'dur |X |X | | |
 | girişindeki |X |X | | |
 | - |X |X |X | |
@@ -263,7 +263,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | , |X |X | | |
 | , |X | |X | |
 | \ |X |X | | |
-| Şirketlerin |X |X | | |
+| şirketlerin |X |X | | |
 | bölüme |X |X | | |
 | açıklama |X |X |X | |
 | displayName |X |X |X | |
@@ -344,7 +344,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | , |X |X | | |
 | , |X | |X | |
 | \ |X |X | | |
-| Şirketlerin |X |X | | |
+| şirketlerin |X |X | | |
 | countryCode |X |X | | |
 | açıklama |X |X |X | |
 | displayName |X |X |X | |
@@ -430,7 +430,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Filtreleme: istemcilerden şirket içi filtreleme ve çevrimiçi güvenli ve engellenen gönderen verilerini yazar. |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Filtreleme: istemcilerden şirket içi filtreleme ve çevrimiçi güvenli ve engellenen gönderen verilerini yazar. |
 | msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Birleşik mesajlaşmayı etkinleştirme (UM)-çevrimiçi sesli posta: Microsoft Lync Server tümleştirmesi tarafından, kullanıcının çevrimiçi hizmetler ' de sesli posta olduğunu şirket içi Lync Server 'a belirtmek için kullanılır. |
-| msExchUserHoldPolicies| MS-EXC-hUserHoldPolicies |X | | |Dava tutma: bulut hizmetlerinin, hangi kullanıcıların bir bekletme tutma altında olduğunu belirlemesini sağlar. |
+| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |Dava tutma: bulut hizmetlerinin, hangi kullanıcıların bir bekletme tutma altında olduğunu belirlemesini sağlar. |
 | proxyAddresses| proxyAddresses |X |X |X |Yalnızca Exchange Online 'dan gelen X500 adresi eklenir. |
 | publicDelegates| ms-Exch-Genel-Temsilciler  |X | | |Exchange Online posta kutusuna, şirket içi Exchange posta kutusu olan kullanıcılar için Sendonbeyarı Azure AD Connect Build 1.1.552.0 veya After gerektirir. |
 

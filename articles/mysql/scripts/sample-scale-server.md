@@ -1,5 +1,5 @@
 ---
-title: Azure CLI betiği - MySQL için Azure Veritabanı sunucusunu ölçeklendirme
+title: CLı betiği-ölçek sunucusu-MySQL için Azure veritabanı
 description: Bu örnek CLI betiği, ölçümleri sorguladıktan sonra MySQL için Azure Veritabanı sunucusunu farklı bir performans düzeyinde olacak şekilde ölçeklendirir.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/07/2019
-ms.openlocfilehash: f54b3f6fa8bb37f57479d6a9e7bc05340e411a48
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 12/02/2019
+ms.openlocfilehash: 54082daeeee2d5cc894aee49e2c3456e377637f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882936"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771320"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI kullanarak MySQL için Azure Veritabanı sunucusunu izleme ve ölçeklendirme
 Bu örnek CLı betiği, ölçümleri sorguladıktan sonra, tek bir MySQL için Azure veritabanı sunucusu için işlem ve depolamayı ölçeklendirir. İşlem ölçeği yukarı veya aşağı olabilir. Depolama alanı yalnızca ölçeği değiştirebilir.
@@ -33,7 +33,7 @@ Betik çalıştırıldıktan sonra aşağıdaki komutu kullanarak kaynak grubunu
 ## <a name="script-explanation"></a>Betik açıklaması
 Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 
-| **Komutu** | **Notlar** |
+| **Komut** | **Notlar** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Veritabanlarını barındıran bir MySQL sunucusu oluşturur. |
@@ -43,5 +43,5 @@ Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [MySQL Için Azure veritabanı işlem ve depolama](../concepts-pricing-tiers.md) hakkında daha fazla bilgi edinin
-- Ek betikleri deneyin: [MySQL için Azure veritabanı Azure CLı örnekleri](../sample-scripts-azure-cli.md)
+- Ek betikleri deneyin: [MySQL için Azure Veritabanı Azure CLI örnekleri](../sample-scripts-azure-cli.md)
 - [Azure CLI](/cli/azure) hakkında daha fazla bilgi edinin

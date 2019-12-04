@@ -2,21 +2,18 @@
 title: Power otomatikleştirmede akışları Azure Logic Apps dışa aktarma
 description: Azure Resource Manager şablonları olarak dışa aktararak Power otomatikleştirmede akışları Azure Logic Apps geçirme
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583247"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792636"
 ---
-# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Güç otomatikleştirmede akışları dışarı aktarın ve Azure Logic Apps 'e dağıtın
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
 Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [Power otomatikleştirmede](https://flow.microsoft.com) [Azure Logic Apps](../logic-apps/logic-apps-overview.md)geçirebilirsiniz. Akışınızı bir mantıksal uygulama için bir Azure Resource Manager şablonu olarak dışa aktarabilir, bu mantıksal uygulama şablonunu bir Azure Kaynak grubuna dağıtabilir ve ardından mantıksal uygulama tasarımcısında bu mantıksal uygulamayı açabilirsiniz.
 
@@ -25,7 +22,7 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 >
 > Power otomatikleştirmede dışarıya aktarılmış OpenAPI tabanlı akışlar, mantıksal uygulama şablonları olarak dağıtım için şu anda desteklenmiyor. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -59,7 +56,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
 
 1. Düzenleyici, şablonunuzda JSON, parametreler ve kaynakları görüntülendikten sonra **Kaydet**' i seçin.
   
-   ![Şablonu kaydetme](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
+   ![Şablonu kaydet](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
 1. Şimdi şablon için bu giriş parametrelerini belirtin:
 
@@ -144,7 +141,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    ![Dağıtım parametrelerini Düzenle](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örneğin:
+   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örnek:
 
    ![Çıktı penceresi](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

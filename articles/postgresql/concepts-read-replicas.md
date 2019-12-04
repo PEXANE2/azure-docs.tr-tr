@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
+title: Çoğaltmaları oku-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nda çoğaltmayı oku özelliği (tek sunucu) açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 5d3d752f549fe336f584fa3534b61cb5a009c3bd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158812"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792283"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -40,7 +40,9 @@ Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsin
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Ana sunucunuzun bulunduğu yere bakılmaksızın aşağıdaki bölgelerin herhangi birinde her zaman bir okuma çoğaltması oluşturabilirsiniz. Evrensel çoğaltma bölgeleri şunlardır:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2.
+Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD.
+
+\* Batı ABD 2 bir çapraz bölge çoğaltma konumu olarak geçici olarak kullanılamıyor.
 
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
@@ -123,7 +125,7 @@ Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Durdur eylemi, ço�
 
 [Bir çoğaltmaya çoğaltmayı durdurmayı](howto-read-replicas-portal.md)öğrenin.
 
-## <a name="failover"></a>Yük devretme
+## <a name="failover"></a>Yük Devretme
 Ana ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
 
 Çoğaltma zaman uyumsuz olduğundan, ana ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, ana sunucu üzerinde çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniye ile birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.

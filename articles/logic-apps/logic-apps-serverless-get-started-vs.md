@@ -1,21 +1,17 @@
 ---
-title: Visual Studio 'da ilk sunucusuz uygulamayı derleme-Azure Logic Apps
+title: Visual Studio 'da ilk sunucusuz uygulamayı derleme
 description: Visual Studio 'da Azure Logic Apps ve Azure Işlevleri 'ni kullanarak sunucusuz bir uygulama oluşturun, dağıtın ve yönetin
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: vs-azure
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 76ab76440ddc25f4b1cf51f7d540a6e21614541d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680122"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792956"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio 'da Azure Logic Apps ve Azure Işlevleri 'ni kullanarak ilk sunucusuz uygulamanızı derleme
 
@@ -68,7 +64,7 @@ Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](..
 
    ![Visual Studio 'da yeni proje oluştur](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. **Yüklü** altında **Visual C#** veya **Visual Basic**’i seçin. Ardından **bulut**  > **Azure Kaynak grubu**' nu seçin.
+1. **Yüklü** altında **Visual C#** veya **Visual Basic**’i seçin. Ardından **bulut** > **Azure Kaynak grubu**' nu seçin.
 
    > [!NOTE]
    > **Bulut** kategorisi veya **Azure Kaynak grubu** projesi yoksa, Visual Studio için Azure SDK 'sını yüklediğinizden emin olun.
@@ -104,7 +100,7 @@ Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](..
 
 Mantıksal uygulamanızı Visual Studio 'daki Logic App Designer 'da açabilmek için önce Azure 'da zaten dağıtılmış bir Azure Kaynak grubunuz olması gerekir. Tasarımcı daha sonra mantıksal uygulamanızdaki kaynak ve hizmetlere bağlantılar oluşturabilir. Bu görev için, Visual Studio 'dan Azure portal çözümünüzü dağıtmak üzere aşağıdaki adımları izleyin:
 
-1. Çözüm Gezgini, kaynak projenizin kısayol menüsünde**yeni** >  **Dağıt** ' ı seçin.
+1. Çözüm Gezgini, kaynak projenizin kısayol menüsünde **yeni** > **Dağıt** ' ı seçin.
 
    ![Kaynak grubu için yeni dağıtım oluştur](./media/logic-apps-serverless-get-started-vs/deploy.png)
 

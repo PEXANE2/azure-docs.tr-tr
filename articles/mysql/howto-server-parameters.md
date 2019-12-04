@@ -1,28 +1,28 @@
 ---
-title: Nasıl MySQL için Azure veritabanı'nda sunucu parametrelerini yapılandırma
-description: Bu makalede, Azure portalını kullanarak MySQL için Azure veritabanı'nda MySQL sunucusu parametrelerini yapılandırılacağını açıklar.
+title: Sunucu parametrelerini Yapılandırma-Azure portal-MySQL için Azure veritabanı
+description: Bu makalede, Azure portal kullanarak MySQL için Azure veritabanı 'nda MySQL Server parametrelerinin nasıl yapılandırılacağı açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: d589800f62f96510a09d23cb6e8794177121c6dd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.date: 12/02/2019
+ms.openlocfilehash: f803b7cccf3520c309e6b33d99b5565cfc4fdd01
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419706"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764925"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Nasıl MySQL için Azure veritabanı'nda Azure portalını kullanarak sunucu parametrelerini yapılandırma
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
-MySQL için Azure veritabanı, bazı sunucu parametreleri yapılandırılmasını destekler. Bu makalede Azure portalını kullanarak bu parametreleri yapılandırma açıklanır. Tüm sunucu parametreleri ayarlanabilir.
+MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmasını destekler. Bu makalede Azure portal kullanılarak bu parametrelerin nasıl yapılandırılacağı açıklanır. Tüm sunucu parametreleri ayarlanamaz.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure portalında sunucu parametrelerini gidin
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure portal sunucu parametrelerine git
 
-1. Azure portalında oturum açın, sonra MySQL için Azure veritabanınızı bulun.
+1. Azure portal oturum açın ve ardından MySQL Server için Azure veritabanınızı bulun.
 2. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MySQL için Azure veritabanı sunucusu için sunucu parametreleri sayfasını açın.
 ![Azure portal sunucu parametreleri sayfası](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Ayarlamak için gereken herhangi bir ayarı bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
+3. Ayarlamanız gereken ayarları bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
 açılan ![](./media/howto-server-parameters/3-toggle_parameter.png) Sırala
 4. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
 değişiklikleri kaydetme veya atma ![](./media/howto-server-parameters/4-save_parameters.png)
@@ -31,9 +31,9 @@ değişiklikleri kaydetme veya atma ![](./media/howto-server-parameters/4-save_p
 
 ## <a name="list-of-configurable-server-parameters"></a>Yapılandırılabilir sunucu parametrelerinin listesi
 
-Desteklenen sunucu parametrelerinin listesi sürekli olarak artmaktadır. Sunucu parametreleri sekmesi tanımını Al ve uygulama gereksinimlerinize göre sunucu parametrelerini yapılandırma Azure portalında kullanın.
+Desteklenen sunucu parametrelerinin listesi sürekli olarak büyüyordur. Tanım almak ve uygulama gereksinimlerinize göre sunucu parametrelerini yapılandırmak için Azure portal içindeki sunucu parametreleri sekmesini kullanın.
 
-## <a name="non-configurable-server-parameters"></a>Yapılandırılabilir olmayan sunucu parametreleri
+## <a name="non-configurable-server-parameters"></a>Yapılandırılamayan sunucu parametreleri
 
 InnoDB arabellek havuzu boyutu yapılandırılamaz ve [fiyatlandırma katmanınıza](concepts-service-tiers.md)bağlı değildir.
 
@@ -53,7 +53,7 @@ InnoDB arabellek havuzu boyutu yapılandırılamaz ve [fiyatlandırma katmanın�
 |Bellek için İyileştirilmiş| 16| 62464| 124928|
 |Bellek için İyileştirilmiş| 32| 125952| 251904|
 
-Bu ek sunucu parametreleri sistemde yapılandırılabilir değildir:
+Bu ek sunucu parametreleri sistemde yapılandırılamaz:
 
 |**Parametresinin**|**Sabit değer**|
 | :------------------------ | :-------- |
@@ -64,7 +64,7 @@ Bu ek sunucu parametreleri sistemde yapılandırılabilir değildir:
 
 Burada listelenmeyen diğer sunucu parametreleri, [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) ve [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)sürümleri için MySQL varsayılan değerlerine ayarlanır.
 
-## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresi ile çalışma
+## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresiyle çalışma
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarını doldurma
 
@@ -83,13 +83,13 @@ Kullanılabilir saat dilimi değerlerini görüntülemek için aşağıdaki komu
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Genel bir düzeyinde saat dilimi ayarlama
+### <a name="setting-the-global-level-time-zone"></a>Genel düzey saat dilimini ayarlama
 
-Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Değerine ayarlar genel saat dilimi aşağıda "ABD / Pasifik".
+Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Aşağıdaki, genel saat dilimini "ABD/Pasifik" değerine ayarlar.
 
-![Saat dilimi parametre kümesi](./media/howto-server-parameters/timezone.png)
+![Saat dilimi parametresini ayarla](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimi ayarlama
+### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimini ayarlama
 
 Oturum düzeyi saat dilimi, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçla `SET time_zone` komutu çalıştırılarak ayarlanabilir. Aşağıdaki örnek saat dilimini **ABD/Pasifik** saati dilimine göre ayarlar.
 
