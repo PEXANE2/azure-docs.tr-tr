@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464131"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777443"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Azure Sentinel 'i kiracınızdan kaldırma
+# <a name="remove-azure-sentinel-from-your-workspace"></a>Azure Sentinel 'i çalışma alanınızdan kaldırma
 
-Artık Azure Sentinel 'i kullanmak istemiyorsanız, bu makalede onu kiracınızdan nasıl kaldırabileceğiniz açıklanır.
+Artık Azure Sentinel 'i kullanmak istemiyorsanız, bu makalede çalışma alanınızdan nasıl kaldırılacağı açıklanır.
 
 ## <a name="how-to-delete-azure-sentinel"></a>Azure Sentinel 'i silme
 
@@ -69,7 +69,7 @@ Bağlantı kesilmesi tanımlandıktan sonra, çıkarma işlemi başlar.
 
 -   Uyarı kuralları
 
--   Yer işaretleri
+-   leriniz
 
 Playbooks, kaydettiğiniz çalışma kitapları, kaydetme sorguları ve Not defterleri silinmez. **Kaldırılan veriler nedeniyle bazıları kesilebilir. Bunları el ile kaldırabilirsiniz.**
 

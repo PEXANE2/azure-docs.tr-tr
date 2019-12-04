@@ -1,34 +1,35 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 7cfce34cb2d6002dba5ec570bf859ec47e894c65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 951ab2300aa4ffed2c5f1039ff993cd7f6af543f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188627"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789677"
 ---
-#### <a name="prerequisites"></a>Önkoşullar
-* Bir Azure hesabı; oluşturabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free)
-* A [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) hesabı 
+## <a name="prerequisites"></a>Önkoşullar
 
-OneDrive hesabınızda bir mantıksal uygulama kullanabilmeniz için önce OneDrive hesabınıza bağlanmak için mantıksal uygulama yetkilendirin.  Kolayca Azure portalında mantıksal uygulama içinde bunu yapabilirsiniz. 
+* Bir Azure hesabı; [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz
+* [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) hesabı 
 
-Mantıksal uygulamanızı, aşağıdaki adımları kullanarak OneDrive hesabınıza bağlanmak için yetkilendirin.
+OneDrive hesabınızı bir mantıksal uygulamada kullanabilmeniz için, mantıksal uygulamayı OneDrive hesabınıza bağlamak üzere yetkilendirin.  Bu, Azure portal mantıksal uygulamanız dahilinde kolayca yapabilirsiniz. 
 
-1. Mantıksal uygulama oluşturun. Logic Apps Tasarımcısı'nda seçin **yönetilen API'leri Göster Microsoft** açılan liste ve ardından arama kutusuna "onedrive" girin. Tetikleyiciler veya Eylemler birini seçin:  
+Aşağıdaki adımları kullanarak mantıksal uygulamanızı OneDrive hesabınıza bağlamak için yetkilendirin:
+
+1. Mantıksal uygulama oluşturun. Logic Apps tasarımcısında, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin ve arama kutusuna "OneDrive" yazın. Tetikleyiciler veya eylemlerden birini seçin:  
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. OneDrive için herhangi bir bağlantı daha önce oluşturmadıysanız, OneDrive kimlik bilgilerinizi kullanarak oturum açmanız istenir:  
+2. Daha önce OneDrive ile herhangi bir bağlantı oluşturmadıysanız OneDrive kimlik bilgilerinizi kullanarak oturum açmanız istenir:  
    ![](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. Seçin **oturum**, kullanıcı adı ve parolayı girin. Seçin **oturum**:  
+3. **Oturum aç**' ı seçin ve Kullanıcı adınızı ve parolanızı girin. **Oturum aç '** ı seçin:  
    ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
    
-    Bu kimlik bilgileri, mantıksal uygulamanızı bağlanmak ve OneDrive hesabınızdaki verilere erişmek için son noktanın yetkilendirilmesi için kullanılır. 
-4. Seçin **Evet** OneDrive hesabınızda kullanmak için mantıksal uygulama yetkilendirmek için:  
+    Bu kimlik bilgileri, mantıksal uygulamanızı OneDrive hesabınızdaki verilere bağlanmak ve verilere erişmek üzere yetkilendirmek için kullanılır. 
+4. Mantıksal uygulamayı OneDrive hesabınızı kullanacak şekilde yetkilendirmek için **Evet** ' i seçin:  
    ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Bağlantıyı oluşturan dikkat edin. Şimdi mantıksal uygulamanızı diğer adımlarla devam edin:  
+5. Bağlantının oluşturulduğuna dikkat edin. Şimdi mantıksal uygulamanızdaki diğer adımlara ilerleyin:  
    ![](./media/connectors-create-api-onedrive/onedrive-5.png)
 

@@ -3,19 +3,19 @@ title: Açıklama tasarım desenleri
 titleSuffix: Azure Cognitive Services
 description: Tasarım desenleri ve en iyi deneyimler.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558998"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776631"
 ---
 # <a name="disclosure-design-patterns"></a>Tasarım desenlerini açıklama
 Artık yapay sesli&#39;deneyiminize yönelik doğru [Açıklama düzeyini](concepts-disclosure-guidelines.md#disclosure-assessment) saptadığınıza göre,&#39;olası tasarım düzenlerini araştırmak için iyi bir zaman vardır.

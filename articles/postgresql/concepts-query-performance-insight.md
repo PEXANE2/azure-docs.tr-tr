@@ -1,21 +1,21 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda Sorgu Performansı İçgörüleri-tek sunucu
+title: Sorgu Performansı İçgörüleri-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı-tek sunucu Sorgu Performansı İçgörüleri özelliği açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764425"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768393"
 ---
 # <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri 
 
-**Şunlara uygulanır:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
+**Uygulama hedefi:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
 
 Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, zaman içinde nasıl değişdiklerinizi ve neleri etkilemeyi beklediğini hızlı bir şekilde tanımanıza yardımcı olur.
 

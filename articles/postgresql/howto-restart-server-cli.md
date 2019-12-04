@@ -1,33 +1,33 @@
 ---
-title: Azure veritabanını Postgresql'ye - Azure CLI kullanarak tek bir sunucu yeniden başlatın.
-description: Bu makalede, PostgreSQL - Azure CLI kullanarak tek bir sunucu için Azure veritabanı nasıl yeniden başlatabilirsiniz açıklanır.
+title: Sunucuyu yeniden başlatma-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, Azure CLı kullanarak bir PostgreSQL için Azure veritabanı 'nı (tek sunucu) nasıl yeniden başlatabileceğinizi açıklanmaktadır
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13b26b545f9e95ce2457e4f8d9cf32da59cd91e6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068970"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770161"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure veritabanını Postgresql'ye - Azure CLI kullanarak tek bir sunucu yeniden başlatın.
-Bu konuda, PostgreSQL sunucusu için Azure veritabanı nasıl yeniden açıklanmaktadır. Sunucu işlemi gerçekleştirirken, kısa bir kesintiye neden sunucunuzun bakım nedeniyle yeniden başlatmanız gerekebilir.
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nı yeniden başlatma-tek sunucu
+Bu konuda, PostgreSQL için Azure veritabanı sunucusunu nasıl yeniden başlatabileceğinizi açıklar. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.
 
-Sunucunun yeniden başlatılması, Hizmet meşgul olduğunda engellenir. Örneğin, hizmet sanal çekirdekler ölçeklendirme gibi daha önce istenen bir işlemin işliyor olabilir.
+Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sanal çekirdekleri ölçeklendirirken daha önce istenen bir işlemi işliyor olabilir.
  
-Yeniden başlatma tamamlamak için gereken süreyi PostgreSQL kurtarma işlemi bağlıdır. Yeniden başlatma süresini azaltmak için yeniden başlatma öncesinde sunucusunda gerçekleşen etkinliği miktarını en aza öneririz.
+Yeniden başlatmayı tamamlaması için gereken süre, PostgreSQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunda tamamlanması gerekir:
-- Bir [PostgreSQL sunucusu için Azure veritabanı](quickstart-create-server-up-azure-cli.md)
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
+- [PostgreSQL Için Azure veritabanı sunucusu](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Bu nasıl yapılır kılavuzunda, Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Azure CLI komut isteminde sürümünü onaylamak için girin `az --version`. Yüklemek veya yükseltmek için bkz: [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde `az --version`girin. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
 
 ## <a name="restart-the-server"></a>Sunucuyu yeniden başlatın
@@ -40,4 +40,4 @@ az postgres server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [nasıl PostgreSQL için Azure veritabanı'nda parametrelerini ayarla](howto-configure-server-parameters-using-cli.md)
+[PostgreSQL Için Azure veritabanı 'nda parametrelerin nasıl ayarlanacağı](howto-configure-server-parameters-using-cli.md) hakkında bilgi edinin

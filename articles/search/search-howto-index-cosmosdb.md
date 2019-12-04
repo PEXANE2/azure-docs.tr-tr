@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9301da884e26a65b198c885000159c383655b2d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707768"
+ms.locfileid: "74771471"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure 'da Dizin Oluşturucu kullanarak Cosmos DB verilerini dizin oluşturma Bilişsel Arama 
 
@@ -294,7 +294,7 @@ Genel olarak kullanılabilen .NET SDK, genel olarak kullanılabilir REST API tam
 
 ## <a name="indexing-changed-documents"></a>Değiştirilen belgelerin dizinini oluşturma
 
-Veri değişikliği algılama ilkesinin amacı, değiştirilen veri öğelerini etkili bir şekilde belirlemektir. Şu anda desteklenen tek ilke, aşağıdaki gibi belirtilen Azure Cosmos DB tarafından sunulan `_ts` (timestamp) özelliğini kullanan `High Water Mark` ilkesidir:
+Veri değişikliği algılama ilkesinin amacı, değiştirilen veri öğelerini etkili bir şekilde belirlemektir. Şu anda desteklenen tek ilke, aşağıdaki gibi belirtilen Azure Cosmos DB tarafından sunulan `_ts` (timestamp) özelliğini kullanan [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) .
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",

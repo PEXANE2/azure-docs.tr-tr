@@ -1,17 +1,17 @@
 ---
-title: MariaDB için Azure veritabanı 'nda sorgu deposu
+title: Sorgu deposu-MariaDB için Azure veritabanı
 description: Zaman içinde performansı izlemenize yardımcı olması için, MariaDB için Azure veritabanı 'nda sorgu depolama özelliği hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: fbc814b5d263e20cea1d961891afb19894b78965
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772225"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Sorgu deposu ile MariaDB için Azure veritabanı performansını izleme
 
@@ -89,7 +89,7 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 | **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık** |
 |---|---|---|---|
-| query_store_capture_mode | Değer temelinde sorgu deposu özelliğini açın/kapatın. Note: performance_schema KAPALıYSA, query_store_capture_mode ' ın etkinleştirilmesi, bu özellik için gerekli olan performance_schema ve performans şeması gereçlerinin bir alt kümesini etkinleştirebilir. | Bütün | HIÇBIRI, TÜMÜ |
+| query_store_capture_mode | Değer temelinde sorgu deposu özelliğini açın/kapatın. Note: performance_schema KAPALıYSA query_store_capture_mode açıldığında, bu özellik için gerekli olan performance_schema ve performans şeması gereçlerinin bir alt kümesini açmanız gerekir. | Bütün | HIÇBIRI, TÜMÜ |
 | query_store_capture_interval | Sorgu deposu yakalama aralığı dakika olarak. Sorgu ölçümlerinin toplanmış olduğu aralığın belirtilmesine izin verir | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Sistemde yürütülen tüm yardımcı program sorgularını yakalamak için açma veya kapatma. | NO | EVET, HAYıR |
 | query_store_retention_period_in_days | Sorgu deposundaki verilerin saklanacağı zaman penceresi. | 7 | 1 - 30 |
@@ -102,7 +102,7 @@ Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 | query_store_wait_sampling_frequency | Saniye cinsinden bekleme örnekleme sıklığını değiştirir. 5-300 saniye. | 30 | 5-300 |
 
 > [!NOTE]
-> Şu anda **query_store_capture_mode** , bu yapılandırmanın yerini alır, ancak her iki **query_store_capture_mode** ve **query_store_wait_sampling_capture_mode** de bekleyen istatistiklerin çalışması için her ikisi de etkinleştirilmelidir. **Query_store_capture_mode** devre dışı bırakılırsa, bekleme istatistiği, performance_schema etkin ' i ve sorgu deposu tarafından yakalanan query_text ' den yararlandığından, bekleme istatistikleri de kapanır.
+> Şu anda **query_store_capture_mode** , bu yapılandırmanın yerini alır, yani hem **query_store_capture_mode** hem de **query_store_wait_sampling_capture_mode** , bekleyen istatistiklerin çalışması için her ikisinin de etkinleştirilmesi gerekir. **Query_store_capture_mode** devre dışı bırakılırsa, bekleme istatistikleri etkin performance_schema ve sorgu deposu tarafından yakalanan query_text, bekleme istatistiği da kapalı olur.
 
 Bir parametre için farklı bir değer almak veya ayarlamak için [Azure Portal](howto-server-parameters.md) kullanın.
 
@@ -116,7 +116,7 @@ Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakıla
 
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır.
 
-| **Ad** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Adı** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Şemanın adı |
 | `query_id`| büyük tamsayı (20) | NO| Belirli sorgu için oluşturulan benzersiz KIMLIK, aynı sorgu farklı şemada yürütülüyorsa yeni bir KIMLIK oluşturulur |
@@ -149,7 +149,7 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-| **Ad**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Adı**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `interval_start` | timestamp | NO| Aralık başlangıcı (15 dakikalık artış)|
 | `interval_end` | timestamp | NO| Aralığın sonu (15 dakikalık artış)|
@@ -163,7 +163,7 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 ### <a name="functions"></a>İşlevler
 
-| **Ad**| **Açıklama** |
+| **Adı**| **Açıklama** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | Verilen zaman damgasından önce tüm sorgu depolama verilerini temizler |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Verilen zaman damgasından önce tüm bekleme olayı verilerini temizler |

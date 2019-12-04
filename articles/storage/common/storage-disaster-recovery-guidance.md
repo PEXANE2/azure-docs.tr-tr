@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889780"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775937"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
 
@@ -121,8 +121,8 @@ Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS
 
 - Doğu Asya
 - Güneydoğu Asya
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Doğu Avustralya
+- Güneydoğu Avustralya
 - ABD Orta
 - ABD Doğu 2
 - ABD Orta Batı
@@ -139,7 +139,7 @@ Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-Önizleme için onay alınması 1-2 gün sürebilir. Kaydlarınızın onaylandığını doğrulamak için şu komutu çalıştırın:
+Önizleme için onay almak 5-7 gün sürebilir. Kaydlarınızın onaylandığını doğrulamak için şu komutu çalıştırın:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage

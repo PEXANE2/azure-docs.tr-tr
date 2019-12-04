@@ -1,6 +1,6 @@
 ---
-title: Tek sayfalı uygulama (üretim taşıma) - Microsoft kimlik platformu
-description: Tek sayfalı uygulama (üretim taşıma) oluşturmayı öğrenin
+title: Tek sayfalı uygulama (üretime git)-Microsoft Identity platform
+description: Tek sayfalı bir uygulama oluşturmayı öğrenin (üretime geçin)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,42 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a04f5d62ec750cfbe44765e833552bd694654d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2dbb481c75323304d71f85a722fc45a9b634055
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075018"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766115"
 ---
-# <a name="single-page-application---move-to-production"></a>Tek sayfalı uygulama - üretim Git
+# <a name="single-page-application-move-to-production"></a>Tek sayfalı uygulama: üretime taşı
 
-Web API'leri çağırmak için bir belirteç almak nasıl artık bildiğinize göre üretim aşamasına geçme konusunda bilgi edinin.
+Artık, Web API 'Lerini çağırmak için bir belirteç edinmeyi öğrenmiş olduğunuza göre, üretime nasıl geçeceğinizi öğrenin.
 
-## <a name="improve-your-app"></a>Uygulamanızı iyileştirin
+## <a name="improve-your-app"></a>Uygulamanızı geliştirme
 
-Uygulamayı üretim hazır hale getirmek için gerekli olan adımları izleyin.
+Uygulama üretim ortamınızı hazırlamak için [günlük kaydını etkinleştirin](msal-logging.md) .
 
-- [Günlüğe kaydetmeyi etkinleştirme](msal-logging.md) uygulamanızdaki.
+## <a name="test-your-integration"></a>Tümleştirmenizi test etme
 
-## <a name="test-your-integration"></a>Tümleştirmenizi test
-
-- Tümleştirmenizi izleyerek test [Microsoft kimlik platformu tümleştirme denetim](identity-platform-integration-checklist.md).
+[Microsoft Identity platform tümleştirme denetim listesini](identity-platform-integration-checklist.md)izleyerek tümleştirmenizi test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı diğer örnekleri/öğreticileri şunlardır:
+Kullanıcı oturumu açma ve MSAL. js kullanarak Microsoft Graph API 'sini çağırmak için bir erişim belirteci alma kodunu açıklayan hızlı başlangıç örneğinin derinlemesine bakış.
 
-- Kullanıcılar oturum ve MSAL.js kullanılarak MS Graph API'sini çağırmak için erişim belirteci almak için kod açıklayan bir yakından bakış Hızlı Başlangıç için örnek
+> [!div class="nextstepaction"]
+> [JavaScript SPA öğreticisi](./tutorial-v2-javascript-spa.md)
 
-    > [!div class="nextstepaction"]
-    > [JavaScript SPA'ya Öğreticisi](./tutorial-v2-javascript-spa.md)
+MSAL. js kullanarak kendi arka uç Web API 'niz için belirteçlerin nasıl alınacağını gösteren örnek:
 
-- MSAL.js kullanılarak kendi arka uç web API'si için belirteçlerini almak nasıl yazılacağını gösteren örnek
+> [!div class="nextstepaction"]
+> [ASP.NET arka ucu olan SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
 
-     > [!div class="nextstepaction"]
-     > [Bir ASP.NET arka ucuyla SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+Azure Active Directory B2C (Azure AD B2C) ile kaydedilmiş bir uygulamada kullanıcıları oturum açmak için MSAL. js ' nin nasıl kullanılacağını gösteren örnek:
 
-- MSAL.js kullanıcıları Azure AD B2C'ye kayıtlı bir uygulamada oturum açma için nasıl kullanılacağını göstermek için örnek
-
-    > [!div class="nextstepaction"]
-    > [Azure AD B2C ile SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+> [!div class="nextstepaction"]
+> [Azure AD B2C ile SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0af2d306a5f5923f5e14eb0ebc4707f9c5caee90
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288574"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769039"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
 
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Turks ve Caicos Adaları                 | ✓ |   |  ✓| 
 | ABD harici Adaları                    | ✓ |   |  ✓| 
 | ABD Virgin Adaları                      | ✓ |   |  ✓| 
-| Amerika Birleşik Devletleri                            | ✓ | ✓ |  ✓| 
+| Birleşik Devletler                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
 
@@ -149,7 +149,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Filistin Yönetimi       | ✓               |                              |        ✓| 
 | Katar                       | ✓               |                              |        ✓| 
 | Reunion                     | ✓               |                              |        ✓| 
-| Rwanda                      | ✓               |                              |        ✓| 
+| Ruanda                      | ✓               |                              |        ✓| 
 | Saint Helena, Ascension ve Tristan da Cunha        | ✓               |                              |        ✓| 
 | Sao Tome ve Principe       | ✓               |                              |        ✓| 
 | Suudi Arabistan                | ✓               |                              |        ✓| 
@@ -193,7 +193,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Fransız Polinezyası                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Heard Adası ve McDonald Adaları | ✓ |   |  ✓| 
-| Hong Kong SAR                     | ✓ |   |  ✓| 
+| Hong Kong ÖIB                     | ✓ |   |  ✓| 
 | Hindistan                             | ✓ |   |  ✓| 
 | Endonezya                         | ✓ |   |  ✓| 
 | Japonya                             | ✓ | ✓ |  ✓| 
@@ -202,7 +202,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Güney Kore                             | ✓ | ✓ |  ✓| 
 | Kırgızistan                        | ✓ |   |  ✓| 
 | Laos                              | ✓ |   |  ✓| 
-| Makao ÖİB                         | ✓ |   |  ✓| 
+| Makao ÖIB                         | ✓ |   |  ✓| 
 | Malezya                          | ✓ |   |  ✓| 
 | Maldivler                          | ✓ |   |  ✓| 
 | Marshall Adaları                  | ✓ |   |  ✓| 
@@ -273,7 +273,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Jersey                 | ✓ |   |  ✓| 
 | Kosova                 | ✓ |   |  ✓| 
 | Letonya                 | ✓ |   |  ✓| 
-| Lihtenştayn          | ✓ | ✓ |  ✓| 
+| Liechtenstein          | ✓ | ✓ |  ✓| 
 | Litvanya              | ✓ |   |  ✓| 
 | Lüksemburg             | ✓ | ✓ |  ✓| 
 | Kuzey Makedonya        | ✓ |   |  ✓| 
