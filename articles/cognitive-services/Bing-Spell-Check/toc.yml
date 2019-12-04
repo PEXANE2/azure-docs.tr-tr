@@ -1,5 +1,5 @@
 - name: Bing Yazım Denetimi API'si Belgeleri
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Genel Bakış
   items:
     - name: Bing Yazım Denetimi API’si nedir?

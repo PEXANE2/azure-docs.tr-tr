@@ -1,5 +1,5 @@
 - name: Bing Özel Arama Belgeleri
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Genel Bakış
   expanded: true
   items:

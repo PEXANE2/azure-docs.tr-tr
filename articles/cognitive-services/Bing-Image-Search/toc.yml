@@ -1,5 +1,5 @@
 - name: Bing Resim Arama API'si Belgeleri
-  href: index.yml
+  href: ../bing-web-search/index.yml
 - name: Genel Bakış
   expanded: true
   items:

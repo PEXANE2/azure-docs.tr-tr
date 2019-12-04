@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Sorun giderme
       items:
-        - name: Özel durumlar
+        - name: Sorun giderme kılavuzu
           href: service-bus-messaging-exceptions.md
 - name: Başvuru
   items:
