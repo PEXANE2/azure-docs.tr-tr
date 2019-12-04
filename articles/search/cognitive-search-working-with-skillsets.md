@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113653"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790889"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları ve bileşimi
 
@@ -43,9 +43,9 @@ Belge, zenginleştirme ardışık düzeninde olduktan sonra bir içerik ağacı 
 
 |Veri kaynağı \ ayrıştırma modu|Varsayılan|JSON, JSON satırları & CSV|
 |---|---|---|
-|Blob Storage|/Document/Content<br>/Document/normalized_images/*<br>…|/Document/{KEY1}<br>/Document/{key2}<br>…|
-|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|Yok |
-|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|Yok|
+|Blob Depolama|/Document/Content<br>/Document/normalized_images/*<br>...|/Document/{KEY1}<br>/Document/{key2}<br>...|
+|SQL|/Document/{column1}<br>/Document/{Column2}<br>...|Yok |
+|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>...|Yok|
 
  Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
 
@@ -65,7 +65,7 @@ Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext`, beceri ve [projeksiyonlar](knowledge-store-projection-overview.md)için yalnızca [mil](cognitive-search-skill-shaper.md) olarak kullanılır. Çok düzeyli, iç içe geçmiş nesneler oluşturmak için kullanılır. `sourceContext`, yalnızca bağlamını kullanıyorsanız, birden çok yetenek gerektiren hiyerarşik, anonim bir tür nesnesi oluşturmanız mümkün olur. `sourceContext` kullanmak sonraki bölümde gösterilmiştir.
+`sourceContext` yalnızca yetenek girişlerinde ve [projeksiyonde](knowledge-store-projection-overview.md)kullanılır. Çok düzeyli, iç içe geçmiş nesneler oluşturmak için kullanılır. Bilgi deposuna bir yeteneğe veya projeye giriş olarak geçirmek için yeni bir oject oluşturmanız gerekebilir. Enzenginleştirme düğümleri, enzenginleştirme ağacında geçerli bir JSON nesnesi olmayabilir ve ağaçtaki bir düğümü yeniden oluşturmak, Beceri girişleri veya projeksiyonları, doğru biçimlendirilmiş bir JSON nesnesi oluşturmanızı gerektiren bir düğümün yalnızca bu durumunu geri döndürmektedir. `sourceContext`, yalnızca bağlamını kullanıyorsanız, birden çok yetenek gerektiren hiyerarşik, anonim bir tür nesnesi oluşturmanız mümkün olur. `sourceContext` kullanmak sonraki bölümde gösterilmiştir. Temel bir tür değil geçerli bir JSON nesnesi olup olmadığını öğrenmek için bir zenginleştirme oluşturan yetenek çıktısına bakın.
 
 ### <a name="projections"></a>Yansıtmalar
 

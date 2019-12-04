@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı ile Azure Active Directory kimlik doğrulaması-tek sunucu
+title: Active Directory kimlik doğrulaması-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı-tek sunucu ile kimlik doğrulaması için Azure Active Directory kavramları hakkında bilgi edinin
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 47637396581beeafb0748066cd6a66f011e8eaa1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518742"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769923"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -86,7 +86,7 @@ Active Directory göre kimlik doğrulamasından sonra bir belirteç alırsınız
 > [!NOTE]
 > Silinen Azure AD kullanıcısı ile oturum açma işlemi, belirtecin süresi dolana kadar (belirteç veren 60 dakikaya kadar) yine de yapılabilir.  Kullanıcıyı PostgreSQL için Azure veritabanı 'ndan da kaldırırsanız, bu erişim hemen iptal edilir.
 - Azure AD yöneticisi sunucudan kaldırılırsa, sunucu artık bir Azure AD kiracısıyla ilişkilendirilmeyecektir ve bu nedenle tüm Azure AD oturum açmaları sunucu için devre dışı bırakılır. Aynı kiracıdan yeni bir Azure AD yöneticisi eklemek, Azure AD oturum açma işlemlerini yeniden etkinleştirin.
-- PostgreSQL için Azure veritabanı, Kullanıcı adını kullanmanın aksine kullanıcının benzersiz Azure AD kullanıcı KIMLIĞINI kullanarak PostgreSQL için Azure veritabanı rolüne yönelik erişim belirteçlerini eşleştirir. Bu, bir Azure AD kullanıcısının Azure AD 'de silindiği ve aynı ada sahip yeni bir kullanıcının oluşturulduğu anlamına gelir; PostgreSQL için Azure veritabanı farklı bir kullanıcı olarak kabul eder. Bu nedenle, bir Kullanıcı Azure AD 'den silinirse ve aynı ada sahip yeni bir Kullanıcı eklendiyse, Yeni Kullanıcı var olan rolle bağlantı kurabilmez. Buna izin vermek için PostgreSQL için Azure veritabanı Azure AD yöneticisi 'nin, Azure AD kullanıcı KIMLIĞINI yenilemek için "azure_ad_user" rolüne sahip olması ve ardından bu rolü kullanıcıya vermesi gerekir.
+- PostgreSQL için Azure veritabanı, Kullanıcı adını kullanmanın aksine kullanıcının benzersiz Azure AD kullanıcı KIMLIĞINI kullanarak PostgreSQL için Azure veritabanı rolüne yönelik erişim belirteçlerini eşleştirir. Bu, bir Azure AD kullanıcısının Azure AD 'de silindiği ve aynı ada sahip yeni bir kullanıcının oluşturulduğu anlamına gelir; PostgreSQL için Azure veritabanı farklı bir kullanıcı olarak kabul eder. Bu nedenle, bir Kullanıcı Azure AD 'den silinirse ve aynı ada sahip yeni bir Kullanıcı eklendiyse, Yeni Kullanıcı var olan rolle bağlantı kurabilmez. Buna izin vermek için PostgreSQL için Azure veritabanı Azure AD yöneticisi 'nin, Azure AD kullanıcı KIMLIĞINI yenilemek üzere kullanıcıya "azure_ad_user" rolünü iptal etmeleri ve bu rolü vermesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
