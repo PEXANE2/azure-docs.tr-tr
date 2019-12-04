@@ -1,40 +1,40 @@
 ---
-title: Hızlı Başlangıç - basit bir Azure CLI komutunu - az mysql ayarlama (Önizleme) kullanarak MySQL için Azure veritabanı oluşturma
-description: Azure veritabanı Azure CLI (komut satırı arabirimi) kullanarak MySQL sunucusu için komutu oluşturmak için Hızlı Başlangıç Kılavuzu.
+title: 'Hızlı başlangıç: az MySQL up kullanarak MySQL için Azure veritabanı oluşturma'
+description: Azure CLı (komut satırı arabirimi) up komutunu kullanarak MySQL için Azure veritabanı sunucusu oluşturmak üzere hızlı başlangıç kılavuzu.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: aa0d2a9e990faa8d99355744824f34e26aeb519e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bb5c62a7df53548ff59a03c6ccc8fb28f1503d3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61231089"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765692"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Hızlı Başlangıç: Basit bir Azure CLI komutunu - az mysql ayarlama (Önizleme) kullanarak MySQL için Azure veritabanı oluşturma
+# <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Hızlı başlangıç: basit bir Azure CLı komutu kullanarak MySQL için Azure veritabanı oluşturma-az MySQL up (Önizleme)
 
 > [!IMPORTANT]
-> [Az mysql'i ayarlama](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI komutunu önizlemededir.
+> [Az MySQL](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI komutu önizlemededir.
 
-MySQL için Azure Veritabanı, bulutta yüksek oranda kullanılabilir olan MySQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta nasıl kullanılacağı gösterilmektedir [az mysql'i ayarlama](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI kullanarak MySQL için Azure veritabanı oluşturmak için komutu. Sunucu oluşturmanın yanı sıra `az mysql up` komut bir örnek veritabanı, bir kök kullanıcı veritabanında oluşturur, Azure Hizmetleri için Güvenlik Duvarı'nı açar ve varsayılan istemci bilgisayar için güvenlik duvarı kuralları oluşturur. Bu, geliştirme süreci hızlandırmak için yardımcı olur.
+MySQL için Azure Veritabanı, bulutta yüksek oranda kullanılabilir olan MySQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure CLı kullanarak MySQL için Azure veritabanı sunucusu oluşturmak üzere [az MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) komutunun nasıl kullanılacağı gösterilmektedir. Sunucu oluşturmaya ek olarak, `az mysql up` komutu bir örnek veritabanı, veritabanında bir kök kullanıcı oluşturur, Azure hizmetleri için güvenlik duvarını açar ve istemci bilgisayar için varsayılan güvenlik duvarı kuralları oluşturur. Bu, geliştirme sürecini hızlandırmanıza yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-Bu makalede, Azure CLI Sürüm 2.0 veya sonraki çalıştırdığınızı gerektirir. yerel olarak. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+Bu makalede, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırıyor olmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
 
-Kullanarak hesabınızda oturum açmanız gerekir [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) komutu. Komut çıktısındaki ilgili abonelik adına karşılık gelen **id** özelliğinin değerini not edin.
+[Az Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) komutunu kullanarak hesabınızda oturum açmanız gerekir. Komut çıktısındaki ilgili abonelik adına karşılık gelen **id** özelliğinin değerini not edin.
 
 ```azurecli
 az login
 ```
 
-Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. [az account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir abonelik kimliğini seçin. Yedek **abonelik kimliği** özelliğinden **az login** aboneliğinizin abonelik kimliği yer çıktı.
+Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. [az account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir abonelik kimliğini seçin. **Abonelik kimliği özelliğini aboneliğiniz** için **az oturum açma** çıktısından abonelik kimliği yer tutucusuna koyun.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -42,25 +42,25 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>MySQL için Azure Veritabanı sunucusu oluşturma
 
-Bu komutları kullanmak için yükleme [db yukarı](/cli/azure/ext/db-up) uzantısı. Bir hata döndürülürse, Azure CLI'nin en son sürümünü yüklediğinizden emin olun. Bkz: [Azure CLI yükleme](/cli/azure/install-azure-cli).
+Komutları kullanmak için, [DB-up](/cli/azure/ext/db-up) uzantısını yükler. Bir hata döndürülürse, Azure CLı 'nin en son sürümünü yüklediğinizden emin olun. Bkz. [Azure CLI 'Yi yüklemeyi](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
 ```
 
-Aşağıdaki komutu kullanarak MySQL için Azure veritabanı oluşturma:
+Aşağıdaki komutu kullanarak MySQL için Azure veritabanı sunucusu oluşturun:
 
 ```azurecli
 az mysql up
 ```
 
-(, El ile geçersiz kılmadıkça) sunucusu aşağıdaki varsayılan değerlerle oluşturulur:
+Sunucu, aşağıdaki varsayılan değerlerle oluşturulur (bunları el ile geçersiz kılmadığınız müddetçe):
 
 **Ayar** | **Varsayılan değer** | **Açıklama**
 ---|---|---
 server-name | Sistem tarafından oluşturulan | Azure veritabanınızı MySQL sunucusuna tanıtan benzersiz bir ad.
-resource-group | Sistem tarafından oluşturulan | Yeni bir Azure kaynak grubu.
-sku-name | GP_Gen5_2 | Sku'nun adı. Kısaca {fiyatlandırma katmanı}\_{işlem nesli}\_{sanal çekirdek sayısı} kuralına uyar. Bir genel amaçlı 5. nesil 2 sanal çekirdek sunucusuna varsayılandır. Bkz. bizim [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mysql/) katmanları hakkında daha fazla bilgi için.
+resource-group | Sistem tarafından oluşturulan | Yeni bir Azure Kaynak grubu.
+sku-name | GP_Gen5_2 | Sku'nun adı. Kısaca {fiyatlandırma katmanı}\_{işlem nesli}\_{sanal çekirdek sayısı} kuralına uyar. Varsayılan değer 2 sanal çekirdekte olan bir Genel Amaçlı 5. nesil sunucusudur. Katmanlar hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mysql/) .
 backup-retention | 7 | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır.
 geo-redundant-backup | Devre dışı | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği.
 location | westus2 | Sunucu için Azure konumu.
@@ -71,34 +71,34 @@ admin-user | Sistem tarafından oluşturulan | Yöneticinin oturum açma kullan�
 admin-password | Sistem tarafından oluşturulan | Yönetici kullanıcının parolası.
 
 > [!NOTE]
-> Hakkında daha fazla bilgi için `az mysql up` komut ve ek, parametreleri [Azure CLI belgeleri](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
+> `az mysql up` komutu ve ek parametreleri hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up).
 
-Sunucunuz oluşturulduktan sonra aşağıdaki ayarlarla birlikte gelir:
+Sunucunuz oluşturulduktan sonra, aşağıdaki ayarlarla birlikte gelir:
 
-- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLI, makinenin IP adresini algılamaya `az mysql up` komutu çalıştırın ve beyaz listelere bu IP adresidir.
-- "Azure hizmetlerine erişime izin ver" açık olarak ayarlandı. Bu ayar, sunucunun güvenlik duvarı, aboneliğinizde olmayan kaynaklar dahil olmak üzere tüm Azure kaynaklarını gelen bağlantıları kabul edecek şekilde yapılandırır.
-- `wait_timeout` Parametresi 8 saat olarak ayarlanır
-- "Sampledb" adlı boş bir veritabanı oluşturulur
-- "Sampledb" ayrıcalıkları olan "Kök" adlı yeni bir kullanıcı oluşturulduğunda
+- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, `az mysql up` komutun çalıştırıldığı makinenin IP adresini algılamaya çalışır ve o IP adresini beyaz listeler.
+- "Azure hizmetlerine erişime izin ver" ayarı açık olarak ayarlanmıştır. Bu ayar, sunucu güvenlik duvarını aboneliğinizdeki kaynaklar dahil olmak üzere tüm Azure kaynaklarından gelen bağlantıları kabul edecek şekilde yapılandırır.
+- `wait_timeout` parametresi 8 saate ayarlanır
+- "SampleDB" adlı boş bir veritabanı oluşturuldu
+- "SampleDB" ayrıcalıklarına sahip "root" adlı yeni bir Kullanıcı oluşturuldu
 
 > [!NOTE]
-> MySQL için Azure veritabanı, 3306 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlantı kurduğunuzda, 3306 numaralı bağlantı noktası üzerinden giden trafiğe ağınızın güvenlik duvarı tarafından izin verilmiyor. BT departmanınızdan sunucunuza bağlanmak için 3306 numaralı bağlantı noktasını açmasını vardır.
+> MySQL için Azure veritabanı 3306 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanırken, ağınızın güvenlik duvarı tarafından 3306 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. BT departmanınızın sunucunuza bağlanmak için 3306 bağlantı noktasını açmasını sağlayabilirsiniz.
 
 ## <a name="get-the-connection-information"></a>Bağlantı bilgilerini alma
 
-Sonra `az mysql up` komut tamamlandığında, popüler programlama dillerini bağlantı dizelerinin listesini size geri döndürülür. Yeni oluşturulan Azure veritabanınızı MySQL sunucusuna belirli özellikleri ile önceden yapılandırılmış Bu bağlantı dizeleridir.
+`az mysql up` komutu tamamlandıktan sonra, size popüler programlama dillerinin bağlantı dizelerinin bir listesi döndürülür. Bu bağlantı dizeleri, yeni oluşturduğunuz MySQL Server için Azure veritabanı 'nın belirli öznitelikleriyle önceden yapılandırılmıştır.
 
-Kullanabileceğiniz [az mysql show-connection-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) Bu bağlantı dizelerini yeniden listelemek için komutu.
+Bu bağlantı dizelerini yeniden listelemek için [az MySQL Show-Connection-String](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) komutunu kullanabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Aşağıdaki komutu kullanarak hızlı başlangıçta oluşturduğunuz tüm kaynakları temizleyin. Bu komut, MySQL için Azure veritabanı ve kaynak grubunu siler.
+Aşağıdaki komutu kullanarak hızlı başlangıçta oluşturduğunuz tüm kaynakları temizleyin. Bu komut, MySQL için Azure veritabanı sunucusunu ve kaynak grubunu siler.
 
 ```azurecli
 az mysql down --delete-group
 ```
 
-Yalnızca yeni oluşturulan sunucuyu silmek istiyorsanız, çalıştırabileceğiniz [aşağı az mysql](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) komutu.
+Yalnızca yeni oluşturulan sunucuyu silmek istiyorsanız [az MySQL](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) i komutunu çalıştırabilirsiniz.
 
 ```azurecli
 az mysql down

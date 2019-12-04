@@ -1,20 +1,20 @@
 ---
-title: MySQL Workbench’ten MariaDB için Azure Veritabanı’na bağlanma
+title: MySQL çalışma ekranı kullanarak bağlanma-MariaDB için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL Workbench kullanarak MariaDB için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için uygulanması gereken adımlar verilmektedir.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2018
+ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60936252"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772070"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>MariaDB için Azure Veritabanı: Bağlanmak ve veri sorgulamak için MySQL Workbench kullanma
+# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>MariaDB için Azure Veritabanı: MySQL Workbench kullanarak bağlanma ve veri sorgulama
 
 Bu hızlı başlangıçta MySQL Workbench'i kullanarak MariaDB için Azure Veritabanı örneğine nasıl bağlanacağınız gösterilmiştir. 
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, başlangıç noktası olarak aşağıdaki kılavuzlar
 
 MariaDB için Azure Veritabanı örneğine bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. Azure portalın sol tarafındaki menüden **Tüm kaynaklar**'ı seçin. Oluşturduğunuz sunucuyu arayın (**demosunucum** gibi).
 
@@ -57,7 +57,7 @@ MySQL Workbench ile MariaDB için Azure Veritabanı sunucusuna bağlanmak için:
    | Bağlantı Yöntemi | **Standart (TCP/IP)** | Standart (TCP/IP) yeterlidir. |
    | Ana Bilgisayar Adı | *sunucu adı* | MariaDB için Azure Veritabanı örneğini oluşturmak üzere kullandığınız sunucu adı değerini belirtin. Örnek sunucumuz: **mydemoserver.mariadb.database.azure.com**. Örnekte gösterildiği gibi tam etki alanı adını (\*.mariadb.database.azure.com) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın.  |
    | Bağlantı noktası | **3306** | MariaDB için Azure Veritabanı’na bağlanırken her zaman bağlantı noktası olarak 3306 kullanın. |
-   | Kullanıcı adı |  *sunucu yöneticisi oturum açma adı* | MariaDB için Azure Veritabanı örneğini oluşturmak üzere kullandığınız sunucu yöneticisi oturum açma kullanıcı adını girin. Bizim örnek kullanıcı adı **myadmin\@demosunucum**. Sunucu kullanıcısı oturum açma adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın. Biçim *kullanıcıadı\@servername*.
+   | Kullanıcı adı |  *sunucu yöneticisi oturum açma adı* | MariaDB için Azure Veritabanı örneğini oluşturmak üzere kullandığınız sunucu yöneticisi oturum açma kullanıcı adını girin. Örnek Kullanıcı adı **myadmin\@demosunucum**. Sunucu kullanıcısı oturum açma adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın. Biçim, *servername\@kullanıcıadı*.
    | Parola | *parolanız* | Parolayı kaydetmek için **Store in Vault** (Kasada depola) seçeneğini belirtin. |
 
    ![Yeni bağlantı oluşturma](./media/connect-workbench/2-setup-new-connection.png)

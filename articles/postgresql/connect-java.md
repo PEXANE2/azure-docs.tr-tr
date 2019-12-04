@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak için Java kullanın-tek sunucu"
+title: Java ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Java kod örneği sağlanmıştır.
 author: rachel-msft
 ms.author: raagyema
@@ -8,14 +8,14 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: b729881d30248bb4c3a717d70009cd68da91cf94
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211846"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767900"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı Başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma-tek sunucu
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma-tek sunucu
 Bu hızlı başlangıçta, Java uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makaledeki adımlarda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -39,7 +39,7 @@ PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgi
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
 Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri veritabanına yüklemek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, tabloyu bırakmak ve oluşturmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. Parametre değerlerini bağlamak için kullanılan setString() ve setInt() ile birlikte ekleme komutlarını oluşturmak için [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) nesnesi kullanılır. [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemi, her parametre kümesi için komutu çalıştırır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;
@@ -137,9 +137,9 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Verileri okuma
-**SELECT** SQL deyimiyle verileri okumak için aşağıdaki kodu kullanın. Veritabanına bağlanmak, select deyimini oluşturmak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. Sonuçlar [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) nesnesi kullanılarak işlenir. 
+**SELECT** SQL deyimiyle verileri okumak için aşağıdaki kodu kullanın. Veritabanına bağlanmak, select deyimini oluşturmak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. Sonuçlar, [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) nesnesi kullanılarak işlenir. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;
@@ -226,7 +226,7 @@ public class ReadTable {
 ## <a name="update-data"></a>Verileri güncelleştirme
 **UPDATE** SQL deyimiyle verileri değiştirmek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, update deyimini hazırlamak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemleri kullanılır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;
@@ -306,7 +306,7 @@ public class UpdateTable {
 ## <a name="delete-data"></a>Verileri silme
 **DELETE** SQL deyimiyle verileri kaldırmak için aşağıdaki kodu kullanın. Veritabanına bağlanmak, delete deyimini hazırlamak ve çalıştırmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemleri kullanılır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;

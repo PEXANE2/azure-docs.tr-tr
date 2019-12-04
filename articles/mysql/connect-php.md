@@ -1,20 +1,20 @@
 ---
-title: PHP’den MySQL için Azure Veritabanı'na bağlanma
+title: PHP kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç PHP kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 76d721ca102ae0affeba23c46d5da9fd44743f5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: b8923000b0bbc75e6d96b1b27a1154ef8ff87f24
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091900"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770722"
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için PHP kullanma
+# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: PHP'yi kullanarak bağlanma ve veri sorgulama
 Bu hızlı başlangıçta [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu konuda, PHP kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -22,10 +22,10 @@ Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birin
 - [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-## <a name="install-php"></a>PHP'yi yükleme
-PHP'yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](../app-service/overview.md) oluşturun.
+## <a name="install-php"></a>PHP’yi yükleme
+PHP’yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](../app-service/overview.md) oluşturun.
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 - [PHP 7.1.4 sürümünü](https://secure.php.net/downloads.php) indirin.
 - PHP'yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.macosx.php) bakın.
 
@@ -46,7 +46,7 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  ![MySQL için Azure Veritabanı sunucu adı](./media/connect-php/1_server-overview-name-login.png)
 
-## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
+## <a name="connect-and-create-a-table"></a>Bir tabloyu bağlama ve oluşturma
 Bağlanmak ve **CREATE TABLE** SQL deyimini kullanarak tablo oluşturmak için aşağıdaki kodu kullanın. 
 
 Kod, PHP'de bulunan **MySQL Improved extension** (mysqli) sınıfını kullanır. Kod, MySQL'e bağlanmak için [mysqli_init](https://secure.php.net/manual/mysqli.init.php) ve [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) yöntemlerini çağırır. Ardından sorgu çalıştırmak için [mysqli_query](https://secure.php.net/manual/mysqli.query.php) yöntemini çağırır. Daha sonra bağlantıyı kapatmak için [mysqli_close](https://secure.php.net/manual/mysqli.close.php) yöntemini çağırır.

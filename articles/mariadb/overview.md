@@ -1,18 +1,18 @@
 ---
-title: MariaDB için Azure Veritabanı ilişkisel veritabanı hizmetine genel bakış
+title: Genel Bakış-MariaDB için Azure veritabanı
 description: MySQL Community Edition 'ı temel alan Microsoft bulutundaki bir ilişkisel veritabanı hizmeti olan MariaDB hizmeti için Azure veritabanı hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/25/2019
-ms.openlocfilehash: aed2e090a1e3a6a4c80f70ba25da9a903a6192c1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: f2dc6ec2fb99addc6a2c050c072e0221fd2c8e0b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484147"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769090"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı nedir?
 
@@ -51,9 +51,9 @@ MariaDB için Azure veritabanı hizmeti birçok hizmet katmanı sunar: temel, Ge
 
 Azure 'un sektörde önde gelen% 99,99 kullanılabilirlik SLA 'Sı, Microsoft tarafından yönetilen küresel bir veri merkezi ağı ile desteklenmektedir. Ağ, uygulamanızın 7/24 çalışmasına yardımcı olur. MariaDB için Azure Veritabanı'ndaki yerleşik güvenlik, hataya dayanıklılık ve veri koruma özelliklerinden faydalanabilirsiniz. MariaDB için Azure Veritabanı ile, sunucuyu daha önceki bir durumuna (35 güne kadar) döndürüp kurtarmak için belirli bir noktaya geri yükleme işlemini gerçekleştirebilirsiniz.
 
-## <a name="secure-your-data"></a>Verilerinizin güvenliğini sağlama
+## <a name="secure-your-data"></a>Verilerinizi güvenli hale getirin
 
-Azure veritabanı hizmetlerinin sahip olduğu veri güvenliği anlayışı, MariaDB için Azure Veritabanı'nda da devam etmektedir. MariaDB için Azure Veritabanı bekleyen ve hareket halindeki verileri koruyan, erişimi sınırlandıran ve etkinliği izlemenize yardımcı olan özellikler sunmaktadır. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/trustcenter/security)'ni ziyaret edin. MySQL için Azure veritabanı güvenlik özellikleri hakkında daha fazla bilgi için bkz. [Güvenliğe genel bakış](concepts-security.md).
+Azure veritabanı hizmetlerinin sahip olduğu veri güvenliği anlayışı, MariaDB için Azure Veritabanı'nda da devam etmektedir. MariaDB için Azure Veritabanı bekleyen ve hareket halindeki verileri koruyan, erişimi sınırlandıran ve etkinliği izlemenize yardımcı olan özellikler sunmaktadır. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/trustcenter/security)'ni ziyaret edin. MariaDB güvenlik özellikleri için Azure veritabanı hakkında daha fazla bilgi için bkz. [Güvenliğe genel bakış](concepts-security.md).
 
 ## <a name="contacts"></a>Kişiler
 

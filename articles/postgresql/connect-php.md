@@ -1,6 +1,6 @@
 ---
-title: -Tek bir sunucu PostgreSQL için Azure veritabanı'na bağlanmak için PHP kullanma
-description: Bu hızlı başlangıçta, bağlanıp - tek bir sunucu PostgreSQL için Azure veritabanı'ndan veri sorgulamak için kullanabileceğiniz bir PHP kod örneği sağlanmıştır.
+title: PHP ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir PHP kod örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: c6320eabd4d5808e8cfe1d39ec4a72bbbce42f77
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067322"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766387"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>PostgreSQL - tek bir sunucu için Azure veritabanı: Bağlanmak ve veri sorgulamak için PHP kullanma
+# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: verileri bağlamak ve sorgulamak için PHP kullanın
 Bu hızlı başlangıçta, [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makaledeki adımlarda, PHP kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -34,13 +34,13 @@ PHP’yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması]
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 - [PHP 7.1.4 iş parçacığı güvenli olmayan (x64) sürümünü](https://secure.php.net/downloads.php) indirin 
-- PHP'yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.unix.php) bakın
+- PHP’yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.unix.php) bakın
 - Kod, **pgsql** sınıfını (php_pgsql.so) kullanır. `sudo apt-get install php-pgsql` öğesini çalıştırarak yükleyin.
 - `/etc/php/7.0/mods-available/pgsql.ini` yapılandırma dosyasını düzenleyerek **pgsql** uzantısını etkinleştirin. Yapılandırma dosyası, `extension=php_pgsql.so` metnine sahip bir satır içermelidir. Gösterilmiyorsa metni ekleyip dosyayı kaydedin. Metin varsa, ancak metne noktalı virgül ön ekiyle açıklama eklenmişse noktalı virgülü kaldırarak metindeki açıklamayı silin.
 
 ### <a name="macos"></a>MacOS
 - [PHP 7.1.4 sürümünü](https://secure.php.net/downloads.php) indirin
-- PHP'yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.macosx.php) bakın
+- PHP’yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.macosx.php) bakın
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
@@ -51,7 +51,7 @@ PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgi
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-php/1-connection-string.png)
 
-## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
+## <a name="connect-and-create-a-table"></a>Bir tabloyu bağlama ve oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.
 
 Kod, PostgreSQL için Azure Veritabanı’na bağlanmak amacıyla [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) yöntemini çağırır. Ardından birkaç komutu çalıştırmak için birkaç kez [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) yöntemini ve her seferinde bir hata oluşursa ayrıntıları kontrol etmek için [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) yöntemini çağırır. Daha sonra bağlantıyı kapatmak için [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) yöntemini çağırır.

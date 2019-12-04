@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Python 'dan MySQL için Azure veritabanı 'na bağlanma"
+title: Python kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç Python kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2019
-ms.openlocfilehash: 9f9d432bc2f7d70396bca5d140f1a66a75fd7231
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 12/02/2019
+ms.openlocfilehash: ff30cdc1af0bd9596220d84556c985b9ea80d554
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434324"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770705"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı ile bağlanmak ve veri sorgulamak için Python kullanma
 Bu makalede, [Python](https://python.org) kullanarak MySQL Için Azure veritabanı 'na nasıl bağlanulacağı gösterilmektedir. Mac OS, Ubuntu Linux ve Windows platformlarındaki veritabanında yer alan verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanır. 

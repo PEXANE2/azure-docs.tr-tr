@@ -1,6 +1,6 @@
 ---
-title: Hızlı Başlangıç - - Azure CLI kullanarak tek bir sunucu PostgreSQL için Azure veritabanı oluşturma
-description: Veritabanı oluşturma ve Azure PostgreSQL - Azure CLI (komut satırı arabirimi) kullanarak tek bir sunucu yönetmeye yönelik Hızlı Başlangıç Kılavuzu'ni kullanın.
+title: 'Hızlı başlangıç: sunucu oluşturma-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu'
+description: Azure CLı (komut satırı arabirimi) kullanarak PostgreSQL için Azure veritabanı oluşturma kılavuzu-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: d8e5ddf0820c789150f264aa4f7d6bd291adb3af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 54e31f206057207a9ed396c8980c6a3986d5ece4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443126"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766931"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Hızlı Başlangıç: -Azure CLI kullanarak tek bir sunucu PostgreSQL için Azure veritabanı oluşturma
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 
 > [!TIP]
-> Basit kullanmayı [az postgres'kurmak](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) (şu anda önizlemede) Azure CLI komutu. Denemenin [hızlı](./quickstart-create-server-up-azure-cli.md).
+> Daha basit [az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI komutunu kullanmayı düşünün (Şu anda önizleme aşamasındadır). [Hızlı](./quickstart-create-server-up-azure-cli.md)başlangıcı deneyin.
 
-PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir [Azure kaynak grubunda](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) nasıl PostgreSQL için Azure Veritabanı sunucusu oluşturabileceğiniz gösterilir.
+PostgreSQL için Azure Veritabanı, bulutta yüksek düzeyde kullanılabilir olan PostgreSQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan, yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir [Azure kaynak grubunda](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) nasıl PostgreSQL için Azure Veritabanı sunucusu oluşturabileceğiniz gösterilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -28,12 +28,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli). 
 
-CLI'yi yerel olarak çalıştırıyorsanız, kullanarak hesabınızda oturum açmanız [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) komutu. Not **kimliği** komut çıktısındaki ilgili abonelik adına için özellik.
+CLı 'yi yerel olarak çalıştırıyorsanız [az Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) komutunu kullanarak hesabınızda oturum açmanız gerekir. Karşılık gelen abonelik adı için komut çıktısından **ID** özelliğine göz önünde edin.
 ```azurecli-interactive
 az login
 ```
 
-Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. [az account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir abonelik kimliğini seçin. Yedek **kimliği** özelliğinden **az login** aboneliğinizin abonelik kimliği yer çıktı.
+Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. [az account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir abonelik kimliğini seçin. Abonelik KIMLIĞI yer tutucusuna aboneliğiniz için **az Login** çıktısından **ID** özelliğini değiştirin.
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```
@@ -52,21 +52,21 @@ az group create --name myresourcegroup --location westus
 
 **Ayar** | **Örnek değer** | **Açıklama**
 ---|---|---
-name | mydemoserver | Azure veritabanınızı PostgreSQL sunucusuna tanıtan benzersiz bir ad seçin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
-resource-group | myresourcegroup | Azure kaynak grubunun adını girin.
+ad | mydemoserver | Azure veritabanınızı PostgreSQL sunucusuna tanıtan benzersiz bir ad seçin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
+resource-group | myresourcegroup | Azure kaynak grubunun adını sağlayın.
 sku-name | GP_Gen5_2 | Sku'nun adı. Kısaca {fiyatlandırma katmanı}\_{işlem nesli}\_{sanal çekirdek sayısı} kuralına uyar. sku-name parametresi hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
 backup-retention | 7 | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. 7-35 aralığındadır. 
-geo-redundant-backup | Devre dışı | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, devre dışı bırakıldı.
+geo-redundant-backup | Devre dışı | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, Devre Dışı.
 location | westus | Sunucu için Azure konumu.
-ssl-enforcement | Enabled | Bu sunucu için ssl'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, devre dışı bırakıldı.
+ssl-enforcement | Etkin | Bu sunucu için ssl'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, Devre Dışı.
 storage-size | 51200 | Sunucunun depolama kapasitesi (birim olan megabayt kullanılır). Geçerli storage-size en az 5120 MB'tır ve 1024 MB'lık artışlarla büyür. Depolama boyutu sınırları hakkında daha fazla bilgi için [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgesine bakın. 
 version | 9.6 | PostgreSQL ana sürümü.
 admin-user | myadmin | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public**.
-admin-password | *güvenli parola* | Yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu kategorilerin üçünden karakterler içermelidir: İngilizce harfler, İngilizce küçük harfler, sayılar ve alfasayısal olmayan karakterler büyük.
+admin-password | *güvenli parola* | Yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
 
 
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
-+ `--sku-name B_Gen5_1` Temel ve 5. nesil 1 sanal çekirdek eşlenir. Bu seçenek en küçük SKU kullanılabilir olur.
++ `--sku-name B_Gen5_1` temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 + `--sku-name GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 + `--sku-name MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -78,20 +78,20 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 ```
 
 > [!NOTE]
-> Temel fiyatlandırma katmanını kullanarak göz önünde bulundurun hafif işlem ve g/ç iş yükünüz için yeterli olup olmadığını. Temel fiyatlandırma katmanında oluşturulan sunucular daha sonra genel amaçlı veya bellek için iyileştirilmiş ölçeklendirilemiyor olduğunu unutmayın. Bkz: [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/postgresql/) daha fazla bilgi için.
+> Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaçlı veya bellek için Iyileştirilmiş olarak ölçeklenmeyeceğini unutmayın. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/postgresql/) .
 > 
 
-## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı oluşturma
+## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı yapılandırma
 
 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) komutunu kullanarak Azure PostgreSQL sunucusu düzeyinde bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyindeki bir güvenlik duvarı kuralı, [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) veya [PgAdmin](https://www.pgadmin.org/) gibi bir dış uygulamanın Azure PostgreSQL hizmetinin güvenlik duvarı üzerinden sunucunuza bağlanmasına imkan tanır. 
 
-Ağınızdan bağlanabilmek için bir IP aralığını kapsayan güvenlik duvarı kuralı ayarlayabilirsiniz. Aşağıdaki örnekte, [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) komutu kullanılarak tek bir IP adresi için `AllowMyIP` güvenlik duvarı kuralı oluşturulur.
+Ağınızdan bağlanabilmek için bir IP aralığını kapsayan bir güvenlik duvarı kuralı ayarlayabilirsiniz. Aşağıdaki örnekte, [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) komutu kullanılarak tek bir IP adresi için `AllowMyIP` güvenlik duvarı kuralı oluşturulur.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
 
 > [!NOTE]
-> Azure PostgreSQL sunucusu, 5432 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanıyorsanız ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. BT departmanınızdan Azure PostgreSQL sunucunuza bağlanması için 5432 numaralı bağlantı noktasını açmasını isteyin.
+> Azure PostgreSQL sunucusu, 5432 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanıyorsanız ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. BT departmanınızdan Azure PostgreSQL sunucunuza bağlanması için 5432 numaralı bağlantı noktasını açmasını isteyin.
 
 ## <a name="get-the-connection-information"></a>Bağlantı bilgilerini alma
 
@@ -146,7 +146,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    ```
 
    > [!TIP]
-   > Postgres için bağlanmak için bir URL yolu kullanmayı tercih ederseniz, URL kodlaması ile kullanıcı oturum @ `%40`. Örneğin, bağlantı dizesini psql olacaktır,
+   > Postgres 'e bağlanmak için bir URL yolu kullanmayı tercih ediyorsanız, URL, Kullanıcı adında @ işaretini `%40`ile kodlayın. Örneğin, psql için bağlantı dizesi,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -162,7 +162,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    \c mypgsqldb
    ```
 
-## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin kullanarak PostgreSQL Sunucusu’na bağlanma
+## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin’i kullanarak PostgreSQL Sunucusu’na bağlanma
 
 pgAdmin, PostgreSQL ile kullanılan açık kaynak bir araçtır. pgAdmin'i [pgAdmin web sitesinden](https://www.pgadmin.org/) yükleyebilirsiniz. Kullandığınız pgAdmin sürümü bu Hızlı Başlangıçta kullanılan sürümden farklı olabilir. Ek yönergeler gerekiyorsa pgAdmin belgelerini okuyun.
 
@@ -180,13 +180,13 @@ pgAdmin, PostgreSQL ile kullanılan açık kaynak bir araçtır. pgAdmin'i [pgAd
 
     pgAdmin parametresi |Değer|Açıklama
     ---|---|---
-    Konak adı/adresi | Sunucu adı | PostgreSQL için Azure Veritabanı sunucusunu oluştururken kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.postgres.database.azure.com.** Örnekte gösterildiği gibi tam etki alanı adını kullanın ( **\*. postgres.database.azure.com**). Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. 
-    Port | 5432 | PostgreSQL için Azure Veritabanı sunucusuna bağlanırken kullanılacak bağlantı noktası. 
+    Konak adı/adresi | Sunucu adı | PostgreSQL için Azure Veritabanı sunucusunu oluştururken kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.postgres.database.azure.com.** Örnekte gösterildiği gibi tam etki alanı adını ( **\*. Postgres.Database.Azure.com**) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. 
+    Bağlantı noktası | 5432 | PostgreSQL için Azure Veritabanı sunucusuna bağlanırken kullanılacak bağlantı noktası. 
     Bakım veritabanı | *postgres* | Sistem tarafından oluşturulan varsayılan veritabanı adı.
-    Kullanıcı adı | Sunucu yöneticisi oturum açma adı | PostgreSQL için Azure Veritabanı sunucusunu oluştururken girdiğiniz sunucu yöneticisi oturum açma kullanıcı adı. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. Biçim *kullanıcıadı\@servername*.
+    Kullanıcı adı | Sunucu yöneticisi oturum açma adı | PostgreSQL için Azure Veritabanı sunucusunu oluştururken girdiğiniz sunucu yöneticisi oturum açma kullanıcı adı. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. Biçim, *servername\@kullanıcıadı*.
     Parola | Yönetici parolanız | Bu Hızlı Başlangıçta daha önce sunucuyu oluştururken seçtiğiniz parola.
-    Role | Boş bırakın | Bu noktada bir rol adı sağlamanız gerekmez. Alanı boş bırakın.
-    SSL modu | *Gerektirme* | pgAdmin’in SSL sekmesinde SSL modunu ayarlayabilirsiniz. Tüm PostgreSQL için Azure Veritabanı sunucuları, varsayılan olarak SSL’yi zorunlu tutma seçeneği açık şekilde oluşturulur. SSL'yi zorunlu tutma seçeneğini kapatmak için bkz. [SSL'yi zorunlu tutma](./concepts-ssl-connection-security.md).
+    Rol | Boş bırakın | Bu noktada bir rol adı sağlamanız gerekmez. Alanı boş bırakın.
+    SSL modu | *Gerektirme* | PgAdmin 'in SSL sekmesinde SSL modunu ayarlayabilirsiniz. Varsayılan olarak, PostgreSQL için Azure veritabanı sunucularına yönelik tüm Azure veritabanları, SSL 'yi zorunlu tutarak oluşturulur. SSL'yi zorunlu tutma seçeneğini kapatmak için bkz. [SSL'yi zorunlu tutma](./concepts-ssl-connection-security.md).
     
 5. **Kaydet**’i seçin.
 

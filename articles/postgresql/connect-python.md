@@ -1,5 +1,5 @@
 ---
-title: PostgreSQL için Azure veritabanı 'na bağlanmak için Python kullanma-tek sunucu
+title: Python ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verilere veri sorgulamak için kullanabileceğiniz Python kod örnekleri sağlanır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 441ff1ebeffde36d1940520404050f6cc29ea53e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066286"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766404"
 ---
 # <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kullanarak PostgreSQL için Azure veritabanı ile nasıl çalışılacağı gösterilmektedir. Hızlı başlangıç, veritabanına bağlanmayı ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanmayı gösterir. Makalede, Python hakkında bilgi sahibi olduğunuz ancak PostgreSQL için Azure veritabanı ile çalışmaya yeni başladığınız varsayılır.

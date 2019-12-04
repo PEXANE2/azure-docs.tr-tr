@@ -1,20 +1,20 @@
 ---
-title: MySQL Workbench’ten MySQL için Azure Veritabanı'na bağlanma
+title: MySQL çalışma ekranı kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu Hızlı Başlangıçta, MySQL Workbench kullanarak MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için uygulanması gereken adımlar sağlanmıştır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: aa7d38171fdfaa6fb25b1863a09273a4e733b6e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 16218dcac2f0a4301b52b0efc54fc04ae39d5e22
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526166"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770688"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için MySQL Workbench kullanma
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: MySQL Workbench kullanarak bağlanma ve veri sorgulama
 Bu hızlı başlangıçta MySQL Workbench uygulamasını kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -52,7 +52,7 @@ MySQL Workbench GUI aracını kullanarak Azure MySQL Sunucusuna bağlanmak için
     | Bağlantı Yöntemi | Standart (TCP/IP) | Standart (TCP/IP) yeterlidir. |
     | Ana Bilgisayar Adı | *sunucu adı* | MySQL için Azure Veritabanını oluştururken kullandığınız sunucu adı değerini belirtin. Gösterilen örnek sunucumuz: mydemoserver.mysql.database.azure.com. Örnekte gösterildiği gibi tam etki alanı adını (\*.mysql.database.azure.com) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin.  |
     | Bağlantı noktası | 3306 | MySQL Azure veritabanına bağlanırken her zaman bağlantı noktası olarak 3306 kullanın. |
-    | Kullanıcı adı |  *sunucu yöneticisi oturum açma adı* | MySQL için Azure Veritabanını oluştururken girdiğiniz sunucu yöneticisi oturum açma kullanıcı adını yazın. Bizim örnek kullanıcı adımız myadmin@mydemoserver. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. Biçim *kullanıcıadı\@servername*.
+    | Kullanıcı adı |  *sunucu yöneticisi oturum açma adı* | MySQL için Azure Veritabanını oluştururken girdiğiniz sunucu yöneticisi oturum açma kullanıcı adını yazın. Bizim örnek kullanıcı adımız myadmin@mydemoserver. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. Biçim, *servername\@kullanıcıadı*.
     | Parola | parolanız | Parolayı kaydetmek için **Kasada Depola...** düğmesine tıklayın. |
 
 3.   Tüm parametrelerin doğru yapılandırılıp yapılandırılmadığını test etmek için **Bağlantıyı Sına**’ya tıklayın. 

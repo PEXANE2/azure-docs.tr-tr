@@ -1,5 +1,5 @@
 ---
-title: C++’tan MySQL için Azure Veritabanı'na bağlanma
+title: MySQL için C++ Azure veritabanı kullanarak bağlanma
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz bir C++ kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 04/12/2018
-ms.openlocfilehash: ff5232c4569e94322d76928f19f202c8bad1a39a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.date: 12/02/2019
+ms.openlocfilehash: 1cec92631208b446f5621c9010d8cb7b86ae38e9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428511"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770807"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Connector/C++ bağlanmak ve veri sorgulamak için kullanın
-Bu hızlı başlangıçta C++ uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu konuda kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz varsayılır C++ ve MySQL için Azure veritabanı ile çalışmaya yeni.
+# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Connector/C++ kullanarak bağlanma ve veri sorgulama
+Bu hızlı başlangıçta C++ uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu konu, kullanarak C++ geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL Için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak aşağıdaki kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
@@ -30,25 +30,25 @@ Bu hızlı başlangıçta, başlangıç noktası olarak aşağıdaki kılavuzlar
 - [Boost](https://www.boost.org/)’u yükleyin
 
 ## <a name="install-visual-studio-and-net"></a>Visual Studio'yu ve .NET'i yükleme
-Bu bölümdeki adımlarda .NET kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz varsayılır.
+Bu bölümdeki adımlarda, .NET kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz varsayılır.
 
 ### <a name="windows"></a>**Windows**
-- Visual Studio 2019 Community'yi yükleyin. Visual Studio 2019 Community bir tam özellikli, Genişletilebilir, ücretsiz bir ıde'dir. Bu IDE ile Android, iOS, Windows, web ve veritabanı uygulamaları için modern uygulamalar oluşturun ve bulut Hizmetleri. Tam .NET Framework’ü veya yalnızca .NET Core’u yükleyebilirsiniz: hızlı başlangıçtaki kod parçacıkları her ikisiyle de çalışır. Bilgisayarınızda Visual Studio zaten yüklüyse, sonraki iki adımı atlayın.
-   1. İndirme [Visual Studio 2019 yükleyici](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
+- Visual Studio 2019 Community 'yi yükler. Visual Studio 2019 Community, tam özellikli, genişletilebilir ve ücretsiz bir IDE 'dir. Bu IDE ile Android, iOS, Windows, Web ve veritabanı uygulamaları ve bulut hizmetleri için modern uygulamalar oluşturabilirsiniz. Tam .NET Framework’ü veya yalnızca .NET Core’u yükleyebilirsiniz: hızlı başlangıçtaki kod parçacıkları her ikisiyle de çalışır. Bilgisayarınızda Visual Studio zaten yüklüyse, sonraki iki adımı atlayın.
+   1. [Visual Studio 2019 yükleyicisini](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)indirin. 
    2. Yükleyiciyi çalıştırın ve yükleme istemlerini izleyerek yüklemeyi tamamlayın.
 
 ### <a name="configure-visual-studio"></a>**Visual Studio'yu yapılandırma**
-1. Visual Studio'dan Proje -> Özellikler -> bağlayıcı -> Genel > ek kitaplık Dizinleri'ne "\lib\opt" dizinini ekleyin (örneğin: C:\Program dosyaları (x86) \MySQL\MySQL Connector C++ 1.1.9\lib\opt) C++ bağlayıcısının.
+1. Visual Studio, Project-> Properties-> bağlayıcı-> Genel > Ek kitaplık dizinleri ' nden, C++ C++ bağlayıcının "\lib\opt" dizinini (örneğin: C:\Program Files (x86) \MySQL\MySQL Connector 1.1.9 \ lib\opt) ekleyin.
 2. Visual Studio'dan Proje -> Özellikler -> C/C++ -> Genel -> Ek Ekleme Dizinleri:
-   - C ++ bağlayıcısının "\include" dizinini ekleyin (örneğin: C:\Program dosyaları (x86) \MySQL\MySQL Connector C++ 1.1.9\include\).
-   - Boost kitaplığının kök dizinini ekleyin (örneğin: C:\boost_1_64_0\).
+   - C++ bağlayıcısının "\include" dizinini ekleyin (örneğin: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include\).
+   - Yükseltme kitaplığının kök dizinini (örneğin: C:\ boost_1_64_0\)ekleyin.
 3. Visual Studio'dan Proje -> Özellikler -> Bağlayıcı -> Giriş > Ek Bağımlılıklar’a gidip metin alanına **mysqlcppconn.lib** değerini ekleyin.
 4. Adım 3'teki C++ bağlayıcı kitaplık klasöründen **mysqlcppconn.dll** dosyasını uygulama yürütülebilir dosyasıyla aynı dizine kopyalayın ya da uygulamanızın dosyayı bulması için ortam değişkenine ekleyin.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
@@ -57,7 +57,7 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
 Bağlanıp **CREATE TABLE** ve **INSERT INTO** SQL deyimlerini kullanarak verileri yüklemek için aşağıdaki kodu kullanın. Kod MySQL ile bağlantı kurmak için connect() yöntemiyle sql::Driver sınıfını kullanır. Ardından kod veritabanı komutlarını çalıştırmak için createStatement() ve execute() yöntemlerini kullanır. 
 
-Host, DBName, kullanıcı ve parola parametrelerini değiştirin. Parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
+Host, DBName, User ve Password parametrelerini değiştirin. Parametreleri, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
 
 ```c++
 #include <stdlib.h>
@@ -131,7 +131,7 @@ int main()
 
 Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. Kod MySQL ile bağlantı kurmak için connect() yöntemiyle sql::Driver sınıfını kullanır. Ardından kod, seçme komutlarını çalıştırmak için prepareStatement() ve executeQuery() yöntemlerini kullanır. Daha sonra, kod next() yöntemini kullanarak sonuçlardaki kayıtlara gider. Son olarak, kod getInt() ve getString() yöntemini kullanarak kayıttaki değerleri ayrıştırır.
 
-Host, DBName, kullanıcı ve parola parametrelerini değiştirin. Parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
+Host, DBName, User ve Password parametrelerini değiştirin. Parametreleri, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
 
 ```c++
 #include <stdlib.h>
@@ -190,7 +190,7 @@ int main()
 ## <a name="update-data"></a>Verileri güncelleştirme
 Bağlanmak ve **UPDATE** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. Kod MySQL ile bağlantı kurmak için connect() yöntemiyle sql::Driver sınıfını kullanır. Ardından kod, güncelleme komutlarını çalıştırmak için prepareStatement() ve executeQuery() yöntemlerini kullanır. 
 
-Host, DBName, kullanıcı ve parola parametrelerini değiştirin. Parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
+Host, DBName, User ve Password parametrelerini değiştirin. Parametreleri, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
 
 ```c++
 #include <stdlib.h>
@@ -248,7 +248,7 @@ int main()
 ## <a name="delete-data"></a>Verileri silme
 Bağlanmak ve **DELETE** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. Kod MySQL ile bağlantı kurmak için connect() yöntemiyle sql::Driver sınıfını kullanır. Ardından kod, silme komutlarını çalıştırmak için prepareStatement() ve executeQuery() yöntemlerini kullanır.
 
-Host, DBName, kullanıcı ve parola parametrelerini değiştirin. Parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
+Host, DBName, User ve Password parametrelerini değiştirin. Parametreleri, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirebilirsiniz. 
 
 ```c++
 #include <stdlib.h>

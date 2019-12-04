@@ -1,5 +1,5 @@
 ---
-title: Ruby kullanarak MySQL için Azure Veritabanı'na bağlanma
+title: Bir MySQL için Ruby-Azure veritabanı kullanarak bağlanma
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç Ruby kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 5dbb2226e33928d9d79358a84192b57c44841de4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525958"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770654"
 ---
-# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için Ruby kullanma
+# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Ruby'yi kullanarak bağlanma ve veri sorgulama
 Bu hızlı başlangıçta, Windows, Ubuntu Linux ve Mac platformlarından bir [Ruby](https://www.ruby-lang.org) uygulaması ve [mysql2](https://rubygems.org/gems/mysql2) gem kullanılarak MySQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu konuda, Ruby kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -34,7 +34,7 @@ Kendi bilgisayarınıza Ruby, Gem ve MySQL2 kitaplığı yükleyin.
 5. Yüklenen sürümü görmek için `gem -v` komutunu çalıştırarak Gem yüklemesini test edin.
 6. `gem install mysql2` komutunu çalıştırarak, Ruby için Mysql2 modülünü Gem kullanarak derleyin.
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 1. `brew install ruby` komutunu çalıştırarak Homebrew kullanan Ruby’yi yükleyin. Daha fazla yükleme seçeneği için Ruby [yükleme belgelerine](https://www.ruby-lang.org/en/documentation/installation/#homebrew) bakın.
 2. Yüklenen sürümü görmek için `ruby -v` komutunu çalıştırarak Ruby yüklemesini test edin.
 3. Yüklenen sürümü görmek için `gem -v` komutunu çalıştırarak Gem yüklemesini test edin.
@@ -64,7 +64,7 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 3. Sonra uygulamayı çalıştırmak için Ruby komutunu ve ardından `ruby createtable.rb` örneğindeki gibi dosya adını yazın.
 4. Windows işletim sisteminde Ruby uygulamanız yol ortam değişkeninde değilse düğüm uygulamasını başlatmak için tam yolu kullanmanız gerekebilir; örneğin, `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`
 
-## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
+## <a name="connect-and-create-a-table"></a>Bir tabloyu bağlama ve oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.
 
 Kod, [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) sınıfı .new() yöntemini kullanarak MySQL için Azure Veritabanıyla bağlantı kurar. Ardından DROP, CREATE TABLE ve INSERT INTO komutlarını çalıştırmak için birkaç kez [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) yöntemini çağırır. Ardından bağlantıyı sonlandırılmadan önce kapatmak için [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) yöntemini çağırır.

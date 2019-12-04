@@ -1,5 +1,5 @@
 ---
-title: MySQL için Azure veritabanı 'na bağlanmak üzere Java 'Yı kullanma
+title: Java kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL veritabanı için Azure veritabanı 'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz bir Java kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/08/2019
-ms.openlocfilehash: 9df95a754d4bd423ddd7f57c634b86bd33e906ca
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155531"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770756"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Hızlı Başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java 'Yı kullanma
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma
 
 Bu hızlı başlangıçta, Java uygulaması ve JDBC sürücü [MariaDB bağlayıcısını/J](https://mariadb.com/kb/en/library/mariadb-connector-j/)kullanarak MySQL Için Azure veritabanı 'na nasıl bağlanulacağı gösterilmektedir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makalede, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
@@ -40,9 +40,9 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
  ![MySQL için Azure Veritabanı sunucu adı](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
-Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri yüklemek için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) ve execute() yöntemleri tabloyu bırakmak ve oluşturmak için kullanılır. Parametre değerlerini bağlamak için kullanılan setString() ve setInt() ile birlikte ekleme komutlarını oluşturmak için prepareStatement nesnesi kullanılır. executeUpdate() yöntemi, değerleri eklemek üzere her parametre kümesi için komutu çalıştırır. 
+Aşağıdaki kodu kullanarak bağlanın ve **INSERT** SQL deyimiyle işlevi kullanarak verileri yükleyin. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) ve execute() yöntemleri tabloyu bırakmak ve oluşturmak için kullanılır. Parametre değerlerini bağlamak için kullanılan setString() ve setInt() ile birlikte ekleme komutlarını oluşturmak için prepareStatement nesnesi kullanılır. executeUpdate() yöntemi, değerleri eklemek üzere her parametre kümesi için komutu çalıştırır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;
@@ -144,7 +144,7 @@ public class CreateTableInsertRows {
 ## <a name="read-data"></a>Verileri okuma
 **SELECT** SQL deyimiyle verileri okumak için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. SELECT ifadesini bağlamak ve çalıştırmak için [Createdeyimin ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) ve ExecuteQuery () yöntemleri kullanılır. Sonuçlar, bir sonuç kümesi nesnesi kullanılarak işlenir. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;
@@ -231,7 +231,7 @@ public class ReadTable {
 ## <a name="update-data"></a>Verileri güncelleştirme
 **UPDATE** SQL deyimiyle verileri değiştirmek için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. UPDATE deyimini hazırlamak ve çalıştırmak için [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) ve executeUpdate() yöntemleri kullanılır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;
@@ -313,7 +313,7 @@ public class UpdateTable {
 ## <a name="delete-data"></a>Verileri silme
 **DELETE** SQL deyimiyle verileri kaldırmak için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır.  Hazırlama yöntemi [()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) ve ExecuteUpdate () hazırlığı, DELETE ifadesini hazırlamak ve çalıştırmak için kullanılır. 
 
-host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
+Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```java
 import java.sql.*;

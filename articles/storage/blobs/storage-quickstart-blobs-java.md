@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 27fbd0084f9f8c91ee83802efe6a96213363b78f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422045"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770450"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure Blob depolama istemci kitaplığı V12
 
@@ -46,7 +46,7 @@ Bu bölüm, Java için Azure Blob depolama istemci kitaplığı V12 ile çalış
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-*BLOB-QuickStart-V12*adlı bir Java Core uygulaması oluşturun.
+*BLOB-QuickStart-V12*adlı bir Java uygulaması oluşturun.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *BLOB-QuickStart-V12*adlı yeni bir konsol uygulaması oluşturun. Basit bir "Hello World!" oluşturmak için tek bir satıra aşağıdaki **MVN** komutunu yazın Java projesi. Bu komut, okunabilirlik için birden çok satırda görüntülenir.
 
@@ -128,7 +128,7 @@ Proje dizininden:
 1. `System.out.println("Hello world!");` ifadesini silme
 1. `import` yönergeleri ekleme
 
-Kod aşağıdaki gibidir:
+Kod şu şekildedir:
 
 ```java
 package com.blobs.quickstart;

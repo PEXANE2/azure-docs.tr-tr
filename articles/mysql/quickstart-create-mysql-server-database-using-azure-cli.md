@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: MySQL sunucusu - Azure CLI için Azure veritabanı oluşturma'
+title: 'Hızlı başlangıç: sunucu oluşturma-Azure CLı-MySQL için Azure veritabanı'
 description: Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda nasıl MySQL için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır.
 author: ajlam
 ms.author: andrela
@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 10acb353e282508c838bee89b131d94dcd3fa7ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773543"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI aracını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma
+# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
 > [!TIP]
-> Basit kullanmayı [az mysql'i ayarlama](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) (şu anda önizlemede) Azure CLI komutu. Denemenin [hızlı](./quickstart-create-server-up-azure-cli.md).
+> Daha basit [az MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI komutunu kullanmayı düşünün (Şu anda önizleme aşamasındadır). [Hızlı](./quickstart-create-server-up-azure-cli.md)başlangıcı deneyin.
 
-Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda yaklaşık beş dakikada nasıl MySQL için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır. Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır.
+Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda yaklaşık beş dakikada nasıl MySQL için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır. Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -33,7 +33,7 @@ Birden fazla aboneliğiniz varsa kaynağın mevcut olduğu ve faturalandırıld�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 [az group create](/cli/azure/group#az-group-create) komutunu kullanarak bir [Azure kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek `westus` konumunda `myresourcegroup` adlı bir kaynak grubu oluşturur.
@@ -47,21 +47,21 @@ az group create --name myresourcegroup --location westus
 
 **Ayar** | **Örnek değer** | **Açıklama**
 ---|---|---
-name | mydemoserver | Azure veritabanınızı MySQL sunucusuna tanıtan benzersiz bir ad seçin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
-resource-group | myresourcegroup | Azure kaynak grubunun adını girin.
+ad | mydemoserver | Azure veritabanınızı MySQL sunucusuna tanıtan benzersiz bir ad seçin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
+resource-group | myresourcegroup | Azure kaynak grubunun adını sağlayın.
 sku-name | GP_Gen5_2 | Sku'nun adı. Kısaca {fiyatlandırma katmanı}\_{işlem nesli}\_{sanal çekirdek sayısı} kuralına uyar. sku-name parametresi hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
 backup-retention | 7 | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. 7-35 aralığındadır. 
-geo-redundant-backup | Devre Dışı Bırakıldı | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, devre dışı bırakıldı.
-konum | westus | Sunucu için Azure konumu.
-ssl-enforcement | Enabled | Bu sunucu için ssl'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, devre dışı bırakıldı.
+geo-redundant-backup | Devre dışı | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, Devre Dışı.
+location | westus | Sunucu için Azure konumu.
+ssl-enforcement | Etkin | Bu sunucu için ssl'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: Etkin, Devre Dışı.
 storage-size | 51200 | Sunucunun depolama kapasitesi (birim olan megabayt kullanılır). Geçerli storage-size en az 5120 MB'tır ve 1024 MB'lık artışlarla büyür. Depolama boyutu sınırları hakkında daha fazla bilgi için [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgesine bakın. 
 version | 5.7 | MySQL ana sürümü.
 admin-user | myadmin | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public**.
-admin-password | *güvenli parola* | Yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu kategorilerin üçünden karakterler içermelidir: İngilizce harfler, İngilizce küçük harfler, sayılar ve alfasayısal olmayan karakterler büyük.
+admin-password | *güvenli parola* | Yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
 
 
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
-+ `--sku-name B_Gen5_1` Temel ve 5. nesil 1 sanal çekirdek eşlenir. Bu seçenek en küçük SKU kullanılabilir olur.
++ `--sku-name B_Gen5_1` temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 + `--sku-name GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 + `--sku-name MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -74,7 +74,7 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver  --l
 ```
 
 > [!NOTE]
-> Temel fiyatlandırma katmanını kullanarak göz önünde bulundurun hafif işlem ve g/ç iş yükünüz için yeterli olup olmadığını. Temel fiyatlandırma katmanında oluşturulan sunucular daha sonra genel amaçlı veya bellek için iyileştirilmiş ölçeklendirilemiyor olduğunu unutmayın. Bkz: [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mysql/) daha fazla bilgi için.
+> Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaçlı veya bellek için Iyileştirilmiş olarak ölçeklenmeyeceğini unutmayın. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mysql/) .
 > 
 
 ## <a name="configure-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
@@ -208,8 +208,8 @@ mysql>
 |---|---|---|
 |   Bağlantı Adı | Bağlantım | Bu bağlantı için bir etiket belirtin (herhangi bir şey olabilir) |
 | Bağlantı Yöntemi | Standart (TCP/IP) seçeneğini belirleyin | MySQL için Azure Veritabanı'na bağlanmak için TCP/IP protokolünü kullanın |
-| Konak adı | mydemoserver.mysql.database.azure.com | Daha önce not aldığınız sunucu adı. |
-| Port | 3306 | MySQL için varsayılan bağlantı noktası kullanılır. |
+| Ana Bilgisayar Adı | mydemoserver.mysql.database.azure.com | Daha önce not aldığınız sunucu adı. |
+| Bağlantı noktası | 3306 | MySQL için varsayılan bağlantı noktası kullanılır. |
 | Kullanıcı adı | myadmin@mydemoserver | Daha önce not aldığınız sunucu yöneticisi oturum açma bilgileri. |
 | Parola | **** | Önceden yapılandırdığınız yönetici parolasını kullanın. |
 

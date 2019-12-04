@@ -1,18 +1,18 @@
 ---
-title: 'Hızlı Başlangıç: MariaDB sunucu - Azure portalı için Azure veritabanı oluşturma'
+title: 'Hızlı başlangıç: sunucu oluşturma-Azure portal-MariaDB için Azure veritabanı'
 description: Bu makalede, Azure portalı kullanarak yaklaşık 5 dakikada hızlıca örnek bir MariaDB için Azure Veritabanı sunucusu oluşturma adımları gösterilmektedir.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/15/2019
-ms.openlocfilehash: 536d06948510dd5df05bfc2d46cc79b9cf1559ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61467148"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769991"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure portalı kullanarak MariaDB için Azure Veritabanı sunucusu oluşturma
 
@@ -32,7 +32,7 @@ MariaDB için Azure Veritabanı sunucusu oluşturmak için:
 
 1. Portalın sol üst köşesinde bulunan **Kaynak oluştur** düğmesini (+) seçin.
 
-2. Seçin **veritabanları** > **MariaDB için Azure veritabanı**. Ayrıca **MariaDB** hizmeti bulmak için arama kutusuna.
+2. **MariaDB Için Azure veritabanı** > **veritabanları** ' nı seçin. Hizmeti bulmak için arama kutusuna **MariaDB** de yazabilirsiniz.
 
    ![MariaDB için Azure Veritabanı seçeneği](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
@@ -47,14 +47,14 @@ MariaDB için Azure Veritabanı sunucusu oluşturmak için:
     Kaynak grubu | **myresourcegroup** | Yeni bir kaynak grubu adı girin veya var olan bir kaynak grubunu seçin. 
     Kaynak seçme | **Boş** | Sıfırdan yeni bir sunucu oluşturmak için **Boş**’u seçin. (Mevcut bir MariaDB için Azure Veritabanı sunucusunun coğrafi yedeğinden bir sunucu oluşturuyorsanız, **Yedek**'i seçin.)
     Sunucu yöneticisi oturum açma | **myadmin** | Sunucuya bağlanırken kullanılacak oturum açma hesabı. Yönetici oturum açma adı **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
-    Parola | *tercih ettiğiniz* | Sunucu yönetici hesabı için yeni bir parola girin. 8 ile 128 arasında karakter içermelidir. Parolanız şu kategorilerin üçünden karakterler içermelidir: İngilizce büyük harfler, İngilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #, % vb.).
+    Parola | *tercih ettiğiniz* | Sunucu yönetici hesabı için yeni bir parola girin. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #, %, vb.).
     Parolayı onayla | *tercih ettiğiniz*| Yönetici hesabı parolasını onaylayın.
-    Location | *kullanıcılarınıza en yakın bölge*| Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
-    Version | *en son sürüm*| En son sürüm (başka bir sürüm kullanmak için belirli gereksinimleriniz yoksa).
-    Fiyatlandırma katmanı | Açıklamaya bakın. | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Fiyatlandırma katmanı** > **Genel Amaçlı**'yı seçin. Aşağıdaki ayarlar için varsayılan değerleri kullanın:<br><ul><li>**İşlem Oluşturma** (Gen 5)</li><li>**Sanal çekirdek** (4 çekirdek)</li><li>**Depolama** (100 GB)</li><li>**Yedekleme Saklama Dönemi** (7 gün)</li></ul><br>Coğrafi olarak yedekli depolamada sunucu yedeklerinizi etkinleştirmek için **Fazladan Yedek Seçenekleri**’nde **Coğrafi Olarak Yedeklemeli**’yi seçin. <br><br>Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
+    Konum | *kullanıcılarınıza en yakın bölge*| Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
+    Sürüm | *en son sürüm*| En son sürüm (başka bir sürüm kullanmak için belirli gereksinimleriniz yoksa).
+    Fiyatlandırma katmanı | Açıklamaya bakın. | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Fiyatlandırma katmanı** > **Genel Amaçlı**'yı seçin. Aşağıdaki ayarlar için varsayılan değerleri kullanın:<br><ul><li>**İşlem Oluşturma** (Gen 5)</li><li>**sanal çekirdek** (4 sanal çekirdek)</li><li>**Depolama** (100 GB)</li><li>**Yedekleme Saklama Dönemi** (7 gün)</li></ul><br>Coğrafi olarak yedekli depolamada sunucu yedeklerinizi etkinleştirmek için **Fazladan Yedek Seçenekleri**’nde **Coğrafi Olarak Yedeklemeli**’yi seçin. <br><br>Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
   
    > [!NOTE]
-   > Temel fiyatlandırma katmanını kullanarak göz önünde bulundurun hafif işlem ve g/ç iş yükünüz için yeterli olup olmadığını. Temel fiyatlandırma katmanında oluşturulan sunucular daha sonra genel amaçlı veya bellek için iyileştirilmiş ölçeklendirilemiyor olduğunu unutmayın. Bkz: [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/) daha fazla bilgi için.
+   > Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaçlı veya bellek için Iyileştirilmiş olarak ölçeklenmeyeceğini unutmayın. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/) .
    > 
 
    ![Sunucu oluşturma - Fiyatlandırma katmanı penceresi](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
@@ -83,7 +83,7 @@ Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmak için:
 4. **Bağlantı güvenliği** sayfasının üst araç çubuğunda **Kaydet**’i seçin. Devam etmeden önce güncelleştirmenin başarıyla tamamlandığını belirten bildirim görünene kadar bekleyin. 
 
    > [!NOTE]
-   > MariaDB için Azure Veritabanı bağlantıları, 3306 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, 3306 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu örnekte sunucunuza bağlanabilmek için BT departmanınızın 3306 numaralı bağlantı noktasını açması gerekir.
+   > MariaDB için Azure Veritabanı bağlantıları, 3306 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, 3306 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu örnekte sunucunuza bağlanabilmek için BT departmanınızın 3306 numaralı bağlantı noktasını açması gerekir.
    > 
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
@@ -94,7 +94,7 @@ Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açm
 
 2. Değerleri kopyalamak için imlecinizi kopyalamak istediğiniz alanın üzerine getirin. Metnin sağ tarafında kopyalama simgesi görünür. Değerleri kopyalamak için gerektiği şekilde Kopyala simgesini seçin.
 
-Bu örnekte sunucu adı şöyledir **mydemoserver.mariadb.database.azure.com** ve Sunucu Yöneticisi oturum açma adını **myadmin\@demosunucum**.
+Bizim örneğimizde sunucu adı **mydemoserver.MariaDB.Database.Azure.com** ve Sunucu Yöneticisi oturum açma adı **myadmin\@demosunucum**' dır.
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>mysql komut satırını kullanarak MariaDB için Azure Veritabanı'na bağlanma
 
@@ -102,7 +102,7 @@ MariaDB için Azure Veritabanı sunucunuza çeşitli uygulamalar kullanarak bağ
 
 İlk olarak sunucuya nasıl bağlanılacağını göstermek için [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) komut satırı aracını kullanacağız. Bir web tarayıcısını ve Azure Cloud Shell’i yazılım yüklemeden kullanabilirsiniz. Yerel olarak yüklü mysql yardımcı programınız varsa, oradan da bağlanabilirsiniz.
 
-1. Azure portalda sağ üst köşedeki araç çubuğunda bulunan terminal simgesi aracılığıyla (**>_**) Azure Cloud Shell’i başlatın.
+1. Azure portalda sağ üst köşedeki araç çubuğunda bulunan terminal simgesi aracılığıyla ( **>_** ) Azure Cloud Shell’i başlatın.
    ![Azure Cloud Shell terminal simgesi](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
 
 2. Azure Cloud Shell tarayıcınızda açılır. Cloud Shell'de bash kabuk komutlarını kullanabilirsiniz.
@@ -125,8 +125,8 @@ MariaDB için Azure Veritabanı sunucunuza çeşitli uygulamalar kullanarak bağ
 
     mysql parametresi |Önerilen değer|Açıklama
     ---|---|---
-    --host | *sunucu adı* | MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.mariadb.database.azure.com**. Örnekte gösterildiği gibi tam etki alanı adını (**\*.mariadb.database.azure.com**) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın.
-    --kullanıcı | *sunucu yöneticisi oturum açma adı* |MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu yöneticisi oturum açma kullanıcı adı. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın. Biçim *kullanıcıadı\@servername*.
+    --host | *sunucu adı* | MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.mariadb.database.azure.com**. Örnekte gösterildiği gibi tam etki alanı adını ( **\*.mariadb.database.azure.com**) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın.
+    --kullanıcı | *sunucu yöneticisi oturum açma adı* |MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu yöneticisi oturum açma kullanıcı adı. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları tamamlayın. Biçim, *servername\@kullanıcıadı*.
     -p | *parolanız*<br>(istenene kadar bekleyin) |İstendiğinde sunucuyu oluşturmak için kullandığınız parolayı girin. Yazılan parola karakterleri bash isteminde gösterilmez. Parolayı girdikten sonra Enter tuşuna basın.
 
    mysql yardımcı programı bağlandığında `mysql>` istemi görüntülenir. İsteme komut girebilirsiniz. 
@@ -190,7 +190,7 @@ MySQL Workbench kullanarak sunucuya bağlanmak için:
 
 1. İstemci bilgisayarınızda MySQL Workbench uygulamasını açın. MySQL Workbench'i indirip yüklemek için [MySQL Workbench’i İndir](https://dev.mysql.com/downloads/workbench/) bağlantısını kullanabilirsiniz.
 
-2. Yeni bağlantı oluşturmak için **MySQL Connections** (MySQL Bağlantıları) üst bilgisinin yanındaki artı simgesini (**+**) seçin.
+2. Yeni bağlantı oluşturmak için **MySQL Connections** (MySQL Bağlantıları) üst bilgisinin yanındaki artı simgesini ( **+** ) seçin.
 
 3. **Setup New Connection** (Yeni Bağlantı Oluştur) iletişim kutusundaki **Parameters** (Parametreler) sekmesine sunucunuzun bağlantı bilgilerini girin. Yer tutucu değerleri örnek olarak gösterilmiştir. **Hostname** (Ana Bilgisayar Adı), **Username** (Kullanıcı Adı) ve **Password** (Parola) yerine kendi değerlerinizi yazın.
 
@@ -200,9 +200,9 @@ MySQL Workbench kullanarak sunucuya bağlanmak için:
     |---|---|---|
      Bağlantı adı | **Tanıtım bağlantısı** | Bu bağlantı için bir etiket. |
     Bağlantı yöntemi | **Standart (TCP/IP)** | Standart (TCP/IP) yeterlidir. |
-    Ana Bilgisayar Adı | *sunucu adı* | MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.mariadb.database.azure.com**. Örnekte gösterildiği gibi tam etki alanı adını (**\*.mariadb.database.azure.com**) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bu makalenin önceki bölümlerinde verilen adımları tamamlayın.|
+    Ana Bilgisayar Adı | *sunucu adı* | MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.mariadb.database.azure.com**. Örnekte gösterildiği gibi tam etki alanı adını ( **\*.mariadb.database.azure.com**) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bu makalenin önceki bölümlerinde verilen adımları tamamlayın.|
      Bağlantı noktası | 3306 | MariaDB için Azure Veritabanı sunucunuza bağlanılırken kullanılacak bağlantı noktası. |
-    Kullanıcı adı |  *sunucu yöneticisi oturum açma adı* | MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu yöneticisi oturum açma bilgileri. Bizim örnek kullanıcı adı **myadmin\@demosunucum**. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bu makalenin önceki bölümlerinde verilen adımları tamamlayın. Biçim *kullanıcıadı\@servername*.
+    Kullanıcı adı |  *sunucu yöneticisi oturum açma adı* | MariaDB için Azure Veritabanı sunucusunu oluşturmak üzere kullandığınız sunucu yöneticisi oturum açma bilgileri. Örnek Kullanıcı adı **myadmin\@demosunucum**. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bu makalenin önceki bölümlerinde verilen adımları tamamlayın. Biçim, *servername\@kullanıcıadı*.
     Parola | *parolanız* | Parolayı kaydetmek için **Store in Vault** (Kasada depola) seçeneğini belirtin. |
 
 4. Tüm parametrelerin doğru yapılandırılıp yapılandırılmadığını denetlemek için **Test Connection** (Bağlantıyı Sına) öğesini seçin. Ardından bağlantıyı kaydetmek için **OK** (Tamam) öğesine tıklayın. 

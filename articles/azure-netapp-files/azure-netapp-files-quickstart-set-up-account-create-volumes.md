@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/12/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888543"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769855"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
 
@@ -90,7 +90,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın: 
    1. Hesap adı için **myaccount1** girin. 
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** düğmesine tıklayın. 
+   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam**’a tıklayın. 
    4. Hesap konumunuzu seçin.  
 
       ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
@@ -180,7 +180,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     2. Hizmet düzeyi için **Premium** ' u seçin. 
     3. Havuz boyutu olarak **4 (TiB)** belirtin. 
 
-5. **Tamam** düğmesine tıklayın.
+5. **Tamam**’a tıklayın.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -257,9 +257,6 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     * Birim için NFS sürümünü (**NFSv3** veya **nfsv 4.1**) seçin.  
       Bkz. NFS sürümleri hakkında [konular](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamalar](azure-netapp-files-create-volumes.md#best-practice) . 
       
-> [!IMPORTANT] 
-> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
-
   ![Hızlı başlangıç için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. **Gözden geçir ve oluştur**’a tıklayın.

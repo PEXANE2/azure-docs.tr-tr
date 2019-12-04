@@ -1,6 +1,6 @@
 ---
-title: Kullanım C# - tek bir sunucu PostgreSQL için Azure veritabanı'na bağlanmak için
-description: Bu hızlı başlangıçta sağlanmıştır bir C# bağlanıp - tek bir sunucu PostgreSQL için Azure veritabanı'ndan veri sorgulamak için kullanabileceğiniz (.NET) kod örneği.
+title: İle C# bağlantı kurmak-PostgreSQL Için Azure veritabanı-tek sunucu
+description: Bu hızlı başlangıçta, C# PostgreSQL Için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir (.net) kod örneği sağlanmıştır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 546626b1bf655ce6755e0a34ae8d8a85bcf6990f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067294"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767985"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>PostgreSQL - tek bir sunucu için Azure veritabanı: .NET kullanma (C#) bağlanmak ve veri sorgulamak için
+# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: .NET (C#) kullanarak verileri bağlama ve sorgulama
 Bu hızlı başlangıçta, C# uygulaması kullanılarak PostgreSQL için Azure Veritabanı'na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makaledeki adımlarda, C# kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar

@@ -1,5 +1,5 @@
 ---
-title: C#’tan MySQL için Azure Veritabanı'na bağlanma
+title: MySQL için C# Azure veritabanı kullanarak bağlanma
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz bir C# (.NET) kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: e0536440ea38f127a34639ffb40e5015154ec550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: 2f740d21c7fb59a05fa1df4a0b3b1385cf2f0831
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526185"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770790"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: .NET kullanma (C#) bağlanmak ve veri sorgulamak için
+# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: .NET (C#) kullanarak bağlanma ve veri sorgulama
 Bu hızlı başlangıçta C# uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu konuda, C# kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar

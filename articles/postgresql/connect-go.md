@@ -1,5 +1,5 @@
 ---
-title: Go dilini kullanarak PostgreSQL için Azure veritabanı 'na bağlanma-tek sunucu
+title: Go ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir go programlama dili örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 645d34961fb735542729091719dd55c42436db95
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244487"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767934"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: bağlanmak ve veri sorgulamak için go dilini kullanın
 Bu hızlı başlangıçta, [Go](https://golang.org/) dilinde (golang) yazılmış kod kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makalede, Go kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
@@ -27,12 +27,12 @@ Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birin
 Makinenize [Go](https://golang.org/doc/install)’yu ve [Pure Go Postgres sürücüsünü (pq)](https://github.com/lib/pq) yükleyin. Platformunuza bağlı olarak, uygun adımları izleyin:
 
 ### <a name="windows"></a>Windows
-1. [Yükleme yönergelerine](https://golang.org/dl/) uygun olarak Microsoft Windows için Go’yu [indirin](https://golang.org/doc/install) ve yükleyin.
+1. [Yükleme yönergelerine](https://golang.org/doc/install) uygun olarak Microsoft Windows için Go’yu [indirin](https://golang.org/dl/) ve yükleyin.
 2. Başlat menüsünden komut istemini başlatın.
 3. Projeniz için`mkdir  %USERPROFILE%\go\src\postgresqlgo` gibi bir klasör oluşturun.
 4. Dizini değiştirerek proje klasörünüze geçin; örneğin, `cd %USERPROFILE%\go\src\postgresqlgo`.
 5. GOPATH için ortam değişkenini kaynak kod dizinine işaret edecek şekilde ayarlayın. `set GOPATH=%USERPROFILE%\go`.
-6. [ komutunu çalıştırarak ](https://github.com/lib/pq)Pure Go Postgres sürücüsünü (pq)`go get github.com/lib/pq` yükleyin.
+6. `go get github.com/lib/pq` komutunu çalıştırarak [Pure Go Postgres sürücüsünü (pq)](https://github.com/lib/pq) yükleyin.
 
    Özetle, Go’yu yükleyin ve ardından komut isteminde şu komutları çalıştırın:
    ```cmd
@@ -48,9 +48,9 @@ Makinenize [Go](https://golang.org/doc/install)’yu ve [Pure Go Postgres sürü
 3. Giriş dizininizde projeniz için `mkdir -p ~/go/src/postgresqlgo/` gibi bir klasör oluşturun.
 4. Dizini değiştirerek klasöre geçin; örneğin, `cd ~/go/src/postgresqlgo/`.
 5. GOPATH ortam değişkenini geçerli bir kaynak dizine, örneğin geçerli giriş dizininizin go klasörüne işaret edecek şekilde ayarlayın. Bash kabuğunda `export GOPATH=~/go` komutunu çalıştırarak geçerli kabuk oturumu için GOPATH olarak go dizinini ayarlayın.
-6. [ komutunu çalıştırarak ](https://github.com/lib/pq)Pure Go Postgres sürücüsünü (pq)`go get github.com/lib/pq` yükleyin.
+6. `go get github.com/lib/pq` komutunu çalıştırarak [Pure Go Postgres sürücüsünü (pq)](https://github.com/lib/pq) yükleyin.
 
-   Özetle şu bash komutlarını çalıştırın:
+   Özetle, şu bash komutlarını çalıştırın:
    ```bash
    sudo apt-get install golang-go
    mkdir -p ~/go/src/postgresqlgo/
@@ -65,7 +65,7 @@ Makinenize [Go](https://golang.org/doc/install)’yu ve [Pure Go Postgres sürü
 3. Giriş dizininizde projeniz için `mkdir -p ~/go/src/postgresqlgo/` gibi bir klasör oluşturun.
 4. Dizini değiştirerek klasöre geçin; örneğin, `cd ~/go/src/postgresqlgo/`.
 5. GOPATH ortam değişkenini geçerli bir kaynak dizine, örneğin geçerli giriş dizininizin go klasörüne işaret edecek şekilde ayarlayın. Bash kabuğunda `export GOPATH=~/go` komutunu çalıştırarak geçerli kabuk oturumu için GOPATH olarak go dizinini ayarlayın.
-6. [ komutunu çalıştırarak ](https://github.com/lib/pq)Pure Go Postgres sürücüsünü (pq)`go get github.com/lib/pq` yükleyin.
+6. `go get github.com/lib/pq` komutunu çalıştırarak [Pure Go Postgres sürücüsünü (pq)](https://github.com/lib/pq) yükleyin.
 
    Özetle, Go’yu yükleyin ve ardından şu bash komutlarını çalıştırın:
    ```bash

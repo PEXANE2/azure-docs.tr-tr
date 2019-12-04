@@ -1,19 +1,19 @@
 ---
-title: 'Hızlı Başlangıç: MariaDB sunucu - Azure CLI için Azure veritabanı oluşturma'
+title: 'Hızlı başlangıç: sunucu oluşturma-Azure CLı-MariaDB için Azure veritabanı'
 description: Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda nasıl MariaDB için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171409"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770042"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI kullanarak MariaDB için Azure Veritabanı sunucusu oluşturma
 
@@ -31,7 +31,7 @@ Birden fazla aboneliğiniz varsa kaynağı içeren aboneliği veya faturalandır
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 [az group create](/cli/azure/group#az-group-create) komutunu kullanarak bir [Azure kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -47,20 +47,20 @@ az group create --name myresourcegroup --location westus
 
 Ayar | Örnek değer | Açıklama
 ---|---|---
-name | **mydemoserver** | MariaDB için Azure Veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
+ad | **mydemoserver** | MariaDB için Azure Veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
 resource-group | **myresourcegroup** | Azure kaynak grubunun adını girin.
 sku-name | **GP_Gen5_2** | SKU'nun adı. Kısaca *fiyatlandırma katmanı*\_*işlem nesli*\_*sanal çekirdek sayısı* kuralına uyar. **sku-name** parametresi hakkında daha fazla bilgi için bu tablonun altındaki bölüme bakın.
-backup-retention | **7** | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. Aralığı: 7 ila 35. 
-geo-redundant-backup | **Devre dışı** | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **devre dışı bırakılmış**.
-konum | **westus** | Sunucu için Azure konumu.
-ssl-enforcement | **Etkin** | Bu sunucu için SSL'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **devre dışı bırakılmış**.
+backup-retention | **7** | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. Aralık: 7-35. 
+geo-redundant-backup | **Devre dışı** | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
+location | **westus** | Sunucu için Azure konumu.
+ssl-enforcement | **Etkin** | Bu sunucu için SSL'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
 storage-size | **51200** | Sunucunun depolama kapasitesi (birim olarak megabayt kullanılır). Geçerli depolama boyutları 5.120 MB (minimum) ile başlar ve 1.024 MB artar. Depolama boyutu sınırları hakkında daha fazla bilgi için bkz. [Fiyatlandırma katmanları](./concepts-pricing-tiers.md). 
 version | **10.2** | MariaDB büyük altyapı sürümü.
 admin-user | **myadmin** | Yöneticinin oturum açma kullanıcı adı. **admin-user** parametresi **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
-admin-password | *parolanız* | Yönetici kullanıcının parolası. Parolanız 8 ile 128 arasında karakter içermelidir. Şu kategorilerin üçünden karakterler içermelidir: İngilizce harfler, İngilizce küçük harfler, sayılar ve alfasayısal olmayan karakterler büyük.
+admin-password | *parolanız* | Yönetici kullanıcının parolası. Parolanız 8 ile 128 arasında karakter içermelidir. Şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
 
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
-+ `--sku-name B_Gen5_1` Temel ve 5. nesil 1 sanal çekirdek eşlenir. Bu seçenek en küçük SKU kullanılabilir olur.
++ `--sku-name B_Gen5_1` temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 + `--sku-name GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 + `--sku-name MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -73,7 +73,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 ```
 
 > [!NOTE]
-> Temel fiyatlandırma katmanını kullanarak göz önünde bulundurun hafif işlem ve g/ç iş yükünüz için yeterli olup olmadığını. Temel fiyatlandırma katmanında oluşturulan sunucular daha sonra genel amaçlı veya bellek için iyileştirilmiş ölçeklendirilemiyor olduğunu unutmayın. Bkz: [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/) daha fazla bilgi için.
+> Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaçlı veya bellek için Iyileştirilmiş olarak ölçeklenmeyeceğini unutmayın. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/) .
 > 
 
 ## <a name="configure-a-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
@@ -87,7 +87,7 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 ```
 
 > [!NOTE]
-> MariaDB için Azure Veritabanı bağlantıları, 3306 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, 3306 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, sunucunuza ancak BT departmanınız 3306 numaralı bağlantı noktasını açarsa bağlanabilirsiniz.
+> MariaDB için Azure Veritabanı bağlantıları, 3306 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, 3306 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, sunucunuza ancak BT departmanınız 3306 numaralı bağlantı noktasını açarsa bağlanabilirsiniz.
 > 
 
 ## <a name="configure-ssl-settings"></a>SSL ayarlarını yapılandırma
@@ -215,8 +215,8 @@ mysql komut satırı aracını kullanarak sunucuya bağlanmak için:
    |---|---|---|
    | Bağlantı Adı | **Tanıtım bağlantısı** | Bu bağlantı için bir etiket girin (bağlantı adı herhangi bir şey olabilir) |
    | Bağlantı Yöntemi | **Standart (TCP/IP)** | MariaDB için Azure Veritabanı'na bağlanmak için TCP/IP protokolünü kullanın |
-   | Konak adı | **mydemoserver.mariadb.database.azure.com** | Daha önceden not aldığınız sunucu adı. |
-   | Port | **3306** | MariaDB için Azure Veritabanı'nın varsayılan bağlantı noktası. |
+   | Ana Bilgisayar Adı | **mydemoserver.mariadb.database.azure.com** | Daha önceden not aldığınız sunucu adı. |
+   | Bağlantı noktası | **3306** | MariaDB için Azure Veritabanı'nın varsayılan bağlantı noktası. |
    | Kullanıcı adı | **myadmin\@demosunucum** | Daha önceden not aldığınız sunucu yöneticisi oturum açma bilgileri. |
    | Parola | *parolanız* | Önceden belirlediğiniz yönetici parolasını kullanın. |
 
@@ -241,4 +241,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure CLI ile MariaDB veritabanı tasarlama](./tutorial-design-database-cli.md)
+> [Azure CLı ile bir MariaDB veritabanı tasarlama](./tutorial-design-database-cli.md)
