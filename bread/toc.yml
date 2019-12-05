@@ -18,7 +18,7 @@
         - name: Cihazlar
           tocHref: /azure/active-directory/devices/
           topicHref: /azure/active-directory/devices/
-        - name: Koşullu erişim
+        - name: Koşullu Erişim
           tocHref: /azure/active-directory/conditional-access/
           topicHref: /azure/active-directory/conditional-access/
         - name: Kimlik Doğrulaması

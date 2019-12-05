@@ -21,6 +21,8 @@
   items:
     - name: FarmBeats'i dağıtma
       href: prepare-for-deployment.md
+    - name: Kullanıcıları yönetme
+      href: manage-users.md
     - name: Grupları yönetme
       href: manage-farms.md
     - name: Algılayıcı verilerini alma

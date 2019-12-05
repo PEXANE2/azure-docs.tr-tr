@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: d7ceb3acb1d2e3d174f3b665ec6210d3ddac9970
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bdb459a69557269a20d36f05acc2da502064efb9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059161"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851358"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure sanal makineleriyle ilgili sorunları giderme
 
 ## <a name="tools-for-troubleshooting"></a>Sorun giderme araçları
 
-- [Seri Konsol](serial-console-windows.md)
+- [Seri Konsol](serial-console-overview.md)
 - [Önyükleme tanılamaları](boot-diagnostics.md)
 - [Windows VM: Sorun giderme için işletim sistemi diskini başka bir VM’ye ekleme](troubleshoot-recovery-disks-portal-windows.md)
 - [Linux VM: Sorun giderme için işletim sistemi diskini başka bir VM’ye ekleme](troubleshoot-recovery-disks-portal-linux.md)
@@ -46,7 +46,7 @@ ms.locfileid: "71059161"
 
 **Sanal makine önyükleme hataları**
 
-* [BitLocker önyükleme hataları](troubleshoot-bitlocker-boot-error.md) 
+* [BitLocker önyükleme hataları](troubleshoot-bitlocker-boot-error.md)
 * [Windows, önyükleme sırasında "dosya sistemi denetleniyor" iletisini gösterdi](troubleshoot-check-disk-boot-error.md)
 * [Mavi ekran hataları](troubleshoot-common-blue-screen-error.md)
 * [VM başlatma “Windows Hazırlanıyor” kısmında takıldı](troubleshoot-vm-boot-configure-update.md)
