@@ -68,6 +68,8 @@
           href: devtest-lab-configure-cost-management.md
         - name: Otomatik kapatma bildirimleri gönderme
           href: devtest-lab-auto-shutdown.md
+        - name: Laboratuvar sanal makinelerinde otomatik başlatmayı ayarlama
+          href: devtest-lab-auto-startup-vm.md
         - name: Laboratuvarınızı ölçeklendirme
           href: devtest-lab-scale-lab.md
         - name: Sanal makine temellerini yönetme
@@ -193,6 +195,8 @@
           href: add-artifact-repository.md
         - name: Zorunlu yapıtları belirtme
           href: devtest-lab-mandatory-artifacts.md
+        - name: Yapıtları uygulamayla ilgili sorunları giderme
+          href: devtest-lab-troubleshoot-apply-artifacts.md
     - name: CI/CD ile tümleştirme
       items:
         - name: Azure Pipelines CI/CD ardışık düzeninizi laboratuvarlarla tümleştirme

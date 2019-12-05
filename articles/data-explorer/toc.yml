@@ -102,8 +102,12 @@
           href: data-lake-query-data.md
         - name: Azure İzleyici’de verileri sorgulama
           href: query-monitor-data.md
-        - name: Python
-          href: python-query-data.md
+        - name: KQL satır içi Python’da hata ayıklama
+          href: debug-inline-python.md
+        - name: SDK'ları kullanma
+          items:
+            - name: Python
+              href: python-query-data.md
         - name: Zaman Serisi Analizi ve Makine Öğrenmesi
           items:
             - name: Zaman serisi analizi
