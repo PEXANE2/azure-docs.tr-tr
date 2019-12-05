@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093767"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819131"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Veri Gezgini Azure Data Factory ile tümleştirme
 
@@ -118,13 +118,90 @@ Bu bölüm, Azure Veri Gezgini havuz olan kopyalama etkinliğinin kullanımını
 | **Veri işleme karmaşıklığı** | Gecikme, kaynak dosya biçimine, sütun eşlemesine ve sıkıştırmaya göre farklılık gösterir.|
 | **Tümleştirme çalışma zamanı 'nı çalıştıran VM** | <ul><li>Azure kopyası için, ADF VM 'Ler ve makine SKU 'Ları değiştirilemez.</li><li> Şirket içi Azure kopyalama için, şirket içinde barındırılan IR 'yi barındıran VM 'nin yeterince güçlü olduğunu saptayın.</li></ul>|
 
-## <a name="monitor-activity-progress"></a>Etkinlik ilerlemesini izleme
+## <a name="tips-and-common-pitfalls"></a>İpuçları ve genel olarak
+
+### <a name="monitor-activity-progress"></a>Etkinlik ilerlemesini izleme
 
 * Etkinlik ilerlemesini izlerken, *okunan* veriler ikili dosya boyutuna göre *hesaplandığı için veri* *okuma özelliğinden çok* daha büyük olabilir, çünkü *yazılan* veriler, veri serileştirilip sıkıştırması açıldıktan sonra bellek içi boyuta göre hesaplanır.
 
 * Etkinlik ilerlemesini izlerken, verilerin Azure Veri Gezgini havuzuna yazıldığını görebilirsiniz. Azure Veri Gezgini tablosunu sorgularken verilerin ulaştığını görürsünüz. Bunun nedeni, Azure Veri Gezgini kopyalanırken iki aşamada oluşur. 
     * İlk aşama kaynak verileri okur, 900 MB parçalara ayırır ve her bir öbeği bir Azure Blobuna yükler. İlk aşama ADF etkinlik ilerleme görünümü tarafından görülür. 
     * İkinci aşama, tüm veriler Azure Bloblarına yüklendiğinde başlar. Azure Veri Gezgini altyapısı düğümleri blob 'ları indirir ve verilerin havuz tablosuna alınması. Veriler daha sonra Azure Veri Gezgini tablonuzda görülür.
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Hatalı kaçış nedeniyle CSV dosyalarını alma hatası
+
+Azure Veri Gezgini, CSV dosyalarının [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)ile hizalanmasını bekler.
+Bekliyor:
+* Kaçış gerektiren karakterler ("ve yeni satırlar) içeren alanlar, boşluk olmadan bir **"** karakteriyle başlamalı ve bitmelidir. **"** Bir Double **"** karakteri ( **""** ) kullanılarak alan *içindeki* tüm karakterler kaçışdır. Örneğin, "Merhaba" "" _Dünya ""_ ", tek bir kayıt Içeren ve _Hello," World "_ içerikli tek bir sütuna veya alana sahıp olan geçerli bir CSV dosyasıdır.
+* Dosyadaki tüm kayıtlar aynı sayıda sütun ve alan içermelidir.
+
+Azure Data Factory ters eğik çizgi (kaçış) karakterine izin verir. Azure Data Factory kullanarak bir ters eğik çizgi karakteri içeren bir CSV dosyası oluşturursanız, dosyanın Azure Veri Gezgini alımı başarısız olur.
+
+#### <a name="example"></a>Örnek
+
+Şu metin değerleri: Merhaba, "Dünya"<br/>
+ABC DEF<br/>
+"ABC\D" EF<br/>
+"ABC DEF<br/>
+
+Uygun bir CSV dosyasında şu şekilde görünmelidir: "Merhaba," "Dünya" ""<br/>
+"ABC DEF"<br/>
+"" "ABC DEF"<br/>
+"" "ABC\D" "EF"<br/>
+
+Varsayılan kaçış karakterini (ters eğik çizgi) kullanarak, aşağıdaki CSV Azure Veri Gezgini ile çalışmaz: "Hello, \"World\""<br/>
+"ABC DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>İç içe JSON nesneleri
+
+Bir JSON dosyasını Azure Veri Gezgini kopyalanırken şunları unutmayın:
+* Diziler desteklenmiyor.
+* JSON yapınız nesne veri türleri içeriyorsa, Azure Data Factory nesnenin alt öğelerini düzleştirebilir ve her bir alt öğeyi Azure Veri Gezgini tablonuzda farklı bir sütuna eşlemeye çalışır. Tüm nesne öğesinin Azure Veri Gezgini tek bir sütunla eşleştirilmesini istiyorsanız:
+    * Tüm JSON satırını Azure Veri Gezgini tek bir dinamik sütuna alma.
+    * Azure Data Factory JSON düzenleyicisini kullanarak işlem hattı tanımını el ile düzenleyin. **Eşlemelerde**
+       * Her bir alt öğe için oluşturulmuş birden çok eşlemeyi kaldırın ve nesne türünü tablo sütununuza eşleyen tek bir eşleme ekleyin.
+       * Kapanış köşeli ayracından sonra bir virgül ekleyin ve ardından şunu ekleyin:<br/>
+       `"mapComplexValuesToString": true`.
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Azure 'a kopyalarken AdditionalProperties 'i belirtin Veri Gezgini
+
+> [!NOTE]
+> Bu özellik şu anda JSON yükünü el ile düzenleyerek kullanılabilir. 
+
+Kopyalama etkinliğinin "havuz" bölümünün altına şu şekilde tek bir satır ekleyin:
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+Değerin kaçışı karmaşık olabilir. Aşağıdaki kod parçacığını başvuru olarak kullanın:
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+Yazdırılan değer:
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

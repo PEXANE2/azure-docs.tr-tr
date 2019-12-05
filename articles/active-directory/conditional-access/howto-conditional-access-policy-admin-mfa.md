@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd3de14d8c82a3e51d38a1e32241cb106e0f95b3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151180"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74804627"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu erişim: Yöneticiler için MFA gerektir
 
@@ -26,11 +26,11 @@ Microsoft, en azından aşağıdaki rollerde MFA gerektirmenizi önerir:
 
 * Genel yönetici
 * SharePoint yöneticisi
-* Exchange Yöneticisi
+* Exchange yöneticisi
 * Koşullu Erişim Yöneticisi
 * Güvenlik yöneticisi
 * Yardım Masası (parola) Yöneticisi
-* Parola Yöneticisi
+* Parola yöneticisi
 * Faturalama yöneticisi
 * Kullanıcı Yöneticisi
 
@@ -50,24 +50,24 @@ Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapl
 Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **koşullu erişime**gidin.
+1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **Dizin rolleri (Önizleme)** öğesini seçin ve en azından aşağıdaki rolleri seçin:
       * Genel yönetici
       * SharePoint yöneticisi
-      * Exchange Yöneticisi
+      * Exchange yöneticisi
       * Koşullu Erişim Yöneticisi
       * Güvenlik yöneticisi
       * Yardım Masası Yöneticisi
-      * Parola Yöneticisi
+      * Parola yöneticisi
       * Faturalama yöneticisi
       * Kullanıcı Yöneticisi
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
 1. **Bulut uygulamaları veya eylemler** altında **dahil** > , **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
-1. **Erişim denetimleri** > **izin**' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**
+1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' **i seçin ve**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 

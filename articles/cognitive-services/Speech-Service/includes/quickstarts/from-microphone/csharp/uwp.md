@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796063"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818755"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,7 +29,7 @@ Başlamadan önce:
 
 Bunu zaten yaptıysanız harika. Şimdi devam edelim.
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
 
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
@@ -77,7 +77,7 @@ Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgil
 
 Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun artık hatasız derlenmesi gerekir.
 
 1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
@@ -87,7 +87,7 @@ Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
    ![Mikrofon erişimi izin isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. **Mikrofon girdisi ile konuşma tanıma**’yı seçin ve cihazınızın mikrofonuna İngilizce bir deyim ya da cümle söyleyin. Konuşma, konuşma hizmetlerine iletilir ve pencerede görüntülenen metne gönderilir.
+1. **Mikrofon girdisi ile konuşma tanıma**’yı seçin ve cihazınızın mikrofonuna İngilizce bir deyim ya da cümle söyleyin. Söyledikleriniz Konuşma hizmetine aktarılır ve metne dönüştürülür; metin pencerede görünür.
 
    ![Konuşma tanıma kullanıcı arabirimi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 

@@ -2,22 +2,22 @@
 title: HBase .NET SDK 'sını kullanma-Azure HDInsight
 description: Tablo oluşturmak ve silmek ve veri okumak ve yazmak için HBase .NET SDK 'sını kullanın.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077161"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806669"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase için .NET SDK 'sını kullanma
 
-[Apache HBase](apache-hbase-overview.md) , verilerle çalışmak için iki birincil seçenek sunar: [Sorgu Apache Hive ve HBase 'In yeniden takip eden API 'si çağrıları](apache-hbase-tutorial-get-started-linux.md). `curl` Komutunu veya benzer bir yardımcı programını kullanarak doğrudan REST API çalışabilirsiniz.
+[Apache HBase](apache-hbase-overview.md) , verileriniz ile çalışmak için iki birincil seçenek sunar: [sorgular Apache Hive ve HBase 'in tekrar eden API 'si çağrıları](apache-hbase-tutorial-get-started-linux.md). `curl` komutunu veya benzer bir yardımcı programı kullanarak doğrudan REST API çalışabilirsiniz.
 
 Ve C# .NET uygulamaları için, [.net Için MICROSOFT HBase Rest Istemci kitaplığı](https://www.nuget.org/packages/Microsoft.HBase.Client/) , HBase REST API en üstünde bir istemci kitaplığı sağlar.
 
@@ -29,7 +29,7 @@ HBase .NET SDK 'Sı, Visual Studio **NuGet paket yöneticisi konsolundan** aşa�
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Yeni bir HBaseClient nesnesi örneği oluştur
 
-SDK 'yı kullanmak için, yeni `HBaseClient` bir nesne örneği oluşturun, kümelerinizi kümenize `ClusterCredentials` geçirerek `Uri` , Hadoop Kullanıcı adını ve parolasını kullanın.
+SDK 'yı kullanmak için yeni bir `HBaseClient` nesnesi örneği oluşturun, kümenize `Uri` oluşan `ClusterCredentials` geçirerek Hadoop Kullanıcı adı ve parola.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -70,7 +70,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Veri ekleme
 
-Veri eklemek için, satır tanımlayıcısı olarak benzersiz bir satır anahtarı belirtirsiniz. Tüm veriler bir `byte[]` dizide depolanır. Aşağıdaki kod, en sık erişilen sütunlar `title`olduğundan `director`T1 sütun `release_date` ailesine, ve sütunlarını tanımlar ve ekler. `description` Ve`tagline` sütunları T2 sütun ailesine eklenir. Verilerinizi gerektiği gibi sütun ailelerine göre bölümleyebilirsiniz.
+Veri eklemek için, satır tanımlayıcısı olarak benzersiz bir satır anahtarı belirtirsiniz. Tüm veriler `byte[]` dizisinde depolanır. Aşağıdaki kod, `title`, `director`ve `release_date` sütunlarını T1 sütun ailesine ekler ve bu sütunlar en sık erişilen sütunlardır. `description` ve `tagline` sütunları T2 sütun ailesine eklenir. Verilerinizi gerektiği gibi sütun ailelerine göre bölümleyebilirsiniz.
 
 ```csharp
 var key = "fifth_element";
@@ -112,13 +112,13 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase, [Cloud BigTable](https://cloud.google.com/bigtable/)' ı uygular, bu nedenle veri biçimi şöyle görünür:
+HBase, [Cloud BigTable](https://cloud.google.com/bigtable/)' ı uygular, bu nedenle veri biçimi aşağıdaki görüntüye benzer şekilde görünür:
 
 ![Apache HBase örnek veri çıktısı](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>Verileri seçme
 
-Bir HBase tablosundan veri okumak için, tablo adını ve satır anahtarını `GetCellsAsync` `CellSet`döndürmek üzere yöntemine geçirin.
+Bir HBase tablosundan veri okumak için tablo adını ve satır anahtarını `GetCellsAsync` yöntemine geçirin `CellSet`döndürün.
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-Bu durumda, yalnızca benzersiz bir anahtar için yalnızca bir satır olması gerektiği için kod yalnızca ilk eşleşen satırı döndürür. Döndürülen değer `string` `byte[]` diziden biçim olarak değiştirildi. Ayrıca, filmin Yayın tarihi için bir tamsayı gibi diğer türlere de değeri dönüştürebilirsiniz:
+Bu durumda, yalnızca benzersiz bir anahtar için yalnızca bir satır olması gerektiği için kod yalnızca ilk eşleşen satırı döndürür. Döndürülen değer `byte[]` dizisinden `string` biçimine dönüştürülür. Ayrıca, filmin Yayın tarihi için bir tamsayı gibi diğer türlere de değeri dönüştürebilirsiniz:
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -149,7 +149,7 @@ Console.WriteLine(releaseDate);
 
 ## <a name="scan-over-rows"></a>Satırları üzerinde Tara
 
-HBase, `scan` bir veya daha fazla satır almak için kullanır. Bu örnek 10 toplu işlem halinde birden çok satır ister ve anahtar değerleri 25 ile 35 arasında olan verileri alır. Tüm satırları aldıktan sonra, kaynakları temizlemek için tarayıcıyı silin.
+HBase bir veya daha fazla satır almak için `scan` kullanır. Bu örnek 10 toplu işlem halinde birden çok satır ister ve anahtar değerleri 25 ile 35 arasında olan verileri alır. Tüm satırları aldıktan sonra, kaynakları temizlemek için tarayıcıyı silin.
 
 ```csharp
 var tableName = "mytablename";

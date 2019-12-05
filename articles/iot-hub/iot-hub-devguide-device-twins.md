@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706839"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807043"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub cihaz ikizlerini anlama ve kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "74706839"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu makalede şunları açıklanmaktadır:
+Bu makalede açıklanır:
 
 * Cihaz ikizi yapısı: *Etiketler*, *istenen* ve *bildirilen özellikler*.
 * Cihaz uygulamalarının ve arka uçlarından oluşan işlemler cihaz ikikilerinde gerçekleştirilebilir.
@@ -191,7 +191,7 @@ Kök nesnede, cihaz kimliği özellikleri ve `tags` için kapsayıcı nesneler v
     deviceId | Cihazın KIMLIĞI |
     hubName | IoT Hub adı |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) işlem zaman damgası |
-    ıothub-Message-Schema | deviceLifecycleNotification |
+    ıothub-Message-Schema | twinChangeNotification |
     opType | "yeniden kazan" veya "updateTwin" |
 
     İleti sistemi özelliklerine `$` simgesiyle ön ek uygulanır.

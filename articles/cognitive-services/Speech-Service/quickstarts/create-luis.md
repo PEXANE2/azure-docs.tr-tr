@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 23f0b459b67088518375fbb4fd0b106da3aaf57c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682066"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815832"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Hızlı başlangıç: bir LUSıS uç noktası anahtarı alma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
@@ -27,7 +27,7 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emi
 
 ## <a name="luis-and-speech"></a>LUIS ve konuşma
 
-LU, konuşmadan amaçları tanımak için konuşma hizmetleriyle tümleştirilir. Konuşma Hizmetleri aboneliğine ihtiyacınız yoktur, yalnızca LUO.
+LUIS, konuşmadaki amaçları tanımak için Konuşma hizmetiyle tümleştirilir. Konuşma hizmeti aboneliğine ihtiyacınız yoktur; LUIS yeterlidir.
 
 LUSıS üç tür anahtar kullanır:
 
@@ -35,11 +35,11 @@ LUSıS üç tür anahtar kullanır:
 |--------|-------|
 |Yazma|LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar|
 |Başlangıç|LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
-|Uç Nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
+|Uç nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
 
 Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
-Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma Hizmetleri tümleştirmesini etkinleştirmez ve bu öğreticiyle çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu öğretici için ücretsiz abonelik katmanını kullanabilirsiniz.
+Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma hizmeti tümleştirmesini etkinleştirmez ve bu öğreticiyle çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu öğretici için ücretsiz abonelik katmanını kullanabilirsiniz.
 
 Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](https://www.luis.ai/home)oturum açın, **uygulamalarım** sayfasında uygulamanızı seçin, sonra uygulamanın **Yönet** sayfasına geçin. Son olarak, kenar çubuğunda **anahtarlar ve uç noktalar** ' ı seçin.
 

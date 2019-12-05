@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839933"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815809"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure SQL veri ambarı oluşturma ve sorgulama
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-data-warehouse"></a>Veri ambarı oluşturma
 
@@ -51,16 +51,14 @@ AdventureWorksDW örnek verilerini içeren bir SQL veri ambarı oluşturmak içi
 
     | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
-    | **Veritabanı adı** | mySampleDataWarehouse | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). Veri ambarının bir veritabanı türü olduğuna dikkat edin.|
     | **Abonelik** | Aboneliğiniz | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
     | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-    | **Kaynak seçme** | Örnek | Örnek bir veritabanı yüklemek için belirtir. Veri ambarının bir veritabanı türü olduğuna dikkat edin. |
-    | **Örnek seçme** | AdventureWorksDW | AdventureWorksDW örnek veritabanını yüklemeyi belirtir. |
+    | **Veri ambarı adı** | mySampleDataWarehouse | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). Veri ambarının bir veritabanı türü olduğuna dikkat edin.|
     ||||
 
     ![veri ambarı oluşturma](media/create-data-warehouse-portal/select-sample.png)
 
-4. Yeni veritabanınız için yeni bir sunucu oluşturup yapılandırmak üzere **Sunucu**’ya tıklayın. **Yeni sunucu formu**’nu aşağıdaki bilgilerle doldurun: 
+4. Yeni veritabanınız için yeni bir sunucu oluşturmak ve yapılandırmak üzere var olan bir **sunucuyu** seçin veya yeni **Oluştur** ' a tıklayın. **Yeni sunucu formu**’nu aşağıdaki bilgilerle doldurun: 
 
     | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
@@ -82,7 +80,7 @@ AdventureWorksDW örnek verilerini içeren bir SQL veri ambarı oluşturmak içi
 
 8. **Apply (Uygula)** düğmesine tıklayın.
 
-9. SQL veri ambarı formunu tamamladığınıza göre, veritabanını sağlamak için **Oluştur** ' a tıklayın. Sağlama birkaç dakika sürer.
+9. SQL veri ambarı formunun temel bilgiler sekmesini tamamladığınıza göre, veritabanını sağlamak için **gözden geçir + oluştur** ' a tıklayın. Sağlama birkaç dakika sürer.
 
     ![oluştur’a tıklayın](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -126,7 +124,7 @@ SQL veri ambarı hizmeti, sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu
 
 SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra sunucuya bağlanırken tam adı kullanırsınız.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Sol taraftaki menüden **SQL veri ambarları** ' nı seçin ve **SQL veri ambarları** sayfasında veri ambarınıza tıklayın.
 3. Veritabanınızın Azure portal sayfasındaki **Temel Bilgiler** bölmesinde, **Sunucu adını** bulup kopyalayın. Bu örnekte, tam adı mynewserver-20180430.database.windows.net ' dir.
 
@@ -145,7 +143,7 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
    | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
    | Sunucu adı | Tam sunucu adı | Örnek: **MyNewServer-20180430.Database.Windows.net**. |
    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-   | Oturum Aç | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
+   | Oturum aç | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
    | Parola | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluştururken belirttiğiniz parola. |
    ||||
 
@@ -168,7 +166,7 @@ SQL Veri Ambarı sorgu dili olarak T-SQL kullanır. Bir sorgu penceresi açıp T
     SELECT * FROM sys.databases
     ```
 
-3. **Yürüt**’e tıklayın. Sorgu sonuçları iki veritabanı gösterir: **master** ve **mySampleDataWarehouse**.
+3. **Yürüt**'e tıklayın. Sorgu sonuçları iki veritabanı gösterir: **master** ve **mySampleDataWarehouse**.
 
     ![Sorgu veritabanları](media/create-data-warehouse-portal/query-databases.png)
 

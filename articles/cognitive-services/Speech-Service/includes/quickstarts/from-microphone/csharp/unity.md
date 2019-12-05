@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795943"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818871"
 ---
 > [!NOTE]
 > Unity için konuşma SDK 'Sı, Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatör, ARM32 ve ARM64) destekler
@@ -89,7 +89,7 @@ Unity projesi için örnek betik kodu eklemek için aşağıdaki adımları izle
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. `YourSubscriptionKey` dize, konuşma Hizmetleri abonelik anahtarınızla bulun ve değiştirin.
+1. `YourSubscriptionKey` dize, konuşma hizmeti abonelik anahtarınızla bulun ve değiştirin.
 
 1. Dize `YourServiceRegion` bulun ve aboneliğiniz ile ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, ücretsiz denemeyi kullanıyorsanız bölge `westus` olur.
 
@@ -120,7 +120,7 @@ Artık, uygulamayı Unity Düzenleyicisi içinde çalıştırmaya hazırsınız.
 
 1. [ **Oyun** görünümü](https://docs.unity3d.com/Manual/GameView.html)' ne gidin ve **metin** nesnesinin **konuşmayı tanımak için düğme ' yi**görüntülemesini bekleyin. (Uygulamanın başlatıldığı veya yanıt vermeye hazırlanmadığı durumlarda **Yeni metin** görüntüler.)
 
-1. Düğmesini seçin ve bilgisayarınızın mikrofonuna bir Ingilizce tümcecik veya cümle konuşun. Konuşma, konuşma hizmetlerine iletilir ve **oyun** görünümünde görüntülenen metne gönderilir.
+1. Düğmesini seçin ve bilgisayarınızın mikrofonuna bir Ingilizce tümcecik veya cümle konuşun. Konuşma, konuşma hizmetine iletilir ve **oyun** görünümünde görüntülenen metne gönderilir.
 
    [Unity düzenleyicisinde oyun görünümü ![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 

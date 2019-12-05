@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232143"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805263"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -47,7 +47,7 @@ Bu makale, oturum açma raporuna genel bir bakış sunar.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Oturum açma etkinliğine erişebilmek için hangi Azure AD lisansınızın olması gerekir?
 
-* Tüm oturum açma etkinliği raporunu görmek için kiracınızın kendisiyle ilişkili bir Azure AD Premium lisansı olması gerekir. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce veri etkinliği olmayan bir Premium lisansa yükselttikten sonra, verilerin raporlarda gösterilmesi birkaç gün sürer.
+* Tüm oturum açma etkinliği raporunu görebilmeniz için kiracınızın ilgili Azure AD Premium lisansına sahip olması gerekir. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce veri etkinliği olmayan bir Premium lisansa yükselttikten sonra, verilerin raporlarda gösterilmesi birkaç gün sürer.
 
 ## <a name="sign-ins-report"></a>Oturum açma işlemleri raporu
 
@@ -81,7 +81,7 @@ Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleşt
 
 Ek alanları görüntüler veya zaten görüntülenen alanları kaldırır.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/02.png "Oturum açma etkinliği")
+![Oturum açma etkinliği](./media/concept-sign-ins/columns.png "Oturum açma etkinliği")
 
 Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
@@ -140,7 +140,7 @@ Oturum açma görünümüne başka alanlar eklerseniz bu alanlar filtre listesin
 - **Diğer istemciler**
     - **IMAP**  
         E-posta almak için IMAP kullanan eski bir posta istemcisi.
-    - **HATASı**  
+    - **MAPI**  
         ADAL etkin olduğu ve MAPI kullanıldığı Office 2013.
     - **Eski Ofis istemcileri**  
         Office 2013, ADAL 'nin etkinleştirilmediği ve MAPI kullandığı ve ADAL 'nin devre dışı bırakıldığı Office 2016 ' nin varsayılan yapılandırmasında.
@@ -153,7 +153,7 @@ Oturum açma görünümüne başka alanlar eklerseniz bu alanlar filtre listesin
 
 En son 250.000 kayıtlarının CSV veya JSON dosyasını oluşturmak için **İndir** seçeneğine tıklayın. Azure portal dışında çalışmak istiyorsanız [, oturum açma verilerini indirme](quickstart-download-sign-in-report.md) ile başlayın.  
 
-![İndir](./media/concept-sign-ins/71.png "İndirme")
+![İndir](./media/concept-sign-ins/71.png "İndirin")
 
 > [!IMPORTANT]
 > İndirebileceğiniz kayıt sayısı [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md)tarafından sınırlandırılır.  
@@ -193,7 +193,7 @@ Bir öğeye tıklayarak oturum açma işlemi hakkında daha fazla bilgi alabilir
 - İstemci
 - Konum
 - IP adresi
-- Date
+- Tarih
 - MFA Gerekli
 - Oturum açma durumu
 

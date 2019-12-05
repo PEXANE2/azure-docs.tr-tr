@@ -69,6 +69,8 @@
   items:
     - name: Çalışma alanı
       href: concept-workspace.md
+    - name: Veriler
+      href: concept-data.md
     - name: Model eğitimi
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

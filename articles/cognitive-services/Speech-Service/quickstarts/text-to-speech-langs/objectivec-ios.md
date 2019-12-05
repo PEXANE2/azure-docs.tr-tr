@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 460d2069bea8809b7d453bbe1cf27284109df9b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 09ee7f0918bce469186688a5d0e82441bb2e5457
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503475"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817781"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta hedef için konuşmayı Sentezleştirme
 
@@ -23,10 +23,10 @@ Bu makalede, metinden konuşmayı sentezleştirmek için bilişsel hizmetler kon
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
+Başlamadan önce önkoşullarının listesi aşağıda verilmiştir:
 
 * Konuşma hizmeti için bir [abonelik anahtarı](~/articles/cognitive-services/Speech-Service/get-started.md)
-* [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) veya üzeri bir MacOS makinesi
+* Bir macOS makineyle [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) veya üzeri
 * Hedef, iOS sürüm 9,3 veya üzeri olarak ayarlandı
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS için Konuşma SDK’sını alın
@@ -70,7 +70,7 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
 1. Aşağıdaki şekilde otomatik oluşturulan `ViewController.m` dosyasının içeriğini değiştirin:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/text-to-speech/helloworld/helloworld/ViewController.m#code)]
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 

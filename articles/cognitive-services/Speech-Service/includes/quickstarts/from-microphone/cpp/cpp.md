@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C++ , konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Henüz belirlenmedi.
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 51c3d67a04805c8cc411af812755f3c4e0213dee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 692ed0b758cd33471b02b71d8434c6fc5337f6a0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260904"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818829"
 ---
 **Hedef ortamınızı seçin**
 

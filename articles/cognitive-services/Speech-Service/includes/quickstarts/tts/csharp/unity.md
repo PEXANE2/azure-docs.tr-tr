@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 281fbcf3f42160b18adcad3f06f6ef4a7b8de243
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502929"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818232"
 ---
 > [!NOTE]
 > Unity, Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatör, ARM32 ve ARM64) destekler.
@@ -49,7 +49,7 @@ Sentiğimize metin girmek için bir giriş alanından oluşan, konuşma sentiği
 
 İşiniz bittiğinde, Kullanıcı arabirimi şu ekran görüntüsüne benzer şekilde görünmelidir:
 
-[Unity düzenleyicisinde hızlı başlangıç Kullanıcı arabiriminin ekran görüntüsünü![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-unity-ui-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-unity-ui-expanded.png#lightbox)
+[Unity düzenleyicisinde hızlı başlangıç Kullanıcı arabiriminin ekran görüntüsünü ![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-unity-ui-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-unity-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
@@ -64,7 +64,7 @@ Sentiğimize metin girmek için bir giriş alanından oluşan, konuşma sentiği
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/text-to-speech/Assets/Scripts/HelloWorld.cs#code)]
 
-1. `YourSubscriptionKey` dize, konuşma Hizmetleri abonelik anahtarınızla bulun ve değiştirin.
+1. `YourSubscriptionKey` dize, konuşma hizmeti abonelik anahtarınızla bulun ve değiştirin.
 
 1. `YourServiceRegion` dizesini bulun ve aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, ücretsiz deneme sürümünü kullanıyorsanız bölge `westus`.
 
@@ -83,9 +83,9 @@ Sentiğimize metin girmek için bir giriş alanından oluşan, konuşma sentiği
 ## <a name="run-the-application-in-the-unity-editor"></a>Uygulamayı Unity düzenleyicisinde çalıştırma
 
 * Menü çubuğunun altındaki Unity Düzenleyici araç çubuğunda **oynat** düğmesini seçin.
-* Uygulama başlatıldıktan sonra, giriş alanına bir metin girin ve düğmeyi seçin. Metniniz, konuşmacının oynadığı konuşma hizmetine iletilir ve konuşmaya sentezleştirilmiştir.
+* Uygulama başlatıldıktan sonra, giriş alanına bir metin girin ve düğmeyi seçin. Metniniz konuşma hizmetine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
 
-  [Unity oyun penceresinde çalışan hızlı başlangıç ekranının ekran görüntüsünü![](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
+  [Unity oyun penceresinde çalışan hızlı başlangıç ekranının ekran görüntüsünü ![](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 
 * Hata ayıklama iletileri için [konsol penceresini](https://docs.unity3d.com/Manual/Console.html) denetleyin.
 

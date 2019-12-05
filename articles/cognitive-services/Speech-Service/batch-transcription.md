@@ -1,7 +1,7 @@
 ---
 title: Toplu Iş dökümü kullanma-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Toplu döküm, depolama alanında Azure Blob 'Ları gibi büyük miktarda ses eklemek istiyorsanız idealdir. Adanmış REST API kullanarak, paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma yapabilirsiniz.
+description: Batch transkripsiyonu, depolama, Azure BLOB'ları gibi ses büyük bir miktarını konuşmaların istiyorsanız idealdir. Adanmış REST API'sini kullanarak bir paylaşılan erişim imzası (SAS) URI ses dosyalarının üzerine gelin ve döküm zaman uyumsuz olarak alır.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,52 +10,52 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 158a99b1691e59fa58207f3c9291ca9d37a6679c
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 2cccd17ce04b3954a7d0720d9ba25bbe792da3b6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538125"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806346"
 ---
-# <a name="why-use-batch-transcription"></a>Toplu Iş dökümü neden kullanılmalıdır?
+# <a name="why-use-batch-transcription"></a>Batch transkripsiyonu neden kullanmalısınız?
 
-Toplu döküm, depolama alanında Azure Blob 'Ları gibi büyük miktarda ses eklemek istiyorsanız idealdir. Adanmış REST API kullanarak, paylaşılan erişim imzası (SAS) URI 'SI olan ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma yapabilirsiniz.
+Batch transkripsiyonu, depolama, Azure BLOB'ları gibi ses büyük bir miktarını konuşmaların istiyorsanız idealdir. Adanmış REST API'sini kullanarak bir paylaşılan erişim imzası (SAS) URI ses dosyalarının üzerine gelin ve döküm zaman uyumsuz olarak alır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-### <a name="subscription-key"></a>Abonelik anahtarı
+### <a name="subscription-key"></a>Abonelik Anahtarı
 
-Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](get-started.md)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz. Temel modellerimizin dökümünü almayı planlıyorsanız, bir anahtar oluşturmak için yapmanız gereken tek şey vardır.
+Konuşma hizmeti tüm özellikleri ile bir abonelik anahtarı oluştururken [Azure portalında](https://portal.azure.com) izleyerek bizim [Başlarken Kılavuzu](get-started.md). Bizim temel modellerinden döküm almak planlıyorsanız, bir anahtar oluşturmak tek yapmanız gereken bir işlemdir.
 
 >[!NOTE]
-> Toplu iş dökümünü kullanmak için, konuşma Hizmetleri için standart bir abonelik (S0) gereklidir. Ücretsiz abonelik anahtarları (F0) çalışmaz. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz Abonelik anahtarları (F0) işe yaramaz. Ek bilgi için bkz: [fiyatlandırma ve limitler](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Özel modeller
 
 Akustik veya dil modellerini özelleştirmeyi planlıyorsanız, [akustik modelleri özelleştirme](how-to-customize-acoustic-models.md) ve [dil modellerini özelleştirme](how-to-customize-language-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model kimliklerine ihtiyacınız vardır. Bu KIMLIK, uç nokta Ayrıntıları görünümünde bulduğunuz uç nokta KIMLIĞI değil, modellerin ayrıntılarını seçerken alabileceğiniz model KIMLIĞIDIR.
 
-## <a name="the-batch-transcription-api"></a>Toplu Iş dökümü API 'SI
+## <a name="the-batch-transcription-api"></a>Batch tanıma API'si
 
-Toplu Iş dökümü API 'SI, ek özelliklerle birlikte zaman uyumsuz konuşmayı metne dönüştürme Işlemi sunar. Bu, için yöntemler sunan bir REST API:
+Batch tanıma API'si, ek özellikleri ile birlikte zaman uyumsuz konuşma metin tanıma sunar. Bu yöntemleri gösteren bir REST API'si değil:
 
-1. Toplu işleme istekleri oluşturma
+1. Toplu işlem isteği oluşturma
 1. Sorgu durumu
 1. Döküm indiriliyor
 
 > [!NOTE]
-> Toplu Iş dökümü API 'SI, genellikle binlerce saatlik sesi biriktiren çağrı merkezleri için idealdir. Büyük hacimde ses kaydı yapmayı kolaylaştırır.
+> Batch tanıma API'si, genellikle saatlik ses binlerce accumulate çağrı merkezleri için idealdir. Büyük hacimde ses kaydı yapmayı kolaylaştırır.
 
 ### <a name="supported-formats"></a>Desteklenen biçimler
 
-Toplu Iş dökümü API 'SI aşağıdaki biçimleri destekler:
+Batch tanıma API'si, aşağıdaki biçimlerde destekler:
 
-| Biçimlendir | Bileşeni | Bit hızı | Örnek hız |
+| Biçimlendir | Codec bileşeni | Bit hızı | Örnek hızı |
 |--------|-------|---------|-------------|
-| WAV | PCM | 16 bit | 8 veya 16 kHz, mono, stereo |
-| ÇA | PCM | 16 bit | 8 veya 16 kHz, mono, stereo |
-| OGG | OPUS 'LAR | 16 bit | 8 veya 16 kHz, mono, stereo |
+| WAV | PCM | 16-bit | 8 veya 16 kHz, mono, stereo |
+| MP3 | PCM | 16-bit | 8 veya 16 kHz, mono, stereo |
+| OGG | GEÇERLİ | 16-bit | 8 veya 16 kHz, mono, stereo |
 
-Stereo ses akışları için toplu Iş dökümü API 'SI, döküm sırasında sol ve sağ kanalı böler. Her biri tek bir kanaldan oluşturulan, sonuçtaki iki JSON dosyası oluşturulur. Söylenişi başına zaman damgaları, geliştiricinin sıralı bir son döküm oluşturmasını sağlar. Bu örnek istek, küfür filtrelemesinin, noktalama işaretlerinin ve sözcük düzeyi zaman damgalarının özelliklerini içerir.
+Stereo ses akışları için Batch transkripsiyonu API sol ve sağ kanal döküm sırasında böler. Sonuç ile iki JSON dosyaları her tek bir kanaldan oluşturulur. Zaman damgaları utterance başına bir sıralı son döküm oluşturmak Geliştirici etkinleştirin. Bu örnek istek, küfür filtrelemesinin, noktalama işaretlerinin ve sözcük düzeyi zaman damgalarının özelliklerini içerir.
 
 ### <a name="configuration"></a>Yapılandırma
 
@@ -78,7 +78,7 @@ Yapılandırma parametreleri JSON olarak sağlanır:
 ```
 
 > [!NOTE]
-> Toplu Iş dökümü API 'SI, döküm istemek, durumları ve ilişkili sonuçları istemek için bir REST hizmeti kullanır. API 'yi herhangi bir dilde kullanabilirsiniz. Sonraki bölümde, API 'nin nasıl kullanıldığı açıklanmaktadır.
+> Döküm, durum ve ilişkili sonuçları istenirken bir REST hizmeti ve Batch tanıma API'sini kullanır. Herhangi bir dilde API'den kullanabilirsiniz. Sonraki bölümde, API'yi nasıl kullanıldığını açıklar.
 
 ### <a name="configuration-properties"></a>Yapılandırma özellikleri
 
@@ -86,8 +86,8 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| `ProfanityFilterMode` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `None`, küfür filtrelemeyi devre dışı bırakan, `masked`, sonuçtan tüm küfür kaldıran `removed` veya "küfür" etiketleri ekleyen `tags`. Varsayılan ayar `masked`. |
-| `PunctuationMode` | Tanıma sonuçlarında noktalama işaretlerinin nasıl işleneceğini belirtir. Kabul edilen değerler, noktalama işaretini devre dışı bırakan `None`, `dictated` açık noktalama işareti olan `automatic`, bu da kod çözücüsünün noktalama işaretleriyle veya dikte edilen noktalama işaretlerini veya otomatik olarak veya otomatik olarak kullanıldığı `dictatedandautomatic` |
+| `ProfanityFilterMode` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `None` , devre dışı bırakır küfür filtresi `masked` yıldız işareti ile küfür değiştirir `removed` sonuç, tüm küfür kaldırır veya `tags` "küfür" etiketleri ekler. Varsayılan ayar `masked`. |
+| `PunctuationMode` | Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Değerler kabul `None` , devre dışı bırakır, noktalama `dictated` açık noktalama gelir `automatic` noktalama işaretleri ile uğraşmak kod çözücü olanak tanıyan veya `dictatedandautomatic` dikte noktalama işaretleri veya otomatik olduğu anlamına gelir. |
  | `AddWordLevelTimestamps` | Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını ve `false` (varsayılan değer) devre dışı bırakmak için `true`. |
  | `AddSentiment` | Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) tarafından devre dışı bırakılacak `true`. |
  | `AddDiarization` | İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) sağlar. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.|
@@ -190,9 +190,9 @@ Tüm örnekler, `samples/batch` alt dizininin içindeki [GitHub örnek deposunda
 
 Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.cris.ai/swagger/ui/index)inceleyin. Burada gösterilen tam örnek için `samples/batch` alt dizininde [GitHub](https://aka.ms/csspeech/samples) ' a gidin.
 
-Ses ve döküm durumunu alma hakkında zaman uyumsuz Kurulum ' a göz atın. Oluşturduğunuz istemci bir .NET HTTP istemcsahiptir. Ses dosyası ayrıntılarını göndermek için bir `PostTranscriptions` yöntemi ve sonuçları almak için bir `GetTranscriptions` yöntemi vardır. `PostTranscriptions` bir tanıtıcı döndürür ve `GetTranscriptions`, döküm durumunu almak üzere bir tanıtıcı oluşturmak için onu kullanır.
+Ses gönderme ve döküm durumu almak için zaman uyumsuz Kurulum not alın. Oluşturduğunuz .NET HTTP istemci istemcisidir. Var. bir `PostTranscriptions` ses dosyası ayrıntılarını göndermek için yöntem ve bir `GetTranscriptions` sonuçları almak için yöntemi. `PostTranscriptions` bir tanıtıcı döndürür ve `GetTranscriptions` transkripsiyonu durumu almak için bir tanıtıcı oluşturmak için kullanır.
 
-Geçerli örnek kod özel bir model belirtmiyor. Hizmet, dosya veya dosyaları derleyen taban çizgisi modellerini kullanır. Modelleri belirtmek için, akustik ve dil modeli için model kimlikleriyle aynı yöntemi geçirebilirsiniz.
+Geçerli örnek kod, özel bir model belirtmez. Hizmet, dosya veya dosyalar fotoğrafını için temel modelleri kullanır. Modelleri belirtmek için model kimliklerini akustik ve dil modeli için aynı yönteme geçirebilirsiniz.
 
 > [!NOTE]
 > Ana hat düzenlemeleri için, taban çizgisi modellerinin KIMLIĞINI bildirmeniz gerekmez. Yalnızca bir dil modeli KIMLIĞI belirtirseniz (ve akustik model KIMLIĞI yoksa), eşleşen bir akustik model otomatik olarak seçilir. Yalnızca bir akustik model KIMLIĞI belirtirseniz, eşleşen bir dil modeli otomatik olarak seçilir.

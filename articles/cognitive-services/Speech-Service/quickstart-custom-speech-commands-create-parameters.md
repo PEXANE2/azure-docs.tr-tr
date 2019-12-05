@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111240"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812768"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)
 
@@ -36,9 +36,9 @@ Bu makalede, bu uygulamayı parametreleri ile genişletecektir ve bu sayede bird
 
    | Ayar            | Önerilen değer | Açıklama                                                                                               |
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | Ad               | Mikrofon           | Parametrağınız için açıklayıcı bir ad                                                                     |
-   | Geneldir          | Olmayan       | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
-   | Gerekli           | Edildikten         | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
+   | Adı               | Mikrofon           | Parametrağınız için açıklayıcı bir ad                                                                     |
+   | Geneldir          | denetlenmemiş       | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
+   | Gereklidir           | checked         | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
    | Yanıt şablonu  | Açık veya kapalı mı?      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
    | Tür               | Dize          | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
    | Yapılandırma      | Dize listesi     | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
@@ -48,9 +48,9 @@ Bu makalede, bu uygulamayı parametreleri ile genişletecektir ve bu sayede bird
 
    | Ayar            | Önerilen değer   | Açıklama                                                                                               |
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | Ad               | SubjectDevice     | Parametrağınız için açıklayıcı bir ad                                                                     |
-   | Geneldir          | Olmayan         | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
-   | Gerekli           | Edildikten           | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
+   | Adı               | SubjectDevice     | Parametrağınız için açıklayıcı bir ad                                                                     |
+   | Geneldir          | denetlenmemiş         | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
+   | Gereklidir           | checked           | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
    | Yanıt şablonu  | Hangi cihaz?     | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
    | Tür               | Dize            | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
    | Yapılandırma      | Dize listesi       | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
@@ -59,7 +59,7 @@ Bu makalede, bu uygulamayı parametreleri ile genişletecektir ve bu sayede bird
 
 ## <a name="add-sample-sentences"></a>Örnek cümleler ekleyin
 
-Parametreler ile, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
+Parametreler ile, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örnek:
 
 1. Tam parametre bilgileri-`"turn {OnOff} the {SubjectDevice}"`
 1. Kısmi parametre bilgileri-`"turn it {OnOff}"`

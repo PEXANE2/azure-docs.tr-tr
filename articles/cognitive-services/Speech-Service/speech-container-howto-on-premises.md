@@ -1,5 +1,5 @@
 ---
-title: Kubernetes ve Held ile konuşma hizmeti kapsayıcısını kullanma
+title: Kubernetes ve Held ile konuşma hizmeti kapsayıcıları kullanma
 titleSuffix: Azure Cognitive Services
 description: Kubernetes ve helk kullanarak konuşmadan metne ve metinden konuşmaya kapsayıcı görüntülerini tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 42585ae09435e67b7cdea0b437681e2ce044ecd3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383645"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816499"
 ---
-# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile konuşma hizmeti kapsayıcısını kullanma
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes ve Held ile konuşma hizmeti kapsayıcıları kullanma
 
 Şirket içi konuşma kapsayılarınızı yönetmeye yönelik bir seçenek de Kubernetes ve Held 'yi kullanmaktır. Kubernetes ve helk kullanarak konuşmadan metne ve metinden konuşmaya kapsayıcı görüntülerini tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan Hizmetleri ve çeşitli yapılandırma seçeneklerini nasıl test eteceksiniz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [konuşma hizmeti kapsayıcıları 'nı yükleyip çalıştırma](speech-container-howto.md).
 
@@ -25,7 +25,7 @@ ms.locfileid: "74383645"
 
 Şirket içi konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
-|Gerekli|Amaç|
+|Gereklidir|Amaç|
 |--|--|
 | Azure hesabı | Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free-azure-account] oluşturun. |
 | Container Registry erişim | Kubernetes 'in, Docker görüntülerini kümeye çekmesi için kapsayıcı kayıt defterine erişmesi gerekir. |
@@ -40,7 +40,7 @@ Bir başvuru olarak [konuşma hizmeti kapsayıcı ana bilgisayar][speech-contain
 | Hizmet | CPU/kapsayıcı | Bellek/kapsayıcı |
 |--|--|--|
 | **Konuşmayı metne dönüştürme** | bir kod çözücü en az 1.150 milimetre çekirdek gerektirir. `optimizedForAudioFile` etkinleştirilirse, 1.950 miliçekirdekler gereklidir. (varsayılan: iki kod çözücü) | Gerekli: 2 GB<br>Sınırlı: 4 GB |
-| **Metin okuma** | bir eşzamanlı istek en az 500 milicore gerektirir. `optimizeForTurboMode` etkinleştirilirse, 1.000 miliçekirdekler gereklidir. (varsayılan: iki eşzamanlı istek) | Gerekli: 1 GB<br> Sınırlı: 2 GB |
+| **Metin Okuma** | bir eşzamanlı istek en az 500 milicore gerektirir. `optimizeForTurboMode` etkinleştirilirse, 1.000 miliçekirdekler gereklidir. (varsayılan: iki eşzamanlı istek) | Gerekli: 1 GB<br> Sınırlı: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Kubernetes kümesine bağlanma
 

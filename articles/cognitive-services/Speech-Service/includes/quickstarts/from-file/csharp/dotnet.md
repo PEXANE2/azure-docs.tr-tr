@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a570ec7e7eaae13515edc268d465df18674fc22
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7fc7edcb37b31022afb989199bd54e55589e1849
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795676"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819413"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -28,7 +28,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
 
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 

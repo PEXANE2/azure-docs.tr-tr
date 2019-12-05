@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: da90e1fb8ab6241cbe0bfa583e1b4a3fbe338ad8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111163"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812972"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
 
@@ -36,7 +36,7 @@ Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. H
 Ayrıca şunları da yapmanız gerekir:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+- Konuşma hizmeti için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
 

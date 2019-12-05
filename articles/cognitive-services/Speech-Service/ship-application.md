@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 0bcfd40510352abc9e64782255d3c8349b8ad87e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f4200a0a43507a335f0e4e59e5a794d2bc4d6142
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072414"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816559"
 ---
 # <a name="ship-an-application"></a>Uygulama teslim etme
 
@@ -39,7 +39,7 @@ Mikrofon girişi için Media Foundation kitaplıkları yüklü olması gerekir. 
 
 Gerekli dosyaları Speech SDK'sı, uygulamanızın aynı dizinde dağıtılabilir. Bu şekilde uygulamanızı kitaplıkları doğrudan erişebilirsiniz. Uygulamanızı eşleşen doğru sürümünü (Win32/x64) seçtiğinizden emin olun.
 
-| Ad | İşlev |
+| Adı | İşlev |
 | :--- | :------- |
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Yerel ve yönetilen dağıtım için gerekli core SDK'sı |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Yönetilen dağıtım için gerekli                      |

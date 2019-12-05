@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: ses dosyasına konuşma Sentezleştir C++ , (Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 0f166fedd1044ba3b7076f3fb7eb14becbc1272b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 024e6121e950ba27cf18b65434d712af80d1ec17
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503139"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817871"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -26,7 +26,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **helloworld.cpp** kaynak dosyasını açın.
 
@@ -69,9 +69,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
    ```
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Dize `helloworld.wav` kendi dosya adıyla değiştirin.
 

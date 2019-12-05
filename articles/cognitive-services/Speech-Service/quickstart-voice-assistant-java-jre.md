@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111700"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815862"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile bir ses Yardımcısı oluşturma, Java (Önizleme)
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıç şunları gerektirir:
 - İşletim sistemi: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit) veya macOS 10,13 veya üzeri.
 - [Tutulma Java IDE](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
+- Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
 - Bot Framework sürüm 4,2 veya üzeri kullanılarak oluşturulan önceden yapılandırılmış bir bot. Bir ses girişi almak için bot 'ın yeni doğrudan hat konuşma kanalına abone olması gerekir.
 
   > [!NOTE]
@@ -65,7 +65,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için _Pod. xml_ dosyasını aşa
  </dependency>
 ```
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 
@@ -477,7 +477,7 @@ Ses dosyasından konuşmayı okuma gibi ek örnekler GitHub ' da bulunabilir.
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Sesli yardımcılar hakkında](voice-assistants.md)
-- [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 - [Özel anahtar sözcükler](speech-devices-sdk-create-kws.md)
 - [Doğrudan hat konuşmayı bot 'a bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub 'da Java örneklerini keşfet](https://aka.ms/csspeech/samples)

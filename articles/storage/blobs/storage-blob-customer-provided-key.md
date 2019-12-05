@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 1c282b1b9a4693da2aa71831a503d443660b65c1
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: ea8254f108aed9d40e6970a27409035b1e10ab41
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666643"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807009"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET ile BLOB depolama için istekte müşteri tarafından sağlanmış bir anahtar belirtin
 
@@ -23,6 +23,8 @@ Azure Blob depolamada istek yapan istemcilerin, tek bir istekte şifreleme anaht
 Bu makalede, .NET ile bir istekte müşteri tarafından sağlanmış bir anahtarın nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
+
+Azure depolama 'dan Azure kimlik istemci kitaplığı ile kimlik doğrulama hakkında daha fazla bilgi edinmek için bkz. Azure **kimlik kitaplığıyla kimlik doğrulama** başlıklı Bölüm [Azure Active Directory ve Azure kaynakları için Yönetilen kimlikler ile blob 'lara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
 
 ## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Örnek: bir blobu karşıya yüklemek için müşteri tarafından sağlanmış bir anahtar kullanın
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 75ecbe8351e68b77a59b40709a2beb15d09b16df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504091"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816236"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Hızlı başlangıç: konuşma SDK 'Sı ile bir ses Yardımcısı oluşturma, UWP
 
@@ -31,7 +31,7 @@ Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Win
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
-* Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
 * [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)ile yapılandırılmış daha önce oluşturulmuş bir bot.
 
   > [!NOTE]
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, bir istemci uygulamasını konuşma özellikli bot 'a
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
 
@@ -292,7 +292,7 @@ Arka plan kod kaynağını eklemek için aşağıdaki adımları izleyin:
 1. Aşağıdaki kod parçacığını `InitializeDialogServiceConnector`yöntem gövdesine ekleyin. Bu kod, abonelik bilgilerinizi içeren `DialogServiceConnector` oluşturur.
 
     ```csharp
-    // Create a BotFrameworkConfig by providing a Speech Service subscription key
+    // Create a BotFrameworkConfig by providing a Speech service subscription key
     // the RecoLanguage property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
@@ -400,7 +400,7 @@ Arka plan kod kaynağını eklemek için aşağıdaki adımları izleyin:
 
 Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun artık hatasız derlenmesi gerekir.
 
 1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
@@ -422,7 +422,7 @@ Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Sesli yardımcılar hakkında](voice-assistants.md)
-- [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 - [Özel anahtar sözcükler](speech-devices-sdk-create-kws.md)
 - [Doğrudan hat konuşmayı bot 'a bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)

@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666179"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806601"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim yetkisi verme
 
@@ -36,13 +36,13 @@ Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları I�
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Azure kimlik kitaplığı ile kimlik doğrulama
 
-Azure Identity istemci kitaplığı 'nın bir avantajı, uygulamanızın geliştirme ortamında veya Azure 'da çalışıp çalışmadığını doğrulamak için aynı kodu kullanmanızı sağlar. Azure ortamında çalışan kodda, istemci kitaplığı Azure kaynakları için yönetilen bir kimliğin kimliğini doğrular. Geliştirme ortamında, yönetilen kimlik yok, bu nedenle istemci kitaplığı Kullanıcı veya test amaçları için bir hizmet sorumlusu kimliğini doğrular.
+Azure Identity istemci kitaplığı, Azure [SDK](https://github.com/Azure/azure-sdk)Için Azure Azure AD belirteci kimlik doğrulama desteği sağlar. .NET, Java, Python ve JavaScript için Azure depolama istemci kitaplıklarının en son sürümleri, Azure depolama isteklerinin yetkilendirmesi için bir OAuth 2,0 belirteci elde etmek üzere basit ve güvenli bir yöntem sağlamak üzere Azure Identity Library ile tümleşir.
 
-.NET için Azure Identity istemci kitaplığı, bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir.
+Azure Identity istemci kitaplığı 'nın bir avantajı, uygulamanızın geliştirme ortamında veya Azure 'da çalışıp çalışmadığını doğrulamak için aynı kodu kullanmanızı sağlar. .NET için Azure Identity istemci kitaplığı, bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir. Geliştirme ortamında, yönetilen kimlik yok, bu nedenle istemci kitaplığı Kullanıcı veya test amaçları için bir hizmet sorumlusu kimliğini doğrular.
 
 Kimlik doğrulamasından sonra Azure Identity istemci kitaplığı bir belirteç kimlik bilgisi alır. Bu belirteç kimlik bilgileri daha sonra Azure depolama 'ya karşı işlemleri gerçekleştirmek için oluşturduğunuz hizmet istemci nesnesinde kapsüllenir. Kitaplık, uygun belirteç kimlik bilgisini alarak sizin için sorunsuz bir şekilde işler.
 
-Azure Identity istemci kitaplığı hakkında daha fazla bilgi için bkz. [.net Için Azure kimlik istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+.NET için Azure Identity istemci kitaplığı hakkında daha fazla bilgi için bkz. [.net Için Azure kimlik istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Azure Identity istemci kitaplığı için başvuru belgeleri için bkz. [Azure. Identity Ad alanı](/dotnet/api/azure.identity).
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Verilere erişmek için rol tabanlı erişim denetimi (RBAC) rolleri atama
 
@@ -50,7 +50,7 @@ Bir Azure AD güvenlik sorumlusu blob veya kuyruk verilerine erişmeyi denediği
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Geliştirme ortamında kullanıcının kimliğini doğrulama
 
-Kodunuz geliştirme ortamında çalışırken, kimlik doğrulaması otomatik olarak işlenebilir veya kullandığınız araçlara bağlı olarak bir tarayıcı oturum açma işlemi gerektirebilir. Microsoft Visual Studio çoklu oturum açmayı (SSO) destekler, böylece etkin Azure AD Kullanıcı hesabı kimlik doğrulaması için otomatik olarak kullanılır. SSO hakkında daha fazla bilgi için bkz. [uygulamalarda çoklu oturum açma](../../active-directory/manage-apps/what-is-single-sign-on.md).
+Kodunuz geliştirme ortamında çalışırken, kimlik doğrulaması otomatik olarak işlenebilir veya kullandığınız araçlara bağlı olarak bir tarayıcı oturum açma işlemi gerektirebilir. Örneğin, Microsoft Visual Studio çoklu oturum açmayı (SSO) destekler, böylece etkin Azure AD Kullanıcı hesabı kimlik doğrulaması için otomatik olarak kullanılır. SSO hakkında daha fazla bilgi için bkz. [uygulamalarda çoklu oturum açma](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
 Diğer geliştirme araçları, bir Web tarayıcısı aracılığıyla oturum açmanız istenebilir.
 
@@ -105,7 +105,7 @@ Daha fazla bilgi için bkz. [portalda Azure uygulaması için kimlik oluşturma]
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET kod örneği: blok blobu oluşturma
+## <a name="net-code-example-create-a-block-blob"></a>.NET kod örneği: bir blok blobu oluştur
 
 Azure kimlik ve Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
 
@@ -161,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure depolama için RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile depolama verileri için erişim haklarını yönetme](storage-auth-aad-rbac.md).
-- Depolama uygulamalarınızın içindeki kapsayıcılara ve kuyruklara erişimi yetkilendirmeyi öğrenmek için bkz. [Azure AD 'yi depolama uygulamalarıyla kullanma](storage-auth-aad-app.md).
-- Azure AD kimlik bilgileriyle Azure CLı ve PowerShell komutlarının nasıl çalıştırılacağını öğrenmek için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI veya PowerShell komutlarını çalıştırma](storage-auth-aad-script.md).
+- [RBAC ile depolama verilerine erişim haklarını yönetin](storage-auth-aad-rbac.md).
+- [Azure AD 'yi depolama uygulamalarıyla kullanın](storage-auth-aad-app.md).
+- [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI veya PowerShell komutlarını çalıştırın](storage-auth-aad-script.md).

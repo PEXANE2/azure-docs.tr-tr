@@ -10,26 +10,26 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2be8f7f2e8859301285e4b87cfb5da88e3317e3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 82db94dd201676b769f1ea151b23fa1b149f609c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483364"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807111"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin.
 
-Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
+Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
 
 ## <a name="2019-11-25"></a>2019-11-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Python v 1.0.76 için SDK Azure Machine Learning
 
-+ **Son değişiklikler**
++ **Bozucu değişiklikler**
   + Azureml-eğitme-oto ml yükseltme sorunları
-    + Azureml-tren-oto ml > = 1.0.76 'ten azureml-tren-oto ml < 1.0.76 'e yükseltmek kısmi yüklemelere neden olabilir ve bazı oto ml içeri aktarımlarının başarısız olmasına neden olabilir. Bu sorunu çözmek için https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmdkonumunda bulunan kurulum betiğini çalıştırabilirsiniz. Ya da doğrudan PIP kullanıyorsanız şunları yapabilirsiniz:
+    + Azureml-tren-oto ml > = 1.0.76 'ten azureml-tren-oto ml < 1.0.76 'e yükseltmek kısmi yüklemelere neden olabilir ve bazı oto ml içeri aktarımlarının başarısız olmasına neden olabilir. Bu sorunu çözmek için https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd konumunda bulunan kurulum betiğini çalıştırabilirsiniz. Ya da doğrudan PIP kullanıyorsanız şunları yapabilirsiniz:
       + "PIP install--Upgrade azureml-tren-oto"
       + "PIP install--Ignore-yüklü azureml-tren-oto ml-Client"
     + ya da yükseltmeden önce eski sürümü kaldırabilirsiniz
@@ -131,8 +131,8 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 | Web tabanlı araç | Açıklama | Sürüm |
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | Temel & Kurumsal |
-| [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | Enterprise |
-| [Tasarımcı](ui-concept-visual-interface.md) (Önizleme) | Daha önce tasarımcı olarak bilinen sürükle ve bırak makine öğrenimi modelleme aracı | Enterprise |
+| [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | Kurumsal |
+| [Tasarımcı](ui-concept-visual-interface.md) (Önizleme) | Daha önce tasarımcı olarak bilinen sürükle ve bırak makine öğrenimi modelleme aracı | Kurumsal |
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure Machine Learning tasarımcı geliştirmeleri 
@@ -158,7 +158,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 
 ### <a name="azure-machine-learning-sdk-for-python-v1072"></a>Python v 1.0.72 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Veri kümesi izleyicileri ve zaman içinde diğer istatistiksel değişiklikler için zaman serisi veri kümelerini izlemeye izin veren, [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift) paketi aracılığıyla veri kümesi izleyicileri eklendi. Uyarılar ve olaylar, DRIP algılanırsa veya veriler üzerinde başka koşullar karşılanıyorsa tetiklenebilir. Ayrıntılar için [belgelerimizi](https://aka.ms/datadrift) inceleyin. 
   + Azure Machine Learning ' de iki yeni sürüm (aynı zamanda SKU da denir) duyuruldu. Bu sürümle birlikte, artık temel veya kurumsal bir Azure ML çalışma alanı oluşturabilirsiniz. Tüm mevcut çalışma alanları temel sürüme varsayılan olarak uygulanır ve Azure portal veya Studio 'ya giderek çalışma alanını dilediğiniz zaman yükseltebilirsiniz. Azure portalından temel veya kurumsal bir çalışma alanı oluşturabilirsiniz. Daha fazla bilgi edinmek için lütfen [belgelerimizi](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) okuyun. SDK 'dan çalışma alanınızın sürümü çalışma alanı nesnenizin "SKU" özelliği kullanılarak belirlenebilir.
   + Ayrıca, Azure Machine Learning Işlem için geliştirmeler yaptık. artık, kümeleriniz için (Toplam düğümler, çalışan düğümler, toplam çekirdek kota gibi) ölçümleri, hata ayıklama için tanılama günlüklerini görüntülemenin yanı sıra Azure Izleyici 'de görüntüleyebilirsiniz. Ayrıca, kümenizde çalışmakta olan veya sıraya alınmış çalıştırmaları ve kümenizdeki çeşitli düğümlerin IP 'Leri gibi ayrıntıları da görüntüleyebilirsiniz. Bunları portalda veya SDK ya da CLı 'de karşılık gelen işlevleri kullanarak görüntüleyebilirsiniz. 
@@ -217,11 +217,11 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
     + Azureml-contrib-gbdt paketine LightGMB Estimator eklendi
   + [**azureml-çekirdek**](https://docs.microsoft.com/python/api/azureml-core)
     + CLı artık model paketlemeyi destekliyor.
-    + Kullanım dışı veri kümesi API 'Leri için kullanımdan kaldırma uyarısı ekleyin. https://aka.ms/tabular-dataset'de veri kümesi API 'SI değişiklik bildirimi ' ne bakın.
+    + Kullanım dışı veri kümesi API 'Leri için kullanımdan kaldırma uyarısı ekleyin. https://aka.ms/tabular-dataset 'de veri kümesi API 'SI değişiklik bildirimi ' ne bakın.
     + Veri kümesi kayıtlıysa [`Dataset.get_by_id`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29#get-by-id-workspace--id-) kayıt adını ve sürümünü döndürecek şekilde değiştirin.
     + Bağımsız değişken olarak ScriptRunConfig ile birlikte bulunan bir hatayı düzelttikten sonra, deneme çalıştırması göndermek için tekrar tekrar kullanılamaz.
     + Çalıştırma sırasında alınan veri kümeleri izlenir ve çalıştırma ayrıntıları sayfasında veya çalıştırma tamamlandıktan sonra [`run.get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--) çağırarak görünebilir.
-    + Azure Machine Learning ardışık düzeninde ara verinin tablo veri kümesine dönüştürülmesine ve [`AutoMLStep`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlstep)kullanılmasına izin verin.
+    + Azure Machine Learning ardışık düzeninde ara verinin tablo veri kümesine dönüştürülmesine ve [`AutoMLStep`](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlstep)kullanılmasına izin verin.
     + Bir ınenceconfig örneği olmadan desteklenen modellerin (ONNX, scikit-öğren ve TensorFlow) dağıtımı ve paketlenmesi için destek eklendi.
     + SDK ve CLı 'de hizmet dağıtımı (acı ve AKS) için üzerine yazma bayrağı eklendi. Sağlanmışsa, zaten adlı hizmet varsa mevcut hizmetin üzerine yazar. Hizmet yoksa, yeni hizmet oluşturacaktır.
     +  Modeller, Onnx ve TensorFlow olmak üzere iki yeni çerçeve ile kaydedilebilir. Model kaydı, model için örnek giriş verilerini, örnek çıkış verilerini ve kaynak yapılandırmasını kabul eder.
@@ -238,7 +238,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
     + Çeşitli hata düzeltmeleri 
   + [**azureml-işlem hattı-çekirdek**](https://docs.microsoft.com/python/api/azureml-pipeline-core)
     + işlem hattı `yaml` dosyasından Azure Machine Learning işlem hattı çalıştırması göndermek için azureml-dataprep artık gerekli değildir.
-  + [**azureml-eğitme-oto ml**](https://docs.microsoft.com/python/api/azureml-train-automl)
+  + [**azureml-eğitme-oto ml**](/python/api/azureml-train-automl-runtime/)
     + Model dağıtım hatasını çözümlemek için otomatik olarak oluşturulan Conda env öğesine azureml-varsayılanlar ekleyin
     + Oto ml uzak eğitimi artık, çıkarım için eğitim env 'nin yeniden kullanımına izin vermek üzere azureml-varsayılanlar içerir.
   + **azureml-tren-çekirdek**
@@ -251,7 +251,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 + Azure Machine Learning görsel arabirimi (Önizleme), [Azure Machine Learning işlem hatları](concept-ml-pipelines.md)üzerinde çalışacak şekilde kaldırıldı. Görsel arabirimde yazılan işlem hatları (daha önce denemeleri olarak bilinir) artık çekirdek Azure Machine Learning deneyimiyle tamamen tümleşiktir.
   + SDK varlıklarıyla Birleşik yönetim deneyimi
   + Görsel arabirim modelleri, işlem hatları ve uç noktalar için sürüm oluşturma ve izleme 
-  + Yeniden tasarlanan kullanıcı arabirimi
+  + Yeniden tasarlanan kullanıcı Arabirimi
   + Toplu çıkarım dağıtımı eklendi
   + Çıkarım işlem hedefleri için Azure Kubernetes hizmeti (AKS) desteği eklendi
   + Yeni Python-adım işlem hattı yazma iş akışı
@@ -350,7 +350,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
     + Büyük işlem hattı oluşturma performansı geliştirildi.
   + **[azureml-tren-çekirdek](https://docs.microsoft.com/python/api/azureml-train-core)**
     + [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow) Estimator 'Da tensorflow 2,0 desteği eklendi.
-  + **[azureml-eğitme-oto ml](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-eğitme-oto ml](/python/api/azureml-train-automl-runtime/)**
     + Düzenleme zaten bu işlemi yaptığı için, kurulum yineleme başarısız olduğunda üst öğe çalıştırması artık başarısız olmayacaktır.
     + Oto ml denemeleri için yerel Docker ve yerel-Conda desteği eklendi
     + Oto ml denemeleri için yerel Docker ve Local-Conda desteği eklendi.
@@ -369,17 +369,17 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 
 ### <a name="azure-machine-learning-sdk-for-python-v1065"></a>Python v 1.0.65 için SDK Azure Machine Learning
 
-  + **Yeni özellikler**
+  + **Yeni Özellikler**
     + Seçkin ortamlar eklendi. Bu ortamlar, ortak makine öğrenimi görevlerinin kitaplıklarıyla önceden yapılandırılmıştır ve daha hızlı yürütülmek üzere Docker görüntüleri olarak önceden derlenerek önbelleğe alınır. Bu, varsayılan olarak çalışma alanının ortam listesinde ve "AzureML" önekiyle görünürler.
     + Seçkin ortamlar eklendi. Bu ortamlar, ortak makine öğrenimi görevlerinin kitaplıklarıyla önceden yapılandırılmıştır ve daha hızlı yürütülmek üzere Docker görüntüleri olarak önceden derlenerek önbelleğe alınır. Bu, varsayılan olarak [çalışma alanının](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)ortam listesinde ve "AzureML" önekiyle görünürler.
   
   + **azureml-eğitme-oto ml**
-  + **[azureml-eğitme-oto ml](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-eğitme-oto ml](/python/api/azureml-train-automl-runtime/)**
     + ADB ve HDI için ONNX dönüştürme desteği eklendi
 
 + **Önizleme özellikleri**  
   + **azureml-eğitme-oto ml**
-  + **[azureml-eğitme-oto ml](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-eğitme-oto ml](/python/api/azureml-train-automl-runtime/)**
     + Metin özelliği olarak desteklenen BERT ve BiLSTM (yalnızca Önizleme)
     + Sütun amacı ve transformatör parametreleri için desteklenen uygulanabilirlik özelleştirmesi (yalnızca Önizleme)
     + Kullanıcı eğitim sırasında model açıklamasını etkinleştirse desteklenen ham açıklamalar (yalnızca Önizleme)
@@ -391,7 +391,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-oto ml-çekirdek**
     + Cmlconfig ve oto Mlbasesettings için FeaturizationConfig sunuldu
-    + [Cmlconfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig) ve oto Mlbasesettings Için FeaturizationConfig sunuldu
+    + [Cmlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) ve oto Mlbasesettings Için FeaturizationConfig sunuldu
       + Verilen sütun ve Özellik türüyle uygun şekilde sütun amacını geçersiz kıl
       + Transformatör parametrelerini geçersiz kıl
     + Explain_model () ve retrieve_model_explanations () için kullanımdan kaldırma iletisi eklendi
@@ -436,16 +436,16 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
   + **[azureml-işlem hattı-adımlar](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + AML işlem hattı aracılığıyla R betiği çalıştırmayı desteklemek için [Rscriptstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) eklendi.
     + [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) içinde ayrıştırma, "SubscriptionID parametresi için atama belirtilmemiş" hata iletisine neden olan sabit meta veri parametreleri.
-  + **[azureml-eğitme-oto ml](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-eğitme-oto ml](/python/api/azureml-train-automl-runtime/)**
     + Training_data, validation_data, label_column_name weight_column_name veri girişi biçimi olarak desteklenir.
-    + [Explain_model ()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) ve [retrieve_model_explanations ()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#retrieve-model-explanation-child-run-)için kullanımdan kaldırma iletisi eklendi.
+    + [Explain_model ()](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) ve [retrieve_model_explanations ()](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlexplainer#retrieve-model-explanation-child-run-)için kullanımdan kaldırma iletisi eklendi.
 
   
 ## <a name="2019-09-16"></a>2019-09-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Python v 1.0.62 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + TabularDataset üzerinde `timeseries` nitelik sunuldu. Bu nitelik, bir zaman aralığı veya en son veriler arasında tüm verileri almak gibi bir TabularDataset veri kümesi verilerinde kolay zaman damgası filtrelemesini mümkün bir şekilde sunar. TabularDataset üzerinde bu `timeseries` nitelik hakkında bilgi edinmek için lütfen belgeler için https://aka.ms/azureml-data veya örnek bir not defteri https://aka.ms/azureml-tsd-notebook ziyaret edin. 
   + TabularDataset ve FileDataset ile eğitime etkin. Lütfen örnek bir not defteri için https://aka.ms/dataset-tutorial ziyaret edin. 
   
@@ -477,7 +477,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
     + İki farklı model türü kullanarak açıklama istemcisiyle karşıya yüklenirken özelliklerde ayarlanan özelliklerde sabit hata düzeltildi
     + Puanlama açıklama. açıkla () için bir get_raw parametresi eklendi, bu nedenle bir Puanlama açıklama hem mühendislik hem de ham değerleri döndürebilir.
   + **azureml-eğitme-oto ml**
-    + Oto ml 'nin ' den gelen açıklamaları desteklemek için, `automl` açıkla SDK 'larından ortak API 'Ler kullanıma sunuldu ve oto ml 'nin kolay bir şekilde belirlenmesi ve SDK ile tümleşik ham açıklama desteğini, oto ml için azureml açıklama SDK 'dan açıklayın modelde.
+    + Oto ml 'nin, oto ml 'nin kolay bir şekilde belirlenmesi için, oto ml açıklamalarını desteklemeye yönelik olan, oto ml 'yi destekleyen ve SDK ile tümleşik ham açıklama desteğini, oto ml modelleri için azureml destekleyici SDK 'dan daha yeni bir şekilde açıklayan `automl` açıkla.
     + Uzak eğitim ortamlarından azureml varsayılan değerleri kaldırılıyor.
     + Azure Databricks kod yolu üzerinde bir AzureFileCacheStore One tabanlı dosya olan varsayılan önbellek depolama konumu, oto ml için bir tane olarak değiştirildi.
     + Veri akışı biçiminde belirtilmişse giriş verilerinin doğru doğrulanması düzeltildi
@@ -510,7 +510,7 @@ Bu yeni Azure Machine Learning arabirimini kullanarak şu anda şunları yapabil
 
 Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, Safari ve Microsoft Edge Preview.
 
-**Bilinen sorunlar:**
+**Bilinen sorunlar**
 
 1. "Bir sorun oluştu!" hata görürseniz tarayıcınızı yenileyin. Dağıtım devam ederken öbek dosyaları yüklenirken hata oluştu.  
 
@@ -524,8 +524,8 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 ## <a name="2019-09-03"></a>2019-09-03
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Python v 1.0.60 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
-  + Veri mağazalarınızın veya genel URL 'lerdeki tek veya birden çok dosyaya başvuran FileDataset kullanıma sunulmuştur. Dosyalar herhangi bir biçimde olabilir. Dosya veri kümesi size dosyaları indirme veya işlem için bağlama yeteneği sağlar. FileDataset hakkında bilgi edinmek için lütfen https://aka.ms/file-datasetziyaret edin.
++ **Yeni Özellikler**
+  + Veri mağazalarınızın veya genel URL 'lerdeki tek veya birden çok dosyaya başvuran FileDataset kullanıma sunulmuştur. Dosyalar herhangi bir biçimde olabilir. Dosya veri kümesi size dosyaları indirme veya işlem için bağlama yeteneği sağlar. FileDataset hakkında bilgi edinmek için lütfen https://aka.ms/file-dataset ziyaret edin.
   + PythonScript Step, adla Step, Databricks Step, DataTransferStep ve AzureBatch Step için işlem hattı YAML desteği eklendi
 
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -585,8 +585,8 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 ## <a name="2019-08-19"></a>2019-08-19
 
 ### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Python v 1.0.57 için SDK Azure Machine Learning
-+ **Yeni özellikler**
-  + AutomatedML tarafından tüketilen `TabularDataset` etkinleştirildi. `TabularDataset`hakkında daha fazla bilgi edinmek için lütfen https://aka.ms/azureml/howto/createdatasetsziyaret edin.
++ **Yeni Özellikler**
+  + AutomatedML tarafından tüketilen `TabularDataset` etkinleştirildi. `TabularDataset`hakkında daha fazla bilgi edinmek için lütfen https://aka.ms/azureml/howto/createdatasets ziyaret edin.
   
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **Oto ml-Client-Core-NativeClient**
@@ -650,23 +650,23 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
     + Sınıflandırma eğitimi için geliştirilmiş karışıklık matrisi grafikleri.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning Data Prep SDK v 1.1.12
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Dizelerin listesi artık `read_*` yöntemlere girdi olarak geçirilebilir.
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + `read_parquet` performansı Spark 'ta çalışırken önemli ölçüde iyileştirilmiştir.
   + Belirsiz tarih biçimlerine sahip tek bir sütun olması durumunda `column_type_builder` başarısız olduğu bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
-  + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerektiğini unutmayın çalışmasını.
+  + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda bulunan **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerektiğini unutmayın.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
 ### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Python v 1.0.55 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Belirteç tabanlı kimlik doğrulaması artık AKS üzerinde dağıtılan Puanlama uç noktasına yapılan çağrılar için desteklenir. Geçerli anahtar tabanlı kimlik doğrulamasını desteklemeye devam edeceğiz ve kullanıcılar aynı anda bu kimlik doğrulama mekanizmalarından birini kullanabilir.
   + Sanal ağın (VNet) arkasındaki bir blob depolamayı bir veri deposu olarak kaydetme yeteneği.
   
@@ -680,7 +680,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
   + **azureml-contrib-açıkla-model**
     + Kullanıcının model türü için varsayılan otomatik çıkarım mantığını geçersiz kılmasına izin vermek üzere explainers 'e model_task bayrağı eklendi
     + Pencere öğesi değişiklikleri: yalnızca genel özellik önem derecesine sahip `contrib`, yükleme/etkinleştirme-destek açıklaması `nbextension` otomatik olarak yüklenir (örn. permütasyon)
-    + Pano değişiklikleri:-Box çizimleri ve keman çizimleri, Özet sayfasında `beeswarm` çizimin yanı sıra, ' top-k ' Kaydırıcıdaki `beeswarm` çizimin daha hızlı bir şekilde nasıl hesaplandığından ve grafiklerin yerinde yararlı özelleştirilebilir mesajların veriler sağlanmadı
+    + Pano değişiklikleri:-Box çizimleri ve keman çizimleri, Özet sayfasında `beeswarm` çizimin yanı sıra, ' top-k ' kaydırıcısının daha hızlı bir şekilde `beeswarm` çizme
   + **azureml-çekirdek**
     + Modelleri ve bunların bağımlılıklarını kapsülleyen Docker görüntüleri ve Dockerfiles oluşturmak için model. Package () yöntemi eklendi.
     + Ortam nesneleri içeren ınenceconfigs 'leri kabul etmek için yerel WebServices güncelleştirildi.
@@ -715,7 +715,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning Data Prep SDK v 1.1.10
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Artık belirli bir sütunda belirli Denetçiler (örn. histogram, dağılım çizimi vb.) yürütmeyi isteyebilirsiniz.
   + `append_columns`için bir paralel hale getirmek bağımsız değişkeni eklendi. Doğru ise, veriler belleğe yüklenir ancak yürütme paralel olarak çalıştırılır; Yanlış ise, yürütme akış, ancak tek iş parçacıklı olur.
 
@@ -723,7 +723,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 
 ### <a name="azure-machine-learning-sdk-for-python-v1053"></a>Python v 1.0.53 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Otomatik Machine Learning artık uzak işlem hedefinde ONNX modellerini eğitimini destekliyor
   + Azure Machine Learning, artık önceki bir çalıştırma, kontrol noktası veya model dosyalarından eğitim verme olanağı sağlar.
     + Daha [önceki bir çalıştırınızdan eğitime geçmek için tahmini](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb) 'ı nasıl kullanacağınızı öğrenin
@@ -811,7 +811,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 
 ### <a name="azure-machine-learning-data-prep-sdk-v119"></a>Azure Machine Learning Data Prep SDK v 1.1.9
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Bir dosyayı doğrudan http veya https URL 'sinden okumak için destek eklendi.
 
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -826,7 +826,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 
 ### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Python v 1.0.48 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + **azureml-OPENDATASET 'ler**
     + **azureml-contrib-OPENDATASET** 'ler artık **azureml-OPENDATASET**olarak kullanılabilir. Eski paket çalışmaya devam edebilir, ancak daha zengin özellikler ve geliştirmeler için, daha zengin bir şekilde veri taşımaya yönelik **azureml ile openopendataset** kullanmanızı öneririz.
     + Bu yeni paket, AML çalışma alanında açık veri kümelerini kayıt defteri olarak kaydetmenize ve veri kümesinin sunduğu işlevleri kullanmanıza olanak sağlar.
@@ -877,7 +877,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
 
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure Machine Learning Data Prep SDK v 1.1.8
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
  + Veri akışı nesneleri artık, bir dizi kayıt üreten şekilde tekrarlandırılır. `Dataflow.to_record_iterator`için belgelere bakın.
   + Veri akışı nesneleri artık, bir dizi kayıt üreten şekilde tekrarlandırılır. `Dataflow.to_record_iterator`için belgelere bakın.
 
@@ -903,7 +903,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ### <a name="azure-machine-learning-sdk-for-python-v1045"></a>Python v 1.0.45 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Açıklama, azureml-açıkla-model paketindeki taklit etmek için karar ağacı yedek modeli ekleme
   + Inyaze resimleri üzerine yüklenecek CUDA sürümünü belirtme özelliği. CUDA 9,0, 9,1 ve 10,0 desteği.
   + Azure ML eğitimi temel görüntüleriyle ilgili bilgiler artık [Azure ML kapsayıcıları GitHub deposunda](https://github.com/Azure/AzureML-Containers) ve [dockerhub](https://hub.docker.com/_/microsoft-azureml) 'da sunulmaktadır
@@ -929,7 +929,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ### <a name="azure-machine-learning-data-prep-sdk-v116"></a>Azure Machine Learning Data Prep SDK v 1.1.6
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + En üstteki değerler (`SummaryFunction.TOPVALUES`) ve alt değerler (`SummaryFunction.BOTTOMVALUES`) için Özet işlevler eklendi.
 
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -943,7 +943,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ### <a name="azure-machine-learning-sdk-for-python-v1043"></a>Python v 1.0.43 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Azure Machine Learning artık popüler makine öğrenimi ve veri analizi çerçevesi Scikit-öğrenme için birinci sınıf destek sağlamaktadır. Kullanıcılar, [`SKLearn` tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)kullanarak scikit-öğrenme modellerini kolayca eğitebilir ve dağıtabilir.
     + [Hyperparameter ayarlamayı Scikit ile çalıştırmayı öğrenin-HyperDrive kullanarak öğrenin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb).
   + Yeniden kullanılabilir işlem birimlerini yönetmek için modül ve ModuleVersion sınıflarıyla birlikte işlem hatlarında ModuleStep oluşturma desteği eklendi.
@@ -958,7 +958,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
     + Jupyter Not defterini çalıştırma olarak gönderme. [API başvuru belgeleri](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Azureml-contrib-datadrift paketi ([örnek Not defterleri](https://aka.ms/azureml-datadrift-example)) aracılığıyla [veri kayması algılayıcısının](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) genel önizlemesi. Veri kayması, model doğruluğunun zamana göre düşmesinin en önemli nedenlerinden biridir. Üretimde modele sunulan veriler, modelin eğitilen verilerden farklı olduğunda gerçekleşir. AML Data değişikliklerini algılayıcısı, müşterinin veri kayması 'nı izlemelerine yardımcı olur ve her bir sürücü algılandığında uyarı gönderir. 
 
-+ **Son değişiklikler**
++ **Bozucu değişiklikler**
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + RunConfiguration yükleme ve kaydetme, önceki davranış için tam yedekleme ile tam bir dosya yolu belirtmeyi destekler.
@@ -987,7 +987,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure Machine Learning Data Prep SDK v 1.1.4
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Artık DateTime değerlerini yeni sütunlara ayıklamak ve ayrıştırmak için aşağıdaki ifade dili işlevlerini kullanabilirsiniz.
     + `RegEx.extract_record()` DateTime öğelerini yeni bir sütuna ayıklar.
     + `create_datetime()`, ayrı DateTime öğelerinden DateTime nesneleri oluşturur.
@@ -1008,7 +1008,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure Machine Learning Data Prep SDK v 1.1.3
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Read_postgresql çağırarak veya bir veri deposu kullanarak bir PostgresSQL veritabanından okuma desteği eklendi.
     + Bkz. nasıl yapılır kılavuzlarındaki örnekler:
       + [Veri alımı Not defteri](https://aka.ms/aml-data-prep-ingestion-nb)
@@ -1024,7 +1024,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ## <a name="2019-05-06"></a>2019-05-06
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, şimdi şunları yapabilirsiniz:
 + Otomatik ML denemeleri oluşturma ve çalıştırma 
@@ -1042,7 +1042,7 @@ Azure portal, şimdi şunları yapabilirsiniz:
 ## <a name="2019-04-26"></a>2019-04-26
 
 ### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Python v 1.0.33 için SDK Azure Machine Learning
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + _Workspace. Create_ YÖNTEMI artık CPU ve GPU kümeleri için varsayılan küme yapılandırmasını kabul eder.
   + Çalışma alanı oluşturma başarısız olursa, bağımlı kaynaklar temizlenir.
   + Varsayılan Azure Container Registry SKU 'SU temel olarak değiştirildi.
@@ -1071,7 +1071,7 @@ Machine Learning denemeleri 'i programtabileceğiniz, modelleri Web uç noktalar
   + Kapsayıcıyı bir [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) sunucusu cihazına dağıtma
   + Bu [örnekle](https://github.com/Azure-Samples/aml-hardware-accelerated-models) GRPC uç noktasıyla verilerinizi puan edin
 
-### <a name="automated-machine-learning"></a>Otomatik Machine Learning
+### <a name="automated-machine-learning"></a>Otomatik Makine Öğrenmesi
 
 + Performansı en iyi duruma getirmek için :::no-loc text="featurizers"::: dinamik olarak eklemeye olanak sağlayan özellik iyileştirmesi. Yeni :::no-loc text="featurizers":::: iş katıştırıtları, kanıt ağırlığı, hedef kodlamalar, metin hedefi kodlama, küme uzaklığı
 + Otomatik ML içinde tren/geçerli bölmeler işlemek için akıllı CV
@@ -1122,7 +1122,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir. Bkz. [güncelleştirilmiş yükleme yönergeleri](https://aka.ms/aml-data-prep-installation).
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Artık Pivot dönüşümünü kullanabilirsiniz.
     + Nasıl yapılır Kılavuzu: [Özet Not defteri](https://aka.ms/aml-data-prep-pivot-nb)
   + Artık yerel işlevlerde normal ifadeleri kullanabilirsiniz.
@@ -1143,7 +1143,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
   + Artık var olan bir uzak işlem kümesinde çalışan bir betiği yeniden gönderebilirsiniz. 
   + Artık, işlem hatları sekmesinde yeni parametrelerle yayınlanmış bir işlem hattı çalıştırabilirsiniz. 
   + Çalışma ayrıntıları artık yeni bir Snapshot dosya görüntüleyicisini destekliyor. Belirli bir çalıştırma gönderdiğinizde dizinin anlık görüntüsünü görüntüleyebilirsiniz. Çalıştırmaya başlamak için gönderilen Not defterini de indirebilirsiniz.
@@ -1153,14 +1153,14 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-sdk-for-python-v1023"></a>Python v 1.0.23 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Azure Machine Learning SDK artık Python 3,7 ' i desteklemektedir.
   + Azure Machine Learning DNN estimators artık yerleşik çoklu sürüm desteği sağlıyor. Örneğin, `TensorFlow` tahmin aracı artık bir `framework_version` parametresi kabul eder ve kullanıcılar ' 1,10 ' veya ' 1,12 ' sürümünü belirtebilir. Geçerli SDK sürümleriniz tarafından desteklenen sürümlerin bir listesi için, istenen Framework sınıfında `get_supported_versions()` çağırın (örneğin, `TensorFlow.get_supported_versions()`).
   En son SDK sürümü tarafından desteklenen sürümlerin bir listesi için [DNN Estimator belgelerine](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)bakın.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure Machine Learning Data Prep SDK v 1.1.1
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Read_ * dönüşümler kullanarak birden çok veri deposu/veri yolu/DataReference kaynağını okuyabilirsiniz.
   + Yeni bir sütun oluşturmak için sütunlar üzerinde aşağıdaki işlemleri gerçekleştirebilirsiniz: bölme, kat, modül, güç, uzunluk.
   + Veri hazırlığı artık Azure ML tanılama paketinin bir parçasıdır ve tanılama bilgilerini varsayılan olarak günlüğe kaydeder.
@@ -1181,16 +1181,16 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Python v 1.0.21 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + *Azureml. Core. Run. create_children* yöntemi, tek bir çağrıda birden çok alt çalıştırmanın düşük gecikmeli oluşturulmasına izin verir.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning Data Prep SDK v 1.1.0
 
-+ **Son değişiklikler**
++ **Bozucu değişiklikler**
   + Veri hazırlama paketinin kavramı kullanım dışı bırakılmış ve artık desteklenmiyor. Tek bir pakette birden çok veri akışını kalıcı hale getirmek yerine, veri akışlarını ayrı ayrı kalıcı hale getirebilirsiniz.
     + Nasıl yapılır Kılavuzu: [veri akışları Not defterini açma ve kaydetme](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Veri hazırlama artık belirli bir anlam türüyle eşleşen sütunları tanıyabilir ve buna uygun şekilde ayrılabilir. Şu anda desteklenen STypes 'ler şunlardır: e-posta adresi, Coğrafi Koordinatlar (Enlem & Boylam), IPv4 ve IPv6 adresleri, ABD telefon numarası ve ABD ZIP kodu.
     + Nasıl yapılır Kılavuzu: [anlamsal türler Not defteri](https://aka.ms/aml-data-prep-semantic-types-nb)
   + Veri hazırlığı artık iki sayısal sütundan bir sonuç sütunu oluşturmak için aşağıdaki işlemleri destekler: çıkarma, çarpma, bölme ve mod.
@@ -1211,7 +1211,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure Machine Learning Data Prep SDK v 1.0.17
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Artık ifade dilini kullanarak sonuç sütunu oluşturmak için iki sayısal sütun eklenmesini destekler.
 
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -1228,7 +1228,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Python v 1.0.17 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
 
   + Azure Machine Learning artık popüler DNN Framework Chainer için birinci sınıf destek sağlar. [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) sınıf kullanıcıları, Chainer modellerini kolayca eğitebilir ve dağıtabilir.
     + [Chaeylemsizlik ile dağıtılmış eğitime nasıl çalıştırılacağını](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb) öğrenin
@@ -1238,16 +1238,16 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Source_directory_data_store özelliğini, [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)Için sağlanan [runconfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik destek Azure Machine Learning işlem hatları ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Raporlar için yeni Sürükle ve bırak tablosu Düzenleyicisi deneyimi. Kullanıcılar bir sütunu, tablonun önizlemesinin görüntüleneceği tablo alanına kadar iyi sürükleyebilirsiniz. Sütunlar yeniden düzenlenebilir.
   + Yeni günlük dosyası Görüntüleyici
   + Etkinlik sekmesinden deneme çalıştırmaları, işlem, modeller, görüntüler ve dağıtımlara bağlantılar
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Azure Machine Learning Data Prep SDK v 1.0.15
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Veri hazırlığı artık bir veri akışından dosya akışlarının yazılmasını desteklemektedir. Ayrıca, yeni dosya adları oluşturmak için dosya akışı adlarını değiştirme olanağı da sağlar.
     + Nasıl yapılır Kılavuzu: [dosya akışları not defteriyle çalışma](https://aka.ms/aml-data-prep-file-stream-nb)
 
@@ -1261,7 +1261,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Python v 1.0.15 için SDK Azure Machine Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + AzureBatchStep ([Not defteri](https://aka.ms/pl-azbatch)), HyperDriveStep (Not defteri) ve zaman tabanlı zamanlama işlevselliği ([Not defteri](https://aka.ms/pl-schedule)) eklenen Azure Machine Learning işlem hatları.
   +  DataTranferStep, Azure SQL Server ve PostgreSQL için Azure veritabanı ([Not defteri](https://aka.ms/pl-data-trans)) ile çalışacak şekilde güncelleştirildi.
 
@@ -1271,7 +1271,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Azure Machine Learning Data Prep SDK v 1.0.12
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Veri hazırlama artık, veri deposu kullanarak bir Azure SQL veritabanından okumayı destekler.
  
 + **Değişikliklerine**
@@ -1301,9 +1301,9 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 + Raporlar için yeni sürükleme ve bırakma grafik deneyimi. Kullanıcılar bir sütunu ya da özniteliği, sistemin veri türüne göre otomatik olarak uygun bir grafik türü seçlebileceği grafik alanına sürükleyebilirsiniz. Kullanıcılar grafik türünü diğer geçerli türler olarak değiştirebilir veya ek öznitelikler ekleyebilir.
 
     Desteklenen grafik türleri:
-    - Çizgi grafik
+    - Çizgi Grafik
     - Çubuk grafik
-    - Yığılmış çubuk grafik
+    - Yığılmış Çubuk Grafik
     - Kutu çizimi
     - Dağılım çizimi
     - Kabarcık çizimi
@@ -1317,7 +1317,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning Data Prep SDK v 1.0.7
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + Veri deposu geliştirmeleri ( [veri deposu nasıl yapılır Kılavuzu](https://aka.ms/aml-data-prep-datastore-nb)'nda belgelenmiştir)
     + Azure dosya paylaşımında ve ADLS veri depolarından okuma ve yazma özelliği ölçeği artırma özelliği eklendi.
     + Veri hazırlığı, Datamağazaların kullanıldığı sırada etkileşimli kimlik doğrulaması yerine hizmet sorumlusu kimlik doğrulamasının kullanılmasını desteklemektedir.
@@ -1337,7 +1337,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Azure Machine Learning Data Prep SDK v 1.0.4
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   + `to_bool` işlev artık eşleşmeyen değerlerin hata değerlerine dönüştürülmesine izin veriyor. Bu, `to_bool` ve `set_column_types`için yeni varsayılan uyumsuzluk davranışıdır, ancak önceki varsayılan davranış eşleşmeyen değerleri yanlış olarak dönüştürmelidir.
   + `to_pandas_dataframe`çağrılırken, sayısal sütunlardaki null/eksik değerleri NaN olarak yorumlamak için yeni bir seçenek vardır.
   + Tür tutarlılığı sağlamak ve erken yük devretmek için bazı ifadelerin dönüş türünü denetleme özelliği eklendi.
@@ -1371,7 +1371,7 @@ Azure Machine Learning işlem, Azure portal veya CLI kullanarak Python'da oluşt
 > Azure Machine Learning işlem kullanmak için yeni bir çalışma alanı oluşturmanızı öneririz. Kullanıcılar Azure Machine Learning işlem mevcut bir çalışma alanından oluşturulmaya çalışılırken bir hata görebilirsiniz uzak bir fırsat yoktur. Mevcut işlem çalışma alanınızdaki etkilenmeyen çalışmaya devam etmesi gerekir.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine SDK için Python v1.0.2 Learning
-+ **Son değişiklikler**
++ **Bozucu değişiklikler**
   + Bu sürümle birlikte, Azure Machine Learning ile VM oluşturmaya yönelik destek kaldırıyoruz. Veya uzak bir şirket içi sunucusu hala var olan bir buluta VM ekleyebilirsiniz. 
   + Ayrıca, tüm Azure Machine Learning işlem artık desteklenmelidir BatchAI, desteği kaldırıyoruz.
 
@@ -1382,17 +1382,17 @@ Azure Machine Learning işlem, Azure portal veya CLI kullanarak Python'da oluşt
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **Güncellendi**
++ **Güncelleştirildi**
   + Machine learning işlem hatları için:
-    + [Databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) şimdi runconfig 'i kabul ediyor
-    + [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) artık SQL veri kaynağından ve bu kaynaktan kopyalar
+    + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) artık runconfig kabul eder
+    + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) için ve SQL veri kaynağı artık kopyalar
     + Zamanlama oluşturma ve güncelleştirme zamanlamaları yayımlanan işlem hatları çalıştırmak için SDK'sındaki işlevleri
 
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning veri hazırlama SDK v0.5.2
-+ **Son değişiklikler** 
-  * `SummaryFunction.N` `SummaryFunction.Count`olarak yeniden adlandırıldı.
++ **Bozucu değişiklikler** 
+  * `SummaryFunction.N` yeniden adlandırıldı `SummaryFunction.Count`.
   
 + **Hata düzeltmeleri**
   * En son AML çalıştırma okuma ve veri depoları için uzaktan çalıştırmalar yazarken belirteci kullanın. Python'da AML çalıştırma belirteci güncelleştirilir, daha önce veri hazırlığı çalışma zamanı güncelleştirilmiş AML çalıştırma belirteci ile güncelleştirilmez.
@@ -1406,20 +1406,20 @@ Azure Machine Learning işlem, Azure portal veya CLI kullanarak Python'da oluşt
 
 ### <a name="docs-and-notebooks"></a>Belgeleri ve Not Defterleri
 + ML işlem hatları
-  + İşlem hatları, toplu iş kapsamları ve stil aktarma örnekleri ile çalışmaya başlama için yeni ve güncelleştirilmiş Not defterleri: https://aka.ms/aml-pipeline-notebooks
-  + [İlk işlem hattınızı oluşturmayı](how-to-create-your-first-pipeline.md) öğrenin
-  + [İşlem hatlarını kullanarak toplu tahmine dayalı tahminleri nasıl çalıştıracağınızı](how-to-run-batch-predictions.md) öğrenin
+  + İşlem hatları, batch kapsamlar ve stil ile çalışmaya başlama için yeni ve güncelleştirilmiş not defterlerini örnekler aktarın: https://aka.ms/aml-pipeline-notebooks
+  + Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturun](how-to-create-your-first-pipeline.md)
+  + Bilgi edinmek için nasıl [komut zincirlerini kullanarak batch Öngörüler çalıştırın](how-to-run-batch-predictions.md)
 + Azure Machine Learning işlem hedefi
   + [Örnek Not defterleri](https://aka.ms/aml-notebooks) artık yeni yönetilen işlem kullanacak şekilde güncelleştirilir.
   + [Bu işlem hakkında bilgi edinin](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Azure portalı: yeni özellikler
-+ Portalda [Azure Machine Learning işlem](how-to-set-up-training-targets.md#amlcompute) türleri oluşturun ve yönetin.
-+ Azure Machine Learning Işlem için kota kullanımını ve [istek kotasını](how-to-manage-quotas.md) izleyin.
++ Oluşturma ve yönetme [Azure Machine Learning işlem](how-to-set-up-training-targets.md#amlcompute) portalında türleri.
++ Kota kullanımını izlemek ve [isteği kota](how-to-manage-quotas.md) Azure Machine Learning işlemi için.
 + Işlem kümesi durumunu gerçek zamanlı olarak görüntüleyin Azure Machine Learning.
 + Azure Machine Learning işlem ve Azure Kubernetes hizmeti oluşturmak için sanal ağ desteği eklendi.
 + Mevcut parametrelerle yayınlanmış işlem hatlarınızı yeniden çalıştırın.
-+ Sınıflandırma modelleri için yeni [otomatik makine öğrenimi grafikleri](how-to-understand-automated-ml.md) (yükseltme, kazanç, ayarlama, model explainability ile özellik önem grafiği) ve regresyon modelleri (model explainability ile birlikte kalan özellikler ve özellik önemi grafiği). 
++ Yeni [machine learning grafikleri otomatik](how-to-understand-automated-ml.md) sınıflandırma modellerini (lift, Kazanç, ayarlama, özellik önem modeli explainability grafikle) ve regresyon modellerini (Kalanlar ve modeli ile özellik önem grafiği explainability). 
 + İşlem hatları Azure portalında görüntülenebilir
 
 
@@ -1429,14 +1429,14 @@ Azure Machine Learning işlem, Azure portal veya CLI kullanarak Python'da oluşt
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine SDK için Python v0.1.80 Learning
 
-+ **Son değişiklikler** 
-  * *azureml. tren. pencere* öğesi ad alanı, *azureml. pencere öğeleri*'ne taşındı.
-  * *azureml. Core. COMPUTE. AmlCompute* aşağıdaki sınıfları kullanımdan kaldırır- *azureml. Core. COMPUTE. Batchaıute* ve *azureml. Core. COMPUTE. dsvmcompute*. İkinci sınıfı sonraki sürümlerde kaldırılacak. AmlCompute sınıfı artık daha kolay bir tanıma sahip yalnızca bir vm_size ve max_nodes gerekir ve bir iş gönderildiğinde kümenize 0 max_nodes otomatik olarak ölçeklendirir. [Örnek Not defterleriniz](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) bu bilgilerle güncelleştirildi ve size kullanım örnekleri vermelidir. Bu basitleştirme ve çok daha heyecan verici özelliklerin bir sonraki sürümde gelir gibi umuyoruz!
++ **Bozucu değişiklikler** 
+  * *azureml.Train.widgets* ad alanı taşındığı *azureml.widgets*.
+  * *azureml.core.compute.AmlCompute* aşağıdaki sınıflar - kullanımdan kaldırıldı *azureml.core.compute.BatchAICompute* ve *azureml.core.compute.DSVMCompute*. İkinci sınıfı sonraki sürümlerde kaldırılacak. AmlCompute sınıfı artık daha kolay bir tanıma sahip yalnızca bir vm_size ve max_nodes gerekir ve bir iş gönderildiğinde kümenize 0 max_nodes otomatik olarak ölçeklendirir. [Örnek Not defterleriniz](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) bu bilgilerle güncelleştirildi ve size kullanım örnekleri vermelidir. Bu basitleştirme ve çok daha heyecan verici özelliklerin bir sonraki sürümde gelir gibi umuyoruz!
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning veri hazırlama SDK v0.5.1 
 
-[Başvuru belgelerini](https://aka.ms/data-prep-sdk)okuyarak veri hazırlığı SDK 'sı hakkında daha fazla bilgi edinin.
-+ **Yeni özellikler**
+Veri hazırlığı SDK'sı hakkında daha fazla bilgi edinmek [başvuru belgeleri](https://aka.ms/data-prep-sdk).
++ **Yeni Özellikler**
    * DataPrep paketleri çalıştırmak ve bir veri kümesi veya veri akışı veri profilini görüntülemek için yeni bir DataPrep CLI oluşturdunuz
    * Kullanılabilirliği iyileştirmek için tasarlanan SetColumnType API
    * Yeniden adlandırılan smart_read_file auto_read_file için
@@ -1463,25 +1463,25 @@ Azure Machine Learning işlem, Azure portal veya CLI kullanarak Python'da oluşt
 
 ## <a name="2018-11-05"></a>2018-11-05
 
-### <a name="azure-portal"></a>Azure portal 
+### <a name="azure-portal"></a>Azure portalı 
 Azure Machine Learning için Azure portal aşağıdaki güncelleştirmelere sahiptir:
-  * Yayımlanan işlem hatları için yeni bir işlem **hattı** sekmesi.
+  * Yeni bir **işlem hatları** yayımlanan işlem hatları için sekmesinde.
   * İşlem hedefi olarak var olan bir HDInsight kümesine ekleme desteği eklendi.
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine SDK için Python v0.1.74 Learning
 
-+ **Son değişiklikler** 
-  * \* Çalışma alanı. compute_targets, datamağazalar, denemeleri, görüntüler, modeller ve *WebServices* , Yöntemler yerine özelliklerdir. Örneğin, Workspace. *compute_targets ()* *çalışma alanı. compute_targets*ile değiştirin.
-  * *Çalıştır. Get_context* *Run. get_submitted_run*öğesini kullanımdan kaldırır. İkinci yöntem, sonraki sürümlerde kaldırılacak.
-  * *Pipelinedata* sınıfı artık datastore_name değil, bir veri deposu nesnesini bir parametre olarak bekliyor. Benzer şekilde, işlem *hattı* default_datastore_name yerine default_datastore kabul eder.
++ **Bozucu değişiklikler** 
+  * \* Çalışma alanı. compute_targets, datamağazalar, denemeleri, görüntüler, modeller ve *WebServices* , Yöntemler yerine özelliklerdir. Örneğin, *Workspace.compute_targets()* ile *Workspace.compute_targets*.
+  * *Run.get_context* kullanımdan kaldırıldı *Run.get_submitted_run*. İkinci yöntem, sonraki sürümlerde kaldırılacak.
+  * *PipelineData* sınıfı bir parametre yerine olarak datastore_name bir veri deposu nesnesi artık bekliyor. Benzer şekilde, *işlem hattı* default_datastore_name yerine default_datastore kabul eder.
 
-+ **Yeni özellikler**
-  * Azure Machine Learning ardışık düzen [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) artık MPI adımlarını kullanır.
++ **Yeni Özellikler**
+  * Azure Machine Learning işlem hatlarını [örnek not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) artık MPI adımları kullanır.
   * Jupyter not defterleri için RunDetails pencere, işlem hattının görselleştirilmesi göstermek için güncelleştirilir.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Azure Machine Learning veri hazırlama SDK v0.4.0 
  
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   * Veri profili türü sayısı eklendi 
   * Değer sayısı ve Histogram kullanıma sunuldu
   * Daha fazla yüzdebirliklerini veri profilinde
@@ -1502,7 +1502,7 @@ Azure Machine Learning için Azure portal aşağıdaki güncelleştirmelere sahi
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Azure Machine SDK için Python v0.1.68 Learning
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   * Yeni çalışma alanı oluşturulurken çok kiracılı destek.
 
 + **Düzeltilen hatalar**
@@ -1510,22 +1510,22 @@ Azure Machine Learning için Azure portal aşağıdaki güncelleştirmelere sahi
 
 ### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Azure Machine Learning veri hazırlama SDK v0.3.0
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   * Kullanıcıların yürütmek için bir Python dosyası yolunda geçirilecek yöntemi transform_partition_with_file(script_path) eklendi
 
 ## <a name="2018-10-01"></a>2018-10-01
 
 ### <a name="azure-machine-learning-sdk-for-python-v0165"></a>Azure Machine SDK için Python v0.1.65 Learning
-[Sürüm 0.1.65](https://pypi.org/project/azureml-sdk/0.1.65) yeni özellikler, daha fazla belge, hata düzeltmeleri ve daha fazla [örnek Not defteri](https://aka.ms/aml-notebooks)içerir.
+[Sürüm 0.1.65](https://pypi.org/project/azureml-sdk/0.1.65) yeni özellikler, daha fazla belge, hata düzeltmeleri ve daha fazlasını içeren [örnek not defterleri](https://aka.ms/aml-notebooks).
 
-Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
+Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
 
-+ **Son değişiklikler**
-  * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services dönüş sözlük, daha önce listesi döndürdü. Bkz. [azureml. Core. Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API 'si belgeleri.
++ **Bozucu değişiklikler**
+  * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services dönüş sözlük, daha önce listesi döndürdü. Bkz: [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API belgeleri.
 
   * Machine Learning otomatik normalleştirilmiş Ortalama kare hata birincil ölçümleri kaldırıldı.
 
-+ **Hiper sürücü**
++ **HyperDrive**
   * Bayes çeşitli HyperDrive hata düzeltmeleri, ölçümleri çağrıları için performans geliştirmeleri alın. 
   * Tensorflow 1.10 1.9 sürümüne yükseltme 
   * Docker görüntü iyileştirmesi hazırlıksız başlatma için. 
@@ -1538,11 +1538,11 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   * Hata düzeltmesi, için parametre ayarlama için düzeltme çalışma BatchAI doğrulama sırasında dağıtılmış. 
   * Bağlam Yöneticisi artık birincil tanıtır. 
 
-+ **Azure portal deneyim**
++ **Azure portal deneyimi**
   * Çalıştırma ayrıntıları log_table() ve log_row() desteklenir. 
   * 1, 2 veya 3 sayısal sütunlu ve isteğe bağlı bir kategorik sütunlu tablolar ve satırlar için otomatik olarak grafikler oluşturun.
 
-+ **Otomatik Machine Learning**
++ **Otomatik makine öğrenimi**
   * Geliştirilmiş hata işleme ve belgeler 
   * Çalıştırma özelliği alımı performans sorunlarını düzelttik. 
   * Sabit çalışma sorunu devam edin. 
@@ -1556,13 +1556,13 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   * Bir yöntem bir işlem hattı yürütme ilk çalıştırma gerek kalmadan doğrudan yayımlamak için Pipeline.publish() eklendi.   
   * Yayımlanmış bir ardışık düzen tarafından oluşturulan işlem hattı çalıştırmalarını getirmek için ardışık düzen eylemsizlik. get_pipeline_runs () yöntemi eklendi.
 
-+ **Proje Brainwave**
++ **Project Brainwave**
   * Yeni AI modelleri FPGA üzerinde kullanılabilir güncelleştirilmiş destek.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Azure Machine Learning veri hazırlama SDK v0.2.0
 [Sürüm 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) , aşağıdaki özellikleri ve hata düzeltmelerini içerir:
 
-+ **Yeni özellikler**
++ **Yeni Özellikler**
   * Bir sık erişimli kodlaması için destek
   * Quantile dönüştürme için destek
    

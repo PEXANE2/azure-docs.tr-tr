@@ -18,16 +18,16 @@ ms.author: abpati
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148b9a4a890b22db63f03c673f5d779547a589e1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0aada339ab68eeb7f29eeb815611a8e434e6a998
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485035"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803657"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Python için MSAL Active Directory Federasyon Hizmetleri (AD FS) desteği
 
-Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), Python için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak uygulamalarınıza OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. MSAL for Python kitaplığı kullanarak, uygulamanız kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Senaryolar hakkında daha fazla bilgi için bkz. [geliştiriciler için AD FS senaryoları](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), Python için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak uygulamalarınıza OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. MSAL for Python kitaplığı kullanarak, uygulamanız kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Senaryolar hakkında daha fazla bilgi için bkz. [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/ad-fs-development).
 
 AD FS kimlik doğrulamanın genellikle iki yolu vardır:
 

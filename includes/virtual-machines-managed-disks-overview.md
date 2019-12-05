@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796273"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829078"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -37,7 +37,7 @@ Yönetilen diskler [kullanılabilirlik alanları](../articles/availability-zones
 
 ### <a name="azure-backup-support"></a>Azure Backup desteği
 
-Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-overview.md) , zaman tabanlı yedeklemeler ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturmak için kullanılabilir. Bu, ' de kolay VM geri 'leri gerçekleştirmenize olanak tanır. Şu anda Azure Backup en fazla dört tebibyte (TiB) disk boyutunu destekler.  Azure Backup yönetilen disklerin yedeklenmesini ve geri yüklenmesini destekler. Azure VM yedekleme desteği hakkında [daha fazla bilgi edinin](../articles/backup/backup-support-matrix-iaas.md) .
+Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-overview.md) , zaman tabanlı yedeklemeler ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturmak için kullanılabilir. Bu, ' de kolay VM geri 'leri gerçekleştirmenize olanak tanır. Azure Backup yönetilen disklerin yedeklenmesini ve geri yüklenmesini destekler. Azure VM yedekleme desteği hakkında [daha fazla bilgi edinin](../articles/backup/backup-support-matrix-iaas.md) .
 
 ### <a name="granular-access-control"></a>Ayrıntılı erişim denetimi
 
@@ -92,7 +92,7 @@ Yönetilen diskler için anlık görüntüler oluşturma hakkında daha fazla bi
 * [Windows 'da yönetilen diskin anlık görüntüsünü oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Linux 'ta yönetilen diskin anlık görüntüsünü oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Görüntüler
+### <a name="images"></a>Resimler
 
 Yönetilen diskler ayrıca yönetilen bir özel görüntü oluşturmayı destekler. Bir depolama hesabındaki özel VHD 'nizden veya doğrudan Genelleştirilmiş (Sysprep uygulanmış) bir VM 'den görüntü oluşturabilirsiniz. Bu işlem tek bir görüntüyü yakalar. Bu görüntü, hem işletim sistemi hem de veri diskleri dahil olmak üzere bir VM ile ilişkili tüm yönetilen diskleri içerir. Bu yönetilen özel görüntü, herhangi bir depolama hesabını kopyalamaya veya yönetmeye gerek olmadan özel görüntünüzü kullanarak yüzlerce VM oluşturulmasına olanak sağlar.
 

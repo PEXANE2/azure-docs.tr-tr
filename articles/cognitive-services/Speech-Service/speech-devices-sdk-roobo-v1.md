@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552870"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815583"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Cihaz: Roobo akıllı ses geliştirme seti
 
@@ -54,12 +54,12 @@ Bu makalede, Roobo Smart Audio Dev Kit için cihaza özgü bilgiler sağlanmakta
     > [!NOTE]
     > Android hata ayıklama köprüsü bu komutları kullanmak `adb.exe`, Android Studio yüklemesinin bir parçası olduğu. Bu araç C:\Users bulunur\[kullanıcı adı] \AppData\Local\Android\Sdk\platform araçları. Bu dizin çağırmak daha kullanışlı hale getirmek için yola ekleyebilirsiniz `adb`. Aksi takdirde, yüklemenizin adb.exe çağıran her komut için tam yolunu belirtmeniz gerekir `adb`.
     >
-    > Bir hata `no devices/emulators found` görürseniz, USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablo olduğunu denetleyin. Bilgisayarınızın, cihaz `adb devices` listesini döndürdüğü için geliştirme seti ile konuştuğunu denetlemek için kullanabilirsiniz.
+    > `no devices/emulators found` bir hata görürseniz, USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablo olduğunu kontrol edin. `adb devices` kullanarak, bilgisayarınızın bir cihaz listesini döndürdüğü bir geliştirme seti ile iletişim kurmasını sağlayabilirsiniz.
     >
     > [!TIP]
     > Bilgisayarınızın mikrofon ve Geliştirme Seti'nın mikrofonlar ile çalıştığından emin olmak Konuşmacı sessiz. Böylece, yanlışlıkla ses bilgisayardan cihazla tetiklemez.
 
-1. Konuşmacı geliştirme setine eklemek istiyorsanız, ses satırına bağlanabilirsiniz. 3,5 mm analog bir eklentiyle iyi kalitede bir konuşmacı seçmeniz gerekir.
+1. Geliştirme setine bir konuşmacı eklemek istiyorsanız, bunu ses hattına bağlayabilirsiniz. 3,5 mm analog bir eklentiyle iyi kalitede bir konuşmacı seçmeniz gerekir.
 
     ![Vysor ses](media/speech-devices-sdk/qsg-14.png)
 

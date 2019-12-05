@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554980"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806020"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -23,13 +23,13 @@ ms.locfileid: "74554980"
 
 ## <a name="whats-in-custom-speech"></a>Özel Konuşma Tanıma neler?
 
-Özel Konuşma Tanıma herhangi bir şey yapabilmeniz için önce bir Azure hesabı ve bir konuşma Hizmetleri aboneliğine sahip olmanız gerekir. Bir hesap aldıktan sonra verilerinizi dağıtabilir, modellerinizi eğitebilir ve test edebilir, tanınma kalitesini inceleyebilir, doğruluğu değerlendirebilir ve son olarak özel konuşmayı metin modelini kullanabilirsiniz.
+Özel Konuşma Tanıma herhangi bir şey yapabilmeniz için önce bir Azure hesabı ve bir konuşma hizmeti aboneliğine sahip olmanız gerekir. Bir hesap aldıktan sonra verilerinizi dağıtabilir, modellerinizi eğitebilir ve test edebilir, tanınma kalitesini inceleyebilir, doğruluğu değerlendirebilir ve son olarak özel konuşmayı metin modelini kullanabilirsiniz.
 
 Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)oluşturan parçalar vurgulanmıştır. Her adım hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
 
 ![Özel Konuşma Tanıma portalını oluşturan farklı bileşenleri vurgular.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Abone olun ve proje oluşturun](#set-up-your-azure-account) -bir Azure hesabı oluşturun ve konuşma hizmetlerini abone olun. Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)erişmenizi sağlar. Ardından, konuşma Hizmetleri aboneliğinizi kullanarak ilk Özel Konuşma Tanıma projenizi oluşturun.
+1. [Abone olun ve proje oluşturun](#set-up-your-azure-account) -bir Azure hesabı oluşturun ve konuşma hizmetine abone olun. Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)erişmenizi sağlar. Ardından, konuşma hizmeti aboneliğinizi kullanarak ilk Özel Konuşma Tanıma projenizi oluşturun.
 
 2. [Test verilerini karşıya yükleme](how-to-custom-speech-test-data.md) -Microsoft 'un uygulamalarınız, araçları ve ürünleriniz için konuşma-metin tekliflerini değerlendirmek için test verilerini (ses dosyaları) karşıya yükleyin.
 
@@ -43,14 +43,14 @@ Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)o
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
-Özel bir model oluşturmak için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanabilmeniz Için bir konuşma Hizmetleri aboneliği gerekir. Standart bir konuşma Hizmetleri aboneliği oluşturmak için bu yönergeleri izleyin: [bir konuşma aboneliği oluşturun](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Özel bir model oluşturmak için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanabilmeniz Için bir konuşma hizmeti aboneliği gerekir. Standart bir konuşma hizmeti aboneliği oluşturmak için bu yönergeleri izleyin: [bir konuşma aboneliği oluşturun](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Lütfen standart (S0) abonelikler oluşturmanız, ücretsiz deneme (F0) aboneliklerinin desteklenmediğinden emin olun.
 
-Bir Azure hesabı ve bir konuşma Hizmetleri aboneliği oluşturduktan sonra, [özel konuşma tanıma Portal](https://speech.microsoft.com/customspeech) 'da oturum açmanız ve aboneliğinizi bağlamanız gerekir.
+Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, [özel konuşma tanıma Portal](https://speech.microsoft.com/customspeech) 'da oturum açmanız ve aboneliğinizi bağlamanız gerekir.
 
-1. Azure portal konuşma Hizmetleri abonelik anahtarınızı alın.
+1. Azure portal konuşma hizmeti abonelik anahtarınızı alın.
 2. [Özel konuşma tanıma portalında](https://aka.ms/custom-speech)oturum açın.
 3. Üzerinde çalışmanız gereken aboneliği seçin ve bir konuşma projesi oluşturun.
 4. Aboneliğinizi değiştirmek isterseniz, üstteki gezinmede bulunan **dişli** simgesini kullanın.

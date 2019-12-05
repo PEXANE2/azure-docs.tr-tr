@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672514"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806890"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Azure depolama için özel uç noktaları kullanma (Önizleme)
 
@@ -25,14 +25,14 @@ Depolama hesabınız için özel uç noktalar kullanmak şunları yapmanızı sa
 - Sanal ağ (VNet) için güvenliği artırarak VNet 'ten veri alımını engelleyebilirsiniz.
 - [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../../expressroute/expressroute-locations.md) Ile özel eşleme ile sanal ağa bağlanan şirket içi ağlardan depolama hesaplarına güvenli bir şekilde bağlanın.
 
-## <a name="conceptual-overview"></a>Kavramsal genel bakış
+## <a name="conceptual-overview"></a>Kavramsal Genel Bakış
 ![Azure depolama için özel uç noktalara genel bakış](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 Özel uç nokta, [sanal ağınızdaki](../../virtual-network/virtual-networks-overview.md) (VNet) bir Azure hizmeti için özel bir ağ arabirimidir. Depolama hesabınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve depolama ağınızdaki istemciler arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve depolama hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
 
 VNet 'teki uygulamalar, **diğer durumlarda kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak**, Özel uç nokta üzerinden depolama hizmetine sorunsuz bir şekilde bağlanabilir. Özel uç noktalar, REST ve SMB dahil olmak üzere depolama hesabı tarafından desteklenen tüm protokollerle kullanılabilir.
 
-Özel uç noktalar, [hizmet uç noktaları](/azure/virtual-network/virtual-network-service-endpoints-overview.md)kullanan alt ağlarda oluşturulabilir. Bu nedenle, bir alt ağdaki istemciler, hizmet uç noktalarını kullanarak diğerlerine erişmek için özel uç nokta kullanarak bir depolama hesabına bağlanabilir.
+Özel uç noktalar, [hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)kullanan alt ağlarda oluşturulabilir. Bu nedenle, bir alt ağdaki istemciler, hizmet uç noktalarını kullanarak diğerlerine erişmek için özel uç nokta kullanarak bir depolama hesabına bağlanabilir.
 
 Sanal ağınızda depolama hizmeti için bir özel uç nokta oluşturduğunuzda depolama hesabı sahibine onaylaması için bir onay isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda depolama hesabının sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
 
@@ -115,8 +115,8 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 
 Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Özel uç noktalar için DNS yapılandırması](/private-link/private-endpoint-overview#dns-configuration)
+- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [Özel uç noktalar için DNS yapılandırması](/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Fiyatlandırma
 

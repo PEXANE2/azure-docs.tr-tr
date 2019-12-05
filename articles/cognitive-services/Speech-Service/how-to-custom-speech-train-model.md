@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072489"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806037"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Özel Konuşma Tanıma için model eğitme
 
@@ -34,7 +34,7 @@ Modelinize yönelik tanınma sorunlarıyla karşılaşdıysanız, insan etiketli
 > [!IMPORTANT]
 > Bir veri kümesini karşıya yüklemediyseniz lütfen [verilerinizi hazırlayın ve test](how-to-custom-speech-test-data.md)edin. Bu belge, verileri karşıya yüklemeye yönelik yönergeler ve yüksek kaliteli veri kümeleri oluşturma yönergeleri sağlar.
 
-## <a name="train-and-evaluate-a-model"></a>Bir modeli eğitme ve değerlendirme
+## <a name="train-and-evaluate-a-model"></a>Modeli eğitme ve değerlendirme
 
 Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](how-to-custom-speech-test-data.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 

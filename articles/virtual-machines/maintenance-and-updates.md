@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535892"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807094"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için bakım
 
@@ -29,7 +29,7 @@ Güncelleştirmeler barındırılan VM 'Leri nadiren etkiler. Güncelleştirmele
 
 Bu sayfa, Azure 'un her iki türde bakım gerçekleştirmesini açıklar. Planlanmamış Olaylar (kesintiler) hakkında daha fazla bilgi için bkz. [Windows Için VM 'lerin kullanılabilirliğini yönetme](./windows/manage-availability.md) veya [Linux](./linux/manage-availability.md)için ilgili makale.
 
-Bir VM içinde, Windows veya [Linux](/linux/scheduled-events.md)için [zamanlanan olaylar kullanarak](/windows/scheduled-events.md) yaklaşan bakım hakkında bildirim alabilirsiniz.
+Bir VM içinde, Windows veya [Linux](./linux/scheduled-events.md)için [zamanlanan olaylar kullanarak](./windows/scheduled-events.md) yaklaşan bakım hakkında bildirim alabilirsiniz.
 
 
 
@@ -43,12 +43,12 @@ Bellek koruma bakımı, Azure VM 'lerinin yüzde 90 ' sinden daha fazlası için
 
 Yeniden başlatma gerektirmeyen bu bakım işlemleri, tek seferde bir hata etki alanı uygulanır. Herhangi bir uyarı sistem durumu sinyali aldıklarında bunları durdurur. 
 
-Bu tür güncelleştirmeler bazı uygulamaları etkileyebilir. SANAL makine dinamik olarak farklı bir konağa geçirildiğinde, bazı hassas iş yükleri VM duraklatmaya en az birkaç dakika sonunda küçük bir performans düşüşü gösterebilir. VM bakımına hazırlanmak ve Azure Bakımı sırasında etkileri azaltmak için, bu tür uygulamalar için Windows veya [Linux](/linux/scheduled-events.md) [için zamanlanan olaylar kullanmayı](/windows/scheduled-events.md) deneyin. 
+Bu tür güncelleştirmeler bazı uygulamaları etkileyebilir. SANAL makine dinamik olarak farklı bir konağa geçirildiğinde, bazı hassas iş yükleri VM duraklatmaya en az birkaç dakika sonunda küçük bir performans düşüşü gösterebilir. VM bakımına hazırlanmak ve Azure Bakımı sırasında etkileri azaltmak için, bu tür uygulamalar için Windows veya [Linux](./linux/scheduled-events.md) [için zamanlanan olaylar kullanmayı](./windows/scheduled-events.md) deneyin. 
 
 Ayrıca, bir yeniden başlatma gerektirmeyen bakımın yönetilmesine yardımcı olabilecek genel önizlemede bir özellik, bakım denetimi de vardır. [Azure ayrılmış Konakları](./linux/dedicated-hosts.md) ya da [yalıtılmış bir VM](../security/fundamentals/isolation-choices.md)kullanıyor olmanız gerekir. Bakım denetimi, platform güncelleştirmelerini atlama ve güncelleştirme işlemini 35 günlük bir bir pencere içinde tercih ettiğiniz zamanda uygulama seçeneği sunar. Daha fazla bilgi için bkz. [bakım denetimi ve Azure CLI ile güncelleştirmeleri denetleme](maintenance-control-cli.md).
 
 
-### <a name="live-migration"></a>Dinamik geçiş
+### <a name="live-migration"></a>Canlı geçiş
 
 Dinamik geçiş, bir yeniden başlatma gerektirmeyen ve VM için belleği koruyan bir işlemdir. Genellikle 5 saniyeden fazla bir duraklama veya dondurma ile devam etmesine neden olur. G, M, N ve H serisi dışında tüm hizmet olarak altyapı (IaaS) VM 'Leri dinamik geçiş için uygun değildir. Uygun VM 'Ler, Azure Fleet 'e dağıtılan IaaS sanal makinelerinin yüzde 90 ' inden fazlasını temsil eder. 
 

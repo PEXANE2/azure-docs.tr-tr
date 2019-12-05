@@ -1,7 +1,7 @@
 ---
 title: Özel Konuşma Tanıma hizmetinden konuşma hizmetine geçiş
 titleSuffix: Azure Cognitive Services
-description: Özel konuşma hizmeti artık konuşma hizmeti bir parçasıdır. En son kalite ve özellik güncelleştirmeleri yararlanmak için konuşma hizmeti geçin.
+description: Özel Konuşma Tanıma hizmeti artık konuşma hizmetinin bir parçasıdır. En son kalite ve özellik güncelleştirmelerinden yararlanmak için konuşma hizmetine geçin.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 01b853c59723a8ed79cb32b0ee9c245c9c3ffb3f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9c93286329316d081f8fd99ebd360195931b7b09
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562757"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805935"
 ---
-# <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Konuşma hizmeti için özel konuşma hizmeti geçirme
+# <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Özel Konuşma Tanıma hizmetinden konuşma hizmetine geçiş
 
-Uygulamalarınızı konuşma hizmeti için özel konuşma tanıma hizmetinden geçirmek için bu makaleyi kullanın.
+Uygulamalarınızı Özel Konuşma Tanıma hizmetten konuşma hizmetine geçirmek için bu makaleyi kullanın.
 
-Özel konuşma hizmeti artık konuşma hizmeti bir parçasıdır. En son kalite ve özellik güncelleştirmelerinden faydalanmak için konuşma hizmetlerine geçin.
+Özel Konuşma Tanıma hizmeti artık konuşma hizmetinin bir parçasıdır. En son kalite ve özellik güncelleştirmelerinden yararlanmak için konuşma hizmetine geçin.
 
 ## <a name="migration-for-new-customers"></a>Yeni müşteriler için geçiş
 
-Fiyatlandırma modeli konuşma hizmeti için bir saat dayalı bir fiyatlandırma modeli kullanarak basittir.  
+Fiyatlandırma modeli, konuşma hizmeti için saat tabanlı bir fiyatlandırma modeli kullanılarak daha basittir.  
 
 1. Uygulamanızın kullanılabilir olduğu her bölgede bir Azure kaynağı oluşturun. Azure kaynak adı **konuşma**. Tek bir Azure kaynağı için ayrı kaynaklar oluşturmak yerine aynı bölgede aşağıdaki hizmetleri kullanabilirsiniz:
 
-    * Konuşmayı Metne Dönüştürme
+    * Konuşmayı metne dönüştürme
     * Özel Konuşmayı metne dönüştürme
     * Metin okuma
     * Konuşma çevirisi
@@ -39,11 +39,11 @@ Fiyatlandırma modeli konuşma hizmeti için bir saat dayalı bir fiyatlandırma
 
 3. Hızlı Başlangıç kılavuzları ve SDK'sı örnekleri doğru API'lerini kullanmayı izleyin. REST API'lerini kullanmanız durumunda Ayrıca kaynak anahtarları ve doğru Uç noktalara kullanmanız gerekir.
 
-4. Konuşma hizmetlerini ve API 'Leri kullanmak için istemci uygulamasını güncelleştirin.
+4. Konuşma hizmetini ve API 'Leri kullanmak için istemci uygulamasını güncelleştirin.
 
 ## <a name="migration-for-existing-customers"></a>Mevcut müşteriler için geçiş
 
-Mevcut kaynak anahtarlarınızı konuşma Hizmetleri portalındaki konuşma hizmetlerine geçirin. Aşağıdaki adımları kullanın:
+Mevcut kaynak anahtarlarınızı konuşma hizmeti portalındaki konuşma hizmetine geçirin. Aşağıdaki adımları kullanın:
 
 > [!NOTE]
 > Kaynak anahtarları yalnızca aynı bölge içinde geçirilebilir.
@@ -56,10 +56,10 @@ Mevcut kaynak anahtarlarınızı konuşma Hizmetleri portalındaki konuşma hizm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma hizmetlerini ücretsiz olarak deneyin](get-started.md).
+* [Konuşma hizmetini ücretsiz deneyin](get-started.md).
 * Bilgi [Konuşmayı metne dönüştürme](./speech-to-text.md) kavramları.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Konuşma hizmeti nedir](overview.md)
-* [Konuşma Hizmetleri ve konuşma SDK belgeleri](speech-sdk.md#get-the-sdk)
+* [Konuşma hizmeti nedir?](overview.md)
+* [Konuşma hizmeti ve konuşma SDK belgeleri](speech-sdk.md#get-the-sdk)

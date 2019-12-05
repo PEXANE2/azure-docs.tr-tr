@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578230"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816388"
 ---
 # <a name="create-a-tenant-model-preview"></a>Kiracı modeli oluşturma (Önizleme)
 
@@ -54,14 +54,14 @@ Kiracı modelini kapatmanız gerekiyorsa, bu ekrana geri gidin, onay kutusunun i
 
 Konuşma SDK 'Sı ile bir kiracı modeli kullanabilmek için, bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
 
-1. [Azure portalında](https://aka.ms/azureportal) oturum açın.
-2. **Kaynak oluştur**' u seçin.
+1. [Azure portal](https://aka.ms/azureportal) oturum açın.
+2. Seçin **kaynak Oluştur**.
 3. Arama çubuğuna şunu yazın: **konuşma**.
 4. **Konuşma**' yı seçin ve ardından **Oluştur**' a tıklayın.
 5. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Emin ol:
    * **Konum** **eastus** veya **westus**olarak ayarlanır.
    * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 7. Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
 
 ## <a name="create-a-model"></a>Bir model oluşturma
@@ -91,7 +91,7 @@ Kiracı modeliniz hazırlandığınızda, modelinizi dağıtmak için aşağıda
 
    ![Ayarlar menüsü](media/tenant-language-model/tenant-language-settings.png)
 
-3. **Dağıt**' a tıklayın.
+3. Tıklayın **dağıtma**.
 4. Modeliniz dağıtıldığında, durum **dağıtıldı**olarak değişir.
 
 ## <a name="use-your-model-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile modelinizi kullanma

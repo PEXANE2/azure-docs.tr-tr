@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67673567"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828900"
 ---
 Azure portalını kullanarak Resource Manager dağıtımında bir VNet oluşturmak için aşağıdaki adımları izleyin. Ekran görüntüleri örnek olarak verilmiştir. Değerlerin kendinizinkilerle değiştirildiğinden emin olun. Sanal ağlarla çalışma hakkında daha fazla bilgi için bkz. [Virtual Network’e Genel Bakış](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,10 +22,12 @@ Azure portalını kullanarak Resource Manager dağıtımında bir VNet oluşturm
 >
 >
 
-1. Tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve gerekiyorsa Azure hesabınızda oturum açın.
-2. **+** öğesine tıklayın. **Market’te ara** alanına "Sanal Ağ" yazın. Döndürülen listeden **Sanal Ağ**’ı bulun ve tıklayarak **Sanal Ağ** sayfasını açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.  Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin. **Yeni** sayfası açılır.
 
-   ![Sanal ağ kaynağını bul sayfası](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Sanal ağ kaynağını bul sayfası")
+2. **Markette ara**' te *sanal ağ* girin ve sonuçlardan **sanal ağ** ' ı seçin.
+
+   ![Sanal ağ kaynağını bul sayfası](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Sanal ağ kaynağını bul sayfası")
+
 3. Sanal Ağ sayfasının en altına doğru, **Bir dağıtım modeli seçin** listesinden **Resource Manager**’ı seçip **Oluştur**’a tıklayın.
 
    ![Kaynak Yöneticisi seçin](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Resource Manager’ı seçin")

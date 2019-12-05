@@ -1,7 +1,7 @@
 ---
 title: Konuşma kapsayıcılarını yapılandırma
 titleSuffix: Azure Cognitive Services
-description: Konuşma Hizmetleri, kapsayıcılarınızın depolama, günlüğe kaydetme ve telemetri ve güvenlik ayarlarını kolayca yapılandırıp yönetebilmeniz için her kapsayıcıyı ortak bir yapılandırma çerçevesi sağlar.
+description: Konuşma hizmeti her kapsayıcıyı ortak bir yapılandırma çerçevesi sağlar; böylece, kapsayıcılarınız için depolama, günlüğe kaydetme ve telemetri ve güvenlik ayarlarını kolayca yapılandırabilir ve yönetebilirsiniz.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: f68bf989202c209f89ea273fee8d7610a49415ed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075746"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816563"
 ---
 # <a name="configure-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yapılandırma
 
@@ -50,7 +50,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 - Azure portal: **konuşmaya** genel bakış, etiketli `Endpoint`
 
-| Gerekli | Ad | Veri türü | Açıklama |
+| Gereklidir | Adı | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | Yes | `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](speech-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -78,10 +78,10 @@ Standart konuşma kapsayıcıları, eğitim veya hizmet verilerini depolamak iç
 
 Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, [ana bilgisayar](speech-container-howto.md#the-host-computer)'s bağlama konumu docker hizmet hesabı tarafından kullanılan izinler arasında bir çakışma nedeniyle erişilebilir olmayabilir ve konak yeri izinleri bağlayın.
 
-| İsteğe bağlı | Ad | Veri türü | Açıklama |
+| İsteğe Bağlı | Adı | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | İzin verilmiyor | `Input` | Dize | Standart konuşma kapsayıcıları bunu kullanmaz. Özel konuşma kapsayıcıları, [birim bağlama](#volume-mount-settings)kullanır.                                                                                    |
-| İsteğe bağlı | `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output` |
+| İsteğe Bağlı | `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output`. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Birim bağlama ayarları
 

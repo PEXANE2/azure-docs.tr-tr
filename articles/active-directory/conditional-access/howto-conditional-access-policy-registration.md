@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322742"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803691"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Koşullu erişim: MFA kaydı için güvenilen konum gerektir
 
@@ -26,7 +26,7 @@ Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfı
 
 Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı deneyen ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engelleyen tüm seçili kullanıcılar için geçerlidir.
 
-1. **Azure Portal**, **koşullu erişim** > **Azure Active Directory** gidin.
+1. **Azure Portal**, **koşullu erişim** > **Azure Active Directory** > **güvenlik** ' e gidin.
 1. **Yeni ilke**' yi seçin.
 1. Ad alanına bu ilke için bir ad girin. Örneğin, **güvenilir ağlarda Birleşik güvenlik bilgileri kaydı**.
 1. **Atamalar**' ın altında, **Kullanıcılar ve gruplar**' a tıklayın ve bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin.
@@ -44,7 +44,7 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı den
 1. **Erişim denetimleri** > **izin ver**' in altında.
    1. **Erişimi engelle**' ye tıklayın.
    1. Ardından **Seç**'e tıklayın.
-1. **Etkin Ilkeyi** **Açık**olarak ayarlayın.
+1. **İlkeyi etkinleştir**’i **Açık** duruma getirin.
 1. Daha sonra **Kaydet**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

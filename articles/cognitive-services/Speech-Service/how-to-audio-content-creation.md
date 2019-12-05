@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554986"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806214"
 ---
 # <a name="audio-content-creation"></a>Ses İçeriği Oluşturma
 
@@ -52,13 +52,13 @@ Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımla
 
 İçeriğinizi ses Içeriği oluşturma aracına almanın iki yolu vardır.
 
-**Seçenek 1:**
+**1. Seçenek:**
 
 1. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açtıktan sonra yeni bir ses ayarlama dosyası oluşturmak Için **Ses ayarlama** ' ya tıklayın.
 2. Düzen penceresi göründüğünde, en fazla 10.000 karakter girebilirsiniz.
 3. Kaydetmeyi unutmayın.
 
-**Seçenek 2:**
+**2. Seçenek:**
 
 1. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)sırasında oturum açtıktan sonra bir veya daha fazla metin dosyasını içeri aktarmak Için **karşıya yükle** ' ye tıklayın. Hem düz metin hem de SSML desteklenir.
 2. Metin dosyalarınızı karşıya yüklediğinizde, içeriğin bu gereksinimleri karşıladığından emin olun.

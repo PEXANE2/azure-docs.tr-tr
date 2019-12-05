@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 077f34e94423918d324eb41b56ab84c64a0db719
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111797"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816202"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak Android 'de Java 'da ses Yardımcısı oluşturma
 
@@ -30,7 +30,7 @@ Bu uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve 3,3 Android Studi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
+- Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
 - [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
 - [Android Studio](https://developer.android.com/studio/) v 3.3 veya üzeri
 
@@ -104,7 +104,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 ![](media/sdk/qs-java-android-assistant-designer-ui.png)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `MainActivity.java`açın ve içeriği şu kodla değiştirin:
 
@@ -260,7 +260,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
     * `YourSpeechSubscriptionKey` değerini abonelik anahtarınızla değiştirin.
 
-    * `YourServiceRegion`, aboneliğiniz ile ilişkili [bölge](regions.md) Ile değiştirin yalnızca bir konuşma Hizmetleri bölgesi alt kümesi şu anda doğrudan hat konuşmayla desteklenmektedir. Daha fazla bilgi için bkz. [bölgeler](regions.md#voice-assistants).
+    * `YourServiceRegion`, aboneliğiniz ile ilişkili [bölge](regions.md) Ile değiştirin yalnızca bir konuşma hizmeti bölgesi alt kümesi şu anda doğrudan hat konuşmayla desteklenmektedir. Daha fazla bilgi için bkz. [bölgeler](regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
@@ -285,7 +285,7 @@ Uygulama ve etkinliği başlatıldıktan sonra, bot 'unuza konuşmaya başlamak 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 - [Sesli yardımcılar hakkında](voice-assistants.md)
-- [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 - [Özel anahtar sözcükler](speech-devices-sdk-create-kws.md)
 - [Doğrudan hat konuşmayı bot 'a bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub 'da Java örneklerini keşfet](https://aka.ms/csspeech/samples)

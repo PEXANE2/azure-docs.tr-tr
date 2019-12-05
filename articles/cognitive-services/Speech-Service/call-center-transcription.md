@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538168"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806329"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
 
@@ -125,7 +125,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 | -------------- | ----- | ----------- |
 | Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 |                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
-|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir `.txt` dosyası olan bir telaffuz dosyasıdır. |
+|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş koşullarını işlemek için kullanışlıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir `.txt` dosyası olan bir telaffuz dosyasıdır. |
 | Metin okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
 
 ## <a name="sample-code"></a>Örnek kod

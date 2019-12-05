@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195932"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812915"
 ---
 # <a name="about-voice-assistants"></a>Sesli yardımcılar hakkında
 
-Azure konuşma Hizmetleri 'ni kullanan sesli yardımcılar, geliştiricilerin uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar.
+Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar.
 
 Ses Yardımcısı hizmeti, (1) bot çerçevesinin doğrudan hat konuşma kanalını ya da (2) görev tamamlama için tümleşik özel komutlar (Önizleme) hizmetini kullanan bir cihaz ile yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar.
 
@@ -29,7 +29,7 @@ Uygulamalar, konuşma yazılım geliştirme seti (SDK) ile ses Yardımcısı hiz
 
 ## <a name="choosing-an-assistant-solution"></a>Yardımcı çözümü seçme
 
-Bir ses Yardımcısı oluşturmaya yönelik ilk adım, ne yapacağına karar vermelidir. Azure konuşma Hizmetleri, yardımcı etkileşimlerinizi üretmek için birden çok ve tamamlayıcı çözüm sunar. Bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalının sağladığı esneklik ve çok yönlülük, basit senaryolar Için [özel komutların (Önizleme)](custom-commands.md) basitliğini veya basitliğini isteyip istemediğinizi, doğru araçların seçilmesi, çalışmaya başlamanızı sağlar.
+Bir ses Yardımcısı oluşturmaya yönelik ilk adım, ne yapacağına karar vermelidir. Konuşma hizmeti, yardımcı etkileşimlerinizi üretmek için birden çok ve tamamlayıcı çözüm sunar. Bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalının sağladığı esneklik ve çok yönlülük, basit senaryolar Için [özel komutların (Önizleme)](custom-commands.md) basitliğini veya basitliğini isteyip istemediğinizi, doğru araçların seçilmesi, çalışmaya başlamanızı sağlar.
 
 | Şunu yapmak istiyorsanız... | Göz önüne alın... | Örneğin... |
 |-------------------|------------------|----------------|
@@ -49,8 +49,8 @@ Yardımcı etkileşimlerinizi oluşturmak için [doğrudan hat konuşmayı](dire
 | Kategori | Özellikler |
 |----------|----------|
 |[Özel anahtar sözcük](speech-devices-sdk-create-kws.md) | Kullanıcılar, "Hey contoso" gibi özel bir anahtar sözcükle konuşmaları kullanarak konuşmalar başlatabilir. Uygulama bunu konuşma SDK 'sında özel bir anahtar sözcük altyapısı ile yapar ve [burada oluşturabileceğiniz](speech-devices-sdk-create-kws.md)özel bir anahtar sözcükle yapılandırılabilir. Sesli yardımcılar, anahtar sözcük etkinleştirmenin doğruluğunu artırmak için hizmet tarafı anahtar sözcük doğrulamasını kullanabilir (tek başına cihaz).
-|[Konuşmayı metne dönüştürme](speech-to-text.md) | Sesli yardımcılar, Azure konuşma hizmetlerinden [konuşmaya metin](speech-to-text.md) kullanarak gerçek zamanlı sesi tanınan metne dönüştürür. Bu metin, hem yardımcınızın hem de istemci uygulamanızın bulunduğu bir şekilde kullanılabilir.
-|[Metinden konuşmaya](text-to-speech.md) | Yardımcınızdan metinsel yanıtlar, Azure konuşma hizmetlerinden gelen [metinden konuşmaya](text-to-speech.md) kullanılarak dağıtılır. Bu birleştirme daha sonra istemci uygulamanız için bir ses akışı olarak sunulur. Microsoft, markanızla ilgili bir ses sağlayan kendi özel, yüksek kaliteli sinir TTS sesinizi oluşturma olanağı sunar. Daha fazla bilgi edinmek için [bizimle iletişime geçin](mailto:mstts@microsoft.com).
+|[Konuşmayı metne dönüştürme](speech-to-text.md) | Ses yardımcıları, konuşma hizmetinden [konuşmaya metin](speech-to-text.md) kullanarak gerçek zamanlı sesi tanınan metne dönüştürür. Bu metin, hem yardımcınızın hem de istemci uygulamanızın bulunduğu bir şekilde kullanılabilir.
+|[Metinden konuşmaya](text-to-speech.md) | Yardımcınızdan metin yanıtları, konuşma hizmetinden gelen [metinden konuşmaya](text-to-speech.md) kullanılarak birleştirilmiştir. Bu birleştirme daha sonra istemci uygulamanız için bir ses akışı olarak sunulur. Microsoft, markanızla ilgili bir ses sağlayan kendi özel, yüksek kaliteli sinir TTS sesinizi oluşturma olanağı sunar. Daha fazla bilgi edinmek için [bizimle iletişime geçin](mailto:mstts@microsoft.com).
 
 ## <a name="getting-started-with-voice-assistants"></a>Sesli yardımcılar ile çalışmaya başlama
 
@@ -58,9 +58,9 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Ata](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Ata](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Göz atma](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -75,7 +75,7 @@ Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabil
 
 ## <a name="customization"></a>Özelleştirme
 
-Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
+Konuşma hizmeti kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
 
 > [!NOTE]
 > Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
@@ -87,7 +87,7 @@ Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, [konu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 * [Konuşma SDK 'sını alın](speech-sdk.md)
 * [Özel komutlar hakkında daha fazla bilgi edinin (Önizleme)](custom-commands.md)
 * [Doğrudan hat konuşma hakkında daha fazla bilgi edinin](direct-line-speech.md)

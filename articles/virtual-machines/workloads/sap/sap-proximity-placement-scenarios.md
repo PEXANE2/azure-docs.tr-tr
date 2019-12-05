@@ -1,5 +1,5 @@
 ---
-title: SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları | Microsoft Docs
+title: SAP uygulamaları için Azure yakınlık yerleştirme grupları | Microsoft Docs
 description: Azure yakınlık yerleştirme gruplarıyla SAP dağıtım senaryolarını açıklar
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720006"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805714"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.
@@ -65,7 +65,7 @@ Aşağıda açıklandığı gibi ideal yapılandırma şöyle görünür:
 Bu durumda, tek SAP sistemleri her biri tek bir kaynak grubunda gruplandırılır ve her biri bir yakınlık yerleşimi grubuyla birlikte gruplandırılır. HANA genişleme veya DBMS genişleme yapılandırması kullanmanıza bakılmaksızın bir bağımlılık yoktur.
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>Yakınlık yerleştirme grupları ve HANA büyük örnekleri
-SAP sistemlerinizden bazıları uygulama katmanı için [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) kullanıyorsa, Hana büyük örnekler birimi Ile Azure VM 'ler arasındaki ağ gecikmesi üzerinde önemli geliştirmeler yaşayabilirsiniz [Düzeltme 4 satırları veya damgaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)' nda dağıtılır. Bir iyileştirme, dağıtılan büyük örnek birimlerinin, dağıtıldığı gibi bir yakınlık yerleşimi grubuyla dağıtılması. Uygulama katmanı sanal makinelerinizi dağıtmak için bu yakınlık yerleşimi grubunu kullanabilirsiniz. Sonuç olarak, bu VM 'Ler HANA büyük örnek biriminizi barındıran veri merkezinde dağıtılır.
+SAP sistemlerinizden bazıları uygulama katmanı için [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) kullanıyorsa, [Düzeltme 4 satırları veya damgaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)' nda dağıtılan Hana büyük örnekler birimleri kullanırken, Hana büyük örnekler birimi ile Azure VM 'ler arasındaki ağ gecikmesi üzerinde önemli geliştirmeler yaşayabilirsiniz. Bir iyileştirme, dağıtılan büyük örnek birimlerinin, dağıtıldığı gibi bir yakınlık yerleşimi grubuyla dağıtılması. Uygulama katmanı sanal makinelerinizi dağıtmak için bu yakınlık yerleşimi grubunu kullanabilirsiniz. Sonuç olarak, bu VM 'Ler HANA büyük örnek biriminizi barındıran veri merkezinde dağıtılır.
 
 HANA büyük örnek biriminizdeki bir düzeltme 4 damgasında veya satırında dağıtılıp dağıtılmadığını öğrenmek için [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit)makalesini kontrol edin. HANA büyük örnek biriminizdeki özniteliklere genel bakış bölümünde, HANA büyük örnekler biriminiz dağıtıldığında oluşturulduğu için yakınlık yerleşimi grubunun adını da belirleyebilirsiniz. Özniteliklerde genel bakışta görüntülenen ad, uygulama katmanı VM 'lerinizi dağıtmanız gereken yakınlık yerleşimi grubunun adıdır.
 

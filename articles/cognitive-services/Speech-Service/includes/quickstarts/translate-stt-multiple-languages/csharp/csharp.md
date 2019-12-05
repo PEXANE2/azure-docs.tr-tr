@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı birden çok dile çevirme C# ,-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Henüz belirlenmedi.
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d75bba24a0dc17e547cbd8a69661dd4a5765097
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd1d654bdfa6cb88c83421519a535eac69e76466
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260901"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817257"
 ---
 **Hedef ortamınızı seçin**
 

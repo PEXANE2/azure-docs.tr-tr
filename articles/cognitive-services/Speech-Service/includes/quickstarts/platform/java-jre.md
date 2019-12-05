@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Java için konuşma SDK (Windows, Linux, macOS) Platform Kurulumu-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu kılavuzu kullanarak, Java 'yı (Windows, Linux, macOS) konuşma Hizmetleri SDK 'sını kullanmaya yönelik platformunuzu ayarlayın.
+description: Bunu konuşma hizmeti SDK 'Sı ile Java (Windows, Linux, macOS) kullanmaya yönelik platformunuzu ayarlamak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 2814327bdc434dbdae5644bd40b09d0506b21df9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 195d43739ff27a493b2f2923eac43df03313963b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502439"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816277"
 ---
 Bu kılavuzda, 64 bit Java 8 JRE için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
 

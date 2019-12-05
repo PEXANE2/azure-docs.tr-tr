@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, C++ -konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0530d502699f26808f8091303ad29a80cf816e2d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f90826e1b911fe426d471f7451eb32f5718d89c9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503846"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816101"
 ---
 Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'daki tüm <a href="https://aka.ms/speech/github-cpp">konuşma SDK C++ örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.

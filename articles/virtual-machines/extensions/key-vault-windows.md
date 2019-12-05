@@ -3,16 +3,17 @@ title: Windows için Azure Key Vault VM Uzantısı
 description: Sanal makine uzantısı kullanarak sanal makinelerde Key Vault gizliliklerin otomatik olarak yenilenmesini gerçekleştirerek bir aracı dağıtın.
 services: virtual-machines-windows
 author: msmbaldwin
+tags: keyvault
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.date: 09/23/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 03351e964fc7247f87d0b823fae06fc03ff18de7
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152108"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806788"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -28,7 +29,7 @@ Key Vault VM uzantısı, Windows 'un aşağıdaki sürümlerini destekler:
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, korumalı ayarlar gerektirmez. tüm ayarları ortak bilgiler olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Daha ayrıntılı şekilde belirtmek gerekirse:  
+Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, korumalı ayarlar gerektirmez. tüm ayarları ortak bilgiler olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Bu avantajlar şunlardır:  
 
 ```json
     {
@@ -40,20 +41,20 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault",
-            "type": "KeyVaultForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "secretsManagementSettings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "requireInitialSync": <initial synchronization of certificates e..g: true>,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -65,17 +66,17 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü |
+| Adı | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft. Azure. Keykasası| string |
+| publisher | Microsoft. Azure. Keykasası | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
 | certificateStoreName | MY | string |
 | Linkonyenilemeye | yanlış | boole |
 | certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | boole |
+| requiredInitialSync | doğru | boole |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
 
 
@@ -95,17 +96,17 @@ Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine k
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault",
-            "type": "KeyVaultForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -120,10 +121,10 @@ Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sa
     ```powershell
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -140,10 +141,10 @@ Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sa
     
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -185,8 +186,8 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
 
 Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 - Key Vault kısıtlamaları:
-    - Dağıtım sırasında var olmalıdır 
-    - Key Vault erişim Ilkesi, MSI kullanılarak VM/VMSS kimliği için ayarlandı
+  - Dağıtım sırasında var olmalıdır 
+  - Key Vault erişim Ilkesi, MSI kullanılarak VM/VMSS kimliği için ayarlandı
 
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
@@ -208,7 +209,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 Uzantı yürütme çıkış aşağıdaki dosyasına kaydedilir:
 
 ```
-%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.Edp.KeyVaultForWindows\<version>\akvvm_service_<date>.log
+%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
 ```
 
 

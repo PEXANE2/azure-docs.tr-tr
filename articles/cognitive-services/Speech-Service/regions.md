@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072452"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816655"
 ---
-# <a name="speech-service-supported-regions"></a>Konuşma hizmeti desteklenen bölgeler
+# <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
 Konuşma hizmeti, uygulamanızın sesi metne dönüştürün, gizli metin okuma ve konuşma çevirisi gerçekleştirin sağlar. Hizmet, REST API'leri ve Speech SDK'sı için benzersiz uç noktaları ile birden fazla bölgede kullanılabilir.
 
@@ -40,17 +40,17 @@ Konuşma SDK 'Sı, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**i�
 | Doğu ABD 2        | `eastus2`            | https://eastus2.cris.ai        |
 | Orta ABD       | `centralus`          | https://centralus.cris.ai      |
 | Orta Kuzey ABD | `northcentralus`     | https://northcentralus.cris.ai |
-| Orta Güney ABD | `southcentralus`     | https://southcentralus.cris.ai |
+| Güney Orta ABD | `southcentralus`     | https://southcentralus.cris.ai |
 | Orta Hindistan    | `centralindia`       | https://centralindia.cris.ai   |
 | Doğu Asya        | `eastasia`           | https://eastasia.cris.ai       |
 | Güneydoğu Asya   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Japonya Doğu       | `japaneast`          | https://japaneast.cris.ai      |
+| Doğu Japonya       | `japaneast`          | https://japaneast.cris.ai      |
 | Kore Orta    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Avustralya Doğu   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Orta Kanada   | `canadacentral`      | https://canadacentral.cris.ai  |
+| Doğu Avustralya   | `australiaeast`      | https://australiaeast.cris.ai  |
+| Kanada Orta   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Kuzey Avrupa     | `northeurope`        | https://northeurope.cris.ai    |
 | Batı Avrupa      | `westeurope`         | https://westeurope.cris.ai     |
-| Birleşik Krallık Güney         | `uksouth`            | https://uksouth.cris.ai        |
+| Birleşik Krallık, Güney         | `uksouth`            | https://uksouth.cris.ai        |
 | Fransa Orta   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Amaç tanıma
@@ -61,16 +61,16 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
-| Avustralya     | Avustralya Doğu   | `australiaeast`      |
+| Avustralya     | Doğu Avustralya   | `australiaeast`      |
 | Avrupa        | Kuzey Avrupa     | `northeurope`        |
 | Avrupa        | Batı Avrupa      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
 | Kuzey Amerika | Doğu ABD 2        | `eastus2`            |
-| Kuzey Amerika | Orta Güney ABD | `southcentralus`     |
-| Kuzey Amerika | Batı Orta ABD  | `westcentralus`      |
+| Kuzey Amerika | Güney Orta ABD | `southcentralus`     |
+| Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
-| Güney Amerika | Güney Brezilya     | `brazilsouth`        |
+| Güney Amerika | Brezilya Güney     | `brazilsouth`        |
 
 Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 

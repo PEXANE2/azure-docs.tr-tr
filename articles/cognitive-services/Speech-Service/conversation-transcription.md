@@ -1,5 +1,5 @@
 ---
-title: Konuşma dökümü nedir (Önizleme)-konuşma hizmeti
+title: Konuşma dökümü nedir (Önizleme)? -Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşma dökümü, konuşma tanımayı, konuşmacı tanımayı ve her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz bir şekilde dökümünü sağlamak üzere her konuşmacı (de bilinen olarak da bilinir) birleştiren bir konuşmaya metin çözümüdür. görül.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075841"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806295"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Konuşma dökümü nedir (Önizleme)?
 
-Konuşma dökümü, konuşma tanımayı, konuşmacı tanımayı ve her konuşmacının yanı sıra zaman _uyumsuz olarak gerçek_zamanlı ve/veya zaman uyumsuz bir şekilde birleştiren bir [konuşmaya metin](speech-to-text.md) çözümüdür. herhangi bir konuşmanın dökümünü alma. Konuşma dökümü, kimin ne olduğunu ve ne zaman söylediklerini belirlemek için konuşmalarda hoparlörleri ayırt eder ve geliştiricilerin çok oyunculu bir savunma gerçekleştiren uygulamalarına konuşmadan metin eklemesini kolaylaştırır.
+Konuşma dökümü, her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz olarak dökümünü sağlamak için konuşma tanımayı, konuşmacı tanımayı ve tümce oluşturma işlevini her konuşmacı (daha da _bilinen) birleştiren_bir [konuşmaya metin](speech-to-text.md) çözümüdür. Konuşma dökümü, kimin ne olduğunu ve ne zaman söylediklerini belirlemek için konuşmalarda hoparlörleri ayırt eder ve geliştiricilerin çok oyunculu bir savunma gerçekleştiren uygulamalarına konuşmadan metin eklemesini kolaylaştırır.
 
 ## <a name="key-features"></a>Önemli özellikler
 
@@ -44,7 +44,7 @@ Engelli ve işitme güçlüğü çeken katılımcılar gibi herkese açık bir �
 
 Toplantı katılımcıları toplantıya odaklanabilir ve görüşme dekontunu göz önünde bırakabilir. Katılımcılar, toplantıya etkin bir şekilde geçebilir ve bir sonraki adımda hızlı bir şekilde hareket edebilir ve Not almak yerine el yazısı ve toplantı sırasında eksik olabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Bu, konuşma dökümünü nasıl çalıştığına ilişkin üst düzey bir genel bakıştır.
 
@@ -63,7 +63,7 @@ Konuşma dökümü üç döküm modu sunar:
 
 Ses verileri, konuşmacı tanımlayıcısı + döküm betiği döndürmek için canlı olarak işlenir. Döküm çözümünüz gereksiniminizde, konuşma katılımcılarına devam eden konuşmaları canlı döküm görünümü sağlamak istiyorsanız bu modu seçin. Örneğin, toplantıları daha erişilebilir hale getirmek için bir uygulama oluşturmak, işitme engellerin ve çok zor katılımcılarının gerçek zamanlı döküm için ideal bir kullanım durumdur.
 
-### <a name="asynchronous"></a>En
+### <a name="asynchronous"></a>Zaman uyumsuz
 
 Ses verileri, konuşmacı tanımlayıcısını ve dökümünü döndürecek toplu işlem olarak işlenir. Döküm çözümünüz gereksiniminizi canlı döküm görünümü olmadan daha yüksek doğruluk sağlamak istiyorsanız bu modu seçin. Örneğin, Toplantı katılımcılarının kaçırılmış toplantılara kolayca yakalayabilmesini sağlamak için bir uygulama oluşturmak istiyorsanız, yüksek doğruluk dökümü elde etmek için zaman uyumsuz döküm modunu kullanın.
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: juliako
-ms.openlocfilehash: a1fd37b65c3449e7000db6189c8c71def1f96b0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790049"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815391"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -59,7 +59,7 @@ Bu parametre, video ile ilişkilendirilecek bir kimlik belirtmenize olanak sağl
 Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir URL (POST isteği kullanılarak):
 
 - Dizin oluşturma durum değişikliği: 
-    - Özelliklerinin    
+    - Özellikler:    
     
         |Adı|Açıklama|
         |---|---|
@@ -88,13 +88,13 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kullanın. Bu parametre, dizinleme işlemini yapılandırmak için kullanılır. Aşağıdaki değerleri belirtebilirsiniz:
 
 - `AudioOnly`: Yalnızca ses kullanarak (videoyu yok sayarak) öngörüler ayıklayın ve bunları dizinleyin
+- `VideoOnly`-yalnızca video kullanarak Öngörüler oluştur ve Ayıkla (ses yok sayılıyor)
 - `Default`: Ses ve videoyu kullanarak öngörüler ayıklayın ve bunları dizinleyin
 - `DefaultWithNoiseReduction`: Ses akışına gürültü azaltma algoritmaları uygulayarak ses ve videodan öngörüler ayıklayın ve bunları dizinleyin
-- `VideoOnly`-yalnızca video kullanarak öngörüleri dizine al ve Ayıkla 
 
 Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
 
-### <a name="priority"></a>Priority
+### <a name="priority"></a>öncelik
 
 Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Şu değerler geçerlidir: **düşük**, **normal** (varsayılan) ve **yüksek**.
 
@@ -128,7 +128,7 @@ Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanı
 
     API anahtarınızı almak için şu akışa gidin:
 
-    * https://api-portal.videoindexer.ai/ git
+    * Gidin https://api-portal.videoindexer.ai/
     * Oturum aç
     *  -> **Yetkilendirme aboneliğine** yönelik **ürün** -> **Yetkilendirme** aboneliği ' ne gidin
     * **Birincil anahtarı** Kopyala

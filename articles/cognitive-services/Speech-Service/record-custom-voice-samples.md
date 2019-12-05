@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5cf375b1e5e4c09617dc6ae74513d303a9a6a4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559187"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816665"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Özel ses oluşturma kayıt ses örnekleri
 
@@ -191,7 +191,7 @@ Bir iyi beş "odası ton." yakalamak için saniye önce ilk kaydı sessizlik kay
 Yakın ses beceri'nın performans yerdeyseniz dinleyin. İyi ancak doğal diction, doğru telaffuz ve istenmeyen sesleri eksikliği bakıyorsunuz. Bu standartlar sağlamayan bir utterance yeniden kaydetmek için beceri isteyin çekinmeyin.
 
 > [!TIP]
-> Çok sayıda konuşma kullanıyorsanız, tek bir utterance sonuç özel sesli üzerinde fark edilebilir bir etkiye sahip olmayabilir. Daha fazla expedient sorunları herhangi bir konuşma bulundurmak, veri kümesinden dışlamak ve nasıl özel sesinizi ettik bkz olabilir. Her zaman Studio'ya geri dönün ve daha sonra kaçırılan örnekleri kaydedin.
+> Çok sayıda konuşma kullanıyorsanız, tek bir utterance sonuç özel sesli üzerinde fark edilebilir bir etkiye sahip olmayabilir. Sorunları gidermek, veri kümesinizden dışlamak ve özel sesinizin nasıl kaplandığına bakmak çok daha fazla olabilir. Her zaman Studio 'ya dönüp eksik örnekleri daha sonra kaydedebilirsiniz.
 
 Sınav zamanı numarasını not edin veya betiğinizi kodu için her utterance zaman. Kayıt ait meta verileri veya işaret sayfası her utterance işaretlemek için mühendislik isteyin.
 

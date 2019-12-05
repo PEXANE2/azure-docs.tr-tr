@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 61f9ff575c927cdafa4aa26fbad0ebb6e257b010
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325383"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815237"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Öğretici: Bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu keşfetme
 > * Şablonu dağıtma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -86,7 +86,7 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
     ![Visual Studio Code Azure Resource Manager şablonları genel IP adresi tanımı](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 4. Dördüncü kaynağı genişletin. Kaynak türü `Microsoft.Network/networkInterfaces` şeklindedir:
 
-    ![Visual Studio Code Azure Resource Manager şablonları dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+    ![Visual Studio Code Azure Resource Manager şablonları Bağımlıdson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
     dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. Kaynak, iki farklı kaynağa bağımlıdır:
 
@@ -111,15 +111,15 @@ Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir �
 Şablonları dağıtmak için birçok yöntem vardır.  Bu öğreticide Azure portaldan Cloud Shell'i kullanacaksınız.
 
 1. [Cloud Shell](https://shell.azure.com)'de oturum açın.
-2. Cloud Shell'in sol üst köşesinden **PowerShell**'i ve ardından **Onayla**'yı seçin.  Bu öğreticide PowerShell'i kullanacaksınız.
-3. Cloud Shell'de **Dosya yükle**'yi seçin:
+1. Cloud Shell'in sol üst köşesinden **PowerShell**'i ve ardından **Onayla**'yı seçin.  Bu öğreticide PowerShell'i kullanacaksınız.
+1. Cloud Shell'de **Dosya yükle**'yi seçin:
 
     ![Azure portal Cloud shell dosya karşıya yükleme](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-4. Öğreticide daha önce kaydettiğiniz şablonu seçin. Varsayılan ad **azuredeploy.json** olur.  Aynı dosya adına sahip bir dosyanız varsa bildirim gösterilmeden eski dosyanın üzerine yazılır.
+1. Öğreticide daha önce kaydettiğiniz şablonu seçin. Varsayılan ad **azuredeploy.json** olur.  Aynı dosya adına sahip bir dosyanız varsa bildirim gösterilmeden eski dosyanın üzerine yazılır.
 
     İsteğe bağlı olarak, dosyaların başarıyla karşıya yüklendiğini doğrulamak için **ls $Home** komutunu ve **Cat $Home/azuredeploy.JSON** komutunu kullanabilirsiniz.
 
-5. Cloud Shell'de aşağıdaki PowerShell komutlarını çalıştırın. Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
+1. Cloud Shell'de aşağıdaki PowerShell komutlarını çalıştırın. Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -135,18 +135,20 @@ Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir �
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
-8. Yeni oluşturulan sanal makineyi listelemek için aşağıdaki PowerShell komutunu çalıştırın:
+1. Yeni oluşturulan sanal makineyi listelemek için aşağıdaki PowerShell komutunu çalıştırın:
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     Sanal makine adı şablon içinde **SimpleWinVM** olarak kodlanmıştır ve değiştirilemez.
 
-9. Sanal makinenin başarıyla oluşturulduğunu doğrulamak için RDP bağlantısı kurun.
+1. Sanal makinenin başarıyla oluşturulduğunu doğrulamak için RDP bağlantısı kurun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

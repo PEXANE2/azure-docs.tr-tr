@@ -6,14 +6,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.date: 11/12/2019
+ms.date: 12/04/2019
 ms.reviewer: carlrab
-ms.openlocfilehash: b092c547edf37b31e6099227d8cc0e69048bad7a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b54783f29de731613a5f3c9c5d9d3b805b2d0115
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961980"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819532"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (Önizleme) kullanarak Azure SQL veritabanı izleme
 
@@ -32,7 +32,7 @@ Azure SQL Analytics çözümünü kullanma uygulamalı bir genel bakış ve tipi
 
 Azure SQL Analytics, bulut çözümü, Azure SQL veritabanları için tanılama telemetrisi destekleyen akış izleme yalnızca: tek, havuza alınmış ve yönetilen örnek veritabanları. Çözüm, Azure Izleyici 'ye bağlanmak için aracıları kullanmıyorsa, çözüm şirket içinde veya VM 'lerde barındırılan SQL Server izlemeyi desteklemez, aşağıdaki uyumluluk tablosuna bakın.
 
-| Bağlı Kaynak | Destekleniyor | Açıklama |
+| Bağlı Kaynak | Desteklenen | Açıklama |
 | --- | --- | --- |
 | [Tanılama ayarları](../platform/diagnostic-settings.md) | **Evet** | Azure ölçümü ve günlük verileri Azure Izleyici günlüklerine doğrudan Azure tarafından gönderilir. |
 | [Azure depolama hesabı](../platform/collect-azure-metrics-logs.md) | Hayır | Azure Izleyici, bir depolama hesabındaki verileri okuyamıyor. |
@@ -47,11 +47,11 @@ Aşağıdaki tabloda, tek bir Azure SQL veritabanı ve elastik havuzların yanı
 | Azure SQL Analytics seçeneği | Açıklama | SQL veritabanı ve elastik havuzlar desteği | Yönetilen örnek destek |
 | --- | ------- | ----- | ----- |
 | Kaynak türüne göre | Bu perspektif izlenen tüm kaynakları sayar. | Yes | Yes |
-| Insights | Hiyerarşik detaya gitme performans akıllı Öngörüler sağlar. | Yes | Yes |
+| Bilgiler | Hiyerarşik detaya gitme performans akıllı Öngörüler sağlar. | Yes | Yes |
 | Hatalar | Hiyerarşik detaya gitme veritabanlarında meydana gelen hatalara SQL sağlar. | Yes | Yes |
 | Zaman aşımları | Hiyerarşik detaya gitme veritabanlarında gerçekleşen SQL zaman aşımları sağlar. | Yes | Hayır |
 | Durdurmalar | Hiyerarşik detaya gitme veritabanlarında gerçekleşen SQL blockings sağlar. | Yes | Hayır |
-| Veritabanı beklemeleri | Hiyerarşik detaya gitme SQL bekleme istatistikleri veritabanı düzeyi sağlar. Toplam bekleme süresi ve bekleme türü başına bekleme süresi bir özetini içerir. |Yes | Yes |
+| Veritabanı beklemeleri | Hiyerarşik detaya gitme SQL bekleme istatistikleri veritabanı düzeyi sağlar. Toplam bekleme süresi ve bekleme türü başına bekleme süresi bir özetini içerir. |Yes | Hayır |
 | Sorgu süresi | Sorgu yürütme istatistikleri sorgu süresi, CPU kullanımı, veri GÇ kullanımını, günlük GÇ kullanımını gibi hiyerarşik detaya gitme sağlar. | Yes | Yes |
 | Sorgu beklemeleri | Hiyerarşik detaya gitme sorgu bekleme istatistikleri bekleme kategoriye göre sağlar. | Yes | Yes |
 

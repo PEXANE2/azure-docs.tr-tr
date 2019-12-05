@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f617bed0d2d93d8c8586d5708e0e356934817f4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091218"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816642"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
-Konuşma [SDK 'sına](speech-sdk.md)alternatif olarak, konuşma Hizmetleri REST API kullanarak konuşmayı metne dönüştürmenize olanak tanır. Her erişilebilen bir uç noktaya bir bölge ile ilişkilidir. Uygulamanızı kullanmayı planladığınız uç nokta için bir abonelik anahtarı gerektirir.
+Konuşma [SDK 'sına](speech-sdk.md)alternatif olarak, konuşma hizmeti bir REST API kullanarak konuşmayı metne dönüştürmenize olanak tanır. Her erişilebilen bir uç noktaya bir bölge ile ilişkilidir. Uygulamanızı kullanmayı planladığınız uç nokta için bir abonelik anahtarı gerektirir.
 
 Konuşmayı metne REST API kullanmadan önce, şunu anlayın:
 
@@ -42,9 +42,9 @@ Bu parametreleri REST isteğinin sorgu dizesinde eklenebilir.
 
 | Parametre | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| `language` | Tanınan konuşulan dil tanımlar. Bkz: [desteklenen diller](language-support.md#speech-to-text). | Gerekli |
-| `format` | Sonuç biçimi belirtir. Kabul edilen değerler `simple` ve `detailed`. Basit sonuçlarında `RecognitionStatus`, `DisplayText`, `Offset`, ve `Duration`. Ayrıntılı yanıtlar, birden çok sonuçla güvenle değerleri ve dört farklı temsilleri içerir. Varsayılan ayar `simple`. | İsteğe bağlı |
-| `profanity` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `masked`, küfür ile `removed`, sonuçtaki tüm küfür kaldıran ve `raw`sonuçtaki küfür içeren. Varsayılan ayar `masked`. | İsteğe bağlı |
+| `language` | Tanınan konuşulan dil tanımlar. Bkz: [desteklenen diller](language-support.md#speech-to-text). | Gereklidir |
+| `format` | Sonuç biçimi belirtir. Kabul edilen değerler `simple` ve `detailed`. Basit sonuçlarında `RecognitionStatus`, `DisplayText`, `Offset`, ve `Duration`. Ayrıntılı yanıtlar, birden çok sonuçla güvenle değerleri ve dört farklı temsilleri içerir. Varsayılan ayar `simple`. | İsteğe Bağlı |
+| `profanity` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `masked`, küfür ile `removed`, sonuçtaki tüm küfür kaldıran ve `raw`sonuçtaki küfür içeren. Varsayılan ayar `masked`. | İsteğe Bağlı |
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
@@ -52,12 +52,12 @@ Bu tablo, Konuşmayı metne istekler için gerekli ve isteğe bağlı üst bilgi
 
 |Üst bilgi| Açıklama | Gerekli / isteğe bağlı |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Konuşma Hizmetleri abonelik anahtarınız. | Ya da bu üst bilgi veya `Authorization` gereklidir. |
+| `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Ya da bu üst bilgi veya `Authorization` gereklidir. |
 | `Authorization` | Bir yetkilendirme belirteci word tarafından öncesinde `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Ya da bu üst bilgi veya `Ocp-Apim-Subscription-Key` gereklidir. |
-| `Content-type` | Sağlanan ses verisi codec ve biçim açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` ve `audio/ogg; codecs=opus`. | Gerekli |
-| `Transfer-Encoding` | Öbekli ses, tek bir dosya yerine gönderilen veri olduğunu belirtir. Yalnızca ses verileri varsa bu üstbilgiyi kullanır. | İsteğe bağlı |
-| `Expect` | Öbekli aktarım kullanıyorsanız, gönderme `Expect: 100-continue`. Konuşma Hizmetleri, ilk isteği onaylar ve ek verileri bekler.| Öbekli ses veri gönderen gereklidir. |
-| `Accept` | Sağlanırsa, olmalıdır `application/json`. Konuşma Hizmetleri, JSON 'da sonuçlar sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. `Accept`her zaman dahil etmek iyi bir uygulamadır. | İsteğe bağlı, ancak önerilir. |
+| `Content-type` | Sağlanan ses verisi codec ve biçim açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` ve `audio/ogg; codecs=opus`. | Gereklidir |
+| `Transfer-Encoding` | Öbekli ses, tek bir dosya yerine gönderilen veri olduğunu belirtir. Yalnızca ses verileri varsa bu üstbilgiyi kullanır. | İsteğe Bağlı |
+| `Expect` | Öbekli aktarım kullanıyorsanız, gönderme `Expect: 100-continue`. Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses veri gönderen gereklidir. |
+| `Accept` | Sağlanırsa, olmalıdır `application/json`. Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. `Accept`her zaman dahil etmek iyi bir uygulamadır. | İsteğe bağlı, ancak önerilir. |
 
 ## <a name="audio-formats"></a>Ses biçimleri
 
@@ -69,7 +69,7 @@ Ses HTTP gövdesi gönderilen `POST` isteği. Bu tabloda biçimlerden birinde ol
 | OGG | GEÇERLİ | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
->Yukarıdaki biçimler, konuşma hizmetlerindeki REST API ve WebSocket aracılığıyla desteklenir. [Speech SDK'sı](speech-sdk.md) WAV PCM codec ile biçim şu anda yalnızca destekler.
+>Yukarıdaki biçimler, konuşma hizmetindeki REST API ve WebSocket aracılığıyla desteklenir. [Speech SDK'sı](speech-sdk.md) WAV PCM codec ile biçim şu anda yalnızca destekler.
 
 ## <a name="sample-request"></a>Örnek istek
 
@@ -91,15 +91,15 @@ Her yanıt için HTTP durum kodu, başarı veya sık karşılaşılan hataları 
 
 | HTTP durum kodu | Açıklama | Olası neden |
 |------------------|-------------|-----------------|
-| 100 | Devam et | İlk istek kabul edildi. Kalan verileri göndermek ile devam edin. (İle öbekli aktarım kullanılır.) |
-| 200 | Tamam | İstek başarılı oldu; yanıt gövdesi bir JSON nesnesidir. |
+| 100 | Devam | İlk istek kabul edildi. Kalan verileri göndermek ile devam edin. (İle öbekli aktarım kullanılır.) |
+| 200 | TAMAM | İstek başarılı oldu; yanıt gövdesi bir JSON nesnesidir. |
 | 400 | Hatalı istek | Dil kodu sağlanmadı, desteklenen bir dil değil, geçersiz ses dosyası, vb. |
-| 401 | Yetkisiz | Abonelik anahtarı veya yetkilendirme belirteci, belirtilen bölge veya geçersiz uç nokta geçersiz. |
+| 401 | Yetkilendirilmemiş | Abonelik anahtarı veya yetkilendirme belirteci, belirtilen bölge veya geçersiz uç nokta geçersiz. |
 | 403 | Yasak | Eksik abonelik anahtarı veya yetkilendirme belirteci. |
 
 ## <a name="chunked-transfer"></a>Öbekli aktarım
 
-Öbekli aktarım (`Transfer-Encoding: chunked`), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetlerinin iletilirken ses dosyasını işlemeye başlamasını sağlar. REST API, kısmi veya Ara sonuçlar sağlamaz.
+Öbekli aktarım (`Transfer-Encoding: chunked`), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API, kısmi veya Ara sonuçlar sağlamaz.
 
 Bu kod örneği, nasıl öbekler halinde ses gönderileceğini gösterir. Yalnızca ilk öbekte ses dosyanın üst bilgisi içermelidir. `request` HTTPWebRequest nesneyi uygun REST uç noktasına bağlanır. `audioFile` ses dosyası diskte yoludur.
 

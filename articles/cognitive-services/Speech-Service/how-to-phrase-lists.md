@@ -1,7 +1,7 @@
 ---
 title: Tümcecik listeleri-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmayı metne dönüştürme sonuçlarını geliştirmek için `PhraseListGrammar` nesnesini kullanarak bir tümcecik listesi ile konuşma hizmetlerini sağlamayı öğrenin.
+description: Konuşmayı metne dönüştürme sonuçlarını geliştirmek için `PhraseListGrammar` nesnesini kullanarak bir tümcecik listesi ile konuşma hizmetini nasıl sağlayacağınızı öğrenin.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464535"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805884"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Konuşmayı metne yönelik tümcecik listeleri
 
-Bir tümcecik listesi ile konuşma hizmetleri sunarak, konuşma tanımanın doğruluğunu artırabilirsiniz. Tümcecik listeleri, bir kişinin adı veya belirli bir konum gibi, ses verilerinde bilinen tümcecikleri belirlemek için kullanılır.
+Konuşma hizmetini bir tümcecik listesi ile birlikte sunarak, konuşma tanımanın doğruluğunu artırabilirsiniz. Tümcecik listeleri, bir kişinin adı veya belirli bir konum gibi, ses verilerinde bilinen tümcecikleri belirlemek için kullanılır.
 
 Örnek olarak, "taşı" komutuna ve söylenen "Ward" bir hedefe sahipseniz, "Ward 'e taşı" girişini ekleyebilirsiniz. Bir tümcecik eklemek, ses "ilerlemek için taşı" yerine "ilerlemek" yerine tanınabilmesi olasılığını artırır.
 
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Bir `PhraseListGrammar` nesnesindeki değişiklikler bir sonraki tanıma göre veya konuşma hizmetlerine yeniden bağlanma sonrasında etkili olur.
+> Bir `PhraseListGrammar` nesnesindeki değişiklikler bir sonraki tanıma göre veya konuşma hizmetine bir yeniden bağlantı sonrasında devreye girer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

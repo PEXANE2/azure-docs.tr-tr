@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422612"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815448"
 ---
 # <a name="support-and-help-options"></a>Destek ve yardım seçenekleri
 
-Konuşma hizmetlerinin işlevselliğini keşfetmeye başladınız mı? Uygulamanıza yeni bir özellik mi uygulıyorsunuz? İşte, geliştirici olarak yardım alabileceğiniz öneriler aşağıda verilmiştir.
+Konuşma hizmetinin işlevselliğini keşfetmeye başladınız mı? Uygulamanıza yeni bir özellik mi uygulıyorsunuz? İşte, geliştirici olarak yardım alabileceğiniz öneriler aşağıda verilmiştir.
 
 > [!div class="checklist"]
 > * Azure bilişsel *Hizmetler*'deki yeni gelişmeler hakkında bilgi sahibi olun veya *konuşma hizmetiyle*ilgili en son haberleri bulun.
@@ -31,13 +31,13 @@ Konuşma hizmetlerinin işlevselliğini keşfetmeye başladınız mı? Uygulaman
 
 ## <a name="stay-informed"></a>Bildirim alın
 
-Bilişsel hizmetler hakkında haberler bilişsel [Hizmetler blogu](https://azure.microsoft.com/blog/topics/cognitive-services/)'nda toplanır. Konuşma hizmetleri hakkında en son bilgiler için, [konuşma Hizmetleri blogunu](https://azure.microsoft.com/blog/tag/speech-service/)izleyin.
+Bilişsel hizmetler hakkında haberler bilişsel [Hizmetler blogu](https://azure.microsoft.com/blog/topics/cognitive-services/)'nda toplanır. Konuşma hizmeti hakkında en son bilgiler için [konuşma hizmeti blogunu](https://azure.microsoft.com/blog/tag/speech-service/)izleyin.
 
 ## <a name="release-notes"></a>Sürüm notları
 
 [Sürüm notları](https://aka.ms/csspeech/whatsnew) , yeni bir sürüm kullanılabilir duruma geldiğinde güncelleştirilir. Notlar yeni özellikler, geliştirmeler ve hata düzeltmeleri hakkında bilgiler içerir.
 
-## <a name="search"></a>Ara
+## <a name="search"></a>Arama
 
 Belgelerinize, örneklere veya [Stack Overflow](https://www.stackoverflow.com) soruların veya örneklerde cevapdaki cevapları bulabilirsiniz.
 
@@ -55,7 +55,7 @@ Burada *{arama koşullarınız}* arama anahtar sözcüklerdir.
 
 Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portalda](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow bir soru gönderin

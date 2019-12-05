@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278673"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806516"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Birden çok makine için güncelleştirmeleri yönetme
 
@@ -101,9 +101,9 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 | Bağlı kaynak | Desteklenen | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
+| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
 | Azure Storage hesabı |Hayır |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
@@ -114,11 +114,15 @@ Tarama zamanlamasının yanı sıra, güncelleştirme uyumluluğuna yönelik tar
 
 Bir Linux bilgisayar için, uyumluluk taraması varsayılan olarak saatte bir gerçekleştirilir. MMA Aracısı yeniden başlatılırsa, 15 dakika içinde bir uyumluluk taraması başlatılır.
 
-Panonun yönetilen bilgisayarlardan güncelleştirilmiş verileri görüntülemesi 30 dakika ile 6 saat arasında sürebilir.
+Yönetilen bilgisayarlardan gelen güncelleştirilmiş verilerin panoda görüntülenmesi 30 dakika ile 6 saat arasında sürebilir.
 
 ## <a name="schedule-an-update-deployment"></a>Güncelleştirme dağıtımı zamanlama
 
 Güncelleştirmeleri yüklemek için, sürüm zamanlamanız ve hizmet pencerenize göre hizalanan bir dağıtım zamanlayın. Dağıtıma hangi güncelleştirme türlerinin dahil edileceğini seçebilirsiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
+
+>[!NOTE]
+>Bir güncelleştirme dağıtımı zamanladığınızda, hedef makinelerdeki güncelleştirme dağıtımını işleyen **Patch-MicrosoftOMSComputers** runbook 'una bağlı bir [zamanlama](shared-resources/schedules.md) kaynağı oluşturur. Azure portal zamanlama kaynağını veya dağıtımı oluşturduktan sonra PowerShell 'i kullanarak silerseniz, zamanlanan güncelleştirme dağıtımını keser ve portaldan yeniden yapılandırmayı denediğinizde bir hata oluşturur. Yalnızca ilgili dağıtım zamanlamasını silerek zamanlama kaynağını silebilirsiniz.
+>
 
 Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı zamanlamak için, **güncelleştirme yönetimi**altında **güncelleştirme dağıtımı zamanla**' yı seçin.
 
@@ -161,7 +165,7 @@ Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı za
 
    |Seçenek|Açıklama|
    |---|---|
-   |Gerekirse yeniden Başlat| **(Varsayılan)** Gerekirse, bakım penceresi izin veriyorsa yeniden başlatma başlatılır.|
+   |Gerekirse yeniden başlat| **(Varsayılan)** Gerekirse, bakım penceresi izin veriyorsa yeniden başlatma başlatılır.|
    |Her zaman yeniden başlat|Bir yeniden başlatma, gerekli olup olmadığına bakılmaksızın başlatılır. |
    |Hiçbir zaman yeniden başlatma|Yeniden başlatma gerekli olursa olsun, yeniden başlatmalar bastırılır.|
    |Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|Bu seçenek güncelleştirmeleri yüklemeyi yoksayar ve yalnızca bir yeniden başlatma işlemi başlatır.|

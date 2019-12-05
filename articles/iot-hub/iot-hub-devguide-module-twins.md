@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701803"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807434"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub modül TWINS 'i anlayın ve kullanın
 
@@ -24,7 +24,7 @@ Cihaz tarafında IoT Hub cihaz SDK 'Ları, her birinin IoT Hub için bağımsız
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu makalede şunları açıklanmaktadır:
+Bu makalede açıklanır:
 
 * Modülün yapısı ikizi: *Etiketler*, *istenen* ve *bildirilen özellikler*.
 * Modüllerdeki ve arka uçlardaki işlemler modül TWINS üzerinde gerçekleştirilebilir.
@@ -33,7 +33,7 @@ Bildirilen özellikleri, cihazdan buluta iletileri veya karşıya dosya yükleme
 
 İstenen özellikleri, doğrudan yöntemleri veya buluttan cihaza iletileri kullanma hakkında rehberlik için [buluttan cihaza iletişim kılavuzuna](iot-hub-devguide-c2d-guidance.md) bakın.
 
-## <a name="module-twins"></a>Modül TWINS
+## <a name="module-twins"></a>Modül ikizlerini
 
 Modül TWINS, modülle ilgili bilgileri şu şekilde saklayın:
 
@@ -183,10 +183,10 @@ Kök nesnede modül kimliği özellikleri ve `tags` için kapsayıcı nesneler v
     $iothub-ileti-kaynak | twinChangeEvents |
     $content kodlaması | UTF-8 |
     deviceId | Cihazın KIMLIĞI |
-    Modül kimliği | Modülün KIMLIĞI |
+    moduleId | Modülün KIMLIĞI |
     hubName | IoT Hub adı |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) işlem zaman damgası |
-    ıothub-Message-Schema | deviceLifecycleNotification |
+    ıothub-Message-Schema | twinChangeNotification |
     opType | "yeniden kazan" veya "updateTwin" |
 
     İleti sistemi özelliklerine `$` simgesiyle ön ek uygulanır.

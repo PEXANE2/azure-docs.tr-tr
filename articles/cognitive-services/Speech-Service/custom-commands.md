@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579696"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806312"
 ---
-# <a name="custom-commands-preview"></a>Özel komutlar (Önizleme)
+# <a name="custom-commands-preview"></a>Özel Komutlar (Önizleme)
 
 [Ses yardımcıları](voice-assistants.md) kullanıcıları dinler ve genellikle geri konuşarak bir işlem gerçekleştirebilir. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının `DialogServiceConnector` nesnesiyle birlikte yardımcılar 'a bağlanır.
 
@@ -49,7 +49,7 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 ## <a name="customization"></a>Özelleştirme
 
-Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
+Konuşma hizmeti kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
 
 > [!NOTE]
 > Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
@@ -60,5 +60,5 @@ Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, [konu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 * [Konuşma SDK 'sını alın](speech-sdk.md)

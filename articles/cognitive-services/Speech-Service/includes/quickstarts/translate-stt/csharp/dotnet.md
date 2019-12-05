@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı metne çevirme, C# (.NET Framework Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: e003b8358931b4891af6ce97ab82710b241c3da2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a8b8f05195f829507b83df5d968358749a290aa
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502782"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816943"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -26,7 +26,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **Program.cs**açın ve içindeki tüm kodu aşağıdaki kodla değiştirin.
 
@@ -102,9 +102,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
    }
    ```
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Menü çubuğundan **dosya** > **Tümünü Kaydet**' i seçin.
 
@@ -114,7 +114,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. **HelloWorld** uygulamasını başlatmak Için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın).
 
-1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı (Bu durumda Almanca 'ya) çeviren ve metin veren konuşma hizmetlerine iletir. Konuşma hizmetleri daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
+1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir. Bu, metne (Bu durumda Almanca 'ya) ve metni dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 
 ````
 Say something...

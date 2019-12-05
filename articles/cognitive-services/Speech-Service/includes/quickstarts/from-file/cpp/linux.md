@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 5b3bbbe635d2165044dc827a0cc9abcfc09a8cd1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2372e04ed7e20757cc0a3cbb9aae5e7597f17c3f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795881"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819186"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -76,7 +76,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
    ````
 
-1. Bu yeni dosyada, dize `YourSubscriptionKey`, konuşma Hizmetleri abonelik anahtarınızla değiştirin.
+1. Bu yeni dosyada `YourSubscriptionKey` dizesini Konuşma hizmeti abonelik anahtarınız ile değiştirin.
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
@@ -136,7 +136,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
    ./helloworld
    ```
 
-1. Ses dosyanız konuşma hizmetlerine iletilir ve dosyadaki ilk söylik, aynı pencerede görüntülenen metne aktarılır.
+1. Ses dosyanız konuşma hizmetine iletilir ve dosyadaki ilk söylenme, aynı pencerede görüntülenen metne yeniden gönderilir.
 
    ```text
    Recognizing first result...

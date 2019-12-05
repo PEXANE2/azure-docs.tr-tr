@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464601"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806003"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -44,7 +44,7 @@ Veri kümeleri, karşıya yükle düğmesine ulaştıktan sonra otomatik olarak 
 
 Aşağıdaki tabloda, içeri aktarılan veri kümeleri için işleme durumları gösterilmektedir:
 
-| Durum | Anlamı |
+| Eyalet | Anlamı |
 | ----- | ------- |
 | İşleniyor | Veri kümeniz alındı ve işleniyor. |
 | Başarılı oldu | Veri kümeniz doğrulandıktan sonra artık bir ses modeli oluşturmak için kullanılabilir. |
@@ -86,7 +86,7 @@ Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş g
 
 Gösterilen durum, burada gösterildiği gibi, veri kümenizi bir ses modeline dönüştürme sürecini yansıtır.
 
-| Durum | Anlamı |
+| Eyalet | Anlamı |
 | ----- | ------- |
 | İşleniyor | Ses modeliniz oluşturuluyor. |
 | Başarılı oldu | Ses modeliniz oluşturuldu ve dağıtılabilir. |
@@ -117,7 +117,7 @@ Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan �
     > [!NOTE]
     > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
 
-5.  **Oluştur**'a tıklayın.
+5.  **Oluştur**’a tıklayın.
 
 Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
 

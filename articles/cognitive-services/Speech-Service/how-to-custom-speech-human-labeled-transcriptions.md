@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075807"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806071"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
 
@@ -31,7 +31,7 @@ Ingilizce ses için insan etiketli dökümlerde yalnızca ASCII karakterler kull
 
 | Kaçınacak karakterler | Değiştirme | Notlar |
 | ------------------- | ------------ | ----- |
-| "Merhaba Dünya" | "Merhaba Dünya" | Açma ve kapatma tırnak işaretleri, uygun ASCII karakterleriyle değiştirilmiştir. |
+| "Merhaba Dünya" | "Merhaba dünya" | Açma ve kapatma tırnak işaretleri, uygun ASCII karakterleriyle değiştirilmiştir. |
 | John 'un günü | John 'un günü | Kesme işareti uygun ASCII karakteriyle değiştirildi. |
 | Her şey iyi değildi. harika! | iyi--Hayır, harika! | Em Dash iki kısa çizgi ile değiştirildi. |
 

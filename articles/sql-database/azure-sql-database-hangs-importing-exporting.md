@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808271"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807077"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL veritabanı Içeri/dışarı aktarma hizmeti 'nin bir veritabanını içeri veya dışarı aktarma işlemi uzun zaman alır
 
@@ -22,7 +22,7 @@ Azure SQL veritabanı Içeri/dışarı aktarma hizmetini kullandığınızda, i�
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL veritabanı Içeri/dışarı aktarma hizmeti
 
-Azure SQL veritabanı Içeri/dışarı aktarma hizmeti, her Azure veri merkezinde çalışan REST tabanlı bir Web hizmetidir. Bu hizmet, SQL veritabanınızı Azure portal taşımak için [veritabanını Içeri aktar](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) veya [dışarı aktar](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) seçeneğini kullandığınızda çağrılır. Hizmet, Azure SQL veritabanı ile Azure Blob depolama arasında içeri aktarmalar ve dışarı aktarmalar gerçekleştirmek için ücretsiz istek sıraya alma ve işlem hizmetleri sağlar.
+Azure SQL veritabanı Içeri/dışarı aktarma hizmeti, her Azure veri merkezinde çalışan REST tabanlı bir Web hizmetidir. Bu hizmet, SQL veritabanınızı Azure portal taşımak için [veritabanını Içeri aktar](sql-database-import.md#using-azure-portal) veya [dışarı aktar](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) seçeneğini kullandığınızda çağrılır. Hizmet, Azure SQL veritabanı ile Azure Blob depolama arasında içeri aktarmalar ve dışarı aktarmalar gerçekleştirmek için ücretsiz istek sıraya alma ve işlem hizmetleri sağlar.
 
 İçeri ve dışarı aktarma işlemleri geleneksel bir fiziksel veritabanı yedeklemesini temsil etmez ancak bunun yerine özel bir BACPAC biçimi kullanan veritabanının mantıksal bir yedeklemesi değildir. BACPAC biçimi, Microsoft SQL Server ve Azure SQL veritabanı sürümleri arasında değişebilen bir fiziksel biçim kullanmanızı önlemenize olanak sağlar. Bu nedenle, veritabanını bir SQL Server veritabanına ve bir SQL veritabanına güvenli bir şekilde geri yüklemek için kullanabilirsiniz.
 

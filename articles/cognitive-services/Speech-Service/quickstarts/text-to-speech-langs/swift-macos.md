@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 727929efb499f32dcd42a964b6b6c8e762803590
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 616d212c9968fe740811805eb6ecdc200c749ed7
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503468"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817722"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta Swift 'ta konuşmayı Sentezleştirme
 
@@ -23,7 +23,7 @@ Bu makalede, bilişsel hizmetler konuşma SDK 'sını kullanarak Swift 'ta bir m
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
+Başlamadan önce önkoşullarının listesi aşağıda verilmiştir:
 
 * Konuşma hizmeti için bir [abonelik anahtarı](~/articles/cognitive-services/Speech-Service/get-started.md) .
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) veya üzeri ve [Cocoapods](https://cocoapods.org/) yüklü bir MacOS makinesi.

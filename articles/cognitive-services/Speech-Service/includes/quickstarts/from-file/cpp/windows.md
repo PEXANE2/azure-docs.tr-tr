@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 68a52ddd7bcf711f64860b6598cc982e961075ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795924"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819436"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -95,7 +95,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. **HelloWorld** uygulamasını başlatmak Için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın).
 
-1. Ses dosyanız konuşma hizmetlerine iletilir ve dosyadaki ilk söylik, aynı pencerede görüntülenen metne aktarılır.
+1. Ses dosyanız konuşma hizmetine iletilir ve dosyadaki ilk söylenme, aynı pencerede görüntülenen metne yeniden gönderilir.
 
    ```text
    Recognizing first result...

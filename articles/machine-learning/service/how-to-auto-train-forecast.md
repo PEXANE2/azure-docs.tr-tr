@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f516b3d3840262d9221db772f2c186650462e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580702"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807400"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "73580702"
 Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi kullanarak zaman serisi tahmin regresyon modelini eğitme hakkında bilgi edineceksiniz. Tahmin modelinin yapılandırılması, otomatik makine öğrenimi kullanılarak standart regresyon modeli ayarlamaya benzer, ancak zaman serisi verileriyle çalışmaya yönelik bazı yapılandırma seçenekleri ve ön işleme adımları mevcuttur. Aşağıdaki örneklerde nasıl yapılacağı gösterilmektedir:
 
 * Zaman serisi modelleme için verileri hazırlama
-* [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) nesnesinde belirli zaman serisi parametrelerini yapılandırma
+* [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) nesnesinde belirli zaman serisi parametrelerini yapılandırma
 * Zaman serisi verileriyle tahminleri çalıştırma
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -57,7 +57,7 @@ Yerel zaman serisi öğrenimi de otomatik ML 'nin bir parçası olarak sağlanı
 
 Oto gerileme tümleşik hareketli ortalama (ARıMA), zaman serisi tahminlerine yönelik popüler istatistiksel bir yöntemdir. Bu tahmin tekniği genellikle verilerin döngüler gibi eğilimler gösterdiği kısa süreli tahmin senaryolarında kullanılır ve bu da tahmin edilemez ve modellenebilir veya tahmin edilebilir. Otomatik-ARıMA, tutarlı ve güvenilir sonuçlar almak için verilerinizi sabit verilere dönüştürür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 * Bu makalede, bir otomatik makine öğrenimi denemesi ayarlamaya yönelik temel benzerlik varsayılmaktadır. Temel otomatik makine öğrenimi tasarım düzenlerini görmek için [öğreticiyi](tutorial-auto-train-models.md) izleyin veya [nasıl yapılır?](how-to-configure-auto-train.md)
@@ -113,7 +113,7 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 
 `AutoMLConfig` nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. Aşağıdaki tabloda her bir parametre ve kullanımı açıklanmaktadır.
 
-| Larına | Açıklama | Gerekli |
+| param | Açıklama | Gereklidir |
 |-------|-------|-------|
 |`time_column_name`|Zaman serisini oluşturmak ve sıklığını göstermek için kullanılan giriş verilerinde tarih saat sütununu belirtmek için kullanılır.|✓|
 |`grain_column_names`|Giriş verilerinde ayrı seri gruplarını tanımlayan ad (ler). Gren tanımlanmazsa, veri kümesinin bir adet zaman serisi olduğu varsayılır.||
@@ -122,7 +122,7 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 |`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* < = eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur. Modele eğitim yaparken yalnızca belirli bir geçmişi düşünmek istediğinizde bu parametreyi belirtin.||
 |`enable_dnn`|Tahmini DNNs 'leri etkinleştirin.||
 
-Daha fazla bilgi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) bakın.
+Daha fazla bilgi için [başvuru belgelerine](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) bakın.
 
 Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Veri kümesindeki `day_datetime` alanına `time_column_name` ayarlayın. Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `grain_column_names` parametresini tanımlayın; biri mağaza A ve B. son olarak, tüm test kümesinin tahmin edilmesi için `max_horizon` 50 olarak ayarlayın. `target_rolling_window_size`olan bir tahmin penceresi ayarlayın ve `target_lags` parametresiyle birlikte 2 dönemdeki hedef değerlerde tek bir gecikme süresi belirleyin.
 
@@ -140,7 +140,7 @@ time_series_settings = {
 > [!NOTE]
 > Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
-Yukarıdaki kod parçacığında `grain_column_names` tanımlayarak, oto ve birden çok zaman serisi olarak da bilinen iki ayrı zaman serisi grubu oluşturulur. Gren tanımlanmazsa, oto veri kümesinin tek bir zaman serisi olduğunu varsayacaktır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için bkz. [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+Yukarıdaki kod parçacığında `grain_column_names` tanımlayarak, oto ve birden çok zaman serisi olarak da bilinen iki ayrı zaman serisi grubu oluşturulur. Gren tanımlanmazsa, oto veri kümesinin tek bir zaman serisi olduğunu varsayacaktır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)bakın.
 
 Şimdi, `forecasting` görev türünü belirterek standart bir `AutoMLConfig` nesnesi oluşturun ve denemeyi iletin. Model bittikten sonra en iyi çalıştırma yinelemesini alın.
 

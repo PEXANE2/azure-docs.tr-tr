@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033446"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819068"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak Premium depolamaya geçiş
 
@@ -79,7 +79,7 @@ Site Recovery, Azure IaaS VM 'lerini bölgeler arasında veya aynı bölge için
 1. [Azure portalı](https://portal.azure.com) açın.
 2.  > **yönetim** > **Backup ve Site Recovery (OMS)** **kaynak oluştur** ' u seçin. Alternatif olarak **, > ** **kurtarma hizmetleri kasasını** > **Ekle**' yi de seçebilirsiniz.
    >[!NOTE]
-   >Yedekleme ve Site Recovery daha önce ![OMS paketi](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)bir parçasıdır.
+   >Yedekleme ve Site Recovery daha önce [OMS paketinin](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)bir parçasıdır.
 1. VM 'Lerin çoğaltılacağı bir bölge belirtin. Aynı bölgedeki geçiş amacıyla, kaynak sanal makinelerinizin ve kaynak depolama hesaplarınızın bulunduğu bölgeyi seçin. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>2\. Adım: koruma hedeflerinizi seçin 
@@ -195,7 +195,7 @@ Yük devretme sınamasını tamamladıktan sonra, disklerinizi Premium depolamay
 
 Site Recovery, türü Premium depolama özellikli bir VM ile aynı veya buna benzer bir sanal makine örneği oluşturur. [Windows sanal makineleri fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) veya [Linux sanal makineleri fiyatlandırmasına](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)giderek çeşitli sanal makine örneklerinin performansını ve fiyatını kontrol edebilirsiniz.
 
-## <a name="post-migration-steps"></a>Geçiş sonrası adımlar
+## <a name="post-migration-steps"></a>Geçiş sonrası adımları
 
 1. Geçerliyse, **çoğaltılan VM 'leri kullanılabilirlik kümesine yapılandırın**. Site Recovery, VM 'Lerin kullanılabilirlik kümesiyle birlikte geçirilmesini desteklemez. Çoğaltılan sanal makinenizin dağıtımına bağlı olarak, aşağıdakilerden birini yapın:
    * Klasik dağıtım modeli aracılığıyla oluşturulan bir VM için: VM 'yi Azure portal kullanılabilirlik kümesine ekleyin. Ayrıntılı adımlar için, [mevcut bir sanal makineyi bir kullanılabilirlik kümesine ekleme](../linux/classic/configure-availability-classic.md)bölümüne gidin.
@@ -220,7 +220,7 @@ Sanal makineleri geçirmeye yönelik belirli senaryolar için aşağıdaki kayna
 
 Ayrıca, Azure depolama ve Azure sanal makineleri hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [Azure depolama alanı](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Depolama](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png

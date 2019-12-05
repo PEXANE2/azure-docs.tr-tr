@@ -4,12 +4,12 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c87dc98ddd1d5799f3363d7574063ef752fd8239
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172339"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806380"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
@@ -21,7 +21,7 @@ Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini s
 
 * Kasaya veri aktarımını beklemek zorunda kalmadan kurtarma için kullanılabilen bir yedekleme işinin parçası olarak alınan anlık görüntüleri kullanma özelliği. Geri yüklemeyi tetiklemeden önce anlık görüntülerin kasaya kopyalaması için bekleme süresini azaltır.
 * , Varsayılan olarak iki gün boyunca anlık görüntüleri yerel olarak tutarak yedekleme ve geri yükleme sürelerini azaltır. Bu varsayılan anlık görüntü saklama değeri 1 ila 5 gün arasında bir değere yapılandırılabilir.
-* 4 TB 'a kadar disk boyutlarını destekler. Disklerin yeniden boyutlandırılması Azure Backup önerilmez. 4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [disk boyutları 30 TB 'a kadar VM yedeklemesi](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+* 32 TB 'a kadar disk boyutlarını destekler. Disklerin yeniden boyutlandırılması Azure Backup önerilmez.
 * , Standart HDD disklerle ve Premium SSD disklerle birlikte Standart SSD diskleri destekler.
 * Geri yükleme sırasında, yönetilmeyen VM 'Lerin orijinal depolama hesaplarını (disk başına) kullanma özelliği. Bu özellik, VM 'nin depolama hesapları arasında dağıtılan diskleri olduğunda bile vardır. Çok çeşitli VM yapılandırmalarının geri yükleme işlemlerini hızlandırır.
 * Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir.
@@ -65,7 +65,7 @@ Azure portal, **anlık geri yükleme** bölümünün altındaki **VM yedekleme i
 
 ![Anında geri yükleme özelliği](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 >[!NOTE]
 > Az PowerShell Version 1.6.0 onenlerden itibaren, PowerShell kullanarak ilkede anlık geri yükleme anlık görüntü bekletme süresini güncelleştirebilirsiniz

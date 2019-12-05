@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Android 'de konuşma cihazları SDK 'sını çalıştırma"
+title: "Hızlı başlangıç: Android konuşma hizmetinde konuşma cihazları SDK 'sını çalıştırma"
 titleSuffix: Azure Cognitive Services
 description: Android konuşma cihazları SDK 'Sı ile çalışmaya başlama önkoşulları ve yönergeleri.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c3eb6ec28879a7c53feb270e33857cd67dc06b0b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ccc6c2554576d91d2236fb84f81c8aeccdc07be7
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111698"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815345"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Hızlı başlangıç: Android 'de konuşma cihazları SDK örnek uygulamasını çalıştırma
 
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
-Bu kılavuzda, bir konuşma Hizmetleri kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
 Örnek uygulama için kaynak kodu konuşma cihaz SDK'sı ile dahil edilir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -36,11 +36,11 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
   > [!NOTE]
   > Android-Sample-Release. zip dosyası Android örnek uygulamasını içerir ve bu hızlı başlangıç, uygulamanın C:\SDSDK\Android-Sample-Release 'ye ayıklandığını varsayar
 
-- [Konuşma Hizmetleri için bir Azure abonelik anahtarı](get-started.md) almak için
+- [Konuşma hizmetine yönelik bir Azure abonelik anahtarı](get-started.md) almak için
 
 - Konuşma dökümünü kullanmayı planlıyorsanız, [döngüsel bir mikrofon cihazı](get-speech-devices-sdk.md) kullanmanız gerekir ve bu özellik şu anda yalnızca "en-US" ve "zh-CN" bölgelerinde, "merkezde ABD" ve "eastasıya" olarak kullanılabilir. Konuşma dökümünü kullanmak için bu bölgelerden birinde bir konuşma anahtarınız olmalıdır.
 
-- Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetlerini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs C#Ile konuşma amaçlarını tanıma ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+- Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs C#Ile konuşma amaçlarını tanıma ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
   Yapabilecekleriniz [basit LUIS modeline oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/) veya LUIS modeline LUIS example.json örneği kullanın. LUIS modeline kullanılabilir örnek [konuşma cihazları SDK indirme sitesi](https://aka.ms/sdsdk-luis). Modelinizin JSON dosyasını karşıya yüklemek için [LUIS portalı](https://www.luis.ai/home)seçin **alma yeni uygulama**ve ardından JSON dosyasını seçin.
 

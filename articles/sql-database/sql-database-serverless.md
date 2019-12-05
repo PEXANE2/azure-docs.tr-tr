@@ -4,19 +4,19 @@ description: Bu makalede, yeni sunucusuz işlem katmanı açıklanmakta ve mevcu
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775592"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807026"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Veritabanı sunucusuz
 
@@ -66,7 +66,7 @@ Aşağıdaki tabloda sunucusuz bilgi işlem katmanı ve sağlanan işlem katman�
 | | **Sunucusuz işlem** | **Sağlanan işlem** |
 |:---|:---|:---|
 |**Veritabanı kullanım deseninin**| Zaman içinde daha düşük ortalama işlem kullanımı ile öngörülemeyen kullanım |  Zamana göre daha fazla ortalama işlem kullanımı veya elastik havuzlar kullanan birden çok veritabanı içeren daha düzenli kullanım düzenleri.|
-| **Performans yönetimi çabaları** |düşürül|Sırada|
+| **Performans yönetimi çabaları** |Daha düşük|Daha yüksek|
 |**İşlem ölçekleme**|Automatic|Manual|
 |**İşlem yanıtlama hızı**|Etkin olmayan dönemlerden sonra düşük|Hemen|
 |**Faturalandırma ayrıntı düzeyi**|/Saniye|Saatlik|
@@ -334,7 +334,7 @@ Bu durumda, veritabanı ilk 8 saat boyunca işlem ve depolama için faturalandı
 
 Daha kesin olarak, bu örnekteki işlem faturanız aşağıdaki gibi hesaplanır:
 
-|Zaman aralığı|her saniye kullanılan sanal çekirdekler|Her saniye kullanılan GB|Faturalandırılan işlem boyutu|zaman aralığı içinde faturalandırılan sanal çekirdek Saniyeler|
+|Süre Aralığı|her saniye kullanılan sanal çekirdekler|Her saniye kullanılan GB|Faturalandırılan işlem boyutu|zaman aralığı içinde faturalandırılan sanal çekirdek Saniyeler|
 |---|---|---|---|---|
 |0:00-1:00|4|9|kullanılan sanal çekirdekler|4 sanal çekirdek * 3600 saniye = 14400 sanal çekirdek saniye|
 |1:00-2:00|1|12|Kullanılan bellek|12 GB * 1/3 * 3600 saniye = 14400 sanal çekirdek saniye|

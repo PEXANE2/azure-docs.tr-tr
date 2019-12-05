@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 30bdbf9fa0ea346892622c3e7f24f9f31652a650
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ddba414ef1801b812d157ad734847099a8a9f25
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280472"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806193"
 ---
 # <a name="try-the-speech-service-for-free"></a>Konuşma tanıma hizmetini ücretsiz olarak deneyin
 
@@ -32,7 +32,7 @@ Bu makalede, gereksinimlerinize en uygun olan bu seçeneklerden birini seçersin
 >
 > Ücretsiz, düşük hacimli konuşma hizmeti katmanını kullanıyorsanız, ücretsiz deneme veya hizmet kredinizin süresi dolduktan sonra bile bu ücretsiz aboneliği koruyabilirsiniz.
 >
-> Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-konuşma Hizmetleri](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-konuşma hizmeti](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="try-the-speech-service-without-credit-card-info"></a>Konuşma hizmeti 'ni kredi kartı bilgisi olmadan deneyin
 
@@ -46,7 +46,7 @@ Konuşma hizmetini sonraki bölümdeki yönergeleri kullanarak denemeyi öneriri
 > Deneme süreniz, aşağıdaki adımlar tamamlandıktan hemen sonra başlar.
 
 1. Bilişsel [hizmeti 'Ni deneyin](https://azure.microsoft.com/try/cognitive-services/)' e gidin.
-1. **Konuşma API 'leri** sekmesini seçin.
+1. Seçin **konuşma API'leri** sekmesi.
 1. **API anahtarını al**' ı seçin.
 
 Faturalandırma seçimlerinizle karşılaşırsınız. Ücretsiz seçeneğini belirleyin ve ardından kullanıcı sözleşmesini okuyun ve onaylayın. Konuşma hizmetini sınırlı bir süre için denemek üzere kullanabileceğiniz anahtarlarla karşılaşırsınız.
@@ -64,15 +64,15 @@ Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.micr
 
 Azure hesabınızda bir konuşma hizmeti kaynak (ücretsiz veya Ücretli katman) eklemek için:
 
-1. Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Oturum [Azure portalında](https://portal.azure.com/) Microsoft hesabınızı kullanarak.
 
-1. Portalın sol üst kısmında **kaynak oluştur** ' u seçin. **Kaynak oluştur**' u görmüyorsanız, sol üstteki daraltılan menüyü seçerek her zaman bulabilirsiniz:
+1. Seçin **kaynak Oluştur** , portalın sol üst köşesindeki. **Kaynak oluştur**' u görmüyorsanız, sol üstteki daraltılan menüyü seçerek her zaman bulabilirsiniz:
 
    ![daraltılmış gezinti düğmesi](media/index/collapsed-nav.png)
 
 1. **Yeni** pencerede, arama kutusuna "konuşma" YAZıN ve ENTER tuşuna basın.
 
-1. Arama sonuçlarında **konuşma**' yı seçin.
+1. Arama sonuçlarında seçin **konuşma**.
 
    ![Konuşma Arama sonuçları](media/index/speech-search.png)
 
@@ -96,8 +96,8 @@ Bir abonelikten diğerine geçmek için örneğin, ücretsiz deneme süresinin s
 
 ## <a name="about-regions"></a>Bölgeler hakkında
 
-- Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, bir konuşma yapılandırması oluştururken `westus`gibi bölge kodunu sağlarsınız.
-- Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](rest-apis.md)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
+- Uygulamanız kullanıyorsa bir [Speech SDK'sı](speech-sdk.md), bölge kodu gibi sağladığınız `westus`, konuşma yapılandırma oluştururken.
+- Uygulamanızı konuşma hizmetin birini kullanıp kullanmadığını [REST API'leri](rest-apis.md), bölge uç noktası URI'si istekleri yaparken kullandığınız bir parçasıdır.
 - Bir bölgede oluşturulan anahtarları yalnızca bu bölgede geçerlidir. Diğer bölgeler ile kullanılmaya çalışılırsa, kimlik doğrulama hataları neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -105,5 +105,5 @@ Bir abonelikten diğerine geçmek için örneğin, ücretsiz deneme süresinin s
 10 dakikalık başlangıçtan biriyle tamamlamak veya SDK örneklerimizi denetleyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [konuşma SDK örneklerinde](speech-sdk.md#get-the-samples) konuşmayı tanıma
+> [Hızlı Başlangıç: C# ' de Konuşma tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [Speech SDK'sı örnekleri](speech-sdk.md#get-the-samples)

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891449"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806958"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -59,7 +59,7 @@ Bu görüntüler "kendi lisansını getir" olarak değerlendirilir ve yalnızca 
 Bireyler, çözümlerini Azure 'da sıfırdan oluşturdukları özel bir görüntüye dayandırın ve şirket içi ortamlarından özel bir görüntüyü karşıya yükleyebilir.
 
 ## <a name="oracle-database-vm-images"></a>Oracle Database VM görüntüleri
-Oracle, Oracle Linux tabanlı sanal makine görüntülerinde Azure 'da Oracle DB 12,1 ve daha yüksek standart ve Enterprise sürümlerini çalıştırmayı destekler.  Azure 'da Oracle DB üretim iş yükleri için en iyi performans için, VM görüntüsünü düzgün bir şekilde boyutlandırdığınızdan ve Premium SSD veya Ultra SSD yönetilen diskleri kullandığınızdan emin olun. Oracle yayımlanmış VM görüntüsünü kullanarak Azure 'da bir Oracle DB çalışmaya ve çalıştırmaya hızlı bir şekilde nasıl yararlandığınıza ilişkin yönergeler için [Oracle DB hızlı başlangıç kılavuzunu deneyin](oracle-database-quick-create.md).
+Oracle, Oracle Linux tabanlı sanal makine görüntülerinde Azure 'da Oracle Database 12,1 ve daha yüksek standart ve Enterprise sürümlerini çalıştırmayı destekler.  Azure 'da Oracle Database üretim iş yükleri için en iyi performans için, VM görüntüsünü düzgün bir şekilde boyutlandırdığınızdan ve Premium SSD veya Ultra SSD yönetilen diskleri kullandığınızdan emin olun. Oracle yayımlanmış VM görüntüsünü kullanarak Azure 'da bir Oracle Database çalışmaya ve çalıştırmaya hızlı bir şekilde nasıl yararlandığınıza ilişkin yönergeler için [Oracle Database hızlı başlangıç kılavuzunu deneyin](oracle-database-quick-create.md).
 
 ### <a name="attached-disk-configuration-options"></a>Ekli disk yapılandırma seçenekleri
 
@@ -79,13 +79,13 @@ Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında ça
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
 Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
-Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle DB iş yükleri için önerilir.
+Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle Database iş yükleri için önerilir.
 
 Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
 
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle gerçek uygulama kümesi (Oracle RAC)
-Oracle RAC, şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü = parti yazılımına ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
+Oracle gerçek uygulama kümesi (Oracle RAC), şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü = parti yazılımına ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma konuları
 Azure 'da Oracle veritabanları kullanırken, herhangi bir kesinti yaşanmasını önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümü uygulamaktan siz sorumlusunuz. 
@@ -107,20 +107,20 @@ Oracle Destek notunun [belge kimliği 2178595,1](https://support.oracle.com/epmo
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server sanal makine görüntüleri
 
-* **Kümeleme yalnızca Enterprise Edition 'da desteklenir.** WebLogic kümeleme 'yi yalnızca WebLogic Server Enterprise sürümü kullanılırken kullanma lisansına sahip olursunuz. WebLogic Server Standard Edition ile kümeleme kullanmayın.
-* **UDP çok noktaya yayını desteklenmez.** Azure, çok noktaya yayın veya yayın olmadan UDP tek noktaya yayını destekler. WebLogic Server, Azure UDP tek noktaya yayın özelliklerine güveniyor. UDP tek noktaya yayın için en iyi sonuçlar için, WebLogic Cluster boyutunun statik tutulmasını veya 10 ' dan fazla yönetilen sunucu olmadan tutulmasını öneririz.
-* **WebLogic Server, T3 erişimi için genel ve özel bağlantı noktalarının aynı olmasını bekler (örneğin, kurumsal Javabeller kullanılırken).** Bir hizmet katmanı (EJB) uygulamasının, *Slwls*adlı bir sanal ağda iki veya daha fazla VM 'den oluşan bir WebLogic Server kümesinde çalıştığı çok katmanlı bir senaryoyu göz önünde bulundurun. İstemci katmanı, hizmet katmanında EJB çağrısına çalışan basit bir Java programı çalıştıran aynı sanal ağdaki farklı bir alt ağda bulunur. Hizmet katmanının yük dengelenmesi gerektiğinden, WebLogic Server kümesindeki sanal makineler için ortak yük dengeli bir uç noktanın oluşturulması gerekir. Belirttiğiniz özel bağlantı noktası genel bağlantı noktasından farklıysa (örneğin, 7006:7008), aşağıdaki gibi bir hata oluşur:
+* **Kümeleme yalnızca Enterprise Edition 'da desteklenir.** Yalnızca Oracle WebLogic Server Enterprise sürümü kullanılırken WebLogic kümeleme kullanma lisansına sahip olursunuz. Oracle WebLogic Server Standard sürümüyle kümeleme kullanmayın.
+* **UDP çok noktaya yayını desteklenmez.** Azure, çok noktaya yayın veya yayın olmadan UDP tek noktaya yayını destekler. Oracle WebLogic Server, Azure UDP tek noktaya yayın özelliklerine güveniyor. UDP tek noktaya yayın için en iyi sonuçlar için, WebLogic Cluster boyutunun statik tutulmasını veya 10 ' dan fazla yönetilen sunucu olmadan tutulmasını öneririz.
+* **Oracle WebLogic Server, T3 erişimi için genel ve özel bağlantı noktalarının aynı olmasını bekler (örneğin, kurumsal Javabeller kullanılırken).** Bir hizmet katmanı (EJB) uygulamasının, *Slwls*adlı bir sanal ağda iki veya daha fazla VM 'den oluşan bir Oracle WebLogic Server kümesinde çalıştığı çok katmanlı bir senaryoyu göz önünde bulundurun. İstemci katmanı, hizmet katmanında EJB çağrısına çalışan basit bir Java programı çalıştıran aynı sanal ağdaki farklı bir alt ağda bulunur. Hizmet katmanının yük dengelenmesi gerektiğinden, Oracle WebLogic Server kümesindeki sanal makineler için ortak yük dengeli bir uç noktanın oluşturulması gerekir. Belirttiğiniz özel bağlantı noktası genel bağlantı noktasından farklıysa (örneğin, 7006:7008), aşağıdaki gibi bir hata oluşur:
 
        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
        Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-   Bunun nedeni, herhangi bir uzak T3 erişimi için WebLogic Server yük dengeleyici bağlantı noktasını ve WebLogic Managed Server bağlantı noktasının aynı olmasını bekler. Önceki durumda, istemci bağlantı noktası 7006 ' a (yük dengeleyici bağlantı noktası) ve yönetilen sunucu ise 7008 (özel bağlantı noktası) üzerinde dinleme yapıyor. Bu kısıtlama yalnızca, HTTP değil, T3 erişimi için geçerlidir.
+   Bunun nedeni, tüm uzak T3 erişimidir, Oracle WebLogic Server yük dengeleyici bağlantı noktasını ve WebLogic Managed Server bağlantı noktasının aynı olmasını bekler. Önceki durumda, istemci bağlantı noktası 7006 ' a (yük dengeleyici bağlantı noktası) ve yönetilen sunucu ise 7008 (özel bağlantı noktası) üzerinde dinleme yapıyor. Bu kısıtlama yalnızca, HTTP değil, T3 erişimi için geçerlidir.
 
    Bu sorundan kaçınmak için aşağıdaki geçici çözümlerden birini kullanın:
 
   * T3 erişimine adanmış yük dengeli uç noktalar için aynı özel ve genel bağlantı noktası numaralarını kullanın.
-  * WebLogic Server 'ı başlatırken aşağıdaki JVM parametresini ekleyin:
+  * Oracle WebLogic Server 'ı başlatırken aşağıdaki JVM parametresini ekleyin:
 
     ```
     -Dweblogic.rjvm.enableprotocolswitch=true
@@ -128,10 +128,10 @@ Oracle Destek notunun [belge kimliği 2178595,1](https://support.oracle.com/epmo
 
 İlgili bilgiler için <https://support.oracle.com>KB makalesi **860340,1** bölümüne bakın.
 
-* **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Web Logic Server 'da dinamik bir küme kullanmak istediğinizi ve Azure 'da tek ve genel yük dengeli bir uç nokta ile kullanıma sunduğunuzu varsayalım. Bu işlem, yönetilen sunucuların her biri için (bir aralıktan dinamik olarak atanmayan) sabit bir bağlantı noktası numarası kullandığınız ve yöneticinin izlemediği makinelerden daha fazla yönetilen sunucu başlatmadığı sürece yapılabilir. Diğer bir deyişle, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden (birden çok WebLogic Server örneğinin aynı sanal makineyi paylaştığı) daha fazla WebLogic Servers ile sonuçlanmasına neden olursa, bu WebLogic Servers örneklerinden birden fazlası için mümkün değildir belirli bir bağlantı noktası numarasına bağlamak için. Bu sanal makinedeki diğerleri başarısız olur.
+* **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Oracle WebLogic Server 'da dinamik bir küme kullanmak istediğinizi ve Azure 'da tek ve genel yük dengeli bir uç nokta ile kullanıma sunduğunuzu varsayalım. Bu işlem, yönetilen sunucuların her biri için (bir aralıktan dinamik olarak atanmayan) sabit bir bağlantı noktası numarası kullandığınız ve yöneticinin izlemediği makinelerden daha fazla yönetilen sunucu başlatmadığı sürece yapılabilir. Diğer bir deyişle, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden (birden çok Oracle WebLogic Server örneği aynı sanal makineyi paylaştıkları) daha fazla Oracle WebLogic Servers 'ın başlatılmasına neden olursa, bu örneklerden birden fazlası için kullanılamaz. Belirli bir bağlantı noktası numarasına bağlanacak Oracle WebLogic Servers. Bu sanal makinedeki diğerleri başarısız olur.
 
    Yönetim sunucusunu, yönetilen sunucularına otomatik olarak benzersiz bağlantı noktası numaraları atanacak şekilde yapılandırırsanız, Azure tek bir genel bağlantı noktasından birden çok özel bağlantı noktasına eşlemeyi desteklemediğinden, bunun için gerekli olduğu gibi yük dengeleme mümkün değildir. yapılandırmada.
-* **Bir sanal makinede WebLogic Server 'ın birden çok örneği.** Dağıtımınızın gereksinimlerine bağlı olarak, sanal makine yeterince büyükse aynı sanal makinede WebLogic Server 'ın birden fazla örneğini çalıştırmayı düşünebilirsiniz. Örneğin, iki çekirdek içeren orta büyüklükte bir sanal makinede, iki adet Web Logic Server örneği çalıştırmayı seçebilirsiniz. Ancak, daha fazla WebLogic Server örneği çalıştıran yalnızca bir sanal makine kullandıysanız, mimarinize tek hata noktaları getirmekten kaçınmanızı öneririz. En az iki sanal makine kullanmak daha iyi bir yaklaşım olabilir ve her bir sanal makine daha sonra WebLogic Server 'ın birden fazla örneğini çalıştırabilir. Her WebLogic Server örneği aynı kümenin parçası olmaya devam edebilir. Ancak, Azure yük dengeleyici yük dengeli sunucuların benzersiz bir şekilde dağıtılmasını gerektirdiğinden, bu tür WebLogic Server dağıtımları tarafından sunulan uç noktaların yükünü dengelemek için Azure 'u kullanmak mümkün değildir. sanal makineler.
+* **Bir sanal makinedeki birden çok Oracle WebLogic Server örneği.** Dağıtımınızın gereksinimlerine bağlı olarak, sanal makine yeterince büyükse Oracle WebLogic Server 'ın birden fazla örneğini aynı sanal makinede çalıştırmayı düşünebilirsiniz. Örneğin, iki çekirdek içeren orta büyüklükte bir sanal makinede, iki çekirdekli Oracle WebLogic Server örneğini çalıştırmayı seçebilirsiniz. Ancak, yalnızca birden çok Oracle WebLogic Server örneğini çalıştıran tek bir sanal makine kullandıysanız, mimarinize tek hata noktaları getirmekten kaçınmanızı öneririz. En az iki sanal makine kullanmak daha iyi bir yaklaşım olabilir ve her bir sanal makine daha sonra Oracle WebLogic Server 'ın birden fazla örneğini çalıştırabilir. Oracle WebLogic Server 'ın her örneği aynı kümenin bir parçası olmaya devam edebilir. Ancak, Azure yük dengeleyici yük dengeli sunucuların benzersiz bir şekilde dağıtılmasını gerektirdiğinden, bu tür Oracle WebLogic Server dağıtımları tarafından sunulan uç noktaların yükünü dengelemek için Azure 'u kullanmak mümkün değildir. sanal makineler.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK sanal makine görüntüleri
 * **JDK 6 ve en son 7 güncelleştirme.** Java 'nın en son ortak ve desteklenen sürümü (Şu anda Java 8) kullanmanızı öneririz. Azure, JDK 6 ve 7 görüntülerini da kullanılabilir hale getirir. Bu, henüz JDK 8 ' e yükseltilmeye hazırlanma eski uygulamalar için tasarlanmıştır. Önceki JDK görüntülerine yönelik güncelleştirmeler artık genel kullanıma sunulmayabilir, ancak Oracle ile Microsoft iş ortaklığı verildiğinde, Azure tarafından sağlanan JDK 6 ve 7 görüntüleri, normal olarak Oracle tarafından sunulan daha yeni bir ortak olmayan güncelleştirme içerir. yalnızca Oracle 'ın desteklediği müşterilerin seçim grubu. JDK görüntülerinin yeni sürümleri, güncelleştirilmiş JDK 6 ve 7 sürümleri ile zaman içinde kullanıma sunulacaktır.

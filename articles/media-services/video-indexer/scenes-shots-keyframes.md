@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860235"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806735"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sahneler, çekimler, ana kareler
 
@@ -30,7 +30,7 @@ Video Indexer görsel ipuçlarıyla videoda bir sahnenin ne zaman değişiklik o
 > [!NOTE]
 > En az 3 sahne içeren videolar için geçerlidir.
 
-## <a name="shot-detection"></a>Çekim algılama
+## <a name="shot-detection"></a>Görüntü algılama
 
 Video Indexer, ardışık çerçevelerin renk düzeninde hem sert hem de dereceli geçişleri izleyerek görsel ipuçlarıyla videoda bir çekneye ne zaman değişiklik olduğunu belirler. Alıcının meta verileri bir başlangıç ve bitiş zamanı ve bu çekte yer alan ana kare listesini içerir. Bu görüntüleri aynı kameradaki aynı kameradan alınan ardışık çerçevelerdir.
 
@@ -38,9 +38,71 @@ Video Indexer, ardışık çerçevelerin renk düzeninde hem sert hem de derecel
 
 Resmi en iyi temsil eden çerçeveleri seçer. Ana kareler, Aesthetic Characteristics özelliklerine (örneğin, kontrast ve stablete) göre videonun tamamının seçtiği temsili çerçevelerdir. Video Indexer, ana kare kimliklerinin bir listesini, hangi müşterilerin ana kare küçük resmini ayıklayabileceği temel alınarak, alıcının meta verilerinin bir parçası olarak alır. 
 
-Ana kareler, JSON çıkışı içindeki görüntüleriyle ilişkilendirilir. 
+### <a name="extracting-keyframes"></a>Ana kareleri ayıklama
+
+Videonuzla ilgili yüksek çözünürlüklü ana kareleri ayıklamak için öncelikle videoyu karşıya yükleyip dizinlemenizin olması gerekir.
+
+![Ana kareler](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>Video Indexer Web sitesiyle
+
+Video Indexer Web sitesini kullanarak ana kareleri ayıklamak için videonuzu karşıya yükleyin ve dizine yükleyin. Dizin oluşturma işi tamamlandıktan sonra **İndir** düğmesine tıklayın ve **yapılar (ZIP)** öğesini seçin. Bu, yapıt klasörünü bilgisayarınıza indirir. 
+
+![Ana kareler](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+Açın ve klasörü açın. *_KeyframeThumbnail* klasöründe, videodan ayıklanan tüm ana kareleri bulacaksınız. 
+
+#### <a name="with-the-video-indexer-api"></a>Video Indexer API 'SI ile
+
+Video Indexer API 'sini kullanarak ana kareleri almak için [karşıya yükleme video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) çağrısını kullanarak videonuzu karşıya yükleyin ve dizine alın. Dizin oluşturma işi tamamlandıktan sonra, [video dizinini al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)' ı çağırın. Bu, Video Indexer JSON dosyasındaki İçeriğinizden ayıkladığı tüm öngörüleri sağlar.  
+
+Her bir shot meta verisinin parçası olarak ana kare kimliklerinin bir listesini alırsınız. 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+Şimdi bu ana kare kimliklerinin her birini [küçük resim al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) çağrısında çalıştırmanız gerekir. Bu işlem, ana kare görüntülerinin her birini bilgisayarınıza indirir. 
 
 ## <a name="editorial-shot-type-detection"></a>Düzenleme görüntüsü türü algılama
+
+Ana kareler, JSON çıkışı içindeki görüntüleriyle ilişkilendirilir. 
 
 Öngörüler JSON 'daki tek bir çekle ilişkili olan görüntü türü, düzenleme türünü temsil eder. Videoları kliplere, tanıtıcıya veya sanatsal amaçlar için belirli bir ana kare stilini ararken yararlı olan bu görüntü türü özelliklerini bulabilirsiniz. Farklı türler her bir görüntüsündeki ilk ana karenin analizine göre belirlenir. Anlık görüntüleri, ilk ana karede görünen yüzlerin ölçeği, boyutu ve konumu tarafından tanımlanır. 
 
@@ -63,6 +125,7 @@ Ek özellikler:
 
 * İki anlık görüntüsü: iki kişinin orta büyüklükte bir yüzlerini gösterir.
 * Birden çok yüz: ikiden fazla kişi.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

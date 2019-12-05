@@ -1,7 +1,7 @@
 ---
 title: Özel ses okuma hizmeti için verileri hazırlama
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti ile marka için özel bir ses oluşturun. Stüdyo kayıtlarını ve ilişkili betikleri sağlarsınız, hizmet kayıtlı sesle ayarlanmış benzersiz bir ses modeli oluşturur. Ürün, araç ve uygulamalarınızda konuşmayı sentezleştirmek için bu sesi kullanın.
+description: Konuşma hizmetiyle markanız için özel bir ses oluşturun. Stüdyo kayıtlarını ve ilişkili betikleri sağlarsınız, hizmet kayıtlı sesle ayarlanmış benzersiz bir ses modeli oluşturur. Ürün, araç ve uygulamalarınızda konuşmayı sentezleştirmek için bu sesi kullanın.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464512"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805986"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için verileri hazırlama
 
-Uygulamanız için özel bir metin okuma sesi oluşturmaya hazırsanız, ilk adım ses kaydı ve ilişkili betikleri toplamaktır. böylece ses modeli eğitimi başlatılır. Hizmet bu verileri, kayıtlarda bulunan sesle eşleşecek şekilde ayarlanmış benzersiz bir ses oluşturmak için kullanır. Sesi eğitdikten sonra, uygulamalarınızda konuşmayı senizme başlatabilirsiniz.
+Uygulamanız için özel bir metin okuma sesi oluşturmaya hazırsanız, ilk adım ses kaydı ve ilişkili betikleri toplamaktır. böylece ses modeli eğitimi başlatılır. Konuşma hizmeti bu verileri, kayıtlarda bulunan sesle eşleşecek şekilde ayarlanmış benzersiz bir ses oluşturmak için kullanır. Sesi eğitdikten sonra, uygulamalarınızda konuşmayı senizme başlatabilirsiniz.
 
 Kavram kanıtı oluşturmak için az miktarda veri ile başlayabilirsiniz. Ancak, daha fazla veri sağlarsanız, özel sesinize daha fazla doğal olur. Kendi metinden konuşmaya ses modelinizi eğmeden önce, ses kayıtları ve ilişkili metin dökümlerinin olması gerekir. Bu sayfada, veri türlerini, bunların nasıl kullanıldığını ve bunların nasıl yönetileceğini inceleyeceğiz.
 
@@ -60,7 +60,7 @@ Ses hazırlanırken bu yönergeleri izleyin.
 | Özellik | Değer |
 | -------- | ----- |
 | Dosya biçimi | Bir. zip dosyasında gruplandırılan RIFF (. wav) |
-| Örnekleme oranı | En az 16.000 Hz |
+| Örnekleme hızı | En az 16.000 Hz |
 | Örnek biçim | PCM, 16 bit |
 | Dosya adı | . Wav uzantısıyla sayısal. Yinelenen dosya adlarına izin verilmez. |
 | Ses uzunluğu | 15 saniyeden kısa |

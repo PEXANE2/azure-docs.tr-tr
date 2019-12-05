@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791694"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806992"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
-Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları çoğu depolama senaryosunda önerilir. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar. Genel-pupoz v2 hesapları, sık erişimli, seyrek erişimli veya Arşiv arasında sık erişimli veya seyrek erişimli ve BLOB düzeyinde katmanlama varsayılan hesap erişim katmanlarını destekler.
+Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları çoğu depolama senaryosunda önerilir. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar. Genel amaçlı v2 hesapları, sık erişimli, seyrek erişimli veya Arşiv arasında sık erişimli veya seyrek erişimli ve BLOB düzeyinde katmanlama varsayılan hesap erişim katmanlarını destekler.
 
 Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolama hesabına yükseltme basittir. Azure portal, PowerShell veya Azure CLı kullanarak yükseltebilirsiniz.
 
@@ -40,7 +40,7 @@ Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolam
 
 PowerShell kullanarak genel amaçlı bir v1 hesabını genel amaçlı v2 hesabına yükseltmek için, önce PowerShell 'i **az. Storage** modülünün en son sürümünü kullanacak şekilde güncelleştirin. PowerShell’i yükleme hakkında bilgi edinmek için bkz. [Azure PowerShell’i yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istediğiniz hesap erişim katmanı yerine aşağıdaki komutu çağırın.
+Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istenen hesap erişim katmanınızı değiştirerek aşağıdaki komutu çağırın.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 Genel amaçlı v1 hesabını Azure CLı kullanarak genel amaçlı v2 hesabına yükseltmek için önce Azure CLı 'nın en son sürümünü yüklemeniz gerekir. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istediğiniz hesap erişim katmanı yerine aşağıdaki komutu çağırın.
+Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istenen hesap erişim katmanınızı değiştirerek aşağıdaki komutu çağırın.
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
@@ -59,11 +59,11 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Blob verileri için bir erişim katmanı belirtin
 
-Genel amaçlı v2 hesapları tüm Azure depolama hizmetleri ve veri nesnelerini destekler, ancak erişim katmanları yalnızca blob depolamada bulunan blok Bloblar için kullanılabilir. Genel amaçlı v2 depolama hesabına yükselttiğinizde, blob verileriniz için bir erişim katmanı belirtebilirsiniz.
+Genel amaçlı v2 hesapları tüm Azure depolama hizmetleri ve veri nesnelerini destekler, ancak erişim katmanları yalnızca BLOB depolama alanındaki blok Blobları için geçerlidir. Genel amaçlı v2 depolama hesabına yükselttiğinizde, tek bir blob erişim katmanı parametresi belirtilmediyse blob verilerinizin karşıya yükleneceği varsayılan katmanı belirten, varsayılan bir hesap erişim katmanı olan sık erişimli veya seyrek erişimli ' i belirtebilirsiniz.
 
-Erişim katmanları, tahmin edilen kullanım desenlerinize göre en düşük maliyetli depolamayı seçmenizi sağlar. Blok Blobları, sık erişimli, seyrek erişimli veya arşiv katmanında depolanabilir. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv depolama katmanları](../blobs/storage-blob-storage-tiers.md).
+Blob erişim katmanları, tahmin edilen kullanım desenlerinize göre en düşük maliyetli depolamayı seçmenizi sağlar. Blok Blobları, sık erişimli, seyrek erişimli veya arşiv katmanlarında depolanabilir. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv depolama katmanları](../blobs/storage-blob-storage-tiers.md).
 
-Varsayılan olarak, etkin erişim katmanında yeni bir depolama hesabı oluşturulur ve genel amaçlı v1 depolama hesabı, sık erişimli erişim katmanına yükseltilir. Veri yükseltme sonrası için hangi erişim katmanının kullanılacağını araştırıyorsanız, senaryonuzu değerlendirin. Genel amaçlı v2 hesabına geçiş için iki tipik Kullanıcı senaryosu vardır:
+Varsayılan olarak, etkin erişim katmanında yeni bir depolama hesabı oluşturulur ve genel amaçlı v1 depolama hesabı, sık veya seyrek erişimli hesap katmanına yükseltilebilir. Yükseltme sırasında bir hesap erişim katmanı belirtilmemişse, varsayılan olarak etkin ' e yükseltilir. Yükseltmeniz için hangi erişim katmanının kullanılacağını araştırıyorsanız, geçerli veri kullanımı senaryonuzu değerlendirin. Genel amaçlı v2 hesabına geçiş için iki tipik Kullanıcı senaryosu vardır:
 
 * Genel amaçlı bir v1 depolama hesabınız var ve genel amaçlı v2 depolama hesabına yükseltmeyi, blob verileri için doğru depolama erişim katmanıyla birlikte değerlendirmek istiyorsunuz.
 * Genel amaçlı v2 depolama hesabı kullanmaya karar verdiniz veya zaten bir tane var ve blob verileri için sık veya seyrek erişimli depolama erişim katmanını kullanmanız gerekip gerekmediğini değerlendirmek istediğinizi değerlendirin.

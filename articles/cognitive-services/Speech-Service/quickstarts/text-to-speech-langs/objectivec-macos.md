@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 27e471bb1b155ab245e68712031eef4efb4d5b34
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5758361e1c4de6e824f0df33eacd940cad8eca70
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503461"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817754"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta hedef için konuşmayı Sentezleştirme
 
@@ -23,7 +23,7 @@ Bu makalede, bilişsel hizmetler konuşma SDK 'sını kullanarak bir macOS uygul
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
+Başlamadan önce önkoşullarının listesi aşağıda verilmiştir:
 
 * Konuşma hizmeti için bir [abonelik anahtarı](~/articles/cognitive-services/Speech-Service/get-started.md)
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) veya üzeri ve macos 10,13 veya üzeri bir MacOS makinesi
@@ -73,7 +73,7 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
 1. Aşağıdaki şekilde otomatik oluşturulan `AppDelegate.m` dosyasının içeriğini değiştirin:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/text-to-speech/helloworld/helloworld/AppDelegate.m#code)]
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 

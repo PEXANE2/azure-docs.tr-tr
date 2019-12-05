@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801552"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806105"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Doğruluk Özel Konuşma Tanıma değerlendirin
 
@@ -23,15 +23,15 @@ Bu belgede, Microsoft 'un konuşmaya metin modeli veya özel modeliniz kalitesin
 
 ## <a name="what-is-word-error-rate-wer"></a>Word hata oranı (WER) nedir?
 
-Model doğruluğunu ölçmek için sektör standardı, *sözcük hata oranı* (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan etiketli döküm dosyasında belirtilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için% 100 ile çarpılır.
+Model doğruluğunu ölçmek için sektör standardı, *sözcük hata oranı* (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan etiketli döküm dosyasında belirtilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için %100 ile çarpılır.
 
 ![WER formülü](./media/custom-speech/custom-speech-wer-formula.png)
 
 Yanlış tanımlanmış kelimeler üç kategoride yer almalıdır:
 
-* Ekleme (ı): Varsayıma betiğine yanlış eklenen sözcükler
-* Silme (D): Varsayım dökümü 'nde algılanmayan sözcükler
-* Değiştirme (ler): Başvuru ve varsayım arasında değiştirilen kelimeler
+* Ekleme (ı): varsayıma betiğine yanlış eklenen kelimeler
+* Silme (D): varsayım dökümü 'nde algılanmayan sözcükler
+* Değiştirme (ler): başvuru ve varsayım arasında değiştirilen kelimeler
 
 Bir örneği aşağıda verilmiştir:
 
@@ -39,7 +39,7 @@ Bir örneği aşağıda verilmiştir:
 
 ## <a name="resolve-errors-and-improve-wer"></a>Hataları çözün ve WER 'i geliştirebilirsiniz
 
-Uygulamanızı, aracınız veya ürününüzle kullandığınız modelin kalitesini değerlendirmek için makine tanıma sonuçlarından WER ' i kullanabilirsiniz. % 5 oranında bir WER, iyi bir kalite gibi kabul edilir ve kullanıma hazır hale gelir. % 20 oranında bir WER kabul edilebilir, ancak ek eğitime göz önüne almanız gerekebilir. % 30 veya daha fazla bir WER, kalite ve eğitim gerektirir.
+Uygulamanızı, aracınız veya ürününüzle kullandığınız modelin kalitesini değerlendirmek için makine tanıma sonuçlarından WER ' i kullanabilirsiniz. %5 oranında bir WER, iyi bir kalite gibi kabul edilir ve kullanıma hazır hale gelir. %20 oranında bir WER kabul edilebilir, ancak ek eğitime göz önüne almanız gerekebilir. %30 veya daha fazla bir WER, kalite ve eğitim gerektirir.
 
 Hataların dağıtılması önemlidir. Birçok silme hatası ile karşılaşıldığında, genellikle zayıf ses sinyali gücü nedeniyle oluşur. Bu sorunu çözmek için, kaynağa daha yakın ses verileri toplamanız gerekir. Ekleme hataları, sesin gürültülü bir ortama kaydedildiği ve Crosstalk mevcut olabileceği ve tanınma sorunlarına neden olduğu anlamına gelir. Değiştirme hatalarıyla genellikle, etki alanına özgü koşulların yetersiz bir örneği, insan etiketli döküm veya ilgili metin olarak sağlandıysa, bu durum oluşur.
 
@@ -56,7 +56,7 @@ Modelleri yan yana değerlendirmek için:
 3. **Test Ekle**' ye tıklayın.
 4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 

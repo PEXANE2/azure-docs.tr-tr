@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790491"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806771"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Azure Bilişsel Arama zenginleştirilmiş belgelerin artımlı dizin oluşturma özelliği nasıl ayarlanır
 
@@ -41,8 +41,7 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>2\. Adım: cache özelliğini ekleme
 
-< < < < < < < baş, `cache` özelliğini dizin oluşturucuya eklemek için GET isteğinden yanıtı düzenleyin. Önbellek nesnesi, depolama hesabına yönelik bağlantı dizesi olan `storageConnectionString` yalnızca tek bir özellik gerektirir. = = = = = = = GET isteğinden yanıtı düzenleyerek `cache` özelliğini Indexer öğesine ekleyin. Cache nesnesi yalnızca tek bir özellik gerektirir ve bu bağlantı dizesi bir Azure depolama hesabına ait olur.
->>>>>>> 3519a330aa86b6827d31403690529105825b1b16
+`cache` özelliğini dizin oluşturucuya eklemek için GET isteğinden yanıtı düzenleyin. Önbellek nesnesi, depolama hesabına yönelik bağlantı dizesi olan `storageConnectionString` yalnızca tek bir özellik gerektirir. 
 
 ```json
 {

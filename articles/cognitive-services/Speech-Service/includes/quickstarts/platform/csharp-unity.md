@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Unity platformu C# için konuşma SDK 'sı kurulumu-konuşma hizmeti"
 titleSuffix: Azure Cognitive Services
-description: Bu kılavuzu, konuşma Hizmetleri SDK 'Sı ile Unity C# için platformunuzu ayarlamak için kullanın.
+description: Bu kılavuzu, konuşma hizmeti SDK 'Sı ile Unity C# için platformunuzu ayarlamak için kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 6fa1024b68bae6a8353cc71f2749b221ab7e3bc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 064916c0dad52749f724be8a1912f247128114b6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502495"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816272"
 ---
 Bu kılavuzda [Unity](https://unity3d.com/)için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
 

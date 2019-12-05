@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668566"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812732"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Sanal ağınıza Azure Veri Gezgini dağıtma (Önizleme)
 
@@ -54,7 +54,7 @@ Toplam IP adresi sayısı:
 | Veri yönetimi hizmeti | 2 |
 | İç yük dengeleyiciler | 2 |
 | Azure ayrılmış adresler | 5 |
-| **Toplamda** | **#engine_instances + 9** |
+| **Toplam** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Azure Veri Gezgini dağıtıldıktan sonra değiştirilemediğinden alt ağ boyutu önceden planlanmalıdır. Bu nedenle gereken alt ağ boyutunu buna göre ayırın.
@@ -75,7 +75,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 #### <a name="inbound-nsg-configuration"></a>Gelen NSG yapılandırması
 
-| **Kullanma**   | **Kaynak**   | **Alıcı**   | **Protokol**   |
+| **Kullanma**   | **From**   | **Alıcı**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Yönetim  |[ADX yönetim adresleri](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (servicetag) | ADX alt ağı: 443  | TCP  |
 | Sistem durumunu izleme  | [ADX sistem durumu izleme adresleri](#health-monitoring-addresses)  | ADX alt ağı: 443  | TCP  |
@@ -84,7 +84,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 #### <a name="outbound-nsg-configuration"></a>Giden NSG yapılandırması
 
-| **Kullanma**   | **Kaynak**   | **Alıcı**   | **Protokol**   |
+| **Kullanma**   | **From**   | **Alıcı**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Azure Storage bağımlılığı  | ADX alt ağı  | Depolama alanı: 443  | TCP  |
 | Azure Data Lake bağımlılığı  | ADX alt ağı  | AzureDataLake: 443  | TCP  |
@@ -236,7 +236,6 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.core.windows.net:443
 *.servicebus.windows.net:443
 shoebox2.metrics.nsatc.net:443
-production.diagnostics.monitoring.core.windows.net:443
 prod-dsts.dsts.core.windows.net:443
 ocsp.msocsp.com:80
 *.windowsupdate.com:80

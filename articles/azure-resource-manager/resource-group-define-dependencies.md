@@ -2,25 +2,23 @@
 title: Kaynaklar için dağıtım sırasını ayarla
 description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: 6b608111f2fe24a0b426e5697ceb07349f2d4693
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/03/2019
+ms.openlocfilehash: f5990f099e8b91a4a075d2950f88aa83d34eef4a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149717"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806465"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak dağıtma sırasını tanımlayın
 
-Belirli bir kaynak için, kaynak dağıtılmadan önce mevcut olması gereken diğer kaynaklar olabilir. Örneğin, bir SQL Server dağıtmayı denemeden önce SQL Server var olmalıdır. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. Dependency **DSON** öğesiyle bir bağımlılık tanımlar veya **başvuru** işlevini kullanarak. 
+Bir kaynağı dağıtırken, dağıtılmadan önce diğer kaynakların mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir SQL veritabanı dağıtılmadan önce bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. Dependency **DSON** öğesiyle bir bağımlılık tanımlar veya **başvuru** işlevini kullanarak.
 
-Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir. 
-
-Öğretici için bkz. [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir.
 
 ## <a name="dependson"></a>dependsOn
 
-Şablonunuzda, Bağımlıdson öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, kaynak adlarının virgülle ayrılmış bir listesi olabilir. 
+Şablonunuzda, Bağımlıdson öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, kaynak adlarının virgülle ayrılmış listesidir. Bu liste, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
 Aşağıdaki örnek, bir yük dengeleyiciye, sanal ağa ve birden çok depolama hesabı oluşturan bir döngüye bağlı olan bir sanal makine ölçek kümesini gösterir. Bu diğer kaynaklar aşağıdaki örnekte gösterilmez, ancak şablonda başka bir yerde bulunması gerekir.
 
@@ -51,12 +49,13 @@ Bağımlılıkları tanımlarken, belirsizlik olmaması için kaynak sağlayıc�
   "[resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName'))]",
   "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
 ]
-``` 
+```
 
-Kaynaklarınız arasındaki ilişkileri eşlemek için Bağımlılıson ' u kullanmaya da ihtiyacınız olsa da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için, Bağımlıdson doğru yaklaşım değildir. Dağıtımdan sonra Bağımlıdson öğesinde tanımlanan kaynakları sorgulayamaz. Bağımlılıkların kullanıldığı paralel iki kaynak olarak Kaynak Yöneticisi dağıtmadığından, bağımlılar kullanarak dağıtım süresini etkilersiniz. 
+Kaynaklarınız arasındaki ilişkileri eşlemek için Bağımlılıson ' u kullanmaya da ihtiyacınız olsa da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için, Bağımlıdson doğru yaklaşım değildir. Dağıtımdan sonra Bağımlıdson öğesinde tanımlanan kaynakları sorgulayamaz. Bağımlılıkların kullanıldığı paralel iki kaynak olarak Kaynak Yöneticisi dağıtmadığından, bağımlılar kullanarak dağıtım süresini etkilersiniz.
 
 ## <a name="child-resources"></a>Alt kaynaklar
-Resources özelliği, tanımlanmakta olan kaynakla ilgili alt kaynakları belirtmenize olanak tanır. Alt kaynaklar yalnızca beş düzey derinlikli tanımlanmış olabilir. Bir alt kaynak ve üst kaynak arasında örtük bir dağıtım bağımlılığının oluşturulmadığını göz önünde bulundurulmamak önemlidir. Alt kaynağın ana kaynaktan sonra dağıtılması gerekiyorsa, bu bağımlılığı Bağımlıdson özelliği ile açıkça sağlamalısınız. 
+
+Resources özelliği, tanımlanmakta olan kaynakla ilgili alt kaynakları belirtmenize olanak tanır. Alt kaynaklar yalnızca beş düzey derinlikli tanımlanmış olabilir. Bir alt kaynak ve üst kaynak arasında örtük bir dağıtım bağımlılığının oluşturulmadığını göz önünde bulundurulmamak önemlidir. Alt kaynağın ana kaynaktan sonra dağıtılması gerekiyorsa, bu bağımlılığı Bağımlıdson özelliği ile açıkça sağlamalısınız.
 
 Her üst kaynak, alt kaynaklar olarak yalnızca belirli kaynak türlerini kabul eder. Kabul edilen kaynak türleri, üst kaynağın [şablon şemasında](https://github.com/Azure/azure-resource-manager-schemas) belirtilir. Alt kaynak türünün adı, **Microsoft. Web**/ **Sites/config** ve **Microsoft. Web/Sites/Extensions** gibi üst kaynak türünün adını içerir.
 
@@ -101,6 +100,7 @@ Aşağıdaki örnekte bir SQL Server ve SQL veritabanı gösterilmektedir. Verit
 ```
 
 ## <a name="reference-and-list-functions"></a>Başvuru ve liste işlevleri
+
 [Başvuru işlevi](resource-group-template-functions-resource.md#reference) , bir ifadenin DEĞERINI diğer JSON adından ve değer çiftlerinden veya çalışma zamanı kaynaklarından türemesini sağlar. [Liste * işlevleri](resource-group-template-functions-resource.md#list) bir kaynak için bir liste işleminden değerler döndürür.  Başvuru ve liste ifadeleri, başvurulan kaynak aynı şablonda dağıtıldığında ve adı (kaynak KIMLIĞI değil) tarafından başvurulduğu zaman, bir kaynağın başka bir kaynağa bağlı olduğunu dolaylı olarak bildirir. Kaynak KIMLIĞINI başvuru veya liste işlevlerine geçirirseniz, örtük bir başvuru oluşturulmaz.
 
 Başvuru işlevinin genel biçimi:

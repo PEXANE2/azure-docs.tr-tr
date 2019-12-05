@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558891"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815422"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Konuşma SDK’sı sorunlarını giderme
 
 Bu makalede, konuşma SDK 'sını kullandığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olacak bilgiler sağlanmaktadır.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hata: WebSocket yükseltmesi bir kimlik doğrulama hatasıyla başarısız oldu (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hata: WebSocket yükseltme (403) kimlik doğrulama hatası ile başarısız oldu.
 
 Bölge veya hizmetiniz için yanlış uç nokta olabilir. URI'nin doğru olduğundan emin olmak için kontrol edin.
 
 Ayrıca, bir sorun olabilir abonelik anahtarı veya yetkilendirme belirteci. Daha fazla bilgi için sonraki bölüme bakın.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hata: HTTP 403 yasaklanmış veya HTTP 401 Yetkisiz
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hata: HTTP 403 Yasak veya HTTP 401 Yetkisiz
 
 Bu hata genellikle tarafından kimlik doğrulama sorunları nedeniyle oluşur. Geçerli bir olmadan bağlantı isteklerini `Ocp-Apim-Subscription-Key` veya `Authorization` üst bilgi, 403 veya 401 durumuyla reddedilir.
 
@@ -107,11 +107,11 @@ Geçerli bir yetkilendirme belirteci girdiyseniz, komut ses dosyanız için dök
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Hata: HTTP 400 Hatalı Istek
+## <a name="error-http-400-bad-request"></a>Hata: HTTP 400 Hatalı istek.
 
 İstek gövdesi geçersiz ses verilerini içerdiğinde, bu hata genellikle oluşur. Yalnızca WAV biçimi desteklenmiyor. Ayrıca, isteğin üstbilgileri için uygun değerleri belirtmenize emin olmak için kontrol `Content-Type` ve `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Hata: HTTP 408 Istek zaman aşımı
+## <a name="error-http-408-request-timeout"></a>Hata: HTTP 408 istek zaman aşımı
 
 Ses veri hizmetine gönderilen en olası hata oluşur. Bu hata, ağ sorunları da kaynaklanıyor olabilir.
 

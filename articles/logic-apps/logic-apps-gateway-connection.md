@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792057"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815100"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
@@ -70,7 +70,7 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
 
 1. Azure portal arama kutusuna "Şirket içi veri ağ geçidi" girin ve şirket **Içi veri ağ geçitleri**' ni seçin.
 
-   !["Şirket içi veri ağ geçidi" ni bulun](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   !["Şirket içi veri ağ geçidi" ni bulun](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. **Şirket Içi veri ağ geçitleri**altında **Ekle**' yi seçin.
 
@@ -89,7 +89,7 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
 
    Ağ Geçidi kaynağınız ile aynı bölgede olan ve aynı Azure hesabına bağlanan bir ağ geçidi yüklemesi gösteren bir örnek aşağıda verilmiştir:
 
-   ![Veri ağ geçidi kaynağı oluşturma ayrıntılarını sağlayın](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![Veri ağ geçidi kaynağı oluşturma ayrıntılarını sağlayın](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -128,7 +128,7 @@ Bir ağ geçidi bağlantısının ayarlarını güncelleştirmek için bağlant�
 
 1. Yalnızca mantıksal uygulamanız için tüm API bağlantılarını bulmak için, mantıksal uygulamanızın menüsünde, **geliştirme araçları**' nın altında **API bağlantıları**' nı seçin.
 
-   ![Mantıksal uygulama menünüzde "API bağlantıları" nı seçin](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![Mantıksal uygulama menünüzde "API bağlantıları" nı seçin](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. İstediğiniz ağ geçidi bağlantısını seçin ve ardından **API bağlantısını Düzenle**' yi seçin.
 
@@ -137,8 +137,8 @@ Bir ağ geçidi bağlantısının ayarlarını güncelleştirmek için bağlant�
 
 Azure aboneliğinizle ilişkili tüm API bağlantılarını bulmak için:
 
-* Ana Azure menüsünden **tüm hizmetler** > **Web** > **API bağlantıları**' na gidin.
-* Ya da, ana Azure menüsünden **tüm kaynaklar**' a gidin. **Tür** filtresini **API bağlantısı**olarak ayarlayın.
+* Azure portal menüsünde, **tüm hizmetler** > **Web** > **API bağlantıları**' nı seçin.
+* Ya da Azure portal menüsünde **tüm kaynaklar**' ı seçin. **Tür** filtresini **API bağlantısı**olarak ayarlayın.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -146,13 +146,13 @@ Azure aboneliğinizle ilişkili tüm API bağlantılarını bulmak için:
 
 Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı bir ağ geçidi kaynağına bağlamak veya ağ geçidi kaynağını kaldırmak için ağ geçidi yüklemesini etkilemeden ağ geçidi kaynağını silebilirsiniz.
 
-1. Ana Azure menüsünden **tüm kaynaklar**' ı seçin. Ağ Geçidi kaynağınızı bulun ve seçin.
+1. Azure portal menüsünden **tüm kaynaklar**' ı seçin veya herhangi bir sayfadan **tüm kaynakları** arayıp seçin. Ağ Geçidi kaynağınızı bulun ve seçin.
 
 1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
 
    Örnek:
 
-   ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

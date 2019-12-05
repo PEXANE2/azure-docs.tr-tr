@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110080"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806159"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Nasıl yapılır: konuşma SDK 'Sı ile istemcide komutları yerine alma (Önizleme)
 
@@ -29,7 +29,7 @@ Bu makalede şunları yapmanız gerekir:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Konuşma Hizmetleri için bir Azure abonelik anahtarı
+- Konuşma hizmeti için bir Azure abonelik anahtarı
   - [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
 - Önceden oluşturulmuş özel komutlar uygulaması
   - [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)

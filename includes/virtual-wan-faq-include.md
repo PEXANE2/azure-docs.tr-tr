@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795947"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828941"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure sanal ağ geçidi (VPN Gateway) ve Azure sanal WAN VPN Gateway arasındaki fark nedir?
 
@@ -113,7 +113,9 @@ Sanal WAN 'inizdeki farklı bir bölgedeki VNet 'i bağlayabilirsiniz.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Sanal hub'a bağlı uç sanal ağları birbiriyle iletişim kurabiliyor mu?
 
-Evet. Bağlı olan VNET 'ler, sanal ağ eşlemesi aracılığıyla doğrudan iletişim kurabilir. Daha fazla bilgi için bkz. [Sanal Ağ Eşlemesi](../articles/virtual-network/virtual-network-peering-overview.md). Hub aracılığıyla geçişli iletişim kuran VNET 'leri de destekliyoruz.
+Evet. Standart sanal WAN, VNET 'lerin bağlı olduğu sanal WAN hub 'ı aracılığıyla sanal ağı geçişli bağlantı ile destekler. Sanal WAN terimlerinde, bu yollara tek bir bölgedeki bir sanal WAN hub 'ına bağlı sanal ağlar için "yerel sanal WAN VNet aktarım" ve iki veya daha fazla sanal WAN hub 'Ları aracılığıyla bağlı sanal ağlar için "küresel sanal WAN VNet geçişi" olarak başvurduk Düzenleye. VNet aktarma, genel önizleme sırasında en fazla 3 Gbps işleme destekler. Küresel geçiş GA olduğunda aktarım hızı genişletilir.   
+
+Bazı senaryolarda, bağlı olan VNET 'ler yerel veya genel sanal WAN VNet 'e ek olarak [sanal ağ eşlemesi](../articles/virtual-network/virtual-network-peering-overview.md) kullanılarak birbirleriyle doğrudan eşlenebilir. Bu durumda, VNET eşlemesi sanal WAN hub 'ı aracılığıyla geçişli bağlantıdan önceliklidir. 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure sanal WAN ile dal bağlantısı nedir?
 

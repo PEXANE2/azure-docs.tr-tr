@@ -1,7 +1,7 @@
 ---
 title: Konuşma cihazları SDK 'Sı hakkında-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma cihaz SDK'sı ile çalışmaya başlayın. Konuşma hizmeti, çok çeşitli cihazları ve ses kaynakları ile çalışır. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş önceden ayarlanmış bir kitaplıktır.
+description: Konuşma cihaz SDK'sı ile çalışmaya başlayın. Konuşma hizmeti çok çeşitli cihazlar ve ses kaynaklarıyla birlikte çalışmaktadır. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş önceden ayarlanmış bir kitaplıktır.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072389"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815538"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Konuşma cihazları SDK 'Sı hakkında
+# <a name="about-the-speech-devices-sdk"></a>Konuşma Cihazları SDK’sı hakkında
 
-[Konuşma Hizmetleri](overview.md) , çok çeşitli cihazlarla ve ses kaynaklarıyla çalışır. Şimdi, konuşma uygulamalarınızın eşleşen donanım ve yazılım ile bir sonraki düzeye alabilir. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş pretuned bir kitaplıktır.
+[Konuşma hizmeti](overview.md) çok çeşitli cihazlar ve ses kaynaklarıyla birlikte çalışmaktadır. Şimdi, konuşma uygulamalarınızın eşleşen donanım ve yazılım ile bir sonraki düzeye alabilir. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş pretuned bir kitaplıktır.
 
 Konuşma cihaz SDK'sı yardımcı olabilir:
 
 - Hızlı bir şekilde test: yeni ses senaryoları.
-- Bulut tabanlı konuşma hizmetlerini cihazınızla daha kolay bir şekilde tümleştirin.
+- Daha kolay bulut tabanlı konuşma hizmeti, cihazınızın içine tümleştirin.
 - Müşterileriniz için bir olağanüstü bir kullanıcı deneyimi oluşturun.
 
-Konuşma cihaz SDK'sını kullanan [Speech SDK'sı](speech-sdk.md). Gelişmiş ses işleme algoritmamıza göre işlenen sesleri, cihazın mikrofon dizisinden [konuşma hizmetlerine](overview.md)göndermek için konuşma SDK 'sını kullanır. Çok kanallı ses daha doğru alanı uzak sağlamak için kullandığı [konuşma tanıma](speech-to-text.md) gürültü gizleme, echo iptal beamforming ve dereverberation aracılığıyla.
+Konuşma cihaz SDK'sını kullanan [Speech SDK'sı](speech-sdk.md). Speech SDK'sı için cihazın mikrofon diziden sunduğumuz Gelişmiş ses işleme algoritması tarafından işlenen ses göndermek için kullandığı [konuşma hizmeti](overview.md). Çok kanallı ses daha doğru alanı uzak sağlamak için kullandığı [konuşma tanıma](speech-to-text.md) gürültü gizleme, echo iptal beamforming ve dereverberation aracılığıyla.
 
 Ayrıca, bir kullanıcı etkileşimini Başlatan ipucu markanızla benzersiz olduğundan, kendi [özelleştirilmiş anahtar kelime](speech-devices-sdk-create-kws.md) sahip çevresel cihazlar oluşturmak Için konuşma cihazları SDK 'sını de kullanabilirsiniz.
 

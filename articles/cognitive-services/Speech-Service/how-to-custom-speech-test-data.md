@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464552"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816393"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
@@ -25,15 +25,15 @@ Microsoft konuşma tanımanın doğru olup olmadığını görmek için test yap
 
 Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı ve önerilen miktar listelenir. Her veri türü bir model oluşturmak için gerekmez. Veri gereksinimleri, bir modeli test etme veya eğitim oluşturmaya bağlı olarak değişir.
 
-| Veri türü | Test için kullanılan | Miktar | Eğitim için kullanılır | Miktar |
+| Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Müzik](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1.000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1.000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
-## <a name="upload-data"></a>Karşıya veri yükleme
+## <a name="upload-data"></a>Verileri karşıya yükleme
 
 Verilerinizi karşıya yüklemeye hazırsanız [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)gidin, ardından Sihirbazı başlatmak ve ilk veri kümenizi oluşturmak Için **verileri karşıya yükle** ' ye tıklayın. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
@@ -55,7 +55,7 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 | Özellik | Değer |
 |----------|-------|
 | Dosya biçimi | RIFF (WAV) |
-| Örnek hız | 8\.000 Hz veya 16.000 Hz |
+| Örnekleme hızı | 8\.000 Hz veya 16.000 Hz |
 | Kanallar | 1 (mono) |
 | Ses başına maksimum uzunluk | 2 saat |
 | Örnek biçim | PCM, 16 bit |
@@ -76,7 +76,7 @@ Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için
 | Özellik | Değer |
 |----------|-------|
 | Dosya biçimi | RIFF (WAV) |
-| Örnek hız | 8\.000 Hz veya 16.000 Hz |
+| Örnekleme hızı | 8\.000 Hz veya 16.000 Hz |
 | Kanallar | 1 (mono) |
 | Ses başına maksimum uzunluk | 60 s |
 | Örnek biçim | PCM, 16 bit |
@@ -85,7 +85,7 @@ Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örneğin:
+  Örnek:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -138,7 +138,7 @@ Kullanıcılarınızın karşılaşabilmesi veya kullanması gereken standart te
 
 Bu, konuşulan bir utterance örnekleri ve her biri için özel bir telaffuz içerir:
 
-| Tanınan/görüntülenmiş form | Konuşulan form |
+| Tanınan/görüntülenmiş form | Konuşulan formu |
 |--------------|--------------------------|
 | 3CPO | Üç c p o |  
 | CNTK | c n t k |
@@ -148,7 +148,7 @@ Konuşulan biçim fonetik bir dizidir. Bu, harf, sözcük, hecelere veya üçün
 
 Özelleştirilmiş telaffuz Ingilizce (en-US) ve Almanca (de-DE) olarak kullanılabilir. Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
 
-| Dil | Yerel Ayar | Karakterle |
+| Dil | Yerel ayar | Karakterler |
 |----------|--------|------------|
 | Türkçe | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | Almanca | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |

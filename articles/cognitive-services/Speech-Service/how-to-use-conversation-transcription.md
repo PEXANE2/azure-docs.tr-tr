@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608057"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805816"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Gerçek zamanlı konuşma dökümü (Önizleme)
 
-Konuşma SDK **'sı 'nın konuşma** API 'si, `PullStream` veya `PushStream`kullanarak konuşma hizmetlerine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve tanımanıza olanak sağlayan toplantılar ve diğer konuşmalar sağlar. Bu konu, konuşma SDK 'Sı (sürüm 1.8.0 veya üzeri) ile konuşmayı metne nasıl kullanacağınızı bilmeniz gerekir. Daha fazla bilgi için bkz. [konuşma Hizmetleri nedir?](overview.md)
+Konuşma **SDK 'sının konuşma API 'si** , `PullStream` veya `PushStream`kullanarak konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve diğer konuşmalar gerçekleştirmenize olanak tanır. Bu konu, konuşma SDK 'Sı (sürüm 1.8.0 veya üzeri) ile konuşmayı metne nasıl kullanacağınızı bilmeniz gerekir. Daha fazla bilgi için bkz. [konuşma Hizmetleri nedir?](overview.md)
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -35,9 +35,9 @@ Konuşma cihaz SDK 'Sı, 8 kanal kullanan gerçek zamanlı ses yakalama için Ja
 - [ROOBO cihazı örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
 - [Azure Kinect Dev Kit örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bir konuşma Hizmetleri aboneliği. Bir [konuşma deneme aboneliği yoksa bir konuşma deneme aboneliği edinebilirsiniz](https://azure.microsoft.com/try/cognitive-services/) .
+Bir konuşma hizmeti aboneliği. Bir [konuşma deneme aboneliği yoksa bir konuşma deneme aboneliği edinebilirsiniz](https://azure.microsoft.com/try/cognitive-services/) .
 
 ## <a name="create-voice-signatures"></a>Ses imzaları oluşturma
 

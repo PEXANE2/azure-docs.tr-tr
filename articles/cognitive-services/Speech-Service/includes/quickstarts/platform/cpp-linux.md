@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: konuşma C++ SDK 'sı (Linux) Platform Kurulumu-konuşma hizmeti"
 titleSuffix: Azure Cognitive Services
-description: Linux üzerinde için C++ platformunuzu konuşma Hizmetleri SDK 'sı ile ayarlamak için bu kılavuzu kullanın.
+description: Linux üzerinde için C++ platformunuzu konuşma hizmeti SDK 'sı ile ayarlamak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 96e4c12d7b0aaceea3d652a81f2df8721c43954c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 03aafb133f1d4a18ffe2b46ae5ec36225865a239
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502621"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819044"
 ---
 Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="install-speech-sdk"></a>Konuşma SDK'sını yükleme
 
-Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları https://aka.ms/csspeech/linuxbinarybir bataklık dosyası olarak indirilebilir.
+Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları https://aka.ms/csspeech/linuxbinary bir bataklık dosyası olarak indirilebilir.
 
 SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
@@ -78,7 +78,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Dizinde üçüncü taraf bildirim ve lisans dosyaları, ayrıca üstbilgi (`include`) dosyalarını içeren bir `.h` dizini ve kitaplıkları içeren bir `lib` dizini olmalıdır.
+   Dizinde üçüncü taraf bildirim ve lisans dosyaları, ayrıca üstbilgi (`.h`) dosyalarını içeren bir `include` dizini ve kitaplıkları içeren bir `lib` dizini olmalıdır.
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 

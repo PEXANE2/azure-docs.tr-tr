@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790816"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819174"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı başlangıç: Azure Logic Apps Visual Studio ile otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma
 
@@ -179,11 +179,11 @@ Mevcut bir Azure Kaynak grubu projeniz varsa, JSON ana hattı penceresini kullan
 
 1. Şablon dosyasına bir kaynak eklemek için JSON ana hattı penceresinin üst kısmında **Kaynak Ekle** ' yi seçin. Ya da JSON ana hattı penceresinde, **kaynaklar** kısayol menüsünü açın ve **Yeni Kaynak Ekle**' yi seçin.
 
-   ![JSON ana hat penceresi](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
+   ![JSON ana hattı penceresinin](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
 1. **Kaynak Ekle** iletişim kutusunda, arama kutusunda, `logic app`bulun ve **mantıksal uygulama**' yı seçin. Mantıksal uygulamanızı adlandırın ve **Ekle**' yi seçin.
 
-   ![Kaynak Ekle](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
+   ![Kaynak ekle](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -191,11 +191,11 @@ Mantıksal uygulamanızı tamamladığınızda, mantıksal uygulamanızı ve ilg
 
 1. Mantıksal uygulamanızı oluşturmak için kullandığınız hesapla [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure menüsünde **Kaynak grupları**'nı seçin. Mantıksal uygulamanızın kaynak grubunu seçin ve **genel bakış**' ı seçin.
+1. Azure portal menüsünde, **kaynak grupları**' nı seçin veya herhangi bir sayfadan **kaynak grupları** arayın ve seçin. Mantıksal uygulamanızın kaynak grubunu seçin.
 
 1. **Genel bakış** sayfasında, **kaynak grubunu sil**' i seçin. Kaynak grubu adını onay olarak girin ve **Sil**' i seçin.
 
-   !["Kaynak grupları" > "Genel bakış" > "Kaynak grubunu sil"](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   !["Kaynak grupları" > "Genel bakış" > "Kaynak grubunu sil"](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. Visual Studio çözümünü yerel bilgisayarınızdan silin.
 

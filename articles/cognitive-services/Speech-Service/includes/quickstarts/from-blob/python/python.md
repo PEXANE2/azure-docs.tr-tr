@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma, C# konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 40b226796b4dfb9aced3c6b00eba1a12bad66894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504028"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828851"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -36,7 +36,7 @@ Yükleme için aşağıdaki adımları izleyin:
 
 1. https://editor.swagger.io kısmına gidin.
 1. **Dosya**' ya ve ardından **URL içeri aktar**' a tıklayın.
-1. Konuşma Hizmetleri aboneliğinizin bölgesi de dahil olmak üzere Swagger URL 'sini girin: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
+1. Konuşma hizmeti aboneliğinizin bölgesi de dahil olmak üzere Swagger URL 'sini girin: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
 1. **Istemci oluştur** ' a tıklayın ve **Python**' ı seçin.
 1. İstemci kitaplığını kaydedin.
 1. İndirilen Python-Client-generated. zip dosyasını dosya sisteminizde bir yere ayıklayın.

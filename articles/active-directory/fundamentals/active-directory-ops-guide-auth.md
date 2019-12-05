@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 6b9d5eb3adb8cad963ec513d327d237e73f94878
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535593"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803742"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -141,7 +141,7 @@ Cihazları MDM veya Microsoft Intune ile yönetiyorsanız, ancak koşullu erişi
 #### <a name="device-trust-access-policies-recommended-reading"></a>Okuma için önerilen cihaz güven erişimi ilkeleri
 
 - [Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Kimlik ve cihaz erişim yapılandırması](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>İş İçin Windows Hello
 
@@ -205,7 +205,7 @@ Azure AD 'de [adlandırılmış konumlar](https://docs.microsoft.com/azure/activ
 
 Önceliğe göre, kuruluşunuzun ihtiyaçlarını en iyi şekilde karşılayan önerilen çözümü bulmak için aşağıdaki tabloyu kullanın:
 
-| **Öncelik** | **Senaryo** | **Önerilen** |
+| **Öncelik** | **Senaryo** | **Öneri** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | PHS veya PTA kullanıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
 | 2 | Federe çalışıyorsanız ve "insideCorporateNetwork" talebini kullanmıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
@@ -256,7 +256,7 @@ Koşullu erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için gereken
 #### <a name="conditional-access-recommended-reading"></a>Koşullu erişimin okunması önerilir
 
 - [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Kimlik ve cihaz erişim yapılandırması](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory Koşullu erişim ayarları başvurusu](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Ortak koşullu erişim ilkeleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -363,7 +363,7 @@ Oturum açma etkinliğine erişim, Azure AD için denetimler ve risk olayları, 
 - [Sertifikalarla Azure AD Raporlama API 'sini kullanarak veri edinme](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
 - [Azure Active Directory Kimlik Koruması için Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Office 365 yönetimi etkinlik API 'SI başvurusu](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
-- [Azure Active Directory Power BI Içerik paketini kullanma](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- [Azure Active Directory Power BI Içerik paketini kullanma](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Özet
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075716"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815477"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
-Azure konuşma hizmetlerinden gelen metin okuma, uygulamalarınızın, araçların veya cihazların metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesini sağlayan bir hizmettir. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve 4 dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Tam liste için bkz. [desteklenen diller](language-support.md#text-to-speech).
+Konuşma hizmetinden metin okuma, uygulamalarınızın, araçların veya cihazlarınızın metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve 4 dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Tam liste için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
 Metin okuma teknolojisi, içerik oluşturucularının kullanıcılarıyla farklı yollarla etkileşime geçmesini sağlar. Metin okuma, kullanıcılara içerik sesiyle etkileşime geçme seçeneği sunarak erişilebilirliği iyileştirebilir. Kullanıcının görsel bir biçimde, öğrenimi bir eğitim veya geliştirme sırasında gezinme bilgileri gerektirmesi durumunda, metinden konuşmaya, mevcut bir deneyimi iyileştirebilir. Metin okuma, sesli botlar ve ses yardımcıları için de değerli bir eklentidir.
 
@@ -31,7 +31,7 @@ Standart sesler Istatistiksel parametrik sen, ve/veya birleştirme birleştirme 
 
 ### <a name="neural-voices"></a>Sinir sesleri
 
-Sinir sesleri, konuşulan dilde stres ve kullanım desenlerini eşleştirirken ve konuşma birimlerinin bir bilgisayar sesine çıkarılması halinde geleneksel metin okuma sistemlerinin sınırlarını aşmak için derin sinir ağlarını kullanır. Standart metin okuma, bağımsız modeller tarafından yönetilen ayrı bir dil analizine ve akustik tahmin adımlarına sahiptir ve bu da muffled Voice senile sonuçlanabilir. Sinir yetenekimiz, daha akıcı ve doğal bir ses elde eden daha hızlı bir tahmin ve ses senişçisi.
+Sinir sesleri, konuşulan dilde stres ve kullanım desenlerini eşleştirirken ve konuşma birimlerinin bir bilgisayar sesine çıkarılması halinde geleneksel metin okuma sistemlerinin sınırlarını aşmak için derin sinir ağlarını kullanır. Standart metin okuma, bağımsız modeller tarafından yönetilen ayrı bir dil analizine ve akustik tahmin adımlarına sahiptir ve bu da muffled Voice senile sonuçlanabilir. Nöral özelliğimiz, prozodi tahmini ve ses sentezini aynı anda gerçekleştirdiği için daha akıcı ve kulağa daha doğal gelen bir ses elde edilir.
 
 Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır.
 
@@ -125,5 +125,5 @@ Metinden konuşmaya yönelik örnek kod GitHub ' da kullanılabilir. Bu örnekle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ücretsiz bir konuşma Hizmetleri aboneliği alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti aboneliği alın](get-started.md)
 - [Özel ses tipi olarak oluşturma](how-to-customize-voice-font.md)

@@ -4,17 +4,16 @@ description: Key Vault azaltma, kaynakların aşırı kullanımını önlemek i�
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
-tags: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883054"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806686"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma kılavuzu
 
@@ -24,10 +23,34 @@ Azaltma sınırları senaryoya bağlı olarak değişiklik gösterir. Örneğin,
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault, kendi sınırlarına nasıl işliyor?
 
-Kaynakları kötüye kullanımı önlemesi ve Key Vault'un istemciler için hizmet kalitesi emin olmak için Key Vault hizmet sınırları vardır. Bir hizmeti eşiği aşıldığında, Key Vault istemciden gelen ek istekleri bir süre için sınırlar. Bu durumda, HTTP durum kodu 429 Key Vault döndürür (çok fazla istek), ve istekleri başarısız olur. Ayrıca, Key Vault tarafından izlenen azaltma sınırları doğrultusunda 429 bir sayı döndürür isteği başarısız oldu. 
+Key Vault hizmet limitleri, kaynakların kötüye kullanımını engeller ve tüm Key Vault istemcileri için hizmet kalitesini güvence altına aldığınızdan emin olun. Bir hizmet eşiği aşıldığında, bu istemciden bir süre için diğer istekleri sınırlar Key Vault, HTTP durum kodu 429 (çok fazla istek) döndürür ve istek başarısız olur. Key Vault tarafından izlenen kısıtlama sınırlarına doğru 429 sayısı döndüren başarısız istekler. 
+
+Key Vault ilk olarak, dağıtım zamanında sırlarınızı depolamak ve almak için kullanılmak üzere tasarlanmıştır.  Dünya gelişmiştir ve gizli dizileri depolamak ve almak için çalışma zamanında kullanılıyor Key Vault ve genellikle uygulama ve hizmetler bir veritabanı gibi Key Vault kullanmak ister.  Geçerli sınırlar yüksek verimlilik hızlarını desteklemez.
+
+Key Vault ilk olarak [Azure Key Vault hizmet sınırlarında](key-vault-service-limits.md)belirtilen limitlerle oluşturulmuştur.  Key Vault, koyma ücretleri üzerinden en üst düzeye çıkarmak için, aktarım hızını en üst düzeye çıkarmak için önerilen bazı yönergeler/en iyi uygulamalar şunlardır
+1. Azaltma yapıldığından emin olun.  İstemci, 429 ' un üstel geri dönüş ilkelerini kabul etmelidir ve aşağıdaki kılavuza göre yeniden denemeler yapmakta olduğunuzdan emin olmalıdır.
+1. Key Vault trafiğinizi birden çok kasa ve farklı bölgeler arasında bölün.   Her güvenlik/kullanılabilirlik etki alanı için ayrı bir kasa kullanın.   Her biri iki bölgede beş uygulamanız varsa, her biri uygulama ve bölgeye özgü gizli dizileri içeren 10 kasalar öneririz.  Tüm işlem türleri için abonelik genelinde sınır, tek bir Anahtar Kasası sınırının beş katından fazla olur. Örneğin, HSM-abonelik başına diğer işlemler, abonelik başına 10 saniye içinde 5.000 işlem ile sınırlıdır. Ayrıca, RPS 'yi doğrudan Anahtar Kasası 'na düşürmek ve/veya veri bloğu tabanlı trafiği işlemek için hizmet veya uygulamanızdaki gizli anahtarı önbelleğe almayı düşünün.  Ayrıca, gecikme süresini en aza indirmek ve farklı bir abonelik/kasa kullanmak için trafiğinizi farklı bölgeler arasında ayırabilirsiniz.  Tek bir Azure bölgesindeki Key Vault hizmetine daha fazla abonelik sınırı göndermeyin.
+1. Bellekte Azure Key Vault aldığınız gizli dizileri önbelleğe alın ve mümkün olan her durumda bellekten yeniden kullanın.  Yalnızca önbelleğe alınmış kopya çalışmayı durdurduğu zaman Azure Key Vault yeniden oku (örneğin, kaynakta döndürülmüştür). 
+1. Key Vault kendi hizmet sırlarınız için tasarlanmıştır.   Müşterilerinizin gizli dizilerini depoluyorsanız (özellikle yüksek işlem hacmi olan anahtar depolama senaryoları için), anahtarları bir veritabanına veya depolama hesabına şifrelemeye koymak ve Azure Key Vault yalnızca ana anahtarı depolamak için göz önünde bulundurun.
+1. Genel anahtar işlemlerini şifreleme, sarın ve doğrulama, azaltma riskini azalmayan, ancak aynı zamanda güvenilirliği artıran (ortak anahtar malzemesini doğru şekilde önbelleğe aldığınız sürece) Key Vault erişim olmadan gerçekleştirilebilir.
+1. Bir hizmet için kimlik bilgilerini depolamak üzere Key Vault kullanıyorsanız, bu hizmetin doğrudan kimlik doğrulamak için AAD kimlik doğrulamasını destekleyip desteklemediğini denetleyin. Bu, Key Vault yükünü azaltır, güvenilirliği geliştirir ve Key Vault artık AAD belirtecini kullanabilmesi için kodunuzu basitleştirir.  Birçok hizmet AAD kimlik doğrulaması kullanılarak taşınmıştır.  [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)kısmındaki geçerli listeye bakın.
+1. Geçerli RPS limitlerinin altında kalmak için yük/dağıtımınızı daha uzun bir süre boyunca kademelendirme değerlendirin.
+1. Uygulamanız aynı gizli dizi (ler) i okuması gereken birden çok düğüm içeriyorsa, bir varlığın Key Vault gizli dizi ve tüm düğümlere giden fanları okuduğu bir fan çıkış deseninin kullanılmasını düşünün.   Alınan gizli dizileri yalnızca bellekte önbelleğe al.
+Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanız, lütfen aşağıdaki tabloyu doldurun ve hangi ek kapasitenin eklenebileceklerini öğrenmek için bizimle iletişim kurun (yalnızca tanım amaçları için aşağıda verilmiştir).
+
+| Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar Türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
+|--|--|--|--|--|--|--|--|--|
+| https://mykeyvault.vault.azure.net/ | | Anahtar | Oturum aç | EC | P-256 | Hayır | 200 | 1000 |
+
+olası değerlerin tam listesi Için \* bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
+
+Ek kapasite onaylanırsa, kapasitenin sonucu arttıkça lütfen aşağıdakileri unutmayın:
+1. Veri tutarlılığı modeli değişiklikleri. Kasa, ek aktarım hızı kapasitesine izin vertikten sonra, Key Vault Service veri tutarlılığı garantisi (temeldeki Azure depolama hizmeti devam edemediğinden daha yüksek hacimli RPS 'yi karşılamak için gereklidir).  Bir Nutshell 'de:
+  1. **Listeye izin verme olmadan**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda hemen (ör. SecretGet, KeySign).
+  1. **İzin verilenler listesi ile**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda 60 saniye içinde (örn. SecretGet, KeySign).
+1. İstemci kodu, 429 yeniden deneme için geri dönüş ilkesini kabul etmelidir. Key Vault hizmetini çağıran istemci kodu, 429 yanıt kodu aldığında istekleri Key Vault anında yeniden denememelidir.  Burada yayımlanan Azure Key Vault daraltma Kılavuzu, 429 http yanıt kodu alınırken üstel geri alma uygulanmasını önerir.
 
 İşle ilgili geçerli durum azaltma sınırları için varsa, lütfen bizimle iletişime geçin.
-
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Nasıl kısıtlanacağını uygulamanızın yanıt olarak hizmet sınırları
 
@@ -41,97 +64,24 @@ Uygulamanızın hata işleme uygularken, istemci tarafı azaltma ihtiyacına alg
 
 Üstel geri alma uygulayan kodu aşağıda gösterilmiştir. 
 ```
-    public sealed class RetryWithExponentialBackoff
+SecretClientOptions options = new SecretClientOptions()
     {
-        private readonly int maxRetries, delayMilliseconds, maxDelayMilliseconds;
-
-        public RetryWithExponentialBackoff(int maxRetries = 50,
-            int delayMilliseconds = 200,
-            int maxDelayMilliseconds = 2000)
+        Retry =
         {
-            this.maxRetries = maxRetries;
-            this.delayMilliseconds = delayMilliseconds;
-            this.maxDelayMilliseconds = maxDelayMilliseconds;
-        }
-
-        public async Task RunAsync(Func<Task> func)
-        {
-            ExponentialBackoff backoff = new ExponentialBackoff(this.maxRetries,
-                this.delayMilliseconds,
-                this.maxDelayMilliseconds);
-            retry:
-            try
-            {
-                await func();
-            }
-            catch (Exception ex) when (ex is TimeoutException ||
-                ex is System.Net.Http.HttpRequestException)
-            {
-                Debug.WriteLine("Exception raised is: " +
-                    ex.GetType().ToString() +
-                    " –Message: " + ex.Message +
-                    " -- Inner Message: " +
-                    ex.InnerException.Message);
-                await backoff.Delay();
-                goto retry;
-            }
-        }
-    }
-
-    public struct ExponentialBackoff
-    {
-        private readonly int m_maxRetries, m_delayMilliseconds, m_maxDelayMilliseconds;
-        private int m_retries, m_pow;
-
-        public ExponentialBackoff(int maxRetries, int delayMilliseconds,
-            int maxDelayMilliseconds)
-        {
-            m_maxRetries = maxRetries;
-            m_delayMilliseconds = delayMilliseconds;
-            m_maxDelayMilliseconds = maxDelayMilliseconds;
-            m_retries = 0;
-            m_pow = 1;
-        }
-
-        public Task Delay()
-        {
-            if (m_retries == m_maxRetries)
-            {
-                throw new TimeoutException("Max retry attempts exceeded.");
-            }
-            ++m_retries;
-            if (m_retries < 31)
-            {
-                m_pow = m_pow << 1; // m_pow = Pow(2, m_retries - 1)
-            }
-            int delay = Math.Min(m_delayMilliseconds * (m_pow - 1) / 2,
-                m_maxDelayMilliseconds);
-            return Task.Delay(delay);
-        }
-    }
+            Delay= TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromSeconds(16),
+            MaxRetries = 5,
+            Mode = RetryMode.Exponential
+         }
+    };
+    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+                                 
+    //Retrieve Secret
+    secret = client.GetSecret(secretName);
 ```
 
 
-Bu kodun bir istemci C\# uygulamasında kullanılması basittir. Aşağıdaki örnekte, HttpClient sınıfının nasıl kullanıldığı gösterilmektedir.
-
-```csharp
-public async Task<Cart> GetCartItems(int page)
-{
-    _apiClient = new HttpClient();
-    //
-    // Using HttpClient with Retry and Exponential Backoff
-    //
-    var retry = new RetryWithExponentialBackoff();
-    await retry.RunAsync(async () =>
-    {
-        // work with HttpClient call
-        dataString = await _apiClient.GetStringAsync(catalogUrl);
-    });
-    return JsonConvert.DeserializeObject<Cart>(dataString);
-}
-```
-
-Bu kodun yalnızca kavram kanıtı olarak uygun olduğunu unutmayın. 
+Bu kodun bir istemci C# uygulamasında kullanılması basittir. 
 
 ### <a name="recommended-client-side-throttling-method"></a>Önerilen istemci-tarafı azaltma yöntemi
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 892171f3e275ebc405bc7a228185ebfabc61acfb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164841"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803895"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Koşullu erişim: tüm kullanıcılar için MFA gerektir
 
@@ -44,16 +44,16 @@ Kuruluşların kullanımda olan çok sayıda bulut uygulaması olabilir. Bu uygu
 Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **koşullu erişime**gidin.
+1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **tüm kullanıcılar** ' ı seçin
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
+1. **Bulut uygulamaları veya eylemler** altında, **dahil** > , **tüm bulut uygulamaları**' nı seçin.
    1. **Hariç tut**' un altında, Multi-Factor Authentication gerektirmeyen tüm uygulamaları seçin.
-1. **Erişim denetimleri** > **izin**' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**
+1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' **i seçin ve**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 

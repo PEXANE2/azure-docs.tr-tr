@@ -4,17 +4,17 @@ description: Bu makalede, Windows ve Linux bilgisayarlarınıza yönelik güncel
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690886"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806550"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -34,13 +34,13 @@ Güncelleştirme Yönetimi tarafından yönetilen bilgisayarlar, değerlendirme 
 * Windows veya Linux için Microsoft Monitoring Agent (MMA)
 * Linux için PowerShell İstenen Durum Yapılandırması (DSC)
 * Otomasyon Karma Runbook Çalışanı
-* Windows bilgisayarlar için Microsoft Update veya Windows Server Update Services (WSUS)
+* Windows bilgisayarları için Microsoft Update veya Windows Server Update Services (WSUS)
 
 Aşağıdaki diyagramda, çözümün çalışma alanındaki tüm bağlı Windows Server ve Linux bilgisayarlarına nasıl değerlendirir ve güvenlik güncelleştirmeleri uyguladığı gösterilmektedir:
 
 ![İşlem akışı Güncelleştirme Yönetimi](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Güncelleştirme Yönetimi, makineleri aynı kiracıda birden çok aboneliğe yerel olarak eklemek için kullanılabilir.
+Güncelleştirme Yönetimi, aynı kiracıdaki birden çok abonelikte makinelerin yerel olarak eklenmesi için kullanılabilir.
 
 Bir paket yayımlandıktan sonra, düzeltme ekinin değerlendirme için Linux makinelere gösterilmesi 2 ile 3 saat sürer. Windows makinelerinde, düzeltme ekinin yayımlandıktan sonra değerlendirmesi göstermesi için 12-15 saat sürer.
 
@@ -92,7 +92,7 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 |İşletim sistemi  |Notlar  |
 |---------|---------|
 |Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.        |
-|Windows Server 2016 nano sunucu     | Desteklenmiyor.       |
+|Windows Server 2016 Nano sunucu     | Desteklenmiyor.       |
 |Azure Kubernetes hizmet düğümleri | Desteklenmiyor. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
 
 ### <a name="client-requirements"></a>İstemci gereksinimleri
@@ -132,13 +132,13 @@ Güncelleştirme dağıtımları oluşturmak ve yönetmek için belirli izinlere
 
 Bu çözümü etkinleştirdikten sonra, Log Analytics çalışma alanınıza doğrudan bağlı olan tüm Windows bilgisayarları, bu çözüme dahil olan runbook 'ları destekleyecek bir karma runbook çalışanı olarak otomatik olarak yapılandırılır.
 
-Çözüm tarafından yönetilen her Windows bilgisayarı, Otomasyon hesabı için bir **sistem karma çalışanı grubu** olarak **karma çalışan grupları** bölmesinde listelenir. Çözümler *konak adı FQDN_GUID* adlandırma kuralını kullanır. Bu grupları hesabınızdaki runbook 'lar ile hedefleyebilirsiniz. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca yönetim çözümünü desteklemek üzere tasarlanmıştır.
+Çözüm tarafından yönetilen her Windows bilgisayarı, Otomasyon hesabı için bir **sistem karma çalışanı grubu** olarak **karma çalışan grupları** bölmesinde listelenir. Çözümler, *ana bilgisayar adı FQDN_GUID* adlandırma kuralını kullanır. Bu grupları hesabınızdaki runbook 'lar ile hedefleyebilirsiniz. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca yönetim çözümünü desteklemek üzere tasarlanmıştır.
 
 Hem çözüm hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullanırsanız Otomasyon Runbook 'larını desteklemek için Otomasyon hesabınızdaki karma Runbook Worker grubuna Windows bilgisayarları ekleyebilirsiniz. Bu işlev, karma Runbook Worker 'ın 7.2.12024.0 sürümüne eklenmiştir.
 
 ### <a name="management-packs"></a>Yönetim paketleri
 
-System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma alanına bağlıysa, aşağıdaki yönetim paketleri Operations Manager yüklenir. Bu yönetim paketleri, çözümü ekledikten sonra doğrudan bağlı Windows bilgisayarlarına da yüklenir. Bu yönetim paketlerini yapılandırmanıza veya yönetmenize gerek yoktur.
+System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma alanına bağlıysa, Operation Manager’da aşağıdaki yönetim paketleri yüklenir. Çözüm eklendikten sonra bu yönetim paketleri doğrudan bağlı Windows bilgisayarlarına da yüklenir. Bu yönetim paketlerini yapılandırmanız veya yönetmeniz gerekmez.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -162,7 +162,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | --- | --- | --- |
 | Windows aracıları |Yes |Çözüm, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Yes |Çözüm, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Yes |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Operations Manager yönetim grubu |Yes |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -170,7 +170,7 @@ Yönetilen her Windows bilgisayarı için günde iki kez tarama gerçekleştiril
 
 Her yönetilen Linux bilgisayar için saatte bir tarama gerçekleştirilir.
 
-Panonun yönetilen bilgisayarlardan güncelleştirilmiş verileri görüntülemesi 30 dakika ile 6 saat arasında sürebilir.
+Yönetilen bilgisayarlardan gelen güncelleştirilmiş verilerin panoda görüntülenmesi 30 dakika ile 6 saat arasında sürebilir.
 
 Güncelleştirme Yönetimi kullanan bir makineye yönelik Azure Izleyici günlüklerinin ortalama veri kullanımı yaklaşık olarak ayda 25 megabayt (MB). Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Tam kullanımınızın izlenmesini sağlamak için ortamınızı izlemenizi öneririz.
 
@@ -178,11 +178,11 @@ Güncelleştirme Yönetimi kullanan bir makineye yönelik Azure Izleyici günlü
 
 Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 443 numaralı bağlantı noktası üzerinden bu adreslerle iletişim oluşur.
 
-|Azure genel  |Azure Devlet Kurumları  |
+|Azure Genel  |Azure Devlet Kurumları  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir. [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli uç noktaların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
@@ -263,7 +263,7 @@ Red Hat Enterprise Linux gibi bazı Linux değişkenlerde, işletim sistemi düz
 
 İşletim sistemi sürümünün Güncelleştirme Yönetimi çalıştırmaları aracılığıyla güncelleştirilmesini önlemek için **dışlama** özelliğini kullanın.
 
-Red Hat Enterprise Linux, dışlanacak paket adı RedHat-Release-Server. x86_64 ' dır.
+Red Hat Enterprise Linux, hariç tutulacak paket adı RedHat-Release-Server. x86_64.
 
 ![Linux için dışlanacak paketler](./media/automation-update-management/linuxpatches.png)
 

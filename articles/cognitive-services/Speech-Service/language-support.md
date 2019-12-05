@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 87b065d2ecf9d80c072918c14e7861f72b8d7aba
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304916"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815372"
 ---
-# <a name="language-and-region-support-for-the-speech-services"></a>Konuşma Hizmetleri için dil ve bölge desteği
+# <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
 Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aşağıdaki tablolar, [konuşmadan metne](#speech-to-text), [metinden konuşmaya](#text-to-speech)ve [konuşma çevirisi](#speech-translation) hizmet teklifleri için dil desteğini özetler.
 
@@ -26,7 +26,7 @@ Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aş
 
 Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur.  Telaffuz özelleştirmesi Şu anda yalnızca `en-US` ve `de-DE`için kullanılabilir. [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
 
- Yerel Ayar | Dil | Destekleniyor | Özelleştirilebilir
+ Yerel ayar | Dil | Desteklenen | Özelleştirilebilir
 ------|------------|-----------|-------------
 `ar-EG` | Arapça (Mısır) modern standart | Yes | Yes
 `ar-SA` | Arapça (Suudi Arabistan) | Yes | Yes
@@ -83,7 +83,7 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 
 Sinir seslerine ve bölgesel kullanılabilirliğe ait tam bir liste için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-Yerel Ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
+Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
 --------|----------|--------|---------|------------
 `de-DE` | Almanca (Almanya) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (de-DE, KatjaNeural)" | "de-KatjaNeural"
 `en-US` | English (US) | Erkek | "Microsoft Server konuşma Metin Okuma sesi (en-US, GuyNeural)" | "en-US-GuyNeural"
@@ -98,7 +98,7 @@ Yerel Ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
 
 75 ' den fazla standart ses, daha fazla 45 dilde ve yerel ayarlarda bulunabilir ve bu da metni sentezleştirilmiş konuşmaya dönüştürmenize olanak tanır. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-Yerel Ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
+Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 -------|----------|---------|----------|----------
 <sup>&dagger;</sup>`ar-EG` | Arapça (Mısır) | Kadın | "Microsoft sunucu konuşma Sesli konuşmayı metne (ar-Örneğin, Hoda)" | "ar-EG-Hoda"
 `ar-SA` | Arapça (Suudi Arabistan) | Erkek | "Microsoft Server Konuşma metin konuşma ses (ar-SA, Naayf)" | "ar-SA-Naayf"
@@ -182,7 +182,7 @@ Yerel Ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (zh-TW Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar-örneğin modern Standart Arapça (MSA) desteği.*
+&dagger; *ar-ÖRN Modern standart Arapça (MSA) destekler.*
 
 > [!NOTE]
 > Konuşma senssıs isteklerinizin tam hizmet adı eşlemesini veya kısa ses adını kullanabilirsiniz.
@@ -196,7 +196,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 
 ## <a name="speech-translation"></a>Konuşma çevirisi
 
-**Konuşma çevirisi** API 'si, konuşmaya konuşmaya ve konuşmadan metne dönüştürme için farklı dilleri destekler. Kaynak dilin her zaman konuşma-metin dili tablosundan olması gerekir. Hedef diller Çeviri hedef konuşma veya metin olmasına göre değişir. Gelen konuşmayı 60 ' den fazla [dile](https://www.microsoft.com/translator/business/languages/)çevirebilirsiniz. [Konuşma birleştirme](language-support.md#text-languages)için bir dil alt kümesi mevcuttur.
+**Konuşma çevirisi** API, konuşma tanıma ve konuşma tanıma ve konuşma metin çevirisi için farklı dilleri destekler. Kaynak dilin her zaman konuşma-metin dili tablosundan olması gerekir. Hedef diller Çeviri hedef konuşma veya metin olmasına göre değişir. Gelen konuşmaya Çevir birden fazla [60 diller](https://www.microsoft.com/translator/business/languages/). [Konuşma birleştirme](language-support.md#text-languages)için bir dil alt kümesi mevcuttur.
 
 ### <a name="text-languages"></a>Metin dilleri
 
@@ -215,7 +215,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Çekçe      | `cs`          |
 | Danca      | `da`          |
 | Felemenkçe      | `nl`          |
-| İngilizce      | `en`          |
+| Türkçe      | `en`          |
 | Estonca      | `et`          |
 | Fiji Adaları dili      | `fj`          |
 | Filipin dili      | `fil`          |
@@ -269,5 +269,5 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma Tanıma Hizmetleri deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [Bkz. konuşmayı tanımaC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Konuşma hizmeti deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
+* [C# ' de Konuşma tanıma öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

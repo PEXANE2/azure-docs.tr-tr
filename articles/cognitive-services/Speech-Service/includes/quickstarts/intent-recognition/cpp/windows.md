@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 04b6193299004996862a577176dfb9c52a7709cd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 78fbf35fab69dd91d5ba1841fee1fb5290fb1347
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796223"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816056"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,7 +29,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
 
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
