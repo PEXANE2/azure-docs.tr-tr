@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı konuşmaya çevirme, Python-konuşma hizmeti'
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 679690c495f18a489c6fab11a18182c83ca1577f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4e45777e8af75d568a98dd649159379a5d9c9a6f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503090"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816715"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -25,7 +25,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=python)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=python)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `quickstart.py` dosyasını açın ve tüm kodu aşağıdakiyle değiştirin.
 
@@ -75,9 +75,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     translate_speech_to_text()
     ````
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](../../../../regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](../../../../regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. `quickstart.py`yaptığınız değişiklikleri kaydedin.
 
@@ -89,7 +89,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
    python quickstart.py
    ```
 
-2. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı (Bu durumda Almanca 'ya) çeviren ve metin veren konuşma hizmetlerine iletir. Konuşma hizmetleri daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
+2. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir. Bu, metne (Bu durumda Almanca 'ya) ve metni dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 
    ````
    Say something...

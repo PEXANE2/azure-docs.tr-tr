@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774017"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815503"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
-Azure konuşma hizmetlerinden konuşmaya metin olarak da bilinen konuşmadan metne dönüştürme, ses akışlarının gerçek zamanlı olarak kullanımını, uygulamalar, araçlar ya da cihazlarınızın komut girişi olarak tüketebileceği, görüntülemesi ve eylem yapması için kullanabileceği bir metne olanak sağlar. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi tarafından desteklenir ve çeviri ve metinden konuşmaya sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Konuşma hizmetinden konuşmaya metin olarak da bilinen konuşmadan metne dönüştürme, ses akışlarının gerçek zamanlı bir şekilde akışını, uygulamalar, araçlar ya da cihazlarınızın komut girişi olarak tüketebileceği, görüntüleyeceği ve üzerinde işlem gerçekleştirebildiği metne olanak sağlar. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi tarafından desteklenir ve çeviri ve metinden konuşmaya sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
 Varsayılan olarak, konuşma-metin hizmeti, evrensel dil modelini kullanır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz.
 
@@ -54,7 +54,7 @@ Konuşmayı metne REST hizmetini kullanmayı tercih ediyorsanız bkz. [REST API 
 
 ## <a name="tutorials-and-sample-code"></a>Öğreticiler ve örnek kod
 
-Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
+Konuşma hizmetini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
 
 - [Öğretici: konuşma SDK 'Sı ve LUSıS ile konuşma amaçlarını tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
 
@@ -65,7 +65,7 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 ## <a name="customization"></a>Özelleştirme
 
-Konuşma Hizmetleri tarafından kullanılan standart taban çizgisi modeline ek olarak, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşmak için, kullanılabilir verilerle modelleri gereksinimlerinize göre özelleştirebilirsiniz. [özel konuşma tanıma](how-to-custom-speech.md)
+Konuşma hizmeti tarafından kullanılan standart taban çizgisi modeline ek olarak, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşmak için, kullanılabilir verilerle modelleri gereksinimlerinize göre özelleştirebilirsiniz. [özel konuşma tanıma](how-to-custom-speech.md)
 
 > [!NOTE]
 > Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
@@ -75,10 +75,10 @@ Konuşma Hizmetleri tarafından kullanılan standart taban çizgisi modeline ek 
 > [!WARNING]
 > Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı.
 
-Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetlerine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
+Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
 
-- [Bing Konuşma konuşma hizmetlerine geçirme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-- [Özel Konuşma Tanıma konuşma hizmetlerine geçirme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
+- [Bing Konuşma konuşma hizmetine geçirme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
+- [Özel Konuşma Tanıma konuşma hizmetine geçirme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
@@ -90,5 +90,5 @@ Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Öze
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 - [Konuşma SDK 'sını alın](speech-sdk.md)

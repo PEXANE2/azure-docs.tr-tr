@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af01ab7b3a3c9a93cc470646b40779ee0527d41e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 083ac49919bcf60fdd0b34a5007e03d215c23280
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503531"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814998"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta Swift 'ta konuşmayı tanıma
 
@@ -25,7 +25,7 @@ Bu makalede, bir mikrofondan metne kaydedilen konuşmayı oluşturmak için bili
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
+Başlamadan önce önkoşullarının listesi aşağıda verilmiştir:
 
 * Konuşma hizmeti için bir [abonelik anahtarı](~/articles/cognitive-services/Speech-Service/get-started.md) .
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) veya üzeri ve [Cocoapods](https://cocoapods.org/) yüklü bir MacOS makinesi.

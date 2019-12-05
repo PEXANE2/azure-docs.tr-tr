@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110709"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814848"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -65,11 +65,32 @@ Eski veri kümesi ve yeni veri kümesi tek bir. zip dosyasında (akustik veriler
 
 Temel V 1.0 içeren bir model uyardıysanız ve dağıttıysanız, bu dağıtım olduğu gibi kalır. Müşteriler, dağıtılan modelin yetkisini alabilir, ana hat 'in daha yeni bir sürümünü kullanarak readapt ve yeniden dağıtın.
 
+**S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
+
+Y **: modeller**yerel olarak indirilemez ve yürütülemez.
+
+**S: isteklerim günlüğe kaydediliyor mi?**
+
+Y: izlemeyi devre dışı bırakmak **için bir dağıtım**oluşturduğunuzda bir seçeneğiniz vardır. Bu noktada hiçbir ses veya döküm günlüğe kaydedilmez. Aksi takdirde, istekler genellikle güvenli depolamada Azure 'da oturum açar.
+
+**S: isteklerim kısıtlandı mı?**
+
+Y **: REST API**, istekleri 5 saniyede 25 ' e sınırlandırır. Ayrıntılar, [konuşma](speech-to-text.md)için sayfalarımızda bulunabilir.
+
+**S: çift kanallı ses için nasıl ücretlendirilirim?**
+
+Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), dosya süresi başına ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz.
+
+> [!IMPORTANT]
+> Özel konuşma hizmetini kullanmanızı engelleyen başka gizlilik endişeleriniz varsa, destek kanallarından birine başvurun.
+
+## <a name="increasing-concurrency"></a>Eşzamanlılık artırma
+
 **S: dağıtılan modelimde portalda sunulmadan daha fazla eşzamanlılık almam gerekir mi?**
 
 Y **: modelinizi**20 eşzamanlı istek artışlarına göre ölçeklendirebilirsiniz.
 
-Daha yüksek bir ölçeğe ihtiyacınız varsa [konuşma desteğiyle](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) iletişim kurun.
+Gerekli bilgiler ile [Azure destek portalında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)bir destek isteği oluşturun. Bilgileri, [Destek sayfasında](support.md)belirtilen genel kanallardan (GitHub, StackOverflow,...) herhangi birine nakletmeyin.
 
 ***Özel bir modelin***Eşzamanlılığını artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
 
@@ -89,7 +110,7 @@ ya da
 
 - aboneliğiniz için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın),
 
-veya
+or
 
 - aboneliğinizin kaynak KIMLIĞI:
   - [Azure Portal](https://portal.azure.com)gidin,
@@ -97,25 +118,6 @@ veya
   - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
   - Bu hizmet için `Properties` görüntüleyin,
   - `Resource ID`tamamını kopyalayın.
-
-**S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
-
-Y **: modeller**yerel olarak indirilemez ve yürütülemez.
-
-**S: isteklerim günlüğe kaydediliyor mi?**
-
-Y: izlemeyi devre dışı bırakmak **için bir dağıtım**oluşturduğunuzda bir seçeneğiniz vardır. Bu noktada hiçbir ses veya döküm günlüğe kaydedilmez. Aksi takdirde, istekler genellikle güvenli depolamada Azure 'da oturum açar.
-
-**S: isteklerim kısıtlandı mı?**
-
-Y **: REST API**, istekleri 5 saniyede 25 ' e sınırlandırır. Ayrıntılar, [konuşma](speech-to-text.md)için sayfalarımızda bulunabilir.
-
-**S: çift kanallı ses için nasıl ücretlendirilirim?**
-
-Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), dosya süresi başına ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz.
-
-> [!IMPORTANT]
-> Özel konuşma hizmetini kullanmanızı engelleyen başka gizlilik endişeleriniz varsa, destek kanallarından birine başvurun.
 
 ## <a name="importing-data"></a>Verileri içeri aktarma
 

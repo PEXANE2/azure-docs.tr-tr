@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1558b2eb12b1d4745cdfeab41fc2d1bd829b3d9c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554954"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816694"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Hızlı başlangıç: Python 'da uzun biçimli ses için zaman uyumsuz birleştirme (Önizleme)
 
@@ -78,7 +78,7 @@ if args.voices:
         print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
 ```
 
-### <a name="test-your-code"></a>Kodunuzu test etme
+### <a name="test-your-code"></a>Kodunuzu test edin
 
 Şimdiye kadar yaptığınız işlemi test edelim. Bu komutu çalıştırın, konuşma abonelik anahtarınızla `<your_key>` değiştirin ve konuşma kaynağınızın oluşturulduğu bölgeyle `<region>` (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
 
@@ -163,7 +163,7 @@ if args.submit:
         time.sleep(10)
 ```
 
-### <a name="test-your-code"></a>Kodunuzu test etme
+### <a name="test-your-code"></a>Kodunuzu test edin
 
 Giriş dosyanızı kaynak olarak kullanarak metni sentezleştirme isteği yapmayı deneyelim. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
 
@@ -237,7 +237,7 @@ if args.delete:
     deleteSynthesis(args.synthesisId)
 ```
 
-### <a name="test-your-code"></a>Kodunuzu test etme
+### <a name="test-your-code"></a>Kodunuzu test edin
 
 Bu komutu çalıştırın, konuşma abonelik anahtarınızla `<your_key>` değiştirin ve konuşma kaynağınızın oluşturulduğu bölgeyle `<region>` (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
 

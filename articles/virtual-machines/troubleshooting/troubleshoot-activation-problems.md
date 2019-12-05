@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058141"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819111"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows sanal makine etkinleştirme sorunlarını giderme
 
@@ -26,7 +26,7 @@ ms.locfileid: "71058141"
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Azure sanal makinelerinin Windows ürün etkinleştirmesi için Azure KMS bitiş noktalarını anlama
 
-Azure, sanal makinenin bulunduğu bulut bölgesine bağlı olarak KMS etkinleştirme için farklı uç noktalar kullanır. Bu sorun giderme kılavuzunu kullanırken, bölgeniz için geçerli olan uygun KMS uç noktasını kullanın.
+Azure, sanal makinenin bulunduğu bulut bölgesine bağlı olarak KMS için farklı uç noktalar (Anahtar Yönetim Hizmetleri) etkinleştirme kullanır. Bu sorun giderme kılavuzunu kullanırken, bölgeniz için geçerli olan uygun KMS uç noktasını kullanın.
 
 * Azure genel bulut bölgeleri: kms.core.windows.net:1688
 * Azure Çin 21Vianet Ulusal bulut bölgeleri: kms.core.chinacloudapi.cn:1688
@@ -54,7 +54,7 @@ Genellikle, Windows VM ilgili KMS istemci kurulum anahtarı kullanılarak yapıl
 
 Özel görüntüden oluşturulan sanal makine için, sanal makine için uygun KMS istemci kurulum anahtarını yapılandırmanız gerekir.
 
-1. Yükseltilmiş bir komut isteminde **slmgr. vbs/dlv** komutunu çalıştırın. Çıktıda açıklama değerini kontrol edin ve ardından perakende (RETAIL Channel) veya Volume (VOLUME_KMSCLIENT) lisans medyasından oluşturulup oluşturulmayacağını saptayın.
+1. Yükseltilmiş bir komut isteminde **slmgr. vbs/dlv** komutunu çalıştırın. Çıktıda açıklama değerini kontrol edin ve ardından perakende (perakende kanalı) veya toplu (VOLUME_KMSCLIENT) lisans medyasından oluşturulup oluşturulmayacağını saptayın.
   
 
     ```
@@ -87,14 +87,14 @@ Genellikle, Windows VM ilgili KMS istemci kurulum anahtarı kullanılarak yapıl
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    Komut şu değeri döndürmelidir: Anahtar Yönetim hizmeti makine adı başarıyla kms.core.windows.net:1688 olarak ayarlandı.
+    Komut şunu döndürmelidir: anahtar yönetim hizmeti makine adı kms.core.windows.net:1688 başarıyla ayarlandı.
 
 4. KMS sunucusuyla bağlantı kurabildiğinizi kullanarak doğrulayın. Pstools.zip dosyasını ayıkladığınız klasöre geçin ve sonra aşağıdaki komutu çalıştırın:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-   Çıktının sondan ikinci satırında şunu gördüğünüzden emin olun: Gönderilen = 4, alınan = 4, kayıp = 0 (% 0 kayıp).
+   Çıktının ikinci-son satırına şunu görtığınızdan emin olun: gönderilen = 4, alınan = 4, kayıp = 0 (%0 kayıp).
 
    Kayıp 0 ' dan büyükse (sıfır), VM 'nin KMS sunucusuna bağlantısı yoktur. Bu durumda, VM bir sanal ağda ise ve özel bir DNS sunucusu belirtildiyse, DNS sunucusunun kms.core.windows.net çözümleyebileceğinden emin olmanız gerekir. Veya, DNS sunucusunu kms.core.windows.net çözümleyecek bir şekilde değiştirin.
 

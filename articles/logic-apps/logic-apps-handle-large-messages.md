@@ -6,13 +6,13 @@ ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
-ms.date: 4/27/2018
-ms.openlocfilehash: e583bf53021d772db54c30ed5a4c9ea2a029e093
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792012"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815091"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
 
@@ -39,6 +39,9 @@ Aksi takdirde, büyük içerik çıktısına erişmeye çalıştığınızda bir
 Logic Apps ile iletişim kuran hizmetler kendi ileti boyutu sınırlarına sahip olabilir. Bu sınırlar genellikle Logic Apps sınırından daha küçüktür. Örneğin, bir bağlayıcının parçalama desteklediğini varsayarsak, bağlayıcı 30 MB 'lık bir iletiyi büyük olarak kabul edebilir, Logic Apps. Bu bağlayıcının sınırına uymak için, Logic Apps 30 MB 'tan daha büyük bir iletiyi daha küçük parçalara böler.
 
 Parçalama desteği sunan bağlayıcılar için, temel alınan Parçalama Protokolü son kullanıcılara görünmez. Ancak, tüm bağlayıcılar öbek oluşturmayı desteklemez, bu nedenle bu bağlayıcılar, gelen iletiler bağlayıcıların boyut sınırlarını aştığında çalışma zamanı hataları oluşturur.
+
+> [!NOTE]
+> Öbek kullanan eylemler için, tetikleyici gövdesini geçiremiyor veya bu eylemlerde `@triggerBody()?['Content']` gibi ifadeler kullanamıyoruz. Bunun yerine, metin veya JSON dosya içeriği için, [ **oluşturma** eylemini](../logic-apps/logic-apps-perform-data-operations.md#compose-action) kullanmayı deneyebilir veya bu içeriği işlemek için [bir değişken oluşturabilirsiniz](../logic-apps/logic-apps-create-variables-store-values.md) . Tetikleyici gövdesi, medya dosyaları gibi diğer içerik türlerini içeriyorsa, bu içeriği işlemek için diğer adımları gerçekleştirmeniz gerekir.
 
 <a name="set-up-chunking"></a>
 
@@ -112,7 +115,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
    |---------------------------------|-------|------|-------------|
-   | **x-MS-Transfer-Mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
+   | **x-ms-transfer-mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
    | **x-MS-Content-Length** | <*Content-length*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
    ||||
 
@@ -132,8 +135,8 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
      | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
      |---------------------------------|-------|------|-------------|
-     | **İçerik aralığı** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
-     | **İçerik türü** | <*Content-type*> | Dize | Öbekli içerik türü |
+     | **Content-Range** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
+     | **Content-Type** | <*Content-type*> | Dize | Öbekli içerik türü |
      | **İçerik uzunluğu** | <*Content-length*> | Dize | Geçerli öbekteki bayt cinsinden boyut uzunluğu |
      |||||
 

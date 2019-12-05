@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507181"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806227"
 ---
 # <a name="about-direct-line-speech"></a>Doğrudan konuşma hattı hakkında
 
@@ -37,9 +37,9 @@ Ayrıca, 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlan
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Ata](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Ata](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Göz atma](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -50,7 +50,7 @@ Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabil
 
 ## <a name="customization"></a>Özelleştirme
 
-Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
+Konuşma hizmeti kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
 
 > [!NOTE]
 > Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
@@ -64,7 +64,7 @@ Ses yardımcıları için doğrudan hat konuşmayı ve ilgili işlevselliği, [s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 * [Konuşma SDK 'sını alın](speech-sdk.md)
 * [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Sanal yardımcı çözümü ve kurumsal şablonu al](https://github.com/Microsoft/AI)

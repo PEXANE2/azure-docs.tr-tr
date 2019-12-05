@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535814"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807417"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
@@ -80,7 +80,7 @@ Y **:** Azure platformunda yapılan güncelleştirmelerin ve yükseltmelerin bü
 
 Y **:** Bir kullanılabilirlik kümesinde veya sanal makine ölçek kümelerinde dağıtılan sanal makinelerin güncelleştirme etki alanları (UD) kavramı vardır. Azure, bakım gerçekleştirirken UD kısıtlamasına sahiptir ve sanal makineleri farklı bir UD 'den (aynı Kullanılabilirlik kümesi içinde) yeniden başlatmaz.  Azure, sonraki sanal makine grubuna geçmeden önce en az 30 dakika bekler. 
 
-Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için kullanılabilirlik](/linux/availability.md).
+Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için kullanılabilirlik](./linux/availability.md).
 
 **S: planlı bakım hakkında bilgi almak Nasıl yaparım? mı?**
 
@@ -92,7 +92,7 @@ Y **:** Planlı bakımla ilgili bilgiler yalnızca, planlanan bir bakım dalgas�
 
 **S: Sanal makinem etkilendiğinde tam olarak bilmeniz için bir yol var mı?**
 
-Y **:** Zamanlamayı ayarlarken, birkaç güne ait bir zaman penceresi tanımladık. Ancak, bu pencere içindeki sunucuların (ve VM 'Lerin) tam sıralaması bilinmiyor. VM 'Leri için tam zamanı bildirmek isteyen müşteriler, sanal makine içinden [zamanlanan olayları](/linux/scheduled-events.md) ve sorgu KULLANABILIR ve VM yeniden başlatmadan önce 15 dakikalık bir bildirim alabilir.
+Y **:** Zamanlamayı ayarlarken, birkaç güne ait bir zaman penceresi tanımladık. Ancak, bu pencere içindeki sunucuların (ve VM 'Lerin) tam sıralaması bilinmiyor. VM 'Leri için tam zamanı bildirmek isteyen müşteriler, sanal makine içinden [zamanlanan olayları](./linux/scheduled-events.md) ve sorgu KULLANABILIR ve VM yeniden başlatmadan önce 15 dakikalık bir bildirim alabilir.
 
 **S: sanal makinmi yeniden başlatmak için ne kadar sürer?**
 

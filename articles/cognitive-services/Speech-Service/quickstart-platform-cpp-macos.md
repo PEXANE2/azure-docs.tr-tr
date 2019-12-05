@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: konuşma C++ SDK 'sı (MacOS) Platform Kurulumu-konuşma hizmeti"
 titleSuffix: Azure Cognitive Services
-description: MacOS 'ta için C++ platformunuzu konuşma Hizmetleri SDK 'sı ile ayarlamak için bu kılavuzu kullanın.
+description: Konuşma hizmeti SDK 'Sı ile macOS C++ 'ta platformunuzu ayarlamak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: eb4cce5f469ca493c5183b4ca0830941ea92ac9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80f72a4d9aa9a3eef0b0cbab9f2d6017b3c366de
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502558"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818518"
 ---
 # <a name="quickstart-speech-sdk-c-macos-platform-setup"></a>Hızlı başlangıç: konuşma C++ SDK 'sı (MacOS) Platform Kurulumu
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 585828855cdbd3a585ced1aa6803482c3f26f0f4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121587"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812846"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -33,7 +33,7 @@ Uygulamanızın TLS 1,2 ile çalışıp çalışmadığını bulmanın en kolay 
 
 Redsıs .NET istemcileri, en eski TLS sürümünü varsayılan olarak .NET Framework 4.5.2 veya önceki sürümlerde kullanır ve .NET Framework 4,6 veya sonraki sürümlerde en son TLS sürümünü kullanır. .NET Framework eski bir sürümünü kullanıyorsanız, TLS 1,2 'yi el ile etkinleştirebilirsiniz:
 
-* **StackExchange. Reddir:** Bağlantı dizesinde `ssl=true` ve `sslprotocls=tls12` ayarlayın.
+* **StackExchange. Reddir:** Bağlantı dizesinde `ssl=true` ve `sslprotocols=tls12` ayarlayın.
 * **Servicestack. redsıs:** [Servicestack. redin yönergelerini](https://github.com/ServiceStack/ServiceStack.Redis/pull/247)izleyin.
 
 ### <a name="net-core"></a>.NET Core
@@ -92,6 +92,6 @@ Redin-Kopyala varsayılan olarak TLS 1,2 kullanır.
 
 Redigo varsayılan olarak TLS 1,2 kullanır.
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
 - [Redsıs için Azure önbelleğini yapılandırma](cache-configure.md)

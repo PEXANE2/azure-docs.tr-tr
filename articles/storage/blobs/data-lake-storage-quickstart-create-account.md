@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e8deb8ed16186862349cecf70c9d617a4ad30399
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227960"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806907"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage 2. depolama hesabı oluşturma
 
@@ -21,14 +21,14 @@ Azure Data Lake Storage 2., Hadoop Dağıtılmış Dosya Sistemi (bir) ile çal�
 
 Bu makalede, Azure CLı aracılığıyla Azure portal, Azure PowerShell veya kullanarak nasıl hesap oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
 |           | Önkoşul |
 |-----------|--------------|
-|Portal     | None         |
-|PowerShell | Bu makale, PowerShell modülünü az. Storage sürüm **0,7** veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `Get-Module -ListAvailable Az.Storage` komutunu çalıştırın. Bu komutu çalıştırdıktan sonra hiçbir sonuç görünmez veya **0,7** 'den daha düşük bir sürüm görüntülenirse, PowerShell modülünüzü yükseltmeniz gerekir. Bu kılavuzun [PowerShell modülünü yükseltme](#upgrade-your-powershell-module) bölümüne bakın.
+|Portal     | Hiçbiri         |
+|PowerShell | Bu makale, PowerShell modülünü az. Storage sürüm **0,7** veya üstünü gerektirir. Geçerli sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az.Storage` komutu. Bu komutu çalıştırdıktan sonra hiçbir sonuç görünmez veya **0,7** 'den daha düşük bir sürüm görüntülenirse, PowerShell modülünüzü yükseltmeniz gerekir. Bkz: [, powershell modülü yükseltme](#upgrade-your-powershell-module) başlığına.
 |CLI        | Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştırabilirsiniz: <ul><li>CLI komutlarını Azure portalında Azure Cloud Shell içinden çalıştırabilirsiniz </li><li>CLI yükleyip CLI komutlarını yerel olarak çalıştırabilirsiniz</li></ul>|
 
 Komut satırında çalışırken Azure Cloud Shell'i çalıştırabilir veya CLI'yı yerel ortama yükleyebilirsiniz.
@@ -45,7 +45,7 @@ Düğme, bu makaledeki adımları çalıştırmak için kullanabileceğiniz etki
 
 ### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
 
-Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu makalede, Azure CLı sürüm 2.0.38 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu makalede, Azure CLı sürüm 2.0.38 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Azure Data Lake Storage 2. Nesil etkin bir depolama hesabı oluşturma
 
@@ -58,7 +58,7 @@ Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesab�
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Azure portalı kullanarak bir hesap oluşturma
 
-[Azure Portal](https://portal.azure.com)’da oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -81,7 +81,7 @@ Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşa�
 7. İsteğe bağlı olarak şu alanların her birinde bulunan değerleri değiştirin: **performans**, **çoğaltma**, **erişim katmanı**. Bu seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure depolama 'Ya giriş](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
 8. **Gelişmiş** sekmesini seçin.
 10. **Data Lake Storage 2.** bölümünde **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
-11. Depolama hesabı oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
+11. Tıklayın **gözden geçir + Oluştur** depolama hesabı oluşturmak için.
 
 Depolama hesabınız portaldan oluşturulmuş olur.
 
@@ -95,7 +95,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 ## <a name="create-an-account-using-powershell"></a>PowerShell kullanarak hesap oluşturma
 
-İlk olarak [PowerShellGet](/powershell/scripting/gallery/installing-psget) modülünün en son sürümünü yüklemeniz gerekir.
+İlk olarak, en son sürümünü yükleyin [PowerShellGet](/powershell/scripting/gallery/installing-psget) modülü.
 
 Ardından, PowerShell modülünüzü yükseltin, Azure aboneliğinizde oturum açın, bir kaynak grubu oluşturun ve ardından bir depolama hesabı oluşturun.
 
@@ -103,7 +103,7 @@ Ardından, PowerShell modülünüzü yükseltin, Azure aboneliğinizde oturum a�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell 'i kullanarak Data Lake Storage 2. etkileşimde bulunmak için az. Storage sürüm **0,7** veya üzeri modülünü yüklemeniz gerekir.
+PowerShell kullanarak Data Lake depolama 2. nesil ile etkileşimde bulunmak üzere, modül Az.Storage sürümü yüklemeniz gerekir **0,7** veya üzeri.
 
 Yükseltilmiş izinlere sahip bir PowerShell oturumu açarak işleme başlayın.
 
@@ -115,7 +115,7 @@ Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
 
-`Login-AzAccount` komutunu kullanın ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
+Kullanım `Login-AzAccount` izleyin ve komut ekrandaki kimlik doğrulaması yapın.
 
 ```powershell
 Login-AzAccount
@@ -173,7 +173,7 @@ az login
 
 CLI'yı kullanarak Data Lake depolama 2. nesil ile etkileşimde bulunmak üzere kabuğunuz için bir uzantı eklemek zorunda kalırsınız.
 
-Bunu yapmak için, Cloud Shell ya da yerel bir kabuğu kullanarak aşağıdaki komutu girin: `az extension add --name storage-preview`
+Bunu yapmak için Cloud Shell veya yerel bir kabuk kullanarak aşağıdaki komutu girin: `az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -199,7 +199,7 @@ az storage account create `
     --location westus2 `
     --sku Standard_LRS `
     --kind StorageV2 `
-    --hierarchical-namespace true
+    --enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -214,4 +214,4 @@ az group delete --name myResourceGroup
 
 Bu makalede Data Lake Storage 2. özellikleri olan bir depolama hesabı oluşturdunuz. Karşıya yükleme ve BLOB Depolama hesabınızdan indirme öğrenmek için aşağıdaki konuya bakın.
 
-* [AzCopy Ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [AzCopy V10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

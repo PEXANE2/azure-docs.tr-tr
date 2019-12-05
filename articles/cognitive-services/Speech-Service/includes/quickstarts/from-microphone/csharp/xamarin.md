@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796129"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818848"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -136,7 +136,7 @@ Ortak HelloWorld projesi, platformlar arası uygulamanız için platformdan bağ
 
    ![Mikrofon erişimi izin isteği](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. **Konuşma tanımayı Başlat**' ı seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Konuşma, konuşma hizmetlerine iletilir ve pencerede görüntülenen metne gönderilir.
+1. **Konuşma tanımayı Başlat**' ı seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Söyledikleriniz Konuşma hizmetine aktarılır ve metne dönüştürülür; metin pencerede görünür.
 
    ![Konuşma tanıma kullanıcı arabirimi](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

@@ -2,13 +2,13 @@
 title: Azure portal şablonu dışarı aktarma
 description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu dışarı aktarmak için Azure portal kullanın.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/03/2019
+ms.openlocfilehash: 74812799ce1ccb428128ea0923d9cda556b9d9ee
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306782"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815077"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -33,7 +33,7 @@ Seçtiğiniz seçeneğe bağlı olarak, içe aktarılmış şablonların farklı
 | Şablon, kaynakların geçerli durumunun anlık görüntüsüdür. Dağıtımdan sonra yaptığınız el ile yapılan tüm değişiklikleri içerir. | Şablon, dağıtım sırasında yalnızca kaynakların durumunu gösterir. Dağıtımdan sonra yaptığınız tüm el ile değişiklikler dahil edilmez. |
 | Bir kaynak grubundan dışarı aktarılacak kaynakları seçebilirsiniz. | Belirli bir dağıtımın tüm kaynakları dahil edilmiştir. Bu kaynakların bir alt kümesini seçemezsiniz veya farklı bir zamanda eklenen kaynaklar ekleyebilirsiniz. |
 | Şablon, genellikle dağıtım sırasında ayarladığınız bazı özellikler dahil olmak üzere, kaynakların tüm özelliklerini içerir. Şablonu yeniden kullanmadan önce bu özellikleri kaldırmak veya temizlemek isteyebilirsiniz. | Şablon yalnızca dağıtım için gereken özellikleri içerir. Şablon kullanıma hazırdır. |
-| Şablon muhtemelen yeniden kullanım için gereken tüm parametreleri içermez. Çoğu özellik değeri, şablonda sabit olarak kodlanır. Diğer ortamlarda şablonu yeniden dağıtmak için, kaynakları yapılandırma özelliğini artıran parametreler eklemeniz gerekir.  Ayrıca kendi parametrelerinizi yazabileceğiniz **parametreleri dahil etme** seçeneğiniz de vardır. | Şablon, farklı ortamlarda yeniden dağıtmayı kolaylaştıran parametreler içerir. |
+| Şablon muhtemelen yeniden kullanım için gereken tüm parametreleri içermez. Çoğu özellik değeri, şablonda sabit olarak kodlanır. Diğer ortamlarda şablonu yeniden dağıtmak için, kaynakları yapılandırma özelliğini artıran parametreler eklemeniz gerekir.  **Parametreleri içer** ' i seçimden, kendi parametrelerinizi yazabileceğiniz şekilde seçebilirsiniz. | Şablon, farklı ortamlarda yeniden dağıtmayı kolaylaştıran parametreler içerir. |
 
 Şablonu bir kaynak grubu veya kaynağından dışarı aktarın, ne zaman:
 
@@ -63,6 +63,8 @@ Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
    ![Şablonu göster](./media/export-template-portal/show-template.png)
 
    **Include parametreleri** varsayılan olarak seçilidir.  Seçildiğinde, şablon oluşturulduğunda tüm şablon parametreleri dahil edilir. Kendi parametrelerinizi yazmak isterseniz, bu onay kutusunu dahil etmez.
+
+Yayınlanan şablon her kaynak türü için [yayımlanan şemalardan](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) oluşturulur. Bazen, şema bir kaynak türü için en son sürüme sahip değildir. İhtiyacınız olan özellikleri içerdiğinden emin olmak için, verdiğiniz şablonu kontrol edin. Gerekirse, sizin için gerekli olan API sürümünü kullanmak üzere, verdiğiniz şablonu düzenleyin.
 
 ## <a name="export-template-from-a-resource"></a>Şablondan bir kaynağı dışarı aktar
 

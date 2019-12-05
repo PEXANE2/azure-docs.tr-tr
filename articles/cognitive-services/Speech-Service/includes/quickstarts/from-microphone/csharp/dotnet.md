@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 106a11959bdaf34f44faa0c6a2b031ccba537835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c4aee9604df98fbf5fbd18f527c4d40cff044bb9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796111"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818833"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -27,7 +27,7 @@ Başlamadan önce:
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
 
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 

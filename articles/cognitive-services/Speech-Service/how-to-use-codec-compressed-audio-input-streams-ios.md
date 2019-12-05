@@ -1,7 +1,7 @@
 ---
 title: İOS 'ta konuşma SDK 'Sı ile codec ile sıkıştırılmış ses akışı
 titleSuffix: Azure Cognitive Services
-description: İOS 'ta konuşma SDK 'Sı ile Azure konuşma Hizmetleri 'ne sıkıştırılmış ses akışını nasıl sağlayacağınızı öğrenin.
+description: İOS 'ta konuşma SDK 'Sı ile konuşma hizmetine sıkıştırılmış ses akışını nasıl sağlayacağınızı öğrenin.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109572"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805867"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Nasıl yapılır: iOS 'ta konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
@@ -42,7 +42,7 @@ Projeyi Xcode 'da açın ve **genel IOS cihaz** hedefi için oluşturun; Bu, bel
 
 Yapı adımı, `GStreamerWrapper.framework`adı ile tüm gerekli mimarilere yönelik dinamik bir kitaplık içeren dinamik bir çerçeve paketi oluşturur.
 
-Bu çerçevenin konuşma Hizmetleri SDK 'Sı ile sıkıştırılmış ses akışları kullanan tüm uygulamalara dahil olması gerekir.
+Bu çerçevenin konuşma hizmeti SDK 'Sı ile sıkıştırılmış ses akışları kullanan tüm uygulamalara dahil olması gerekir.
 
 Bunu gerçekleştirmek için aşağıdaki ayarları Xcode projenize uygulayın:
 
@@ -50,11 +50,11 @@ Bunu gerçekleştirmek için aşağıdaki ayarları Xcode projenize uygulayın:
 1. _Proje ayarlarındaki_çerçeveler için yolları ayarlayın.
    1. **Katıştırılmış Ikili dosyalar** başlığı altındaki **genel** sekmesinde, bir Framework olarak SDK Kitaplığı ekleyin: **katıştırılmış ikililer Ekle** > **diğer...** > seçtiğiniz dizine gidin ve her iki çerçeveyi seçin.
    1. **Derleme Ayarları** sekmesine gidin ve **Tümü** ayarını etkinleştirin.
-1. `$(SRCROOT)/..` dizinini _Arama Yolları_ başlığı altında **Çerçeve Arama Yolları**’na ekleyin.
+1. `$(SRCROOT)/..` dizinini **Arama Yolları** başlığı altında _Çerçeve Arama Yolları_’na ekleyin.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için bir `SPXPullAudioInputStream` veya `SPXPushAudioInputStream`oluşturun.
+Konuşma hizmetine sıkıştırılmış bir ses biçiminde akış yapmak için bir `SPXPullAudioInputStream` veya `SPXPushAudioInputStream`oluşturun.
 
 Aşağıdaki kod parçacığında, akışın sıkıştırma biçimi olarak MP3 belirterek bir `SPXPushAudioInputStream`örneğinden bir `SPXAudioConfiguration` oluşturma gösterilmektedir.
 

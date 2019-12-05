@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı birden çok dile çevirme-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: ae16b7e8ace3ff968fb55d444e19a81072bd78f8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c96534e3215038e885333a10daccf087f176729
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021211"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817204"
 ---
 ## <a name="additional-language-and-platform-support"></a>Ek dil ve platform desteği
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110168"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805901"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>İçin konuşma SDK 'sını kullanarak konuşma amaçlarını tanımaC#
 
@@ -44,7 +44,7 @@ Bu kılavuza başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin o
 
 ## <a name="luis-and-speech"></a>LUIS ve konuşma
 
-LU, konuşmadan amaçları tanımak için konuşma hizmetleriyle tümleştirilir. Konuşma Hizmetleri aboneliğine ihtiyacınız yoktur, yalnızca LUO.
+LUIS, konuşmadaki amaçları tanımak için Konuşma hizmetiyle tümleştirilir. Konuşma hizmeti aboneliğine ihtiyacınız yoktur; LUIS yeterlidir.
 
 LUSıS üç tür anahtar kullanır:
 
@@ -52,11 +52,11 @@ LUSıS üç tür anahtar kullanır:
 | --------- | ----------------------------------------------------- |
 | Yazma | LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar |
 | Başlangıç   | LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar   |
-| Uç Nokta  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
+| Uç nokta  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
 
 Bu kılavuz için uç nokta anahtar türüne ihtiyacınız vardır. Bu kılavuzda, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneği kullanılmaktadır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
-Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma Hizmetleri tümleştirmesini etkinleştirmez ve bu kılavuzla çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu kılavuz için ücretsiz abonelik katmanını kullanabilirsiniz.
+Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma hizmeti tümleştirmesini etkinleştirmez ve bu kılavuzla çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu kılavuz için ücretsiz abonelik katmanını kullanabilirsiniz.
 
 Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](https://www.luis.ai/home)oturum açın, **uygulamalarım** sayfasında uygulamanızı seçin, sonra uygulamanın **Yönet** sayfasına geçin. Son olarak, kenar çubuğunda **anahtarlar ve uç noktalar** ' ı seçin.
 
@@ -128,7 +128,7 @@ Aşağıdaki bölümlerde kod açıklaması yer alır.
 İlk olarak, LUSıS uç nokta anahtarınızdan ve bölgenizde bir konuşma yapılandırması oluşturmanız gerekir. Konuşma SDK 'sının çeşitli özellikleri için Tanıyıcılar oluşturmak üzere konuşma yapılandırmasını kullanabilirsiniz. Konuşma yapılandırmasında, kullanmak istediğiniz aboneliği belirtmek için birden çok yol vardır; burada, abonelik anahtarını ve bölgesini alan `FromSubscription`kullanırız.
 
 > [!NOTE]
-> Bir konuşma Hizmetleri aboneliği değil, LUSıS aboneliğiniz için anahtar ve bölge kullanın.
+> Bir konuşma hizmeti aboneliği değil, LUSıS aboneliğiniz için anahtar ve bölge kullanın.
 
 Daha sonra, `new IntentRecognizer(config)` kullanarak bir amaç tanıyıcı oluşturun. Yapılandırma, hangi aboneliğin kullanılacağını zaten biliyor olduğundan, tanıyıcı oluştururken abonelik anahtarını ve uç noktayı belirtmeniz gerekmez.
 
@@ -143,7 +143,7 @@ Amaçları eklemek için üç bağımsız değişken sağlamalısınız: LUSıS 
 | `intentName` | LUIS app’te tanımlandığı şekliyle amacın adı. Bu değer, LUO amaç adıyla tam olarak eşleşmelidir. |
 | `intentID` | Konuşma SDK’sı tarafından tanınan amaca atanan kimlik. Bu değer, istediğiniz her şey olabilir; LUSıS uygulamasında tanımlanan amaç adına karşılık gelmesi gerekmez. Örneğin, aynı kodla birden çok amaç işleniyorsa, bunlar için aynı kimliği kullanabilirsiniz. |
 
-Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `AddIntent` yöntemindeki üç `RecognizeIntentAsync()` satırını bu kodla değiştirin.
+Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `RecognizeIntentAsync()` yöntemindeki üç `AddIntent` satırını bu kodla değiştirin.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");

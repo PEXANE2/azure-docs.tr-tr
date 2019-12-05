@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891473"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806618"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -42,7 +42,7 @@ Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çal�
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 ve 7,6
+* Kırılabilir kurumsal çekirdek (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 ve 7,6 ile Oracle Linux 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma seçenekleri
 
@@ -91,3 +91,5 @@ Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" mo
 * Azure altyapısına [Oracle VM görüntülerini](oracle-vm-solutions.md) dağıtma hakkında daha fazla bilgi edinin.
 
 * [OCI Ile Azure bağlantısı](oracle-oci-overview.md)oluşturma hakkında daha fazla bilgi edinin.
+
+* Ignite 2019 [' den Oracle 'ın Azure 'a genel bakış oturumuna](https://myignite.techcommunity.microsoft.com/sessions/82915) göz atın. 
