@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: 7ca7256cbe42949141bc216ee1cb5c89ceac935c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226381"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665619"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Ek Azure aboneliği oluşturma
 
@@ -36,7 +36,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 |---------|---------|
 |Kurumsal Anlaşma (EA) |  Kurumsal Anlaşma kaydında Hesap Sahibi rolü. Daha fazla bilgi için bkz. [Azure’daki Azure Kurumsal Anlaşma yönetici rollerini anlama](billing-understand-ea-roles.md).    |
 |Microsoft Müşteri Sözleşmesi (MCA) |  Fatura bölümünde, faturalama profilinde veya ödeme hesabında sahip veya katkıda bulunan rolü. Veya fatura bölümünde Azure aboneliği oluşturucu rolü.  Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevi](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Microsoft İş Ortağı Sözleşmesi (MPA) |   İş ortağı kuruluşunda Genel Yönetici ve Yönetici Aracısı rolü. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview)  |
+|Microsoft İş Ortağı Sözleşmesi (MPA) |   CSP iş ortağı kuruluşunda Genel Yönetici ve Yönetici Temsilcisi rolü. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview).  Azure abonelikleri oluşturmak için kullanıcının iş ortağı kiracısında oturum açması gerekir.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portalında abonelik oluşturma
 
