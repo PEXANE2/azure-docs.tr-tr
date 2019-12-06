@@ -2,13 +2,13 @@
 title: Ortamınızı Blueprint Işleci için ayarlayın
 description: Azure ortamınızı Blueprint Işleci yerleşik rol tabanlı erişim denetimi (RBAC) rolüyle kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
 ms.date: 08/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 671ac3aaf42bddb3e775baec6838e4c271c4e855
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406366"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873225"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Ortamınızı Blueprint İşleci için yapılandırma
 

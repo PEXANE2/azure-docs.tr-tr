@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB LINQ to SQL çevirisi
-description: LINQ sorgularını Azure Cosmos DB SQL sorgularıyla eşleme.
+description: Desteklenen LINQ işleçlerini ve LINQ sorgularının Azure Cosmos DB içindeki SQL sorgularıyla nasıl eşleştirildiğini öğrenin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003548"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871168"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL çeviri
 
@@ -23,7 +23,7 @@ Sorgu sağlayıcısı aşağıdaki skaler ifadeleri destekler:
 
 - Sorgu değerlendirme sırasında temel veri türlerinin sabit değerleri de dahil olmak üzere sabit değerler.
   
-- Bir nesnenin veya dizi öğesinin özelliğine başvuran Özellik/dizi dizini ifadeleri. Örneğin:
+- Bir nesnenin veya dizi öğesinin özelliğine başvuran Özellik/dizi dizini ifadeleri. Örnek:
   
   ```
     family.Id;
@@ -58,25 +58,25 @@ Sorgu sağlayıcısı aşağıdaki skaler ifadeleri destekler:
 
 SQL .NET SDK 'sına dahil edilen LINQ sağlayıcısı aşağıdaki işleçleri destekler:
 
-- Şunu **seçin**: Tahminler, nesne oluşturma dahil olmak üzere SQL SELECT 'e çevirmelidir.
-- **Burada**: Filtreler SQL 'e çevirir ve SQL işleçleri arasındaki `&&` `||` `!` çeviriyi destekler
-- **SelectMany**: Dizileri SQL JOIN yan tümcesine geri sarma olanağı sağlar. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
-- **OrderBy** ve **OrderByDescending**: ASC veya DESC ile ORDER 'a çevirin.
+- **Seçim**: nesne oluşturma da dahil olmak üzere SQL SELECT için projeksiyonları çevir.
+- **Burada**: filtreler SQL 'e ÇEVIRIR ve sql işleçleri `&&`, `||`ve `!` arasında çeviri destekler
+- **SelectMany**: SQL JOIN yan tümcesine dizi geriye doğru izleme sağlar. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
+- **OrderBy** ve **OrderByDescending**: ASC veya DESC ile order by 'a çevirin.
 - **Sayısı**, **toplam**, **Min**, **Max**, ve **ortalama** işleçleri toplama ve zaman uyumsuz eşdeğerlerine **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, ve **AverageAsync**.
-- **CompareTo**: Aralık karşılaştırmaları ' ne çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
-- Şunları **yapın**: Bir sorgudaki sonuçları kısıtlamak için SQL üst öğesine çevrilir.
-- **Matematik işlevleri**: `Abs`.Net ,`Exp` ,,`Pow`,,,,,,,,,,,,, `Acos` `Asin` `Atan` `Ceiling` `Cos` `Floor` `Log` `Log10` `Round` ,,,`Truncate` , ve ile eşdeğer SQL yerleşik işlevleri. `Sign` `Sin` `Sqrt` `Tan`
-- **Dize işlevleri**: `Concat`.Net ,`Reverse` ,,`ToUpper`,,,,,,,,,,,,, `Contains` `Count` `EndsWith``IndexOf` `Replace` `StartsWith` `SubString` `ToLower` `TrimEnd`, ve `TrimStart` eşdeğer SQL yerleşik işlevlerine.
-- **Dizi işlevleri**: , .Net `Concat`, `Contains`ve ile `Count` eşdeğer SQL yerleşik işlevlerine çeviriyi destekler.
-- **Jeo-uzamsal uzantı işlevleri**: ,, `Distance` `IsValidDetailed`, `IsValid` Ve`Within` ' nin eşdeğer SQL yerleşik işlevlerine çevirisini destekler.
-- **Kullanıcı tanımlı Işlev uzantısı işlevi**: Saplama yönteminden `UserDefinedFunctionProvider.Invoke` karşılık gelen Kullanıcı tanımlı işleve çeviriyi destekler.
-- **Çeşitli**: `Coalesce` Ve koşullu işleçlerin çevirisini destekler. , Bağlama `Contains` göre ' de CONTAINS, ARRAY_CONTAINS veya SQL dize ile çeviri yapabilir.
+- **CompareTo**: aralık karşılaştırmalar çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
+- **Al**: sorgunun sonuçlarını KıSıTLAMAK için SQL 'e çevirir.
+- **Matematik işlevleri**: .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`ve `Truncate` Ile eşdeğer SQL yerleşik işlevlerine kadar çeviriyi destekler.
+- **Dize işlevleri**: .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`ve `TrimStart` 'nın eşdeğer SQL yerleşik işlevlerine çevirisini destekler.
+- **Dizi işlevleri**: .net `Concat`, `Contains`ve `Count` aynı SQL yerleşik işlevlerine çeviriyi destekler.
+- **Jeo-uzamsal uzantı işlevleri**: `Distance`, `IsValid`, `IsValidDetailed`ve `Within` eşdeğer SQL yerleşik işlevlerine çeviriyi destekler.
+- **Kullanıcı tanımlı Işlev uzantısı işlevi**: `UserDefinedFunctionProvider.Invoke` saplama yönteminden çeviriyi, karşılık gelen Kullanıcı tanımlı işleve göre destekler.
+- **Çeşitli**: `Coalesce` ve koşullu işleçlerin çevirisini destekler. , Bağlama göre `Contains`, ARRAY_CONTAINS veya SQL IÇEREN dizeye çevirebilir.
 
 ## <a name="examples"></a>Örnekler
 
 Aşağıdaki örneklerde, bazı standart LINQ sorgu işleçlerinin Cosmos DB sorgulara nasıl çevrilebileceğini gösterir.
 
-### <a name="select-operator"></a>İşleç seçin
+### <a name="select-operator"></a>İşleç seç
 
 Söz dizimi `input.Select(x => f(x))`burada `f` skaler bir ifade.
 
@@ -192,7 +192,7 @@ Daha güçlü sorgular oluşturmak için önceki işleçleri oluşturabilirsiniz
 
 ### <a name="concatenation"></a>Birleştirme
 
-Söz dizimi `input(.|.SelectMany())(.Select()|.Where())*`. Art arda eklenmiş bir sorgu, daha sonra `SelectMany` birden çok `Select` veya `Where` işleçle bir isteğe bağlı sorgu ile başlayabilir.
+Söz dizimi `input(.|.SelectMany())(.Select()|.Where())*`. Art arda eklenmiş bir sorgu, isteğe bağlı bir `SelectMany` sorgusuyla ve ardından birden çok `Select` veya `Where` işleçleriyle başlayabilir.
 
 **Birleştirme, örnek 1:**
 
@@ -264,7 +264,7 @@ Söz dizimi `input(.|.SelectMany())(.Select()|.Where())*`. Art arda eklenmiş bi
 
 ### <a name="nesting"></a>İç içe geçirme
 
-`input.SelectMany(x=>x.Q())` Sözdizimi ,,veya`Where` işleçtir. `SelectMany` `Q` `Select`
+Sözdizimi, `Q` bir `Select`, `SelectMany`veya `Where` işleci olduğu `input.SelectMany(x=>x.Q())`.
 
 İç içe sorgu, iç sorguyu dış kapsayıcının her öğesine uygular. Önemli bir özellik, iç sorgunun bir kendi kendine birleşim gibi dış kapsayıcıdaki öğelerin alanlarına başvurabileceği bir özelliktir.
 

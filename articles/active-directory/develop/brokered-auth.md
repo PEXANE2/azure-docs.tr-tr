@@ -1,32 +1,27 @@
 ---
 title: Android 'de aracılı kimlik doğrulaması | Mavisi
+titlesuffix: Microsoft identity platform
 description: Microsoft Identity platformunda Android için aracılı kimlik doğrulama & yetkilendirmesi 'ne genel bakış
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175649"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843725"
 ---
-# <a name="brokered-auth-in-android"></a>Android 'de aracılı kimlik doğrulaması
-
-## <a name="introduction"></a>Tanıtım
+# <a name="brokered-authentication-in-android"></a>Android 'de aracılı kimlik doğrulaması
 
 Cihaz genelinde çoklu oturum açma 'ya (SSO) katılmak ve kuruluş koşullu erişim ilkelerini karşılamak için Microsoft 'un kimlik doğrulama aracılarından birini kullanmanız gerekir. Bir aracı ile tümleştirme aşağıdaki avantajları sağlar:
 
@@ -52,7 +47,7 @@ Aşağıdaki diyagramda, uygulamanız, Microsoft kimlik doğrulama kitaplığı 
 
 Aracı barındırma uygulamaları, cihaz sahibi tarafından, uygulama mağazalarından (genellikle Google Play Store) herhangi bir zamanda yüklenebilir. Ancak bazı API 'Ler (kaynaklar), cihazların şunları gerektiren koşullu erişim Ilkeleriyle korunmaktadır:
 
-- kayıtlı (çalışma alanına katılmış) ve/veya
+- Kayıtlı (çalışma alanına katılmış) ve/veya
 - Cihaz yönetimine kaydolmuş veya
 - Intune Uygulama Koruması kayıtlı
 

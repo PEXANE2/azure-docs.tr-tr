@@ -4,17 +4,17 @@ description: ", Azure Otomasyonu 'nda bir runbook başlatmak için kullanılabil
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6ef8d81e8a2845e62bf25d0bba4d6967cca65a4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886467"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849420"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Otomasyonu 'nda runbook başlatma
 
@@ -22,7 +22,7 @@ Aşağıdaki tablo, belirli senaryonuz için en uygun olan Azure Otomasyonu 'nda
 
 | **Yöntem** | **Karakter** |
 | --- | --- |
-| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
+| [Azure portalda](#start-a-runbook-with-the-azure-portal) |<li>Etkileşimli kullanıcı arabirimiyle en basit yöntem.<br> <li>Basit parametre değerleri sağlamak için form.<br> <li>İş durumunu kolayca izleyin.<br> <li>Azure oturum açma ile erişim kimliği doğrulandı. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell cmdlet 'leri ile komut satırından çağrı.<br> <li>, Birden çok adımla otomatikleştirilmiş çözüme eklenebilir.<br> <li>İstek sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile doğrulandı.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın.<br> <li>İş durumunu izleyin.<br> <li>PowerShell cmdlet 'lerini desteklemek için gereken istemci. |
 | [Azure Otomasyonu API 'SI](/rest/api/automation/) |<li>En esnek yöntem, ancak çoğu karmaşıktır.<br> <li>HTTP istekleri yapan herhangi bir özel koddan çağırın.<br> <li>Sertifika veya OAuth Kullanıcı sorumlusu/hizmet sorumlusu ile kimlik doğrulaması iste.<br> <li>Basit ve karmaşık parametre değerlerini sağlayın. *API 'yi kullanarak bir Python runbook 'u arıyorsanız JSON yükünün serileştirilmesi gerekir.*<br> <li>İş durumunu izleyin. |
 | [Web kancaları](automation-webhooks.md) |<li>Tek bir HTTP isteğinden runbook 'u başlatın.<br> <li>URL 'de güvenlik belirteci ile kimlik doğrulandı.<br> <li>İstemci, Web kancası oluşturulduğunda belirtilen parametre değerlerini geçersiz kılamaz. Runbook, HTTP istek ayrıntıları ile doldurulmuş tek bir parametre tanımlayabilir.<br> <li>Web kancası URL 'SI aracılığıyla iş durumunu izleyebilme yeteneği yoktur. |
@@ -44,13 +44,13 @@ Aşağıdaki görüntüde, bir runbook 'un yaşam döngüsünde ayrıntılı ad�
 
 ## <a name="start-a-runbook-with-powershell"></a>PowerShell ile runbook başlatma
 
-Windows PowerShell ile bir runbook başlatmak için [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) öğesini kullanabilirsiniz. Aşağıdaki örnek kod, test-runbook adlı bir runbook 'u başlatır.
+Windows PowerShell ile bir runbook başlatmak için [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) öğesini kullanabilirsiniz. Aşağıdaki örnek kod, Test-Runbook adlı bir runbook'u başlatır.
 
 ```azurepowershell-interactive
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-Start-AzureRmAutomationRunbook, runbook başlatıldıktan sonra durumunu izlemek için kullanabileceğiniz bir iş nesnesi döndürür. Daha sonra bu iş nesnesini [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) ile birlikte kullanarak, çıktısını almak için [Get-Azurermautomationjoi put ' i ve Get-Azurermautomationjoi put](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) Aşağıdaki örnek kod, test-runbook adlı bir runbook başlatır, tamamlanmasını bekler ve ardından çıktısını görüntüler.
+Start-AzureRmAutomationRunbook, runbook başlatıldıktan sonra durumunu izlemek için kullanabileceğiniz bir iş nesnesi döndürür. Daha sonra bu iş nesnesini [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) ile birlikte kullanarak, çıktısını almak için [Get-Azurermautomationjoi put ' i ve Get-Azurermautomationjoi put](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) Aşağıdaki örnek kod, Test-Runbook adlı bir runbook başlatır, tamamlanmasını bekler ve ardından çıktısını görüntüler.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"
@@ -69,7 +69,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Runbook için parametreler gerekiyorsa, bunları bir [Hashtable](https://technet.microsoft.com/library/hh847780.aspx)olarak belirtmeniz gerekir. Hashtable 'ın anahtarı parametre adıyla ve değer parametre değeri olmalıdır. Aşağıdaki örnek; FirstName ve LastName adlı iki dize parametresi, RepeatCount adlı bir tamsayı ve Show adlı bir Boolean parametresiyle bir runbook 'un nasıl başlatılacağını gösterir. Parametreler hakkında daha fazla bilgi için aşağıdaki [runbook parametreleri](#runbook-parameters) bölümüne bakın.
+Runbook için parametreler gerekiyorsa, bunları bir [Hashtable](https://technet.microsoft.com/library/hh847780.aspx)olarak belirtmeniz gerekir. Hashtable 'ın anahtarı parametre adıyla ve değer parametre değeri olmalıdır. Aşağıdaki örnek; FirstName ve LastName adlı iki dize parametresi, RepeatCount adlı bir tamsayı ve Show adlı bir boolean parametresiyle bir runbook’u nasıl çalıştıracağınızı gösterir. Parametreler hakkında daha fazla bilgi için aşağıdaki [runbook parametreleri](#runbook-parameters) bölümüne bakın.
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
@@ -86,7 +86,7 @@ Azure Otomasyonu web hizmeti, aşağıdaki bölümlerde açıklandığı gibi be
 
 Parametre, [Object] veri türünde ise, adlandırılmış değerlerin bir listesini göndermek için şu JSON biçimini kullanabilirsiniz: *{name1: ' değer1 ', AD2: ' değer2 ', Name3: ' Value3 '}* . Bu değerler basit türler olmalıdır. Runbook, parametreyi her bir adlandırılmış değere karşılık gelen özelliklerle birlikte bir [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) olarak alır.
 
-Kullanıcı adlı bir parametreyi kabul eden aşağıdaki test runbook 'unu göz önünde bulundurun.
+kullanıcı adlı bir parametreyi kabul eden aşağıdaki sınama runbook’unu göz önünde bulundurun.
 
 ```powershell
 Workflow Test-Parameters
@@ -104,7 +104,7 @@ Workflow Test-Parameters
 }
 ```
 
-Aşağıdaki metin Kullanıcı parametresi için kullanılabilir.
+Aşağıdaki metin kullanıcı parametresi için kullanılabilir.
 
 ```json
 {FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
@@ -119,11 +119,11 @@ Joe
 Smith
 ```
 
-### <a name="arrays"></a>Dizi
+### <a name="arrays"></a>Diziler
 
 Parametre, [dizi] veya [String []] gibi bir diziyse, değerlerin bir listesini göndermek için şu JSON biçimini kullanabilirsiniz: *[değer1, değer2, Value3]* . Bu değerler basit türler olmalıdır.
 
-*Kullanıcı*adlı bir parametreyi kabul eden aşağıdaki test runbook 'unu göz önünde bulundurun.
+*kullanıcı*adlı bir parametreyi kabul eden aşağıdaki sınama runbook’u göz önünde bulundurun.
 
 ```powershell
 Workflow Test-Parameters
@@ -140,7 +140,7 @@ Workflow Test-Parameters
 }
 ```
 
-Aşağıdaki metin Kullanıcı parametresi için kullanılabilir.
+Aşağıdaki metin kullanıcı parametresi için kullanılabilir.
 
 ```input
 ["Joe","Smith",2,true]
@@ -155,11 +155,11 @@ Joe
 Smith
 ```
 
-### <a name="credentials"></a>Kimlik Bilgileri
+### <a name="credentials"></a>Kimlik bilgileri
 
 Parametre, **PSCredential**veri türünde ise, bir Azure Otomasyonu [kimlik bilgisi varlığının](automation-credentials.md)adını sağlayabilirsiniz. Runbook, kimlik bilgisini belirttiğiniz adla alır.
 
-Kimlik bilgisi adlı bir parametreyi kabul eden aşağıdaki test runbook 'unu göz önünde bulundurun.
+Kullanıcı bilgisi adlı bir parametreyi kabul eden aşağıdaki sınama runbook’unu göz önünde bulundurun.
 
 ```powershell
 Workflow Test-Parameters

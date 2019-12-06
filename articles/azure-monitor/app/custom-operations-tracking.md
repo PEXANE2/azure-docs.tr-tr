@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights .NET SDK ile özel işlemleri izleme | Microsoft Docs
+title: Azure Application Insights .NET SDK ile özel işlemleri izleme
 description: Azure Application Insights .NET SDK ile özel işlemleri izleme
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: dabdfa43a87aadadbd6c22b886b8bfe08aa69f02
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554934"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872664"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -343,9 +343,9 @@ Benzer şekilde, diğer kuyruk işlemleri de görüntülenebilir. Bir göz atma 
 
 - Kuyruktan bir öğe aldıktan sonra yeni bir `Activity` oluşturun.
 - Tüketici ve üretici günlüklerinin ilişkilendirilmesi için `Activity.SetParentId(message.ParentId)` kullanın.
-- `Activity`başlatın.
+- `Activity` uygulamasını başlatın.
 - `Start/StopOperation` yardımcıları kullanarak sıradan çıkarma, işleme ve silme işlemlerini izleyin. Aynı zaman uyumsuz denetim akışından (yürütme bağlamı) bunu yapın. Bu şekilde, bunlar doğru şekilde bağıntılı.
-- `Activity`durdurun.
+- `Activity`nu durdurun.
 - `Start/StopOperation`kullanın veya `Track` telemetrisini el ile çağırın.
 
 ### <a name="dependency-types"></a>Bağımlılık türleri

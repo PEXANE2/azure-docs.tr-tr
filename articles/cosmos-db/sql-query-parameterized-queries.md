@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB parametreli sorgular
-description: SQL parametreli sorgular hakkında bilgi edinin
+description: SQL parametreli sorguların, Kullanıcı girişi için güçlü işleme ve kaçışı nasıl sağladığını ve SQL ekleme aracılığıyla verilerin yanlışlıkla açıklanmasını nasıl önleyeceğinizi öğrenin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003604"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870828"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB parametreli sorgular
 
@@ -19,7 +19,7 @@ Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip so
 
 ## <a name="examples"></a>Örnekler
 
-Örneğin, parametreleri `lastName` alan ve `address.state` olarak bir sorgu yazabilir ve kullanıcı girişine göre çeşitli değerleri `lastName` ve `address.state` bunları çalıştırabilirsiniz.
+Örneğin, `lastName` ve `address.state` parametre olarak alan ve kullanıcı girişine göre `lastName` ve `address.state` çeşitli değerleri için yürütebileceği bir sorgu yazabilirsiniz.
 
 ```sql
     SELECT *

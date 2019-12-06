@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Telemetri veri modeli-özel durum telemetrisi | Microsoft Docs
+title: Azure Application Insights özel durum telemetrisi veri modeli
 description: Özel durum telemetrisi için Application Insights veri modeli
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,18 +8,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0ba1c94ee8dc78b937d650cff32e1518a7ca5a12
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 7decac2e5e65ff7eedb374858fe15360b4a1b2c5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677414"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872630"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Özel durum telemetrisi: Application Insights veri modeli
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md)bir özel durum örneği, izlenen uygulamanın yürütülmesi sırasında oluşan işlenmiş veya işlenmemiş bir özel durumu temsil eder.
 
-## <a name="problem-id"></a>Sorun kimliği
+## <a name="problem-id"></a>Sorun Kimliği
 
 Kodda özel durumun oluşturulduğu tanımlayıcı. Özel durumlar gruplandırması için kullanılır. Genellikle, çağrı yığınından özel durum türü ve bir işlev birleşimi.
 
@@ -27,7 +27,7 @@ Maksimum Uzunluk: 1024 karakter
 
 ## <a name="severity-level"></a>Önem derecesi
 
-Önem derecesi düzeyini izleyin. Değer `Verbose`, `Information`, `Warning`, `Error`, `Critical` olabilir.
+Önem derecesi düzeyini izleyin. Değer `Verbose`, `Information`, `Warning`, `Error`, `Critical`olabilir.
 
 ## <a name="exception-details"></a>Özel durum ayrıntıları
 

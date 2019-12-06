@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219484"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849114"
 ---
 # <a name="common-cost-analysis-uses"></a>Ortak maliyet analizi kullanımları
 
@@ -65,6 +65,8 @@ Günlük ve aylık maliyetlere bakarak, maliyetlerinizin daha yüksek olduğu ha
 
 Birçok Azure kullanıcısı, ücretleri daha iyi kategorilere ayırmak için maliyet merkezi veya geliştirme ortamı (üretim ve test) gibi kaynaklarına ait Etiketler uygular. Etiketler, maliyet analizinde bir boyut olarak görünür. Özel etiketleme kategorisimleriniz hakkında öngörüler elde etmek için boyutu kullanabilirsiniz.
 
+Etiket desteği, etiket kaynağa uygulandıktan *sonra* bildirilen kullanım için geçerlidir. Etiketler, maliyet toplamaları için geriye dönük olarak uygulanmaz.
+
 1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma** > maliyet **yönetimi** > **Maliyet Analizi**.
 1. Etiketinize **göre Gruplandır** ' ı seçin.
 
@@ -112,5 +114,5 @@ Belirli bir dönem için kuruluşunuzun genel harcamalarını anlamak için zama
 ![Kayıt birikmiş maliyetleri](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Maliyet yönetimi için ilk hızlı başlangıcı Henüz tamamlamadıysanız, [maliyetleri çözümlemeye başlamak](quick-acm-cost-analysis.md)için bunu okuyun.
+- Maliyet yönetimi için zaten ilk hızlı tamamlamadıysanız, hem okuma [maliyetleri başlamanızı](quick-acm-cost-analysis.md).
 - [Maliyet yönetimi belgelerini](index.yml)okuyun.

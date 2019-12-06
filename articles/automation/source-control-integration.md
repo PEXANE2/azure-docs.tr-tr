@@ -4,17 +4,17 @@ description: Bu makalede, Azure Otomasyonu 'nda GitHub ile kaynak denetimi tüml
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886526"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850168"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
 
@@ -26,7 +26,7 @@ Azure Otomasyonu üç tür kaynak denetimi destekler:
 * Azure Repos (git)
 * Azure Repos (TFVC)
 
-## <a name="pre-requisites"></a>Ön koşullar
+## <a name="pre-requisites"></a>Önkoşullar
 
 * Kaynak denetimi deposu (GitHub veya Azure Repos)
 * [Farklı Çalıştır hesabı](manage-runas-account.md)
@@ -49,7 +49,7 @@ Otomasyon hesabınızda, **kaynak denetimi** ' ni seçin ve **+ Ekle** ' ye tık
 |---------|---------|
 |Kaynak Denetim adı     | Kaynak denetimi için kolay bir ad. *Bu ad yalnızca harf ve rakam içermelidir.*        |
 |Kaynak Denetim türü     | Kaynak denetim kaynağının türü. Kullanılabilen seçenekler:</br> GitHub</br>Azure Repos (git)</br> Azure Repos (TFVC)        |
-|Depo     | Deponun veya projenin adı. İlk 200 depo döndürülür. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara**' yı tıklatın.|
+|Havuz     | Deponun veya projenin adı. İlk 200 depo döndürülür. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara**' yı tıklatın.|
 |Şube     | Kaynak dosyaları çekme dalı. TFVC kaynak denetimi türü için dal hedefleme kullanılamıyor.          |
 |Klasör yolu     | Eşitlenecek runbook 'ları içeren klasör. Örnek:/runbook 'lar </br>*Yalnızca belirtilen klasördeki runbook 'lar eşitlenir. Özyineleme desteklenmiyor.*        |
 |Otomatik eşitleme<sup>1</sup>     | Kaynak denetim deposunda bir kayıt yapıldığında otomatik eşitlemeyi açar veya kapatır         |
@@ -118,7 +118,7 @@ Azure Repos bir kişisel erişim belirteci oluşturma hakkında daha fazla bilgi
 
 <sup>1</sup> hizmet bağlantıları izni yalnızca, oto eşitlemesini etkinleştirdiyseniz gereklidir.
 
-## <a name="syncing"></a>Eşitlenmiyor
+## <a name="syncing"></a>Senkronizasyon
 
 **Kaynak denetimi** sayfasındaki tablodan kaynağı seçin. Eşitleme işlemini başlatmak için **Eşitlemeyi Başlat** ' a tıklayın.
 

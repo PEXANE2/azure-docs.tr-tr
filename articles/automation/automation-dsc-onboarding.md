@@ -4,17 +4,17 @@ description: Azure Otomasyonu durum yapılandırması ile yönetim için makinel
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243430"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850338"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
@@ -126,7 +126,7 @@ AWS DSC araç setini kullanarak Azure Otomasyonu durum yapılandırması ile yap
 
 Bu komutun çalıştırıldığı makinenin en son [WMF 5](https://aka.ms/wmf5latest) sürümü yüklü olmalıdır.
 
-1. PowerShell DSC metayapılandırmalarını uzaktan uygulayadıysanız, bu makineye karşılık gelen metaconfiguration 'ı Linux makinesine 5. adımdaki klasörden kopyalayın. Ardından Azure Otomasyonu durum yapılandırması 'na eklemek istediğiniz her bir Linux makinesinde `SetDscLocalConfigurationManager.py` olarak çağırın:
+1. PowerShell DSC metayapılandırmalarını uzaktan uygulayadıysanız, bu makineye karşılık gelen metaconfiguration 'ı Linux makinesine 5. adımdaki klasörden kopyalayın. Ardından Azure Otomasyonu durum yapılandırması 'na eklemek istediğiniz her Linux makinesinde yerel olarak `SetDscLocalConfigurationManager.py` çağırın:
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
@@ -270,7 +270,7 @@ Azure Otomasyonu durum yapılandırmasına herhangi bir makineyi genel olarak ek
 PowerShell DSC yerel Configuration Manager Varsayılanları kullanım durumumızdan eşleşiyorsa ve her ikisi de Azure Otomasyonu durum yapılandırmasına ve raporlamalarıyla ilgili makineler eklemek istiyorsanız, Azure Otomasyonu cmdlet 'leri basit bir oluşturma yöntemi sağlar gereken DSC metaıd yapılandırması:
 
 1. PowerShell konsolunu veya VSCode 'u yerel ortamınızdaki bir makinede yönetici olarak açın.
-2. @No__t kullanarak Azure Resource Manager bağlanma-0
+2. `Connect-AzAccount` kullanarak Azure Resource Manager bağlanma
 3. Düğüm eklemek istediğiniz Otomasyon hesabından eklemek istediğiniz makineler için PowerShell DSC metaconfigurations 'ı indirin:
 
    ```powershell

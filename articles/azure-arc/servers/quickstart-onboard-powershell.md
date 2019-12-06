@@ -10,12 +10,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786359"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872698"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Hızlı başlangıç: sunucular için Azure Arc kullanarak makineleri Azure 'a bağlama-PowerShell
 
@@ -55,6 +55,12 @@ Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
 Type                  :
 ```
 
+> [!NOTE] 
+> SPN izinleriniz doğru doldurulmuş hale getirmek biraz zaman alabilir. İzinleri çok daha hızlı bir şekilde ayarlamak için aşağıdaki rol atamasını çalıştırın.
+> ``` PowerShell
+> New-AzRoleAssignment -RoleDefinitionName "Azure Connected Machine Onboarding" -ServicePrincipalName $sp.ApplicationId
+> ```
+
 Şimdi, PowerShell 'i kullanarak parolayı alın.
 
 ```azurepowershell-interactive
@@ -73,7 +79,7 @@ Aracıyı Install ekleme betiği:
 
 Aşağıdaki kılavuz, makinede oturum açarak ve adımları gerçekleştirerek bir makineyi Azure 'a bağlamanıza olanak tanır. Ayrıca [portaldan](quickstart-onboard-portal.md)Azure 'a makineler de bağlayabilirsiniz.
 
-### <a name="download-and-install-the-agent"></a>Aracıyı indirme ve yükleme
+### <a name="download-and-install-the-agent"></a>Aracısını indirme ve yükleme
 
 Aracı paketini yüklemek için hedef sunucuda kök veya yerel yönetici erişimi gerekir, ancak Azure erişimi yoktur.
 

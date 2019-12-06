@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
-description: Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama hakkında bilgi edinin
+description: Azure portal, PowerShell, .net, Java ve çeşitli diğer SDK 'Ları kullanarak bir Azure Cosmos kapsayıcısı için nasıl benzersiz anahtarlar tanımlanacağını öğrenin.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 2f61afd12a50b1b135419585bfada52d7ef98f3a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811650"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872120"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 
@@ -41,7 +41,7 @@ Benzersiz anahtarlarla bir kapsayıcı oluşturmak için bkz. [benzersiz anahtar
 
 ## <a name="use-the-net-sdk-v2"></a>.NET SDK v2 'yi kullanma
 
-[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamalarını tanımlamak için `UniqueKeyPolicy` nesnesi kullanılabilir.
+[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamalarını tanımlamak için bir `UniqueKeyPolicy` nesnesi kullanılabilir.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -78,7 +78,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
 
-[Java SDK 'sını](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamalarını tanımlamak için `UniqueKeyPolicy` nesnesi kullanılabilir.
+[Java SDK 'sını](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamalarını tanımlamak için bir `UniqueKeyPolicy` nesnesi kullanılabilir.
 
 ```java
 // create a new DocumentCollection object
@@ -115,7 +115,7 @@ client.createCollection(String.format("/dbs/%s", "database"), container, null);
 
 ## <a name="use-the-nodejs-sdk"></a>Node. js SDK 'sını kullanma
 
-[Node. js SDK 'sını](https://www.npmjs.com/package/@azure/cosmos)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamalarını tanımlamak için `UniqueKeyPolicy` nesnesi kullanılabilir.
+[Node. js SDK 'sını](https://www.npmjs.com/package/@azure/cosmos)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamalarını tanımlamak için bir `UniqueKeyPolicy` nesnesi kullanılabilir.
 
 ```javascript
 client.database('database').containers.create({

@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma | Kaynak parametreleri | Microsoft docs
+title: Azure Izleyici çalışma kitapları kaynak parametreleri
 description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2cd170fdc3bed04a81c66d83b9e75ed77e3c0a5a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: adc9855d30a3b286cfbc3489ec639ab8b460e314
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165855"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872817"
 ---
 # <a name="workbook-resource-parameters"></a>Çalışma kitabı kaynak parametreleri
 

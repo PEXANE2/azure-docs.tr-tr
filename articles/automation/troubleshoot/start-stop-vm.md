@@ -4,17 +4,17 @@ description: Bu makalede, Azure Otomasyonu 'nda VM 'Leri başlatma ve durdurma s
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860a47386b31403b6a3d41fc2473b1e1040889a7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1817d8e060f944b1bcc31c8ea9eb4fbcff58a165
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162036"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850117"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü sorunlarını giderme
 
@@ -112,7 +112,7 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
 
 * [Runas hesabınızın](../manage-runas-account.md) başlatılmaya veya durdurulmaya denediğiniz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama kimliğini sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
 
-* VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılamaz veya durdurulamaz. Çözümün dağıtıldığı Otomasyon hesabındaki **External_ExcludeVMNames** değişkeninde ayarlanan sanal makineler. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
+* VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılamaz veya durdurulamaz. Çözümün dağıtıldığı Otomasyon hesabındaki **External_ExcludeVMNames** değişkeninde ayarlanan VM 'ler dışlandı. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -143,7 +143,7 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılamaz veya durdurulamaz. Çözümün dağıtıldığı Otomasyon hesabındaki **External_ExcludeVMNames** değişkeninde ayarlanan sanal makineler. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
+* VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılamaz veya durdurulamaz. Çözümün dağıtıldığı Otomasyon hesabındaki **External_ExcludeVMNames** değişkeninde ayarlanan VM 'ler dışlandı. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value

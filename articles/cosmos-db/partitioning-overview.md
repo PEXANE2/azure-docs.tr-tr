@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB bölümleniyor
-description: Azure Cosmos DB bölümlemeye genel bakış.
+title: Azure Cosmos DB'de bölümleme
+description: Azure Cosmos DB bölümleme hakkında bilgi, bölüm anahtarı seçerken en iyi yöntemler ve mantıksal bölümlerin nasıl yönetileceği hakkında bilgi edinin
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 12/02/2019
+ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753254"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872001"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB bölümleniyor
+# <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme
 
 Azure Cosmos DB, uygulamanızın performans ihtiyaçlarını karşılamak üzere bir veritabanındaki ayrı kapsayıcıları ölçeklendirmek için bölümleme kullanır. Bölümleme bölümünde, bir kapsayıcıdaki öğeler *mantıksal bölümler*adlı farklı alt kümelere bölünür. Mantıksal bölümler, bir kapsayıcıdaki her öğeyle ilişkili bir *bölüm anahtarının* değerine göre oluşturulur. Mantıksal bir bölümdeki tüm öğeler aynı bölüm anahtarı değerine sahiptir.
 

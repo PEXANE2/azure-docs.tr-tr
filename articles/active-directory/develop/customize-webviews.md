@@ -3,27 +3,23 @@ title: Tarayıcıları ve WebView’ları özelleştirme
 titleSuffix: Microsoft identity platform
 description: İOS ve macOS için MSAL tarafından kullanılan tarayıcı deneyiminin kullanıcıları oturum açmasını nasıl özelleştireceğinizi öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803383"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843334"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Nasıl yapılır: iOS/macOS için tarayıcıları ve Web görünümlerini özelleştirme
 
@@ -45,9 +41,9 @@ MacOS için MSAL yalnızca `WKWebView`destekler.
 
 ## <a name="system-browsers"></a>Sistem tarayıcıları
 
-İOS için `ASWebAuthenticationSession`, `SFAuthenticationSession` ve `SFSafariViewController` sistem tarayıcıları olarak kabul edilir. Genel olarak, sistem tarayıcıları Safari tarayıcı uygulamasıyla tanımlama bilgilerini ve diğer Web sitesi verilerini paylaşır.
+İOS için, `ASWebAuthenticationSession`, `SFAuthenticationSession`ve `SFSafariViewController` sistem tarayıcıları olarak kabul edilir. Genel olarak, sistem tarayıcıları Safari tarayıcı uygulamasıyla tanımlama bilgilerini ve diğer Web sitesi verilerini paylaşır.
 
-Varsayılan olarak, MSAL, iOS sürümünü dinamik olarak algılayacak ve bu sürümde sunulan önerilen sistem tarayıcısını seçmeyecektir. İOS 12 + ' de `ASWebAuthenticationSession` olur. 
+Varsayılan olarak, MSAL, iOS sürümünü dinamik olarak algılayacak ve bu sürümde sunulan önerilen sistem tarayıcısını seçmeyecektir. İOS 12 + ' de `ASWebAuthenticationSession`olur. 
 
 | Sürüm | Web tarayıcısı |
 |:-------------:|:-------------:|
@@ -57,7 +53,7 @@ Varsayılan olarak, MSAL, iOS sürümünü dinamik olarak algılayacak ve bu sü
 
 Geliştiriciler, MSAL uygulamaları için farklı bir sistem tarayıcısı da seçebilir:
 
-- `SFAuthenticationSession`, `ASWebAuthenticationSession` ' in iOS 11 sürümüdür.
+- `SFAuthenticationSession`, `ASWebAuthenticationSession`iOS 11 sürümüdür.
 - `SFSafariViewController` daha genel amaçlıdır ve Web 'e göz atmak için bir arabirim sağlar ve oturum açma amaçları için de kullanılabilir. İOS 9 ve 10 ' da, tanımlama bilgileri ve diğer Web sitesi verileri Safari ile paylaşılır, ancak iOS 11 ve üzeri sürümlerde değildir.
 
 ## <a name="in-app-browser"></a>Uygulama içi tarayıcı
@@ -70,10 +66,10 @@ Kullandığınız tarayıcı, tanımlama bilgilerini paylaşma nedeniyle SSO den
 
 | Teknoloji    | Tarayıcı türü  | iOS kullanılabilirliği | macOS kullanılabilirliği | Tanımlama bilgilerini ve diğer verileri paylaşır  | MSAL kullanılabilirliği | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Yes | yalnızca iOS | w/Safari örnekleri
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Yes | yalnızca iOS |  w/Safari örnekleri
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Sistem | iOS11 ve yukarı | Yok | Hayır | yalnızca iOS | Hayır * *
-| **SFSafariViewController** | Sistem | iOS10 | Yok | Yes | yalnızca iOS |  w/Safari örnekleri
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Yes | Yalnızca iOS | w/Safari örnekleri
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Yes | Yalnızca iOS |  w/Safari örnekleri
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Sistem | iOS11 ve yukarı | Yok | Hayır | Yalnızca iOS | Hayır * *
+| **SFSafariViewController** | Sistem | iOS10 | Yok | Yes | Yalnızca iOS |  w/Safari örnekleri
 | **WKWebView**  | Uygulama içi | iOS8 ve yukarı | macOS 10,10 ve yukarı | Hayır | iOS ve macOS | Hayır * *
 
 \* * SSO 'nun çalışması için, belirteçlerin uygulamalar arasında paylaşılması gerekir. Bu, bir belirteç önbelleği veya iOS için Microsoft Authenticator gibi aracı uygulaması gerektirir.

@@ -4,17 +4,17 @@ description: Bu makalede, Azure Otomasyonu karma Runbook Worker yükleme hakkın
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129840"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850831"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -50,9 +50,9 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 |--------------------- | --------------------- | -------------------|
 |GLIBC |GNU C Kitaplığı| 2.5-12 |
 |Openssl| OpenSSL kitaplıkları | 1,0 (TLS 1,1 ve TLS 1,2 desteklenir|
-|Kıvr | Web istemcisini kıvır | 7.15.5|
+|Curl | Web istemcisini kıvır | 7.15.5|
 |Python-ctypes | Python 2. x gereklidir |
-|KULLANıCıSı | Takılabilir kimlik doğrulama modülleri|
+|PAM | Eklenebilir Kimlik Doğrulaması Modülleri|
 | **İsteğe bağlı paket** | **Açıklama** | **En düşük sürüm**|
 | PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell 'in yüklenmesi gerekir, bkz. yükleme hakkında bilgi edinmek için [Linux 'Ta PowerShell Core 'U yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .  | 6.0.0 |
 

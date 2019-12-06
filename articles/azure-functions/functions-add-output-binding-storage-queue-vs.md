@@ -4,12 +4,12 @@ description: Sınıf kitaplığı işlevlerinizi C# Visual Studio 'yu kullanarak
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227435"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849216"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio kullanarak işlevleri Azure depolama 'ya bağlama
 
@@ -23,7 +23,7 @@ Bu makalede, Visual Studio 'Yu kullanarak [önceki hızlı başlangıç makalesi
 
 Bu makaleye başlamadan önce şunları yapmanız gerekir: 
 
- - Tamamlandı [Visual Studio hızlı başlangıçın 1. bölümü] [./Functions-Create-First-Function-vs-Code.exe]. 
+ - [Visual Studio hızlı](./functions-create-first-function-vs-code.md)başlangıcının 1. kısmını doldurun. 
 
 - Visual Studio 'dan Azure aboneliğinizde oturum açın.
 
@@ -45,7 +45,7 @@ Bağlantı için `AzureWebJobsStorage` ayarını kullanan depolama bağlaması a
 
 Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştırmadan önce depolama bağlamaları uzantısının yüklü olması gerekir. HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. 
 
-1. **Araçlar** menüsünde **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. 
+1. Gelen **Araçları** menüsünde **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**. 
 
 1. Konsolunda, depolama uzantılarını yüklemek için aşağıdaki [Install-Package](/nuget/tools/ps-ref-install-package) komutunu çalıştırın:
 

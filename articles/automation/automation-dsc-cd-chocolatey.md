@@ -4,17 +4,17 @@ description: Azure Otomasyonu durum yapılandırması, DSC ve Chocolatey Paket Y
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4512b79873d7f770b32a452a02c53bc5575bdac
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243595"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850372"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Kullanım örneği: Automation durum yapılandırması ve Chocolatey kullanarak sanal makinelere sürekli dağıtım
 
@@ -62,7 +62,7 @@ Kaynak Yöneticisi şablonuyla başlıyorsanız de bu da Tamam ' a tıklayın. V
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>1\. Adım: çekme sunucusunu ve otomasyon hesabını ayarlama
 
-Kimliği doğrulanmış (`Connect-AzureRmAccount`) PowerShell komut satırı: (çekme sunucusu ayarlandığında birkaç dakika sürebilir)
+Kimliği doğrulanmış (`Connect-AzureRmAccount`) PowerShell komut satırında: (çekme sunucusu ayarlandığında birkaç dakika sürebilir)
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -91,7 +91,7 @@ Bu, bölümlük için biraz daha fazla alan gerektirir. Ancak bu zor değildir v
 - İş istasyonunuzda gereken modülü aşağıdaki şekilde yükleyebilirsiniz:
   - [Windows Management Framework](https://aka.ms/wmf5latest) 'Ü (Windows 10 için gerekli değildir) yükler
   - `Install-Module –Name MODULE-NAME` < — modülü PowerShell Galerisi dönüştürür
-- Modül klasörünü `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` ' dan geçici bir klasöre kopyalayın
+- Modül klasörünü `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` ' den geçici bir klasöre kopyala
 - Ana klasörden örnek ve belge silme
 - Ana klasör olarak, ZIP dosyasını tamamen klasörle aynı olarak adlandırarak 
 - ZIP dosyasını, bir Azure depolama hesabındaki BLOB depolama gibi erişilebilir bir HTTP konumuna koyun.
@@ -109,7 +109,7 @@ Dahil edilen örnek, cChoco ve xNetworking için bu adımları gerçekleştirir.
 
 Yapılandırmanızı çekme sunucusuna ilk kez aktardığınızda ve derlemenizde özel bir şey yoktur. Aynı yapılandırmanın sonraki tüm içeri aktarma/derleme işlemi tamamen aynı şekilde görünür. Paketinizi her güncelleştirdiğinizde ve üretime göndermeniz gerektiğinde, paketinizin yeni sürümü de dahil olmak üzere, yapılandırma dosyasının doğru olduğundan emin olduktan sonra bu adımı gerçekleştirebilirsiniz. Yapılandırma dosyası ve PowerShell şu şekildedir:
 
-ISVBoxConfig. ps1:
+ISVBoxConfig.ps1:
 
 ```powershell
 Configuration ISVBoxConfig

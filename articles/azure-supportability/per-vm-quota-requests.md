@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531629"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850049"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>Standart kota: sanal makine serisi başına vCPU sınırı artışı
 
-Kaynak Yöneticisi, sanal makineler için iki tür vCPU kotasını destekler. **Kullandıkça Öde VM 'leri ve ayrılmış VM örnekleri** standart kotayı kullanır. **Düşük öncelikli VM 'Ler** düşük öncelikli kotayı kullanır. Kullandıkça öde ve ayrılmış VM örnekleri için standart vCPU kotası her bölgedeki her bir abonelik için iki katmanda zorlanır
+Kaynak Yöneticisi, sanal makineler için iki tür vCPU kotasını destekler. **Kullandıkça Öde VM 'leri ve ayrılmış VM örnekleri** standart kotayı kullanır. **Spot VM 'Ler** spot kota kullanır. Kullandıkça öde ve ayrılmış VM örnekleri için standart vCPU kotası her bölgedeki her bir abonelik için iki katmanda zorlanır
 
 İlk katman **Toplam bölgesel vCPU sayısı sınırı** (tüm VM serileri genelinde) ve ıkıncı katman **VM Serisi vCPU sayısı sınırı** (Dv3-Series vCPU 'lar gibi). Yeni bir VM 'nin dağıtılması her zaman, bu VM Serisi için yeni ve var olan vCPU 'ların toplamı, söz konusu VM Serisi için onaylanan vCPU kotasını aşmamalıdır. Ayrıca, tüm VM dizileri genelinde dağıtılan toplam yeni ve var olan vCPU sayısı, abonelik için onaylanan toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez.
 Azure portal VM Serisi için vCPU kota sınırı artışı isteyebilirsiniz. VM Serisi kotasının bir artışı toplam bölgesel vCPU sayısını aynı tutara göre otomatik olarak arttırır. 
@@ -25,7 +25,7 @@ Azure portal VM Serisi için vCPU kota sınırı artışı isteyebilirsiniz. VM 
 
 Standart [Kota için](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)bölgesel vCPU limitini artırma hakkında daha fazla bilgi edinin. 
 
-**Düşük öncelıklı VM vCPU sınırlarını artırma** hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+**Spot VM vCPU sınırlarını** [burada](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)artırma hakkında daha fazla bilgi edinin.
 
 **Yardım + Destek** dikey penceresinde ya da portalda **kullanımlar + kota** dikey penceresinde, **VM başına standart vCPU kota limitlerine** artış isteğinde bulunabilir.
 
@@ -37,7 +37,7 @@ Ayrıca, tek bir destek talebi aracılığıyla birden çok bölge için kota is
 
 1. https://portal.azure.com, **Yardım + Destek**' i seçin.
 
-   ![Yardım ve destek](./media/resource-manager-core-quotas-request/helpsupport.png)
+   ![Yardım + Destek](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  **Yeni destek isteği**’ni seçin. 
 
@@ -63,7 +63,7 @@ Ayrıca, tek bir destek talebi aracılığıyla birden çok bölge için kota is
 
    ![Kota ayrıntıları DM](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. Seçilen konum için, **tür** değerini **' standart '** olarak seçin. **Tür** alanında çok seçimli destek aracılığıyla tek bir destek durumundan hem standart hem de düşük öncelikli kota türleri isteyebilirsiniz. **< > Sayfasında** **düşük öncelikli kota sınırlarını artırma** hakkında daha fazla bilgi edinin.
+8. Seçilen konum için, **tür** değerini **' standart '** olarak seçin. **Tür** alanında çok seçimli destek aracılığıyla tek bir destek durumundan hem standart hem de spot kota türleri isteyebilirsiniz. Bu [sayfada](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot) **spot kota sınırlarını artırma** hakkında daha fazla bilgi edinin
 
    ![SKU Ailesi](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ Ayrıca, tek bir destek talebi aracılığıyla **birden çok bölge Için kota 
 
    ![Kota sorunu dikey penceresi](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. Seçilen konum için, **tür** değerini **' standart '** olarak seçin. **Tür** alanında çok seçimli destek aracılığıyla tek bir destek durumundan hem standart hem de düşük öncelikli kota türleri isteyebilirsiniz. Bu [sayfada](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota) **düşük öncelikli vCPU sınırlarını artırma** hakkında daha fazla bilgi edinin.
+7. Seçilen konum için, **tür** değerini **' standart '** olarak seçin. **Tür** alanında çok seçimli destek aracılığıyla tek bir destek durumundan hem standart hem de düşük öncelikli kota türleri isteyebilirsiniz. Bu [sayfada](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot) **spot vCPU sınırlarını artırma** hakkında daha fazla bilgi edinin.
 
    ![SKU serisi seçildi](./media/resource-manager-core-quotas-request/1-1-7.png)
    

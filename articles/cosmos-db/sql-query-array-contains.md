@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ARRAY_CONTAINS
-description: Azure Cosmos DB 'de SQL sistem işlevi ARRAY_CONTAINS hakkında bilgi edinin.
+description: Dizide SQL sistem işlevi nasıl bulunur Azure Cosmos DB dizi belirtilen değeri içerip içermediğini gösteren bir Boole değeri döndürür
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247956ccc2718c9bf192b4d704a48014753c00dc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348694"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873497"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
 Dizi belirtilen değeri içerip içermediğini gösteren bir Boole değeri döndürür. Komutu içinde Boole ifadesi kullanarak bir nesnenin kısmi veya tam eşleşmesini denetleyebilirsiniz. 
@@ -40,7 +40,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek `ARRAY_CONTAINS` kullanarak bir dizide üyelik denetleme.  
+  Aşağıdaki örnek, `ARRAY_CONTAINS`kullanarak bir dizide üyelik denetleme.  
   
 ```sql
 SELECT   

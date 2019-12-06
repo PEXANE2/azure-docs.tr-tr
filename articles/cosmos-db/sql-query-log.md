@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde oturum aç
-description: Azure Cosmos DB SQL sistem işlevi günlüğü hakkında bilgi edinin.
+description: Belirtilen sayısal ifadenin doğal logaritmasını döndürmek için Azure Cosmos DB SQL sistem işlevi hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 16f2321eb48afacbc9636b5c0588b1ea3a01a284
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349742"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873293"
 ---
 # <a name="log-azure-cosmos-db"></a>GÜNLÜK (Azure Cosmos DB)
  Belirtilen sayısal ifadenin doğal logaritmasını döndürür.  
@@ -28,7 +28,7 @@ LOG (<numeric_expr> [, <base>])
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-*temel*  
+*base*  
    Logaritmanın tabanı ayarlayan isteğe bağlı sayısal bağımsız değişken.  
   
 ## <a name="return-types"></a>Dönüş türleri
@@ -41,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   Logaritmanın tabanı için doğal logaritmasını olan **e**burada **e** bir Irrational 2.718281828 için yaklaşık olarak eşit sabittir.  
   
-  Bir sayının üstel değerinin doğal logaritması sayının kendisidir: GÜNLÜK (EXP (n)) = n. Ve bir sayının doğal logaritmanın üstel değerinin kendisi sayıdır: EXP (günlük (n)) = n.  
+  Üstel bir sayının doğal logaritmasını sayıdır kendisini: günlük (EXP (n)) = n. Ve üstel bir sayının doğal logaritma sayı kendisini: EXP (günlüğü (n)) = n.  
   
 ## <a name="examples"></a>Örnekler
   
@@ -57,7 +57,7 @@ SELECT LOG(10) AS log
 [{log: 2.3025850929940459}]  
 ```  
   
- Aşağıdaki örnek bir sayının üs değeri için `LOG` ' yı hesaplar.  
+ Aşağıdaki örnek bir sayının üs değeri için `LOG` hesaplar.  
   
 ```sql
 SELECT EXP(LOG(10)) AS expLog  

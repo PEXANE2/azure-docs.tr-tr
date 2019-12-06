@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB değişiklik akışı işlemcisi kitaplığıyla çalışma
-description: Azure Cosmos DB değişiklik akışı işlemci kitaplığını kullanma.
+description: Değişiklik akışını, değişiklik akışı işlemcisinin bileşenlerini ve uygulama yaşam döngüsünü okumak için Azure Cosmos DB değişiklik akışı işlemci kitaplığını kullanmayı öğrenin
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ea2b72e926923357e9ee7dac87720292fbbf9696
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757039"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872239"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB akış işlemcisini değiştirme 
 
@@ -39,7 +39,7 @@ Bu dört öğelerin değişiklik akışı işlemcisi ile birlikte nasıl çalı�
 
 ## <a name="implementing-the-change-feed-processor"></a>Değişiklik akışı işlemcisini uygulama
 
-Giriş noktası her zaman izlenen kapsayıcı olur, bu `Container` örneğinden `GetChangeFeedProcessorBuilder` çağırabilirsiniz:
+Giriş noktası her zaman izlenen kapsayıcı olur, bu `Container` örneğinden `GetChangeFeedProcessorBuilder`çağırabilirsiniz:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,9 +49,9 @@ Bir temsilci örneği şöyle olabilir:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Son olarak, `WithInstanceName` ile bu işlemci örneği için bir ad tanımlarsınız ve bu kapsayıcı, `WithLeaseContainer` kira durumunun bakımını sağlar.
+Son olarak, `WithInstanceName` ile bu işlemci örneği için bir ad tanımlarsınız ve bu kapsayıcı, `WithLeaseContainer`kira durumunun bakımını sağlar.
 
-@No__t_0 çağırmak, size `StartAsync` çağırarak başlayabilmeniz için kullanabileceğiniz işlemci örneğini verecektir.
+`Build` çağırmak, size `StartAsync`çağırarak başlayabilmeniz için kullanabileceğiniz işlemci örneğini verecektir.
 
 ## <a name="processing-life-cycle"></a>İşlem yaşam döngüsü
 

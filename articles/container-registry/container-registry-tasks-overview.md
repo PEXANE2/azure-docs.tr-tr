@@ -3,12 +3,12 @@ title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456149"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840774"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -52,16 +52,19 @@ ACR görevleri kapsayıcı yaşam döngüsü temel olarak tasarlanmıştır. Ör
 
 ## <a name="trigger-task-on-source-code-update"></a>Kaynak kodu güncelleştirmesinde tetikleme görevi
 
-Kod yürütüldüğü sırada bir kapsayıcı görüntüsü oluşturma veya çok adımlı bir görev veya GitHub ya da Azure DevOps 'daki bir git deposuna bir çekme isteği yapıldığında veya güncelleştirilirken tetiklenir. Örneğin, bir git deposu ve isteğe bağlı olarak bir dal ve Dockerfile belirterek Azure [CLI komutu ile][az-acr-task-create] bir derleme görevi yapılandırın. Takımınız depodaki kodu güncelleştirdiğinde, ACR görevler tarafından oluşturulan bir Web kancası depoda tanımlanan kapsayıcı görüntüsünün derlemesini tetikler. 
+Kod yürütüldüğü sırada bir kapsayıcı görüntüsü oluşturma veya çok adımlı bir görev veya GitHub ya da Azure DevOps 'daki ortak veya özel bir git deposuna bir çekme isteği yapıldığında veya güncelleştirilirken tetiklenir. Örneğin, bir git deposu ve isteğe bağlı olarak bir dal ve Dockerfile belirterek Azure [CLI komutu ile][az-acr-task-create] bir derleme görevi yapılandırın. Takımınız depodaki kodu güncelleştirdiğinde, ACR görevler tarafından oluşturulan bir Web kancası depoda tanımlanan kapsayıcı görüntüsünün derlemesini tetikler. 
 
 ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşağıdaki Tetikleyicileri destekler:
 
-| Tetikleyici | Varsayılan olarak etkin |
+| Tetikleyici | Varsayılan olarak etkindir |
 | ------- | ------------------ |
-| İşleme | Evet |
+| İşleme | Yes |
 | Çekme isteği | Hayır |
 
-Tetikleyiciyi yapılandırmak için, bir kişisel erişim belirteci (PAT) görevini GitHub veya Azure DevOps deposunda bir Web kancasını ayarlamaya sağlarsınız.
+Bir kaynak kodu güncelleştirme tetikleyicisi yapılandırmak için, genel veya özel GitHub veya Azure DevOps deposunda Web kancasını ayarlamak üzere bir kişisel erişim belirteci (PAT) görevi sağlamanız gerekir.
+
+> [!NOTE]
+> Şu anda ACR görevleri GitHub Enterprise depolarındaki COMMIT veya çekme isteği tetikleyicilerini desteklemez.
 
 İkinci ACR görevleri öğreticisinde kaynak kodu işlemesinde derlemelerin nasıl tetikleneceğini öğrenin, [Azure Container Registry görevlerle kapsayıcı görüntüsü derlemelerini otomatikleştirin](container-registry-tutorial-build-task.md).
 
@@ -116,11 +119,14 @@ Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yöne
 | Bağlam konumu | Açıklama | Örnek |
 | ---------------- | ----------- | ------- |
 | Yerel dosya sistemi | Yerel dosya sisteminde bir dizin içindeki dosyalar. | `/home/user/projects/myapp` |
-| GitHub ana dalı | GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub dalı | GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub alt klasörü | GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Azure DevOps alt klasörü | Bir Azure deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, dal ve alt klasör belirtiminin birleşimini gösterir. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| GitHub ana dalı | Ortak veya özel bir GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub dalı | Ortak veya özel GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub alt klasörü | Ortak veya özel bir GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Azure DevOps alt klasörü | Ortak veya özel bir Azure deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, dal ve alt klasör belirtiminin birleşimini gösterir. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
+
+> [!NOTE]
+> Bir görev için bağlam olarak özel bir git deposu kullanırken, bir kişisel erişim belirteci (PAT) sağlamanız gerekir.
 
 ## <a name="image-platforms"></a>Görüntü platformları
 
@@ -128,8 +134,8 @@ Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi içi
 
 | İşletim Sistemi | Mimari|
 | --- | ------- | 
-| Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
-| Windows | 'tür |
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
+| Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Görev günlüklerini görüntüle
 

@@ -4,18 +4,18 @@ description: Değişiklik İzleme çözümü, ortamınızda gerçekleşen yazıl
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886815"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850559"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin
 
@@ -28,7 +28,7 @@ Bu makale, ortamınızdaki değişiklikleri kolayca belirlemek için Değişikli
 
 ## <a name="supported-windows-operating-systems"></a>Desteklenen Windows işletim sistemleri
 
-Windows işletim sisteminin aşağıdaki sürümleri resmi olarak Windows Agent için desteklenir:
+Aşağıdaki Windows işletim sistemi sürümleri Windows aracısı için resmi olarak desteklenir:
 
 * Windows Server 2008 R2 veya üzeri
 
@@ -100,7 +100,7 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 |Etkin     | Ayarın uygulandığını belirler.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu girin     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
+|Yolu Gir     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
 |Yol Türü     | İzlenecek öğenin türü, olası değerler dosya ve dizindir.        |
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
@@ -123,7 +123,7 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
 |Etkin     | Ayarın uygulandığını belirler.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu girin     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
+|Yolu Gir     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **False**.|
 
@@ -201,7 +201,7 @@ Aşağıdaki tabloda, Değişiklik İzleme makine başına izlenen öğe sınır
 |Windows yazılımı|250|Yazılım düzeltmelerini içermez|
 |Linux paketleri|1250||
 |Hizmetler|250||
-|inin|250||
+|İnin|250||
 
 Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ayda yaklaşık 40MB 'tır. Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Sahip olduğunuz tam kullanımı görmek için ortamınızı izlemeniz önerilir.
 
@@ -245,11 +245,11 @@ Kayıt defteri anahtarlarındaki değişiklikleri izlemenin amacı, üçüncü t
 
 Aşağıdaki adresler Değişiklik İzleme için özel olarak gereklidir. Bu adreslerle iletişim bağlantı noktası 443 üzerinden yapılır.
 
-|Azure genel  |Azure Kamu  |
+|Azure Genel  |Azure Devlet Kurumları  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Değişiklik İzleme kullan

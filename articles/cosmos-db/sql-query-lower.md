@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde daha düşük
-description: Azure Cosmos DB daha düşük SQL sistem işlevi hakkında bilgi edinin.
+description: Büyük harfli karakter verilerini küçük harfe dönüştürdükten sonra bir dize ifadesi döndürmek için Azure Cosmos DB alt SQL sistem işlevi hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3a9c122ef65772458b832d3b1651e7e63e42985e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349713"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873310"
 ---
 # <a name="lower-azure-cosmos-db"></a>DAHA düşük (Azure Cosmos DB)
  Büyük harf karakter verileri küçük harfe dönüştürmenin sonra bir dize ifadesi döndürür.  
@@ -34,7 +34,7 @@ LOWER(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir sorguda `LOWER` ' ın nasıl kullanılacağını gösterir.  
+  Aşağıdaki örnek, `LOWER` bir sorguda nasıl kullanılacağını gösterir.  
   
 ```sql
 SELECT LOWER("Abc") AS lower

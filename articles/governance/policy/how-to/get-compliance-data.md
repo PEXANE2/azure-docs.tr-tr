@@ -2,13 +2,13 @@
 title: İlke uyumluluk verilerini al
 description: Azure İlkesi değerlendirmeleri ve etkileri uyumluluğunu belirler. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 ms.date: 02/01/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: how-to
+ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132807"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873157"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -22,7 +22,7 @@ Girişim atamaları ve ilke tarafından oluşturulan uyumluluk bilgileri erişme
 Uyumluluk üzerinde yöntemleri bakarak önce uyumluluk bilgilerini güncelleştirildiğinde ve sıklığı ve değerlendirme döngüsü tetikleyen olayları göz atalım.
 
 > [!WARNING]
-> Uyumluluk durumu **kayıtlı değil**olarak bildiriliyorsa, **Microsoft. policınghts** kaynak sağlayıcısı 'nın kayıtlı olduğunu ve kullanıcının RBAC ' de açıklandığı gibi uygun rol tabanlı erişim denetimi (RBAC) izinlerine sahip olduğunu doğrulayın. [ Azure Ilkesi](../overview.md#rbac-permissions-in-azure-policy).
+> Uyumluluk durumu **kayıtlı değil**olarak bildiriliyorsa, **Microsoft. Policınsıghts** kaynak sağlayıcısının kayıtlı olduğunu ve kullanıcının [Azure ilkesinde RBAC](../overview.md#rbac-permissions-in-azure-policy)'de açıklandığı şekilde uygun rol tabanlı erişim denetimi (RBAC) izinlerine sahip olduğunu doğrulayın.
 
 ## <a name="evaluation-triggers"></a>Değerlendirme Tetikleyicileri
 
@@ -86,10 +86,10 @@ Aşağıdaki tabloda, farklı ilke efektler elde edilen uyumluluk durumu için K
 
 | Kaynak durumu | Etki | İlke değerlendirmesi | Uyumluluk durumu |
 | --- | --- | --- | --- |
-| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Uyumlu değil |
-| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Uyumlu |
-| Yeni | Audit, AuditIfNotExist\* | True | Uyumlu değil |
-| Yeni | Audit, AuditIfNotExist\* | False | Uyumlu |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Doğru | Uyumlu değil |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Yanlış | Uyumlu |
+| Yeni | Audit, AuditIfNotExist\* | Doğru | Uyumlu değil |
+| Yeni | Audit, AuditIfNotExist\* | Yanlış | Uyumlu |
 
 \* Append, DeployIfNotExist ve AuditIfNotExist etkileri IF deyiminin TRUE olmasını gerektirir.
 Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.

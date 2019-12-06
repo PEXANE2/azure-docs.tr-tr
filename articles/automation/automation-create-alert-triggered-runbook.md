@@ -4,17 +4,17 @@ description: Bir Azure uyarısı başlatıldığında runbook 'un çalışmasın
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915721"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850389"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 
@@ -36,7 +36,7 @@ Bir uyarı runbook 'u çağırdığında, gerçek çağrı Web kancasına yönel
 |Uyarı  |Açıklama|Yük şeması  |
 |---------|---------|---------|
 |[Ortak uyarı](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Bugün Azure 'daki uyarı bildirimleri için tüketim deneyimini standartlaştıran ortak uyarı şeması.|Ortak uyarı yük şeması|
-|[Etkinlik günlüğü uyarısı](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure etkinlik günlüğündeki yeni bir olay belirli koşullara uyan bir bildirim gönderir. Örneğin, bir `Delete VM` işlem **myüretim resourcegroup** içinde veya **etkin** duruma sahip yeni bir Azure hizmet durumu olayı göründüğünde oluşur.| [Etkinlik günlüğü uyarısı yük şeması](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Etkinlik günlüğü uyarısı](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure etkinlik günlüğündeki yeni bir olay belirli koşullara uyan bir bildirim gönderir. Örneğin, **Myüretim resourcegroup** içinde `Delete VM` bir işlem olduğunda veya **etkin** duruma sahip yeni bir Azure hizmet durumu olayı göründüğünde.| [Etkinlik günlüğü uyarısı yük şeması](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
 |[Neredeyse gerçek zamanlı ölçüm uyarısı](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Bir veya daha fazla platform düzeyi ölçümü belirtilen koşullara uyuyorsa ölçüm uyarılarından daha hızlı bir bildirim gönderir. Örneğin, bir VM üzerindeki **CPU%** değeri **90**' den büyükse ve **içindeki ağ** değeri, son 5 dakika boyunca **500 MB** 'den büyük olur.| [Neredeyse gerçek zamanlı ölçüm uyarısı yük şeması](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Her uyarı türü tarafından belirtilen veriler farklı olduğundan, her uyarı türü farklı şekilde işlenir. Sonraki bölümde, farklı uyarı türlerini işlemek için bir runbook oluşturmayı öğreneceksiniz.
@@ -45,9 +45,9 @@ Her uyarı türü tarafından belirtilen veriler farklı olduğundan, her uyarı
 
 Otomasyon 'u uyarılarla birlikte kullanmak için, runbook 'a geçirilen uyarı JSON yükünü yöneten mantığı olan bir runbook 'a ihtiyacınız vardır. Aşağıdaki örnek runbook 'un bir Azure uyarısından çağrılması gerekir.
 
-Yukarıdaki bölümde açıklandığı gibi, her uyarı türünün farklı bir şeması vardır. Betik, `WebhookData` runbook giriş parametresindeki Web kancası verilerini bir uyarıdan alır. Ardından, komut dosyası JSON yükünü hangi uyarı türünün kullanıldığını belirleyecek şekilde değerlendirir.
+Yukarıdaki bölümde açıklandığı gibi, her uyarı türünün farklı bir şeması vardır. Betik, bir uyarıdan `WebhookData` runbook giriş parametresindeki Web kancası verilerini alır. Ardından, komut dosyası JSON yükünü hangi uyarı türünün kullanıldığını belirleyecek şekilde değerlendirir.
 
-Bu örnek, bir VM 'den bir uyarı kullanır. Yük kaynağından VM verilerini alır ve ardından bu bilgileri kullanarak VM 'yi durdurur. Bağlantı, runbook 'un çalıştırıldığı Otomasyon hesabında ayarlanmalıdır. Runbook 'ları tetiklemek için uyarıları kullanırken, tetiklenen runbook 'taki uyarının durumunu denetlemek önemlidir. Uyarı her değişiklik durumunda runbook tetiklenecek. Uyarıların birden çok durumu vardır, en yaygın iki durum ve `Activated` ' `Resolved`dir. Runbook 'larınızın birden çok kez çalıştırılmadığından emin olmak için Runbook mantığınızdaki bu durumu kontrol edin. Bu makaledeki örnekte yalnızca `Activated` uyarıların nasıl aranacağı gösterilmektedir.
+Bu örnek, bir VM 'den bir uyarı kullanır. Yük kaynağından VM verilerini alır ve ardından bu bilgileri kullanarak VM 'yi durdurur. Bağlantı, runbook 'un çalıştırıldığı Otomasyon hesabında ayarlanmalıdır. Runbook 'ları tetiklemek için uyarıları kullanırken, tetiklenen runbook 'taki uyarının durumunu denetlemek önemlidir. Uyarı her değişiklik durumunda runbook tetiklenecek. Uyarıların birden çok durumu vardır, en yaygın iki durum `Activated` ve `Resolved`. Runbook 'larınızın birden çok kez çalıştırılmadığından emin olmak için Runbook mantığınızdaki bu durumu kontrol edin. Bu makaledeki örnekte yalnızca `Activated` uyarıları araması gösterilmektedir.
 
 Runbook, VM 'ye karşı yönetim eylemini gerçekleştirmek üzere Azure ile kimlik doğrulaması yapmak için **Azurerunasconnection** [Farklı Çalıştır hesabını](automation-create-runas-account.md) kullanır.
 
@@ -175,7 +175,7 @@ Runbook, VM 'ye karşı yönetim eylemini gerçekleştirmek üzere Azure ile kim
 Uyarılar, uyarı tarafından tetiklenen eylemlerin koleksiyonları olan eylem gruplarını kullanır. Runbook 'lar yalnızca eylem gruplarıyla kullanabileceğiniz birçok eylemden biridir.
 
 1. Otomasyon hesabınızda, **izleme**altında **Uyarılar** ' ı seçin.
-1. **+ Yeni uyarı kuralı**' nı seçin.
+1. **+ Yeni uyarı kuralı**’nı seçin.
 1. **Kaynak**altında **Seç** ' e tıklayın. **Kaynak seçin** sayfasında, uyarı vermek için sanal makineyi seçin ve **bitti**' ye tıklayın.
 1. **Koşul**bölümünde **Koşul Ekle** ' ye tıklayın. Kullanmak istediğiniz sinyali seçin (örneğin **CPU yüzdesi** ) ve **bitti**' ye tıklayın.
 1. **Sinyal mantığını Yapılandır** sayfasında, **Uyarı mantığı**altında **eşik değerini** girin ve **bitti**' ye tıklayın.

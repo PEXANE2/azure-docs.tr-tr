@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 07/01/2019
-ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/05/2019
+ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823753"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873752"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL veritabanı elastik sorguya genel bakış (Önizleme)
 
@@ -56,10 +56,10 @@ Elastik bir sorgu, SQL Server Management Studio veya Visual Studio tarafından v
 Elastik sorgu için müşteri senaryoları aşağıdaki topolojilerle belirlenir:
 
 * **Dikey bölümlendirme-veritabanları arası sorgular** (topoloji 1): veriler bir veri katmanındaki bir dizi veritabanı arasında dikey olarak bölümlenir. Genellikle, farklı tablo kümeleri farklı veritabanlarında bulunur. Diğer bir deyişle, şema farklı veritabanlarında farklı olur. Örneğin, tüm envanter tabloları, tüm muhasebe ile ilgili tablolar ikinci bir veritabanı üzerinde olduğunda tek bir veritabanıdır. Bu topolojideki yaygın kullanım örnekleri, bir veya birden çok veritabanında bulunan tablolarda rapor derlemek için bir tane gerektirir.
-* **Yatay bölümlendirme-parçalı** oluşturma (topoloji 2): veriler, ölçeklendirilen bir veri katmanındaki satırları dağıtmak için yatay olarak bölümlenir. Bu yaklaşımda, şema tüm katılan veritabanlarında aynıdır. Bu yaklaşım, "parçalama" olarak da adlandırılır. Parçalama, (1) elastik veritabanı araçları kitaplıkları veya (2) kendi kendine parçalı kullanımı kullanılarak gerçekleştirilebilir ve yönetilebilir. Esnek sorgu, birçok parça genelinde raporları sorgulamak veya derlemek için kullanılır.
+* **Yatay bölümlendirme-parçalı** oluşturma (topoloji 2): veriler, ölçeklendirilen bir veri katmanındaki satırları dağıtmak için yatay olarak bölümlenir. Bu yaklaşımda, şema tüm katılan veritabanlarında aynıdır. Bu yaklaşım, "parçalama" olarak da adlandırılır. Parçalama, (1) elastik veritabanı araçları kitaplıkları veya (2) kendi kendine parçalı kullanımı kullanılarak gerçekleştirilebilir ve yönetilebilir. Esnek sorgu, birçok parça genelinde raporları sorgulamak veya derlemek için kullanılır. Parçalar genellikle elastik havuz içindeki veritabanlardır. Veritabanları ortak şemayı paylaştığı sürece, elastik havuzun tüm veritabanlarını tek seferde sorgulamak için verimli bir yol olarak düşünebilirsiniz.
 
 > [!NOTE]
-> Elastik sorgu, çoğu işlemin (filtreleme, toplama) büyük bir kısmı dış kaynak tarafında gerçekleştirilebileceği raporlama senaryolarında en iyi şekilde kullanılır. Uzak veritabanından büyük miktarda verinin aktarıldığı ETL işlemleri için uygun değildir. Daha karmaşık sorgularla ağır raporlama iş yükleri veya veri ambarı senaryoları için [Azure SQL veri ambarı](https://azure.microsoft.com/services/sql-data-warehouse/)'nı kullanmayı da düşünün.
+> Elastik sorgu, çoğu işlemin (filtreleme, toplama) büyük bir kısmı dış kaynak tarafında gerçekleştirilebileceği raporlama senaryolarında en iyi şekilde kullanılır. Uzak veritabanından büyük miktarda verinin aktarıldığı ETL işlemleri için uygun değildir. Daha karmaşık sorgularla ağır raporlama iş yükleri veya veri ambarı senaryoları için [Azure SYNAPSE Analytics](https://azure.microsoft.com/services/synapse-analytics)kullanmayı da düşünün.
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>Dikey bölümlendirme-veritabanları arası sorgular
@@ -117,6 +117,9 @@ Bu adımları gerçekleştirdikten sonra, "MyTable" yatay bölümlenmiş tablosu
 Yatay bölümleme senaryosu için gereken adımlar hakkında daha fazla bilgi, [yatay bölümlendirme için elastik sorgu](sql-database-elastic-query-horizontal-partitioning.md)'da bulunabilir.
 
 Kodlamaya başlamak için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](sql-database-elastic-query-getting-started.md)başlama.
+
+> [!IMPORTANT]
+> Esnek sorgunun büyük bir veritabanı kümesi üzerinde başarılı yürütülmesi, sorgu yürütme sırasında her bir veritabanı için kullanılabilirliği yoğun bir şekilde kullanır. Veritabanlarından biri kullanılabilir değilse, sorgunun tamamı başarısız olur. Yüzlerce veya binlerce veritabanını aynı anda sorgulamayı planlıyorsanız, istemci uygulamanızın yeniden deneme mantığı ' na sahip olduğundan emin olun veya [elastik veritabanı işleri](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (Önizleme) ve veritabanlarının daha küçük alt kümelerini kullanarak her bir sorgunun sonuçlarını tek bir hedefe birleştirin.
 
 ## <a name="t-sql-querying"></a>T-SQL sorgulama
 

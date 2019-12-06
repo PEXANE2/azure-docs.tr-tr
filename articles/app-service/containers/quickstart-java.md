@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689010"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872749"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -34,7 +34,7 @@ ms.locfileid: "74689010"
 `helloworld`adlı yeni bir uygulama oluşturmak için Cloud Shell isteminde aşağıdaki Maven komutunu yürütün:
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
@@ -93,7 +93,7 @@ Eklenti yapılandırmasının güncelleştirildiğini görmek için `pom.xml` te
 
  Özellik | Gereklidir | Açıklama | Sürüm
 ---|---|---|---
-`<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2 planlama
+`<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2
 `<resourceGroup>` | doğru | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | doğru | Web uygulamanızın adı. | 0.1.0 +
 [`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | doğru | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) tüm geçerli bölgeler bölümü. | 0.1.0 +

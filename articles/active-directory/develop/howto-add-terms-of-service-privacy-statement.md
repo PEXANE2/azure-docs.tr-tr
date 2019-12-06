@@ -1,79 +1,75 @@
 ---
-title: Uygulamalar için hizmet ve gizlilik bildirimini koşulları | Azure
-description: Azure AD kullanmak için kayıtlı uygulamalar için hizmet ve gizlilik bildirimini koşullarını nasıl yapılandıracağınızı öğrenin.
+title: Uygulamalar için hizmet koşulları ve gizlilik bildirimi | Mavisi
+description: Azure AD 'yi kullanmak üzere kayıtlı uygulamalar için hizmet koşulları 'nı ve gizlilik bildirimi 'ni nasıl yapılandırabileceğinizi öğrenin.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482860"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842824"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapılır: Hizmet ve gizlilik bildirimini bir uygulama için koşulları yapılandırma
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapılır: bir uygulama için hizmet koşullarını ve gizlilik bildirimini yapılandırma
 
-Oluşturun ve Azure Active Directory (Azure AD) ve Microsoft hesapları ile tümleştirilen uygulamalar yöneten geliştiriciler, hizmet ve gizlilik bildirimini uygulamanın koşullarını bağlantılar içermelidir. Koşulları hizmet ve gizlilik bildirimi kullanıcı onayı deneyimi aracılığıyla kullanıcılara çıkarılır. Kullanıcılarınızın uygulamanızı güvenebilir bilmeniz yardımcı olurlar. Hizmet ve gizlilik bildirimini koşullarını, kullanıcıya yönelik çok kiracılı uygulamalar--birden çok dizini tarafından kullanılan veya herhangi bir Microsoft hesabı için kullanılabilir uygulamalar için özellikle önemlidir.
+Azure Active Directory (Azure AD) ve Microsoft hesaplarıyla tümleştirilen uygulamaları oluşturan ve yöneten geliştiriciler, uygulamanın hizmet koşulları ve gizlilik bildirimi bağlantılarını içermelidir. Hizmet koşulları ve gizlilik bildirimi, kullanıcılar tarafından Kullanıcı onay deneyimi aracılığıyla ortaya çıkmış. Kullanıcılarınıza, uygulamanıza güvenebileceklerini bilmeleri için yardımcı olurlar. Hizmet koşulları ve gizlilik bildirimi, birden çok dizin tarafından kullanılan veya tüm Microsoft hesabı kullanılabilen çok kiracılı uygulamalar için özellikle önemlidir.
 
-Hizmet Koşulları ve gizlilik bildirimi belgeleri uygulamanız için ve bu belgelere URL'leri sağlamak için oluşturmaktan sorumlu olursunuz. Bu bağlantıları sağlayamamaktadır çok kiracılı uygulamalar için uygulamanız için kullanıcı onayı deneyimi kullanıcıların uygulamanıza onay önerilmemektedir bir uyarı gösterilir.
+Uygulamanız için hizmet koşulları ve gizlilik bildirimi belgelerinin oluşturulması ve bu belgelere URL 'Ler sağlanması sizin sorumluluğunuzdadır. Bu bağlantıları sağlamayan çok kiracılı uygulamalarda, uygulamanız için Kullanıcı onay deneyimi bir uyarı gösterir ve bu da kullanıcıların uygulamanıza uyum sağlamasını engelleyebilir.
 
 > [!NOTE]
-> * Tek kiracılı uygulamalar bir uyarı gösterilmez.
-> * Bir veya iki iki bağlantı eksikse, uygulamanızı bir uyarı gösterilir.
+> * Tek kiracılı uygulamalar, bir uyarı göstermez.
+> * İki bağlantılardan biri veya her ikisi de eksikse, uygulamanız bir uyarı gösterir.
 
 ## <a name="user-consent-experience"></a>Kullanıcı onayı deneyimi
 
-Aşağıdaki örnekler, hizmet ve gizlilik bildirimini koşulları yapılandırıldığında deneyimi onay ve ne zaman bu bağlantıları yapılandırılmamış kullanıcı gösterir.
+Aşağıdaki örneklerde, hizmet koşulları ve gizlilik bildirimi yapılandırıldığında ve bu bağlantılar yapılandırılmadığında Kullanıcı onay deneyimi gösterilmektedir.
 
-![Gizlilik bildirimi ve sağlanan hizmet koşullarını olmadan ve ekran görüntüleri](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
+![Gizlilik bildirimi ve hizmet koşulları ile ve olmadan ekran görüntüleri](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
 
-## <a name="formatting-links-to-the-terms-of-service-and-privacy-statement-documents"></a>Hizmet ve gizlilik bildirimi belgeleri koşullarını bağlantılar biçimlendirme
+## <a name="formatting-links-to-the-terms-of-service-and-privacy-statement-documents"></a>Hizmet koşulları ve gizlilik bildirimi belgeleri için bağlantıları biçimlendirme
 
-Uygulamanızın koşullarını hizmet ve gizlilik bildirimi belgelerin bağlantıları eklemeden önce URL'leri aşağıdaki yönergeleri izleyin emin olun.
+Uygulamanızın hizmet koşulları ve gizlilik bildirimi belgeleri için bağlantıları eklemeden önce, URL 'Lerin bu yönergeleri izlediğinden emin olun.
 
 | Yönerge     | Açıklama                           |
 |---------------|---------------------------------------|
-| Biçimi        | Geçerli bir URL                             |
-| Geçerli şemalar | HTTP ve HTTPS<br/>HTTPS öneririz. |
-| En büyük uzunluk    | 2048 karakter                       |
+| Biçimlendir        | Geçerli URL                             |
+| Geçerli şemalar | HTTP ve HTTPS<br/>HTTPS önerilir |
+| Uzunluk üst sınırı    | 2048 karakter                       |
 
 Örnekler: `https://myapp.com/terms-of-service` ve `https://myapp.com/privacy-statement`
 
-## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Hizmet ve gizlilik bildirimini koşullarını bağlantılar ekleme
+## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Hizmet koşullarına ve gizlilik bildirimine bağlantılar ekleme
 
-Hizmet ve gizlilik bildirimini koşullarını hazır olduğunuzda, aşağıdaki yöntemlerden birini kullanarak uygulamanızda bu belgelere bağlantılar ekleyebilirsiniz:
+Hizmet koşulları ve gizlilik bildirimi hazırlandığı zaman, aşağıdaki yöntemlerden birini kullanarak uygulamanıza bu belgelere bağlantılar ekleyebilirsiniz:
 
-* [Azure portalı üzerinden](#azure-portal)
-* [Uygulama nesnesi JSON kullanma](#app-object-json)
-* [MSGraph beta REST API kullanma](#msgraph-beta-rest-api)
+* [Azure portal aracılığıyla](#azure-portal)
+* [JSON uygulama nesnesini kullanma](#app-object-json)
+* [MSGraph Beta REST API kullanma](#msgraph-beta-rest-api)
 
-### <a name="azure-portal"></a>Azure portalını kullanarak
-Azure portalında aşağıdaki adımları izleyin.
+### <a name="azure-portal"></a>Azure portal kullanma
+Azure portal aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Gidin **uygulama kayıtları** bölümünde ve uygulamanızı seçin.
-3. Açık **markalama** bölmesi.
-4. Doldurun **hizmet koşulları URL'si** ve **gizlilik bildirimi URL'si** alanları.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+2. **Uygulama kayıtları** bölümüne gidin ve uygulamanızı seçin.
+3. **Marka** bölmesini açın.
+4. **Hizmet koşulları URL 'sini** ve **Gizlilik bildirimi URL 'si** alanlarını doldurun.
 5. Yaptığınız değişiklikleri kaydedin.
 
-    ![Uygulama özellikleri içeren hizmet ve gizlilik bildirimi URL'leri koşulları](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Uygulama özellikleri, hizmet koşullarını ve gizlilik bildirimi URL 'Lerini içerir](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>Uygulama nesnesi JSON kullanma
+### <a name="app-object-json"></a>JSON uygulama nesnesini kullanma
 
-Uygulama nesnesi JSON doğrudan değiştirmek isterseniz, hizmet ve gizlilik bildirimini uygulamanızın koşullarını bağlantılar dahil etmek için Azure portalında veya uygulama kayıt portalı bildirim düzenleyicisini kullanabilirsiniz.
+JSON uygulama nesnesini doğrudan değiştirmeyi tercih ediyorsanız, uygulamanızın hizmet koşullarına ve gizlilik bildirimine yönelik bağlantıları dahil etmek için Azure portal veya uygulama kayıt portalındaki bildirim düzenleyicisini kullanabilirsiniz.
 
 ```json
     "informationalUrls": { 
@@ -82,9 +78,9 @@ Uygulama nesnesi JSON doğrudan değiştirmek isterseniz, hizmet ve gizlilik bil
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>MSGraph beta REST API kullanma
+### <a name="msgraph-beta-rest-api"></a>MSGraph Beta REST API kullanma
 
-Program aracılığıyla tüm uygulamaları güncelleştirmek için REST API MSGraph beta koşullarını hizmet ve gizlilik bildirimi belgelerin bağlantıları eklemek için tüm uygulamaları güncelleştirmek için kullanabilirsiniz.
+Tüm uygulamalarınızı program aracılığıyla güncelleştirmek için, tüm uygulamalarınızı hizmet koşulları ve gizlilik bildirimi belgelerinin bağlantılarını içerecek şekilde güncelleştirmek üzere MSGraph Beta REST API kullanabilirsiniz.
 
 ```
 PATCH https://graph.microsoft.com/beta/applications/{application id}
@@ -101,5 +97,5 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 ```
 
 > [!NOTE]
-> * Bu alanlardan birini atamış tüm önceden var olan değerlerin üzerine değil dikkatli olun: `supportUrl`, `marketingUrl`, ve `logoUrl`
-> * Bir Azure AD hesabıyla oturum açtığınızda MSGraph beta REST API yalnızca çalışır. Kişisel Microsoft hesapları desteklenmez.
+> * Bu alanlardan birine atadığınız önceden var olan değerlerin üzerine yazılmamaya dikkat edin: `supportUrl`, `marketingUrl`ve `logoUrl`
+> * MSGraph Beta REST API yalnızca bir Azure AD hesabıyla oturum açtığınızda çalışır. Kişisel Microsoft hesapları desteklenmez.

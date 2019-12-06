@@ -1,24 +1,24 @@
 ---
 title: Azure Cosmos DB sorgu dilinde dizi işlevleri
-description: Azure Cosmos DB 'de dizi SQL sistem işlevleri hakkında bilgi edinin.
+description: Dizi işlevlerinin Azure Cosmos DB diziler üzerinde işlemler gerçekleştirmenize nasıl izin sağladığını öğrenin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f970ed03ef5a9ccbfb9664a6c2d9db424ee96ed1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348678"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871814"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Dizi işlevleri (Azure Cosmos DB)
 
 Dizi işlevleri Azure Cosmos DB diziler üzerinde işlemler gerçekleştirmenize olanak tanır.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>İşlevler
 
 Aşağıdaki skaler işlevler, dizi giriş değerinde bir işlem gerçekleştirir ve sayısal, Boolean veya dizi değeri döndürür:
   
@@ -33,4 +33,4 @@ Aşağıdaki skaler işlevler, dizi giriş değerinde bir işlem gerçekleştiri
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB giriş](introduction.md)
 - [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplar](sql-query-aggregates.md)
+- [Toplamlar](sql-query-aggregates.md)

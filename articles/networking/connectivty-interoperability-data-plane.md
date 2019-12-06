@@ -1,6 +1,6 @@
 ---
-title: 'Birlikte çalışabilirlik Azure arka uç bağlantısı özellikleri: Veri düzlemi analizi | Microsoft Docs'
-description: Bu makalede, ExpressRoute, siteden siteye VPN ve sanal ağ eşlemesi ile Azure arasında birlikte çalışabilirlik analiz etmek için kullanabileceğiniz test kurulum veri düzlemi analizini sağlar.
+title: 'Azure arka uç bağlantısı özelliklerinde birlikte çalışabilirlik: veri düzlemi Analizi | Microsoft Docs'
+description: Bu makalede, Azure 'da ExpressRoute, siteden siteye VPN ve sanal ağ eşlemesi arasındaki birlikte çalışabilirliği çözümlemek için kullanabileceğiniz test kurulumunun veri düzlemi Analizi sağlanmaktadır.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11c964bedce7a8b979434b888d756c2121d06a60
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425535"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873837"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Birlikte çalışabilirlik Azure arka uç bağlantısı özellikleri: Veri düzlemi analizi
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure arka uç bağlantısı özelliklerinde birlikte çalışabilirlik: veri düzlemi Analizi
 
-Bu makalede veri düzlemi analizini [kurulumunu test][Setup]. Ayrıca inceleyebilirsiniz [test Kurulum Yapılandırması] [ Configuration] ve [denetim düzlemi analiz] [ Control-Analysis] testi kurulumun.
+Bu makalede, [Test kurulumunun][Setup]veri düzlemi Analizi açıklanmaktadır. Test Kurulum [yapılandırmasını][Configuration] ve test kurulumunun [Denetim düzlemi analizini][Control-Analysis] de gözden geçirebilirsiniz.
 
-Veri düzlemi analizi başka bir topoloji için bir yerel ağ üzerinden (LAN ya da sanal ağ) geçiş yapan paket tarafından gerçekleştirilecek yolunu inceler. İki yerel ağ arasındaki veri yolu simetrik olmak zorunda değildir. Bu nedenle, bu makalede, yerel ağ iletme yolundan ters yolundan ayrı olarak başka bir ağa analiz ediyoruz.
+Veri düzlemi analizi, bir yerel ağdan (LAN veya sanal ağ) bir topoloji içinde diğerine çapraz geçiş yapan paketler tarafından alınan yolu inceler. İki yerel ağ arasındaki veri yolu simetrik değildir. Bu nedenle, bu makalede, yerel bir ağdan bir iletme yolunu, geriye doğru yoldan ayrı olan başka bir ağa çözümliyoruz.
 
-## <a name="data-path-from-the-hub-vnet"></a>Sanal hub'ından veri yolu
+## <a name="data-path-from-the-hub-vnet"></a>Hub VNet 'ten veri yolu
 
-### <a name="path-to-the-spoke-vnet"></a>Uç sanal ağ yolu
+### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
-Sanal ağ (VNet) eşlemesi, eşlenen iki sanal ağ arasında ağ köprüsü işlevselliğine öykünür. Traceroute, VNet burada gösterilen uçtaki bir VM için bir merkez sanal ağa çıkış:
+Sanal ağ (VNet) eşlemesi, eşlenen iki VNET arasında ağ köprüsü işlevine öykünür. Hub VNet 'ten sanal ağ VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,14 +37,14 @@ Sanal ağ (VNet) eşlemesi, eşlenen iki sanal ağ arasında ağ köprüsü işl
 
     Trace complete.
 
-Merkez sanal ağa bağlantı grafik görünümünü ve Azure Ağ İzleyicisi perspektifinden uç sanal ağı aşağıdaki şekilde gösterilmiştir:
+Aşağıdaki şekilde, Merkez VNet 'in ve Azure ağ Izleyicisi 'nin perspektifinden bağlı olan VNet 'in grafik bağlantı görünümü gösterilmektedir:
 
 
-[![1]][1]
+![1][1]
 
-### <a name="path-to-the-branch-vnet"></a>VNet dal yolu
+### <a name="path-to-the-branch-vnet"></a>Dal VNet 'in yolu
 
-Traceroute, VNet burada gösterilen daldaki bir VM için bir merkez sanal ağa çıkış:
+Hub VNet 'ten şube VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -56,19 +56,19 @@ Traceroute, VNet burada gösterilen daldaki bir VM için bir merkez sanal ağa �
 
     Trace complete.
 
-Bu traceroute ilk atlamanın Azure VPN ağ geçidi merkez sanal ağa VPN ağ geçidi ' dir. İkinci atlama dalın VNet VPN ağ geçidi ' dir. Dalın VNet VPN ağ geçidinin IP adresi, merkez sanal ağa tanıtılan değil. Üçüncü atlama dal sanal ağ üzerindeki bir vm'dir.
+Bu izleme işlemi sırasında, ilk atlama hub VNet 'in Azure VPN Gateway içindeki VPN ağ geçidindir. İkinci atlama, şube VNet 'in VPN ağ geçididir. Şube VNet 'in VPN ağ geçidinin IP adresi hub VNet 'te tanıtılmıyor. Üçüncü atlama, şube VNet 'teki VM 'dir.
 
-Merkez sanal ağa bağlantı grafik görünümünü ve ' % s'dalı VNet Ağ İzleyicisi perspektifinden aşağıdaki şekilde gösterilmiştir:
+Aşağıdaki şekilde, hub VNet 'in ve ağ izleyicisinin perspektifinden şube VNet 'in grafik bağlantı görünümü gösterilmektedir:
 
-[![2]][2]
+![2][2]
 
-Aynı bağlantı için Ağ İzleyicisi ızgara görünümünde aşağıdaki şekilde gösterilmiştir:
+Aynı bağlantı için aşağıdaki şekilde, ağ izleyicilerinde kılavuz görünümü gösterilmektedir:
 
-[![3]][3]
+![3][3]
 
-### <a name="path-to-on-premises-location-1"></a>Şirket içi konuma 1 yolu
+### <a name="path-to-on-premises-location-1"></a>Şirket içi konumun yolu 1
 
-Traceroute çıktısını bir merkez sanal ağa bir VM ile şirket içi konum 1 aşağıda gösterilmiştir:
+Hub VNet 'ten şirket içi konum 1 ' deki bir VM 'ye bir sanal ağ üzerinden izleme işlemi çıkışı aşağıda gösterilmiştir:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -81,12 +81,12 @@ Traceroute çıktısını bir merkez sanal ağa bir VM ile şirket içi konum 1 
 
     Trace complete.
 
-Bu traceroute ilk atlamanın Azure ExpressRoute ağ geçidi tünel uç noktası bir Microsoft Kurumsal kenar yönlendirici (MSEE) için ' dir. İkinci ve üçüncü atlama müşteri (CE) sınır yönlendiricisi ve şirket içi konum 1 LAN IP'ler ' dir. Bu IP adresleri, merkez sanal ağa tanıtılan değildir. Dördüncü atlama, şirket içi konum 1 vm'dir.
+Bu izleme yolunda ilk atlama, Microsoft kurumsal bir yönlendirici (MSEE) için Azure ExpressRoute ağ geçidi tünel uç noktasıdır. İkinci ve üçüncü atlama müşteri kenarı (CE) yönlendiricisidir ve şirket içi konum 1 LAN IP 'lardır. Bu IP adresleri hub VNet 'te tanıtılmaz. Dördüncü atlama, şirket içi konum 1 ' deki VM 'dir.
 
 
-### <a name="path-to-on-premises-location-2"></a>Şirket içi konuma 2 yolu
+### <a name="path-to-on-premises-location-2"></a>Şirket içi konumun yolu 2
 
-Şirket içi konum 2'de bir VM için bir merkez sanal ağa traceroute çıkışı burada gösterilmiştir:
+Hub VNet 'ten şirket içi konum 2 ' deki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -99,11 +99,11 @@ Bu traceroute ilk atlamanın Azure ExpressRoute ağ geçidi tünel uç noktası 
 
     Trace complete.
 
-Bu traceroute ilk atlamanın bir MSEE için ExpressRoute ağ geçidi tünel uç noktadır. İkinci ve üçüncü atlama CE yönlendirici ve şirket içi konum 2 LAN IP'ler ' dir. Bu IP adresleri, merkez sanal ağa tanıtılan değildir. Dördüncü atlama şirket içi konum 2'üzerindeki bir vm'dir.
+Bu izleme yolunda ilk atlama, bir MSEE ExpressRoute ağ geçidi tünel uç noktasıdır. İkinci ve üçüncü atlama, CE yönlendiricisidir ve şirket içi konum 2 LAN IP 'lardır. Bu IP adresleri hub VNet 'te tanıtılmaz. Dördüncü atlama, şirket içi konum 2 ' deki VM 'dir.
 
-### <a name="path-to-the-remote-vnet"></a>Uzak sanal ağ yolu
+### <a name="path-to-the-remote-vnet"></a>Uzak VNet 'in yolu
 
-Uzak sanal ağ içindeki bir VM için bir merkez sanal ağa traceroute çıkışı burada gösterilmiştir:
+Bir hub VNet 'ten uzak VNet 'teki bir VM 'ye bir sanal ağ üzerinden izleme işlemi çıkışı aşağıda gösterilmiştir:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -115,15 +115,15 @@ Uzak sanal ağ içindeki bir VM için bir merkez sanal ağa traceroute çıkış
 
     Trace complete.
 
-Bu traceroute ilk atlamanın bir MSEE için ExpressRoute ağ geçidi tünel uç noktadır. İkinci atlama uzaktan sanal ağın ağ geçidi IP ' dir. Merkez sanal ağda ikinci atlama IP aralığı tanıtılan değil. Üçüncü atlama uzak sanal ağ üzerindeki bir vm'dir.
+Bu izleme yolunda ilk atlama, bir MSEE ExpressRoute ağ geçidi tünel uç noktasıdır. İkinci atlama, uzak VNet 'in ağ geçidi IP 'dır. İkinci atlama IP aralığı, hub VNet 'te tanıtılmaz. Üçüncü atlama, uzak VNet 'teki VM 'dir.
 
-## <a name="data-path-from-the-spoke-vnet"></a>Veri yolundan bir uç sanal ağı
+## <a name="data-path-from-the-spoke-vnet"></a>Bağlı olan VNet 'ten veri yolu
 
-Uç sanal ağı, merkez sanal ağa ağ görünümünü paylaşır. VNet eşlemesi aracılığıyla doğrudan bir uç sanal ağı bağlı bir uç sanal ağı, merkez sanal ağa uzak ağ geçidi bağlantısı kullanır.
+Bağlı olan VNet, hub VNet 'in ağ görünümünü paylaşır. VNet eşlemesi ile, bağlı olan VNet, hub VNET 'in uzak ağ geçidi bağlantısını, doğrudan bağlı olan VNet 'e bağlı gibi kullanır.
 
-### <a name="path-to-the-hub-vnet"></a>Merkez sanal ağa yolu
+### <a name="path-to-the-hub-vnet"></a>Hub VNet 'in yolu
 
-Traceroute, bir VM sanal ağ burada gösterilen hub'ında uç sanal ağı çıktı:
+Bağlı olan VNet 'ten hub VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -133,9 +133,9 @@ Traceroute, bir VM sanal ağ burada gösterilen hub'ında uç sanal ağı çıkt
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet"></a>VNet dal yolu
+### <a name="path-to-the-branch-vnet"></a>Dal VNet 'in yolu
 
-Traceroute, VNet burada gösterilen daldaki bir VM için uç sanal ağı çıktı:
+Bağlı olan VNet 'ten şube VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -147,29 +147,11 @@ Traceroute, VNet burada gösterilen daldaki bir VM için uç sanal ağı çıkt�
 
     Trace complete.
 
-Bu traceroute ilk atlamanın merkez sanal ağa VPN geçididir. İkinci atlama dalın VNet VPN ağ geçidi ' dir. Dalın VNet VPN ağ geçidinin IP adresi merkez/uç içinde VNet tanıtılan değil. Üçüncü atlama dal sanal ağ üzerindeki bir vm'dir.
+Bu izleme işlemi sırasında, ilk atlama hub VNet 'in VPN ağ geçidindir. İkinci atlama, şube VNet 'in VPN ağ geçididir. Şube VNet 'in VPN ağ geçidinin IP adresi hub/bağlı ağ VNet içinde tanıtılmıyor. Üçüncü atlama, şube VNet 'teki VM 'dir.
 
-### <a name="path-to-on-premises-location-1"></a>Şirket içi konuma 1 yolu
+### <a name="path-to-on-premises-location-1"></a>Şirket içi konumun yolu 1
 
-Uç sanal ağı şirket içi konum 1'deki VM'ye traceroute çıktısı aşağıda gösterilmiştir:
-
-    C:\Users\rb>tracert 10.2.30.10
-
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
-
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
-
-    Trace complete.
-
-Bu traceroute ilk atlamanın hub sanal ağın ExpressRoute ağ geçidi tünel uç bir MSEE için ' dir. İkinci ve üçüncü atlama CE yönlendirici ve şirket içi konum 1 LAN IP'ler ' dir. Bu IP adresleri hub/uç VNet tanıtılan değildir. Dördüncü atlama, şirket içi konum 1 vm'dir.
-
-### <a name="path-to-on-premises-location-2"></a>Şirket içi konuma 2 yolu
-
-Uç sanal ağı şirket içi konum 2'de bir VM traceroute çıktısı aşağıda gösterilmiştir:
-
+Bağlı olan VNet 'ten şirket içi konum 1 ' deki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -182,11 +164,29 @@ Uç sanal ağı şirket içi konum 2'de bir VM traceroute çıktısı aşağıda
 
     Trace complete.
 
-Bu traceroute ilk atlamanın hub sanal ağın ExpressRoute ağ geçidi tünel uç bir MSEE için ' dir. İkinci ve üçüncü atlama CE yönlendirici ve şirket içi konum 2 LAN IP'ler ' dir. Bu IP adresleri hub/uç sanal ağlarında tanıtılan değildir. Dördüncü atlama, şirket içi konum 2'deki vm'dir.
+Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli bitiş noktasıdır ve bir MSEE. İkinci ve üçüncü atlama, CE yönlendiricisidir ve şirket içi konum 1 LAN IP 'lardır. Bu IP adresleri hub/bağlı ağ VNet 'inde tanıtılmaz. Dördüncü atlama, şirket içi konum 1 ' deki VM 'dir.
 
-### <a name="path-to-the-remote-vnet"></a>Uzak sanal ağ yolu
+### <a name="path-to-on-premises-location-2"></a>Şirket içi konumun yolu 2
 
-Uzak sanal ağ içindeki bir sanal makineye uç sanal ağı traceroute çıkışı burada gösterilmiştir:
+Bağlı olan VNet 'ten şirket içi konum 2 ' deki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
+
+
+    C:\Users\rb>tracert 10.2.30.10
+
+    Tracing route to 10.2.30.10 over a maximum of 30 hops
+
+      1    24 ms     2 ms     3 ms  10.10.30.132
+      2     *        *        *     Request timed out.
+      3     *        *        *     Request timed out.
+      4     3 ms     2 ms     2 ms  10.2.30.10
+
+    Trace complete.
+
+Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli bitiş noktasıdır ve bir MSEE. İkinci ve üçüncü atlama, CE yönlendiricisidir ve şirket içi konum 2 LAN IP 'lardır. Bu IP adresleri hub/bağlı ağ sanal ağları 'nda tanıtılmaz. Dördüncü atlama, şirket içi konum 2 ' deki VM 'dir.
+
+### <a name="path-to-the-remote-vnet"></a>Uzak VNet 'in yolu
+
+Bağlı olan VNet 'ten uzak VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -198,13 +198,13 @@ Uzak sanal ağ içindeki bir sanal makineye uç sanal ağı traceroute çıkış
 
     Trace complete.
 
-Bu traceroute ilk atlamanın hub sanal ağın ExpressRoute ağ geçidi tünel uç bir MSEE için ' dir. İkinci atlama uzaktan sanal ağın ağ geçidi IP ' dir. İkinci atlama IP aralığı hub/uç VNet tanıtılan değil. Üçüncü atlama uzak sanal ağ üzerindeki bir vm'dir.
+Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli bitiş noktasıdır ve bir MSEE. İkinci atlama, uzak VNet 'in ağ geçidi IP 'dır. İkinci atlama IP aralığı, hub/bağlı ağ VNet 'te tanıtılmaz. Üçüncü atlama, uzak VNet 'teki VM 'dir.
 
-## <a name="data-path-from-the-branch-vnet"></a>VNet dalından veri yolu
+## <a name="data-path-from-the-branch-vnet"></a>Şube VNet 'ten veri yolu
 
-### <a name="path-to-the-hub-vnet"></a>Merkez sanal ağa yolu
+### <a name="path-to-the-hub-vnet"></a>Hub VNet 'in yolu
 
-Traceroute, VNet burada gösterilen hub'ında bir VM sanal ağ daldan çıktı:
+Şube VNet 'ten hub VNet 'teki bir VM 'ye olan izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -216,11 +216,11 @@ Traceroute, VNet burada gösterilen hub'ında bir VM sanal ağ daldan çıktı:
 
     Trace complete.
 
-Bu traceroute ilk atlamanın, dalın VNet VPN geçididir. İkinci atlama merkez sanal ağa VPN ağ geçidi ' dir. Merkez sanal ağa VPN ağ geçidi IP adresini uzak sanal ağda tanıtılan değil. Üçüncü atlama hub sanal ağ üzerindeki bir vm'dir.
+Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlama, hub VNet 'in VPN ağ geçidindir. Hub VNet 'in VPN ağ geçidinin IP adresi uzak VNet 'te tanıtılmıyor. Üçüncü atlama, hub VNet 'teki VM 'dir.
 
-### <a name="path-to-the-spoke-vnet"></a>Uç sanal ağ yolu
+### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
-Traceroute, VNet burada gösterilen uçtaki bir VM sanal ağ daldan çıktı:
+Şube VNet 'ten sanal ağ VNet 'teki bir VM 'ye olan izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -232,11 +232,11 @@ Traceroute, VNet burada gösterilen uçtaki bir VM sanal ağ daldan çıktı:
 
     Trace complete.
 
-Bu traceroute ilk atlamanın, dalın VNet VPN geçididir. İkinci atlama merkez sanal ağa VPN ağ geçidi ' dir. Merkez sanal ağa VPN ağ geçidi IP adresini uzak sanal ağda tanıtılan değil. Üçüncü atlama uç sanal ağ üzerindeki bir vm'dir.
+Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlama, hub VNet 'in VPN ağ geçidindir. Hub VNet 'in VPN ağ geçidinin IP adresi uzak VNet 'te tanıtılmıyor. Üçüncü atlama, bağlı olan VNet 'teki VM 'dir.
 
-### <a name="path-to-on-premises-location-1"></a>Şirket içi konuma 1 yolu
+### <a name="path-to-on-premises-location-1"></a>Şirket içi konumun yolu 1
 
-Bir VM, şirket içi konum 1 VNet dalından traceroute çıktı aşağıda gösterilmiştir:
+Şube VNet 'ten şirket içi konum 1 ' deki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -250,11 +250,11 @@ Bir VM, şirket içi konum 1 VNet dalından traceroute çıktı aşağıda göst
 
     Trace complete.
 
-Bu traceroute ilk atlamanın, dalın VNet VPN geçididir. İkinci atlama merkez sanal ağa VPN ağ geçidi ' dir. Merkez sanal ağa VPN ağ geçidi IP adresini uzak sanal ağda tanıtılan değil. Üçüncü atlama birincil CE yönlendiricisinde VPN tüneli sonlandırma noktasıdır. Dördüncü atlama bir iç şirket içi konum 1 IP adresidir. Bu LAN IP adresi dışında CE yönlendirici tanıtılan değil. Beşinci atlama hedef VM ile şirket içi konum 1 ' dir.
+Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlama, hub VNet 'in VPN ağ geçidindir. Hub VNet 'in VPN ağ geçidinin IP adresi uzak VNet 'te tanıtılmıyor. Üçüncü atlama, birincil CE yönlendiricisinde VPN tüneli sonlandırma noktasıdır. Dördüncü atlama, şirket içi konum 1 ' in iç IP adresidir. Bu LAN IP adresi, CE yönlendiricisinin dışında tanıtılmaz. Beşinci atlama, şirket içi konum 1 ' deki hedef VM 'dir.
 
-### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Şirket içi konum 2 ve uzak sanal ağ yolu
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Şirket içi konum 2 ve uzak VNet 'in yolu
 
-Denetim düzlemi analiz ele aldığımız gibi VNet dal yok görünürlük şirket içi konum 2 veya uzak sanal ağ başına ağ yapılandırması vardır. Aşağıdaki ping sonuçları onaylayın: 
+Denetim düzlemi analizinde anlatıldığı gibi, şube VNet 'in şirket içi konum 2 ' ye veya ağ yapılandırması başına uzak VNet 'e görünürlüğü yoktur. Aşağıdaki ping sonuçları şunları onaylayın: 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -278,11 +278,11 @@ Denetim düzlemi analiz ele aldığımız gibi VNet dal yok görünürlük şirk
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-## <a name="data-path-from-on-premises-location-1"></a>Veri yolundan şirket içi konum 1
+## <a name="data-path-from-on-premises-location-1"></a>Şirket içi konumdan veri yolu 1
 
-### <a name="path-to-the-hub-vnet"></a>Merkez sanal ağa yolu
+### <a name="path-to-the-hub-vnet"></a>Hub VNet 'in yolu
 
-Traceroute, şirket içi konum 1'den bir VM sanal ağ burada gösterilen hub'ında çıktı:
+Şirket içi konum 1 ' den Merkez VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -296,15 +296,15 @@ Traceroute, şirket içi konum 1'den bir VM sanal ağ burada gösterilen hub'ın
 
     Trace complete.
 
-Bu traceroute ilk iki atlama şirket içi ağın bir parçasıdır. Üçüncü atlama CE yönlendirici yüzler birincil MSEE'nin arabirimidir. Dördüncü atlama merkez sanal ağı ExpressRoute ağ geçidi ' dir. IP aralığı merkez sanal ağı ExpressRoute ağ geçidi, şirket içi ağa tanıtılan değil. Beşinci atlama, hedef VM olur.
+Bu izleme için, ilk iki atlama şirket içi ağın bir parçasıdır. Üçüncü atlama, CE yönlendiricisinin yüzlerine yönelik birincil MSEE arabirimidir. Dördüncü atlama, hub VNet 'in ExpressRoute ağ geçidindir. Hub VNet 'in ExpressRoute ağ geçidinin IP aralığı, şirket içi ağa tanıtılmaz. Beşinci atlama hedef VM 'dir.
 
-Ağ İzleyicisi, yalnızca Azure merkezli bir görünüm sağlar. Bir şirket içi perspektifi için Azure Ağ Performansı İzleyicisi kullanırız. Ağ Performansı İzleyicisi veri yolu analizi için Azure dışındaki ağlarda sunuculara yüklemek için kullanabileceğiniz aracıları sağlar.
+Ağ Izleyicisi yalnızca Azure merkezli bir görünüm sağlar. Şirket içi bir perspektifte Azure Ağ Performansı İzleyicisi kullanırız. Ağ Performansı İzleyicisi, veri yolu analizi için Azure dışındaki ağlarda bulunan sunuculara yükleyebileceğiniz aracılar sağlar.
 
-Aşağıdaki şekilde, sanal makineye ' % s'merkez sanal ağı ExpressRoute aracılığıyla şirket içi konum 1. VM bağlantı topolojisi görünümünü gösterir:
+Aşağıdaki şekilde, ExpressRoute aracılığıyla hub VNet 'teki VM 'ye yönelik şirket içi konum 1 VM bağlantısının topoloji görünümü gösterilmektedir:
 
-[![4]][4]
+![4][4]
 
-Daha önce bahsedildiği gibi test kurulumu bir siteden siteye VPN ExpressRoute merkez sanal ağı ile şirket içi konum 1 ila yedekleme bağlantı kullanır. Yedek veri yolu test etmek için şimdi şirket içi konum 1 birincil CE yönlendirici karşılık gelen MSEE arasında bir ExpressRoute bağlantı hatası anlamına. Bir ExpressRoute bağlantı hatası anlamına için MSEE yüzler CE arabirimi kapatın:
+Daha önce anlatıldığı gibi, test kurulumu, şirket içi konum 1 ile hub VNet arasında ExpressRoute için yedekleme bağlantısı olarak siteden siteye VPN kullanır. Yedekleme veri yolunu test etmek için şirket içi konum 1 birincil CE yönlendirici ve ilgili MSEE arasında bir ExpressRoute bağlantı hatasına yol açalım. Bir ExpressRoute bağlantı başarısızlığını yapmak için, MSEE 'yi sunan CE arabirimini kapatın:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -316,15 +316,15 @@ Daha önce bahsedildiği gibi test kurulumu bir siteden siteye VPN ExpressRoute 
 
     Trace complete.
 
-ExpressRoute bağlantı kapalı olduğunda aşağıdaki şekilde sanal makineye ' % s'merkez sanal ağa siteden siteye VPN bağlantısı aracılığıyla şirket içi konum 1. VM bağlantısı topoloji görünümü gösterir:
+Aşağıdaki şekilde, ExpressRoute bağlantısı kapatıldığında siteden siteye VPN bağlantısı aracılığıyla hub VNet 'teki VM 'ye yönelik şirket içi konum 1 VM bağlantısının topoloji görünümü gösterilmektedir:
 
-[![5]][5]
+![5][5]
 
-### <a name="path-to-the-spoke-vnet"></a>Uç sanal ağ yolu
+### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
-Traceroute, şirket içi konum 1'den bir VM sanal ağ burada gösterilen uçtaki çıktı:
+Şirket içi konumundan 1 ' den bağlı olan VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-Şimdi veri yolu analizlerini doğru uç sanal ağı ExpressRoute birincil bağlantı geri getirin:
+Veri yolu analizini, bağlı olan VNet 'e doğru yapmak için ExpressRoute birincil bağlantısını geri getirelim:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -338,11 +338,11 @@ Traceroute, şirket içi konum 1'den bir VM sanal ağ burada gösterilen uçtaki
 
     Trace complete.
 
-Birincil veri yolu analizi geri kalanında 1 ExpressRoute bağlantısının getirin.
+Veri yolu analizinin geri kalanı için birincil ExpressRoute 1 bağlantısını getirin.
 
-### <a name="path-to-the-branch-vnet"></a>VNet dal yolu
+### <a name="path-to-the-branch-vnet"></a>Dal VNet 'in yolu
 
-Traceroute, şirket içi konum 1'den çıkış VNet burada gösterilen daldaki bir VM için:
+Şirket içi konum 1 ' den şube VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -354,9 +354,9 @@ Traceroute, şirket içi konum 1'den çıkış VNet burada gösterilen daldaki b
 
     Trace complete.
 
-### <a name="path-to-on-premises-location-2"></a>Şirket içi konuma 2 yolu
+### <a name="path-to-on-premises-location-2"></a>Şirket içi konumun yolu 2
 
-İçinde ettiğimizden [denetim düzlemi analiz][Control-Analysis], şirket içi konum 1 başına ağ yapılandırmasının şirket içi konum 2 için hiçbir görünürlük sahiptir. Aşağıdaki ping sonuçları onaylayın: 
+[Denetim düzlemi analizinde][Control-Analysis]tartıştığımız gibi, şirket içi konum 1 ' in ağ yapılandırmasına göre şirket içi konum 2 ' ye görünürlüğü yoktur. Aşağıdaki ping sonuçları şunları onaylayın: 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -369,9 +369,9 @@ Traceroute, şirket içi konum 1'den çıkış VNet burada gösterilen daldaki b
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-### <a name="path-to-the-remote-vnet"></a>Uzak sanal ağ yolu
+### <a name="path-to-the-remote-vnet"></a>Uzak VNet 'in yolu
 
-Uzak sanal ağ içindeki bir VM için şirket içi konum 1 traceroute çıkışı burada gösterilmiştir:
+Şirket içi konum 1 ' den uzak VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -385,11 +385,11 @@ Uzak sanal ağ içindeki bir VM için şirket içi konum 1 traceroute çıkış�
 
     Trace complete.
 
-## <a name="data-path-from-on-premises-location-2"></a>Veri yolundan şirket içi konum 2
+## <a name="data-path-from-on-premises-location-2"></a>Şirket içi konumdan veri yolu 2
 
-### <a name="path-to-the-hub-vnet"></a>Merkez sanal ağa yolu
+### <a name="path-to-the-hub-vnet"></a>Hub VNet 'in yolu
 
-Traceroute, şirket içi konum 2'den bir VM sanal ağ burada gösterilen hub'ında çıktı:
+Şirket içi konum 2 ' den Merkez VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -403,9 +403,9 @@ Traceroute, şirket içi konum 2'den bir VM sanal ağ burada gösterilen hub'ın
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>Uç sanal ağ yolu
+### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
-Traceroute, şirket içi konum 2'den bir VM sanal ağ burada gösterilen uçtaki çıktı:
+Şirket içi konum 2 ' den bağlı olan VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -418,15 +418,15 @@ Traceroute, şirket içi konum 2'den bir VM sanal ağ burada gösterilen uçtaki
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>VNet, dal yolu şirket içi konum 1 ve uzak sanal ağ
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Şube VNet 'in yolu, şirket içi konum 1 ve uzak VNet
 
-İçinde ettiğimizden [denetim düzlemi analiz][Control-Analysis], şirket içi konum 1 hiçbir görünürlük dal VNet, şirket içi konum 1 veya uzak sanal ağ başına ağ yapılandırması vardır. 
+[Denetim düzlemi analizinde][Control-Analysis]tartıştığımız gibi, şirket içi konum 1 ' de şube VNET 'e, şirket içi konuma 1 veya ağ yapılandırması başına uzak VNET 'e yönelik bir görünürlük yoktur. 
 
-## <a name="data-path-from-the-remote-vnet"></a>Uzak sanal ağ veri yolu
+## <a name="data-path-from-the-remote-vnet"></a>Uzak VNet 'ten veri yolu
 
-### <a name="path-to-the-hub-vnet"></a>Merkez sanal ağa yolu
+### <a name="path-to-the-hub-vnet"></a>Hub VNet 'in yolu
 
-Traceroute, uzaktan sanal ağdan bir VM sanal ağ burada gösterilen hub'ında çıktı:
+Uzak VNet 'ten hub VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -438,9 +438,9 @@ Traceroute, uzaktan sanal ağdan bir VM sanal ağ burada gösterilen hub'ında �
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>Uç sanal ağ yolu
+### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
-Traceroute, uzaktan sanal ağdan bir VM sanal ağ burada gösterilen uçtaki çıktı:
+Uzak VNet 'ten bağlı olan VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -452,13 +452,13 @@ Traceroute, uzaktan sanal ağdan bir VM sanal ağ burada gösterilen uçtaki ç�
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>VNet dal yolu ve şirket içi konum 2
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Şube VNet 'in ve şirket içi konumun yolu 2
 
-İçinde ettiğimizden [denetim düzlemi analiz][Control-Analysis], uzak sanal ağ yok görünürlük VNet dal ya da şirket içi konum 2 ağ yapılandırmasını başına sahiptir. 
+[Denetim düzlemi analizinde][Control-Analysis]tartıştığımız gibi, uzak VNET 'In şube VNET 'e veya ağ yapılandırmasına göre şirket içi konum 2 ' ye görünürlüğü yoktur. 
 
-### <a name="path-to-on-premises-location-1"></a>Şirket içi konuma 1 yolu
+### <a name="path-to-on-premises-location-1"></a>Şirket içi konumun yolu 1
 
-VM ile şirket içi konum 1 için Uzak sanal ağdan traceroute çıktı aşağıda gösterilmiştir:
+Uzak VNet 'ten şirket içi konum 1 ' deki bir VM 'ye yapılan izleme işlemi çıkışı şurada gösterilmektedir:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -472,49 +472,49 @@ VM ile şirket içi konum 1 için Uzak sanal ağdan traceroute çıktı aşağı
     Trace complete.
 
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Tutarlılığın ExpressRoute ve siteden siteye VPN bağlantısı
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Kademeli olarak ExpressRoute ve siteden siteye VPN bağlantısı
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute üzerinden siteden siteye VPN
 
-ExpressRoute özel olarak şirket içi ağınız ve Azure Vnet'ler arasında veri alışverişi eşleme Microsoft kullanarak siteden siteye VPN yapılandırabilirsiniz. Bu yapılandırma ile gizliliği, kimlik doğrulaması ve bütünlük ile veri alışverişinde bulunabilir. Veri değişimi yürütmeyi de olur. ExpressRoute eşdüzey hizmet sağlama Microsoft kullanarak siteden siteye IPSec VPN tüneli modunda yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute Microsoft eşlemesi üzerinde siteden siteye VPN][S2S-Over-ExR]. 
+Şirket içi ağınız ve Azure sanal ağlarınız arasında özel olarak veri alışverişi yapmak için ExpressRoute Microsoft eşlemesi kullanarak siteden siteye VPN yapılandırabilirsiniz. Bu yapılandırmayla, verileri gizlilik, özgünlük ve bütünlük ile değiş tokuş edebilirsiniz. Veri değişimi de yeniden oynama olur. ExpressRoute Microsoft eşlemesi kullanarak bir siteden siteye IPSec VPN 'yi tünel modunda yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute üzerinden siteden sıteye VPN Microsoft eşlemesi][S2S-Over-ExR]. 
 
-Microsoft eşlemesi kullanan bir siteden siteye VPN yapılandırma birincil sınırlama aktarım hızıdır. IPSec tüneli üzerinden aktarım hızı ile VPN ağ geçidi kapasitesi sınırlı. VPN gateway performansı ExpressRoute üretilen işten daha küçük. Bu senaryoda, ExpressRoute bant genişliği kullanımını iyileştirmek için yüksek oranda güvenli trafiği IPSec tünel kullanılarak ve diğer tüm trafiği için özel eşdüzey hizmet sağlama kullanarak yardımcı olur.
+Microsoft eşlemesi kullanan bir siteden siteye VPN yapılandırmanın birincil sınırlaması aktarım hızına sahiptir. IPSec tüneli üzerinden aktarım hızı VPN Gateway kapasitesinden sınırlıdır. VPN ağ geçidi verimlilik ExpressRoute aktarım hızına göre daha düşüktür. Bu senaryoda, yüksek oranda güvenli trafik için IPSec tüneli kullanılması ve diğer tüm trafik için özel eşleme kullanılması, ExpressRoute bant genişliği kullanımının iyileştirmenize yardımcı olur.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute için bir güvenli bir yük devretme yolu olarak siteden siteye VPN
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute için güvenli bir yük devretme yolu olarak siteden siteye VPN
 
-ExpressRoute, yüksek kullanılabilirlik sağlamak için yedekli devre çiftinin görev yapar. Farklı Azure bölgelerinde coğrafi olarak yedekli ExpressRoute bağlantı yapılandırabilirsiniz. Ayrıca, bir Azure bölgesi içinde bizim test Kurulum gösterildiği şekilde bir yük devretme yolu için ExpressRoute bağlantınızı oluşturmak için bir siteden siteye VPN kullanabilirsiniz. ExpressRoute ve siteden siteye VPN üzerinden aynı ön eklerin tanıtılıp, Azure ExpressRoute önceliklendirir. ExpressRoute ve siteden siteye VPN arasında asimetrik yönlendirme önlemek için ağ yapılandırması de siteden siteye VPN bağlantısı kullanmadan önce ExpressRoute bağlantısı kullanarak reciprocate şirket içi.
+ExpressRoute, yüksek kullanılabilirlik sağlamak için yedekli bir devre çifti işlevi görür. Coğrafi olarak yedekli ExpressRoute bağlantısını, farklı Azure bölgelerinde yapılandırabilirsiniz. Ayrıca, test kurulumumuzda gösterildiği gibi, bir Azure bölgesi içinde, ExpressRoute bağlantınızın yük devretme yolunu oluşturmak için siteden siteye VPN kullanabilirsiniz. Aynı ön ekler hem ExpressRoute hem de siteden siteye VPN üzerinden tanıtıldığında Azure, ExpressRoute 'u önceliklendirir. ExpressRoute ve siteden siteye VPN arasındaki asimetrik yönlendirmeyi önlemek için, şirket içi ağ yapılandırması, siteden siteye VPN bağlantısı kullanmadan önce ExpressRoute bağlantısı kullanılarak da devrik olmalıdır.
 
-ExpressRoute ve siteden siteye VPN için bir arada var olabilen bağlantılar yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute ve siteden siteye birlikte kullanımı][ExR-S2S-CoEx].
+ExpressRoute ve siteden siteye VPN için birlikte var olan bağlantıları yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute ve siteden siteye birlikte bulunma][ExR-S2S-CoEx].
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Arka uç bağlantı uç sanal ağları ve şube konumları için genişletin
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Arka uç bağlantısını bağlı olan sanal ağlara ve dal konumlarına Genişlet
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet eşlemesi kullanarak uç VNet bağlantısı
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet eşlemesi kullanarak bağlı olan VNet bağlantısı
 
-Merkez ve uç VNet mimarisi yaygın olarak kullanılır. Hub merkezi bir şirket içi ağınıza, uç sanal ağları arasında bağlantı noktası gören azure'daki bir sanal ağ ' dir. Uçlar hub'la eş sanal ağ olan ve hangi iş yüklerini yalıtmak için kullanabilirsiniz. Hub'ı bir ExpressRoute veya VPN bağlantısı aracılığıyla şirket içi veri merkeziniz arasındaki trafik akışı. Mimarisi hakkında daha fazla bilgi için bkz. [Azure'da merkez-uç ağ topolojisi uygulama][Hub-n-Spoke].
+Hub ve bağlı ağ VNet mimarisi yaygın olarak kullanılır. Hub, bağlı olan sanal ağlarınız ve şirket içi ağınız arasında merkezi bir bağlantı noktası görevi gören Azure 'da bulunan bir VNet ' dir. Bağlı bileşen, hub ile eş olan ve iş yüklerini yalıtmak için kullanabileceğiniz sanal ağlardır. ExpressRoute veya VPN bağlantısı aracılığıyla şirket içi veri merkezi ile hub arasındaki trafik akışları. Mimari hakkında daha fazla bilgi için bkz. [Azure 'da Merkez-uç ağ topolojisi uygulama][Hub-n-Spoke].
 
-Bir bölge içinde eşlemesi sanal ağda uç sanal ağları, uzak ağlarla iletişim kuracak hub VNet ağ geçitleriniz (hem VPN ve ExpressRoute ağ geçitleri) kullanabilirsiniz.
+Bir bölgedeki VNet eşlemesi içinde, bağlı olan sanal ağlar, uzak ağlarla iletişim kurmak için hub VNet ağ geçitlerini (VPN ve ExpressRoute ağ geçitleri) kullanabilir.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Siteden siteye VPN kullanarak sanal ağa bağlantı dal
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Siteden siteye VPN kullanarak dal VNet bağlantısı
 
-Sanal ağlar farklı bölgelerde ve şirket içi ağlarda hub sanal ağ birbirleriyle iletişim kurmak için dal isteyebilirsiniz. Yerel Azure bu yapılandırma için siteden siteye VPN bağlantısı bir VPN kullanarak çözümüdür. Bir alternatif, hub'ı yönlendirme için bir ağ sanal Gereci (NVA) kullanmaktır.
+Farklı bölgelerde olan dal VNET 'leri ve şirket içi ağları bir hub VNet aracılığıyla birbirleriyle iletişim kurmak isteyebilirsiniz. Bu yapılandırma için yerel Azure çözümü, VPN kullanarak siteden siteye VPN bağlantısı olur. Alternatif, hub 'da yönlendirme için bir ağ sanal gereci (NVA) kullanmaktır.
 
-Daha fazla bilgi için [VPN ağ geçidi nedir?] [ VPN] ve [yüksek oranda kullanılabilir bir NVA dağıtın][Deploy-NVA].
+Daha fazla bilgi için bkz. [ne VPN Gateway?][VPN] nedir ve [yüksek oranda kullanılabilir NVA dağıtma][Deploy-NVA].
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [ExpressRoute SSS] [ ExR-FAQ] için:
--   Bir ExpressRoute ağ geçidine bağlanabilir kaç ExpressRoute bağlantı hatları öğrenin.
--   Bir ExpressRoute bağlantı hattına bağlayabilirsiniz kaç ExpressRoute ağ geçitleri hakkında bilgi edinin.
--   Diğer ExpressRoute ölçek sınırları hakkında bilgi edinin.
+Bkz. [ExpressRoute SSS][ExR-FAQ] :
+-   ExpressRoute ağ geçidine kaç ExpressRoute bağlantı hattı bağlayabileceğinizi öğrenin.
+-   Bir ExpressRoute devresine kaç ExpressRoute ağ geçidi bağlayabileceğinizi öğrenin.
+-   ExpressRoute 'un diğer ölçek sınırları hakkında bilgi edinin.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "merkez sanal ağa bağlantısı uç sanal ağı için Ağ İzleyicisi görünümünü"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "merkez sanal ağa bağlantısı bir dalı VNet Ağ İzleyicisi görünümünü"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "Ağ İzleyicisi ızgara görünümünde bir dal VNet için bir merkez sanal ağa bağlantısı"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "konumu 1. VM bağlantısı merkez sanal ağa ExpressRoute 1 aracılığıyla Ağ Performansı İzleyicisi görünümünü"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "konumu 1. VM bağlantısı merkez sanal ağa bir siteden siteye VPN aracılığıyla Ağ Performansı İzleyicisi görünümünü"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "Hub VNet 'ten bağlı olan VNet 'e bağlantının ağ Izleyicisi görünümü"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "Hub VNet 'ten bir dal VNet 'e bağlantının ağ Izleyicisi görünümü"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "Ağ Izleyicisi, hub VNet 'ten bir dal VNet 'e bağlantının bağlantısını görüntüleme"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "ExpressRoute 1 VM ile hub VNet 'e giden bağlantı Ağ Performansı İzleyicisi"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Siteden siteye VPN aracılığıyla konum 1 VM 'den hub VNet 'e bağlantı Ağ Performansı İzleyicisi görünümü"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

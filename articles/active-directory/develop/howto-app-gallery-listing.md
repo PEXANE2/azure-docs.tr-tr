@@ -2,28 +2,24 @@
 title: Uygulamanızı Azure Active Directory Uygulama galerisinde listeleyin | Microsoft Docs
 description: Azure Active Directory Uygulama galerisinde çoklu oturum açmayı destekleyen bir uygulamayı nasıl listeleyeceğinizi öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374083"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842787"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -114,7 +110,7 @@ Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kald
 
 ## <a name="list-requests-by-customers"></a>İstekleri müşterilere göre Listele
 
-Müşteriler, **müşterilere göre uygulama istekleri**seçerek bir uygulamayı listeleme isteği gönderebilir  > **yeni istek gönderir**.
+Müşteriler, **müşterilere göre uygulama istekleri** seçerek bir uygulamayı listelemek > **yeni istek göndermek**için bir istek gönderebilir.
 
 ![Müşteri tarafından istenen uygulamalar kutucuğunu gösterir](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -122,7 +118,7 @@ Müşteri tarafından istenen uygulamaların akışı aşağıda verilmiştir.
 
 ![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Animasyon
+## <a name="timelines"></a>Zaman çizelgeleri
 
 Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gününe kadar olur.
 
@@ -134,4 +130,4 @@ Galerideki bir OpenID Connect uygulamasını listeleme işleminin zaman çizelge
 
 ## <a name="escalations"></a>Yükseltmeleri
 
-Tüm yürüyen değişiklikler için SaaSApplicationIntegrations@service.microsoft.com ' de [Azure AD SSO tümleştirme ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com) e-posta gönderin ve mümkün olan en kısa sürede yanıt vereceğiz.
+Tüm yürüyen değişiklikler için SaaSApplicationIntegrations@service.microsoft.comadresinden [Azure AD SSO tümleştirme ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com) e-posta gönderin ve mümkün olan en kısa sürede yanıt vereceğiz.

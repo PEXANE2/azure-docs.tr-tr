@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB’de veritabanı aktarım hızını sağlama
-description: Azure Cosmos DB’de aktarım hızını veritabanı düzeyinde sağlamayı öğrenin
+description: Azure portal, CLı, PowerShell ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB veritabanı düzeyinde aktarım hızı sağlamayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575151"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873667"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında üretilen iş sağlama
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Cosmos DB bir veritabanında işleme sağlama açıklanmaktad
 
 ### <a id="portal-sql"></a>SQL (Core) API
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
@@ -67,7 +67,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
-### <a id="dotnet-cassandra"></a>Cassandra API’si
+### <a id="dotnet-cassandra"></a>Cassandra API
 Benzer komut, tüm CQL uyumlu sürücüler aracılığıyla yürütülebilir. 
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s
@@ -79,6 +79,6 @@ session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisio
 Azure Cosmos DB ' de sağlanan aktarım hızı hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
 * [Küresel olarak sağlanan verimlilik ölçeği](scaling-throughput.md)
-* [Kapsayıcılar ve veritabanları üzerinde üretilen iş sağlama](set-throughput.md)
+* [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Kapsayıcı için aktarım hızı sağlama](how-to-provision-container-throughput.md)
 * [Azure Cosmos DB'deki istek birimleri ve aktarım hızı](request-units.md)

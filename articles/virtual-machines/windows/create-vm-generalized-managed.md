@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037520"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841940"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Yönetilen görüntüden VM oluşturma
 
@@ -29,8 +29,7 @@ Yeni bir VM oluşturmadan önce, kaynak görüntü olarak kullanmak için [yöne
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 
-1. [Azure portalı](https://portal.azure.com) açın.
-2. Sol taraftaki menüden **tüm kaynaklar**' ı seçin. Görüntülerinizi kolayca bulmak için kaynakları **türe** göre sıralayabilirsiniz.
+1. Yönetilen bir görüntü bulmak için [Azure Portal](https://portal.azure.com) gidin. **Görüntüleri**arayın ve seçin.
 3. Listeden kullanmak istediğiniz görüntüyü seçin. Görüntüye **genel bakış** sayfası açılır.
 4. Menüden **VM oluştur** ' u seçin.
 5. Sanal makine bilgilerini girin. Buraya girilen Kullanıcı adı ve parola, sanal makinede oturum açmak için kullanılacaktır. Tamamlandığında **Tamam**' ı seçin. Yeni VM 'yi mevcut bir kaynak grubunda oluşturabilir veya yeni **Oluştur** ' u seçerek VM 'yi depolayacak yeni bir kaynak grubu oluşturabilirsiniz.
@@ -39,7 +38,7 @@ Yeni bir VM oluşturmadan önce, kaynak görüntü olarak kullanmak için [yöne
 8. Özet sayfasında, görüntü adınızın **özel bir görüntü**olarak listelendiğini görmeniz gerekir. Sanal makine dağıtımını başlatmak için **Tamam ' ı** seçin.
 
 
-## <a name="use-powershell"></a>PowerShell kullanma
+## <a name="use-powershell"></a>PowerShell'i kullanma
 
 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'i için Basitleştirilmiş parametre kümesini kullanarak BIR görüntüden VM oluşturmak için PowerShell 'i kullanabilirsiniz. Görüntünün, VM 'yi oluşturacağınız kaynak grubunda olması gerekir.
 

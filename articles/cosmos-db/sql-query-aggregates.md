@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB'de toplama işlevleri
-description: SQL toplama işlevi söz dizimi hakkında Azure Cosmos DB için öğrenin.
+title: Azure Cosmos DB içindeki toplama işlevleri
+description: SQL toplama işlevi sözdizimi, Azure Cosmos DB tarafından desteklenen toplama işlevlerinin türleri hakkında bilgi edinin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: a6937e9e811ea8e44eda6f2bcb5d2c7d78db4934
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342940"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871848"
 ---
-# <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB'de toplama işlevleri
+# <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki toplama işlevleri
 
-Toplama işlevleri, SELECT yan tümcesinde değerleri kümesi üzerinde bir hesaplama gerçekleştirmek ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu öğelerin sayısını döndürür `Families` kapsayıcı:
+Toplama işlevleri, SELECT yan tümcesindeki bir dizi değer üzerinde bir hesaplama gerçekleştirir ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu `Families` kapsayıcısı içindeki öğe sayısını döndürür:
 
 ## <a name="examples"></a>Örnekler
 
@@ -24,7 +24,7 @@ Toplama işlevleri, SELECT yan tümcesinde değerleri kümesi üzerinde bir hesa
     FROM Families f
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar:
 
 ```json
     [{
@@ -32,20 +32,20 @@ Sonuçlar şu şekildedir:
     }]
 ```
 
-Ayrıca, değer anahtar sözcüğü kullanarak toplama yalnızca skaler değer döndürebilir. Örneğin, aşağıdaki sorgu, tek bir sayı değerlerin sayısını döndürür:
+Ayrıca, VALUE anahtar sözcüğünü kullanarak toplamanın yalnızca skaler değerini de döndürebilirsiniz. Örneğin, aşağıdaki sorgu, tek bir sayı değerlerin sayısını döndürür:
 
 ```sql
     SELECT VALUE COUNT(1)
     FROM Families f
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar:
 
 ```json
     [ 2 ]
 ```
 
-Ayrıca, filtrelerle toplamalar birleştirebilirsiniz. Örneğin, aşağıdaki sorguyu adresi durumuna sahip öğelerin sayısını döndürür `WA`.
+Toplamaları filtreler ile de birleştirebilirsiniz. Örneğin, aşağıdaki sorgu `WA`adres durumuna sahip öğe sayısını döndürür.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -53,15 +53,15 @@ Ayrıca, filtrelerle toplamalar birleştirebilirsiniz. Örneğin, aşağıdaki s
     WHERE f.address.state = "WA"
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar:
 
 ```json
     [ 1 ]
 ```
 
-## <a name="types-of-aggregate-functions"></a>Toplama işlevleri türleri
+## <a name="types-of-aggregate-functions"></a>Toplama işlevlerinin türleri
 
-SQL API'si aşağıdaki toplama işlevleri destekler. Toplam ve ortalama sayısal değerlerle çalışır ve sayısı, en az ve en yüksek sayılar, dizeler, Boole değerleri ve null değerlere çalışır.
+SQL API aşağıdaki toplama işlevlerini destekler. Sayı, dize, Boolean ve null değerler üzerinde sayı, MINIMUM ve en fazla iş için toplam ve ortalama işlem.
 
 | İşlev | Açıklama |
 |-------|-------------|
@@ -71,13 +71,13 @@ SQL API'si aşağıdaki toplama işlevleri destekler. Toplam ve ortalama sayısa
 | MAX   | İfadedeki en büyük değeri döndürür. |
 | AVG   | İfadedeki değerlerin ortalamasını döndürür. |
 
-Ayrıca, bir dizi yineleme sonuçları üzerinde de toplayabilirsiniz.
+Ayrıca, bir dizi yinelemesi sonuçlarının üzerine toplayabilirsiniz.
 
 > [!NOTE]
-> Azure portalında Veri Gezgini içinde toplama sorguları kısmi sonuçlar üzerinde yalnızca bir sorgu sayfası toplanabilir. SDK, tüm sayfalara tek bir toplu değer oluşturur. Kod kullanarak toplama sorguları gerçekleştirmek için .NET SDK'sı 1.12.0, .NET Core SDK'sı 1.1.0 veya Java SDK'sı 1.9.5 gerekir veya üzeri.
+> Azure portal Veri Gezgini, toplama sorguları kısmi sonuçları yalnızca bir sorgu sayfasından toplayabilir. SDK tüm sayfalarda tek bir kümülatif değer üretir. Kodu kullanarak toplama sorguları gerçekleştirmek için .NET SDK 1.12.0, .NET Core SDK 1.1.0 veya Java SDK 1.9.5 ya da üstünü kullanmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB'ye giriş](introduction.md)
+- [Azure Cosmos DB giriş](introduction.md)
 - [Sistem işlevleri](sql-query-system-functions.md)
 - [Kullanıcı tanımlı işlevler](sql-query-udfs.md)

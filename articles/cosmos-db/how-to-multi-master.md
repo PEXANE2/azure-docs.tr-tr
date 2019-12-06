@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB çoklu yönetici yapılandırma
-description: Azure Cosmos DB ' de uygulamalarınızda birden çok yönetici yapılandırma hakkında bilgi edinin.
+description: Azure Cosmos DB 'de farklı SDK 'Ları kullanarak uygulamalarınız için çoklu yönetici yapılandırma hakkında bilgi edinin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093097"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873650"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çoklu yönetici yapılandırma
 
@@ -22,7 +22,7 @@ Birden fazla yazma bölgesi etkinken bir hesap oluşturulduktan sonra, Azure Cos
 
 ## <a id="netv2"></a>.NET SDK v2
 
-Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için olarak `UseMultipleWriteLocations` `true`ayarlayın. Ayrıca, uygulamanın `SetCurrentLocation` dağıtıldığı bölgeye ve Azure Cosmos DB nerede çoğaltıldığına ayarlanır:
+Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için `UseMultipleWriteLocations` `true`ayarlayın. Ayrıca, `SetCurrentLocation` uygulamanın dağıtıldığı bölgeye ve Azure Cosmos DB nerede çoğaltıldığından ayarlayın:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -36,7 +36,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a id="netv3"></a>.NET SDK V3
 
-Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, uygulamanın dağıtıldığı bölgeye `ApplicationRegion` ve Cosmos DB nerede çoğaltılacağı konuma ayarlayın:
+Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için `ApplicationRegion` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığından ayarlayın:
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -47,7 +47,7 @@ CosmosClient cosmosClient = new CosmosClient(
     });
 ```
 
-İsteğe bağlı olarak, aynı sonucu `CosmosClientBuilder` elde `WithApplicationRegion` etmek için ve kullanabilirsiniz:
+İsteğe bağlı olarak, `CosmosClientBuilder` ve `WithApplicationRegion` kullanarak aynı sonucu elde edebilirsiniz:
 
 ```csharp
 CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
@@ -57,7 +57,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ## <a id="java"></a>Java Async SDK’sı
 
-Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, ayarlayın `policy.setUsingMultipleWriteLocations(true)` `policy.setPreferredLocations` ve uygulamanın dağıtıldığı bölgeyi ve Cosmos DB nerede çoğaltıldığından ayarlayın:
+Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için `policy.setUsingMultipleWriteLocations(true)` ayarlayın ve `policy.setPreferredLocations` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltılacağı konuma ayarlayın:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -74,7 +74,7 @@ AsyncDocumentClient client =
 
 ## <a id="javascript"></a>Node. js, JavaScript ve TypeScript SDK 'Ları
 
-Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için olarak `connectionPolicy.UseMultipleWriteLocations` `true`ayarlayın. Ayrıca, uygulamanın `connectionPolicy.PreferredLocations` dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığına ayarlanır:
+Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için `connectionPolicy.UseMultipleWriteLocations` `true`ayarlayın. Ayrıca, `connectionPolicy.PreferredLocations` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığından ayarlayın:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -91,7 +91,7 @@ const client = new CosmosClient({
 
 ## <a id="python"></a>Python SDK’sı
 
-Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için olarak `connection_policy.UseMultipleWriteLocations` `true`ayarlayın. Ayrıca, uygulamanın `connection_policy.PreferredLocations` dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığına ayarlanır.
+Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için `connection_policy.UseMultipleWriteLocations` `true`ayarlayın. Ayrıca, `connection_policy.PreferredLocations` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığından ayarlayın.
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -114,4 +114,4 @@ Aşağıdaki makaleleri okuyun:
 * [Azure Cosmos DB tutarlılık, kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
 * [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans seçenekleri](consistency-levels-tradeoffs.md)
 * [Sağlanan aktarım hızı genel olarak ölçeklendiriliyor](scaling-throughput.md)
-* [Genel dağıtım: Temel bileşenler](global-dist-under-the-hood.md)
+* [Genel dağıtım: devlet](global-dist-under-the-hood.md)

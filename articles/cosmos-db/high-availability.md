@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB yüksek kullanılabilirlik
-description: Bu makalede, Azure Cosmos DB yüksek kullanılabilirlik sağladığını açıklanmaktadır
+description: Bu makalede, Azure Cosmos hesabıyla ilişkili tüm bölgelerde verileri saydam olarak çoğaltarak Azure Cosmos DB yüksek kullanılabilirliği nasıl sağladığını açıklamaktadır.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 1dab10592c8a34bc9df4425785e6dae95e44f219
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146656"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872103"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -34,8 +34,8 @@ Küresel olarak dağıtılmış bir veritabanı olarak, Cosmos DB aktarım hız�
 
 |İşlem türü  | Tek bölge |Çok bölgeli (tek bölge yazmaları)|Çok bölgeli (çok bölgeli yazma) |
 |---------|---------|---------|-------|
-|Yazar    | 99,99    |99,99   |99,999|
-|Okur     | 99,99    |99,999  |99,999|
+|Yazma    | 99,99    |99,99   |99,999|
+|Okuma     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > Uygulamada, sınırlı Eskime durumu, oturum, tutarlı ön ek ve nihai tutarlılık modelleriyle ilgili gerçek yazma kullanılabilirliği, yayımlanan SLA 'Lara göre önemli ölçüde daha yüksektir. Tüm tutarlılık seviyelerinin gerçek okuma kullanılabilirliği, yayımlanan SLA 'ların önemli ölçüde daha yüksektir.
@@ -56,9 +56,9 @@ Bölgesel kesintiler oldukça yaygındır ve Azure Cosmos DB veritabanınızın 
 - **Tek bir yazma bölgesi olan çok bölgeli hesaplar (okuma bölgesi kesintisi):** 
   * Okuma bölgesi kesintisi sırasında, bu hesaplar okuma ve yazma işlemleri için yüksek oranda kullanılabilir olarak kalır. 
   * Etkilenen bölgenin otomatik olarak yazma bölgesi bağlantısı kesilir ve çevrimdışı olarak işaretlenir. [Azure Cosmos DB SDK 'ları](sql-api-sdk-dotnet.md) , okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir. 
-  * Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir değilse, çağrılar otomatik olarak geçerli yazma bölgesine geri döner. 
+  * Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir durumda değilse çağrılar otomatik olarak geçerli yazma bölgesine döner. 
   * Okuma bölgesi kesintisi 'nı işlemek için uygulama kodunuzda değişiklik yapılması gerekmez. Sonuç olarak, etkilenen bölge yeniden çevrimiçi olduğunda, daha önce etkilenen okuma bölgesi otomatik olarak geçerli yazma bölgesiyle eşitlenir ve okuma isteklerine sunulacak şekilde yeniden kullanılabilir. 
-  * Sonraki okumalar, uygulama kodunuzda herhangi bir değişiklik gerektirmeden kurtarılan bölgeye yönlendirilir. Daha önce başarısız olan bir bölgenin yük devretmesi ve yeniden katılması sırasında, uyumluluk garantisi Cosmos DB tarafından kabul edilir.
+  * Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin yük devretmesi ve yeniden katılması sırasında, uyumluluk garantisi Cosmos DB tarafından kabul edilir.
 
 - Tek bölgeli hesaplar, bölgesel kesintiden sonraki kullanılabilirliği kaybedebilir. Her zaman yüksek kullanılabilirlik sağlamak için Cosmos hesabınızla **en az iki bölge** (tercihen, en az iki yazma bölgesi) ayarlamanız önerilir.
 
@@ -76,9 +76,9 @@ Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret
 
 Bu özellik aşağıdaki Azure bölgelerinde kullanılabilir:
 
-* Birleşik Krallık Güney
+* Birleşik Krallık, Güney
 * Güneydoğu Asya 
-* East US
+* Doğu ABD
 * Doğu ABD 2 
 * Orta ABD
 * Batı Avrupa
@@ -91,8 +91,8 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 
 |KPI  |Kullanılabilirlik Alanları olmayan tek bölge (AZ değil)  |Kullanılabilirlik Alanları tek bölge (AZ)  |Kullanılabilirlik Alanları (AZ, 2 bölge) ile çok bölgeli yazma: en önerilen ayar |
 |---------|---------|---------|---------|
-|Kullanılabilirlik SLA 'Sı yaz     |   %99,99      |    %99,99     |  99.999%  |
-|Kullanılabilirlik SLA 'sını oku   |   %99,99      |   %99,99      |  99.999%       |
+|Kullanılabilirlik SLA 'Sı yaz     |   %99,99      |    %99,99     |  %99,999  |
+|Kullanılabilirlik SLA 'sını oku   |   %99,99      |   %99,99      |  %99,999       |
 |Fiyat  |  Tek bölge faturalandırma oranı |  Tek bölge kullanılabilirlik alanı faturalandırma oranı |  Çok bölgeli fatura ücreti       |
 |Bölge arızaları – veri kaybı   |  Veri kaybı  |   Veri kaybı yok |   Veri kaybı yok  |
 |Bölge arızaları – kullanılabilirlik |  Kullanılabilirlik kaybı  | Kullanılabilirlik kaybı yok  |  Kullanılabilirlik kaybı yok  |
@@ -100,13 +100,13 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 |Yazma gecikme süresi    |   Çapraz bölge   |  Çapraz bölge    |   Düşük   |
 |Bölgesel kesinti – veri kaybı    |   Veri kaybı      |  Veri kaybı       |   Veri kaybı <br/><br/> Birden çok ana ve birden fazla bölge ile sınırlı stalet tutarlılığı kullanılırken, veri kaybı, hesabınızda yapılandırılan sınırlı stalet ile sınırlıdır. <br/><br/> Birden çok bölgeyle güçlü tutarlılık yapılandırılarak, bölgesel kesinti sırasında veri kaybı önlenebilir. Bu seçenek, kullanılabilirliği ve performansı etkileyen tüm dengelerle birlikte gelir.      |
 |Bölgesel kesinti – kullanılabilirlik  |  Kullanılabilirlik kaybı       |  Kullanılabilirlik kaybı       |  Kullanılabilirlik kaybı yok  |
-|Aktarım hızı    |  X RU/sn sağlanan aktarım hızı      |  X RU/sn sağlanan aktarım hızı       |  2X/sn sağlanan aktarım hızı <br/><br/> İki bölge olduğundan, bu yapılandırma modu Kullanılabilirlik Alanları tek bir bölgeyle karşılaştırıldığında üretilen iş miktarı sayısını iki kez gerektirir.   |
+|İşleme    |  X RU/sn sağlanan aktarım hızı      |  X RU/sn sağlanan aktarım hızı       |  2X/sn sağlanan aktarım hızı <br/><br/> İki bölge olduğundan, bu yapılandırma modu Kullanılabilirlik Alanları tek bir bölgeyle karşılaştırıldığında üretilen iş miktarı sayısını iki kez gerektirir.   |
 
 > [!NOTE] 
 > Çok bölgeli bir Azure Cosmos hesabı için kullanılabilirlik alanı desteğini etkinleştirmek üzere, hesabın çoklu yöneticili yazmaları etkinleştirilmiş olması gerekir.
 
 
-Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` `true` bayrağını belirli bir konum için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
+Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için, `isZoneRedundant` bayrağını belirli bir konum için `true` ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
 
 ```powershell
 $locations = @( 

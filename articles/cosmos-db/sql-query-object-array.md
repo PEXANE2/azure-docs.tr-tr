@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB diziler ve nesnelerle çalışma
-description: Azure Cosmos DB için dizi ve nesne oluşturma SQL sözdizimi hakkında bilgi edinin.
+description: Azure Cosmos DB diziler ve nesneler oluşturmak için SQL sözdizimini öğrenin. Bu makalede, dizi nesnelerinde işlemler gerçekleştirmek için bazı örnekler de sağlanmaktadır
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003931"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870930"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB diziler ve nesnelerle çalışma
 
 Azure Cosmos DB SQL API 'sinin temel bir özelliği dizi ve nesne oluşturma 'dır.
 
-## <a name="arrays"></a>Dizi
+## <a name="arrays"></a>Diziler
 
 Aşağıdaki örnekte gösterildiği gibi diziler oluşturabilirsiniz:
 
@@ -26,7 +26,7 @@ Aşağıdaki örnekte gösterildiği gibi diziler oluşturabilirsiniz:
     FROM Families f
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -61,7 +61,7 @@ SQL API 'si, FROM kaynağında [ın anahtar sözcüğüyle](sql-query-keywords.m
     FROM Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -90,14 +90,14 @@ Sonuçlar şunlardır:
     ]
 ```
 
-Sonraki sorgu, `children` `Families` kapsayıcıda yineleme gerçekleştirir. Çıkış dizisi, önceki sorgudan farklı. Bu örnek, `children`sonuçları böler ve sonuçları tek bir diziye düzleştirir:  
+Sonraki sorgu, `Families` kapsayıcısında `children` üzerinde yineleme gerçekleştirir. Çıkış dizisi, önceki sorgudan farklı. Bu örnek `children`ayırır ve sonuçları tek bir diziye düzleştirir:  
 
 ```sql
     SELECT *
     FROM c IN Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -130,7 +130,7 @@ Aşağıdaki örnekte gösterildiği gibi, her bir dizi girişi üzerinde daha f
     WHERE c.grade = 8
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Ayrıca, bir dizi yinelemesinin sonucunu toplayabilirsiniz. Örneğin, aşağıd
     FROM child IN Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [

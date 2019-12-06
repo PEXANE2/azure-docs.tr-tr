@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici çalışma kitapları görselleştirmeleriyle etkileşimli raporlar oluşturma | Microsoft docs
+title: Azure Izleyici çalışma kitabı görselleştirmeleri
 description: Metin, grafikler, ızgaralar, ağaçlar ve grafikler dahil olmak üzere tüm Azure Izleyici çalışma kitabı görselleştirme bileşenleri hakkında bilgi edinin.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165062"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872800"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Izleyici çalışma kitabı görselleştirmeleri
 
@@ -41,7 +41,7 @@ Metin, tam biçimlendirme denetimi sağlayan bir Markaşağı denetimi aracılı
 > [!TIP]
 > Farklı biçimlendirme seçenekleri hakkında bilgi edinmek için bu [Markaşağı](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) ile bu sayfayı kullanın.
 
-## <a name="charts"></a>grafik
+## <a name="charts"></a>Grafikler
 
 Çalışma kitapları, izleme verilerinin grafik olarak sunulmasını sağlar. Desteklenen grafik türleri çizgi, çubuk, çubuk kategorik, alan, dağılım çizimleri, pasta ve saati içerir. Yazarlar, grafiğin yüksekliğini, genişliğini, renk paletini, göstergeyi, başlıkları, veri içermeyen iletiyi ve vb. özelleştirmeyi seçebilirler.
 
@@ -96,7 +96,7 @@ Metin, tam biçimlendirme denetimi sağlayan bir Markaşağı denetimi aracılı
 | `Size` | Denetimin dikey boyutu | Küçük, orta veya büyük |
 | `Color palette` | Grafikte kullanılacak renk paleti. `Split by` parametresi kullanılırsa yoksayıldı | Mavi, yeşil, kırmızı, vb. |
 
-## <a name="grids"></a>Larına
+## <a name="grids"></a>Kılavuzları
 
 Kılavuzlar veya tablolar, verileri kullanıcılara sunmak için yaygın bir yoldur. Çalışma kitapları kullanıcıların, raporları için zengin bir kullanıcı arabirimi sağlamak üzere kılavuzun sütunlarını tek tek tarzlarına olanak tanır.
 
@@ -115,7 +115,7 @@ Aşağıdaki örnekte, simgeler, helemaps ve Spark-çubuklarını birleştiren v
 
 ![Günlük tabanlı kılavuz sorgusunun ekran görüntüsü](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Parça
+## <a name="tiles"></a>Tiles
 
 Kutucuklar, çalışma kitaplarında Özet verileri sunmak için çok faydalı bir yoldur. Aşağıdaki görüntüde, ayrıntılı bir kılavuzun en üstünde yer alan, uygulama düzeyi özetinin yaygın kullanım durumu gösterilmektedir.
 
@@ -197,7 +197,7 @@ Aşağıdaki örnekte, ağaç ızgarası olarak görselleştirilen kapsayıcı s
 | `Show the expander on` | Ağaç genişleticisindeki gösterileceği sütun. Ağaç kılavuzlarında çok okunabilir olmadıklarından kimlik ve üst kimlik alanlarını gizleyebilmek yaygındır. Bunun yerine, genişletici, varlığın adı gibi daha okunabilir bir değere sahip bir alanda görünür |
 | `Expand the top level of the tree` | İşaretliyse, ağaç Kılavuzu en üst düzeyde genişletilir. Varsayılan olarak daha fazla bilgi göstermek istiyorsanız kullanışlıdır |
 
-## <a name="graphs"></a>Performansının
+## <a name="graphs"></a>Grafikler
 
 Çalışma kitapları, izleme varlıkları arasındaki ilişkileri göstermek için günlüklerdeki verileri temel alarak rastgele grafikleri görselleştirmeyi destekler.
 

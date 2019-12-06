@@ -9,19 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 12726a1ad9b04bdfe2cd279d36a696bb011e4122
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803519"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845357"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -62,9 +60,9 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | access_token |
 | account_type |
 | acr |
-| Aktör |
+| actor |
 | actortoken |
-| AIO 'yu |
+| aio |
 | AltSecId |
 | AMR |
 | app_chain |
@@ -72,11 +70,11 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | app_res |
 | appctx |
 | appctxsender |
-| AppID |
+| appid |
 | appidadcr |
-| onay |
+| assertion |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -84,18 +82,18 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | azpacr |
 | c_hash |
 | ca_enf |
-| bilgisi |
+| cc |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
 | CNF |
-| Kodudur |
+| kod |
 | denetimler |
 | credential_keys |
-| 'nin |
+| csr |
 | csr_type |
-| DeviceID |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -103,10 +101,10 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | e-posta |
 | endpoint |
 | enfpolids |
-| Exp |
+| exp |
 | expires_on |
 | grant_type |
-| Çıkarılamıyor |
+| graph |
 | group_sids |
 | grupları |
 | hasgroups |
@@ -119,14 +117,14 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| IAT |
-| IdentityProvider |
-| IDP |
+| iat |
+| identityprovider |
+| idp |
 | in_corp |
-| Instance |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
-| ğe |
+| iss |
 | jwk |
 | key_id |
 | key_type |
@@ -136,11 +134,11 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | mdm_compliance_url |
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
-| NameID |
+| nameid |
 | NBF |
 | netbios_name |
 | nonce |
-| id |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -152,36 +150,36 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| 'i |
+| puid |
 | pwd_exp |
 | pwd_url |
-| isteğinde |
+| redirect_uri |
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| Kaynak |
-| Rolü |
+| resource |
+| role |
 | roles |
 | scope |
-| 'yi |
-| SID |
-| İmza |
+| scp |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| alt |
+| sub |
 | tbıd |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| değeri |
+| tid |
 | Tokenautosize etkin |
 | trustedfortemsilciyi |
 | unique_name |
-| 'le |
+| upn |
 | user_setting_sync_url |
 | kullanıcı adı |
-| UTI |
+| uti |
 | ver |
 | verified_primary_email |
 | verified_secondary_email |
@@ -289,19 +287,19 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 | Kaynak | Kimlik | Açıklama |
 |-----|-----|-----|
-| Kullanıcı | Soyadı | Aile adı |
+| Kullanıcı | Soyadı | Aile Adı |
 | Kullanıcı | givenName | Verilen Ad |
-| Kullanıcı | DisplayName | Görünen Ad |
-| Kullanıcı | uzantının | Uzantının |
-| Kullanıcı | - | E-posta adresi |
+| Kullanıcı | displayName | Görünen Ad |
+| Kullanıcı | uzantının | ObjectID |
+| Kullanıcı | posta | E-posta Adresi |
 | Kullanıcı | userPrincipalName | Kullanıcı Asıl Adı |
-| Kullanıcı | Bölüme|Bölüm|
+| Kullanıcı | Bölüm|Bölüm|
 | Kullanıcı | onpremisessamaccountname | Şirket içi SAM hesap adı |
 | Kullanıcı | NetbiosName| NetBIOS adı |
 | Kullanıcı | DN | DNS etki alanı adı |
 | Kullanıcı | onpremisesecurityidentifier | Şirket içi güvenlik tanımlayıcısı |
 | Kullanıcı | tadı| Kuruluş Adı |
-| Kullanıcı | StreetAddress | Sokak adresi |
+| Kullanıcı | StreetAddress | Açık adres |
 | Kullanıcı | PostalCode | Posta kodu |
 | Kullanıcı | preferredlanguange | Tercih edilen dil |
 | Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |
@@ -321,15 +319,15 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | extensionattribute13 | Uzantı özniteliği 13 |
 | Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
 | Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
-| Kullanıcı | Diğer posta | Diğer posta |
-| Kullanıcı | Ülke | Ülke |
+| Kullanıcı | diğer posta | Diğer posta |
+| Kullanıcı | ülke | Ülke |
 | Kullanıcı | city | Şehir |
 | Kullanıcı | durum | Eyalet |
 | Kullanıcı | JobTitle | İş Unvanı |
-| Kullanıcı | çalışan | Çalışan KIMLIĞI |
+| Kullanıcı | EmployeeID | Çalışan Kimlik Numarası |
 | Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
-| uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
-| uygulama, kaynak, hedef kitle | objected | Uzantının |
+| uygulama, kaynak, hedef kitle | displayName | Görünen Ad |
+| uygulama, kaynak, hedef kitle | objected | ObjectID |
 | uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi |
 
@@ -364,7 +362,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 |Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
 |Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: "foo@bar.com", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|-|outputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: "foo@bar.com", outputClaim: "foo" sonucunu elde ediyor. \@ işareti yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
+|ExtractMailPrefix|posta|outputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: "foo@bar.com", outputClaim: "foo" sonucunu elde ediyor. \@ işareti yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
 
 **Inputclaim:** Bir talep şeması girdisinden bir dönüşüme veri geçirmek için ınputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
 
@@ -389,10 +387,10 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 |Kaynak|Kimlik|Açıklama|
 |-----|-----|-----|
-| Kullanıcı | -|E-posta adresi|
+| Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
 | Kullanıcı | onpremisessamaccountname|Şirket Içi Sam hesap adı|
-| Kullanıcı | çalışan|Çalışan KIMLIĞI|
+| Kullanıcı | EmployeeID|Çalışan Kimlik Numarası|
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
 | Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
 | Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |

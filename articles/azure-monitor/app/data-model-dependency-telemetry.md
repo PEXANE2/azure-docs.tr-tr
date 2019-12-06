@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Telemetri veri modeli-bağımlılık telemetrisi | Microsoft Docs
+title: Azure Izleyici Application Insights bağımlılık veri modeli
 description: Bağımlılık telemetri için Application Insights veri modeli
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: e0923c20b11aa02f380af1faa6766d2346ad1fb2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677443"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872647"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Bağımlılık telemetrisi: Application Insights veri modeli
 
@@ -41,7 +41,7 @@ Bağımlılık çağrısının hedef sitesi. Örnek olarak sunucu adı, ana bilg
 
 ## <a name="duration"></a>Süre
 
-Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM`. @No__t_0 günden az olmalıdır.
+Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM`. `1000` günden az olmalıdır.
 
 ## <a name="result-code"></a>Sonuç kodu
 

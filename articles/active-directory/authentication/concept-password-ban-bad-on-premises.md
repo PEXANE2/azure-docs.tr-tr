@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/18/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200221"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848655"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Windows Server için Azure AD parola korumasını zorlama Active Directory
 
@@ -43,7 +43,7 @@ Azure AD parola koruması DC Aracısı yazılımı yalnızca bir etki alanı den
 
 Birçok kuruluş, tam bir dağıtım yapmadan önce etki alanı denetleyicilerinin bir alt kümesinde Azure AD parola korumasından dikkatli bir test yapmak istiyor. Azure AD parola koruması, kısmi dağıtımı destekler, bu, etki alanındaki diğer DC 'Ler DC Aracısı yazılımının yüklü olmadığı durumlarda bile, belirli bir DC 'deki DC Aracısı yazılımı parolaları etkin bir şekilde doğrulayacaktır. Bu türün kısmi dağıtımları güvenli DEĞILDIR ve test amaçları için dışında önerilmez.
 
-## <a name="architectural-diagram"></a>Mimari diyagram
+## <a name="architectural-diagram"></a>Mimari şema
 
 Azure AD parola korumasını şirket içi Active Directory ortamında dağıtmadan önce, temel alınan tasarım ve işlev kavramlarını anlamak önemlidir. Aşağıdaki diyagramda, parola koruma bileşenlerinin birlikte nasıl çalıştığı gösterilmektedir:
 
@@ -87,7 +87,7 @@ Azure AD parola korumasının bir Active Directory ormanında dağıtılması i�
 
 Active Directory ormanı ve bir orman içindeki tüm dağıtılan proxy hizmetleri aynı kiracıya kaydedilmelidir. Bu ormanda farklı Azure AD kiracılarına Kaydolmakta olan bir Active Directory ormanı veya herhangi bir proxy hizmeti olması desteklenmez. Yanlış yapılandırılmış bir dağıtımın belirtileri, parola ilkelerini indirimeme ' yı içerir.
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndirin
 
 Azure AD parola koruması için gereken iki aracı yükleyicisi, [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57071)' nden edinilebilir.
 

@@ -2,33 +2,29 @@
 title: Azure AD 'de imzalama anahtarı geçişi
 description: Bu makalede Azure Active Directory için imzalama anahtarı aktarma en iyi yöntemleri açıklanmaktadır
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f20a10f7c6f98b352e8a2d794fabc3b6b3b57319
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835301"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844660"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 'da anahtar geçişi imzalanıyor
 Bu makalede, güvenlik belirteçlerini imzalamak için Azure Active Directory (Azure AD) ' de kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Azure AD kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir veya düzenli bir el ile geçiş işlemi oluşturabilir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 'de imzalama anahtarlarına genel bakış
-Azure AD, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartlarına göre oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu, aşağıdaki şekilde işe yarar: Azure AD, ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Azure AD kullanan bir uygulamada oturum açtığında, Azure AD Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Azure AD tarafından imzalanır. Belirtecin geçerli olduğunu ve Azure AD 'den geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesinde](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-besbir federasyonda bulunan Azure AD tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir [ meta veri belgesi](azure-ad-federation-metadata.md).
+Azure AD, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartlarına göre oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde geçerlidir: Azure AD ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Azure AD kullanan bir uygulamada oturum açtığında, Azure AD Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Azure AD tarafından imzalanır. Belirtecin geçerli olduğunu ve Azure AD 'den geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-besbir [Federasyon meta veri BELGESINDE](azure-ad-federation-metadata.md)bulunan Azure AD tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir.
 
 Güvenlik nedeniyle, Azure AD 'nin imzalama anahtarı düzenli olarak kaydedilir ve acil durumda bir acil durum durumunda hemen üzerinden alınabilir. Azure AD ile tümleştirilen herhangi bir uygulama, ne sıklıkta gerçekleşebileceğini önemli bir anahtar geçişi olayını işleyecek şekilde hazırlanmalıdır. Yoksa ve uygulamanız bir belirteçte imzayı doğrulamak için bir süre sonu anahtarını kullanmayı denerse, oturum açma isteği başarısız olur.
 
@@ -264,7 +260,7 @@ Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenece
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. **Global.asax.cs** içindeki **Application_Start ()** yönteminde, belirtilen şekilde **refreshvalidationsettings ()** yöntemini çağırın:
+4. **Global.asax.cs** içinde gösterildiği gibi, **Application_Start ()** yönteminde **refreshvalidationsettings ()** yöntemini çağırın:
    ```
    protected void Application_Start()
    {
@@ -278,7 +274,7 @@ Bu adımları izledikten sonra, uygulamanızın Web. config dosyası, en son ana
 
 Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
-1. Uygulamanızın yukarıdaki kodu kullandığını doğruladıktan sonra, **Web. config** dosyasını açın ve özellikle aşağıdaki birkaç satırı arayarak  **\<ıssuernameregstreams >** bloğuna gidin:
+1. Uygulamanızın yukarıdaki kodu kullandığını doğruladıktan sonra, **Web. config** dosyasını açın ve özellikle aşağıdaki birkaç satırı arayan **\<ıssuernameregstreams >** bloğuna gidin:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -286,8 +282,8 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. **Parmak izi Ekle="">ayarında,herhangibirkarakterifarklıbirkarakterledeğiştirerekparmakizideğerinideğiştirin.\<** **Web. config** dosyasını kaydedin.
-3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Azure AD makalesini kullanarak Web uygulamanıza oturum açma eklemeyi](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirerek ve inceleyerek uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+2. **\<parmak izi Ekle = "" >** ayarı içinde, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web.config** dosyasını kaydedin.
+3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Azure AD makalesini kullanarak Web uygulamanıza oturum açma ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirme ve İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>.NET 3,5 için kaynakları koruyan ve Visual Studio 2008 ya da 2010 ve Windows Identity Foundation (WıF) v 1.0 ile oluşturulan Web uygulamaları
 WıF v 1.0 üzerinde bir uygulama oluşturduysanız, yeni bir anahtar kullanmak için uygulamanızın yapılandırmasını otomatik olarak yenilemek üzere bir sağlanmayan mekanizma yoktur.
@@ -306,11 +302,11 @@ Yapılandırmanızı güncelleştirmek için FedUtil kullanma yönergeleri:
 ### <a name="other"></a>Diğer kitaplıkları kullanan veya desteklenen protokollerden herhangi birini uygulayan Web uygulamaları/API 'Leri, kaynakları koruyan
 Başka bir kitaplık kullanıyorsanız veya desteklenen protokollerden herhangi birini el ile uyguladıysanız, anahtarın OpenID Connect Discovery belgesinden veya Federasyon meta verilerinden alındığından emin olmak için kitaplığı veya uygulamanızı gözden geçirmeniz gerekir belgedeki. Bunu kontrol etmenin bir yolu, OpenID bulgu belgesine veya Federasyon meta veri belgesine yapılan çağrılar için kodunuzda veya kitaplığın kodunda bir arama yapmak.
 
-Bu anahtar, uygulamanızda bir yere veya sabit kodlanmış olarak depolanırsa, bu kılavuz belgesinin sonundaki yönergelere göre el ile bir rollover gerçekleştirerek, anahtarı el ile alabilir ve uygun şekilde güncelleştirebilirsiniz. Azure AD 'nin geçiş temposunda arttığı veya bir acil durum nedeniyle daha fazla kesintiler ve yük devretme yapmaktan kaçınmak için uygulamanızı geliştirmenin, bu makaledeki yaklaşımlardan herhangi birini kullanarak **otomatik geçişi desteklemesini** öneririz. bant dışı geçiş.
+Bu anahtar, uygulamanızda bir yere veya sabit kodlanmış olarak depolanırsa, bu kılavuz belgesinin sonundaki yönergelere göre el ile bir rollover gerçekleştirerek, anahtarı el ile alabilir ve uygun şekilde güncelleştirebilirsiniz. Azure AD 'nin rollover temposunda yükseltireceği veya bir acil durum bant dışı geçişe sahip olması durumunda, gelecekteki kesintiler ve yükün önlenmesi için bu makaledeki yaklaşımlardan herhangi birini kullanarak **otomatik geçişi desteklemeye yönelik uygulamanızı geliştirmektir** .
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Uygulamanızı, etkilenip etkilenmediğine yönelik test etme
 Komut dosyalarını indirerek ve [Bu GitHub deposundaki](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) yönergeleri izleyerek uygulamanızın otomatik anahtar geçişi 'ni destekleyip desteklemediğini doğrulayabilirsiniz.
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Uygulamanız otomatik geçişi desteklemiyorsa el ile geçiş gerçekleştirme
-Uygulamanız otomatik geçişi desteklemiyorsa , Azure AD 'nin imzalama anahtarlarını düzenli olarak izleyen ve buna uygun bir el ile geçiş gerçekleştiren bir işlem oluşturmanız gerekir. [Bu GitHub deposu](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) bunun nasıl yapılacağı hakkında betikler ve yönergeler içerir.
+Uygulamanız otomatik **geçişi desteklemiyorsa,** Azure AD 'nin imzalama anahtarlarını düzenli olarak izleyen ve buna uygun bir el ile geçiş gerçekleştiren bir işlem oluşturmanız gerekir. [Bu GitHub deposu](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) bunun nasıl yapılacağı hakkında betikler ve yönergeler içerir.
 

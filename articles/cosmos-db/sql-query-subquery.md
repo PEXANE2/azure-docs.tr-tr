@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için SQL alt sorguları
-description: SQL alt sorguları ve bunların ortak kullanım durumları hakkında bilgi edinin Azure Cosmos DB
+description: Azure Cosmos DB ' de SQL alt sorguları ve bunların ortak kullanım durumları ve farklı alt sorgu türleri hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003481"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870573"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB için SQL alt sorgu örnekleri
 
@@ -23,16 +23,16 @@ Bu makalede, Azure Cosmos DB 'de SQL alt sorguları ve bunların ortak kullanım
 
 İki ana alt sorgu türü vardır:
 
-* **Bağıntılı**: Dış sorgudaki değerlere başvuran bir alt sorgu. Alt sorgu, dış sorgunun işlediği her satır için bir kez değerlendirilir.
-* **Bağıntılı olmayan**: Dış sorgudan bağımsız bir alt sorgu. Dış sorguya bağlı kalmadan kendi üzerinde çalıştırılabilir.
+* **Bağıntılı**: dış sorgudan değerlere başvuran bir alt sorgu. Alt sorgu, dış sorgunun işlediği her satır için bir kez değerlendirilir.
+* **Bağıntılı olmayan**: dış sorgudan bağımsız bir alt sorgu. Dış sorguya bağlı kalmadan kendi üzerinde çalıştırılabilir.
 
 > [!NOTE]
 > Azure Cosmos DB yalnızca bağıntılı alt sorguları destekler.
 
 Alt sorgular, geri dönedikleri satır ve sütun sayısına göre daha fazla sınıflandırılabilir. Üç tür vardır:
-* **Tablo**: Birden çok satırı ve birden çok sütunu döndürür.
-* **Çoklu değer**: Birden çok satırı ve tek bir sütunu döndürür.
-* **Skaler**: Tek bir satırı ve tek bir sütunu döndürür.
+* **Tablo**: birden çok satırı ve birden çok sütunu döndürür.
+* **Çoklu değer**: birden çok satırı ve tek bir sütunu döndürür.
+* **Skaler**: tek bir satırı ve tek bir sütunu döndürür.
 
 Azure Cosmos DB içindeki SQL sorguları her zaman tek bir sütun (basit bir değer ya da karmaşık bir belge) döndürür. Bu nedenle, Azure Cosmos DB yalnızca çok değerli ve skaler alt sorgular geçerlidir. Yalnızca FROM yan tümcesinde ilişkisel ifade olarak bir çok değerli alt sorgu kullanabilirsiniz. Skalar bir alt sorguyu SELECT veya WHERE yan tümcesinde skaler bir ifade olarak veya FROM yan tümcesinde ilişkisel bir ifade olarak kullanabilirsiniz.
 
@@ -47,7 +47,7 @@ Azure Cosmos DB içindeki SQL sorguları her zaman tek bir sütun (basit bir de�
 
 Birden çok değerli alt sorgular WHERE yan tümcesindeki tüm çapraz birleşimler yerine her bir SELECT-many ifadesinden sonra gelen koşulları ileterek BIRLEŞTIRME ifadelerini iyileştirebilirler.
 
-Aşağıdaki sorguyu göz önünde bulundurun:
+Şu sorguyu inceleyin:
 
 ```sql
 SELECT Count(1) AS Count
@@ -79,7 +79,7 @@ Etiketler dizisindeki yalnızca bir öğe filtreyle eşleşen ve hem nutristalar
 
 Alt sorgular, Kullanıcı tanımlı işlevler (UDF 'ler), karmaşık dizeler veya aritmetik ifadeler gibi pahalı ifadelerle sorguları iyileştirmenize yardımcı olabilir. İfadeyi bir kez değerlendirmek ve çok sayıda başvuru yapmak için bir JOIN ifadesiyle birlikte bir alt sorgu kullanabilirsiniz.
 
-Aşağıdaki sorgu UDF `GetMaxNutritionValue` 'i iki kez çalıştırır:
+Aşağıdaki sorgu UDF `GetMaxNutritionValue` iki kez çalıştırır:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-Yaklaşım UDF 'ler ile sınırlı değildir. Potansiyel olarak pahalı olan herhangi bir ifade için geçerlidir. Örneğin, matematik işleviyle `avg`aynı yaklaşımı kullanabilirsiniz:
+Yaklaşım UDF 'ler ile sınırlı değildir. Potansiyel olarak pahalı olan herhangi bir ifade için geçerlidir. Örneğin, matematik işleviyle `avg`aynı yaklaşımı alabilirsiniz:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -124,24 +124,24 @@ Genellikle ölçü birimleri veya ülke kodu gibi nadiren değişiklik yapan sta
 
 Örneğin, bu başvuru verileri kümesini göz önünde bulundurun:
 
-| **Birim** | **Name**            | **Çarpanını** | **Taban birim** |
+| **Birim** | **Adı**            | **Çarpanını** | **Taban birim** |
 | -------- | ------------------- | -------------- | ------------- |
-| denetimini       | Nanogram            | 1,00 E-09       | Durumu          |
-| µg       | Mikro gram           | 1,00 E-06       | Durumu          |
-| mg       | Miligram           | 1,00 E-03       | Durumu          |
-| G        | Durumu                | 1,00 E + 00       | Durumu          |
-| başlayarak       | Kilogram            | 1,00 E + 03       | Durumu          |
-| mg       | Megagram            | 1,00 E + 06       | Durumu          |
-| Gg       | Gigagram            | 1,00 E + 09       | Durumu          |
-| nJ       | Nanojoule           | 1,00 E-09       | Joule         |
-| µJ       | Mikro Joule          | 1,00 E-06       | Joule         |
-| mJ       | Milijoule          | 1,00 E-03       | Joule         |
-| K        | Joule               | 1,00 E + 00       | Joule         |
-| kJ       | Kilojoule           | 1,00 E + 03       | Joule         |
-| MJ       | Megajoule           | 1,00 E + 06       | Joule         |
-| GJ       | Gigajoule           | 1,00 E + 09       | Joule         |
-| yükseltil      | Calorie             | 1,00 E + 00       | Calorie       |
-| kcal     | Calorie             | 1,00 E + 03       | Calorie       |
+| denetimini       | Nanogram            | 1,00 e-09       | Durumu          |
+| µg       | Mikro gram           | 1,00 e-06       | Durumu          |
+| mg       | Miligram           | 1,00 e-03       | Durumu          |
+| G        | Durumu                | 1,00 e + 00       | Durumu          |
+| başlayarak       | Kilogram            | 1,00 e + 03       | Durumu          |
+| Mg       | Megagram            | 1,00 e + 06       | Durumu          |
+| Gg       | Gigagram            | 1,00 e + 09       | Durumu          |
+| nJ       | Nanojoule           | 1,00 e-09       | Joule         |
+| µJ       | Mikro Joule          | 1,00 e-06       | Joule         |
+| mJ       | Milijoule          | 1,00 e-03       | Joule         |
+| J        | Joule               | 1,00 e + 00       | Joule         |
+| kJ       | Kilojoule           | 1,00 e + 03       | Joule         |
+| MJ       | Megajoule           | 1,00 e + 06       | Joule         |
+| GJ       | Gigajoule           | 1,00 e + 09       | Joule         |
+| yükseltil      | Calorie             | 1,00 e + 00       | Calorie       |
+| kcal     | Calorie             | 1,00 e + 03       | Calorie       |
 | IU       | Uluslararası birimler |                |               |
 
 
@@ -366,11 +366,11 @@ SELECT EXISTS (SELECT VALUE undefined)
 SELECT EXISTS (SELECT undefined) 
 ```
 
-Alt sorgu, bir nesne içindeki seçili listedeki değerlerin listesini kapsar. Seçili listede değer yoksa, alt sorgu tek '{}' değerini döndürür. Bu değer tanımlanmıştır, bu yüzden var değeri true olarak değerlendirilir.
+Alt sorgu, bir nesne içindeki seçili listedeki değerlerin listesini kapsar. Seçili listede değer yoksa, alt sorgu tek bir '{}' değeri döndürür. Bu değer tanımlanmıştır, bu yüzden var değeri true olarak değerlendirilir.
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Örnek: Yeniden yazma ARRAY_CONTAINS ve JOIN var
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Örnek: ARRAY_CONTAINS yeniden yazma ve JOIN as EXISTS
 
-Yaygın kullanım durumu ARRAY_CONTAINS, bir belgeyi dizideki bir öğenin varlığına göre filtrelemeye yönelik olur. Bu durumda, Etiketler dizisinin "turuncu" adlı bir öğe içerip içermeyeceği denetleniyoruz.
+ARRAY_CONTAINS yaygın kullanım durumu, bir belgeyi dizideki bir öğenin varlığına göre filtrelemenize olanak sağlar. Bu durumda, Etiketler dizisinin "turuncu" adlı bir öğe içerip içermeyeceği denetleniyoruz.
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Ayrıca, ARRAY_CONTAINS yalnızca bir değerin dizideki herhangi bir öğeye eşit olup olmadığını kontrol edebilir. Dizi özelliklerinde daha karmaşık filtrelere ihtiyacınız varsa JOIN ' i kullanın.
+Ayrıca ARRAY_CONTAINS, yalnızca bir değerin dizideki herhangi bir öğeye eşit olup olmadığını kontrol edebilir. Dizi özelliklerinde daha karmaşık filtrelere ihtiyacınız varsa JOIN ' i kullanın.
 
-Dizideki birimlere ve `nutritionValue` özelliklere göre filtreleyen aşağıdaki sorguyu göz önünde bulundurun: 
+Dizideki birimlere ve `nutritionValue` özelliklerine göre filtreleyen aşağıdaki sorguyu göz önünde bulundurun: 
 
 ```sql
 SELECT VALUE c.description

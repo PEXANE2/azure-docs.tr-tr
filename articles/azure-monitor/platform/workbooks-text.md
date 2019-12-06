@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici çalışma kitapları ve metin parametreleri ile etkileşimli raporlar oluşturma | Microsoft docs
+title: Azure Izleyici çalışma kitapları metin parametreleri
 description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın. Çalışma kitabı metin parametreleri hakkında daha fazla bilgi edinin.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: ee3e24444b87c461841b591176774d4e945e4fcc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165166"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872783"
 ---
 # <a name="workbook-text-parameters"></a>Çalışma kitabı metin parametreleri
 

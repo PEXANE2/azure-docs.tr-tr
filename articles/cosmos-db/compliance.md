@@ -1,32 +1,32 @@
 ---
 title: Azure Cosmos DB uyumluluğu
 description: Bu makalede Azure Cosmos DB uyumluluk teklifleri için sertifika kapsamı açıklanmaktadır.
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 9ebec5498da8f7280179a48a6e3e3b10a9810e28
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881843"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872212"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB’de uyumluluk 
 
 Azure Cosmos DB tüm Azure bölgelerinde kullanılabilir. Microsoft, müşterilerin sunduğu beş farklı Azure bulut ortamını kullanıma sunar:
 
-* Genel olarak kullanılabilen **Azure genel** bulutu.
+* **Azure genel** bulut, dünya çapında kullanılabilir.
 
 * **Azure Çin 21Vianet** , ülkenin en büyük İnternet sağlayıcılarından biri olan Microsoft ve 21Vianet arasındaki benzersiz bir iş ortaklığı üzerinden kullanılabilir.
 
-* **Azure Almanya** , bir veri güvenliği modeli altında hizmetler sağlar ve bu da müşteri verilerinin, Almanya veri emanetini gören Deutsche Telekoası olan T-Systems International GmbH denetimi altındaki Almanya 'da kalmasını sağlar.
+* **Azure Almanya** Alman veri güvenilen kişisi olarak davranan Deutsche Telekom'ın bir yan kuruluşu olan T-Systems International GmbH denetimindeki Almanya'daki veri kalır, müşteri sağlayan bir veri Emanetçisi modeli altında hizmetleri sağlar.
 
-* **Azure Kamu** , ABD kamu kurumlarına ve iş ortaklarına Birleşik Devletler dört bölgede kullanılabilir. 
+* **Azure kamu** ABD'de ABD devlet kurumları ile bunların iş ortakları için dört bölgelerinde kullanılabilir. 
 
-* **Savunma Bakanlığı (DOD) Için Azure Kamu** , ABD savunma Bakanlığı Birleşik Devletler iki bölgede sunulmaktadır.
+* **Savunma Bakanlığı için Azure kamu** ABD ABD Savunma Bakanlığı için iki bölgede kullanılabilir.
 
 Müşterilerin, dünya çapındaki endüstri ve pazarlarda kendi uyumluluk yükümlülüklerini karşılamasına yardımcı olmak için, sektördeki en büyük uyumluluk portföyünü her ikisinin de (Toplam teklif sayısı) ve derinliğin (müşterinin karşılaştığı değerlendirme kapsamındaki hizmetler).  Azure uyumluluk teklifleri, küresel olarak uygulanabilir, ABD Kamu, sektör özel ve bölge veya ülkeye/bölgeye özel dört kesimde gruplandırılır.  Uyumluluk teklifleri, bağımsız üçüncü taraf denetim firmaları tarafından oluşturulan resmi sertifikalar, belirlediğimizi karşıladığımızı, doğrulamalar, yetkilendirmeler ve değerlendirmeler dahil olmak üzere çeşitli türlerde temel türler, Ayrıca, sözleşmeli değişiklik DTU 'ları Microsoft tarafından üretilen kendi kendine değerlendirmeler ve müşteri Kılavuzu belgeleri.
 
@@ -71,4 +71,4 @@ Azure uyumluluk sertifikaları hakkında daha fazla bilgi edinmek için aşağı
 
 * Azure Cosmos DB güvenliğe ve en son geliştirmelere genel bakış için bkz. [Azure Cosmos veritabanı güvenlik](database-security.md) makalesi.
 
-* Microsoft sertifikaları hakkında daha fazla bilgi için [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/)bakın.
+* Microsoft sertifikaları hakkında daha fazla bilgi için bkz. [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/).

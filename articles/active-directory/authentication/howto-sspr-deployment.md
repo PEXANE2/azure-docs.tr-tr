@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9f340ad12fbf26190a17bc4df97bfc95473093c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bc2c68c53a7c03d1de08e5cde528f27aa61b0096
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381295"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847278"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD self servis parola sıfırlamayı dağıtma
 
@@ -31,7 +31,7 @@ Kullanıcıların, kuruluşunuzda başka bir uygulama veya hizmetle birlikte SSP
 
 SSPR 'yi dağıtmadan önce kuruluşlar, zaman içinde hangi parola sıfırlama ile ilgili yardım masası çağrılarının gerçekleştiği ve her çağrının ortalama maliyetinin sayısını tespit etmek isteyebilir. Bu veri dağıtımını, SSPR 'nin kuruluşunuza göre göstereceği değeri göstermek için kullanabilirler.  
 
-## <a name="how-sspr-works"></a>SSPR 'nin çalışması
+## <a name="how-sspr-works"></a>SSPR nasıl çalışır?
 
 1. Bir Kullanıcı bir parolayı sıfırlamaya çalıştığında, kimliklerini kanıtlamak için önceden kaydedilmiş kimlik doğrulama yöntemini veya yöntemlerini doğrulamalıdır.
 1. Ardından Kullanıcı yeni bir parola girer.
@@ -56,19 +56,19 @@ Birleşik kayıt deneyimi, kuruluşların hem SSPR hem de Azure Multi-Factor Aut
 
 SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarlar gereklidir.
 
-| Alan | Ayar | Value |
+| Alan | Ayar | Değer |
 | --- | --- | --- |
 | **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
-| **Kayıt** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
-|   | Kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
-| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Evet |
-|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
-| **Liş** | Yardım masası bağlantısını Özelleştir | Evet |
-|   | Özel yardım masası e-postası veya URL 'SI | Destek sitesi veya e-posta adresi |
-| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Evet |
-|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Evet |
+| **Kayıt** | Kullanıcılardan oturum açarken kaydolmalarını iste | Yes |
+|   | Kullanıcıların kimlik doğrulaması bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
+| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Yes |
+|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Yes |
+| **Liş** | Yardım masası bağlantısını özelleştir | Yes |
+|   | Özel yardım masası e-posta adresi veya URL’si | Destek sitesi veya e-posta adresi |
+| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Yes |
+|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Yes |
 
 ### <a name="sspr-properties-recommendations"></a>SSPR özellikleri önerileri
 
@@ -183,7 +183,7 @@ Uygulayacağınızı seçtiğiniz gruplara Azure AD Premium lisansı atanmış o
 
 Kullanıcı gruplarına lisans atama hakkında bilgiler, [Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama](../users-groups-roles/licensing-groups-assign.md)hakkında bilgi bulabilirsiniz.
 
-### <a name="configure-sspr"></a>SSPR 'yi yapılandırma
+### <a name="configure-sspr"></a>SSPR’yi yapılandırma
 
 #### <a name="enable-groups-for-sspr"></a>SSPR için grupları etkinleştir
 
@@ -217,7 +217,7 @@ Self servis parola sıfırlama ile ilişkili özellikleri yönetmek için gerekl
 
 | İş rolü/kişi | Azure AD rolü (gerekirse) |
 | :---: | :---: |
-| Düzey 1 yardım masası | Parola Yöneticisi |
+| Düzey 1 yardım masası | Parola yöneticisi |
 | Düzey 2 yardım masası | Kullanıcı Yöneticisi |
 | SSPR Yöneticisi | Genel yönetici |
 

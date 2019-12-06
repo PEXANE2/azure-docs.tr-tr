@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde matematik işlevleri
-description: Azure Cosmos DB 'da matematik SQL sistem işlevleri hakkında bilgi edinin.
+description: Bağımsız değişkenler olarak sunulan giriş değerlerine göre bir hesaplama gerçekleştirmek için Azure Cosmos DB matematik işlevleri hakkında bilgi edinin ve sayısal bir değer döndürün.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fe4a84db3f2cbcfc2d9841caf520404afec2a297
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349663"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873276"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematik işlevleri (Azure Cosmos DB)  
 
@@ -30,7 +30,7 @@ Sonuç:
     [4]
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>İşlevler
 
 Aşağıdaki desteklenen yerleşik matematik işlevleri, genellikle giriş bağımsız değişkenlerine dayalı olarak bir hesaplama gerçekleştirir ve sayısal bir ifade döndürür.
   
@@ -52,4 +52,4 @@ S_SAYI_ÜRET hariç tüm matematik işlevleri belirleyici işlevlerdir. Bu, beli
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB giriş](introduction.md)
 - [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplar](sql-query-aggregates.md)
+- [Toplamlar](sql-query-aggregates.md)

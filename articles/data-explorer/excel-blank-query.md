@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 55198e0c38c2922d69b68d9ce62e16ea25e9cc44
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 4999000e2084922b43b8085034f545d4b5c644a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173735"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849097"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>Microsoft Excel 'e aktarılan bir Azure Veri Gezgini kusto sorgusu kullanarak verileri görselleştirme
 
@@ -22,7 +22,7 @@ Azure Veri Gezgini, Excel 'deki verilere bağlanmak için iki seçenek sunar: ye
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * Azure Active Directory 'nin üyesi olan bir kurumsal e-posta hesabı, [azure Veri Gezgini yardım kümesine](https://dataexplorer.azure.com/clusters/help/databases/Samples) bağlanabilirsiniz 
-<br>veya</br>
+<br>or</br>
 * [Bir test kümesi ve veritabanı](create-cluster-database-portal.md) oluşturun ve [Azure Veri Gezgini Web UI uygulamasında](https://dataexplorer.azure.com/)oturum açın.
 
 ## <a name="define-kusto-query-as-an-excel-data-source"></a>Kusto sorgusunu Excel veri kaynağı olarak tanımlama
@@ -68,3 +68,7 @@ Azure Veri Gezgini, Excel 'deki verilere bağlanmak için iki seçenek sunar: ye
 1. Artık Verileriniz Excel 'de. Sorguyu yenilemek için **Yenile** düğmesini seçin.
 
     ![Excel 'de verileri görüntüleme](media/excel-blank-query/data-in-excel.png)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Excel için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirme](excel-connector.md)

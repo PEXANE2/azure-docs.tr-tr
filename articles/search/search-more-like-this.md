@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdde89f9ff88b15c464af805b81708b268e5ddf5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721743"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873820"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>Azure Bilişsel Arama moreLikeThis (Önizleme)
 
@@ -25,24 +25,46 @@ ms.locfileid: "73721743"
 
 Varsayılan olarak, en üst düzey aranabilir alanların içeriği göz önünde bulundurululur. Bunun yerine belirli alanları belirtmek istiyorsanız `searchFields` parametresini kullanabilirsiniz. 
 
-[Karmaşık bir türdeki](search-howto-complex-data-types.md)aranabilir alt alanlarda moreLikeThis kullanamazsınız.
+[Karmaşık bir türdeki](search-howto-complex-data-types.md)aranabilir alt alanlarda `MoreLikeThis` kullanamazsınız.
 
-## <a name="examples"></a>Örnekler 
+## <a name="examples"></a>Örnekler
 
-Aşağıda bir moreLikeThis sorgusuna örnek verilmiştir. Sorgu, açıklama alanları `moreLikeThis` parametresi tarafından belirtildiği gibi, kaynak belgenin alanına benzer olan belgeleri bulur.
+Aşağıdaki örneklerde, [hızlı başlangıç: Azure Portal bir arama dizini oluşturma ' daki](search-get-started-portal.md)oteller örneği kullanılmaktadır.
+
+### <a name="simple-query"></a>Basit sorgu
+
+Aşağıdaki sorgu, açıklama alanları `moreLikeThis` parametresi tarafından belirtildiği gibi, kaynak belgenin alanına benzer olan belgeleri bulur:
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
 ```
 
+Bu örnekte, istek, `HotelId` 29 ile benzer bir oteller arar.
+HTTP GET 'in kullanılması yerine, `MoreLikeThis` HTTP POST kullanarak da çağırabilirsiniz:
+
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
     {
-      "moreLikeThis": "1002",
-      "searchFields": "description"
+      "moreLikeThis": "29",
+      "searchFields": "Description"
     }
 ```
 
+### <a name="apply-filters"></a>Filtreleri uygulama
+
+`MoreLikeThis`, `$filter`gibi diğer ortak sorgu parametreleriyle birleştirilebilir. Örneğin, sorgu yalnızca kategorisi ' bütçe ' olan ve derecelendirmeyi 3,5 ' den yüksek olan oteller ile kısıtlanabilir:
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
+```
+
+### <a name="select-fields-and-limit-results"></a>Alanları seçin ve sonuçları sınırlayın
+
+`$top` seçici, bir `MoreLikeThis` sorgusunda kaç sonucun döndürüleceğini sınırlamak için kullanılabilir. Ayrıca, alanlar `$select`seçilebilir. Burada, ilk üç otel KIMLIĞI, adı ve derecelendirmesi ile birlikte seçilir: 
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

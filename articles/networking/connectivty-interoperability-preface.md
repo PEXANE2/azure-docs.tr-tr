@@ -1,6 +1,6 @@
 ---
-title: 'Birlikte çalışabilirlik Azure arka uç bağlantısı özellikleri: Test Kurulumu | Microsoft Docs'
-description: Bu makalede, ExpressRoute, siteden siteye VPN ve sanal ağ eşlemesi ile Azure arasında birlikte çalışabilirlik analiz etmek için kullanabileceğiniz bir test ayarı açıklanır.
+title: 'Azure arka uç bağlantı özelliklerinde birlikte çalışabilirlik: test kurulumu | Microsoft Docs'
+description: Bu makalede, Azure 'da ExpressRoute, siteden siteye VPN ve sanal ağ eşlemesi arasındaki birlikte çalışabilirliği çözümlemek için kullanabileceğiniz bir test kurulumu açıklanmaktadır.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,79 +10,79 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811115"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873804"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Birlikte çalışabilirlik Azure arka uç bağlantısı özellikleri: Test Kurulumu
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure arka uç bağlantı özelliklerinde birlikte çalışabilirlik: test kurulumu
 
-Bu makalede, Azure ağ hizmetlerinin nasıl interoperate denetim düzlemi ve veri düzlemi düzeyindeki analiz etmek için kullanabileceğiniz bir test ayarı açıklanır. Kısaca Azure ağ bileşenlerine göz atalım:
+Bu makalede, Azure ağ hizmetlerinin denetim düzlemi düzeyinde ve veri düzlemi düzeyinde nasıl birlikte çalıştığını analiz etmek için kullanabileceğiniz bir test kurulumu açıklanır. Azure ağ bileşenlerine kısaca göz atalım:
 
--   **Azure ExpressRoute**: Azure sanal ağı dağıtımlarınıza şirket içi ağınızda özel IP alanları doğrudan bağlanmak Azure ExpressRoute özel eşlemesi'ı kullanın. ExpressRoute, yüksek bant genişliğini ve özel bir bağlantı elde etmenize yardımcı olabilir. ExpressRoute ekonomik iş ortaklarının çoğu, SLA'lar ile ExpressRoute bağlantı sunar. ExpressRoute hakkında daha fazla bilgi edinin ve ExpressRoute yapılandırma hakkında bilgi edinmek için bkz: [Expressroute'a giriş][ExpressRoute].
--   **Siteden siteye VPN**: Azure VPN ağ geçidi, internet üzerinden veya ExpressRoute kullanarak bir şirket içi ağı Azure'a güvenli bir şekilde bağlanmak için siteden siteye VPN kullanabilirsiniz. Azure'a bağlanmak için siteden siteye VPN yapılandırma konusunda bilgi için bkz: [VPN ağ geçidi yapılandırma][VPN].
--   **VNet eşlemesi**: Azure sanal ağındaki sanal ağlar arasında bağlantı kurmak için sanal ağ (VNet) eşlemesi'ı kullanın. VNet eşlemesi hakkında daha fazla bilgi için bkz: [VNet eşlemesi öğretici][VNet].
+-   **Azure ExpressRoute**: şirket içi AĞıNıZDAKI özel IP alanlarını Azure sanal ağ dağıtımlarınıza doğrudan bağlamak Için Azure ExpressRoute 'da özel eşleme kullanın. ExpressRoute, daha yüksek bant genişliğine ve özel bir bağlantıya ulaşmanıza yardımcı olabilir. Birçok ExpressRoute ekonomik iş ortakları SLA 'larla ExpressRoute bağlantısı sunar. ExpressRoute hakkında daha fazla bilgi edinmek ve ExpressRoute 'u nasıl yapılandıracağınızı öğrenmek için bkz. [ExpressRoute 'A giriş][ExpressRoute].
+-   **Siteden sıteye VPN**: şirket içi bir ağı Internet üzerinden Azure 'A veya ExpressRoute 'u kullanarak güvenli bir şekilde bağlamak için bir sıteden siteye VPN olarak Azure VPN Gateway kullanabilirsiniz. Azure 'a bağlanmak için siteden siteye VPN yapılandırma hakkında bilgi edinmek için bkz. [configure VPN Gateway][VPN].
+-   **VNET eşlemesi**: Azure sanal ağındaki VNET 'ler arasında bağlantı kurmak için sanal ağ (VNet) eşlemesi kullanın. VNet eşlemesi hakkında daha fazla bilgi edinmek için, [VNET eşlemesi hakkında öğreticiye][VNet]bakın.
 
-## <a name="test-setup"></a>Test Kurulumu
+## <a name="test-setup"></a>Test kurulumu
 
-Test Kurulumu aşağıdaki şekilde gösterilmiştir:
+Aşağıdaki şekil, test kurulumunu göstermektedir:
 
-[![1]][1]
+![1][1]
 
-Test Kurulumu güçlerinden merkez sanal ağa Azure bölge 1 ' dir. Merkez sanal ağa, aşağıdaki yollarla farklı ağlara bağlanır:
+Test kurulumunun centerof, Azure bölge 1 ' deki merkez VNet ' dir. Hub VNet, farklı ağlara aşağıdaki yollarla bağlanır:
 
--   Merkez sanal ağa bir uç sanal ağı, VNet eşlemesi kullanarak bağlanır. Uç sanal ağı, merkez sanal ağa uzaktan erişim iki ağ geçidi için vardır.
--   Merkez sanal ağa dala sanal ağ, siteden siteye VPN kullanarak bağlanır. Bağlantı eBGP yolları için kullanır.
--   Merkez sanal ağa, birincil yolu olarak ExpressRoute özel eşlemesini kullanarak şirket içi konum 1 ağa bağlıdır. Yedekleme yolu olarak siteden siteye VPN bağlantısı kullanır. Bu makalenin kalanında ExpressRoute 1 Bu ExpressRoute bağlantı hattına diyoruz. Varsayılan olarak, yüksek kullanılabilirlik için yedekli bağlantı ExpressRoute devreleri sağlar. ExpressRoute 1'de, ikincil Microsoft Kurumsal kenar yönlendirici (MSEE) yüzler ikincil müşteri edge (CE) yönlendiricisinin arabirim devre dışı bırakıldı. Kırmızı bir çizgi üzerinden satır içi çift ok önceki şekilde devre dışı CE yönlendirici alt arabirimi temsil eder.
--   Merkez sanal ağa, başka bir ExpressRoute özel eşlemesini kullanarak şirket içi konum 2 ağa bağlıdır. Bu makalenin kalanında ExpressRoute 2 olarak bu ikinci ExpressRoute bağlantı hattına diyoruz.
--   ExpressRoute 1 ayrıca hem merkez sanal ağa hem de şirket içi konum 1 ağ Azure bölge 2'de uzak bir sanal ağa bağlanır.
+-   Hub VNet, VNet eşlemesi kullanılarak bağlı olan VNet 'e bağlanır. Bağlı olan VNet 'in hub VNet 'teki her iki ağ geçidine uzaktan erişimi vardır.
+-   Hub VNet, siteden siteye VPN kullanılarak şube VNet 'e bağlanır. Bağlantı, yolları Exchange için eBGP kullanır.
+-   Hub VNet, birincil yol olarak ExpressRoute özel eşlemesini kullanarak şirket içi konum 1 ağına bağlanır. Yedekleme yolu olarak siteden siteye VPN bağlantısı kullanır. Bu makalenin geri kalanında ExpressRoute 1 olarak bu ExpressRoute devresine başvurduk. ExpressRoute devreleri, varsayılan olarak yüksek kullanılabilirlik için yedekli bağlantı sağlar. ExpressRoute 1 ' de, ikincil Microsoft kurumsal sınır yönlendiricisi (MSEE) sunan ikincil müşteri kenarı (CE) yönlendiricisinin alt arabirimi devre dışıdır. Yukarıdaki şekilde çift satırlık ok üzerinde kırmızı bir çizgi devre dışı olan CE yönlendirici alt hattını temsil eder.
+-   Hub VNet, başka bir ExpressRoute özel eşlemesi kullanarak şirket içi konum 2 ağına bağlanır. Bu makalenin geri kalanında, ExpressRoute 2 olarak bu ikinci ExpressRoute devresine başvurduk.
+-   ExpressRoute 1 hem hub VNet 'i hem de şirket içi konum 1 ağını Azure bölge 2 ' deki uzak VNet 'e bağlar.
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Tutarlılığın ExpressRoute ve siteden siteye VPN bağlantısı
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Kademeli olarak ExpressRoute ve siteden siteye VPN bağlantısı
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute üzerinden siteden siteye VPN
 
-ExpressRoute özel olarak şirket içi ağınız ve Azure Vnet'ler arasında veri alışverişi eşleme Microsoft kullanarak siteden siteye VPN yapılandırabilirsiniz. Bu yapılandırma ile gizliliği, kimlik doğrulaması ve bütünlük ile veri alışverişinde bulunabilir. Veri değişimi yürütmeyi de olur. ExpressRoute eşdüzey hizmet sağlama Microsoft kullanarak siteden siteye IPSec VPN tüneli modunda yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute Microsoft eşlemesi üzerinde siteden siteye VPN][S2S-Over-ExR]. 
+Şirket içi ağınız ve Azure sanal ağlarınız arasında özel olarak veri alışverişi yapmak için ExpressRoute Microsoft eşlemesi kullanarak siteden siteye VPN yapılandırabilirsiniz. Bu yapılandırmayla, verileri gizlilik, özgünlük ve bütünlük ile değiş tokuş edebilirsiniz. Veri değişimi de yeniden oynama olur. ExpressRoute Microsoft eşlemesi kullanarak bir siteden siteye IPSec VPN 'yi tünel modunda yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute üzerinden siteden sıteye VPN Microsoft eşlemesi][S2S-Over-ExR]. 
 
-Microsoft eşlemesi kullanan bir siteden siteye VPN yapılandırma birincil sınırlama aktarım hızıdır. IPSec tüneli üzerinden aktarım hızı ile VPN ağ geçidi kapasitesi sınırlı. VPN gateway performansı ExpressRoute üretilen işten daha küçük. Bu senaryoda, ExpressRoute bant genişliği kullanımını iyileştirmek için yüksek oranda güvenli trafiği IPSec tünel kullanılarak ve diğer tüm trafiği için özel eşdüzey hizmet sağlama kullanarak yardımcı olur.
+Microsoft eşlemesi kullanan bir siteden siteye VPN yapılandırmanın birincil sınırlaması aktarım hızına sahiptir. IPSec tüneli üzerinden aktarım hızı VPN Gateway kapasitesinden sınırlıdır. VPN ağ geçidi verimlilik ExpressRoute aktarım hızına göre daha düşüktür. Bu senaryoda, yüksek oranda güvenli trafik için IPSec tüneli kullanılması ve diğer tüm trafik için özel eşleme kullanılması, ExpressRoute bant genişliği kullanımının iyileştirmenize yardımcı olur.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute için bir güvenli bir yük devretme yolu olarak siteden siteye VPN
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute için güvenli bir yük devretme yolu olarak siteden siteye VPN
 
-ExpressRoute, yüksek kullanılabilirlik sağlamak için yedekli devre çiftinin görev yapar. Farklı Azure bölgelerinde coğrafi olarak yedekli ExpressRoute bağlantı yapılandırabilirsiniz. Ayrıca, bir Azure bölgesi içinde bizim test Kurulum gösterildiği şekilde bir yük devretme yolu için ExpressRoute bağlantınızı oluşturmak için bir siteden siteye VPN kullanabilirsiniz. ExpressRoute ve siteden siteye VPN üzerinden aynı ön eklerin tanıtılıp, Azure ExpressRoute önceliklendirir. ExpressRoute ve siteden siteye VPN arasında asimetrik yönlendirme önlemek için ağ yapılandırması de siteden siteye VPN bağlantısı kullanmadan önce ExpressRoute bağlantısı kullanarak reciprocate şirket içi.
+ExpressRoute, yüksek kullanılabilirlik sağlamak için yedekli bir devre çifti işlevi görür. Coğrafi olarak yedekli ExpressRoute bağlantısını, farklı Azure bölgelerinde yapılandırabilirsiniz. Ayrıca, test kurulumumuzda gösterildiği gibi, bir Azure bölgesi içinde, ExpressRoute bağlantınızın yük devretme yolunu oluşturmak için siteden siteye VPN kullanabilirsiniz. Aynı ön ekler hem ExpressRoute hem de siteden siteye VPN üzerinden tanıtıldığında Azure, ExpressRoute 'u önceliklendirir. ExpressRoute ve siteden siteye VPN arasındaki asimetrik yönlendirmeyi önlemek için, şirket içi ağ yapılandırması, siteden siteye VPN bağlantısı kullanmadan önce ExpressRoute bağlantısı kullanılarak da devrik olmalıdır.
 
-ExpressRoute ve siteden siteye VPN için bir arada var olabilen bağlantılar yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute ve siteden siteye birlikte kullanımı][ExR-S2S-CoEx].
+ExpressRoute ve siteden siteye VPN için birlikte var olan bağlantıları yapılandırma hakkında daha fazla bilgi için bkz. [ExpressRoute ve siteden siteye birlikte bulunma][ExR-S2S-CoEx].
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Arka uç bağlantı uç sanal ağları ve şube konumları için genişletin
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Arka uç bağlantısını bağlı olan sanal ağlara ve dal konumlarına Genişlet
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet eşlemesi kullanarak uç VNet bağlantısı
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet eşlemesi kullanarak bağlı olan VNet bağlantısı
 
-Merkez ve uç VNet mimarisi yaygın olarak kullanılır. Hub merkezi bir şirket içi ağınıza, uç sanal ağları arasında bağlantı noktası gören azure'daki bir sanal ağ ' dir. Uçlar hub'la eş sanal ağ olan ve hangi iş yüklerini yalıtmak için kullanabilirsiniz. Hub'ı bir ExpressRoute veya VPN bağlantısı aracılığıyla şirket içi veri merkeziniz arasındaki trafik akışı. Mimarisi hakkında daha fazla bilgi için bkz. [Azure'da merkez-uç ağ topolojisi uygulama][Hub-n-Spoke].
+Hub ve bağlı ağ VNet mimarisi yaygın olarak kullanılır. Hub, bağlı olan sanal ağlarınız ve şirket içi ağınız arasında merkezi bir bağlantı noktası görevi gören Azure 'da bulunan bir VNet ' dir. Bağlı bileşen, hub ile eş olan ve iş yüklerini yalıtmak için kullanabileceğiniz sanal ağlardır. ExpressRoute veya VPN bağlantısı aracılığıyla şirket içi veri merkezi ile hub arasındaki trafik akışları. Mimari hakkında daha fazla bilgi için bkz. [Azure 'da Merkez-uç ağ topolojisi uygulama][Hub-n-Spoke].
 
-Bir bölge içinde eşlemesi sanal ağda uç sanal ağları, uzak ağlarla iletişim kuracak hub VNet ağ geçitleriniz (hem VPN ve ExpressRoute ağ geçitleri) kullanabilirsiniz.
+Bir bölgedeki VNet eşlemesi içinde, bağlı olan sanal ağlar, uzak ağlarla iletişim kurmak için hub VNet ağ geçitlerini (VPN ve ExpressRoute ağ geçitleri) kullanabilir.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Siteden siteye VPN kullanarak sanal ağa bağlantı dal
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Siteden siteye VPN kullanarak dal VNet bağlantısı
 
-Sanal ağlar farklı bölgelerde ve şirket içi ağlarda hub sanal ağ birbirleriyle iletişim kurmak için dal isteyebilirsiniz. Yerel Azure bu yapılandırma için siteden siteye VPN bağlantısı bir VPN kullanarak çözümüdür. Bir alternatif, hub'ı yönlendirme için bir ağ sanal Gereci (NVA) kullanmaktır.
+Farklı bölgelerde olan dal VNET 'leri ve şirket içi ağları bir hub VNet aracılığıyla birbirleriyle iletişim kurmak isteyebilirsiniz. Bu yapılandırma için yerel Azure çözümü, VPN kullanarak siteden siteye VPN bağlantısı olur. Alternatif, hub 'da yönlendirme için bir ağ sanal gereci (NVA) kullanmaktır.
 
-Daha fazla bilgi için [VPN ağ geçidi nedir?] [ VPN] ve [yüksek oranda kullanılabilir bir NVA dağıtın][Deploy-NVA].
+Daha fazla bilgi için bkz. [ne VPN Gateway?][VPN] nedir ve [yüksek oranda kullanılabilir NVA dağıtma][Deploy-NVA].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [yapılandırma ayrıntılarını] [ Configuration] test topolojisi için.
+Test topolojisi için [yapılandırma ayrıntıları][Configuration] hakkında bilgi edinin.
 
-Hakkında bilgi edinin [denetim düzlemi analiz] [ Control-Analysis] test kurulumu ve farklı sanal ağları veya VLAN'lar topolojide görünümlerini.
+Test kurulumunun [Denetim düzlemi analizini][Control-Analysis] ve topolojideki farklı VNET veya VLAN 'ların görünümlerini öğrenin.
 
-Hakkında bilgi edinin [veri düzlemi analiz] [ Data-Analysis] test kurulumu ve izleme görünümleriyle Özelliği Azure ağı.
+Test kurulumunun ve Azure ağ izleme özelliği görünümlerinin [veri düzlemi analizini][Data-Analysis] öğrenin.
 
-Bkz: [ExpressRoute SSS] [ ExR-FAQ] için:
--   Bir ExpressRoute ağ geçidine bağlanabilir kaç ExpressRoute bağlantı hatları öğrenin.
--   Bir ExpressRoute bağlantı hattına bağlayabilirsiniz kaç ExpressRoute ağ geçitleri hakkında bilgi edinin.
--   Diğer ExpressRoute ölçek sınırları hakkında bilgi edinin.
+Bkz. [ExpressRoute SSS][ExR-FAQ] :
+-   ExpressRoute ağ geçidine kaç ExpressRoute bağlantı hattı bağlayabileceğinizi öğrenin.
+-   Bir ExpressRoute devresine kaç ExpressRoute ağ geçidi bağlayabileceğinizi öğrenin.
+-   ExpressRoute 'un diğer ölçek sınırları hakkında bilgi edinin.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/TestSetup.png "test topoloji diyagramı"
+[1]: ./media/backend-interoperability/TestSetup.png "Test topolojisi diyagramı"
 
 <!--Link References-->
 [ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction

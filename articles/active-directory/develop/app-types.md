@@ -2,27 +2,23 @@
 title: V 1.0 'daki uygulama türleri | Mavisi
 description: Azure Active Directory v 2.0 uç noktası tarafından desteklenen uygulama ve senaryoların türlerini açıklar.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7e4228febb5b49ad14a89ceec5482c277fca5fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374057"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844218"
 ---
 # <a name="application-types-in-v10"></a>V 1.0 'daki uygulama türleri
 
@@ -74,7 +70,7 @@ Azure AD ile geliştirilebilen ve tümleştirilebilen iki uygulama kategorisi ol
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Tek kiracılı veya çok kiracılı uygulamalar geliştirirken dikkat edilecek ek noktalar
 
-Tek bir kiracı uygulaması yerine çok kiracılı bir uygulama geliştirilirken bazı ek konular ortaya çıkar. Örneğin, uygulamanızı birden çok dizindeki kullanıcılar için kullanılabilir hale getiriyorsanız, hangi kiracının bulunduğunu belirlemeniz için bir mekanizmaya ihtiyacınız vardır. Tek bir kiracı uygulamasının bir kullanıcı için kendi dizinine bakması gerekir, ancak çok kiracılı bir uygulamanın Azure AD 'deki tüm dizinlerden belirli bir kullanıcıyı tanımlaması gerekir. Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta, Azure AD 'deki tüm dizinler için https://login.microsoftonline.com/common ' dır, ancak kiracıya özgü bir uç nokta https://login.microsoftonline.com/contoso.onmicrosoft.com olabilir. Genellikle, oturum açma, oturum kapatma ve belirteç doğrulama sırasında birden çok kiracıyı işlemek için gerekli mantığın olması gerekeceğinden, genel uç nokta, uygulamanızı geliştirirken göz önünde bulundurmanız önemlidir.
+Tek bir kiracı uygulaması yerine çok kiracılı bir uygulama geliştirilirken bazı ek konular ortaya çıkar. Örneğin, uygulamanızı birden çok dizindeki kullanıcılar için kullanılabilir hale getiriyorsanız, hangi kiracının bulunduğunu belirlemeniz için bir mekanizmaya ihtiyacınız vardır. Tek bir kiracı uygulamasının bir kullanıcı için kendi dizinine bakması gerekir, ancak çok kiracılı bir uygulamanın Azure AD 'deki tüm dizinlerden belirli bir kullanıcıyı tanımlaması gerekir. Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta Azure AD 'deki tüm dizinler için https://login.microsoftonline.com/common , ancak kiracıya özgü bir uç nokta https://login.microsoftonline.com/contoso.onmicrosoft.com olabilir. Genellikle, oturum açma, oturum kapatma ve belirteç doğrulama sırasında birden çok kiracıyı işlemek için gerekli mantığın olması gerekeceğinden, genel uç nokta, uygulamanızı geliştirirken göz önünde bulundurmanız önemlidir.
 
 Şu anda tek bir kiracı uygulaması geliştirmekte, ancak bunu birçok kuruluşta kullanılabilir hale getirmek istiyorsanız, Azure AD 'de uygulamada ve yapılandırmada kolayca değişiklikler yapabilir ve bunu çok kiracılı hale getirebilirsiniz. Ayrıca, Azure AD, tek bir kiracıda veya çok kiracılı bir uygulamada kimlik doğrulaması sağlayıp sağlamaktan bağımsız olarak tüm dizinlerdeki tüm belirteçler için aynı imza anahtarını kullanır.
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ead9e5785297c9569d23573d4dd7f5f29354717
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381799"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848332"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından hata iletilerini çözümleyin
 
@@ -30,7 +30,7 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | **CLIENT_CERT_INSTALL_ERROR** | İstemci sertifikasının nasıl yüklendiği veya kiracınızla ilişkili olduğu bir sorun olabilir. İstemci sertifikası sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
 | **ESTS_TOKEN_ERROR** | İstemci sertifikası ve ADAL belirteci sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
 | **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın https://adnotifications.windowsazure.com gelen ve giden trafik için açık bir şekilde açık olduğunu doğrulayın |
-| **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda https://adnotifications.windowsazure.com ve https://login.microsoftonline.com/ulaşabildiğinizi doğrulayın. Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
+| **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda https://adnotifications.windowsazure.com ve https://login.microsoftonline.com/ ulaşabildiğinizi doğrulayın. Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
 | **Azure MFA için NPS uzantısı:** <br> Azure MFA için NPS uzantısı yalnızca AccessAccept durumundaki RADIUS istekleri için Ikincil kimlik doğrulaması gerçekleştirir. Yanıt durumu Accessred olan Kullanıcı Kullanıcı adı için istek alındı, istek yoksayılıyor. | Bu hata genellikle AD 'deki bir kimlik doğrulaması hatasını yansıtır veya NPS sunucusunun Azure AD 'den yanıt alamıyor olduğunu gösterir. Güvenlik duvarlarınızın https://adnotifications.windowsazure.com ve giden trafik için açık bir şekilde açık olduğunu ve 80 ve 443 bağlantı noktalarını kullanarak https://login.microsoftonline.com emin olun. Ağ erişim Izinlerinin arama sekmesinde, ayarın "NPS ağ Ilkesi aracılığıyla erişimi denetle" olarak ayarlandığını denetlemek de önemlidir. Bu hata, kullanıcıya bir lisans atanmamışsa da tetiklenebilir. |
 | **REGISTRY_CONFIG_ERROR** | Uygulama için kayıt defterinde bir anahtar eksik, bu durum [PowerShell betiğinin](howto-mfa-nps-extension.md#install-the-nps-extension) yükleme sonrasında çalıştırılmamasının nedeni olabilir. Hata iletisi eksik anahtarı içermelidir. HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. altındaki anahtara sahip olduğunuzdan emin olun |
 | **REQUEST_FORMAT_ERROR** <br> Radius Isteğinde zorunlu Radius Username\ıdentifier özniteliği eksik. NPS 'nin RADIUS isteklerini aldığını doğrulama | Bu hata genellikle bir yükleme sorununu yansıtır. NPS uzantısının, RADIUS isteklerini alabilen NPS sunucularına yüklenmesi gerekir. RDG ve RRAS gibi hizmetler için bağımlılıklar olarak yüklenen NPS sunucuları RADIUS istekleri almaz. NPS uzantısı, kimlik doğrulama isteğinden ayrıntıları okuyamadığından bu tür yüklemeler ve hatalar üzerine yüklendiğinde çalışmaz. |
@@ -96,7 +96,7 @@ Bu hatalardan biriyle karşılaşırsanız, tanılama yardımı için [desteğe 
 
 Kullanıcılarınız [iki adımlı doğrulamayla ilgili sorun](../user-help/multi-factor-authentication-end-user-troubleshoot.md)yaşıyorsanız, sorunları kendi kendine tanılamaya yardımcı olur.
 
-### <a name="contact-microsoft-support"></a>Microsoft destek 'e başvurun
+### <a name="contact-microsoft-support"></a>Microsoft Destek'e başvurun
 
 Ek yardıma ihtiyacınız varsa [Azure Multi-Factor Authentication sunucusu desteği](https://support.microsoft.com/oas/default.aspx?prid=14947)aracılığıyla bir destek uzmanına başvurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfa, belirli hata kodu, belirli oturum KIMLIĞI, hatayı seçen kullanıcının KIMLIĞI ve hata ayıklama günlükleri içerir.
 

@@ -5,17 +5,17 @@ keywords: azure powershell, powershell betik öğreticisi, powershell otomasyonu
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743810"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850882"
 ---
 # <a name="my-first-powershell-runbook"></a>İlk PowerShell runbook’um
 
@@ -89,7 +89,7 @@ Oluşturduğunuz runbook hala Taslak modundadır. Üretim ortamında çalıştı
 
 1. Runbook durumu *tamamlandı olarak tamamlandığında*, **genel bakış** ' ın altında **Çıkış**' a tıklayın. Çıkış bölmesi açılır ve *Merhaba Dünya*bakabilirsiniz.
 
-   ![İş Çıkışı](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
+   ![İş Çıktısı](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
 1. Çıkış sayfasını kapatın.
 1. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca çıkış akışında *Merhaba Dünya* görmeniz gerekir, ancak bu çıktı, runbook 'a yazıyorsa ayrıntılı ve hata gibi bir runbook işi için diğer akışları gösterebilir.
@@ -163,11 +163,11 @@ Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar fayd
 1. Runbook 'u test edebilmeniz için **Test bölmesi** ' ne tıklayın.
 1. Testi başlatmak için **Başlat**’a tıklayın. Tamamlandığında, hesabınızdaki temel bilgileri görüntüleyen bir aşağıdakine benzer bir çıktı almalısınız. Bu çıktı, farklı çalıştır hesabının geçerli olduğunu onaylar.
 
-   ![Kimlik Doğrula](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
+   ![Kimlik doğrulaması](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="add-code-to-start-a-virtual-machine"></a>Sanal makineyi başlatmak için kod ekleme
 
-Runbook 'larınızın Azure aboneliğinizde kimlik doğrulaması yapdığına göre, kaynakları yönetebilirsiniz. Bir sanal makineyi başlatmak için bir komut ekleyin. Azure aboneliğinizdeki herhangi bir sanal makineyi seçebilirsiniz ve şu anda runbook 'ta bu adı kodlarınız.
+Runbook 'larınızın Azure aboneliğinizde kimlik doğrulaması yapdığına göre, kaynakları yönetebilirsiniz. bir sanal makineyi başlatmak için bir komut ekleyin. Azure aboneliğinizdeki herhangi bir sanal makineyi seçebilirsiniz ve şu anda runbook 'ta bu adı kodlarınız.
 
 1. *Connect-AzureRmAccount*öğesinden sonra, başlatılacak sanal makinenin adını ve kaynak grubu adını sağlayan *Start-AzureRmVM-adı ' VMname '-Resourcegroupname ' nameofresourcegroup '* yazın.
 

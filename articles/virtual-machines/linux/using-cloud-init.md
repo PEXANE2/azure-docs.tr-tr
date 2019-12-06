@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034243"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873956"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır.  
@@ -32,13 +32,14 @@ Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklem
 
 Etkin olarak desteklenen Linux distro ortaklarımızla birlikte kullanılabilir cloud-init etkinleştirilmiş görüntüleri Azure Market'te sahip olmak için çalışıyoruz. Bu görüntüler, Cloud-init dağıtımlarınızın ve yapılandırmalarının VM 'Ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışmasını sağlayacak. Aşağıdaki tabloda, Azure platformunda geçerli cloud-init etkinleştirilmiş görüntüleri kullanılabilirliği açıklanmaktadır:
 
-| Yayımcı | Sunduğu | SKU | Sürüm | cloud-init hazır |
+| Yayımcı | Teklif | SKU | Sürüm | cloud-init hazır |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |latest |evet | 
 |Canonical |UbuntuServer |16.04-LTS |latest |evet | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |evet |
 |CoreOS |CoreOS |Dengeli |latest |evet |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |önizleme |
+|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01|önizleme |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |önizleme |
     
@@ -47,6 +48,7 @@ Etkin olarak desteklenen Linux distro ortaklarımızla birlikte kullanılabilir 
 * RHEL 7,6, Cloud-init paketi için desteklenen paket: *18.2-1. el7_6.2* 
 * RHEL 7,7 (Önizleme) için, Cloud-init paketi, Önizleme paketi: *18.5 -3. EL7*
 * CentOS 7,7 (Önizleme) için, Cloud-init paketi, Önizleme paketi: *18.5 -3. EL7. CentOS*
+* Oracle 7,7 (Önizleme), Cloud-init paketi için, Önizleme paketi: *18.5-3.0.1. EL7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Cloud-init ve Linux Aracısı (WALA) arasındaki fark nedir?
 WALA, VM 'Leri sağlamak ve yapılandırmak ve Azure uzantılarını işlemek için kullanılan bir Azure platforma özgü aracıdır. Mevcut Cloud-init müşterilerinin geçerli Cloud-init betiklerini kullanmasına izin vermek için, VM 'Leri Linux Aracısı yerine Cloud-init kullanacak şekilde yapılandırma görevini geliştirdik.  Linux sistemlerini yapılandırmaya yönelik Cloud-init komut dosyalarında mevcut yatırımlarınızın varsa, bunları etkinleştirmek için **başka bir ayar yapmanız gerekmez** . 

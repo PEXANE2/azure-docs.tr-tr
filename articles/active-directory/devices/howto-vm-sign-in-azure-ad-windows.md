@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420546"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842416"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -33,7 +33,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Multi-Factor Authentication
+   - Çok faktörlü kimlik doğrulama
    - Oturum açma risk denetimi
 - VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 
@@ -116,6 +116,9 @@ az vm create \
     --admin-username azureuser \
     --admin-password yourpassword
 ```
+
+> [!NOTE]
+> Azure AD oturum açma VM uzantısını yüklemeden önce sanal makinenizde sistem tarafından atanan yönetilen kimliği etkinleştirmeniz gerekir.
 
 VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer.
 
@@ -203,7 +206,7 @@ Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak içi
 
 1. Azure AD oturum açma özelliği ile etkinleştirilen sanal makinenin genel bakış sayfasına gidin.
 1. **Bağlan** ' ı seçerek sanal makine bağlantısı dikey penceresini açın.
-1. **RDP dosyasını indir**' i seçin.
+1. Seçin **RDP dosyasını indir**.
 1. Uzak Masaüstü Bağlantısı istemcisini başlatmak için **Aç** ' ı seçin.
 1. Windows oturum açma iletişim kutusunu başlatmak için **Bağlan** ' ı seçin.
 1. Azure AD kimlik bilgilerinizi kullanarak oturum açın.
@@ -230,24 +233,24 @@ VM 'nin Azure AD JOIN işlemini tamamlaması için AADLoginForWindows uzantısı
 
    | Çalıştırılacak komut | Beklenen çıkış |
    | --- | --- |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Azure VM ile ilgili doğru bilgiler |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Azure aboneliğiyle ilişkili geçerli kiracı KIMLIĞI |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
+   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Azure VM ile ilgili doğru bilgiler |
+   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Azure aboneliğiyle ilişkili geçerli kiracı KIMLIĞI |
+   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
 
    > [!NOTE]
    > Erişim belirtecinin kodu, [http://calebb.net/](http://calebb.net/)gibi bir araç kullanılarak çözülebilir. Erişim belirtecindeki "AppID" nin VM 'ye atanan yönetilen kimlikle eşleştiğini doğrulayın.
 
 1. Komut satırını kullanarak gerekli uç noktaların VM 'den erişilebilir olduğundan emin olun:
    
-   - kıvra https://login.microsoftonline.com/-D –
-   - https://login.microsoftonline.com/`<TenantID>`/-D-
+   - kıvra https://login.microsoftonline.com/ -D –
+   - https://login.microsoftonline.com/`<TenantID>` /-D-
 
    > [!NOTE]
    > `<TenantID>`, Azure aboneliği ile ilişkili Azure AD kiracı KIMLIĞI ile değiştirin.
 
-   - https://enterpriseregistration.windows.net/-D-
-   - https://device.login.microsoftonline.com/-D-
-   - https://pas.windows.net/-D-
+   - https://enterpriseregistration.windows.net/ -D-
+   - https://device.login.microsoftonline.com/ -D-
+   - https://pas.windows.net/ -D-
 
 1. `dsregcmd /status`çalıştırılarak cihaz durumu görüntülenebilir. Amaç, cihaz durumunun `AzureAdJoined : YES`olarak gösterilmesi içindir.
 
@@ -274,15 +277,15 @@ Uzantı https://enterpriseregistration.windows.net uç noktasına ulaşamadığ�
 
 1. Komut satırını kullanarak gerekli uç noktaların VM 'den erişilebilir olduğundan emin olun:
 
-   - kıvra https://login.microsoftonline.com/-D –
-   - https://login.microsoftonline.com/`<TenantID>`/-D-
+   - kıvra https://login.microsoftonline.com/ -D –
+   - https://login.microsoftonline.com/`<TenantID>` /-D-
    
    > [!NOTE]
    > `<TenantID>`, Azure aboneliği ile ilişkili Azure AD kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmanız gerekiyorsa, Dizin/kiracı KIMLIĞINI almak için hesap adınızın üzerine gelebilirler veya Azure portal > Dizin KIMLIĞI > Azure Active Directory seçebilirsiniz.
 
-   - https://enterpriseregistration.windows.net/-D-
-   - https://device.login.microsoftonline.com/-D-
-   - https://pas.windows.net/-D-
+   - https://enterpriseregistration.windows.net/ -D-
+   - https://device.login.microsoftonline.com/ -D-
+   - https://pas.windows.net/ -D-
 
 1. Komutlardan herhangi biri "ana bilgisayar `<URL>`çözümlenemedi" ile başarısız olursa, VM tarafından kullanılmakta olan DNS sunucusunu öğrenmek için bu komutu çalıştırmayı deneyin.
    

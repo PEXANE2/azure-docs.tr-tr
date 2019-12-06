@@ -4,17 +4,17 @@ description: Microsoft ve topluluk runbook 'ları ve modülleri, Azure Otomasyon
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 86eebf33f870780871e4c873936e491772c73b63
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231624"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850729"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Otomasyonu için Runbook ve modül galerileri
 
@@ -38,12 +38,12 @@ Azure portal kullanarak yalnızca PowerShell Galerisi doğrudan içeri aktarabil
 3. **Kaynak seçin: PowerShell Galerisi**.
 4. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin. Sol tarafta yayımcı için ek arama parametreleri girebilir ve yazın.
 
-   ![Galeriye gözatamıyorum](media/automation-runbook-gallery/browse-gallery.png)
+   ![Galeriye göz atma](media/automation-runbook-gallery/browse-gallery.png)
 
 5. Öğeyi [TechNet Betik Merkezi](https://gallery.technet.microsoft.com/)' nde görüntülemek için **kaynak projeyi görüntüle** ' ye tıklayın.
 6. Bir öğeyi içeri aktarmak için, ayrıntılarını görüntülemek ve ardından **Içeri aktar** düğmesine tıklayın.
 
-   ![İçeri Aktar düğmesi](media/automation-runbook-gallery/gallery-item-detail.png)
+   ![İçeri aktar düğmesi](media/automation-runbook-gallery/gallery-item-detail.png)
 
 7. İsteğe bağlı olarak, runbook 'un adını değiştirin ve ardından runbook 'u içeri aktarmak için **Tamam** ' ı tıklatın.
 8. Runbook, Otomasyon hesabı için **runbook 'lar** sekmesinde görünür.
@@ -69,7 +69,7 @@ PowerShell modülleri, runbook 'larınızda kullanabileceğiniz cmdlet 'leri iç
 
 4. **Galeriye gözatamıyorum** sayfasında, aşağıdaki alanlara göre arama yapabilirsiniz:
 
-   * Modül adı
+   * Modül Adı
    * Etiketler
    * Yazar
    * Cmdlet/DSC kaynak adı

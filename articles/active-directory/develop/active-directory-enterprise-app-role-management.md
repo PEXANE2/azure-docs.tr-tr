@@ -3,27 +3,23 @@ title: Azure AD 'de kurumsal uygulamalar için rol talebi yapılandırma
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory 'de kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırmayı öğrenin
 services: active-directory
-documentationcenter: ''
 author: jeevansd
 manager: CelesteDG
-editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4657a69347eb2294877e6bd2d7de8e41c0c2ef26
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803502"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845306"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
@@ -99,7 +95,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
       ![AppRoles özelliğinin ayrıntıları](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
-      > Özel uygulamayı (Azure Marketi uygulaması değil) kullanıyorsanız, iki varsayılan rol görürsünüz: User ve msiam_access. Market uygulaması için msiam_access tek varsayılan roldür. Varsayılan rollerde herhangi bir değişiklik yapmanız gerekmez.
+      > Özel uygulamayı (Azure Marketi uygulaması değil) kullanıyorsanız, iki varsayılan rol görürsünüz: Kullanıcı ve msiam_access. Market uygulaması için tek varsayılan rol msiam_access. Varsayılan rollerde herhangi bir değişiklik yapmanız gerekmez.
 
     h. Uygulamanız için yeni roller oluşturun.
 
@@ -135,7 +131,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
       ```
 
       > [!Note]
-      > Düzeltme Eki işlemi için msiam_access sonra yalnızca yeni roller ekleyebilirsiniz. Ayrıca, kuruluşunuzun ihtiyacı olarak çok sayıda rol ekleyebilirsiniz. Azure AD, bu rollerin değerini SAML yanıtında talep değeri olarak gönderir. Yeni rollerin KIMLIĞI için GUID değerlerini oluşturmak üzere, [bunun](https://www.guidgenerator.com/) gibi Web araçlarını kullanın
+      > Düzeltme Eki işlemi için msiam_access sonrasında yalnızca yeni roller ekleyebilirsiniz. Ayrıca, kuruluşunuzun ihtiyacı olarak çok sayıda rol ekleyebilirsiniz. Azure AD, bu rollerin değerini SAML yanıtında talep değeri olarak gönderir. Yeni rollerin KIMLIĞI için GUID değerlerini oluşturmak üzere, [bunun](https://www.guidgenerator.com/) gibi Web araçlarını kullanın
 
     i. Graph Explorer 'a geri dönün ve yöntemi **Al** 'dan **Patch**öğesine değiştirin. Önceki örnekte gösterildiği gibi **Approles** özelliğini güncelleştirerek istenen rollere sahip olmak için hizmet sorumlusu nesnesine yama yapın. Düzeltme Eki işlemini yürütmek için **Sorguyu Çalıştır** ' ı seçin. Başarı iletisi rolün oluşturulmasını onaylar.
 
@@ -183,7 +179,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
 
 10. Uygulamanızı bir kimlik sağlayıcısı tarafından başlatılan çoklu bir oturum açma ile test etmek için, [erişim panelinde](https://myapps.microsoft.com) oturum açın ve uygulama kutucuğunu seçin. SAML belirtecinde, verdiğiniz talep adına sahip kullanıcı için atanan tüm rolleri görmeniz gerekir.
 
-## <a name="update-an-existing-role"></a>Mevcut bir rolü güncelleştir
+## <a name="update-an-existing-role"></a>Mevcut bir rolü güncelleştirir
 
 Mevcut bir rolü güncelleştirmek için aşağıdaki adımları gerçekleştirin:
 
@@ -257,7 +253,7 @@ Mevcut bir rolü silmek için aşağıdaki adımları gerçekleştirin:
 
     c. Silmek istediğiniz rol için **IsEnabled** değerini **false** olarak ayarlayın.
 
-    d. **Sorguyu Çalıştır**' ı seçin.
+    d. **Sorgu Çalıştır**'ı seçin.
 
     > [!NOTE]
     > Msiam_access rolüne sahip olduğunuzdan ve KIMLIğIN oluşturulan rolle aynı olduğundan emin olun.

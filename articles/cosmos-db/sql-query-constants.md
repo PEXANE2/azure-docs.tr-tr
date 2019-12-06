@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB SQL sabitleri
-description: Azure Cosmos DB 'de SQL sabitleri hakkında bilgi edinin
+description: Azure Cosmos DB içindeki SQL sorgu sabitlerinin belirli bir veri değerini göstermek için nasıl kullanıldığı hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002040"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873429"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
 
@@ -107,7 +107,7 @@ ms.locfileid: "71002040"
 |-|-|-|  
 |\\'|kesme işareti (')|U + 0027|  
 |\\"|tırnak işareti (")|U + 0022|  
-|\\\ |ters eğik çizgi\\()|U + 005C|  
+|\\\ |ters eğik çizgi (\\)|U + 005C|  
 |\\/|solidus (/)|U + 002F|  
 |\b|Geri Al|U + 0008|  
 |\f|form besleme|U + 000C|  

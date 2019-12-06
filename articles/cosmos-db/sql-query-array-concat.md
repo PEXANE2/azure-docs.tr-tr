@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ARRAY_CONCAT
-description: Azure Cosmos DB 'de SQL sistem işlevi ARRAY_CONCAT hakkında bilgi edinin.
+description: Azure Cosmos DB içindeki array Concat SQL sistem işlevinin, iki veya daha fazla dizi değerini birleştirme sonucu olan bir dizi döndürdüğünü öğrenin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ad973650ac205313f9045c170f99e15e385a82d1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 10370e16c95f4fc747dd3a66a56794da38562972
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348723"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871831"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
  İki veya daha fazla dizi değerlerini birleştirirken sonucu olan bir dizi döndürür.  
@@ -26,7 +26,7 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *arr_expr*  
-   , Diğer değerleri birleştirmek için bir dizi ifadesidir. @No__t-0 işlevi en az iki *arr_expr* bağımsız değişkeni gerektirir.  
+   , Diğer değerleri birleştirmek için bir dizi ifadesidir. `ARRAY_CONCAT` işlevi en az iki *arr_expr* bağımsız değişken gerektiriyor.  
   
 ## <a name="return-types"></a>Dönüş türleri
   

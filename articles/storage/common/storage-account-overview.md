@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 11/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174024"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851647"
 ---
 # <a name="azure-storage-account-overview"></a>Azure depolama hesabına genel bakış
 
@@ -53,21 +53,21 @@ Genel amaçlı v1 depolama hesapları, tüm Azure depolama hizmetlerine erişim 
 - Kuyruklar
 - Tablolar
 
-Genel amaçlı v2 hesapları çoğu durumda önerilse de, genel amaçlı v1 hesapları bu senaryolara en iyi şekilde uygundur:
+Çoğu durumda genel amaçlı v2 hesapları kullanmanız gerekir. Bu senaryolar için genel amaçlı v1 hesaplarını kullanabilirsiniz:
 
 * Uygulamalarınız Azure klasik dağıtım modelini gerektirir. Genel amaçlı v2 hesapları ve BLOB depolama hesapları yalnızca Azure Resource Manager dağıtım modelini destekler.
 
-* Uygulamalarınız işlem açısından yoğun veya önemli coğrafi çoğaltma bant genişliği kullanır, ancak büyük kapasiteye gerek yoktur. Bu durumda, genel amaçlı v1 en ekonomik seçim olabilir.
+* Uygulamalarınız işlem açısından yoğun veya önemli coğrafi çoğaltma bant genişliği kullanır, ancak büyük kapasiteye gerek kalmaz. Bu durumda, genel amaçlı v1 en ekonomik seçim olabilir.
 
-* 2014-02-14 tarihinden önceki [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) sürümünü veya 4.x’ten düşük bir istemci kitaplığı sürümü ile kullanmanız ve uygulamanızı güncelleştirememeniz.
+* 2014-02-14 'den önceki bir [depolama hizmetleri REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) veya 4. x sürümünden daha düşük bir sürüme sahip bir istemci kitaplığı kullanın. Uygulamanızı yükseltemezsiniz.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage hesapları
 
-Bir blok Blobstorage hesabı, yapılandırılmamış nesne verilerini blok Blobları olarak depolamak ve Premium blok blob 'ları oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü blok bloblarını ve ekleme bloblarını destekler, ancak sayfa Blobları, tablolar veya kuyruklar değildir.
+Bir blok Blobstorage hesabı, yapılandırılmamış nesne verilerini blok blob 'ları olarak depolamak için kullandığınız özel bir depolama hesabıdır. Ayrıca, Premium blok blob 'ları oluşturmak için bir BlockBlobStorage hesabı kullanabilirsiniz. Bu tür bir depolama hesabı blok bloblarını ve ekleme bloblarını ve sayfa bloblarını, tabloları veya kuyrukları destekler.
 
 Blok Blobstorage hesapları, genel amaçlı v2 ve BlobStorage hesaplarıyla karşılaştırıldığında düşük ve tutarlı gecikme süresi ve daha yüksek işlem ücretleri sağlar.
 
-BlockBlobStorage hesapları Şu anda, sık erişimli, seyrek erişimli veya arşiv erişim katmanlarına yönelik katmanlamayı desteklememektedir.
+BlockBlobStorage hesapları Şu anda sık erişimli, seyrek erişimli veya arşiv erişim katmanlarına yönelik katmanlamayı desteklememektedir.
 
 ### <a name="filestorage-accounts"></a>Dosya depolama hesapları
 
@@ -99,9 +99,9 @@ Azure depolama, Blok Blobu verilerine erişim için kullanım desenlerine göre 
 
 Kullanılabilir erişim katmanları şunlardır:
 
-* Depolama hesabındaki nesnelere sık sık erişim için optimize edilmiş **etkin** erişim katmanı. Sık erişimli katmanda verilere erişmek, depolama maliyetlerinin daha yüksektir. Yeni depolama hesapları varsayılan olarak sık erişimli katmanda oluşturulur.
-* Seyrek erişilen ve en az 30 gün içinde depolanan büyük miktarlarda veriyi depolamak için optimize **edilmiş, seyrek erişimli erişim** katmanı. Seyrek Erişimli katmanda verilerin depolanması daha uygun maliyetli bir işlemdir, ancak bu verilere erişilmesi, sık erişimli katmandaki verilere erişmenin daha pahalı olabilir.
-* Yalnızca bireysel blok Blobları için kullanılabilen **Arşiv** katmanı. Arşiv katmanı, birkaç saatlik alma gecikmesini kabul eden veriler için iyileştirilmiştir ve arşiv katmanında en az 180 gün boyunca kalır. Arşiv katmanı, verilerin depolanması için en uygun maliyetli seçenektir, ancak bu verilere erişmek, sık veya seyrek katmanlardaki verilere erişmenin daha pahalıdır.
+* **Sık** erişimli erişim katmanı. Bu katman, depolama hesabındaki nesnelere sık sık erişim için iyileştirilmiştir. Sık erişimli katmanda verilere erişmek, depolama maliyetlerinin daha yüksektir. Yeni depolama hesapları varsayılan olarak sık erişimli katmanda oluşturulur.
+* Seyrek **erişimli erişim** katmanı. Bu katman, seyrek erişilen ve en az 30 gün içinde depolanan büyük miktardaki verileri depolamak için iyileştirilmiştir. Seyrek Erişimli katmanda verilerin depolanması daha uygun maliyetli bir işlemdir, ancak bu verilere erişilmesi, sık erişimli katmandaki verilere erişmenin daha pahalı olabilir.
+* **Arşiv** katmanı. Bu katman yalnızca bireysel blok Blobları için kullanılabilir. Arşiv katmanı, birkaç saatlik alma gecikmesini kabul eden ve arşiv katmanında en az 180 gün kalacak olan veriler için iyileştirilmiştir. Arşiv katmanı, verileri depolamak için en ekonomik seçenektir. Ancak, verilere erişmek, sık veya seyrek katmanlardaki verilere erişmenin daha pahalıdır.
 
 Verilerinizin kullanım düzeninde bir değişiklik varsa, bu erişim katmanları arasında istediğiniz zaman geçiş yapabilirsiniz. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 
@@ -132,7 +132,7 @@ Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. A
 > [!NOTE]
 > Blok Blobu ve BLOB depolama hesapları yalnızca blob hizmeti uç noktasını kullanıma sunar.
 
-Depolama hesabındaki bir nesneye erişim URL 'SI, nesnenin depolama hesabındaki konumu uç noktaya eklenerek oluşturulur. Örneğin bir blob adresi şu biçimde olabilir: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+Depolama hesabındaki nesnenin konumunu uç noktaya ekleyerek bir depolama hesabındaki bir nesneye erişmek için URL oluşturun. Örneğin bir blob adresi şu biçimde olabilir: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
 Ayrıca, depolama hesabınızı Bloblar için özel bir etki alanı kullanacak şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama hesabınız için özel etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).  
 
@@ -140,7 +140,7 @@ Ayrıca, depolama hesabınızı Bloblar için özel bir etki alanı kullanacak �
 
 Varsayılan olarak, hesabınızdaki veriler yalnızca siz, yani hesap sahibi tarafından kullanılabilir. Verilerinize kimlerin erişebileceğini ve sahip oldukları izinleri denetleyin.
 
-Depolama hesabınızda yapılan her isteği yetkilendirmelidir. Hizmet düzeyinde istek, hizmeti yürütmeden önce isteği doğrulamak için gereken tüm bilgileri içeren geçerli bir *Yetkilendirme* üst bilgisi içermelidir.
+Depolama hesabınızda yapılan her isteği yetkilendirmelidir. Hizmetin düzeyinde, istek geçerli bir *Yetkilendirme* üst bilgisi içermelidir. Özellikle, bu üst bilgi, hizmeti yürütmeden önce isteği doğrulamak için gerekli tüm bilgileri içerir.
 
 Aşağıdaki yaklaşımlardan herhangi birini kullanarak Depolama hesabınızdaki verilere erişim izni verebilirsiniz:
 
@@ -157,7 +157,7 @@ Aşağıdaki yaklaşımlardan herhangi birini kullanarak Depolama hesabınızdak
 
 Microsoft, verilerinizi şirket içi depolama cihazlarından veya üçüncü taraf bulut depolama sağlayıcılardan içeri aktarmaya yönelik yardımcı programlar ve kitaplıklar sağlar. Kullandığınız çözüm, aktardığınız veri miktarına bağlıdır. 
 
-Genel amaçlı v1 veya blob depolama hesabından genel amaçlı bir v2 hesabına yükselttiğinizde, verileriniz otomatik olarak geçirilir. Microsoft, hesabınızı yükseltmek için bu patika önerir. Ancak, verileri genel amaçlı v1 hesabından bir BLOB depolama hesabına taşımaya karar verirseniz, aşağıda açıklanan araçları ve kitaplıkları kullanarak verilerinizi el ile geçirmeniz gerekir. 
+Genel amaçlı v1 veya blob depolama hesabından genel amaçlı bir v2 hesabına yükselttiğinizde, verileriniz otomatik olarak geçirilir. Microsoft, hesabınızı yükseltmek için bu patika önerir. Ancak, verileri genel amaçlı v1 hesabından bir BLOB depolama hesabına taşımaya karar verirseniz, aşağıda açıklanan araçları ve kitaplıkları kullanarak verilerinizi el ile geçirebilirsiniz. 
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -165,22 +165,16 @@ AzCopy, verilerin Azure Storage’a ve Azure Storage’dan yüksek performansla 
 
 ### <a name="data-movement-library"></a>Veri hareketi kitaplığı
 
-.NET için Azure Depolama veri taşıma kitaplığı, AzCopy’yi çalıştıran çekirdek veri taşıma altyapısını temel alır. Kitaplık, AzCopy’ye benzer yüksek performanslı, güvenilir ve kolay veri aktarımı işlemleri için tasarlanmıştır. Bunu kullanarak AzCopy’nin dış örneklerini çalıştırmanıza ve izlemenize gerek kalmadan, AzCopy tarafından uygulamanızda yerel olarak sağlanan özelliklerden tam olarak faydalanabilirsiniz. Daha fazla bilgi için bkz. [.Net için Azure Storage Veri Hareketi Kitaplığı](https://github.com/Azure/azure-storage-net-data-movement)
+.NET için Azure Depolama veri taşıma kitaplığı, AzCopy’yi çalıştıran çekirdek veri taşıma altyapısını temel alır. Kitaplık, AzCopy’ye benzer yüksek performanslı, güvenilir ve kolay veri aktarımı işlemleri için tasarlanmıştır. AzCopy özelliklerinden yerel olarak yararlanmak için veri taşıma kitaplığını kullanabilirsiniz. Daha fazla bilgi için bkz. [.net Için Azure Storage veri taşıma kitaplığı](https://github.com/Azure/azure-storage-net-data-movement)
 
 ### <a name="rest-api-or-client-library"></a>REST API’si veya istemci kitaplığı
 
-Azure istemci kitaplıklarından birini ya da Azure Storage hizmetleri REST API’sini kullanarak verilerinizi Blob Storage hesabına geçirmek için özel bir uygulama oluşturabilirsiniz. Azure Storage NET, Java, C++, Node.JS, PHP, Ruby ve Python gibi birden fazla dilde ve platformda zengin istemci kitaplıkları sağlar. İstemci kitaplıkları yeniden deneme mantığı, günlüğe kaydetme ve paralel karşıya yüklemeler gibi gelişmiş özellikler sunar. HTTP/HTTPS istekleri yapan herhangi bir dil tarafından çağrılabilen REST API’sine karşı doğrudan da geliştirebilirsiniz.
+Verilerinizi genel amaçlı v1 depolama hesabından BLOB depolama hesabına geçirmek için özel bir uygulama oluşturabilirsiniz. Azure istemci kitaplıklarından veya Azure Storage Services REST API birini kullanın. Azure Storage NET, Java, C++, Node.JS, PHP, Ruby ve Python gibi birden fazla dilde ve platformda zengin istemci kitaplıkları sağlar. İstemci kitaplıkları yeniden deneme mantığı, günlüğe kaydetme ve paralel karşıya yüklemeler gibi gelişmiş özellikler sunar. HTTP/HTTPS istekleri yapan herhangi bir dil tarafından çağrılabilen REST API’sine karşı doğrudan da geliştirebilirsiniz.
 
 Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Services REST API başvurusu](https://docs.microsoft.com/rest/api/storageservices/). 
 
 > [!IMPORTANT]
 > Bloblar, blobla birlikte istemci tarafı şifreleme depolama şifrelemesiyle ilgili meta veriler kullanılarak depolanır. İstemci tarafı şifreleme ile şifrelenmiş bir blobu kopyalarsanız, kopyalama işleminin başta şifreleme ile ilgili meta veriler olmak üzere blob meta verilerini koruduğundan emin olun. Bir blobu şifreleme meta verileri olmadan kopyalarsanız blob içeriği tekrar alınamaz. Şifrelemeyle ilgili meta veriler hakkında daha fazla bilgi için bkz. [Azure Depolama İstemci Tarafı Şifrelemesi](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-### <a name="azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti
-
-Depolama hesabınıza aktarmak için büyük miktarda veriniz varsa Azure Içeri/dışarı aktarma hizmeti 'ni göz önünde bulundurun. Içeri/dışarı aktarma hizmeti, bir Azure veri merkezine disk sürücüleri göndererek büyük miktarlarda verileri Azure Blob depolama ve Azure dosyalarına güvenli bir şekilde aktarmak için kullanılır. 
-
-Içeri/dışarı aktarma hizmeti ayrıca Azure Blob depolamadan disk sürücülerine veri aktarmak ve şirket içi sitelerinize göndermek için de kullanılabilir. Bir veya daha fazla disk sürücüsünden alınan veriler, Azure Blob depolama veya Azure dosyaları 'na aktarılabilir. Daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
 
 ## <a name="storage-account-billing"></a>Depolama hesabı faturalama
 
@@ -188,6 +182,6 @@ Içeri/dışarı aktarma hizmeti ayrıca Azure Blob depolamadan disk sürücüle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Genel amaçlı bir Azure depolama hesabı oluşturmayı öğrenmek için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
-* BlockBlobStorage hesabı oluşturmayı öğrenmek için bkz. [Blok Blobu depolama hesabı oluşturma](../blobs/storage-blob-create-account-block-blob.md).
-* Var olan bir depolama hesabını yönetmek veya silmek için bkz. [Azure depolama hesaplarını yönetme](storage-account-manage.md).
+* [Depolama hesabı oluşturma](storage-quickstart-create-account.md)
+* [Blok blobu depolama hesabı oluşturma](../blobs/storage-blob-create-account-block-blob.md)
+* [Azure depolama hesaplarını yönetme](storage-account-manage.md)

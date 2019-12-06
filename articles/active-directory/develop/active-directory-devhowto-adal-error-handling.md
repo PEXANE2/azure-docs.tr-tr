@@ -2,25 +2,22 @@
 title: Azure AD kimlik doğrulama kitaplığı (ADAL) istemcileri için en iyi yöntemler işlenirken hata oluştu
 description: ADAL istemci uygulamaları için hata işleme Kılavuzu ve en iyi uygulamalar sağlar.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374200"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845204"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) istemcileri için en iyi yöntemler işlenirken hata oluştu
 
@@ -52,7 +49,7 @@ AcquireTokenSilent, son kullanıcının bir kullanıcı arabirimi (UI) görmedi�
 
 Temelde, AcquireTokenSilent hataların iki durumu vardır:
 
-| Harflerini | Açıklama |
+| Durum | Açıklama |
 |------|-------------|
 | **Durum 1**: etkileşimli bir oturum açma ile hata çözülebilir | Geçerli belirteçlerin olmamasından kaynaklanan hatalar için, etkileşimli bir istek gereklidir. Özellikle, önbellek araması ve geçersiz/zaman aşımına uğradı yenileme belirteci, çözümlemek için bir AcquireToken çağrısı gerektirir.<br><br>Bu durumlarda, son kullanıcıdan oturum açması istenir. Uygulama, Son Kullanıcı etkileşiminden sonra etkileşimli bir istek yapmayı tercih edebilir (bir oturum açma düğmesine veya daha sonra bir oturum açma düğmesine vurmayın). Seçim, uygulamanın istenen davranışına bağlıdır.<br><br>Bu özel durum ve bunu tanılayan hatalar için aşağıdaki bölümde yer alan koda bakın.|
 | **Durum 2**: hataya etkileşimli bir oturum açma ile çözümlenemez | Ağ ve geçici/geçici hatalar veya diğer hatalar için, etkileşimli bir AcquireToken isteği gerçekleştirmek sorunu çözmez. Gereksiz oturum açma istemlerinin yanı sıra son kullanıcıları da rahatsız edebilir. ADAL, AcquireTokenSilent hatalarıyla ilgili birçok hata için otomatik olarak tek bir yeniden denemeye çalışır.<br><br>İstemci uygulaması, daha sonraki bir noktada yeniden denemeye da deneyebilir, ancak uygulama davranışına ve istenen son kullanıcı deneyimine ne zaman ve nasıl bağlı olur. Örneğin, uygulama birkaç dakika sonra veya son kullanıcı eylemine yanıt olarak bir AcquireTokenSilent yeniden deneme gerçekleştirebilir. Anında yeniden deneme uygulamanın azaltılmakta olmasının yanı sıra denenmemelidir.<br><br>Aynı hatayla başarısız olan sonraki bir yeniden deneme, hatayı çözemediğinden, istemcinin AcquireToken kullanan etkileşimli bir istek yapması gerektiği anlamına gelmez.<br><br>Bu özel durum ve bunu tanılayan hatalar için aşağıdaki bölümde yer alan koda bakın. |
@@ -62,7 +59,7 @@ Temelde, AcquireTokenSilent hataların iki durumu vardır:
 Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
 - acquireTokenSilentAsync (...)
-- acquireTokenSilentSync (...) 
+- acquireTokenSilentSync(…) 
 - [kullanım dışı] acquireTokenSilent (...)
 - [kullanım dışı] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +102,7 @@ catch (AdalException e) {
 
 Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- acquireTokenSilentSync (...)
+- acquireTokenSilentSync(…)
 - acquireTokenSilentAsync (...)
 - [kullanım dışı] acquireTokenSilent (...)
 
@@ -577,7 +574,8 @@ window.Logging = {
     }
 };
 ```
-## <a name="related-content"></a>İlgili içerik
+
+## <a name="related-content"></a>İlgili içerikler
 
 * [Azure AD Geliştirici Kılavuzu][AAD-Dev-Guide]
 * [Azure AD kimlik doğrulama kitaplıkları][AAD-Auth-Libraries]

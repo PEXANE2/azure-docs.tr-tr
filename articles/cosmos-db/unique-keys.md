@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB içinde benzersiz anahtarlar kullanın
-description: Azure Cosmos veritabanınızda benzersiz anahtarların nasıl kullanılacağını öğrenin
+description: Azure Cosmos veritabanı için benzersiz anahtarların nasıl tanımlanacağını ve kullanılacağını öğrenin. Bu makalede ayrıca benzersiz anahtarların bir veri bütünlüğü katmanı nasıl ekleneceği açıklanmaktadır.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4a929566d464f8548c4bffeb9f89099e77722e67
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756784"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869842"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 'de benzersiz anahtar kısıtlamaları
 
-Benzersiz anahtarlar bir Azure Cosmos kapsayıcısına veri bütünlüğü katmanı ekler. Azure Cosmos kapsayıcısı oluştururken benzersiz bir anahtar ilkesi oluşturursunuz. Benzersiz anahtarlarla, bir mantıksal bölüm içindeki bir veya daha fazla değerin benzersiz olduğundan emin olun. Ayrıca [bölüm anahtarı](partition-data.md)başına benzersizliği garanti edebilirsiniz. 
+Benzersiz anahtarlar bir Azure Cosmos kapsayıcısına veri bütünlüğü katmanı ekler. Azure Cosmos kapsayıcısı oluştururken benzersiz bir anahtar ilkesi oluşturursunuz. Benzersiz anahtarlarla, bir mantıksal bölüm içindeki bir veya daha fazla değerin benzersiz olduğundan emin olun. Ayrıca [bölüm anahtarı](partition-data.md)başına benzersizliği garanti edebilirsiniz.
 
 Benzersiz anahtar ilkesiyle bir kapsayıcı oluşturduktan sonra, benzersiz anahtar kısıtlaması tarafından belirtilen şekilde, bir mantıksal bölüm içinde yinelenerek yeni veya mevcut bir öğenin güncelleştirilmesi engellenir. Benzersiz anahtarla birlikte birleştirilmiş bölüm anahtarı, kapsayıcının kapsamındaki bir öğenin benzersizlik düzeyini garanti eder.
 
@@ -55,5 +55,5 @@ Yalnızca bir Azure Cosmos kapsayıcısı oluşturduğunuzda, benzersiz anahtarl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Mantıksal bölümler](partition-data.md) hakkında daha fazla bilgi edinin
+* Daha fazla bilgi edinin [mantıksal bölümler](partition-data.md)
 * Kapsayıcı oluştururken [benzersiz anahtarların nasıl tanımlanacağını](how-to-define-unique-keys.md) keşfet

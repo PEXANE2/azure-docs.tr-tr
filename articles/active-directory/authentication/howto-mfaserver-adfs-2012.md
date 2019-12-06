@@ -1,22 +1,22 @@
 ---
-title: Windows Server - Azure Active Directory'de AD FS ile Azure MFA sunucusu
+title: Windows Server 'da AD FS Azure MFA sunucusu-Azure Active Directory
 description: Bu makale Windows Server 2012 R2 ve 2016’da Azure Multi-Factor Authentication ve AD FS’yi kullanmaya başlama işlemini açıklamaktadır.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b38918dc6b80539ef8852aa408cda501958c9b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4b463dad84f2c3ea93fefabdca5141a4b51468c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057435"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848213"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication Sunucusunu Windows Server’da AD FS ile çalışacak şekilde yapılandırma
 
@@ -25,7 +25,7 @@ Active Directory Federasyon Hizmetleri (AD FS) kullanıyorsanız ve bulut ya da 
 Bu makale Windows Server 2012 R2 veya Windows Server 2016’da AD FS ile Multi-Factor Authentication Sunucusu kullanmayı ele alır. Daha fazla bilgi için [AD FS 2.0 ile Azure Multi-Factor Authentication Sunucusu kullanarak bulut ve şirket içi kaynakları güvenli hale getirme](howto-mfaserver-adfs-2.md) konusunu okuyun.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019'dan itibaren Microsoft artık yeni dağıtımlar için MFA sunucusu sunacaktır. Bulut tabanlı Azure multi-Factor Authentication, kullanıcıların multi-Factor authentication gerektirmesine istediğiniz yeni müşteriler kullanmanız gerekir. MFA sunucusu 1 Temmuz'dan önce etkinleştirmiş olan mevcut müşteriler, Gelecekteki güncelleştirmelerin en son sürümü indirip zamanki etkinleştirme kimlik bilgileri oluştur mümkün olacaktır.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu ile Windows Server AD FS’yi güvenli hale getirme
 
@@ -49,7 +49,7 @@ Başlamadan önce, aşağıdaki bilgileri unutmayın:
 3. Kuruluşunuz için belirtmek istediğiniz ek seçenekleri belirleyin.
 4. **AD FS Bağdaştırıcısı’nı Yükle**'ye tıklayın.
 
-   ![ADFS bağdaştırıcısını MFA Server konsolundan yükleme](./media/howto-mfaserver-adfs-2012/server.png)
+   ![MFA sunucusu konsolundan ADFS bağdaştırıcısını yükler](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. Active Directory penceresinin açılması iki anlama gelir. Bilgisayarınız bir etki alanına katıldıysa ve AD FS Bağdaştırıcısı ile Multi-Factor Authentication hizmeti arasındaki hizmeti güvenli hale getirmek üzere Active Directory yapılandırması tamamlanmamıştır. Bu yapılandırmayı otomatik olarak tamamlamak için **İleri** düğmesine tıklayın ya da **Otomatik Active Directory yapılandırmasını atla ve ayarları el ile yapılandır** onay kutusunu işaretleyin. **İleri**’ye tıklayın.
 6. Yerel Grup pencerelerinin açılması iki anlama gelir. Bilgisayarınız bir etki alanına katılmadıysa ve AD FS bağdaştırıcısı ile Multi-Factor Authentication hizmeti arasındaki hizmeti güvenli hale getirmek üzere yerel grup yapılandırması tamamlanmamıştır. Bu yapılandırmayı otomatik olarak tamamlamak için **İleri** düğmesine tıklayın ya da **Otomatik Yerel Grup yapılandırmasını atla ve ayarları el ile yapılandır** onay kutusunu işaretleyin. **İleri**’ye tıklayın.
@@ -84,7 +84,7 @@ Bu noktada Multi-Factor Authentication Sunucusu, AD FS ile birlikte kullanım am
 MultiFactorAuthenticationAdfsAdapter.config dosyasını düzenlemek için aşağıdaki adımları izleyin:
 
 1. **UseWebServiceSdk** düğümünü **true** olarak ayarlayın.  
-2. **WebServiceSdkUrl** değerini Multi-Factor Authentication Web Hizmeti SDK URL’sine ayarlayın. Örneğin: *https:\/\/contoso.com/\<certificatename > /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*burada  *\<certificatename >* sertifikanızın adıdır.  
+2. **WebServiceSdkUrl** değerini Multi-Factor Authentication Web Hizmeti SDK URL’sine ayarlayın. Örneğin: *https:\/\/contoso.com/\<certificatename >/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, burada *\<CertificateName >* , sertifikanızın adıdır.  
 3. `Register-AdfsAuthenticationProvider` komutunun sonuna `-ConfigurationFilePath &lt;path&gt;` ekleyerek Register-MultiFactorAuthenticationAdfsAdapter.ps1 komut dosyasını düzenleyin; burada *&lt;path&gt;* MultiFactorAuthenticationAdfsAdapter.config dosyasının tam yoludur.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Web Hizmeti SDK’sını bir kullanıcı adı ve parola kullanarak yapılandırma
@@ -134,21 +134,21 @@ Bulut kaynağınızın güvenliğini sağlamak için, kullanıcı iki adımlı d
 2. Solda, **Bağlı Olan Taraf Güvenleri**’ni seçin.
 3. **Microsoft Office 365 Kimlik Platformu**’na sağ tıklayın ve **Talep Kurallarını Düzenle…** seçeneğini belirleyin
 
-   ![Konsolunda ADFS talep kurallarını Düzenle](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![ADFS konsolundaki talep kurallarını düzenleme](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
 4. Verme Dönüştürme Kuralları’nda **Kural Ekle**’ye tıklayın.
 
-   ![ADFS konsolunda dönüştürme kuralları Düzenle](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![ADFS konsolundaki dönüşüm kurallarını düzenleme](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. Dönüştürme Kuralı Ekleme Sihirbazı’nda, açılır menüde **Gelen Talep için Geçiş ya da Filtre**’yi seçin ve **İleri**’ye tıklayın.
 
-   ![Dönüşüm talebi Kuralı Ekle Sihirbazı](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![Dönüşüm talebi kuralı Ekle Sihirbazı](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. Kuralınıza bir ad verin.
 7. Gelen talep türü olarak **Kimlik Doğrulama Yöntemleri Başvuruları**’nı seçin.
 8. **Tüm talep değerlerini geçir**’i seçin.
 
-    ![Dönüşüm talebi Kuralı Ekle Sihirbazı](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+    ![Dönüşüm Talebi Kuralı Ekle Sihirbazı](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
 9. **Son**'a tıklayın. AD FS Yönetim Konsolu'nu kapatın.
 

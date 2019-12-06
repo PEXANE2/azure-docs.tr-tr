@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/04/2019
-ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/04/2019
+ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230309"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850083"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -37,7 +37,9 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 > [!NOTE]
 > Hem aracı tabanlı izleme hem de el ile SDK tabanlı izleme algılanırsa, yalnızca el ile izleme ayarları kabul edilir. Bu, yinelenen verilerin gönderilmesini önlemektir. Bu konuda daha fazla bilgi edinmek için aşağıdaki [sorun giderme bölümüne](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) bakın.
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>.NET uygulamaları için aracı tabanlı izlemeyi etkinleştir
+## <a name="enable-agent-based-monitoring"></a>Aracı tabanlı izlemeyi etkinleştir
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > APPINSIGHTS_JAVASCRIPT_ENABLED ve urlCompression birleşimi desteklenmez. Daha fazla bilgi için bkz. [sorun giderme bölümündeki](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)açıklama.
@@ -73,7 +75,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
     * Desteklenen Uyarlamalı örnekleme telemetri işlemcisi ayarlarının listesi için [koda](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) ve [ilişkili belgelere](https://docs.microsoft.com/azure/azure-monitor/app/sampling)başvurabilirsiniz.
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>.NET Core uygulamaları için aracı tabanlı izlemeyi etkinleştir
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
 
@@ -94,14 +96,30 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2
 
     ![Platform başına seçenekleri belirleyin](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>.NET uygulamaları için istemci tarafı izlemeyi etkinleştir
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+App Service Web uygulamanız içinden **Ayarlar** altında Application Insights > **Etkinleştir**' **i seçin** > . Node. js Aracısı tabanlı izleme şu anda önizleme aşamasındadır.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı tabanlı izlemeyi desteklemez. Java uygulamanızda izlemeyi etkinleştirmek için [uygulamanızı el ile el ile](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)yapmanız gerekir.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı tabanlı izlemeyi desteklemez. Python uygulamanız için izlemeyi etkinleştirmek üzere [uygulamanızı el ile el ile](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)yapmanız gerekir.
+
+---
+
+## <a name="enable-client-side-monitoring"></a>İstemci tarafında izlemeyi etkinleştir
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 İstemci tarafı izleme, ASP.NET için kabul edilir. İstemci tarafı izlemeyi etkinleştirmek için:
 
-* **Ayarları** seçin > * * * * uygulama ayarları * * * *
+* Seçin **ayarları** > ** **Uygulama ayarları** **
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
-     ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Değer:`true`
 
@@ -111,7 +129,7 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2
 
 İstemci tarafı izlemeyi devre dışı bırakmak için, uygulama ayarlarından ilişkili anahtar değer çiftini kaldırın ya da değeri false olarak ayarlayın.
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>.NET Core uygulamaları için istemci tarafı izlemeyi etkinleştir
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 İstemci tarafı izleme, ' APPINSIGHTS_JAVASCRIPT_ENABLED ' uygulama ayarının mevcut olup olmamasına bakılmaksızın **Önerilen koleksiyonla**birlikte .NET Core uygulamaları için **Varsayılan olarak etkindir** .
 
@@ -127,6 +145,20 @@ Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
    * Ayarları **Kaydedin** ve uygulamanızı **Yeniden başlatın**.
 
 ![Uygulama ayarları Kullanıcı arabiriminin ekran görüntüsü](./media/azure-web-apps/appinsights-javascript-disabled.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Node. js uygulamanız için istemci tarafı izlemeyi etkinleştirmek üzere, [istemci tarafı JavaScript SDK 'sını uygulamanıza el ile eklemeniz](https://docs.microsoft.com/azure/azure-monitor/app/javascript)gerekir.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java uygulamanız için istemci tarafı izlemeyi etkinleştirmek üzere, [istemci tarafı JavaScript SDK 'sını uygulamanıza el ile eklemeniz](https://docs.microsoft.com/azure/azure-monitor/app/javascript)gerekir.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python uygulamanız için istemci tarafı izlemeyi etkinleştirmek üzere, [istemci tarafı JavaScript SDK 'sını uygulamanıza el ile eklemeniz](https://docs.microsoft.com/azure/azure-monitor/app/javascript)gerekir.
+
+---
 
 ## <a name="automate-monitoring"></a>İzlemeyi otomatikleştirin
 
@@ -322,7 +354,7 @@ Yükseltme, 2.5.1 ' den önceki bir sürümden yapılamıyorsa, uygulama bin kla
 Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar için uzantı/aracı tabanlı izlemeye yönelik adım adım sorun giderme kılavuzumuz aşağıda verilmiştir.
 
 > [!NOTE]
-> Java ve Node. js uygulamaları yalnızca el ile SDK tabanlı araçlar aracılığıyla Azure Uygulama hizmetlerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
+> Java uygulamaları, Azure Uygulama hizmetlerinde yalnızca el ile SDK tabanlı araçlar aracılığıyla desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
 
 1. `ApplicationInsightsAgent`aracılığıyla uygulamanın izlendiğinden emin olun.
     * `ApplicationInsightsAgent_EXTENSION_VERSION` uygulama ayarının "~ 2" değerine ayarlandığını denetleyin.

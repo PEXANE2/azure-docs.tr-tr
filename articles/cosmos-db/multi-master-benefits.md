@@ -1,31 +1,31 @@
 ---
-title: Azure Cosmos DB çok yöneticili avantajları
-description: Azure Cosmos DB'de çok yöneticili avantajlarını öğrenin.
+title: Azure Cosmos DB çoklu yönetici avantajları
+description: Azure Cosmos DB çoklu yönetici 'nin avantajlarını, gecikme ve SLA gereksinimlerinin tek ve birden çok yazma konumlarında karşılaştırılmasını anlayın.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c78e5e4f8d396d777738bddfd6baf086c0b2ecf4
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: b21b6ba82ba1ada0103501b8beeca270df86abd9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789299"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872018"
 ---
-# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Azure Cosmos DB'de çok yöneticili yararlarını
+# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Azure Cosmos DB 'de çok asıllı avantajları anlayın
 
-Cosmos DB hesap operatörleri, gecikme süresi, kullanılabilirlik ve uygulamalarını RTO gereksinimleri sağlamak için uygun genel dağıtım yapılandırmasını seçmeniz gerekir. Azure Cosmos hesapları birden fazla yazma konumları ile yapılandırılmış tek bir yazma konumunu da dahil olmak üzere ile hesapları üzerinden önemli avantajlar sunar, % 99,999 kullanılabilirlik SLA'sı, yazma < 10 ms yazma gecikme süresi SLA'sı 99. yüzdebirlik ve RTO = 0 bölgesel bir olağanüstü durum içinde.
+Cosmos DB hesap işleçleri, uygulamaları için gecikme süresi, kullanılabilirlik ve RTO gereksinimlerini sağlamak üzere uygun küresel dağıtım yapılandırmasını seçmelidir. Birden çok yazma konumuyla yapılandırılan Azure Cosmos hesapları, bölgesel bir olağanüstü durumda% 99,999 yazma kullanılabilirlik SLA 'sı, 10 MS yazma gecikme süresi için 99. yüzdebirlik ve RTO = 0 <.
 
 ## <a name="comparison-of-features"></a>Özelliklerin karşılaştırması
 
-|Uygulama dağıtımı gereksinimi|Birden çok yazma konumları|Tek bir yazma konumu|Not|
+|Uygulama gereksinimi|Birden çok yazma konumu|Tek bir yazma konumu|Not|
 |---|---|---|---|
-|Yazma gecikme süresi SLA'sı < p99 10ms|**Evet**|Hayır|Hesapları tek yazma konumuna sahip ek bölgeler arası ağ gecikme süresi için her bir yazma yansıtılmaz.|
-|Okuma gecikme süresi SLA'sı < p99 10ms|**Evet**|Evet| |
-|% 99,999 SLA'sı yazma|**Evet**|Hayır|Hesapları tek yazma konumuna sahip % 99,99 SLA'sı garanti|
-|RTO = 0|**Evet**|Hayır|Bölgesel bir olağanüstü durumunda yazma işlemleri için kesinti sıfır. RTO 15 dakika, tek bir yazma konumuna sahip hesapları vardır.|
+|P99 adresindeki 10ms < gecikme süresi SLA 'Sı yazın|**Evet**|Hayır|Tek bir yazma konumu olan hesaplar, her yazma için ek bölgeler arası ağ gecikme süresi doğurur.|
+|P99 adresindeki 10ms < gecikme süresi SLA 'sını okuyun|**Evet**|Yes| |
+|% 99,999 SLA 'Sı yaz|**Evet**|Hayır|Tek yazma konumu garanti eden hesaplar% 99,99 SLA|
+|RTO = 0|**Evet**|Hayır|Bölgesel felaetler durumunda yazma işlemleri için sıfır süre. Tek bir yazma konumu olan hesaplar 15 dakikadan fazla.|
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Yine de Azure Cosmos hesabınızdaki EnableMultipleWriteLocations devre dışı bırakmak istiyorsanız, lütfen [bir destek bileti açın](https://azure.microsoft.com/support/create-ticket/).
+Azure Cosmos hesabınızda EnableMultipleWriteLocations 'ı hala devre dışı bırakmak istiyorsanız lütfen [bir destek bileti açın](https://azure.microsoft.com/support/create-ticket/).

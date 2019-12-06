@@ -4,17 +4,17 @@ description: Bu makalede, Azure Güncelleştirme Yönetimi ile çalışmak üzer
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690849"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850423"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Güncelleştirme Yönetimi için Windows Update ayarlarını yapılandırma
 
@@ -34,7 +34,7 @@ $WUSettings.Save()
 
 ## <a name="disable-automatic-installation"></a>Otomatik yüklemeyi devre dışı bırak
 
-Varsayılan olarak, Azure sanal makineler (VM) üzerinde güncelleştirmelerin otomatik olarak yüklenmesi etkinleştirilir. Bu, Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlamadan önce güncelleştirmelerin yüklenmesine neden olabilir. @No__t_0 kayıt defteri anahtarını `1` olarak ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığında bunun nasıl yapılacağı gösterilmektedir:
+Varsayılan olarak, Azure sanal makineler (VM) üzerinde güncelleştirmelerin otomatik olarak yüklenmesi etkinleştirilir. Bu, Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlamadan önce güncelleştirmelerin yüklenmesine neden olabilir. `NoAutoUpdate` kayıt defteri anahtarını `1`olarak ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığında bunun nasıl yapılacağı gösterilmektedir:
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -43,7 +43,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="configure-reboot-settings"></a>Yeniden başlatma ayarlarını yapılandırma
 
-[Yeniden başlatmayı yönetmek için kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) bölümünde listelenen kayıt defteri anahtarları, **güncelleştirme dağıtım** ayarlarında **hiçbir şekilde yeniden başlatma** belirtseniz bile makinelerinizin yeniden başlatılmasına neden olabilir. . Bu kayıt defteri anahtarlarını ortamınıza en uygun şekilde yapılandırmanız gerekir.
+[Yeniden başlatmayı yönetmek için kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) bölümünde listelenen kayıt defteri anahtarları, **güncelleştirme dağıtım** ayarlarında **hiçbir şekilde yeniden başlatma** belirtseniz bile makinelerinizin yeniden başlatılmasına neden olabilir. Bu kayıt defteri anahtarlarını ortamınıza en uygun şekilde yapılandırmanız gerekir.
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Diğer Microsoft ürünleri için güncelleştirmeleri etkinleştir
 

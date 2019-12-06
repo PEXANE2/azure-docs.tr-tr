@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ENDSWITH
-description: Azure Cosmos DB 'deki SQL sistem işlevi ENDSWITH hakkında bilgi edinin.
+description: İlk dize ifadesinin ikinci ile bitip bitmediğini gösteren bir Boole değeri döndürmek için Azure Cosmos DB içindeki ENDSWITH SQL System işlevi hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 37c988d63e597c77bc09a1d21ad391909bb55901
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6b3e692877faab8a8d507a44068d4cdfdc73a916
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351063"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873361"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
  Boole döndürüp döndüremeyeceğini belirten döndürür ilk dize ifade olup olmadığını ve ikinci sona erer.  
@@ -29,7 +29,7 @@ ENDSWITH(<str_expr1>, <str_expr2>)
    Bir dize ifadesidir.  
   
 *str_expr2*  
-   , *Str_expr1*sonuna kıyasla bir dize ifadesidir.  
+   *Str_expr1*sonuna kıyasla bir dize ifadesi.  
   
 ## <a name="return-types"></a>Dönüş türleri
   

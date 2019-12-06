@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7176101a1e6c1da54ddd8b5f22b61b91fbc5115a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267934"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869332"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin
 
@@ -36,11 +36,11 @@ Kuruluşunuzun dış işbirliği ayarlarının, konukları davet etmenize izin v
 Dizine B2B işbirliği kullanıcıları eklemek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) , sınırlı bir yönetici dizin rolü veya konuk davet eden rolü atanan bir kullanıcı olarak oturum açın.
-2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+2. Herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 3. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
 4. **Yeni konuk kullanıcı**’yı seçin.
 
-   ![Yeni Konuk kullanıcının Kullanıcı arabiriminde nerede olduğunu gösterir](./media/add-users-administrator/NewGuestUser-Directory.png) 
+   ![Yeni Konuk kullanıcının Kullanıcı arabiriminde nerede olduğunu gösterir](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
    > [!NOTE]
    > **Yeni Konuk Kullanıcı** seçeneği de **Kuruluş ilişkileri** sayfasında bulunur. **Azure Active Directory**, **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
@@ -63,14 +63,14 @@ Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk
 
 ![, Konuk Kullanıcı türüne sahip B2B kullanıcısını gösterir](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Konuk kullanıcıları gruba ekleme
+## <a name="add-guest-users-to-a-group"></a>Gruba konuk kullanıcılar ekleme
 B2B işbirliği kullanıcılarını bir gruba el ile eklemeniz gerekiyorsa, şu adımları izleyin:
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+2. Herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 3. **Yönet**altında **gruplar**' ı seçin.
 4. Bir grup seçin (veya yeni bir grup oluşturmak için **Yeni Grup** ' a tıklayın). Grubun B2B Konuk kullanıcılarını içerdiğini grup açıklamasına eklemek iyi bir fikirdir.
-5. **Üyeler**' i seçin. 
+5. **Üyeler**’i seçin. 
 6. Aşağıdakilerden birini yapın:
    - Konuk Kullanıcı dizinde zaten mevcutsa, B2B kullanıcısı için arama yapın. Kullanıcıyı seçin ve ardından kullanıcıyı gruba eklemek için **Seç** ' e tıklayın.
    - Konuk Kullanıcı zaten dizinde yoksa, arama kutusuna e-posta adresini yazarak, isteğe bağlı bir kişisel ileti yazıp **Seç**' e tıklayarak onları gruba davet edin. Davet otomatik olarak davet edilen kullanıcıya gider.
@@ -79,19 +79,19 @@ B2B işbirliği kullanıcılarını bir gruba el ile eklemeniz gerekiyorsa, şu 
    
 Ayrıca, Azure AD B2B işbirliğiyle dinamik grupları kullanabilirsiniz. Daha fazla bilgi için bkz. [Dinamik Gruplar ve B2B işbirliği Azure Active Directory](use-dynamic-groups.md).
 
-## <a name="add-guest-users-to-an-application"></a>Bir uygulamaya Konuk kullanıcılar ekleme
+## <a name="add-guest-users-to-an-application"></a>Uygulamaya konuk kullanıcılar ekleme
 
 Bir uygulamaya B2B işbirliği kullanıcıları eklemek için aşağıdaki adımları izleyin:
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+2. Herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 3. **Yönet**' ın altında **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 4. Konuk kullanıcıları eklemek istediğiniz uygulamayı seçin.
 5. Uygulamanın panosunda, **Kullanıcılar ve gruplar** bölmesini açmak Için **Toplam Kullanıcı** ' yı seçin.
 
     ![Açık kullanıcılar ve gruplar eklemek için Toplam Kullanıcı düğmesi](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. **Kullanıcı Ekle**' yi seçin.
+6. **Kullanıcı ekle**'yi seçin.
 7. **Atama Ekle**altında **Kullanıcı ve gruplar**' ı seçin.
 8. Aşağıdakilerden birini yapın:
    - Konuk Kullanıcı dizinde zaten mevcutsa, B2B kullanıcısı için arama yapın. Kullanıcıyı seçin, **Seç**' e tıklayın ve ardından kullanıcıyı uygulamaya eklemek için **ata** ' ya tıklayın.
@@ -107,18 +107,18 @@ Bir uygulamaya B2B işbirliği kullanıcıları eklemek için aşağıdaki adım
    - **Seç**'e tıklayın.
    - **Ata**'ya tıklayın.
  
-## <a name="resend-invitations-to-guest-users"></a>Davetleri Konuk kullanıcılara yeniden gönder
+## <a name="resend-invitations-to-guest-users"></a>Konuk kullanıcılara davetleri yeniden gönderme
 
 Bir Konuk Kullanıcı henüz davetini henüz kullanmıyorsanız, davet e-postasını yeniden gönderebilirsiniz.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+2. Herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 3. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
 5. Kullanıcı hesabını seçin.
 6. **Yönet**altında **profil**' i seçin.
 7. Kullanıcı daveti henüz kabul etmediyse **daveti yeniden gönder** seçeneği kullanılabilir. Yeniden göndermek için bu düğmeyi seçin.
 
-   ![Kullanıcı profilindeki daveti yeniden gönder](./media/add-users-administrator/Resend-Invitation.png)
+   ![Kullanıcı profilindeki daveti yeniden gönder](./media/add-users-administrator/b2b-user-resend-invitation.png)
 
 > [!NOTE]
 > Kullanıcıyı ilk olarak belirli bir uygulamaya yönlendiren bir daveti yeniden gönderebilirsiniz, yeni davetteki bağlantının kullanıcıyı bunun yerine en üst düzey erişim paneline aldığını anlayın.

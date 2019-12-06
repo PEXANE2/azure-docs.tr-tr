@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707246"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851511"
 ---
 # <a name="onboarding-and-installing"></a>Ekleme ve yükleme
 
@@ -31,23 +31,23 @@ Microsoft Güvenlik kodu çözümlemesi ile çalışmaya başlama önkoşulları
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu çözümleme uzantısını ekleme
 
 - Aşağıdaki destek tekliflerinden birine sahipseniz, uzantıya erişim sağlamak için mevcut saatleri satın almak veya değiştirmek üzere teknik hesap yöneticinize başvurun:
-   - Birleşik destek Gelişmiş katmanı
-   - Birleşik destek performans katmanı
-   - Geliştiriciler için Premier Destek
-   - Iş ortakları için Premier Destek
-   - Enterprise için Premier Destek
+  - Birleşik destek Gelişmiş katmanı
+  - Birleşik destek performans katmanı
+  - Geliştiriciler için Premier Destek
+  - Iş ortakları için Premier Destek
+  - Enterprise için Premier Destek
 - Aşağıdaki destek hizmetlerinden birine sahipseniz veya Microsoft Destek planına sahip değilseniz, uygun bir destek teklifine yükseltmeniz gerekir:
-   - İş Ortakları İçin Azure Desteği
-   - Azure Temel Desteği
-   - Azure Geliştirici Desteği
-   - Azure Standart Destek
-   - Azure Profesyonel Doğrudan
-   - Birleşik destek Core katmanı
+  - İş Ortakları İçin Azure Desteği
+  - Azure Temel Desteği
+  - Azure Geliştirici Desteği
+  - Azure Standart Destek
+  - Azure Profesyonel Doğrudan
+  - Birleşik destek Core katmanı
 - Uygun bir destek teklifi satın almak için [Destek Hizmetleri giriş sayfamıza](https://www.microsoft.com/enterprise/services/support)gidin.
 - Bir destek sözleşmesi olduktan sonra, başlamanıza ve tüm gerekli ayrıntıları toplamamıza yardımcı olması için teknik hesap yöneticinize başvurun.
 
 >[!NOTE]
-> Microsoft Iş ortakları ağı 'nda kayıtlı bir iş ortağıysanız Iş ortakları için Premier Destek satın alma yetkiniz vardır. Aksi takdirde, daha önce bahsedilen uygun destek tekliflerinden birini satın almanız gerekir.
+>Destek sözleşmeniz yoksa, Birleşik destek planını satın almak zorunda kalmadan uzantıyı satın almak için 3. taraf iş ortaklarından faydalanabileceğiniz bir Iş ortağı satın alma programı üzerinde de çalışıyoruz. Lütfen [bize e-posta gönderin](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). Bu seçenekle ilgilendiğinizi bize bildirmek için. İlginizi çekeceğiz ve bu seçenek kullanılabilir duruma geldiğinde size geri dönebilirsiniz.
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu analizi uzantısını yükleme
 
@@ -61,7 +61,7 @@ Microsoft Güvenlik kodu çözümlemesi ile çalışmaya başlama önkoşulları
 >[!NOTE]
 > Uzantıyı yükleme erişiminiz olmasa bile, yükleme adımlarıyla devam edin. Yükleme işlemi sırasında Azure DevOps kuruluş yöneticinizden erişim isteğinde bulabilirsiniz.
 
-Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünür ve Azure işlem hatlarınızı eklemek için kullanılabilir.
+Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünür ve Azure Pipelines eklemek için kullanılabilir.
 
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Azure DevOps işlem hattınızla belirli derleme görevleri ekleme
 
@@ -73,7 +73,7 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
 1. **+** ' yi seçin ve **Görevler Ekle** bölmesine gidin.
 1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
 1. Görev için gereken parametreleri belirtin.
-1. Yeni bir derlemeyi kuyruğa al.
+1. Yeni bir yapıyı sıraya alın.
    >[!NOTE]
    >Dosya ve klasör yolları, kaynak deponuzdaki köke göre değişir. Çıkış dosyalarını ve klasörlerini parametre olarak belirtirseniz, bunlar derleme aracısında tanımlamış olduğumuz ortak konumla değiştirilmiştir.
 
@@ -87,6 +87,6 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yapı görevlerini yapılandırma hakkında daha fazla bilgi için [yapılandırma kılavuzumuza](security-code-analysis-customize.md)bakın.
+Yapı görevlerini yapılandırma hakkında daha fazla bilgi için bkz. [yapılandırma kılavuzumuzu](security-code-analysis-customize.md) veya [YAML yapılandırma kılavuzu](yaml-configuration.md).
 
 Uzantı ve sunulan araçlar hakkında daha fazla sorunuz varsa, [SSS sayfamıza](security-code-analysis-faq.md)göz atın.

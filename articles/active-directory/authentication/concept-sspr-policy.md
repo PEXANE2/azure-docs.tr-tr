@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381911"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848553"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve kısıtlamaları
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory’deki parola ilkeleri ve kısıtlamaları
 
 Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesaplarıyla ilişkili parola ilkeleri ve karmaşıklık gereksinimleri açıklanmaktadır.
 
@@ -32,24 +32,24 @@ Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesap
 
 * Aşağıdaki Azure Yönetici rollerinin tümü etkilenir:
   * Yardım Masası Yöneticisi
-  * Hizmet desteği Yöneticisi
+  * Hizmet desteği yöneticisi
   * Faturalama yöneticisi
   * Partner Tier1 Desteği
   * Partner Tier2 Desteği
-  * Exchange Yöneticisi
-  * Skype Kurumsal Yöneticisi
+  * Exchange yöneticisi
+  * Skype Kurumsal yöneticisi
   * Kullanıcı Yöneticisi
   * Dizin yazarları
   * Genel yönetici veya Şirket Yöneticisi
   * SharePoint yöneticisi
   * Uyumluluk Yöneticisi
-  * Uygulama Yöneticisi
+  * Uygulama yöneticisi
   * Güvenlik yöneticisi
   * Ayrıcalıklı rol yöneticisi
-  * Intune Yöneticisi
+  * Intune yöneticisi
   * Uygulama Proxy Hizmeti Yöneticisi
   * Dynamics 365 Yöneticisi
-  * Power BI hizmeti Yöneticisi
+  * Power BI hizmet yöneticisi
   * Kimlik doğrulama Yöneticisi
   * Ayrıcalıklı kimlik doğrulama Yöneticisi
 
@@ -57,7 +57,7 @@ Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesap
 * Contoso.com gibi bir gösterim etki alanı vardır. veya
 * Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 Tek bir geçit ilkesi, bir e-posta adresi *veya* telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
 
@@ -71,7 +71,7 @@ Azure AD 'de oturum açması gereken her kullanıcı hesabının, hesabıyla ili
 
 | Özellik | UserPrincipalName gereksinimleri |
 | --- | --- |
-| İzin verilen karakterler |<ul> <li>A – Z</li> <li>a-z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
+| İzin verilen karakterler |<ul> <li>A – Z</li> <li>a-z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | Karakterlere izin verilmiyor |<ul> <li>Etki alanından Kullanıcı adını ayırmayan herhangi bir "\@\" karakteri.</li> <li>"\@\" simgesinden hemen önce". "nokta karakterini içeremez</li></ul> |
 | Uzunluk kısıtlamaları |<ul> <li>Toplam uzunluk 113 karakterden uzun olmamalıdır</li><li>"\@\" simgesinden önce en fazla 64 karakter olabilir</li><li>"\@\" simgesinden sonra en fazla 48 karakter olabilir</li></ul> |
 

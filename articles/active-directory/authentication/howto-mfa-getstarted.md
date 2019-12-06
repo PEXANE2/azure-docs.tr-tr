@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558547"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848400"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama
 
@@ -283,12 +283,12 @@ MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında 
 
 Bu ayarın amacı, bir Kullanıcı MFA 'ya kaydolmadıysa ne yapılacağını belirlemektir. Bu ayarı değiştirmenin etkileri aşağıdaki tabloda listelenmiştir.
 
-| Ayarlar | Kullanıcı MFA durumu | Lerinizi |
+| Ayarlar | Kullanıcı MFA durumu | Etkiler |
 | --- | --- | --- |
 | Anahtar yok | Kaydedilmedi | MFA sınaması başarısız |
 | Değer true olarak ayarlandı/ayarlanmadı | Kaydedilmedi | MFA sınaması başarısız |
 | Anahtar false olarak ayarlandı | Kaydedilmedi | MFA olmadan kimlik doğrulama |
-| Anahtar yanlış veya doğru olarak ayarlandı | Kaydedilebilir | MFA ile kimlik doğrulaması yapılmalıdır |
+| Anahtar yanlış veya doğru olarak ayarlandı | Kaydedildi | MFA ile kimlik doğrulaması yapılmalıdır |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Active Directory Federasyon Hizmetleri (AD FS) ile tümleştirin
 

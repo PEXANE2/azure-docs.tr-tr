@@ -1,56 +1,56 @@
 ---
-title: Drone canlandırın al
-description: İş ortaklarından drtek canlandırın 'nin nasıl alınacağını açıklar
+title: Dron görüntülerini alma
+description: Bu makalede, iş ortaklarından drone Imagery 'nin nasıl alınacağı açıklanır.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6ee4391369744f966ce273697e5ba9e7f0590edd
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 899abc4529e4ca24a4d8c6334d458c968a1fcffa
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890988"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851256"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Drone iş ortaklarından drone canlandırın al
 
-Bu makalede, içindeki IBir Imagery iş ortakınızdan ormozaik verileri Azure Farmtts veri merkezine nasıl getirebileceğinizi açıklanmaktadır. Ormozaik, geometrik olarak düzeltilen ve drone tarafından toplanan verilerden alınan bir havadan oluşan bir çizim/görüntüdür.
+Bu makalede, drone Imagery iş ortakınızdan Azure Farmrets veri hub 'ına dikmozaik verileri nasıl getirebileceğinizi açıklanmaktadır. Ormozaik, geometrik olarak düzeltilen ve bir drone tarafından toplanan verilerden alınan bir havadan oluşan çizim veya görüntüdür.
 
-Şu anda aşağıdaki Imagery iş ortakları desteklenmektedir.
+Şu anda aşağıdaki Imagery iş ortakları desteklenir.
 
-  ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
+  ![Farmtts drone canlandırın iş ortakları](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
 
-Azure farmile drone canlandırın verilerini tümleştirmek, grubunuzda veri hub 'ında yaptığınız drone fışıklardan ormozaik veri almanıza yardımcı olur. Veriler kullanılabilir olduktan sonra, bu verileri Farmtts hızlandırıcısında görüntüleyebilir ve Data Fusion ve AI/ML model oluşturma için de kullanılabilir.
+Azure farmile drone canlandırın verilerini tümleştirmek, grubunuzda veri hub 'ında yaptığınız drone fışıklardan ormozaik veri almanıza yardımcı olur. Veriler kullanılabilir olduktan sonra, bunu Farmtts Hızlandırıcısı 'nda görüntüleyebilirsiniz. Veriler, veri Fusion ve yapay zeka ve makine öğrenimi model oluşturma için kullanılabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-  - Azure Farmtempts 'yi dağıttığınızdan emin olun. Dağıtmak için, bkz. [Farmtts dağıtımı](prepare-for-deployment.md).
-  - Farmtts sisteminizde tanımlanmış gruba (drbir imagery istediğiniz) sahip olduğunuzdan emin olun.
+  - Azure Farmtts 'yi dağıttığınızdan emin olun. Farmtts dağıtma hakkında daha fazla bilgi için bkz. [Farmtempts dağıtma](prepare-for-deployment.md).
+  - Farmtts sisteminizde tanımlanmış drone canlandırın 'yi istediğiniz gruba sahip olduğunuzdan emin olun.
 
-## <a name="enable-drone-imagery-integration-with-farmbeats"></a>Farmıts ile drone Imagery tümleştirmesini etkinleştirme   
+## <a name="enable-drone-imagery-integration-with-farmbeats"></a>Farmıts ile drone Imagery tümleştirmesini etkinleştirme 
 
-Farmtempts ile tümleştirmeyi etkinleştirmek için cihaz sağlayıcınıza aşağıdaki bilgileri sağlamanız gerekir:  
- - API Uç Noktası  
- - Kiracı Kimliği  
- - İstemci Kimliği  
- - İstemci parolası  
+Farmtempts ile tümleştirmeyi etkinleştirmek için cihaz sağlayıcınıza aşağıdaki bilgileri sağlayın: 
+ - API uç noktası 
+ - Kiracı Kimliği 
+ - İstemci Kimliği 
+ - Gizli anahtar 
 
-Aşağıdaki adımları kullanın:
+Şu adımları izleyin.
 
-1. Bu [betiği](https://aka.ms/farmbeatspartnerscript) indirip yerel sürücünüzde ayıklayın. Bu ZIP dosyası içinde iki dosya bulacaksınız.  
-2. [Azure Portal](https://portal.azure.com/) oturum açın ve Cloud Shell açın (Bu seçenek portalın sağ üst çubuğunda bulunur).   
+1. Bu [betiği](https://aka.ms/farmbeatspartnerscript)indirip yerel sürücünüze ayıklayın. ZIP dosyasının içinde iki dosya bulunur. 
+2. [Azure portalında](https://portal.azure.com/) oturum açın ve Azure Cloud Shell'i açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur.
 
-    ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Portalın sağ üst çubuğunda Azure Cloud Shell açın](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Ortamın **PowerShell** olarak ayarlandığından emin olun
+3. Ortamın **PowerShell**olarak ayarlandığından emin olun.
 
-    ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/power-shell-new-1.png)
+    ![PowerShell ayarı](./media/get-drone-imagery-from-drone-partner/power-shell-new-1.png)
 
-4. Cloud Shell indirdiğiniz iki dosyayı karşıya yükleyin (yukarıdaki 1. adım).  
+4. Cloud Shell örneğindeki 1. adımdan indirdiğiniz iki dosyayı karşıya yükleyin. 
 
-    ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
+    ![Dosyaları karşıya yükleme](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
 
-5. Dosyaların karşıya yüklendiği dizine gidin. (Varsayılan olarak, > Kullanıcı adı giriş dizinine yüklenir.)  
+5. Dosyaların karşıya yüklendiği dizine gidin. Varsayılan olarak, Kullanıcı adı altında ana dizine yüklenir. 
 6. Şu betiği çalıştırın:
 
     ```azurepowershell-interactive 
@@ -61,34 +61,34 @@ Aşağıdaki adımları kullanın:
 
 7. API uç noktası, kiracı KIMLIĞI, Istemci KIMLIĞI, Istemci gizli anahtarı ve EventHub bağlantı dizesinin değerlerini yakalamak için ekran yönergelerini izleyin.
 
-    Gerekli kimlik bilgilerini ortağın drone yazılım sistemine girdikten sonra, tüm grupları Farmtts sisteminden içeri aktarabilir ve Grup ayrıntılarını kullanarak uçuş yolu planlamasını ve drone görüntü koleksiyonunuzu gerçekleştirebilirsiniz.
+    Gerekli kimlik bilgilerini ortağın drone yazılım sistemine girdikten sonra, tüm grupları Farmtts sisteminden içeri aktarabilirsiniz. Ardından, uçuş yolu planlama ve drone görüntü koleksiyonunuzu yapmak için Grup ayrıntılarını kullanabilirsiniz.
 
     Ham görüntüler, drone sağlayıcılarının yazılımı tarafından işlendikten sonra, drone yazılım sistemi, veri merkezine, bulunan ormozaik ve diğer işlenen görüntüleri yükler.
 
 ## <a name="view-drone-imagery"></a>Drone canlandırın 'yi görüntüle
 
-Veriler Farmtts veri merkezine gönderildikten sonra, Farmtts veri merkezi API 'Lerini kullanarak sahne mağazasını sorgulayabilmelisiniz.
+Veriler, Farmtts veri merkezine gönderildikten sonra, Farmtts Datahub API 'Lerini kullanarak sahne mağazasını sorgulayabilirsiniz.
 
-Alternatif olarak, **Grup ayrıntıları** sayfasında en son drone görüntüsünü görüntüleyebilmelisiniz. Görüntülemek için şu adımları izleyin:  
+Alternatif olarak, en son drone görüntüsünü **Grup ayrıntıları** sayfasında görüntüleyebilirsiniz. Görüntüyü görüntülemek için adımları izleyin. 
 
-1. Canlandırın 'nizin karşıya yüklendiği grubu seçin. **Grup** ayrıntıları sayfası görüntülenir.
+1. Imagery 'nizin karşıya yüklendiği grubu seçin. **Grup** ayrıntıları sayfası görüntülenir.
 2. En son **duyarlık haritaları** bölümüne gidin.
-3. Görüntüyü **drone Imagery** bölümünde görüntüleyebilmelisiniz.
+3. **IBir Imagery** bölümünde görüntüyü görüntüleyin.
 
-    ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/drone-imagery-1.png)
+    ![Drone Imagery bölümü](./media/get-drone-imagery-from-drone-partner/drone-imagery-1.png)
 
 ## <a name="download-drone-imagery"></a>Drone canlandırın 'yi indirin
 
 Drone Imagery bölümünü seçtiğinizde, drone diklik 'in yüksek çözünürlüklü görüntüsünü göstermek için bir açılır pencere açılır.
 
-![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/download-drone-imagery-1.png)
+![Yüksek çözünürlüklü dikmozaik](./media/get-drone-imagery-from-drone-partner/download-drone-imagery-1.png)
 
 ## <a name="view-all-drone-maps"></a>Tüm drone haritalarını görüntüle
 
-Drone sağlayıcısı tarafından karşıya yüklenen dosyalar ve görüntüler haritalar bölümünde görünür. **Haritalar** bölümünü seçin, **gruba** göre filtreleyin ve görüntülemek ve indirmek için uygun dosyaları seçin:
+Drone sağlayıcısı tarafından karşıya yüklenen dosyalar ve görüntüler **haritalar** bölümünde görünür. **Haritalar** bölümünü seçin, **gruba**göre filtreleyin ve görüntülemek ve indirmek için uygun dosyaları seçin.
 
-  ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/view-drone-maps-1.png)
+  ![Haritalar bölümü](./media/get-drone-imagery-from-drone-partner/view-drone-maps-1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tek bir imagerinizi almak için Farmtts veri merkezi [API 'lerini](references-for-farmbeats.md#rest-api) nasıl kullanacağınızı öğrenin.
+Tek bir imagere 'yi almak için Farmtts veri hub 'ı [API 'lerini](references-for-farmbeats.md#rest-api) nasıl kullanacağınızı öğrenin.

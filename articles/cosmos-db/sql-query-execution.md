@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 'de SQL sorgusu yürütme
-description: Azure Cosmos DB 'de SQL sorgu yürütme hakkında bilgi edinin
+description: Azure Cosmos DB bir SQL sorgusu oluşturmayı ve bunu nasıl çalıştıracağınızı öğrenin. Bu makalede REST API, .NET SDK, JavaScript SDK ve çeşitli diğer SDK 'lar kullanılarak SQL sorgusu oluşturma ve yürütme açıklanır.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999924"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871270"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>SQL sorgu yürütmeyi Azure Cosmos DB
 
@@ -23,9 +23,9 @@ Aşağıdaki örneklerde bir sorgu oluşturma ve Cosmos veritabanı hesabına g�
 
 Cosmos DB, HTTP üzerinden açık bir RESTful programlama modeli sunar. Kaynak modeli, bir Azure aboneliğinin sağlamasını sağlayan bir veritabanı hesabı altındaki bir kaynak kümesinden oluşur. Veritabanı hesabı, her biri birden çok *kapsayıcı*içerebilen bir *veritabanı*kümesinden oluşur. Bu, *öğeleri*, UDF 'leri ve diğer kaynak türlerini içerir. Her Cosmos DB kaynak, mantıksal ve kararlı bir URI kullanılarak adreslenedir. Bir dizi kaynağa *akış*denir. 
 
-Bu kaynaklarla temel etkileşim modeli,, `GET`, ve `DELETE`standart yorumlarıyla birlikte `PUT`http `POST`fiilleri üzerinden yapılır. Yeni `POST` bir kaynak oluşturmak, saklı yordamı yürütmek veya Cosmos DB bir sorgu vermek için kullanın. Sorgu her zaman salt okunur yan etkileri olan işlemlerdir.
+Bu kaynaklarla temel etkileşim modeli, standart yorumlarıyla birlikte `GET`, `PUT`, `POST`ve `DELETE`HTTP fiilleri üzerinden yapılır. Yeni bir kaynak oluşturmak, saklı yordamı yürütmek veya Cosmos DB bir sorgu vermek için `POST` kullanın. Sorgu her zaman salt okunur yan etkileri olan işlemlerdir.
 
-Aşağıdaki örneklerde örnek öğeler için `POST` bir SQL API sorgusu gösterilmektedir. Sorgunun JSON `name` özelliğinde basit bir filtresi vardır. Ve Content-Type: `application/query+json` Headers işlemin bir sorgu olduğunu gösterir. `x-ms-documentdb-isquery` Cosmos DB `mysqlapicosmosdb.documents.azure.com:443` hesabınız için URI ile değiştirin.
+Aşağıdaki örneklerde, örnek öğelerde bir SQL API sorgusunun `POST` gösterilmektedir. Sorgunun JSON `name` özelliğinde basit bir filtresi vardır. `x-ms-documentdb-isquery` ve Content-Type: `application/query+json` üstbilgileri işlemin bir sorgu olduğunu gösterir. `mysqlapicosmosdb.documents.azure.com:443`, Cosmos DB hesabınız için URI ile değiştirin.
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -41,7 +41,7 @@ Aşağıdaki örneklerde örnek öğeler için `POST` bir SQL API sorgusu göste
     }
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     HTTP/1.1 200 Ok
@@ -112,7 +112,7 @@ Sonraki, daha karmaşık sorgu bir birleşimden birden çok sonuç döndürüyor
     }
 ```
 
-Sonuçlar şunlardır: 
+Sonuçlar: 
 
 ```json
     HTTP/1.1 200 Ok
@@ -143,15 +143,15 @@ Sonuçlar şunlardır:
     }
 ```
 
-Sorgunun sonuçları tek bir sayfaya sığamayacak olursa REST API `x-ms-continuation-token` yanıt üst bilgisi aracılığıyla bir devamlılık belirteci döndürür. İstemciler, üst bilgiyi izleyen sonuçlara dahil ederek sonuçları sayfadan alabilir. Ayrıca, `x-ms-max-item-count` sayı üst bilgisinden sayfa başına sonuç sayısını denetleyebilirsiniz.
+Sorgunun sonuçları tek bir sayfaya sığamayacak olursa REST API, `x-ms-continuation-token` yanıt üst bilgisi aracılığıyla bir devamlılık belirteci döndürür. İstemciler, üst bilgiyi izleyen sonuçlara dahil ederek sonuçları sayfadan alabilir. Ayrıca, `x-ms-max-item-count` numarası üst bilgisinden sayfa başına sonuç sayısını denetleyebilirsiniz.
 
 Sorgunun COUNT gibi bir toplama işlevi varsa, sorgu sayfası yalnızca bir sonuç sayfası üzerinde kısmen toplanmış bir değer döndürebilir. İstemciler nihai sonuçları oluşturmak için bu sonuçlara ikinci düzey bir toplama işlemi gerçekleştirmelidir. Örneğin, toplam sayısı döndürmek için ayrı sayfalarda döndürülen sayların toplamı.
 
-Sorgular için veri tutarlılığı ilkesini yönetmek üzere `x-ms-consistency-level` üst bilgisini tüm REST API isteklerinde olarak kullanın. Oturum tutarlılığı Ayrıca sorgu isteğindeki en son `x-ms-session-token` tanımlama bilgisi üst bilgisini yankılandırmasını gerektirir. Sorgulanan kapsayıcının dizin oluşturma ilkesini tutarlılığını sorgu sonuçlarını da etkileyebilir. Kapsayıcılar için varsayılan dizin oluşturma ilkesi ayarları ile, Dizin her zaman öğe içeriğiyle geçerli olur ve sorgu sonuçları, veriler için seçilen tutarlılık ile eşleşir. Daha fazla bilgi için bkz. [Azure Cosmos DB tutarlılık düzeyleri] [tutarlılık-düzeyler].
+Sorgular için veri tutarlılığı ilkesini yönetmek için, `x-ms-consistency-level` üst bilgisini tüm REST API isteklerinde olduğu gibi kullanın. Oturum tutarlılığı Ayrıca, sorgu isteğinde en son `x-ms-session-token` tanımlama bilgisi üst bilgisini yankılandırmasını gerektirir. Sorgulanan kapsayıcının dizin oluşturma ilkesini tutarlılığını sorgu sonuçlarını da etkileyebilir. Kapsayıcılar için varsayılan dizin oluşturma ilkesi ayarları ile, Dizin her zaman öğe içeriğiyle geçerli olur ve sorgu sonuçları, veriler için seçilen tutarlılık ile eşleşir. Daha fazla bilgi için bkz. [Azure Cosmos DB tutarlılık düzeyleri] [tutarlılık-düzeyler].
 
-Kapsayıcıda yapılandırılan Dizin oluşturma ilkesi belirtilen sorguyu destekleyemiyorum, Azure Cosmos DB sunucusu 400 "bozuk Istek" döndürür. Bu hata iletisi, dizin oluşturma işleminden açıkça dışlanan yolların bulunduğu sorgular için döndürür. Bir dizin kullanılamadığında sorgunun `x-ms-documentdb-query-enable-scan` tarama yapmasına izin vermek için üst bilgiyi belirtebilirsiniz.
+Kapsayıcıda yapılandırılan Dizin oluşturma ilkesi belirtilen sorguyu destekleyemiyorum, Azure Cosmos DB sunucusu 400 "bozuk Istek" döndürür. Bu hata iletisi, dizin oluşturma işleminden açıkça dışlanan yolların bulunduğu sorgular için döndürür. Bir dizin kullanılamadığında sorgunun tarama yapmasına izin vermek için `x-ms-documentdb-query-enable-scan` üst bilgisini belirtebilirsiniz.
 
-`x-ms-documentdb-populatequerymetrics` Üstbilgiyi olarak`true`ayarlayarak sorgu yürütme hakkında ayrıntılı ölçümler edinebilirsiniz. Daha fazla bilgi için [Azure Cosmos DB için SQL sorgu ölçümleri](sql-api-query-metrics.md).
+`x-ms-documentdb-populatequerymetrics` üst bilgisini `true`olarak ayarlayarak sorgu yürütmeyle ilgili ayrıntılı ölçümler edinebilirsiniz. Daha fazla bilgi için [Azure Cosmos DB için SQL sorgu ölçümleri](sql-api-query-metrics.md).
 
 ## <a name="c-net-sdk"></a>C#(.NET SDK)
 
@@ -217,7 +217,7 @@ Aşağıdaki örnek, her öğe içinde eşitlik için iki özelliği karşılaş
     }
 ```
 
-Sonraki örnekte, LINQ `SelectMany`aracılığıyla ifade edilen birleşimler gösterilmektedir.
+Sonraki örnekte, LINQ `SelectMany`ifade edilen birleşimler gösterilmektedir.
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -241,9 +241,9 @@ Sonraki örnekte, LINQ `SelectMany`aracılığıyla ifade edilen birleşimler g�
     }
 ```
 
-.NET istemcisi, önceki örnekte gösterildiği gibi `foreach` bloklardaki sorgu sonuçlarının tüm sayfalarında otomatik olarak yinelenir. [REST API](#REST-API) bölümünde tanıtılan sorgu seçenekleri, .NET SDK 'da, `FeedOptions` `CreateDocumentQuery` yöntemindeki ve `FeedResponse` sınıfları kullanılarak da kullanılabilir. `MaxItemCount` Ayarını kullanarak sayfa sayısını kontrol edebilirsiniz.
+.NET istemcisi, önceki örnekte gösterildiği gibi `foreach` bloklarındaki sorgu sonuçlarının tüm sayfalarında otomatik olarak yinelenir. [REST API](#REST-API) bölümünde tanıtılan sorgu seçenekleri, `CreateDocumentQuery` yöntemindeki `FeedOptions` ve `FeedResponse` sınıfları KULLANıLARAK .NET SDK 'da da kullanılabilir. `MaxItemCount` ayarını kullanarak sayfa sayısını kontrol edebilirsiniz.
 
-Ayrıca, `IDocumentQueryable` `IQueryable` nesnesini kullanarak ve sonra `ResponseContinuationToken` değerleri okuyarak ve sonra yeniden `RequestContinuationToken` `FeedOptions`geçirerek, sayfalama denetimini açıkça denetleyebilirsiniz. Sorgu, yapılandırılmış `EnableScanInQuery` dizin oluşturma ilkesi tarafından desteklenmiyorsa taramayı etkinleştir olarak ayarlayabilirsiniz. Bölümlenmiş kapsayıcılar için, sorguyu tek bir `PartitionKey` bölüme karşı çalıştırmak için kullanabilirsiniz, ancak Azure Cosmos db sorgu metinden otomatik olarak ayıklayabilir. Birden çok bölüme karşı sorgu çalıştırmak için'ikullanabilirsiniz.`EnableCrossPartitionQuery`
+Ayrıca, `IQueryable` nesnesini kullanarak `IDocumentQueryable` oluşturup, sonra da `ResponseContinuationToken` değerleri okuyarak ve bunları `FeedOptions``RequestContinuationToken` olarak geri geçirerek, sayfalama denetimini açıkça denetleyebilirsiniz. Sorgu yapılandırılan Dizin oluşturma ilkesi tarafından desteklenmediğinde taramaları etkinleştirmek için `EnableScanInQuery` ayarlayabilirsiniz. Bölümlenmiş kapsayıcılar için, sorguyu tek bir bölüme karşı çalıştırmak için `PartitionKey` kullanabilirsiniz, ancak Azure Cosmos DB bunu sorgu metinden otomatik olarak ayıklayabilir. Birden çok bölüme karşı sorgu çalıştırmak için `EnableCrossPartitionQuery` kullanabilirsiniz.
 
 Sorgularla daha fazla .NET örneği için bkz. GitHub 'da [.net örneklerine Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3) .
 
@@ -251,7 +251,7 @@ Sorgularla daha fazla .NET örneği için bkz. GitHub 'da [.net örneklerine Azu
 
 Azure Cosmos DB, saklı yordamları ve Tetikleyicileri kullanarak doğrudan kapsayıcılarda [JavaScript tabanlı uygulama mantığını yürütmeye](stored-procedures-triggers-udfs.md) yönelik bir programlama modeli sağlar. Kapsayıcı düzeyinde kayıtlı JavaScript mantığı, daha sonra çevresel ACID işlemlerine kaydırılmış olan belirtilen kapsayıcının öğeleri üzerinde veritabanı işlemleri verebilir.
 
-Aşağıdaki örnek, saklı yordamların ve tetikleyicilerin `queryDocuments` içinden sorgu yapmak için JavaScript sunucu API 'sinde nasıl kullanılacağını gösterir:
+Aşağıdaki örnek, saklı yordamların ve tetikleyicilerin içinden sorgu yapmak için JavaScript sunucu API 'sindeki `queryDocuments` nasıl kullanacağınızı gösterir:
 
 ```javascript
     function findName(givenName, familyName) {

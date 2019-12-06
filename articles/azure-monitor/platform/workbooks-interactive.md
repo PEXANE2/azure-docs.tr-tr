@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici çalışma kitapları özel parametreleriyle etkileşimli raporlar oluşturma | Microsoft docs
+title: Özel parametrelerle Azure Izleyici çalışma kitapları
 description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
 services: azure-monitor
 author: mrbullwinkle
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: eeb6eb5d8b3ad6498ff90a9afe1fa4f2c18d30e5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165959"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872851"
 ---
-# <a name="interactive-workbooks"></a>Etkileşimli çalışma kitapları
+# <a name="interactive-workbooks"></a>Etkileşimli Çalışma Kitapları
 
 Çalışma kitapları yazarların tüketicilere yönelik etkileşimli raporlar ve deneyimler oluşturmalarına olanak tanır. Etkileşim, çeşitli yollarla desteklenir.
 

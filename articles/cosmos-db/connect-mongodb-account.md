@@ -1,19 +1,19 @@
 ---
 title: MongoDB uygulamasını Azure Cosmos DB bağlama
-description: MongoDB uygulamanızı Azure Cosmos DB bağlama hakkında bilgi edinin.
+description: Azure portal bir MongoDB uygulamasını bağlantı dizesi ile Azure Cosmos DB bağlama hakkında bilgi edinin
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 30b37b86bbe0e91887932423fa1884d8bd49333c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757000"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872171"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB uygulamasını Azure Cosmos DB bağlama
 MongoDB uygulamanızı bir Azure Cosmos DB MongoDB bağlantı dizesi kullanarak nasıl bağlayacağınızı öğrenin. Daha sonra, MongoDB uygulamanız için veri deposu olarak bir Azure Cosmos veritabanını kullanabilirsiniz. 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB ile küresel dağıtım
 description: Bu makalede Azure Cosmos DB genel dağıtımını ilgili teknik ayrıntılar sağlar
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615354"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872137"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB ile küresel veri dağıtımı-
 
@@ -54,7 +54,7 @@ Her biri Cosmos veritabanı bölgeleriyle yapılandırılmış olan bir grup fiz
 
 ![Bölüm ayarlar](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-Bir coğrafi olarak dağınık "süper çoğaltma çoğaltma-anahtarları kümesinin aynısına sahip olan birden fazla oluşan kümesi", bölüm bir dizi düşünebilirsiniz. Bir çoğaltma kümesine benzer şekilde, Bölüm kümesinin üyeliği de dinamik olur. belirli bir bölüm kümesine/kaynağından yeni bölümler eklemek/kaldırmak için örtük fiziksel bölüm yönetimi işlemlerine göre farklılık gösterir (örneğin, bir üzerinde üretilen işi ölçeklendirebileceğiniz zaman kapsayıcı, Cosmos veritabanınıza bölge ekleyin/kaldırın, ya da başarısızlık oluştuğunda). Her bölümün (Bölüm kümesi), Bölüm kümesi üyeliğini kendi çoğaltma kümesi içinde yönetmesine sahip olan sanallaştırmaya göre, üyelik tamamen açık ve yüksek oranda kullanılabilir olur. Bir bölüm kümesi yeniden yapılandırma sırasında topolojisi, fiziksel bölümler arasında katman da oluşturulur. Topoloji, kaynak ve hedef fiziksel bölümler arasındaki tutarlılık düzeyine, coğrafi mesafeye ve kullanılabilir ağ bant genişliğine göre dinamik olarak seçilir.  
+Bir coğrafi olarak dağınık "süper çoğaltma çoğaltma-anahtarları kümesinin aynısına sahip olan birden fazla oluşan kümesi", bölüm bir dizi düşünebilirsiniz. Bir çoğaltma kümesine benzer şekilde, Bölüm kümesinin üyeliği de dinamik olur. belirli bir bölüm kümesine/kaynağından yeni bölümler eklemek/kaldırmak (örneğin, bir kapsayıcıda bir kapsayıcıyı ölçeklendirirseniz, Cosmos veritabanınıza bölge eklemek/kaldırmak, ya da başarısızlık oluştuğunda) için örtük fiziksel bölüm yönetimi işlemlerine göre dalgalanmaktadır. Her bölümün (Bölüm kümesi), Bölüm kümesi üyeliğini kendi çoğaltma kümesi içinde yönetmesine sahip olan sanallaştırmaya göre, üyelik tamamen açık ve yüksek oranda kullanılabilir olur. Bir bölüm kümesi yeniden yapılandırma sırasında topolojisi, fiziksel bölümler arasında katman da oluşturulur. Topoloji, kaynak ve hedef fiziksel bölümler arasındaki tutarlılık düzeyine, coğrafi mesafeye ve kullanılabilir ağ bant genişliğine göre dinamik olarak seçilir.  
 
 Hizmet bir tek bir yazma bölgesi veya birden çok yazma bölgeleri ile Cosmos veritabanlarınızı yapılandırmanıza olanak tanır ve seçime bağlı olarak, bölüm kümeleri yazma tam olarak bir ya da tüm bölgelerde kabul edecek şekilde yapılandırılmış. Sistem iki düzeyli, iç içe geçmiş bir konsensus protokolünü kullanır – bir düzey, yazmaları kabul eden bir fiziksel bölüm kümesinin çoğaltmaları içinde çalışır ve diğeri için tam bir sıralama garantisi sağlamak üzere bir bölüm kümesi düzeyinde çalışır işlenen, Bölüm kümesi içindeki yazma işlemleri. Bu çok katmanlı, iç içe geçmiş fikir birliğine varılmış, Cosmos DB, müşterilerine sağlar. tutarlılık modeli uygulamasının yanı sıra, yüksek kullanılabilirlik için katı SLA'larımız uygulanması için önemlidir.  
 
@@ -69,7 +69,7 @@ Nedensellik ilişkilerini izlemek ve algılamak ve çözmek için vektörleri g�
 Birden çok yazma bölgeleri ile yapılandırılmış Cosmos veritabanları için sistem esnek otomatik çakışma çözümleme ilkeler arasından, geliştiriciler için de dahil olmak üzere sunar: 
 
 - **Son yazma-WINS (LWW)** , varsayılan olarak, sistem tarafından tanımlanan bir zaman damgası özelliği kullanır (zaman eşitleme saati protokolüne dayanır). Cosmos DB Çakışma çözümlemesi için kullanılan diğer özelliklerden herhangi birini özel sayısal belirtmenizi sağlar.  
-- **Uygulama tanımlı (özel) çakışma çözümleme ilkesi** (birleştirme yordamları aracılığıyla ifade edilir), bu, çakışmaların uygulama tanımlı semantik mutabakatı için tasarlanmıştır. Bu yordamlar, bir veritabanı işlemi sunucu tarafı şirket himayesinde yazma yazma çakışmaları algılanması üzerine çağrılır. Sistem, taahhüt protokolünün bir parçası olarak birleştirme yordamının yürütülmesi için tam olarak bir kez sağlar. İle oynaması için kullanabileceğiniz [birkaç çakışma çözümü örneği](how-to-manage-conflicts.md) vardır.  
+- Uygulama tanımlı **(özel) çakışma çözümleme ilkesi** (birleştirme yordamları aracılığıyla ifade edilir), bu, çakışmaların uygulama tanımlı semantik mutabakatı için tasarlanmıştır. Bu yordamlar, bir veritabanı işlemi sunucu tarafı şirket himayesinde yazma yazma çakışmaları algılanması üzerine çağrılır. Sistem, taahhüt protokolünün bir parçası olarak birleştirme yordamının yürütülmesi için tam olarak bir kez sağlar. İle oynaması için kullanabileceğiniz [birkaç çakışma çözümü örneği](how-to-manage-conflicts.md) vardır.  
 
 ## <a name="consistency-models"></a>Tutarlılık modeli
 

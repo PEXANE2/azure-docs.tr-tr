@@ -4,17 +4,17 @@ description: Bir istemcinin Azure Automation 'da bir runbook 'u HTTP çağrısı
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153e910ea85ae843c6d4db51e709b58e441f6761
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061442"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849607"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Web kancası ile Azure Otomasyonu runbook 'u başlatma
 
@@ -30,12 +30,12 @@ Web kancalarını, [Azure Otomasyonu 'nda runbook başlatma](automation-starting
 
 Aşağıdaki tabloda bir Web kancası için yapılandırmanız gereken özellikler açıklanmaktadır.
 
-| Özellik | Description |
+| Özellik | Açıklama |
 |:--- |:--- |
-| Name |Bu istemciye açık olmadığından, Web kancası için istediğiniz herhangi bir ad sağlayabilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. <br> En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
+| Adı |Bu istemciye açık olmadığından, Web kancası için istediğiniz herhangi bir ad sağlayabilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. <br> En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
 | URL |Web kancası URL 'SI, bir istemcinin Web kancasına bağlı olan runbook 'u başlatmak için bir HTTP POST ile çağırdığı benzersiz adrestir. Web kancasını oluşturduğunuzda otomatik olarak oluşturulur. Özel bir URL belirtemezsiniz. <br> <br> URL, runbook 'un başka kimlik doğrulaması olmadan bir üçüncü taraf sistem tarafından çağrılmasına izin veren bir güvenlik belirteci içeriyor. Bu nedenle, bir parola gibi değerlendirilmelidir. Güvenlik nedenleriyle, URL 'YI yalnızca, Web kancasının oluşturulduğu sırada Azure portal görüntüleyebilirsiniz. Daha sonra kullanılmak üzere güvenli bir konumda URL 'YI aklınızda bulundurma. |
 | Son kullanma tarihi |Bir sertifika gibi, her Web kancasının bir sona erme tarihi vardır ve bu süre artık kullanılamaz. Bu sona erme tarihi, Web kancasının süresi dolduğu sürece Web kancası oluşturulduktan sonra değiştirilebilir. |
-| Enabled |Bir Web kancası oluşturulduğunda varsayılan olarak etkinleştirilir. Devre dışı olarak ayarlarsanız, hiçbir istemci bunu kullanamaz. **Etkin** özelliği, Web kancasını oluştururken veya her zaman oluşturulduğunda ayarlayabilirsiniz. |
+| Etkin |Bir Web kancası oluşturulduğunda varsayılan olarak etkinleştirilir. Devre dışı olarak ayarlarsanız, hiçbir istemci bunu kullanamaz. **Etkin** özelliği, Web kancasını oluştururken veya her zaman oluşturulduğunda ayarlayabilirsiniz. |
 
 ### <a name="parameters"></a>Parametreler
 
@@ -66,7 +66,7 @@ Web kancasını oluştururken $WebhookData için bir değer belirtirseniz, Web k
 
 Aşağıdaki runbook için, Web kancası verileri parametresi için aşağıdaki özelliklere sahipseniz:
 
-* WebhookName *MyWeb kancası*
+* Web kancası adı: *MyWeb kancası*
 * RequestBody: *[{' resourcegroup ': ' myResourceGroup ', ' name ': ' vm01 '}, {' ResourceGroup ': ' myResourceGroup ', ' name ': ' vm02 '}]*
 
 Daha sonra Web Kancaverisi parametresi için Kullanıcı arabiriminde aşağıdaki JSON değerini geçitirsiniz. Aşağıdaki örnek, satır başı ve yeni satır karakterleri ile bir Web kancasından geçirilen biçimle eşleşir.
@@ -98,10 +98,10 @@ Azure portal bir runbook 'a bağlı yeni bir Web kancası oluşturmak için aşa
 4. Web kancası için bir **ad**, **sona erme tarihi** ve etkinleştirilmesi gerekip gerekmediğini belirtin. Bu özellikler hakkında daha fazla bilgi için [Web kancasının ayrıntılarına](#details-of-a-webhook) bakın.
 5. Web kancasının URL 'sini kopyalamak için Kopyala simgesine tıklayın ve CTRL + C tuşlarına basın. Daha sonra güvenli bir yere kaydedin. **Web kancasını oluşturduktan sonra URL 'YI tekrar alamazsınız.**
 
-   ![Web kancası URL'si](media/automation-webhooks/copy-webhook-url.png)
+   ![Web Kancası URL’si](media/automation-webhooks/copy-webhook-url.png)
 
-1. Runbook parametreleri için değerler sağlamak üzere **Parametreler** ' e tıklayın. Runbook 'un zorunlu parametreleri varsa, hiçbir değer sağlanmadığı müddetçe Web kancasını oluşturabileceksiniz.
-1. Web kancasını oluşturmak için **Oluştur** ' a tıklayın.
+1. Runbook parametreleri için değerler sağlamak üzere **Parametreler** ' e tıklayın. Runbook’un zorunlu parametreleri varsa, değer sağlanmaması durumunda web kancasını oluşturamazsınız.
+1. Web kancasını oluşturmak için **Oluştur**’a tıklayın.
 
 ## <a name="using-a-webhook"></a>Web kancası kullanma
 
@@ -113,12 +113,12 @@ http://<Webhook Server>/token?=<Token Value>
 
 İstemci, POST isteğinden aşağıdaki dönüş kodlarından birini alır.
 
-| Kod | Text | Açıklama |
+| Kodlayın | Metin | Açıklama |
 |:--- |:--- |:--- |
-| 202 |Kabul Edildi |İstek kabul edildi ve Runbook başarıyla kuyruğa alındı. |
-| 400 |Bozuk İstek |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası süresi doldu.</li> <li>Web kancası devre dışı bırakıldı.</li> <li>URL 'deki belirteç geçersiz.</li>  </ul> |
+| 202 |Kabul edildi |İstek kabul edildi ve Runbook başarıyla kuyruğa alındı. |
+| 400 |Hatalı İstek |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası süresi doldu.</li> <li>Web kancası devre dışı bırakıldı.</li> <li>URL 'deki belirteç geçersiz.</li>  </ul> |
 | 404 |Bulunamadı |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası bulunamadı.</li> <li>Runbook bulunamadı.</li> <li>Hesap bulunamadı.</li>  </ul> |
-| 500 |İç Sunucu Hatası |URL geçerli, ancak bir hata oluştu. Lütfen isteği yeniden gönderin. |
+| 500 |İç sunucu hatası |URL geçerli, ancak bir hata oluştu. Lütfen isteği yeniden gönderin. |
 
 İsteğin başarılı olduğu varsayıldığında, Web kancası yanıtı JSON biçimindeki iş KIMLIĞINI aşağıdaki şekilde içerir. Tek bir iş KIMLIĞI içerir, ancak JSON biçimi gelecekteki iyileştirmeler için izin verir.
 

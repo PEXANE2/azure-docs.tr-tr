@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ed13b5028341637d71dee95f38cc44cc91aa2376
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481440"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851849"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SQL veri ambarı IP güvenlik duvarı kuralları
 
@@ -127,13 +127,15 @@ Azure portal sunucu düzeyinde bir IP güvenlik duvarı kuralı ayarlamak için 
 
 #### <a name="from-the-database-overview-page"></a>Veritabanına genel bakış sayfasından
 
-1. Veritabanı genel bakış sayfasından sunucu düzeyinde bir IP güvenlik duvarı kuralı ayarlamak için, aşağıdaki görüntüde gösterildiği gibi araç çubuğunda **sunucu güvenlik duvarını ayarla** ' yı seçin. SQL Veritabanı sunucusu için **Güvenlik duvarı ayarları** sayfası açılır.
+1. Veritabanı genel bakış sayfasından sunucu düzeyinde bir IP güvenlik duvarı kuralı ayarlamak için, aşağıdaki görüntüde gösterildiği gibi araç çubuğunda **sunucu güvenlik duvarını ayarla** ' yı seçin. 
 
-      ![Sunucu IP güvenlik duvarı kuralı](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![Sunucu IP güvenlik duvarı kuralı](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    SQL Veritabanı sunucusu için **Güvenlik duvarı ayarları** sayfası açılır.
 
 2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet**' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
-      ![Sunucu düzeyi IP güvenlik duvarı kuralını ayarla](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![Sunucu düzeyi IP güvenlik duvarı kuralını ayarla](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Sunucuya genel bakış sayfasından
 
@@ -150,8 +152,8 @@ Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *my
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
 | [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kurallarını kaldırır |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Veritabanı |Geçerli veritabanı düzeyinde IP güvenlik duvarı kurallarını görüntüler |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Veritabanı |Veritabanı düzeyinde IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Database |Geçerli veritabanı düzeyinde IP güvenlik duvarı kurallarını görüntüler |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Database |Veritabanı düzeyinde IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Veri tabanları |Veritabanı düzeyinde IP güvenlik duvarı kurallarını kaldırır |
 
 Aşağıdaki örnek, mevcut kuralları gözden geçirir, *contoso*sunucusunda bir IP adresi aralığı sunar ve bir IP güvenlik duvarı kuralını siler:

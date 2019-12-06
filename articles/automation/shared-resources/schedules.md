@@ -1,82 +1,82 @@
 ---
-title: Azure automation'da zamanlamaları
-description: Otomasyon zamanlamaları runbook'ları otomatik olarak başlayacak şekilde, Azure automation'da zamanlamak için kullanılır. Oluşturmak ve belirli bir zamanda veya yinelenen bir zamanlamaya göre otomatik olarak bir runbook başlatabilirsiniz bir zamanlama yönetmek açıklar.
+title: Azure Otomasyonu 'nda zamanlamalar
+description: Otomasyon zamanlamaları, Azure Otomasyonu 'nda runbook 'ların otomatik olarak başlamasını zamanlamak için kullanılır. Bir runbook 'u belirli bir zamanda veya yinelenen bir zamanlamaya göre otomatik olarak başlatabilmeniz için ' de bir zamanlamanın nasıl oluşturulduğunu ve yönetileceğini açıklar.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 348c54abadef8b7c289501e21a2d314764c9e99c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476011"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849471"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Azure Otomasyonu’nda runbook zamanlama
 
-Belirli bir zamanda başlatmak için Azure Otomasyonu'nda runbook zamanlama için bir veya daha fazla zamanlamaya bağlayın. Bir zamanlama için runbook'ları Azure portalında çalışma bir kez veya bir yeniden oluşmasını saatlik veya günlük zamanlama için yapılandırılabilir. Ayrıca bunları için haftalık, aylık, haftanın belirli gün veya ayın veya ayın belirli zamanlayabilirsiniz. Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelgesine birden çok runbook bağlı olabilir.
+Azure Otomasyonu 'nda bir runbook 'u belirli bir zamanda başlayacak şekilde zamanlamak için, onu bir veya daha fazla zamanlamaya bağlayın. Bir zamanlama, bir kez çalışacak veya Azure portal runbook 'lar için günlük bir zamanlamaya göre ya da bir kez çalıştırılacak şekilde yapılandırılabilir. Ayrıca, bunları haftalık, aylık, haftanın belirli günlerinde veya ayın belirli bir gününde zamanlayabilirsiniz. Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelgesine birden çok runbook bağlı olabilir.
 
 > [!NOTE]
-> Zamanlamaları, şu anda Azure Automation DSC yapılandırmaları desteklemez.
+> Zamanlamalar Şu anda Azure Automation DSC yapılandırmasını desteklemez.
 
 ## <a name="powershell-cmdlets"></a>PowerShell Cmdlet'leri
 
-Aşağıdaki tabloda yer alan cmdlet'ler oluşturmak ve Azure Otomasyonu PowerShell ile zamanlamaları yönetmek için kullanılır. Bunlar parçası olarak gönderilen [Azure PowerShell Modülü](/powershell/azure/overview).
+Aşağıdaki tablodaki cmdlet 'ler, Azure Otomasyonu 'nda PowerShell ile zamanlamalar oluşturmak ve yönetmek için kullanılır. [Azure PowerShell modülün](/powershell/azure/overview)bir parçası olarak sevk ederler.
 
 | Cmdlet'ler | Açıklama |
 |:--- |:--- |
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |Bir zamanlama alır. |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Yeni bir zamanlama oluşturur. |
-| [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Bir zamanlama kaldırır. |
-| [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Mevcut bir zamanlamanın özelliklerini ayarlar. |
-| [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Zamanlanan runbook'lar alır. |
-| [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Runbook zamanlama ile ilişkilendirir. |
-| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Zamanlama runbook'tan dissociates. |
+| [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Bir zamanlamayı kaldırır. |
+| [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Varolan bir zamanlamanın özelliklerini ayarlar. |
+| [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Zamanlanan runbook 'ları alır. |
+| [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Bir runbook 'u bir zamanlamaya göre ilişkilendirir. |
+| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Bir runbook 'un bir zamanlamaya göre ilişkilendirmesini kaldırın. |
 
 ## <a name="creating-a-schedule"></a>Bir zamanlama oluşturma
 
-Azure portalında veya PowerShell ile runbook'lar için yeni bir zamanlama oluşturabilirsiniz.
+Azure portal veya PowerShell ile runbook 'lar için yeni bir zamanlama oluşturabilirsiniz.
 
 > [!NOTE]
-> Yeni bir zamanlanmış iş çalıştırıldığında azure Otomasyonu, Otomasyon hesabınızda en son modüllerini kullanır.  Runbook'larınızı ve bunlar otomatikleştirmek işlemleri etkilemesini önlemek için test etmek için ayrılmış bir Otomasyon hesabı ile bağlı zamanlamaları runbook'ları test etmeniz gerekir.  Bu, zamanlanmış doğrular runbook'ları doğru şekilde çalışmaya devam ve aksi takdirde, daha fazla sorun giderme ve güncelleştirilmiş runbook sürümü üretime geçmeden önce gerekli değişiklikleri uygular.
-> Bunları el ile seçerek güncelleştirdikten sürece Otomasyon hesabınızı modüllerinin tüm yeni sürümlere otomatik olarak almaz [Azure modüllerini güncelleştirme](../automation-update-azure-modules.md) seçeneğini **modülleri**.
+> Azure Otomasyonu, yeni bir zamanlanan iş çalıştırıldığında Otomasyon hesabınızdaki en son modülleri kullanır.  Runbook 'larınızı ve otomatikleştiredikleri işlemleri etkilememek için, öncelikle test için ayrılmış bir Otomasyon hesabı ile bağlantılı zamanlamalara sahip runbook 'ları test etmelisiniz.  Bu, zamanlanan runbook 'larınızın doğru şekilde çalışmaya devam etmesini doğrular ve yoksa, güncelleştirilmiş runbook sürümünü üretime geçirmeden önce gereken değişiklikleri daha fazla sorun giderme ve uygulama işlemleri gerçekleştirebilirsiniz.
+> **Modüllerde** [Azure modüllerini Güncelleştir](../automation-update-azure-modules.md) seçeneğini belirleyerek Otomasyon hesabınız, el ile güncelleştirmediğiniz takdirde otomatik olarak modüllerin yeni sürümlerini almaz.
 
-### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Azure portalında yeni bir zamanlama oluşturmak için
+### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Azure portal yeni bir zamanlama oluşturmak için
 
-1. Azure portalında Otomasyon hesabınızı seçin **zamanlamaları** bölümünde **paylaşılan kaynakları** soldaki.
-2. Tıklayın **zamanlama Ekle** sayfanın üstünde.
-3. Üzerinde **yeni zamanlama** bölmesinde bir **adı** ve isteğe bağlı olarak bir **açıklama** yeni zamanlama için.
-4. Zamanlama bir kez olmasından veya yinelenen bir zamanlamaya göre seçerek **kez** veya **yinelenen**. Seçerseniz **kez** belirtin bir **başlangıç zamanı**ve ardından **Oluştur**. Seçerseniz **yinelenen**, belirtin bir **başlangıç zamanı** ve **Yinele her**, ne sıklıkta runbook - göre yinelemek istediğiniz sıklığını seçin **saat**, **gün**, **hafta**, ya da **ay**.
-    1. Seçerseniz **hafta**, aralarından seçim yapabileceğiniz haftanın günlerini listesi sunulur. İstediğiniz kadar çok gün seçin. İlk çalıştırma zamanlama, seçilen başlangıç zamanından sonraki ilk gününde gerçekleşir. Örneğin, bir hafta sonu zamanlama seçin, tercih **Cumartesi** ve **Pazar**.
+1. Azure portal Otomasyon hesabınızdan, sol taraftaki bölüm **paylaşılan kaynakları** altında **zamanlamalar** ' ı seçin.
+2. Sayfanın üst kısmındaki **zamanlama Ekle** ' ye tıklayın.
+3. **Yeni zamanlama** bölmesinde, yeni zamanlama Için bir **ad** ve Isteğe bağlı olarak bir **Açıklama** yazın.
+4. Zamanlamanın bir kez mı yoksa bir **kez** veya **yinelenen**seçerek yeniden gerçekleşen bir zamanlamaya göre mi çalışacağını seçin. Bir **kez** **Başlangıç zamanı**belirttikten sonra **Oluştur**' a tıklayın. **Yineleme**' yi seçip bir **Başlangıç saati** belirtin ve **yinelenme**sıklığı ' nı seçerseniz, runbook 'un ne sıklıkta **saat**, **gün**, **hafta**veya **aya**göre yinelenmesini istediğinizi seçin.
+    1. **Hafta**' yı seçerseniz, tercih ettiğiniz haftanın günlerinin bir listesi sunulur. İstediğiniz kadar gün seçin. Zamanlamalarınızın ilk çalışması başlangıç zamanından sonra seçilen ilk günde olur. Örneğin, bir hafta sonu zamanlaması seçmek için **Cumartesi** ve **Pazar**' ı seçin.
 
-       ![Hafta sonu yinelenen zamanlama ayarı](../media/schedules/week-end-weekly-recurrence.png)
+       ![Hafta sonu yinelenen zamanlama ayarlanıyor](../media/schedules/week-end-weekly-recurrence.png)
 
-    2. Seçerseniz **ay**, size farklı seçenekler verilir. İçin **aylık oluşumlar** seçeneğinde, ya da seçin **ayın günü** veya **haftanın günleri**. Seçerseniz **ayın günü**, istediğiniz sayıda gün seçmenize olanak tanıyan bir takvim gösterilir. Geçerli ay içinde oluşmaz 31 gibi bir tarihi seçerseniz, zamanlama çalışmaz. Zamanlamanın son gününde çalıştırmak istiyorsanız seçin **Evet** altında **ayın son gününde Çalıştır**. Seçerseniz **haftanın günleri**, **Yinele her** seçeneği sunulur. Seçin **ilk**, **ikinci**, **üçüncü**, **dördüncü**, veya **son**. Son olarak üzerinde yinelemek için bir günü seçin.
+    2. **Ay**' yı seçerseniz, farklı seçenekler sunulur. **Aylık yineleme** seçeneği Için, **ay günler** veya **hafta günü**seçeneklerinden birini belirleyin. **Ay günler**' i seçerseniz, istediğiniz kadar gün tercih etmenizi sağlayan bir takvim gösterilir. Geçerli ay içinde gerçekleşmeyen 31 gibi bir tarih seçerseniz, zamanlama çalıştırılmaz. Zamanlamanın son gün üzerinde çalışmasını istiyorsanız, **ayın son gününde Çalıştır**' ın altında **Evet** ' i seçin. **Hafta günleri**' ni seçerseniz, **yineleme her** seçeneği sunulur. **Birinci**, **ikinci**, **üçüncü**, **dördüncü**veya **son**' u seçin. Son olarak, tekrarlanacak bir gün seçin.
 
-       ![Aylık zamanlama ayın ilk, on beşinci ve son günü](../media/schedules/monthly-first-fifteenth-last.png)
+       ![Ayın ilk, on beşinci ve son gününde aylık zamanlama](../media/schedules/monthly-first-fifteenth-last.png)
 
-5. Click bittiğinde **Oluştur**.
+5. İşiniz bittiğinde **Oluştur**' a tıklayın.
 
 ### <a name="to-create-a-new-schedule-with-powershell"></a>PowerShell ile yeni bir zamanlama oluşturmak için
 
-Kullandığınız [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) tabloları oluşturmak için cmdlet'i. Zamanlama ve çalıştırılması gereken sıklığı için başlangıç saati belirtirsiniz. Aşağıdaki örnekler, birçok farklı zamanlama senaryoları oluşturma işlemini gösterir.
+Zamanlamalar oluşturmak için [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 'ini kullanırsınız. Zamanlamanın başlangıç saatini ve çalışması gereken sıklığı belirtirsiniz. Aşağıdaki örneklerde birçok farklı zamanlama senaryosunun nasıl oluşturulacağı gösterilmektedir.
 
-#### <a name="create-a-one-time-schedule"></a>Bir tarih zamanlaması
+#### <a name="create-a-one-time-schedule"></a>Tek seferlik zamanlama oluşturma
 
-Aşağıdaki örnek komutlar bir tane oluşturun zamanlama.
+Aşağıdaki örnek komutlar bir kerelik zamanlama oluşturur.
 
 ```azurepowershell-interactive
 $TimeZone = ([System.TimeZoneInfo]::Local).Id
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
-#### <a name="create-a-recurring-schedule"></a>Yinelenen bir zamanlama oluşturun
+#### <a name="create-a-recurring-schedule"></a>Yinelenen zamanlama oluşturma
 
-Aşağıdaki örnek komutlar, 13: 00'te bir yıl boyunca, her gün çalışan yinelenen bir zamanlama oluşturma işlemini gösterir.
+Aşağıdaki örnek komutlarda bir yılda 1:00PM olmak üzere her gün çalışan yinelenen bir zamanlamanın nasıl oluşturulacağı gösterilmektedir.
 
 ```azurepowershell-interactive
 $StartTime = Get-Date "13:00:00"
@@ -84,9 +84,9 @@ $EndTime = $StartTime.AddYears(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-weekly-recurring-schedule"></a>Haftalık olarak yinelenen bir zamanlama oluşturun
+#### <a name="create-a-weekly-recurring-schedule"></a>Haftalık Yinelenen zamanlama oluşturma
 
-Aşağıdaki örnek komutlar, yalnızca hafta içi çalışan haftalık bir zamanlama oluşturma işlemini gösterir.
+Aşağıdaki örnek komutlarda, yalnızca hafta içi günleri çalıştıran haftalık bir zamanlamanın nasıl oluşturulacağı gösterilmektedir.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "13:00:00").AddDays(1)
@@ -94,9 +94,9 @@ $StartTime = (Get-Date "13:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Schedule03" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-weekly-recurring-schedule-for-weekends"></a>Hafta sonları için haftalık ve yinelenen bir zamanlama oluşturun
+#### <a name="create-a-weekly-recurring-schedule-for-weekends"></a>Hafta sonları için haftalık yinelenen zamanlama oluşturma
 
-Aşağıdaki örnek komutlar, yalnızca hafta sonu çalışan haftalık bir zamanlama oluşturma işlemini gösterir.
+Aşağıdaki örnek komutlarda, yalnızca hafta sonları üzerinde çalışan haftalık bir zamanlamanın nasıl oluşturulacağı gösterilmektedir.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
@@ -104,30 +104,30 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Weekends 6PM" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekendDays -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>İçin ilk olarak, yinelenen bir zamanlama oluşturmak ayın 15 ve son günü
+#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>Ayın ilk, 15. ve son günleri için yinelenen bir zamanlama oluşturun
 
-Aşağıdaki örnek komutlar bir ayın 1, 15 ve son günü çalışan yinelenen bir zamanlama oluşturma gösterilmektedir.
+Aşağıdaki örnek komutlarda, ayın 1., 15. ve son gününde çalışan bir yinelenen zamanlamanın nasıl oluşturulacağı gösterilmektedir.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
-## <a name="linking-a-schedule-to-a-runbook"></a>Bir runbook'a zamanlama bağlama
+## <a name="linking-a-schedule-to-a-runbook"></a>Bir runbook 'a zamanlama bağlama
 
-Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelgesine birden çok runbook bağlı olabilir. Bir runbook'un parametreleri varsa, daha sonra değerleri için bunları sağlayabilirsiniz. Zorunlu parametreler için değerler sağlamanız gerekir ve isteğe bağlı parametreler için değerleri sağlayabilirsiniz. Bu zamanlamayı runbook her başlatıldığında bu değerler kullanılır. Aynı runbook başka bir plana eklemek ve farklı parametre değerlerini belirtin.
+Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelgesine birden çok runbook bağlı olabilir. Bir runbook 'un parametreleri varsa, bunlar için değer sağlayabilirsiniz. Zorunlu parametrelerin değerlerini sağlamanız ve isteğe bağlı parametrelerin değerlerini sağlayabilmeniz gerekir. Bu değerler, runbook 'un bu zamanlamaya göre başlatıldığı her seferinde kullanılır. Aynı runbook 'u başka bir zamanlamaya ekleyebilir ve farklı parametre değerleri belirtebilirsiniz.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Azure portalı ile bir runbook için bir zamanlama bağlamak için
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Azure portal ile bir zamanlamayı runbook 'a bağlamak için
 
-1. Azure portalında Otomasyon hesabınızı seçin **runbook'ları** bölümünde **süreç otomasyonu** soldaki.
+1. Otomasyon hesabınızdan Azure portal, soldaki **Işlem Otomasyon** bölümünde bulunan **runbook 'lar** ' ı seçin.
 2. Zamanlamak için runbook'un adına tıklayın.
-3. Runbook şu anda bir zamanlamaya bağlı değilse, yeni zaman çizelgesi veya mevcut bir zamanlamanın bağlantısına oluşturma seçeneğini sunulan.
-4. Runbook parametrelere sahipse, bu seçeneği seçebilirsiniz **çalıştırma ayarları (varsayılan: Azure) değiştirme** ve **parametreleri** bölmesinde, bilgileri girebileceğiniz sunulur.
+3. Runbook Şu anda bir zamanlamaya bağlı değilse, yeni bir zamanlama oluşturma veya var olan bir zamanlamaya bağlanma seçeneği sunulur.
+4. Runbook 'un parametreleri varsa, **çalışma ayarlarını değiştir (varsayılan: Azure)** seçeneğini belirleyin ve **Parametreler** bölmesi, bilgileri girebileceğiniz şekilde sunulur.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>PowerShell ile bir runbook'a zamanlama bağlamak için
+### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>PowerShell ile bir runbook 'a zamanlama bağlamak için
 
-Kullanabileceğiniz [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) zamanlama bağlamak için cmdlet'i. Parametreleri parametresiyle runbook'un parametreleri için değerleri belirtebilirsiniz. Parametre değerleri belirtme hakkında daha fazla bilgi için bkz. [Azure Automation'da bir Runbook başlatma](../automation-starting-a-runbook.md).
-Aşağıdaki örnek komutlar parametrelerle bir Azure Resource Manager cmdlet'ini kullanarak bir runbook'a zamanlama bağlama gösterir.
+Bir zamanlamayı bağlamak için [register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) cmdlet 'ini kullanabilirsiniz. Parametreler parametresiyle runbook’un parametreleri için değer belirtebilirsiniz. Parametre değerlerini belirtme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda runbook başlatma](../automation-starting-a-runbook.md).
+Aşağıdaki örnek komutlarda, parametreleri olan Azure Resource Manager cmdlet 'ini kullanarak bir zamanlamanın bir runbook 'a nasıl bağlanacağını gösterilmektedir.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -139,32 +139,32 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="scheduling-runbooks-more-frequently"></a>Daha sık runbook'ları zamanlama
+## <a name="scheduling-runbooks-more-frequently"></a>Runbook 'ları daha sık zamanlama
 
-Bir Azure Otomasyonu zamanlama için yapılandırılmış en sık rastlanan aralığı bir saattir. Zamanlamaları, birden daha sık çalıştırmak için gerekiyorsa, iki seçenek vardır:
+Azure Automation 'da bir zamanlamanın en sık kullanılan aralığı bir saattir. Zamanlamaların daha sık yürütülmesi için zamanlamalara ihtiyacınız varsa iki seçenek vardır:
 
-* Oluşturma bir [Web kancası](../automation-webhooks.md) kullanın ve runbook için [Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) Web kancası çağırma. Azure Zamanlayıcı, bir zamanlama tanımlarken daha ayrıntılı ayrıntı düzeyi sağlar.
+* Runbook için bir [Web kancası](../automation-webhooks.md) oluşturun ve Web kancasını çağırmak Için [Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) 'ı kullanın. Azure Zamanlayıcı, bir zamanlamayı tanımlarken daha ayrıntılı ayrıntı düzeyi sağlar.
 
-* 15 dakika içinde birbiriyle saatte bir çalışan tüm başlayarak dört zamanlamaları oluşturun. Bu senaryo, runbook farklı zamanlamalar ile 15 dakikada bir çalıştırılacak sağlar.
+* Her saat bir kez çalışan 15 dakikadan kısa bir süre içinde başlayan dört zamanlama oluşturun. Bu senaryo, runbook 'un farklı zamanlamalarla 15 dakikada bir çalışmasına izin verir.
 
-## <a name="disabling-a-schedule"></a>Bir zamanlama devre dışı bırakma
+## <a name="disabling-a-schedule"></a>Zamanlamayı devre dışı bırakma
 
-Bir zamanlama devre dışı bıraktığınızda, artık bağlı herhangi bir runbook bu zamanlamaya göre çalıştırır. El ile bir zamanlama devre dışı bırakın veya bunları oluşturduğunuz bir sıklık ile zamanlama için sona erme süresi ayarlayın. Sona erme zamanı ulaşıldığında, zamanlama devre dışı bırakıldı.
+Bir zamanlamayı devre dışı bıraktığınızda, onunla bağlantılı tüm runbook bu zamanlamaya göre çalışmaz. Bir zamanlamayı el ile devre dışı bırakabilir veya bir zaman aşımı süresi oluştururken bir sıklık süresi ayarlayabilirsiniz. Süre sonu zamanına ulaşıldığında, zamanlama devre dışı bırakılır.
 
-### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Azure portalından bir zamanlama devre dışı bırakmak için
+### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Azure portal bir zamanlamayı devre dışı bırakmak için
 
-1. Azure portalında Otomasyon hesabınızı seçin **zamanlamaları** bölümünde **paylaşılan kaynakları** soldaki.
-2. Ayrıntılar bölmesinde açmak için bir zamanlama adına tıklayın.
-3. Değişiklik **etkin** için **Hayır**.
+1. Azure portal Otomasyon hesabınızdan, sol taraftaki bölüm **paylaşılan kaynakları** altında **zamanlamalar** ' ı seçin.
+2. Ayrıntılar bölmesini açmak için bir zamanlamanın adına tıklayın.
+3. **Etkin özelliği** **Hayır**olarak değiştirin.
 
 > [!NOTE]
-> Geçmişteki bir başlangıç saatine sahip bir zamanlama devre dışı bırakmak isterseniz, bunu kaydetmeden önce zaman gelecekte için başlangıç tarihini değiştirmeniz gerekir.
+> Geçmişte başlangıç saati olan bir zamanlamayı devre dışı bırakmak istiyorsanız, başlangıç tarihini kaydetmeden önce gelecekte bir zaman olarak değiştirmeniz gerekir.
 
-### <a name="to-disable-a-schedule-with-powershell"></a>PowerShell ile bir zamanlama devre dışı bırakmak için
+### <a name="to-disable-a-schedule-with-powershell"></a>PowerShell ile bir zamanlamayı devre dışı bırakmak için
 
-Kullanabileceğiniz [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet'i mevcut bir zamanlamanın özelliklerini değiştirmek için. Zamanlama devre dışı bırakmak için belirtin **false** için **IsEnabled** parametresi.
+Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet 'ini kullanabilirsiniz. Zamanlamayı devre dışı bırakmak için, **IsEnabled** parametresi için **false** belirtin.
 
-Aşağıdaki örnek komutlar bir Azure Resource Manager cmdlet'i kullanarak bir runbook'u için zamanlama devre dışı bırakma gösterir.
+Aşağıdaki örnek komutlarda bir Azure Resource Manager cmdlet 'i kullanarak bir runbook için zamanlamayı devre dışı bırakma gösterilmektedir.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -175,5 +175,5 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Otomasyonu runbook'ları kullanmaya başlamak için bkz: [Azure Automation'da bir Runbook başlatma](../automation-starting-a-runbook.md)
+* Azure Otomasyonu 'nda runbook 'ları kullanmaya başlamak için bkz. [Azure Otomasyonu 'Nda runbook başlatma](../automation-starting-a-runbook.md)
 

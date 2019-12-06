@@ -4,23 +4,23 @@ description: Bu makale, sorun giderme hakkında bilgi sağlar Değişiklik İzle
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 482b263b7c8427276d4fdb8681372c2be1ae69ee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564851"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849403"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Değişiklik İzleme ve Envanter sorunlarını giderme
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Senaryon Değişiklik İzleme kayıtları Windows makineleri için gösterilmiyor
+### <a name="records-not-showing-windows"></a>Senaryo: Windows makineler için Değişiklik İzleme kayıtları gösterilmiyor
 
 #### <a name="issue"></a>Sorun
 
@@ -35,10 +35,10 @@ Bu hata aşağıdaki nedenlerden kaynaklanıyor olabilir:
 3. Değişiklik İzleme için yönetim paketleri indirilmez.
 4. Eklendi olan VM, Microsoft Monitoring Agent yüklü olarak Sysprep uygulanmamış bir kopyalanmış makineden gelmiş olabilir.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 1. Makinede **Microsoft Monitoring Agent** (HealthService. exe) çalıştığını doğrulayın.
-1. Makinedeki **Olay Görüntüleyicisi** denetleyin ve içindeki sözcüğe `changetracking` sahip tüm olayları arayın.
+1. Makinedeki **Olay Görüntüleyicisi** denetleyin ve word içinde `changetracking` sözcük içeren tüm olayları arayın.
 1. Değişiklik İzleme çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning) ' nı ziyaret edin.
 1. Aşağıdaki Değişiklik İzleme ve stok yönetim paketlerinin yerel olarak mevcut olduğunu doğrulayın:
     * Microsoft. ıntelligencepacks. ChangeTrackingDirectAgent. *
@@ -48,7 +48,7 @@ Bu hata aşağıdaki nedenlerden kaynaklanıyor olabilir:
 
 Bu çözümler sorununuzu gidermezse ve desteğe başvurursanız, aracıdaki tanılamayı toplamak için aşağıdaki komutları çalıştırabilirsiniz
 
-Aracı makinede, adresine `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` gidin ve aşağıdaki komutları çalıştırın:
+Aracı makinede `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` ' a gidin ve aşağıdaki komutları çalıştırın:
 
 ```cmd
 net stop healthservice
@@ -58,7 +58,7 @@ net start healthservice
 ```
 
 > [!NOTE]
-> Varsayılan olarak hata izleme etkindir, önceki örnekte olduğu gibi ayrıntılı hata iletilerini etkinleştirmek istiyorsanız parametresini kullanın `VER` . Bilgi izlemeleri için çağrılırken `INF` `StartTracing.cmd`kullanın.
+> Varsayılan olarak hata izleme etkindir, önceki örnekte olduğu gibi ayrıntılı hata iletilerini etkinleştirmek istiyorsanız `VER` parametresi kullanın. Bilgi izlemeleri için `StartTracing.cmd`çağrılırken `INF` kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

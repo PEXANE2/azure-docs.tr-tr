@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
-description: Azure Cosmos DB için fark SıNıRı yan tümcesi hakkında bilgi edinin.
+description: Azure Cosmos DB sorgulanırken belirli değerleri atlamak ve almak için, fark SıNıRı yan tümcesini kullanmayı öğrenin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326885"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873259"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Konum SıNıRı yan tümcesinde hem konum sayısı hem de LIMIT sayısı gereklidir. İsteğe bağlı bir `ORDER BY` yan tümcesi kullanılırsa, sonuç kümesi sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür. Şu anda bu yan tümce yalnızca tek bir bölüm içindeki sorgularda desteklenir, çapraz bölümleme sorguları henüz desteklememektedir.
+  Konum SıNıRı yan tümcesinde hem konum sayısı hem de LIMIT sayısı gereklidir. İsteğe bağlı bir `ORDER BY` yan tümcesi kullanılırsa, sonuç kümesi, sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür. Şu anda bu yan tümce yalnızca tek bir bölüm içindeki sorgularda desteklenir, çapraz bölümleme sorguları henüz desteklememektedir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -50,7 +50,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     OFFSET 1 LIMIT 1
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -69,7 +69,7 @@ Sonuçlar şunlardır:
     OFFSET 1 LIMIT 1
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [

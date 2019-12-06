@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 'da ölçek işleme
-description: Bu makalede, Azure Cosmos DB üretilen iş esnek nasıl ölçeklenirken açıklanmaktadır
-author: dharmas-cosmos
+description: Bu makalede, Azure Cosmos DB Azure Cosmos hesabının sağlandığı farklı bölgelerde üretilen iş verimini nasıl ölçeklendirilen açıklanır.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467594"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873514"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Sağlanan aktarım hızını küresel olarak ölçeklendirme 
 
@@ -34,7 +34,7 @@ Cosmos kapsayıcısının *' R '* ru ile yapılandırıldığını ve Cosmos hes
 
 - Cosmos hesabı birden çok yazma bölgesi ile yapılandırıldıysa, kapsayıcıda Global olarak bulunan toplam ru = *R* x (*N*+ 1). Ek *R* ru, bölgeler genelinde güncelleştirme çakışmalarını ve entropi karşı trafiği işlemek için otomatik olarak sağlanır.
 
-[Tutarlılık modeli](consistency-levels.md) seçiminiz, aktarım hızını da etkiler. Daha esnek tutarlılık düzeyleri (örn., *oturum*, *tutarlı ön ek* ve *nihai* tutarlılık) için, daha güçlü tutarlılık düzeylerine kıyasla yaklaşık 2x okuma aktarım hızı edinebilirsiniz (örneğin, *sınırlı Eskime durumu* veya  *güçlü* tutarlılık).
+[Tutarlılık modeli](consistency-levels.md) seçiminiz, aktarım hızını da etkiler. Daha gevşek tutarlılık düzeyi (örn., *oturum*, *tutarlı ön ek* ve *nihai* tutarlılık) için, daha esnek tutarlılık düzeylerine kıyasla (örn., *sınırlı stalet* veya *güçlü* tutarlılık) yaklaşık 2x okuma aktarım hızı edinebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

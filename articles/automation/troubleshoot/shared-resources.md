@@ -2,24 +2,24 @@
 title: Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunları giderme
 description: Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231527"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849301"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Paylaşılan kaynaklarla ilgili sorunları giderme
 
 Bu makalede, Azure Otomasyonu 'nda paylaşılan kaynakları kullanırken üzerinde çalıştırabileceğiniz sorunları gidermeye yönelik çözümler ele alınmaktadır.
 
-## <a name="modules"></a>Modules
+## <a name="modules"></a>Modüller
 
 ### <a name="module-stuck-importing"></a>Senaryo: bir modül içeri aktarılıyor
 
@@ -31,7 +31,7 @@ Modüllerinizi Azure Otomasyonu 'nda içeri aktardığınızda veya güncelleşt
 
 PowerShell modüllerini içeri aktarmak karmaşık bir çok adımlı işlemdir. Bu işlem, bir modülün doğru bir şekilde içe aktarılmamasının olasılığını tanıtır. Bu sorun oluşursa, içeri aktardığınız modül geçici bir durumda kalmış olabilir. Bu işlem hakkında daha fazla bilgi edinmek için bkz. [PowerShell modülünü Içeri aktarma](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Bu sorunu çözmek için, [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet 'Ini kullanarak **içeri aktarma** durumunda kalmış olan modülü kaldırmanız gerekir. Daha sonra modülün içeri aktarılmasını yeniden deneyebilirsiniz.
 
@@ -53,7 +53,7 @@ Azure modules are being updated
 
 Azurerd modüllerini, 0 ile başlayan sayısal bir ada sahip bir kaynak grubundaki bir Otomasyon hesabında güncelleştiren bilinen bir sorun vardır.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Otomasyon hesabınızda Azure modüllerinizi güncelleştirmek için, alfasayısal bir ada sahip bir kaynak grubunda olması gerekir. 0 ile başlayan sayısal adlara sahip kaynak grupları Şu anda Azurere modüllerini güncelleştiremiyor.
 
@@ -72,7 +72,7 @@ Modülün Azure Otomasyonu 'na başarıyla aktarılamayan bazı yaygın nedenler
 * Modülün içindeki bağımlılıkları eksik.
 * `New-AzureRmAutomationModule` cmdlet 'i modülünü karşıya yüklemek için kullanılır ve tam depolama yolu verilmemiş ya da genel olarak erişilebilen bir URL kullanarak modülü yüklemediniz.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Aşağıdaki çözümlerden herhangi biri sorunu çözer:
 
@@ -90,7 +90,7 @@ Azure modüllerinizi güncelleştirmek için [Update-AzureModule. ps1](https://g
 
 `Update-AzureModule.ps1` betiği kullanılırken aynı anda kaç modülün güncelleştirildiğini belirleme için varsayılan ayar 10 ' dur. Aynı anda çok fazla modül güncelleştirilirken güncelleştirme işlemi hatalara açıktır.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Tüm Azurerd modüllerinin aynı Otomasyon hesabında gerekli olduğu yaygın değildir. Yalnızca ihtiyaç duyduğunuz Azurermmodules içeri aktarılması önerilir.
 
@@ -132,7 +132,7 @@ You do not have permissions to create…
 
 Farklı Çalıştır hesabını oluşturmak veya güncelleştirmek için gerekli izinlere sahip değilsiniz veya kaynak bir kaynak grubu düzeyinde kilitli.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, farklı çalıştır hesabı tarafından kullanılan çeşitli kaynaklara uygun izinlere sahip olmanız gerekir. Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için gerekli izinler hakkında bilgi edinmek için, bkz. [Farklı Çalıştır hesabı izinleri](../manage-runas-account.md#permissions).
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 Bu hata büyük olasılıkla yanlış yapılandırılmış bir [Farklı Çalıştır hesabı](../manage-runas-account.md)nedeniyle oluşur.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 [Farklı Çalıştır hesabınızın](../manage-runas-account.md) doğru yapılandırıldığından emin olun. Doğru yapılandırıldıktan sonra, Azure ile kimlik doğrulamak için Runbook 'inizdeki uygun koda sahip olduğunuzdan emin olun. Aşağıdaki örnekte, bir farklı çalıştır hesabı kullanarak bir runbook 'ta Azure 'da kimlik doğrulaması yapmak için bir kod parçacığı gösterilmektedir.
 

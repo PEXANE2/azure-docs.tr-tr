@@ -4,17 +4,17 @@ description: Bu makalede, Azure Otomasyonu grafik runbook’larında hata işlem
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ed6620333382a1e43ee1b38a009c91e8d7038233
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cb4f6827f58b882b8b1ae0ef8c093a09e090f17a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476946"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850712"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Otomasyonu grafik runbook’larında hata işleme
 
@@ -28,9 +28,9 @@ Yürütme sırasında oluşabilecek PowerShell hataları sonlandıran ve sonland
 
 * **Sonlandıran hata**: Yürütme sırasında gerçekleşen ve komutu (veya betiğin yürütülmesini) tamamen durduran ciddi bir hata. Örnek olarak mevcut olmayan cmdlet’ler, bir cmdlet’in çalışmasını önleyecek söz dizimi hataları veya diğer önemli hatalar verilebilir.
 
-* **Sonlandırmayan hata**: Yürütme başarısız olmasına rağmen devam etmesini engellenmeyen ve ciddi olmayan bir hata. Örnek olarak bir dosyanın bulunamaması, hatalar ve izin sorunları yaşanması gibi işlemsel hatalar verilebilir.
+* **Sonlandırıcı olmayan hata**: Hataya rağmen yürütme işleminin devam etmesini engellenmeyen ve ciddi olmayan bir hata. Örnek olarak bir dosyanın bulunamaması, hatalar ve izin sorunları yaşanması gibi işlemsel hatalar verilebilir.
 
-Azure Otomasyonu grafik runbook'ları hata işleme özelliğiyle geliştirilmiştir. Bundan böyle özel durumları sonlandırıcı olmayan hatalara dönüştürebilir ve etkinlikler arasında hata bağlantıları oluşturabilirsiniz. Bu işlem bir runbook yazarının hataları yakalamasına ve gerçekleşen ya da beklenmeyen koşulları yönetmesine olanak tanır.  
+Azure Otomasyonu grafik runbook 'ları, hata işlemeyi dahil etme özelliğiyle geliştirilmiştir. Bundan böyle özel durumları sonlandırıcı olmayan hatalara dönüştürebilir ve etkinlikler arasında hata bağlantıları oluşturabilirsiniz. Bu işlem, runbook yazarının hataları yakalayıp gerçekleşen veya beklenmeyen koşulları yönetmesine olanak tanır.  
 
 ## <a name="when-to-use-error-handling"></a>Hata işleme ne zaman kullanılır
 

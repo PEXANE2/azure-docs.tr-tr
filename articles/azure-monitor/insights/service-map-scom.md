@@ -1,5 +1,5 @@
 ---
-title: System Center Operations Manager ile tümleştirme VM'ler için Azure İzleyici | Microsoft Docs
+title: VM'ler için Azure İzleyici haritasını Operations Manager ile tümleştirin | Microsoft Docs
 description: VM'ler için Azure İzleyici Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, Operations Manager ' de otomatik olarak dağıtılmış uygulama diyagramları oluşturmak için harita özelliğinin kullanılması anlatılmaktadır.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/12/2019
-ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553966"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849828"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>VM'ler için Azure İzleyici Map özelliği ile System Center Operations Manager tümleştirme
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
-VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. Eşleme özelliği ve System Center Operations Manager arasındaki bu tümleştirmeyle, VM'ler için Azure İzleyici içindeki dinamik bağımlılık haritalarını temel alan Operations Manager otomatik olarak dağıtılmış uygulama diyagramları oluşturabilirsiniz. 
+VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. Eşleme özelliği ve System Center Operations Manager arasındaki bu tümleştirmeyle, VM'ler için Azure İzleyici içindeki dinamik bağımlılık haritalarını temel alan Operations Manager otomatik olarak dağıtılmış uygulama diyagramları oluşturabilirsiniz. Bu makalede, System Center Operations Manager yönetim grubunuzun bu özelliği destekleyecek şekilde nasıl yapılandırılacağı açıklanmaktadır.
 
 >[!NOTE]
 >Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. VM'ler için Azure İzleyici Map özelliği, tek başına Hizmet Eşlemesi çözümünün yerini alacak şekilde tasarlanmıştır. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](vminsights-overview.md).
@@ -107,7 +107,7 @@ Hizmet Eşlemesi klasörü dört düğüme sahiptir:
 
 ## <a name="edit-or-delete-the-workspace"></a>Çalışma alanını düzenleme veya silme
 
-Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesi (**Yönetim** bölmesi > **Operations Management Suite**  > **hizmet eşlemesi**) aracılığıyla düzenleyebilir veya silebilirsiniz.
+Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesi (**Yönetim** bölmesi > **Operations Management Suite** > **hizmet eşlemesi**) aracılığıyla düzenleyebilir veya silebilirsiniz.
 
 >[!NOTE]
 >Operations Management Suite, artık [Azure izleyici](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)'nin bir parçası olan Log Analytics dahil olan [hizmetlerden oluşan bir koleksiyondur](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) .

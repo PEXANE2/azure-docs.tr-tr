@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB'de kapsayıcı oluşturma
-description: Azure Cosmos DB'de kapsayıcı oluşturmayı öğrenin
+description: Azure portal, .net, Java, Python, Node. js ve diğer SDK 'Ları kullanarak Azure Cosmos DB bir kapsayıcı oluşturmayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242401"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873718"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı oluşturma
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a id="portal-sql"></a>SQL APı 'SI
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya var olan bir hesabı seçin.
 
@@ -37,7 +37,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a id="portal-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -51,9 +51,9 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
     ![MongoDB için Azure Cosmos DB API 'nin ekran görüntüsü, kapsayıcı ekleme iletişim kutusu](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
-### <a id="portal-cassandra"></a>Cassandra API’si
+### <a id="portal-cassandra"></a>Cassandra API
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-cassandra-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -72,7 +72,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a id="portal-gremlin"></a>Gremlin API'si
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-graph-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -89,7 +89,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a id="portal-table"></a>Tablo API’si
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-table-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -154,7 +154,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 > [!Note]
 > MongoDB tel protokolü, [Istek birimi](request-units.md)kavramını anlamıyor. Üzerinde üretilen işleme ile yeni bir koleksiyon oluşturmak için SQL API için Azure portal veya Cosmos DB SDK 'larını kullanın.
 
-### <a id="dotnet-cassandra"></a>Cassandra API’si
+### <a id="dotnet-cassandra"></a>Cassandra API
 
 ```csharp
 // Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.
@@ -167,6 +167,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
-* [Azure Cosmos DB'de İstek birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek Birimleri](request-units.md)
 * [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)

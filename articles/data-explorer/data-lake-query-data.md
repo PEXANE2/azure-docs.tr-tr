@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1299ca9192481c1cc914732d47823c1d8cbd0fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383371"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849080"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama (Önizleme)
 
@@ -21,13 +21,8 @@ Azure Data Lake Storage, büyük veri analizi için yüksek düzeyde ölçeklene
 Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleştirilerek, Gölü verilere hızlı, önbelleğe alınmış ve dizinli erişim sağlar. Azure Veri Gezgini 'a girmeden önce Gölü verileri analiz edebilir ve sorgulayabilirsiniz. Ayrıca, alınan ve toplanan yerel Gölü verileri aynı anda sorgulayabilirsiniz.  
 
 > [!TIP]
-> En iyi sorgu performansı, verileri Azure Veri Gezgini 'e göre gerekli hale getiriliyor. Önceki giriş yapılmadan Azure Data Lake Storage 2. verileri sorgulama özelliği yalnızca geçmiş veriler veya nadiren sorgulanan veriler için kullanılmalıdır.
+> En iyi sorgu performansı, verileri Azure Veri Gezgini 'e göre gerekli hale getiriliyor. Önceki giriş yapılmadan Azure Data Lake Storage 2. verileri sorgulama özelliği yalnızca geçmiş veriler veya nadiren sorgulanan veriler için kullanılmalıdır. En iyi sonuçlar için, Gölü [sorgu performansınızı iyileştirin](#optimize-your-query-performance) .
  
-## <a name="optimize-query-performance-in-the-lake"></a>Gölü sorgu performansını iyileştirme 
-
-* İyileştirilmiş performans ve iyileştirilmiş sorgu süresi için verileri bölümleme.
-* İyileştirilmiş performans (en iyi performans için lz4) için verileri sıkıştırın.
-* Azure Blob depolama veya Azure Data Lake Storage 2. Azure Veri Gezgini kümenizle aynı bölge ile kullanın. 
 
 ## <a name="create-an-external-table"></a>Dış tablo oluşturma
 
@@ -231,6 +226,37 @@ Bu sorgu, sorgu süresini ve performansını en iyi duruma getirmek için bölü
 ![bölümlenmiş sorguyu işle](media/data-lake-query-data/taxirides-with-partition.png)
   
 Dış tablo *Vergilenides* üzerinde çalışacak ek sorgular yazabilir ve veriler hakkında daha fazla bilgi edinebilirsiniz. 
+
+## <a name="optimize-your-query-performance"></a>Sorgu performansınızı iyileştirin
+
+Dış verileri sorgulamak için aşağıdaki en iyi yöntemleri kullanarak Gölü sorgu performansınızı iyileştirin. 
+ 
+### <a name="data-format"></a>Veri biçimi
+ 
+Analitik sorgular için şu tarihten sonra sütunlu bir biçim kullanın:
+* Yalnızca bir sorguyla ilgili sütunlar okunabilir. 
+* Sütun kodlama teknikleri, veri boyutunu önemli ölçüde azaltabilir.  
+Azure Veri Gezgini, Parquet ve ORC sütunlu biçimlerini destekler. En iyileştirilmiş uygulama nedeniyle Parquet biçimi önerilir. 
+ 
+### <a name="azure-region"></a>Azure bölgesi 
+ 
+Dış verilerin Azure Veri Gezgini kümeniz ile aynı Azure bölgesinde yer aldığı yokunlar. Bu, maliyet ve veri getirme süresini azaltır.
+ 
+### <a name="file-size"></a>Dosya boyutu
+ 
+Dosya başına en iyi dosya boyutu yüzlerce MB 'tır (1 GB 'a kadar). Daha yavaş dosya numaralandırma işlemi ve sütunlu biçimin sınırlı kullanımı gibi gereksiz ek yük gerektiren çok sayıda küçük dosyayı kullanmaktan kaçının. Dosya sayısının Azure Veri Gezgini kümenizdeki CPU çekirdekleri sayısından büyük olması gerektiğini unutmayın. 
+ 
+### <a name="compression"></a>Sıkıştırma
+ 
+Uzak depolamadan getirilen veri miktarını azaltmak için sıkıştırmayı kullanın. Parquet biçimi için, sütun gruplarını ayrı olarak sıkıştıran iç Parquet sıkıştırma mekanizmasını kullanın, böylece bunları ayrı olarak okuyabilirsiniz. Sıkıştırma mekanizmasının kullanımını doğrulamak için dosyaların şu şekilde adlandırıldığını denetleyin: "<filename>. gz. Parquet" veya "<filename>. Snappy. Parquet" yerine "<filename>. Parquet. gz"). 
+ 
+### <a name="partitioning"></a>Bölümleme
+ 
+Sorgunun ilgisiz yolları atlamasına olanak sağlayan "klasör" bölümlerini kullanarak verilerinizi düzenleyin. Bölümleme planlaması yaparken, sorgularda zaman damgası veya kiracı KIMLIĞI gibi dosya boyutunu ve ortak filtreleri göz önünde bulundurun.
+ 
+### <a name="vm-size"></a>VM boyutu
+ 
+Daha fazla çekirdeğe ve daha yüksek ağ aktarım hızına sahip VM SKU 'Larını seçin (bellek daha az önemlidir). Daha fazla bilgi için bkz. [Azure Veri Gezgini kümeniz için doğru VM SKU 'Su seçme](manage-cluster-choose-sku.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

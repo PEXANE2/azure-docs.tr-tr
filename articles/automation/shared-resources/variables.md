@@ -4,17 +4,17 @@ description: Değişken varlıklar, Azure Otomasyonu 'ndaki tüm runbook 'lar ve
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910058"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849437"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Otomasyonu 'nda değişken varlıklar
 
@@ -42,9 +42,9 @@ Bir dizi veya Hashtable oluşturup değişkenine kaydederek birden çok değeri 
 Otomasyon 'da kullanılabilen değişken türlerinin bir listesi aşağıda verilmiştir:
 
 * Dize
-* Integer
-* DateTime
-* Boole değeri
+* Tamsayı
+* Tarih Saat
+* Boole
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>Azurerd PowerShell cmdlet 'leri
@@ -58,11 +58,11 @@ Azurerd için aşağıdaki tablodaki cmdlet 'ler Windows PowerShell ile otomasyo
 |[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Varolan bir değişkeni kaldırır.|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Mevcut bir değişken için değeri ayarlar.|
 
-## <a name="activities"></a>Etkinlikler
+## <a name="activities"></a>Olaylar
 
 Aşağıdaki tablodaki etkinlikler bir runbook ve DSC yapılandırmalarının değişkenlerine erişmek için kullanılır. Get-AzureRmAutomationVariable ve Get-AutomationVariable cmdlet 'leri arasındaki fark, bu belgenin başlangıcında yukarıda açıklanan şekilde belirlenir.
 
-| Etkinlikler | Açıklama |
+| Olaylar | Açıklama |
 |:---|:---|
 |Get-AutomationVariable|Mevcut bir değişkenin değerini alır.|
 |Set-AutomationVariable|Mevcut bir değişken için değeri ayarlar.|
