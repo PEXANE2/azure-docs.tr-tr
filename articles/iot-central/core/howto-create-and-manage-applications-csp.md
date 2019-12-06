@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1588a27453dbc223e6aa1dd993905d274e5e1242
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480344"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851341"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>CSP portalından Azure IoT Central uygulaması oluşturma ve yönetme
 
@@ -63,7 +63,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/
 
 ## <a name="azure-subscription"></a>Azure aboneliği
 
-Azure aboneliği, Azure Hizmetleri örnekleri oluşturmanıza olanak sağlar. Azure IoT Central, erişiminiz olan müşterinin tüm Azure aboneliklerini otomatik olarak bulur ve bunları **uygulama oluştur** sayfasında bir açılan pencerede görüntüler. Yeni bir Azure IoT Central uygulaması oluşturmak için bir Azure aboneliği seçin.
+Azure aboneliği, Azure hizmetlerinin örneklerini oluşturmanıza olanak sağlar. Azure IoT Central, erişiminiz olan müşterinin tüm Azure aboneliklerini otomatik olarak bulur ve bunları **uygulama oluştur** sayfasında bir açılan pencerede görüntüler. Yeni bir Azure IoT Central uygulaması oluşturmak için bir Azure aboneliği seçin.
 
 Azure aboneliğiniz yoksa, Microsoft Iş Ortağı Merkezi ' nde bir tane oluşturabilirsiniz. Azure aboneliğini oluşturduktan sonra, **Uygulama Oluştur** sayfasına geri gidin. Yeni aboneliğiniz **Azure Aboneliği** açılan listesinde gösterilir.
 
@@ -74,7 +74,7 @@ Daha fazla bilgi için bkz. [Azure abonelikleri](https://docs.microsoft.com/azur
 Azure IoT Central uygulamanızı oluşturmak istediğiniz bölge veya [coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/) bölgeyi seçin. Genellikle en iyi performansı elde etmek için cihazlarınıza en yakın fiziksel bölgeyi seçmeniz gerekir.
 
 > [!NOTE]
-> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **ABD** konumlarında kullanılabilir.
+> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
 
 Daha fazla bilgi edinmek için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/) ve [Azure coğrafi lıkları](https://azure.microsoft.com/global-infrastructure/geographies/).
 

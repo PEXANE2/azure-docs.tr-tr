@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786722"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847227"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
 
@@ -44,7 +44,7 @@ Aşağıdaki sorular [Azure Portal](https://portal.azure.com/)var olan raporlar 
 Azure portal deneyiminde, parola sıfırlama ve parola sıfırlama kayıt etkinliğini görüntüleme yönteminizi geliştirdik. Parola sıfırlama ve parola sıfırlama kaydı olaylarını bulmak için aşağıdaki adımları kullanın:
 
 1. [Azure portala](https://portal.azure.com) gidin.
-2. Sol bölmedeki **tüm hizmetler** ' i seçin.
+2. Sol bölmede **Tüm hizmetler**'i seçin.
 3. Hizmetler listesinde **Azure Active Directory** arayın ve seçin.
 4. Yönet bölümünden **Kullanıcılar** ' ı seçin.
 5. **Kullanıcılar** dikey penceresinden **Denetim günlükleri** ' ni seçin. Bu, dizininizdeki tüm kullanıcılara karşı gerçekleşen tüm denetim olaylarını gösterir. Parolayla ilgili tüm olayları görmek için bu görünüme filtre uygulayabilirsiniz.
@@ -81,7 +81,7 @@ Aşağıdaki etkinlik türleri **self servis parola yönetimi** denetim olay kat
 * [Parolayı Sıfırla (yöneticiye göre)](#activity-type-reset-password-by-admin): bir yöneticinin Azure Portal Kullanıcı adına bir parola sıfırlaması yaptığını belirtir.
 * [Parola sıfırlama (self servis)](#activity-type-reset-password-self-service): kullanıcının [Azure AD parola sıfırlama portalından](https://passwordreset.microsoftonline.com)parolasını başarıyla sıfırladığı anlamına gelir.
 * [Self servis parola sıfırlama akışı etkinlik ilerlemesi](#activity-type-self-serve-password-reset-flow-activity-progress): bir kullanıcının, parola sıfırlama işleminin bir parçası olarak belirli bir parola sıfırlama kimlik doğrulama kapısını geçirme gibi ilerlemesinin devam ettiğini gösterir.
-* [Kullanıcı hesabının kilidini açma (self servis)](#activity-type-unlock-a-user-account-self-service)): hesabın kilit açma özelliğinin Active Directory özelliğini kullanarak, kullanıcının [Azure AD parola sıfırlama portalından](https://passwordreset.microsoftonline.com) parolalarını sıfırlamadan Active Directory hesabının kilidini başarıyla kilitdiğini belirtir sıfırlama olmadan.
+* [Kullanıcı hesabının kilidini açma (self servis)](#activity-type-unlock-a-user-account-self-service)): bir kullanıcının, sıfırlama olmadan hesap kilit açma özelliğinin Active Directory özelliğini kullanarak Active Directory HESABıNı [Azure AD parola sıfırlama portalından](https://passwordreset.microsoftonline.com) başarıyla kilitleyip kilitdiğini gösterir.
 * [Self servis parola sıfırlama için kayıtlı Kullanıcı](#activity-type-user-registered-for-self-service-password-reset): bir kullanıcının, geçerli olarak belirtilen kiracı parolası sıfırlama ilkesine uygun olarak parolasını sıfırlayabilmesi için gerekli tüm bilgileri kaydetmediğini belirtir.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Etkinlik türü: Self servis parola sıfırlaması engellendi

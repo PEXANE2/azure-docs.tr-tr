@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603463"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848502"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Parolasız kimlik doğrulama dağıtımını tamamlandırma
 
@@ -61,13 +61,13 @@ Microsoft 'un parolasız kimlik doğrulama yöntemleri farklı senaryolara olana
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması için teknik konular
 
-**AD FS tümleştirme** -kullanıcı, Microsoft Authenticator paroladışı kimlik bilgisini etkinleştirmesidir, bu kullanıcı için kimlik doğrulaması, onay için bir bildirim gönderir. Karma Kiracıdaki kullanıcıların, "parolanızı kullan" seçeneğini seçmedikçe oturum açmak için ADFS 'ye yönlendirilmesi engellenir. Bu işlem, şirket içi koşullu erişim ilkelerinin yanı sıra geçişli kimlik doğrulama akışlarını da atlar. Ancak, bir login_hint belirtilmişse, kullanıcı ADFS 'ye iletilir ve passwordless kimlik bilgisini kullanma seçeneğini atlar.
+**AD FS tümleştirme** -kullanıcı, Microsoft Authenticator paroladışı kimlik bilgisini etkinleştirmesidir, bu kullanıcı için kimlik doğrulaması, onay için bir bildirim gönderir. Karma Kiracıdaki kullanıcıların, "parolanızı kullan" seçeneğini seçmedikçe oturum açmak için ADFS 'ye yönlendirilmesi engellenir. Bu işlem, şirket içi koşullu erişim ilkelerinin yanı sıra geçişli kimlik doğrulama akışlarını da atlar. Ancak, bir login_hint belirtilirse, kullanıcı ADFS 'ye iletilir ve passwordless kimlik bilgisini kullanma seçeneğini atlayacaktır.
 
 Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinleştirilen **Azure MFA sunucusu** son kullanıcıları, hala bir passworddaha az telefon oturum açma kimlik bilgisi oluşturabilir ve kullanabilir. Kullanıcı, kimlik bilgileriyle Microsoft Authenticator birden çok yüklemeyi (5 +) yükseltmeyi denerse, bu değişiklik hataya neden olabilir.
 
 **Cihaz kaydı** -kimlik doğrulayıcı uygulamasını passwordless kimlik doğrulaması için kullanmak Için CIHAZıN Azure AD kiracısında kayıtlı olması ve paylaşılan bir cihaz olması gerekir. Bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, kimlik doğrulayıcı uygulamasını kullanarak telefon oturum açma için yalnızca bir iş veya okul hesabının desteklendiği anlamına gelir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir.
 
@@ -133,7 +133,7 @@ Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özet
 | --- | --- |
 | **Erişim** | Passwordless oturum açma, kurumsal ağ içinde veya dışında bir kurumsal veya kişisel cihazdan kullanılabilir. |
 | **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
-| **#** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
+| **Governance (İdare)** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | **Güvenlik** | Uygun kimlik doğrulama yöntemine erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. <br> Yalnızca yetkili kullanıcılar parolasız oturum açma kullanabilir. |
 | **Performans** | Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. <br> Oturum açma süreleri kullanım kolaylığı açısından ölçülür. |
 | **Kullanıcı deneyimi** | Kullanıcılar mobil uyumluluğun farkında değildir. <br> Kullanıcılar, kimlik doğrulayıcı uygulamasının parolasız oturum açmasını yapılandırabilir. |

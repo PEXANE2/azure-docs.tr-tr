@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791148"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869536"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -81,10 +81,10 @@ VM 'Leri sağlamak için önerilen yol, **Windows sanal masaüstü konak havuzu 
 Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu yönergeleri izleyin.
 
 1. Programlar **ve özellikler** > **Denetim Masası** > **Programlar** ' ın denetleyerek, iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
-2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlogs.log**konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
-3. **C:\windows\temp\scriptlogs.log** dosyası varsa, açın ve hata iletilerini denetleyin.
+2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlog.log**konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
+3. **C:\windows\temp\scriptlog.log** dosyası varsa, açın ve hata iletilerini denetleyin.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Hata: Windows sanal masaüstü Aracısı ve Windows sanal masaüstü Aracısı önyükleme yükleyicisi eksik. C:\Windows\Temp\scriptlogs.log de eksik
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Hata: Windows sanal masaüstü Aracısı ve Windows sanal masaüstü Aracısı önyükleme yükleyicisi eksik. C:\Windows\Temp\ScriptLog.log de eksik
 
 **Neden 1:** Azure Resource Manager şablonu için giriş sırasında belirtilen kimlik bilgileri yanlış veya izinler yetersiz.
 
@@ -98,7 +98,7 @@ Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu
 - Kiracı adının doğru olduğunu ve kiracının Windows sanal masaüstü 'nde mevcut olduğunu doğrulayın.
 - Hesabın en az RDS katkıda bulunan izinleri olduğunu onaylayın.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Hata: kimlik doğrulaması başarısız, C:\Windows\Temp\scriptlogs.log dosyasında hata
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Hata: kimlik doğrulaması başarısız oldu, hata: C:\Windows\Temp\ScriptLog.log
 
 **Neden:** PowerShell DSC 'nin yürütülmesi, ancak Windows sanal masaüstüne bağlanamadık.
 

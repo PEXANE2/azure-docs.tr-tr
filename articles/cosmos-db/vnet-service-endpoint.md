@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b91e235824085977f1570e664b43d028a905407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819094"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869808"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB erişim
 
@@ -39,6 +39,12 @@ IP güvenlik duvarı veya sanal ağ erişim kuralları eklendiğinde, yalnızca 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Hizmet uç noktasını, alt ağda Azure Cosmos DB için etkinleştirdiğimde, isteklerim engellendi almaya başladı. Ne oldu?
 
 Bir alt ağda Azure Cosmos DB için hizmet uç noktası etkinleştirildikten sonra, hesap anahtarlarına genel IP 'den sanal ağa ve alt ağa ulaşan trafik kaynağıdır. Azure Cosmos hesabınızda yalnızca IP tabanlı güvenlik duvarı varsa, hizmet etkin alt ağdan gelen trafik artık IP güvenlik duvarı kurallarıyla eşleşmez ve bu nedenle reddedilir. IP tabanlı güvenlik duvarından sanal ağ tabanlı erişim denetimine sorunsuz bir şekilde geçiş yapmak için adımlara gidin.
+
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>VNET hizmet uç noktaları olan Azure Cosmos hesapları için ek RBAC izinleri gerekiyor mu?
+
+VNET hizmet uç noktalarını bir Azure Cosmos hesabına ekledikten sonra, hesap ayarlarında herhangi bir değişiklik yapmak için Azure Cosmos hesabınızda yapılandırılan tüm sanal ağlar için `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` eylemine erişmeniz gerekir. Bu eylem, yetkilendirme işlemi herhangi bir özelliği değerlendirmeden önce veritabanına ve sanal ağ kaynaklarına karşılık gelen eylemleri doğruladığından gereklidir.
+ 
+Kullanıcı Azure CLı kullanarak VNET ACL 'Lerini belirtmese bile, yetkilendirme işlemleri doğrular. Şu anda Azure Cosmos hesabının denetim düzlemi, Azure Cosmos hesabının tamamlanma durumunu ayarlamayı destekler. Denetim düzlemi çağrılarına ait parametrelerden biri `virtualNetworkRules`. Bu parametre belirtilmemişse, Azure CLı `virtualNetworkRules` bir veritabanı çağrısı yapar ve bu değeri güncelleştirme çağrısında kullanır.
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Eşlenen sanal ağların Azure Cosmos hesabına erişimi de var mı? 
 Yalnızca sanal ağın ve Azure Cosmos hesabına eklenen alt ağlarının erişimi vardır. Eşlenen sanal ağlarda bulunan alt ağlar hesaba eklenene kadar, eşlenen VNET 'ler hesaba erişemez.

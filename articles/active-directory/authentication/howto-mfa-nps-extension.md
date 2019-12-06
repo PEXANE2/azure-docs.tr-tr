@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8388d5b22cddcf148c68f35758ccdf797abbcd9e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420622"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848315"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication tümleştirin
 
@@ -35,7 +35,7 @@ Aşağıdaki diyagramda bu üst düzey kimlik doğrulama isteği akışı göste
 
 ![Kimlik doğrulama akış diyagramı](./media/howto-mfa-nps-extension/auth-flow.png)
 
-## <a name="plan-your-deployment"></a>Dağıtımınızı planlama
+## <a name="plan-your-deployment"></a>Dağıtımınızı planlayın
 
 NPS uzantısı, artıklığı otomatik olarak işler, bu nedenle özel bir yapılandırmaya gerek kalmaz.
 
@@ -47,7 +47,7 @@ VPN sunucuları, kimlik doğrulama isteklerini yönlendirdiklerinden, yeni Azure
 
 NPS uzantısı, Mevcut altyapınızla birlikte çalışmak üzere tasarlanmıştır. Başlamadan önce aşağıdaki önkoşullara sahip olduğunuzdan emin olun.
 
-### <a name="licenses"></a>Lisanslarının
+### <a name="licenses"></a>Lisanslar
 
 Azure MFA için NPS uzantısı, [azure Multi-Factor Authentication lisanslarına](multi-factor-authentication.md) (Azure AD PREMIUM, EMS veya MFA tek başına lisansa dahildir) sahip müşteriler tarafından kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. 
 
@@ -68,7 +68,7 @@ Windows PowerShell için Microsoft Azure Active Directory Modülü, zaten mevcut
 
 NPS uzantısını kullanan herkesin Azure AD Connect kullanılarak Azure Active Directory eşitlenmesi ve MFA için kayıtlı olması gerekir.
 
-Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönetici kimlik bilgilerine sahip olmanız gerekir. Dizin KIMLIĞINIZI [Azure Portal](https://portal.azure.com)bulabilirsiniz. Yönetici olarak oturum açın. **Azure Active Directory**bulun ve seçin, sonra **Özellikler**' i seçin. **DIZIN kimliği** kutusuna GUID 'yi kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID 'yi kiracı KIMLIĞI olarak kullanırsınız.
+Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönetici kimlik bilgilerine sahip olmanız gerekir. Dizin Kimliğinizi bulabilirsiniz [Azure portalında](https://portal.azure.com). Yönetici olarak oturum açın. **Azure Active Directory**bulun ve seçin, sonra **Özellikler**' i seçin. **DIZIN kimliği** kutusuna GUID 'yi kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID 'yi kiracı KIMLIĞI olarak kullanırsınız.
 
 ![Azure Active Directory özellikleri altında Dizin KIMLIĞINIZI bulun](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
@@ -165,7 +165,7 @@ Mevcut bir NPS uzantısı yüklemesini yükseltirken, temeldeki sunucunun yenide
 
 Yükleyici şu konumda bir PowerShell betiği oluşturuyor: `C:\Program Files\Microsoft\AzureMfa\Config` (burada C:\ yükleme sürücünüz). Bu PowerShell betiği her çalıştırılışında aşağıdaki eylemleri gerçekleştirir:
 
-- Kendinden imzalı bir sertifika oluşturun.
+- Otomatik olarak imzalanan bir sertifika oluşturun.
 - Sertifikanın ortak anahtarını Azure AD 'de hizmet sorumlusu ile ilişkilendirin.
 - Sertifikayı yerel makine sertifika deposunda depolayın.
 - Sertifikanın özel anahtarına ağ kullanıcısı için erişim izni verin.
@@ -221,7 +221,7 @@ NPS uzantısını kullanarak bir RADIUS istemcisi için MFA 'yı etkinleştirdik
 
 MFA için kayıtlı olmayan kullanıcılarınız varsa, kimlik doğrulamaya çalıştıklarında ne olacağını belirleyebilirsiniz. Özellik davranışını denetlemek için kayıt defteri yolu *HKLM\Software\Microsoft\AzureMFA* kayıt defteri ayarını *REQUIRE_USER_MATCH* kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır:
 
-| Anahtar | Value | Varsayılan |
+| Anahtar | Değer | Varsayılan |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | DOĞRU/YANLıŞ | Ayarlanmadı (TRUE değerine denktir) |
 

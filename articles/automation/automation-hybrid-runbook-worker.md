@@ -1,20 +1,20 @@
 ---
-title: Azure Otomasyonu karma Runbook Worker
+title: Azure Otomasyonu Karma Runbook Çalışanı
 description: Bu makalede, yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ları çalıştırmak için kullanabileceğiniz bir Azure Otomasyonu özelliği olan karma Runbook Worker 'ı yükleme ve kullanma hakkında bilgi sağlanır.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743796"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850270"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatikleştirin
 
@@ -34,7 +34,7 @@ Karma Runbook Worker 'ı yüklemeye yönelik işlem işletim sistemine bağlıd�
 
 Bir Windows karma runbook çalışanı yüklemek ve yapılandırmak için iki yöntem kullanabilirsiniz. Önerilen yöntem, bir Windows bilgisayarı yapılandırma işlemini tamamen otomatik hale getirmek için bir Otomasyon Runbook 'u kullanmaktır. İkinci yöntem, rolü el ile yüklemek ve yapılandırmak için adım adım prosedürü takip eden bir yöntemdir. Linux makinelerinde aracıyı makineye yüklemek için bir Python betiği çalıştırırsınız.
 
-|OS  |Dağıtım türleri  |
+|İşletim Sistemi  |Dağıtım türleri  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[El ile](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
@@ -71,7 +71,7 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 
 ### <a name="linux"></a>Linux
 
-Çalışma alanı kimliği 'ni almak `ls /var/opt/microsoft/omsagent` için karma Runbook Worker üzerinde komutunu kullanabilirsiniz. Dizinde, klasörün adının çalışma alanı kimliği olduğu bir klasör vardır.
+Çalışma alanı kimliği 'ni almak için karma Runbook Worker üzerinde `ls /var/opt/microsoft/omsagent` komut kullanabilirsiniz. Dizinde, klasörün adının çalışma alanı kimliği olduğu bir klasör vardır.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -107,10 +107,10 @@ Aracı ve Azure Otomasyonu hizmeti arasındaki iletişim için bir ara sunucu ku
 
 Karma Runbook Worker rolünün Otomasyon ile iletişim kurması için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
 
-* Bağ Giden internet erişimi için yalnızca TCP 443 gereklidir.
+* Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gereklidir.
 * Genel URL: *. azure-automation.net
 * US Gov Virginia genel URL 'SI: *. azure-automation.us
-* Aracı hizmeti: https://\<Workspace ID\>. Agentsvc.Azure-Automation.net
+* Aracı hizmeti: https://\<çalışma alanı kimliği\>. agentsvc.azure-automation.net
 
 Özel durumlar tanımlanırken listelenen adreslerin kullanılması önerilir. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/en-us/download/details.aspx?id=56519)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıklar ve IP aralıklarında yaklaşan değişiklikler vardır.
 
@@ -118,20 +118,20 @@ Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, bu bölges
 
 | **Bölge** | **DNS kaydı** |
 | --- | --- |
-| Batı Orta ABD | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Orta Güney ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Orta Batı ABD | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Güney Orta ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Doğu ABD 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Batı ABD 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
-| Orta Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Kanada Orta |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Batı Avrupa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Kuzey Avrupa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Güneydoğu Asya |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Orta Hindistan |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japonya Doğu |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Avustralya Doğu |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
+| Doğu Japonya |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Doğu Avustralya |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | Avustralya Güneydoğu |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Birleşik Krallık Güney | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| ABD Devleti Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Birleşik Krallık, Güney | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| ABD Hükümeti Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Bölge adları yerine bölge IP adresleri listesi için, Microsoft Indirme Merkezi ' nden [Azure veri MERKEZI IP adresi](https://www.microsoft.com/download/details.aspx?id=41653) XML dosyasını indirin.
 
@@ -146,7 +146,7 @@ Bölge adları yerine bölge IP adresleri listesi için, Microsoft Indirme Merke
 
 Karma Runbook Worker için gereken standart adreslerin ve bağlantı noktalarının üstünde, özellikle Güncelleştirme Yönetimi için aşağıdaki adresler gereklidir. Bu adreslerle iletişim bağlantı noktası 443 üzerinden yapılır.
 
-|Azure genel  |Azure Kamu  |
+|Azure Genel  |Azure Devlet Kurumları  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |

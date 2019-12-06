@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514621"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841583"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -20,7 +20,7 @@ Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan Azure Kubernetes 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
+Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 * Log Analytics çalışma alanı.
 
@@ -50,7 +50,7 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 >[!IMPORTANT]
 >Karma Kubernetes kümelerini izlemek için desteklenen en düşük aracı sürümü ciprod10182019 veya daha yeni bir sürüm. 
 
-## <a name="supported-configurations"></a>Desteklenen konfigürasyonlar
+## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
 Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
 
@@ -72,20 +72,20 @@ Karma Kubernetes kümesine yönelik kapsayıcılar için Azure Izleyicisini etki
 
 Çözümü, Azure PowerShell cmdlet 'ini `New-AzResourceGroupDeployment` veya Azure CLı ile kullanarak, sunulan Azure Resource Manager şablonuyla dağıtabilirsiniz.
 
-Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilseniz, bkz:
+Bir şablon kullanarak kaynakları dağıtma kavramıyla alışkın değilseniz, bkz:
 
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
 
-* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek için yapılandırmayı belirtir ve diğeri şunları belirtmek için yapılandırdığınız parametre değerlerini içerir:
+Bu yöntem, iki JSON şablonları içerir. Yapılandırmayı, izlemeyi etkinleştirmek için bir şablon belirtir ve diğer aşağıdaki belirtmek için yapılandırdığınız parametre değerlerini içerir:
 
 - **workspaceResourceId** -Log Analytics çalışma alanınızın tam kaynak kimliği.
 - **workspaceRegion** -çalışma alanının oluşturulduğu bölge, Azure Portal görüntülenirken çalışma alanı özelliklerinde **konum** olarak da adlandırılır.
 
-**Containersolutionparams. JSON** dosyasındaki `workspaceResourceId` parametresi değeri için gereken Log Analytics çalışma alanınızın tam kaynak kimliğini belirlemek için, aşağıdaki adımları uygulayın ve ardından PowerShell cmdlet 'Ini veya Azure CLI komutunu çalıştırarak çözümden.
+**Containersolutionparams. JSON** dosyasındaki `workspaceResourceId` parametresi değeri için gereken Log Analytics çalışma alanınızın tam kaynak kimliğini belirlemek için, aşağıdaki adımları uygulayın ve ardından çözümü eklemek için PowerShell cmdlet 'Ini veya Azure CLI komutunu çalıştırın.
 
 1. Aşağıdaki komutu kullanarak erişiminiz olan tüm abonelikleri listeleyin:
 
@@ -93,7 +93,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
     az account list --all -o table
     ```
 
-    Çıktı aşağıdakine benzeyecektir:
+    Çıktı şuna benzer:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -178,7 +178,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
 
 5. Bu dosyayı bir yerel klasöre containerSolution. JSON olarak kaydedin.
 
-6. Aşağıdaki JSON sözdizimini dosyanıza yapıştırın:
+6. Aşağıdaki JSON söz dizimi dosyanıza yapıştırın:
 
     ```json
     {
@@ -218,7 +218,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
        
-       Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Bu tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonuç şunu içerir:
+       Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
 
        ```powershell
        provisioningState       : Succeeded
@@ -235,13 +235,13 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
        az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Bu tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonuç şunu içerir:
+       Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
      
-       İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir. 
+       İzleme etkinleştirdikten sonra küme için sistem durumu ölçümleri görmeden önce yaklaşık 15 dakika sürebilir. 
 
 ## <a name="install-the-chart"></a>Grafiği yükler
 
@@ -282,6 +282,25 @@ Grafiği başarıyla dağıttıktan sonra, karma Kubernetes kümenizin verilerin
 
 >[!NOTE]
 >Giriş gecikmesi, aracıdan Azure Log Analytics çalışma alanında yapılacak beş ila on dakikalık bir yerdedir. Tüm gerekli izleme verileri Azure Izleyici 'de kullanılabilir olana kadar kümenin durumu **veri yok** veya **bilinmiyor** değerini gösterir. 
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Karma Kubernetes kümeniz için izlemeyi etkinleştirmeye çalışırken bir hatayla karşılaşırsanız [TroubleshootError_nonAzureK8s. ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) PowerShell betiğini kopyalayın ve bilgisayarınızdaki bir klasöre kaydedin. Bu betik, karşılaşılan sorunları algılamaya ve gidermeye yardımcı olmak için sağlanır. Algılama ve düzeltme girişimi için tasarlanan sorunlar şunlardır:
+
+* Belirtilen Log Analytics çalışma alanı geçerli 
+* Log Analytics çalışma alanı, kapsayıcılar için Azure Izleyici çözümü ile yapılandırılır. Aksi takdirde, çalışma alanını yapılandırın.
+* OmsAgent replicaset Pod çalışıyor
+* OmsAgent daemonset Pod çalışıyor
+* OmsAgent Health hizmeti çalışıyor 
+* Kapsayıcılı aracıda yapılandırılan Log Analytics çalışma alanı kimliği ve anahtarı, Insight ile yapılandırılan çalışma alanıyla eşleşir.
+* Tüm Linux çalışan düğümlerinin RS Pod zamanlamak için `kubernetes.io/role=agent` etiketine sahip olduğunu doğrulayın. Mevcut değilse, ekleyin.
+* Doğrulama `cAdvisor port: 10255` kümedeki tüm düğümlerde açılır.
+
+Azure PowerShell ile yürütmek için, komut dosyasını içeren klasörde aşağıdaki komutları kullanın:
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

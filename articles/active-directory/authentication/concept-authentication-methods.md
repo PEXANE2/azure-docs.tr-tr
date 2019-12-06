@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420773"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848757"
 ---
 # <a name="what-are-authentication-methods"></a>Kimlik doğrulaması yöntemleri nelerdir?
 
@@ -28,7 +28,7 @@ Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönt
 
 |Kimlik Doğrulama Yöntemi|Kullanım|
 | --- | --- |
-| istemcisiyle yönetilen bir cihaz için) | MFA ve SSPR |
+| Parola | MFA ve SSPR |
 | Güvenlik soruları | Yalnızca SSPR |
 | E-posta adresi | Yalnızca SSPR |
 | Microsoft Authenticator uygulaması | MFA ve SSPR |
@@ -44,7 +44,7 @@ Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönt
 | MFA ve SSPR için OATH Donanım belirteçleri, Azure Active Directory genel önizleme özellikleridir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="password"></a>istemcisiyle yönetilen bir cihaz için)
+## <a name="password"></a>Parola
 
 Azure AD parolanız bir kimlik doğrulama yöntemi olarak kabul edilir. Bu, **devre dışı**bırakıladesteklemeyen bir yöntemdir.
 
@@ -201,7 +201,7 @@ Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi t
 
 Bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Devam etmek için oturum açma arabiriminde belirtilen doğrulama kodunu girin.
 
-#### <a name="phone-call"></a>Telefon araması
+#### <a name="phone-call"></a>Telefon görüşmesi
 
 Sağladığınız telefon numarasına otomatik bir sesli çağrı yapılır. Numarayı yanıtlayın ve telefon tuş takımında # tuşlarına basarak kimlik doğrulaması yapın
 

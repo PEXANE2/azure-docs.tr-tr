@@ -4,17 +4,17 @@ description: Azure Otomasyonu 'ndaki bağlantı varlıkları, bir runbook veya D
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90b2234607ad120c43e241fe4ae5222fe285803e
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001653"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850440"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantı varlıkları
 
@@ -35,7 +35,7 @@ Azure Otomasyonu 'nda kullanılabilen üç tür yerleşik bağlantı vardır:
 
 Çoğu durumda, bir [runas hesabı](manage-runas-account.md)oluşturduğunuzda oluşturulduğu sırada bir bağlantı kaynağı oluşturmanız gerekmez.
 
-## <a name="windows-powershell-cmdlets"></a>Windows PowerShell cmdlet 'Leri
+## <a name="windows-powershell-cmdlets"></a>Windows PowerShell Cmdlet'leri
 
 Aşağıdaki tablodaki cmdlet 'ler Windows PowerShell ile otomasyon bağlantıları oluşturmak ve yönetmek için kullanılır. Bunlar, Automation runbook 'larda ve DSC yapılandırmalarında kullanılabilecek [Azure PowerShell modülünün](/powershell/azure/overview) bir parçası olarak gönderilir.
 
@@ -43,7 +43,7 @@ Aşağıdaki tablodaki cmdlet 'ler Windows PowerShell ile otomasyon bağlantıla
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Bir bağlantı alır. Bağlantı alanlarının değerlerine sahip bir karma tablo içerir.|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Yeni bir bağlantı oluşturur.|
-|[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|Var olan bir bağlantıyı kaldırın.|
+|[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|Mevcut bir bağlantıyı kaldırır.|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|Mevcut bir bağlantı için belirli bir alanın değerini ayarlar.|
 
 ## <a name="activities"></a>Olaylar
@@ -52,7 +52,7 @@ Aşağıdaki tablodaki etkinlikler bir runbook veya DSC yapılandırmasındaki b
 
 |Olaylar|Açıklama|
 |---|---|
-|[-AutomationConnection 'ı al](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Kullanmak için bir bağlantı alır. Bağlantının özelliklerine sahip bir karma tablo döndürür.|
+|[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Kullanmak için bir bağlantı alır. Bağlantının özelliklerine sahip bir karma tablo döndürür.|
 
 >[!NOTE]
 >Bu, runbook 'lar ya da DSC yapılandırmalarının ve tasarım zamanında bağlantı varlıklarının bağımlılıklarını karmaşık hale getirebileceğinden, **Get-AutomationConnection** 'ın – Name parametresiyle değişkenler kullanmaktan kaçının.
@@ -63,12 +63,12 @@ Aşağıdaki tablodaki işlev, bir Python2 runbook 'daki bağlantılara erişmek
 
 | İşlev | Açıklama |
 |:---|:---|
-| automationvarlıklarının. Get _automation_connection | Bir bağlantı alır. Bağlantının özelliklerine sahip bir sözlük döndürür. |
+| automationassets.get_automation_connection | Bir bağlantı alır. Bağlantının özelliklerine sahip bir sözlük döndürür. |
 
 > [!NOTE]
 > Varlık işlevlerine erişebilmek için Python runbook 'unun en üstündeki "automationvarlıklar" modülünü içeri aktarmanız gerekir.
 
-## <a name="creating-a-new-connection"></a>Yeni bağlantı oluşturma
+## <a name="creating-a-new-connection"></a>Yeni bir Bağlantı Oluşturma
 
 ### <a name="to-create-a-new-connection-with-the-azure-portal"></a>Azure portal ile yeni bir bağlantı oluşturmak için
 
@@ -82,7 +82,7 @@ Aşağıdaki tablodaki işlev, bir Python2 runbook 'daki bağlantılara erişmek
 
 [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) cmdlet 'Ini kullanarak Windows PowerShell ile yeni bir bağlantı oluşturun. Bu cmdlet, bağlantı türü tarafından tanımlanan her bir özellik için değerleri tanımlayan bir [karma tablo](https://technet.microsoft.com/library/hh847780.aspx) bekleyen **connectionfieldvalues** adlı bir parametreye sahiptir.
 
-Hizmet sorumlusunu kullanarak runbook 'ların kimliğini doğrulamak için Otomasyon [Farklı Çalıştır hesabı](automation-sec-configure-azure-runas-account.md) hakkında bilginiz varsa, portaldan farklı çalıştır hesabı oluşturmak için alternatif olarak belirtilen PowerShell betiği, ' ı kullanarak yeni bir bağlantı varlığı oluşturur. Aşağıdaki örnek komutlar.
+Hizmet sorumlusunu kullanarak runbook 'ların kimliğini doğrulamak için Otomasyon [Farklı Çalıştır hesabı](automation-sec-configure-azure-runas-account.md) hakkında bilginiz varsa, portaldan farklı çalıştır hesabı oluşturmaya alternatif olarak belirtilen PowerShell betiği, aşağıdaki örnek komutları kullanarak yeni bir bağlantı varlığı oluşturur.
 
 ```powershell
 $ConnectionAssetName = "AzureRunAsConnection"
@@ -90,7 +90,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-Otomasyon hesabınızı oluştururken bağlantı varlığı oluşturmak için komut dosyasını kullanabilirsiniz. Bu, **AzureServicePrincipal** bağlantı türü ile birlikte varsayılan olarak çeşitli genel modüller içerir.  **AzureRunAsConnection** bağlantı varlığı.  Farklı bir kimlik doğrulama yöntemiyle bir hizmet veya uygulamaya bağlanmak üzere yeni bir bağlantı varlığı oluşturmaya çalıştığınızda, bağlantı türü Otomasyon hesabınızda zaten tanımlanmadığı için bu işlem başarısız olur.  [PowerShell Galerisi](https://www.powershellgallery.com)özel veya modülünüz için kendi bağlantı türü oluşturma hakkında daha fazla bilgi için bkz. [tümleştirme modülleri](automation-integration-modules.md)
+Komut dosyasını bağlantı varlığı oluşturmak için kullanabilirsiniz, çünkü Otomasyon hesabınızı oluşturduğunuzda, **Azurerunasconnection** bağlantı varlığını oluşturmak için **AzureServicePrincipal** bağlantı türü ile birlikte varsayılan olarak çeşitli genel modüller içerir.  Farklı bir kimlik doğrulama yöntemiyle bir hizmet veya uygulamaya bağlanmak üzere yeni bir bağlantı varlığı oluşturmaya çalıştığınızda, bağlantı türü Otomasyon hesabınızda zaten tanımlanmadığı için bu işlem başarısız olur.  [PowerShell Galerisi](https://www.powershellgallery.com)özel veya modülünüz için kendi bağlantı türü oluşturma hakkında daha fazla bilgi için bkz. [tümleştirme modülleri](automation-integration-modules.md)
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Runbook veya DSC yapılandırmasında bağlantı kullanma
 

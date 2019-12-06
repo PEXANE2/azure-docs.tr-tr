@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 43b6d541cfb3d2e5bd583223d9d93921982c65e0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 152df830f11cd5a73235559c5c5d65ced44f22fa
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039451"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842127"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma
 Bir Windows masaüstü bilgisayarından Uzak Masaüstü (RDP) oturumu başlatmak için Azure portalında **Bağlan** düğmesini kullanırsınız. Önce sanal makineye bağlanın ve ardından oturum açın.
@@ -27,13 +27,11 @@ Bir Windows masaüstü bilgisayarından Uzak Masaüstü (RDP) oturumu başlatmak
 Mac 'ten bir Windows VM 'sine bağlanmak için, [Microsoft Uzak Masaüstü](https://aka.ms/rdmac)gibi Mac IÇIN bir RDP istemcisi yüklemeniz gerekir.
 
 ## <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
-1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com/)da oturum açın
-2. Sol taraftaki menüden **sanal makineler**' i seçin.
-3. Listeden sanal makineyi seçin.
-4. Sanal makine sayfasının üst kısmında **Bağlan**' ı seçin.
-2. **Sanal makineye bağlan** sayfasında, uygun IP adresini ve bağlantı noktasını seçin. Çoğu durumda, varsayılan IP adresi ve bağlantı noktası kullanılmalıdır. **RDP dosyasını indir**'i seçin. VM 'nin tam zamanında bir ilke kümesi varsa, RDP dosyasını indirebilmeniz için **önce erişim iste düğmesini seçmeniz** gerekir. Tam zamanında ilkesi hakkında daha fazla bilgi için, bkz. [tam zamanında ilkesini kullanarak sanal makine erişimini yönetme](../../security-center/security-center-just-in-time.md).
-2. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin. 
-2. `.rdp` dosyasının bilinmeyen bir yayımcıdan olduğunu belirten bir uyarı alacaksınız. Bu beklenen bir durumdur. **Uzak Masaüstü bağlantısı** penceresinde, devam etmek için **Bağlan** ' ı seçin.
+1. Bir VM 'ye bağlanmak için [Azure Portal](https://portal.azure.com/) gidin. **Sanal makineleri**arayın ve seçin.
+2. Listeden sanal makineyi seçin.
+3. Sanal makine sayfasının başlangıcında **Bağlan**' ı seçin.
+4. **Sanal makineye bağlan** sayfasında, **RDP**' yi seçin ve ardından uygun **IP adresini** ve **bağlantı noktası numarasını**seçin. Çoğu durumda, varsayılan IP adresi ve bağlantı noktası kullanılmalıdır. Seçin **RDP dosyasını indir**. VM 'nin tam zamanında bir ilke kümesi varsa, RDP dosyasını indirebilmeniz için **önce erişim iste düğmesini seçmeniz** gerekir. Tam zamanında ilkesi hakkında daha fazla bilgi için, bkz. [tam zamanında ilkesini kullanarak sanal makine erişimini yönetme](../../security-center/security-center-just-in-time.md).
+5. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin. `.rdp` dosyasının bilinmeyen bir yayımcıdan olduğunu belirten bir uyarı alacaksınız. Bu beklenen bir durumdur. **Uzak Masaüstü bağlantısı** penceresinde, devam etmek için **Bağlan** ' ı seçin.
    
     ![Bilinmeyen yayımcıya ilişkin uyarı ekran görüntüsü](./media/connect-logon/rdp-warn.png)
 3. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Sanal makinedeki bir hesabın kimlik bilgilerini girin ve ardından **Tamam**' ı seçin.
@@ -45,7 +43,7 @@ Mac 'ten bir Windows VM 'sine bağlanmak için, [Microsoft Uzak Masaüstü](http
     **Etki alanı denetleyicisi**: VM bir etki alanı denetleyicisiyse, bu etki alanı için bir etki alanı yönetici hesabının kullanıcı adını ve parolasını girin.
 4. Sanal makinenin kimliğini doğrulamak için **Evet** ' i seçin ve oturum açmayı sona erdirin.
    
-   ![VM kimliğini doğrulamaya ilişkin mesajı gösteren ekran görüntüsü](./media/connect-logon/cert-warning.png)
+   ![VM kimliğini doğrulamaya ilişkin iletiyi gösteren ekran görüntüsü](./media/connect-logon/cert-warning.png)
 
 
    > [!TIP]

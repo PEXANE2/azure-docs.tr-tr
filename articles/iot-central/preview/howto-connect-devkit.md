@@ -3,17 +3,17 @@ title: DevKit cihazını Azure IoT Central uygulamanıza bağlama | Microsoft Do
 description: Bir cihaz geliştiricisi olarak, IoT Tak ve Kullan kullanarak bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlamayı öğrenin.
 author: liydu
 ms.author: liydu
-ms.date: 08/17/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930140"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848999"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama (Önizleme özellikleri)
 
@@ -34,9 +34,21 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyac
 
 ## <a name="get-device-connection-details"></a>Cihaz bağlantısı ayrıntılarını al
 
-Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağlantısı**' nı seçin. **Kapsam kimliği** ve **birincil anahtarı** ( **anahtarları görüntüle** bağlantısında) bir yere göz önünde yapın. Ve **otomatik onaylama** özelliğinin etkinleştirildiğinden emin olun.
+1. Azure IoT Central uygulamanızda **cihaz şablonları** sekmesini seçin ve **Yeni**' yi seçin. **Önceden yapılandırılmış bir cihaz şablonu kullan**bölümünde, listeden **Mxyongaıot devkit** ' i seçin. Ve **İleri ' yi seçin: Özelleştir** ve **Oluştur**.
 
-![Cihaz grubu bağlantı ayrıntıları](media/howto-connect-devkit/device-group-connection-details.png)
+    ![Mxyongaıot DevKit için cihaz şablonu](media/howto-connect-devkit/device-template.png)
+
+1. **Cihazlar** ' ı seçin, cihazlar listesinde, **Mxyont IoT devkit** ' i seçin ve cihaz şablonundan yeni bir cihaz oluşturmak için **Yeni** ' yi seçin.
+
+    ![Yeni cihaz](media/howto-connect-devkit/new-device.png)
+
+1. Açılır pencerede, `MXChip IoT DevKit - Sample`olarak **CIHAZ kimliğini** `SampleDevKit` ve **Cihaz adı** olarak girin. **Benzetimli** seçeneğinin kapalı olduğundan emin olun. Ardından **Oluştur**’u seçin.
+
+    ![Cihaz KIMLIĞI ve adı](media/howto-connect-devkit/device-id-name.png)
+
+1. Yeni oluşturduğunuz cihaza tıklayın ve **Bağlan**' ı seçin. **Kimlik kapsamını**, **cihaz kimliğini** ve **birincil anahtarı**bir yere unutmayın.
+
+    ![Cihaz bağlantı bilgileri](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>Cihazı hazırlama
 
@@ -61,7 +73,7 @@ Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağl
 
     - WiFi ağınızın adı (SSID).
     - WiFi ağı parolanız.
-    - Bağlantı ayrıntıları: kendiniz seçebileceğiniz **CIHAZ kimliği** ve **Kapsam KIMLIĞI** ve **Grup SAS birincil anahtarı** daha önce bir yere göz ınızı yapmış olursunuz.
+    - Bağlantı ayrıntıları: daha önce bir nota yaptığınız **CIHAZ kimliği**, **kimlik kapsamı** ve **SAS birincil anahtarını** girin.
 
     > [!NOTE]
     > Şu anda IoT DevKit yalnızca 2,4 GHz Wi-Fi ' a bağlanabilir, donanım kısıtlamaları nedeniyle 5 GHz desteklenmez.
@@ -86,7 +98,7 @@ IoT Central uygulamanızda, **cihazlar** sekmesini seçin, eklediğiniz cihazı 
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Kodu gözden geçirmek veya değiştirmek ve derlemek için, [Mxyongaıot DevKit örnek kodu GitHub deposuna](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)gidin.
+Kodu gözden geçirmek veya değiştirmek ve derlemek için [kod örneklerine](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

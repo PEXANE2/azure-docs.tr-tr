@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ea2bec541c13ec1615113cef184eb5ad502b158c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: a1637ac82c33c2a541bcec9f2848a248c29d56ca
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678290"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872681"
 ---
 # <a name="availability-alerts"></a>Kullanılabilirlik uyarıları
 
@@ -64,7 +64,7 @@ Yeni bir kullanılabilirlik testi oluşturduğunuzda, [Yeni Birleşik uyarılar 
 
 ## <a name="automate-alerts"></a>Uyarıları otomatikleştirin
 
-Azure Resource Manager şablonlarıyla bu işlemi otomatikleştirmek için [Kaynak Yöneticisi şablonuyla ölçüm uyarısı oluşturma](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert) belgelerine bakın.
+Azure Resource Manager şablonlarıyla bu işlemi otomatikleştirmek için [Kaynak Yöneticisi şablonuyla ölçüm uyarısı oluşturma](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) belgelerine bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

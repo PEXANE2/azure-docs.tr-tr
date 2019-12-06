@@ -12,21 +12,23 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273983"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842297"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory ' deki bir uygulamaya Son Kullanıcı onay biçimini yapılandırma
 Kullanıcıların uygulama izinlerini kabul etme şeklini nasıl yapılandıracağınızı öğrenin. Yönetici onayı vererek Kullanıcı deneyimini basitleştirebilirsiniz. Bu makalede, Kullanıcı onayını yapılandırabileceğiniz farklı yollar sunulmaktadır. Yöntemler, Azure Active Directory (Azure AD) kiracınızdaki tüm son kullanıcılar için geçerlidir. 
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yönetici onayı verme, genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açmanızı gerektirir.
+
+Microsoft Graph ve Azure AD grafiğindeki izinlere yönetici onayı vermek için genel yönetici ayrıcalıklarına sahip olmanız gerekir. 
 
 Uygulamalara erişimi kısıtlamak için Kullanıcı ataması yapmanız ve ardından kullanıcılara veya grupları uygulamaya atamanız gerekir.  Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
 
@@ -55,7 +57,7 @@ Bir uygulamayı kaydederken yönetici onayı vermek için:
 1. [Azure portalında](https://portal.azure.com) genel yönetici olarak oturum açın.
 2. **Uygulama kayıtları** dikey penceresine gidin.
 3. Onay için uygulamayı seçin.
-4. **API izinleri**' ni seçin.
+4. Seçin **API izinleri**.
 5. **Yönetici Izni ver**' e tıklayın.
 
 

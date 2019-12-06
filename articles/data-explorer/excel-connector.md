@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173839"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849063"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Excel için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirme
 
@@ -23,7 +23,7 @@ Azure Veri Gezgini Excel yerel Bağlayıcısı Excel 'e sorgu sonuçları verme 
 ## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Excel veri kaynağı olarak kusto sorgusu tanımlama ve verileri Excel 'e yükleme
 
 1. **Microsoft Excel**'i açın.
-1. **Veri** sekmesinde Azure 'dan Azure > **Veri Gezgini** **veri** > Al ' ı seçin.
+1. **Veri** **sekmesinde Azure** **Veri Gezgini** > Azure 'dan veri > **Al** ' ı seçin.
 
     ![Azure Veri Gezgini veri al](media/excel-connector/get-data-from-adx.png)
 
@@ -44,7 +44,7 @@ Azure Veri Gezgini Excel yerel Bağlayıcısı Excel 'e sorgu sonuçları verme 
     |**Sorgu sonucu kayıt numarasını sınırla**     |     Excel 'e yüklenen kayıtların sayısını sınırlayın  |    
     |**Sorgu sonuç verileri boyutunu sınırla (bayt)**    |    Veri boyutunu sınırla      |   
     |**Sonuç kümesi kesilmesini devre dışı bırak**    |         |      
-    |**Ek set deyimleri (noktalı virgülle ayrılmış)**    |    Veri `set` kaynağına uygulanacak deyimler ekleyin     |   
+    |**Ek set deyimleri (noktalı virgülle ayrılmış)**    |    Veri kaynağına uygulanacak `set` deyimlerini ekleyin     |   
 
 1.  **Gezgin** bölmesinde doğru tabloya gidin. Tablo önizleme bölmesinde, verilerde değişiklik yapmak için **verileri Dönüştür** ' ü seçin veya Excel 'e yüklemek için **Yükle** ' yi seçin.
 
@@ -75,3 +75,6 @@ Veriler Excel 'e yüklendikten ve Excel sayfanızda kullanılabildiğinde, iliş
 
 1. Verilerinizi izlemek için tam panolar oluşturun.
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Microsoft Excel 'e aktarılan bir Azure Veri Gezgini kusto sorgusu kullanarak verileri görselleştirme](excel-blank-query.md)

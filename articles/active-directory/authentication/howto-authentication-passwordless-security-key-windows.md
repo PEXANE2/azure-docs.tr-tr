@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ce2b420c2124c86610058ce2f31cd6d7bf620a97
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766370"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848468"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 cihazlarında passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
 
@@ -29,7 +29,7 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 
 ## <a name="requirements"></a>Gereksinimler
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure çok faktörlü kimlik doğrulaması](howto-mfa-getstarted.md)
 - [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
 - Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir

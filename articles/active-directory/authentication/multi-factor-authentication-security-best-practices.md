@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2756d39a93751271c8c7bf2a51108b9fe5b09b1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208442"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846836"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD hesaplarıyla Azure Multi-Factor Authentication kullanmaya yönelik güvenlik kılavuzu
 
@@ -29,7 +29,7 @@ ms.locfileid: "74208442"
 * Her Kullanıcı için lisans satın alın (Azure MFA, Azure AD Premium veya Enterprise Mobility + Security)
 * Multi-Factor auth sağlayıcısı oluşturun ve Kullanıcı başına veya kimlik doğrulama başına ödeme yapın
 
-### <a name="licenses"></a>Lisanslarının
+### <a name="licenses"></a>Lisanslar
 
 ![Lisansları kullanıcılara uygulama, etkinleştirme, bildirme](./media/multi-factor-authentication-security-best-practices/ems.png)
 
@@ -96,7 +96,7 @@ Kuruluşunuz Azure AD ile SSO için federe ise ve Azure MFA 'yı kullanacaksanı
 * Bazı gelişmiş mimari tasarımları, kimlik doğrulamalarına bağlı olarak istemcilerle iki aşamalı doğrulamayı kullanırken kurumsal Kullanıcı adı ve parolaların ve uygulama parolalarının bir birleşimini kullanmanızı gerektirebilir. Şirket içi altyapıya karşı kimlik doğrulaması yapan istemciler için bir kuruluş Kullanıcı adı ve parolası kullanırsınız. Azure AD kimlik doğrulaması yapan istemciler için uygulama parolasını kullanırsınız.
 * Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların uygulama parolaları oluşturmalarına izin vermeniz gerekiyorsa, **kullanıcıların tarayıcı olmayan uygulamalarda oturum açmak için uygulama parolaları oluşturmasına Izin ver** seçeneğini belirleyin.
 
-## <a name="additional-considerations"></a>Ek konular
+## <a name="additional-considerations"></a>Dikkat Edilecek Diğer Noktalar
 
 Şirket içinde dağıtılan her bir bileşene ilişkin ek konular ve yönergeler için bu listeyi kullanın:
 

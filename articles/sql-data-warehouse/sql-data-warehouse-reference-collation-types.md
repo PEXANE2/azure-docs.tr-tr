@@ -1,21 +1,21 @@
 ---
-title: Mediğinden
+title: Harmanlama
 description: Azure SQL veri ambarı 'nda desteklenen harmanlama türleri.
 services: sql-data-warehouse
 author: antvgski
 manager: igorstan
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e54a3dd4b69fff2bc7d122391d145b222b295
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49a250a43c7b2654e1317981c853b0117fa0cf28
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692559"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851800"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için veritabanı harmanlama desteği
 
@@ -25,7 +25,7 @@ Harmanlamalar karakter tabanlı veri türleri için yerel ayar, kod sayfası, s�
 ## <a name="changing-collation"></a>Harmanlamayı değiştirme
 Varsayılan harmanlamayı değiştirmek için sağlama deneyiminde harmanlama alanına basit güncelleştirmedir.
 
-Örneğin, Varsayılan harmanlamayı büyük/küçük harfe duyarlı olarak değiştirmek isterseniz, harmanlamayı yalnızca SQL_Latin1_General_CP1_CI_AS olarak SQL_Latin1_General_CP1_CS_AS olarak yeniden adlandırmanız gerekir. 
+Örneğin, Varsayılan harmanlamayı büyük/küçük harfe duyarlı olarak değiştirmek isterseniz, harmanlamayı SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS olarak yeniden adlandırmanız yeterlidir. 
 
 ## <a name="list-of-unsupported-collation-types"></a>Desteklenmeyen harmanlama türlerinin listesi
 *   Japanese_Bushu_Kakusu_140_BIN
@@ -100,5 +100,9 @@ Varsayılan harmanlamayı değiştirmek için sağlama deneyiminde harmanlama al
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Geçerli harmanlama denetleniyor
-Veritabanının geçerli harmanlamasını denetlemek için aşağıdaki T-SQL kod parçacığını çalıştırabilirsiniz: ' i harmanlama olarak DATABASEPROPERTYEX (DB_NAME (), ' harmanlama ') SEÇENEĞINI belirleyebilirsiniz; Özellik parametresi olarak ' harmanlama ' geçirildiğinde, DatabasePropertyEx işlevi belirtilen veritabanı için geçerli harmanlamayı döndürür. MSDN 'de DatabasePropertyEx işlevi hakkında daha fazla bilgi edinebilirsiniz.
+Veritabanının geçerli harmanlamasını denetlemek için aşağıdaki T-SQL kod parçacığını çalıştırabilirsiniz:
+```sql
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
+```
+Özellik parametresi olarak ' harmanlama ' geçirildiğinde, DatabasePropertyEx işlevi belirtilen veritabanı için geçerli harmanlamayı döndürür. MSDN 'de DatabasePropertyEx işlevi hakkında daha fazla bilgi edinebilirsiniz.
 

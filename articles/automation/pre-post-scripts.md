@@ -4,17 +4,17 @@ description: Bu makalede, güncelleştirme dağıtımları için betiklerin ve s
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860eaf5d37b3d3064e3b10bd1dab02c04b95ab5b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755504"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850253"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Ön ve son betikleri yönetme
 
@@ -36,7 +36,7 @@ Kullanmak istediğiniz betiği seçin. Bu örnekte, **updatemanagement-TurnOnVms
 
 **Seçili öğeler** bölümü artık betiklerinizin seçili olduğunu gösteriyor. Birisi bir ön betiktir ve diğeri bir komut dosyası olur:
 
-![Seçili öğeler](./media/pre-post-scripts/selected-items.png)
+![Seçilen öğeler](./media/pre-post-scripts/selected-items.png)
 
 Güncelleştirme dağıtımınızı yapılandırmayı tamamlama.
 
@@ -75,9 +75,9 @@ Aşağıdaki tabloda, değişkeninde sağlanmış olan özellikler gösterilmekt
 |Özellik  |Açıklama  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | Yazılım güncelleştirme yapılandırmasının adı.        |
-|Softwareupdateconfigurationrunıd     | Çalıştırmanın benzersiz KIMLIĞI.        |
+|SoftwareUpdateConfigurationRunId     | Çalıştırmanın benzersiz KIMLIĞI.        |
 |SoftwareUpdateConfigurationSettings     | Yazılım güncelleştirme yapılandırmasıyla ilgili özellikler koleksiyonu.         |
-|SoftwareUpdateConfigurationSettings. operatingSystem     | Güncelleştirme dağıtımı için hedeflenen işletim sistemleri.         |
+|SoftwareUpdateConfigurationSettings.operatingSystem     | Güncelleştirme dağıtımı için hedeflenen işletim sistemleri.         |
 |SoftwareUpdateConfigurationSettings. Duration     | Güncelleştirme dağıtımının çalışma süresi üst sınırı, ıSO8601 başına `PT[n]H[n]M[n]S`; *bakım penceresi*olarak da adlandırılır.          |
 |SoftwareUpdateConfigurationSettings. Windows     | Windows bilgisayarlarıyla ilgili özellikler koleksiyonu.         |
 |SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | Güncelleştirme dağıtımından dışlanan KBs 'lerin bir listesi.        |

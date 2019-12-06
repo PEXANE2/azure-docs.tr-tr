@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828241"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851528"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
 Sorularınız mı var? Daha fazla bilgi için aşağıdaki SSS bölümüne bakın.
@@ -76,7 +76,7 @@ Evet. Uzantıdaki tüm görevler ve araçlar barındırılan bir yapı aracısı
 
 ### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>Derleme işlem hattının aksine, bu derleme görevlerini bir yayın işlem hattının parçası olarak çalıştırabilir miyim?
 
-Çoğu durumda, evet.
+Çoğu durumda yapabilirsiniz.
 
 Ancak, Azure DevOps, bu görevler yapıtları yayımladığınızda, yayın işlem hatları içinde görevleri çalıştırmayı desteklemez. Bu destek eksikliği, bir yayın ardışık düzeninde güvenlik Analizi günlüklerini Yayımla görevinin başarıyla çalışmasını önler. Bunun yerine görev, açıklayıcı bir hata iletisiyle başarısız olur.
 
@@ -88,7 +88,7 @@ Yapı görevleri, araçların NuGet paketlerini [Azure DevOps paket yönetimi ak
 
 Yükleme sonrasında, uzantı tarafından sağlanan güvenlik derleme görevleri kuruluşunuzdaki tüm kullanıcılar için kullanılabilir hale gelir. Bir Azure işlem hattı oluşturduğunuzda veya düzenlediğinizde, bu görevler yapı-görev koleksiyonu listesinden kullanılabilir. Aksi takdirde, uzantıyı Azure DevOps kuruluşunuzda yüklemek hiçbir etkiye sahip değildir. Yükleme, hesap ayarlarını, proje ayarlarını veya işlem hatlarını değiştirmez.
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Uzantı yükleniyor var olan Azure işlem hatlarımı değiştirir mi? 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Uzantının yüklenmesi var olan Azure Pipelines mi değiştirilsin mi? 
 
 Hayır. Uzantının yüklenmesi, işlem hatlarınızın yanı sıra güvenlik yapı görevlerinin kullanılabilmesini sağlar. Araçların yapı süreciyle çalışabilmesi için derleme tanımlarını eklemeniz veya güncelleştirmeniz gerekir.
 
@@ -222,9 +222,6 @@ Roslyn çözümleyiciler derleme görevinin MSBuild Build görevinin MSBuild gü
 
 Ek yardıma ihtiyacınız varsa, Microsoft Güvenlik kodu analizi desteği Pazartesi-saat Pasifik Standart Saati 9:00 ile 5:00 00 arasında olmalıdır.
 
-  - Ekleme: başlamak için Teknik Hesap yöneticileriniz ile Iletişim kurun.
+- Ekleme: [ekleme belgelerimize](security-code-analysis-onboard.md) bakın
   
-  - Destek: [Microsoft Güvenlik kodu analizi desteğiyle](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)ekibimize e-posta gönderin.
-
-  >[!NOTE] 
-  >Microsoft ile ücretli destek ilişkiniz olmayabilir. Ya da Phoenix kataloğundan hizmetleri satın almayı önleyen bir destek teklifi de olabilir. Bu koşullardan biri doğru ise, daha fazla bilgi için lütfen [Destek Hizmetleri giriş sayfamızı](https://www.microsoft.com/enterprise/services/support) ziyaret edin.
+- Destek: [Microsoft Güvenlik kodu analizi desteğiyle](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request) ekibimizi e-postayla gönderin

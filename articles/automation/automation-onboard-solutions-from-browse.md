@@ -3,24 +3,24 @@ title: Azure Otomasyonu 'nda birden çok VM için Güncelleştirme Yönetimi, De
 description: Azure Otomasyonu 'nun bir parçası olan Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümleriyle Azure sanal makinesini nasıl ekleyeceğinizi öğrenin
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372798"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850814"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Birden çok VM 'de Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini etkinleştirme
 
 Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, değişiklikleri izlemek ve bilgisayarlarınıza nelerin yüklü olduğunu envantere almak için çözümler sağlar. Makineleri eklemek için birden çok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md), sanal makinelere gözatarken veya [runbook](automation-onboard-solutions.md)'a ekleyebilirsiniz. Bu makalede, Azure 'daki sanal makinelere göz atarken bu çözümleri ekleme ele alınmaktadır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure'da oturum açın
 

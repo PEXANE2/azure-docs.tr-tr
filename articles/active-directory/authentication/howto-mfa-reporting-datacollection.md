@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381772"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848298"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication Kullanıcı verisi koleksiyonu
 
@@ -35,14 +35,14 @@ Kimlik doğrulama denemeleri (Raporlama ve sorun giderme için kullanılır):
 - Ad
 - Soyadı
 - E-posta Adresi
-- Kullanıcı grubu
+- User Group
 - Kimlik doğrulama yöntemi (telefon araması, SMS mesajı, mobil uygulama, OATH belirteci)
 - Telefon araması modu (Standart, PIN)
 - Kısa mesaj yönü (tek yönlü, çift yönlü)
 - Kısa mesaj modu (OTP, OTP + PIN)
 - Mobil uygulama modu (Standart, PIN)
 - OATH belirteci modu (Standart, PIN)
-- Kimlik doğrulama türü
+- Kimlik Doğrulama Türü
 - Uygulama Adı
 - Birincil çağrı ülke kodu
 - Birincil arama telefon numarası
@@ -86,30 +86,30 @@ Bloklar (engellenen durumu ve raporlamayı tespit etmek için kullanılır):
 - Engelleme zaman damgası
 - Kullanıcı adına göre engelle
 - Kullanıcı adı
-- Ülke kodu
-- Telefon numarası
+- Ülke Kodu
+- Telefon Numarası
 - Telefon numarası biçimli
-- Dahili numara
+- Uzantı
 - Uzantıyı temizle
 - Engellendi
-- Engelleme nedeni
+- Engelleme Nedeni
 - Tamamlama zaman damgası
 - Tamamlanma nedeni
 - Hesap Kilitli
-- Sahtekarlık uyarısı
+- Sahtekarlık Uyarısı
 - Sahtekarlık uyarısı engellenmedi
 - Dil
 
 Atlanır (Raporlama için kullanılır):
 
 - Zaman damgasını atla
-- Atlama Saniyeler
+- Saniye Cinsinden Geçiş Süresi
 - Kullanıcı adına göre atla
 - Kullanıcı adı
-- Ülke kodu
-- Telefon numarası
+- Ülke Kodu
+- Telefon Numarası
 - Telefon numarası biçimli
-- Dahili numara
+- Uzantı
 - Uzantıyı temizle
 - Atlama nedeni
 - Tamamlama zaman damgası
@@ -127,7 +127,7 @@ Değişiklikler (Kullanıcı değişikliklerini MFA sunucusu veya Azure AD ile e
 - Yeni yedek telefon numarası
 - Yeni yedekleme uzantısı
 - Yeni PIN
-- PIN değişikliği gerekiyor
+- PIN Değişimi Gerekiyor
 - Eski cihaz belirteci
 - Yeni cihaz belirteci
 

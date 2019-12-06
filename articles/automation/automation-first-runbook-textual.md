@@ -5,17 +5,17 @@ keywords: powershell iş akışı, powershell iş akışı örnekleri, iş akı�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4973a5215d93a1ce9d0a80f83264dd8c1fbe0888
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887215"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850848"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>İlk PowerShell İş Akışı runbook uygulamam
 
@@ -27,7 +27,7 @@ ms.locfileid: "73887215"
 
 Bu öğretici, Azure Automation’da bir [PowerShell İş Akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks) oluşturulmasını adım adım göstermektedir. Runbook işinin durumunun nasıl izleneceğini açıklayarak test ve yayımladığınız basit bir runbook 'u kullanmaya başlayabilirsiniz. Ardından, bir Azure sanal makinesini başlatmayı içeren bir örnekle, bu runbook’u gerçekten Azure kaynaklarını yönetmek üzere değiştirin. Son olarak, runbook parametreleri ekleyerek runbook 'u daha sağlam hale getirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -117,7 +117,7 @@ Oluşturduğunuz runbook hala Taslak modundadır. Üretim ortamında çalıştı
 1. MyFirstRunbook sayfasına dönmek için akışlar sayfasını ve Iş sayfasını kapatın.
 1. Bu runbook 'un Işler sayfasını açmak için **işler** ' e tıklayın. Bu sayfada bu runbook tarafından oluşturulan tüm işler listelenir. işi yalnızca bir kez çalıştırdığınız için yalnızca bir iş listelendiğini görmeniz gerekir.
 
-   ![İşler](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![İş](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. Runbook 'u başlattığınızda görüntülediğiniz aynı Iş sayfasını açmak için bu işe tıklayabilirsiniz. Bu eylem, zaman içinde geri dönmenize ve belirli bir runbook için oluşturulan herhangi bir işin ayrıntılarını görüntülemenize olanak sağlar.
 

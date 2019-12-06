@@ -2,26 +2,23 @@
 title: Microsoft Identity platform erişim belirteçleri başvurusu | Mavisi
 description: Azure AD v 1.0 ve Microsoft Identity platform (v 2.0) uç noktaları tarafından yayılan erişim belirteçleri hakkında bilgi edinin.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34548b623317eff17bcbf5a7749cd411a44bd722
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 61bcdac38b9b8765c7c3d575bb632c9291e46b90
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73935852"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845867"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -164,7 +161,7 @@ Microsoft kimlikleri, uygulamanız için uygun olabilecek farklı yollarla kimli
 | `rsa` | Kimlik doğrulaması, örneğin [Microsoft Authenticator uygulamasına](https://aka.ms/AA2kvvu)sahıp bir RSA anahtarı kanıtını temel alır. Bu, kimlik doğrulamasının, hizmetin sahip olduğu x509 sertifikası ile kendinden imzalı bir JWT tarafından gerçekleştirilip yapılmadığını içerir. |
 | `otp` | Bir e-posta veya kısa mesaj kullanarak bir kerelik geçiş kodu. |
 | `fed` | Bir Federasyon kimlik doğrulama onayı (JWT veya SAML gibi) kullanıldı. |
-| `wia` | Windows tümleşik kimlik doğrulaması |
+| `wia` | Windows Tümleşik Kimlik Doğrulaması |
 | `mfa` | Multi-Factor Authentication kullanıldı. Bu mevcut olduğunda diğer kimlik doğrulama yöntemleri de dahil edilir. |
 | `ngcmfa` | Belirli Gelişmiş kimlik bilgisi türlerini sağlamak için kullanılan `mfa`eşdeğerdir. |
 | `wiaormfa`| Kullanıcı, kimlik doğrulamak için Windows veya MFA kimlik bilgilerini kullandı. |

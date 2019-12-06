@@ -1,31 +1,31 @@
 ---
 title: Azure MFA sunucusunu yükseltme-Azure Active Directory
-description: Azure Multi-Factor Authentication sunucusu 'nun daha yeni bir sürüme yükseltilmesi için adım ve kılavuz.
+description: Azure Multi-Factor Authentication Sunucusu 'ı daha yeni bir sürüme yükseltmeye yönelik adımlar ve kılavuz.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ca6d82b80a9ed77a842b638ff8e9ff346342e8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 756c45541907c52448805376e1b054180c31fdf5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988553"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848111"
 ---
-# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>En son Azure Multi-Factor Authentication sunucusu 'na yükseltme
+# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>En son Azure Multi-Factor Authentication Sunucusu yükseltin
 
-Bu makale, Azure Multi-Factor Authentication (MFA) Server v 6.0 veya üstünü yükseltme sürecinde size yol gösterir. PhoneFactor aracısının eski bir sürümünü yükseltmeniz gerekiyorsa, [phonefactor Aracısı 'Nı Azure Multi-Factor Authentication sunucusu 'Na yükseltme](howto-mfaserver-deploy-upgrade-pf.md)bölümüne bakın.
+Bu makalede, Azure Multi-Factor Authentication (MFA) Server v 6.0 veya üstünü yükseltme işlemi adım adım açıklanmaktadır. PhoneFactor aracısının eski bir sürümünü yükseltmeniz gerekiyorsa, [phonefactor aracısını Azure Multi-Factor Authentication sunucusu yükseltme](howto-mfaserver-deploy-upgrade-pf.md)bölümüne bakın.
 
 V6. x veya üzeri sürümden v7. x veya daha yeni bir sürüme yükseltiyorsanız, tüm bileşenler .NET 2,0 'den .NET 4,5 ' e değişir. Tüm bileşenler ayrıca Microsoft Visual C++ 2015 yeniden dağıtılabilir güncelleştirme 1 veya üstünü gerektirir. MFA sunucu yükleyicisi, zaten yüklenmemişse bu bileşenlerin x86 ve x64 sürümlerini de yüklerse. Kullanıcı Portalı ve mobil uygulama Web hizmeti ayrı sunucularda çalışıyorsa, bu bileşenleri yükseltmeden önce bu paketleri yüklemeniz gerekir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/)' nde en son microsoft C++ Visual 2015 yeniden dağıtılabilir güncelleştirme için arama yapabilirsiniz. 
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılarından çok faktörlü kimlik doğrulaması gerektirmek isteyen yeni müşterilerin bulut tabanlı Azure Multi-Factor Authentication kullanması gerekir. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 Adımları bir bakışta yükseltin:
 
@@ -35,7 +35,7 @@ Adımları bir bakışta yükseltin:
 
 ## <a name="upgrade-azure-mfa-server"></a>Azure MFA sunucusunu yükseltme
 
-1. Azure MFA sunucusu yükleyicisinin en son sürümünü almak için [Azure Multi-Factor Authentication sunucusunu indirme](howto-mfaserver-deploy.md#download-the-mfa-server) bölümündeki yönergeleri kullanın.
+1. Azure MFA sunucu yükleyicisinin en son sürümünü almak için [azure Multi-Factor Authentication sunucusu 'Yi indirme](howto-mfaserver-deploy.md#download-the-mfa-server) bölümündeki yönergeleri kullanın.
 2. Master MFA sunucunuzdaki C:\Program Files\Multi-Factor Authentication Server\data\phonefactorlarpfdata (varsayılan install Location) yolunda bulunan MFA sunucusu veri dosyasının yedeklemesini yapın.
 3. Yüksek kullanılabilirlik için birden çok sunucu çalıştırırsanız, yükseltilen sunuculara trafik göndermeyi durdurması için MFA sunucusuna kimlik doğrulayan istemci sistemlerini değiştirin. Yük dengeleyici kullanıyorsanız, yük dengeleyiciden bir alt MFA sunucusunu kaldırın, yükseltmeyi yapın ve ardından sunucuyu gruba yeniden ekleyin.
 4. Yeni yükleyiciyi her MFA sunucusunda çalıştırın. Ana sunucuları, ana sunucu tarafından çoğaltılan eski veri dosyasını okuyabildiğinden önce yükseltin.
@@ -53,7 +53,7 @@ Adımları bir bakışta yükseltin:
 
 Bu bölüme geçmeden önce MFA sunucularınızın yükseltmesini doldurun.
 
-1. Kullanıcı Portalı yükleme konumunun sanal dizininde bulunan Web. config dosyasının yedeklemesini oluşturun (örneğin, C:\inetpub\wwwroot\MultiFactorAuth). Varsayılan Temada herhangi bir değişiklik yapılmışsa, App_Themes\Default klasörünü de yedekleyin. Varsayılan bir klasörün bir kopyasını oluşturmak ve varsayılan temayı değiştirmek için yeni bir tema oluşturmak daha iyidir.
+1. Kullanıcı Portalı yükleme konumunun sanal dizininde bulunan Web. config dosyasının yedeklemesini oluşturun (örneğin, C:\inetpub\wwwroot\MultiFactorAuth). Varsayılan Temada herhangi bir değişiklik yapılırsa, App_Themes \Default klasörünü de yedekleyin. Varsayılan bir klasörün bir kopyasını oluşturmak ve varsayılan temayı değiştirmek için yeni bir tema oluşturmak daha iyidir.
 2. Kullanıcı Portalı diğer MFA sunucu bileşenleriyle aynı sunucuda çalışıyorsa, MFA sunucusu yüklemesi Kullanıcı portalını güncelleştirmenizi ister. İstemi kabul edin ve Kullanıcı Portalı güncelleştirmesini yükler. Sanal Dizin adının önceden yüklü olan sanal dizinle eşleşip eşleşmediğini denetleyin (örneğin, MultiFactorAuth).
 3. Kullanıcı Portalı kendi sunucusahibiyseniz, MultiFactorAuthenticationUserPortalSetup64. msi dosyasını MFA sunucularından birinin install konumundan kopyalayın ve Kullanıcı Portalı Web sunucusuna yerleştirin. Yükleyiciyi çalıştırın.
 
@@ -74,7 +74,7 @@ Bu bölüme geçmeden önce MFA sunucularınızın ve Kullanıcı portalının y
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>MFA AD FS farklı sunucularda çalışıyorsa
 
-Bu yönergeler yalnızca, çok faktörlü kimlik doğrulama sunucusunu AD FS sunucularınızdan ayrı olarak çalıştırırsanız geçerlidir. Her iki hizmet aynı sunucuda çalışıyorsa, bu bölümü atlayın ve yükleme adımlarına gidin. 
+Bu yönergeler yalnızca Multi-Factor Authentication Sunucusu AD FS sunucularınızdan ayrı olarak çalıştırırsanız geçerlidir. Her iki hizmet aynı sunucuda çalışıyorsa, bu bölümü atlayın ve yükleme adımlarına gidin. 
 
 1. AD FS kayıtlı olan MultiFactorAuthenticationAdfsAdapter. config dosyasının bir kopyasını kaydedin veya şu PowerShell komutunu kullanarak yapılandırmayı dışarı aktarın: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. Daha önce yüklenen sürüme bağlı olarak bağdaştırıcı adı "bağdaştırıcı windowsazuremultifactorauthentication" veya "AzureMfaServerAuthentication" olur.
 2. Aşağıdaki dosyaları MFA sunucusu yükleme konumundan AD FS sunucularına kopyalayın:
@@ -84,7 +84,7 @@ Bu yönergeler yalnızca, çok faktörlü kimlik doğrulama sunucusunu AD FS sun
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
 
-3. Komutun`Register-AdfsAuthenticationProvider` sonuna ekleyerek `-ConfigurationFilePath [path]` Register-MultiFactorAuthenticationAdfsAdapter. ps1 betiğini düzenleyin. *[Path]* öğesini MultiFactorAuthenticationAdfsAdapter. config dosyasının tam yoluyla veya önceki adımda aktarılmış yapılandırma dosyası ile değiştirin.
+3. `Register-AdfsAuthenticationProvider` komutunun sonuna `-ConfigurationFilePath [path]` ekleyerek Register-MultiFactorAuthenticationAdfsAdapter. ps1 betiğini düzenleyin. *[Path]* öğesini MultiFactorAuthenticationAdfsAdapter. config dosyasının tam yoluyla veya önceki adımda aktarılmış yapılandırma dosyası ile değiştirin.
 
    Eski yapılandırma dosyasıyla eşleşip eşleşseler görmek için yeni MultiFactorAuthenticationAdfsAdapter. config içindeki öznitelikleri denetleyin. Yeni sürümde herhangi bir öznitelik eklendiyse veya kaldırılırsa, eski yapılandırma dosyasından öznitelik değerlerini yeni bir dosyaya kopyalayın veya eski yapılandırma dosyasını eşleşecek şekilde değiştirin.
 
@@ -98,7 +98,7 @@ Bu yönergeler yalnızca, çok faktörlü kimlik doğrulama sunucusunu AD FS sun
 
    Bir hata oluşursa, "Microsoft Visual C++ 2015 Redistributable Update 1 veya daha yüksek bir sürümü gerekir," en son güncelleştirme paketini [Microsoft İndirme Merkezi](https://www.microsoft.com/download/)' nden indirin ve yükleyin. Hem x86 hem de x64 sürümlerini yükler.
 
-3. **AD FS** > **kimlik doğrulama ilkeleri** > **genel çok faktörlü kimlik doğrulama ilkesini Düzenle**' ye gidin. **Bağdaştırıcı windowsazuremultifactorauthentication** veya **AzureMFAServerAuthentication** işaretini kaldırın (yüklü olan geçerli sürüme bağlı olarak).
+3. **AD FS** > kimlik doğrulama **Ilkelerine** gidin > **genel çok faktörlü kimlik doğrulama ilkesini düzenleyin**. **Bağdaştırıcı windowsazuremultifactorauthentication** veya **AzureMFAServerAuthentication** işaretini kaldırın (yüklü olan geçerli sürüme bağlı olarak).
 
    Bu adım tamamlandıktan sonra, bu AD FS kümesinde MFA sunucusu üzerinden iki adımlı doğrulama, 8. adımı tamamlayana kadar kullanılamaz.
 
@@ -106,13 +106,13 @@ Bu yönergeler yalnızca, çok faktörlü kimlik doğrulama sunucusunu AD FS sun
 5. Register-MultiFactorAuthenticationAdfsAdapter. ps1 PowerShell betiğini çalıştırarak yeni AD FS bağdaştırıcısını kaydettirin. Bu, merkezi bir yapılandırma olduğundan aynı AD FS kümesindeki tüm sunucular için geçerlidir.
 6. AD FS grubundan kaldırılan her sunucuda AD FS hizmetini yeniden başlatın.
 7. Güncelleştirilmiş sunucuları AD FS grubuna geri ekleyin ve diğer sunucuları gruptan kaldırın.
-8. **AD FS** > **kimlik doğrulama ilkeleri** > **genel çok faktörlü kimlik doğrulama ilkesini Düzenle**' ye gidin. **AzureMfaServerAuthentication**denetleyin.
+8. **AD FS** > kimlik doğrulama **Ilkelerine** gidin > **genel çok faktörlü kimlik doğrulama ilkesini düzenleyin**. **AzureMfaServerAuthentication**denetleyin.
 9. AD FS grubundan kaldırılan sunucuları güncelleştirmek için 2. adımı tekrarlayın ve bu sunuculardaki AD FS hizmetini yeniden başlatın.
 10. Bu sunucuları AD FS grubuna geri ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Multi-Factor Authentication ve üçüncü taraf VPN 'ler Ile gelişmiş senaryolara](howto-mfaserver-nps-vpn.md) örnek alın
+* [Azure Multi-Factor Authentication ve üçüncü taraf VPN 'ler Ile gelişmiş senaryolara](howto-mfaserver-nps-vpn.md) örnekler alın
 
 * [MFA sunucusunu Windows Server Active Directory ile eşitler](howto-mfaserver-dir-ad.md)
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0ab2ba2c49dd0d0f946358c8f52a6daaf7428dd1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672567"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851426"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -27,10 +27,10 @@ Ayrıca, aşağıdaki adımlarda belirtildiği gibi iş ortağı erişimini de e
 
 Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz gerekir. Bu adım, cihaz iş ortağınız olarak Azure Farmtlerinize erişimi olacak bir istemci oluşturur ve sonraki adımlarda gerekli olan aşağıdaki değerleri sağlar.
 
-- API uç noktası – bu veri merkezi URL 'sidir, örneğin, https://<datahub>. azurewebsites.net
+- API uç noktası – bu veri merkezi URL 'sidir, örneğin, https://\<Datahub >. azurewebsites. net
 - Kiracı Kimliği
 - İstemci Kimliği
-- İstemci parolası
+- İstemci Gizli Anahtarı
 - EventHub bağlantı dizesi
 
 Bunları oluşturmak için aşağıdaki adımları izleyin:
@@ -75,7 +75,7 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 - /**algılayıcı** algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.  
 
 
-|        Cihaz modeli   |  Öneriler   |
+|        Aygıt Modeli   |  Öneriler   |
 | ------- | -------             |
 |     Tür (düğüm, ağ geçidi)        |          1 Yıldız      |
 |          Üretici            |         2 Yıldız     |
@@ -84,7 +84,7 @@ Bunları oluşturmak için aşağıdaki adımları izleyin:
 |     Adı                 |  Kaynağı tanımlamak için ad. Örneğin, model adı/ürün adı.
       Açıklama     | Modelin anlamlı bir açıklamasını sağlayın
 |    Özellikler          |    Üreticiden ek özellikler   |
-|    **Aygıtların**             |                      |
+|    **cihaz**             |                      |
 |   Devicemodelıd     |     İlişkili cihaz modelinin KIMLIĞI  |
 |  Donanım kimliği          | Cihazın MAC adresi vb. gibi benzersiz KIMLIĞI.
 |  Reportingınterval        |   Saniye cinsinden raporlama aralığı
@@ -119,14 +119,14 @@ Nesneler hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeat
 
 **Meta veri oluşturmak için API isteği**
 
-Bir API isteği oluşturmak için HTTP (POST) yöntemini, API hizmetinin URL 'sini, sorgulanacak bir kaynağa yönelik URI 'yi, bir istek oluşturmak veya silmek için veri göndermek ve bir ya da daha fazla HTTP istek üst bilgisi eklemek için verileri birleştirebilirsiniz. API hizmetinin URL 'si, API uç noktasıdır (örneğin, veri merkezi URL 'SI (https://<yourdatahub>. azurewebsites.net)  
+Bir API isteği oluşturmak için HTTP (POST) yöntemini, API hizmetinin URL 'sini, sorgulanacak bir kaynağa yönelik URI 'yi, bir istek oluşturmak veya silmek için veri göndermek ve bir ya da daha fazla HTTP istek üst bilgisi eklemek için verileri birleştirebilirsiniz. API hizmetinin URL 'si, API uç noktasıdır, yani veri merkezi URL 'SI (https://\<yourdatahub >. azurewebsites. net)  
 
-**Kimlik doğrulama**:
+**Kimlik Doğrulaması**:
 
 Farmtts veri hub 'ı, yukarıdaki bölümde oluşturduğumuz aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır.
 
 - İstemci Kimliği
-- İstemci parolası
+- İstemci Gizli Anahtarı
 - Kiracı Kimliği  
 
 Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üstbilgi bölümündeki sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteğinde bulunabilir:
@@ -134,6 +134,28 @@ Yukarıdaki kimlik bilgilerini kullanarak, çağıran, üstbilgi bölümündeki 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
+
+Aşağıda, Farmtts 'e yönelik sonraki API çağrıları için kullanılabilecek erişim belirtecine izin veren örnek bir Python kodu verilmiştir: 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
 
 **Http Istek üstbilgileri**:
 
@@ -271,6 +293,26 @@ Artık cihaz ve sensörler ' de bir cihaz oluşturdığınıza göre, ilişkili 
 **İstemci olarak telemetri iletisi gönder**
 
 Bir EventHub istemcisi olarak kurulan bir bağlantınız olduğunda, EventHub 'e bir JSON olarak ileti gönderebilirsiniz.  
+
+Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek bir Python kodu verilmiştir:
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
 Geçmiş algılayıcı veri biçimini Azure Farmtarafından anladığı kurallı bir biçime dönüştürün. Kurallı ileti biçimi aşağıdaki gibidir:  
 
 ```json

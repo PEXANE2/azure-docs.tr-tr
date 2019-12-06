@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685932"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851749"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda kaynak sınıflarıyla iş yükü yönetimi
 
@@ -24,7 +24,7 @@ Azure SQL veri ambarınızdaki sorgulara yönelik belleği ve eşzamanlılık y�
 
 ## <a name="what-are-resource-classes"></a>Kaynak sınıfları nedir?
 
-Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfına göre belirlenir.  Kaynak sınıfları, Azure SQL veri ambarı 'nda, işlem kaynaklarını yöneten ve sorgu yürütme için eşzamanlılık olan önceden belirlenen kaynak sınırlamalarıdır. Kaynak sınıfları, eşzamanlı olarak çalışan sorgu sayısı ve her sorguya atanan işlem kaynakları için sınırlar ayarlayarak iş yükünüzü yönetmenize yardımcı olabilir.  Bellek ve eşzamanlılık arasında bir denge vardır.
+Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfına göre belirlenir.  Kaynak sınıfları, Azure SQL veri ambarı 'nda, işlem kaynaklarını yöneten ve sorgu yürütme için eşzamanlılık olan önceden belirlenen kaynak sınırlamalarıdır. Kaynak sınıfları, aynı anda çalışan sorgu sayısına ve her sorguya atanan işlem kaynaklarına sınırlar ayarlayarak, sorgularınız için kaynakları yapılandırmanıza yardımcı olabilir.  Bellek ve eşzamanlılık arasında bir denge vardır.
 
 - Daha küçük kaynak sınıfları sorgu başına en fazla bellek miktarını azaltır, ancak eşzamanlılık düzeyini artırır.
 - Daha büyük kaynak sınıfları sorgu başına maksimum belleği artırır, ancak eşzamanlılık düzeyini azaltır.
@@ -65,14 +65,18 @@ Dinamik kaynak sınıfları, önceden tanımlanmış bu veritabanı rolleriyle u
 - largerc
 - xlargerc
 
-Her kaynak sınıfı için bellek ayırma, **hizmet düzeyinden bağımsız**olarak aşağıdaki gibidir.  En düşük eşzamanlılık sorguları da listelenir.  Bazı hizmet düzeylerinde, en düşük eşzamanlılık elde edilebilir.
+Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir. 
 
-| Kaynak Sınıfı | Bellek yüzdesi | En az eşzamanlı sorgular |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 03                | 32                     |
-| düz RC       | %10               | 10                     |
-| largerc        | #               | 4                      |
-| xlargerc       | %70               | 1                      |
+| Hizmet Düzeyi  | smallrc           | düz RC               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | %25               | %25                    | %25                    | %70                    |
+| DW200c         | % 12,5             | % 12,5                  | #c16                    | %70                    |
+| DW300c         | %8                | %10                    | #c16                    | %70                    |
+| DW400c         | % 6,25             | %10                    | #c16                    | %70                    |
+| DW500c'yi seçin         | %20               | %10                    | #c16                    | %70                    |
+| DW1000c<br> DW30000c | %3       | %10                    | #c16                    | %70                    |
+
+
 
 ### <a name="default-resource-class"></a>Varsayılan kaynak sınıfı
 
@@ -105,6 +109,8 @@ Bu işlemler, kaynak sınıflarına göre yönetilir:
 
 > [!NOTE]  
 > Dinamik yönetim görünümlerinde (DMVs) veya diğer sistem görünümlerinde SELECT deyimleri eşzamanlılık limitlerinin herhangi birine tabidir. Üzerinde yürütülen sorguların sayısından bağımsız olarak sistemi izleyebilirsiniz.
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>Kaynak sınıfları tarafından yönetilmeyen işlemler
 
@@ -179,6 +185,11 @@ Kullanıcılar birden çok kaynak sınıfının üyesi olabilir. Bir Kullanıcı
 
 ## <a name="recommendations"></a>Öneriler
 
+>[!NOTE]
+>İş yükünüz ve öngörülebilir performans üzerinde daha fazla denetim için iş yükü yönetimi özelliklerini ([iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md), [Sınıflandırma](sql-data-warehouse-workload-classification.md) ve [önem derecesi](sql-data-warehouse-workload-importance.md)) kullanmayı düşünün.  
+>
+>
+
 Belirli bir sorgu veya yükleme işlemi türünü çalıştırmaya ayrılmış bir Kullanıcı oluşturmanızı öneririz. Kaynak sınıfını sıklıkla değiştirmek yerine bu kullanıcıya kalıcı bir kaynak sınıfı verin. Statik kaynak sınıfları iş yükünde daha büyük genel denetime sahiptir, bu nedenle dinamik kaynak sınıflarını düşünmeden önce statik kaynak sınıflarını kullanmanızı öneririz.
 
 ### <a name="resource-classes-for-load-users"></a>Yükleme kullanıcıları için kaynak sınıfları
@@ -231,7 +242,7 @@ Bu saklı yordamın amacı aşağıda verilmiştir:
 
 ### <a name="usage-example"></a>Kullanım örneği
 
-Sözdizimi  
+Söz dizimi:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
 1. @DWU:, DW DB 'den geçerli DWU 'yi ayıklamak için NULL bir parametre sağlayın ya da ' DW100c ' biçiminde desteklenen DWU 'yi sağlayın
@@ -250,7 +261,7 @@ EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;
 Aşağıdaki ifade, önceki örneklerde kullanılan Table1 oluşturur.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition"></a>Saklı yordam tanımı
+### <a name="stored-procedure-definition"></a>Saklı yordam tanımında
 
 ```sql
 -------------------------------------------------------------------------------

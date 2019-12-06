@@ -2,28 +2,24 @@
 title: Microsoft Identity platformunda kimlik doğrulaması | Mavisi
 description: Microsoft Identity platformunda (v 2.0) kimlik doğrulamasının temelleri hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167811"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843997"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
@@ -43,7 +39,7 @@ Merkezi bir kimlik sağlayıcısı, dünyanın her yerindeki kullanıcıların, 
 
 Microsoft Identity platform, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokoller desteğiyle ve farklı bir şekilde açık kaynak kitaplıkları sunarak uygulama geliştiricileri için kimlik doğrulamasını basitleştirir. kodlamaya hızlı bir şekilde başlamanıza yardımcı olacak platformlar. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Daha fazla bilgi için bkz. [Microsoft Identity platform 'un gelişi](about-microsoft-identity-platform.md).
 
-### <a name="tenants"></a>Kira
+### <a name="tenants"></a>Kiracılar
 
 Bulut kimlik sağlayıcısı birçok kuruluşa hizmet eder. Kullanıcıları farklı kuruluşlardan ayrı tutmak için, Azure AD kiracılar halinde bölümlenmiştir ve kuruluşa göre tek bir kiracı olur.
 
@@ -143,7 +139,7 @@ Aşağıdaki sıra diyagramı bu etkileşimi özetler:
 
 Web uygulaması geliştiricileri, kimlik doğrulaması gerektirdiğini veya yalnızca belirli sayfaların olduğunu belirtebilir. Örneğin, ASP.NET/ASP.NET Core 'da, denetleyici eylemlerine `[Authorize]` özniteliği eklenerek yapılır. 
 
-Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilgisinin varlığını denetlamasına neden olur. Bir tanımlama bilgisi yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, Web uygulaması, kimlik doğrulamasını https://login.microsoftonline.comolarak yeniden yönlendirir ve bu da bir oturum açma iletişim kutusu görüntüler.
+Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilgisinin varlığını denetlamasına neden olur. Bir tanımlama bilgisi yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, Web uygulaması, kimlik doğrulamasını https://login.microsoftonline.com olarak yeniden yönlendirir ve bu da bir oturum açma iletişim kutusu görüntüler.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Bir Web uygulamasının Azure AD 'de oturum açması ve bir belirteç alacağı
 

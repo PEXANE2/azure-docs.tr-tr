@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404684"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848383"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -49,7 +49,7 @@ Azure için NPS uzantısının kullanılabilirliğine başlamadan önce, tümle�
 
 Azure için NPS Uzantısı ile kuruluşlar, şirket içi tabanlı MFA çözümünü ya da bulut tabanlı MFA çözümünü dağıtarak RADIUS istemci kimlik doğrulamasını güvenli hale getirbilirler.
 
-## <a name="authentication-flow"></a>Kimlik doğrulama akışı
+## <a name="authentication-flow"></a>Kimlik doğrulaması akışı
 
 Kullanıcılar VPN sunucusundaki bir sanal bağlantı noktasına bağlandıklarında, önce çeşitli protokoller kullanarak kimlik doğrulaması yapılmalıdır. Protokoller, Kullanıcı adı ve parola ve sertifika tabanlı kimlik doğrulama yöntemlerinin bir birleşiminin kullanılmasına izin verir.
 
@@ -98,7 +98,7 @@ Ağ Ilkesi ve erişim Hizmetleri rol hizmeti Windows Server 2012 veya sonraki bi
 
 ### <a name="azure-mfa-license"></a>Azure MFA lisans
 
-Azure Multi-Factor Authentication için bir lisans gerekir ve bir Azure AD Premium, Enterprise Mobility + Security ya da tek başına Multi-Factor Authentication bir lisans aracılığıyla kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication alma](concept-mfa-licensing.md). Sınama amacıyla bir deneme aboneliğini kullanabilirsiniz.
+Azure Multi-Factor Authentication için bir lisans gerekir ve bir Azure AD Premium, Enterprise Mobility + Security ya da tek başına Multi-Factor Authentication bir lisans aracılığıyla kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. Daha fazla bilgi için [Azure multi-Factor Authentication'ı alma](concept-mfa-licensing.md). Sınama amacıyla bir deneme aboneliğini kullanabilirsiniz.
 
 ### <a name="windows-server-software"></a>Windows Server yazılımı
 
@@ -137,7 +137,7 @@ Bu bölüm, ağ Ilkesi ve erişim Hizmetleri rolünü yüklediğinizi ancak alty
 
 Bu senaryoda düzgün çalışması için, NPS sunucusunun Active Directory kayıtlı olması gerekir.
 
-1. Sunucu Yöneticisi açın.
+1. Sunucu Yöneticisi'ni açın.
 
 2. Sunucu Yöneticisi ' de **Araçlar**' ı seçin ve ardından **ağ ilkesi sunucusu**' nu seçin.
 
@@ -204,7 +204,7 @@ Bu bölüm, Sihirbazı kullanarak oluşturduğunuz yapılandırmayı ayrıntıl�
 
     ![VPN özelliklerini ve yapılandırmasını doğrulama](./media/howto-mfa-nps-extension-vpn/image11.png)
 
-3. **İptal**' i seçin.
+3. **İptal**’i seçin.
 
 4. Ağ Ilkesi sunucusunda, NPS (yerel) konsolunda, **ilkeler**' i genişletin ve **bağlantı isteği ilkeleri**' ni seçin. VPN bağlantıları ilkesi, aşağıdaki görüntüde gösterildiği gibi görüntülenir:
 
@@ -324,7 +324,7 @@ Değer *true* olarak ayarlandıysa veya boşsa, tüm kimlik doğrulama istekleri
 
 NPS uzantısının yapılandırmasının bir parçası olarak, yönetici kimlik bilgilerini ve Azure AD kiracınızın KIMLIĞINI sağlamanız gerekir. Aşağıdakileri yaparak KIMLIĞI edinin:
 
-1. Azure kiracının genel yöneticisi olarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Oturum [Azure portalında](https://portal.azure.com) Azure kiracısının genel Yöneticisi olarak.
 
 2. Sol bölmede **Azure Active Directory** düğmesini seçin.
 
@@ -358,7 +358,7 @@ Güvenli iletişim ve güvence sağlamak için sertifikaları NPS uzantısı tar
 
 Komut aşağıdaki eylemleri gerçekleştirir:
 
-* Kendinden imzalı bir sertifika oluşturur.
+* Otomatik olarak imzalanan bir sertifika oluşturur.
 * Sertifikanın ortak anahtarını Azure AD 'deki hizmet sorumlusu ile ilişkilendirir.
 * Sertifikayı yerel makine deposunda depolar.
 * Ağ kullanıcısına sertifikanın özel anahtarına erişim izni verir.
@@ -426,7 +426,7 @@ Azure Multi-Factor Authentication için NPS uzantısını yüklediğiniz sunucud
 
 ## <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
-Yapılandırma beklendiği gibi çalışmıyorsa, kullanıcının MFA kullanacak şekilde yapılandırıldığını doğrulayarak sorun gidermeye başlayın. Kullanıcının [Azure Portal](https://portal.azure.com)bağlanmasını sağlar. Kullanıcıdan ikincil kimlik doğrulaması istenirse ve kimlik doğrulaması başarılı olursa, bir sorun olarak MFA 'nın yanlış yapılandırmasını ortadan kaldırabilirsiniz.
+Yapılandırma beklendiği gibi çalışmıyorsa, kullanıcının MFA kullanacak şekilde yapılandırıldığını doğrulayarak sorun gidermeye başlayın. Bağlanma kullanıcının [Azure portalında](https://portal.azure.com). Kullanıcıdan ikincil kimlik doğrulaması istenirse ve kimlik doğrulaması başarılı olursa, bir sorun olarak MFA 'nın yanlış yapılandırmasını ortadan kaldırabilirsiniz.
 
 MFA Kullanıcı için çalışıyorsa ilgili Olay Görüntüleyicisi günlüklerini gözden geçirin. Günlükler, önceki bölümde açıklanan güvenlik olayı, ağ geçidi işlem ve Azure Multi-Factor Authentication günlüklerini içerir.
 

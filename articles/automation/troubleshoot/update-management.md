@@ -2,18 +2,18 @@
 title: Güncelleştirme Yönetimi hata giderme sorunları
 description: Güncelleştirme Yönetimi sorunları nasıl giderebileceğinizi öğrenin.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786056"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849250"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -21,7 +21,7 @@ Bu makalede, Güncelleştirme Yönetimi kullandığınızda karşılaşabileceğ
 
 Temeldeki sorunu belirlemede karma çalışan Aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md). Diğer tüm sorunlar için aşağıdaki sorun giderme kılavuzunu kullanın.
 
-Çözümü bir sanal makineye (VM) ekleme çalışırken sorunlarla karşılaşırsanız, olay KIMLIĞI 4502 ve olay ayrıntıları içeren olaylar için yerel makinedeki **uygulama ve hizmet günlükleri** altındaki **Operations Manager** günlüğünü kontrol edin. **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. Hybridadgent**.
+Çözümü bir sanal makineye (VM) ekleme çalışırken sorunlarla karşılaşırsanız, olay KIMLIĞI 4502 olan olaylar ve **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. Hybridavgent**içeren olay ayrıntıları için yerel makinedeki **uygulama ve hizmet günlükleri** altındaki **Operations Manager** günlüğünü kontrol edin.
 
 Aşağıdaki bölümde, belirli hata iletileri ve her biri için olası çözümler vurgulanmaktadır. Diğer ekleme sorunları için bkz. [çözüm ekleme sorunlarını giderme](onboarding.md).
 
@@ -68,7 +68,7 @@ Karma runbook çalışanını yeniden kaydetmeniz ve yeniden yüklemeniz gerekeb
   | where OperationCategory == 'Data Collection Status'
   | sort by TimeGenerated desc
   ```
-  Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonucu alırsanız, çalışma alanınızda erişilen ve verilerin kaydedilmesini durduran bir kota vardır. Çalışma alanınızda, **kullanım ve tahmini maliyetler**  > **veri hacmi yönetimi** ' ne gidin ve kotayı denetleyin veya kaldırın.
+  Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonucu alırsanız, çalışma alanınızda erişilen ve verilerin kaydedilmesini durduran bir kota vardır. Çalışma alanınızda, **kullanım ve tahmini maliyetler** > **veri hacmi yönetimi** ' ne gidin ve kotayı denetleyin veya kaldırın.
 
 * Bu adımlar sorununuzu gidermezse Windows karma [Runbook Worker 'ı dağıtma](../automation-windows-hrw-install.md) bölümündeki adımları izleyerek Windows Için karma çalışanı yeniden yükleyin. Veya Linux için [bir Linux karma runbook çalışanı dağıtın](../automation-linux-hrw-install.md).
 
@@ -119,7 +119,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 2. Kopyalanmış bir görüntü kullanıyorsanız:
    1. Log Analytics çalışma alanınızda, sanal makineyi, `MicrosoftDefaultScopeConfig-Updates` kapsam yapılandırması için kaydedilen aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
    2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` öğesini çalıştırın.
-   3. @No__t_1 yeniden başlatmak için `Restart-Service HealthService` çalıştırın. Bu, anahtarı yeniden oluşturur ve yeni bir UUID oluşturur.
+   3. `HealthService`yeniden başlatmak için `Restart-Service HealthService` çalıştırın. Bu, anahtarı yeniden oluşturur ve yeni bir UUID oluşturur.
    4. Bu yaklaşım işe yaramazsa, önce görüntüde Sysprep 'i çalıştırın ve ardından MMA 'yı yüklemeniz gerekir.
 
 ## <a name="multi-tenant"></a>Senaryo: başka bir Azure kiracısındaki makineler için bir güncelleştirme dağıtımı oluştururken bağlantılı bir abonelik hatası alıyorsunuz
@@ -187,7 +187,7 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 
 ### <a name="resolution"></a>Çözünürlük
 
-Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../automation-update-management-groups.md) kullanın. Ayrıca
+Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../automation-update-management-groups.md) kullanın. Ayrıca:
 
 * Makinenin hala var olduğunu ve erişilebilir olduğunu doğrulayın. Mevcut değilse, dağıtımınızı düzenleyin ve makineyi kaldırın.
 * Güncelleştirme Yönetimi için gereken bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve sonra makinenizin bu gereksinimleri karşıladığını doğrulayın.
@@ -220,7 +220,7 @@ Daha fazla bilgi için bkz. [otomatik güncelleştirmeleri yapılandırma](https
 
 ### <a name="issue"></a>Sorun
 
-Aşağıdaki hata iletisini alırsınız:
+Aşağıdaki hata iletisini alıyorsunuz:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}

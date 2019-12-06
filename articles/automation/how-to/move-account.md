@@ -4,17 +4,17 @@ description: Bu makalede Otomasyon hesabınızı başka bir aboneliğe nasıl ta
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8187e4c6f2c7dc721c178bad50b6c3ada2a65367
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717238"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849590"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
@@ -55,7 +55,7 @@ Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' 
 
 **VM 'Leri Başlat/Durdur** çözümü için, çözüm tarafından oluşturulan uyarı kurallarını da kaldırmanız gerekir.
 
-Azure Portal, kaynak grubunuza gidip **izleme** > **uyarıları** > **Uyarı kurallarını yönet**' i seçin.
+Azure portal, kaynak grubunuza gidin ve **Uyarı kurallarını yönetmek** >  > **uyarılarını** **izleme** ' yi seçin.
 
 ![Uyarı kurallarını yönet seçimini gösteren uyarılar sayfası](../media/move-account/alert-rules.png)
 
@@ -74,9 +74,9 @@ Bu üç uyarı kuralını seçin ve ardından **Sil**' i seçin. Bu eylem, bu uy
 
 Uyarı kuralları kaldırıldığında, **VM 'Leri Başlat/Durdur** çözüm bildirimleri için oluşturulan eylem grubunu kaldırın.
 
-Azure Portal, **izleme** > **uyarıları** > **işlem gruplarını yönet**' i seçin.
+Azure portal, **eylem gruplarını yönetmek** >  > **uyarılarını** **İzle** ' yi seçin.
 
-Listeden **StartStop_VM_Notification** öğesini seçin. Eylem grubu sayfasında **Sil**' i seçin.
+Listeden **StartStop_VM_Notification** seçin. Eylem grubu sayfasında **Sil**' i seçin.
 
 ![Eylem grubu sayfasında Sil ' i seçin.](../media/move-account/delete-action-group.png)
 
@@ -88,13 +88,13 @@ Remove-AzureRmActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_V
 
 ## <a name="unlink-your-workspace"></a>Çalışma alanınızın bağlantısını kaldırma
 
-Azure Portal **Otomasyon hesabı** > **ilişkili kaynaklar** > **bağlantılı çalışma alanı**' nı seçin. Çalışma alanının Otomasyon hesabından bağlantısını kaldırmak için **çalışma alanının bağlantısını kaldır** ' ı seçin.
+Azure portal, **bağlantılı çalışma alanı** > **Ilgili kaynaklar** > **Otomasyon hesabı** ' nı seçin. Çalışma alanının Otomasyon hesabından bağlantısını kaldırmak için **çalışma alanının bağlantısını kaldır** ' ı seçin.
 
 ![Bir çalışma alanının Otomasyon hesabından bağlantısını kaldırma](../media/move-account/unlink-workspace.png)
 
 ## <a name="move-your-automation-account"></a>Otomasyon hesabınızı taşıyın
 
-Önceki öğeleri kaldırdıktan sonra, Otomasyon hesabınızı ve Runbook 'larını kaldırmaya devam edebilirsiniz. Azure portal, Otomasyon hesabınızın kaynak grubuna gidin. **Taşımayı** > **başka bir aboneliğe**taşıma ' yı seçin.
+Önceki öğeleri kaldırdıktan sonra, Otomasyon hesabınızı ve Runbook 'larını kaldırmaya devam edebilirsiniz. Azure portal, Otomasyon hesabınızın kaynak grubuna gidin. **Taşıma** > **başka bir aboneliğe taşıma**' yı seçin.
 
 ![Kaynak grubu sayfası, başka bir aboneliğe taşıma](../media/move-account/move-resources.png)
 
@@ -113,7 +113,7 @@ Yeni abonelikte Otomasyon hesabınıza gidin ve **Hesap ayarları**altında **Fa
 Her bir farklı çalıştır hesabını seçin. **Özellikler** sayfasında, farklı çalıştır hesabını silmek için **Sil** ' i seçin.
 
 > [!NOTE]
-> Farklı Çalıştır hesaplarını oluşturma veya görüntüleme izniniz yoksa, aşağıdaki iletiyi görürsünüz: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.`Farklı Çalıştır hesabı yapılandırmak için gerekli izinler hakkında bilgi edinmek için, bkz. [Farklı Çalıştır hesaplarını yapılandırmak için gereken izinler](../manage-runas-account.md#permissions).
+> Farklı Çalıştır hesaplarını oluşturma veya görüntüleme izniniz yoksa şu iletiyi görürsünüz `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.`: farklı çalıştır hesabını yapılandırmak için gerekli izinler hakkında bilgi edinmek Için, bkz. [Farklı Çalıştır hesaplarını yapılandırmak için gereken izinler](../manage-runas-account.md#permissions).
 
 Farklı Çalıştır hesapları silindikten sonra **Azure farklı çalıştır hesabı**altında **Oluştur** ' u seçin. Farklı Çalıştır hesabı ve hizmet sorumlusu oluşturmak için **Azure farklı çalıştır hesabı ekle** sayfasında **Oluştur** ' u seçin. Önceki adımları **Azure klasik farklı çalıştır hesabıyla**tekrarlayın.
 
@@ -125,13 +125,13 @@ Farklı Çalıştır hesaplarını yeniden oluşturduktan sonra, taşımadan ön
 
 Çözümlerinizle eklendi olan makineler, var olan Log Analytics çalışma alanını bağladığınızda görünür olur.
 
-VM 'Leri çalışma saatleri dışında **Başlat/Durdur** çözümünü açmak için çözümü yeniden dağıtmanız gerekir. **İlgili kaynaklar**' ın altında, **VM 'leri** > Başlat/Durdur ' u seçin ve dağıtımı başlatmak için**çözüm** > **oluşturma** ' yı etkinleştirin.
+VM 'Leri çalışma saatleri dışında **Başlat/Durdur** çözümünü açmak için çözümü yeniden dağıtmanız gerekir. **Ilgili kaynaklar**altında, **sanal makineleri Başlat/Durdur** ' u seçin > **daha fazla bilgi edinin ve** dağıtımı başlatmak için > **oluşturun** çözümü etkinleştirin.
 
 **Çözüm Ekle** sayfasında, Log Analytics çalışma alanınızı ve otomasyon hesabınızı seçin.
 
 ![Çözüm Ekle menüsü](../media/move-account/add-solution-vm.png)
 
-Çözümü yapılandırma hakkında ayrıntılı yönergeler için bkz. [Azure Otomasyonu 'nda çalışma saatleri dışında VM 'Leri başlatma/durdurma](../automation-solution-vm-management.md).
+Çözümü yapılandırma hakkında ayrıntılı yönergeler için bkz. [Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında Başlat/Durdur çözümü](../automation-solution-vm-management.md).
 
 ## <a name="post-move-verification"></a>Taşıma sonrası doğrulama
 

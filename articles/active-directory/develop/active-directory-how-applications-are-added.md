@@ -3,28 +3,24 @@ title: Uygulamaların nasıl ve neden eklendiği Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Uygulamanın Azure AD 'ye eklenmesi ne anlama geliyor?
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 6a04315d887a1774fa50743d4bb361b9d9082aba
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532992"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845068"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
@@ -38,7 +34,7 @@ Azure AD 'de uygulamaların iki gösterimi vardır:
 Uygulama [kayıt](https://aka.ms/appregistrations) deneyimi aracılığıyla Azure Portal [uygulama nesnelerini](app-objects-and-service-principals.md#application-object) yönetebilirsiniz. Uygulama nesneleri, uygulamayı Azure AD 'ye anlatmaktadır ve uygulamanın tanımı olarak düşünülebilir ve bu da hizmetin, ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi sahibi olabilir. Uygulama nesnesi, diğer dizinlerde hizmet sorumlularını destekleyen çok kiracılı bir uygulama olsa bile, yalnızca kendi giriş dizininde bulunur. Uygulama nesnesi aşağıdakilerden herhangi birini (ve burada açıklanmayan ek bilgileri) içerebilir:
 
 * Ad, logo ve Yayımcı
-* Yeniden yönlendirme URI 'Leri
+* Yeniden Yönlendirme URI'leri
 * Gizlilikler (uygulamanın kimliğini doğrulamak için kullanılan simetrik ve/veya asimetrik anahtarlar)
 * API bağımlılıkları (OAuth)
 * Yayımlanan API 'Ler/kaynaklar/kapsamlar (OAuth)
@@ -110,7 +106,7 @@ Kendinize eklediğiniz uygulamalar (diyagramda **uygulama (sizinkiler)** olarak 
   * Talep dönüştürme kuralları
   * Öznitelik eşlemeleri (Kullanıcı hazırlama)
 * Hizmet sorumlusu ve uygulama nesneleri hakkında daha ayrıntılı bilgi için bkz. Azure AD Graph REST API başvuru belgeleri:
-  * [Uygulamanızı](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Uygulama](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
   * [Hizmet sorumlusu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Uygulamalar neden Azure AD ile tümleştirçalışıyor?

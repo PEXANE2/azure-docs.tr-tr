@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798134"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851460"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
 
 SOIL nemi, SOIL parçacıkları arasındaki boşlukların tutulduğu su. SOIL nemi heatmap, nemi verilerini herhangi bir derinlikte ve çiftlerinizin içinde yüksek çözünürlükte anlamanıza yardımcı olur. Doğru ve kullanılabilir bir SOIL nemi heatmap oluşturmak için aynı sağlayıcıdan alınan sensörlerden oluşan tek bir dağıtım gerekir. Farklı sağlayıcılar, SOIL nemi 'in ayarlama farklılıklarıyla birlikte ölçüldüğü fark eder. Heatmap, bu derinlikte dağıtılan sensörler kullanılarak belirli bir derinlik için oluşturulur.
 
-Bu makalede, Azure Farmtts Hızlandırıcısı kullanılarak grubunuz için bir SOIL Moisture heatmap oluşturma işlemi açıklanmaktadır. Bu makalede şunları yapmayı öğreneceksiniz:
+Bu makalede, Azure Farmtts Hızlandırıcısı kullanılarak grubunuz için bir SOIL Moisture heatmap oluşturma işlemi açıklanmaktadır. Bu makalede, öğreneceksiniz nasıl yapılır:
 
 - [Gruplar oluşturma](#create-a-farm)
 - [Gruplara algılayıcılar ata](#get-soil-moisture-sensor-data-from-partner)
@@ -30,7 +30,7 @@ Aşağıdakilerden emin olun:
 - Azure Farmtts 'nin çalışan bir örneği.
 - Grup için en az üç Soil nemi sensöri vardır.
 
-## <a name="create-a-farm"></a>Grup oluşturma
+## <a name="create-a-farm"></a>Grup oluştur
 
 Grup, bir SOIL nemi heatmap oluşturmak istediğiniz coğrafi bir alandır. [Gruplar API](https://aka.ms/FarmBeatsDatahubSwagger) 'Sini veya [Farmssink TS Hızlandırıcısı Kullanıcı arabirimini](manage-farms.md#create-farms) kullanarak bir grup oluşturabilirsiniz.
 
@@ -93,4 +93,4 @@ Aşağıdaki adımları kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir SOIL Moisture heatmap 'i başarıyla oluşturduğunuza göre, [algılayıcı yerleşimi oluşturma](generate-maps.md#sensor-placement-maps) ve [Geçmiş telemetri verilerini](ingest-historical-telemetry-data.md)alma hakkında bilgi edinin. 
+Artık bir SOIL Moisture heatmap 'i başarıyla oluşturduğunuza göre, [algılayıcı yerleşimi oluşturma](generate-maps.md#sensor-placement-map) ve [Geçmiş telemetri verilerini](ingest-historical-telemetry-data.md)alma hakkında bilgi edinin. 

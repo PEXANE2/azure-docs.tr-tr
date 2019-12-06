@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 12860d70cad2dbcfa3d06bf4df6939dd27ab3ab3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8267f8148269f8b1a0717435e57614f09c229de1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279624"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841413"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılara genel bakış için Azure İzleyici
 
@@ -49,7 +49,7 @@ Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini 
 * [Azure Red Hat OpenShift 'e dağıtılan](../../openshift/intro-openshift.md)kapsayıcı iş yüklerini izleyin.
 
     >[!NOTE]
-    >Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
+    >Azure Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
     >
 
 AKS kümenizi kapsayıcılar için Azure Izleyici ile izleme hakkında bilgi edinmenize yardımcı olmak için, aşağıdaki videoya göz atın.

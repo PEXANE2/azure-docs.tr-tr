@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384322"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851188"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -28,16 +28,6 @@ Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı i�
 
 - [İş ortağı Web sitesine gidin](https://more.citrix.com/wvd).
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Cloudhouse logosu](./media/partners/cloudhouse.png)
-
-Cloudhouse, kullanıcılara modern Windows işletim sistemleriyle uyumsuz olanlar dahil olmak üzere tüm uygulamaları Windows 'a taşıyaabilen bir Windows sanal masaüstü katma hizmet sağlayıcısıdır. Sanal masaüstü ortamı, müşterilerin çok oturum Windows 10 ' u gerçekten kullanmasına izin verir. 
-
-, Kanıtlanmış Cloudhouse kapsayıcı teknolojisini kullanarak, Cloudhouse hizmeti, Windows XP, Windows 7 veya Windows 8 için tasarlanmış olanlar da dahil olmak üzere tüm uygulamaları alır ve bunları kod değiştirmeye gerek kalmadan modern bir Windows sanal masaüstüne dağıtır. etki Kullanıcı deneyimi. Cloudhouse, uygulamaları temel alınan işletim sisteminden ayırarak Windows sanal masaüstü 'nün değerine daha fazla ekler ve Windows bakım güncelleştirmelerinin Kapsayıcılı uygulamayı etkilemeden alınmasına izin verir. 
-
-- [İş ortağı Web sitesine gidin](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
-
 ## <a name="vmware"></a>VMware
 
 ![VMware logosu](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları M
 
 - [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse logosu](./media/partners/cloudhouse.png)
+
+Cloudhouse, kullanıcılara modern Windows işletim sistemleriyle uyumsuz olanlar dahil olmak üzere tüm uygulamaları Windows 'a taşıyaabilen bir Windows sanal masaüstü katma hizmet sağlayıcısıdır. Sanal masaüstü ortamı, müşterilerin çok oturum Windows 10 ' u gerçekten kullanmasına izin verir. 
+
+, Kanıtlanmış Cloudhouse kapsayıcı teknolojisini kullanarak, Cloudhouse hizmeti, Windows XP, Windows 7 veya Windows 8 için tasarlanmış olanlar da dahil olmak üzere tüm uygulamaları alır ve bunları kod değiştirmeye gerek kalmadan modern bir Windows sanal masaüstüne dağıtır. etki Kullanıcı deneyimi. Cloudhouse, uygulamaları temel alınan işletim sisteminden ayırarak Windows sanal masaüstü 'nün değerine daha fazla ekler ve Windows bakım güncelleştirmelerinin Kapsayıcılı uygulamayı etkilemeden alınmasına izin verir. 
+
+- [İş ortağı Web sitesine gidin](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="cloudjumper"></a>Cloudatlatıcı
 

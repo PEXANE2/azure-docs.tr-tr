@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381909"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848519"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
 
@@ -27,13 +27,13 @@ Kullanım & öngörüleri, Azure Multi-Factor Authentication ve self servis paro
 Aşağıdaki roller kullanım ve öngörülere erişebilir:
 
 - Genel Yönetici
-- Güvenlik okuyucusu
+- Güvenlik Okuyucusu
 - Güvenlik Yöneticisi
 - Rapor okuyucu
 
 Kullanım ve Öngörüler 'e erişmek için ek lisans gerekmez. Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) lisanslama bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Kimlik doğrulama yöntemi kullanımı ve öngörülerine erişmek için:
 
@@ -65,7 +65,7 @@ Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verile
 
 Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
 
-- Name
+- Adı
 - Kullanıcı adı
 - Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
 - Etkin durum (tümü, etkin, etkin değil)
@@ -80,7 +80,7 @@ Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntıların
 
 Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
 
-- Name
+- Adı
 - Kullanıcı adı
 - Özellik (tümü, kayıt, sıfırlama)
 - Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)

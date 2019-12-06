@@ -2,27 +2,24 @@
 title: Azure Active Directory Graph API | Microsoft Docs
 description: Azure AD Graph API için bir genel bakış ve hızlı başlangıç kılavuzu, Azure AD 'ye REST API uç noktalar aracılığıyla programlı erişim sağlar.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c1b5a3600c48dc548561df3cd2f955347a7e64
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c74c02d8a82c27c71ce01cd122082010487b453e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533028"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845051"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API'si
 
@@ -31,7 +28,7 @@ ms.locfileid: "74533028"
 
 Bu makale, Azure AD Graph API için geçerlidir. Microsoft Graph API ile ilgili benzer bilgiler için, bkz. [MICROSOFT Graph API 'Sini kullanma](https://docs.microsoft.com/graph/use-the-api).
 
-Azure Active Directory Graph API REST API uç noktaları aracılığıyla Azure AD 'ye programlı erişim sağlar. Uygulamalar, dizin verileri ve nesnelerinde oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemlerini gerçekleştirmek için Azure AD Graph API kullanabilir. Örneğin, Azure AD Graph API, bir kullanıcı nesnesi için aşağıdaki yaygın işlemleri destekler:
+Azure Active Directory Graph API, REST API uç noktaları üzerinden Azure AD’ye program aracılığıyla erişim sağlar. Uygulamalar, dizin verileri ve nesnelerinde oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemlerini gerçekleştirmek için Azure AD Graph API kullanabilir. Örneğin, Azure AD Graph API, bir kullanıcı nesnesi için aşağıdaki yaygın işlemleri destekler:
 
 * Dizinde yeni Kullanıcı oluşturma
 * Kullanıcının grupları gibi ayrıntılı özelliklerini alın

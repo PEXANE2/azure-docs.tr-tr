@@ -4,17 +4,17 @@ description: Bu makalede, ek Öngörüler ve yönetim sağlamak için iş durumu
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ff455ed355d4412bcf042208d2fd1e7a2a11b965
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186772"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849743"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Otomasyon 'dan Azure Izleyici günlüklerine iş durumu ve iş akışları iletme
 
@@ -52,12 +52,12 @@ Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 Birden fazla otomasyon hesabınız veya çalışma alanınız varsa, önceki komutların çıkışında, yapılandırmanız gereken *adı* bulun ve *RESOURCEID*değerini kopyalayın.
 
-Otomasyon hesabınızın *adını* bulmanız gerekiyorsa Azure Portal Otomasyon hesabı dikey penceresinden Otomasyon hesabınızı seçin ve **Tüm ayarlar**' ı seçin. **Tüm ayarlar** dikey penceresindeki **Hesap Ayarları** altında **Özellikler**’i seçin.  **Özellikler** dikey penceresinde bu değerleri fark edebilirsiniz.<br> ![Otomasyon hesabı özellikleri](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+Otomasyon hesabınızın *adını* bulmanız gerekiyorsa **Azure Portal Otomasyon hesabı dikey penceresinden** Otomasyon hesabınızı seçin ve **Tüm ayarlar**' ı seçin. **Tüm ayarlar** dikey penceresindeki **Hesap Ayarları** altında **Özellikler**’i seçin.  **Özellikler** dikey penceresinde bu değerleri fark edebilirsiniz.<br> ![Otomasyon hesabı özellikleri](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile tümleştirmeyi ayarlama
 
 1. Bilgisayarınızda, **Başlangıç** ekranından **Windows PowerShell** ' i başlatın.
-2. Aşağıdaki PowerShell 'i çalıştırın ve değerini `[your resource id]` önceki adımdaki değerlerle ve `[resource id of the log analytics workspace]` değerlerini düzenleyin.
+2. Aşağıdaki PowerShell 'i çalıştırın ve `[your resource id]` değerini düzenleyin ve yukarıdaki adımdaki değerlerle `[resource id of the log analytics workspace]`.
 
    ```powershell-interactive
    $workspaceId = "[resource id of the log analytics workspace]"
@@ -68,7 +68,7 @@ Otomasyon hesabınızın *adını* bulmanız gerekiyorsa Azure Portal Otomasyon 
 
 Bu betiği çalıştırdıktan sonra, yeni JobLogs veya JobStreams 'nin yazıldığı Azure Izleyici günlüklerinde kayıtları görmeniz için bir saat sürebilir.
 
-Günlükleri görmek için Log Analytics günlük aramasında aşağıdaki sorguyu çalıştırın:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Günlükleri görmek için Log Analytics günlük aramasında şu sorguyu çalıştırın: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Yapılandırmayı doğrulama
 
@@ -97,17 +97,17 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki tür kayıt oluş
 | Tenant_g | Çağıran için kiracıyı tanımlayan GUID. |
 | JobId_g |Runbook işinin Kimliği olan GUID. |
 | ResultType |Runbook işinin durumudur. Olası değerler şunlardır:<br>-Yeni<br>-Oluşturuldu<br>- Başlatıldı<br>- Durduruldu<br>- Askıya alındı<br>- Başarısız oldu<br>-Tamamlandı |
-| Category | Veri türü sınıflandırması. Otomasyon için değer JobLogs olacaktır. |
-| OperationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur. |
-| Resource | Otomasyon hesabının adı |
+| Kategori | Veri türü sınıflandırması. Otomasyon için değer JobLogs olacaktır. |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur. |
+| Kaynak | Otomasyon hesabının adı |
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Azure için her zaman *Azure* tanılama. |
 | ResultDescription |Runbook iş sonucu durumunu açıklar. Olası değerler şunlardır:<br>- İş başlatıldı<br>- İş Başarısız Oldu<br>- İş Tamamlandı |
 | CorrelationId |Runbook işinin Bağıntı Kimliği olan GUID. |
-| RESOURCEID |Runbook 'un Azure Otomasyonu hesabı kaynak kimliğini belirtir. |
-| SubscriptionId | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
-| ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
-| ResourceProvider | MICROSOFT. OTOMASYON |
-| KaynakTürü | AUTOMATIONACCOUNTS |
+| ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak kimliğini belirtir. |
+| kaynak grubundaki | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
+| adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
+| ResourceProvider | MICROSOFT. Otomasyon |
+| ResourceType | AUTOMATIONACCOUNTS |
 
 
 ### <a name="job-streams"></a>İş akışları
@@ -120,23 +120,23 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki tür kayıt oluş
 | Tenant_g | Çağıran için kiracıyı tanımlayan GUID. |
 | JobId_g |Runbook işinin Kimliği olan GUID. |
 | ResultType |Runbook işinin durumudur. Olası değerler şunlardır:<br>-Devam ediyor |
-| Category | Veri türü sınıflandırması. Otomasyon için değer JobStreams olacaktır. |
-| OperationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur. |
-| Resource | Otomasyon hesabının adı |
+| Kategori | Veri türü sınıflandırması. Otomasyon için değer JobStreams olacaktır. |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur. |
+| Kaynak | Otomasyon hesabının adı |
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Azure için her zaman *Azure* tanılama. |
 | ResultDescription |Runbook’un çıktı akışını içerir. |
 | CorrelationId |Runbook işinin Bağıntı Kimliği olan GUID. |
-| RESOURCEID |Runbook 'un Azure Otomasyonu hesabı kaynak kimliğini belirtir. |
-| SubscriptionId | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
-| ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
-| ResourceProvider | MICROSOFT. OTOMASYON |
-| KaynakTürü | AUTOMATIONACCOUNTS |
+| ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak kimliğini belirtir. |
+| kaynak grubundaki | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
+| adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
+| ResourceProvider | MICROSOFT. Otomasyon |
+| ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Otomasyon günlüklerini görüntüleme
 
 Artık Otomasyon iş günlüklerinizi Azure Izleyici günlüklerine göndermeye başladığınıza göre, Azure Izleyici günlükleri içinde bu günlüklerle neler yapabileceğinizi görelim.
 
-Günlükleri görmek için aşağıdaki sorguyu çalıştırın:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Günlükleri görmek için aşağıdaki sorguyu çalıştırın: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Bir runbook işi başarısız olduğunda veya askıya aldığında e-posta gönder
 Bir runbook işiyle ilgili bir sorun olduğunda bir e-posta veya metin gönderebilme özelliği, en üst müşteri sorisidir.
@@ -144,7 +144,7 @@ Bir runbook işiyle ilgili bir sorun olduğunda bir e-posta veya metin göndereb
 Bir uyarı kuralı oluşturmak için, uyarıyı çağırması gereken runbook iş kayıtları için bir günlük araması oluşturarak başlayın. Uyarı kuralını oluşturmak ve yapılandırmak için **Uyarı** düğmesine tıklayın.
 
 1. Log Analytics çalışma alanına genel bakış sayfasında **günlükleri görüntüle**' ye tıklayın.
-2. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`Ayrıca, şunu kullanarak runbook adına göre gruplandırabilirsiniz:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` şunu kullanarak da RunbookName ile gruplandırabilirsiniz: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarlarsanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adı, JobLogs aramasında kaynak alanında bulunabilir.
 3. **Kural oluştur** ekranını açmak için sayfanın üst kısmındaki **+ Yeni uyarı kuralı** ' na tıklayın. Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure 'Da günlük uyarıları](../azure-monitor/platform/alerts-unified-log.md).
@@ -153,7 +153,7 @@ Bir uyarı kuralı oluşturmak için, uyarıyı çağırması gereken runbook i�
 Hatalarda uyarı verme işleminin yanı sıra, bir runbook işinin Sonlandırılmamış bir hata olduğunu fark edebilirsiniz. Bu durumlarda, PowerShell bir hata akışı üretir, ancak Sonlandırıcı olmayan hatalar işinizin askıya alınmasına veya başarısız olmasına neden olmaz.
 
 1. Log Analytics çalışma alanınızda **Günlükler**' e tıklayın.
-2. Sorgu alanına yazın `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` ve ardından **Ara** düğmesine tıklayın.
+2. Sorgu alanına `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` yazın ve ardından **Ara** düğmesine tıklayın.
 
 ### <a name="view-job-streams-for-a-job"></a>İş akışlarını görüntüleme
 Bir iş hata ayıklaması yaparken iş akışlarına da bakmak isteyebilirsiniz. Aşağıdaki sorgu, GUID 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 ile tek bir işin tüm akışlarını gösterir:

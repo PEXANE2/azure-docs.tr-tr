@@ -1,18 +1,18 @@
 ---
 title: Azure Işlevleriyle Azure Cosmos DB değişiklik akışını kullanma
-description: Azure Işlevleriyle Azure Cosmos DB değişiklik akışını kullanın
+description: Azure Cosmos DB değişiklik akışına bağlanmak için Azure Işlevleri 'ni kullanın. Daha sonra her yeni olayda tetiklenen reaktif Azure işlevleri oluşturabilirsiniz.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 95fec1ef57c1d70ea484de9ad49b3410ed8594a4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 215ecc1e392f8e7051173fb6f589fb940c26f17d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757063"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872256"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri ile sunucusuz olay tabanlı mimariler
 
@@ -52,6 +52,6 @@ Bulutta canlı senaryoları test etmek isterseniz, kredi kartı veya Azure abone
 
 * [Değişiklik akışına genel bakış](change-feed.md)
 * [Değişiklik akışını okuma yolları](read-change-feed.md)
-* [Değişiklik akışı işlemci kitaplığını kullanma](change-feed-processor.md)
+* [Kullanarak değişiklik akışı işlemci kitaplığı](change-feed-processor.md)
 * [Değişiklik akışı işlemci kitaplığıyla çalışma](change-feed-processor.md)
 * [Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama](serverless-computing-database.md)

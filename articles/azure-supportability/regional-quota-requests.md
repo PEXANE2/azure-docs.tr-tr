@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531513"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850015"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>Standart kota: bölgesel vCPU sınırı artışı 
 
-Kaynak Yöneticisi, sanal makineler için iki tür vCPU kotasını destekler. **Kullandıkça Öde VM 'leri** ve **ayrılmış VM örnekleri** standart kotayı kullanır. **Düşük öncelikli VM 'Ler** düşük öncelikli kotayı kullanır. 
+Kaynak Yöneticisi, sanal makineler için iki tür vCPU kotasını destekler. **Kullandıkça Öde VM 'leri** ve **ayrılmış VM örnekleri** standart kotayı kullanır. **Spot VM 'Ler** spot kota kullanır. 
 
 Kullandıkça öde ve ayrılmış VM örnekleri için standart vCPU kotası, her bölgedeki her bir abonelik için iki katmanda zorlanır.
  
@@ -26,7 +26,7 @@ Yeni bir abonelik oluşturulduğunda, varsayılan toplam bölgesel sanal CPU 'La
 
 [Sanal makine vCPU kotaları sayfasında](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) ve [Azure aboneliği ve hizmet limitleri](https://aka.ms/quotalimits) sayfasında standart vCPU kotaları hakkında daha fazla bilgi edinin.
 
-**Düşük öncelıklı VM vCPU sınırlarını artırma** hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+**Spot VM vCPU sınırlarını** [burada](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)artırma hakkında daha fazla bilgi edinin.
 
 **Yardım + Destek** dikey penceresinde veya portalda **kullanımlar + kota** dikey penceresinde **Standart VM toplam bölgesel vCPU sınırına** bir artış isteğinde bulunabilir.
 
@@ -36,7 +36,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
 1. https://portal.azure.com, **Yardım + Destek**' i seçin.
 
-![Yardım ve destek](./media/resource-manager-core-quotas-request/helpsupport.png)
+![Yardım + Destek](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  **Yeni destek isteği**’ni seçin. 
 
@@ -52,7 +52,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
    
 5. **Kota türü** açılan kutusunda **diğer istekleri** seçin.
 
-![Kota türü](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+![Kota Türü](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
 6. **Ayrıntılar** bölmesinde, isteğinizi işleme ve servis talebi oluşturmaya devam etme hakkında daha fazla bilgi için aşağıdaki örneğe göre ek bilgiler sağlayın. 
     1.  **Dağıtım modeli** : ' Kaynak Yöneticisi ' belirtin
@@ -83,7 +83,7 @@ Azure 'un ' kullanım + kota ' dikey penceresi aracılığıyla Azure portal kul
 
 5. **Kota türü** açılan kutusunda **diğer istekleri** seçin.
 
-![Kota türü](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+![Kota Türü](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
 6. **Ayrıntılar** bölmesinde, isteğinizi işleme ve servis talebi oluşturmaya devam etme hakkında daha fazla bilgi için aşağıdaki örneğe göre ek bilgiler sağlayın. 
     1.  **Dağıtım modeli** : ' Kaynak Yöneticisi ' belirtin

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için SQL sorgu işleçleri
-description: Azure Cosmos DB için SQL işleçleri hakkında bilgi edinin.
+description: Azure Cosmos DB tarafından desteklenen eşitlik, karşılaştırma ve mantıksal işleçler gibi SQL işleçleri hakkında bilgi edinin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003376"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870947"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
 
@@ -23,17 +23,17 @@ Aşağıdaki tabloda, her iki JSON türünden SQL API eşitlik karşılaştırma
 
 | **OP** | **Tanımsız** | **Null** | **Boole değeri** | **Sayı** | **dize** | **Nesne** | **Dizi** |
 |---|---|---|---|---|---|---|---|
-| **Tanımsız** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı |
-| **Null** | Tanımlanmadı | **Tamam** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı |
-| **Boole değeri** | Tanımlanmadı | Tanımlanmadı | **Tamam** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı |
-| **Sayı** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | **Tamam** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı |
-| **dize** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | **Tamam** | Tanımlanmadı | Tanımlanmadı |
-| **Nesne** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | **Tamam** | Tanımlanmadı |
-| **Dizi** | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | Tanımlanmadı | **Tamam** |
+| **Tanımsız** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Null** | Undefined | **Tamam** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Boole değeri** | Undefined | Undefined | **Tamam** | Undefined | Undefined | Undefined | Undefined |
+| **Sayı** | Undefined | Undefined | Undefined | **Tamam** | Undefined | Undefined | Undefined |
+| **dize** | Undefined | Undefined | Undefined | Undefined | **Tamam** | Undefined | Undefined |
+| **Nesne** | Undefined | Undefined | Undefined | Undefined | Undefined | **Tamam** | Undefined |
+| **Dizi** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Tamam** |
 
-`>` `Undefined`, ,,`>=`Ve gibikarşılaştırmaişleçleriiçin,türlerarasındaveyaikinesneveyadiziarasındakarşılaştırmaüretir.`<=` `!=` `<`  
+`>`, `>=`, `!=`, `<`ve `<=`gibi karşılaştırma işleçleri için, türler arasında veya iki nesne veya dizi arasında karşılaştırma `Undefined`üretir.  
 
-Skaler ifadenin sonucu ise `Undefined`, eşit `true`olmadığı `Undefined` için öğe sonuca dahil değildir.
+Skaler ifadenin sonucu `Undefined`, `Undefined` `true`eşit olmadığı için öğe sonuca dahil değildir.
 
 ## <a name="logical-and-or-and-not-operators"></a>Mantıksal (AND, OR ve NOT) işleçleri
 
@@ -41,38 +41,38 @@ Mantıksal işleçler Boole değerleri üzerinde çalışır. Aşağıdaki tablo
 
 **OR işleci**
 
-| OR | True | False | Tanımlanmadı |
+| VEYA | Doğru | Yanlış | Undefined |
 | --- | --- | --- | --- |
-| True |True |True |True |
-| False |True |False |Tanımlanmadı |
-| Tanımlanmadı |True |Tanımlanmadı |Tanımlanmadı |
+| Doğru |Doğru |Doğru |Doğru |
+| Yanlış |Doğru |Yanlış |Undefined |
+| Undefined |Doğru |Undefined |Undefined |
 
 **AND işleci**
 
-| VE | True | False | Tanımlanmadı |
+| VE | Doğru | Yanlış | Undefined |
 | --- | --- | --- | --- |
-| True |True |False |Tanımlanmadı |
-| False |False |False |False |
-| Tanımlanmadı |Tanımlanmadı |False |Tanımlanmadı |
+| Doğru |Doğru |Yanlış |Undefined |
+| Yanlış |Yanlış |Yanlış |Yanlış |
+| Undefined |Undefined |Yanlış |Undefined |
 
 **NOT işleci**
 
 | DEĞİL |  |
 | --- | --- |
-| True |False |
-| False |True |
-| Tanımlanmadı |Tanımlanmadı |
+| Doğru |Yanlış |
+| Yanlış |Doğru |
+| Undefined |Undefined |
 
 
 ## <a name="-operator"></a>* işleci
 
-\* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında yansıtılan tek alan olması gerekir. Benzer `SELECT * FROM Families f` bir sorgu geçerli, `SELECT *, f.id FROM Families f` ancak `SELECT VALUE * FROM Families f` geçerli değil.
+\* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında yansıtılan tek alan olması gerekir. `SELECT * FROM Families f` gibi bir sorgu geçerli, ancak `SELECT VALUE * FROM Families f` ve `SELECT *, f.id FROM Families f` geçerli değil.
 
-## <a name="-and--operators"></a>? ve?? işletmenlerinin
+## <a name="-and--operators"></a>? ve?? işleçler
 
 C# Ve JavaScript gibi programlama dillerinde olduğu gibi, Koşullu ifadeler oluşturmak için üçlü (?) ve birleşim (??) işleçlerini kullanabilirsiniz. 
 
-Kullanabilirsiniz. anında yeni JSON özellikleri oluşturmaya yönelik operatör. Örneğin, aşağıdaki sorgu, sınıf düzeylerini veya `elementary` `other`içine sınıflandırır:
+Kullanabilirsiniz. anında yeni JSON özellikleri oluşturmaya yönelik operatör. Örneğin, aşağıdaki sorgu, sınıf düzeylerini `elementary` veya `other`sınıflandırır:
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
@@ -88,7 +88,7 @@ Ayrıca, çağrılarını iç içe geçirebilirsiniz. işlecini, aşağıdaki so
 
 Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaştırılan türler farklıysa işleç öğeleri dışlar.
 
-??? yarı yapılandırılmış veya karma tür verilere göre sorgulama yaparken bir öğedeki özelliği etkin bir şekilde denetlemek için işleç. Örneğin, aşağıdaki sorgu varsa döndürür `lastName` `lastName` veya `surname` yoksa.
+??? yarı yapılandırılmış veya karma tür verilere göre sorgulama yaparken bir öğedeki özelliği etkin bir şekilde denetlemek için işleç. Örneğin, aşağıdaki sorgu varsa `lastName` döndürür veya `lastName` yoksa `surname`.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

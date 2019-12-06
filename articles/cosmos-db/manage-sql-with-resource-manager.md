@@ -1,42 +1,56 @@
 ---
-title: Azure Resource Manager şablonları kullanarak Azure Cosmos DB oluşturma ve yönetme
+title: Azure Resource Manager şablonlarla Azure Cosmos DB oluşturma ve yönetme
 description: SQL (Core) API için Azure Cosmos DB oluşturmak ve yapılandırmak üzere Azure Resource Manager şablonları kullanma
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 0cb6e80bafca3bb0bfc339552facae5bd16aced4
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 62c04fed03ad2346d0f548a4a8028f2d7d6b3486
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960540"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850474"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB SQL (çekirdek) API kaynaklarını yönetme
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla Azure Cosmos DB SQL (çekirdek) API kaynaklarını yönetme
 
-Bu makalede, Azure Resource Manager şablonları kullanarak Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmek için farklı işlemlerin nasıl gerçekleştirileceği açıklanır. Bu makalede yalnızca SQL API hesapları için örnekler bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [tablo](manage-table-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'siyle Azure Resource Manager şablonları kullanma.
+Bu makalede, Azure Cosmos DB hesaplarınızın, veritabanlarının ve kapsayıcılarınızın yönetimini otomatik hale getirmeye yardımcı olmak için Azure Resource Manager şablonlarını nasıl kullanacağınızı öğreneceksiniz.
 
-MongoDB, Gremlin, Cassandra ve Tablo API'si için Cosmos DB hesapları, veritabanlarını ve kapsayıcıları oluşturma ve yönetme.
+Bu makalede yalnızca SQL API hesapları için Azure Resource Manager şablon örnekleri gösterilmektedir. [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)ve [tablo](manage-table-with-resource-manager.md) API 'leri için şablon örnekleri de bulabilirsiniz.
 
-## Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma<a id="create-resource"></a>
+<a id="create-resource"></a>
 
-Azure Resource Manager şablonu kullanarak Azure Cosmos DB kaynakları oluşturun. Bu şablon, veritabanı düzeyinde 400 RU/sn aktarım hızını paylaşan iki kapsayıcıyla bir Azure Cosmos hesabı ve adanmış 400 RU/sn aktarım hızı ile tek bir kapsayıcı oluşturur. Şablonu kopyalayın ve aşağıda gösterildiği gibi dağıtın veya [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) ' ni ziyaret edin ve Azure Portal dağıtın. Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
+## <a name="create-an-azure-cosmos-account-database-and-container"></a>Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma
 
-> [!NOTE]
+Aşağıdaki Azure Resource Manager şablonu ile bir Azure Cosmos hesabı oluşturur:
+
+* 400 (RU/sn) aktarım hızını veritabanı düzeyinde paylaşan iki kapsayıcı.
+* Adanmış 400 RU/sn aktarım hızı içeren bir kapsayıcı.
+
+Azure Cosmos DB kaynaklarını oluşturmak için aşağıdaki örnek şablonu kopyalayın ve [PowerShell](#deploy-via-powershell) veya [Azure CLI](#deploy-via-azure-cli)aracılığıyla açıklandığı şekilde dağıtın.
+
+* İsteğe bağlı olarak, [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) ' ni ziyaret edebilir ve şablonu Azure Portal dağıtabilirsiniz.
+* Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
+
+> [!IMPORTANT]
 >
-> - Azure Cosmos hesabına eş zamanlı olarak konum ekleyemez veya bunları kaldıramaz ve diğer özellikleri değiştirebilirsiniz. Bunların ayrı işlemler olarak yapılması gerekir.
-> - Hesap adları küçük ve 44 ya da daha az karakter olmalıdır.
-> - RU/s 'yi güncelleştirmek için, şablonu güncelleştirilmiş işleme özelliği değerleriyle yeniden gönderin.
+> * Azure Cosmos hesabına konum eklediğinizde veya kaldırdığınızda, diğer özellikleri aynı anda değiştiremezsiniz. Bu işlemlerin ayrı olarak yapılması gerekir.
+> * Hesap adları, tümü küçük harfle 44 karakter ile sınırlıdır.
+> * Verimlilik değerlerini değiştirmek için, şablonu güncelleştirilmiş RU/s ile yeniden gönderin.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 
 > [!NOTE]
-> Büyük bölüm anahtarı olan bir kapsayıcı oluşturmak için, önceki şablondaki `partitionKey` nesnesine `"version":2` özelliğini ekleyin.
+> Büyük bölüm anahtarı olan bir kapsayıcı oluşturmak için, önceki şablonu `partitionKey` nesnesine `"version":2` özelliğini içerecek şekilde değiştirin.
 
 ### <a name="deploy-via-powershell"></a>PowerShell aracılığıyla dağıtma
 
-PowerShell kullanarak Azure Resource Manager şablonunu dağıtmak için betiği **kopyalayın** ve Azure Cloud Shell açmak için **dene** ' yi seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+Azure Resource Manager şablonunu dağıtmak için PowerShell 'i kullanmak için:
+
+1. Betiği **kopyalayın** .
+2. Azure Cloud Shell açmak için **deneyin** ' i seçin.
+3. Azure Cloud Shell penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
 ```azurepowershell-interactive
 
@@ -70,11 +84,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-Azure Cloud Shell yerine yerel olarak yüklü bir PowerShell sürümü kullanmayı seçerseniz, Azure PowerShell modülünü [yüklemelisiniz](/powershell/azure/install-az-ps) . Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın.
+Şablonu, Azure Cloud Shell yerine yerel olarak yüklü bir PowerShell sürümü ile dağıtmayı tercih edebilirsiniz. [Azure PowerShell modülünü yüklemeniz](/powershell/azure/install-az-ps)gerekir. Gerekli sürümü bulmak için `Get-Module -ListAvailable Az` çalıştırın.
 
 ### <a name="deploy-via-azure-cli"></a>Azure CLı aracılığıyla dağıtma
 
-Azure CLı kullanarak Azure Resource Manager şablonunu dağıtmak için, Azure Cloud Shell açmak üzere **deneyin** ' i seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+Azure Resource Manager şablonunu dağıtmak için Azure CLı 'yi kullanmak için:
+
+1. Betiği **kopyalayın** .
+2. Azure Cloud Shell açmak için **deneyin** ' i seçin.
+3. Azure Cloud Shell penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -105,17 +123,28 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` komutu, yeni oluşturulan Azure Cosmos hesabını, sağlandıktan sonra gösterir. CloudShell kullanmak yerine yerel olarak yüklenmiş bir Azure CLı sürümü kullanmayı seçerseniz, bkz. [Azure komut satırı arabirimi (CLI)](/cli/azure/) makalesi.
+`az cosmosdb show` komutu, yeni oluşturulan Azure Cosmos hesabını sağlandıktan sonra gösterir. Şablonu, Azure Cloud Shell bunun yerine yerel olarak yüklü bir Azure CLı sürümü ile dağıtmayı seçebilirsiniz. Daha fazla bilgi için bkz. [Azure komut satırı arabirimi (CLI)](/cli/azure/) makalesi.
 
-## Sunucu tarafı işlevleriyle Azure Cosmos DB kapsayıcısı oluşturma<a id="create-sproc"></a>
+<a id="create-sproc"></a>
 
-Bir Azure Resource Manager şablonu kullanarak saklı yordam, tetikleyici ve Kullanıcı tanımlı işlev ile Azure Cosmos DB kapsayıcısı oluşturun. Şablonu kopyalayın ve aşağıda gösterildiği gibi dağıtın veya [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) ' ni ziyaret edin ve Azure Portal dağıtın. Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
+## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>Sunucu tarafı işlevleriyle Azure Cosmos DB kapsayıcısı oluşturma
+
+Saklı yordam, tetikleyici ve Kullanıcı tanımlı işlev içeren bir Azure Cosmos DB kapsayıcısı oluşturmak için Azure Resource Manager şablonu kullanabilirsiniz.
+
+Aşağıdaki örnek şablonu kopyalayın ve [PowerShell](#deploy-with-powershell) veya [Azure CLI](#deploy-with-azure-cli)ile açıklandığı şekilde dağıtın.
+
+* İsteğe bağlı olarak, [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) ' ni ziyaret edebilir ve şablonu Azure Portal dağıtabilirsiniz.
+* Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
 
 [!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
 
-### <a name="deploy-stored-procedure-template-via-powershell"></a>Saklı yordam şablonunu PowerShell aracılığıyla dağıtma
+### <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 
-PowerShell kullanarak Kaynak Yöneticisi şablonunu dağıtmak için betiği **kopyalayın** ve Azure Cloud Shell açmak için **dene** ' yi seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+Azure Resource Manager şablonunu dağıtmak için PowerShell 'i kullanmak için:
+
+1. Betiği **kopyalayın** .
+1. Azure Cloud Shell açmak için **deneyin** ' i seçin.
+1. Azure Cloud Shell penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
 ```azurepowershell-interactive
 
@@ -141,11 +170,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-Azure Cloud Shell yerine yerel olarak yüklü bir PowerShell sürümü kullanmayı seçerseniz, Azure PowerShell modülünü [yüklemelisiniz](/powershell/azure/install-az-ps) . Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın.
+Şablonu, Azure Cloud Shell yerine yerel olarak yüklü bir PowerShell sürümü ile dağıtmayı tercih edebilirsiniz. [Azure PowerShell modülünü yüklemeniz](/powershell/azure/install-az-ps)gerekir. Gerekli sürümü bulmak için `Get-Module -ListAvailable Az` çalıştırın.
 
-### <a name="deploy-stored-procedure-template-via-azure-cli"></a>Azure CLı ile saklı yordam şablonu dağıtma
+### <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
 
-Azure CLı kullanarak Azure Resource Manager şablonunu dağıtmak için, Azure Cloud Shell açmak üzere **deneyin** ' i seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+Azure Resource Manager şablonunu dağıtmak için Azure CLı 'yi kullanmak için:
+
+1. Betiği **kopyalayın** .
+2. Azure Cloud Shell açmak için **deneyin** ' i seçin.
+3. Azure Cloud Shell penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -165,11 +198,11 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı ek kaynaklar aşağıda verilmiştir:
+Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
-- [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
-- [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Ortak Azure Resource Manager Dağıtım hatalarını giderme](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
+* [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Ortak Azure Resource Manager Dağıtım hatalarını giderme](../azure-resource-manager/resource-manager-common-deployment-errors.md)

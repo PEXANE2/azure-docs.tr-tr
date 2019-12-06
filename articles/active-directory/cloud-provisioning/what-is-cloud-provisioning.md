@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88f6f344c77109ee01cd6b0332138518f70270d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793789"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868465"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama nedir?
 Azure AD Connect bulut sağlama, kullanıcıların, grupların ve kişilerin Azure AD 'ye eşitlenmesi için karma kimlik hedeflerinizi karşılamak ve gerçekleştirmek üzere tasarlanan yeni bir Microsoft aracısıdır.  Azure AD Connect eşitleme ' de birlikte kullanılabilir ve aşağıdaki avantajları sağlar:
@@ -59,8 +59,9 @@ Aşağıdaki tabloda Azure AD Connect ve Azure AD Connect bulut sağlama arasın
 | Öznitelik kaldırma işleminin AD'den Azure AD'ye akışına izin ver |● |● |
 | Öznitelik akışları için gelişmiş özelleştirmeye izin ver |● | |
 | Geri yazma desteği (parolalar, cihazlar, gruplar) |● | |
+| Azure AD Domain Services desteği|● | |
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
 - [Sağlama nedir?](what-is-provisioning.md)
-- [Azure AD Connect bulut sağlama nedir?](what-is-cloud-provisioning.md)
+- [Bulut sağlamasını yükler](how-to-install.md)

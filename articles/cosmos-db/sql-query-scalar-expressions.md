@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB SQL sorgularında skaler ifadeler
-description: Azure Cosmos DB için skalar ifade SQL sözdizimi hakkında bilgi edinin.
+description: Azure Cosmos DB için skalar ifade SQL sözdizimi hakkında bilgi edinin. Bu makalede, işleçler kullanılarak skalar ifadelerin karmaşık ifadelerle nasıl birleştirileceğini de açıklanmaktadır.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003540"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870743"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL sorgularında skaler ifadeler
 
@@ -63,7 +63,7 @@ ms.locfileid: "71003540"
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Bir dizinin diziniyle `property_name` `array_index` birlikte Name veya Array öğesi olan bir özelliğin değerini temsil eder. Özelliği/dizi dizini mevcut değil veya özellik/dizi dizininden başvurulan bir değeri bir nesne/dizisi olmayan ve ardından ifadeyi tanımlanmamış değerini hesaplar.  
+   Bir dizinin dizin `array_index` olan ad `property_name` veya dizi öğesiyle özelliğin değerini temsil eder. Özelliği/dizi dizini mevcut değil veya özellik/dizi dizininden başvurulan bir değeri bir nesne/dizisi olmayan ve ardından ifadeyi tanımlanmamış değerini hesaplar.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -111,7 +111,7 @@ ms.locfileid: "71003540"
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [{
@@ -126,7 +126,7 @@ Aşağıdaki sorguda, skaler ifadenin sonucu bir Boolean değer:
     FROM Families f
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [

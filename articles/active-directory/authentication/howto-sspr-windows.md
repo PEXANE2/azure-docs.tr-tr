@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381240"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847295"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
@@ -50,7 +50,7 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 - Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
 - **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
 - Ağ proxy 'si gereksinimleri
-   - Windows 10 cihazları 
+   - Windows 10 cihazlar 
        - `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com` bağlantı noktası 443
        - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
 - En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:

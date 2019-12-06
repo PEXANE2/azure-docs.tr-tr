@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704286"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848909"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir (Önizleme)
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
 Azure Active Directory Domain Services (Azure AD DS) güvenlik denetimleri, Azure 'un hedeflenen kaynaklara yönelik güvenlik olaylarının akışını sağlar. Bu kaynaklar Azure Storage, Azure Log Analytics çalışma alanları veya Azure Olay Hub 'ı içerir. Güvenlik denetim olaylarını etkinleştirdikten sonra Azure AD DS, seçilen kategorinin tüm denetlenen olaylarını hedeflenen kaynağa gönderir. Olayları Azure depolama 'ya arşivleyebilir ve olayları Azure Event Hubs kullanarak güvenlik bilgileri ve olay yönetimi (ya da eşdeğeri) yazılımlarına kaydedebilir ya da kendi analizinizi yapabilir ve Azure portal Azure Log Analytics çalışma alanlarını kullanabilirsiniz.
 
@@ -83,7 +83,7 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aadds.contoso.com*gibi yönetilen etki alanınızı seçin.
-1. Azure AD DS penceresinde, sol taraftaki **Tanılama ayarları (Önizleme)** öğesini seçin.
+1. Azure AD DS penceresinde, sol taraftaki **Tanılama ayarları** ' nı seçin.
 1. Hiçbir Tanılama varsayılan olarak yapılandırılmaz. Başlamak için **Tanılama ayarı Ekle**' yi seçin.
 
     ![Azure AD Domain Services için bir tanılama ayarı ekleyin](./media/security-audit-events/add-diagnostic-settings.png)
@@ -175,7 +175,7 @@ Log analitik çalışma alanları, Azure Izleyici ve kusto sorgu dilini kullanar
 * [Azure İzleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
 * [Azure Izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md)
 * [Azure Izleyici 'de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md)
-* [Log Analytics veri panoları oluşturma ve paylaşma](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Log Analytics verilerinden pano oluşturma ve paylaşma](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Aşağıdaki örnek sorgular, Azure AD DS güvenlik denetim olaylarını çözümlemeye başlamak için kullanılabilir.
 

@@ -1,31 +1,27 @@
 ---
-title: Uygulama kayıt portalından Azure portal yeni Uygulama kayıtları deneyimine geçme
+title: Uygulama Kaydı Portalı’ndan Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
 titleSuffix: Microsoft identity platform
 description: Azure portal yeni uygulama kayıt deneyimine giriş
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/8/2019
 ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013019"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844525"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama kayıt portalından Azure portal yeni Uygulama kayıtları deneyimine geçme
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama Kaydı Portalı’ndan Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
 
 Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok iyileştirme vardır. Eski deneyim olarak adlandırılan yakınsama uygulamalarını kaydetme veya yönetme ile ilgili uygulama kayıt portalı (apps.dev.microsoft.com) deneyimiyle daha fazla bilginiz varsa, bu eğitim kılavuzu yeni deneyimi kullanmaya başlamanızı sağlar.
 

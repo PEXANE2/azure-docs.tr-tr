@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3611e61b303997a4291f4436403bb0a95e647e65
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686025"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851290"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için bellek ve eşzamanlılık sınırları
 Azure SQL veri ambarı 'nda çeşitli performans düzeylerine ve kaynak sınıflarına ayrılan bellek ve eşzamanlılık sınırlarını görüntüleyin.  
@@ -24,7 +24,7 @@ Azure SQL veri ambarı 'nda çeşitli performans düzeylerine ve kaynak sınıfl
 ## <a name="data-warehouse-capacity-settings"></a>Veri ambarı kapasite ayarları
 Aşağıdaki tablolarda, farklı performans düzeylerinde veri ambarı için maksimum kapasite gösterilmektedir. Performans düzeyini değiştirmek için bkz. [Ölçek işlem-portal](quickstart-scale-compute-portal.md).
 
-### <a name="service-levels"></a>Hizmet düzeyleri
+### <a name="service-levels"></a>Hizmet Düzeyleri
 
 Hizmet düzeyleri DW100c ile DW30000c arasında değişir.
 
@@ -34,7 +34,7 @@ Hizmet düzeyleri DW100c ile DW30000c arasında değişir.
 | DW200c            | 1             | 60                             |   120                          |
 | DW300c            | 1             | 60                             |   180                          |
 | DW400c            | 1             | 60                             |   240                          |
-| DW500c            | 1             | 60                             |   300                          |
+| DW500c'yi seçin            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -50,21 +50,21 @@ Hizmet düzeyleri DW100c ile DW30000c arasında değişir.
 En yüksek hizmet düzeyi, 60 Işlem düğümlerine ve Işlem düğümü başına bir dağıtıma sahip DW30000c. Örneğin, DW30000c adresindeki 600 TB veri ambarı, Işlem düğümü başına yaklaşık 10 TB işler.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>İş yükü grupları için eşzamanlılık en yüksek UMS
-İş yükü gruplarının kullanıma sunulmasıyla bağlantı TBD, eşzamanlılık yuvaları kavramı artık geçerli değildir.  İstek başına kaynaklar yüzde temelinde ayrılır ve iş yükü grubu tanımında belirtilir.  Ancak, eşzamanlılık yuvalarının kaldırılmasında bile, hizmet düzeyini temel alan sorgular için gereken en az miktarda kaynak vardır.  Aşağıdaki tabloda, hizmet düzeyleri genelinde sorgu başına gereken minimum kaynak miktarı ve elde edilen ilişkili eşzamanlılık tanımlanmıştır. 
+[İş yükü gruplarının](sql-data-warehouse-workload-isolation.md)tanıtılmasıyla birlikte eşzamanlılık yuvaları kavramı artık geçerli değildir.  İstek başına kaynaklar yüzde temelinde ayrılır ve iş yükü grubu tanımında belirtilir.  Ancak, eşzamanlılık yuvalarının kaldırılmasında bile, hizmet düzeyini temel alan sorgular için gereken en az miktarda kaynak vardır.  Aşağıdaki tabloda, hizmet düzeyleri genelinde sorgu başına gereken minimum kaynak miktarı ve elde edilen ilişkili eşzamanlılık tanımlanmıştır. 
 
-|Hizmet Düzeyi|En fazla eşzamanlı sorgu|REQUEST_MIN_RESOURCE_GRANT_PERCENT için desteklenen dk yüzdesi|
+|Hizmet Düzeyi|En fazla eşzamanlı sorgu|REQUEST_MIN_RESOURCE_GRANT_PERCENT için desteklenen% dk|
 |---|---|---|
 |DW100c|4|%25|
 |DW200c|8|% 12,5|
-|DW300c|12|240|
+|DW300c|12|%8|
 |DW400c|16|% 6,25|
-|DW500c|20|%5|
-|DW1000c|32|03|
-|DW1500c|32|03|
-|DW2000c|48|iki|
-|DW2500c|48|iki|
-|DW3000c|64|% 1,5|
-|DW5000c|64|% 1,5|
+|DW500c'yi seçin|20|%5|
+|DW1000c|32|%3|
+|DW1500c|32|%3|
+|DW2000c|48|%2|
+|DW2500c|48|%2|
+|DW3000c|64|%1,5|
+|DW5000c|64|%1,5|
 |DW6000c|128|% 0,75|
 |DW7500c|128|% 0,75|
 |DW10000c|128|% 0,75|
@@ -85,7 +85,7 @@ Aşağıdaki tabloda her [statik kaynak sınıfı](resource-classes-for-workload
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
 | DW300c        | 12                         |   12                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
 | DW400c        | 16                         |   16                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW500c'yi seçin        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
@@ -108,7 +108,7 @@ Aşağıdaki tabloda her [dinamik kaynak sınıfı](resource-classes-for-workloa
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
 | DW300c        | 12                         |   12                        | 1                     |  1                     |  2                    |   8                    |
 | DW400c        | 16                         |   16                        | 1                     |  1                     |  3                    |  11                    |
-| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
+| DW500c'yi seçin        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151304"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851709"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -184,13 +184,11 @@ Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirm
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihaz bağlı ve cihaz bağlantısı kesilen olaylar için sınırlamalar
 
-Cihaza bağlı ve cihaz bağlantısı kesilen olayları almak için, cihazınızın D2C bağlantısını veya C2D bağlantısını açmanız gerekir. Cihazınız MQTT protokolünü kullanıyorsa, IoT Hub C2D bağlantısını açık tutacaktır. AMQP için, [alma zaman uyumsuz API 'yi](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)çağırarak C2D bağlantısını açabilirsiniz.
+Cihaz bağlantısı durum olaylarını almak için, bir cihazın IoT Hub 'ı ile bir ya da bir ' C2D Receive Message ' işlemi yapması gerekir. Ancak, bir cihaz IoT Hub 'a bağlanmak için AMQP protokolünü kullanıyorsa, bir ' C2D Receive Message ' işlemi yapması önerildiğine, aksi takdirde bağlantı durumu bildirimlerinin birkaç dakika geciktirebileceğine unutmayın. Cihazınız MQTT protokolünü kullanıyorsa, IoT Hub C2D bağlantısını açık tutacaktır. AMQP için, C2D bağlantısını, [zaman uyumsuz API 'Yi al](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), IoT Hub C# SDK için veya [AMQP için cihaz istemcisi](iot-hub-amqp-support.md#device-client)çağırarak açabilirsiniz.
 
 Telemetri gönderiyorsanız D2C bağlantısı açıktır. 
 
-Cihaz bağlantısı titreşiyorsa, bu, cihazın en sık bağlanıp bağlantısını kestiğinde, her bir bağlantı durumunu göndermeyecektir, ancak sonunda tutarlı olan *son* bağlantı durumunu yayımlayacağız. Örneğin, cihazınız başlangıçta bağlı durumdaysa, bağlantı birkaç saniye boyunca bağlantı titreşiyor ve sonra bağlı duruma geri gelir. İlk bağlantı durumuyla bu yana yeni cihaz bağlantısı durumu olayları yayınlanmayacak. 
-
-IoT Hub kesintisi olması durumunda cihaz bağlantı durumunu kesinti durumunda olduğu anda yayımlayacağız. Bu kesinti sırasında cihazın bağlantısı kesilirse, cihaz bağlantısı kesilen olay 10 dakika içinde yayımlanır.
+Cihaz bağlantısı titreşiyorsa, bu, cihazın en sık bağlandığı ve bağlantılarının kesilmediği anlamına gelir, ancak her bir bağlantı durumunu gönderemeyecektir, ancak titreşme devam ettiğinde, düzenli bir anlık görüntüde alınan geçerli bağlantı durumunu yayımlayacağız. Aynı bağlantı durumu olayını farklı sıra numaralarıyla veya farklı bağlantı durumu olaylarıyla alma, cihaz bağlantı durumunda bir değişiklik olduğu anlamına gelir.
 
 ## <a name="tips-for-consuming-events"></a>Olayları tüketme ipuçları
 

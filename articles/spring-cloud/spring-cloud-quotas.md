@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0518b13ea228b4834a095a9bf126b131e70a5f45
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607679"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851562"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure yay bulutu için kotalar ve hizmet planları
 
@@ -25,11 +25,10 @@ Bu makalede, geçerli önizleme döneminde sunulan hizmet kotaları ayrıntılı
 
 Kaynak | Miktar
 ------- | -------
-Sanal işlemci | 4
-Bellek | 8 GBayt
-Azure yay bulut aboneliği | 1
-Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 2
-Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 50
+vCPU | 4 hizmet örneği başına
+Hafıza | hizmet örneği başına 8 GB
+Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 10
+Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 500
 Yay uygulaması başına toplam uygulama örneği sayısı | 20
 Kalıcı birimler | 10 x 50 GBayt
 

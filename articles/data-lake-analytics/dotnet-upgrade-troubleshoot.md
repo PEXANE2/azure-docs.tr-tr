@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648525"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873242"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics .NET Framework v 4.7.2 sürümüne yükseltiyor
 
@@ -39,7 +39,7 @@ U-SQL özel derlemelerinizdeki .NET kodunuzda .NET uyumluluk denetimlerini çal�
 1. Geriye doğru uyumluluk denetleyicisi 'ni .NET DLL 'lerinizin üzerinde çalıştırın
    1. [.Net taşınabilirlik Çözümleyicisi Visual Studio uzantısı](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) 'Nda Visual Studio uzantısı 'nı kullanma
    1. [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)'tan tek başına aracı indiriliyor ve kullanılıyor. Tek başına aracı çalıştırmaya ilişkin yönergeler [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md) ile ilgili değişiklikler
-   1. 4\.7.2 için. Uyumluluk Read ısrehedefleme = = true, son değişikliklerdir.
+   1. 4\.7.2 için. uyumluluk, `read isRetargeting == True` olası sorunları tanımlar.
 2. Araç, kodunuzun olası geri uyumsuzlukların herhangi biri tarafından etkilenip etkilenmeyeceğini gösteriyorsa (bazı yaygın uyumsuzluklar örnekleri aşağıda listelenmiştir), aşağıdakileri yaparak daha fazla kontrol edebilirsiniz
    1. Kodunuzun çözümlenmesi ve kodunuzun etkilenen API 'lere değer geçirirse tanımlanması
    1. Çalışma zamanı denetimi gerçekleştirin. Çalışma zamanı dağıtımı ADLA içinde yan yana yapılmaz. Bir temsilci veri kümesine karşı bir yerel .NET Framework 4.7.2 ile, VisualStudio 'in yerel çalıştırmasını kullanarak yükseltmeden önce bir çalışma zamanı denetimi yapabilirsiniz.
@@ -65,7 +65,7 @@ Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını şun
   - Önerilen eylem: TaskFactory. FromAsync ' nin doğru doğru döndürdüğünden emin olun
 
 - DataObject. GetData artık verileri UTF-8 olarak alıyor
-  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. .NET Framework 4,5 veya üstünü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar Için # #N # #N, `DataObject.GetData` HTML biçimli verileri alır , 0x7F 'den büyük karakterleri temsil eden UTF-8 olarak.
+  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. .NET Framework 4,5 veya sonraki bir sürümü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar Için # #N # #N `DataObject.GetData`, "0x7F 'den büyük karakterleri temsil eden UTF-8 olarak HTML biçimli verileri alır.
   - Etkilenen kitaplıklar: GLO
   - Önerilen eylem: alınan verilerin istediğiniz biçimde olduğundan emin olun
 

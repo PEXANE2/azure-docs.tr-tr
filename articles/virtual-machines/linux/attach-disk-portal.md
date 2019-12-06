@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279144"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851681"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,10 +33,9 @@ VM 'nize disk iliştirmadan önce şu ipuçlarını gözden geçirin:
 
 
 ## <a name="find-the-virtual-machine"></a>Sanal makineyi bul
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. Sol taraftaki menüden **sanal makineler**' e tıklayın.
-3. Listeden sanal makineyi seçin.
-4. Sanal makineler sayfasında, **temel**bileşenler ' de **diskler**' e tıklayın.
+1. VM 'yi bulmak için [Azure Portal](https://portal.azure.com/) gidin. **Sanal makineleri**arayın ve seçin.
+2. Listeden VM 'yi seçin.
+3. **Sanal makineler** sayfası kenar çubuğunda, **Ayarlar**altında **diskler**' i seçin.
    
     ![Disk ayarlarını aç](./media/attach-disk-portal/find-disk-settings.png)
 
@@ -109,7 +108,7 @@ Veri içeren mevcut bir disk kullanıyorsanız, diski bağlamak için atlayın. 
 sudo fdisk /dev/sdc
 ```
 
-Yeni bir bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil bölüm için `p` ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıktı aşağıdaki örneğe benzer olacaktır:
+Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil bölüm için `p` ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -205,7 +204,7 @@ Dosya sistemini bağlamak için `mount` kullanın. Aşağıdaki örnek */dev/sdc
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Sürücünün yeniden başlatma işleminden sonra otomatik olarak yeniden takıldığından emin olmak için, */etc/fstab* dosyasına eklenmesi gerekir. Ayrıca, */etc/fstab* içinde, yalnızca cihaz adı (örneğin, */dev/sdc1*) yerine, sürücüye başvurmak Için UUID 'Nin (evrensel olarak benzersiz tanımlayıcı) kullanılması önemle tavsiye edilir. İşletim sistemi önyükleme sırasında bir disk hatası algılarsa, UUID 'nin kullanılması, belirli bir konuma bağlanan hatalı diski önler. Daha sonra, kalan veri disklerine aynı cihaz kimlikleri atanır. Yeni sürücünün UUID 'sini bulmak için `blkid` yardımcı programını kullanın:
+Sürücünün yeniden başlatma işleminden sonra otomatik olarak yeniden takıldığından emin olmak için, */etc/fstab* dosyasına eklenmesi gerekir. Ayrıca, */etc/fstab* içinde, yalnızca cihaz adı (örneğin, */dev/sdc1*) yerine, sürücüye başvurmak Için UUID 'Nin (evrensel olarak benzersiz tanımlayıcı) kullanılması önemle tavsiye edilir. Önyükleme sırasında işletim sistemi bir disk hatası algılarsa, UUID'nin kullanılması belirlenen konuma yanlış diskin bağlanmasını önler. Bundan sonra kalan veri diskleri aynı cihaz kimliklerine atanabilir. Yeni sürücünün UUID'sini bulmak için `blkid` yardımcı programını kullanın:
 
 ```bash
 sudo -i blkid
@@ -220,7 +219,7 @@ sudo -i blkid
 ```
 
 > [!NOTE]
-> **/Etc/fstab** dosyasının yanlış düzenlenmesiyle, önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru şekilde düzenleme hakkında bilgi edinmek için dağıtımın belgelerine bakın. Ayrıca,/etc/fstab dosyasının bir yedeğinin düzenlenmeden önce oluşturulması önerilir.
+> **/Etc/fstab** dosyasının yanlış düzenlenmesiyle, önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Ayrıca,/etc/fstab dosyasının bir yedeğinin düzenlenmeden önce oluşturulması önerilir.
 
 Sonra, */etc/fstab* dosyasını bir metin düzenleyicisinde şu şekilde açın:
 

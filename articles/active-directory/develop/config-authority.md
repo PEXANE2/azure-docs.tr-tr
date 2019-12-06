@@ -3,27 +3,23 @@ title: İOS ve macOS için MSAL 'ı farklı kimlik sağlayıcıları kullanacak 
 titleSuffix: Microsoft identity platform
 description: MSAL for iOS ve MacOS ile B2C, bağımsız bulutları ve Konuk kullanıcılar gibi farklı yetkilileri nasıl kullanacağınızı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: feea11dfa8e199d4c1c01ba7ec09003233574fbe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473800"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843640"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Nasıl yapılır: iOS ve macOS için MSAL 'ı farklı kimlik sağlayıcıları kullanacak şekilde yapılandırma
 
@@ -185,7 +181,7 @@ Her bir bağımsız bulutuna farklı kapsamlar geçirmeniz gerekebilir. Hangi ka
 
 Yetkili URL 'SI `"login.microsoftonline.com/common"`olarak ayarlandığında, Kullanıcı kendi giriş kiracısında oturum açacaktır. Ancak bazı uygulamaların kullanıcı farklı bir kiracıda oturum açması gerekebilir ve bazı uygulamalar yalnızca tek bir kiracı ile çalışır.
 
-Kullanıcıyı belirli bir kiracıda imzalamak için `MSALPublicClientApplication` belirli bir yetkiliyle yapılandırın. Örneğin:
+Kullanıcıyı belirli bir kiracıda imzalamak için `MSALPublicClientApplication` belirli bir yetkiliyle yapılandırın. Örnek:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

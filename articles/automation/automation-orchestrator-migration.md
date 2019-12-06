@@ -1,137 +1,137 @@
 ---
-title: Azure otomasyonuna Orchestrator'dan geçiş
-description: System Center Orchestrator'ı Azure Otomasyonu runbook'ları ve tümleştirme paketleri geçirmeyi açıklar.
+title: Orchestrator 'dan Azure Otomasyonu 'na geçiş
+description: Runbook 'ları ve Tümleştirme paketlerini System Center Orchestrator 'dan Azure Otomasyonu 'na nasıl geçirebileceğinizi açıklar.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eb5a77668cce96ef45a960908612b502f1520e25
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b34554798130d9741318e0f518c32a41f82a17e3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477598"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849675"
 ---
-# <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Azure Otomasyonu (Beta) Orchestrator'dan geçiş
-Runbook'ları [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) Azure automation'daki runbook'lar Windows PowerShell tabanlı, özellikle Orchestrator için yazılmış tümleştirme paketleri gerçekleştirilen etkinlikler temel alır.  [Grafik runbook'ları](automation-runbook-types.md#graphical-runbooks) Azure Otomasyonu'nda benzer bir görünümü Orchestrator runbook'ları için PowerShell cmdlet'leri, alt runbook'ları ve varlıkları temsil eden kendi etkinliklerle sahip.
+# <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator 'dan Azure Otomasyonu 'na geçiş (Beta)
+[System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) 'daki runbook 'Lar, Azure Otomasyonu 'ndaki runbook 'Lar Windows PowerShell 'i temel alırken Orchestrator için özel olarak yazılmış tümleştirme paketlerindeki etkinliklere dayanır.  Azure Automation 'daki [grafik runbook](automation-runbook-types.md#graphical-runbooks) 'Larında, Orchestrator Runbook 'Larına, PowerShell cmdlet 'lerini, alt runbook 'ları ve varlıkları temsil eden etkinlikleri içeren benzer bir görünüm vardır.
 
-[System Center Orchestrator geçiş Araç Seti](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) runbook'ları Orchestrator'dan Azure Otomasyonu dönüştürme yardımcı olan araçlar içerir.  Runbook'lar dönüştürme ek olarak, Windows PowerShell cmdlet'leri ile tümleştirme modülleri için runbook'ları kullanmak etkinlikleri tümleştirme paketleriyle dönüştürmelisiniz.  
+[System Center Orchestrator geçiş araç seti](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) , runbook 'ları Orchestrator 'Dan Azure Otomasyonu 'na dönüştürmeye yardımcı olacak araçlar içerir.  Runbook 'ların kendilerini dönüştürmesinin yanı sıra, Tümleştirme paketlerini runbook 'ların Windows PowerShell cmdlet 'leriyle tümleştirmede kullandığı etkinliklerle dönüştürmeniz gerekir.  
 
-Orchestrator runbook'ları Azure Otomasyonu'na ekleme dönüştürmek için temel işlemi aşağıda verilmiştir.  Bu adımların her biri, aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
+Orchestrator Runbook 'larını Azure Otomasyonu 'na dönüştürmeye yönelik temel süreç aşağıda verilmiştir.  Bu adımların her biri, aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 
-1. İndirme [System Center Orchestrator geçiş Araç Seti](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) bu makalede ele alınan modülleri ve araçları içerir.
-2. İçeri aktarma [standart etkinlikler modül](#standard-activities-module) Azure Otomasyonu ile.  Bu, dönüştürülen runbook'lar tarafından kullanılan standart Orchestrator etkinlikleri dönüştürülmüş sürümlerini içerir.
-3. İçeri aktarma [System Center Orchestrator tümleştirme modülleri](#system-center-orchestrator-integration-modules) System Center erişmek, runbook'lar tarafından kullanılan bu tümleştirme paketleri için Azure Otomasyonu ile.
-4. Özel ve üçüncü taraf tümleştirme paketleri kullanarak dönüştürme [tümleştirme paketi dönüştürücü](#integration-pack-converter) ve Azure Automation'a içeri aktarın.
-5. Orchestrator runbook'ları kullanarak dönüştürme [Runbook dönüştürücü](#runbook-converter) ve Azure Automation'da yükleyin.
-6. El ile Runbook dönüştürücü bu kaynakları dönüştürmez beri Azure Automation'da gerekli Orchestrator varlıklar oluşturun.
-7. Yapılandırma bir [karma Runbook çalışanı](#hybrid-runbook-worker) yerel kaynaklara erişen dönüştürülmüş runbook'ları çalıştırmak için yerel veri merkezinizde.
+1. Bu makalede ele alınan araçları ve modülleri içeren [System Center Orchestrator geçiş araç setini](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) indirin.
+2. [Standart etkinlikler modülünü](#standard-activities-module) Azure Otomasyonu 'na aktarın.  Bu, dönüştürülmüş runbook 'lar tarafından kullanılabilen standart Orchestrator etkinliklerinin dönüştürülmüş sürümlerini içerir.
+3. System Center 'a erişen runbook 'larınız tarafından kullanılan tümleştirme paketleri için [System Center Orchestrator tümleştirme modüllerini](#system-center-orchestrator-integration-modules) Azure Otomasyonu 'na aktarın.
+4. [Tümleştirme paketi dönüştürücüsünü](#integration-pack-converter) kullanarak özel ve üçüncü taraf tümleştirme paketlerini dönüştürün ve Azure Otomasyonu ' na aktarın.
+5. [Runbook dönüştürücüsünü](#runbook-converter) kullanarak Orchestrator Runbook 'larını dönüştürün ve Azure Otomasyonu 'nda uygulamasını yapın.
+6. Runbook Dönüştürücüsü bu kaynakları dönüştürmediğinden, gerekli Orchestrator varlıklarını Azure Otomasyonu 'nda el ile oluşturun.
+7. Yerel kaynaklara erişecek dönüştürülmüş runbook 'ları çalıştırmak için yerel veri merkezinizde [karma runbook çalışanı](#hybrid-runbook-worker) yapılandırın.
 
 ## <a name="service-management-automation"></a>Hizmet Yönetim Otomasyonu
-[Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) (SMA) depolar ve Orchestrator gibi yerel veri merkezinizde runbook'ları çalıştıran ve Azure Otomasyonu aynı tümleştirme modülleri kullanır. [Runbook dönüştürücü](#runbook-converter) SMA'daki desteklenmez ancak Orchestrator runbook'ları grafik runbook'larına dönüştürür.  Yine de yükleyebilirsiniz [standart etkinlikler modül](#standard-activities-module) ve [System Center Orchestrator tümleştirme modülleri](#system-center-orchestrator-integration-modules) içine SMA, ancak kendiniz bağlanmalısınız [runbook'larınızı yeniden](https://technet.microsoft.com/library/dn469262.aspx).
+[Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) (SMA), runbook 'ları yerel veri merkezinizde Orchestrator gibi depolar ve çalıştırır ve Azure Otomasyonu ile aynı tümleştirme modüllerini kullanır. [Runbook Dönüştürücüsü](#runbook-converter) , Orchestrator RUNBOOK 'larını SMA içinde desteklenmeyen grafik runbook 'larına dönüştürür.  [Standart etkinlikler modülünü](#standard-activities-module) ve [System Center Orchestrator tümleştirme modüllerini](#system-center-orchestrator-integration-modules) SMA 'e yüklemeye devam edebilirsiniz, ancak [runbook 'larınızı el ile yeniden yazmanız](https://technet.microsoft.com/library/dn469262.aspx)gerekir.
 
 ## <a name="hybrid-runbook-worker"></a>Karma Runbook Çalışanı
-Orchestrator runbook'ları bir veritabanı sunucusunda depolanan ve hem de yerel veri merkezinizde runbook sunucularında çalıştırın.  Azure Otomasyonu runbook'ları Azure bulutunda depolanır ve kullanarak, yerel veri merkezi çalıştırılabilir bir [karma Runbook çalışanı](automation-hybrid-runbook-worker.md).  Runbook'ları Orchestrator'dan yerel sunucuda çalıştırmak için tasarlanmış olduğundan dönüştürülen genellikle nasıl çalışacağını budur.
+Orchestrator 'daki runbook 'lar bir veritabanı sunucusunda depolanır ve hem yerel veri merkezinizde hem de runbook sunucularında çalıştırılır.  Azure Otomasyonu 'ndaki runbook 'lar Azure bulutu 'nda depolanır ve [karma runbook çalışanı](automation-hybrid-runbook-worker.md)kullanarak yerel veri merkezinizde çalıştırılabilir.  Bu, genellikle yerel sunucularda çalışacak şekilde tasarlandıklarından, Orchestrator 'dan dönüştürülen runbook 'ları çalıştıracaksınız.
 
-## <a name="integration-pack-converter"></a>Tümleştirme paketi dönüştürücü
-Tümleştirme paketi dönüştürücü kullanılarak oluşturulan tümleştirme paketleri dönüştürür [Orchestrator Integration Toolkit (OIT)](https://technet.microsoft.com/library/hh855853.aspx) tümleştirme modülleri Azure Automation'a aktarılabilirler Windows PowerShell tabanlı veya Hizmet Yönetimi Otomasyonu.  
+## <a name="integration-pack-converter"></a>Tümleştirme paketi Dönüştürücüsü
+Tümleştirme paketi dönüştürücüsü [Orchestrator Integration Toolkit (OıT)](https://technet.microsoft.com/library/hh855853.aspx) kullanılarak oluşturulan Tümleştirme paketlerini, Azure otomasyonu veya Service Management Automation içeri aktarılabilecek Windows PowerShell tabanlı modüllerle tümleştirme için dönüştürür.  
 
-Tümleştirme paketi dönüştürücü çalıştırdığınızda, bir tümleştirme paketi (.oıp) dosyasını seçmek sağlayacak bir sihirbaz ile sunulur.  Sihirbaz, tümleştirme Paketi'ndeki etkinlikler listeler ve hangi geçirilecektir seçmenizi sağlar.  Sihirbazı tamamladığınızda, her biri özgün tümleştirme paketindeki etkinlikler için karşılık gelen bir cmdlet'i içeren bir tümleştirme modülü oluşturur.
+Tümleştirme paketi dönüştürücüsünü çalıştırdığınızda, size bir tümleştirme paketi (. OIP) dosyası seçmenizi sağlayacak bir sihirbaz sunulur.  Sihirbaz daha sonra bu tümleştirme paketine dahil edilen etkinlikleri listeler ve hangilerinin geçirileceğini seçmenizi sağlar.  Sihirbazı tamamladığınızda, özgün Tümleştirme paketindeki etkinliklerin her biri için karşılık gelen bir cmdlet 'i içeren bir tümleştirme modülü oluşturur.
 
 ### <a name="parameters"></a>Parametreler
-Tümleştirme paketi bir etkinliğe ilişkin herhangi bir özelliği tümleştirme modülü karşılık gelen cmdlet parametreleri dönüştürülür.  Windows PowerShell cmdlet'leri sahip bir dizi [ortak parametreleri](https://technet.microsoft.com/library/hh847884.aspx) tüm cmdlet'leri ile kullanılabilir.  Örneğin, Verbose parametresi işleyişi hakkında ayrıntılı bilgiler çıkarmak bir cmdlet neden olur.  Hiçbir cmdlet ortak parametresi ile aynı adda bir parametre gerekebilir.  Bir etkinlik ortak parametresi ile aynı ada sahip bir özellik varsa, bu sihirbazın parametresi için başka bir ad belirtin isteyip istemediğinizi sorar.
+Tümleştirme paketindeki bir etkinliğin tüm özellikleri, tümleştirme modülündeki karşılık gelen cmdlet 'in parametrelerine dönüştürülür.  Windows PowerShell cmdlet 'leri, tüm cmdlet 'lerle kullanılabilecek bir dizi [ortak parametreye](https://technet.microsoft.com/library/hh847884.aspx) sahiptir.  Örneğin,-Verbose parametresi, bir cmdlet 'in işlem hakkındaki ayrıntılı bilgileri çıkışına neden olur.  Hiçbir cmdlet ortak parametre ile aynı ada sahip bir parametreye sahip olamaz.  Bir etkinliğin ortak parametre ile aynı ada sahip bir özelliği varsa, sihirbaz, parametre için başka bir ad sağlamanızı ister.
 
-### <a name="monitor-activities"></a>İzleme etkinlikleri
-Runbook'ları Orchestrator Başlangıç'ta izlemek bir [etkinliğini İzle](https://technet.microsoft.com/library/hh403827.aspx) ve sürekli olarak belirli bir olay tarafından çağrılacak bekleyen çalıştırın.  Tümleştirme paketi etkinlikleri tüm izleme dönüştürülmez için İzleyici runbook'ları, azure Otomasyonu desteklemez.  Bunun yerine, bir yer tutucu cmdlet etkinliğini izlemek için tümleştirme modülü oluşturulur.  Bu cmdlet için hiçbir işlevsellik olsa da, yüklenecek kullanan herhangi bir dönüştürülmüş runbook sağlar.  Bu runbook, Azure Automation'da çalıştırılacak mümkün olmayacaktır ancak bunu değiştirebilmek yüklenebilir.
+### <a name="monitor-activities"></a>Etkinlikleri izleme
+Orchestrator 'daki runbook 'ları izleyerek [izleyici etkinliğini](https://technet.microsoft.com/library/hh403827.aspx) başlatın ve belirli bir olay tarafından çağrılması için sürekli olarak bekletmeyi çalıştırın.  Azure Otomasyonu runbook 'ları izlemeyi desteklemediğinden, tümleştirme paketindeki tüm izleme etkinlikleri dönüştürülmez.  Bunun yerine, izleme etkinliğinin tümleştirme modülünde bir yer tutucu cmdlet 'i oluşturulur.  Bu cmdlet 'in bir işlevi yoktur, ancak onu kullanan dönüştürülmüş runbook 'un yüklenmesini sağlar.  Bu runbook, Azure Otomasyonu 'nda çalıştırılamaz, ancak bunu değiştirebilmeniz için yüklenebilmeyecektir.
 
 ### <a name="integration-packs-that-cannot-be-converted"></a>Dönüştürülemeyen tümleştirme paketleri
-OIT ile oluşturulmamış tümleştirme paketleri ile tümleştirme paketi dönüştürücü dönüştürülemez. Bu aracı şu anda dönüştürülemeyen Microsoft tarafından sağlanan bazı tümleştirme paketleri vardır.  Dönüştürülen bu tümleştirme paketleri sürümleri olmuştur [indirme için sağlanan](#system-center-orchestrator-integration-modules) böylece Azure Automation veya Service Management Automation yüklenebilir.
+OıT ile oluşturulmamış tümleştirme paketleri, tümleştirme paketi dönüştürücüsüyle dönüştürülemez. Microsoft tarafından sunulan ve şu anda bu araçla dönüştürülemediği bazı tümleştirme paketleri de mevcuttur.  Bu tümleştirme paketlerinin dönüştürülmüş sürümleri, Azure Otomasyonu 'nda veya Service Management Automation yüklenebilmeleri [için yüklenmek üzere sağlanmış](#system-center-orchestrator-integration-modules) .
 
-## <a name="standard-activities-module"></a>Standart etkinlikler Modülü
-Orchestrator içeren bir dizi [standart etkinlikler](https://technet.microsoft.com/library/hh403832.aspx) bir tümleştirme paketinde bulunmayan, ancak birçok runbook'lar tarafından kullanılır.  Standart etkinlikler, bu etkinliklerin her biri için eşdeğer bir cmdlet'i içeren bir tümleştirme modülü modülüdür.  Standart etkinlik kullanan dönüştürülmüş runbook'ların içe aktarmadan önce Azure Otomasyonu'nda Bu tümleştirme modülü yüklemeniz gerekir.
+## <a name="standard-activities-module"></a>Standart etkinlikler modülü
+Orchestrator, bir tümleştirme paketine dahil olmayan ancak birçok runbook tarafından kullanılan bir dizi [Standart etkinlik](https://technet.microsoft.com/library/hh403832.aspx) içerir.  Standart etkinlikler modülü, bu etkinliklerin her biri için bir cmdlet eşdeğerini içeren bir tümleştirme modülüdür.  Standart bir etkinlik kullanan dönüştürülmüş runbook 'ları içeri aktarmadan önce Bu tümleştirme modülünü Azure Otomasyonu 'nda yüklemelisiniz.
 
-Dönüştürülen runbook'ları hizmetinin yanı sıra, standart etkinlikler modülündeki cmdlet'ler Orchestrator ile tanıdık bir kişi tarafından Azure automation'da yeni runbook'ları oluşturmak için kullanılabilir.  Standart etkinliklerin tümünü işlevselliğini cmdlet'leri ile gerçekleştirilebilir, ancak farklı bir şekilde çalışabilir.  Dönüştürülen standart etkinlikler modülündeki cmdlet'ler, ilgili etkinlikler aynı çalışma ve aynı parametreleri kullanın.  Bu, var olan Orchestrator runbook yazarı, bir Azure Otomasyonu runbook'ları geçmeyi yardımcı olabilir.
+Dönüştürülmüş runbook 'ların desteklenmesinin yanı sıra, standart etkinlikler modülündeki cmdlet 'ler, Azure Otomasyonu 'nda yeni runbook 'lar oluşturmak için Orchestrator 'ı bilen bir kişi tarafından kullanılabilir.  Tüm standart etkinliklerin işlevselliği cmdlet 'lerle gerçekleştirilese de, farklı şekilde çalışmayabilir.  Dönüştürülmüş standart etkinlikler modülündeki cmdlet 'ler ilgili etkinlikleriyle aynı şekilde çalışacaktır ve aynı parametreleri kullanacaktır.  Bu, mevcut Orchestrator Runbook Yazarı 'nın Azure Otomasyonu runbook 'larına geçişte yardımcı olabilir.
 
 ## <a name="system-center-orchestrator-integration-modules"></a>System Center Orchestrator tümleştirme modülleri
-Microsoft'un sağladığı [tümleştirme paketleri](https://technet.microsoft.com/library/hh295851.aspx) System Center bileşenleri ve diğer ürünler otomatikleştirmek için runbook'ları oluşturmak için.  Bu tümleştirme paketleri bazıları OIT üzerinde şu anda dayanır ancak şu anda bilinen sorunları nedeniyle tümleştirme modülleri dönüştürülemez.  [System Center Orchestrator tümleştirme modülleri](https://www.microsoft.com/download/details.aspx?id=49555) dönüştürülmüş Azure Automation ve Service Management Automation aktarılabilen Bu tümleştirme paketleri sürümleri içerir.  
+Microsoft, System Center bileşenlerini ve diğer ürünleri otomatikleştirmek için Runbook 'lar oluşturmak üzere [tümleştirme paketleri](https://technet.microsoft.com/library/hh295851.aspx) sağlar.  Bu tümleştirme paketlerinden bazıları şu anda OıT tabanlıdır ancak bilinen sorunlar nedeniyle şu anda tümleştirme modüllerine dönüştürülemez.  [System Center Orchestrator tümleştirme modülleri](https://www.microsoft.com/download/details.aspx?id=49555) , bu tümleştirme paketlerinin Azure otomasyonu ve Service Management Automation içeri aktarılabilecek dönüştürülmüş sürümlerini içerir.  
 
-Bu araç RTM sürümü tarafından dönüştürülebilir OIT tümleştirme paketi dönüştürücü ile temel tümleştirme paketlerinin güncelleştirilmiş sürümleri yayımlanır.  Dönüştürme etkinlikleri tümleştirme paketlerindeki OIT üzerinde temel almayan kullanarak runbook'ları size yardımcı olması için yönergeler de verilmektedir.
+Bu aracın RTM sürümü ile, tümleştirme paketi dönüştürücüsüyle dönüştürülemeyen tümleştirme paketlerinin güncelleştirilmiş sürümleri yayımlanacak.  Ayrıca, BT 'yi temel alan tümleştirme paketlerindeki etkinlikleri kullanarak runbook 'ları dönüştürmeye yardımcı olacak yönergeler de sunulacaktır.
 
-## <a name="runbook-converter"></a>Runbook dönüştürücü
-Orchestrator runbook'ları Runbook dönüştürücü dönüştürür [grafik runbook'ları](automation-runbook-types.md#graphical-runbooks) Azure Automation'a alınabilir.  
+## <a name="runbook-converter"></a>Runbook Dönüştürücüsü
+Runbook Dönüştürücüsü, Orchestrator Runbook 'larını Azure Otomasyonu 'na aktarılabilen [grafik runbook](automation-runbook-types.md#graphical-runbooks) 'larına dönüştürür.  
 
-Runbook dönüştürücü adlı bir cmdlet ile bir PowerShell modülü uygulanan **ConvertFrom-SCORunbook** dönüştürme gerçekleştiren.  Aracı yüklediğinizde, cmdlet yükleyen bir PowerShell oturumu için bir kısayol oluşturun.   
+Runbook Dönüştürücüsü, dönüştürmeyi gerçekleştiren **ConvertFrom-SCORunbook** adlı bir cmdlet 'i Içeren bir PowerShell modülü olarak uygulanır.  Aracı yüklediğinizde, cmdlet 'i yükleyen bir PowerShell oturumu için bir kısayol oluşturulur.   
 
-Orchestrator runbook dönüştürmek ve Azure Automation'a içeri aktarılması için temel işlemi aşağıda verilmiştir.  Aşağıdaki bölümlerde, aracı kullanma ve dönüştürülen runbook'larla çalışma hakkında ayrıntılı bilgi sağlayan.
+Aşağıda bir Orchestrator Runbook 'unu dönüştürmeye ve Azure Otomasyonu 'na aktarmaya yönelik temel işlem yer verilmiştir.  Aşağıdaki bölümlerde, aracı kullanımı ve dönüştürülmüş runbook 'larla çalışma hakkında daha fazla bilgi sağlanmaktadır.
 
-1. Bir veya daha fazla runbook'ları Orchestrator'dan içeri aktarın.
-2. Tümleştirme modülleri runbook'taki tüm etkinlikler için edinin.
-3. Orchestrator runbook'ları dışa aktarılan dosyada dönüştürün.
-4. Günlükleri dönüştürme doğrulamak ve tüm gerekli el ile gerçekleştirilen görevleri belirlemek için bilgileri gözden geçirin.
-5. Azure Otomasyonu runbook'ları içeri aktarma dönüştürülür.
-6. Azure Otomasyonu'nda tüm gerekli varlıkları oluşturun.
-7. Gerekli tüm etkinlikler değiştirmek için Azure Otomasyonu'nda runbook düzenleyin.
+1. Orchestrator 'dan bir veya daha fazla runbook dışarı aktarın.
+2. Runbook 'taki tüm etkinlikler için tümleştirme modüllerini edinin.
+3. İçe aktarılmış dosyadaki Orchestrator Runbook 'larını dönüştürün.
+4. Değişiklikleri doğrulamak ve gerekli tüm el ile görevleri öğrenmek için günlüklerdeki bilgileri gözden geçirin.
+5. Dönüştürülmüş runbook 'ları Azure Otomasyonu 'na aktarın.
+6. Azure Otomasyonu 'nda gerekli varlıkları oluşturun.
+7. Gerekli etkinlikleri değiştirmek için Azure Otomasyonu 'nda runbook 'u düzenleyin.
 
-### <a name="using-runbook-converter"></a>Runbook dönüştürücü kullanma
-Sözdizimi **ConvertFrom-SCORunbook** aşağıdaki gibidir:
+### <a name="using-runbook-converter"></a>Runbook dönüştürücüsünü kullanma
+**ConvertFrom-SCORunbook** için sözdizimi aşağıdaki gibidir:
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
 ```
 
-* RunbookPath - dönüştürmek için runbook'ları içeren dışarı aktarma dosyasının yolu.
-* Modül - runbook'lar etkinlikler içeren tümleştirme modülleri listesini virgülle ayrılmış.
-* OutputFolder - grafik runbook'ları oluşturmak için klasör yolu dönüştürülür.
+* RunbookPath-dönüştürülecek runbook 'ları içeren dışa aktarma dosyasının yolu.
+* Modül-runbook 'larda etkinlikleri içeren tümleştirme modüllerinin virgülle ayrılmış listesi.
+* OutputFolder-dönüştürülen grafik runbook 'ları oluşturmak için klasörün yolu.
 
-Aşağıdaki örnek komut, runbook'ları olarak adlandırılan bir dışarı aktarma dosyası dönüştürür **MyRunbooks.ois_export**.  Bu runbook'ları, Active Directory ve Data Protection Manager tümleştirme paketlerini kullanın.
+Aşağıdaki örnek komut, runbook 'ları **Myrunbook**'lar adlı bir dışarı aktarma dosyasında dönüştürür. ois_export.  Bu runbook 'lar Active Directory ve Data Protection Manager Tümleştirme paketlerini kullanır.
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
 ```
 
 ### <a name="log-files"></a>Günlük dosyaları
-Runbook dönüştürücü aşağıdaki günlük dosyalarına dönüştürülen runbook ile aynı konumda oluşturur.  Dosyalar zaten mevcutsa, ardından bunların son dönüştürme bilgileriyle üzerine yazılacak.
+Runbook Dönüştürücüsü, dönüştürülmüş runbook ile aynı konumda aşağıdaki günlük dosyalarını oluşturur.  Dosyalar zaten mevcutsa, son dönüşümdeki bilgilerle üzerine yazılır.
 
 | Dosya | İçindekiler |
 |:--- |:--- |
-| Runbook dönüştürücü - Progress.log |Ayrıntılı adımlar başarıyla dönüştürüldü her etkinlik için bilgi ve uyarı dönüştürülmedi her etkinlik için de dahil olmak üzere dönüştürme. |
-| Runbook dönüştürücü - Summary.log |Tüm uyarılar dahil olmak üzere son dönüştürme özeti ve dönüştürülen runbook için gerekli bir değişken oluşturma gibi gerçekleştirmeniz gereken görevler'kurmak izleyin. |
+| Runbook Dönüştürücüsü-Ilerleme. log |Dönüştürmenin ayrıntılı adımları, her etkinlik için bilgiler ve Dönüştürülmeyen her etkinlik için uyarı olarak başarıyla dönüştürüldü. |
+| Runbook Dönüştürücüsü-Özet. log |Tüm uyarılar dahil olmak üzere son dönüştürmenin Özeti ve dönüştürülen runbook için gereken bir değişken oluşturmak gibi gerçekleştirmeniz gereken görevleri takip edin. |
 
-### <a name="exporting-runbooks-from-orchestrator"></a>Runbook'ları Orchestrator'dan içeri aktarma
-Bir dışarı aktarma dosyasından bir veya daha fazla runbook'ları içeren Orchestrator Runbook dönüştürücü çalışır.  Dışa aktarma dosyasında Orchestrator her runbook için karşılık gelen bir Azure Otomasyonu runbook'u oluşturun.  
+### <a name="exporting-runbooks-from-orchestrator"></a>Runbook 'ları Orchestrator 'dan dışarı aktarma
+Runbook Dönüştürücüsü bir veya daha fazla runbook içeren bir Orchestrator 'dan dışarı aktarma dosyasıyla birlikte kullanılabilir.  Dışarı aktarma dosyasındaki her Orchestrator Runbook 'u için karşılık gelen bir Azure Otomasyonu runbook 'unu oluşturacaktır.  
 
-Orchestrator'ı bir runbook'u dışarı aktarmak, Runbook Designer'da runbook adına sağ tıklayın ve seçin **dışarı**.  Bir klasördeki tüm runbook'lar dışarı aktarmak için seçin ve klasör adına sağ tıklayın **dışarı**.
+Bir runbook 'u Orchestrator 'dan dışarı aktarmak için Runbook Designer 'de runbook 'un adına sağ tıklayın ve **dışarı aktar**' ı seçin.  Bir klasördeki tüm runbook 'ları dışarı aktarmak için klasörün adına sağ tıklayın ve **dışarı aktar**' ı seçin.
 
 ### <a name="runbook-activities"></a>Runbook etkinlikleri
-Runbook dönüştürücü Azure automation'da karşılık gelen bir etkinliği Orchestrator runbook'taki her etkinlik dönüştürür.  Dönüştürülemeyen söz konusu etkinlikler için uyarı metni runbook'ta yer tutucu etkinlik oluşturulur.  Dönüştürülen runbook Azure Automation'a içeri aktardıktan sonra tüm bu etkinliklerin gerekli işlevleri gerçekleştiren geçerli etkinlikler ile değiştirmeniz gerekir.
+Runbook Dönüştürücüsü, Orchestrator Runbook 'taki her etkinliği Azure Otomasyonu 'nda karşılık gelen bir etkinliğe dönüştürür.  Dönüştürülemeyen etkinlikler için, runbook 'ta uyarı metniyle birlikte bir yer tutucu etkinlik oluşturulur.  Dönüştürülmüş runbook 'u Azure Otomasyonu 'na aktardıktan sonra, bu etkinliklerin herhangi birini gerekli işlevselliği gerçekleştiren geçerli etkinliklerle değiştirmeniz gerekir.
 
-Tüm Orchestrator etkinlikleri [standart etkinlikler modül](#standard-activities-module) dönüştürülür.  Bu modülde ancak olmayan ve dönüştürülmez bazı standart Orchestrator etkinlikleri vardır.  Örneğin, **Platform olayı Gönder** olayı Orchestrator için belirli olduğundan, hiçbir Azure Otomasyonu eşdeğeri yok.
+[Standart etkinlikler modülündeki](#standard-activities-module) tüm Orchestrator etkinlikleri dönüştürülecek.  Bu modülde olmayan ve Dönüştürülmeyen bazı standart Orchestrator etkinlikleri vardır.  Örneğin, olay Orchestrator 'a özgü olduğundan, **Send platform olayında** hiçbir Azure Otomasyonu eşdeğeri yoktur.
 
-[İzleme etkinliklerin](https://technet.microsoft.com/library/hh403827.aspx) için bunları Azure automation'da eşdeğeri olduğundan dönüştürülmez.  Özel durum izleme etkinliklerin olan [dönüştürülen tümleştirme paketleri](#integration-pack-converter) için yer tutucu etkinlik dönüştürülür.
+Azure Otomasyonu 'nda bunlara eşdeğer olmadığından [izleyici etkinlikleri](https://technet.microsoft.com/library/hh403827.aspx) dönüştürülmez.  Özel durum, [dönüştürülmüş tümleştirme paketlerinde](#integration-pack-converter) yer tutucu etkinliğe dönüştürülecek olan etkinlikleri izler.
 
-Herhangi bir etkinlikten bir [dönüştürülen tümleştirme paketi](#integration-pack-converter) modülle yolunu sağlarsanız dönüştürülecek **modülleri** parametresi.  System Center tümleştirme paketleri için kullanabileceğiniz [System Center Orchestrator tümleştirme modülleri](#system-center-orchestrator-integration-modules).
+**Modüller** parametresiyle tümleştirme modülünün yolunu sağlarsanız, [dönüştürülmüş tümleştirme paketinden](#integration-pack-converter) herhangi bir etkinlik dönüştürülür.  System Center tümleştirme paketleri için [System Center Orchestrator tümleştirmesi modüllerini](#system-center-orchestrator-integration-modules)kullanabilirsiniz.
 
 ### <a name="orchestrator-resources"></a>Orchestrator kaynakları
-Runbook dönüştürücü, runbook'ları, diğer Orchestrator kaynakları sayaçları, değişkenleri veya bağlantıları gibi değil yalnızca dönüştürür.  Sayaçlar, Azure Automation'da desteklenmez.  Değişkenleri ve bağlantıları desteklenir ancak bunları el ile oluşturmanız gerekir.  Günlük dosyaları runbook böyle kaynaklar gerektiriyorsa bildirir ve dönüştürülen runbook'un düzgün çalışması Azure Otomasyonu'nda oluşturmak için gereken karşılık gelen kaynakları belirtin.
+Runbook dönüştürücüsü yalnızca runbook 'ları, sayaçlar, değişkenler veya bağlantılar gibi diğer Orchestrator kaynaklarını dönüştürür.  Sayaçlar Azure Otomasyonu 'nda desteklenmez.  Değişkenler ve bağlantılar desteklenir, ancak bunları el ile oluşturmanız gerekir.  Runbook 'un bu tür kaynaklar gerektirdiğini ve dönüştürülen runbook 'un düzgün çalışması için Azure Otomasyonu 'nda oluşturmanız gereken ilgili kaynakları belirtmesi durumunda günlük dosyaları size bildirir.
 
-Örneğin, bir runbook bir etkinlik belirli bir değerde doldurmak için bir değişken kullanabilir.  Dönüştürülen runbook etkinlik dönüştürmek ve Orchestrator değişkeniyle aynı ada sahip Azure Otomasyonu değişken varlığı belirtin.  Bu, Not edilir **Runbook dönüştürücü - Summary.log** dönüştürme işleminden sonra oluşturulan dosya.  Runbook kullanmadan önce bu değişken varlığı Azure Automation'da el ile oluşturmanız gerekir.
+Örneğin, bir runbook bir etkinlikte belirli bir değeri doldurmak için bir değişken kullanabilir.  Dönüştürülen runbook, etkinliği dönüştürür ve Azure Otomasyonu 'nda Orchestrator değişkeniyle aynı ada sahip bir değişken varlığı belirler.  Bu, dönüştürmeden sonra oluşturulan **runbook Dönüştürücüsü-Summary. log** dosyasında not edilir.  Runbook 'u kullanmadan önce bu değişken varlığı Azure Otomasyonu 'nda el ile oluşturmanız gerekir.
 
 ### <a name="input-parameters"></a>Giriş parametreleri
-Orchestrator runbook'ları ile giriş parametrelerini kabul **verileri Başlat** etkinlik.  Bu etkinlik, dönüştürülen runbook içeriyorsa, ardından bir [giriş parametresi](automation-graphical-authoring-intro.md#runbook-input-and-output) Azure Otomasyonu'nda runbook etkinliğinde her parametre için oluşturulur.  A [iş akışı betiği denetim](automation-graphical-authoring-intro.md#activities) etkinlik alır ve her bir parametre döndüren dönüştürülmüş runbook oluşturulur.  Giriş parametresi kullanan herhangi bir runbook'taki etkinlikler, çıktı varlığındaki bu etkinlik bakın.
+Orchestrator 'daki runbook 'lar, **verileri Başlat** etkinliğiyle giriş parametrelerini kabul eder.  Dönüştürülen runbook bu etkinliği içeriyorsa, etkinliğin her bir parametresi için Azure Otomasyonu runbook 'unda bir [giriş parametresi](automation-graphical-authoring-intro.md#runbook-input-and-output) oluşturulur.  Dönüştürülmüş runbook 'ta her parametreyi alan ve döndüren bir [Iş akışı betik denetim](automation-graphical-authoring-intro.md#activities) etkinliği oluşturulur.  Runbook 'taki bir giriş parametresi kullanan etkinlikler, bu etkinliğin çıktısına başvurur.
 
-Bu strateji kullanılır nedeni, en iyi Orchestrator runbook işlevleri yansıtmak üzere olmasıdır.  Yeni grafik runbook'lar etkinlikler doğrudan giriş parametreleri kullanarak bir Runbook girdi veri kaynağı başvurmanız gerekir.
+Bu stratejinin kullanıldığı neden Orchestrator Runbook 'unda işlevselliği en iyi şekilde yansıtmasıdır.  Yeni grafik runbook 'larında etkinlik, runbook giriş veri kaynağı kullanarak doğrudan giriş parametrelerine başvurmalıdır.
 
-### <a name="invoke-runbook-activity"></a>Runbook'u Çağır etkinliğine
-Orchestrator runbook'ları ile diğer runbook'ları başlatmak **Runbook'u Çağır** etkinlik. Dönüştürülen runbook bu etkinliği içeriyorsa ve **tamamlanmasını bekle** seçeneği ayarlanır ve ardından dönüştürülmüş runbook'ta bir runbook etkinliği için oluşturulur.  Varsa **tamamlanmasını bekle** seçeneği ayarlı değil, ardından kullanan bir iş akışı betiği etkinlik oluşturulur **başlangıç AzureAutomationRunbook** runbook'u başlatın.  Dönüştürülen runbook Azure Automation'a içeri aktardıktan sonra bu etkinlik etkinliğinde belirtilen bilgileri ile değiştirmeniz gerekir.
+### <a name="invoke-runbook-activity"></a>Runbook 'U çağır etkinliği
+Orchestrator 'daki runbook 'lar **runbook 'U çağır** etkinliğine sahip diğer runbook 'ları başlatır. Dönüştürülen runbook bu etkinliği içeriyorsa ve **tamamlanmayı bekle** seçeneği ayarlandıysa, bu durumda, dönüştürülmüş runbook 'ta kendisi için bir runbook etkinliği oluşturulur.  **Tamamlanmasını bekle** seçeneği ayarlanmamışsa, runbook 'u başlatmak için **Start-AzureAutomationRunbook** kullanan bir iş akışı betiği etkinliği oluşturulur.  Dönüştürülmüş runbook 'u Azure Otomasyonu 'na aktardıktan sonra, bu etkinliği etkinlikte belirtilen bilgilerle değiştirmeniz gerekir.
 
 ## <a name="related-articles"></a>İlgili makaleler
-* [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
-* [Hizmet Yönetimi Otomasyonu](https://technet.microsoft.com/library/dn469260.aspx)
-* [Karma Runbook çalışanı](automation-hybrid-runbook-worker.md)
-* [Orchestrator standart etkinlikleri](https://technet.microsoft.com/library/hh403832.aspx)
-* [İndirme System Center Orchestrator geçiş Araç Seti](https://www.microsoft.com/en-us/download/details.aspx?id=47323)
+* [System Center 2012-Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
+* [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
+* [Karma Runbook Worker](automation-hybrid-runbook-worker.md)
+* [Orchestrator Standart etkinlikleri](https://technet.microsoft.com/library/hh403832.aspx)
+* [System Center Orchestrator geçiş araç setini indir](https://www.microsoft.com/en-us/download/details.aspx?id=47323)
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74785866"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848247"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
@@ -59,8 +59,8 @@ Tüm kullanıcılar *devre dışı bırakıldı*. Azure MFA 'da kullanıcıları
 Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz sayfaya erişmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. Arama yapın ve *Azure Active Directory*seçin. **Kullanıcıları** > **tüm kullanıcılar**' ı seçin.
-3. **Multi-Factor Authentication**seçin.
+2. Arama yapın ve *Azure Active Directory*seçin. **Kullanıcılar** > **Tüm kullanıcılar**'ı seçin.
+3. **Multi-Factor Authentication**'ı seçin.
    ![Multi-Factor Authentication seçin](./media/howto-mfa-userstates/selectmfa.png)
 4. Kullanıcı durumlarını görüntüleyen yeni bir sayfa açılır.
    Multi-Factor Authentication Kullanıcı durumunu ![-ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)

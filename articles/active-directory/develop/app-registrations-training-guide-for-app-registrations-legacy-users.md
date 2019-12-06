@@ -2,29 +2,25 @@
 title: Azure portal yeni Uygulama kayıtları deneyimine Uygulama kayıtları (eski) geçiş için eğitim kılavuzu
 description: Azure portal yeni uygulama kayıt deneyimine giriş
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927087"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844269"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama kayıtları (eski) 'den yeni Uygulama kayıtları deneyimine geçiş yapılıyor Azure portal
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama kayıtları’ndan (Eski) Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
 
 Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok geliştirme bulabilirsiniz. Azure portal Uygulama kayıtları (eski) deneyim hakkında bilgi sahibiyseniz, yeni deneyimi kullanmaya başlamak için bu eğitim kılavuzunu kullanın.
 
@@ -61,13 +57,13 @@ Eski deneyim bir **Özellikler** sayfasına sahipti. **Özellikler** aşağıdak
 
 - **Adı**
 - **Nesne KIMLIĞI**
-- **Uygulama KIMLIĞI**
+- **Uygulama Kimliği**
 - **Uygulama Kimliği URI'si**
 - **Le**
 - **Giriş sayfası URL 'SI**
 - **Oturum kapatma URL 'SI**
 - **Hizmet koşulları URL 'SI**
-- **Gizlilik bildirimi URL 'SI**
+- **Gizlilik bildirimi URL'si**
 - **Uygulama türü**
 - **Çok kiracılı**
 

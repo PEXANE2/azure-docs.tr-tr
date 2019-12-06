@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bec2818eaabaa2d2d74ab7181db0eabcba092ec
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172039"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841176"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -24,7 +24,7 @@ MABS, System Center DPM 'yi temel alır ve birkaç farklılık ile benzer işlev
 
 - MABS çalıştırmak için herhangi bir System Center lisansı gerekmez.
 - Azure, hem MABS hem de DPM için uzun süreli yedekleme depolama alanı sağlar. Ayrıca DPM, banttaki uzun süreli depolamaya yönelik verileri yedeklemenizi sağlar. MABS bu işlevselliği sağlamaz.
-- Birincil DPM sunucusunu ikincil bir DPM sunucusuyla yedekleyebilirsiniz. İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu yeniden kullanılabilir olana kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir.  MABS bu işlevselliği sağlamaz.
+- Birincil DPM sunucusunu ikincil bir DPM sunucusuyla yedekleyebilirsiniz. İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu tekrar kullanılabilir hale gelene kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir  MABS bu işlevselliği sağlamaz.
 
 MABS 'yi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57520)' nden indirebilirsiniz. Şirket içinde veya bir Azure sanal makinesinde çalıştırılabilir.
 
@@ -77,7 +77,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 ## <a name="management-support"></a>Yönetim desteği
 
-**Konuda** | **Ayrıntılar**
+**Sorun** | **Ayrıntılar**
 --- | ---
 **Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
 **Etki alanı** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
@@ -148,48 +148,11 @@ DPM 2016/MABS v2 'den (Windows Server 2016 ' de çalışan) ve sonraki sürümle
 
 ## <a name="supported-backups-to-mabs"></a>MABS için desteklenen yedeklemeler
 
-Aşağıdaki tabloda, şirket içi makinelerden ve Azure VM 'lerinden MABS 'e nelerin yedeklenebileceği özetlenmektedir.
-
-**Backup** | **Sürümleri** | **MABS** | **Ayrıntılar** |
---- | --- | --- | --- |
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bit) | MABS v3, v2 | Şirket içi. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır. |
-**Windows Server 2016 (Datacenter, Standard, nano değil)**<br/><br/> 64/32 bit | MABS v3, v2 | Şirket içi/Azure VM.| Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
-**Windows Server 2012 R2 (Datacenter ve Standard)**<br/><br/> 64/32 bit | MABS v3, v2 | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VMprotection**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
-**Windows Server 2012 SP1 (Datacenter ve Standard)**<br/><br/> 64/32 bit | MABS v3, v2 <br/><br/> [Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) yüklü olmalıdır. | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
-**SP1 ile Windows 2008 R2 (Standard ve Enterprise)**<br/><br/> 64/32 bit | MABS v3, v2 tarafından desteklenir.<br/><br/> [Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) yüklü olmalıdır. | Şirket içi/Azure VM. |   **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
-**Windows 2008 R2 (Standard ve Enterprise)**<br/><br/> 64/32 bit | MABS v3 için, v2 işletim sisteminin SP1 çalıştırması gerekir. | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
-**SP2 ile Windows Server 2008**<br/><br/> 64/32 bit | MABS v3, v2 | Mabs v2, MABS bir VMware sanal makinesi olarak dağıtıldığında v3 desteklenir.<br/><br/> Azure VM 'de çalışan MABS 'ler için desteklenmez. | Birim/paylaşma/klasör/dosya; sistem durumu/çıplak. |
-**Windows Storage Server 2008** | MABS v3, v2 | Şirket içi fiziksel sunucu/Hyper-V VM olarak MABS. <br/><br/> Azure VM 'de çalışan MABS 'ler için desteklenmez. | Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.
-**SQL Server 2017** | MABS v3 | Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez. |
-**SP1 ile SQL Server 2016/2016** | MABS v3, v2 | Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez. |
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2 | Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez. |
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | MABS v3, v2 | Şirket içi. | Tek başına Exchange Server 'ı, bir DAG altındaki veritabanını yedekleyin.<br/><br/> Posta kutusu, DAG altındaki posta kutusu veritabanı kurtarma.<br/><br/> ReFS desteklenmiyor.<br/><br/> Paylaşılan olmayan disk kümelerini yedekleyin.<br/><br/> Sürekli çoğaltma için yapılandırılmış Exchange Server 'ı yedekleyin. |
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | MABS v3, v2 | Şirket içi/Azure VM. | Sunucu yedekleme, ön uç Web sunucusu.<br/><br/> Grup, veritabanı, Web uygulaması, dosya veya liste öğesi, SharePoint arama, ön uç Web sunucusu kurtarma.<br/><br/> İçerik veritabanları için SQL Server AlwaysOn kullanarak bir grubu yedekleyemiyoruz. |
-**Windows Server 2016 üzerinde Hyper-V**<br/><br/> **Windows Server 2008 R2 (SP1 ile)** | MABS v3, v2 | Şirket içi. | **Hyper-V konağındaki Mabs Aracısı**: tüm VM 'leri ve konak verileri dosyalarını yedekleyin. Yerel depolama ile VM 'leri yedekleme, CSV depolama ile kümedeki VM 'Ler, SMB dosya sunucusu depolama ile VM 'Ler.<br/><br/> **Konuk VM 'de Mabs Aracısı**: VM 'de çalışan iş yüklerini yedekleyin. CSV.<br/><br/> **Kurtarma**: VM, VHD/birim/klasör/dosya kurtarma için VM, öğe düzeyinde kurtarma.<br/><br/> **Linux VM 'leri**: Hyper-V Windows Server 2012 R2 ve sonraki sürümlerde çalışırken yedekleme. Linux VM 'Leri için kurtarma, tüm makine içindir. |
-**VMware VM 'Leri: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 | Şirket içi. | CSVs, NFS ve SAN depolamada VMware VM 'lerini yedekleyin.<br/><br/> Tüm VM 'yi kurtarın.<br/><br/> Windows/Linux yedeklemesi.<br/><br/> Yalnızca Windows VM 'lerinin klasör/dosyalarını öğe düzeyinde kurtarma.<br/><br/> VMware vApps desteklenmez.<br/><br/> Linux VM 'Leri için kurtarma, tüm makine içindir. |
+Azure Backup Sunucusu ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [Azure Backup sunucusu koruma matrisine](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix)bakın.
 
 ## <a name="supported-backups-to-dpm"></a>DPM için desteklenen yedeklemeler
 
-Aşağıdaki tabloda, şirket içi makineler ve Azure VM 'lerinden DPM 'ye ne yedeklenebileceği özetlenmektedir.
-
-**Backup** | **DPM** | **Ayrıntılar**
---- | --- | ---
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bit) | Yalnızca şirket içi.<br/><br/> DPM 2012 R2 ile Windows 10 ' u yedeklemek için [güncelleştirme 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)' i yüklemenizi öneririz. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır.
-**Windows Server 2016 (Datacenter, Standard, nano değil)**<br/><br/> 64/32 bit | Şirket içi/Azure VM.<br/><br/> Yalnızca DPM 2016.| Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.
-**Windows Server 2012 R2 (Datacenter ve Standard)**<br/><br/> 64/32 bit | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler DPM 2012 R2 ve üzeri sürümlerde desteklenir.
-**Windows Server 2012 SP1 (Datacenter ve Standard)**<br/><br/> 64/32 bit | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler DPM 2012 R2 ve üzeri sürümlerde desteklenir.
-**SP1 ile Windows 2008 R2 (Standard ve Enterprise)**<br/><br/> 64/32 bit | Şirket içi/Azure VM.<br/><br/> [Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) yüklü olmalıdır. |   **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.
-**Windows 2008 R2 (Standard ve Enterprise)**<br/><br/> 64/32 bit | Şirket içi.<br/><br/> DPM, VMware VM olarak yüklenemez.<br/><br/> Azure VM üzerinde çalışan DPM desteklenmez. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.
-**SP2 ile Windows Server 2008**<br/><br/> 64/32 bit | Yalnızca şirket içi.<br/><br/> DPM, VMware VM olarak çalışırken desteklenir. Fiziksel sunucu veya Hyper-V VM 'si olarak çalıştırmak desteklenmez. | Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.
-**Windows Storage Server 2008** | Fiziksel sunucu veya Hyper-V VM olarak çalışan DPM şirket içi. | Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.
-**SQL Server 2017** | DPM SAC; DPM 2016 güncelleştirme paketi 5 veya üstünü çalıştırıyor.<br/><br/> Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez.
-**SP1 ile SQL Server 2016** | DPM 2012 R2 için desteklenmez; DPM SAC için desteklenir, güncelleştirme paketi 4 veya üstünü çalıştıran DPM 2016.<br/><br/> Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez.
-**SQL Server 2016** | DPM 2012 R2 için desteklenmez. Güncelleştirme paketi 2 ve sonrasında DPM SAC, DPM 2016 için desteklenir.<br/><br/> Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez.
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | 2014 ve üzeri güncelleştirme paketi çalıştıran DPM 2012 R2 ile SQL Server.<br/><br/> Şirket içi/Azure VM.| SQL Server veritabanını yedekleyin.<br/><br/> SQL Server küme yedeklemesi destekleniyor.<br/><br/>CSV 'lerde depolanan veritabanları desteklenmez.
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | Exchange 2016 için DPM 2012 R2 güncelleştirme paketi 9 veya üzeri bir sürüme ihtiyaç duyuyor.<br/><br/> Şirket içi | Tek başına Exchange Server 'ı, bir DAG altındaki veritabanını yedekleyin.<br/><br/> Posta kutusu, DAG altındaki posta kutusu veritabanı kurtarma.<br/><br/> ReFS desteklenmiyor.<br/><br/> Paylaşılan olmayan disk kümelerini yedekleyin.<br/><br/> Sürekli çoğaltma için yapılandırılmış Exchange Server 'ı yedekleyin.
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | DPM 2016 ve üzeri sürümlerde SharePoint 2016.<br/><br/>Şirket içi/Azure VM. | Sunucu yedekleme, ön uç Web sunucusu.<br/><br/> Grup, veritabanı, Web uygulaması, dosya veya liste öğesi, SharePoint arama, ön uç Web sunucusu kurtarma.<br/><br/> İçerik veritabanları için SQL Server AlwaysOn kullanarak bir grubu yedekleyemiyoruz.
-**Windows Server 2016 üzerinde Hyper-V**<br/><br/> **Windows Server 2012 R2/2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 (SP1 ile)** | DPM 2016 ve üzeri için 2016 üzerinde Hyper-V destekleniyor.<br/><br/> Şirket içi. | **Hyper-V konağındaki Mabs Aracısı**: tüm VM 'leri ve konak verileri dosyalarını yedekleyin. Yerel depolama ile VM 'leri yedekleme, CSV depolama ile kümedeki VM 'Ler, SMB dosya sunucusu depolama ile VM 'Ler.<br/><br/> **Konuk VM 'de Mabs Aracısı**: VM 'de çalışan iş yüklerini yedekleyin. CSV.<br/><br/> **Kurtarma**: VM, VHD/birim/klasör/dosya kurtarma için VM, öğe düzeyinde kurtarma.<br/><br/> **Linux VM 'leri**: Hyper-V Windows Server 2012 R2 ve sonraki sürümlerde çalışırken yedekleme. Linux VM 'Leri için kurtarma, tüm makine içindir.
-**VMware VM 'Leri: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 <br/><br/> DPM 2012 R2, System Center güncelleştirme paketi 1 gerektirir) <br/><br/>Şirket içi. | CSVs, NFS ve SAN depolamada VMware VM 'lerini yedekleyin.<br/><br/> Tüm VM 'yi kurtarın.<br/><br/> Windows/Linux yedeklemesi.<br/><br/> Yalnızca Windows VM 'lerinin klasör/dosyalarını öğe düzeyinde kurtarma.<br/><br/> VMware vApps desteklenmez.<br/><br/> Linux VM 'Leri için kurtarma, tüm makine içindir.
+Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [DPM 'Nin neleri yedekleyebileceği](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)makalesine başvurun.
 
 - DPM/MABS tarafından yedeklenen kümelenmiş iş yükleri, DPM/MABS ile aynı etki alanında veya alt/güvenilen bir etki alanında olmalıdır.
 - Güvenilmeyen etki alanları veya çalışma gruplarındaki verileri yedeklemek için NTLM/sertifika kimlik doğrulaması kullanabilirsiniz.
