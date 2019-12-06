@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Konusu, aboneliği ve kuralı olan bir ad alanı oluşturma'
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: Güvenlik
+      items:
+        - name: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma (Önizleme)
+          href: configure-customer-managed-key.md
     - name: Sorun giderme
       items:
         - name: Sorun giderme kılavuzu

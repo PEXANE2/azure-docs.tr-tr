@@ -300,11 +300,14 @@
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Toplu tahminleri çalıştırma
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
+          displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
         - name: Tasarımcı toplu iş tahminleri
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
+        - name: Toplu tahminlerde hata ayıklama ve sorun giderme
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-batch-predictions.md
     - name: Modelleri izleme
       items:
         - name: Model verilerini toplama ve değerlendirme

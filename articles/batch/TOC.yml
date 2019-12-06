@@ -113,6 +113,8 @@
           href: batch-user-accounts.md
         - name: Çok fazla sayıda görev gönderme
           href: large-number-tasks.md
+        - name: İş ve görev hatalarını denetleme
+          href: batch-job-task-error-checking.md
     - name: Kaynak dosyalarını oluşturma
       href: resource-files.md
     - name: İş ve görev çıktılarını kalıcı hale getirme

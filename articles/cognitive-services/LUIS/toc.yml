@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. Kullanıcı sözlerinden yaklaşımı alma
           href: tutorial-publish-settings.md
-    - name: Uygulama oluşturma
+    - name: Varlıkları oluşturma ve kullanma
       items:
-        - name: Normal ifadelerle düzgün biçimlendirilmiş veriler alma
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Listelerle tam metin eşleşmelerini alma
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Varlık rolleri ile göreli veri alma
+        - name: Normal ifade varlıkları
+          href: tutorial-regex-entity.md
+        - name: Liste varlıkları
+          href: tutorial-list-entity.md
+        - name: Varlık rolleri
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: Bileşik varlıklarla ilişkili verileri gruplandırma ve ayıklama

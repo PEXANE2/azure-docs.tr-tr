@@ -126,9 +126,6 @@
         - name: Küme düğümlerini başlatma
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
-        - name: Özel kapsayıcılar
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
         - name: GPU etkinleştirilmiş kümeler
           href: /azure/databricks/clusters/gpu
           maintainContext: true
@@ -226,9 +223,6 @@
       maintainContext: true
     - name: Veriler
       items:
-        - name: Databricks Dosya Sistemi (DBFS)
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
         - name: Veritabanları ve tablolar
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -317,6 +311,9 @@
             - name: ZIP dosyaları
               href: /azure/databricks/data/data-sources/zip-files
               maintainContext: true
+        - name: Databricks Dosya Sistemi (DBFS)
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
@@ -829,8 +826,8 @@
             - name: TensorFlow kullanarak model çıkarımı
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Model çıkarım performansını ayarlama
-              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
+            - name: Dağıtılmış görüntü modeli çıkarımı için başvuru çözümü
+              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
               maintainContext: true
     - name: MLflow
       items:
@@ -1066,9 +1063,6 @@
             - name: Küme yapılandırmasına genel bakış
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
-            - name: Kapsayıcı Hizmetlerini Etkinleştirme
-              href: /azure/databricks/administration-guide/clusters/container-services
-              maintainContext: true
             - name: Genomiks için Databricks Runtime’ı Etkinleştirme
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1137,9 +1131,6 @@
               maintainContext: true
             - name: Yapılandırma ayarı varsayılan ayarların üzerine yazıyor
               href: /azure/databricks/kb/clusters/conf-overwrites-default-settings
-              maintainContext: true
-            - name: Tek çekirdekli yürütücülerde JNI kitaplıklarını çalıştırma
-              href: /azure/databricks/kb/clusters/multiple-executors-single-worker
               maintainContext: true
             - name: log4j yapılandırmalarının üzerine yazma
               href: /azure/databricks/kb/clusters/overwrite-log4j-logs
@@ -1544,6 +1535,9 @@
           items:
             - name: Platform sürüm notları
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Aralık 2019
+              href: /azure/databricks/release-notes/product/2019/december
               maintainContext: true
             - name: Kasım 2019
               href: /azure/databricks/release-notes/product/2019/november

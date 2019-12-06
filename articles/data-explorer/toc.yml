@@ -178,7 +178,7 @@
               href: dealing-with-duplicates.md
     - name: Dağıtma
       items:
-        - name: Kümenizi sanal ağınızda dağıtma
+        - name: Kümenizi sanal ağınıza dağıtma
           href: vnet-deployment.md
     - name: İzleme
       items:

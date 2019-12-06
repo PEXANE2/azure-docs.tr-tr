@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: Oturum riski algılandığında erişimi engelleme
       href: app-sign-in-risk.md
-- name: Öğreticiler
-  items:
-    - name: Klasik MFA ilkesini geçirme
-      href: policy-migration-mfa.md
 - name: Kavramlar
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: Durum aracı
       href: what-if-tool.md
+    - name: Klasik ilke geçişleri
+      href: policy-migration.md
     - name: Ana hat koruma ilkeleri
       href: concept-baseline-protection.md
 - name: Nasıl yapılır kılavuzları
@@ -83,7 +81,7 @@
     - name: Oturum açma sıklığı ve tarayıcı kalıcılık denetimleri
       href: howto-conditional-access-session-lifetime.md
     - name: Klasik ilkeleri geçirme
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: Koşullu Erişimi Benimseme
       href: howto-conditional-access-adoption-kit.md
     - name: Sorun giderme

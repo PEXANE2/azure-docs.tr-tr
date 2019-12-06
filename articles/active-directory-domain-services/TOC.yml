@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: Parola ve hesap kilitleme ilkeleri
           href: password-policy.md
-        - name: Güvenlik denetim olaylarını etkinleştirme (önizleme)
+        - name: Güvenlik denetim olaylarını etkinleştirme
           href: security-audit-events.md
     - name: VM’leri etki alanına ekleme
       items:

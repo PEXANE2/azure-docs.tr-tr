@@ -39,6 +39,8 @@
           href: security-code-analysis-customize.md
         - name: SSS
           href: security-code-analysis-faq.md
+        - name: YAML Yapılandırması
+          href: yaml-configuration.md
     - name: Microsoft Tehdit Modelleme aracı
       displayName: stride
       href: threat-modeling-tool.md
