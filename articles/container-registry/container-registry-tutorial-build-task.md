@@ -1,26 +1,29 @@
 ---
-title: Öğretici-kod işlemede görüntü oluşturma
-description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevinin nasıl yapılandırılacağını öğreneceksiniz.
+title: Tutorial - Build image on code commit
+description: In this tutorial, you learn how to configure an Azure Container Registry Task to automatically trigger container image builds in the cloud when you commit source code to a Git repository.
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8af8daa4233fe6461b4e129f56a063e7cc212245
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a26f1207eccd615804babe230df689d27beae49f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454748"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840791"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirin
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automate container image builds in the cloud when you commit source code
 
-[Hızlı bir göreve](container-registry-tutorial-quick-task.md)ek olarak, ACR görevleri, kaynak kodu bir git deposuna kaydederken buluttaki otomatik Docker kapsayıcı görüntüsü derlemelerini destekler.
+In addition to a [quick task](container-registry-tutorial-quick-task.md), ACR Tasks supports automated Docker container image builds in the cloud when you commit source code to a Git repository. Supported Git contexts for ACR Tasks include public or private GitHub or Azure repos.
 
-Bu öğreticide, ACR göreviniz bir git deposuna kaynak kodu kaydederken bir Dockerfile içinde belirtilen tek bir kapsayıcı görüntüsü oluşturur ve gönderir. Kod işlemede birden çok kapsayıcıyı oluşturma, gönderme ve isteğe bağlı olarak test etme adımlarını tanımlamak üzere YAML dosyası kullanan [çok adımlı bir görev](container-registry-tasks-multi-step.md) oluşturmak için bkz. [öğretici: kaynak kodu kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırma](container-registry-tutorial-multistep-task.md). ACR görevlerine genel bakış için bkz. [ACR görevleri ile işletim sistemi ve çatı düzeltme ekini otomatikleştirme](container-registry-tasks-overview.md)
+> [!NOTE]
+> Currently, ACR Tasks doesn't support commit or pull request triggers in GitHub Enterprise repos.
 
-Bu öğreticide:
+In this tutorial, your ACR task builds and pushes a single container image specified in a Dockerfile when you commit source code to a Git repo. To create a [multi-step task](container-registry-tasks-multi-step.md) that uses a YAML file to define steps to build, push, and optionally test multiple containers on code commit, see [Tutorial: Run a multi-step container workflow in the cloud when you commit source code](container-registry-tutorial-multistep-task.md). For an overview of ACR Tasks, see [Automate OS and framework patching with ACR Tasks](container-registry-tasks-overview.md)
+
+In this tutorial:
 
 > [!div class="checklist"]
-> * Bir görev oluşturun
+> * Görev oluşturma
 > * Görevi test etme
 > * Görev durumunu görüntüleme
 > * Kod işlemesi ile görevi tetikleme
@@ -29,7 +32,7 @@ Bu öğreticide, [önceki öğreticide](container-registry-tutorial-quick-task.m
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Azure CLI sürüm **2.0.46** veya sonraki bir sürümünün yüklü ve oturum açmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek][azure-cli].
+If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.46** or later installed  and logged in with [az login][az-login]. Sürümü bulmak için `az --version` komutunu çalıştırın. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -37,7 +40,7 @@ Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Az
 
 ACR Görevlerinin işleme durumunu okumasını etkinleştirmek ve bir depoda web kancaları oluşturmak için gereken adımları tamamladıktan sonra, depoya işleme yapılması üzerine kapsayıcı görüntüsü derlemesini tetikleyen bir görev oluşturabilirsiniz.
 
-İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
+İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. If you don't populate these environment variables, you must manually replace each value wherever it appears in the example commands.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -45,7 +48,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Şimdi aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi oluşturun:
+Now, create the task by executing the following [az acr task create][az-acr-task-create] command:
 
 ```azurecli-interactive
 az acr task create \
@@ -58,11 +61,11 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Daha önce `az acr build-task` komutuyla önizleme sırasında görevler oluşturduysanız, bu görevlerin [az ACR Task][az-acr-task] komutu kullanılarak yeniden oluşturulması gerekir.
+> If you previously created tasks during the preview with the `az acr build-task` command, those tasks need to be re-created using the [az acr task][az-acr-task] command.
 
-Bu görev, *ile belirtilen depodaki*ana`--context` dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden `--file` tarafından belirtilen Dockerfile, görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
+Bu görev, `--context` ile belirtilen depodaki *ana* dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. The Dockerfile specified by `--file` from the repository root is used to build the image. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
 
-Başarılı bir [az ACR görev oluştur][az-acr-task-create] komutunun çıktısı aşağıdakine benzer:
+Output from a successful [az acr task create][az-acr-task-create] command is similar to the following:
 
 ```console
 {
@@ -123,7 +126,7 @@ Başarılı bir [az ACR görev oluştur][az-acr-task-create] komutunun çıktıs
 
 ## <a name="test-the-build-task"></a>Derleme görevini test etme
 
-Artık derlemenizi tanımlayan bir göreviniz var. Derleme ardışık düzenini test etmek için [az ACR Task Run][az-acr-task-run] komutunu yürüterek bir derlemeyi el ile tetikleyin:
+Artık derlemenizi tanımlayan bir göreviniz var. To test the build pipeline, trigger a build manually by executing the [az acr task run][az-acr-task-run] command:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -203,7 +206,7 @@ Run ID: da2 was successful after 27s
 
 Görevi el ile çalıştırarak test ettikten sonra, bir kaynak kodu değişikliği ile otomatik olarak tetikleyin.
 
-İlk olarak, [deponun][sample-repo]yerel kopyasını içeren dizinde olduğunuzdan emin olun:
+First, ensure you're in the directory containing your local clone of the [repository][sample-repo]:
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -246,7 +249,7 @@ Run ID: da4 was successful after 38s
 
 ## <a name="list-builds"></a>Derlemeleri listeleme
 
-Kayıt defteriniz için ACR görevlerinin tamamladığı görev çalıştırmalarının listesini görmek için [az ACR Task List-çalıştırmaları][az-acr-task-list-runs] komutunu çalıştırın:
+To see a list of the task runs that ACR Tasks has completed for your registry, run the [az acr task list-runs][az-acr-task-list-runs] command:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table

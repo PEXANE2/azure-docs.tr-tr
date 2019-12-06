@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670687"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849760"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service 'de SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
@@ -107,6 +107,8 @@ Uygulamanızın **özel etki alanı** sayfası, yeni ve ayrılmış IP adresi il
 Çeşitli tarayıcılarda, uygulamanızı görbildiğini doğrulamak için `https://<your.custom.domain>` gidin.
 
 ![Azure uygulamasına portal gezintisi](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+
+Uygulama kodunuz, "x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi `http` veya `https`değerine sahip olacaktır. 
 
 > [!NOTE]
 > Uygulamanız size sertifika doğrulama hataları veriyorsa, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir.

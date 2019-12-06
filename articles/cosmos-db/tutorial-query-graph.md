@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB’de graf verilerini sorgulama
-description: Azure Cosmos DB’de graf verilerini sorgulamayı öğrenin
+description: Gremlin sorgularını kullanarak Azure Cosmos DB Graph verilerini sorgulama hakkında bilgi edinin
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 01/02/2018
+ms.date: 12/03/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 2bc79801864481562967702a7c52a7670950199b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1dde7bfc74c6a7b0c03d8f192f4e6eaf72e2de6b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293121"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870182"
 ---
-# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Öğretici: Azure Cosmos DB Gremlin API, Gremlin kullanarak sorgulama
+# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Öğretici: Gremlin kullanarak Azure Cosmos DB Gremlin API’yi sorgulama
 
 Azure Cosmos DB [Gremlin API](graph-introduction.md), [Gremlin](https://github.com/tinkerpop/gremlin/wiki) sorgularını destekler. Bu makalede, başlamanıza yardımcı olmak için örnek belgeler ve sorgular sunulmaktadır. [Gremlin desteği](gremlin-support.md) makalesinde ayrıntılı bir Gremlin başvurusu sağlanmıştır.
 

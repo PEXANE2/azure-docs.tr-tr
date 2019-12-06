@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: e1ec439696c1ebd9d5929a4c8b2d9925fc1a71cc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853034"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846480"
 ---
-# <a name="tutorial-enabling-password-writeback"></a>Öğretici: Parola geri yazma özelliğini etkinleştirme
+# <a name="tutorial-enabling-password-writeback"></a>Öğretici: Parola geri yazmayı etkinleştirme
 
 Bu öğreticide hibrit ortamınız için parola geri yazma özelliğini etkinleştireceksiniz. Parola geri yazma özelliği, Azure Active Directory (Azure AD) üzerinde yapılan parola değişikliklerini şirket içi Active Directory Domain Services (AD DS) ortamınızla eşitlemek için kullanılır. Parola geri yazma özelliği, Azure AD'de yapılan parola değişikliklerini var olan şirket içi dizinine göndermek için kullanılan güvenli bir mekanizma olarak Azure AD Connect ile birlikte etkinleştirilir. Parola geri yazma özelliği hakkında ayrıntılı bilgi için bkz. [Parola geri yazma nedir?](concept-sspr-writeback.md)
 
@@ -54,7 +54,7 @@ Parola geri yazma özelliğini Azure AD Connect'te etkinleştirme, sürecin yar�
 2. **Azure Active Directory**'ye göz adın, **Parola Sıfırlama**'ya tıklayın ve ardından **Şirket içi tümleştirme**'yi seçin.
 3. **Parolalar şirket içi dizininize geri yazılsın mı?** ayarını **Evet** olarak değiştirin.
 4. **Kullanıcıların parolalarını sıfırlamadan hesapların kilidini açmasına izin verilsin mi?** ayarını **Evet** olarak değiştirin.
-5. **Kaydet**'e tıklayın.
+5. **Kaydet**’e tıklayın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

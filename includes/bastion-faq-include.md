@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796200"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875510"
 ---
 ### <a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -59,3 +59,7 @@ Azure savunma Şu anda VM 'nin içindeki en-US-QWERTY klavye yerleşimini destek
 
 Hayır. UDR, bir Azure savunma alt ağında desteklenmez.
 Aynı sanal ağda hem Azure savunma hem de Azure Güvenlik Duvarı/ağ sanal gereci (NVA) içeren senaryolarda, Azure savunma ve VM 'leriniz arasındaki iletişim özel olduğundan Azure savunma alt ağından Azure Güvenlik Duvarı 'na trafik zorlamaya gerek kalmaz. Daha fazla ayrıntı için bkz. [Azure Güvenlik duvarı arkasındaki VM 'lere savunma Ile erişme](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+
+### <a name="filetransfer"></a>Azure savunma RDP oturumunda dosya aktarımı destekleniyor mu?
+
+Yeni özellikler eklemek için çok çalıştık. Şu andan itibaren dosya aktarımı desteklenmez, ancak yol haritasında bir parçası. Lütfen [Azure savunma geri bildirim sayfasındaki](https://feedback.azure.com/forums/217313-networking?category_id=367303)yeni özelliklerle ilgili görüşlerinizi paylaşmaktan çekinmeyin.

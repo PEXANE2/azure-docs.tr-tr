@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için Azure PowerShell örnekleri Cassandra API
-description: Azure Cosmos DB için Azure PowerShell örnekleri Cassandra API
+description: Azure Cosmos DB Cassandra API hesaplarında çeşitli ortak görevleri gerçekleştirmek için Azure PowerShell örnekleri alın
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 31997143aa688c2eb74d180a2811496e53bc672c
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 3949894c19d49335063851a1d5f5c03a1f086d44
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155428"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871976"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB için Azure PowerShell örnekleri Cassandra API
 

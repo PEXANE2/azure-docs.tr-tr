@@ -1,15 +1,15 @@
 ---
 title: Azure Cosmos DB güncelleştirmek için blok zinciri Veri Yöneticisi kullanma-Azure blok zinciri hizmeti
 description: Blok zinciri verilerini Azure Cosmos DB göndermek için Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi kullanın
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 497652f91d46592212a17a0a22832c02a696df62
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326255"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849997"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma
 
@@ -41,7 +41,7 @@ Bu öğreticide şunları yaptınız:
 
 Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü bağlar ve izler. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar. Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Önkoşul hızlı başlangıcı ' nda oluşturduğunuz Azure blok zinciri hizmeti üyesine gidin [: Azure Portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md). **Blok zinciri veri Yöneticisi**seçin.
 1. **Add (Ekle)** seçeneğini belirleyin.
 
@@ -51,7 +51,7 @@ Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işle
 
     Ayar | Örnek | Açıklama
     --------|---------|------------
-    Name | myizleyici | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin.
+    Adı | myizleyici | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin.
     İşlem düğümü | myblockchainmember | Ön koşul içinde oluşturduğunuz Azure blok zinciri hizmeti üyesinin varsayılan işlem düğümünü seçin.
     Bağlantı adı | cosmosdb | Blok zinciri işlem verilerinin gönderildiği giden bağlantıya ilişkin benzersiz bir ad girin.
     Olay Kılavuzu uç noktası | myTopic | Önkoşul bölümünde oluşturduğunuz bir olay Kılavuzu konusu seçin. Note: blok zinciri Veri Yöneticisi örneği ve olay Kılavuzu konusu aynı abonelikte olmalıdır.
@@ -108,7 +108,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
     | Ayar | Açıklama |
     |---------|-------------|
-    | Name  | Kapsayıcıyı adlandırın. Örneğin, *smartcontract* |
+    | Adı  | Kapsayıcıyı adlandırın. Örneğin, *smartcontract* |
     | Genel erişim düzeyi | *Özel (anonim erişim yok)* seçeneğini belirleyin |
 
 1. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
@@ -144,7 +144,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
     Ayar | Açıklama
     --------|------------
-    Name | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
+    Adı | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
     Sözleşme ABı | Sözleşme ABı dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
     Sözleşme bytecode 'u | Bytecode dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
 
@@ -172,8 +172,8 @@ Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabi
     | Ayar | Açıklama
     |---------|-------------|
     | Veritabanı Kimliği | Yeni veritabanının adı olarak **blok zinciri-verileri** girin. |
-    | Aktarım hızı | Aktarım hızını saniyede **400** istek BIRIMI (ru/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.|
-    | Kapsayıcı KIMLIĞI | Yeni kapsayıcının adı olarak **iletileri** girin. |
+    | İşleme | Aktarım hızını saniyede **400** istek BIRIMI (ru/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.|
+    | Kapsayıcı Kimliği | Yeni kapsayıcının adı olarak **iletileri** girin. |
     | Bölüm anahtarı | Bölüm anahtarı olarak **/MessageType** kullanın. |
 
 1. **Tamam**’ı seçin. Veri Gezgini yeni veritabanını ve oluşturduğunuz kapsayıcıyı görüntüler.

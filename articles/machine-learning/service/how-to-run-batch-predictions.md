@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671574"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851613"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu nasıl yapılır, Azure Machine Learning kullanarak, büyük miktarlarda verileri zaman uyumsuz ve paralel olarak nasıl alabileceğinizi öğrenirsiniz. Burada açıklanan toplu işlem çıkarım özelliği genel önizlemeye sunuldu. Bu, anahtarların ve işlem verilerinin işlenmesi için yüksek performanslı ve yüksek maliyetli bir yoldur. Bu, kutudan zaman uyumsuz yetenekler sağlar.
+Azure Machine Learning kullanarak, büyük miktarlarda verilerin zaman uyumsuz ve paralel olarak nasıl alınacağını öğrenin. Burada açıklanan toplu işlem çıkarım özelliği genel önizlemeye sunuldu. Bu, anahtarların ve işlem verilerinin işlenmesi için yüksek performanslı ve yüksek maliyetli bir yoldur. Bu, kutudan zaman uyumsuz yetenekler sağlar.
 
 Batch çıkarımı sayesinde, çevrimdışı ınmalların terabaytlarca üretim verilerinde büyük miktarda makine kümelerine göre daha fazla verimlilik ve optimize edilmiş maliyetle ölçeklendirilmesi basittir.
 
-Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
+Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 
 > * Uzaktan işlem kaynağı oluşturun.
 > * Özel bir çıkarım betiği yazın.
@@ -40,7 +40,7 @@ Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 
 * Kendi ortamınızı ve bağımlılıklarınızı yönetmek için kendi ortamınızı yapılandırma hakkında [nasıl yapılır Kılavuzu](how-to-configure-environment.md) ' na bakın. Gerekli bağımlılıkları indirmek için ortamınızda `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` çalıştırın.
 
-## <a name="set-up-machine-learning-resources"></a>Makine öğrenimi kaynaklarını ayarlama
+## <a name="set-up-machine-learning-resources"></a>Machine learning kaynaklarını ayarlama
 
 Aşağıdaki eylemler bir toplu çıkarım ardışık düzeni çalıştırmak için ihtiyacınız olan kaynakları ayarlar:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Modeli hazırlama
+## <a name="prepare-the-model"></a>Model hazırlama
 
 [Önceden eğitilen görüntü sınıflandırma modelini indirin](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)ve ardından `models` dizinine ayıklayın.
 
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 Betik iki işlev *içermelidir* :
 - `init()`: Bu işlevi, daha sonraki çıkarım için pahalı veya genel hazırlık için kullanın. Örneğin, modeli genel bir nesneye yüklemek için kullanın.
 -  `run(mini_batch)`: işlev her bir `mini_batch` örneği için çalışacaktır.
-    -  `mini_batch`: Batch çıkarımı Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Giriş bir TabularDataset ise, min_batch içindeki her giriş bir dosya DosyaYolu olur.
+    -  `mini_batch`: Batch çıkarımı Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Giriş bir TabularDataset ise, min_batch içindeki her giriş bir dosya yolu olur.
     -  `response`: Run () yöntemi bir Pandas DataFrame veya Array döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için döndürülen her çıkış öğesi, giriş öğesinin girdi mini Batch 'de başarılı bir çıkardığını gösterir. Kullanıcı, girişi çıkarımı ile eşlemek için çıkarım sonucuna yeterli miktarda veri eklendiğinden emin olmalıdır. Çıkarım çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, kullanıcının çıktıda bir anahtar kullanması gerekir.
 
 ```python
@@ -237,11 +237,20 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>`init()` veya `run()` işlevlerde diğer dosyalara erişme
+
+Çıkarım betiğinizle aynı dizinde başka bir dosya veya klasörünüz varsa, geçerli çalışma dizinini bularak buna başvurabilirsiniz.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>Toplu çıkarım ardışık düzeni oluşturma ve çalıştırma
 
 Artık işlem hattını oluşturmak için ihtiyacınız olan her şeye sahipsiniz.
 
-### <a name="prepare-the-run-environment"></a>Çalıştırma ortamını hazırlama
+### <a name="prepare-the-run-environment"></a>Çalışma ortamı hazırlama
 
 İlk olarak, betiğinizin bağımlılıklarını belirtin. Bu nesneyi daha sonra işlem hattı adımını oluştururken kullanırsınız.
 
@@ -261,11 +270,11 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Toplu çıkarım ardışık düzen adımınızda parametreleri belirtin
 
-`ParallelRunConfig`, Azure Machine Learning işlem hattının içindeki yeni tanıtılan toplu iş çıkarımı `ParallelRunStep` örneğinin ana yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdakiler dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
+`ParallelRunConfig`, Azure Machine Learning işlem hattının içindeki yeni tanıtılan toplu iş çıkarımı `ParallelRunStep` örneğinin ana yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdaki parametrelerin tümü de dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
 - `entry_script`: bir Kullanıcı betiği, birden çok düğümde paralel olarak çalıştırılacak yerel dosya yolu olarak. `source_directly` varsa, göreli bir yol kullanın. Aksi takdirde, makinede erişilebilen herhangi bir yolu kullanın.
 - `mini_batch_size`: tek bir `run()` çağrısına geçirilen mini toplu iş boyutu. (İsteğe bağlı; varsayılan değer `1`.)
     - `FileDataset`için, en az `1`değeri olan dosya sayısıdır. Birden çok dosyayı tek bir mini toplu işte birleştirebilirsiniz.
-    - `TabularDataset`, verilerin boyutudur. Örnek değerler `1024`, `1024KB`, `10MB`ve `1GB`. Önerilen değer `1MB`. `TabularDataset` 'den mini toplu işin hiçbir yere dosya sınırları hiçbir şekilde kesileceğini unutmayın. Örneğin, çeşitli boyutlarda. csv dosyalarınız varsa en küçük dosya 100 KB 'tır ve en büyük değer 10 MB 'tır. `mini_batch_size = 1MB`ayarlarsanız, boyutu 1 MB 'tan küçük olan dosyalar bir mini toplu işlem olarak kabul edilir. Boyutu 1 MB 'tan büyük olan dosyalar birden çok mini toplu iş içine bölünür.
+    - `TabularDataset`, verilerin boyutudur. Örnek değerler `1024`, `1024KB`, `10MB`ve `1GB`. Önerilen değer `1MB`. `TabularDataset` kısa toplu iş, hiçbir şekilde dosya sınırlarına geçmez. Örneğin, çeşitli boyutlarda. csv dosyalarınız varsa en küçük dosya 100 KB 'tır ve en büyük değer 10 MB 'tır. `mini_batch_size = 1MB`ayarlarsanız, boyutu 1 MB 'tan küçük olan dosyalar bir mini toplu işlem olarak kabul edilir. Boyutu 1 MB 'tan büyük olan dosyalar birden çok mini toplu iş içine bölünür.
 - `error_threshold`: işleme sırasında yoksayılması gereken `FileDataset` için `TabularDataset` ve dosya hatalarıyla ilgili kayıt hatalarının sayısı. Tüm girdinin hata sayısı bu değerin üzerine gittiğinde, iş durdurulur. Hata eşiği, `run()` yöntemine gönderilen tek bir mini toplu iş için değil, tüm giriş içindir. Aralık `[-1, int.max]`. `-1` bölümü, işleme sırasındaki tüm hataların yok saydığını gösterir.
 - `output_action`: aşağıdaki değerlerden biri çıktının nasıl düzenleneceğini gösterir:
     - `summary_only`: Kullanıcı betiği çıktıyı depolayacaktır. `ParallelRunStep` yalnızca hata eşiği hesaplaması için çıktıyı kullanacaktır.
@@ -292,7 +301,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>İşlem hattı adımını oluşturma
+### <a name="create-the-pipeline-step"></a>İşlem hattı adım oluşturma
 
 Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Komut dosyası için yürütme hedefi olarak çalışma alanınıza zaten iliştirtiğiniz işlem hedefini belirtin. Aşağıdaki parametreleri alan toplu çıkarım ardışık düzen adımını oluşturmak için `ParallelRunStep` kullanın:
 - `name`: adım adı, şu adlandırma kısıtlamalarına sahip: benzersiz, 3-32 karakter ve Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
@@ -335,7 +344,7 @@ pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
 
 Bir toplu çıkarım işinin tamamlanması uzun zaman alabilir. Bu örnek, bir Jupyıter pencere öğesi kullanarak ilerlemeyi izler. Ayrıca şunları kullanarak işin ilerlemesini yönetebilirsiniz:
 
-* Azure Machine Learning Studio. 
+* Azure Machine Learning Studio'da. 
 * [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) nesnesinden konsol çıktısı.
 
 ```python
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu işlemin sona erdirmek için, [toplu çıkarım Not defterini](https://aka.ms/batch-inference-notebooks)deneyin. 
+
+ParallelRunStep için hata ayıklama ve sorun giderme kılavuzu için bkz. [nasıl yapılır Kılavuzu](how-to-debug-batch-predictions.md).
 
 İşlem hatları için hata ayıklama ve sorun giderme kılavuzu için bkz. [nasıl yapılır Kılavuzu](how-to-debug-pipelines.md).
 

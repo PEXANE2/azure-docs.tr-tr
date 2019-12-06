@@ -1,47 +1,47 @@
 ---
-title: Bir Azure Otomasyonu runbook bir e-posta Gönder
-description: Bir runbook içindeki e göndermek için SendGrid kullanmayı öğrenin.
+title: Azure Otomasyonu runbook 'tan e-posta gönderme
+description: Bir runbook içinden e-posta göndermek için SendGrid 'i nasıl kullanacağınızı öğrenin.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: ce05aadb53cc3ad24ed65ea139594010e1aef047
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234986"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849624"
 ---
-# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Öğretici: Bir Azure Otomasyonu runbook bir e-posta Gönder
+# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Öğretici: Azure Otomasyonu runbook 'tan e-posta gönderme
 
-Bir runbook ile gelen e-posta gönderebilir [SendGrid](https://sendgrid.com/solutions) PowerShell kullanarak. Bu öğreticide depolanan bir API anahtarı kullanarak bir e-posta gönderen bir yeniden kullanılabilir runbook'unun nasıl oluşturulacağını gösterilecek [Azure KeyVault](/azure/key-vault/).
+PowerShell kullanarak, [SendGrid](https://sendgrid.com/solutions) ile runbook 'tan bir e-posta gönderebilirsiniz. Bu öğretici, [Azure Keykasasında](/azure/key-vault/)depolanan bir API anahtarı kullanarak bir e-posta gönderen yeniden kullanılabilir runbook oluşturmayı gösterir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Bir Azure anahtar kasası oluşturma
-> * SendGrid API anahtarınızı Keyvault'ta Store
-> * API anahtarınızı alır ve bir e-posta gönderen bir runbook oluşturma
+> * Azure Keykasası oluşturma
+> * SendGrid API anahtarınızı Anahtar Kasası 'nda depolayın
+> * API anahtarınızı alıp bir e-posta gönderen bir runbook oluşturun
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Azure aboneliği: Henüz bir aboneliğiniz yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ya da [ücretsiz hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) için kaydolabilirsiniz.
-* [SendGrid hesabı oluşturma](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
-* [Otomasyon hesabı](automation-offering-get-started.md) ile **Az** modülleri ve [farklı çalıştır bağlantısı](automation-create-runas-account.md), depolamak ve runbook yürütün.
+* Azure aboneliği: henüz yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
+* [SendGrid hesabı oluşturun](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
+* Runbook 'u depolamak ve yürütmek için **az** modüllerle [Otomasyon hesabı](automation-offering-get-started.md) ve [bağlantı olarak çalıştır](automation-create-runas-account.md).
 
-## <a name="create-an-azure-keyvault"></a>Bir Azure anahtar kasası oluşturma
+## <a name="create-an-azure-keyvault"></a>Azure Keykasası oluşturma
 
-Aşağıdaki PowerShell betiğini kullanarak bir Azure anahtar kasası oluşturabilirsiniz. Değişken değerleri ortamınıza özgü değerlerle değiştirin. Ekli Azure Cloud Shell'i kullanmak <kbd>deneyin</kbd> kod bloğunun sağ üst köşesinde bulunan düğmesini. Ayrıca kopyalayabilir ve yerel olarak, varsa, kodu çalıştırmak [Azure PowerShell Modülü](/powershell/azure/install-az-ps) yerel makinenizde yüklü.
+Aşağıdaki PowerShell betiğini kullanarak bir Azure Keykasası oluşturabilirsiniz. Değişken değerlerini ortamınıza özgü değerlerle değiştirin. Gömülü Azure Cloud Shell, kod bloğunun sağ üst köşesinde bulunan <kbd>TRY It</kbd> düğmesini kullanarak kullanın. Yerel makinenizde [Azure PowerShell modülü](/powershell/azure/install-az-ps) yüklüyse, kodu yerel olarak da kopyalayabilir ve çalıştırabilirsiniz.
 
 > [!NOTE]
-> API anahtarınızı almak için bulunan adımları kullanın. [SendGrid API anahtarınızı bulma](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key).
+> API anahtarınızı almak için [SendGrid API anahtarınızı bulun](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)bölümünde bulunan adımları kullanın.
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -74,35 +74,35 @@ $appID = $connection.FieldDefinitionValues.ApplicationId
 Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -PermissionsToSecrets Set, Get
 ```
 
-Bir Azure anahtar kasası oluşturma ve bir gizli diğer yolları için bkz. [KeyVault hızlı Başlangıçlar](/azure/key-vault/).
+Azure Keykasasını oluşturmanın ve bir gizli dizi depolamanın diğer yolları için bkz. [Keykasahızlı](/azure/key-vault/)başlangıçlar.
 
-## <a name="import-required-modules-to-your-automation-account"></a>Gerekli modülleri içeri aktarmak için Otomasyon hesabı
+## <a name="import-required-modules-to-your-automation-account"></a>Gerekli modülleri Otomasyon hesabınıza aktarın
 
-Bir runbook içindeki Azure KeyVault kullanmak için Otomasyon hesabınızda aşağıdaki modüller gerekir:
+Bir runbook 'ta Azure Keykasasını kullanmak için Otomasyon hesabınızın aşağıdaki modüller gerekir:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile).
-* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault).
+* [Az. Profile](https://www.powershellgallery.com/packages/Az.Profile).
+* [Az. Keykasası](https://www.powershellgallery.com/packages/Az.KeyVault).
 
-Tıklayın <kbd>Azure Otomasyonu Dağıt</kbd> Azure Otomasyonu sekmesinde yükleme seçenekleri altında. Bu eylem, Azure portalını açar. İçeri aktarma sayfasında Otomasyon hesabınızı seçin ve <kbd>Tamam</kbd>.
+Yükleme seçenekleri altındaki Azure Otomasyonu sekmesinde <kbd>Azure Otomasyonu 'Na dağıt</kbd> ' a tıklayın. Bu eylem Azure portal açar. Içeri Aktar sayfasında Otomasyon hesabınızı seçin ve <kbd>Tamam</kbd>' ı tıklatın.
 
-Gerekli modülleri eklemek için ek yöntemleri için bkz [modülleri Al](/azure/automation/shared-resources/modules#import-modules).
+Gerekli modülleri eklemeye yönelik ek yöntemler için bkz. [modülleri Içeri aktarma](/azure/automation/shared-resources/modules#import-modules).
 
-## <a name="create-the-runbook-to-send-an-email"></a>E-posta göndermek için runbook oluşturma
+## <a name="create-the-runbook-to-send-an-email"></a>E-posta göndermek için Runbook 'u oluşturma
 
-Bir anahtar kasası oluşturulur ve SendGrid API anahtarınızı depolanan sonra API anahtarı almak ve bir e-posta runbook oluşturmak için zaman olur.
+Bir Anahtar Kasası oluşturup SendGrid API anahtarınızı depoladıktan sonra API anahtarını alacak ve e-posta gönderen runbook 'u oluşturmak zaman alır.
 
-Bu runbook AzureRunAsConnection kullanan [Run As hesabı](automation-create-runas-account.md) Azure KeyVault gizli diziyi almak için Azure ile kimlik doğrulaması.
+Bu runbook, Azure Keykasasından gizli dizi almak üzere Azure ile kimlik doğrulaması yapmak için AzureRunAsConnection [Farklı Çalıştır hesabını](automation-create-runas-account.md) kullanır.
 
-Adlı bir runbook oluşturmak için bu örneği kullanmak **gönderme GridMailMessage**. PowerShell komut dosyasını değiştirin ve farklı senaryolar için yeniden.
+**Send-GridMailMessage**adlı bir runbook oluşturmak için bu örneği kullanın. PowerShell betiğini değiştirebilir ve farklı senaryolar için onu yeniden kullanabilirsiniz.
 
-1. Azure Otomasyon hesabınıza gidin.
-2. Altında **süreç otomasyonu**seçin **runbook'ları**.
-3. Runbook'ların listenin en üstünde seçin **+ bir runbook Oluştur**.
-4. Üzerinde **Runbook Ekle** want **gönderme GridMailMessage** runbook adı. Runbook türü için **PowerShell**. Ardından **Oluştur**’u seçin.
-   ![Runbook oluşturma](./media/automation-send-email/automation-send-email-runbook.png)
+1. Azure Otomasyonu hesabınıza gidin.
+2. **Işlem Otomasyonu**altında **runbook 'lar**' ı seçin.
+3. Runbook 'ların listesinin en üstünde **+ runbook oluştur**' u seçin.
+4. **Runbook Ekle** sayfasında, Runbook adı için **Send-gridmailmessage** yazın. Runbook türü için **PowerShell**' i seçin. Ardından **Oluştur**’u seçin.
+   Runbook oluşturma ![](./media/automation-send-email/automation-send-email-runbook.png)
 5. Runbook oluşturulur ve **PowerShell Runbook'unu Düzenle** sayfası açılır.
-   ![Runbook'u düzenleme](./media/automation-send-email/automation-send-email-edit.png)
-6. Aşağıdaki PowerShell örneği içine kopyalayın **Düzenle** sayfası. Emin `$VaultName` , KeyVault oluştururken belirttiğiniz adı.
+   ![runbook 'U düzenleme](./media/automation-send-email/automation-send-email-edit.png)
+6. Aşağıdaki PowerShell örneğini **düzenleme** sayfasına kopyalayın. `$VaultName`, anahtar kasanızı oluştururken belirttiğiniz ad olduğundan emin olun.
 
     ```powershell-interactive
     Param(
@@ -151,16 +151,16 @@ Adlı bir runbook oluşturmak için bu örneği kullanmak **gönderme GridMailMe
     $response = Invoke-RestMethod -Uri https://api.sendgrid.com/v3/mail/send -Method Post -Headers $headers -Body $bodyJson
     ```
 
-7. Seçin **Yayımla** kaydedin ve runbook'u yayımlayamadı.
+7. Runbook 'u kaydetmek ve yayımlamak için **Yayımla** ' yı seçin.
 
-Runbook başarılı bir şekilde uyarak çalıştığını doğrulamak için altındaki adımları izleyebilirsiniz [bir runbook'u Test](manage-runbooks.md#test-a-runbook) veya [runbook başlatma](start-runbooks.md).
-Test e-postanızı başlangıçta görmüyorsanız, denetle, **Önemsiz** ve **istenmeyen posta** klasörleri.
+Runbook 'un başarıyla yürütüldüğünü doğrulamak için, [runbook 'U test](manage-runbooks.md#test-a-runbook) etme veya [runbook 'u başlatma](start-runbooks.md)bölümündeki adımları izleyebilirsiniz.
+Test e-postanızı başlangıçta görmüyorsanız, **Önemsiz** ve **istenmeyen posta** klasörlerinizi denetleyin.
 
-## <a name="clean-up"></a>Temizleme
+## <a name="clean-up"></a>Temizle
 
 İhtiyacınız kalmadıysa runbook'u silebilirsiniz. Bunu yapmak için runbook listesinden runbook'u seçip **Sil**'e tıklayın.
 
-Anahtar kasasını kullanarak silme [Remove-AzureRMKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault?view=azurermps) cmdlet'i.
+[Remove-Azurermkeykasası](/powershell/module/azurerm.keyvault/remove-azurermkeyvault?view=azurermps) cmdlet 'ini kullanarak anahtar kasasını silin.
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"
@@ -170,7 +170,7 @@ Remove-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Oluşturma veya, bir runbook başlatma sorunları için bkz: [runbook'ları ile hatalarında sorun giderme](./troubleshoot/runbooks.md).
-* Modüller Otomasyon hesabınızı güncelleştirmek için bkz: [Azure automation'da Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)].
-* Runbook yürütmesi izlemek için bkz: [Otomasyon iş durumunu ve iş akışları için Azure İzleyici günlüklerine iletmek](automation-manage-send-joblogs-log-analytics.md).
-* Bir uyarı kullanarak bir runbook'u tetiklemek için bkz: [Azure Otomasyonu runbook'u tetiklemek için bir uyarı kullanın](automation-create-alert-triggered-runbook.md).
+* Runbook 'u oluşturma veya başlatma sorunları için bkz. [runbook 'larda hata giderme](./troubleshoot/runbooks.md).
+* Otomasyon hesabınızdaki modülleri güncelleştirmek için bkz. [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)].
+* Runbook yürütmesini izlemek için bkz. [Otomasyon 'Dan Azure izleyici günlüklerine iş durumu ve iş akışları iletme](automation-manage-send-joblogs-log-analytics.md).
+* Bir runbook 'u uyarı kullanarak tetiklemek için bkz. [Azure Otomasyonu runbook 'u tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md).

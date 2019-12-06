@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 01/31/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125190"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846360"
 ---
 # <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Öğretici: Multi-Factor Authentication ve parola değişikliklerini tetiklemek için risk algılamalarını kullanma
 
@@ -54,12 +54,12 @@ Risk tabanlı ilkeleri etkinleştirmek oldukça kolay bir işlemdir. Aşağıdak
 
 Azure AD Kimlik Koruması, kullanıcılarınızın Multi-Factor Authentication kaydolabilme ve geçerli kayıt durumunu kolayca belirlemesine yardımcı olabilecek bir varsayılan ilke içerir. Bu ilkeyi etkinleştirdiğinizde kullanıcılarınızın Multi-Factor Authentication ile oturum açması gerekmez ancak ön kayıt yapmaları istenir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.
 1. **MFA kaydı**'na tıklayın.
 1. İlkeyi Zorla'yı **Açık** duruma getirin.
    1. Bu ilkeyi ayarladığınızda tüm kullanıcılarınızın Multi-Factor Authentication kullanmaya hazırlanmak için gerekli yöntemleri kaydetmeleri gerekir.
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
    ![Kullanıcıların oturum açma sırasında MFA 'ya kaydolmesini gerektir](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
@@ -73,7 +73,7 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
 1. **Erişim** bölümünde **Erişime izin ver**'i ve ardından **Parola değişikliği iste**'yi seçin.
 1. "Seç"e tıklayın
 1. İlkeyi Zorla'yı **Açık** duruma getirin.
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Risk tabanlı Multi-Factor Authentication'ı etkinleştirme
 
@@ -85,7 +85,7 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
 1. **Erişim** bölümünde **Erişime izin ver**'i ve ardından **Çok faktörlü kimlik doğrulamasını gerekli kıl**'ı seçin.
 1. "Seç"e tıklayın
 1. İlkeyi Zorla'yı **Açık** duruma getirin.
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

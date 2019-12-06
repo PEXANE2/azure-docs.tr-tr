@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384215"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851715"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak SQL veritabanı kenarından Azure Blob depolama 'ya veri eşitleme
 
@@ -177,7 +177,7 @@ Bu bölümde, Azure SQL veritabanı Edge 'deki bir tablodan verileri Azure Blob 
 
 27. SinkDataset 'in **bağlantı** sekmesine gidin ve aşağıdaki adımları tamamlayın:
 
-    1. **Dosya yolu**altında, *asdedatasync/incrementalcopy*girin; burada *adföğreticisi* blob kapsayıcısı adı, *incrementalcopy* ise klasör adıdır. Mevcut değilse kapsayıcıyı oluşturun veya var olan bir adın adını kullanın. Azure Data Factory, *incrementalcopy* çıktı klasörünü otomatik olarak oluşturur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
+    1. **Dosya yolu**' nun altında *asdedatasync/incrementalcopy*girin; burada *asdedatasync* blob kapsayıcısı adıdır ve *incrementalcopy* klasör adıdır. Mevcut değilse kapsayıcıyı oluşturun veya var olan bir adın adını kullanın. Azure Data Factory, *incrementalcopy* çıktı klasörünü otomatik olarak oluşturur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
 
     2. **Dosya yolunun** **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve ardından **@CONCAT(' artımlı-', işlem hattı () girin. RunId, '. txt ')** açılan pencerede. **Son**’u seçin. Dosya adı, ifade tarafından dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
 
@@ -195,9 +195,9 @@ Bu bölümde, Azure SQL veritabanı Edge 'deki bir tablodan verileri Azure Blob 
 
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **parametreyi Içeri aktar** ' ı seçin ve parametreler için şu değerleri girin:
 
-    |Name|Type|Value|
+    |Adı|Tür|Değer|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {Activity (' Newfiligran '). Output. firstRow. Newsulu Markvalue}|
+    |LastModifiedtime|Tarih Saat|@ {Activity (' Newfiligran '). Output. firstRow. Newsulu Markvalue}|
     |TableName|Dize|@ {Activity (' Oldfiligran '). Output. firstRow. TableName}|
 
 33. İşlem hattı ayarlarını doğrulamak için araç çubuğunda **Doğrula** ' yı seçin. Doğrulama hatası olmadığından emin olun. İşlem **hattı doğrulama raporu** penceresini kapatmak için **>>** ' yi seçin.

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB’de tablo verilerini sorgulama
-description: Azure Cosmos DB’de tablo verilerini sorgulamayı öğrenin
+description: OData filtrelerini ve LINQ sorgularını kullanarak Azure Cosmos DB Tablo API'si hesabında depolanan verileri sorgulamayı öğrenin
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978761"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869927"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Öğretici: Tablo API'sini kullanarak Azure Cosmos DB'yi sorgulama
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Öğretici: Tablo API’sini kullanarak Azure Cosmos DB’yi sorgulama
 
 Azure Cosmos DB [Table API’si](table-introduction.md), anahtar/değer (tablo) verilerine karşı OData ve [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) sorgularını destekler.  
 
@@ -26,7 +26,7 @@ Bu makale aşağıdaki görevleri kapsar:
 
 Bu makaledeki sorgularda aşağıdaki `People` tablosu kullanılmaktadır:
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-posta | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Sonuçlar**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-posta | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **Sonuçlar**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-posta | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

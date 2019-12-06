@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085283"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875425"
 ---
 Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -34,7 +34,7 @@ Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir
 | Kaynak | Açıklama|
 |----------|------------|
 | **Yönetilen görüntü** | Tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntü. Yönetilen görüntüler [Genelleştirilmiş](#generalized-and-specialized-images) VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
-| **Görüntüye** | Bir VHD 'nin **görüntü sürümü**oluşturmak için kullanılabilecek bir kopyası. Anlık görüntüler [özelleştirilmiş](#generalized-and-specialized-images) bir VM 'den alınabilir (Genelleştirilmiş olmayan bir şekilde) ve özel bir görüntü sürümü oluşturmak için tek başına veya veri disklerinin anlık görüntüleriyle birlikte kullanılır.
+| **Anlık Görüntü** | Bir VHD 'nin **görüntü sürümü**oluşturmak için kullanılabilecek bir kopyası. Anlık görüntüler [özelleştirilmiş](#generalized-and-specialized-images) bir VM 'den alınabilir (Genelleştirilmiş olmayan bir şekilde) ve özel bir görüntü sürümü oluşturmak için tek başına veya veri disklerinin anlık görüntüleriyle birlikte kullanılır.
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
 | **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü kuruluşunuzda kullanmaya yönelik gereksinimler hakkında bilgi taşır. Görüntünün Genelleştirilmiş veya özel, işletim sistemi, minimum ve maksimum bellek gereksinimleri ve sürüm notları gibi bilgileri ekleyebilirsiniz. Bu, bir görüntü türünün tanımıdır. |
 | **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
@@ -49,11 +49,11 @@ Görüntü tanımları bir görüntünün sürümleri için bir mantıksal grupl
 
 Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**'da kullanılan üç parametre vardır. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Üç değerden birini veya ikisini birden paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, aşağıda üç görüntü tanımı ve değerleri verilmiştir:
 
-|Görüntü Tanımı|Yayımcı|Sunduğu|Sku|
+|Görüntü Tanımı|Yayımcı|Teklif|Sku|
 |---|---|---|---|
-|myImage1|Contoso|Finans|Sunucusundan|
-|myImage2|Contoso|Finans|Uçta|
-|myImage3|Test Etme|Finans|Uçta|
+|myImage1|Contoso|Finans|Arka uç|
+|myImage2|Contoso|Finans|Ön uç|
+|myImage3|Test Etme|Finans|Ön uç|
 
 Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
 
@@ -94,15 +94,15 @@ Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hede
 | Kaynak bölgeler        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Avustralya Orta     | Çin Doğu        | Güney Hindistan        | Batı Avrupa        |
-| Avustralya Orta 2   | Çin Doğu 2      | Güneydoğu Asya     | Birleşik Krallık Güney           |
-| Avustralya Doğu        | Çin Kuzey       | Japonya Doğu         | Birleşik Krallık Batı            |
-| Avustralya Güneydoğu   | Çin Kuzey 2     | Japonya Batı         | US DoD Orta     |
-| Güney Brezilya          | Doğu Asya         | Kore Orta      | US DoD Doğu        |
-| Orta Kanada        | Doğu ABD           | Kore Güney        | ABD Devleti Arizona     |
-| Doğu Kanada           | Doğu ABD 2         | Orta Kuzey ABD   | ABD Devleti Texas       |
-| Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | ABD Devleti Virginia    |
-| Orta ABD            | Fransa Orta    | Orta Güney ABD   | Batı Hindistan         |
-| EUAP Orta ABD       | Fransa Güney      | Batı Orta ABD    | Batı ABD            |
+| Avustralya Orta 2   | Çin Doğu 2      | Güneydoğu Asya     | Birleşik Krallık, Güney           |
+| Doğu Avustralya        | Çin Kuzey       | Doğu Japonya         | Birleşik Krallık, Batı            |
+| Güneydoğu Avustralya   | Çin Kuzey 2     | Batı Japonya         | US DoD Orta     |
+| Brezilya Güney          | Doğu Asya         | Kore Orta      | ABD DoD Doğu        |
+| Kanada Orta        | Doğu ABD           | Kore Güney        | US Gov Arizona     |
+| Kanada Doğu           | Doğu ABD 2         | Orta Kuzey ABD   | US Gov Teksas       |
+| Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | ABD Hükümeti Virginia    |
+| Orta ABD            | Fransa Orta    | Güney Orta ABD   | Batı Hindistan         |
+| EUAP Orta ABD       | Fransa Güney      | Orta Batı ABD    | Batı ABD            |
 |                       |                   |                    | Batı ABD 2          |
 
 
@@ -113,6 +113,7 @@ Paylaşılan görüntü galerileri kullanarak kaynak dağıtmak için abonelik b
 - 100 paylaşılan görüntü galerileri, her bölge için abonelik başına
 - 1\.000 görüntü tanımları, her bölge için abonelik başına
 - 10.000 görüntü sürümü, her bölge için abonelik başına
+- Görüntüye bağlı herhangi bir disk, boyutu 1 TB 'tan küçük veya ona eşit olmalıdır
 
 Daha fazla bilgi için bkz. geçerli kullanımınızı nasıl denetabileceğine ilişkin örnekler için [sınırlara karşı kaynak kullanımını denetleme](https://docs.microsoft.com/azure/networking/check-usage-against-limits) .
  
@@ -147,9 +148,9 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
-| Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
+| Kullanıcıyla paylaşıldı     | Paylaşılan görüntü galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
+| Paylaşılan görüntü galerisi | Yes                  | Yes          | Yes                  |
 | Görüntü Tanımı     | Hayır                   | Yes          | Yes                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).

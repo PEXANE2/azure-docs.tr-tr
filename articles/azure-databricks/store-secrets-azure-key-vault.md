@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706136"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849284"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Öğretici: Azure Key Vault kullanarak Azure Databricks Azure Blob depolamaya erişme
 
@@ -52,7 +52,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 4. Yeni oluşturduğunuz depolama hesabınıza gidin ve **genel bakış** sayfasındaki **Hizmetler** altında **Bloblar** ' ı seçin. Ardından **+ kapsayıcı** ' yı seçin ve bir kapsayıcı adı girin. **Tamam**’ı seçin.
 
-   ![Yeni kapsayıcı oluştur](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
+   ![Yeni bir kapsayıcı oluşturma](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
 5. BLOB depolama kapsayıcınıza yüklemek istediğiniz dosyayı bulun. Bir dosyanız yoksa, bazı bilgilerle yeni bir metin dosyası oluşturmak için bir metin düzenleyicisi kullanın. Bu örnekte, **HW. txt** adlı bir dosya "Hello World" metnini içerir. Metin dosyanızı yerel olarak kaydedin ve BLOB depolama kapsayıcınıza yükleyin.
 
@@ -129,7 +129,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 4. Azure Databricks çalışma alanınız ayrı bir pencerede açıldıktan sonra URL 'ye **#secrets/createScope** ekleyin. URL aşağıdaki biçimde olmalıdır: 
 
-   **https://< \Location >. azuredatabricks. net/#secrets/createScope**.
+   **https://< \Location >. azuredatabricks. net/? o = < \Orgıd > #secrets/createScope**.
+   
 
 5. Bir kapsam adı girin ve daha önce kaydettiğiniz Azure Key Vault DNS adını ve kaynak KIMLIĞINI girin. Kapsam adını bu öğreticide daha sonra kullanmak üzere bir metin düzenleyicisinde kaydedin. Ardından **Oluştur**’u seçin.
 

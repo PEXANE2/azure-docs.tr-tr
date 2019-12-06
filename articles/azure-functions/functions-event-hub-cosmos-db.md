@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: 04cb91a62536c493240998270b5bd8d29fd331ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230620"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849845"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Öğretici: bir olay hub 'ı tetikleyicisi ve bir Azure Cosmos DB çıktı bağlaması ile Java 'da işlev oluşturma
 
@@ -36,8 +36,6 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdakilerin yüklü olması gereki
 
 > [!IMPORTANT]
 > Bu öğreticiyi tamamlayabilmeniz için `JAVA_HOME` ortam değişkeni JDK 'nin Install konumuna ayarlanmalıdır.
-
-Bu öğreticide doğrudan kodu kullanmayı tercih ediyorsanız, bkz. [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) örnek deposu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
