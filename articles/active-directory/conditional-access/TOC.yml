@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: Eski kimlik doğrulamasını engelleme
       href: block-legacy-authentication.md
-    - name: MFA kaydı için Koşullu Erişim
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Onaylı istemci uygulamaları gerektirme
       href: app-based-conditional-access.md
     - name: Uygulama koruma ilkesi gerektir

@@ -60,9 +60,6 @@
         - name: Bileşik varlıklarla ilişkili verileri gruplandırma ve ayıklama
           href: luis-tutorial-composite-entity.md
           displayName: roles
-        - name: Basit varlıklarla adları alma
-          href: luis-quickstart-primary-and-secondary-data.md
-          displayName: roles
     - name: Uygulama geliştirme
       items:
         - name: Emin olunmayan tahminleri düzeltme

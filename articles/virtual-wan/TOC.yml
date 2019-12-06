@@ -24,8 +24,6 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Genel geçiş ağ mimarisi
           href: virtual-wan-global-transit-network-architecture.md
-        - name: Sanal WAN Office 365 denetim düzlemi
-          href: virtual-wan-office365-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sanal ağ geçidini Sanal WAN'a bağlama

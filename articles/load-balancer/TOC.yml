@@ -4,14 +4,10 @@
   items:
     - name: Yük Dengeleyici nedir?
       href: load-balancer-overview.md
+    - name: Standart Load Balancer nedir?
+      href: load-balancer-standard-overview.md
 - name: Hızlı Başlangıç
   items:
-    - name: Basic Load Balancer oluşturma - Portal
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: Basic Load Balancer oluşturma - Azure CLI
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: Basic Load Balancer oluşturma - Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
     - name: Standard Load Balancer oluşturma - Portal
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Standard Load Balancer oluşturma - Azure CLI
@@ -19,8 +15,13 @@
     - name: Standard Load Balancer oluşturma - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Standart Load Balancer oluşturma - şablon
-      displayName: ARM
+    - name: Basic Load Balancer oluşturma - Portal
+      href: quickstart-create-basic-load-balancer-portal.md
+    - name: Basic Load Balancer oluşturma - Azure CLI
+      href: quickstart-create-basic-load-balancer-cli.md
+    - name: Basic Load Balancer oluşturma - Azure PowerShell
       href: quickstart-load-balancer-standard-public-template.md
+      displayName: ARM
 - name: Öğreticiler
   items:
     - name: Sanal makinelerin internet trafiğinde yük dengeleme
@@ -41,8 +42,6 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
-    - name: Standart Load Balancer nedir?
-      href: load-balancer-standard-overview.md
     - name: Sistem durumu araştırmaları
       href: load-balancer-custom-probe-overview.md
     - name: Yüksek Kullanılabilirlik bağlantı noktaları
